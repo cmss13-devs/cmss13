@@ -4591,6 +4591,7 @@
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "anW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south_east)
 "anX" = (
@@ -5562,6 +5563,7 @@
 "aqP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "aqQ" = (
@@ -13762,7 +13764,6 @@
 /area/point_loma/research_facility/engineering)
 "aNt" = (
 /obj/effect/spawner/gibspawner/human,
-/obj/effect/spawner/random/gun/clf_primary,
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/hallway/west)
 "aNu" = (
@@ -14099,6 +14100,12 @@
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt/runway,
 /area/point_loma/airbase/exterior/crash_site)
+"aOz" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "aOA" = (
 /obj/structure/fence/slim/dark,
 /turf/open/floor/shiva/red/east,
@@ -14164,6 +14171,7 @@
 /area/point_loma/airbase/exterior/west)
 "aOK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "aOL" = (
@@ -14304,6 +14312,12 @@
 "aPe" = (
 /turf/open/new_varadero/sidewalk/west,
 /area/point_loma/airbase/interior/fuel_storage)
+"aPf" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "aPg" = (
 /obj/structure/machinery/door_control{
 	id = "garage_ice_2";
@@ -27442,6 +27456,12 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
+"bAu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
 "bAv" = (
 /obj/item/trash/burger,
 /obj/item/trash/hybrisa/cuppa_joes_static/lid{
@@ -30840,6 +30860,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "bJZ" = (
@@ -32772,6 +32793,7 @@
 "bQc" = (
 /obj/structure/prop/rock/brown,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "bQd" = (
@@ -35396,6 +35418,7 @@
 "cam" = (
 /obj/structure/prop/rock/black_ground/dense,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "can" = (
@@ -36514,6 +36537,12 @@
 "cdL" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/chapel)
+"cdM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
 "cdN" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -38580,6 +38609,7 @@
 /area/point_loma/research_facility/hallway/east)
 "ckt" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/west)
 "cku" = (
@@ -41273,6 +41303,7 @@
 "csU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/west)
 "csV" = (
@@ -42925,6 +42956,7 @@
 /area/point_loma/research_facility/hallway/central)
 "cyG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/corsat/purplecorner/north,
 /area/point_loma/research_facility/hallway/central)
 "cyH" = (
@@ -43217,7 +43249,6 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/hallway/east)
 "czS" = (
-/obj/effect/spawner/random/gun/clf_primary,
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/hallway/west)
 "czT" = (
@@ -43492,10 +43523,6 @@
 "cAK" = (
 /obj/effect/spawner/random/gun/clf_primary,
 /turf/open/floor/corsat/yellow/north,
-/area/point_loma/research_facility/hallway/west)
-"cAL" = (
-/obj/effect/spawner/random/gun/clf_primary,
-/turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "cAM" = (
 /turf/open/floor/shiva/red/northeast,
@@ -43830,10 +43857,72 @@
 /obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
+"cBM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "cBN" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"cBO" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cBP" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/purple/north,
+/area/point_loma/research_facility/hallway/central)
+"cBQ" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/yellow,
+/area/point_loma/research_facility/hallway/central)
+"cBR" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
+"cBS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cBT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
+"cBU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/purple/north,
+/area/point_loma/research_facility/hallway/east)
+"cBV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/west)
+"cBW" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/yellow/west,
+/area/point_loma/research_facility/hallway/west)
+"cBX" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/west)
+"cBY" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
 
 (1,1,1) = {"
 aug
@@ -90876,9 +90965,9 @@ bJd
 bJd
 ceq
 ceq
-ckt
-ckt
-ckt
+cBX
+cBX
+cBX
 csU
 bJd
 bJd
@@ -90929,11 +91018,11 @@ bIA
 bIA
 bIA
 bIA
-aOK
-aOK
-aOK
-aOK
-aOK
+cBO
+cBO
+cBO
+cBO
+cBO
 bIA
 bIA
 bIA
@@ -91110,13 +91199,13 @@ bIA
 bIA
 bIA
 bIA
-aOK
+cBO
 aeX
 aeX
 aeX
 aeX
 aeX
-aOK
+cBO
 bIA
 bIA
 bIA
@@ -91291,7 +91380,7 @@ bJd
 bIA
 bIA
 bIA
-aOK
+cBO
 aeX
 aeX
 aeX
@@ -91299,7 +91388,7 @@ aeX
 aeX
 aeX
 aeX
-aOK
+cBO
 bIA
 bIA
 bIA
@@ -91472,7 +91561,7 @@ bJd
 bJd
 bIA
 bIA
-aOK
+cBO
 aeX
 aeX
 aeX
@@ -91482,7 +91571,7 @@ aeX
 aeX
 aeX
 aeX
-aOK
+cBO
 bIA
 bIA
 bIA
@@ -91608,13 +91697,13 @@ bJd
 bJd
 bJd
 bJd
-csU
-csU
-csU
-csU
-csU
-csU
-csU
+cBV
+cBV
+cBV
+cBV
+cBV
+cBV
+cBV
 bJd
 bJd
 bJd
@@ -91654,7 +91743,7 @@ bJd
 cbH
 bIA
 bIA
-aOK
+cBO
 aeX
 aeX
 aeX
@@ -91664,7 +91753,7 @@ aeX
 aeX
 aeX
 aeX
-aOK
+cBO
 bIA
 bIA
 bIA
@@ -91811,7 +91900,7 @@ bJd
 bJd
 bJd
 bJd
-csU
+cBV
 ceq
 ceq
 ceq
@@ -91836,7 +91925,7 @@ bJd
 bJd
 bIA
 bIA
-aOK
+cBO
 aeX
 aeX
 aeX
@@ -91846,7 +91935,7 @@ aeX
 aeX
 aeX
 aeX
-aOK
+cBO
 bIA
 bIA
 aqP
@@ -91985,14 +92074,14 @@ cdR
 cdR
 cdR
 ceq
-csU
+cBV
 bJd
 bJd
 bJd
 bJd
 bJd
 bJd
-csU
+cBV
 aeX
 aeX
 ceq
@@ -92019,15 +92108,15 @@ bJd
 bZQ
 bIA
 bZQ
-aOK
-aOK
+cBO
+cBO
 aeX
 aeX
 aeX
 aeX
 aeX
-aOK
-aOK
+cBO
+cBO
 bIA
 bIA
 bIA
@@ -92168,13 +92257,13 @@ bJd
 bJd
 aeX
 aeX
-csU
+cBV
 bJd
 bJd
 bJd
 bJd
 bJd
-csU
+cBV
 aeX
 aeX
 aeX
@@ -92203,11 +92292,11 @@ bIA
 bIA
 bIA
 bIA
-aOK
-aOK
-aOK
-aOK
-aOK
+cBO
+cBO
+cBO
+cBO
+cBO
 bIA
 bIA
 bIA
@@ -93308,7 +93397,7 @@ bZR
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -93491,7 +93580,7 @@ bIA
 bIA
 bIA
 bIA
-aOK
+bAu
 aeX
 aeX
 aeX
@@ -93857,7 +93946,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94039,7 +94128,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94222,7 +94311,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94404,7 +94493,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94586,7 +94675,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94768,7 +94857,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -94951,7 +95040,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -95134,10 +95223,10 @@ bZQ
 bIA
 bIA
 bIA
-aqP
-aqP
-aqP
-aqP
+bAu
+bAu
+bAu
+bAu
 aeX
 aeX
 aeX
@@ -95320,7 +95409,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 aeX
 aeX
 aeX
@@ -95503,8 +95592,8 @@ bIA
 bIA
 bIA
 bIA
-aqP
-aqP
+bAu
+bAu
 aeX
 aqP
 bIA
@@ -95687,7 +95776,7 @@ bIA
 bIA
 bIA
 bIA
-aqP
+bAu
 bIA
 bIA
 bIA
@@ -96776,7 +96865,7 @@ bIA
 bIA
 aOK
 aOK
-aOK
+cdM
 bIA
 bIA
 bIA
@@ -98539,7 +98628,7 @@ aFk
 bJv
 ccI
 ccI
-cAL
+ccI
 czS
 czP
 acD
@@ -98721,10 +98810,10 @@ bqu
 aNu
 brv
 ccI
-cAL
+ccI
 aNt
 czl
-cyW
+cBW
 cyW
 cyW
 cyW
@@ -98903,7 +98992,7 @@ bqu
 brp
 brp
 brn
-cAL
+ccI
 cAK
 bqW
 cxu
@@ -99428,7 +99517,7 @@ bKZ
 bKZ
 cAF
 bKZ
-bKZ
+cBY
 bsJ
 cgc
 bsA
@@ -100735,7 +100824,7 @@ agx
 agx
 czo
 bJf
-cpi
+cBT
 bJf
 bJf
 cyL
@@ -102193,7 +102282,7 @@ cBt
 cdb
 cdf
 ccK
-bJf
+cBR
 cyL
 cyD
 bYx
@@ -103832,7 +103921,7 @@ bJf
 cpi
 bJf
 bJf
-cyL
+cBQ
 ccD
 bXR
 cca
@@ -104342,7 +104431,7 @@ bJw
 bJf
 bJf
 bJf
-bJf
+cdW
 bJf
 ccW
 cuD
@@ -105835,7 +105924,7 @@ bJw
 bJf
 bJf
 cyL
-cyF
+cBP
 bJf
 bJf
 bJf
@@ -106740,7 +106829,7 @@ cdq
 cpF
 cdx
 cdq
-bJf
+cBR
 bJf
 bJf
 bUx
@@ -107475,7 +107564,7 @@ cyX
 cyR
 cyF
 ccB
-bJf
+cdW
 bJf
 bJf
 bJf
@@ -109653,9 +109742,9 @@ czx
 cdg
 cdg
 bIO
+cfZ
 bIO
-bIO
-cdP
+cBS
 bIO
 bIO
 bIO
@@ -110195,7 +110284,7 @@ ctU
 ctU
 cth
 czC
-czz
+cBU
 bIO
 bIO
 bIO
@@ -113349,7 +113438,7 @@ bIB
 bIB
 anW
 asb
-apl
+aOz
 abB
 bIB
 bIB
@@ -113531,7 +113620,7 @@ anW
 anW
 asb
 asb
-apl
+aOz
 bIB
 bIB
 bIB
@@ -113707,12 +113796,12 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
 asb
-apl
+aOz
 bIB
 bIB
 bIB
@@ -113889,12 +113978,12 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
 asb
-apl
+aOz
 bIB
 bIB
 bIB
@@ -114072,11 +114161,11 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
-apl
+aOz
 bIB
 bIB
 bIB
@@ -114255,10 +114344,10 @@ bIB
 bIB
 bIB
 bIB
-apl
-apl
+aOz
+aOz
 asb
-apl
+aOz
 bIB
 bIB
 bIB
@@ -114439,7 +114528,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 bIB
 bIB
 bIB
@@ -114974,8 +115063,8 @@ bIB
 bIB
 bIB
 bIB
-apl
-apl
+aOz
+aPf
 bIB
 bIB
 bIB
@@ -115155,10 +115244,10 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -115336,12 +115425,12 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -115517,12 +115606,12 @@ bIB
 bIB
 bIB
 bIB
-apl
+aPf
 asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -115700,10 +115789,10 @@ bIB
 bIB
 bIB
 bIB
-apl
-apl
-apl
-apl
+aPf
+aPf
+aPf
+aPf
 bIB
 bIB
 bIB
@@ -115873,9 +115962,9 @@ bIB
 bIB
 bIB
 bIB
-anW
-anW
-anW
+cBM
+cBM
+cBM
 bIB
 bIB
 bIB
@@ -115897,9 +115986,9 @@ bIB
 bIB
 bIB
 bIB
-apl
-apl
-apl
+aOz
+aOz
+aOz
 asb
 asb
 asb
@@ -116050,15 +116139,15 @@ asb
 asb
 asb
 asb
-anW
-anW
-anW
-anW
-anW
+cBM
+cBM
+cBM
+cBM
+cBM
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -116078,7 +116167,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -116240,7 +116329,7 @@ asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 abB
@@ -116260,7 +116349,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -116422,7 +116511,7 @@ asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -116443,7 +116532,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -116604,7 +116693,7 @@ asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -116626,7 +116715,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -116787,7 +116876,7 @@ asb
 asb
 asb
 asb
-apl
+aPf
 bIB
 bIB
 bIB
@@ -116808,7 +116897,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -116971,8 +117060,8 @@ asb
 asb
 asb
 apl
-apl
-apl
+aPf
+aPf
 bIB
 bIB
 bIB
@@ -116989,7 +117078,7 @@ bIB
 bIB
 bIB
 bIB
-apl
+aOz
 asb
 asb
 asb
@@ -117155,22 +117244,22 @@ asb
 asb
 asb
 asb
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
-apl
+aOz
+aOz
+aOz
+aOz
+aOz
+aPf
+aPf
+aPf
+aPf
+aPf
+aPf
+aOz
+aOz
+aOz
+aOz
+aOz
 asb
 asb
 asb

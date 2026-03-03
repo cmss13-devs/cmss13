@@ -455,3 +455,19 @@
 	icon = 'icons/obj/structures/props/radar_prop.dmi'
 	icon_state = "radar_dish_lightglow"
 
+/obj/structure/prop/new_varadero_props/big_gun
+	icon = 'icons/obj/structures/props/big_gun/icon_cannon.dmi'
+	icon_state = "cannon"
+
+/obj/structure/prop/new_varadero_props/big_gun/barrel
+	icon_state = "cannon1"
+	s
+/obj/structure/prop/new_varadero_props/big_gun/lights
+	icon_state = "cannon_lightglow"
+
+/obj/structure/prop/new_varadero_props/big_gun/testing
+	icon = 'icons/obj/structures/props/big_gun/testcannon.dmi'
+	icon_state = "testcannon"
+
+
+

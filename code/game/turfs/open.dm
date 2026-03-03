@@ -6,7 +6,6 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
-	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
@@ -24,10 +23,10 @@
 	add_cleanable_overlays()
 
 	var/alist/auto_turf_dirs = alist()
-	for(var/turf/open/auto_turf/T in orange(1, src))
-		if(bleed_layer >= T.bleed_layer)
+	for(var/turf/open/auto_turf/auto_neighbor in orange(1, src))
+		if(!auto_neighbor.layers_over(src))
 			continue
-		auto_turf_dirs[get_dir(src, T)] = T
+		auto_turf_dirs[get_dir(src, auto_neighbor)] = auto_neighbor
 
 	if(length(auto_turf_dirs))
 		var/list/handled_dirs = list()

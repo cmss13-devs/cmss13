@@ -107,3 +107,10 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
 // Abyssal
 #define MINIMAP_AREA_SPACE "#1a1a1a"
+
+// Ceiling colors
+#define MINIMAP_CEILING_TIER_GLASS "#b2e6f19a"
+#define MINIMAP_CEILING_TIER_1 "#606060a2"
+#define MINIMAP_CEILING_TIER_2 "#404040a2"
+#define MINIMAP_CEILING_TIER_3 "#202020a2"
+#define MINIMAP_CEILING_TIER_4 "#000000a2"

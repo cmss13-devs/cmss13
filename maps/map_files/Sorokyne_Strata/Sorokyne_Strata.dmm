@@ -30504,7 +30504,7 @@
 /area/strata/interior/administration)
 "bJF" = (
 /obj/structure/filingcabinet,
-/obj/item/pamphlet/skill/medical,
+/obj/item/pamphlet/upgradeable/medical,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata,
 /area/strata/interior/administration)
@@ -34787,7 +34787,7 @@
 	pixel_y = 14
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/item/pamphlet/skill/police{
+/obj/item/pamphlet/upgradeable/police{
 	pixel_x = 6;
 	pixel_y = 13
 	},

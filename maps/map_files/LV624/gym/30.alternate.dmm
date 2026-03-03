@@ -292,7 +292,8 @@
 /area/lv624/ground/jungle/central_jungle)
 "EQ" = (
 /obj/structure/holohoop{
-	dir = 4
+	dir = 4;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/warnwhite/west,
@@ -328,7 +329,8 @@
 /area/lv624/lazarus/fitness)
 "It" = (
 /obj/structure/holohoop{
-	dir = 8
+	dir = 8;
+	density = 0
 	},
 /turf/open/floor/warnwhite/east,
 /area/lv624/lazarus/fitness)

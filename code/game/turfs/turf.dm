@@ -486,6 +486,10 @@
 			return
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
+		if(/turf/open/space/basic)
+			// basic doesn't initialize and this will cause issues
+			// no warning though because this can happen naturaly as a result of it being built on top of
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src

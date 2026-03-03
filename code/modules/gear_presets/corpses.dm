@@ -1998,6 +1998,7 @@
 	var/shoes = rand(1,3)
 	var/role = rand(1,4)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e3, WEAR_ACCESSORY)
 
 	switch(duty)
 		if(1 to 3) //off-duty

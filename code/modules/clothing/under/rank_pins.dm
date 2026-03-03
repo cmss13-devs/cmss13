@@ -411,6 +411,7 @@
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO10C
 	icon_state = "ranks_flagofficer"
+
 /*################################################
 ################# SPECIAL  #################
 ################################################*/
@@ -421,4 +422,5 @@
 
 /obj/item/clothing/accessory/ranks/navy/special/brassard
 	name = "rank brassard"
+	rank_short = "SP"
 	icon_state = "sp_brassard"

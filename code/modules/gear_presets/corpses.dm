@@ -1985,8 +1985,8 @@
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
 	faction = FACTION_SURVIVOR
-	job_title  = JOB_USASF_CREW
-	assignment = JOB_USASF_CREW
+	job_title  = JOB_USASF_ENLISTED
+	assignment = JOB_USASF_ENLISTED
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)

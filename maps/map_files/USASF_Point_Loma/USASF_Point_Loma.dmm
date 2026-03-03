@@ -14313,6 +14313,12 @@
 "aPe" = (
 /turf/open/new_varadero/sidewalk/west,
 /area/point_loma/airbase/interior/fuel_storage)
+"aPf" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/interior/workshop)
 "aPg" = (
 /obj/structure/machinery/door_control{
 	id = "garage_ice_2";
@@ -17292,9 +17298,6 @@
 	layer = 6
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/point_loma/airbase/exterior/west)
-"aXY" = (
-/turf/closed/wall/rock/brown,
 /area/point_loma/airbase/exterior/west)
 "aXZ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/ten,
@@ -27451,6 +27454,9 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
+"bAu" = (
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
 "bAv" = (
 /obj/item/trash/burger,
 /obj/item/trash/hybrisa/cuppa_joes_static/lid{
@@ -33846,6 +33852,13 @@
 "bUC" = (
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
+"bUD" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
 "bUE" = (
 /obj/effect/acid_hole{
 	dir = 8
@@ -36519,6 +36532,12 @@
 "cdL" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/chapel)
+"cdM" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
 "cdN" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -43835,10 +43854,36 @@
 /obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
+"cBM" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
 "cBN" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"cBO" = (
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cBP" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cBQ" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
 
 (1,1,1) = {"
 aug
@@ -151358,7 +151403,7 @@ atg
 atg
 bdU
 aZf
-aXY
+asb
 asb
 asb
 asb
@@ -156826,8 +156871,8 @@ acx
 acx
 aWP
 aAB
-acp
-acp
+aPf
+aPf
 bPq
 bOU
 bOU
@@ -194319,8 +194364,8 @@ bui
 bui
 bui
 bui
-cgh
-buT
+bUD
+bAu
 asb
 asb
 asb
@@ -194501,8 +194546,8 @@ bui
 bui
 bui
 bui
-cgh
-buT
+bUD
+bAu
 asb
 asb
 asb
@@ -194681,11 +194726,11 @@ bHP
 bHP
 bHP
 bHP
-bHP
-bHP
-buT
-buT
-buT
+cdM
+cdM
+bAu
+bAu
+bAu
 buT
 buT
 buT
@@ -194863,11 +194908,11 @@ bOk
 bOk
 bOk
 buT
-buT
-buT
-buT
-buT
-buT
+bAu
+bAu
+bAu
+bAu
+bAu
 buT
 buT
 buT
@@ -196486,9 +196531,9 @@ bTS
 bTS
 bTS
 bTS
-bpU
-bhP
-bhP
+cBP
+cBM
+cBM
 bhP
 bhP
 bhP
@@ -196668,9 +196713,9 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
-bzz
+cBQ
+cBO
+cBO
 bzz
 bzz
 bzz
@@ -196850,8 +196895,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cBQ
+cBO
 bIF
 cAU
 bHq
@@ -197032,8 +197077,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cBQ
+cBO
 bIF
 cAU
 aLF
@@ -197214,8 +197259,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cBQ
+cBO
 ctK
 ctK
 ctK
@@ -197396,8 +197441,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cBQ
+cBO
 ctK
 brN
 bzz
@@ -197608,7 +197653,7 @@ bui
 bui
 bui
 bui
-bui
+asb
 bui
 bui
 bui
@@ -197789,8 +197834,8 @@ bui
 bui
 bui
 bui
-bui
-bui
+asb
+asb
 bui
 bui
 bui
@@ -197970,8 +198015,8 @@ cfO
 bui
 bui
 bui
-bui
-bui
+asb
+asb
 bui
 bui
 bui
@@ -198153,8 +198198,8 @@ bui
 bui
 bui
 bui
-bui
-bui
+asb
+asb
 bui
 bui
 bui
@@ -198335,8 +198380,8 @@ bui
 bui
 bui
 bui
-bui
-bui
+asb
+asb
 bui
 bui
 bui
@@ -203063,8 +203108,8 @@ bAH
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb
@@ -203245,8 +203290,8 @@ bui
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb
@@ -203427,8 +203472,8 @@ bui
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb
@@ -203609,8 +203654,8 @@ bui
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb
@@ -203791,8 +203836,8 @@ bui
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb
@@ -203973,8 +204018,8 @@ bui
 bui
 bui
 asb
-buT
-buT
+bAu
+bAu
 asb
 asb
 asb

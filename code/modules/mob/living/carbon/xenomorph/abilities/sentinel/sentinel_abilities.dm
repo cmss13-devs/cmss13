@@ -36,10 +36,9 @@
 /datum/action/xeno_action/activable/neuro_spit
 	name = "Neuro Spit"
 	action_icon_state = "xeno_spit"
-	name = "neuro_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_neuro_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 1.5 SECONDS
 	plasma_cost = 20
 	ability_uses_acid_overlay = TRUE

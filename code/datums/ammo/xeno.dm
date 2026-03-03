@@ -151,6 +151,8 @@
 
 /datum/ammo/xeno/toxin/neuro/New()
 	..()
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 6
 
 	retro_neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_retro_neuro))
 
@@ -159,7 +161,7 @@
 	retro_neuro_callback.Invoke(M, effect_power)
 
 // attempt 2
-/proc/apply_retro_neuro(mob/living/victim, power, daze_amount)
+/proc/apply_retro_neuro(mob/living/victim, power)
 	var/pass_down_the_line = FALSE
 
 	if(skillcheck(victim, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
@@ -171,12 +173,133 @@
 			return
 
 	if(ishuman(victim))
-		victim.visible_message(SPAN_DANGER("[victim] falls limp on the ground."))
+		if(HAS_TRAIT(victim, KNOCKEDOUT_TRAIT) || pass_down_the_line) //second part is always false, but consistency is a great thing
+			pass_down_the_line = TRUE
+
+	if(!isxeno(victim))
+		if(victim.AmountKnockDown() > 4 || pass_down_the_line)
+			if(!pass_down_the_line)
+				victim.visible_message(SPAN_DANGER("[victim] falls limp on the ground."))
+			victim.KnockOut(30) //KO them. They already got rekt too much
+			pass_down_the_line = TRUE
+
+		var/no_clothes_neuro = FALSE
+
+		if(ishuman(victim))
+			var/mob/living/carbon/human/H = victim
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
 
 
-	if(HAS_TRAIT(victim, TRAIT_DAZED))
+		if(HAS_TRAIT(victim, TRAIT_DAZED) || pass_down_the_line || no_clothes_neuro)
+			if(victim.AmountKnockDown() < 5)
+				victim.AdjustKnockDown(1 * power) // KD them a bit more
+				if(!pass_down_the_line)
+					victim.visible_message(SPAN_DANGER("[victim] falls prone."))
+			pass_down_the_line = TRUE
+
+		if(victim.superslowed || pass_down_the_line)
+			if(victim.dazed < 6)
+				victim.AdjustDaze(3 * power) // Daze them a bit more
+				if(!pass_down_the_line)
+					victim.visible_message(SPAN_DANGER("[victim] is visibly confused."))
+			pass_down_the_line = TRUE
+
+	if(victim.superslowed < 10)
+		victim.AdjustSuperslow(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			victim.visible_message(SPAN_DANGER("[victim] movements are slowed."))
+
+
+/*	if(HAS_TRAIT(victim, TRAIT_DAZED))
 		victim.visible_message(SPAN_DANGER("[victim] has the dazed trait."))
+		victim.visible_message(SPAN_DANGER("[victim] has [victim.AmountKnockDown()] knockdown."))
+		victim.visible_message(SPAN_DANGER("[victim] has [victim.superslowed] superslow"))
 
+*/
+/* OLD CODE
+/proc/apply_neuro(mob/M, power, insta_neuro)
+	var/pass_down_the_line = FALSE
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR) && !insta_neuro)
+		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neurotoxin
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			return //species like zombies or synths are immune to neurotoxin
+
+	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+		pass_down_the_line = TRUE
+
+	if(!isXeno(M))
+		if(M.knocked_down > 4 || pass_down_the_line)
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
+			M.KnockOut(30) //KO them. They already got rekt too much
+			pass_down_the_line = TRUE
+
+		var/no_clothes_neuro = FALSE
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
+
+		if(M.dazed || pass_down_the_line || no_clothes_neuro)
+			if(M.knocked_down < 5)
+				M.AdjustKnockeddown(1 * power) // KD them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] falls prone."))
+			pass_down_the_line = TRUE
+
+		if(M.superslowed || pass_down_the_line)
+			if(M.dazed < 6)
+				M.AdjustDazed(3 * power) // Daze them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] is visibly confused."))
+			pass_down_the_line = TRUE
+
+	if(M.superslowed < 10)
+		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
+/proc/apply_scatter_neuro(mob/M, power)
+	var/pass_down_the_line = FALSE
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neuro
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			return
+
+	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+		pass_down_the_line = TRUE
+
+	if(!isXeno(M))
+		var/no_clothes_neuro = FALSE
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
+
+		if(M.superslowed >= 5 || pass_down_the_line || no_clothes_neuro)
+			if(M.knocked_down < 3)
+				M.AdjustKnockeddown(1 * power) // KD them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] falls prone."))
+			pass_down_the_line = TRUE
+
+	if(M.superslowed < 10)
+		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
+*/
 
 /* attempt 1
 

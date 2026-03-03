@@ -2047,8 +2047,8 @@
 			new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 		if(3) // Security Police
-			new_human.equip_to_slot_or_del(new obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new obj/item/clothing/accessory/ranks/navy/special/brassard(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/special/brassard(new_human), WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy(new_human), WEAR_HEAD)
 		if(4) // Pilot
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)

@@ -250,7 +250,7 @@
 			gridSet.zcrd = curr_z
 
 			bounds[MAP_MINX] = min(bounds[MAP_MINX], curr_x)
-			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], curr_y)
+			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], curr_z)
 			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], curr_z)
 
 			var/list/gridLines = splittext(regexOutput[6], "\n")
@@ -350,10 +350,9 @@
 	SSatoms.map_loader_stop(REF(src))
 	loading = FALSE
 
-	// CM: Disabled due to not using contained_turfs and SSarea_contents
-//	if(new_z)
-//		for(var/z_index in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
-//			SSmapping.build_area_turfs(z_index)
+	if(new_z)
+		for(var/z_index in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
+			SSmapping.build_area_turfs(z_index, (length(modelCache) == 1 && modelCache[1] == SPACE_KEY))
 
 	if(!no_changeturf)
 		for(var/turf/T as anything in block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
@@ -929,10 +928,9 @@ GLOBAL_LIST_EMPTY(map_model_default)
 					CRASH("[area_type] failed to be new'd, what'd you do?")
 			loaded_areas[area_type] = area_instance
 
-		if(!new_z)
+		if(!new_z && old_area != area_instance) // don't bother if they're the same, it's wasted work
 			old_area = crds.loc
-//			old_area.turfs_to_uncontain += crds
-//			area_instance.contained_turfs.Add(crds)
+			TRANSFER_TURF_CONTAINED_AREA(crds, old_area, area_instance)
 		area_instance.contents.Add(crds)
 		if(old_area)
 			// Make sure atoms leave their old area and enter the new area

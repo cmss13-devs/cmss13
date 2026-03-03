@@ -46,6 +46,9 @@
 	 */
 	var/list/obj/effect/decal/cleanable/cleanables
 
+	/// Images representing decals that were merged into overlays to reduce sendmaps lag.
+	var/list/image/merged_decals
+
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
@@ -71,6 +74,13 @@
 
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
+
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+	/// For the area_contents list unit test
+	/// Allows us to know our area without needing to preassign it
+	/// Sorry for the mess
+	var/area/in_contents_of
+#endif
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -227,6 +237,7 @@
 		return
 
 	//move the turf
+	TRANSFER_TURF_CONTAINED_AREA(src, old_area, new_area)
 	new_area.contents += src
 
 	//changes to make after turf has moved
@@ -241,6 +252,10 @@
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		if(C.overlayed_image)
 			overlays += C.overlayed_image
+
+/turf/proc/add_merged_decals()
+	for(var/image/merged_decal in merged_decals)
+		overlays += merged_decal
 
 /turf/proc/loc_to_string()
 	var/text
@@ -471,6 +486,10 @@
 			return
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
+		if(/turf/open/space/basic)
+			// basic doesn't initialize and this will cause issues
+			// no warning though because this can happen naturaly as a result of it being built on top of
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
@@ -487,6 +506,7 @@
 	var/old_lighting_corner_NW = lighting_corner_NW
 	//hybrid lighting
 	var/list/old_hybrid_lights_affecting = hybrid_lights_affecting?.Copy()
+	var/list/old_merged_decals = merged_decals?.Copy()
 	var/old_directional_opacity = directional_opacity
 
 	changing_turf = TRUE
@@ -505,6 +525,7 @@
 
 	W.hybrid_lights_affecting = old_hybrid_lights_affecting
 	W.dynamic_lumcount = dynamic_lumcount
+	W.merged_decals = old_merged_decals
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -528,11 +549,8 @@
 	if(W.directional_opacity != old_directional_opacity)
 		W.reconsider_lights()
 
-	var/area/thisarea = get_area(W)
-	if(thisarea.lighting_effect)
-		W.overlays += thisarea.lighting_effect
-
 	W.levelupdate()
+	add_merged_decals()
 	return W
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.

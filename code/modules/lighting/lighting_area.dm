@@ -2,6 +2,8 @@
 	luminosity = 1
 	///The mutable appearance we underlay to show light
 	var/mutable_appearance/lighting_effect = null
+	///The actual image representing the above.
+	var/image/lighting_effect_overlay = null
 	///Whether this area has a currently active base lighting, bool
 	var/area_has_base_lighting = FALSE
 	///alpha 0-255 of lighting_effect and thus baselighting intensity
@@ -41,19 +43,24 @@
 		add_base_lighting()
 
 /area/proc/remove_base_lighting()
-	for(var/turf/T in src)
-		T.overlays -= lighting_effect
+	if(lighting_effect_overlay)
+		overlays -= lighting_effect_overlay
+	lighting_effect_overlay = null
 	QDEL_NULL(lighting_effect)
 	area_has_base_lighting = FALSE
 
 /area/proc/add_base_lighting()
+	if(lighting_effect_overlay)
+		overlays -= lighting_effect_overlay
 	lighting_effect = mutable_appearance('icons/effects/alphacolors.dmi', "white")
 	lighting_effect.plane = LIGHTING_PLANE
 	lighting_effect.layer = LIGHTING_PRIMARY_LAYER
 	lighting_effect.blend_mode = BLEND_ADD
 	lighting_effect.alpha = base_lighting_alpha
 	lighting_effect.color = base_lighting_color
-	for(var/turf/T in src)
-		T.overlays += lighting_effect
-		T.luminosity = 1
+	lighting_effect_overlay = image(lighting_effect)
+	overlays += lighting_effect_overlay
+	for(var/list/turf_list in get_zlevel_turf_lists())
+		for(var/turf/T in turf_list)
+			T.luminosity = 1
 	area_has_base_lighting = TRUE

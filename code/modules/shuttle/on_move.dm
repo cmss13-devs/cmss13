@@ -74,6 +74,9 @@ All ShuttleMove procs go here
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
+	// deal with decals
+	merged_decals = oldT.merged_decals
+	oldT.merged_decals = null
 // SSexplosions.wipe_turf(src)
 
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
@@ -105,7 +108,7 @@ All ShuttleMove procs go here
 	if(loc != oldT) // This is for multi tile objects
 		return
 
-	loc = newT
+	abstract_move(newT)
 
 	return TRUE
 
@@ -150,16 +153,12 @@ All ShuttleMove procs go here
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
 
-	contents -= oldT
-	underlying_old_area.contents += oldT
 	oldT.change_area(src, underlying_old_area) //lighting
 	//The old turf has now been given back to the area that turf originaly belonged to
 
 	var/area/old_dest_area = newT.loc
 	//parallax_movedir = old_dest_area.parallax_movedir
 
-	old_dest_area.contents -= newT
-	contents += newT
 	newT.change_area(old_dest_area, src) //lighting
 	return TRUE
 

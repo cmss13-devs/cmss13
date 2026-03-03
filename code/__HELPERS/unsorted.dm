@@ -1000,14 +1000,9 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/turfs = list()
 	var/area/A = GLOB.areas_by_type[areatype]
-
 	// Fix it up with /area/var/related due to lighting shenanigans
-	for(var/turf/T in A)
-		turfs += T
-
-	return turfs
+	return A.get_turfs_from_all_zlevels()
 
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null
@@ -1368,6 +1363,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1375,6 +1376,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 

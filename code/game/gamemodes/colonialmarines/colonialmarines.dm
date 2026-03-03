@@ -254,14 +254,15 @@
 			continue
 		if(!is_ground_level(area.z))
 			continue
-		for(var/turf/turf in area)
-			if(turf.density)
-				if(!istype(turf, /turf/closed/wall))
-					continue
-				var/turf/closed/wall/wall = turf
-				if(wall.turf_flags & TURF_HULL)
-					continue
-			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
+		for(var/list/turf_list in area.get_zlevel_turf_lists())
+			for(var/turf/turf in turf_list)
+				if(turf.density)
+					if(!istype(turf, /turf/closed/wall))
+						continue
+					var/turf/closed/wall/wall = turf
+					if(wall.turf_flags & TURF_HULL)
+						continue
+				lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
 ///Clears miasma smoke in landing zones
 /datum/game_mode/colonialmarines/proc/clear_lz_hazards()
@@ -307,14 +308,15 @@
 		else if(area_lz != active_lz.linked_lz)
 			continue
 
-		for(var/turf/turf in near_area)
-			if(turf.density)
-				if(!istype(turf, /turf/closed/wall))
-					continue
-				var/turf/closed/wall/wall = turf
-				if(wall.turf_flags & TURF_HULL)
-					continue
-			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
+		for(var/list/turf_list in near_area.get_zlevel_turf_lists())
+			for(var/turf/turf in turf_list)
+				if(turf.density)
+					if(!istype(turf, /turf/closed/wall))
+						continue
+					var/turf/closed/wall/wall = turf
+					if(wall.turf_flags & TURF_HULL)
+						continue
+				new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
 
 		near_area.purge_weeds()
 

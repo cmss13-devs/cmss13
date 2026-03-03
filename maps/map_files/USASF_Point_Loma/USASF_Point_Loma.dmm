@@ -17736,6 +17736,7 @@
 "aZo" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/miner,
+/obj/effect/spawner/random/gun/pistol,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 "aZp" = (
@@ -38988,6 +38989,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
+/obj/effect/spawner/random/gun/civ,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "clN" = (

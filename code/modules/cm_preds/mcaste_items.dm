@@ -14,9 +14,9 @@
 		explode(human_holder) // auto-SD on death
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/powered
-	name = "\improper M'talt power armor"
-	desc = "Produced only by artisans overseen directly by the Council of Ancients, the M'talt-Type is a powered suit of armor built for war rather than hunting."
-	icon = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+	name = "\improper Nracha-Dte power armor"
+	desc = "Produced only by artisans overseen directly by the Council of Ancients, the Nracha-Dte-Type is a powered suit of armor built for war rather than hunting. It is heavy, and absurdly protective."
+	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	icon_state = "fullarmor_soldier"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
@@ -32,18 +32,22 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	time_to_unequip = 10
+	time_to_equip = 10
 	uniform_restricted = list(/obj/item/clothing/under/chainshirt/hunter)
 
-/obj/item/clothing/suit/armor/yautja/hunter/full/powered/Initialize(mapload, armor_number, armor_material = "ebony")
+/obj/item/clothing/suit/armor/yautja/hunter/full/powered/Initialize(mapload)
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_soldier"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_soldier")
+	AddElement(/datum/element/corp_label/dltalt)
 
 /obj/item/clothing/shoes/yautja/hunter/knife/powered
-	name = "\improper M'talt armored greaves"
-	desc = "The lower half of the M'talt-Type powered armor suit, used exclusively in battle against the most disdainful of dishonorable targets."
-	icon = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+	name = "\improper Nracha-Dte armored greaves"
+	desc = "The lower half of the M'talt-Type powered armor suit, used exclusively in battle against the most disdainful of dishonorable targets. Like the upper suit, there is very little damage it cannot shrug off."
+	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	icon_state = "y-boots_powered"
+	item_state = "y-boots_powered"
 	item_icons = list(
 		WEAR_FEET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
 	)
@@ -55,18 +59,26 @@
 	armor_bio = CLOTHING_ARMOR_HIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_armor_protection = BODY_FLAG_LEGS|BODY_FLAG_FEET
+	time_to_unequip = 10
+	time_to_equip = 10
 	uniform_restricted = list(/obj/item/clothing/under/chainshirt/hunter)
 	flags_inventory = BLOCKSHARPOBJ|NOSLIPPING
+
+/obj/item/clothing/shoes/yautja/hunter/knife/powered/Initialize(mapload)
+	. = ..(mapload, 0)
+	icon_state = "y-boots_powered"
+	LAZYSET(item_state_slots, WEAR_FEET, "y-boots_powered")
+	AddElement(/datum/element/corp_label/dltalt)
 
 #define VISION_MODE_OFF 0
 #define VISION_MODE_NVG 1
 
 /obj/item/clothing/head/helmet/yautja
-	name = "\improper M'talt enclosed helmet"
-	desc = "A fully-enclosed combat helmet that is fitted around the entire head, rather than acting as a facemask."
+	name = "\improper Nracha-Dte enclosed helmet"
+	desc = "A fully-enclosed combat helmet that is fitted around the entire head, rather than acting as a facemask. It nonetheless features the same heads-up display as most clan masks."
 	icon_state = "helmet_powered"
 	item_state = "helmet_powered"
-	icon = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
 	)
@@ -85,11 +97,18 @@
 	flags_item = ITEM_PREDATOR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
+	time_to_unequip = 10 // you gotta fit your dreads in that helmet, dude, cmon
+	time_to_equip = 10
+	unequip_sounds = list('sound/items/air_release.ogg') // like a mask, kinda. but cooler.
 	anti_hug = 100
 
 	var/list/helmet_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	// features the same zoom and visor functions as a normal pred mask, defined seperately because it's a helmet not a mask :)
 	var/list/helmet_actions = list(/datum/action/predator_action/helmet/zoom, /datum/action/predator_action/helmet/visor)
+
+/obj/item/clothing/head/helmet/yautja/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/corp_label/dltalt)
 
 /obj/item/clothing/head/helmet/yautja/pickup(mob/living/user)
 	. = ..()
@@ -240,9 +259,9 @@
 #undef VISION_MODE_OFF
 #undef VISION_MODE_NVG
 
-/obj/item/storage/backpack/yautja/advanced
+/obj/item/yautja_cannon_pack
 	name = "plasma cannon pack"
-	desc = "A heavy back-mounted powerpack for supporting a set of dual plasma cannons."
+	desc = "A heavy back-mounted powerpack for supporting a set of dual plasma cannons. The pack's entire volume is taken up by capacitors and electronics used in operating the cannons, remotely linked to a bracer for operation."
 	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	icon_state = "cannonpack"
 	item_state = "cannonpack_w"
@@ -250,7 +269,8 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
 	)
 	flags_equip_slot = SLOT_BACK
-	worn_accessible = TRUE
+	time_to_unequip = 10
+	time_to_equip = 10
 
 	var/charge = 3000
 	var/charge_max = 3000
@@ -261,11 +281,12 @@
 
 	var/list/backpack_actions = list(/datum/action/predator_action/pack/cannons)
 
-/obj/item/storage/backpack/yautja/advanced/Initialize(mapload)
+/obj/item/yautja_cannon_pack/Initialize(mapload)
 	. = ..()
 	cannon = new(src, FALSE)
+	AddElement(/datum/element/corp_label/dltalt)
 
-/obj/item/storage/backpack/yautja/advanced/process()
+/obj/item/yautja_cannon_pack/process()
 	if(!ishuman(loc))
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -281,18 +302,18 @@
 
 		charge = min(charge + charge_increase, charge_max)
 
-/obj/item/storage/backpack/yautja/advanced/Destroy()
+/obj/item/yautja_cannon_pack/Destroy()
 	QDEL_NULL(cannon)
 	return ..()
 
-/obj/item/storage/backpack/yautja/advanced/equipped(mob/user, slot)
+/obj/item/yautja_cannon_pack/equipped(mob/user, slot)
 	. = ..()
 	for(var/datum/action/action as anything in backpack_actions)
 		give_action(user, action)
 
 	START_PROCESSING(SSobj, src)
 
-/obj/item/storage/backpack/yautja/advanced/proc/drain_power(mob/living/carbon/human/human, amount)
+/obj/item/yautja_cannon_pack/proc/drain_power(mob/living/carbon/human/human, amount)
 	if(!human)
 		return FALSE
 	if(charge < amount)
@@ -305,18 +326,18 @@
 
 	return TRUE
 
-/obj/item/storage/backpack/yautja/advanced/get_examine_text(mob/user)
+/obj/item/yautja_cannon_pack/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It currently has <b>[charge]/[charge_max]</b> charge.")
 
-/obj/item/storage/backpack/yautja/advanced/verb/cannons()
+/obj/item/yautja_cannon_pack/verb/cannons()
 	set name = "Use Plasma Cannons"
 	set desc = "Activate your plasma cannons. If they are dropped, they will retract back into your pack."
 	set category = "Yautja.Weapons"
 	set src in usr
 	. = cannon_internal(usr)
 
-/obj/item/storage/backpack/yautja/advanced/proc/cannon_internal(mob/living/carbon/human/user)
+/obj/item/yautja_cannon_pack/proc/cannon_internal(mob/living/carbon/human/user)
 	if(!user.loc || user.is_mob_incapacitated() || !ishuman(user))
 		return
 	if(cannons_deployed)

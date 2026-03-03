@@ -1422,6 +1422,7 @@
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
+	AddElement(/datum/element/corp_label/dltalt) // only the rifle is special-issue, everything else comes from the clans
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst

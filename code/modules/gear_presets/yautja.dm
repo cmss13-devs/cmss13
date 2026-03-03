@@ -315,6 +315,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
@@ -340,12 +342,15 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmacarbine(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja/advanced(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/yautja_cannon_pack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
 
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)

@@ -19,7 +19,7 @@
 	///The helmet on the mob (if applicable)
 	var/obj/item/clothing/head/helmet/yautja/helmet
 	///The backpack on the mob (if applicable)
-	var/obj/item/storage/backpack/yautja/advanced/pack
+	var/obj/item/yautja_cannon_pack/pack
 	///If the action is currently on or in use
 	var/active = FALSE
 
@@ -67,7 +67,7 @@
 		helmet = yautja.head
 
 	if(require_pack)
-		if(!istype(yautja.back, /obj/item/storage/backpack/yautja/advanced))
+		if(!istype(yautja.back, /obj/item/yautja_cannon_pack))
 			to_chat(yautja, SPAN_WARNING("You don't have a powered backpack."))
 			return FALSE
 		pack = yautja.back

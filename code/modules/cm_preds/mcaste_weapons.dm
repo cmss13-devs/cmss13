@@ -23,6 +23,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	AddElement(/datum/element/corp_label/dltalt)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
@@ -112,11 +113,11 @@
 #undef FIRE_MODE_EXPLOSIVE
 
 /obj/item/weapon/gun/energy/yautja/cannon
-	name = "dual plasma cannons"
+	name = "\improper dual plasma cannons"
 	desc = "A pair of powerful, shoulder-mounted energy weapons that are remotely operated via bracers. Unlike normal plasma casters, they only feature one fire mode."
 	icon_state = "plasma_cannons"
 	item_state = "plasma_cannons"
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
@@ -134,7 +135,7 @@
 	flags_item = NOBLUDGEON|IGNITING_ITEM
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
-	var/obj/item/storage/backpack/yautja/advanced/source = null
+	var/obj/item/yautja_cannon_pack/source = null
 	charge_cost = 1000 // three shots until dry, recharges fast but you still need to run from a fight or swap to a carbine to fire it again
 
 /obj/item/weapon/gun/energy/yautja/cannon/Initialize(mapload)
@@ -142,6 +143,7 @@
 	icon_state = "plasma_cannons"
 	item_state = "plasma_cannons"
 	source = loc
+	AddElement(/datum/element/corp_label/dltalt)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
@@ -164,7 +166,6 @@
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma cannons."))
 	update_mouse_pointer(M, FALSE)
-
 	var/datum/action/predator_action/pack/cannons/cannon_action
 	for(cannon_action as anything in M.actions)
 		if(istypestrict(cannon_action, /datum/action/predator_action/pack/cannons))

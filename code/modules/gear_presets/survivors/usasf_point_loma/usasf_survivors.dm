@@ -217,9 +217,6 @@
 
 /datum/equipment_preset/survivor/usasf/crew/duty/chaplain/load_gear(mob/living/carbon/human/new_human)
 	..()
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
 
@@ -237,10 +234,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	spawn_backpack(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 
 
 /datum/equipment_preset/survivor/usasf/crew/duty/mess_tech
@@ -255,10 +248,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	spawn_backpack(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech
 	name = "Survivor - USASF Cargo Technician"
@@ -274,11 +263,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	spawn_backpack(new_human)
-	spawn_helmet(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/medical //abstract
 	name = "Survivor - USASF Medical Staff"
@@ -302,12 +286,12 @@
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse/load_gear(mob/living/carbon/human/new_human)
 	..()
-	spawn_backpack(new_human)
 	spawn_helmet(new_human)
+	spawn_armour(new_human)
+	spawn_backpack(new_human)
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 	spawn_usasf_weapon(new_human)
-	spawn_armour(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
 
@@ -320,11 +304,6 @@
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor/load_gear(mob/living/carbon/human/new_human)
 	..()
-	spawn_backpack(new_human)
-	spawn_helmet(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical, WEAR_BODY)
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)

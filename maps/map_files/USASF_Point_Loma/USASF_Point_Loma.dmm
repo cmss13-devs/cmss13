@@ -8042,17 +8042,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
-"axq" = (
-/obj/structure/prop/new_varadero_props/aa_gun/base{
-	dir = 4;
-	pixel_y = -51
-	},
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
-	dir = 8;
-	pixel_y = -51
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/point_loma/research_facility/research/west)
 "axr" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -24695,6 +24684,10 @@
 "bsd" = (
 /turf/closed/wall/rock/brown,
 /area/fiorina/station/park)
+"bse" = (
+/obj/structure/prop/new_varadero_props/big_gun/testing,
+/turf/open/floor/strata/multi_tiles/west,
+/area/point_loma/research_facility/research/west)
 "bsf" = (
 /turf/open/floor/almayer/research/containment/yautja,
 /area/point_loma/research_facility/crash_site)
@@ -35516,6 +35509,11 @@
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/research_facility/hallway/south)
+"caB" = (
+/obj/structure/prop/new_varadero_props/big_gun,
+/obj/structure/prop/new_varadero_props/big_gun/lights,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "caC" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/floor/corsat/squares,
@@ -36781,18 +36779,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
-"cez" = (
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/base{
-	pixel_y = -19;
-	pixel_x = -34
-	},
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
-	dir = 1;
-	pixel_y = -19;
-	pixel_x = -35
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -43527,6 +43513,12 @@
 /obj/item/stack/sheet/plasteel/medium_stack,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"cAK" = (
+/obj/structure/prop/new_varadero_props/big_gun/barrel{
+	pixel_x = 16
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cAL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -101249,7 +101241,7 @@ aGw
 aGk
 aFX
 aFP
-aFB
+bse
 aFm
 arh
 bJw
@@ -102159,7 +102151,7 @@ aVu
 bIC
 aFY
 aFP
-axq
+aFB
 aFn
 aET
 bJw
@@ -155202,7 +155194,7 @@ bUV
 bUV
 bUV
 bUV
-bUV
+caB
 bCZ
 bUV
 bBF
@@ -155383,7 +155375,7 @@ bEp
 bUV
 bUV
 bUV
-cez
+bUV
 bUV
 bCZ
 bUV
@@ -155748,7 +155740,7 @@ bUV
 bUV
 bUV
 bUV
-bUV
+cAK
 bCZ
 bUV
 bUT
@@ -156109,8 +156101,8 @@ bUV
 bUV
 bEq
 bDp
-bDp
-bDp
+bUV
+bUV
 bDp
 bDp
 bDa

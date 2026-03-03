@@ -424,3 +424,7 @@
 	name = "rank brassard"
 	rank_short = "SP"
 	icon_state = "sp_brassard"
+	accessory_icons = list(
+		WEAR_BODY = 'icons/obj/items/clothing/accessory/inventory_overlays/brassards.dmi',
+		WEAR_JACKET = 'icons/obj/items/clothing/accessory/inventory_overlays/brassards.dmi'
+	)

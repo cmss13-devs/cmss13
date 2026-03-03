@@ -2134,7 +2134,7 @@
 /obj/item/clothing/under/marine/navy
 	name = "\improper navy uniform"
 	desc = "Formal navy uniform."
-	icon_state = "formal_navy"
+	icon_state = "usasf_formal"
 	worn_state = "formal_navy"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/USASF.dmi'
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN

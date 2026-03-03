@@ -21,3 +21,6 @@
   - bugfix: Pepperspray effects no longer stack infinitely
   ori-disillusion-mirnov:
   - bugfix: whitelisted predators can no longer spawn as a youngblood
+2026-03-03:
+  MistChristmas:
+  - bugfix: Runner plush accepts no substitutes for a beret

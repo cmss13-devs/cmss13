@@ -15,5 +15,5 @@
 	ambience = null
 
 	effect_message = "It is unbelievably, unbearably, hot. You are drowning in your own sweat, and you start to feel a little lightheaded"
-	damage_per_tick = 1
+	damage_per_tick = 0.01
 	damage_type = BURN

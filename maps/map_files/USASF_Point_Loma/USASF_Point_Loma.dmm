@@ -964,12 +964,6 @@
 	},
 /turf/open/new_varadero/alt_concrete,
 /area/point_loma/airbase/interior/research)
-"adc" = (
-/obj/structure/machinery/medical_pod/autodoc/yautja{
-	pixel_y = 8
-	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
-/area/point_loma/research_facility/crash_site)
 "add" = (
 /turf/open/floor/asteroidwarning/east,
 /area/point_loma/airbase/interior/workshop)
@@ -2893,8 +2887,8 @@
 /area/point_loma/research_facility/engineering)
 "aje" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Aurora Medical Clinic Treatment";
-	req_access_txt = "100"
+	req_access_txt = "100";
+	autoname = 1
 	},
 /turf/open/floor/shiva/green/west,
 /area/point_loma/airbase/interior/hospital)
@@ -3744,9 +3738,7 @@
 /area/point_loma/airbase/interior/research)
 "alD" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/secure_data{
-	dir = 8
-	},
+/obj/structure/machinery/computer/secure_data,
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/airbase/interior/research)
 "alE" = (
@@ -4093,7 +4085,8 @@
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "amz" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8
+	dir = 8;
+	id = "workshop_west"
 	},
 /turf/open/floor/corsat/brown,
 /area/point_loma/airbase/interior/workshop)
@@ -4236,7 +4229,8 @@
 /area/point_loma/airbase/interior/workshop)
 "amV" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8
+	dir = 8;
+	id = "workshop_west"
 	},
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
@@ -4743,9 +4737,11 @@
 	color = "#98a3ab"
 	},
 /obj/item/restraint/handcuffs,
-/obj/structure/transmitter/rotary{
-	pixel_x = 4;
-	pixel_y = 10
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_y = 11;
+	pixel_x = 6;
+	phone_category = "USASF Point Loma";
+	phone_id = "Cargo - Security Outpost"
 	},
 /turf/open/floor/darkred2/northeast,
 /area/point_loma/airbase/interior/cargo)
@@ -4899,16 +4895,16 @@
 "aoU" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
 	req_one_access = null;
-	req_access = null
+	req_access = null;
+	autoname = 1
 	},
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
 "aoV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Aurora Medical Clinic Treatment";
-	req_access_txt = "100"
+	req_access_txt = "100";
+	autoname = 1
 	},
 /turf/open/floor/shiva/wredfull,
 /area/point_loma/airbase/interior/hospital)
@@ -5652,7 +5648,10 @@
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "arc" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/transmitter/colony_net/rotary,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Alpha-Tech Research Facility";
+	phone_id = "Civilian Observation Room"
+	},
 /turf/open/floor/corsat/yellow,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ard" = (
@@ -8020,6 +8019,32 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
+"axq" = (
+/obj/structure/prop/new_varadero_props/aa_gun/base{
+	dir = 4;
+	pixel_y = -51
+	},
+/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
+	dir = 8;
+	pixel_y = -51
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/point_loma/research_facility/research/west)
+"axr" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"axs" = (
+/obj/structure/transmitter/colony_net{
+	phone_category = "USASF Point Loma";
+	phone_id = "Security Checkpoint - South - Building Two"
+	},
+/turf/closed/wall/shiva/prefabricated/red,
+/area/point_loma/airbase/mining_colony/exterior/security/south)
 "axt" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -8146,9 +8171,9 @@
 "axH" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory Storage";
 	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	autoname = 1
 	},
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
@@ -9609,6 +9634,13 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
+"aBP" = (
+/obj/structure/transmitter/colony_net{
+	phone_category = "USASF Point Loma";
+	phone_id = "Security Checkpoint - South - Building One"
+	},
+/turf/closed/wall/shiva/prefabricated/red,
+/area/point_loma/airbase/mining_colony/exterior/security/south)
 "aBQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
 /turf/open/floor/corsat/squares,
@@ -10707,10 +10739,6 @@
 /obj/structure/window,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"aES" = (
-/obj/structure/anti_air_cannon,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/research/west)
 "aET" = (
 /obj/structure/barricade/sandbags{
 	dir = 4
@@ -11193,6 +11221,7 @@
 	pixel_y = 7;
 	pixel_x = 3
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/purple/southwest,
 /area/point_loma/research_facility/research/west)
 "aGE" = (
@@ -11713,8 +11742,8 @@
 "aIb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Aurora Medical Clinic";
-	req_access_txt = "100"
+	req_access_txt = "100";
+	autoname = 1
 	},
 /turf/open/floor/shiva/redfull,
 /area/point_loma/airbase/interior/hospital)
@@ -11813,8 +11842,8 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westright,
 /obj/structure/transmitter/colony_net/rotary{
-	phone_category = "USASF Point Loma";
-	phone_id = "Mining Colony - Corporate Liaison Reception"
+	phone_category = "Mining Colony";
+	phone_id = "Corporate Liaison Reception"
 	},
 /obj/item/clock{
 	pixel_y = 17
@@ -12486,6 +12515,21 @@
 	},
 /turf/open/floor/shiva/yellow/east,
 /area/point_loma/airbase/interior/cargo/lower)
+"aKj" = (
+/obj/structure/machinery/door_control{
+	pixel_y = -7;
+	pixel_x = -7;
+	id = "workshop_west";
+	name = "workshop shutter button"
+	},
+/obj/structure/machinery/door_control{
+	pixel_y = -7;
+	pixel_x = 8;
+	id = "workshop_west";
+	name = "workshop shutter button"
+	},
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/airbase/interior/workshop)
 "aKk" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -3;
@@ -13831,9 +13875,9 @@
 "aNQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory Storage";
 	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	autoname = 1
 	},
 /turf/open/floor/shiva/redfull,
 /area/point_loma/airbase/interior/hospital)
@@ -15246,6 +15290,12 @@
 /obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/item/tool/pen/multicolor/fountain,
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_y = 11;
+	pixel_x = 6;
+	phone_category = "USASF Point Loma";
+	phone_id = "Cargo - Front Desk"
+	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
 "aSf" = (
@@ -17265,9 +17315,9 @@
 "aYf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory Storage";
 	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	autoname = 1
 	},
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
@@ -17348,8 +17398,8 @@
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
 "aYs" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Aurora Medical Clinic Treatment";
-	req_access_txt = "100"
+	req_access_txt = "100";
+	autoname = 1
 	},
 /turf/open/floor/shiva/redfull,
 /area/point_loma/airbase/interior/hospital)
@@ -17509,7 +17559,10 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "aYR" = (
-/obj/structure/transmitter,
+/obj/structure/transmitter/colony_net{
+	phone_category = "USASF Point Loma";
+	phone_id = "Security Checkpoint - South - Building Three"
+	},
 /turf/closed/wall/shiva/prefabricated/red,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "aYS" = (
@@ -18500,15 +18553,17 @@
 /turf/open/floor/almayer/plate,
 /area/point_loma/airbase/interior/atc/upper)
 "bbE" = (
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 16
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/window/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "overwatch";
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = 16;
+	layer = 4
+	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
 "bbF" = (
@@ -18527,15 +18582,16 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/atc/upper)
 "bbH" = (
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "security_cam";
 	dir = 4;
 	pixel_x = -17
 	},
-/obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary/no_dnd{
-	name = "Bravo Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Bravo Overwatch"
+	phone_category = "USASF Point Loma";
+	phone_id = "ATC - 2"
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -18610,8 +18666,9 @@
 /area/point_loma/airbase/interior/atc/upper)
 "bbR" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/prop/almayer/CICmap{
-	pixel_x = -5
+/obj/structure/machinery/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "maptable"
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -20550,6 +20607,7 @@
 /area/point_loma/research_facility/hallway/south)
 "bgG" = (
 /obj/structure/closet/athletic_mixed,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitepurple/southwest,
 /area/point_loma/research_facility/pool)
 "bgH" = (
@@ -20589,6 +20647,7 @@
 /area/point_loma/research_facility/pool)
 "bgO" = (
 /obj/structure/closet/athletic_mixed,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitepurple/west,
 /area/point_loma/research_facility/pool)
 "bgP" = (
@@ -22008,12 +22067,14 @@
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori1"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood/ship,
 /area/point_loma/research_facility/briefing)
 "bkO" = (
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori3"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood/ship,
 /area/point_loma/research_facility/briefing)
 "bkP" = (
@@ -22040,12 +22101,15 @@
 	pixel_y = 24;
 	pixel_x = -7
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood/ship,
 /area/point_loma/research_facility/briefing)
 "bkS" = (
-/obj/structure/safe/co_office,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/safe{
+	spawnkey = 0
+	},
 /turf/open/floor/wood/ship,
 /area/point_loma/research_facility/briefing)
 "bkT" = (
@@ -23440,6 +23504,7 @@
 	pixel_y = -1;
 	pixel_x = 6
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
 "boR" = (
@@ -24083,8 +24148,11 @@
 /turf/open/new_varadero/grate/full_side_ALT/west,
 /area/point_loma/oob/sky/lower)
 "bqL" = (
-/obj/structure/machinery/medical_pod/bodyscanner/yautja{
-	pixel_y = 8
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "autodoc_open";
+	pixel_y = 8;
+	dir = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
@@ -24094,9 +24162,6 @@
 "bqN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
-	},
-/obj/item/device/healthanalyzer/alien{
-	pixel_x = -5
 	},
 /obj/item/stack/medical/advanced/bruise_pack/predator{
 	pixel_x = 7;
@@ -24123,7 +24188,7 @@
 	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Monitor";
+	name = "strange display";
 	pixel_y = 23;
 	pixel_x = 7
 	},
@@ -24142,7 +24207,7 @@
 	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Monitor";
+	name = "strange display";
 	pixel_y = 23;
 	pixel_x = -6
 	},
@@ -24172,6 +24237,7 @@
 	pixel_y = 9;
 	pixel_x = -8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
 "bqT" = (
@@ -24242,7 +24308,8 @@
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
 	pixel_x = -1;
-	pixel_y = 8
+	pixel_y = 8;
+	name = "strange canister"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
@@ -24251,14 +24318,18 @@
 	dir = 5;
 	color = "#6b675e"
 	},
-/obj/structure/pipes/unary/freezer/yautja{
-	dir = 4
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "freezer_0";
+	name = "unknown machine"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bre" = (
-/obj/structure/pipes/unary/freezer/yautja{
-	dir = 8
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "freezer_0";
+	name = "unknown machine"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
@@ -24331,8 +24402,12 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/crash_site)
 "brq" = (
-/obj/structure/machinery/medical_pod/sleeper/yautja{
-	pixel_y = 8
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "autodoc_open";
+	pixel_y = 8;
+	dir = 1;
+	name = "unknown machine"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
@@ -24341,7 +24416,7 @@
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Radar Console";
+	name = "strange console";
 	pixel_x = -1;
 	pixel_y = 16
 	},
@@ -24390,12 +24465,10 @@
 /obj/structure/pipes/standard/cap/hidden{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/cryo_cell/yautja{
-	pixel_x = 1;
-	light_on = 1;
-	light_color = "#ff0000";
-	light_power = 2;
-	light_range = 3
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/cryogenics2.dmi';
+	icon_state = "pred_cell";
+	name = "unknown machine"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
@@ -26031,6 +26104,12 @@
 /area/point_loma/airbase/interior/workshop)
 "bwC" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_y = 11;
+	pixel_x = 6;
+	phone_category = "USASF Point Loma";
+	phone_id = "Workshop - Security Outpost"
+	},
 /turf/open/floor/shiva/red/north,
 /area/point_loma/airbase/interior/workshop)
 "bwD" = (
@@ -26341,11 +26420,11 @@
 	color = "#6b675e"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console!";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Radar Console";
+	name = "Console";
 	pixel_x = -17;
 	pixel_y = 10;
 	layer = 3.1
@@ -26354,20 +26433,20 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bxI" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console?";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Radar Console";
+	name = "Console";
 	pixel_x = -17;
 	pixel_y = 4
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console.";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Radar Console";
+	name = "A console.";
 	pixel_x = -17;
 	pixel_y = -9
 	},
@@ -28174,9 +28253,6 @@
 /obj/structure/girder,
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
-"bCs" = (
-/turf/open/shuttle/dropship/predship,
-/area/point_loma/airbase/exterior/crash_site)
 "bCt" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -28556,12 +28632,6 @@
 "bDB" = (
 /turf/open/floor/corsat/marked,
 /area/point_loma/airbase/interior/atc)
-"bDC" = (
-/obj/structure/prop/invuln/minecart_tracks/bumper{
-	dir = 1
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "bDD" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /turf/open/floor/podhatchfloor,
@@ -28605,16 +28675,6 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/point_loma/airbase/interior/atc)
-"bDK" = (
-/obj/structure/prop/invuln/minecart_tracks,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
-"bDL" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "bDM" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
@@ -28697,24 +28757,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/crash_site)
-"bEc" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 5
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
-"bEd" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
-"bEe" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 6
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "bEf" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
@@ -29049,14 +29091,16 @@
 /turf/open/floor/corsat/blue/east,
 /area/point_loma/airbase/interior/atc/upper)
 "bFl" = (
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 16
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/window/reinforced,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "overwatch";
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = 16;
+	layer = 4
+	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
 "bFm" = (
@@ -29066,17 +29110,19 @@
 /turf/open/floor/corsat/blue/east,
 /area/point_loma/airbase/interior/atc/upper)
 "bFn" = (
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 16
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/window/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/machinery/light/double{
 	dir = 8
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "overwatch";
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = 16;
+	layer = 4
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -29091,6 +29137,11 @@
 	network = list("COLONY");
 	dir = 1;
 	pixel_x = -8
+	},
+/obj/structure/transmitter/rotary{
+	phone_category = "USASF Point Loma";
+	phone_id = "Air Traffic Control";
+	pixel_x = 8
 	},
 /turf/open/floor/corsat/blue/east,
 /area/point_loma/airbase/interior/atc/upper)
@@ -31451,6 +31502,23 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/cargo/lower)
+"bLZ" = (
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	pixel_x = -20;
+	phone_category = "Alpha-Tech Mining Colony";
+	phone_id = "Security Police Outpost"
+	},
+/turf/open/floor/shiva/red/west,
+/area/point_loma/airbase/mining_colony/interior/security)
+"bMa" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 28;
+	phone_category = "Alpha-Tech Mining Colony";
+	phone_id = "Engineering"
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/point_loma/airbase/mining_colony/interior/engineering)
 "bMb" = (
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/research_facility/research/park)
@@ -31748,6 +31816,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bMT" = (
+/obj/structure/prop/brazier/frame/full{
+	pixel_y = 12
+	},
+/turf/open/shuttle/dropship/predship,
+/area/point_loma/airbase/exterior/crash_site)
 "bMU" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/interior/cargo/lower)
@@ -31860,6 +31934,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitepurple/west,
 /area/point_loma/research_facility/pool)
 "bNl" = (
@@ -33006,6 +33081,12 @@
 "bRD" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/prop/tableflag,
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_y = 11;
+	pixel_x = -8;
+	phone_category = "USASF Point Loma";
+	phone_id = "Security Checkpoint - Central"
+	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRE" = (
@@ -33323,7 +33404,10 @@
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "bTb" = (
-/obj/structure/transmitter,
+/obj/structure/transmitter/colony_net{
+	phone_category = "USASF Point Loma";
+	phone_id = "Security Checkpoint - North"
+	},
 /turf/closed/wall/shiva/prefabricated/red,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bTc" = (
@@ -35281,6 +35365,7 @@
 /obj/item/clothing/shoes/galoshes,
 /obj/item/tool/mop,
 /obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/south)
 "cal" = (
@@ -35302,6 +35387,7 @@
 /area/point_loma/research_facility/hallway/south)
 "cap" = (
 /obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/south)
 "caq" = (
@@ -35580,6 +35666,7 @@
 /obj/item/clothing/shoes/galoshes,
 /obj/item/tool/mop,
 /obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
 "cbg" = (
@@ -35684,6 +35771,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/shorts/red,
 /obj/item/clothing/under/swimsuit/red,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
 "cbv" = (
@@ -35728,6 +35816,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
 "cbB" = (
@@ -35776,6 +35865,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/shorts/grey,
 /obj/item/clothing/under/swimsuit/black,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
 "cbK" = (
@@ -36618,6 +36708,7 @@
 /obj/structure/filingcabinet/security{
 	pixel_x = -7
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/blue,
 /area/point_loma/research_facility/command)
 "cew" = (
@@ -36634,6 +36725,18 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
+"cez" = (
+/obj/structure/prop/new_varadero_props/aa_gun/wreck/base{
+	pixel_y = -19;
+	pixel_x = -34
+	},
+/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
+	dir = 1;
+	pixel_y = -19;
+	pixel_x = -35
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -36740,6 +36843,27 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/command)
+"ceQ" = (
+/obj/structure/machinery/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "maptable"
+	},
+/turf/open_space,
+/area/point_loma/oob/sky)
+"ceR" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/transmitter/rotary/no_dnd{
+	phone_category = "USASF Point Loma";
+	phone_id = "ATC - 1"
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "security_cam";
+	dir = 4;
+	pixel_x = -17
+	},
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/atc/upper)
 "ceS" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -41434,18 +41558,19 @@
 /turf/open/floor/corsat/blue/east,
 /area/point_loma/airbase/interior/atc/upper)
 "ctT" = (
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "security_cam";
 	dir = 4;
 	pixel_x = -17
 	},
-/obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary/no_dnd{
-	name = "Bravo Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Bravo Overwatch"
-	},
-/obj/structure/machinery/light/double{
-	dir = 8
+	phone_category = "USASF Point Loma";
+	phone_id = "ATC - 3"
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -42037,8 +42162,8 @@
 /obj/structure/transmitter/colony_net/rotary{
 	pixel_y = 8;
 	pixel_x = 6;
-	phone_id = "Mining Colony - Corporate Liaison Office";
-	phone_category = "USASF Point Loma"
+	phone_id = "Corporate Liaison Office";
+	phone_category = "Alpha-Tech Mining Colony"
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/point_loma/airbase/mining_colony/interior/corporate)
@@ -42397,6 +42522,11 @@
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
 	name = "impact"
+	},
+/obj/structure/transmitter/colony_net{
+	pixel_y = 30;
+	phone_category = "Alpha-Tech Research Facility";
+	phone_id = "Airbase Research Outpost"
 	},
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/airbase/interior/research)
@@ -90250,7 +90380,7 @@ asb
 asb
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -90627,7 +90757,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -91704,7 +91834,7 @@ bJd
 bJd
 bJd
 bJd
-bIA
+bZQ
 bIA
 bZQ
 aOK
@@ -92255,7 +92385,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -92460,7 +92590,7 @@ aqP
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -93890,7 +94020,7 @@ bjQ
 bJd
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -94652,7 +94782,7 @@ aqP
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 asb
 asb
@@ -94818,7 +94948,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -96445,7 +96575,7 @@ bMp
 bMp
 bMp
 bMp
-bMp
+bPj
 bMp
 bMp
 bMp
@@ -96458,7 +96588,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -96654,7 +96784,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 asb
@@ -98454,7 +98584,7 @@ bIA
 bIA
 bZR
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -98827,7 +98957,7 @@ bIA
 bIA
 bIA
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -101384,7 +101514,7 @@ aFY
 aFP
 aFB
 aFm
-aES
+arh
 bJw
 asb
 asb
@@ -101746,7 +101876,7 @@ aVu
 bIC
 aFY
 aFP
-aFB
+axq
 aFn
 aET
 bJw
@@ -101868,7 +101998,7 @@ ctC
 brx
 brq
 bqC
-adc
+bqL
 bqC
 bqL
 bqC
@@ -103937,7 +104067,7 @@ asb
 asb
 asb
 bIA
-bIA
+bZQ
 bIA
 bIA
 bIA
@@ -104849,7 +104979,7 @@ asb
 bIB
 bIB
 bIB
-bIB
+abB
 bIB
 bIB
 asb
@@ -108308,7 +108438,7 @@ bIB
 bIB
 bIB
 bIB
-bIB
+abB
 bIB
 asb
 asb
@@ -109397,7 +109527,7 @@ adf
 adf
 asb
 bIB
-bIB
+abB
 bIB
 bIB
 bIB
@@ -112472,7 +112602,7 @@ bIB
 bIB
 bIB
 bIB
-bIB
+abB
 bIB
 bIB
 bIB
@@ -112830,7 +112960,7 @@ cbn
 cbn
 bIB
 bIB
-bIB
+abB
 bIB
 bIB
 bIB
@@ -112846,7 +112976,7 @@ bIB
 bIB
 bIB
 bIB
-bIB
+abB
 bIB
 bIB
 anW
@@ -113134,7 +113264,7 @@ bIO
 cgu
 cgi
 ceU
-ceU
+axr
 cfI
 ceU
 cfv
@@ -113739,7 +113869,7 @@ asb
 asb
 asb
 bIB
-bIB
+abB
 bIB
 anW
 asb
@@ -114099,7 +114229,7 @@ bIB
 bIB
 bIB
 bIB
-bIB
+abB
 bIB
 aIJ
 bIB
@@ -114269,7 +114399,7 @@ bGL
 aIC
 aIC
 aIC
-bIB
+abB
 aIC
 bIB
 asb
@@ -114637,7 +114767,7 @@ bSI
 bIB
 bIB
 bGj
-bIB
+abB
 bIB
 auk
 bIB
@@ -151402,7 +151532,7 @@ bPq
 bPq
 bPq
 bPq
-bPq
+aKj
 amV
 amz
 bPq
@@ -154785,10 +154915,10 @@ bEL
 bUV
 bUV
 bEp
-bEc
-bDK
-bDK
-bDC
+bUV
+bUV
+bUV
+bUV
 bUV
 bCZ
 bUV
@@ -154967,10 +155097,10 @@ bEL
 bUV
 bUV
 bEp
-bEd
 bUV
 bUV
 bUV
+cez
 bUV
 bCZ
 bUV
@@ -155149,7 +155279,7 @@ bEL
 bUV
 bUV
 bEp
-bEd
+bUV
 bUV
 bUV
 bUV
@@ -155331,7 +155461,7 @@ bEL
 bUV
 bUV
 bEp
-bEd
+bUV
 bUV
 bUV
 bUV
@@ -155513,10 +155643,10 @@ bEL
 bUV
 bUV
 bEp
-bEe
-bDL
-bDL
-bDC
+bUV
+bUV
+bUV
+bUV
 bUV
 bCZ
 bUV
@@ -157889,7 +158019,7 @@ aNI
 aNI
 bRz
 cxb
-bCs
+bCy
 bCj
 bBZ
 bBT
@@ -158981,7 +159111,7 @@ aNI
 ckU
 aNI
 cxb
-bCy
+bMT
 bCp
 bCf
 bBW
@@ -159789,7 +159919,7 @@ bPq
 aPC
 aPC
 aPC
-aYR
+axs
 bvj
 aXs
 azK
@@ -162508,7 +162638,7 @@ bYA
 bPf
 aZF
 aZF
-aYR
+aBP
 bwQ
 aXP
 azY
@@ -163401,7 +163531,7 @@ bQs
 bQq
 bPY
 abS
-bPY
+bLZ
 bPY
 bPY
 bPY
@@ -172286,7 +172416,7 @@ bTu
 bTu
 bTu
 bRp
-bSL
+bMa
 aTw
 aTw
 aTw
@@ -187582,8 +187712,8 @@ cvd
 cvd
 cvd
 cvd
-bVe
-bVe
+asb
+asb
 cvd
 cvd
 cvd
@@ -187760,13 +187890,13 @@ cvd
 cvd
 cvd
 cvd
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 cvd
 cvd
 cvd
@@ -187941,15 +188071,15 @@ cvd
 cvd
 cvd
 cvd
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 cvd
 cvd
 cvd
@@ -188123,16 +188253,16 @@ cvd
 cvd
 cvd
 cvd
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
-bVe
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 cvd
 cvd
 cvd
@@ -188304,7 +188434,7 @@ cvd
 cvd
 cvd
 cvd
-bVe
+asb
 cxl
 cxl
 cxl
@@ -188486,7 +188616,7 @@ cvd
 cvd
 cvd
 cvd
-bVe
+asb
 cxl
 cxl
 cxl
@@ -188668,7 +188798,7 @@ asb
 cvd
 cvd
 cvd
-bVe
+asb
 cxl
 cxl
 cxl
@@ -194095,7 +194225,7 @@ bVo
 bcj
 bFc
 bca
-bbH
+ceR
 bFn
 bbH
 bFl
@@ -205928,7 +206058,7 @@ bTS
 bTS
 bsc
 bTS
-bTS
+ceQ
 bTS
 bTS
 bTS
@@ -206110,7 +206240,7 @@ bTS
 bTS
 bsc
 bTS
-bTS
+ceQ
 bTS
 bTS
 bTS
@@ -206292,7 +206422,7 @@ bTS
 bTS
 bsc
 bTS
-bTS
+ceQ
 bTS
 bTS
 bTS

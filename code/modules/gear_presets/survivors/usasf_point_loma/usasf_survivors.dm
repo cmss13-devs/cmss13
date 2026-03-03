@@ -367,10 +367,10 @@
 	)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/load_gear(mob/living/carbon/human/new_human)
+	//new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY) // Commented out until I can figure out how to equip this without CO equipping it
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY)
 	spawn_security_primary(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)

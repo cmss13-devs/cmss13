@@ -1364,7 +1364,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	if(current_orbital_cannon.action_queued)
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The rrbital cannon is busy processing another bombardment!")]")
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon is busy processing another bombardment!")]")
 		return
 
 	var/x_coord = deobfuscate_x(x_bomb)

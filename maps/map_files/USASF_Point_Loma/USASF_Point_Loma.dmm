@@ -8179,7 +8179,7 @@
 /area/point_loma/research_facility/super_death_cannon/observation)
 "axH" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
+	dir = 8;
 	req_access_txt = "100";
 	req_one_access = null;
 	autoname = 1
@@ -13889,7 +13889,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "aNQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
+	dir = 8;
 	req_access_txt = "100";
 	req_one_access = null;
 	autoname = 1
@@ -14099,6 +14099,15 @@
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt/runway,
 /area/point_loma/airbase/exterior/crash_site)
+"aOz" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 8;
+	req_one_access = null;
+	req_access = null;
+	autoname = 1
+	},
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/hospital)
 "aOA" = (
 /obj/structure/fence/slim/dark,
 /turf/open/floor/shiva/red/east,
@@ -17322,7 +17331,7 @@
 /area/point_loma/airbase/interior/fuel_storage)
 "aYf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
+	dir = 8;
 	req_access_txt = "100";
 	req_one_access = null;
 	autoname = 1
@@ -33836,10 +33845,6 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bUC" = (
 /turf/open/hybrisa/street/roadlines,
-/area/point_loma/airbase/interior/hospital)
-"bUD" = (
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
-/turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
 "bUE" = (
 /obj/effect/acid_hole{
@@ -164581,7 +164586,7 @@ agj
 bTZ
 bTZ
 bTZ
-aoU
+aOz
 bTZ
 bTZ
 bTZ
@@ -166393,11 +166398,11 @@ bTS
 bzI
 bzI
 aYf
-bUD
+cBL
 bTZ
 bTZ
 axH
-bUD
+cBL
 bTZ
 aig
 bUi

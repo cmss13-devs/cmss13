@@ -74,7 +74,7 @@
 	assignment = JOB_ALPHATECH_SCIENTIST
 	languages = list(LANGUAGE_CHINESE)
 	skills = /datum/skills/civilian/survivor/scientist
-	paygrades = list(PAY_SHORT_CCMOA = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_ATHC_SCI = JOB_PLAYTIME_TIER_0)
 	survivor_variant = SCIENTIST_SURVIVOR
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -105,7 +105,7 @@
 	assignment = JOB_ALPHATECH_EMPLOYEE
 	languages = list(LANGUAGE_CHINESE)
 	skills = /datum/skills/civilian/survivor/miner // ToDO: Make this an Engineer-type
-	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0)
 	survivor_variant = CIVILIAN_SURVIVOR
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

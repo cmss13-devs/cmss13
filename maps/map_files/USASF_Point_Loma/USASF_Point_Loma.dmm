@@ -9385,11 +9385,6 @@
 /area/point_loma/research_facility/gym)
 "aAX" = (
 /obj/structure/window/framed/new_varadero/foundation,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "MedicalDistriShu";
-	name = "\improper Medical Equipment Distribution Shutters";
-	dir = 2
-	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/medical)
 "aAY" = (
@@ -9415,18 +9410,14 @@
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "aBc" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "MedicalDistriShu";
-	name = "\improper Medical Equipment Distribution Shutters";
-	dir = 2
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "medbay"
 	},
 /turf/open/floor/corsat/greenwhite/west,
 /area/point_loma/research_facility/medical)
 "aBd" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "MedicalDistriShu";
-	name = "\improper Medical Equipment Distribution Shutters";
-	dir = 2
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "medbay"
 	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
@@ -9435,10 +9426,8 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/caves)
 "aBf" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "MedicalDistriShu";
-	name = "\improper Medical Equipment Distribution Shutters";
-	dir = 2
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "medbay"
 	},
 /turf/open/floor/corsat/greenwhite/east,
 /area/point_loma/research_facility/medical)
@@ -10327,6 +10316,15 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
+"aDA" = (
+/obj/structure/window/framed/new_varadero/foundation,
+/obj/structure/machinery/door_control{
+	pixel_y = -9;
+	pixel_x = 10;
+	id = "medbay"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/medical)
 "aDB" = (
 /obj/structure/surface/table,
 /turf/open/floor/corsat/squares,
@@ -40808,12 +40806,10 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "cru" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "MedicalDistriShu";
-	name = "\improper Medical Equipment Distribution Shutters";
-	dir = 2
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "medbay"
+	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
 "crv" = (
@@ -44108,6 +44104,15 @@
 /obj/item/stack/sheet/glass/large_stack,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"cCB" = (
+/obj/structure/window/framed/new_varadero/foundation,
+/obj/structure/machinery/door_control{
+	pixel_x = -11;
+	pixel_y = -7;
+	id = "medbay"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/medical)
 
 (1,1,1) = {"
 aug
@@ -107345,7 +107350,7 @@ chy
 cAq
 bKZ
 cAj
-aAX
+afc
 azl
 avQ
 avQ
@@ -107891,7 +107896,7 @@ chy
 crA
 bKZ
 cgZ
-aAX
+aDA
 azS
 axQ
 awc
@@ -108801,7 +108806,7 @@ chC
 aBR
 asX
 asX
-aAX
+cCB
 aAg
 axZ
 awq
@@ -109347,7 +109352,7 @@ chC
 aBT
 aBA
 aBt
-aAX
+afc
 aAx
 awu
 awu

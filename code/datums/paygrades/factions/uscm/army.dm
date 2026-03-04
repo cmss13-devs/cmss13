@@ -1,5 +1,5 @@
 /datum/paygrade/army
-	name = "Marine Paygrade"
+	name = "Army Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/army
 	pay_multiplier = 1.6
 	default_faction = FACTION_MARINE
@@ -111,7 +111,7 @@
 	pay_multiplier = 3
 
 /datum/paygrade/army/wo
-	paygrade = PAY_SHORT_MWO
+	paygrade = PAY_SHORT_AWO
 	name = "Warrant Officer"
 	prefix = "WO"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/wo
@@ -120,7 +120,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/cwo
-	paygrade = PAY_SHORT_MCWO
+	paygrade = PAY_SHORT_ACWO
 	name = "Chief Warrant Officer"
 	prefix = "CWO"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/cwo

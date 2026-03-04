@@ -7,7 +7,7 @@
 	skills = /datum/skills/military/survivor/usasf
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
-	faction = FACTION_SURVIVOR
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
@@ -232,21 +232,6 @@
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
-
-
-/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech
-	name = "Survivor - USASF Mess Technician"
-	survivor_variant = ENGINEERING_SURVIVOR
-	skills = /datum/skills/military/survivor/usasf/technician
-	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech/load_gear(mob/living/carbon/human/new_human)
-	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)

@@ -138,7 +138,11 @@ class PingApp extends Component<PingAppProps> {
 
   componentWillUnmount() {
     for (const socket of this.sockets) {
-      if (socket && socket.readyState === WebSocket.OPEN) {
+      if (
+        socket &&
+        (socket.readyState === WebSocket.OPEN ||
+          socket.readyState === WebSocket.CONNECTING)
+      ) {
         socket.close();
       }
     }

@@ -148,7 +148,7 @@
  * - y_upper: The maximum y coordinate to load
  * - z_lower: The minimum z coordinate to load
  * - z_upper: The maximum z coordinate to load
- * - place_on_top: Whether to use /turf/proc/PlaceOnTop rather than /turf/proc/ChangeTurf
+ * - place_on_top: Whether to use /turf/proc/place_on_top rather than /turf/proc/ChangeTurf
  * - new_z: If true, a new z level will be created for the map
  * - delete: CM/TGMC addition, if we need to manually clear turf contents before spawning stuff
  */
@@ -892,7 +892,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		.[model_key] = list(members, members_attributes)
 	return .
 
-/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z, delete)
+/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, place_on_top as num, new_z, delete)
 	// If we don't have a turf, nothing we will do next will actually acomplish anything, so just go back
 	// Note, this would actually drop area vvs in the tile, but like, why tho
 	if(!crds)
@@ -992,7 +992,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 				qdel(turf_atom, force = TRUE)
 
 		// Note: we make the assertion that the last path WILL be a turf. if it isn't, this will fail.
-		if(placeOnTop)
+		if(place_on_top)
 			instance = crds.load_on_top(members[index], CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))
 		else if(no_changeturf)
 			instance = create_atom(members[index], crds)//first preloader pass

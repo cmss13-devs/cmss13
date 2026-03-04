@@ -343,6 +343,23 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_suit()
 		return
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				icon_state = "halfarmor_elite_anubys"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_anubys")
+			if("Cleopatra")
+				icon_state = "halfarmor_elite_cleopatra"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_cleopatra")
+			if("Plated")
+				icon_state = "halfarmor_elite_plated"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_plated")
+			if("Ronin")
+				icon_state = "halfarmor_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_ronin")
+		user.update_inv_wear_suit()
+		return
+
 	icon_state = "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]")
 	user.update_inv_wear_suit()
@@ -379,6 +396,29 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_mask()
 		return
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi' // fat fuckass mask
+				)
+				icon_state = "pred_mask_elite_anubys"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_anubys")
+			if("Cleopatra")
+				icon_state = "pred_mask_elite_cleopatra"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_cleopatra")
+			if("Plated")
+				icon_state = "pred_mask_elite_plated"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_plated")
+			if("Ronin")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi'
+				)
+				icon_state = "pred_mask_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_ronin")
+		user.update_inv_wear_mask()
+		return
+
 	icon_state = "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]"
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]")
 	user.update_inv_wear_mask()
@@ -400,7 +440,25 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				icon_state = "elite_y-boots1_anubys"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_anubys")
+			if("Cleopatra")
+				icon_state = "elite_y-boots1_cleopatra"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_cleopatra")
+			if("Plated")
+				icon_state = "elite_y-boots1_plated"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_plated")
+			if("Ronin")
+				icon_state = "elite_y-boots1_ronin"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_ronin")
+		user.update_inv_shoes()
+		return
+
 	icon_state = "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]"
+	LAZYSET(item_state_slots, WEAR_FEET, "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]")
 	user.update_inv_shoes()
 
 //Cape Prefs

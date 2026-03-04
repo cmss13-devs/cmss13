@@ -711,7 +711,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "acb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/river_mouth/southern)
 "acc" = (
@@ -800,11 +800,9 @@
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
 "acu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/engine_west_wing)
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/space)
 "acv" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -1430,6 +1428,12 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/central_tunnel)
+"aer" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
 "aes" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
@@ -6197,7 +6201,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/upper_hallway)
 "atV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_east)
@@ -6695,7 +6699,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river/riverside_east)
 "avz" = (
@@ -9880,7 +9884,7 @@
 /area/desert_dam/building/substation/northwest)
 "aEV" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_east)
 "aEW" = (
@@ -12408,7 +12412,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/north)
 "aMO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/exterior/river/riverside_east)
 "aMP" = (
@@ -14755,7 +14759,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
 "aUI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -16707,7 +16711,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/caves/east_caves)
 "baD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/desert_dam/exterior/river/riverside_east)
 "baE" = (
@@ -17253,7 +17257,7 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_security)
 "bcr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river_mouth/southern)
 "bcs" = (
@@ -18093,7 +18097,7 @@
 "beZ" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "bfa" = (
@@ -18512,7 +18516,7 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bgi" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
 "bgk" = (
@@ -22478,7 +22482,7 @@
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bzC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river_mouth/southern)
 "bzF" = (
@@ -23217,7 +23221,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bOG" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "bOK" = (
@@ -23238,7 +23242,7 @@
 /turf/open/floor/prison/redcorner/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "bPb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/river/riverside_east)
 "bPz" = (
@@ -23631,7 +23635,7 @@
 /turf/closed/shuttle/ert,
 /area/desert_dam/interior/dam_interior/hanger)
 "bXM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -24141,7 +24145,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "cjv" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -24325,7 +24329,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_labs)
 "cns" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -24836,7 +24840,7 @@
 	icon_state = "lower_2"
 	},
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "cyN" = (
@@ -24998,7 +25002,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "cDO" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "cDU" = (
@@ -25123,7 +25127,7 @@
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cGC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -25826,7 +25830,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cSf" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "cSi" = (
@@ -25844,7 +25848,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/landing_pad_one)
 "cSx" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river_mouth/southern)
 "cSy" = (
@@ -25896,7 +25900,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "cTy" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "cTB" = (
@@ -26022,7 +26026,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "cVL" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "cVM" = (
@@ -26057,7 +26061,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "cWC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "cWD" = (
@@ -26612,7 +26616,7 @@
 /area/desert_dam/building/security/staffroom)
 "dia" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river/riverside_east)
 "dif" = (
@@ -27152,7 +27156,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "dsF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -27232,9 +27236,7 @@
 /area/desert_dam/exterior/river/riverside_south)
 "due" = (
 /obj/effect/blocker/water/toxic/Group_1,
-/obj/structure/machinery/dispersal_initiator{
-	id = "filter 1"
-	},
+/obj/effect/landmark/dispersal_initiator/filter_one,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/building/water_treatment_one/purification)
 "dug" = (
@@ -28144,7 +28146,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dLt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -28547,7 +28549,7 @@
 /area/desert_dam/building/medical/outgoing)
 "dUB" = (
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river/riverside_east)
 "dUC" = (
@@ -28566,12 +28568,12 @@
 "dUD" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "dUK" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river_mouth/southern)
 "dUN" = (
@@ -29590,7 +29592,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/telecomm/lz2_storage)
 "epF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/river/riverside_east)
 "epH" = (
@@ -29744,7 +29746,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "etO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/building/water_treatment_two)
 "etP" = (
@@ -30053,7 +30055,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/stairwell)
 "eAk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -30101,7 +30103,7 @@
 /area/desert_dam/building/water_treatment_two/floodgate_control/lobby)
 "eBw" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river/riverside_east)
 "eBC" = (
@@ -30211,7 +30213,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "eDK" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "eEb" = (
@@ -30294,7 +30296,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "eFC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -30543,7 +30545,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/mining/workshop_foyer)
 "eKI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "eKS" = (
@@ -30643,7 +30645,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "eMU" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "eMY" = (
@@ -30971,7 +30973,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "eTj" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "eTn" = (
@@ -31324,7 +31326,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/valley_labs)
 "eZi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -31625,7 +31627,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "feK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/desert_dam/exterior/river/riverside_east)
 "feM" = (
@@ -31812,7 +31814,7 @@
 /area/desert_dam/building/medical/surgery_room_one)
 "fiw" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river/riverside_east)
 "fiC" = (
@@ -32107,7 +32109,7 @@
 /area/desert_dam/building/cafeteria/backroom)
 "foz" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "foB" = (
@@ -32138,7 +32140,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_security)
 "fpk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -32221,7 +32223,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fqY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -32444,7 +32446,7 @@
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "fwb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
 "fwe" = (
@@ -32487,7 +32489,7 @@
 /area/desert_dam/building/water_treatment_two/equipment)
 "fwV" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "fwW" = (
@@ -32606,7 +32608,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "fzt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_east)
 "fzu" = (
@@ -32727,7 +32729,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
 "fBt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "fBw" = (
@@ -33869,7 +33871,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "fXc" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -33951,7 +33953,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_northwest)
 "fZk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "fZt" = (
@@ -34188,7 +34190,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/workshop)
 "ged" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "geg" = (
@@ -35220,7 +35222,7 @@
 /obj/structure/floodgate{
 	icon_state = "0,2"
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "gxF" = (
@@ -35654,7 +35656,7 @@
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/southern_hallway)
 "gHi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_east)
 "gHv" = (
@@ -36454,7 +36456,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "gVc" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_east)
 "gVj" = (
@@ -36955,7 +36957,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "hgd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -38558,7 +38560,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/loading)
 "hLY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -38653,7 +38655,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "hNK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_east)
 "hNM" = (
@@ -38771,7 +38773,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "hQT" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "hRb" = (
@@ -39109,7 +39111,7 @@
 "hXt" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "hXx" = (
@@ -40029,7 +40031,7 @@
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "ioO" = (
 /obj/structure/platform_decoration/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_east)
 "ioQ" = (
@@ -40800,7 +40802,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "iDT" = (
 /obj/structure/filtration/coagulation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/building/water_treatment_two)
 "iEk" = (
@@ -41241,7 +41243,7 @@
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "iLq" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "iLu" = (
@@ -41326,7 +41328,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "iNr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -41395,7 +41397,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/building/security/prison)
 "iOZ" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -41963,7 +41965,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "jdk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "jdn" = (
@@ -43242,7 +43244,7 @@
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_central_north)
 "jCb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -43349,7 +43351,7 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "jEu" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "jEw" = (
@@ -43754,7 +43756,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "jMH" = (
 /obj/structure/filtration/flacculation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/building/water_treatment_two)
 "jMN" = (
@@ -44483,7 +44485,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "kbt" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "kbC" = (
@@ -45489,7 +45491,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "kwn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "kwx" = (
@@ -45577,7 +45579,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "kxU" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "kyh" = (
@@ -46243,7 +46245,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "kNr" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "kNy" = (
@@ -46309,7 +46311,7 @@
 /turf/open/floor/prison/yellow/west,
 /area/desert_dam/building/hydroponics/hydroponics)
 "kOD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -46933,7 +46935,7 @@
 "lda" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "ldf" = (
@@ -47091,7 +47093,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "lgH" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "lgS" = (
@@ -47308,7 +47310,7 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/archives)
 "lkM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -48333,7 +48335,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "lEs" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -48612,7 +48614,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/valley_labs)
 "lJF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_east)
 "lJP" = (
@@ -49075,7 +49077,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "lTs" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "lTy" = (
@@ -49620,7 +49622,7 @@
 "mfZ" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "mgc" = (
@@ -50209,7 +50211,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/outgoing)
 "msk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -51118,7 +51120,7 @@
 /turf/open/floor/filtrationside/west,
 /area/desert_dam/exterior/valley/valley_hydro)
 "mJE" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "mJF" = (
@@ -51174,7 +51176,7 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "mKy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -51248,7 +51250,7 @@
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_north)
 "mLO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
 "mLR" = (
@@ -51503,7 +51505,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "mSe" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "mSj" = (
@@ -51950,7 +51952,7 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ncn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -52086,7 +52088,7 @@
 /turf/open/floor/whiteyellow,
 /area/desert_dam/interior/dam_interior/break_room)
 "neC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -52206,7 +52208,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "nht" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/floor/filtrationside/east,
 /area/desert_dam/exterior/valley/valley_hydro)
 "nhC" = (
@@ -53609,7 +53611,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "nJR" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_east)
 "nJV" = (
@@ -53879,7 +53881,7 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "nOC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -54125,7 +54127,7 @@
 "nTi" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "nTj" = (
@@ -54137,7 +54139,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "nTl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river_mouth/southern)
 "nTr" = (
@@ -55775,7 +55777,7 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ozl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
 "ozq" = (
@@ -56381,7 +56383,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "oLd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -56740,7 +56742,7 @@
 /turf/open/floor/prison/whitered/east,
 /area/desert_dam/building/medical/surgery_room_one)
 "oSi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -57036,7 +57038,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/landing_pad_one)
 "oYl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -57337,7 +57339,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "peN" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -57780,7 +57782,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "poa" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "poe" = (
@@ -59338,7 +59340,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "pRL" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "pRW" = (
@@ -60344,7 +60346,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "qnn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "qno" = (
@@ -60930,7 +60932,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_cargo)
 "qxC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -61398,7 +61400,7 @@
 	icon_state = "upper_2"
 	},
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "qFQ" = (
@@ -61562,7 +61564,7 @@
 /turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "qIl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "qIm" = (
@@ -61989,7 +61991,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "qQJ" = (
 /obj/structure/filtration/flacculation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "qQK" = (
@@ -62887,7 +62889,7 @@
 	icon_state = "upper_2";
 	layer = 2
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rhr" = (
@@ -63166,7 +63168,7 @@
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "rnw" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rnZ" = (
@@ -64195,7 +64197,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "rJr" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_east)
 "rJu" = (
@@ -64882,7 +64884,7 @@
 /turf/open/floor/prison/red/west,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "saK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
 "saN" = (
@@ -64899,7 +64901,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "saP" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -65359,7 +65361,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "sjV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_east)
 "sjW" = (
@@ -65597,7 +65599,7 @@
 /area/desert_dam/building/water_treatment_two/control_room)
 "sos" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "sou" = (
@@ -66261,12 +66263,12 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "szA" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/floor/filtrationside/north,
 /area/desert_dam/exterior/valley/valley_mining)
 "szG" = (
 /obj/structure/filtration/coagulation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "szH" = (
@@ -66296,7 +66298,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "szV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -67107,7 +67109,7 @@
 /turf/open/floor/prison/whitered/northeast,
 /area/desert_dam/building/medical/office3)
 "sQO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river/riverside_east)
 "sQX" = (
@@ -67385,7 +67387,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sWI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -67419,7 +67421,7 @@
 /area/desert_dam/building/security/staffroom)
 "sXl" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "sXq" = (
@@ -68167,7 +68169,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lobby)
 "tnk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/desert/desert_shore/shore_corner2/north,
 /area/desert_dam/exterior/river_mouth/southern)
@@ -69107,7 +69109,7 @@
 "tFI" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "tFJ" = (
@@ -70124,7 +70126,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "tZu" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "tZw" = (
@@ -70323,12 +70325,12 @@
 "udv" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "udx" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "udC" = (
@@ -71033,7 +71035,7 @@
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "uqm" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "uqu" = (
@@ -71411,7 +71413,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "uyj" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert,
 /area/desert_dam/exterior/river/riverside_east)
 "uym" = (
@@ -72060,7 +72062,7 @@
 "uLD" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "uLE" = (
@@ -72418,7 +72420,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "uUr" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "uUy" = (
@@ -72896,7 +72898,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "veh" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -73498,7 +73500,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "vqd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -73664,7 +73666,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "vsX" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -73792,7 +73794,7 @@
 /turf/open/floor/coagulation/icon8_7_2,
 /area/desert_dam/building/water_treatment_two/purification)
 "vvY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river/riverside_east)
 "vwa" = (
@@ -73822,7 +73824,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "vwp" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -74897,10 +74899,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/lobby)
 "vTg" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "vTh" = (
 /obj/structure/bed/roller,
@@ -74939,7 +74938,7 @@
 /area/desert_dam/building/warehouse/loading)
 "vTR" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "vTS" = (
@@ -74984,9 +74983,7 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "vVd" = (
 /obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/machinery/dispersal_initiator{
-	id = "filter 2"
-	},
+/obj/effect/landmark/dispersal_initiator/filter_two,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/building/water_treatment_two/purification)
 "vVj" = (
@@ -75693,7 +75690,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "wjD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river_mouth/southern)
 "wjE" = (
@@ -75861,7 +75858,7 @@
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "wmR" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river_mouth/southern)
 "wmW" = (
@@ -77795,7 +77792,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "xeE" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/river_mouth/southern)
 "xeF" = (
@@ -77997,7 +77994,7 @@
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "xjr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -78364,7 +78361,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "xpy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/building/water_treatment_two)
 "xpE" = (
@@ -78995,7 +78992,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "xCK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river_mouth/southern)
 "xCL" = (
@@ -79451,7 +79448,7 @@
 	icon_state = "lower_2";
 	layer = 2
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "xNc" = (
@@ -79854,7 +79851,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/dorms/restroom)
 "xUM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -79895,7 +79892,7 @@
 /obj/structure/floodgate{
 	icon_state = "gate_east"
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "xVP" = (
@@ -79942,7 +79939,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
 "xWz" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "xWP" = (
@@ -80146,7 +80143,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "ybo" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "ybA" = (
@@ -80407,7 +80404,7 @@
 /area/desert_dam/building/administration/meetingrooom)
 "ygr" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "ygt" = (
@@ -138306,7 +138303,7 @@ vTg
 vTg
 vTg
 vTg
-vTg
+acu
 "}
 (2,1,2) = {"
 vTg
@@ -158274,7 +158271,7 @@ ioy
 ioy
 wuf
 nYX
-acu
+aer
 aWI
 una
 kNB

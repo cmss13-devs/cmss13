@@ -387,11 +387,15 @@
 	},
 /area/fiorina/oob)
 "abr" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/oob)
+"abs" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/maintenance)
-"abs" = (
+"abt" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/darkbrown2/north,
@@ -19534,7 +19538,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "oOV" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,
@@ -23467,7 +23471,7 @@
 /area/fiorina/station/lowsec/east)
 "rYY" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	can_block_movement = 0;
 	pixel_y = 22
 	},
@@ -24807,7 +24811,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells/west)
 "sXa" = (
-/obj/structure/machinery/filtration/console,
+/obj/structure/machinery/filtration_console,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "sXe" = (
@@ -37224,7 +37228,7 @@ yhu
 yhu
 uNM
 baC
-baC
+abr
 tan
 ble
 hvL
@@ -56751,8 +56755,8 @@ vZX
 vZX
 vZX
 jwc
+abt
 abs
-abr
 gfo
 gfo
 ivK

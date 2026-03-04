@@ -1442,7 +1442,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/corpse/hybrisa/fire_fighter/burst
-	name = "Corpse - Civilian - Fire Protection Specialist"
+	name = "Corpse - Burst - Civilian - Fire Protection Specialist"
 	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE
 

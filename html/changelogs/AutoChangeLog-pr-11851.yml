@@ -1,4 +1,4 @@
 author: "MistChristmas"
 delete-after: True
 changes:
-  - rscdel: "Removed a UpdatePath script for lathes"
+  - bugfix: "Working Joes get the right skills"

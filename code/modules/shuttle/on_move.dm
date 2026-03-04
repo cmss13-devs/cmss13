@@ -82,6 +82,7 @@ All ShuttleMove procs go here
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm
+	SEND_SIGNAL(src, COMSIG_TURF_AFTER_SHUTTLE_MOVE, oldT)
 
 	return TRUE
 
@@ -122,6 +123,8 @@ All ShuttleMove procs go here
 		shuttleRotate(rotation)
 
 // update_parallax_contents()
+
+	SEND_SIGNAL(src, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, oldT)
 
 	return TRUE
 

@@ -19527,7 +19527,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "oOV" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,
@@ -23456,7 +23456,7 @@
 /area/fiorina/station/lowsec/east)
 "rYY" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	can_block_movement = 0;
 	pixel_y = 22
 	},
@@ -24796,7 +24796,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells/west)
 "sXa" = (
-/obj/structure/machinery/filtration/console,
+/obj/structure/machinery/filtration_console,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "sXe" = (

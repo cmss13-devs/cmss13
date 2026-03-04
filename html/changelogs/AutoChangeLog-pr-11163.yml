@@ -1,9 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - rscadd: "Adds a few missing language pamphlets and other pamphlets for admin spawns"
-  - balance: "Some skill pamphlets (E.G. JTAC) can now be upgraded to a higher level upon use."
-  - bugfix: "Pamphlets whose skills you already have will no longer be wasted upon use, either preventing its use or upgrading it."
-  - code_imp: "Changed the paths of some pamphlets to be categorized in its own files for cleanliness"
-  - code_imp: "Deletes some now defunct skill traits"
-  - spellcheck: "Beautifies the descriptions of the various pamphlets"

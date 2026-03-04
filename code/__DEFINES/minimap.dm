@@ -79,6 +79,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
 #define MINIMAP_SQUAD_ARMY "#349c30"
+#define MINIMAP_SQUAD_USASF "#000080"
 #define MINIMAP_SQUAD_INTEL "#053818"
 
 //Prison

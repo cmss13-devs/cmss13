@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
 	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	":2" = SQUAD_USASF, ".2" = SQUAD_USASF, "#2" = SQUAD_USASF, // reserved the channels.. might need them(?)
 	//1-9 available
 ))
 

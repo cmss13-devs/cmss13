@@ -15,6 +15,7 @@
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
 #define SQUAD_ARMY "US Army"
+#define SQUAD_USASF "US Aerospace Forces"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"

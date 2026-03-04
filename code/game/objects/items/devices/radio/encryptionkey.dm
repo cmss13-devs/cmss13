@@ -223,7 +223,7 @@
 
 /obj/item/device/encryptionkey/soc/usasf
 	name = "\improper USASF Radio Encryption Key"
-	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
+	channels = list(SQUAD_USASF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 
 //ERT, PMC
 

@@ -1828,7 +1828,7 @@
 /turf/open/gm/dirt,
 /area/event/dynamic/lit)
 "Ir" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "Iv" = (

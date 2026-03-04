@@ -399,7 +399,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "dU" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves/mining)
 "dV" = (
@@ -1123,7 +1123,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rf" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "rj" = (
@@ -1235,7 +1235,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "sG" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -1980,7 +1980,7 @@
 /area/bigredv2/caves/mining)
 "ER" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "Fe" = (

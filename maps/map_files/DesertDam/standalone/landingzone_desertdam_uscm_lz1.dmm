@@ -1081,14 +1081,6 @@
 "mI" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark/melee_weapon,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/rack,
-/obj/item/cell/high/empty,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)

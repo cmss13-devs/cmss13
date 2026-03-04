@@ -82,7 +82,7 @@
 	paygrade = PAY_SHORT_AE8E
 	name = "First Sergeant"
 	prefix = "1Sgt"
-	rank_pin = /obj/item/clothing/accessory/ranks/army/e8e
+	rank_pin = /obj/item/clothing/accessory/ranks/army/e8c
 	ranking = 8
 	pay_multiplier = 2.75
 
@@ -226,7 +226,7 @@
 	paygrade = PAY_SHORT_AO10S
 	name = "General of the Army"
 	prefix = "CMC"
-	rank_pin = /obj/item/clothing/accessory/ranks/army/o10c
+	rank_pin = /obj/item/clothing/accessory/ranks/army/o10s
 	ranking = 27
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG

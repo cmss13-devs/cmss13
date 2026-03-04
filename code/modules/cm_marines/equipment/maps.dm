@@ -16,7 +16,7 @@
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
-	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
+	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]."))
 	initialize_map()
 
 /obj/item/map/attack()
@@ -84,13 +84,13 @@
 
 /obj/item/map/big_red_map
 	name = "\improper Solaris Ridge Map"
-	desc = "A censored blueprint of the Solaris Ridge facility"
+	desc = "A censored blueprint of the Solaris Ridge facility."
 	html_link = "images/9/9e/Solaris_Ridge.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map
 	name = "\improper Fiorina Orbital Penitentiary Map"
-	desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
+	desc = "A labelled interior scan of Fiorina Orbital Penitentiary."
 	html_link = "images/4/4c/Map_Prison.png"
 	color = "#e88a10"
 
@@ -114,13 +114,13 @@
 
 /obj/item/map/corsat
 	name = "\improper CORSAT map"
-	desc = "A blueprint of CORSAT station"
+	desc = "A blueprint of CORSAT station."
 	html_link = "images/8/8e/CORSAT_Satellite.png"
 	color = "red"
 
 /obj/item/map/kutjevo_map
 	name = "\improper Kutjevo Refinery map"
-	desc = "An orbital scan of Kutjevo Refinery"
+	desc = "An orbital scan of Kutjevo Refinery."
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
@@ -138,9 +138,14 @@
 
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
-	desc = "A labeled blueprint of the UA outpost New Varadero"
+	desc = "A labeled blueprint of the UA outpost New Varadero."
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
+
+/obj/item/map/tyrargo_rift
+	name = "\improper Tyrargo Rift map"
+	desc = "A labeled blueprint of the UA city Tyrargo Rift"
+	html_link = "images/7/79/Tyrargo_Rift.png"
 
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
@@ -159,7 +164,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 	)
 
 //used by marine equipment machines to spawn the correct map.

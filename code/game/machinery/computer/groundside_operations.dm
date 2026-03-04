@@ -63,16 +63,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
@@ -100,6 +100,10 @@
 	show_browser(user, dat, name, "groundside_operations", width = 600, height = 700)
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
+
+/obj/structure/machinery/computer/groundside_operations/ui_close(mob/user)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.close_popout_tacmaps(user)
 
 /obj/structure/machinery/computer/groundside_operations/proc/get_overwatch_info()
 	var/dat = ""
@@ -302,7 +306,7 @@
 
 		if("use_cam")
 			if(isRemoteControlling(usr))
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 
 			if(current_squad || show_command_squad)

@@ -4,7 +4,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggleadminhelpsound, /*toggles whether we hear a sound when adminhelps/PMs are used*/
 	/client/proc/becomelarva, /*lets you forgo your larva protection as staff member. */
 	/client/proc/deadmin_self, /*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/open_STUI, // This proc can be used by all admins but depending on your rank you see diffrent stuff.
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/debug_global_variables,
 	/client/proc/xooc, // Xeno OOC
@@ -61,6 +60,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually choosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
@@ -80,9 +80,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
 	/datum/admins/proc/announce, /*priority announce something to all clients.*/
-	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
-	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
-	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
@@ -104,6 +101,16 @@ GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/ipcheck_allow,
 	/client/proc/ipcheck_revoke,
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
+))
+
+GLOBAL_LIST_INIT(admin_verbs_logs, list(
+	/client/proc/open_STUI,
+	/datum/admins/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
+	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
+	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
+	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -210,12 +217,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,
-	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
-	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
-	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
-	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
-	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
-	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/allow_browser_inspect,
@@ -326,6 +327,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	if(CLIENT_HAS_RIGHTS(src, R_MOD))
 		add_verb(src, GLOB.admin_verbs_ban)
 		add_verb(src, GLOB.admin_verbs_teleport)
+		add_verb(src, GLOB.admin_verbs_logs)
 	if(CLIENT_HAS_RIGHTS(src, R_EVENT))
 		add_verb(src, GLOB.admin_verbs_minor_event)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
@@ -339,6 +341,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		add_verb(src, GLOB.admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
 		add_verb(src, GLOB.admin_verbs_debug)
+		add_verb(src, GLOB.admin_verbs_logs)
 		if(!CONFIG_GET(flag/debugparanoid) || CLIENT_HAS_RIGHTS(src, R_ADMIN))
 			add_verb(src, GLOB.admin_verbs_debug_advanced)  // Right now it's just callproc but we can easily add others later on.
 	if(CLIENT_HAS_RIGHTS(src, R_POSSESS))
@@ -396,7 +399,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!admin_holder && !donator && !SScmtv.is_subscriber(src))
+	if(!admin_holder && !donator)
 		return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
@@ -459,7 +462,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
-	set desc = "Display a message to everyone who can hear the target"
+	set desc = "Display a message to everyone who can hear the target."
 	if(mob.control_object)
 		if(!msg)
 			return
@@ -601,7 +604,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("Yes", "No"))
 	if(prompt != "Yes")
 		return
 

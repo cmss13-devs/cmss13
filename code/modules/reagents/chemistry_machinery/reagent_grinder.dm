@@ -11,7 +11,7 @@
 	var/inuse = 0
 	var/grind_duration = 6 SECONDS // 6 seconds
 	var/obj/item/reagent_container/beaker = null
-	var/limit = 10
+	var/limit = 16
 	var/tether_range = 8
 	var/obj/structure/machinery/smartfridge/chemistry/linked_storage //Where we send bottle chemicals
 	var/list/blend_items = list (
@@ -30,7 +30,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ricestalk = list("rice" = -5),
 		/obj/item/reagent_container/food/snacks/grown/cherries = list("cherryjelly" = 0),
 		/obj/item/reagent_container/food/snacks/grown/plastellium = list("plasticide" = 5),
-
+		/obj/item/reagent_container/food/snacks/chocolatebar = list("chocolatesyrup" = 0),
 
 		//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 		/obj/item/reagent_container/pill = list(),
@@ -53,7 +53,6 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
-
 	)
 
 
@@ -63,7 +62,15 @@
 	. = ..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 	connect_smartfridge()
+	start_processing()
 	return
+
+/obj/structure/machinery/reagentgrinder/process()
+	if(linked_storage)
+		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
+			visible_message(SPAN_WARNING("<b>The [src] beeps:</b> Smartfridge connection lost."))
+			cleanup()
+			SStgui.update_uis(src)
 
 /obj/structure/machinery/reagentgrinder/Destroy()
 	cleanup()
@@ -86,14 +93,14 @@
 			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [O]."))
 			user.put_in_hands(old_beaker)
 		update_icon()
-		updateUsrDialog()
+		SStgui.update_uis(src)
 		return FALSE
 
 	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
-		if(limit == 10)
+		if(limit == 16)
 			grind_duration = 3 SECONDS
 			limit = 25
 			to_chat(user, SPAN_NOTICE("You insert [O] into [src]"))
@@ -131,100 +138,93 @@
 		return TRUE
 	user.drop_inv_item_to_loc(O, src)
 	holdingitems += O
-	updateUsrDialog()
+	SStgui.update_uis(src)
 	return FALSE
 
 /obj/structure/machinery/reagentgrinder/attack_hand(mob/living/user)
-	user.set_interaction(src)
-	interact(user)
+	tgui_interact(user)
 
-/obj/structure/machinery/reagentgrinder/interact(mob/living/user) // what is tgui even
-	var/is_chamber_empty = 0
-	var/is_beaker_ready = 0
-	var/processing_chamber = ""
-	var/beaker_contents = ""
-	var/dat = ""
-	var/list/processing_names = list()
+/obj/structure/machinery/reagentgrinder/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ReagentGrinder", name)
+		ui.open()
 
-	if(!inuse)
-		for(var/obj/item/holding_item in holdingitems)
-			processing_names[holding_item.name] += 1
-		for(var/obj/item/item_key as anything in processing_names)
-			processing_chamber += "\A [item_key] x[processing_names[item_key]]<BR>"
+/obj/structure/machinery/reagentgrinder/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
-		if(!processing_chamber)
-			is_chamber_empty = 1
-			processing_chamber = "Nothing."
-		if(!beaker)
-			beaker_contents = "<B>No beaker attached.</B><br>"
-		else
-			is_beaker_ready = 1
-			beaker_contents = "<B>The beaker contains:</B><br>"
-			var/anything = 0
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				anything = 1
-				beaker_contents += "[R.volume] - [R.name] <A href='byond://?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='byond://?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
-			if(!anything)
-				beaker_contents += "Nothing<br>"
-
-
-		dat = {"
-		<b>Processing chamber contains:</b><br>
-		[processing_chamber]<br>
-		[beaker_contents]<hr>
-		"}
-		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
-			dat += "<A href='byond://?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
-			dat += "<A href='byond://?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
-		if(LAZYLEN(holdingitems) > 0)
-			dat += "<A href='byond://?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
-		if(beaker)
-			dat += "<A href='byond://?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
-		if(!linked_storage && tether_range > 0)
-			dat += "<A href='byond://?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
-	else
-		dat += "Please wait..."
-	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
-	onclose(user, "reagentgrinder")
-	return
-
-
-/obj/structure/machinery/reagentgrinder/Topic(href, href_list)
-	if(..())
-		return
-	var/mob/living/carbon/human/user = usr
+/obj/structure/machinery/reagentgrinder/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
 	if(!in_range(src, user))
-		return
-	user.set_interaction(src)
-	if(href_list["bottle"])
-		var/id = href_list["bottle"]
-		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
-			visible_message(SPAN_WARNING("Smartfridge is out of range. Connection severed."))
-			cleanup()
-			return
+		return UI_CLOSE
+	if(inoperable())
+		return UI_CLOSE
 
-		var/obj/item/reagent_container/glass/bottle/P = new /obj/item/reagent_container/glass/bottle()
-		P.icon_state = "bottle-1" // Default bottle
-		beaker.reagents.trans_id_to(P, id, P.reagents.maximum_volume)
-		P.name = "[P.reagents.get_master_reagent_name()] bottle"
-		linked_storage.add_local_item(P)
-	else if(href_list["dispose"])
-		var/id = href_list["dispose"]
-		beaker.reagents.del_reagent(id)
-	else
-		switch(href_list["action"])
-			if("grind")
-				grind(user)
-			if("juice")
-				juice(user)
-			if("eject")
-				eject(user)
-			if("detach")
-				detach(user)
-			if("connect")
-				connect_smartfridge()
-	updateUsrDialog()
-	return
+/obj/structure/machinery/reagentgrinder/ui_data(mob/user)
+	. = list()
+	.["inuse"] = inuse
+	.["isBeakerLoaded"] = beaker ? TRUE : FALSE
+	.["hasStorage"] = linked_storage ? TRUE : FALSE
+	.["canConnect"] = (!linked_storage && tether_range > 0) ? TRUE : FALSE
+
+	var/list/chamberContents = list()
+	var/list/processing_names = list()
+	for(var/obj/item/holding_item in holdingitems)
+		processing_names[holding_item.name] += 1
+	for(var/obj/item/item_key as anything in processing_names)
+		chamberContents += list(list("name" = item_key, "amount" = processing_names[item_key]))
+	.["chamberContents"] = chamberContents
+
+	var/list/beakerContents = list()
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
+		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+			beakerContents += list(list("name" = R.name, "volume" = R.volume, "id" = R.id))
+	.["beakerContents"] = beakerContents
+
+
+/obj/structure/machinery/reagentgrinder/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/user = usr
+
+	switch(action)
+		if("grind")
+			grind(user)
+			. = TRUE
+		if("juice")
+			juice(user)
+			. = TRUE
+		if("eject")
+			eject(user)
+			. = TRUE
+		if("detach")
+			detach(user)
+			. = TRUE
+		if("connect")
+			connect_smartfridge()
+			. = TRUE
+		if("bottle")
+			var/id = params["id"]
+			if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
+				visible_message(SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+				cleanup()
+				return
+			if(!beaker)
+				return
+			var/obj/item/reagent_container/glass/bottle/P = new /obj/item/reagent_container/glass/bottle()
+			P.icon_state = "bottle-1"
+			beaker.reagents.trans_id_to(P, id, P.reagents.maximum_volume)
+			P.name = "[P.reagents.get_master_reagent_name()] bottle"
+			linked_storage.add_local_item(P)
+			. = TRUE
+		if("dispose")
+			var/id = params["id"]
+			if(!beaker)
+				return
+			beaker.reagents.del_reagent(id)
+			. = TRUE
 
 /obj/structure/machinery/reagentgrinder/proc/detach(mob/user)
 	if(user.is_mob_incapacitated())
@@ -234,6 +234,7 @@
 	user.put_in_hands(beaker)
 	beaker = null
 	update_icon()
+	SStgui.update_uis(src)
 
 /obj/structure/machinery/reagentgrinder/proc/eject(mob/user)
 	if(user.is_mob_incapacitated())
@@ -245,14 +246,17 @@
 		O.forceMove(loc)
 		holdingitems -= O
 	holdingitems = list()
+	SStgui.update_uis(src)
 
 /obj/structure/machinery/reagentgrinder/proc/connect_smartfridge()
 	if(linked_storage || tether_range <= 0)
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup), override = TRUE)
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
+	else
+		visible_message(SPAN_WARNING("<b>The [src] beeps:</b> No smartfridge detected in range."))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(obj/item/reagent_container/O)
 	for(var/i in blend_items)
@@ -315,7 +319,7 @@
 
 		var/allowed = get_allowed_juice_by_id(O)
 		if(isnull(allowed))
-			break
+			continue
 
 		for(var/r_id in allowed)
 
@@ -350,7 +354,7 @@
 
 		var/allowed = get_allowed_snack_by_id(O)
 		if(isnull(allowed))
-			break
+			continue
 
 		for(var/r_id in allowed)
 
@@ -436,11 +440,11 @@
 
 /obj/structure/machinery/reagentgrinder/proc/end_using(mob/user)
 	inuse = 0
-	interact(user)
+	SStgui.update_uis(src)
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
-	desc = "a heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	desc = "A heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (

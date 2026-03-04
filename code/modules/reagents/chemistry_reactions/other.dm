@@ -38,10 +38,11 @@
 
 /datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
 	. = ..()
-	var/location = get_turf(holder.my_atom)
+	var/turf/location = get_turf(holder.my_atom)
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
-	empulse(location, floor(created_volume / 24), floor(created_volume / 14), 1)
+	var/mob/causer = GLOB.ckey_to_occupied_mob[ckey(holder.my_atom.fingerprintslast)]
+	empulse(location, floor(created_volume / 24), floor(created_volume / 14), causer)
 	holder.clear_reagents()
 
 

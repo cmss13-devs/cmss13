@@ -67,7 +67,7 @@
 
 	if(!src.client.admin_holder || !(client.admin_holder.rights & R_MOD))
 		if(!GLOB.dsay_allowed)
-			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
+			to_chat(src, SPAN_DANGER("Deadchat is globally muted."))
 			return
 
 	if(client && client.prefs && !(client.prefs.toggles_chat & CHAT_DEAD))

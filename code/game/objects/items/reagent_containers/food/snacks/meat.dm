@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/meat
 	name = "meat"
-	desc = "A slab of meat"
+	desc = "A slab of meat."
 	icon_state = "meat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
@@ -117,5 +117,5 @@
 /obj/item/reagent_container/food/snacks/meat/fish/white_perch
 
 	name = "white perch meat"
-	desc = "meat of an invasive fish, its oily.."
+	desc = "Meat of an invasive fish, its oily.."
 	icon_state = "white_perch_meat"

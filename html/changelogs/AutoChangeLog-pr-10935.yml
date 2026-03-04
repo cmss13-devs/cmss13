@@ -1,0 +1,5 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - rscadd: "The Hunting Grounds escape console will now provide its location included in the escape warning attempt."
+  - mapadd: "Adds a new hunting grounds reserve map called Desert Moon."

@@ -15,8 +15,8 @@
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 
-/obj/item/device/encryptionkey/public
-	name = "Public Radio Encryption Key"
+/obj/item/device/encryptionkey/almayer
+	name = "Almayer Radio Encryption Key"
 	icon_state = "stripped_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = TRUE)
 	abstract = TRUE
@@ -47,7 +47,7 @@
 
 /obj/item/device/encryptionkey/sentry_laptop
 	name = "Sentry Network Status Encryption Key"
-	desc = "Automated channel to broadcast sentry gun updates"
+	desc = "Automated channel to broadcast sentry gun updates."
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 
@@ -137,7 +137,7 @@
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"
@@ -152,7 +152,7 @@
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/vc
 	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
@@ -217,6 +217,10 @@
 /obj/item/device/encryptionkey/soc/forecon
 	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 
+/obj/item/device/encryptionkey/soc/army
+	name = "\improper Army Radio Encryption Key"
+	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
+
 //ERT, PMC
 
 /obj/item/device/encryptionkey/dutch
@@ -229,35 +233,45 @@
 
 ///For CL and their Marine goons
 /obj/item/device/encryptionkey/WY
-	name = "\improper Weyland-Yutani encryption key"
+	name = "\improper Weyland-Yutani Corporate encryption key"
 	icon_state = "wy_key"
-	channels = list(RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY = TRUE)
 	tracking_options = list("Corporate Liaison" = TRACKER_CL)
+
+/obj/item/device/encryptionkey/wy_sec
+	name = "\improper Weyland-Yutani Security encryption key"
+	icon_state = "wy_sec_key"
+	channels = list(RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE)
+
+/obj/item/device/encryptionkey/wy_pub
+	name = "\improper Weyland-Yutani Public encryption key"
+	icon_state = "wy_key"
+	channels = list(RADIO_CHANNEL_WY_PUB = TRUE)
 
 /obj/item/device/encryptionkey/pmc
 	name = "\improper Weyland-Yutani PMC Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE)
 
 /obj/item/device/encryptionkey/pmc/engi
 	name = "\improper WY PMC Engineering Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE)
+	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE)
 
 /obj/item/device/encryptionkey/pmc/medic
 	name = "\improper WY PMC Medical Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
+	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
 
 /obj/item/device/encryptionkey/pmc/command
 	name = "\improper WY PMC Command Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_PMC_CMD = TRUE, RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
+	channels = list(RADIO_CHANNEL_PMC_CMD = TRUE, RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
 
 /obj/item/device/encryptionkey/commando
 	name = "\improper WY Commando Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_WY_WO = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_WY_WO = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE)
 
 //---------------------------------------------------
 //Hyperdyne Keys

@@ -59,7 +59,7 @@
 
 		var/atom/A = locate(href_list[VV_HK_EXPLODE])
 		if(!isobj(A) && !ismob(A) && !isturf(A))
-			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
+			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf.")
 			return
 
 		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
@@ -70,7 +70,7 @@
 
 		var/atom/A = locate(href_list[VV_HK_EMPULSE])
 		if(!isobj(A) && !ismob(A) && !isturf(A))
-			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
+			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf.")
 			return
 
 		usr.client.cmd_admin_emp(A)

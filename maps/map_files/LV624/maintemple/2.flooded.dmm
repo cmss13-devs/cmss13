@@ -3,6 +3,12 @@
 /obj/structure/bed/alien/yautja/leader,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"ab" = (
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"ac" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
@@ -3214,8 +3220,8 @@ ap
 Lg
 Dj
 xp
-ZX
-ZX
+ac
+ab
 ZX
 ZX
 ZX

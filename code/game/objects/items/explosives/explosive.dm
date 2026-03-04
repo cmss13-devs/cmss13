@@ -258,7 +258,7 @@
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
 	set name = "Toggle Blast Wave Dampener"
-	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
+	set desc = "Enable/Disable the Explosive Blast Wave Dampener."
 	set src in usr
 
 	toggle_blast_dampener(usr)

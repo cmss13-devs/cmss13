@@ -434,7 +434,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/limepie
 	name = "key lime pie"
 	icon_state = "key lime pie"
-	desc = "A pie with an overpoweringly sour lime flavored filling and a dry, chunky crust"
+	desc = "A pie with an overpoweringly sour lime flavored filling and a dry, chunky crust."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/limepie/Initialize()
 	. = ..()

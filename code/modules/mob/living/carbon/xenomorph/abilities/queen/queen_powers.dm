@@ -397,6 +397,7 @@
 
 	if(xeno in tacmap_component.interactees)
 		tacmap_component.on_unset_interaction(xeno)
+		tacmap_component.close_popout_tacmaps(xeno)
 	else
 		tacmap_component.show_tacmap(xeno)
 
@@ -574,7 +575,7 @@
 		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) != "Yes")
+	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
 	if(!length(hive.personal_allies))

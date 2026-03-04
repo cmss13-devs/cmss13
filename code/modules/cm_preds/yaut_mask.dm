@@ -315,7 +315,7 @@
 
 /obj/item/clothing/accessory/mask
 	name = "Mask Ornament"
-	desc = "An ornate addition to your mask"
+	desc = "An ornate addition to your mask."
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null

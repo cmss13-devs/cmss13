@@ -378,7 +378,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs
 	name = "ASRS console"
-	desc = "A console for the Automated Storage Retrieval System"
+	desc = "A console for the Automated Storage Retrieval System."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	density = TRUE

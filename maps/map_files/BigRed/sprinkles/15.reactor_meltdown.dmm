@@ -519,7 +519,10 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/engineering)
 "cD" = (
-/obj/structure/machinery/computer/area_atmos,
+/obj/structure/machinery/computer/area_atmos{
+	dir = 1
+	},
+/obj/structure/surface/table,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/engineering)
 "cE" = (

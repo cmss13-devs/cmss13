@@ -148,6 +148,9 @@
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 
+/obj/item/clothing/suit/storage/marine/faction/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP
 	name = "\improper UM5 personal armor"

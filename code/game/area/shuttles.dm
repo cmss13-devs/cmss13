@@ -37,7 +37,7 @@
 
 /area/shuttle/transit
 	name = "Hyperspace"
-	desc = "Weeeeee"
+	desc = "Weeeeee."
 	ambience_exterior = 'sound/ambience/shuttle_fly_loop.ogg'
 	base_lighting_alpha = 255
 
@@ -73,7 +73,7 @@
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/shuttle/escape_pod/afterShuttleMove(new_parallax_dir)
 	. = ..()
@@ -82,4 +82,4 @@
 /area/shuttle/lifeboat
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW

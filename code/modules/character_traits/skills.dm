@@ -92,7 +92,7 @@
 
 /datum/character_trait/skills/cosmartgun
 	trait_name = "Smartgun Training"
-	trait_desc = "Gives the CO information on his smartgun"
+	trait_desc = "Gives the CO information on his smartgun."
 	skill = SKILL_SPEC_WEAPONS
 	skill_cap =  SKILL_SPEC_SMARTGUN
 	skill_increment = 7
@@ -121,7 +121,7 @@
 
 /datum/character_trait/skills/k9_handler
 	trait_name = "K9 Handler Training"
-	trait_desc = "Allows the user to interface with Wey-Yu Synthetic K9 Units for rescue purposes"
+	trait_desc = "Allows the user to interface with Wey-Yu Synthetic K9 Units for rescue purposes."
 	skill = SKILL_JTAC
 	secondary_skill = SKILL_ENGINEER //enables the handler to use standard synth reset keys as well as easier repairs for the dog
 	skill_cap = SKILL_ENGINEER_NOVICE

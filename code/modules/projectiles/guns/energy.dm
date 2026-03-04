@@ -176,7 +176,7 @@
 
 /obj/item/weapon/gun/energy/laser_top
 	name = "'LAZ-TOP'"
-	desc = "The 'LAZ-TOP', aka the Laser Anode something something"//finish this later
+	desc = "The 'LAZ-TOP', aka the Laser Anode something something."//finish this later
 
 /obj/item/weapon/gun/energy/laz_uzi
 	name = "laser UZI"
@@ -219,7 +219,7 @@
 // Lots of bits for it so splitting off an area
 /obj/item/weapon/gun/energy/taser
 	name = "disabler gun"
-	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns. "
+	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/energy_weapons.dmi'
 	icon_state = "taser"
 	item_state = "taser"

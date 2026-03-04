@@ -15,7 +15,8 @@
 	var/y_dim = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
-	var/cold_protection_factor = 0.4
+	/// Insulated enough to protect armorless patients in the medical tent
+	var/cold_protection_factor = 0.7
 
 	/// Roof display icon_state or null to disable
 	var/roof_state
@@ -65,7 +66,7 @@
 		var/mob/hologram/hologram_mob = subject_mob
 		subject_mob = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
@@ -88,7 +89,7 @@
 		var/mob/hologram/hologram_mob = subject
 		subject = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
 /mob/proc/tent_deletion_clean_up(obj/structure/tent/deleting_tent)
@@ -112,7 +113,7 @@
 
 	return XENO_ATTACK_ACTION
 
-/obj/structure/tent/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/tent/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
@@ -124,6 +125,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/tent/attackby(obj/item/item, mob/user)

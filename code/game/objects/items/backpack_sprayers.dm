@@ -12,11 +12,14 @@
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
 	possible_transfer_amounts = null//no point giving it possibility when mister can't it just confuse people
-	volume = 500
+	volume = 250
 	var/fill_reagent = "water"
 	var/spawn_empty = FALSE
 
 	var/obj/item/noz
+
+/obj/item/reagent_container/glass/watertank/fuel
+	fill_reagent = "fuel"
 
 /obj/item/reagent_container/glass/watertank/Initialize()
 	. = ..()
@@ -138,9 +141,10 @@
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	spray_size = 5
-	volume = 500
+	volume = 5
 	flags_atom = FPRINT //not an opencontainer
 	flags_item = NOBLUDGEON | ITEM_ABSTRACT  // don't put in storage
+	use_delay = FIRE_DELAY_TIER_5 * 5
 
 
 /obj/item/reagent_container/spray/mister/Initialize()
@@ -151,48 +155,59 @@
 
 /obj/item/reagent_container/spray/mister/get_examine_text(mob/user)
 	. = ..()
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
 		return
-	. += "It is linked to \the [W]."
+	. += "It is linked to [tank]."
 
-/obj/item/reagent_container/spray/mister/afterattack(atom/A, mob/user, proximity)
+/obj/item/reagent_container/spray/mister/afterattack(atom/target, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
 		return
 
-	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
-	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /atom/movable/screen))
+	if(isstorage(target) || istype(target, /obj/structure/surface/table) || istype(target, /obj/structure/surface/rack) || istype(target, /obj/structure/closet) \
+	|| istype(target, /obj/item/reagent_container) || istype(target, /obj/structure/sink) || istype(target, /obj/structure/janitorialcart) || istype(target, /obj/structure/ladder) || istype(target, /atom/movable/screen))
 		return
 
-	if(A == user) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
+	if(target == user) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
 		return
 
-	if(W.reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE("\The [W] is empty!"))
+	if(world.time < last_use + use_delay)
+		return
+
+	if(tank.reagents.total_volume < amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE("[tank] is empty!"))
 		return
 
 	if(safety)
 		to_chat(user, SPAN_WARNING("The safety is on!"))
 		return
 
+	last_use = world.time
+	if(spray_at(target, user))
+		playsound(loc, 'sound/effects/spray2.ogg', 25, 1, 3)
 
-	Spray_at(A, user)
+/obj/item/reagent_container/spray/mister/spray_at(atom/target, mob/user)
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
+		return FALSE
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		if(!human_user.allow_gun_usage && tank.reagents.contains_harmful_substances())
+			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return FALSE
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 
-	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
-
-
-/obj/item/reagent_container/spray/mister/Spray_at(atom/A, mob/user)
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
-		return
-	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
-	D.create_reagents(amount_per_transfer_from_this)
-	W.reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
-	D.color = mix_color_from_reagents(D.reagents.reagent_list)
-	D.source_user = user
-	D.move_towards(A, 3, spray_size)
+	var/obj/effect/decal/chempuff/puff = new /obj/effect/decal/chempuff(get_turf(src))
+	puff.create_reagents(amount_per_transfer_from_this)
+	tank.reagents.trans_to(puff, amount_per_transfer_from_this, 1 / spray_size)
+	puff.color = mix_color_from_reagents(puff.reagents.reagent_list)
+	puff.source_user = user
+	puff.move_towards(target, 3 DECISECONDS, spray_size)
+	return TRUE
 
 //ATMOS FIRE FIGHTING BACKPACK
 
@@ -208,7 +223,6 @@
 	volume = 500
 	fill_reagent = "water"
 	var/nozzle_mode = EXTINGUISHER
-	var/launcher_cooldown //to prevent the spam
 
 /obj/item/reagent_container/glass/watertank/atmos/make_noz()
 	return new /obj/item/reagent_container/spray/mister/atmos(src)
@@ -312,62 +326,72 @@
 
 /obj/item/reagent_container/spray/mister/atmos/afterattack(atom/target, mob/user)
 	if(!issynth(user))
-		to_chat(user, SPAN_WARNING("You have no idea how use \the [src]!"))
+		to_chat(user, SPAN_WARNING("You have no idea how use [src]!"))
 		return
-	if(nozzle_mode == EXTINGUISHER)
-		if(istype(target, /atom/movable/screen)) //so we don't end up wasting water when clicking
-			return
-		if(tank.reagents.has_reagent("water", extinguisher_cost))
+
+	var/is_adjacent = user.Adjacent(target)
+	switch(nozzle_mode)
+		if(EXTINGUISHER)
+			if(world.time < last_use + use_delay)
+				return
+			if(istype(target, /atom/movable/screen)) //so we don't end up wasting water when clicking
+				return
+			if(!tank.reagents.has_reagent("water", extinguisher_cost))
+				to_chat(user, SPAN_WARNING("You need at least [extinguisher_cost] units of water to use the extinguisher!"))
+				return
+
+			last_use = world.time
 			tank.reagents.remove_reagent("water", extinguisher_cost)
 			return internal_extinguisher.afterattack(target, user)
-		else
-			to_chat(user, SPAN_WARNING("You need at least [extinguisher_cost] units of water to use the extinguisher!"))
-			return
-	var/Adj = user.Adjacent(target)
-	if(nozzle_mode == METAL_LAUNCHER)
-		if(Adj || istype(target, /atom/movable/screen))
-			return //Safety check so you don't blast yourself trying to refill your tank
-		for(var/S in target)
-			if(istype(S, /obj/effect/particle_effect/foam) || istype(S, /obj/structure/foamed_metal))
-				to_chat(user, SPAN_WARNING("There's already metal foam here!"))
+
+		if(METAL_LAUNCHER)
+			if(is_adjacent)
+				return //Safety check so you don't blast yourself trying to refill your tank
+			if(world.time < last_use + use_delay * 1.5) // Extra delay for this mode
+				to_chat(user, SPAN_WARNING("[tank] cannot fire another foam ball just yet."))
 				return
-		//actually firing the launcher
-		if(tank.launcher_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [floor(tank.launcher_cooldown/10)] seconds."))
-			return
-		if(tank.reagents.has_reagent("water", launcher_cost))
+			if(istype(target, /atom/movable/screen))
+				return
+			if(!tank.reagents.has_reagent("water", launcher_cost))
+				to_chat(user, SPAN_WARNING("You need at least [launcher_cost] units of water to use the metal foam launcher!"))
+				return
+			for(var/foam in target)
+				if(istype(foam, /obj/effect/particle_effect/foam) || istype(foam, /obj/structure/foamed_metal))
+					to_chat(user, SPAN_WARNING("There's already metal foam here!"))
+					return
+
+			last_use = world.time
 			tank.reagents.remove_reagent("water", launcher_cost)
-			tank.launcher_cooldown = world.time + 50
-			var/obj/effect/resin_container/A = new (get_turf(src))
+			var/obj/effect/resin_container/ball = new (get_turf(src))
 			playsound(src,'sound/items/syringeproj.ogg',40,TRUE)
 			//projectile movement
 			for(var/i in 1 to 5)
-				step_towards(A, target)
+				step_towards(ball, target)
 				sleep(2)
-			A.Smoke()
-			return
-		else
-			to_chat(user, SPAN_WARNING("You need at least [launcher_cost] units of water to use the metal foam launcher!"))
+			ball.Smoke()
 			return
 
-	if(nozzle_mode == METAL_FOAM)
-		if(!Adj || !isturf(target) || istype(target, /atom/movable/screen))
-			return
-		//check for the foamer - is there already foam on the tile?
-		for(var/S in target)
-			if(istype(S, /obj/effect/particle_effect/foam) || istype(S, /obj/structure/foamed_metal))
-				to_chat(user, SPAN_WARNING("There's already metal foam here!"))
+		if(METAL_FOAM)
+			if(world.time < last_use + use_delay * 0.5) // Less delay for this mode
 				return
-		//check for tank reagents
-		if(tank.reagents.has_reagent("water", foamer_cost))
+			if(!is_adjacent || !isturf(target) || istype(target, /atom/movable/screen))
+				return
+			//check for tank reagents
+			if(!tank.reagents.has_reagent("water", foamer_cost))
+				to_chat(user, SPAN_WARNING("You need at least [foamer_cost] units of water to use the metal foamer!"))
+				return
+			//check for the foamer - is there already foam on the tile?
+			for(var/foam in target)
+				if(istype(foam, /obj/effect/particle_effect/foam) || istype(foam, /obj/structure/foamed_metal))
+					to_chat(user, SPAN_WARNING("There's already metal foam here!"))
+					return
+
 			//firing code
+			last_use = world.time
 			tank.reagents.remove_reagent("water", foamer_cost)
-			var/datum/effect_system/foam_spread/S = new /datum/effect_system/foam_spread(get_turf(target))
-			S.set_up(0, target, null, metal_foam = FOAM_METAL_TYPE_ALUMINIUM)
-			S.start()
-			return
-		else
-			to_chat(user, SPAN_WARNING("You need at least [foamer_cost] units of water to use the metal foamer!"))
+			var/datum/effect_system/foam_spread/foam = new /datum/effect_system/foam_spread(get_turf(target))
+			foam.set_up(0, target, null, metal_foam = FOAM_METAL_TYPE_ALUMINIUM)
+			foam.start()
 			return
 
 /obj/effect/resin_container //the projectile that the launcher fires

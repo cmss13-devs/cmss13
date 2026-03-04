@@ -523,10 +523,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"Br" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/platebotc,
-/area/lv624/lazarus/quartstorage)
 "Bs" = (
 /turf/open/floor/whiteyellowcorner/north,
 /area/lv624/lazarus/main_hall)
@@ -1734,9 +1730,9 @@ ks
 ks
 ks
 gt
-Br
+VQ
 vG
-Br
+VQ
 gt
 sZ
 bP

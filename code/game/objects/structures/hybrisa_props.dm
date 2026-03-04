@@ -28,7 +28,7 @@
 	update_icon()
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/vehicles/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/vehicles/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -39,6 +39,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	update_icon()
 	return TAILSTAB_COOLDOWN_NORMAL
 
@@ -717,7 +718,7 @@
 /obj/structure/prop/hybrisa/supermart
 	name = "long rack"
 	icon_state = "longrack1"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	density = TRUE
 	projectile_coverage = 20
@@ -756,7 +757,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/supermart/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/supermart/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -767,6 +768,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/supermart/rack
@@ -779,37 +781,37 @@
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack1
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack1"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack2
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack2"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack3
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack3"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack4
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack4"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack5
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack5"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack6
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack6"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack7
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack7"
 
 /obj/structure/prop/hybrisa/supermart/supermartbelt
@@ -953,7 +955,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/furniture/tables/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/furniture/tables/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -964,6 +966,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/furniture/tables/tableblack
@@ -1026,7 +1029,7 @@
 
 /obj/structure/bed/chair/comfy/hybrisa
 	name = "expensive chair"
-	desc = "A expensive looking chair"
+	desc = "A expensive looking chair."
 
 /obj/structure/bed/chair/comfy/hybrisa/black
 	icon_state = "comfychair_hybrisablack"
@@ -1241,7 +1244,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/engineer/giantpod/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/engineer/giantpod/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
@@ -1252,6 +1255,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/engineer/giantconsole
@@ -1352,7 +1356,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/blackgoocontainer/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/blackgoocontainer/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
@@ -1363,6 +1367,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/item/hybrisa/engineer_helmet
@@ -1430,7 +1435,7 @@
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage
 	name = "dropship damage"
-	desc = "the engine appears to have severe damage."
+	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage"
 	bound_height = 64
@@ -1442,7 +1447,7 @@
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
 	name = "dropship damage"
-	desc = "the engine appears to have severe damage."
+	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage_nofire"
 	bound_height = 64
@@ -1643,7 +1648,7 @@
 
 /obj/structure/prop/hybrisa/misc/cabinet
 	name = "cabinet"
-	desc = "a small cabinet with drawers."
+	desc = "A small cabinet with drawers."
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "sidecabinet"
 	projectile_coverage = 20
@@ -1651,7 +1656,7 @@
 
 /obj/structure/prop/hybrisa/misc/elevator_door
 	name = "broken elevator door"
-	desc = "completely broken, the elevator is not going to work."
+	desc = "Completely broken, the elevator is not going to work."
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "elevator_left"
 	opacity = FALSE
@@ -1705,7 +1710,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/trash/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/trash/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -1716,6 +1721,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/trash/green
@@ -1793,7 +1799,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/slotmachine/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/slotmachine/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -1804,6 +1810,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 // Coffee Machine (Works with Empty Coffee cups, Mugs ect.)
@@ -1839,7 +1846,11 @@
 	if(..())
 		return TRUE
 
-	if(!brewing && cup && user.Adjacent(src) && user.put_in_hands(cup))
+	if(brewing)
+		to_chat(user, SPAN_WARNING("[src] is still brewing [vends]."))
+		return FALSE
+
+	if(cup && user.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 		update_icon()
@@ -1878,7 +1889,7 @@
 /obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user, amount)
 	brewing = FALSE
 	cup?.reagents?.add_reagent(vends, amount)
-	if(user?.Adjacent(src) && user.put_in_hands(cup))
+	if(user?.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 	else
@@ -2116,7 +2127,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/machinery/screens/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/machinery/screens/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -2127,6 +2138,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame
@@ -2318,7 +2330,7 @@
 
 /obj/structure/cargo_container/hybrisa/containersextended
 	name = "cargo container"
-	desc = "a cargo container."
+	desc = "A cargo container."
 	icon = 'icons/obj/structures/props/containers/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_height = 32
@@ -2533,7 +2545,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/buildinggreeblies/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -2544,6 +2556,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
@@ -2625,7 +2638,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -2636,6 +2649,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2
@@ -2771,7 +2785,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/firehydrant/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/firehydrant/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -2782,6 +2796,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/pole_stump
@@ -2809,7 +2824,7 @@
 
 /obj/structure/bed/sofa/hybrisa/sofa/black
 	name = "Couch"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon_state = "sofa_black"
 	anchored = TRUE
 	can_buckle = FALSE
@@ -2818,7 +2833,7 @@
 
 /obj/structure/bed/sofa/hybrisa/sofa/red
 	name = "Couch"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon_state = "sofa_red"
 	anchored = TRUE
 	can_buckle = FALSE
@@ -2907,7 +2922,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/misc/phonebox/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/misc/phonebox/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -2918,6 +2933,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/urinal
@@ -2990,7 +3006,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/roof/hybrisa/signs/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/roof/hybrisa/signs/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -3001,6 +3017,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/roof/hybrisa/signs/casniosign
@@ -3162,7 +3179,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/roof/hybrisa/billboardsandsigns/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/roof/hybrisa/billboardsandsigns/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -3173,6 +3190,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards
@@ -3265,7 +3283,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/hybrisa/factory/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/hybrisa/factory/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -3276,6 +3294,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/factory/conveyor_belt

@@ -38,6 +38,14 @@
 /obj/item/clothing/shoes/marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/army
+	name = "army combat boots"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time."
+
+/obj/item/clothing/shoes/marine/army/knife
+	icon_state = "marine_jungle"
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
 	desc = "Don't go walkin' slow, the devil's on the loose."
@@ -226,6 +234,13 @@
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
 
 /obj/item/clothing/shoes/marine/corporate/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/cmb
+	name = "rugged boots"
+	desc = "Generic boots typically used by law enforcement types out on the frontier. Functional and stylish."
+
+/obj/item/clothing/shoes/marine/cmb/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress

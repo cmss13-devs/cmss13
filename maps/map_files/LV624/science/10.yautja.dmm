@@ -347,6 +347,16 @@
 	pixel_x = 11
 	},
 /obj/effect/landmark/melee_weapon,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/landmark/crap_item,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bf" = (

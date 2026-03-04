@@ -21,7 +21,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/wy_droid/dark
 	name = "\improper M7X Mark II Apesuit"
-	desc = "The M7X Mark II Apesuit: Following recent archaeological studies on highly classified sites, W-Y's R and D Department managed to reverse engineer a more compact invisibility cloak for this armour from some their discoveries"
+	desc = "The M7X Mark II Apesuit: Following recent archaeological studies on highly classified sites, W-Y's R and D Department managed to reverse engineer a more compact invisibility cloak for this armour from some their discoveries."
 	icon_state = "invis_android_jacket"
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/combat_android/dark)
 	item_state_slots = list(WEAR_JACKET = "invis_android_jacket")

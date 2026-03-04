@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /mob/hologram
 	name = "Hologram"
-	desc = "It seems to be a visual projection of someone" //jinkies!
+	desc = "It seems to be a visual projection of someone." //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "hologram"
 	blinded = FALSE

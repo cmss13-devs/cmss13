@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Join as xeno button can now take over non-ssd afk xenos and now only lists xenos soon to be available in 30s rather than 60s"
-  - bugfix: "Added a few more checks to join as xeno to ensure neither dead nor deleted xenos are offered"
-  - bugfix: "The \"has ghosted and their body is up for grabs!\" event is no longer sent for taking over a xeno (now only when they actually ghost)"

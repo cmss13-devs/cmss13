@@ -60,7 +60,7 @@
 
 /client/proc/spawn_wave()
 	set name = "Spawn Cellauto Wave"
-	set desc = "suck some ass ok"
+	set desc = "Suck some ass ok."
 	set category = "Debug"
 
 	var/turf/T = get_turf(mob)

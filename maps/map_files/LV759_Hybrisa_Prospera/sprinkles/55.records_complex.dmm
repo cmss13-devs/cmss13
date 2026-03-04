@@ -471,7 +471,7 @@
 	density = 0;
 	icon_state = "book-4";
 	pixel_y = 6;
-	layer = 2/9
+	layer = 2.9
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco_faded,
 /area/lv759/indoors/admin_records)

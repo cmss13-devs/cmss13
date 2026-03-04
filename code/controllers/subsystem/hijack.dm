@@ -936,7 +936,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_charge_ftl()
 	in_ftl = TRUE
 	in_ftl_time = world.time
-	marine_announcement("Breaking orbit. Quantum jump initiated. Virtual mass field opened... Hyperspace velocity achieved. Maintain fueling until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	marine_announcement("Breaking orbit. Quantum jump initiated. Virtual mass field opened... Hyperspace velocity achieved, lifeboats and pods disabled. Maintain fueling until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /// Updates a specific space turf to have the speedspace animation

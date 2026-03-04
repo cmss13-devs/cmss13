@@ -26703,6 +26703,10 @@
 "byp" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/explosive/plastic/breaching_charge{
+	pixel_x = 6
+	},
+/obj/item/weapon/twohanded/breacher,
 /turf/open/new_varadero/sidewalk/sidewalkfull,
 /area/point_loma/airbase/interior/fire_station)
 "byq" = (

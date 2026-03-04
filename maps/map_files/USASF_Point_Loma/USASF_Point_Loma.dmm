@@ -985,6 +985,8 @@
 	color = "#98a3ab"
 	},
 /obj/effect/spawner/random/gun/uscm_primary,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
 /turf/open/floor/corsat/red/north,
 /area/point_loma/research_facility/security_hq)
 "adh" = (
@@ -4824,6 +4826,7 @@
 /area/point_loma/airbase/interior/garage)
 "aoH" = (
 /obj/structure/surface/rack,
+/obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "aoI" = (
@@ -7802,6 +7805,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/spawner/random/gun/smg/midchance,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "awH" = (
@@ -7839,6 +7844,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/spawner/random/gun/smg/midchance,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "awM" = (
@@ -8054,6 +8061,7 @@
 	pixel_x = 13
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "axs" = (
@@ -8208,6 +8216,8 @@
 	pixel_y = -1;
 	pixel_x = 1
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "axK" = (
@@ -8228,6 +8238,7 @@
 	icon_state = "SW-out";
 	pixel_x = -2
 	},
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "axN" = (
@@ -8575,7 +8586,6 @@
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "ayF" = (
-/obj/item/stack/sheet/plasteel/large_stack,
 /turf/open/floor/darkbrown2/southeast,
 /area/point_loma/airbase/interior/cargo)
 "ayG" = (
@@ -18290,7 +18300,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/corsat/officesquares,
+/turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc)
 "baS" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -18623,7 +18633,9 @@
 	},
 /obj/structure/transmitter/rotary/no_dnd{
 	phone_category = "USASF Point Loma";
-	phone_id = "ATC - 2"
+	phone_id = "ATC - 2";
+	networks_receive = list("USCM", "Colony");
+	networks_transmit = list("USCM", "Colony")
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -18722,11 +18734,10 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/atc/upper)
 "bbV" = (
-/obj/structure/stairs,
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open_space,
+/turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
 "bbW" = (
 /obj/structure/bed/chair/comfy/blue,
@@ -21442,7 +21453,7 @@
 	name = "\improper Shutters";
 	pixel_x = 22;
 	pixel_y = 11;
-	req_access_txt = "3"
+	req_access_txt = "104"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -21458,7 +21469,7 @@
 	name = "\improper Shutters";
 	pixel_x = -21;
 	pixel_y = 11;
-	req_access_txt = "3"
+	req_access_txt = "104"
 	},
 /turf/open/floor/corsat/red/west,
 /area/point_loma/research_facility/security_hq)
@@ -21482,9 +21493,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
-"bjp" = (
-/turf/open/floor/shiva/red/east,
-/area/point_loma/research_facility/security_hq)
 "bjq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
 	dir = 2;
@@ -21498,6 +21506,7 @@
 	},
 /obj/item/storage/belt/gun/l54,
 /obj/item/storage/belt/security/brown,
+/obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "bjs" = (
@@ -21619,6 +21628,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/vehicle_clamp,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/red/north,
 /area/point_loma/research_facility/security_hq)
 "bjG" = (
@@ -22051,6 +22061,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "bkG" = (
@@ -22221,7 +22232,7 @@
 	name = "Brig Lockdown Shutters";
 	pixel_x = 8;
 	pixel_y = 25;
-	req_access_txt = "3"
+	req_access_txt = "104"
 	},
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
@@ -22376,6 +22387,7 @@
 	pixel_x = 9
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "blw" = (
@@ -22566,6 +22578,7 @@
 	pixel_y = -12
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "blZ" = (
@@ -23151,7 +23164,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
 	autoname = 1
 	},
-/turf/open/floor/shiva/red/west,
+/turf/open/floor/corsat/red/west,
 /area/point_loma/research_facility/security_hq)
 "bnH" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -23315,6 +23328,7 @@
 	pixel_x = 3;
 	pixel_y = -7
 	},
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "boj" = (
@@ -23906,7 +23920,7 @@
 	name = "Brig Lockdown Shutters";
 	pixel_x = -24;
 	pixel_y = -5;
-	req_access_txt = "3"
+	req_access_txt = "104"
 	},
 /turf/open/floor/corsat/red/northwest,
 /area/point_loma/research_facility/security_hq)
@@ -26709,10 +26723,6 @@
 "byp" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/plastic/breaching_charge{
-	pixel_x = 6
-	},
-/obj/item/weapon/twohanded/breacher,
 /turf/open/new_varadero/sidewalk/sidewalkfull,
 /area/point_loma/airbase/interior/fire_station)
 "byq" = (
@@ -29209,8 +29219,10 @@
 	},
 /obj/structure/transmitter/rotary{
 	phone_category = "USASF Point Loma";
-	phone_id = "Air Traffic Control";
-	pixel_x = 8
+	phone_id = "ATC - Master Controller";
+	pixel_x = 8;
+	networks_receive = list("USCM", "Colony");
+	networks_transmit = list("USCM", "Colony")
 	},
 /turf/open/floor/corsat/blue/east,
 /area/point_loma/airbase/interior/atc/upper)
@@ -29223,7 +29235,6 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/atc/upper)
 "bFr" = (
-/obj/structure/stairs,
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
@@ -29231,7 +29242,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/open_space,
+/turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
 "bFs" = (
 /obj/structure/barricade/handrail/type_b,
@@ -30254,8 +30265,7 @@
 	id = "office_2";
 	name = "Office Line 2 Shutters";
 	pixel_x = 5;
-	pixel_y = 10;
-	req_one_access_txt = "1;21"
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
@@ -30451,8 +30461,7 @@
 	id = "office_3";
 	name = "Office Line 1 Shutters";
 	pixel_x = 5;
-	pixel_y = -2;
-	req_one_access_txt = "1;21"
+	pixel_y = -2
 	},
 /turf/open/floor/corsat/blue/northeast,
 /area/point_loma/research_facility/command)
@@ -35490,10 +35499,6 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/south)
-"cav" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/east)
 "caw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat,
@@ -36789,6 +36794,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
+"cez" = (
+/obj/effect/spawner/random/sentry,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -36903,7 +36912,9 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary/no_dnd{
 	phone_category = "USASF Point Loma";
-	phone_id = "ATC - 1"
+	phone_id = "ATC - 1";
+	networks_receive = list("USCM", "Colony");
+	networks_transmit = list("USCM", "Colony")
 	},
 /obj/structure/prop{
 	icon = 'icons/obj/structures/machinery/computer.dmi';
@@ -37747,6 +37758,7 @@
 "chu" = (
 /obj/structure/closet/crate/internals,
 /obj/effect/spawner/random/powercell,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/research_facility/hallway/north)
 "chv" = (
@@ -41630,7 +41642,9 @@
 	},
 /obj/structure/transmitter/rotary/no_dnd{
 	phone_category = "USASF Point Loma";
-	phone_id = "ATC - 3"
+	phone_id = "ATC - 3";
+	networks_receive = list("USCM", "Colony");
+	networks_transmit = list("USCM", "Colony")
 	},
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/atc/upper)
@@ -43328,6 +43342,7 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "cAg" = (
@@ -43500,7 +43515,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/device/defibrillator/compact_adv,
+/obj/item/device/defibrillator/low_charge,
 /turf/open/floor/shiva/snow_mat/east,
 /area/point_loma/airbase/interior/hospital)
 "cAH" = (
@@ -44004,6 +44019,92 @@
 /obj/structure/prop/new_varadero_props/radar_dish_lights,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob/sky)
+"cCo" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cCp" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cCq" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/south)
+"cCr" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/weapon/twohanded/breacher,
+/turf/open/new_varadero/alt_concrete/floor,
+/area/point_loma/research_facility/engineering)
+"cCs" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cCt" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/cargo/lower)
+"cCu" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/shiva/yellowfull,
+/area/point_loma/airbase/interior/cargo/lower)
+"cCv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/structure/barricade/deployable,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cCw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/deployable,
+/obj/effect/spawner/random/gun/pmc_primary/lowchance,
+/turf/open/shuttle/escapepod/floor3,
+/area/point_loma/research_facility/hallway/east)
+"cCx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = null
+	},
+/obj/structure/barricade/deployable,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cCy" = (
+/obj/structure/machinery/door_control{
+	id = "Colony Brig Lockdown Shutters";
+	name = "Brig Lockdown Shutters";
+	pixel_x = 8;
+	pixel_y = 25;
+	req_access_txt = "104"
+	},
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
+"cCz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
+"cCA" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/glass/large_stack,
+/turf/open/floor/shiva/multi_tiles,
+/area/point_loma/airbase/interior/cargo)
 
 (1,1,1) = {"
 aug
@@ -94493,7 +94594,7 @@ bLz
 bLz
 bLz
 aKG
-bMj
+cCt
 bMP
 bMY
 bMj
@@ -95440,7 +95541,7 @@ bqD
 bjt
 bqk
 bpI
-bpI
+cCr
 bjt
 bpf
 bjV
@@ -95763,7 +95864,7 @@ bNn
 bNn
 bNn
 bNn
-bNn
+cCu
 bNn
 aLb
 aKI
@@ -99051,7 +99152,7 @@ bNt
 bNt
 bNt
 bNt
-bNt
+cCs
 bNt
 crq
 crm
@@ -102009,7 +102110,7 @@ cyC
 cys
 abP
 bTL
-abP
+cCq
 bTx
 abP
 coe
@@ -110133,7 +110234,7 @@ aym
 axJ
 avG
 awG
-avG
+cCv
 avG
 auL
 auC
@@ -110315,7 +110416,7 @@ bIO
 axK
 axl
 awI
-avI
+cCw
 avI
 auM
 csn
@@ -110396,7 +110497,7 @@ cos
 coq
 cyf
 bzR
-bzO
+cCo
 bzO
 bxB
 bIO
@@ -110497,7 +110598,7 @@ bIO
 axM
 axn
 awL
-avJ
+cCx
 avJ
 auN
 auC
@@ -110578,10 +110679,10 @@ caY
 bIO
 bIO
 bAn
+cCp
 bIO
 bIO
 bIO
-cav
 bIO
 bIO
 adf
@@ -110760,10 +110861,10 @@ caY
 bIO
 bIO
 cdP
+cCp
 bIO
 bIO
-bIO
-bIO
+cez
 bIO
 bMo
 adf
@@ -112920,7 +113021,7 @@ ccq
 ccq
 ccq
 ccq
-bjp
+ccq
 bmh
 bmh
 bmh
@@ -142158,7 +142259,7 @@ asb
 asb
 asb
 bzI
-aoH
+cCA
 aoH
 aMn
 cll
@@ -157344,7 +157445,7 @@ bPq
 bdZ
 aWP
 aWP
-aWP
+cCy
 acx
 alB
 ajc
@@ -158071,7 +158172,7 @@ bQd
 bPq
 aDW
 aWP
-asG
+cCz
 aWP
 acx
 acx

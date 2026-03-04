@@ -427,3 +427,11 @@
   Nivrak, Thwomper:
   - balance: Reworked despoiler
   - imageadd: Added new sprites to despoiler, made by thwomper
+2026-02-28:
+  DangerRevolution:
+  - rscadd: Added Construction Belt to the Synthetic Vendor
+  MistChristmas:
+  - bugfix: VAIPO Military Contractor synth now spawns with gear.
+  dawsonkeyes:
+  - rscadd: 'Four new unique armor sets from Predator: Hunting Grounds usable by elites
+      and above'

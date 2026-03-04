@@ -7,5 +7,5 @@
 			continue
 		//If the initial wall was indestructible, we toggle indestructability
 		if(initial(turf_for_editing.turf_flags) & TURF_HULL)
-			//Note: wall boundaries are safe since they are /turf/closed/shuttle, so not a subset of /turf/closed/wall!
+			//Note: wall boundaries are safe since they are /turf/closed/cordon, so not a subset of /turf/closed/wall!
 			turf_for_editing.turf_flags &= ~TURF_HULL

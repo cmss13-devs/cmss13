@@ -6,6 +6,7 @@
 	ambience = null
 
 	effect_message = "It is unbelievably hot. You can't wait to get indoors."
+	damage_per_tick = 0
 
 /datum/weather_event/point_loma/heat/heat_wave
 	name = "High Heat Extra"

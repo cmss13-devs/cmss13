@@ -6,8 +6,8 @@
 	default_faction = FACTION_ALPHATECH
 
 /datum/paygrade/alphatech_ranks/alphatech_1
-	name = "Recruit"
-	prefix = "Recrt."
+	name = "Employee"
+	prefix = "Employ."
 	paygrade = PAY_SHORT_ATHC1
 	ranking = 0
 

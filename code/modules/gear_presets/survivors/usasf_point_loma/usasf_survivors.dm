@@ -7,7 +7,7 @@
 	skills = /datum/skills/military/survivor/usasf
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
-	faction = FACTION_SURVIVOR
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
@@ -31,6 +31,9 @@
 
 /datum/equipment_preset/survivor/usasf/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
+
+/datum/equipment_preset/survivor/usasf/load_vanity(mob/living/carbon/human/new_human)
+	..()
 
 /datum/equipment_preset/survivor/usasf/crew
 	name = "Survivor - USASF Enlisted Crew"
@@ -61,17 +64,22 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full/pills, WEAR_L_STORE)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full, WEAR_L_STORE)
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet, WEAR_R_STORE)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_R_STORE)
-			new_human.equip_to_slot_if_possible(new /obj/item/device/flashlight/lantern)
+		if (5)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/first_responder/full, WEAR_L_STORE)
+		if (6)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_backpack(mob/living/carbon/human/new_human)
-	var/spawn_backpack = rand(1,4)
+	var/spawn_backpack = rand(1,5)
 	switch(spawn_backpack)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig, WEAR_BACK)
@@ -81,45 +89,41 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel, WEAR_BACK)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/folding_barricade/three, WEAR_BACK)
+		if (5)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig, WEAR_BACK)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_armour(mob/living/carbon/human/new_human)
-	var/spawn_armour = rand(1,7)
+	var/spawn_armour = rand(1,6)
 	switch(spawn_armour)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/dcc, WEAR_JACKET)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 		if (3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light, WEAR_JACKET)
-		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing, WEAR_JACKET)
-		if (5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/pilot, WEAR_JACKET)
-		if (6)
+		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/navy, WEAR_JACKET)
-		if (7)
+		if (5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/navy/bomber, WEAR_JACKET)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_helmet(mob/living/carbon/human/new_human)
 	var/spawn_helmet = rand(1,9)
 	switch(spawn_helmet)
 		if (1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/marine, WEAR_HEAD)
-		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
-		if (3)
+		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmbandana, WEAR_HEAD)
-		if (4)
+		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie, WEAR_HEAD)
-		if (5)
+		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband, WEAR_HEAD)
-		if (6)
+		if (5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset, WEAR_HEAD)
-		if (7)
+		if (6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/flap, WEAR_HEAD)
-		if (8)
+		if (7)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/marine/navy, WEAR_HEAD)
-		if (9)
+		if (8)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_usasf_weapon(mob/living/carbon/human/new_human)
@@ -219,7 +223,6 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech
 	name = "Survivor - USASF Hangar Technician"
@@ -235,22 +238,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
-
-
-/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech
-	name = "Survivor - USASF Mess Technician"
-	survivor_variant = ENGINEERING_SURVIVOR
-	skills = /datum/skills/military/survivor/usasf/technician
-	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech/load_gear(mob/living/carbon/human/new_human)
-	..()
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech
 	name = "Survivor - USASF Cargo Technician"
@@ -266,7 +253,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/medical //abstract
 	name = "Survivor - USASF Medical Staff"
@@ -298,7 +284,6 @@
 	spawn_usasf_weapon(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor
 	name = "Survivor - USASF Doctor"
@@ -313,7 +298,6 @@
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o3, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/security
 	name = "Survivor - USASF Security Police"
@@ -340,7 +324,6 @@
 	var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	uniform.attach_accessory(new_human,patch_SP)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e3, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
 	spawn_security_primary(new_human)
@@ -367,7 +350,6 @@
 	)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/load_gear(mob/living/carbon/human/new_human)
-	//new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY) // Commented out until I can figure out how to equip this without CO equipping it
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)
@@ -389,7 +371,6 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o3, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co
 	name = "Survivor - USASF Aerospace Base Commander"
@@ -401,13 +382,14 @@
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o5, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del (new /obj/item/storage/pouch/pistol/command, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_WAIST)
 
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
 	name = "Survivor - USASF Synthetic"
 	paygrades = list(PAY_SHORT_NE7 = JOB_PLAYTIME_TIER_0)
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_USASF_SYNTHETIC
 	job_title  = JOB_USASF_SYNTHETIC
@@ -417,15 +399,17 @@
 /datum/equipment_preset/synth/usasf/load_gear(mob/living/carbon/human/preset_human)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e7, WEAR_ACCESSORY)
-	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(preset_human), WEAR_ACCESSORY)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig(preset_human), WEAR_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/synvest(preset_human), WEAR_JACKET)
 	preset_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(preset_human), WEAR_IN_JACKET)
-	preset_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(preset_human), WEAR_J_STORE)
-	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
-	preset_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(preset_human), WEAR_WAIST)
-	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)
-	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(preset_human), WEAR_WAIST)
+	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(preset_human), WEAR_IN_JACKET)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_IN_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/box/m94(preset_human), WEAR_IN_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/black/full(preset_human), WEAR_R_STORE)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(preset_human), WEAR_L_STORE)
+	preset_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(preset_human), WEAR_IN_L_STORE)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(preset_human), WEAR_L_EAR)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(preset_human), WEAR_FEET)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy(preset_human), WEAR_HEAD)

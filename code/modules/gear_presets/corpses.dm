@@ -1984,7 +1984,7 @@
 	skills = /datum/skills/military/survivor/usasf
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
-	faction = FACTION_SURVIVOR
+	faction = FACTION_MARINE
 	job_title  = JOB_USASF_ENLISTED
 	assignment = JOB_USASF_ENLISTED
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)

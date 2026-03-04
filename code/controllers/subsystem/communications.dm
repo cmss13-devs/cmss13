@@ -194,6 +194,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_MARINE_5 = ECHO_FREQ,
 	SQUAD_MARINE_CRYO = CRYO_FREQ,
 	SQUAD_SOF = SOF_FREQ,
+	SQUAD_USASF = USASF_FREQ,
 	SQUAD_CBRN = CBRN_FREQ,
 	SQUAD_FORECON = FORECON_FREQ,
 	SQUAD_SOLAR = SOF_FREQ,
@@ -259,7 +260,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define FAX_RESP_FREQS list(FAX_WY_FREQ, FAX_USCM_HC_FREQ, FAX_USCM_PVST_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, USASF_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -319,6 +320,7 @@ SUBSYSTEM_DEF(radio)
 		"[WY_SEC_FREQ]" = "wysecradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[USASF_FREQ]" = "usasfradio",
 		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",

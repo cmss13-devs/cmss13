@@ -71,6 +71,29 @@
 				marine_rk = "co_army"
 			if(JOB_ARMY_SYN)
 				marine_rk = "syn_army"
+			// USASF
+			if(JOB_USASF_CO)
+				marine_rk = "co_usasf"
+			if(JOB_USASF_PILOT)
+				marine_rk = "po_usasf"
+			if(JOB_USASF_OFFICER)
+				marine_rk = "so_usasf"
+			if(JOB_USASF_DOCTOR)
+				marine_rk = "doc_usasf"
+			if(JOB_USASF_NURSE)
+				marine_rk = "nurse_usasf"
+			if(JOB_USASF_SECURITY_DEFENDER)
+				marine_rk = "mp_usasf"
+			if(JOB_USASF_HANGARTECH)
+				marine_rk = "mt_usasf"
+			if(JOB_USASF_CARGOTECH)
+				marine_rk = "ct_usasf"
+			if(JOB_USASF_CHAPLAIN)
+				marine_rk = "chap_usasf"
+			if(JOB_USASF_CREW)
+				marine_rk = "crew_usasf"
+			if(JOB_USASF_SYNTHETIC)
+				marine_rk = "syn_usasf"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -151,6 +174,29 @@
 				marine_rk = "co_army"
 			if(JOB_ARMY_SYN)
 				marine_rk = "syn_army"
+			// USASF
+			if(JOB_USASF_CO)
+				marine_rk = "co_usasf"
+			if(JOB_USASF_PILOT)
+				marine_rk = "po_usasf"
+			if(JOB_USASF_OFFICER)
+				marine_rk = "so_usasf"
+			if(JOB_USASF_DOCTOR)
+				marine_rk = "doc_usasf"
+			if(JOB_USASF_NURSE)
+				marine_rk = "nurse_usasf"
+			if(JOB_USASF_SECURITY_DEFENDER)
+				marine_rk = "mp_usasf"
+			if(JOB_USASF_HANGARTECH)
+				marine_rk = "mt_usasf"
+			if(JOB_USASF_CARGOTECH)
+				marine_rk = "ct_usasf"
+			if(JOB_USASF_CHAPLAIN)
+				marine_rk = "chap_usasf"
+			if(JOB_USASF_CREW)
+				marine_rk = "crew_usasf"
+			if(JOB_USASF_SYNTHETIC)
+				marine_rk = "syn_usasf"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

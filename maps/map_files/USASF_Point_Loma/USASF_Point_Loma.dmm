@@ -12467,11 +12467,6 @@
 	},
 /turf/open/floor/corsat/purplewhite/southeast,
 /area/point_loma/airbase/interior/research)
-"aJZ" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/defenses/handheld/planted_flag/wy,
-/turf/open/floor/plating/wood,
-/area/point_loma/research_facility/corporate)
 "aKa" = (
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/cargo/lower)
@@ -21669,6 +21664,7 @@
 	id = "bot_armory";
 	name = "\improper Armory Shutters"
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "bjL" = (
@@ -23594,6 +23590,7 @@
 /area/point_loma/research_facility/security_hq)
 "boY" = (
 /obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "boZ" = (
@@ -32145,6 +32142,7 @@
 	pixel_x = 7;
 	pixel_y = 29
 	},
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/shiva/yellow/northwest,
 /area/point_loma/airbase/interior/cargo/lower)
 "bNE" = (
@@ -35631,6 +35629,7 @@
 /area/point_loma/research_facility/gym/basketball)
 "caS" = (
 /obj/item/ammo_casing,
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/corsat/purplecorner/north,
 /area/point_loma/research_facility/hallway/south)
 "caT" = (
@@ -37756,6 +37755,7 @@
 /area/point_loma/oob)
 "chu" = (
 /obj/structure/closet/crate/internals,
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/research_facility/hallway/north)
 "chv" = (
@@ -42009,6 +42009,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
+"cuZ" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/south)
 "cva" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -43869,6 +43873,11 @@
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
+"cBN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/south)
 "cBO" = (
 /obj/item/storage/box/packet/m15,
 /turf/open/floor/corsat/squares,
@@ -43974,6 +43983,17 @@
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"cCj" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = -19
+	},
+/obj/item/device/flashlight/flare/on,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cCk" = (
+/turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 
 (1,1,1) = {"
 aug
@@ -95926,7 +95946,7 @@ crL
 aJM
 crx
 chd
-aJZ
+aJW
 aJW
 aJU
 cgk
@@ -99202,7 +99222,7 @@ chE
 chw
 cfR
 cfR
-cfR
+cCj
 cfR
 cAE
 cfR
@@ -101448,7 +101468,7 @@ big
 big
 bZr
 abP
-abP
+cuZ
 bYH
 bIP
 cap
@@ -102176,7 +102196,7 @@ cor
 cnY
 cnY
 cnY
-cnY
+cBN
 cof
 cax
 cah
@@ -103556,7 +103576,7 @@ cvG
 cvx
 cvx
 cvx
-cvs
+cCk
 cvo
 bKZ
 bKZ

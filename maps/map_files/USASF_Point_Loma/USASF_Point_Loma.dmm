@@ -21296,8 +21296,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/riot/vintage_riot,
-/obj/item/clothing/head/helmet/riot/vintage_riot,
-/obj/effect/spawner/random/gun/smg,
+/obj/effect/spawner/random/gun/usasf_primary,
 /turf/open/floor/corsat/red/southwest,
 /area/point_loma/research_facility/security_hq)
 "biR" = (
@@ -21621,7 +21620,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/riot/vintage_riot,
 /obj/item/clothing/head/helmet/riot/vintage_riot,
-/obj/effect/spawner/random/gun/smg,
+/obj/effect/spawner/random/gun/usasf_primary,
 /turf/open/floor/corsat/red/northwest,
 /area/point_loma/research_facility/security_hq)
 "bjF" = (
@@ -33789,6 +33788,7 @@
 /area/point_loma/research_facility/hallway/south)
 "bUh" = (
 /obj/effect/decal/cleanable/blood/writing,
+/obj/effect/spawner/random/gun/smg,
 /turf/open/floor/corsat/yellow,
 /area/point_loma/research_facility/hallway/central)
 "bUi" = (
@@ -33802,10 +33802,7 @@
 /turf/open/floor/wood,
 /area/point_loma/airbase/interior/cargo/upper)
 "bUl" = (
-/obj/effect/landmark/wo_supplies/guns/common/m4a3{
-	pixel_x = 8;
-	pixel_y = -2
-	},
+/obj/effect/spawner/random/gun/upp_secondary,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "bUm" = (
@@ -35560,7 +35557,7 @@
 /area/point_loma/research_facility/hallway/south)
 "caG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/spawner/random/gun/uscm_primary,
+/obj/effect/spawner/random/gun/usasf_primary,
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/research_facility/hallway/south)
 "caH" = (
@@ -42867,7 +42864,7 @@
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/hallway/south)
 "cyd" = (
-/obj/effect/spawner/random/gun/uscm_primary,
+/obj/effect/spawner/random/gun/usasf_primary,
 /turf/open/floor/corsat/purplecorner/north,
 /area/point_loma/research_facility/hallway/south)
 "cye" = (

@@ -297,10 +297,10 @@
 
 /obj/item/clothing/suit/storage/marine/medium/rto/navy
 	name = "\improper M4-N pattern armor"
-	desc = "A set of USASF acquired M4 armor, with slight modifications to better suite ship-side usage. Robust, yet very nimble, with room for all your pouches. Compatible with attachable components of the M3-pattern armor system."
+	desc = "A set of USASF acquired M4 armor, with slight modifications to better suite ship-side usage. Robust, yet very nimble, with room for all snacks."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi' // I have no idea why this is in here but Army has this in here so I will copy.
-	icon_state = "armor_navy"
-	item_state = "armor_navy"
+	icon_state = "navy_armor"
+	item_state = "navy_armor"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)

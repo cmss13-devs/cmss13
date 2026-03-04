@@ -220,16 +220,17 @@
 /datum/ammo/energy/yautja/caster/lance
 	name = "plasma lance"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF|AMMO_ANTISTRUCT
-	shell_speed = AMMO_SPEED_INSTANT // travels 300 tiles in one tick, perfect for drawing an evil-ass laser beam from you to where you hit!
+	shell_speed = AMMO_SPEED_INSTANT // travels 300 tiles in one tick
 	scatter = SCATTER_AMOUNT_NONE
 	accuracy = HIT_ACCURACY_MULT_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 50 // not the primary source of damage
+	damage = 50
 	accurate_range = 10
 	effective_range_max = 8
 	max_range = 10
 	var/vehicle_slowdown_time = 5 SECONDS
 
+// master proc for drawing the laser beam from us to where the projectile hits, even if it hits something before it gets to where you clicked
 /datum/ammo/energy/yautja/caster/lance/proc/shaboomboom(obj/projectile/projectile, atom/impact_atom)
 	if(!projectile || !impact_atom)
 		return
@@ -247,9 +248,10 @@
 /datum/ammo/energy/yautja/caster/lance/on_hit_mob(mob/mob, obj/projectile/projectile)
 	shaboomboom(projectile, mob)
 	var/turf/turf = get_turf(mob)
-	mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-	mob.apply_effect(3, WEAKEN)
-	mob.apply_effect(3, PARALYZE)
+	if(!ispredalien(mob)) // AP rocket effects on all targets except predaliens because they're adapted against plasma weapons
+		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.apply_effect(3, WEAKEN)
+		mob.apply_effect(3, PARALYZE)
 	if(ishuman_strict(mob))
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
@@ -258,9 +260,10 @@
 	shaboomboom(projectile, turf)
 	var/hit_something = 0
 	for(var/mob/mob in turf)
-		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-		mob.apply_effect(3, WEAKEN)
-		mob.apply_effect(3, PARALYZE)
+		if(!ispredalien(mob))
+			mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+			mob.apply_effect(3, WEAKEN)
+			mob.apply_effect(3, PARALYZE)
 		hit_something = 1
 	if(!hit_something)
 		for(var/obj/object in turf)

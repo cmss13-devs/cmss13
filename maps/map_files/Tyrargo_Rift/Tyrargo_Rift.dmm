@@ -110807,10 +110807,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/landing_zone_2)
 "sqe" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "srb" = (
 /obj/structure/blocker/forcefield/vehicles,

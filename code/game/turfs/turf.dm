@@ -472,7 +472,7 @@
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
-/turf/proc/ChangeTurf(path, list/new_baseturfs, flags, ...)
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
 			return
@@ -504,7 +504,7 @@
 	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
 	var/list/old_comp_lookup = comp_lookup?.Copy()
 	var/list/old_signal_procs = signal_procs?.Copy()
-	var/turf/W = new path(src, args.Copy(4))
+	var/turf/W = new path(src)
 
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS

@@ -958,7 +958,7 @@ SUBSYSTEM_DEF(hijack)
 		// Don't bother with open_space further out
 		space_turf.icon_state = "black"
 		return
-	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y, crashed_ground_z_min)
+	space_turf.ChangeTurf(/turf/open_space/ground_level)
 
 /// Called to enter FTP warp
 /datum/controller/subsystem/hijack/proc/enter_ftl()

@@ -12219,7 +12219,7 @@
 	pixel_y = -4
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/cave/south/upper)
 "aJo" = (
 /turf/closed/wall/new_varadero,
@@ -16164,7 +16164,7 @@
 	dir = 4;
 	pixel_y = -4
 	},
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "aUx" = (
 /obj/structure/closet/crate/trashcart,
@@ -24608,11 +24608,11 @@
 /area/point_loma/airbase/interior/workshop/upper)
 "brN" = (
 /obj/structure/largecrate/supply/floodlights,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "brO" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "brP" = (
 /obj/structure/window_frame/new_varadero/foundation,
@@ -36789,6 +36789,13 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
+"cez" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -39249,7 +39256,7 @@
 	dir = 4;
 	pixel_y = -4
 	},
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/cave/south/upper)
 "cms" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
@@ -44004,6 +44011,41 @@
 /obj/structure/prop/new_varadero_props/radar_dish_lights,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob/sky)
+"cCo" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
+"cCp" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCq" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCr" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCs" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
 
 (1,1,1) = {"
 aug
@@ -197031,10 +197073,10 @@ bHP
 bHP
 bHP
 bHP
-bHP
-bHP
-bHP
-bUO
+cCc
+cCc
+cCc
+cez
 bui
 asb
 asb
@@ -197213,10 +197255,10 @@ buT
 buT
 buT
 buT
-buT
-buT
-buT
-cfO
+cCa
+cCa
+cCa
+cCo
 bui
 bui
 asb
@@ -197397,8 +197439,8 @@ ctK
 ctK
 ctK
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 bui
 bui
@@ -197565,6 +197607,8 @@ cCg
 cCe
 ctK
 brN
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -197573,14 +197617,12 @@ bzz
 bzz
 bzz
 bzz
-bzz
-bzz
-bzz
-bzz
-bzz
+cCe
+cCe
+cCe
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 bui
 bui
@@ -197747,8 +197789,8 @@ ctM
 bzz
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 ctL
 ctL
 ctL
@@ -197757,9 +197799,9 @@ ctL
 ctL
 ctL
 ctL
-bzz
-bzz
-bzz
+cCe
+cCe
+cCe
 ctK
 buT
 cfO
@@ -197928,9 +197970,9 @@ bTS
 ctM
 bzz
 ctK
-bzz
-bzz
-bhl
+cCe
+cCe
+cCr
 aLF
 aLF
 aLF
@@ -197939,9 +197981,9 @@ aLF
 aLF
 aLF
 aLF
-ctN
-bzz
-bzz
+cCq
+cCe
+cCe
 ctK
 buT
 cfO
@@ -206300,9 +206342,9 @@ bTS
 ctM
 bzz
 ctK
-bzz
-bzz
-bhp
+cCe
+cCe
+cCs
 aLF
 aLF
 aLF
@@ -206483,8 +206525,8 @@ ctM
 bzz
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 bhP
 bhP
 bhP
@@ -206661,12 +206703,12 @@ asb
 asb
 bTS
 bTS
-ctM
-bzz
+cCg
+cCe
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -206679,8 +206721,8 @@ aCo
 aCo
 blP
 ctK
-buT
-cfO
+cCa
+cCo
 cxo
 cmp
 cxn
@@ -206843,8 +206885,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cCg
+cCe
 ctK
 ctK
 ctK
@@ -206861,8 +206903,8 @@ ctK
 ctK
 ctK
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 cxt
 cxo
@@ -207025,7 +207067,10 @@ bTS
 bTS
 bTS
 bTS
-ctM
+cCg
+cCe
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -207038,13 +207083,10 @@ bzz
 bzz
 bzz
 bzz
-bzz
-bzz
-bzz
-bzz
-bzz
-buT
-cfO
+cCe
+cCe
+cCa
+cCo
 bui
 bui
 bui
@@ -207208,6 +207250,9 @@ bTS
 bTS
 bTS
 aUw
+cCp
+cCp
+cCp
 aJG
 aJG
 aJG
@@ -207220,11 +207265,8 @@ aJG
 aJG
 aJG
 aJG
-aJG
-aJG
-aJG
-aJG
-aJG
+cCp
+cCp
 cmr
 aJn
 bui

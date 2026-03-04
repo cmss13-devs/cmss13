@@ -73,6 +73,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Misc channels
 #define YAUT_FREQ 1205
 #define YAUT_OVR_FREQ 1206
+#define YAUT_SPEC_FREQ 1207
 #define DUT_FREQ 1210
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
@@ -165,6 +166,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_YAUTJA_OVERSEER = YAUT_OVR_FREQ,
+	RADIO_CHANNEL_YAUTJA_SPECOPS = YAUT_SPEC_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,

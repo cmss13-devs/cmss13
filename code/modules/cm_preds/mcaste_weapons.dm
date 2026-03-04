@@ -112,6 +112,78 @@
 #undef FIRE_MODE_INCENDIARY
 #undef FIRE_MODE_EXPLOSIVE
 
+/obj/item/weapon/gun/flamer/yautja
+	name = "heavy gel defoliator"
+	desc = "A high-power incendiary device used to rapidly expunge evidence of hives or dishonorable foes. Unsurprisingly, it is just as effective in direct combat."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/pred.dmi'
+	icon_state = "defoliator"
+	item_state = "defoliator"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	ignite_sound = 'sound/weapons/wy_flamer_ignite.ogg'
+	extinguish_sound = 'sound/weapons/wy_flamer_extinguish.ogg'
+	unload_sound = 'sound/weapons/handling/wy_flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/wy_flamer_reload.ogg'
+	dry_fire_sound = list('sound/weapons/wy_flamer_dryfire.ogg')
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/flamer_tank/yautja,
+		/obj/item/ammo_magazine/flamer_tank/yautja/deathsquad,
+	)
+	current_mag = /obj/item/ammo_magazine/flamer_tank/yautja
+	flags_equip_slot = SLOT_BACK
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_item = ITEM_PREDATOR|TWOHANDED
+
+/obj/item/weapon/gun/flamer/yautja/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/dltalt)
+
+/obj/item/weapon/gun/flamer/yautja/get_fire_sound()
+	var/list/fire_sounds = list(
+		'sound/weapons/wy_flamethrower1.ogg',
+		'sound/weapons/wy_flamethrower2.ogg',
+		'sound/weapons/wy_flamethrower3.ogg')
+	return pick(fire_sounds)
+
+/obj/item/weapon/gun/flamer/yautja/get_examine_text(mob/user)
+	if(isyautja(user))
+		. = ..()
+	else
+		. = list()
+		. += SPAN_NOTICE("Looks like some massively fucked up alien flamethrower.")
+
+/obj/item/weapon/gun/flamer/yautja/able_to_fire(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("The weapon beeps and refuses to fire. Must be some sort of fancy grip safety!"))
+		return
+	else
+		return ..()
+
+/obj/item/weapon/gun/flamer/yautja/deathsquad
+	current_mag = /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad
+
+/obj/item/ammo_magazine/flamer_tank/yautja
+	name = "gel defoliator fuel tank"
+	desc = "A high-capacity heat-resistant tank of highly-flammable gel fuel for a heavy defoliator."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/flamers.dmi'
+	icon_state = "fl3"
+	item_state = "fl3"
+	gun_type = /obj/item/weapon/gun/flamer/yautja
+	max_rounds = 200
+	max_range = 8
+	max_intensity = 70
+	stripe_icon = FALSE
+
+/obj/item/ammo_magazine/flamer_tank/yautja/deathsquad
+	name = "gel defoliator fuel tank (plasma)"
+	desc = "A high-capacity heat-resistant tank of terrifyingly powerful gelled plasma, capable of burning right through almost anything. Handle with extreme caution."
+	caliber = "Napalm EX"
+	flamer_chem = "napalmex"
+
 /obj/item/weapon/gun/energy/yautja/cannon
 	name = "\improper dual plasma cannons"
 	desc = "A pair of powerful, shoulder-mounted energy weapons that are remotely operated via bracers. Unlike normal plasma casters, they only feature one fire mode."
@@ -121,7 +193,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi', // we don't really care about handedness, it looks the exact same either way
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'

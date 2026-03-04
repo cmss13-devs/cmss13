@@ -42,6 +42,17 @@
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_soldier")
 	AddElement(/datum/element/corp_label/dltalt)
 
+/obj/item/clothing/suit/armor/yautja/hunter/full/powered/enforcer
+	name = "\improper Nracha-Dte command power armor"
+	desc = "Produced only by artisans overseen directly by the Council of Ancients, the Nracha-Dte-type is a powered suit of armor built for war rather than hunting. It is heavy, and absurdly protective. This one features a ceremonial pauldron labeling the wearer as an Enforcer."
+	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
+	icon_state = "fullarmor_soldier_lead"
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/powered/enforcer/Initialize(mapload)
+	. = ..(mapload, 0)
+	icon_state = "fullarmor_soldier_lead"
+	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_soldier_lead")
+
 /obj/item/clothing/shoes/yautja/hunter/knife/powered
 	name = "\improper Nracha-Dte armored greaves"
 	desc = "The lower half of the M'talt-Type powered armor suit, used exclusively in battle against the most disdainful of dishonorable targets. Like the upper suit, there is very little damage it cannot shrug off."
@@ -258,6 +269,18 @@
 
 #undef VISION_MODE_OFF
 #undef VISION_MODE_NVG
+
+/obj/item/device/radio/headset/yautja/military
+	name = "\improper Military Communicator"
+	frequency = YAUT_SPEC_FREQ
+	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
+	initial_keys = list(/obj/item/device/encryptionkey/yautja/military)
+
+/obj/item/device/encryptionkey/yautja/military
+	name = "\improper Yautja encryption key"
+	desc = "A complicated encryption device."
+	icon_state = "cypherkey"
+	channels = list(RADIO_CHANNEL_YAUTJA_SPECOPS = TRUE)
 
 /obj/item/yautja_cannon_pack
 	name = "plasma cannon pack"

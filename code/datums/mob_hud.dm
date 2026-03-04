@@ -794,6 +794,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		new_icon_state = "soldierhud"
 		if(job == JOB_MCASTE_ENFORCER)
 			new_icon_state = "enforcerhud"
+			holder.icon_state = new_icon_state
+			return // we don't mess with colors or whitelist status checks
+		else
+			holder.icon_state = new_icon_state
+			return
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))

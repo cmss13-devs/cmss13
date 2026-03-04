@@ -140,3 +140,41 @@
 	leader_preset = /datum/equipment_preset/uscm/marsoc/low_threat/sl
 	member_preset = /datum/equipment_preset/uscm/marsoc/low_threat
 	sg_preset = /datum/equipment_preset/uscm/marsoc/sg/low_threat
+
+//################################################################################################
+// Yautja Military Caste - Predator Deathsquad. Event only
+/datum/emergency_call/yautja_deathsquad
+	name = "Yautja Military Caste Soldiers (!DEATHSQUAD!)"
+	mob_max = 7
+	mob_min = 1
+	probability = 0
+	home_base = /datum/lazy_template/ert/uscm_station // to be mapped
+	hostility = TRUE
+	var/team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer
+	var/team_member_preset = /datum/equipment_preset/yautja/soldier
+
+/datum/emergency_call/yautja_deathsquad/New()
+	. = ..()
+	objectives = "Destroy all that the Ancients decree unworthy of existing."
+
+/datum/emergency_call/yautja_deathsquad/create_member(datum/mind/player, turf/override_spawn_loc)
+
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return
+
+	var/mob/living/carbon/human/yautja/member = new(spawn_loc)
+	player.transfer_to(member, TRUE)
+
+	if(!leader && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(member.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = member
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Enforcer, tasked with the most dangerous of threats unworthy of being hunted.")))
+		arm_equipment(member, team_lead_preset, TRUE, TRUE)
+	else
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Soldier, one of few Yautja equipped for full-scale warfare.")))
+		arm_equipment(member, team_member_preset, TRUE, TRUE)
+
+	to_chat(member, SPAN_BOLDNOTICE("You and your comrades are absolutely loyal to the Council of Ancients and must follow their directives."))
+	to_chat(member, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), member, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

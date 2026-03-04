@@ -98,6 +98,11 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
+    name: 'Yautja SpecOps',
+    freq: 1207,
+    color: '#1ecc43',
+  },
+  {
     name: "Dutch's Dozen",
     freq: 1210,
     color: '#1ecc43',

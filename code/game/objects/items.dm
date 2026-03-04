@@ -902,9 +902,10 @@
 /obj/item/proc/unzoom(mob/living/user)
 	if(user.interactee == src)
 		user.unset_interaction()
-	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
-	SPAN_NOTICE("You look up from [zoom_device]."))
+	if(zoom) // don't give us the message if we aren't even zoomed in
+		var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+		INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
+		SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)

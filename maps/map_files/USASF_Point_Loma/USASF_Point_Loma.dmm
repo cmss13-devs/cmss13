@@ -9007,7 +9007,6 @@
 /turf/open/new_varadero/alt_concrete/warning/east,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "azW" = (
-/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /obj/structure/pipes/standard/manifold/visible{
 	dir = 8
 	},
@@ -10328,11 +10327,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
-"aDA" = (
-/obj/item/shard,
-/obj/structure/window_frame/colony/reinforced,
-/turf/closed/wall/new_varadero/reinforced,
-/area/point_loma/airbase/interior/garage)
 "aDB" = (
 /obj/structure/surface/table,
 /turf/open/floor/corsat/squares,
@@ -13915,7 +13909,7 @@
 	req_one_access = null;
 	autoname = 1
 	},
-/turf/open/floor/shiva/redfull,
+/turf/open/floor/shiva/snow_mat/east,
 /area/point_loma/airbase/interior/hospital)
 "aNR" = (
 /obj/structure/platform/stone/kutjevo/west,
@@ -17363,7 +17357,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/shiva/snow_mat/east,
 /area/point_loma/airbase/interior/hospital)
 "aYg" = (
 /obj/structure/sign/safety/coffee{
@@ -21493,6 +21487,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
+"bjp" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
+	},
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/wood,
+/area/point_loma/research_facility/gym/basketball)
 "bjq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
 	dir = 2;
@@ -35499,6 +35500,11 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/south)
+"cav" = (
+/obj/structure/pipes/standard/simple/visible,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
+/turf/open/floor/shiva/wred/east,
+/area/point_loma/airbase/interior/hospital)
 "caw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat,
@@ -100832,7 +100838,7 @@ bQH
 big
 big
 aBI
-aBI
+bjp
 aBI
 aBI
 aBI
@@ -160322,7 +160328,7 @@ bSg
 bSg
 bSg
 bSg
-aDA
+bRV
 bQd
 bQf
 bQf
@@ -165752,7 +165758,7 @@ bTS
 bzI
 aMb
 aut
-aGo
+cav
 azW
 aGo
 anx
@@ -166667,7 +166673,7 @@ aYf
 cBL
 bTZ
 bTZ
-axH
+aNQ
 cBL
 bTZ
 aig

@@ -8042,17 +8042,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
-"axq" = (
-/obj/structure/prop/new_varadero_props/aa_gun/base{
-	dir = 4;
-	pixel_y = -51
-	},
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
-	dir = 8;
-	pixel_y = -51
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/point_loma/research_facility/research/west)
 "axr" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -12467,6 +12456,10 @@
 	},
 /turf/open/floor/corsat/purplewhite/southeast,
 /area/point_loma/airbase/interior/research)
+"aJZ" = (
+/obj/structure/prop/new_varadero_props/big_gun/testing,
+/turf/open/floor/strata/multi_tiles/west,
+/area/point_loma/research_facility/research/west)
 "aKa" = (
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/cargo/lower)
@@ -36786,18 +36779,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
-"cez" = (
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/base{
-	pixel_y = -19;
-	pixel_x = -34
-	},
-/obj/structure/prop/new_varadero_props/aa_gun/wreck/turret{
-	dir = 1;
-	pixel_y = -19;
-	pixel_x = -35
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -43994,6 +43975,25 @@
 "cCk" = (
 /turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
+"cCl" = (
+/obj/structure/prop/new_varadero_props/big_gun{
+	layer = 5
+	},
+/obj/structure/prop/new_varadero_props/big_gun/lights,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/super_death_cannon/cannon)
+"cCm" = (
+/obj/structure/prop/new_varadero_props/big_gun/barrel{
+	pixel_x = -18;
+	layer = 5
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/super_death_cannon/cannon)
+"cCn" = (
+/obj/structure/prop/new_varadero_props/radar_dish,
+/obj/structure/prop/new_varadero_props/radar_dish_lights,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/oob/sky)
 
 (1,1,1) = {"
 aug
@@ -101308,7 +101308,7 @@ aGw
 aGk
 aFX
 aFP
-aFB
+aJZ
 aFm
 arh
 bJw
@@ -102218,7 +102218,7 @@ aVu
 bIC
 aFY
 aFP
-axq
+aFB
 aFn
 aET
 bJw
@@ -155261,7 +155261,7 @@ bUV
 bUV
 bUV
 bUV
-bUV
+cCl
 bCZ
 bUV
 bBF
@@ -155442,7 +155442,7 @@ bEp
 bUV
 bUV
 bUV
-cez
+bUV
 bUV
 bCZ
 bUV
@@ -155989,7 +155989,7 @@ bUV
 bUV
 bUV
 bUV
-bUV
+cCm
 bCZ
 bUV
 bCN
@@ -156168,8 +156168,8 @@ bUV
 bUV
 bEq
 bDp
-bDp
-bDp
+bUV
+bUV
 bDp
 bDp
 bDa
@@ -157251,7 +157251,7 @@ bTS
 aOV
 aOV
 aOV
-aOV
+cCn
 bAd
 bAd
 bAd

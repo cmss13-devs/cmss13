@@ -108,6 +108,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Brown Boots", 0, /obj/item/clothing/shoes/marine/brown/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Grey Boots", 0, /obj/item/clothing/shoes/marine/grey/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Jungle Boots", 0, /obj/item/clothing/shoes/marine/jungle/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Shoes, White", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
@@ -119,8 +122,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("M3A1 Pattern Synthetic Utility Vest (UA Desert)", 0, /obj/item/clothing/suit/storage/marine/light/synvest/desert, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES (CHOOSE 1)", 0, null, null, null),
-		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
-		list("Black Gloves", 0, /obj/item/clothing/gloves/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+		list("Marine Insulated Gloves", 0, /obj/item/clothing/gloves/marine/insulated, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Marine Insulated Black Gloves", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Marine Black Combat Gloves", 0, /obj/item/clothing/gloves/marine/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+		list("Marine Brown Combat Gloves", 0, /obj/item/clothing/gloves/marine/brown, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+		list("Marine Grey Combat Gloves", 0, /obj/item/clothing/gloves/marine/grey, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+		list("Marine Fingerless Combat Gloves", 0, /obj/item/clothing/gloves/marine/fingerless, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
@@ -418,8 +425,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/shoes
 	category = "Shoes"
 
-/datum/gear/synthetic/shoes/black
+/datum/gear/synthetic/shoes/marine_black
 	path = /obj/item/clothing/shoes/marine
+
+/datum/gear/synthetic/shoes/marine_brown
+	path = /obj/item/clothing/shoes/marine/brown
+
+/datum/gear/synthetic/shoes/marine_grey
+	path = /obj/item/clothing/shoes/marine/grey
+
+/datum/gear/synthetic/shoes/marine_jungle
+	path = /obj/item/clothing/shoes/marine/jungle
 
 /datum/gear/synthetic/shoes/blue
 	path = /obj/item/clothing/shoes/black
@@ -441,6 +457,30 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/shoes/yellow
 	path = /obj/item/clothing/shoes/yellow
+
+/datum/gear/synthetic/gloves
+	category = "Gloves"
+
+/datum/gear/synthetic/gloves/insulated
+	path = /obj/item/clothing/gloves/marine/insulated
+
+/datum/gear/synthetic/gloves/insulated/black
+	path = /obj/item/clothing/gloves/marine/insulated/black
+
+/datum/gear/synthetic/gloves/black
+	path = /obj/item/clothing/gloves/marine/black
+
+/datum/gear/synthetic/gloves/brown
+	path = /obj/item/clothing/gloves/marine/brown
+
+/datum/gear/synthetic/gloves/grey
+	path = /obj/item/clothing/gloves/marine/grey
+
+/datum/gear/synthetic/gloves/fingerless
+	path = /obj/item/clothing/gloves/marine/fingerless
+
+/datum/gear/synthetic/gloves/dress
+	path = /obj/item/clothing/gloves/marine/dress
 
 /datum/gear/synthetic/headwear
 	category = "Headwear"
@@ -715,6 +755,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/marine_service
 	path = /obj/item/clothing/suit/storage/jacket/marine/service
 
+/datum/gear/synthetic/suit/marine_service
+	path = /obj/item/clothing/suit/storage/jacket/marine/service/mp
+
 /datum/gear/synthetic/suit/windbreaker_brown
 	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown
 
@@ -841,9 +884,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/purple_tie
 	path = /obj/item/clothing/accessory/tie/purple
-
-/datum/gear/synthetic/dress_gloves
-	path = /obj/item/clothing/gloves/marine/dress
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools

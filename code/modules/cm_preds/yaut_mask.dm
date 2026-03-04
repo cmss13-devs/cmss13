@@ -273,6 +273,16 @@
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
+// emissary mask
+
+/obj/item/clothing/mask/gas/yautja/hunter/emissary
+	icon_state = "pred_mask_elite_emissary"
+
+/obj/item/clothing/mask/gas/yautja/hunter/emissary/New() // guarantee this icon vs randomization
+	..()
+	icon_state = "pred_mask_elite_emissary"
+	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
+
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
 	name = "alien stone mask"

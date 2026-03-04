@@ -4339,9 +4339,7 @@
 /turf/open/floor/warnwhite/northwest,
 /area/lv624/lazarus/fitness)
 "axu" = (
-/obj/structure/holohoop{
-	density = 0
-	},
+/obj/structure/holohoop,
 /turf/open/floor/warnwhite/north,
 /area/lv624/lazarus/fitness)
 "axv" = (
@@ -4735,8 +4733,7 @@
 /area/lv624/lazarus/fitness)
 "azk" = (
 /obj/structure/holohoop{
-	dir = 1;
-	density = 0
+	dir = 1
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/warnwhite,

@@ -175,6 +175,9 @@
 
 	return ..()
 
+/obj/structure/holohoop/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15, north_offset = 15, south_offset = 15)
 
 /obj/structure/machinery/readybutton
 	name = "Ready Declaration Device"

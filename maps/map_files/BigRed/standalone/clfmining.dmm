@@ -3212,7 +3212,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "YI" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 13
 	},
 /turf/open/mars_cave/mars_dirt_4,

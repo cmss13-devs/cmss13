@@ -60,6 +60,9 @@
 /datum/behavior_delegate/proc/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	return original_damage
 
+/datum/behavior_delegate/proc/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/A)
+	return original_damage
+
 /datum/behavior_delegate/proc/melee_attack_additional_effects_target(mob/living/carbon/A)
 	return
 

@@ -101,14 +101,13 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi'
 	)
 	flags_equip_slot = NO_FLAGS
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_8
 	throwforce = MELEE_FORCE_WEAK
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	shield_flags = CAN_BLOCK_POUNCE
 	w_class = SIZE_MASSIVE
 	embeddable = FALSE
-	flags_item = ADJACENT_CLICK_DELAY
 	attack_verb = list("thwacked", "smacked")
 	attack_speed = 1 SECONDS
 	shield_type = SHIELD_ABSOLUTE
@@ -116,7 +115,7 @@
 
 /obj/item/weapon/javelin
 	name = "Javelin"
-	desc = "A large spear used by Roman infantry units. Extremely deadly in the right hands but hard to carry around."
+	desc = "A large spear used by Roman infantry units. Extremely deadly in the right hands but hard to carry around. To throw the spear effectively, you have to raise it."
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	icon_state = "javelin"
 	item_state = "javelin"
@@ -129,7 +128,6 @@
 	flags_equip_slot = NO_FLAGS
 	force = MELEE_FORCE_TIER_4
 	throwforce = 100 //Does high damage but can't be spammed
-	flags_item = ADJACENT_CLICK_DELAY
 	sharp = IS_SHARP_ITEM_SIMPLE
 	embeddable = FALSE
 	w_class = SIZE_MASSIVE
@@ -146,7 +144,7 @@
 	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
 	javelin_readied = TRUE
 	item_state = "javelin_w"
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_7
 	throw_range = 6
 
 /obj/item/weapon/javelin/proc/lower_javelin(mob/user as mob)

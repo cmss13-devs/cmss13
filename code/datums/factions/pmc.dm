@@ -48,7 +48,7 @@
 			hud_icon_state = "commando_leader"
 		if(JOB_WY_COMMANDO_GUNNER)
 			hud_icon_state = "commando_sg"
-		if(JOB_WY_COMMANDO_DOGCATHER)
+		if(JOB_WY_COMMANDO_DOGCATCHER)
 			hud_icon_state = "commando_dogcatcher"
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "pmc_[hud_icon_state]")

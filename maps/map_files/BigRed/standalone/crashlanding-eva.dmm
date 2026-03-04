@@ -105,19 +105,19 @@
 /area/bigredv2/outside/general_offices)
 "aw" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
+/obj/structure/shuttle/part/ert/front_left_wy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars,
 /area/bigredv2/caves_north)
 "ax" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "wy27"
 	},
 /area/bigredv2/caves_north)
 "ay" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
-	},
+/obj/structure/shuttle/part/ert/front_right_wy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars,
 /area/bigredv2/caves_north)
 "az" = (
 /obj/item/ammo_magazine/rifle/heap{
@@ -163,9 +163,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
-	},
+/obj/structure/shuttle/part/ert/front_right_wy,
+/turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "aI" = (
 /turf/closed/wall/solaris/reinforced,
@@ -304,7 +303,7 @@
 /area/bigredv2/outside/general_offices)
 "bg" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship/can_surgery,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -510,15 +509,13 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cs" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/bigredv2/outside/general_offices)
 "cv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/bigredv2/outside/general_offices)
 "cA" = (
@@ -530,15 +527,13 @@
 /area/bigredv2/outside/general_offices)
 "cC" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/bigredv2/outside/general_offices)
 "cD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/bigredv2/outside/general_offices)
 "cE" = (
@@ -552,10 +547,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "cG" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "cH" = (
 /turf/closed/shuttle/ert{
@@ -578,10 +571,8 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "cO" = (
 /obj/structure/window/framed/solaris,
@@ -636,7 +627,7 @@
 	dir = 2;
 	welded = 1
 	},
-/turf/open/shuttle/dropship/can_surgery,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
 "fm" = (
 /obj/structure/dispenser/oxygen,

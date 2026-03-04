@@ -143,17 +143,21 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', attached_atom, "chute_static")
 	var/corr_x = (attached_atom.pixel_x * -1)//This fixes a pixel offset bug with big sprites
 	var/original_dir = attached_atom.dir
+
 	if(ishuman(attached_atom))
 		var/mob/living/L = attached_atom
-		L.rotate_on_lying = FALSE
-		L.apply_transform(matrix())
-		L.dir = SOUTH
+		L.set_lying_angle(0)
+		L.setDir(SOUTH)
+		L.update_transform(TRUE)
+
+
 	I.pixel_x = corr_x
 	cables.pixel_x = corr_x
 	chute.pixel_x = corr_x - 16
 	chute.pixel_y = 16
 	icon_state = ""
 	attached_atom.overlays += list(cables, chute, I)
+
 	var/originalLayer = attached_atom.layer
 	var/originalAlpha = attached_atom.alpha
 	attached_atom.layer = 100 //You want this above everything else because it flies up into the sky
@@ -164,8 +168,6 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	playsound(loc, 'sound/items/fulton_takeoff.ogg', 50, 1)
 	sleep(50)
 	original_location = get_turf(attached_atom)
-
-
 
 	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
 	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
@@ -186,10 +188,10 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 
 	if(ishuman(attached_atom))
 		var/mob/living/L = attached_atom
-		L.rotate_on_lying = TRUE
-		L.dir = original_dir
-		L.apply_transform(matrix())
+		L.setDir(original_dir)
 		L.update_transform(TRUE)
+		L.set_lying_angle(90)
+
 	attached_atom.overlays -= list(I, cables, chute)
 	attached_atom.layer = originalLayer
 	attached_atom.alpha = originalAlpha

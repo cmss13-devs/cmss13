@@ -23249,7 +23249,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "hWM" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 15
 	},
 /turf/open/mars_cave/mars_cave_15,
@@ -35794,7 +35794,7 @@
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_se)
 "uPF" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 13
 	},
 /turf/open/mars_cave/mars_dirt_4,

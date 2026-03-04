@@ -145,6 +145,41 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "fullarmor_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
+/// emissary armor
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary
+	name = "YM4 pattern clan armor"
+	desc = "A suit of oversized armor built from M3 pattern plating and Smart-Gunner mesh, built for something larger than any normal man."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+	icon_state = "halfarmor_elite_emissary_classic"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "halfarmor_elite_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
+	camo_type = "desert"
+	icon_state = "halfarmor_elite_emissary_desert"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "halfarmor_elite_emissary_jungle"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/snow
+	camo_type = "snow"
+	icon_state = "halfarmor_elite_emissary_snow"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/urban
+	camo_type = "urban"
+	icon_state = "halfarmor_elite_emissary_urban"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming
+	conforming = TRUE
+
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
@@ -265,6 +300,40 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/clothing/shoes/yautja/hunter/knife
 	spawn_item_type = /obj/item/weapon/yautja/knife
+
+// emissary greaves
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary
+	name = "clan combat boots"
+	desc = "A pair of armored boots modified with human armor plating, though still scaled to fit a hunter."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/New(location)
+	..()
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "elite_y-boots1_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_[camo_type]")
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/desert
+	camo_type = "desert"
+	icon_state = "elite_y-boots1_emissary_desert"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "elite_y-boots1_emissary_jungle"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/snow
+	camo_type = "snow"
+	icon_state = "elite_y-boots1_emissary_snow"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/urban
+	camo_type = "urban"
+	icon_state = "elite_y-boots1_emissary_urban"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming
+	conforming = TRUE
 
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"

@@ -226,7 +226,7 @@
 		G.reagents.trans_to(src, G.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transferring the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 

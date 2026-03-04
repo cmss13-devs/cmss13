@@ -84,17 +84,23 @@
 		close_popout_tacmaps(user)
 
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
-	interactees -= user
-
 	if(!user.client)
 		return
 
-	user.client.remove_from_screen(map)
-	user.client.remove_from_screen(drawing_actions)
-	user.client.remove_from_screen(close_button)
+	// Clean up per client objects
+	var/list/user_objects = interactees[user]
+	if(user_objects)
+		user.client.remove_from_screen(user_objects["map"])
+		user.client.remove_from_screen(user_objects["drawing_actions"])
+		user.client.remove_from_screen(user_objects["close_button"])
+
+		// Clean up drawing tool references
+		var/atom/movable/screen/minimap/user_map = user_objects["map"]
+		user_map?.active_draw_tool = null
+
+	interactees -= user
 	user.client.mouse_pointer_icon = null
 	user.client.active_draw_tool = null
-	map?.active_draw_tool = null
 	winset(user, "drawingtools", "reset=true")
 	user.client.using_main_tacmap = FALSE
 
@@ -103,19 +109,29 @@
 		to_chat(user.client, SPAN_WARNING("You're already using a tacmap. Close it to open another one."))
 		return
 
-	if(!map)
-		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing)
+	if(!map_holder)
 		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
-		close_button = new /atom/movable/screen/exit_map(null, src)
-		var/list/atom/movable/screen/actions = list()
-		for(var/path in drawing_tools)
-			actions += new path(null, targetted_zlevel, minimap_flag, map, src)
-		drawing_actions = actions
 
-	user.client.add_to_screen(drawing_actions)
-	user.client.add_to_screen(close_button)
-	user.client.add_to_screen(map)
-	interactees += user
+	// Create per client minimap and tools for ceiling protection isolation
+	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
+	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
+
+	var/list/atom/movable/screen/user_drawing_actions = list()
+	for(var/path in drawing_tools)
+		user_drawing_actions += new path(null, targetted_zlevel, minimap_flag, user_map, src)
+
+	user.client.add_to_screen(user_drawing_actions)
+	user.client.add_to_screen(user_close_button)
+	user.client.add_to_screen(user_map)
+
+	// Apply ceiling protection overlay if client has preference enabled
+	if(user.client.prefs?.show_minimap_ceiling_protection)
+		user_map.update_ceiling_overlay(user.client)
+
+	// Store references for cleanup
+	if(!interactees[user])
+		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions)
+
 	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)

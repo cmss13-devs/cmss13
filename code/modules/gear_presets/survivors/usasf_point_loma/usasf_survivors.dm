@@ -182,13 +182,10 @@
 						if(3)
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)
 		if (4 to 10) //on-duty
-			var/onduty_outfit = rand(1,2)
+			var/onduty_outfit = rand(1) // left as switch just in case it's desired
 			switch(onduty_outfit)
 				if (1)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/usasf, WEAR_ACCESSORY)
-				if (2)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc, WEAR_BODY)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/usasf, WEAR_ACCESSORY)
 	switch(shoes)
 		if (1)

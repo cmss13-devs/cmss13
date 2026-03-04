@@ -174,7 +174,7 @@ export const RADIO_PREFIXES = {
   },
   '.k ': {
     id: 'yautja',
-    label: 'SpecOps',
+    label: 'Yautja Military',
   },
   '#k ': {
     id: 'specops',

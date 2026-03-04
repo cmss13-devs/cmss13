@@ -40,6 +40,9 @@ SUBSYSTEM_DEF(mapping)
 	/// list of lazy templates that have been loaded
 	var/list/loaded_lazy_templates
 
+	/// The bounds maps loaded by LoadGroup
+	var/list/load_group_bounds = list()
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!configs)
@@ -196,6 +199,7 @@ SUBSYSTEM_DEF(mapping)
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
 			var/datum/space_level/zlevel = z_list[start_z + z - 1]
 			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
+		load_group_bounds[name] = bounds
 
 	// =============== END CM Change =================
 

@@ -32,6 +32,9 @@
 /datum/equipment_preset/survivor/usasf/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
 
+/datum/equipment_preset/survivor/usasf/load_vanity(mob/living/carbon/human/new_human)
+	..()
+
 /datum/equipment_preset/survivor/usasf/crew
 	name = "Survivor - USASF Enlisted Crew"
 	flags = EQUIPMENT_PRESET_STUB // Fails tests without this idk why
@@ -219,7 +222,6 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech
 	name = "Survivor - USASF Hangar Technician"
@@ -235,7 +237,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech
 	name = "Survivor - USASF Cargo Technician"
@@ -251,7 +252,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e1, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/medical //abstract
 	name = "Survivor - USASF Medical Staff"
@@ -283,7 +283,6 @@
 	spawn_usasf_weapon(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor
 	name = "Survivor - USASF Doctor"
@@ -298,7 +297,6 @@
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o3, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/security
 	name = "Survivor - USASF Security Police"
@@ -325,7 +323,6 @@
 	var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	uniform.attach_accessory(new_human,patch_SP)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e3, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
 	spawn_security_primary(new_human)
@@ -352,7 +349,6 @@
 	)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/load_gear(mob/living/carbon/human/new_human)
-	//new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o2, WEAR_ACCESSORY) // Commented out until I can figure out how to equip this without CO equipping it
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)
@@ -374,7 +370,6 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o3, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co
 	name = "Survivor - USASF Aerospace Base Commander"
@@ -388,11 +383,11 @@
 	..()
 	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/o5, WEAR_ACCESSORY)
 
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
 	name = "Survivor - USASF Synthetic"
 	paygrades = list(PAY_SHORT_NE7 = JOB_PLAYTIME_TIER_0)
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_USASF_SYNTHETIC
 	job_title  = JOB_USASF_SYNTHETIC

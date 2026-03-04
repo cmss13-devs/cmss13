@@ -912,7 +912,6 @@
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
@@ -951,7 +950,6 @@
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 		RegisterSignal(user.client, COMSIG_CLIENT_ANIMATING, PROC_REF(zoom_handle_client_animate))

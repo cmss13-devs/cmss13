@@ -202,6 +202,7 @@
 		else
 			unset_interaction()
 	interactee = AM
+	RegisterSignal(interactee, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, unset_interaction))
 	if(istype(interactee)) //some stupid code is setting datums as interactee...
 		interactee.on_set_interaction(src)
 
@@ -210,6 +211,7 @@
 	if(interactee)
 		var/atom/movable/prev_interactee = interactee
 		interactee = null
+		UnregisterSignal(prev_interactee, COMSIG_PARENT_QDELETING)
 		if(istype(prev_interactee))
 			prev_interactee.on_unset_interaction(src)
 
@@ -221,7 +223,7 @@
 
 /obj/on_set_interaction(mob/user)
 	..()
-	in_use = 1
+	in_use = TRUE
 
 
 //things the user's machine must do just before we unset the user's machine.

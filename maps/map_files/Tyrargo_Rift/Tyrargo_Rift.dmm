@@ -89371,7 +89371,7 @@
 /area/tyrargo/oob/outdoors)
 "eqh" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -89379,7 +89379,7 @@
 /area/tyrargo/oob/outdoors)
 "eqi" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},

@@ -286,6 +286,13 @@
 	/// it's really not necessary to stop people from learning powerloader skill
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/fireman_carry
+	name = "fireman carry instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."
+	icon_state = "pamphlet_fireman_carry"
+	trait = /datum/character_trait/skills/fireman
+	bypass_pamphlet_limit = TRUE
+
 /obj/item/pamphlet/skill/police
 	name = "Policing instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."

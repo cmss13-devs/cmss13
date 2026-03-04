@@ -141,6 +141,11 @@
 	trait_desc = "Boosts the policing skill by 1. Crewmember received training in use of security equipment."
 	skill = SKILL_POLICE
 
+/datum/character_trait/skills/fireman
+	trait_name = "Fireman Carry Training"
+	trait_desc = "Boosts the fireman carry skill by 1. Crewmember received training in use of the fireman carry technique."
+	skill = SKILL_FIREMAN
+
 /datum/character_trait/skills/surgery
 	trait_name = "Surgery Training"
 	trait_desc = "Boosts the surgery and research skills. Crewmember received training in surgery and advanced R&D."

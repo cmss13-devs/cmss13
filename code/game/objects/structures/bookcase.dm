@@ -94,10 +94,10 @@
 			return
 
 /obj/structure/bookcase/update_icon()
-	if(length(contents) < 5)
+	if(length(contents) < 6)
 		icon_state = "book-[length(contents)]"
 	else
-		icon_state = "book-5"
+		icon_state = "book-6"
 
 
 /obj/structure/bookcase/manuals/medical

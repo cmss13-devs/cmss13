@@ -212,7 +212,6 @@
 /area/lv759/indoors/meridian/meridian_factory)
 "jr" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/effect/hybrisa/misc/fake/wire/red,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = 6
@@ -263,7 +262,7 @@
 "jS" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -461,7 +460,6 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155

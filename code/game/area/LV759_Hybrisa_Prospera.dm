@@ -596,6 +596,12 @@
 	name = "Garage - Restroom"
 	icon_state = "garage"
 
+// Administrative Records Bureau Complex
+
+/area/lv759/indoors/admin_records
+	name = "Weyland-Yutani - Administrative Records Bureau Complex"
+	icon_state = "wyoffice"
+
 // Meridian Offices & Factory Floor
 
 /area/lv759/indoors/meridian/meridian_foyer

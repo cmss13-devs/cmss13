@@ -1052,6 +1052,12 @@
 /obj/structure/bed/chair/comfy/hybrisa/brown
 	icon_state = "comfychair_hybrisabrown"
 
+/obj/structure/bed/chair/comfy/hybrisa/white
+	icon_state = "comfychair_hybrisawhite"
+
+/obj/structure/bed/chair/comfy/hybrisa/teal
+	icon_state = "comfychair_hybrisateal"
+
 // Beds
 
 /obj/structure/bed/hybrisa/dingy
@@ -2674,8 +2680,9 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	explo_proof = TRUE
+	explo_proof = FALSE
 	layer = ABOVE_MOB_LAYER
+	health = 3000
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
@@ -2801,6 +2808,15 @@
 	name = "Couch"
 	desc = "Just like Space Ikea would have wanted."
 	icon_state = "sofa_red"
+	anchored = TRUE
+	can_buckle = FALSE
+
+// Sofa Teal
+
+/obj/structure/bed/sofa/hybrisa/sofa/teal
+	name = "Couch"
+	desc = "Just like Space Ikea would have wanted."
+	icon_state = "sofa_teal"
 	anchored = TRUE
 	can_buckle = FALSE
 

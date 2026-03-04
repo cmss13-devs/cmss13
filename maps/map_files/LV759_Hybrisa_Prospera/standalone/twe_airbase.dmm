@@ -66,6 +66,10 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ai" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -2183,10 +2187,6 @@
 "sB" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
-"sD" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/hybrisa/street/sidewalk/east,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "sH" = (
 /obj/structure/machinery/big_computers/computerblack/computer5,
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
@@ -4857,7 +4857,7 @@ EY
 YA
 Mg
 ZZ
-sD
+ai
 pb
 BY
 RH

@@ -112,8 +112,8 @@
 		for(var/turf/target_turf in view(SSmapping.get_turf_above(under_the_stairs)))
 			if((dir == NORTH && target_turf.y <= stair.y) || (dir == EAST && target_turf.x <= stair.x) || (dir == SOUTH && target_turf.y >= stair.y) || (dir == WEST && target_turf.x >= stair.x))
 				continue
-			if(istransparentturf(target_turf))
-				continue
+			// Don't skip transparent turfs here; vis_contents_holder has VIS_HIDE and will not be copied
+			// So we'll just get the turf itself (for catwalks, etc) and anything on it, like lights or flying objects
 			destination_turf_images[target_turf] = create_vis_contents_screen(SSmapping.get_turf_below(target_turf), target_turf)
 			destination_vectors[target_turf] = vector(target_turf.x, target_turf.y)
 
@@ -188,6 +188,7 @@
 	clone.vis_contents += GLOB.above_blackness_backdrop
 	clone.override = TRUE
 
+	// Make sure we aren't blocked by the blackness plane, we're drawing over obscured turfs after all
 	clone.plane = ABOVE_BLACKNESS_PLANE
 
 	return clone

@@ -183,12 +183,12 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 
 	forceMove(attached_atom)
 	GLOB.deployed_fultons += src
+
 	if(ishuman(attached_atom))
 		var/mob/living/L = attached_atom
 		L.rotate_on_lying = TRUE
 		L.dir = original_dir
-		if(L.stat == DEAD)
-			L.lying_angle = 90
+		L.apply_transform(matrix())
 		L.update_transform(TRUE)
 	attached_atom.overlays -= list(I, cables, chute)
 	attached_atom.layer = originalLayer

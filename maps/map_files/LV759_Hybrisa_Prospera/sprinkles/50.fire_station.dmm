@@ -2469,14 +2469,13 @@
 /area/lv759/indoors/fire_station)
 "Vh" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/pamphlet/skill/fireman_carry,
 /obj/item/tool/extinguisher/mini{
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/obj/item/stack/medical/advanced/ointment/upgraded{
-	pixel_x = 8;
-	pixel_y = 5
+/obj/item/pamphlet/upgradeable/fireman_carry{
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv759/indoors/fire_station)

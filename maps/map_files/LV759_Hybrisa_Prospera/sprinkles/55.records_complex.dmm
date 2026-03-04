@@ -488,9 +488,9 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/obj/item/pamphlet/skill/intel{
+/obj/item/pamphlet/upgradeable/intel{
 	pixel_x = -6;
-	pixel_y = 8
+	pixel_y = 7
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6;

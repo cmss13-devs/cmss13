@@ -488,3 +488,6 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
+
+/obj/structure/machinery/computer/shuttle/lifeboat/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE

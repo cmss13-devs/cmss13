@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			acceptableTurfs.Add(unchecked_turf) //Because orderedArea was an ordered linear list, acceptableTurfs will be as well.
 
 	launch_list = list() //Anything in launch_list will go into the supplypod when it is launched
-	if (length(acceptableTurfs) && !custom_dropoff) //We dont fill the supplypod if acceptableTurfs is empty, if the pod is going in reverse (effectReverse=true), or if the pod is acitng like a missile (effectMissile=true)
+	if (length(acceptableTurfs) && !custom_dropoff) //We don't fill the supplypod if acceptableTurfs is empty, if the pod is going in reverse (effectReverse=true), or if the pod is acitng like a missile (effectMissile=true)
 		switch(launch_choice)
 			if(LAUNCH_ALL) //If we are launching all the turfs at once
 				for (var/t in acceptableTurfs)

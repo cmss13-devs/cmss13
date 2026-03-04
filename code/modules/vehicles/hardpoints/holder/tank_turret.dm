@@ -177,17 +177,17 @@
 
 			switch(dir)
 				if(NORTH)
-					user.client.pixel_x = 0
-					user.client.pixel_y = AM.view_tile_offset * 32
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(AM.view_tile_offset * 32)
 				if(SOUTH)
-					user.client.pixel_x = 0
-					user.client.pixel_y = -1 * AM.view_tile_offset * 32
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(-1 * AM.view_tile_offset * 32)
 				if(EAST)
-					user.client.pixel_x = AM.view_tile_offset * 32
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(AM.view_tile_offset * 32)
+					user.client.set_pixel_y(0)
 				if(WEST)
-					user.client.pixel_x = -1 * AM.view_tile_offset * 32
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(-1 * AM.view_tile_offset * 32)
+					user.client.set_pixel_y(0)
 
 /obj/item/hardpoint/holder/tank_turret/try_fire(atom/target, mob/living/user, params)
 	var/turf/L

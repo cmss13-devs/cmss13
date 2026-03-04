@@ -228,7 +228,7 @@
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
-#define XENO_AVAILABLE_TIMER 60 //60 seconds
+#define XENO_AVAILABLE_TIMER 30 //30 seconds
 
 /// The damage that xeno health gets divided by for banish tick damage
 #define XENO_BANISHMENT_DMG_DIVISOR 23

@@ -86,6 +86,14 @@ const useTargetSubmenu = (panelId: string) => {
   };
 };
 
+const useQuickMode = (panelId: string) => {
+  const [data, set] = useSharedState<boolean>(`${panelId}_quick_mode`, false);
+  return {
+    quickMode: data,
+    setQuickMode: set,
+  };
+};
+
 export const TargetLines = (props: { readonly panelId: string }) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
@@ -133,7 +141,11 @@ export const TargetLines = (props: { readonly panelId: string }) => {
   );
 };
 
-const leftButtonGenerator = (panelId: string, fmOffset: number) => {
+const leftButtonGenerator = (
+  panelId: string,
+  fmOffset: number,
+  quickMode: boolean,
+) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >();
@@ -167,6 +179,46 @@ const leftButtonGenerator = (panelId: string, fmOffset: number) => {
     };
   };
 
+  // QUICK MODE LOGIC
+  if (quickMode) {
+    if (leftButtonMode === 'QUICK_WEAPON') {
+      const weaponButtons = [
+        {
+          children: 'WEAPON',
+          onClick: () => {
+            setLeftButtonMode('QUICK_FMISS');
+            setStrikeMode('firemission');
+          },
+        },
+      ];
+      return weaponButtons.concat(
+        weapons.map((x) => {
+          return {
+            children: x.shorthand,
+            onClick: () => {
+              setWeaponSelected(x.eqp_tag);
+              setStrikeMode('weapon');
+            },
+          };
+        }),
+      );
+    }
+
+    const fmButtons = range(
+      0,
+      Math.min(5, data.firemission_data.length + 1),
+    ).map(firemission_mapper);
+    fmButtons[0] = {
+      children: 'F-MISS',
+      onClick: () => {
+        setLeftButtonMode('QUICK_WEAPON');
+        setStrikeMode('weapon');
+      },
+    };
+    return fmButtons;
+  }
+
+  // ORIGINAL LOGIC (when QUICK is not enabled)
   if (leftButtonMode === undefined) {
     return [
       {
@@ -326,13 +378,16 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
 
   const { setPanelState } = mfdState(panelStateId);
   const { selectedTarget, setSelectedTarget } = useLazeTarget();
-  const { strikeMode } = useStrikeMode();
-  const { strikeDirection } = useStrikeDirection();
+  const { strikeMode, setStrikeMode } = useStrikeMode();
+  const { strikeDirection, setStrikeDirection } = useStrikeDirection();
   const { weaponSelected } = useWeaponSelectedState();
   const { firemissionSelected } = useTargetFiremissionSelect();
   const { targetOffset, setTargetOffset } = useTargetOffset(panelStateId);
   const [fmOffset, setFmOffset] = useState(0);
-  const { leftButtonMode } = useTargetSubmenu(props.panelStateId);
+  const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(
+    props.panelStateId,
+  );
+  const { quickMode, setQuickMode } = useQuickMode(props.panelStateId);
 
   const { fmXOffsetValue } = useFiremissionXOffsetValue();
   const { fmYOffsetValue } = useFiremissionYOffsetValue();
@@ -406,7 +461,20 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             }
           },
         },
-        {},
+        {
+          children: 'QUICK',
+          onClick: () => {
+            setQuickMode(!quickMode);
+            if (!quickMode) {
+              // When enabling quick mode, default to F-MISS with fire missions shown
+              setLeftButtonMode('QUICK_FMISS');
+              setStrikeMode('firemission');
+            } else {
+              // When disabling quick mode, reset to default
+              setLeftButtonMode(undefined);
+            }
+          },
+        },
         {},
         {
           children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
@@ -422,35 +490,64 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-        {
-          children:
-            leftButtonMode === 'STRIKE' &&
-            strikeMode === 'firemission' &&
-            firemissionSelected === undefined &&
-            fmOffset + 4 < data.firemission_data?.length ? (
-              <Icon name="arrow-down" />
-            ) : undefined,
-          onClick: () => {
-            if (fmOffset + 4 < data.firemission_data?.length) {
-              setFmOffset(fmOffset + 1);
+        // In QUICK mode, show vector directions; otherwise show fire mission arrows
+        quickMode
+          ? {
+              children: 'NORTH',
+              onClick: () => {
+                setStrikeDirection('NORTH');
+              },
             }
-          },
-        },
-        {},
-        {},
-        {
-          children:
-            targetOffset + 5 < data.targets_data?.length ? (
-              <Icon name="arrow-down" />
-            ) : undefined,
-          onClick: () => {
-            if (targetOffset + 5 < data.targets_data?.length) {
-              setTargetOffset(targetOffset + 1);
+          : {
+              children:
+                leftButtonMode === 'STRIKE' &&
+                strikeMode === 'firemission' &&
+                firemissionSelected === undefined &&
+                fmOffset + 4 < data.firemission_data?.length ? (
+                  <Icon name="arrow-down" />
+                ) : undefined,
+              onClick: () => {
+                if (fmOffset + 4 < data.firemission_data?.length) {
+                  setFmOffset(fmOffset + 1);
+                }
+              },
+            },
+        quickMode
+          ? {
+              children: 'SOUTH',
+              onClick: () => {
+                setStrikeDirection('SOUTH');
+              },
             }
-          },
-        },
+          : {},
+        quickMode
+          ? {
+              children: 'EAST',
+              onClick: () => {
+                setStrikeDirection('EAST');
+              },
+            }
+          : {},
+        quickMode
+          ? {
+              children: 'WEST',
+              onClick: () => {
+                setStrikeDirection('WEST');
+              },
+            }
+          : {
+              children:
+                targetOffset + 5 < data.targets_data?.length ? (
+                  <Icon name="arrow-down" />
+                ) : undefined,
+              onClick: () => {
+                if (targetOffset + 5 < data.targets_data?.length) {
+                  setTargetOffset(targetOffset + 1);
+                }
+              },
+            },
       ]}
-      leftButtons={leftButtonGenerator(panelStateId, fmOffset)}
+      leftButtons={leftButtonGenerator(panelStateId, fmOffset, quickMode)}
       rightButtons={targets}
     >
       <Box className="NavigationMenu">
@@ -495,6 +592,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
               </Stack.Item>
               <Stack.Item>
                 <h3>Strike mode: {strikeMode?.toUpperCase() ?? 'NONE'}</h3>
+              </Stack.Item>
+              <Stack.Item>
+                <h3>Target mode: {quickMode ? 'QUICK' : 'STANDARD'}</h3>
               </Stack.Item>
               <Stack.Item>
                 <h3>Strike configuration {strikeConfigLabel}</h3>

@@ -336,7 +336,7 @@
 	if(thought_sender.client?.prefs.no_radials_preference)
 		choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts", options, theme="hive_status")
 	else
-		choice = show_radial_menu(thought_sender, thought_sender?.client.eye, options)
+		choice = show_radial_menu(thought_sender, thought_sender?.client.get_eye(), options)
 
 	if(!choice)
 		return
@@ -440,7 +440,7 @@
 	else
 		var/tier = HIVEBUFF_TIER_MINOR
 		if(major_available)
-			tier = show_radial_menu(xeno, xeno?.client?.eye, radial_images_tiers)
+			tier = show_radial_menu(xeno, xeno?.client?.get_eye(), radial_images_tiers)
 
 		if(tier == HIVEBUFF_TIER_MAJOR)
 			for(var/filtered_buffname as anything in buffs)
@@ -453,7 +453,7 @@
 				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
 					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
 
-		selection = show_radial_menu(xeno, xeno?.client?.eye, radial_images, radius = 72, tooltips = TRUE)
+		selection = show_radial_menu(xeno, xeno?.client?.get_eye(), radial_images, radius = 72, tooltips = TRUE)
 
 	if(!selection)
 		return FALSE
@@ -491,7 +491,7 @@
 	var/list/target_list = list()
 	if(!user_xeno.client)
 		return
-	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.eye))
+	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.get_eye()))
 		if(possible_target.stat == DEAD)
 			continue
 		if(possible_target.status_flags & CORRUPTED_ALLY)
@@ -829,6 +829,8 @@
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
+
+	SScmtv.spectate_event("Queen Screech", xeno, 10 SECONDS)
 
 	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
 		if(mob && mob.client)

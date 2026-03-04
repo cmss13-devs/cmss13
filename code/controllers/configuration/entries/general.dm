@@ -115,6 +115,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_overwatch
 
+/datum/config_entry/flag/log_garble
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod

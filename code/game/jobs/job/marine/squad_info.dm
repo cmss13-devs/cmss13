@@ -15,13 +15,24 @@
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
+
+	var/mob/living/carbon/human/human_user = user // Assumption: Only a human can use this UI
+	var/turf/current_turf = get_turf(user)
+	var/is_shipside = is_mainship_level(current_turf?.z)
+	var/garbled = !is_shipside && !(current_turf?.z in SSradio.last_command_zs)
+	if(!garbled) // They've now gotten a connection
+		human_user.squad_primary_objective_ungarbled = TRUE
+		human_user.squad_secondary_objective_ungarbled = TRUE
+	var/primary_garbled = garbled && !human_user.squad_primary_objective_ungarbled
+	var/secondary_garbled = garbled && !human_user.squad_secondary_objective_ungarbled
+
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
 	data["squad_color"] = equipment_color
 	data["is_lead"] = get_leadership(user)
 	data["objective"] = list(
-		"primary" = primary_objective,
-		"secondary" = secondary_objective,
+		"primary" = primary_garbled ? primary_objective_garbled : primary_objective,
+		"secondary" = secondary_garbled ? secondary_objective_garbled : secondary_objective,
 	)
 	return data
 
@@ -57,7 +68,7 @@
 			var/target_marine = params["target_marine"]
 			var/target_team = params["target_ft"]
 
-			if (islead != "sl")
+			if (islead != "sl" && islead != target_team)
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
@@ -70,13 +81,15 @@
 
 		if ("unassign_ft")
 			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
 
-			if (islead != "sl")
+			if (islead != "sl" && islead != target_team)
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
 				return
+
 			unassign_fireteam(target, TRUE)
 			update_all_squad_info()
 			return
@@ -96,6 +109,7 @@
 			var/target_team = params["target_ft"]
 
 			if (islead != "sl")
+				to_chat(usr, SPAN_WARNING("You don't have the permissions to promote a fireteam leader!"))
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)

@@ -1779,11 +1779,11 @@ Defined in conflicts.dm of the #defines folder.
 		return
 
 	if(scoping)
-		scoper.client.pixel_x = x_off * pixels_per_tile
-		scoper.client.pixel_y = y_off * pixels_per_tile
+		scoper.client.set_pixel_x(x_off * pixels_per_tile)
+		scoper.client.set_pixel_y(y_off * pixels_per_tile)
 	else
-		scoper.client.pixel_x = 0
-		scoper.client.pixel_y = 0
+		scoper.client.set_pixel_x(0)
+		scoper.client.set_pixel_y(0)
 
 /// Handler for when the user begins scoping
 /obj/item/attachable/vulture_scope/proc/on_scope()
@@ -1856,8 +1856,8 @@ Defined in conflicts.dm of the #defines folder.
 	scope_user = null
 	scoping = FALSE
 	if(scoper.client)
-		scoper.client.pixel_x = 0
-		scoper.client.pixel_y = 0
+		scoper.client.set_pixel_x(0)
+		scoper.client.set_pixel_y(0)
 
 /// Handler for if the mob moves or changes look direction
 /obj/item/attachable/vulture_scope/proc/on_mob_move_look(mob/living/mover, actually_moving, direction, specific_direction)
@@ -3352,8 +3352,8 @@ Defined in conflicts.dm of the #defines folder.
 
 		var/datum/reagent/to_remove = fuel_holder.reagents.reagent_list[1]
 
-		var/flamer_chem = "utnapthal"
-		if(!istype(to_remove) || flamer_chem != to_remove.id || length(fuel_holder.reagents.reagent_list) > 1)
+		var/list/flamer_chem = list("utnapthal","fuel")
+		if(!istype(to_remove) ||  !(to_remove.id in flamer_chem) || length(fuel_holder.reagents.reagent_list) > 1)
 			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 			return
 

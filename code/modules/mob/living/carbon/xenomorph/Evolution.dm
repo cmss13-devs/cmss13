@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		for(var/caste in castes_available)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 
@@ -440,8 +440,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		new_xeno.key = key
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
-			new_xeno.client.pixel_x = 0
-			new_xeno.client.pixel_y = 0
+			new_xeno.client.set_pixel_x(0)
+			new_xeno.client.set_pixel_y(0)
 
 	//Regenerate the new mob's name now that our player is inside
 	if(newcaste == XENO_CASTE_LARVA)

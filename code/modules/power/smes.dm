@@ -225,42 +225,42 @@
 	tgui_interact(user)
 
 
-/obj/structure/machinery/power/smes/attackby(obj/item/W as obj, mob/user as mob)
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+/obj/structure/machinery/power/smes/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 		if(!open_hatch)
-			open_hatch = 1
+			open_hatch = TRUE
 			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
-			return 0
+			return FALSE
 		else
-			open_hatch = 0
+			open_hatch = FALSE
 			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
-			return 0
+			return FALSE
 
 	if (!open_hatch)
 		to_chat(user, SPAN_WARNING("You need to open access hatch on [src] first!"))
-		return 0
+		return FALSE
 
-	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
-		building_terminal = 1
-		var/obj/item/stack/cable_coil/CC = W
+	if(istype(attacking_item, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
+		building_terminal = TRUE
+		var/obj/item/stack/cable_coil/CC = attacking_item
 		if (CC.get_amount() < 10)
 			to_chat(user, SPAN_WARNING("You need more cables."))
-			building_terminal = 0
-			return 0
+			building_terminal = FALSE
+			return FALSE
 		if (make_terminal(user))
-			building_terminal = 0
-			return 0
-		building_terminal = 0
+			building_terminal = FALSE
+			return FALSE
+		building_terminal = FALSE
 		CC.use(10)
 		user.visible_message(
 				SPAN_NOTICE("[user.name] has added cables to \the [src]."),
 				SPAN_NOTICE("You added cables to \the [src]."))
 		terminal.connect_to_network()
 		stat = 0
-		return 0
+		return FALSE
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && !building_terminal)
-		building_terminal = 1
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && !building_terminal)
+		building_terminal = TRUE
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))
 			if(tempTDir.intact_tile)
@@ -268,22 +268,22 @@
 			else
 				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
-				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)
 						s.start()
-						building_terminal = 0
-						return 0
+						building_terminal = FALSE
+						return FALSE
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(
 						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),
 						SPAN_NOTICE("You cut the cables and dismantle the power terminal."))
 					qdel(terminal)
 					terminal = null
-		building_terminal = 0
-		return 0
-	return 1
+		building_terminal = FALSE
+		return FALSE
+	return TRUE
 
 // TGUI STUFF \\
 

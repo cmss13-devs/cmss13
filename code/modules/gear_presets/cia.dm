@@ -139,6 +139,7 @@
 /datum/equipment_preset/clf/engineer/cia
 	name = "CIA Spy (CLF Engineer)"
 	skills = /datum/skills/cia
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/clf/engineer/cia/New()
 	. = ..()
@@ -178,6 +179,7 @@
 /datum/equipment_preset/upp/soldier/dressed/cia
 	name = "CIA Spy (UPP Soldier)"
 	skills = /datum/skills/cia
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/upp/soldier/dressed/cia/New()
 	. = ..()
@@ -191,6 +193,7 @@
 /datum/equipment_preset/upp/officer/senior/dressed/cia
 	name = "CIA Spy (UPP Senior Officer)"
 	skills = /datum/skills/cia_senior
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()

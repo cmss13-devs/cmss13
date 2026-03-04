@@ -29,7 +29,7 @@
 //previously file holding left over stuff that never got finished from 8 years ago, it was boring though, so we change that.
 /obj/item/research_upgrades
 	name = "Research upgrade"
-	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
+	desc = "Somehow you got this, you shouldn't be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
@@ -38,26 +38,26 @@
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.
 	var/value
 
+// Upgrade for autodoc T1: Internal bleeding
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for stitching up internal bleedings. Insert it in an AutoDoc to use it."
 	value = RESEARCH_UPGRADE_TIER_1
 
+// Upgrade for autodoc T2: Broken bones
+/obj/item/research_upgrades/autodoc/tier2
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for fixing broken bones. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_2
 
-/obj/item/research_upgrades/autodoc/Initialize(mapload, value)
-	. = ..()
-	src.value = value
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [get_upgrade_text()]. Insert it in an AutoDoc to use it."
+// Upgrade for autodoc T3: Internal organ damage
+/obj/item/research_upgrades/autodoc/tier3
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for treating internal organ damage. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_3
 
-/obj/item/research_upgrades/autodoc/proc/get_upgrade_text()
-	switch(value)
-		if(RESEARCH_UPGRADE_TIER_1)
-			return "for stitching up internal bleedings"
-		if(RESEARCH_UPGRADE_TIER_2)
-			return "for fixing broken bones"
-		if(RESEARCH_UPGRADE_TIER_3)
-			return "for treating internal organ damage"
-		if(RESEARCH_UPGRADE_TIER_4)
-			return "for extracting unknown parasites"
+// Upgrade for autodoc T4: Larva removal
+/obj/item/research_upgrades/autodoc/tier4
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for extracting unknown parasites. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_4
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"

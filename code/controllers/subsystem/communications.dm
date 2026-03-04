@@ -286,6 +286,9 @@ SUBSYSTEM_DEF(radio)
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
 
+	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
+	var/list/last_command_zs = list()
+
 	var/static/list/freq_to_span = list(
 		"[COMM_FREQ]" = "comradio",
 		"[AI_FREQ]" = "airadio",
@@ -368,8 +371,8 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
+///Returns lists of Z levels that have comms
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
-	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
@@ -383,8 +386,13 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
-	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
+	if(frequency == COMM_FREQ)
+		last_command_zs = target_zs
 	return target_zs
+
+/// Call this when a cached frequency changed (e.g. tcoms going down/up)
+/datum/controller/subsystem/radio/proc/update_cache()
+	get_available_tcomm_zs(COMM_FREQ)
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))

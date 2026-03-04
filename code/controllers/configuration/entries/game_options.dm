@@ -143,3 +143,41 @@
 	config_entry_value = 0	// Type 0 to disable lock
 	max_val = 100
 	integer = TRUE
+
+/// The length of an announcement for ANNOUNCEMENT_MIN_CLARITY
+/datum/config_entry/number/announcement_max_bound
+	min_val = 2
+	config_entry_value = 120
+	integer = TRUE
+
+/// The max length of an announcement for ANNOUNCEMENT_MAX_CLARITY
+/datum/config_entry/number/announcement_min_bound
+	min_val = 1
+	config_entry_value = 20
+	integer = TRUE
+
+/// The duration between announcements for ANNOUNCEMENT_MIN_CLARITY
+/datum/config_entry/number/announcement_duration_min_bound
+	min_val = COOLDOWN_COMM_MESSAGE
+	config_entry_value = 30 SECONDS // 300
+	integer = TRUE
+
+/// The duration between announcements for ANNOUNCEMENT_MAX_CLARITY
+/datum/config_entry/number/announcement_duration_max_bound
+	min_val = 31 SECONDS // 310
+	config_entry_value = 3 MINUTES // 1800
+	integer = TRUE
+
+/// The clarity percent for messages >= ANNOUNCEMENT_MAX_BOUND or duration <= ANNOUNCEMENT_DURATION_MIN_BOUND
+/datum/config_entry/number/announcement_min_clarity
+	min_val = 0
+	config_entry_value = 45
+	max_val = 100
+	integer = TRUE
+
+/// The clarity percent for messages <= ANNOUNCEMENT_MIN_BOUND or duration >= ANNOUNCEMENT_DURATION_MAX_BOUND
+/datum/config_entry/number/announcement_max_clarity
+	min_val = 0
+	config_entry_value = 95
+	max_val = 100
+	integer = TRUE

@@ -69,7 +69,6 @@
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
 						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
-							for(var/datum/data/record/E in GLOB.data_core.security)
 							dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
@@ -228,7 +227,6 @@ What a mess.*/
 				if (!( GLOB.data_core.general.Find(R) ))
 					temp = "Record Not Found!"
 				else
-					for(var/datum/data/record/E in GLOB.data_core.security)
 					active1 = R
 					screen = 3
 

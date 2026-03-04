@@ -172,7 +172,7 @@
 	hide_from(Q)
 
 /datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.eye
+	var/mob/hologram/queen/H = owner?.client?.get_eye()
 	if(istype(H))
 		return H
 	return owner

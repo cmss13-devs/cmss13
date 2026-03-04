@@ -188,7 +188,7 @@
 			if (src.base_state == "right" || src.base_state == "rightsecure")
 				wa.facing = "r"
 			wa.setDir(src.dir)
-			wa.state = "02"
+			wa.state = WINDOOR_STATE_02
 			wa.update_icon()
 
 			var/obj/item/circuitboard/airlock/ae

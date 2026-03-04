@@ -10,10 +10,10 @@ SUBSYSTEM_DEF(quadtree)
 /datum/controller/subsystem/quadtree/Initialize()
 	cur_quadtrees = new/list(world.maxz)
 	new_quadtrees = new/list(world.maxz)
-	var/datum/shape/rectangle/R
+	var/datum/shape/rectangle/rect
 	for(var/i in 1 to length(cur_quadtrees))
-		R = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
-		new_quadtrees[i] = QTREE(R, i)
+		rect = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
+		new_quadtrees[i] = QTREE(rect, i)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/quadtree/stat_entry(msg)
@@ -30,22 +30,22 @@ SUBSYSTEM_DEF(quadtree)
 			new_quadtrees[i] = QTREE(RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy), i)
 
 	while(length(player_feed))
-		var/client/C = player_feed[length(player_feed)]
+		var/client/cur_client = player_feed[length(player_feed)]
 		player_feed.len--
-		if(!C)
+		if(!cur_client)
 			continue
-		var/turf/T = get_turf(C.mob)
-		if(!T?.z || length(new_quadtrees) < T.z)
+		var/turf/mob_turf = get_turf(cur_client.mob)
+		if(!mob_turf?.z || length(new_quadtrees) < mob_turf.z)
 			continue
 		var/datum/coords/qtplayer/p_coords = new
-		p_coords.player = C
-		p_coords.x_pos = T.x
-		p_coords.y_pos = T.y
-		p_coords.z_pos = T.z
-		if(isobserver(C.mob))
-			p_coords.is_observer = TRUE
-		var/datum/quadtree/QT = new_quadtrees[T.z]
-		QT.insert_player(p_coords)
+		p_coords.player = cur_client
+		p_coords.x_pos = mob_turf.x
+		p_coords.y_pos = mob_turf.y
+		p_coords.z_pos = mob_turf.z
+		p_coords.non_living_mob = !isliving(cur_client.mob)
+		p_coords.weak_mob = WEAKREF(cur_client.mob)
+		var/datum/quadtree/quad = new_quadtrees[mob_turf.z]
+		quad.insert_player(p_coords)
 		if(MC_TICK_CHECK)
 			return
 
@@ -54,8 +54,8 @@ SUBSYSTEM_DEF(quadtree)
 	if(!cur_quadtrees)
 		return players
 	if(z_level && length(cur_quadtrees) >= z_level)
-		var/datum/quadtree/Q = cur_quadtrees[z_level]
-		if(!Q)
+		var/datum/quadtree/quad = cur_quadtrees[z_level]
+		if(!quad)
 			return players
-		players = SEARCH_QTREE(Q, range, flags)
+		players = SEARCH_QTREE(quad, range, flags)
 	return players

@@ -32,3 +32,6 @@
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
+
+/// Called when a movable atom enters an obj's contents (obj/entered, atom/old_loc)
+#define COMSIG_MOVABLE_ENTERED_OBJ "atom_entered"

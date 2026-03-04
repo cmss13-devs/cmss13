@@ -36,7 +36,7 @@
 		products_sets = listed_products[H.assigned_equipment_preset.type]
 	else
 		if(!(/datum/equipment_preset/clf in listed_products))
-			listed_products[/datum/equipment_preset/clf] = GLOB.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
+			listed_products[/datum/equipment_preset/clf] = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
 		products_sets = listed_products[/datum/equipment_preset/clf]
 	return products_sets
 

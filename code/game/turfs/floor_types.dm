@@ -2348,27 +2348,38 @@
 	turf_flags = NO_FLAGS
 	baseturfs = /turf/open/floor
 
+	///Whether this turf is currently being manipulated to prevent doubling up
+	var/busy = FALSE
+
 /turf/open/floor/engine/simulator_center
 	color = "#AAAAAA"
 
 /turf/open/floor/engine/make_plating()
 	return
 
-/turf/open/floor/engine/attackby(obj/item/C as obj, mob/user as mob)
-	if(!C)
+/turf/open/floor/engine/attackby(obj/item/hitting_item, mob/user)
+	if(!hitting_item)
 		return
 	if(!user)
 		return
-	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		return
+
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
+		busy = TRUE
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			busy = FALSE
+			if(!istype(src, /turf/open/floor/engine))
+				return
 			new /obj/item/stack/rods(src, 2)
-			var/turf/open/floor/F = ScrapeAway()
-			if(istype(/turf/open/floor, F))
-				F.make_plating()
-
+			var/turf/open/floor/floor = ScrapeAway()
+			if(istype(/turf/open/floor, floor))
+				floor.make_plating()
+		busy = FALSE
 
 /turf/open/floor/engine/ex_act(severity)
 	switch(severity)

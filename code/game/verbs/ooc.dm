@@ -59,7 +59,7 @@ CLIENT_VERB(ooc, msg as text)
 			display_colour  = CONFIG_GET(string/ooc_color_maint)
 		if(admin_holder.rights & R_COLOR)
 			display_colour = prefs.ooccolor
-	else if(donator)
+	else if(donator || SScmtv.is_subscriber(src))
 		display_colour = prefs.ooccolor
 	if(!display_colour) // if invalid R_COLOR choice
 		display_colour = CONFIG_GET(string/ooc_color_default)
@@ -86,6 +86,9 @@ CLIENT_VERB(ooc, msg as text)
 		prefix += "[country2chaticon(country, GLOB.clients)]"
 	if(donator)
 		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "Donator")]"
+	if(SScmtv.is_subscriber(src))
+		var/static/sub_icon = icon('icons/effects/effects.dmi', "sub")
+		prefix += "[icon2html(sub_icon, GLOB.clients)]"
 	if(isCouncil(src))
 		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
 	var/comm_award = find_community_award_icons()

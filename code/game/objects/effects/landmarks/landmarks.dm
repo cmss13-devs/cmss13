@@ -455,7 +455,7 @@
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
-	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's dont exist in code anymore?
+	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's don't exist in code anymore?
 
 /obj/effect/landmark/start/whiskey/chef
 	icon_state = "chef_spawn"
@@ -687,7 +687,7 @@
 		GLOB.zombie_landmarks -= src
 	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
 	observer.see_invisible = SEE_INVISIBLE_LIVING
-	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
+	observer.client.set_eye(src) // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
 /obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
@@ -695,7 +695,7 @@
 	if(!zombie.hud_used)
 		zombie.create_hud()
 	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
-	observer.client.eye = zombie
+	observer.client.set_eye(zombie)
 	observer.mind.transfer_to(zombie)
 	if(spawns_left <= 0)
 		qdel(src)

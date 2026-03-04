@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/zlevel_transfer = FALSE
 	var/zlevel_transfer_timer = TIMER_ID_NULL
 	var/zlevel_transfer_timeout = 5 SECONDS
-	var/can_be_raised = TRUE // This is for items like the scout helmet where you dont need to raise it.
+	var/can_be_raised = TRUE // This is for items like the scout helmet where you don't need to raise it.
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()

@@ -595,10 +595,16 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	contents -= body
 	body = null
 
-/obj/structure/bed/roller/hospital/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.a_intent == INTENT_HARM && body)
+/obj/structure/bed/roller/hospital/attack_alien(mob/living/carbon/xenomorph/user)
+	if(user.a_intent == INTENT_HARM && body)
 		dump_body()
 	return ..()
+
+/obj/structure/bed/roller/hospital/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(body)
+		dump_body()
+	return ..()
+
 /obj/structure/bed/roller/hospital/bloody
 	base_bed_icon = "bigrollerbloodempty"
 	body_icon_state = "bigrollerblood"

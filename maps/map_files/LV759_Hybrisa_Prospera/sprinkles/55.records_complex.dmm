@@ -151,11 +151,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "cA" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/tool/warning_cone{
-	pixel_y = -11;
-	pixel_x = 13
-	},
-/turf/open/floor/hybrisa/metal/grated/north,
+/turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "cD" = (
 /obj/effect/decal/hybrisa/colorable_line/line1{
@@ -949,19 +945,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/colony_streets/north_west_street)
-"kI" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_5";
-	pixel_x = -3;
-	pixel_y = 14
-	},
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_9";
-	pixel_y = 27
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "kJ" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 12;
@@ -1184,6 +1167,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ms" = (
@@ -2069,6 +2053,7 @@
 /area/lv759/indoors/caves/north_caves)
 "vn" = (
 /obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "vq" = (
@@ -3023,6 +3008,7 @@
 	pixel_x = -4;
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "FS" = (
@@ -3478,6 +3464,7 @@
 "JD" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "JV" = (
@@ -3796,6 +3783,7 @@
 	pixel_x = -2;
 	pixel_y = -14
 	},
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
@@ -4324,22 +4312,7 @@
 /area/lv759/indoors/admin_records)
 "SP" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/prop/hybrisa/misc/trash/green{
-	pixel_y = 2
-	},
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_5";
-	pixel_x = -13;
-	pixel_y = 1
-	},
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_15";
-	pixel_y = 8;
-	pixel_x = -12
-	},
-/obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = "#140400"
-	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "SU" = (
@@ -4482,6 +4455,11 @@
 	pixel_x = -2;
 	pixel_y = -14
 	},
+/obj/item/tool/warning_cone{
+	pixel_y = -8;
+	pixel_x = -9
+	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "UO" = (
@@ -4631,6 +4609,8 @@
 	pixel_x = -2;
 	pixel_y = -14
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -4847,6 +4827,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "YK" = (
 /obj/structure/fence/dark,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "YT" = (
@@ -4950,7 +4931,7 @@ Cd
 Cd
 eh
 wb
-cA
+eh
 kD
 tu
 iE
@@ -4979,9 +4960,9 @@ Cd
 Cd
 jw
 bq
-bq
-SP
-kI
+UO
+UO
+UO
 bq
 eH
 Cd
@@ -5267,7 +5248,7 @@ sl
 ED
 FU
 YK
-xa
+cA
 xa
 fv
 oh
@@ -5294,11 +5275,11 @@ pS
 UO
 UO
 bq
-bq
+UO
 sV
 JD
 vn
-xb
+Jk
 NR
 Nr
 Ud
@@ -5325,9 +5306,9 @@ AI
 dW
 gw
 AI
-bq
+SP
 mn
-xb
+Jk
 pk
 Ag
 Dh

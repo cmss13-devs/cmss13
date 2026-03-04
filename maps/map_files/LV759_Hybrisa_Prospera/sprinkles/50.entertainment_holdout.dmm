@@ -318,7 +318,7 @@
 /turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
 /area/template_noop)
 "lU" = (
-/obj/structure/machinery/door/airlock/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/template_noop)
 "md" = (
@@ -716,7 +716,7 @@
 "FD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
 	dir = 1
 	},
 /turf/open/floor/corsat/officetiles,
@@ -930,10 +930,10 @@
 	pixel_y = 21
 	},
 /obj/effect/decal/hybrisa/bloodtrail,
-/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/officetiles,
 /area/template_noop)
 "PQ" = (
@@ -951,7 +951,7 @@
 /area/template_noop)
 "Re" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/door/airlock/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/template_noop)
 "Ri" = (

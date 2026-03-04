@@ -76,6 +76,7 @@
 	var/muzzleflash_icon_state = "muzzle_flash"
 	var/underlayer_north_muzzleflash = FALSE
 	var/angle_muzzleflash = TRUE
+	var/muzzleflash_deviance = 0.1
 
 	//------AMMUNITION VARS----------
 
@@ -730,9 +731,14 @@
 			muzzle_flash_x += H.px_offsets["[H.loc.dir]"][1]
 			muzzle_flash_y += H.px_offsets["[H.loc.dir]"][2]
 
-	var/image_layer = owner.layer + 0.1
+	if(use_mz_px_offsets)
+		if(LAZYLEN(px_offsets))
+			muzzle_flash_x += px_offsets["[loc.dir]"][1]
+			muzzle_flash_y += px_offsets["[loc.dir]"][2]
+
+	var/image_layer = owner.layer + muzzleflash_deviance
 	if(underlayer_north_muzzleflash && dir == NORTH)
-		image_layer = owner.layer - 0.1
+		image_layer = owner.layer - muzzleflash_deviance
 
 	if(!angle_muzzleflash)
 		angle = dir2angle(dir)

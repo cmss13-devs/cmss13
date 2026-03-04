@@ -370,6 +370,11 @@
 	if(istype(hardpoint))
 		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
 
+	if(ismob(firer))
+		var/mob/mob_firer = firer
+		if(istype(mob_firer.buckled, /obj/vehicle/multitile))
+			LAZYOR(ignore_list, mob_firer.buckled)
+
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))
 		return TRUE

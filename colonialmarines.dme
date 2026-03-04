@@ -1985,6 +1985,8 @@
 #include "code\modules\gear_presets\survivors\tyrargo_rift\us_army_survivors.dm"
 #include "code\modules\halo\unsc_gear.dm"
 #include "code\modules\halo\unsc_presets.dm"
+#include "code\modules\halo\unsc_vehicles\warthog.dm"
+#include "code\modules\halo\unsc_vehicles\warthog_vulcan.dm"
 #include "code\modules\holidays\holidays.dm"
 #include "code\modules\holidays\halloween\decorators.dm"
 #include "code\modules\holidays\halloween\pumpkins\patches.dm"

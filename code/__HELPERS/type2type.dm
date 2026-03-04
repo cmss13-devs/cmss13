@@ -210,8 +210,17 @@
 			return 225
 		else
 			return null
-
 //returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
+
+
+//Converts an angle (degrees) into an ss13 direction
+/proc/angle2cardinaldir(degree)
+	degree = ((degree+45)%365)
+	if(degree < 90) return NORTH
+	if(degree < 180) return EAST
+	if(degree < 270) return SOUTH
+	return WEST
+
 
 /proc/dir2indexnum(D)
 	switch(D)

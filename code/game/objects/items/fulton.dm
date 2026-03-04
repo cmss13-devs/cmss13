@@ -142,6 +142,12 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', attached_atom, "chute_cables_static")
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', attached_atom, "chute_static")
 	var/corr_x = (attached_atom.pixel_x * -1)//This fixes a pixel offset bug with big sprites
+	var/original_dir = attached_atom.dir
+	var/mob/living/L = attached_atom
+	if(ishuman(attached_atom))
+		L.rotate_on_lying = FALSE
+		L.transform = matrix()
+		L.dir = SOUTH
 	I.pixel_x = corr_x
 	cables.pixel_x = corr_x
 	chute.pixel_x = corr_x - 16
@@ -177,9 +183,13 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 
 	forceMove(attached_atom)
 	GLOB.deployed_fultons += src
-	attached_atom.overlays -= I
-	attached_atom.overlays -= cables
-	attached_atom.overlays -= chute
+	if(ishuman(attached_atom))
+		L.rotate_on_lying = TRUE
+		L.dir = original_dir
+		if(L.stat == DEAD)
+			L.lying_angle = 90
+		L.update_transform(TRUE)
+	attached_atom.overlays -= list(I, cables, chute)
 	attached_atom.layer = originalLayer
 	attached_atom.alpha = originalAlpha
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)

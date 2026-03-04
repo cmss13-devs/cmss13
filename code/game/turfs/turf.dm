@@ -478,6 +478,8 @@
 			return
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
+		if(/turf/open/space/basic) // these don't initialize, if you want to create one post-init just use the normal space turf
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
@@ -485,7 +487,7 @@
 	var/pylons = linked_pylons
 
 	var/list/old_baseturfs = baseturfs
-
+	var/old_ref = weak_reference
 	//static lighting
 	var/old_lighting_object = static_lighting_object
 	var/old_lighting_corner_NE = lighting_corner_NE
@@ -513,6 +515,8 @@
 		LAZYOR(W.comp_lookup, old_comp_lookup)
 	if(old_signal_procs)
 		LAZYOR(W.signal_procs, old_signal_procs)
+
+	W.weak_reference = old_ref
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
 		callback.InvokeAsync(W)

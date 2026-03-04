@@ -121,6 +121,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 			TEST_FAIL("Something has gone horribly wrong, the garbage queue has been processing for well over 30 minutes. What the hell did you do")
 			break
 
+		if(garbage_queue_processed)
+			break // don't even bother firing it again, just end
 		//Immediately fire the gc right after
 		SSgarbage.next_fire = 1
 		//Unless you've seriously fucked up, queue processing shouldn't take "that" long. Let her run for a bit, see if anything's changed

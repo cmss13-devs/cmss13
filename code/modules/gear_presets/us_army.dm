@@ -1,5 +1,5 @@
 /datum/equipment_preset/us_army
-	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	job_title  = JOB_ARMY_TROOPER
@@ -101,7 +101,7 @@
 
 /datum/equipment_preset/us_army/gunner
 	name = "US Army Heavy Gunner"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4E = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
@@ -141,7 +141,7 @@
 
 /datum/equipment_preset/us_army/medic
 	name = "US Army Combat Medical Technician"
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
@@ -180,7 +180,7 @@
 
 /datum/equipment_preset/us_army/sl
 	name = "US Army Squad Leader"
-	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
@@ -217,7 +217,7 @@
 
 /datum/equipment_preset/us_army/tank
 	name = "US Army Vehicle Crewman (CRMN)"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_TANK_CREW
 	job_title  = JOB_TANK_CREW
 	skills = /datum/skills/tank_crew

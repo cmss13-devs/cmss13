@@ -23547,14 +23547,13 @@
 /area/point_loma/research_facility/engineering)
 "boR" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/cell/high/empty,
-/obj/item/cell/high/empty{
-	pixel_y = 10;
-	pixel_x = -6
+/obj/item/cell/high,
+/obj/item/cell/high{
+	pixel_x = 14;
+	pixel_y = 8
 	},
-/obj/item/cell/high/empty{
-	pixel_x = 13;
-	pixel_y = 7
+/obj/item/cell/high{
+	pixel_y = 13
 	},
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
@@ -33071,6 +33070,10 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
+"bRi" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
 "bRj" = (
 /turf/open/asphalt/cement_shaded/north_south,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/central)
@@ -42006,16 +42009,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"cuZ" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/east)
 "cva" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -43876,10 +43869,6 @@
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"cBN" = (
-/obj/structure/machinery/vending/cigarette,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "cBO" = (
 /obj/item/storage/box/packet/m15,
 /turf/open/floor/corsat/squares,
@@ -43981,6 +43970,10 @@
 "cCh" = (
 /turf/closed/wall/hangar,
 /area/point_loma/oob/sky)
+"cCi" = (
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
 
 (1,1,1) = {"
 aug
@@ -104120,7 +104113,7 @@ bNt
 bNt
 cvb
 bJw
-bJf
+bJi
 bJf
 bJf
 cAi
@@ -104299,12 +104292,12 @@ chF
 chy
 bNj
 bKZ
-bKZ
+bMH
 bJw
-aCc
+afc
 bJw
+bJi
 ciE
-bJf
 bJf
 bJf
 bJf
@@ -104483,7 +104476,7 @@ bNj
 cuW
 bJw
 aCf
-bLq
+aCc
 aCb
 bJw
 bJf
@@ -105217,7 +105210,7 @@ bLq
 bLq
 bLq
 bLq
-bLq
+afc
 bJw
 bJf
 cfW
@@ -105398,7 +105391,7 @@ bLq
 bLq
 afc
 bLq
-afc
+bLq
 bLq
 cgp
 bJw
@@ -105940,7 +105933,7 @@ bKZ
 cuU
 cuU
 bJw
-bLq
+afc
 bLq
 bLq
 bLq
@@ -107209,7 +107202,7 @@ csf
 apT
 apT
 cBa
-bKZ
+app
 bKZ
 bKZ
 bKZ
@@ -107392,7 +107385,7 @@ apY
 apY
 apM
 app
-bKZ
+app
 bKZ
 bKZ
 chF
@@ -110488,8 +110481,8 @@ bIO
 bIO
 bIO
 bIO
-cth
-cuZ
+bIO
+cfa
 ceT
 cdP
 bIO
@@ -110668,10 +110661,10 @@ cBb
 aqZ
 app
 app
-cBN
+app
+bRi
 bIO
-cth
-cuZ
+cfa
 ceT
 cdP
 bIO
@@ -110851,7 +110844,7 @@ apK
 apK
 apK
 aiR
-bIO
+cbE
 bIO
 cfa
 ceT
@@ -111033,7 +111026,7 @@ apn
 apn
 aiZ
 app
-bIO
+cCi
 bIO
 cfa
 ceT

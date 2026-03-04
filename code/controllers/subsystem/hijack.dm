@@ -354,7 +354,7 @@ SUBSYSTEM_DEF(hijack)
 		if(3)
 			shipwide_ai_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 		if(4)
-			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
+			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name]. Lifeboats and pods re-enabled.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
@@ -978,7 +978,7 @@ SUBSYSTEM_DEF(hijack)
 /// Called when FTL has failed
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
-	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field. Lifeboats and pods re-enabled shortly.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 	if(GLOB.security_level < SEC_LEVEL_RED)

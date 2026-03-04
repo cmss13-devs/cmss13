@@ -143,10 +143,10 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', attached_atom, "chute_static")
 	var/corr_x = (attached_atom.pixel_x * -1)//This fixes a pixel offset bug with big sprites
 	var/original_dir = attached_atom.dir
-	var/mob/living/L = attached_atom
 	if(ishuman(attached_atom))
+		var/mob/living/L = attached_atom
 		L.rotate_on_lying = FALSE
-		L.transform = matrix()
+		L.apply_transform(matrix())
 		L.dir = SOUTH
 	I.pixel_x = corr_x
 	cables.pixel_x = corr_x
@@ -184,6 +184,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	forceMove(attached_atom)
 	GLOB.deployed_fultons += src
 	if(ishuman(attached_atom))
+		var/mob/living/L = attached_atom
 		L.rotate_on_lying = TRUE
 		L.dir = original_dir
 		if(L.stat == DEAD)

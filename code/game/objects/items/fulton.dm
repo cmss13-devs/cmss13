@@ -189,7 +189,6 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	if(ishuman(attached_atom))
 		var/mob/living/L = attached_atom
 		L.setDir(original_dir)
-		L.update_transform(TRUE)
 		L.set_lying_angle(90)
 
 	attached_atom.overlays -= list(I, cables, chute)

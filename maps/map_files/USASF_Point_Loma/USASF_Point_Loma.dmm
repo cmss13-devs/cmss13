@@ -10316,6 +10316,9 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
+"aDA" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/point_loma/research_facility/cave/west)
 "aDB" = (
 /obj/structure/surface/table,
 /turf/open/floor/corsat/squares,
@@ -35987,11 +35990,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"cbX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/research_facility/cave/west)
 "cbY" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -92511,7 +92509,7 @@ bJd
 bJd
 bJd
 bJd
-bJd
+aDA
 bJd
 bJd
 cbR
@@ -92692,9 +92690,9 @@ cbI
 cbI
 cbK
 cbK
-bJd
-bJd
-bJd
+aDA
+aDA
+aDA
 bJd
 bJd
 bJd
@@ -92874,9 +92872,9 @@ bJd
 bJd
 cbK
 cbK
-cbI
-cbX
-cbI
+cbK
+aDA
+cbK
 cbK
 cbK
 bJd
@@ -93056,9 +93054,9 @@ bJd
 bJd
 bJd
 bJd
-bJd
-bJd
-bJd
+cbK
+cbK
+cbK
 cbK
 cbK
 cbI

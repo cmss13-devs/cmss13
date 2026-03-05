@@ -60,6 +60,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE
 	unacidable = TRUE
+	heavy = TRUE
+	id = ""
 
 /obj/structure/machinery/door/poddoor/almayer/locked/elevator
 	explo_proof = TRUE

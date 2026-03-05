@@ -199,11 +199,17 @@
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
-		to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
-		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
+	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+		if(!shuttle)
+			return UI_CLOSE
+		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+		var/turf/shuttle_location = get_turf(shuttle)
+		if(shuttle_location.z in ship_zs)
+			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+			return UI_CLOSE
 
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
@@ -432,7 +438,9 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
-				if(!ignore_ftl_or_crash)
+				var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+				var/turf/shuttle_location = get_turf(lifeboat)
+				if(!ignore_ftl_or_crash && (shuttle_location.z in ship_zs))
 					if(SShijack.in_ftl)
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
 						return

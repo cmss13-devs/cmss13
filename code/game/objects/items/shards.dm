@@ -7,7 +7,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
 	)
-	icon_state = ""
+	icon_state = "medium"
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	desc = "A shard of broken glass. Could probably be used as ... a throwing weapon?"

@@ -251,6 +251,11 @@
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
+	if(SShijack.in_ftl || SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		members = list()
+		candidates = list()
+		return
+
 	//We've got enough!
 	//Trim down the list
 	var/list/datum/mind/picked_candidates = list()
@@ -305,7 +310,7 @@
 			return
 
 		var/list/active_lzs = list()
-		var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		var/list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/obj/docking_port/stationary/dock as anything in lzs)
 			// filter for almayer only
 			if(!(dock.z in z_levels))

@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Moving a partially fixed broken vendor to a powered area no longer makes it look fully repaired. Nanomeds can no longer be tipped over. Rec-Vend doesn't go invisible when unpowered or broken. Vendors don't magically fix themselves when you upright them."

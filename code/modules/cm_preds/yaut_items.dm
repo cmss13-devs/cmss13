@@ -1492,7 +1492,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/skull/burrower
 	name = "Burrower skull"
-	desc = "Skull of of a digging xenomorph, master of subterranean assault."
+	desc = "Skull of a digging xenomorph, master of subterranean assault."
 	icon_state = "burrower_skull"
 
 /obj/item/skull/drone
@@ -1653,7 +1653,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/wirecutters/yautja
 	name = "\improper alien wirecutters"
-	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	desc = "This cuts wires, also flesh. Made of some razor-sharp animal teeth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
 	item_state = "wirescutter"
@@ -1664,7 +1664,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/screwdriver/yautja
 	name = "\improper alien screwdriver"
-	desc = "Some hightech screwing abilities."
+	desc = "Some high-tech screwing abilities."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
 	item_state = "screwdriver"
@@ -1677,7 +1677,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/device/multitool/yautja
 	name = "\improper alien multitool"
-	desc = "Top notch alien tech for B&E through hacking."
+	desc = "Top-notch alien tech for B&E through hacking."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "multitool"
 	item_state = "multitool"

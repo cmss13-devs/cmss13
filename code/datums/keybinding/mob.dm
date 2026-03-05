@@ -42,7 +42,7 @@
 	classic_keys = list("Y", "Z", "Ctrl+Y", "Ctrl+Z")
 	name = "activate_inhand"
 	full_name = "Activate in-hand"
-	description = "Uses whatever item you have inhand"
+	description = "Uses whatever item you have in-hand"
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
 /datum/keybinding/mob/activate_inhand/down(client/user)

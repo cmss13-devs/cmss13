@@ -1994,9 +1994,10 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
-	var/duty = rand(1,10)
-	var/shoes = rand(1,3)
-	var/role = rand(1,4)
+	var/duty = rand(1,10) // generic outfit
+	var/shoes = rand(1,3) // shoes
+	var/role = rand(1,4) // role equipment
+	var/pouch = rand (1,3) // pouches
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e3, WEAR_ACCESSORY)
 
@@ -2044,16 +2045,31 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped(new_human), WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
 		if(2) // Doctor
-			new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_L_EAR)
 		if(3) // Security Police
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/special/brassard(new_human), WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
 		if(4) // Pilot
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/m94/signal, WEAR_WAIST)
+	switch(pouch)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_L_STORE)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol, WEAR_L_STORE)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_L_STORE)
 
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"

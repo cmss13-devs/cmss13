@@ -57,7 +57,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/wrapped/barcardine, WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_pouch(mob/living/carbon/human/new_human)
-	var/spawn_pouch = rand(1,4)
+	var/spawn_pouch = rand(1,6)
 	switch(spawn_pouch)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
@@ -93,7 +93,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig, WEAR_BACK)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_armour(mob/living/carbon/human/new_human)
-	var/spawn_armour = rand(1,6)
+	var/spawn_armour = rand(1,5)
 	switch(spawn_armour)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto/navy, WEAR_JACKET)
@@ -106,8 +106,59 @@
 		if (5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/navy/bomber, WEAR_JACKET)
 
+/datum/equipment_preset/survivor/usasf/proc/spawn_fluff(mob/living/carbon/human/new_human)
+	var/spawn_fluff_jacket = rand(1,6)
+	var/spawn_fluff_backpack = rand(1,7)
+	var/spawn_fluff_face = rand(1,10)
+	switch(spawn_fluff_jacket)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/compass, WEAR_IN_JACKET)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/plinker, WEAR_IN_JACKET)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/trading_card, WEAR_IN_JACKET)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/toy/handcard/aceofspades, WEAR_IN_JACKET)
+		if (5)
+			new_human.equip_to_slot_or_del(new /datum/gear/toy/mags/magazine_dirty, WEAR_IN_JACKET)
+		if (6)
+			new_human.equip_to_slot_or_del(new /datum/gear/paperwork/notepad_blue, WEAR_IN_JACKET)
+	switch(spawn_fluff_backpack)
+		if (1)
+			new_human.equip_to_slot_or_del (new /datum/gear/misc/pdt_kit, WEAR_IN_BACK)
+		if (2)
+			new_human.equip_to_slot_or_del (new /obj/item/reagent_container/food/drinks/flask, WEAR_IN_BACK)
+		if (3)
+			new_human.equip_to_slot_or_del (new /obj/item/reagent_container/food/drinks/cans/waterbottle, WEAR_IN_BACK)
+		if (4)
+			new_human.equip_to_slot_or_del (new /datum/gear/drink/cola, WEAR_IN_BACK)
+		if (5)
+			new_human.equip_to_slot_or_del(new /obj/item/toy/deck/uno, WEAR_IN_BACK)
+		if (6)
+			new_human.equip_to_slot_or_del(new /obj/item/toy/deck, WEAR_IN_BACK)
+		if (7)
+			new_human.equip_to_slot_or_del(new /datum/gear/toy/camera/disposable, WEAR_IN_BACK)
+	switch(spawn_fluff_face)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_FACE)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator, WEAR_FACE)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/tarbacks, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigar/tarbacktube, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo, WEAR_R_HAND)
+		if (5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/ucigarette, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo, WEAR_R_HAND)
+		if (6)
+			new_human.equip_to_slot_or_del(new /datum/gear/paperwork/pen, WEAR_R_EAR)
+		//if (7 to 10) // Nothing happens, commented out on purpose
+
 /datum/equipment_preset/survivor/usasf/proc/spawn_helmet(mob/living/carbon/human/new_human)
-	var/spawn_helmet = rand(1,9)
+	var/spawn_helmet = rand(1,8)
 	switch(spawn_helmet)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
@@ -150,7 +201,7 @@
 	var/spawn_security_primary = rand(1,3)
 	switch(spawn_security_primary)
 		if (1)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat, WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full, WEAR_WAIST)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/full, WEAR_WAIST)
@@ -164,7 +215,8 @@
 /datum/equipment_preset/survivor/usasf/crew/load_gear(mob/living/carbon/human/new_human)
 	..()
 	var/duty = rand(1,10)
-	var/shoes = rand (1,3)
+	var/shoes = rand(1,3)
+	var/watch = rand(1,10)
 	switch(duty)
 		if(1 to 3) //off-duty
 			var/offduty_outfit = rand(1,3) //1 number per outfit
@@ -202,6 +254,11 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET) //ToDO: USASF Boots
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
+	switch(watch)
+		if (1 to 2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/wrist/watch, WEAR_ACCESSORY)
+		//if (3 to 10) - nothing happens, commented out on purpose
+
 
 /datum/equipment_preset/survivor/usasf/crew/duty
 	name = "Survivor - USASF Ground Crew"
@@ -214,6 +271,7 @@
 	spawn_helmet(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)
+	spawn_fluff(new_human)
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 	spawn_usasf_weapon(new_human)
@@ -286,11 +344,12 @@
 	spawn_helmet(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)
+	spawn_fluff(new_human)
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 	spawn_usasf_weapon(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_L_HAND)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor
 	name = "Survivor - USASF Doctor"
@@ -304,7 +363,7 @@
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical, WEAR_BODY)
 	new_human.equip_to_slot_or_del (new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_L_HAND)
 
 /datum/equipment_preset/survivor/usasf/crew/security
 	name = "Survivor - USASF Security Police"
@@ -338,6 +397,7 @@
 	spawn_security_primary(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)
+	spawn_fluff(new_human)
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 
@@ -365,6 +425,7 @@
 	spawn_security_primary(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)
+	spawn_fluff(new_human)
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 

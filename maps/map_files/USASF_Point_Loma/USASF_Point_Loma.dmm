@@ -12218,7 +12218,7 @@
 	pixel_y = -4
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/cave/south/upper)
 "aJo" = (
 /turf/closed/wall/new_varadero,
@@ -16163,7 +16163,7 @@
 	dir = 4;
 	pixel_y = -4
 	},
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "aUx" = (
 /obj/structure/closet/crate/trashcart,
@@ -24607,11 +24607,11 @@
 /area/point_loma/airbase/interior/workshop/upper)
 "brN" = (
 /obj/structure/largecrate/supply/floodlights,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "brO" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/interior/workshop/upper)
 "brP" = (
 /obj/structure/window_frame/new_varadero/foundation,
@@ -36792,11 +36792,12 @@
 /turf/open/floor/corsat/blue/southeast,
 /area/point_loma/research_facility/command)
 "cez" = (
-/obj/structure/machinery/conveyor{
-	id = "anomalybelt"
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
 	},
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
 "ceA" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty{
 	pixel_x = 1
@@ -39257,7 +39258,7 @@
 	dir = 4;
 	pixel_y = -4
 	},
-/turf/open/floor/plating/catwalk,
+/turf/open/floor/corsat/officesquares,
 /area/point_loma/airbase/cave/south/upper)
 "cms" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
@@ -44013,12 +44014,53 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob/sky)
 "cCo" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/cave/south/upper)
+"cCp" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCq" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCr" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCs" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/point_loma/airbase/interior/workshop/upper)
+"cCt" = (
+/obj/structure/machinery/conveyor{
+	id = "anomalybelt"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+"cCu" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "cannon"
 	},
 /turf/open/new_varadero/alt_concrete/grate_s,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
-"cCp" = (
+"cCv" = (
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
@@ -44027,20 +44069,20 @@
 	},
 /turf/open/new_varadero/alt_concrete/grate_s,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
-"cCq" = (
+"cCw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCr" = (
+"cCx" = (
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCs" = (
+"cCy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3;
@@ -44049,10 +44091,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCt" = (
+"cCz" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCu" = (
+"cCA" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 8
 	},
@@ -44061,29 +44103,29 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCv" = (
+"cCB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/machinery/big_computers/computerblack/computer2{
 	pixel_x = 10
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCw" = (
+"cCC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/machinery/big_computers/computerblack/computer1,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCx" = (
+"cCD" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/machinery/big_computers/computerblack/computer4,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCy" = (
+"cCE" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/machinery/big_computers/computerblack/computer5,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCz" = (
+"cCF" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
@@ -44093,14 +44135,14 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCA" = (
+"cCG" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCB" = (
+"cCH" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -44108,7 +44150,7 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCC" = (
+"cCI" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
 	id = "cargo_storage"
@@ -44119,7 +44161,7 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCD" = (
+"cCJ" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
 	id = "cargo_container"
@@ -44130,34 +44172,34 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCE" = (
+"cCK" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 8
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCF" = (
+"cCL" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCG" = (
+"cCM" = (
 /obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
 /turf/open/floor/strata/multi_tiles/west,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCH" = (
+"cCN" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCI" = (
+"cCO" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCJ" = (
+"cCP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars/range,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cCK" = (
+"cCQ" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
@@ -154698,10 +154740,10 @@ aOF
 bxN
 bxN
 bUT
-cCt
-cCt
-cCt
-cCt
+cCz
+cCz
+cCz
+cCz
 bUT
 bUz
 bUG
@@ -154880,12 +154922,12 @@ bDm
 bDm
 bDm
 bUT
-cCq
-cCq
-cCq
-cCq
-cCq
-cCo
+cCw
+cCw
+cCw
+cCw
+cCw
+cCu
 bUG
 aHB
 aEi
@@ -155057,18 +155099,18 @@ bAd
 aOC
 aOC
 bUT
-cCt
-cCt
-cCI
-cCH
-cCE
-cCC
-cCA
 cCz
-cCu
-cCr
-cCp
-cez
+cCz
+cCO
+cCN
+cCK
+cCI
+cCG
+cCF
+cCA
+cCx
+cCv
+cCt
 aIK
 bUJ
 bUJ
@@ -155239,17 +155281,17 @@ bAd
 aOC
 aOC
 bEL
-cCt
-cCt
+cCz
+cCz
 bEo
 bUV
-cCF
-cCD
+cCL
+cCJ
 bDn
 bUV
 bCY
-cCs
-cCo
+cCy
+cCu
 bUG
 aIK
 bUJ
@@ -155421,17 +155463,17 @@ bAd
 aOC
 aOC
 bEL
-cCt
-cCt
+cCz
+cCz
 bEo
 bUV
-cCG
-cCD
-cCB
+cCM
+cCJ
+cCH
 cCl
 bCZ
-cCt
-cCo
+cCz
+cCu
 bUG
 aIU
 aFu
@@ -155603,16 +155645,16 @@ bAd
 aOC
 aOC
 bEL
-cCt
-cCt
+cCz
+cCz
 bEo
 bUV
 bUV
 bUV
 bUV
 bUV
-cCv
-cCt
+cCB
+cCz
 bUz
 aIX
 bUG
@@ -155785,15 +155827,15 @@ bAd
 aOC
 aOC
 bEL
-cCt
-cCt
+cCz
+cCz
 bEo
 bUV
 bUV
 bUV
 bUV
 bUV
-cCw
+cCC
 aJl
 bUz
 bUz
@@ -155967,16 +156009,16 @@ bAd
 aOC
 aOC
 bEL
-cCt
-cCt
+cCz
+cCz
 bEo
 bUV
 bUV
 bUV
 bUV
 axq
-cCx
-cCt
+cCD
+cCz
 bUT
 bUH
 bUH
@@ -156149,16 +156191,16 @@ bAd
 aOC
 aOC
 bEL
-cCJ
-cCt
+cCP
+cCz
 bEo
 bUV
 bUV
 bUV
 bUV
 cCm
-cCy
-cCt
+cCE
+cCz
 bCN
 bUH
 bUH
@@ -156331,8 +156373,8 @@ bAd
 aOC
 aOC
 bEL
-cCK
-cCt
+cCQ
+cCz
 bEq
 bDp
 bDp
@@ -156340,7 +156382,7 @@ bDp
 bDp
 bDp
 bDa
-cCt
+cCz
 bCN
 bUH
 bUH
@@ -156513,16 +156555,16 @@ bAd
 aOC
 aOC
 bUT
-cCt
-cCt
-cCt
-cCt
-cCt
-cCt
-cCt
-cCt
+cCz
+cCz
+cCz
+cCz
+cCz
+cCz
+cCz
+cCz
 cxf
-cCt
+cCz
 bCN
 bUH
 bUH
@@ -156700,11 +156742,11 @@ bDm
 bDm
 bDm
 bUT
-cCt
-cCt
-cCt
-cCt
-cCt
+cCz
+cCz
+cCz
+cCz
+cCz
 bCN
 bUH
 clW
@@ -156882,10 +156924,10 @@ aOF
 aOF
 aOF
 bUT
-cCt
-cCt
-cCt
-cCt
+cCz
+cCz
+cCz
+cCz
 bUT
 bUT
 bUH
@@ -197188,10 +197230,10 @@ bHP
 bHP
 bHP
 bHP
-bHP
-bHP
-bHP
-bUO
+cCc
+cCc
+cCc
+cez
 bui
 asb
 asb
@@ -197370,10 +197412,10 @@ buT
 buT
 buT
 buT
-buT
-buT
-buT
-cfO
+cCa
+cCa
+cCa
+cCo
 bui
 bui
 asb
@@ -197554,8 +197596,8 @@ ctK
 ctK
 ctK
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 bui
 bui
@@ -197722,6 +197764,8 @@ cCg
 cCe
 ctK
 brN
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -197730,14 +197774,12 @@ bzz
 bzz
 bzz
 bzz
-bzz
-bzz
-bzz
-bzz
-bzz
+cCe
+cCe
+cCe
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 bui
 bui
@@ -197904,8 +197946,8 @@ ctM
 bzz
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 ctL
 ctL
 ctL
@@ -197914,9 +197956,9 @@ ctL
 ctL
 ctL
 ctL
-bzz
-bzz
-bzz
+cCe
+cCe
+cCe
 ctK
 buT
 cfO
@@ -198085,9 +198127,9 @@ bTS
 ctM
 bzz
 ctK
-bzz
-bzz
-bhl
+cCe
+cCe
+cCr
 aLF
 aLF
 aLF
@@ -198096,9 +198138,9 @@ aLF
 aLF
 aLF
 aLF
-ctN
-bzz
-bzz
+cCq
+cCe
+cCe
 ctK
 buT
 cfO
@@ -206457,9 +206499,9 @@ bTS
 ctM
 bzz
 ctK
-bzz
-bzz
-bhp
+cCe
+cCe
+cCs
 aLF
 aLF
 aLF
@@ -206640,8 +206682,8 @@ ctM
 bzz
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 bhP
 bhP
 bhP
@@ -206818,12 +206860,12 @@ asb
 asb
 bTS
 bTS
-ctM
-bzz
+cCg
+cCe
 ctK
 brO
-bzz
-bzz
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -206836,8 +206878,8 @@ aCo
 aCo
 blP
 ctK
-buT
-cfO
+cCa
+cCo
 cxo
 cmp
 cxn
@@ -207000,8 +207042,8 @@ bTS
 bTS
 bTS
 bTS
-ctM
-bzz
+cCg
+cCe
 ctK
 ctK
 ctK
@@ -207018,8 +207060,8 @@ ctK
 ctK
 ctK
 ctK
-buT
-cfO
+cCa
+cCo
 bui
 cxt
 cxo
@@ -207182,7 +207224,10 @@ bTS
 bTS
 bTS
 bTS
-ctM
+cCg
+cCe
+cCe
+cCe
 bzz
 bzz
 bzz
@@ -207195,13 +207240,10 @@ bzz
 bzz
 bzz
 bzz
-bzz
-bzz
-bzz
-bzz
-bzz
-buT
-cfO
+cCe
+cCe
+cCa
+cCo
 bui
 bui
 bui
@@ -207365,6 +207407,9 @@ bTS
 bTS
 bTS
 aUw
+cCp
+cCp
+cCp
 aJG
 aJG
 aJG
@@ -207377,11 +207422,8 @@ aJG
 aJG
 aJG
 aJG
-aJG
-aJG
-aJG
-aJG
-aJG
+cCp
+cCp
 cmr
 aJn
 bui

@@ -1,7 +1,7 @@
 ///*****************************US Army Survivors************************************************/
 /datum/equipment_preset/survivor/army
 	name = "Survivor - US Army"
-	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
@@ -215,7 +215,7 @@
 
 /datum/equipment_preset/survivor/army/engineer
 	name = "Survivor - US Army Combat Engineering Technician"
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_ENGI
 	job_title  = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
@@ -236,7 +236,7 @@
 
 /datum/equipment_preset/survivor/army/medic
 	name = "Survivor - US Army Combat Medical Technician"
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
@@ -260,7 +260,7 @@
 
 /datum/equipment_preset/survivor/army/marksman
 	name = "Survivor - US Army Marksman"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MARKSMAN
 	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
@@ -281,7 +281,7 @@
 
 /datum/equipment_preset/survivor/army/gunner
 	name = "Survivor - US Army Heavy Gunner"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
@@ -303,7 +303,7 @@
 
 /datum/equipment_preset/survivor/army/sl
 	name = "Survivor - US Army Squad Leader"
-	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
@@ -324,7 +324,7 @@
 
 /datum/equipment_preset/survivor/army/co
 	name = "Survivor - US Army Commander"
-	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AO4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_CO
 	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
@@ -375,7 +375,7 @@
 
 /datum/equipment_preset/synth/survivor/army
 	name = "Survivor - US Army Synthetic"
-	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
 	job_title  = "Synthetic"

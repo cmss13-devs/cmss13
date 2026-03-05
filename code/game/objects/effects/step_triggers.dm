@@ -139,6 +139,7 @@
 		if(A.clone)
 			A.clone.proj_x *= -1 //Swap places with the clone
 			A.clone.proj_y *= -1
+			A.clone.proj_z *= -1
 			A.update_clone() //Update No. 2
 
 

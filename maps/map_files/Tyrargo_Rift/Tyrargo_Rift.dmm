@@ -84797,7 +84797,7 @@
 "edJ" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/water,
-/obj/structure/machinery/dispersal_initiator/floodgate,
+/obj/effect/landmark/dispersal_initiator/floodgate,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "edK" = (
@@ -110807,10 +110807,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/landing_zone_2)
 "sqe" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "srb" = (
 /obj/structure/blocker/forcefield/vehicles,

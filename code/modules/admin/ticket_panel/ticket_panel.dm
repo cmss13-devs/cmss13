@@ -10,6 +10,39 @@
 	SStgui.close_uis(src)
 	return ..()
 
+/datum/ticket_panel/proc/get_player_info(client/C)
+	if(!C || !C.mob)
+		return null
+
+	var/mob/M = C.mob
+	var/list/info = list()
+
+	if(M.real_name)
+		info["ic_name"] = M.real_name
+
+	var/datum/faction/F = get_faction(M.faction)
+	if(F)
+		info["faction"] = F.name
+	else if(M.faction)
+		info["faction"] = "[M.faction]"
+
+	if(isobserver(M))
+		info["role"] = "Ghost"
+	else if(isxeno(M))
+		var/mob/living/carbon/xenomorph/X = M
+		info["role"] = X.caste_type
+	else if(ishuman(M))
+		var/mob/living/carbon/human/HUM = M
+		if(HUM.comm_title)
+			info["role"] = HUM.comm_title
+		else if(HUM.job)
+			info["role"] = HUM.job
+	else if(M.job)
+		info["role"] = M.job
+
+	return info
+
+
 /datum/ticket_panel/proc/format_adminhelp_ticket(datum/admin_help/AH)
 	var/status = AH.state == AHELP_ACTIVE ? "open" : AH.state == AHELP_RESOLVED ? "resolved" : "closed" // just setting some readable names, I suppose
 
@@ -17,6 +50,8 @@
 	for(var/key in AH.ticket_interactions)
 		var/list/interaction = AH.ticket_interactions[key]
 		formatted_responses += list(interaction)
+
+	var/list/player_info = get_player_info(AH.initiator)
 
 	return list(
 		"id" = AH.id,
@@ -30,7 +65,10 @@
 		"claimed_by" = AH.marked_admin,
 		"all_responses" = formatted_responses,
 		"viewer_is_claiming" = (AH.marked_admin == usr.ckey ? TRUE : FALSE),
-		"is_archived" = (AH.state != AHELP_ACTIVE)
+		"is_archived" = (AH.state != AHELP_ACTIVE),
+		"ic_name" = player_info ? player_info["ic_name"] : null,
+		"faction" = player_info ? player_info["faction"] : null,
+		"role" = player_info ? player_info["role"] : null
 	)
 
 /datum/ticket_panel/proc/format_mentorhelp_ticket(datum/mentorhelp/MH)
@@ -40,6 +78,8 @@
 	for(var/key in MH.ticket_interactions)
 		var/list/interaction = MH.ticket_interactions[key]
 		formatted_responses += list(interaction)
+
+	var/list/player_info = get_player_info(MH.author)
 
 	return list(
 		"id" = MH.id,
@@ -53,7 +93,10 @@
 		"claimed_by" = MH.mentor ? MH.mentor.ckey : null,
 		"all_responses" = formatted_responses,
 		"viewer_is_claiming" = (MH.mentor && (MH.mentor.ckey == usr.ckey) ? TRUE : FALSE),
-		"is_archived" = !MH.open
+		"is_archived" = !MH.open,
+		"ic_name" = player_info ? player_info["ic_name"] : null,
+		"faction" = player_info ? player_info["faction"] : null,
+		"role" = player_info ? player_info["role"] : null
 	)
 
 /datum/ticket_panel/ui_data(mob/user)

@@ -264,8 +264,8 @@
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE,
-				player_message = "<font color='green'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>",
+			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_with_username(src)]: [msg]</font>", log_in_blackbox = FALSE,
+				player_message = "<font color='green'>PM From [key_name_with_username(src, include_name = FALSE)]: [msg]</font>",
 				raw_message = "PM from-[src.key] to-[recipient.key]: [msg]",
 				raw_player_message = "[msg]")
 

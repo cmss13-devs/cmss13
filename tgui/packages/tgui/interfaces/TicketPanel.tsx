@@ -33,6 +33,9 @@ type Ticket = {
   viewer_is_claiming: boolean;
   all_responses: TicketResponse[];
   is_archived: boolean;
+  ic_name: string | null;
+  faction: string | null;
+  role: string | null;
 };
 
 type Data = {
@@ -224,6 +227,7 @@ export const TicketPanel = (props) => {
                                     }
                                   >
                                     {ticket.author}
+                                    {ticket.role ? ` (${ticket.role})` : ''}
                                   </Box>
                                   {decodeHtmlEntities(ticket.subject) ? (
                                     <Box
@@ -320,6 +324,7 @@ export const TicketPanel = (props) => {
                                     }
                                   >
                                     {ticket.author}
+                                    {ticket.role ? ` (${ticket.role})` : ''}
                                   </Box>
                                   {decodeHtmlEntities(ticket.subject) ? (
                                     <Box
@@ -478,6 +483,21 @@ export const TicketPanel = (props) => {
                           {selectedTicketData.author}
                         </Box>
                       </LabeledList.Item>
+                      {selectedTicketData.ic_name && (
+                        <LabeledList.Item label="IC Name">
+                          {selectedTicketData.ic_name}
+                        </LabeledList.Item>
+                      )}
+                      {selectedTicketData.faction && (
+                        <LabeledList.Item label="Faction">
+                          {selectedTicketData.faction}
+                        </LabeledList.Item>
+                      )}
+                      {selectedTicketData.role && (
+                        <LabeledList.Item label="Role">
+                          {selectedTicketData.role}
+                        </LabeledList.Item>
+                      )}
                       <LabeledList.Item
                         label="Status"
                         color={

@@ -299,10 +299,10 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		var/client/prev_mentor = mentor
 		mentor = thread_mentor
 
-		log_mhelp("[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp")
-		notify(SPAN_MENTORHELP("[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp."),
-			unformatted_text = "[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp.")
-		to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.key] has taken over your thread and is preparing to respond."))
+		log_mhelp("[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp")
+		notify(SPAN_MENTORHELP("[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp."),
+			unformatted_text = "[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp.")
+		to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has taken over your thread and is preparing to respond."))
 		return
 
 	if(!thread_mentor)
@@ -314,8 +314,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	mentor = thread_mentor
 
-	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-	notify(SPAN_MENTORHELP("[mentor.key] has marked [author_key]'s mentorhelp."),
+	log_mhelp("[mentor.username()] has marked [author_key]'s mentorhelp")
+	notify(SPAN_MENTORHELP("[mentor.username()] has marked [author_key]'s mentorhelp."),
 		unformatted_text = "[mentor.username()] has marked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has marked your thread and is preparing to respond."))
 
@@ -335,10 +335,10 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if((!thread_mentor || thread_mentor != mentor) && !CLIENT_IS_STAFF(thread_mentor))
 		return
 
-	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify(SPAN_MENTORHELP("[mentor.key] has unmarked [author_key]'s mentorhelp."),
-		unformatted_text = "[mentor.key] has unmarked [author_key]'s mentorhelp.")
-	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.key] has unmarked your thread and is no longer responding to it."))
+	log_mhelp("[mentor.username()] has unmarked [author_key]'s mentorhelp")
+	notify(SPAN_MENTORHELP("[mentor.username()] has unmarked [author_key]'s mentorhelp."),
+		unformatted_text = "[mentor.username()] has unmarked [author_key]'s mentorhelp.")
+	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has unmarked your thread and is no longer responding to it."))
 	mentor = null
 
 /*

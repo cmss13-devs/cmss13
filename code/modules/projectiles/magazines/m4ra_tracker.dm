@@ -129,22 +129,3 @@
 	if(viewer && viewer.client)
 		viewer.client.remove_from_screen(blip_effect)
 	qdel(blip_effect)
-
-/datum/ammo/bullet/rifle/m4ra/custom_tracker
-	name = "A19 HV tracking round"
-
-/datum/ammo/bullet/rifle/m4ra/custom_tracker/on_hit_mob(mob/M, obj/projectile/P)
-	. = ..()
-
-	if(!isliving(M))
-		return
-	if(!P || !P.firer)
-		return
-
-	var/mob/living/target = M
-	var/mob/living/firer = P.firer
-
-	if(target.faction == firer.faction)
-		return
-
-	target.AddComponent(/datum/component/tracking_bullets, firer)

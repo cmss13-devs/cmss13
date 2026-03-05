@@ -39,7 +39,7 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
-	speaking_noise = 'sound/voice/predalien_click.ogg'
+	speaking_noise = 'sound/voice/xeno/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN
 	claw_type = CLAW_TYPE_VERY_SHARP

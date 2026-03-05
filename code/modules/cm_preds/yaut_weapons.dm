@@ -204,7 +204,7 @@
 				executing = TRUE
 				user.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] and slowly lifts them above their head before smashing them down!"))
 				playsound(target, 'sound/effects/bone_break1.ogg', 50, 1)
-				playsound(user, 'sound/voice/pred_roar5.ogg', 50, 1)
+				playsound(user, 'sound/voice/pred/pred_roar5.ogg', 50, 1)
 				target.apply_damage(60, ARMOR_MELEE, BRUTE, "chest", 5)
 				target.death(create_cause_data("back broken", user), FALSE)
 				animate(target, pixel_y = target.pixel_y + 64, time = 4, easing = SINE_EASING)

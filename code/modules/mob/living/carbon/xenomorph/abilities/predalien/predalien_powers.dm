@@ -71,7 +71,7 @@
 				carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
 				playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
 				carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
-			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
+			playsound(owner, 'sound/voice/xeno/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
 		apply_cooldown()
@@ -112,7 +112,7 @@
 			xeno.spin_circle()
 			xeno.flick_attack_overlay(carbon, "tail")
 
-		playsound(owner, 'sound/voice/predalien_growl.ogg', 50, 0, status = 0)
+		playsound(owner, 'sound/voice/xeno/predalien_growl.ogg', 50, 0, status = 0)
 
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = FALSE
@@ -148,7 +148,7 @@
 	predatoralien.armor_modifier += armor_buff_amount
 	predatoralien.recalculate_speed()
 	predatoralien.recalculate_armor()
-	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
+	playsound(predatoralien, 'sound/voice/xeno/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
 	return ..()
 
@@ -238,7 +238,7 @@
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash, tracking=TRUE)
 
 	if(predalien_smash.Adjacent(carbon) && predalien_smash.start_pulling(carbon, TRUE))
-		playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
+		playsound(carbon.pulledby, 'sound/voice/xeno/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
 		playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
 		animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
 		sleep(4)

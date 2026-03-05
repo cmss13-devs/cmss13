@@ -94,7 +94,7 @@
 			else
 				container.attack_hand(monkey)
 		if(prob(50))
-			playsound(monkey_turf, pick('sound/voice/monkey_chimper1.ogg', 'sound/voice/monkey_chimper2.ogg'), 25)
+			playsound(monkey_turf, pick('sound/voice/misc/monkey_chimper1.ogg', 'sound/voice/misc/monkey_chimper2.ogg'), 25)
 
 /datum/species/monkey/handle_on_fire(humanoidmob)
 	. = ..()

@@ -167,7 +167,7 @@
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	death_message = "doubles over, unleashes a horrible, ear-shattering scream, then falls motionless and still..."
-	death_sound = 'sound/voice/scream_horror1.ogg'
+	death_sound = 'sound/voice/misc/scream_horror1.ogg'
 
 	darksight = 8
 	slowdown = 0.3

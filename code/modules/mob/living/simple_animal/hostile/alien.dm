@@ -148,7 +148,7 @@
 	. = ..()
 	if(!.)
 		return //If they were already dead, it will return.
-	playsound(src, 'sound/voice/alien_death.ogg', 50, 1)
+	playsound(src, 'sound/voice/xeno/alien_death.ogg', 50, 1)
 	QDEL_IN(src, 5 SECONDS)
 	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 

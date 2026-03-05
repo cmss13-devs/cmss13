@@ -143,7 +143,7 @@
 
 /datum/emote/living/carbon/human/laugh/get_sound(mob/living/user)
 	if(isyautja(user))
-		return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg', 'sound/voice/pred_laugh6.ogg')
+		return pick('sound/voice/pred/pred_laugh1.ogg', 'sound/voice/pred/pred_laugh2.ogg', 'sound/voice/pred/pred_laugh3.ogg', 'sound/voice/pred/pred_laugh4.ogg', 'sound/voice/pred/pred_laugh5.ogg', 'sound/voice/pred/pred_laugh6.ogg')
 
 /datum/emote/living/carbon/human/look
 	key = "look"
@@ -160,9 +160,9 @@
 
 /datum/emote/living/carbon/human/medic/get_sound(mob/living/user)
 	if(user.gender == MALE)
-		return pick('sound/voice/corpsman.ogg', 'sound/voice/corpsman_up.ogg', 'sound/voice/corpsman_over_here.ogg', 'sound/voice/i_need_a_corpsman_1.ogg', 'sound/voice/i_need_a_corpsman_2.ogg', 'sound/voice/im_hit_get_doc_up_here.ogg', 'sound/voice/get_doc_up_here_im_hit.ogg', 20;'sound/voice/i_cant_feel_my_legs_corpsman.ogg', 0.5;'sound/voice/human_male_medic_rare_1.ogg', 0.5;'sound/voice/human_male_medic.ogg', 1;'sound/voice/human_male_medic_rare_2.ogg')
+		return pick('sound/voice/human/male/medic/medic_1.ogg', 'sound/voice/human/male/medic/medic_2.ogg', 'sound/voice/human/male/medic/medic_3.ogg', 'sound/voice/human/male/medic/medic_4.ogg', 'sound/voice/human/male/medic/medic_5.ogg', 'sound/voice/human/male/medic/medic_6.ogg', 'sound/voice/human/male/medic/medic_7.ogg', 20;'sound/voice/human/male/medic/medic_8.ogg', 0.5;'sound/voice/human/male/medic/medic_rare_1.ogg', 0.5;'sound/voice/human/male/medic/medic_rare_2.ogg', 1;'sound/voice/human/male/medic/medic_rare_3.ogg')
 	else
-		return 'sound/voice/human_female_medic.ogg'
+		return 'sound/voice/human/female/medic/medic_1.ogg'
 
 /datum/emote/living/carbon/human/medic/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()

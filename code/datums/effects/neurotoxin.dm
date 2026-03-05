@@ -133,7 +133,7 @@
 /datum/effects/neurotoxin/proc/process_hallucination(mob/living/carbon/human/victim)
 	switch(rand(0, 100))
 		if(0 to 5)
-			playsound_client(victim?.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
+			playsound_client(victim?.client,pick('sound/voice/xeno/alien_pounce.ogg','sound/voice/xeno/alien_pounce.ogg'))
 			victim.KnockDown(3)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bonebreak"), 1 SECONDS)
@@ -146,7 +146,7 @@
 			playsound_client(victim.client,'sound/effects/ob_alert.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
 		if(11 to 16)
-			playsound_client(victim.client,'sound/voice/alien_queen_screech.ogg')
+			playsound_client(victim.client,'sound/voice/xeno/alien_queen_screech.ogg')
 			victim.KnockDown(1)
 		if(17 to 24)
 			hallucination_fakecas_sequence(victim) //Not gonna spam a billion timers for this one so outsourcing to a proc with sleeps is a better async solution
@@ -158,7 +158,7 @@
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination
-			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
+			playsound_client(client = victim.client, soundin = pick('sound/voice/xeno/alien_distantroar_3.ogg','sound/voice/xeno/xenos_roaring.ogg','sound/voice/xeno/alien_queen_breath1.ogg', 'sound/voice/xeno/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
 
 
 

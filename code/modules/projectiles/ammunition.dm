@@ -151,11 +151,11 @@ They're all essentially identical when it comes to getting the job done.
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?
-		to_chat(user, "[src] is already full.")
+		to_chat(user, SPAN_WARNING("[src] is already full."))
 		return
 
 	if(source.caliber != caliber) //Are they the same caliber?
-		to_chat(user, "The rounds don't match up. Better not mix them up.")
+		to_chat(user, SPAN_WARNING("The calibers don't match up. Better not mix them up."))
 		return
 
 	var/S = min(transfer_amount, max_rounds - current_rounds)

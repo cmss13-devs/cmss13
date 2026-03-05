@@ -636,27 +636,52 @@
 	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
+<<<<<<< multiz-queen-eye
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/atom)
+=======
+/datum/action/xeno_action/onclick/place_trap/use_ability(atom/target)
+>>>>>>> master
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
+<<<<<<< multiz-queen-eye
 	if (istype(xeno, /mob/living/carbon/xenomorph/burrower))
 		var/mob/living/carbon/xenomorph/burrower/B = xeno
 		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
 			return
+=======
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+>>>>>>> master
 
 	var/turf/turf = get_turf(xeno)
 	if(!istype(turf))
 		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
 		return
+<<<<<<< multiz-queen-eye
 	var/area/area = get_area(turf)
 	if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
 		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
 		return
+=======
+
+	var/area/area = turf.loc
+	if(!area?.is_resin_allowed)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("We sense this is not a suitable area for creating a resin hole."))
+			return
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+	if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
+		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
+		return
+
+>>>>>>> master
 	var/obj/effect/alien/weeds/alien_weeds = turf.check_xeno_trap_placement(xeno)
 	if(!alien_weeds)
 		return
+
 	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
 		to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
@@ -671,6 +696,10 @@
 
 	if(!xeno.check_plasma(plasma_cost))
 		return
+<<<<<<< multiz-queen-eye
+=======
+
+>>>>>>> master
 	xeno.use_plasma(plasma_cost)
 	playsound(xeno.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(turf, xeno)
@@ -741,6 +770,10 @@
 		return FALSE
 
 	if(!xeno.hive)
+		return FALSE
+
+	if(SSticker?.mode?.hardcore)
+		to_chat(xeno, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
 		return FALSE
 
 	//Make sure construction is unrestricted

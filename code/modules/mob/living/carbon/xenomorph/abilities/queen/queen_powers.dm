@@ -397,6 +397,7 @@
 
 	if(xeno in tacmap_component.interactees)
 		tacmap_component.on_unset_interaction(xeno)
+		tacmap_component.close_popout_tacmaps(xeno)
 	else
 		tacmap_component.show_tacmap(xeno)
 

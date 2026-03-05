@@ -6,7 +6,6 @@
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
 	job_title  = JOB_ARMY_TROOPER
-	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(

@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/originalLayer = attached_atom.layer
 	var/originalAlpha = attached_atom.alpha
 	attached_atom.layer = 100 //You want this above everything else because it flies up into the sky
-	animate(attached_atom, pixel_y = 10, time = 30, easing = BOUNCE_EASING)
+	animate(attached_atom, pixel_y = 10, time = 30, easing = BOUNCE_EASING, flags = ANIMATION_PARALLEL)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
 	sleep(30)
 	animate(attached_atom, pixel_y = 500, time = 50, alpha = 0, easing = CIRCULAR_EASING|EASE_OUT)

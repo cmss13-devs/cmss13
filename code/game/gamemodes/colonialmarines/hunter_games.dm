@@ -187,7 +187,7 @@
 
 	waiting_for_drop_votes = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(supply_finish)), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(supply_finish)), 30 SECONDS)
 
 
 /** /datum/game_mode/hunter_games/proc/supply_finish()

@@ -146,9 +146,8 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 
 	if(ishuman(attached_atom))
 		var/mob/living/L = attached_atom
-		L.set_lying_angle(0)
 		L.setDir(SOUTH)
-		L.update_transform(TRUE)
+		L.set_lying_angle(0)
 
 
 	I.pixel_x = corr_x

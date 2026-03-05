@@ -654,7 +654,7 @@
 /obj/item/clothing/accessory/patch/usasf/helljumper // ToDO: Find a use for this. ATM unused.
 	name = "Para-Rescue patch"
 	desc = "A fire-resistant shoulder patch, worn by the absolute badasses of the USASF 7th Para-Rescue Battalion. Feet first into hell!"
-	icon_state = "helljumperpatch"
+	icon_state = "usasfhelljumperpatch"
 
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"

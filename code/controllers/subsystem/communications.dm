@@ -325,7 +325,6 @@ SUBSYSTEM_DEF(radio)
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
-		"[ARMY_FREQ]" = "hcradio",
 		"[FORECON_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",

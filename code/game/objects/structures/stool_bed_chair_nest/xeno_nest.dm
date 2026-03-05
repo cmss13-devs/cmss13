@@ -11,6 +11,7 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
 	buckle_lying = 0
+	flags_obj = OBJ_ORGANIC
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0

@@ -332,6 +332,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 
 	attach_icon = "bayonet_a"
@@ -676,6 +677,7 @@ Defined in conflicts.dm of the #defines folder.
 	hitsound = 'sound/weapons/spike_thunk.ogg'
 	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
 	attack_speed = 9
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 /obj/item/attachable/compensator/m10/spiked/Attach(obj/item/weapon/gun/attaching_gun)
 	if(!istype(attaching_gun, /obj/item/weapon/gun))

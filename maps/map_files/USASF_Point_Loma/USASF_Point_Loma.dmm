@@ -9515,7 +9515,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/device/defibrillator,
-/turf/open/floor/plating/warnplate/west,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9540,21 +9540,20 @@
 "aBs" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/structure/prop/hybrisa/vehicles/Ambulance{
-	dir = 1;
-	pixel_y = 1;
-	pixel_x = 12
+/obj/structure/prop/vehicles/tank/humvee/medical{
+	pixel_x = 17;
+	pixel_y = -4
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBt" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/corsat,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBu" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light,
-/turf/open/floor/plating/warnplate/east,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/east)
 "aBv" = (
 /obj/effect/decal/medical_decals{
@@ -9592,7 +9591,7 @@
 	pixel_y = 4;
 	pixel_x = -2
 	},
-/turf/open/floor/plating/warnplate/northwest,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBz" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
@@ -9601,10 +9600,10 @@
 	pixel_y = 9;
 	pixel_x = -2
 	},
-/turf/open/floor/plating/warnplate/north,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBA" = (
-/turf/open/floor/plating/warnplate/north,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBB" = (
 /obj/structure/machinery/shower{
@@ -9669,7 +9668,7 @@
 /area/point_loma/research_facility/gym)
 "aBL" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/plating/warnplate/northeast,
+/turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/east)
 "aBM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -10734,9 +10733,8 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/research/east)
 "aEL" = (
-/obj/structure/prop/hybrisa/vehicles/Ambulance{
-	pixel_x = 12;
-	pixel_y = 12
+/obj/structure/prop/vehicles/tank/humvee/medical{
+	dir = 4
 	},
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
@@ -28153,14 +28151,6 @@
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
-"bBX" = (
-/obj/structure/prop/hybrisa/vehicles/Ambulance{
-	pixel_x = 12;
-	pixel_y = 12;
-	dir = 1
-	},
-/turf/open/hybrisa/street/roadlines,
-/area/point_loma/airbase/interior/hospital)
 "bBY" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -44265,6 +44255,12 @@
 /obj/structure/barricade/deployable,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"cCH" = (
+/obj/structure/prop/vehicles/tank/humvee/medical{
+	dir = 8
+	},
+/turf/open/hybrisa/street/roadlines,
+/area/point_loma/airbase/interior/hospital)
 "cCI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/flamer/survivor,
@@ -164721,9 +164717,9 @@ bQd
 bQd
 bTZ
 bUC
-aEL
 bUC
-bBX
+cCH
+bUC
 bUC
 aEL
 bXZ

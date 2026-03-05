@@ -247,8 +247,7 @@
 	keybind_signal = COMSIG_KB_MOB_MANIFEST
 
 /datum/keybinding/mob/manifest/can_use(client/user)
-	if(isobserver(user.mob) || ishuman(user.mob)) // Down will check faction
-		return TRUE
+	return isobserver(user.mob) || ishuman(user.mob) // Down will check faction
 
 /datum/keybinding/mob/manifest/down(client/user)
 	. = ..()

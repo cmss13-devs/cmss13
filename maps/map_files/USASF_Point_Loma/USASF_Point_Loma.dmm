@@ -1500,12 +1500,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/oob)
-"aeK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/new_varadero,
-/area/space)
 "aeL" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -112941,7 +112935,7 @@ ahw
 ahw
 bLC
 bLC
-aeK
+bLC
 bLC
 cDZ
 bIO

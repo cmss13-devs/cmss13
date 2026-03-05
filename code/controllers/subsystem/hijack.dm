@@ -978,7 +978,7 @@ SUBSYSTEM_DEF(hijack)
 /// Called when FTL has failed
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
-	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field. Lifeboats and pods re-enabled.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 	if(GLOB.security_level < SEC_LEVEL_RED)

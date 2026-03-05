@@ -3,6 +3,7 @@
 	mob_min = 1
 	mob_max = 4
 	hostility = TRUE
+	ignore_ftl_or_crash = TRUE
 	shuttle_id = ""
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
 	ert_message = "Forsaken xenomorphs are emerging"

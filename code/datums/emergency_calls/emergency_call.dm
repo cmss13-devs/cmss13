@@ -49,7 +49,7 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
-	///xeno roles
+	//xeno roles
 	var/xeno_t3 = 0
 	var/xeno_t2 = 0
 	var/max_xeno_t3 = 1
@@ -58,6 +58,8 @@
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE
+	/// Whether this ERT can occur even during FTL or on a ground crash
+	var/ignore_ftl_or_crash = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
 
@@ -251,7 +253,7 @@
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
-	if(SShijack.in_ftl || SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH))
 		members = list()
 		candidates = list()
 		return

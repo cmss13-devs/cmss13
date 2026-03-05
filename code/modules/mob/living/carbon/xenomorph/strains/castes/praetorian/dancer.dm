@@ -154,11 +154,7 @@
 			continue
 		if(human_target.stat == DEAD || human_target.stat == UNCONSCIOUS)
 			continue
-		if(locate(/datum/effects/dancer_tag/normal) in human_target.effects_list)
-			continue
-		if(locate(/datum/effects/dancer_tag/spread) in human_target.effects_list)
-			continue
-		if(get_dist(origin, human_target) > DANCER_YELLOW_TAG_SPREAD_DIST)
+		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
 			continue
 
 		new /datum/effects/dancer_tag/spread(human_target, bound_xeno)

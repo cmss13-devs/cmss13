@@ -63,7 +63,7 @@
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
-	name = "\improper A19 HV magazine (10x24mm)"
+	name = "\improper A19 HV tracker magazine (10x24mm)"
 	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds. These bullets will track and relay information to the hud optics when you shoot a target."
 	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/custom_tracker

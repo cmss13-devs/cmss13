@@ -1,4 +1,4 @@
-/datum/component/m4ra_tracker
+/datum/component/tracking_bullets
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
 	var/mob/living/shooter
@@ -7,7 +7,7 @@
 	var/ping_accum = 0
 	var/list/active_blips = list()
 
-/datum/component/m4ra_tracker/Initialize(mob/living/fired_by)
+/datum/component/tracking_bullets/Initialize(mob/living/fired_by)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -16,12 +16,12 @@
 	START_PROCESSING(SSdcs, src)
 	timerid = addtimer(CALLBACK(src, PROC_REF(expire)), 10 SECONDS, TIMER_STOPPABLE)
 
-/datum/component/m4ra_tracker/InheritComponent(datum/component/m4ra_tracker/old_component, is_dupe, mob/living/fired_by)
+/datum/component/tracking_bullets/InheritComponent(datum/component/tracking_bullets/old_component, is_dupe, mob/living/fired_by)
 	if(timerid)
 		deltimer(timerid)
 	timerid = addtimer(CALLBACK(src, PROC_REF(expire)), 10 SECONDS, TIMER_STOPPABLE)
 
-/datum/component/m4ra_tracker/Destroy()
+/datum/component/tracking_bullets/Destroy()
 	if(timerid)
 		deltimer(timerid)
 		timerid = null
@@ -29,23 +29,23 @@
 	UnregisterSignal(parent, COMSIG_MOB_DEATH)
 	for(var/list/blip_data as anything in active_blips)
 		var/mob/living/carbon/human/viewer = blip_data[1]
-		var/obj/effect/detector_blip/DB = blip_data[2]
+		var/obj/effect/detector_blip/blip_effect = blip_data[2]
 		if(viewer && viewer.client)
-			viewer.client.remove_from_screen(DB)
-		qdel(DB)
+			viewer.client.remove_from_screen(blip_effect)
+		qdel(blip_effect)
 	active_blips = null
 	shooter = null
 	return ..()
 
-/datum/component/m4ra_tracker/proc/expire()
+/datum/component/tracking_bullets/proc/expire()
 	timerid = null
 	qdel(src)
 
-/datum/component/m4ra_tracker/proc/on_target_death(datum/source)
+/datum/component/tracking_bullets/proc/on_target_death(datum/source)
 	SIGNAL_HANDLER
 	qdel(src)
 
-/datum/component/m4ra_tracker/process(delta_time)
+/datum/component/tracking_bullets/process(delta_time)
 	if(QDELETED(parent))
 		qdel(src)
 		return
@@ -78,13 +78,13 @@
 
 	playsound(target_turf, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2) // play even if nobody is present to simulate "its a bullet bro"
 
-/datum/component/m4ra_tracker/proc/show_tracker_blip(mob/living/carbon/human/viewer, mob/living/tagged_mob)
+/datum/component/tracking_bullets/proc/show_tracker_blip(mob/living/carbon/human/viewer, mob/living/tagged_mob)
 	if(!viewer.client)
 		return
 	if(QDELETED(tagged_mob))
 		return
 
-	var/obj/effect/detector_blip/DB = new /obj/effect/detector_blip()
+	var/obj/effect/detector_blip/blip_effect = new /obj/effect/detector_blip()
 
 	var/c_view = viewer.client.view
 	var/view_x_offset = 0
@@ -111,24 +111,24 @@
 		diff_dir_y = 2
 
 	if(diff_dir_x || diff_dir_y)
-		DB.icon_state = "detector_blip_dir"
-		DB.setDir(diff_dir_x + diff_dir_y)
+		blip_effect.icon_state = "detector_blip_dir"
+		blip_effect.setDir(diff_dir_x + diff_dir_y)
 	else
-		DB.icon_state = "detector_blip"
-		DB.setDir(initial(DB.dir))
+		blip_effect.icon_state = "detector_blip"
+		blip_effect.setDir(initial(blip_effect.dir))
 
-	DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (tagged_mob.x - viewer.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (tagged_mob.y - viewer.y), 1, 2*c_view+1)]"
-	viewer.client.add_to_screen(DB)
+	blip_effect.screen_loc = "[clamp(c_view + 1 - view_x_offset + (tagged_mob.x - viewer.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (tagged_mob.y - viewer.y), 1, 2*c_view+1)]"
+	viewer.client.add_to_screen(blip_effect)
 
-	var/list/blip_data = list(viewer, DB)
+	var/list/blip_data = list(viewer, blip_effect)
 	active_blips += list(blip_data)
-	addtimer(CALLBACK(src, PROC_REF(clear_tracker_blip), viewer, DB, blip_data), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_tracker_blip), viewer, blip_effect, blip_data), 1 SECONDS)
 
-/datum/component/m4ra_tracker/proc/clear_tracker_blip(mob/living/carbon/human/viewer, obj/effect/detector_blip/DB, list/blip_data)
+/datum/component/tracking_bullets/proc/clear_tracker_blip(mob/living/carbon/human/viewer, obj/effect/detector_blip/blip_effect, list/blip_data)
 	active_blips -= list(blip_data)
 	if(viewer && viewer.client)
-		viewer.client.remove_from_screen(DB)
-	qdel(DB)
+		viewer.client.remove_from_screen(blip_effect)
+	qdel(blip_effect)
 
 /datum/ammo/bullet/rifle/m4ra/custom_tracker
 	name = "A19 HV tracking round"
@@ -147,4 +147,4 @@
 	if(target.faction == firer.faction)
 		return
 
-	target.AddComponent(/datum/component/m4ra_tracker, firer)
+	target.AddComponent(/datum/component/tracking_bullets, firer)

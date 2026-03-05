@@ -31,12 +31,10 @@
 
 // Get a list of all z which have the specified trait
 /datum/controller/subsystem/mapping/proc/levels_by_trait(trait)
-	. = list()
-	var/list/_z_list = z_list
-	for(var/A in _z_list)
-		var/datum/space_level/S = A
-		if (S.traits[trait])
-			. += S.z_value
+	var/list/retval = z_trait_levels[trait]
+	if(!retval)
+		return list()
+	return retval.Copy()
 
 // Get a list of all z which have any of the specified traits
 /datum/controller/subsystem/mapping/proc/levels_by_any_trait(list/traits)

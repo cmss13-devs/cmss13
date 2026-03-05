@@ -197,6 +197,9 @@
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
+	if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
 

@@ -38,15 +38,15 @@
 			if("small")
 				pixel_x = rand(-12, 12)
 				pixel_y = rand(-12, 12)
-				icon_state += shardsize
+				icon_state = shardsize
 			if("medium")
 				pixel_x = rand(-8, 8)
 				pixel_y = rand(-8, 8)
-				icon_state += shardsize
+				icon_state = shardsize
 			if("large")
 				pixel_x = rand(-5, 5)
 				pixel_y = rand(-5, 5)
-				icon_state += shardsize
+				icon_state = shardsize
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if ( iswelder(W))

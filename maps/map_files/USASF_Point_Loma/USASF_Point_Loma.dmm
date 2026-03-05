@@ -42860,7 +42860,7 @@
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/hallway/south)
 "cyd" = (
-/obj/effect/spawner/random/gun/usasf_primary,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/corsat/purplecorner/north,
 /area/point_loma/research_facility/hallway/south)
 "cye" = (

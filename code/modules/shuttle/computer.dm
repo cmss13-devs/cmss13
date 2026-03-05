@@ -9,6 +9,8 @@
 	var/shuttleId
 	var/possible_destinations = list()
 	var/admin_controlled
+	/// Whether this computer can function even during FTL or on a ground crash
+	var/ignore_ftl_or_crash = FALSE
 
 /obj/structure/machinery/computer/shuttle/proc/is_disabled()
 	return FALSE
@@ -197,7 +199,7 @@
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
 		to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
 		return UI_CLOSE
 	if(disabled)
@@ -430,13 +432,14 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
-				if(SShijack.in_ftl)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
-					return
+				if(!ignore_ftl_or_crash)
+					if(SShijack.in_ftl)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
+						return
 
-				if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
-					return
+					if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
+						return
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))

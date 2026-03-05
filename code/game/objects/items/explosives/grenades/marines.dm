@@ -547,6 +547,8 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
+	msg_admin_attack("[key_name(user)] has deployed \a [name] in landmine mode in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z])", src.loc.x, src.loc.y, src.loc.z)
+	planted.cause_data = create_cause_data(initial(name), user, src)
 	planted.activate_sensors()
 	planted.iff_signal = user.faction // assuring IFF is set
 	planted.pixel_x += rand(-5, 5)

@@ -260,7 +260,7 @@
 
 /datum/equipment_preset/survivor/army/marksman
 	name = "Survivor - US Army Marksman"
-	paygrades = list(PAY_SHORT_AE4S = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4E = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MARKSMAN
 	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
@@ -281,7 +281,7 @@
 
 /datum/equipment_preset/survivor/army/gunner
 	name = "Survivor - US Army Heavy Gunner"
-	paygrades = list(PAY_SHORT_AE4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4E = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner

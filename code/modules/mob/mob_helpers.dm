@@ -132,109 +132,48 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return output_message
 
 /**
- * Summary: proc that parses an html input string and scrambles the non-html string contents.
+ * Scrambles the non-html contents in the provided message using stars().
  *
  * Arguments:
- * * message - an html string value to be parsed and modified.
- * * clear_char_probability - the likelihood a character does not get converted into a *
- *
- * Return:
- * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ * * message - The string with potential html content to scramble
+ * * clear_char_probability - The likelihood a character does not get converted into a *
  */
-/proc/stars_decode_html(message, clear_char_probability = 25)
-	if(!length(message))
+/proc/stars_decode_html(message, clear_char_probability=25)
+	var/message_length = length(message)
+	if(!message_length)
 		return ""
 
 	if(clear_char_probability >= 100)
 		return message
 
-	// boolean value to know if the current indexed element needs to be scrambled.
-	var/parsing_message = TRUE
-
-	// boolean values to know if we are currently inside a double or single quotation.
-	var/in_single_quote = FALSE
-	var/in_double_quote = FALSE
-
-	// string of what tag we're currently in
-	var/current_tag = ""
-	var/escaped_tag = FALSE
-
-	// string that will be scrambled
-	var/current_string_to_scramble = ""
-
-	// output string after parse
+	var/regex/code_regex = regex(@#<head.*?>.*?</head>|<style.*?>.*?</style>|<.*?>#, "g")
 	var/output_message = ""
-	for(var/character_index in 1 to length(message))
-		var/current_char = message[character_index]
-
-		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
-		if(!parsing_message)
-			if(current_char == "'")
-				in_single_quote = !in_single_quote
-			if(current_char == "\"")
-				in_double_quote = !in_double_quote
-			if(in_single_quote || in_double_quote)
-				output_message += current_char
-				continue
-
-		if(current_char == ">")
-			parsing_message = TRUE
-			output_message += current_char
-			current_tag += current_char
-			if(findtext(current_tag, "<style>") == 1 || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
-				escaped_tag = TRUE
-			else if(escaped_tag && (findtext(current_tag, "</style>") == 1 || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
-				escaped_tag = FALSE
-			continue
-		if(current_char == "<")
-			parsing_message = FALSE
-			current_tag = ""
-			if(length(current_string_to_scramble))
-				var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
-				output_message += scrambled_string
-				current_string_to_scramble = ""
-
-		if(parsing_message && !escaped_tag)
-			current_string_to_scramble += current_char
-		else
-			output_message += current_char
-			current_tag += current_char
-
-	if(length(current_string_to_scramble))
-		var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
-		output_message += scrambled_string
+	var/cur_index = 1
+	do
+		var/prev_index = cur_index
+		cur_index = code_regex.Find(message, code_regex.next)
+		if(prev_index != cur_index)
+			var/current_string = copytext(message, prev_index, cur_index)
+			output_message += stars(current_string, clear_char_probability)
+		if(cur_index)
+			output_message += code_regex.match
+			cur_index = code_regex.next
+	while(cur_index)
 
 	return output_message
 
-GLOBAL_LIST_INIT(last_announcement_time, list(FACTION_MARINE = 0))
-
 /**
- * Gets a stars_decode_html result with a variable clarity based on message length and optionally the time since last announcement
+ * Gets a stars_decode_html result with a variable clarity based the faction's current comms clarity
  *
  * Arguments:
  * * message - The message to garble (its length is used for clarity calculation)
- * * length_modifier - An optional number to subtract against message length
- * * faction_for_cooldown - An optional faction define that is used to check for clarity calculation and set in GLOB.last_announcement_time for that faction
+ * * faction - An optional faction define to check (otherwise announcement_max_clarity config value)
  */
-/proc/get_garbled_announcement(message, length_modifier, faction_for_cooldown)
-	var/length_max_bound = CONFIG_GET(number/announcement_max_bound)
-	var/length_min_bound = CONFIG_GET(number/announcement_min_bound)
-	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
-	var/clarity_max = CONFIG_GET(number/announcement_max_clarity)
+/proc/get_garbled_announcement(message, faction)
+	var/clarity = SSradio.faction_coms_clarity[faction]
+	if(!clarity)
+		clarity = CONFIG_GET(number/announcement_max_clarity)
 
-	var/length_clamped = clamp(length(message) - length_modifier, length_min_bound, length_max_bound)
-	var/length_scalar = SCALE(length_clamped, length_min_bound, length_max_bound)
-	var/duration_scalar = 1
-	if(faction_for_cooldown)
-		var/duration_min_bound = CONFIG_GET(number/announcement_duration_min_bound)
-		var/duration_max_bound = CONFIG_GET(number/announcement_duration_max_bound)
-
-		var/duration_clamped = clamp(world.time - GLOB.last_announcement_time[faction_for_cooldown], duration_min_bound, duration_max_bound)
-		duration_scalar = 1 - SCALE(duration_clamped, duration_min_bound, duration_max_bound)
-		GLOB.last_announcement_time[faction_for_cooldown] = world.time
-
-	// Clarity is the better of the two (either a short message, or after a long duration)
-	var/clarity = round(lerp(clarity_max, clarity_min, min(length_scalar, duration_scalar)), 1)
 	return stars_decode_html(message, clarity)
 
 /proc/slur(phrase)

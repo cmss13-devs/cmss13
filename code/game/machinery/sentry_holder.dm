@@ -114,7 +114,7 @@
 /obj/structure/machinery/sentry_holder/wy
 	health = 400
 	icon = 'icons/obj/structures/props/sentry_holder_wy.dmi'
-	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel"
+	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 
 /obj/structure/machinery/sentry_holder/almayer

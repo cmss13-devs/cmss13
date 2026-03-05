@@ -308,6 +308,9 @@
 /atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
 	SIGNAL_HANDLER
 
+	if(!isliving(user.mob))
+		return
+
 	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
 		return
 
@@ -481,7 +484,7 @@
 	else if(mods[ALT_CLICK])
 		earpiece.switch_tracker_target()
 		return
-	if(user.get_active_hand())
+	if(user.a_intent == INTENT_HARM && user.get_active_hand()) //Stop it popping up in combat(hopefully), but work any other time.
 		return
 	if(user.assigned_squad)
 		user.assigned_squad.tgui_interact(user)

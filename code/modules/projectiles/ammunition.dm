@@ -151,11 +151,11 @@ They're all essentially identical when it comes to getting the job done.
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?
-		to_chat(user, "[src] is already full.")
+		to_chat(user, SPAN_WARNING("[src] is already full."))
 		return
 
 	if(source.caliber != caliber) //Are they the same caliber?
-		to_chat(user, "The rounds don't match up. Better not mix them up.")
+		to_chat(user, SPAN_WARNING("The calibers don't match up. Better not mix them up."))
 		return
 
 	var/S = min(transfer_amount, max_rounds - current_rounds)
@@ -397,13 +397,3 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	name = "spent shell"
 	icon_state = "shell"
 
-/obj/item/ammo_box/magazine/lever_action/xm88
-	name = "\improper .458 bullets box (.458 x 300)"
-	icon_state = "base_458"
-	overlay_ammo_type = "_blank"
-	overlay_gun_type = "_458"
-	overlay_content = "_458"
-	magazine_type = /obj/item/ammo_magazine/lever_action/xm88
-
-/obj/item/ammo_box/magazine/lever_action/xm88/empty
-	empty = TRUE

@@ -168,7 +168,7 @@
 
 /client/proc/Getmob(mob/M)
 	set name = "Get Mob"
-	set desc = "Mob to teleport"
+	set desc = "Mob to teleport."
 	set category = null
 	set hidden = TRUE
 
@@ -183,7 +183,7 @@
 /client/proc/Getkey()
 	set name = "Get Ckey"
 	set category = null
-	set desc = "Key to teleport"
+	set desc = "Key to teleport."
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")

@@ -221,16 +221,6 @@
 
 	sleep(warmup_time) //Warming up
 
-	if(!queen_locked)
-		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
-			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
-				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
-				set_security_level(SEC_LEVEL_RED)
-				break
-
 	moving_status = SHUTTLE_INTRANSIT
 
 	for(var/X in equipments)
@@ -293,6 +283,16 @@
 	turfs_trg = get_shuttle_turfs(T_trg, info_datums)
 
 	open_doors(turfs_trg) //And now open the doors
+
+	if(!queen_locked)
+		for(var/turf/T in turfs_src)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
+				var/name = "Unidentified Lifesigns"
+				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+				set_security_level(SEC_LEVEL_RED)
+				break
 
 	//END: Heavy lifting backend
 
@@ -363,7 +363,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL."))
 
 	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -531,7 +531,7 @@
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
 
-	if(SSticker.mode)
+	if(SSticker.mode && !SSticker.mode.is_in_endgame)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -555,7 +555,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE."))
 		return FALSE
 
 	locs_dock -= T_src

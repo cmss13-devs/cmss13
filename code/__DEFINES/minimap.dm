@@ -15,7 +15,8 @@
 #define MINIMAP_FLAG_XENO_MUTATED (1<<14)
 #define MINIMAP_FLAG_XENO_FORSAKEN (1<<15)
 #define MINIMAP_FLAG_XENO_RENEGADE (1<<16)
-#define MINIMAP_FLAG_ALL (1<<17) - 1
+#define MINIMAP_FLAG_XENO_HUNTED (1<<17)
+#define MINIMAP_FLAG_ALL (1<<18) - 1
 
 ///The minimap zoom scale
 #define MINIMAP_SCALE 2
@@ -77,6 +78,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_ECHO "#00b043"
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
+#define MINIMAP_SQUAD_ARMY "#349c30"
 #define MINIMAP_SQUAD_INTEL "#053818"
 
 //Prison
@@ -102,3 +104,10 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_AREA_DERELICT "#920190ee"
 #define MINIMAP_AREA_OOB "#3a3a3a"
 #define MINIMAP_AREA_COMMS "#00b3ffe7"
+
+// Ceiling colors
+#define MINIMAP_CEILING_TIER_GLASS "#b2e6f19a"
+#define MINIMAP_CEILING_TIER_1 "#606060a2"
+#define MINIMAP_CEILING_TIER_2 "#404040a2"
+#define MINIMAP_CEILING_TIER_3 "#202020a2"
+#define MINIMAP_CEILING_TIER_4 "#000000a2"

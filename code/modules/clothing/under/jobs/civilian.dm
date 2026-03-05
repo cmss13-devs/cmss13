@@ -154,7 +154,7 @@
 
 /obj/item/clothing/under/lawyer/bluesuit
 	name = "blue suit"
-	desc = "A classy suit and tie"
+	desc = "A classy suit and tie."
 	icon_state = "bluesuit"
 
 /obj/item/clothing/under/lawyer/purpsuit

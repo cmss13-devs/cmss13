@@ -67,11 +67,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
 /datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
 	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role."))
 		return
 
 	if(!override_checks && allowed_origins && !(user.origin in allowed_origins))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin."))
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
@@ -187,6 +187,33 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "BiMex polarized shades, bronze"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
 	fluff_cost = 4
+
+// Bimex ripoff shades - cheap but colorful
+
+/datum/gear/eyewear/bimax_shades
+	display_name = "BiMax personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake
+	fluff_cost = 2
+
+/datum/gear/eyewear/bimax_shades/red
+	display_name = "BiMax personal shades, red"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
+
+/datum/gear/eyewear/bimax_shades/orange
+	display_name = "BiMax personal shades, orange"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
+
+/datum/gear/eyewear/bimax_shades/yellow
+	display_name = "BiMax personal shades, yellow"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
+
+/datum/gear/eyewear/bimax_shades/green
+	display_name = "BiMax personal shades, green"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
+
+/datum/gear/eyewear/bimax_shades/blue
+	display_name = "BiMax personal shades, blue"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
 
 /datum/gear/eyewear/prescription_sunglasses
 	display_name = "Prescription sunglasses"
@@ -423,6 +450,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM headband, red"
 	path = /obj/item/clothing/head/headband/red
 
+/datum/gear/headwear/uscm/headband_intel
+	display_name = "USCM headband, black"
+	path = /obj/item/clothing/head/headband/intel
+
 /datum/gear/headwear/uscm/headband_tan
 	display_name = "USCM headband, tan"
 	path = /obj/item/clothing/head/headband/tan
@@ -465,19 +496,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting
+	path = /obj/item/clothing/accessory/helmet/cover/netting
 
 /datum/gear/helmet_garb/netting/desert
 	display_name = "Desert Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/desert
+	path = /obj/item/clothing/accessory/helmet/cover/netting/desert
 
 /datum/gear/helmet_garb/netting/jungle
 	display_name = "Jungle Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/jungle
+	path = /obj/item/clothing/accessory/helmet/cover/netting/jungle
 
 /datum/gear/helmet_garb/netting/urban
 	display_name = "Urban Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/urban
+	path = /obj/item/clothing/accessory/helmet/cover/netting/urban
 
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
@@ -505,19 +536,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/raincover
 	display_name = "Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover
+	path = /obj/item/clothing/accessory/helmet/cover/raincover
 
 /datum/gear/helmet_garb/raincover/jungle
 	display_name = "Jungle Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/jungle
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/jungle
 
 /datum/gear/helmet_garb/raincover/desert
 	display_name = "Desert Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/desert
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/desert
 
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/urban
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/urban
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -639,6 +670,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Camera"
 	path = /obj/item/device/camera
 	fluff_cost = 2
+
+/datum/gear/toy/camera/disposable
+	display_name = "Old Disposable Camera"
+	path = /obj/item/device/camera/oldcamera
+	fluff_cost = 3
 
 /datum/gear/toy/mags
 	fluff_cost = 1
@@ -1253,39 +1289,36 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
-/datum/gear/civilian/patch
-	display_name = "Weyland-Yutani shoulder patch, black"
-	path = /obj/item/clothing/accessory/patch/wy
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
+///Commented out until we have a factional system to restrict these properly
+// /datum/gear/civilian/patch
+// 	display_name = "Weyland-Yutani shoulder patch, black"
+// 	path = /obj/item/clothing/accessory/patch/wy
+// 	fluff_cost = 1
+// 	slot = WEAR_IN_ACCESSORY
 
-/datum/gear/civilian/patch/wysquare
-	display_name = "Weyland-Yutani shoulder patch"
-	path = /obj/item/clothing/accessory/patch/wysquare
+// /datum/gear/civilian/patch/wysquare
+// 	display_name = "Weyland-Yutani shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/wysquare
 
-/datum/gear/civilian/patch/wy_white
-	display_name = "Weyland-Yutani shoulder patch, white"
-	path = /obj/item/clothing/accessory/patch/wy_white
+// /datum/gear/civilian/patch/wy_white
+// 	display_name = "Weyland-Yutani shoulder patch, white"
+// 	path = /obj/item/clothing/accessory/patch/wy_white
 
-/datum/gear/civilian/patch/wy_fury
-	display_name = "Weyland-Yutani Fury '161' patch"
-	path = /obj/item/clothing/accessory/patch/wyfury
+// /datum/gear/civilian/patch/wy_fury
+// 	display_name = "Weyland-Yutani Fury '161' patch"
+// 	path = /obj/item/clothing/accessory/patch/wyfury
 
-/datum/gear/civilian/patch/twepatch
-	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twe
+// /datum/gear/civilian/patch/twepatch
+// 	display_name = "Three World Empire shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/cec
-	display_name = "Cosmos Exploration Corps shoulder patch"
-	path = /obj/item/clothing/accessory/patch/cec_patch
+// /datum/gear/civilian/patch/cec
+// 	display_name = "Cosmos Exploration Corps shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/cec_patch
 
-/datum/gear/civilian/patch/clf
-	display_name = "Colonial Liberation Front shoulder patch"
-	path = /obj/item/clothing/accessory/patch/clf_patch
-
-/datum/gear/civilian/patch/hyperdyne
-	display_name = "Hyperdyne Corporation shoulder patch"
-	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+// /datum/gear/civilian/patch/hyperdyne
+// 	display_name = "Hyperdyne Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
 // Misc Headwear
 
@@ -1300,32 +1333,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian/headwear/cowboy_hat/light
 	display_name = "cowboy hat, light-brown"
 	path = /obj/item/clothing/head/cowboy/light
-
-// Cheap Civilian shades - colorful!
-
-/datum/gear/civilian/eyewear/bimax_shades
-	display_name = "BiMax personal shades"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake
-
-/datum/gear/civilian/eyewear/bimax_shades/red
-	display_name = "BiMax personal shades, red"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
-
-/datum/gear/civilian/eyewear/bimax_shades/orange
-	display_name = "BiMax personal shades, orange"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
-
-/datum/gear/civilian/eyewear/bimax_shades/yellow
-	display_name = "BiMax personal shades, yellow"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
-
-/datum/gear/civilian/eyewear/bimax_shades/green
-	display_name = "BiMax personal shades, green"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
-
-/datum/gear/civilian/eyewear/bimax_shades/blue
-	display_name = "BiMax personal shades, blue"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
 
 // Hippie Shades
 

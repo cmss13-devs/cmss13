@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/skills//TODO:SANITY
 	name = "Employment Records"
-	desc = "Used to view personnel's employment records"
+	desc = "Used to view personnel's employment records."
 	icon_state = "medlaptop"
 	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
@@ -97,7 +97,7 @@
 					dat += "\n<A href='byond://?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='byond://?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[src];choice=Return'>Back</A><BR>"
 				if(4.0)
 					if(!length(Perp))
-						dat += "ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
+						dat += "ERROR. String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 					else
 						dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -372,7 +372,7 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
 					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
 					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")

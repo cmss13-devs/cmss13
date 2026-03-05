@@ -298,3 +298,40 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
 	)
+
+/obj/item/clothing/suit/armor/roman
+	name = "imperial legionary armor"
+	desc = "A metal body armor also known as a Lorica segmentata that is used by the Roman heavy infantry called the Legionares."
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	icon_state = "legionary_armor"
+	item_state = "legionary_armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi'
+	)
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_inventory = BLOCKSHARPOBJ
+	siemens_coefficient = 0.5
+	time_to_unequip = 20
+	time_to_equip = 20
+	allowed = list(
+		/obj/item/weapon/sword,
+		/obj/item/device/flashlight,
+	)
+	uniform_restricted = list(/obj/item/clothing/under/tunic)
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/armor/roman/centurion
+	name = "imperial centurion armor"
+	desc = "A metal body armor also known as a Lorica segmentata that is used by the Roman heavy infantry, this one has been outfitted with additional protection to the legs and arms with a stylish cloak."
+	icon_state = "centurion_armor"
+	item_state = "centurion_armor"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT

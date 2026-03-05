@@ -13,7 +13,7 @@
 
 
 
-	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
+	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "Deceased")
 
 	if(is_a_synth)
 		spawn_gibs()

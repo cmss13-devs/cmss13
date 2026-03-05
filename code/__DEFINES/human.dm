@@ -37,6 +37,12 @@
 #define LIMB_SPLINTED_INDESTRUCTIBLE (1<<8)
 /// A prosthetic that's been attached to the body but not connected to the brain.
 #define LIMB_UNCALIBRATED_PROSTHETIC (1<<9)
+/// Limb has third degree burns
+#define LIMB_THIRD_DEGREE_BURNS (1<<10)
+/// Limb has eschar
+#define LIMB_ESCHAR (1<<11)
+
+
 
 ///////////////////WOUND DEFINES///////////////////
 
@@ -105,7 +111,7 @@
 
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
-#define COMMAND_ORDER_COOLDOWN 800
+#define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds
 #define COMMAND_ORDER_MOVE "move"
 #define COMMAND_ORDER_FOCUS "focus"
 #define COMMAND_ORDER_HOLD "hold"
@@ -183,21 +189,18 @@
 //////////////////////////////////
 
 //Synthetic Defines
-#define SYNTH_COLONY "Third Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_TWO "Second Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_ONE "First Generation Colonial Synthetic"
+#define SYNTH_GEN_ONE "First Generation Synthetic"
+#define SYNTH_GEN_TWO "Second Generation Synthetic"
+#define SYNTH_GEN_THREE "Third Generation Synthetic"
 #define SYNTH_COMBAT "W-Y Combat Android"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_UPP_JOE "Dzho Automaton"
-#define SYNTH_GEN_ONE "First Generation Synthetic"
-#define SYNTH_GEN_TWO "Second Generation Synthetic"
-#define SYNTH_GEN_THREE "Third Generation Synthetic"
 #define SYNTH_K9 "Synthetic K9"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_TWO, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+#define SYNTH_TYPES list(SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
 #define RELIGION_PROTESTANT "Christianity (Protestant)"

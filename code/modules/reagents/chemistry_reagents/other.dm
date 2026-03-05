@@ -820,6 +820,18 @@
 		PROPERTY_RADIUS = 5,
 	)
 
+// Weaker liquid fuel
+/datum/reagent/napalm/weak
+	name = "Napthal Fuel"
+	id = "napthal"
+	description = "Known as Napthal Fuel, a combustible liquid chemical."
+	burncolor = "#EE6515"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_2,
+		PROPERTY_RADIUS = 5,
+	)
+
 // This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
 	name = "Napalm B-Gel"
@@ -1029,7 +1041,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 3)
+	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 2)
 
 /datum/reagent/plasma/chitin
 	name = "Chitin Plasma"

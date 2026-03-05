@@ -200,7 +200,7 @@
 
 /mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
 	set name = "Set Hugger Reserve"
-	set desc = "Set Hugger Reserve"
+	set desc = "Set Hugger Reserve."
 	set category = null
 
 	if(!istype(morpher))

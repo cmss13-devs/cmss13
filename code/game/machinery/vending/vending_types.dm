@@ -147,7 +147,7 @@
 	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/machinery/vending/cola/research
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
+	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping."
 	products = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -656,6 +656,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 10,
 		/obj/item/device/cassette_tape/indie = 10,
 		/obj/item/device/walkman = 50,
+		/obj/item/device/walkman/white_band = 50,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
@@ -689,6 +690,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 5,
 		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
+		/obj/item/device/walkman/white_band = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
@@ -710,6 +712,16 @@
 /obj/structure/machinery/vending/walkman/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
+
+/obj/structure/machinery/vending/walkman/update_icon()
+	overlays.Cut()
+
+	if(stat & NOPOWER)
+		overlays += image(icon, "[icon_state]_off")
+	if(stat & BROKEN)
+		overlays += image(icon, "[initial(icon_state)]_broken")
+		if(stat & IN_REPAIR)
+			overlays += image(icon, "[icon_state]_panel")
 
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients

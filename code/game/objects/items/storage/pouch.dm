@@ -250,6 +250,10 @@
 /obj/item/storage/pouch/firstaid/full/alternate
 	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
 
+/obj/item/storage/pouch/firstaid/full/alternate/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
@@ -262,6 +266,10 @@
 /obj/item/storage/pouch/firstaid/full/pills
 	desc = "Contains a variety of pill packets for treating many injuries."
 
+/obj/item/storage/pouch/firstaid/full/pills/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
@@ -270,6 +278,25 @@
 
 /obj/item/storage/pouch/firstaid/full/pills/wy
 	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/hunted
+	name = "old pouch"
+	desc = "A general-purpose pouch used to carry neccessary survival items."
+	icon_state = "survival"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/reagent_container/pill,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/splint,
+	)
+
+/obj/item/storage/pouch/firstaid/hunted/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/pill/oxycodone/natural(src)
+	new /obj/item/reagent_container/pill/bicaridine/natural(src)
 
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
@@ -977,6 +1004,9 @@
 		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/tool/surgery/FixOVein = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/scalpel = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/hemostat = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/retractor = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
 	instant_pill_grabbable = TRUE // If TRUE, pills can be taken directly from bottles while in hand/equipped.

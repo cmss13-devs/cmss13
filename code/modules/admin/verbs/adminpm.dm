@@ -24,15 +24,16 @@
 		return
 	var/list/targets = list()
 	for(var/client/client as anything in GLOB.clients)
+		var/display_key = client.username() != client.key ? "[client.username()] ([client.key])" : "[client.key]"
 		if(client.mob)
 			if(isnewplayer(client.mob))
-				targets["(New Player) - [client]"] = client
+				targets["(New Player) - [display_key]"] = client
 			else if(isobserver(client.mob))
-				targets["[client.mob.name](Ghost) - [client]"] = client
+				targets["[client.mob.name](Ghost) - [display_key]"] = client
 			else
-				targets["[client.mob.real_name](as [client.mob.name]) - [client]"] = client
+				targets["[client.mob.real_name](as [client.mob.name]) - [display_key]"] = client
 		else
-			targets["(No Mob) - [client]"] = client
+			targets["(No Mob) - [display_key]"] = client
 	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sort_list(targets)
 	cmd_admin_pm(targets[target],null)
 
@@ -196,15 +197,15 @@
 		if(CLIENT_IS_STAFF(src))
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_ADMINSAY("\nAdmin PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[msg]</span>\n\n"),
+				html = SPAN_ADMINSAY("\nAdmin PM from-<b>[key_name(src, recipient, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>\n\n"),
 				confidential = TRUE)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
+				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			//omg this is dumb, just fill in both their tickets
-			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [msg]</font>"
+			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b> to-<b>[key_name(recipient, src, TRUE, show_username = TRUE)]</b>: [msg]</font>"
 			var/player_interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
 			var/interaction_message_raw = "[msg]"
 			var/player_interaction_raw = "[msg]"
@@ -217,7 +218,7 @@
 		else //recipient is an admin but sender is not
 			current_ticket.player_replied = TRUE
 			SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
-			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE)]</b>: <span class='linkify'>[msg]</span>"
+			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"
 			var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
 			var/replymsg_raw = "[msg]"
 			var/player_replymsg_raw = "[msg]"
@@ -260,7 +261,7 @@
 				confidential = TRUE)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
+				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
 			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE,
@@ -296,5 +297,5 @@
 		if(X.key!=key && X.key!=recipient.key) //check client/X is an admin and isn't the sender or recipient
 			to_chat(X,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_NOTICE("<B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [msg]") ,
+				html = SPAN_NOTICE("<B>PM: [key_name(src, X, 0, show_username = TRUE)]-&gt;[key_name(recipient, X, 0, show_username = TRUE)]:</B> [msg]") ,
 				confidential = TRUE)

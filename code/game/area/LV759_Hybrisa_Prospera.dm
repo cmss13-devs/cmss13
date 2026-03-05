@@ -2,7 +2,7 @@
 
 /area/lv759
 	name = "LV-759 Hybrisa Prospera"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
 	powernet_name = "ground"
@@ -30,7 +30,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	requires_power = FALSE
 
@@ -39,7 +39,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 
 /area/lv759/bunker/gonzo
@@ -47,7 +47,7 @@
 	icon_state = "cliff_blocked"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
@@ -58,7 +58,7 @@
 	icon_state = "cliff_blocked"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
@@ -182,7 +182,7 @@
 	name = "Derelict Ship"
 	icon_state = "derelictship"
 	ceiling = CEILING_REINFORCED_METAL
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
 	ceiling_muffle = FALSE
@@ -1250,7 +1250,7 @@
 	icon_state = "hobo"
 	ceiling = CEILING_REINFORCED_METAL
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	linked_lz = DROPSHIP_LZ2
 
 // Weyland-Yutani Advanced Bio-Genomic Research Complex

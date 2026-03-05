@@ -59,6 +59,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_flashing_lights_pref,
 	/client/proc/toggle_leadership_spoken_orders,
 	/client/proc/toggle_cocking_to_hand,
+	/client/proc/toggle_wield_assist,
 ))
 
 /client/proc/reduce_minute_count()
@@ -108,7 +109,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second."))
 			return
 
 	// Tgui Topic middleware
@@ -168,7 +169,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			for(var/photo in info.photo_list)
 				usr << browse_rsc(info.photo_list[photo], photo)
 
-		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message", width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=info.extra_stylesheets, extra_headers=info.extra_headers)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -268,12 +269,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
-
 	///////////
 	//CONNECT//
 	///////////
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
+
+	process_preauthorization(params2list(TopicData))
+
 	TopicData = null //Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
@@ -314,6 +317,90 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	PostLogin()
 
+/// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
+/client/proc/process_preauthorization(list/topic_headers)
+	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
+
+	if(!length(types_to_oidc_endpoint))
+		return
+
+	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
+		var/access_code = topic_headers[oidc_type]
+		if(!access_code)
+			continue
+
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+			"Authorization" = "Bearer [access_code]"
+		))
+		request.begin_async()
+
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.error)
+			continue
+
+		var/response_decoded = json_decode(response.body)
+
+		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[oidc_type]
+		if(!ckey_to_find)
+			continue
+
+		var/fallback = splittext(ckey_to_find, "?")
+		if(length(fallback) == 2)
+			ckey_to_find = fallback[1]
+			fallback = fallback[2]
+		else
+			fallback = null
+
+		var/found_ckey = response_decoded
+		for(var/split in splittext(ckey_to_find, "."))
+			found_ckey = found_ckey[split]
+
+			if(!found_ckey)
+				break
+
+		if(!length(found_ckey))
+			if(length(fallback))
+				found_ckey = response_decoded[fallback]
+
+			if(!length(found_ckey))
+				continue
+
+		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
+		ckey = found_ckey
+
+		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
+		if(is_banned)
+			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
+			qdel(src)
+			return FALSE
+
+		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[oidc_type]
+		if(!username_to_find)
+			break
+
+		var/found_username = response_decoded
+		for(var/split in splittext(username_to_find, "."))
+			found_username = found_username[split]
+
+			if(!found_username)
+				break
+
+		if(!length(found_username))
+			break
+
+		log_access("PREAUTHORIZATION: user [found_ckey] assigned username [found_username].")
+		external_username = found_username
+		break
+
+	var/launcher_port = topic_headers["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, topic_headers)
+		server.setup()
+
 /client/proc/CanLogin()
 	// Version check below if we ever need to start checking against BYOND versions again.
 	var/breaking_version = CONFIG_GET(number/client_error_version)
@@ -325,7 +412,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
 		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later.")
 		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		return FALSE
 
@@ -341,7 +428,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
 			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later.")
 			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
@@ -437,7 +524,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	enable_hardware_graphics()
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
@@ -466,14 +553,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
 			ip2country(address, src)
-
-	spawn(-1)
-		if(SScmtv.is_subscriber(src))
-			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//////////////
 	//DISCONNECT//
@@ -717,6 +801,8 @@ CLIENT_VERB(read_key_up, key as text|null)
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+				if(/datum/keybinding/client/switch_input::name)
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"input.focus=true?map.focus=true:input.focus=true\\\"\"")
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
 						var/say = tgui_say_create_open_command(SAY_CHANNEL)
@@ -775,6 +861,23 @@ CLIENT_VERB(read_key_up, key as text|null)
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 					winset(src, "tgui_say.browser", "focus=true")
+
+/client/proc/disable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode off\"")
+
+/client/proc/enable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
+
+/client/proc/reset_graphics()
+	disable_hardware_graphics()
+	sleep(1)
+	enable_hardware_graphics()
+
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in screen
+	if (!plane_master)
+		return
+
+	plane_master.backdrop(mob)
 
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)

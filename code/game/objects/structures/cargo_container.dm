@@ -34,7 +34,7 @@
 
 	return XENO_ATTACK_ACTION
 
-/obj/structure/cargo_container/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/cargo_container/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -45,6 +45,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/cargo_container/ex_act(severity, direction)
@@ -278,7 +279,7 @@
 		if(H.species.can_shred(H))
 
 			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
-					SPAN_WARNING("You beat against [src] to no effect"),
+					SPAN_WARNING("You beat against [src] to no effect."),
 					"You hear twisting metal.")
 
 	if(!damage_dealt)

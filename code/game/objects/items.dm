@@ -23,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -141,8 +141,6 @@
 	var/blood_color = ""
 	/// taken from blood.dm
 	appearance_flags = KEEP_TOGETHER
-	/// lets us know if the item is an objective or not
-	var/is_objective = FALSE
 
 	/// Allows for bigger than 32x32 sprites.
 	var/worn_x_dimension = 32
@@ -207,9 +205,9 @@
 
 	return ..()
 
-/obj/item/ex_act(severity, explosion_direction)
+/obj/item/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
+	explosion_throw(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
@@ -364,7 +362,7 @@
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
@@ -854,10 +852,6 @@
 /obj/item/proc/ui_action_click()
 	if(src in usr)
 		attack_self(usr)
-
-
-/obj/item/proc/IsShield()
-	return FALSE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

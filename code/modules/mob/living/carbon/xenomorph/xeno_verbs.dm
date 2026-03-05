@@ -7,7 +7,7 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
+	if((!hive.living_xeno_queen) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
@@ -81,11 +81,11 @@
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
-	if (xeno_mobhud)
-		H.remove_hud_from(usr, usr)
+	if(xeno_mobhud)
+		for(var/datum/mob_hud/hud in GLOB.huds)
+			hud.remove_hud_from(usr, usr)
 	else
-		H.add_hud_to(usr, usr)
+		handle_xeno_hive_hud(hivenumber, TRUE)
 
 	xeno_mobhud = !xeno_mobhud
 
@@ -104,7 +104,7 @@
 
 /mob/living/carbon/xenomorph/verb/toggle_auto_shove()
 	set name = "Toggle Automatic Shove"
-	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set desc = "Toggles whethever you will automatically shove people as the Queen."
 	set category = "Alien"
 
 
@@ -168,7 +168,7 @@
 	. = ..()
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
-// set desc = "Enter the Xenomorph techtree"
+// set desc = "Enter the Xenomorph techtree."
 // set category = "Alien.Techtree"
 
 // var/datum/techtree/T = GET_TREE(TREE_XENO)

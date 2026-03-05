@@ -5,8 +5,11 @@
 	hostility = TRUE
 	shuttle_id = ""
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
-	objectives = "You have been left behind to safeguard the abandoned colony. Do not allow trespassers."
 	ert_message = "Forsaken xenomorphs are emerging"
+
+/datum/emergency_call/forsaken_xenos/New()
+	. = ..()
+	objectives = "You have been left behind to safeguard the abandoned colony. Do not allow trespassers."
 
 /datum/emergency_call/forsaken_xenos/create_member(datum/mind/new_member, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -8680,10 +8680,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
-"ayT" = (
-/obj/structure/machinery/light,
-/turf/open_space,
-/area/point_loma/airbase/interior/garage)
 "ayU" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -28151,6 +28147,10 @@
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
+"bBX" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "bBY" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -36970,6 +36970,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/item/shard,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "ceO" = (
@@ -44889,6 +44890,111 @@
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"cEx" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"cEy" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/shard,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"cEz" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cEA" = (
+/obj/item/stack/sheet/metal,
+/obj/item/shard,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"cEB" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"cEC" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
+"cED" = (
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cEE" = (
+/obj/structure/prop/vehicles/tank/humvee/transport{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/west)
+"cEF" = (
+/obj/item/stack/sheet/metal,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
+"cEG" = (
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed{
+	dir = 1;
+	pixel_x = -17
+	},
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
+"cEH" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/item/stack/sheet/metal,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
+"cEI" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/east)
+"cEJ" = (
+/obj/item/stack/rods,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
+"cEK" = (
+/obj/structure/girder/reinforced,
+/turf/open/space/basic,
+/area/point_loma/airbase/interior/garage)
+"cEL" = (
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/garage)
+"cEM" = (
+/obj/flamer_fire/lasting{
+	layer = 4;
+	pixel_x = -17;
+	pixel_y = -1
+	},
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/garage)
+"cEN" = (
+/obj/structure/window_frame/new_varadero/foundation/reinforced,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/garage)
+"cEO" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
+"cEP" = (
+/obj/structure/window/framed/hangar,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/point_loma/airbase/exterior/east)
 
 (1,1,1) = {"
 aug
@@ -115239,8 +115345,8 @@ aCC
 aCC
 aCC
 ceK
-ceK
-ceK
+bBX
+bBX
 ceK
 bJw
 asb
@@ -115420,8 +115526,8 @@ aCC
 aCC
 aCC
 aCC
-ceK
-ceK
+cEA
+cEx
 ceK
 ceK
 bJw
@@ -115602,8 +115708,8 @@ aCC
 aCC
 aCC
 aCC
-ceK
-ceK
+cEA
+cEx
 ceK
 cuf
 bJw
@@ -115784,7 +115890,7 @@ ceJ
 ceJ
 ceK
 ceK
-ceJ
+cEB
 ceN
 ceJ
 ceJ
@@ -115966,8 +116072,8 @@ ceL
 ceL
 ceU
 ceU
-ceL
-ceL
+cEC
+cEy
 ceL
 ceL
 bJw
@@ -116148,8 +116254,8 @@ bIO
 bIO
 bIO
 bIO
-bIO
-bIO
+cED
+cEz
 bIO
 bJw
 bJw
@@ -150020,7 +150126,7 @@ aUq
 aLe
 bXP
 ajF
-ajF
+cEE
 bPH
 bPH
 bPH
@@ -160557,10 +160663,10 @@ bQf
 bQd
 bZl
 ckr
+cEF
 bQf
 bQf
-bQf
-bQf
+cEF
 bZl
 bQf
 bQf
@@ -160739,12 +160845,12 @@ bZl
 bZl
 bQf
 bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
+cEJ
+cEO
+cEO
+cEJ
+cEF
+cEF
 bQf
 bXW
 bYO
@@ -160921,12 +161027,12 @@ bRV
 bRV
 bRV
 bRV
-bRV
-bRV
-bRV
-bRV
-bQd
-bQf
+cEK
+cEK
+cEK
+cEK
+cEI
+cEF
 bQf
 bZF
 bxu
@@ -161106,9 +161212,9 @@ bSg
 bSg
 bSg
 bSg
-bRV
+cEL
 bQd
-bQf
+cEG
 bQf
 bXW
 bxu
@@ -161287,8 +161393,8 @@ bSg
 bSg
 bSg
 bSg
-ayT
-bRV
+bSg
+cEM
 bQd
 bQf
 bQf
@@ -161470,9 +161576,9 @@ bSr
 bSg
 bSg
 bSg
-bRV
-bQd
-bQf
+cEN
+cEI
+cEF
 bQf
 bXW
 bxu
@@ -161652,9 +161758,9 @@ bSg
 bSg
 bSg
 bSg
-bRV
+cEK
 aNy
-bZl
+cEH
 bQf
 bXW
 bYN
@@ -161835,8 +161941,8 @@ bSg
 bSg
 bSg
 bRV
-bQd
-bQf
+cEI
+cEF
 bQf
 bXW
 bYO
@@ -162365,7 +162471,7 @@ bRS
 bQf
 bQf
 aNy
-bXW
+cEP
 bxu
 bYN
 bQd

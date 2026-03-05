@@ -202,6 +202,7 @@
 
 	var/datum/map_template/shuttle/roundstart_template
 	var/json_key
+	var/disabled = FALSE
 
 /obj/docking_port/stationary/register(replace = FALSE)
 	. = ..()
@@ -540,6 +541,9 @@
 /obj/docking_port/mobile/proc/canDock(obj/docking_port/stationary/S)
 	if(!istype(S))
 		return SHUTTLE_NOT_A_DOCKING_PORT
+
+	if(S.disabled)
+		return SHUTTLE_DOCK_DISABLED
 
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK

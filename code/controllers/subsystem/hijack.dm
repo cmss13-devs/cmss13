@@ -244,7 +244,7 @@ SUBSYSTEM_DEF(hijack)
 
 		if(current_progress >= ftl_required_progress && !in_ftl)
 			// Progress is now able to enter FTL
-			initiate_charge_ftl()
+			initiate_ftl_charge()
 
 		// Calculate new progression
 		for(var/area/almayer/cycled_area as anything in current_run)
@@ -420,7 +420,7 @@ SUBSYSTEM_DEF(hijack)
 		shuttle.cancel_evac()
 	return TRUE
 
-/// Changes whether the docking_ports on the mainship are operating
+/// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/change_dropship_availability(allow=TRUE)
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	if(allow)
@@ -448,6 +448,26 @@ SUBSYSTEM_DEF(hijack)
 			if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
 				continue
 			shuttle.set_mode(SHUTTLE_CRASHED)
+
+/// Changes whether the stationary docking_ports on the mainship are operating (dockable)
+/datum/controller/subsystem/hijack/proc/change_dropship_pad_availability(allow=TRUE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	if(allow)
+		for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
+			var/turf/location = get_turf(pad)
+			if(!location || !(location.z in ship_zs))
+				continue
+			if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
+				continue
+			pad.disabled = initial(pad.disabled)
+	else
+		for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
+			var/turf/location = get_turf(pad)
+			if(!location || !(location.z in ship_zs))
+				continue
+			if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
+				continue
+			pad.disabled = TRUE
 
 /// Opens the lifeboat doors and gets them ready to launch
 /datum/controller/subsystem/hijack/proc/activate_lifeboats()
@@ -618,7 +638,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
-	change_dropship_availability(FALSE)
+	change_dropship_availability(FALSE) // Break the dropships on the ship
 
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
@@ -933,9 +953,10 @@ SUBSYSTEM_DEF(hijack)
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
 /// Delayed call to enter_ftl with announcement
-/datum/controller/subsystem/hijack/proc/initiate_charge_ftl()
+/datum/controller/subsystem/hijack/proc/initiate_ftl_charge()
 	in_ftl = TRUE
 	in_ftl_time = world.time
+	change_dropship_pad_availability(FALSE)
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
@@ -997,6 +1018,8 @@ SUBSYSTEM_DEF(hijack)
 
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		unset_ftl_turf(space_turf)
+
+	change_dropship_pad_availability(TRUE)
 
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 

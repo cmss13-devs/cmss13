@@ -74,21 +74,18 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_25";
 	pixel_x = -5;
-	pixel_y = 17
+	pixel_y = 17;
+	layer = 2.7
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/template_noop)
 "cV" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/effect/decal/strata_decals/grime/grime4{
 	icon_state = "grime2"
@@ -146,15 +143,14 @@
 	pixel_x = -6;
 	pixel_y = -7
 	},
-/obj/item/ashtray/glass{
-	icon_state = "ashtray_bork_gl";
-	pixel_x = -4;
-	pixel_y = 10
-	},
-/obj/item/weapon/broken_bottle,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -7;
 	pixel_y = -4
+	},
+/obj/item/weapon/broken_bottle,
+/obj/item/small_shards{
+	pixel_x = -10;
+	pixel_y = 10
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
 /area/template_noop)
@@ -193,9 +189,7 @@
 "eT" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	pixel_y = 17
 	},
 /obj/structure/largecrate/random/mini,
@@ -211,9 +205,7 @@
 /area/template_noop)
 "gB" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -361,9 +353,7 @@
 "oV" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/structure/bed/chair{
 	dir = 4;
@@ -398,7 +388,7 @@
 	icon_state = "pottedplant_12";
 	pixel_x = 7;
 	pixel_y = 12;
-	layer = 3.6
+	layer = 2.7
 	},
 /obj/structure/sign/poster/ad{
 	layer = 4;
@@ -407,7 +397,8 @@
 	},
 /obj/structure/sign/poster/ad{
 	pixel_x = 4;
-	pixel_y = 32
+	pixel_y = 32;
+	layer = 2.6
 	},
 /obj/structure/barricade/wooden{
 	dir = 4;
@@ -739,9 +730,7 @@
 "Gv" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	pixel_y = 17
 	},
 /obj/structure/machinery/vending/cola{
@@ -885,6 +874,10 @@
 	pixel_x = 7;
 	pixel_y = 32;
 	layer = 3.2
+	},
+/obj/item/small_shards{
+	pixel_x = 17;
+	pixel_y = 5
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
 /area/template_noop)

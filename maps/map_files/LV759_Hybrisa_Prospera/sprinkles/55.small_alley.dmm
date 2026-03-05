@@ -37,6 +37,9 @@
 	pixel_x = -5;
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "cv" = (
@@ -239,6 +242,9 @@
 	pixel_x = 5;
 	pixel_y = -2
 	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "jA" = (
@@ -338,6 +344,9 @@
 	},
 /obj/structure/surface/rack{
 	color = "#848484"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/lv759/indoors/meridian/meridian_factory)
@@ -484,6 +493,9 @@
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "AK" = (
@@ -516,6 +528,9 @@
 	pixel_y = 8
 	},
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "Cl" = (
@@ -673,6 +688,9 @@
 	pixel_y = -2
 	},
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "Gg" = (
@@ -833,6 +851,9 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "KR" = (
@@ -856,6 +877,7 @@
 	dir = 4;
 	pixel_y = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "Oe" = (
@@ -873,6 +895,9 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
 	},
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
@@ -901,6 +926,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/meridian/meridian_factory)
 "PI" = (
@@ -944,6 +970,9 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
@@ -1066,6 +1095,9 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "Wa" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/meridian/meridian_factory)
 "Wi" = (

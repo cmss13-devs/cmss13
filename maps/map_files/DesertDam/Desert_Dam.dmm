@@ -800,15 +800,9 @@
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
 "acu" = (
-/obj/docking_port/stationary/trijent_elevator/empty{
-	airlock_area = /area/shuttle/trijent_shuttle/omega;
-	airlock_exit = "east";
-	elevator_network = "B";
-	id = "trijent_omega";
-	name = "Omega Elevator"
-	},
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle/omega)
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/space)
 "acv" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -1435,8 +1429,15 @@
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "aer" = (
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
+/obj/docking_port/stationary/trijent_elevator/empty{
+	airlock_area = /area/shuttle/trijent_shuttle/omega;
+	airlock_exit = "east";
+	elevator_network = "B";
+	id = "trijent_omega";
+	name = "Omega Elevator"
+	},
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/omega)
 "aes" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
@@ -2718,7 +2719,6 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "aip" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aiq" = (
@@ -3273,7 +3273,7 @@
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/southern_hallway)
 "ajU" = (
-/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "ajV" = (
@@ -3760,7 +3760,8 @@
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/southern_hallway)
 "alv" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "alw" = (
 /obj/structure/bed/stool{
@@ -4238,7 +4239,7 @@
 /turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_security)
 "amQ" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amR" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -4257,7 +4258,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/exterior/valley/valley_security)
 "amU" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amV" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
@@ -4270,7 +4271,7 @@
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/exterior/valley/valley_security)
 "amX" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amY" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -6795,7 +6796,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "avI" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "avJ" = (
 /obj/item/ammo_magazine/pistol/l54/rubber{
@@ -7154,7 +7155,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awU" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "awV" = (
 /obj/structure/largecrate/random/barrel/yellow{
@@ -8780,10 +8781,7 @@
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/interior/dam_interior/hanger/control)
 "aBF" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aBG" = (
 /turf/open/floor/almayer_hull,
@@ -9275,7 +9273,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/hanger/roof)
 "aCT" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
+/obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/asphalt/tile,
@@ -10379,10 +10377,11 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aGA" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft"
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
 	},
-/area/shuttle/trijent_shuttle/omega)
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aGB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -10400,10 +10399,10 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aGE" = (
-/obj/structure/machinery/colony_floodlight,
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft"
+	},
+/area/shuttle/trijent_shuttle/omega)
 "aGF" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -10459,12 +10458,23 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aGO" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8;
-	layer = 2.02
+/obj/effect/blocker/water/toxic/Group_1,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
+	pixel_y = 32;
+	shuttleId = "trijentshuttle22"
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
 "aGP" = (
 /turf/open/floor/neutral,
 /area/desert_dam/interior/dam_interior/engine_room)
@@ -17886,6 +17896,8 @@
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
 "bel" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bem" = (
@@ -18578,8 +18590,12 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
 "bgj" = (
-/turf/open/asphalt/cement/cement12,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8;
+	layer = 2.02
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bgk" = (
 /obj/structure/prop/dam/large_boulder/boulder1{
 	pixel_x = -11;
@@ -19834,7 +19850,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/pred_ship)
 "bjR" = (
-/turf/open/asphalt/cement/cement2,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bjS" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -20708,7 +20724,7 @@
 /turf/open/floor/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmv" = (
-/turf/open/asphalt/cement/cement4,
+/turf/open/asphalt/cement/cement12,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmw" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20733,10 +20749,7 @@
 /turf/open/floor/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmz" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
+/turf/open/asphalt/cement/cement2,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmA" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20817,38 +20830,25 @@
 /turf/open/floor/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmM" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "bmO" = (
-/obj/effect/landmark/mainship_crashsite,
-/turf/closed/cordon,
-/area/space)
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmP" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water/Group_1,
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
-	pixel_y = 32;
-	shuttleId = "trijentshuttle22"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_central_south)
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -138390,7 +138390,7 @@ vTg
 vTg
 vTg
 vTg
-bmO
+acu
 "}
 (2,1,2) = {"
 vTg
@@ -164237,7 +164237,7 @@ huj
 rIt
 sFU
 bvA
-bmP
+aGO
 xYi
 xYi
 xYi
@@ -166122,7 +166122,7 @@ dEQ
 dEQ
 dEQ
 dEQ
-acu
+aer
 yjZ
 qaR
 uxD
@@ -167991,9 +167991,9 @@ qaR
 qaR
 yjZ
 aLZ
-amX
-alv
-aer
+avI
+amQ
+aip
 qaR
 qaR
 qaR
@@ -168223,11 +168223,11 @@ mJF
 qaR
 qaR
 qaR
-aGA
+aGE
 kPR
-avI
-amQ
-aer
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168458,10 +168458,10 @@ aYn
 qaR
 qaR
 otd
-aBF
-avI
-amQ
-aer
+aCT
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168692,10 +168692,10 @@ iWi
 vbi
 iUk
 wqW
-aBF
-avI
-amQ
-aer
+aCT
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168926,10 +168926,10 @@ iWi
 jMA
 iWi
 iWi
-aBF
-avI
-amQ
-aip
+aCT
+awU
+amU
+ajU
 qaR
 aYj
 vOZ
@@ -169160,10 +169160,10 @@ iWi
 iWi
 qNx
 uSe
-aCT
-awU
-amU
-ajU
+aGA
+aBF
+amX
+alv
 vbi
 eHo
 vbi
@@ -173087,12 +173087,12 @@ mUT
 iCL
 ihw
 dqS
-bel
-bel
 bjR
+bjR
+bmz
 reX
-bel
-bel
+bjR
+bjR
 rhr
 aeD
 aeD
@@ -173320,14 +173320,14 @@ xmG
 mUT
 iCL
 oId
-bmz
-bel
-bel
+bmO
+bjR
+bjR
+bmM
 bmv
-bgj
+bjR
+bjR
 bel
-bel
-aGE
 fdY
 are
 oId
@@ -173554,14 +173554,14 @@ jtK
 mUT
 jmR
 cLO
-bmM
+bmP
 mpk
 ger
 mpk
 mpk
 ger
 mpk
-aGO
+bgj
 cLO
 cLO
 cLO

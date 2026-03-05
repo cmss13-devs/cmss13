@@ -956,6 +956,13 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ftl_charge()
 	in_ftl = TRUE
 	in_ftl_time = world.time
+
+	// Return to sender any shuttles already in transit to the ship
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/docking_port/mobile/marine_dropship/shuttle as anything in SSshuttle.mobile)
+		if(shuttle.destination && (shuttle.destination.z in ship_zs))
+			shuttle.destination = shuttle.previous
+
 	change_dropship_pad_availability(FALSE)
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)

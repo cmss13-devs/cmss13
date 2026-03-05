@@ -1,9 +1,3 @@
-#define CONTROL_POD_DOORS 0
-#define CONTROL_NORMAL_DOORS 1
-#define CONTROL_EMITTERS 2
-#define CONTROL_DROPSHIP 3
-#define CONTROL_CELL_DIVIDER 4
-
 /obj/structure/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."

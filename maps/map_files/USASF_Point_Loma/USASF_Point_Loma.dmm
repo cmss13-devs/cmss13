@@ -17378,12 +17378,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "aXY" = (
-/obj/item/stack/sheet/metal,
-/obj/item/shard{
-	pixel_y = -16
-	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/floor/shiva/yellowfull/west,
+/area/point_loma/airbase/mining_colony/interior/engineering)
 "aXZ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/ten,
 /turf/open/auto_turf/sand_white/layer1,
@@ -24782,12 +24778,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob/sky)
-"bsd" = (
-/obj/item/shard{
-	pixel_x = -11
-	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/airbase/exterior/crash_site)
 "bse" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -26526,9 +26516,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
-"bxy" = (
-/turf/open/floor/shiva/yellowfull/west,
-/area/point_loma/airbase/mining_colony/interior/engineering)
 "bxz" = (
 /obj/effect/decal/hybrisa/road/road_stop,
 /turf/open/asphalt/cement_sunbleached,
@@ -28582,6 +28569,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
+"bCR" = (
+/obj/item/stack/sheet/metal,
+/obj/item/shard{
+	pixel_y = -16
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -29255,10 +29249,11 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "bFi" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/fence/slim/dark/door,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/oob)
+/obj/item/shard{
+	pixel_x = -11
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "bFj" = (
 /turf/open/floor/corsat/blue/west,
 /area/point_loma/airbase/interior/atc/upper)
@@ -33828,11 +33823,6 @@
 "bTS" = (
 /turf/open_space,
 /area/point_loma/oob/sky)
-"bTT" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/fence/slim/dark/door,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/oob)
 "bTU" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4;
@@ -42262,9 +42252,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "cvl" = (
-/obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
-/turf/open/new_varadero/dock_concrete,
+/obj/structure/fence/slim/dark/door,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -46717,6 +46707,16 @@
 /obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
+"cKh" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/fence/slim/dark/door,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob)
+"cKi" = (
+/obj/structure/fence/slim/dark,
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob)
 
 (1,1,1) = {"
 aug
@@ -150177,7 +150177,7 @@ cJr
 cJh
 cJk
 cJi
-aXY
+bCR
 bTg
 bTg
 bTg
@@ -150357,7 +150357,7 @@ bxN
 cJh
 cJh
 bxN
-bsd
+bFi
 atE
 atE
 bTk
@@ -156881,7 +156881,7 @@ bTS
 aOV
 aOV
 aOV
-bFi
+cvl
 aOF
 aOF
 aOF
@@ -159611,7 +159611,7 @@ bTS
 aOV
 aOV
 aOV
-bTT
+cKh
 aOF
 aOF
 aOF
@@ -159793,7 +159793,7 @@ aOV
 aOV
 aOV
 aOV
-cvl
+cKi
 aOF
 aOF
 aOF
@@ -172574,7 +172574,7 @@ aNK
 aNK
 bRY
 bRp
-bxy
+aXY
 aAt
 bRp
 bRp
@@ -173300,7 +173300,7 @@ aNP
 aNP
 aNP
 aNP
-bxy
+aXY
 bSL
 bwp
 bSi
@@ -173491,7 +173491,7 @@ bSi
 bSi
 aZH
 bSe
-bxy
+aXY
 arB
 bRv
 bRv
@@ -173850,7 +173850,7 @@ bRY
 bRp
 bww
 bRp
-bxy
+aXY
 aAt
 bRp
 bRp

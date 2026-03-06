@@ -72,9 +72,9 @@
 
 	if(!chemical)
 		return
-	var/image/icon = image(icon, src, icon_state="+stimpack_custom")
-	icon.color = chemical.color
-	overlays += icon
+	var/image/image = image(icon, src, icon_state="+stimpack_custom")
+	image.color = chemical.color
+	overlays += image
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
 	name = "speed stimulant autoinjector"

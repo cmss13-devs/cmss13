@@ -29,6 +29,19 @@
 	if(prob(50))
 		icon_state = "brown_alt"
 
+/obj/structure/prop/rock/brown/point_loma
+	name = "brown rock"
+	density = FALSE
+	//No init proc because I do not like the alt sprite
+
+/obj/structure/prop/rock/brown/point_loma/Crossed(atom/movable/crosser) // Point_loma Rock that is not dense and trips
+	. = ..()
+	if(ishuman(crosser) && prob(5))
+		var/mob/living/carbon/human/crossing_human = crosser
+		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		crossing_human.KnockDown(0.5)
+
 /obj/structure/prop/rock/black_ground//the colors on these make them kinda look like actual shit, can't lie. Exercise discretion fellow mappers.
 	icon_state = "black_ground"
 	desc = "Loose stones, earth, rubble, slabs, crags, pebbles, quarried detritus, shale, gravel, solidified carbon and other stuff. Y'know, rocks that you can walk over and kick around."

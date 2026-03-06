@@ -28681,18 +28681,6 @@
 	},
 /turf/open/floor/plating,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"bDn" = (
-/obj/structure/stairs/perspective{
-	color = "#656c6b";
-	icon_state = "p_stair_full"
-	},
-/obj/structure/stairs/perspective{
-	color = "#656c6b";
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/strata/west,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/cannon)
 "bDo" = (
 /obj/effect/decal/cleanable/blood/tracks/clawprints{
 	pixel_y = 21
@@ -46266,7 +46254,6 @@
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cIw" = (
 /obj/structure/platform/metal/strata/north,
-/obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
@@ -157845,7 +157832,7 @@ cIn
 cIn
 cFW
 cFU
-bDn
+bDp
 cHK
 cFK
 cFI

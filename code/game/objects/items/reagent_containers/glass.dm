@@ -390,6 +390,73 @@
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 
+/obj/item/reagent_container/glass/large_reagent_tank
+	name = "\improper MS-22 Large Reagent Tank"
+	desc = "A heavy-duty field tank capable of storing large volumes of medical chemicals. Designed to be housed inside a corpsman chempack and used to refill pressurized canisters and smart refill tanks in the field. A valve on the top allows flushing."
+	icon = 'icons/obj/items/tank.dmi'
+	icon_state = "large_reagent_tank"
+	matter = list("metal" = 1000)
+	attack_speed = 4
+	volume = 960
+	w_class = SIZE_LARGE
+	splashable = FALSE
+	can_be_placed_into = list(
+		/obj/structure/machinery/chem_dispenser/,
+		/obj/structure/machinery/reagentgrinder,
+		/obj/structure/surface/table,
+		/obj/structure/closet,
+		/obj/item/storage,
+	)
+
+/obj/item/reagent_container/glass/large_reagent_tank/on_reagent_change()
+	update_icon()
+
+/obj/item/reagent_container/glass/large_reagent_tank/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/A = W
+		if(A.mixed_chem)
+			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
+			return
+		if(reagents.has_reagent(A.chemname, A.volume))
+			reagents.trans_id_to(A, A.chemname, A.volume)
+			A.uses_left = 3
+			A.update_icon()
+			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		else
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
+			. = ..()
+			return
+		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
+
+/obj/item/reagent_container/glass/large_reagent_tank/verb/flush_tank()
+	set category = "Object"
+	set name = "Flush Tank"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+	if(src.reagents.total_volume == 0)
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
+		return
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	reagents.clear_reagents()
+	update_icon()
+
+/obj/item/reagent_container/glass/large_reagent_tank/update_icon()
+	overlays.Cut()
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		var/round_percent = 0
+		if(percent > 24)
+			round_percent = round(percent, 25)
+		else
+			round_percent = 10
+		filling.icon_state = "[icon_state][round_percent]"
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
+
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."

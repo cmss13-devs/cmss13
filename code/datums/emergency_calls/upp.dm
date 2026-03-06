@@ -14,13 +14,15 @@
 	max_engineers = 1
 	max_heavies = 1
 	max_smartgunners = 0
+	hostility = null // Random in New if null
 	var/heavy_pick = TRUE // whether heavy should count as either a minigunner or shotgunner
 	var/max_synths = 1
 	var/synths = 0
 
 /datum/emergency_call/upp/New()
 	. = ..()
-	hostility = pick(50;FALSE,50;TRUE)
+	if(isnull(hostility))
+		hostility = pick(50;FALSE,50;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
 	if(hostility)
 		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."

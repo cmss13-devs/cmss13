@@ -1757,6 +1757,13 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -154540,7 +154547,7 @@ qaR
 qaR
 qaR
 qaR
-dEY
+aft
 vrF
 ooA
 rzS

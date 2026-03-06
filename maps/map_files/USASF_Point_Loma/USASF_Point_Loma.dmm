@@ -9573,11 +9573,13 @@
 /area/point_loma/research_facility/hallway/north)
 "aBt" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBu" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/east)
 "aBv" = (
@@ -9628,6 +9630,7 @@
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBA" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBB" = (
@@ -9693,6 +9696,7 @@
 /area/point_loma/research_facility/gym)
 "aBL" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/east)
 "aBM" = (
@@ -25315,6 +25319,17 @@
 "btN" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
+"btO" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
 "btP" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement_sunbleached,
@@ -31870,6 +31885,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "bMz" = (
@@ -98355,8 +98371,8 @@ bJQ
 bJQ
 cuj
 bJJ
-cuc
 bxt
+cuc
 cuc
 ctX
 ctX
@@ -111986,7 +112002,7 @@ cGN
 cGE
 chF
 chC
-aBT
+btO
 aBA
 aBt
 afc

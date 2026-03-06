@@ -1115,6 +1115,7 @@
 	pixel_y = 9;
 	pixel_x = 2
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/purplewhite/north,
 /area/point_loma/airbase/interior/research)
 "adC" = (
@@ -3784,6 +3785,7 @@
 /area/point_loma/airbase/interior/workshop)
 "alC" = (
 /obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/airbase/interior/research)
 "alD" = (
@@ -6264,6 +6266,7 @@
 /area/point_loma/airbase/interior/hospital)
 "asG" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/workshop)
 "asH" = (
@@ -8303,6 +8306,7 @@
 /obj/structure/window/framed/new_varadero{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "axO" = (
@@ -17485,6 +17489,7 @@
 "aYv" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/mineral/phoron/medium_stack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/purplewhite/northwest,
 /area/point_loma/airbase/interior/research)
 "aYw" = (
@@ -24700,6 +24705,10 @@
 "brW" = (
 /turf/open/floor/almayer/research/containment/yautja/alt,
 /area/point_loma/research_facility/crash_site)
+"brX" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/corsat/brown/north,
+/area/point_loma/airbase/interior/workshop)
 "brY" = (
 /obj/effect/stairs/up,
 /obj/structure/stairs/perspective{
@@ -26022,6 +26031,7 @@
 /area/point_loma/airbase/interior/workshop)
 "bwa" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/interior/workshop)
 "bwb" = (
@@ -26196,6 +26206,7 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Workshop - Security Outpost"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red/north,
 /area/point_loma/airbase/interior/workshop)
 "bwD" = (
@@ -34535,6 +34546,7 @@
 	},
 /obj/structure/machinery/power/apc/no_power/east,
 /obj/effect/decal/warning_stripes/asteroid,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/new_varadero/alt_concrete/floor,
 /area/point_loma/airbase/interior/fuel_storage)
 "bWL" = (
@@ -34588,6 +34600,7 @@
 /obj/item/reagent_container/food/snacks/bigbiteburger{
 	pixel_x = -7
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/interior/fuel_storage)
 "bWT" = (
@@ -34640,6 +34653,7 @@
 	name = "fuel storage shutter button";
 	id = "fuel_storage"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/interior/fuel_storage)
 "bXa" = (
@@ -40574,6 +40588,7 @@
 /obj/item/stack/sheet/glass/reinforced{
 	pixel_x = 14
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/workshop)
 "cqq" = (
@@ -44887,6 +44902,7 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Workshop"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "cEs" = (
@@ -45366,6 +45382,22 @@
 /obj/effect/stairs/up,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/crash_site)
+"cGd" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/airbase/interior/research)
+"cGe" = (
+/obj/structure/closet/l3closet,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/corsat/plate,
+/area/point_loma/airbase/interior/research)
+"cGf" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/interior/research)
 
 (1,1,1) = {"
 aug
@@ -149203,7 +149235,7 @@ aTR
 ckb
 ckb
 aiI
-aAR
+cGe
 bRU
 aUL
 ayB
@@ -149747,7 +149779,7 @@ bSZ
 cxb
 aZT
 ckb
-afz
+cGf
 aUq
 ckq
 ckb
@@ -150668,7 +150700,7 @@ abG
 aCK
 cjL
 aDn
-alC
+cGd
 aMo
 aUq
 aZL
@@ -154702,7 +154734,7 @@ bPq
 apV
 apV
 apV
-bdZ
+brX
 aWP
 acx
 acx

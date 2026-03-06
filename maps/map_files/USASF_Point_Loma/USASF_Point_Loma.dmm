@@ -902,6 +902,7 @@
 "acU" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship1,
 /obj/structure/machinery/computer/shuttle/dropship/flight,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/asteroidfloor,
 /area/point_loma/airbase/interior/workshop)
 "acV" = (
@@ -1341,6 +1342,7 @@
 /area/point_loma/airbase/interior/hospital)
 "aen" = (
 /obj/item/storage/belt/utility/construction,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/asteroidfloor,
 /area/point_loma/airbase/interior/workshop)
 "aeo" = (
@@ -2751,6 +2753,7 @@
 /area/point_loma/airbase/mining_colony/interior/security)
 "aix" = (
 /obj/structure/bed/chair/dropship/pilot,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/asteroidfloor,
 /area/point_loma/airbase/interior/workshop)
 "aiy" = (
@@ -3020,6 +3023,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "ajr" = (
 /obj/structure/machinery/computer/shuttle/dropship,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/asteroidfloor,
 /area/point_loma/airbase/interior/workshop)
 "ajs" = (
@@ -3925,6 +3929,7 @@
 "alZ" = (
 /obj/structure/shuttle/part/dropship3/transparent/nose_center,
 /obj/structure/dropship_equipment/electronics/spotlights,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/asteroidwarning/north,
 /area/point_loma/airbase/interior/workshop)
 "ama" = (
@@ -5912,6 +5917,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
 	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
 "arG" = (
@@ -20818,6 +20824,7 @@
 /area/point_loma/airbase/interior/workshop)
 "bhg" = (
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "bhh" = (
@@ -21469,6 +21476,7 @@
 /area/point_loma/research_facility/gym/basketball)
 "bjf" = (
 /obj/structure/machinery/mecha_part_fabricator,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "bjg" = (
@@ -25289,12 +25297,6 @@
 "btN" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
-"btO" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 26
-	},
-/turf/closed/wall/rock/brown,
-/area/point_loma/oob)
 "btP" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement_sunbleached,
@@ -42219,13 +42221,6 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
-"cvl" = (
-/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
-	pixel_y = 16;
-	layer = 6
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/oob)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
@@ -44746,6 +44741,10 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/command)
+"cDQ" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1,
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/airbase/interior/workshop)
 "cDR" = (
 /mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/floor/corsat,
@@ -44946,6 +44945,7 @@
 	phone_id = "Workshop"
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "cEs" = (
@@ -45296,6 +45296,75 @@
 /obj/structure/barricade/sandbags,
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/research)
+"cFF" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/corsat/brown,
+/area/point_loma/airbase/interior/workshop)
+"cFG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning"
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/shiva/floor3,
+/area/point_loma/airbase/interior/workshop)
+"cFH" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
+"cFI" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/asteroidwarning,
+/area/point_loma/airbase/interior/workshop)
+"cFJ" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/asteroidfloor,
+/area/point_loma/airbase/interior/workshop)
+"cFK" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/asteroidwarning/north,
+/area/point_loma/airbase/interior/workshop)
+"cFL" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/corsat/brown/north,
+/area/point_loma/airbase/interior/workshop)
+"cFM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth_red"
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/shiva/floor3,
+/area/point_loma/airbase/interior/workshop)
+"cFN" = (
+/obj/structure/prop/hybrisa/factory/conveyor_belt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth_red"
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/shiva/floor3,
+/area/point_loma/airbase/interior/workshop)
+"cFO" = (
+/obj/structure/prop/hybrisa/factory/conveyor_belt,
+/obj/structure/shuttle/part/dropship2/transparent/left_outer_inner_wing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth_red"
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3,
+/turf/open/floor/shiva/floor3,
+/area/point_loma/airbase/interior/workshop)
+"cFP" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2,
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/airbase/interior/workshop)
+"cFQ" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2,
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/airbase/interior/workshop)
+"cFR" = (
+/obj/structure/flora/grass/tallgrass/point_loma/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/mining_colony/exterior/north)
 "cFX" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 11;
@@ -154523,22 +154592,22 @@ ajF
 ajF
 bPH
 bPH
-bPq
-axc
-apV
+cFP
+cFO
+cFM
 arF
 bhg
-aWP
-acx
-aiM
-adk
-adk
-adk
+cFH
+cFG
+cFK
+cFJ
+cFJ
+cFJ
 acU
-acz
-acx
-aWH
-bPq
+cFI
+cFG
+cFF
+cDQ
 bOU
 bOU
 bOU
@@ -155797,22 +155866,22 @@ ajF
 ajF
 bPH
 asb
-cgD
-apV
-apV
-apV
+cFQ
+cFM
+cFM
+cFM
 bjf
-aWP
-acx
-aiM
-adk
-adk
+cFH
+cFG
+cFK
+cFJ
+cFJ
 aen
-adk
-acz
-acx
-aWH
-bPq
+cFJ
+cFI
+cFG
+cFF
+cDQ
 bOU
 bOU
 bOU
@@ -156365,9 +156434,9 @@ bOU
 bOU
 bOU
 bOU
-bIT
-bIT
-cvl
+bOU
+bOU
+aOx
 asb
 asb
 asb
@@ -157071,22 +157140,22 @@ ajF
 ajF
 bPH
 asb
-bPq
-aru
-apV
-aru
-bdZ
-aWP
-acx
-aiM
-adk
-adk
-adk
-adk
-acz
-acx
-aWH
-bPq
+cFP
+cFN
+cFM
+cFN
+cFL
+cFH
+cFG
+cFK
+cFJ
+cFJ
+cFJ
+cFJ
+cFI
+cFG
+cFF
+cDQ
 bOU
 bOU
 bOU
@@ -159255,24 +159324,24 @@ bQd
 asb
 asb
 bQd
-bPq
+cFP
 cEr
-aWP
-aWP
-aWP
-acx
+cFH
+cFH
+cFH
+cFG
 alZ
 ajr
 aix
-adk
-adk
-acz
-acx
-aWP
-aWH
+cFJ
+cFJ
+cFI
+cFG
+cFH
+cFF
+cDQ
 bPq
 bPq
-bPq
 bOU
 bOU
 bOU
@@ -159286,7 +159355,7 @@ bOU
 bOU
 asb
 asb
-btO
+asb
 bOU
 bOU
 bOU
@@ -160529,22 +160598,22 @@ bQd
 asb
 asb
 bQd
-bPq
-bdZ
-aWP
-aWP
-aWP
-acx
-aiM
-adk
-adk
-adk
-adk
-acz
-acx
-aWP
-aWH
-bPq
+cFP
+cFL
+cFH
+cFH
+cFH
+cFG
+cFK
+cFJ
+cFJ
+cFJ
+cFJ
+cFI
+cFG
+cFH
+cFF
+cDQ
 bOU
 bOU
 bOU
@@ -164514,7 +164583,7 @@ ciZ
 asb
 bPO
 bPO
-asb
+bPO
 asb
 asb
 asb
@@ -164697,7 +164766,7 @@ asb
 bPO
 bPO
 bPO
-asb
+bPO
 asb
 asb
 asb
@@ -164879,7 +164948,7 @@ asb
 asb
 bPO
 bPO
-asb
+bPO
 asb
 asb
 asb
@@ -165062,7 +165131,7 @@ asb
 bPO
 bPO
 bPO
-asb
+bPO
 asb
 asb
 bPR
@@ -165244,9 +165313,9 @@ asb
 bPO
 bPO
 bPO
-asb
-asb
-asb
+bPO
+bPO
+bPO
 abK
 bQs
 aFV
@@ -165423,12 +165492,12 @@ bQd
 asb
 asb
 asb
-asb
+bPO
 bZn
 bZj
 bPO
 bPO
-asb
+bPO
 bPR
 bQs
 abE
@@ -165607,7 +165676,7 @@ asb
 asb
 asb
 bZu
-asb
+cFR
 bPO
 bPO
 bPO
@@ -165789,7 +165858,7 @@ asb
 asb
 asb
 bZu
-asb
+cFR
 asb
 asb
 bPO
@@ -165971,7 +166040,7 @@ asb
 asb
 asb
 bZu
-asb
+cFR
 asb
 asb
 asb
@@ -166151,9 +166220,9 @@ bQd
 asb
 asb
 asb
-asb
+bPO
 bZu
-asb
+cFR
 asb
 asb
 bPO
@@ -166333,9 +166402,9 @@ bQd
 cjf
 asb
 asb
-asb
+bPO
 bZu
-asb
+cFR
 asb
 bPO
 bPO
@@ -166701,7 +166770,7 @@ bPO
 bPO
 bPO
 bPO
-asb
+bPO
 bPO
 bPT
 abJ
@@ -166878,13 +166947,13 @@ bXU
 bZB
 asb
 asb
-asb
-asb
 bPO
 bPO
+bPO
+bPO
+bPO
 asb
-asb
-asb
+bPO
 bPS
 apc
 bPZ
@@ -167061,7 +167130,7 @@ bRA
 asb
 asb
 asb
-asb
+bPO
 bPO
 bPO
 asb

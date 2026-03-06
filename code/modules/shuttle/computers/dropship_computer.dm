@@ -602,6 +602,10 @@
 				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				return
+			if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return
 
 			shuttle.automated_hangar_id = almayer_lz
 			shuttle.automated_lz_id = ground_lz

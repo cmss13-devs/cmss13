@@ -639,6 +639,7 @@
 		user.drop_inv_item_on_ground(W)
 		W.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
+		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		update_icon()
 		return
 	if(!internal_tank)
@@ -660,6 +661,7 @@
 		if(transferred)
 			to_chat(user, SPAN_NOTICE("You refill [container] from [src]. ([internal_tank.reagents.total_volume]u remaining in tank.)"))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			update_icon()
 		return
 	. = ..()
 
@@ -684,6 +686,30 @@
 		. += "The internal tank holds [internal_tank.reagents.total_volume]/[internal_tank.volume]u of solution."
 	else
 		. += "The internal tank housing is empty."
+
+/obj/item/storage/backpack/marine/medic/chempack/update_icon()
+	if(!internal_tank)
+		icon_state = "marinepack_chem_notank"
+		. = ..()
+		return
+	icon_state = "marinepack_chem"
+	. = ..()
+	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
+		return
+	var/image/filling
+	var/percent = floor((internal_tank.reagents.total_volume / internal_tank.volume) * 100)
+	if(percent >= 76)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank100")
+	else if(percent >= 51)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank75")
+	else if(percent >= 26)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank50")
+	else if(percent >= 11)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank25")
+	else
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank10")
+	filling.color = mix_color_from_reagents(internal_tank.reagents.reagent_list)
+	overlays += filling
 
 /obj/item/storage/backpack/marine/medic/upp
 	name = "\improper UPP corpsman backpack"

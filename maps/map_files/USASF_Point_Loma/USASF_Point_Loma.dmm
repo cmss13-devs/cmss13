@@ -28687,10 +28687,6 @@
 	},
 /turf/open/floor/plating,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"bDn" = (
-/obj/structure/lamarr,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/airbase/exterior/crash_site)
 "bDo" = (
 /obj/effect/decal/cleanable/blood/tracks/clawprints{
 	pixel_y = 21
@@ -33364,10 +33360,6 @@
 "bRV" = (
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/garage)
-"bRW" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/crash_site)
 "bRX" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 6;
@@ -153345,7 +153337,7 @@ bRz
 bQT
 bQT
 bQT
-bDn
+bRz
 bVc
 byS
 cwV
@@ -153709,7 +153701,7 @@ bRz
 bQT
 bQT
 bQT
-bRW
+bQT
 bQT
 bVc
 byS

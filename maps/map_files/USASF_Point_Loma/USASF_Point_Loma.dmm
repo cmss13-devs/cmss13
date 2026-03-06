@@ -1036,7 +1036,7 @@
 	},
 /obj/item/stack/rods,
 /turf/open/floor/engine,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "adn" = (
 /obj/effect/decal/hybrisa/workers_decal,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3839,7 +3839,7 @@
 "alL" = (
 /obj/structure/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "alM" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltop";
@@ -10454,7 +10454,7 @@
 /area/point_loma/research_facility/research/park)
 "aDL" = (
 /turf/open/floor/dark2,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "aDM" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/shiva/green/west,
@@ -24777,13 +24777,13 @@
 	dir = 4
 	},
 /turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "bsb" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "bsc" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
@@ -26748,13 +26748,13 @@
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "byf" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "byg" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
@@ -27042,7 +27042,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "byT" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 8;
@@ -27072,7 +27072,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "byX" = (
 /obj/structure/kitchenspike,
 /turf/open/shuttle/dropship/predship/hunter_grate/north,
@@ -27085,7 +27085,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "bza" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -42803,7 +42803,7 @@
 /area/point_loma/airbase/interior/research)
 "cwV" = (
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cwW" = (
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer0,
@@ -42827,7 +42827,7 @@
 "cwZ" = (
 /obj/effect/stairs/down,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cxa" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -44075,63 +44075,63 @@
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBB" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBC" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBD" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBE" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBF" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBG" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBH" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBI" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBJ" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBK" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cBL" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
 /turf/open/floor/corsat,
@@ -45915,7 +45915,7 @@
 "cHk" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
-/area/point_loma/airbase/exterior/opening)
+/area/point_loma/airbase/exterior/crash_site/opening)
 "cHl" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/east,

@@ -138,7 +138,9 @@
 	icon_state = "airbase_garage"
 
 /area/point_loma/airbase/interior/hangar
+	name = "Airbase Hangar"
 	icon_state = "airbase_hangar"
+	sound_environment = SOUND_ENVIRONMENT_HANGAR
 
 /area/point_loma/airbase/interior/research
 	name = "Fuel Mixing Facility"
@@ -165,7 +167,7 @@
 	always_unpowered = TRUE // always off
 	icon_state = "airbase_exterior"
 
-/area/point_loma/airbase/exterior/opening
+/area/point_loma/airbase/exterior/opening // Unused
 	name = "USASF Point Loma Airbase - Sink Hole"
 	icon_state = "airbase_sink_hole"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
@@ -250,7 +252,6 @@
 	always_unpowered = TRUE // always off
 	sound_environment = SOUND_ENVIRONMENT_CAVE
 
-
 /area/point_loma/research_facility/cave/west
 	name = "Alpha-Tech Research Facility Cave - West"
 	icon_state = "research_facility_cave_west"
@@ -259,6 +260,7 @@
 	name = "Alpha-Tech Research Facility - West  Cave - Sinkhole"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "research_facility_cave_west_opening"
+	sound_environment = SOUND_ENVIRONMENT_QUARRY
 
 /area/point_loma/research_facility/cave/south
 	name = "Alpha-Tech Research Facility Cave - South"
@@ -268,6 +270,7 @@
 	name = "Alpha-Tech Research Facility - South Cave - Sink Hole"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "research_facility_cave_south_opening"
+	sound_environment = SOUND_ENVIRONMENT_QUARRY
 
 /area/point_loma/research_facility/cave/south_east
 	name = "Alpha-Tech Research Facility Cave - South East"
@@ -276,7 +279,7 @@
 /area/point_loma/research_facility/hallway
 	name = "Alpha-Tech Hardware - Research Facility Hallway" //abstract
 	icon_state = "research_facility_hallway"
-	sound_environment = SOUND_ENVIRONMENT_HALLWAY
+	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
 
 /area/point_loma/research_facility/hallway/central
 	name = "Alpha-Tech Hardware - Research Facility Hallway - Central"
@@ -303,21 +306,20 @@
 	icon_state = "research_facility_sdc"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
-	sound_environment = SOUND_ENVIRONMENT_HANGAR
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator
 	name = "Super Death Cannon - Ammo Elevator"
 	icon_state = "research_facility_sdc_ammo"
-
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper
 	name = "Super Death Cannon - Ammo Elevator"
 	icon_state = "research_facility_sdc_ammoup"
-	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/super_death_cannon/cannon
 	name = "Super Death Cannon - Cannon Room"
 	icon_state = "research_facility_sdc_cannon"
-	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
 
 /area/point_loma/research_facility/super_death_cannon/observation
 	name = "Super Death Cannon - Research Observation Room"
@@ -332,7 +334,7 @@
 	icon_state = "research_facility_observ_catwalk"
 	ceiling = CEILING_NONE
 	requires_power = FALSE
-	sound_environment = SOUND_ENVIRONMENT_PLAIN
+	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
 
 /area/point_loma/research_facility/super_death_cannon/engineering
 	name = "Super Death Cannon - Control Room"
@@ -370,6 +372,12 @@
 	name = "Alpha-Tech - Crash Site"
 	icon_state = "research_facility_crash_site"
 	always_unpowered = TRUE // always off
+	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
+
+/area/point_loma/research_facility/crash_site/opening
+	name = "Alpha-tech - Crash Site - Opening"
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
+	sound_environment = SOUND_ENVIRONMENT_QUARRY
 
 /area/point_loma/research_facility/engineering
 	name = "Alpha-Tech - Engineering"
@@ -381,7 +389,7 @@
 	name = "Alpha-Tech - Gymnasium"
 	icon_state = "research_facility_gym"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
-	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/gym/basketball
 	name = "Alpha-Tech - Basketball Court"
@@ -390,22 +398,24 @@
 /area/point_loma/research_facility/laundry
 	name = "Alpha-Tech - Laundry"
 	icon_state = "research_facility_laundry"
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/library
 	name = "Alpha-Tech - Library"
 	icon_state = "research_facility_library"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/medical
 	name = "Alpha-Tech - Medbay"
 	icon_state = "research_facility_medical"
 	minimap_color = MINIMAP_AREA_MEDBAY
-	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/pool
 	name = "Alpha-Tech - Pool and Sauna"
 	icon_state = "research_facility_pool"
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/pool/water
 	temperature = ICE_COLONY_TEMPERATURE // -50 degrees celcius, so the cold icon comes up
@@ -420,6 +430,7 @@
 	minimap_color = MINIMAP_AREA_RESEARCH
 	icon_state = "research_facility_research"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/research/park
 	name = "Alpha-Tech Research Facility - Park"

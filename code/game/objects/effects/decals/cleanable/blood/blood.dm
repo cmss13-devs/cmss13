@@ -82,7 +82,7 @@
 		return FALSE
 
 /obj/effect/decal/cleanable/blood/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
@@ -90,7 +90,7 @@
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
 
 /obj/effect/decal/cleanable/blood/splatter/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
@@ -104,7 +104,7 @@
 	var/drips
 
 /obj/effect/decal/cleanable/blood/drip/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/writing
 	icon_state = "tracks"
@@ -128,7 +128,7 @@
 	. += "It reads: <font color='[color]'>\"[message]\"<font>"
 
 /obj/effect/decal/cleanable/blood/writing/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
@@ -152,40 +152,40 @@
 	overlays += giblets
 
 /obj/effect/decal/cleanable/blood/gibs/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/up
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibup1", "gibup1", "gibup1")
 
 /obj/effect/decal/cleanable/blood/gibs/up/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/down
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibdown1", "gibdown1", "gibdown1")
 
 /obj/effect/decal/cleanable/blood/gibs/down/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	icon_state = "gibhead"
 	random_icon_states = list("gibhead", "gibtorso")
 
 /obj/effect/decal/cleanable/blood/gibs/body/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/limb
 	icon_state = "gibleg"
 	random_icon_states = list("gibleg", "gibarm")
 
 /obj/effect/decal/cleanable/blood/gibs/limb/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/core
 	icon_state = "gibmid1"
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
 /obj/effect/decal/cleanable/blood/gibs/core/yautja
-	basecolor= BLOOD_COLOR_YAUTJA
+	color = BLOOD_COLOR_YAUTJA
 
 
 /obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)

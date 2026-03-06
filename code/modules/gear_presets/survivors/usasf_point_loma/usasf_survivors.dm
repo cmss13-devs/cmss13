@@ -265,7 +265,7 @@
 	job_title  = JOB_USASF_CREW
 	assignment = JOB_USASF_CREW
 	survivor_variant = CIVILIAN_SURVIVOR
-	paygrades list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/load_gear(mob/living/carbon/human/new_human)

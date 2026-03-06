@@ -20,7 +20,7 @@
 
 	flags = EQUIPMENT_PRESET_STUB
 	minimap_icon = "surv"
-	minimap_background = "background_civilian"
+	minimap_background = "background_ua"
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -268,6 +268,9 @@
 	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
+	minimap_icon = "survivor"
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/survivor/usasf/crew/duty/load_gear(mob/living/carbon/human/new_human)
 	..()
 	spawn_helmet(new_human)
@@ -286,6 +289,9 @@
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
+	minimap_icon = "rmc_rifleman" // ToDO: Change
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/survivor/usasf/crew/duty/chaplain/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
@@ -298,6 +304,9 @@
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "mt"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -314,6 +323,9 @@
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "cargo"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -341,6 +353,9 @@
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
+	minimap_icon = "nurse"
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse/load_gear(mob/living/carbon/human/new_human)
 	..()
 	spawn_helmet(new_human)
@@ -359,6 +374,9 @@
 	assignment = JOB_USASF_DOCTOR
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "doctor"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -385,6 +403,9 @@
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
+	minimap_icon = "mp"
+	minimap_background = "background_ua"
+
 
 /datum/equipment_preset/survivor/usasf/crew/security/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -420,6 +441,9 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+	minimap_icon = "so"
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/survivor/usasf/crew/officer/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
@@ -439,6 +463,9 @@
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
+	minimap_icon = "pilot"
+	minimap_background = "background_ua"
+
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
@@ -451,6 +478,9 @@
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0) // Major equivalent
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "co"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -467,6 +497,9 @@
 	job_title  = JOB_USASF_SYNTHETIC
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "synth"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/synth/usasf/load_gear(mob/living/carbon/human/preset_human)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)

@@ -1937,11 +1937,15 @@
 	name = "Corpse - AlphaTech"
 	job_title = JOB_ALPHATECH_EMPLOYEE
 	faction = FACTION_ALPHATECH
+	faction_group = (FACTION_ALPHATECH, FACTION_SURVIVOR)
 	assignment = JOB_ALPHATECH_EMPLOYEE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
 	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
 	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "survivor"
+	minimap_background = "background_civilian"
 
 /datum/equipment_preset/corpse/point_loma/alphatech/load_gear(mob/living/carbon/human/new_human)
 	var/outfit = rand(1,4)
@@ -1993,6 +1997,9 @@
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	job_title  = JOB_USASF_CREW
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "survivor"
+	minimap_background = "background_ua"
 
 /datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
 	var/duty = rand(1,10) // generic outfit

@@ -278,7 +278,7 @@
 	chat_color = "#000080"
 	radio_freq = USASF_FREQ
 	minimap_color = "#000080"
-	background_icon = "background_civillian"
+	background_icon = "background_ua"
 	minimap_color = MINIMAP_SQUAD_USASF
 
 	active = FALSE

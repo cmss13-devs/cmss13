@@ -1476,6 +1476,7 @@
 
 /obj/item/device/radio/headset/almayer/sof/survivor_usasf/command // ToDO: Find a use for this.
 	icon_state = "usasfcom_headset"
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/distress/alphatech
 	name = "Alpha-Tech Hardware Corporation Headset" // toDO: Fix!

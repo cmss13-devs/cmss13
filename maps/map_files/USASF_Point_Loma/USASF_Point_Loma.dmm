@@ -8068,7 +8068,7 @@
 "axm" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/medical_supply_link,
-/turf/closed/wall/rock/brown,
+/turf/open/floor/shiva/wred/northwest,
 /area/point_loma/airbase/interior/hospital)
 "axn" = (
 /obj/effect/decal/warning_stripes{
@@ -14200,7 +14200,7 @@
 "aOE" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/rock/brown,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob)
 "aOF" = (
 /turf/open/new_varadero/dock_concrete,

@@ -259,7 +259,7 @@ Higher severity explosion will damage the sensor tower more
 
 /obj/structure/machinery/sensortower/short_range
 	desc = "This tower does not look that powerful, it detects only in short range and does not penetrate floors."
-	var/sensor_radius = 20
+	var/sensor_radius = 30
 
 /obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)

@@ -29673,7 +29673,7 @@
 /turf/open/floor/corsat/red/west,
 /area/point_loma/research_facility/security_hq)
 "bGq" = (
-/obj/structure/machinery/colony_floodlight,
+/obj/structure/machinery/sensortower/short_range,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/point_loma/research_facility/cave/south_east)
 "bGr" = (

@@ -1033,6 +1033,19 @@
 /obj/structure/platform/stone/soro_colorable_immune/west
 	dir = WEST
 
+/obj/structure/platform/stone/soro_colorable_immune/loma
+	name = "rock corner"
+	color = "#6c6767d8"
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/north
+	dir = NORTH
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/east
+	dir = EAST
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/west
+	dir = WEST
+
 /obj/structure/platform_decoration/stone/soro_colorable_immune
 	name = "rock corner"
 	desc = "Solid chunks of desolate rocks."
@@ -1044,6 +1057,19 @@
 /obj/structure/platform_decoration/stone/soro_colorable_immune/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma
+	name = "rock corner"
+	color = "#6c6767d8"
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north
+	dir = NORTH
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east
+	dir = EAST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west
 	dir = WEST
 
 /obj/structure/platform/stone/stair_cut/soro_left

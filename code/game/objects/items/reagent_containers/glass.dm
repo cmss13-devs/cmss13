@@ -400,16 +400,12 @@
 	volume = 960
 	w_class = SIZE_LARGE
 	splashable = FALSE
-	can_be_placed_into = list(
-		/obj/structure/machinery/chem_dispenser/,
-		/obj/structure/machinery/reagentgrinder,
-		/obj/structure/surface/table,
-		/obj/structure/closet,
-		/obj/item/storage,
-	)
+	var/obj/item/storage/backpack/marine/owner_pack = null
 
 /obj/item/reagent_container/glass/large_reagent_tank/on_reagent_change()
 	update_icon()
+	if(owner_pack)
+		owner_pack.update_icon()
 
 /obj/item/reagent_container/glass/large_reagent_tank/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
@@ -442,6 +438,8 @@
 	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon()
+	if(owner_pack)
+		owner_pack.update_icon()
 
 /obj/item/reagent_container/glass/large_reagent_tank/update_icon()
 	overlays.Cut()

@@ -623,9 +623,11 @@
 	. = ..()
 	internal_tank = new /obj/item/reagent_container/glass/large_reagent_tank()
 	internal_tank.moveToNullspace()
+	internal_tank.owner_pack = src
 
 /obj/item/storage/backpack/marine/medic/chempack/Destroy()
 	if(internal_tank && !QDELETED(internal_tank))
+		internal_tank.owner_pack = null
 		qdel(internal_tank)
 	internal_tank = null
 	return ..()
@@ -636,10 +638,11 @@
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
 		internal_tank = W
+		var/obj/item/reagent_container/glass/large_reagent_tank/tank = W
+		tank.owner_pack = src
 		user.drop_inv_item_on_ground(W)
 		W.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
-		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		update_icon()
 		return
 	if(!internal_tank)
@@ -661,7 +664,6 @@
 		if(transferred)
 			to_chat(user, SPAN_NOTICE("You refill [container] from [src]. ([internal_tank.reagents.total_volume]u remaining in tank.)"))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			update_icon()
 		return
 	. = ..()
 
@@ -675,6 +677,7 @@
 		return
 	var/obj/item/reagent_container/glass/large_reagent_tank/tank = internal_tank
 	internal_tank = null
+	tank.owner_pack = null
 	tank.forceMove(usr.loc)
 	usr.put_in_hands(tank)
 	to_chat(usr, SPAN_NOTICE("You remove the tank from [src]."))
@@ -785,15 +788,19 @@
 	desc = "A specialized satchel worn by USCM hospital corpsmen. Features an internal housing for an MS-22 Large Reagent Tank, used to refill pressurized canisters and smart refill tanks in the field."
 	icon_state = "marinesatch_chem"
 	item_state = "marinesatch_chem"
+	item_state_slots = list(WEAR_BACK = "marinesatch_chem")
 	var/obj/item/reagent_container/glass/large_reagent_tank/internal_tank = null
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Initialize()
 	. = ..()
 	internal_tank = new /obj/item/reagent_container/glass/large_reagent_tank()
 	internal_tank.moveToNullspace()
+	internal_tank.owner_pack = src
+	update_icon()
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Destroy()
 	if(internal_tank && !QDELETED(internal_tank))
+		internal_tank.owner_pack = null
 		qdel(internal_tank)
 	internal_tank = null
 	return ..()
@@ -804,10 +811,11 @@
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
 		internal_tank = W
+		var/obj/item/reagent_container/glass/large_reagent_tank/tank = W
+		tank.owner_pack = src
 		user.drop_inv_item_on_ground(W)
 		W.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
-		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		update_icon()
 		return
 	if(!internal_tank)
@@ -843,6 +851,7 @@
 		return
 	var/obj/item/reagent_container/glass/large_reagent_tank/tank = internal_tank
 	internal_tank = null
+	tank.owner_pack = null
 	tank.forceMove(usr.loc)
 	usr.put_in_hands(tank)
 	to_chat(usr, SPAN_NOTICE("You remove the tank from [src]."))

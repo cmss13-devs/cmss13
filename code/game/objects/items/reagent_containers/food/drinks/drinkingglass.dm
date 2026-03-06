@@ -356,7 +356,7 @@
 				center_of_mass = "x=16;y=10"
 			if("carrotjuice")
 				icon_state = "carrotjuice"
-				name = "Glass of  carrot juice"
+				name = "Glass of carrot juice"
 				desc = "It is just like a carrot but without crunching."
 				center_of_mass = "x=16;y=10"
 			if("banana")

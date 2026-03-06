@@ -198,9 +198,9 @@
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
 			start_charging_ability()
-		if(ability_uses_acid_overlay)
-			xeno.overlays |= xeno.acid_overlay
-			xeno.update_icons()
+		if(ability_uses_acid_overlay && !xeno.resting && xeno.stat != DEAD)
+			if(!HAS_TRAIT(xeno, TRAIT_FLOORED))
+				xeno.overlays |= xeno.acid_overlay
 
 
 // Called when a different action is clicked on and this one is deselected.
@@ -227,21 +227,6 @@
 /datum/action/xeno_action/onclick/action_activate()
 	. = ..()
 	use_ability_wrapper(null)
-
-
-/datum/action/xeno_action/activable/proc/on_update_icons()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.stat == DEAD)
-		xeno.overlays -= xeno.acid_overlay
-	else if(xeno.body_position == LYING_DOWN)
-		if(!HAS_TRAIT(xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(xeno, TRAIT_FLOORED))
-			xeno.overlays -= xeno.acid_overlay
-		else
-			xeno.overlays -= xeno.acid_overlay
-	else
-		xeno.overlays -= xeno.acid_overlay
-	xeno.overlays += xeno.acid_overlay
-
 
 // Adds a cooldown to this
 // According to the cooldown variables set on this and
@@ -387,11 +372,6 @@
 		else
 			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
 
-/datum/action/xeno/proc/update_icons()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.update_icons()
-
-
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
 	to_chat(owner, SPAN_XENOWARNING("We start charging up our <b>[name]</b>!"))
@@ -499,6 +479,12 @@
 		return PROCESS_KILL
 	else
 		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
+
+/datum/action/xeno_action/proc/on_select(mob/user)
+	return
+
+/datum/action/xeno_action/proc/on_deselect(mob/user)
+	return
 
 #define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
 #define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

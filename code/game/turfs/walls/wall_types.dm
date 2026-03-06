@@ -42,7 +42,7 @@
 /turf/closed/wall/almayer/update_icon()
 	if(decoration_type == null)
 		return ..()
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		special_icon = TRUE
 		icon_state = "almayer_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality
@@ -117,6 +117,11 @@
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
+	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment, /turf/closed/wall/almayer/outer)
+	noblend_objects = list(/obj/structure/machinery/door/window, /obj/structure/machinery/door/poddoor/almayer)
+
+/turf/closed/wall/almayer/white/hull/blend_pod
+	noblend_objects = list(/obj/structure/machinery/door/window)
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -501,7 +506,6 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 
@@ -562,7 +566,7 @@
 	..()
 	if(special_icon)
 		return
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
@@ -643,6 +647,29 @@
 		var/turf/turf_to_check = get_step(src, direction)
 		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
 			minimap_color = MINIMAP_SOLID
+
+/turf/closed/wall/strata_ice/forest
+	name = "forest vegetation"
+	icon = 'icons/turf/walls/forest_veg.dmi'
+	icon_state = "forest_veg"
+	desc = "Exceptionally dense vegetation that you can't see through."
+	walltype = WALL_FOREST //Thick forest, not metal.
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/strata_ice/forest/rock
+	name = "rock columns"
+	icon_state = "rock_forest"
+	desc = "Exceptionally dense rock formations."
+	walltype = WALL_FOREST_ROCK //Rock but near a forest not jungle.
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/strata_ice/forest/rock/dirty
+	name = "rock columns"
+	icon_state = "rock_forest_dirty"
+	desc = "Exceptionally dense rock formations."
+	walltype = WALL_FOREST_ROCK_DIRTY //Dirty rock but near a forest not jungle.
+	turf_flags = TURF_HULL
+
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -1124,7 +1151,6 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 

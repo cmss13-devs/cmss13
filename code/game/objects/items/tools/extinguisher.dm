@@ -88,7 +88,7 @@
 			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
 			return
 		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled."))
+		to_chat(user, SPAN_NOTICE("[src] is now refilled."))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
@@ -96,7 +96,7 @@
 		return ..()
 
 	if(src.reagents.total_volume < 1)
-		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
+		to_chat(usr, SPAN_DANGER("[src] is empty."))
 		return
 
 	if(world.time < src.last_use + 20)

@@ -126,7 +126,7 @@
 
 	if(slot_type == "Roundstart")
 		var/confirmation = tgui_alert(src, "Altering roundstart slots will disable automatic slot scaling, are you sure?", "Confirm?", list("Yes", "No"), 30 SECONDS)
-		if(!confirmation)
+		if(!confirmation || (confirmation == "No"))
 			return
 		selected_job.spawn_positions = slot_number
 		selected_job.scaled = FALSE

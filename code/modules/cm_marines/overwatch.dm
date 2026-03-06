@@ -974,6 +974,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
+			if(SShijack.in_ftl)
+				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+				return FALSE
+
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				return FALSE
+
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
@@ -1299,7 +1307,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transfered!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transferred!")]")
 		return
 
 	var/obj/item/card/id/card = transfer_marine.get_idcard()
@@ -1336,8 +1344,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad, card)
 	if(.)
-		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
-		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transferred from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
+		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transferred to [new_squad]!</font>")
 	else
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
 

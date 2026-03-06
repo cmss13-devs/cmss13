@@ -1937,7 +1937,7 @@
 	name = "Corpse - AlphaTech"
 	job_title = JOB_ALPHATECH_EMPLOYEE
 	faction = FACTION_ALPHATECH
-	faction_group = (FACTION_ALPHATECH, FACTION_SURVIVOR)
+	faction_group = list(FACTION_ALPHATECH, FACTION_SURVIVOR)
 	assignment = JOB_ALPHATECH_EMPLOYEE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
 	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are

@@ -17383,9 +17383,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
-"aXY" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/fiorina/station/park)
 "aXZ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/ten,
 /turf/open/auto_turf/sand_white/layer1,
@@ -24784,9 +24781,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob/sky)
-"bsd" = (
-/turf/closed/wall/rock/brown,
-/area/fiorina/station/park)
 "bse" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -109361,9 +109355,9 @@ aeX
 aeX
 bID
 bID
-aXY
+bID
 asb
-bIT
+bIB
 bIB
 bIB
 bIB
@@ -109543,7 +109537,7 @@ aeX
 aeX
 bID
 aDD
-aXY
+bID
 asb
 asb
 bIB
@@ -109725,7 +109719,7 @@ aeX
 aeX
 aeX
 aeX
-bsd
+asb
 asb
 asb
 bIB

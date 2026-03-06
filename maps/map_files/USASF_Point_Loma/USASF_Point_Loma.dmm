@@ -17384,8 +17384,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "aXY" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/fiorina/station/park)
+/obj/item/stack/sheet/metal,
+/obj/item/shard{
+	pixel_y = -16
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "aXZ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/ten,
 /turf/open/auto_turf/sand_white/layer1,
@@ -24785,8 +24789,11 @@
 /turf/open_space,
 /area/point_loma/oob/sky)
 "bsd" = (
-/turf/closed/wall/rock/brown,
-/area/fiorina/station/park)
+/obj/item/shard{
+	pixel_x = -11
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "bse" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -28576,12 +28583,8 @@
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
 "bCR" = (
-/obj/item/stack/sheet/metal,
-/obj/item/shard{
-	pixel_y = -16
-	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -29267,11 +29270,10 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "bFi" = (
-/obj/item/shard{
-	pixel_x = -11
-	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/blocker/invisible_wall,
+/obj/structure/fence/slim/dark/door,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/oob)
 "bFj" = (
 /turf/open/floor/corsat/blue/west,
 /area/point_loma/airbase/interior/atc/upper)
@@ -33846,8 +33848,10 @@
 /turf/open_space,
 /area/point_loma/oob/sky)
 "bTT" = (
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/obj/structure/blocker/invisible_wall,
+/obj/structure/fence/slim/dark/door,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob)
 "bTU" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4;
@@ -42295,9 +42299,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "cvl" = (
+/obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
-/obj/structure/fence/slim/dark/door,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/oob)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -45146,10 +45150,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/east)
-"cEP" = (
-/obj/structure/window/framed/hangar,
-/turf/open/hybrisa/street/sidewalkcenter,
-/area/point_loma/airbase/exterior/east)
 "cEQ" = (
 /obj/effect/decal/cleanable/blood/splatter/yautja,
 /turf/open/floor/corsat/squares,
@@ -46761,16 +46761,6 @@
 /obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
-"cKh" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/fence/slim/dark/door,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/oob)
-"cKi" = (
-/obj/structure/fence/slim/dark,
-/obj/structure/blocker/invisible_wall,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/oob)
 
 (1,1,1) = {"
 aug
@@ -109366,9 +109356,9 @@ aeX
 aeX
 bID
 bID
-aXY
+bID
 asb
-bIT
+bIB
 bIB
 bIB
 bIB
@@ -109548,7 +109538,7 @@ aeX
 aeX
 bID
 aDD
-aXY
+bID
 asb
 asb
 bIB
@@ -109730,7 +109720,7 @@ aeX
 aeX
 aeX
 aeX
-bsd
+asb
 asb
 asb
 bIB
@@ -150231,7 +150221,7 @@ cJr
 cJh
 cJk
 cJi
-bCR
+aXY
 bTg
 bTg
 bTg
@@ -150411,7 +150401,7 @@ bxN
 cJh
 cJh
 bxN
-bFi
+bsd
 atE
 atE
 bTk
@@ -156935,7 +156925,7 @@ bTS
 aOV
 aOV
 aOV
-cvl
+bFi
 aOF
 aOF
 aOF
@@ -158588,14 +158578,14 @@ axq
 cFK
 cFI
 bUT
-bTT
-bTT
-bTT
-bTT
-bTT
-bTT
+bCR
+bCR
+bCR
+bCR
+bCR
+bCR
 clW
-bTT
+bCR
 bUA
 bxN
 bxN
@@ -158770,14 +158760,14 @@ cHL
 cFK
 cFI
 bUT
-bTT
-bTT
-bTT
-bTT
-bTT
-bTT
-bTT
-bTT
+bCR
+bCR
+bCR
+bCR
+bCR
+bCR
+bCR
+bCR
 bQT
 bxN
 bxN
@@ -158952,14 +158942,14 @@ cHK
 cFK
 cFI
 cHv
-bTT
-bTT
+bCR
+bCR
 clW
-bTT
+bCR
 clW
-bTT
+bCR
 clW
-bTT
+bCR
 bQT
 bQT
 bQT
@@ -159134,13 +159124,13 @@ cHK
 cxf
 cFI
 bCN
-bTT
-bTT
-bTT
+bCR
+bCR
+bCR
 clW
-bTT
-bTT
-bTT
+bCR
+bCR
+bCR
 bQT
 bQT
 bQT
@@ -159316,9 +159306,9 @@ cFQ
 cHE
 cHy
 cHw
-bTT
+bCR
 clW
-bTT
+bCR
 bQT
 bQT
 bQT
@@ -159498,9 +159488,9 @@ cHN
 cHF
 cHz
 cHw
-bTT
-bTT
-bTT
+bCR
+bCR
+bCR
 bQT
 ckI
 bQT
@@ -159665,7 +159655,7 @@ bTS
 aOV
 aOV
 aOV
-cKh
+bTT
 aOF
 aOF
 aOF
@@ -159847,7 +159837,7 @@ aOV
 aOV
 aOV
 aOV
-cKi
+cvl
 aOF
 aOF
 aOF
@@ -164247,7 +164237,7 @@ bRS
 bQf
 bQf
 aNy
-cEP
+bXW
 bxu
 bYN
 bQd

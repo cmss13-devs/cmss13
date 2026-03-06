@@ -46254,7 +46254,7 @@
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cIw" = (
 /obj/structure/platform/metal/strata/north,
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cIx" = (

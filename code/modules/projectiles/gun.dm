@@ -2177,7 +2177,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				if(isobj(object))
 					var/obj/object_flag_check = object
 					if(object_flag_check.flags_obj & OBJ_ORGANIC)
-						return FALSE
+						if(!(istypestrict(object, /obj/effect/alien/weeds)))
+							return FALSE
 
 			if(skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED) && gun_user.zone_selected == "head" && ishuman_strict(object))
 				if(ammo && (COMSIG_AMMO_BATTLEFIELD_EXECUTION in ammo.comp_lookup))

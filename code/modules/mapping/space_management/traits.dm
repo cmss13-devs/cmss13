@@ -6,7 +6,7 @@
 		if (z > length(z_list))
 			stack_trace("Unmanaged z-level [z]! maxz = [world.maxz], length(z_list) = [length(z_list)]")
 			return list()
-		var/datum/space_level/S = get_level(z)
+		var/datum/space_level/S = z_list[z]
 		return S.traits[trait]
 	else
 		var/list/default = DEFAULT_MAP_TRAITS

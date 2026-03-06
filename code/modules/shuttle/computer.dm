@@ -439,9 +439,8 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
-				var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 				var/turf/shuttle_location = get_turf(lifeboat)
-				if(!ignore_ftl_or_crash && (shuttle_location.z in ship_zs))
+				if(!ignore_ftl_or_crash && is_mainship_level(shuttle_location.z))
 					if(SShijack.in_ftl)
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
 						return

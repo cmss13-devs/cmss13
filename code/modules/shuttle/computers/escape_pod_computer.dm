@@ -46,7 +46,6 @@
 
 	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
 	var/turf/shuttle_location = get_turf(shuttle)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 
 	if(pod_state == STATE_IDLE && shuttle.evac_set)
 		pod_state = STATE_READY
@@ -63,7 +62,7 @@
 	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
-	.["in_ftl"] = !ignore_ftl_or_crash && SShijack.in_ftl && (shuttle_location.z in ship_zs)
+	.["in_ftl"] = !ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z)
 	.["launch_without_evac"] = launch_without_evac
 
 
@@ -78,9 +77,8 @@
 			if(!launch_without_evac && pod_state != STATE_READY && pod_state != STATE_DELAYED)
 				return
 
-			var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			var/turf/shuttle_location = get_turf(shuttle)
-			if(!ignore_ftl_or_crash && SShijack.in_ftl && (shuttle_location.z in ship_zs))
+			if(!ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z))
 				return
 
 			shuttle.evac_launch()

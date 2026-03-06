@@ -213,14 +213,13 @@ SUBSYSTEM_DEF(hijack)
 		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
 		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
-		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 
 			if(!current_mob || current_mob.stat == DEAD)
 				continue
 			var/turf/mob_turf = get_turf(current_mob)
-			if(!mob_turf || !(mob_turf.z in ship_zs))
+			if(!mob_turf || !is_mainship_level(mob_turf.z))
 				continue
 			if(istype(current_mob.loc, /obj/structure/machinery/cryopod))
 				continue
@@ -392,9 +391,8 @@ SUBSYSTEM_DEF(hijack)
 	evac_status = EVACUATION_STATUS_INITIATED
 	ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
 
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-		if(cycled_status_display.z in ship_zs)
+		if(is_mainship_level(cycled_status_display.z))
 			cycled_status_display.set_picture("evac")
 	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 		shuttle.prepare_evac()
@@ -411,9 +409,8 @@ SUBSYSTEM_DEF(hijack)
 	if(!silent)
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-		if(cycled_status_display.z in ship_zs)
+		if(is_mainship_level(cycled_status_display.z))
 			cycled_status_display.set_sec_level_picture()
 
 	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -437,10 +434,9 @@ SUBSYSTEM_DEF(hijack)
 
 /// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 		var/turf/location = get_turf(shuttle)
-		if(!location || !(location.z in ship_zs))
+		if(!location || !is_mainship_level(location.z))
 			continue
 		// ASSUMPTION: Only a hijacked marine_dropship would possibly be something permanently disabled
 		if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
@@ -457,10 +453,9 @@ SUBSYSTEM_DEF(hijack)
 
 /// Changes whether the mobile docking_ports on the mainship are not operating (launchable)
 /datum/controller/subsystem/hijack/proc/disallow_dropship_launching(include_marine_dropship=TRUE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 		var/turf/location = get_turf(shuttle)
-		if(!location || !(location.z in ship_zs))
+		if(!location || !is_mainship_level(location.z))
 			continue
 		if(!include_marine_dropship && istype(shuttle, /obj/docking_port/mobile/marine_dropship))
 			continue
@@ -472,10 +467,9 @@ SUBSYSTEM_DEF(hijack)
 
 /// Changes whether the stationary docking_ports on the mainship are operating (dockable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_pad_landing(include_marine_dropship=FALSE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
 		var/turf/location = get_turf(pad)
-		if(!location || !(location.z in ship_zs))
+		if(!location || !is_mainship_level(location.z))
 			continue
 		if(!include_marine_dropship && istype(pad, /obj/docking_port/stationary/marine_dropship))
 			continue
@@ -485,10 +479,9 @@ SUBSYSTEM_DEF(hijack)
 
 /// Changes whether the stationary docking_ports on the mainship are operating (dockable)
 /datum/controller/subsystem/hijack/proc/disallow_dropship_pad_landing(include_marine_dropship=TRUE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
 		var/turf/location = get_turf(pad)
-		if(!location || !(location.z in ship_zs))
+		if(!location || !is_mainship_level(location.z))
 			continue
 		if(!include_marine_dropship && istype(pad, /obj/docking_port/stationary/marine_dropship))
 			continue
@@ -564,12 +557,10 @@ SUBSYSTEM_DEF(hijack)
 	sd_detonated = TRUE
 	SSticker?.roundend_check_paused = TRUE
 
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-	var/list/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
-		if(!current_turf || !current_mob.client || !(current_turf.z in ship_zs))
+		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
 			continue
 
 		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
@@ -596,7 +587,7 @@ SUBSYSTEM_DEF(hijack)
 			dead_mobs |= current_mob
 			continue
 
-		if((current_turf.z in ship_zs) || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && (current_turf.z in ground_zs))
+		if(is_mainship_level(current_turf.z) || (hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && is_ground_level(current_turf.z)))
 			alive_mobs |= current_mob
 			shake_camera(current_mob, 110, 4)
 
@@ -618,7 +609,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
 			continue
 
-		if((current_mob_turf.z in ship_zs) || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && (current_mob_turf.z in ground_zs))
+		if(is_mainship_level(current_mob_turf.z) || (hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && is_ground_level(current_mob_turf.z)))
 			if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 				continue
 			current_mob.death(create_cause_data("nuclear explosion"))
@@ -973,9 +964,8 @@ SUBSYSTEM_DEF(hijack)
 	in_ftl_time = world.time
 
 	// Return to sender any shuttles already in transit to the ship
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle as anything in SSshuttle.mobile)
-		if(shuttle.destination && (shuttle.destination.z in ship_zs))
+		if(shuttle.destination && is_mainship_level(shuttle.destination.z))
 			shuttle.destination = shuttle.previous
 
 	// Disable all non-pod/elevator pads
@@ -1043,8 +1033,6 @@ SUBSYSTEM_DEF(hijack)
 	// Allow pads to work again except marine_dropship pads
 	allow_dropship_pad_landing()
 
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-
 	if(!unintentionally)
 		shakeship(
 			sstrength = 2,
@@ -1053,7 +1041,7 @@ SUBSYSTEM_DEF(hijack)
 			osound = FALSE
 		)
 		for(var/mob/mob as anything in GLOB.player_list)
-			if(mob.z in ship_zs)
+			if(is_mainship_level(mob.z))
 				playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 		return
 
@@ -1064,7 +1052,7 @@ SUBSYSTEM_DEF(hijack)
 	)
 
 	for(var/mob/mob as anything in GLOB.player_list)
-		if(mob.z in ship_zs)
+		if(is_mainship_level(mob.z))
 			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 
 	explode_pumps_with_warning(10 SECONDS)

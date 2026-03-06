@@ -312,10 +312,9 @@
 			return
 
 		var/list/active_lzs = list()
-		var/list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/obj/docking_port/stationary/dock as anything in lzs)
 			// filter for almayer only
-			if(!(dock.z in z_levels))
+			if(!is_mainship_level(dock.z))
 				continue
 			// filter for free lzs
 			if(shuttle.canDock(dock) != SHUTTLE_CAN_DOCK)

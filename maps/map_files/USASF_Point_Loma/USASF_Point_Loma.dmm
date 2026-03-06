@@ -46285,6 +46285,10 @@
 /obj/effect/decal/cleanable/blood/gibs/body/yautja,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
+"cIv" = (
+/obj/structure/sign/poster/propaganda,
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/airbase/interior/atc)
 
 (1,1,1) = {"
 aug
@@ -152082,7 +152086,7 @@ aOV
 aOV
 aOV
 bVb
-bEt
+cIv
 bEP
 auW
 bED
@@ -152264,17 +152268,17 @@ aOV
 aOV
 aOV
 bAd
-bUU
-bUU
+bVb
+bVb
 bba
 baV
-bEt
+cIv
 bDB
 bDB
-bUU
+bVb
 baJ
 bDB
-bUU
+bVb
 baS
 bCQ
 aLe
@@ -152447,16 +152451,16 @@ aOV
 aOV
 bAd
 bYm
-bUU
+bVb
 bbb
 aXB
-bUU
+bVb
 bEn
 baE
-bUU
+bVb
 ajf
 baE
-bUU
+bVb
 aLe
 bah
 bah
@@ -163413,7 +163417,7 @@ cHm
 cHm
 cHm
 bRV
-bRV
+bMJ
 bQf
 bQf
 bXW
@@ -163595,7 +163599,7 @@ aLH
 aLH
 aLH
 bRV
-bRV
+bMJ
 bQf
 bQf
 bXW
@@ -163777,8 +163781,8 @@ ant
 ant
 bsr
 ayM
-bRV
-bRV
+bMJ
+bMJ
 bQf
 bZG
 bxu
@@ -163960,7 +163964,7 @@ ape
 bsw
 cjW
 aom
-bRV
+bMJ
 bZl
 bXW
 bYO

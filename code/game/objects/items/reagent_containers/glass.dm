@@ -404,7 +404,7 @@
 
 /obj/item/reagent_container/glass/large_reagent_tank/on_reagent_change()
 	update_icon()
-	if(owner_pack)
+	if(owner_pack && !QDELETED(owner_pack))
 		owner_pack.update_icon()
 
 /obj/item/reagent_container/glass/large_reagent_tank/attackby(obj/item/W as obj, mob/user as mob)

@@ -1553,10 +1553,12 @@ and you're good to go.
 				else if(preference != DUAL_WIELD_NONE) //DUAL_WIELD_FIRE, Akimbo firing. Forced if weapons are automatic because it doesn't make sense.
 					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
 
+		var/executed = FALSE
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 			attacked_mob.death()
 			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
+			executed = TRUE
 		// No projectile code to handhold us, we do the cleaning ourselves:
 		QDEL_NULL(projectile_to_fire)
 		in_chamber = null
@@ -1578,7 +1580,7 @@ and you're good to go.
 				break
 
 		// For full auto weapons, transition to auto fire after a PB if they're still holding down lmb
-		if(gun_firemode == GUN_FIREMODE_AUTOMATIC && bullets_fired == 1)
+		if(gun_firemode == GUN_FIREMODE_AUTOMATIC && bullets_fired == 1 && !executed)
 			PB_burst_bullets_fired = bullets_fired
 			break
 

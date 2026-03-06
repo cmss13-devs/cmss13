@@ -28114,7 +28114,7 @@
 "bBI" = (
 /obj/structure/girder,
 /turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/area/point_loma/airbase/exterior/crash_site)
 "bBJ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -28286,7 +28286,7 @@
 "bCi" = (
 /obj/structure/girder/reinforced,
 /turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/area/point_loma/airbase/exterior/crash_site)
 "bCj" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 12
@@ -28378,7 +28378,7 @@
 "bCr" = (
 /obj/structure/girder,
 /turf/open/new_varadero/dock_concrete,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/area/point_loma/airbase/exterior/crash_site)
 "bCs" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
@@ -28582,9 +28582,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"bCR" = (
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -34039,7 +34036,7 @@
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bUH" = (
 /turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+/area/point_loma/airbase/exterior/crash_site)
 "bUI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -39329,10 +39326,6 @@
 	},
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/cargo)
-"clW" = (
-/obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "clX" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/open/floor/predship/hull,
@@ -44814,12 +44807,6 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/command)
-"cDQ" = (
-/obj/structure/machinery/conveyor{
-	id = "anomalybelt"
-	},
-/turf/open/floor/corsat/purple/north,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "cDR" = (
 /mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/floor/corsat,
@@ -156575,10 +156562,10 @@ bQT
 ctv
 bxN
 bxN
-bUz
-bUz
-bUz
-bUz
+bUA
+bUA
+bUA
+bUA
 bCi
 bBI
 bBI
@@ -156765,7 +156752,7 @@ bUH
 bUH
 bUH
 bUH
-bUz
+bUA
 bxN
 bxN
 bxN
@@ -156947,7 +156934,7 @@ bUH
 bUH
 bUH
 bUH
-bUz
+bUA
 bzk
 bzk
 bzk
@@ -157668,7 +157655,7 @@ cFQ
 cFK
 cFI
 cFF
-cDQ
+cHu
 aIK
 bUJ
 bUJ
@@ -158578,14 +158565,14 @@ axq
 cFK
 cFI
 bUT
-bCR
-bCR
-bCR
-bCR
-bCR
-bCR
-clW
-bCR
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+ckF
+aZC
 bUA
 bxN
 bxN
@@ -158760,14 +158747,14 @@ cHL
 cFK
 cFI
 bUT
-bCR
-bCR
-bCR
-bCR
-bCR
-bCR
-bCR
-bCR
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bQT
 bxN
 bxN
@@ -158942,14 +158929,14 @@ cHK
 cFK
 cFI
 cHv
-bCR
-bCR
-clW
-bCR
-clW
-bCR
-clW
-bCR
+aZC
+aZC
+ckF
+aZC
+ckF
+aZC
+ckF
+aZC
 bQT
 bQT
 bQT
@@ -159124,13 +159111,13 @@ cHK
 cxf
 cFI
 bCN
-bCR
-bCR
-bCR
-clW
-bCR
-bCR
-bCR
+aZC
+aZC
+aZC
+ckF
+aZC
+aZC
+aZC
 bQT
 bQT
 bQT
@@ -159306,9 +159293,9 @@ cFQ
 cHE
 cHy
 cHw
-bCR
-clW
-bCR
+aZC
+ckF
+aZC
 bQT
 bQT
 bQT
@@ -159488,9 +159475,9 @@ cHN
 cHF
 cHz
 cHw
-bCR
-bCR
-bCR
+aZC
+aZC
+aZC
 bQT
 ckI
 bQT
@@ -159670,7 +159657,7 @@ cHO
 cHG
 bUT
 bUT
-bUz
+bUA
 bCr
 bCr
 bQT

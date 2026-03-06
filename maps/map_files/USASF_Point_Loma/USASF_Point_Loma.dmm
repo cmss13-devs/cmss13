@@ -45134,10 +45134,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/east)
-"cEP" = (
-/obj/structure/window/framed/hangar,
-/turf/open/hybrisa/street/sidewalkcenter,
-/area/point_loma/airbase/exterior/east)
 "cEQ" = (
 /obj/effect/decal/cleanable/blood/splatter/yautja,
 /turf/open/floor/corsat/squares,
@@ -164236,7 +164232,7 @@ bRS
 bQf
 bQf
 aNy
-cEP
+bXW
 bxu
 bYN
 bQd

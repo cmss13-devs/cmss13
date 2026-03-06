@@ -432,6 +432,22 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
+/// Unlocks all marine dropship and optionally ert dropship doors on the mainship
+/datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
+	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+		var/turf/location = get_turf(shuttle)
+		if(!location || !is_mainship_level(location.z))
+			continue
+
+		if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+			var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
+			dropship.control_doors("unlock", "all")
+			continue
+		if(include_ert && istype(shuttle, /obj/docking_port/mobile/emergency_response))
+			var/obj/docking_port/mobile/emergency_response/dropship = shuttle
+			dropship.control_doors("unlock")
+			continue
+
 /// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
@@ -445,9 +461,9 @@ SUBSYSTEM_DEF(hijack)
 			var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
 			if(dropship.is_hijacked)
 				continue
-		if(istype(shuttle, /obj/docking_port/mobile/crashable))
+		else if(istype(shuttle, /obj/docking_port/mobile/crashable))
 			continue
-		if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
+		else if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
 			continue
 		shuttle.set_mode(SHUTTLE_IDLE)
 
@@ -457,11 +473,13 @@ SUBSYSTEM_DEF(hijack)
 		var/turf/location = get_turf(shuttle)
 		if(!location || !is_mainship_level(location.z))
 			continue
-		if(!include_marine_dropship && istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+
+		if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+			if(!include_marine_dropship)
+				continue
+		else if(istype(shuttle, /obj/docking_port/mobile/crashable))
 			continue
-		if(istype(shuttle, /obj/docking_port/mobile/crashable))
-			continue
-		if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
+		else if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
 			continue
 		shuttle.set_mode(SHUTTLE_CRASHED)
 
@@ -643,6 +661,7 @@ SUBSYSTEM_DEF(hijack)
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
 	// Break all shipside ships and disable all non-pod/elevator pads
+	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_launching()
 	disallow_dropship_pad_landing()
 
@@ -969,6 +988,7 @@ SUBSYSTEM_DEF(hijack)
 			shuttle.destination = shuttle.previous
 
 	// Disable all non-pod/elevator pads
+	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_pad_landing()
 
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))

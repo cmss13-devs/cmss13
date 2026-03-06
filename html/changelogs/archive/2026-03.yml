@@ -86,3 +86,16 @@
   - bugfix: fixed odd viewing angles on staircases
   hry-gh:
   - bugfix: makes the relay browser use the new calculation system
+2026-03-06:
+  BeagleGaming1:
+  - rscdel: Disables Byond macros
+  MistChristmas:
+  - spellcheck: Removed Illegal to distribute line from Oxycodone bottle
+  MoondancerPony:
+  - bugfix: Tyrargo Rift army survivors no longer show up as part of Alpha Squad on
+      the crew monitor.
+  Riot:
+  - rscadd: Adds US army ranks, applied to the survivors and ERT on Tyrargo Rift
+  - bugfix: Army survivors can now program the comms tower to accept their comms.
+  - bugfix: Army comms are now fully working, with their own radio key and working
+      comms color.

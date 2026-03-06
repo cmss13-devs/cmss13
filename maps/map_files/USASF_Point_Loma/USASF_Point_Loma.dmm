@@ -25297,6 +25297,10 @@
 "btN" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
+"btO" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/west)
 "btP" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement_sunbleached,
@@ -33797,6 +33801,9 @@
 "bTS" = (
 /turf/open_space,
 /area/point_loma/oob/sky)
+"bTT" = (
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/airbase/interior/research)
 "bTU" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4;
@@ -42222,6 +42229,9 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"cvl" = (
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/airbase/interior)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
@@ -45297,7 +45307,7 @@
 /area/point_loma/airbase/exterior/west)
 "cFE" = (
 /obj/structure/barricade/sandbags,
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/interior/research)
 "cFF" = (
 /obj/item/stack/rods,
@@ -45307,6 +45317,14 @@
 "cFG" = (
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf{
 	dir = 1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
 	},
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
@@ -45345,6 +45363,11 @@
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFP" = (
@@ -45912,6 +45935,7 @@
 /area/point_loma/airbase/exterior/west)
 "cHA" = (
 /obj/structure/prop/invuln/fire,
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/point_loma/airbase/exterior/west)
 "cHB" = (
@@ -46018,10 +46042,120 @@
 /obj/structure/machinery/sensortower/short_range,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
-"hOC" = (
+"cHU" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/asphalt,
+/obj/structure/prop/invuln/fire,
+/turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/airbase/exterior/crash_site)
+"cHV" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cHW" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cHX" = (
+/obj/item/stack/rods,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cHY" = (
+/obj/item/stack/sheet/metal,
+/obj/vehicle/powerloader/jd{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cHZ" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cIa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cIb" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cIc" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/fire,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cId" = (
+/obj/vehicle/powerloader/jd{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cIe" = (
+/obj/structure/closet/firecloset{
+	pixel_y = 19
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cIf" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/roadlines,
+/area/point_loma/airbase/interior/hospital)
+"cIg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cIh" = (
+/obj/structure/prop/invuln/fire,
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cIi" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/point_loma/airbase/exterior/west)
 
 (1,1,1) = {"
 aug
@@ -147275,7 +147409,7 @@ aiU
 bXT
 cHA
 cHA
-bXT
+cIi
 bXT
 bXT
 bXT
@@ -147826,9 +147960,9 @@ aLe
 aLe
 bDq
 aLe
-aLe
-cFU
-aLe
+cIg
+cIh
+cIg
 bYe
 ajF
 bYa
@@ -148216,8 +148350,8 @@ bTk
 bTk
 bSN
 bSN
-bSN
-bSN
+cvl
+cvl
 aUq
 aUq
 aUq
@@ -148231,7 +148365,7 @@ aUq
 aUq
 aUq
 aUq
-aUq
+bTT
 aLe
 aLe
 cjt
@@ -148398,8 +148532,8 @@ cxb
 bTk
 bSN
 bSN
-bSN
-aUq
+cvl
+bTT
 aiI
 aeE
 aSw
@@ -148413,8 +148547,8 @@ aAz
 aVO
 aHw
 acC
-aUq
-aUq
+bTT
+bTT
 aLe
 aLe
 bPH
@@ -148565,7 +148699,7 @@ aLe
 bPH
 bSN
 bSN
-bxN
+cIe
 bxN
 bxN
 bxN
@@ -148747,13 +148881,13 @@ aLe
 bPH
 bSN
 bSN
-bxN
-bxN
-bxN
-cFQ
-bxN
-bxN
-bxN
+cFH
+cFH
+cFH
+cHW
+cFH
+cFH
+cFH
 cFG
 bRG
 bRG
@@ -149300,7 +149434,7 @@ cFM
 cFI
 cFI
 cFQ
-bSY
+bSZ
 bSZ
 bSZ
 bSZ
@@ -149480,9 +149614,9 @@ cFQ
 cFR
 cFN
 cFQ
-cFQ
-cFQ
-bTa
+cFT
+cHU
+bTg
 bTg
 bTg
 bTg
@@ -149662,7 +149796,7 @@ bxN
 cFQ
 cFQ
 bxN
-bxN
+bRG
 atE
 atE
 bTk
@@ -149689,8 +149823,8 @@ aUq
 aUq
 aUq
 aUq
-aUq
-aUq
+bTT
+bTT
 aUq
 cjH
 aLe
@@ -149844,7 +149978,7 @@ bxN
 bxN
 cFQ
 bxN
-bxN
+bRG
 bzP
 bTU
 bzt
@@ -150021,11 +150155,11 @@ aLe
 cts
 bSN
 bSN
-bxN
-bxN
-bxN
+cIa
+cId
+cIa
 cFO
-bTa
+cHV
 bRG
 cxb
 cAD
@@ -150203,7 +150337,7 @@ aLe
 bPH
 bSN
 bSN
-bxN
+cIe
 bxN
 bxN
 bxN
@@ -150385,7 +150519,7 @@ aLe
 bPH
 bSN
 bSN
-bxN
+cIe
 bxN
 bxN
 bSY
@@ -150567,10 +150701,10 @@ aLe
 bPH
 bSN
 bSN
-bxN
-bxN
-cFQ
-bSY
+cFH
+cFH
+cHW
+cHX
 bRG
 bRG
 cxb
@@ -150931,10 +151065,10 @@ aLe
 bPH
 bSN
 bSN
-bxN
-bxN
-cFQ
-bTa
+cIa
+cIa
+cIb
+cHY
 cFK
 bRG
 cxb
@@ -150966,7 +151100,7 @@ aUq
 ayJ
 ach
 aUq
-aUq
+bTT
 aLe
 cjH
 bXP
@@ -151113,10 +151247,10 @@ aLe
 bPH
 bSN
 bSN
-bxN
-bxN
-cFT
-bTa
+cFH
+cFH
+cIc
+cHZ
 bSZ
 bRG
 cxb
@@ -151148,11 +151282,11 @@ aUq
 aZL
 aZL
 aLi
-aUq
-aUq
+bTT
+bTT
 cFA
 bXP
-ajF
+btO
 cEE
 bPH
 bPH
@@ -151334,7 +151468,7 @@ adb
 aUq
 cFB
 bXP
-ajF
+btO
 ajF
 cFt
 cFq
@@ -151477,9 +151611,9 @@ aLe
 bBP
 bSN
 bSN
-bVc
-bVc
-hOC
+cIa
+cIa
+cIb
 bRG
 bRG
 bRG
@@ -151491,7 +151625,7 @@ bRG
 bRG
 bRG
 bRG
-bQU
+bxN
 aUq
 akz
 bSJ
@@ -151516,7 +151650,7 @@ abq
 aUq
 cFC
 cFy
-ajF
+btO
 cjm
 cFo
 cFr
@@ -151659,7 +151793,7 @@ aLe
 bPH
 bSN
 bSN
-bVc
+bxN
 bRz
 bRz
 bRG
@@ -151673,7 +151807,7 @@ bRG
 bRG
 bRG
 bRG
-bQU
+bxN
 aUq
 aRh
 akz
@@ -152058,8 +152192,8 @@ aUq
 axA
 axA
 aAe
-aUq
-aUq
+bTT
+bTT
 aLe
 bXP
 ajF
@@ -152240,7 +152374,7 @@ aUq
 aUq
 aUq
 aUq
-aUq
+bTT
 aLe
 aLe
 bXP
@@ -165850,10 +165984,10 @@ bQd
 bQd
 bTZ
 bUC
-bUC
+cIf
 cCH
 bUC
-bUC
+cIf
 aEL
 bXZ
 aNZ
@@ -166032,10 +166166,10 @@ bQd
 bQd
 bTZ
 aJf
+cIf
 bUC
 bUC
-bUC
-bUC
+cIf
 bUC
 aWi
 bTZ
@@ -166214,10 +166348,10 @@ bQd
 bQd
 bTZ
 bUC
+cIf
 bUC
 bUC
-bUC
-bUC
+cIf
 bUC
 bXZ
 bTZ

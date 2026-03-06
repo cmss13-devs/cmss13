@@ -32,11 +32,10 @@
 /obj/structure/prop/rock/brown/point_loma
 	name = "brown rock"
 	density = FALSE
-	//No init proc because I do not like the alt sprite
 
 /obj/structure/prop/rock/brown/point_loma/Crossed(atom/movable/crosser) // Point_loma Rock that is not dense and trips
 	. = ..()
-	if(ishuman(crosser) && prob(5))
+	if(ishuman(crosser) && prob(5)) // Copied from Hybrisa Light Pole stumps + lowered to 5%
 		var/mob/living/carbon/human/crossing_human = crosser
 		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)

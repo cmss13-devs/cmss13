@@ -9844,7 +9844,9 @@
 	pixel_x = 1;
 	pixel_y = 32
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 16
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "aCk" = (
@@ -9890,7 +9892,10 @@
 	pixel_x = 16;
 	pixel_y = 27
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 10;
+	pixel_x = -7
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "aCn" = (
@@ -10168,6 +10173,7 @@
 	pixel_y = -8;
 	pixel_x = 12
 	},
+/obj/structure/prop/invuln/overhead_pipe,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "aDc" = (
@@ -37323,6 +37329,9 @@
 	icon_state = "road_edge_decal2";
 	pixel_x = -19
 	},
+/obj/effect/decal/large_stain{
+	pixel_x = -11
+	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/crash_site)
 "cfM" = (
@@ -37374,6 +37383,7 @@
 /turf/open/floor/corsat/green/northwest,
 /area/point_loma/research_facility/dorms)
 "cfU" = (
+/obj/effect/decal/cleanable/blood/gibs/core/yautja,
 /turf/open/floor/corsat/greencorner/north,
 /area/point_loma/research_facility/dorms)
 "cfV" = (
@@ -44237,6 +44247,9 @@
 "cCz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "cCA" = (
@@ -44822,21 +44835,23 @@
 	pixel_x = 16;
 	pixel_y = 27
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 12;
+	pixel_x = 5
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
-"cEi" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/north)
 "cEj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 6
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = -15;
+	pixel_y = 8
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "cEk" = (
@@ -45107,6 +45122,7 @@
 /area/point_loma/research_facility/hallway/central)
 "cFf" = (
 /obj/item/prop/alien/hugger,
+/obj/structure/prop/invuln/overhead_pipe,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "cFg" = (
@@ -45123,6 +45139,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/structure/prop/invuln/overhead_pipe,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "cFi" = (
@@ -45368,6 +45385,344 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo/lower)
+"cGc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter/yautja,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/dorms)
+"cGd" = (
+/obj/effect/decal/cleanable/blood/splatter/yautja,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/crash_site)
+"cGe" = (
+/obj/effect/decal/large_stain{
+	pixel_x = -11
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/crash_site)
+"cGf" = (
+/obj/item/stack/rods,
+/obj/effect/decal/large_stain{
+	pixel_x = -11
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/crash_site)
+"cGg" = (
+/obj/effect/decal/cleanable/blood/gibs/yautja,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/dorms)
+"cGh" = (
+/obj/item/attachable/bayonet{
+	pixel_y = 6;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/green/east,
+/area/point_loma/research_facility/dorms)
+"cGi" = (
+/obj/effect/decal/cleanable/blood/gibs/yautja,
+/turf/open/floor/corsat/green/northwest,
+/area/point_loma/research_facility/dorms)
+"cGj" = (
+/obj/effect/decal/cleanable/blood/gibs/yautja,
+/turf/open/floor/corsat/greencorner/north,
+/area/point_loma/research_facility/dorms)
+"cGk" = (
+/obj/effect/decal/cleanable/blood/splatter/yautja,
+/turf/open/floor/corsat/greenwhite/northeast,
+/area/point_loma/research_facility/medical)
+"cGl" = (
+/obj/effect/decal/cleanable/blood/tracks/yautja,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cGm" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGn" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = -19
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8
+	},
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cGo" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8
+	},
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cGp" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGq" = (
+/obj/structure/prop/invuln/overhead_pipe,
+/obj/effect/decal/large_stain{
+	pixel_x = -11
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGr" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/structure/prop/invuln/overhead_pipe,
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 3;
+	pixel_y = -14
+	},
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cGs" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 18
+	},
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cGt" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGu" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 13;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGv" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 15;
+	pixel_x = -2
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGw" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGx" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGy" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 14
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGz" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGA" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 14;
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGB" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 16;
+	pixel_x = 10
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = -15;
+	pixel_y = 17
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cGC" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 18
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cGD" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 15;
+	pixel_x = 14
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGE" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 7;
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGF" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 15
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGG" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 14
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGH" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGI" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGJ" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGK" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 8;
+	pixel_x = -3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cGL" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11;
+	pixel_x = -13
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"cGM" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 15;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGN" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGO" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGP" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/north)
+"cGQ" = (
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGR" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGS" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGT" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGU" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_x = -12
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGW" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGX" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11;
+	pixel_x = -8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
+"cGY" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 12;
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/north)
 
 (1,1,1) = {"
 aug
@@ -100233,7 +100588,7 @@ cgK
 cgK
 bKZ
 bKZ
-bKZ
+cGm
 bKZ
 bKZ
 cgc
@@ -100597,13 +100952,13 @@ chw
 cfR
 cfR
 cCj
-cfR
+cGn
 cAE
 cfR
 cgd
 cDX
 cfL
-brp
+cGe
 bst
 bKe
 aNp
@@ -100779,12 +101134,12 @@ chx
 cgn
 cgn
 cgf
-cgn
+cGo
 cgn
 cgn
 cge
 cfS
-brU
+cGf
 ctC
 bsu
 bKe
@@ -100961,12 +101316,12 @@ chy
 cFd
 bKZ
 cAF
-bKZ
+cGm
 bKZ
 bsJ
 cgc
 bsA
-brp
+cGe
 bsv
 brZ
 brW
@@ -101143,7 +101498,7 @@ chy
 bKZ
 cgK
 cgK
-cgK
+cGp
 bKZ
 bKZ
 cgc
@@ -101692,7 +102047,7 @@ bMH
 bJw
 bJw
 agx
-cfT
+cGi
 cfU
 agx
 cfE
@@ -101874,8 +102229,8 @@ bJw
 bJw
 agx
 cfT
-cfU
-cdE
+cGj
+cGg
 agx
 cre
 cqY
@@ -102057,7 +102412,7 @@ agx
 agx
 cgo
 cfV
-cfV
+cGh
 cdT
 crf
 aeC
@@ -102079,7 +102434,7 @@ aFk
 acE
 cdC
 cdT
-cpS
+cGc
 cdE
 cdH
 acT
@@ -102971,8 +103326,8 @@ cdE
 agx
 cfE
 bJA
-bJA
-bJA
+cGd
+cGd
 bJv
 bqf
 bqf
@@ -103321,10 +103676,10 @@ bKU
 asb
 bMH
 bMH
-crX
-chF
-chy
-bKZ
+cGt
+cGs
+cGr
+cGq
 bMH
 agx
 agx
@@ -106954,7 +107309,7 @@ asb
 asb
 bJw
 bMH
-cgK
+cGR
 bKZ
 chF
 chy
@@ -107135,8 +107490,8 @@ asb
 asb
 asb
 bJw
-cgK
-cgK
+cGW
+cGS
 cFd
 chF
 chy
@@ -107318,10 +107673,10 @@ asb
 asb
 bJw
 aDb
-cgK
-bKZ
-chF
-chy
+cGT
+cGQ
+cGs
+cGP
 cFh
 cFf
 cuU
@@ -107500,7 +107855,7 @@ asb
 asb
 bJw
 aDc
-cgK
+cGU
 bKZ
 chF
 chy
@@ -107681,8 +108036,8 @@ asb
 asb
 asb
 bJw
-cgK
-cEi
+cGI
+csa
 bNt
 crO
 crF
@@ -107863,7 +108218,7 @@ asb
 asb
 asb
 bJw
-cgK
+cGX
 cEj
 bKZ
 chF
@@ -108045,8 +108400,8 @@ asb
 asb
 asb
 asK
-cgK
-cEj
+cGY
+cGV
 bKZ
 cil
 cgn
@@ -108233,8 +108588,8 @@ arH
 bKZ
 bKZ
 bKZ
-cgK
-cgK
+cGM
+cGD
 bKZ
 chF
 chy
@@ -108414,10 +108769,10 @@ bNj
 bKZ
 apm
 bKZ
-cgK
-cgK
-cgK
-cgK
+cGO
+cGN
+cGE
+cGu
 chF
 chy
 cAp
@@ -108597,9 +108952,9 @@ apT
 apT
 cBa
 app
-cgK
-cgK
-cgK
+cGI
+cGF
+cGv
 chF
 chy
 cAq
@@ -108780,8 +109135,8 @@ apY
 apM
 app
 app
-cgK
-cgK
+cGF
+cGw
 chF
 chy
 bNj
@@ -109873,7 +110228,7 @@ ani
 akO
 app
 bKZ
-cgK
+bKZ
 chF
 chy
 bNj
@@ -110054,8 +110409,8 @@ aqU
 anm
 akS
 app
-cvc
-cgK
+cGG
+cGx
 chF
 chC
 aBR
@@ -110236,8 +110591,8 @@ aqV
 ann
 aln
 app
-cgK
-cgK
+cGH
+cGy
 chF
 chC
 aBT
@@ -110418,8 +110773,8 @@ cFW
 apN
 apA
 act
-cgK
-cgK
+cGI
+cGz
 chF
 chC
 aBT
@@ -110600,8 +110955,8 @@ apG
 apG
 apC
 aps
-cgK
-cgK
+cGJ
+cGA
 chF
 chC
 aBT
@@ -110965,7 +111320,7 @@ apG
 apG
 cFW
 cEh
-cfM
+bIO
 cfa
 ceK
 aBY
@@ -111146,8 +111501,8 @@ apG
 apG
 apC
 aps
-cfM
-cfM
+cGK
+cGB
 cfa
 ceT
 cdP
@@ -111328,8 +111683,8 @@ apA
 apA
 apA
 apt
-cfM
-cfM
+cGL
+cGC
 cfa
 ceT
 cdP
@@ -112066,7 +112421,7 @@ bIO
 cgR
 cgB
 cup
-avX
+cGk
 avH
 agK
 aGu
@@ -114430,7 +114785,7 @@ bLC
 aBN
 bIO
 bIO
-bIO
+cGl
 cFU
 ceT
 cfY
@@ -114612,7 +114967,7 @@ bLC
 aBQ
 bIO
 bIO
-bIO
+cGl
 cFU
 cgg
 cfJ

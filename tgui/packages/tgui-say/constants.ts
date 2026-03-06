@@ -332,15 +332,15 @@ export const RADIO_PREFIXES = {
     id: 'wypub',
     label: 'W-Y Pub',
   },
-  ':2 ': {
+  ':3 ': {
     id: 'usasf',
     label: 'USASF',
   },
-  '.2 ': {
+  '.3 ': {
     id: 'usasf',
     label: 'USASF',
   },
-  '#2 ': {
+  '#3 ': {
     id: 'usasf',
     label: 'USASF',
   },

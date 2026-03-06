@@ -49,6 +49,15 @@
 	spawn_nothing_percentage = 80
 	icon_state = "loot_pistol_80"
 
+/obj/effect/spawner/random/gun/usasf_primary
+	name = "USASF primary weapon spawner"
+	desc = "Spawns USASF primary weapons."
+	mags_max = 2
+	mags_min = 1
+	guns = list(
+		/obj/item/weapon/gun/rifle/m41aMK1/navy = /obj/item/ammo_magazine/rifle/m41aMK1,
+	)
+
 
 /*
  * UPP weapons

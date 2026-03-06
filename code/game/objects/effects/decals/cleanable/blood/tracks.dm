@@ -83,3 +83,6 @@
 	going_state  = ""
 	random_icon_states = null
 	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/yautja
+	color = BLOOD_COLOR_YAUTJA

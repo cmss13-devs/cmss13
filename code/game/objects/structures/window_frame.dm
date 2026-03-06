@@ -589,14 +589,14 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/window_frame/concrete
+/obj/structure/window_frame/new_varadero/concrete
 	icon = 'icons/turf/walls/new_varadero/concrete_windows.dmi'
 	icon_state = "concrete_window0_frame"
 	basestate = "concrete_window"
 
-/obj/structure/window_frame/concrete/reinforced
+/obj/structure/window_frame/new_varadero/concrete/reinforced
 	reinforced = TRUE
 
-/obj/structure/window_frame/concrete/reinforced/hull
+/obj/structure/window_frame/new_varadero/concrete/reinforced/hull
 	unslashable = TRUE
 	unacidable = TRUE

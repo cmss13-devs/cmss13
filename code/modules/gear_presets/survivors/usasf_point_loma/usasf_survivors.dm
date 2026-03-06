@@ -264,6 +264,8 @@
 	name = "Survivor - USASF Ground Crew"
 	job_title  = JOB_USASF_CREW
 	assignment = JOB_USASF_CREW
+	survivor_variant = CIVILIAN_SURVIVOR
+	paygrades list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/load_gear(mob/living/carbon/human/new_human)
@@ -281,20 +283,20 @@
 	job_title = JOB_USASF_CHAPLAIN
 	assignment = JOB_USASF_CHAPLAIN
 	survivor_variant = CIVILIAN_SURVIVOR
-	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/chaplain/load_gear(mob/living/carbon/human/new_human)
-	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
+	..()
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech
 	name = "Survivor - USASF Hangar Technician"
 	job_title  = JOB_USASF_HANGARTECH
 	assignment = JOB_USASF_HANGARTECH
 	skills = /datum/skills/military/survivor/usasf/technician
-	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech/load_gear(mob/living/carbon/human/new_human)
@@ -310,7 +312,7 @@
 	assignment = JOB_USASF_CARGOTECH
 	survivor_variant = ENGINEERING_SURVIVOR
 	skills = /datum/skills/military/survivor/usasf/technician
-	paygrades = list(PAY_SHORT_NE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech/load_gear(mob/living/carbon/human/new_human)
@@ -336,7 +338,7 @@
 	name = "Survivor - USASF Nurse"
 	job_title = JOB_USASF_NURSE
 	assignment = JOB_USASF_NURSE
-	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse/load_gear(mob/living/carbon/human/new_human)
@@ -355,7 +357,7 @@
 	name = "Survivor - USASF Doctor"
 	job_title = JOB_USASF_DOCTOR
 	assignment = JOB_USASF_DOCTOR
-	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -371,7 +373,7 @@
 	assignment = JOB_USASF_SECURITY_DEFENDER
 	skills = /datum/skills/military/survivor/usasf/security
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE) // needed to communicate with alpha-tech staff
-	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -408,7 +410,7 @@
 	skills = /datum/skills/military/survivor/usasf/officer
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE) // needed to communicate with alpha-tech staff
 	idtype = /obj/item/card/id/gold/usasf
-	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
+	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

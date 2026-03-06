@@ -24700,13 +24700,6 @@
 "brW" = (
 /turf/open/floor/almayer/research/containment/yautja/alt,
 /area/point_loma/research_facility/crash_site)
-"brX" = (
-/obj/effect/stairs/up,
-/obj/structure/stairs/perspective{
-	dir = 8
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/research_facility/hallway/central)
 "brY" = (
 /obj/effect/stairs/up,
 /obj/structure/stairs/perspective{
@@ -45368,6 +45361,11 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo/lower)
+"cGc" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/stairs/up,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/crash_site)
 
 (1,1,1) = {"
 aug
@@ -106616,7 +106614,7 @@ bqf
 bqg
 bqh
 aFk
-bKa
+cGc
 bqg
 bqg
 bJD
@@ -107162,7 +107160,7 @@ aeS
 aeS
 aeS
 aeS
-brX
+aeS
 aeS
 aeS
 aeS
@@ -143916,7 +143914,7 @@ bPH
 aLe
 ckZ
 aLe
-bSX
+bRd
 bRd
 bRd
 asb
@@ -144098,7 +144096,7 @@ clg
 clg
 cla
 aLe
-bSX
+bRd
 bRd
 bRd
 bRd
@@ -144829,7 +144827,7 @@ asb
 bRd
 bRd
 bRd
-bSX
+bRd
 bRd
 asb
 bRL
@@ -145010,9 +145008,9 @@ asb
 asb
 asb
 asb
-bSX
-bSX
-bSX
+bRd
+bRd
+bRd
 asb
 bRL
 bRM
@@ -173472,7 +173470,7 @@ asb
 asb
 asb
 asb
-asb
+bOS
 bOS
 bOS
 bOS
@@ -174018,7 +174016,7 @@ asb
 asb
 asb
 asb
-asb
+bOS
 bOS
 asb
 asb

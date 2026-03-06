@@ -26516,11 +26516,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
-"bxy" = (
-/obj/structure/fence/slim/dark,
-/obj/structure/blocker/invisible_wall,
-/turf/open/new_varadero/taupe_concrete/warning/south,
-/area/point_loma/oob)
 "bxz" = (
 /obj/effect/decal/hybrisa/road/road_stop,
 /turf/open/asphalt/cement_sunbleached,
@@ -26736,11 +26731,6 @@
 	},
 /turf/open/new_varadero/sidewalk/sidewalkfull,
 /area/point_loma/airbase/interior/fire_station)
-"byd" = (
-/obj/structure/fence/slim/dark,
-/obj/structure/blocker/invisible_wall,
-/turf/open/new_varadero/taupe_concrete/warning/corner_edge/southwest,
-/area/point_loma/oob)
 "bye" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -28579,6 +28569,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
+"bCR" = (
+/obj/item/stack/sheet/metal,
+/obj/item/shard{
+	pixel_y = -16
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -29211,7 +29208,7 @@
 /obj/structure/fence/slim/dark,
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob)
 "bEV" = (
 /obj/structure/fence/slim,
@@ -29263,6 +29260,12 @@
 /obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
+"bFi" = (
+/obj/item/shard{
+	pixel_x = -11
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
 "bFj" = (
 /turf/open/floor/corsat/blue/west,
 /area/point_loma/airbase/interior/atc/upper)
@@ -33836,6 +33839,9 @@
 "bTS" = (
 /turf/open_space,
 /area/point_loma/oob/sky)
+"bTT" = (
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bTU" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4;
@@ -39315,7 +39321,7 @@
 /area/point_loma/airbase/interior/cargo)
 "clW" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/new_varadero/alt_concrete/floor,
+/turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "clX" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
@@ -42282,6 +42288,11 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"cvl" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/fence/slim/dark/door,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/oob)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
@@ -44248,11 +44259,6 @@
 /obj/effect/decal/cleanable/blood/drip/yautja,
 /turf/open/floor/corsat/yellow/west,
 /area/point_loma/research_facility/hallway/west)
-"cCn" = (
-/obj/structure/prop/new_varadero_props/radar_dish,
-/obj/structure/prop/new_varadero_props/radar_dish_lights,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/oob/sky)
 "cCo" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/floor/corsat/officesquares,
@@ -46470,6 +46476,7 @@
 "cJn" = (
 /obj/item/stack/rods,
 /obj/structure/prop/vehicles/aircraft/vtol,
+/obj/structure/powerloader_wreckage/jd,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/airbase/exterior/crash_site)
 "cJo" = (
@@ -46522,18 +46529,6 @@
 /obj/item/stack/rods,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/invuln/fire,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/crash_site)
-"cJv" = (
-/obj/item/stack/sheet/metal,
-/obj/vehicle/powerloader/jd{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cJw" = (
@@ -46756,6 +46751,16 @@
 /obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
+"cKh" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/fence/slim/dark/door,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob)
+"cKi" = (
+/obj/structure/fence/slim/dark,
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob)
 
 (1,1,1) = {"
 aug
@@ -150216,7 +150221,7 @@ cJr
 cJh
 cJk
 cJi
-bTg
+bCR
 bTg
 bTg
 bTg
@@ -150396,7 +150401,7 @@ bxN
 cJh
 cJh
 bxN
-bRG
+bFi
 atE
 atE
 bTk
@@ -151668,7 +151673,7 @@ bSN
 cJy
 cJy
 cJA
-cJv
+cJl
 cJn
 bRG
 cxb
@@ -152734,7 +152739,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 bVb
 bVb
 bba
@@ -152916,7 +152921,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 bYm
 bVb
 bbb
@@ -153098,7 +153103,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOH
 aOH
 aOH
@@ -153280,7 +153285,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOH
 aOH
 aOH
@@ -153462,7 +153467,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -153644,7 +153649,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 cxz
 aOY
 aOC
@@ -153826,7 +153831,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -154008,7 +154013,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aBS
 aOC
 aOC
@@ -154190,7 +154195,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aBp
 aOL
 aOL
@@ -154372,7 +154377,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOF
@@ -154554,7 +154559,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -154736,7 +154741,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOF
@@ -154918,7 +154923,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOF
@@ -155100,7 +155105,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 cxA
 aOC
@@ -155282,7 +155287,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -155464,7 +155469,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -155646,7 +155651,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -155828,7 +155833,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -156005,12 +156010,12 @@ bTS
 bTS
 bTS
 bTS
-bTS
 aOV
 aOV
 aOV
 aOV
-bAd
+aOV
+aOE
 aOC
 aOC
 aOC
@@ -156187,12 +156192,12 @@ bTS
 bTS
 bTS
 bTS
-bTS
 aOV
 aOV
 aOV
 aOV
-bAd
+aOV
+aOE
 aOC
 aOC
 aOC
@@ -156369,12 +156374,12 @@ bTS
 bTS
 bTS
 bTS
-bTS
 aOV
 aOV
 aOV
 aOV
-bAd
+aOV
+aOE
 aOC
 aOC
 cxA
@@ -156552,12 +156557,12 @@ bTS
 bTS
 bTS
 bTS
+bTS
 aOV
 aOV
 aOV
-aOV
-bAd
-aOC
+aOE
+aOF
 aOF
 aOF
 aOC
@@ -156734,13 +156739,13 @@ bTS
 bTS
 bTS
 bTS
+bTS
 aOV
 aOV
 aOV
-aOV
-bAd
-aOC
-aOC
+aOE
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -156920,9 +156925,9 @@ bTS
 aOV
 aOV
 aOV
-bAd
-aOC
-aOC
+cvl
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -157102,9 +157107,9 @@ bTS
 bTS
 aOV
 aOV
-bAd
-aOC
-aOC
+aOE
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -157284,9 +157289,9 @@ bTS
 bTS
 aOV
 aOV
-bAd
-aOC
-aOC
+aOE
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -157466,9 +157471,9 @@ bTS
 bTS
 aOV
 aOV
-bAd
-aOC
-aOC
+aOE
+aOF
+aOF
 bUT
 bUT
 bDm
@@ -157648,7 +157653,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIE
 cIE
 bUT
@@ -157830,7 +157835,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIJ
 bEL
@@ -158012,7 +158017,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIF
@@ -158194,7 +158199,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIG
@@ -158376,7 +158381,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIG
@@ -158558,7 +158563,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIG
@@ -158573,14 +158578,14 @@ axq
 cFK
 cFI
 bUT
-bUH
-bUH
-bUH
-bUH
-bUH
-bUH
+bTT
+bTT
+bTT
+bTT
+bTT
+bTT
 clW
-bUH
+bTT
 bUA
 bxN
 bxN
@@ -158740,7 +158745,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIG
@@ -158755,14 +158760,14 @@ cHL
 cFK
 cFI
 bUT
-bUH
-bUH
-bUH
-bUH
-bUH
-bUH
-bUH
-bUH
+bTT
+bTT
+bTT
+bTT
+bTT
+bTT
+bTT
+bTT
 bQT
 bxN
 bxN
@@ -158922,7 +158927,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIK
 cIH
@@ -158937,14 +158942,14 @@ cHK
 cFK
 cFI
 cHv
-bUH
-bUH
+bTT
+bTT
 clW
-bUH
+bTT
 clW
-bUH
+bTT
 clW
-bUH
+bTT
 bQT
 bQT
 bQT
@@ -159104,7 +159109,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIM
 cIL
 cII
@@ -159119,13 +159124,13 @@ cHK
 cxf
 cFI
 bCN
-bUH
-bUH
-bUH
+bTT
+bTT
+bTT
 clW
-bUH
-bUH
-bUH
+bTT
+bTT
+bTT
 bQT
 bQT
 bQT
@@ -159286,7 +159291,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 cIE
 cIE
 bUT
@@ -159301,9 +159306,9 @@ cFQ
 cHE
 cHy
 cHw
-bUH
+bTT
 clW
-bUH
+bTT
 bQT
 bQT
 bQT
@@ -159468,9 +159473,9 @@ bTS
 aOV
 aOV
 aOV
-bAd
-aOC
-aOC
+aOE
+aOF
+aOF
 cIE
 cIE
 cIt
@@ -159483,9 +159488,9 @@ cHN
 cHF
 cHz
 cHw
-bUH
-bUH
-bUH
+bTT
+bTT
+bTT
 bQT
 ckI
 bQT
@@ -159650,9 +159655,9 @@ bTS
 aOV
 aOV
 aOV
-bAd
-aOC
-aOC
+cKh
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -159832,11 +159837,11 @@ aOV
 aOV
 aOV
 aOV
-bAd
-aOC
-aOC
-aOC
-aOC
+cKi
+aOF
+aOF
+aOF
+aOF
 aOF
 aOF
 aOF
@@ -160009,17 +160014,17 @@ bTS
 bTS
 bTS
 bTS
-bTS
 aOV
 aOV
 aOV
-cCn
-bAd
-bAd
-bAd
-bAd
-bAd
-bAd
+aOV
+aOV
+aOE
+aOE
+aOE
+aOE
+aOE
+aOE
 aOC
 aOF
 bBg
@@ -160190,6 +160195,9 @@ bTS
 bTS
 bTS
 bTS
+bTS
+bTS
+bTS
 aOV
 aOV
 aOV
@@ -160198,10 +160206,7 @@ aOV
 aOV
 aOV
 aOV
-aOV
-aOV
-aOV
-bAd
+aOE
 aOC
 aOC
 cIm
@@ -160372,6 +160377,9 @@ bTS
 bTS
 bTS
 bTS
+bTS
+bTS
+bTS
 aOV
 aOV
 aOV
@@ -160380,10 +160388,7 @@ aOV
 aOV
 aOV
 aOV
-aOV
-aOV
-aOV
-bAd
+aOE
 aOC
 cmn
 cHx
@@ -160554,6 +160559,9 @@ bTS
 bTS
 bTS
 bTS
+bTS
+bTS
+bTS
 aOV
 aOV
 aOV
@@ -160562,10 +160570,7 @@ aOV
 aOV
 aOV
 aOV
-aOV
-aOV
-aOV
-bAd
+aOE
 aOC
 aOC
 cHx
@@ -160736,6 +160741,10 @@ bTS
 bTS
 bTS
 bTS
+bTS
+bTS
+bTS
+bTS
 aOV
 aOV
 aOV
@@ -160743,11 +160752,7 @@ aOV
 aOV
 aOV
 aOV
-aOV
-aOV
-aOV
-aOV
-bAd
+aOE
 aOC
 aOC
 cHx
@@ -160929,7 +160934,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 cHx
@@ -161111,7 +161116,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 cmo
 cHx
@@ -161293,7 +161298,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -161475,7 +161480,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -161657,7 +161662,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -161839,7 +161844,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -162021,7 +162026,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -162203,7 +162208,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -162385,7 +162390,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -162567,7 +162572,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -162749,7 +162754,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -163113,7 +163118,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -163295,7 +163300,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -163477,7 +163482,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -163659,7 +163664,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -163841,7 +163846,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164023,7 +164028,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164205,7 +164210,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164387,7 +164392,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164569,7 +164574,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164751,7 +164756,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -164933,7 +164938,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -165115,7 +165120,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQT
@@ -165297,7 +165302,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -165479,7 +165484,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -165661,7 +165666,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -165843,7 +165848,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 ctw
@@ -166025,7 +166030,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -166207,7 +166212,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -166389,7 +166394,7 @@ aOV
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -166571,7 +166576,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -166753,7 +166758,7 @@ bTS
 aOV
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 cjz
@@ -166935,7 +166940,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -167117,7 +167122,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 bQd
@@ -167299,7 +167304,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 cmo
 aOC
 aOC
@@ -167481,7 +167486,7 @@ bTS
 bTS
 aOV
 aOV
-bAd
+aOE
 aOC
 aOC
 aOC
@@ -173148,9 +173153,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bAd
+aOV
+aOV
+aOE
 bxm
 aNP
 aNP
@@ -173330,9 +173335,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
-bAd
+aOV
+aOE
+aOE
 bAR
 aNP
 aNP
@@ -173511,9 +173516,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bAd
+aOV
+aOV
+aOE
 bAP
 aNP
 bAe
@@ -173693,9 +173698,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
-bAd
+aOV
+aOE
+aOE
 bAQ
 aNP
 aNP
@@ -173874,9 +173879,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bAd
+aOV
+aOV
+aOE
 bxq
 bxn
 bxn
@@ -174056,8 +174061,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
+aOV
+aOE
 bxs
 bxr
 bxp
@@ -174238,8 +174243,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
+aOV
+aOE
 bxk
 aZE
 aZk
@@ -174420,9 +174425,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
-bxy
+aOV
+aOE
+aOE
 aZK
 aZw
 aWD
@@ -174602,9 +174607,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bxy
+aOV
+aOV
+aOE
 aZK
 bTE
 aWD
@@ -174785,8 +174790,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bxy
+aOV
+aOE
 aZO
 aZz
 aWK
@@ -174967,8 +174972,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-byd
+aOV
+aOE
 bxq
 bxn
 bxn
@@ -175149,8 +175154,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
+aOV
+aOE
 bxr
 bxp
 bxp
@@ -175331,8 +175336,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bAd
+aOV
+aOE
 aNS
 aNS
 aNU

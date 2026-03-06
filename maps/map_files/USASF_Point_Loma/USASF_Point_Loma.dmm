@@ -14265,6 +14265,7 @@
 	dir = 8;
 	pixel_x = 16
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/asphalt/runway,
 /area/point_loma/airbase/exterior/north)
 "aOR" = (
@@ -28668,6 +28669,11 @@
 /obj/structure/machinery/light{
 	dir = 4;
 	pixel_y = -16
+	},
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 14
 	},
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
@@ -44746,6 +44752,12 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/command)
+"cDQ" = (
+/obj/structure/reagent_dispensers/tank/fuel{
+	anchored = 1
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
 "cDR" = (
 /mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/floor/corsat,
@@ -45296,6 +45308,98 @@
 /obj/structure/barricade/sandbags,
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/research)
+"cFF" = (
+/obj/item/stack/rods,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFG" = (
+/obj/structure/prop/vehicles/aircraft/aircraft/usaf{
+	dir = 1
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFH" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFI" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFJ" = (
+/obj/structure/prop/vehicles/aircraft/vtol/damaged,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFK" = (
+/obj/item/stack/rods,
+/obj/structure/prop/vehicles/aircraft/vtol,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFL" = (
+/obj/item/stack/rods,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFM" = (
+/obj/item/stack/rods,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFN" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFO" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFP" = (
+/obj/item/stack/rods,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/fire,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/airbase/exterior/crash_site)
+"cFQ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFR" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFS" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/fire,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFT" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/fire,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"cFU" = (
+/obj/structure/prop/invuln/fire,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cFV" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/prop/vehicles/aircraft/vtol/damaged,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/crash_site)
+"cFW" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/crash_site)
 "cFX" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 11;
@@ -45315,6 +45419,22 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
+"cGa" = (
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 14
+	},
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cGb" = (
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/point_loma/airbase/exterior/west)
 "cGc" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/stairs/up,
@@ -45737,6 +45857,88 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/interior/cargo)
+"cHo" = (
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed,
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/point_loma/airbase/exterior/west)
+"cHp" = (
+/obj/structure/prop/invuln/fire,
+/obj/structure/prop/invuln/fire,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cHq" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/crash_site)
+"cHr" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/crash_site)
+"cHs" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/east)
+"cHt" = (
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/point_loma/airbase/exterior/west)
+"cHu" = (
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/point_loma/airbase/exterior/west)
+"cHv" = (
+/obj/structure/prop/vehicles/aircraft/aircraft/usaf,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"cHw" = (
+/obj/structure/machinery/m56d_hmg/mg_turret,
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/point_loma/airbase/exterior/west)
+"cHx" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 8;
+	pixel_x = 16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/crash_site)
+"cHy" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_1_1";
+	pixel_y = -19;
+	pixel_x = -6;
+	dir = 9
+	},
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/point_loma/airbase/exterior/west)
+"cHz" = (
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cHA" = (
+/obj/structure/prop/invuln/fire,
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/point_loma/airbase/exterior/west)
+"cHB" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"cHC" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/north)
+"cHD" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt/runway,
+/area/point_loma/airbase/exterior/north)
 
 (1,1,1) = {"
 aug
@@ -146808,14 +147010,14 @@ aLe
 aLe
 aLe
 aLe
-aLe
+cHz
 cmm
 aLe
 aLe
 aLe
 aLe
 aLe
-aLe
+cGa
 aLe
 aLe
 aLe
@@ -146988,16 +147190,16 @@ aLq
 aqa
 aiU
 bXT
+cHA
+cHA
 bXT
 bXT
 bXT
 bXT
 bXT
 bXT
-bXT
-bXT
-bXT
-bXT
+cHt
+cGb
 bXT
 bXT
 bXT
@@ -147169,15 +147371,15 @@ aZD
 aOb
 aqy
 bYk
+cFt
 ajF
 ajF
 ajF
+cFx
 ajF
 ajF
 ajF
-ajF
-ajF
-ajF
+cFx
 ajF
 ajF
 ajF
@@ -147355,15 +147557,15 @@ bXS
 bXS
 bXS
 bXS
+cHy
+cHw
+cHu
 bXS
 bXS
 bXS
-bXS
-bXS
-bXS
-bXS
+cHo
 ajF
-ajF
+cFx
 ajF
 bXS
 bXS
@@ -147542,7 +147744,7 @@ aLe
 bDq
 aLe
 aLe
-aLe
+cFU
 aLe
 bYe
 ajF
@@ -148294,7 +148496,7 @@ bRG
 bRG
 cxb
 bxN
-bxN
+cDQ
 bSN
 aUq
 aEa
@@ -148465,11 +148667,11 @@ bSN
 bxN
 bxN
 bxN
+cFH
 bRG
 bRG
 bRG
-bRG
-bRG
+cFG
 bRG
 bRG
 bSZ
@@ -148647,7 +148849,7 @@ bSN
 bxN
 bxN
 bxN
-bRG
+cFH
 bTg
 bRG
 bRG
@@ -148658,7 +148860,7 @@ bTg
 bRG
 bRG
 bxN
-bxN
+cDQ
 bSN
 aUq
 aOX
@@ -148828,8 +149030,8 @@ bSN
 bSN
 bxN
 bxN
-bxN
-bSZ
+cFQ
+cFL
 bUs
 bTg
 bRG
@@ -149009,20 +149211,20 @@ aZP
 bSN
 bSN
 bxN
-bxN
-bxN
+cFQ
+cFR
+cFM
+cFI
+cFI
+cFH
 bSZ
-bTg
-bTg
+bSZ
+bSZ
+bSZ
+bSZ
 bRG
-bSZ
-bSZ
-bSZ
-bSZ
-bSZ
-bRG
 bxN
-bxN
+cDQ
 aUq
 aTf
 cka
@@ -149191,12 +149393,12 @@ bPH
 bSN
 bSN
 bxN
-bxN
-bxN
-bTg
-bRG
-bRG
-bRG
+cFQ
+cFR
+cFN
+cFH
+cFH
+cFH
 bTg
 bTg
 bTg
@@ -149374,8 +149576,8 @@ bSN
 bSN
 bxN
 bxN
-bxN
-bRG
+cFQ
+cFH
 bRG
 bRG
 atE
@@ -149386,7 +149588,7 @@ atE
 bTk
 bTk
 bSZ
-bSY
+cFF
 bSO
 bSO
 aUq
@@ -149557,7 +149759,7 @@ bSN
 bxN
 bxN
 bxN
-bRG
+cFH
 bRG
 bRG
 bzP
@@ -149571,8 +149773,8 @@ bTg
 atE
 cxb
 aTR
-ckb
-ckb
+aWe
+aWe
 aiI
 cGe
 bRU
@@ -149739,7 +149941,7 @@ bSN
 bxN
 bxN
 bxN
-bUs
+cFO
 bTg
 bRG
 cxb
@@ -149909,7 +150111,7 @@ bDy
 bDe
 bUU
 aLe
-aLe
+cFU
 bad
 ajF
 bYa
@@ -149922,7 +150124,7 @@ bxN
 bxN
 bxN
 bSZ
-bRG
+cFJ
 bRG
 cxb
 cxb
@@ -150091,7 +150293,7 @@ bDz
 bDe
 bUU
 aLe
-aLe
+cHp
 bYe
 ajF
 bYa
@@ -150102,7 +150304,7 @@ bSN
 bSN
 bxN
 bxN
-bxN
+cFQ
 bSZ
 bRG
 bRG
@@ -150283,9 +150485,9 @@ bPH
 bSN
 bSN
 bxN
-bxN
-bxN
-bSZ
+cFQ
+cFS
+cFP
 bRG
 bRG
 cxb
@@ -150466,9 +150668,9 @@ bSN
 bSN
 bxN
 bxN
-bxN
+cFQ
 bTg
-bSZ
+cFK
 bRG
 cxb
 cAD
@@ -150648,7 +150850,7 @@ bSN
 bSN
 bxN
 bxN
-bxN
+cFT
 bTg
 bSZ
 bRG
@@ -150829,9 +151031,9 @@ bPH
 bSN
 bSN
 bxN
-bxN
-bxN
-bRG
+cFQ
+cFR
+cFH
 bRG
 bRG
 cxb
@@ -151012,7 +151214,7 @@ bSN
 bSN
 bxN
 bxN
-bxN
+cFQ
 bRG
 bRG
 bRG
@@ -151187,7 +151389,7 @@ aLe
 bYe
 ajF
 bCq
-aLe
+cFU
 aLe
 bBP
 bSN
@@ -153905,11 +154107,11 @@ aOC
 aOF
 aOF
 aOC
+cHB
 bQT
 bQT
 bQT
-bQT
-bQT
+cHv
 bQT
 bQT
 bQT
@@ -154087,7 +154289,7 @@ cxA
 aOC
 aON
 aOC
-bQT
+cHB
 bQT
 bQT
 bQT
@@ -154268,8 +154470,8 @@ aOC
 aOC
 aOC
 aON
-aOC
-bQT
+cHC
+cHB
 bQT
 bQT
 bQT
@@ -154449,12 +154651,12 @@ bAd
 aOC
 aOC
 aOC
-aON
-aON
-bQY
-bQY
-bQY
-bQY
+cHD
+cHD
+cHq
+cHq
+cHq
+cHq
 bQY
 bQT
 bRz
@@ -154631,12 +154833,12 @@ bAd
 aOC
 aOC
 aOC
-aON
+cHD
 aOQ
-aXg
-aXg
-aXg
-aXg
+cHx
+cHx
+cHx
+cHx
 aXg
 bQT
 bQT
@@ -154814,8 +155016,8 @@ aOC
 aOC
 aOC
 aON
-aON
-bQY
+cHD
+cHq
 bQY
 bQY
 bQY
@@ -154997,7 +155199,7 @@ aOC
 aOC
 aON
 aON
-bQY
+cHq
 bQY
 bQY
 bQY
@@ -155179,7 +155381,7 @@ aOC
 aOC
 aON
 aON
-bQY
+cHq
 bQY
 bQY
 bQY
@@ -163743,7 +163945,7 @@ bQY
 bQY
 bQY
 bQY
-clw
+cFV
 bQY
 bQY
 clw
@@ -163923,7 +164125,7 @@ bQT
 bxN
 bQY
 bQY
-bQY
+cHq
 bQY
 bQY
 bQY
@@ -164104,9 +164306,9 @@ bQT
 bQT
 bxN
 bQY
-bQY
-bQY
-clw
+cHq
+cHr
+cFW
 bQY
 bQY
 bRS
@@ -164287,7 +164489,7 @@ bQd
 bRS
 bUR
 bUR
-bUR
+cHs
 bUR
 bUR
 bRS

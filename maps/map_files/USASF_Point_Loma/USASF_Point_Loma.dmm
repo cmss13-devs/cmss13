@@ -1563,7 +1563,6 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
-/mob/living/simple_animal/small/cat/kitten,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/command)
 "aeW" = (
@@ -4643,6 +4642,7 @@
 "anY" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "anZ" = (
@@ -9303,6 +9303,7 @@
 /obj/structure/platform/broken{
 	dir = 8
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aAI" = (
@@ -9911,7 +9912,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony{
 	autoname = 1
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aCq" = (
@@ -10288,6 +10288,7 @@
 /obj/structure/platform/broken{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aDs" = (
@@ -10549,6 +10550,7 @@
 /obj/structure/platform/broken{
 	dir = 8
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aEj" = (
@@ -10957,6 +10959,7 @@
 /obj/structure/platform/broken{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aFv" = (
@@ -11638,6 +11641,7 @@
 /obj/structure/platform/broken{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aHC" = (
@@ -12040,6 +12044,7 @@
 /obj/structure/platform/broken{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aIL" = (
@@ -12128,6 +12133,7 @@
 /obj/structure/platform/broken{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aIV" = (
@@ -13055,7 +13061,6 @@
 	dir = 2;
 	autoname = 1
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aLB" = (
@@ -13228,6 +13233,7 @@
 /area/point_loma/airbase/interior/cargo/lower)
 "aLV" = (
 /obj/structure/platform/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "aLW" = (
@@ -17889,6 +17895,7 @@
 /area/point_loma/research_facility/research/west)
 "aZB" = (
 /obj/structure/platform/stone/kutjevo/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "aZC" = (
@@ -17928,6 +17935,7 @@
 /area/point_loma/airbase/mining_colony/interior/security)
 "aZJ" = (
 /obj/structure/platform/broken,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aZK" = (
@@ -26700,11 +26708,13 @@
 /area/point_loma/oob)
 "bye" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "byf" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "byg" = (
@@ -26992,6 +27002,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "byS" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "byT" = (
@@ -27021,6 +27032,7 @@
 "byW" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "byX" = (
@@ -27033,6 +27045,7 @@
 "byZ" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "bza" = (
@@ -30282,7 +30295,6 @@
 	dir = 4;
 	layer = 3.2
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata/blue2,
 /area/point_loma/research_facility/hallway/east)
 "bHX" = (
@@ -30444,7 +30456,6 @@
 	pixel_x = 2;
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata/blue2,
 /area/point_loma/research_facility/hallway/east)
 "bIn" = (
@@ -32314,7 +32325,6 @@
 /area/point_loma/airbase/interior/cargo/lower)
 "bNQ" = (
 /obj/effect/stairs/up,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo/lower)
 "bNR" = (
@@ -37261,7 +37271,6 @@
 /area/point_loma/research_facility/hallway/central)
 "cfz" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/platingdmg1,
 /area/point_loma/research_facility/crash_site)
 "cfA" = (
@@ -37342,7 +37351,6 @@
 	pixel_y = 13;
 	pixel_x = -11
 	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "cfO" = (
@@ -37388,12 +37396,10 @@
 /area/point_loma/research_facility/dorms)
 "cfW" = (
 /obj/structure/inflatable,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "cfX" = (
 /obj/structure/inflatable/door,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/platingdmg3,
 /area/point_loma/research_facility/hallway/central)
 "cfY" = (
@@ -37544,7 +37550,6 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "cgu" = (
@@ -38280,6 +38285,7 @@
 	dir = 2
 	},
 /obj/structure/platform/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciG" = (
@@ -38288,6 +38294,7 @@
 	},
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /obj/structure/platform_decoration/stone/kutjevo/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciH" = (
@@ -38295,6 +38302,7 @@
 /obj/structure/platform/stone/kutjevo/east{
 	dir = 2
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciI" = (
@@ -38322,6 +38330,7 @@
 	dir = 2
 	},
 /obj/structure/platform/stone/kutjevo/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciN" = (
@@ -38339,6 +38348,7 @@
 /obj/structure/platform/stone/kutjevo/east,
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform_decoration/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciQ" = (
@@ -38365,6 +38375,7 @@
 "ciV" = (
 /obj/structure/platform/stone/kutjevo/west,
 /obj/structure/platform/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciW" = (
@@ -38397,6 +38408,7 @@
 /obj/structure/platform/stone/kutjevo/east,
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cjc" = (
@@ -38415,6 +38427,7 @@
 /obj/structure/platform/stone/kutjevo/east{
 	dir = 2
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cjf" = (
@@ -38427,6 +38440,7 @@
 /obj/structure/platform/stone/kutjevo/east{
 	dir = 2
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cjh" = (
@@ -38615,6 +38629,7 @@
 	dir = 2
 	},
 /obj/structure/platform/stone/kutjevo/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cjW" = (
@@ -38631,6 +38646,7 @@
 	},
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cjZ" = (
@@ -40857,7 +40873,6 @@
 "crj" = (
 /obj/structure/inflatable,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "crk" = (
@@ -41988,7 +42003,6 @@
 /area/point_loma/research_facility/dorms)
 "cuD" = (
 /obj/structure/inflatable,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/platingdmg3,
 /area/point_loma/research_facility/hallway/central)
 "cuE" = (
@@ -43970,52 +43984,63 @@
 "cBA" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBB" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBC" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBD" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBE" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBF" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBG" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBH" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBI" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBJ" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBK" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/opening)
 "cBL" = (
@@ -44708,11 +44733,6 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/command)
-"cDQ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/mob/living/simple_animal/small/mouse/rat/black,
-/turf/open/floor/corsat,
-/area/point_loma/research_facility/command)
 "cDR" = (
 /mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/floor/corsat,
@@ -45079,7 +45099,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/splatter/yautja,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "cEZ" = (
@@ -45252,103 +45271,6 @@
 /obj/structure/barricade/sandbags,
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/research)
-"cFF" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/platingdmg2,
-/area/point_loma/research_facility/crash_site)
-"cFG" = (
-/obj/item/stack/rods,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/platingdmg2,
-/area/point_loma/research_facility/crash_site)
-"cFH" = (
-/obj/item/stack/sheet/metal,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/platingdmg2,
-/area/point_loma/research_facility/crash_site)
-"cFI" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/research_facility/crash_site)
-"cFJ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/central)
-"cFK" = (
-/obj/item/stack/rods,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/central)
-"cFL" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/central)
-"cFM" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/east)
-"cFN" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/yellow/east,
-/area/point_loma/research_facility/hallway/east)
-"cFO" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/purple/west,
-/area/point_loma/research_facility/hallway/east)
-"cFP" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/new_varadero/reinforced,
-/area/point_loma/research_facility/hallway/east)
-"cFQ" = (
-/obj/structure/machinery/light,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/east)
-"cFR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/east)
-"cFS" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/new_varadero,
-/area/point_loma/research_facility/dorms)
-"cFT" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/east)
-"cFU" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/east)
-"cFV" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 13
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/east)
-"cFW" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "cFX" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 11;
@@ -45368,15 +45290,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
-"cGa" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/shiva/yellowfull,
-/area/point_loma/airbase/interior/cargo/lower)
-"cGb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/shiva/yellowfull,
-/area/point_loma/airbase/interior/cargo/lower)
 "cGc" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/stairs/up,
@@ -45398,6 +45311,77 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/research)
+"cGg" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo/east{
+	dir = 2
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGh" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGi" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGj" = (
+/obj/structure/platform/stone/kutjevo/east{
+	dir = 2
+	},
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGk" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo/east{
+	dir = 2
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGl" = (
+/obj/structure/platform/stone/kutjevo/east{
+	dir = 2
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGm" = (
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGn" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGo" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/exterior/opening)
+"cGp" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/cave/opening)
+"cGq" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/interior/garage)
+"cGr" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/airbase/interior/cargo)
 
 (1,1,1) = {"
 aug
@@ -96245,7 +96229,7 @@ aqs
 bOl
 bNn
 bNn
-cGa
+bNn
 bNn
 bNn
 aLo
@@ -96427,7 +96411,7 @@ aqs
 bOl
 bNn
 bNn
-cGa
+bNn
 cis
 cin
 bNn
@@ -96791,7 +96775,7 @@ aqs
 bOl
 bNn
 ciu
-cGb
+ciu
 bNn
 aLu
 aLp
@@ -96973,7 +96957,7 @@ aqs
 bOl
 bNn
 bNn
-cGa
+bNn
 ciu
 aLy
 bNn
@@ -97155,7 +97139,7 @@ aqs
 bOl
 bNn
 bNn
-cGa
+bNn
 bNn
 cCD
 bNn
@@ -105000,24 +104984,24 @@ bJf
 cuH
 ccP
 cfW
-cFS
-cFS
+agx
+agx
 cfz
-cFG
-cFF
-cFF
-cFH
-cFG
-cFF
-cFF
-cFI
-cFF
-cFF
-cFH
-cFG
-cFG
-cFF
-cFF
+bqg
+bqf
+bqf
+bqh
+bqg
+bqf
+bqf
+aFk
+bqf
+bqf
+bqh
+bqg
+bqg
+bqf
+bqf
 bqf
 bqh
 bqf
@@ -105199,7 +105183,7 @@ bJD
 bqh
 bqg
 bqg
-cFG
+bqg
 bJz
 bJt
 bqh
@@ -105381,7 +105365,7 @@ bJE
 brE
 bqg
 bqf
-cFH
+bqh
 bqf
 bJu
 bqf
@@ -105563,7 +105547,7 @@ bqf
 bqg
 bqf
 bqh
-cFF
+bqf
 aFk
 bJv
 bqx
@@ -105745,7 +105729,7 @@ bqf
 bqf
 bqf
 bqf
-cFF
+bqf
 aFk
 bJv
 bqx
@@ -105927,7 +105911,7 @@ bqf
 bqf
 bqf
 bqf
-cFI
+aFk
 aFk
 aFk
 aFk
@@ -106109,7 +106093,7 @@ bqf
 bqf
 bqf
 bqf
-cFI
+aFk
 aFk
 bJf
 bJf
@@ -106291,7 +106275,7 @@ bqf
 bqf
 bqf
 bqf
-cFI
+aFk
 aFk
 bJf
 bJf
@@ -106473,7 +106457,7 @@ bqg
 bJv
 aFk
 aFk
-cFJ
+cpg
 cqo
 cpg
 cpg
@@ -106655,7 +106639,7 @@ bqg
 aFk
 aFk
 bJA
-cFK
+cdp
 bJf
 cEU
 bJf
@@ -106837,7 +106821,7 @@ aBC
 aBC
 aBC
 bJf
-cFL
+bJf
 bJf
 bJf
 ceb
@@ -107019,7 +107003,7 @@ aBC
 aBC
 bJw
 bJw
-cFL
+bJf
 bJf
 bJf
 bJf
@@ -109634,7 +109618,7 @@ bID
 asb
 asb
 asb
-bIB
+asb
 bIB
 bIB
 bIB
@@ -109816,7 +109800,7 @@ asb
 asb
 asb
 asb
-bIB
+asb
 bIB
 bIB
 bIB
@@ -109998,8 +109982,8 @@ asb
 asb
 asb
 asb
-bIB
-bIB
+asb
+asb
 abB
 bIB
 bIB
@@ -110105,7 +110089,7 @@ afc
 afh
 cqH
 cqK
-cDQ
+cqK
 cqK
 cqJ
 cqF
@@ -110180,8 +110164,8 @@ asb
 asb
 asb
 asb
-bIB
-bIB
+asb
+asb
 bIB
 bIB
 abB
@@ -110362,8 +110346,8 @@ asb
 asb
 asb
 asb
-bIB
-bIB
+asb
+asb
 bIB
 bIB
 bIB
@@ -110443,8 +110427,8 @@ atG
 aqv
 apA
 apW
-cFW
-cFW
+apP
+apP
 apN
 apA
 act
@@ -110725,7 +110709,7 @@ aDJ
 bID
 agN
 adv
-asb
+bZS
 bIB
 bIB
 bIB
@@ -110993,7 +110977,7 @@ apC
 apC
 apG
 apG
-cFW
+apP
 cEh
 cfM
 cfa
@@ -111352,7 +111336,7 @@ auB
 app
 aqB
 apA
-cFW
+apP
 aLA
 apA
 apA
@@ -112466,7 +112450,7 @@ cfM
 bHS
 afh
 afh
-cDR
+afh
 cuq
 afh
 cqI
@@ -113551,12 +113535,12 @@ cDZ
 bIO
 bIO
 bIO
-cFU
-cFT
+cfa
+ceT
 cEY
 cfN
-cFM
-cFM
+bIO
+bIO
 ctU
 ctU
 bIx
@@ -113733,13 +113717,13 @@ ade
 bIO
 bIO
 bIO
-cFU
+cfa
 ceT
 cdP
 bIO
 bIO
-cFM
-cFM
+bIO
+bIO
 ctU
 ctU
 bIw
@@ -113915,14 +113899,14 @@ adn
 ack
 bIO
 bIO
-cFU
+cfa
 ceT
 cdP
 bIO
 bIO
 bIO
-cFM
-cFM
+bIO
+bIO
 ctU
 ctU
 bIu
@@ -114097,15 +114081,15 @@ coF
 acn
 bIO
 bIO
-cFU
+cfa
 ceT
 cdP
 bIO
 bIO
 bIO
 bIO
-cFM
-cFQ
+bIO
+bMo
 ctU
 cAW
 cAV
@@ -114279,7 +114263,7 @@ adx
 acu
 bIO
 cEQ
-cFU
+cfa
 ceT
 coK
 coq
@@ -114287,15 +114271,15 @@ cyf
 cpJ
 coq
 coq
-cFR
+cqO
 bHW
 bHW
 bIm
-cFP
+cbm
 bIm
 bHW
 bHW
-cFM
+bIO
 bIO
 bIO
 cdP
@@ -114461,7 +114445,7 @@ aBN
 bIO
 bIO
 bIO
-cFU
+cfa
 ceT
 cfY
 cfY
@@ -114477,7 +114461,7 @@ coq
 bIn
 czZ
 czY
-cFN
+czY
 czY
 czY
 czX
@@ -114643,7 +114627,7 @@ aBQ
 bIO
 bIO
 bIO
-cFU
+cfa
 cgg
 cfJ
 cfP
@@ -114659,7 +114643,7 @@ bIO
 bIO
 czC
 czQ
-cFO
+czV
 czV
 czV
 czV
@@ -114841,7 +114825,7 @@ czH
 czH
 czE
 czx
-cFM
+bIO
 bIO
 bIO
 bIO
@@ -115007,7 +114991,7 @@ acH
 cgv
 cbm
 bIO
-cFV
+cgu
 cgi
 ceU
 axr
@@ -115023,7 +115007,7 @@ czV
 czV
 czV
 czL
-cFM
+bIO
 cdj
 cdj
 cdj
@@ -115075,8 +115059,8 @@ anW
 anW
 anW
 asb
-asb
-asb
+bIB
+bIB
 bIB
 anW
 asb
@@ -115189,7 +115173,7 @@ bMk
 acH
 cgv
 cbm
-cFM
+bIO
 bIO
 bIO
 bIO
@@ -115205,7 +115189,7 @@ bIO
 bIO
 bIO
 bIO
-cFM
+bIO
 ceC
 ceA
 cet
@@ -115257,8 +115241,8 @@ asb
 asb
 asb
 asb
-asb
-asb
+bIB
+bIB
 bIB
 anW
 asb
@@ -115440,7 +115424,7 @@ asb
 asb
 asb
 asb
-asb
+bIB
 bIB
 bIB
 cCM
@@ -115622,7 +115606,7 @@ asb
 asb
 cCM
 asb
-asb
+bIB
 bIB
 bIB
 bIB
@@ -115804,7 +115788,7 @@ cCM
 cCM
 bIB
 cCM
-cCM
+bIB
 abB
 bIB
 bIB
@@ -141742,14 +141726,14 @@ cll
 aMn
 aTP
 aDG
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
 aJV
 cll
 clS
@@ -141924,14 +141908,14 @@ cll
 aMn
 aTP
 aDG
+cGr
 ctH
 ctH
 ctH
 ctH
 ctH
 ctH
-ctH
-ctH
+cGr
 aVm
 cll
 cll
@@ -141958,8 +141942,8 @@ bRd
 bRd
 bRd
 anY
-aFh
-ciC
+cGh
+cGj
 bRd
 bRd
 bRd
@@ -142106,14 +142090,14 @@ cll
 cml
 aTP
 apw
-ctH
+cGr
 ctH
 ctH
 ctH
 bUQ
 ctH
 ctH
-ctH
+cGr
 aVm
 cll
 cll
@@ -142142,7 +142126,7 @@ anY
 ciW
 cvJ
 aVH
-ciC
+cGj
 bRd
 bRd
 asb
@@ -142288,14 +142272,14 @@ avC
 aMn
 aTP
 aDG
+cGr
 ctH
 ctH
 ctH
 ctH
 ctH
 ctH
-ctH
-ctH
+cGr
 aEG
 clm
 clm
@@ -142324,7 +142308,7 @@ aLV
 ckf
 cvJ
 cvJ
-aMz
+cGl
 bRd
 bRd
 asb
@@ -142366,7 +142350,7 @@ bPl
 bPl
 bPl
 ciV
-aNR
+cGg
 bPl
 bPl
 bPl
@@ -142470,14 +142454,14 @@ cll
 aMn
 clB
 aDG
+cGr
 ctH
 ctH
 ctH
 ctH
 ctH
 ctH
-ctH
-ctH
+cGr
 aVm
 cll
 cll
@@ -142506,7 +142490,7 @@ aLV
 cvJ
 ahv
 cvJ
-aMz
+cGl
 bRd
 asb
 asb
@@ -142548,7 +142532,7 @@ bPl
 bPl
 anY
 ciW
-aMz
+cGl
 bPl
 bPl
 bPl
@@ -142652,14 +142636,14 @@ cll
 aMn
 cll
 aDG
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
-ctH
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
+cGr
 aJV
 cll
 cll
@@ -142684,11 +142668,11 @@ bRd
 bRd
 bRd
 bRd
-ciX
+cGp
 ciT
 cvJ
 cvJ
-aMz
+cGl
 bRd
 bRd
 bRd
@@ -142730,8 +142714,8 @@ aeX
 aeX
 ciX
 ciT
-aVH
-ciC
+cGm
+cGj
 bPl
 bPl
 bPl
@@ -142867,10 +142851,10 @@ bRd
 bRd
 bRd
 bRd
-ciX
+cGp
 ciT
 cvJ
-aMz
+cGl
 bRd
 bRd
 bRd
@@ -142913,7 +142897,7 @@ cjc
 aeX
 ciX
 ciT
-aMz
+cGl
 bPl
 bPl
 bPl
@@ -143050,7 +143034,7 @@ bRd
 asb
 bRd
 bRd
-ciX
+cGp
 cjX
 cjV
 bRd
@@ -143089,13 +143073,13 @@ bPl
 bPl
 bPl
 bPl
-ciI
+cGn
 ciC
 aeX
 aeX
 aeX
 aPB
-aBx
+cGk
 bPl
 bPl
 aeX
@@ -143453,7 +143437,7 @@ bPl
 bPl
 bPl
 cwe
-aPB
+cGi
 ciT
 aMz
 aeX
@@ -143818,7 +143802,7 @@ bPl
 bPl
 bPl
 bPl
-aPB
+cGi
 cje
 aeX
 aeX
@@ -144549,13 +144533,13 @@ aeX
 asb
 bPl
 bPl
-aPB
+cGi
 ciU
 ciC
 aeX
 aeX
 ciI
-ciC
+cGj
 bPl
 bPl
 bPl
@@ -144732,12 +144716,12 @@ asb
 bPl
 bPl
 bPl
-aPB
+cGi
 ciO
 aeX
 aeX
 aPB
-aBx
+cGk
 bPl
 cwe
 bPl
@@ -152870,17 +152854,17 @@ bRz
 bRG
 bRG
 byS
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
-cwV
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
+cGo
 bye
 bRR
 bQp
@@ -152942,9 +152926,9 @@ cvR
 cvP
 bOU
 anY
-aFh
-aFh
-aNR
+cGh
+cGh
+cGg
 asb
 asb
 asb
@@ -154579,7 +154563,7 @@ bOU
 bOU
 bOU
 bOU
-aPB
+cGi
 aZB
 aZB
 aZB
@@ -161608,13 +161592,13 @@ ckG
 bQf
 bQf
 bRV
-bSg
-bSg
-bSg
-bSg
-bSg
-bSg
-bSg
+cGq
+cGq
+cGq
+cGq
+cGq
+cGq
+cGq
 cEL
 bQd
 cEG
@@ -161790,13 +161774,13 @@ bTn
 bQf
 bQf
 bRV
+cGq
 bSg
 bSg
 bSg
 bSg
 bSg
-bSg
-bSg
+cGq
 cEM
 bQd
 bQf
@@ -161972,13 +161956,13 @@ bQd
 bYM
 bQf
 bRV
-bSg
+cGq
 bSg
 bSg
 bSr
 bSg
 bSg
-bSg
+cGq
 cEN
 cEI
 cEF
@@ -162154,13 +162138,13 @@ bQd
 bQf
 bQf
 bRV
+cGq
 bSg
 bSg
 bSg
 bSg
 bSg
-bSg
-bSg
+cGq
 cEK
 aNy
 cEH
@@ -162336,13 +162320,13 @@ bQf
 bQf
 bYM
 bRV
+cGq
 bSg
 bSg
 bSg
 bSg
 bSg
-bSg
-bSg
+cGq
 bRV
 cEI
 cEF
@@ -162518,13 +162502,13 @@ bQf
 bQf
 bQf
 bRV
-bSg
-bSg
-bSg
-bSg
-bSg
-bSg
-bSg
+cGq
+cGq
+cGq
+cGq
+cGq
+cGq
+cGq
 bRV
 bRV
 bQf

@@ -24771,11 +24771,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob/sky)
-"bsd" = (
-/obj/structure/platform/stone/soro_colorable_immune/loma/east,
-/obj/structure/platform/stone/soro_colorable_immune/loma/east,
-/turf/open_space,
-/area/point_loma/airbase/cave/opening)
 "bse" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -154870,7 +154865,7 @@ bOU
 bOU
 aLV
 aRZ
-bsd
+aBx
 asb
 asb
 asb

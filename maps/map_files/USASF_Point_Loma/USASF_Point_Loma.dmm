@@ -21586,10 +21586,6 @@
 "bjt" = (
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
-"bju" = (
-/obj/effect/stairs/up,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/research_facility/cave/south)
 "bjv" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -100975,9 +100971,9 @@ bjV
 bjV
 bjV
 bjV
-bjV
-bjV
-bjV
+aeX
+aeX
+aeX
 bIA
 bIA
 bIA
@@ -101342,7 +101338,7 @@ bIA
 bIA
 bIA
 aeX
-bju
+bIA
 bIA
 bIA
 aIH

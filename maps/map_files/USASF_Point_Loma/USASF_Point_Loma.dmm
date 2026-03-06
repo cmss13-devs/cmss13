@@ -33797,10 +33797,6 @@
 "bTS" = (
 /turf/open_space,
 /area/point_loma/oob/sky)
-"bTT" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/platingdmg1,
-/area/point_loma/airbase/exterior/crash_site)
 "bTU" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4;
@@ -33922,7 +33918,7 @@
 "bUs" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "bUt" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
@@ -45312,20 +45308,16 @@
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf{
 	dir = 1
 	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/airbase/exterior/crash_site)
-"cFH" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFI" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFJ" = (
 /obj/structure/prop/vehicles/aircraft/vtol/damaged,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFK" = (
 /obj/item/stack/rods,
@@ -45335,31 +45327,31 @@
 "cFL" = (
 /obj/item/stack/rods,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFM" = (
 /obj/item/stack/rods,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFN" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFO" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFP" = (
 /obj/item/stack/rods,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/invuln/fire,
-/turf/open/floor/plating/burnt_platingdmg3,
+/turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cFQ" = (
 /obj/structure/blocker/invisible_wall,
@@ -148211,15 +148203,15 @@ bSN
 bSN
 bSN
 bSN
+bSN
+bSN
+bSN
+bSN
+bSN
 bTk
 bTk
 bTk
 bSZ
-bRG
-bRG
-bTk
-bTk
-bTk
 bTk
 bTk
 bSN
@@ -148393,12 +148385,12 @@ bSN
 bSN
 bSN
 bSN
+bSN
+bSN
+bSN
+bSN
+bSN
 bTk
-bTk
-cxb
-cxb
-bRG
-bRG
 bTk
 cxb
 cxb
@@ -148576,13 +148568,13 @@ bSN
 bxN
 bxN
 bxN
+bxN
+bxN
+bxN
+bxN
+bxN
 cxb
 cxb
-bRG
-bRG
-bRG
-bRG
-bRG
 bRG
 bRG
 cxb
@@ -148758,10 +148750,10 @@ bSN
 bxN
 bxN
 bxN
-cFH
-bRG
-bRG
-bRG
+cFQ
+bxN
+bxN
+bxN
 cFG
 bRG
 bRG
@@ -148940,11 +148932,11 @@ bSN
 bxN
 bxN
 bxN
-cFH
-bTg
-bRG
-bRG
-bTG
+cFQ
+bTa
+bxN
+bxN
+bTa
 bTF
 bTg
 bTg
@@ -149124,9 +149116,9 @@ bxN
 cFQ
 cFL
 bUs
-bTg
-bRG
-bTT
+bTa
+bxN
+bTa
 bTG
 bTg
 bTg
@@ -149307,8 +149299,8 @@ cFR
 cFM
 cFI
 cFI
-cFH
-bSZ
+cFQ
+bSY
 bSZ
 bSZ
 bSZ
@@ -149487,10 +149479,10 @@ bxN
 cFQ
 cFR
 cFN
-cFH
-cFH
-cFH
-bTg
+cFQ
+cFQ
+cFQ
+bTa
 bTg
 bTg
 bTg
@@ -149668,9 +149660,9 @@ bSN
 bxN
 bxN
 cFQ
-cFH
-bRG
-bRG
+cFQ
+bxN
+bxN
 atE
 atE
 bTk
@@ -149850,9 +149842,9 @@ bSN
 bxN
 bxN
 bxN
-cFH
-bRG
-bRG
+cFQ
+bxN
+bxN
 bzP
 bTU
 bzt
@@ -150033,7 +150025,7 @@ bxN
 bxN
 bxN
 cFO
-bTg
+bTa
 bRG
 cxb
 cAD
@@ -150214,8 +150206,8 @@ bSN
 bxN
 bxN
 bxN
-bRG
-bRG
+bxN
+bxN
 bRG
 cxb
 cxb
@@ -150396,7 +150388,7 @@ bSN
 bxN
 bxN
 bxN
-bSZ
+bSY
 cFJ
 bRG
 cxb
@@ -150578,7 +150570,7 @@ bSN
 bxN
 bxN
 cFQ
-bSZ
+bSY
 bRG
 bRG
 cxb
@@ -150942,7 +150934,7 @@ bSN
 bxN
 bxN
 cFQ
-bTg
+bTa
 cFK
 bRG
 cxb
@@ -151124,7 +151116,7 @@ bSN
 bxN
 bxN
 cFT
-bTg
+bTa
 bSZ
 bRG
 cxb
@@ -151306,7 +151298,7 @@ bSN
 bxN
 cFQ
 cFR
-cFH
+cFQ
 bRG
 bRG
 cxb

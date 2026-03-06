@@ -837,6 +837,7 @@
 	wrenchable = FALSE
 	vend_delay = 0.7 SECONDS
 	allow_supply_link_restock = FALSE
+	untippable = TRUE
 
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),

@@ -1,3 +1,6 @@
+// how long the cooldown for the reserve console is
+#define RESERVE_HUNT_COOLDOWN 20 MINUTES
+
 GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
@@ -142,6 +145,41 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "fullarmor_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
+/// emissary armor
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary
+	name = "YM4 pattern clan armor"
+	desc = "A suit of oversized armor built from M3 pattern plating and Smart-Gunner mesh, built for something larger than any normal man."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+	icon_state = "halfarmor_elite_emissary_classic"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "halfarmor_elite_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
+	camo_type = "desert"
+	icon_state = "halfarmor_elite_emissary_desert"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "halfarmor_elite_emissary_jungle"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/snow
+	camo_type = "snow"
+	icon_state = "halfarmor_elite_emissary_snow"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/urban
+	camo_type = "urban"
+	icon_state = "halfarmor_elite_emissary_urban"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming
+	conforming = TRUE
+
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
@@ -263,6 +301,40 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/shoes/yautja/hunter/knife
 	spawn_item_type = /obj/item/weapon/yautja/knife
 
+// emissary greaves
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary
+	name = "clan combat boots"
+	desc = "A pair of armored boots modified with human armor plating, though still scaled to fit a hunter."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/New(location)
+	..()
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "elite_y-boots1_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_[camo_type]")
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/desert
+	camo_type = "desert"
+	icon_state = "elite_y-boots1_emissary_desert"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "elite_y-boots1_emissary_jungle"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/snow
+	camo_type = "snow"
+	icon_state = "elite_y-boots1_emissary_snow"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/urban
+	camo_type = "urban"
+	icon_state = "elite_y-boots1_emissary_urban"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming
+	conforming = TRUE
+
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
@@ -334,7 +406,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
-	if(!isyautja(M)) //Nope.
+	if(!isyautja(M) && !isthrall(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
@@ -529,6 +601,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("Your master would not like you to use this."))
+		return
+
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
@@ -609,8 +685,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
-	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+	var/datum/emergency_call/pred/picked_call = potential_prey[choice]
+	SSticker.mode.get_specific_call(picked_call, TRUE, FALSE)
+	var/true_cooldown = (RESERVE_HUNT_COOLDOWN) * picked_call.timer_mult // multiplies the 20 minute timer by a set amount based on the chosen call
+	COOLDOWN_START(GLOB, hunt_timer_yautja, true_cooldown)
 
 
 /obj/structure/machinery/hunt_ground_escape
@@ -1203,6 +1281,18 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 
+/obj/item/storage/medicomp/thrall/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+
 /obj/item/storage/medicomp/update_icon()
 	if(!length(contents))
 		icon_state = "medicomp_open"
@@ -1656,3 +1746,5 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/device/houndcam/attack_hand(mob/user)
 	. = ..()
 	internal_camera.tgui_interact(user)
+
+#undef RESERVE_HUNT_COOLDOWN

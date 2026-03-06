@@ -39,5 +39,5 @@ GLOBAL_LIST_INIT(monkey_names, list("Abu", "Aldo", "Bear", "Bingo", "Clyde", "Cr
 
 GLOBAL_LIST_INIT(weapon_surnames, list("Adze", "Axe", "Bagh Nakha", "Bo", "Bola", "Bow", "Bowman", "Cannon", "Carbine", "Cestus", "Club", "Culverin", "Dagger", "Dao", "Derringer", "Dha", "Dussack", "Emeici", "Falchion", "Fan", "Flyssa", "Gauntlet", "Hammer", "Halberd", "Harquebus", "Hatchet", "Hwando", "Katar", "Kampilan", "Knuckles", "Lance", "Lancer", "Larim", "Maduvu", "Mace", "Maru", "Mauser", "Messer", "Mine", "Mubucae", "Nyepel", "Onager", "Pata", "Pike", "Ram", "Saber", "Seax", "Shamsir", "Sickle", "Sling", "Spear", "Spears", "Staff", "Sword", "Tekko"))
 
-GLOBAL_LIST_INIT(pred_names, list("Nu'koir", "Za-ai'stba", "Au'stbep", "Gihn'thill", "Au'stbep", "Tud'tab", "Gehtu-a", "U-dan'dchu", "Bua'dtu", "A'ytein", "Yu-thwuahtou", "Yon'ta", "Pan'teiat", "Ban'ti", "Ve'thiad", "Ga-aiteith", "A'kah", "Dachande"))
-GLOBAL_LIST_INIT(pred_last_names, list("Tha'jo", "Ba'ytui", "Thwa'dtei", "Vah'ka"))
+GLOBAL_LIST_INIT(pred_names, list("Nu'koir", "Za-ai'stba", "Au'stbep", "Gihn'thill", "Au'stbep", "Tud'tab", "Gehtu-a", "U-dan'dchu", "Bua'dtu", "A'ytein", "Yu-thwuahtou", "Yon'ta", "Pan'teiat", "Ban'ti", "Ve'thiad", "Ga-aiteith", "A'kah", "Dachande", "Bhua'tean", "Nahroirh", "Vateiann", "A'stbath", "I'ja", "Hai'dtath-Bha", "Zatailb", "Ca'tall", "A'staol", "Nago-Ill", "U'thath", "Ahn'tha", "Tocha", "Ba-A'ytall", "Mihn'tha"))
+GLOBAL_LIST_INIT(pred_last_names, list("Tha'jo", "Ba'ytui", "Thwa'dtei", "Vah'ka", "A'taar", "Zau'dqou", "Ma'kah", "Gahru"))

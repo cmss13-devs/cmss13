@@ -14985,9 +14985,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
-"aQY" = (
-/turf/open/space/basic,
-/area/point_loma/research_facility/crash_site)
 "aQZ" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/purplewhite/northeast,
@@ -107480,7 +107477,7 @@ aFk
 aFk
 bqf
 bqf
-aQY
+bqf
 bqf
 bqf
 bqf

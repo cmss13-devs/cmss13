@@ -128,13 +128,20 @@
 		to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] [units]."))
 		return UI_CLOSE
 	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
+		var/turf/our_location = get_turf(src)
 		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 		if(!shuttle)
-			return UI_CLOSE
-		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+			if(is_mainship_level(our_location.z))
+				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+				return UI_CLOSE
+			return .
 		var/turf/shuttle_location = get_turf(shuttle)
-		if(shuttle_location.z in ship_zs)
+		if(is_mainship_level(shuttle_location.z) || (shuttle_location.z != our_location.z && is_mainship_level(our_location.z)))
 			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+			if(can_change_shuttle)
+				shuttleId = null
+				update_static_data(user)
+				return .
 			return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)

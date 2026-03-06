@@ -194,23 +194,24 @@
 		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
 		ui.open()
 
-
 /obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
-	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
+	if(!ignore_ftl_or_crash && SShijack.in_ftl) // Ever ERT can go to ground map return hijack_status check
+		var/turf/our_location = get_turf(src)
 		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 		if(!shuttle)
-			return UI_CLOSE
-		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+			if(is_mainship_level(our_location.z))
+				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+				return UI_CLOSE
+			return .
 		var/turf/shuttle_location = get_turf(shuttle)
-		if(shuttle_location.z in ship_zs)
+		if(is_mainship_level(shuttle_location.z) || (shuttle_location.z != our_location.z && is_mainship_level(our_location.z)))
 			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
 			return UI_CLOSE
-
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

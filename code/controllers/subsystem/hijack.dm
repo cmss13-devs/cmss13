@@ -420,55 +420,6 @@ SUBSYSTEM_DEF(hijack)
 		shuttle.cancel_evac()
 	return TRUE
 
-/// Changes whether the mobile docking_ports on the mainship are operating (launchable)
-/datum/controller/subsystem/hijack/proc/change_dropship_availability(allow=TRUE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-	if(allow)
-		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
-			var/turf/location = get_turf(shuttle)
-			if(!location || !(location.z in ship_zs))
-				continue
-			if(istype(shuttle, /obj/docking_port/mobile/crashable))
-				continue
-			if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
-				continue
-			// ASSUMPTION: Only a hijacked marine_dropship would possibly be something permanently disabled
-			if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
-				var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
-				if(dropship.is_hijacked)
-					continue
-			shuttle.set_mode(SHUTTLE_IDLE)
-	else
-		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
-			var/turf/location = get_turf(shuttle)
-			if(!location || !(location.z in ship_zs))
-				continue
-			if(istype(shuttle, /obj/docking_port/mobile/crashable))
-				continue
-			if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
-				continue
-			shuttle.set_mode(SHUTTLE_CRASHED)
-
-/// Changes whether the stationary docking_ports on the mainship are operating (dockable)
-/datum/controller/subsystem/hijack/proc/change_dropship_pad_availability(allow=TRUE)
-	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-	if(allow)
-		for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
-			var/turf/location = get_turf(pad)
-			if(!location || !(location.z in ship_zs))
-				continue
-			if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
-				continue
-			pad.disabled = initial(pad.disabled)
-	else
-		for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
-			var/turf/location = get_turf(pad)
-			if(!location || !(location.z in ship_zs))
-				continue
-			if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
-				continue
-			pad.disabled = TRUE
-
 /// Opens the lifeboat doors and gets them ready to launch
 /datum/controller/subsystem/hijack/proc/activate_lifeboats()
 	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
@@ -483,6 +434,67 @@ SUBSYSTEM_DEF(hijack)
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
+
+/// Changes whether the mobile docking_ports on the mainship are operating (launchable)
+/datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+		var/turf/location = get_turf(shuttle)
+		if(!location || !(location.z in ship_zs))
+			continue
+		// ASSUMPTION: Only a hijacked marine_dropship would possibly be something permanently disabled
+		if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+			if(!include_marine_dropship)
+				continue
+			var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
+			if(dropship.is_hijacked)
+				continue
+		if(istype(shuttle, /obj/docking_port/mobile/crashable))
+			continue
+		if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
+			continue
+		shuttle.set_mode(SHUTTLE_IDLE)
+
+/// Changes whether the mobile docking_ports on the mainship are not operating (launchable)
+/datum/controller/subsystem/hijack/proc/disallow_dropship_launching(include_marine_dropship=TRUE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+		var/turf/location = get_turf(shuttle)
+		if(!location || !(location.z in ship_zs))
+			continue
+		if(!include_marine_dropship && istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+			continue
+		if(istype(shuttle, /obj/docking_port/mobile/crashable))
+			continue
+		if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
+			continue
+		shuttle.set_mode(SHUTTLE_CRASHED)
+
+/// Changes whether the stationary docking_ports on the mainship are operating (dockable)
+/datum/controller/subsystem/hijack/proc/allow_dropship_pad_landing(include_marine_dropship=FALSE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
+		var/turf/location = get_turf(pad)
+		if(!location || !(location.z in ship_zs))
+			continue
+		if(!include_marine_dropship && istype(pad, /obj/docking_port/stationary/marine_dropship))
+			continue
+		if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
+			continue
+		pad.disabled = initial(pad.disabled)
+
+/// Changes whether the stationary docking_ports on the mainship are operating (dockable)
+/datum/controller/subsystem/hijack/proc/disallow_dropship_pad_landing(include_marine_dropship=TRUE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/docking_port/stationary/pad as anything in SSshuttle.stationary)
+		var/turf/location = get_turf(pad)
+		if(!location || !(location.z in ship_zs))
+			continue
+		if(!include_marine_dropship && istype(pad, /obj/docking_port/stationary/marine_dropship))
+			continue
+		if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
+			continue
+		pad.disabled = TRUE
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -638,7 +650,10 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
-	change_dropship_availability(FALSE) // Break the dropships on the ship
+
+	// Break all shipside ships and disable all non-pod/elevator pads
+	disallow_dropship_launching()
+	disallow_dropship_pad_landing()
 
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
@@ -963,7 +978,9 @@ SUBSYSTEM_DEF(hijack)
 		if(shuttle.destination && (shuttle.destination.z in ship_zs))
 			shuttle.destination = shuttle.previous
 
-	change_dropship_pad_availability(FALSE)
+	// Disable all non-pod/elevator pads
+	disallow_dropship_pad_landing()
+
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
@@ -1015,9 +1032,6 @@ SUBSYSTEM_DEF(hijack)
 	if(!admin_sd_blocked)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), TRUE), 30 SECONDS)
 
-	// TODO: Planet crash?
-	//change_dropship_availability(FALSE)
-
 /// Called to leave FTL warp potentionally unintentionally with more destructive effects
 /datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally = FALSE)
 	in_ftl = FALSE
@@ -1026,7 +1040,8 @@ SUBSYSTEM_DEF(hijack)
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		unset_ftl_turf(space_turf)
 
-	change_dropship_pad_availability(TRUE)
+	// Allow pads to work again except marine_dropship pads
+	allow_dropship_pad_landing()
 
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 

@@ -7489,7 +7489,6 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/research)
 "avF" = (
-/obj/structure/machinery/big_computers/computerbrown/computer5,
 /turf/open/floor/corsat/purple/southeast,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "avG" = (
@@ -12007,7 +12006,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/point_loma/research_facility/cave/south_east)
 "aID" = (
-/obj/structure/machinery/sensortower,
+/obj/structure/machinery/sensortower/short_range,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
 "aIE" = (
@@ -25297,6 +25296,14 @@
 "btN" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
+"btO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/sensortower/short_range,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/research_facility/cave/west)
 "btP" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement_sunbleached,
@@ -38256,8 +38263,8 @@
 /turf/open/floor/corsat/purplecorner,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "ciy" = (
-/obj/structure/machinery/big_computers/computerbrown/computer4,
-/turf/open/shuttle/escapepod/floor3/east,
+/obj/structure/machinery/sensortower/short_range,
+/turf/open/floor/corsat/purple,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "ciz" = (
 /obj/effect/acid_hole{
@@ -42221,6 +42228,17 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"cvl" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/structure/machinery/sensortower/short_range,
+/turf/open/floor/shiva/multi_tiles,
+/area/point_loma/airbase/interior/cargo)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
@@ -94309,7 +94327,7 @@ bLa
 bKz
 bKz
 bKz
-bKz
+btO
 bKz
 bKr
 bJd
@@ -142522,7 +142540,7 @@ bUQ
 ctH
 ctH
 cHn
-aVm
+cvl
 cll
 cll
 cll

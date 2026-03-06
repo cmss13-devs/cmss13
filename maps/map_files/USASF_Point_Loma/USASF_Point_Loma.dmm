@@ -45097,10 +45097,10 @@
 /area/point_loma/airbase/exterior/east)
 "cEK" = (
 /obj/structure/girder/reinforced,
-/turf/open/space/basic,
+/turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEL" = (
-/turf/open/floor/corsat,
+/turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEM" = (
 /obj/flamer_fire/lasting{
@@ -45108,13 +45108,13 @@
 	pixel_x = -17;
 	pixel_y = -1
 	},
-/turf/open/floor/corsat,
+/turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEN" = (
 /obj/structure/window_frame/new_varadero/foundation/reinforced,
 /obj/item/shard,
 /obj/item/stack/rods,
-/turf/open/floor/corsat,
+/turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEO" = (
 /obj/item/stack/rods,

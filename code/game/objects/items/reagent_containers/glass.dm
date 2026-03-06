@@ -90,15 +90,15 @@
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
-		var/mob/living/Mob = target
+		var/mob/living/splashed_mob = target
 		var/list/injected = list()
-		for(var/datum/reagent/Reagent in src.reagents.reagent_list)
-			injected += Reagent.name
+		for(var/datum/reagent/chemical in src.reagents.reagent_list)
+			injected += chemical.name
 		var/contained = english_list(injected)
-		Mob.last_damage_data = create_cause_data(initial(name), user)
-		Mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [Mob.name] ([Mob.key]). Reagents: [contained]</font>")
-		msg_admin_attack("[user.name] ([user.ckey]) splashed [Mob.name] ([Mob.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		splashed_mob.last_damage_data = create_cause_data(initial(name), user)
+		splashed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [splashed_mob.name] ([splashed_mob.key]). Reagents: [contained]</font>")
+		msg_admin_attack("[user.name] ([user.ckey]) splashed [splashed_mob.name] ([splashed_mob.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)

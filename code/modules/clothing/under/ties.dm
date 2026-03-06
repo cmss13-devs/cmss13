@@ -38,7 +38,7 @@
 	inv_overlay = null
 	. = ..()
 
-/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/Clothes)
+/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/clothes)
 	return TRUE
 
 //when user attached an accessory to clothing/clothes
@@ -81,7 +81,7 @@
 	return TRUE
 
 //default attackby behaviour
-/obj/item/clothing/accessory/attackby(obj/item/Item, mob/user)
+/obj/item/clothing/accessory/attackby(obj/item/attacking_object, mob/user)
 	..()
 
 //default attack_hand behaviour
@@ -223,91 +223,91 @@
 	if(.)
 		RegisterSignal(Stuff, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/Clothes, mob/user, slot)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/clothes, mob/user, slot)
 	SIGNAL_HANDLER
 	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
-		Clothes.remove_accessory(user, src)
+		clothes.remove_accessory(user, src)
 		user.drop_held_item(src)
 
-/obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/Clothes)
+/obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/clothes)
 	. = ..()
 	if(.)
-		UnregisterSignal(Clothes, COMSIG_ITEM_EQUIPPED)
+		UnregisterSignal(clothes, COMSIG_ITEM_EQUIPPED)
 
-/obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/Human, mob/living/carbon/human/user)
-	if(!(istype(Human) && istype(user)))
+/obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/human, mob/living/carbon/human/user)
+	if(!(istype(human) && istype(user)))
 		return ..()
-	if(recipient_name != Human.real_name)
-		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [Human]."))
+	if(recipient_name != human.real_name)
+		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [human]."))
 		return
 
-	var/obj/item/clothing/Uniform
-	if(Human.wear_suit && Human.wear_suit.can_attach_accessory(src)) //Prioritizes topmost garment, IE service jackets, if possible.
-		Uniform = Human.wear_suit
+	var/obj/item/clothing/uniform
+	if(human.wear_suit && human.wear_suit.can_attach_accessory(src)) //Prioritizes topmost garment, IE service jackets, if possible.
+		uniform = human.wear_suit
 	else
-		Uniform = Human.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
-	if(!Uniform)
-		if(user == Human)
+		uniform = human.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
+	if(!uniform)
+		if(user == human)
 			to_chat(user, SPAN_WARNING("You aren't wearing anything you can pin [src] to."))
 		else
-			to_chat(user, SPAN_WARNING("[Human] isn't wearing anything you can pin [src] to."))
+			to_chat(user, SPAN_WARNING("[human] isn't wearing anything you can pin [src] to."))
 		return
 
-	if(user == Human)
-		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [Uniform.name]."),
-		SPAN_NOTICE("You pin [src] to your [Uniform.name]."))
+	if(user == human)
+		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [uniform.name]."),
+		SPAN_NOTICE("You pin [src] to your [uniform.name]."))
 
 	else
 		if(user.action_busy)
 			return
 		if(user.a_intent != INTENT_HARM)
-			user.affected_message(Human,
-			SPAN_NOTICE("You start to pin [src] onto [Human]."),
+			user.affected_message(human,
+			SPAN_NOTICE("You start to pin [src] onto [human]."),
 			SPAN_NOTICE("[user] starts to pin [src] onto you."),
-			SPAN_NOTICE("[user] starts to pin [src] onto [Human]."))
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, Human))
+			SPAN_NOTICE("[user] starts to pin [src] onto [human]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, human))
 				return
-			if(!(Uniform == Human.w_uniform || Uniform == Human.wear_suit))
-				to_chat(user, SPAN_WARNING("[Human] took off \his [Uniform.name] before you could finish pinning [src] to it."))
+			if(!(uniform == human.w_uniform || uniform == human.wear_suit))
+				to_chat(user, SPAN_WARNING("[human] took off \his [uniform.name] before you could finish pinning [src] to it."))
 				return
-			user.affected_message(Human,
-			SPAN_NOTICE("You pin [src] to [Human]'s [Uniform.name]."),
-			SPAN_NOTICE("[user] pins [src] to your [Uniform.name]."),
-			SPAN_NOTICE("[user] pins [src] to [Human]'s [Uniform.name]."))
+			user.affected_message(human,
+			SPAN_NOTICE("You pin [src] to [human]'s [uniform.name]."),
+			SPAN_NOTICE("[user] pins [src] to your [uniform.name]."),
+			SPAN_NOTICE("[user] pins [src] to [human]'s [uniform.name]."))
 
 		else
-			user.affected_message(Human,
-			SPAN_ALERT("You start to pin [src] to [Human]."),
+			user.affected_message(human,
+			SPAN_ALERT("You start to pin [src] to [human]."),
 			SPAN_ALERT("[user] starts to pin [src] to you."),
-			SPAN_ALERT("[user] starts to pin [src] to [Human]."))
-			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, Human))
+			SPAN_ALERT("[user] starts to pin [src] to [human]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human))
 				return
-			if(!(Uniform == Human.w_uniform || Uniform == Human.wear_suit))
-				to_chat(user, SPAN_WARNING("[Human] took off \his [Uniform.name] before you could finish pinning [src] to \him."))
+			if(!(uniform == human.w_uniform || uniform == human.wear_suit))
+				to_chat(user, SPAN_WARNING("[human] took off \his [uniform.name] before you could finish pinning [src] to \him."))
 				return
-			user.affected_message(Human,
-			SPAN_DANGER("You slam the [src.name]'s pin through [Human]'s [Uniform.name] and into \his chest."),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through your [Uniform.name] and into your chest!"),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through [Human]'s [Uniform.name] and into \his chest."))
+			user.affected_message(human,
+			SPAN_DANGER("You slam the [src.name]'s pin through [human]'s [uniform.name] and into \his chest."),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through your [uniform.name] and into your chest!"),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through [human]'s [uniform.name] and into \his chest."))
 
 			/*Some duplication from punch code due to attack message and damage stats.
 			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
-			Human.last_damage_data = create_cause_data("macho bullshit", user)
-			user.animation_attack_on(Human)
-			user.flick_attack_overlay(Human, "punch")
+			human.last_damage_data = create_cause_data("macho bullshit", user)
+			user.animation_attack_on(human)
+			user.flick_attack_overlay(human, "punch")
 			playsound(user.loc, "punch", 25, 1)
-			Human.apply_damage(5, BRUTE, "chest", 1)
+			human.apply_damage(5, BRUTE, "chest", 1)
 
-			if(!Human.stat && Human.pain.feels_pain)
+			if(!human.stat && human.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(Human, TYPE_PROC_REF(/mob, emote), "pain")
+					INVOKE_ASYNC(human, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(Human, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
+					INVOKE_ASYNC(human, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
-	if(Uniform.can_attach_accessory(src) && user.drop_held_item())
-		Uniform.attach_accessory(Human, src, TRUE)
+	if(uniform.can_attach_accessory(src) && user.drop_held_item())
+		uniform.attach_accessory(human, src, TRUE)
 
-/obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/Clothes)
+/obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/clothes)
 	if(user.real_name != recipient_name)
 		return FALSE
 	return TRUE
@@ -872,15 +872,15 @@
 	if (hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/Weapon, mob/user)
-	return hold.attackby(Weapon, user)
+/obj/item/clothing/accessory/storage/attackby(obj/item/attacking_object, mob/user)
+	return hold.attackby(attacking_object, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
 	. = ..()
 	hold.emp_act(severity)
 
-/obj/item/clothing/accessory/storage/hear_talk(mob/Mob, msg)
-	hold.hear_talk(Mob, msg)
+/obj/item/clothing/accessory/storage/hear_talk(mob/listening_mob, msg)
+	hold.hear_talk(listening_mob, msg)
 	..()
 
 /obj/item/clothing/accessory/storage/attack_self(mob/user)
@@ -888,21 +888,21 @@
 	to_chat(user, SPAN_NOTICE("You empty [src]."))
 	var/turf/Turf = get_turf(src)
 	hold.storage_close(usr)
-	for(var/obj/item/Item in hold.contents)
-		hold.remove_from_storage(Item, Turf)
+	for(var/obj/item/something in hold.contents)
+		hold.remove_from_storage(something, Turf)
 	src.add_fingerprint(user)
 
-/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/Clothes, mob/living/user, silent)
+/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
 	. = ..()
 	if(.)
-		Clothes.w_class = w_class //To prevent monkey business.
-		Clothes.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+		clothes.w_class = w_class //To prevent monkey business.
+		clothes.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
-/obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/Clothes)
+/obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/clothes)
 	. = ..()
 	if(.)
-		Clothes.w_class = initial(Clothes.w_class)
-		Clothes.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+		clothes.w_class = initial(clothes.w_class)
+		clothes.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 
 /obj/item/storage/internal/accessory/webbing
@@ -947,8 +947,8 @@
 	icon_state = "vest_black"
 	hold = /obj/item/storage/internal/accessory/black_vest
 
-/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/Weapon, mob/living/user)
-	if(HAS_TRAIT(Weapon, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/attacking_object, mob/living/user)
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/beaker
 		var/obj/item/cell/battery
@@ -956,9 +956,9 @@
 			if(istype(item, /obj/item/device/radio) || istype(item, /obj/item/stack/cable_coil) || istype(item, /obj/item/device/healthanalyzer))
 				components++
 			else if(istype(item, /obj/item/reagent_container/hypospray) && !istype(item, /obj/item/reagent_container/hypospray/autoinjector))
-				var/obj/item/reagent_container/hypospray/Hypospray = item
-				if(Hypospray.mag)
-					beaker = Hypospray.mag
+				var/obj/item/reagent_container/hypospray/hypospray = item
+				if(hypospray.mag)
+					beaker = hypospray.mag
 				components++
 			else if(istype(item, /obj/item/cell))
 				battery = item
@@ -966,16 +966,16 @@
 			else
 				components--
 		if(components == 5)
-			var/obj/item/clothing/accessory/storage/black_vest/acid_harness/AH
+			var/obj/item/clothing/accessory/storage/black_vest/acid_harness/harness
 			if(istype(src, /obj/item/clothing/accessory/storage/black_vest/brown_vest))
-				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
+				harness = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
 			else
-				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
+				harness = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
 			if(beaker)
-				AH.beaker = beaker
-				AH.hold.handle_item_insertion(beaker)
-			AH.battery = battery
-			AH.hold.handle_item_insertion(battery)
+				harness.beaker = beaker
+				harness.hold.handle_item_insertion(beaker)
+			harness.battery = battery
+			harness.hold.handle_item_insertion(battery)
 			qdel(src)
 			return
 	. = ..()
@@ -1119,22 +1119,22 @@
 		/obj/item/stack/nanopaste,
 	)
 
-/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/Weapon, mob/user)
-	if(istype(Weapon, /obj/item/storage/surgical_tray))
-		var/obj/item/storage/surgical_tray/ST = Weapon
-		if(!length(ST.contents))
+/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/attacking_object, mob/user)
+	if(istype(attacking_object, /obj/item/storage/surgical_tray))
+		var/obj/item/storage/surgical_tray/tray = attacking_object
+		if(!length(tray.contents))
 			return
 		if(length(contents) >= storage_slots)
 			to_chat(user, SPAN_WARNING("The surgical webbing vest is already full."))
 			return
 		if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
-		for(var/obj/item/Item in ST)
+		for(var/obj/item/something in tray)
 			if(length(contents) >= storage_slots)
 				break
-			ST.remove_from_storage(Item)
-			attempt_item_insertion(Item, TRUE, user)
-		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
+			tray.remove_from_storage(something)
+			attempt_item_insertion(something, TRUE, user)
+		user.visible_message("[user] transfers the tools from \the [tray] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [tray] to the surgical webbing vest."), max_distance = 3)
 		return
 	return ..()
 
@@ -1327,25 +1327,25 @@
 		current_gun = null
 
 /obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
-	var/obj/item/storage/internal/accessory/holster/Hypospray = hold
-	if(Hypospray.current_gun && ishuman(user) && (loc == user || has_suit))
-		if(mods && mods[ALT_CLICK] && length(Hypospray.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
-			var/obj/item/Item = Hypospray.contents[length(Hypospray.contents)]
-			if(isgun(Item))
-				Item = Hypospray.contents[length(Hypospray.contents) - 1]
-			Item.attack_hand(user)
+	var/obj/item/storage/internal/accessory/holster/holster = hold
+	if(holster.current_gun && ishuman(user) && (loc == user || has_suit))
+		if(mods && mods[ALT_CLICK] && length(holster.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/contents = holster.contents[length(holster.contents)]
+			if(isgun(contents))
+				contents = holster.contents[length(holster.contents) - 1]
+			contents.attack_hand(user)
 		else
-			Hypospray.current_gun.attack_hand(user)
+			holster.current_gun.attack_hand(user)
 		return
 
 	..()
 
-/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/Weapon, mob/user, stop_messages = FALSE)
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/attacking_object, mob/user, stop_messages = FALSE)
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
-		if(isgun(Weapon))
+		if(isgun(attacking_object))
 			if(current_gun)
 				if(!stop_messages)
-					to_chat(usr, SPAN_WARNING("[src] already holds \a [Weapon]."))
+					to_chat(usr, SPAN_WARNING("[src] already holds \a [attacking_object]."))
 				return
 		else //Must be ammo.
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
@@ -1358,14 +1358,14 @@
 				return
 		return 1
 
-/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/Weapon)
-	if(isgun(Weapon))
-		current_gun = Weapon //If there's no active gun, we want to make this our gun
+/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/attacking_object)
+	if(isgun(attacking_object))
+		current_gun = attacking_object //If there's no active gun, we want to make this our gun
 		playsound(src, sheatheSound, 15, TRUE)
 	. = ..()
 
-/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/Weapon)
-	if(isgun(Weapon))
+/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/attacking_object)
+	if(isgun(attacking_object))
 		current_gun = null
 		playsound(src, drawSound, 15, TRUE)
 	. = ..()
@@ -1421,13 +1421,13 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/card/id))
+/obj/item/clothing/accessory/holobadge/attackby(obj/item/something, mob/user)
+	if(istype(something, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
 
-		if(istype(O, /obj/item/card/id))
-			id_card = O
+		if(istype(something, /obj/item/card/id))
+			id_card = something
 
 		if(ACCESS_MARINE_BRIG in id_card.access)
 			to_chat(user, "You imprint your ID details onto the badge.")

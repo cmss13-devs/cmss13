@@ -162,8 +162,8 @@
 
 	return ..()
 
-/obj/structure/restock_cart/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+/obj/structure/restock_cart/attackby(obj/item/wrench, mob/user)
+	if(HAS_TRAIT(wrench, TRAIT_TOOL_WRENCH))
 		if(user.action_busy)
 			return
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
@@ -427,12 +427,12 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."),
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
-/obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/Item, mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/attacking_object, mob/user)
 	if(stat != WORKING)
 		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return ..()
 
-	if(istype(Item, /obj/item/reagent_container))
+	if(istype(attacking_object, /obj/item/reagent_container))
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
@@ -442,8 +442,8 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/reagent_container/container = Item
-		if(istype(Item, /obj/item/reagent_container/syringe) || istype(Item, /obj/item/reagent_container/dropper))
+		var/obj/item/reagent_container/container = attacking_object
+		if(istype(attacking_object, /obj/item/reagent_container/syringe) || istype(attacking_object, /obj/item/reagent_container/dropper))
 			if(!stock(container, user))
 				to_chat(user, SPAN_WARNING("[src] does not allow for the restocking of [container] after vending it."))
 				return ..()
@@ -468,14 +468,14 @@
 		user.put_in_hands(new_container)
 		return
 
-	if(ishuman(user) && istype(Item, /obj/item/grab))
-		var/obj/item/grab/grabbed = Item
+	if(ishuman(user) && istype(attacking_object, /obj/item/grab))
+		var/obj/item/grab/grabbed = attacking_object
 		if(istype(grabbed.grabbed_thing, /obj/structure/restock_cart/medical))
 			cart_restock(grabbed.grabbed_thing, user)
 			return
 
 	if(hacked || (allowed(user) && (!LAZYLEN(vendor_role) || vendor_role.Find(user.job))))
-		if(stock(Item, user))
+		if(stock(attacking_object, user))
 			return
 
 	return ..()
@@ -499,18 +499,18 @@
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
-/obj/structure/machinery/cm_vending/sorted/medical/MouseDrop_T(atom/movable/Atom, mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/MouseDrop_T(atom/movable/restockable_item, mob/user)
 	if(inoperable())
 		return
 	if(user.stat || user.is_mob_restrained())
 		return
-	if(get_dist(user, src) > 1 || get_dist(user, Atom) > 1) // More lenient
+	if(get_dist(user, src) > 1 || get_dist(user, restockable_item) > 1) // More lenient
 		return
 	if(!ishuman(user))
 		return
 
-	if(istype(Atom, /obj/structure/restock_cart/medical))
-		cart_restock(Atom, user)
+	if(istype(restockable_item, /obj/structure/restock_cart/medical))
+		cart_restock(restockable_item, user)
 		return
 
 	return ..()
@@ -601,7 +601,7 @@
 		return
 	START_PROCESSING(SSslowobj, src)
 
-/obj/structure/machinery/cm_vending/sorted/medical/toggle_anchored(obj/item/W, mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/toggle_anchored(obj/item/wrench, mob/user)
 	. = ..()
 
 	// If the anchor state changed, this is a vendor that needs a link, and isn't dynamically changing, update whether we automatically restock

@@ -171,7 +171,7 @@
 			. += SPAN_INFO("It is unloaded.")
 		. += SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose.")
 
-/obj/item/reagent_container/hypospray/attack(mob/living/Mob, mob/living/user)
+/obj/item/reagent_container/hypospray/attack(mob/living/injected_mob, mob/living/user)
 	if(magfed && !mag)
 		to_chat(user, SPAN_DANGER("[src] has no vial!"))
 		return
@@ -179,15 +179,15 @@
 		to_chat(user, SPAN_DANGER("[src] is empty."))
 		return
 
-	if(!istype(Mob))
+	if(!istype(injected_mob))
 		return
 
-	if(!Mob.can_inject(user, TRUE))
+	if(!injected_mob.can_inject(user, TRUE))
 		return
 
 	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, Mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, injected_mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
 	else if(!skillcheck(user, SKILL_MEDICAL, skilllock))
 		to_chat(user, SPAN_WARNING("[src] beeps and refuses to inject: Insufficient training or clearance!"))
@@ -200,35 +200,35 @@
 	if(toxin)
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return 0
-		if(!Mob.Adjacent(user))
+		if(!injected_mob.Adjacent(user))
 			return 0
-	if(Mob != user && Mob.stat != DEAD && Mob.a_intent != INTENT_HELP && !Mob.is_mob_incapacitated() && (skillcheck(Mob, SKILL_CQC, SKILL_CQC_SKILLED) || isyautja(Mob))) // preds have null skills
+	if(injected_mob != user && injected_mob.stat != DEAD && injected_mob.a_intent != INTENT_HELP && !injected_mob.is_mob_incapacitated() && (skillcheck(injected_mob, SKILL_CQC, SKILL_CQC_SKILLED) || isyautja(injected_mob))) // preds have null skills
 		user.apply_effect(3, WEAKEN)
-		Mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(Mob)] by their cqc skill.</font>")
-		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(Mob)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		Mob.visible_message(SPAN_DANGER("[Mob]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
+		injected_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(injected_mob)] by their cqc skill.</font>")
+		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(injected_mob)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		injected_mob.visible_message(SPAN_DANGER("[injected_mob]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 			SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
 
-	to_chat(user, SPAN_NOTICE(" You inject [Mob] with [src]."))
-	to_chat(Mob, SPAN_WARNING("You feel a tiny prick!"))
+	to_chat(user, SPAN_NOTICE(" You inject [injected_mob] with [src]."))
+	to_chat(injected_mob, SPAN_WARNING("You feel a tiny prick!"))
 	playsound(loc, injectSFX, injectVOL, 1)
-	SEND_SIGNAL(Mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
+	SEND_SIGNAL(injected_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
-	reagents.reaction(Mob, INGEST)
-	if(Mob.reagents)
+	reagents.reaction(injected_mob, INGEST)
+	if(injected_mob.reagents)
 		var/list/injected = list()
-		for(var/datum/reagent/Chemical in reagents.reagent_list)
-			injected += Chemical.name
-			Chemical.last_source_mob = WEAKREF(user)
+		for(var/datum/reagent/chemical in reagents.reagent_list)
+			injected += chemical.name
+			chemical.last_source_mob = WEAKREF(user)
 		var/contained = english_list(injected)
-		Mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(Mob)]. Reagents: [contained]</font>")
-		msg_admin_attack("[key_name(user)] injected [key_name(Mob)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		injected_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(injected_mob)]. Reagents: [contained]</font>")
+		msg_admin_attack("[key_name(user)] injected [key_name(injected_mob)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		var/trans = reagents.trans_to(Mob, amount_per_transfer_from_this)
+		var/trans = reagents.trans_to(injected_mob, amount_per_transfer_from_this)
 		if(mag)
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
 		else

@@ -68,13 +68,13 @@
 		return
 
 	icon_state = "stimpack"
-	var/datum/reagent/Reagent = GLOB.chemical_reagents_list[chemname]
+	var/datum/reagent/chemical = GLOB.chemical_reagents_list[chemname]
 
-	if(!Reagent)
+	if(!chemical)
 		return
-	var/image/Image = image(icon, src, icon_state="+stimpack_custom")
-	Image.color = Reagent.color
-	overlays += Image
+	var/image/icon = image(icon, src, icon_state="+stimpack_custom")
+	icon.color = chemical.color
+	overlays += icon
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
 	name = "speed stimulant autoinjector"

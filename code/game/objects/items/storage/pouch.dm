@@ -21,8 +21,8 @@
 
 	if(isnull(storage_slots))//uses weight instead of slots
 		var/fullness = 0
-		for(var/obj/item/C as anything in contents)
-			fullness += C.w_class
+		for(var/obj/item/storage_contents as anything in contents)
+			fullness += storage_contents.w_class
 		if(fullness <= max_storage_space * 0.5)
 			overlays += "+[icon_state]_half"
 		else
@@ -124,11 +124,11 @@
 /obj/item/storage/pouch/bayonet/upp
 	default_knife_type = /obj/item/attachable/bayonet/upp
 
-/obj/item/storage/pouch/bayonet/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/pouch/bayonet/_item_insertion(obj/item/inserted_weapon, prevent_warning = 0)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/pouch/bayonet/_item_removal(obj/item/W, atom/new_location)
+/obj/item/storage/pouch/bayonet/_item_removal(obj/item/inserted_weapon, atom/new_location)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
@@ -347,23 +347,23 @@
 		current_gun = null
 		update_gun_icon()
 
-/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
+/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/insertable_weapon, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
 	. = ..()
 	if(!.)
 		return
-	if(current_gun && isgun(W))
+	if(current_gun && isgun(insertable_weapon))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
 		return FALSE
 
-/obj/item/storage/pouch/pistol/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
-	if(isgun(I))
-		current_gun = I
+/obj/item/storage/pouch/pistol/_item_insertion(obj/item/insertable_sling, prevent_warning = 0, mob/user)
+	if(isgun(insertable_sling))
+		current_gun = insertable_sling
 		update_gun_icon()
 	..()
 
-/obj/item/storage/pouch/pistol/_item_removal(obj/item/I, atom/new_location)
-	if(I == current_gun)
+/obj/item/storage/pouch/pistol/_item_removal(obj/item/removable_item, atom/new_location)
+	if(removable_item == current_gun)
 		current_gun = null
 		update_gun_icon()
 	..()
@@ -411,30 +411,30 @@
 	else if(AM == tablet)
 		tablet = null
 
-/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
+/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/insertable_item, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
-	if(binos && istype(I, /obj/item/device/binoculars))
+	if(binos && istype(insertable_item, /obj/item/device/binoculars))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a pair of binoculars."))
 		return FALSE
-	else if(tablet && istype(I, /obj/item/device/cotablet))
+	else if(tablet && istype(insertable_item, /obj/item/device/cotablet))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a tablet."))
 		return FALSE
 
-/obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
-	if(istype(I, /obj/item/device/binoculars))
-		binos = I
-	else if(istype(I, /obj/item/device/cotablet))
-		tablet = I
+/obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/insertable_item, prevent_warning = 0, mob/user)
+	if(istype(insertable_item, /obj/item/device/binoculars))
+		binos = insertable_item
+	else if(istype(insertable_item, /obj/item/device/cotablet))
+		tablet = insertable_item
 	..()
 
-/obj/item/storage/pouch/pistol/command/_item_removal(obj/item/I, atom/new_location)
-	if(I == binos)
+/obj/item/storage/pouch/pistol/command/_item_removal(obj/item/removable_item, atom/new_location)
+	if(removable_item == binos)
 		binos = null
-	else if(I == tablet)
+	else if(removable_item == tablet)
 		tablet = null
 	..()
 
@@ -456,10 +456,10 @@
 /obj/item/storage/pouch/pistol/command/attack_hand(mob/user, mods) //Mostly copied from gunbelt.
 	if(current_gun && ishuman(user) && loc == user)
 		if(mods && mods[ALT_CLICK] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
-			var/obj/item/I = contents[length(contents)]
-			if(isgun(I))
-				I = contents[length(contents) - 1]
-			I.attack_hand(user)
+			var/obj/item/gun = contents[length(contents)]
+			if(isgun(gun))
+				gun = contents[length(contents) - 1]
+			gun.attack_hand(user)
 		else
 			current_gun.attack_hand(user)
 		return
@@ -490,13 +490,13 @@
 /obj/item/storage/pouch/magazine/wy
 	icon_state = "wy_ammo_mag_small"
 
-/obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
+/obj/item/storage/pouch/magazine/attackby(obj/item/dumping_magazine, mob/user)
+	if(istype(dumping_magazine, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/magazine = dumping_magazine
 		if(istype(src, /obj/item/storage/pouch/magazine/pistol))
 			return..()
 		else
-			dump_ammo_to(M,user, M.transfer_handful_amount)
+			dump_ammo_to(magazine,user, magazine.transfer_handful_amount)
 	else
 		return ..()
 
@@ -669,10 +669,10 @@
 	)
 	flap = FALSE
 
-/obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M, user, M.transfer_handful_amount)
+/obj/item/storage/pouch/shotgun/attackby(obj/item/dumping_magazine, mob/user)
+	if(istype(dumping_magazine, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/magazine = dumping_magazine
+		dump_ammo_to(magazine, user, magazine.transfer_handful_amount)
 	else
 		return ..()
 
@@ -722,10 +722,10 @@
 		/obj/item/explosive/grenade,
 	)
 
-/obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
-		dump_into(M,user)
+/obj/item/storage/pouch/explosive/attackby(obj/item/refilling_box, mob/user)
+	if(istype(refilling_box, /obj/item/storage/box/nade_box))
+		var/obj/item/storage/box/nade_box/magazine = refilling_box
+		dump_into(magazine,user)
 	else
 		return ..()
 
@@ -908,10 +908,10 @@
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 
-/obj/item/storage/pouch/vials/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/fancy/vials))
-		var/obj/item/storage/fancy/vials/M = W
-		dump_into(M,user)
+/obj/item/storage/pouch/vials/attackby(obj/item/refilling_box, mob/user)
+	if(istype(refilling_box, /obj/item/storage/fancy/vials))
+		var/obj/item/storage/fancy/vials/vialbox = refilling_box
+		dump_into(vialbox,user)
 	else
 		return ..()
 
@@ -1232,24 +1232,24 @@
 		A.update_icon()
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
+/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/insertable_object, mob/user)
+	if(istype(insertable_object, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
 			to_chat(user, SPAN_WARNING("There already is a canister inside [src]!"))
 		else
-			user.drop_inv_item_to_loc(W, src)
-			inner = W
-			contents -= W
-			to_chat(user, SPAN_NOTICE("You insert [W] into [src]!"))
+			user.drop_inv_item_to_loc(insertable_object, src)
+			inner = insertable_object
+			contents -= insertable_object
+			to_chat(user, SPAN_NOTICE("You insert [insertable_object] into [src]!"))
 			update_icon()
 		return
 
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
+	if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector/empty))
+		var/obj/item/reagent_container/hypospray/autoinjector/A = insertable_object
 		fill_autoinjector(A)
 		return ..()
-	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
+	else if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector))
+		to_chat(user, SPAN_WARNING("[insertable_object] is not compatible with this system!"))
 	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
@@ -1492,10 +1492,10 @@
 	icon_state = "flare"
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/m94))
-		var/obj/item/storage/box/m94/M = W
-		dump_into(M,user)
+/obj/item/storage/pouch/flare/attackby(obj/item/refillable_box, mob/user)
+	if(istype(refillable_box, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/flarebox = refillable_box
+		dump_into(flarebox,user)
 	else
 		return ..()
 
@@ -1770,24 +1770,24 @@
 	if(slung && slung.loc != src)
 		. += "\The [slung] is attached to the sling."
 
-/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
+/obj/item/storage/pouch/sling/can_be_inserted(obj/item/insertable_sling, mob/user, stop_messages = FALSE)
 	if(slung)
-		if(slung != I)
+		if(slung != insertable_sling)
 			if(!stop_messages)
 				to_chat(usr, SPAN_WARNING("\the [slung] is already attached to the sling."))
 			return FALSE
-	else if(SEND_SIGNAL(I, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+	else if(SEND_SIGNAL(insertable_sling, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[I] is already attached to another sling."))
+			to_chat(usr, SPAN_WARNING("[insertable_sling] is already attached to another sling."))
 		return FALSE
 	return ..()
 
-/obj/item/storage/pouch/sling/_item_insertion(obj/item/I, prevent_warning = FALSE, mob/user)
+/obj/item/storage/pouch/sling/_item_insertion(obj/item/insertable_sling, prevent_warning = FALSE, mob/user)
 	if(!slung)
-		slung = I
+		slung = insertable_sling
 		slung.AddElement(/datum/element/drop_retrieval/pouch_sling, src)
 		if(!prevent_warning)
-			to_chat(user, SPAN_NOTICE("You attach the sling to [I]."))
+			to_chat(user, SPAN_NOTICE("You attach the sling to [insertable_sling]."))
 	..()
 
 /obj/item/storage/pouch/sling/attack_self(mob/user)
@@ -1858,11 +1858,11 @@
 				var/obj/item/device/cassette_tape/first_tape = contents[1]
 				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
 				var/obj/item/device/cassette_tape/second_tape = contents[2]
-				var/image/I = image(second_tape.icon, null, second_tape.icon_state, pixel_y = 5)
-				var/matrix/M = matrix()
-				M.Turn(180)
-				I.transform = M
-				underlays += I
+				var/image/icon = image(second_tape.icon, null, second_tape.icon_state, pixel_y = 5)
+				var/matrix/matrix = matrix()
+				matrix.Turn(180)
+				icon.transform = matrix
+				underlays += icon
 			if(1)
 				icon_state = "[base_icon_state]_1"
 				var/obj/item/device/cassette_tape/first_tape = contents[1]
@@ -1893,11 +1893,11 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/pouch/machete/_item_insertion(obj/item/weapon, prevent_warning = 0)
 	..()
 	playsound(src, sheathe_sound, vol = 15, vary = TRUE)
 
-/obj/item/storage/pouch/machete/_item_removal(obj/item/W, atom/new_location)
+/obj/item/storage/pouch/machete/_item_removal(obj/item/weapon, atom/new_location)
 	..()
 	playsound(src, draw_sound, vol = 15, vary = TRUE)
 

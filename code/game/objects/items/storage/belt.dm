@@ -44,11 +44,11 @@
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/belt/attackby(obj/item/Weapon, mob/user)
-	if(istype(Weapon, /obj/item/ammo_magazine/shotgun))
+/obj/item/storage/belt/attackby(obj/item/magazine, mob/user)
+	if(istype(magazine, /obj/item/ammo_magazine/shotgun))
 		if(/obj/item/ammo_magazine/handful in src.can_hold)
-			var/obj/item/ammo_magazine/shotgun/Mob = Weapon
-			dump_ammo_to(Mob,user, Mob.transfer_handful_amount)
+			var/obj/item/ammo_magazine/shotgun/mag = magazine
+			dump_ammo_to(mag,user, mag.transfer_handful_amount)
 			return
 	. = ..()
 
@@ -793,7 +793,7 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/m60 (src)
 
-// Outer Rim Weapon Belts
+// Outer Rim magazine Belts
 
 /obj/item/storage/belt/marine/ar10/fill_preset_inventory() // AR-10
 	for(var/i = 1 to storage_slots)

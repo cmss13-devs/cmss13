@@ -103,7 +103,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
@@ -129,7 +129,7 @@
 		return UI_CLOSE
 	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH))
 		var/turf/our_location = get_turf(src)
-		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 		if(!shuttle)
 			if(is_mainship_level(our_location.z))
 				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
@@ -145,7 +145,7 @@
 			return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(shuttle?.is_hijacked)
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -153,7 +153,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_static_data(mob/user)
 	. = ..(user)
 	compatible_landing_zones = get_landing_zones()
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	// we convert the time to seconds for rendering to ui
 	if(shuttle)
 		.["max_flight_duration"] = shuttle.callTime / 10
@@ -186,7 +186,7 @@
 		return TRUE
 
 	// if the dropship has crashed don't allow more interactions
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(!shuttle)
 		tgui_interact(user)
 		return
@@ -438,7 +438,7 @@
 	update_icon()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	. = list()
 	.["shuttle_id"] = shuttle?.id
 	.["shuttle_mode"] = shuttle?.mode
@@ -495,7 +495,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(disabled || (shuttle && shuttle.is_hijacked))
 		switch(action)
 			if ("change_shuttle")

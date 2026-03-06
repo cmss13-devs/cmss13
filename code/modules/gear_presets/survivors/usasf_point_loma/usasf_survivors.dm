@@ -7,7 +7,7 @@
 	skills = /datum/skills/military/survivor/usasf
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
-	faction = FACTION_MARINE
+	faction = FACTION_MARINE // ToDO: Figure out why tf this doesn't show mobhuds without this
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
@@ -461,7 +461,7 @@
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
 	name = "Survivor - USASF Synthetic"
 	paygrades = list(PAY_SHORT_NE7 = JOB_PLAYTIME_TIER_0)
-	faction = FACTION_MARINE
+	faction = FACTION_MARINE // ToDO: Figure out why tf this doesn't show mobhuds without this
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_USASF_SYNTHETIC
 	job_title  = JOB_USASF_SYNTHETIC

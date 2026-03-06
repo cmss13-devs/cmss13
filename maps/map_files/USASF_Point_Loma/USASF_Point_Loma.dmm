@@ -23180,6 +23180,10 @@
 	dir = 4
 	},
 /obj/item/prop/alien/hugger,
+/obj/item/clothing/head/beret/navy{
+	pixel_y = 19;
+	pixel_x = -25
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "bnB" = (
@@ -28556,13 +28560,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"bCR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/west)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -28663,7 +28660,9 @@
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "bDo" = (
-/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/blood/tracks/clawprints{
+	pixel_y = 21
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "bDp" = (
@@ -29226,14 +29225,6 @@
 /obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"bFi" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/west)
 "bFj" = (
 /turf/open/floor/corsat/blue/west,
 /area/point_loma/airbase/interior/atc/upper)
@@ -30674,7 +30665,11 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood/gibs/body{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/tracks/clawprints,
+/obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "bIY" = (
@@ -36524,7 +36519,11 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/blood/tracks/clawprints,
+/obj/effect/decal/cleanable/blood/tracks/clawprints{
+	pixel_y = 21
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "cdm" = (
@@ -36683,6 +36682,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/blood/tracks/clawprints,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "cdO" = (
@@ -45514,7 +45514,9 @@
 /turf/open/floor/corsat/greenwhite/northeast,
 /area/point_loma/research_facility/medical)
 "cGp" = (
-/obj/effect/decal/cleanable/blood/tracks/yautja,
+/obj/effect/decal/cleanable/blood/tracks/yautja{
+	dir = 4
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "cGq" = (
@@ -45892,6 +45894,7 @@
 "cHt" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/spawner/random/gun/uscm_secondary,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/point_loma/airbase/exterior/west)
 "cHu" = (
@@ -46155,6 +46158,27 @@
 "cIi" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalkcenter/east,
+/area/point_loma/airbase/exterior/west)
+"cIj" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/clawprints{
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/blood/tracks/clawprints,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/west)
+"cIk" = (
+/obj/effect/spawner/random/pills,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/west)
+"cIl" = (
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/spawner/random/gun/uscm_secondary,
+/turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 
 (1,1,1) = {"
@@ -101231,10 +101255,10 @@ bqW
 cxu
 cdN
 bIX
+cIj
+cIj
 cdl
-cdl
-cdl
-cdl
+cIj
 cdl
 bDo
 bnA
@@ -101418,8 +101442,8 @@ cdv
 cdv
 cdv
 cdm
-bFi
-bCR
+cdh
+bJL
 ccI
 ccI
 cyI
@@ -115400,7 +115424,7 @@ bLC
 aBQ
 bIO
 bIO
-cGp
+bIO
 cfa
 cgg
 cfJ
@@ -147588,7 +147612,7 @@ aZD
 aOb
 aqy
 bYk
-cFt
+cIl
 ajF
 ajF
 ajF
@@ -149236,7 +149260,7 @@ bDw
 bUU
 bUU
 aLe
-aLe
+cIk
 bYe
 ajF
 bYa

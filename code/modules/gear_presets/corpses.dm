@@ -2083,5 +2083,38 @@
 	name = "Corpse - Burst - USASF"
 	xenovictim = TRUE
 
-/datum/equipment_preset/corpse/yautja
+/datum/equipment_preset/yautja/blooded/corpse
 	name = "Corpse yautja"
+	var/xenovictim = FALSE
+
+/datum/equipment_preset/yautja/blooded/corpse/load_status(mob/living/carbon/human/yautja/new_yautja)
+	. = ..(new_yautja)
+
+	// These two values matter because they are checked on death for weed_food
+	new_yautja.undefibbable = TRUE
+	SEND_SIGNAL(new_yautja, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	if(xenovictim)
+		new_yautja.chestburst = 2
+
+	new_yautja.death(create_cause_data("existing"), TRUE) //Kills the new mob
+	new_yautja.apply_damage(100, BRUTE)
+	new_yautja.apply_damage(100, BRUTE)
+	new_yautja.apply_damage(100, BRUTE)
+	if(xenovictim)
+		var/datum/internal_organ/organ
+		var/i
+		for(i in list("heart","lungs"))
+			organ = new_yautja.internal_organs_by_name[i]
+			new_yautja.internal_organs_by_name -= i
+			new_yautja.internal_organs -= organ
+		new_yautja.update_burst()
+		//buckle to nest
+		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
+		if(nest)
+			new_yautja.buckled = nest
+			new_yautja.setDir(nest.dir)
+			nest.buckled_mob = new_yautja
+			nest.afterbuckle(new_yautja)
+	new_yautja.spawned_corpse = TRUE
+	new_yautja.updatehealth()
+	new_yautja.pulse = PULSE_NONE

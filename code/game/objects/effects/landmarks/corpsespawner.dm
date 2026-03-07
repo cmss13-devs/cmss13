@@ -7,18 +7,18 @@
 	name = "Unknown"
 	icon_state = "corpse_spawner"
 	var/equip_path = null
-	var/yautja = FALSE
+	var/special_species = FALSE
 
 /obj/effect/landmark/corpsespawner/Initialize(mapload, ...)
 	. = ..()
-	if(yautja)
-		GLOB.yautja_corpse_spawns += src
+	if(special_species)
+		GLOB.special_corpse_spawns += src
 	else
 		GLOB.corpse_spawns += src
 
 /obj/effect/landmark/corpsespawner/Destroy()
-	if(yautja)
-		GLOB.yautja_corpse_spawns -= src
+	if(special_species)
+		GLOB.special_corpse_spawns -= src
 	else
 		GLOB.corpse_spawns -= src
 	return ..()
@@ -421,6 +421,6 @@
 	equip_path = /datum/equipment_preset/corpse/point_loma/usasf/burst
 
 /obj/effect/landmark/corpsespawner/corpse/yautja
-	yautja = TRUE
-	equip_path = /datum/equipment_preset/corpse/yautja
+	special_species = SPECIES_YAUTJA
+	equip_path = /datum/equipment_preset/yautja/blooded/corpse
 

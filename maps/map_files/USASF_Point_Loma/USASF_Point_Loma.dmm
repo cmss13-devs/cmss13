@@ -26729,6 +26729,11 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
+"bxU" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/effect/landmark/corpsespawner/corpse/yautja,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28143,7 +28148,11 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bBF" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	dir = 2;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
+	},
 /turf/open/new_varadero,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bBG" = (
@@ -28541,10 +28550,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
-"bCC" = (
-/obj/structure/machinery/door_control/railings,
-/turf/closed/wall/new_varadero,
-/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bCD" = (
 /obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
@@ -28736,7 +28741,7 @@
 "bDm" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	dir = 4;
-	id = "ATC_Lobby_Lockdown";
+	id = "cannon";
 	name = "ATC Lobby Lockdown"
 	},
 /turf/open/floor/plating,
@@ -45403,7 +45408,9 @@
 /area/point_loma/airbase/interior/research)
 "cFF" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	id = "cannon"
+	dir = 2;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
 	},
 /turf/open/new_varadero/alt_concrete/grate_s,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
@@ -45989,6 +45996,11 @@
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cHw" = (
 /obj/structure/window/framed/new_varadero/foundation,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	dir = 2;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
+	},
 /turf/open/floor/plating,
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cHx" = (
@@ -46014,7 +46026,7 @@
 "cHA" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/closed/wall/new_varadero,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cHB" = (
 /obj/structure/prop/new_varadero_props/radar_dish,
 /obj/structure/prop/new_varadero_props/radar_dish_lights,
@@ -46098,6 +46110,9 @@
 	pixel_x = -7;
 	pixel_y = 12
 	},
+/obj/structure/machinery/door_control{
+	id = "cannon"
+	},
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cHN" = (
@@ -46124,7 +46139,7 @@
 	locked = 1
 	},
 /turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cHQ" = (
 /obj/structure/cable/white{
 	color = "#550d0d";
@@ -46172,7 +46187,7 @@
 	layer = 5
 	},
 /turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cHY" = (
 /obj/structure/cable/white{
 	color = "#550d0d";
@@ -46216,8 +46231,13 @@
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "cIf" = (
 /obj/structure/window/framed/new_varadero/foundation,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	dir = 4;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
+	},
 /turf/open/floor/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cIg" = (
 /turf/open/new_varadero/taupe_concrete/warning/corner,
 /area/point_loma/airbase/exterior/crash_site)
@@ -46275,14 +46295,6 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cIt" = (
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	dir = 4;
-	id = "ATC_Lobby_Lockdown";
-	name = "ATC Lobby Lockdown"
-	},
-/turf/open/floor/plating,
-/area/point_loma/airbase/exterior/north)
 "cIu" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
@@ -46332,9 +46344,6 @@
 "cID" = (
 /turf/open/floor/corsat/red/northeast,
 /area/point_loma/research_facility/super_death_cannon/cannon)
-"cIE" = (
-/turf/closed/wall/new_varadero,
-/area/point_loma/airbase/exterior/north)
 "cIF" = (
 /obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -46354,21 +46363,23 @@
 "cIJ" = (
 /obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/corsat/red/northwest,
-/area/point_loma/airbase/exterior/north)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cIK" = (
 /obj/structure/platform/metal/strata,
 /turf/open/floor/corsat/red/north,
-/area/point_loma/airbase/exterior/north)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cIL" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/corsat/red/northeast,
-/area/point_loma/airbase/exterior/north)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cIM" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	id = "cannon"
+	dir = 2;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
 	},
 /turf/open/floor/plating,
-/area/point_loma/airbase/exterior/north)
+/area/point_loma/research_facility/super_death_cannon/cannon)
 "cIN" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/corsat/brown,
@@ -158314,8 +158325,8 @@ aOV
 aOV
 aOV
 aOE
-cIE
-cIE
+bUT
+bUT
 bUT
 cIz
 cFV
@@ -159055,9 +159066,9 @@ cFO
 cHM
 cFK
 aJl
+bUT
 bUz
 bUz
-bCC
 bBR
 bBR
 bBR
@@ -159952,8 +159963,8 @@ aOV
 aOV
 aOV
 aOE
-cIE
-cIE
+bUT
+bUT
 bUT
 cID
 cIl
@@ -160136,11 +160147,11 @@ aOV
 aOE
 aOF
 aOF
-cIE
-cIE
-cIt
-cIt
-cIt
+bUT
+bUT
+bDm
+bDm
+bDm
 bUT
 cId
 cHV
@@ -160323,7 +160334,7 @@ aOF
 aOF
 aOF
 aOF
-bUA
+bUT
 cIe
 cHW
 cHO
@@ -160505,13 +160516,13 @@ aOF
 aOF
 aOF
 aOF
-bUA
+bUT
 cIf
 cHX
 cHP
-bUA
+bUT
 cHA
-bUA
+bUT
 bxN
 bQT
 bQT
@@ -161061,7 +161072,7 @@ bQT
 bQT
 aNI
 aNI
-clb
+bxU
 aNI
 aNI
 bQT

@@ -24,6 +24,7 @@
 
 	client.images = null
 	client.screen = null //remove hud items just in case
+	client.render_plates_shown = alist()
 	if(!hud_used)
 		create_hud()
 	if(hud_used)

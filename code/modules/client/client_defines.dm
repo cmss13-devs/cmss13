@@ -136,3 +136,8 @@
 	/// If this client has any windows scaling applied
 	var/window_scaling
 
+	/// An alist used to make checks for whether a render plate has been added to a client's screen faster.
+	/// render relay plate -> TRUE
+	/// This must be cleared whenever screen is cleared manually.
+	var/alist/render_plates_shown = alist()
+

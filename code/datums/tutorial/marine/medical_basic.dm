@@ -77,7 +77,7 @@
 	update_objective("Try not to pass out.")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.adjustOxyLoss(85)
-	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/oxy_tutorial()
 	message_to_player("<b>Dexalin Plus</b> is a miraculous medication that instantly removes all Oxy damage. Quickly, inject yourself with the <b>dexalin plus EZ autoinjector</b> before you pass out!")

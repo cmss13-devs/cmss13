@@ -56,3 +56,12 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 		var/end_tick = world.time
 		if(end_tick - start_tick)
 			warning("Global [replacetext("[I]", "InitGlobal", "")] slept during initialization!")
+
+/client/verb/cause_runtime()
+	set hidden = TRUE
+	set name = ".cause-runtime"
+
+	var/a = 1
+	var/b = 0
+
+	src << (a / b)

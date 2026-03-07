@@ -179,8 +179,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/time_till_despawn = 10 MINUTES //10 minutes-ish safe period before being despawned.
 	var/time_entered = 0 //Used to keep track of the safe period.
 	var/silent_exit = FALSE
-	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
+	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements.
 	var/no_store_pod = FALSE
+	var/willing = FALSE //True when occupant entered by themselves or agreed to be put inside.
+	var/is_aco = FALSE //Whether the occupant is the current aCO or not.
 
 /obj/structure/machinery/cryopod/right
 	dir = WEST
@@ -205,10 +207,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
 	if(occupant && !(occupant in GLOB.freed_mob_list)) //ignore freed mobs
-		//if occupant ghosted, time till despawn is severely shorter
-		if(!occupant.key && time_till_despawn == 10 MINUTES)
-			time_till_despawn -= 8 MINUTES
-		//Allow a ten minute gap between entering the pod and actually despawning.
+		//Allow a gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
 			return
 
@@ -344,11 +343,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
 	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		job.on_cryo(H)
-		if(H.assigned_squad)
-			var/datum/squad/S = H.assigned_squad
-			S.forget_marine_in_squad(H)
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(job)
+			job.on_cryo(human_occupant)
+		if(human_occupant.assigned_squad)
+			var/datum/squad/squad = human_occupant.assigned_squad
+			squad.forget_marine_in_squad(human_occupant)
 
 	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 	SSticker.mode.latejoin_update(job, -1)
@@ -387,6 +387,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	//Delete the mob.
 
 	QDEL_NULL(occupant)
+	if(is_aco)
+		SSticker.mode.ares_command_check(force=TRUE)
 	stop_processing()
 
 /obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)
@@ -401,7 +403,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		if(!isliving(G.grabbed_thing))
 			return FALSE
 
-		var/willing = FALSE //We don't want to allow people to be forced into despawning.
+		willing = FALSE //We don't want to allow people to be forced into despawning.
 		var/mob/living/M = G.grabbed_thing
 
 		if(M.stat == DEAD) //This mob is dead
@@ -417,10 +419,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				if(!M || !G || !G.grabbed_thing)
 					return FALSE
 				willing = TRUE
-		else
-			willing = TRUE
 
-		if(willing)
+		if(willing || !M.client)
 
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
@@ -510,28 +510,36 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			return
 
 		go_in_cryopod(usr)
+		willing = TRUE
 		add_fingerprint(usr)
 
 
 /obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE)
 	if(occupant)
 		return
-	mob.forceMove(src)
+
 	occupant = mob
+	if(occupant == SSticker.mode.acting_commander)
+		is_aco=TRUE
+	//if occupant ghosted, entered willingly or is the aCO, time till despawn is severely shorter
+	if((!occupant.key || willing || is_aco) && time_till_despawn == 10 MINUTES)
+		time_till_despawn -= 9 MINUTES
+
+	occupant.forceMove(src)
 	icon_state = "body_scanner_closed"
 	set_light(2)
 	time_entered = world.time
 	start_processing()
 
 	if(!silent)
-		if(mob.client)
-			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+		if(occupant.client)
+			to_chat(occupant, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+			to_chat(occupant, SPAN_BOLDNOTICE("If you ghost or close your client now, your character will permanently removed from the round in 1 minute."))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
-				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
+				occupant.client.player_details.larva_pool_time = max(occupant.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)
-		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
-			message_admins("[key_name_admin(mob)], [mob.job], has entered \a [src] at [location] after playing for [duration2text(world.time - mob.life_time_start)].")
+		if(occupant.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
+			message_admins("[key_name_admin(occupant)], [occupant.job], has entered \a [src] at [location] after playing for [duration2text(world.time - occupant.life_time_start)].")
 		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 	silent_exit = silent
 

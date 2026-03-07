@@ -108,10 +108,6 @@
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
-"cy" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/shore_corner2/west,
-/area/desert_dam/exterior/river/riverside_south)
 "cG" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -247,16 +243,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
-"gL" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_south)
-"gP" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow_edge/northeast,
-/area/desert_dam/exterior/river/riverside_south)
 "gQ" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -336,10 +322,6 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"lH" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_south)
 "lZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -457,10 +439,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
-"qk" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_south)
 "ql" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/cleanable/dirt,
@@ -475,10 +453,6 @@
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
-"qM" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow_edge/northeast,
-/area/desert_dam/exterior/river/riverside_south)
 "qQ" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -510,10 +484,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"rx" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/desert_dam/exterior/river/riverside_south)
 "rA" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -557,11 +527,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
-"tg" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_south)
 "tr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -618,9 +583,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"vL" = (
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_south)
 "wa" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/desert/dirt,
@@ -639,11 +601,6 @@
 "wf" = (
 /turf/template_noop,
 /area/template_noop)
-"wg" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_south)
 "wH" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
@@ -693,11 +650,6 @@
 "xN" = (
 /turf/open/floor/plating/warnplate/east,
 /area/template_noop)
-"xO" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/shore_edge1/east,
-/area/desert_dam/exterior/river/riverside_south)
 "xR" = (
 /obj/structure/inflatable,
 /turf/open/asphalt/tile,
@@ -720,10 +672,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"yC" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_south)
 "yE" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -770,11 +718,6 @@
 /obj/structure/inflatable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
-"AW" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_south)
 "BA" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
@@ -788,11 +731,6 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
-"BU" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/shore_corner2/west,
-/area/desert_dam/exterior/river/riverside_south)
 "Cb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -916,10 +854,6 @@
 /obj/structure/fence,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_medical)
-"Fy" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/desert/desert_shore/shore_edge1/east,
-/area/desert_dam/exterior/river/riverside_south)
 "FZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
@@ -944,11 +878,6 @@
 /obj/structure/largecrate/supply/medicine/blood,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"GP" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow_corner,
-/area/desert_dam/exterior/river/riverside_south)
 "GV" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
@@ -1064,10 +993,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
-"KJ" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow_corner,
-/area/desert_dam/exterior/river/riverside_south)
 "KM" = (
 /obj/structure/barricade/sandbags{
 	dir = 1
@@ -1233,10 +1158,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
-"PP" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_south)
 "PY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
@@ -1352,10 +1273,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"St" = (
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_south)
 "SF" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/asphalt,
@@ -1605,10 +1522,10 @@ OX
 OX
 PZ
 Xd
-gL
-yC
-yC
-yC
+wf
+wf
+wf
+wf
 "}
 (2,1,1) = {"
 Fj
@@ -1628,10 +1545,10 @@ lg
 lg
 gQ
 PZ
-GP
-yC
-yC
-yC
+wf
+wf
+wf
+wf
 "}
 (3,1,1) = {"
 Yq
@@ -1651,10 +1568,10 @@ cG
 cG
 lg
 MV
-gP
-KJ
-yC
-yC
+wf
+wf
+wf
+wf
 "}
 (4,1,1) = {"
 Ih
@@ -1674,10 +1591,10 @@ cG
 cG
 lg
 MV
-AW
-qM
-KJ
-yC
+wf
+wf
+wf
+wf
 "}
 (5,1,1) = {"
 cG
@@ -1697,10 +1614,10 @@ Iu
 cG
 lg
 MV
-BU
-PP
-rx
-yC
+wf
+wf
+wf
+wf
 "}
 (6,1,1) = {"
 rC
@@ -1720,10 +1637,10 @@ hp
 cG
 lg
 MV
-tg
-PP
-qM
-KJ
+wf
+wf
+wf
+wf
 "}
 (7,1,1) = {"
 NH
@@ -1743,10 +1660,10 @@ vb
 cG
 lg
 MV
-xO
-cy
-PP
-qM
+wf
+wf
+wf
+wf
 "}
 (8,1,1) = {"
 Yq
@@ -1766,10 +1683,10 @@ hp
 cG
 lg
 MV
-lH
-qk
-PP
-PP
+wf
+wf
+wf
+wf
 "}
 (9,1,1) = {"
 aW
@@ -1789,10 +1706,10 @@ Fb
 ag
 gQ
 XO
-lH
-Fy
-cy
-PP
+wf
+wf
+wf
+wf
 "}
 (10,1,1) = {"
 Ch
@@ -1812,10 +1729,10 @@ Fb
 cG
 lg
 MV
-lH
-vL
-Fy
-cy
+wf
+wf
+wf
+wf
 "}
 (11,1,1) = {"
 Uj
@@ -1835,10 +1752,10 @@ Fb
 cG
 lg
 MV
-lH
-vL
-vL
-Fy
+wf
+wf
+wf
+wf
 "}
 (12,1,1) = {"
 Uj
@@ -1858,10 +1775,10 @@ ql
 cG
 lg
 MV
-lH
-vL
-vL
-vL
+wf
+wf
+wf
+wf
 "}
 (13,1,1) = {"
 Uj
@@ -1881,10 +1798,10 @@ hp
 cG
 lg
 MV
-lH
-vL
-vL
-vL
+wf
+wf
+wf
+wf
 "}
 (14,1,1) = {"
 Uj
@@ -1904,10 +1821,10 @@ Nh
 cG
 lg
 MV
-lH
-vL
-vL
-vL
+wf
+wf
+wf
+wf
 "}
 (15,1,1) = {"
 Uj
@@ -1927,10 +1844,10 @@ hp
 cG
 lg
 MV
-wg
-St
-St
-St
+wf
+wf
+wf
+wf
 "}
 (16,1,1) = {"
 cQ

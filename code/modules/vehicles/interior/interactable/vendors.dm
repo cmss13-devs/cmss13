@@ -14,8 +14,7 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -50,14 +49,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
+		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
@@ -163,8 +156,8 @@
 			return
 
 		being_restocked = FALSE
-		for(var/obj/item/I in range(1, src))
-			if(stock(I))
+		for(var/obj/item/object in range(1, src))
+			if(stock(object))
 				being_restocked = TRUE
 				break
 
@@ -305,61 +298,61 @@
 		if(user)
 			to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
 		return FALSE
-	var/list/R
+	var/list/product
 
 	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
 	var/corrected_path = return_corresponding_type(item_to_stock.type)
 	var/stack_restock = 0 //used for making restocking stacked stuff much better.
 
-	for(R in (listed_products))
-		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
+	for(product in (listed_products))
+		if(item_to_stock.type == product[3] || corrected_path && corrected_path == product[3])
 			if(!check_if_item_is_good_to_restock(item_to_stock, user))
 				return
 
 			//various stacks handling
 			if(istype(item_to_stock, /obj/item/stack))
-				var/obj/item/stack/S = item_to_stock
+				var/obj/item/stack/stocking_objects = item_to_stock
 				if(istype(item_to_stock, /obj/item/stack/folding_barricade))
-					if(S.amount != 3)
+					if(stocking_objects.amount != 3)
 						if(user)
-							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [S] stack to make it a stack of 3 before restocking."))
+							to_chat(user, SPAN_WARNING("\The [stocking_objects] are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [stocking_objects] stack to make it a stack of 3 before restocking."))
 						return FALSE
 				else if(istype(item_to_stock, /obj/item/stack/sandbags))
-					if(S.amount < 5)
+					if(stocking_objects.amount < 5)
 						if(user)
-							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. You need \the [S] stack of at least 5 to restock it."))
+							to_chat(user, SPAN_WARNING("\The [stocking_objects] are being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. You need \the [stocking_objects] stack of at least 5 to restock it."))
 						return FALSE
 					else
-						stack_restock = floor(S.amount / 5)
+						stack_restock = floor(stocking_objects.amount / 5)
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
 				else
-					if(S.amount < 10)
+					if(stocking_objects.amount < 10)
 						if(user)
-							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. You need \the [S] stack of at least 10 to restock it."))
+							to_chat(user, SPAN_WARNING("\The [stocking_objects] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. You need \the [stocking_objects] stack of at least 10 to restock it."))
 						return FALSE
 					else
-						stack_restock = floor(S.amount / 10)
+						stack_restock = floor(stocking_objects.amount / 10)
 
 			//item we are restocking is a stack and we need to conveniently restock it
 			//instead of demanding user to split it into stacks of appropriate amount
 			//if there are any left overs in stack after we restock, we do not move it anywhere nor delete
 			if(stack_restock)
 				var/modifier = 10
-				var/obj/item/stack/ST = item_to_stock
+				var/obj/item/stack/stocking_objects = item_to_stock
 				if(istype(item_to_stock, /obj/item/stack/sandbags))
 					modifier = 5
-				if(ST.amount > stack_restock * modifier)
-					ST.amount -= stack_restock * modifier
-					ST.update_icon()
+				if(stocking_objects.amount > stack_restock * modifier)
+					stocking_objects.amount -= stack_restock * modifier
+					stocking_objects.update_icon()
 					item_to_stock = null //we have left overs, so we don't delete stack
 
-				R[2] += stack_restock
+				product[2] += stack_restock
 				if(vend_flags & VEND_LOAD_AMMO_BOXES)
-					update_derived_ammo_and_boxes_on_add(R)
+					update_derived_ammo_and_boxes_on_add(product)
 			else
-				R[2]++
+				product[2]++
 				if(vend_flags & VEND_LOAD_AMMO_BOXES)
-					update_derived_ammo_and_boxes_on_add(R)
+					update_derived_ammo_and_boxes_on_add(product)
 
 			if(item_to_stock)
 				if(user)
@@ -369,14 +362,14 @@
 						user.temp_drop_inv_item(item_to_stock)
 
 				if(isstorage(item_to_stock.loc)) //inside a storage item
-					var/obj/item/storage/S = item_to_stock.loc
-					S.remove_from_storage(item_to_stock, user.loc)
+					var/obj/item/storage/stocking_objects = item_to_stock.loc
+					stocking_objects.remove_from_storage(item_to_stock, user.loc)
 
 				qdel(item_to_stock)
 
 			if(user)
-				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
-				SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
+				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [product[1]]."),
+				SPAN_NOTICE("You stock \the [src] with \a [product[1]]."))
 
 			updateUsrDialog()
 			return TRUE//We found our item, no reason to go on.
@@ -441,7 +434,7 @@
 		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),
 		list("Table", 3, /obj/item/frame/table, VENDOR_ITEM_REGULAR),
 		list("Rack", 3, /obj/item/frame/rack, VENDOR_ITEM_REGULAR),
-		list("Cliboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
+		list("Clipboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
 		list("Pen", 4, /obj/item/tool/pen, VENDOR_ITEM_REGULAR),
 		list("Chair", 2, /obj/item/weapon/twohanded/folded_metal_chair, VENDOR_ITEM_REGULAR),
 

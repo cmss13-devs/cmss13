@@ -48082,9 +48082,7 @@
 /obj/effect/acid_hole{
 	explo_proof = 1
 	},
-/turf/closed/shuttle/dropship4/WY/StarGlider{
-	icon_state = "79"
-	},
+/turf/closed/shuttle/lifeboat,
 /area/navalis/oob/water)
 "wuV" = (
 /obj/effect/decal/cleanable/dirt,

@@ -105,6 +105,8 @@
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
 				I = image('icons/mob/hud/human_status.dmi', src, "")
+		if(hud in /datum/mob_hud/xeno::hud_icons)
+			I.appearance_flags |= RESET_ALPHA
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -325,7 +327,7 @@
 		if(W.flags_item & TWOHANDED)
 			W.unwield(src)
 
-//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
+//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't equip need to be done before! Use mob_can_equip() for that task.
 //In most cases you will want to use equip_to_slot_if_possible()
 /mob/proc/equip_to_slot(obj/item/W as obj, slot, disable_warning = FALSE)
 	return

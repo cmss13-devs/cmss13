@@ -254,6 +254,9 @@
 	/// the icon for spinning the gun
 	var/temp_icon = null
 
+	/// for referencing the timer subsystem, such as the wield queue timer
+	var/gun_timer_id
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -402,47 +405,59 @@
 	//Get default gun config values
 	set_gun_config_values()
 
+	var/hitsound_override = FALSE
+	var/attack_verb_override = FALSE
 	//Add attachment bonuses
 	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(!R)
+		var/obj/item/attachable/attached_attachment = attachments[slot]
+		if(!attached_attachment)
 			continue
-		modify_fire_delay(R.delay_mod)
-		accuracy_mult += R.accuracy_mod
-		accuracy_mult_unwielded += R.accuracy_unwielded_mod
-		scatter += R.scatter_mod
-		scatter_unwielded += R.scatter_unwielded_mod
-		bonus_proj_scatter += R.bonus_proj_scatter_mod
-		damage_mult += R.damage_mod
-		velocity_add += R.velocity_mod
-		damage_falloff_mult += R.damage_falloff_mod
-		damage_buildup_mult += R.damage_buildup_mod
-		effective_range_min += R.range_min_mod
-		effective_range_max += R.range_max_mod
-		projectile_max_range_add += R.projectile_max_range_mod
-		recoil += R.recoil_mod
-		burst_scatter_mult += R.burst_scatter_mod
-		modify_burst_amount(R.burst_mod)
-		recoil_unwielded += R.recoil_unwielded_mod
-		aim_slowdown += R.aim_speed_mod
-		wield_delay += R.wield_delay_mod
-		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
-		force += R.melee_mod
-		w_class += R.size_mod
-		if(!R.hidden)
-			hud_offset += R.hud_offset_mod
-			pixel_x += R.hud_offset_mod
+		modify_fire_delay(attached_attachment.delay_mod)
+		accuracy_mult += attached_attachment.accuracy_mod
+		accuracy_mult_unwielded += attached_attachment.accuracy_unwielded_mod
+		scatter += attached_attachment.scatter_mod
+		scatter_unwielded += attached_attachment.scatter_unwielded_mod
+		bonus_proj_scatter += attached_attachment.bonus_proj_scatter_mod
+		damage_mult += attached_attachment.damage_mod
+		velocity_add += attached_attachment.velocity_mod
+		damage_falloff_mult += attached_attachment.damage_falloff_mod
+		damage_buildup_mult += attached_attachment.damage_buildup_mod
+		effective_range_min += attached_attachment.range_min_mod
+		effective_range_max += attached_attachment.range_max_mod
+		projectile_max_range_add += attached_attachment.projectile_max_range_mod
+		recoil += attached_attachment.recoil_mod
+		burst_scatter_mult += attached_attachment.burst_scatter_mod
+		modify_burst_amount(attached_attachment.burst_mod)
+		recoil_unwielded += attached_attachment.recoil_unwielded_mod
+		aim_slowdown += attached_attachment.aim_speed_mod
+		wield_delay += attached_attachment.wield_delay_mod
+		movement_onehanded_acc_penalty_mult += attached_attachment.movement_onehanded_acc_penalty_mod
+		force += attached_attachment.melee_mod
+		w_class += attached_attachment.size_mod
+		if(attached_attachment.hitsound && attached_attachment.sound_override)
+			hitsound = attached_attachment.hitsound
+			hitsound_override = TRUE
+		if(attached_attachment.attack_verb && attached_attachment.verb_override)
+			attack_verb = attached_attachment.attack_verb
+			attack_verb_override = TRUE
+		if(!attached_attachment.hidden)
+			hud_offset += attached_attachment.hud_offset_mod
+			pixel_x += attached_attachment.hud_offset_mod
 
-		for(var/trait in R.gun_traits)
+		for(var/trait in attached_attachment.gun_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_ATTACHMENT(slot))
+	if(!hitsound_override)
+		hitsound = initial(hitsound)
+	if(!attack_verb_override)
+		attack_verb = initial(attack_verb)
 
 	//Refresh location in HUD.
 	if(ishuman(loc))
-		var/mob/living/carbon/human/M = loc
-		if(M.l_hand == src)
-			M.update_inv_l_hand()
-		else if(M.r_hand == src)
-			M.update_inv_r_hand()
+		var/mob/living/carbon/human/human_user = loc
+		if(human_user.l_hand == src)
+			human_user.update_inv_l_hand()
+		else if(human_user.r_hand == src)
+			human_user.update_inv_r_hand()
 
 	setup_firemodes()
 
@@ -463,45 +478,45 @@
 	if(prob(railchance) && !attachments["rail"]) // Rail
 		attachmentchoice = SAFEPICK(random_spawn_rail)
 		if(attachmentchoice)
-			var/obj/item/attachable/R = new attachmentchoice(src)
-			R.Attach(src)
-			update_attachable(R.slot)
+			var/obj/item/attachable/attached_attachment = new attachmentchoice(src)
+			attached_attachment.Attach(src)
+			update_attachable(attached_attachment.slot)
 			attachmentchoice = FALSE
 
 	var/muzzlechance = random_muzzle_chance
 	if(prob(muzzlechance) && !attachments["muzzle"]) // Muzzle
 		attachmentchoice = SAFEPICK(random_spawn_muzzle)
 		if(attachmentchoice)
-			var/obj/item/attachable/M = new attachmentchoice(src)
-			M.Attach(src)
-			update_attachable(M.slot)
+			var/obj/item/attachable/attached_muzzle = new attachmentchoice(src)
+			attached_muzzle.Attach(src)
+			update_attachable(attached_muzzle.slot)
 			attachmentchoice = FALSE
 
 	var/underchance = random_under_chance
 	if(prob(underchance) && !attachments["under"]) // Underbarrel
 		attachmentchoice = SAFEPICK(random_spawn_under)
 		if(attachmentchoice)
-			var/obj/item/attachable/U = new attachmentchoice(src)
-			U.Attach(src)
-			update_attachable(U.slot)
+			var/obj/item/attachable/attached_under = new attachmentchoice(src)
+			attached_under.Attach(src)
+			update_attachable(attached_under.slot)
 			attachmentchoice = FALSE
 
 	var/stockchance = random_stock_chance
 	if(prob(stockchance) && !attachments["stock"]) // Stock
 		attachmentchoice = SAFEPICK(random_spawn_stock)
 		if(attachmentchoice)
-			var/obj/item/attachable/S = new attachmentchoice(src)
-			S.Attach(src)
-			update_attachable(S.slot)
+			var/obj/item/attachable/attached_stock = new attachmentchoice(src)
+			attached_stock.Attach(src)
+			update_attachable(attached_stock.slot)
 			attachmentchoice = FALSE
 
 	var/cosmeticchance = random_cosmetic_chance
 	if(prob(cosmeticchance) && !attachments["cosmetic"]) // Cosmetic
 		attachmentchoice = SAFEPICK(random_spawn_cosmetic)
 		if(attachmentchoice)
-			var/obj/item/attachable/C = new attachmentchoice(src)
-			C.Attach(src)
-			update_attachable(C.slot)
+			var/obj/item/attachable/attached_cosmetic = new attachmentchoice(src)
+			attached_cosmetic.Attach(src)
+			update_attachable(attached_cosmetic.slot)
 			attachmentchoice = FALSE
 
 /obj/item/weapon/gun/proc/handle_starting_attachment()
@@ -551,6 +566,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
 
+	if(gun_timer_id) // just in case too
+		deltimer(gun_timer_id)
+		gun_timer_id = null
+
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
@@ -595,10 +614,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		dat += "The safety's off!<br>"
 
 	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(!R)
+		var/obj/item/attachable/attached_attachment = attachments[slot]
+		if(!attached_attachment)
 			continue
-		dat += R.handle_attachment_description()
+		dat += attached_attachment.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
@@ -772,12 +791,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
 
-	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+	// dont want a wield when it's not on the user, obviously
+	if(loc != user)
 		return
 
-	var/obj/item/I = user.get_inactive_hand()
-	if(I)
-		if(!user.drop_inv_item_on_ground(I))
+	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_WIELD_ASSIST)
+			if(gun_timer_id)
+				return TRUE
+
+			gun_timer_id = addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+			if(wield_delay > WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
+				to_chat(user, SPAN_NOTICE("You start readying yourself to wield \the [src]..."))
+			if(wield_delay >= WIELD_DELAY_SLOW) // for the more slower wielding weapons
+				user.balloon_alert(user, "wielding")
+
+			return TRUE
+		return
+
+	gun_timer_id = null
+
+	var/obj/item/item = user.get_inactive_hand()
+	if(item)
+		if(!user.drop_inv_item_on_ground(item))
 			return
 
 	if(ishuman(user))
@@ -812,7 +849,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
 
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()

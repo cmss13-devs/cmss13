@@ -7,8 +7,10 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
+	/// Multiplier on the base RESERVE_HUNT_COOLDOWN when a given ERT is selected; 1 is no change.
+	var/timer_mult = 1
 	var/hunt_name
-	var/message = "You are still expected to uphold the RP of the standard as this character!"
+	var/message = "You are still expected to uphold RP standards as this character!"
 	var/mercs = 0
 	var/royal_marines= 0
 	var/upp = 0
@@ -25,6 +27,7 @@
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds - Multi Faction - Small"
 	hunt_name = "Multi Faction (small)"
+	timer_mult = 1.25 // 25 minutes
 	mob_max = 4
 	mob_min = 1
 	max_clf = 1
@@ -39,10 +42,10 @@
 		message_all_yautja("Not enough humans in storage for the hunt to start.")
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
-		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
-	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -84,13 +87,13 @@
 		var/list/hunted_types = list(/datum/equipment_preset/pmc/pmc_standard/hunted, /datum/equipment_preset/pmc/pmc_medic/hunted, /datum/equipment_preset/pmc/technician/hunted, /datum/equipment_preset/goon/standard/hunted, /datum/equipment_preset/goon/lead/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
-		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched infront of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
+		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched in front of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
 	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
 		misc++
 		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
-		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. Its time to put your survival skills to the test."))
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
 	else
 		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
 		var/hunted_type = pick(hunted_types)
@@ -103,6 +106,7 @@
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
+	timer_mult = 1.4 // 28 minutes
 	mob_max = 6
 	mob_min = 2
 	max_clf = 2
@@ -112,10 +116,10 @@
 	max_misc = 2
 	max_mercs = 1
 
-
 /datum/emergency_call/pred/mixed/hard
 	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
+	timer_mult = 1.6 // 32 minutes
 	mob_max = 8
 	mob_min = 3
 	max_clf = 2
@@ -128,6 +132,7 @@
 /datum/emergency_call/pred/mixed/harder
 	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
+	timer_mult = 1.8 // 36 minutes
 	mob_max = 12
 	mob_min = 4
 	max_clf = 2
@@ -154,7 +159,8 @@
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
-		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -194,6 +200,7 @@
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"
 	hunt_name = "Serpents (group)"
+	timer_mult = 1.2 // 24 minutes
 	mob_max = 6
 	mob_min = 3
 	hostility = TRUE
@@ -203,11 +210,93 @@
 /datum/emergency_call/pred/xeno/hard
 	name = "Hunting Grounds - Xenos - Large"
 	hunt_name = "Serpents (large)"
+	timer_mult = 1.4 // 28 minutes
 	mob_max = 8
 	mob_min = 4
 	hostility = TRUE
 	max_xeno_t3 = 3
 	max_xeno_t2 = 3
+
+/datum/emergency_call/pred/mixed_elite // uscm are "fill-ins" for this like normal multi faction, so they do not need vars for their numbers
+	name = "Hunting Grounds - Elite Multi Faction - Small"
+	hunt_name = "Elite Multi Faction (small)"
+	timer_mult = 1.5 // 30 minutes
+	mob_max = 4
+	mob_min = 1
+	var/wy_elite = 0
+	var/upp_elite = 0
+	var/max_wy_elite = 1
+	var/max_upp_elite = 2
+
+/datum/emergency_call/pred/mixed_elite/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(length(members) < mob_min)
+		message_all_yautja("Not enough elite humans in storage for the hunt to start.")
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
+	else
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
+
+/datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return
+
+	var/mob/living/carbon/human/hunted = new(spawn_loc)
+
+	if(player)
+		player.transfer_to(hunted, TRUE)
+	else
+		hunted.create_hud()
+
+	if(wy_elite < max_wy_elite && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_PMC))
+		wy_elite++
+		var/list/hunted_types = list(/datum/equipment_preset/pmc/commando/hunted/standard, /datum/equipment_preset/pmc/commando/hunted/gunner, /datum/equipment_preset/pmc/commando/hunted/leader)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("Everything for the company. Having risen the ranks of Weyland-Yutani's Private Military Contractors, you and your team were employed as exceptionally skilled mercenaries, performing work that the company does not keep on-record. Unlike most others, you were well aware of the threat you were facing, but on a mission to capture a live Yautja subject, your team ended up encountering far more than they bargained for, and you were incapacitated with alien weaponry and captured. Dazed, you wake up not knowing where you are."))
+	else if(upp_elite < max_upp_elite && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_UPP))
+		upp_elite++
+		var/list/hunted_types = list(/datum/equipment_preset/upp/commando/hunted, /datum/equipment_preset/upp/commando/medic/hunted, /datum/equipment_preset/upp/commando/leader/hunted)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("I'm a cut above the rest. While the UPP's claims in areas of space like the Neroid Sector remain stationed by forces like the 17th 'Smoldering Sons', it is Kommandos like you that acted in your government's interest in clandestine operations beyond their borders. With cutting-edge technology and deadly weaponry to boot, your team handled missions often considered too high-profile to be seen in the public eye. On one operation, your squad met another cloaked target, who took you away before knocking you out cold - only for your eyes to now open here."))
+	else
+		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/marsoc, /datum/equipment_preset/uscm/hunted/marsoc/sg, /datum/equipment_preset/uscm/hunted/marsoc/sl)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("My team is number one. Far above most marines in training and equipment, your squad of Marine Raiders often dealt with high-profile missions that demanded extreme prejudice and absolute secrecy, alongside overbearing force. The last mission you were on had your squad clearing out a strange dig site, only to come into contact with several unknown hostile humanoids, one of which barely managed to knock you out after a prolonged battle. With your head spinning, you wake up in a strange place."))
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
+	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+
+/datum/emergency_call/pred/mixed_elite/medium
+	name = "Hunting Grounds - Elite Multi Faction - Medium"
+	hunt_name = "Elite Multi Faction (group)"
+	timer_mult = 2 // 40 minutes
+	mob_max = 6
+	mob_min = 2
+	max_wy_elite = 2
+	max_upp_elite = 2
+
+/datum/emergency_call/pred/mixed_elite/hard
+	name = "Hunting Grounds - Elite Multi Faction - Large"
+	hunt_name = "Elite Multi Faction (large)"
+	timer_mult = 2.5 // 50 minutes
+	mob_max = 8
+	mob_min = 3
+	max_wy_elite = 3
+	max_upp_elite = 3
+
+/datum/emergency_call/pred/mixed_elite/harder
+	name = "Hunting Grounds - Elite Multi Faction - Larger"
+	hunt_name = "Elite Multi Faction (larger)"
+	timer_mult = 3 // 1 hour, make it count dude
+	mob_max = 12
+	mob_min = 4
+	max_wy_elite = 4
+	max_upp_elite = 5
 
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Template"
@@ -228,6 +317,9 @@
 /datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/youngblood_candidates_clean = list()
 	for(var/datum/mind/youngblood_candidate in candidates_list)
+		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current, ERT_JOB_YOUNGBLOOD))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you are already whitelisted for predator or you are job banned from youngblood."))
+			continue
 		if(check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you have already reached the maximum time allowed for Youngblood, please consider applying for Predator on the forums."))
 			continue

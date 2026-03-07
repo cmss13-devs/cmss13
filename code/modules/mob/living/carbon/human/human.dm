@@ -1610,7 +1610,7 @@
 	. = ..(mapload, SYNTH_K9)
 
 /mob/living/carbon/human/resist_fire()
-	if(isyautja(src))
+	if(isyautja(src) || isthrall(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
@@ -1634,7 +1634,7 @@
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
-	if(isyautja(src))
+	if(isyautja(src) || isthrall(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
@@ -1835,6 +1835,8 @@
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
+
+	qdel(new_player)
 
 /mob/living/carbon/human/point_to_atom(atom/A, turf/T)
 	if(isitem(A))

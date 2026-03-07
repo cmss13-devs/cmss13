@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -1367,6 +1368,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1374,6 +1381,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 

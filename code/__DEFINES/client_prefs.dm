@@ -65,6 +65,8 @@
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
 ///Toggles whether activating marine leader orders will be spoken or not
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
+///Toggles the wield assist system for guns
+#define TOGGLE_WIELD_ASSIST (1<<22)
 
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================

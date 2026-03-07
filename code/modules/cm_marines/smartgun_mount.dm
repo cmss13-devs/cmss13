@@ -65,7 +65,7 @@
 	if(rounds)
 		. += "It has [rounds] out of 700 rounds."
 	else
-		. += "It seems to be lacking a ammo drum."
+		. += "It seems to be lacking an ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	var/icon_name = "M56D_gun"
@@ -90,7 +90,7 @@
 			update_icon()
 			return
 		else
-			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
+			to_chat(usr, "The M56D already has an ammo drum mounted on it!")
 		return
 
 /obj/item/device/m56d_gun/attack_self(mob/user)

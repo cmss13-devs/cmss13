@@ -11977,9 +11977,9 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
 "aIv" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/obj/effect/decal/warning_stripes/asteroid,
-/turf/open/floor/new_varadero/alt_concrete/floor,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
 "aIw" = (
 /obj/structure/pipes/vents/pump,
@@ -26680,14 +26680,6 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
-"bxU" = (
-/obj/structure/prop/static_tank/water,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/west)
-"bxV" = (
-/obj/structure/reagent_dispensers/tank/water,
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/airbase/exterior/west)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -26732,17 +26724,22 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byb" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/snacks/bigbiteburger{
-	pixel_y = 8
-	},
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/obj/structure/closet/firecloset/full,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/shiva/yellow/southwest,
 /area/point_loma/airbase/interior/fire_station)
 "byc" = (
-/obj/item/weapon/twohanded/folded_metal_chair{
-	pixel_y = 9
+/obj/structure/surface/rack,
+/obj/item/tool/extinguisher{
+	pixel_y = 6;
+	pixel_x = 6
 	},
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/obj/item/tool/extinguisher{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/fire_station)
 "byd" = (
 /obj/structure/stairs/multiz/down{
@@ -26795,17 +26792,12 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "byk" = (
-/obj/effect/acid_hole{
-	dir = 8
-	},
-/turf/closed/wall/new_varadero/concrete,
+/obj/effect/decal/large_stain,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/interior/fire_station)
 "byl" = (
-/obj/structure/bed/chair{
-	pixel_y = 7;
-	pixel_x = -2
-	},
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/interior/fire_station)
 "bym" = (
 /obj/item/tool/pickaxe/jackhammer,
@@ -26817,16 +26809,16 @@
 /area/point_loma/airbase/cave/south/upper)
 "byn" = (
 /obj/structure/closet/firecloset/full,
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/turf/open/floor/shiva/yellow/northwest,
 /area/point_loma/airbase/interior/fire_station)
 "byo" = (
 /obj/structure/machinery/computer/crew/colony,
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/interior/fire_station)
 "byp" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/interior/fire_station)
 "byq" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -26852,7 +26844,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/corsat,
 /area/point_loma/airbase/interior/fire_station)
 "byu" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -33340,7 +33332,7 @@
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
 "bRM" = (
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/interior/fire_station)
 "bRN" = (
 /turf/open/floor/corsat,
@@ -33591,7 +33583,8 @@
 /turf/open/floor/shiva/redcorners,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bST" = (
-/turf/open/hybrisa/street/asphalt,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open,
+/turf/open/floor/corsat,
 /area/point_loma/airbase/interior/fire_station)
 "bSU" = (
 /obj/structure/window/framed/new_varadero/foundation,
@@ -38635,8 +38628,7 @@
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "cjJ" = (
-/obj/structure/fence/slim,
-/turf/open/new_varadero/dock_concrete,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/exterior/west)
 "cjK" = (
 /turf/open/floor/corsat/purplewhite,
@@ -38692,6 +38684,9 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
+"cjV" = (
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -42754,7 +42749,11 @@
 /area/point_loma/airbase/mining_colony/exterior/north)
 "cwT" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/new_varadero/sidewalk/sidewalkfull,
+/obj/structure/bed/chair/comfy/hybrisa/red{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
 "cwU" = (
 /obj/effect/decal/warning_stripes{
@@ -44044,6 +44043,10 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cBB" = (
+/obj/structure/bed/hybrisa/bunkbed1,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -45853,6 +45856,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
+"cHf" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
 "cHg" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -45879,6 +45888,22 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cHl" = (
+/obj/structure/surface/table/holotable/wood,
+/obj/item/tool/pen{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/toy/dice/d20{
+	pixel_x = 9
+	},
+/obj/item/paper/crumpled,
+/obj/item/toy/prize/fireripley{
+	pixel_x = -10;
+	pixel_y = 19
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
 "cHm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
@@ -46823,6 +46848,494 @@
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east,
 /turf/open_space,
 /area/point_loma/oob/sky)
+"cKA" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/point_loma/airbase/exterior/west)
+"cKB" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/airbase/exterior/west)
+"cKC" = (
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
+"cKD" = (
+/obj/structure/bed/chair,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
+"cKE" = (
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/airbase/exterior/west)
+"cKF" = (
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/airbase/exterior/west)
+"cKG" = (
+/obj/structure/prop/rock/brown/point_loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/west)
+"cKH" = (
+/obj/structure/sign/poster/pinup{
+	pixel_x = 4;
+	pixel_y = 35
+	},
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob)
+"cKI" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/airbase/exterior/west)
+"cKJ" = (
+/obj/structure/sign/safety/fire_haz,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/exterior/west)
+"cKK" = (
+/obj/structure/sink{
+	pixel_y = -8
+	},
+/obj/structure/mirror{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/exterior/west)
+"cKL" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/exterior/west)
+"cKM" = (
+/turf/open/floor/shiva/yellow/southwest,
+/area/point_loma/airbase/exterior/west)
+"cKN" = (
+/turf/open/floor/shiva/yellow,
+/area/point_loma/airbase/exterior/west)
+"cKO" = (
+/turf/open/floor/shiva/yellow/southeast,
+/area/point_loma/airbase/exterior/west)
+"cKP" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/exterior/west)
+"cKQ" = (
+/obj/structure/bed/hybrisa/bunkbed1,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/oob)
+"cKR" = (
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/oob)
+"cKS" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/point_loma/oob)
+"cKT" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/shiva/yellow/northwest,
+/area/point_loma/oob)
+"cKU" = (
+/turf/open/floor/shiva/yellowcorners/north,
+/area/point_loma/airbase/exterior/west)
+"cKV" = (
+/turf/open/floor/shiva/yellow/east,
+/area/point_loma/airbase/exterior/west)
+"cKW" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
+"cKX" = (
+/obj/structure/sign/poster/pimp,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
+"cKY" = (
+/turf/open/floor/shiva/yellow/east,
+/area/point_loma/airbase/interior/fire_station)
+"cKZ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/fire/firefighter{
+	pixel_x = -6
+	},
+/obj/item/clothing/suit/fire/firefighter{
+	pixel_x = 9
+	},
+/turf/open/floor/shiva/yellow,
+/area/point_loma/airbase/interior/fire_station)
+"cLa" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = -8
+	},
+/obj/item/clothing/head/hardhat/orange{
+	layer = 7;
+	pixel_y = 11
+	},
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/turf/open/floor/shiva/yellow,
+/area/point_loma/airbase/interior/fire_station)
+"cLb" = (
+/turf/open/floor/shiva/yellow,
+/area/point_loma/airbase/interior/fire_station)
+"cLc" = (
+/turf/open/floor/shiva/yellowcorners/west,
+/area/point_loma/airbase/interior/fire_station)
+"cLd" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/fire_station)
+"cLe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLf" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLg" = (
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLh" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/yellow/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_y = 10;
+	pixel_x = -5
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLj" = (
+/turf/open/floor/shiva/yellow/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLk" = (
+/turf/open/floor/shiva/yellow/northeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLl" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLm" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
+"cLn" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
+"cLo" = (
+/obj/structure/sign/safety/coffee,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
+"cLp" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+	autoname = 1
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/head/welding{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_x = 5
+	},
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_x = -1;
+	pixel_y = 13
+	},
+/obj/item/clothing/head/welding{
+	pixel_y = -4;
+	pixel_x = -25
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLt" = (
+/obj/structure/prop/static_tank/water,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLu" = (
+/obj/structure/prop/hybrisa/vehicles/firetruck,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLw" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLz" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLA" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/firetruck,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLC" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLD" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLE" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLF" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLG" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLH" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLI" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLJ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -26;
+	pixel_y = -13;
+	layer = 4.1
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLN" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLO" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -26;
+	pixel_y = -13;
+	layer = 4.1
+	},
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/fire_station)
+"cLP" = (
+/obj/structure/prop/static_tank/water,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLQ" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
+"cLR" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/fire_station)
 
 (1,1,1) = {"
 aug
@@ -145575,7 +146088,7 @@ bRd
 bRd
 bRd
 bRd
-bRd
+cKG
 bRd
 bPl
 bPl
@@ -145933,7 +146446,7 @@ asb
 asb
 asb
 asb
-bRd
+cKG
 bRd
 bRd
 bRd
@@ -146115,9 +146628,9 @@ bRL
 bRL
 bRL
 bRL
-bRL
+bRN
 byk
-bRL
+bRN
 bRL
 asb
 asb
@@ -146288,25 +146801,25 @@ bRd
 bRd
 asb
 bRL
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
+cLg
+cLQ
+cLP
+cLI
+cLC
+cLt
+cLt
+cLg
 bRL
 byn
 byl
 byb
 bRL
-asb
-asb
-asb
-asb
-asb
-asb
+cjV
+cjV
+cKH
+cjV
+cjV
+cjV
 asb
 asb
 asb
@@ -146470,25 +146983,25 @@ bRd
 bRd
 asb
 bRL
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
+cLf
+cLD
+cLg
+cLJ
+cLD
+cLz
+cLu
+cLg
+cLl
+cLh
+cLe
 byc
 bRL
-asb
-bxU
-bRR
-bRR
-bRR
-asb
+cKQ
+cKC
+cBB
+cKC
+cBB
+cjV
 asb
 asb
 asb
@@ -146652,25 +147165,25 @@ ajF
 ajF
 ajF
 bST
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRL
+cLg
+cLD
+cLf
+cLK
+cLE
+cLv
+cLv
+cLq
+cLm
 byo
-bRM
-bRM
-bRL
-asb
-bxV
-bRR
-bRR
-bRR
-asb
+cLf
+cKZ
+cKW
+cKR
+cKC
+cKC
+cKC
+cHf
+cjV
 asb
 asb
 asb
@@ -146834,25 +147347,25 @@ ajF
 cjm
 ajF
 bST
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRL
+cLf
+cLD
+cLf
+cLL
+cLF
+cLA
+cLw
+cLr
+cLn
 byp
 cwT
-bRM
-bRL
-asb
-bxU
-bRR
-bRR
-bRR
-asb
+cLa
+cKX
+cKS
+cKC
+cKI
+cKD
+cHl
+cjV
 asb
 asb
 asb
@@ -147016,25 +147529,25 @@ ajF
 ajF
 ajF
 bST
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRL
-bRL
+cLf
+cLD
+cLf
+cLM
+cLG
+cLB
+cLx
+cLs
+cLo
+cLi
 aIv
-bRM
+cLb
 bRL
-asb
-bRR
-bRR
-bRR
-bRR
-asb
+cKT
+cKM
+cKJ
+cjJ
+cjJ
+cjV
 asb
 asb
 asb
@@ -147198,24 +147711,24 @@ bSX
 bSX
 bSX
 bRL
+cLg
+cLD
+cLg
+cLg
+cLD
+cLf
+cLg
+cLf
+cLp
+cLj
+cLg
+cLc
 bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRR
-bRR
-bRR
-bRR
-bRR
+cKU
+cKN
+cKK
+cKE
+cKA
 cjJ
 bPH
 asb
@@ -147380,24 +147893,24 @@ bPH
 bPH
 bPH
 bRL
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRM
-bRN
-bRR
-bRR
-bRR
-bRR
-bRR
+cLf
+cLR
+cLN
+cLN
+cLH
+cLf
+cLy
+cLg
+cLg
+cLk
+cKY
+cKY
+cKY
+cKV
+cKO
+cKL
+cKF
+cKB
 cjJ
 cjh
 bPH
@@ -147565,18 +148078,18 @@ bRL
 bRL
 byt
 byt
-byt
+cLO
 bRL
 byt
 byt
 byt
 bRL
+cKW
+cLd
+cLd
 bRL
-bRL
-bRL
-bRL
-cjJ
-cjJ
+cKP
+cKP
 cjJ
 cjJ
 cjJ

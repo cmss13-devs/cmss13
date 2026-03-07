@@ -5568,7 +5568,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/minirocket/incendiary,
+/obj/structure/prop{
+	icon_state = "minirocket_inc";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aqH" = (
@@ -5609,7 +5612,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/minirocket,
+/obj/structure/prop{
+	icon_state = "minirocket";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aqP" = (
@@ -6093,9 +6099,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/rocket/harpoon,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "harpoon"
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
@@ -6108,7 +6117,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/rocket/banshee,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "banshee"
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asi" = (
@@ -6311,14 +6323,20 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/rocket/widowmaker,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "single"
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/laser_battery,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi';
+	icon_state = "laser_battery"
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asP" = (
@@ -6337,7 +6355,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/structure/ship_ammo/heavygun/antitank,
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi';
+	icon_state = "30mm_crate_hv"
+	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asR" = (
@@ -41295,6 +41316,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/prop,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "csi" = (

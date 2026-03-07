@@ -86,3 +86,28 @@
   - bugfix: fixed odd viewing angles on staircases
   hry-gh:
   - bugfix: makes the relay browser use the new calculation system
+2026-03-06:
+  BeagleGaming1:
+  - rscdel: Disables Byond macros
+  MistChristmas:
+  - spellcheck: Removed Illegal to distribute line from Oxycodone bottle
+  MoondancerPony:
+  - bugfix: Tyrargo Rift army survivors no longer show up as part of Alpha Squad on
+      the crew monitor.
+  Riot:
+  - rscadd: Adds US army ranks, applied to the survivors and ERT on Tyrargo Rift
+  - bugfix: Army survivors can now program the comms tower to accept their comms.
+  - bugfix: Army comms are now fully working, with their own radio key and working
+      comms color.
+2026-03-07:
+  Drathek:
+  - code_imp: Reworked how unauthenticated and lobby menu windows clean up on logout
+  - code_imp: TGUI window close now cleans up more even if there is no client
+  - bugfix: Fix runtimes with tutorials ending tutorials twice
+  - bugfix: Fixed various places where spawning from lobby would fail to delete the
+      new_player mob
+  - bugfix: Fixed niche logging not occurring when predators join
+  MoondancerPony:
+  - server: Linux servers now load the SSV Rostock properly
+  zzzmike:
+  - qol: FTL jump wording changed to make game mechanics more transparent

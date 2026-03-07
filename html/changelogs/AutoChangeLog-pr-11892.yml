@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Tyrargo Rift may only be voted for if the server has at least 100 players."

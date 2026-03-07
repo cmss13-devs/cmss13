@@ -18041,6 +18041,7 @@
 	pixel_x = 16;
 	pixel_y = -16
 	},
+/obj/structure/flora/grass/colorable/point_loma/random/heavy,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 "aZQ" = (
@@ -46901,6 +46902,14 @@
 /obj/structure/barricade/sandbags{
 	dir = 4
 	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
+"cKB" = (
+/obj/structure/flora/grass/colorable/point_loma/random/light,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
+"cKC" = (
+/obj/structure/flora/grass/colorable/point_loma/random/heavy,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 
@@ -145622,7 +145631,7 @@ aPM
 aGW
 aXe
 cAN
-bPH
+cKB
 bPH
 acX
 clK
@@ -145804,7 +145813,7 @@ aqg
 apS
 akL
 cAN
-bPH
+cKB
 aeB
 aFc
 ajF
@@ -146166,8 +146175,8 @@ ajT
 aVb
 bPH
 cjt
-bPH
-bPH
+cKC
+cKB
 bPH
 bPH
 clO
@@ -146347,9 +146356,9 @@ aIV
 aAq
 aAi
 bPH
-bPH
-bPH
-bPH
+cKB
+cKB
+cKB
 cjl
 bPH
 aFc
@@ -149079,7 +149088,7 @@ bQp
 bXV
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 bSN
@@ -149261,7 +149270,7 @@ bQp
 bXV
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 bSN
@@ -149443,7 +149452,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 cJD
@@ -149625,7 +149634,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 cJg
@@ -149807,7 +149816,7 @@ bYb
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 bxN
@@ -149989,7 +149998,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 bxN
@@ -150353,7 +150362,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 bxN
@@ -150535,7 +150544,7 @@ bYd
 bYa
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 bxN
@@ -150717,7 +150726,7 @@ ajF
 aZX
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 bxN
@@ -151081,7 +151090,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKB
 bSN
 bSN
 cJD
@@ -151263,7 +151272,7 @@ ajF
 bYa
 aZV
 aLe
-bPH
+cKC
 bSN
 bSN
 cJD
@@ -151445,7 +151454,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 cJg
@@ -151809,7 +151818,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 cJy
@@ -151991,7 +152000,7 @@ ajF
 bYa
 aLe
 aLe
-bPH
+cKC
 bSN
 bSN
 cJg
@@ -152173,7 +152182,7 @@ ajF
 bYa
 bCh
 aLe
-bPH
+cKB
 bSN
 bSN
 bxN

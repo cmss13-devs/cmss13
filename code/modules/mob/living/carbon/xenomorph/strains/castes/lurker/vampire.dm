@@ -270,6 +270,6 @@
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
-	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+	log_attack("[key_name(target_carbon)] was executed by [key_name(xeno)] with a headbite!")
 	apply_cooldown()
 	return ..()

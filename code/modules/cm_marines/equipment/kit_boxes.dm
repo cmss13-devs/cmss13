@@ -225,6 +225,7 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
+	new /obj/item/device/multitool(src)
 
 
 //maybe put in req for later use?

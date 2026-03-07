@@ -92,7 +92,7 @@
 // Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase
 /obj/item/handheld_distress_beacon/bodyguard
 	name = "\improper Corporate Security Division handheld beacon"
-	desc = "An standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
+	desc = "A standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
 
 	beacon_type = "Bodyguard beacon"
 	recipient = "the Corporate Security Division"

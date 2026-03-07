@@ -5359,9 +5359,12 @@
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/cargo)
 "aqd" = (
-/obj/structure/ship_ammo/rocket/thermobaric,
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "fatty"
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
@@ -9775,6 +9778,10 @@
 	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
+"aBU" = (
+/obj/structure/prop,
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
 "aBV" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -41316,7 +41323,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/prop,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "csi" = (
@@ -156379,7 +156385,7 @@ axB
 apV
 arL
 bdZ
-aWP
+aBU
 akj
 acx
 acx

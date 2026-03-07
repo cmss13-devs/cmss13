@@ -513,7 +513,7 @@
 		collapse()
 		return
 
-	contents += thrown_item
+	thrown_item.forceMove(src)
 	playsound(src, 'sound/weapons/tablehit1.ogg', 50)
 	var/score = rand(1,21)
 	if(score == 21)

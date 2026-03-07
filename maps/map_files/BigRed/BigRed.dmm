@@ -1716,6 +1716,13 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
+"agu" = (
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -1759,6 +1766,12 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agE" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -14180,8 +14193,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bok" = (
-/obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_cryo/right,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (
@@ -14247,6 +14260,8 @@
 /area/bigredv2/outside/engineering)
 "boK" = (
 /obj/item/trash/kepler/flamehot,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -52298,7 +52313,7 @@ bmR
 bnr
 bnr
 bok
-bnr
+agu
 bpi
 mfQ
 ayr
@@ -52510,7 +52525,7 @@ bmm
 bmS
 tTI
 tTI
-iQC
+agE
 boK
 nVq
 cKu

@@ -308,3 +308,11 @@ for it but just ignore it.
 	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/human/hear_artemis()
+	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
+	if (dongle && dongle.translate_artemis)
+		return TRUE
+	for(var/datum/language/artemis/link in languages)
+		return TRUE
+	return FALSE

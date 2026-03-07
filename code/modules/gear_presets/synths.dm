@@ -757,6 +757,43 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
 
+/datum/equipment_preset/synth/working_joe/colony
+	name = "Synthetic - Colony Working Joe"
+	faction = FACTION_COLONIST
+	faction_group = FACTION_LIST_ARES_ALONE
+	assignment = JOB_COLONY_JOE
+	job_title = JOB_COLONY_JOE
+
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_ARTEMIS, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
+
+/datum/equipment_preset/synth/working_joe/colony/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH
+
+/datum/equipment_preset/synth/working_joe/colony/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET) //don't remove shrap by yourself, go to android maintenance or have ARES call a human handler!
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/seegson(new_human.belt), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.belt), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/mop(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/trash(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/circuitboard/apc(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/circuitboard/airlock(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/cell(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wet_sign(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human.back), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human.back), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
+
 
 /datum/equipment_preset/synth/working_joe/engi
 	name = "Synthetic - Hazmat Joe"
@@ -786,6 +823,44 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/large_stack(new_human.back), WEAR_IN_R_STORE)
+
+
+/datum/equipment_preset/synth/working_joe/engi/colony
+	name = "Synthetic - Colony Hazmat Joe"
+	joe_type = SYNTH_HAZARD_JOE
+	faction = FACTION_COLONIST
+	faction_group = FACTION_LIST_ARES_ALONE
+	assignment = JOB_COLONY_JOE
+	job_title = JOB_COLONY_JOE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_ARTEMIS, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
+
+/datum/equipment_preset/synth/working_joe/engi/colony/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH
+
+/datum/equipment_preset/synth/working_joe/engi/colony/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,2)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/joe(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/briefcase/inflatable/small(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
+
+	switch(choice)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi/overalls(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/seegson(new_human.belt), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human.back), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human.back), WEAR_IN_R_STORE)
 
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
@@ -832,6 +907,38 @@
 		new_human.change_real_name(new_human, "Dzho Automaton №[rand(9)][rand(9)][ascii2text(rand(65, 90))][ascii2text(rand(65, 90))]")
 	else
 		new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
+
+/datum/equipment_preset/synth/working_joe/upp/colony
+	name = "Synthetic - Colony Dzho Automaton"
+	assignment = JOB_UPP_COLONY_JOE
+	job_title = JOB_UPP_COLONY_JOE
+	faction_group = list(FACTION_UPP, FACTION_COLONIST)
+	faction = FACTION_UPP
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH, LANGUAGE_ARTEMIS)
+
+/datum/equipment_preset/synth/working_joe/upp/colony/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/upp_joe(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket/janibucket, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/mop, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/hyperdyne, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human), WEAR_IN_R_STORE)
+
+/datum/equipment_preset/synth/working_joe/upp/colony/load_skills(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.allow_gun_usage = FALSE
 
 //*****************************************************************************************************/
 

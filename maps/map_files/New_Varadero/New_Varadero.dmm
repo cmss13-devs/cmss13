@@ -396,6 +396,15 @@
 "abv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky/level4)
+"abw" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/electrical)
+"abx" = (
+/obj/structure/machinery/cryopod/no_cryo,
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/electrical)
 "abK" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -17952,7 +17961,10 @@
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
 "oBP" = (
-/obj/structure/closet/emcloset,
+/obj/structure/machinery/cryopod/no_cryo{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/electrical)
 "oBQ" = (
@@ -29729,6 +29741,7 @@
 /area/varadero/interior/research)
 "xPV" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/emcloset,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/electrical)
 "xQJ" = (
@@ -53697,8 +53710,8 @@ mvi
 kCA
 sHs
 cbq
-kCA
-kCA
+abw
+abw
 pkX
 nsl
 kCA
@@ -53879,7 +53892,7 @@ oIC
 jtU
 jtU
 qId
-jtU
+abx
 oBP
 kLA
 vnH

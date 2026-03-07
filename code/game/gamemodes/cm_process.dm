@@ -63,6 +63,14 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
 		to_world("[dat]")
 
+/datum/game_mode/proc/declare_completion_announce_colony_joes()
+	if(length(colony_joes))
+		var/dat = "<br>"
+		dat += SPAN_ROUNDBODY("<br>The Colony Working Joes were:")
+		for(var/entry in colony_joes)
+			dat += "<br>[entry] was [colony_joes[entry]["Name"]] [SPAN_BOLDNOTICE("([colony_joes[entry]["Status"]])")]"
+		to_world("[dat]")
+
 
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
 	set waitfor = 0

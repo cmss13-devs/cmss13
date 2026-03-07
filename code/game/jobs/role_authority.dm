@@ -226,6 +226,16 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
 
+	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
+	if(joe_chance)
+		joe_chance = text2num(joe_chance)
+	else
+		joe_chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
+
+	if(prob(joe_chance) && !Check_WO())
+		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
+
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
@@ -451,7 +461,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
-		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title], new_human.client)
 
 	var/job_whitelist = new_job.title
 	var/whitelist_status = new_job.get_whitelist_status(new_human.client)

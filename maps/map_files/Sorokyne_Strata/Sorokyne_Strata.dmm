@@ -18298,6 +18298,12 @@
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/lz_caves)
+"aYZ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/late_join/dzho_automaton/colony,
+/obj/effect/landmark/start/dzho_automaton/colony,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "aZa" = (
 /obj/structure/machinery/big_computers/computerblack/computer4{
 	icon_state = "blacksensor_comp2_off"
@@ -18383,6 +18389,10 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/exterior/outpost_platform)
+"aZm" = (
+/obj/structure/machinery/cryopod/no_cryo,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "aZn" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -18541,6 +18551,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/west)
+"aZJ" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "aZK" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -29285,11 +29299,6 @@
 /obj/structure/platform_decoration/metal/strata/west,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
-"bFW" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "bFX" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
@@ -52904,8 +52913,9 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/bball)
 "uqY" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
+/obj/structure/machinery/cryopod/no_cryo{
+	pixel_y = 13;
+	layer = 3.1
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
@@ -77553,7 +77563,7 @@ gAm
 ceI
 avZ
 aEc
-bXq
+aZJ
 aCa
 dLT
 bFA
@@ -77729,8 +77739,8 @@ ceI
 awa
 bDj
 aQV
-bFW
-bFA
+aYZ
+aYZ
 bXq
 oKo
 ceI
@@ -77904,7 +77914,7 @@ twi
 awc
 bDj
 bFA
-uqY
+aZm
 uqY
 bXq
 aUS

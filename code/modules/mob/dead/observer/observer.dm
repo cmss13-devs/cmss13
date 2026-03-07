@@ -131,8 +131,11 @@
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+	if(SSticker.mode)
+		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!")), 2 SECONDS)
+		if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("Colony Working Joes are enabled this round! If you are whitelisted, you may join!")), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -323,6 +326,10 @@
 	if(client.check_whitelist_status(WHITELIST_PREDATOR))
 		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
 		toggle_predator_action()
+
+	if(client.check_whitelist_status(WHITELIST_SYNTHETIC) || client.check_whitelist_status(WHITELIST_JOE))
+		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+		toggle_colony_joe_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
@@ -1299,6 +1306,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_colony_joe()
+	set category = "Ghost.Join"
+	set name = "Join as a Colony Working Joe"
+	set desc = "If you are whitelisted, and it is the right type of round, join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_colony_joe_late_join(src))
+		SSticker.mode.attempt_to_join_as_colony_joe(src)
+
 /mob/dead/verb/join_as_responder()
 	set category = "Ghost.Join"
 	set name = "Join as a Fax Responder"
@@ -1486,5 +1508,29 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)
+
+/mob/dead/observer/proc/toggle_colony_joe_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!key_to_use)
+		return
+
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_colony_joe_action)))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+		if(locate(/datum/action/join_colony_joe) in actions)
+			return
+
+		var/datum/action/join_colony_joe/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_colony_joe/old_action = locate() in actions
 	if(old_action)
 		qdel(old_action)

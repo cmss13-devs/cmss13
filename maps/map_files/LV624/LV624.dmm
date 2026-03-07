@@ -1007,6 +1007,10 @@
 "adV" = (
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
+"adW" = (
+/obj/structure/machinery/cryopod/no_cryo,
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -8740,6 +8744,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTv" = (
@@ -12498,7 +12503,10 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "fAs" = (
-/obj/item/tool/crowbar,
+/obj/structure/machinery/cryopod/no_cryo{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fAz" = (
@@ -12625,11 +12633,12 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "fLf" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fLh" = (
@@ -12678,6 +12687,8 @@
 	pixel_x = -1;
 	pixel_y = 2
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fQD" = (
@@ -42818,7 +42829,7 @@ kvo
 mNO
 fFN
 aTM
-aTM
+adW
 fAs
 aSX
 aVH

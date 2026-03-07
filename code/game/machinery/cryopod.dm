@@ -573,6 +573,35 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return TRUE
 	return FALSE
 
+/obj/structure/machinery/cryopod/no_cryo // groundside cryopods that dont cryo you, for colony joes
+	no_store_pod = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/cryopod/no_cryo/process()
+	return
+
+/obj/structure/machinery/cryopod/no_cryo/go_in_cryopod(mob/mob, silent = FALSE)
+	if(occupant)
+		return
+	mob.forceMove(src)
+	occupant = mob
+	icon_state = "body_scanner_closed"
+	set_light(2)
+	time_entered = world.time
+	start_processing()
+
+	if(!silent)
+		if(mob.client)
+			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
+	silent_exit = silent
+
+/obj/structure/machinery/cryopod/no_cryo/ex_act()
+	return
+
+/obj/structure/machinery/cryopod/no_cryo/right
+	dir = WEST
 
 /obj/structure/machinery/cryopod/tutorial
 	silent_exit = TRUE

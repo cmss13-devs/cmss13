@@ -5,6 +5,7 @@
 	unacidable = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
+	plane = TURF_PLANE
 
 // USCM Dropship Alamo
 

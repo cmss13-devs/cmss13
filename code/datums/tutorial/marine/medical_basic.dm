@@ -36,7 +36,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_ATTACKHAND_HUMAN)
 	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
 	update_objective("Inject yourself with the bicaridine injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/bicaridine/brute_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/bicaridine/brute_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brute_injector)
 	add_highlight(brute_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_brute_inject))
@@ -44,11 +44,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_brute_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/bicaridine))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/bicaridine))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/bicaridine, brute_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/bicaridine, brute_injector)
 	remove_highlight(brute_injector)
 	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
@@ -59,7 +59,7 @@
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
 	message_to_player("<b>Kelotane</b> is used to fix burn damage over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/kelotane/burn_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
 	add_highlight(burn_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_burn_inject))
@@ -67,11 +67,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_burn_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/kelotane))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/kelotane, burn_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane, burn_injector)
 	remove_highlight(burn_injector)
 	message_to_player("Good. Now, the third type of damage is <b>Oxy</b> damage. Oxy damage, or oxygen deprivation, is an indicator your organs are struggling to receive oxygen, either due to blood loss, heart and lung injuries, or breathing in a low oxygen environment. To simulate this, we're forcing you to hold your breath for a very long time.")
 	update_objective("Try not to pass out.")
@@ -82,7 +82,7 @@
 /datum/tutorial/marine/medical_basic/proc/oxy_tutorial()
 	message_to_player("<b>Dexalin Plus</b> is a miraculous medication that instantly removes all Oxy damage. Quickly, inject yourself with the <b>dexalin plus EZ autoinjector</b> before you pass out!")
 	update_objective("Inject yourself with the dexalin plus autoinjector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp/oxy_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp/oxy_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(oxy_injector)
 	add_highlight(oxy_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_oxy_inject))
@@ -90,11 +90,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_oxy_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp, oxy_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp, oxy_injector)
 	remove_highlight(oxy_injector)
 	message_to_player("Amazing. A breath of fresh air without breathing. ... You can breathe, now. Good. The next type of damage is toxin damage, which accumulates from ingesting or breathing toxic chemicals, overdosing on medicine, drinking too much alcohol, and liver damage.")
 	update_objective("")
@@ -105,7 +105,7 @@
 /datum/tutorial/marine/medical_basic/proc/tox_tutorial()
 	message_to_player("<b>Dylovene</b> slowly removes toxin damage over time. Inject yourself with the <b>dylovene EZ autoinjector</b>.")
 	update_objective("Inject yourself with the dylovene autoinjector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/antitoxin/tox_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin/tox_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(tox_injector)
 	add_highlight(tox_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_tox_inject))
@@ -113,11 +113,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_tox_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/antitoxin))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp, tox_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp, tox_injector)
 	remove_highlight(tox_injector)
 	message_to_player("Good. Now, you may have noticed that toxins, in addition to other types of damage, cause <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")

@@ -227,6 +227,10 @@
 	if(HAS_TRAIT(H, TRAIT_HAULED))
 		return
 
+	// mobs atop the tank shouldn't get foot-stabbed
+	if(H.is_on_tank_hull())
+		return
+
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
 
@@ -413,6 +417,10 @@
 		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
+
+/obj/structure/mineral_door/resin/proc/take_damage(damage)
+	update_health(damage)
+	healthcheck()
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))

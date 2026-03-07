@@ -47,7 +47,7 @@
 								300; /obj/item/tool/crowbar, \
 								200; /obj/item/weapon/baseballbat, \
 								100; /obj/item/weapon/baseballbat/metal, \
-								100; /obj/item/weapon/butterfly, \
+								75; /obj/item/weapon/folding_knife/butterfly, \
 								300; /obj/item/tool/hatchet, \
 								100; /obj/item/tool/scythe, \
 								100; /obj/item/tool/kitchen/knife/butcher, \

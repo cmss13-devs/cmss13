@@ -63,7 +63,7 @@
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
-		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/folding_knife,
 		/obj/item/weapon/yautja/knife,
 	)
 	spawn_item_type = /obj/item/weapon/yautja/knife

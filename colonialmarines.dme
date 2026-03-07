@@ -463,6 +463,7 @@
 #include "code\datums\components\tacmap.dm"
 #include "code\datums\components\temporary_mute.dm"
 #include "code\datums\components\toxin_buildup.dm"
+#include "code\datums\components\tracker_bullets.dm"
 #include "code\datums\components\tutorial_status.dm"
 #include "code\datums\components\weed_damage_reduction.dm"
 #include "code\datums\components\weed_food.dm"

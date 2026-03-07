@@ -37,7 +37,7 @@
 
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Designated Marskman!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Designated Marksman!"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/marksman, TRUE, TRUE)
 
 	else

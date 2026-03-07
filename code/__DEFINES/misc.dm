@@ -151,6 +151,15 @@
 
 #define SIZE_MASSIVE 6
 
+// Phone Length
+
+#define PHONE_RANGE_VERYSHORT 2
+#define PHONE_RANGE_SHORT 3
+#define PHONE_RANGE_ROTARY_STANDARD 4
+
+#define PHONE_RANGE_LONG 8
+#define PHONE_RANGE_HEAVY_DUTY 14
+
 // Stack amounts
 #define STACK_5 5
 #define STACK_10 10

@@ -237,10 +237,6 @@
 "By" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
-"BH" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/left_spiders)
 "BI" = (
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 5
@@ -252,7 +248,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "FF" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "FT" = (
@@ -665,7 +661,7 @@ By
 IQ
 IQ
 IQ
-BH
+FF
 IQ
 IQ
 FT

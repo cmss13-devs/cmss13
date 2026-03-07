@@ -450,8 +450,6 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
 	var/captainless=1
-	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
-		return
 
 	var/list/random_players = shuffle(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/player in random_players)

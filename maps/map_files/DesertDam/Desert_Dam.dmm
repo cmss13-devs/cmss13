@@ -22152,7 +22152,7 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bsj" = (
@@ -24242,7 +24242,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "clm" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "clp" = (
@@ -24424,7 +24424,7 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "cpT" = (
 /obj/structure/largecrate/empty/secure,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/clothing/head/hardhat{
 	pixel_y = 5
 	},
@@ -25582,7 +25582,7 @@
 /area/desert_dam/exterior/roof)
 "cNE" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
@@ -26341,7 +26341,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "dbF" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_y = 5
 	},
@@ -26595,7 +26595,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "dhC" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "dhP" = (
@@ -30252,7 +30252,7 @@
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "eEK" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/tool/crowbar,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -30345,7 +30345,7 @@
 "eGb" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "eGg" = (
@@ -30463,7 +30463,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "eJj" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/tool/shovel{
 	pixel_x = -4
 	},
@@ -33763,7 +33763,7 @@
 /area/desert_dam/building/security/armory)
 "fUc" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -40570,7 +40570,7 @@
 "izg" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "izs" = (
@@ -40598,7 +40598,7 @@
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/desert_dam/exterior/river/riverside_central_south)
 "izJ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/light,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
@@ -41261,7 +41261,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "iLH" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "iLM" = (
@@ -42051,7 +42051,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "jeQ" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/tool/crowbar/red,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -43381,7 +43381,7 @@
 /area/desert_dam/building/substation/northeast)
 "jFI" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/explosive/grenade/custom/metal_foam{
 	pixel_x = -4;
 	pixel_y = -1
@@ -43673,7 +43673,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "jLr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/surface/rack,
 /obj/item/clothing/head/soft/ferret,
 /turf/open/floor/prison,
@@ -47211,7 +47211,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "liA" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control/lobby)
@@ -47735,7 +47735,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "lsY" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/control_room)
 "lts" = (
@@ -50354,7 +50354,7 @@
 /turf/open/floor/whiteyellowcorner,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "muE" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
@@ -52714,7 +52714,7 @@
 /area/desert_dam/building/security/warden)
 "nrh" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/tool/pickaxe,
 /turf/open/floor/prison/darkpurple2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
@@ -53560,7 +53560,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "nIZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "nJh" = (
@@ -53799,7 +53799,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "nNq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "nNy" = (
@@ -54244,7 +54244,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "nUN" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
@@ -58119,7 +58119,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "pvy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
@@ -60763,7 +60763,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
 "quT" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "qve" = (
@@ -61534,7 +61534,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "qHW" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/device/radio,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -69565,7 +69565,7 @@
 "tNG" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "tNM" = (
@@ -73252,7 +73252,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "vlI" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "vlK" = (
@@ -73302,7 +73302,7 @@
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control/lobby)
 "vmC" = (
@@ -75029,7 +75029,7 @@
 /area/desert_dam/building/medical/surgery_room_one)
 "vWp" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "vWq" = (
@@ -76231,7 +76231,7 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/interior/dam_interior/break_room)
@@ -76265,7 +76265,7 @@
 /area/desert_dam/building/medical/upper_hallway)
 "wwQ" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "wwR" = (
@@ -77479,7 +77479,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "wYs" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "wYu" = (
@@ -78772,7 +78772,7 @@
 "xyW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "xza" = (

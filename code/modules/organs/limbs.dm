@@ -1344,7 +1344,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			QDEL_IN(spark_system, 1 SECONDS)
 
 /obj/limb/proc/embed(obj/item/W, silent = 0)
-	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
+	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE || MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_embed))
 		return
 	if(!silent)
 		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))

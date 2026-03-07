@@ -1,12 +1,6 @@
 #define DSN_CONFIG CONFIG_GET(string/sentry_dsn)
 #define ENDPOINT_CONFIG CONFIG_GET(string/sentry_endpoint)
 
-GLOBAL_MULTIPLE(protected_sentry_procs)
-#define SET_PROTECTED_PROC(proc) GLOBAL_MULTIPLE_UPDATE(protected_sentry_procs, proc)
-
-GLOBAL_MULTIPLE(protected_sentry_datums)
-#define SET_PROTECTED_DATUM(datum) GLOBAL_MULTIPLE_UPDATE(protected_sentry_datums, datum)
-
 SUBSYSTEM_DEF(sentry)
 	name = "Sentry"
 	wait = 2 SECONDS

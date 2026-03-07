@@ -1,3 +1,5 @@
+SET_PROTECTED_DATUM(/datum/controller/configuration)
+
 /datum/controller/configuration
 	name = "Configuration"
 

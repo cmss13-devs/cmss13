@@ -7,13 +7,20 @@
 	name = "Unknown"
 	icon_state = "corpse_spawner"
 	var/equip_path = null
+	var/yautja = FALSE
 
 /obj/effect/landmark/corpsespawner/Initialize(mapload, ...)
 	. = ..()
-	GLOB.corpse_spawns += src
+	if(yautja)
+		GLOB.yautja_corpse_spawns += src
+	else
+		GLOB.corpse_spawns += src
 
 /obj/effect/landmark/corpsespawner/Destroy()
-	GLOB.corpse_spawns -= src
+	if(yautja)
+		GLOB.yautja_corpse_spawns -= src
+	else
+		GLOB.corpse_spawns -= src
 	return ..()
 
 ///////////Civilians//////////////////////
@@ -412,3 +419,8 @@
 /obj/effect/landmark/corpsespawner/point_loma/usasf/burst
 	name = "Corpse - USASF - Burst"
 	equip_path = /datum/equipment_preset/corpse/point_loma/usasf/burst
+
+/obj/effect/landmark/corpsespawner/corpse/yautja
+	yautja = TRUE
+	equip_path = /datum/equipment_preset/yautja/elder
+

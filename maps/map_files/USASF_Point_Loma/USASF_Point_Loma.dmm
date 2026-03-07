@@ -38692,6 +38692,14 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
+"cjV" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/effect/landmark/corpsespawner/corpse/yautja,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -44044,6 +44052,15 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cBB" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/landmark/corpsespawner/corpse/yautja,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -117896,10 +117913,10 @@ bJw
 bJw
 bIO
 cfo
-ceL
-ceL
-ceU
-ceU
+cBB
+cBB
+cjV
+cjV
 cEC
 cEy
 ceL

@@ -28,7 +28,7 @@
 		overlays_standing[cache_index] = null
 
 /mob/living/carbon/xenomorph/proc/update_icon_source()
-	if(HAS_TRAIT(src, TRAIT_XENONID))
+	if(HAS_TRAIT(src, TRAIT_XENONID) || (CONFIG_GET(string/default_hostile_sprites) == "Xenonid"))
 		if(!icon_xenonid)
 			if(HAS_TRAIT_FROM(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE))
 				REMOVE_TRAIT(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE)

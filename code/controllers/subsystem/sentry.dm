@@ -1,6 +1,12 @@
 #define DSN_CONFIG CONFIG_GET(string/sentry_dsn)
 #define ENDPOINT_CONFIG CONFIG_GET(string/sentry_endpoint)
 
+GLOBAL_MULTIPLE(protected_sentry_procs)
+#define SET_PROTECTED_PROC(proc) GLOBAL_MULTIPLE_UPDATE(protected_sentry_procs, proc)
+
+GLOBAL_MULTIPLE(protected_sentry_datums)
+#define SET_PROTECTED_DATUM(datum) GLOBAL_MULTIPLE_UPDATE(protected_sentry_datums, datum)
+
 SUBSYSTEM_DEF(sentry)
 	name = "Sentry"
 	wait = 2 SECONDS
@@ -11,6 +17,8 @@ SUBSYSTEM_DEF(sentry)
 	var/static/list/characters = splittext("abcdef012345679", "")
 	var/list/hashed_context = list()
 
+	var/static/regex/protected_datums
+
 /datum/controller/subsystem/sentry/Initialize()
 	. = ..()
 	var/config_dsn = DSN_CONFIG
@@ -18,6 +26,11 @@ SUBSYSTEM_DEF(sentry)
 	if(!config_dsn || !config_endpoint)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
+
+	if(length(GLOB.protected_sentry_datums))
+		protected_datums = regex("([GLOB.protected_sentry_datums.Join(")|(")])", "g")
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/sentry/fire(resumed)
 	var/static/list/headers = list(
@@ -36,6 +49,9 @@ SUBSYSTEM_DEF(sentry)
 	var/static/endpoint
 	if(!endpoint)
 		endpoint = ENDPOINT_CONFIG
+
+	var/static/regex/ip_regex = regex(@"(((?!25?[6-9])[12]\d|[1-9])?\d\.?\b){4}", "g")
+	var/regex/pii_regex = regex("([GLOB.all_player_ckeys.Join(")|(")])|([GLOB.all_player_cids.Join(")|(")])", "g")
 
 	for(var/datum/error_envelope/error as anything in envelopes)
 		var/event_id = get_uuid()
@@ -72,16 +88,27 @@ SUBSYSTEM_DEF(sentry)
 
 			var/procpath/proc_path = called.proc
 
-			stacktrace += list(list(
+			var/censor_args = FALSE
+			if(proc_path.type in GLOB.protected_sentry_procs)
+				censor_args = TRUE
+
+			if(protected_datums.Find(proc_path.type))
+				censor_args = TRUE
+
+			var/to_add = list(
 				"filename" = called.file,
 				"function" = proc_path.type,
 				"lineno" = called.line,
-				"vars" = parsed_args,
 				"pre_context" = pre_context,
 				"context_line" = context,
 				"post_context" = post_context,
 				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]"
-			))
+			)
+
+			if(!censor_args)
+				to_add["vars"] = parsed_args
+
+			stacktrace += list(to_add)
 
 		var/list/event_parts = list(
 			"event_id" = event_id,
@@ -99,6 +126,10 @@ SUBSYSTEM_DEF(sentry)
 		)
 
 		var/event = json_encode(event_parts)
+
+		ip_regex.Replace(event, "ip address")
+		pii_regex.Replace(event, "user pii")
+
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 

@@ -258,6 +258,7 @@
 
 	cmd_admin_say(msg)
 
+SET_PROTECTED_PROC(/client/proc/cmd_admin_say)
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
@@ -386,6 +387,7 @@
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)
 
+SET_PROTECTED_PROC(/client/proc/cmd_mentor_say)
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
 	set category = "Admin.Mentor"

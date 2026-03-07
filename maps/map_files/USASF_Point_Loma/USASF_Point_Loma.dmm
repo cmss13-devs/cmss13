@@ -4987,7 +4987,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "aoZ" = (
-/turf/closed/wall/hangar,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/exterior/west)
 "apa" = (
 /obj/structure/machinery/power/apc/power/east,
@@ -5847,12 +5847,13 @@
 /area/point_loma/research_facility/medical)
 "arw" = (
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
-/obj/structure/ship_ammo/rocket/harpoon{
-	pixel_x = -40;
-	pixel_y = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "harpoon";
+	pixel_x = -14
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
@@ -5971,9 +5972,12 @@
 "arL" = (
 /obj/structure/ship_ammo/minirocket,
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
-/obj/structure/ship_ammo/rocket/thermobaric,
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
+	},
+/obj/structure/prop{
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "fatty"
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
@@ -38735,6 +38739,12 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
+"cjV" = (
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -44087,6 +44097,12 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cBB" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -45896,6 +45912,15 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
+"cHf" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "cHg" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -45922,6 +45947,11 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cHl" = (
+/obj/structure/flora/grass/colorable/point_loma/light/two,
+/obj/structure/barricade/sandbags,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "cHm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
@@ -46866,6 +46896,13 @@
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east,
 /turf/open_space,
 /area/point_loma/oob/sky)
+"cKA" = (
+/obj/structure/barricade/sandbags,
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 
 (1,1,1) = {"
 aug
@@ -146319,7 +146356,7 @@ aFc
 ajF
 ajF
 bYa
-bPH
+cBB
 cjh
 bPH
 asb
@@ -146501,9 +146538,9 @@ aFc
 ajF
 ajF
 bYa
-bPH
-bPH
-bPH
+cHf
+cjV
+cjV
 asb
 asb
 asb
@@ -147224,7 +147261,7 @@ bPH
 bPH
 bPH
 bPH
-bPH
+cFm
 aLe
 aLe
 bXP
@@ -147406,7 +147443,7 @@ bPH
 cjh
 bPH
 bPH
-cjl
+cHl
 aLe
 cjH
 bXP
@@ -147587,8 +147624,8 @@ asb
 bPH
 bPH
 cts
-bPH
-bPH
+cjV
+cKA
 aLe
 aLe
 bXP

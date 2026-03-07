@@ -33,7 +33,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
-	climb_down(user)
+	if(Enter(user))
+		climb_down(user)
 
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
 	. = ..()

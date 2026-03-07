@@ -80,7 +80,6 @@
 
 	/// if a hugger is held in hand, won't attempt to leap and kill itself
 	var/hugger_nurturing = FALSE
-	var/huggers_max = 0
 	var/throwspeed = 0
 	/// delay time modifier it takes between hugger throws, only exclusively used by the carrier currently
 	var/hugger_throw_delay = 0

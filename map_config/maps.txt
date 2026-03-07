@@ -53,6 +53,9 @@ map sorokyne_strata
 	minplayers 110
 endmap
 
+map sekhmet_swamp
+endmap
+
 map lv522_chances_claim
 endmap
 

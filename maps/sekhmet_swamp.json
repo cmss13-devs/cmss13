@@ -1,0 +1,68 @@
+{
+    "map_name": "SI-391 Sekhmet Swamp",
+    "map_path": "map_files/Sekhmet_Swamp",
+    "map_file": "Sekhmet_Swamp.dmm",
+    "webmap_url": "Sorokyne",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/soro",
+        "/datum/equipment_preset/survivor/doctor/soro",
+        "/datum/equipment_preset/survivor/hyperdyne",
+        "/datum/equipment_preset/survivor/engineer/soro_industry_contractor",
+        "/datum/equipment_preset/survivor/engineer/soro_reactor_tech",
+        "/datum/equipment_preset/survivor/peoples_armed_police",
+        "/datum/equipment_preset/survivor/upp/army",
+        "/datum/equipment_preset/survivor/upp_colonist",
+        "/datum/equipment_preset/survivor/upp_miner",
+        "/datum/equipment_preset/survivor/upp_fire_fighter"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/sorokyne/engineer",
+        "/datum/equipment_preset/synth/survivor/sorokyne/security",
+        "/datum/equipment_preset/synth/survivor/sorokyne/scientist",
+        "/datum/equipment_preset/synth/survivor/sorokyne/civilian",
+        "/datum/equipment_preset/synth/survivor/sorokyne/doctor",
+        "/datum/equipment_preset/synth/survivor/sorokyne/corporate"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
+    "map_item_type": "/obj/item/map/sekhmet_swamp_map",
+    "announce_text": "An automated distress signal has been recieved from a Union of Progressive People's research colony on border world LV-976, \"Sorokyne Outpost\". Authorization has been granted for a response team from the ###SHIPNAME### to conduct a reconnaissance in force.",
+    "monkey_types": [
+        "stok"
+    ],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/Sekhmet_Swamp/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "jungle",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

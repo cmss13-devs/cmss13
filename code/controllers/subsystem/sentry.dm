@@ -19,7 +19,6 @@ SUBSYSTEM_DEF(sentry)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
-
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/sentry/fire(resumed)
@@ -110,9 +109,11 @@ SUBSYSTEM_DEF(sentry)
 				"round_id" = GLOB.round_id,
 			),
 			"exception" = list(
-				"type" = error.error,
-				"value" = "Runtime Error",
-				"stacktrace" = list("frames" = stacktrace),
+				"values" = list(list(
+					"type" = error.error,
+					"value" = "Runtime Error",
+					"stacktrace" = list("frames" = stacktrace),
+				))
 			),
 		)
 

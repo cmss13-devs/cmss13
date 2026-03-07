@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we don't have to filter through
  */
 /datum/hud_displays
-	///Actual icon of the drawn zlevel with all of it's atoms
+	///Actual icon of the drawn zlevel with all of its atoms
 	var/icon/hud_image
 	///Assoc list of updating images; list("[flag]" = list([source] = blip)
 	var/list/images_assoc = list()
@@ -1350,7 +1350,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
-	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
 	if (control != "mapwindow.map")
 		drawing = FALSE
 		return COMSIG_MOB_CLICK_CANCELED
@@ -1504,7 +1504,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
-	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
 	if (control != "mapwindow.map")
 		return COMSIG_MOB_CLICK_CANCELED
 

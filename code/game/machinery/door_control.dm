@@ -96,6 +96,14 @@
 				if(specialfunctions & SAFE)
 					D.safe = 1
 
+/obj/structure/machinery/door_control/proc/handle_cell_divider()
+	for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall in range(range))
+		if(wall.remote_id == id)
+			if(wall.density)
+				wall.open()
+			else
+				wall.close()
+
 /obj/structure/machinery/door_control/proc/handle_pod()
 	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
@@ -139,6 +147,8 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 	spawn(15)
@@ -236,6 +246,8 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 

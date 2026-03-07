@@ -1,5 +1,12 @@
 import { useBackend } from 'tgui/backend';
-import { Box, Divider, Flex, Stack } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  NumberInput,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { CasSim } from './CasSim';
@@ -11,6 +18,11 @@ import { MapMfdPanel } from './MfdPanels/MapPanel';
 import { MfdPanel, type MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
+import {
+  useFiremissionXOffsetValue,
+  useFiremissionYOffsetValue,
+  useLazeTarget,
+} from './MfdPanels/stateManagers';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
 import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
@@ -59,7 +71,24 @@ export type DropshipEquipment = {
   burst?: number;
   max_ammo?: number;
   firemission_delay?: number;
+  last_fired?: number;
+  firing_delay?: number;
+  medevac_cooldown?: number;
+  system_cooldown?: number;
+  deployment_cooldown?: number;
+  spotlights_cooldown?: number;
+  fulton_cooldown?: number;
+  reload_cooldown?: number;
   data?: any;
+  stored_ammo?: Array<{
+    name: string;
+    ammo_count: number;
+    max_ammo_count: number;
+    ammo_name: string;
+    ref: string;
+  }>;
+  icon_state?: string;
+  damaged?: boolean;
 };
 
 const xOffset = 40;
@@ -276,7 +305,7 @@ const WeaponsMfdPanel = (props) => {
 };
 
 const BaseMfdPanel = (props: MfdProps) => {
-  const { setPanelState } = mfdState(props.panelStateId);
+  const { setPanelState, panelState } = mfdState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
   const { act } = useBackend<DropshipProps>();
 
@@ -298,11 +327,11 @@ const BaseMfdPanel = (props: MfdProps) => {
       bottomButtons={[
         {},
         {
-          children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => act('mapview'),
+          children: panelState !== 'map' ? 'MAPS' : undefined,
+          onClick: () => setPanelState('map'),
         },
         {
-          children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
+          children: panelState !== 'camera' ? 'CAMS' : undefined,
           onClick: () => setPanelState('camera'),
         },
       ]}
@@ -312,7 +341,7 @@ const BaseMfdPanel = (props: MfdProps) => {
           <h1>U.S.C.M.</h1>
           <h1>Dropship Weapons Control System</h1>
           <h3>UA Northbridge</h3>
-          <h3>V 0.1</h3>
+          <h3>V 1.0</h3>
         </div>
       </Box>
     </MfdPanel>
@@ -345,6 +374,110 @@ const PrimaryPanel = (props: MfdProps) => {
   }
 };
 
+const ManualOffsetInputs = () => {
+  const { act } = useBackend<DropshipProps>();
+  const { selectedTarget } = useLazeTarget();
+  const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
+
+  const minValue = -12;
+  const maxValue = 12;
+
+  const handleXOffsetChange = (value: number) => {
+    if (value < minValue || value > maxValue) return;
+    setFmXOffsetValue(value);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: value,
+      y_offset_value: fmYOffsetValue,
+    });
+  };
+
+  const handleYOffsetChange = (value: number) => {
+    if (value < minValue || value > maxValue) return;
+    setFmYOffsetValue(value);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: fmXOffsetValue,
+      y_offset_value: value,
+    });
+  };
+
+  const handleReset = () => {
+    setFmXOffsetValue(0);
+    setFmYOffsetValue(0);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: 0,
+      y_offset_value: 0,
+    });
+  };
+
+  return (
+    <Box className="ManualOffsetInputs">
+      <Stack vertical align="center">
+        <Stack.Item>
+          <Stack align="center">
+            <Stack.Item>
+              <Box fontSize="12px" color="#00e94e" mr={1}>
+                X:
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <NumberInput
+                width="3em"
+                step={1}
+                minValue={minValue}
+                maxValue={maxValue}
+                value={fmXOffsetValue}
+                onChange={handleXOffsetChange}
+                className="OffsetNumberInput"
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+        <Stack.Item height="2px" />
+        <Stack.Item>
+          <Stack align="center">
+            <Stack.Item>
+              <Box fontSize="12px" color="#00e94e" mr={1}>
+                Y:
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <NumberInput
+                width="3em"
+                step={1}
+                minValue={minValue}
+                maxValue={maxValue}
+                value={fmYOffsetValue}
+                onChange={handleYOffsetChange}
+                className="OffsetNumberInput"
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+        <Stack.Item height="5px" />
+        <Stack.Item>
+          <Button
+            content="Reset"
+            onClick={handleReset}
+            fontSize="11px"
+            width="4em"
+            height="1.5em"
+            color="#00e94e"
+            backgroundColor="transparent"
+            style={{
+              border: '1px solid #00e94e',
+              color: '#00e94e',
+            }}
+          />
+        </Stack.Item>
+      </Stack>
+    </Box>
+  );
+};
+
 export const DropshipWeaponsConsole = () => {
   return (
     <Window height={700} width={1420}>
@@ -355,6 +488,7 @@ export const DropshipWeaponsConsole = () => {
               <PrimaryPanel
                 panelStateId="left-screen"
                 otherPanelStateId="right-screen"
+                consoleType="weapons"
               />
             </Stack.Item>
             <Stack.Item>
@@ -369,7 +503,11 @@ export const DropshipWeaponsConsole = () => {
                   <br />
                   Calibration
                 </Stack.Item>
-                <Stack.Item height="280px" />
+                <Stack.Item>
+                  <ManualOffsetInputs />
+                </Stack.Item>
+                <Stack.Item height="10px" />
+                <Stack.Item height="260px" />
               </Stack>
             </Stack.Item>
 
@@ -377,6 +515,7 @@ export const DropshipWeaponsConsole = () => {
               <PrimaryPanel
                 panelStateId="right-screen"
                 otherPanelStateId="left-screen"
+                consoleType="weapons"
               />
             </Stack.Item>
           </Stack>

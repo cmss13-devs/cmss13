@@ -303,6 +303,9 @@
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
 		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
 
+	// Update dropship HUD overlays
+	init_dropship_hud_overlays()
+
 	return TRUE
 
 /mob/living/carbon/xenomorph/on_dazed_trait_gain(datum/source)

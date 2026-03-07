@@ -2,7 +2,8 @@
 
 /// A list of fultons currently airborne.
 GLOBAL_LIST_EMPTY(deployed_fultons)
-
+/// A list of active fulton systems.
+GLOBAL_LIST_EMPTY(active_fulton_systems)
 /obj/item/stack/fulton
 	name = "fulton recovery device"
 	icon = 'icons/obj/items/marine-items.dmi'
@@ -182,6 +183,11 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	attached_atom.overlays -= chute
 	attached_atom.layer = originalLayer
 	attached_atom.alpha = originalAlpha
+
+	// Notify all fulton systems about the new deployment
+	for(var/obj/structure/dropship_equipment/fulton_system/system in GLOB.active_fulton_systems)
+		system.notify_new_fulton(src)
+
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
 /obj/item/stack/fulton/proc/return_fulton(turf/return_turf)

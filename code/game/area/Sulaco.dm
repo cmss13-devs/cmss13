@@ -19,6 +19,14 @@
 		return FALSE
 	return TRUE
 
+/area/shuttle/drop1/Entered(atom/movable/AM)
+	..()
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_DROPSHIP, src)
+
+/area/shuttle/drop1/Exited(atom/movable/AM)
+	..()
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_EXITED_DROPSHIP, src)
+
 /area/shuttle/drop1/sulaco
 	name = "\improper Dropship Alamo"
 	icon_state = "shuttlered"
@@ -74,6 +82,14 @@
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE
+
+/area/shuttle/drop2/Entered(atom/movable/AM)
+	..()
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_DROPSHIP, src)
+
+/area/shuttle/drop2/Exited(atom/movable/AM)
+	..()
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_EXITED_DROPSHIP, src)
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"

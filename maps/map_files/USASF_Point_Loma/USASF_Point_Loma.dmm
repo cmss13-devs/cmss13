@@ -9782,6 +9782,11 @@
 	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
+"aBU" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/machinery/sensortower/short_range,
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
 "aBV" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -26724,12 +26729,6 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
-"bxU" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner/southwest,
-/area/point_loma/airbase/exterior/crash_site)
-"bxV" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
-/area/point_loma/airbase/exterior/crash_site)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -38678,6 +38677,14 @@
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
+"cjJ" = (
+/obj/structure/cable/white{
+	icon_state = "2-5";
+	level = 2;
+	color = "#550d0d"
+	},
+/turf/open/new_varadero/taupe_concrete/warning/west,
+/area/point_loma/airbase/exterior/crash_site)
 "cjK" = (
 /turf/open/floor/corsat/purplewhite,
 /area/point_loma/airbase/interior/research)
@@ -38732,10 +38739,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
-"cjV" = (
-/obj/structure/machinery/sensortower/short_range,
-/turf/open/new_varadero/taupe_concrete,
-/area/point_loma/airbase/exterior/crash_site)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -44092,9 +44095,6 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
-"cBB" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner,
-/area/point_loma/airbase/exterior/north)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -46018,6 +46018,11 @@
 "cHB" = (
 /obj/structure/prop/new_varadero_props/radar_dish,
 /obj/structure/prop/new_varadero_props/radar_dish_lights,
+/obj/structure/cable/white{
+	icon_state = "1-8";
+	level = 2;
+	color = "#550d0d"
+	},
 /turf/open/new_varadero/taupe_concrete/warning/corner/southwest,
 /area/point_loma/airbase/exterior/crash_site)
 "cHC" = (
@@ -47010,6 +47015,10 @@
 "cKV" = (
 /turf/open/floor/shiva/yellow/southwest,
 /area/point_loma/airbase/interior/fire_station)
+"cKW" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/crash_site)
 "cKX" = (
 /turf/open/floor/shiva/yellow/southeast,
 /area/point_loma/airbase/interior/fire_station)
@@ -47412,12 +47421,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
-"cMb" = (
-/turf/open/new_varadero/taupe_concrete/warning,
-/area/point_loma/airbase/exterior/north)
-"cMc" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner/northeast,
-/area/point_loma/airbase/exterior/north)
 
 (1,1,1) = {"
 aug
@@ -160689,7 +160692,7 @@ bxN
 cHY
 bxN
 bxN
-ckd
+aBU
 bBg
 bxN
 bQT
@@ -160870,9 +160873,9 @@ cIm
 cIg
 cHH
 cHQ
-cHH
+cjJ
 cHB
-cHx
+bBg
 bQT
 bQT
 aNI
@@ -161050,12 +161053,12 @@ aOC
 cmn
 cHx
 cIh
-cKc
-cKc
-cKc
+cKW
+cKW
+cKW
 cHC
-aNI
-aNI
+bQT
+bQT
 aNI
 aNI
 clb
@@ -161232,9 +161235,9 @@ aOC
 aOC
 cHx
 cIh
-cKc
-cKc
-cKc
+cKW
+cKW
+cKW
 cHC
 aNI
 aNI
@@ -161414,9 +161417,9 @@ aOC
 aOC
 cHx
 cIh
-cKc
-cKc
-cKc
+cKW
+cKW
+cKW
 bRz
 bRz
 aNI
@@ -162867,9 +162870,9 @@ aOV
 aOV
 aOE
 aOC
-cBB
-cHH
-bxU
+aOC
+bQT
+bQT
 bQT
 bQT
 aNI
@@ -163049,9 +163052,9 @@ aOV
 aOV
 aOE
 aOC
-cMb
-cjV
-cHC
+aOC
+ctv
+bQT
 bRz
 bRz
 aNI
@@ -163231,9 +163234,9 @@ aOV
 aOV
 aOE
 aOC
-cMc
-cHR
-bxV
+aOC
+bQT
+bRz
 bRz
 bRz
 bRz

@@ -253,7 +253,7 @@
 		yautja_user.start_stomping()
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets), user), 10 SECONDS)
-		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets in front of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
 	if(gauntlet_deployed)

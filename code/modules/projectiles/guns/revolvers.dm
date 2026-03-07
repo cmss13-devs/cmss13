@@ -828,7 +828,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/special
 	name = "special Spearhead Unica 6 autorevolver"
-	desc = "An old, heavily modified version of the Spearhead Unica 6 autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
+	desc = "An old, heavily modified version of the Spearhead Unica 6 autorevolver. It sports a smooth wooden grip, and a much larger barrel to its unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
 	icon_state = "cmateba_special"
 	item_state = "cmateba_special"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact

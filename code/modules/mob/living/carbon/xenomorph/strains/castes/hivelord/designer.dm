@@ -466,7 +466,7 @@
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
 		. += SPAN_NOTICE("You sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning]")], you also heard that using plasma fruit works too.")
 
-//Should not be upgradable because its not "stable" but special actions should create thick variant
+//Should not be upgradable because it's not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin wall"
 	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
@@ -815,7 +815,7 @@
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("The are no weeds to create a connection!"))
+		to_chat(xeno, SPAN_WARNING("There are no weeds to create a connection!"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
@@ -956,7 +956,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
@@ -978,7 +978,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
@@ -1002,7 +1002,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))

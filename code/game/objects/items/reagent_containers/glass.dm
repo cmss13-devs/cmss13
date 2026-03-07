@@ -759,7 +759,7 @@
 
 /obj/item/reagent_container/glass/bucket
 	name = "bucket"
-	desc = "It's a bucket. Holds 120 units."
+	desc = "This... Is a bucket. It holds 120 units."
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',

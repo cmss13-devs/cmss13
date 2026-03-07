@@ -33,13 +33,13 @@
 	var/special = null
 	item_state = "card-id"
 
-/obj/item/card/data/verb/label(t as text)
+/obj/item/card/data/verb/label(text as text)
 	set name = "Label Disk"
-	set category = "Object"
+	set category = "attacking_object"
 	set src in usr
 
-	if (t)
-		src.name = text("data disk- '[]'", t)
+	if(text)
+		src.name = text("data disk- '[]'", text)
 	else
 		src.name = "data disk"
 	src.add_fingerprint(usr)
@@ -104,34 +104,19 @@
 	. = ..()
 	screen_loc = null
 
-/obj/item/card/id/proc/GetJobName() //Used in secHUD icon generation
-
-	var/job_icons = get_all_job_icons()
-	var/centcom = get_all_centcom_jobs()
-
-	if(assignment in job_icons)
-		return assignment//Check if the job has a hud icon
-	if(rank in job_icons)
-		return rank
-	if(assignment in centcom)
-		return "Centcom"//Return with the NT logo if it is a Centcom job
-	if(rank in centcom)
-		return "Centcom"
-	return "Unknown" //Return unknown if none of the above apply
-
 /obj/item/card/id/attack_self(mob/user as mob)
 	..()
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
-	if(!istype(H))
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/human)
+	if(!istype(human))
 		return
 
-	registered_name = H.real_name
-	registered_ref = WEAKREF(H)
-	registered_gid = H.gid
-	blood_type = H.blood_type
+	registered_name = human.real_name
+	registered_ref = WEAKREF(human)
+	registered_gid = human.gid
+	blood_type = human.blood_type
 
 /obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
@@ -145,7 +130,7 @@
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"
-	set category = "Object"
+	set category = "attacking_object"
 	set src in usr
 
 	to_chat(usr, "[icon2html(src, usr)] [name]: The current assignment on the card is [assignment]")
@@ -374,11 +359,11 @@
 	assignment = "Agent"
 	name = "[registered_name]'s [id_type] ([assignment])"
 
-/obj/item/card/id/adaptive/afterattack(obj/item/O as obj, mob/user as mob, proximity)
+/obj/item/card/id/adaptive/afterattack(obj/item/attacking_object as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/target_id = O
+	if(istype(attacking_object, /obj/item/card/id))
+		var/obj/item/card/id/target_id = attacking_object
 		access |= target_id.access
 		if(ishuman(user))
 			to_chat(user, SPAN_NOTICE("The card's microscanners activate as you pass it over the ID, copying its access."))
@@ -433,17 +418,17 @@
 	..()
 
 
-/obj/item/card/id/equipped(mob/living/carbon/human/H, slot)
-	if(istype(H))
-		H.update_inv_head() //updating marine helmet squad coloring
-		H.update_inv_wear_suit()
+/obj/item/card/id/equipped(mob/living/carbon/human/human, slot)
+	if(istype(human))
+		human.update_inv_head() //updating marine helmet squad coloring
+		human.update_inv_wear_suit()
 	..()
 
 /obj/item/card/id/dropped(mob/user)
 	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_head() //Don't do a full update yet
-		H.update_inv_wear_suit()
+		var/mob/living/carbon/human/human = user
+		human.update_inv_head() //Don't do a full update yet
+		human.update_inv_wear_suit()
 	..()
 
 
@@ -496,17 +481,17 @@
 	fallen_blood_types = list()
 	fallen_assgns = list()
 
-/obj/item/dogtag/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
+/obj/item/dogtag/attackby(obj/item/attacking_object, mob/user)
+	if(istype(attacking_object, /obj/item/dogtag))
+		var/obj/item/dogtag/dogtag = attacking_object
 		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
-		if(D.fallen_names)
-			fallen_references += D.fallen_references
-			fallen_names += D.fallen_names
-			fallen_blood_types += D.fallen_blood_types
-			fallen_assgns += D.fallen_assgns
-		qdel(D)
+		if(dogtag.fallen_names)
+			fallen_references += dogtag.fallen_references
+			fallen_names += dogtag.fallen_names
+			fallen_blood_types += dogtag.fallen_blood_types
+			fallen_assgns += dogtag.fallen_assgns
+		qdel(dogtag)
 		return TRUE
 	else
 		. = ..()

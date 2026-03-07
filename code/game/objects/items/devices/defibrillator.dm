@@ -436,7 +436,7 @@
 
 /obj/item/device/defibrillator/synthetic/seegson
 	name = "Seegson Working Joe reboot key"
-	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with synthetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
+	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
 	icon_state = "seeg_reset_key"
 	sound_success = 'sound/items/synth_reset_key/seegson_revive.ogg'
 	synthetic_type_locked = /datum/equipment_preset/synth/working_joe

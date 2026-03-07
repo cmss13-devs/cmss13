@@ -48248,7 +48248,7 @@
 /area/almayer/hallways/lower/starboard_umbilical)
 "ePz" = (
 /obj/structure/noticeboard{
-	desc = "The note is haphazardly attached to the cork board by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be dis-assembled and packed into a crate and sent to to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
+	desc = "The note is haphazardly attached to the corkboard by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be disassembled and packed into a crate and sent to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
 	pixel_y = 29
 	},
 /obj/structure/flora/pottedplant/random{

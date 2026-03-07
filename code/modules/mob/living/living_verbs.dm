@@ -114,7 +114,7 @@
 
 		var/obj/structure/closet/C = loc
 		if(C.opened)
-			return //Door's open... wait, why are you in it's contents then?
+			return //Door's open... wait, why are you in its contents then?
 		if(istype(loc, /obj/structure/closet/secure_closet))
 			var/obj/structure/closet/secure_closet/SC = loc
 			if(!SC.locked && !SC.welded)

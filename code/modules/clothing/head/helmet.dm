@@ -172,8 +172,8 @@
 
 
 /obj/item/clothing/head/helmet/roman/eaglebearer
-	name = "\improper Aquilifier's bear pelt mask"
-	desc = "a bear pelt and mask that was worn by a Roman Aquilifier, a prestigious role meant to inspire troops in battles."
+	name = "\improper Aquilifer's bear pelt mask"
+	desc = "a bear pelt and mask that was worn by a Roman Aquilifer, a prestigious role meant to inspire troops in battles."
 	icon_state = "eaglebearer_hat"
 	item_state = "eaglebearer_hat"
 	worn_x_dimension = 64
@@ -1066,7 +1066,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto/army
 	name = "\improper Personal body armor system helmet"
-	desc = "The personal body armor system helmet is the standard issue combat helmet for the US Army. Selected over the M12 pattern helmet during combat trials, it offers allegedly superior protection compared to the M12 series, at over four times the cost. Though its far more uncomfortable to wear."
+	desc = "The personal body armor system helmet is the standard issue combat helmet for the US Army. Selected over the M12 pattern helmet during combat trials, it offers allegedly superior protection compared to the M12 series, at over four times the cost. Though it's far more uncomfortable to wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',

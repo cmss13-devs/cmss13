@@ -45,7 +45,6 @@ SUBSYSTEM_DEF(sentry)
 		endpoint = ENDPOINT_CONFIG
 
 	var/static/regex/ip_regex = regex(@"(((?!25?[6-9])[12]\d|[1-9])?\d\.?\b){4}", "g")
-	var/regex/pii_regex = regex("([GLOB.all_player_ckeys.Join(")|(")])|([GLOB.all_player_cids.Join(")|(")])", "g")
 
 	for(var/datum/error_envelope/error as anything in envelopes)
 		var/event_id = get_uuid()
@@ -121,8 +120,12 @@ SUBSYSTEM_DEF(sentry)
 
 		var/event = json_encode(event_parts)
 
-		ip_regex.Replace(event, "ip address")
-		pii_regex.Replace(event, "user pii")
+		event = ip_regex.Replace(event, "ip address")
+		for(var/replacement in GLOB.all_player_ckeys)
+			event = replacetext(event, replacement, "player ckey")
+
+		for(var/replacement in GLOB.all_player_cids)
+			event = replacetext(event, replacement, "player computer id")
 
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"

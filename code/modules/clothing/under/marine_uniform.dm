@@ -1213,7 +1213,7 @@
 
 /obj/item/clothing/under/marine/veteran/UPP
 	name = "\improper UPP fatigues"
-	desc = "A set of UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	desc = "A set of UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform"
 	worn_state = "upp_uniform"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
@@ -1233,28 +1233,28 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
-	desc = "A set of medic UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	desc = "A set of medic UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_medic"
 	worn_state = "upp_uniform_medic"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/engi
 	name = "\improper UPP engineer fatigues"
-	desc = "A set of Engineer UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	desc = "A set of Engineer UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_engi"
 	worn_state = "upp_uniform_engi"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/mp
 	name = "\improper UPP Military Police fatigues"
-	desc = "A set of Military Police UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	desc = "A set of Military Police UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_mp"
 	worn_state = "upp_uniform_mp"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/officer
 	name = "\improper UPP Officer fatigues"
-	desc = "A set of Officer UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	desc = "A set of Officer UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_officer"
 	worn_state = "upp_uniform_officer"
 
@@ -1295,14 +1295,14 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/army
 	name = "\improper UPP army jungle fatigues"
-	desc =  "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the jungle pattern of the UPP Army's 202nd Infantry Regiment."
+	desc =  "A set of UPP fatigues, mass-produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the jungle pattern of the UPP Army's 202nd Infantry Regiment."
 	icon_state = "upp_army_green_uniform"
 	worn_state = "upp_army_green_uniform"
 	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/army/alt
 	name = "\improper UPP Army fatigues"
-	desc = "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the standard UPP pattern of the UPP Army's 202nd Infantry Regiment."
+	desc = "A set of UPP fatigues, mass-produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the standard UPP pattern of the UPP Army's 202nd Infantry Regiment."
 	icon_state = "upp_army_yellow_uniform"
 	worn_state = "upp_army_yellow_uniform"
 
@@ -1489,7 +1489,7 @@
 
 /obj/item/clothing/under/souto
 	name = "\improper Souto Man's cargo pants"
-	desc = "The white cargo pants worn by the one and only Souto man. As cool as an ice cold can of Souto Grape!"
+	desc = "The white cargo pants worn by the one and only Souto man. As cool as an ice-cold can of Souto Grape!"
 	icon_state = "souto_man"
 	worn_state = "souto_man"
 	has_sensor = UNIFORM_NO_SENSORS
@@ -1552,7 +1552,7 @@
 
 /obj/item/clothing/under/colonist/workwear/green
 	name = "green workwear"
-	desc = "A pair of brown canvas workpants paired with a green workshirt. An common pairing among blue-collar workers."
+	desc = "A pair of brown canvas workpants paired with a green workshirt. A common pairing among blue-collar workers."
 	icon_state = "workwear_green"
 	worn_state = "workwear_green"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
@@ -1708,13 +1708,13 @@
 
 /obj/item/clothing/under/liaison_suit/field
 	name = "corporate casual"
-	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from nightclubs."
 	icon_state = "corporate_field"
 	worn_state = "corporate_field"
 
 /obj/item/clothing/under/liaison_suit/field/skirt
 	name = "corporate casual skirt"
-	desc = "A black pencil skirt paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	desc = "A black pencil skirt paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from nightclubs."
 	icon_state = "corporate_field_skirt"
 	worn_state = "corporate_field_skirt"
 

@@ -203,3 +203,55 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive(new_human), WEAR_BACK)
 		if(81 to 100)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive/alt(new_human), WEAR_BACK)
+
+/datum/equipment_preset/yautja/emissary
+	name = "Yautja Emissary (Pre-Equipped)"
+	idtype = /obj/item/card/id/dogtag // oh yeah
+	assignment = "Yautja Emissary"
+	job_title = "Yautja Emissary"
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_YAUTJA // needs to be changed to bad blood once they're in the game
+	faction_group = FACTION_LIST_YAUTJA // ditto
+
+	minimap_icon = "predator" // ditto
+
+/datum/equipment_preset/yautja/emissary/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
+
+/datum/equipment_preset/yautja/emissary/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	var/caster_material = "ebony"
+	var/bracer_material = "ebony"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
+
+	if(!mob_client)
+		mob_client = new_human.client
+	if(mob_client?.prefs)
+		caster_material = mob_client.prefs.predator_caster_material
+		bracer_material = mob_client.prefs.predator_bracer_material
+		translator_type = mob_client.prefs.predator_translator_type
+		invisibility_sound = mob_client.prefs.predator_invisibility_sound
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter/emissary(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/lmg/tactical(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/incendiary(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)

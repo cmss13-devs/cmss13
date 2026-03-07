@@ -66,6 +66,10 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ai" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -474,6 +478,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "dB" = (
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dD" = (
@@ -537,6 +542,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dU" = (
@@ -1305,6 +1311,7 @@
 	layer = 4.1
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "kK" = (
@@ -2338,6 +2345,7 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "uK" = (
@@ -2473,6 +2481,7 @@
 	pixel_x = -16;
 	pixel_y = 6
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "wL" = (
@@ -2516,6 +2525,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "xd" = (
@@ -2678,7 +2688,7 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "zU" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -2777,6 +2787,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Be" = (
@@ -2824,7 +2835,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "BT" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -2904,6 +2915,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Dg" = (
@@ -3181,6 +3193,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Ga" = (
@@ -3346,6 +3359,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Hy" = (
@@ -3694,6 +3708,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Mp" = (
@@ -4097,6 +4112,7 @@
 /obj/item/tool/warning_cone{
 	pixel_y = 17
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "SD" = (
@@ -4263,7 +4279,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "UH" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -4494,6 +4510,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Xy" = (
@@ -4555,6 +4572,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "YK" = (
@@ -4769,7 +4787,7 @@ uS
 Nn
 Tb
 rR
-Kz
+Nb
 Kz
 dU
 CY
@@ -4839,7 +4857,7 @@ EY
 YA
 Mg
 ZZ
-YV
+ai
 pb
 BY
 RH
@@ -4899,7 +4917,7 @@ Tb
 UD
 rt
 gb
-BT
+UH
 CE
 CE
 gb

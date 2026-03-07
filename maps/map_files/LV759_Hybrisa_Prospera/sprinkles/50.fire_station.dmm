@@ -1,0 +1,3373 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/template_noop)
+"ad" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"aC" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"aH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"aI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stool{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"aT" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"aX" = (
+/obj/structure/closet/firecloset/alt_full,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"ba" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_1";
+	pixel_x = 25
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"bf" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/machinery/light/red{
+	dir = 4;
+	pixel_y = -16
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"bg" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/safety/big_one{
+	color = "#b7b7b7";
+	pixel_x = 1;
+	pixel_y = -25
+	},
+/obj/structure/sign/safety/fire_station{
+	color = "#b7b7b7";
+	pixel_x = 13;
+	pixel_y = -25
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/template_noop)
+"bY" = (
+/obj/structure/prop/hybrisa/misc/firehydrant{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"cc" = (
+/obj/effect/hybrisa/misc/fake/pipes/pipe4,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -6
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"cj" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_2";
+	pixel_x = 25
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"cl" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
+	dir = 4;
+	pixel_y = -16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"cn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_1";
+	pixel_x = -24
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"cr" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400";
+	pixel_x = -12;
+	pixel_y = 18
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"dm" = (
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"dn" = (
+/obj/structure/fence/dark,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"dp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"dw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_3"
+	},
+/turf/open/asphalt/cementalt/cementalt14,
+/area/lv759/indoors/fire_station)
+"dJ" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"dK" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"dN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"dO" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -16
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/gm/river,
+/area/lv759/indoors/fire_station)
+"dY" = (
+/obj/structure/bed/hybrisa/prisonbed{
+	dir = 5
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -16
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"en" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_2";
+	pixel_x = -24
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"eB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/template_noop)
+"eG" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	pixel_x = 3;
+	pixel_y = 8;
+	name = "rubber mat"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"eK" = (
+/obj/effect/hybrisa/misc/fake/pipes/pipe2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -6
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"eL" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"eN" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/fence/dark,
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"fa" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"fb" = (
+/obj/structure/machinery/door/airlock/almayer/glass/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"fk" = (
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"fx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/template_noop)
+"fI" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	light_color = "#00ff9f";
+	light_on = 1;
+	light_power = 2;
+	light_range = 3;
+	pixel_y = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"fP" = (
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/template_noop)
+"fU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"gh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"gi" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#858680"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"gl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -2;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"gG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/gm/river,
+/area/lv759/indoors/fire_station)
+"gM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"gT" = (
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"hm" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"hn" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"ht" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"hz" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/safety/big_one{
+	color = "#b7b7b7";
+	pixel_x = 1;
+	pixel_y = -25
+	},
+/obj/structure/sign/safety/fire_station{
+	color = "#b7b7b7";
+	pixel_x = 13;
+	pixel_y = -25
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/template_noop)
+"hB" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"hH" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 6;
+	layer = 2.9
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 4;
+	layer = 4;
+	pixel_y = 12
+	},
+/turf/open/gm/river,
+/area/lv759/indoors/fire_station)
+"hP" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"hT" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	id = "fire_station_4"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/fire_station)
+"ia" = (
+/obj/structure/bed/chair{
+	pixel_y = 15;
+	buckling_y = 15
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"iv" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	layer = 3.1;
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/template_noop)
+"iE" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"iS" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/template_noop)
+"jd" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"jl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"jm" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab";
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"jp" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = -13
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12;
+	pixel_x = -16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"jI" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/template_noop)
+"jY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"jZ" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_docstripingdir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"kd" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"kf" = (
+/obj/item/storage/firstaid/fire{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_y = -2;
+	pixel_x = 2
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"kg" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"km" = (
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_4";
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"kv" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"kA" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	layer = 2.01;
+	dir = 1;
+	pixel_x = 8;
+	name = "rubber mat";
+	pixel_y = -2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"kC" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "disposals_maint"
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"kE" = (
+/obj/structure/bed/hybrisa/prisonbed{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"ls" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/lv759/indoors/fire_station)
+"lD" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"lH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"lN" = (
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"lV" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"mp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/mask/gas{
+	pixel_x = 4
+	},
+/turf/open/asphalt/cementalt/cementalt9,
+/area/lv759/indoors/fire_station)
+"mv" = (
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/lv759/indoors/fire_station)
+"mC" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"mD" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"mF" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/fire_station)
+"mH" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"mI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/template_noop)
+"mJ" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"mQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"nt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"nu" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"nx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"nC" = (
+/obj/structure/closet/firecloset/alt_full,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"nF" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"nO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/mask/gas{
+	pixel_x = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"nW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"od" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"pd" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/fire_station)
+"pn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/extinguisher/mini{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/stool{
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/turf/open/asphalt/cementalt/cementalt15,
+/area/lv759/indoors/fire_station)
+"pE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"pN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"pU" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/template_noop)
+"qa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 2
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/lv759/indoors/fire_station)
+"qi" = (
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"qp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"qA" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	id = "fire_station_4"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/fire_station)
+"qJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#8e98a0"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_y = 12;
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_y = 8;
+	pixel_x = -6
+	},
+/obj/item/ashtray/plastic{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"qP" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"rf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"rw" = (
+/obj/item/trash/cigbutt,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 2
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/lv759/indoors/fire_station)
+"rJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_3"
+	},
+/turf/open/asphalt/cementalt/cementalt2,
+/area/lv759/indoors/fire_station)
+"rP" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"rQ" = (
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/fire_station)
+"rS" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/tool/mop{
+	pixel_x = -15;
+	pixel_y = 19
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"rW" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"se" = (
+/obj/structure/closet/firecloset/alt_full,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"sq" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"sD" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"sO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"te" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"tF" = (
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "disposals_maint"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"ua" = (
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "disposals_maint"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"ud" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"uh" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12;
+	pixel_x = -16
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"uX" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/template_noop)
+"va" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/structure/sign/safety/big_one{
+	color = "#b7b7b7";
+	pixel_x = 1;
+	pixel_y = -25
+	},
+/obj/structure/sign/safety/fire_station{
+	color = "#b7b7b7";
+	pixel_x = 13;
+	pixel_y = -25
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"vh" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_1"
+	},
+/turf/open/asphalt/cementalt/cementalt2,
+/area/lv759/indoors/fire_station)
+"vp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_4";
+	pixel_y = -20
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"vu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12;
+	pixel_x = -16
+	},
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"wf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"wo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"wq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"wD" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"xr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -5;
+	pixel_y = -12
+	},
+/turf/open/asphalt/cementalt/cementalt9,
+/area/lv759/indoors/fire_station)
+"xu" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/rag{
+	desc = "A pile of clothing, these need washing...";
+	name = "pile of clothing";
+	color = "#37485b";
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"yc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"yo" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"yt" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -16
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"yv" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/fire_station)
+"yy" = (
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"yE" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_x = 6;
+	pixel_y = 25
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack{
+	color = "#98a3ab";
+	pixel_y = 5
+	},
+/obj/item/tool/weldpack{
+	pixel_y = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"yK" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	pixel_x = 2
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 37;
+	pixel_x = -6
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"yQ" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"yW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"zj" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -1
+	},
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_3";
+	pixel_x = 25
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"zL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt15,
+/area/lv759/indoors/fire_station)
+"zR" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"zV" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"Ah" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Al" = (
+/obj/structure/machinery/door_control{
+	name = "RFF maintenance lockdown";
+	id = "disposals_maint";
+	pixel_x = 25;
+	pixel_y = -22
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"AN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/fire_station)
+"Br" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	name = "RFF Garage lockdown";
+	id = "fire_station_3";
+	pixel_x = -24
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"BA" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/template_noop)
+"BC" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/machinery/light/red{
+	dir = 4;
+	pixel_y = -16
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"BD" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/template_noop)
+"BV" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#858680";
+	layer = 2.41
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"Cc" = (
+/obj/structure/fence/dark,
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"Cg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = 10;
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	color = "#b7b7b7"
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"CH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/machinery/light/blue{
+	dir = 8;
+	pixel_y = -16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"CL" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"CX" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	pixel_y = 13;
+	layer = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 26
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 1
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = -8
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"Dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"Do" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"DG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/template_noop)
+"DS" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/structure/bed/chair{
+	pixel_y = 15;
+	buckling_y = 15
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"DW" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Ep" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"Et" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"Ey" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"EL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"EW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	name = "RFF maintenance lockdown";
+	id = "disposals_maint";
+	pixel_x = 25;
+	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = 1
+	},
+/obj/item/tool/warning_cone{
+	layer = 5;
+	pixel_x = -13;
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"FO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"FW" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab";
+	pixel_y = 5
+	},
+/obj/item/tool/extinguisher/mini{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/obj/item/tool/extinguisher/mini{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/tool/extinguisher/mini{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/tool/extinguisher/mini{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"FX" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/gm/river,
+/area/lv759/indoors/fire_station)
+"Gf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Gm" = (
+/obj/structure/window/reinforced,
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/fire_station)
+"Gv" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_docstripingdir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"GL" = (
+/obj/item/reagent_container/glass/rag{
+	desc = "A pile of clothing, these need washing...";
+	name = "pile of clothing";
+	color = "#973a3a";
+	pixel_y = 15;
+	pixel_x = -7
+	},
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"GS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_docstripingdir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"GX" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 4;
+	pixel_y = 28
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"Ha" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/fire_station)
+"Hf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Hj" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Hm" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"Hw" = (
+/obj/structure/sign/safety/big_one{
+	color = "#b7b7b7";
+	pixel_x = 1;
+	pixel_y = -25
+	},
+/obj/structure/sign/safety/fire_station{
+	color = "#b7b7b7";
+	pixel_x = 13;
+	pixel_y = -25
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"HA" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/template_noop)
+"HE" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/template_noop)
+"HS" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/template_noop)
+"HT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"Ic" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/sign/safety/water{
+	pixel_x = 2;
+	pixel_y = 33
+	},
+/obj/structure/sign/safety/storage{
+	pixel_x = 14;
+	pixel_y = 33
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"Iq" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab";
+	pixel_y = 5
+	},
+/obj/item/attachable/attached_gun/extinguisher,
+/obj/item/attachable/attached_gun/extinguisher,
+/obj/item/attachable/attached_gun/extinguisher{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/attachable/attached_gun/extinguisher{
+	pixel_y = 14
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"IL" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -2
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"IS" = (
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -6
+	},
+/obj/item/trash/uscm_mre,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"IU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"Ja" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"Jk" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Jp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack{
+	color = "#98a3ab";
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 4
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8;
+	pixel_x = 2
+	},
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_x = -14;
+	pixel_y = 31
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"JM" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Km" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/sign/safety/fire_station{
+	color = "#b7b7b7";
+	pixel_x = 13;
+	pixel_y = 33
+	},
+/obj/structure/sign/safety/big_one{
+	color = "#b7b7b7";
+	pixel_x = 1;
+	pixel_y = 33
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Kz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"KB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_y = 18
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/template_noop)
+"KF" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"KK" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"KQ" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/lv759/indoors/fire_station)
+"Lk" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "white_broken_docstripingdir";
+	color = "#d3d3d3";
+	pixel_x = -1;
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12;
+	pixel_x = -16
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Ls" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Mf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"Mj" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Mv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"MN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/template_noop)
+"MQ" = (
+/turf/template_noop,
+/area/template_noop)
+"MS" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"Nj" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Nl" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/lv759/indoors/fire_station)
+"Nx" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"NU" = (
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"NX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Oe" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
+/area/lv759/oob)
+"OF" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/template_noop)
+"OL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"OV" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"OW" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_2"
+	},
+/turf/open/asphalt/cementalt/cementalt14,
+/area/lv759/indoors/fire_station)
+"Pm" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/ambulance{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"Pp" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/template_noop)
+"Pv" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -14;
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Pz" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime1"
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"PL" = (
+/obj/item/stool{
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Qo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stool{
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Qu" = (
+/obj/structure/bed/roller,
+/obj/item/storage/firstaid/regular/empty{
+	pixel_x = -14;
+	pixel_y = 7
+	},
+/obj/item/stack/medical/ointment{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 8;
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 6;
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"QK" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/bed/stool{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_y = 1;
+	pixel_x = 7
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"QR" = (
+/obj/structure/window/reinforced,
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/fire_station)
+"QV" = (
+/obj/structure/extinguisher_cabinet/alt,
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/lv759/indoors/fire_station)
+"Rd" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Rj" = (
+/obj/item/bedsheet/red{
+	pixel_y = 10
+	},
+/obj/structure/bed/hybrisa/prisonbed{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Rm" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Rs" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Rx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/medical/splint,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"Ry" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"RT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/head/helmet/hybrisa/firefighter,
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"Sg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	name = "RFF maintenance lockdown";
+	id = "disposals_maint";
+	pixel_x = 25;
+	pixel_y = -22
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/indoors/fire_station)
+"SF" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"SQ" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_2"
+	},
+/turf/open/asphalt/cementalt/cementalt2,
+/area/lv759/indoors/fire_station)
+"SR" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"SZ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Tl" = (
+/obj/structure/machinery/colony_floodlight/traffic/alt{
+	pixel_x = 4;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/template_noop)
+"Tq" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
+"Tx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/template_noop)
+"TE" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/red{
+	dir = 4;
+	id = "fire_station_1"
+	},
+/turf/open/asphalt/cementalt/cementalt14,
+/area/lv759/indoors/fire_station)
+"TQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"TY" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Uj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 10;
+	pixel_x = 1;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Up" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 7;
+	phone_category = "Colony-Net Emergency Line";
+	phone_id = "Fire Station";
+	phone_color = "red";
+	layer = 4;
+	dir = 4;
+	pixel_x = -17
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"Uw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/fire_station)
+"UP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"Vh" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/tool/extinguisher/mini{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/pamphlet/upgradeable/fireman_carry{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/fire_station)
+"Vl" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/template_noop)
+"VU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt12,
+/area/lv759/indoors/fire_station)
+"Wl" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/template_noop)
+"WF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 32
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -21;
+	pixel_y = 7;
+	color = "#b7b7b7"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"WV" = (
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"WZ" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"XB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/fire_station)
+"XL" = (
+/obj/structure/bed/chair{
+	pixel_x = -4;
+	pixel_y = 14;
+	buckling_y = 11
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/fire_station)
+"XQ" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"Yh" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/template_noop)
+"YE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt9,
+/area/lv759/indoors/fire_station)
+"YF" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/template_noop)
+"YX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cementalt/cementalt4,
+/area/lv759/indoors/fire_station)
+"YY" = (
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"YZ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"Zb" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/turf/open/hybrisa/street/cement3,
+/area/template_noop)
+"Zs" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/template_noop)
+"ZD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+"ZT" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/device/megaphone,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/fire_station)
+
+(1,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+mJ
+mD
+Ls
+Nj
+Nj
+Ls
+eL
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(2,1,1) = {"
+MQ
+MQ
+MQ
+fP
+pU
+OF
+OF
+iS
+iS
+iS
+iS
+uX
+Kz
+Kz
+Mv
+Kz
+Tx
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(3,1,1) = {"
+MQ
+MQ
+MQ
+Tl
+HE
+Vl
+Vl
+iv
+aa
+Zs
+Zs
+HA
+rf
+Mv
+Mv
+Wl
+MN
+Vl
+Vl
+HS
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(4,1,1) = {"
+MQ
+MQ
+MQ
+bY
+Yh
+hn
+hn
+eN
+dn
+Cc
+dn
+fk
+Km
+CL
+uh
+va
+fk
+hn
+hn
+KB
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(5,1,1) = {"
+MQ
+MQ
+ht
+Pp
+bg
+fk
+fk
+YZ
+Zb
+qP
+lN
+Ep
+YF
+WV
+nu
+mH
+Do
+eK
+NU
+pN
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(6,1,1) = {"
+MQ
+MQ
+lD
+Mv
+SR
+iE
+dp
+KK
+dJ
+dJ
+kv
+dJ
+cr
+hP
+sq
+Mj
+dN
+cc
+IS
+pN
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(7,1,1) = {"
+MQ
+MQ
+lD
+Mv
+OL
+Rs
+XQ
+WV
+Uj
+WV
+Pv
+hP
+DW
+WV
+TY
+qp
+yc
+mI
+DG
+wq
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(8,1,1) = {"
+MQ
+MQ
+lD
+Mv
+Kz
+BC
+zj
+Gv
+GS
+cj
+jZ
+jZ
+ba
+jZ
+Lk
+bf
+gl
+eB
+fx
+HT
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(9,1,1) = {"
+MQ
+MQ
+wD
+jI
+hz
+KQ
+KQ
+rJ
+dw
+KQ
+SQ
+OW
+KQ
+vh
+TE
+KQ
+KQ
+kd
+Uw
+KQ
+KQ
+KQ
+OV
+KQ
+KQ
+KQ
+KQ
+KQ
+KQ
+KQ
+KQ
+KQ
+"}
+(10,1,1) = {"
+MQ
+MQ
+rW
+Pm
+Hm
+QV
+Br
+Ry
+VU
+en
+lH
+Dg
+cn
+lH
+Dg
+TQ
+KQ
+rP
+sO
+KQ
+dY
+kE
+Rm
+KQ
+jd
+Al
+tF
+EW
+CH
+FO
+pE
+KQ
+"}
+(11,1,1) = {"
+MQ
+MQ
+rW
+mQ
+Hm
+YY
+ud
+wo
+jp
+gh
+YX
+od
+IU
+dg
+cl
+gM
+yy
+ia
+aC
+YY
+GL
+eG
+Rm
+Nx
+hm
+IL
+KQ
+yE
+mv
+ls
+Sg
+kC
+"}
+(12,1,1) = {"
+MQ
+MQ
+WZ
+mQ
+sD
+YY
+jY
+dg
+qi
+gh
+YX
+od
+IU
+YX
+vu
+Et
+yy
+XL
+gT
+YY
+Rj
+nF
+xu
+KQ
+KQ
+KQ
+KQ
+fI
+qa
+rw
+qJ
+KQ
+"}
+(13,1,1) = {"
+MQ
+MQ
+MQ
+Qu
+Hm
+YY
+ud
+YX
+od
+jl
+RT
+od
+IU
+YX
+te
+Et
+KQ
+WF
+Tq
+KQ
+KQ
+Ha
+AN
+KQ
+Gm
+QR
+KQ
+CX
+GX
+mC
+yQ
+ua
+"}
+(14,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+Rx
+KQ
+zR
+mp
+zL
+jl
+xr
+pn
+IU
+YE
+zL
+Et
+yy
+DS
+KF
+MS
+BV
+Jk
+kA
+aT
+SF
+Rd
+KQ
+hH
+dO
+gG
+FX
+KQ
+"}
+(15,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+Hm
+KQ
+Jp
+wf
+wf
+UP
+Ey
+aH
+XB
+nW
+nW
+SZ
+yy
+rS
+gT
+kd
+gi
+nt
+QK
+KQ
+Pz
+Hj
+Oe
+Oe
+Oe
+Oe
+Oe
+Oe
+"}
+(16,1,1) = {"
+MQ
+MQ
+MQ
+mQ
+Hw
+KQ
+KQ
+rQ
+rQ
+KQ
+yy
+yy
+KQ
+rQ
+rQ
+KQ
+KQ
+yK
+yW
+KQ
+Oe
+Oe
+Oe
+Oe
+Oe
+Oe
+Oe
+MQ
+MQ
+MQ
+MQ
+Oe
+"}
+(17,1,1) = {"
+MQ
+MQ
+MQ
+mQ
+BA
+qA
+yv
+hB
+ZD
+aI
+Qo
+PL
+Up
+kg
+kg
+lV
+dK
+yo
+Ja
+pd
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(18,1,1) = {"
+MQ
+MQ
+MQ
+Mf
+BD
+hT
+mF
+Hf
+ZT
+NX
+ad
+Jk
+Jk
+Gf
+Ah
+JM
+fa
+yt
+Cg
+pd
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(19,1,1) = {"
+MQ
+MQ
+MQ
+mQ
+vp
+KQ
+km
+dm
+zV
+dm
+nx
+Vh
+KQ
+Ic
+jm
+FW
+KQ
+pd
+pd
+pd
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(20,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+MQ
+fb
+mF
+fU
+EL
+fU
+nO
+kf
+Nl
+KQ
+KQ
+KQ
+KQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(21,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+MQ
+KQ
+KQ
+nC
+se
+aX
+Iq
+KQ
+KQ
+KQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}
+(22,1,1) = {"
+MQ
+MQ
+MQ
+MQ
+MQ
+KQ
+KQ
+KQ
+Nl
+KQ
+KQ
+KQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+"}

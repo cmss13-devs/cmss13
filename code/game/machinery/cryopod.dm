@@ -391,53 +391,53 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		SSticker.mode.ares_command_check(force=TRUE)
 	stop_processing()
 
-/obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/cryopod/attackby(obj/item/item, mob/living/user)
 	if(isxeno(user))
 		return FALSE
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
+	if(istype(item, /obj/item/grab))
+		var/obj/item/grab/grab_item = item
 		if(occupant)
 			to_chat(user, SPAN_WARNING("[src] is occupied."))
 			return FALSE
 
-		if(!isliving(G.grabbed_thing))
+		if(!isliving(grab_item.grabbed_thing))
 			return FALSE
 
 		willing = FALSE //We don't want to allow people to be forced into despawning.
-		var/mob/living/M = G.grabbed_thing
+		var/mob/living/grabbed_mob = grab_item.grabbed_thing
 
-		if(M.stat == DEAD) //This mob is dead
-			to_chat(user, SPAN_WARNING("[src] immediately rejects [M]. \He passed away!"))
+		if(grabbed_mob.stat == DEAD) //This mob is dead
+			to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
 			return FALSE
 
-		if(isxeno(M))
-			to_chat(user, SPAN_WARNING("There is no way [src] will accept [M]!"))
+		if(isxeno(grabbed_mob))
+			to_chat(user, SPAN_WARNING("There is no way [src] will accept [grabbed_mob]!"))
 			return FALSE
 
-		if(M.client)
-			if(alert(M,"Would you like to enter cryosleep?", , "Yes", "No") == "Yes")
-				if(!M || !G || !G.grabbed_thing)
+		if(grabbed_mob.client)
+			if(alert(grabbed_mob,"Would you like to enter cryosleep?", , "Yes", "No") == "Yes")
+				if(!grabbed_mob || !grab_item || !grab_item.grabbed_thing)
 					return FALSE
 				willing = TRUE
 
-		if(willing || !M.client)
+		if(willing || !grabbed_mob.client)
 
-			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
-			SPAN_NOTICE("You start putting [M] into [src]."))
+			visible_message(SPAN_NOTICE("[user] starts putting [grabbed_mob] into [src]."),
+			SPAN_NOTICE("You start putting [grabbed_mob] into [src]."))
 
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
-			if(!M || !G || !G.grabbed_thing)
+			if(!grabbed_mob || !grab_item || !grab_item.grabbed_thing)
 				return
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
 
-			go_in_cryopod(M)
+			go_in_cryopod(grabbed_mob)
 
 			//Book keeping!
 			var/area/location = get_area(src)
-			message_admins("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
+			message_admins("[key_name_admin(user)] put [key_name_admin(grabbed_mob)], [grabbed_mob.job] into [src] at [location].")
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(user)

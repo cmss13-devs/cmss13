@@ -68,6 +68,7 @@ SUBSYSTEM_DEF(atoms)
 		if(QDELETED(A))
 			continue
 		A.LateInitialize()
+		CHECK_TICK
 
 	#ifdef TESTING
 	testing("Late initialized [length(late_loaders)] atoms")

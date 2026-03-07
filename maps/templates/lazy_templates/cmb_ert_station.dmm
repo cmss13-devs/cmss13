@@ -1,0 +1,117 @@
+"aG" = (/turf/open/floor/corsat/arrow_north,/area/space)
+"bn" = (/obj/structure/machinery/shower{dir = 4},/obj/structure/machinery/light/small,/turf/open/floor/corsat/retrosquareslight,/area/space)
+"cf" = (/obj/structure/pipes/vents/pump{dir = 4},/turf/open/floor/plating,/area/space)
+"cq" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/closet/medical_wall{pixel_x = 30},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/west,/area/space)
+"fD" = (/turf/open/floor/plating,/area/space)
+"fR" = (/turf/open/floor/corsat/arrow_west,/area/space)
+"fZ" = (/turf/closed/wall/r_wall/prison,/area/space)
+"gj" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/blue/east,/area/space)
+"gr" = (/turf/open/floor/corsat/blue/east,/area/space)
+"gt" = (/turf/open/floor/corsat/blue/north,/area/space)
+"gC" = (/obj/effect/decal/warning_stripes{icon_state = "SW-out"; layer = 2.5},/obj/structure/closet/emcloset{density = 0; pixel_x = 8; pixel_y = 15},/obj/structure/closet/firecloset/full{density = 0; pixel_x = -8; pixel_y = 15},/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/turf/open/floor/corsat/bluecorner/west,/area/space)
+"hj" = (/turf/open/floor/corsat/green/east,/area/space)
+"jn" = (/turf/open/floor/corsat/blue/southeast,/area/space)
+"kE" = (/obj/structure/bed/sofa/vert/grey/bot{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"ld" = (/obj/docking_port/stationary/emergency_response/idle_port2,/turf/open/floor/plating,/area/space)
+"lB" = (/turf/open/floor/corsat/browncorner,/area/space)
+"mC" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/floor/corsat/squares,/area/space)
+"ow" = (/obj/effect/decal/warning_stripes{icon_state = "SE-out"},/obj/structure/closet/emcloset{density = 0; pixel_x = 8; pixel_y = 15},/obj/structure/closet/firecloset/full{density = 0; pixel_x = -8; pixel_y = 15},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 6},/turf/open/floor/corsat/bluecorner,/area/space)
+"oZ" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"pL" = (/obj/structure/bed/sofa/vert/grey{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"qm" = (/obj/structure/toilet{dir = 8},/turf/open/floor/corsat/retrosquareslight,/area/space)
+"qo" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 4},/turf/open/floor/corsat/blue/west,/area/space)
+"sx" = (/turf/closed/wall/almayer,/area/space)
+"tv" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/blue/west,/area/space)
+"wy" = (/turf/open/floor/corsat/greencorner,/area/space)
+"wW" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/machinery/light/double,/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue/north,/area/space)
+"xL" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/space)
+"yF" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue/north,/area/space)
+"yS" = (/obj/effect/decal/warning_stripes{icon_state = "S"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue,/area/space)
+"zh" = (/obj/effect/decal/warning_stripes{icon_state = "S"},/obj/structure/closet/hydrant{pixel_y = 30},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue,/area/space)
+"AC" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/space/basic,/area/space)
+"AS" = (/turf/open/floor/corsat/bluecorner/east,/area/space)
+"Bq" = (/obj/structure/prop/invuln/lattice_prop,/turf/open/space/basic,/area/space)
+"Bu" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/dark,/area/space)
+"BF" = (/turf/open/floor/corsat/blue,/area/space)
+"Dt" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 4},/turf/open/floor/corsat/blue/east,/area/space)
+"El" = (/turf/open/floor/dark,/area/space)
+"EJ" = (/obj/structure/stairs{icon_state = "ramptop"},/turf/open/floor/corsat/squares,/area/space)
+"ET" = (/turf/open/floor/corsat/bluecorner/north,/area/space)
+"Fw" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"Gc" = (/turf/open/floor/corsat/bluecorner,/area/space)
+"Gu" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/west,/area/space)
+"Hd" = (/obj/structure/window/framed/almayer/hull,/turf/open/floor/plating,/area/space)
+"Ig" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/machinery/light/double,/turf/open/floor/corsat/blue/north,/area/space)
+"JW" = (/turf/open/space/basic,/area/space)
+"KJ" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 8},/turf/open/floor/corsat/blue/east,/area/space)
+"KQ" = (/turf/open/floor/corsat/green,/area/space)
+"LT" = (/obj/effect/decal/strata_decals/catwalk/prison,/obj/structure/mirror{pixel_y = 32},/obj/structure/sink{pixel_x = 1; pixel_y = 23},/turf/open/floor/corsat/damaged1,/area/space)
+"Ny" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/floor/corsat/squares,/area/space)
+"NY" = (/obj/structure/pipes/vents/pump{dir = 8},/turf/open/floor/plating,/area/space)
+"Ob" = (/turf/open/floor/corsat/blue/northwest,/area/space)
+"OR" = (/turf/open/floor/corsat/squares,/area/space)
+"Py" = (/obj/effect/decal/warning_stripes{icon_state = "NW-out"},/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 9},/turf/open/floor/corsat/bluecorner/north,/area/space)
+"PB" = (/obj/effect/decal/warning_stripes{icon_state = "NE-out"},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 5},/turf/open/floor/corsat/bluecorner/east,/area/space)
+"QD" = (/turf/open/floor/corsat/bluecorner/west,/area/space)
+"QF" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/turf/open/floor/corsat/blue/east,/area/space)
+"Rv" = (/obj/structure/window/framed/almayer/hull,/turf/open/space/basic,/area/space)
+"Uz" = (/turf/open/floor/corsat/arrow_south,/area/space)
+"UJ" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/east,/area/space)
+"UT" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/turf/open/floor/corsat/blue/west,/area/space)
+"Wq" = (/turf/open/floor/corsat/blue/west,/area/space)
+"Wz" = (/turf/open/floor/corsat/brown/east,/area/space)
+"WN" = (/turf/open/floor/corsat/tan/north,/area/space)
+"YX" = (/obj/structure/bed/sofa/vert/grey/top{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+
+(1,1,1) = {"
+fZfZfZfZJWJWsxsxsxNyNyNyNyNysxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+oZoZoZoZJWJWsxORORORORORORORORORsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWsxORORORaGORaGORORORsxsxsxsxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+sxsxsxsxJWJWsxORORORORORORORORORsxsxEJEJEJsxJWJWJWJWJWJWJWJWJWJWJWJWoZoZoZoZoZoZoZoZoZFwoZoZoZJWJWJW
+JWJWJWJWJWsxsxORORORORORORORORORsxsxEJEJEJsxACACACmCsxJWJWJWJWJWJWJWoZowySySySySzhySySySySgCoZJWJWJW
+RvRvRvRvJWsxORORORORORORORORORsxsxsxEJEJEJsxORORORORsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJW
+JWJWJWJWJWHdORORYXORORYXORORORORORORORORORORORORORORORORORORORORORORORUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWJWJWHdORORpLORORpLORORORORORORORORORORORORORORORfRORORfRORORfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWJWJWHdORORpLORORpLORORORORORORORORORORORORORORORORORORORORORORORUJfDfDfDfDfDfDfDfDfDcqoZJWJWJW
+JWJWJWJWJWsxORORkEORORkEORORORORORORORORORORORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJW
+JWJWJWJWsxsxORORORORORORORORORORORORORORORORORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJW
+JWJWJWJWsxORORORORORORORORwysxsxKQKQKQsxsxORORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWJWHdORORYXORORYXORORhjWNWNWNWNWNWNsxsxORORORHdBqBqBqBqBqBqBqBqxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWJWHdORORpLORORpLORORhjWNWNWNWNWNWNWNsxORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWJWHdORORpLORORpLORORhjWNWNWNWNWNWNWNsxORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJW
+JWJWJWJWsxORORkEORORkEORORhjWNWNWNWNWNWNWNsxORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJW
+JWJWJWsxsxORORORORORORORORhjWNWNWNWNWNWNsxsxORORORORASgtgtgtgtgtgtgtETUJfDfDfDfDfDfDfDfDfDcqoZJWJWJW
+JWJWJWsxORORORORORORORORlBsxsxsxsxsxsxsxsxQDORORORORORfRORORfRORORfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWHdORORORORORORORORWzWNWNWNsxbnLTqmsxWqORORORORGcBFBFBFBFBFBFBFQDUJfDldfDfDfDfDfDfDfDGuxLJWJWJW
+JWJWJWHdORORYXORORYXORORWzWNWNWNsxsxWNsxsxWqORORORsxsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJW
+JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqORGcsxsxJWJWJWJWJWJWJWJWoZPByFyFwWyFyFyFIgyFyFPyoZJWJWJW
+JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqUzgrsxJWJWJWJWJWJWJWJWJWoZoZoZoZoZgrElWqoZoZoZoZoZJWJWJW
+JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqORgrsxJWJWJWJWJWJWJWJWJWJWJWJWJWoZgjButvoZJWJWJWJWJWJWJW
+JWJWJWHdORORkEORORkEORORWzWNWNWNWNWNWNWNsxWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWoZgrElWqoZJWJWJWJWJWJWJW
+JWJWJWsxORORORORORORORORWzWNWNWNWNWNWNWNsxWqUzgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWsxsxORORORORORORORORWzWNWNWNWNWNWNsxsxWqORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWsxORORORORORORORORORsxsxsxsxsxsxsxsxObETORASgtgtgtJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORORORORORORORORORORORORASgtgtgtETORORORORORORJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORYXORORYXORORORORORORORORORORORORORORGcBFBFBFJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORpLORORpLORORORORORORORORORORORORORORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORpLORORpLORORORORORORORORORORORORORGcjnoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORpLORORpLORORORORORORORORORORORORORgroZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORkEORORkEORORORORORORORORORORORGcBFjnoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWHdORORORORORORORORORORORORORORORGcBFjnoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWsxsxORORORORORORORORsxsxoZoZoZQDORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWsxORORORORORORORORORsxJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWsxORORORUzORUzORORORsxJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWsxORORORORORORORORORsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWsxsxsxNyNyNyNyNysxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+"}

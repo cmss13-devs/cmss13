@@ -422,5 +422,5 @@
 
 /obj/effect/landmark/corpsespawner/corpse/yautja
 	yautja = TRUE
-	equip_path = /datum/equipment_preset/yautja/elder
+	equip_path = /datum/equipment_preset/corpse/yautja
 

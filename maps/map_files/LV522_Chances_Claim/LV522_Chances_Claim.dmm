@@ -23690,8 +23690,8 @@
 	icon_state = "flammable_pipe_3";
 	pixel_x = -3
 	},
-/turf/open/floor/corsat/marked,
-/area/lv522/atmos/west_reactor)
+/turf/closed/wall/mineral/bone_resin,
+/area/lv522/oob)
 "mwh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/cheesie,
@@ -45466,7 +45466,7 @@
 	icon_state = "flammable_pipe_3";
 	pixel_x = 2
 	},
-/turf/open/floor/corsat/marked,
+/turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/west_reactor)
 "xni" = (
 /obj/structure/bed/chair{
@@ -52874,12 +52874,12 @@ saC
 bJE
 lhD
 bXq
-xmT
+cvP
 tiQ
 xrF
 saC
 hAk
-xmT
+cvP
 tiQ
 saC
 saC

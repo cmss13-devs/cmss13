@@ -8779,7 +8779,9 @@
 	},
 /obj/structure/transmitter/colony_net/rotary{
 	pixel_y = 10;
-	pixel_x = -6
+	pixel_x = -6;
+	phone_category = "Alpha-Tech Research Facility";
+	phone_id = "Research - Observation"
 	},
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
@@ -10772,7 +10774,8 @@
 /area/point_loma/research_facility/research/east)
 "aEL" = (
 /obj/structure/prop/vehicles/tank/humvee/medical{
-	dir = 4
+	dir = 4;
+	pixel_y = 11
 	},
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
@@ -11938,7 +11941,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westright,
 /obj/structure/transmitter/colony_net/rotary{
-	phone_category = "Mining Colony";
+	phone_category = "Alpha-Tech Mining Colony";
 	phone_id = "Corporate Liaison Reception"
 	},
 /obj/item/clock{
@@ -14985,6 +14988,11 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"aQY" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/west)
 "aQZ" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/purplewhite/northeast,
@@ -18412,9 +18420,9 @@
 	color = "#98a3ab"
 	},
 /obj/structure/transmitter/colony_net{
-	phone_category = "Lazarus Landing";
+	phone_category = "USASF Point Loma";
 	phone_color = "red";
-	phone_id = "Secure Storage";
+	phone_id = "ATC - Security";
 	pixel_y = 24
 	},
 /obj/item/restraint/handcuffs,
@@ -21583,6 +21591,10 @@
 "bjt" = (
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
+"bju" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
 "bjv" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -24768,6 +24780,10 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob/sky)
+"bsd" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/east)
 "bse" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -44334,8 +44350,10 @@
 /area/point_loma/research_facility/hallway/east)
 "cCH" = (
 /obj/structure/prop/vehicles/tank/humvee/medical{
-	dir = 8
+	dir = 8;
+	pixel_y = -13
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
 "cCI" = (
@@ -44921,6 +44939,12 @@
 	pixel_x = 10;
 	pixel_y = 10
 	},
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_y = 11;
+	pixel_x = -5;
+	phone_category = "USASF Point Loma";
+	phone_id = "Workshop"
+	},
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "cEq" = (
@@ -44940,12 +44964,6 @@
 /area/point_loma/airbase/interior/workshop)
 "cEr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter/colony_net/rotary{
-	pixel_y = 11;
-	pixel_x = 6;
-	phone_category = "USASF Point Loma";
-	phone_id = "Workshop"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3,
 /turf/open/floor/corsat/brown/north,
@@ -45023,8 +45041,10 @@
 /area/point_loma/research_facility/hallway/east)
 "cEE" = (
 /obj/structure/prop/vehicles/tank/humvee/transport{
-	dir = 4
+	dir = 4;
+	pixel_y = -12
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "cEF" = (
@@ -45036,6 +45056,7 @@
 	dir = 1;
 	pixel_x = -17
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/east)
 "cEH" = (
@@ -45056,6 +45077,7 @@
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEL" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEM" = (
@@ -45064,6 +45086,7 @@
 	pixel_x = -17;
 	pixel_y = -1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/garage)
 "cEN" = (
@@ -46567,7 +46590,10 @@
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/point_loma/airbase/exterior/west)
 "cJL" = (
-/obj/structure/prop/vehicles/tank/humvee/transport/destroyed,
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed{
+	pixel_y = 5;
+	pixel_x = 16
+	},
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/point_loma/airbase/exterior/west)
 "cJM" = (
@@ -46603,7 +46629,10 @@
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/point_loma/airbase/exterior/west)
 "cJT" = (
-/obj/structure/prop/invuln/fire,
+/obj/structure/prop/invuln/fire{
+	pixel_x = 11;
+	pixel_y = -9
+	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
@@ -46643,7 +46672,9 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/point_loma/airbase/exterior/west)
 "cJZ" = (
-/obj/structure/prop/vehicles/tank/humvee/transport/destroyed,
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed{
+	pixel_x = 14
+	},
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
 "cKa" = (
@@ -148204,9 +148235,9 @@ aOb
 aqy
 bYk
 cKg
-ajF
-ajF
-ajF
+cIZ
+cIZ
+cIZ
 cFx
 ajF
 ajF
@@ -148757,9 +148788,9 @@ bUU
 bUU
 bUU
 bUU
-aLe
-aLe
-aLe
+cJM
+cJM
+cJM
 bYe
 ajF
 bYa
@@ -152084,7 +152115,7 @@ aUq
 cFB
 bXP
 cIZ
-ajF
+cIZ
 cFt
 cFq
 cFn
@@ -152266,7 +152297,7 @@ aUq
 cFC
 cFy
 cIZ
-cjm
+aQY
 cFo
 cFr
 cFo
@@ -162989,7 +163020,7 @@ cHm
 cHm
 cHm
 cEL
-bQd
+bsd
 cEG
 bQf
 bXW
@@ -163171,8 +163202,8 @@ bSg
 bSg
 cHm
 cEM
-bQd
-bQf
+bsd
+bju
 bQf
 bZG
 bxu
@@ -166601,7 +166632,7 @@ bTZ
 bUC
 cJE
 cCH
-bUC
+cJE
 cJE
 aEL
 bXZ
@@ -166782,8 +166813,8 @@ bQd
 bTZ
 aJf
 cJE
-bUC
-bUC
+cJE
+cJE
 cJE
 bUC
 aWi
@@ -166964,8 +166995,8 @@ bQd
 bTZ
 bUC
 cJE
-bUC
-bUC
+cJE
+cJE
 cJE
 bUC
 bXZ

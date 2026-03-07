@@ -43,7 +43,9 @@
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_data(mob/user)
 	. = list()
+
 	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/turf/shuttle_location = get_turf(shuttle)
 
 	if(pod_state == STATE_IDLE && shuttle.evac_set)
 		pod_state = STATE_READY
@@ -60,7 +62,7 @@
 	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
-	.["in_ftl"] = SShijack.in_ftl
+	.["in_ftl"] = !ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z)
 	.["launch_without_evac"] = launch_without_evac
 
 
@@ -75,7 +77,8 @@
 			if(!launch_without_evac && pod_state != STATE_READY && pod_state != STATE_DELAYED)
 				return
 
-			if(SShijack.in_ftl)
+			var/turf/shuttle_location = get_turf(shuttle)
+			if(!ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z))
 				return
 
 			shuttle.evac_launch()

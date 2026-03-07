@@ -1429,20 +1429,6 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
 
-/obj/item/storage/box/holobadge // re-org this out in the future
-	name = "holobadge box"
-	desc = "A box claiming to contain holobadges."
-
-/obj/item/storage/box/holobadge/New()
-	new /obj/item/clothing/accessory/holobadge(src)
-	new /obj/item/clothing/accessory/holobadge(src)
-	new /obj/item/clothing/accessory/holobadge(src)
-	new /obj/item/clothing/accessory/holobadge(src)
-	new /obj/item/clothing/accessory/holobadge/cord(src)
-	new /obj/item/clothing/accessory/holobadge/cord(src)
-	..()
-	return
-
 /obj/item/clothing/accessory/storage/owlf_vest
 	name = "\improper OWLF agent vest"
 	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.

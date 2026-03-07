@@ -9,29 +9,41 @@
 	name = "storage"
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
-	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
-	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
-	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
-	var/list/click_border_start = new/list() //In slotless storage, stores areas where clicking will refer to the associated item
-	var/list/click_border_end = new/list()
-	var/list/hearing_items //A list of items that use hearing for the purpose of performance
-	var/max_w_class = SIZE_SMALL //Max size of objects that this object can store
-	var/max_storage_space = 14 //The sum of the storage costs of all the items in this storage item.
-	var/storage_slots = 7 //The number of storage slots in this container.
-	var/atom/movable/screen/storage/boxes = null
-	var/atom/movable/screen/storage/storage_start = null //storage UI
-	var/atom/movable/screen/storage/storage_continue = null
-	var/atom/movable/screen/storage/storage_end = null
-	var/datum/item_storage_box/stored_ISB //! This contains what previously was known as stored_start, stored_continue, and stored_end
-	var/atom/movable/screen/close/closer = null
+
+	///List of objects which this item can store (if set, it can't store anything else)
+	var/list/can_hold = new/list()
+
+	///List of objects which this item can't store (in effect only if can_hold isn't set)
+	var/list/cant_hold = new/list()
+
+	///List of objects which this item can store despite not passing the w_class limit
+	var/list/bypass_w_limit = new/list()
+
+	///Max size of objects that this object can store
+	var/max_w_class = SIZE_SMALL
+
+	///The sum of the storage costs of all the items in this storage item. default is 14, which should be equivalent to 7 small items, or 14 tiny items
+	var/max_storage_space = STORAGE_SPACE_MAX
+
+	///The number of storage slots in this container, default should be 7, as its what fits the UI in a singular row without making a column. null means it utilizes the weight class system, and 7 equivalent small items would fill up the box just as similarly
+	var/storage_slots = STORAGE_SLOTS_DEFAULT
+
+	///If you can fold it into a base form, like into a cardboard box, set to null if you want it poof into nothingness
 	var/foldable = null
-	var/use_sound = "rustle" //sound played when used. null for no sound.
-	var/opened = FALSE //Has it been opened before?
-	var/list/content_watchers //list of mobs currently seeing the storage's contents
+
+	///sound played when used. null for no sound.
+	var/use_sound = "rustle"
+
+	///Has it been opened before?
+	var/opened = FALSE
+
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
 	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
 	var/list/can_hold_skill = list()
+
+	///if true, then we can only hold items found in fill_preset_inventory, default false as otherwise you wont be able to fit anything in, if at least runtime something
+	var/preset_hold_only = FALSE
 
 	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
 	var/can_hold_skill_only = FALSE
@@ -47,6 +59,32 @@
 
 	/// What mode is the storage instant grab mode in if you are grabbing pills from it
 	var/instant_pill_grab_mode = 1 //On by default
+
+	/// if true, then the storage of the item applies a movement malus when held by a mob dictated by the len of items in the storage
+	var/weighted_storage = FALSE // dont combine this with weighted items unless you want to be slow as fuck
+	/// the weight multiplier for items in contents
+	var/weight_multiplier = STORAGE_WEIGHT_DEFAULT
+
+	//storage UI stuff
+	var/list/click_border_start = new/list() //In slotless storage, stores areas where clicking will refer to the associated item
+	var/list/click_border_end = new/list()
+	var/list/hearing_items //A list of items that use hearing for the purpose of performance
+	var/list/content_watchers //list of mobs currently seeing the storage's contents
+
+	var/atom/movable/screen/storage/boxes = null
+	var/atom/movable/screen/storage/storage_start = null
+	var/atom/movable/screen/storage/storage_continue = null
+	var/atom/movable/screen/storage/storage_end = null
+
+	var/datum/item_storage_box/stored_ISB //! This contains what previously was known as stored_start, stored_continue, and stored_end
+	var/atom/movable/screen/close/closer = null
+	//storage UI end
+
+/obj/item/storage/get_examine_text(mob/living/user)
+	. = ..()
+
+	if(weighted_storage)
+		. += SPAN_INFO("This storage item is cumbersome enough to [SPAN_RED("weigh you down")] based on the mass within its contents!")
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
@@ -71,6 +109,27 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
+
+// weighted storage based somewhat on ammo rack code
+
+/obj/item/storage/pickup(mob/user, silent)
+	. = ..()
+	if(weighted_storage)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_delay))
+
+/obj/item/storage/proc/weight_delay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	for(var/obj/item/storage/inv in user.contents)
+		if(inv.weighted_storage)
+			movedata["move_delay"] += inv.contents.len * weight_multiplier
+			break // only really need to call this once
+
+/obj/item/storage/dropped(mob/user, silent)
+	. = ..()
+	if(weighted_storage)
+		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+
+// weighted storage end
 
 /obj/item/storage/clicked(mob/user, list/mods)
 	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
@@ -899,6 +958,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		select_gamemode_skin(type)
 	post_skin_selection()
 	fill_preset_inventory()
+	if(preset_hold_only)
+		can_hold = list()
+		for(var/obj/item/list in contents)
+			can_hold |= list.type
 	update_icon()
 
 /*

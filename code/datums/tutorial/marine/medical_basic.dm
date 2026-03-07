@@ -104,7 +104,7 @@
 
 /datum/tutorial/marine/medical_basic/proc/tox_tutorial()
 	message_to_player("<b>Dylovene</b> slowly removes toxin damage over time. Inject yourself with the <b>dylovene EZ autoinjector</b>.")
-	update_objective("Inject yourself with the dylovene autoinjector")
+	update_objective("Inject yourself with the dylovene autoinjector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/antitoxin/tox_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(tox_injector)
 	add_highlight(tox_injector)

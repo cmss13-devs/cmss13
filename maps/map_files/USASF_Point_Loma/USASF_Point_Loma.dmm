@@ -9782,10 +9782,6 @@
 	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
-"aBU" = (
-/obj/structure/prop,
-/turf/open/floor/corsat/box,
-/area/point_loma/airbase/interior/workshop)
 "aBV" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -38741,11 +38737,13 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
 "cjV" = (
-/obj/structure/barricade/sandbags{
-	dir = 4
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/west)
+/obj/effect/landmark/corpsespawner/corpse/yautja,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -44099,11 +44097,14 @@
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
 "cBB" = (
-/obj/structure/barricade/sandbags{
-	dir = 1
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 13
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/west)
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/landmark/corpsespawner/corpse/yautja,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -45914,14 +45915,9 @@
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "cHf" = (
-/obj/structure/barricade/sandbags{
-	dir = 1
-	},
-/obj/structure/barricade/sandbags{
-	dir = 4
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/prop,
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
 "cHg" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -45949,8 +45945,9 @@
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
 "cHl" = (
-/obj/structure/flora/grass/colorable/point_loma/light/two,
-/obj/structure/barricade/sandbags,
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 "cHm" = (
@@ -46898,17 +46895,37 @@
 /turf/open_space,
 /area/point_loma/oob/sky)
 "cKA" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
+"cKB" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
+"cKC" = (
+/obj/structure/flora/grass/colorable/point_loma/light/two,
+/obj/structure/barricade/sandbags,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
+"cKD" = (
 /obj/structure/barricade/sandbags,
 /obj/structure/barricade/sandbags{
 	dir = 4
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
-"cKB" = (
+"cKE" = (
 /obj/structure/flora/grass/colorable/point_loma/random/light,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
-"cKC" = (
+"cKF" = (
 /obj/structure/flora/grass/colorable/point_loma/random/heavy,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
@@ -117985,10 +118002,10 @@ bJw
 bJw
 bIO
 cfo
-ceL
-ceL
-ceU
-ceU
+cBB
+cBB
+cjV
+cjV
 cEC
 cEy
 ceL
@@ -145631,7 +145648,7 @@ aPM
 aGW
 aXe
 cAN
-cKB
+cKE
 bPH
 acX
 clK
@@ -145813,7 +145830,7 @@ aqg
 apS
 akL
 cAN
-cKB
+cKE
 aeB
 aFc
 ajF
@@ -146175,8 +146192,8 @@ ajT
 aVb
 bPH
 cjt
-cKC
-cKB
+cKF
+cKE
 bPH
 bPH
 clO
@@ -146356,16 +146373,16 @@ aIV
 aAq
 aAi
 bPH
-cKB
-cKB
-cKB
+cKE
+cKE
+cKE
 cjl
 bPH
 aFc
 ajF
 ajF
 bYa
-cBB
+cKA
 cjh
 bPH
 asb
@@ -146547,9 +146564,9 @@ aFc
 ajF
 ajF
 bYa
-cHf
-cjV
-cjV
+cKB
+cHl
+cHl
 asb
 asb
 asb
@@ -147452,7 +147469,7 @@ bPH
 cjh
 bPH
 bPH
-cHl
+cKC
 aLe
 cjH
 bXP
@@ -147633,8 +147650,8 @@ asb
 bPH
 bPH
 cts
-cjV
-cKA
+cHl
+cKD
 aLe
 aLe
 bXP
@@ -149088,7 +149105,7 @@ bQp
 bXV
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 bSN
@@ -149270,7 +149287,7 @@ bQp
 bXV
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 bSN
@@ -149452,7 +149469,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 cJD
@@ -149634,7 +149651,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 cJg
@@ -149816,7 +149833,7 @@ bYb
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 bxN
@@ -149998,7 +150015,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 bxN
@@ -150362,7 +150379,7 @@ ajF
 bYa
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 bxN
@@ -150544,7 +150561,7 @@ bYd
 bYa
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 bxN
@@ -150726,7 +150743,7 @@ ajF
 aZX
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 bxN
@@ -151090,7 +151107,7 @@ ajF
 bYa
 aLe
 aLe
-cKB
+cKE
 bSN
 bSN
 cJD
@@ -151272,7 +151289,7 @@ ajF
 bYa
 aZV
 aLe
-cKC
+cKF
 bSN
 bSN
 cJD
@@ -151454,7 +151471,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 cJg
@@ -151818,7 +151835,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 cJy
@@ -152000,7 +152017,7 @@ ajF
 bYa
 aLe
 aLe
-cKC
+cKF
 bSN
 bSN
 cJg
@@ -152182,7 +152199,7 @@ ajF
 bYa
 bCh
 aLe
-cKB
+cKE
 bSN
 bSN
 bxN
@@ -156431,7 +156448,7 @@ axB
 apV
 arL
 bdZ
-aBU
+cHf
 akj
 acx
 acx

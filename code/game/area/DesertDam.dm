@@ -1077,6 +1077,15 @@
 	icon_state = "valley"
 	unoviable_timer = FALSE
 
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing
+		name = "Medical Valley Elevator Landing"
+		icon_state = "valley"
+		unoviable_timer = FALSE
+		always_unpowered = FALSE
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
+
 /area/desert_dam/exterior/valley/valley_hydro
 	name = "Hydro Valley"
 	icon_state = "valley"
@@ -1101,6 +1110,14 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
+
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing
+		name = "Wilderness Valley Elevator Landing"
+		icon_state = "central"
+		always_unpowered = FALSE
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
 
 //Rivers
 /area/desert_dam/exterior/river

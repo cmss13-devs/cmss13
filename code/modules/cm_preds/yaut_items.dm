@@ -1086,6 +1086,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/hunting_trap/verb/configure_trap()
 	set name = "Configure Hunting Trap"
 	set category = "Object"
+	set src in usr
 
 	var/mob/living/carbon/human/H = usr
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH))

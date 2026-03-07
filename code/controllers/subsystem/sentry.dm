@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(sentry)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/sentry/fire(resumed)
 	var/static/list/headers = list(
 		"Content-Type" = "application/x-sentry-envelope",
@@ -36,6 +38,8 @@ SUBSYSTEM_DEF(sentry)
 	var/static/endpoint
 	if(!endpoint)
 		endpoint = ENDPOINT_CONFIG
+
+	var/static/regex/ip_regex = regex(@"(((?!25?[6-9])[12]\d|[1-9])?\d\.?\b){4}", "g")
 
 	for(var/datum/error_envelope/error as anything in envelopes)
 		var/event_id = get_uuid()
@@ -72,16 +76,29 @@ SUBSYSTEM_DEF(sentry)
 
 			var/procpath/proc_path = called.proc
 
-			stacktrace += list(list(
+			var/censor_args = FALSE
+			if(proc_path.type in GLOB.protected_sentry_procs)
+				censor_args = TRUE
+
+			for(var/protected in GLOB.protected_sentry_datums)
+				if(findtext(proc_path.type, protected))
+					censor_args = TRUE
+					break
+
+			var/to_add = list(
 				"filename" = called.file,
 				"function" = proc_path.type,
 				"lineno" = called.line,
-				"vars" = parsed_args,
 				"pre_context" = pre_context,
 				"context_line" = context,
 				"post_context" = post_context,
 				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]"
-			))
+			)
+
+			if(!censor_args)
+				to_add["vars"] = parsed_args
+
+			stacktrace += list(to_add)
 
 		var/list/event_parts = list(
 			"event_id" = event_id,
@@ -92,13 +109,23 @@ SUBSYSTEM_DEF(sentry)
 				"round_id" = GLOB.round_id,
 			),
 			"exception" = list(
-				"type" = error.error,
-				"value" = "Runtime Error",
-				"stacktrace" = list("frames" = stacktrace),
+				"values" = list(list(
+					"type" = error.error,
+					"value" = "Runtime Error",
+					"stacktrace" = list("frames" = stacktrace),
+				))
 			),
 		)
 
 		var/event = json_encode(event_parts)
+
+		event = ip_regex.Replace(event, "ip address")
+		for(var/replacement in GLOB.all_player_ckeys)
+			event = replacetext(event, replacement, "player ckey")
+
+		for(var/replacement in GLOB.all_player_cids)
+			event = replacetext(event, replacement, "player computer id")
+
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 

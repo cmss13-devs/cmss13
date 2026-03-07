@@ -163,6 +163,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 #define WEBHOOK_URGENT 1
 #define WEBHOOK_NON_URGENT 2
 
+SET_PROTECTED_DATUM(/datum/admin_help)
+
 /**
  * # Adminhelp Ticket
  */
@@ -803,6 +805,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	adminhelptimerid = 0
 
 GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
+
+SET_PROTECTED_DATUM(/datum/admin_help_ui_handler)
 
 /datum/admin_help_ui_handler
 	var/list/ahelp_cooldowns = list()

@@ -78,14 +78,14 @@
 
 			path = text2path(params["tutorial_path"])
 
-			if(!ispath(path, /datum/tutorial) || !isnewplayer(usr))
+			if(!ispath(path, /datum/tutorial) || !isnewplayer(ui.user))
 				return
 
-			if(HAS_TRAIT(usr, TRAIT_IN_TUTORIAL) || istype(get_area(usr), /area/misc/tutorial))
+			if(HAS_TRAIT(ui.user, TRAIT_IN_TUTORIAL) || istype(get_area(ui.user), /area/misc/tutorial))
 				to_chat(usr, SPAN_NOTICE("You are currently in a tutorial, or one is loading. Please be patient."))
 				return
 
 			path = new path
-			if(path.start_tutorial(usr))
+			if(path.start_tutorial(ui.user))
 				ui.close()
 				return TRUE

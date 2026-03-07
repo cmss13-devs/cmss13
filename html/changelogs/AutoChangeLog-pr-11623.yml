@@ -1,6 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - maptweak: "The medical podlock on Kutjevo has been opened up, this should make this area less of a choke point for the attacking Marines."
-  - maptweak: "The east, north-east and south entrances to LZ1 on Kutjevo have been opened up via removing some hull walls and creating new attack paths. This should make the LZ more challenging to defend but also give Xenomorphs more attack paths."
-  - maptweak: "The south communications array spawn for LZ1 on Kutjevo has been moved slightly south-east, as part of an extended cave network. The aim of this change is to make holding the array more challenging and to give Xenomorphs more options to siege the communications array, instead of being forced into a small chokepoint."

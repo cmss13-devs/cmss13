@@ -118,3 +118,52 @@
 
 /obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest
 	dir = NORTHWEST
+
+/// Large alpha tech decal
+
+/obj/effect/decal/floor_symbol/alpha_tech
+	icon = 'icons/effects/alpha_tech_logo.dmi'
+	icon_state = "full"
+
+/obj/effect/decal/floor_symbol/alpha_tech/sw_1
+	icon_state = "SW_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/sw_2
+	icon_state = "SW_2"
+
+/obj/effect/decal/floor_symbol/alpha_tech/sw_3
+	icon_state = "SE_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/sw_4
+	icon_state = "SE_2"
+
+/obj/effect/decal/floor_symbol/alpha_tech/mid_1
+	icon_state = "MID_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/mid_2
+	icon_state = "MID_2"
+
+/obj/effect/decal/floor_symbol/alpha_tech/mid_3
+	icon_state = "MID_3"
+
+/obj/effect/decal/floor_symbol/alpha_tech/mid_4
+	icon_state = "MID_4"
+
+/obj/effect/decal/floor_symbol/alpha_tech/nw_1
+	icon_state = "NW_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/ne_1
+	icon_state = "NE_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/small
+	icon = 'icons/effects/alphatech_logo64x64.dmi'
+	icon_state = "alphatech_dam_0"
+
+/obj/effect/decal/floor_symbol/alpha_tech/small/dam_1
+	icon_state = "alphatech_dam_1"
+
+/obj/effect/decal/floor_symbol/alpha_tech/small/dam_2
+	icon_state = "alphatech_dam_2"
+
+/obj/effect/decal/floor_symbol/alpha_tech/small/dam_3
+	icon_state = "alphatech_dam_3"

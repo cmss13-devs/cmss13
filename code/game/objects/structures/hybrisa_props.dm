@@ -631,6 +631,19 @@
 	density = TRUE
 	layer = 5
 
+// Fire engine
+
+/obj/structure/prop/hybrisa/vehicles/firetruck
+	name = "Firetruck"
+	icon = 'icons/obj/structures/props/vehicles/small_firetruck_red.dmi'
+	icon_state = "small_firetruck_red"
+	desc = "It's locked and seems to be broken down, forget driving this."
+	bound_height = 64
+	bound_width = 64
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 85
+
 // Cave props
 
 /obj/structure/prop/hybrisa/boulders

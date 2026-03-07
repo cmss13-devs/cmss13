@@ -257,6 +257,31 @@ Higher severity explosion will damage the sensor tower more
 		stop_processing()
 	update_icon()
 
+/obj/structure/machinery/sensortower/short_range
+	desc = "This tower does not look that powerful, it detects only in short range and does not penetrate floors."
+	var/sensor_radius = 30
+
+/obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(current_xeno.z != z)
+			if(WEAKREF(current_xeno) in minimap_added)
+				SSminimaps.remove_marker(current_xeno)
+				current_xeno.add_minimap_marker()
+				minimap_added -= WEAKREF(current_xeno)
+			continue
+		if(get_dist(current_xeno, src) > sensor_radius)
+			if(WEAKREF(current_xeno) in minimap_added)
+				SSminimaps.remove_marker(current_xeno)
+				current_xeno.add_minimap_marker()
+				minimap_added -= WEAKREF(current_xeno)
+			continue
+
+		SSminimaps.remove_marker(current_xeno)
+		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))
+		minimap_added += WEAKREF(current_xeno)
+
+
+
 #undef SENSORTOWER_BUILDSTATE_WORKING
 #undef SENSORTOWER_BUILDSTATE_BLOWTORCH
 #undef SENSORTOWER_BUILDSTATE_WIRECUTTERS

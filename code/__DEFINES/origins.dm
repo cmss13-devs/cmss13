@@ -30,3 +30,9 @@
 
 // CMB
 #define ORIGIN_CMB "The Colonial Marshal Bureau"
+
+//Alpha_Tech
+#define ORIGIN_ALPHATECH "Alpha-Tech Hardware Corporation"
+
+//USASF
+#define ORIGIN_USASF "US Aerospace Forces"

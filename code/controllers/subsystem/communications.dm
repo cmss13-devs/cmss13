@@ -120,6 +120,9 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define HDC_FREQ 1331
 
+//AlphaTech channels (1350-1399) - yes this takes half the number above but I don't care
+#define APHC_FREQ 1350
+
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
@@ -132,6 +135,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
 #define ARMY_FREQ 1476
+#define USASF_FREQ 1477
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -190,6 +194,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_MARINE_5 = ECHO_FREQ,
 	SQUAD_MARINE_CRYO = CRYO_FREQ,
 	SQUAD_SOF = SOF_FREQ,
+	SQUAD_USASF = USASF_FREQ,
 	SQUAD_CBRN = CBRN_FREQ,
 	SQUAD_FORECON = FORECON_FREQ,
 	SQUAD_SOLAR = SOF_FREQ,
@@ -258,7 +263,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 //Bonus frequencies for special survivor factions
-#define SURVIVOR_FREQS list(SOF_FREQ, ARMY_FREQ)
+#define SURVIVOR_FREQS list(SOF_FREQ, ARMY_FREQ, USASF_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -319,6 +324,7 @@ SUBSYSTEM_DEF(radio)
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
 		"[ARMY_FREQ]" = "armyradio",
+		"[USASF_FREQ]" = "usasfradio",
 		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",

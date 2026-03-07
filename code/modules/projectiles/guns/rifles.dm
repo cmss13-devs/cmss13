@@ -506,6 +506,19 @@
 	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camouflage. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/grenade/mk1)
 
+/obj/item/weapon/gun/rifle/m41aMK1/navy //From PvE
+	name = "\improper GUU-71/A pulse rifle"
+	desc = "A variant of the M41A pulse rifle adopted for use by USASF Security Forces personnel and Master-At-Arms. Features an integrated 30mm grenade launcher and ammo tube that can hold four grenades on backup."
+	icon_state = "m41amk1_navy"
+	item_state = "m41amk1_navy"
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/stock/rifle/collapsible)
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
+
+/obj/item/weapon/gun/rifle/m41aMK1/navy/tactical // Helljumper MK1? Unused ATM. ToDO!
+	name = "\improper GUU-71/B pulse rifle"
+	desc = "A variant of the M41A pulse rifle adopted for use by USASF personnel whose duties take them off ships frequently. Features an integrated 30mm grenade launcher, flash & sound suppressor, and a carry-handle mounted mag-clamp."
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
+
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
 

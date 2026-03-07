@@ -15,6 +15,7 @@
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
 #define SQUAD_ARMY "US Army"
+#define SQUAD_USASF "US Aerospace Forces"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
@@ -297,6 +298,14 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_HC_DEPUTY_DIRECTOR "HC Deputy Director"
 #define JOB_HC_DIRECTOR "HC Director"
 
+// -- ALPHA-TECH HARDWARE CORPORATION --//
+
+#define JOB_ALPHATECH_CL "Alpha-Tech Corporate Liaison"
+#define JOB_ALPHATECH_SCIENTIST "Alpha-Tech Corporate Scientist"
+#define JOB_ALPHATECH_RESEARCH_DIRECTOR "Alpha-Tech Research Director"
+#define JOB_ALPHATECH_CHIEF_ENGINEER "Alpha-Tech Chief Engineer"
+#define JOB_ALPHATECH_EMPLOYEE "Alpha-Tech Employee"
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST "VAIPO Mercenary"
@@ -369,6 +378,22 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 
 #define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_SYN)
+
+//--US Aerospace Forces (USASF)--//
+#define JOB_USASF_ENLISTED "USASF Enlisted"
+#define JOB_USASF_CREW "USASF Ground Crew"
+#define JOB_USASF_CHAPLAIN "USASF Chaplain"
+#define JOB_USASF_HANGARTECH "USASF Hangar Technician"
+#define JOB_USASF_CARGOTECH "USASF Cargo Technician"
+#define JOB_USASF_NURSE "USASF Medical Nurse"
+#define JOB_USASF_DOCTOR "USASF Doctor"
+#define JOB_USASF_PILOT "USASF Pilot"
+#define JOB_USASF_SECURITY_DEFENDER "USASF Security Police"
+#define JOB_USASF_OFFICER "USASF Officer"
+#define JOB_USASF_CO "USASF Aerospace Base Commander"
+#define JOB_USASF_SYNTHETIC "USASF Synthetic"
+
+#define JOB_USASF_LIST list(JOB_USASF_CREW, JOB_USASF_CHAPLAIN, JOB_USASF_HANGARTECH, JOB_USASF_CARGOTECH, JOB_USASF_NURSE, JOB_USASF_DOCTOR, JOB_USASF_PILOT, JOB_USASF_SECURITY_POLICE, JOB_USASF_OFFICER, JOB_USASF_CO, JOB_USASF_SYNTHETIC)
 
 
 //-------- UPP --------//

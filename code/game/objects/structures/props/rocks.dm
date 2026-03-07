@@ -29,6 +29,18 @@
 	if(prob(50))
 		icon_state = "brown_alt"
 
+/obj/structure/prop/rock/brown/point_loma
+	name = "brown rock"
+	density = FALSE
+
+/obj/structure/prop/rock/brown/point_loma/Crossed(atom/movable/crosser) // Point_loma Rock that is not dense and trips
+	. = ..()
+	if(ishuman(crosser) && prob(5)) // Copied from Hybrisa Light Pole stumps + lowered to 5%
+		var/mob/living/carbon/human/crossing_human = crosser
+		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		crossing_human.KnockDown(0.5)
+
 /obj/structure/prop/rock/black_ground//the colors on these make them kinda look like actual shit, can't lie. Exercise discretion fellow mappers.
 	icon_state = "black_ground"
 	desc = "Loose stones, earth, rubble, slabs, crags, pebbles, quarried detritus, shale, gravel, solidified carbon and other stuff. Y'know, rocks that you can walk over and kick around."
@@ -58,3 +70,13 @@
 
 /obj/structure/prop/colorable_rock/colorable/alt
 	icon_state = "ground_colorable_alt"
+
+/obj/structure/prop/rock/coastal//Nearly takes up the entire tile, but its intentional, use the coastal-related content to fully realize these rocks.
+	name = "column rocks"
+	desc = "A formation of rocks that shaped itself to a near-hexagonal form."
+	icon_state = "rock_prop_1"
+
+/obj/structure/prop/rock/coastal/big
+	name = "column rocks"
+	desc = "A formation of rocks that shaped itself to a near-hexagonal form."
+	icon_state = "rock_prop_2"

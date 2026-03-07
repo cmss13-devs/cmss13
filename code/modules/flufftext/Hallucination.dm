@@ -343,7 +343,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 /proc/fake_blood(mob/target)
 	var/obj/effect/overlay/fake_blood/O = new/obj/effect/overlay/fake_blood(target.loc)
 	var/image/I = image('icons/effects/blood.dmi',O,"mfloor[rand(1,7)]", dir = O.dir, layer = ABOVE_WEED_LAYER)
-	I.color = /obj/effect/decal/cleanable/blood::basecolor // it's greyscale now
+	I.color = /obj/effect/decal/cleanable/blood::color // it's greyscale now
 	I.override = TRUE
 	target << I
 	QDEL_IN(O, 30 SECONDS)

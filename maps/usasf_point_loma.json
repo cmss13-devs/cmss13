@@ -1,0 +1,76 @@
+{
+    "map_name": "USASF Point Loma",
+    "map_path": "map_files/USASF_Point_Loma",
+    "map_file": "USASF_Point_Loma.dmm",
+    "webmap_url": "LV624",
+    "weather_holder": "/datum/weather_ss_map_holder/point_loma",
+
+    "survivor_types": [
+		"/datum/equipment_preset/survivor/usasf/crew/duty",
+		"/datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech",
+		"/datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech",
+		"/datum/equipment_preset/survivor/usasf/crew/medical/nurse",
+		"/datum/equipment_preset/survivor/usasf/crew/medical/doctor",
+		"/datum/equipment_preset/survivor/usasf/crew/security",
+		"/datum/equipment_preset/survivor/usasf/crew/officer",
+		"/datum/equipment_preset/survivor/usasf/crew/officer/pilot"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/usasf"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/usasf/crew/officer/co"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "Distress Signal received from USASF Point Loma, T-1 Hour Ago. \n Orbital Scan Underway. \n Await results.",
+    "survivor_message": "You are an employee at USASF Point Loma, a research facility and airbase dually owned by the United States Aerospace Force and Alpha-Tech Hardware Corporation. Just over an hour ago, the air defense intercepted an unknown contact, and the wreckage slammed onto the runway unleashing several Xenomorphs and other unknown contacts. You've evaded trouble for the last hour, but you know the Xenomorphs are about to ramp up their efforts.",
+    "monkey_types": [
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+
+    ],
+    "nightmare_path": "maps/Nightmare/maps/usasf_point_loma/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "desert",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

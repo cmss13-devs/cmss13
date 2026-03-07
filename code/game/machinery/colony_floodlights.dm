@@ -392,6 +392,27 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 /obj/structure/machinery/colony_floodlight/inoperable(additional_flags)
 	return damaged
 
+/obj/structure/machinery/colony_floodlight/searchlight
+	name = "searchlight"
+	is_on = TRUE
+	dir = NORTH
+
+/obj/structure/machinery/colony_floodlight/searchlight/Initialize(mapload, ...)
+	. = ..()
+	set_light_range(10)
+	set_light_power(10)
+	set_light_color(COLOR_ORANGE)
+	actually_change_light()
+
+/obj/structure/machinery/colony_floodlight/searchlight/actually_change_light()
+	if(is_on && !damaged)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
+	update_icon()
+
+/obj/structure/machinery/colony_floodlight/searchlight
+
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR
 #undef FLOODLIGHT_REPAIR_WELD

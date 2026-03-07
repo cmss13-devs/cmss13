@@ -27074,6 +27074,10 @@
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/point_loma/airbase/exterior/crash_site)
+"byW" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/multi_tiles/west,
+/area/point_loma/research_facility/research/west)
 "byX" = (
 /obj/structure/kitchenspike,
 /turf/open/shuttle/dropship/predship/hunter_grate/north,
@@ -28695,6 +28699,10 @@
 	},
 /turf/open/floor/plating,
 /area/point_loma/research_facility/super_death_cannon/cannon)
+"bDn" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/shuttle/lifeboat/plating_striped/north,
+/area/point_loma/research_facility/research/west)
 "bDo" = (
 /obj/effect/decal/cleanable/blood/tracks/clawprints{
 	pixel_y = 21
@@ -34085,6 +34093,7 @@
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/atc)
 "bUV" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/research_facility/super_death_cannon/cannon)
 "bUW" = (
@@ -104297,8 +104306,8 @@ bIC
 bIC
 bIC
 aFY
-aFP
-aFB
+bDn
+byW
 aFm
 arh
 bJw
@@ -104479,8 +104488,8 @@ aYT
 aUT
 bIC
 aFY
-aFP
-aFB
+bDn
+byW
 aFm
 arh
 bJw
@@ -104661,8 +104670,8 @@ aZp
 aVj
 bIC
 aFY
-aFP
-aFB
+bDn
+byW
 aFm
 arh
 bJw
@@ -104843,8 +104852,8 @@ aZt
 aVp
 bIC
 aFY
-aFP
-aFB
+bDn
+byW
 aFm
 arh
 bJw
@@ -105025,8 +105034,8 @@ aZA
 aVu
 bIC
 aFY
-aFP
-aFB
+bDn
+byW
 aFn
 aET
 bJw
@@ -160434,9 +160443,9 @@ aOC
 cmn
 cHx
 cIh
-bQT
-bQT
-bQT
+cKc
+cKc
+cKc
 cHC
 aNI
 aNI
@@ -160616,9 +160625,9 @@ aOC
 aOC
 cHx
 cIh
-bQT
-bQT
-bQT
+cKc
+cKc
+cKc
 cHC
 aNI
 aNI
@@ -160798,9 +160807,9 @@ aOC
 aOC
 cHx
 cIh
-bQT
-bQT
-bQT
+cKc
+cKc
+cKc
 bRz
 bRz
 aNI

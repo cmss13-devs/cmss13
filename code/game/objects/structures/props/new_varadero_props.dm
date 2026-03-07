@@ -440,16 +440,25 @@
 	desc = "It looks like a weird egg, this one has been open for a long time."
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "Egg Opened"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/new_varadero_props/egg_destroyed
 	name = "egg"
 	desc = "It looks like a weird egg, this one has been destroyed for a long time."
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "Egg Exploded"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/new_varadero_props/radar_dish
 	icon = 'icons/obj/structures/props/radar_prop.dmi'
 	icon_state = "radar_dish"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/new_varadero_props/radar_dish_lights
 	icon = 'icons/obj/structures/props/radar_prop.dmi'
@@ -458,10 +467,13 @@
 /obj/structure/prop/new_varadero_props/big_gun
 	icon = 'icons/obj/structures/props/big_gun/icon_cannon.dmi'
 	icon_state = "cannon"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/new_varadero_props/big_gun/barrel
 	icon_state = "cannon1"
-	s
+
 /obj/structure/prop/new_varadero_props/big_gun/lights
 	icon_state = "cannon_lightglow"
 

@@ -1728,7 +1728,6 @@
 	icon_state = "cigar2_off"
 	icon_on = "cigar2_on"
 	icon_off = "cigar_2off"
-	smoketime = 7200
 	chem_volume = 30
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 

@@ -183,8 +183,8 @@
 
 /obj/structure/closet/secure_closet/injection/Initialize()
 	. = ..()
-	new /obj/item/reagent_container/ld50_syringe/choral(src)
-	new /obj/item/reagent_container/ld50_syringe/choral(src)
+	new /obj/item/reagent_container/syringe/ld50_syringe/choral(src)
+	new /obj/item/reagent_container/syringe/ld50_syringe/choral(src)
 
 /obj/structure/closet/secure_closet/brig
 	name = "Brig Locker"

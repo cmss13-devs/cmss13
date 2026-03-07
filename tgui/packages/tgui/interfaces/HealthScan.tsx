@@ -88,7 +88,9 @@ type Data = {
     name: string;
     amount: number;
     od: BooleanLike;
+    crit_od: BooleanLike;
     dangerous: BooleanLike;
+    improper: BooleanLike;
     color: string;
   }[];
 } & Partial<HumanData>;
@@ -521,9 +523,21 @@ const ScannerChems = (props) => {
                 {chemical.amount + 'u ' + chemical.name}
               </Box>
               <Box inline width={'5px'} />
+              {chemical.improper ? (
+                <Box inline color={'red'} bold>
+                  {'Improper Delivery'}
+                </Box>
+              ) : null}
+              <Box inline width={'5px'} />
+              {chemical.crit_od ? (
+                <Box inline color={'orange'} bold>
+                  {'Critical'}
+                </Box>
+              ) : null}
+              <Box inline width={'5px'} />
               {chemical.od ? (
                 <Box inline color={'red'} bold>
-                  {'OD'}
+                  {'Overdose'}
                 </Box>
               ) : null}
             </Box>

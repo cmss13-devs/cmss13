@@ -116,9 +116,67 @@
 			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)
 
 		if(INTENT_DISARM)
+
+			// induced vomitting
+			if(attacking_mob.zone_selected == "mouth") // also doesnt check if we have something covering the mouth, but it shouldnt matter all too much, at least for now
+
+				attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to induce vomiting on [key_name(src)]</font>")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attempted to induce vomiting by [key_name(attacking_mob)]</font>")
+				msg_admin_attack("[key_name(attacking_mob)] is attempting to induce vomiting on [key_name(src)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+
+				if(attacking_mob.action_busy)
+					return TRUE
+
+				if(lastpuke)
+					if(attacking_mob == src)
+						to_chat(attacking_mob, SPAN_WARNING("You just recently thrown up, you won't hurt yourself like this right now."))
+					else
+						to_chat(attacking_mob, SPAN_WARNING("[src] has recently thrown up, give them a moment."))
+					return TRUE
+
+				if(attacking_mob != src)
+					if(attacking_mob.faction != src.faction)
+						to_chat(attacking_mob, SPAN_WARNING("Not happening."))
+						return TRUE
+
+					if(!skillcheck(attacking_mob, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+						to_chat(attacking_mob, SPAN_WARNING("You are not trained to induce vomiting!"))
+						return TRUE
+
+				if(attacking_mob == src)
+					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to force themselves to vomit!"), \
+						SPAN_WARNING("You try to force yourself to vomit!"))
+				else
+					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to force [src] to vomit!"), \
+						SPAN_WARNING("You try to force [src] to vomit!"))
+
+				if(do_after(attacking_mob, 3.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+					if(stat == DEAD) // ridiculous as it is
+						attacking_mob.visible_message(SPAN_DANGER("...but [src] is already dead!"), \
+							SPAN_DANGER("...but [src] you can't exactly force a dead person to throw up can you now knucklehead?"))
+						return TRUE
+
+					if(species.flags & IS_SYNTHETIC)
+						to_chat(attacking_mob, SPAN_WARNING("...but try as you might, it wouldn't do anything for [src]."))
+						return TRUE
+
+					if(attacking_mob == src)
+						attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] forces themselves to vomit!"), \
+							SPAN_DANGER("You force yourself to vomit!"))
+					else
+						attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] forces [src] to vomit!"), \
+							SPAN_DANGER("You force [src] to vomit!"))
+
+					lastpuke = TRUE
+					do_vomit(forced_vomit = TRUE)
+
+				return TRUE
+
+			// vomit end
+
 			if(attacking_mob == src)
 				check_for_injuries()
-				return 1
+				return TRUE
 
 			attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>Disarmed [key_name(src)]</font>")
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been disarmed by [key_name(attacking_mob)]</font>")

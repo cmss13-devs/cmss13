@@ -57,7 +57,7 @@
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
 		reagents.set_source_mob(user)
-		reagents.trans_to_ingest(M, reagents.total_volume)
+		reagents.trans_to_ingest(M, reagents.total_volume, method = INGESTION)
 		if(M == user)
 			for(var/mob/O in viewers(M, null))
 				O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)

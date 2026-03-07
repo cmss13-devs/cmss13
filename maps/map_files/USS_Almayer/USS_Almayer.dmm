@@ -63905,11 +63905,11 @@
 /obj/structure/closet/secure_closet{
 	name = "\improper Lethal Injection Locker"
 	},
-/obj/item/reagent_container/ld50_syringe/choral,
-/obj/item/reagent_container/ld50_syringe/choral,
-/obj/item/reagent_container/ld50_syringe/choral,
-/obj/item/reagent_container/ld50_syringe/choral,
-/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/execution_storage)
 "ltU" = (

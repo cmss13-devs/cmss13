@@ -222,14 +222,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/icon_off = "cigoff"
 	var/type_butt = /obj/item/trash/cigbutt
 	var/lastHolder = null
-	var/smoketime = 10 MINUTES
-	var/chem_volume = 15
+	var/chem_volume = 60
 
 /obj/item/clothing/mask/cigarette/Initialize()
 	. = ..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarette a chemical holder with a maximum volume of 15
-	reagents.add_reagent("nicotine",10)
+	reagents.add_reagent("nicotine", 50)
 	if(w_class == SIZE_TINY)
 		AddElement(/datum/element/mouth_drop_item)
 
@@ -365,30 +364,28 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/cigarette/process(delta_time)
-	var/mob/living/M = loc
-	if(isliving(loc))
-		M.IgniteMob()
-	smoketime -= delta_time SECONDS
-	if(smoketime < 1)
-		smoketime = 0
+	var/mob/living/mob = loc
+	if(isliving(mob))
+		mob.IgniteMob()
+
+	if(reagents?.total_volume) // check if it has any reagents at all
+		var/mob/living/carbon/carbo = loc
+		if(iscarbon(carbo) && carbo.wear_mask == src) // if it's in the human/monkey mouth, transfer reagents to the mob
+			if(ishuman(carbo))
+				var/mob/living/carbon/human/smoker = carbo
+				if(smoker.species.flags & IS_SYNTHETIC)
+					reagents.remove_any(REAGENTS_METABOLISM * delta_time)
+					if(!reagents?.total_volume)
+						go_out()
+					return
+
+			reagents.trans_to(carbo, REAGENTS_METABOLISM * delta_time, method = INHALATION)
+		else // else just remove some of the reagents
+			reagents.remove_any(REAGENTS_METABOLISM * delta_time)
+
+	if(!reagents?.total_volume)
 		go_out()
 		return
-
-	if(reagents && reagents.total_volume) // check if it has any reagents at all
-		if(iscarbon(loc) && (src == loc:wear_mask)) // if it's in the human/monkey mouth, transfer reagents to the mob
-			if(istype(loc, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = loc
-				if(H.species.flags & IS_SYNTHETIC)
-					return
-			var/mob/living/carbon/C = loc
-
-			if(prob(15))
-				reagents.reaction(C, INGEST)
-			reagents.trans_to(C, REAGENTS_METABOLISM)
-		else // else just remove some of the reagents
-			reagents.remove_any(REAGENTS_METABOLISM)
-	return
-
 
 /obj/item/clothing/mask/cigarette/attack_self(mob/user)
 	if(heat_source)
@@ -473,14 +470,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/weed
 	name = "weed joint"
 	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
-	chem_volume = 39
-	smoketime = 20 MINUTES
+	chem_volume = 120
 
 /obj/item/clothing/mask/cigarette/weed/Initialize()
 	. = ..()
-	reagents.add_reagent("space_drugs",15)
-	reagents.add_reagent("bicaridine", 8)
-	reagents.add_reagent("kelotane", 1)
+	reagents.clear_reagents()
+	reagents.add_reagent("space_drugs", 75)
+	reagents.add_reagent("bicaridine", 40)
+	reagents.add_reagent("kelotane", 5)
 
 ////////////
 // CIGARS //
@@ -498,8 +495,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
-	smoketime = 50 MINUTES
-	chem_volume = 20
+	chem_volume = 150
 	black_market_value = 15
 
 /obj/item/clothing/mask/cigarette/cigar/classic
@@ -508,7 +504,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigar2_off"
 	icon_on = "cigar2_on"
 	icon_off = "cigar2_off"
-	smoketime = 120 MINUTES
+	chem_volume = 200
 	black_market_value = 30
 
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
@@ -519,11 +515,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "tarback_off"
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	item_state = "tarback_off"
-	smoketime = 30 MINUTES
+	chem_volume = 100
 
 /obj/item/clothing/mask/cigarette/cigar/Initialize()
 	. = ..()
-	reagents.add_reagent("nicotine",10)
+	reagents.clear_reagents()
+	reagents.add_reagent("nicotine", chem_volume)
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
@@ -532,8 +529,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/cigar/havana
 	name = "premium Havanian cigar"
 	desc = "A cigar fit for only the best of the best."
-	smoketime = 7200
-	chem_volume = 30
+	chem_volume = 250
 
 /obj/item/clothing/mask/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	if(iswelder(W))
@@ -612,19 +608,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
 	type_butt = null
-	smoketime = 200 SECONDS
+	chem_volume = 50
 	var/ash = FALSE
 
 /obj/item/clothing/mask/cigarette/pipe/get_examine_text(mob/user)
 	. = ..()
 	if(ash)
 		. += "It is full of ash."
-	else if(smoketime <= 0)
+	else if(reagents.total_volume <= 0)
 		. += "It is empty."
 
 /obj/item/clothing/mask/cigarette/pipe/go_out()
 	..()
-	if(smoketime <= 0)
+	if(reagents.total_volume <= 0)
 		ash = TRUE
 
 /// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
@@ -633,9 +629,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		user.visible_message("[user] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
 		new /obj/effect/decal/cleanable/ash(get_turf(user))
 		ash = FALSE
-	else if(smoketime <= 0)
+	else if(reagents.total_volume <= 0)
 		to_chat(user, SPAN_NOTICE("You refill the pipe with tobacco."))
-		smoketime = initial(smoketime)
+		reagents.add_reagent("nicotine", chem_volume)
 	..()
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
@@ -668,7 +664,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		light(SPAN_NOTICE("[user] fiddles with \the [W], and manages to light their [name] with the power of science."))
 
 /obj/item/clothing/mask/cigarette/pipe/light()
-	if(smoketime > 0)
+	if(reagents.total_volume > 0)
 		return ..()
 	to_chat(usr, SPAN_WARNING("\The [src] is empty!"))
 	return
@@ -681,7 +677,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// Note - these are in masks.dmi
 	icon_on = "cobpipeon"
 	icon_off = "cobpipeoff"
-	smoketime = 800 SECONDS
+	chem_volume = 100
 
 /obj/item/clothing/mask/electronic_cigarette
 	name = "electronic cigarette"

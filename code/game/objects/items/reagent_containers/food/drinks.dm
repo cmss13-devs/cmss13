@@ -36,7 +36,7 @@
 		to_chat(M, SPAN_NOTICE("You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, gulp_size)
+			reagents.trans_to_ingest(M, gulp_size, method = INGESTION)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return TRUE
@@ -62,7 +62,7 @@
 
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, gulp_size)
+			reagents.trans_to_ingest(M, gulp_size, method = INGESTION)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return TRUE

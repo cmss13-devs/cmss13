@@ -10,22 +10,22 @@
 	var/jitter_per_amount = 2
 	var/jitter = 2
 
-/datum/reagent/stimulant/on_mob_life(mob/living/M, alien, delta_time)
+/datum/reagent/stimulant/on_mob_life(mob/living/person, alien, delta_time)
 	. = ..()
 	// Stimulants drain faster for each stimulant in the drug.
 	// Having 2 stimulants means the duration will be 2x shorter, having 3 will be 3x shorter, etc
 	if(holder)
-		for(var/datum/reagent/R in holder.reagent_list)
-			if(R == src)
+		for(var/datum/reagent/drug in holder.reagent_list)
+			if(drug == src)
 				continue
 
-			if(R.flags & REAGENT_TYPE_STIMULANT)
-				holder.remove_reagent(R, custom_metabolism)
+			if(drug.flags & REAGENT_TYPE_STIMULANT)
+				holder.remove_reagent(drug, custom_metabolism)
 
 	// We multiply delta_time by 1.5 so that it looks like it is consistent.
 	var/time_per_animate = (jitter_speed/(jitter_per_amount + 2))
 
-	animate(M, pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = time_per_animate, flags=ANIMATION_END_NOW)
+	animate(person, pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = time_per_animate, flags=ANIMATION_END_NOW)
 	for(var/i in 1 to jitter_per_amount)
 		animate(pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = time_per_animate)
 	animate(pixel_x = 0, pixel_y = 0, time = time_per_animate)

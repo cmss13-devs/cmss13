@@ -116,17 +116,29 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	data["has_unknown_chemicals"] = FALSE
 	data["has_chemicals"] = 0
 	var/list/chemicals_lists = list()
+	var/list/unique_reagent = list()
 	if(target_mob.reagents)
 		data["has_chemicals"] = length(target_mob.reagents.reagent_list)
 		for(var/datum/reagent/reagent in target_mob.reagents.reagent_list)
 			if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
 				data["has_unknown_chemicals"] = TRUE
 				continue
-			chemicals_lists["[reagent.id]"] = list(
-				"name" = reagent.name,
+
+			if(!unique_reagent[reagent.id])
+				unique_reagent[reagent.id] = reagent.volume
+			else
+				unique_reagent[reagent.id] += reagent.volume
+
+			var/reagent_name = reagent.name
+			reagent_name += reagent.delivery_method_to_string(reagent.delivery_method)
+
+			chemicals_lists["[reagent.id]_[reagent.delivery_method]"] = list(
+				"name" = reagent_name,
 				"amount" = round(reagent.volume, 0.1),
 				"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
+				"crit_od" = reagent.overdose_critical != 0 && reagent.volume > reagent.overdose_critical && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
 				"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
+				"improper" = reagent.calc_delivery_spectrum(reagent.delivery_method) == DELIVERY_NEGATIVE_EFFECT,
 				"color" = reagent.color
 			)
 
@@ -360,7 +372,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 							"color" = "olive"
 							))
 			if(!issynth(human_target_mob))
-				if(human_target_mob.blood_volume <= 500 && !chemicals_lists["nutriment"])
+				if(human_target_mob.blood_volume <= 500 && !unique_reagent["nutriment"])
 					advice += list(list(
 						"advice" = "Administer food or recommend that the patient eat.",
 						"icon" = "pizza-slice",
@@ -372,8 +384,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "green"
 						))
-					if(chemicals_lists["anti_toxin"])
-						if(chemicals_lists["anti_toxin"]["amount"] < 5)
+					if(unique_reagent["anti_toxin"])
+						if(unique_reagent["anti_toxin"] < 5)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -383,8 +395,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "grey"
 						))
-					if(chemicals_lists["peridaxon"])
-						if(chemicals_lists["peridaxon"]["amount"] < 5)
+					if(unique_reagent["peridaxon"])
+						if(unique_reagent["peridaxon"] < 5)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -394,8 +406,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "blue"
 						))
-					if(chemicals_lists["dexalin"])
-						if(chemicals_lists["dexalin"]["amount"] < 3)
+					if(unique_reagent["dexalin"])
+						if(unique_reagent["dexalin"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -405,8 +417,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "yellow"
 						))
-					if(chemicals_lists["kelotane"])
-						if(chemicals_lists["kelotane"]["amount"] < 3)
+					if(unique_reagent["kelotane"])
+						if(unique_reagent["kelotane"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -416,8 +428,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "red"
 						))
-					if(chemicals_lists["bicaridine"])
-						if(chemicals_lists["bicaridine"]["amount"] < 3)
+					if(unique_reagent["bicaridine"])
+						if(unique_reagent["bicaridine"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -427,8 +439,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "purple"
 						))
-					if(chemicals_lists["inaprovaline"])
-						if(chemicals_lists["inaprovaline"]["amount"] < 5)
+					if(unique_reagent["inaprovaline"])
+						if(unique_reagent["inaprovaline"] < 5)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -437,19 +449,19 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					has_pain = TRUE
 					break
 
-				if(has_pain && !chemicals_lists["paracetamol"])
+				if(has_pain && !unique_reagent["paracetamol"])
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of tramadol.",
 						"icon" = "syringe",
 						"color" = "white"
 						))
-					if(chemicals_lists["tramadol"])
-						if(chemicals_lists["tramadol"]["amount"] < 3)
+					if(unique_reagent["tramadol"])
+						if(unique_reagent["tramadol"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
 
-				if(chemicals_lists["paracetamol"])
+				if(unique_reagent["paracetamol"])
 					advice += list(list(
 						"advice" = "Do NOT administer tramadol.",
 						"icon" = "window-close",
@@ -682,9 +694,14 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/reagentdata[0]
 			for(var/A in src.reagents.reagent_list)
 				var/datum/reagent/R = A
-				reagents_in_body["[R.id]"] = R.volume
+				if(!reagents_in_body["[R.id]"])
+					reagents_in_body["[R.id]"] = R.volume
+				else
+					reagents_in_body["[R.id]"] += R.volume
 				if(R.flags & REAGENT_SCANNABLE)
-					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume > R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
+					var/reagent_name = R.name
+					reagent_name += R.delivery_method_to_string(R.delivery_method)
+					reagentdata["[R.id]_[R.delivery_method]"] = "[R.overdose != 0 && R.volume > R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [reagent_name]</b></font>"
 				else
 					unknown++
 			if(length(reagentdata))

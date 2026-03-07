@@ -129,9 +129,9 @@
 					var/temp_bitesize =  max(reagents.total_volume /2, bitesize)
 					reagents.trans_to(M, temp_bitesize)
 					*/
-					reagents.trans_to_ingest(M, bitesize)
+					reagents.trans_to_ingest(M, bitesize, method = INGESTION)
 				else
-					reagents.trans_to_ingest(M, reagents.total_volume)
+					reagents.trans_to_ingest(M, reagents.total_volume, method = INGESTION)
 				bitecount++
 				On_Consume(M)
 			return TRUE
@@ -3526,8 +3526,8 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
-	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
-	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
+	reagents.add_reagent("faux_tramadol", 1) //May be powergamed but it's a single unit.
+	reagents.add_reagent("faux_bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
 	name = "ORP oat bisuit"

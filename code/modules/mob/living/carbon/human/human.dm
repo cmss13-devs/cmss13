@@ -926,20 +926,44 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
-/mob/living/carbon/human/proc/do_vomit()
-	apply_effect(5, STUN)
+/mob/living/carbon/human/proc/do_vomit(forced_vomit = FALSE)
+
 	if(stat == 2) //One last corpse check
 		return
+
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
+
+	SetStun(1) // just one stack i guess
+	SetSuperslow(10) // yeah, 10 stacks of superslow, better than being stunned for 5
 
 	var/turf/location = loc
 	if(istype(location, /turf))
 		location.add_vomit_floor(src, 1)
 
-	nutrition -= 40
-	apply_damage(-3, TOX)
-	addtimer(VARSET_CALLBACK(src, lastpuke, FALSE), 35 SECONDS)
+	nutrition -= 35
+
+	addtimer(VARSET_CALLBACK(src, lastpuke, FALSE), 60 SECONDS)
+
+	if(reagents && reagents.total_volume)
+		for(var/datum/reagent/ingested_reagent in reagents.reagent_list)
+			if(ingested_reagent.delivery_method == INGESTION || ingested_reagent.delivery_method == CONTROLLED_INGESTION)
+				reagents.remove_reagent(ingested_reagent.id, (rand(5, 15)), method = ingested_reagent.delivery_method)
+
+	if(forced_vomit)
+		var/datum/internal_organ/liver/liver = internal_organs_by_name["liver"] // liver since its the closest alternative to the stomach
+		if(liver)
+			if(nutrition <= 0)
+				liver.take_damage(rand(10, 20))
+				apply_damage(rand(10, 25), TOX) // we are killing them if they do this while hungry
+			else
+				liver.take_damage(rand(5, 10))
+
+	else
+		if(nutrition <= 0)
+			apply_damage(rand(1, 10), TOX)
+		else
+			apply_damage(rand(-5, -20), TOX)
 
 /mob/living/carbon/human/proc/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT && ((head && head.flags_inv_hide & HIDEMASK) || wear_mask))
@@ -1895,4 +1919,3 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-

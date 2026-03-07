@@ -96,7 +96,7 @@
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/reagent_container/spray/pepper,
-		/obj/item/reagent_container/ld50_syringe/choral,
+		/obj/item/reagent_container/syringe/ld50_syringe/choral,
 		/obj/item/storage/bible,
 		/obj/item/clothing/mask/gas/pmc,
 		/obj/item/clothing/accessory/storage/holster,

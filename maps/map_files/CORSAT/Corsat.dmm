@@ -11947,8 +11947,8 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/obj/item/reagent_container/ld50_syringe/choral,
-/obj/item/reagent_container/ld50_syringe,
+/obj/item/reagent_container/syringe/ld50_syringe/choral,
+/obj/item/reagent_container/syringe/ld50_syringe,
 /turf/open/floor/corsat/purplewhite/northeast,
 /area/corsat/gamma/biodome/toxins)
 "aTS" = (

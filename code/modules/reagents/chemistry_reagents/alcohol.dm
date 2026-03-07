@@ -1,5 +1,3 @@
-
-
 /*boozepwr chart
 1-2 = non-toxic alcohol
 3 = medium-toxic
@@ -22,6 +20,8 @@
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
+	preferred_delivery = INGESTION
+	undesired_delivery = INHALATION
 	///higher numbers mean the booze will have an effect faster.
 	var/boozepwr = 5
 	///If it's a normal drink, let them drink a bit before they start feeling it.
@@ -30,27 +30,27 @@
 	var/effect_start = 150
 
 
-/datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
+/datum/reagent/ethanol/on_mob_life(mob/living/creature, alien)
 	//This is all way too snowflake to accurately transition to the property system so it stays here
 	if(alien == IS_YAUTJA || alien == IS_HORROR || !holder)
 		return
-	M:nutrition += nutriment_factor
-	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
+	creature.nutrition += nutriment_factor
+	holder.remove_reagent(id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
 	accumulated_alcohol += boozepwr
 
 	if(accumulated_alcohol >= effect_start)
 		. = ..()
 
-/datum/reagent/ethanol/reaction_obj(obj/O, volume)
-	if(istype(O,/obj/item/paper))
-		var/obj/item/paper/paperaffected = O
-		paperaffected.clearpaper()
+/datum/reagent/ethanol/reaction_obj(obj/paper_based, volume)
+	if(istype(paper_based, /obj/item/paper))
+		var/obj/item/paper/paper_affected = paper_based
+		paper_affected.clearpaper()
 		to_chat(usr, "The solution dissolves the ink on the paper.")
-	if(istype(O,/obj/item/book))
+	if(istype(paper_based, /obj/item/book))
 		if(volume >= 5)
-			var/obj/item/book/affectedbook = O
-			affectedbook.dat = null
+			var/obj/item/book/affected_book = paper_based
+			affected_book.dat = null
 			to_chat(usr, "The solution dissolves the ink on the book.")
 		else
 			to_chat(usr, "It wasn't enough...")
@@ -74,11 +74,11 @@
 	boozepwr = 1
 	nutriment_factor = 1 * FOOD_METABOLISM
 
-/datum/reagent/ethanol/beer/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/beer/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
-	M:jitteriness = max(M:jitteriness-3,0)
+	drunkard.jitteriness = max(drunkard.jitteriness-3,0)
 
 /datum/reagent/ethanol/kahlua
 	name = "Kahlua"
@@ -88,11 +88,11 @@
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
-/datum/reagent/ethanol/kahlua/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/kahlua/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
-	M.make_jittery(5)
+	drunkard.make_jittery(5)
 
 /datum/reagent/ethanol/whiskey
 	name = "Whiskey"
@@ -154,11 +154,11 @@
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
-/datum/reagent/ethanol/threemileisland/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/threemileisland/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
-	M.druggy = max(M.druggy, 50)
+	drunkard.druggy = max(drunkard.druggy, 50)
 
 /datum/reagent/ethanol/gin
 	name = "Gin"
@@ -241,62 +241,62 @@
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
-/datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
-	M.druggy = max(M.druggy, 50)
+/datum/reagent/ethanol/pwine/on_mob_life(mob/living/drunkard,alien)
+	drunkard.druggy = max(drunkard.druggy, 50)
 	accumulated_alcohol++
 	switch(accumulated_alcohol)
 		if(1 to 25)
-			if(!M.stuttering)
-				M.stuttering = 1
-			M.make_dizzy(1)
-			M.hallucination = max(M.hallucination, 3)
+			if(!drunkard.stuttering)
+				drunkard.stuttering = 1
+			drunkard.make_dizzy(1)
+			drunkard.hallucination = max(drunkard.hallucination, 3)
 			if(prob(1))
-				M.emote(pick("twitch","giggle"))
+				drunkard.emote(pick("twitch","giggle"))
 		if(25 to 75)
-			if(!M.stuttering)
-				M.stuttering = 1
-			M.hallucination = max(M.hallucination, 10)
-			M.make_jittery(2)
-			M.make_dizzy(2)
-			M.druggy = max(M.druggy, 45)
+			if(!drunkard.stuttering)
+				drunkard.stuttering = 1
+			drunkard.hallucination = max(drunkard.hallucination, 10)
+			drunkard.make_jittery(2)
+			drunkard.make_dizzy(2)
+			drunkard.druggy = max(drunkard.druggy, 45)
 			if(prob(5))
-				M.emote(pick("twitch","giggle"))
+				drunkard.emote(pick("twitch","giggle"))
 		if(75 to 150)
-			if(!M.stuttering)
-				M.stuttering = 1
-			M.hallucination = max(M.hallucination, 60)
-			M.make_jittery(4)
-			M.make_dizzy(4)
-			M.druggy = max(M.druggy, 60)
+			if(!drunkard.stuttering)
+				drunkard.stuttering = 1
+			drunkard.hallucination = max(drunkard.hallucination, 60)
+			drunkard.make_jittery(4)
+			drunkard.make_dizzy(4)
+			drunkard.druggy = max(drunkard.druggy, 60)
 			if(prob(10))
-				M.emote(pick("twitch","giggle"))
+				drunkard.emote(pick("twitch","giggle"))
 			if(prob(30))
-				M.apply_damage(2, TOX)
+				drunkard.apply_damage(2, TOX)
 		if(150 to 300)
-			if(!M.stuttering)
-				M.stuttering = 1
-			M.hallucination = max(M.hallucination, 60)
-			M.make_jittery(4)
-			M.make_dizzy(4)
-			M.druggy = max(M.druggy, 60)
+			if(!drunkard.stuttering)
+				drunkard.stuttering = 1
+			drunkard.hallucination = max(drunkard.hallucination, 60)
+			drunkard.make_jittery(4)
+			drunkard.make_dizzy(4)
+			drunkard.druggy = max(drunkard.druggy, 60)
 			if(prob(10))
-				M.emote(pick("twitch","giggle"))
+				drunkard.emote(pick("twitch","giggle"))
 			if(prob(30))
-				M.apply_damage(2, TOX)
+				drunkard.apply_damage(2, TOX)
 			if(prob(5))
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-					if(L && istype(L))
-						L.take_damage(5, 0)
+				if(ishuman(drunkard))
+					var/mob/living/carbon/human/drunkards_heart = drunkard
+					var/datum/internal_organ/heart/damaging = drunkards_heart.internal_organs_by_name["heart"]
+					if(damaging && istype(damaging))
+						damaging.take_damage(5, 0)
 		if(300 to INFINITY)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-				if(L && istype(L))
-					L.take_damage(100, 0)
-	holder.remove_reagent(src.id, FOOD_METABOLISM)
-	return 1
+			if(ishuman(drunkard))
+				var/mob/living/carbon/human/drunkards_heart = drunkard
+				var/datum/internal_organ/heart/damaging = drunkards_heart.internal_organs_by_name["heart"]
+				if(damaging && istype(damaging))
+					damaging.take_damage(100, 0)
+	holder.remove_reagent(id, FOOD_METABOLISM)
+	return TRUE
 
 /datum/reagent/ethanol/deadrum
 	name = "Deadrum"
@@ -306,11 +306,11 @@
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
-/datum/reagent/ethanol/deadrum/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/deadrum/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
-	M.dizziness +=5
+	drunkard.dizziness +=5
 
 
 /datum/reagent/ethanol/sake
@@ -528,11 +528,11 @@
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
-/datum/reagent/ethanol/manhattan_proj/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/manhattan_proj/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
-	M.druggy = max(M.druggy, 30)
+	drunkard.druggy = max(drunkard.druggy, 30)
 
 /datum/reagent/ethanol/whiskeysoda
 	name = "Whiskey Soda"
@@ -795,18 +795,18 @@
 	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
-/datum/reagent/ethanol/silencer/on_mob_life(mob/living/M)
+/datum/reagent/ethanol/silencer/on_mob_life(mob/living/drunkard)
 	. = ..()
 	if(!.)
 		return
 	accumulated_alcohol++
-	M.dizziness +=10
+	drunkard.dizziness +=10
 	if(accumulated_alcohol >= 55 && accumulated_alcohol <115)
-		if(!M.stuttering)
-			M.stuttering = 1
-		M.stuttering += 10
+		if(!drunkard.stuttering)
+			drunkard.stuttering = 1
+		drunkard.stuttering += 10
 	else if(accumulated_alcohol >= 115 && prob(33))
-		M.confused = max(M.confused+15,15)
+		drunkard.confused = max(drunkard.confused+15,15)
 
 /datum/reagent/ethanol/mojito
 	name = "Mojito"

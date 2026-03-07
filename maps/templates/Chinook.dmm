@@ -7125,8 +7125,8 @@
 /obj/structure/closet/secure_closet{
 	name = "\improper Lethal Injection Locker"
 	},
-/obj/item/reagent_container/ld50_syringe,
-/obj/item/reagent_container/ld50_syringe,
+/obj/item/reagent_container/syringe/ld50_syringe,
+/obj/item/reagent_container/syringe/ld50_syringe,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

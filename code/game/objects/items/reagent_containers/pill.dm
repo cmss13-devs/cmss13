@@ -83,7 +83,7 @@
 		M.drop_inv_item_on_ground(src) //icon update
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, reagents.total_volume)
+			reagents.trans_to_ingest(M, reagents.total_volume, method = CONTROLLED_INGESTION)
 
 		qdel(src)
 		return 1
@@ -124,7 +124,7 @@
 
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, reagents.total_volume)
+			reagents.trans_to_ingest(M, reagents.total_volume, method = CONTROLLED_INGESTION)
 		qdel(src)
 
 		return 1

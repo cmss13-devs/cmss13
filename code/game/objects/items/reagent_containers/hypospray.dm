@@ -20,7 +20,7 @@
 	flags_item = NOBLUDGEON
 	matter = list("plastic" = 1250, "glass" = 250)
 	transparent = TRUE
-	var/skilllock = SKILL_MEDICAL_TRAINED
+	var/skilllock = SKILL_MEDICAL_MEDIC
 	var/magfed = TRUE
 	var/obj/item/reagent_container/glass/beaker/vial/mag
 	var/injectSFX = 'sound/items/hypospray.ogg'
@@ -28,6 +28,16 @@
 	var/starting_vial = /obj/item/reagent_container/glass/beaker/vial
 	var/next_inject = 0
 	var/inject_cd = 0.75 SECONDS
+	var/mode = INJECTOR_MODE_PRECISE
+
+/obj/item/reagent_container/hypospray/unique_action(mob/user)
+	hyposwitch(user)
+
+/obj/item/reagent_container/hypospray/pickup(mob/user)
+	. = ..()
+	if(.)
+		mode = initial(mode)
+		to_chat(user, SPAN_INFO("You pick up the [name]. It's mode is defaulted to [mode == INJECTOR_MODE_PRECISE ? "precise" : mode == INJECTOR_MODE_FAST ? "fast" : "skilless"] injection mode."))
 
 /obj/item/reagent_container/hypospray/Destroy()
 	QDEL_NULL(mag)
@@ -63,44 +73,44 @@
 	update_icon()
 
 //Loads the vial, transfers reagents to hypo, but does not move the vial anywhere itself.
-/obj/item/reagent_container/hypospray/proc/hypoload(obj/item/reagent_container/glass/beaker/vial/V)
+/obj/item/reagent_container/hypospray/proc/hypoload(obj/item/reagent_container/glass/beaker/vial/vial)
 	flags_atom |= OPENCONTAINER
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
-	if(V.reagents.total_volume)
-		V.reagents.trans_to(src, V.reagents.total_volume) //Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
-	mag = V
+	if(vial.reagents.total_volume)
+		vial.reagents.trans_to(src, vial.reagents.total_volume) //Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
+	mag = vial
 	update_icon()
 
 //Unloads vial, if any, to a hand or the floor, waits, loads in a defined new one. Early-aborts if user has no medical skills.
-/obj/item/reagent_container/hypospray/proc/hypotacreload(obj/item/reagent_container/glass/beaker/vial/V, mob/living/carbon/human/H)
-	if(H.action_busy)
+/obj/item/reagent_container/hypospray/proc/hypotacreload(obj/item/reagent_container/glass/beaker/vial/vial, mob/living/carbon/human/user)
+	if(user.action_busy)
 		return
-	if(!skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(H, SPAN_WARNING("You aren't experienced enough to load this any faster."))
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		to_chat(user, SPAN_WARNING("You aren't experienced enough to load this any faster."))
 		return
 	if(mag)
-		if(src == H.get_active_hand() && !H.get_inactive_hand())
-			H.swap_hand()
-		H.put_in_hands(mag)
+		if(src == user.get_active_hand() && !user.get_inactive_hand())
+			user.swap_hand()
+		user.put_in_hands(mag)
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 1, 6)
 		hypounload()
-		to_chat(H, SPAN_NOTICE("You begin swapping vials."))
+		to_chat(user, SPAN_NOTICE("You begin swapping vials."))
 	else
-		to_chat(H, SPAN_NOTICE("You begin loading a vial into [src]."))
-	if(do_after(H, 1.25 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && H.Adjacent(V))
-		if(isstorage(V.loc))
-			var/obj/item/storage/S = V.loc
-			S.remove_from_storage(V, src)
+		to_chat(user, SPAN_NOTICE("You begin loading a vial into [src]."))
+	if(do_after(user, 1.25 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY) && user.Adjacent(vial))
+		if(isstorage(vial.loc))
+			var/obj/item/storage/storage = vial.loc
+			storage.remove_from_storage(vial, src)
 		else
-			H.drop_inv_item_to_loc(V, src)
-		hypoload(V)
+			user.drop_inv_item_to_loc(vial, src)
+		hypoload(vial)
 
-/obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
+/obj/item/reagent_container/hypospray/attackby(obj/item/item, mob/living/user)
 	if(magfed && !mag) //Is there a vial?
-		if(istype(B,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand()) //Is this a new vial being inserted into a hypospray held in the other hand?
-			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))
-			user.drop_inv_item_to_loc(B, src)
-			hypoload(B)
+		if(istype(item,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand()) //Is this a new vial being inserted into a hypospray held in the other hand?
+			to_chat(user, SPAN_NOTICE("You add \the [item] to [src]."))
+			user.drop_inv_item_to_loc(item, src)
+			hypoload(item)
 		else
 			to_chat(user, SPAN_DANGER("[src] has no vial.")) //Can't fill a hypo with no storage.
 		return TRUE
@@ -137,16 +147,16 @@
 		if(!mag)
 			to_chat(user, SPAN_DANGER("[src] has no vial."))
 		else
-			var/obj/structure/reagent_dispensers/B = target
-			if(B.dispensing)
-				if(!B.reagents || !B.reagents.total_volume)
-					to_chat(user, SPAN_WARNING("[B] is empty."))
+			var/obj/structure/reagent_dispensers/dispenser = target
+			if(dispenser.dispensing)
+				if(!dispenser.reagents || !dispenser.reagents.total_volume)
+					to_chat(user, SPAN_WARNING("[dispenser] is empty."))
 					return
-				var/amount_transferred = B.reagents.trans_to(src, B.amount_per_transfer_from_this)
+				var/amount_transferred = dispenser.reagents.trans_to(src, dispenser.amount_per_transfer_from_this)
 				if(!amount_transferred)
 					to_chat(user, SPAN_WARNING("[src] is already full."))
 				else
-					to_chat(user, SPAN_NOTICE("You fill [src] with [amount_transferred] units from [B]."))
+					to_chat(user, SPAN_NOTICE("You fill [src] with [amount_transferred] units from [dispenser]."))
 		return
 	//Tac reload, hypo initiating
 	if(istype(target, /obj/item/reagent_container/glass/beaker/vial))
@@ -170,8 +180,61 @@
 		else
 			. += SPAN_INFO("It is unloaded.")
 		. += SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose.")
+	switch(mode)
+		if(INJECTOR_MODE_PRECISE)
+			. += SPAN_INFO("It is set to precise injection mode.")
+		if(INJECTOR_MODE_FAST)
+			. += SPAN_INFO("It is set to fast injection mode.")
+		if(INJECTOR_MODE_SKILLESS)
+			. += SPAN_INFO("It is locked to EZ injection mode.")
 
-/obj/item/reagent_container/hypospray/attack(mob/living/M, mob/living/user)
+/obj/item/reagent_container/hypospray/proc/hyposwitch(mob/user)
+	switch(mode)
+		if(INJECTOR_MODE_PRECISE)
+			mode = INJECTOR_MODE_FAST
+			to_chat(user, SPAN_INFO("You switch \the [src] to fast injection mode."))
+			playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
+		if(INJECTOR_MODE_FAST)
+			mode = INJECTOR_MODE_PRECISE
+			to_chat(user, SPAN_INFO("You switch \the [src] to precise injection mode."))
+			playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
+		if(INJECTOR_MODE_SKILLESS) // for all intents and purposes, we do need EZ injectors to exist as an upgrade item
+			to_chat(user, SPAN_WARNING("[src] beeps: The injection mode is locked and cannot be toggled."))
+			return
+
+/obj/item/reagent_container/hypospray/proc/hypoinject(mob/living/target, mob/living/user) // do_afters have been pissing me off
+	to_chat(user, SPAN_NOTICE("You inject [target] with [src]."))
+	to_chat(target, SPAN_WARNING("You feel a tiny, but focused prick!"))
+	playsound(loc, injectSFX, injectVOL, 1)
+	SEND_SIGNAL(target, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
+
+	reagents.reaction(target, INJECTION)
+
+	if(target.reagents)
+		var/list/injected = list()
+		for(var/datum/reagent/reagent in reagents.reagent_list)
+			injected += reagent.name
+			reagent.last_source_mob = WEAKREF(user)
+		var/contained = english_list(injected)
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(target)]. Reagents: [contained]</font>")
+		msg_admin_attack("[key_name(user)] injected [key_name(target)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+
+		var/trans = reagents.trans_to(target, amount_per_transfer_from_this, method = INJECTION)
+		if(mag)
+			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
+		else
+			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+/obj/item/reagent_container/hypospray/attack(mob/living/target, mob/living/user)
+	// initial checks for both injection modes
+	var/toxin = FALSE
+	for(var/datum/reagent/reagent in reagents.reagent_list)
+		if(istype(reagent, /datum/reagent/toxin))
+			toxin = TRUE
+			break
+
 	if(magfed && !mag)
 		to_chat(user, SPAN_DANGER("[src] has no vial!"))
 		return
@@ -179,61 +242,72 @@
 		to_chat(user, SPAN_DANGER("[src] is empty."))
 		return
 
-	if(!istype(M))
+	if(!istype(target))
 		return
 
-	if(!M.can_inject(user, TRUE))
+	if(!target.can_inject(user, TRUE))
 		return
 
-	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			return
-	else if(!skillcheck(user, SKILL_MEDICAL, skilllock))
+	if(toxin)
+		to_chat(user, SPAN_WARNING("[src] beeps and refuses to inject: Dangerous Substance detected in container!"))
+		return
+
+	if(!skillcheck(user, SKILL_MEDICAL, skilllock))
 		to_chat(user, SPAN_WARNING("[src] beeps and refuses to inject: Insufficient training or clearance!"))
 		return
-	var/toxin = 0
-	for(var/datum/reagent/R in reagents.reagent_list)
-		if(istype(R, /datum/reagent/toxin) || istype(R, /datum/reagent/ethanol))
-			toxin = 1
-			break
-	if(toxin)
-		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			return 0
-		if(!M.Adjacent(user))
-			return 0
-	if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isyautja(M))) // preds have null skills
+
+	if(target != user && target.stat != DEAD && target.a_intent != INTENT_HELP && !target.is_mob_incapacitated() && (skillcheck(target, SKILL_CQC, SKILL_CQC_SKILLED) || isyautja(target))) // preds have null skills
 		user.apply_effect(3, WEAKEN)
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
-		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(target)] by their cqc skill.</font>")
+		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(target)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		target.visible_message(SPAN_DANGER("[target]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 			SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-		return 0
+		return
 
-	to_chat(user, SPAN_NOTICE("You inject [M] with [src]."))
-	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
-	playsound(loc, injectSFX, injectVOL, 1)
-	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
+	switch(mode)
+		if(INJECTOR_MODE_FAST, INJECTOR_MODE_SKILLESS)
+			to_chat(user, SPAN_NOTICE("You quickly inject [target] with [src]."))
+			to_chat(target, SPAN_WARNING("You feel a tiny prick!"))
+			playsound(loc, injectSFX, injectVOL, 1)
+			SEND_SIGNAL(target, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
-	reagents.reaction(M, INGEST)
-	if(M.reagents)
-		var/list/injected = list()
-		for(var/datum/reagent/R in reagents.reagent_list)
-			injected += R.name
-			R.last_source_mob = WEAKREF(user)
-		var/contained = english_list(injected)
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
-		msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			var/injection_method = INJECTION // EZ injectors should be EZ after all :)
+			if(mode != INJECTOR_MODE_SKILLESS)
+				injection_method = ABSORPTION // fast mode injection
+			reagents.reaction(target, injection_method)
+			if(target.reagents)
+				var/list/injected = list()
+				for(var/datum/reagent/reagent in reagents.reagent_list)
+					injected += reagent.name
+					reagent.last_source_mob = WEAKREF(user)
+				var/contained = english_list(injected)
+				target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(target)]. Reagents: [contained]</font>")
+				msg_admin_attack("[key_name(user)] injected [key_name(target)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
-		if(mag)
-			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
-		else
-			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
-	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+				var/trans = reagents.trans_to(target, amount_per_transfer_from_this, method = injection_method)
+				if(mag)
+					to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
+				else
+					to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+		if(INJECTOR_MODE_PRECISE)
+			var/injection_duration = 4 SECONDS
+			if(user.skills)
+				injection_duration -= user.skills.get_skill_level(SKILL_MEDICAL) SECONDS
+
+			if(target == user) // spamming do_afters results in the null units injected bug which does nothing, but its really fucking annoying and ive got no fucking clue how to fix it, so try not to spam your injector more than the required amount - nihi
+				user.visible_message(SPAN_WARNING("[user] begins to carefully administer \the [src] to themselves..."), SPAN_WARNING("You begin to carefully administer \the [src] to yourself..."))
+				if(do_after(user, injection_duration, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, target, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_MEDICAL, status_effect = SLOW)) // no interrupt_no_needhands here
+					return hypoinject(target, user)
+			else
+				user.visible_message(SPAN_WARNING("[user] begins to carefully administer \the [src] to [target]..."), SPAN_WARNING("You begin to carefully administer \the [src] to [target]..."))
+				if(do_after(user, injection_duration, (INTERRUPT_ALL & ~INTERRUPT_MOVED & ~INTERRUPT_NEEDHAND | INTERRUPT_OUT_OF_RANGE), BUSY_ICON_FRIENDLY, target, INTERRUPT_TARGET_IN_RANGE, BUSY_ICON_MEDICAL, status_effect = SLOW))
+					return hypoinject(target, user)
+
 
 /obj/item/reagent_container/hypospray/Initialize()
 	. = ..()

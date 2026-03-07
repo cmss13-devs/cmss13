@@ -33,6 +33,35 @@
 #define HIGH_REAGENTS_OVERDOSE 60
 #define HIGH_REAGENTS_OVERDOSE_CRITICAL 100
 
+// Reagent Delivery types
+/// If no delivery types are specified
+#define NO_DELIVERY (1<<0)
+/// Medical Pill deliveries
+#define CONTROLLED_INGESTION (1<<1)
+/// Food/drink deliveries, or basically mouth ingestion/digestion
+#define INGESTION (1<<2)
+/// Inhalation deliveries
+#define INHALATION (1<<3)
+/// Delivery through surface-level touching
+#define TOUCH (1<<4)
+/// Delivery through absorption such as subcutaneous injections (e.g., prolonged skin contact, mucosal uptake, or non-vascular injection)
+#define ABSORPTION (1<<5)
+/// Delivery through intravenous or/and intramuscular injections
+#define INJECTION (1<<6)
+/// Delivery through implanted devices, for gameplay purposes, IV bags reflect this
+#define IMPLANTATION (1<<7)
+/// If any delivery method is acceptable
+#define ANY_DELIVERY (1<<8)
+
+// Delivery Spectrum Outcomes
+/// Reagent works as intended
+#define DELIVERY_PREFERRED_EFFECT (1<<0)
+/// Reagent has a reduced effect
+#define DELIVERY_LESSER_EFFECT (1<<1)
+/// Reagent has no effect
+#define DELIVERY_NO_EFFECT (1<<2)
+/// Reagent has a negative/harmful effect
+#define DELIVERY_NEGATIVE_EFFECT (1<<3)
 
 // How many units of reagent are consumed per tick, by default.
 #define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 10 SECONDS)

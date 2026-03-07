@@ -418,6 +418,14 @@
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
+/datum/reagent/flash_powder
+	name = "Flash powder"
+	id = "flash_powder"
+	description = "The inert byproduct of a flash powder reaction. This chemical reaction has ran its course and has left behind a yellow ash-like substance."
+	reagent_state = SOLID
+	color = COLOR_YELLOW
+	chemclass = CHEM_CLASS_SPECIAL
+
 /datum/reagent/radium
 	name = "Radium"
 	id = "radium"

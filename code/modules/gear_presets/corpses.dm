@@ -2082,3 +2082,6 @@
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"
 	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/yautja
+	name = "Corpse yautja"

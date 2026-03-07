@@ -9782,9 +9782,6 @@
 	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
-"aBU" = (
-/turf/closed/wall/new_varadero/concrete,
-/area/point_loma/oob)
 "aBV" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -26727,6 +26724,12 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
+"bxU" = (
+/turf/open/new_varadero/taupe_concrete/warning/corner/southwest,
+/area/point_loma/airbase/exterior/crash_site)
+"bxV" = (
+/turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
+/area/point_loma/airbase/exterior/crash_site)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -27492,6 +27495,7 @@
 /obj/structure/prop/tower{
 	pixel_x = 14
 	},
+/obj/structure/machinery/sensortower/short_range,
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "bAd" = (
@@ -38674,9 +38678,6 @@
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
-"cjJ" = (
-/turf/closed/wall/new_varadero/concrete,
-/area/point_loma/airbase/exterior/west)
 "cjK" = (
 /turf/open/floor/corsat/purplewhite,
 /area/point_loma/airbase/interior/research)
@@ -38731,6 +38732,10 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
+"cjV" = (
+/obj/structure/machinery/sensortower/short_range,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/crash_site)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -44087,6 +44092,9 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cBB" = (
+/turf/open/new_varadero/taupe_concrete/warning/corner,
+/area/point_loma/airbase/exterior/north)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -46914,13 +46922,13 @@
 "cKG" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKH" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKI" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/tool/pen{
@@ -46936,34 +46944,34 @@
 	pixel_y = 19
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKJ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/shower{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKK" = (
 /obj/structure/toilet{
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKL" = (
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKM" = (
 /obj/structure/bed/chair,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKN" = (
 /obj/effect/decal/hybrisa/dirt/sand_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKO" = (
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKP" = (
 /obj/structure/prop/rock/brown/point_loma,
 /turf/open/auto_turf/sand_white/layer0,
@@ -46974,15 +46982,15 @@
 	pixel_y = 35
 	},
 /turf/closed/wall/new_varadero/concrete,
-/area/point_loma/oob)
+/area/point_loma/airbase/interior/fire_station)
 "cKR" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKS" = (
 /obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/new_varadero/concrete,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKT" = (
 /obj/structure/sink{
 	pixel_y = -8
@@ -46992,47 +47000,26 @@
 	pixel_y = 4
 	},
 /turf/closed/wall/new_varadero/concrete,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKU" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKV" = (
 /turf/open/floor/shiva/yellow/southwest,
-/area/point_loma/airbase/exterior/west)
-"cKW" = (
-/turf/open/floor/shiva/yellow,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cKX" = (
 /turf/open/floor/shiva/yellow/southeast,
-/area/point_loma/airbase/exterior/west)
-"cKY" = (
-/obj/structure/window/framed/shiva/orange,
-/turf/open/floor/corsat,
-/area/point_loma/airbase/exterior/west)
-"cKZ" = (
-/obj/structure/bed/hybrisa/bunkbed1,
-/turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/oob)
-"cLa" = (
-/turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/oob)
-"cLb" = (
-/obj/structure/bed/hybrisa/bunkbed2,
-/turf/open/floor/hybrisa/carpet/carpetblack,
-/area/point_loma/oob)
+/area/point_loma/airbase/interior/fire_station)
 "cLc" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/yellow/northwest,
-/area/point_loma/oob)
+/area/point_loma/airbase/interior/fire_station)
 "cLd" = (
 /turf/open/floor/shiva/yellowcorners/north,
-/area/point_loma/airbase/exterior/west)
-"cLe" = (
-/turf/open/floor/shiva/yellow/east,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/airbase/interior/fire_station)
 "cLf" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
 /turf/closed/wall/new_varadero/concrete,
@@ -47425,6 +47412,12 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
+"cMb" = (
+/turf/open/new_varadero/taupe_concrete/warning,
+/area/point_loma/airbase/exterior/north)
+"cMc" = (
+/turf/open/new_varadero/taupe_concrete/warning/corner/northeast,
+/area/point_loma/airbase/exterior/north)
 
 (1,1,1) = {"
 aug
@@ -146903,12 +146896,12 @@ byn
 byl
 byb
 bRL
-aBU
-aBU
+bRL
+bRL
 cKQ
-aBU
-aBU
-aBU
+bRL
+bRL
+bRL
 asb
 asb
 asb
@@ -147085,12 +147078,12 @@ cLq
 cLn
 byc
 bRL
-cKZ
-cKL
 cKG
 cKL
 cKG
-aBU
+cKL
+cKG
+bRL
 asb
 asb
 asb
@@ -147267,12 +147260,12 @@ byo
 cLo
 cLi
 cLf
-cLa
+cKL
 cKL
 cKL
 cKL
 cKH
-aBU
+bRL
 asb
 asb
 asb
@@ -147449,12 +147442,12 @@ byp
 cwT
 cLj
 cLg
-cLb
+cKR
 cKL
 cKR
 cKM
 cKI
-aBU
+bRL
 asb
 asb
 asb
@@ -147634,9 +147627,9 @@ bRL
 cLc
 cKV
 cKS
-cjJ
-cjJ
-aBU
+bRL
+bRL
+bRL
 asb
 asb
 asb
@@ -147814,11 +147807,11 @@ cLp
 cLl
 bRM
 cLd
-cKW
+cLk
 cKT
 cKN
 cKJ
-cjJ
+bRL
 bPH
 asb
 asb
@@ -147995,12 +147988,12 @@ cLt
 cLh
 cLh
 cLh
-cLe
+cLh
 cKX
 cKU
 cKO
 cKK
-cjJ
+bRL
 cjh
 bPH
 bPH
@@ -148177,12 +148170,12 @@ cLf
 cLm
 cLm
 bRL
-cKY
-cKY
-cjJ
-cjJ
-cjJ
-cjJ
+cLm
+cLm
+bRL
+bRL
+bRL
+bRL
 bPH
 bPH
 bPH
@@ -162874,9 +162867,9 @@ aOV
 aOV
 aOE
 aOC
-aOC
-bQT
-bQT
+cBB
+cHH
+bxU
 bQT
 bQT
 aNI
@@ -163056,9 +163049,9 @@ aOV
 aOV
 aOE
 aOC
-aOC
-bQT
-bQT
+cMb
+cjV
+cHC
 bRz
 bRz
 aNI
@@ -163238,9 +163231,9 @@ aOV
 aOV
 aOE
 aOC
-aOC
-bQT
-bQT
+cMc
+cHR
+bxV
 bRz
 bRz
 bRz

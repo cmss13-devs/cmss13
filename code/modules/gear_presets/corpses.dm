@@ -10,43 +10,11 @@
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
-	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+	corpse = TRUE
 	selection_categories = list("Corpse")
 
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return
-
-/datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
-	. = ..(new_human)
-
-	// These two values matter because they are checked on death for weed_food
-	new_human.undefibbable = TRUE
-	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
-	if(xenovictim)
-		new_human.chestburst = 2
-
-	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
-	if(xenovictim)
-		var/datum/internal_organ/organ
-		var/i
-		for(i in list("heart","lungs"))
-			organ = new_human.internal_organs_by_name[i]
-			new_human.internal_organs_by_name -= i
-			new_human.internal_organs -= organ
-		new_human.update_burst()
-		//buckle to nest
-		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
-		if(nest)
-			new_human.buckled = nest
-			new_human.setDir(nest.dir)
-			nest.buckled_mob = new_human
-			nest.afterbuckle(new_human)
-	new_human.spawned_corpse = TRUE
-	new_human.updatehealth()
-	new_human.pulse = PULSE_NONE
 
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
@@ -2085,36 +2053,12 @@
 
 /datum/equipment_preset/yautja/blooded/corpse
 	name = "Corpse yautja"
-	var/xenovictim = FALSE
+	corpse = TRUE
 
-/datum/equipment_preset/yautja/blooded/corpse/load_status(mob/living/carbon/human/yautja/new_yautja)
-	. = ..(new_yautja)
+/datum/equipment_preset/synth/usasf/corpse
+	name = "USASF Synthetic corpse"
+	corpse = TRUE
 
-	// These two values matter because they are checked on death for weed_food
-	new_yautja.undefibbable = TRUE
-	SEND_SIGNAL(new_yautja, COMSIG_HUMAN_SET_UNDEFIBBABLE)
-	if(xenovictim)
-		new_yautja.chestburst = 2
-
-	new_yautja.death(create_cause_data("existing"), TRUE) //Kills the new mob
-	new_yautja.apply_damage(100, BRUTE)
-	new_yautja.apply_damage(100, BRUTE)
-	new_yautja.apply_damage(100, BRUTE)
-	if(xenovictim)
-		var/datum/internal_organ/organ
-		var/i
-		for(i in list("heart","lungs"))
-			organ = new_yautja.internal_organs_by_name[i]
-			new_yautja.internal_organs_by_name -= i
-			new_yautja.internal_organs -= organ
-		new_yautja.update_burst()
-		//buckle to nest
-		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
-		if(nest)
-			new_yautja.buckled = nest
-			new_yautja.setDir(nest.dir)
-			nest.buckled_mob = new_yautja
-			nest.afterbuckle(new_yautja)
-	new_yautja.spawned_corpse = TRUE
-	new_yautja.updatehealth()
-	new_yautja.pulse = PULSE_NONE
+/datum/equipment_preset/synth/working_joe/corpse
+	name = "Corpse working joe"
+	corpse = TRUE

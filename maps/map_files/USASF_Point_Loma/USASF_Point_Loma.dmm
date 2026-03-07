@@ -26731,7 +26731,11 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bxU" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/obj/effect/landmark/corpsespawner/corpse/yautja,
+/obj/effect/landmark/corpsespawner/working_joe,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"bxV" = (
+/obj/effect/landmark/corpsespawner/synthetic,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxW" = (
@@ -28549,6 +28553,10 @@
 "bCB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/new_varadero/dock_concrete,
+/area/point_loma/airbase/exterior/crash_site)
+"bCC" = (
+/obj/effect/landmark/corpsespawner/yautja,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "bCD" = (
 /obj/item/weapon/shield/riot/yautja/ancient{
@@ -161070,8 +161078,8 @@ cKW
 cHC
 bQT
 bQT
-aNI
-aNI
+bCC
+bxV
 bxU
 aNI
 aNI

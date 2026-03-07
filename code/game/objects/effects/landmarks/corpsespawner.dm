@@ -420,7 +420,14 @@
 	name = "Corpse - USASF - Burst"
 	equip_path = /datum/equipment_preset/corpse/point_loma/usasf/burst
 
-/obj/effect/landmark/corpsespawner/corpse/yautja
+/obj/effect/landmark/corpsespawner/yautja
 	special_species = SPECIES_YAUTJA
 	equip_path = /datum/equipment_preset/yautja/blooded/corpse
 
+/obj/effect/landmark/corpsespawner/synthetic
+	special_species = SYNTH_GEN_ONE
+	equip_path = /datum/equipment_preset/synth/usasf/corpse
+
+/obj/effect/landmark/corpsespawner/working_joe
+	special_species = SYNTH_WORKING_JOE
+	equip_path = /datum/equipment_preset/synth/working_joe/corpse

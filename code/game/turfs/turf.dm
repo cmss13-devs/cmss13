@@ -721,9 +721,6 @@
 /turf/open/gm/river/can_dig_xeno_tunnel()
 	return FALSE
 
-/turf/open/snow/can_dig_xeno_tunnel()
-	return TRUE
-
 /turf/open/mars/can_dig_xeno_tunnel()
 	return TRUE
 
@@ -769,12 +766,6 @@
 
 /turf/open/mars/get_dirt_type()
 	return DIRT_TYPE_MARS
-
-/turf/open/snow/get_dirt_type()
-	if(bleed_layer)
-		return DIRT_TYPE_SNOW
-	else
-		return DIRT_TYPE_GROUND
 
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS

@@ -356,7 +356,7 @@
 	return TRUE
 
 /// Attempts to consume our reagents needed for the container (doesn't actually change the container)
-/// Will return TRUE if reagents were deducated or no reagents were needed
+/// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
@@ -820,6 +820,7 @@
 	wrenchable = FALSE
 	vend_delay = 0.7 SECONDS
 	allow_supply_link_restock = FALSE
+	untippable = TRUE
 
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),

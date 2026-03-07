@@ -100,6 +100,14 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/service/green
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	initial_icon_state = "coat_officer"
+
 /obj/item/clothing/suit/storage/jacket/marine/pilot/armor
 	name = "\improper M70 flak jacket"
 	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
@@ -279,12 +287,12 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander
 
 	name = "commanding officer's jacket"
-	desc = "The thought of looking even at the rank pins scare you with a court martial."
+	desc = "The thought of looking even at the rank pins scare you with a court-martial."
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
 	name = "commanding officer falcon jacket"
-	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
+	desc = "A refurbished jacket liner tailor-made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general

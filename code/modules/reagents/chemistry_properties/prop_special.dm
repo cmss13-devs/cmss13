@@ -9,6 +9,7 @@
 	description = "Boosts the potency of all other properties in this chemical when inside the body by 0.5 levels for every level that this property has."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	value = 5
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level * 0.5)
@@ -19,11 +20,12 @@
 	description = "Chemical molecule is structured differently, resulting in more efficient and easy synthesis process."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	value = 3
 
 /datum/chem_property/special/optimized/update_reagent()
 	var/datum/chemical_reaction/reaction_chem = GLOB.chemical_reactions_list[holder.id]
 	if(reaction_chem)
-		reaction_chem.result_amount = 2
+		reaction_chem.result_amount = 3
 	. = ..()
 
 /datum/chem_property/special/hypergenetic
@@ -32,6 +34,7 @@
 	description = "Regenerates all types of cell membranes mending damage in all organs and limbs."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_MEDICINE
+	value = 2
 
 /datum/chem_property/special/hypergenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency)
@@ -107,6 +110,7 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 	max_level = 1
+	value = 6
 
 /datum/chem_property/special/regulating/reset_reagent()
 	holder.flags = initial(holder.flags)
@@ -164,7 +168,7 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates."))
+	E.visible_message(SPAN_DANGER("\The [E] rapidly mutates."))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 

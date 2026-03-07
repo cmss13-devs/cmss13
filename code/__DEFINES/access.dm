@@ -197,7 +197,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 ///All access levels associated with Weyland Yutani
 #define ACCESS_LIST_WY_ALL "Wey-Yu (ALL)"
 
-///All the access levels in the civillian category, excluding Press.
+///All the access levels in the civilian category, excluding Press.
 #define ACCESS_LIST_COLONIAL_ALL "Colonial (ALL)"
 ///Used by the Wey-Yu - Civil Authority Liaison
 #define ACCESS_LIST_CIVIL_LIAISON "Colonial (Liaison)"

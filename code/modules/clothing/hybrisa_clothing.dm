@@ -118,7 +118,7 @@
 
 /obj/item/clothing/under/hybrisa/engineering_utility
 	name = "\improper Weyland-Yutani engineering utility uniform"
-	desc = "A set of Weyland-Yutani engineering utility workers uniform, a orange pair of work slacks and a grey polo-shirt with orange reflecting stripes."
+	desc = "A set of Weyland-Yutani engineering utility workers uniform, an orange pair of work slacks and a grey polo-shirt with orange reflecting stripes."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
@@ -292,23 +292,23 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with an orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_helmet_hybrisa"
 	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	desc = "A basic skull-helm with an orange safety visor fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
 	icon_state = "sec_lead_helmet_hybrisa"
 	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with an orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_brown_helmet_hybrisa"
 	item_state = "sec_brown_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	desc = "A basic skull-helm with an orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
 	icon_state = "sec_medic_helmet_hybrisa"
 	item_state = "sec_medic_helmet_hybrisa"
 
@@ -316,7 +316,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -337,7 +337,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new/riot
 	name = "\improper Police cap"
-	desc = "A dark cap enscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark peaked cap inscribed with the powerful star shaped emblem of the 'Colonial Marshals Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -368,7 +368,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark peaked cap inscribed with the powerful star shaped emblem of the 'Colonial Marshals Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -391,7 +391,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A dark peaked cap inscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -440,7 +440,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/medtech
 	name = "MT-SHIELD-X 525 helmet"
-	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
+	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collaboration with MedTech."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -460,7 +460,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/firefighter
 	name = "HS-SHIELD-X 500 helmet"
-	desc = "The HS-SHIELD-X 500 (Hyperdyne Systems - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in high heat environments and protect the user from smoke inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems."
+	desc = "The HS-SHIELD-X 500 (Hyperdyne Systems - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in high heat environments and protect the user from smoke inhalation. It has a built-in semi-closed breathing system. This helmet was designed by Hyperdyne Systems."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -482,7 +482,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet
 	name = "HS-KM-SHIELD-X 550 helmet"
-	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collabaration with Kelland-Mining."
+	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built-in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collaboration with Kelland-Mining."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -508,7 +508,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
 	name = "HS-PG-SHIELD-X 575 helmet"
-	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza-Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza-Galaxy."
+	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza-Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built-in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza-Galaxy."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -667,10 +667,10 @@
 	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/proc/flamer_fire_crossed_callback(mob/living/target, datum/reagent/fire_reagent)
 	SIGNAL_HANDLER
 
-	if(R.fire_penetrating)
+	if(fire_reagent?.fire_penetrating)
 		return
 
 	return COMPONENT_NO_IGNITE
@@ -886,7 +886,7 @@
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
-	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
@@ -1245,7 +1245,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1266,7 +1266,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1287,7 +1287,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',

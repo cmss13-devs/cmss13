@@ -350,7 +350,7 @@
 	set src in usr
 
 	if(!(flags_inventory & ALLOWINTERNALS))
-		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		to_chat(usr, SPAN_NOTICE("This mask doesn't support internals."))
 		return
 
 	if(!iscarbon(usr))
@@ -527,12 +527,24 @@
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
 				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+
+	if(LAZYLEN(accessories))
+		for(var/obj/item/clothing/accessory/usable in accessories)
+			if(LAZYLEN(usable.actions))
+				for(var/datum/action/action in usable.actions)
+					action.give_to(user)
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
 	if(is_valid_slot(slot, TRUE))
 		for(var/trait in clothing_traits)
 			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+
+	if(LAZYLEN(accessories))
+		for(var/obj/item/clothing/accessory/usable in accessories)
+			if(LAZYLEN(usable.actions))
+				for(var/datum/action/action in usable.actions)
+					action.remove_from(user)
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

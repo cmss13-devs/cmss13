@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 33
+#define SAVEFILE_VERSION_MAX 35
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,8 +229,39 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 34)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+		updated_from = savefile_version
+
+	if(updated_from)
+		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
+
+/datum/preferences/proc/handle_logged_in()
+	SIGNAL_HANDLER
+
+	handle_controlstyle_update(updated_from)
+
+/// Displays savefile updates that require user input
+/datum/preferences/proc/handle_controlstyle_update(savefile_version)
+	set waitfor = FALSE
+
+	if(savefile_version == /datum/preferences::savefile_version)
+		return
+
+	if(savefile_version < 34)
+		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
+		if(question == "Yes")
+			LAZYADD(key_bindings["Tab"], /datum/keybinding/client/switch_input::name)
+			owner?.update_special_keybinds()
+			save_preferences()
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -311,6 +342,7 @@
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
+	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -320,6 +352,7 @@
 	S["playtime_perks"] >> playtime_perks
 	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
+	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
@@ -333,6 +366,7 @@
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
+	S["pred_use_unique"] >> predator_use_unique
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_invis_sound"] >> predator_invisibility_sound
 	S["pred_mask_type"] >> predator_mask_type
@@ -379,6 +413,8 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	S["custom_keybinds"] >> custom_keybinds
+
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
 	S["window_scale"] >> window_scale
@@ -422,6 +458,8 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	load_custom_keybinds()
+
 	if(toggles_chat & SHOW_TYPING)
 		owner.typing_indicators = FALSE
 	else
@@ -460,9 +498,11 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
+	CMTV_toggle_optout = sanitize_integer(CMTV_toggle_optout, 0, 1, 0)
 	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
+	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
@@ -479,6 +519,7 @@
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
+	predator_use_unique = sanitize_inlist(predator_use_unique, PRED_UNIQUES, initial(predator_use_unique))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_invisibility_sound = sanitize_inlist(predator_invisibility_sound, PRED_INVIS_SOUNDS, initial(predator_invisibility_sound))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
@@ -528,9 +569,15 @@
 	chem_presets = sanitize_islist(chem_presets, list())
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+
+	if(!islist(custom_keybinds))
+		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)
+
+	if(length(custom_keybinds) != KEYBIND_CUSTOM_MAX)
+		custom_keybinds.len = KEYBIND_CUSTOM_MAX
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -576,6 +623,7 @@
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
+	S["CMTV_toggle_optout"] << CMTV_toggle_optout
 
 	S["human_name_ban"] << human_name_ban
 
@@ -586,6 +634,7 @@
 	S["playtime_perks"] << playtime_perks
 	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
+	S["show_minimap_ceiling_protection"] << show_minimap_ceiling_protection
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
@@ -599,6 +648,7 @@
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
+	S["pred_use_unique"] << predator_use_unique
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_invis_sound"] << predator_invisibility_sound
 	S["pred_mask_type"] << predator_mask_type
@@ -660,6 +710,8 @@
 	S["show_cooldown_messages"] << show_cooldown_messages
 
 	S["chem_presets"] << chem_presets
+
+	S["custom_keybinds"] << custom_keybinds
 
 	return TRUE
 
@@ -983,6 +1035,21 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+/datum/preferences/proc/load_custom_keybinds()
+	key_to_custom_keybind = list()
+
+	for(var/keybind in custom_keybinds)
+		if(!("keybinding" in keybind))
+			continue // unbound
+
+		var/datum/keybinding/custom/custom_key = new
+		custom_key.keybind_type = keybind["type"]
+		custom_key.contents = keybind["contents"]
+		custom_key.when_human = keybind["when_human"]
+		custom_key.when_xeno = keybind["when_xeno"]
+
+		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

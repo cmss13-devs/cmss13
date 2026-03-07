@@ -86,7 +86,7 @@
 				return FALSE
 		else
 			if(ammo_count < 1)
-				to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+				to_chat(user, SPAN_WARNING("\The [src] has run out of ammo, so you discard it!"))
 				qdel(src)
 				return FALSE
 
@@ -128,7 +128,7 @@
 		if(PC)
 			PC.loaded = null
 			PC.update_icon()
-		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+		to_chat(user, SPAN_WARNING("\The [src] has run out of ammo, so you discard it!"))
 		forceMove(get_turf(loc))
 		qdel(src)
 	if(target.ammo_count >= target.max_ammo_count)
@@ -146,7 +146,7 @@
 		if(PC)
 			PC.loaded = null
 			PC.update_icon()
-		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+		to_chat(user, SPAN_WARNING("\The [src] has run out of ammo, so you discard it!"))
 		forceMove(get_turf(loc))
 		qdel(src)
 	else
@@ -162,7 +162,7 @@
 /obj/structure/ship_ammo/heavygun
 	name = "\improper PGU-100 Multi-Purpose 30mm ammo crate"
 	icon_state = "30mm_crate"
-	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
 	ammo_count = 400
 	max_ammo_count = 400
@@ -232,7 +232,7 @@
 /obj/structure/ship_ammo/laser_battery
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
-	desc = "A high-capacity laser battery used to power laser beam weapons.  Can be loaded into the LWU-6B Laser Cannon."
+	desc = "A high-capacity laser battery used to power laser beam weapons. Can be loaded into the LWU-6B Laser Cannon."
 	travelling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100
@@ -440,11 +440,11 @@
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 	/// Special structures it needs to break with drop pod
-	var/list/breakeable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
+	var/list/breakable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 
 /obj/structure/ship_ammo/sentry/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
-	droppod.special_structures_to_damage = breakeable_structures
+	droppod.special_structures_to_damage = breakable_structures
 	droppod.special_structure_damage = 500
 	droppod.drop_time = 5 SECONDS
 	droppod.launch(impact)

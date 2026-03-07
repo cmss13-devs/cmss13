@@ -1,4 +1,0 @@
-author: "Labeo0"
-delete-after: True
-changes:
-  - bugfix: "meson scanner vision effect is now removed when it's unequipped"

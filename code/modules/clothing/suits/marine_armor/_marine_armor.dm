@@ -283,6 +283,18 @@
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/army
+	name = "\improper Personal Body Armor System"
+	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
+	icon_state = "army_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	specialty = "Personal Body Armor System"
+	storage_slots = 3
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -605,6 +617,23 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/army
+	name = "\improper Synthetic Body Armor System"
+	desc = "This is a variant of the Personnel Body Armor System, it has been modified extensively to be used by US Army Synthetics. It offers light protection, maximum mobility and more internal storage than its USCM counterpart. The cost of this item could outfit an entire squad of USCM Marines, but you are worth this cost."
+	icon_state = "VL_syn_army"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	armor_melee = CLOTHING_ARMOR_VERYLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 4
 
 /obj/item/clothing/suit/storage/marine/light/recon
 	name = "M3-R pattern light armor"

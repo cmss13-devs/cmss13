@@ -43,7 +43,7 @@
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
 /// Should we use the initial icon for display? Mostly used by overlay only objects
-#define HTML_USE_INITAL_ICON (1<<18)
+#define HTML_USE_INITIAL_ICON (1<<18)
 // Whether or not the object sees emotes
 #define USES_SEEING (1<<19)
 // Can be quick drawn
@@ -84,7 +84,7 @@
 #define NO_CRYO_STORE (1<<9)
 /// For backpacks if they should have unique layering functions
 #define ITEM_OVERRIDE_NORTHFACE (1<<10)
-/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
+/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shrapnel out of other people.
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
@@ -496,13 +496,13 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_TROPHY "Trophy"
 #define ACCESSORY_SLOT_YAUTJA_MASK "Yautja Mask"
 #define ACCESSORY_SLOT_MASK "Mask"
+#define ACCESSORY_SLOT_HELM_C "Helmet cover"
 
 // Accessory slots that are currently unused
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L "Leg armor"
 #define ACCESSORY_SLOT_ARMOR_S "Armor storage"
 #define ACCESSORY_SLOT_ARMOR_M "Misc armor"
-#define ACCESSORY_SLOT_HELM_C "Helmet cover"
 
 //=================================================
 
@@ -564,7 +564,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3)
 /// Whether this storage object has its items drawn (versus just opening it)
 #define STORAGE_USING_DRAWING_METHOD (1<<4)
-/// Wether the storage object can have items in it's leftmost slot be drawn
+/// Wether the storage object can have items in its leftmost slot be drawn
 #define STORAGE_USING_FIFO_DRAWING (1<<5)
 /// Whether you can click to empty an item
 #define STORAGE_CLICK_EMPTY (1<<6)

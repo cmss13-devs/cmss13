@@ -157,3 +157,21 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	flags_inventory = CANTSTRIP|NOSLIPPING
 	unacidable = TRUE
+
+/obj/item/clothing/shoes/footwrap_sandals
+	name = "foot wrapped sandals"
+	desc = "typical soldier footwear worn during old ancient times."
+	icon_state = "footwrap_sandals"
+	item_state = "footwrap_sandals"
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/clothing/feet.dmi'
+	)
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_inventory = NOSLIPPING

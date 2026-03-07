@@ -97,7 +97,7 @@
 					dat += "\n<A href='byond://?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='byond://?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[src];choice=Return'>Back</A><BR>"
 				if(4.0)
 					if(!length(Perp))
-						dat += "ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
+						dat += "ERROR. String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 					else
 						dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">

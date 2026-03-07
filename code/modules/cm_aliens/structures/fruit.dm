@@ -129,7 +129,7 @@
 			finish_consume(recipient)
 
 /obj/effect/alien/resin/fruit/proc/finish_consume(mob/living/carbon/xenomorph/recipient)
-	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
+	playsound(loc, 'sound/voice/xeno/alien_drool1.ogg', 50, 1)
 	mature = FALSE
 	picked = TRUE
 	recipient.clear_debuffs() // all froots clear debuffs

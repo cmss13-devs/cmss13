@@ -24,7 +24,7 @@
 	carrier.recalculate_pheromones()
 
 	if(carrier.huggers_cur)
-		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
+		playsound(carrier.loc, 'sound/voice/xeno/alien_facehugger_dies.ogg', 25, TRUE)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
 	carrier.update_hugger_overlays()
@@ -122,7 +122,7 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
-			
+
 #undef EGGSAC_OFF_WEED_EGGCAP
 #undef EGGSAC_EGG_SUSTAIN_DISTANCE
 

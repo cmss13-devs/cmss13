@@ -84,7 +84,7 @@
 	visible_message(SPAN_WARNING("<b>[src]</b> leaps at [T]!"))
 	var/target = get_step(get_turf(T), get_dir(src, T))
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
-	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
+	playsound(loc, 'sound/voice/misc/shriek1.ogg', 25, 1)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_leap), T), 5)
 

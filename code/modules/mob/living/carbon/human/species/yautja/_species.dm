@@ -21,7 +21,7 @@
 	stamina_type = /datum/stamina/none
 	blood_color = BLOOD_COLOR_YAUTJA
 	flesh_color = "#907E4A"
-	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
+	speech_sounds = list('sound/voice/pred/pred_click1.ogg', 'sound/voice/pred/pred_click2.ogg')
 	speech_chance = 100
 	death_message = "lets out a final bellowing cry, falling motionless and lifeless soon after..."
 	death_sound = "pred_death"

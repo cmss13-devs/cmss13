@@ -99,7 +99,7 @@
 	if (spamcheck)
 		return
 
-	playsound(get_turf(src), 'sound/voice/halt.ogg', 25, 1, vary = 0)
+	playsound(get_turf(src), 'sound/voice/misc/halt.ogg', 25, 1, vary = 0)
 	user.show_message(SPAN_WARNING("[user]'s [name] rasps, \"Halt! Security!\""), SHOW_MESSAGE_AUDIBLE)
 
 	spamcheck = 1

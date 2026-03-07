@@ -341,7 +341,7 @@
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		SEND_SIGNAL(larva_embryo, COMSIG_MOVABLE_Z_CHANGED, 0, (get_turf(victim)).z)
 		SEND_SIGNAL(larva_embryo, COMSIG_XENO_BURSTED)
-		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+		playsound(larva_embryo, pick('sound/voice/xeno/alien_chestburst.ogg','sound/voice/xeno/alien_chestburst2.ogg'), 25)
 
 		if(larva_embryo.client)
 			larva_embryo.set_lighting_alpha_from_prefs(larva_embryo.client)

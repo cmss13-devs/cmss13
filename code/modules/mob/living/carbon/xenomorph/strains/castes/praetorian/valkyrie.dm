@@ -367,7 +367,7 @@
 		return
 
 	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
-	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
+	playsound(valkyrie_flight, 'sound/voice/xeno/xenos_roaring.ogg', 125)
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
 		if(!allied_xenomorphs.ally_of_hivenumber(valkyrie_flight.hivenumber))
 			continue

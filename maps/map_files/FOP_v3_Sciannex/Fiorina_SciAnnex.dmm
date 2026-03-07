@@ -386,6 +386,10 @@
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
+"abr" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/oob)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -37209,7 +37213,7 @@ yhu
 yhu
 uNM
 baC
-baC
+abr
 tan
 ble
 hvL

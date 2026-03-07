@@ -170,7 +170,7 @@
 
 
 /**
- * Proc used by stoppable timers to end a cooldown before the time has ran out.
+ * Proc used by stoppable timers to end a cooldown before the time has run out.
  *
  * Arguments:
  * * source - datum storing the cooldown

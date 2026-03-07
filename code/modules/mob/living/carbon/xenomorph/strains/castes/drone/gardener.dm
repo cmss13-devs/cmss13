@@ -77,7 +77,7 @@
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("The are no weeds to plant a fruit within!"))
+		to_chat(xeno, SPAN_WARNING("There are no weeds to plant a fruit within!"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
@@ -99,7 +99,7 @@
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"),
+		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shapes it into a fruit!"),
 		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)

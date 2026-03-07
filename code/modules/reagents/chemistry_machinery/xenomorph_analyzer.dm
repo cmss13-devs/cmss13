@@ -1,6 +1,6 @@
 /obj/structure/machinery/xenoanalyzer
 	name = "Biomass Analyzer"
-	desc = "Analyzer of biological material which processes valuable matter into even more valueble data."
+	desc = "Analyzer of biological material which processes valuable matter into even more valuable data."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
@@ -53,7 +53,7 @@
 			to_chat(user, SPAN_WARNING("Organ slot is already full!"))
 			return
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interupted!"))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
 			return
 		if(!user.drop_inv_item_to_loc(attacked_item, src))
 			return
@@ -68,7 +68,7 @@
 			to_chat(user, SPAN_WARNING("You cannot recycle this type of plate."))
 			return
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interupted!"))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
 			return
 		to_chat(user, SPAN_NOTICE("You recycle [attacked_item]"))
 		biomass_points += plate.recyclable_value

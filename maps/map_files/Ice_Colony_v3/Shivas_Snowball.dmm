@@ -3447,7 +3447,7 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "apT" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "casing_5"
 	},
 /turf/open/floor/shiva/green/northeast,

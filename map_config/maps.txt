@@ -66,5 +66,8 @@ endmap
 map tyrargo_rift
 endmap
 
+map white_antre_research_facility
+endmap
+
 map whiskey_outpost_v2
 endmap

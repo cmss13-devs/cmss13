@@ -496,6 +496,7 @@
 	w_class = SIZE_SMALL
 	COOLDOWN_DECLARE(last_hug_time)
 	black_market_value = 10
+	var/register_attempted
 
 /obj/item/toy/plush/attack_self(mob/user)
 	..()
@@ -615,13 +616,35 @@
 
 /obj/item/toy/plush/random_plushie/pickup(mob/user, silent)
 	. = ..()
-	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
+
+/obj/item/toy/plush/random_plushie/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		if(ishuman(inventory.loc))
+			human_user = inventory.loc
+		else if(ishuman(inventory.loc?.loc))
+			human_user = inventory.loc.loc
+		else if(ishuman(inventory.loc?.loc?.loc))
+			human_user = inventory.loc.loc.loc
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
+
+/obj/item/toy/plush/random_plushie/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
 
 ///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
 /obj/item/toy/plush/random_plushie/proc/create_plushie(datum/source)
 	SIGNAL_HANDLER
 	if(source)
-		UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+		UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/turf/spawn_location = get_turf(src)
 	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
 	var/random_plushie = pick(plush_list_variety)

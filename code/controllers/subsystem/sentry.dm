@@ -11,8 +11,6 @@ SUBSYSTEM_DEF(sentry)
 	var/static/list/characters = splittext("abcdef012345679", "")
 	var/list/hashed_context = list()
 
-	var/static/regex/protected_datums
-
 /datum/controller/subsystem/sentry/Initialize()
 	. = ..()
 	var/config_dsn = DSN_CONFIG
@@ -21,8 +19,6 @@ SUBSYSTEM_DEF(sentry)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
-	if(length(GLOB.protected_sentry_datums))
-		protected_datums = regex("([GLOB.protected_sentry_datums.Join(")|(")])", "g")
 
 	return SS_INIT_SUCCESS
 
@@ -85,8 +81,10 @@ SUBSYSTEM_DEF(sentry)
 			if(proc_path.type in GLOB.protected_sentry_procs)
 				censor_args = TRUE
 
-			if(protected_datums.Find(proc_path.type))
-				censor_args = TRUE
+			for(var/protected in GLOB.protected_sentry_datums)
+				if(findtext(proc_path.type, protected))
+					censor_args = TRUE
+					break
 
 			var/to_add = list(
 				"filename" = called.file,

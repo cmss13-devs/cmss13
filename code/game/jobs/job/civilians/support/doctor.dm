@@ -71,6 +71,8 @@ AddTimelock(/datum/job/civilian/doctor, list(
 /datum/job/civilian/doctor/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_officers[JOB_DOCTOR] -= M
+	if(!length(GLOB.marine_leaders[JOB_DOCTOR]))
+		qdel(GLOB.marine_leaders[JOB_DOCTOR])
 
 /obj/effect/landmark/start/doctor
 	name = JOB_DOCTOR

@@ -287,6 +287,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
 	)
 
 	var/dat = ""
@@ -399,6 +400,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("You will attempt to catch the ejected bullet when cocking a gun."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
+	prefs.save_preferences()
+
+/// Toggles whether wielding a gun too early queues the action
+/client/proc/toggle_wield_assist()
+	prefs.toggle_prefs ^= TOGGLE_WIELD_ASSIST
+	if(prefs.toggle_prefs & TOGGLE_WIELD_ASSIST)
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will now queue the action."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will no longer queue the action."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
@@ -648,6 +658,30 @@ CLIENT_VERB(toggle_adaptive_zooming)
 			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now disabled."))
 			adaptive_zoom()
 	prefs.save_preferences()
+
+CLIENT_VERB(toggle_minimap_ceiling_protection)
+	set name = "Toggle Minimap Ceiling Overlay"
+	set category = "Preferences.UI"
+	set desc = "Toggle the display of ceiling protection colorcode on minimaps."
+
+	if(!mob)
+		return
+
+	// Check cooldown
+	if(!COOLDOWN_FINISHED(src, ceiling_protection_toggle_cooldown))
+		to_chat(mob, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(src, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
+		return
+
+	prefs.show_minimap_ceiling_protection = !prefs.show_minimap_ceiling_protection
+
+	// Set cooldown
+	COOLDOWN_START(src, ceiling_protection_toggle_cooldown, 2 SECONDS)
+	prefs.save_preferences()
+	to_chat(mob, SPAN_NOTICE("Ceiling protection overlay [prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
+
+	// Refresh minimaps for this client
+	for(var/atom/movable/screen/minimap/mini_map in screen)
+		mini_map.update_ceiling_overlay(src)
 
 //------------ GHOST PREFERENCES ---------------------------------
 

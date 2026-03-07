@@ -281,7 +281,7 @@
 
 /obj/item/storage/pouch/firstaid/hunted
 	name = "old pouch"
-	desc = "A general-purpose pouch used to carry neccessary survival items."
+	desc = "A general-purpose pouch used to carry necessary survival items."
 	icon_state = "survival"
 	storage_slots = 5
 	can_hold = list(
@@ -604,7 +604,7 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
 	name = "smartgun drum pouch"
-	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
+	desc = "A heavy pouch designed for carrying a surplus of smartgun drums."
 	icon_state = "wy_sgdrums_ammo"
 	storage_slots = 3
 	can_hold = list(
@@ -1118,11 +1118,11 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()

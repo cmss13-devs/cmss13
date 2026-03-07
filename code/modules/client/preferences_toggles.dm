@@ -587,7 +587,7 @@ CLIENT_VERB(toggle_custom_cursors)
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor", "Enable Ability Cursor", "Disable Ability Cursor"))
 	if(!result)
 		return
 	switch(result)
@@ -614,6 +614,15 @@ CLIENT_VERB(toggle_custom_cursors)
 		if("No")
 			prefs.custom_cursors = FALSE
 			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			mouse_pointer_icon = initial(mouse_pointer_icon)
+			prefs.save_preferences()
+		if("Enable Ability Cursor")
+			prefs.custom_cursors = TRUE
+			to_chat(src, SPAN_NOTICE("Your ability cursor will now be visible."))
+			prefs.save_preferences()
+		if("Disable Ability Cursor")
+			prefs.custom_cursors = FALSE
+			to_chat(src, SPAN_NOTICE("Your ability cursor will no longer be visible."))
 			mouse_pointer_icon = initial(mouse_pointer_icon)
 			prefs.save_preferences()
 		if("Enable Main Cursor")

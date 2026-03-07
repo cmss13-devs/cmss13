@@ -25,9 +25,23 @@
 	user.adminhelp()
 	return TRUE
 
+/datum/keybinding/client/mentor_help
+	hotkey_keys = list("F2")
+	classic_keys = list("F2")
+	name = "mentor_help"
+	full_name = "Mentor Help"
+	description = "Ask a Mentor for help."
+	keybind_signal = COMSIG_KB_CLIENT_MENTORHELP_DOWN
+
+/datum/keybinding/client/mentor_help/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mentorhelp()
+	return TRUE
 
 /datum/keybinding/client/screenshot
-	hotkey_keys = list("F2")
+	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "screenshot"
 	full_name = "Screenshot"

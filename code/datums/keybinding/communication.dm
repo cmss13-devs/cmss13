@@ -10,7 +10,7 @@
 
 /datum/keybinding/client/communication/ooc
 	hotkey_keys = list("O")
-	classic_keys = list("F2")
+	classic_keys = list("O")
 	name = OOC_CHANNEL
 	full_name = "Out Of Character Say (OOC)"
 	keybind_signal = COMSIG_KB_CLIENT_OOC_DOWN

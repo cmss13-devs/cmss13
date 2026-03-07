@@ -9782,6 +9782,19 @@
 	},
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
+"aBU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/firetruck{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
 "aBV" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -38678,6 +38691,11 @@
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
+"cjJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
 "cjK" = (
 /turf/open/floor/corsat/purplewhite,
 /area/point_loma/airbase/interior/research)
@@ -47010,8 +47028,59 @@
 "cKV" = (
 /turf/open/floor/shiva/yellow/southwest,
 /area/point_loma/airbase/interior/fire_station)
+"cKW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
 "cKX" = (
 /turf/open/floor/shiva/yellow/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cKY" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cKZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLa" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/point_loma/airbase/interior/fire_station)
+"cLb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/interior/fire_station)
 "cLc" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -47133,6 +47202,9 @@
 	pixel_y = 2;
 	pixel_x = -1
 	},
+/obj/structure/prop/hybrisa/vehicles/firetruck{
+	dir = 4
+	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
 "cLA" = (
@@ -47176,10 +47248,6 @@
 /obj/structure/prop/static_tank/water,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
-"cLD" = (
-/obj/structure/prop/hybrisa/vehicles/firetruck,
-/turf/open/floor/shiva/north,
-/area/point_loma/airbase/interior/fire_station)
 "cLE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -47209,15 +47277,6 @@
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
 "cLJ" = (
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
-/area/point_loma/airbase/interior/fire_station)
-"cLK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_y = 1
-	},
-/obj/structure/prop/hybrisa/vehicles/firetruck,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/interior/fire_station)
@@ -47310,34 +47369,9 @@
 /area/point_loma/airbase/interior/fire_station)
 "cLT" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
-/area/point_loma/airbase/interior/fire_station)
-"cLU" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
-/area/point_loma/airbase/interior/fire_station)
-"cLV" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_y = 1
-	},
-/obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/interior/fire_station)
@@ -147071,7 +147105,7 @@ cLp
 cLS
 cLM
 cLI
-cLD
+cLp
 cLp
 cLu
 cLq
@@ -147247,9 +147281,9 @@ ajF
 ajF
 ajF
 bST
-cLp
-cLM
-cLo
+cKZ
+cLN
+aBU
 cLT
 cLN
 cLE
@@ -147429,10 +147463,10 @@ ajF
 cjm
 ajF
 bST
-cLo
-cLM
-cLo
-cLU
+cLa
+cLO
+cjJ
+cLJ
 cLO
 cLJ
 cLF
@@ -147611,12 +147645,12 @@ ajF
 ajF
 ajF
 bST
-cLo
-cLM
-cLo
-cLV
+cLb
+cKY
+cKW
+cLG
 cLP
-cLK
+cLG
 cLG
 cLB
 cLx
@@ -148343,7 +148377,7 @@ bPH
 cjm
 ajF
 ajF
-cji
+cts
 bPH
 bPH
 aLe
@@ -148525,8 +148559,8 @@ bPH
 ajF
 ajF
 ajF
+cji
 bPH
-cts
 cjl
 aLe
 aLe

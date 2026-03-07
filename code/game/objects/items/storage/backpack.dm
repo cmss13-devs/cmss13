@@ -617,11 +617,12 @@
 	desc = "A specialized backpack worn by USCM hospital corpsmen. Features an internal housing for an MS-22 Large Reagent Tank, used to refill pressurized canisters and smart refill tanks in the field."
 	icon_state = "marinepack_chem"
 	item_state = "marinepack_chem"
-	var/obj/item/reagent_container/glass/large_reagent_tank/internal_tank = null
+	item_state_slots = list(WEAR_BACK = "marinepack_chem")
+	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
 
 /obj/item/storage/backpack/marine/medic/chempack/Initialize()
 	. = ..()
-	internal_tank = new /obj/item/reagent_container/glass/large_reagent_tank()
+	internal_tank = new /obj/item/reagent_container/glass/minitank/large()
 	internal_tank.moveToNullspace()
 	internal_tank.owner_pack = src
 
@@ -633,12 +634,12 @@
 	return ..()
 
 /obj/item/storage/backpack/marine/medic/chempack/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/reagent_container/glass/large_reagent_tank))
+	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
 		if(internal_tank)
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
 		internal_tank = W
-		var/obj/item/reagent_container/glass/large_reagent_tank/tank = W
+		var/obj/item/reagent_container/glass/minitank/large/tank = W
 		tank.owner_pack = src
 		user.drop_inv_item_on_ground(W)
 		W.moveToNullspace()
@@ -675,7 +676,7 @@
 	if(!internal_tank)
 		to_chat(usr, SPAN_WARNING("There's no tank installed in [src]."))
 		return
-	var/obj/item/reagent_container/glass/large_reagent_tank/tank = internal_tank
+	var/obj/item/reagent_container/glass/minitank/large/tank = internal_tank
 	internal_tank = null
 	tank.owner_pack = null
 	tank.forceMove(usr.loc)
@@ -693,10 +694,18 @@
 /obj/item/storage/backpack/marine/medic/chempack/update_icon()
 	if(!internal_tank)
 		icon_state = "marinepack_chem_notank"
+		item_state_slots = list(WEAR_BACK = "marinepack_medic")
 		. = ..()
+		if(loc && isliving(loc))
+			var/mob/living/M = loc
+			M.update_inv_back()
 		return
 	icon_state = "marinepack_chem"
+	item_state_slots = list(WEAR_BACK = "marinepack_chem")
 	. = ..()
+	if(loc && isliving(loc))
+		var/mob/living/M = loc
+		M.update_inv_back()
 	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
 		return
 	var/image/filling
@@ -789,11 +798,11 @@
 	icon_state = "marinesatch_chem"
 	item_state = "marinesatch_chem"
 	item_state_slots = list(WEAR_BACK = "marinesatch_chem")
-	var/obj/item/reagent_container/glass/large_reagent_tank/internal_tank = null
+	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Initialize()
 	. = ..()
-	internal_tank = new /obj/item/reagent_container/glass/large_reagent_tank()
+	internal_tank = new /obj/item/reagent_container/glass/minitank/large()
 	internal_tank.moveToNullspace()
 	internal_tank.owner_pack = src
 	update_icon()
@@ -806,12 +815,12 @@
 	return ..()
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/reagent_container/glass/large_reagent_tank))
+	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
 		if(internal_tank)
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
 		internal_tank = W
-		var/obj/item/reagent_container/glass/large_reagent_tank/tank = W
+		var/obj/item/reagent_container/glass/minitank/large/tank = W
 		tank.owner_pack = src
 		user.drop_inv_item_on_ground(W)
 		W.moveToNullspace()
@@ -849,7 +858,7 @@
 	if(!internal_tank)
 		to_chat(usr, SPAN_WARNING("There's no tank installed in [src]."))
 		return
-	var/obj/item/reagent_container/glass/large_reagent_tank/tank = internal_tank
+	var/obj/item/reagent_container/glass/minitank/large/tank = internal_tank
 	internal_tank = null
 	tank.owner_pack = null
 	tank.forceMove(usr.loc)

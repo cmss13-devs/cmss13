@@ -599,6 +599,22 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/verb/flush_autoinjector()
+	set category = "Object"
+	set name = "Flush Autoinjector"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+	if(!reagents.total_volume)
+		to_chat(usr, SPAN_WARNING("[src] is already empty!"))
+		return
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and empty [src]'s contents!"))
+	reagents.clear_reagents()
+	uses_left = 0
+	update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 	name = "30u Reagent Pouch Autoinjector"
 	volume = 180

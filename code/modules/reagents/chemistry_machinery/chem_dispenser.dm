@@ -285,7 +285,7 @@
 	whitelisted_containers = list(
 		/obj/item/reagent_container/glass/pressurized_canister,
 		/obj/item/reagent_container/glass/minitank, //MS-11 Smart Refill Tank
-		/obj/item/reagent_container/glass/large_reagent_tank //MS-22 Large Reagent Tank
+		/obj/item/reagent_container/glass/minitank/large //MS-22 Large Reagent Tank
 	)
 	dispensable_reagents = list(
 		"bicaridine",

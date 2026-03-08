@@ -737,8 +737,11 @@ SUBSYSTEM_DEF(hijack)
 	// Place the crash template
 	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
 	var/datum/map_template/template = SSmapping.map_templates[ship_map_config?.ground_crash_template_name]
+	var/time = world.timeofday
 	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=cordon_type, crop_within_border=1, expand_type=border_type, keep_within_ztrait=TRUE))
 		stack_trace("Hijack crash template '[ship_map_config?.ground_crash_template_name]' failed to load!")
+	else
+		log_debug("Crash template '[ship_map_config?.ground_crash_template_name]' load took [(world.timeofday - time) / 10]s")
 
 	// Determine difference between the templates to offset
 	var/list/ship_map_bounds = SSmapping.load_group_bounds[ship_map_config?.map_name]
@@ -769,9 +772,11 @@ SUBSYSTEM_DEF(hijack)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	// Update shipside space turfs to open_space
+	time = world.timeofday
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		set_ftl_turf_open(space_turf)
 		CHECK_TICK
+	log_debug("set_ftl_turf_open took [(world.timeofday - time) / 10]s")
 	crashed = TRUE
 
 	shakeship(
@@ -780,7 +785,9 @@ SUBSYSTEM_DEF(hijack)
 		drop = TRUE,
 	)
 	explode_pumps()
+	time = world.timeofday
 	crack_open_ship(SAFEPICK(ship_map_config?.crack_open_horizontal_positions))
+	log_debug("crack_open_ship took [(world.timeofday - time) / 10]s")
 	explode_apcs(50)
 
 	if(!admin_sd_blocked)

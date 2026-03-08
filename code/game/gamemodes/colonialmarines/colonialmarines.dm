@@ -643,7 +643,7 @@
 			continue
 		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
 			var/turf/queen_turf = get_turf(hive.living_xeno_queen)
-			if(queen_turf.z in z_levels)
+			if(queen_turf?.z in z_levels)
 				//Some Queen is alive, we shouldn't end the game yet
 				.[2]++
 	return .

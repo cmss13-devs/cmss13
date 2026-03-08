@@ -11407,6 +11407,30 @@
 	},
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/research_facility/research/west)
+"aGH" = (
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/item/paper{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/paper{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/paper{
+	pixel_x = -5
+	},
+/obj/item/trash/eat{
+	pixel_y = -6;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/gm/river/no_overlay/sewage,
+/area/point_loma/research_facility/cave/south_east)
 "aGI" = (
 /obj/structure/machinery/floodlight,
 /turf/open/new_varadero,
@@ -26730,6 +26754,16 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
+"bxU" = (
+/obj/item/paper{
+	pixel_x = 7;
+	pixel_y = -5
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/point_loma/research_facility/cave/south_east)
+"bxV" = (
+/turf/open/gm/river/no_overlay/sewage,
+/area/point_loma/research_facility/cave/south_east)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28546,6 +28580,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
+"bCC" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
+/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "bCD" = (
 /obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
@@ -38737,6 +38776,18 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
+"cjV" = (
+/obj/structure/prop/invuln/overhead_pipe,
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom,
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
@@ -40535,6 +40586,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/reagent_container/food/drinks/bottle/wine,
 /turf/open/floor/strata/fake_wood,
 /area/point_loma/research_facility/command/mess)
 "cpO" = (
@@ -44092,6 +44144,10 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /turf/open_space,
 /area/point_loma/airbase/exterior/crash_site/opening)
+"cBB" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south_east)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
@@ -46287,6 +46343,10 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/cannon)
+"cIt" = (
+/obj/structure/prop/invuln/overhead_pipe,
+/turf/closed/wall/rock/brown,
+/area/point_loma/oob)
 "cIu" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
@@ -46336,6 +46396,12 @@
 "cID" = (
 /turf/open/floor/corsat/red/northeast,
 /area/point_loma/research_facility/super_death_cannon/cannon)
+"cIE" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/snacks/grown/poppy,
+/obj/item/tool/shovel/spade,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
 "cIF" = (
 /obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -47465,6 +47531,187 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/fire_station)
+"cMb" = (
+/obj/structure/bed/bedroll/comfy/green,
+/turf/open/floor/plating/wood_broken2,
+/area/point_loma/research_facility/cave/south)
+"cMc" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/research_facility/cave/south)
+"cMd" = (
+/turf/closed/wall/wood,
+/area/point_loma/research_facility/cave/south)
+"cMe" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_x = -6
+	},
+/obj/item/tool/plantspray/weeds{
+	pixel_x = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMf" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/item/tool/lighter{
+	pixel_x = 5
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/cigarette/weed,
+/turf/open/floor/plating/wood,
+/area/point_loma/research_facility/cave/south)
+"cMg" = (
+/obj/item/stack/sheet/wood/medium_stack,
+/turf/open/floor/wood/wood_broken,
+/area/point_loma/research_facility/cave/south)
+"cMh" = (
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMi" = (
+/obj/structure/machinery/floodlight,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMj" = (
+/obj/item/clothing/mask/cigarette/weed,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMk" = (
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor/plating/wood_broken2,
+/area/point_loma/research_facility/cave/south)
+"cMl" = (
+/obj/item/stack/tile/wood,
+/turf/open/floor/plating/wood,
+/area/point_loma/research_facility/cave/south)
+"cMm" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMn" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMo" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita{
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMp" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMq" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/point_loma/research_facility/cave/south)
+"cMr" = (
+/obj/structure/surface/rack,
+/obj/item/seeds/poppyseed,
+/obj/item/seeds/poppyseed{
+	pixel_x = -5
+	},
+/obj/item/seeds/poppyseed{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMs" = (
+/obj/structure/sign/poster/pinup,
+/turf/closed/wall/wood,
+/area/point_loma/research_facility/cave/south)
+"cMt" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/obj/item/reagent_container/food/snacks/grown/poppy{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/snacks/grown/poppy{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMu" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil,
+/obj/item/reagent_container/food/snacks/grown/poppy,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMv" = (
+/obj/structure/girder/displaced,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMw" = (
+/obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMx" = (
+/obj/item/stack/sheet/metal/med_small_stack,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMy" = (
+/obj/item/clothing/head/welding{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/tool/weldpack/minitank,
+/obj/item/tool/weldingtool/screen{
+	pixel_x = 6
+	},
+/obj/structure/surface/rack,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMz" = (
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/research_facility/cave/south)
+"cMA" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/structure/machinery/light/small/blue,
+/obj/structure/pipes/standard/cap/visible{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/new_varadero,
+/area/point_loma/airbase/mining_colony/exterior/security/south)
+"cMB" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/item/tool/crowbar,
+/obj/item/stack/tile/plasteel{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/mining_colony/exterior/security/south)
 
 (1,1,1) = {"
 aug
@@ -94585,11 +94832,11 @@ bIA
 bIA
 bIA
 bIA
-bIA
-bIA
-bIA
-bIA
-bIA
+cMd
+cMt
+cMr
+cMm
+cMh
 asb
 asb
 asb
@@ -94767,11 +95014,11 @@ bIA
 bIA
 bIA
 bIA
+cMd
+cMp
 bIA
-bIA
-bIA
-bIA
-bIA
+cMn
+cMi
 asb
 asb
 asb
@@ -94949,13 +95196,13 @@ bIA
 bIA
 bIA
 bIA
-bIA
-bIA
+cMd
+cMu
 bZR
-bIA
-bIA
-bIA
-bIA
+cMo
+cMj
+cMe
+cIE
 asb
 asb
 asb
@@ -95131,13 +95378,13 @@ bIA
 bIA
 bIA
 bIA
+cMd
+cMs
+bIA
+cMp
 bIA
 bIA
-bIA
-bIA
-bIA
-bIA
-bIA
+cMb
 asb
 asb
 asb
@@ -95310,16 +95557,16 @@ bIA
 bIA
 bIA
 bIA
+apv
 bIA
 bIA
 bIA
+cMs
 bIA
 bIA
-bIA
-bIA
-bIA
-bIA
-bIA
+cMk
+cMf
+cMc
 asb
 asb
 asb
@@ -95496,11 +95743,11 @@ bIA
 bIA
 bIA
 bIA
+cMd
+cMs
 bIA
-apv
-bIA
-bIA
-bIA
+cMl
+cMg
 bIA
 asb
 asb
@@ -95679,11 +95926,11 @@ bIA
 bIA
 bIA
 bIA
-bIA
-bIA
-bIA
-bIA
-bIA
+cMd
+cMq
+cMd
+cMd
+cMd
 asb
 asb
 asb
@@ -102952,11 +103199,11 @@ bIA
 bIA
 bZR
 bIA
+cMz
+cMx
+cMw
 bIA
-bIA
-bIA
-bIA
-bIA
+cMv
 bIA
 aFt
 bIA
@@ -103135,9 +103382,9 @@ bIA
 bIA
 bIA
 bIA
-bIA
+cMy
 bZT
-bIA
+cMv
 bIA
 bIA
 aFt
@@ -117343,7 +117590,7 @@ asb
 asb
 asb
 asb
-cCL
+bCC
 bIB
 bIB
 bIB
@@ -117524,9 +117771,9 @@ cCL
 asb
 asb
 asb
-asb
-cCL
-bIB
+cIt
+cjV
+aGH
 bIB
 bIB
 bIB
@@ -117707,8 +117954,8 @@ cCL
 asb
 asb
 asb
-cCL
-bIB
+cBB
+bxU
 bIB
 bIB
 bIB
@@ -117889,8 +118136,8 @@ bIB
 cCL
 cCL
 asb
-cCL
 bIB
+bxV
 bIB
 bIB
 cav
@@ -163026,8 +163273,8 @@ bOT
 bOT
 bOT
 btm
-btg
-bsZ
+cMB
+cMA
 bsV
 asb
 asb

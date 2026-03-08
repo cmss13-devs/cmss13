@@ -1088,6 +1088,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/chapel)
+"adx" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "ady" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/corsat/retrosquares,
@@ -33821,6 +33825,9 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
+"bTK" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "bTL" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/burnt_platingdmg3,
@@ -41749,6 +41756,10 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/point_loma/airbase/interior/research)
+"ctC" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "ctD" = (
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/cargo)
@@ -42281,9 +42292,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/interior/cargo/lower)
-"cvi" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cvj" = (
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/new_varadero/alt_concrete/warning/west,
@@ -42305,22 +42313,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/lower)
-"cvn" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/new_varadero,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
-"cvo" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/obj/item/tool/screwdriver{
-	pixel_y = 4;
-	pixel_x = -5
-	},
-/obj/item/device/multitool{
-	pixel_x = 5;
-	pixel_y = -10
-	},
-/turf/open/floor/corsat/squares,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cvp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/science,
@@ -42370,9 +42362,6 @@
 /area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cvD" = (
 /turf/open/new_varadero/alt_concrete/filtration/northeast,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
-"cvE" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cvF" = (
 /turf/open/new_varadero/taupe_concrete/warning,
@@ -43542,6 +43531,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/yellowcorner,
 /area/point_loma/research_facility/hallway/east)
+"cAa" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/new_varadero/taupe_concrete/warning/corner,
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cAb" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
@@ -44244,9 +44237,6 @@
 /obj/item/device/flashlight/flare/on,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
-"cCk" = (
-/turf/open/new_varadero/taupe_concrete/warning/corner/southeast,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cCl" = (
 /obj/effect/decal/cleanable/blood/drip/yautja,
 /turf/open/floor/corsat/squares,
@@ -47083,6 +47073,9 @@
 "cLd" = (
 /turf/open/floor/shiva/yellowcorners/north,
 /area/point_loma/airbase/interior/fire_station)
+"cLe" = (
+/turf/closed/wall/huntership/destructible,
+/area/point_loma/airbase/exterior/crash_site)
 "cLf" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
 /turf/closed/wall/new_varadero/concrete,
@@ -106387,11 +106380,11 @@ asb
 asb
 asb
 asb
-cvi
-cvi
-cvi
-cvi
-cvi
+asb
+asb
+asb
+asb
+asb
 bKU
 bKU
 asb
@@ -106568,11 +106561,11 @@ asb
 asb
 asb
 asb
-cvi
-cvi
-cvi
-cvi
-cvi
+asb
+asb
+asb
+asb
+asb
 asb
 asb
 asb
@@ -106749,13 +106742,13 @@ asb
 asb
 asb
 asb
-cvi
-cvi
-cvi
-cvi
-cvi
-cvi
-cvi
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 asb
 asb
 asb
@@ -106929,15 +106922,15 @@ asb
 asb
 asb
 asb
-cvq
-cvq
-cvq
-cvq
-cvq
-cvq
-cvi
-cvi
-cvi
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 asb
 asb
 asb
@@ -107111,13 +107104,13 @@ asb
 asb
 asb
 asb
-cvq
-cvE
-cvt
-cvt
-cvt
-cvr
-cvn
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 asb
 asb
 asb
@@ -107293,12 +107286,12 @@ asb
 asb
 asb
 asb
-cvq
-cvF
-cvB
-cvy
-cvu
-cvs
+asb
+asb
+asb
+asb
+asb
+bJw
 bMH
 bMH
 bMH
@@ -107475,12 +107468,12 @@ asb
 asb
 asb
 asb
-cvq
-cvF
-cvC
-cvz
-cvv
-cFj
+asb
+asb
+asb
+asb
+asb
+bJw
 aDa
 aCQ
 aCL
@@ -107657,12 +107650,12 @@ asb
 asb
 asb
 asb
-cvq
-cvF
-cvC
-cvq
-cFl
-cvs
+asb
+asb
+asb
+asb
+asb
+bJw
 bKZ
 bKZ
 bKZ
@@ -107839,12 +107832,12 @@ asb
 asb
 asb
 asb
-cvq
-cvF
-cvD
-cvA
-cvw
-cFk
+asb
+asb
+asb
+asb
+asb
+bJw
 cFi
 bKZ
 bKZ
@@ -108021,13 +108014,13 @@ asb
 asb
 asb
 asb
-cvq
-cvG
-cvx
-cvx
-cvx
-cCk
-cvo
+asb
+asb
+asb
+asb
+asb
+bJw
+bJw
 bKZ
 bKZ
 chF
@@ -108203,8 +108196,8 @@ asb
 asb
 asb
 asb
-cvq
-cvq
+asb
+asb
 asb
 asb
 asb
@@ -150814,9 +150807,9 @@ cJc
 cJc
 bTk
 bTk
-atE
-atE
-atE
+cLe
+cLe
+cLe
 bTk
 bSN
 bSN
@@ -150995,11 +150988,11 @@ bxN
 bxN
 bxN
 bxN
-atE
-atE
+cLe
+cLe
 bRG
 bRG
-atE
+cLe
 bxN
 cJd
 bSN
@@ -152085,11 +152078,11 @@ cJh
 cJh
 bxN
 bFi
-atE
-atE
+cLe
+cLe
 bTk
 bTk
-atE
+cLe
 bRG
 bRG
 bSZ
@@ -152272,7 +152265,7 @@ bTU
 bzt
 bDL
 cxb
-atE
+cLe
 bRG
 bTg
 atE
@@ -152449,12 +152442,12 @@ cJy
 cJs
 cJl
 bRG
-atE
+cLe
 cAD
 bTH
 bTC
 bDK
-atE
+cLe
 bRG
 bTg
 bSY
@@ -152631,12 +152624,12 @@ bxN
 bxN
 bxN
 bRG
-atE
+cLe
 cBB
 bTI
 bEc
 cxb
-atE
+cLe
 bRG
 bSZ
 bSZ
@@ -152813,7 +152806,7 @@ bxN
 bSY
 cJm
 bRG
-atE
+cLe
 cAD
 bTH
 bEd
@@ -152995,7 +152988,7 @@ cJo
 cJt
 bRG
 bRG
-atE
+cLe
 cIt
 bTI
 bEe
@@ -153177,7 +153170,7 @@ cJz
 cJu
 bRG
 bRG
-atE
+cLe
 cAD
 bTH
 bEd
@@ -153359,7 +153352,7 @@ cJA
 cJl
 cJn
 bRG
-atE
+cLe
 cIE
 bTI
 bEc
@@ -153724,7 +153717,7 @@ cJh
 bRG
 bRG
 bTk
-atE
+cLe
 bTM
 cmk
 atE
@@ -161404,11 +161397,11 @@ bQd
 bQd
 bQf
 bQf
-aNy
-bQd
-bQd
-bQd
-bQd
+cAa
+cvt
+cvt
+cvt
+cvr
 bZA
 bQd
 bQd
@@ -161586,11 +161579,11 @@ bQd
 bQd
 bYM
 bQf
-bQd
-bQd
-bxv
-bQd
-bQd
+cvF
+cvB
+cvy
+cvu
+cvs
 bQd
 bQd
 bQd
@@ -161768,11 +161761,11 @@ bxv
 bQd
 bQf
 bYM
-bQd
-bQd
-bQd
-bQd
-bQd
+cvF
+cvC
+cvz
+cvv
+cFj
 bQd
 bQd
 bQd
@@ -161950,11 +161943,11 @@ bQd
 bQd
 bQf
 bQf
-bQd
-bQd
-bQd
-bQd
-bQd
+cvF
+cvC
+cvq
+cFl
+cvs
 bQd
 bvq
 bQd
@@ -162132,11 +162125,11 @@ bQd
 bQd
 bQf
 bQf
-bQd
-bQd
-bQd
-bvq
-bQd
+cvF
+cvD
+cvA
+cvw
+cFk
 bQd
 bQd
 asb
@@ -162314,11 +162307,11 @@ bQd
 cgM
 bQf
 bQf
-bQd
-bQd
-bQd
-bQd
-bQd
+cvG
+cvx
+cvx
+cvx
+adx
 bQd
 bQd
 asb
@@ -162496,13 +162489,13 @@ bQd
 bQd
 bQf
 bQf
+bTK
+bTK
+bTK
+bTK
 bQd
 bQd
 bQd
-bQd
-bQd
-bQd
-asb
 asb
 asb
 asb
@@ -162678,14 +162671,14 @@ bQd
 bQd
 bQf
 bQf
-bQd
-bQd
-bQd
-bQd
+bTK
+bTK
+ctC
+bTK
 bQd
 bvq
 bQd
-asb
+bQd
 asb
 asb
 asb
@@ -162860,14 +162853,14 @@ asb
 bQd
 bQf
 bQf
+bTK
+bzI
+bzI
+bzI
 bQd
 bQd
-asb
 bQd
 bQd
-bQd
-bQd
-asb
 asb
 asb
 asb
@@ -163042,8 +163035,8 @@ asb
 asb
 bQf
 bQf
-bQd
-bQd
+bTK
+bzI
 asb
 asb
 bQd

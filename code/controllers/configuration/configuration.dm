@@ -154,7 +154,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 		var/datum/config_entry/E = I
 		if(initial(E.abstract_type) == I)
 			continue
-		var/datum/config_entry/E = new I
+		E = new I
 		var/esname = E.name
 		var/datum/config_entry/test = _entries[esname]
 		if(test)

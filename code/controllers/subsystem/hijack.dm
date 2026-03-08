@@ -385,7 +385,7 @@ SUBSYSTEM_DEF(hijack)
 		return FALSE
 	if(in_ftl)
 		return FALSE
-	if(!crashed && (hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH || hijack_status == HIJACK_OBJECTIVES_FTL_CRASH))
+	if(!crashed && (hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH))
 		return FALSE
 
 	evac_status = EVACUATION_STATUS_INITIATED

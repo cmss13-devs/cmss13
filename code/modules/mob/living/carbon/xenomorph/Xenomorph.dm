@@ -264,6 +264,9 @@
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
 
+	///For custom strain damage states
+	var/damage_state_prefix
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -372,6 +375,7 @@
 	var/hugger_drop_cooldown = 0
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
+
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)

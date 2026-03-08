@@ -53,11 +53,30 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
 
+/obj/item/weapon/gun/revolver/ammo_desc(mob/user)
+	var/dat = ""
+	if(current_mag)
+		if(current_mag.chamber_closed)
+			dat += SPAN_NOTICE("It's closed.<br>")
+		else
+			if(!user || !Adjacent(user))
+				dat += SPAN_NOTICE("It's open.<br>")
+			else
+				var/in_chamber_name
+				if(in_chamber)
+					in_chamber_name = in_chamber.name
+				else if(current_mag.current_rounds > 0)
+					var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
+					if(ammo_path && ammo_path != "empty" && ammo_path != "blank")
+						var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+						if(bullet) in_chamber_name = bullet.name
+
+				dat += SPAN_NOTICE("It's open with <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] loaded[in_chamber_name ? " and has a [SPAN_HELPFUL(in_chamber_name)] ready to fire" : ""].<br>")
+
+	return dat
+
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
-	if(current_mag)
-		var/message = "[current_mag.chamber_closed? "It's closed.": "It's open with [current_mag.current_rounds] round\s loaded."]"
-		. += message
 
 	if(trickster_gun)
 		. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
@@ -66,16 +85,32 @@
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
-/obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
+/obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user, backwards = FALSE)
 	if(current_mag)
-		current_mag.chamber_position = current_mag.chamber_position == 1 ? current_mag.max_rounds : current_mag.chamber_position - 1
+		if(backwards) // theres not going to be any current implementations for this yet, since you already have to juggle ten thousand intents to use a goddamn revolver, so its here until someone can find a use for it, or if someone actually gives a damn about making an ability icon for rotating backwards, or toggling rotation type or w/e - nihi
+			current_mag.chamber_position = current_mag.chamber_position == 1 ? current_mag.max_rounds : current_mag.chamber_position - 1
+		else
+			current_mag.chamber_position = current_mag.chamber_position >= current_mag.max_rounds ? 1 : current_mag.chamber_position + 1
 
 /obj/item/weapon/gun/revolver/proc/spin_cylinder(mob/user)
 	if(current_mag && current_mag.chamber_closed) //We're not spinning while it's open. Could screw up reloading.
-		current_mag.chamber_position = rand(1,current_mag.max_rounds)
-		to_chat(user, SPAN_NOTICE("You spin the cylinder."))
-		playsound(user, cocked_sound, 25, 1)
-		russian_roulette = TRUE //Sets to play RR. Resets when the gun is emptied.
+		if(flags_item & WIELDED)
+			rotate_cylinder(user)
+			to_chat(user, SPAN_NOTICE("You rotate the cylinder of the [src]."))
+			playsound(user, hand_reload_sound, 25, 1)
+			if(!russian_roulette) // look, i know it doesnt make sense given that you have to open the cylinder to actually check the bullet type, but bear with me here... #balance....
+				var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
+				var/bullet_name = "empty"
+				if(ammo_path && ammo_path != "empty" && ammo_path != "blank")
+					var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+					if(bullet)
+						bullet_name = bullet.name
+				user.balloon_alert(user, bullet_name) // this might be funny with some bullet names
+		else
+			current_mag.chamber_position = rand(1,current_mag.max_rounds)
+			to_chat(user, SPAN_NOTICE("You spin the cylinder of the [src]."))
+			playsound(user, cocked_sound, 25, 1)
+			russian_roulette = TRUE //Sets to play RR. Resets when the gun is emptied.
 
 /obj/item/weapon/gun/revolver/proc/perform_tricks(mob/user)
 	var/result = revolver_trick(user)
@@ -131,14 +166,15 @@
 	if(current_mag) // the notes are probably a bit misleading since i modified some of it for mixing bullet type logic - nihi
 		if(istype(magazine, /obj/item/ammo_magazine/handful)) //Looks like we're loading via handful.
 			if(current_mag.chamber_closed)
-				to_chat(user, SPAN_WARNING("You can't load anything when the cylinder is closed!"))
-				return
+				open_cylinder(user)
+
 			if(!current_mag.current_rounds && current_mag.caliber == magazine.caliber) //Make sure nothing's loaded and the calibers match.
 				replace_ammo(user, magazine) //We are going to replace the ammo just in case.
 				current_mag.match_ammo(magazine)
 				var/mag_caliber = magazine.default_ammo
 				if(current_mag.transfer_ammo(magazine,user,1)) //Handful can get deleted, so we can't check through it.
 					add_to_cylinder(user, mag_caliber)
+
 			//If bullets still remain in the gun, we want to check if the actual ammo matches.
 			else if(magazine.caliber == current_mag.caliber) //Ammo calibers match, let's see if they are compatible.
 				var/mag_caliber = magazine.default_ammo
@@ -146,17 +182,20 @@
 					add_to_cylinder(user, mag_caliber)//If the magazine is deleted, we're still fine.
 			else
 				to_chat(user, SPAN_WARNING("[src] is not compatible with that kind of caliber!")) //Not the right kind of ammo.
+
 		else //So if it's not a handful, it's an actual speedloader.
 			if(current_mag.gun_type == magazine.gun_type) //Has to be the same gun type.
 				if(current_mag.chamber_closed) // If the chamber is closed unload it
 					unload(user)
 				var/rounds_to_load = current_mag.max_rounds - current_mag.current_rounds
+
 				if(rounds_to_load > 0 && magazine.current_rounds > 0)
 					var/transferred = current_mag.transfer_ammo(magazine, user, min(rounds_to_load, magazine.current_rounds))
 					if(transferred > 0)
 						for(var/i = 1 to transferred)
 							add_to_cylinder(user, magazine.default_ammo)
 						playsound(user, reload_sound, 25, 1) // Reloading via speedloader.
+
 				if(!current_mag.chamber_closed) // If the chamber is open, we close it
 					unload(user)
 			else
@@ -171,12 +210,12 @@
 			to_chat(user, SPAN_NOTICE("You clear the cylinder of [src]."))
 			current_mag.create_handful(user)
 			empty_cylinder()
-			current_mag.chamber_closed = !current_mag.chamber_closed
+			current_mag.chamber_closed = FALSE
 			russian_roulette = FALSE //Resets the RR variable.
-			playsound(src, chamber_close_sound, 25, 1)
-		else
-			current_mag.chamber_closed = !current_mag.chamber_closed
 			playsound(src, unload_sound, 25, 1)
+		else
+			current_mag.chamber_closed = TRUE
+			playsound(src, chamber_close_sound, 25, 1)
 		update_icon()
 	return
 
@@ -195,8 +234,6 @@
 				in_chamber = create_bullet(GLOB.ammo_list[ammo_path], initial(name))
 				apply_traits(in_chamber)
 				return in_chamber
-		else if(current_mag.chamber_closed)
-			unload(null)
 
 /obj/item/weapon/gun/revolver/load_into_chamber(mob/user)
 	if(ready_in_chamber())
@@ -224,6 +261,13 @@
 		current_mag.chamber_closed = TRUE
 		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
 		playsound(user, chamber_close_sound, 25, 1)
+		update_icon()
+
+/obj/item/weapon/gun/revolver/proc/open_cylinder(mob/user)
+	if(current_mag && current_mag.chamber_closed)
+		current_mag.chamber_closed = FALSE
+		to_chat(user, SPAN_NOTICE("You open the cylinder of [src]."))
+		playsound(user, unload_sound, 25, 1)
 		update_icon()
 
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
@@ -539,7 +583,7 @@
 	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they aren't used and sound awesome
 	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
 	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
-	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
+	cocked_sound = 'sound/weapons/handling/pkd_cock.wav' // gotta change this to something else now that you can rotate the cylinder by a single position
 	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
 	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
 	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
@@ -669,6 +713,7 @@
 	black_market_value = 100
 	var/is_locked = TRUE
 	var/can_change_barrel = TRUE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED|GUN_BATTLEFIELD_EXECUTION
 
 /obj/item/weapon/gun/revolver/mateba/Initialize()
 	. = ..()

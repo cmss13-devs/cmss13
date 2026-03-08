@@ -64,13 +64,14 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
 	name = "\improper A19 HV magazine (10x24mm)"
-	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	desc = "A high-velocity 10x24mm magazine fitted with custom A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_icon = "+a19_band"
 	ammo_band_icon_empty = "+a19_band_e"
+	caliber = "A19"
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 HV incendiary magazine (10x24mm)"

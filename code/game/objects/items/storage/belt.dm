@@ -1567,9 +1567,10 @@
 					return
 				for(var/i = 1 to handfuls)
 					if(length(contents) < storage_slots - 1)
-						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/datum/ammo/ammo_listing = GLOB.ammo_list[ammo_dumping.default_ammo]
+						var/obj/item/ammo_magazine/handful/new_handful = new ammo_listing.handful_type()
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
 						handle_item_insertion(new_handful, TRUE,user)
 						update_icon(-transferred_handfuls)
@@ -2103,6 +2104,7 @@
 		/obj/item/weapon/gun/revolver/mateba,
 		/obj/item/ammo_magazine/revolver/mateba/highimpact,
 		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/handful/revolver,
 	)
 	holster_slots = list(
 		"1" = list(

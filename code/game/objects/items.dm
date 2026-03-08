@@ -303,20 +303,20 @@
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
-			size = "tiny"
+			size = SPAN_GREEN("tiny")
 		if(SIZE_SMALL)
-			size = "small"
+			size = SPAN_CYAN("small")
 		if(SIZE_MEDIUM)
-			size = "normal-sized"
+			size = SPAN_ORANGE("normal-sized")
 		if(SIZE_LARGE)
-			size = "bulky"
+			size = SPAN_DANGER("bulky")
 		if(SIZE_HUGE)
-			size = "huge"
+			size = SPAN_RED("huge")
 		if(SIZE_MASSIVE)
-			size = "massive"
-	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
+			size = SPAN_RED("massive")
+	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] [size]."
 	if(desc)
-		. += desc
+		. += SPAN_INFO(desc)
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 

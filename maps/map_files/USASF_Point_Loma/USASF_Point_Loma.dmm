@@ -921,8 +921,6 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
-/obj/item/snowball,
-/obj/item/stack/snow,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
@@ -11401,11 +11399,6 @@
 	},
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/research_facility/research/west)
-"aGH" = (
-/obj/item/snowball,
-/obj/item/tool/shovel/snow,
-/turf/open/hybrisa/street/asphalt,
-/area/point_loma/airbase/exterior/west)
 "aGI" = (
 /obj/structure/machinery/floodlight,
 /turf/open/new_varadero,
@@ -17874,8 +17867,8 @@
 /area/point_loma/airbase/mining_colony/interior/security)
 "aZo" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/miner,
 /obj/effect/spawner/random/gun/pistol,
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 "aZp" = (
@@ -26729,6 +26722,18 @@
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
+"bxU" = (
+/obj/structure/stairs/perspective{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/research_facility/hallway/central)
+"bxV" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/cargo)
 "bxW" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -38913,9 +38918,8 @@
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/point_loma/airbase/exterior/east)
 "ckH" = (
-/obj/structure/stairs{
-	dir = 8;
-	icon_state = "ramptop"
+/obj/structure/stairs/perspective{
+	dir = 8
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo)
@@ -39504,13 +39508,13 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
-/turf/open_space,
+/turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/upper)
 "cmw" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/turf/open_space,
+/turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/upper)
 "cmx" = (
 /obj/structure/machinery/light{
@@ -109224,7 +109228,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
+bxU
 aeS
 aeS
 aeS
@@ -144339,8 +144343,8 @@ ckW
 bUw
 ctF
 ctF
-ckH
-ckH
+bxV
+bxV
 bUW
 asb
 asb
@@ -145966,7 +145970,7 @@ aJX
 cAN
 bPH
 aZo
-aGH
+aUF
 ajF
 cjm
 bYa

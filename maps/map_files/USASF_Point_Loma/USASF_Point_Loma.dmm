@@ -45954,10 +45954,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
-"cHf" = (
-/obj/structure/prop,
-/turf/open/floor/corsat/box,
-/area/point_loma/airbase/interior/workshop)
 "cHg" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -48526,6 +48522,10 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
+"cPu" = (
+/obj/structure/closet/fireaxecabinet,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/airbase/interior/fire_station)
 
 (1,1,1) = {"
 aug
@@ -148172,7 +148172,7 @@ bRd
 bRd
 bRd
 asb
-bRL
+cPu
 cLo
 cLM
 cLp
@@ -148900,7 +148900,7 @@ bSX
 bSX
 bSX
 bSX
-bRL
+cPu
 cLp
 cLM
 cLp
@@ -158045,7 +158045,7 @@ axB
 apV
 arL
 bdZ
-cHf
+aWP
 akj
 acx
 acx

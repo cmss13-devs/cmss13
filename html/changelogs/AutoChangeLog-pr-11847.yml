@@ -1,4 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - admin: "the adjust job slots verb now allows you to modify roundstart slots as well as latejoin ones."

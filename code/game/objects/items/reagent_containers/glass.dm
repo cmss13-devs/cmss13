@@ -405,17 +405,26 @@
 /obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
 	set name = "Flush Tank"
+	set desc = "Flush the minitank to empty its reagents."
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
 		return
-	if(src.reagents.total_volume == 0)
-		to_chat(usr, SPAN_WARNING("It's already empty!"))
+
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
-	update_icon() // just to be sure
+	update_icon()
 	return
 
 /obj/item/reagent_container/glass/minitank/update_icon()
@@ -741,21 +750,30 @@
 	..()
 
 /obj/item/reagent_container/glass/pressurized_canister/verb/flush_canister()
-	set category = "Weapons"
+	set category = "Object"
 	set name = "Flush Canister"
-	set desc = "Forces the reagent canister to empty its reagents while outside of its pouch."
+	set desc = "Flush the pressurized reagent canister to empty its reagents."
 	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
 	if(reagents.total_volume <= 0)
-		to_chat(usr, SPAN_NOTICE("[src] is empty, already."))
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
 	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
 		return
-	to_chat(usr, SPAN_NOTICE("You flush [src]."))
+
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon()
+	return
+
 
 /obj/item/reagent_container/glass/bucket
 	name = "bucket"

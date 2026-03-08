@@ -1114,7 +1114,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
 	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
@@ -1122,7 +1122,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
 	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
@@ -1288,27 +1288,27 @@
 
 
 
-	var/obj/O = target
-	if(!O.reagents || length(O.reagents.reagent_list) < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	var/obj/container = target
+	if(!container.reagents || length(container.reagents.reagent_list) < 1)
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
-	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	var/amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
 	//Fill our inner reagent canister
-	O.reagents.trans_to(inner, amt_to_remove)
+	container.reagents.trans_to(inner, amt_to_remove)
 
 	//Refill our autoinjector
 	if(length(contents) > 0)
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
-	amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(amt_to_remove)
-		O.reagents.trans_to(inner, amt_to_remove)
+		container.reagents.trans_to(inner, amt_to_remove)
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
@@ -1363,24 +1363,24 @@
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
 	if(inner && inner.reagents && LAZYLEN(inner.reagents.reagent_list))
-		var/datum/reagent/R = inner.reagents.reagent_list[1]
-		. = "[R.name]([R.volume]u)"
+		var/datum/reagent/chemical = inner.reagents.reagent_list[1]
+		. = "[chemical.name]([chemical.volume]u)"
 
 		if(length(inner.reagents.reagent_list) < 2)
 			return
 
 		for(var/i in 2 to length(inner.reagents.reagent_list))
-			R = inner.reagents.reagent_list[i]
+			chemical = inner.reagents.reagent_list[i]
 
-			if(!R)
+			if(!chemical)
 				continue
 
-			. += "; [R.name]([R.volume]u)"
+			. += "; [chemical.name]([chemical.volume]u)"
 	else
 		. = "No reagents"
 
-/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister_in_pouch()
-	set category = "Weapons"
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister()
+	set category = "Object"
 	set name = "Flush Canister In Pouch"
 	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
@@ -1388,21 +1388,25 @@
 		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))
 		return
 	if(inner.reagents.total_volume <= 0)
-		to_chat(usr, SPAN_NOTICE("The canister inside [src] is empty, already!"))
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
 	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [inner]."))
 		return
-	to_chat(usr, SPAN_NOTICE("You flush [inner]."))
+
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [inner]'s contents!"))
 	inner.reagents.clear_reagents()
 	update_icon()
+	return
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
-	set category = "Weapons"
+	set category = "Objects"
 	set name = "Remove Canister"
-	set desc = "Removes the Pressurized Reagent Canister from the pouch."
+	set desc = "Removes the pressurized reagent canister from the pouch."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
@@ -1416,14 +1420,15 @@
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_autoinjector()
-	set category = "Weapons"
-	set name = "Flush Autoinjector"
+	set category = "Object"
+	set name = "Flush Autoinjector In Pouch"
 	set desc = "Forces the autoinjector inside the reagent canister pouch to dump whatever reagents it can into the canister and flush the rest."
 	set src in usr
 
 	for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector as anything in contents)
 		if(!autoinjector)
 			to_chat(usr, SPAN_NOTICE("[src] does not have an autoinjector for you to flush."))
+			return
 		if(!inner) //no tank in pouch, so it acts as flushing an autoinjector in your hand
 			if(autoinjector.reagents.total_volume <= 0)
 				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
@@ -1436,9 +1441,11 @@
 				return
 
 			to_chat(usr, SPAN_NOTICE("You flush [autoinjector] without a canister to dump its contents in."))
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 			autoinjector.reagents.clear_reagents()
 			autoinjector.uses_left = 0
 			update_icon()
+			return
 		else
 			if(autoinjector.reagents.total_volume <= 0)
 				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
@@ -1448,15 +1455,18 @@
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
 				return
+
 			var/amount = autoinjector.reagents.total_volume + inner.reagents.total_volume
 			if(amount > inner.reagents.maximum_volume)
-				to_chat(usr,SPAN_WARNING("You dump whatever of [autoinjector]'s contents you can into [inner] and flush the rest."))
+				to_chat(usr,SPAN_WARNING("Whatever fits into [inner], you dump [autoinjector]'s contents and flush the rest."))
 			else
-				to_chat(usr,SPAN_WARNING("You flush [autoinjector]'s contents into [inner]."))
+				to_chat(usr,SPAN_WARNING("You dump [autoinjector]'s contents into [inner]."))
 
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 			autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
 			autoinjector.uses_left = 0
 			update_icon()
+			return
 
 
 /obj/item/storage/pouch/document

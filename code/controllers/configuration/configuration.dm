@@ -154,7 +154,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 		var/datum/config_entry/E = I
 		if(initial(E.abstract_type) == I)
 			continue
-		E = new I
+		var/datum/config_entry/E = new I
 		var/esname = E.name
 		var/datum/config_entry/test = _entries[esname]
 		if(test)
@@ -163,6 +163,9 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 			continue
 		_entries[esname] = E
 		_entries_by_type[I] = E
+
+		if(E.protection & CONFIG_ENTRY_SENSITIVE)
+			GLOB.protected_config_entries += E
 
 
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)

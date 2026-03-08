@@ -125,6 +125,15 @@ SUBSYSTEM_DEF(sentry)
 		for(var/replacement in GLOB.all_player_cids)
 			event = replacetext(event, replacement, "player computer id")
 
+		for(var/datum/config_entry/protected_entry in GLOB.protected_config_entries)
+			if(islist(protected_entry.config_entry_value))
+				for(var/key, value in protected_entry.config_entry_value)
+					event = replacetext(event, key, "config entry value [protected_entry.type]")
+					if(!isnull(value))
+						event = replacetext(event, value, "config entry value [protected_entry.type]")
+			else
+				event = replacetext(event, protected_entry.config_entry_value, "config entry [protected_entry.type]")
+
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 

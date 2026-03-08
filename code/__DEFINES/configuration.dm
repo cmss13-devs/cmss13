@@ -8,6 +8,7 @@
 //flags
 #define CONFIG_ENTRY_LOCKED (1<<0) //can't edit
 #define CONFIG_ENTRY_HIDDEN (1<<1) //can't see value
+#define CONFIG_ENTRY_SENSITIVE (1<<2) //scrubbed from public logging
 
 #define ON_CONFIG_LOAD(type) \
 ##type/New() { \

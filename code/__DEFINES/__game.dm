@@ -6,7 +6,10 @@
 #define GLOBAL_PROC "magic BS"
 
 //Game defining directives.
-#define MAIN_AI_SYSTEM "ARES v3.2"
+#define MAIN_AI_SYSTEM SSmapping.get_main_ai_name()
+#define MAIN_AI_SYSTEM_DEFAULT "ARES 3.2"
+#define FACTION_MAIN SSmapping.get_main_faction()
+#define FACTION_MAIN_DEFAULT "USCM"
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -47,6 +50,7 @@
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
+#define GAMEMODE_UPP_DISTRESS_SIGNAL "UPP Distress Signal"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130

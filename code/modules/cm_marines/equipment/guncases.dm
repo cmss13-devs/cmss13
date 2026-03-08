@@ -468,6 +468,20 @@
 	new /obj/item/ammo_magazine/smg/pps43(src)
 	new /obj/item/ammo_magazine/smg/pps43(src)
 
+/obj/item/storage/box/guncase/ak4047
+	name = "\improper AK-4047 pulse rifle case"
+	desc = "A gun case containing the AK-4047 pulse rifle, an alternative pulse rifle to the Type 71."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/smg/pps43, /obj/item/ammo_magazine/smg/pps43, /obj/item/ammo_magazine/smg/pps43/extended)
+
+/obj/item/storage/box/guncase/ak4047/fill_preset_inventory()
+	new	/obj/item/weapon/gun/rifle/ak4047(src)
+	new	/obj/item/ammo_magazine/rifle/ak4047(src)
+	new	/obj/item/ammo_magazine/rifle/ak4047(src)
+	new	/obj/item/ammo_magazine/rifle/ak4047(src)
+	new	/obj/item/ammo_magazine/rifle/ak4047(src)
+	new	/obj/item/ammo_magazine/rifle/ak4047(src)
+
 /obj/item/storage/box/guncase/ppsh
 	name = "\improper PPSh-17b submachinegun case"
 	desc = "A gun case containing the PPSh-17b submachine gun, copy of an ancient firearm, woefully inadequate for modern warfare, but highly sought after by collectors."

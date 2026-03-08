@@ -78,6 +78,16 @@
 	containername = "Type 64 magazines crate"
 	group = "UPP Ammo"
 
+/datum/supply_packs/upp/ammo_Type64_x10_ap
+	name = "UPP Magazine box (Type 64, 10x AP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/type64/ap,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "Type 64 AP magazines crate"
+	group = "UPP Ammo"
+
 /datum/supply_packs/upp/ammo_Type71_box
 	name = "UPP Magazine box (Type 71, 10x regular mags)"
 	contains = list(

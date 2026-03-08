@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(mapping)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
-	if(!ground_map.disable_ship_map)
+	if((!ground_map.disable_ship_map) && !(trim(file2text("data/mode.txt")) == GAMEMODE_UPP_DISTRESS_SIGNAL))
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)
@@ -239,7 +239,7 @@ SUBSYSTEM_DEF(mapping)
 		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
 	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)
-	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
+	if((trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM) || (trim(file2text("data/mode.txt")) == GAMEMODE_UPP_DISTRESS_SIGNAL))
 		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
@@ -422,12 +422,26 @@ SUBSYSTEM_DEF(mapping)
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()
+	if(SSticker.mode == GAMEMODE_UPP_DISTRESS_SIGNAL || GLOB.master_mode == GAMEMODE_UPP_DISTRESS_SIGNAL)
+		return "RSS Rostov"
 	if(!configs)
 		return MAIN_SHIP_DEFAULT_NAME
 	var/datum/map_config/MC = configs[SHIP_MAP]
 	if(!MC)
 		return MAIN_SHIP_DEFAULT_NAME
 	return MC.map_name
+
+/datum/controller/subsystem/mapping/proc/get_main_ai_name()
+	if(GLOB.master_mode != GAMEMODE_UPP_DISTRESS_SIGNAL)
+		return "ARES 3.2"
+	else
+		return "1VAN/3"
+
+/datum/controller/subsystem/mapping/proc/get_main_faction()
+	if(GLOB.master_mode != GAMEMODE_UPP_DISTRESS_SIGNAL)
+		return "USCM"
+	else
+		return "UPP"
 
 /datum/controller/subsystem/mapping/proc/lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
 	RETURN_TYPE(/datum/turf_reservation)

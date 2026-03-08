@@ -53,7 +53,7 @@
 /obj/item/device/cotablet/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["faction"] = announcement_faction
+	data["is_main_faction"] = (announcement_faction == FACTION_MAIN)
 	data["cooldown_message"] = cooldown_between_messages
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
@@ -120,7 +120,7 @@
 			. = TRUE
 
 		if("award")
-			if(announcement_faction != FACTION_MARINE)
+			if(announcement_faction != FACTION_MAIN)
 				return
 			open_medal_panel(user, src)
 			. = TRUE
@@ -135,7 +135,7 @@
 			. = TRUE
 
 		if("evacuation_start")
-			if(announcement_faction != FACTION_MARINE)
+			if(announcement_faction != FACTION_MAIN)
 				return
 
 			if(GLOB.security_level < SEC_LEVEL_RED)

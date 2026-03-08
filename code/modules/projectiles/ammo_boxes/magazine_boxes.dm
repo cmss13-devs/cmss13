@@ -940,6 +940,15 @@
 /obj/item/ammo_box/magazine/type64/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/type64/ap
+	name = "magazine box (Type64 Bizon AP x 10)"
+	overlay_ammo_type = "_type71_ap"
+	overlay_content = "_type71_ap"
+	magazine_type = /obj/item/ammo_magazine/smg/bizon/ap
+
+/obj/item/ammo_box/magazine/type64/ap/empty
+	empty = TRUE
+
 //-----------------------ZhNK-72 Revolver Speedloader Box-----------------------
 
 /obj/item/ammo_box/magazine/zhnk

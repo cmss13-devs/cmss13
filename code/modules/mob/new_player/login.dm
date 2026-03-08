@@ -68,7 +68,8 @@
 
 	.["confirmation_message"] = lobby_confirmation_message
 
-	.["upp_enabled"] = GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name
+	.["upp_enabled"] = (GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name) || (GLOB.master_mode == /datum/game_mode/colonialmarines/upp::name)
+	.["uscm_enabled"] = GLOB.master_mode != /datum/game_mode/colonialmarines/upp::name
 	.["xenomorph_enabled"] = GLOB.master_mode == /datum/game_mode/colonialmarines::name && client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH) || client.prefs.get_job_priority(JOB_XENOMORPH_QUEEN))
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)

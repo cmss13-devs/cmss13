@@ -29,12 +29,12 @@
 
 
 //general marine announcement
-/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = FALSE, signature, logging = ARES_LOG_MAIN)
+/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MAIN, add_PMCs = FALSE, signature, logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/targets_to_garble = list()
 	var/list/coms_zs = SSradio.get_available_tcomm_zs(COMM_FREQ)
 
-	if(faction_to_display == FACTION_MARINE)
+	if(faction_to_display == FACTION_MAIN)
 		for(var/mob/current_mob in targets)
 			var/turf/current_turf = get_turf(current_mob)
 			var/is_shipside = is_mainship_level(current_turf?.z)
@@ -59,7 +59,7 @@
 
 			// If they have iff AND a marine headset they will receive announcements
 			var/obj/item/card/id/card = current_human.get_idcard()
-			if((FACTION_MARINE in card?.faction_group) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+			if((FACTION_MAIN in card?.faction_group) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset/almayer)))
 				continue // Valid target
 
 			/// If they're in a joint-USCM job they'll get announcements regardless.
@@ -124,7 +124,7 @@
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
 
-	announcement_helper(message, title, targets, sound_to_play, FALSE, targets_to_garble, FACTION_MARINE)
+	announcement_helper(message, title, targets, sound_to_play, FALSE, targets_to_garble, FACTION_MAIN)
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)

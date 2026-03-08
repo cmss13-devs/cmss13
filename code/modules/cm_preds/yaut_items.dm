@@ -1534,7 +1534,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/pelt/despoiler
 	name = "Despoiler pelt"
-	desc = "The pelt of a decrepit wretch, the surface still stinging your hands"
+	desc = "The pelt of a decrepit wretch, the surface still stinging your hands."
 	icon_state = "despoiler_pelt"
 
 /obj/item/pelt/lurker

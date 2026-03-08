@@ -301,7 +301,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/kahlua
 	name = "Robert Robust's Coffee Liqueur"
-	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
+	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK."
 	icon_state = "kahluabottle"
 	item_state = "kahluabottle"
 	center_of_mass = "x=17;y=3"

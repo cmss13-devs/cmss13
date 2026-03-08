@@ -795,7 +795,7 @@ Welding backpack
 
 /obj/item/tool/weldpack/minitank
 	name = "ES-11 fuel canister"
-	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
+	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!'"
 	icon_state = "welderpackmini"
 	/// Just barely enough to be better than the satchel
 	max_fuel = 120

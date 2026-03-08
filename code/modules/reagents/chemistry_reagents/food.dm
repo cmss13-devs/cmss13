@@ -271,10 +271,11 @@
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPNOTIC = 7, PROPERTY_HYPOXEMIC = 6, PROPERTY_EXCRETING = 2, PROPERTY_HEPATOPEUTIC = 2)
+
 /datum/reagent/zygacine
 	name = "Zygacine"
 	id = "zygacine"
-	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely."
 	reagent_state = LIQUID
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL

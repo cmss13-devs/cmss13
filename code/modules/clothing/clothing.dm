@@ -17,6 +17,11 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
+	/// if the clothing is considered for the style system
+	var/stylish = FALSE
+	/// the list of selectable styles for the style system
+	var/list/style_postfix = list()
+
 	// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
@@ -28,6 +33,67 @@
 	var/accessory_path = /obj/item/clothing/accessory
 	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
 	var/worn_accessory_limit = 1
+	/// icons specific to this clothing item as an accessory
+	var/list/accessory_icons = null
+
+/obj/item/clothing/get_examine_text(mob/user)
+	. = ..()
+	for(var/obj/item/clothing/accessory/A in accessories)
+		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
+	if(stylish)
+		.+= SPAN_GREEN("This object is considered stylish. Press unique-action to change its style!")
+	if(can_become_accessory)
+		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
+
+/obj/item/clothing/unique_action(mob/user)
+	if(stylish)
+		change_style(user)
+
+// helmet garbs are technically supported out of the box, but it requires following the naming convention of item_state being "base_style_X", otherwise it may just show empty, but its hardly going to be a problem since you might just be changing the style for the specific look itself anyway - nihi
+/obj/item/clothing/proc/change_style(mob/user)
+	if(!length(style_postfix))
+		return
+
+	var/base_state = initial(icon_state)
+
+	if(!user.client || user.client.prefs?.no_radials_preference)
+		var/current_index = 0
+		for(var/i = 1 to length(style_postfix))
+			if(item_state == "[base_state]_[style_postfix[i]]")
+				current_index = i
+				break
+
+		var/next_index = (current_index % length(style_postfix)) + 1
+		var/new_postfix = style_postfix[next_index]
+
+		item_state = "[base_state]_[new_postfix]"
+		update_clothing_icon()
+
+		to_chat(user, SPAN_GREEN("You change the style of [src]."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			if(item_state in icon_states(item_icons[WEAR_AS_GARB]))
+				LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
+				to_chat(user, SPAN_ORANGE("... and you also change its helmet garb style!"))
+		return
+
+	var/list/choices = list()
+
+	// radial stuff
+	for(var/postfix in style_postfix)
+		choices[postfix] = image(icon = accessory_icons[WEAR_BODY], icon_state = "[base_state]_[postfix]")
+
+	var/choice = show_radial_menu(user, user, choices, require_near = TRUE)
+	if(!choice)
+		return
+
+	item_state = "[base_state]_[choice]"
+	update_clothing_icon()
+
+	to_chat(user, SPAN_GREEN("You change the style of [src]."))
+	if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+		if(item_state in icon_states(item_icons[WEAR_AS_GARB]))
+			LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
+			to_chat(user, SPAN_ORANGE("... and you also change its helmet garb style!"))
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)

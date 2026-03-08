@@ -67212,7 +67212,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmM" = (
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_x = 7;
 	pixel_y = 8
 	},

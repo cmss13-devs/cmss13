@@ -630,7 +630,7 @@
 	else if (force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR // Times up.
 
-/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	. = ..()
 	if(.[2] != 0) // index 2 = num_xenos
 		return .
@@ -642,8 +642,10 @@
 		if(hive.need_round_end_check && !hive.can_delay_round_end())
 			continue
 		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
-			//Some Queen is alive, we shouldn't end the game yet
-			.[2]++
+			var/turf/queen_turf = get_turf(hive.living_xeno_queen)
+			if(queen_turf.z in z_levels)
+				//Some Queen is alive, we shouldn't end the game yet
+				.[2]++
 	return .
 
 /datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)

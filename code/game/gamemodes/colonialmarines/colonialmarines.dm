@@ -652,6 +652,9 @@
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
 
+	if(is_in_endgame)
+		return // Don't handle hive collapse for hijack
+
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.need_round_end_check && !hive.can_delay_round_end())
 		return

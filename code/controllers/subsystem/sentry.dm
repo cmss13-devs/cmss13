@@ -50,8 +50,8 @@ SUBSYSTEM_DEF(sentry)
 		for(var/datum/static_callee/called as anything in error.stacktrace)
 
 			var/list/parsed_args = list(
-				"src" = called._src,
-				"usr" = called._usr,
+				"src" = isnull(called._src) ? "null" : called._src,
+				"usr" = isnull(called._src) ? "null" : called._usr,
 			)
 			var/index = 1
 			for(var/arg in called._args)

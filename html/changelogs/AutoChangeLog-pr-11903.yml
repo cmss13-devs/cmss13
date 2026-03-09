@@ -1,5 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - admin: "location is logged on hivemind usage and evolution logs"
-  - bugfix: "headbite execution log no longer lists the human as doing the headbite"

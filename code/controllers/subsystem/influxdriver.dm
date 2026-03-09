@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(influxdriver)
 	var/list/send_queue = list()
 
 	/// Maximum amount of metric lines to send at most in one request
-	/// This is neccessary because sending a lot of metrics can get expensive
+	/// This is necessary because sending a lot of metrics can get expensive
 	/// and drive the subsystem into overtime, but we can't split the work as it'd be even less efficient
 	var/max_batch = 150
 
@@ -73,8 +73,7 @@ SUBSYSTEM_DEF(influxdriver)
 	for(var/line in queue)
 		payload += "[line]\n"
 	request.prepare(RUSTG_HTTP_METHOD_POST, url, payload, headers)
-	request.begin_async()
-	// TODO possibly check back result of request later
+	request.execute_fire_and_forget()
 
 /// Enqueues sending to InfluxDB Backend selected measurement values - round_id and timestamp are filled in automatically
 /datum/controller/subsystem/influxdriver/proc/enqueue_stats(measurement, list/tags, list/fields)

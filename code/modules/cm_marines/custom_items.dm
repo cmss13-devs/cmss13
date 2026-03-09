@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 				continue
 			kit_gear += current_path
 
-		if(!length(kit_gear)) //shouldnt let them get empty kits
+		if(!length(kit_gear)) //shouldn't let them get empty kits
 			stack_trace("Missing gear in Donator Gear. [donor_key] has an empty Donator Kit.")
 			continue
 
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 /obj/item/storage/box/donator_kit
 	name = "personal gear kit"
-	desc = "A cardboard box stamped with a dollar sign and filled with trinkets. It contains someones personal possessions.."
+	desc = "A cardboard box stamped with a dollar sign and filled with trinkets. It contains someone's personal possessions.."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "donator_kit"
 	item_state = "giftbag"

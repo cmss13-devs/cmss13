@@ -29,7 +29,7 @@
 	anchored =1
 	var/datum/powernet/powernet
 	name = "power cable"
-	desc = "A flexible superconducting cable for heavy-duty power transfer"
+	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/pipes/power_cond_white.dmi'
 	icon_state = "0-1"
 	var/d1 = 0

@@ -26,9 +26,6 @@
 	total_positions = spawn_positions
 
 /datum/job/antag/predator/spawn_and_equip(mob/new_player/player)
-	player.spawning = TRUE
-	player.close_spawn_windows()
-
 	SSticker.mode.attempt_to_join_as_predator(player)
 
 /datum/job/antag/predator/get_whitelist_status(client/player) // Might be a problem waiting here, but we've got no choice

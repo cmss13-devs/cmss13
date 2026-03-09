@@ -9,12 +9,11 @@
 	if(istype(squad))
 		var/squad_clr = current_human.assigned_squad.equipment_color
 		var/marine_rk
-		var/obj/item/card/id/I = current_human.get_idcard()
-		var/_role
-		if(current_human.job)
-			_role = current_human.job
-		else if(I)
-			_role = I.rank
+		var/_role = current_human.job
+		if(!_role)
+			var/obj/item/card/id/id_card = current_human.get_idcard()
+			if(id_card)
+				_role = id_card.rank
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"
@@ -55,16 +54,29 @@
 				marine_rk = "soccmd"
 			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
+			if(JOB_ARMY_SYN)
+				marine_rk = "syn_army"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
 					marine_rk = "leader_a"
 				if("Team")
 					marine_rk = "soctl_a"
-
-			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
-		else
-			current_human.langchat_styles = initial(current_human.langchat_styles)
 
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
@@ -92,12 +104,11 @@
 	else
 		var/marine_rk
 		var/border_rk
-		var/obj/item/card/id/ID = current_human.get_idcard()
-		var/_role
-		if(current_human.mind)
-			_role = current_human.job
-		else if(ID)
-			_role = ID.rank
+		var/_role = current_human.job
+		if(!_role)
+			var/obj/item/card/id/id_card = current_human.get_idcard()
+			if(id_card)
+				_role = id_card.rank
 		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"
@@ -123,6 +134,23 @@
 				marine_rk = "leader"
 			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
+			if(JOB_ARMY_SYN)
+				marine_rk = "syn_army"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)
@@ -135,7 +163,12 @@
 				marine_rk = "cmp"
 				border_rk = "command"
 			if(JOB_POLICE)
-				marine_rk = "mp"
+				if(current_human.rank_fallback == "hgmp")
+					marine_rk = "hgmp"
+				else
+					marine_rk = "mp"
+			if(JOB_POLICE_HG)
+				marine_rk = "hgmp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_WARDEN)
@@ -171,6 +204,9 @@
 				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
+				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
+				if(preset?.subtype)
+					marine_rk = "syn_[preset.subtype]"
 			if(JOB_SYNTH_K9)
 				marine_rk = "syn_k9"
 			if(JOB_MESS_SERGEANT)

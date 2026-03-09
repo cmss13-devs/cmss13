@@ -9,7 +9,6 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	sight = BLIND
 	stat = DEAD
 
-	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
 	var/access_code
 
 	var/datum/tgui_window/unauthenticated_menu
@@ -18,7 +17,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 	COOLDOWN_DECLARE(recall_code_cooldown)
 
-/mob/unauthenticated/New(loc, ...)
+/mob/unauthenticated/New(loc)
 	. = ..()
 
 	GLOB.dead_mob_list -= src
@@ -40,7 +39,10 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 /mob/unauthenticated/Logout()
 	. = ..()
 
-	QDEL_NULL(unauthenticated_menu)
+	if(unauthenticated_menu)
+		unauthenticated_menu.unsubscribe()
+		unauthenticated_menu.close(FALSE)
+		unauthenticated_menu = null
 	qdel(src)
 
 /mob/unauthenticated/set_logged_in_mob()
@@ -63,7 +65,9 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 #define ACCESS_CODE_LENGTH 40
 
 /// Creates a base 62 access code
-/mob/unauthenticated/proc/generate_access_code()
+/proc/generate_access_code()
+	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
+
 	var/code = ""
 
 	for(var/i in 1 to ACCESS_CODE_LENGTH)
@@ -145,7 +149,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	var/client/user = GLOB.directory[ckey]
 	GLOB.directory -= ckey
 
-	user.key = new_ckey
+	user.ckey = new_ckey
 	GLOB.permitted_guests |= user.key
 
 	// Readd the client to the directory with the *new* Guest ckey

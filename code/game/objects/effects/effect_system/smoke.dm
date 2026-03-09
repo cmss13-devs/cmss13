@@ -20,6 +20,8 @@
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
+	//does it obscure aim
+	var/obscuring = TRUE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -70,7 +72,7 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/moveable)
 	..()
-	if(istype(moveable, /obj/projectile/beam))
+	if(istype(moveable, /obj/projectile/beam) && obscuring)
 		var/obj/projectile/beam/beam = moveable
 		beam.damage /= 2
 	if(iscarbon(moveable))
@@ -846,6 +848,31 @@
 
 /datum/effect_system/smoke_spread/king_doom
 	smoke_type = /obj/effect/particle_effect/smoke/king
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes
+	opacity = FALSE
+	color = "#ddfc6d"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	time_to_live = 6
+	spread_speed = 1
+	alpha = 60
+	obscuring = FALSE
+	var/remove_chem = 3
+	var/acid_increment_amount = 10
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	apply_neuro(affected_mob, 0, remove_chem, TRUE, TRUE, TRUE, FALSE)
+	var/datum/effects/acid/acid_effect = locate() in affected_mob.effects_list
+	if(!acid_effect)
+		return
+	acid_effect.enhance_acid(super_acid = FALSE)
+	acid_effect.increment_duration(acid_increment_amount)
+
+
+/datum/effect_system/smoke_spread/decomposing_enzymes
+	smoke_type = /obj/effect/particle_effect/smoke/decomposing_enzymes
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

@@ -52,7 +52,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aL" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aQ" = (
@@ -341,9 +341,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Meeting Room"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)

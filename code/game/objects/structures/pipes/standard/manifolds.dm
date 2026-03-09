@@ -1,7 +1,7 @@
 /obj/structure/pipes/standard/manifold
 	icon = 'icons/obj/pipes/manifold.dmi'
 	name = "pipe manifold"
-	desc = "A manifold composed of regular pipes"
+	desc = "A manifold composed of regular pipes."
 	dir = SOUTH
 	valid_directions = list(EAST, NORTH, WEST)
 
@@ -55,14 +55,14 @@
 
 /obj/structure/pipes/standard/manifold/visible/scrubbers
 	name="Scrubbers pipe manifold"
-	desc = "A manifold composed of scrubbers pipes"
+	desc = "A manifold composed of scrubbers pipes."
 	icon_state = "map-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/manifold/visible/supply
 	name="Air supply pipe manifold"
-	desc = "A manifold composed of supply pipes"
+	desc = "A manifold composed of supply pipes."
 	icon_state = "map-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -91,14 +91,14 @@
 
 /obj/structure/pipes/standard/manifold/hidden/scrubbers
 	name = "Scrubbers pipe manifold"
-	desc = "A manifold composed of scrubbers pipes"
+	desc = "A manifold composed of scrubbers pipes."
 	icon_state = "map-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/manifold/hidden/supply
 	name = "Air supply pipe manifold"
-	desc = "A manifold composed of supply pipes"
+	desc = "A manifold composed of supply pipes."
 	icon_state = "map-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -127,7 +127,7 @@
 	icon = 'icons/obj/pipes/manifold.dmi'
 	icon_state = ""
 	name = "4-way pipe manifold"
-	desc = "A manifold composed of regular pipes"
+	desc = "A manifold composed of regular pipes."
 	dir = SOUTH
 	valid_directions = list(NORTH, SOUTH, EAST, WEST)
 
@@ -140,14 +140,14 @@
 
 /obj/structure/pipes/standard/manifold/fourway/visible/scrubbers
 	name="4-way scrubbers pipe manifold"
-	desc = "A manifold composed of scrubbers pipes"
+	desc = "A manifold composed of scrubbers pipes."
 	icon_state = "map_4way-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/manifold/fourway/visible/supply
 	name="4-way air supply pipe manifold"
-	desc = "A manifold composed of supply pipes"
+	desc = "A manifold composed of supply pipes."
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -176,14 +176,14 @@
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/scrubbers
 	name="4-way scrubbers pipe manifold"
-	desc = "A manifold composed of scrubbers pipes"
+	desc = "A manifold composed of scrubbers pipes."
 	icon_state = "map_4way-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply
 	name="4-way air supply pipe manifold"
-	desc = "A manifold composed of supply pipes"
+	desc = "A manifold composed of supply pipes."
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE

@@ -17,7 +17,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = IS_SHARP_ITEM_BIG
@@ -28,13 +28,13 @@
 
 	active = !active
 	if(active)
-		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
+		to_chat(user, SPAN_NOTICE("The axe is now energised."))
 		force = 150
 		icon_state = "axe1"
 		w_class = SIZE_HUGE
 		heat_source = 3500
 	else
-		to_chat(user, SPAN_NOTICE(" The axe can now be concealed."))
+		to_chat(user, SPAN_NOTICE("The axe can now be concealed."))
 		force = 40
 		icon_state = "axe0"
 		w_class = SIZE_HUGE
@@ -53,18 +53,13 @@
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	var/base_sword_icon = "sword"
 	var/sword_color
-
-/obj/item/weapon/energy/sword/IsShield()
-	if(active)
-		return 1
-	return 0
 
 /obj/item/weapon/energy/sword/New()
 	if(!sword_color)
@@ -83,7 +78,7 @@
 			icon_state = "sword[sword_color]"
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		to_chat(user, SPAN_NOTICE("[src] is now active."))
 
 	else
 		force = 3
@@ -91,7 +86,7 @@
 		icon_state = "[base_sword_icon]0"
 		w_class = SIZE_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

@@ -127,30 +127,6 @@
 	update_icon()
 
 
-/obj/item/explosive/grenade/custom/antiweed
-	name = "weedkiller grenade"
-	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
-	assembly_stage = ASSEMBLY_LOCKED
-	harmful = FALSE
-	antigrief_protection = FALSE
-
-/obj/item/explosive/grenade/custom/antiweed/Initialize()
-	. = ..()
-	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
-	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
-
-	B1.reagents.add_reagent("plantbgone", 25)
-	B1.reagents.add_reagent("potassium", 25)
-	B2.reagents.add_reagent("phosphorus", 25)
-	B2.reagents.add_reagent("sugar", 25)
-	has_blast_wave_dampener = FALSE
-
-	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
-
-	containers += B1
-	containers += B2
-	update_icon()
-
 /obj/item/explosive/grenade/custom/cleaner
 	name = "cleaner grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."

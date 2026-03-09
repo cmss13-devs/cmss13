@@ -8,7 +8,7 @@
 // How these work:
 // Loaded into lists by location_id when the landmark SS calls them
 /obj/effect/landmark/teleporter_loc
-	desc = "The reference landmark for teleporters"
+	desc = "The reference landmark for teleporters."
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle"
 

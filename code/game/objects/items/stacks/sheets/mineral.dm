@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
+	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/catalyst/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
 	))
 
 GLOBAL_LIST_INIT(diamond_recipes, list ( \
@@ -144,15 +144,15 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	. = ..()
 	recipes = GLOB.runedsandstone_recipes
 
-/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user)
-	..()
+/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user) // yautja is real?????? no way
+	if(!isyautja(user))
+		return
 
-	if(isyautja(user))
-		list_recipes(user)
+	..()
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
-	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artifically-manufactured, these days."
+	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artificially-manufactured, these days."
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
 
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/chitin
 	name = "chitin"
-	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	desc = "Chitin is the building block of an arthropod--such as an insect or crustacean's--exoskeleton. This sheet, in particular, came from aliens."
 	singular_name = "chitin brick"
 	icon_state = "sheet-chitin"
 

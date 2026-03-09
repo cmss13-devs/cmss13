@@ -30,8 +30,7 @@
 		construction_data = create_cause_data(initial(name), builder)
 	if(block_range)
 		for(var/turf/turf in range(block_range, src))
-			var/obj/effect/build_blocker/blocker = new(turf, src)
-			blockers.Add(blocker)
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf, src))
 
 	var/area/current_area = get_area(src)
 	if(current_area.linked_lz)
@@ -781,7 +780,7 @@
 		T = i
 		if(T.density)
 			continue
-		T.PlaceOnTop(resin_wall_type)
+		T.place_on_top(resin_wall_type)
 		T.walltype = turf_icon
 		T.update_connections(TRUE)
 		T.update_icon()
@@ -931,7 +930,7 @@
 			if(cur_hive_num == hive_number)
 				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! REJOICE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	hive.has_hatchery = FALSE
@@ -957,8 +956,7 @@
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
 			var/turf/turf_to_block = locate(x + x_offset, y + y_offset, z)
-			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
-			blockers += blocker
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf_to_block, src))
 
 	START_PROCESSING(SSobj, src)
 
@@ -972,7 +970,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it, as well as our pylons at their communications relays, at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]. We must destroy the hatchery!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 
 #define STAGE_GROWING 1
@@ -1009,7 +1007,7 @@
 			if(cur_hive_num == hive_number)
 				xeno_announcement(SPAN_XENOANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed! We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		elder_overseer_message("The progress of the Serpent King's hatchery has resumed.")
 		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		announced_paused = FALSE
@@ -1083,7 +1081,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes. We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
@@ -1257,7 +1255,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately twenty seconds. STOP IT!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
@@ -1274,7 +1272,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched! We must bring it down!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()
@@ -1314,7 +1312,7 @@
 
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"
-	desc = "an alien grenade."
+	desc = "An alien grenade."
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 

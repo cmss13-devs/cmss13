@@ -2,16 +2,17 @@
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_bracers.dmi'
 	icon_state = "bracer"
 	item_icons = list(
-		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_bracers.dmi'
 	)
 
 	siemens_coefficient = 0
 
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
+	flags_equip_slot = SLOT_NO_STORE|SLOT_HANDS
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
@@ -47,6 +48,8 @@
 	COOLDOWN_DECLARE(bracer_recharge)
 	/// What minimap icon this bracer should have
 	var/minimap_icon
+	///sprite style
+	var/material
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -96,7 +99,7 @@
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)
-		human_holder.update_power_display(perc_charge)
+		human_holder.update_power_display(perc_charge, material)
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
@@ -124,18 +127,25 @@
 		return
 
 	if(!isyautja(owner))
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "bracer_stolen")
+		var/overlay_icon_state
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+				overlay_icon_state = "undefibbable"
 			else
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+				overlay_icon_state = "defibbable"
 		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+			overlay_icon_state = null
+		if(overlay_icon_state)
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 	else
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
 		if(owner?.stat >= DEAD)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon,, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
-		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon, 'icons/ui_icons/map_blips.dmi')
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "undefibbable")
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -150,7 +160,7 @@
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	human.update_power_display(perc)
+	human.update_power_display(perc, material)
 
 	return TRUE
 
@@ -220,6 +230,24 @@
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
+/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
+	var/overlay_icon_state
+	if(owner.stat >= DEAD)
+		if(human_owner.undefibbable)
+			overlay_icon_state = "undefibbable"
+		else
+			overlay_icon_state = "defibbable"
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+		underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
+	else
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
+
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
@@ -266,7 +294,7 @@
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
@@ -278,6 +306,9 @@
 	if(new_caster_material)
 		caster_material = new_caster_material
 	caster = new(src, FALSE, caster_material)
+	if(new_bracer_material)
+		icon_state = "bracer_" + new_bracer_material
+		material = new_bracer_material
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
@@ -426,13 +457,13 @@
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer."
+	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after it's been put into your bracer."
 	deployment_sound = 'sound/handling/combistick_close.ogg'
 	retract_sound = 'sound/handling/combistick_close.ogg'
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "wrist"
 	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
@@ -441,7 +472,7 @@
 
 /obj/item/bracer_attachments/scimitars
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim"
 	item_state = "scim"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
@@ -450,12 +481,22 @@
 
 /obj/item/bracer_attachments/scimitars_alt
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
 	deployment_sound = 'sound/weapons/scims_alt_on.ogg'
 	retract_sound = 'sound/weapons/scims_alt_off.ogg'
+
+/obj/item/bracer_attachments/shield
+	name ="shield bracer attachment"
+	desc ="A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bracer_shield_off"
+	item_state = "bracer_shield_off"
+	attached_weapon_type = /obj/item/weapon/shield/riot/yautja/bracer_shield
+	deployment_sound = 'sound/weapons/wristblades_on.ogg'
+	retract_sound = 'sound/weapons/wristblades_off.ogg'
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
@@ -618,7 +659,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = user
-	var/atom/hunter_eye = hunter.client.eye
+	var/atom/hunter_eye = hunter.client.get_eye()
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -782,7 +823,7 @@
 
 	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multiplier = DECLOAK_FORCED)
 	if(!user)
 		return
 
@@ -792,7 +833,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
-	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
+	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
@@ -849,6 +890,9 @@
 			return
 		if(user.faction == FACTION_YAUTJA_YOUNG)
 			to_chat(user, SPAN_WARNING("You have not earned that right yet!"))
+			return
+		if(isthrall(user))
+			to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 			return
 		user.put_in_active_hand(caster)
 		caster_deployed = TRUE
@@ -933,17 +977,23 @@
 	if(boomer.stat == DEAD)
 		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(boomer.health < HEALTH_THRESHOLD_CRIT)
+	if(boomer.health < boomer.health_threshold_crit)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
-	if(boomer.stat)
+	if(boomer.stat != CONSCIOUS)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+		return
+	if(boomer.is_mob_incapacitated() || (!exploding && HAS_TRAIT(boomer, TRAIT_HAULED)))
+		to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 		return
 	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(boomer, SPAN_WARNING("You don't yet understand how to use this.")) // No SDing for youngbloods
+		return
+	if(isthrall(user))
+		to_chat(boomer, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()
@@ -955,7 +1005,16 @@
 			if(isspeciesyautja(victim))
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
-				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || tgui_alert(boomer, message, "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+					if(boomer.stat == DEAD)
+						to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+						return
+					if(boomer.stat != CONSCIOUS)
+						to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+						return
+					if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+						to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+						return
 					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(boomer)
 						var/turf/T = get_turf(boomer)
@@ -974,13 +1033,13 @@
 		return
 
 	if(exploding)
-		if(forced || alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
+		if(forced || tgui_alert(boomer, "Are you sure you want to stop the countdown?", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 			if(boomer.gloves != src)
 				return
 			if(boomer.stat == DEAD)
 				to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 				return
-			if(boomer.stat)
+			if(boomer.stat != CONSCIOUS)
 				to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
@@ -1000,14 +1059,17 @@
 		to_chat(boomer, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
 
-	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || tgui_alert(boomer, "Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 		if(boomer.gloves != src)
 			return
 		if(boomer.stat == DEAD)
 			to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 			return
-		if(boomer.stat)
+		if(boomer.stat != CONSCIOUS)
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+			return
+		if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+			to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 			return
 		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
 			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
@@ -1043,6 +1105,10 @@
 
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("This button is not for you."))
+		return
+
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -1112,6 +1178,42 @@
 	user.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/human_injectors()
+	set name = "Create Human Stabilising Crystal"
+	set category = "Yautja.Utility"
+	set desc = "Create a focus crystal to stabilize humans."
+	set src in usr
+	. = human_injectors_internal(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/human_injectors_internal(mob/user, forced = FALSE)
+	if(user.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(user, forced)
+	if(.)
+		return
+
+	if(user.get_active_hand())
+		to_chat(user, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		to_chat(user, SPAN_WARNING("You recently synthesized a stabilising crystal. A new crystal will be available in [remaining_time]."))
+		return FALSE
+
+	if(!drain_power(user, 400))
+		return FALSE
+
+	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN, 2 MINUTES)
+
+	to_chat(user, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
+	var/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/O = new(user)
+	user.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
 #undef YAUTJA_CREATE_CRYSTAL_COOLDOWN
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
@@ -1200,6 +1302,10 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return FALSE
+
 	. = check_random_function(user, forced)
 	if(.)
 		return
@@ -1225,6 +1331,10 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(mob/user, forced = FALSE)
 	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return FALSE
 
 	. = check_random_function(user, forced)
@@ -1403,9 +1513,9 @@
 /// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
-		return unlock_bracer()
+		return unlock_bracer(wearer)
 
-	return lock_bracer()
+	return lock_bracer(wearer)
 
 /obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
 	flags_item |= NODROP
@@ -1415,6 +1525,7 @@
 			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 		else
 			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
@@ -1425,4 +1536,5 @@
 			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
 		else
 			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
+	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE

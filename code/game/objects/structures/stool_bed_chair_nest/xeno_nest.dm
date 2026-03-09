@@ -57,6 +57,7 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
+			buckled_mob.plane = TURF_PLANE
 			buckled_mob.layer = ABOVE_TURF_LAYER
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob
@@ -70,6 +71,7 @@
 	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
+		current_mob.plane = initial(current_mob.plane)
 		if(!ishuman(current_mob))
 			var/mob/living/carbon/human/current_human = current_mob
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)
@@ -216,7 +218,7 @@
 	if(mob == user)
 		return
 
-	var/mob/living/carbon/human/human = null
+	var/mob/living/carbon/human/human
 	if(ishuman(mob))
 		human = mob
 		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
@@ -263,6 +265,12 @@
 		human.do_ghost()
 
 	return TRUE
+
+/obj/structure/bed/nest/proc/forced_buckle_mob(mob/mob, mob/user)
+	do_buckle(mob, user)
+	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	ADD_TRAIT(mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
+	SEND_SIGNAL(mob, COMSIG_MOB_NESTED, user)
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"),
@@ -377,7 +385,7 @@
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
+		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest."))
 		return FALSE
 	. = ..()
 

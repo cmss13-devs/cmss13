@@ -12,7 +12,7 @@
 	///The sound when toggling off the visor
 	var/toggle_off_sound = 'sound/handling/hud_off.ogg'
 	///The icon name for our helmet's action
-	var/action_icon_string = "hud_sight_down"
+	var/action_icon_string = "hud_marine_sight_down"
 	///The icon for the helmet_overlay
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/clothing/helmet_garb/huds.dmi'
 	///The overlay name for when our visor is active
@@ -356,6 +356,37 @@
 /obj/item/device/helmet_visor/night_vision/marine_raider/process(delta_time)
 	return PROCESS_KILL
 
+/obj/item/device/helmet_visor/leader
+	name = "leader optic"
+	desc = "An insertable visor HUD loaded with tacmap data into a standard USCM helmet."
+	hud_type = null
+	///The type of minimap this visor gives access to
+	var/datum/action/minimap/minimap_type = /datum/action/minimap/marine
+
+/obj/item/device/helmet_visor/leader/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	add_minimap(user)
+
+/obj/item/device/helmet_visor/leader/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	remove_minimap(user)
+
+/obj/item/device/helmet_visor/leader/proc/add_minimap(mob/living/carbon/human/user)
+	remove_minimap(user)
+	var/datum/action/minimap/mini = new minimap_type
+	mini.give_to(user, mini)
+
+///Remove all action of type minimap from the wearer, and make him disappear from the minimap
+/obj/item/device/helmet_visor/leader/proc/remove_minimap(mob/living/carbon/human/user)
+	for(var/datum/action/action as anything in user.actions)
+		if(istype(action, /datum/action/minimap))
+			action.remove_from(user)
+
+/obj/item/device/helmet_visor/leader/upp
+	minimap_type = /datum/action/minimap/upp
+	desc = "An insertable visor HUD loaded with tacmap data into a standard UPP helmet."
+
+/obj/item/device/helmet_visor/leader/pmc
+	minimap_type = /datum/action/minimap/pmc
+	desc = "An insertable visor HUD loaded with tacmap data into a standard PMC helmet."
 /////////////////////// PO VISOR ///////////////////////
 
 /obj/item/device/helmet_visor/po_visor

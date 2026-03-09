@@ -92,7 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
 	w_class = SIZE_HUGE
@@ -137,6 +137,7 @@
 	pockets.max_storage_space = 8
 
 	light_holder = new(src)
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	QDEL_NULL(light_holder)
@@ -282,6 +283,18 @@
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/army
+	name = "\improper Personal Body Armor System"
+	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
+	icon_state = "army_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	specialty = "Personal Body Armor System"
+	storage_slots = 3
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -366,7 +379,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/chief_medical_officer, /obj/item/clothing/under/marine/dress)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/cmo, /obj/item/clothing/under/marine/dress)
 	specialty = "M3 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
 	black_market_value = 20
@@ -604,6 +617,23 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/light/synvest/army
+	name = "\improper Synthetic Body Armor System"
+	desc = "This is a variant of the Personnel Body Armor System, it has been modified extensively to be used by US Army Synthetics. It offers light protection, maximum mobility and more internal storage than its USCM counterpart. The cost of this item could outfit an entire squad of USCM Marines, but you are worth this cost."
+	icon_state = "VL_syn_army"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	armor_melee = CLOTHING_ARMOR_VERYLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 4
 
 /obj/item/clothing/suit/storage/marine/light/recon
 	name = "M3-R pattern light armor"

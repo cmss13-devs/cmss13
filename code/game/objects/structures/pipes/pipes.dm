@@ -123,7 +123,7 @@
 			if(W)
 				var/mob/living/carbon/xenomorph/X = user
 				if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent"))
+					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent."))
 					return
 
 		if(ventcrawl_message_busy > world.time)
@@ -149,7 +149,7 @@
 		return
 
 	user.forceMove(next_pipe)
-	user.client.eye = next_pipe //if we don't do this, Byond only updates the eye every tick - required for smooth movement
+	user.client.set_eye(next_pipe) //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 	user.update_pipe_icons(next_pipe)
 
 	if(world.time - user.last_played_vent > VENT_SOUND_DELAY)

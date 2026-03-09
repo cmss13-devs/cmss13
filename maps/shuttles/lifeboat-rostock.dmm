@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/almayer/test_floor4,
+/area/shuttle/lifeboat)
 "ao" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,0"
@@ -55,7 +58,7 @@
 	id = "Boat1-D4";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "lW" = (
 /turf/closed/shuttle/lifeboat{
@@ -122,7 +125,7 @@
 	id = "Boat1-D3";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "qb" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
@@ -168,17 +171,14 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
-/area/shuttle/lifeboat)
-"xu" = (
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "ya" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "zc" = (
 /turf/open/shuttle/lifeboat,
@@ -538,22 +538,22 @@ qt
 pi
 "}
 (10,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-zc
+aa
 "}
 (11,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-zc
+aa
 "}
 (12,1,1) = {"
 hr
@@ -583,22 +583,22 @@ qt
 lQ
 "}
 (15,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-zc
+aa
 "}
 (16,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-zc
+aa
 "}
 (17,1,1) = {"
 hr

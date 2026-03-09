@@ -2,7 +2,7 @@
 	icon = 'icons/obj/items/assemblies.dmi'
 	name = "tank transfer valve"
 	icon_state = "valve_1"
-	desc = "Regulates the transfer of air between two tanks"
+	desc = "Regulates the transfer of air between two tanks."
 	var/obj/item/tank/tank_one
 	var/obj/item/tank/tank_two
 	var/obj/item/device/attached_device
@@ -42,7 +42,7 @@
 			to_chat(user, SPAN_NOTICE("The device is secured."))
 			return
 		if(attached_device)
-			to_chat(user, SPAN_WARNING("There is already an device attached to the valve, remove it first."))
+			to_chat(user, SPAN_WARNING("There is already a device attached to the valve, remove it first."))
 			return
 		user.temp_drop_inv_item(A)
 		attached_device = A

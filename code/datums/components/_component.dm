@@ -4,7 +4,7 @@
 * The component datum
 *
 * A component should be a single standalone unit
-* of functionality, that works by receiving signals from it's parent
+* of functionality, that works by receiving signals from its parent
 * object to provide some single functionality (i.e a slippery component)
 * that makes the object it's attached to cause people to slip over.
 * Useful when you want shared behaviour independent of type inheritance
@@ -437,6 +437,7 @@
 						old_comp.InheritComponent(arglist(arguments))
 					else
 						old_comp.InheritComponent(new_comp, TRUE)
+						QDEL_NULL(new_comp)
 				if(COMPONENT_DUPE_SELECTIVE)
 					var/list/arguments = raw_args.Copy()
 					arguments[1] = new_comp

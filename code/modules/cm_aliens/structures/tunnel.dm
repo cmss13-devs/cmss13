@@ -51,7 +51,7 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(hivenumber), image('icons/UI_icons/map_blips.dmi', null, "xenotunnel", VERY_HIGH_FLOAT_LAYER))
 
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -293,6 +293,11 @@
 		return XENO_NO_DELAY_ACTION
 
 	user.forceMove(src) //become one with the tunnel
+
+	if(isqueen(user))
+		var/mob/living/carbon/xenomorph/queen/queen_user = user
+		queen_user.end_temporary_maturity()
+
 	to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 	pick_tunnel(user)
 	return XENO_NO_DELAY_ACTION

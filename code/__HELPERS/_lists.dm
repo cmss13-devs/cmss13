@@ -183,3 +183,25 @@
 	for(var/i in 1 to length(inserted_list) - 1)
 		inserted_list.Swap(i, rand(i, length(inserted_list)))
 
+/**
+ * Attempts to convert a numeric keyed alist of (2=second, 1=first) to a list of (first, second).
+ *
+ * If you instead want to discard values and keep only keys, just do list + alist.
+ *
+ * Arguments:
+ * * to_flatten - The alist with sequential numeric keys to extract values from into a normal list.
+ * * assert - Whether to assert every key is numeric and in bounds.
+ */
+/proc/flatten_numeric_alist(alist/to_flatten, assert=TRUE)
+	RETURN_TYPE(/list)
+
+	var/count = length(to_flatten)
+	if(assert)
+		for(var/key in to_flatten)
+			if(!isnum(key) || key < 1 || key > count)
+				CRASH("flatten_numeric_alist not possible for alist: [json_encode(to_flatten)]")
+
+	var/list/retval = list()
+	for(var/i in 1 to count)
+		retval += to_flatten[i]
+	return retval

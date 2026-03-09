@@ -86,7 +86,7 @@
 /obj/item/device/binoculars/range
 	name = "rangefinder"
 	gender = NEUTER
-	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
+	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire its coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
 	item_state = "rangefinder"
 	var/laser_cooldown = 0

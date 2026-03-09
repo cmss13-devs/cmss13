@@ -58,7 +58,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
-	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
+	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken-webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/beaker

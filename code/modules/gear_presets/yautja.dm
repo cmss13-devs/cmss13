@@ -297,6 +297,9 @@
 	)
 	var/codename = pick(mcaste_names)
 	new_human.change_real_name(new_human, codename)
+	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
+		var/newname = ("Elite " + new_human.real_name)
+		new_human.change_real_name(new_human, newname)
 
 /datum/equipment_preset/yautja/soldier/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
@@ -332,8 +335,13 @@
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
-	var/newname = ("Enforcer " + new_human.real_name)
-	new_human.change_real_name(new_human, newname)
+	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
+		var/newname = ("High Enforcer " + new_human.real_name)
+		new_human.change_real_name(new_human, newname)
+	else
+		var/newname = ("Enforcer " + new_human.real_name)
+		new_human.change_real_name(new_human, newname)
+
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)

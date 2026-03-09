@@ -791,14 +791,17 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
 	if(faction == FACTION_MILITARY_CASTE)
-		new_icon_state = "soldierhud"
-		if(job == JOB_MCASTE_ENFORCER)
-			new_icon_state = "enforcerhud"
-			holder.icon_state = new_icon_state
-			return // we don't mess with colors or whitelist status checks
+		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+			new_icon_state = "soldierhud_wl"
 		else
-			holder.icon_state = new_icon_state
-			return
+			new_icon_state = "soldierhud"
+		if(job == JOB_MCASTE_ENFORCER)
+			if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+				new_icon_state = "enforcerhud_wl"
+			else
+				new_icon_state = "enforcerhud"
+		holder.icon_state = new_icon_state
+		return // we don't mess with colors or whitelist status checks
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))

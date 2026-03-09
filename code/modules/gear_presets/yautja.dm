@@ -298,8 +298,8 @@
 	var/codename = pick(mcaste_names)
 	new_human.change_real_name(new_human, codename)
 	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
-		var/newname = ("Elite " + new_human.real_name)
-		new_human.change_real_name(new_human, newname)
+		codename = ("Elite " + new_human.real_name)
+		new_human.change_real_name(new_human, codename)
 
 /datum/equipment_preset/yautja/soldier/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
@@ -334,13 +334,34 @@
 	minimap_icon = "predator_enforcer"
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_name(mob/living/carbon/human/new_human, randomise)
-	. = ..()
+	var/list/mcaste_names = list(
+		"P'kya-uha",
+		"K'var-de",
+		"Vor'mekta",
+		"Mar'cte",
+		"Kuj-hade",
+		"Mai-itaje",
+		"Yu'var-at",
+		"Kha'irat",
+		"N'yaka-de",
+		"Pt'mon-ad",
+		"Dt'einou",
+		"M'nor-itn",
+		"Jal-khon'ir",
+		"Nrak'ytara",
+		"Hul'potl",
+		"Na-ir'mon",
+		"Er'mon-at",
+		"Jeh'din"
+	)
+	var/codename = pick(mcaste_names)
+	new_human.change_real_name(new_human, codename)
 	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
-		var/newname = ("High Enforcer " + new_human.real_name)
-		new_human.change_real_name(new_human, newname)
+		codename = ("High Enforcer " + new_human.real_name)
+		new_human.change_real_name(new_human, codename)
 	else
-		var/newname = ("Enforcer " + new_human.real_name)
-		new_human.change_real_name(new_human, newname)
+		codename= ("Enforcer " + new_human.real_name)
+		new_human.change_real_name(new_human, codename)
 
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_gear(mob/living/carbon/human/new_human, client/mob_client)

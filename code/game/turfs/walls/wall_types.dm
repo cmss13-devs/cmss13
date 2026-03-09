@@ -899,12 +899,17 @@
 	if(istype(below, /turf/closed/wall/resin))
 		wall_below = below
 		wall_below.upper_wall = src
+		color = wall_below.color
+		hivenumber = wall_below.hivenumber
+		construction_data = wall_below.construction_data
 		return
 
 	for(var/obj in below.contents)
 		if(istype(obj, /obj/structure/mineral_door/resin))
 			door_below = obj
 			door_below.upper_wall = src
+			color = door_below.color
+			hivenumber = door_below.hivenumber
 			return
 
 	dismantle_wall()

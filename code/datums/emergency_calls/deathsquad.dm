@@ -146,7 +146,7 @@
 	name = "Yautja Military Caste Soldiers (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 3
-	arrival_message = "'*Des#<oy *&l th!^ @he Anc#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
+	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
 	probability = 0
 	home_base = /datum/lazy_template/ert/uscm_station // to be mapped
 	hostility = TRUE

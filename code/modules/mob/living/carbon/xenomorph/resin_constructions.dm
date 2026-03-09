@@ -124,6 +124,11 @@
 		resin_wall.hivenumber = hivenumber
 		resin_wall.set_resin_builder(builder)
 		set_hive_data(resin_wall, hivenumber)
+		while(resin_wall.upper_wall)
+			resin_wall = resin_wall.upper_wall
+			resin_wall.hivenumber = hivenumber
+			resin_wall.set_resin_builder(builder)
+			set_hive_data(resin_wall, hivenumber)
 
 	.=..() //we call parent after the turf is placed for correct link with upper_wall
 

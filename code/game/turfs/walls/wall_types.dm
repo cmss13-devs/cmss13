@@ -875,6 +875,8 @@
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
 
+	set_hive_data(src, hivenumber)
+
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_regeneration))
@@ -955,7 +957,7 @@
 		door_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
 
 /turf/closed/wall/resin/above/Initialize(mapload)
-	. = ..()
+
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(!below)
 		dismantle_wall()
@@ -963,17 +965,18 @@
 	if(istype(below, /turf/closed/wall/resin))
 		wall_below = below
 		wall_below.upper_wall = src
-		color = wall_below.color
 		hivenumber = wall_below.hivenumber
-		construction_data = wall_below.construction_data
+		set_hive_data(src, hivenumber)
+		. = ..()
 		return
 
 	for(var/obj in below.contents)
 		if(istype(obj, /obj/structure/mineral_door/resin))
 			door_below = obj
 			door_below.upper_wall = src
-			color = door_below.color
 			hivenumber = door_below.hivenumber
+			set_hive_data(src, hivenumber)
+			. = ..()
 			return
 
 	dismantle_wall()
@@ -987,6 +990,10 @@
 	if(door_below)
 		door_below.upper_wall = null
 		door_below = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(istype(above, /turf/open_space))
+		var/turf/open_space/space = above
+		above.update_vis_contents()
 
 /turf/closed/wall/resin/above/take_damage(dam, mob/M)
 	if(wall_below)

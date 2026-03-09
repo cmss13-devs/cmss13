@@ -90,7 +90,7 @@
 	qdel(projectile_to_fire)
 	if(refund)
 		charge_time += shot_cost
-		log_debug("Plasma Carbine refunded shot.")
+		log_debug("Plasma carbine refunded shot.")
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/use_unique_action()
@@ -273,7 +273,5 @@
 	qdel(projectile_to_fire)
 	if(refund)
 		source.charge += charge_cost
-		var/perc = source.charge / source.charge_max * 100
-		var/mob/living/carbon/human/user = usr
-		user.update_power_display(perc)
+		log_debug("Plasma cannons refunded shot.")
 	return TRUE

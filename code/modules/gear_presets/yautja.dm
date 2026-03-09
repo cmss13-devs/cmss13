@@ -264,12 +264,9 @@
 	uses_special_name = TRUE // we got evil predator codenames at the function
 	faction = FACTION_MILITARY_CASTE
 	faction_group = FACTION_LIST_YAUTJA
+	skills = /datum/skills/yautja/soldier
 
 	minimap_icon = "predator_soldier"
-
-/datum/equipment_preset/yautja/soldier/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/yautja/soldier/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_MAX
@@ -293,11 +290,21 @@
 		"Hul'potl",
 		"Na-ir'mon",
 		"Er'mon-at",
-		"Jeh'din"
+		"Jeh'din",
+		"Khal'irir",
+		"Dae-sirat",
+		"Mon'kal-at",
+		"Yhi'ra-tem",
+		"D'thelat",
+		"Ir-paya",
+		"An'khos-ir",
+		"Vhe'talid",
+		"Da'thol-ai",
+		"Ve'kirad"
 	)
 	var/codename = pick(mcaste_names)
 	new_human.change_real_name(new_human, codename)
-	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
+	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA)) // whitelisted players look more senior, no actual gear difference
 		codename = ("Elite " + new_human.real_name)
 		new_human.change_real_name(new_human, codename)
 
@@ -315,7 +322,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
@@ -352,15 +359,22 @@
 		"Hul'potl",
 		"Na-ir'mon",
 		"Er'mon-at",
-		"Jeh'din"
+		"Jeh'din",
+		"Khal'irir",
+		"Dae-sirat",
+		"Mon'kal-at",
+		"Yhi'ra-tem",
+		"D'thelat",
+		"Ir-paya",
+		"An'khos-ir",
+		"Vhe'talid",
+		"Da'thol-ai",
+		"Ve'kirad"
 	)
-	var/codename = pick(mcaste_names)
+	var/codename = ("Enforcer " + pick(mcaste_names))
 	new_human.change_real_name(new_human, codename)
-	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA))
-		codename = ("High Enforcer " + new_human.real_name)
-		new_human.change_real_name(new_human, codename)
-	else
-		codename= ("Enforcer " + new_human.real_name)
+	if(new_human.client.check_whitelist_status(WHITELIST_YAUTJA)) // whitelisted players look more senior, no actual gear difference
+		codename = ("High " + new_human.real_name)
 		new_human.change_real_name(new_human, codename)
 
 
@@ -378,10 +392,66 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
+
+/datum/equipment_preset/yautja/soldier/low_threat
+	name = "Yautja Military Caste Soldier (Weaker)"
+
+/datum/equipment_preset/yautja/soldier/low_threat/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/yautja(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full/powered(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/powered(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/military(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/yautja(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmarifle(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
+
+/datum/equipment_preset/yautja/soldier/enforcer/low_threat
+	name = "Yautja Military Caste Enforcer (Weaker)"
+
+/datum/equipment_preset/yautja/soldier/enforcer/low_threat/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/yautja(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full/powered(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/powered(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/military(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/yautja(new_human), WEAR_BACK) // the dual plasma cannon pack can gib people; not very low-threat
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmarifle(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)

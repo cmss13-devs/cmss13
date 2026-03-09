@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(sentry)
 
 			var/list/parsed_args = list(
 				"src" = isnull(called._src) ? "null" : called._src,
-				"usr" = isnull(called._src) ? "null" : called._usr,
+				"usr" = isnull(called._usr) ? "null" : called._usr,
 			)
 			var/index = 1
 			for(var/arg in called._args)

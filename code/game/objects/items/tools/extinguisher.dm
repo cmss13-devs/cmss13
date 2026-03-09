@@ -247,6 +247,7 @@
 		if(T == target)
 			break
 		sleep(2)
+	sleep(2)
 	qdel(W)
 
 #undef BASE_EXTINGUISHER_PWR

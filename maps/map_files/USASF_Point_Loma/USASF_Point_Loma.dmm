@@ -32783,9 +32783,6 @@
 "bOU" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
-"bOV" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/airbase/mining_colony/exterior/lz)
 "bOW" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/lz)
@@ -47159,14 +47156,6 @@
 /area/point_loma/airbase/interior/fire_station)
 "cLt" = (
 /turf/open/floor/shiva/yellow/northeast,
-/area/point_loma/airbase/interior/fire_station)
-"cLu" = (
-/obj/structure/window/framed/shiva/orange,
-/turf/open/floor/shiva/north,
-/area/point_loma/airbase/interior/fire_station)
-"cLv" = (
-/obj/structure/window/framed/shiva/orange,
-/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
 "cLw" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on,
@@ -148092,7 +148081,7 @@ cLM
 cLI
 cLp
 cLp
-cLu
+cLm
 cLq
 cLn
 byc
@@ -148274,7 +148263,7 @@ cLN
 cLE
 cLE
 cLz
-cLv
+cLm
 byo
 cLo
 cLi
@@ -173820,7 +173809,7 @@ cMH
 cMH
 cMH
 bRa
-bOV
+bOW
 asb
 asb
 asb

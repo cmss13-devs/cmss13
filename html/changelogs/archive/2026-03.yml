@@ -124,3 +124,16 @@
   - rscadd: Pickup hotkey has a memory of 5 items now
   Steelpoint:
   - rscadd: Tyrargo Rift may only be voted for if the server has at least 100 players.
+2026-03-09:
+  MistChristmas:
+  - bugfix: Dropship Crew now see their full list of buyables again... Sorry.
+  MoondancerPony:
+  - bugfix: made the FTL Hijack planet crash around twice as fast
+  - code_imp: unit tests should have fewer flaky failures now
+  hry-gh:
+  - bugfix: binding keys to tab now works
+  ori-disillusion-mirnov:
+  - admin: location is logged on hivemind usage and evolution logs
+  - bugfix: headbite execution log no longer lists the human as doing the headbite
+  riot:
+  - maptweak: The basketball hoops on LV-624's Fitness dome can now be walked through.

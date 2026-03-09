@@ -129,11 +129,10 @@ SUBSYSTEM_DEF(sentry)
 		for(var/datum/config_entry/protected_entry in GLOB.protected_config_entries)
 			if(islist(protected_entry.config_entry_value))
 				for(var/key, value in protected_entry.config_entry_value)
-					if(!isnull(value))
-						event = replacetext(event, value, "config entry value [protected_entry.type]")
+					if(protected_entry.protection & CONFIG_ENTRY_SENSITIVE_KEY || isnull(value))
+						event = replacetext(event, value, "config entry key [protected_entry.type]")
 					else
-						event = replacetext(event, key, "config entry value [protected_entry.type]")
-
+						event = replacetext(event, value, "config entry value [protected_entry.type]")
 			else
 				if(length(protected_entry.config_entry_value))
 					event = replacetext(event, protected_entry.config_entry_value, "config entry [protected_entry.type]")

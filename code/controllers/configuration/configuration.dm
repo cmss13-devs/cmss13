@@ -164,7 +164,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 		_entries[esname] = E
 		_entries_by_type[I] = E
 
-		if(E.protection & CONFIG_ENTRY_SENSITIVE)
+		if(E.protection & (CONFIG_ENTRY_SENSITIVE|CONFIG_ENTRY_SENSITIVE_KEY))
 			GLOB.protected_config_entries += E
 
 

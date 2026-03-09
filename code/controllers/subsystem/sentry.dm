@@ -133,7 +133,8 @@ SUBSYSTEM_DEF(sentry)
 					if(!isnull(value))
 						event = replacetext(event, value, "config entry value [protected_entry.type]")
 			else
-				event = replacetext(event, protected_entry.config_entry_value, "config entry [protected_entry.type]")
+				if(length(protected_entry.config_entry_value))
+					event = replacetext(event, protected_entry.config_entry_value, "config entry [protected_entry.type]")
 
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"

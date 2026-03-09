@@ -887,7 +887,7 @@
 			area.current_resin_count++
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(istype(above,/turf/open_space))
-		above.PlaceOnTop(/turf/closed/wall/resin/above)
+		above.place_on_top(/turf/closed/wall/resin/above)
 		upper_wall = above
 
 /turf/closed/wall/resin/Destroy(force)

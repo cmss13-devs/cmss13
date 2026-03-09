@@ -394,7 +394,7 @@
 
 	var/turf/above = SSmapping.get_turf_above(loc)
 	if(istype(above, /turf/open_space))
-		above.PlaceOnTop(/turf/closed/wall/resin/above)
+		above.place_on_top(/turf/closed/wall/resin/above)
 		upper_wall = above
 
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)

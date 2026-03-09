@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(sentry)
 			)
 			var/index = 1
 			for(var/arg in called._args)
-				parsed_args["argument #[index]"] = arg
+				parsed_args["argument #[index]"] = isnull(arg) ? "null" : arg
 				index++
 
 			var/pre_context, context, post_context
@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(sentry)
 				censor_args = TRUE
 
 			for(var/protected in GLOB.protected_sentry_datums)
-				if(findtext(proc_path.type, protected))
+				if(findtext("[proc_path.type]", "[protected]"))
 					censor_args = TRUE
 					break
 
@@ -129,9 +129,11 @@ SUBSYSTEM_DEF(sentry)
 		for(var/datum/config_entry/protected_entry in GLOB.protected_config_entries)
 			if(islist(protected_entry.config_entry_value))
 				for(var/key, value in protected_entry.config_entry_value)
-					event = replacetext(event, key, "config entry value [protected_entry.type]")
 					if(!isnull(value))
 						event = replacetext(event, value, "config entry value [protected_entry.type]")
+					else
+						event = replacetext(event, key, "config entry value [protected_entry.type]")
+
 			else
 				if(length(protected_entry.config_entry_value))
 					event = replacetext(event, protected_entry.config_entry_value, "config entry [protected_entry.type]")

@@ -295,8 +295,8 @@
 	time_to_unequip = 10
 	time_to_equip = 10
 
-	var/charge = 3000
-	var/charge_max = 3000
+	var/charge = 2000 // current charge
+	var/charge_max = 2000 // max charge
 	var/charge_rate = 200
 
 	var/cannons_deployed = FALSE
@@ -320,7 +320,7 @@
 		var/charge_increase = charge_rate
 		if(is_ground_level(human_holder.z))
 			charge_increase = charge_rate / 6
-		else if(is_mainship_level(human_holder.z))
+		else if(is_mainship_level(human_holder.z)) // similar to the bracers, we auto-recharge slower on the ground level or almayer than we do on the predship
 			charge_increase = charge_rate / 3
 
 		charge = min(charge + charge_increase, charge_max)

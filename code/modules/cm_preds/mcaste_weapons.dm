@@ -186,7 +186,7 @@
 
 /obj/item/weapon/gun/energy/yautja/cannon
 	name = "\improper dual plasma cannons"
-	desc = "A pair of powerful, shoulder-mounted energy weapons that are remotely operated via bracers. Unlike normal plasma casters, they only feature one fire mode."
+	desc = "A pair of powerful, shoulder-mounted energy weapons that are remotely operated via bracers. Unlike normal plasma casters, they only feature one fire mode, and are designed to obliterate most targets without leaving any material behind."
 	icon_state = "plasma_cannons"
 	item_state = "plasma_cannons"
 	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
@@ -208,7 +208,7 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
 	var/obj/item/yautja_cannon_pack/source = null
-	charge_cost = 1000 // three shots until dry, recharges fast but you still need to run from a fight or swap to a carbine to fire it again
+	charge_cost = 1000 // you get two shots at full charge, because you have two casters. duh
 
 /obj/item/weapon/gun/energy/yautja/cannon/Initialize(mapload)
 	. = ..()

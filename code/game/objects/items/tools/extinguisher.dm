@@ -82,15 +82,53 @@
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/tank/water) && get_dist(user,target) <= 1)
-		var/obj/object = target
-		if(object.reagents.contains_harmful_substances())
-			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
+	if(flag) // proximity required for refilling only
+		var/space_left = max_water - reagents.total_volume
+
+		if(istype(target, /obj/structure/reagent_dispensers))
+			var/obj/structure/reagent_dispensers/RD = target
+			if(!RD.reagents || !RD.reagents.total_volume)
+				to_chat(user, SPAN_WARNING("[target] is empty."))
+				return
+			if(RD.reagents.get_reagent_amount("water") != RD.reagents.total_volume)
+				to_chat(user, SPAN_WARNING("You can only refill [src] with pure water."))
+				return
+			if(!space_left)
+				to_chat(user, SPAN_WARNING("[src] is already full!"))
+				return
+			var/water_to_add = min(RD.reagents.get_reagent_amount("water"), space_left)
+			RD.reagents.remove_reagent("water", water_to_add)
+			reagents.add_reagent("water", water_to_add)
+			to_chat(user, SPAN_NOTICE("You refill [src] with [water_to_add] units of water. ([reagents.total_volume]/[max_water])"))
+			playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
-		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE("[src] is now refilled."))
-		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
+
+		if(istype(target, /obj/structure/sink) && !istype(target, /obj/structure/sink/puddle))
+			if(!space_left)
+				to_chat(user, SPAN_WARNING("[src] is already full!"))
+				return
+			reagents.add_reagent("water", space_left)
+			to_chat(user, SPAN_NOTICE("You refill [src] with [space_left] units of water. ([reagents.total_volume]/[max_water])"))
+			playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+
+		if(istype(target, /obj/item/reagent_container))
+			var/obj/item/reagent_container/RC = target
+			if(!RC.reagents || !RC.reagents.total_volume)
+				to_chat(user, SPAN_WARNING("[target] is empty."))
+				return
+			if(RC.reagents.get_reagent_amount("water") != RC.reagents.total_volume)
+				to_chat(user, SPAN_WARNING("You can only refill [src] with pure water."))
+				return
+			if(!space_left)
+				to_chat(user, SPAN_WARNING("[src] is already full!"))
+				return
+			var/water_to_add = min(RC.reagents.get_reagent_amount("water"), space_left)
+			RC.reagents.remove_reagent("water", water_to_add)
+			reagents.add_reagent("water", water_to_add)
+			to_chat(user, SPAN_NOTICE("You refill [src] with [water_to_add] units of water. ([reagents.total_volume]/[max_water])"))
+			playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
 
 	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()

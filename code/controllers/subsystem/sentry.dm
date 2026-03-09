@@ -141,6 +141,7 @@ SUBSYSTEM_DEF(sentry)
 
 		var/request = rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST, endpoint, assembled, headers, null)
 		log_debug("SENTRY: REQUEST [request]")
+		log_debug("SENTRY: EVENT: [assembled]")
 
 	envelopes.Cut()
 

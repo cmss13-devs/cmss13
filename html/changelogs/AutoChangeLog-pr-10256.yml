@@ -1,5 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - balance: "Oxiding and Igniting now respects ignition immunity"
-  - balance: "CLF3 now does less burn damage, and doesn't strip xeno armor"

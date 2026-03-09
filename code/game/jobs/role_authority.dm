@@ -465,7 +465,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		arm_equipment(new_human, new_job.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
 		var/generated_account = new_job.generate_money_account(new_human)
 		new_job.announce_entry_message(new_human, generated_account, whitelist_status) //Tell them their spawn info.
-		new_job.generate_entry_conditions(new_human, whitelist_status) //Do any other thing that relates to their spawn.
+		new_job.generate_entry_conditions(new_human, whitelist_status, late_join) //Do any other thing that relates to their spawn.
 	else
 		arm_equipment(new_human, new_job.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 		var/generated_account = new_job.generate_money_account(new_human)
@@ -650,6 +650,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/hellhound
 		if(XENO_CASTE_KING)
 			M = /mob/living/carbon/xenomorph/king
+		if(XENO_CASTE_DESPOILER)
+			M = /mob/living/carbon/xenomorph/despoiler
 	return M
 
 
@@ -691,6 +693,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				break
 
 		transfer_marine.hud_set_squad()
+	SEND_SIGNAL(transfer_marine, COMSIG_HUMAN_SQUAD_CHANGED)
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
 /datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)

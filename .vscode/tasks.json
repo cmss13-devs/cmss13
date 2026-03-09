@@ -25,6 +25,174 @@
             "label": "Build All"
         },
         {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DRUNTIME_MAP"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (runtime map)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DQUICK_START"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (quickstart)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DTESTING"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (testing)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DRUNTIME_MAP", "-DQUICK_START"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (runtime map + quickstart)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DTESTING", "-DQUICK_START"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (quickstart + quickstart)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DRUNTIME_MAP", "-DTESTING"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (runtime map + testing)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DRUNTIME_MAP", "-DTESTING", "-DQUICK_START"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (runtime map + quickstart + testing)"
+        },
+        {
             "type": "dreammaker",
             "dme": "colonialmarines.dme",
             "problemMatcher": [

@@ -18,6 +18,8 @@
 	var/sound_shield_hit
 	/// Snipers use this to simulate poor accuracy at close ranges
 	var/accurate_range_min = 0
+	/// Completely prevents shots hitting in this range
+	var/accurate_range_min_strict = 0
 	/// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
 	var/scatter = 0
 	var/stamina_damage = 0
@@ -25,6 +27,8 @@
 	var/damage = 0
 	/// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
 	var/damage_type = BRUTE
+	/// Whether the damage should be deemed environmental (e.g. from a turret)
+	var/damage_enviro = FALSE
 	/// How much armor it ignores before calculations take place
 	var/penetration = 0
 	/// The % chance it will imbed in a human
@@ -169,7 +173,7 @@
 		playsound(living_mob.loc, "punch", 25, 1)
 		living_mob.visible_message(SPAN_DANGER("[living_mob] slams into an obstacle!"),
 			isxeno(living_mob) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
-		living_mob.apply_damage(MELEE_FORCE_TIER_2)
+		living_mob.apply_damage(MELEE_FORCE_TIER_2, enviro=damage_enviro)
 
 ///The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums
 /datum/ammo/proc/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
@@ -226,7 +230,7 @@
 			var/armor_punch = armor_break_calculation(GLOB.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
 
-		M.apply_damage(damage,damage_type)
+		M.apply_damage(damage, damage_type, enviro=damage_enviro)
 
 		if(XNO && length(XNO.xeno_shields))
 			P.play_shielded_hit_effect(M)

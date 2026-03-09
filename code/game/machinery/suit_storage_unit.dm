@@ -83,7 +83,7 @@
 				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(50))
-				dump_everything() //So suits dont survive all the time
+				dump_everything() //So suits don't survive all the time
 			deconstruct(FALSE)
 
 

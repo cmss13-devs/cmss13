@@ -320,7 +320,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection")
+	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection.")
 	. += SPAN_INFO("Overdose protection seems to be [od_protection_mode == 1 ? "ON" : od_protection_mode == 2 ? "DYNAMIC" : "OFF"]")
 	if(used)
 		. += SPAN_WARNING("It is already used!")
@@ -400,7 +400,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay
 	name = "experimental preservation plate"
-	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
+	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
 	var/mob/living/carbon/human/wearer
 
 
@@ -435,7 +435,7 @@
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
-	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Registering user life signs, halting preservation efforts"))
+	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Registering user life signs, halting preservation efforts."))
 	wearer.revive_grace_period = 9 MINUTES
 
 

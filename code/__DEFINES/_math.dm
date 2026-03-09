@@ -28,3 +28,6 @@
 
 /// Performs a linear interpolation between a and b. Note that amount=0 returns a, amount=1 returns b, and amount=0.5 returns the mean of a and b.
 #define LERP(a, b, amount) ( (amount) ? ((a) + ((b) - (a)) * (amount)) : (a) )
+
+/// Scales a number to fit into the range between min and max.
+#define SCALE(value, min, max) ( (value - min) / (max - min) )

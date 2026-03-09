@@ -631,7 +631,7 @@
 
 // ye olde weldertanke
 
-/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/reagent_dispensers/tank/fuel/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -680,7 +680,7 @@
 			COMSIG_XENO_STOP_MOMENTUM,
 			COMSIG_XENO_START_CHARGING,
 		))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 	return ..()
 
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)

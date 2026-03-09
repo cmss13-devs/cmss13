@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/drinks/cans/food
 	name = "canned food"
-	desc = "some food can."
+	desc = "Some food can."
 	icon_state = ""
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/canned_food_lefthand.dmi',

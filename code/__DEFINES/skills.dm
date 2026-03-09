@@ -124,7 +124,7 @@
 
 
 //execution skill
-//roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
+//roles with the execution skill can perform battlefield executions (i.e. mateba(unica) and deagle)
 //should be restricted to CO/general/W-Y execs maybe
 
 #define SKILL_EXECUTION_DEFAULT 0
@@ -141,10 +141,11 @@
 
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
-#define SKILL_LEAD_TRAINED 1 //SL
-#define SKILL_LEAD_EXPERT 2 //SOs
-#define SKILL_LEAD_MASTER 3 //XO, CO
-#define SKILL_LEAD_MAX 3
+#define SKILL_LEAD_TRAINED 1 //Team leaders, departmental heads, junior officers
+#define SKILL_LEAD_SKILLED 2 //Combat-tested enlisted personnel, such as SLs
+#define SKILL_LEAD_EXPERT 3 //Combat-tested or combat directive Officers, like SOs
+#define SKILL_LEAD_MASTER 4 //XO, CO, basically any senior officer
+#define SKILL_LEAD_MAX 4
 
 //overwatch skill
 #define SKILL_OVERWATCH_DEFAULT 0

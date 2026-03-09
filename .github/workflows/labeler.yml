@@ -29,11 +29,18 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           wget "https://raw.githubusercontent.com/${{ github.repository }}/master/.github/add_labels.py"
+
+      - name: Work around setup-python cache issue
+        # see https://github.com/actions/setup-python/issues/807
+        if: hashFiles('**/requirements.txt', '**/pyproject.toml') == ''
+        shell: bash
+        run: touch requirements.txt
       - name: Set up Python
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v6
         with:
           python-version: 3.8
+          cache: 'pip'
       - name: Install dependencies
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |

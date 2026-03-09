@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - qol: "Larva queue is now known as larva pool and its position message is cached immediately for status panel if xeno candidacy is set"
-  - ui: "Tweaked some messaging/labels for xeno special role candidacy"
-  - code_imp: "Renamed larva queue variables and comments to pool and rearranged some larva pool functionality"
-  - rscdel: "Removed the special role known as agent"
-  - admin: "Late joining as xeno from menu as a mod now immediately sets larva protection false"

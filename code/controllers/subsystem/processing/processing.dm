@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(processing)
 * - Damaging a mob, do `L.adjustFireLoss(20 * delta_time)`, not `L.adjustFireLoss(20)`. This way, the damage per second stays constant even if the wait of the subsystem is changed
 * - Probability of something happening, do `if(DT_PROB(25, delta_time))`, not `if(prob(25))`. This way, if the subsystem wait is e.g. lowered, there won't be a higher chance of this event happening per second
 *
-* If you override this do not call parent, as it will return PROCESS_KILL. This is done to prevent objects that dont override process() from staying in the processing list
+* If you override this do not call parent, as it will return PROCESS_KILL. This is done to prevent objects that don't override process() from staying in the processing list
 */
 
 /datum/proc/process(delta_time)

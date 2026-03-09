@@ -43,7 +43,7 @@
 	***********************************************************"))
 
 /datum/buildmode_mode/proc/change_settings(client/c)
-	to_chat(c, SPAN_WARNING("There is no configuration available for this mode"))
+	to_chat(c, SPAN_WARNING("There is no configuration available for this mode."))
 	return
 
 /datum/buildmode_mode/proc/Reset()

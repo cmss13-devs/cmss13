@@ -8,15 +8,16 @@
 	stored = null
 	return ..()
 
-/datum/buildmode_mode/copy/when_clicked(client/c, params, obj/object)
+/datum/buildmode_mode/copy/when_clicked(client/admin_copying, params, atom/object)
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
-		var/turf/T = get_turf(object)
+		var/turf/clicked_turf = get_turf(object)
 		if(stored)
-			DuplicateObject(stored, perfectcopy=1, sameloc=0,newloc=T)
-			log_admin("Build Mode: [key_name(c)] copied [stored] to [AREACOORD(object)]")
+			var/atom/new_object = DuplicateObject(stored, perfectcopy = TRUE, sameloc = FALSE, newloc = clicked_turf)
+			new_object.setDir(BM.build_dir)
+			log_admin("Build Mode: [key_name(admin_copying)] copied [stored] to [AREACOORD(object)]")
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(ismovable(object)) // No copying turfs for now.
-			to_chat(c, SPAN_NOTICE("[object] set as template."))
+			to_chat(admin_copying, SPAN_NOTICE("[object] set as template."))
 			stored = object

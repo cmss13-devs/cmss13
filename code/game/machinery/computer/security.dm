@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/secure_data//TODO:SANITY
 	name = "Security Records"
-	desc = "Used to view and edit personnel's security records"
+	desc = "Used to view and edit personnel's security records."
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
@@ -137,7 +137,7 @@
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 					msg_admin_niche("The security record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
 					msg_admin_niche("The security record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
@@ -326,12 +326,12 @@
 
 		if ("new_general_record")
 			CreateGeneralRecord()
-			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
+			to_chat(user, SPAN_NOTICE("You successfully created new general record."))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
 
 		if ("delete_general_record")
 			if(!check_player_paygrade(user,list(GLOB.uscm_highcom_paygrades))){
-				to_chat(user, SPAN_WARNING("You have no permission to do that"))
+				to_chat(user, SPAN_WARNING("You have no permission to do that."))
 				return
 			}
 
@@ -423,7 +423,7 @@
 			ui.send_update(list(
 				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly=TRUE),
 			))
-			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
+			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo."))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
 
 /obj/structure/machinery/computer/secure_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)

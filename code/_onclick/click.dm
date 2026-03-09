@@ -30,7 +30,7 @@
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.eye), client)
+			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.get_eye()), client)
 			if (TU)
 				params += CLICK_CATCHER_ADD_PARAM
 				do_click(TU, location, params)
@@ -140,6 +140,9 @@
 	// If not standing next to the atom clicked.
 	if(W)
 		W.afterattack(A, src, 0, mods)
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
 		return
 
 	RangedAttack(A, mods)
@@ -378,6 +381,9 @@
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
 		return TRUE
 	view = mob.check_view_change(new_size, source)
+
+	SEND_SIGNAL(src, COMSIG_CLIENT_VIEW_CHANGED, view)
+
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 
@@ -423,8 +429,8 @@
 	tY = tY[1]
 	tX = splittext(tX[1], ":")
 	tX = tX[1]
-	var/shiftX = C.pixel_x / world.icon_size
-	var/shiftY = C.pixel_y / world.icon_size
+	var/shiftX = C.get_pixel_x() / world.icon_size
+	var/shiftY = C.get_pixel_y() / world.icon_size
 	var/list/actual_view = getviewsize(C ? C.view : GLOB.world_view_size)
 	tX = clamp(origin.x + text2num(tX) + shiftX - floor(actual_view[1] / 2) - 1, 1, world.maxx)
 	tY = clamp(origin.y + text2num(tY) + shiftY - floor(actual_view[2] / 2) - 1, 1, world.maxy)

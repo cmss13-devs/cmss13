@@ -10,6 +10,7 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	health = STRUCTURE_HEALTH_BASE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
@@ -194,9 +195,6 @@
 			else
 				to_chat(H, SPAN_DANGER("You land heavily!"))
 				H.apply_damage(damage, BRUTE)
-
-			H.UpdateDamageIcon()
-			H.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/living/user)

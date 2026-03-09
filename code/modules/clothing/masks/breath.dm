@@ -96,7 +96,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
 	var/original_state = "coif"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/adjust_mask)
 
 /obj/item/clothing/mask/rebreather/scarf/ui_action_click()
 	pull_down()
@@ -364,7 +364,7 @@
 	flags_inventory = ALLOWREBREATH|ALLOWCPR
 	var/adjust = FALSE
 	var/original_state = "neckerchief"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/neckerchief)
 	can_become_accessory = TRUE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
 	worn_accessory_limit = 2
@@ -450,6 +450,11 @@
 	icon_state = "neckerchief_brown"
 	item_state = "neckerchief_brown"
 	original_state = "neckerchief_brown"
+
+/obj/item/clothing/mask/neckerchief/yellow
+	icon_state = "neckerchief_bravo"
+	item_state = "neckerchief_bravo"
+	original_state = "neckerchief_bravo"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

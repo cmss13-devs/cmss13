@@ -2,7 +2,7 @@
 
 /obj/item/storage/large_holster
 	name = "\improper Rifle Holster"
-	desc = "holster"
+	desc = "Holster."
 	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = ""
 	w_class = SIZE_LARGE

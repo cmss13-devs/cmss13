@@ -250,14 +250,14 @@
 			if(sg.motion_detector)
 				sg.motion_detector = FALSE
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
-				TMD.update_icon()
+				TMD.update_button_icon()
 				sg.motion_detector()
 		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
 			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
 			if(xm4.motion_detector)
 				xm4.motion_detector = FALSE
 				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
-				TMD.update_icon()
+				TMD.update_button_icon()
 				xm4.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
@@ -429,7 +429,7 @@
 	if(ishuman(mob))
 		var/mob/living/carbon/human/human = mob
 		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
 		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

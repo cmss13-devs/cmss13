@@ -80,7 +80,7 @@
 	target_ship_section = ship_section
 	var/turf/target = get_crashsite_turf(ship_section)
 	if(!target)
-		to_chat(usr, SPAN_WARNING("No area available"))
+		to_chat(usr, SPAN_WARNING("No area available."))
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
@@ -145,6 +145,7 @@
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	notify_ghosts(header = "Dropship Collision", message = "The dropship is about to impact [get_area_name(crash_site)]!", source = crash_site, extra_large = TRUE)
+	SScmtv.spectate_event("Dropship Impact", crash_site, 40 SECONDS)
 	final_announcement = TRUE
 
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
@@ -157,12 +158,12 @@
 /datum/dropship_hijack/almayer/proc/do_dropship_incoming_sound()
 	for(var/area/internal_area in shuttle.shuttle_areas)
 		playsound_area(internal_area, 'sound/effects/dropship_incoming.ogg', vol = 75)
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_incoming.ogg', volume = 75)
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/dropship_incoming.ogg', volume = 75)
 
 	addtimer(CALLBACK(src, PROC_REF(do_dropship_collision_sound)), 7 SECONDS)
 
 /datum/dropship_hijack/almayer/proc/do_dropship_collision_sound()
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/dropship_crash.ogg', volume = 75)
 
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
 	GLOB.enter_allowed = FALSE

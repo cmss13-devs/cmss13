@@ -14,7 +14,7 @@
 			M.flick_attack_overlay(src, "punch")
 			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			var/damage = rand(S.melee_damage_lower, S.melee_damage_upper)
-			apply_damage(damage, BRUTE)
+			apply_damage(damage, BRUTE, enviro=TRUE)
 			last_damage_data = create_cause_data(initial(M.name), M)
 			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
@@ -172,7 +172,7 @@
 			if(xeno.behavior_delegate)
 				damage = xeno.behavior_delegate.melee_attack_modify_damage(damage, src)
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(xeno.frenzy_aura > 0)
 				damage += (xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 

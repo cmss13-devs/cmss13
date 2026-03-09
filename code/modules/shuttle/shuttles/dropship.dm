@@ -339,7 +339,10 @@
 	. = ..()
 	arriving_shuttle.set_mode(SHUTTLE_CRASHED)
 	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
-		if(affected_mob.z != z)
+		if(!is_mainship_level(affected_mob.z))
+			continue
+		if(affected_mob && HAS_TRAIT_FROM(affected_mob, TRAIT_UNDENSE, WALL_HIDING_TRAIT))
+			to_chat(affected_mob, SPAN_WARNING("You brace yourself against the impact!"))
 			continue
 		if(affected_mob.buckled)
 			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))

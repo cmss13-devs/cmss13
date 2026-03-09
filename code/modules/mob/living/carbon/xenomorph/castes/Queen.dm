@@ -23,7 +23,6 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The Queen, in all her glory."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
@@ -46,7 +45,6 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "xenoqueen"
-
 	minimap_background = "xeno_ruler"
 
 	royal_caste = TRUE
@@ -114,7 +112,7 @@
 
 	hivenumber = Q.hivenumber
 	med_hud_set_status()
-	add_to_all_mob_huds()
+	add_to_all_mob_huds(hivenumber)
 
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
@@ -246,9 +244,9 @@
 		M.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			M.client.eye = is_watching
+			M.client.set_eye(is_watching)
 		else
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 
@@ -280,6 +278,7 @@
 	wall_smash = 0
 	pixel_x = -29 //new offsets for the much bigger sprite.
 	old_x = -29
+	xenonid_pixel_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
@@ -287,6 +286,8 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 	organ_value = 8000 // queen is expensive
+	claw_type = CLAW_TYPE_VERY_SHARP
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
@@ -326,7 +327,6 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 
@@ -372,7 +372,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
-	claw_type = CLAW_TYPE_VERY_SHARP
 
 	skull = /obj/item/skull/queen
 	pelt = /obj/item/pelt/queen
@@ -385,6 +384,11 @@
 	var/queen_age_temp_timer_id = TIMER_ID_NULL
 
 	bubble_icon = "alienroyal"
+
+/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
+	if(ovipositor && new_resting)
+		return
+	return ..()
 
 /mob/living/carbon/xenomorph/queen/get_organ_icon()
 	return "heart_t3"
@@ -456,6 +460,8 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	AddComponent(/datum/component/seethrough_mob)
+	if(hive.hivenumber == XENO_HIVE_NORMAL)
+		AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=get_minimap_flag_for_faction(hive.hivenumber), has_update=TRUE, drawing=TRUE)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
@@ -507,7 +513,6 @@
 
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -517,11 +522,16 @@
 		return FALSE
 	update_living_queens()
 
-/// Signal handler for COMSIG_XENO_TAKE_DAMAGE intended to extend temporary maturity by XENO_QUEEN_TEMP_AGE_EXTENSION up to XENO_QUEEN_TEMP_AGE_DURATION
+/// Signal handler for COMSIG_MOB_TAKE_DAMAGE intended to extend temporary maturity by XENO_QUEEN_TEMP_AGE_EXTENSION up to XENO_QUEEN_TEMP_AGE_DURATION
 /mob/living/carbon/xenomorph/queen/proc/on_take_damage(owner, damage_data, damage_type)
 	SIGNAL_HANDLER
 	if(queen_age_temp_timer_id == TIMER_ID_NULL)
 		CRASH("[src] called on_take_damage when not temporarily mature!")
+	if(damage_data["enviro"])
+		return
+	var/damage = damage_data["damage"]
+	if(damage < 5)
+		return
 	var/new_duration = min(timeleft(queen_age_temp_timer_id) + XENO_QUEEN_TEMP_AGE_EXTENSION, XENO_QUEEN_TEMP_AGE_DURATION)
 	queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), new_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 
@@ -529,7 +539,7 @@
 /mob/living/carbon/xenomorph/queen/proc/refresh_combat_effective()
 	if(queen_age_temp_timer_id != TIMER_ID_NULL && isnull(timeleft(queen_age_temp_timer_id)))
 		queen_age_temp_timer_id = TIMER_ID_NULL
-		UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+		UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 
 	refresh_combat_abilities()
 	recalculate_actions()
@@ -545,7 +555,7 @@
 		else
 			var/already_temp_mature = queen_age_temp_timer_id != TIMER_ID_NULL
 			if(!already_temp_mature)
-				RegisterSignal(src, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(on_take_damage))
+				RegisterSignal(src, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(on_take_damage))
 			queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), XENO_QUEEN_TEMP_AGE_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 			if(already_temp_mature)
 				return
@@ -558,8 +568,16 @@
 		if(queen_age_temp_timer_id != TIMER_ID_NULL)
 			deltimer(queen_age_temp_timer_id)
 			queen_age_temp_timer_id = TIMER_ID_NULL
-			UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+			UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 
+	refresh_combat_effective()
+
+/mob/living/carbon/xenomorph/queen/proc/end_temporary_maturity()
+	if(queen_age_temp_timer_id == TIMER_ID_NULL)
+		return
+	deltimer(queen_age_temp_timer_id)
+	queen_age_temp_timer_id = TIMER_ID_NULL
+	UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 	refresh_combat_effective()
 
 /// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable
@@ -629,7 +647,8 @@
 
 		// Grant temporary maturity if near the hive_location for early game
 		if(!queen_aged)
-			var/near_hive = hive?.hive_location && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
+			// Explicitly requires queen to not be inside something (e.g. a tunnel)
+			var/near_hive = hive?.hive_location && loc == get_turf(src) && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
 			if(near_hive && ROUND_TIME < XENO_QUEEN_AGE_TIME * 2 && !is_mob_incapacitated(TRUE))
 				make_combat_effective(temporary=TRUE)
 			else if(queen_age_temp_timer_id != TIMER_ID_NULL)
@@ -679,7 +698,7 @@
 /mob/living/carbon/xenomorph/queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
-	set desc = "Send a message to all aliens in the hive that is big and visible"
+	set desc = "Send a message to all aliens in the hive that is big and visible."
 	if(client.prefs.muted & MUTE_IC)
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return
@@ -1064,8 +1083,6 @@
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
-	add_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
-
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
@@ -1112,8 +1129,6 @@
 
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	refresh_combat_abilities()
-
-	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
 
 	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))

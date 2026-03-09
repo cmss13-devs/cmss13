@@ -89,11 +89,11 @@
 		if(target_human.stat == DEAD)
 			return
 
-	for(var/datum/effects/acid/acid_effect in target_mob.effects_list)
-		qdel(acid_effect)
-		break
-
-	new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+	else
+		new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
 	if(isxeno_human(target_mob)) //Will the runner get acid stacks
 		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target_mob.contents
 		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them
@@ -132,7 +132,7 @@
 		do_caboom()
 		return
 
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
 	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
@@ -142,7 +142,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
 /datum/behavior_delegate/runner_acider/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
 

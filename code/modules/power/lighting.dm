@@ -142,12 +142,12 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	light_system = STATIC_LIGHT
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 6 // luminosity when on, also used in power calculation
+	var/brightness = 8 // luminosity when on, also used in power calculation
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -168,6 +168,9 @@
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
+/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/light/blue
 	icon_state = "btube1"
 	base_state = "btube"
@@ -178,6 +181,7 @@
 	icon_state = "rtube1"
 	base_state = "rtube"
 	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
+	brightness = 4
 
 // the smaller bulb light fixture
 
@@ -273,11 +277,9 @@
 	. = ..()
 	switch(fitting)
 		if("tube")
-			brightness = 8
 			if(prob(2))
 				broken(1)
 		if("bulb")
-			brightness = 4
 			if(prob(5))
 				broken(1)
 
@@ -642,11 +644,12 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/stabbing_xeno)
+/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(is_broken())
-		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
+		to_chat(xeno, SPAN_WARNING("[src] is already broken!"))
 		return
-	stabbing_xeno.visible_message(SPAN_DANGER("\The [stabbing_xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"), SPAN_DANGER("We smash [src] with our tail!"), null, 5)
+	xeno.tail_stab_animation(src, blunt_stab)
 	broken() //Smashola!
 	return TAILSTAB_COOLDOWN_VERY_LOW
 
@@ -782,7 +785,7 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
 	light_color = LIGHT_COLOR_FLARE

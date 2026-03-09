@@ -6,6 +6,7 @@
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
+	static_comms_amount = 0
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
 
 	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control, /obj/structure/machinery/defenses/sentry/premade)
@@ -114,19 +115,31 @@
 
 	for(var/datum/hive_status/hive in xenomorphs) //Build and move the xenos.
 		for(var/datum/mind/ghost_mind in xenomorphs[hive])
-			transform_xeno(ghost_mind, hive_spots[hive], hive.hivenumber, FALSE)
 			ghost_mind.current.close_spawn_windows()
+			var/mob/new_player/new_player_mob
+			if(isnewplayer(ghost_mind.current))
+				new_player_mob = ghost_mind.current
+				new_player_mob.spawning = TRUE
+			transform_xeno(ghost_mind, hive_spots[hive], hive.hivenumber, FALSE)
+			if(new_player_mob)
+				qdel(new_player_mob)
 
 	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
 	for(var/datum/hive_status/hive in picked_queens)
-		transform_queen(picked_queens[hive], hive_spots[hive], hive.hivenumber)
-		var/datum/mind/M = picked_queens[hive]
-		M.current.close_spawn_windows()
+		var/datum/mind/picked_mind = picked_queens[hive]
+		picked_mind.current.close_spawn_windows()
+		var/mob/new_player/new_player_mob
+		if(isnewplayer(picked_mind.current))
+			new_player_mob = picked_mind.current
+			new_player_mob.spawning = TRUE
+		transform_queen(picked_mind, hive_spots[hive], hive.hivenumber)
+		if(new_player_mob)
+			qdel(new_player_mob)
 
 	for(var/datum/hive_status/hive in hive_spots)
-		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
-		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
-		hive_cores += C
+		var/obj/effect/alien/resin/special/pylon/core/core = new(hive_spots[hive], hive)
+		core.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
+		hive_cores += core
 
 /datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL, should_spawn_nest = TRUE)
 	if(should_spawn_nest)

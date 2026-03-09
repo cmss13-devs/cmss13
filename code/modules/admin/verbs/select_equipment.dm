@@ -106,7 +106,10 @@
 
 /client/proc/cmd_admin_dress_human(mob/living/carbon/human/M in GLOB.human_mob_list, datum/equipment_preset/dresscode, no_logs = 0, count_participant = FALSE)
 	if (!no_logs)
-		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_name_presets_list)
+		var/category = tgui_input_list(usr, "Which Equipment Category do you wish to use?", "Select Category", GLOB.equipment_presets.categories)
+		if(!category)
+			return
+		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.equipment_presets.categories[category])
 
 	if(isnull(dresscode))
 		return
@@ -138,7 +141,7 @@
 	set name = "Select Equipment - All Humans"
 	set desc = "Applies an equipment preset to all humans in the world."
 
-	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.gear_name_presets_list)
+	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.equipment_presets.categories["All"])
 	if (isnull(dresscode))
 		return
 
@@ -154,18 +157,18 @@
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /proc/arm_equipment(mob/living/carbon/human/M, dresscode, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(ispath(dresscode))
-		if(!GLOB.gear_path_presets_list)
+		if(!GLOB.equipment_presets.gear_path_presets_list)
 			CRASH("arm_equipment !gear_path_presets_list")
-		if(!GLOB.gear_path_presets_list[dresscode])
+		if(!GLOB.equipment_presets.gear_path_presets_list[dresscode])
 			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
-		GLOB.gear_path_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
+		GLOB.equipment_presets.gear_path_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
 	else
-		if(!GLOB.gear_name_presets_list)
+		if(!GLOB.equipment_presets.categories["All"])
 			CRASH("arm_equipment !gear_path_presets_list")
-		if(!GLOB.gear_name_presets_list[dresscode])
+		if(!GLOB.equipment_presets.categories["All"][dresscode])
 			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
-		GLOB.gear_name_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
-
+		var/datum/equipment_preset/selected_dresscode = GLOB.equipment_presets.categories["All"][dresscode]
+		selected_dresscode.load_preset(M, randomise, count_participant, mob_client, show_job_gear)
 	if(M.faction)
 		M.check_event_info(M.faction)
 	return

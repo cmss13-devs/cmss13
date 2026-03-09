@@ -67,7 +67,7 @@
 		"Lifespan" = 0,
 		"Potency" = 0,
 		"Maturity" = 0,
-		"Bioluminecence" = 0,
+		"Bioluminescence" = 0,
 		"Flowers" = 0,
 		"New Chems" = 0,
 		"New Chems2" = 0,
@@ -99,7 +99,19 @@
 	if(seed && seed.immutable > 0)
 		return 0
 
+	bullet_ping(Proj)
+	if(Proj.damage)
+		take_damage(Proj.damage)
+		return TRUE
+
 	..()
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		visible_message(SPAN_WARNING("[src] crumbles into pieces!"))
+		playsound(src, 'sound/effects/meteorimpact.ogg', 25, 1)
+		qdel(src)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/process()
 
@@ -219,7 +231,7 @@
 		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
 		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
 		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
-		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
+		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products."))
 		harvest(null, TRUE) //this is ok
 
 	check_level_sanity()

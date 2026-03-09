@@ -30,11 +30,11 @@
 /datum/origin/uscm/aw/generate_human_name(gender = MALE)
 	switch(gender)
 		if(FEMALE)
-			return capitalize(pick(GLOB.first_names_female)) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
-		if(MALE)
-			return capitalize(pick(GLOB.first_names_male)) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
-		if(PLURAL)
-			return capitalize(pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
+			return "[capitalize(pick(GLOB.first_names_female))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
+		if(PLURAL, NEUTER)
+			return "[capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
+		else // MALE
+			return "[capitalize(pick(GLOB.first_names_male))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
 
 /datum/origin/uscm/aw/validate_name(name_to_check)
 	if(!findtext(name_to_check, "A.W. "))
@@ -51,12 +51,12 @@
 
 /datum/origin/uscm/convict/minor
 	name = ORIGIN_USCM_CONVICT_MINOR
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for numerous minor crimes and offered a way out: the USCM."
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you were convicted for numerous minor crimes and offered a way out: the USCM."
 
 /datum/origin/uscm/convict/gang
 	name = ORIGIN_USCM_CONVICT_GANG
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for gang related crimes and offered a way out: the USCM."
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you were convicted for gang related crimes and offered a way out: the USCM."
 
 /datum/origin/uscm/convict/smuggling
 	name = ORIGIN_USCM_CONVICT_SMUGGLING
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for smuggling (and likely some piracy) and offered a way out: the USCM."
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you were convicted for smuggling (and likely some piracy) and offered a way out: the USCM."

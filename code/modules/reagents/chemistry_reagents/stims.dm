@@ -34,7 +34,7 @@
 	name = "Speed Stimulant"
 	id = "speed_stimulant"
 	description = "A highly experimental performance enhancement stimulant. It is not addictive."
-	color = "#ffff00"
+	color = "#d4d42b" //rgb: 212, 212, 43
 	properties = list(
 		PROPERTY_MUSCLESTIMULATING = 40,
 		PROPERTY_PAINKILLING = 3,
@@ -44,7 +44,7 @@
 	name = "Brain Stimulant"
 	id = "brain_stimulant"
 	description = "A highly experimental CNS stimulant."
-	color = "#a800ff"
+	color = "#7b23a9" //rgb: 123, 35, 169
 	properties = list(
 		PROPERTY_NERVESTIMULATING = 30,
 		PROPERTY_PAINKILLING = 6,
@@ -61,7 +61,7 @@
 		Increases the durability of skin and bones as well as nullifying any pain.\
 		Pain is impossible to feel whilst this drug is in your system.\
 		During the metabolism of this drug, dysfunctional organs will work normally."}
-	color = "#00ffa8"
+	color = "#219f74" //rgb: 33, 159, 116
 	properties = list(
 		PROPERTY_NERVESTIMULATING = 2,
 		PROPERTY_MUSCLESTIMULATING = 2,

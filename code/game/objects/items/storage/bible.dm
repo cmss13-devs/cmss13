@@ -41,7 +41,6 @@
 	new /obj/item/reagent_container/food/drinks/bottle/whiskey(src)
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
-	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 
 /obj/item/storage/bible/hefa
 	name = "Holy texts of the High Explosive Fragmenting Anti-personnel hand grenade."

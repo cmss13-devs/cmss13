@@ -76,7 +76,7 @@
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You dismantle the frame..."))
+				to_chat(user, SPAN_NOTICE("You dismantle the frame..."))
 				new /obj/item/stack/sheet/metal(src.loc, 5)
 				qdel(src)
 		if(CONSTRUCTION_STATE_PROGRESS)
@@ -87,7 +87,7 @@
 				if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You add the circuit board to the frame."))
+				to_chat(user, SPAN_NOTICE("You add the circuit board to the frame."))
 				circuit = P
 				if(user.drop_inv_item_to_loc(P, src))
 					state = CONSTRUCTION_STATE_FINISHED
@@ -109,7 +109,7 @@
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You remove the cables."))
+				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = CONSTRUCTION_STATE_BEGIN
 				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
 				A.amount = 5
@@ -167,7 +167,7 @@
 						if(istype(P, /obj/item/stack/cable_coil))
 							var/obj/item/stack/cable_coil/CP = P
 							if(CP.get_amount() > 1)
-								var/camt = min(CP.amount, req_components[I]) // amount of cable to take, idealy amount required, but limited by amount provided
+								var/camt = min(CP.amount, req_components[I]) // amount of cable to take, ideally amount required, but limited by amount provided
 								var/obj/item/stack/cable_coil/CC = new /obj/item/stack/cable_coil(src)
 								CC.amount = camt
 								CC.update_icon()

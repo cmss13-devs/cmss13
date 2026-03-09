@@ -163,6 +163,7 @@
 	pen_armor_punch = 0
 	shell_speed = 2*AMMO_SPEED_TIER_6
 	accuracy = HIT_ACCURACY_TIER_5
+	damage_enviro = TRUE
 
 /datum/ammo/bullet/turret/dumb
 	icon_state = "bullet"
@@ -189,6 +190,10 @@
 
 /datum/ammo/bullet/machinegun/doorgun
 	flags_ammo_behavior = AMMO_BALLISTIC | AMMO_IGNORE_COVER
+
+/datum/ammo/bullet/machinegun/whiskey
+	flags_ammo_behavior = AMMO_BALLISTIC | AMMO_IGNORE_COVER
+	penetration = ARMOR_PENETRATION_TIER_5
 
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"

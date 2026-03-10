@@ -1,6 +1,8 @@
-name: Tracy Profiling
+name: Tracy Startup Profiling
+
 on:
   push:
+  pull_request:
 
 jobs:
   run_tracy_profiling:
@@ -12,6 +14,7 @@ jobs:
     steps:
       - name: Generate App Token
         id: app-token-generation
+        if: github.event_name == 'push'
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.APP_ID }}
@@ -20,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
-          token: ${{ steps.app-token-generation.outputs.token }}
+          token: ${{ github.event_name == 'push' && steps.app-token-generation.outputs.token || github.token }}
 
       - name: Restore BYOND cache
         uses: actions/cache@v3
@@ -72,7 +75,28 @@ jobs:
           cd $GITHUB_WORKSPACE
           bash tools/ci/profile_server.sh startup.csv
 
+      - name: Compare against baseline
+        if: github.event_name == 'pull_request'
+        run: |
+          awk -F',' '
+            NR==1 { next }
+            FILENAME == ARGV[1] { baseline[$1] = $4; next }
+            {
+              name = $1; total = $4
+              if (name in baseline) {
+                delta = total - baseline[name]
+                pct = (delta / baseline[name]) * 100
+                printf "%-60s  baseline: %8.3fms  new: %8.3fms  delta: %+8.3fms (%+.1f%%)\n",
+                  name, baseline[name]/1e6, total/1e6, delta/1e6, pct
+              } else {
+                printf "%-60s  NEW ZONE  new: %8.3fms\n", name, total/1e6
+              }
+            }
+          ' tools/ci/baseline_profile.csv startup.csv \
+          | sort -t'(' -k2 -rn
+
       - name: Commit baseline profile
+        if: github.event_name == 'push'
         run: |
           cp startup.csv tools/ci/baseline_profile.csv
           git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
@@ -81,6 +105,7 @@ jobs:
           git commit -m "Automatic startup profile update [ci skip]" || true
 
       - name: Push
+        if: github.event_name == 'push'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ steps.app-token-generation.outputs.token }}

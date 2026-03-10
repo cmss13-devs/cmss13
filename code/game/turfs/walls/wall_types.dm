@@ -962,17 +962,17 @@
 		door_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
 
 /turf/closed/wall/resin/above/Initialize(mapload)
-
+	. = ..()
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(!below)
 		dismantle_wall()
 		return
+
 	if(istype(below, /turf/closed/wall/resin))
 		wall_below = below
 		wall_below.upper_wall = src
 		hivenumber = wall_below.hivenumber
 		set_hive_data(src, hivenumber)
-		. = ..()
 		return
 
 	for(var/obj in below.contents)
@@ -981,7 +981,6 @@
 			door_below.upper_wall = src
 			hivenumber = door_below.hivenumber
 			set_hive_data(src, hivenumber)
-			. = ..()
 			return
 
 	dismantle_wall()

@@ -391,7 +391,7 @@
 
 /obj/item/clothing/accessory/medal/gold/cross
 	name = MARINE_MEDAL_GALACTIC_CROSS
-	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
+	desc = "The second-highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
 	icon_state = "ua_cross"
 	awarding_faction = FACTION_MARINE
 
@@ -499,7 +499,7 @@
 
 /obj/item/clothing/accessory/armband/squad
 	name = "squad armband"
-	desc = "An armband in squad colors, worn for ease of idenfication."
+	desc = "An armband in squad colors, worn for ease of identification."
 	icon_state = "armband_squad"
 	var/dummy_icon_state = "armband_%SQUAD%"
 	var/static/list/valid_icon_states
@@ -630,6 +630,21 @@
 	name = "USCM large chest patch"
 	desc = "A fire-resistant chest patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconsbigpatch"
+
+/obj/item/clothing/accessory/patch/army
+	name = "US Army patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Army."
+	icon_state = "armypatch"
+
+/obj/item/clothing/accessory/patch/army/infantry
+	name = "Army Infantry patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 1st Cavalry Division."
+	icon_state = "infantrypatch"
+
+/obj/item/clothing/accessory/patch/army/armor
+	name = "Army Armor patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 32nd Armor Brigade."
+	icon_state = "armorpatch"
 
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"

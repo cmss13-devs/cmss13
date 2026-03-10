@@ -16,7 +16,6 @@
 
 	deevolves_to = list(XENO_CASTE_DRONE)
 	caste_desc = "A digger and trapper."
-	fire_immunity = FIRE_IMMUNITY_BURROWER
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE

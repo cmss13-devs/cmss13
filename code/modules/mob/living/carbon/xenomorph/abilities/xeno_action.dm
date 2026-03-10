@@ -480,6 +480,12 @@
 	else
 		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
 
+/datum/action/xeno_action/proc/on_select(mob/user)
+	return
+
+/datum/action/xeno_action/proc/on_deselect(mob/user)
+	return
+
 // Used to be picky on who gets what Hive Abilities
 /datum/action/xeno_action/proc/hive_ability_check_conditions()
 	if(islarva(owner) || isfacehugger(owner))

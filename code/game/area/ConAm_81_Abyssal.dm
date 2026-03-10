@@ -26,7 +26,7 @@
 	icon_state = "base_icon"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|AREA_UNWEEDABLE
+	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|AREA_UNWEEDABLE|AREA_NOBURROW
 	requires_power = FALSE
 	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR
 	minimap_color = MINIMAP_AREA_GLASS
@@ -40,7 +40,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR
 	minimap_color = MINIMAP_AREA_SPACE
 	requires_power = FALSE
@@ -229,7 +229,7 @@
 	icon_state = "maints"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_GLASS
 	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR
 	requires_power = FALSE

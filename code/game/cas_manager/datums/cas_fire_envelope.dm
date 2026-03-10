@@ -17,6 +17,7 @@
 	var/mission_error
 
 	var/stat = FIRE_MISSION_STATE_IDLE
+	var/firemission_initiate_time = 0
 
 	var/recorded_dir = NORTH
 	var/recorded_offset = 0
@@ -371,10 +372,12 @@
 /// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
 	stat = FIRE_MISSION_STATE_IDLE
+	firemission_initiate_time = 0
 
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
+	firemission_initiate_time = world.time
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target lost."

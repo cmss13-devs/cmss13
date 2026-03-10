@@ -227,6 +227,9 @@
 	// dropship info
 	.["shuttle_state"] = dropship.mode
 	.["fire_mission_enabled"] = dropship.in_flyby
+	.["flight_time"] = dropship.timeLeft(10)
+	.["max_flight_duration"] = dropship.callTime / 10
+	.["max_refuel_duration"] = dropship.rechargeTime / 10
 
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(user, dropship)
@@ -281,6 +284,9 @@
 		.["firemission_name"] = selected_firemission ? selected_firemission.name : ""
 		.["firemission_step"] = firemission_envelope.stat
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
+		.["firemission_initiate_time"] = firemission_envelope.firemission_initiate_time
+		.["firemission_execution_start"] = firemission_envelope.execution_start
+		.["firemission_cooldown_period"] = firemission_envelope.cooldown_period
 
 	.["configuration"] = configuration
 	.["dummy_mode"] = simulation.dummy_mode

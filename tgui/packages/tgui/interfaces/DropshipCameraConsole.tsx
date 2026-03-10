@@ -2,6 +2,7 @@ import { useBackend } from 'tgui/backend';
 import { Box, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { FlightTimeBar } from './DropshipWeaponsConsole';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
@@ -18,6 +19,10 @@ export interface DropshipCameraProps {
   camera_target_id?: string;
   targets_data: Array<LazeTarget>;
   selected_eqp?: number;
+  shuttle_state?: string;
+  flight_time?: number;
+  max_flight_duration?: number;
+  max_refuel_duration?: number;
 }
 
 type LazeTarget = {
@@ -132,6 +137,13 @@ export const DropshipCameraConsole = () => {
                   Camera
                   <br />
                   Control
+                </Stack.Item>
+                <Stack.Item height="5px" />
+                <Stack.Item>
+                  <FlightTimeBar
+                    themeColor="hsl(200, 100%, 50%)"
+                    themeColorRgb="0, 149, 255"
+                  />
                 </Stack.Item>
                 <Stack.Item height="280px" />
               </Stack>

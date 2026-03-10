@@ -535,6 +535,11 @@
 
 	.["equipment_data"] = get_sanitised_equipment(user, dropship)
 
+	.["shuttle_state"] = dropship.mode
+	.["flight_time"] = dropship.timeLeft(10)
+	.["max_flight_duration"] = dropship.callTime / 10
+	.["max_refuel_duration"] = dropship.rechargeTime / 10
+
 	.["medevac_targets"] = list()
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))

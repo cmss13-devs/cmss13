@@ -61,6 +61,9 @@ export type FiremissionContext = {
   firemission_data: Array<CasFiremission>;
   firemission_state?: number;
   firemission_message?: string;
+  firemission_initiate_time?: number;
+  firemission_execution_start?: number;
+  firemission_cooldown_period?: number;
 };
 
 export type SentrySpec = {

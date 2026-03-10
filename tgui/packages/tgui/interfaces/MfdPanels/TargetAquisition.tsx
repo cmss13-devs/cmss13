@@ -147,6 +147,83 @@ const useQuickMode = (panelId: string) => {
   };
 };
 
+const FiremissionCountdownBar = (props: { readonly color: string }) => {
+  const { data } = useBackend<FiremissionContext & { worldtime: number }>();
+  const [, forceUpdate] = useState({});
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      forceUpdate({});
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const state = data.firemission_state ?? 0;
+  const initiateTime = data.firemission_initiate_time ?? 0;
+  const executionDelay = data.firemission_execution_start ?? 0;
+  const cooldownPeriod = data.firemission_cooldown_period ?? 0;
+
+  // Show during all active states, IN_TRANSIT(1), ON_TARGET(2), FIRING(4), OFF_TARGET(8), COOLDOWN(16)
+  if (state < 1 || !initiateTime || !executionDelay) {
+    return null;
+  }
+
+  const elapsed = data.worldtime - initiateTime;
+  const isCooldownPhase = state >= 4; // FIRING, OFF_TARGET, or COOLDOWN
+
+  let progress: number;
+  let remainingSec: number;
+  let stateLabel: string;
+  let barColor: string;
+
+  if (!isCooldownPhase) {
+    // Pre fire phase, counting down to firing
+    progress = Math.min(1, Math.max(0, elapsed / executionDelay));
+    remainingSec = Math.max(0, Math.ceil((executionDelay - elapsed) / 10));
+    stateLabel = state === 1 ? 'IN TRANSIT' : 'ON TARGET';
+    barColor = progress < 0.75 ? props.color : '#ff4444';
+  } else {
+    // Cooldown phase
+    const cooldownDuration = cooldownPeriod - executionDelay;
+    const cooldownElapsed = elapsed - executionDelay;
+    progress =
+      cooldownDuration > 0
+        ? Math.min(1, Math.max(0, cooldownElapsed / cooldownDuration))
+        : 1;
+    remainingSec = Math.max(0, Math.ceil((cooldownPeriod - elapsed) / 10));
+    stateLabel =
+      state === 4 ? 'FIRING' : state === 8 ? 'OFF TARGET' : 'COOLDOWN';
+    barColor = '#ffaa00';
+  }
+
+  return (
+    <Stack.Item>
+      <Box mt={1}>
+        <h3 style={{ textAlign: 'center', margin: '0 0 4px 0' }}>
+          {stateLabel} - {remainingSec}s
+        </h3>
+        <Box
+          style={{
+            border: `1px solid ${props.color}`,
+            height: '12px',
+            width: '100%',
+            position: 'relative',
+          }}
+        >
+          <Box
+            style={{
+              background: barColor,
+              height: '100%',
+              width: `${(1 - progress) * 100}%`,
+              transition: 'width 0.1s linear',
+            }}
+          />
+        </Box>
+      </Box>
+    </Stack.Item>
+  );
+};
+
 export const TargetLines = (props: {
   readonly panelId: string;
   readonly color?: string;
@@ -905,6 +982,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                   Guidance computer {strikeReady ? 'READY' : 'INCOMPLETE'}
                 </h3>
               </Stack.Item>
+              <FiremissionCountdownBar color={themeColor} />
             </Stack>
           </Stack.Item>
           <Stack.Item>

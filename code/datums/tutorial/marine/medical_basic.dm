@@ -57,12 +57,13 @@
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
-	message_to_player("<b>Kelotane</b> is used to fix burn damage over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
 	add_highlight(burn_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_burn_inject))
+
 
 /datum/tutorial/marine/medical_basic/proc/on_burn_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
@@ -73,53 +74,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane, burn_injector)
 	remove_highlight(burn_injector)
-	message_to_player("Good. Now, the third type of damage is <b>Oxy</b> damage. Oxy damage, or oxygen deprivation, is an indicator your organs are struggling to receive oxygen, either due to blood loss, heart and lung injuries, or breathing in a low oxygen environment. To simulate this, we're forcing you to hold your breath for a very long time.")
-	update_objective("Try not to pass out.")
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.adjustOxyLoss(85)
-	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial)), 4 SECONDS)
-
-/datum/tutorial/marine/medical_basic/proc/oxy_tutorial()
-	message_to_player("<b>Dexalin Plus</b> is a miraculous medication that instantly removes all Oxy damage. Quickly, inject yourself with the <b>dexalin plus EZ autoinjector</b> before you pass out!")
-	update_objective("Inject yourself with the dexalin plus autoinjector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp/oxy_injector = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(oxy_injector)
-	add_highlight(oxy_injector)
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_oxy_inject))
-
-/datum/tutorial/marine/medical_basic/proc/on_oxy_inject(datum/source, obj/item/reagent_container/hypospray/injector)
-	SIGNAL_HANDLER
-
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp))
-		return
-
-	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp, oxy_injector)
-	remove_highlight(oxy_injector)
-	message_to_player("Amazing. A breath of fresh air without breathing. ... You can breathe, now. Good. The next type of damage is toxin damage, which accumulates from ingesting or breathing toxic chemicals, overdosing on medicine, drinking too much alcohol, and liver damage.")
-	update_objective("")
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.adjustToxLoss(20)
-	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 4 SECONDS)
-
-/datum/tutorial/marine/medical_basic/proc/tox_tutorial()
-	message_to_player("<b>Dylovene</b> slowly removes toxin damage over time. Inject yourself with the <b>dylovene EZ autoinjector</b>.")
-	update_objective("Inject yourself with the dylovene autoinjector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin/tox_injector = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(tox_injector)
-	add_highlight(tox_injector)
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_tox_inject))
-
-/datum/tutorial/marine/medical_basic/proc/on_tox_inject(datum/source, obj/item/reagent_container/hypospray/injector)
-	SIGNAL_HANDLER
-
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin))
-		return
-
-	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tutorial/dexalinp, tox_injector)
-	remove_highlight(tox_injector)
-	message_to_player("Good. Now, you may have noticed that toxins, in addition to other types of damage, cause <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
+	message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.pain.apply_pain(PAIN_CHESTBURST_STRONG)
@@ -149,7 +104,7 @@
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/bleed_tutorial()
-	message_to_player("You can sometimes start <b>bleeding</b> from things like bullets or slashes. Losing blood will accumulate <b>Oxy</b> damage, eventually causing death.")
+	message_to_player("You can sometimes start <b>bleeding</b> from things like bullets or slashes. Losing blood will accumulate <b>oxygen</b> damage, eventually causing death.")
 	update_objective("")
 	var/mob/living/carbon/human/human_mob = tutorial_mob
 	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs

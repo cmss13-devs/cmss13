@@ -201,6 +201,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigoff"
 	item_state = "cigoff"
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
+	item_state_slots = list(WEAR_AS_GARB = "cigarette")
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
@@ -475,6 +476,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
 	chem_volume = 39
 	smoketime = 20 MINUTES
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
+	item_state_slots = list(WEAR_AS_GARB = "cigarette")
 
 /obj/item/clothing/mask/cigarette/weed/Initialize()
 	. = ..()

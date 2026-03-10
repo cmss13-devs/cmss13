@@ -462,6 +462,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM headband, squad specific"
 	path = /obj/item/clothing/head/headband/squad
 
+/datum/gear/headwear/headband_fcred
+	display_name = "Headband, red"
+	path = /obj/item/clothing/head/headband/fcred
+
 /datum/gear/headwear/uscm/headset
 	display_name = "USCM headset"
 	path = /obj/item/clothing/head/headset
@@ -574,6 +578,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Cartridge"
 	path = /obj/item/prop/helmetgarb/cartridge
 
+/datum/gear/helmet_garb/helmet_bandolier
+	display_name = "Helmet bandolier"
+	path = /obj/item/prop/helmetgarb/helmet_bandolier
+
 /datum/gear/helmet_garb/spacejam_tickets
 	display_name = "Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
@@ -581,6 +589,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/trimmed_wire
 	display_name = "Trimmed barbed wire"
 	path = /obj/item/prop/helmetgarb/trimmed_wire
+
+/datum/gear/helmet_garb/dog_tags
+	display_name = "Dog tags"
+	path = /obj/item/prop/helmetgarb/dog_tags
 
 /datum/gear/helmet_garb/bullet_pipe
 	display_name = "10x99mm XM43E1 casing pipe"
@@ -767,6 +779,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/toy/pride
 	display_name = "Box of Prideful Crayons"
 	path = /obj/item/storage/box/pride
+
+/datum/gear/toy/coin_silver
+	display_name = "Silver coin"
+	path = /obj/item/coin/silver
+	fluff_cost = 1
 
 /datum/gear/weapon
 	category = "Weapons"

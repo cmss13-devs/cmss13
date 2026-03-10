@@ -867,6 +867,7 @@
 	turf_flags = TURF_ORGANIC
 	var/turf/closed/wall/resin/above/upper_wall
 	var/boosted_regen = FALSE
+	var/should_grow_up = TRUE
 	COOLDOWN_DECLARE(automatic_heal)
 
 /turf/closed/wall/resin/Initialize(mapload)
@@ -888,7 +889,7 @@
 				AddComponent(/datum/component/resin_cleanup)
 			area.current_resin_count++
 	var/turf/above = SSmapping.get_turf_above(src)
-	if(istype(above,/turf/open_space))
+	if(istype(above,/turf/open_space) && should_grow_up)
 		above.place_on_top(/turf/closed/wall/resin/above)
 		upper_wall = above
 
@@ -901,7 +902,10 @@
 	if(upper_wall)
 		upper_wall.dismantle_wall()
 		upper_wall = null
-
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 /turf/closed/wall/resin/process()
 	. = ..()
 
@@ -948,6 +952,7 @@
 	name = "resin high wall"
 	var/turf/closed/wall/resin/wall_below
 	var/obj/structure/mineral_door/resin/door_below
+	should_grow_up = FALSE
 
 /turf/closed/wall/resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset)
 	. = ..()

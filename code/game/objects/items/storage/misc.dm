@@ -165,6 +165,20 @@
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 
+/obj/item/storage/box/fluff_gun/np92
+	name = "NP92 storing case"
+	desc = "A small case containing the standard sidearm of the UPP, the NP92, and some additional magazines. The contained sidearm is probably looted from a captured stockpile."
+	can_hold = list(/obj/item/weapon/gun/pistol/np92, /obj/item/ammo_magazine/pistol/np92)
+
+/obj/item/storage/box/fluff_gun/np92/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+
 /obj/item/storage/box/fluff_gun/action
 	name = "AC71 'Action' storing case"
 	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."

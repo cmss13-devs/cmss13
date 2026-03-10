@@ -823,6 +823,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/storage/box/fluff_gun/upp
 	slot = WEAR_R_HAND
 
+/datum/gear/weapon/np92_pistol
+	display_name = "NP92 Pistol"
+	path = /obj/item/storage/box/fluff_gun/np92
+	slot = WEAR_R_HAND
+
 /datum/gear/weapon/l54_pistol
 	display_name = "L54 Pistol" // TWE service pistol - same stats as the m4a3
 	path = /obj/item/storage/box/fluff_gun/l54

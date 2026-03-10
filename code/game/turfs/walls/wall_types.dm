@@ -996,8 +996,7 @@
 		door_below.upper_wall = null
 		door_below = null
 	var/turf/above = SSmapping.get_turf_above(src)
-	if(istype(above, /turf/open_space))
-		var/turf/open_space/space = above
+	if(istransparentturf(above))
 		above.update_vis_contents()
 
 /turf/closed/wall/resin/above/take_damage(dam, mob/M)

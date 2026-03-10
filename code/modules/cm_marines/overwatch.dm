@@ -16,7 +16,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
-	var/no_skill_req // should the computer require the OW skill to use
+	/// If skill check is forgone.
+	var/no_skill_req
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -27,10 +28,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/y_bomb = 0
 	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
-	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
-	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
-	var/z_hidden = 0 //which z level is ignored when showing marines.
-	var/marine_filter = list() // individual marine hiding control - list of string references
+	/// The overwatch computer is busy launching an OB/SB, lock controls
+	var/busy_lockout = FALSE
+	/// If dead marines in the squad are listed
+	var/dead_hidden = FALSE
+	/// The z level ignored when showing marines.
+	var/z_hidden = 0
+	/// individual marine hiding control - list of string references
+	var/marine_filter = list()
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 	var/obj/structure/orbital_cannon/current_orbital_cannon
@@ -42,9 +47,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/freq = CRYO_FREQ
 
-	///List of saved coordinates, format of ["x", "y", "z", "comment"]
+	/// List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
-	///Currently selected UI theme
+	/// Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
@@ -1351,7 +1356,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1385,14 +1390,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
 		return
 
-	var/area/A = get_area(targetted_turf)
+	var/area/targetted_area = get_area(targetted_turf)
 
-	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
+	if(istype(targetted_area) && CEILING_IS_PROTECTED(targetted_area.ceiling, CEILING_DEEP_UNDERGROUND))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
 	//All set, let's do this.
-	busy = TRUE
+	busy_lockout = TRUE
 	current_orbital_cannon.action_queued = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	playsound(targetted_turf,'sound/effects/alert.ogg', 25, 1)  //Placeholder
@@ -1425,7 +1430,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(istype(targetted_turf))
 		current_orbital_cannon.fire_ob_cannon(targetted_turf, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
-	busy = FALSE
+	busy_lockout = FALSE
 	current_orbital_cannon.action_queued = FALSE
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop(mob/user)
@@ -1433,7 +1438,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!user)
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1468,7 +1473,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
 		return
 
-	busy = TRUE
+	busy_lockout = TRUE
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
@@ -1480,7 +1485,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	log_ares_requisition("Supply Drop", "Launch [crate.name] to X:[obfuscate_x(targetted_turf.x)], Y:[obfuscate_y(targetted_turf.y)], Z:[obfuscate_z(targetted_turf.z)].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
-	busy = FALSE
+	busy_lockout = FALSE
 
 /obj/structure/machinery/computer/overwatch/proc/start_watching_camera(mob/watcher, atom/target)
 	watcher.reset_view(target)

@@ -1,0 +1,95 @@
+name: Tracy Profiling
+on:
+  push:
+
+jobs:
+  run_tracy_profiling:
+    runs-on: ubuntu-latest
+
+    env:
+      TRACY_VERSION: "0.13.1"
+
+    steps:
+      - name: Generate App Token
+        id: app-token-generation
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          token: ${{ steps.app-token-generation.outputs.token }}
+
+      - name: Restore BYOND cache
+        uses: actions/cache@v3
+        with:
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+
+      - name: Restore Tracy build cache
+        id: tracy-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./tracy-capture
+            ./tracy-csvexport
+          key: ${{ runner.os }}-tracy-${{ env.TRACY_VERSION }}
+
+      - name: Install rust-g
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update || true
+          sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
+          bash tools/ci/install_rust_g.sh
+
+      - name: Build Tracy tools
+        if: steps.tracy-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get install -y cmake libtbb-dev libdbus-1-dev
+          git clone --depth 1 --branch v${TRACY_VERSION} https://github.com/wolfpld/tracy.git tracy-src
+          cmake -S tracy-src/capture  -B tracy-src/capture/build  -DCMAKE_BUILD_TYPE=Release
+          cmake --build tracy-src/capture/build  --parallel
+          cmake -S tracy-src/csvexport -B tracy-src/csvexport/build -DCMAKE_BUILD_TYPE=Release
+          cmake --build tracy-src/csvexport/build --parallel
+          cp tracy-src/capture/build/tracy-capture   ./tracy-capture
+          cp tracy-src/csvexport/build/tracy-csvexport ./tracy-csvexport
+
+      - name: Install byond-tracy
+        run: |
+          wget -q "https://github.com/spacestation13/byond-tracy/releases/latest/download/libprof.so"
+
+      - name: Compile for profiling
+        run: |
+          bash tools/ci/install_byond.sh
+          source $HOME/BYOND/byond/bin/byondsetup
+          tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY
+
+      - name: Run profiling capture
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
+          cd $GITHUB_WORKSPACE
+          bash tools/ci/profile_server.sh startup.csv
+
+      - name: Commit baseline profile
+        run: |
+          cp startup.csv tools/ci/baseline_profile.csv
+          git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
+          git config --local user.name "${{ secrets.APP_PUBLIC_NAME }}[bot]"
+          git add tools/ci/baseline_profile.csv
+          git commit -m "Automatic startup profile update [ci skip]" || true
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ steps.app-token-generation.outputs.token }}
+
+      - name: Upload Tracy capture
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tracy-profile
+          path: |
+            startup.csv
+            startup.tracy

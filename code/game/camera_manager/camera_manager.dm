@@ -310,12 +310,37 @@
 
 	if(cas_camera && !allow_render)
 		var/area/laser_area = get_area(center_turf)
-		if(!istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1))
-			show_camera_static()
-			return
-		if(center_turf.obstructed_signal())
-			show_camera_static()
-			return
+		var/camera_blocked = !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1)
+		if(!camera_blocked)
+			camera_blocked = center_turf.obstructed_signal()
+		if(camera_blocked)
+			// Try to raise camera to a higher Z level with a valid floor
+			var/turf/raised = raise_camera_z(center_turf)
+			if(!raised)
+				show_camera_static()
+				return
+			// Raise the camera view to the higher Z level
+			center_turf = raised
+			// Show visible turfs at the raised Z level
+			var/view_range
+			if(render_mode == RENDER_MODE_AREA && target_width && target_height)
+				view_range = "[target_width]x[target_height]"
+			else if(current)
+				view_range = current.view_range
+			else
+				view_range = DEFAULT_MAP_SIZE
+			visible_turfs = list()
+			var/list/raised_visible = isXRay ? range(view_range, center_turf) : view(view_range, center_turf)
+			for(var/turf/raised_turf in raised_visible)
+				// Replace open turfs with the ground turfs below them
+				if(istransparentturf(raised_turf))
+					var/turf/below = raised_turf
+					while(below && istransparentturf(below))
+						below = SSmapping.get_turf_below(below)
+					if(below)
+						visible_turfs += below
+						continue
+				visible_turfs += raised_turf
 
 	// Spawn Dropship Reticle
 	if(cas_camera)
@@ -349,6 +374,20 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
+
+/// Attempts to raise the camera view to a higher Z level when the current view is obstructed.
+/datum/component/camera_manager/proc/raise_camera_z(turf/origin)
+	var/turf/highest_floor = null
+	var/turf/check = origin
+	while(check)
+		var/turf/above = SSmapping.get_turf_above(check)
+		if(!above)
+			break
+		// Skip open turfs, we still have static vision as the fallback just incase there's nothing mapped on the z level above
+		if(!istype(above, /turf/open/space) && !istype(above, /turf/open_space))
+			highest_floor = above
+		check = above
+	return highest_floor
 
 #undef DEFAULT_MAP_SIZE
 #undef RENDER_MODE_TARGET

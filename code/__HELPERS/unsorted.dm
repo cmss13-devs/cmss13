@@ -850,7 +850,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+		if(QDELETED(busy_user) || !istype(busy_user)) // Checks if busy_user exists
+			. = FALSE
+			break
+		if(has_target && (QDELETED(target) || !istype(target))) // Checks if the target exists and is not destroyed
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \

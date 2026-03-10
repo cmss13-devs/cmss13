@@ -57,7 +57,7 @@
 
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.
 	name = "Chigusa Shipyard Sign"
-	desc = "A large sign that reads 'Chigusa Shipyard - Subsidary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
+	desc = "A large sign that reads 'Chigusa Shipyard - Subsidiary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
 	icon_state = "laz_sign" //TODO make unique icon.
 
 /obj/structure/lz_sign/hybrisa_sign
@@ -80,3 +80,21 @@
 	name = "Hybrisa Prospera - Weyland-Yutani Kelland Mining - Landing Zone two sign"
 	desc = "A large sign that reads 'WY - KMCC Mining - HBP - LZ - 01' The Kelland Mining logo is adorns the sign."
 	icon_state = "hybrisamining_sign"
+
+/obj/structure/lz_sign/tyrargo_sign
+	name = "Tyrargo Rift - Firebase Charlie Landing Zone one sign"
+	desc = "A medium sized sign, illuminated by red lights, designating this area as firebase charlie."
+	icon_state = "tyrargo_sign_1"
+
+/obj/structure/lz_sign/tyrargo_sign/lz2
+	name = "Tyrargo Rift - USASF Airbase Anderson Landing Zone two sign"
+	desc = "A large sign that designates this area as being a USASF airbase."
+	icon_state = "tyrargo_sign_2"
+
+/obj/structure/lz_sign/tyrargo_sign/lz2/alt
+	icon_state = "tyrargo_sign_3"
+
+/obj/structure/lz_sign/tyrargo_sign/city
+	name = "Tyrargo Rift - city limit sign"
+	desc = "A large sign designating the city limit of Tyrargo Rift."
+	icon_state = "tyrargo_sign_4"

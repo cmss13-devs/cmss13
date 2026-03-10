@@ -487,8 +487,6 @@
 		to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [target]!"))
 		return FALSE
 
-	return TRUE
-
 /mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)
@@ -535,7 +533,7 @@
 		if(istype(AM, /obj/effect/alien/weeds))
 			found_weeds = TRUE
 		if(AM.density || istype(AM, /obj/effect/alien/resin))
-			to_chat(src, SPAN_XENONOTICE("Theres not enough space there for a resin mark."))
+			to_chat(src, SPAN_XENONOTICE("There's not enough space there for a resin mark."))
 			return FALSE
 
 	var/obj/effect/alien/resin/marker/NM = new /obj/effect/alien/resin/marker(target_turf, src)

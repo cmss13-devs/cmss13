@@ -642,6 +642,9 @@
 	else
 		effective_accuracy -= (distance_travelled - ammo.accurate_range) * ((ammo_flags & AMMO_SNIPER) ? 1.5 : 10) // Snipers have a smaller falloff constant due to longer max range
 
+	if(distance_travelled <= ammo.accurate_range_min_strict)
+		return 0
+
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 
 	if(ishuman(firer))
@@ -1080,7 +1083,7 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
-	if((ammo_flags & AMMO_FLAME) && (fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)))
+	if((ammo_flags & AMMO_FLAME) && (fire_immunity & (FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE)))
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		bullet_message(P, damaging = FALSE)
 		return

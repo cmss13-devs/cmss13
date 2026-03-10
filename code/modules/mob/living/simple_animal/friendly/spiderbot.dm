@@ -71,7 +71,7 @@
 
 
 		user.drop_inv_item_to_loc(O, src)
-		to_chat(user, SPAN_NOTICE(" You install [O] in [src]!"))
+		to_chat(user, SPAN_NOTICE("You install [O] in [src]!"))
 		mmi = O
 		transfer_personality(O)
 		update_icon()
@@ -91,7 +91,7 @@
 				for(var/mob/W in viewers(user, null))
 					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
-				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
+				to_chat(user, SPAN_NOTICE("[src] is undamaged!"))
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -106,7 +106,7 @@
 			id_card = O
 
 		if(ACCESS_MARINE_RESEARCH in id_card.access)
-			to_chat(user, SPAN_NOTICE(" You swipe your access card and pop the brain out of [src]."))
+			to_chat(user, SPAN_NOTICE("You swipe your access card and pop the brain out of [src]."))
 			eject_brain()
 
 			if(held_item)

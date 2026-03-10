@@ -58,7 +58,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
-	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
+	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken-webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/beaker
@@ -498,7 +498,8 @@
 		voice("Warning: Medicinal container missing.")
 		return
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
-		if(R.overdose && user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
+		var/amount_in_inject = (acid_harness.beaker.reagents.get_reagent_amount(R.id) / acid_harness.beaker.reagents.total_volume) * inject_amount
+		if(R.overdose && (user.reagents.get_reagent_amount(R.id) + amount_in_inject) > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
 			scan_interval = ACID_DEFAULT_SCAN_INTERVAL + ((ACID_DEFAULT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE

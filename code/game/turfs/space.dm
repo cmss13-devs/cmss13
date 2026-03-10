@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /turf/open/space
 	icon = 'icons/turf/floors/space.dmi'
 	name = "\proper space"
@@ -26,8 +20,13 @@
 
 /turf/open/space/Initialize(mapload, ...)
 	. = ..()
-	if(!istype(src, /turf/open/space/transit))
-		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
+	if(is_mainship_level(z))
+		if(SShijack.in_ftl)
+			SShijack.set_ftl_turf(src)
+		else if(SShijack.crashed)
+			SShijack.set_ftl_turf_open(src)
 
 /turf/open/space/attack_hand(mob/user)
 	if ((user.is_mob_restrained() || !( user.pulling )))
@@ -54,7 +53,7 @@
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
-			to_chat(user, SPAN_NOTICE(" Constructing support lattice ..."))
+			to_chat(user, SPAN_NOTICE("Constructing support lattice ..."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			ReplaceWithLattice()
 		return

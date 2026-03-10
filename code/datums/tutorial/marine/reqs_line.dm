@@ -110,7 +110,7 @@
 		/obj/item/device/binoculars/range = list("Rangefinders"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/stack/fulton = list("Fultons", "Fulton pack"),
-		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
+		/obj/item/pamphlet/upgradeable/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
 		/obj/item/explosive/grenade/high_explosive/m15 = list("M15", "M15 nade", "M15 Grenade"),
 		/obj/item/explosive/mine = list("Claymore", "Mine", "M20 Claymore"),
@@ -243,7 +243,7 @@
 		request += pick(catalogue)
 		if(i < 6) // Only telescope catalogues the first 5 times as the chances compound
 			catalogue += request
-	spawn_agent(request, "Lv [survival_wave]. ")
+	spawn_agent(request, "Lv [survival_wave].")
 
 /// Called when an agent presents at the line window and needs to make a request
 /datum/tutorial/marine/reqs_line/proc/a_new_challenger_appears(turf/source, mob/living/carbon/human/challenger)

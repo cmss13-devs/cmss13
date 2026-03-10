@@ -580,15 +580,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	default = 0
 	min_val = 0
 
-/datum/config_entry/string/bot_prefix
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/string/bot_command
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/number/certification_minutes
-	protection = CONFIG_ENTRY_LOCKED
-
 /datum/config_entry/number/topic_max_size
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
@@ -739,3 +730,24 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/str_list/ignored_cids
 	protection = CONFIG_ENTRY_LOCKED
+
+/// Appended to CLIENT_VERB(showrevinfo)
+/datum/config_entry/string/code_modifications_message
+
+/datum/config_entry/string/banned_ckey_pattern
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/oidc_endpoint_to_type
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/oidc_type_to_username
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/oidc_type_to_ckey
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT

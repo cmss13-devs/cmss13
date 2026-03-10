@@ -13,7 +13,7 @@
  */
 /obj/item/tool/surgery/retractor
 	name = "retractor"
-	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
+	desc = "A tool for surgery used to hold skin, tissue, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 10
@@ -33,7 +33,7 @@
  */
 /obj/item/tool/surgery/hemostat
 	name = "hemostat"
-	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
+	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissue."
 	icon_state = "hemostat"
 	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
@@ -128,7 +128,7 @@
 /obj/item/tool/surgery/scalpel/laser
 	name = "prototype laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a superheated laser crudely slapped on a modified scalpel, so don't expect any miracles."
-	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
+	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -160,7 +160,7 @@
 
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
-	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissues, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
+	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissue, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
 	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	force = 15
@@ -317,7 +317,7 @@
 /obj/item/tool/surgery/FixOVein
 	name = "\improper FixOVein"
 	icon_state = "fixovein"
-	desc = "A surgical tool used to repair broken blood vessels using a synthetic membrane. The tool can also be used to reconnect other ligaments and tissues in a pinch."
+	desc = "A surgical tool used to repair broken blood vessels using a synthetic membrane. The tool can also be used to reconnect other ligaments and tissue in a pinch."
 	desc_lore = "Hemophilics everywhere can thank a likewise hemophilic surgeon and their love for birds for the development of this tool. Inspired by the protective keratin sheath surrounding blood feathers as they grow and the crumbling of pin feather sheaths after the feather finishes growing, they worked with scientists to develop a tool that secretes a membrane of synthetic connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself, after which is sloughs off and dissolves. Since the membrane operates on a cellular level, it is practically infinite. With patients having been operated on experiencing a 100% recovery rate, the FixOVein has earned it a spot on every surgeon's surgical tray."
 	force = 0
 	throwforce = 1
@@ -507,7 +507,7 @@ t. optimisticdude
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool. This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "Resetting tool. This will take a few seconds... Do not attempt to use the tool during the reset or it may malfunction.")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
 			to_chat(usr, "Processing...")

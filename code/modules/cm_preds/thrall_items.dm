@@ -58,14 +58,15 @@
 		WEAR_FEET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	thrall = TRUE
-
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/yautja/knife,
 	)
+	spawn_item_type = /obj/item/weapon/yautja/knife
 
 /obj/item/clothing/shoes/yautja/thrall/silver
 	icon_state = "thrallgreaves_silver"
@@ -121,6 +122,34 @@
 	color = "#b85440"
 	minimap_icon = "thrall"
 
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall
+	name = "blooded thrall bracers"
+	desc = "A pair of strange alien bracers, adapted for human biology. These contain additional features."
+	minimap_icon = "thrall"
+	icon_state = "bracer_ebony"
+	item_state = "bracer_ebony"
+	item_state_slots = list(WEAR_HANDS = "bracer_ebony")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bronze
+	icon_state = "bracer_bronze"
+	item_state = "bracer_bronze"
+	item_state_slots = list(WEAR_HANDS = "bracer_bronze")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/silver
+	icon_state = "bracer_silver"
+	item_state = "bracer_silver"
+	item_state_slots = list(WEAR_HANDS = "bracer_silver")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/crimson
+	icon_state = "bracer_crimson"
+	item_state = "bracer_crimson"
+	item_state_slots = list(WEAR_HANDS = "bracer_crimson")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bone
+	icon_state = "bracer_bone"
+	item_state = "bracer_bone"
+	item_state_slots = list(WEAR_HANDS = "bracer_bone")
+
 /obj/item/storage/box/bracer
 	name = "alien box"
 	desc = "A strange, runed box."
@@ -131,6 +160,9 @@
 
 /obj/item/storage/box/bracer/fill_preset_inventory()
 	new /obj/item/clothing/gloves/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
 
 ///Relay beacon for blooded thralls, only capable of teleporting back to the Yautja Ship
 /obj/item/device/thrall_teleporter
@@ -191,19 +223,16 @@
 	teleporting = TRUE
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
-	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, "You were interrupted!")
-		teleporting = FALSE
-		return
-	// Display fancy animation for you and the person you might be pulling (Legacy)
-	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
-	var/tele_time = animation_teleport_quick_out(user)
-	var/mob/living/passenger = user.pulling
-	if(istype(passenger)) // Pulled person
-		SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
-		animation_teleport_quick_out(passenger)
+	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		// Display fancy animation for you and the person you might be pulling (Legacy)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+		var/tele_time = animation_teleport_quick_out(user)
+		var/mob/living/passenger = user.pulling
+		if(istype(passenger)) // Pulled person
+			SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+			passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
+			animation_teleport_quick_out(passenger)
 
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled

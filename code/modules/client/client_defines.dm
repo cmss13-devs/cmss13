@@ -47,8 +47,7 @@
 		//SECURITY//
 		////////////
 	var/next_allowed_topic_time = 10
-	// comment out the line below when debugging locally to enable the options & messages menu
-	//control_freak = 1
+	control_freak = CONTROL_FREAK_MACROS
 
 	var/received_irc_pm = -99999
 
@@ -125,6 +124,9 @@
 	///lazylist of screen_texts for this client, first in this list is the one playing
 	var/list/atom/movable/screen/text/screen_text/screen_texts
 
+	/// Controller for mob achievements. If present, the mob is eligible for achievements that are unattained
+	var/datum/achievement_manager/achievement_manager
+
 	/// Does this client have typing indicators enabled?
 	var/typing_indicators = TRUE
 
@@ -133,3 +135,4 @@
 
 	/// If this client has any windows scaling applied
 	var/window_scaling
+

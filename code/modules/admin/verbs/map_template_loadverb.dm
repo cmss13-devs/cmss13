@@ -9,30 +9,54 @@
 		return
 	template = SSmapping.map_templates[map]
 
-	var/turf/T = get_turf(mob)
-	if(!T)
+	var/turf/target_turf = get_turf(mob)
+	if(!target_turf)
 		return
 
-	var/centered = alert(src, "Do you want this to be created from the center, or from the bottom left corner of your map?", "Spawn Position", "Center", "Bottom Left") == "Center" ? TRUE : FALSE
-	var/delete = alert(src, "Do you want to delete atoms in your load area?", "Atom Deletion", "Yes", "No") == "Yes" ? TRUE : FALSE
+	var/centered = tgui_alert(src, "Do you want this to be created from the center, or from the bottom left corner of your map?", "Spawn Position", list("Center", "Bottom Left"))
+	if(isnull(centered))
+		return
+	centered = centered == "Center"
+	var/delete = tgui_alert(src, "Do you want to delete atoms in your load area?", "Atom Deletion", list("Yes", "No"))
+	if(isnull(delete))
+		return
+	delete = delete == "Yes"
+	var/allow_cropping = tgui_alert(src, "Do you want to allow cropping if the template is larger than world bounds?", "Allow cropping", list("Fail if larger", "Expand border", "Crop", "Crop to border"))
+	if(isnull(allow_cropping))
+		return
+	var/expand_border = allow_cropping == "Expand border"
+	var/expand_border_type = null
+	if(expand_border)
+		expand_border_type = tgui_input_list(src, "Pick the inner border type:", "Inner border type", typesof(/turf/closed/wall), default=/turf/closed/wall/strata_ice/jungle)
+		if(!expand_border_type)
+			return
+	var/crop_border_type = (allow_cropping == "Crop to border" || expand_border) ? /turf/closed/cordon : null
+	allow_cropping = allow_cropping != "Fail if larger"
 
 	var/list/preview = list()
-	for(var/S in template.get_affected_turfs(T, centered))
-		var/image/item = image('icons/turf/overlays.dmi',S,"greenOverlay")
+	for(var/preview_turf in template.get_affected_turfs(target_turf, centered, allow_cropping, crop_border_type, 1, expand_border_type))
+		var/image/item = image('icons/turf/overlays.dmi', preview_turf, "greenOverlay")
 		item.plane = ABOVE_LIGHTING_PLANE
 		preview += item
+
+	if(!length(preview))
+		to_chat(src, SPAN_WARNING("Failed to place map!"))
+		return
+
 	images += preview
-	if(alert(src,"Confirm location.","Template Confirm","Yes","No") == "Yes")
-		if(template.load(T, centered, delete))
-			/*var/affected = template.get_affected_turfs(T, centered=TRUE)
-			for(var/AT in affected)
-				for(var/obj/docking_port/mobile/P in AT)
-					if(istype(P, /obj/docking_port/mobile))
-						template.post_load(P)
+
+	if(tgui_alert(src, "Confirm location?", "Template Confirm", list("Yes", "No")) == "Yes")
+		if(template.load(target_turf, centered, delete, allow_cropping, crop_border_type, 1, expand_border_type))
+			/*var/affected = template.get_affected_turfs(target_turf, centered=TRUE)
+			for(var/current in affected)
+				for(var/obj/docking_port/mobile/port in current)
+					if(istype(port, /obj/docking_port/mobile))
+						template.post_load(port)
 						break*/
-			message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]"))
+			message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has placed a map template ([template.name]) at [ADMIN_VERBOSEJMP(target_turf)]"))
 		else
-			to_chat(src, "Failed to place map", confidential = TRUE)
+			to_chat(src, SPAN_WARNING("Failed to place map!"))
+
 	images -= preview
 
 /client/proc/map_template_upload()

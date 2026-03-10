@@ -471,35 +471,10 @@
 	radial_icon = "shield"
 
 /datum/hivebuff/fire/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	if(!xeno.caste)
-		return
-
-	var/valid_immunity = xeno.fire_immunity
-	if(xeno.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		valid_immunity -= FIRE_IMMUNITY_XENO_FRENZY
-
-	if((valid_immunity & FIRE_IMMUNITY_COMPLETE)) // Already completely fire immune, return
-		return
-
-
-	switch(valid_immunity)
-		if(FIRE_IMMUNITY_NONE) // No immunities whatsoever, make immune to ignition but not fire damage
-			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
-			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
-
-		if(FIRE_IMMUNITY_NO_DAMAGE) // Immune to damage but not ignition, make them immune to ignition
-			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
-			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
-
-		if(FIRE_IMMUNITY_NO_IGNITE) // Immune to ignition but not damage, make them immune to damage
-			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_damage))
-
-		if(FIRE_IMMUNITY_BURROWER) // Burrower, get same immunities as FIRE_IMMUNITY_NONE
-			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
-			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
+	xeno.fire_immunity |= FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_IGNORE_PEN
 
 /datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.refresh_fire_immunity() // Returns all affected Xenos back to whatever fire immunity is logged on the mob
+	xeno.fire_immunity = initial(xeno.fire_immunity)
 
 /datum/hivebuff/adaptability
 	name = "Boon of Adaptability"
@@ -563,7 +538,7 @@
 
 /datum/hivebuff/boost_structure
 	name = "Boon of Fortification"
-	desc = "Gives buffs out to all the sturctures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	desc = "Gives buffs out to all the structures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The resin starts moving and shifting..."

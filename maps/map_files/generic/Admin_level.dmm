@@ -2,6 +2,10 @@
 "aa" = (
 /turf/open/space,
 /area/space)
+"ab" = (
+/obj/docking_port/stationary/emergency_response/idle_port5,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station)
 "ac" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1168,12 +1172,6 @@
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/simulation)
-"Jl" = (
-/obj/docking_port/stationary/emergency_response/idle_port5{
-	dwidth = 8
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2853,7 +2851,7 @@ FB
 FB
 FB
 FB
-Jl
+FB
 FB
 FB
 FB
@@ -3909,7 +3907,7 @@ as
 wW
 KW
 FB
-FB
+ab
 FB
 FB
 FB

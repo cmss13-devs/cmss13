@@ -520,24 +520,30 @@
 
 
 //*****************************************************************************************************/
-/datum/equipment_preset/cmb/synth
+/datum/equipment_preset/synth/cmb
 	name = "CMB - Colonial Marshal Investigative Synthetic"
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Inv. Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "cmb_syn"
-
+	minimap_background = "background_cmb"
 	assignment = "CMB Investigative Synthetic"
 	job_title = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
+	skills = /datum/skills/synthetic/cmb
+	locked_generation = SYNTH_GEN_TWO
 
-/datum/equipment_preset/cmb/synth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic/cmb)
-		new_human.allow_gun_usage = FALSE
+	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
-/datum/equipment_preset/cmb/synth/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/synth/cmb/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UA)
+
+/datum/equipment_preset/synth/cmb/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()
@@ -569,10 +575,7 @@
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
 
-/datum/equipment_preset/cmb/synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY)
-
-/datum/equipment_preset/cmb/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/cmb/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/security, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_BACK)
@@ -623,7 +626,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_R_STORE)
 
-/datum/equipment_preset/cmb/synth/riot
+/datum/equipment_preset/synth/cmb/riot
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB RC Syn"
@@ -631,9 +634,8 @@
 
 	assignment = "CMB Riot Control Synthetic"
 	job_title = JOB_CMB_RSYN
-	skills = /datum/skills/synthetic
 
-/datum/equipment_preset/cmb/synth/riot/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/cmb/riot/load_gear(mob/living/carbon/human/new_human)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle/backpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)

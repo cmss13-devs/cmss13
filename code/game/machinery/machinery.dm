@@ -306,16 +306,15 @@ Class Procs:
 
 /obj/structure/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
-		return 0
+		return FALSE
 	if(!prob(prb))
-		return 0
+		return FALSE
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
-	if (electrocute_mob(user, get_area(src), src, 0.7))
-		return 1
-	else
-		return 0
+	if(electrocute_mob(user, get_area(src), src, 0.7))
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/proc/dismantle()
 	playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -399,6 +398,11 @@ Class Procs:
 /obj/structure/machinery/fuelpump/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_FUEL_PUMP_UPDATE, PROC_REF(on_pump_update))
+	SShijack.fuelpumps += src
+
+/obj/structure/machinery/fuelpump/Destroy(force)
+	SShijack.fuelpumps -= src
+	return ..()
 
 /obj/structure/machinery/fuelpump/proc/on_pump_update()
 	SIGNAL_HANDLER

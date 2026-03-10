@@ -46,7 +46,7 @@
 /datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/status/hunter_speciman
 	key = "hunterspeciman"
 	sound = 'sound/voice/wy_droid/voicelines/hunter_speciman.ogg'
-	say_message = "Hunter speciman must not reach the secure zone."
+	say_message = "Hunter specimen must not reach the secure zone."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/status/hunter_target

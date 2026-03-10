@@ -118,12 +118,12 @@
 		"}
 
 /obj/item/book/manual/reactor
-	name = "How to React: Steps to maintain a S-52 Fusion Reactor"
+	name = "How to React: Steps to maintain an S-52 Fusion Reactor"
 	desc = "A manual containing information on how to maintain S-52 Fusion Ship Reactors, very popular engines among space vessels."
 	icon_state = "book_supermatter"
 	item_state = "book_supermatter"
 	author = "Colonial Marines Engineer Association"
-	title = "How to React: Steps to maintain a S-52 Fusion Reactor"
+	title = "How to React: Steps to maintain an S-52 Fusion Reactor"
 
 	dat = {"
 
@@ -458,7 +458,7 @@
 
 /obj/item/book/manual/security_space_law
 	name = "Standard Operating Procedure"
-	desc = "One of the most important books onboard any United States Colonial Marines vessel, or at least that's how you are supposed to feel about it. The book carries within it's pages the USCM guidelines and procedures regarding all kinds of situations."
+	desc = "One of the most important books onboard any United States Colonial Marines vessel, or at least that's how you are supposed to feel about it. The book carries within its pages the USCM guidelines and procedures regarding all kinds of situations."
 	icon_state = "book_sop"
 	item_state = "book_sop"
 	author = "Colonial Marines High Command"
@@ -480,7 +480,7 @@
 
 /obj/item/book/manual/marine_law
 	name = "Marine Law"
-	desc = "Usually being the favorite read of any member of the Military Police of the USCM, it's whole meaning is to work as the scales for the sword of justice that brandishes onboard the vessels of the United States Colonial Marines, so peace and order can be maintained. It's nicknames may include but are not limited to: Devil's Red Book, Bible of All Sinners, THE Book, ML, Red Brick, Provost's Torture Manual, Provost's Red Devil's Torture Bible of All Sinners."
+	desc = "Usually being the favorite read of any member of the Military Police of the USCM, its whole meaning is to work as the scales for the sword of justice that brandishes onboard the vessels of the United States Colonial Marines, so peace and order can be maintained. Its nicknames may include but are not limited to: Devil's Red Book, Bible of All Sinners, THE Book, ML, Red Brick, Provost's Torture Manual, Provost's Red Devil's Torture Bible of All Sinners."
 	icon_state = "book_marine_law"
 	item_state = "book_marine_law"
 	author = "Colonial Marines Provost Office"
@@ -665,7 +665,7 @@
 
 /obj/item/book/manual/paperwork
 	name = "Bureaucracy and paperworking: Everything You Need to Know"
-	desc = "A book containing all kinds of knowledge and pre-made formularies for the writing of important documents. You need it? This book have it."
+	desc = "A book containing all kinds of knowledge and pre-made formularies for the writing of important documents. You need it? This book has it."
 	icon_state = "book"
 	item_state = "book"
 	author = "Colonial Marines High Command"
@@ -769,7 +769,7 @@
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"
-	desc = "One of the most popular recipe books for drinks in the entirety of humankind. Now on it's 39th edition, it was first published in 1946 after the end of the Second World War by Sir Hugh Fairfax, one of the most prestigious barmen of all time."
+	desc = "One of the most popular recipe books for drinks in the entirety of humankind. Now on its 39th edition, it was first published in 1946 after the end of the Second World War by Sir Hugh Fairfax, one of the most prestigious barmen of all time."
 	icon_state = "barbook"
 	item_state = "barbook"
 	author = "Sir Hugh Fairfax, Three World Empire"
@@ -905,7 +905,7 @@
 					<li>Extend and anchor the nuclear device through its interface.</li>
 					<li>Turn the safety of the nuclear device off through its interface.</li>
 					<li>Make sure all forms of transmission by radio in the designated detonation zone are functional.</li>
-					<li>When decryption is completed, the device will AUTOMATICALLY begin it's detonation timer.<br>
+					<li>When decryption is completed, the device will AUTOMATICALLY begin its detonation timer.<br>
 					<b>Note</b>: The decryption time will usually take 10 minutes, and the device's timer is fixed to detonate at exactly 3 minutes.
 				</ul><br>
 

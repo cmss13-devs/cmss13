@@ -38,6 +38,15 @@
 	if(active)
 		to_chat(user, "[src] is already active!")
 		return FALSE
+
+	if(SShijack.in_ftl)
+		to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+		return FALSE
+
+	if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+		return FALSE
+
 	var/reason = tgui_input_text(user, "What is the reason for activating this beacon?", "Distress Reason")
 	if(!reason)
 		return FALSE
@@ -83,7 +92,7 @@
 // Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase
 /obj/item/handheld_distress_beacon/bodyguard
 	name = "\improper Corporate Security Division handheld beacon"
-	desc = "An standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
+	desc = "A standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
 
 	beacon_type = "Bodyguard beacon"
 	recipient = "the Corporate Security Division"

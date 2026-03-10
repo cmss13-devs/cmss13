@@ -111,3 +111,36 @@
   - server: Linux servers now load the SSV Rostock properly
   zzzmike:
   - qol: FTL jump wording changed to make game mechanics more transparent
+2026-03-08:
+  Detective-Google:
+  - admin: the adjust job slots verb now allows you to modify roundstart slots as
+      well as latejoin ones.
+  Drathek:
+  - rscadd: Added marine manifest hotkey for humans & observers
+  - bugfix: Hive status hotkey now works for observers
+  MoondancerPony:
+  - spellcheck: fixed a lot of typos
+  Riot:
+  - rscadd: Pickup hotkey has a memory of 5 items now
+  Steelpoint:
+  - rscadd: Tyrargo Rift may only be voted for if the server has at least 100 players.
+2026-03-09:
+  MistChristmas:
+  - bugfix: Dropship Crew now see their full list of buyables again... Sorry.
+  MoondancerPony:
+  - bugfix: made the FTL Hijack planet crash around twice as fast
+  - code_imp: unit tests should have fewer flaky failures now
+  hry-gh:
+  - bugfix: binding keys to tab now works
+  ori-disillusion-mirnov:
+  - admin: location is logged on hivemind usage and evolution logs
+  - bugfix: headbite execution log no longer lists the human as doing the headbite
+  riot:
+  - maptweak: The basketball hoops on LV-624's Fitness dome can now be walked through.
+2026-03-10:
+  Drathek:
+  - bugfix: Fixed queen no forfeit check not checking the relevant Z levels (namely
+      regarding hijack/FTL)
+  - bugfix: Fixed potential for hive collapse during hijack
+  MistChristmas:
+  - soundtweak: Normalise ambience that Abyssal uses to be quieter.

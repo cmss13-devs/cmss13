@@ -153,6 +153,12 @@
 	html_link = "images/6/67/Navalis_platform_13_ic.png"
 	color = "cyan"
 
+/obj/item/map/galaxy
+	name = "\improper Galaxy map"
+	desc = "A diagrammatic map of the milky way, laid out by sector."
+	html_link = "images/9/9e/Galaxy_Map.png"
+	color = "#005eab"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()

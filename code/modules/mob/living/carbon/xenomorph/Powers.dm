@@ -150,7 +150,7 @@
 		return SECRETE_RESIN_SUCCESS
 
 	if(!resin_construct.can_build_here(current_turf, src))
-		return SECRETE_RESIN_INTERRUPT
+		return SECRETE_RESIN_FAIL
 
 	if(use_plasma)
 		use_plasma(total_resin_cost)

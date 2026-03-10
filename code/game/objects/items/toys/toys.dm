@@ -625,12 +625,12 @@
 	if(!register_attempted)
 		register_attempted = TRUE
 		var/mob/living/carbon/human/human_user
-		if(ishuman(inventory.loc))
-			human_user = inventory.loc
-		else if(ishuman(inventory.loc?.loc))
-			human_user = inventory.loc.loc
-		else if(ishuman(inventory.loc?.loc?.loc))
-			human_user = inventory.loc.loc.loc
+		var/atom/container_on_human = inventory.loc
+		var/depth_limit
+		while(!ishuman(container_on_human) && depth_limit < 2)
+			container_on_human = container_on_human.loc
+			depth_limit++
+		human_user = container_on_human
 		if(human_user)
 			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
 

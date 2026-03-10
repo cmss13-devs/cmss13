@@ -553,7 +553,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
-	GLOB.all_player_ckeys |= ckey
+	GLOB.all_player_keys |= key
 	GLOB.all_player_cids |= computer_id
 
 	if(CONFIG_GET(flag/ooc_country_flags))

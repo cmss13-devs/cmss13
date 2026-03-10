@@ -4,7 +4,7 @@ GLOBAL_PROTECT(admins)
 
 GLOBAL_LIST_EMPTY(directory) //all ckeys with associated client
 
-GLOBAL_LIST_EMPTY(all_player_ckeys)
+GLOBAL_LIST_EMPTY(all_player_keys)
 GLOBAL_LIST_EMPTY(all_player_cids)
 
 GLOBAL_LIST_EMPTY(player_list) //all mobs **with clients attached**.

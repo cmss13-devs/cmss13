@@ -15,7 +15,7 @@
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
 		// priority goes from overlay_state, then item_state (worn/dynamic state), then fall back to icon_state
-		var/tmp_icon_state = overlay_state ? overlay_state : (item_state ? item_state : icon_state)
+		var/tmp_icon_state = overlay_state || item_state || icon_state
 		if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
 			inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
 		else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
@@ -35,7 +35,7 @@
 		if(LAZYISIN(sprite_sheets, user_bodytype))
 			bodytype = user_bodytype
 
-		var/tmp_icon_state = overlay_state ? overlay_state : (item_state ? item_state : icon_state)
+		var/tmp_icon_state = overlay_state || item_state || icon_state
 
 		if(istype(loc,/obj/item/clothing/under))
 			var/obj/item/clothing/under/C = loc

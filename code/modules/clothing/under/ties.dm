@@ -22,7 +22,7 @@
 	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
-	if(can_become_accessory)
+	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		revert_from_accessory(user)
 		return
 	return ..()
@@ -574,7 +574,7 @@
 	icon_state = "uscmpatch"
 	item_state = "uscmpatch_right_shoulder"
 	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_right_shoulder")
-	stylish = TRUE
+	flags_obj = OBJ_IS_STYLISH
 	style_postfix = list("right_shoulder", "left_shoulder", "right_chest", "left_chest")
 
 /obj/item/clothing/accessory/patch/falcon
@@ -1524,7 +1524,7 @@ Wrist Accessories
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
-	stylish = TRUE
+	flags_obj = OBJ_IS_STYLISH
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 	worn_accessory_limit = 2
 	style_postfix = list("neck", "left_wrist", "right_wrist")

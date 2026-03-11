@@ -1128,6 +1128,14 @@ SUBSYSTEM_DEF(minimaps)
 		// Show ceiling protection toggle action when minimap opens
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
 			ceiling_action.hidden = FALSE
+			ceiling_action.update_button_icon()
+			// Position the ceiling action right after the minimap action button incase buttons are moved due to a strain or something
+			owner.actions.Remove(ceiling_action)
+			var/minimap_index = owner.actions.Find(src)
+			if(minimap_index)
+				owner.actions.Insert(minimap_index + 1, ceiling_action)
+			else
+				owner.actions.Add(ceiling_action)
 			owner.update_action_buttons()
 			break
 		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
@@ -1214,12 +1222,21 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/action/minimap_ceiling/ceiling_action = give_action(mob, /datum/action/minimap_ceiling)
 	if(ceiling_action)
 		ceiling_action.hidden = TRUE
+		mob.actions.Remove(ceiling_action)
+		var/minimap_index = mob.actions.Find(src)
+		if(minimap_index)
+			mob.actions.Insert(minimap_index + 1, ceiling_action)
+		else
+			mob.actions.Add(ceiling_action)
 		mob.update_action_buttons()
 
 /// Attempts to initialize the minimap object for current z-level
 /datum/action/minimap/proc/try_initialize_map()
 	// Check if subsystem is still initializing
 	if(!SSminimaps.initialized)
+		return FALSE
+
+	if(!owner?.client)
 		return FALSE
 
 	var/atom/movable/tracking = locator_override ? locator_override : owner
@@ -1430,6 +1447,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	// Refresh minimaps for this client
 	for(var/atom/movable/screen/minimap/mini_map in owner.client.screen)
+		if(mini_map.assigned_map) // Skip shared popup maps
+			continue
 		mini_map.update_ceiling_overlay(owner.client)
 
 	return TRUE

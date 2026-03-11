@@ -144,6 +144,16 @@
 	for(var/datum/action/minimap_ceiling/existing_action in user.actions)
 		ceiling_action = existing_action
 		ceiling_action.hidden = FALSE
+		ceiling_action.update_button_icon()
+		// Position the ceiling action right after the minimap action button
+		user.actions.Remove(ceiling_action)
+		for(var/datum/action/minimap/minimap_action in user.actions)
+			var/minimap_index = user.actions.Find(minimap_action)
+			if(minimap_index)
+				user.actions.Insert(minimap_index + 1, ceiling_action)
+			else
+				user.actions.Add(ceiling_action)
+			break
 		user.update_action_buttons()
 		break
 

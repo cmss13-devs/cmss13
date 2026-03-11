@@ -45,6 +45,7 @@
 	pull_speed = 2 // about what it was before, slightly faster
 	organ_value = 2000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,

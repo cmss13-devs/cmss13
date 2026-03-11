@@ -286,7 +286,6 @@
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
-	var/ripping_limb = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -395,6 +394,8 @@
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
+
+	AddComponent(/datum/component/seethrough_mob)
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)

@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Unique items: I.E. Family Photo now belong to you even if they spawn in your inventory instead of pocket."

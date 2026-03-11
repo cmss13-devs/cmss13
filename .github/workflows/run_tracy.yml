@@ -1,25 +1,42 @@
 name: Tracy Startup Profiling
 
 on:
-  pull_request_target:
-    paths-ignore:
-      - tools/bootstrap/**
-      - tools/build/**
+  workflow_run:
+    workflows: ["CI Suite"]
+    types:
+      - completed
 
 jobs:
   run_tracy_profiling:
     runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: read
+      pull-requests: write
 
     env:
       TRACY_VERSION: "0.13.1"
 
     steps:
+      - name: Get PR info
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUMBER=$(gh api repos/${{ github.repository }}/commits/${{ github.event.workflow_run.head_sha }}/pulls --jq '.[0].number')
+          BASE_SHA=$(gh api repos/${{ github.repository }}/pulls/$PR_NUMBER --jq '.base.sha')
+          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "base_sha=$BASE_SHA" >> $GITHUB_OUTPUT
+          echo "head_sha=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_OUTPUT
+
       - name: Checkout PR head
         uses: actions/checkout@v3
         with:
           persist-credentials: false
           path: pr
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ steps.pr.outputs.head_sha }}
           token: ${{ github.token }}
 
       - name: Checkout base branch
@@ -27,7 +44,7 @@ jobs:
         with:
           persist-credentials: false
           path: base
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ steps.pr.outputs.base_sha }}
           token: ${{ github.token }}
 
       - name: Restore BYOND cache
@@ -112,8 +129,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           MARKER="<!-- tracy-profile-comment -->"
+          PR_NUMBER="${{ steps.pr.outputs.number }}"
           COMMENT_ID=$(gh api \
-            repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+            repos/${{ github.repository }}/issues/$PR_NUMBER/comments \
             --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id" | head -n1)
 
           if [[ -n "$COMMENT_ID" ]]; then
@@ -122,7 +140,7 @@ jobs:
               -f body="$(cat pr-comment.md)"
           else
             gh api --method POST \
-              repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+              repos/${{ github.repository }}/issues/$PR_NUMBER/comments \
               -f body="$(cat pr-comment.md)"
           fi
 

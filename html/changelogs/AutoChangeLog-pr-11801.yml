@@ -1,4 +1,0 @@
-author: "KCartridge"
-delete-after: True
-changes:
-  - imagetweak: "(Mapping) adds alpha to open_space"

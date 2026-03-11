@@ -19,6 +19,7 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
+	max_build_dist = 1
 
 	behavior_delegate_type = /datum/behavior_delegate/burrower_base
 

@@ -94,7 +94,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -7
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/security)
 "aar" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -288,7 +288,7 @@
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "aaT" = (
 /obj/structure/sign/safety/reception,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/security)
 "aaU" = (
 /obj/structure/pipes/valve,
@@ -571,7 +571,7 @@
 /area/point_loma/airbase/mining_colony/interior/security)
 "abK" = (
 /obj/structure/reagent_dispensers/peppertank,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security)
 "abL" = (
 /obj/structure/bed/chair/comfy{
@@ -636,7 +636,7 @@
 /area/point_loma/research_facility/chapel)
 "abY" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/security,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security)
 "abZ" = (
 /turf/open/floor/corsat,
@@ -1234,7 +1234,7 @@
 	pixel_x = 13;
 	pixel_y = -7
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "adV" = (
 /obj/item/stock_parts/console_screen{
@@ -2347,7 +2347,7 @@
 /area/point_loma/oob)
 "ahn" = (
 /obj/structure/tent_curtain,
-/obj/structure/window/framed/shiva/blue,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aho" = (
@@ -3211,7 +3211,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
 "ajW" = (
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "ajX" = (
 /obj/structure/machinery/power/monitor,
@@ -3409,7 +3409,7 @@
 	pixel_x = -9;
 	pixel_y = 32
 	},
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "akD" = (
 /obj/structure/pipes/unary/freezer{
@@ -3499,7 +3499,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "akS" = (
 /obj/structure/largecrate/supply/ammo/pistol,
@@ -3588,7 +3588,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "ale" = (
 /obj/structure/machinery/light{
@@ -3631,7 +3631,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "alj" = (
 /obj/structure/sink{
@@ -3742,7 +3742,7 @@
 /area/point_loma/airbase/interior/workshop)
 "alx" = (
 /obj/structure/sign/poster/music,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aly" = (
 /obj/structure/sink{
@@ -3786,7 +3786,7 @@
 /area/point_loma/airbase/interior/research)
 "alE" = (
 /obj/structure/prop/hybrisa/misc/urinal,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "alF" = (
 /obj/structure/flora/pottedplant{
@@ -4333,15 +4333,15 @@
 /area/point_loma/airbase/interior/cargo)
 "anc" = (
 /obj/structure/sign/poster/corporate,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "and" = (
 /obj/structure/machinery/newscaster,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "ane" = (
 /obj/structure/sign/poster/pinup,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "anf" = (
 /obj/structure/cargo_container/hybrisa/containersextended/medicalright,
@@ -4349,11 +4349,11 @@
 /area/point_loma/airbase/interior/cargo)
 "ang" = (
 /obj/structure/sign/poster/pimp,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "anh" = (
 /obj/structure/machinery/atm,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "ani" = (
 /obj/effect/decal/warning_stripes{
@@ -4384,7 +4384,7 @@
 	pixel_y = -1
 	},
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "anl" = (
 /obj/structure/bed,
@@ -4499,7 +4499,7 @@
 /area/point_loma/research_facility/medical)
 "anC" = (
 /obj/structure/curtain/open/shower,
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "anD" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4606,7 +4606,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "anS" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "anT" = (
 /obj/effect/decal/warning_stripes{
@@ -4699,7 +4699,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/point_loma/research_facility/research/park)
 "aoi" = (
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/garage)
 "aoj" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -4830,7 +4830,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aoC" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aoD" = (
 /obj/structure/pipes/standard/manifold/visible{
@@ -5097,7 +5097,7 @@
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "apq" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "apr" = (
@@ -5572,7 +5572,7 @@
 /area/point_loma/research_facility/super_death_cannon/observation)
 "aqI" = (
 /obj/structure/machinery/door_display,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security)
 "aqJ" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
@@ -8142,7 +8142,7 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Security Checkpoint - South - Building Two"
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "axt" = (
 /obj/structure/bed/chair/office/dark{
@@ -9736,7 +9736,7 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Security Checkpoint - South - Building One"
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "aBQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
@@ -12407,7 +12407,7 @@
 /turf/open/floor/whiteyellow/north,
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "aJy" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /obj/structure/curtain/colorable_transparent{
 	color = "#5a5a5a";
 	alpha = 220;
@@ -12690,7 +12690,7 @@
 /area/point_loma/airbase/interior/cargo/lower)
 "aKm" = (
 /obj/structure/machinery/status_display,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "aKn" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1{
@@ -12859,9 +12859,6 @@
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/corsat/lightplate,
 /area/point_loma/airbase/interior/research)
-"aKN" = (
-/turf/closed/wall/shiva/prefabricated/red,
-/area/point_loma/airbase/mining_colony/exterior/security/south)
 "aKO" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/prop/magazine/book/spacebeast{
@@ -14065,7 +14062,7 @@
 	icon_state = "poster17";
 	name = "magazine"
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "aNZ" = (
 /obj/structure/dartboard,
@@ -14628,7 +14625,7 @@
 /area/point_loma/research_facility/research/east)
 "aPS" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "aPT" = (
 /obj/effect/decal/hybrisa/workers_decal,
@@ -14723,7 +14720,7 @@
 /area/point_loma/airbase/mining_colony/exterior/north)
 "aQh" = (
 /obj/structure/sign/calendar/ua,
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "aQi" = (
 /obj/structure/platform/metal/almayer,
@@ -15512,7 +15509,7 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security)
 "aSp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16309,7 +16306,7 @@
 	pixel_x = -5;
 	pixel_y = 2
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aUC" = (
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/Teal{
@@ -16341,7 +16338,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/turf/closed/wall/shiva/prefabricated/blue,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aUH" = (
 /obj/structure/surface/table/holotable/wood,
@@ -16691,7 +16688,7 @@
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "aVz" = (
 /obj/structure/closet/hydrant,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "aVA" = (
 /obj/structure/flora/pottedplant{
@@ -16765,7 +16762,7 @@
 /obj/structure/sign/safety/radio_rad{
 	pixel_y = 6
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aVN" = (
 /obj/structure/barricade/handrail{
@@ -17050,7 +17047,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "aWL" = (
 /obj/structure/extinguisher_cabinet,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "aWM" = (
 /obj/structure/largecrate/empty/case/double,
@@ -17205,7 +17202,7 @@
 /turf/open/gm/coast/dirt/north,
 /area/point_loma/research_facility/research/park)
 "aXm" = (
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "aXn" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/six,
@@ -17511,7 +17508,7 @@
 /area/point_loma/research_facility/research/east)
 "aYk" = (
 /obj/structure/sink,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "aYl" = (
 /obj/structure/closet/firecloset/full,
@@ -17611,7 +17608,7 @@
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
 "aYC" = (
 /obj/structure/closet/hydrant,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aYD" = (
 /obj/effect/decal/hybrisa/road/lines2{
@@ -17722,13 +17719,13 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Security Checkpoint - South - Building Three"
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "aYS" = (
 /obj/structure/noticeboard{
 	dir = 8
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "aYT" = (
 /obj/structure/surface/table/almayer{
@@ -17779,7 +17776,7 @@
 /area/point_loma/airbase/interior/atc)
 "aZa" = (
 /obj/structure/extinguisher_cabinet,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "aZb" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
@@ -17809,7 +17806,7 @@
 	desc = null;
 	name = "sticky notes"
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "aZf" = (
 /turf/open/floor/corsat/brown,
@@ -17946,7 +17943,7 @@
 /turf/open/new_varadero/alt_concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "aZx" = (
-/obj/structure/window/framed/shiva/blue,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aZy" = (
@@ -25135,7 +25132,7 @@
 /turf/open/floor/darkbrown2/northwest,
 /area/point_loma/airbase/interior/garage)
 "bsV" = (
-/turf/closed/wall/shiva/prefabricated/white,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "bsW" = (
 /obj/structure/flora/grass/colorable/point_loma/light/one,
@@ -25273,7 +25270,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/cave/south)
 "btu" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /obj/structure/tent_curtain,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
@@ -25281,7 +25278,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /obj/structure/tent_curtain,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
@@ -25476,11 +25473,11 @@
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "bug" = (
 /obj/structure/closet/secure_closet/medical_wall,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "buh" = (
 /obj/structure/closet/secure_closet/surgical,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "bui" = (
 /turf/open_space,
@@ -25489,7 +25486,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "buk" = (
 /obj/structure/machinery/vending/cigarette,
@@ -25520,7 +25517,7 @@
 /obj/effect/acid_hole{
 	dir = 4
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "buo" = (
 /turf/open/floor/hybrisa/tile/tilered,
@@ -25941,7 +25938,7 @@
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "bvC" = (
 /obj/structure/sign/safety/synth_storage,
-/turf/closed/wall/shiva/prefabricated/white,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "bvD" = (
 /obj/structure/machinery/floodlight,
@@ -26152,7 +26149,7 @@
 /area/point_loma/airbase/cave/south/upper)
 "bwc" = (
 /obj/structure/noticeboard,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bwd" = (
 /obj/structure/flora/pottedplant/random,
@@ -26173,7 +26170,7 @@
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bwh" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/workshop/upper)
 "bwi" = (
@@ -26274,7 +26271,7 @@
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwx" = (
 /obj/structure/machinery/vending/coffee{
@@ -26349,11 +26346,11 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwH" = (
 /obj/structure/sign/poster/nspa,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bwI" = (
 /obj/structure/sign/poster/safety,
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwJ" = (
 /obj/structure/surface/table,
@@ -26454,7 +26451,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwX" = (
 /obj/structure/extinguisher_cabinet,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "bwY" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
@@ -32796,7 +32793,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/lz)
 "bOZ" = (
-/turf/closed/wall/shiva/prefabricated/white,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "bPa" = (
 /turf/open/floor/white,
@@ -32837,13 +32834,13 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south_west)
 "bPm" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bPn" = (
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bPo" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bPp" = (
@@ -32900,7 +32897,7 @@
 /turf/open/floor/shiva/red/north,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "bPD" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/workshop)
 "bPE" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -32962,13 +32959,13 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
 "bPR" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security)
 "bPS" = (
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/security)
 "bPT" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/security)
 "bPU" = (
@@ -32981,10 +32978,10 @@
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/mining_colony/interior/security)
 "bPW" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "bPX" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "bPY" = (
 /turf/open/floor/shiva/red/west,
@@ -33273,10 +33270,10 @@
 /turf/open/asphalt/cement_shaded/north_south,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/central)
 "bRk" = (
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRl" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRm" = (
@@ -33293,7 +33290,7 @@
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRp" = (
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bRq" = (
 /obj/structure/flora/grass/colorable/point_loma/light/nine,
@@ -33397,10 +33394,10 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/fire_station)
 "bRO" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
 "bRP" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRQ" = (
 /obj/structure/machinery/light,
@@ -33438,7 +33435,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/interior/garage)
 "bRY" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bRZ" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -33510,10 +33507,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/interior/garage)
 "bSo" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bSp" = (
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bSq" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -33556,7 +33553,7 @@
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/research_facility/hallway/south)
 "bSx" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bSy" = (
@@ -33567,7 +33564,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bSA" = (
 /obj/structure/sink,
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bSB" = (
 /obj/structure/machinery/light/double{
@@ -33609,7 +33606,7 @@
 /area/point_loma/airbase/interior/research)
 "bSK" = (
 /obj/structure/closet/hydrant,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bSL" = (
 /turf/open/floor/shiva/yellow/north,
@@ -33678,13 +33675,13 @@
 	phone_category = "USASF Point Loma";
 	phone_id = "Security Checkpoint - North"
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bTc" = (
 /obj/structure/noticeboard{
 	dir = 8
 	},
-/turf/closed/wall/shiva/prefabricated/red,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
 "bTd" = (
 /turf/open/floor/shiva/red/northwest,
@@ -33745,7 +33742,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
 "bTr" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "bTs" = (
 /obj/structure/window/framed/shiva/orange,
@@ -33755,7 +33752,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "bTu" = (
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "bTv" = (
 /obj/item/stack/rods,
@@ -38464,7 +38461,7 @@
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
 "ciQ" = (
-/obj/structure/window/framed/shiva/red,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/workshop)
 "ciR" = (
@@ -38646,7 +38643,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
 "cjD" = (
-/obj/structure/window/framed/shiva/blue,
+/obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "cjE" = (
@@ -38729,7 +38726,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
 "cjV" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/interior/workshop)
 "cjW" = (
 /turf/open/floor/shiva/yellow,
@@ -41832,7 +41829,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/interior/workshop/upper)
 "ctP" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/workshop/upper)
 "ctQ" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -43916,7 +43913,7 @@
 	name = "engineering shutters button";
 	id = "engi_shutter_east"
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cBh" = (
 /obj/structure/machinery/door_control{
@@ -43925,7 +43922,7 @@
 	pixel_x = -9;
 	id = "engi_shutter_west"
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cBi" = (
 /obj/structure/machinery/door_control{
@@ -43934,7 +43931,7 @@
 	pixel_x = 6;
 	id = "engi_shutter_west"
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cBj" = (
 /obj/structure/machinery/door_control{
@@ -43948,7 +43945,7 @@
 	pixel_x = 5;
 	id = "engi_shutter"
 	},
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cBk" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -46647,16 +46644,6 @@
 /obj/structure/prop/invuln/fire,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"cJH" = (
-/obj/effect/decal/cleanable/dirt/sand_1,
-/obj/structure/prop/vehicles/aircraft/vtol/damaged,
-/turf/open/hybrisa/street/asphalt/runway,
-/area/point_loma/airbase/exterior/crash_site)
-"cJI" = (
-/obj/effect/decal/cleanable/dirt/sand_1,
-/obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/asphalt/runway,
-/area/point_loma/airbase/exterior/crash_site)
 "cJJ" = (
 /obj/structure/barricade/sandbags{
 	dir = 1;
@@ -46697,15 +46684,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/asphalt/runway,
 /area/point_loma/airbase/exterior/crash_site)
-"cJQ" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/asphalt/runway,
-/area/point_loma/airbase/exterior/crash_site)
-"cJR" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/asphalt/runway,
-/area/point_loma/airbase/exterior/east)
 "cJS" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -47570,7 +47548,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
-/turf/closed/wall/shiva/prefabricated/white,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/caves)
 "cMw" = (
 /obj/structure/machinery/light/double{
@@ -48074,7 +48052,7 @@
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/central)
 "cOx" = (
 /obj/effect/acid_hole,
-/turf/closed/wall/shiva/prefabricated/orange,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cOy" = (
 /obj/effect/decal/hybrisa/road/lines3,
@@ -48402,7 +48380,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/caves)
 "cPw" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "cPx" = (
 /turf/open/auto_turf/sand_white/layer0,
@@ -48412,16 +48390,16 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/exterior/north)
 "cPz" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/security)
 "cPA" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "cPB" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/interior/garage)
 "cPC" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "cPD" = (
 /turf/closed/wall/new_varadero/concrete/hull,
@@ -163065,12 +163043,12 @@ asb
 bOU
 bOU
 bOU
-aKN
-aKN
+bsV
+bsV
 btQ
-aKN
-aKN
-aKN
+bsV
+bsV
+bsV
 asb
 aPC
 aPC
@@ -163252,7 +163230,7 @@ btW
 btR
 btI
 btx
-aKN
+bsV
 bOT
 bOT
 bOT
@@ -163616,7 +163594,7 @@ btY
 btJ
 btK
 btz
-aKN
+bsV
 bOT
 bOT
 bOT
@@ -164150,9 +164128,9 @@ aPC
 aPC
 asb
 asb
-aKN
-aKN
-aKN
+bsV
+bsV
+bsV
 bOT
 bOT
 bOT
@@ -164334,7 +164312,7 @@ asb
 asb
 aYk
 buI
-aKN
+bsV
 bOT
 bOT
 bOT
@@ -164511,12 +164489,12 @@ bPq
 btl
 btl
 btl
-aKN
-aKN
-aKN
-aKN
+bsV
+bsV
+bsV
+bsV
 aXV
-aKN
+bsV
 bOT
 bOT
 bOT
@@ -165054,9 +165032,9 @@ bPy
 bPy
 aAr
 bPD
-aKN
-aKN
-aKN
+bsV
+bsV
+bsV
 anS
 bvl
 btN
@@ -165431,7 +165409,7 @@ bOT
 bOT
 bOT
 bOT
-aKN
+bsV
 aLh
 btS
 btN
@@ -165600,9 +165578,9 @@ bPz
 bPz
 bPv
 bPD
-aKN
-aKN
-aKN
+bsV
+bsV
+bsV
 anS
 bvm
 aXP
@@ -165785,7 +165763,7 @@ cgD
 bOT
 bOT
 bOT
-aKN
+bsV
 apq
 apq
 anS
@@ -165977,7 +165955,7 @@ bOT
 bOT
 bOT
 bOT
-aKN
+bsV
 awK
 aXP
 aXP
@@ -166432,7 +166410,7 @@ bQY
 bQY
 bQY
 bQY
-cJH
+clw
 bQY
 bQY
 clw
@@ -166612,7 +166590,7 @@ bQT
 bxN
 bQY
 bQY
-cJP
+bQY
 bQY
 bQY
 bQY
@@ -166703,16 +166681,16 @@ bOT
 bOT
 bse
 caB
-btc
-bOT
-bOT
-bOT
-bOT
-bOT
-bOT
-bOT
-bOT
-bse
+bYn
+cMr
+cMr
+cMG
+cMr
+cMr
+cMG
+cMr
+cMr
+caB
 btc
 bOT
 btr
@@ -166793,9 +166771,9 @@ bQT
 bQT
 bxN
 bQY
-cJP
-cJQ
-cJI
+bQY
+bQY
+clw
 bQY
 bQY
 bRS
@@ -166866,13 +166844,13 @@ bYr
 bYy
 bPf
 aZF
-aKN
-aKN
+bsV
+bsV
 apq
 apq
-aKN
+bsV
 aUh
-aKN
+bsV
 bOT
 bvL
 bth
@@ -166885,15 +166863,15 @@ buJ
 cBR
 bse
 caB
-bYn
-cMr
-cMr
-cMG
-cMr
-cMr
-cMG
-cMr
-cMr
+caB
+caB
+caB
+caB
+caB
+caB
+caB
+caB
+caB
 caB
 btc
 bOT
@@ -166976,7 +166954,7 @@ bQd
 bRS
 bUR
 bUR
-cJR
+bUR
 bUR
 bUR
 bRS
@@ -167418,7 +167396,7 @@ aXP
 azY
 aXP
 bwk
-aKN
+bsV
 bOT
 bvN
 buV
@@ -176695,8 +176673,8 @@ cNF
 ctq
 asb
 asb
-asb
-asb
+bIT
+bIT
 asb
 asb
 asb
@@ -176877,8 +176855,8 @@ cNF
 aTY
 asb
 asb
-asb
-asb
+bIT
+bIT
 asb
 asb
 asb
@@ -177058,9 +177036,9 @@ bQX
 cNE
 asb
 asb
-asb
-asb
-asb
+bIT
+bIT
+bIT
 asb
 asb
 asb
@@ -177240,9 +177218,9 @@ cNL
 cNG
 asb
 asb
-asb
-asb
-asb
+bIT
+bIT
+bIT
 asb
 asb
 asb
@@ -177422,10 +177400,10 @@ cNM
 cNH
 bPO
 cNB
-asb
-asb
-asb
-asb
+bIT
+bIT
+bIT
+bIT
 asb
 asb
 asb
@@ -177604,10 +177582,10 @@ bPQ
 cNF
 cNC
 cNB
-asb
-asb
-asb
-asb
+bIT
+bIT
+bIT
+bIT
 asb
 asb
 asb
@@ -177787,9 +177765,9 @@ cNI
 aOw
 aGq
 asb
-asb
-asb
-asb
+bIT
+bIT
+bIT
 asb
 asb
 asb

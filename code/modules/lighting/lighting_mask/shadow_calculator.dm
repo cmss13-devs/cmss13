@@ -43,7 +43,9 @@
 
 ///Enqueues the mask in the queue properly
 /atom/movable/lighting_mask/proc/queue_mask_update()
-	SSlighting.mask_queue |= src
+	if(awaiting_update || QDELING(src)) // don't update us if we're qdeling
+		return
+	SSlighting.mask_queue += src
 	awaiting_update = TRUE
 
 /**

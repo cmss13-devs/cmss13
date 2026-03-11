@@ -68,7 +68,8 @@
 	if (top_atom)
 		LAZYREMOVE(top_atom.static_light_sources, src)
 
-	SSlighting.static_sources_queue -= src
+	if(needs_update)
+		SSlighting.static_sources_queue -= src
 	return ..()
 
 // Yes this doesn't align correctly on anything other than 4 width tabs.
@@ -83,6 +84,8 @@
 
 /// This proc will cause the light source to update the top atom, and add itself to the update queue.
 /datum/static_light_source/proc/update(atom/new_top_atom)
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
 		if(top_atom != source_atom && top_atom.static_light_sources) // Remove ourselves from the light sources of that top atom.
@@ -97,10 +100,14 @@
 
 /// Will force an update without checking if it's actually needed.
 /datum/static_light_source/proc/force_update()
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	EFFECT_UPDATE(LIGHTING_FORCE_UPDATE)
 
 /// Will cause the light source to recalculate turfs that were removed or added to visibility only.
 /datum/static_light_source/proc/vis_update()
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	EFFECT_UPDATE(LIGHTING_VIS_UPDATE)
 
 // Macro that applies light to a new corner.

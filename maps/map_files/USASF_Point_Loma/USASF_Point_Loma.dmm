@@ -32783,6 +32783,9 @@
 "bOU" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
+"bOV" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/research_facility/cave/south_east)
 "bOW" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/lz)
@@ -48176,13 +48179,10 @@
 	},
 /turf/open/gm/river/no_overlay/sewage,
 /area/point_loma/research_facility/cave/south_east)
-"cON" = (
-/turf/open/gm/river/no_overlay/sewage,
-/area/point_loma/research_facility/cave/south_east)
 "cOO" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
 /obj/item/reagent_container/food/snacks/grown/mushroom/libertycap,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/research_facility/cave/south_east)
 "cOP" = (
 /obj/structure/prop/invuln/overhead_pipe,
@@ -48194,11 +48194,11 @@
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
 	pixel_x = -4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/research_facility/cave/south_east)
 "cOQ" = (
 /obj/effect/glowshroom,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/research_facility/cave/south_east)
 "cOR" = (
 /obj/structure/prop/invuln/overhead_pipe,
@@ -118305,8 +118305,8 @@ asb
 asb
 asb
 cOO
-bIB
-bIB
+bOV
+bOV
 bIB
 bIB
 asb
@@ -118488,7 +118488,7 @@ asb
 cOR
 cOP
 cOL
-bIB
+bOV
 bIB
 bIB
 anW
@@ -118670,7 +118670,7 @@ asb
 asb
 cOQ
 cOM
-bIB
+bOV
 bIB
 bIB
 anW
@@ -118850,9 +118850,9 @@ bIB
 cCL
 cCL
 asb
-bIB
-cON
-bIB
+bOV
+bOV
+bOV
 bIB
 cav
 asb

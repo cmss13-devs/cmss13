@@ -1,6 +1,6 @@
 /datum/xeno_strain/vampire
 	name = LURKER_VAMPIRE
-	description = "You lose all of your abilities and you forefeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
+	description = "You lose all of your abilities and you forfeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
 	flavor_description = "Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
 
@@ -270,6 +270,6 @@
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
-	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+	log_attack("[key_name(target_carbon)] was executed by [key_name(xeno)] with a headbite!")
 	apply_cooldown()
 	return ..()

@@ -1168,35 +1168,6 @@
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/xeno)
 	xeno.visible_message("[xeno] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
 
-//Digging up snow
-/turf/open/snow/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(xeno.a_intent == INTENT_HARM) //Missed slash.
-		return
-	if(xeno.a_intent == INTENT_HELP || !bleed_layer)
-		return ..()
-
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts clearing out \the [src]..."), SPAN_NOTICE("We start \the clearing out [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
-	playsound(xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-
-	while(bleed_layer > 0)
-		xeno_attack_delay(xeno)
-		var/size = max(xeno.mob_size, 1)
-		if(!do_after(xeno, 12/size, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			return XENO_NO_DELAY_ACTION
-
-		if(!bleed_layer)
-			to_chat(xeno, SPAN_WARNING("There is nothing to clear out!"))
-			return XENO_NO_DELAY_ACTION
-
-		bleed_layer--
-		update_icon(1, 0)
-
-	return XENO_NO_DELAY_ACTION
-
-/turf/open/snow/attack_larva(mob/living/carbon/xenomorph/larva/xeno)
-	return //Larvae can't do shit
-
-
 //Crates, closets, other paraphernalia
 /obj/structure/closet/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!unacidable)

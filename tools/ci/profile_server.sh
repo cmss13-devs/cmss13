@@ -21,6 +21,7 @@ BYOND_TRACY_LIB="${BYOND_TRACY_LIB:-./libprof.so}"
 [[ ! -f "$BYOND_TRACY_LIB" ]] && { echo "ERROR: byond-tracy library not found at '$BYOND_TRACY_LIB'" >&2; exit 1; }
 
 (
+	# we need to capture twice - tracy-capture, if it hooks as soon as byond-tracy is ready, captures 3 frames then disconnects
     "$TRACY_CAPTURE" -o "$OUTPUT_TRACY" -f -a 127.0.0.1 -p "$TRACY_PORT" 2>/dev/null || true
     "$TRACY_CAPTURE" -o "$OUTPUT_TRACY" -f -a 127.0.0.1 -p "$TRACY_PORT" 2>/dev/null || true
 ) &
@@ -31,7 +32,7 @@ wait
 
 [[ ! -f "$OUTPUT_TRACY" ]] && { echo "ERROR: Tracy capture file not created." >&2; exit 1; }
 
-# Export total (inclusive) and self (exclusive) time, then merge into one CSV
+# export total (inclusive) and self (exclusive) time, then merge into one CSV
 TOTAL_TMP="$(mktemp)"
 SELF_TMP="$(mktemp)"
 "$TRACY_CSVEXPORT"    "$OUTPUT_TRACY" > "$TOTAL_TMP"

@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "ARES correctly records OB/Supply Coords, stop the ship map shaking multiple times from one OB being fired."

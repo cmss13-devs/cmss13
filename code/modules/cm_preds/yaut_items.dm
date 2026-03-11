@@ -194,7 +194,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	var/councillor_override = FALSE
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()

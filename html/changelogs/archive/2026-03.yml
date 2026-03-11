@@ -144,3 +144,8 @@
   - bugfix: Fixed potential for hive collapse during hijack
   MistChristmas:
   - soundtweak: Normalise ambience that Abyssal uses to be quieter.
+2026-03-11:
+  MistChristmas:
+  - bugfix: Tyrago Rift Out of bounds areas disallow burrowing.
+  MoondancerPony:
+  - bugfix: fixed larvae being able to dig snow

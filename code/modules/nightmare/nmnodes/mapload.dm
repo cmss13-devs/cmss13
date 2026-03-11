@@ -67,7 +67,7 @@
 		weights  += w
 		sum   += w
 	var/roll = rand(1, sum)
-#if !defined(UNIT_TESTS)
+#if !defined(REPRODUCIBLE_ENVIRONMENT)
 	sum = 0
 #endif // Remove the possibility of chance for testing
 	for(var/i in 1 to length(filelist))
@@ -100,7 +100,7 @@
 	for(var/filename in dircontents)
 		if(!matcher.Find(filename))
 			continue
-#if !defined(UNIT_TESTS)
+#if !defined(REPRODUCIBLE_ENVIRONMENT)
 		var/fprob = clamp(text2num(matcher.group[1]) / 100, 0, 1)
 		if(fprob < rand())
 			continue

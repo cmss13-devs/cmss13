@@ -2,7 +2,7 @@
 set -euo pipefail
 
 OUTPUT_CSV="${1:-startup.csv}"
-OUTPUT_TRACY="startup.tracy"
+OUTPUT_TRACY="${2:-startup.tracy}"
 TRACY_PORT="${TRACY_PORT:-8086}"
 
 DMB="${DMB_PATH:-$(find . -maxdepth 1 -name "*.dmb" | head -n1)}"
@@ -25,18 +25,25 @@ BYOND_TRACY_LIB="${BYOND_TRACY_LIB:-./libprof.so}"
     "$TRACY_CAPTURE" -o "$OUTPUT_TRACY" -f -a 127.0.0.1 -p "$TRACY_PORT" 2>/dev/null || true
 ) &
 
-"$DREAM_DAEMON" "$DMB" -trusted -invisible &
+UTRACY_BIND_PORT="$TRACY_PORT" "$DREAM_DAEMON" "$DMB" -trusted -invisible -map-threads 0 &
 
 wait
 
 [[ ! -f "$OUTPUT_TRACY" ]] && { echo "ERROR: Tracy capture file not created." >&2; exit 1; }
 
-"$TRACY_CSVEXPORT" "$OUTPUT_TRACY" > "$OUTPUT_CSV"
+# Export total (inclusive) and self (exclusive) time, then merge into one CSV
+TOTAL_TMP="$(mktemp)"
+SELF_TMP="$(mktemp)"
+"$TRACY_CSVEXPORT"    "$OUTPUT_TRACY" > "$TOTAL_TMP"
+"$TRACY_CSVEXPORT" -e "$OUTPUT_TRACY" > "$SELF_TMP"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python3 "$SCRIPT_DIR/profile_merge.py" "$TOTAL_TMP" "$SELF_TMP" "$OUTPUT_CSV"
+
+rm "$TOTAL_TMP" "$SELF_TMP"
 
 echo "--- Zone timing summary (top 20 by total time) ---"
-if command -v awk &>/dev/null; then
-    awk -F',' 'NR==1 { print; next } { print | "sort -t, -k4 -rn" }' "$OUTPUT_CSV" \
-        | head -n 21 \
-        | awk -F',' 'NR==1 { printf "%-60s %12s %8s %12s\n", "Zone", "Total(ms)", "Count", "Mean(µs)" }
-                     NR>1  { printf "%-60s %12.3f %8s %12.3f\n", $1, $4/1e6, $6, $7/1e3 }'
-fi
+awk -F',' 'NR==1 { print; next } { print | "sort -t, -k4 -rn" }' "$OUTPUT_CSV" \
+    | head -n 21 \
+    | awk -F',' 'NR==1 { printf "%-60s %12s %12s %8s\n", "Zone", "Total(ms)", "Self(ms)", "Count" }
+                 NR>1  { printf "%-60s %12.3f %12.3f %8s\n", $1, $4/1e6, $7/1e6, $6 }'

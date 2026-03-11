@@ -1,8 +1,10 @@
 name: Tracy Startup Profiling
 
 on:
-  push:
-  pull_request:
+  pull_request_target:
+    paths-ignore:
+      - tools/bootstrap/**
+      - tools/build/**
 
 jobs:
   run_tracy_profiling:
@@ -12,18 +14,21 @@ jobs:
       TRACY_VERSION: "0.13.1"
 
     steps:
-      - name: Generate App Token
-        id: app-token-generation
-        if: github.event_name == 'push'
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - uses: actions/checkout@v3
+      - name: Checkout PR head
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
-          token: ${{ github.event_name == 'push' && steps.app-token-generation.outputs.token || github.token }}
+          path: pr
+          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ github.token }}
+
+      - name: Checkout base branch
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          path: base
+          ref: ${{ github.event.pull_request.base.sha }}
+          token: ${{ github.token }}
 
       - name: Restore BYOND cache
         uses: actions/cache@v3
@@ -38,23 +43,23 @@ jobs:
           path: |
             ./tracy-capture
             ./tracy-csvexport
-          key: ${{ runner.os }}-tracy-${{ env.TRACY_VERSION }}
+          key: ${{ runner.os }}-tracy-${{ env.TRACY_VERSION }}-v2
 
       - name: Install rust-g
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
           sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
-          bash tools/ci/install_rust_g.sh
+          cd base && bash tools/ci/install_rust_g.sh
 
       - name: Build Tracy tools
         if: steps.tracy-cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get install -y cmake libtbb-dev libdbus-1-dev
           git clone --depth 1 --branch v${TRACY_VERSION} https://github.com/wolfpld/tracy.git tracy-src
-          cmake -S tracy-src/capture  -B tracy-src/capture/build  -DCMAKE_BUILD_TYPE=Release
+          cmake -S tracy-src/capture  -B tracy-src/capture/build  -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-march=x86-64"
           cmake --build tracy-src/capture/build  --parallel
-          cmake -S tracy-src/csvexport -B tracy-src/csvexport/build -DCMAKE_BUILD_TYPE=Release
+          cmake -S tracy-src/csvexport -B tracy-src/csvexport/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-march=x86-64"
           cmake --build tracy-src/csvexport/build --parallel
           cp tracy-src/capture/build/tracy-capture   ./tracy-capture
           cp tracy-src/csvexport/build/tracy-csvexport ./tracy-csvexport
@@ -63,58 +68,74 @@ jobs:
         run: |
           wget -q "https://github.com/spacestation13/byond-tracy/releases/latest/download/libprof.so"
 
-      - name: Compile for profiling
+      - name: Compile PR build
         run: |
-          bash tools/ci/install_byond.sh
+          cd base && bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY
+          cd ../pr && tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY -DREPRODUCIBLE_ENVIRONMENT
+
+      - name: Compile base build
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
+          cd base && tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY -DREPRODUCIBLE_ENVIRONMENT
+
+      - name: Prepare run assets
+        run: |
+          for dir in pr base; do
+            cp libprof.so $dir/libprof.so
+            cp ~/.byond/bin/librust_g.so $dir/librust_g.so
+            cp tracy-capture $dir/tracy-capture
+            cp tracy-csvexport $dir/tracy-csvexport
+          done
 
       - name: Run profiling capture
         run: |
-          source $HOME/BYOND/byond/bin/byondsetup
-          cd $GITHUB_WORKSPACE
-          bash tools/ci/profile_server.sh startup.csv
+          cd pr && git remote remove origin && cd ..
+          cd base && git remote remove origin && cd ..
+          WS="$GITHUB_WORKSPACE"
+          # Alternate CPU cores each run to cancel out core bias while keeping parallel execution
+          sudo unshare -n bash -c "\
+            ip link set lo up && \
+            source $HOME/BYOND/byond/bin/byondsetup && \
+            run() { dir=\$1 name=\$2 cpus=\$3 port=\$4; cd $WS/\$dir && TRACY_PORT=\$port taskset -c \$cpus bash tools/ci/profile_server.sh $WS/\${name}.csv $WS/\${name}.tracy; } && \
+            for i in 1 2 3 4 5 6 7 8 9 10; do \
+              if (( i % 2 == 1 )); then run base base-\$i 0,1 8086 & run pr pr-\$i 2,3 8087 & wait; \
+              else run pr pr-\$i 0,1 8086 & run base base-\$i 2,3 8087 & wait; fi; \
+            done
+          "
 
-      - name: Compare against baseline
-        if: github.event_name == 'pull_request'
+      - name: Generate PR comment
+        run: python3 base/tools/ci/profile_compare.py
+
+      - name: Post or update PR comment
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          awk -F',' '
-            NR==1 { next }
-            FILENAME == ARGV[1] { baseline[$1] = $4; next }
-            {
-              name = $1; total = $4
-              if (name in baseline) {
-                delta = total - baseline[name]
-                pct = (delta / baseline[name]) * 100
-                printf "%-60s  baseline: %8.3fms  new: %8.3fms  delta: %+8.3fms (%+.1f%%)\n",
-                  name, baseline[name]/1e6, total/1e6, delta/1e6, pct
-              } else {
-                printf "%-60s  NEW ZONE  new: %8.3fms\n", name, total/1e6
-              }
-            }
-          ' tools/ci/baseline_profile.csv startup.csv \
-          | sort -t'(' -k2 -rn
+          MARKER="<!-- tracy-profile-comment -->"
+          COMMENT_ID=$(gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+            --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id" | head -n1)
 
-      - name: Commit baseline profile
-        if: github.event_name == 'push'
-        run: |
-          cp startup.csv tools/ci/baseline_profile.csv
-          git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
-          git config --local user.name "${{ secrets.APP_PUBLIC_NAME }}[bot]"
-          git add tools/ci/baseline_profile.csv
-          git commit -m "Automatic startup profile update [ci skip]" || true
+          if [[ -n "$COMMENT_ID" ]]; then
+            gh api --method PATCH \
+              repos/${{ github.repository }}/issues/comments/$COMMENT_ID \
+              -f body="$(cat pr-comment.md)"
+          else
+            gh api --method POST \
+              repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+              -f body="$(cat pr-comment.md)"
+          fi
 
-      - name: Push
-        if: github.event_name == 'push'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ steps.app-token-generation.outputs.token }}
-
-      - name: Upload Tracy capture
+      - name: Upload CSV profiles
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: tracy-profile
-          path: |
-            startup.csv
-            startup.tracy
+          name: tracy-profile-csv
+          path: "*.csv"
+
+      - name: Upload Tracy captures
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tracy-profile-tracy
+          path: "*.tracy"

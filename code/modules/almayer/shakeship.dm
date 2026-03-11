@@ -28,7 +28,6 @@
 				playsound_client(current_mob.client, 'sound/machines/bonk.ogg', 100 )
 				playsound_client(current_mob.client, 'sound/effects/meteorimpact.ogg', 100 )
 				playsound_client(current_mob.client, 'sound/effects/slam2.ogg', 100 )
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/doorcreaky.ogg', 20), 1 SECONDS)
 		if(sstrength > 7)
 			if(current_mob.client && osound)
 				playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )

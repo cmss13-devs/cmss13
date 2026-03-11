@@ -35,7 +35,7 @@ jobs:
       - name: Compile Tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build.sh --ci dm -DCIBUILDING -DANSICOLORS -Werror
+          tools/build/build.sh --ci dm -DCIBUILDING -DANSICOLORS -Werror -I"loop_checks"
       - name: Run Tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup

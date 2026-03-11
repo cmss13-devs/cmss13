@@ -662,7 +662,7 @@
 	. = ..()
 	if(beret)
 		return
-	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
+	if(!(istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp)))
 		return
 	var/beret_attack = attacking_object
 	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))

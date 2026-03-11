@@ -119,6 +119,9 @@
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
+	if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+		return UI_CLOSE
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
 		var/units = "seconds"
@@ -252,7 +255,7 @@
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
 		if(shuttle.destination && shuttle.destination.id != linked_lz)
-			to_chat(xeno, "The shuttle not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
+			to_chat(xeno, "The shuttle is not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
 			return
 		if(shuttle.mode == SHUTTLE_CALL)
 			to_chat(xeno, "The shuttle is in flight. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")

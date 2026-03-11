@@ -96,7 +96,9 @@ SUBSYSTEM_DEF(minimaps)
 	minimaps_by_z["[level]"] = new /datum/hud_displays
 	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
 		return
+	var/datum/hud_displays/hud_data = minimaps_by_z["[level]"]
 	var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
+	var/icon/ceiling_overlay = icon('icons/ui_icons/minimap.dmi')
 	var/xmin = world.maxx
 	var/ymin = world.maxy
 	var/xmax = 1
@@ -105,8 +107,21 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/xval = 1 to world.maxx)
 		for(var/yval = 1 to world.maxy) //Scan all the turfs and draw as needed
 			var/turf/location = locate(xval,yval,level)
+			if(istype(location, /turf/open/space))
+				continue
 			var/area/turfloc = location.loc
 			var/base_color = location.minimap_color
+			var/ceiling_color
+			if(turfloc.ceiling >= CEILING_PROTECTION_TIER_4)
+				ceiling_color = MINIMAP_CEILING_TIER_4
+			else if(turfloc.ceiling >= CEILING_PROTECTION_TIER_3)
+				ceiling_color = MINIMAP_CEILING_TIER_3
+			else if(turfloc.ceiling >= CEILING_PROTECTION_TIER_2)
+				ceiling_color = MINIMAP_CEILING_TIER_2
+			else if(turfloc.ceiling >= CEILING_PROTECTION_TIER_1)
+				ceiling_color = MINIMAP_CEILING_TIER_1
+			else if(turfloc.ceiling >= CEILING_GLASS)
+				ceiling_color = MINIMAP_CEILING_TIER_GLASS
 
 			if(location.density)
 				if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
@@ -114,29 +129,22 @@ SUBSYSTEM_DEF(minimaps)
 					ymin = min(ymin, yval)
 					xmax = max(xmax, xval)
 					ymax = max(ymax, yval)
-				base_color = location.minimap_color
-			else if(istype(location, /turf/open/space))
-				continue
 			else
 				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
 				if(alttarget)
 					base_color = alttarget.minimap_color
 				else if(turfloc.minimap_color)
 					base_color = BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5)
-				else
-					base_color = location.minimap_color
 
+			xmin = min(xmin, xval)
+			ymin = min(ymin, yval)
+			xmax = max(xmax, xval)
+			ymax = max(ymax, yval)
 
+			icon_gen.DrawBox(base_color, xval, yval)
+			if(ceiling_color)
+				ceiling_overlay.DrawBox(ceiling_color, xval, yval)
 
-			var/final_color = base_color
-
-			if(!istype(location, /turf/open/space))
-				xmin = min(xmin, xval)
-				ymin = min(ymin, yval)
-				xmax = max(xmax, xval)
-				ymax = max(ymax, yval)
-
-			icon_gen.DrawBox(final_color, xval, yval)
 	xmin = xmin * MINIMAP_SCALE - 1
 	ymin = ymin * MINIMAP_SCALE - 1
 	xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
@@ -144,18 +152,26 @@ SUBSYSTEM_DEF(minimaps)
 
 	icon_gen.Scale(icon_gen.Width() * MINIMAP_SCALE, icon_gen.Height() * MINIMAP_SCALE) //scale it up x2 to make it easer to see
 	icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
+	// ditto for the ceiling
+	ceiling_overlay.Scale(ceiling_overlay.Width() * MINIMAP_SCALE, ceiling_overlay.Height() * MINIMAP_SCALE)
+	ceiling_overlay.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1)
 
 	// Determine and assign the offsets
-	minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / 2) - xmin
-	minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / 2) - ymin
-	minimaps_by_z["[level]"].x_max = xmax
-	minimaps_by_z["[level]"].y_max = ymax
+	hud_data.x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / 2) - xmin
+	hud_data.y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / 2) - ymin
+	hud_data.x_max = xmax
+	hud_data.y_max = ymax
 
 	// Center the map icon
-	icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
-	icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
-	minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
-	pregenerate_ceiling_overlay(level)
+	icon_gen.Shift(EAST, hud_data.x_offset + xmin)
+	icon_gen.Shift(NORTH, hud_data.y_offset + ymin)
+
+	ceiling_overlay.Shift(EAST, hud_data.x_offset + xmin)
+	ceiling_overlay.Shift(NORTH, hud_data.y_offset + ymin)
+
+	// Cache the overlay for all clients to use
+	hud_data.hud_image = icon_gen //done making the image!
+	hud_data.cached_ceiling_overlay = ceiling_overlay
 
 	//lateload icons
 	if(!LAZYACCESS(earlyadds, "[level]"))
@@ -164,59 +180,6 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[level]"))
 		callback.Invoke()
 	LAZYREMOVE(earlyadds, "[level]")
-
-/// Pre-generates ceiling protection overlay during minimap creation
-/datum/controller/subsystem/minimaps/proc/pregenerate_ceiling_overlay(z_level)
-	var/datum/hud_displays/hud_data = minimaps_by_z["[z_level]"]
-	if(!hud_data)
-		return
-
-	var/icon/ceiling_overlay = icon('icons/ui_icons/minimap.dmi')
-	var/xmin = world.maxx
-	var/ymin = world.maxy
-	var/xmax = 1
-	var/ymax = 1
-
-	for(var/xval = 1, xval <= world.maxx, xval++)
-		for(var/yval = 1, yval <= world.maxy, yval++)
-			var/turf/turfloc = locate(xval, yval, z_level)
-			var/area/turf_area = get_area(turfloc)
-			if(!turf_area?.ceiling)
-				continue
-
-			var/ceiling_color
-			if(turf_area.ceiling >= CEILING_PROTECTION_TIER_4)
-				ceiling_color = MINIMAP_CEILING_TIER_4
-			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_3)
-				ceiling_color = MINIMAP_CEILING_TIER_3
-			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_2)
-				ceiling_color = MINIMAP_CEILING_TIER_2
-			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_1)
-				ceiling_color = MINIMAP_CEILING_TIER_1
-			else if(turf_area.ceiling >= CEILING_GLASS)
-				ceiling_color = MINIMAP_CEILING_TIER_GLASS
-
-			if(ceiling_color)
-				if(!istype(turfloc, /turf/open/space))
-					xmin = min(xmin, xval)
-					ymin = min(ymin, yval)
-					xmax = max(xmax, xval)
-					ymax = max(ymax, yval)
-				ceiling_overlay.DrawBox(ceiling_color, xval, yval)
-
-	xmin = xmin * MINIMAP_SCALE - 1
-	ymin = ymin * MINIMAP_SCALE - 1
-	xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
-	ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
-
-	ceiling_overlay.Scale(ceiling_overlay.Width() * MINIMAP_SCALE, ceiling_overlay.Height() * MINIMAP_SCALE)
-	ceiling_overlay.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1)
-
-	ceiling_overlay.Shift(EAST, hud_data.x_offset + xmin)
-	ceiling_overlay.Shift(NORTH, hud_data.y_offset + ymin)
-
-	// Cache the overlay for all clients to use
-	hud_data.cached_ceiling_overlay = ceiling_overlay
 
 /// Creates ceiling protection overlay for a specific client and z-level
 /datum/controller/subsystem/minimaps/proc/create_ceiling_overlay(client/target_client, z_level)
@@ -228,11 +191,6 @@ SUBSYSTEM_DEF(minimaps)
 		return null
 
 	// Return cached overlay
-	if(hud_data.cached_ceiling_overlay)
-		return hud_data.cached_ceiling_overlay
-
-	// Pre-generation failed fallback, generate on demand
-	pregenerate_ceiling_overlay(z_level)
 	return hud_data.cached_ceiling_overlay
 
 /datum/controller/subsystem/minimaps/proc/regenerate_minimap_for_z(z_level)
@@ -294,7 +252,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we don't have to filter through
  */
 /datum/hud_displays
-	///Actual icon of the drawn zlevel with all of it's atoms
+	///Actual icon of the drawn zlevel with all of its atoms
 	var/icon/hud_image
 	///Assoc list of updating images; list("[flag]" = list([source] = blip)
 	var/list/images_assoc = list()
@@ -1392,7 +1350,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
-	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
 	if (control != "mapwindow.map")
 		drawing = FALSE
 		return COMSIG_MOB_CLICK_CANCELED
@@ -1546,7 +1504,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
-	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
 	if (control != "mapwindow.map")
 		return COMSIG_MOB_CLICK_CANCELED
 

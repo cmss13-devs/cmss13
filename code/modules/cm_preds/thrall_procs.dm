@@ -1,4 +1,4 @@
-//Link to thrall bracer, enabling most of it's abilities
+//Link to thrall bracer, enabling most of its abilities
 /obj/item/clothing/gloves/yautja/hunter/verb/link_bracer()
 	set name = "Link Thrall Bracer"
 	set desc = "Link your bracer to that of your thrall."

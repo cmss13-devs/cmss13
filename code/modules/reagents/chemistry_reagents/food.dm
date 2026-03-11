@@ -218,10 +218,10 @@
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-				victim.AdjustEyeBlur(25)
-				victim.AdjustEyeBlind(10)
-				victim.apply_effect(3, STUN)
-				victim.apply_effect(3, WEAKEN)
+				victim.EyeBlur(25)
+				victim.EyeBlind(10)
+				victim.Stun(3)
+				victim.KnockDown(3)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

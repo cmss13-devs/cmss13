@@ -645,7 +645,7 @@
 			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
 				SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 
-			node_loc.PlaceOnTop(/turf/closed/wall/resin/reflective/weak)
+			node_loc.place_on_top(/turf/closed/wall/resin/reflective/weak)
 			var/turf/closed/wall/resin/reflective/weak/good_wall = node_loc
 			if(good_wall)
 				good_wall.hivenumber = xeno.hivenumber
@@ -902,9 +902,9 @@
 
 		var/turf/node_wall
 		if(thick_build)
-			node_wall = target_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/node/thick)
+			node_wall = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/node/thick)
 		else
-			node_wall = target_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/node/normal)
+			node_wall = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/node/normal)
 
 		var/turf/closed/wall/resin/Res = node_wall
 		if(istype(Res))
@@ -920,9 +920,9 @@
 		if(!istype(target_turf, /turf/closed/wall))
 			var/turf/placed
 			if(thick_build)
-				placed = target_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+				placed = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/thick)
 			else
-				placed = target_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+				placed = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/normal)
 
 			var/turf/closed/wall/resin/Res = get_turf(target_turf)
 			if(istype(Res))
@@ -1070,7 +1070,7 @@
 //-----// Weedbound Base (Wall) //-----//
 //-------------------------------------//
 
-//Should not be upgradable because its not "stable" but special actions should create thick variant
+//Should not be upgradable because it's not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin wall"
 	desc = "An oddly solidified resin wall with a pattern that reminds you of flower buds."
@@ -1155,7 +1155,7 @@
 			target_type = /turf/closed/wall/resin/weedbound/normal
 
 	replacing = TRUE
-	target_turf.PlaceOnTop(target_type)
+	target_turf.place_on_top(target_type)
 	if(!target_turf)
 		return
 

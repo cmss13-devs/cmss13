@@ -194,8 +194,6 @@
 			continue
 		if(target_carbon.status_flags & XENO_HOST)
 			continue
-		if(HAS_TRAIT(target_carbon, TRAIT_NESTED))
-			continue
 		choices += target_carbon
 
 	var/mob/living/carbon/target = tgui_input_list(src, "Choose a target.", "Rip Limb", choices)

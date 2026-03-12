@@ -97,14 +97,14 @@ SUBSYSTEM_DEF(minimaps)
 		// Filter raw_blips for observer maps to exclude labels
 		if(istype(target, /atom/movable/screen/minimap) && target.is_observer_minimap)
 			// For observer maps, filter out any labels
-			for(var/image/blip in updator.raw_blips)
-				if(!blip.maptext || blip.maptext == "")
+			for(var/image/blip as anything in updator.raw_blips)
+				if(!blip.maptext)
 					combined_overlays += blip
 		else
 			// For non-observer maps, use all raw_blips
 			combined_overlays = updator.raw_blips.Copy()
 
-		if(target.current_drawing_overlays?.len)
+		if(length(target.current_drawing_overlays))
 			combined_overlays += target.current_drawing_overlays
 		updator.minimap.overlays = combined_overlays
 		depthcount++
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(minimaps)
 					// Use frozen blips for late joiners
 					for(var/image/frozen_blip in frozen_overlay_states[frozen_key])
 						// Only add if it's actually a blip
-						if(istype(frozen_blip) && frozen_blip.icon_state && frozen_blip.icon_state != "")
+						if(istype(frozen_blip) && frozen_blip.icon_state)
 							holder.raw_blips += frozen_blip
 					use_frozen_blips = TRUE
 
@@ -754,7 +754,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
 	if(!map)
 		map = new(null, null, zlevel, flags, live, popup, drawing)
-		if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
+		if(!map.icon) //Don't wanna save an unusable minimap for a z-level.
 			CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 		hashed_minimaps[hash] = map
 	return map
@@ -921,7 +921,7 @@ SUBSYSTEM_DEF(minimaps)
 /// Updates drawing overlay for this minimap based on what drawings should be visible
 /atom/movable/screen/minimap/proc/update_drawing_overlay(show_cic_drawings = FALSE)
 	// Clean up existing drawing overlays
-	if(current_drawing_overlays?.len)
+	if(length(current_drawing_overlays))
 		overlays -= current_drawing_overlays
 		current_drawing_overlays = list()
 
@@ -949,13 +949,13 @@ SUBSYSTEM_DEF(minimaps)
 				if(findtext(key, "[target]-[flag]label-"))
 					drawing_images += SSminimaps.transmitted_drawings[key]
 
-	if(drawing_images.len)
+	if(length(drawing_images))
 		// Apply drawing images as overlays directly
 		overlays += drawing_images
 		current_drawing_overlays = drawing_images.Copy()
 	else
 		// If no drawing images, make sure we clear any existing overlays
-		if(current_drawing_overlays?.len)
+		if(length(current_drawing_overlays))
 			overlays -= current_drawing_overlays
 			current_drawing_overlays = list()
 
@@ -1338,7 +1338,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	// Automatically show drawing tools for ovi'd queens
-	if(istype(xeno, /mob/living/carbon/xenomorph/queen))
+	if(isqueen(xeno) && minimap_flags == MINIMAP_FLAG_XENO)
 		var/mob/living/carbon/xenomorph/queen/queen = xeno
 		if(queen.ovipositor)
 			var/datum/component/tacmap/tacmap_component = queen.GetComponent(/datum/component/tacmap)
@@ -1350,17 +1350,17 @@ SUBSYSTEM_DEF(minimaps)
 					tacmap_component.show_tacmap(queen)
 				return
 	// Hunted still get no tacmap
-	if(xeno?.hive?.tacmap_requires_queen_ovi && !xeno?.hive?.living_xeno_queen && xeno != xeno?.hive?.living_xeno_queen)
+	if(xeno.hive?.tacmap_requires_queen_ovi && !xeno?.hive?.living_xeno_queen && xeno != xeno?.hive?.living_xeno_queen)
 		to_chat(xeno, SPAN_WARNING("You cannot access that right now."))
 		return
 
 	// Determine if map should be live based on queen's ovipositor status
 	var/should_be_live = FALSE
-	if(xeno == xeno?.hive?.living_xeno_queen)
+	if(xeno == xeno.hive?.living_xeno_queen)
 		should_be_live = TRUE // Queens always get live
-	else if(xeno?.hive?.living_xeno_queen?.ovipositor)
+	else if(xeno.hive?.living_xeno_queen?.ovipositor)
 		should_be_live = TRUE // Queen is on ovipositor, all xenos get live
-	else if(!xeno?.hive?.tacmap_requires_queen_ovi)
+	else if(!xeno.hive?.tacmap_requires_queen_ovi)
 		should_be_live = TRUE // This Hive doesn't require queen ovi (forsaken for example)
 
 	// If live status changed, reset the map so it gets recreated with correct mode
@@ -1964,7 +1964,7 @@ SUBSYSTEM_DEF(minimaps)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	icon_state = "update_cooldown"
 
-	if(linked_map.minimap_flags & MINIMAP_FLAG_XENO)
+	if(linked_map.minimap_flags & MINIMAP_FLAG_ALL_XENOS)
 		announce_xeno(user)
 	else
 		announce_human(user)

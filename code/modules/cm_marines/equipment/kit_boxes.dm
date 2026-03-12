@@ -421,7 +421,7 @@
 	new /obj/item/storage/pouch/tools/tank(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/pamphlet/skill/machinegunner(src)
+	new /obj/item/pamphlet/upgradeable/machinegunner(src)
 
 /obj/item/storage/box/kit/defensegunner
 	name = "\improper M56D Defense Gunner Kit"
@@ -434,7 +434,7 @@
 	new /obj/item/clothing/head/helmet/marine/tech(src)
 	new /obj/item/explosive/mine(src)
 	new /obj/item/explosive/mine(src)
-	new /obj/item/pamphlet/skill/machinegunner(src)
+	new /obj/item/pamphlet/upgradeable/machinegunner(src)
 
 
 /obj/item/storage/box/kit/mini_pyro
@@ -505,7 +505,7 @@
 
 /obj/item/storage/box/kit/mini_engineer/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack(src)
-	new /obj/item/pamphlet/skill/engineer(src)
+	new /obj/item/pamphlet/upgradeable/engineer(src)
 	new /obj/item/clothing/gloves/marine/insulated(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/clothing/glasses/welding(src)
@@ -521,7 +521,7 @@
 	pro_case_overlay = "medic"
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
-	new /obj/item/pamphlet/skill/medical(src)
+	new /obj/item/pamphlet/upgradeable/medical(src)
 	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/device/helmet_visor/medical(src)
@@ -548,7 +548,7 @@
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
 	new /obj/item/device/encryptionkey/intel(src)
-	new /obj/item/pamphlet/skill/intel(src)
+	new /obj/item/pamphlet/upgradeable/intel(src)
 	new /obj/item/device/motiondetector/intel(src)
 	new /obj/item/storage/pouch/document(src)
 

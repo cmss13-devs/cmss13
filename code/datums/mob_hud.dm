@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno/xeno_hive_normal
 /datum/mob_hud/xeno/xeno_hive_corrupted
@@ -619,8 +619,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(!client)
 		return
 	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
-		if(des.choosenMark)
-			client.images |= des.choosenMark
+		if(des.chosenMark)
+			client.images |= des.chosenMark
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]

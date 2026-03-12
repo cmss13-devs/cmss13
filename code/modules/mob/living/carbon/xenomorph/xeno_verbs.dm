@@ -173,3 +173,120 @@
 
 // var/datum/techtree/T = GET_TREE(TREE_XENO)
 // T.enter_mob(src)
+
+/mob/living/carbon/xenomorph/verb/rip_limb()
+	set name = "Rip Limb"
+	set desc = "Rip off a limb from living pray."
+	set category = "Alien"
+
+	if(caste_type != XENO_CASTE_WARRIOR)
+		to_chat(src, SPAN_WARNING("Only Warriors can do this!"))
+		return
+
+	if(action_busy)
+		return
+
+	var/list/choices = list()
+	for(var/mob/living/carbon/human/target_carbon in view(1, src) - src)
+		if(!Adjacent(target_carbon))
+			continue
+		if(target_carbon.stat == DEAD)
+			continue
+		if(target_carbon.status_flags & XENO_HOST)
+			continue
+		choices += target_carbon
+
+	var/mob/living/carbon/target = tgui_input_list(src, "Choose a target.", "Rip Limb", choices)
+
+	if(!target)
+		return
+
+	if(!Adjacent(target))
+		to_chat(src, SPAN_WARNING("You must be next to the target."))
+		return
+
+	if(can_not_harm(target))
+		to_chat(src, SPAN_XENOWARNING("We cannot harm this host!"))
+		return
+
+	var/static/list/procedure_choices = list(
+		"Behead" = "head",
+		"Delimb - Right Hand" = "r_hand",
+		"Delimb - Left Hand" = "l_hand",
+		"Delimb - Right Arm" = "r_arm",
+		"Delimb - Left Arm" = "l_arm",
+		"Delimb - Right Foot" = "r_foot",
+		"Delimb - Left Foot" = "l_foot",
+		"Delimb - Right Leg" = "r_leg",
+		"Delimb - Left Leg" = "l_leg",
+	)
+
+	var/procedure = tgui_input_list(src, "Which limb do we rip?", "Rip Limb", procedure_choices)
+
+	if(!procedure)
+		return
+
+	var/limb = procedure_choices[procedure]
+
+	var/mob/living/carbon/human/target_human = target
+
+	if(!istype(target_human))
+		return
+
+	var/obj/limb/target_limb = target_human.get_limb(limb)
+
+	if(!target_limb)
+		return
+
+	if(target_limb.status & LIMB_DESTROYED)
+		to_chat(src, SPAN_XENOWARNING("That limb is already gone."))
+		return
+
+	var/limb_time = rand(40,60)
+	if(limb == "head")
+		limb_time = rand(90,110)
+
+	visible_message(
+		SPAN_XENOWARNING("[src] begins pulling on [target_human]'s [target_limb.display_name] with incredible strength!"),
+		SPAN_XENOWARNING("We begin pulling on [target_human]'s [target_limb.display_name] with incredible strength!"))
+
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_OUT_OF_RANGE, BUSY_ICON_HOSTILE) || target_human.status_flags & XENO_HOST || target_human.stat == DEAD || iszombie(target_human))
+		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		return
+
+	if(!Adjacent(target_human))
+		return
+
+	if(target_limb.status & LIMB_DESTROYED)
+		return
+
+	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+		target_limb.take_damage(rand(30,40),0,0)
+		visible_message(
+			SPAN_XENOWARNING("You hear [target_human]'s [target_limb.display_name] being pulled beyond its load limits!"),
+			SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] begins to tear apart!"))
+	else
+		visible_message(
+			SPAN_XENOWARNING("We hear the bones in [target_human]'s [target_limb.display_name] snap with a sickening crunch!"),
+			SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] bones snap with a satisfying crunch!"))
+		target_limb.take_damage(rand(15,25),0,0)
+		target_limb.fracture(100)
+
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_OUT_OF_RANGE, BUSY_ICON_HOSTILE) || target_human.status_flags & XENO_HOST || target_human.stat == DEAD || iszombie(target_human))
+		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		return
+
+	if(!Adjacent(target_human))
+		return
+
+	if(target_limb.status & LIMB_DESTROYED)
+		return
+
+	visible_message(
+		SPAN_XENOWARNING("[src] rips [target_human]'s [target_limb.display_name] away from their body!"),
+		SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] is torn away!")
+	)
+
+	target_human.last_damage_data = create_cause_data(initial(caste_type), src)
+
+	target_limb.droplimb(0,0,initial(name))

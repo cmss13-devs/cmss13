@@ -40,3 +40,11 @@
 	var/base_punch_damage_synth = 30
 	var/base_punch_damage_pred = 25
 	var/damage_variance = 5
+
+/datum/action/xeno_action/activable/rip_limb
+	name = "Rip Limb"
+	action_icon_state = "rip_limb"
+	macro_path = /datum/action/xeno_action/verb/verb_fling
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 10 SECONDS

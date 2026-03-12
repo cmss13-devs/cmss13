@@ -1318,7 +1318,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
-	live = TRUE
+	live = FALSE
 	drawing = TRUE
 
 /datum/action/minimap/xeno/New(target, new_minimap_flags, new_marker_flags, hive_number)
@@ -1349,10 +1349,26 @@ SUBSYSTEM_DEF(minimaps)
 				else
 					tacmap_component.show_tacmap(queen)
 				return
-
-	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen && xeno?.hive?.tacmap_requires_queen_ovi)
-		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
+	// Hunted still get no tacmap
+	if(xeno?.hive?.tacmap_requires_queen_ovi && !xeno?.hive?.living_xeno_queen && xeno != xeno?.hive?.living_xeno_queen)
+		to_chat(xeno, SPAN_WARNING("You cannot access that right now."))
 		return
+
+	// Determine if map should be live based on queen's ovipositor status
+	var/should_be_live = FALSE
+	if(xeno == xeno?.hive?.living_xeno_queen)
+		should_be_live = TRUE // Queens always get live
+	else if(xeno?.hive?.living_xeno_queen?.ovipositor)
+		should_be_live = TRUE // Queen is on ovipositor, all xenos get live
+	else if(!xeno?.hive?.tacmap_requires_queen_ovi)
+		should_be_live = TRUE // This Hive doesn't require queen ovi (forsaken for example)
+
+	// If live status changed, reset the map so it gets recreated with correct mode
+	if(live != should_be_live)
+		if(minimap_displayed)
+			toggle_minimap(FALSE)
+		live = should_be_live
+		map = null
 
 	. = ..()
 

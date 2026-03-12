@@ -7,7 +7,7 @@
 	if(!force)
 		if(!check_dock(new_dock))
 			remove_ripples()
-			if(destination && dock_failures++ > 2)
+			if(destination && dock_failures++ > 4)
 				destination = null
 				message_admins("Shuttle [src] repeatedly failed to initiate_docking and is being forced to a null destination!")
 			return DOCKING_BLOCKED

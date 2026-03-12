@@ -1484,14 +1484,14 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 #define FOR_DVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (get_turf(center)); \
 	GLOB.dview_mob.see_invisible = invis_flags; \
-	for(type in oview(range, GLOB.dview_mob))
+	for(type in view(range, GLOB.dview_mob))
 
 #define FOR_DVIEW_END GLOB.dview_mob.loc = null
 
 #define FOR_DOVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (get_turf(center)); \
 	GLOB.dview_mob.see_invisible = invis_flags; \
 	for(type in oview(range, GLOB.dview_mob) - (center))
 

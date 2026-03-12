@@ -499,21 +499,24 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 			return
 	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
 	if(new_facial)
-		M.r_facial = hex2num(copytext(new_facial, 2, 4))
-		M.g_facial = hex2num(copytext(new_facial, 4, 6))
-		M.b_facial = hex2num(copytext(new_facial, 6, 8))
+		var/list/color_list = rgb2num(new_facial)
+		M.r_facial = color_list[1]
+		M.g_facial = color_list[2]
+		M.b_facial = color_list[3]
 
 	var/new_hair = input("Please select hair color.", "Character Generation") as color
-	if(new_facial)
-		M.r_hair = hex2num(copytext(new_hair, 2, 4))
-		M.g_hair = hex2num(copytext(new_hair, 4, 6))
-		M.b_hair = hex2num(copytext(new_hair, 6, 8))
+	if(new_hair)
+		var/list/color_list = rgb2num(new_hair)
+		M.r_hair = color_list[1]
+		M.g_hair = color_list[2]
+		M.b_hair = color_list[3]
 
 	var/new_eyes = input("Please select eye color.", "Character Generation") as color
 	if(new_eyes)
-		M.r_eyes = hex2num(copytext(new_eyes, 2, 4))
-		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))
-		M.b_eyes = hex2num(copytext(new_eyes, 6, 8))
+		var/list/color_list = rgb2num(new_eyes)
+		M.r_eyes = color_list[1]
+		M.g_eyes = color_list[2]
+		M.b_eyes = color_list[3]
 
 
 	// hair

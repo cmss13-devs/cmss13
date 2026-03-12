@@ -1,8 +1,8 @@
-/proc/get_area_name(atom/X, format_text = FALSE)
-	var/area/A = isarea(X) ? X : get_area(X)
-	if(!A)
+/proc/get_area_name(atom/target, format_text = FALSE)
+	var/area/target_area = get_area(target)
+	if(!target_area)
 		return null
-	return format_text ? format_text(A.name) : A.name
+	return format_text ? format_text(target_area.name) : target_area.name
 
 /proc/in_range(source, user)
 	if(get_dist(source, user) <= 1)

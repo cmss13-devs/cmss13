@@ -455,9 +455,9 @@
 	icon_state = "mo_spawn"
 	job = /datum/job/command/pilot/whiskey
 
-/obj/effect/landmark/start/whiskey/tank_crew
+/obj/effect/landmark/start/whiskey/warden
 	icon_state = "spec_hg_spawn"
-	job = /datum/job/command/tank_crew/whiskey
+	job = /datum/job/command/warden/whiskey
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"

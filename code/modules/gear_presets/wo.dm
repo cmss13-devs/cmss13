@@ -257,12 +257,12 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hgs
-	name = "WO Honor Guard Specialist" //Tank crew
+	name = "WO Honor Guard Specialist" //Warden
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_GENERAL)
-	assignment = JOB_WO_CREWMAN
-	job_title = JOB_WO_CREWMAN
+	assignment = JOB_WO_WARDEN
+	job_title = JOB_WO_WARDEN
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec

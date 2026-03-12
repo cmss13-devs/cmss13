@@ -2550,7 +2550,7 @@
 	dir = 4;
 	layer = 3.25
 	},
-/obj/effect/landmark/start/whiskey/tank_crew,
+/obj/effect/landmark/start/whiskey/warden,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "jp" = (
@@ -2563,7 +2563,7 @@
 	dir = 8;
 	layer = 3.25
 	},
-/obj/effect/landmark/start/whiskey/tank_crew,
+/obj/effect/landmark/start/whiskey/warden,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "jr" = (

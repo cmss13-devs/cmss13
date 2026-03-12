@@ -1044,7 +1044,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_WO_CHIEF_POLICE = 20,
 				JOB_WO_SO = 21,
 				// 30-39: Security
-				JOB_WO_CREWMAN = 30,
+				JOB_WO_WARDEN = 30,
 				JOB_WO_POLICE = 31,
 				JOB_WO_PILOT = 32,
 				// 40-49: MedSci

@@ -3,7 +3,6 @@
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
 /mob/living/carbon/xenomorph/Life(delta_time)
 	set invisibility = 0
-	set background = 1
 
 	if(!loc)
 		return

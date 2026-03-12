@@ -1635,9 +1635,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
 
 					if(new_eyes)
-						r_eyes = hex2num(copytext(new_eyes, 2, 4))
-						g_eyes = hex2num(copytext(new_eyes, 4, 6))
-						b_eyes = hex2num(copytext(new_eyes, 6, 8))
+						var/list/color_list = rgb2num(new_eyes)
+						r_eyes = color_list[1]
+						g_eyes = color_list[2]
+						b_eyes = color_list[3]
 
 
 				if("ooccolor")

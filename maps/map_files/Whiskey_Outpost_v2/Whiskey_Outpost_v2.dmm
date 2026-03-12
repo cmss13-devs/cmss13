@@ -290,10 +290,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/obj/effect/landmark/whiskey_outpost/xenospawn,
-/turf/closed/wall/strata_ice/jungle,
-/area/whiskey_outpost/inside/caves)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -14462,7 +14458,7 @@ Zf
 Zf
 Zf
 Zf
-aU
+Zf
 Zf
 Zf
 Zf

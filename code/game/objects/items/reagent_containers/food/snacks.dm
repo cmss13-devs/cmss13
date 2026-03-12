@@ -1568,6 +1568,7 @@
 /obj/item/reagent_container/food/snacks/monkeycube/Initialize()
 	. = ..()
 	reagents.add_reagent("meatprotein",10)
+	RegisterSignal(src, COMSIG_OBJ_EXTINGUISH, PROC_REF(on_extinguish))
 
 /obj/item/reagent_container/food/snacks/monkeycube/afterattack(obj/O, mob/user, proximity)
 	if(!proximity)
@@ -1621,8 +1622,8 @@
 		new monkey_type(T)
 	qdel(src)
 
-/obj/item/reagent_container/food/snacks/monkeycube/extinguish()
-	. = ..()
+/obj/item/reagent_container/food/snacks/monkeycube/proc/on_extinguish()
+	SIGNAL_HANDLER
 	if(!package)
 		Expand()
 

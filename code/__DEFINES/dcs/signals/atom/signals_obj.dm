@@ -75,3 +75,6 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+/// From /datum/reagent/water/reaction_obj()
+#define COMSIG_OBJ_EXTINGUISH "obj_extinguish"

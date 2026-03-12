@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	new /datum/admin_podlauncher(usr)//create the datum
 
 /datum/admin_podlauncher
-	var/static/list/ignored_atoms = typecacheof(list(null, /mob/dead, /obj/effect/landmark, /obj/effect/particle_effect/sparks, /obj/effect/warning))
+	var/static/list/ignored_atoms = typecacheof(list(null, /mob/dead, /obj/effect/landmark, /obj/effect/particle_effect/sparks, /obj/effect/warning, /atom/movable/static_lighting_object))
 
 	var/client/holder
 	var/area/admin/droppod/loading/bay

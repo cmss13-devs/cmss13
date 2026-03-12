@@ -534,11 +534,7 @@
 	//static Update
 	if(SSlighting.initialized)
 		recalculate_directional_opacity()
-
 		W.static_lighting_object = old_lighting_object
-
-		if(static_lighting_object && !static_lighting_object.needs_update)
-			static_lighting_object.update()
 
 	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
 	if(W.hybrid_lights_affecting)
@@ -841,7 +837,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /// Remove all atoms except observers, landmarks, docking ports - clearing up the turf contents
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
-	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
+	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /atom/movable/static_lighting_object))
 	var/list/removable_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	removable_contents -= src
 	for(var/i in 1 to length(removable_contents))

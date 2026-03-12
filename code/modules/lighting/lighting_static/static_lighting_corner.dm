@@ -138,7 +138,7 @@
 
 	src.largest_color_luminosity = round(largest_color_luminosity, LIGHTING_ROUND_VALUE)
 
-	var/datum/static_lighting_object/lighting_object = master_NE?.static_lighting_object
+	var/atom/movable/static_lighting_object/lighting_object = master_NE?.static_lighting_object
 	if (!QDELETED(lighting_object) && !lighting_object.needs_update)
 		lighting_object.needs_update = TRUE
 		SSlighting.objects_queue += lighting_object

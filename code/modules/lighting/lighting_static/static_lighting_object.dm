@@ -1,46 +1,65 @@
-/datum/static_lighting_object
-	///the underlay we are currently applying to our turf to apply light
-	var/mutable_appearance/current_underlay
-
+/atom/movable/static_lighting_object
+	name          = ""
+	anchored      = TRUE
+	icon          = LIGHTING_ICON
+	icon_state    = "transparent"
+	color         = LIGHTING_BASE_MATRIX
+	plane         = LIGHTING_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility  = INVISIBILITY_LIGHTING
+	vis_flags     = VIS_HIDE
+	unacidable    = TRUE
 	///whether we are already in the SSlighting.objects_queue list
 	var/needs_update = FALSE
-
 	///the turf that our light is applied to
 	var/turf/affected_turf
 
-/datum/static_lighting_object/New(turf/source)
-	if(!isturf(source))
-		qdel(src, force=TRUE)
-		stack_trace("a lighting object was assigned to [source], a non turf!")
-		return
-	..()
+/atom/movable/static_lighting_object/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 
-	current_underlay = mutable_appearance(LIGHTING_ICON, "transparent", FLOAT_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	if(flags_atom & INITIALIZED)
+		CRASH("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
 
-	affected_turf = source
+	// do we even need these...?
+	pass_flags = GLOB.pass_flags_cache[type]
+	if (isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		GLOB.pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+	verbs.Cut()
+
+	affected_turf = loc
 	if (affected_turf.static_lighting_object)
 		qdel(affected_turf.static_lighting_object, force = TRUE)
 		stack_trace("a lighting object was assigned to a turf that already had a lighting object!")
-
 	affected_turf.static_lighting_object = src
 	affected_turf.luminosity = 0
 
 	needs_update = TRUE
 	SSlighting.objects_queue += src
+	return INITIALIZE_HINT_NORMAL
 
-/datum/static_lighting_object/Destroy(force)
-	if (!force)
-		return QDEL_HINT_LETMELIVE
-	if(needs_update)
+/atom/movable/static_lighting_object/Destroy(force)
+	if (force)
 		SSlighting.objects_queue -= src
-	if (isturf(affected_turf))
-		affected_turf.static_lighting_object = null
-		affected_turf.luminosity = 1
-		affected_turf.underlays -= current_underlay
-	affected_turf = null
-	return ..()
+		if (loc != affected_turf)
+			var/turf/oldturf = get_turf(affected_turf)
+			var/turf/newturf = get_turf(loc)
+			stack_trace("A lighting object was qdeleted with a different loc then it is suppose to have ([COORD(oldturf)] -> [COORD(newturf)])")
+		if (isturf(affected_turf))
+			affected_turf.static_lighting_object = null
+			affected_turf.luminosity = 1
+		affected_turf = null
 
-/datum/static_lighting_object/proc/update()
+		return ..()
+
+	else
+		return QDEL_HINT_LETMELIVE
+
+/atom/movable/static_lighting_object/proc/update()
 
 	// To the future coder who sees this and thinks
 	// "Why didn't he just use a loop?"
@@ -67,20 +86,18 @@
 	// This number is mostly arbitrary.
 	var/set_luminosity = max > 1e-6
 	#endif
-	var/mutable_appearance/current_underlay = src.current_underlay
-	affected_turf.underlays -= current_underlay
 	if(red_corner.cache_r & green_corner.cache_r & blue_corner.cache_r & alpha_corner.cache_r && \
 		(red_corner.cache_g + green_corner.cache_g + blue_corner.cache_g + alpha_corner.cache_g + \
 		red_corner.cache_b + green_corner.cache_b + blue_corner.cache_b + alpha_corner.cache_b == 8))
 		//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
-		current_underlay.icon_state = "transparent"
-		current_underlay.color = null
+		icon_state = "transparent"
+		color = null
 	else if(!set_luminosity)
-		current_underlay.icon_state = "dark"
-		current_underlay.color = null
+		icon_state = "dark"
+		color = null
 	else
-		current_underlay.icon_state = null
-		current_underlay.color = list(
+		icon_state = null
+		color = list(
 			red_corner.cache_r, red_corner.cache_g, red_corner.cache_b, 00,
 			green_corner.cache_r, green_corner.cache_g, green_corner.cache_b, 00,
 			blue_corner.cache_r, blue_corner.cache_g, blue_corner.cache_b, 00,
@@ -88,9 +105,6 @@
 			00, 00, 00, 01
 		)
 
-	// Of note. Most of the cost in this proc is here, I think because color matrix'd underlays DO NOT cache well, which is what adding to underlays does
-	// We use underlays because objects on each tile would fuck with maptick. if that ever changes, use an object for this instead
-	affected_turf.underlays += current_underlay
 	if(set_luminosity)
 		affected_turf.luminosity = set_luminosity
 		return
@@ -98,3 +112,25 @@
 	//We are not lit by static light OR dynamic light.
 	if(!LAZYLEN(affected_turf.hybrid_lights_affecting) && !turf_area.base_lighting_alpha)
 		affected_turf.luminosity = 0
+
+// Variety of overrides so the overlays don't get affected by weird things.
+
+/atom/movable/static_lighting_object/ex_act(severity)
+	return FALSE
+
+/atom/movable/static_lighting_object/fire_act()
+	return
+
+/atom/movable/static_lighting_object/acid_spray_act()
+	return
+
+/atom/movable/static_lighting_object/flamer_fire_act()
+	return
+
+/atom/movable/static_lighting_object/onTransitZ()
+	return
+
+// Override here to prevent things accidentally moving around overlays.
+/atom/movable/static_lighting_object/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
+	if(harderforce)
+		. = ..()

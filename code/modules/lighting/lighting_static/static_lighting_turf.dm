@@ -1,6 +1,6 @@
 /turf
 	var/tmp/lighting_corners_initialised = FALSE
-	var/tmp/datum/static_lighting_object/static_lighting_object
+	var/tmp/atom/movable/static_lighting_object/static_lighting_object
 
 	///Lighting Corner datums.
 	var/tmp/datum/static_lighting_corner/lighting_corner_NE
@@ -17,7 +17,7 @@
 	if(static_lighting_object)
 		qdel(static_lighting_object, force=TRUE) //Shitty fix for lighting objects persisting after death
 
-	new/datum/static_lighting_object(src)
+	new/atom/movable/static_lighting_object(src)
 
 
 

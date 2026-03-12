@@ -766,6 +766,10 @@
 	S["eyes_red"] >> r_eyes
 	S["eyes_green"] >> g_eyes
 	S["eyes_blue"] >> b_eyes
+	S["chest_hair"] >> chest_hair
+	S["chest_hair_red"] >> r_chest_hair
+	S["chest_hair_green"] >> g_chest_hair
+	S["chest_hair_blue"] >> b_chest_hair
 	S["underwear"] >> underwear
 	S["undershirt"] >> undershirt
 	S["backbag"] >> backbag
@@ -856,6 +860,10 @@
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
+	chest_hair = sanitize_inlist(chest_hair, GLOB.chest_hair_list, initial(chest_hair))
+	r_chest_hair = sanitize_integer(r_chest_hair, 0, 255, initial(r_chest_hair))
+	g_chest_hair = sanitize_integer(g_chest_hair, 0, 255, initial(g_chest_hair))
+	b_chest_hair = sanitize_integer(b_chest_hair, 0, 255, initial(b_chest_hair))
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
@@ -931,6 +939,10 @@
 	S["eyes_red"] << r_eyes
 	S["eyes_green"] << g_eyes
 	S["eyes_blue"] << b_eyes
+	S["chest_hair"] << chest_hair
+	S["chest_hair_red"] << r_chest_hair
+	S["chest_hair_green"] << g_chest_hair
+	S["chest_hair_blue"] << b_chest_hair
 	S["underwear"] << underwear
 	S["undershirt"] << undershirt
 	S["backbag"] << backbag

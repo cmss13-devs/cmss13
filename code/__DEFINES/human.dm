@@ -122,9 +122,10 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
 
+#define CHEST_HAIR_LAYER 42
 #define UNDERWEAR_LAYER 41
 #define UNDERSHIRT_LAYER 40
 #define MUTANTRACE_LAYER 39
@@ -184,7 +185,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

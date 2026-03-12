@@ -41,6 +41,12 @@
 	var/age = 30 //Player's age (pure fluff)
 	blood_type = "A+" //Player's bloodtype
 
+	//Chest hair color
+	var/chest_hair = "None"
+	var/r_chest_hair = 0
+	var/g_chest_hair = 0
+	var/b_chest_hair = 0
+
 	var/underwear = "Boxers (Camo Conforming)" //Which underwear the player wants
 	var/undershirt = "Undershirt (Tan) (Camo Conforming)" //Which undershirt the player wants.
 	var/backbag = 2 //Which backpack type the player has chosen. Satchel or Backpack or Chestrig.

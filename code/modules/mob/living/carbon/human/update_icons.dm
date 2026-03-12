@@ -166,8 +166,33 @@ There are several things that need to be remembered:
 	if(!(species.flags & HAS_UNDERWEAR))
 		return
 
+	update_chest_hair()
 	update_underwear()
 	update_undershirt()
+
+/mob/living/carbon/human/proc/update_chest_hair()
+	remove_overlay(CHEST_HAIR_LAYER)
+
+	if(chest_hair == "None")
+		return
+
+	if(get_gender_name(body_presentation) != "m")
+		return
+
+	if(w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED))
+		return
+
+	var/datum/sprite_accessory/chest_hair/chest_hair_datum = GLOB.chest_hair_list[chest_hair]
+	if(!chest_hair_datum)
+		return
+
+	var/image/chest_hair_icon = image(chest_hair_datum.icon, chest_hair_datum.icon_state)
+	chest_hair_icon.layer = -CHEST_HAIR_LAYER
+	if(chest_hair_datum.do_coloration)
+		chest_hair_icon.color = rgb(r_chest_hair, g_chest_hair, b_chest_hair)
+
+	overlays_standing[CHEST_HAIR_LAYER] = chest_hair_icon
+	apply_overlay(CHEST_HAIR_LAYER)
 
 /// Checks if the mob's specific [/datum/sprite_accessory/underwear] should be equipped
 /mob/living/carbon/human/proc/update_underwear()
@@ -802,6 +827,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 
 //Human Overlays Indexes/////////
+#undef CHEST_HAIR_LAYER
 #undef MUTANTRACE_LAYER
 #undef UNIFORM_LAYER
 #undef TAIL_LAYER

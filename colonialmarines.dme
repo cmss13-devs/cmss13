@@ -2326,6 +2326,7 @@
 #include "code\modules\mob\new_player\new_player.dm"
 #include "code\modules\mob\new_player\preferences_setup.dm"
 #include "code\modules\mob\new_player\skin_color.dm"
+#include "code\modules\mob\new_player\sprite_accessories\chest_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\facial_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair_gradients.dm"

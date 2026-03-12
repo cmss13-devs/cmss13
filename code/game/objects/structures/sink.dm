@@ -55,6 +55,9 @@
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+	if(istype(O, /obj/item/tool/extinguisher))
+		return
+
 	if(busy)
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return

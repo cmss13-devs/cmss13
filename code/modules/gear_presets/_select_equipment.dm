@@ -212,6 +212,7 @@
 		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
 		current_gear.equip_to_user(new_human)
 
+	SEND_SIGNAL(new_human, COMSIG_POST_VANITY_UPDATE)
 	//Gives ranks to the ranked
 	var/current_rank = paygrades[1]
 	var/obj/item/card/id/I = new_human.get_idcard()

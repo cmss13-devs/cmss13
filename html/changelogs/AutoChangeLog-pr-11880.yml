@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added marine manifest hotkey for humans & observers"
-  - bugfix: "Hive status hotkey now works for observers"

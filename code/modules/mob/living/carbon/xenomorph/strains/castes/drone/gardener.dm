@@ -294,7 +294,7 @@
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
 		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
-		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
+		target_turf.place_on_top(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
 		weak_wall.hivenumber = xeno.hivenumber
 		set_hive_data(weak_wall, xeno.hivenumber)

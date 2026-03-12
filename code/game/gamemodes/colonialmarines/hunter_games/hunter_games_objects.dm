@@ -258,5 +258,6 @@
 
 /obj/structure/droppod/hunter_games/open() // no pre-existing type that has the behavior we want
 	. = ..()
+	layer = BETWEEN_OBJECT_ITEM_LAYER // Otherwise the drop pod layers above the item and players think its empty.
 	for(var/atom/movable/content as anything in contents)
 		content.forceMove(loc)

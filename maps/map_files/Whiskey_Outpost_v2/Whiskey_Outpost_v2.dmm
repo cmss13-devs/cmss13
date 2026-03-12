@@ -426,6 +426,10 @@
 	},
 /turf/open/floor/almayer/emeraldfull,
 /area/whiskey_outpost/inside/living)
+"bq" = (
+/obj/effect/landmark/whiskey_outpost/xenospawn,
+/turf/closed/wall/strata_ice/jungle,
+/area/whiskey_outpost/inside/caves)
 "bs" = (
 /turf/open/floor/carpet,
 /area/whiskey_outpost/inside/cic)
@@ -1057,11 +1061,6 @@
 "dG" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/south)
-"dH" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/pillbox/two)
 "dI" = (
 /obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder/south,
@@ -1543,11 +1542,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"fn" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/pillbox/three)
 "fo" = (
 /obj/structure/curtain,
 /turf/open/floor/prison,
@@ -1575,11 +1569,6 @@
 /obj/effect/landmark/start/whiskey/marine,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/living)
-"fs" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/pillbox/one)
 "fu" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/whiskey_outpost/outside/north/northeast)
@@ -1601,11 +1590,6 @@
 "fy" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
-"fz" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/pillbox/four)
 "fA" = (
 /obj/effect/landmark/start/whiskey/executive,
 /turf/open/floor/prison/floor_plate,
@@ -1668,10 +1652,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/south)
-"fM" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/wo,
-/turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/engineering)
 "fN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -4973,7 +4953,7 @@
 /area/whiskey_outpost/inside/engineering)
 "su" = (
 /obj/structure/sign/ROsign,
-/turf/open/floor/asteroidfloor/north,
+/turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hallway)
 "sw" = (
 /obj/effect/decal/warning_stripes,
@@ -14482,7 +14462,7 @@ Zf
 Zf
 Zf
 Zf
-Zf
+bq
 Zf
 Zf
 Zf
@@ -14594,7 +14574,7 @@ UC
 Wm
 Xl
 Tw
-fs
+ZE
 Uy
 vK
 ko
@@ -19395,7 +19375,7 @@ rf
 sg
 gk
 tL
-fM
+nK
 vv
 tv
 wz
@@ -22878,7 +22858,7 @@ ZU
 ZU
 ZU
 ZU
-dH
+Pu
 Db
 OD
 Db
@@ -28736,7 +28716,7 @@ uD
 CB
 zu
 YR
-fn
+cu
 BQ
 Gn
 GK
@@ -33377,7 +33357,7 @@ ST
 Xm
 Ut
 ml
-fz
+WY
 Ms
 Ms
 Ms

@@ -1,9 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - rscadd: "The style system is added! You can now examine certain items if they are \"stylish\", and pressing unique action will change its onmob sprite to whichever you prefer"
-  - rscadd: "The only stylish items so far are the USCM Patch, the Rosary, and the new golden rosary item in the character loadout screen!"
-  - code_imp: "Adds a parent item for all patches, and makes the USCM patch its own distinct type"
-  - code_imp: "Minorly tweaks inventory overlay to prioritize item_state first before fallbacking to icon_state"
-  - code_imp: "Autodocs a few clothing variables"
-  - bugfix: "Fixes accessorized inv_icon overlay from being directional"

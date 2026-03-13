@@ -10,43 +10,11 @@
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
-	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+	corpse = TRUE
 	selection_categories = list("Corpse")
 
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return
-
-/datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
-	. = ..(new_human)
-
-	// These two values matter because they are checked on death for weed_food
-	new_human.undefibbable = TRUE
-	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
-	if(xenovictim)
-		new_human.chestburst = 2
-
-	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
-	if(xenovictim)
-		var/datum/internal_organ/organ
-		var/i
-		for(i in list("heart","lungs"))
-			organ = new_human.internal_organs_by_name[i]
-			new_human.internal_organs_by_name -= i
-			new_human.internal_organs -= organ
-		new_human.update_burst()
-		//buckle to nest
-		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
-		if(nest)
-			new_human.buckled = nest
-			new_human.setDir(nest.dir)
-			nest.buckled_mob = new_human
-			nest.afterbuckle(new_human)
-	new_human.spawned_corpse = TRUE
-	new_human.updatehealth()
-	new_human.pulse = PULSE_NONE
 
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
@@ -1927,3 +1895,170 @@
 /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
+
+// USASF Point Loma //
+
+/datum/equipment_preset/corpse/point_loma
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
+	name = "Corpse - AlphaTech"
+	job_title = JOB_ALPHATECH_EMPLOYEE
+	faction = FACTION_ALPHATECH
+	faction_group = list(FACTION_ALPHATECH, FACTION_SURVIVOR)
+	assignment = JOB_ALPHATECH_EMPLOYEE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
+	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
+	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "survivor"
+	minimap_background = "background_civilian"
+
+/datum/equipment_preset/corpse/point_loma/alphatech/load_gear(mob/living/carbon/human/new_human)
+	var/outfit = rand(1,4)
+	switch(outfit) //ToDO: Parent equipping a radio
+		if(1) //Corpo Exec
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+		if(2) //Scientist
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+		if(3) //Miner
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo/safety(new_human), WEAR_EYES)
+		if(4) //Contractor
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/kutjevo(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/kutjevo(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+
+
+/datum/equipment_preset/corpse/point_loma/alphatech/burst
+	name = "Corpse - Burst - Alphatech"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/point_loma/usasf
+	name = "Corpse - USASF"
+	skills = /datum/skills/military/survivor/usasf
+	languages = list(LANGUAGE_ENGLISH)
+	idtype = /obj/item/card/id/dogtag/usasf
+	faction = FACTION_MARINE
+	job_title  = JOB_USASF_ENLISTED
+	assignment = JOB_USASF_ENLISTED
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_USASF
+	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
+	job_title  = JOB_USASF_CREW
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	minimap_icon = "survivor"
+	minimap_background = "background_ua"
+
+/datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
+	var/duty = rand(1,10) // generic outfit
+	var/shoes = rand(1,3) // shoes
+	var/role = rand(1,4) // role equipment
+	var/pouch = rand (1,3) // pouches
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/e3, WEAR_ACCESSORY)
+
+	switch(duty)
+		if(1 to 3) //off-duty
+			var/offduty_outfit = rand(1,3) //1 number per outfit
+			switch(offduty_outfit)
+				if (1)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier(new_human), WEAR_BODY)
+				if (2)
+					var/colour = rand(1,3)
+					switch(colour)
+						if (1)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+						if (2)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown(new_human), WEAR_BODY)
+						if (3)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+				if (3)
+					var/flavour = rand(1,3)
+					switch(flavour)
+						if (1)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br(new_human), WEAR_BODY)
+						if (2)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(new_human), WEAR_BODY)
+						if(3)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla(new_human), WEAR_BODY)
+		if (4 to 10) //on-duty
+			var/onduty_outfit = rand(1,2)
+			switch(onduty_outfit)
+				if (1)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
+				if (2)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(new_human), WEAR_BODY)
+	switch(shoes)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(new_human), WEAR_FEET)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET) //ToDO: USASF Boots
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+	switch(role)
+		if(1) // Engineer
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
+		if(2) // Doctor
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_L_EAR)
+		if(3) // Security Police
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/navy/special/brassard(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+		if(4) // Pilot
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/m94/signal, WEAR_WAIST)
+	switch(pouch)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_L_STORE)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol, WEAR_L_STORE)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_L_STORE)
+
+/datum/equipment_preset/corpse/point_loma/usasf/burst
+	name = "Corpse - Burst - USASF"
+	xenovictim = TRUE
+
+/datum/equipment_preset/yautja/blooded/corpse
+	name = "Corpse yautja"
+	corpse = TRUE
+
+/datum/equipment_preset/synth/usasf/corpse
+	name = "USASF Synthetic corpse"
+	corpse = TRUE
+
+/datum/equipment_preset/synth/working_joe/corpse
+	name = "Corpse working joe"
+	corpse = TRUE

@@ -31,6 +31,14 @@
 	icon_state = "dirt"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/effect/decal/cleanable/dirt/sand_1
+	color = "#C9B27C"
+/obj/effect/decal/cleanable/dirt/sand_2
+	color = "#BDAE7E"
+
+/obj/effect/decal/cleanable/dirt/sand_3
+	color = "#B7A077"
+
 /obj/effect/decal/cleanable/dirt/greenglow
 	name = "glowing goo"
 	acid_damage = 1

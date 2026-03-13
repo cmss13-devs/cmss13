@@ -66,6 +66,10 @@
 /turf/open/hybrisa/street/asphalt
 	icon_state = "asphalt_old"
 
+
+/turf/open/hybrisa/street/asphalt/runway
+	color = "#808080"
+
 // Side-walk
 
 
@@ -434,6 +438,35 @@
 	dir = NORTHWEST
 
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal // USASF Point Loma
+	icon_state = "rug_colorable"
+
+	color = "#0b8f8d"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/teal/southeast
 	dir = SOUTHEAST
 
 /turf/open/floor/hybrisa/carpet/carpetfadedred

@@ -332,6 +332,18 @@ export const RADIO_PREFIXES = {
     id: 'wypub',
     label: 'W-Y Pub',
   },
+  ':3 ': {
+    id: 'usasf',
+    label: 'USASF',
+  },
+  '.3 ': {
+    id: 'usasf',
+    label: 'USASF',
+  },
+  '#3 ': {
+    id: 'usasf',
+    label: 'USASF',
+  },
   ':z ': {
     id: 'highcom',
     label: 'HC',

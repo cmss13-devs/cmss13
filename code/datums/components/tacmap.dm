@@ -57,24 +57,32 @@
 /datum/component/tacmap/proc/move_tacmap_up()
 	targetted_zlevel++
 	var/list/_interactees = interactees.Copy()
+	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
+		if(SStgui.get_open_ui(interactee, src))
+			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
+		if(interactee in had_popout)
+			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
+	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
+		if(SStgui.get_open_ui(interactee, src))
+			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
+		if(interactee in had_popout)
+			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)

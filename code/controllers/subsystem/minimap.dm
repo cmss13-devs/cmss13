@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(minimaps)
 		var/list/combined_overlays = list()
 
 		// Filter raw_blips for observer maps to exclude labels
-		if(istype(target, /atom/movable/screen/minimap) && target.is_observer_minimap)
+		if(istype(target) && target.is_observer_minimap)
 			// For observer maps, filter out any labels
 			for(var/image/blip as anything in updator.raw_blips)
 				if(!blip.maptext)
@@ -250,15 +250,17 @@ SUBSYSTEM_DEF(minimaps)
 
 		// Check if this is a non-live minimap that should get frozen blip positions
 		var/use_frozen_blips = FALSE
+		var/atom/movable/screen/minimap/minimap_target
 		if(istype(target, /atom/movable/screen/minimap))
-			var/atom/movable/screen/minimap/map_target = target
-			if(!map_target.live)
+			minimap_target = target
+		if(minimap_target)
+			if(!minimap_target.live)
 				var/frozen_key = "[ztarget]-[flag]"
 				if(frozen_overlay_states[frozen_key])
 					// Use frozen blips for late joiners
 					for(var/image/frozen_blip in frozen_overlay_states[frozen_key])
 						// Only add if it's actually a blip
-						if(istype(frozen_blip) && frozen_blip.icon_state)
+						if(frozen_blip.icon_state)
 							holder.raw_blips += frozen_blip
 					use_frozen_blips = TRUE
 
@@ -267,14 +269,12 @@ SUBSYSTEM_DEF(minimaps)
 			holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]"]
 		if(holder.drawing)
 			var/add_drawings = TRUE
-			if(istype(target, /atom/movable/screen/minimap))
-				var/atom/movable/screen/minimap/map_target = target
-				if(map_target.live)
+			if(minimap_target)
+				if(minimap_target.live)
 					add_drawings = FALSE
 			if(add_drawings)
-				if(istype(target, /atom/movable/screen/minimap))
-					var/atom/movable/screen/minimap/map_target = target
-					if(!map_target.live && map_target.drawing)
+				if(minimap_target)
+					if(!minimap_target.live && minimap_target.drawing)
 						if(cic_drawings["[ztarget]-[flag]"])
 							holder.raw_blips += cic_drawings["[ztarget]-[flag]"]
 				else
@@ -2104,9 +2104,10 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
-		return
+		return TRUE
 
 	owner.move_tacmap_up()
+	return TRUE
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

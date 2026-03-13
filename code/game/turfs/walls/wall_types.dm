@@ -1520,13 +1520,20 @@
 
 /turf/closed/wall/huntership/hull
 	color = "#c5beb4"
+	icon_state = "hull"
+
+/turf/closed/wall/huntership/innerhull
+	name = "hunter ship inner hull"
+	icon_state = "innerhull"
 
 /turf/closed/wall/huntership/destructible
 	name = "degraded hunter wall"
 	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
 	turf_flags = NO_FLAGS
+	icon_state = "hunter"
 
 /turf/closed/wall/huntership/destructible/reinforced
 	name = "damaged hunter wall"
 	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"

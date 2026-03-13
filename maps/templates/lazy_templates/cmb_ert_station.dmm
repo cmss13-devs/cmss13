@@ -1,117 +1,407 @@
+"ac" = (/obj/effect/decal/hybrisa/gold/line4,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"ad" = (/obj/structure/filingcabinet{density = 0; pixel_y = 24; pixel_x = -8},/obj/structure/filingcabinet/chestdrawer{density = 0; pixel_x = 8; pixel_y = 23; layer = 3.20},/obj/structure/machinery/light/double{dir = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"aj" = (/obj/structure/machinery/photocopier{pixel_y = 11; pixel_x = 0},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"ak" = (/obj/effect/decal/hybrisa/trash{icon_state = "trash_9"; pixel_x = 7; pixel_y = -5},/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"ao" = (/obj/structure/bed/chair/bolted{dir = 1},/turf/open/floor/whitered,/area/space)
+"aC" = (/turf/open/floor/prison/blue/east,/area/space)
 "aG" = (/turf/open/floor/corsat/arrow_north,/area/space)
-"bn" = (/obj/structure/machinery/shower{dir = 4},/obj/structure/machinery/light/small,/turf/open/floor/corsat/retrosquareslight,/area/space)
+"aH" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/corsat/squares,/area/space)
+"bn" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,/area/space)
+"bB" = (/obj/structure/roof/hybrisa/lattice_prop/lattice_6,/turf/open/floor/corsat/browncorner,/area/space)
+"bC" = (/obj/structure/bed/chair{dir = 4; icon_state = "chair_alt"; pixel_x = 7; pixel_y = 16; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/squares,/area/space)
+"bL" = (/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
+"bV" = (/obj/structure/platform/metal/kutjevo_smooth,/obj/structure/platform/metal/kutjevo_smooth/west,/turf/open/space,/area/space)
+"bZ" = (/obj/structure/bed/chair{dir = 4; icon_state = "chair_alt"; pixel_x = 6; pixel_y = 11; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/squares,/area/space)
 "cf" = (/obj/structure/pipes/vents/pump{dir = 4},/turf/open/floor/plating,/area/space)
+"cj" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/colorable{dir = 8; pixel_y = 13; color = "#9f8184"; pixel_x = 0},/obj/item/bedsheet/colorable{dir = 8; pixel_y = -1; layer = 3.2; color = "#81929f"; pixel_x = 0},/turf/open/floor/hybrisa/wood/redwood,/area/space)
 "cq" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/closet/medical_wall{pixel_x = 30},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/west,/area/space)
+"cI" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 4},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/squares,/area/space)
+"cM" = (/obj/structure/sign/calendar/ua{pixel_y = 26},/obj/structure/bed/chair/comfy/teal{dir = 2},/obj/item/trash/cigbutt{pixel_x = -12; pixel_y = 14},/obj/item/trash/cigbutt{pixel_x = -27; pixel_y = 16},/obj/effect/decal/hybrisa/trash{icon_state = "trash_14"; pixel_y = 14; pixel_x = 11},/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
+"cP" = (/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{dir = 10; pixel_y = 35; layer = 9; pixel_x = -16},/obj/structure/roof/hybrisa/lattice_prop/lattice_6{pixel_y = 0; layer = 6; pixel_x = 0},/turf/open/floor/corsat/squares,/area/space)
+"cV" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/reagent_container/food/snacks/dough{pixel_x = 5; pixel_y = -3},/obj/item/reagent_container/food/snacks/doughslice{pixel_x = -4; pixel_y = 12},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"dn" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/computer/emails{dir = 4},/obj/item/trash/hybrisa/cuppa_joes/lid{pixel_x = -8; pixel_y = 12},/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
+"do" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/marked,/area/space)
+"dI" = (/obj/structure/disposalpipe/broken{dir = 8},/turf/open/floor/corsat/squares,/area/space)
+"dZ" = (/obj/structure/machinery/computer/emails{pixel_x = -1; pixel_y = 10},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"eg" = (/obj/structure/machinery/washing_machine{pixel_y = 15},/obj/structure/machinery/washing_machine{pixel_y = 30; pixel_x = 0},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"et" = (/obj/structure/bed/chair{icon_state = "chair_alt"; pixel_x = -2; pixel_y = 4},/turf/open/floor/corsat/squares,/area/space)
+"ew" = (/obj/structure/roof/hybrisa/lattice_prop/lattice_6,/turf/open/floor/corsat/squares,/area/space)
+"eI" = (/obj/structure/machinery/photocopier{pixel_y = 11; pixel_x = 0},/obj/structure/noticeboard{pixel_y = 32},/obj/structure/noticeboard{pixel_y = 33; icon_state = "notices_8"; desc = null; name = "sticky notes"},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"eQ" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/ammo_magazine/shotgun/beanbag{pixel_x = -6; pixel_y = 12},/obj/item/ammo_magazine/shotgun/beanbag{pixel_x = 4; pixel_y = 6},/obj/item/ammo_magazine/shotgun/beanbag{pixel_x = -2; pixel_y = 0},/turf/open/floor/corsat/squares,/area/space)
+"eT" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,/area/space)
+"fg" = (/obj/item/device/flashlight/lamp/tripod{pixel_x = 24; pixel_y = 3},/turf/open/floor/corsat/squares,/area/space)
+"fh" = (/turf/closed/shuttle/elevator{dir = 1; explo_proof = 1; unacidable = 1},/area/space)
+"fl" = (/obj/structure/prop/hybrisa/misc/elevator_button{pixel_y = 0; pixel_x = 0},/turf/closed/wall/almayer,/area/space)
+"fr" = (/obj/structure/roof/hybrisa/signs/pizzasign{light_color = "#FF9100"; light_on = 1; light_power = 4; light_range = 4; pixel_x = 1; pixel_y = 4},/obj/item/reagent_container/food/drinks/cans/souto{icon_state = "blank_can_crushed"; pixel_x = 11; pixel_y = -7},/turf/open/floor/corsat/greencorner,/area/space)
+"fy" = (/obj/effect/decal/cleanable/flour,/turf/open/floor/hybrisa/tile/tilered,/area/space)
 "fD" = (/turf/open/floor/plating,/area/space)
 "fR" = (/turf/open/floor/corsat/arrow_west,/area/space)
+"fS" = (/obj/structure/closet/secure_closet/brig{pixel_x = -8; pixel_y = 21},/obj/structure/closet/secure_closet/brig{pixel_x = 8; pixel_y = 21},/turf/open/floor/corsat/squares,/area/space)
+"fW" = (/obj/structure/disposalpipe/broken{dir = 4; pixel_x = 0; pixel_y = 0},/turf/open/floor/corsat,/area/space)
+"fX" = (/obj/structure/machinery/cm_vending/clothing/antag{name = "\improper Response Team Automated Equipment Rack"; pixel_x = 0; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
 "fZ" = (/turf/closed/wall/r_wall/prison,/area/space)
+"gc" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/storage/box/flashbangs{pixel_x = -5; pixel_y = 7; anchored = 1},/obj/item/storage/box/flashbangs{pixel_x = -5; pixel_y = 13; anchored = 1},/obj/item/storage/box/packet/smoke{pixel_x = -4; pixel_y = -3},/obj/item/storage/box/packet/smoke{pixel_x = -4; pixel_y = 3},/obj/item/clothing/head/helmet/marine/veteran/cmb/engi{pixel_x = 9; pixel_y = 9},/turf/open/floor/corsat/squares,/area/space)
+"gh" = (/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
 "gj" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/blue/east,/area/space)
+"gq" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/tool/kitchen/knife{pixel_x = 12; pixel_y = 5},/obj/item/tool/kitchen/pizzacutter{pixel_y = 5; pixel_x = 0},/obj/structure/machinery/light{dir = 4},/turf/open/floor/hybrisa/tile/tilered,/area/space)
 "gr" = (/turf/open/floor/corsat/blue/east,/area/space)
 "gt" = (/turf/open/floor/corsat/blue/north,/area/space)
+"gv" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/disposalpipe/segment{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"gx" = (/obj/structure/platform_decoration/metal/kutjevo/east,/turf/open/space,/area/space)
 "gC" = (/obj/effect/decal/warning_stripes{icon_state = "SW-out"; layer = 2.5},/obj/structure/closet/emcloset{density = 0; pixel_x = 8; pixel_y = 15},/obj/structure/closet/firecloset/full{density = 0; pixel_x = -8; pixel_y = 15},/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/turf/open/floor/corsat/bluecorner/west,/area/space)
+"gT" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,/area/space)
+"hb" = (/obj/structure/bed/chair/comfy/hybrisa/red,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "hj" = (/turf/open/floor/corsat/green/east,/area/space)
+"hl" = (/obj/structure/surface/table/almayer,/obj/item/device/flashlight/lamp/on{anchored = 1; light_power = 3; alpha = 0; pixel_y = 6; name = "eerie glow"; desc = null; pixel_x = 8},/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{pixel_x = -2; pixel_y = 14},/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{pixel_x = -8; pixel_y = 12},/obj/item/device/taperecorder{pixel_x = -7; pixel_y = 0},/turf/open/floor/corsat/squares,/area/space)
+"hC" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"hQ" = (/obj/structure/disposalpipe/segment{dir = 1; icon_state = "pipe-c"},/turf/open/floor/corsat/squares,/area/space)
+"ih" = (/turf/open/floor/prison/blue/northwest,/area/space)
+"ir" = (/obj/structure/platform/metal/hybrisa/metalplatform6/west{pixel_x = 0; pixel_y = -14},/obj/effect/decal/hybrisa/gold/line4{pixel_x = 0; pixel_y = -2},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"ix" = (/obj/structure/surface/table/reinforced/black,/obj/item/reagent_container/food/drinks/cans/souto{icon_state = "blank_can_crushed"; pixel_x = -11; pixel_y = 6},/turf/open/floor/corsat/squares,/area/space)
+"iN" = (/obj/structure/surface/table/reinforced/black,/obj/structure/machinery/light{dir = 1},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"iO" = (/obj/item/storage/briefcase/stowaway{pixel_x = 0; pixel_y = 17},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"iU" = (/obj/structure/disposalpipe/segment{dir = 8},/turf/open/floor/corsat/squares,/area/space)
+"iZ" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,/area/space)
+"ja" = (/obj/structure/bed/alien,/obj/item/bedsheet/brown,/turf/open/floor/whitered/southwest,/area/space)
+"jg" = (/obj/structure/bed/chair{dir = 8; icon_state = "chair_alt"; pixel_x = -6; pixel_y = 11},/turf/open/floor/corsat/squares,/area/space)
 "jn" = (/turf/open/floor/corsat/blue/southeast,/area/space)
+"jr" = (/obj/structure/platform/metal/hybrisa/metalplatform6/west,/obj/structure/bed/chair{dir = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"jt" = (/obj/structure/platform_decoration/metal/kutjevo/north,/turf/open/space,/area/space)
+"ju" = (/obj/effect/decal/hybrisa/gold/line3{pixel_x = 0; pixel_y = 0},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"jz" = (/obj/structure/pipes/vents/pump_hybrisa,/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"jW" = (/obj/structure/disposalpipe/junction{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"kc" = (/obj/structure/platform/metal/kutjevo_smooth/west,/turf/open/space,/area/space)
+"kB" = (/obj/structure/pipes/vents/pump/no_boom,/obj/effect/decal/hybrisa/gold/line2,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"kD" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/colorable{dir = 8; pixel_y = 13; color = "#856f63"; pixel_x = 0},/obj/item/bedsheet/colorable{dir = 1; layer = 3.2},/turf/open/floor/hybrisa/wood/redwood,/area/space)
 "kE" = (/obj/structure/bed/sofa/vert/grey/bot{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
 "ld" = (/obj/docking_port/stationary/emergency_response/idle_port2,/turf/open/floor/plating,/area/space)
-"lB" = (/turf/open/floor/corsat/browncorner,/area/space)
-"mC" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/floor/corsat/squares,/area/space)
+"ly" = (/obj/item/reagent_container/food/drinks/coffeecup{pixel_x = 10; pixel_y = 2},/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"lB" = (/obj/structure/filingcabinet{density = 0; pixel_y = 24; pixel_x = 8},/obj/structure/filingcabinet/chestdrawer{density = 0; pixel_x = -8; pixel_y = 23},/obj/structure/machinery/light/double{dir = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"lI" = (/obj/effect/decal/hybrisa/gold/line3{pixel_x = 0; pixel_y = 0},/obj/effect/decal/hybrisa/gold/line4{pixel_x = 0; pixel_y = -2},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"lL" = (/turf/closed/shuttle/elevator{dir = 9; explo_proof = 1; unacidable = 1},/area/space)
+"mu" = (/obj/effect/decal/hybrisa/gold/line3,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"mA" = (/obj/structure/machinery/vending/snack{density = 0; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"mC" = (/obj/structure/platform/metal/kutjevo_smooth/west,/obj/effect/decal/heavy_cable/cable_vertical,/turf/open/floor/almayer_hull,/area/space)
+"nt" = (/obj/structure/platform_decoration/metal/kutjevo,/turf/open/space,/area/space)
+"nD" = (/obj/structure/filingcabinet{density = 0; pixel_y = 24; pixel_x = -8},/obj/structure/filingcabinet/chestdrawer{density = 0; pixel_x = 8; pixel_y = 23},/obj/structure/flora/pottedplant{icon_state = "pottedplant_18"; pixel_y = 37; pixel_x = 9},/obj/structure/flora/pottedplant{icon_state = "pottedplant_12"; pixel_x = -7; pixel_y = 48},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"nN" = (/obj/structure/surface/table/woodentable/fancy,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"on" = (/obj/structure/bed/chair{dir = 8; icon_state = "chair_alt"; pixel_x = -6; pixel_y = 4},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"or" = (/obj/structure/window/framed/prison/reinforced,/turf/open/space/basic,/area/space)
 "ow" = (/obj/effect/decal/warning_stripes{icon_state = "SE-out"},/obj/structure/closet/emcloset{density = 0; pixel_x = 8; pixel_y = 15},/obj/structure/closet/firecloset/full{density = 0; pixel_x = -8; pixel_y = 15},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 6},/turf/open/floor/corsat/bluecorner,/area/space)
+"oz" = (/obj/structure/surface/table/woodentable/fancy,/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
+"oE" = (/obj/structure/coatrack{icon_state = "coatrack1"},/obj/effect/decal/hybrisa/gold/line2,/obj/structure/machinery/light/double,/obj/structure/coatrack{icon_state = "coat_cmo"; pixel_x = 2; color = "#a2a2a2"; pixel_y = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"oH" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/folder/white{pixel_x = -7; pixel_y = -6; layer = 3},/obj/item/folder/red{pixel_x = -7; pixel_y = -1; layer = 2.99},/obj/item/folder/blue{pixel_x = -7; pixel_y = 9; layer = 2.98},/obj/item/folder/black{pixel_x = -7; pixel_y = 15; layer = 2.97},/obj/item/tool/pen/multicolor/provost{pixel_x = 5; pixel_y = 5},/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
+"oI" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/reagent_container/food/drinks/cans/classcola{pixel_y = 16; pixel_x = -7},/obj/item/reagent_container/food/drinks/cans/classcola{pixel_y = 11; pixel_x = 1},/obj/item/reagent_container/food/drinks/cans/classcola{pixel_y = 7; pixel_x = -3},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"oJ" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/computer/emails{dir = 4},/obj/item/paper/photograph{pixel_x = -4; pixel_y = 4; anchored = 1; name = "photo of Pawouette the cat"},/obj/item/device/camera/oldcamera{pixel_x = -4; pixel_y = 18},/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
+"oS" = (/obj/structure/disposalpipe/broken{dir = 8; pixel_x = 0; pixel_y = -1},/turf/open/floor/corsat,/area/space)
+"oV" = (/obj/structure/machinery/light/double,/turf/open/floor/corsat/squares,/area/space)
 "oZ" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"pc" = (/obj/structure/prop/hybrisa/misc/elevator_door,/turf/open/floor/corsat/officetiles,/area/space)
+"pp" = (/obj/effect/decal/heavy_cable/cable_vertical,/turf/open/floor/almayer_hull,/area/space)
+"pz" = (/obj/item/reagent_container/food/drinks/cans/souto{icon_state = "blank_can_crushed"; pixel_x = -11; pixel_y = 6},/obj/effect/decal/hybrisa/dirt_2,/turf/open/floor/corsat/squares,/area/space)
 "pL" = (/obj/structure/bed/sofa/vert/grey{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
-"qm" = (/obj/structure/toilet{dir = 8},/turf/open/floor/corsat/retrosquareslight,/area/space)
+"qm" = (/turf/open/floor/solarpanel,/area/space)
 "qo" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 4},/turf/open/floor/corsat/blue/west,/area/space)
+"qp" = (/obj/structure/bed/chair{pixel_x = 9; pixel_y = 3},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"qB" = (/obj/structure/bed/chair{dir = 4; icon_state = "chair_alt"; pixel_x = 4; pixel_y = 8; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/green/east,/area/space)
+"qH" = (/obj/structure/platform/metal/kutjevo_smooth/west,/turf/open/space/basic,/area/space)
+"qT" = (/obj/structure/bed/chair/bolted{dir = 1},/turf/open/floor/whitered/southwest,/area/space)
+"re" = (/obj/structure/pipes/vents/pump,/turf/open/floor/corsat/squares,/area/space)
+"ro" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/newspaper{pixel_x = -11; pixel_y = 5},/obj/item/newspaper{pixel_x = -6; pixel_y = 3},/obj/item/newspaper{pixel_x = 0; pixel_y = 8},/obj/item/newspaper{pixel_x = 4; pixel_y = 4},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"rA" = (/obj/effect/decal/hybrisa/dirt_2,/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/corsat/squares,/area/space)
+"rM" = (/turf/open/floor/prison/blue/north,/area/space)
+"rP" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/corsat,/area/space)
+"sc" = (/obj/effect/decal/hybrisa/gold{pixel_x = -2; pixel_y = 0},/obj/effect/decal/hybrisa/gold/line2,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"sg" = (/turf/open/floor/whitered/north,/area/space)
+"sj" = (/obj/structure/bed/chair{dir = 8; pixel_y = 6},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "sx" = (/turf/closed/wall/almayer,/area/space)
+"sy" = (/obj/structure/machinery/cm_vending/sorted/marine_food{density = 0; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"sT" = (/obj/structure/stairs{icon_state = "ramptop"},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/squares,/area/space)
+"sW" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/hybrisa/coffee_machine{pixel_x = 1; pixel_y = 9},/obj/item/reagent_container/food/drinks/coffeecup/wy{pixel_x = -5; pixel_y = 1},/obj/item/reagent_container/food/drinks/coffeecup{pixel_x = 8; pixel_y = 3},/obj/item/reagent_container/food/drinks/coffeecup{pixel_x = 4; pixel_y = -1},/turf/open/floor/hybrisa/tile/tileblue,/area/space)
+"tk" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/weapon/gun/smg/mp5/mp5a5{pixel_x = 1; pixel_y = 9},/obj/item/weapon/gun/smg/mp5/mp5a5{pixel_x = 4; pixel_y = 2},/obj/item/weapon/gun/smg/mp5/mp5a5{pixel_x = 6; pixel_y = -5},/turf/open/floor/corsat/squares,/area/space)
 "tv" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/blue/west,/area/space)
-"wy" = (/turf/open/floor/corsat/greencorner,/area/space)
+"ty" = (/obj/structure/surface/table/reinforced/almayer_B,/turf/open/floor/whitered/southeast,/area/space)
+"tA" = (/turf/open/floor/whitered/southeast,/area/space)
+"tB" = (/turf/open/floor/prison/blue,/area/space)
+"tJ" = (/obj/structure/machinery/chem_dispenser/soda{pixel_y = 22},/obj/structure/surface/table/reinforced/almayer_B,/obj/item/clothing/head/hybrisa/pizza_galaxy{pixel_x = 32; pixel_y = 34},/obj/item/storage/box/drinkingglasses{pixel_x = 8; pixel_y = 0},/obj/item/storage/box/drinkingglasses{pixel_x = 8; pixel_y = 9},/obj/item/reagent_container/food/drinks/cans/souto{icon_state = "blank_can_crushed"; pixel_x = -11; pixel_y = 6},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"tL" = (/obj/structure/sink{dir = 4; pixel_x = 10},/obj/structure/mirror{pixel_y = -1; pixel_x = 25},/obj/structure/machinery/light/small{dir = 4; pixel_y = 12},/turf/open/floor/almayer/dark_sterile,/area/space)
+"tY" = (/obj/structure/machinery/door/window/brigdoor/southright{id = "Cell 2"; name = "Cell 2"},/turf/open/floor/corsat/squares,/area/space)
+"uf" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/corsat/arrow_west,/area/space)
+"ul" = (/obj/structure/sign/catclock{pixel_x = 9; pixel_y = -2},/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"ur" = (/obj/structure/machinery/light/small{dir = 1},/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"ut" = (/obj/structure/bed/chair{dir = 1; icon_state = "chair_alt"; pixel_x = 4; pixel_y = 15; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/squares,/area/space)
+"uz" = (/turf/open/floor/whitered/northeast,/area/space)
+"uD" = (/turf/closed/shuttle/elevator{dir = 5; explo_proof = 1; unacidable = 1},/area/space)
+"uY" = (/obj/structure/surface/table/reinforced/black,/obj/item/reagent_container/food/condiment/peppermill{pixel_x = -4; pixel_y = 5},/obj/item/reagent_container/food/condiment/saltshaker{pixel_x = -7; pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"uZ" = (/turf/open/floor/corsat,/area/space)
+"vc" = (/obj/structure/roof/hybrisa/lattice_prop/lattice_6{pixel_y = 0; layer = 6; pixel_x = 0},/turf/open/floor/corsat/squares,/area/space)
+"vr" = (/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 0},/turf/open/floor/corsat/squares,/area/space)
+"vz" = (/obj/structure/platform/metal/kutjevo_smooth/north,/obj/structure/barricade/handrail{dir = 1; icon_state = "hr_kutjevo"; name = "solar lattice"},/turf/open/space/basic,/area/space)
+"vJ" = (/obj/structure/machinery/vending/walkman{wrenchable = 0; prices = list(); pixel_y = 14; pixel_x = 0; wires = 12},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"vV" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/reagent_container/food/drinks/coffeecup/wy{pixel_x = 2; pixel_y = 8},/obj/item/reagent_container/food/drinks/coffee{pixel_x = -9; pixel_y = 12},/obj/item/reagent_container/food/drinks/coffee{pixel_x = -7; pixel_y = 7},/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
+"wb" = (/obj/structure/platform/metal/kutjevo_smooth/north,/obj/structure/platform/metal/kutjevo_smooth/west,/obj/structure/barricade/handrail{dir = 1; icon_state = "hr_kutjevo"; name = "solar lattice"},/turf/open/space,/area/space)
+"wi" = (/obj/effect/decal/hybrisa/gold/line4{pixel_x = 0; pixel_y = -2},/obj/structure/surface/table/woodentable/fancy,/obj/item/tool/pen{pixel_x = -7; pixel_y = -1},/obj/item/tool/pen{pixel_x = -7; pixel_y = 3},/obj/item/tool/pen{pixel_x = -7; pixel_y = 7},/obj/item/paper_bin{pixel_x = 6; pixel_y = 7; anchored = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"wy" = (/obj/structure/machinery/light/small{dir = 4; pixel_y = 12; pixel_x = 0},/turf/open/floor/whitered/northeast,/area/space)
+"wR" = (/turf/closed/shuttle/elevator{dir = 10; explo_proof = 1; unacidable = 1},/area/space)
+"wS" = (/obj/structure/disposalpipe/segment{dir = 8},/turf/open/floor/corsat,/area/space)
 "wW" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/machinery/light/double,/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue/north,/area/space)
+"xg" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/colorable{dir = 8; pixel_y = -1; layer = 3.2; color = "#81929f"; pixel_x = 0},/obj/item/bedsheet/colorable{dir = 8; pixel_y = 13; color = "#9f8184"; pixel_x = 0},/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"xz" = (/obj/structure/stairs{icon_state = "ramptop"},/obj/structure/blocker/invisible_wall,/obj/structure/disposalpipe/segment,/obj/structure/disposalpipe/broken{dir = 1},/turf/open/floor/corsat/squares,/area/space)
 "xL" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/space)
+"xW" = (/obj/structure/disposalpipe/segment{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"ya" = (/obj/structure/coatrack{icon_state = "coatrack1"; pixel_x = 9; pixel_y = 6},/obj/structure/bed/chair{dir = 1; pixel_x = -10; pixel_y = 12},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "yF" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue/north,/area/space)
 "yS" = (/obj/effect/decal/warning_stripes{icon_state = "S"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue,/area/space)
 "zh" = (/obj/effect/decal/warning_stripes{icon_state = "S"},/obj/structure/closet/hydrant{pixel_y = 30},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor/corsat/blue,/area/space)
-"AC" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/space/basic,/area/space)
+"zi" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/ammo_magazine/rifle/xm51/cmb/rubber{pixel_x = -8; pixel_y = 13},/obj/item/ammo_magazine/rifle/xm51/cmb/rubber{pixel_x = -1; pixel_y = 12},/obj/item/ammo_magazine/rifle/xm51/cmb/rubber{pixel_x = 4; pixel_y = 11},/obj/item/storage/belt/gun/xm51/black/cmb,/obj/item/weapon/gun/rifle/xm51/cmb{pixel_x = 0; pixel_y = 3},/turf/open/floor/corsat/squares,/area/space)
+"zp" = (/obj/structure/pipes/vents/pump/no_boom,/obj/effect/decal/hybrisa/gold,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"zX" = (/obj/structure/bed/chair/bolted{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"Ad" = (/obj/structure/platform/metal/kutjevo_smooth,/obj/structure/platform/metal/kutjevo_smooth/east,/turf/open/space,/area/space)
+"Ah" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/flora/pottedplant{icon_state = "pottedplant_17"; pixel_x = 2; pixel_y = 12},/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
+"AA" = (/obj/structure/prop/hybrisa/misc/cabinet{pixel_x = -7; pixel_y = 12},/obj/item/ashtray/plastic{icon_state = "ashtray_full_bl"; pixel_x = -8; pixel_y = 17},/turf/open/floor/corsat/squares{pixel_x = 0; pixel_y = 0},/area/space)
+"AC" = (/obj/structure/platform/metal/kutjevo_smooth/north,/obj/structure/barricade/handrail{dir = 1; icon_state = "hr_kutjevo"; name = "solar lattice"},/turf/open/space,/area/space)
 "AS" = (/turf/open/floor/corsat/bluecorner/east,/area/space)
+"Bd" = (/turf/open/floor/prison/blue/southeast,/area/space)
+"Be" = (/obj/structure/surface/table/reinforced/black,/obj/item/reagent_container/food/condiment/peppermill{pixel_x = 4; pixel_y = 9},/obj/item/reagent_container/food/condiment/saltshaker{pixel_x = 0; pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"Bf" = (/obj/item/device/taperecorder{pixel_x = -7; pixel_y = 0},/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"Bm" = (/obj/structure/platform_decoration/metal/kutjevo/west,/turf/open/space,/area/space)
 "Bq" = (/obj/structure/prop/invuln/lattice_prop,/turf/open/space/basic,/area/space)
-"Bu" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/obj/structure/blocker/invisible_wall,/turf/open/floor/dark,/area/space)
+"Bu" = (/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Bw" = (/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{name = "\improper CMB Office"; dir = 2},/turf/open/floor/corsat/marked,/area/space)
 "BF" = (/turf/open/floor/corsat/blue,/area/space)
+"Cc" = (/obj/structure/surface/table/reinforced/almayer_B,/turf/open/floor/whiteredfull,/area/space)
+"Ch" = (/obj/structure/machinery/atm{icon = 'icons/obj/structures/props/atm.dmi'; pixel_x = 6; pixel_y = 15},/turf/open/floor/corsat/squares,/area/space)
+"Cq" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/clothing/glasses/mgoggles/cmb_riot_shield{pixel_x = 0; pixel_y = 8},/obj/item/clothing/glasses/mgoggles/cmb_riot_shield{pixel_x = 0; pixel_y = 4},/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,/obj/item/clothing/glasses/mgoggles/cmb_riot_shield{pixel_x = 0; pixel_y = -4},/obj/structure/noticeboard{pixel_y = 32},/obj/structure/noticeboard{pixel_y = 33; icon_state = "notices_5"; desc = null; name = "sticky notes"},/turf/open/floor/corsat/squares,/area/space)
+"Cv" = (/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 0},/turf/open/floor/corsat/squares,/area/space)
+"Cy" = (/obj/structure/machinery/light/small{dir = 8; pixel_y = 12; pixel_x = 0},/turf/open/floor/whitered/northwest,/area/space)
+"CD" = (/turf/open/floor/corsat/bluecorner{dir = 8},/area/space)
+"CN" = (/obj/effect/decal/hybrisa/gold,/obj/effect/decal/hybrisa/gold/line2{pixel_x = 0; pixel_y = 2},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"CT" = (/obj/structure/stairs{icon_state = "ramptop"},/obj/structure/blocker/invisible_wall,/obj/structure/disposalpipe/broken{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"Dc" = (/obj/structure/platform/metal/kutjevo_smooth/east,/turf/open/space/basic,/area/space)
+"Dk" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 4},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/marked,/area/space)
+"Dn" = (/obj/structure/bed/chair/comfy/teal{dir = 8},/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
 "Dt" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 4},/turf/open/floor/corsat/blue/east,/area/space)
-"El" = (/turf/open/floor/dark,/area/space)
+"Du" = (/obj/structure/bed/chair/comfy/teal{dir = 1},/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
+"Dx" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/brown{pixel_x = 0; pixel_y = 13},/obj/item/bedsheet/colorable{color = "#856f63"; layer = 3.2},/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"DG" = (/obj/structure/bed/chair/bolted,/turf/open/floor/corsat/squares,/area/space)
+"DL" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_22"; pixel_x = 9; pixel_y = 23},/obj/effect/decal/hybrisa/gold,/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"DY" = (/obj/structure/window/framed/prison/reinforced,/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,/turf/open/floor/corsat/squares,/area/space)
+"Ec" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/corsat/squares,/area/space)
+"Ef" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/computer/emails{dir = 8},/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
+"Ek" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/storage/box/nade_box/tear_gas{pixel_x = -1; pixel_y = 5; anchored = 1},/turf/open/floor/corsat/squares,/area/space)
+"El" = (/turf/open/floor/corsat/marked,/area/space)
 "EJ" = (/obj/structure/stairs{icon_state = "ramptop"},/turf/open/floor/corsat/squares,/area/space)
+"EM" = (/obj/structure/prop/hybrisa/furniture/tables/tablewood{dir = 4},/obj/structure/machinery/prop/almayer/computer/PC{dir = 8; pixel_x = -2; pixel_y = 11},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"EN" = (/obj/item/reagent_container/food/drinks/cans/souto{icon_state = "blank_can_crushed"; pixel_x = -5; pixel_y = 24},/turf/open/floor/corsat/squares,/area/space)
 "ET" = (/turf/open/floor/corsat/bluecorner/north,/area/space)
+"Fk" = (/obj/structure/machinery/light/small/blue{dir = 1; pixel_y = 20; pixel_x = 16},/obj/structure/prop/hybrisa/misc/floorprops/grate2{color = "#9c97a3"; explo_proof = 1; unacidable = 1; unslashable = 1},/turf/open/floor/corsat,/area/space)
+"Fq" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/clothing/suit/storage/marine/veteran/cmb/leader{pixel_x = -5; pixel_y = 11},/obj/item/clothing/suit/storage/marine/veteran/cmb{pixel_x = 4; pixel_y = 9},/obj/item/weapon/shield/riot/metal{pixel_x = -4; pixel_y = 2},/obj/item/weapon/shield/riot/metal{pixel_x = 0; pixel_y = 0},/obj/item/weapon/shield/riot/metal{pixel_x = 4; pixel_y = -2},/turf/open/floor/corsat/squares,/area/space)
 "Fw" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"Fz" = (/obj/effect/decal/hybrisa/dirt_2,/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"FA" = (/obj/structure/window/framed/prison/reinforced,/turf/open/floor/corsat/squares,/area/space)
+"FI" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 4},/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 9},/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 14},/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 19},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"Gb" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/paper_bin{pixel_x = 6; pixel_y = -25; anchored = 1},/obj/item/ashtray/plastic{icon_state = "ashtray_full_bl"; pixel_x = 5; pixel_y = 1},/obj/item/storage/fancy/cigarettes/arcturian_ace{pixel_x = -5; pixel_y = 14},/obj/item/ashtray/bronze{icon_state = "ashtray_full_bl"; pixel_x = -5; pixel_y = -3},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 0},/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/space)
 "Gc" = (/turf/open/floor/corsat/bluecorner,/area/space)
+"Gd" = (/obj/structure/machinery/door/window/brigdoor/southright{id = "Cell 1"; name = "Cell 1"},/turf/open/floor/corsat/squares,/area/space)
+"Gl" = (/obj/structure/pipes/vents/pump,/turf/open/floor/prison/bluecorner/east,/area/space)
 "Gu" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/west,/area/space)
+"GU" = (/obj/effect/decal/hybrisa/gold{pixel_x = -2; pixel_y = 0},/obj/effect/decal/hybrisa/gold/line2{pixel_x = 0; pixel_y = 2},/obj/effect/decal/hybrisa/gold,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Hb" = (/obj/structure/bed/sofa{icon_state = "couch_hori3"},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "Hd" = (/obj/structure/window/framed/almayer/hull,/turf/open/floor/plating,/area/space)
+"Hj" = (/obj/structure/platform/metal/kutjevo_smooth,/turf/open/space,/area/space)
+"Ht" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/explosive/plastic/breaching_charge/rubber{pixel_x = -5; pixel_y = 13},/obj/item/explosive/plastic/breaching_charge/rubber{pixel_x = 5; pixel_y = 12},/obj/item/explosive/plastic/breaching_charge/rubber{pixel_x = -4; pixel_y = 2},/obj/item/explosive/plastic/breaching_charge/rubber{pixel_x = 5; pixel_y = 0},/turf/open/floor/corsat/squares,/area/space)
+"Hx" = (/turf/closed/shuttle/elevator/arrivals,/area/space)
+"HS" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,/area/space)
 "Ig" = (/obj/effect/decal/warning_stripes{icon_state = "N"},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/machinery/light/double,/turf/open/floor/corsat/blue/north,/area/space)
+"Im" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/paper_bin{pixel_x = 7; pixel_y = -3; anchored = 1},/obj/item/tool/pen/multicolor/provost{pixel_x = -1; pixel_y = 2},/obj/structure/flora/pottedplant{icon_state = "pottedplant_2"; pixel_y = 22; pixel_x = 0},/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/obj/item/clipboard{pixel_x = -9; pixel_y = 0},/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
+"Iu" = (/obj/effect/decal/hybrisa/dirt_2,/obj/structure/disposalpipe/segment{dir = 8; icon_state = "pipe-c"},/turf/open/floor/corsat/squares,/area/space)
+"Ix" = (/obj/structure/pipes/vents/pump_hybrisa,/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"Iz" = (/obj/effect/decal/hybrisa/gold/line3,/obj/effect/decal/hybrisa/gold/line3{pixel_x = 2; pixel_y = 0},/obj/structure/surface/table/woodentable/fancy,/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = -7; pixel_y = 16},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = 1; pixel_y = 16},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = 9; pixel_y = 16},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = -3; pixel_y = 10},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = 5; pixel_y = 10},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = -7; pixel_y = 4},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = 1; pixel_y = 4},/obj/item/reagent_container/food/drinks/cans/waterbottle{pixel_x = 9; pixel_y = 4},/obj/effect/decal/hybrisa/gold/line4{pixel_x = 0; pixel_y = -2},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Jc" = (/obj/structure/roof/hybrisa/lattice_prop/lattice_5{pixel_x = -8; pixel_y = 0},/turf/closed/wall/almayer,/area/space)
+"Jf" = (/obj/structure/window/reinforced{dir = 4; pixel_x = 3; pixel_y = 0},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Jy" = (/obj/structure/surface/table/reinforced/black,/obj/item/trash/plate{pixel_x = 6; pixel_y = 5},/obj/item/trash/plate{pixel_x = -5; pixel_y = 12},/obj/item/reagent_container/food/snacks/meatpizzaslice{pixel_x = -8; pixel_y = 13},/obj/item/reagent_container/food/snacks/mushroompizzaslice{pixel_x = 5; pixel_y = 6},/turf/open/floor/corsat/squares,/area/space)
+"JJ" = (/obj/structure/prop/hybrisa/furniture/tables/tableblack{layer = 2.9},/obj/structure/machinery/computer/emails{dir = 1; pixel_x = 16; pixel_y = 9},/obj/item/reagent_container/food/drinks/coffeecup{pixel_x = -8; pixel_y = 15},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"JK" = (/obj/structure/toilet{dir = 1},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plating/plating_catwalk/strata,/area/space)
+"JU" = (/obj/structure/bed/chair/comfy/hybrisa/red{dir = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "JW" = (/turf/open/space/basic,/area/space)
+"Ka" = (/turf/open/floor/prison/blue/northeast,/area/space)
+"Kp" = (/obj/structure/disposalpipe/segment,/turf/open/floor/corsat/squares,/area/space)
+"KC" = (/obj/structure/stairs{icon_state = "ramptop"},/obj/structure/disposalpipe/segment,/turf/open/floor/corsat/squares,/area/space)
+"KI" = (/obj/structure/closet/bombclosetsecurity{pixel_x = -7; density = 0; pixel_y = 15},/obj/structure/closet/bombclosetsecurity{pixel_x = 8; pixel_y = 15},/turf/open/floor/corsat/squares,/area/space)
 "KJ" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/manifold/hidden/green{dir = 8},/turf/open/floor/corsat/blue/east,/area/space)
 "KQ" = (/turf/open/floor/corsat/green,/area/space)
-"LT" = (/obj/effect/decal/strata_decals/catwalk/prison,/obj/structure/mirror{pixel_y = 32},/obj/structure/sink{pixel_x = 1; pixel_y = 23},/turf/open/floor/corsat/damaged1,/area/space)
+"KU" = (/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
+"KW" = (/obj/structure/platform/metal/kutjevo_smooth/east,/obj/effect/decal/heavy_cable/cable_vertical,/turf/open/floor/almayer_hull,/area/space)
+"Lp" = (/obj/effect/decal/hybrisa/gold/line4,/obj/structure/bed/sofa{icon_state = "couch_hori1"},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"LO" = (/obj/structure/machinery/light/small{dir = 1},/obj/structure/bedsheetbin{pixel_x = 0; pixel_y = 8},/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"LT" = (/obj/structure/disposalpipe/broken{dir = 4; pixel_x = 0; pixel_y = -1},/turf/open/floor/corsat,/area/space)
+"Mg" = (/obj/structure/bed/chair{dir = 1; icon_state = "chair_alt"; pixel_x = 6; pixel_y = 11; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/squares,/area/space)
+"Mh" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/structure/window/reinforced/toughened{dir = 8},/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{pixel_x = 4; pixel_y = 14},/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{pixel_x = 2; pixel_y = 1},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"Ms" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/tool/kitchen/rollingpin{pixel_y = 8; pixel_x = -6},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"MR" = (/turf/open/floor/almayer_hull,/area/space)
+"MS" = (/obj/structure/platform/metal/kutjevo_smooth,/turf/open/space/basic,/area/space)
+"MX" = (/obj/structure/disposalpipe/segment{dir = 1},/turf/open/floor/corsat/arrow_north,/area/space)
+"Nb" = (/obj/structure/machinery/shower{pixel_y = 16},/obj/structure/machinery/door/window/tinted{dir = 2},/turf/open/floor/plating/plating_catwalk/strata,/area/space)
+"Ne" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/colorable{pixel_x = 0; pixel_y = 13},/obj/item/bedsheet/colorable{layer = 3.2},/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"Nf" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/structure/machinery/microwave{pixel_y = 11; pixel_x = 0},/obj/structure/machinery/microwave{pixel_y = 23; pixel_x = 0},/obj/item/storage/fancy/egg_box{pixel_y = 39; pixel_x = 0},/turf/open/floor/corsat/officetiles,/area/space)
+"Nq" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/clothing/mask/gas/swat{pixel_x = -6; pixel_y = 15},/obj/item/clothing/mask/gas/swat{pixel_x = 3; pixel_y = 11},/obj/item/clothing/mask/gas/swat{pixel_x = -6; pixel_y = 2},/obj/item/clothing/mask/gas/swat{pixel_x = 3; pixel_y = -2},/turf/open/floor/corsat/squares,/area/space)
+"Nt" = (/turf/closed/shuttle/elevator{explo_proof = 1; unacidable = 1},/area/space)
 "Ny" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/floor/corsat/squares,/area/space)
+"NM" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"NQ" = (/obj/effect/decal/hybrisa/dirt_2,/turf/open/floor/corsat/green,/area/space)
+"NS" = (/obj/structure/bed/chair{dir = 8; icon_state = "chair_alt"; pixel_x = -6; pixel_y = 17},/turf/open/floor/corsat/squares,/area/space)
+"NW" = (/obj/structure/prop/hybrisa/misc/elevator_door/right,/turf/open/floor/corsat/officetiles,/area/space)
+"NX" = (/obj/structure/platform/metal/kutjevo_smooth/east,/turf/open/space,/area/space)
 "NY" = (/obj/structure/pipes/vents/pump{dir = 8},/turf/open/floor/plating,/area/space)
 "Ob" = (/turf/open/floor/corsat/blue/northwest,/area/space)
+"Oe" = (/obj/structure/bedsheetbin{icon_state = "linenbin-empty"; name = "solar lattice"; pixel_y = 6},/turf/open/floor/almayer_hull,/area/space)
+"On" = (/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{hacked = 1; name = "\improper Response Team Automated Guns Rack"; use_power = 0; use_snowflake_points = 1; pixel_x = 0; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
 "OR" = (/turf/open/floor/corsat/squares,/area/space)
+"Pk" = (/turf/open/floor/hybrisa/tile/tileblue,/area/space)
+"Pm" = (/turf/open/floor/corsat/bluecorner{dir = 1},/area/space)
+"Pn" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/trash/hybrisa/cuppa_joes/lid{pixel_x = -4; pixel_y = 10},/obj/item/trash/hybrisa/cuppa_joes/empty_cup{pixel_x = 4; pixel_y = 10},/obj/item/trash/hybrisa/cuppa_joes/empty_cup{pixel_x = 6; pixel_y = 6},/obj/item/trash/hybrisa/cuppa_joes/empty_cup{pixel_x = 5; pixel_y = 3},/obj/item/trash/hybrisa/cuppa_joes/lid{pixel_x = -4; pixel_y = 11},/obj/item/trash/hybrisa/cuppa_joes/lid{pixel_x = -4; pixel_y = 12},/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
+"Px" = (/obj/structure/filingcabinet{density = 0; pixel_x = 9; pixel_y = 20},/obj/structure/filingcabinet/chestdrawer{density = 0; pixel_x = -7; pixel_y = 20},/obj/structure/flora/pottedplant{icon_state = "pottedplant_17"; pixel_x = -6; pixel_y = 34},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
 "Py" = (/obj/effect/decal/warning_stripes{icon_state = "NW-out"},/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 9},/turf/open/floor/corsat/bluecorner/north,/area/space)
 "PB" = (/obj/effect/decal/warning_stripes{icon_state = "NE-out"},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/obj/structure/pipes/standard/simple/hidden/green{dir = 5},/turf/open/floor/corsat/bluecorner/east,/area/space)
+"PE" = (/obj/item/paper_bin{pixel_x = 7; pixel_y = 11},/obj/item/tool/pen/multicolor/fountain{pixel_x = 5; pixel_y = 11},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Qf" = (/turf/open/floor/whitered/northwest,/area/space)
+"Qv" = (/turf/open/floor/hybrisa/tile/tilebeigecheckered,/area/space)
+"Qy" = (/obj/structure/bed/chair{dir = 8; icon_state = "chair_alt"; pixel_x = -5; pixel_y = 9},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"Qz" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/structure/window/reinforced/toughened{dir = 8},/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{pixel_x = 2; pixel_y = 12},/obj/item/reagent_container/food/snacks/creamcheesebreadslice{pixel_x = -6; pixel_y = -3},/obj/item/reagent_container/food/snacks/creamcheesebreadslice{pixel_x = 0; pixel_y = -2},/obj/item/reagent_container/food/snacks/creamcheesebreadslice{pixel_x = 8; pixel_y = -3},/turf/open/floor/hybrisa/tile/tilered,/area/space)
 "QD" = (/turf/open/floor/corsat/bluecorner/west,/area/space)
 "QF" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 1},/turf/open/floor/corsat/blue/east,/area/space)
+"QM" = (/obj/structure/machinery/cm_vending/gear/antag{hacked = 1; name = "\improper Response Team Automated Gear Rack"; use_snowflake_points = 1; pixel_x = 0; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"Rd" = (/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{name = "\improper CMB Office"},/turf/open/floor/corsat/marked,/area/space)
+"Ri" = (/obj/structure/bed/chair{dir = 1; icon_state = "chair_alt"; pixel_x = -3; pixel_y = 18; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/squares,/area/space)
+"Rl" = (/obj/structure/platform/metal/kutjevo_smooth/north,/obj/structure/platform/metal/kutjevo_smooth/east,/obj/structure/barricade/handrail{dir = 1; icon_state = "hr_kutjevo"; name = "solar lattice"},/turf/open/space,/area/space)
+"Rs" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/sign/calendar/ua{pixel_y = 26},/obj/item/folder/blue{pixel_x = -6; pixel_y = 11},/obj/item/folder/white{pixel_x = -1; pixel_y = 11},/obj/item/folder/blue{pixel_x = 5; pixel_y = 11},/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
 "Rv" = (/obj/structure/window/framed/almayer/hull,/turf/open/space/basic,/area/space)
+"RS" = (/obj/effect/decal/hybrisa/dirt_2,/obj/structure/disposalpipe/segment{dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"Sh" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,/area/space)
+"SM" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{pixel_x = -4; pixel_y = 1},/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{pixel_x = -2; pixel_y = -5},/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717{pixel_x = -5; pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"SV" = (/obj/structure/roof/hybrisa/lattice_prop/lattice_4{pixel_x = 11; pixel_y = 0},/turf/closed/wall/almayer,/area/space)
+"SW" = (/obj/structure/bed/chair{dir = 4; icon_state = "chair_alt"; pixel_x = 6; pixel_y = 11; buckling_x = -4; buckling_y = 20},/turf/open/floor/corsat/green/east,/area/space)
+"Th" = (/obj/structure/prop/hybrisa/misc/floorprops/grate2{color = "#9c97a3"; explo_proof = 1; unacidable = 1; unslashable = 1},/turf/open/floor/corsat,/area/space)
+"Tq" = (/obj/structure/bed/chair{dir = 8; icon_state = "chair_alt"; pixel_x = -7; pixel_y = 4},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"Tu" = (/obj/structure/stairs/perspective{icon_state = "p_stair_full"; dir = 1},/turf/open/floor/corsat/squares,/area/space)
+"Uj" = (/obj/structure/surface/table/reinforced/almayer_B,/turf/open/floor/whitered/southwest,/area/space)
+"Ut" = (/obj/structure/pipes/vents/pump/no_boom,/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Ux" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/paper_bin{pixel_x = -6; pixel_y = 3; anchored = 1},/obj/item/tool/pen/multicolor/provost{pixel_x = 4},/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{pixel_x = -2; pixel_y = 14},/obj/item/reagent_container/food/drinks/coffee{pixel_x = 5; pixel_y = 11},/obj/structure/machinery/light/double{dir = 8; pixel_x = -10; pixel_y = 0},/turf/open/floor/hybrisa/carpet/carpetbluedeco,/area/space)
 "Uz" = (/turf/open/floor/corsat/arrow_south,/area/space)
+"UB" = (/obj/effect/decal/hybrisa/dirt_2,/turf/open/floor/corsat/squares,/area/space)
 "UJ" = (/obj/effect/decal/warning_stripes{icon_state = "E"},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/east,/area/space)
+"US" = (/turf/open/floor/prison/blue/southwest,/area/space)
 "UT" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/machinery/light/double{dir = 4; pixel_x = 10; pixel_y = 1},/turf/open/floor/corsat/blue/west,/area/space)
+"Vm" = (/obj/structure/bed/hybrisa/prisonbed{dir = 4},/turf/open/floor/whiteredfull,/area/space)
+"Vn" = (/obj/structure/disposalpipe/segment{dir = 8; pixel_x = 0; pixel_y = 1},/turf/open/floor/corsat/squares,/area/space)
+"Vo" = (/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"Vt" = (/obj/structure/machinery/vending/cigarette/wy{density = 0; pixel_x = -4; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"Vy" = (/obj/structure/prop/hybrisa/misc/elevator_button{pixel_x = 6; pixel_y = 1},/turf/closed/shuttle/elevator{dir = 4},/area/space)
+"VO" = (/obj/structure/bed/chair/comfy/teal{dir = 4},/turf/open/floor/hybrisa/carpet/carpetblue,/area/space)
+"VP" = (/turf/open/floor/whitered,/area/space)
+"Wa" = (/turf/open/floor/hybrisa/wood/redwood,/area/space)
+"We" = (/obj/effect/decal/strata_decals/catwalk/prison,/obj/structure/mirror{pixel_y = 32},/obj/structure/sink{pixel_x = 1; pixel_y = 23},/obj/structure/toilet{dir = 8},/obj/structure/machinery/shower{dir = 4},/obj/structure/machinery/light/small{dir = 4},/obj/effect/decal/hybrisa/dirt,/turf/open/floor/corsat/damaged1,/area/space)
 "Wq" = (/turf/open/floor/corsat/blue/west,/area/space)
+"Wr" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/clothing/head/helmet/marine/veteran/cmb{pixel_x = -6; pixel_y = 12},/obj/item/clothing/suit/storage/marine/veteran/cmb/light{pixel_x = -6; pixel_y = 2},/obj/item/clothing/head/helmet/marine/veteran/cmb/spec{pixel_x = 5; pixel_y = 9},/obj/item/clothing/suit/storage/marine/veteran/cmb/spec{pixel_x = 5; pixel_y = -1},/turf/open/floor/corsat/squares,/area/space)
 "Wz" = (/turf/open/floor/corsat/brown/east,/area/space)
-"WN" = (/turf/open/floor/corsat/tan/north,/area/space)
+"WA" = (/obj/structure/machinery/door_control{pixel_x = 41; pixel_y = -23},/turf/open/floor/corsat/squares,/area/space)
+"WC" = (/turf/open/floor/prison/blue/west,/area/space)
+"WK" = (/obj/structure/prop/hybrisa/furniture/tables/tableblack/blacktablecomputer{dir = 2; layer = 2.9; pixel_x = -2},/obj/item/paper_bin{pixel_x = -9; pixel_y = 12},/obj/item/tool/pen/multicolor/fountain{pixel_x = -7; pixel_y = 10},/obj/item/reagent_container/food/drinks/coffeecup{pixel_x = 33; pixel_y = 24},/obj/item/tool/stamp/cmb{pixel_x = 11; pixel_y = 14},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"WN" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 2},/turf/open/floor/corsat/marked,/area/space)
+"WQ" = (/obj/structure/prop/cash_register{pixel_x = 0; pixel_y = 17},/obj/structure/surface/table/reinforced/almayer_B,/obj/structure/machinery/light{dir = 4},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"WV" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 4},/obj/structure/blocker/invisible_wall,/turf/open/floor/corsat/blue/north,/area/space)
+"WX" = (/obj/structure/bookcase{icon_state = "book-5"; pixel_x = 0; pixel_y = 22; density = 0; opacity = 0},/turf/open/floor/hybrisa/wood/darkerwood,/area/space)
+"Xd" = (/obj/structure/surface/table/reinforced/black{pixel_x = 0; pixel_y = 6},/turf/open/floor/corsat/squares,/area/space)
+"XB" = (/obj/structure/surface/table/reinforced/almayer_B,/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 4},/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 9},/obj/item/pizzabox/pizza_galaxy/mystery{pixel_x = 0; pixel_y = 14},/turf/open/floor/hybrisa/tile/tilered,/area/space)
+"XO" = (/obj/structure/machinery/vending/cola{density = 0; pixel_x = 10; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"XX" = (/obj/structure/surface/table/reinforced/black{pixel_x = 0; pixel_y = 5},/turf/open/floor/corsat/squares,/area/space)
+"Yc" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/faxmachine/cmb{pixel_y = 0},/obj/item/reagent_container/food/drinks/milk{pixel_x = 6; pixel_y = 18},/turf/open/floor/hybrisa/tile/tileblue,/area/space)
+"YD" = (/obj/structure/machinery/deployable/barrier,/turf/open/floor/corsat/squares,/area/space)
+"YI" = (/turf/open/floor/prison/blue/northwest{pixel_x = 0; pixel_y = 0},/area/space)
+"YW" = (/obj/structure/surface/table/reinforced/black,/turf/open/floor/hybrisa/tile/tilered,/area/space)
 "YX" = (/obj/structure/bed/sofa/vert/grey/top{pixel_y = 8},/turf/open/floor/corsat/squares,/area/space)
+"Zf" = (/obj/structure/bed/alien,/obj/item/bedsheet/brown,/turf/open/floor/whitered/southeast,/area/space)
+"Zl" = (/obj/structure/machinery/door/poddoor/almayer/locked{icon_state = "almayer_pdoor"; id = "CMB_Concourse"; name = "\improper Concourse Access"; dir = 4},/obj/structure/blocker/invisible_wall,/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/corsat/squares,/area/space)
+"Zs" = (/obj/structure/surface/table/reinforced/black,/obj/item/trash/plate,/turf/open/floor/corsat/squares,/area/space)
+"Zv" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_17"; pixel_x = 10; pixel_y = 22},/turf/open/floor/corsat/squares,/area/space)
+"ZF" = (/obj/structure/machinery/vending/coffee{density = 0; pixel_y = 16; pixel_x = -14},/obj/structure/reagent_dispensers/water_cooler/walk_past{pixel_x = 8; pixel_y = 16},/turf/open/floor/corsat/squares,/area/space)
+"ZG" = (/turf/closed/shuttle/elevator{dir = 6; explo_proof = 1; unacidable = 1},/area/space)
+"ZP" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/weapon/gun/smg/mp5/mp5a5/tactical{pixel_x = 0; pixel_y = 9},/obj/item/weapon/gun/smg/mp5/mp5a5/tactical{pixel_x = 3; pixel_y = 2},/obj/item/weapon/gun/smg/mp5/mp5a5/tactical{pixel_x = 6; pixel_y = -5},/turf/open/floor/corsat/squares,/area/space)
 
 (1,1,1) = {"
-fZfZfZfZJWJWsxsxsxNyNyNyNyNysxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-oZoZoZoZJWJWsxORORORORORORORORORsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWsxORORORaGORaGORORORsxsxsxsxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-sxsxsxsxJWJWsxORORORORORORORORORsxsxEJEJEJsxJWJWJWJWJWJWJWJWJWJWJWJWoZoZoZoZoZoZoZoZoZFwoZoZoZJWJWJW
-JWJWJWJWJWsxsxORORORORORORORORORsxsxEJEJEJsxACACACmCsxJWJWJWJWJWJWJWoZowySySySySzhySySySySgCoZJWJWJW
-RvRvRvRvJWsxORORORORORORORORORsxsxsxEJEJEJsxORORORORsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJW
-JWJWJWJWJWHdORORYXORORYXORORORORORORORORORORORORORORORORORORORORORORORUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWJWJWHdORORpLORORpLORORORORORORORORORORORORORORORfRORORfRORORfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWJWJWHdORORpLORORpLORORORORORORORORORORORORORORORORORORORORORORORUJfDfDfDfDfDfDfDfDfDcqoZJWJWJW
-JWJWJWJWJWsxORORkEORORkEORORORORORORORORORORORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJW
-JWJWJWJWsxsxORORORORORORORORORORORORORORORORORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJW
-JWJWJWJWsxORORORORORORORORwysxsxKQKQKQsxsxORORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWJWHdORORYXORORYXORORhjWNWNWNWNWNWNsxsxORORORHdBqBqBqBqBqBqBqBqxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWJWHdORORpLORORpLORORhjWNWNWNWNWNWNWNsxORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWJWHdORORpLORORpLORORhjWNWNWNWNWNWNWNsxORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJW
-JWJWJWJWsxORORkEORORkEORORhjWNWNWNWNWNWNWNsxORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJW
-JWJWJWsxsxORORORORORORORORhjWNWNWNWNWNWNsxsxORORORORASgtgtgtgtgtgtgtETUJfDfDfDfDfDfDfDfDfDcqoZJWJWJW
-JWJWJWsxORORORORORORORORlBsxsxsxsxsxsxsxsxQDORORORORORfRORORfRORORfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWHdORORORORORORORORWzWNWNWNsxbnLTqmsxWqORORORORGcBFBFBFBFBFBFBFQDUJfDldfDfDfDfDfDfDfDGuxLJWJWJW
-JWJWJWHdORORYXORORYXORORWzWNWNWNsxsxWNsxsxWqORORORsxsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJW
-JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqORGcsxsxJWJWJWJWJWJWJWJWoZPByFyFwWyFyFyFIgyFyFPyoZJWJWJW
-JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqUzgrsxJWJWJWJWJWJWJWJWJWoZoZoZoZoZgrElWqoZoZoZoZoZJWJWJW
-JWJWJWHdORORpLORORpLORORWzWNWNWNWNWNWNWNsxWqORgrsxJWJWJWJWJWJWJWJWJWJWJWJWJWoZgjButvoZJWJWJWJWJWJWJW
-JWJWJWHdORORkEORORkEORORWzWNWNWNWNWNWNWNsxWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWoZgrElWqoZJWJWJWJWJWJWJW
-JWJWJWsxORORORORORORORORWzWNWNWNWNWNWNWNsxWqUzgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWsxsxORORORORORORORORWzWNWNWNWNWNWNsxsxWqORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWsxORORORORORORORORORsxsxsxsxsxsxsxsxObETORASgtgtgtJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORORORORORORORORORORORORASgtgtgtETORORORORORORJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORYXORORYXORORORORORORORORORORORORORORGcBFBFBFJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORpLORORpLORORORORORORORORORORORORORORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORpLORORpLORORORORORORORORORORORORORGcjnoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORpLORORpLORORORORORORORORORORORORORgroZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORkEORORkEORORORORORORORORORORORGcBFjnoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWHdORORORORORORORORORORORORORORORGcBFjnoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWsxsxORORORORORORORORsxsxoZoZoZQDORgroZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWsxORORORORORORORORORsxJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWsxORORORUzORUzORORORsxJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWsxORORORORORORORORORsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWsxsxsxNyNyNyNyNysxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
-JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWsxsxsxNyNyNygvNysxsxsxJWJWJWJWsxsxsxsxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWsxORORORORORxWORORORsxJWJWJWJWsxlLHxVyuDsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWsxORUBORaGORMXORORORsxsxsxsxsxsxNtFkThfhsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWsxORORUBORORxWORUBORsxsxEJKCEJsxNtThThfhsxJWJWJWJWJWJWJWoZoZoZoZoZoZoZoZoZFwoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+ntHjHjHjjtntHjHjHjjtntHjHjHjjtJWJWsxsxORUBORORORxWORORORsxsxCTxzsTsxwRpcNWZGsxJWJWJWJWJWJWJWoZowySySySySzhySySySySgCoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWsxORORORORORORRSORORsxsxsxEJKCEJsxflORORsxsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWHdORORYXORUBYXxWORORXOmAChORKpORORUBORORORuZuZcIORORORcIORORUJfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmbVAdqmqmqmbVAdqmqmqmbVMSMSHdORORpLORUBpLxWORUBORfgORORjWaHaHaHrAaHaHrPufZlaHufaHcIfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+DcOeMROemCKWOeMROemCKWOeMROemCppppHdORORpLORUBpLhQiUiUwSoSLTwSIuORUBORORORUBUBORcIORORORcIORORUJfDfDfDfDfDfDfDfDfDcqoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+DcqmqmqmwbRlqmqmqmwbRlqmqmqmwbvzvzsxORORkEORORkEORORORORfWVndIORORORORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmbVAdqmqmqmbVAdqmqmqmbVMSsxsxORORENUBORORORORORORORUBORORORUBORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+DcOeMROemCKWOeMROemCKWOeMROemCppsxORUBUBORORORetORfrsxsxNQKQsxsxsxORORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmwbRlqmqmqmwbRlqmqmqmwbvzHdORJyjgUBORbCBeORSWiNQyVoVotJWQsxsxORORORHdBqBqBqBqBqBqBqBqxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWHdORBeNSORpzORMgORhjVoVoVoFzVofyNfsxORORORHdJWJWBqJWJWJWBqJWxLUJfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWHdORpzORORORORUBORhjVoFzjzMsVoFzFIsxORORORsxsxJWBqJWJWJWBqJWoZUJfDfDfDfDfDfDfDfDfDGuoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+BmACACACgxBmACACACgxBmACACACgxJWsxbZZsixORORORetORqBYWTqVoQzfyVoXBsxORORORORsxsxsxsxsxsxoZoZoZQFfDfDfDfDfDfDfDfDfDUToZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWsxsxORRiutORUBbZuYORSWYWonFzMhcVgqsxsxORORORORASgtgtgtgtgtgtgtETUJfDfDfDfDfDfDfDfDfDcqoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWSVcPvcvcewewewewewbBJcsxsxsxsxsxsxsxQDORORORORORfRORORfRORORfRORDtfDfDfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORORORORORORORWzvJegsxWesxWesxsxWqORORORORGcBFBFBFBFBFBFBFQDUJfDldfDfDfDfDfDfDfDGuxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORYXORORYXORORWzQvQvsxElsxElsxsxWqORORORsxsxsxsxsxsxsxoZoZoZKJcffDfDfDfDfDfDfDNYqoxLJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORpLORORpLORORWzQvQvghQvQvQvLOsxWqORGcsxsxJWJWdododoJWJWJWoZPByFyFwWyFyFyFIgyFyFPyoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORpLORORpLORORWzQvQvQvIxQvQvEMsxWqUzgrsxJWJWJWWVJWJWJWJWJWoZoZoZoZoZCDORGcoZoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORpLORORpLORORWzsxsxsxhChCsxsxsxWqORgrsxJWJWJWDkJWJWorJWJWJWJWJWJWoZWqUzgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWHdORORkEORORkEORORWzsxcjsxWaWasxNesxWqORgroZJWJWJWDkJWJWorJWJWJWJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+HjHjjtntHjHjHjjtntHjHjHjjtJWJWsxORORORORORORORORWzsxWaurWaWauraksxWqUzgroZJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmkcNXqmqmqmkcNXqmqmqmkcJWsxsxORORORORORORORORWzsxDxsxkDsxxgsxsxWqORgroZoZoZoZoZoZoZoZoZoZoZoZoZoZoZWqUzgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmkcNXqmqmqmkcNXqmqmqmkcJWSVvcvcvcewewewewewbBJcsxsxsxsxsxsxsxObETORASgtgtgtgtgtgtgtgtgtgtgtgtgtgtgtPmORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmbVAdqmqmqmbVAdqmqmqmbVMSHdORORORORORORORORORORORORORASgtgtgtETORORORORORORORORORORORORORORfRORORfRORORgroZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+MROemCKWOeMROemCKWOeMROemCppHdORORYXORORYXORORORORORYXORORORYXORORORORGcBFBFBFBFBFBFORORBFBFBFBFBFBFBFBFBFjnoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmwbRlqmqmqmwbRlqmqmqmwbvzHdORORkEORORkEORORORORORkEORORORkEORORORORgroZBfoZoZoZoZRdEloZoZoZoZoZoZoZoZoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmbVAdqmqmqmbVAdqmqmqmbVMSHdORORXdORORXXORORORORORXXORORORXXORORORGcjnoZlBnDRsImoZOROREcCcVmVmCcoZNboZORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+MROemCKWOeMROemCKWOeMROemCppHdORORYXORORYXORORORORORORORORORORORORORgroZoZBuBuVOEfFAOROREcQfsgsguzEltLoZORreORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmwbRlqmqmqmwbRlqmqmqmwbvzHdORORkEORORkEORORORORORORORORORORORGcBFjnoZUxPnBuKUAhFAOROREcqTaoVPtAoZJKoZORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmkcNXqmqmqmkcNXqmqmqmkcJWHdORORORORORORORORORORORORORORORGcBFjnoZoZoZdnDnBuzpDLoZCvvroZEcEcoZEloZoZoZoZEloZoZoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+qmqmkcNXqmqmqmkcNXqmqmqmkcsxsxORORORORORORORORsxsxsxoZoZQDORgroZoZoZadeIvVbLCNPkPkElORORElORZvfSrefSsyORElORORoZAAreORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+ACACgxBmACACACgxBmACACACgxsxORORORORORORORORORsxJWJWJWoZWqORgroZGbcMBuBuBuGUPkPkPkBwORORElORoVORORORORORElORORElORDGDGoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWsxORORORUzORUzORORORsxJWJWJWoZWqORgruloHozBuBuscPkPksWoZoZORvroZoZoZoZGdoZtYoZoZORORoZFAFAFAoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWsxORORORORORORORORORsxJWJWJWoZWqORgroZoJDuBukBPkPkPkYcFAChORORLpHboZCyuzoZQfwyoZORORoZORWADGoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWsxsxsxWNWNWNWNWNsxsxsxJWJWJWoZWqORgroZiOBuBuoEPkPkoZFAFAORORORacBuoZjatyoZUjZfoZORORElORrehloZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWfZfZfZfZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZoZFAFAoZRdEloZVtZFORORIzBuBuoZoZoZoZoZoZoZORORoZORORzXoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORORElORORORORORORORORORORORwiBusjoZYDYDgcYDoZORORORoZoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORORBwORORORoVORORoVORORlIjuroBusjoZFqYIKaYDEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWsxsxsxsxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZoZDYDYlyDYDYoZTuTuirBuBuUtsjoZWrWCaCtkEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZtvdogjoZWXajBuPxhbBuoZmumujrNMNMNMoIoZNqWCaCZPEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWRvRvRvRvJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZBubngTShJJPEoZElEloZoZoZoZoZoZziWCaCEkEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZqpiZHSeTBuyaoZBuBuoZfXQMOnKICqHtWCaCSMEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZWKdZJfnNUtBuElBuBuEcihrMrMrMrMrMGlaCeQEcORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZBuJUJfnNBuBuElBuBuEcUStBtBtBtBtBtBBdORoZORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZWqORgroZoZoZoZoZoZoZoZBuBuElORORORORORORORORORElORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZBuBuElORORORORORORORORORElORORORoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWoZoZoZoZoZoZoZoZoZoZoZoZoZoZoZoZoZoZJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+ntHjHjHjjtJWJWntHjHjHjjtntHjHjHjjtntHjHjHjjtJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcJWJWNXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcJWJWNXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmbVMSMSAdqmqmqmbVAdqmqmqmbVAdqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+DcOeMROemCppppKWOeMROemCKWOeMROemCKWOeMROeqHJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmwbvzvzRlqmqmqmwbRlqmqmqmwbRlqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmbVMSMSAdqmqmqmbVAdqmqmqmbVAdqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+DcOeMROemCppppKWOeMROemCKWOeMROemCKWOeMROeqHJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmwbvzvzRlqmqmqmwbRlqmqmqmwbRlqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcJWJWNXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+NXqmqmqmkcJWJWNXqmqmqmkcNXqmqmqmkcNXqmqmqmkcJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+BmACACACgxJWJWBmACACACgxBmACACACgxBmACACACgxJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
+JWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJWJW
 "}

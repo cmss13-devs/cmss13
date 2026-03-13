@@ -16,6 +16,12 @@
 #define MAP_MAXY 5
 #define MAP_MAXZ 6
 
+// open_space_bounds indices
+#define OPEN_SPACE_BOUNDS_MINX 1
+#define OPEN_SPACE_BOUNDS_MAXX 2
+#define OPEN_SPACE_BOUNDS_MINY 3
+#define OPEN_SPACE_BOUNDS_MAXY 4
+
 #define MAP_MAXSIZE 300
 
 

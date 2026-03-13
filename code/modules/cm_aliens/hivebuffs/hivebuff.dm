@@ -538,7 +538,7 @@
 
 /datum/hivebuff/boost_structure
 	name = "Boon of Fortification"
-	desc = "Gives buffs out to all the sturctures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	desc = "Gives buffs out to all the structures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The resin starts moving and shifting..."

@@ -7301,7 +7301,7 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/brown/southwest,
 /area/corsat/gamma/cargo/lobby)
 "aCF" = (
@@ -23291,7 +23291,7 @@
 	dir = 1;
 	network = list("gamma")
 	},
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/brown,
 /area/corsat/gamma/cargo)
@@ -23409,7 +23409,7 @@
 /area/corsat/omega/cargo)
 "bOC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/cargo)
 "bOD" = (
@@ -23626,7 +23626,7 @@
 /area/corsat/sigma/cargo)
 "bPw" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/cargo)
 "bPx" = (
@@ -23675,7 +23675,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/brown,
 /area/corsat/sigma/cargo)
 "bPJ" = (
@@ -29008,7 +29008,7 @@
 /area/corsat/gamma/foyer)
 "flt" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/cargo,
 /area/corsat/gamma/cargo)
 "flB" = (
@@ -33090,7 +33090,7 @@
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "jsK" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/brown/west,
 /area/corsat/gamma/cargo)
 "jtY" = (
@@ -34823,7 +34823,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/arcade)
 "lqX" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/cargo)
 "lrQ" = (
@@ -36489,7 +36489,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/gamma/biodome/complex)
 "ncW" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/brown/east,
 /area/corsat/omega/cargo)
 "nde" = (
@@ -45703,7 +45703,7 @@
 /area/corsat/gamma/medbay/morgue)
 "wRH" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/cargo,
 /area/corsat/sigma/cargo)
 "wSb" = (

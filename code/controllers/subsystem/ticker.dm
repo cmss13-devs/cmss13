@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(ticker)
 					break
 			if(active_admins)
 				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
-				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficient players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
 			else
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)

@@ -205,7 +205,7 @@
 
 /obj/item/explosive/grenade/incendiary/impact
 	name = "\improper 40mm incendiary grenade"
-	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as an incendiary grenade, watch your fire."
 	icon_state = "grenade_40mm_inc"
 	det_time = 0
 	item_state = "grenade_fire"

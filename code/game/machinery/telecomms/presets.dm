@@ -220,9 +220,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
-
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
-	register_with_turf()
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
@@ -279,8 +277,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON survivors
-						freq_listening |= SOF_FREQ
+					if(FACTION_MARINE in user.faction_group) //FORECON/Army survivors
+						freq_listening |= SURVIVOR_FREQS
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
@@ -399,12 +397,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	corruption_image = image(icon, icon_state = "resin_idle")
 
 	overlays += corruption_image
-
-/// Handles re-registering signals on new turfs if changed
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
-	SIGNAL_HANDLER
-
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

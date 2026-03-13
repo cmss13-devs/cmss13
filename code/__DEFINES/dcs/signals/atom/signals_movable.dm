@@ -28,6 +28,9 @@
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
 
+/// From base of /atom/movable/afterShuttleMove (turf/oldT)
+#define COMSIG_ATOM_AFTER_SHUTTLE_MOVE "movable_after_shuttle_move"
+
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 

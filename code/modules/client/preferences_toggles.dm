@@ -287,6 +287,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
 	)
 
 	var/dat = ""
@@ -399,6 +400,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("You will attempt to catch the ejected bullet when cocking a gun."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
+	prefs.save_preferences()
+
+/// Toggles whether wielding a gun too early queues the action
+/client/proc/toggle_wield_assist()
+	prefs.toggle_prefs ^= TOGGLE_WIELD_ASSIST
+	if(prefs.toggle_prefs & TOGGLE_WIELD_ASSIST)
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will now queue the action."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will no longer queue the action."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.

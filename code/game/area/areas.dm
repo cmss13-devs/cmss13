@@ -40,10 +40,14 @@
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
-	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
-	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
-	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
-	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
+	/// can xenos weed, place resin holes or dig tunnels at said areas
+	var/is_resin_allowed = TRUE
+	/// whether or not you can build things like barricades in this area
+	var/allow_construction = TRUE
+	/// primarily used to prevent mortars from hitting this location
+	var/is_landing_zone = FALSE
+	/// Allow construction of resin walls, and other special
+	var/resin_construction_allowed = TRUE
 
 	// Weather
 	var/weather_enabled = TRUE // Manual override for weather if set to false
@@ -134,6 +138,12 @@
 				if(!(current_wall.turf_flags & TURF_HULL))
 					openable_turf_count++
 					continue
+
+	// If map_holder exists for SSweather, its already done its one-time setup
+	if(weather_enabled && SSweather.map_holder?.should_affect_area(src))
+		SSweather.weather_areas += src
+		if(SSweather.is_weather_event)
+			overlays += SSweather.curr_master_turf_overlay
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)

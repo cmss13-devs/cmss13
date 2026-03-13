@@ -253,8 +253,8 @@ export const RADIO_PREFIXES = {
     label: 'CIA',
   },
   '.s ': {
-    id: 'cia',
-    label: 'CIA',
+    id: 'army',
+    label: 'Army',
   },
   '#s ': {
     id: 'yautja',

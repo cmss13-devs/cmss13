@@ -153,9 +153,9 @@
 		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR),
 
 		list("SKILL PAMPHLETS", -1, null, null),
-		list("JTAC Pamphlet", floor(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
-		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
-		list("Powerloader Certification", 0.75, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("JTAC Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/jtac, VENDOR_ITEM_REGULAR),
+		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/engineer, VENDOR_ITEM_REGULAR),
+		list("Powerloader Certification", 0.75, /obj/item/pamphlet/upgradeable/powerloader, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES BOXES", -1, null, null),
 		list("M15 Fragmentation Grenade Packet", 0, /obj/item/storage/box/packet/m15, VENDOR_ITEM_REGULAR),
@@ -549,7 +549,7 @@
 		list("Falling Falcons Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons UA Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falconalt, VENDOR_ITEM_REGULAR),
 		list("USCM Large Chest Patch", 15, /obj/item/clothing/accessory/patch/uscmlarge, VENDOR_ITEM_REGULAR),
-		list("USCM Shoulder Patch", 15, /obj/item/clothing/accessory/patch, VENDOR_ITEM_REGULAR),
+		list("USCM Shoulder Patch", 15, /obj/item/clothing/accessory/patch/uscmpatch, VENDOR_ITEM_REGULAR),
 		list("United Americas Shoulder patch", 10, /obj/item/clothing/accessory/patch/ua, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", 10, /obj/item/clothing/accessory/patch/uasquare, VENDOR_ITEM_REGULAR),
 		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),

@@ -21,6 +21,8 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		/atom/movable/lighting_mask, //leave it alone
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
 		/obj/merge_conflict_marker,
+		/obj/effect/projector_anchor, // Needs a link ID set to work as intended
+		/obj/effect/projector/linked, // Needs a link ID set to work as intended
 	)
 	//This turf existing is an error in and of itself
 	. += typesof(/turf/baseturf_skipover)
@@ -34,6 +36,8 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	. += subtypesof(/atom/movable/screen/escape_menu)
 	. += typesof(/obj/effect/timed_event)
+	// Need a defined ID, mapping-only, will and should fail loudly if spawned without one
+	. += typesof(/obj/effect/landmark/dispersal_initiator)
 
 GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()
@@ -121,6 +125,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 			TEST_FAIL("Something has gone horribly wrong, the garbage queue has been processing for well over 30 minutes. What the hell did you do")
 			break
 
+		if(garbage_queue_processed)
+			break // don't even bother firing it again, just end
 		//Immediately fire the gc right after
 		SSgarbage.next_fire = 1
 		//Unless you've seriously fucked up, queue processing shouldn't take "that" long. Let her run for a bit, see if anything's changed

@@ -6,7 +6,6 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
-	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
@@ -23,52 +22,48 @@
 
 	add_cleanable_overlays()
 
-	var/list/turf/open/auto_turf/auto_turf_dirs = list()
-	for(var/direction in GLOB.alldirs)
-		var/turf/open/auto_turf/T = get_step(src, direction)
-		if(!istype(T))
+	var/alist/auto_turf_dirs = alist()
+	for(var/turf/open/auto_turf/auto_neighbor in orange(1, src))
+		if(!auto_neighbor.layers_over(src))
 			continue
+		auto_turf_dirs[get_dir(src, auto_neighbor)] = auto_neighbor
 
-		if(bleed_layer >= T.bleed_layer)
-			continue
+	if(length(auto_turf_dirs))
+		var/list/handled_dirs = list()
+		var/list/unhandled_dirs = list()
+		for(var/direction in GLOB.diagonals)
+			var/x_dir = direction & (direction-1)
+			var/y_dir = direction - x_dir
 
-		auto_turf_dirs["[direction]"] = T
+			if(!(direction in auto_turf_dirs))
+				unhandled_dirs |= x_dir
+				unhandled_dirs |= y_dir
+				continue
 
-	var/list/handled_dirs = list()
-	var/list/unhandled_dirs = list()
-	for(var/direction in GLOB.diagonals)
-		var/x_dir = direction & (direction-1)
-		var/y_dir = direction - x_dir
+			var/turf/open/auto_turf/xy_turf = auto_turf_dirs[direction]
+			if((x_dir in auto_turf_dirs) && (y_dir in auto_turf_dirs))
+				var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
+				var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+				I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+				overlays += I
+				handled_dirs += x_dir
+				handled_dirs += y_dir
+				continue
 
-		if(!("[direction]" in auto_turf_dirs))
-			unhandled_dirs |= x_dir
-			unhandled_dirs |= y_dir
-			continue
-
-		var/turf/open/auto_turf/xy_turf = auto_turf_dirs["[direction]"]
-		if(("[x_dir]" in auto_turf_dirs) && ("[y_dir]" in auto_turf_dirs))
-			var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
+			var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
 			var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
-			handled_dirs += "[x_dir]"
-			handled_dirs += "[y_dir]"
-			continue
+			unhandled_dirs |= x_dir
+			unhandled_dirs |= y_dir
 
-		var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
-		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
-		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
-		overlays += I
-		unhandled_dirs |= x_dir
-		unhandled_dirs |= y_dir
-
-	for(var/direction in unhandled_dirs)
-		if(("[direction]" in auto_turf_dirs) && !("[direction]" in handled_dirs))
-			var/turf/open/auto_turf/turf = auto_turf_dirs["[direction]"]
-			var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
-			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
-			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
-			overlays += I
+		for(var/direction in unhandled_dirs)
+			if((direction in auto_turf_dirs) && !(direction in handled_dirs))
+				var/turf/open/auto_turf/turf = auto_turf_dirs[direction]
+				var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
+				var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
+				I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+				overlays += I
 
 	if(scorchedness)
 		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
@@ -94,10 +89,6 @@
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
-
-	var/area/my_area = loc
-	if(my_area.lighting_effect)
-		overlays += my_area.lighting_effect
 
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -1612,3 +1603,13 @@
 
 /turf/open/shuttle/vehicle/floor_3_9_1
 	icon_state = "floor_3_9_1"
+
+/turf/open/walkable_lattice
+	desc = "A support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "latticefull"
+
+/turf/open/walkable_lattice/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	return ..()

@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
-	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artifically-manufactured, these days."
+	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artificially-manufactured, these days."
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
 
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/chitin
 	name = "chitin"
-	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	desc = "Chitin is the building block of an arthropod--such as an insect or crustacean's--exoskeleton. This sheet, in particular, came from aliens."
 	singular_name = "chitin brick"
 	icon_state = "sheet-chitin"
 

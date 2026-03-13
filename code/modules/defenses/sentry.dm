@@ -66,7 +66,11 @@
 		set_range()
 	update_icon()
 	update_minimap_icon()
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
+
+// We've changed position and have to recalculate our bounds.
+/obj/structure/machinery/defenses/sentry/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	unset_range()
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	SSminimaps.remove_marker(src)

@@ -1782,7 +1782,7 @@
 	assignment = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	job_title  = JOB_ARMY_TROOPER
-	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_standard
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -1884,7 +1884,7 @@
 	assignment = JOB_ARMY_MEDIC
 	faction = FACTION_MARINE
 	job_title  = JOB_ARMY_MEDIC
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_medic
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -1899,6 +1899,7 @@
 	uniform.attach_accessory(new_human,patch_infantry)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto/army(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e3, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle/backpack/army(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/army/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/army(new_human), WEAR_HANDS)

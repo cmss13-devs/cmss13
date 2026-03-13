@@ -54,12 +54,16 @@
 	*/
 	var/list/cooldowns
 
-	/// A weak reference to another datum
+	/// The weakref pointing to this datum; ref reuse can cause weakrefs to resolve to the wrong object, so we compare it against this.
 	var/datum/weakref/weak_reference
 
 #ifdef REFERENCE_TRACKING
-	var/running_find_references
+	/// When was this datum last touched by a reftracker?
+	/// If this value doesn't match with the start of the search
+	/// We know this datum has never been seen before, and we should check it
 	var/last_find_references = 0
+	/// How many references we're trying to find when searching
+	var/references_to_clear = 0
 	#ifdef REFERENCE_TRACKING_DEBUG
 	///Stores info about where refs are found, used for sanity checks and testing
 	var/list/found_refs
@@ -126,6 +130,14 @@
 			debug_log("'[src]' datum_components was not null after removing all components! [length(datum_components)] entries remained...")
 			datum_components.Cut()
 
+	clear_signal_refs()
+	//END: ECS SHIT
+
+	return QDEL_HINT_QUEUE
+
+///Only override this if you know what you're doing. You do not know what you're doing
+///This is a threat
+/datum/proc/clear_signal_refs()
 	var/list/lookup = comp_lookup
 	if(lookup)
 		for(var/sig in lookup)
@@ -140,9 +152,6 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
-	//END: ECS SHIT
-
-	return QDEL_HINT_QUEUE
 
 /**
  * Callback called by a timer to end an associative-list-indexed cooldown.
@@ -161,7 +170,7 @@
 
 
 /**
- * Proc used by stoppable timers to end a cooldown before the time has ran out.
+ * Proc used by stoppable timers to end a cooldown before the time has run out.
  *
  * Arguments:
  * * source - datum storing the cooldown

@@ -54,16 +54,17 @@
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
-		return 0
+		return FALSE
+	return toggle_buttoned(usr)
 
-	if(src.buttoned == TRUE)
-		src.icon_state = "[initial_icon_state]_o"
-		src.buttoned = FALSE
-		to_chat(usr, SPAN_INFO("You unbutton \the [src]."))
+/obj/item/clothing/suit/storage/jacket/marine/proc/toggle_buttoned(mob/user)
+	buttoned = !buttoned
+	if(!buttoned)
+		icon_state = "[initial_icon_state]_o"
+		to_chat(user, SPAN_INFO("You unbutton \the [src]."))
 	else
-		src.icon_state = "[initial_icon_state]"
-		src.buttoned = TRUE
-		to_chat(usr, SPAN_INFO("You button \the [src]."))
+		icon_state = initial_icon_state
+		to_chat(user, SPAN_INFO("You button \the [src]."))
 	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/jacket/marine/Initialize()

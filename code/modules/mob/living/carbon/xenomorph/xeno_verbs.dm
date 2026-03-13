@@ -183,112 +183,78 @@
 		to_chat(src, SPAN_WARNING("Only Warriors can do this!"))
 		return
 
-	if(action_busy)
+	if(action_busy) //can't stack the attempts
 		return
 
-	var/list/choices = list()
-	for(var/mob/living/carbon/human/target_carbon in view(1, src) - src)
-		if(!Adjacent(target_carbon))
-			continue
-		if(target_carbon.stat == DEAD)
-			continue
-		if(target_carbon.status_flags & XENO_HOST)
-			continue
-		choices += target_carbon
-
-	var/mob/living/carbon/target = tgui_input_list(src, "Choose a target.", "Rip Limb", choices)
-	if(!target)
+	if(!pulling)
+		to_chat(src, SPAN_XENOWARNING("We need to grab a target first!"))
 		return
 
-	if(action_busy)
+	if(!istype(pulling, /mob/living/carbon/human))
+		to_chat(src, SPAN_XENOWARNING("We prefer to rip off limbs from humanoids!"))
 		return
 
-	if(!Adjacent(target))
-		to_chat(src, SPAN_WARNING("You must be next to the target."))
+	var/mob/living/carbon/human/target_human = pulling
+	var/obj/limb/limb = target_human.get_limb(check_zone(zone_selected))
+
+	if(!istype(target_human, /mob/living/carbon/human))
 		return
 
-	if(can_not_harm(target))
-		to_chat(src, SPAN_XENOWARNING("We cannot harm this host!"))
+	if(can_not_harm(target_human))
+		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
 		return
 
-	var/static/list/procedure_choices = list(
-		"Behead" = "head",
-		"Delimb - Right Hand" = "r_hand",
-		"Delimb - Left Hand" = "l_hand",
-		"Delimb - Right Arm" = "r_arm",
-		"Delimb - Left Arm" = "l_arm",
-		"Delimb - Right Foot" = "r_foot",
-		"Delimb - Left Foot" = "l_foot",
-		"Delimb - Right Leg" = "r_leg",
-		"Delimb - Left Leg" = "l_leg",
-	)
-
-	var/procedure = tgui_input_list(src, "Which limb do we rip?", "Rip Limb", procedure_choices)
-
-	if(!procedure)
-		return
-
-	var/limb = procedure_choices[procedure]
-
-	var/mob/living/carbon/human/target_human = target
-
-	if(!istype(target_human))
-		return
-
-	var/obj/limb/target_limb = target_human.get_limb(limb)
-
-	if(!target_limb)
-		return
-
-	if(target_limb.status & LIMB_DESTROYED)
-		to_chat(src, SPAN_XENOWARNING("That limb is already gone."))
+	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
+		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
 		return
 
 	var/limb_time = rand(40,60)
-	if(limb == "head")
+	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
-	visible_message(
-		SPAN_XENOWARNING("[src] begins pulling on [target_human]'s [target_limb.display_name] with incredible strength!"),
-		SPAN_XENOWARNING("We begin pulling on [target_human]'s [target_limb.display_name] with incredible strength!"))
+	visible_message(SPAN_XENOWARNING("[src] begins pulling on [target_human]'s [limb.display_name] with incredible strength!"),
+	SPAN_XENOWARNING("We begin to pull on [target_human]'s [limb.display_name] with incredible strength!"))
 
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_OUT_OF_RANGE, BUSY_ICON_HOSTILE) || target_human.status_flags & XENO_HOST || target_human.stat == DEAD || iszombie(target_human))
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || target_human.stat == DEAD || target_human.status_flags & XENO_HOST)
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
 		return
 
-	if(!Adjacent(target_human))
+	if(target_human.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [target_human] which overwhelms our instinct to rip."))
 		return
 
-	if(target_limb.status & LIMB_DESTROYED)
+	if(limb.status & LIMB_DESTROYED)
 		return
 
-	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		target_limb.take_damage(rand(30,40),0,0)
-		visible_message(
-			SPAN_XENOWARNING("You hear [target_human]'s [target_limb.display_name] being pulled beyond its load limits!"),
-			SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] begins to tear apart!"))
+	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+		limb.take_damage(rand(30,40), 0, 0) // just do more damage
+		visible_message(SPAN_XENOWARNING("You hear [target_human]'s [limb.display_name] being pulled beyond its load limits!"),
+		SPAN_XENOWARNING("[target_human]'s [limb.display_name] begins to tear apart!"))
 	else
-		visible_message(
-			SPAN_XENOWARNING("We hear the bones in [target_human]'s [target_limb.display_name] snap with a sickening crunch!"),
-			SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] bones snap with a satisfying crunch!"))
-		target_limb.take_damage(rand(15,25),0,0)
-		target_limb.fracture(100)
+		visible_message(SPAN_XENOWARNING("We hear the bones in [target_human]'s [limb.display_name] snap with a sickening crunch!"),
+		SPAN_XENOWARNING("[target_human]'s [limb.display_name] bones snap with a satisfying crunch!"))
+		limb.take_damage(rand(15,25), 0, 0)
+		limb.fracture(100)
+	target_human.last_damage_data = create_cause_data(initial(caste_type), src)
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [target_human.name] ([target_human.ckey]) 1/2 progress</font>")
+	target_human.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
+	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [target_human.name] ([target_human.ckey]) 1/2 progress")
 
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_OUT_OF_RANGE, BUSY_ICON_HOSTILE) || target_human.status_flags & XENO_HOST || target_human.stat == DEAD || iszombie(target_human))
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || target_human.stat == DEAD || iszombie(target_human))
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
 		return
 
-	if(!Adjacent(target_human))
+	if(target_human.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [target_human] which overwhelms our instinct to rip."))
 		return
 
-	if(target_limb.status & LIMB_DESTROYED)
+	if(limb.status & LIMB_DESTROYED)
 		return
 
-	visible_message(
-		SPAN_XENOWARNING("[src] rips [target_human]'s [target_limb.display_name] away from their body!"),
-		SPAN_XENOWARNING("[target_human]'s [target_limb.display_name] is torn away!")
-	)
+	visible_message(SPAN_XENOWARNING("[src] rips [target_human]'s [limb.display_name] away from their body!"),
+	SPAN_XENOWARNING("[target_human]'s [limb.display_name] rips away from their body!"))
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [target_human.name] ([target_human.ckey]) 2/2 progress</font>")
+	target_human.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
+	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [target_human.name] ([target_human.ckey]) 2/2 progress")
 
-	target_human.last_damage_data = create_cause_data(initial(caste_type), src)
-
-	target_limb.droplimb(0,0,initial(name))
+	limb.droplimb(0, 0, initial(name))

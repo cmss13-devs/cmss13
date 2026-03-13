@@ -343,7 +343,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/army/infantry, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/o4, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(jacket, WEAR_JACKET)
-	jacket.toggle(new_human)
+	jacket.toggle_buttoned(new_human)
 	jacket.attach_accessory(new_human,patch_army)
 	jacket.attach_accessory(new_human,patch_infantry)
 	jacket.attach_accessory(new_human,boards)

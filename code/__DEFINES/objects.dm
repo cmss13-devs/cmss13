@@ -211,8 +211,12 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define OBJ_NO_HELMET_BAND (1<<1)
 /// Marks the object as helmet garb
 #define OBJ_IS_HELMET_GARB (1<<2)
+/// Marks the object as stylish for the style system
+#define OBJ_IS_STYLISH (1<<3)
+/// If the object can be converted into an accessory
+#define OBJ_CAN_ACCESSORIZE (1<<4)
 /// can you customize the description/name of the thing?
-#define OBJ_UNIQUE_RENAME (1<<3)
+#define OBJ_UNIQUE_RENAME (1<<5)
 
 // For reinforced table status
 #define RTABLE_WEAKENED 1

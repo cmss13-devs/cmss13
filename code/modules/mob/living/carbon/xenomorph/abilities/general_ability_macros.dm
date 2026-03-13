@@ -17,7 +17,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_mark_resin()
-	set category = "Alien"
+	set category = "Alien.Essentials"
 	set name = "Mark Resin"
 	set hidden = TRUE
 	var/action_name = "Mark Resin"

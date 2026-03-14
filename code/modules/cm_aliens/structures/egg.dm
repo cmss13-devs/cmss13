@@ -223,7 +223,7 @@
 		return
 
 	if(instant_trigger)
-		if(!child.leap_at_nearest_target())
+		if(!child.leap_from_egg())
 			child.return_to_egg(src)
 	else
 		child.go_idle()

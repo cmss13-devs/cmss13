@@ -94,10 +94,10 @@
 /area/desert_dam/exterior/roof)
 "s" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/floor4,
 /area/desert_dam/exterior/roof)
 "t" = (
@@ -121,9 +121,9 @@
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "x" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "y" = (
@@ -152,9 +152,9 @@
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "E" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/floor4,
 /area/desert_dam/exterior/roof)
 "F" = (
@@ -262,10 +262,10 @@
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "Y" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "Z" = (

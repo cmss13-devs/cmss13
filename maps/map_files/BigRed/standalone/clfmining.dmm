@@ -51,10 +51,10 @@
 "ai" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "aj" = (
@@ -63,7 +63,7 @@
 /area/bigredv2/caves/mining)
 "ak" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "al" = (
@@ -86,7 +86,7 @@
 /area/bigredv2/caves/mining)
 "ap" = (
 /obj/structure/largecrate/random/barrel/white,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aq" = (
@@ -96,51 +96,51 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "ar" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "as" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "at" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "au" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "av" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aw" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ax" = (
 /obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "ay" = (
 /obj/item/weapon/gun/rifle/mar40/carbine,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "az" = (
@@ -167,40 +167,40 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aB" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "aC" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "aD" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "aE" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "aF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aH" = (
@@ -211,16 +211,16 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aI" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "aJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/caves/mining)
 "aK" = (
@@ -911,8 +911,8 @@
 /area/bigredv2/caves/mining)
 "nk" = (
 /obj/item/weapon/broken_bottle,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "no" = (
@@ -1147,7 +1147,7 @@
 /area/bigredv2/caves/mining)
 "rB" = (
 /obj/structure/machinery/light/small,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "rD" = (
@@ -1200,7 +1200,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "sj" = (
@@ -1255,8 +1255,8 @@
 "tp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "tw" = (
@@ -1685,8 +1685,8 @@
 	pixel_y = 17
 	},
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Bo" = (

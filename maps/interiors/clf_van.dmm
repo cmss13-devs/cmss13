@@ -10,10 +10,10 @@
 	pixel_x = -32;
 	tag = "back_right"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/shuttle/vehicle/floor_1_10,
 /area/interior/vehicle/clf_van)
 "e" = (
@@ -37,9 +37,9 @@
 	alpha = 100;
 	pixel_y = -2
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/shuttle/vehicle/floor_1_1,
 /area/interior/vehicle/clf_van)
 "i" = (
@@ -94,11 +94,11 @@
 	pixel_x = -32;
 	tag = "back_left"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/shuttle/vehicle/floor_1_7,
 /area/interior/vehicle/clf_van)
 "t" = (
@@ -201,8 +201,8 @@
 /obj/effect/vehicle_roof/clf_van{
 	icon_state = "roof_2"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/shuttle/vehicle/floor_1_2,
 /area/interior/vehicle/clf_van)
 "O" = (

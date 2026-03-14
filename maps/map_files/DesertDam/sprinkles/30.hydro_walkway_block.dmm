@@ -60,8 +60,8 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "q" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "r" = (
@@ -181,10 +181,10 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "K" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "M" = (
@@ -206,8 +206,8 @@
 "P" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/gun/civ,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "Q" = (

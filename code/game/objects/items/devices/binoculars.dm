@@ -547,11 +547,11 @@
 		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/spotter_target) in user.actions
 		if(toggling_action)
 			toggling_action.action_activate()
-//ADVANCED LASER DESIGNATER, was used for WO.
+//ADVANCED LASER DESIGNATER, Calls in immediate CAS/arty, for WO
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
 	gender = NEUTER
-	desc = "An advanced laser designator, used to mark targets for airstrikes and mortar fire. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
+	desc = "An advanced laser designator, used to mark targets for off-base airstrikes and artillery barrages. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a artillery barrage. After a strike is completed, there is a three minute cooldown on calling it in again. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
 	icon_state = "designator_e"
 
 	//laser_con is to add you to the list of laser users.
@@ -582,7 +582,7 @@
 /obj/item/device/binoculars/designator/verb/switch_mode()
 	set category = "Weapons"
 	set name = "Change Laser Setting"
-	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for Mortars."
+	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for artillery."
 	set src in usr
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -595,7 +595,7 @@
 			return
 		if(1)
 			las_mode = 2
-			to_chat(usr, SPAN_WARNING("UV Laser enabled! You will now designate mortars!"))
+			to_chat(usr, SPAN_WARNING("UV Laser enabled! You will now designate artillery!"))
 			update_icon()
 			return
 		if(2)
@@ -608,7 +608,7 @@
 /obj/item/device/binoculars/designator/verb/switch_laz()
 	set category = "Weapons"
 	set name = "Change Lasing Mode"
-	set desc = "Will change the airstrike plane from going East/West to North/South, or if using Mortars, it'll change the warhead used on them."
+	set desc = "Will change the airstrike plane from going East/West to North/South, or if using Artillery, it'll change the warhead used on them."
 	set src in usr
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -616,11 +616,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			to_chat(usr, SPAN_WARNING("Airstrike plane is now N-S! If using mortars its now HE rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now N-S! If using artillery its now HE rounds!"))
 			return
 		if(1)
 			plane_toggle = 0
-			to_chat(usr, SPAN_WARNING("Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now E-W! If using artillery its now concussion rounds!"))
 			return
 	return
 
@@ -702,7 +702,7 @@
 		qdel(lasertarget)
 		lasing = FALSE
 		las_r = 1
-		addtimer(VARSET_CALLBACK(src, las_r, FALSE), 5 MINUTES)
+		addtimer(VARSET_CALLBACK(src, las_r, FALSE), 3 MINUTES)
 		return
 	else if(las_mode == 2 && !las_b) //Give them the option for mortar fire.
 		lasing = TRUE
@@ -740,7 +740,7 @@
 			explosion(target_3, -1, HE_power, con_power, con_power, , , , cause_data)
 			lasing = FALSE
 			las_b = 1
-			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
+			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 3 MINUTES)
 			return
 
 /obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, especially since its fucken already in the code.

@@ -1286,6 +1286,17 @@
 "aew" = (
 /turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/sky/level4)
+"aex" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
+"aey" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -2691,8 +2702,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bbi" = (
-/obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_cryo/right,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
@@ -42430,7 +42441,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "vKF" = (
-/obj/structure/closet/secure_closet/atmos_personal,
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "vKH" = (
@@ -52381,8 +52395,8 @@ sXM
 rwM
 vxq
 bzL
-xdD
-rwM
+aey
+aex
 wbi
 nJv
 hpq

@@ -1822,6 +1822,22 @@
 "agU" = (
 /turf/open_space,
 /area/sky/level4)
+"agV" = (
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agW" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agX" = (
+/obj/structure/machinery/cryopod/no_cryo/right,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -25719,8 +25735,8 @@ psz
 vdC
 xHm
 cvm
-fRI
-hQj
+agX
+agV
 lAT
 xgV
 xHm
@@ -25886,8 +25902,8 @@ hQj
 fCz
 nLJ
 dzD
-hQj
-hQj
+agW
+agW
 hQj
 xgV
 pnM

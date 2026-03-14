@@ -769,6 +769,7 @@
 	declare_completion_announce_fallen_soldiers()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
+	addtimer(CALLBACK(src, PROC_REF(declare_completion_announce_colony_joes)), 2 SECONDS)
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 

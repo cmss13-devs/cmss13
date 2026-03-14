@@ -817,28 +817,41 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife
 
+
 /datum/gear/weapon/clfpistol
 	display_name = "D18 Holdout Pistol"
-	path = /obj/item/storage/box/clf
+	path = /obj/item/storage/box/fluff_gun/clf
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/upppistol //ww2 war trophy luger
 	display_name = "Type 73 Pistol"
-	path = /obj/item/storage/box/upp
-	slot = WEAR_IN_BACK
-	fluff_cost = 4
+	path = /obj/item/storage/box/fluff_gun/upp
+	slot = WEAR_R_HAND
+
+/datum/gear/weapon/np92_pistol
+	display_name = "NP92 Pistol"
+	path = /obj/item/storage/box/fluff_gun/np92
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/l54_pistol
 	display_name = "L54 Pistol" // TWE service pistol - same stats as the m4a3
-	path = /obj/item/weapon/gun/pistol/l54
-	allowed_origins = USCM_ORIGINS
+	path = /obj/item/storage/box/fluff_gun/l54
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/holdout
 	display_name = "W62 'Whisper'" //22LR ratkiller and/or plinker
-	path = /obj/item/storage/box/plinker
+	path = /obj/item/storage/box/fluff_gun/plinker
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/action
 	display_name = "AC71 'Action'" //380ACP holdout pistol
-	path = /obj/item/storage/box/action
+	path = /obj/item/storage/box/fluff_gun/action
+	slot = WEAR_R_HAND
+
+/datum/gear/weapon/m1911
+	display_name = "M48A4 Service pistol" //modernized m1911
+	path = /obj/item/storage/box/fluff_gun/m1911
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"

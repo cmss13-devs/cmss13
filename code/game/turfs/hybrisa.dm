@@ -122,6 +122,13 @@
 /turf/open/hybrisa/street/sidewalkcenter/east
 	dir = EAST
 
+// Strata Grass no Auto-Turf
+
+/turf/open/hybrisa/flora/strata_grass_no_auto
+	name = "matted grass"
+	icon = 'icons/turf/floors/auto_strata_grass.dmi'
+	icon_state = "grass_1"
+
 //-------------------------------------//
 
 /turf/open/hybrisa/street/roadlines
@@ -446,10 +453,16 @@
 	icon_state = "carpetblack"
 /turf/open/floor/hybrisa/carpet/carpetred
 	icon_state = "carpetred"
+/turf/open/floor/hybrisa/carpet/carpetreddeco_faded
+	icon_state = "carpetred_deco"
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue
 	icon_state = "carpetdarkerblue"
+/turf/open/floor/hybrisa/carpet/carpetdarkerbluedeco
+	icon_state = "carpetdarkerblue_deco"
 /turf/open/floor/hybrisa/carpet/carpetorangered
 	icon_state = "carpetorangered"
+/turf/open/floor/hybrisa/carpet/carpetorangereddeco
+	icon_state = "carpetorangered_deco"
 /turf/open/floor/hybrisa/carpet/carpetblue
 	icon_state = "carpetblue"
 /turf/open/floor/hybrisa/carpet/carpetpatternblue
@@ -457,7 +470,7 @@
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown
 	icon_state = "carpetpatternbrown"
 /turf/open/floor/hybrisa/carpet/carpetreddeco
-	icon_state = "carpetred_deco"
+	icon_state = "carpetred_deco2"
 /turf/open/floor/hybrisa/carpet/carpetbluedeco
 	icon_state = "carpetblue_deco"
 /turf/open/floor/hybrisa/carpet/carpetblackdeco
@@ -644,6 +657,19 @@
 	icon_state = "darkerwood"
 /turf/open/floor/hybrisa/wood/redwood
 	icon_state = "redwood"
+/turf/open/floor/hybrisa/wood/whitewood
+	icon_state = "whitewood"
+
+// Fancy Tile
+
+/turf/open/floor/hybrisa/tile/fancy_tile
+	icon_state = "fancy_tile_alt"
+
+/turf/open/floor/hybrisa/tile/fancy_tile/alt
+	icon_state = "fancy_tile"
+
+/turf/open/floor/hybrisa/tile/fancy_tile/large
+	icon_state = "fancy_tile_large"
 
 // Metal
 
@@ -847,6 +873,7 @@
 
 /turf/open/floor/plating/hybrisa/darkredfull2
 	icon_state = "darkredfull2"
+	turf_flags = TURF_HULL
 
 // Misc
 
@@ -979,10 +1006,7 @@
 
 /turf/open/floor/hybrisa/engineership/engineer_floor9
 	icon_state = "engineer_metalfloor_4"
-/turf/open/floor/hybrisa/engineership/engineer_floor10
-	icon_state = "engineer_floor_corner1"
-/turf/open/floor/hybrisa/engineership/engineer_floor11
-	icon_state = "engineer_floor_corner2"
+
 /turf/open/floor/hybrisa/engineership/engineer_floor12
 	icon_state = "engineerwallfloor1"
 

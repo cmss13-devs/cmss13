@@ -1013,6 +1013,49 @@
 /turf/open/asphalt/cement/cement9
 	icon_state = "cement9"
 
+/turf/open/asphalt/cementalt
+	name = "concrete"
+	icon_state = "cementalt5"
+
+/turf/open/asphalt/cementalt/cementalt1
+	icon_state = "cementalt1"
+
+/turf/open/asphalt/cementalt/cementalt1/north
+	dir = NORTH
+
+/turf/open/asphalt/cementalt/cementalt12
+	icon_state = "cementalt12"
+
+/turf/open/asphalt/cementalt/cementalt13
+	icon_state = "cementalt13"
+
+/turf/open/asphalt/cementalt/cementalt14
+	icon_state = "cementalt14"
+
+/turf/open/asphalt/cementalt/cementalt15
+	icon_state = "cementalt15"
+
+/turf/open/asphalt/cementalt/cementalt18
+	icon_state = "cementalt18"
+
+/turf/open/asphalt/cementalt/cementalt16
+	icon_state = "cementalt16"
+
+/turf/open/asphalt/cementalt/cementalt2
+	icon_state = "cementalt2"
+
+/turf/open/asphalt/cementalt/cementalt3
+	icon_state = "cementalt3"
+
+/turf/open/asphalt/cementalt/cementalt4
+	icon_state = "cementalt4"
+
+/turf/open/asphalt/cementalt/cementalt7
+	icon_state = "cementalt7"
+
+/turf/open/asphalt/cementalt/cementalt9
+	icon_state = "cementalt9"
+
 /turf/open/asphalt/cement_sunbleached
 	name = "concrete"
 	icon_state = "cement_sunbleached5"

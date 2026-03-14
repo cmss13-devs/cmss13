@@ -513,6 +513,9 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/str_list/lobby_art_authors
 
+/datum/config_entry/string/default_hostile_sprites
+	default = "Xeno"
+
 /// Force map bypassing configuration, and ignore map changes
 /datum/config_entry/flag/ephemeral_map_mode
 	config_entry_value = FALSE

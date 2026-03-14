@@ -378,35 +378,32 @@
 		return
 	//If we have a CO or XO, we're good no need to announce anything.
 
-	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
-		role_in_charge = job_by_chain
-
-		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
-			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
-			break
-		if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
-			person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
-			break
-		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
-			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
-			break
-
-		//If the job is a list we have to stop here
-		if(person_in_charge)
-			break
-
-		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
-		person_in_charge = job_datum?.get_active_player_on_job()
-		if(!isnull(person_in_charge))
-			break
-
 	if(commander) // pre-provided commander overrides the automatic selection.
 		person_in_charge = commander
-		role_in_charge = person_in_charge.job
+	else
+		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+			//Checks for non-unique roles
+			if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+				person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			else if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
+				person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
+			else if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
+				person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
+
+			//Checks for unique roles
+			if(!person_in_charge)
+				var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+				person_in_charge = job_datum?.get_active_player_on_job()
+
+			//Make sure candidate isnt cryoing)
+			if(person_in_charge)
+				if(!is_mob_cryoing(person_in_charge))
+					break
 
 	if(!person_in_charge)
 		return log_admin("No valid commander found for automatic promotion.")
 
+	role_in_charge = person_in_charge.job
 	SSticker.mode.acting_commander = person_in_charge // Prevents double-dipping.
 
 	var/obj/item/card/id/card = person_in_charge.get_idcard()

@@ -34,6 +34,8 @@
 /datum/job/command/bridge/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders[JOB_SO] -= M
+	if(!length(GLOB.marine_leaders[JOB_SO]))
+		qdel(GLOB.marine_leaders[JOB_SO])
 
 AddTimelock(/datum/job/command/bridge, list(
 	JOB_SQUAD_LEADER = 1 HOURS,

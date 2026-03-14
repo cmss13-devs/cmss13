@@ -33,6 +33,8 @@
 /datum/job/command/intel/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_officers[JOB_INTEL] -= M
+	if(!length(GLOB.marine_leaders[JOB_INTEL]))
+		qdel(GLOB.marine_leaders[JOB_INTEL])
 
 AddTimelock(/datum/job/command/intel, list(
 	JOB_SQUAD_ROLES = 5 HOURS

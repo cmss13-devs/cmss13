@@ -192,6 +192,14 @@
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon
+	ammo_band_icon = "+type64mag_band"
+	ammo_band_icon_empty = "+type64mag_band_e"
+
+/obj/item/ammo_magazine/smg/bizon/ap
+	name = "\improper Type 64 Helical AP Magazine (7.62x19mm)"
+	desc = "A 7.62x19mm 64-round helical magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces. This magazine has armor piercing bullets that sacrifice damage for penetrating power against hard targets."
+	default_ammo = /datum/ammo/bullet/smg/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.

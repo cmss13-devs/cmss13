@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_upp_commanding_officer, list(
 		list("Type 71 Magazine", 10, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 71 AP Magazine", 20, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 64 Helical Magazine", 20, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("Type 64 Helical AP Magazine", 20, /obj/item/ammo_magazine/smg/bizon/ap, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("Type 73 Magazine (7.62x25mm)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_RECOMMENDED),

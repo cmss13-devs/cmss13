@@ -34,6 +34,7 @@
 		return COMPONENT_INCOMPATIBLE
 	src.minimap_flag = minimap_flag
 	src.drawing = drawing
+	drawing_tools += list(/atom/movable/screen/minimap_tool/up, /atom/movable/screen/minimap_tool/down)
 
 	if(has_drawing_tools)
 		drawing_tools += list(
@@ -46,8 +47,6 @@
 			/atom/movable/screen/minimap_tool/draw_tool/erase,
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
-			/atom/movable/screen/minimap_tool/up,
-			/atom/movable/screen/minimap_tool/down,
 			/atom/movable/screen/minimap_tool/popout,
 		)
 
@@ -63,7 +62,6 @@
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
@@ -74,7 +72,6 @@
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)

@@ -786,7 +786,7 @@ table tr:first-child th:first-child { border: none;}
 	return output
 
 /obj/structure/machinery/alarm/Topic(href, href_list)
-	if(..() || !( Adjacent(usr) || isRemoteControlling(usr)) ) // dont forget calling super in machine Topics -walter0o
+	if(..() || !( Adjacent(usr) || isRemoteControlling(usr)) ) // don't forget calling super in machine Topics -walter0o
 		usr.unset_interaction()
 		close_browser(usr, "air_alarm")
 		close_browser(usr, "AAlarmwires")

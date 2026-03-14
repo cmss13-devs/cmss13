@@ -382,4 +382,4 @@
 	stack_id = "nano splint"
 
 /obj/item/stack/medical/splint/nano/research
-	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and don't look cheap, better use them sparingly."

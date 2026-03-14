@@ -266,7 +266,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "FaxMachine", "[src.name]")
+		ui = new(user, src, "FaxMachine", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/faxmachine/ui_state(mob/user)

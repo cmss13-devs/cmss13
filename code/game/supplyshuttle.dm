@@ -1248,7 +1248,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else
 		return_value = movable_atom.black_market_value
 
-	// so they cant sell the same thing over and over and over
+	// so they can't sell the same thing over and over and over
 	return_value = POSITIVE(return_value - GLOB.supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
 	return return_value
 

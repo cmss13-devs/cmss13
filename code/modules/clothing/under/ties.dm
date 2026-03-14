@@ -991,6 +991,22 @@
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool(src)
 
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
+	name = "Tool Drop Pouch"
+	desc = "A durable pair of drop pouches purpose-made for carrying tools."
+	icon_state = "drop_pouch_engineering"
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
+	name = "Small Tool Drop Pouch"
+	desc = "A durable pair of drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 14
 	can_hold = list(

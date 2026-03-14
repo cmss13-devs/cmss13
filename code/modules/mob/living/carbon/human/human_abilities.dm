@@ -52,7 +52,7 @@
 
 /datum/action/human_action/cycle_voice_level/action_activate()
 	. = ..()
-	if(!ishuman(owner)) // i actually dont know if this is necessary
+	if(!ishuman(owner)) // i actually don't know if this is necessary
 		return
 	var/mob/living/carbon/human/my_voice = owner
 	my_voice.cycle_voice_level()
@@ -409,7 +409,7 @@ CULT
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
 		return
 
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 	preset.load_race(chosen)
 	preset.load_status(chosen, H.hivenumber)
 

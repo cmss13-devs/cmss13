@@ -30,7 +30,7 @@
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "EscapePodConsole", "[src.name]")
+		ui = new(user, src, "EscapePodConsole", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_state(mob/user)
@@ -215,6 +215,9 @@
 		go_out() //Force the occupant out.
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/machinery/cryopod/evacuation/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)

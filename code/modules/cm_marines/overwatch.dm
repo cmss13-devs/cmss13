@@ -618,7 +618,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 					if(resolve_root.name == "Root" && resolve_root.faction == faction)
-						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 						break
 			if(current_squad?.release_overwatch())
 				if(isSilicon(user))
@@ -825,7 +825,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 					for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 						if(resolve_root.name == "Root" && resolve_root.faction == faction)
-							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 							break
 				if(!current_squad || current_squad.assume_overwatch(user))
 					operator = user
@@ -869,7 +869,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(squad == "root" && show_command_squad)
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 					if(resolve_root.name == "Root" && resolve_root.faction == faction)
-						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 			else
 				current_squad = locate(params["squad"])
 

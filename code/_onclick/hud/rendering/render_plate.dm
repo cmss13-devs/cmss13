@@ -20,7 +20,7 @@
  * Renders other planes onto this plane, through the use of render objects
  * Any effects applied onto this plane will act on the unified plane
  * IE a bulge filter will apply as if the world was one object
- * remember that once planes are unified on a render plate you cant change the layering of them!
+ * remember that once planes are unified on a render plate you can't change the layering of them!
  */
 /atom/movable/screen/plane_master/rendering_plate
 	name = "default rendering plate"

@@ -192,7 +192,7 @@
 	desc = "A strange green-ish fruit-looking thing."
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/lesser
 
-/obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+/obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text don't get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("A volleyball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below.")]"
@@ -541,7 +541,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/lesser
 	fruit_type = /obj/effect/alien/resin/fruit/lesser
 
-/obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+/obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text don't get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"

@@ -101,7 +101,7 @@
 /obj/structure/machinery/autolathe/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autolathe", "[name] control panel")
+		ui = new(user, src, "Autolathe", "[capitalize(name)] control panel")
 		ui.open()
 
 /obj/structure/machinery/autolathe/ui_data(mob/user)

@@ -413,7 +413,7 @@
 			if(EYE_PROTECTION_FLAVOR)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 8) // dont abuse your funny flavor glasses
+				if(E.damage > 8) // don't abuse your funny flavor glasses
 					E.take_damage(2, TRUE)
 			if(EYE_PROTECTION_NONE)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))

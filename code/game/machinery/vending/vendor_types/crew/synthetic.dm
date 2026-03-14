@@ -814,6 +814,7 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("Surgical Drop Pouch (Blue)", 15, /obj/item/clothing/accessory/storage/surg_vest/drop_blue, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Drop Pouch (Black)", 15, /obj/item/clothing/accessory/storage/surg_vest/drop_black, null, VENDOR_ITEM_REGULAR),
 	list("Tool Webbing", 15, /obj/item/clothing/accessory/storage/tool_webbing/equipped, null, VENDOR_ITEM_REGULAR),
+	list("Tool Drop Pouch", 15, /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped, null, VENDOR_ITEM_REGULAR),
 	list("Logistics IMP Backpack", 15, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
 	list("Expedition Chestrig", 15, /obj/item/storage/backpack/marine/satchel/intel/chestrig, null, VENDOR_ITEM_REGULAR),
 ))

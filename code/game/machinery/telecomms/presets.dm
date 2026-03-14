@@ -22,7 +22,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	//We dont want anyone to mess with it
+	//We don't want anyone to mess with it
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
 	return
 

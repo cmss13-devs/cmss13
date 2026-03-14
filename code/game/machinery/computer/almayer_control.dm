@@ -42,7 +42,7 @@
 /obj/structure/machinery/computer/almayer_control/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AlmayerControl", "[name]")
+		ui = new(user, src, "AlmayerControl", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/almayer_control/ui_status(mob/user, datum/ui_state/state)

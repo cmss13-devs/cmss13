@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Xeno tailstab can be used cross-z if it is an adjacent z at the cost of 1 distance (effectively means you need to be visually adjacent to something cross z assuming the tailstab distance is 2)"
+  - balance: "Most obj/structures have similar behavior if attacked with a tailstab like attacking with claws"

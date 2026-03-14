@@ -4,7 +4,7 @@
 /datum/objective_memory_interface/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "TechMemories", "[holder.name] Objectives")
+		ui = new(user, src, "TechMemories", "[capitalize(holder.name)] Objectives")
 		ui.open()
 		ui.set_autoupdate(TRUE)
 

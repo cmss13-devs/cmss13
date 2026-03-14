@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(river_activated, FALSE)
 /obj/structure/machinery/filtration/console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "FiltrationControl", "[src.name]")
+		ui = new(user, src, "FiltrationControl", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/filtration/console/ui_state(mob/user)

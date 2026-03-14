@@ -11,6 +11,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+	selection_categories = list("Corpse")
 
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return

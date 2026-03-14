@@ -221,7 +221,7 @@
 /obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Binoculars", "[src.name]")
+		ui = new(user, src, "Binoculars", "[capitalize(name)]")
 		ui.open()
 
 /obj/item/device/binoculars/range/ui_state(mob/user)

@@ -257,7 +257,7 @@
 /obj/structure/machinery/disposal/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Disposals", "[src.name]")
+		ui = new(user, src, "Disposals", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/disposal/ui_data(mob/user)

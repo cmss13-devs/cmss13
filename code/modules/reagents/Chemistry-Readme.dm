@@ -41,7 +41,7 @@ About the Holder:
 
 		metabolize(mob/M)
 			This proc is called by the mobs life proc. It simply calls on_mob_life for
-			all contained reagents. You shouldnt have to use this one directly.
+			all contained reagents. You shouldn't have to use this one directly.
 
 		handle_reactions()
 			This proc check all recipes and, on a match, uses them.
@@ -81,7 +81,7 @@ About the Holder:
 
 		add_reagent(reagent, amount, data)
 			Attempts to add X of the matching reagent to the holder.
-			You wont use this much. Mostly in new procs for pre-filled
+			You won't use this much. Mostly in new procs for pre-filled
 			objects.
 
 		remove_reagent(reagent, amount)

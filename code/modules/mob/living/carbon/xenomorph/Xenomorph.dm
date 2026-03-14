@@ -396,6 +396,8 @@
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
+	AddComponent(/datum/component/seethrough_mob)
+
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
 	if(old_xeno)

@@ -69727,6 +69727,7 @@
 	pixel_x = 14;
 	pixel_y = 32
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dtf" = (
@@ -72213,6 +72214,10 @@
 "dzA" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = -2;
+	pixel_y = 11
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/underground/mall)
@@ -76102,15 +76107,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
 	},
-/obj/structure/prop/server_equipment/laptop/closed{
-	pixel_x = -2;
-	pixel_y = 11
-	},
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_full_bl";
 	pixel_x = 7;
 	pixel_y = -2
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/underground/mall)
 "dIM" = (
@@ -105244,6 +105246,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/misc/power_cell,
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "hsz" = (

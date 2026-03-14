@@ -8,13 +8,13 @@
 	pixel_y = 11
 	},
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#B01414"
+	color = "#B01414"
 	},
 /turf/template_noop,
 /area/template_noop)
 "n" = (
 /obj/effect/decal/cleanable/blood/drip{
-	basecolor = "#B01414";
+	color = "#B01414";
 	pixel_x = -9;
 	pixel_y = 22
 	},
@@ -34,7 +34,7 @@
 /area/template_noop)
 "G" = (
 /obj/effect/decal/cleanable/blood/drip{
-	basecolor = "#B01414";
+	color = "#B01414";
 	pixel_x = 9
 	},
 /turf/template_noop,

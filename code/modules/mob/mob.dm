@@ -191,7 +191,7 @@
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
-// message is output to anyone who can see, e.g. "The [src] does something!"
+// message is output to anyone who can see, e.g. "\The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	if(HAS_TRAIT(src, TRAIT_CLOAKED))
@@ -205,7 +205,7 @@
 
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
-// message is output to anyone who can see, e.g. "The [src] does something!"
+// message is output to anyone who can see, e.g. "\The [src] does something!"
 // deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
 /atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7
@@ -657,7 +657,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		INVOKE_ASYNC(src, PROC_REF(jittery_process))
 
 
-// Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
+// Typo from the original coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
 /mob/proc/jittery_process()
 	is_jittery = 1
 	while(jitteriness > 100)

@@ -116,7 +116,7 @@
 	var/scaling_factor = 1
 	var/number_of_xenos = 0 // not used for scaled waves
 	var/wave_delay = 200 SECONDS
-	var/list/sound_effect = list('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg', 'sound/voice/4_xeno_roars.ogg')
+	var/list/sound_effect = list('sound/voice/xeno/alien_distantroar_3.ogg','sound/voice/xeno/xenos_roaring.ogg', 'sound/voice/xeno/4_xeno_roars.ogg')
 	var/list/command_announcement = list()
 
 /datum/whiskey_outpost_wave/wave1
@@ -244,7 +244,7 @@
 		XENO_CASTE_RAVAGER,
 		XENO_CASTE_BOILER,
 	)
-	sound_effect = list('sound/voice/alien_queen_command.ogg')
+	sound_effect = list('sound/voice/xeno/alien_queen_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties. We're losing our grip here. It appears that the vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We need you to hold.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave10

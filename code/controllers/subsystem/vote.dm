@@ -283,7 +283,7 @@ SUBSYSTEM_DEF(vote)
 						qdel(cur_mode)
 			if("groundmap")
 				question = "Ground map vote"
-				vote_sound = 'sound/voice/start_your_voting.ogg'
+				vote_sound = 'sound/voice/misc/start_your_voting.ogg'
 				vote_sound_vol = 15
 				randomize_entries = TRUE
 				var/list/maps = list()

@@ -310,7 +310,7 @@
 	if(ishuman_strict(human))
 		playsound(loc, human.gender == "male" ? "male_hugged" : "female_hugged" , 25, 0)
 	else if(isyautja(human))
-		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
+		playsound(loc, 'sound/voice/pred/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
@@ -456,7 +456,7 @@
 	stat = DEAD
 	flags_inventory &= ~CANTSTRIP
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
-	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+	playsound(src.loc, 'sound/voice/xeno/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
 		var/mob/holder_mob = loc

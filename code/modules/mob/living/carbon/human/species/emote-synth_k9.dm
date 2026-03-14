@@ -17,7 +17,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/synth_k9/bark/get_sound(mob/living/user)
-	return pick('sound/voice/barkstrong1.ogg','sound/voice/barkstrong2.ogg','sound/voice/barkstrong3.ogg')
+	return pick('sound/voice/misc/barkstrong1.ogg','sound/voice/misc/barkstrong2.ogg','sound/voice/misc/barkstrong3.ogg')
 
 //Threatening Growl
 /datum/emote/living/carbon/human/synthetic/synth_k9/growl
@@ -28,7 +28,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/synth_k9/growl/get_sound(mob/living/user)
-	return pick('sound/voice/doggrowl1.ogg','sound/voice/doggrowl2.ogg','sound/voice/doggrowl3.ogg')
+	return pick('sound/voice/misc/doggrowl1.ogg','sound/voice/misc/doggrowl2.ogg','sound/voice/misc/doggrowl3.ogg')
 
 //Plaintive Whine
 /datum/emote/living/carbon/human/synthetic/synth_k9/whine
@@ -39,7 +39,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/synth_k9/whine/get_sound(mob/living/user)
-	return pick('sound/voice/dogwhine1.ogg','sound/voice/dogwhine2.ogg','sound/voice/dogwhine3.ogg')
+	return pick('sound/voice/misc/dogwhine1.ogg','sound/voice/misc/dogwhine2.ogg','sound/voice/misc/dogwhine3.ogg')
 
 //Wagging Tail
 /datum/emote/living/carbon/human/synthetic/synth_k9/tail

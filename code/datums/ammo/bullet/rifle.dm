@@ -160,21 +160,21 @@
 	penetration= ARMOR_PENETRATION_TIER_7
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/rifle/m4ra/custom_tracker/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/rifle/m4ra/custom_tracker/on_hit_mob(mob/target_mob, obj/projectile/fired_projectile)
 	. = ..()
 
-	if(!isliving(M))
+	if(!isliving(target_mob))
 		return
-	if(!P || !P.firer)
-		return
-
-	var/mob/living/target = M
-	var/mob/living/firer = P.firer
-
-	if(target.faction == firer.faction)
+	if(!fired_projectile || !fired_projectile.firer)
 		return
 
-	target.AddComponent(/datum/component/tracking_bullets, firer)
+	var/mob/living/shot_target = target_mob
+	var/mob/living/shooting_mob = fired_projectile.firer
+
+	if(shot_target.faction == shooting_mob.faction)
+		return
+
+	shot_target.AddComponent(/datum/component/tracking_bullets, shooting_mob)
 
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"

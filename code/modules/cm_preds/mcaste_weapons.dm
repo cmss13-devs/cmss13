@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	// total capacity
-	var/charge_time = 50
+	var/charge_time = 60
 	// charge drained per shot, double for explosive bolts
 	var/shot_cost = 1
 	// fire mode - incendiary or explosive
@@ -28,16 +28,22 @@
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
+/obj/item/weapon/gun/energy/yautja/plasmacarbine/update_icon()
+	..()
+	var/new_icon_state = charge_time <=1 ? null : icon_state + "[round(charge_time/20, 1)]"
+	update_special_overlay(new_icon_state)
+
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/process()
-	if(charge_time < 50)
+	if(charge_time < 60)
 		charge_time++
-		if(charge_time == 49)
+		if(charge_time == 59)
 			if(ismob(loc))
 				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
+	update_icon()
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/set_gun_config_values()
 	..()
@@ -119,10 +125,10 @@
 	icon_state = "defoliator"
 	item_state = "defoliator"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
 	ignite_sound = 'sound/weapons/wy_flamer_ignite.ogg'
 	extinguish_sound = 'sound/weapons/wy_flamer_extinguish.ogg'
@@ -169,9 +175,9 @@
 /obj/item/ammo_magazine/flamer_tank/yautja
 	name = "gel defoliator fuel tank"
 	desc = "A high-capacity heat-resistant tank of highly-flammable gel fuel for a heavy defoliator."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/flamers.dmi'
-	icon_state = "fl3"
-	item_state = "fl3"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/pred.dmi'
+	icon_state = "defoliator"
+	item_state = "defoliator"
 	gun_type = /obj/item/weapon/gun/flamer/yautja
 	max_rounds = 200
 	max_range = 8

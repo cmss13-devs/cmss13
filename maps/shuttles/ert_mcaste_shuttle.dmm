@@ -135,7 +135,7 @@
 	icon_state = "hs_table_right"
 	},
 /obj/structure/machinery/computer/crew/alt/yautja{
-	pixel_x = -8
+	pixel_x = -9
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/shuttle/ert)

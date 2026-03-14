@@ -63,3 +63,43 @@
 /datum/surgery_step/suture_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to suture the incision in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 	return FALSE
+
+//------------------------------------
+//for closing incisions early
+/datum/surgery_step/suture_incision/abort
+	name = "Abort Surgery"
+	desc = "suture the incision early"
+
+/datum/surgery_step/suture_incision/abort/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	return TRUE //If you opened the wrong limb or you need to close an autopsy incision; this has you covered. Different from amputation abortion.
+
+/datum/surgery_step/suture_incision/abort/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE)
+	if(!added_sutures) //No suture datum to answer the signal
+		new /datum/suture_handler(surgery.affected_limb)
+		added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE) //This time, with feeling.
+
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+	if(added_sutures & SUTURED_FULLY)
+		user.affected_message(target,
+			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),
+			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures. It stops hurting."),
+			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."))
+		complete(target, surgery)
+
+		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures, but some injuries remain."),
+			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures, but you're still hurting!"),
+			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures, but some injuries remain."))
+
+		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
+
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE

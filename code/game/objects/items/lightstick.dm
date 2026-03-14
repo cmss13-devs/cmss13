@@ -12,6 +12,7 @@
 	var/s_color = "blue"
 	var/trample_chance = 30
 	var/can_trample = TRUE
+	w_class = SIZE_SMALL
 
 /obj/item/lightstick/Initialize(mapload, ...)
 	. = ..()

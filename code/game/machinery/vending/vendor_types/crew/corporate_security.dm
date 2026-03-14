@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("Handheld Flash", 2, /obj/item/device/flash, null, VENDOR_ITEM_REGULAR),
 	list("Pepper Spray", 4, /obj/item/reagent_container/spray/pepper, null, VENDOR_ITEM_REGULAR),
 	list("Stun Baton", 4, /obj/item/weapon/baton, null, VENDOR_ITEM_REGULAR),
-	list("Box of Zipties", 4, /obj/item/storage/box/zipcuffs/small, null, VENDOR_ITEM_REGULAR),
+	list("Box of Zipties", 4, /obj/item/storage/box/zipcuffs, null, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/corporate_security

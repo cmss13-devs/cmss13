@@ -588,6 +588,8 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
 
+#define STORAGE_SPACE_MAX 14
+#define STORAGE_SLOTS_DEFAULT 7
 
 //Radios
 #define RADIO_FILTER_TYPE_ALL 0
@@ -605,6 +607,26 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_ON 1
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
+
+
+//=================================================
+// weight multiplier defines
+//=================================================
+
+#define STORAGE_WEIGHT_DEFAULT 0.05
+#define STORAGE_WEIGHT_LIGHT 0.01
+#define STORAGE_WEIGHT_MEDIUM 0.15
+#define STORAGE_WEIGHT_HEAVY 0.25
+
+#define AMMO_BOX_WEIGHT_DEFAULT 0.0015
+#define AMMO_BOX_WEIGHT_MEDIUM 0.002
+#define AMMO_BOX_WEIGHT_HEAVY 0.005
+
+#define MAG_BOX_WEIGHT_DEFAULT 0.05
+#define MAG_BOX_WEIGHT_LIGHT 0.01
+#define MAG_BOX_WEIGHT_MEDIUM 0.10
+#define MAG_BOX_WEIGHT_HEAVY 0.15
+#define MAG_BOX_WEIGHT_CUMBERSOME 0.20
 
 //===========
 // Shield (attack blocker) or not. Absolute or Directional.

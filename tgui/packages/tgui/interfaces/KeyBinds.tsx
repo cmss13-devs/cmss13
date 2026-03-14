@@ -585,7 +585,7 @@ const CustomKeybinds = (props: {
               });
             }}
           >
-            Yautja
+            Yautjas
           </Button.Checkbox>
         </Flex.Item>
         <Flex.Item ml={1} grow>
@@ -609,7 +609,7 @@ const CustomKeybinds = (props: {
               });
             }}
           >
-            Synth
+            Synths
           </Button.Checkbox>
         </Flex.Item>
       </Flex>

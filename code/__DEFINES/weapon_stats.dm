@@ -67,6 +67,7 @@ It DOES NOT control where your bullets go, that's scatter and projectile varianc
 */
 
 #define SCATTER_AMOUNT_NEURO 45
+#define SCATTER_AMOUNT_VENATOR 30
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8

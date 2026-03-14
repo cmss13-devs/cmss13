@@ -628,6 +628,7 @@
 #include "code\datums\factions\nspa.dm"
 #include "code\datums\factions\pap.dm"
 #include "code\datums\factions\pmc.dm"
+#include "code\datums\factions\pred_ert.dm"
 #include "code\datums\factions\royalmarinescommando.dm"
 #include "code\datums\factions\upp.dm"
 #include "code\datums\factions\uscm.dm"

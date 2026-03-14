@@ -609,7 +609,7 @@ SUBSYSTEM_DEF(shuttle)
 		L["timeleft"] = M.getTimerStr()
 		if (timeleft > 1 HOURS)
 			L["timeleft"] = "Infinity"
-		L["can_fast_travel"] = M.timer && timeleft >= 50
+		L["can_fast_travel"] = M.timer && timeleft >= 5 SECONDS && timeleft < 1 HOURS
 		L["can_fly"] = TRUE
 
 		var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
@@ -618,8 +618,6 @@ SUBSYSTEM_DEF(shuttle)
 			L["has_disable"] = TRUE
 			L["is_disabled"] = console.is_disabled()
 
-		if(!M.destination)
-			L["can_fast_travel"] = FALSE
 		if (M.mode != SHUTTLE_IDLE)
 			L["mode"] = capitalize(M.mode)
 		L["status"] = M.getDbgStatusText()
@@ -676,7 +674,8 @@ SUBSYSTEM_DEF(shuttle)
 				shuttle.admin_fly_shuttle(user)
 
 		if("fast_travel")
-			if(shuttle && shuttle.timer && shuttle.timeLeft(1) >= 50)
+			var/timeleft = shuttle.timeLeft(1)
+			if(shuttle && shuttle.timer && timeleft >= 5 SECONDS && timeleft < 1 HOURS)
 				shuttle.setTimer(5 SECONDS)
 				. = TRUE
 				message_admins("[key_name_admin(user)] fast travelled [shuttle]")

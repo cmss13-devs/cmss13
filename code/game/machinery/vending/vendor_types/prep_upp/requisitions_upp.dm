@@ -135,6 +135,7 @@
 	icon_state = "upp_req_guns_wall"
 	vend_delay = 3
 	vend_sound = 'sound/machines/vending_drop.ogg'
+	plane = TURF_PLANE
 	tiles_with = list(
 		/obj/structure/window/framed/upp_ship,
 		/obj/structure/machinery/door/airlock,
@@ -193,6 +194,7 @@
 	icon_state = "upp_req_ammo_wall"
 	vend_delay = 3
 	vend_sound = 'sound/machines/vending_drop.ogg'
+	plane = TURF_PLANE
 	tiles_with = list(
 		/obj/structure/window/framed/upp_ship,
 		/obj/structure/machinery/door/airlock,
@@ -248,6 +250,7 @@
 	icon_state = "upp_req_attach_wall"
 	vend_delay = 3
 	vend_sound = 'sound/machines/vending_drop.ogg'
+	plane = TURF_PLANE
 	tiles_with = list(
 		/obj/structure/window/framed/upp_ship,
 		/obj/structure/machinery/door/airlock,

@@ -264,3 +264,17 @@
 	current_xeno.toggle_seethrough()
 	return TRUE
 
+/datum/keybinding/xenomorph/rip_limb
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "rip_limb"
+	full_name = "Rip Limb"
+	keybind_signal = COMSIG_KB_XENO_RIP_LIMB
+
+/datum/keybinding/xenomorph/rip_limb/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
+	current_xeno.rip_limb()

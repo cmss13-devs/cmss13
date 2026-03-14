@@ -65,7 +65,7 @@
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
-		if (isxeno(user))
+		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/xeno = user
 			xeno.pull_power(grabbed_thing)
 		return

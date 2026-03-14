@@ -14,6 +14,12 @@
 	/// If this emote should fire when human
 	var/when_human = TRUE
 
+	/// If this emote should fire when yautja
+	var/when_yautja = TRUE
+
+	/// If this emote should fire when synthetic
+	var/when_synth = TRUE
+
 	/// When this emote was last used
 	var/last_fired
 
@@ -28,6 +34,12 @@
 
 	if(isxeno(user?.mob))
 		return when_xeno
+
+	if(isyautja(user?.mob))
+		return when_yautja
+
+	if(issynth(user?.mob))
+		return when_synth
 
 	return when_human
 

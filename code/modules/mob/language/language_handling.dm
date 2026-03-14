@@ -65,11 +65,15 @@
 	var/list/languagedata = list()
 
 	for(var/datum/language/language_in_list as anything in target_mob.languages)
+		var/hear_only_language = FALSE
+		if(LAZYACCESS(target_mob.language_flags, language_in_list.name))
+			hear_only_language = target_mob.language_flags[language_in_list.name] & LANGUAGE_HEAR_ONLY ? TRUE : FALSE
+
 		languagedata += list(list(
 			"name" = language_in_list.name,
 			"desc" = language_in_list.desc,
 			"key" = language_in_list.key,
-			"hearOnly" = target_mob.language_flags[language_in_list.name] & LANGUAGE_HEAR_ONLY ? TRUE : FALSE
+			"hearOnly" = hear_only_language
 		))
 
 	data["languages"] = languagedata

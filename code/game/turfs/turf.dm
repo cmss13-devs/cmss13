@@ -111,11 +111,6 @@
 	if(light_power && light_range)
 		update_light()
 
-	//Get area light
-	var/area/current_area = loc
-	if(current_area?.lighting_effect)
-		overlays += current_area.lighting_effect
-
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
@@ -472,12 +467,14 @@
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
-/turf/proc/ChangeTurf(path, list/new_baseturfs, flags, ...)
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
+		if(/turf/open/space/basic) // these don't initialize, if you want to create one post-init just use the normal space turf
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
@@ -485,7 +482,7 @@
 	var/pylons = linked_pylons
 
 	var/list/old_baseturfs = baseturfs
-
+	var/old_ref = weak_reference
 	//static lighting
 	var/old_lighting_object = static_lighting_object
 	var/old_lighting_corner_NE = lighting_corner_NE
@@ -504,7 +501,7 @@
 	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
 	var/list/old_comp_lookup = comp_lookup?.Copy()
 	var/list/old_signal_procs = signal_procs?.Copy()
-	var/turf/W = new path(src, args.Copy(4))
+	var/turf/W = new path(src)
 
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
@@ -513,6 +510,8 @@
 		LAZYOR(W.comp_lookup, old_comp_lookup)
 	if(old_signal_procs)
 		LAZYOR(W.signal_procs, old_signal_procs)
+
+	W.weak_reference = old_ref
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
 		callback.InvokeAsync(W)
@@ -721,9 +720,6 @@
 /turf/open/gm/river/can_dig_xeno_tunnel()
 	return FALSE
 
-/turf/open/snow/can_dig_xeno_tunnel()
-	return TRUE
-
 /turf/open/mars/can_dig_xeno_tunnel()
 	return TRUE
 
@@ -770,12 +766,6 @@
 /turf/open/mars/get_dirt_type()
 	return DIRT_TYPE_MARS
 
-/turf/open/snow/get_dirt_type()
-	if(bleed_layer)
-		return DIRT_TYPE_SNOW
-	else
-		return DIRT_TYPE_GROUND
-
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS
 
@@ -809,52 +799,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/baseturf_bottom,
 	)))
 
-// Make a new turf and put it on top
-// The args behave identical to PlaceOnBottom except they go on top
-// Things placed on top of closed turfs will ignore the topmost closed turf
-// Returns the new turf
-/turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
-	var/area/turf_area = loc
-	if(new_baseturfs && !length(new_baseturfs))
-		new_baseturfs = list(new_baseturfs)
-	flags = turf_area.PlaceOnTopReact(new_baseturfs, fake_turf_type, flags) // A hook so areas can modify the incoming args
+/// Places a turf at the top of the stack
+/turf/proc/place_on_top(turf/added_layer, flags)
+	var/list/turf/new_baseturfs = list()
 
-	var/turf/newT
-	if(flags & CHANGETURF_SKIP) // We haven't been initialized
-		if(flags_atom & INITIALIZED)
-			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
-		assemble_baseturfs()
-	if(fake_turf_type)
-		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
-			if(!length(baseturfs))
-				baseturfs = list(baseturfs)
-			var/list/old_baseturfs = baseturfs.Copy()
-			if(!istype(src, /turf/closed))
-				old_baseturfs += type
-			newT = ChangeTurf(fake_turf_type, null, flags)
-			newT.assemble_baseturfs(initial(fake_turf_type.baseturfs)) // The baseturfs list is created like roundstart
-			if(!length(newT.baseturfs))
-				newT.baseturfs = list(baseturfs)
-			newT.baseturfs -= GLOB.blacklisted_automated_baseturfs
-			newT.baseturfs.Insert(1, old_baseturfs) // The old baseturfs are put underneath
-			return newT
-		if(!length(baseturfs))
-			baseturfs = list(baseturfs)
-		insert_self_into_baseturfs()
-		baseturfs += new_baseturfs
-		return ChangeTurf(fake_turf_type, null, flags)
-	if(!length(baseturfs))
-		baseturfs = list(baseturfs)
-	insert_self_into_baseturfs()
-	var/turf/change_type
-	if(length(new_baseturfs))
-		change_type = new_baseturfs[length(new_baseturfs)]
-		new_baseturfs.len--
-		if(length(new_baseturfs))
-			baseturfs += new_baseturfs
-	else
-		change_type = new_baseturfs
-	return ChangeTurf(change_type, null, flags)
+	new_baseturfs.Add(baseturfs)
+	if(istype(src, /turf/open))
+		new_baseturfs.Add(type)
+
+	return ChangeTurf(added_layer, new_baseturfs, flags)
 
 /// Places a turf on top - for map loading
 /turf/proc/load_on_top(turf/added_layer, flags)
@@ -863,7 +816,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(flags & CHANGETURF_SKIP) // We haven't been initialized
 		if(flags_atom & INITIALIZED)
-			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
+			stack_trace("CHANGETURF_SKIP was used in a place_on_top call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
 
 	var/turf/new_turf

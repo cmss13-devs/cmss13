@@ -73,6 +73,25 @@
 	LAZYINITLIST(lazy_list[key]); \
 	lazy_list[key] |= value;
 
+///Ensures the length of a list is at least I, prefilling it with V if needed. if V is a proc call, it is repeated for each new index so that list() can just make a new list for each item.
+#define LISTASSERTLEN(L, I, V...) \
+	if (length(L) < I) { \
+		var/_OLD_LENGTH = length(L); \
+		L.len = I; \
+		/* Convert the optional argument to a if check */ \
+		for (var/_USELESS_VAR in list(V)) { \
+			for (var/_INDEX_TO_ASSIGN_TO in _OLD_LENGTH+1 to I) { \
+				L[_INDEX_TO_ASSIGN_TO] = V; \
+			} \
+		} \
+	}
+
+#define TRANSFER_TURF_CONTAINED_AREA(TURF, OLD_AREA, NEW_AREA) \
+	LISTASSERTLEN(OLD_AREA.turfs_to_uncontain_by_zlevel, TURF.z, list()); \
+	LISTASSERTLEN(NEW_AREA.turfs_by_zlevel, TURF.z, list()); \
+	OLD_AREA.turfs_to_uncontain_by_zlevel[TURF.z] += TURF; \
+	NEW_AREA.turfs_by_zlevel[TURF.z] += TURF
+
 // Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
 #define ADD_SORTED(list, A, cmp_proc) if(!length(list)) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 

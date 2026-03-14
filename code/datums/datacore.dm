@@ -9,22 +9,20 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/leveled_riflemen = 0
 	var/leveled_riflemen_max = 7
 
-/datum/datacore/proc/manifest(nosleep = 0)
-	spawn()
-		if(!nosleep)
-			sleep(40)
+/datum/datacore/proc/manifest()
+	var/alist/lookup = alist()
+	for(var/job_title in GLOB.ROLES_USCM + GLOB.ROLES_WO)
+		lookup[job_title] = TRUE
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
+		if(should_block_game_interaction(current_human))
+			continue
 
-		var/list/jobs_to_check = GLOB.ROLES_USCM + GLOB.ROLES_WO
+		if(is_in_manifest(current_human))
+			continue
 
-		for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
-			if(should_block_game_interaction(current_human))
-				continue
-
-			if(is_in_manifest(current_human))
-				continue
-
-			if(current_human.job in jobs_to_check)
-				manifest_inject(current_human)
+		if(lookup[current_human.job])
+			manifest_inject(current_human)
+		CHECK_TICK
 
 /datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)
 	var/weakref = WEAKREF(current_human)

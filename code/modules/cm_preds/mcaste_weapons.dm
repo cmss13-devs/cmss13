@@ -11,8 +11,10 @@
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
+	pixel_x = -2
+	hud_offset = -2
 	// total capacity
-	var/charge_time = 60
+	var/charge_time = 40
 	// charge drained per shot, double for explosive bolts
 	var/shot_cost = 1
 	// fire mode - incendiary or explosive
@@ -28,22 +30,16 @@
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
-/obj/item/weapon/gun/energy/yautja/plasmacarbine/update_icon()
-	..()
-	var/new_icon_state = charge_time <=1 ? null : icon_state + "[round(charge_time/20, 1)]"
-	update_special_overlay(new_icon_state)
-
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/process()
-	if(charge_time < 60)
+	if(charge_time < 40)
 		charge_time++
-		if(charge_time == 59)
+		if(charge_time == 39)
 			if(ismob(loc))
 				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
-	update_icon()
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/set_gun_config_values()
 	..()
@@ -59,7 +55,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/get_examine_text(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += SPAN_NOTICE("It currently has <b>[charge_time]/50</b> charge.")
+		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
 
 		if(mode == FIRE_MODE_EXPLOSIVE)
 			. += SPAN_RED("It is set to fire impact-explosive plasma bolts.")
@@ -120,7 +116,7 @@
 
 /obj/item/weapon/gun/flamer/yautja
 	name = "heavy gel defoliator"
-	desc = "A high-power incendiary device used to rapidly expunge evidence of hives or dishonorable foes. Unsurprisingly, it is just as effective in direct combat."
+	desc = "A high-power incendiary device used to rapidly expunge evidence of hives or dishonorable foes. Unsurprisingly, it is just as effective in direct combat, and lightweight enough to be fired with one hand."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/pred.dmi'
 	icon_state = "defoliator"
 	item_state = "defoliator"
@@ -141,7 +137,7 @@
 	)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/yautja
 	flags_equip_slot = SLOT_BACK
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/flamer/yautja/Initialize()

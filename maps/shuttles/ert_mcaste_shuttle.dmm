@@ -1,0 +1,428 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bt" = (
+/obj/structure/shuttle/part/hunter/right_front3,
+/turf/template_noop,
+/area/shuttle/ert)
+"cv" = (
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+	id = "hunter_external"
+	},
+/turf/open/floor/corsat/squares,
+/area/shuttle/ert)
+"cP" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine"
+	},
+/area/shuttle/ert)
+"eH" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_3"
+	},
+/area/shuttle/ert)
+"fn" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter23"
+	},
+/area/shuttle/ert)
+"fS" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/predship/red_glow/on,
+/area/shuttle/ert)
+"hU" = (
+/obj/structure/bed/chair/hunter{
+	dir = 4
+	},
+/obj/effect/landmark/ert_spawns/distress,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/area/shuttle/ert)
+"iq" = (
+/turf/open/mcaste_shuttle/shuttle_border_corner,
+/area/shuttle/ert)
+"jQ" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_2"
+	},
+/area/shuttle/ert)
+"kj" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/turf/open/shuttle/dropship/predship/red_glow/on,
+/area/shuttle/ert)
+"mh" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter24"
+	},
+/area/shuttle/ert)
+"mP" = (
+/turf/open/mcaste_shuttle/shuttle_border_corner/north,
+/area/shuttle/ert)
+"nl" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter2"
+	},
+/area/shuttle/ert)
+"pt" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_5"
+	},
+/area/shuttle/ert)
+"pE" = (
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/shuttle/ert)
+"qe" = (
+/obj/structure/shuttle/part/hunter/left_front2,
+/turf/template_noop,
+/area/shuttle/ert)
+"rf" = (
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+	dir = 1;
+	id = "hunter_external"
+	},
+/turf/open/floor/corsat/squares,
+/area/shuttle/ert)
+"rP" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_4"
+	},
+/area/shuttle/ert)
+"se" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/ert/pred_mcaste,
+/obj/structure/surface/hunter_shuttle_table,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/area/shuttle/ert)
+"ta" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter14"
+	},
+/area/shuttle/ert)
+"vk" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_9"
+	},
+/area/shuttle/ert)
+"xz" = (
+/obj/structure/shuttle/part/hunter/engine_right_back,
+/turf/template_noop,
+/area/shuttle/ert)
+"xG" = (
+/turf/open/mcaste_shuttle/shuttle_border,
+/area/shuttle/ert)
+"yb" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_2"
+	},
+/area/shuttle/ert)
+"yf" = (
+/obj/structure/shuttle/part/hunter/right_front4,
+/turf/template_noop,
+/area/shuttle/ert)
+"yw" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_8"
+	},
+/area/shuttle/ert)
+"yS" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_right"
+	},
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/area/shuttle/ert)
+"za" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_7"
+	},
+/area/shuttle/ert)
+"zG" = (
+/obj/structure/shuttle/part/hunter/engine_right_front,
+/turf/template_noop,
+/area/shuttle/ert)
+"AC" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter17"
+	},
+/area/shuttle/ert)
+"Ba" = (
+/obj/structure/shuttle/part/hunter/left_front1,
+/turf/template_noop,
+/area/shuttle/ert)
+"CS" = (
+/obj/structure/bed/chair/hunter{
+	dir = 1
+	},
+/obj/effect/landmark/ert_spawns/distress,
+/turf/open/mcaste_shuttle/shuttle_border/north,
+/area/shuttle/ert)
+"Da" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter19"
+	},
+/area/shuttle/ert)
+"EF" = (
+/turf/open/mcaste_shuttle/shuttle_border_corner/east,
+/area/shuttle/ert)
+"EY" = (
+/turf/closed/shuttle/hunter,
+/area/shuttle/ert)
+"Hb" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/effect/landmark/ert_spawns/distress,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/shuttle/ert)
+"HE" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine"
+	},
+/area/shuttle/ert)
+"HJ" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter13"
+	},
+/area/shuttle/ert)
+"Ij" = (
+/turf/closed/shuttle/hunter/transparent{
+	icon_state = "hunterw_2"
+	},
+/area/shuttle/ert)
+"IY" = (
+/obj/structure/shuttle/part/hunter/right_front1,
+/turf/template_noop,
+/area/shuttle/ert)
+"Ji" = (
+/obj/structure/shuttle/part/hunter/engine_left_front,
+/turf/template_noop,
+/area/shuttle/ert)
+"Jk" = (
+/turf/closed/shuttle/hunter/transparent{
+	icon_state = "hunterw_8"
+	},
+/area/shuttle/ert)
+"Ly" = (
+/turf/template_noop,
+/area/template_noop)
+"Mp" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_8"
+	},
+/area/shuttle/ert)
+"PR" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_leftengine_4"
+	},
+/area/shuttle/ert)
+"PS" = (
+/obj/structure/shuttle/part/hunter/engine_left_back,
+/obj/docking_port/mobile/emergency_response/ert5,
+/turf/template_noop,
+/area/shuttle/ert)
+"Qq" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_7"
+	},
+/area/shuttle/ert)
+"QA" = (
+/turf/closed/shuttle/hunter/transparent{
+	icon_state = "hunterw_3"
+	},
+/area/shuttle/ert)
+"QS" = (
+/obj/structure/bed/chair/hunter{
+	dir = 4
+	},
+/obj/effect/landmark/ert_spawns/distress,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/shuttle/ert)
+"Rp" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_5"
+	},
+/area/shuttle/ert)
+"Sw" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_left"
+	},
+/obj/structure/showcase{
+	desc = "A console that lists out the ship's cargo manifest.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Cargo Bay Supply Console";
+	density = 0;
+	pixel_x = 8
+	},
+/obj/structure/machinery/door_control/yautja{
+	pixel_x = -6;
+	pixel_y = -1;
+	name = "Lockdown";
+	id = "yaut_shut_lock";
+	req_one_access = list(390,392,393)
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/area/shuttle/ert)
+"Sy" = (
+/obj/structure/shuttle/part/hunter/right_front2,
+/turf/template_noop,
+/area/shuttle/ert)
+"TS" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/effect/landmark/ert_spawns/distress,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/area/shuttle/ert)
+"UR" = (
+/turf/open/mcaste_shuttle/shuttle_border/north,
+/area/shuttle/ert)
+"US" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "hunter5"
+	},
+/area/shuttle/ert)
+"Ve" = (
+/obj/structure/shuttle/part/hunter/left_front4,
+/turf/template_noop,
+/area/shuttle/ert)
+"Vg" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_3"
+	},
+/area/shuttle/ert)
+"Wd" = (
+/turf/open/mcaste_shuttle/shuttle_border_corner/west,
+/area/shuttle/ert)
+"WW" = (
+/obj/structure/shuttle/part/hunter/left_front3,
+/turf/template_noop,
+/area/shuttle/ert)
+"Xm" = (
+/turf/closed/shuttle/hunter{
+	icon_state = "pred_rightengine_9"
+	},
+/area/shuttle/ert)
+"YK" = (
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/area/shuttle/ert)
+"Zr" = (
+/turf/closed/shuttle/hunter/transparent{
+	icon_state = "hunterw_4"
+	},
+/area/shuttle/ert)
+
+(1,1,1) = {"
+WW
+qe
+Ba
+EY
+cv
+EY
+cP
+Ji
+pt
+PR
+eH
+jQ
+PS
+"}
+(2,1,1) = {"
+Ve
+Da
+AC
+hU
+YK
+hU
+HJ
+za
+Mp
+vk
+cP
+Ly
+Ly
+"}
+(3,1,1) = {"
+Ij
+Sw
+EF
+xG
+xG
+xG
+iq
+Jk
+QS
+QS
+nl
+Ly
+Ly
+"}
+(4,1,1) = {"
+QA
+se
+CS
+fS
+kj
+fS
+UR
+pE
+fS
+fS
+rf
+Ly
+Ly
+"}
+(5,1,1) = {"
+Zr
+yS
+Wd
+xG
+xG
+xG
+mP
+Jk
+Hb
+Hb
+nl
+Ly
+Ly
+"}
+(6,1,1) = {"
+yf
+mh
+fn
+TS
+YK
+TS
+ta
+Qq
+yw
+Xm
+HE
+Ly
+Ly
+"}
+(7,1,1) = {"
+bt
+Sy
+IY
+US
+cv
+US
+HE
+zG
+Rp
+rP
+Vg
+yb
+xz
+"}

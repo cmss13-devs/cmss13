@@ -145,10 +145,11 @@
 /datum/emergency_call/yautja_mcaste
 	name = "Yautja Military Caste Soldiers (!DEATHSQUAD!)"
 	mob_max = 8
-	mob_min = 3
+	mob_min = 1
 	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
 	probability = 0
-	home_base = /datum/lazy_template/ert/uscm_station // to be mapped
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	home_base = /datum/lazy_template/ert/yautja_station
 	hostility = TRUE
 	var/team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer
 	var/team_member_preset = /datum/equipment_preset/yautja/soldier

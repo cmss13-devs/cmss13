@@ -5,6 +5,7 @@
 	caster_enabled = FALSE // no fancy-pants tools for you!
 	cloak_enabled = FALSE
 	smartdisc_enabled = FALSE
+	embedded_id = /obj/item/card/id/bracer_chip/military
 	bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct)
 
 /obj/item/clothing/gloves/yautja/hunter/soldier/process()
@@ -12,6 +13,26 @@
 	var/mob/living/carbon/human/human_holder = loc
 	if(human_holder.stat == DEAD)
 		explode(human_holder) // auto-SD on death
+
+/obj/item/card/id/bracer_chip/military
+	name = "bracer ID chip"
+	desc = "A complex cypher chip embedded within a set of clan bracers."
+	icon = 'icons/obj/items/radio.dmi'
+	icon_state = "upp_key"
+	access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT) // dsquad gets (pred) all-access
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_ID
+	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
+	paygrade = null
+
+/obj/item/card/id/bracer_chip/military/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
+		return
+
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/powered
 	name = "\improper Nracha-Dte power armor"

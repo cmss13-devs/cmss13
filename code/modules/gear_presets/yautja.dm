@@ -329,6 +329,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/legcuffs/xeno_restraints/strong(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
@@ -396,6 +398,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/legcuffs/xeno_restraints/strong(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
@@ -424,6 +428,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/legcuffs/xeno_restraints/strong(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
@@ -452,6 +458,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/legcuffs/xeno_restraints/strong(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)

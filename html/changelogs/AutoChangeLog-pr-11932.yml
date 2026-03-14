@@ -1,7 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "increases random sandbag crate spawn chance"
-  - balance: "increases random HPR crate spawn chance"
-  - balance: "reduces random flamer fuel crate spawn chance"
-  - balance: "reduces random smartgun ammo crate spawn chance"

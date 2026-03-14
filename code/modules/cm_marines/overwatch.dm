@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=TRUE)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	GLOB.active_overwatch_consoles -= src

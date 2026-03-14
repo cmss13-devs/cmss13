@@ -80,7 +80,7 @@
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_HYPNOTIC = 1)
+	properties = list(PROPERTY_HYPOXEMIC = 12, PROPERTY_NEUROTOXIC = 4, PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/toxin/minttoxin
 	name = "Mint Toxin"

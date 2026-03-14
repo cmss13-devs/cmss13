@@ -50,7 +50,7 @@
 	icon_state = "NV_no_CAS"
 
 /area/varadero/interior/comms1
-	name = "New Varadero - Cargo Generator"
+	name = "New Varadero - Tertiary Communications"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "comms1"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
@@ -78,7 +78,7 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 //landing zone computers
 
@@ -138,13 +138,13 @@
 /area/varadero/exterior/eastocean
 	name = "New Varadero - East Ocean"
 	linked_lz = DROPSHIP_LZ2
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	icon_state = "varadero2"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 /area/varadero/exterior/farocean
 	name = "New Varadero - Far Ocean"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
@@ -274,6 +274,10 @@
 	icon_state = "offices0"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+
+/area/varadero/interior/library/restaraunt
+	name = "New Varadero - Restaurant"
+	icon_state = "pizza"
 
 /area/varadero/interior/court
 	name = "New Varadero - Basketball Court"

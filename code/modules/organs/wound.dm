@@ -151,7 +151,7 @@
 //Note that the MINIMUM damage before a wound can be applied should correspond to
 //the damage amount for the stage with the same name as the wound.
 //e.g. /datum/wound/cut/deep should only be applied for 15 damage and up,
-//because in it's stages list, "deep cut" = 15.
+//because in its stages list, "deep cut" = 15.
 /proc/get_wound_type(type = CUT, damage)
 	switch(type)
 		if(CUT)

@@ -177,7 +177,7 @@
 				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
 			if(targeted_xeno.stat == DEAD)
-				to_chat(xeno, SPAN_XENOWARNING("You cannot leader the dead."))
+				to_chat(xeno, SPAN_XENOWARNING("You cannot add the dead as a leader."))
 				return
 			to_chat(xeno, SPAN_XENONOTICE("You've selected [targeted_xeno] as a Hive Leader."))
 			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
@@ -397,6 +397,7 @@
 
 	if(xeno in tacmap_component.interactees)
 		tacmap_component.on_unset_interaction(xeno)
+		tacmap_component.close_popout_tacmaps(xeno)
 	else
 		tacmap_component.show_tacmap(xeno)
 

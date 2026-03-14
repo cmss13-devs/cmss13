@@ -7,6 +7,7 @@
 	var/layer_name = list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
 	var/variant = 0
 	var/variant_prefix_name = ""
+	var/bleed_layer = 0 //snow layer
 
 /turf/open/auto_turf/insert_self_into_baseturfs()
 	baseturfs += type
@@ -16,6 +17,12 @@
 
 /turf/open/auto_turf/can_dig_xeno_tunnel()
 	return TRUE //xenos can tunnel
+
+/turf/open/auto_turf/proc/layers_over(turf/open/other_turf)
+	if(istype(other_turf, /turf/open/auto_turf))
+		var/turf/open/auto_turf/other_auto_turf = other_turf
+		return bleed_layer > other_auto_turf.bleed_layer
+	return (bleed_layer > 0) // assume all non auto turfs have a bleed layer of 0
 
 //Update icon
 /turf/open/auto_turf/update_icon()
@@ -171,7 +178,6 @@
 	. = ..()
 	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
-
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
 
@@ -227,6 +233,9 @@
 		changing_layer(new_layer)
 
 	return XENO_NO_DELAY_ACTION
+
+/turf/open/auto_turf/snow/attack_larva(mob/living/carbon/xenomorph/larva/M)
+	return //Larvae can't do shit
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)
@@ -326,6 +335,38 @@
 	variant_prefix_name = "muddy"
 
 /turf/open/auto_turf/strata_grass/layer1
+	icon_state = "grass_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/tyrargo_grass
+	name = "matted grass"
+	icon = 'icons/turf/floors/auto_tyrargo_turf.dmi'
+	icon_state = "grass_0"
+	icon_prefix = "grass"
+	layer_name = list("ground","lush thick grass")
+	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
+
+/turf/open/auto_turf/tyrargo_grass/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/tyrargo_grass/layer0
+
+/turf/open/auto_turf/tyrargo_grass/layer0
+	icon_state = "grass_0"
+	bleed_layer = 0
+	variant_prefix_name = "matted grass"
+
+/turf/open/auto_turf/tyrargo_grass/layer0_mud
+	icon_state = "grass_0_mud"
+	bleed_layer = 0
+	variant = "mud"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt
+	icon_state = "grass_0_mud_alt"
+	bleed_layer = 0
+	variant = "mud_alt"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/tyrargo_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1
 

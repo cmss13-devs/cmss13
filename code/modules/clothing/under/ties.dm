@@ -8,7 +8,7 @@
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
-	var/list/accessory_icons = list(
+	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
 	)
@@ -22,7 +22,7 @@
 	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
-	if(can_become_accessory)
+	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		revert_from_accessory(user)
 		return
 	return ..()
@@ -41,11 +41,11 @@
 /obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
-//when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
-	if(!istype(S))
+//when user attached an accessory to clothing/clothes
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	if(!istype(clothes))
 		return
-	has_suit = S
+	has_suit = clothes
 	forceMove(has_suit)
 	has_suit.overlays += get_inv_overlay()
 
@@ -53,11 +53,24 @@
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.give_to(wearer)
 	return TRUE
 
-/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/clothes)
 	if(!has_suit)
 		return
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.remove_from(wearer)
+
 	has_suit.overlays -= get_inv_overlay()
 	has_suit = null
 	if(usr)
@@ -378,7 +391,7 @@
 
 /obj/item/clothing/accessory/medal/gold/cross
 	name = MARINE_MEDAL_GALACTIC_CROSS
-	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
+	desc = "The second-highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
 	icon_state = "ua_cross"
 	awarding_faction = FACTION_MARINE
 
@@ -486,7 +499,7 @@
 
 /obj/item/clothing/accessory/armband/squad
 	name = "squad armband"
-	desc = "An armband in squad colors, worn for ease of idenfication."
+	desc = "An armband in squad colors, worn for ease of identification."
 	icon_state = "armband_squad"
 	var/dummy_icon_state = "armband_%SQUAD%"
 	var/static/list/valid_icon_states
@@ -540,9 +553,8 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "USCM patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
-	icon_state = "uscmpatch"
+	name = "potato patch"
+	desc = "you shouldnt see this, ahelp if you do."
 	icon = 'icons/obj/items/clothing/accessory/patches.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
@@ -556,12 +568,19 @@
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
 	worn_accessory_limit = 4
 
+/obj/item/clothing/accessory/patch/uscmpatch
+	name = "USCM patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	icon_state = "uscmpatch"
+	item_state = "uscmpatch_right_shoulder"
+	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_right_shoulder")
+	flags_obj = OBJ_IS_STYLISH
+	style_postfix = list("right_shoulder", "left_shoulder", "right_chest", "left_chest")
+
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
-	item_state_slots = list(WEAR_AS_GARB = "falconspatch")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/devils
 	name = "USCM Solar Devils patch"
@@ -617,6 +636,21 @@
 	name = "USCM large chest patch"
 	desc = "A fire-resistant chest patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconsbigpatch"
+
+/obj/item/clothing/accessory/patch/army
+	name = "US Army patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Army."
+	icon_state = "armypatch"
+
+/obj/item/clothing/accessory/patch/army/infantry
+	name = "Army Infantry patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 1st Cavalry Division."
+	icon_state = "infantrypatch"
+
+/obj/item/clothing/accessory/patch/army/armor
+	name = "Army Armor patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 32nd Armor Brigade."
+	icon_state = "armorpatch"
 
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"
@@ -1475,3 +1509,81 @@ Wrist Accessories
 	. = ..()
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
+
+/obj/item/clothing/accessory/rosary
+	name = "rosary"
+	desc = "Jesus Saves Lives!"
+	icon_state = "rosary"
+	item_state = "rosary_neck"
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "rosary")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	flags_obj = OBJ_IS_STYLISH
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
+	worn_accessory_limit = 2
+	style_postfix = list("neck", "left_wrist", "right_wrist")
+
+/obj/item/clothing/accessory/rosary/gold
+	name = "golden rosary"
+	desc = "Truly, one can be closest to God when adorned in gold, jewels, and riches whilst flaunting it about."
+	icon_state = "grosary"
+	item_state = "grosary_neck"
+	item_state_slots = list(WEAR_AS_GARB = "grosary")
+
+//TEMPORARY
+
+/obj/item/clothing/accessory/helmet/cover
+	name = "potato cover"
+	desc = "ahelp if you see this."
+	garbage = TRUE // for all intents and purposes, yes
+	flags_obj = OBJ_IS_HELMET_GARB
+	w_class = SIZE_TINY
+	worn_accessory_slot = ACCESSORY_SLOT_HELM_C
+	worn_accessory_limit = 2 // cover a helmet with a raincover and a netting i guess
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	accessory_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+
+/obj/item/clothing/accessory/helmet/cover/raincover
+	name = "raincover"
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	icon_state = "raincover"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting
+	name = "combat netting"
+	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
+	icon_state = "netting"
+
+/obj/item/clothing/accessory/helmet/cover/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/clothing/accessory/helmet/cover/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"

@@ -106,7 +106,7 @@
  */
 /obj/item/toy/blink
 	name = "electronic blink toy game"
-	desc = "Blink.  Blink.  Blink. Ages 8 and up."
+	desc = "Blink... Blink... Blink... For ages 8 and up."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "beacon"
 	item_state = "signaller"
@@ -205,12 +205,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/tank/water) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, SPAN_NOTICE(" You refill your flower!"))
+		to_chat(user, SPAN_NOTICE("You refill your flower!"))
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, SPAN_NOTICE(" Your flower has run dry!"))
+		to_chat(user, SPAN_NOTICE("Your flower has run dry!"))
 		return
 
 	else
@@ -496,6 +496,7 @@
 	w_class = SIZE_SMALL
 	COOLDOWN_DECLARE(last_hug_time)
 	black_market_value = 10
+	var/register_attempted
 
 /obj/item/toy/plush/attack_self(mob/user)
 	..()
@@ -615,13 +616,35 @@
 
 /obj/item/toy/plush/random_plushie/pickup(mob/user, silent)
 	. = ..()
-	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
+
+/obj/item/toy/plush/random_plushie/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		var/atom/container_on_human = inventory.loc
+		var/depth_limit
+		while(!ishuman(container_on_human) && depth_limit < 2)
+			container_on_human = container_on_human.loc
+			depth_limit++
+		human_user = container_on_human
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
+
+/obj/item/toy/plush/random_plushie/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(create_plushie), override = TRUE)
 
 ///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
 /obj/item/toy/plush/random_plushie/proc/create_plushie(datum/source)
 	SIGNAL_HANDLER
 	if(source)
-		UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+		UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/turf/spawn_location = get_turf(src)
 	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
 	var/random_plushie = pick(plush_list_variety)
@@ -662,7 +685,7 @@
 	. = ..()
 	if(beret)
 		return
-	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
+	if(!(istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp)))
 		return
 	var/beret_attack = attacking_object
 	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))

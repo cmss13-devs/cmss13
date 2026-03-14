@@ -74,10 +74,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/proc/remove_from_single_hud(mob/user, mob/target)
 	if(!user.client)
 		return
-	for(var/i in hud_icons)
-		user.client.images -= target.hud_list[i]
+	for(var/icons in hud_icons)
+		user.client.images -= target.hud_list[icons]
 		if(target.clone)
-			user.client.images -= target.clone.hud_list[i]
+			user.client.images -= target.clone.hud_list[icons]
 
 /// Allow user to view a HUD (e.g. putting on medical glasses)
 /datum/mob_hud/proc/add_hud_to(mob/user, source)
@@ -114,11 +114,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/proc/add_to_single_hud(mob/user, mob/target)
 	if(!user.client)
 		return
-	for(var/i in hud_icons)
-		if(i in target.hud_list)
-			user.client.images |= target.hud_list[i]
+	for(var/icons in hud_icons)
+		if(icons in target.hud_list)
+			user.client.images |= target.hud_list[icons]
 			if(target.clone)
-				user.client.images |= target.clone.hud_list[i]
+				user.client.images |= target.clone.hud_list[icons]
 
 
 
@@ -134,18 +134,18 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 //med hud used by silicons, only shows humans with a uniform with sensor mode activated.
 /datum/mob_hud/medical/basic
 
-/datum/mob_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/H)
-	if(!istype(H))
+/datum/mob_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/human)
+	if(!istype(human))
 		return FALSE
 
-	var/obj/item/clothing/under/U = H.w_uniform
-	if(!istype(U))
+	var/obj/item/clothing/under/uniform = human.w_uniform
+	if(!istype(uniform))
 		return FALSE
 
-	if(H.species && HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+	if(human.species && HAS_TRAIT(human, TRAIT_FOREIGN_BIO))
 		return FALSE
 
-	if(U.sensor_mode <= SENSOR_MODE_DAMAGE || U.has_sensor == UNIFORM_NO_SENSORS)
+	if(uniform.sensor_mode <= SENSOR_MODE_DAMAGE || uniform.has_sensor == UNIFORM_NO_SENSORS)
 		return FALSE
 
 	return TRUE
@@ -154,11 +154,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(check_sensors(target))
 		..()
 
-/datum/mob_hud/medical/basic/proc/update_suit_sensors(mob/living/carbon/human/H)
-	if(check_sensors(H))
-		add_to_hud(H)
+/datum/mob_hud/medical/basic/proc/update_suit_sensors(mob/living/carbon/human/human)
+	if(check_sensors(human))
+		add_to_hud(human)
 	else
-		remove_from_hud(H)
+		remove_from_hud(human)
 
 
 //med hud used by medical hud glasses
@@ -335,10 +335,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		execute.remove_hud_from(src, src)
 
 /mob/proc/refresh_huds(mob/source_mob)
-	var/mob/M = source_mob ? source_mob : src
+	var/mob/Mob = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in GLOB.huds)
-		if(M in hud.hudusers)
-			hud.refresh_hud(src, hud.hudusers[M])
+		if(Mob in hud.hudusers)
+			hud.refresh_hud(src, hud.hudusers[Mob])
 
 
 /mob/proc/handle_xeno_hive_hud(hive_choice, choose_verb = FALSE)
@@ -382,8 +382,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 //called when a human changes suit sensors
 /mob/living/carbon/human/proc/update_suit_sensors()
-	var/datum/mob_hud/medical/basic/B = GLOB.huds[MOB_HUD_MEDICAL_BASIC]
-	B.update_suit_sensors(src)
+	var/datum/mob_hud/medical/basic/hud = GLOB.huds[MOB_HUD_MEDICAL_BASIC]
+	hud.update_suit_sensors(src)
 
 //called when a human changes health
 /mob/proc/med_hud_set_health()
@@ -528,10 +528,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(status_flags & XENO_HOST)
 			holder2.icon_state = "hudxeno"//Observer and admin HUD only
 			holder2_set = 1
-			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
-			if(E)
-				holder3.icon_state = "infected[E.stage]"
-				var/datum/hive_status/hive = GLOB.hive_datum[E.hivenumber]
+			var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in src
+			if(embryo)
+				holder3.icon_state = "infected[embryo.stage]"
+				var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
 				if(hive && hive.color)
 					holder3.color = hive.color
@@ -548,15 +548,15 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client && !(status_flags & FAKESOUL))
-					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
-					if(!G)
+					var/mob/dead/observer/ghost = get_ghost(FALSE, TRUE)
+					if(!ghost)
 						holder.icon_state = "huddeaddnr"
 						if(!holder2_set)
 							holder2.icon_state = "huddeaddnr"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
 						return
-					else if(!G.client)
+					else if(!ghost.client)
 						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
@@ -596,8 +596,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			return
 
 
-		for(var/datum/disease/D in viruses)
-			if(!D.hidden[SCANNER])
+		for(var/datum/disease/virus in viruses)
+			if(!virus.hidden[SCANNER])
 				holder.icon_state = "hudill"
 				if(!holder2_set)
 					holder2.icon_state = "hudill"
@@ -612,8 +612,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/living/carbon/xenomorph/proc/hud_set_marks()
 	if(!client)
 		return
-	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
-		client.images |= i.seenMeaning
+	for(var/obj/effect/alien/resin/marker/markers in hive.resin_marks)
+		client.images |= markers.seenMeaning
 
 /mob/living/carbon/xenomorph/proc/hud_set_design_marks()
 	if(!client)
@@ -672,7 +672,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 				has_recovery_aura = TRUE
 				has_warding_aura = TRUE
 
-		if (has_frenzy_aura)
+		if(has_frenzy_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
 		if(has_recovery_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
@@ -686,10 +686,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
+	if(stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
-		if (Q && Q.observed_xeno == src)
+		var/mob/living/carbon/xenomorph/queen/queen = hive.living_xeno_queen
+		if(queen && queen.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
@@ -697,25 +697,25 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	var/image/holder = hud_list[XENO_BANISHED_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && banished)
+	if(stat != DEAD && banished)
 		holder.icon_state = "xeno_banished"
 	hud_list[XENO_BANISHED_HUD] = holder
 
 /mob/living/carbon/xenomorph/proc/hud_update()
 	var/image/holder = hud_list[XENO_STATUS_HUD]
 	holder.overlays.Cut()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		return
-	if (IS_XENO_LEADER(src))
-		var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
-		holder.overlays += I
-	if (age)
-		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
-		holder.overlays += J
+	if(IS_XENO_LEADER(src))
+		var/image/icon1 = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
+		holder.overlays += icon1
+	if(age)
+		var/image/icon2 = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
+		holder.overlays += icon2
 	if(hive && hivenumber != XENO_HIVE_NORMAL)
-		var/image/J = image('icons/mob/hud/hud.dmi', src, "hudalien_xeno")
-		J.color = hive.color
-		holder.overlays += J
+		var/image/icon2 = image('icons/mob/hud/hud.dmi', src, "hudalien_xeno")
+		icon2.color = hive.color
+		holder.overlays += icon2
 
 //Sec HUDs
 
@@ -724,44 +724,50 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /mob/living/carbon/human/sec_hud_set_ID()
 	var/image/holder = hud_list[ID_HUD]
-	holder.icon_state = "hudsec_unknown"
+	holder.icon_state = "hudblank"
 	if(wear_id)
-		var/obj/item/card/id/I = wear_id.GetID()
-		if(I)
-			holder.icon_state = "hudsec_[ckey(I.GetJobName())]"
+		var/obj/item/card/id/worn = wear_id.GetID()
+		if(worn)
+			if(worn.registered_name == real_name)
+				holder.icon_state = "hudsec_confirmed"
+			else
+				holder.icon_state = "hudsec_rejected"//Wait a minute... who are you?
+	else
+		holder.icon_state = "hudsec_unknown" //My ID is not on me, or I do not have one.
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
 	criminal = FALSE
 	var/perpref = null
+
 	if(wear_id)
-		var/obj/item/card/id/I = wear_id.GetID()
-		if(I)
-			perpref = I.registered_ref
+		var/obj/item/card/id/worn = wear_id.GetID()
+		if(worn)
+			perpref = worn.registered_ref
 
 	if(!GLOB.data_core)
 		return
 
-	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["ref"] == perpref)
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
+	for(var/datum/data/record/entry in GLOB.data_core.general)
+		if(entry.fields["ref"] == perpref)
+			for(var/datum/data/record/record in GLOB.data_core.security)
+				if((record.fields["id"] == entry.fields["id"]) && (record.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudsec_wanted"
 					criminal = TRUE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
+				else if((record.fields["id"] == entry.fields["id"]) && (record.fields["criminal"] == "Incarcerated"))
 					holder.icon_state = "hudsec_prisoner"
 					criminal = TRUE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
+				else if((record.fields["id"] == entry.fields["id"]) && (record.fields["criminal"] == "Released"))
 					holder.icon_state = "hudsec_released"
 					criminal = FALSE
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
+				else if((record.fields["id"] == entry.fields["id"]) && (record.fields["criminal"] == "Suspect"))
 					holder.icon_state = "hudsec_suspect"
 					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
+				else if((record.fields["id"] == entry.fields["id"]) && (record.fields["criminal"] == "NJP"))
 					holder.icon_state = "hudsec_njp"
 					break
 //Squad HUD
@@ -770,8 +776,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	return
 
 /mob/living/carbon/human/hud_set_squad()
-	var/datum/faction/F = get_faction(faction)
-	var/image/holder = hud_list[F.hud_type]
+	var/datum/faction/player_faction = get_faction(faction)
+	var/image/holder = hud_list[player_faction.hud_type]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 
@@ -783,7 +789,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
-	F.modify_hud_holder(holder, src)
+	player_faction.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE
@@ -918,34 +924,34 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 	var/acid_found = FALSE
 	var/acid_count = 0
 	for (var/datum/effects/prae_acid_stacks/PAS in effects_list)
-		if (!QDELETED(PAS))
+		if(!QDELETED(PAS))
 			acid_count = PAS.stack_count
 			acid_found = TRUE
 			break
 
-	if (acid_found && acid_count > 0)
+	if(acid_found && acid_count > 0)
 		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")
 
 	var/slow_found = FALSE
 	for (var/datum/effects/xeno_slow/XS in effects_list)
-		if (!QDELETED(XS))
+		if(!QDELETED(XS))
 			slow_found = TRUE
 			break
 
-	if (slow_found)
+	if(slow_found)
 		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
 
 	var/tag_found = FALSE
 	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!QDELETED(DT))
+		if(!QDELETED(DT))
 			tag_found = TRUE
 			break
 
-	if (tag_found)
+	if(tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP && !buckled // Eligible targets are unable to move but can stand and aren't buckled (eg nested) - This is to convey that they are temporarily unable to move
-	if (freeze_found)
+	if(freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")
 
 

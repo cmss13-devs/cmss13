@@ -240,7 +240,7 @@ Administrative related.
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/tgs3_commandline_path
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
 	config_entry_value = "C:\\Program Files (x86)\\TG Station Server\\TGCommandLine.exe"
 
 /datum/config_entry/number/minute_topic_limit
@@ -375,14 +375,14 @@ or your package manager
 The default value assumes youtube-dl is in your system PATH
 */
 /datum/config_entry/string/invoke_youtubedl
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/cobalt_base_api
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
 
 
 /datum/config_entry/string/cobalt_api_key
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600
@@ -589,7 +589,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/keyed_list/topic_tokens
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_TEXT
-	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE_KEY
 
 /datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
 	return key_value != "topic_token" && ..()
@@ -627,7 +627,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/redis_connection
 	config_entry_value = "redis://127.0.0.1/"
-	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
@@ -724,9 +724,10 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/string/sentry_endpoint
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/sentry_dsn
-	protection = CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/str_list/ignored_cids
 	protection = CONFIG_ENTRY_LOCKED

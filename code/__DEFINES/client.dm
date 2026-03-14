@@ -8,6 +8,6 @@
 /// This gathers all the client *procs* that we are pretending are verbs - but only particularly want
 /// authorized users to be able to use
 /client/proc/collect_client_verbs() as /list
-	CAN_BE_REDEFINED(TRUE);
+	CAN_BE_REDEFINED(TRUE)
 
 	return list()

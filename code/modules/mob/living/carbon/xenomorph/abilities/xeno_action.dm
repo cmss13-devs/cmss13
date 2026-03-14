@@ -486,5 +486,12 @@
 /datum/action/xeno_action/proc/on_deselect(mob/user)
 	return
 
+// Used to be picky on who gets what Hive Abilities
+/datum/action/xeno_action/proc/hive_ability_check_conditions()
+	if(islarva(owner) || isfacehugger(owner))
+		return FALSE
+
+	return TRUE
+
 #define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
 #define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

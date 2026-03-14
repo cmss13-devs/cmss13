@@ -5,7 +5,6 @@
 	caster_enabled = FALSE // no fancy-pants tools for you!
 	cloak_enabled = FALSE
 	smartdisc_enabled = FALSE
-	embedded_id = /obj/item/card/id/bracer_chip/military
 	bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct)
 
 /obj/item/clothing/gloves/yautja/hunter/soldier/process()
@@ -14,25 +13,29 @@
 	if(human_holder.stat == DEAD)
 		explode(human_holder) // auto-SD on death
 
-/obj/item/card/id/bracer_chip/military
-	name = "bracer ID chip"
-	desc = "A complex cypher chip embedded within a set of clan bracers."
-	icon = 'icons/obj/items/radio.dmi'
-	icon_state = "upp_key"
-	access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT) // dsquad gets (pred) all-access
-	w_class = SIZE_TINY
-	flags_equip_slot = SLOT_ID
-	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
-	paygrade = null
+/obj/item/storage/mcaste_herb_container
+	name = "herbs case"
+	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 4
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+	)
 
-/obj/item/card/id/bracer_chip/military/set_user_data(mob/living/carbon/human/human_user)
-	if(!istype(human_user))
-		return
-
-	registered_name = human_user.real_name
-	registered_ref = WEAKREF(human_user)
-	registered_gid = human_user.gid
-	blood_type = human_user.blood_type
+/obj/item/storage/mcaste_herb_container/full/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/powered
 	name = "\improper Nracha-Dte power armor"

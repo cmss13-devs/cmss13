@@ -2540,6 +2540,7 @@
 #include "code\modules\surgery\bones.dm"
 #include "code\modules\surgery\brainrepair.dm"
 #include "code\modules\surgery\chestburster.dm"
+#include "code\modules\surgery\chestburster_training.dm"
 #include "code\modules\surgery\eschar.dm"
 #include "code\modules\surgery\eye.dm"
 #include "code\modules\surgery\generic.dm"

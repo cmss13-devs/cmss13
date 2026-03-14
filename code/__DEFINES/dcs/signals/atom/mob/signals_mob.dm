@@ -83,6 +83,9 @@
 
 #define COMSIG_OBSERVER_CLICKON "observer_clickon" //from mob/dead/observer/ClickOn(): (atom/A, params)
 
+/// From /mob/dead/observer/proc/observer_move_react()
+#define COMSIG_OBSERVER_DISCONNECTED "observer_disconnected"
+
 /// From base of /mob/Login(), called when a client logs into this mob: ()
 /// Not to be confused with [COMSIG_MOB_LOGGED_IN]
 #define COMSIG_MOB_LOGIN "mob_login"

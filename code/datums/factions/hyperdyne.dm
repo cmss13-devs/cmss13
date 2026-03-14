@@ -12,6 +12,10 @@
 		if(id_card)
 			_role = id_card.rank
 	switch(_role)
+		if(JOB_HC_SEC)
+			hud_icon_state = "security"
+		if(JOB_HC_SEC_SYNTH)
+			hud_icon_state = "synth"
 		if(JOB_HC_TRAINEE)
 			hud_icon_state = "trainee"
 		if(JOB_HC_JUNIOR_EXECUTIVE)
@@ -19,7 +23,7 @@
 		if(JOB_HC_CORPORATE_LIAISON)
 			hud_icon_state = "liaison"
 		if(JOB_HC_EXECUTIVE)
-			hud_icon_state = "liaison"
+			hud_icon_state = "exec"
 		if(JOB_HC_SENIOR_EXECUTIVE)
 			hud_icon_state = "senior_exec"
 		if(JOB_HC_EXECUTIVE_SPECIALIST, JOB_HC_LEGAL_SPECIALIST)

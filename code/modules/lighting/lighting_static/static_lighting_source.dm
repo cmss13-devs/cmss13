@@ -15,7 +15,7 @@
 	var/light_power
 	/// The range of the emitted light.
 	var/light_range
-	/// The colour of the light, string, decomposed by parse_light_color()
+	/// The colour of the light, string, decomposed by PARSE_LIGHT_COLOR()
 	var/light_color
 	// Variables for keeping track of the colour.
 	var/lum_r
@@ -68,7 +68,8 @@
 	if (top_atom)
 		LAZYREMOVE(top_atom.static_light_sources, src)
 
-	SSlighting.static_sources_queue -= src
+	if(needs_update)
+		SSlighting.static_sources_queue -= src
 	return ..()
 
 // Yes this doesn't align correctly on anything other than 4 width tabs.
@@ -83,6 +84,8 @@
 
 /// This proc will cause the light source to update the top atom, and add itself to the update queue.
 /datum/static_light_source/proc/update(atom/new_top_atom)
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
 		if(top_atom != source_atom && top_atom.static_light_sources) // Remove ourselves from the light sources of that top atom.
@@ -97,10 +100,14 @@
 
 /// Will force an update without checking if it's actually needed.
 /datum/static_light_source/proc/force_update()
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	EFFECT_UPDATE(LIGHTING_FORCE_UPDATE)
 
 /// Will cause the light source to recalculate turfs that were removed or added to visibility only.
 /datum/static_light_source/proc/vis_update()
+	if(QDELING(src)) // this should never be called if src is null so QDELING is better than QDELETED
+		return // no-op on deleted sources
 	EFFECT_UPDATE(LIGHTING_VIS_UPDATE)
 
 // Macro that applies light to a new corner.
@@ -145,6 +152,7 @@
 	var/_applied_lum_g = lighting_source.applied_lum_g; \
 	var/_applied_lum_b = lighting_source.applied_lum_b;
 
+/// This is the define used to calculate falloff.
 #define LUM_FALLOFF(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
 #define LUM_FALLOFF_MULTIZ(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + (C.z - _turf_z) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
 
@@ -183,7 +191,6 @@
 		. * _applied_lum_b                        \
 	);
 
-/// This is the define used to calculate falloff.
 /datum/static_light_source/proc/remove_lum()
 	SETUP_CORNERS_REMOVAL_CACHE(src)
 	applied = FALSE
@@ -220,9 +227,18 @@
 	gen_for.lighting_corners_initialised = TRUE;
 
 /datum/static_light_source/proc/update_corners()
-	var/update = FALSE
+	// update_origin TRUE -> we changed origin, so new and old corners are not subset and superset (or vice versa)
+	// update_origin FALSE -> we didn't change origin, can do simpler corner diffs
+	var/update_origin = FALSE
+	// update_fluff TRUE -> we changed power/color or decreased our range, and should update our corners
+	// update_fluff FALSE -> we have nothing to tell our existing corners about
 	var/update_fluff = FALSE
-	var/update_range = FALSE
+	// update_decreased TRUE -> we lowered our power or our range and are going to have to remove some existing corners
+	// update_decreased FALSE -> we are not expecting to remove any existing corners, barring translation (update_origin)
+	var/update_decreased = FALSE
+	// needs_new_corners TRUE -> range increased, we need to do view() to add new corners
+	// needs_new_corners FALSE -> range did not increase, reuse corners
+	var/needs_new_corners = FALSE
 	var/old_range
 	var/old_power
 	var/atom/source_atom = src.source_atom
@@ -235,18 +251,21 @@
 		old_power = light_power
 		light_power = source_atom.light_power
 		update_fluff = TRUE
+		if(old_power > light_power)
+			update_decreased = TRUE
 
 	if (source_atom.light_range != light_range)
 		if(light_range > source_atom.light_range) // less range, can reuse corners
+			update_decreased = TRUE
 			update_fluff = TRUE
 		else
-			update_range = TRUE
+			needs_new_corners = TRUE
 		old_range = light_range
 		light_range = source_atom.light_range
 
 	if (!top_atom)
 		top_atom = source_atom
-		update = TRUE
+		update_origin = TRUE
 
 	if (!light_range || !light_power)
 		qdel(src)
@@ -256,16 +275,16 @@
 		if (source_turf != top_atom)
 			source_turf = top_atom
 			UPDATE_APPROXIMATE_PIXEL_TURF
-			update = TRUE
+			update_origin = TRUE
 	else if (top_atom.loc != source_turf)
 		source_turf = top_atom.loc
 		UPDATE_APPROXIMATE_PIXEL_TURF
-		update = TRUE
+		update_origin = TRUE
 	else
 		var/pixel_loc = get_turf_pixel(top_atom)
 		if (pixel_loc != pixel_turf)
 			pixel_turf = pixel_loc
-			update = TRUE
+			update_origin = TRUE
 
 	if (!isturf(source_turf))
 		if (applied)
@@ -273,36 +292,38 @@
 		return
 
 	if (light_range && light_power && !applied)
-		update = TRUE
+		update_origin = TRUE
 
 	if (source_atom.light_color != light_color)
 		light_color = source_atom.light_color
 		PARSE_LIGHT_COLOR(src)
 		update_fluff = TRUE
 
+		// this could result in a turf no longer having any light reaching it
+		if(lum_r < applied_lum_r && lum_g < applied_lum_g && lum_b < applied_lum_b)
+			update_decreased = TRUE
+
+	// i don't think this is necessary because either the prior block will set it,
+	// or it hasn't been applied so top_atom was null and we're updating anyway
 	else if (applied_lum_r != lum_r || applied_lum_g != lum_g || applied_lum_b != lum_b)
 		update_fluff = TRUE
 
-	if (update || update_range)
+	if (update_origin || needs_new_corners)
 		needs_update = LIGHTING_FORCE_UPDATE
 		applied = TRUE
+	else if(update_fluff) // we know something changed so we have to update it
+		needs_update = LIGHTING_FORCE_UPDATE // override VIS_UPDATE since we aren't just changing opacity
+		// should we set applied = TRUE here??
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
-		if (!update_fluff)
-			return //nothing's changed
-	else if (update_fluff)
-		needs_update = LIGHTING_FORCE_UPDATE //forces LIGHTING_VIS_UPDATE to update everything
+		return //nothing's changed
 
 	LAZYINITLIST(src.effect_str)
 	var/list/effect_str = src.effect_str
 
 	var/list/datum/static_lighting_corner/corners
-	var/list/datum/static_lighting_corner/new_corners
-	var/list/datum/static_lighting_corner/gone_corners
 
 	if (needs_update == LIGHTING_CHECK_UPDATE) //we dont need to find corners for color/power change only
 		corners = effect_str
-		new_corners = list()
-		gone_corners = list()
 	else if (source_turf)
 		corners = list()
 
@@ -311,36 +332,42 @@
 		// half or more corners from these tiles is further than _range_divisor and others are in closer turfs
 		var/turf_light_range = max(CEILING(light_range - 1.5, 1), 0)
 
-		var/oldlum = source_turf.luminosity
-		source_turf.luminosity = turf_light_range
-		for(var/turf/T in view(turf_light_range, source_turf))
-			if(!IS_OPAQUE_TURF(T))
-				impacted_turfs += T
-			if(istransparentturf(T))
-				check_below_turfs += T // we need to go below only for transparent turfs
+		var/has_level_below = SSmapping.level_trait(source_turf.z, ZTRAIT_DOWN)
+		var/has_level_above = SSmapping.level_trait(source_turf.z, ZTRAIT_UP)
 
-		var/list/turf/check_above_turfs = impacted_turfs
-		while(TRUE) // we know that it starts with len > 0
-			var/list/turf/above_turfs = SSmapping.get_same_z_turfs_above(check_above_turfs)
-			if(above_turfs.len == 0) // levels are not connected
-				break
-			check_above_turfs = list()
-			for(var/turf/T as anything in above_turfs)
+		if(has_level_below)
+			FOR_DVIEW(var/turf/T, turf_light_range, source_turf, SEE_INVISIBLE_LIVING)
+				if(!IS_OPAQUE_TURF(T))
+					impacted_turfs += T
 				if(istransparentturf(T))
-					check_above_turfs += T // turf from which we can see light below
-			if(check_above_turfs.len == 0)
-				break
-			impacted_turfs += check_above_turfs // add them to the impacted
+					check_below_turfs += T // we need to go below only for transparent turfs
+			while(length(check_below_turfs))
+				var/list/turf/below_turfs = SSmapping.get_same_z_turfs_below(check_below_turfs)
+				if(!length(below_turfs)) // levels are not connected
+					break
+				impacted_turfs += below_turfs // add turfs that we found below transparent
+				check_below_turfs = list()
+				for(var/turf/T as anything in below_turfs)
+					if(istransparentturf(T))
+						check_below_turfs += T // next time check only below transparent
+		else // avoid the conditional in the loop, this adds up in hot code like lighting
+			FOR_DVIEW(var/turf/T, turf_light_range, source_turf, SEE_INVISIBLE_LIVING)
+				if(!IS_OPAQUE_TURF(T))
+					impacted_turfs += T
 
-		while(check_below_turfs.len > 0)
-			var/list/turf/below_turfs = SSmapping.get_same_z_turfs_below(check_below_turfs)
-			if(below_turfs.len == 0) // levels are not connected
-				break
-			impacted_turfs += below_turfs // add turfs that we found below transparent
-			check_below_turfs = list()
-			for(var/turf/T as anything in below_turfs)
-				if(istransparentturf(T))
-					check_below_turfs += T // next time check only below transparent
+		if(has_level_above)
+			var/list/turf/check_above_turfs = impacted_turfs
+			while(TRUE) // we know that it starts with len > 0
+				var/list/turf/above_turfs = SSmapping.get_same_z_turfs_above(check_above_turfs)
+				if(!length(above_turfs)) // levels are not connected
+					break
+				check_above_turfs = list()
+				for(var/turf/T as anything in above_turfs)
+					if(istransparentturf(T))
+						check_above_turfs += T // turf from which we can see light below
+				if(!length(check_above_turfs))
+					break
+				impacted_turfs += check_above_turfs // add them to the impacted
 
 		for(var/turf/T as anything in impacted_turfs)
 			if (!T.lighting_corners_initialised)
@@ -350,56 +377,71 @@
 			corners[T.lighting_corner_SW] = 0
 			corners[T.lighting_corner_NW] = 0
 
-		source_turf.luminosity = oldlum
-
-		new_corners = corners - effect_str
-		gone_corners = effect_str - corners
-
 	SETUP_CORNERS_CACHE(src)
 
-	if (needs_update == LIGHTING_VIS_UPDATE)
-		for (var/datum/static_lighting_corner/corner as anything in new_corners)
+	if (needs_update == LIGHTING_VIS_UPDATE) // opacity change, we're only adding/removing corners and not updating existing ones
+		for (var/datum/static_lighting_corner/corner as anything in corners - effect_str) // inlined new_corners
 			APPLY_CORNER(corner)
 			if (. != 0)
 				LAZYADD(corner.affecting, src)
 				effect_str[corner] = .
 	else
-		for (var/datum/static_lighting_corner/corner as anything in new_corners)
-			APPLY_CORNER(corner)
-			if (. != 0)
-				LAZYADD(corner.affecting, src)
-				effect_str[corner] = .
+		var/list/datum/static_lighting_corner/new_corners
+		if(update_origin || length(corners) > length(effect_str)) // something was added OR we need to do a more thorough check
+			new_corners = corners - effect_str
+			// add lighting to all the new corners
+			for (var/datum/static_lighting_corner/corner as anything in new_corners)
+				APPLY_CORNER(corner)
+				if (. != 0)
+					LAZYADD(corner.affecting, src)
+					effect_str[corner] = .
 
 		// New corners are a subset of corners. so if they're both the same length, there are NO old corners!
 		if(length(corners) != length(new_corners))
-			var/list/datum/static_lighting_corner/to_remove_corners = list()
-			if(update) // full update of corners
+			if(update_origin) // full update of corners
 				for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
 					APPLY_CORNER(corner)
 					if (. != 0)
 						effect_str[corner] = .
 					else
 						LAZYREMOVE(corner.affecting, src)
-						to_remove_corners += corner
+						effect_str -= corner
 			else // same as above, but without distance recalculation
 				if(isnull(old_range))
 					old_range = light_range
 				if(isnull(old_power))
 					old_power = light_power
+				// note: this may cause quantization error to accumulate? not sure
 				SETUP_CORNERS_UPDATE_CACHE(src, max(1, old_range), old_power)
-				for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
-					UPDATE_CORNER(corner)
-					if (. != 0)
+				if(!update_decreased) // we know we aren't going to be losing any corners
+					for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
+						UPDATE_CORNER(corner)
 						effect_str[corner] = .
-					else
-						LAZYREMOVE(corner.affecting, src)
-						to_remove_corners += corner
-			effect_str -= to_remove_corners
+				else // some corners may have to be removed
+					for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
+						UPDATE_CORNER(corner)
+						if (. != 0)
+							effect_str[corner] = .
+						else
+							LAZYREMOVE(corner.affecting, src)
+							effect_str -= corner
 
-	for (var/datum/static_lighting_corner/corner as anything in gone_corners)
-		REMOVE_CORNER(corner)
-		LAZYREMOVE(corner.affecting, src)
-	effect_str -= gone_corners
+	if(update_origin || (length(effect_str) > length(corners)))
+		if(length(corners) == 0) // removed them all!
+			for (var/datum/static_lighting_corner/corner as anything in effect_str)
+				REMOVE_CORNER(corner)
+				LAZYREMOVE(corner.affecting, src)
+			effect_str = null
+		else
+			var/list/datum/static_lighting_corner/gone_corners = effect_str - corners
+			if(length(gone_corners))
+				for (var/datum/static_lighting_corner/corner as anything in gone_corners)
+					REMOVE_CORNER(corner)
+					LAZYREMOVE(corner.affecting, src)
+				if(!update_origin && length(effect_str) == length(gone_corners))
+					effect_str = null // don't bother with removal, they're all gone
+				else
+					effect_str -= gone_corners
 
 	applied_lum_r = lum_r
 	applied_lum_g = lum_g

@@ -1,0 +1,6 @@
+author: "Riot"
+delete-after: True
+changes:
+  - rscadd: "Adds US army ranks, applied to the survivors and ERT on Tyrargo Rift"
+  - bugfix: "Army survivors can now program the comms tower to accept their comms."
+  - bugfix: "Army comms are now fully working, with their own radio key and working comms color."

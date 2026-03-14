@@ -24,6 +24,12 @@
 	var/viewsize = 12
 	var/hvh_tile_offset = 6 //same as miniscopes
 	var/hvh_zoom_viewsize = 7
+	/// Defines the current upgrade if any
+	var/upgrade
+	/// How good the NV is at hiding shadows (lower the better)
+	var/lighting_alpha = 100
+	/// Default color , overriden by user preffs.
+	var/matrix_color = NV_COLOR_GREEN
 
 /obj/item/device/binoculars/Initialize()
 	. = ..()
@@ -44,6 +50,74 @@
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else
 		zoom(user, tile_offset, viewsize)
+
+/obj/item/device/binoculars/zoom(mob/living/user, tileoffset, viewsize, keep_zoom)
+	. = ..()
+
+	if(zoom && upgrade == MATRIX_NVG) // we only want to proc this if we did succesfully zoom
+		enable_nvgs(user)
+
+/obj/item/device/binoculars/unzoom(mob/living/user)
+	. = ..()
+	disable_nvgs(user)
+
+/obj/item/device/binoculars/proc/update_nvgs(mob/morb)
+	SIGNAL_HANDLER
+
+	if(lighting_alpha < 255)
+		morb.see_in_dark = viewsize
+	morb.lighting_alpha = lighting_alpha
+	morb.sync_lighting_plane_alpha()
+
+/obj/item/device/binoculars/proc/enable_nvgs(mob/living/carbon/human/user)
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_nvgs))
+
+	if(user.client?.prefs?.night_vision_preference)
+		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+	user.add_client_color_matrix("nvg_binos", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)))
+	user.overlay_fullscreen("nvg_binos", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_binos_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+	user.update_sight()
+
+/obj/item/device/binoculars/proc/disable_nvgs(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+
+	user.remove_client_color_matrix("nvg_binos", 1 SECONDS)
+	user.clear_fullscreen("nvg_binos", 0.5 SECONDS)
+	user.clear_fullscreen("nvg_binos_blur", 0.5 SECONDS)
+	user.update_sight()
+
+/obj/item/device/binoculars/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(istype(attacking_item, /obj/item/frame/matrix_frame))
+		var/obj/item/frame/matrix_frame/omnitrix = attacking_item
+		if(upgrade)
+			to_chat(user, SPAN_WARNING("This [src] is already upgraded!"))
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins inserting the matrix on the [src]."),
+		SPAN_NOTICE("You begin attaching the [omnitrix] on the [src]."))
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			return
+		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
+		handle_upgrade(omnitrix.upgrade, omnitrix.power)
+		qdel(omnitrix)
+
+/obj/item/device/binoculars/proc/handle_upgrade(new_upgrade, power)
+	upgrade = new_upgrade
+	switch(upgrade)
+		if(MATRIX_WIDE) // cristalizer makes you able to look from further away
+			viewsize += round(power/2)
+			tile_offset = round(viewsize - 1)
+			desc += "\nThis one seems to be upgraded with a long range lens."
+
+		if(MATRIX_NVG) // NVGs obscures your lenses
+			viewsize -= max(0, 6 - power)
+			tile_offset = round(viewsize - 1)
+			desc += "\nThis one seems to be upgraded with IR night vision."
+
+		if(MATRIX_DEFAULT) // so you have something to do with the empty matrixes
+			new /obj/item/device/binoculars/range/designator(get_turf(src))
+			qdel(src)
 
 /obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/user)
 	if(!istype(user))

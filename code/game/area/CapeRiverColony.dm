@@ -28,7 +28,7 @@
 	icon_state = "cliff_blocked"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	requires_power = FALSE
 	ambience_exterior = AMBIENCE_BIGRED

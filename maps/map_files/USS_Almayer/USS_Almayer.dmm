@@ -80302,7 +80302,7 @@
 	pixel_y = -7;
 	throw_range = 15;
 	pixel_x = 6;
-	req_one_access_txt = "19;20"
+	req_one_access_txt = "10;19;20"
 	},
 /obj/structure/machinery/light{
 	dir = 8

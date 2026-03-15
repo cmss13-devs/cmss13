@@ -1048,6 +1048,8 @@
 		custom_key.contents = keybind["contents"]
 		custom_key.when_human = keybind["when_human"]
 		custom_key.when_xeno = keybind["when_xeno"]
+		custom_key.when_yautja = keybind["when_yautja"]
+		custom_key.when_synth = keybind["when_synth"]
 
 		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 

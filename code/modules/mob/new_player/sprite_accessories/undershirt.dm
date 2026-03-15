@@ -7,6 +7,8 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 		var/datum/sprite_accessory/undershirt/undershirt_datum = new undershirt_type
 		if(restricted_gender && undershirt_datum.gender != restricted_gender && (undershirt_datum.gender == MALE || undershirt_datum.gender == FEMALE))
 			continue
+		if(undershirt_datum.avaliability_restricted)
+			continue
 		if(undershirt_datum.camo_conforming)
 			undershirt_list["[undershirt_datum.name] (Camo Conforming)"] = undershirt_datum
 		else
@@ -16,6 +18,8 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 /datum/sprite_accessory/undershirt
 	icon = 'icons/mob/humans/undershirt.dmi'
 	var/camo_conforming = FALSE
+	/// If this undershirt shouldn't be avaliable in character creation normally
+	var/avaliability_restricted = FALSE
 
 	/// If this undershirt should be displayed while a uniform is worn
 	var/shown_under_uniform = FALSE
@@ -150,3 +154,24 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	icon_state = "b_strapless"
 	gender = FEMALE
 	camo_conforming = FALSE
+
+/datum/sprite_accessory/undershirt/uscm_shirt
+	name = "USCM Shirt"
+	icon_state = "uscm_shirt"
+	gender = NEUTER
+	camo_conforming = FALSE
+	avaliability_restricted = TRUE
+
+/datum/sprite_accessory/undershirt/wy_shirt
+	name = "W-Y Shirt"
+	icon_state = "wy_shirt"
+	gender = NEUTER
+	camo_conforming = FALSE
+	avaliability_restricted = TRUE
+
+/datum/sprite_accessory/undershirt/fullbody_bandages
+	name = "Fullbody Bandages"
+	icon_state = "fullbody_bandages"
+	gender = NEUTER
+	camo_conforming = FALSE
+	avaliability_restricted = TRUE

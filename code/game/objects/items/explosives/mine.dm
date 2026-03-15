@@ -439,6 +439,11 @@
 			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to rearm \the [src]..."))
 				return
+			var/turf = get_turf(src)
+			for(var/obj/item/explosive/mine/existing_mine in turf)
+				if(existing_mine != src)
+					to_chat(user, SPAN_WARNING("There is already a mine deployed here!"))
+					return
 			user.visible_message(SPAN_NOTICE("[user] starts rearming [src]."), \
 			SPAN_NOTICE("You start rearming [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
@@ -523,16 +528,17 @@
 		return
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
+	if(user && src.loc == user)
+		user.drop_inv_item_on_ground(src)
 
 	cause_data = create_cause_data(initial(name), user, src)
-	if(user && user.get_held_item() == src)
-		user.drop_inv_item_on_ground(src)
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
 	deploy_time = world.time
 	mine_state = icon_state
 	timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+	anchored = TRUE
 	for(var/mob/living/carbon/mob in range(1, src))
 		try_to_prime(mob)
 

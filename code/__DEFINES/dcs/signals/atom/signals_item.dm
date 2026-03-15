@@ -48,6 +48,9 @@
 //from /datum/authority/branch/role/proc/equip_role()
 #define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
 
+//from /datum/equipment_preset/proc/load_vanity()
+#define COMSIG_POST_VANITY_UPDATE "post_vanity_update"
+
 #define COMSIG_CAMERA_MAPNAME_ASSIGNED "camera_manager_mapname_assigned"
 #define COMSIG_CAMERA_REGISTER_UI "camera_manager_register_ui"
 #define COMSIG_CAMERA_UNREGISTER_UI "camera_manager_unregister_ui"

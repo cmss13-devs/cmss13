@@ -799,3 +799,18 @@
 /obj/effect/landmark/tutorial_bottom_left
 	name = "tutorial bottom left"
 	icon_state = "new_player"
+
+/// Used to mark atoms for tutorial tracking automatically
+/obj/effect/landmark/tutorial_tracking_marker
+	name = "tutorial tracking marker"
+	icon_state = "tracker"
+	/// type path of target tracking object
+	var/tracking_target_type
+
+/obj/effect/landmark/tutorial_tracking_marker/Initialize(mapload, ...)
+	. = ..()
+	var/area/landmark_area = get_area(src)
+	if(!istype(landmark_area, /area/misc/tutorial))
+		return
+	var/area/misc/tutorial/tutorial_area = landmark_area
+	tutorial_area.atom_tracking_landmarks += src

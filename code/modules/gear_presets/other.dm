@@ -1034,13 +1034,16 @@
 	faction_group = FACTION_LIST_HUNTED
 	flags = EQUIPMENT_PRESET_EXTRA
 
+/datum/equipment_preset/other/hunted/load_vanity(mob/living/carbon/human/new_human)
+	return	//no vanity for historical prey
+
 /datum/equipment_preset/other/hunted/roman
 	name = "Roman Legionary (Hunted)"
 	languages = list(LANGUAGE_FORGOTTEN)
-	idtype = null
+	idtype = /obj/item/card/id/dogtag/roman
 	skills = /datum/skills/gladiator/legionary
-	assignment = "Legionary"
-	job_title = "Legionnaire"
+	assignment = "Roman Legionary"
+	job_title = "Roman Legionary"
 
 /datum/equipment_preset/other/hunted/roman/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -1077,14 +1080,15 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/centurion
 	name = "Roman Centurion (Hunted)"
-	assignment = "Centurion"
-	job_title = "Legionnaire"
+	assignment = "Roman Centurion"
+	job_title = "Roman Centurion"
 
 /datum/equipment_preset/other/hunted/roman/centurion/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman/centurion, WEAR_HEAD)
@@ -1097,14 +1101,15 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/eaglebearer
 	name = "Roman Aquilifer (Hunted)"
-	assignment = "Aquilifer"
-	job_title = "Legionnaire"
+	assignment = "Roman Aquilifer"
+	job_title = "Roman Aquilifer"
 	skills = /datum/skills/gladiator/legionary/eaglebearer
 
 /datum/equipment_preset/other/hunted/roman/eaglebearer/load_gear(mob/living/carbon/human/new_human)
@@ -1116,6 +1121,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE

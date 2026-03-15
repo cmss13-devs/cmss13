@@ -1216,6 +1216,8 @@
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
 
+	qdel(new_player)
+
 /mob/living/carbon/xenomorph/drop_inv_item_on_ground(obj/item/object, nomoveupdate, force)
 	if(istype(object, /obj/item/clothing/mask/facehugger) && !force)
 		if(world.time < hugger_drop_cooldown)

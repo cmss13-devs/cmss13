@@ -843,6 +843,7 @@
 
 	//and display them
 	add_to_all_mob_huds(hivenumber)
+	init_dropship_hud_tracking()
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 

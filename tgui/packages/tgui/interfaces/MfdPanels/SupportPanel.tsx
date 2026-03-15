@@ -21,26 +21,40 @@ export const SupportMfdPanel = (props: MfdProps) => {
     (x) => x.mount_point === equipmentState,
   );
   if (result?.shorthand === 'Medevac') {
-    return <MedevacMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <MedevacMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'Fulton') {
-    return <FultonMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <FultonMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'Sentry') {
-    return <SentryMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <SentryMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'PDS') {
-    return <ParadropMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <ParadropMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'MG') {
-    return <MgMfdPanel panelStateId={props.panelStateId} />;
+    return <MgMfdPanel panelStateId={props.panelStateId} color={props.color} />;
   }
   if (result?.shorthand === 'Spotlight') {
-    return <SpotlightMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <SpotlightMfdPanel
+        panelStateId={props.panelStateId}
+        color={props.color}
+      />
+    );
   }
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}

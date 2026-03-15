@@ -42,6 +42,7 @@
 	hud_set_squad()
 	//and display them
 	add_to_all_mob_huds()
+	init_dropship_hud_tracking()
 
 /mob/living/carbon/human/initialize_pain()
 	if(species)

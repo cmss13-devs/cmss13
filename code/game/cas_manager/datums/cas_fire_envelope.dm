@@ -2,6 +2,7 @@
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions
 	var/fire_length
+	var/base_fire_length // Base fire length before equipment bonuses
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
 	var/first_warning
 	var/second_warning
@@ -16,6 +17,7 @@
 	var/mission_error
 
 	var/stat = FIRE_MISSION_STATE_IDLE
+	var/firemission_initiate_time = 0
 
 	var/recorded_dir = NORTH
 	var/recorded_offset = 0
@@ -23,6 +25,9 @@
 
 	var/obj/effect/firemission_guidance/guidance
 	var/atom/tracked_object
+
+	/// Stores saved firemission configurations by equipment attach_id for restoration after uninstall/reinstall
+	var/list/saved_equipment_configs = list()
 
 /datum/cas_fire_envelope/New()
 	..()
@@ -40,27 +45,90 @@
 		.["missions"] += list(mission.ui_data(user))
 
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
+	var/list/obj/structure/dropship_equipment/weapon/filtered_weapons = weapons
+
+	// Save configurations for equipment that's being removed
+	save_equipment_configs(filtered_weapons)
+
 	for(var/datum/cas_fire_mission/mission in missions)
-		mission.update_weapons(weapons, fire_length)
+		mission.update_weapons(filtered_weapons, fire_length, saved_equipment_configs)
+
+/// Save firemission configurations for equipment that's about to be removed
+/datum/cas_fire_envelope/proc/save_equipment_configs(list/obj/structure/dropship_equipment/weapon/current_weapons)
+	// Create a set of current weapon attach_ids for quick lookup
+	var/list/current_attach_ids = list()
+	for(var/obj/structure/dropship_equipment/weapon/weapon in current_weapons)
+		if(weapon?.ship_base?.attach_id)
+			current_attach_ids += weapon.ship_base.attach_id
+
+	// For each mission, save configs of equipment that's being removed
+	for(var/datum/cas_fire_mission/mission in missions)
+		for(var/datum/cas_fire_mission_record/record in mission.records)
+			if(!record.weapon?.ship_base?.attach_id)
+				continue
+			var/attach_id = record.weapon.ship_base.attach_id
+			// If this equipment is no longer in current weapons, it's being removed
+			if(!(attach_id in current_attach_ids))
+				if(!saved_equipment_configs[mission.name])
+					saved_equipment_configs[mission.name] = list()
+				// Create config key that includes weapon type, attach_id and ammo type
+				var/weapon_type = record.weapon.type
+				var/ammo_name = record.weapon?.ammo_equipped?.name || "No Ammo"
+				var/config_key = "[weapon_type]_[attach_id]_[ammo_name]"
+				// Save the offsets configuration for this combination
+				saved_equipment_configs[mission.name][config_key] = record.offsets.Copy()
+
+				// Also save a fallback configuration under weapon type and attach_id
+				var/fallback_key = "[weapon_type]_[attach_id]_FALLBACK"
+				saved_equipment_configs[mission.name][fallback_key] = record.offsets.Copy()
+
+/// Save configuration
+/datum/cas_fire_envelope/proc/save_equipment_config(datum/cas_fire_mission/mission, obj/structure/dropship_equipment/weapon/weapon)
+	if(!mission || !weapon?.ship_base?.attach_id)
+		return
+
+	var/attach_id = weapon.ship_base.attach_id
+	var/datum/cas_fire_mission_record/record = mission.record_for_weapon(attach_id)
+	if(!record)
+		return
+
+	if(!saved_equipment_configs[mission.name])
+		saved_equipment_configs[mission.name] = list()
+
+	// Create config key that includes weapon type, attach_id and ammo type
+	var/weapon_type = weapon.type
+	var/ammo_name = weapon?.ammo_equipped?.name || "No Ammo"
+	var/config_key = "[weapon_type]_[attach_id]_[ammo_name]"
+
+	// Save the current offsets configuration
+	saved_equipment_configs[mission.name][config_key] = record.offsets.Copy()
+
+	// Also save a fallback configuration under weapon type and attach_id
+	var/fallback_key = "[weapon_type]_[attach_id]_FALLBACK"
+	saved_equipment_configs[mission.name][fallback_key] = record.offsets.Copy()
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
-	if(!missions || !linked_console || !fire_length)
+	if(!missions || !linked_console)
 		return null
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	var/shuttle_tag = linked_console.shuttle_tag
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+
+	// Update fire_length based on equipment
+	update_fire_length()
+
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		if(equipment.is_weapon)
 			weapons += equipment
 
-	var/datum/cas_fire_mission/fm = new()
-	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
-		fm.build_new_record(wp, fire_length)
+	var/datum/cas_fire_mission/new_fire_mission = new()
+	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+		new_fire_mission.build_new_record(weapon, fire_length, saved_equipment_configs)
 
-	fm.name = firemission_name
-	fm.mission_length = length
-	missions += fm
-	return fm
+	new_fire_mission.name = firemission_name
+	new_fire_mission.mission_length = length
+	missions += new_fire_mission
+	return new_fire_mission
 
 	//-1 - system error, 0 - mission error, 1 - all good
 /datum/cas_fire_envelope/proc/update_mission(mission_id, weapon_id, offset_step, offset, skip_checks = 0)
@@ -74,6 +142,12 @@
 	if(!mission)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
+	// Update fire_length and check if mission exceeds current capability
+	update_fire_length()
+	if(mission.mission_length > fire_length)
+		mission_error = "Fire Mission length ([mission.mission_length]) exceeds current vehicle capability ([fire_length]). Check equipment configuration."
+		return FIRE_MISSION_NOT_EXECUTABLE
+
 	var/datum/cas_fire_mission_record/fmr = mission.record_for_weapon(weapon_id)
 	if(!fmr)
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -83,6 +157,9 @@
 	if(offset == null)
 		offset = "-"
 	fmr.offsets[offset_step] = offset
+
+	save_equipment_config(mission, fmr.weapon)
+
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -112,6 +189,13 @@
 		return FIRE_MISSION_BAD_DIRECTION
 	mission_error = null
 	var/datum/cas_fire_mission/mission = missions[mission_id]
+
+	// Update fire_length and check if mission exceeds current capability
+	update_fire_length()
+	if(mission.mission_length > fire_length)
+		mission_error = "Fire Mission length ([mission.mission_length]) exceeds current vehicle capability ([fire_length]). Check equipment configuration."
+		return FIRE_MISSION_CODE_ERROR
+
 	var/check_result = mission.check(linked_console)
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
@@ -288,10 +372,12 @@
 /// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
 	stat = FIRE_MISSION_STATE_IDLE
+	firemission_initiate_time = 0
 
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
+	firemission_initiate_time = world.time
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target lost."
@@ -364,6 +450,7 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
+	base_fire_length = 12
 	grace_period = 5 SECONDS
 	first_warning = 6 SECONDS
 	second_warning = 8 SECONDS
@@ -405,3 +492,9 @@
 	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"
+
+/datum/cas_fire_envelope/proc/update_fire_length()
+	// If base_fire_length is not set, use current fire_length as base
+	if(!base_fire_length)
+		base_fire_length = fire_length
+	fire_length = base_fire_length

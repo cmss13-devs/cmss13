@@ -5,15 +5,19 @@ import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 export interface ButtonProps {
   children?: ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
+  borderColor?: string;
 }
 
 export type LazeTarget = {
   target_name: string;
   target_tag: number;
+  ceiling_protection_tier?: number;
 };
 
 export type TargetContext = {
   targets_data: Array<LazeTarget>;
+  offset_ceiling_protection_tier?: number;
 };
 
 export type FultonProps = {
@@ -38,10 +42,14 @@ export type MedevacTargets = {
 
 export type CameraProps = {
   camera_map_ref?: string;
+  matrix_upgrade?: string;
+  nvg_available?: boolean;
+  nvg_enabled?: boolean;
 };
 
 export type EquipmentContext = {
   equipment_data: Array<DropshipEquipment>;
+  targets_data?: Array<LazeTarget>;
 };
 
 export type MedevacContext = {
@@ -51,6 +59,11 @@ export type MedevacContext = {
 
 export type FiremissionContext = {
   firemission_data: Array<CasFiremission>;
+  firemission_state?: number;
+  firemission_message?: string;
+  firemission_initiate_time?: number;
+  firemission_execution_start?: number;
+  firemission_cooldown_period?: number;
 };
 
 export type SentrySpec = {
@@ -73,6 +86,7 @@ export type SentrySpec = {
 
 export type SpotlightSpec = {
   name: string;
+  deployed: 0 | 1;
 };
 
 export type ParadropSpec = {

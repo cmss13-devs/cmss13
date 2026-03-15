@@ -11,6 +11,7 @@ export const MapMfdPanel = (props: MfdProps) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       bottomButtons={[
         {
           children: 'EXIT',

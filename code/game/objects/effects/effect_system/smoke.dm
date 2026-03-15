@@ -899,3 +899,11 @@
 		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+
+// global smoke spread proc
+
+/proc/smoke_spread(turf/location, radius = 2, smoke_type = /obj/effect/particle_effect/smoke, direction = null, lifetime = null, cause_data = null)
+	var/datum/effect_system/smoke_spread/Smokes = new /datum/effect_system/smoke_spread()
+	Smokes.smoke_type = smoke_type
+	Smokes.set_up(radius, 0, location, direction, lifetime, cause_data)
+	Smokes.start()

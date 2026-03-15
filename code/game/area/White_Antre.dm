@@ -2,7 +2,7 @@
 
 /area/white_antre
 	name = "White Antre Research Facility"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "wydropship"
 	can_build_special = TRUE
 	powernet_name = "ground"

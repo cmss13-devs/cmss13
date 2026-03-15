@@ -56,6 +56,8 @@
 #define AREA_NOSECURECADES (1<<8)
 /// Flags the area, preventing the creation of xeno tunnels, overwriting can_dig_xeno_tunnel.
 #define AREA_NOTUNNEL (1<<9)
+/// Flags the area as heavily ventilated clearing most /obj/effect/particle_effect in a few ticks.
+#define AREA_HEAVILY_VENTILATED (1<<9)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

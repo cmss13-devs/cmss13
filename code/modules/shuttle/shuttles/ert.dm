@@ -386,6 +386,8 @@
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
 
+// FTL umbilical_cord stuff
+
 /datum/map_template/shuttle/port_umbilical_cord
 	name = "Port Umbilical Cord"
 	shuttle_id = /obj/docking_port/mobile/port_umbilical_cord::id
@@ -408,3 +410,32 @@
 
 /obj/structure/machinery/door_control/automatic/umbilical
 	id = "hangar_umbilical_ert"
+	open_delay = 15 SECONDS
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical
+	fire_delay = 2
+	sentry_range = 14
+	omni_directional = TRUE
+	ammo = new /obj/item/ammo_magazine/sentry/premade
+	faction_group = FACTION_LIST_HUMANOID
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical/New(loc, ...)
+	faction_group -= FACTION_LIST_YAUTJA
+	return ..()
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical/set_range()
+	var/range = sentry_range - 1
+	var/dbl_range = range * 2
+
+	if(omni_directional)
+		range_bounds = SQUARE(x, y, dbl_range)
+		return
+	switch(dir)
+		if(EAST)
+			range_bounds = SQUARE(x+range, y, dbl_range)
+		if(WEST)
+			range_bounds = SQUARE(x-range, y, dbl_range)
+		if(NORTH)
+			range_bounds = SQUARE(x, y+range, dbl_range)
+		if(SOUTH)
+			range_bounds = SQUARE(x, y-range, dbl_range)

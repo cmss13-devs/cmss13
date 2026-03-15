@@ -990,6 +990,11 @@ world
 		body.h_style = original.h_style
 		body.f_style = original.f_style
 
+		body.chest_hair = original.chest_hair
+		body.r_chest_hair = original.r_chest_hair
+		body.g_chest_hair = original.g_chest_hair
+		body.b_chest_hair = original.b_chest_hair
+
 		body.underwear = original.underwear
 		body.undershirt = original.undershirt
 

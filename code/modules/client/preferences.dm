@@ -169,6 +169,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
+	var/chest_hair = "None"
+	var/r_chest_hair = 0 //Chest hair color
+	var/g_chest_hair = 0 //Chest hair color
+	var/b_chest_hair = 0 //Chest hair color
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
 	var/undershirt = "Undershirt (Tan) (Camo Conforming)" //undershirt type
 	var/backbag = 2 //backpack type
@@ -463,7 +467,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "<span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
 				dat += "<br>"
 
-			dat += "<b>Edit Hair:</b> <a href='byond://?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
+			dat += "<b>Edit Hair:</b> <a href='byond://?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br>"
+			dat += "<b>Chest Hair:</b> <a href='byond://?_src_=prefs;preference=chest_hair;task=input'><b>[chest_hair]</b></a>"
+			dat += " | "
+			dat += "<a href='byond://?_src_=prefs;preference=chest_hair_color;task=input'><b>Color</b> <span class='square' style='background-color: #[num2hex(r_chest_hair, 2)][num2hex(g_chest_hair, 2)][num2hex(b_chest_hair)];'></span></a>"
+			dat += "<br><br>"
 
 			dat += "<b>Eye:</b> "
 			dat += "<a href='byond://?_src_=prefs;preference=eyes;task=input'>"
@@ -1611,6 +1619,19 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					body_picker.tgui_interact(user)
 					return
 
+				if("chest_hair")
+					var/new_chest_hair = tgui_input_list(user, "Choose your character's chest hair:", "Character Preference", GLOB.chest_hair_list)
+					if(new_chest_hair)
+						chest_hair = new_chest_hair
+					ShowChoices(user)
+
+				if("chest_hair_color")
+					var/new_color = tgui_color_picker(user, "Choose your character's chest hair color:", "Character Preference", rgb(r_chest_hair, g_chest_hair, b_chest_hair))
+					if(new_color)
+						r_chest_hair = hex2num(copytext(new_color, 2, 4))
+						g_chest_hair = hex2num(copytext(new_color, 4, 6))
+						b_chest_hair = hex2num(copytext(new_color, 6, 8))
+
 				if("underwear")
 					var/list/underwear_options = gender == MALE ? GLOB.underwear_m : GLOB.underwear_f
 					var/old_gender = gender
@@ -2214,6 +2235,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
+	character.chest_hair = chest_hair
+	character.r_chest_hair = r_chest_hair
+	character.g_chest_hair = g_chest_hair
+	character.b_chest_hair = b_chest_hair
 	character.underwear = underwear
 	character.undershirt = undershirt
 
@@ -2287,6 +2312,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
+	character.chest_hair = chest_hair
+	character.r_chest_hair = r_chest_hair
+	character.g_chest_hair = g_chest_hair
+	character.b_chest_hair = b_chest_hair
 	character.underwear = underwear
 	character.undershirt = undershirt
 

@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Roller Bed", 4, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
+		list("HealthMate HUD", 2, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 18, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),

@@ -1114,7 +1114,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/twobore/proc/twobore_recoil(mob/living/carbon/human/user, target_angle)
 	var/turf/start_turf = get_turf(user)
 	//Muzzle smoke. Black powder is messy.
-	var/obj/effect/particle_effect/smoke/newsmoke = new(get_step(start_turf, target_angle), 1, create_cause_data(name, user, src), 3)
+	new /obj/effect/particle_effect/smoke(get_step(start_turf, target_angle), 1, create_cause_data(name, user, src), 3)
 
 	var/suicide //Target is or is on the same tile as the shooter. Means the gun goes one way and the shooter stays.
 	var/behind_angle

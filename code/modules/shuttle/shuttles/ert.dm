@@ -128,6 +128,14 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 5
+
+/obj/docking_port/mobile/emergency_response/ert5
+	name = "Military Caste Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT5
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -137,7 +145,6 @@
 	height = 9
 	var/port_door
 	var/starboard_door
-
 
 /obj/docking_port/mobile/emergency_response/small/Initialize(mapload)
 	. = ..()
@@ -356,6 +363,14 @@
 	id = ADMIN_LANDING_PAD_5
 	roundstart_template = /datum/map_template/shuttle/twe_ert
 
+/obj/docking_port/stationary/emergency_response/idle_port7
+	name = "Response Station Landing Pad 7"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_5
+	width  = 17
+	height = 29
+	roundstart_template = /datum/map_template/shuttle/mcaste_ert
+
 /obj/docking_port/stationary/emergency_response/chinook_port
 	name = "Chinook Station Landing Pad 1"
 	dir = NORTH
@@ -377,6 +392,10 @@
 /datum/map_template/shuttle/twe_ert
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
+
+/datum/map_template/shuttle/mcaste_ert
+	name = "Military Caste Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

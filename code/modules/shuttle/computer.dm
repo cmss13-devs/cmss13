@@ -358,6 +358,27 @@
 			continue
 		. += list(dock)
 
+/obj/structure/machinery/computer/shuttle/ert/pred_mcaste
+	name = "flight console"
+	desc = "An advanced alien flight console."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "console_ert_shuttle"
+
+// as preds don't have standard IDs (it's in their bracer) we check for a user's knowledge of pred tech instead
+/obj/structure/machinery/computer/shuttle/ert/pred_mcaste/tgui_interact(mob/user, datum/tgui/ui)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	if(ert.distress_beacon && ishuman(user))
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+			to_chat(user, SPAN_WARNING("The console's interface is awash with strange symbols. You have no idea how to operate this thing."))
+			balloon_alert(user, "???")
+			return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
+		ui.open()
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."

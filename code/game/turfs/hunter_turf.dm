@@ -299,3 +299,86 @@
 
 /turf/open/floor/predship/hull/non_weedable_hull/northwest
 	dir = NORTHWEST
+
+/// Shuttle
+
+/turf/closed/shuttle/hunter
+	name = "hull"
+	icon = 'icons/turf/ert_shuttle.dmi'
+	icon_state = "hunter4"
+
+/turf/closed/shuttle/hunter/transparent
+	opacity = FALSE
+
+/turf/open/mcaste_shuttle
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+
+/turf/open/mcaste_shuttle/shuttle_border
+	icon_state = "17,15"
+
+/turf/open/mcaste_shuttle/shuttle_border/north
+	dir = NORTH
+
+/turf/open/mcaste_shuttle/shuttle_border/east
+	dir = EAST
+
+/turf/open/mcaste_shuttle/shuttle_border/west
+	dir = WEST
+
+/turf/open/mcaste_shuttle/shuttle_border_corner
+	icon_state = "6,6"
+
+/turf/open/mcaste_shuttle/shuttle_border_corner/north
+	dir = NORTH
+
+/turf/open/mcaste_shuttle/shuttle_border_corner/east
+	dir = EAST
+
+/turf/open/mcaste_shuttle/shuttle_border_corner/west
+	dir = WEST
+
+/obj/structure/shuttle/part/hunter
+	name = "hull"
+	icon = 'icons/turf/ert_shuttle.dmi'
+	icon_state = "hunter4"
+	plane = TURF_PLANE
+
+/obj/structure/shuttle/part/hunter/engine_left_back
+	icon_state = "pred_leftengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_left_front
+	icon_state = "pred_leftengine_6"
+
+/obj/structure/shuttle/part/hunter/engine_right_back
+	icon_state = "pred_rightengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_right_front
+	icon_state = "pred_rightengine_6"
+
+/obj/structure/shuttle/part/hunter/left_front1
+	icon_state = "hunter18"
+
+/obj/structure/shuttle/part/hunter/left_front2
+	icon_state = "hunter21"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front3
+	icon_state = "hunter22"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front4
+	icon_state = "hunter20"
+
+/obj/structure/shuttle/part/hunter/right_front1
+	icon_state = "hunter25"
+
+/obj/structure/shuttle/part/hunter/right_front2
+	icon_state = "hunter27"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front3
+	icon_state = "hunter28"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front4
+	icon_state = "hunter26"

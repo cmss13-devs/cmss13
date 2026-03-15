@@ -105,7 +105,6 @@
 	var/sg_preset = /datum/equipment_preset/uscm/marsoc/sg
 
 /datum/emergency_call/marsoc/create_member(datum/mind/player, turf/override_spawn_loc)
-
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -140,3 +139,46 @@
 	leader_preset = /datum/equipment_preset/uscm/marsoc/low_threat/sl
 	member_preset = /datum/equipment_preset/uscm/marsoc/low_threat
 	sg_preset = /datum/equipment_preset/uscm/marsoc/sg/low_threat
+
+//################################################################################################
+// Yautja Military Caste - Predator Deathsquad. Event only
+/datum/emergency_call/yautja_mcaste
+	name = "Yautja Military Caste Soldiers (!DEATHSQUAD!)"
+	mob_max = 8
+	mob_min = 3
+	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
+	probability = 0
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	home_base = /datum/lazy_template/ert/yautja_station
+	hostility = TRUE
+	var/team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer
+	var/team_member_preset = /datum/equipment_preset/yautja/soldier
+
+/datum/emergency_call/yautja_mcaste/create_member(datum/mind/player, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return
+
+	var/mob/living/carbon/human/yautja/member = new(spawn_loc)
+	player.transfer_to(member, TRUE)
+
+	if(!leader && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(member.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = member
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Enforcer, tasked with leading a team of soldiers against threats to your species.")))
+		arm_equipment(member, team_lead_preset, TRUE, TRUE)
+	else
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Soldier, one of few Yautja equipped for full-scale warfare.")))
+		arm_equipment(member, team_member_preset, TRUE, TRUE)
+
+// needs to be outright stated; this is a deathsquad and not a whitelisted antag role, they don't follow hc
+// staff and pred council can communicate with them via the elder overseer if they have a mission that isn't "kill everything"
+	to_chat(member, SPAN_BOLDNOTICE("You answer only to the Ancients and the Elder Overseer, and are not required to follow the Honor Code."))
+	to_chat(member, SPAN_BOLDNOTICE("Execute your mission with extreme prejudice."))
+
+	to_chat(member, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
+
+/datum/emergency_call/yautja_mcaste/low_threat
+	name = "Yautja Military Caste Soldiers"
+	team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer/low_threat
+	team_member_preset = /datum/equipment_preset/yautja/soldier/low_threat

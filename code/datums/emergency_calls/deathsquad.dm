@@ -145,7 +145,7 @@
 /datum/emergency_call/yautja_mcaste
 	name = "Yautja Military Caste Soldiers (!DEATHSQUAD!)"
 	mob_max = 8
-	mob_min = 1
+	mob_min = 3
 	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5

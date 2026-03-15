@@ -613,6 +613,117 @@
 	desc = "Form fitted for the K9 Rescue Unit line of synthetics. For carrying MP Equipment."
 	icon_state = "mppack_k9"
 
+/obj/item/storage/backpack/marine/medic/chempack
+	name = "\improper USCM corpsman chempack"
+	desc = "A specialized backpack worn by USCM hospital corpsmen. Features an internal housing for an MS-22 Large Reagent Tank, used to refill pressurized canisters and smart refill tanks in the field."
+	icon_state = "marinepack_chem"
+	item_state = "marinepack_chem"
+	item_state_slots = list(WEAR_BACK = "marinepack_chem")
+	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
+
+/obj/item/storage/backpack/marine/medic/chempack/Initialize()
+	. = ..()
+	internal_tank = new /obj/item/reagent_container/glass/minitank/large()
+	internal_tank.moveToNullspace()
+	internal_tank.owner_pack = src
+
+/obj/item/storage/backpack/marine/medic/chempack/Destroy()
+	if(internal_tank && !QDELETED(internal_tank))
+		internal_tank.owner_pack = null
+		qdel(internal_tank)
+	internal_tank = null
+	return ..()
+
+/obj/item/storage/backpack/marine/medic/chempack/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
+		if(internal_tank)
+			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
+			return
+		internal_tank = W
+		var/obj/item/reagent_container/glass/minitank/large/tank = W
+		tank.owner_pack = src
+		user.drop_inv_item_on_ground(W)
+		W.moveToNullspace()
+		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
+		update_icon()
+		return
+	if(!internal_tank)
+		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
+		. = ..()
+		return
+	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister) \
+	|| istype(W, /obj/item/reagent_container/glass/minitank) \
+	|| (istype(W, /obj/item/reagent_container/hypospray) && !istype(W, /obj/item/reagent_container/hypospray/autoinjector)))
+		if(!internal_tank.reagents.total_volume)
+			to_chat(user, SPAN_WARNING("[src]'s tank is empty. Remove it and refill at a pressurized chemical dispenser."))
+			return
+		var/obj/item/reagent_container/container = W
+		if(container.reagents.total_volume >= container.volume)
+			to_chat(user, SPAN_WARNING("[container] is already full."))
+			return
+		var/space = container.volume - container.reagents.total_volume
+		var/transferred = internal_tank.reagents.trans_to(container, space)
+		if(transferred)
+			to_chat(user, SPAN_NOTICE("You refill [container] from [src]. ([internal_tank.reagents.total_volume]u remaining in tank.)"))
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		return
+	. = ..()
+
+/obj/item/storage/backpack/marine/medic/chempack/verb/remove_canister()
+	set category = "Object"
+	set name = "Remove Canister"
+	set src in usr
+
+	if(!internal_tank)
+		to_chat(usr, SPAN_WARNING("There's no tank installed in [src]."))
+		return
+	var/obj/item/reagent_container/glass/minitank/large/tank = internal_tank
+	internal_tank = null
+	tank.owner_pack = null
+	tank.forceMove(usr.loc)
+	usr.put_in_hands(tank)
+	to_chat(usr, SPAN_NOTICE("You remove the tank from [src]."))
+	update_icon()
+
+/obj/item/storage/backpack/marine/medic/chempack/get_examine_text(mob/user)
+	. = ..()
+	if(internal_tank)
+		. += "The internal tank holds [internal_tank.reagents.total_volume]/[internal_tank.volume]u of solution."
+	else
+		. += "The internal tank housing is empty."
+
+/obj/item/storage/backpack/marine/medic/chempack/update_icon()
+	if(!internal_tank)
+		icon_state = "marinepack_chem_notank"
+		item_state_slots = list(WEAR_BACK = "marinepack_medic")
+		. = ..()
+		if(loc && isliving(loc))
+			var/mob/living/M = loc
+			M.update_inv_back()
+		return
+	icon_state = "marinepack_chem"
+	item_state_slots = list(WEAR_BACK = "marinepack_chem")
+	. = ..()
+	if(loc && isliving(loc))
+		var/mob/living/M = loc
+		M.update_inv_back()
+	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
+		return
+	var/image/filling
+	var/percent = floor((internal_tank.reagents.total_volume / internal_tank.volume) * 100)
+	if(percent >= 76)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank100")
+	else if(percent >= 51)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank75")
+	else if(percent >= 26)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank50")
+	else if(percent >= 11)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank25")
+	else
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chempack_tank10")
+	filling.color = mix_color_from_reagents(internal_tank.reagents.reagent_list)
+	overlays += filling
+
 /obj/item/storage/backpack/marine/medic/upp
 	name = "\improper UPP corpsman backpack"
 	desc = "Uncommon issue backpack worn by UPP medics from isolated sectors. You can swear you can see a faded USCM symbol."
@@ -681,6 +792,114 @@
 	name = "\improper USCM corpsman satchel"
 	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sewn to the top flap."
 	icon_state = "marinesatch_medic"
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel
+	name = "\improper USCM corpsman chemsatchel"
+	desc = "A specialized satchel worn by USCM hospital corpsmen. Features an internal housing for an MS-22 Large Reagent Tank, used to refill pressurized canisters and smart refill tanks in the field."
+	icon_state = "marinesatch_chem"
+	item_state = "marinesatch_chem"
+	item_state_slots = list(WEAR_BACK = "marinesatch_chem")
+	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Initialize()
+	. = ..()
+	internal_tank = new /obj/item/reagent_container/glass/minitank/large()
+	internal_tank.moveToNullspace()
+	internal_tank.owner_pack = src
+	update_icon()
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Destroy()
+	if(internal_tank && !QDELETED(internal_tank))
+		internal_tank.owner_pack = null
+		qdel(internal_tank)
+	internal_tank = null
+	return ..()
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
+		if(internal_tank)
+			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
+			return
+		internal_tank = W
+		var/obj/item/reagent_container/glass/minitank/large/tank = W
+		tank.owner_pack = src
+		user.drop_inv_item_on_ground(W)
+		W.moveToNullspace()
+		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
+		update_icon()
+		return
+	if(!internal_tank)
+		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
+		. = ..()
+		return
+	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister) \
+	|| istype(W, /obj/item/reagent_container/glass/minitank) \
+	|| (istype(W, /obj/item/reagent_container/hypospray) && !istype(W, /obj/item/reagent_container/hypospray/autoinjector)))
+		if(!internal_tank.reagents.total_volume)
+			to_chat(user, SPAN_WARNING("[src]'s tank is empty. Remove it and refill at a pressurized chemical dispenser."))
+			return
+		var/obj/item/reagent_container/container = W
+		if(container.reagents.total_volume >= container.volume)
+			to_chat(user, SPAN_WARNING("[container] is already full."))
+			return
+		var/space = container.volume - container.reagents.total_volume
+		var/transferred = internal_tank.reagents.trans_to(container, space)
+		if(transferred)
+			to_chat(user, SPAN_NOTICE("You refill [container] from [src]. ([internal_tank.reagents.total_volume]u remaining in tank.)"))
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			update_icon()
+		return
+	. = ..()
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/verb/remove_canister()
+	set category = "Object"
+	set name = "Remove Canister"
+	set src in usr
+
+	if(!internal_tank)
+		to_chat(usr, SPAN_WARNING("There's no tank installed in [src]."))
+		return
+	var/obj/item/reagent_container/glass/minitank/large/tank = internal_tank
+	internal_tank = null
+	tank.owner_pack = null
+	tank.forceMove(usr.loc)
+	usr.put_in_hands(tank)
+	to_chat(usr, SPAN_NOTICE("You remove the tank from [src]."))
+	update_icon()
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/get_examine_text(mob/user)
+	. = ..()
+	if(internal_tank)
+		. += "The internal tank holds [internal_tank.reagents.total_volume]/[internal_tank.volume]u of solution."
+	else
+		. += "The internal tank housing is empty."
+
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/update_icon()
+	overlays.Cut()
+	if(!internal_tank)
+		icon_state = "marinesatch_chem_notank"
+		item_state = "marinesatch_chem"
+		. = ..()
+		return
+	icon_state = "marinesatch_chem"
+	item_state = "marinesatch_chem"
+	. = ..()
+	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
+		return
+	var/image/filling
+	var/percent = floor((internal_tank.reagents.total_volume / internal_tank.volume) * 100)
+	if(percent >= 76)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chemsatchel_tank100")
+	else if(percent >= 51)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chemsatchel_tank75")
+	else if(percent >= 26)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chemsatchel_tank50")
+	else if(percent >= 11)
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chemsatchel_tank25")
+	else
+		filling = image('icons/obj/items/reagentfillings.dmi', src, "chemsatchel_tank10")
+	filling.color = mix_color_from_reagents(internal_tank.reagents.reagent_list)
+	overlays += filling
 
 /obj/item/storage/backpack/marine/satchel/tech
 	name = "\improper USCM technician chestrig"

@@ -64,6 +64,7 @@ map new_varadero
 endmap
 
 map tyrargo_rift
+	minplayers 100
 endmap
 
 map cape_river

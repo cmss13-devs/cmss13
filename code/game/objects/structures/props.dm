@@ -470,7 +470,7 @@
 
 /obj/structure/prop/invuln/static_corpse/afric_zimmer/trooper
 	name = "Unknown Trooper"
-	desc = "What remains of a unknown trooper. May they rest in peace."
+	desc = "What remains of an unknown trooper. May they rest in peace."
 	icon_state = "army_guy"
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
@@ -843,7 +843,7 @@
 
 /obj/structure/prop/holidays/wreath
 	name = "M1 pattern festive needle torus"
-	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
+	desc = "In 2140 after a two different sublevels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
 
 
@@ -901,13 +901,13 @@
 
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf
 	icon_state = "evac_usaf"
-	desc = "High tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the nothern defences were breached, nessecitating an evacuation."
+	desc = "High-tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the northern defences were breached, necessitating an evacuation."
 
 // USCM Truck
 
 /obj/structure/prop/vehicles/tank/truck
 	name = "M887 Truck"
-	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent oubreak."
+	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent outbreak."
 	icon = 'icons/obj/vehicles/van_prop.dmi'
 	icon_state = "van_base"
 	density = FALSE
@@ -951,7 +951,7 @@
 
 /obj/structure/prop/vehicles/tank/miltruck
 	name = "M255 Armored Half-Track"
-	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Verstile and cheap. This one appears to be non-functional due to overuse during the recent oubreak."
+	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Versatile and cheap. This one appears to be non-functional due to overuse during the recent outbreak."
 	icon = 'icons/obj/vehicles/miltruck_prop.dmi'
 	icon_state = "track_base"
 	density = FALSE
@@ -1008,7 +1008,7 @@
 
 /obj/structure/prop/vehicles/tank/ifv
 	name = "M34 Marshal IFV"
-	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and and more durable then the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
+	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and more durable than the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
 	icon = 'icons/obj/vehicles/ifv_prop.dmi'
 	icon_state = "ifv_base"
 	density = FALSE
@@ -1023,7 +1023,7 @@
 
 /obj/structure/prop/vehicles/tank/bison
 	name = "BISON Automated Transport Vehicle"
-	desc = "The BISON ATV is an remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the auto-pilot functions to work. This model is non-functional."
+	desc = "The BISON ATV is a remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the autopilot functions to work. This model is non-functional."
 	icon = 'icons/obj/vehicles/bison_prop.dmi'
 	icon_state = "base_closed"
 	density = FALSE

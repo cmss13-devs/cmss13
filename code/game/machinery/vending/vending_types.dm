@@ -656,6 +656,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 10,
 		/obj/item/device/cassette_tape/indie = 10,
 		/obj/item/device/walkman = 50,
+		/obj/item/device/walkman/white_band = 50,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
@@ -689,6 +690,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 5,
 		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
+		/obj/item/device/walkman/white_band = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
@@ -711,11 +713,21 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/structure/machinery/vending/walkman/update_icon()
+	overlays.Cut()
+
+	if(stat & NOPOWER)
+		overlays += image(icon, "[icon_state]_off")
+	if(stat & BROKEN)
+		overlays += image(icon, "[initial(icon_state)]_broken")
+		if(stat & IN_REPAIR)
+			overlays += image(icon, "[icon_state]_panel")
+
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"
 	desc = "A vending machine meant to be use for cooks."
-	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	product_ads = "If you're out of ingredients I am here for you!All my organic produce is fresh!;Don't let my potatoes go stale, time for you to cook some fries!"
 	icon_state = "snack" //TODO: placeholder, make a proper unique sprite
 	hacking_safety = TRUE
 	products = list(

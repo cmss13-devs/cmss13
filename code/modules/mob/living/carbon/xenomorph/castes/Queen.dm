@@ -112,7 +112,7 @@
 
 	hivenumber = Q.hivenumber
 	med_hud_set_status()
-	add_to_all_mob_huds()
+	add_to_all_mob_huds(hivenumber)
 
 	Q.sight |= SEE_TURFS|SEE_OBJS
 

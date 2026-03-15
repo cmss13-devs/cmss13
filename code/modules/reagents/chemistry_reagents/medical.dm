@@ -84,7 +84,7 @@
 /datum/reagent/medical/kelotane
 	name = "Kelotane"
 	id = "kelotane"
-	description = "Kelotane is a common anticorrosive drug used to treat corrosive and caustic burn trauma. Overdoses are ironically caustic and toxic, damaging skin and muscle tissues."
+	description = "Kelotane is a common anticorrosive drug used to treat corrosive and caustic burn trauma. Overdoses are ironically caustic and toxic, damaging skin and muscle tissue."
 	reagent_state = LIQUID
 	color = "#d8b343" // rgb: 216, 179, 67
 	overdose = REAGENTS_OVERDOSE
@@ -95,7 +95,7 @@
 /datum/reagent/medical/dermaline
 	name = "Dermaline"
 	id = "dermaline"
-	description = "Dermaline is a more potent anticorrosive drug used to treat severe burn trauma. It enables the body to restore damaged tissue even after accruing fourth-degree burns, down to the bone. Overdoses are ironically caustic and toxic, damaging skin and muscle tissues."
+	description = "Dermaline is a more potent anticorrosive drug used to treat severe burn trauma. It enables the body to restore damaged tissue even after accruing fourth-degree burns, down to the bone. Overdoses are ironically caustic and toxic, damaging skin and muscle tissue."
 	reagent_state = LIQUID
 	color = "#e2972e" // 226, 151, 46
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -106,7 +106,7 @@
 /datum/reagent/medical/dexalin
 	name = "Dexalin"
 	id = "dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Overdoses are toxic and can severely damage skin and muscle tissues."
+	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Overdoses are toxic and can severely damage skin and muscle tissue."
 	reagent_state = LIQUID
 	color = "#1f28a7" // rgb: 31, 40, 167
 	overdose = REAGENTS_OVERDOSE
@@ -117,7 +117,7 @@
 /datum/reagent/medical/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
-	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to expedite the rate at which oxygen binds to the hemoglobin in red blood cells. One unit can immediately and completely cleanse the body of excessive carbon dioxide. However, overdoses are toxic and can severely damage skin and muscle tissues."
+	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to expedite the rate at which oxygen binds to the hemoglobin in red blood cells. One unit can immediately and completely cleanse the body of excessive carbon dioxide. However, overdoses are toxic and can severely damage skin and muscle tissue."
 	reagent_state = LIQUID
 	color = "#4d5cdb" // rgb: 77, 92, 219
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -179,6 +179,28 @@
 		PROPERTY_NEUROPEUTIC = 2,
 	)
 	flags = REAGENT_TYPE_MEDICAL
+
+/datum/reagent/medical/thwei/human
+	name = "Dathwei"
+	id = "dathwei"
+	color = "#c46b41" // rgb: 77, 42, 25
+	properties = list(
+		PROPERTY_CARDIOSTABILIZING = 4,
+		PROPERTY_ORGANSTABILIZE = 1,
+		PROPERTY_PAINKILLING = 4,
+		PROPERTY_ANTITOXIC = 1,
+		PROPERTY_YAUTJA_HEMOGENIC = 3,
+		PROPERTY_OXYGENATING = 6,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_BONEMENDING = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+		PROPERTY_OCULOPEUTIC = 2,
+		PROPERTY_NEUROPEUTIC = 2,
+	)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
@@ -242,7 +264,7 @@
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon at damages external tissues, and critical overdoses ironically damage internal organs."
+	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon at damages external tissue, and critical overdoses ironically damage internal organs."
 	reagent_state = LIQUID
 	color = "#403142" // rgb: 64, 49, 66
 	overdose = LOWH_REAGENTS_OVERDOSE

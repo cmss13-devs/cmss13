@@ -82,7 +82,8 @@
 	var/hugger_nurturing = FALSE
 	var/huggers_max = 0
 	var/throwspeed = 0
-	var/hugger_delay = 0
+	/// delay time modifier it takes between hugger throws, only exclusively used by the carrier currently
+	var/hugger_throw_delay = 0
 	var/eggs_max = 0
 	var/egg_cooldown = 30
 	///Armor but for explosions

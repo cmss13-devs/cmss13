@@ -87,7 +87,7 @@
 		to_chat(src, SPAN_DANGER("You're already hunting something."))
 		return
 
-	if(!isyautja(src))
+	if(!isyautja(src) && !isthrall(src))
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
@@ -132,7 +132,7 @@
 		to_chat(src, SPAN_DANGER("You're not hunting anything right now."))
 		return
 
-	if(!isyautja(src))
+	if(!isyautja(src) && !isthrall(src))
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 

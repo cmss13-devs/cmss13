@@ -148,7 +148,7 @@
  * - y_upper: The maximum y coordinate to load
  * - z_lower: The minimum z coordinate to load
  * - z_upper: The maximum z coordinate to load
- * - place_on_top: Whether to use /turf/proc/PlaceOnTop rather than /turf/proc/ChangeTurf
+ * - place_on_top: Whether to use /turf/proc/place_on_top rather than /turf/proc/ChangeTurf
  * - new_z: If true, a new z level will be created for the map
  * - delete: CM/TGMC addition, if we need to manually clear turf contents before spawning stuff
  */
@@ -892,7 +892,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		.[model_key] = list(members, members_attributes)
 	return .
 
-/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z, delete)
+/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, place_on_top as num, new_z, delete)
 	// If we don't have a turf, nothing we will do next will actually acomplish anything, so just go back
 	// Note, this would actually drop area vvs in the tile, but like, why tho
 	if(!crds)
@@ -914,7 +914,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	//first instance the /area and remove it from the members list
 	index = length(members)
 	var/area/old_area
-	if(members[index] != /area/template_noop)
+	if(!ispath(members[index], /area/template_noop)) // CM Edit for /area/template_noop/conditional support
 		if(members_attributes[index] != default_list)
 			world.preloader_setup(members_attributes[index], members[index])//preloader for assigning  set variables on atom creation
 		var/area/area_instance = loaded_areas[members[index]]
@@ -942,6 +942,37 @@ GLOBAL_LIST_EMPTY(map_model_default)
 
 		if(GLOB.use_preloader)
 			world.preloader_load(area_instance)
+	else if(ispath(members[index], /area/template_noop/conditional)) // CM Edit for /area/template_noop/conditional support START
+		if(!new_z)
+			old_area = crds.loc
+		var/area/template_noop/conditional/template_area = members[index]
+		if(!old_area || istype(old_area, template_area::trigger_area_type))
+			var/area_type = template_area::resulting_area_type
+			if(members_attributes[index] != default_list)
+				world.preloader_setup(members_attributes[index], area_type)//preloader for assigning  set variables on atom creation
+			var/area/area_instance = loaded_areas[area_type]
+			if(!area_instance)
+				// If this parsed map doesn't have that area already, we check the global cache
+				area_instance = GLOB.areas_by_type[area_type]
+				// If the global list DOESN'T have this area it's either not a unique area, or it just hasn't been created yet
+				if(!area_instance)
+					area_instance = new area_type(null)
+					if(!area_instance)
+						CRASH("[area_type] failed to be new'd, what'd you do?")
+				loaded_areas[area_type] = area_instance
+
+//			if(!new_z)
+//				old_area.turfs_to_uncontain += crds
+//				area_instance.contained_turfs.Add(crds)
+			area_instance.contents.Add(crds)
+			if(old_area)
+				// Make sure atoms leave their old area and enter the new area
+				for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+					old_area.Exited(turf_atom)
+					area_instance.Entered(turf_atom, crds)
+
+			if(GLOB.use_preloader)
+				world.preloader_load(area_instance) // CM Edit for /area/template_noop/conditional support END
 
 	// Index right before /area is /turf
 	index--
@@ -961,7 +992,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 				qdel(turf_atom, force = TRUE)
 
 		// Note: we make the assertion that the last path WILL be a turf. if it isn't, this will fail.
-		if(placeOnTop)
+		if(place_on_top)
 			instance = crds.load_on_top(members[index], CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))
 		else if(no_changeturf)
 			instance = create_atom(members[index], crds)//first preloader pass

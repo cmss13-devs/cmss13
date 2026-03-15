@@ -779,3 +779,14 @@
 #define LARVA_STATE_BLOODY 0
 #define LARVA_STATE_NORMAL 1
 #define LARVA_STATE_MATURE 2
+
+// facehugger / carrier nonsense
+
+#define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
+#define MAX_IMPREGNATION_TIME 15 SECONDS
+
+#define HUGGER_MIN_ACTIVE_TIME 3.5 SECONDS //Time between being dropped and going idle
+#define HUGGER_MAX_ACTIVE_TIME 7 SECONDS
+
+#define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
+#define CARRIER_HUGGER_THROW_RANGE 6

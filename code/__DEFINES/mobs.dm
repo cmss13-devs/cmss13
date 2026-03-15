@@ -81,6 +81,7 @@
 #define AGONY "agony" // Added in PAIN!
 #define STUTTER "stutter"
 #define EYE_BLUR "eye_blur"
+#define EYE_BLIND "eye_blind"
 #define DROWSY "drowsy"
 #define SLUR "slur"
 #define DAZE "daze"

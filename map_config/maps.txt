@@ -67,5 +67,9 @@ map tyrargo_rift
 	minplayers 100
 endmap
 
+map conam_81_abyssal
+	maxplayers 85
+endmap
+
 map whiskey_outpost_v2
 endmap

@@ -174,7 +174,7 @@
 
 
 /datum/action/xeno_action/verb/verb_watch_xeno()
-	set category = "Alien"
+	set category = "Alien.Hivemind"
 	set name = "Watch Xenomorph"
 	set hidden = TRUE
 	var/action_name = "Watch Xenomorph"
@@ -196,7 +196,7 @@
 
 // night vision is special
 /datum/action/xeno_action/verb/verb_night_vision()
-	set category = "Alien"
+	set category = "Alien.Essentials"
 	set name = "Toggle Nightvision"
 	set hidden = TRUE
 	var/mob/living/carbon/C = src

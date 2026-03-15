@@ -11,3 +11,9 @@
 
 
 
+/turf/open/loma/sand
+	icon = 'icons/turf/floors/loma/sand.dmi'
+	icon_state = "sand"
+
+/turf/open/loma/sand/sand_alt
+	icon_state = "sand_alt"

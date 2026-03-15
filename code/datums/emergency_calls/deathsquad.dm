@@ -165,11 +165,11 @@
 
 	if(!leader && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(member.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = member
+		arm_equipment(member, team_lead_preset, TRUE, TRUE) // arm_equipment *before* giving them the brief message because equipping bracers has its own equip message that otherwise gets in the way of the whole exposition block
 		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Enforcer, tasked with leading a team of soldiers against threats to your species.")))
-		arm_equipment(member, team_lead_preset, TRUE, TRUE)
 	else
-		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Soldier, one of few Yautja equipped for full-scale warfare.")))
 		arm_equipment(member, team_member_preset, TRUE, TRUE)
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Military Caste Soldier, one of few Yautja equipped for full-scale warfare.")))
 
 // needs to be outright stated; this is a deathsquad and not a whitelisted antag role, they don't follow hc
 // staff and pred council can communicate with them via the elder overseer if they have a mission that isn't "kill everything"

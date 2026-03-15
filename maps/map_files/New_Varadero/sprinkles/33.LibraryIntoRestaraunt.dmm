@@ -204,7 +204,7 @@
 /area/varadero/interior/library/restaraunt)
 "re" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper New Varadero Restaraunt"
+	name = "\improper New Varadero Restaurant"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)

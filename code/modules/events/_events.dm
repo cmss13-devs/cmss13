@@ -134,7 +134,7 @@ Runs the event
 	var/endWhen = 0 //When in the lifetime the event should end.
 
 	var/activeFor = 0 //How long the event has existed. You don't need to change this.
-	var/current_players = 0 //Amount of of alive, non-AFK human players on server at the time of event start
+	var/current_players = 0 //Amount of alive, non-AFK human players on server at the time of event start
 
 	/// Whether a admin wants this event to be cancelled
 	var/cancel_event = FALSE
@@ -223,7 +223,7 @@ Runs the event
 /datum/round_event/proc/kill()
 	SSevents.running -= src
 
-//Sets up the event then adds the event to the the list of running events
+//Sets up the event then adds the event to the list of running events
 /datum/round_event/New(my_processing = TRUE)
 	setup()
 	processing = my_processing

@@ -104,6 +104,8 @@
 				stuttering = max(stuttering, effect)
 		if(EYE_BLUR)
 			EyeBlur(effect)
+		if(EYE_BLIND)
+			EyeBlind(effect)
 		if(DROWSY)
 			drowsiness = max(drowsiness, effect)
 		if(ROOT)

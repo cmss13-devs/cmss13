@@ -152,6 +152,12 @@
 	desc = "An overview of the Sekhmet Swamp research facility schematics."
 	html_link = "images/1/18/Map_icecolony.png"
 
+/obj/item/map/galaxy
+	name = "\improper Galaxy map"
+	desc = "A diagrammatic map of the milky way, laid out by sector."
+	html_link = "images/9/9e/Galaxy_Map.png"
+	color = "#005eab"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -174,6 +180,11 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_SEKHMET_SWAMP = new /obj/item/map/sekhmet_swamp_map()
 	)
 
+/proc/map_should_have_map_item(map_name)
+	if (map_name == MAP_RUNTIME || map_name == MAP_CHINOOK || map_name == MAIN_SHIP_DEFAULT_NAME || map_name == MAP_ROSTOCK)
+		return FALSE // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
+	return TRUE
+
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
 
@@ -182,7 +193,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 	var/map_name = SSmapping.configs[GROUND_MAP].map_name
 	var/obj/item/map/map = GLOB.map_type_list[map_name]
-	if (!map && (map_name == MAP_RUNTIME || map_name == MAP_CHINOOK || map_name == MAIN_SHIP_DEFAULT_NAME || map_name == MAP_ROSTOCK))
+	if (!map && !map_should_have_map_item(map_name))
 		return // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
 	name = map.name
 	desc = map.desc

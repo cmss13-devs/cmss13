@@ -235,10 +235,14 @@
 	plane = OPEN_SPACE_PLANE_START
 	var/offset = 0
 
-/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
+/atom/movable/screen/plane_master/open_space/New(loc, offset)
+	. = ..()
+	// This has to be done in New because /datum/hud/New will expect the plane to already be correct and maploading can delay Initialize
 	src.offset = offset
 	name = "open space plane [offset]"
 	plane -= offset
+
+/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
 	. = ..()
 	add_filters()
 

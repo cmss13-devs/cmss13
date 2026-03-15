@@ -6,7 +6,7 @@
 	mob_min = 10
 	max_heavies = 10
 	arrival_message = "'Deus le volt. Deus le volt! DEUS LE VOLT!!'"
-	objectives = "Clense the place of all that is unholy! Die in glory!"
+	objectives = "Cleanse the place of all that is unholy! Die in glory!"
 	probability = 0
 	hostility = TRUE
 

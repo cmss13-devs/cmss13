@@ -1,8 +1,3 @@
-#define CONTROL_POD_DOORS 0
-#define CONTROL_NORMAL_DOORS 1
-#define CONTROL_EMITTERS 2
-#define CONTROL_DROPSHIP 3
-
 /obj/structure/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
@@ -16,7 +11,7 @@
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
-	var/desiredstate = 0 // Zero is closed, 1 is open.
+	var/desiredstate = CONTROL_STATE_CLOSED
 	var/specialfunctions = 1
 	/*
 	Bitflag, 1= open
@@ -75,13 +70,13 @@
 
 /obj/structure/machinery/door_control/proc/handle_door()
 	for(var/obj/structure/machinery/door/airlock/D in range(range))
-		if(D.id_tag == src.id)
+		if(D.id_tag == id)
 			if(specialfunctions & OPEN)
 				if (D.density)
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
-			if(desiredstate == 1)
+			if(desiredstate == CONTROL_STATE_OPEN)
 				if(specialfunctions & IDSCAN)
 					D.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
@@ -184,7 +179,7 @@
 		return
 
 	// If someone's trying to lower the railings but the elevator isn't in the vehicle bay.
-	if(!desiredstate && !is_mainship_level(SSshuttle.vehicle_elevator.z))
+	if(desiredstate == CONTROL_STATE_CLOSED && !is_mainship_level(SSshuttle.vehicle_elevator.z))
 		flick(initial(icon_state) + "-denied", src) // Safety first!
 		return
 
@@ -194,14 +189,14 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
-		if(M.id == id)
+	for(var/obj/structure/machinery/door/poddoor/pod in GLOB.machines)
+		if(pod.id == id)
 			effective = 1
 			spawn()
-				if(desiredstate)
-					M.open()
+				if(desiredstate == CONTROL_STATE_OPEN)
+					pod.open()
 				else
-					M.close()
+					pod.close()
 	if(effective)
 		playsound(get_turf(SSshuttle.vehicle_elevator), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
@@ -331,3 +326,49 @@
 	. = ..()
 	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
 	used = TRUE
+
+/// Automatic door control that doesn't act as a button but instead searches for mobs every process in its own area
+/obj/structure/machinery/door_control/automatic
+	name = "automatic door-control"
+	desc = "It controls doors, automatically."
+	icon_state = "launcherbtt"
+	/// The faction to open for (or none for any)
+	var/faction_to_monitor
+
+/obj/structure/machinery/door_control/automatic/Initialize(mapload, ...)
+	. = ..()
+	start_processing()
+
+/obj/structure/machinery/door_control/automatic/use_button(mob/living/user, force)
+	return
+
+/obj/structure/machinery/door_control/automatic/power_change()
+	..()
+	icon_state = desiredstate ? "launcheract" : "launcherbtt"
+
+/obj/structure/machinery/door_control/automatic/process()
+	var/area/my_area = get_area(src)
+	for(var/mob/creature in my_area)
+		if(creature.stat == DEAD)
+			continue
+		if(!faction_to_monitor || creature.faction == faction_to_monitor || (faction_to_monitor in creature.faction_group))
+			change_state(TRUE)
+			return
+	change_state(FALSE)
+
+/obj/structure/machinery/door_control/automatic/proc/change_state(triggered)
+	if(triggered == desiredstate)
+		return
+
+	icon_state = triggered ? "launcheract" : "launcherbtt"
+	use_power(5)
+
+	switch(normaldoorcontrol)
+		if(CONTROL_NORMAL_DOORS)
+			handle_door()
+		if(CONTROL_POD_DOORS)
+			handle_pod()
+		if(CONTROL_DROPSHIP)
+			handle_dropship(id)
+
+	desiredstate = !desiredstate

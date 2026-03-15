@@ -255,8 +255,7 @@
 		go_idle()
 
 
-
-/obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
+/obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target(range = FACEHUGGER_JUMP_RANGE)
 	if(!isturf(loc))
 		return FALSE
 
@@ -266,7 +265,7 @@
 			return TRUE
 
 	var/mob/living/target
-	for(var/mob/living/human in view(FACEHUGGER_JUMP_RANGE, src))
+	for(var/mob/living/human in oview(range, loc))
 		if(!can_hug(human, hivenumber))
 			continue
 		target = human
@@ -277,7 +276,7 @@
 	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"),
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
-	throw_atom(target, FACEHUGGER_JUMP_RANGE, SPEED_FAST)
+	throw_atom(target, range, SPEED_FAST)
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)

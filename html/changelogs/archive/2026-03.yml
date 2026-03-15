@@ -144,3 +144,26 @@
   - bugfix: Fixed potential for hive collapse during hijack
   MistChristmas:
   - soundtweak: Normalise ambience that Abyssal uses to be quieter.
+2026-03-11:
+  MistChristmas:
+  - bugfix: Tyrago Rift Out of bounds areas disallow burrowing.
+  MoondancerPony:
+  - bugfix: fixed larvae being able to dig snow
+2026-03-12:
+  MistChristmas:
+  - bugfix: 'Unique items: I.E. Family Photo now belong to you even if they spawn
+      in your inventory instead of pocket.'
+  - bugfix: ARES correctly records OB/Supply Coords, stop the ship map shaking multiple
+      times from one OB being fired.
+  Nihisohel:
+  - rscadd: The style system is added! You can now examine certain items if they are
+      "stylish", and pressing unique action will change its onmob sprite to whichever
+      you prefer
+  - rscadd: The only stylish items so far are the USCM Patch, the Rosary, and the
+      new golden rosary item in the character loadout screen!
+  - code_imp: Adds a parent item for all patches, and makes the USCM patch its own
+      distinct type
+  - code_imp: Minorly tweaks inventory overlay to prioritize item_state first before
+      fallbacking to icon_state
+  - code_imp: Autodocs a few clothing variables
+  - bugfix: Fixes accessorized inv_icon overlay from being directional

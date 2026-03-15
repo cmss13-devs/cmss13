@@ -1,0 +1,4 @@
+author: "Riot"
+delete-after: True
+changes:
+  - bugfix: "Certain ERTs should now correctly spawn with basic first aid kits, as they were meant to do for the past 3 years."

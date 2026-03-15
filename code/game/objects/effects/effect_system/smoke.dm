@@ -28,17 +28,29 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
+/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, time_to_live)
 	. = ..()
+
 	if(oldamount)
 		amount = oldamount - 1
+
 	if(!istype(new_cause_data))
 		if(new_cause_data)
 			new_cause_data = create_cause_data(new_cause_data)
 		else
 			new_cause_data = create_cause_data(name)
 	cause_data = new_cause_data
-	time_to_live += rand(-1,1)
+
+	if(time_to_live)
+		src.time_to_live = time_to_live
+	else
+		src.time_to_live += rand(-1,1)
+
+	var/area/my_area = get_area(src)
+	if(my_area.flags_area & AREA_HEAVILY_VENTILATED)
+		var/new_amount = rand(1,3)
+		src.time_to_live = min(new_amount, src.time_to_live)
+
 	START_PROCESSING(SSeffects, src)
 
 /obj/effect/particle_effect/smoke/Destroy()
@@ -133,7 +145,6 @@
 	for(var/turf/spread in turfs_to_spread)
 		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)
 		smoke.setDir(pick(GLOB.cardinals))
-		smoke.time_to_live = time_to_live
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
@@ -360,10 +371,9 @@
 	var/xeno_yautja_reduction = 0.75
 	var/reagent = new /datum/reagent/napalm/ut()
 
-/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, intensity, max_intensity)
+/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, time_to_live, intensity, max_intensity)
 	burn_damage = min(burn_damage, max_intensity - intensity) // Applies reaction limits
-
-	. = ..()
+	return ..()
 
 /obj/effect/particle_effect/smoke/phosphorus/weak
 	time_to_live = 2
@@ -756,7 +766,6 @@
 				qdel(cur_atom)
 
 		smoke.setDir(pick(GLOB.cardinals))
-		smoke.time_to_live = time_to_live
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
@@ -792,9 +801,7 @@
 /datum/effect_system/smoke_spread/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data)
-	if(lifetime)
-		smoke.time_to_live = lifetime
+	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
 
@@ -813,9 +820,7 @@
 /datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, intensity, max_intensity)
-	if(lifetime)
-		smoke.time_to_live = lifetime
+	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, lifetime, intensity, max_intensity)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
 
@@ -886,7 +891,7 @@
 /datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data)
+	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
 
 	for (var/atom/cur_atom in location)
 		if (istype(cur_atom, /mob/living))
@@ -895,7 +900,5 @@
 		if(istype(cur_atom, /obj/flamer_fire))
 			qdel(cur_atom)
 
-	if(lifetime)
-		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)

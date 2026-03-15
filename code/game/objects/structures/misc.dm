@@ -88,7 +88,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, it's not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
@@ -284,7 +284,7 @@
 	occupant = /obj/item/clothing/mask/facehugger
 
 /obj/structure/xenoautopsy/tank/hugger/yautja
-	desc = "There's something floating in the tank, perhaps it's kept for someones mere amusement..."
+	desc = "There's something floating in the tank, perhaps it's kept for someone's mere amusement..."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	broken_state = /obj/structure/xenoautopsy/tank/broken/yautja
 

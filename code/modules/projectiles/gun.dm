@@ -791,7 +791,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
 
-	// dont want a wield when its not on the user, obviously
+	// dont want a wield when it's not on the user, obviously
 	if(loc != user)
 		return
 

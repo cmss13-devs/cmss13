@@ -175,13 +175,13 @@
 	icon_state = "defoliator"
 	item_state = "defoliator"
 	gun_type = /obj/item/weapon/gun/flamer/yautja
-	max_rounds = 200
+	max_rounds = 100
 	max_range = 8
 	max_intensity = 70
 	stripe_icon = FALSE
 
 /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad
-	name = "gel defoliator fuel tank (plasma)"
+	name = "gel defoliator fuel tank (EX)"
 	desc = "A high-capacity heat-resistant tank of terrifyingly powerful gelled plasma, capable of burning right through almost anything. Handle with extreme caution."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"

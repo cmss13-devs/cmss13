@@ -745,7 +745,7 @@
 	density = TRUE
 	layer = TABLE_LAYER
 	anchored = TRUE
-	throwpass = TRUE
+	throwpass = TRUE //You can throw objects over this, despite it's density.
 	breakable = FALSE
 	climbable = FALSE
 	wrenchable = FALSE

@@ -84,7 +84,7 @@
 	for(var/area/maybe_this_area in potential_areas)
 		if(CEILING_IS_PROTECTED(maybe_this_area.ceiling, CEILING_PROTECTION_TIER_1)) // prevents out of bounds too
 			continue
-		if(istype(maybe_this_area, /area/space)) // make sure its not space, just in case
+		if(istype(maybe_this_area, /area/space)) // make sure it's not space, just in case
 			continue
 
 		var/turf/open/possible_turf = null
@@ -303,6 +303,9 @@
 	if(auto_space_icon)
 		icon_state = "speedspace_ns_[get_transit_state(src)]"
 		transform = turn(matrix(), get_transit_angle(src))
+	else
+		// Undo change in /turf/open/space/Initialize
+		icon_state = initial(icon_state)
 
 /proc/get_transit_state(turf/T)
 	var/p = 9

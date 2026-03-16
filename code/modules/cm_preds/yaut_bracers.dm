@@ -465,7 +465,7 @@
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer."
+	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after it's been put into your bracer."
 	deployment_sound = 'sound/handling/combistick_close.ogg'
 	retract_sound = 'sound/handling/combistick_close.ogg'
 

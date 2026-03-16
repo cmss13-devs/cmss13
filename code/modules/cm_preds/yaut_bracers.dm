@@ -479,7 +479,7 @@
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer."
+	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after it's been put into your bracer."
 	deployment_sound = 'sound/handling/combistick_close.ogg'
 	retract_sound = 'sound/handling/combistick_close.ogg'
 
@@ -845,7 +845,7 @@
 
 	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multiplier = DECLOAK_FORCED)
 	if(!user)
 		return
 
@@ -855,7 +855,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
-	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
+	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
@@ -912,6 +912,9 @@
 			return
 		if(user.faction == FACTION_YAUTJA_YOUNG)
 			to_chat(user, SPAN_WARNING("You have not earned that right yet!"))
+			return
+		if(isthrall(user))
+			to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 			return
 		user.put_in_active_hand(caster)
 		caster_deployed = TRUE
@@ -997,7 +1000,7 @@
 	if(boomer.stat == DEAD)
 		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(boomer.health < HEALTH_THRESHOLD_CRIT)
+	if(boomer.health < boomer.health_threshold_crit)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(boomer.stat != CONSCIOUS)
@@ -1011,6 +1014,9 @@
 		return
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(boomer, SPAN_WARNING("You don't yet understand how to use this.")) // No SDing for youngbloods
+		return
+	if(isthrall(user))
+		to_chat(boomer, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()
@@ -1124,6 +1130,10 @@
 		to_chat(user, SPAN_WARNING("This button is not for you."))
 		return
 
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
+		return
+
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("A large list appears but you cannot understand what it means."))
 		return
@@ -1191,6 +1201,42 @@
 	user.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/human_injectors()
+	set name = "Create Human Stabilising Crystal"
+	set category = "Yautja.Utility"
+	set desc = "Create a focus crystal to stabilize humans."
+	set src in usr
+	. = human_injectors_internal(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/human_injectors_internal(mob/user, forced = FALSE)
+	if(user.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(user, forced)
+	if(.)
+		return
+
+	if(user.get_active_hand())
+		to_chat(user, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		to_chat(user, SPAN_WARNING("You recently synthesized a stabilising crystal. A new crystal will be available in [remaining_time]."))
+		return FALSE
+
+	if(!drain_power(user, 400))
+		return FALSE
+
+	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN, 2 MINUTES)
+
+	to_chat(user, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
+	var/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/O = new(user)
+	user.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
 #undef YAUTJA_CREATE_CRYSTAL_COOLDOWN
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
@@ -1279,6 +1325,10 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return FALSE
+
 	. = check_random_function(user, forced)
 	if(.)
 		return
@@ -1304,6 +1354,10 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(mob/user, forced = FALSE)
 	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return FALSE
 
 	. = check_random_function(user, forced)

@@ -252,7 +252,7 @@
 /obj/item/arrow/snare/proc/trigger_snare(mob/living/carbon/C)
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = 5, resistable = TRUE)
+	var/list/tether_effects = apply_tether(src, C, range = 5, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 

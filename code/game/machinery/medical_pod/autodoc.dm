@@ -751,7 +751,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
+		occupantData["minHealth"] = occupant.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -913,6 +913,14 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(
+		RESEARCH_UPGRADE_TIER_1,
+		RESEARCH_UPGRADE_TIER_2,
+		RESEARCH_UPGRADE_TIER_3,
+		RESEARCH_UPGRADE_TIER_4,
+	)
+
+/obj/structure/machinery/autodoc_console/upgraded
 	upgrades = list(
 		RESEARCH_UPGRADE_TIER_1,
 		RESEARCH_UPGRADE_TIER_2,

@@ -133,6 +133,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define PVST_FREQ 1473
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
+#define ARMY_FREQ 1476
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -196,6 +197,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_CBRN = CBRN_FREQ,
 	SQUAD_FORECON = FORECON_FREQ,
 	SQUAD_SOLAR = SOF_FREQ,
+	SQUAD_ARMY = ARMY_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
@@ -259,6 +261,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
+//Bonus frequencies for special survivor factions
+#define SURVIVOR_FREQS list(SOF_FREQ, ARMY_FREQ)
+
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
 
@@ -317,6 +322,7 @@ SUBSYSTEM_DEF(radio)
 		"[WY_SEC_FREQ]" = "wysecradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[ARMY_FREQ]" = "armyradio",
 		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",

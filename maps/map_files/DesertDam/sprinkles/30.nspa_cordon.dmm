@@ -29,11 +29,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ex" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/shallow/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "eI" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/gm/river/desert/deep/covered,
@@ -48,7 +48,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "fB" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_2{
 	dir = 1;
 	icon_state = "meridian_red_damage_2"
@@ -66,23 +66,23 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "hD" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "jx" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/ammo_casing,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "kQ" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "mW" = (
@@ -119,7 +119,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "oI" = (
@@ -130,28 +130,28 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "pl" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "pY" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/ammo_magazine/pistol/l54,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "qG" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "rl" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/shallow_edge/covered/west,
 /area/desert_dam/exterior/river/riverside_central_south)
 "rQ" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "sa" = (
@@ -176,7 +176,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "uS" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/tool/warning_cone{
 	pixel_x = -3;
 	pixel_y = 8
@@ -186,7 +186,7 @@
 "wb" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "wA" = (
@@ -221,7 +221,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "xM" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
 	pixel_y = 9
@@ -235,12 +235,12 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ys" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/effect/spawner/random/gun/cmb,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "zV" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/item/tool/warning_cone{
 	pixel_x = -2;
 	pixel_y = 9
@@ -248,15 +248,15 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Bq" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_south)
 "BD" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/shallow/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "BM" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Ct" = (
@@ -272,7 +272,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "CL" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Df" = (
@@ -283,11 +283,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Dk" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Dl" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -323,7 +323,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Ha" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/tool/warning_cone{
 	pixel_x = 2;
 	pixel_y = 3
@@ -332,7 +332,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Im" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Jl" = (
@@ -349,20 +349,20 @@
 "JW" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Ks" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Lj" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Lt" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Ly" = (
@@ -380,7 +380,7 @@
 "Mt" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_central_south)
 "MJ" = (
@@ -390,7 +390,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Np" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "NX" = (
@@ -431,7 +431,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Pr" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 8;
 	layer = 3
@@ -440,7 +440,7 @@
 /area/desert_dam/exterior/river/riverside_central_south)
 "Pv" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Qj" = (
@@ -451,14 +451,14 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "QF" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_central_south)
 "RM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 8;
 	layer = 3
@@ -489,7 +489,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Uw" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_south)
 "UI" = (
@@ -503,7 +503,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "UM" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/shallow_edge/covered/east,
 /area/desert_dam/exterior/river/riverside_central_south)
 "UP" = (
@@ -517,11 +517,11 @@
 "VS" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Wd" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 4
 	},
@@ -538,7 +538,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Xg" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_south)
 "XW" = (
@@ -570,7 +570,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /obj/item/tool/warning_cone{
 	pixel_x = 3;
 	pixel_y = 6
@@ -579,7 +579,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ZX" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/desert/desert_shore/shore_corner2/north,
 /area/desert_dam/exterior/river/riverside_central_south)
 

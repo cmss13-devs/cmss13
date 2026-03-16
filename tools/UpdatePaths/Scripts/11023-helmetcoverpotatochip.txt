@@ -1,0 +1,8 @@
+/obj/item/prop/helmetgarb/netting/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/netting/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/netting/desert/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/netting/desert/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/netting/urban/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/netting/urban/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/netting/jungle/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/netting/jungle/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/raincover/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/raincover/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/raincover/jungle/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/raincover/jungle/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/raincover/desert/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/raincover/desert/@SUBTYPES{@OLD}
+/obj/item/prop/helmetgarb/raincover/urban/@SUBTYPES : /obj/item/clothing/accessory/helmet/cover/raincover/urban/@SUBTYPES{@OLD}

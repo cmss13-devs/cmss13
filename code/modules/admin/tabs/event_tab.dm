@@ -982,7 +982,7 @@
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay))
 				return
-			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
+			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should a second explosion have? (0 to disable)", "Set double delay", 6)
 			if(isnull(OBShell.double_explosion_delay))
 				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
@@ -1062,7 +1062,7 @@
 			return
 
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
-		warhead.warhead_impact(target)
+		warhead.warhead_impact(target, warhead)
 
 	else
 		warhead.forceMove(target)

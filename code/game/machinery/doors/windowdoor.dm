@@ -5,7 +5,7 @@
 	icon_state = "left"
 	layer = WINDOW_LAYER
 	var/base_state = "left"
-	health = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	health = 150 //If you change this, consider changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	visible = 0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
@@ -177,7 +177,7 @@
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			to_chat(user, SPAN_NOTICE(" You removed the windoor electronics!"))
+			to_chat(user, SPAN_NOTICE("You removed the windoor electronics!"))
 
 			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
 			if (istype(src, /obj/structure/machinery/door/window/brigdoor))

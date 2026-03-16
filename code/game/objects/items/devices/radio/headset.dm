@@ -183,7 +183,7 @@
 			recalculateChannels()
 			to_chat(user, SPAN_NOTICE("You pop out the encryption keys in \the [src]!"))
 		else
-			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
+			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys! How useless..."))
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		for (var/obj/item/device/encryptionkey/key as anything in keys)
@@ -1450,6 +1450,16 @@
 	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
+	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
+/obj/item/device/radio/headset/almayer/sof/survivor_army
+	name = "US Army headset"
+	desc = "Issued exclusively to Army troopers."
+	icon_state = "soc_headset"
+	frequency = ARMY_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/army)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE

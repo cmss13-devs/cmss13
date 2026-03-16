@@ -27,7 +27,7 @@
 	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 /area/lv522/oob/w_y_vault
 	name = "LV522 - Weyland Secure Vault"

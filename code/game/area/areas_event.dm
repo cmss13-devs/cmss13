@@ -42,7 +42,7 @@ structure:
 	icon_state = "event"
 
 	//no bioscan and no tunnels allowed
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW
 
 	//events are not part of regular gameplay, therefore, no statistics
 	statistic_exempt = TRUE

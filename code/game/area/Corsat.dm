@@ -54,7 +54,7 @@
 	name = "\improper CORSAT Monorail transit"
 	icon_state = "railcart"
 	ceiling = CEILING_REINFORCED_METAL
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/corsat/sigma/hangar/cargo
 	name = "\improper Sigma Hangar Cargo Checkpoint"
@@ -573,4 +573,4 @@
 	icon_state = "corsat_hull"
 	requires_power = FALSE
 	ceiling = CEILING_REINFORCED_METAL
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW

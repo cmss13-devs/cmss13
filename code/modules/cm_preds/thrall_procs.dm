@@ -1,4 +1,4 @@
-//Link to thrall bracer, enabling most of it's abilities
+//Link to thrall bracer, enabling most of its abilities
 /obj/item/clothing/gloves/yautja/hunter/verb/link_bracer()
 	set name = "Link Thrall Bracer"
 	set desc = "Link your bracer to that of your thrall."
@@ -140,7 +140,7 @@
 	if(master.stat == DEAD)
 		to_chat(master, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(master.health < HEALTH_THRESHOLD_CRIT)
+	if(master.health < master.health_threshold_crit)
 		to_chat(master, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(master.stat)

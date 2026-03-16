@@ -1302,7 +1302,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console/upgraded,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/uscm_station)
 "oD" = (

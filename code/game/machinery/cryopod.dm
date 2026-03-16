@@ -182,7 +182,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements.
 	var/no_store_pod = FALSE
 	var/willing = FALSE //True when occupant entered by themselves or agreed to be put inside.
-	var/is_aco = FALSE //Whether the occupant is the current aCO or not.
 
 /obj/structure/machinery/cryopod/right
 	dir = WEST

@@ -167,3 +167,26 @@
       fallbacking to icon_state
   - code_imp: Autodocs a few clothing variables
   - bugfix: Fixes accessorized inv_icon overlay from being directional
+2026-03-14:
+  MistChristmas:
+  - bugfix: Xenomorph on dropship alert now only occurs after landing.
+  - bugfix: Intel job not properly being tied to roundstart gear_preset
+  - admin: G2s and Claymores now get logged when deployed.
+  MoondancerPony:
+  - rscdel: broke area-based lighting
+  - bugfix: fixed area-based lighting
+  - bugfix: fixed Tyrargo army CO survivors not starting with an unbuttoned jacket
+      due to an error
+  Riot:
+  - bugfix: Certain ERTs should now correctly spawn with basic first aid kits, as
+      they were meant to do for the past 3 years.
+  - bugfix: Fixes the army tgui prefixes
+  cuberound:
+  - balance: increases random sandbag crate spawn chance
+  - balance: increases random HPR crate spawn chance
+  - balance: reduces random flamer fuel crate spawn chance
+  - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead

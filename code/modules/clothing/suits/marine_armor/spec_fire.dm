@@ -92,18 +92,18 @@
 		A.update_button_icon()
 
 /// This proc is solely so that IgniteMob() fails
-/obj/item/clothing/suit/storage/marine/M35/proc/fire_shield_is_on(mob/living/L)
+/obj/item/clothing/suit/storage/marine/M35/proc/fire_shield_is_on(mob/living/target)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating)
+	if(target.fire_reagent?.fire_penetrating)
 		return
 
 	return COMPONENT_CANCEL_IGNITION
 
-/obj/item/clothing/suit/storage/marine/M35/proc/flamer_fire_callback(mob/living/L, datum/reagent/R)
+/obj/item/clothing/suit/storage/marine/M35/proc/flamer_fire_callback(mob/living/target, datum/reagent/fire_reagent)
 	SIGNAL_HANDLER
 
-	if(R.fire_penetrating)
+	if(fire_reagent?.fire_penetrating)
 		return
 
 	. = COMPONENT_NO_IGNITE

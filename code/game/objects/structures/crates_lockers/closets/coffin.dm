@@ -96,7 +96,7 @@
 
 /obj/structure/closet/coffin/woodencrate //Subtyped here so Req doesn't sell them
 	name = "wooden crate"
-	desc = "A wooden crate. Shoddily assembled, spacious and worthless on the ASRS"
+	desc = "A wooden crate. Shoddily assembled, spacious, and worthless on the ASRS."
 	icon_state = "closed_woodcrate"
 	icon_opened = "open_woodcrate"
 	icon_closed = "closed_woodcrate"

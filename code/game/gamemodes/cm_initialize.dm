@@ -188,7 +188,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
-	if(pred_candidate)
+	if(pred_candidate && !QDELETED(pred_candidate))
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
@@ -234,8 +234,6 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
-	set waitfor = FALSE
-
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
 		return
@@ -254,9 +252,18 @@ Additional game mode variables.
 		to_chat(pred_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
 		return
 
+	var/mob/new_player/new_player_mob
+	if(isnewplayer(pred_candidate))
+		new_player_mob = pred_candidate
+		new_player_mob.spawning = TRUE
+		new_player_mob.close_spawn_windows()
+
 	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
+
+	if(new_player_mob)
+		qdel(new_player_mob)
 
 	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
@@ -337,6 +344,7 @@ Additional game mode variables.
 		if(!loaded_fax_base)
 			return FALSE
 
+	responder_candidate.close_spawn_windows()
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
@@ -357,6 +365,11 @@ Additional game mode variables.
 
 	message_admins(FONT_SIZE_XL(SPAN_RED("[key_name(new_responder)] joined as a [sub_job].")))
 	new_responder.add_fax_responder()
+
+	if(isnewplayer(responder_candidate))
+		var/mob/new_player/noob = responder_candidate
+		noob.spawning = TRUE
+		qdel(noob)
 
 	return TRUE
 
@@ -562,6 +575,7 @@ Additional game mode variables.
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
+					noob.spawning = TRUE
 
 				if(picked_hive.hive_location)
 					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
@@ -618,6 +632,7 @@ Additional game mode variables.
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/noob = xeno_candidate
 			noob.close_spawn_windows()
+			noob.spawning = TRUE
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
@@ -787,6 +802,7 @@ Additional game mode variables.
 		new_xeno.client.change_view(GLOB.world_view_size)
 		if(isnewplayer(xeno_candidate))
 			send_tacmap_assets_latejoin(new_xeno)
+			qdel(xeno_candidate)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	new_xeno.generate_name()
@@ -856,11 +872,16 @@ Additional game mode variables.
 	new_queen.generate_name()
 
 	SSround_recording.recorder.track_player(new_queen)
-
-	to_chat(new_queen, "<B>You are now the alien queen!</B>")
-	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
-	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
-	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	if(Check_WO())
+		to_chat(new_queen, "<B>You are now the alien queen!</B>")
+		to_chat(new_queen, "<B>Your job is to assist the hive in assaulting the human outpost!</B>")
+		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, your children will appear around round time 0:20. You will be able to leave your cave after the round time reaches 1:00.</B>")
+		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	else
+		to_chat(new_queen, "<B>You are now the alien queen!</B>")
+		to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
+		to_chat(new_queen, "<B>You should start by building a hive core.</B>")
+		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	new_queen.update_icons()
 
@@ -941,7 +962,7 @@ Additional game mode variables.
 				to_chat(H, "<h2>You are a survivor!</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -1145,6 +1166,10 @@ Additional game mode variables.
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
+
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_spawns))
+		to_chat(joe_candidate, SPAN_WARNING("Working Joes are disabled from spawning!"))
+		return FALSE
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_respawns) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
 		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))

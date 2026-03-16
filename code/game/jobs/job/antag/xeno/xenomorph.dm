@@ -62,7 +62,7 @@
 			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
 			for(var/turf/open/ground_in_range in neighbor_turfs)
 				var/area/in_range_area = get_area(ground_in_range)
-				if(in_range_area.flags_area & AREA_NOTUNNEL)
+				if(in_range_area.flags_area & AREA_NOBURROW)
 					continue
 				var/finish_proc = TRUE
 				for(var/obj/found_object in ground_in_range)

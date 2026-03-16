@@ -32,6 +32,7 @@
 		"MP" = ACCESS_MARINE_BRIG,
 		"CIA" = ACCESS_CIA,
 		"WY" = ACCESS_WY_EXEC,
+		"WY SEC" = ACCESS_WY_SECURITY,
 		"WY PMC" = ACCESS_WY_PMC,
 		"CLF" = ACCESS_CLF_ENGINEERING,
 		"UPP" = ACCESS_UPP_ENGINEERING,
@@ -191,10 +192,14 @@
 			assigned_channel = RADIO_CHANNEL_WY
 			assigned_frequency = WY_FREQ
 			pass_accesses = list(ACCESS_WY_GENERAL, ACCESS_WY_EXEC)
+		if("WY SEC")
+			assigned_channel = RADIO_CHANNEL_WY_SEC
+			assigned_frequency = WY_SEC_FREQ
+			pass_accesses = list(ACCESS_WY_LEADERSHIP, ACCESS_WY_SECURITY)
 		if("WY PMC")
 			assigned_channel = RADIO_CHANNEL_PMC_CCT
 			assigned_frequency = PMC_CCT_FREQ
-			pass_accesses = list(ACCESS_WY_PMC, ACCESS_WY_PMC_TL)
+			pass_accesses = list(ACCESS_WY_PMC, ACCESS_WY_PMC_TL, ACCESS_WY_LEADERSHIP)
 		if("CIA")
 			assigned_channel = RADIO_CHANNEL_CIA
 			assigned_frequency = CIA_FREQ
@@ -230,6 +235,9 @@
 
 /obj/item/device/motion_sensor/wy
 	assigned_network = "WY"
+
+/obj/item/device/motion_sensor/wy_sec
+	assigned_network = "WY SEC"
 
 /obj/item/device/motion_sensor/wy_pmc
 	assigned_network = "WY PMC"

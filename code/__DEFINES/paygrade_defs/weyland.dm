@@ -19,8 +19,14 @@
 /// WYC5, Executive Specialist
 #define PAY_SHORT_WYC5 "WYC5"
 
+/// WYC5L, Legal Specialist
+#define PAY_SHORT_WYC5L "WYC5L"
+
 /// WYC6, Executive Supervisor
 #define PAY_SHORT_WYC6 "WYC6"
+
+/// WYC6L, Legal Supervisor
+#define PAY_SHORT_WYC6L "WYC6L"
 
 /// WYC7, Assistant Manager
 #define PAY_SHORT_WYC7 "WYC7"
@@ -99,3 +105,36 @@
 
 /// WY-DOG, Weyland-Yutani Dog Catcher
 #define PAY_SHORT_WY_DOG "WY-DOG"
+
+// Weyland Yutani Corporate Security
+
+/// WY-SEC Weyland-Yutani Security Officer
+#define PAY_SHORT_WY_SEC "WY-SEC"
+
+/// WY-SEC-SPEC Weyland-Yutani Security Specialist
+#define PAY_SHORT_WY_SEC_SPEC "WY-SEC-SPEC"
+
+/// WY-SEC-LEAD Weyland-Yutani Security Team Leader
+#define PAY_SHORT_WY_SEC_LEAD "WY-SEC-LEAD"
+
+
+/// WY-SEC-PSO Trainee Personal Protection Officer
+#define PAY_SHORT_WY_SEC_TPPO "WY-SEC-TPPO"
+
+/// WY-SEC-PPO Personal Protection Officer
+#define PAY_SHORT_WY_SEC_PPO "WY-SEC-PPO"
+
+/// WY-SEC-PPS Personal Protection Specialist
+#define PAY_SHORT_WY_SEC_PPS "WY-SEC-PPS"
+
+/// WY-SEC-PPC Personal Protection Coordinator
+#define PAY_SHORT_WY_SEC_PPC "WY-SEC-PPC"
+
+/// WY-SEC-DPO Directorate Protection Officer
+#define PAY_SHORT_WY_SEC_DPO "WY-SEC-DPO"
+
+/// WY-SEC-DPS Directorate Protection Specialist
+#define PAY_SHORT_WY_SEC_DPS "WY-SEC-DPS"
+
+/// WY-SEC-DPC Directorate Protection Coordinator
+#define PAY_SHORT_WY_SEC_DPC "WY-SEC-DPC"

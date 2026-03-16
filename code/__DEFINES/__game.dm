@@ -16,6 +16,12 @@
 #define MAP_MAXY 5
 #define MAP_MAXZ 6
 
+// open_space_bounds indices
+#define OPEN_SPACE_BOUNDS_MINX 1
+#define OPEN_SPACE_BOUNDS_MAXX 2
+#define OPEN_SPACE_BOUNDS_MINY 3
+#define OPEN_SPACE_BOUNDS_MAXY 4
+
 #define MAP_MAXSIZE 300
 
 
@@ -34,6 +40,7 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -390,6 +397,9 @@
 #define WALL_STRATA_ICE "strata_ice"
 #define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
+#define WALL_FOREST "forest_veg"
+#define WALL_FOREST_ROCK "rock_forest"
+#define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"

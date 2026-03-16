@@ -150,7 +150,7 @@
 		if(client)
 			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
 		else
-			to_chat(usr, "[src] does not have any stored infomation!")
+			to_chat(usr, "[src] does not have any stored information!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
 
@@ -265,8 +265,8 @@
 	if (drowsiness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
-		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
+	if(pulling && pulling.drag_delay && get_pull_multiplier()) //Dragging stuff can slow you down a bit.
+		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_multiplier()
 
 		var/grab_level_delay = 0
 		switch(grab_level)
@@ -300,7 +300,7 @@
 		. = drag_delay
 
 //whether we are slowed when dragging things
-/mob/living/proc/get_pull_miltiplier()
+/mob/living/proc/get_pull_multiplier()
 	if(!HAS_TRAIT(src, TRAIT_DEXTROUS))
 		if(grab_level == GRAB_CARRY)
 			return 0.1
@@ -503,7 +503,7 @@
 // If this proc causes issues you can probably disable it until then.
 /mob/living/carbon/update_stat()
 	if(stat != DEAD)
-		if(health <= HEALTH_THRESHOLD_DEAD)
+		if(health <= health_threshold_dead)
 			death()
 			return
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))

@@ -480,5 +480,11 @@
 	else
 		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
 
+/datum/action/xeno_action/proc/on_select(mob/user)
+	return
+
+/datum/action/xeno_action/proc/on_deselect(mob/user)
+	return
+
 #define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
 #define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

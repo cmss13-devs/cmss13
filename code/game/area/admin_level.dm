@@ -9,7 +9,7 @@
 	icon_state = "thunder"
 	requires_power = FALSE
 	statistic_exempt = TRUE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/adminlevel/bunker01/mainroom
 	name = "\improper Bunker Main Room"
@@ -90,7 +90,7 @@
 	name = "\improper Bunker Xeno Hive"
 	icon_state = "bunker01_caves_outpost"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	flags_area = AREA_NOTUNNEL|AREA_ALLOW_XENO_JOIN
+	flags_area = AREA_NOBURROW|AREA_ALLOW_XENO_JOIN
 
 	var/hivenumber = XENO_HIVE_ALPHA
 
@@ -107,7 +107,7 @@
 	name = "ERT Station"
 	icon_state = "green"
 	requires_power = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/adminlevel/ert_station/upp_station
 	name = "UPP Station"
@@ -161,7 +161,7 @@
 	name = "Simulated Reality"
 	icon_state = "green"
 	requires_power = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/misc
 	weather_enabled = FALSE
@@ -175,7 +175,7 @@
 	icon_state = "tutorial"
 	requires_power = FALSE
 	unlimited_power = TRUE
-	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
+	flags_area = AREA_NOBURROW|AREA_AVOID_BIOSCAN
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
 	block_game_interaction = TRUE

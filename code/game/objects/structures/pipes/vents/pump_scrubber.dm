@@ -38,10 +38,10 @@
 /// Vents that are linked to ARES Security Protocols, allowing the ARES Interface to trigger security measures.
 /obj/structure/pipes/vents/pump/no_boom/gas/ares
 	var/datum/ares_link/link
-	network_id = MAIN_AI_SYSTEM
 
 /obj/structure/pipes/vents/pump/no_boom/gas/ares/Initialize()
 	link_systems(override = FALSE)
+	network_id = MAIN_AI_SYSTEM
 	. = ..()
 
 /obj/structure/pipes/vents/pump/no_boom/gas/ares/Destroy()

@@ -424,6 +424,11 @@
 	minimap_type = MINIMAP_FLAG_UPP
 	freq = UPP_FREQ
 
+/obj/structure/machinery/computer/groundside_operations/upp/Initialize()
+	if(GLOB.master_mode == /datum/game_mode/colonialmarines/upp::name)
+		lz_selection = TRUE
+	return ..()
+
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_CLF

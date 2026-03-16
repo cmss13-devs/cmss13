@@ -25,6 +25,7 @@
 
 		list("RESTRICTED FIREARMS", -1, null, null),
 		list("Type-19 Submachinegun", floor(scale * 3), /obj/item/storage/box/guncase/type19, VENDOR_ITEM_REGULAR),
+		list("AK-4047 Pulse Rifle", floor(scale * 3), /obj/item/storage/box/guncase/ak4047, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", floor(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
@@ -90,7 +91,7 @@
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", floor(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
-		list("Gas Mask", floor(scale * 10), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", floor(scale * 10), /obj/item/clothing/mask/gas/upp_pfb, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", floor(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", floor(scale * 6), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
@@ -164,10 +165,13 @@
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/type71/ap, VENDOR_ITEM_REGULAR),
+		list("Type 64 Helical AP Magazine (7.62x19mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/bizon/ap, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
 		list("Type-19 stick magazine (7.62x25mm)", floor(scale * 12), /obj/item/ammo_magazine/smg/pps43, VENDOR_ITEM_REGULAR),
 		list("Type-19 drum magazine (7.62x25mm)", floor(scale * 1), /obj/item/ammo_magazine/smg/pps43/extended, VENDOR_ITEM_REGULAR),
+		list("AK-4047 magazine (10x24mm)", floor(scale * 12), /obj/item/ammo_magazine/rifle/ak4047, VENDOR_ITEM_REGULAR),
+		list("AK-4047 AP magazine (10x24mm)", floor(scale * 1), /obj/item/ammo_magazine/rifle/ak4047/ap, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
@@ -211,12 +215,11 @@
 	listed_products = list(
 		list("BARREL", -1, null, null),
 		list("Extended Barrel", 6.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
-		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
+		list("Type 80 Bayonet", 10.5, /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 6.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 6.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", 3.5, /obj/item/attachable/alt_iff_scope, VENDOR_ITEM_REGULAR),
 		list("Magnetic Harness", 8.5, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", 10.5, /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", 4.5, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
@@ -290,7 +293,7 @@
 		list("Medical Encryption Key", 5, /obj/item/device/encryptionkey/upp/medic, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),
-		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 20, /obj/item/clothing/mask/gas/upp_pfb, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),

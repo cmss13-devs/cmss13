@@ -24,6 +24,9 @@
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
+	
+	var/human_major = MODE_INFESTATION_M_MAJOR
+	var/human_minor = MODE_INFESTATION_M_MINOR
 
 	/**
 	 * How long, after first drop, should the resin protection in proximity to the selected LZ last
@@ -620,7 +623,7 @@
 			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 		else
 			SSticker.roundend_check_paused = TRUE
-			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			round_finished = human_major //Humans destroyed the xenomorphs.
 			ares_conclude()
 			end_of_round_ert()
 
@@ -676,9 +679,9 @@
 			return
 
 	if(length(hive.totalXenos) <= 3)
-		round_finished = MODE_INFESTATION_M_MAJOR
+		round_finished = human_major
 	else
-		round_finished = MODE_INFESTATION_M_MINOR
+		round_finished = human_minor
 	log_game("Distress Signal Hive collapse!")
 
 /**

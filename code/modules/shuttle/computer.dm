@@ -372,6 +372,10 @@
 	var/override_being_removed = FALSE
 	///How long it takes to unlock the console
 	var/remaining_time = 180 SECONDS
+	///	Access for command to launch.
+	var/COMMAND_ACCESS = ACCESS_MARINE_SENIOR
+	///	Access for pilot to launch.
+	var/PILOT_ACCESS = ACCESS_MARINE_DROPSHIP
 
 /obj/structure/machinery/computer/shuttle/lifeboat/ex_act(severity)
 	return
@@ -420,10 +424,10 @@
 				var/mob/living/carbon/human/human_user = user
 				var/obj/item/card/id/card = human_user.get_idcard()
 
-				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // if no card or not enough access, check for held id
+				if(!card || (!(COMMAND_ACCESS in card.access) && !(PILOT_ACCESS in card.access))) // if no card or not enough access, check for held id
 					card = locate(/obj/item/card/id) in human_user
 
-				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
+				if(!card || (!(COMMAND_ACCESS in card.access) && !(PILOT_ACCESS in card.access))) // still no valid card found?
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
@@ -502,3 +506,7 @@
 
 /obj/structure/machinery/computer/shuttle/lifeboat/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
+
+/obj/structure/machinery/computer/shuttle/lifeboat/upp
+	COMMAND_ACCESS = ACCESS_UPP_LEADERSHIP	//Should this be using senior UPP leadership instead?
+	PILOT_ACCESS = ACCESS_UPP_FLIGHT

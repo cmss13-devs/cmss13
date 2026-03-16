@@ -39,6 +39,7 @@ type LobbyData = {
   confirmation_message?: string | string[];
 
   upp_enabled: BooleanLike;
+  uscm_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
   fax_responder_enabled: BooleanLike;
@@ -301,6 +302,7 @@ const LobbyButtons = (props: {
     readied,
     predator_enabled,
     fax_responder_enabled,
+    uscm_enabled,
     upp_enabled,
     tutorials_ready,
     xenomorph_enabled,
@@ -460,15 +462,17 @@ const LobbyButtons = (props: {
           <>
             <Stack.Item>
               <Stack>
-                <Stack.Item grow>
-                  <LobbyButton
-                    index={6}
-                    onClick={() => act('late_join')}
-                    icon="users"
-                  >
-                    Join the USCM
-                  </LobbyButton>
-                </Stack.Item>
+                {!!uscm_enabled && (
+                  <Stack.Item grow>
+                    <LobbyButton
+                      index={6}
+                      onClick={() => act('late_join')}
+                      icon="users"
+                    >
+                      Join the USCM
+                    </LobbyButton>
+                  </Stack.Item>
+                )}
                 <Stack.Item>
                   <LobbyButton
                     icon="list"

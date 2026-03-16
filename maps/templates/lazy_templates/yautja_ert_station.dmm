@@ -1,24 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/turf/open/shuttle/dropship/predship/hunter_catwalk,
+/turf/open/predship/hunter_catwalk,
 /area/adminlevel/ert_station/yautja_station)
 "ac" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "aj" = (
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/west,
+/turf/open/predship/mainfloor/direction_2/west,
 /area/adminlevel/ert_station/yautja_station)
 "ak" = (
 /obj/effect/hunter/bridge_border/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "an" = (
 /obj/structure/surface/hunter_shuttle_table{
@@ -32,7 +32,7 @@
 	density = 0;
 	pixel_x = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/adminlevel/ert_station/yautja_station)
 "aM" = (
 /obj/structure/shuttle/engine/router{
@@ -46,7 +46,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "aO" = (
 /obj/structure/machinery/door_control/yautja{
@@ -55,7 +55,7 @@
 	name = "Armory Lockdown";
 	req_one_access = list(390,392,393)
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "aQ" = (
 /obj/structure/shuttle/engine/heater{
@@ -82,7 +82,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "aR" = (
 /obj/structure/bed/alien/yautja/leader,
@@ -100,7 +100,7 @@
 	pixel_y = -2;
 	color = "#692e2e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "aT" = (
 /obj/structure/machinery/door/poddoor/yautja/armory{
@@ -110,7 +110,7 @@
 /area/adminlevel/ert_station/yautja_station)
 "aU" = (
 /obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/east,
+/turf/open/predship/mainfloor/direction_3/east,
 /area/adminlevel/ert_station/yautja_station)
 "bg" = (
 /obj/effect/hunter/rune/corner_2{
@@ -124,7 +124,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "bl" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -134,7 +134,7 @@
 /obj/item/tool/surgery/bonegel/predatorbonegel,
 /obj/item/tool/surgery/bonesetter/predatorbonesetter,
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "bI" = (
 /obj/structure/bed/alien/yautja/leader,
@@ -151,7 +151,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "bM" = (
 /obj/structure/surface/rack{
@@ -165,7 +165,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol{
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "bO" = (
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
@@ -174,7 +174,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "cP" = (
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -183,29 +183,29 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "dl" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "do" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "eb" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "ec" = (
 /obj/structure/bed/chair/hunter{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "ei" = (
 /obj/structure/surface/rack{
@@ -239,7 +239,7 @@
 	dir = 8;
 	color = "#912727"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "eF" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -265,7 +265,7 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "eO" = (
 /obj/structure/pipes/unary/freezer/yautja{
@@ -275,14 +275,14 @@
 	dir = 9;
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "eR" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "fb" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -298,7 +298,7 @@
 	desc = "A pelt of a fearsome dead creature.";
 	layer = 2.9
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "fe" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -319,7 +319,7 @@
 	pixel_x = -5;
 	color = "#9b1818"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "fy" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -337,17 +337,17 @@
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "fI" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "fL" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "fP" = (
 /obj/structure/machinery/power/smes/magical/yautja,
@@ -359,11 +359,11 @@
 /area/adminlevel/ert_station/yautja_station)
 "fQ" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "gh" = (
 /obj/structure/machinery/cryopod/no_store/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "gH" = (
 /obj/structure/shuttle/engine/heater{
@@ -387,12 +387,12 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/adminlevel/ert_station/yautja_station)
 "gK" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "gO" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -400,13 +400,13 @@
 	dir = 8
 	},
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/adminlevel/ert_station/yautja_station)
 "hf" = (
 /obj/effect/hunter/rune/corner_2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/corner,
+/turf/open/predship/mainfloor/corner,
 /area/adminlevel/ert_station/yautja_station)
 "hi" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -415,23 +415,23 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "hn" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "hr" = (
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/adminlevel/ert_station/yautja_station)
 "hs" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "hE" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -451,20 +451,20 @@
 	pixel_y = -1;
 	layer = 2.9
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "hH" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "hP" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "hT" = (
 /obj/structure/surface/rack{
@@ -472,10 +472,10 @@
 	layer = 2.79
 	},
 /obj/item/weapon/gun/launcher/spike,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "ir" = (
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/adminlevel/ert_station/yautja_station)
 "ix" = (
 /obj/structure/terminal{
@@ -499,7 +499,7 @@
 	pixel_y = 9;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/adminlevel/ert_station/yautja_station)
 "iL" = (
 /obj/structure/closet/crate{
@@ -512,17 +512,17 @@
 /obj/item/falcon_drone,
 /obj/item/falcon_drone,
 /obj/item/falcon_drone,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "iP" = (
 /obj/effect/hunter/bridge_border/edge,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "jf" = (
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "ji" = (
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "jm" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -546,20 +546,20 @@
 	pixel_y = -7;
 	pixel_x = -2
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "jH" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "jR" = (
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "kc" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -568,20 +568,20 @@
 	buckling_x = -2
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "kr" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "kt" = (
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "kv" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -604,20 +604,20 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "kM" = (
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1,
+/turf/open/predship/mainfloor/direction_1,
 /area/adminlevel/ert_station/yautja_station)
 "kS" = (
 /turf/open/space/basic,
 /area/space)
 "kV" = (
 /obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "le" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -639,11 +639,11 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "lr" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "ly" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -666,17 +666,17 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "lR" = (
 /obj/structure/platform_decoration/metal/hunter/east{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "lV" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "ma" = (
 /obj/item/stack/medical/advanced/ointment/predator{
@@ -713,7 +713,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "mP" = (
 /obj/effect/hunter/rune{
@@ -728,11 +728,11 @@
 /area/adminlevel/ert_station/yautja_station)
 "mY" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "nG" = (
 /obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/adminlevel/ert_station/yautja_station)
 "nN" = (
 /obj/structure/pipes/unary/freezer/yautja{
@@ -742,14 +742,14 @@
 	dir = 5;
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "nP" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "of" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -772,7 +772,7 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "os" = (
 /obj/structure/showcase{
@@ -789,7 +789,7 @@
 	name = "Armory Lockdown";
 	req_one_access = list(390,392,393)
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "oD" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -800,13 +800,13 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "oG" = (
 /obj/effect/hunter/bridge_border/edge{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "oI" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -819,7 +819,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "oM" = (
 /obj/structure/showcase/yautja/alt{
@@ -834,46 +834,46 @@
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_y = -20
 	},
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/adminlevel/ert_station/yautja_station)
 "oO" = (
 /obj/effect/hunter/bridge_border{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "pj" = (
-/turf/open/shuttle/dropship/predship/hunter_grate/north,
+/turf/open/predship/hunter_grate/north,
 /area/adminlevel/ert_station/yautja_station)
 "pm" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "pK" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "pO" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "qs" = (
 /obj/structure/machinery/iv_drip{
 	pixel_y = 17;
 	color = "#9bb1be"
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "qv" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "qy" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "qC" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -883,18 +883,18 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "qI" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "qS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "rc" = (
 /obj/structure/shuttle/engine/router{
@@ -909,10 +909,10 @@
 	color = "#912727"
 	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "rv" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "rN" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -921,7 +921,7 @@
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "rQ" = (
 /obj/item/stack/sheet/glass/large_stack,
@@ -940,7 +940,7 @@
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
 /obj/structure/closet/yautja/big,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "rT" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -950,7 +950,7 @@
 	pixel_y = 10;
 	pixel_x = -1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "so" = (
 /obj/structure/shuttle/engine/router{
@@ -972,7 +972,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "sG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
@@ -982,13 +982,13 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "sM" = (
 /obj/structure/closet/coffin/predator{
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "sQ" = (
 /obj/effect/hunter/rune/corner_2{
@@ -1017,7 +1017,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "tx" = (
 /obj/structure/surface/rack{
@@ -1025,7 +1025,7 @@
 	layer = 2.79
 	},
 /obj/item/device/flashlight/lantern/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "tU" = (
 /obj/structure/prop/hunter/catwalk/corner/four,
@@ -1034,7 +1034,7 @@
 	dir = 1
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "ui" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -1048,7 +1048,7 @@
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "uj" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -1063,7 +1063,7 @@
 	pixel_y = 26
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "um" = (
 /obj/structure/surface/rack{
@@ -1071,7 +1071,7 @@
 	layer = 2.79
 	},
 /obj/item/trash/falcon_drone,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "uu" = (
 /turf/open/floor/corsat/squares,
@@ -1080,14 +1080,14 @@
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/adminlevel/ert_station/yautja_station)
 "uB" = (
 /obj/structure/machinery/autodoc_console/yautja{
 	pixel_y = 8;
 	pixel_x = 3
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "uD" = (
 /obj/structure/showcase{
@@ -1099,7 +1099,7 @@
 	pixel_x = -17;
 	pixel_y = -9
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "uH" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -1116,7 +1116,7 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "uM" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1136,7 +1136,7 @@
 "uP" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "uY" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -1150,7 +1150,7 @@
 /obj/structure/prop/hunter/misc/feed{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "vb" = (
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
@@ -1174,7 +1174,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/adminlevel/ert_station/yautja_station)
 "vy" = (
 /obj/structure/surface/rack{
@@ -1194,7 +1194,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "vG" = (
 /obj/effect/hunter/rune/corner_2{
@@ -1208,7 +1208,7 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/yautja_station)
 "vN" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "wk" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1222,14 +1222,14 @@
 	pixel_y = 3;
 	pixel_x = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "wn" = (
 /obj/structure/machinery/sleep_console/yautja{
 	pixel_x = 3;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "wy" = (
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
@@ -1239,7 +1239,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "wK" = (
 /obj/structure/surface/hunter_shuttle_table{
@@ -1254,7 +1254,7 @@
 	pixel_x = 7
 	},
 /obj/effect/hunter/bridge_border/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "wN" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -1277,14 +1277,14 @@
 	pixel_y = 3;
 	pixel_x = -3
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "wW" = (
 /obj/structure/machinery/medical_pod/bodyscanner/yautja{
 	pixel_y = 8;
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "xs" = (
 /obj/effect/hunter/bridge_border/corner{
@@ -1297,7 +1297,7 @@
 	pixel_y = 4;
 	buckling_y = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "xv" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -1309,7 +1309,7 @@
 	id = "ertprisonlockdown";
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/adminlevel/ert_station/yautja_station)
 "xA" = (
 /obj/structure/shuttle/engine/router{
@@ -1328,11 +1328,11 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "xJ" = (
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "xK" = (
 /obj/effect/hunter/bridge_border/corner,
@@ -1344,7 +1344,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "xS" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -1362,7 +1362,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "xX" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -1377,7 +1377,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "ye" = (
 /obj/effect/hunter/bridge_border/corner,
@@ -1407,11 +1407,11 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "yC" = (
 /obj/structure/machinery/cryopod/no_store/yautja,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "yI" = (
 /obj/structure/machinery/autolathe/yautja,
@@ -1429,7 +1429,7 @@
 /obj/effect/hunter/bridge_border/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "zc" = (
 /obj/structure/machinery/chem_dispenser/yauja{
@@ -1443,11 +1443,11 @@
 	density = 0;
 	desc = null
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "zp" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "zw" = (
 /obj/effect/hunter/rune{
@@ -1461,13 +1461,13 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/adminlevel/ert_station/yautja_station)
 "zD" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "zE" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1491,7 +1491,7 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "zR" = (
 /obj/structure/bed/chair/hunter{
@@ -1501,20 +1501,20 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "zV" = (
 /obj/structure/sink{
 	pixel_y = 25;
 	color = "#c1a384"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Ad" = (
 /obj/effect/hunter/rune/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge,
+/turf/open/predship/mainfloor/edge,
 /area/adminlevel/ert_station/yautja_station)
 "Al" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -1524,7 +1524,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "Aq" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -1532,10 +1532,10 @@
 	pixel_y = 8;
 	pixel_x = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "At" = (
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "AA" = (
 /obj/structure/shuttle/engine/heater{
@@ -1554,7 +1554,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/adminlevel/ert_station/yautja_station)
 "AJ" = (
 /obj/structure/shuttle/engine/router{
@@ -1571,19 +1571,19 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "AU" = (
 /obj/structure/machinery/chem_master/yautja{
 	req_skill_level = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Be" = (
 /obj/structure/machinery/computer/crew/alt/yautja{
 	pixel_y = 25
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Bh" = (
 /obj/structure/shuttle/engine/router{
@@ -1600,13 +1600,13 @@
 	color = "#912727"
 	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Bi" = (
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/east,
+/turf/open/predship/mainfloor/direction_2/east,
 /area/adminlevel/ert_station/yautja_station)
 "Bj" = (
 /obj/structure/bed/alien/yautja/leader,
@@ -1614,7 +1614,7 @@
 	color = "#aba9a9";
 	pixel_x = -1
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Bs" = (
 /obj/effect/hunter/rune{
@@ -1624,14 +1624,14 @@
 /area/adminlevel/ert_station/yautja_station)
 "Bu" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "BE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "BJ" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -1641,7 +1641,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "BM" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -1650,7 +1650,7 @@
 	pixel_x = 2;
 	buckling_x = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "BO" = (
 /obj/structure/prop/hunter/catwalk/corner/five,
@@ -1660,11 +1660,11 @@
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "BV" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "BY" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -1674,11 +1674,11 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Ce" = (
 /obj/structure/machinery/vending/dinnerware/yautja,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Cf" = (
 /turf/open/floor/predship/hull/non_weedable_hull/west,
@@ -1722,17 +1722,17 @@
 	pixel_x = -15;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "CH" = (
 /obj/structure/bed/chair/hunter{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "CM" = (
 /obj/effect/hunter/bridge_border/brown/edge,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "CO" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1754,7 +1754,7 @@
 /obj/item/tool/surgery/circular_saw/predatorbonesaw{
 	pixel_y = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "CT" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -1767,7 +1767,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Do" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -1775,7 +1775,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Dy" = (
 /obj/docking_port/stationary/emergency_response/idle_port7{
@@ -1785,18 +1785,18 @@
 /area/adminlevel/ert_station/yautja_station)
 "DA" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "DC" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "DS" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/adminlevel/ert_station/yautja_station)
 "DU" = (
 /obj/structure/curtain/leather/alt_2,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "DZ" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -1808,7 +1808,7 @@
 	dir = 4
 	},
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Ed" = (
 /obj/effect/hunter/rune{
@@ -1821,10 +1821,10 @@
 /obj/structure/closet/coffin/predator{
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/adminlevel/ert_station/yautja_station)
 "Ex" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "Ey" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -1835,7 +1835,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/adminlevel/ert_station/yautja_station)
 "EV" = (
 /obj/effect/hunter/bridge_border/corner{
@@ -1848,7 +1848,7 @@
 	buckling_y = 4;
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "Fi" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1866,7 +1866,7 @@
 	density = 0;
 	desc = null
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Fl" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -1874,7 +1874,7 @@
 	layer = 3
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Fp" = (
 /obj/structure/curtain/leather/alt_2,
@@ -1942,7 +1942,7 @@
 	amount = 50
 	},
 /obj/structure/closet/yautja/big,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Fs" = (
 /obj/structure/shuttle/engine/router{
@@ -1957,7 +1957,7 @@
 	dir = 4;
 	color = "#912727"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "FR" = (
 /obj/structure/surface/hunter_shuttle_table{
@@ -1967,11 +1967,11 @@
 	pixel_x = -7;
 	desc = "Used to monitor active health sensors of all Yautja in the selected system, right from home. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/adminlevel/ert_station/yautja_station)
 "FY" = (
 /obj/effect/hunter/rune/corner_2,
-/turf/open/shuttle/dropship/predship/mainfloor/corner/north,
+/turf/open/predship/mainfloor/corner/north,
 /area/adminlevel/ert_station/yautja_station)
 "Ge" = (
 /obj/structure/shuttle/engine/heater{
@@ -1995,7 +1995,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Gh" = (
 /obj/structure/bed/alien/yautja/leader,
@@ -2004,17 +2004,17 @@
 	pixel_y = -2;
 	color = "#692e2e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Gi" = (
 /obj/effect/hunter/rune/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/north,
+/turf/open/predship/mainfloor/edge/north,
 /area/adminlevel/ert_station/yautja_station)
 "Gr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "Gx" = (
 /obj/structure/surface/rack{
@@ -2028,11 +2028,11 @@
 /obj/item/weapon/gun/energy/yautja/plasmacarbine{
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "GL" = (
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "GV" = (
 /obj/structure/closet/coffin/predator{
@@ -2041,7 +2041,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Hb" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -2049,7 +2049,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "Hf" = (
 /obj/effect/hunter/bridge_border{
@@ -2059,7 +2059,7 @@
 	pixel_y = 3;
 	desc = "A globe designed by the hunters to show them the location of prey across their many hunting grounds."
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "Hj" = (
 /obj/effect/hunter/rune{
@@ -2076,14 +2076,14 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "HC" = (
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/yautja_station)
 "HM" = (
 /obj/effect/hunter/bridge_border/brown/edge,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "HV" = (
 /turf/open/floor/predship/hull/non_weedable_hull/northeast,
@@ -2119,15 +2119,15 @@
 	pixel_x = -21;
 	req_one_access_txt = "390"
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Im" = (
 /obj/structure/reagent_dispensers/tank/water/yautja,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Is" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "IH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -2135,7 +2135,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "IK" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2146,10 +2146,10 @@
 	pixel_y = 6
 	},
 /obj/item/trash/falcon_drone,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Ja" = (
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Jb" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -2161,7 +2161,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Jc" = (
 /obj/structure/platform_decoration/metal/hunter/west,
@@ -2172,7 +2172,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Jh" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -2182,7 +2182,7 @@
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Ji" = (
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
@@ -2213,12 +2213,12 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/structure/closet/yautja/big,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Jk" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/adminlevel/ert_station/yautja_station)
 "Jm" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -2227,7 +2227,7 @@
 	pixel_y = 8;
 	pixel_x = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Jo" = (
 /obj/effect/hunter/rune{
@@ -2244,7 +2244,7 @@
 	buckling_x = -2
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/adminlevel/ert_station/yautja_station)
 "JU" = (
 /obj/structure/pipes/portables_connector{
@@ -2255,7 +2255,7 @@
 	pixel_x = -1;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "KK" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -2263,7 +2263,7 @@
 	dir = 4;
 	pixel_x = -6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "Ln" = (
 /obj/structure/shuttle/engine/heater{
@@ -2285,23 +2285,23 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Lw" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "LA" = (
 /obj/effect/hunter/rune/corner,
-/turf/open/shuttle/dropship/predship/mainfloor/edge/west,
+/turf/open/predship/mainfloor/edge/west,
 /area/adminlevel/ert_station/yautja_station)
 "Mf" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Mg" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -2312,7 +2312,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/adminlevel/ert_station/yautja_station)
 "Mi" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
@@ -2335,7 +2335,7 @@
 /obj/effect/hunter/bridge_border/edge{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "Nc" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -2343,19 +2343,19 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "Nj" = (
 /obj/effect/hunter/rune/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/east,
+/turf/open/predship/mainfloor/edge/east,
 /area/adminlevel/ert_station/yautja_station)
 "Nu" = (
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Nv" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2392,26 +2392,26 @@
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "NW" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/adminlevel/ert_station/yautja_station)
 "NX" = (
 /obj/effect/hunter/bridge_border/edge{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "NZ" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Oc" = (
 /obj/effect/hunter/rune{
@@ -2425,7 +2425,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "Od" = (
 /obj/structure/shuttle/engine/router{
@@ -2442,20 +2442,20 @@
 	color = "#912727"
 	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Ot" = (
 /obj/effect/hunter/bridge_border/small_stair_left{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Ou" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/adminlevel/ert_station/yautja_station)
 "OC" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -2466,11 +2466,11 @@
 	layer = 3
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "OG" = (
 /obj/structure/machinery/door/airlock/yautja/secure,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "OX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -2478,7 +2478,7 @@
 	dir = 8;
 	pixel_x = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "Pd" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -2488,7 +2488,7 @@
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Py" = (
 /obj/structure/showcase{
@@ -2499,7 +2499,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "PH" = (
 /obj/structure/surface/rack{
@@ -2514,11 +2514,11 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle{
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "PJ" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "PY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -2534,10 +2534,10 @@
 	layer = 3.1
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "PZ" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Qi" = (
 /obj/structure/surface/hunter_shuttle_table,
@@ -2556,7 +2556,7 @@
 	dir = 1;
 	pixel_y = -27
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "QK" = (
 /obj/structure/shuttle/engine/heater{
@@ -2580,7 +2580,7 @@
 	color = "#c0baae";
 	desc = "A ventilation shaft for electrical machinery."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "QW" = (
 /obj/item/storage/backpack/yautja,
@@ -2605,11 +2605,11 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Rf" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/adminlevel/ert_station/yautja_station)
 "Rr" = (
 /obj/structure/terminal{
@@ -2636,7 +2636,7 @@
 /obj/structure/machinery/chem_dispenser/soda/yautja{
 	pixel_y = 10
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "RC" = (
 /turf/open/floor/predship/hull/non_weedable_hull/northwest,
@@ -2645,7 +2645,7 @@
 /obj/effect/hunter/bridge_border/small_stair_right{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "RY" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2665,7 +2665,7 @@
 /area/adminlevel/ert_station/yautja_station)
 "Sa" = (
 /obj/effect/hunter/bridge_border,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "Si" = (
 /obj/item/stack/sheet/plasteel{
@@ -2689,7 +2689,7 @@
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
 /obj/structure/closet/yautja/big,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "So" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -2699,7 +2699,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/adminlevel/ert_station/yautja_station)
 "Ss" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -2707,7 +2707,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "SA" = (
 /turf/closed/wall/huntership,
@@ -2722,7 +2722,7 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "SQ" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -2740,7 +2740,7 @@
 /obj/structure/prop/hunter/misc/feed{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "Tc" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -2751,26 +2751,26 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/adminlevel/ert_station/yautja_station)
 "Tu" = (
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "Tx" = (
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/east,
+/turf/open/predship/mainfloor/direction_1/east,
 /area/adminlevel/ert_station/yautja_station)
 "TR" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "TY" = (
 /obj/effect/hunter/bridge_border/corner{
@@ -2784,13 +2784,13 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
 "TZ" = (
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/adminlevel/ert_station/yautja_station)
 "Ub" = (
 /obj/structure/surface/rack{
@@ -2798,25 +2798,25 @@
 	layer = 2.79
 	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Ut" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "UA" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "UG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "UM" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -2834,11 +2834,11 @@
 	pixel_x = -1;
 	pixel_y = -7
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "UW" = (
 /obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/adminlevel/ert_station/yautja_station)
 "Va" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2862,7 +2862,7 @@
 	pixel_y = 19;
 	pixel_x = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Vf" = (
 /turf/open/floor/predship/hull/non_weedable_hull/north,
@@ -2886,7 +2886,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "VF" = (
 /obj/structure/showcase{
@@ -2897,16 +2897,16 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "VK" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/adminlevel/ert_station/yautja_station)
 "VO" = (
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/adminlevel/ert_station/yautja_station)
 "VQ" = (
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -2914,7 +2914,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "VZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west{
@@ -2923,7 +2923,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "Wc" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -2934,24 +2934,24 @@
 	layer = 3
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Wh" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
 /obj/structure/machinery/juicer/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Wo" = (
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/adminlevel/ert_station/yautja_station)
 "Wt" = (
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "WC" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -2961,11 +2961,11 @@
 	buckling_x = -2
 	},
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "WH" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3/west,
+/turf/open/predship/tile/hunter_tile_3/west,
 /area/adminlevel/ert_station/yautja_station)
 "WO" = (
 /obj/structure/machinery/body_scanconsole/yautja{
@@ -2973,7 +2973,7 @@
 	pixel_y = 8;
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "WS" = (
 /obj/structure/surface/rack{
@@ -2981,7 +2981,7 @@
 	layer = 2.79
 	},
 /obj/item/weapon/twohanded/yautja/spear,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "WU" = (
 /obj/structure/machinery/power/smes/magical/yautja,
@@ -2995,7 +2995,7 @@
 /obj/effect/hunter/bridge_border/small_stair_right{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Xd" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -3028,23 +3028,23 @@
 /obj/item/tool/surgery/healing_gun{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Xi" = (
 /obj/effect/hunter/bridge_border/small_stair_left{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Xv" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "XD" = (
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/adminlevel/ert_station/yautja_station)
 "XK" = (
 /obj/structure/machinery/door/poddoor{
@@ -3054,7 +3054,7 @@
 /area/adminlevel/ert_station/yautja_station)
 "XQ" = (
 /obj/structure/machinery/optable/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "Ya" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -3067,7 +3067,7 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Yc" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
@@ -3081,7 +3081,7 @@
 	buckling_x = 2
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/adminlevel/ert_station/yautja_station)
 "YR" = (
 /obj/structure/shuttle/engine/router{
@@ -3096,7 +3096,7 @@
 	color = "#912727"
 	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "Zp" = (
 /obj/structure/showcase{
@@ -3109,7 +3109,7 @@
 	pixel_y = 10;
 	layer = 3.1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "Zr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east{
@@ -3118,11 +3118,11 @@
 /obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_3,
+/turf/open/predship/tile/hunter_tile_3,
 /area/adminlevel/ert_station/yautja_station)
 "Zz" = (
 /obj/structure/reagent_dispensers/tank/water/yautja,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/adminlevel/ert_station/yautja_station)
 "ZL" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -3135,13 +3135,13 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "ZP" = (
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
 "ZW" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -3155,7 +3155,7 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 
 (1,1,1) = {"

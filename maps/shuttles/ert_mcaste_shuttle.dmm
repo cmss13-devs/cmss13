@@ -28,14 +28,14 @@
 /obj/effect/hunter/catwalk/hunter_grate{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/shuttle/ert)
 "hU" = (
 /obj/structure/bed/chair/hunter{
 	dir = 4
 	},
 /obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/turf/open/predship/tile/hunter_tile_2,
 /area/shuttle/ert)
 "iq" = (
 /turf/open/mcaste_shuttle/shuttle_border_corner,
@@ -50,7 +50,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/shuttle/ert)
 "mh" = (
 /turf/closed/shuttle/hunter{
@@ -96,7 +96,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/shuttle/ert/pred_mcaste,
 /obj/structure/surface/hunter_shuttle_table,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/shuttle/ert)
 "ta" = (
 /turf/closed/shuttle/hunter{
@@ -137,7 +137,7 @@
 /obj/structure/machinery/computer/crew/alt/yautja{
 	pixel_x = -9
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/shuttle/ert)
 "za" = (
 /turf/closed/shuttle/hunter{
@@ -180,7 +180,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/shuttle/ert)
 "HE" = (
 /turf/closed/shuttle/hunter{
@@ -243,7 +243,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/shuttle/ert)
 "Rp" = (
 /turf/closed/shuttle/hunter{
@@ -270,7 +270,7 @@
 	id = "yaut_shut_lock";
 	req_one_access = list(390,392,393)
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
+/turf/open/predship/tile/hunter_tile_2/west,
 /area/shuttle/ert)
 "Sy" = (
 /obj/structure/shuttle/part/hunter/right_front2,
@@ -281,7 +281,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/turf/open/predship/tile/hunter_tile_2,
 /area/shuttle/ert)
 "UR" = (
 /turf/open/mcaste_shuttle/shuttle_border/north,
@@ -313,7 +313,7 @@
 	},
 /area/shuttle/ert)
 "YK" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
+/turf/open/predship/tile/hunter_tile_2,
 /area/shuttle/ert)
 "Zr" = (
 /turf/closed/shuttle/hunter/transparent{

@@ -168,7 +168,7 @@
 /turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
 "bO" = (
-/turf/open/floor/predship/hull/non_weedable_hull/southeast,
+/turf/open/predship/hull/non_weedable_hull/southeast,
 /area/adminlevel/ert_station/yautja_station)
 "cg" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -528,7 +528,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/adminlevel/ert_station/yautja_station)
 "jt" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1153,10 +1153,10 @@
 /turf/open/predship/red_glow/on,
 /area/adminlevel/ert_station/yautja_station)
 "vb" = (
-/turf/open/floor/predship/hull/non_weedable_hull/southwest,
+/turf/open/predship/hull/non_weedable_hull/southwest,
 /area/adminlevel/ert_station/yautja_station)
 "vm" = (
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/adminlevel/ert_station/yautja_station)
 "vt" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -1681,7 +1681,7 @@
 /turf/open/predship/tile/red3,
 /area/adminlevel/ert_station/yautja_station)
 "Cf" = (
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/adminlevel/ert_station/yautja_station)
 "Cm" = (
 /obj/effect/hunter/rune/corner_2{
@@ -1792,7 +1792,7 @@
 /turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "DS" = (
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/predship/hull/non_weedable_hull/east,
 /area/adminlevel/ert_station/yautja_station)
 "DU" = (
 /obj/structure/curtain/leather/alt_2,
@@ -2086,7 +2086,7 @@
 /turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
 "HV" = (
-/turf/open/floor/predship/hull/non_weedable_hull/northeast,
+/turf/open/predship/hull/non_weedable_hull/northeast,
 /area/adminlevel/ert_station/yautja_station)
 "HW" = (
 /obj/structure/machinery/cryo_cell/yautja{
@@ -2639,7 +2639,7 @@
 /turf/open/predship/tile/red2,
 /area/adminlevel/ert_station/yautja_station)
 "RC" = (
-/turf/open/floor/predship/hull/non_weedable_hull/northwest,
+/turf/open/predship/hull/non_weedable_hull/northwest,
 /area/adminlevel/ert_station/yautja_station)
 "RU" = (
 /obj/effect/hunter/bridge_border/small_stair_right{
@@ -2865,10 +2865,10 @@
 /turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)
 "Vf" = (
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/adminlevel/ert_station/yautja_station)
 "Vi" = (
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/adminlevel/ert_station/yautja_station)
 "Vm" = (
 /obj/effect/hunter/bridge_border/brown/corner{

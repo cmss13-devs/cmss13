@@ -90,6 +90,19 @@
 	fade_out_delay = 10 SECONDS
 	fade_out_time = 3 SECONDS
 
+
+/atom/movable/screen/text/screen_text/chemical_advisory
+	maptext_height = 64
+	maptext_width = 480
+	maptext_x = 0
+	maptext_y = 0
+	screen_loc = "LEFT,TOP-3"
+
+	letters_per_update = 1
+	fade_out_delay = 6 SECONDS
+	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
+	style_close = "</span>"
+
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.add_to_screen(src)

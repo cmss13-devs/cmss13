@@ -21,6 +21,24 @@
 	actions_types = list(/datum/action/item_action/toggle/hudgoggles, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
+	var/datum/weakref/equipped_user
+
+/obj/item/clothing/glasses/hud/health/equipped(mob/user, slot)
+	. = ..()
+	if(slot == "glasses")
+		equipped_user = WEAKREF(user)
+		RegisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, PROC_REF(announce_to_user))
+
+/obj/item/clothing/glasses/hud/health/unequipped(mob/user, slot)
+	. = ..()
+	if(slot == "glasses")
+		equipped_user = null
+		UnregisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT)
+
+/obj/item/clothing/glasses/hud/health/proc/announce_to_user(datum/source, text, name)
+	var/mob/player = equipped_user.resolve()
+	playsound_client(player.client, 'sound/effects/radiostatic.ogg', player.loc, 25, FALSE)
+	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182")
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"

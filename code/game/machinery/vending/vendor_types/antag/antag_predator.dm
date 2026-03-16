@@ -328,6 +328,9 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"
 	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	vendor_role = list(JOB_PREDATOR)
+	show_points = FALSE
+	vendor_theme = VENDOR_THEME_YAUTJA
 
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder/right
 	icon_state = "pred_vendor_elder_right"

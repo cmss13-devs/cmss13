@@ -66,13 +66,11 @@
 		if(JOB_DIRECTOR)
 			hud_icon_state = "director"
 		if(JOB_CORPORATE_BODYGUARD)
-			hud_icon_state = "bodyguard"
+			hud_icon_state = "bodyguard_ppo"
 			if(id_card && id_card.paygrade)
 				switch(id_card.paygrade)
 					if(PAY_SHORT_WY_SEC_TPPO)
 						hud_icon_state = "bodyguard_tppo"
-					if(PAY_SHORT_WY_SEC_PPO)
-						hud_icon_state = "bodyguard_ppo"
 					if(PAY_SHORT_WY_SEC_PPS)
 						hud_icon_state = "bodyguard_pps"
 					if(PAY_SHORT_WY_SEC_PPC)

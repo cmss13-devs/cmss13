@@ -17,6 +17,7 @@
 
 // Shuttle return values
 #define SHUTTLE_CAN_DOCK "can_dock"
+#define SHUTTLE_HUNTER "unsafe dock"//Only Yautja can use these.
 #define SHUTTLE_NOT_A_DOCKING_PORT "not a docking port"
 #define SHUTTLE_DWIDTH_TOO_LARGE "docking width too large"
 #define SHUTTLE_WIDTH_TOO_LARGE "width too large"
@@ -24,7 +25,6 @@
 #define SHUTTLE_HEIGHT_TOO_LARGE "height too large"
 #define SHUTTLE_ALREADY_DOCKED "we are already docked"
 #define SHUTTLE_SOMEONE_ELSE_DOCKED "someone else docked"
-#define SHUTTLE_HUNTER "unsafe dock"//Only Yautja can use these.
 
 //Launching Shuttles to CentCom - used for escape shuttle code
 #define NOLAUNCH -1

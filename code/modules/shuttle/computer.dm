@@ -379,6 +379,7 @@
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+
 	if(lifeboat.status == LIFEBOAT_LOCKED)
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
@@ -405,8 +406,10 @@
 			SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 		override_being_removed = FALSE
 		return
-	else if(lifeboat.status == LIFEBOAT_INACTIVE)
+
+	if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
+
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
@@ -422,6 +425,14 @@
 
 				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(SShijack.in_ftl)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
+					return
+
+				if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
 					return
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)

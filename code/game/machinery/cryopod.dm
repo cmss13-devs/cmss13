@@ -385,10 +385,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 	//Delete the mob.
-
-	QDEL_NULL(occupant)
-	if(is_aco)
+	if(occupant == SSticker.mode.acting_commander)
+		QDEL_NULL(occupant)
 		SSticker.mode.ares_command_check(force=TRUE)
+	else
+		QDEL_NULL(occupant)
+
 	stop_processing()
 
 /obj/structure/machinery/cryopod/attackby(obj/item/item, mob/living/user)
@@ -519,10 +521,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	occupant = mob
-	if(occupant == SSticker.mode.acting_commander)
-		is_aco=TRUE
 	//if occupant ghosted, entered willingly or is the aCO, time till despawn is severely shorter
-	if((!occupant.key || willing || is_aco) && time_till_despawn == 10 MINUTES)
+	if((!occupant.key || willing || (occupant == SSticker.mode.acting_commander)) && time_till_despawn == 10 MINUTES)
 		time_till_despawn -= 9 MINUTES
 
 	occupant.forceMove(src)

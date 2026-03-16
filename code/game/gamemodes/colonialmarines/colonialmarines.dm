@@ -382,23 +382,28 @@
 		person_in_charge = commander
 	else
 		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
-			//Checks for non-unique roles
-			if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
-				person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
-			else if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
-				person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
-			else if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
-				person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
-
 			//Checks for unique roles
 			if(!person_in_charge)
 				var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
 				person_in_charge = job_datum?.get_active_player_on_job()
+				if(person_in_charge)
+					if(!is_mob_cryoing(person_in_charge))
+						break
 
-			//Make sure candidate isnt cryoing)
-			if(person_in_charge)
-				if(!is_mob_cryoing(person_in_charge))
-					break
+			//Checks for non-unique roles
+			if(job_by_chain == JOB_SO || job_by_chain == JOB_INTEL || job_by_chain == JOB_DOCTOR)
+				var/list/candidates = deep_copy_list(GLOB.marine_leaders + GLOB.marine_officers)
+				while(candidates[job_by_chain])
+					person_in_charge = pick(candidates[job_by_chain])
+					if(is_mob_cryoing(person_in_charge))
+						candidates[job_by_chain] -= person_in_charge
+						person_in_charge = null
+					else break
+				//If we emptied the list then lets delete it
+				if(!length(candidates[job_by_chain]))
+					del(candidates[job_by_chain])
+				break
+
 
 	if(!person_in_charge)
 		return log_admin("No valid commander found for automatic promotion.")

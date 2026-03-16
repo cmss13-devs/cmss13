@@ -445,7 +445,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/powered(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/military(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/yautja(new_human), WEAR_BACK) // the dual plasma cannon pack can gib people; not very low-threat
+	new_human.equip_to_slot_or_del(new /obj/item/yautja_cannon_pack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmarifle(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
 
@@ -455,9 +455,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmapistol(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/spike(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/yautja(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/legcuffs/xeno_restraints/strong(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_BELT)
 

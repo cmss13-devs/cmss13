@@ -178,7 +178,7 @@
 	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
-	health = null
+	health = 200
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 200
@@ -345,6 +345,7 @@
 	name = "\improper MTU-4B Door Gunner Hardpoint System"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
+	health = 200
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 50

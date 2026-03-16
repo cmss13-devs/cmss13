@@ -24,11 +24,29 @@
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("Box of Flechette Shells (12g)", floor(scale * 3), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Box of Buckshot Shells (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box of Buckshot Shells (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_POOR),
+		list("Box of Incendiary Buckshot Shells (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/incendiarybuck, VENDOR_ITEM_WELL_FUNDED),
 		list("Box of Shotgun Slugs (12g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
-		list("M4RA Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M39 HV Magazine (10x20mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M41A Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M4RA Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_POOR),
+		list("M39 HV Magazine (10x20mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_POOR),
+		list("M41A Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_POOR),
+		
+		list("M4RA HEAP Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/m4ra/heap, VENDOR_ITEM_WELL_FUNDED),
+		list("M4RA Penetrating (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/m4ra/penetrating, VENDOR_ITEM_WELL_FUNDED),
+		list("M4RA Incendiary (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/m4ra/incendiary, VENDOR_ITEM_WELL_FUNDED),
+		
+		list("M39 Light Explosive Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/le, VENDOR_ITEM_WELL_FUNDED),
+		list("M39 HEAP Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/heap, VENDOR_ITEM_WELL_FUNDED),
+		list("M39 Penetrating Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/penetrating, VENDOR_ITEM_WELL_FUNDED),
+		list("M39 Toxic Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/toxin, VENDOR_ITEM_WELL_FUNDED),
+		list("M39 Incendiary Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/incendiary, VENDOR_ITEM_WELL_FUNDED),
+		
+		list("M41A Incendiary Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/incendiary, VENDOR_ITEM_WELL_FUNDED),
+	//	list("M41A Explosive Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/explosive, VENDOR_ITEM_WELL_FUNDED),	//I know this is supposed to be OP, but this is excessive.
+		list("M41A HEAP Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/heap, VENDOR_ITEM_WELL_FUNDED),
+		list("M41A Light Explosive Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/le, VENDOR_ITEM_WELL_FUNDED),
+		list("M41A Penetrating Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/penetrating, VENDOR_ITEM_WELL_FUNDED),
+		list("M41A Toxic Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/toxin, VENDOR_ITEM_WELL_FUNDED),
 
 		list("SIDEARMS", -1, null, null),
 		list("M10 Auto Pistol", floor(scale * 10), /obj/item/weapon/gun/pistol/m10, VENDOR_ITEM_REGULAR),

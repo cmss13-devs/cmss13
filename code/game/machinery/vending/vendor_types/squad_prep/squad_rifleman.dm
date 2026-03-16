@@ -123,6 +123,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Medical Helmet Optic", 15, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
+		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_WELL_FUNDED),
 
 		list("PAMPHLETS", 0, null, null, null),
 		list("JTAC Pamphlet", 15, /obj/item/pamphlet/upgradeable/jtac, null, VENDOR_ITEM_REGULAR),
@@ -146,7 +147,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	vendor_role = list(JOB_SQUAD_MARINE)
 
 /obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_marine
+	var/list/final_products = list()
+
+	for(var/product in GLOB.cm_vending_clothing_marine)
+		if(product[length(product)] == null)
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_WELL_FUNDED && MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_POOR && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] <= VENDOR_ITEM_RECOMMENDED)
+			final_products += list(product)
+	
+	return final_products
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
 	squad_tag = SQUAD_MARINE_1

@@ -800,7 +800,19 @@ GLOBAL_LIST_EMPTY(vending_products)
 	. = ..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
-	return listed_products
+	var/list/final_products = list()
+
+	for(var/product in listed_products)
+		if(product[length(product)] == null)
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_WELL_FUNDED && MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_POOR && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] <= VENDOR_ITEM_RECOMMENDED)
+			final_products += list(product)
+	
+	return final_products
 
 /obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) // We're just going to skip the mess of access checks assuming xenos with thumbs are human and just allow them to access because it's funny

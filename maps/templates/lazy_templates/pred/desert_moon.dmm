@@ -2287,7 +2287,7 @@
 	layer = 3;
 	pixel_y = -1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple)
 "jM" = (
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -2976,7 +2976,7 @@
 /obj/structure/prop/brazier/frame/full{
 	pixel_y = 3
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple/entrance/desert)
 "mh" = (
 /obj/item/ammo_magazine/rifle/m41aMK1/heap{
@@ -3566,7 +3566,7 @@
 /obj/structure/prop/brazier{
 	pixel_y = 3
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple)
 "Um" = (
 /obj/structure/prop/brazier/torch,

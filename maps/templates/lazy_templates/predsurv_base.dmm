@@ -11,7 +11,7 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "e" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -19,18 +19,18 @@
 	},
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/reagent_container/food/snacks/stew,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "g" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "i" = (
 /turf/open/space/basic,
 /area/space)
 "t" = (
 /obj/effect/landmark/badblood_spawn,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "w" = (
 /obj/effect/hunter/bridge_border/corner,
@@ -53,14 +53,14 @@
 /turf/closed/wall/huntership,
 /area/yautja/badblood)
 "G" = (
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "K" = (
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Teleporter";
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "Q" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -78,11 +78,11 @@
 	pixel_x = -7;
 	pixel_y = 2
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "V" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/right,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 "W" = (
 /obj/structure/bed/alien/yautja{
@@ -91,7 +91,7 @@
 	buckling_x = 6;
 	buckling_y = 7
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/yautja/badblood)
 
 (1,1,1) = {"

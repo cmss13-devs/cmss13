@@ -94,19 +94,6 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
-	if(is_hijacked)
-		return
-
-	for(var/area/checked_area in shuttle_areas)
-		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
-				continue
-			var/name = "Unidentified Lifesigns"
-			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
-			set_security_level(SEC_LEVEL_RED)
-			return
-
 /obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/place in shuttle_areas)
@@ -244,6 +231,19 @@
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_arrival()
 
+	if(dropship.is_hijacked || !is_mainship_level(z))
+		return
+
+	for(var/area/checked_area in dropship.shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
+				continue
+			var/name = "Unidentified Lifesigns"
+			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+			set_security_level(SEC_LEVEL_RED)
+			return
+
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
@@ -336,5 +336,3 @@
 /datum/map_template/shuttle/devana
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
-
-

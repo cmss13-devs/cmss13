@@ -2,7 +2,6 @@
 	light_system = MOVABLE_LIGHT
 	rotate_on_lying = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
-	dirlock_slowdown = FALSE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -44,7 +43,7 @@
 
 	var/underwear = "Boxers (Camo Conforming)" //Which underwear the player wants
 	var/undershirt = "Undershirt (Tan) (Camo Conforming)" //Which undershirt the player wants.
-	var/backbag = 2 //Which backpack type the player has chosen. Satchel or Backpack.
+	var/backbag = 2 //Which backpack type the player has chosen. Satchel or Backpack or Chestrig.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().
 

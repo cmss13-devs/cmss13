@@ -401,7 +401,7 @@
 /datum/reagent/sugar
 	name = "Sugar"
 	id = "sugar"
-	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitocondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
+	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitochondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
 	reagent_state = SOLID
 	color = COLOR_WHITE
 	chemclass = CHEM_CLASS_BASIC
@@ -506,7 +506,7 @@
 /datum/reagent/aluminum
 	name = "Aluminum"
 	id = "aluminum"
-	description = "Chemical element of atomic number 13. A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
+	description = "Chemical element of atomic number 13. A silvery-white soft metal of the boron group. Because of its low density it is often used as a structural material in aircraft."
 	reagent_state = SOLID
 	color = "#A8A8A8" // rgb: 168, 168, 168
 	chemclass = CHEM_CLASS_BASIC
@@ -594,7 +594,7 @@
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"
 	id = "cryptobiolin"
-	description = "A component to making spaceacilin."
+	description = "A component to making spaceacillin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
@@ -645,7 +645,7 @@
 /datum/reagent/fluorosurfactant//foam precursor
 	name = "Fluorosurfactant"
 	id = "fluorosurfactant"
-	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
+	description = "A perfluorinated sulfonic acid that forms a foam when mixed with water."
 	reagent_state = LIQUID
 	color = "#9E6B38" // rgb: 158, 107, 56
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -653,7 +653,7 @@
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
 	id = "foaming_agent"
-	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
+	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -661,7 +661,7 @@
 /datum/reagent/foaming_agent/stabilized
 	name = "Stabilized metallic foam"
 	id = "stablefoam"
-	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame."
 	reagent_state = LIQUID
 	color = "#d4b8d1"
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -751,7 +751,7 @@
 /datum/reagent/viroxeno
 	name = "Xenogenetic Catalyst"
 	id = "xenogenic"
-	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	description = "A catalyst chemical that is extremely aggressive towards any organic substance before swiftly turning it into itself."
 	reagent_state = LIQUID
 	color = "#a244d8"
 	overdose = 10
@@ -777,7 +777,7 @@
 /datum/reagent/napalm/sticky
 	name = "Sticky-Napalm"
 	id = "stickynapalm"
-	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage."
 	reagent_state = LIQUID
 	color = "#f8e3b2"
 	burncolor = "#f8e3b2"
@@ -794,7 +794,7 @@
 /datum/reagent/napalm/high_damage
 	name = "High-Combustion Napalm Fuel"
 	id = "highdamagenapalm"
-	description = "A custom napalm mix, higher damage but not as sticky"
+	description = "A custom napalm mix, higher damage but not as sticky."
 	reagent_state = LIQUID
 	color = "#c51c1c"
 	burncolor = "#c51c1c"
@@ -897,7 +897,7 @@
 /datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
 	name = "Napalm EX"
 	id = "napalmex"
-	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
+	description = "A sticky combustible liquid chemical made up of a combination of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
 	color = "#641dd6"
 	burncolor = "#641dd6"
 	burn_sprite = "dynamic"
@@ -911,7 +911,7 @@
 /datum/reagent/napalm/upp
 	name = "R189"
 	id = "R189"
-	description = "A UPP chemical, it burns at an extremely high tempature and is designed to melt directly through fortified positions or bunkers."
+	description = "A UPP chemical, it burns at an extremely high temperature and is designed to melt directly through fortified positions or bunkers."
 	color = "#ffe49c"
 	burncolor = "#ffe49c"
 	burn_sprite = "dynamic"
@@ -925,7 +925,7 @@
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
-	description = "A highly reactive interhalogen compound capaple of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
+	description = "A highly reactive interhalogen compound capable of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
 	reagent_state = LIQUID
 	color = COLOR_CYAN
 	custom_metabolism = 100
@@ -1057,7 +1057,7 @@
 /datum/reagent/plasma/catecholamine
 	name = "Catecholamine Plasma"
 	id = PLASMA_CATECHOLAMINE
-	description = "A red-ish plasma..."
+	description = "A reddish plasma..."
 	color = "#cf7551"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -1121,7 +1121,7 @@
 /datum/reagent/plasma/nutrient
 	name = "Nutrient Plasma"
 	id = PLASMA_NUTRIENT
-	description = "A tarquise plasma..."
+	description = "A turquoise plasma..."
 	color = "#2fbe88"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -1132,7 +1132,7 @@
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
 	id = PLASMA_PURPLE
-	description = "A purple-ish plasma..."
+	description = "A purplish plasma..."
 	color = "#a65d7f"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -1160,7 +1160,7 @@
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
 	id = PLASMA_ROYAL
-	description = "A dark purple-ish plasma..."
+	description = "A dark purplish plasma..."
 	color = "#ffeb9c"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL

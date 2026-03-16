@@ -1,7 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/template_noop,
-/area/space)
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/interior/landing_zones/near_lz1)
 "ab" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/landing_zones/near_lz1)
@@ -70,11 +73,11 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "aq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
+/obj/structure/machinery/landinglight{
+	dir = 1
 	},
-/turf/open/floor/strata/floor3,
-/area/strata/interior/landing_zones/near_lz1)
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
 "ar" = (
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost/south_dormitories)
@@ -491,13 +494,13 @@
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
 "bE" = (
-/obj/structure/machinery/landinglight{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "bF" = (
-/obj/structure/machinery/landinglight/delayone{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement,
@@ -513,49 +516,43 @@
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/mining_outpost)
 "bH" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 1
-	},
-/turf/open/asphalt/cement,
-/area/strata/interior/landing_zones/lz1)
-"bI" = (
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
-"bJ" = (
+"bI" = (
 /turf/open/floor/plating,
 /area/template_noop)
+"bJ" = (
+/turf/template_noop,
+/area/strata/interior/landing_zones/lz1)
 "bK" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/landing_zones/near_lz1)
 "bL" = (
-/turf/template_noop,
-/area/strata/interior/landing_zones/lz1)
-"bM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
-"bN" = (
+"bM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
-"bO" = (
+"bN" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
-"bP" = (
+"bO" = (
 /obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
@@ -650,7 +647,7 @@
 	name = "Secure Lockdown"
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/mining_outpost/flight_control)
+/area/strata/interior/out_of_bounds)
 "dg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -835,7 +832,7 @@
 /area/strata/interior/landing_zones/near_lz1)
 "fZ" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/landing_zones/near_lz1)
+/area/strata/interior/out_of_bounds)
 "gn" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/white_cyan2/west,
@@ -2053,9 +2050,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
-"JU" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/mining_outpost/flight_control)
 "Kl" = (
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
@@ -2752,13 +2746,6 @@ cV
 cV
 cV
 cV
-JU
-JU
-JU
-JU
-JU
-JU
-JU
 fZ
 fZ
 fZ
@@ -2800,8 +2787,15 @@ fZ
 fZ
 fZ
 fZ
-aa
-aa
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+cV
+cV
 "}
 (2,1,1) = {"
 cV
@@ -2861,8 +2855,8 @@ KZ
 QK
 QK
 ab
-aa
-aa
+cV
+cV
 "}
 (3,1,1) = {"
 cV
@@ -2922,8 +2916,8 @@ Vh
 Vh
 Vh
 ab
-aa
-aa
+cV
+cV
 "}
 (4,1,1) = {"
 cV
@@ -2983,8 +2977,8 @@ ai
 ai
 JS
 ab
-aa
-aa
+cV
+cV
 "}
 (5,1,1) = {"
 cV
@@ -3029,7 +3023,7 @@ jZ
 yh
 jZ
 jZ
-bE
+aq
 XH
 RF
 ai
@@ -3090,7 +3084,7 @@ jZ
 jZ
 jZ
 jZ
-bF
+bE
 XH
 RF
 ai
@@ -3151,7 +3145,7 @@ jZ
 jZ
 jZ
 jZ
-bH
+bF
 XH
 RF
 ai
@@ -3176,8 +3170,8 @@ cV
 cV
 cV
 cV
-JU
-JU
+fZ
+fZ
 cG
 uF
 Zw
@@ -3212,7 +3206,7 @@ jZ
 jZ
 jZ
 jZ
-bI
+bH
 XH
 RF
 ai
@@ -3237,7 +3231,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 YI
 Uz
@@ -3273,7 +3267,7 @@ jZ
 jZ
 jZ
 jZ
-bE
+aq
 XH
 RF
 ai
@@ -3298,7 +3292,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 VV
 VV
@@ -3322,8 +3316,8 @@ jZ
 jZ
 jZ
 jZ
-bL
 bJ
+bI
 jZ
 jZ
 jZ
@@ -3334,7 +3328,7 @@ jZ
 jZ
 jZ
 jZ
-bF
+bE
 qV
 kh
 ai
@@ -3359,7 +3353,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 vs
 dN
@@ -3373,7 +3367,7 @@ yn
 ai
 RF
 Fk
-bP
+bO
 jZ
 jZ
 jZ
@@ -3395,7 +3389,7 @@ jZ
 jZ
 jZ
 jZ
-bH
+bF
 XH
 RF
 ai
@@ -3420,8 +3414,8 @@ cV
 cV
 cV
 cV
-JU
-JU
+fZ
+fZ
 cG
 uF
 Zw
@@ -3456,7 +3450,7 @@ jZ
 jZ
 jZ
 jZ
-bI
+bH
 XH
 RF
 ai
@@ -3517,7 +3511,7 @@ jZ
 jZ
 jZ
 jZ
-bE
+aq
 XH
 RF
 ai
@@ -3578,7 +3572,7 @@ jZ
 jZ
 jZ
 jZ
-bF
+bE
 XH
 RF
 ai
@@ -3617,7 +3611,7 @@ Ji
 ai
 RF
 Fk
-bP
+bO
 jZ
 yh
 jZ
@@ -3639,7 +3633,7 @@ jZ
 yh
 jZ
 jZ
-bH
+bF
 XH
 RF
 ai
@@ -3681,11 +3675,11 @@ Fk
 xq
 WH
 zD
-bO
+bN
 cX
 WH
-bN
 bM
+bL
 cX
 WH
 zD
@@ -3824,7 +3818,7 @@ VT
 VT
 VT
 jl
-aq
+aa
 Cd
 XJ
 eE

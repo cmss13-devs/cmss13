@@ -1,9 +1,6 @@
 ///from /mob/living/carbon/human/proc/force_say(): ()
 #define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
-#define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
-	#define COMPONENT_BLOCK_DAMAGE (1<<0)
-
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
 
@@ -92,3 +89,15 @@
 
 /// From /mob/living/carbon/human/hud_set_holocard()
 #define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"
+
+/// From /datum/surgery_step/remove_larva/success()
+#define COMSIG_HUMAN_REMOVED_A_LARVA "human_removed_a_larva"
+
+/// From /datum/species/proc/attempt_rock_paper_scissors
+#define COMSIG_HUMAN_WON_RPS "human_won_rps"
+
+/// From /mob/living/carbon/human/help_shake_act
+#define COMSIG_HUMAN_HELPING_UP "human_helping_up"
+
+/// /datum/game_mode/colonialmarines/declare_completion
+#define COMSIG_HUMAN_FINISHED_ROUND "human_finished_round"

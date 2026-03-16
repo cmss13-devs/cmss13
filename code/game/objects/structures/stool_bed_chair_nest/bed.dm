@@ -115,7 +115,7 @@
 	if(buckled_bodybag)
 		return
 	if(ishuman(mob))
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < HEALTH_THRESHOLD_CRIT) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < mob.health_threshold_crit) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
 			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction! ."))
 			return FALSE
 	..()
@@ -245,11 +245,7 @@
 /obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
-	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-		if(buckle_target.stat == DEAD || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS))
-			return
-
-	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+	if(buckle_target.mob_size > MOB_SIZE_XENO)
 		if(!can_carry_big)
 			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
 			return COMPONENT_BLOCK_BUCKLE

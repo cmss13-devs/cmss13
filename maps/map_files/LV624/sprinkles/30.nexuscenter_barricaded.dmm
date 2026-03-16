@@ -823,8 +823,8 @@
 /turf/closed/wall,
 /area/lv624/lazarus/canteen)
 "Lq" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/cult,
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "Me" = (
 /obj/structure/machinery/vending/cola,
@@ -850,8 +850,8 @@
 /turf/open/floor,
 /area/lv624/lazarus/security)
 "NU" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/cult,
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
 /area/lv624/lazarus/kitchen)
 "OK" = (
 /turf/template_noop,

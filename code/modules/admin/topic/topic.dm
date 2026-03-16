@@ -445,7 +445,7 @@
 		if(!P1)
 			P1 = get_player_from_key(M.ckey)
 
-		//get jobs for department if specified, otherwise just returnt he one job in a list.
+		//get jobs for department if specified, otherwise just return the one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("CICdept")
@@ -889,7 +889,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
@@ -911,7 +911,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
@@ -930,7 +930,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
@@ -956,7 +956,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
@@ -1170,7 +1170,7 @@
 			error("Give Cookie code crumbled!")
 		H.put_in_hands(snack)
 		message_admins("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
-		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
+		to_chat(H, SPAN_NOTICE("Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["adminalert"])
 		if(!check_rights(R_MOD))
@@ -1218,7 +1218,7 @@
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
-		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks. \"Please stand by for a message from your benefactor. Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["UpdateFax"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
@@ -2189,7 +2189,7 @@
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_PRESS_HC].</i>"
 
 	var/msg_ghost = SPAN_NOTICE(faction_ghost_header)
-	msg_ghost += "Transmitting '[customname]' via secure connection ... "
+	msg_ghost += "Transmitting '[customname]' via secure connection ..."
 	msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 	announce_fax( ,msg_ghost)
 

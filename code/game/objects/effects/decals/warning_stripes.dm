@@ -109,6 +109,10 @@
 	name = "grass edge"
 	icon_state = "grass_innercorner"
 
+/obj/effect/decal/grass_overlay/grass1/dark
+
+	icon_state = "grass_outercorner_dark"
+
 /obj/effect/decal/siding
 	name = "siding"
 	icon = 'icons/turf/floors/floors.dmi'

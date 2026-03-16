@@ -1,0 +1,4 @@
+author: "MoondancerPony"
+delete-after: True
+changes:
+  - bugfix: "fixed reading papers inside folders"

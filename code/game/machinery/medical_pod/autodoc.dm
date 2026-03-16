@@ -397,23 +397,30 @@
 								patient.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(eye.eye_surgery_stage == 1)
-								sleep(RETRACTOR_MAX_DURATION)
+								sleep(HEMOSTAT_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 2
 
 							if(eye.eye_surgery_stage == 2)
-								sleep(HEMOSTAT_MAX_DURATION)
+								sleep(RETRACTOR_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 3
 
 							if(eye.eye_surgery_stage == 3)
+								sleep(FIXVEIN_MAX_DURATION)
+								if(!surgery)
+									break
+								eye.eye_surgery_stage = 4
+
+							if(eye.eye_surgery_stage == 4)
 								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery)
 									break
 								patient.disabilities &= ~NEARSIGHTED
 								patient.sdisabilities &= ~DISABILITY_BLIND
+								patient.pain.recalculate_pain()
 								eye.heal_damage(eye.damage)
 								eye.eye_surgery_stage = 0
 					if("larva")
@@ -524,6 +531,7 @@
 						patient.update_body()
 						patient.updatehealth()
 						patient.UpdateDamageIcon()
+						patient.pain.recalculate_pain()
 
 					if("shrapnel")
 						if(prob(30))
@@ -597,6 +605,7 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
+		target.pain.recalculate_pain()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE)
 		target.updatehealth()
@@ -742,7 +751,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
+		occupantData["minHealth"] = occupant.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -904,6 +913,14 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(
+		RESEARCH_UPGRADE_TIER_1,
+		RESEARCH_UPGRADE_TIER_2,
+		RESEARCH_UPGRADE_TIER_3,
+		RESEARCH_UPGRADE_TIER_4,
+	)
+
+/obj/structure/machinery/autodoc_console/upgraded
 	upgrades = list(
 		RESEARCH_UPGRADE_TIER_1,
 		RESEARCH_UPGRADE_TIER_2,

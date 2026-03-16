@@ -8,11 +8,9 @@
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH
 	role_comm_title = "Syn"
-	preset_generation_support = FALSE
 
 	minimap_icon = "synth"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/synthetic
 
 	var/is_council = FALSE
 
@@ -71,8 +69,8 @@
 	name = "USCM Synthetic (Engineering)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "eng"
-	assignment = "Engineering Synthetic"
-	manifest_title = "Engineering Synthetic"
+	assignment = JOB_SYNTH_ENG
+	manifest_title = JOB_SYNTH_ENG
 
 /datum/equipment_preset/synth/uscm/engineering/council
 	name = "USCM Synthetic Council (Engineering)"
@@ -85,8 +83,8 @@
 	name = "USCM Synthetic (Medical)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "med"
-	assignment = "Medical Synthetic"
-	manifest_title = "Medical Synthetic"
+	assignment = JOB_SYNTH_MED
+	manifest_title = JOB_SYNTH_MED
 
 /datum/equipment_preset/synth/uscm/medical/council
 	name = "USCM Synthetic Council (Medical)"
@@ -99,8 +97,8 @@
 	name = "USCM Synthetic (Intel)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "io"
-	assignment = "Intelligence Synthetic"
-	manifest_title = "Intelligence Synthetic"
+	assignment = JOB_SYNTH_INTEL
+	manifest_title = JOB_SYNTH_INTEL
 
 /datum/equipment_preset/synth/uscm/intel/council
 	name = "USCM Synthetic Council (Intel)"
@@ -113,8 +111,8 @@
 	name = "USCM Synthetic (Command)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "cmd"
-	assignment = "Command Support Synthetic"
-	manifest_title = "Command Support Synthetic"
+	assignment = JOB_SYNTH_CMD
+	manifest_title = JOB_SYNTH_CMD
 
 /datum/equipment_preset/synth/uscm/command/council
 	name = "USCM Synthetic Council (Command)"
@@ -127,7 +125,8 @@
 	name = "USCM Synthetic (MP)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "mp"
-	assignment = "Military Police Synthetic"
+	assignment = JOB_SYNTH_MP
+	manifest_title = JOB_SYNTH_MP
 
 /datum/equipment_preset/synth/uscm/mp/council
 	name = "USCM Synthetic Council (MP)"

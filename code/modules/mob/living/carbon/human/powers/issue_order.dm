@@ -40,23 +40,47 @@
 	command_aura_available = FALSE
 	var/command_aura_strength = order_level
 	var/command_aura_duration = (order_level + 1) * 10 SECONDS
+	var/command_aura_cooldown = COMMAND_ORDER_COOLDOWN
+	var/command_aura_range = COMMAND_ORDER_RANGE
 
-	var/turf/T = get_turf(src)
-	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
-		if(H.stat == DEAD)
-			continue
-		if(!ishumansynth_strict(H))
-			continue
-		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
+	// whistle checks
+	var/obj/item/clothing/accessory/device/whistle/whistling = locate() in src.contents
+	var/list/leader_clothes = list(w_uniform, wear_suit)
+	for(var/obj/item/clothing/accessory in leader_clothes)
+		if(!whistling && accessory?.accessories)
+			whistling = locate() in accessory.accessories
+			if(whistling)
+				break
 
-	if(loc != T) //if we were inside something, the range() missed us.
+	var/leader_sound = null
+	if(whistling && whistling.leader_whistle)
+		command_aura_strength += 1.25 // just a minor buff :)
+		command_aura_cooldown += 800 //deciseconds, equivalent to 240 seconds with the default cooldown
+		command_aura_range += 3
+		switch(order)
+			if(COMMAND_ORDER_MOVE)
+				leader_sound = 'sound/items/whistles/trench_whistle_move.ogg'
+			if(COMMAND_ORDER_HOLD)
+				leader_sound = 'sound/items/whistles/trench_whistle_hold.ogg'
+			if(COMMAND_ORDER_FOCUS)
+				leader_sound = 'sound/items/whistles/trench_whistle_focus.ogg'
+
+	var/turf/turf = get_turf(src)
+	for(var/mob/living/carbon/human/inspiring in range(command_aura_range, turf))
+		if(inspiring.stat == DEAD)
+			continue
+		if(!ishumansynth_strict(inspiring))
+			continue
+		inspiring.activate_order_buff(order, command_aura_strength, command_aura_duration)
+
+	if(loc != turf) //if we were inside something, the range() missed us.
 		activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
 	// 1min cooldown on orders
-	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), COMMAND_ORDER_COOLDOWN)
+	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), command_aura_cooldown)
 
 	if(src.client?.prefs?.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
 		var/spoken_order = ""
@@ -70,6 +94,9 @@
 		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
 	else
 		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+
+	if(whistling)
+		whistling.whistle_playsound(src, bypass_cooldown = TRUE, custom_sound = leader_sound, leader_slowdown = TRUE)
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))

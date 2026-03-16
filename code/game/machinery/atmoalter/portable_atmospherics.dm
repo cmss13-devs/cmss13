@@ -11,8 +11,8 @@
 /obj/structure/machinery/portable_atmospherics/attackby(obj/item/W, mob/user)
 	if((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
 		visible_message(SPAN_DANGER("[user] has used [W] on [icon2html(icon, viewers(src))]"))
-		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(icon, user)]"))
-		to_chat(user, SPAN_NOTICE(" Tank is empty!"))
+		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(icon, user)]"))
+		to_chat(user, SPAN_NOTICE("Tank is empty!"))
 
 
 

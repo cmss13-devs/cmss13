@@ -157,160 +157,6 @@
 			list("title" = test_merge.title, "number" = test_merge.number, "url" = test_merge.url, "author" = test_merge.author)
 		)
 
-/datum/world_topic/certify
-	key = "certify"
-	required_params = list("identifier", "discord_id")
-
-/datum/world_topic/certify/Run(list/input)
-	var/identifier = input["identifier"]
-	var/discord_id = input["discord_id"]
-
-	data = list()
-
-	var/datum/view_record/discord_link/existing_link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, discord_id))
-
-	if(existing_link)
-		statuscode = 504
-		response = "Discord ID already verified."
-		return
-
-	var/datum/entity/discord_identifier/id = get_discord_identifier_by_token(identifier)
-
-	if(!id || !id.playerid)
-		id.delete()
-
-		statuscode = 500
-		response = "Database query failed"
-		return
-
-	if(id.realtime < world.realtime - 4 HOURS)
-		statuscode = 501
-		response = "Authentication timed out."
-
-	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, id.playerid)
-	player.sync()
-
-	if(!player.ckey)
-		statuscode = 500
-		response = "Database query failed."
-		return
-
-	data["ckey"] = player.ckey
-	data["roles"] = get_whitelisted_roles(player.ckey)
-
-	if(player.discord_link)
-		statuscode = 503
-		response = "Player already authenticated."
-		return
-
-	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, discord_id)
-	link.discord_id = discord_id
-	link.player_id = text2num(player.id)
-	link.save()
-	link.sync()
-
-	player.discord_link = link
-	player.discord_link_id = link.id
-	player.save()
-	player.sync()
-
-	id.used = TRUE
-	id.save()
-	id.sync()
-
-	statuscode = 200
-	response = "Successfully certified."
-	data["related_ckeys"] = analyze_ckey(player.ckey)
-
-/datum/world_topic/decertify_by_ckey
-	key = "decertify_ckey"
-	required_params = list("ckey")
-
-/datum/world_topic/decertify_by_ckey/Run(list/input)
-	data = list()
-
-	var/datum/entity/player/player = get_player_from_key(input["ckey"])
-
-	if(!player)
-		statuscode = 500
-		response = "Database lookup failed."
-		return
-
-	if(!player.discord_link)
-		statuscode = 501
-		response = "No linked Discord."
-		return
-
-	var/discord_id = player.discord_link.discord_id
-
-	player.discord_link.delete()
-	player.discord_link = null
-
-	player.discord_link_id = null
-	player.save()
-	player.sync()
-
-	data["discord_id"] = discord_id
-	statuscode = 200
-	response = "Decertification successful."
-
-/datum/world_topic/decertify_by_discord_id
-	key = "decertify_discord_id"
-	required_params = list("discord_id")
-
-/datum/world_topic/decertify_by_discord_id/Run(list/input)
-	data = list()
-
-	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, input["discord_id"]))
-
-	if(!link || !link.player_id)
-		statuscode = 500
-		response = "Database lookup failed."
-		return
-
-	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
-	player.sync()
-
-	if(!player.discord_link)
-		statuscode = 501
-		response = "No linked Discord."
-		return
-
-	player.discord_link.delete()
-	player.discord_link = null
-
-	player.discord_link_id = null
-	player.save()
-	player.sync()
-
-	data["discord_id"] = input["discord_id"]
-	data["ckey"] = player.ckey
-	statuscode = 200
-	response = "Decertification successful."
-
-/datum/world_topic/lookup_discord_id
-	key = "lookup_discord_id"
-	required_params = list("discord_id")
-
-/datum/world_topic/lookup_discord_id/Run(list/input)
-	data = list()
-
-	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, input["discord_id"]))
-
-	if(!link || !link.player_id)
-		statuscode = 500
-		response = "Database lookup failed."
-		return
-
-	var/datum/view_record/players/player = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, link.player_id))
-
-	data["notes"] = get_all_notes(player.ckey)
-	data["total_minutes"] = get_total_living_playtime(player.id)
-	data["ckey"] = player.ckey
-	data["roles"] = get_whitelisted_roles(player.ckey)
-	statuscode = 200
-	response = "Lookup successful."
-
 /datum/world_topic/lookup_ckey
 	key = "lookup_ckey"
 	required_params = list("ckey")
@@ -324,17 +170,19 @@
 		response = "Database lookup failed."
 		return
 
-	if(player.discord_link_id)
-		var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("id", DB_EQUALS, player.discord_link_id))
-
-		if(link && link.discord_id)
-			data["discord_id"] = link.discord_id
-
 	data["notes"] = get_all_notes(player.ckey)
 	data["total_minutes"] = get_total_living_playtime(player.id)
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
+
+/datum/world_topic/refresh_admins
+	key = "refresh_admins"
+
+/datum/world_topic/refresh_admins/Run(list/input)
+	. = ..()
+
+	load_admins()
 
 /datum/world_topic/cmtv
 	key = "cmtv"

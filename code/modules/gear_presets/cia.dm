@@ -11,7 +11,7 @@
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_icon = "cia_ia"
-	minimap_background = "background_civillian"
+	minimap_background = "background_civilian"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/New()

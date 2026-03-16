@@ -460,86 +460,101 @@
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
-/datum/action/xeno_action/activable/pounce/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/pounce/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check())
 		return
 
-	if(!A)
+	if(!target)
 		return
 
-	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
+	while(istype(target, /turf/open_space))
+		target = SSmapping.get_turf_below(target)
+
+	if(target.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
-	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
+	if(xeno.legcuffed)
+		to_chat(xeno, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
+	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
 		if(hide)
 			hide.post_attack()
 
-	if(isravager(X))
-		X.emote("roar")
+	if(isravager(xeno))
+		xeno.emote("roar")
 
 	if (!tracks_target)
-		A = get_turf(A)
-
-	if(A.z != X.z && X.mob_size >= MOB_SIZE_BIG)
-		if (!do_after(X, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			return
+		target = get_turf(target)
 
 	//everyone gets (extra) timer to pounce up
-	if(A.z > X.z)
-		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+	if(target.z != xeno.z)
+		var/maximum_z = max(target.z, xeno.z)
+		var/list/turf/path = get_line(locate(xeno.x, xeno.y, maximum_z), locate(target.x, target.y, maximum_z))
+		for(var/turf/turf_in_path in path)
+			while(istype(turf_in_path, /turf/open_space))
+				turf_in_path = SSmapping.get_turf_below(turf_in_path)
+
+			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
+				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				return
+
+			for(var/obj/structure/cur_obj in turf_in_path.contents)
+				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
+					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+					return
+
+		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 
-
-
+	if(target.z != xeno.z && xeno.mob_size >= MOB_SIZE_BIG)
+		if (!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
 
 	apply_cooldown()
 
 	if (windup)
-		X.set_face_dir(get_cardinal_dir(X, A))
+		xeno.set_face_dir(get_cardinal_dir(xeno, target))
 		if (!windup_interruptable)
-			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-			X.anchored = TRUE
+			ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = TRUE
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
+		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
-				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-				X.anchored = FALSE
+				REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+				xeno.anchored = FALSE
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-			X.anchored = FALSE
+			REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
 
 	pre_pounce_effects()
 
-	X.pounce_distance = get_dist(X, A)
-	if(X.z != A.z)
-		X.pounce_distance += 2
-	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
-	X.update_icons()
+	xeno.pounce_distance = get_dist(xeno, target)
+	if(xeno.z != target.z)
+		xeno.pounce_distance += 2
+	xeno.throw_atom(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	xeno.update_icons()
 
 	additional_effects_always()
 	..()
@@ -621,45 +636,53 @@
 	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
-/datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/place_trap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	if (istype(X, /mob/living/carbon/xenomorph/burrower))
-		var/mob/living/carbon/xenomorph/burrower/B = X
-		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	var/turf/turf = get_turf(xeno)
+	if(!istype(turf))
+		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
+		return
+
+	var/area/area = turf.loc
+	if(!area?.is_resin_allowed)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("We sense this is not a suitable area for creating a resin hole."))
 			return
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+	if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
+		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
+		return
 
-	var/turf/T = get_turf(X)
-	if(!istype(T))
-		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
-		return
-	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(X, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
-		return
-	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
+	var/obj/effect/alien/weeds/alien_weeds = turf.check_xeno_trap_placement(xeno)
 	if(!alien_weeds)
 		return
+
 	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
-		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+		to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
 			return
-		if(!T.check_xeno_trap_placement(X))
+		if(!turf.check_xeno_trap_placement(xeno))
 			return
-		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T)
-		the_replacer.hivenumber = X.hivenumber
-		the_replacer.linked_hive = X.hive
-		set_hive_data(the_replacer, X.hivenumber)
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(turf)
+		the_replacer.hivenumber = xeno.hivenumber
+		the_replacer.linked_hive = xeno.hive
+		set_hive_data(the_replacer, xeno.hivenumber)
 		qdel(alien_weeds)
 
-	if(!X.check_plasma(plasma_cost))
+	if(!xeno.check_plasma(plasma_cost))
 		return
-	X.use_plasma(plasma_cost)
-	playsound(X.loc, "alien_resin_build", 25)
-	new /obj/effect/alien/resin/trap(T, X)
-	to_chat(X, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+
+	xeno.use_plasma(plasma_cost)
+	playsound(xeno.loc, "alien_resin_build", 25)
+	new /obj/effect/alien/resin/trap(turf, xeno)
+	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
@@ -726,6 +749,10 @@
 		return FALSE
 
 	if(!xeno.hive)
+		return FALSE
+
+	if(SSticker?.mode?.hardcore)
+		to_chat(xeno, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
 		return FALSE
 
 	//Make sure construction is unrestricted
@@ -1104,7 +1131,7 @@
 
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
-			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno, blunt_stab)
 			if(!tail_stab_cooldown_multiplier)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			else
@@ -1112,7 +1139,7 @@
 				xeno_attack_delay(stabbing_xeno)
 			return FALSE
 
-	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno)
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno, blunt_stab)
 	if(tail_stab_cooldown_multiplier)
 		stabbing_xeno.animation_attack_on(targetted_atom)
 		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
@@ -1152,14 +1179,32 @@
 /datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
 	return
 
+/// This proc plays a tail stab 'animation' by changing the xenomorph's direction, and resets the xenomorph's direction after a short delay.
+/mob/living/carbon/xenomorph/proc/tail_stab_animation(target, blunt = FALSE)
+	// This is the direction the xenomorph is reset to afterwards.
+	var/last_dir = dir
+	/// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	if(blunt)
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(get_dir(src, target), pick(90, -90))
+	else
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_direction = turn(get_dir(src, target), 180)
+
+	if(last_dir != stab_direction)
+		setDir(stab_direction)
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), last_dir, dir), 0.5 SECONDS)
+
+/// Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
+/mob/living/carbon/xenomorph/proc/reset_direction(last_dir, new_dir)
+	if(new_dir == dir)
+		setDir(last_dir)
+
 /datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = TRUE)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
-
-	/// To reset the direction if they haven't moved since then in below callback.
-	var/last_dir = stabbing_xeno.dir
-	/// Direction var to make the tail stab look cool and immersive.
-	var/stab_direction
 
 	var/stab_overlay
 
@@ -1169,26 +1214,16 @@
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
 			playsound(target, "punch", 50, TRUE)
-		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
-		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
 		playsound(target, "alien_bite", 50, TRUE)
-		// The xeno flips around for a second to impale the target with their tail. These look awsome.
-		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
 	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
 	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
-	if(last_dir != stab_direction)
-		stabbing_xeno.setDir(stab_direction)
-		stabbing_xeno.emote("tail")
-		/// Ditto.
-		var/new_dir = stabbing_xeno.dir
-		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
-
+	stabbing_xeno.tail_stab_animation(target, blunt_stab)
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
@@ -1209,7 +1244,3 @@
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
 
-/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
-	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
-	if(new_dir == stabbing_xeno.dir)
-		stabbing_xeno.setDir(last_dir)

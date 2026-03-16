@@ -737,12 +737,12 @@ Welding backpack
 			return
 		else
 			if(T.reagents.total_volume == T.max_fuel)
-				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				to_chat(user, SPAN_NOTICE("\The [src] is already full!"))
 				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
+			to_chat(user, SPAN_NOTICE("Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
@@ -795,7 +795,7 @@ Welding backpack
 
 /obj/item/tool/weldpack/minitank
 	name = "ES-11 fuel canister"
-	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
+	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!'"
 	icon_state = "welderpackmini"
 	/// Just barely enough to be better than the satchel
 	max_fuel = 120

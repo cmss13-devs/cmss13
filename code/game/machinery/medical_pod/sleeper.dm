@@ -84,7 +84,7 @@
 /obj/structure/machinery/sleep_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Sleeper", "Sleeper", 550, 775)
+		ui = new(user, src, "Sleeper", "Sleeper", 550, 700)
 		ui.open()
 
 /obj/structure/machinery/sleep_console/ui_state(mob/user)
@@ -116,7 +116,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
+		occupantData["minHealth"] = occupant.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -417,10 +417,10 @@
 		to_chat(user, "[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getOxyLoss())
 		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
 		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
-		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
-		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutDuration() * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS)] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
+		to_chat(user, SPAN_NOTICE("Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
+		to_chat(user, SPAN_NOTICE("\t [occupant.GetKnockOutDuration() * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS)] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 	else
-		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
+		to_chat(user, SPAN_NOTICE("There is no one inside!"))
 	return
 
 /obj/structure/machinery/sleep_console/yautja
@@ -430,5 +430,13 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	available_chemicals = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
 	emergency_chems = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)
+	upgraded = TRUE
+
+/obj/structure/machinery/medical_pod/sleeper/upgraded
+	name = "advanced sleeper"
+	desc = "A more expensive model of the sleeper bed, comes with additional chemicals and an advanced dialysis machine, capable of removing chemicals much faster and more of them at the same time."
+	available_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)
 	upgraded = TRUE

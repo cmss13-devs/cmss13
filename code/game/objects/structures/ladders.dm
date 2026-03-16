@@ -3,17 +3,22 @@
 	desc = "A sturdy metal ladder."
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
-	var/id = null
-	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
-	var/obj/structure/ladder/down = null //The ladder below this one
-	var/obj/structure/ladder/up = null //The ladder above this one
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+	/// Used to link up ladders that are above and below
+	var/id = null
+	/// The 'height' of the ladder. higher numbers are considered physically higher
+	var/height = 0
+	/// The ladder below this one
+	var/obj/structure/ladder/down
+	/// The ladder above this one
+	var/obj/structure/ladder/up
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
-	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	/// Ladders are wonderful creatures, only one person can use it at a time
+	var/busy = FALSE
 	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
 
 
@@ -52,17 +57,15 @@
 	update_icon()
 
 /obj/structure/ladder/Destroy()
-	if(down)
-		if(istype(down))
-			down.up = null
-		down = null
-	if(up)
-		if(istype(up))
-			up.down = null
-		up = null
+	if(istype(down))
+		down.up = null
+	if(istype(up))
+		up.down = null
+	down = null
+	up = null
 	QDEL_NULL(cam)
 	GLOB.ladder_list -= src
-	. = ..()
+	return ..()
 
 /obj/structure/ladder/update_icon()
 	if(up && down)
@@ -104,7 +107,7 @@
 
 //Helper function to handle climbing logic for both manual clicks and modifier clicks
 /obj/structure/ladder/proc/climb_ladder(mob/living/user, direction)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored || user.interactee)
 		return FALSE
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
@@ -142,6 +145,8 @@
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE
 	add_fingerprint(user)
+	if(ladder_dest.up && ladder_dest.down) // Make sure it has a up and down before opening the radial wheel, otherwise it sends you
+		ladder_dest.attack_hand(user)
 	return TRUE
 
 //Alt click to go down
@@ -203,6 +208,7 @@
 
 
 /obj/structure/ladder/on_unset_interaction(mob/user)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	..()
 	is_watching = 0
 	user.reset_view(null)
@@ -210,7 +216,6 @@
 /obj/structure/ladder/proc/handle_move(mob/moved_mob, oldLoc, direct)
 	SIGNAL_HANDLER
 	moved_mob.unset_interaction()
-	UnregisterSignal(moved_mob, COMSIG_MOVABLE_MOVED)
 
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)

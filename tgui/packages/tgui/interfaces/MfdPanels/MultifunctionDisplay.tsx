@@ -80,7 +80,7 @@ export const VerticalPanel = (props: {
 
 const HexScrew = () => {
   return (
-    <svg viewBox="0 0 10 10" width="30px" height="30px">
+    <svg viewBox="0 0 10 10" width="30px" height="30px" overflow="visible">
       <circle
         cx="5"
         cy="5"

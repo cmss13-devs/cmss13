@@ -1,0 +1,579 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"ak" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"al" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"cv" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"ed" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellowcorners2/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"gj" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/structure/largecrate/random{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/item/toy/deck{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"gE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"hN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"iw" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"iA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"kH" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"lu" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"lv" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"mm" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"mn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"nt" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"nA" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"oF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"pf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"pg" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"qD" = (
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"se" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"up" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"uL" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Engineering Hallway";
+	welded = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"vX" = (
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"xG" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"yC" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"zk" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"zt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Aq" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Au" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"AR" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Bs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Co" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Fv" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Gp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/largecrate/random{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"JF" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Kj" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Kp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"MA" = (
+/obj/structure/window/framed/hangar,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"NW" = (
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Oe" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Oi" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Pn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Qv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"QK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Tm" = (
+/obj/structure/surface/table,
+/obj/item/newspaper{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"UP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Vn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"VB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Wn" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname{
+	welded = 1
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Wr" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Xt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"XV" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"YO" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"Zs" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"ZQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"ZU" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+"ZY" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/upper_walkway)
+
+(1,1,1) = {"
+XV
+XV
+ZU
+ZU
+XV
+XV
+"}
+(2,1,1) = {"
+XV
+gj
+se
+iw
+Kj
+ZU
+"}
+(3,1,1) = {"
+ZU
+cv
+up
+up
+AR
+Wn
+"}
+(4,1,1) = {"
+ZU
+qD
+up
+oF
+Qv
+mn
+"}
+(5,1,1) = {"
+XV
+NW
+up
+Vn
+ed
+ZU
+"}
+(6,1,1) = {"
+XV
+VB
+QK
+Vn
+Zs
+XV
+"}
+(7,1,1) = {"
+XV
+qD
+up
+hN
+vX
+XV
+"}
+(8,1,1) = {"
+XV
+JF
+lv
+UP
+Co
+XV
+"}
+(9,1,1) = {"
+XV
+Oe
+kH
+Kp
+Tm
+XV
+"}
+(10,1,1) = {"
+XV
+lu
+up
+hN
+ZY
+XV
+"}
+(11,1,1) = {"
+XV
+qD
+iA
+hN
+vX
+XV
+"}
+(12,1,1) = {"
+XV
+xG
+QK
+hN
+Wr
+XV
+"}
+(13,1,1) = {"
+XV
+yC
+ZQ
+gE
+YO
+XV
+"}
+(14,1,1) = {"
+XV
+nt
+Oi
+mm
+YO
+XV
+"}
+(15,1,1) = {"
+XV
+pg
+Aq
+ak
+zk
+XV
+"}
+(16,1,1) = {"
+XV
+af
+kH
+Bs
+Gp
+XV
+"}
+(17,1,1) = {"
+XV
+qD
+up
+Kp
+ZY
+XV
+"}
+(18,1,1) = {"
+XV
+VB
+up
+hN
+Zs
+XV
+"}
+(19,1,1) = {"
+XV
+qD
+up
+Xt
+al
+XV
+"}
+(20,1,1) = {"
+XV
+nA
+Fv
+zt
+Au
+XV
+"}
+(21,1,1) = {"
+ZU
+qD
+Pn
+pf
+vX
+ZU
+"}
+(22,1,1) = {"
+ZU
+qD
+QK
+hN
+vX
+ZU
+"}
+(23,1,1) = {"
+ZU
+qD
+QK
+hN
+vX
+ZU
+"}
+(24,1,1) = {"
+XV
+xG
+Fv
+Xt
+Wr
+XV
+"}
+(25,1,1) = {"
+XV
+MA
+up
+uL
+MA
+XV
+"}

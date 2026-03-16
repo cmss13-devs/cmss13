@@ -185,7 +185,6 @@
 #define PROPERTY_HEMOGENIC "hemogenic"
 #define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
-#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
 #define PROPERTY_HEPATOPEUTIC "hepatopeutic"
@@ -215,15 +214,15 @@
 #define PROPERTY_ADDICTIVE "addictive"
 #define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
 //Legendary, only in research hints. add this property to legendary list define if you're planning for it to be in normal research loop.
-#define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"
-#define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
-#define PROPERTY_REGULATING "regulating"
-#define PROPERTY_OPTIMIZED "optimizing"
 #define PROPERTY_CIPHERING "ciphering"
-#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
+#define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
+#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_FIRE_PENETRATING "fire-penetrating"
+#define PROPERTY_HYPERGENETIC "hypergenetic"
+#define PROPERTY_OPTIMIZED "optimizing"
+#define PROPERTY_REGULATING "regulating"
 //Admin Only Properties
 #define PROPERTY_ORGAN_HEALING "organ-healing"
 #define PROPERTY_CROSSMETABOLIZING "cross-metabolizing"
@@ -242,14 +241,15 @@
 #define PROPERTY_VISCOUS "viscous"
 #define PROPERTY_EXPLOSIVE "explosive"
 //Generation Disabled Properties
-#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
 #define PROPERTY_AIDING "aiding"
-#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
-#define PROPERTY_OXYGENATING "oxygenating"
-#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_ANTICARCINOGENIC "anti-carcinogenic"
-#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
+#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
+#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_HEMOSITIC "hemositic"
+#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
+#define PROPERTY_OXYGENATING "oxygenating"
+#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
+#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
 
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
 #define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
@@ -284,8 +284,8 @@
 #define PROPERTY_TYPE_COMBUSTIBLE 512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_NEUROPATHIC_PAIN 1
-#define PROPERTY_NEUROPATHIC_PAIN_OD 2
+#define PROPERTY_NEUROPATHIC_PAIN 10
+#define PROPERTY_NEUROPATHIC_PAIN_OD 20
 #define PROPERTY_DEFIBRILLATING_PAIN_OD 2
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL 3
 

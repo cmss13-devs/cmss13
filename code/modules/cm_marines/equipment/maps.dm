@@ -16,7 +16,7 @@
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
-	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
+	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]."))
 	initialize_map()
 
 /obj/item/map/attack()
@@ -142,6 +142,17 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
+/obj/item/map/tyrargo_rift
+	name = "\improper Tyrargo Rift map"
+	desc = "A labeled blueprint of the UA city Tyrargo Rift."
+	html_link = "images/7/79/Tyrargo_Rift.png"
+
+/obj/item/map/galaxy
+	name = "\improper Galaxy map"
+	desc = "A diagrammatic map of the milky way, laid out by sector."
+	html_link = "images/9/9e/Galaxy_Map.png"
+	color = "#005eab"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -159,8 +170,14 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift()
 	)
+
+/proc/map_should_have_map_item(map_name)
+	if (map_name == MAP_RUNTIME || map_name == MAP_CHINOOK || map_name == MAIN_SHIP_DEFAULT_NAME || map_name == MAP_ROSTOCK)
+		return FALSE // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
+	return TRUE
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -170,7 +187,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 	var/map_name = SSmapping.configs[GROUND_MAP].map_name
 	var/obj/item/map/map = GLOB.map_type_list[map_name]
-	if (!map && (map_name == MAP_RUNTIME || map_name == MAP_CHINOOK || map_name == MAIN_SHIP_DEFAULT_NAME || map_name == MAP_ROSTOCK))
+	if (!map && !map_should_have_map_item(map_name))
 		return // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
 	name = map.name
 	desc = map.desc

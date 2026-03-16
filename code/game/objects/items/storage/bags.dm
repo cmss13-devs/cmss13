@@ -39,7 +39,7 @@
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
-	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
+	storage_flags = STORAGE_GATHER_SIMULTANEOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 	flags_equip_slot = NONE
 
 /obj/item/storage/bag/trash/update_icon(mob/living/carbon/human/user)

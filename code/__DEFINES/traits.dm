@@ -143,7 +143,7 @@
 // #define TRAIT_X "t_x"
 
 //-- mob traits --
-/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
+/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undensity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
 /// Forces the user to stay unconscious.
 #define TRAIT_KNOCKEDOUT "knockedout"
@@ -153,7 +153,7 @@
 #define TRAIT_FLOORED "floored"
 /// Forces user to stay standing
 #define TRAIT_FORCED_STANDING "forcedstanding"
-/// Stuns preventing movement and using objects but without further impairement
+/// Stuns preventing movement and using objects but without further impairment
 #define TRAIT_INCAPACITATED "incapacitated"
 /// Disoriented. Unable to talk properly, and unable to use some skills as Xeno
 #define TRAIT_DAZED "dazed"
@@ -167,6 +167,8 @@
 #define TRAIT_HAULED "hauled"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE "cant_ride"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -181,6 +183,8 @@
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
+/// For Gen 1/2 Synths for chance at resisting pounces.
+#define TRAIT_POUNCE_RESISTANT "t_pounce_resistant"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
@@ -253,11 +257,11 @@
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 
 // -- ability traits --
-/// Xenos with this trait cannot have plasma transfered to them
+/// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
-/// Used for burrowed mobs, prevent's SG/sentrys/claymores from autofiring
+/// Used for burrowed mobs, prevent's SG/sentries/claymores from autofiring
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"

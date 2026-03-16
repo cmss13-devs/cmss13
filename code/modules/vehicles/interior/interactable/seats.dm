@@ -131,13 +131,14 @@
 		manual_unbuckle(user)
 		return
 
-/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(!buckled_mob)
 		return TAILSTAB_COOLDOWN_NONE
 	manual_unbuckle(xeno)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
 	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_LOW
 
 //custom vehicle seats for armored vehicles
@@ -413,7 +414,7 @@
 		else
 			deconstruct(FALSE)
 
-/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -423,6 +424,7 @@
 		break_seat()
 	else
 		deconstruct(FALSE)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)

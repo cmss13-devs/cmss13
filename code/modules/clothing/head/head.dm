@@ -74,7 +74,6 @@
 	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though it is not uncommon to see combat personnel who no longer care about self-preservation wearing one of these as well. Popular due to being comfortable and snug."
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	icon_state = "beanie_cargo"
-	blood_overlay_type = "surgcap"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
@@ -93,7 +92,6 @@
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	icon_state = "beret"
-	blood_overlay_type = "beret"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
@@ -147,10 +145,6 @@
 /obj/item/clothing/head/beret/cm/black
 	icon_state = "beret_black"
 	flags_atom = NO_GAMEMODE_SKIN
-
-/obj/item/clothing/head/beret/cm/black/army
-	name = "US Army beret"
-	desc = "The proud tradition of the US Army 1st Air Cav using black berets for their troopers is maintained since the 20th century."
 
 /obj/item/clothing/head/beret/cm/green
 	icon_state = "beret_green"
@@ -206,7 +200,6 @@
 	name = "Tan Beret"
 	desc = "A nice fashionable beret, popular with executives."
 	icon_state = "berettan"
-	blood_overlay_type = "beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
@@ -284,18 +277,6 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 	item_state_slots = list(WEAR_AS_GARB = "headbandtan")
-
-/obj/item/clothing/head/headband/intel
-	icon_state = "headbandintel"
-	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
-	)
-	item_state_slots = list(
-		WEAR_AS_GARB = "headbandintel",
-	)
-	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/brown
 	icon_state = "headbandbrown"
@@ -446,7 +427,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/clothing/head/headband/red = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/brown = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/gray = PREFIX_HAT_GARB_OVERRIDE, // _hat
-	/obj/item/clothing/head/headband/intel = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/squad = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
@@ -578,7 +558,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	name = "\improper USCM boonie hat"
 	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
 	icon_state = "booniehat"
-	blood_overlay_type = "booniehat"
 	flipping_message = list(
 		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
@@ -586,7 +565,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/cmcap/boonie/classic
+	name = "\improper USCM classic boonie hat"
+	desc = "The classic floppy bush hat. Protects only from the sun and rain, but very comfortable."
+	icon_state = "classicbooniehat"
+
+/obj/item/clothing/head/cmcap/boonie/classic/tan
+	icon_state = "classicbooniehattan"
 
 /obj/item/clothing/head/cmcap/boonie/fisherman
 	name = "\improper fisherman's boonie hat"
@@ -597,6 +583,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
+
+/obj/item/clothing/head/cmcap/buckethat
+	name = "USCM bucket hat"
+	desc = "A bucket hat issued to USCM personnel for diverse use. Provides sun and rain protection."
+	icon_state = "buckethat"
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -793,9 +784,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/head/beret/marine/commander/black/army
-	name = "army major black beret"
-
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
 	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
@@ -970,7 +958,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
@@ -1135,15 +1123,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	name = "\improper USCM drill hat"
 	desc = "A formal hat worn by drill sergeants. Police that moustache."
 	icon_state = "drillhat"
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
-	)
-
-/obj/item/clothing/head/cavalry
-	name = "\improper US cavalry hat"
-	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrance of heroism that is ongoing from as far as 19th century. Even though cavalry division had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
-	icon_state = "cavalry"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'

@@ -15,4 +15,4 @@
 	new /obj/item/device/assembly/signaller(src)
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/device/multitool(src)
-	new /obj/item/pamphlet/engineer/antag(src)
+	new /obj/item/pamphlet/antag/skill/engineer(src)

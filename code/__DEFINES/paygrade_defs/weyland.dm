@@ -19,8 +19,14 @@
 /// WYC5, Executive Specialist
 #define PAY_SHORT_WYC5 "WYC5"
 
+/// WYC5L, Legal Specialist
+#define PAY_SHORT_WYC5L "WYC5L"
+
 /// WYC6, Executive Supervisor
 #define PAY_SHORT_WYC6 "WYC6"
+
+/// WYC6L, Legal Supervisor
+#define PAY_SHORT_WYC6L "WYC6L"
 
 /// WYC7, Assistant Manager
 #define PAY_SHORT_WYC7 "WYC7"

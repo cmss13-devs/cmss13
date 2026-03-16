@@ -99,7 +99,19 @@
 	if(seed && seed.immutable > 0)
 		return 0
 
+	bullet_ping(Proj)
+	if(Proj.damage)
+		take_damage(Proj.damage)
+		return TRUE
+
 	..()
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		visible_message(SPAN_WARNING("[src] crumbles into pieces!"))
+		playsound(src, 'sound/effects/meteorimpact.ogg', 25, 1)
+		qdel(src)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/process()
 

@@ -62,8 +62,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M4RA AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
 		list("M4RA Extended Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
-		list("M10 AP Magazine (10x20mm-APC)", 6, /obj/item/ammo_magazine/pistol/m10/ap , null, VENDOR_ITEM_REGULAR),
-		list("M10 AP Extended Magazine (10x20mm-APC)", 8, /obj/item/ammo_magazine/pistol/m10/ap/extended , null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
@@ -105,7 +103,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
 		list("PAMPHLETS", 0, null, null, null),
-		list("Engineering Pamphlet", 15, /obj/item/pamphlet/skill/engineer, null, VENDOR_ITEM_REGULAR),
+		list("Engineering Pamphlet", 15, /obj/item/pamphlet/upgradeable/engineer, null, VENDOR_ITEM_REGULAR),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 3, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),

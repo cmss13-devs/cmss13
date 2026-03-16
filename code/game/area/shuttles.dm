@@ -47,6 +47,18 @@
 /area/shuttle/ert
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
+	flags_area = AREA_NOTUNNEL
+
+/area/shuttle/ert/no_defenses
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NOSECURECADES
+	can_build_special = FALSE
+	is_resin_allowed = FALSE
+	allow_construction = FALSE
+	resin_construction_allowed = FALSE
+	weather_enabled = FALSE
+	ceiling = CEILING_METAL
+	requires_power = FALSE
+	base_lighting_alpha = 0
 
 /area/shuttle/trijent_shuttle
 	name = "Trijent Elevator"

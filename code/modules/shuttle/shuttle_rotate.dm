@@ -28,34 +28,34 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 
 /* ***********************************Object rotate procs*********************************** */
 
-/obj/vehicle/multitile/shuttleRotate(rotation, params)
+/obj/vehicle/multitile/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	params &= ~ROTATE_OFFSET
 	return ..()
 
 
 /* ***********************************Turf rotate procs*********************************** */
 
-/turf/closed/mineral/shuttleRotate(rotation, params)
+/turf/closed/mineral/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	params &= ~ROTATE_OFFSET
 	return ..()
 
 /* ***********************************Mob rotate procs*********************************** */
 
 //override to avoid rotating pixel_xy on mobs
-/mob/shuttleRotate(rotation, params)
+/mob/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	params = NONE
 	. = ..()
 	if(!buckled)
 		setDir(angle2dir(rotation+dir2angle(dir)))
 
-/mob/dead/observer/shuttleRotate(rotation, params)
+/mob/dead/observer/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	. = ..()
 	update_icons()
 
 /* ***********************************Structure rotate procs*********************************** */
 
 //Fixes dpdir on shuttle rotation
-/obj/structure/disposalpipe/shuttleRotate(rotation, params)
+/obj/structure/disposalpipe/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	. = ..()
 	var/new_dpdir = 0
 	for(var/D in GLOB.cardinals)
@@ -63,7 +63,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			new_dpdir = new_dpdir | angle2dir(rotation+dir2angle(D))
 	dpdir = new_dpdir
 
-/obj/structure/alien/weeds/shuttleRotate(rotation, params)
+/obj/structure/alien/weeds/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	params &= ~ROTATE_OFFSET
 	return ..()
 

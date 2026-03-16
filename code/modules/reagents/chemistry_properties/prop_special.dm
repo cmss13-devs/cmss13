@@ -168,7 +168,7 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates."))
+	E.visible_message(SPAN_DANGER("\The [E] rapidly mutates."))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 

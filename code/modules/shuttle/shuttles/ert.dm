@@ -286,8 +286,10 @@
 	name = "Almayer hanger port external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-port"
-	width  = 17
-	height = 29
+	width   = 17
+	height  = 43
+	dheight = 21
+	dwidth  = 0
 	airlock_id = "s_umbilical"
 	airlock_area = /area/almayer/hallways/lower/port_umbilical
 
@@ -295,8 +297,10 @@
 	name = "Almayer hanger starboard external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-starboard"
-	width  = 17
-	height = 29
+	width   = 6
+	height  = 25
+	dheight = 12
+	dwidth  = 0
 	airlock_id = "n_umbilical"
 	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 
@@ -340,16 +344,16 @@
 	name = "Response Station Landing Pad 5"
 	dir = EAST
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
+	width   = 17
+	height  = 43
+	dheight = 21
+	dwidth  = 0
 	roundstart_template = /datum/map_template/shuttle/big_ert
 
 /obj/docking_port/stationary/emergency_response/idle_port6
 	name = "Response Station Landing Pad 6"
 	dir = NORTH
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
 	roundstart_template = /datum/map_template/shuttle/twe_ert
 
 /obj/docking_port/stationary/emergency_response/chinook_port
@@ -381,3 +385,26 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	shuttle_id = /obj/docking_port/mobile/port_umbilical_cord::id
+
+/datum/map_template/shuttle/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	shuttle_id = /obj/docking_port/mobile/starboard_umbilical_cord::id
+
+/obj/docking_port/mobile/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	id = "port_umbilical_cord"
+	preferred_direction = WEST
+
+/obj/docking_port/mobile/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	id = "starboard_umbilical_cord"
+	preferred_direction = WEST
+
+/obj/effect/landmark/ert_spawns/umbilical
+
+/obj/structure/machinery/door_control/automatic/umbilical
+	id = "hangar_umbilical_ert"

@@ -438,7 +438,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	color = "#c0baae";
 	pixel_x = -3
 	},
@@ -3277,7 +3277,7 @@
 /turf/open/predship/mainfloor/direction_2/north,
 /area/yautja_ship/middle_deck/trophy_hall)
 "gA" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1;
 	color = "#c0baae";
 	pixel_x = 3
@@ -10269,7 +10269,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	color = "#c0baae";
 	pixel_x = 3
 	},
@@ -12691,7 +12691,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1;
 	color = "#c0baae";
 	pixel_x = -3
@@ -16986,7 +16986,7 @@
 /obj/structure/window/reinforced/toughened{
 	color = "#912727"
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	color = "#c0baae";
 	pixel_x = -3
 	},

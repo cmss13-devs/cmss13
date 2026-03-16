@@ -105,7 +105,6 @@ GLOBAL_LIST_INIT(resin_build_order_burrower, list(
 
 GLOBAL_LIST_INIT(resin_build_order_carrier, list(
 	/datum/resin_construction/resin_obj/resin_hole,
-	/datum/resin_construction/resin_obj/acid_pillar
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(

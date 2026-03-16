@@ -458,7 +458,7 @@
 /turf/closed/wall/mineral/sandstone/runed/update_icon()
 	if(decoration_type == null)
 		return ..()
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		special_icon = TRUE
 		icon_state = "ancient_stone_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality

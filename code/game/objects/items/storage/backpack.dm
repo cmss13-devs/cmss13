@@ -1618,6 +1618,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	
+	allow_gun_usage = TRUE
+	allowed_stealth_shooting = TRUE
 
 	max_storage_space = 21
 	camo_alpha = 10

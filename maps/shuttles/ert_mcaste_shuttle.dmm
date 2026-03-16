@@ -11,12 +11,12 @@
 /area/shuttle/ert)
 "cP" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine"
+	icon_state = "stan_leftengine"
 	},
 /area/shuttle/ert)
 "eH" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_3"
+	icon_state = "leftengine_3"
 	},
 /area/shuttle/ert)
 "fn" = (
@@ -38,19 +38,12 @@
 /turf/open/predship/tile/hunter_tile_2,
 /area/shuttle/ert)
 "iq" = (
-/turf/open/mcaste_shuttle/shuttle_border_corner,
+/turf/open/predship/shuttle_border_corner,
 /area/shuttle/ert)
 "jQ" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_2"
+	icon_state = "leftengine_2"
 	},
-/area/shuttle/ert)
-"kj" = (
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
-	},
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/predship/red_glow/on,
 /area/shuttle/ert)
 "mh" = (
 /turf/closed/shuttle/hunter{
@@ -58,7 +51,7 @@
 	},
 /area/shuttle/ert)
 "mP" = (
-/turf/open/mcaste_shuttle/shuttle_border_corner/north,
+/turf/open/predship/shuttle_border_corner/north,
 /area/shuttle/ert)
 "nl" = (
 /turf/closed/shuttle/hunter{
@@ -67,7 +60,7 @@
 /area/shuttle/ert)
 "pt" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_5"
+	icon_state = "leftengine_5"
 	},
 /area/shuttle/ert)
 "pE" = (
@@ -89,7 +82,7 @@
 /area/shuttle/ert)
 "rP" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_4"
+	icon_state = "rightengine_4"
 	},
 /area/shuttle/ert)
 "se" = (
@@ -105,7 +98,7 @@
 /area/shuttle/ert)
 "vk" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_9"
+	icon_state = "leftengine_9"
 	},
 /area/shuttle/ert)
 "xz" = (
@@ -113,11 +106,11 @@
 /turf/template_noop,
 /area/shuttle/ert)
 "xG" = (
-/turf/open/mcaste_shuttle/shuttle_border,
+/turf/open/predship/shuttle_border,
 /area/shuttle/ert)
 "yb" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_2"
+	icon_state = "rightengine_2"
 	},
 /area/shuttle/ert)
 "yf" = (
@@ -126,7 +119,7 @@
 /area/shuttle/ert)
 "yw" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_8"
+	icon_state = "rightengine_8"
 	},
 /area/shuttle/ert)
 "yS" = (
@@ -141,7 +134,7 @@
 /area/shuttle/ert)
 "za" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_7"
+	icon_state = "leftengine_7"
 	},
 /area/shuttle/ert)
 "zG" = (
@@ -162,7 +155,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/ert_spawns/distress,
-/turf/open/mcaste_shuttle/shuttle_border/north,
+/turf/open/predship/shuttle_border/north,
 /area/shuttle/ert)
 "Da" = (
 /turf/closed/shuttle/hunter{
@@ -170,7 +163,7 @@
 	},
 /area/shuttle/ert)
 "EF" = (
-/turf/open/mcaste_shuttle/shuttle_border_corner/east,
+/turf/open/predship/shuttle_border_corner/east,
 /area/shuttle/ert)
 "EY" = (
 /turf/closed/shuttle/hunter,
@@ -184,7 +177,7 @@
 /area/shuttle/ert)
 "HE" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine"
+	icon_state = "stan_rightengine"
 	},
 /area/shuttle/ert)
 "HJ" = (
@@ -215,12 +208,12 @@
 /area/template_noop)
 "Mp" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_8"
+	icon_state = "leftengine_8"
 	},
 /area/shuttle/ert)
 "PR" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_leftengine_4"
+	icon_state = "leftengine_4"
 	},
 /area/shuttle/ert)
 "PS" = (
@@ -230,7 +223,7 @@
 /area/shuttle/ert)
 "Qq" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_7"
+	icon_state = "rightengine_7"
 	},
 /area/shuttle/ert)
 "QA" = (
@@ -247,7 +240,7 @@
 /area/shuttle/ert)
 "Rp" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_5"
+	icon_state = "rightengine_5"
 	},
 /area/shuttle/ert)
 "Sw" = (
@@ -284,7 +277,7 @@
 /turf/open/predship/tile/hunter_tile_2,
 /area/shuttle/ert)
 "UR" = (
-/turf/open/mcaste_shuttle/shuttle_border/north,
+/turf/open/predship/shuttle_border/north,
 /area/shuttle/ert)
 "US" = (
 /turf/closed/shuttle/hunter{
@@ -297,11 +290,11 @@
 /area/shuttle/ert)
 "Vg" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_3"
+	icon_state = "rightengine_3"
 	},
 /area/shuttle/ert)
 "Wd" = (
-/turf/open/mcaste_shuttle/shuttle_border_corner/west,
+/turf/open/predship/shuttle_border_corner/west,
 /area/shuttle/ert)
 "WW" = (
 /obj/structure/shuttle/part/hunter/left_front3,
@@ -309,7 +302,7 @@
 /area/shuttle/ert)
 "Xm" = (
 /turf/closed/shuttle/hunter{
-	icon_state = "pred_rightengine_9"
+	icon_state = "rightengine_9"
 	},
 /area/shuttle/ert)
 "YK" = (
@@ -371,7 +364,7 @@ QA
 se
 CS
 fS
-kj
+fS
 fS
 UR
 pE

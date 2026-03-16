@@ -373,3 +373,12 @@
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)
+
+/datum/reagent/toxin/sepsicine
+	name = "Sepsicine"
+	id = "sepsicine"
+	description = "A xenotoxin with a cadaverous odor, theorized to be of microbial origin."
+	color = "#c5bc81"
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_CROSSMETABOLIZING = 3)

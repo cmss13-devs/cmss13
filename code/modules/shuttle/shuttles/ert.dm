@@ -128,6 +128,30 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+/obj/docking_port/mobile/emergency_response/hunter
+	name = "Hunter Shuttle"
+	id = MOBILE_SHUTTLE_ID_HUNTER
+	preferred_direction = SOUTH
+	port_direction = NORTH
+	area_type = /area/shuttle/hunter
+	landing_sound = 'sound/effects/engine_hunter_landing.ogg'
+	ignition_sound = 'sound/effects/engine_hunter_startup.ogg'
+
+/obj/docking_port/mobile/emergency_response/hunter/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Hunter Shuttle [tag]"
+	id = "hunter-shuttle-[tag]"
+	. = ..()
+	external_doors = list()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/air in place)
+			if(air.id != "hunter_external")
+				continue
+			air.breakable = FALSE
+			air.explo_proof = TRUE
+			air.unacidable = TRUE
+			external_doors += list(air)
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -240,6 +264,31 @@
 	dir = NORTH
 	id = "rostock-ert2"
 
+/obj/docking_port/stationary/emergency_response/yautja
+	name = "DO NOT USE"
+	dir = NORTH
+
+/obj/docking_port/stationary/emergency_response/yautja/port1
+	name = "Hunter Ship landing pad A"
+	id = "hunter-ert1"
+	roundstart_template = /datum/map_template/shuttle/hunter
+
+/obj/docking_port/stationary/emergency_response/yautja/port2
+	name = "Hunter Ship landing pad B"
+	id = "hunter-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary
+	name = "Temporary Landing Zone"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Temporary Landing Zone [tag]"
+	id = "hunter-temp-[tag]"
+	. = ..()
+	for(var/obj/docking_port/mobile/emergency_response/hunter/shuttle in SSshuttle.mobile)
+		var/obj/structure/machinery/computer/shuttle/ert/hunter/console = shuttle.getControlConsole()
+		console.resync_landing_zones()
+
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE
 	var/airlock_id
@@ -286,8 +335,10 @@
 	name = "Almayer hanger port external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-port"
-	width  = 17
-	height = 29
+	width   = 17
+	height  = 43
+	dheight = 21
+	dwidth  = 0
 	airlock_id = "s_umbilical"
 	airlock_area = /area/almayer/hallways/lower/port_umbilical
 
@@ -295,8 +346,10 @@
 	name = "Almayer hanger starboard external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-starboard"
-	width  = 17
-	height = 29
+	width   = 6
+	height  = 25
+	dheight = 12
+	dwidth  = 0
 	airlock_id = "n_umbilical"
 	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 
@@ -340,16 +393,16 @@
 	name = "Response Station Landing Pad 5"
 	dir = EAST
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
+	width   = 17
+	height  = 43
+	dheight = 21
+	dwidth  = 0
 	roundstart_template = /datum/map_template/shuttle/big_ert
 
 /obj/docking_port/stationary/emergency_response/idle_port6
 	name = "Response Station Landing Pad 6"
 	dir = NORTH
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
 	roundstart_template = /datum/map_template/shuttle/twe_ert
 
 /obj/docking_port/stationary/emergency_response/chinook_port
@@ -381,3 +434,30 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	shuttle_id = /obj/docking_port/mobile/port_umbilical_cord::id
+
+/datum/map_template/shuttle/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	shuttle_id = /obj/docking_port/mobile/starboard_umbilical_cord::id
+
+/obj/docking_port/mobile/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	id = "port_umbilical_cord"
+	preferred_direction = WEST
+
+/obj/docking_port/mobile/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	id = "starboard_umbilical_cord"
+	preferred_direction = WEST
+
+/obj/effect/landmark/ert_spawns/umbilical
+
+/obj/structure/machinery/door_control/automatic/umbilical
+	id = "hangar_umbilical_ert"
+
+/datum/map_template/shuttle/hunter
+	name = "Hunter Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_HUNTER

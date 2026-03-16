@@ -185,13 +185,23 @@
 	full_name = "View Hive Status"
 	keybind_signal = COMSIG_KB_XENO_HIVE_STATUS
 
+/datum/keybinding/xenomorph/hive_status/can_use(client/user)
+	. = ..()
+	if(. || isobserver(user.mob))
+		return TRUE
+
 /datum/keybinding/xenomorph/hive_status/down(client/user)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/xeno = user.mob
-	xeno.hive_status()
-	return TRUE
+	if(isxeno(user.mob))
+		var/mob/living/carbon/xenomorph/xeno = user.mob
+		xeno.hive_status()
+		return TRUE
+	if(isobserver(user.mob))
+		var/mob/dead/observer/ghost = user.mob
+		ghost.hive_status()
+		return TRUE
 
 /datum/keybinding/xenomorph/hide
 	hotkey_keys = list("Unbound")

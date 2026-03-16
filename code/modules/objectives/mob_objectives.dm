@@ -172,6 +172,7 @@
 	var/mob/living/target
 	var/mob_can_die = MOB_CAN_COMPLETE_AFTER_DEATH
 	objective_flags = OBJECTIVE_DO_NOT_TREE
+	controller = TREE_MARINE
 
 
 /datum/cm_objective/move_mob/New(mob/living/survivor)

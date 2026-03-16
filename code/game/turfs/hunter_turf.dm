@@ -5,6 +5,7 @@
 	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
 	icon_state = "floor"
 	supports_surgery = TRUE
+	allow_construction = FALSE
 
 // Main floor/walkway
 
@@ -89,6 +90,12 @@
 /turf/open/predship/mainfloor/corner/west
 	dir = WEST
 
+/turf/open/predship/mainfloor/borderless_vertical
+	icon_state = "borderless_v"
+
+/turf/open/predship/mainfloor/borderless_horizontal
+	icon_state = "borderless_h"
+
 // Upper platform
 
 /turf/open/predship/mainfloor/upper
@@ -114,6 +121,9 @@
 /turf/open/predship/tile/red3
 	icon_state = "hunter_red_3"
 
+/turf/open/predship/tile/red3/lz_rim
+	allow_construction = TRUE
+
 /turf/open/predship/tile/red4
 	icon_state = "hunter_red_4"
 
@@ -123,6 +133,9 @@
 	light_power = 1
 	light_range = 2
 	light_color = "#ff0000"
+
+/turf/open/predship/tile/red4/glow/lz_rim
+	allow_construction = TRUE
 
 /turf/open/predship/tile/red5
 	icon_state = "hunter_red_5"
@@ -268,7 +281,7 @@
 
 // Hunter Ship Hull
 
-/turf/open/floor/predship/hull
+/turf/open/predship/hull
 	name = "hull"
 	desc = FALSE
 	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
@@ -276,28 +289,28 @@
 	allow_construction = FALSE
 	is_weedable = NOT_WEEDABLE
 
-/turf/open/floor/predship/hull/non_weedable_hull
+/turf/open/predship/hull/non_weedable_hull
 	icon_state = "outerhull_dir"
 
-/turf/open/floor/predship/hull/non_weedable_hull/southwest
+/turf/open/predship/hull/non_weedable_hull/southwest
 	dir = SOUTHWEST
 
-/turf/open/floor/predship/hull/non_weedable_hull/north
+/turf/open/predship/hull/non_weedable_hull/north
 	dir = NORTH
 
-/turf/open/floor/predship/hull/non_weedable_hull/east
+/turf/open/predship/hull/non_weedable_hull/east
 	dir = EAST
 
-/turf/open/floor/predship/hull/non_weedable_hull/northeast
+/turf/open/predship/hull/non_weedable_hull/northeast
 	dir = NORTHEAST
 
-/turf/open/floor/predship/hull/non_weedable_hull/southeast
+/turf/open/predship/hull/non_weedable_hull/southeast
 	dir = SOUTHEAST
 
-/turf/open/floor/predship/hull/non_weedable_hull/west
+/turf/open/predship/hull/non_weedable_hull/west
 	dir = WEST
 
-/turf/open/floor/predship/hull/non_weedable_hull/northwest
+/turf/open/predship/hull/non_weedable_hull/northwest
 	dir = NORTHWEST
 
 // Ancient Temple
@@ -757,3 +770,87 @@
 
 /turf/closed/wall/ancient_temple/runed/alt2
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+
+/// Shuttle
+
+/turf/closed/shuttle/hunter
+	name = "hull"
+	icon = 'icons/turf/hunter_shuttle.dmi'
+	icon_state = "hunter4"
+
+/turf/closed/shuttle/hunter/transparent
+	opacity = FALSE
+
+/turf/open/predship/shuttle_border
+	icon_state = "17,15"
+
+/turf/open/predship/shuttle_border/north
+	dir = NORTH
+
+/turf/open/predship/shuttle_border/east
+	dir = EAST
+
+/turf/open/predship/shuttle_border/west
+	dir = WEST
+
+/turf/open/predship/shuttle_border_corner
+	icon_state = "6,6"
+
+/turf/open/predship/shuttle_border_corner/north
+	dir = NORTH
+
+/turf/open/predship/shuttle_border_corner/east
+	dir = EAST
+
+/turf/open/predship/shuttle_border_corner/west
+	dir = WEST
+
+/obj/structure/shuttle/part/hunter
+	name = "hull"
+	icon = 'icons/turf/hunter_shuttle.dmi'
+	icon_state = "hunter4"
+	plane = TURF_PLANE
+
+/obj/structure/shuttle/part/hunter/engine_left_back
+	icon_state = "leftengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_left_front
+	icon_state = "leftengine_6"
+
+/obj/structure/shuttle/part/hunter/engine_right_back
+	icon_state = "rightengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_right_front
+	icon_state = "rightengine_6"
+
+/obj/structure/shuttle/part/hunter/left_front1
+	icon_state = "hunter18"
+
+/obj/structure/shuttle/part/hunter/left_front2
+	icon_state = "hunter21"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front3
+	icon_state = "hunter22"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front4
+	icon_state = "hunter20"
+
+/obj/structure/shuttle/part/hunter/right_front1
+	icon_state = "hunter25"
+
+/obj/structure/shuttle/part/hunter/right_front2
+	icon_state = "hunter27"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front3
+	icon_state = "hunter28"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front4
+	icon_state = "hunter26"
+
+/turf/open/predship/plating
+	icon = 'icons/turf/floors/corsat.dmi'
+	icon_state = "plating"

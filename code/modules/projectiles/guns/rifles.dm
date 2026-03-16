@@ -1781,7 +1781,7 @@
 	var/iff_enabled = TRUE
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/Initialize(mapload, ...)
-	LAZYADD(actions_types, /datum/action/item_action/type71/carbine/commando/toggle_lethal_mode)
+	LAZYADD(actions_types, /datum/action/item_action/toggle_alt_iff)
 	. = ..()
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
@@ -1810,7 +1810,7 @@
 	set_burst_delay(FIRE_DELAY_TIER_12)
 	scatter = SCATTER_AMOUNT_TIER_8
 
-/datum/action/item_action/type71/carbine/commando/toggle_lethal_mode/New(Target, obj/item/holder)
+/datum/action/item_action/toggle_alt_iff/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle IFF"
 	action_icon_state = "iff_toggle_on"
@@ -1818,7 +1818,7 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/item_action/type71/carbine/commando/toggle_lethal_mode/action_activate()
+/datum/action/item_action/toggle_alt_iff/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/rifle/type71/carbine/commando/protag_gun = holder_item
 	protag_gun.toggle_iff(usr)

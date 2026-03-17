@@ -35,7 +35,7 @@
 
 /obj/item/card/data/verb/label(text as text)
 	set name = "Label Disk"
-	set category = "attacking_object"
+	set category = "Object"
 	set src in usr
 
 	if(text)
@@ -130,7 +130,7 @@
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"
-	set category = "attacking_object"
+	set category = "Object"
 	set src in usr
 
 	to_chat(usr, "[icon2html(src, usr)] [name]: The current assignment on the card is [assignment]")

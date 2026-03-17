@@ -335,10 +335,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		execute.remove_hud_from(src, src)
 
 /mob/proc/refresh_huds(mob/source_mob)
-	var/mob/Mob = source_mob ? source_mob : src
+	var/mob/mob = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in GLOB.huds)
-		if(Mob in hud.hudusers)
-			hud.refresh_hud(src, hud.hudusers[Mob])
+		if(mob in hud.hudusers)
+			hud.refresh_hud(src, hud.hudusers[mob])
 
 
 /mob/proc/handle_xeno_hive_hud(hive_choice, choose_verb = FALSE)

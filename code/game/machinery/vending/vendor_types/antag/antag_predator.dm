@@ -491,6 +491,9 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[mob_client.prefs.predator_armor_material]")
 	user.update_inv_wear_suit()
 
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	return
+
 //Mask Prefs
 /obj/item/clothing/mask/gas/yautja/hunter/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	if(!user?.client?.prefs)
@@ -550,6 +553,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	else
 		qdel(src)
 
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	return
 
 //Greaves Prefs
 
@@ -578,6 +583,9 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	icon_state = "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]"
 	LAZYSET(item_state_slots, WEAR_FEET, "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]")
 	user.update_inv_shoes()
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	return
 
 //Cape Prefs
 

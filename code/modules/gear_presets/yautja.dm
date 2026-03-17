@@ -244,7 +244,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter/emissary(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming(new_human), WEAR_FEET)
 

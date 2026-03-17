@@ -51,7 +51,7 @@
 	new_human.equip_to_slot_or_del(new pistol_ammo_path, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert/low_points(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/uacqs/commissioner
@@ -113,7 +113,7 @@
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/low_points, WEAR_IN_BACK) //CIA equipment
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/uacqs_sec/low_points, WEAR_IN_BACK) //CIA equipment
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia/uacqs(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new glasses_path(new_human), WEAR_EYES)

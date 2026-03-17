@@ -395,7 +395,8 @@
 							del(candidates[job_by_chain])
 							break
 					else break
-
+				if(person_in_charge)
+					break
 			else
 				//Checks for unique roles
 				var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]

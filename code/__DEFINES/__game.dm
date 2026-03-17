@@ -43,6 +43,7 @@
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
+#define MAP_HUNTERSHIP "Hunter Ship"
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
@@ -420,7 +421,8 @@
 #define WALL_KUTJEVO_COLONYR "colonyr"
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
-#define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_HUNTERSHIP "hunter"
+#define WALL_ENGINEERSHIP "metal"
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"

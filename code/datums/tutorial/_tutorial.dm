@@ -131,10 +131,38 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tracking_atoms -= reference.type
 
 /// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message)
+/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial)
 	playsound_client(tutorial_mob.client, 'sound/effects/radiostatic.ogg', tutorial_mob.loc, 25, FALSE)
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial, rgb(103, 214, 146))
+	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
 	to_chat(tutorial_mob, SPAN_NOTICE(message))
+
+/// Broadcast a message to the player's screen
+/datum/tutorial/proc/dynamic_message_to_player(list/script)
+	var/final_fade_out_delay
+	var/scene_length = 0 SECONDS
+	for(var/message in script)
+		var/aproximate_word_count = 0
+		for(var/character in 1 to length_char(message))
+			// ASCII 32 = spacebar thing
+			if(text2ascii(message, character) == 32)
+				aproximate_word_count++
+			character++
+
+		if(!aproximate_word_count)
+			return FALSE
+
+		var/atom/movable/screen/text/screen_text/message_atom = new /atom/movable/screen/text/screen_text/command_order/tutorial
+		final_fade_out_delay = message_atom.fade_out_time
+		var/message_reading_time = max(round(aproximate_word_count * 0.4, 0.1), 1.5) SECONDS
+		message_atom.fade_out_delay = message_reading_time
+		message_reading_time += message_atom.fade_out_time
+		if(!scene_length)
+			message_to_player(message, message_atom)
+		else
+			addtimer(CALLBACK(src, PROC_REF(message_to_player), message, message_atom), scene_length)
+		scene_length += message_reading_time
+
+	return scene_length + final_fade_out_delay
 
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)

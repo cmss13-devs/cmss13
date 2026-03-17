@@ -12,10 +12,13 @@
 		return
 
 	init_mob()
-	message_to_player("This is the tutorial for the basics of <b>Space Station 13</b>. Any current instructions can be found in the top-right corner, in the status panel.")
+	var/list/script = list(
+		"This is the tutorial for the basics of <b>Space Station 13</b>",
+		"Any current instructions can be found in the top-right corner, in the status panel."
+	)
 	update_objective("Here's where it'll be!")
 
-	addtimer(CALLBACK(src, PROC_REF(require_move)), 4 SECONDS) // check if this is a good amount of time
+	addtimer(CALLBACK(src, PROC_REF(require_move)), dynamic_message_to_player(script)) // check if this is a good amount of time
 
 /datum/tutorial/ss13/basic/proc/require_move()
 	message_to_player("Now, move in any direction using <b>[retrieve_bind("North")]</b>, <b>[retrieve_bind("West")]</b>, <b>[retrieve_bind("South")]</b>, or <b>[retrieve_bind("East")]</b>.")

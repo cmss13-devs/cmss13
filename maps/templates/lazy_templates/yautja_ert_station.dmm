@@ -2257,14 +2257,6 @@
 	},
 /turf/open/predship/hunter_grille,
 /area/adminlevel/ert_station/yautja_station)
-"KK" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/machinery/light/red{
-	dir = 4;
-	pixel_x = -6
-	},
-/turf/open/predship/tile/hunter_tile_3,
-/area/adminlevel/ert_station/yautja_station)
 "Ln" = (
 /obj/structure/shuttle/engine/heater{
 	color = "#c0baae";
@@ -2472,14 +2464,6 @@
 /obj/structure/machinery/door/airlock/yautja/secure,
 /turf/open/predship/tile/red,
 /area/adminlevel/ert_station/yautja_station)
-"OX" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/machinery/light/red{
-	dir = 8;
-	pixel_x = 6
-	},
-/turf/open/predship/tile/hunter_tile_3,
-/area/adminlevel/ert_station/yautja_station)
 "Pd" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
@@ -2551,10 +2535,6 @@
 	},
 /obj/effect/hunter/bridge_border{
 	dir = 1
-	},
-/obj/structure/machinery/light/red{
-	dir = 1;
-	pixel_y = -27
 	},
 /turf/open/predship/tile/hunter_tile_1,
 /area/adminlevel/ert_station/yautja_station)
@@ -5208,7 +5188,7 @@ XK
 Ja
 ab
 xJ
-KK
+DA
 DA
 DA
 wy
@@ -5220,7 +5200,7 @@ DA
 DA
 DA
 DA
-KK
+DA
 pm
 ab
 Tx
@@ -5688,7 +5668,7 @@ XK
 Ja
 ab
 mY
-OX
+Xv
 Xv
 Xv
 sG
@@ -5700,7 +5680,7 @@ Xv
 Xv
 Xv
 Xv
-OX
+Xv
 lr
 ab
 Tx

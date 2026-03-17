@@ -100,7 +100,7 @@ jobs:
       - name: Compile All Maps
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build.sh --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+          tools/build/build.sh --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS -I"loop_checks"
 
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )

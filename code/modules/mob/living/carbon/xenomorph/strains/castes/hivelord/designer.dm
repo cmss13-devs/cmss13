@@ -314,9 +314,9 @@
 		if(!istype(Turf, /turf/closed/wall))
 			var/turf/placed
 			if(thick_build)
-				placed = Turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+				placed = Turf.place_on_top(/turf/closed/wall/resin/weedbound/thick)
 			else
-				placed = Turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+				placed = Turf.place_on_top(/turf/closed/wall/resin/weedbound/normal)
 
 			var/turf/closed/wall/resin/Res = get_turf(Turf)
 			if(istype(Res))
@@ -738,7 +738,7 @@
 			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
 				SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 
-			node_loc.PlaceOnTop(/turf/closed/wall/resin/reflective/weak)
+			node_loc.place_on_top(/turf/closed/wall/resin/reflective/weak)
 			var/turf/closed/wall/resin/reflective/weak/good_wall = node_loc
 			if(good_wall)
 				good_wall.hivenumber = xeno.hivenumber

@@ -194,7 +194,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	var/councillor_override = FALSE
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
@@ -274,8 +274,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	fire_intensity_resistance = 10
 	black_market_value = 50
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
-	..()
+/obj/item/clothing/shoes/yautja/Initialize(mapload, boot_number = rand(1,4), armor_material = "ebony")
+	. = ..(mapload, 0)
 	if(thrall)
 		return
 	if(boot_number > 4)
@@ -309,8 +309,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/conforming = FALSE
 	var/camo_type = "classic"
 
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/New(location)
-	..()
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
+	. = ..(mapload, 0)
 	if(conforming)
 		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
 	icon_state = "elite_y-boots1_emissary_[camo_type]"
@@ -486,20 +486,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(H.client && H.client.clan_info)
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!SSpredships.is_clanship_loaded(CV?.clan_id))
-					continue
-				ship_to_tele += list("[CV.name]" = "[CV.clan_id]: [CV.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
-
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
 
 	// Getting an arrival point
 	var/turf/target_turf
@@ -507,7 +494,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
 		target_turf = get_turf(pickedYT)
 	else
-		target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
+		target_turf = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!istype(target_turf))
 		return
 
@@ -1534,7 +1521,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/pelt/despoiler
 	name = "Despoiler pelt"
-	desc = "The pelt of a decrepit wretch, the surface still stinging your hands"
+	desc = "The pelt of a decrepit wretch, the surface still stinging your hands."
 	icon_state = "despoiler_pelt"
 
 /obj/item/pelt/lurker

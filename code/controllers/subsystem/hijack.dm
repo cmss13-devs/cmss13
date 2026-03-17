@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
-	/// If the ship has crashed onto a ground map and the ftl_turfs are now turf/open_space
+	/// If the ship has crashed onto a ground map and space turfs have been replaced with turf/open_space
 	var/crashed = FALSE
 
 	/// The x offset for open_space turfs to ground when crashed
@@ -121,9 +121,6 @@ SUBSYSTEM_DEF(hijack)
 
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
-
-	/// A list of turfs to edit to FTL-ness
-	var/list/ftl_turfs = list()
 
 	/// A list of all fuel pumps
 	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
@@ -724,9 +721,11 @@ SUBSYSTEM_DEF(hijack)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	// Update shipside space turfs to open_space
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		set_ftl_turf_open(space_turf)
-		CHECK_TICK
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			set_ftl_turf_open(space_turf)
+			CHECK_TICK
 	crashed = TRUE
 
 	shakeship(
@@ -959,7 +958,7 @@ SUBSYSTEM_DEF(hijack)
 		// Don't bother with open_space further out
 		space_turf.icon_state = "black"
 		return
-	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y, crashed_ground_z_min)
+	space_turf.ChangeTurf(/turf/open_space/ground_level)
 
 /// Called to enter FTP warp
 /datum/controller/subsystem/hijack/proc/enter_ftl()
@@ -970,8 +969,11 @@ SUBSYSTEM_DEF(hijack)
 		osound = FALSE
 	)
 
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		set_ftl_turf(space_turf)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			set_ftl_turf(space_turf)
+			CHECK_TICK
 
 	shipwide_ai_announcement("ALERT: Prolonged exposure outside hypersleep chambers during a tachyon quantum jump can be fatal. Seek hypersleep chambers if possible.", HIJACK_ANNOUNCE)
 
@@ -995,10 +997,11 @@ SUBSYSTEM_DEF(hijack)
 	in_ftl = FALSE
 	current_run_mobs.Cut()
 
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		unset_ftl_turf(space_turf)
-
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			unset_ftl_turf(space_turf)
+			CHECK_TICK
 
 	if(!unintentionally)
 		shakeship(

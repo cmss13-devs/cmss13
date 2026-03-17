@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	do_evolve()
 
@@ -352,7 +352,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	if(!check_state())
 		return

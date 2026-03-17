@@ -1414,16 +1414,16 @@
 	w_class = SIZE_HUGE
 	pixel_x = -2
 	hud_offset = -2
-	var/charge_time = 0
-	var/last_regen = 0
+	// our charge. max of 100, min of 0. starts at 100
+	var/charge_time = 100
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	last_regen = world.time
 	update_icon()
+	AddElement(/datum/element/corp_label/dltalt) // only the rifle is special-issue, everything else comes from the clans
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst

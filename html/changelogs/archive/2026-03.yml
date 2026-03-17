@@ -190,3 +190,19 @@
   mrkivnv:
   - imageadd: added new huddead and hudhcdead
   - imagedel: deleted old huddead and hudhcdead
+2026-03-17:
+  MoondancerPony:
+  - bugfix: fixed reading papers inside folders
+  - spellcheck: fixed a few descriptions missing punctuation
+  Venuska1117:
+  - qol: Organizes Alien Tab, now verbs have categories for better visibility.
+  dawsonkeyes:
+  - rscadd: Staff may now send a Yautja Military Caste squad if they really, really
+      hate you
+  forest2001, DawsonKeyes:
+  - mapadd: Changed the Predship to Multi-Z.
+  - mapadd: Added a Hunter Shuttle.
+  - rscdel: Removed Predship Susbsystem as it is not required.
+  mrkivnv:
+  - rscadd: added new corporate bodyguard icons that depends on the rank status
+  - imageadd: bodyguard icons for TPPO, PPO, PPS, PPC

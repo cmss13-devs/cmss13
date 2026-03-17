@@ -296,8 +296,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	fire_intensity_resistance = 10
 	black_market_value = 50
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
-	..()
+/obj/item/clothing/shoes/yautja/Initialize(mapload, boot_number = rand(1,4), armor_material = "ebony")
+	. = ..(mapload, 0)
 	if(thrall)
 		return
 	if(boot_number > 4)
@@ -331,8 +331,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/conforming = FALSE
 	var/camo_type = "classic"
 
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/New(location)
-	..()
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
+	. = ..(mapload, 0)
 	if(conforming)
 		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
 	icon_state = "elite_y-boots1_emissary_[camo_type]"

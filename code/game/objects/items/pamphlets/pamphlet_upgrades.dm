@@ -55,14 +55,14 @@
 
 /obj/item/pamphlet/upgradeable/engineer
 	name = "engineer instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge of maintaining and repairing machinery, and among other forms of construction work as well. You suppose it could impart some knowledge regarding the use of heavier-duty equipment "
+	desc = "A pamphlet used to quickly impart vital knowledge of maintaining and repairing machinery, and among other forms of construction work as well. You suppose it could impart some knowledge regarding the use of heavier-duty equipment."
 	icon_state = "pamphlet_construction"
 	skill_upgrade = SKILL_CONSTRUCTION
 	second_upgrade = SKILL_ENGINEER
 
 /obj/item/pamphlet/upgradeable/jtac
 	name = "JTAC instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge of being a Joint Terminal Attack Controller, or JTAC for short. "
+	desc = "A pamphlet used to quickly impart vital knowledge of being a Joint Terminal Attack Controller, or JTAC for short."
 	icon_state = "pamphlet_jtac"
 	skill_upgrade = SKILL_JTAC
 	skill_cap = 2

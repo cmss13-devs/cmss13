@@ -159,7 +159,7 @@
 /turf/open/hybrisa/street/NSPA_2x2_emblem
 	icon_state = "NSPA_emblem_concrete_2x2"
 	name = "NSPA - Concrete Sakrua Emblem"
-	desc = "A concrete emblem resembling a (Sakura Flower), the symbol of the NSPA, below is is an inscription reading - (Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds)."
+	desc = "A concrete emblem resembling a (Sakura Flower), the symbol of the NSPA, below it is an inscription reading - (Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds)."
 
 /turf/open/hybrisa/street/NSPA_2x2_emblem/north
 	dir = NORTH
@@ -1097,7 +1097,7 @@
 	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, looks like nothing you can do will penetrate the hull."
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"
-	walltype = WALL_HUNTERSHIP
+	walltype = WALL_ENGINEERSHIP
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/engineership/destructible
@@ -1117,7 +1117,7 @@
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/floor/plating/hybrisa_rock
 
-// Marshalls
+// Marshals
 
 /turf/closed/wall/hybrisa/marhsalls
 	name = "metal wall"

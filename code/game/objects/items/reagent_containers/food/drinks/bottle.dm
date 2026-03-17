@@ -259,7 +259,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space nightclubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = "x=16;y=6"
 
@@ -301,7 +301,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/kahlua
 	name = "Robert Robust's Coffee Liqueur"
-	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
+	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK."
 	icon_state = "kahluabottle"
 	item_state = "kahluabottle"
 	center_of_mass = "x=17;y=3"

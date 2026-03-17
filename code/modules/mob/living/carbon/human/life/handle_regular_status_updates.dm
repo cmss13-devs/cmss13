@@ -40,7 +40,7 @@
 		for(var/datum/effects/crit/C in effects_list)
 			already_in_crit = TRUE
 			break
-		// Need to only apply if its not already active
+		// Need to only apply if it's not already active
 		if(!already_in_crit)
 			new /datum/effects/crit/human(src)
 

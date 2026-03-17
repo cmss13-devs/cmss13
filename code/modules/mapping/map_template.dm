@@ -125,14 +125,13 @@
 
 	// If we are keeping within ground/ship map trait, restrict the z_upper
 	if(keep_within_ztrait)
-		var/height = 1
+		z_upper = 1
 		var/current_z = target_turf.z
 		var/offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
 		while(offset)
-			height++
+			z_upper++
 			current_z += offset
 			offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
-		z_upper = height
 
 	// ASSUMPTION: target_turf.z to target_turf.z + z_upper is contiguous
 	// ASSUMPTION: World border is going to be the same for all ground Zs

@@ -328,3 +328,21 @@
 		xeno.armor_deflection_buff -= 30
 		xeno.armor_explosive_buff -= 60
 		xeno.small_explosives_stun = TRUE
+
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	// If the defender is facing the projectile.
+	if(defendy.dir & REVERSE_DIR(projectile_direction))
+		damagedata["armor"] += frontal_armor
+
+/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	if(QDELETED(owner))
+		return
+
+	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
+	UnregisterSignal(owner, COMSIG_MOB_DEATH)
+	fortify_switch(owner, FALSE)
+

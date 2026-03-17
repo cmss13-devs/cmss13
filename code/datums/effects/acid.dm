@@ -63,6 +63,7 @@
 	affected_mob.last_damage_data = cause_data
 	for(var/i in 1 to hits_multiplier)
 		affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
+
 	increment_duration()
 	return TRUE
 
@@ -113,11 +114,11 @@
 
 	acid_level++
 	if(acid_level == 2)
-		duration += 20
+		prolong_duration(20)
 		obj_dmg_multiplier = 1.5
 		mob_icon_state_path = "human_acid_enhanced"
 	else if(acid_level > 2)
-		duration += 40
+		prolong_duration(40)
 		mob_icon_state_path = "human_acid_enhanced_super" //need sprite adjustments here
 
 	if(ishuman(affected_atom))

@@ -42,7 +42,7 @@
 /turf/closed/wall/almayer/update_icon()
 	if(decoration_type == null)
 		return ..()
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		special_icon = TRUE
 		icon_state = "almayer_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality
@@ -117,6 +117,11 @@
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
+	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment, /turf/closed/wall/almayer/outer)
+	noblend_objects = list(/obj/structure/machinery/door/window, /obj/structure/machinery/door/poddoor/almayer)
+
+/turf/closed/wall/almayer/white/hull/blend_pod
+	noblend_objects = list(/obj/structure/machinery/door/window)
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -561,7 +566,7 @@
 	..()
 	if(special_icon)
 		return
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
@@ -1146,7 +1151,6 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
@@ -1507,15 +1511,27 @@
 	return FALSE
 
 /turf/closed/wall/huntership
-	name = "hunter wall"
+	name = "hunter ship hull"
 	desc = "Nigh indestructible walls that make up the hull of a hunter ship."
 	icon = 'icons/turf/walls/hunter.dmi'
-	icon_state = "metal"//DMI specific name
+	icon_state = "hull"
 	walltype = WALL_HUNTERSHIP
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/huntership/outerhull
+	name = "hunter ship outer hull"
+
+/turf/closed/wall/huntership/innerhull
+	name = "hunter ship inner hull"
+	icon_state = "innerhull"
+
+/turf/closed/wall/huntership/reinforced
+	name = "hunter ship reinforced hull"
+	icon_state = "reinforced"
+
 /turf/closed/wall/huntership/destructible
 	name = "degraded hunter wall"
+	icon_state = "hunter"
 	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
 	turf_flags = NO_FLAGS

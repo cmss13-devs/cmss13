@@ -1,3 +1,0 @@
-/obj/structure/machinery/autolathe/full : /obj/structure/machinery/autolathe/partial{@OLD}
-/obj/structure/machinery/autolathe/armylathe/full : /obj/structure/machinery/autolathe/armylathe/partial{@OLD}
-/obj/structure/machinery/autolathe/medilathe/full : /obj/structure/machinery/autolathe/medilathe/partial{@OLD}

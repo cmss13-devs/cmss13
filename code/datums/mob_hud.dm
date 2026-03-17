@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno/xeno_hive_normal
 /datum/mob_hud/xeno/xeno_hive_corrupted
@@ -790,7 +790,19 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(faction == FACTION_MILITARY_CASTE)
+		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+			new_icon_state = "soldierhud_wl"
+		else
+			new_icon_state = "soldierhud"
+		if(job == JOB_MCASTE_ENFORCER)
+			if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+				new_icon_state = "enforcerhud_wl"
+			else
+				new_icon_state = "enforcerhud"
+		holder.icon_state = new_icon_state
+		return // we don't mess with colors or whitelist status checks
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_icon_state = "councilhud"

@@ -15,19 +15,20 @@
 #define XENO_HOSTILE_FREEZE "15" // Any xeno-inflifcted root
 #define HEALTH_HUD_XENO "16" // health HUD for xenos
 #define PLASMA_HUD "17" // indicates the plasma level of xenos.
-#define PHEROMONE_HUD "18" // indicates which pheromone is active on a xeno.
-#define QUEEN_OVERWATCH_HUD "19" // indicates which xeno the queen is overwatching.
-#define ARMOR_HUD_XENO "20" // armor HUD for xenos
-#define XENO_STATUS_HUD "21" // Whether xeno is a leader and its current upgrade level
-#define ORDER_HUD "22" // If humans are affected by orders or not
-#define XENO_BANISHED_HUD "23" // indicates that the xeno is banished
-#define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
-#define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
-#define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
-#define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
-#define XENO_EXECUTE "28" // Execute thershold, vampire
-#define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
-#define SPYCAM_HUD "30" //Remote control spy cameras.
+#define SPECIAL_HUD "18" // indicates a special resource if it exists for the xeno
+#define PHEROMONE_HUD "19" // indicates which pheromone is active on a xeno.
+#define QUEEN_OVERWATCH_HUD "20" // indicates which xeno the queen is overwatching.
+#define ARMOR_HUD_XENO "21" // armor HUD for xenos
+#define XENO_STATUS_HUD "22" // Whether xeno is a leader and its current upgrade level
+#define ORDER_HUD "23" // If humans are affected by orders or not
+#define XENO_BANISHED_HUD "24" // indicates that the xeno is banished
+#define STATUS_HUD_XENO_CULTIST "25" // Whether they are a xeno cultist or not
+#define HUNTER_CLAN "26" //Displays a colored icon to represent ingame Hunter Clans
+#define HUNTER_HUD "27" //Displays various statuses on mobs for Hunters to identify targets
+#define HOLOCARD_HUD "28" //Displays the holocards set by medical personnel
+#define XENO_EXECUTE "29" // Execute thershold, vampire
+#define NEW_PLAYER_HUD "30" //Makes it easy to see new players.
+#define SPYCAM_HUD "31" //Remote control spy cameras.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1

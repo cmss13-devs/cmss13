@@ -386,6 +386,10 @@
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
+"abr" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/oob)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -686,7 +690,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "anl" = (
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/upgradeable/engineer,
 /obj/structure/closet,
 /obj/item/restraint/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
@@ -19523,7 +19527,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "oOV" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,
@@ -23452,7 +23456,7 @@
 /area/fiorina/station/lowsec/east)
 "rYY" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	can_block_movement = 0;
 	pixel_y = 22
 	},
@@ -24792,7 +24796,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells/west)
 "sXa" = (
-/obj/structure/machinery/filtration/console,
+/obj/structure/machinery/filtration_console,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "sXe" = (
@@ -26537,7 +26541,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "uqd" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -28435,7 +28439,7 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "vRF" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vRH" = (
@@ -37209,7 +37213,7 @@ yhu
 yhu
 uNM
 baC
-baC
+abr
 tan
 ble
 hvL

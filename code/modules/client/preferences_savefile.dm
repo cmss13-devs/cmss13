@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 34
+#define SAVEFILE_VERSION_MAX 35
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,7 +229,13 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
-	if(savefile_version < 34) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+	if(savefile_version < 34)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
 		updated_from = savefile_version
 
 	if(updated_from)
@@ -346,6 +352,7 @@
 	S["playtime_perks"] >> playtime_perks
 	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
+	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
@@ -359,6 +366,7 @@
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
+	S["pred_use_unique"] >> predator_use_unique
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_invis_sound"] >> predator_invisibility_sound
 	S["pred_mask_type"] >> predator_mask_type
@@ -494,6 +502,7 @@
 	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
+	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
@@ -510,6 +519,7 @@
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
+	predator_use_unique = sanitize_inlist(predator_use_unique, PRED_UNIQUES, initial(predator_use_unique))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_invisibility_sound = sanitize_inlist(predator_invisibility_sound, PRED_INVIS_SOUNDS, initial(predator_invisibility_sound))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
@@ -624,6 +634,7 @@
 	S["playtime_perks"] << playtime_perks
 	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
+	S["show_minimap_ceiling_protection"] << show_minimap_ceiling_protection
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
@@ -637,6 +648,7 @@
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
+	S["pred_use_unique"] << predator_use_unique
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_invis_sound"] << predator_invisibility_sound
 	S["pred_mask_type"] << predator_mask_type

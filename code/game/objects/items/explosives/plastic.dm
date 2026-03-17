@@ -45,7 +45,7 @@
 
 /obj/item/explosive/plastic/attack_hand(mob/user)
 	if(active)
-		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
+		to_chat(user, SPAN_WARNING("You can't just pick up [src] while it is active! Use a multitool!"))
 		return
 	. = ..()
 

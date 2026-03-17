@@ -141,8 +141,6 @@
 	var/blood_color = ""
 	/// taken from blood.dm
 	appearance_flags = KEEP_TOGETHER
-	/// lets us know if the item is an objective or not
-	var/is_objective = FALSE
 
 	/// Allows for bigger than 32x32 sprites.
 	var/worn_x_dimension = 32
@@ -894,7 +892,7 @@
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint())
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)

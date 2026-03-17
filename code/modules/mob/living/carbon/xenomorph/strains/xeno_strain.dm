@@ -68,7 +68,7 @@
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
 	set desc = "Purchase a strain for yourself"
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain())
@@ -106,7 +106,7 @@
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
 	set desc = "Reset your strain."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain(reset = TRUE))

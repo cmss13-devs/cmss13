@@ -7,12 +7,20 @@
 	var/require_bracers = FALSE
 	///If the action requires a yautja mask to be worn
 	var/require_mask = FALSE
+	///If the action requires a yautja helmet to be worn
+	var/require_helmet = FALSE
+	///If the action requires an advanced pack to be worn
+	var/require_pack = FALSE
 	///The mob calling the action
 	var/mob/living/carbon/human/yautja
 	///The bracers on the mob (if applicable)
 	var/obj/item/clothing/gloves/yautja/hunter/bracers
 	///The mask on the mob (if applicable)
 	var/obj/item/clothing/mask/gas/yautja/mask
+	///The helmet on the mob (if applicable)
+	var/obj/item/clothing/head/helmet/yautja/helmet
+	///The backpack on the mob (if applicable)
+	var/obj/item/yautja_cannon_pack/pack
 	///If the action is currently on or in use
 	var/active = FALSE
 
@@ -52,6 +60,18 @@
 			to_chat(yautja, SPAN_WARNING("You don't have a clan mask."))
 			return FALSE
 		mask = yautja.wear_mask
+
+	if(require_helmet)
+		if(!istype(yautja.head, /obj/item/clothing/head/helmet/yautja))
+			to_chat(yautja, SPAN_WARNING("You don't have a powered helmet."))
+			return FALSE
+		helmet = yautja.head
+
+	if(require_pack)
+		if(!istype(yautja.back, /obj/item/yautja_cannon_pack))
+			to_chat(yautja, SPAN_WARNING("You don't have a powered backpack."))
+			return FALSE
+		pack = yautja.back
 
 	return TRUE
 
@@ -236,6 +256,58 @@
 /datum/action/predator_action/bracer/self_destruct/action_activate()
 	. = ..()
 	bracers.activate_suicide()
+
+//Helmet actions (basically the same as the mask, but not a mask)
+/datum/action/predator_action/helmet
+	require_helmet = TRUE
+
+/datum/action/predator_action/helmet/zoom
+	name = "Toggle Helmet Zoom"
+	action_icon_state = "zoom"
+	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM
+
+/datum/action/predator_action/helmet/zoom/action_activate()
+	. = ..()
+	helmet.toggle_zoom()
+
+/datum/action/predator_action/helmet/visor
+	name = "Toggle Helmet Visor"
+	action_icon_state = "visor"
+	require_bracers = TRUE
+	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
+
+/datum/action/predator_action/helmet/visor/action_activate()
+	. = ..()
+	helmet.togglesight()
+
+/datum/action/predator_action/helmet/visor/update_button_icon(enabled)
+	. = ..()
+
+	var/new_icon_state = action_icon_state
+	if(enabled)
+		new_icon_state += "_on"
+
+	button.overlays.Cut()
+	var/image/new_overlays
+	new_overlays = image(icon_file, button, new_icon_state)
+
+	button.overlays += new_overlays
+
+//Advanced pack actions (back-mounted plasma cannons)
+/datum/action/predator_action/pack
+	require_pack = TRUE
+
+/datum/action/predator_action/pack/cannons
+	name = "Toggle Plasma Cannons"
+	action_icon_state = "plasma_caster"
+	require_bracers = TRUE
+	listen_signal = COMSIG_KB_YAUTJA_CASTER
+
+/datum/action/predator_action/pack/cannons/action_activate()
+	. = ..()
+	pack.cannons()
+
+#undef PREDATOR_ACTION_ON_CLICK
 
 //Misc actions
 /datum/action/yautja_emote_panel

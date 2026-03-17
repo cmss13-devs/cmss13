@@ -399,7 +399,7 @@
 	name = "flight console"
 	desc = "An advanced alien flight console."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-	icon_state = "console_ert_shuttle"
+	icon_state = "console_shuttle"
 
 // as preds don't have standard IDs (it's in their bracer) we check for a user's knowledge of pred tech instead
 /obj/structure/machinery/computer/shuttle/ert/pred_mcaste/tgui_interact(mob/user, datum/tgui/ui)

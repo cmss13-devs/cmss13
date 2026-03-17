@@ -3340,7 +3340,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/buritto (user.loc)
+		user.put_in_hands(new /obj/item/trash/buritto)
 		icon_state = "open-burrito"
 		item_state = "burrito"
 
@@ -3368,7 +3368,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/burger (user.loc)
+		user.put_in_hands(new /obj/item/trash/burger)
 		icon_state = "hburger"
 		item_state = "burger"
 
@@ -3396,7 +3396,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/hotdog (user.loc)
+		user.put_in_hands(new /obj/item/trash/hotdog)
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
 
@@ -3459,7 +3459,7 @@
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		if(wrapper)
-			new wrapper(user.loc)
+			user.put_in_hands(new wrapper)
 		icon_state = "[initial(icon_state)]-o"
 		item_state = "[initial(item_state)]-o"
 		package = 0

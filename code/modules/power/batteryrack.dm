@@ -226,7 +226,7 @@
 	var/last_overcharge = overcharge_percent
 
 	if(terminal)
-		var/excess = terminal.surplus()
+		var/excess = surplus()
 
 		if(inputting)
 			if(excess >= 0) // if there's power available, try to charge

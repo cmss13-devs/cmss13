@@ -14,7 +14,7 @@
 	melee_damage_upper = 0
 	attacktext = "attacks"
 	attack_sound = null
-	//Attacktext is the mob deal 0 damaage.
+	//Attacktext is the mob deal 0 damage.
 	friendly = "nuzzles"
 	can_crawl = FALSE
 	black_market_value = 25
@@ -38,7 +38,7 @@
 	universal_speak = FALSE //No, just no.
 	var/meat_amount = 0
 	var/meat_type
-	///Use this to temporarely stop random movement or to if you write special movement code for animals.
+	///Use this to temporarily stop random movement or to if you write special movement code for animals.
 	var/stop_automated_movement = 0
 	///Does the mob wander around when idle?
 	var/wander = 1
@@ -181,7 +181,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, genetics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
@@ -369,7 +369,7 @@
 
 /mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
-		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
+		to_chat(pulling_mob, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
 		return FALSE
 	return ..()
 
@@ -387,7 +387,7 @@
 							M.show_message(SPAN_NOTICE("[user] applies [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
-			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
+			to_chat(user, SPAN_NOTICE("[src] is dead, medical items won't bring it back to life."))
 			return
 	if(meat_type && (stat == DEAD)) //if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))

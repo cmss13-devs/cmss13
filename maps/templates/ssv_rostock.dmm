@@ -21,7 +21,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/ammunition_storage)
 "aad" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,
@@ -374,7 +374,7 @@
 /obj/structure/sign/safety/tram{
 	pixel_x = -18;
 	name = "Political Officer Quarters";
-	desc = "Denoting the officer of the vessel's political officer"
+	desc = "Denoting the quarters of the vessel's political officer."
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/command/hallway)
@@ -382,7 +382,7 @@
 /obj/structure/sign/safety/manualopenclose{
 	pixel_x = -18;
 	name = "Executive Officer Quarters";
-	desc = "Denoting the officer of the vessel's second in command"
+	desc = "Denoting the quarters of the vessel's second in command."
 	},
 /turf/open/floor/strata,
 /area/rostock/command/hallway)
@@ -390,7 +390,7 @@
 /obj/structure/sign/safety/laser{
 	pixel_x = -18;
 	name = "Commander Officer Quarters";
-	desc = "Denoting the officer of the vessel's commanding officer."
+	desc = "Denoting the quarters of the vessel's commanding officer."
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/hallway)
@@ -5363,7 +5363,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,
@@ -14607,7 +14607,7 @@
 "kyE" = (
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity."
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
@@ -16122,10 +16122,10 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/plate,
 /area/rostock/req)
 "lOh" = (
@@ -17533,7 +17533,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity."
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_m)
@@ -20517,7 +20517,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity."
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
@@ -22304,16 +22304,16 @@
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "qUb" = (
@@ -24636,8 +24636,8 @@
 /area/rostock/hangar/hangarbay)
 "sVs" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/machinery/door_control{
 	id = "DeployUPPHanger";
 	name = "Workshop Shutters";
@@ -25926,7 +25926,7 @@
 /obj/structure/machinery/power/apc/upp/west,
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity."
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
@@ -28741,7 +28741,7 @@
 	},
 /obj/structure/closet/coffin{
 	name = "\improper UPP coffin";
-	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity"
+	desc = "A burial receptacle for for the fallen, adorned in red and finished with the emblem of the union. Unity through Strength, Freedom through Unity."
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)

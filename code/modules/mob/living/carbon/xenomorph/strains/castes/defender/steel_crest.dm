@@ -65,7 +65,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	RegisterSignal(steelcrest, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
 	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
@@ -85,10 +85,10 @@
 
 	if(damage_accumulated >= damage_threshold)
 		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
-		UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
+		UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
 
 /datum/action/xeno_action/onclick/soak/proc/stop_accumulating()
-	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
+	UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE)
 
 	damage_accumulated = 0
 	to_chat(owner, SPAN_XENONOTICE("We stop taking incoming damage."))

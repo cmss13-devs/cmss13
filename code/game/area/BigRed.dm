@@ -314,7 +314,7 @@
 	icon_state = "oob"
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	soundscape_interval = 0
 

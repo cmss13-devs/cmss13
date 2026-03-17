@@ -442,6 +442,15 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/pb)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -687,6 +696,13 @@
 "abP" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters Control";
+	pixel_y = -24;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/operating_room_three)
 "abQ" = (
@@ -724,6 +740,13 @@
 "abV" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "or4privacyshutter";
+	name = "\improper Privacy Shutters Control";
+	pixel_y = -24;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/operating_room_four)
 "abW" = (
@@ -883,6 +906,10 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/docking_port/stationary/emergency_response/external/hangar_starboard,
+/turf/open/space,
+/area/space)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -919,7 +946,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1privacyshutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -1352,7 +1379,7 @@
 "ads" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -1372,7 +1399,7 @@
 	id_tag = "or03"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -1392,7 +1419,7 @@
 	id_tag = "or04"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3000,7 +3027,7 @@
 "agX" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -3023,7 +3050,7 @@
 	id_tag = "or01"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3040,7 +3067,7 @@
 	id_tag = "or02"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3155,7 +3182,6 @@
 	density = 0
 	},
 /obj/structure/closet/secure_closet/emergency/surgery{
-	pixel_x = 0;
 	pixel_y = 29
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
@@ -3264,7 +3290,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3privacyshutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -3548,6 +3574,13 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/door_control{
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters Control";
+	pixel_y = 23;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_one)
 "aig" = (
@@ -3610,6 +3643,13 @@
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters Control";
+	pixel_y = 23;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_two)
@@ -4529,18 +4569,9 @@
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet{
-	name = "Field Doctor's locker"
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
-/obj/item/clothing/shoes/marine{
-	layer = 4.1
-	},
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/head/helmet/marine/medic,
-/obj/item/storage/box/mre,
-/obj/item/device/radio/marine,
-/obj/item/clothing/accessory/patch/medic_patch,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
 	name = "Field Doctor's locker"
@@ -8296,7 +8327,7 @@
 /area/almayer/engineering/upper_engineering)
 "auM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light_construct{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,
@@ -8903,9 +8934,6 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
 "awA" = (
-/obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 25
@@ -9534,7 +9562,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/mess)
 "ayd" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -12033,6 +12061,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/command/cic)
 "aEE" = (
@@ -14103,6 +14132,9 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/middeck/maintenance/sp)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -14472,11 +14504,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/lower_astronav)
 "aLE" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_starboard{
-	dwidth = 8
-	},
-/turf/open/space,
-/area/space)
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map/galaxy,
+/turf/open/floor/carpet,
+/area/almayer/command/cicconference)
 "aLF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
@@ -14679,8 +14710,11 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aMe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/maintenance/bow)
@@ -17974,6 +18008,9 @@
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/middeck/maintenance/paft)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19782,6 +19819,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/sign/third_fleet_info{
+	pixel_y = 29
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -23133,12 +23176,12 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4privacyshutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3privacyshutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -24149,8 +24192,8 @@
 	pixel_y = 3
 	},
 /obj/structure/machinery/door_control{
-	id = "or2shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -22;
 	throw_range = 15;
 	pixel_x = 5;
@@ -25147,7 +25190,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -28975,12 +29018,12 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1privacyshutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -34682,10 +34725,10 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/paft)
 "bFV" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/maintenance/pb)
 "bFW" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/maintenance/aft)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34694,10 +34737,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bFY" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/shipboard/navigation)
 "bFZ" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/req)
 "bGa" = (
 /obj/effect/decal/warning_stripes{
@@ -34706,9 +34749,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/upper/port)
-"bGb" = (
-/turf/closed/wall/almayer/reinforced/temphull,
-/area/almayer/command/airoom)
 "bGc" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -34716,19 +34756,19 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/command/lifeboat)
 "bGd" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/briefing)
 "bGe" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/maintenance/saft)
 "bGf" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/maintenance/sb)
 "bGg" = (
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bGh" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/maintenance/sf)
 "bGi" = (
 /turf/solid_open_space,
@@ -35944,8 +35984,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/door_control{
-	id = "or1shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -36767,7 +36807,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -36783,7 +36823,7 @@
 "bLK" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -36851,7 +36891,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -36859,7 +36899,7 @@
 "bLT" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -38455,7 +38495,7 @@
 /area/almayer/command/corporateliaison)
 "bQg" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/middeck/maintenance/sp)
 "bQh" = (
 /obj/structure/surface/rack,
@@ -39189,8 +39229,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/door_control{
-	id = "or2shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -42350,7 +42390,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -43283,7 +43323,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -43727,8 +43767,8 @@
 	pixel_y = -22
 	},
 /obj/structure/machinery/door_control{
-	id = "or1shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -22;
 	throw_range = 15;
 	pixel_x = -5;
@@ -46144,7 +46184,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4privacyshutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -46437,7 +46477,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/mess)
 "eet" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/north,
@@ -48220,7 +48260,7 @@
 /area/almayer/hallways/lower/starboard_umbilical)
 "ePz" = (
 /obj/structure/noticeboard{
-	desc = "The note is haphazardly attached to the cork board by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be dis-assembled and packed into a crate and sent to to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
+	desc = "The note is haphazardly attached to the corkboard by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be disassembled and packed into a crate and sent to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
 	pixel_y = 29
 	},
 /obj/structure/flora/pottedplant/random{
@@ -52887,7 +52927,7 @@
 /turf/open/floor/almayer/emerald/east,
 /area/almayer/hallways/lower/port_midship_hallway)
 "gPc" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northwest,
@@ -54196,14 +54236,6 @@
 "hrI" = (
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
-"hrU" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_x = -16;
-	pixel_y = 13
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/underdeck)
 "hsc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -55652,8 +55684,8 @@
 	},
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
-	id = "or3shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -59243,8 +59275,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
-	id = "or4shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or4privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 26;
 	throw_range = 15;
 	pixel_x = 5;
@@ -62868,7 +62900,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -63558,7 +63590,7 @@
 /turf/open/floor/almayer/silvercorner,
 /area/almayer/shipboard/brig/cic_hallway)
 "lnu" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/living/gym)
 "lnP" = (
 /obj/structure/machinery/vending/cola,
@@ -65096,7 +65128,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/lower/cryo_cells)
 "lZZ" = (
-/obj/structure/machinery/autolathe/medilathe/full,
+/obj/structure/machinery/autolathe/medilathe/partial,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/hydroponics)
 "may" = (
@@ -65338,7 +65370,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "mgd" = (
-/obj/structure/machinery/autolathe/armylathe/full,
+/obj/structure/machinery/autolathe/armylathe/partial,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -68958,7 +68990,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
 "nDa" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,
@@ -80422,8 +80454,8 @@
 "siW" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
-	id = "or4shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or4privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -87979,7 +88011,6 @@
 	layer = 3.3
 	},
 /obj/item/desk_bell/ares{
-	anchored = 1;
 	pixel_x = -5;
 	pixel_y = 14
 	},
@@ -89549,6 +89580,9 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
@@ -91511,8 +91545,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
-	id = "or3shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 26;
 	throw_range = 15;
 	pixel_x = -5;
@@ -120114,7 +120148,7 @@ aHU
 aHU
 xXs
 xXs
-hrU
+xXs
 xXs
 xXs
 xXs
@@ -133407,7 +133441,7 @@ aaa
 aaa
 aaa
 aaa
-bIc
+aaa
 aaa
 aaa
 aaa
@@ -133446,7 +133480,7 @@ aaa
 aaa
 aaa
 aaa
-aLE
+aaa
 aaa
 aaa
 aaa
@@ -134170,12 +134204,12 @@ aaa
 aaa
 aaa
 aaa
+acm
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+bdH
 fwK
 cZB
 uaG
@@ -134223,7 +134257,7 @@ rgt
 rgt
 ctw
 hAh
-aaa
+bIc
 aaa
 aaa
 aaa
@@ -134277,7 +134311,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 fwK
 elY
@@ -162639,7 +162673,7 @@ aMh
 aMK
 aMu
 aMj
-aNU
+abd
 aZo
 bay
 bwN
@@ -163644,7 +163678,7 @@ aaa
 bdH
 bdH
 byx
-byx
+aJh
 bhr
 bhr
 byj
@@ -163747,7 +163781,7 @@ bdH
 bdH
 byx
 byx
-byx
+aJh
 bhr
 aJS
 alU
@@ -163849,8 +163883,8 @@ byx
 byx
 byx
 byx
-byx
-byx
+aJh
+aJh
 bhL
 bhp
 alU
@@ -175123,9 +175157,9 @@ aHs
 aKf
 aKf
 aHs
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
 aHs
 aKj
 aKb
@@ -175226,9 +175260,9 @@ aHs
 aHs
 aHs
 aHs
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
 aHs
 bwK
 aKc
@@ -175326,12 +175360,12 @@ aHs
 bwK
 aHs
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aXN
 aYe
@@ -175429,12 +175463,12 @@ aYV
 aYe
 aYv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aNR
 aXu
@@ -175532,12 +175566,12 @@ buV
 aXu
 aNJ
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aKm
 aKd
@@ -175635,12 +175669,12 @@ bxc
 aXu
 aQv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aKp
 aJx
@@ -175738,12 +175772,12 @@ aYW
 aNN
 aYw
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJE
 aJY
@@ -175841,12 +175875,12 @@ aHs
 bwK
 aHs
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aNK
 aKe
@@ -175947,9 +175981,9 @@ aHs
 aHs
 aHs
 aHs
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
 aHs
 aNL
 aKf
@@ -176051,8 +176085,8 @@ aRw
 aXt
 aHs
 aHs
-bFS
-bFS
+aKB
+aKB
 aHs
 aHs
 aHs
@@ -176154,11 +176188,11 @@ aXL
 aRw
 aXt
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJB
 aIi
@@ -176257,11 +176291,11 @@ aYc
 aXL
 aRw
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJC
 aIi
@@ -176360,11 +176394,11 @@ aXu
 aXM
 aXu
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJE
 aIn
@@ -176447,14 +176481,14 @@ aXv
 aHs
 bQg
 aRe
-bFS
+aHs
 bkV
 bkQ
 bOr
-bFS
+aHs
 aZq
-bFS
-bFS
+aHs
+aHs
 bFS
 bFS
 aHs
@@ -176463,11 +176497,11 @@ aWl
 aWl
 aWl
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJH
 aIs
@@ -176550,14 +176584,14 @@ aXv
 aHs
 bqe
 aRe
-bFS
+aHs
 bpW
 aXu
 bkL
-bFS
+aHs
 aZq
 aRc
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -176566,11 +176600,11 @@ bwK
 bwK
 bwK
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJK
 aIu
@@ -176653,14 +176687,14 @@ aXv
 aHs
 bqe
 aRe
-bFS
+aHs
 bkX
 aXu
 bkL
-bFS
+aHs
 aZq
 aRc
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -176669,11 +176703,11 @@ aYe
 aOI
 aQa
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJH
 aIs
@@ -176762,8 +176796,8 @@ aXv
 bkL
 aNG
 aWG
-bFS
-bFS
+aHs
+aHs
 bFS
 bFS
 bFS
@@ -176772,11 +176806,11 @@ aXu
 aXO
 aXv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJH
 aIv
@@ -176859,14 +176893,14 @@ aXu
 aHs
 bqf
 aZq
-bFS
+aHs
 bkY
 aXv
 bkL
-bFS
+aHs
 aRe
 aZi
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -176875,11 +176909,11 @@ aXv
 aXO
 aXv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJH
 aNJ
@@ -176962,14 +176996,14 @@ aXu
 aHs
 oHO
 aZq
-bFS
+aHs
 bpY
 aXv
 bkL
-bFS
+aHs
 aRe
 aZi
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -176978,11 +177012,11 @@ aXv
 aXO
 aXv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJL
 aNJ
@@ -177063,16 +177097,16 @@ aXu
 bbw
 aXu
 aHs
-bFS
+aHs
 aZq
-bFS
+aHs
 bkZ
 bkR
 bkO
-bFS
+aHs
 aRe
-bFS
-bFS
+aHs
+aHs
 bFS
 bFS
 bFS
@@ -177081,19 +177115,19 @@ aXw
 aXP
 aXw
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJN
 aIO
 aHG
 axX
 aHs
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177166,37 +177200,37 @@ bbM
 bbx
 aXw
 aHs
-bFS
-bFS
-bFS
-bFS
+aHs
+aHs
+aHs
+aHs
 aQY
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
 aHs
 aXv
 aXQ
 aXv
 aHs
-bFS
-bFS
-bFS
-bFS
-bFS
+aKB
+aKB
+aKB
+aKB
+aKB
 aHs
 aJN
 aXu
 aNJ
 azy
 aHs
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177298,8 +177332,8 @@ wDr
 aJe
 wDr
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177401,8 +177435,8 @@ aIR
 aGz
 jsa
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177504,8 +177538,8 @@ rUi
 aGz
 ahO
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177578,19 +177612,19 @@ aYY
 bbt
 bvi
 aHs
-bFS
-bFS
-bFS
-bFS
+aHs
+aHs
+aHs
+aHs
 aQY
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
-bFS
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
 aHs
 aXv
 aXQ
@@ -177607,8 +177641,8 @@ rUi
 aGz
 aGz
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177681,16 +177715,16 @@ aXu
 bbq
 bvj
 aHs
-bFS
+aHs
 blc
-bFS
+aHs
 bOV
 bkQ
 aUD
-bFS
+aHs
 aZq
-bFS
-bFS
+aHs
+aHs
 bFS
 bFS
 bFS
@@ -177710,8 +177744,8 @@ kEA
 kEA
 aHm
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177759,9 +177793,9 @@ yaQ
 clw
 daz
 daz
-bGb
-bGb
-bGb
+mOi
+mOi
+mOi
 bFZ
 bFZ
 bFZ
@@ -177786,14 +177820,14 @@ bQj
 aHs
 bqf
 aZq
-bFS
+aHs
 bkW
 aXu
 bkL
-bFS
+aHs
 aZq
 aZl
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -177813,8 +177847,8 @@ rUi
 atG
 aGz
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177862,9 +177896,9 @@ qQS
 qQS
 daz
 daz
-bGb
-bGb
-bGb
+mOi
+mOi
+mOi
 bFZ
 bFZ
 bFZ
@@ -177896,7 +177930,7 @@ bkL
 aNG
 aZq
 aUy
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -177916,8 +177950,8 @@ rUi
 atG
 ahO
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -177965,9 +177999,9 @@ daz
 daz
 daz
 daz
-bGb
-bGb
-bGb
+mOi
+mOi
+mOi
 bFZ
 bFZ
 bFZ
@@ -177999,7 +178033,7 @@ bkP
 aNG
 aZq
 aZi
-bFS
+aHs
 bFS
 bFS
 bFS
@@ -178019,8 +178053,8 @@ rUi
 atG
 atG
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -178095,14 +178129,14 @@ bEI
 bAT
 bQh
 bEB
-bFU
+bAT
 bOW
 bOF
 bOt
-bFU
+bAT
 bEC
 aLy
-bFU
+bAT
 bFU
 bFU
 bFU
@@ -178122,8 +178156,8 @@ wDr
 aJe
 wDr
 wDr
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -178196,16 +178230,16 @@ bBa
 bbv
 bEI
 bAT
-bFU
+bAT
 bPU
-bFU
+bAT
 bOX
 bOH
 bOu
-bFU
+bAT
 bEC
-bFU
-bFU
+bAT
+bAT
 bFU
 bFU
 bFU
@@ -178225,8 +178259,8 @@ bEo
 aJs
 buQ
 bAT
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -178299,16 +178333,16 @@ bBa
 bbv
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 bFU
 bFU
 bFU
@@ -178328,8 +178362,8 @@ bpm
 bBa
 buR
 bAT
-bFS
-bFS
+aKB
+aKB
 bwH
 aaa
 aab
@@ -178402,19 +178436,19 @@ bqv
 bqr
 bqm
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -178505,19 +178539,19 @@ bBa
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 aXF
 aXF
@@ -178608,19 +178642,19 @@ bBa
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 aYj
 aXW
@@ -178711,19 +178745,19 @@ bBa
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXS
@@ -178814,19 +178848,19 @@ bFw
 bFq
 bEK
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEI
 aXS
@@ -178917,19 +178951,19 @@ bEI
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bpE
 bpD
@@ -179020,19 +179054,19 @@ bEI
 bbv
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXS
@@ -179123,19 +179157,19 @@ bEI
 bbv
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -179226,19 +179260,19 @@ bFe
 bFu
 bEJ
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -179329,19 +179363,19 @@ aJs
 bbv
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEJ
 aXX
@@ -179432,19 +179466,19 @@ bEI
 bFo
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -179535,19 +179569,19 @@ bEI
 bFo
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -179638,19 +179672,19 @@ bFw
 bFq
 bEJ
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -179741,19 +179775,19 @@ bEI
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEK
 bwO
@@ -179844,19 +179878,19 @@ bEI
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEI
 aXS
@@ -179947,19 +179981,19 @@ bEI
 bbv
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXS
@@ -180050,19 +180084,19 @@ bFe
 bFu
 bEK
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -180153,19 +180187,19 @@ bBa
 bbv
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 aYh
 aXX
@@ -180256,19 +180290,19 @@ bBa
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -180359,19 +180393,19 @@ bBa
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -180462,19 +180496,19 @@ bbO
 bFq
 bEK
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -180565,19 +180599,19 @@ bob
 bFo
 bEI
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEJ
 aXX
@@ -180668,19 +180702,19 @@ boc
 bFo
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bBa
 aXR
@@ -180771,19 +180805,19 @@ bod
 boa
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEI
 aXR
@@ -180874,19 +180908,19 @@ boe
 bFq
 bEJ
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEI
 aXS
@@ -180977,19 +181011,19 @@ bEI
 bFo
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEY
 aXY
@@ -181080,19 +181114,19 @@ aWI
 bbv
 bBa
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEM
 bEM
@@ -181698,12 +181732,12 @@ bxU
 bEU
 bxy
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bAT
 bFf
@@ -181801,12 +181835,12 @@ bxV
 bEI
 asL
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 aTG
 bFh
@@ -181904,12 +181938,12 @@ bED
 bEI
 asL
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 aTH
 aRW
@@ -182007,12 +182041,12 @@ bED
 bEI
 aZj
 bAT
-bFU
-bFU
-bFU
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
+aUE
+aUE
+aUE
 bAT
 bEZ
 bEI
@@ -182110,9 +182144,9 @@ bxX
 bEY
 bxD
 bAT
-bFU
-bFU
-bFU
+aUE
+aUE
+aUE
 bAT
 bAT
 bAT
@@ -196824,7 +196858,7 @@ aAs
 aAs
 aDz
 iwW
-sTm
+aLE
 gwR
 sTm
 tdT
@@ -199191,13 +199225,13 @@ ssW
 qEk
 hrm
 wVW
-rOC
+aYH
 aqN
 tCT
 tCT
 tCT
 aDv
-aEC
+aqN
 wVW
 dNZ
 qEk

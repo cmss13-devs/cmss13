@@ -281,13 +281,13 @@
 /datum/reagent/drink/souto/vanilla
 	name = "Vanilla Souto"
 	id = "souto_vanilla"
-	description = "A vanilla flavored soda that's canned in Havana"
+	description = "A vanilla flavored soda that's canned in Havana."
 	color = "#F9E5BC"
 
 /datum/reagent/drink/souto/pineapple
 	name = "Pineapple Souto"
 	id = "souto_pineapple"
-	description = "A pineapple flavored soda that's canned in Havana"
+	description = "A pineapple flavored soda that's canned in Havana."
 	color = "#FEEB75"
 
 //OTHER SODA//
@@ -349,7 +349,7 @@
 /datum/reagent/drink/cold/dr_gibb
 	name = "Dr. Gibb"
 	id = "dr_gibb"
-	description = "A delicious blend of 42 different flavours"
+	description = "A delicious blend of 42 different flavours!"
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -6
 

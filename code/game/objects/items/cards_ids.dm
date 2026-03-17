@@ -160,7 +160,7 @@
 
 /obj/item/card/id/data
 	name = "identification holo-badge"
-	desc = "A plain, mass produced holo-badge."
+	desc = "A plain, mass-produced holo-badge."
 	icon_state = "data"
 	item_state = "card-id"
 
@@ -471,6 +471,12 @@
 /obj/item/card/id/dogtag/upp
 	name = "UPP dog tag"
 	desc = "A soldier dog tag."
+	icon_state = "dogtag_upp"
+	tags_taken_icon = "dogtag_upp_taken"
+
+/obj/item/card/id/dogtag/roman
+	name = "Signaculum dog tag"
+	desc = "A soldier dog tag from ancient times."
 	icon_state = "dogtag_upp"
 	tags_taken_icon = "dogtag_upp_taken"
 

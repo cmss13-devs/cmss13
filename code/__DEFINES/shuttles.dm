@@ -17,6 +17,7 @@
 
 // Shuttle return values
 #define SHUTTLE_CAN_DOCK "can_dock"
+#define SHUTTLE_HUNTER "unsafe dock"//Only Yautja can use these.
 #define SHUTTLE_NOT_A_DOCKING_PORT "not a docking port"
 #define SHUTTLE_DWIDTH_TOO_LARGE "docking width too large"
 #define SHUTTLE_WIDTH_TOO_LARGE "width too large"
@@ -100,6 +101,7 @@
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
 #define MOBILE_SHUTTLE_ID_ERT_BIG_CIA "ert_shuttle_big_cia"
+#define MOBILE_SHUTTLE_ID_HUNTER "hunter_shuttle"
 
 #define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
 #define STAT_TRIJENT_EMPTY "trijent_empty"
@@ -129,6 +131,8 @@
 #define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"
 #define DROPSHIP_LZ2 "dropship-lz2"
+
+#define YAUTJA_HANGAR_A "yautja-hangar-a"
 
 #define ESCAPE_SHUTTLE "escape-shuttle"
 #define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"

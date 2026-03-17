@@ -1,0 +1,6 @@
+author: "forest2001, DawsonKeyes"
+delete-after: True
+changes:
+  - mapadd: "Changed the Predship to Multi-Z."
+  - mapadd: "Added a Hunter Shuttle."
+  - rscdel: "Removed Predship Susbsystem as it is not required."

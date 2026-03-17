@@ -176,7 +176,7 @@
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
-	description = "A fertilizer that sacrifices most of nutrients in its contents to boost health and to prolong the life expectancy"
+	description = "A fertilizer that sacrifices most of the nutrients in its contents to boost health and to prolong the life expectancy."
 	id = "left4zed"
 
 /datum/reagent/toxin/fertilizer/left4zed/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
@@ -189,7 +189,7 @@
 
 /datum/reagent/toxin/fertilizer/robustharvest
 	name = "Robust Harvest"
-	description = "A fertilizer that sacrifices most of nutrients in its contents to boost product yield the plant gives at the cost of plant health."
+	description = "A fertilizer that sacrifices most of the nutrients in its contents to boost product yield the plant gives at the cost of plant health."
 	id = "robustharvest"
 
 /datum/reagent/toxin/fertilizer/robustharvest/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
@@ -280,7 +280,7 @@
 /datum/reagent/toxin/potassium_phorosulfate
 	name = "Potassium Phorosulfate"
 	id = "potassium_phorosulfate"
-	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
+	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterilizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
 	reagent_state = SOLID
 	color = COLOR_WHITE
 	overdose = 10
@@ -313,7 +313,7 @@
 /datum/reagent/toxin/iron_sulfate
 	name = "Iron Sulfate"
 	id = "iron_sulfate"
-	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
+	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes."
 	reagent_state = LIQUID
 	color = "#303030"
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -341,7 +341,7 @@
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
-	description = "An extremely corrosive acid that's capable of disolving a broad range of materials very quickly."
+	description = "An extremely corrosive acid that's capable of dissolving a broad range of materials very quickly."
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#8E18A9" // rgb: 142, 24, 169

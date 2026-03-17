@@ -1,0 +1,14 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - ui: "Toggle Ceiling Overlays action button now only appears when the Minimap is actively open."
+  - rscadd: "Xenos can now see the Minimap when the Queen is off her ovipositor, but it will be a static version of the last Queen Minimap update. It returns to live once the Queen is on ovi."
+  - qol: "Queens on Ovi automatically have drawing tools available when opening their Minimap."
+  - rscdel: "Removed the Edit Minimap option from the Manage the Hive menu."
+  - bugfix: "Fixed Minimaps not properly receiving updates from CIC."
+  - bugfix: "Fixed Xenos being unable to see Queen drawings."
+  - bugfix: "Fixed latejoin marine's minimaps not properly syncing with the last CIC update."
+  - bugfix: "Fixed spawned marine's minimaps not properly syncing with the last CIC update."
+  - bugfix: "Fixed live minimaps receiving drawing updates before the update was actually sent."
+  - bugfix: "Fixed Ceiling Overlays being applied when they were not toggled."
+  - bugfix: "Removed the dim grey area outside the minimap when Ceiling Overlays were toggled on."

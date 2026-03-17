@@ -111,11 +111,6 @@
 	if(light_power && light_range)
 		update_light()
 
-	//Get area light
-	var/area/current_area = loc
-	if(current_area?.lighting_effect)
-		overlays += current_area.lighting_effect
-
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 

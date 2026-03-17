@@ -42,7 +42,7 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
-	var/thrall = FALSE //Used to affect icon generation.
+	var/random_icon = TRUE //Used to affect icon generation.
 
 	///A list of all intrinsic mask actions
 	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
@@ -50,7 +50,7 @@
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
 	..()
 	forceMove(location)
-	if(thrall)
+	if(!random_icon)
 		return
 
 	if(legacy != "None")
@@ -236,7 +236,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	item_state_slots = list(WEAR_FACE = "thrallmask_ebony")
-	thrall = TRUE
+	random_icon = FALSE
 
 /obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
 	set category = "Thrall.Utility"
@@ -341,7 +341,7 @@
 	icon_state = "pred_mask_ancient_redglow"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")
-	thrall = TRUE
+	random_icon = FALSE
 
 /obj/item/clothing/mask/gas/yautja/hunter/ancient/hollow
 	icon_state = "pred_mask_ancient"

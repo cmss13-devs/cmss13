@@ -157,6 +157,27 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/init_map()
 	return
 
+/datum/tutorial/proc/init_tracking_markers()
+	var/area/misc/tutorial/tutorial_area = get_area(bottom_left_corner)
+	var/list/tracking_markers = tutorial_area.atom_tracking_landmarks.Copy()
+
+	if(!length(tracking_markers))
+		return
+
+	for(var/obj/effect/landmark/tutorial_tracking_marker/tracker in tracking_markers)
+		if(!tracker.tracking_target_type)
+			tracking_markers -= tracker
+			continue
+		var/atom/tracking_atom
+		if(istype(get_turf(tracker), tracker.tracking_target_type))
+			tracking_atom = get_turf(tracker)
+		else
+			tracking_atom = locate(tracker.tracking_target_type) in tracker.loc
+		if(!tracking_atom)
+			qdel(tracker)
+			continue
+		add_to_tracking_atoms(tracking_atom)
+
 /// Returns a turf offset by offset_x (left-to-right) and offset_y (up-to-down)
 /datum/tutorial/proc/loc_from_corner(offset_x = 0, offset_y = 0)
 	RETURN_TYPE(/turf)
@@ -267,3 +288,9 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	mappath = "maps/tutorial/tutorial_15x10_hm.dmm"
 	width = 15
 	height = 10
+
+/datum/map_template/tutorial/debug
+	name = "Tutorial Zone (8x8) (debug)"
+	mappath = "maps/tutorial/tutorial_test.dmm"
+	width = 8
+	height = 8

@@ -296,9 +296,9 @@
 			. += SPAN_GREEN("It has been reinforced to be more protective.")
 
 /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
 	)
 	icon_state = "pred_mask_bb_patchwork"
 	random_icon = FALSE
@@ -329,7 +329,7 @@
 
 // emissary mask
 /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary
-	icon_state = "pred_mask_bb_emissary"
+	icon_state = "pred_mask_bb_emissary_classic"
 
 
 

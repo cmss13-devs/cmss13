@@ -135,11 +135,72 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 			. += SPAN_GREEN("It has been reinforced to be more protective.")
 
 /obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
 	)
 	random_icon = FALSE
+	icon_state = "bbarmor_patchwork"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/patchwork_alt
+	icon_state = "bbarmor_patchworkalt"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/lunatic
+	icon_state = "bbarmor_lunatic"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/scav
+	icon_state = "bbarmor_scav"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/scav_alt
+	icon_state = "bbarmor_scavalt"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/venator
+	icon_state = "bbarmor_venator"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/commando
+	icon_state = "bbarmor_commando"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/commando_alt
+	icon_state = "bbarmor_commandoalt"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/bane
+	icon_state = "bbarmor_bane"
+
+/// emissary armor
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary
+	name = "YM4 pattern clan armor"
+	desc = "A suit of oversized armor built from M3 pattern plating and Smart-Gunner mesh, built for something larger than any normal man."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+	icon_state = "bbarmor_emissary_classic"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/Initialize(mapload) // override random armor icons
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "bbarmor_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_JACKET, "bbarmor_emissary_[camo_type]")
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/desert
+	camo_type = "desert"
+	icon_state = "bbarmor_emissary_desert"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "bbarmor_emissary_jungle"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/snow
+	camo_type = "snow"
+	icon_state = "bbarmor_emissary_snow"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/urban
+	camo_type = "urban"
+	icon_state = "bbarmor_emissary_urban"
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/camo_conforming
+	conforming = TRUE
+
+
 
 /obj/item/clothing/suit/armor/yautja/hunter/full
 	name = "heavy clan armor"
@@ -172,42 +233,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
-
-/// emissary armor
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary
-	name = "YM4 pattern clan armor"
-	desc = "A suit of oversized armor built from M3 pattern plating and Smart-Gunner mesh, built for something larger than any normal man."
-	var/conforming = FALSE
-	var/camo_type = "classic"
-	icon_state = "halfarmor_elite_emissary_classic"
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
-	. = ..(mapload, 0)
-	if(conforming)
-		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
-	icon_state = "halfarmor_elite_emissary_[camo_type]"
-	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
-	camo_type = "desert"
-	icon_state = "halfarmor_elite_emissary_desert"
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
-	camo_type = "jungle"
-	icon_state = "halfarmor_elite_emissary_jungle"
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/snow
-	camo_type = "snow"
-	icon_state = "halfarmor_elite_emissary_snow"
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/urban
-	camo_type = "urban"
-	icon_state = "halfarmor_elite_emissary_urban"
-
-/obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming
-	conforming = TRUE
-
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
@@ -331,40 +356,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/shoes/yautja/hunter/knife
 	spawn_item_type = /obj/item/weapon/yautja/knife
 
-// emissary greaves
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary
-	name = "clan combat boots"
-	desc = "A pair of armored boots modified with human armor plating, though still scaled to fit a hunter."
-	var/conforming = FALSE
-	var/camo_type = "classic"
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
-	. = ..(mapload, 0)
-	if(conforming)
-		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
-	icon_state = "elite_y-boots1_emissary_[camo_type]"
-	LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_[camo_type]")
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/desert
-	camo_type = "desert"
-	icon_state = "elite_y-boots1_emissary_desert"
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/jungle
-	camo_type = "jungle"
-	icon_state = "elite_y-boots1_emissary_jungle"
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/snow
-	camo_type = "snow"
-	icon_state = "elite_y-boots1_emissary_snow"
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/urban
-	camo_type = "urban"
-	icon_state = "elite_y-boots1_emissary_urban"
-
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming
-	conforming = TRUE
-
 /// Damaged version used by survivors.
 /obj/item/clothing/shoes/yautja/hunter/scalable
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -390,10 +381,72 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 			. += SPAN_GREEN("It has been reinforced to be more protective.")
 
 /obj/item/clothing/shoes/yautja/hunter/scalable/badblood
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
 	)
+
+	icon_state = "bb_y_boots_patchwork"
+	random_icon = FALSE
+	spawn_item_type = /obj/item/weapon/yautja/knife
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/patchwork_alt
+	icon_state = "bb_y_boots_patchworkalt"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/lunatic
+	icon_state = "bb_y_boots_lunatic"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/scav
+	icon_state = "bb_y_boots_scav"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/scav_alt
+	icon_state = "bb_y_boots_scavalt"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/venator
+	icon_state = "bb_y_boots_venator"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/commando
+	icon_state = "bb_y_boots_commando"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/commando_alt
+	icon_state = "bb_y_boots_commandoalt"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/bane
+	icon_state = "bb_y_boots_bane"
+
+// emissary greaves
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary
+	name = "clan combat boots"
+	desc = "A pair of armored boots modified with human armor plating, though still scaled to fit a hunter."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/Initialize(mapload)
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "bb_y_boots_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_FEET, "bb_y_boots_emissary_[camo_type]")
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/desert
+	camo_type = "desert"
+	icon_state = "bb_y_boots_emissary_desert"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "bb_y_boots_emissary_jungle"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/snow
+	camo_type = "snow"
+	icon_state = "bb_y_boots_emissary_snow"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/urban
+	camo_type = "urban"
+	icon_state = "bb_y_boots_emissary_urban"
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/camo_conforming
+	conforming = TRUE
 
 // ---------- Shirt ----------
 

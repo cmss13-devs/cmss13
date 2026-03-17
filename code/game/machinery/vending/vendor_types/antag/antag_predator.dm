@@ -231,7 +231,17 @@ GLOBAL_LIST_INIT(cm_vending_equipment_stranded_pred, list(
 GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
 		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter/scalable, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/survivor, /obj/item/tool/yautja_cleaner, /obj/item/device/badblood_enthraller), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable, /obj/item/clothing/mask/gas/yautja/hunter/scalable, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/scalable/knife), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+
+		list("Armor Set", 0, null, null, null),
+		list("Patchwork Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Patchwork Armor (Alt)", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/patchwork_alt, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/patchwork_alt, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/patchwork_alt), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Lunatic Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/lunatic, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/lunatic, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/lunatic), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Scavenger Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/scav, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/scav), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Scavenger Armor (Alt)", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/scav_alt, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav_alt, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/scav_alt), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Venator Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/venator, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/venator, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/venator), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Commando Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/commando, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/commando), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Commando Armor (Alt)", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/commando_alt, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando_alt, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/commando_alt), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Emissary Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/camo_conforming, /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary, /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/camo_conforming), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, YAUTJA_CAN_BUY_PRIMARY, VENDOR_ITEM_RECOMMENDED),

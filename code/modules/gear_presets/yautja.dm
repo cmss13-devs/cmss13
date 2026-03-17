@@ -220,8 +220,10 @@
 	assignment = "Yautja Emissary"
 	job_title = "Yautja Emissary"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_YAUTJA // needs to be changed to bad blood once they're in the game
-	faction_group = FACTION_LIST_YAUTJA // ditto
+	faction = FACTION_YAUTJA_BADBLOOD
+	faction_group = list(FACTION_YAUTJA_BADBLOOD)
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
 
 	minimap_icon = "predator" // ditto
 
@@ -242,11 +244,11 @@
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/badblood(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter/scalable(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood/emissary/camo_conforming(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/scalable/badblood/emissary/camo_conforming(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/lmg/tactical(new_human), WEAR_BACK)
@@ -275,6 +277,8 @@
 	faction = FACTION_MILITARY_CASTE
 	faction_group = FACTION_LIST_YAUTJA
 	skills = /datum/skills/yautja/soldier
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
 
 	minimap_icon = "predator_soldier"
 

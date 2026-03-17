@@ -4,7 +4,7 @@
 	name = "CIA Agent (UACQS Administrator)"
 	job_title = JOB_CIA_UACQS_ADMN
 	assignment = JOB_CIA_UACQS_ADMN
-	paygrades = list(PAY_SHORT_CIA_ADM = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_ADM = JOB_PLAYTIME_TIER_0, PAY_SHORT_CIA_SADM = JOB_PLAYTIME_TIER_2)
 	role_comm_title = "UACQS"
 	minimap_icon = "uacqs"
 	minimap_background = "background_ua"
@@ -105,7 +105,7 @@
 	name = "CIA Agent (UACQS Security)"
 	job_title = JOB_CIA_UACQS_SEC
 	assignment = JOB_CIA_UACQS_SEC
-	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0, PAY_SHORT_CIA_SO = JOB_PLAYTIME_TIER_3)
+	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0, PAY_SHORT_CIA_SO = JOB_PLAYTIME_TIER_2)
 	minimap_icon = "uacqs_s"
 	skills = /datum/skills/cia/security_officer
 	belt_path = /obj/item/storage/belt/gun/m4a3/m4a4_tactical

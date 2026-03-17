@@ -15,6 +15,8 @@
 			hud_icon_state = "cialo"
 		if(JOB_CIA_UACQS_ADMN)
 			hud_icon_state = "uacqs"
+			if(id_card.paygrade == PAY_SHORT_CIA_SADM)
+				hud_icon_state = "uacqs_senior"
 		if(JOB_CIA_UACQS_COMR)
 			hud_icon_state = "uacqs_com"
 		if(JOB_CIA_UACQS_SYN)

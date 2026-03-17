@@ -14,11 +14,11 @@
 /// CIA-A, Agent
 #define PAY_SHORT_CIA_A "CIA-A"
 
-/// CIA-SA, Special Agent
-#define PAY_SHORT_CIA_SA "CIA-SA"
-
 /// CIA-IA, Intelligence Analyst
 #define PAY_SHORT_CIA_IA "CIA-IA"
+
+/// CIA-SA, Special Agent
+#define PAY_SHORT_CIA_SA "CIA-SA"
 
 /// CIA-ADM, Administrator
 #define PAY_SHORT_CIA_ADM "CIA-ADM"

@@ -19,3 +19,16 @@
 
 	armor_energy = CLOTHING_ARMOR_HARDCORE
 	eye_protection = EYE_PROTECTION_WELDING
+
+
+/obj/item/clothing/glasses/hud/health/antag_sunglasses
+	flags_equip_slot = SLOT_EYES
+
+	flags_armor_protection = BODY_FLAG_EYES|BODY_FLAG_FACE
+
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	eye_protection = EYE_PROTECTION_WELDING
+
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
+	req_skill = SKILL_ANTAG
+	req_skill_level = SKILL_ANTAG_AGENT

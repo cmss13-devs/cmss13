@@ -5,6 +5,9 @@
 /// CIA-O, Officer
 #define PAY_SHORT_CIA_O "CIA-O"
 
+/// CIA-MO, Medical Officer
+#define PAY_SHORT_CIA_MO "CIA-MO"
+
 /// CIA-SO, Senior Officer
 #define PAY_SHORT_CIA_SO "CIA-SO"
 

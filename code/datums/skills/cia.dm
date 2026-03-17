@@ -50,6 +50,13 @@ CIA
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
 	)
 
+/datum/skills/cia/security_officer/medic
+	name = "CIA Security Officer Medic"
+	additional_skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+	)
+
 /datum/skills/cia/security_officer/lead
 	name = "CIA Lead Security Officer"
 	additional_skills = list(

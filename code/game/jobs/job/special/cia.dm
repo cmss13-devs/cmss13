@@ -1,3 +1,7 @@
+/datum/job/special/cia/uacqs_synth
+	title = JOB_CIA_UACQS_SYN
+	gear_preset = /datum/equipment_preset/cia/uacqs/synth
+
 /datum/job/special/cia/uacqs_administrator
 	title = JOB_CIA_UACQS_ADMN
 	gear_preset = /datum/equipment_preset/cia/uacqs
@@ -17,6 +21,10 @@
 /datum/job/special/cia/uacqs_security
 	title = JOB_CIA_UACQS_SEC
 	gear_preset = /datum/equipment_preset/cia/uacqs/security
+
+/datum/job/special/cia/uacqs_security/medic
+	title = JOB_CIA_UACQS_SECM
+	gear_preset = /datum/equipment_preset/cia/uacqs/security/medic
 
 /datum/job/special/cia/uacqs_security/lead
 	title = JOB_CIA_UACQS_SECL
@@ -53,3 +61,7 @@
 /datum/job/special/cia/grs/dep_commander
 	title = JOB_CIA_GRS_DCDR
 	gear_preset = /datum/equipment_preset/cia_global_response/commander/deputy
+
+/datum/job/special/cia/grs/synth
+	title = JOB_CIA_GRS_SYN
+	gear_preset = /datum/equipment_preset/cia_global_response/synth

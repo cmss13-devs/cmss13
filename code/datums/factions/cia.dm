@@ -17,10 +17,14 @@
 			hud_icon_state = "uacqs"
 		if(JOB_CIA_UACQS_COMR)
 			hud_icon_state = "uacqs_com"
+		if(JOB_CIA_UACQS_SYN)
+			hud_icon_state = "uacqs_syn"
 		if(JOB_CIA_UACQS_SEC)
 			hud_icon_state = "uacqs_sec"
 			if(id_card.paygrade == PAY_SHORT_CIA_SO)
 				hud_icon_state = "uacqs_sec_senior"
+		if(JOB_CIA_UACQS_SECM)
+			hud_icon_state = "uacqs_sec_m"
 		if(JOB_CIA_UACQS_SECL)
 			hud_icon_state = "uacqs_sec_senior"
 		if(JOB_CIA_UACQS_DG, JOB_CIA_UACQS_SG)

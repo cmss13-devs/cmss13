@@ -8,12 +8,18 @@
 	name = "Officer"
 	prefix = "Off."
 
+/datum/paygrade/cia/officer/medic
+	paygrade = PAY_SHORT_CIA_MO
+	name = "Medical Officer"
+	prefix = "Med. Off."
+	pay_multiplier = 2.2
+
 /datum/paygrade/cia/officer/senior
 	paygrade = PAY_SHORT_CIA_SO
 	name = "Senior Officer"
 	prefix = "Sr. Off."
 	officer_grade = GRADE_OFFICER
-	pay_multiplier = 2.2
+	pay_multiplier = 2.3
 
 /datum/paygrade/cia/agent
 	paygrade = PAY_SHORT_CIA_A

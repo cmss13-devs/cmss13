@@ -15854,7 +15854,7 @@
 /area/point_loma/airbase/mining_colony/interior/storage)
 "aTm" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "aTn" = (
 /obj/effect/acid_hole,
@@ -16380,7 +16380,7 @@
 "aUM" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/effect/hunter/bridge_border/brown/edge,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "aUN" = (
 /obj/structure/machinery/power/power_generator/reactor/colony,
@@ -16547,7 +16547,7 @@
 /area/point_loma/airbase/cave/south_west)
 "aVi" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "aVj" = (
 /obj/structure/cable/white{
@@ -20954,7 +20954,7 @@
 /area/point_loma/airbase/interior/workshop/upper)
 "bhq" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "bhr" = (
 /obj/item/toy/inflatable_duck,
@@ -24230,10 +24230,10 @@
 /turf/closed/wall/huntership/hull,
 /area/point_loma/research_facility/crash_site)
 "bqv" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/point_loma/research_facility/crash_site)
 "bqw" = (
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/point_loma/research_facility/crash_site)
 "bqx" = (
 /turf/open/floor/plating/platingdmg3,
@@ -24259,7 +24259,7 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/dorms)
 "bqC" = (
-/turf/open/shuttle/dropship/predship/tile,
+/turf/open/predship/tile,
 /area/point_loma/research_facility/crash_site)
 "bqD" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
@@ -24331,10 +24331,10 @@
 	pixel_y = 8;
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bqM" = (
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bqN" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -24348,7 +24348,7 @@
 	pixel_x = 8;
 	pixel_y = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bqO" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -24369,7 +24369,7 @@
 	pixel_y = 23;
 	pixel_x = 7
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/point_loma/research_facility/crash_site)
 "bqP" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -24388,7 +24388,7 @@
 	pixel_y = 23;
 	pixel_x = -6
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/point_loma/research_facility/crash_site)
 "bqQ" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
@@ -24454,7 +24454,7 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/medicomp,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bqZ" = (
 /obj/structure/prop/hybrisa/signs/high_voltage{
@@ -24488,7 +24488,7 @@
 	pixel_y = 8;
 	name = "strange canister"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brd" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -24500,7 +24500,7 @@
 	icon_state = "freezer_0";
 	name = "unknown machine"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "bre" = (
 /obj/structure/prop{
@@ -24508,7 +24508,7 @@
 	icon_state = "freezer_0";
 	name = "unknown machine"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brf" = (
 /obj/structure/machinery/conveyor{
@@ -24541,7 +24541,7 @@
 	dir = 6;
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brk" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -24586,7 +24586,7 @@
 	dir = 1;
 	name = "unknown machine"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brr" = (
 /obj/structure/showcase{
@@ -24597,7 +24597,7 @@
 	pixel_x = -1;
 	pixel_y = 16
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brs" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -24632,7 +24632,7 @@
 	pixel_y = 17;
 	color = "#9bb1be"
 	},
-/turf/open/shuttle/dropship/predship/tile,
+/turf/open/predship/tile,
 /area/point_loma/research_facility/crash_site)
 "bry" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/six,
@@ -24647,7 +24647,7 @@
 	icon_state = "pred_cell";
 	name = "unknown machine"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/research_facility/crash_site)
 "brA" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble3{
@@ -26681,13 +26681,13 @@
 	light_power = 0;
 	light_range = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxK" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxL" = (
-/turf/open/shuttle/dropship/predship/tile,
+/turf/open/predship/tile,
 /area/point_loma/airbase/exterior/crash_site)
 "bxM" = (
 /turf/open/floor/predship/hull/non_weedable_hull/west,
@@ -26701,21 +26701,21 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxP" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxQ" = (
 /obj/effect/hunter/glowing_shape/small_red_flipped{
 	pixel_x = -31;
 	pixel_y = -12
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxR" = (
 /obj/structure/bed/chair/hunter{
@@ -26723,13 +26723,13 @@
 	pixel_y = 10;
 	buckling_y = 10
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxS" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxT" = (
 /turf/open/floor/predship/hull/non_weedable_hull/east,
@@ -26747,7 +26747,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxX" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -26758,7 +26758,7 @@
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bxY" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -26766,7 +26766,7 @@
 	pixel_x = -1;
 	pixel_y = -15
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bxZ" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -26774,7 +26774,7 @@
 	pixel_x = -1;
 	pixel_y = -15
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bya" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -26782,7 +26782,7 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byb" = (
 /obj/structure/closet/firecloset/full,
@@ -26834,13 +26834,13 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = -8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byh" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byi" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/point_loma/airbase/exterior/crash_site)
 "byj" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -26946,7 +26946,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byy" = (
 /obj/structure/surface/rack{
@@ -26956,7 +26956,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byz" = (
 /obj/structure/closet/emcloset,
@@ -26970,7 +26970,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byB" = (
 /obj/structure/bed/bedroll{
@@ -26980,17 +26980,17 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byC" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byD" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byE" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -26999,17 +26999,17 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byF" = (
 /obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byG" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byH" = (
 /obj/structure/surface/rack{
@@ -27019,13 +27019,13 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "byJ" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -27034,7 +27034,7 @@
 /obj/item/tool/screwdriver/yautja{
 	pixel_y = 9
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "byK" = (
 /obj/structure/closet/secure_closet/security,
@@ -27087,16 +27087,16 @@
 	pixel_x = -1;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "byQ" = (
 /obj/item/stool,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byR" = (
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "byS" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -27108,12 +27108,12 @@
 	dir = 8;
 	name = "\improper Storage Chamber"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "byU" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byV" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja,
@@ -27125,7 +27125,7 @@
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/turf/open/shuttle/dropship/predship/hunter_grate/north,
+/turf/open/predship/hunter_grate/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byW" = (
 /obj/structure/girder,
@@ -27133,10 +27133,10 @@
 /area/point_loma/oob/sky)
 "byX" = (
 /obj/structure/kitchenspike,
-/turf/open/shuttle/dropship/predship/hunter_grate/north,
+/turf/open/predship/hunter_grate/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byY" = (
-/turf/open/shuttle/dropship/predship/hunter_grate/north,
+/turf/open/predship/hunter_grate/north,
 /area/point_loma/airbase/exterior/crash_site)
 "byZ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -27152,21 +27152,21 @@
 	pixel_y = 11
 	},
 /obj/item/stack/cable_coil,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "bzb" = (
 /obj/structure/closet/yautja/big{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/point_loma/airbase/exterior/crash_site)
 "bzc" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate/north,
+/turf/open/predship/hunter_grate/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bzd" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -27223,14 +27223,14 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "bzl" = (
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bzm" = (
 /obj/item/reagent_container/food/snacks/meat{
 	pixel_x = 11;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "bzn" = (
 /obj/item/tool/kitchen/tray{
@@ -27243,10 +27243,10 @@
 	pixel_y = 14;
 	pixel_x = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bzo" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "bzp" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -27268,7 +27268,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzs" = (
 /obj/item/storage/fancy/egg_box,
@@ -27299,7 +27299,7 @@
 	pixel_y = 24
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzu" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -27313,10 +27313,10 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bzw" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bzx" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/east,
+/turf/open/predship/tile/hunter_tile_2/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bzy" = (
 /obj/structure/machinery/light,
@@ -27339,34 +27339,34 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 31
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzC" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzD" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzE" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzF" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bzG" = (
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzH" = (
 /obj/structure/fence/slim{
@@ -27444,7 +27444,7 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "bzU" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -27456,17 +27456,17 @@
 "bzV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzW" = (
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzY" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -27484,21 +27484,21 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bAa" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "bAb" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bAc" = (
 /obj/structure/prop/tower{
@@ -27617,7 +27617,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bAq" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bAr" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -27637,7 +27637,7 @@
 	dir = 4;
 	layer = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "bAu" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -27766,7 +27766,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bAL" = (
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
@@ -27785,14 +27785,14 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bAN" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "bAO" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -27809,7 +27809,7 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bAP" = (
 /obj/item/trash/cigbutt,
@@ -27883,7 +27883,7 @@
 /area/point_loma/airbase/interior/garage)
 "bAY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bAZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -27892,7 +27892,7 @@
 	pixel_y = 26
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBa" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -27901,7 +27901,7 @@
 	layer = 3.1
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBb" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -27910,7 +27910,7 @@
 	layer = 3.1
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBc" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -27919,7 +27919,7 @@
 	pixel_y = 26
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBd" = (
 /obj/structure/prop/power_transformer,
@@ -27946,7 +27946,7 @@
 "bBh" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBi" = (
 /obj/structure/prop/brazier/frame/full/torch{
@@ -27996,31 +27996,31 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBp" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBq" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bBr" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/edge,
+/turf/open/predship/mainfloor/edge,
 /area/point_loma/airbase/exterior/crash_site)
 "bBs" = (
 /obj/structure/platform_decoration/metal/hunter{
 	layer = 3.1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/west,
+/turf/open/predship/mainfloor/edge/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bBt" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBu" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28030,7 +28030,7 @@
 	},
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBv" = (
 /obj/structure/prop/server_equipment/laptop/on,
@@ -28053,7 +28053,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBx" = (
 /obj/item/weapon/yautja/knife{
@@ -28076,7 +28076,7 @@
 	pixel_y = 28;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/north,
+/turf/open/predship/tile/hunter_tile_2/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBy" = (
 /obj/item/weapon/yautja/knife{
@@ -28084,13 +28084,13 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBz" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/point_loma/airbase/exterior/crash_site)
 "bBA" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/point_loma/airbase/exterior/crash_site)
 "bBB" = (
 /obj/item/weapon/yautja/knife{
@@ -28103,7 +28103,7 @@
 	anchored = 1;
 	pixel_x = 17
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBC" = (
 /obj/item/weapon/yautja/knife{
@@ -28111,7 +28111,7 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_2/north,
+/turf/open/predship/tile/hunter_tile_2/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBD" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -28138,7 +28138,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBE" = (
 /obj/structure/prop/brazier/frame{
@@ -28183,19 +28183,19 @@
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBK" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "bBL" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28215,7 +28215,7 @@
 	layer = 3.1
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bBO" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -28225,7 +28225,7 @@
 	buckling_x = 2
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "bBP" = (
 /obj/structure/prop/dam/crane/damaged,
@@ -28244,7 +28244,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBU" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -28254,7 +28254,7 @@
 	buckling_x = -2
 	},
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "bBV" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -28264,14 +28264,14 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "bBW" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBX" = (
 /obj/item/stack/sheet/metal,
@@ -28288,7 +28288,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCa" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -28296,25 +28296,25 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCb" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/cleanable/dirt/sand_1,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCc" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCd" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCe" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -28322,7 +28322,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCf" = (
 /obj/effect/hunter/bridge_border{
@@ -28332,7 +28332,7 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCg" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -28358,7 +28358,7 @@
 	pixel_y = 12;
 	layer = 3.1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCk" = (
 /obj/structure/platform_decoration/metal/hunter/east{
@@ -28372,14 +28372,14 @@
 	dir = 1
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCl" = (
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bCm" = (
 /obj/effect/hunter/bridge_border{
@@ -28388,7 +28388,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bCn" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -28402,7 +28402,7 @@
 	pixel_y = 4;
 	layer = 2.9
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bCo" = (
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -28414,7 +28414,7 @@
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCp" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north{
@@ -28428,7 +28428,7 @@
 	pixel_y = 12;
 	layer = 3.1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCq" = (
 /obj/item/ammo_casing/bullet{
@@ -28471,13 +28471,13 @@
 	pixel_x = 1;
 	pixel_y = 34
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCu" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCv" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28493,7 +28493,7 @@
 	pixel_y = 29;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCw" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28514,7 +28514,7 @@
 	pixel_y = 22;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCx" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -28534,13 +28534,13 @@
 	layer = 2.9;
 	pixel_y = 34
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bCy" = (
 /obj/structure/prop/brazier/frame{
 	pixel_y = 12
 	},
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/point_loma/airbase/exterior/crash_site)
 "bCz" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -28891,7 +28891,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "bDL" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -28901,7 +28901,7 @@
 	pixel_y = 24
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bDM" = (
 /obj/structure/surface/rack,
@@ -28985,18 +28985,18 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bEd" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bEe" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bEf" = (
 /obj/structure/surface/rack,
@@ -32082,7 +32082,7 @@
 /obj/structure/prop/brazier/frame/full{
 	pixel_y = 12
 	},
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/point_loma/airbase/exterior/crash_site)
 "bMU" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
@@ -33787,11 +33787,11 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = -6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bTD" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bTE" = (
 /turf/open/new_varadero/alt_concrete,
@@ -33806,21 +33806,21 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bTH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bTI" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bTJ" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bTK" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -33902,7 +33902,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bTV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bTW" = (
 /obj/structure/prop/brazier/frame{
@@ -33947,7 +33947,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "bUg" = (
 /obj/effect/decal/cleanable/blood,
@@ -38931,7 +38931,7 @@
 /area/point_loma/airbase/interior/cargo)
 "ckM" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/point_loma/airbase/exterior/crash_site)
 "ckN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -42823,7 +42823,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/research)
 "cxb" = (
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "cxc" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -43534,7 +43534,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cAb" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "cAc" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -43715,7 +43715,7 @@
 	name = "alien sarcophagus";
 	pixel_x = 3
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "cAE" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -44055,7 +44055,7 @@
 	pixel_y = 36;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "cBC" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -46263,7 +46263,7 @@
 	pixel_y = 26;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "cIu" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
@@ -46325,7 +46325,7 @@
 	pixel_y = 26;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "cIF" = (
 /obj/structure/platform_decoration/metal/strata,

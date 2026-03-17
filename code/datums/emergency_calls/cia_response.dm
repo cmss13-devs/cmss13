@@ -8,7 +8,7 @@
 	max_heavies = 1
 	max_smartgunners = 1
 
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
 
 	hostility = FALSE
 	var/is_deathsquad = FALSE

@@ -72,7 +72,7 @@ IN_USE used for vending/denying
 
 /obj/structure/machinery/cm_vending/Initialize()
 	. = ..()
-	cm_build_inventory(get_listed_products(), 1, 3)
+	cm_build_inventory(get_unfiltered_products(), 1, 3)
 
 /obj/structure/machinery/cm_vending/update_icon()
 	//restoring sprite to initial
@@ -532,7 +532,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
-		var/p_cost = myprod[2]
+		var/divider = 1
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			divider = 2
+		var/p_cost = myprod[2] / divider
 		var/category = myprod[4]
 		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
 			prod_available = TRUE
@@ -643,7 +646,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)
 	. = TRUE
-	var/cost = itemspec[2]
+	var/divider = 1
+	
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+		divider = 2
+	
+	var/cost = itemspec[2] / divider
 	if(instanced_vendor_points)
 		if(available_points_to_display < cost)
 			return FALSE
@@ -814,6 +822,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 	
 	return final_products
 
+/obj/structure/machinery/cm_vending/proc/get_unfiltered_products(mob/user)
+	return listed_products
+
 /obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) // We're just going to skip the mess of access checks assuming xenos with thumbs are human and just allow them to access because it's funny
 		return TRUE
@@ -939,7 +950,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list_and_boxes(1.2)
-	cm_build_inventory(get_listed_products(), 1, 3)
+	cm_build_inventory(get_unfiltered_products(), 1, 3)
 	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 	GLOB.cm_vending_vendors += src
 
@@ -1331,7 +1342,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 
 		var/p_name = myprod[1] //taking it's name
-		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
+		var/divider = 1
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			divider = 2
+		var/p_cost = cost_index == null ? 0 : myprod[cost_index] / divider
 		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
 		if(islist(item_ref)) // multi-vending

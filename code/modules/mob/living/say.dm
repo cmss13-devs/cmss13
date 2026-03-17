@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	//:h deparmental above
 	//:i Intercomm above
 	":j" = RADIO_CHANNEL_JTAC, ".j" = RADIO_CHANNEL_JTAC, "#j" = RADIO_CHANNEL_UPP_CCT,
-	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":k" = SQUAD_SOF, ".k" = RADIO_CHANNEL_YAUTJA_SPECOPS, "#k" = RADIO_CHANNEL_WY_WO,
 	"#l" = RADIO_CHANNEL_PROVOST, //l . and : reserved for Left hand
 	":m" = RADIO_CHANNEL_MEDSCI, ".m" = RADIO_CHANNEL_MEDSCI, "#m" = RADIO_CHANNEL_UPP_MED,
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,

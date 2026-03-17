@@ -1,5 +1,0 @@
-author: "mrkivnv"
-delete-after: True
-changes:
-  - rscadd: "added new corporate bodyguard icons that depends on the rank status"
-  - imageadd: "bodyguard icons for TPPO, PPO, PPS, PPC"

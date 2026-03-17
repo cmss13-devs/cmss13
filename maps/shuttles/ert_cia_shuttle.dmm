@@ -9,7 +9,7 @@
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "c" = (
-/obj/docking_port/mobile/emergency_response/ert5,
+/obj/docking_port/mobile/emergency_response/ert6,
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1";
 	opacity = 0

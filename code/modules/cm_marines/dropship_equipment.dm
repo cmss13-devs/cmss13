@@ -37,6 +37,10 @@
 		linked_console = null
 	. = ..()
 
+/obj/structure/dropship_equipment/update_health(damage)
+	health = min(initial(health), health-damage)
+	if(health <= 0)
+		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -99,7 +103,7 @@
 		return
 	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
-	health = min(initial(health), health+50)
+	update_health(-50)
 	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
 	SPAN_NOTICE("You repair damaged parts of [src]."))
 

@@ -741,7 +741,6 @@
 /area/lv624/ground/caves/sand_temple)
 "wZ" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /turf/open/gm/dirtgrassborder/desert0,
@@ -887,7 +886,6 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Cr" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /turf/open/gm/dirtgrassborder/desert3,

@@ -402,6 +402,7 @@
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO10C
 	icon_state = "ranks_flagofficer"
+
 /*################################################
 ################# SPECIAL  #################
 ################################################*/
@@ -409,3 +410,12 @@
 	name = "rank boards"
 	rank_short = "PvI"
 	icon_state = "ranks_pvstofficer"
+
+/obj/item/clothing/accessory/ranks/navy/special/brassard
+	name = "rank brassard"
+	rank_short = "SP"
+	icon_state = "sp_brassard"
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/brassards.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/brassards.dmi'
+	)

@@ -252,6 +252,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/proc/generate_corpses()
 	var/list/obj/effect/landmark/corpsespawner/gamemode_spawn_corpse = GLOB.corpse_spawns.Copy()
+
 	while(corpses_to_spawn--)
 		if(!length(gamemode_spawn_corpse))
 			break
@@ -271,6 +272,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 				if(!found_nest.buckled_mob)
 					found_nest.forced_buckle_mob(human_mob,human_mob)
 		gamemode_spawn_corpse.Remove(spawner)
+
+
 
 /datum/game_mode/proc/spawn_static_comms()
 	for(var/i = 1 to static_comms_amount)

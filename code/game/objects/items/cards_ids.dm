@@ -535,3 +535,21 @@
 	icon_state = "data"
 	item_state = "card-id"
 	unacidable = 1
+
+
+//USASF ID and Alpha-Tech cards used for USASF Point Loma. Changes descriptions + names but does nothing special
+
+/obj/item/card/id/dogtag/usasf
+	desc = "An Aerospaceman's dog tags."
+
+/obj/item/card/id/gold/usasf
+	name = "USASF Officer ID"
+	desc = "A USASF Officer ID"
+
+/obj/item/card/id/lanyard/alphatech
+	name = "Alpha-Tech Hardware Corporation ID Card"
+	desc = "An ID Card used by AlphaTech employees"
+
+/obj/item/card/id/lanyard/alphatech/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)

@@ -123,6 +123,11 @@
 /obj/structure/sign/banners
 	icon = 'icons/obj/structures/props/wall_decorations/banners.dmi'
 
+/obj/structure/sign/banners/rope
+	name = "\improper A rope"
+	desc = "A rope for hanging stuff on."
+	icon_state = "rope"
+
 /obj/structure/sign/banners/happybirthdaysteve
 	name = "\improper Happy Birthday Steve banner"
 	desc = "A depressing looking paper banner wishing someone named Steve a happy birth ay."

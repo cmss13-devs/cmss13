@@ -38,6 +38,7 @@ $wypub: hsl(33, 90%, 62%);
 $wysec: hsl(33, 85%, 44%);
 $cct: hsl(184, 57%, 55%);
 $intel: hsl(120, 97%, 25%);
+$usasf: hsl(240, 100%, 25.1%);
 $pmc: hsl(184, 57%, 55%);
 $clf: hsl(249, 40%, 65%);
 $upp: hsl(359, 32%, 43%);
@@ -97,6 +98,7 @@ $_channel_map: (
   'pmc-cmd': $pmc,
   'specops': $pmc,
   'army': $army,
+  'usasf': $usasf,
   'pmc': $pmc,
   'cia': $cia,
   'provost': $provost,

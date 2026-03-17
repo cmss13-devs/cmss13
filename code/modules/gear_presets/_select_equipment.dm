@@ -53,6 +53,8 @@
 
 	/// All presets are in "All" and "Faction" (drawn from the faction variable)
 	var/selection_categories = list()
+	var/corpse = FALSE
+	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
 
 /datum/equipment_preset/New()
 	if(!manifest_title)
@@ -134,7 +136,37 @@
 	return
 
 /datum/equipment_preset/proc/load_status(mob/living/carbon/human/new_human, client/mob_client)
-	return
+	if(!corpse)
+		return
+
+	// These two values matter because they are checked on death for weed_food
+	new_human.undefibbable = TRUE
+	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	if(xenovictim)
+		new_human.chestburst = 2
+
+	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
+	new_human.apply_damage(100, BRUTE)
+	new_human.apply_damage(100, BRUTE)
+	new_human.apply_damage(100, BRUTE)
+	if(xenovictim)
+		var/datum/internal_organ/organ
+		var/i
+		for(i in list("heart","lungs"))
+			organ = new_human.internal_organs_by_name[i]
+			new_human.internal_organs_by_name -= i
+			new_human.internal_organs -= organ
+		new_human.update_burst()
+		//buckle to nest
+		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
+		if(nest)
+			new_human.buckled = nest
+			new_human.setDir(nest.dir)
+			nest.buckled_mob = new_human
+			nest.afterbuckle(new_human)
+	new_human.spawned_corpse = TRUE
+	new_human.updatehealth()
+	new_human.pulse = PULSE_NONE
 
 /datum/equipment_preset/proc/load_skills(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_skills(skills)

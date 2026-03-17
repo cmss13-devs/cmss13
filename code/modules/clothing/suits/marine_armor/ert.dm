@@ -1022,3 +1022,32 @@
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+
+/obj/item/clothing/suit/storage/marine/navy
+	name = "Windbreaker"
+	desc = "Windbreaker suit"
+	icon_state = "windbreaker_navy"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/USASF.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 2
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	siemens_coefficient = 0.7
+	uniform_restricted = null
+	item_icons = list(
+		WEAR_JACKET = 'icons/obj/items/clothing/suits/suits_by_faction/USASF.dmi'
+	)
+
+
+/obj/item/clothing/suit/storage/marine/navy/bomber
+	name = "Navy bomber suit"
+	desc = "Navy bomber suit"
+	icon_state = "navy_bomber"

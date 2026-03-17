@@ -7,13 +7,20 @@
 	name = "Unknown"
 	icon_state = "corpse_spawner"
 	var/equip_path = null
+	var/special_species = FALSE
 
 /obj/effect/landmark/corpsespawner/Initialize(mapload, ...)
 	. = ..()
-	GLOB.corpse_spawns += src
+	if(special_species)
+		GLOB.special_corpse_spawns += src
+	else
+		GLOB.corpse_spawns += src
 
 /obj/effect/landmark/corpsespawner/Destroy()
-	GLOB.corpse_spawns -= src
+	if(special_species)
+		GLOB.special_corpse_spawns -= src
+	else
+		GLOB.corpse_spawns -= src
 	return ..()
 
 ///////////Civilians//////////////////////
@@ -396,3 +403,31 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Trooper"
 	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
+
+/obj/effect/landmark/corpsespawner/point_loma/alphatech
+	name = "Corpse - AlphaTech"
+	equip_path = /datum/equipment_preset/corpse/point_loma/alphatech
+
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst
+	name = "Corpse - AlphaTech - Burst"
+	equip_path = /datum/equipment_preset/corpse/point_loma/alphatech/burst
+
+/obj/effect/landmark/corpsespawner/point_loma/usasf
+	name = "Corpse - USASF"
+	equip_path = /datum/equipment_preset/corpse/point_loma/usasf
+
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst
+	name = "Corpse - USASF - Burst"
+	equip_path = /datum/equipment_preset/corpse/point_loma/usasf/burst
+
+/obj/effect/landmark/corpsespawner/yautja
+	special_species = SPECIES_YAUTJA
+	equip_path = /datum/equipment_preset/yautja/blooded/corpse
+
+/obj/effect/landmark/corpsespawner/synthetic
+	special_species = SYNTH_GEN_ONE
+	equip_path = /datum/equipment_preset/synth/usasf/corpse
+
+/obj/effect/landmark/corpsespawner/working_joe
+	special_species = SYNTH_WORKING_JOE
+	equip_path = /datum/equipment_preset/synth/working_joe/corpse

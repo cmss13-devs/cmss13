@@ -37,6 +37,7 @@
 			I.pixel_x = -16
 			layer = MOB_LAYER
 	overlays += I
+	update_icon()
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -146,6 +147,10 @@
 	playsound(loc, breaking_sound, 25, 1)
 	broken()
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/platform/broken
+	stat = BROKEN
+	density = FALSE
 
 /obj/structure/platform_decoration
 	name = "platform"
@@ -293,6 +298,12 @@
 /obj/structure/platform/stone/stair_cut/runed_sandstone_right
 	icon_state = "stone_stair_alt"
 	color = "#b29082"
+
+/obj/structure/platform/stone/stair_cut/new_varadero_left
+	icon_state = "nv_rock_stair"
+
+/obj/structure/platform/stone/stair_cut/new_varadero_right
+	icon_state = "nv_rock_stair_alt"
 
 //------------------------------------//
 //       Metal based Platforms        //
@@ -1022,6 +1033,19 @@
 /obj/structure/platform/stone/soro_colorable_immune/west
 	dir = WEST
 
+/obj/structure/platform/stone/soro_colorable_immune/loma
+	name = "rock corner"
+	color = "#6c6767d8"
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/north
+	dir = NORTH
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/east
+	dir = EAST
+
+/obj/structure/platform/stone/soro_colorable_immune/loma/west
+	dir = WEST
+
 /obj/structure/platform_decoration/stone/soro_colorable_immune
 	name = "rock corner"
 	desc = "Solid chunks of desolate rocks."
@@ -1033,6 +1057,19 @@
 /obj/structure/platform_decoration/stone/soro_colorable_immune/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma
+	name = "rock corner"
+	color = "#6c6767d8"
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north
+	dir = NORTH
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east
+	dir = EAST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west
 	dir = WEST
 
 /obj/structure/platform/stone/stair_cut/soro_left

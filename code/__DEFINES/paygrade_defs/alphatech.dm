@@ -1,0 +1,8 @@
+// Alpha-Tech Hardware Corporation
+
+#define PAY_SHORT_ATHC1 "ATHC1"
+#define PAY_SHORT_ATHC2 "ATHC2"
+#define PAY_SHORT_ATHC3 "ATHC3"
+#define PAY_SHORT_ATHC_SCI "ATHC SCI"
+#define PAY_SHORT_ATHC_SCI_RD "ATHC RD"
+#define PAY_SHORT_ATHC_ENG_CE "ATHC CE"

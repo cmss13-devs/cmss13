@@ -180,6 +180,12 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "dirt_2"
 
+/obj/effect/decal/hybrisa/dirt/sand_1
+	color = "#c19a6b"
+
+/obj/effect/decal/hybrisa/dirt/sand_2
+	color = "#c9ae74"
+
 /obj/effect/decal/hybrisa/bloodtrail
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "bloodtrail"

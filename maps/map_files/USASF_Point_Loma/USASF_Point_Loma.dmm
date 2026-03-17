@@ -6686,7 +6686,7 @@
 /turf/open/floor/corsat/greenwhite/northwest,
 /area/point_loma/research_facility/medical)
 "atE" = (
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/crash_site)
 "atF" = (
 /obj/structure/machinery/colony_floodlight,
@@ -24227,7 +24227,7 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/dorms)
 "bqu" = (
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bqv" = (
 /turf/open/predship/tile/red,
@@ -24447,7 +24447,7 @@
 /obj/effect/acid_hole{
 	dir = 4
 	},
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bqY" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -24894,11 +24894,11 @@
 /area/point_loma/research_facility/crash_site)
 "bsp" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bsq" = (
 /obj/item/stack/rods,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bsr" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -24906,19 +24906,19 @@
 /area/point_loma/airbase/interior/garage)
 "bss" = (
 /obj/item/skull/hivelord,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bst" = (
 /obj/item/skull/queen,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bsu" = (
 /obj/item/skull/carrier,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bsv" = (
 /obj/effect/acid_hole,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bsw" = (
 /obj/effect/decal/warning_stripes{
@@ -26690,7 +26690,7 @@
 /turf/open/predship/tile,
 /area/point_loma/airbase/exterior/crash_site)
 "bxM" = (
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bxN" = (
 /turf/open/new_varadero/dock_concrete,
@@ -26732,7 +26732,7 @@
 /turf/open/predship/tile/hunter_tile_1,
 /area/point_loma/airbase/exterior/crash_site)
 "bxT" = (
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bxU" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
@@ -27173,7 +27173,7 @@
 	name = "\improper Cooler Room";
 	dir = 1
 	},
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/crash_site)
 "bze" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -27194,7 +27194,7 @@
 /area/point_loma/airbase/exterior/east)
 "bzh" = (
 /obj/item/stack/sheet/metal,
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
 "bzi" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -27304,12 +27304,12 @@
 "bzu" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/point_loma/airbase/exterior/crash_site)
 "bzv" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/point_loma/airbase/exterior/crash_site)
 "bzw" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -27451,7 +27451,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bzV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -27476,7 +27476,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = -6
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bzZ" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -27613,7 +27613,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/garage)
 "bAp" = (
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "bAq" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -27623,13 +27623,13 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bAs" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bAt" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -27758,7 +27758,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bAK" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -27777,7 +27777,7 @@
 	pixel_y = 26;
 	pixel_x = -6
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/predship/hull/non_weedable_hull/east,
 /area/point_loma/airbase/exterior/crash_site)
 "bAM" = (
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -27953,31 +27953,31 @@
 	pixel_x = 8;
 	pixel_y = -7
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/northwest,
+/turf/open/predship/hull/non_weedable_hull/northwest,
 /area/point_loma/airbase/exterior/crash_site)
 "bBj" = (
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBk" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBl" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/point_loma/airbase/exterior/crash_site)
 "bBm" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
 	pixel_y = -7
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/northeast,
+/turf/open/predship/hull/non_weedable_hull/northeast,
 /area/point_loma/airbase/exterior/crash_site)
 "bBn" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -28149,7 +28149,7 @@
 	pixel_y = 28;
 	anchored = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "bBF" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
@@ -28170,7 +28170,7 @@
 	pixel_x = 17;
 	pixel_y = 2
 	},
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/crash_site)
 "bBI" = (
 /obj/structure/girder,
@@ -28569,7 +28569,7 @@
 	pixel_y = 4;
 	anchored = 1
 	},
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/crash_site)
 "bCE" = (
 /obj/item/weapon/shield/riot/yautja/ancient{
@@ -28578,7 +28578,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/crash_site)
 "bCF" = (
 /obj/structure/closet/secure_closet/surgical{
@@ -33908,7 +33908,7 @@
 /obj/structure/prop/brazier/frame{
 	pixel_y = 3
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "bTX" = (
 /obj/effect/spawner/random/gun/shotgun,
@@ -34107,7 +34107,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
 "bUP" = (
-/turf/closed/wall/huntership/hull,
+/turf/closed/wall/huntership/outerhull,
 /area/point_loma/airbase/exterior/west)
 "bUQ" = (
 /obj/effect/stairs/down,
@@ -39338,7 +39338,7 @@
 /area/point_loma/oob/sky)
 "clX" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "clY" = (
 /obj/structure/pipes/standard/simple/hidden/green{

@@ -76,10 +76,120 @@
 /obj/effect/hunter/bridge_border/brown/large_stair
 	icon_state = "large_stair"
 
+// Ancient Temple
+/obj/effect/hunter/ancient_temple
+	name = null
+	desc = null
+	icon = 'icons/effects/32x32-hunter_effects.dmi'
+	icon_state = "rubble0"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/ancient_temple/deco_border
+	icon_state = "deco_border1"
+	layer = TURF_LAYER
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border2
+	icon_state = "deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border3
+	icon_state = "deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border4
+	icon_state = "deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border5
+	icon_state = "deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border6
+	icon_state = "deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border7
+	icon_state = "deco_border7"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze
+	icon_state = "bronze_deco_border1"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border2
+	icon_state = "bronze_deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3
+	icon_state = "bronze_deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border4
+	icon_state = "bronze_deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border5
+	icon_state = "bronze_deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border6
+	icon_state = "bronze_deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border7
+	icon_state = "bronze_deco_border7"
+
+// Floor tile edges
+/obj/effect/hunter/ancient_temple/tile_edge
+	icon_state = "floor_edges_1"
+	name = "tile edge"
+	desc = null
+	layer = TURF_LAYER
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_2
+	icon_state = "floor_edges_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_3
+	icon_state = "floor_edges_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_4
+	icon_state = "floor_edges_4"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_5
+	icon_state = "floor_edges_5"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_6
+	icon_state = "floor_edges_6"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7
+	icon_state = "floor_edges_7"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8
+	icon_state = "floor_edges_8"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_9
+	icon_state = "floor_edges_9"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_10
+	icon_state = "floor_edges_10"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11
+	icon_state = "floor_edges_11"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12
+	icon_state = "floor_edges_12"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner
+	icon_state = "floor_corner_1"
+	layer = TURF_LAYER
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2
+	icon_state = "floor_corner_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_3
+	icon_state = "floor_corner_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4
+	icon_state = "floor_corner_4"
+
 // Catwalks
 
 /obj/structure/prop/hunter/catwalk
-	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
 	icon_state = "hunter_catwalk_alpha"
 	name = "catwalk"
 	layer = CATWALK_LAYER
@@ -96,6 +206,10 @@
 
 /obj/structure/prop/hunter/catwalk/hunter_grate
 	icon_state = "hunter_grate_alpha"
+
+/obj/effect/hunter/catwalk/ancient_temple_grille
+	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
+	icon_state = "grille_transparent"
 
 /obj/structure/prop/hunter/catwalk/corner
 	icon_state = "corner_1"
@@ -125,7 +239,7 @@
 	icon_state = "corner_9"
 
 /obj/effect/hunter/catwalk
-	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
 	icon_state = "hunter_catwalk_alpha"
 	desc = null
 	density = FALSE

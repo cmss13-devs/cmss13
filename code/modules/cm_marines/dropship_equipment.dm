@@ -80,6 +80,29 @@
 				grab_equipment(PC, user)
 		return TRUE
 
+	if(iswelder(I))
+		try_repair(I, user)
+
+/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user)
+	if(health == initial(health))
+		to_chat(user, SPAN_WARNING("[src] is in working condition."))
+		return
+	if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+	if(user.action_busy)
+		return
+	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
+		return
+	if(!(welder.remove_fuel(2, user)))
+		return
+	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
+	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+	health = min(initial(health), health+50)
+	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
+	SPAN_NOTICE("You repair damaged parts of [src]."))
+
 /obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
 		return

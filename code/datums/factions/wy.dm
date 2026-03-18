@@ -11,8 +11,6 @@
 	if(!_role && id_card)
 		_role = id_card.rank
 	switch(_role)
-		if(JOB_CORPORATE_BODYGUARD)
-			hud_icon_state = "liaison_guard"
 		if(JOB_WY_GOON)
 			hud_icon_state = "goon_normal"
 		if(JOB_WY_GOON_LEAD)
@@ -67,5 +65,15 @@
 			hud_icon_state = "dep_director"
 		if(JOB_DIRECTOR)
 			hud_icon_state = "director"
+		if(JOB_CORPORATE_BODYGUARD)
+			hud_icon_state = "bodyguard_ppo"
+			if(id_card && id_card.paygrade)
+				switch(id_card.paygrade)
+					if(PAY_SHORT_WY_SEC_TPPO)
+						hud_icon_state = "bodyguard_tppo"
+					if(PAY_SHORT_WY_SEC_PPS)
+						hud_icon_state = "bodyguard_pps"
+					if(PAY_SHORT_WY_SEC_PPC)
+						hud_icon_state = "bodyguard_ppc"
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "wy_[hud_icon_state]")

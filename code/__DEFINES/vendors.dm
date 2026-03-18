@@ -56,8 +56,8 @@
 #define VENDOR_ITEM_REGULAR 1
 #define VENDOR_ITEM_MANDATORY 2
 #define VENDOR_ITEM_RECOMMENDED 3
-#define VENDOR_ITEM_WELL_FUNDED 4
-#define VENDOR_ITEM_POOR 5
+#define VENDOR_ITEM_WELL_FUNDED 4	#Only appears when well funded marines modifier is active.
+#define VENDOR_ITEM_POOR 5			#Does not appear when well funded marines modifier is active.
 
 #define CL_BRIEFCASE_TIME_LOCK 20 MINUTES
 

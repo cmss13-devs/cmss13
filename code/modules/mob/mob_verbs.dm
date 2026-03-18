@@ -252,6 +252,12 @@
 
 	if(observed_atom)
 		QDEL_NULL(observed_atom)
+		if(buckled && istype(buckled, /obj/structure/bed/chair/comfy/vehicle))
+			var/obj/structure/bed/chair/comfy/vehicle/vehicle_seat = buckled
+			if(vehicle_seat.vehicle && (vehicle_seat.seat == VEHICLE_DRIVER || vehicle_seat.seat == VEHICLE_GUNNER))
+				if(client)
+					client.change_view(8, vehicle_seat.vehicle)
+					vehicle_seat.vehicle.set_seated_mob(vehicle_seat.seat, src)
 		return
 
 	if(!client)
@@ -265,6 +271,15 @@
 		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
 		return
 
+	var/turf/vehicle_turf = null
+	if(buckled && istype(buckled, /obj/structure/bed/chair/comfy/vehicle))
+		var/obj/structure/bed/chair/comfy/vehicle/vehicle_seat = buckled
+		if(vehicle_seat.vehicle && (vehicle_seat.seat == VEHICLE_DRIVER || vehicle_seat.seat == VEHICLE_GUNNER))
+			vehicle_turf = get_turf(vehicle_seat.vehicle)
+		else
+			to_chat(src, SPAN_WARNING("You cannot look up from this position."))
+			return
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
@@ -273,6 +288,10 @@
 	if(!isturf(above))
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
+
+	// this is probably a bit hacky.
+	if(!(vehicle_turf == null))
+		above = locate(vehicle_turf.x, vehicle_turf.y, vehicle_turf.z+1)
 
 	if(!istransparentturf(above))
 		to_chat(src, SPAN_WARNING("You cannot look up here."))

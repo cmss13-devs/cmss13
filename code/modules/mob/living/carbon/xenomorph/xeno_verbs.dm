@@ -2,7 +2,7 @@
 /mob/living/carbon/xenomorph/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of our current hive."
-	set category = "Alien"
+	set category = "Alien.Hivemind"
 
 	if(!hive)
 		return
@@ -20,7 +20,7 @@
 /mob/living/carbon/xenomorph/verb/hive_alliance_status()
 	set name = "Hive Alliance Status"
 	set desc = "Check the status of your alliances."
-	set category = "Alien"
+	set category = "Alien.Hivemind"
 
 	if(!hive)
 		return
@@ -79,7 +79,7 @@
 /mob/living/carbon/xenomorph/verb/toggle_xeno_mobhud()
 	set name = "Toggle Xeno Status HUD"
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
-	set category = "Alien"
+	set category = "Alien.Preferences"
 
 	if(xeno_mobhud)
 		for(var/datum/mob_hud/hud in GLOB.huds)
@@ -92,7 +92,7 @@
 /mob/living/carbon/xenomorph/verb/toggle_xeno_hostilehud()
 	set name = "Toggle Hostile Status HUD"
 	set desc = "Toggles the HUD that renders various negative status effects inflicted on humans."
-	set category = "Alien"
+	set category = "Alien.Preferences"
 
 	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
@@ -105,7 +105,7 @@
 /mob/living/carbon/xenomorph/verb/toggle_auto_shove()
 	set name = "Toggle Automatic Shove"
 	set desc = "Toggles whethever you will automatically shove people as the Queen."
-	set category = "Alien"
+	set category = "Alien.Preferences"
 
 
 	if (!client || !client.prefs)
@@ -122,7 +122,7 @@
 /mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
 	set name = "Toggle Ability Deactivation"
 	set desc = "Toggles whether you can deactivate your currently active ability when re-selecting it."
-	set category = "Alien"
+	set category = "Alien.Preferences"
 
 	if (!client || !client.prefs)
 		return
@@ -137,7 +137,7 @@
 /mob/living/carbon/xenomorph/verb/directional_attack_toggle()
 	set name = "Toggle Directional Attacks"
 	set desc = "Toggles the use of directional assist attacks."
-	set category = "Alien"
+	set category = "Alien.Preferences"
 
 	if (!client || !client.prefs)
 		return
@@ -157,7 +157,7 @@
 
 /mob/living/carbon/xenomorph/verb/view_tacmaps()
 	set name = "View Tacmap"
-	set category = "Alien"
+	set category = "Alien.Essentials"
 	GLOB.tacmap_viewer.tgui_interact(src)
 
 /mob/living/carbon/xenomorph/look_up()

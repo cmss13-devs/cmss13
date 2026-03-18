@@ -99,3 +99,94 @@
   - bugfix: Army survivors can now program the comms tower to accept their comms.
   - bugfix: Army comms are now fully working, with their own radio key and working
       comms color.
+2026-03-07:
+  Drathek:
+  - code_imp: Reworked how unauthenticated and lobby menu windows clean up on logout
+  - code_imp: TGUI window close now cleans up more even if there is no client
+  - bugfix: Fix runtimes with tutorials ending tutorials twice
+  - bugfix: Fixed various places where spawning from lobby would fail to delete the
+      new_player mob
+  - bugfix: Fixed niche logging not occurring when predators join
+  MoondancerPony:
+  - server: Linux servers now load the SSV Rostock properly
+  zzzmike:
+  - qol: FTL jump wording changed to make game mechanics more transparent
+2026-03-08:
+  Detective-Google:
+  - admin: the adjust job slots verb now allows you to modify roundstart slots as
+      well as latejoin ones.
+  Drathek:
+  - rscadd: Added marine manifest hotkey for humans & observers
+  - bugfix: Hive status hotkey now works for observers
+  MoondancerPony:
+  - spellcheck: fixed a lot of typos
+  Riot:
+  - rscadd: Pickup hotkey has a memory of 5 items now
+  Steelpoint:
+  - rscadd: Tyrargo Rift may only be voted for if the server has at least 100 players.
+2026-03-09:
+  MistChristmas:
+  - bugfix: Dropship Crew now see their full list of buyables again... Sorry.
+  MoondancerPony:
+  - bugfix: made the FTL Hijack planet crash around twice as fast
+  - code_imp: unit tests should have fewer flaky failures now
+  hry-gh:
+  - bugfix: binding keys to tab now works
+  ori-disillusion-mirnov:
+  - admin: location is logged on hivemind usage and evolution logs
+  - bugfix: headbite execution log no longer lists the human as doing the headbite
+  riot:
+  - maptweak: The basketball hoops on LV-624's Fitness dome can now be walked through.
+2026-03-10:
+  Drathek:
+  - bugfix: Fixed queen no forfeit check not checking the relevant Z levels (namely
+      regarding hijack/FTL)
+  - bugfix: Fixed potential for hive collapse during hijack
+  MistChristmas:
+  - soundtweak: Normalise ambience that Abyssal uses to be quieter.
+2026-03-11:
+  MistChristmas:
+  - bugfix: Tyrago Rift Out of bounds areas disallow burrowing.
+  MoondancerPony:
+  - bugfix: fixed larvae being able to dig snow
+2026-03-12:
+  MistChristmas:
+  - bugfix: 'Unique items: I.E. Family Photo now belong to you even if they spawn
+      in your inventory instead of pocket.'
+  - bugfix: ARES correctly records OB/Supply Coords, stop the ship map shaking multiple
+      times from one OB being fired.
+  Nihisohel:
+  - rscadd: The style system is added! You can now examine certain items if they are
+      "stylish", and pressing unique action will change its onmob sprite to whichever
+      you prefer
+  - rscadd: The only stylish items so far are the USCM Patch, the Rosary, and the
+      new golden rosary item in the character loadout screen!
+  - code_imp: Adds a parent item for all patches, and makes the USCM patch its own
+      distinct type
+  - code_imp: Minorly tweaks inventory overlay to prioritize item_state first before
+      fallbacking to icon_state
+  - code_imp: Autodocs a few clothing variables
+  - bugfix: Fixes accessorized inv_icon overlay from being directional
+2026-03-14:
+  MistChristmas:
+  - bugfix: Xenomorph on dropship alert now only occurs after landing.
+  - bugfix: Intel job not properly being tied to roundstart gear_preset
+  - admin: G2s and Claymores now get logged when deployed.
+  MoondancerPony:
+  - rscdel: broke area-based lighting
+  - bugfix: fixed area-based lighting
+  - bugfix: fixed Tyrargo army CO survivors not starting with an unbuttoned jacket
+      due to an error
+  Riot:
+  - bugfix: Certain ERTs should now correctly spawn with basic first aid kits, as
+      they were meant to do for the past 3 years.
+  - bugfix: Fixes the army tgui prefixes
+  cuberound:
+  - balance: increases random sandbag crate spawn chance
+  - balance: increases random HPR crate spawn chance
+  - balance: reduces random flamer fuel crate spawn chance
+  - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead

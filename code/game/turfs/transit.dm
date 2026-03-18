@@ -84,7 +84,7 @@
 	for(var/area/maybe_this_area in potential_areas)
 		if(CEILING_IS_PROTECTED(maybe_this_area.ceiling, CEILING_PROTECTION_TIER_1)) // prevents out of bounds too
 			continue
-		if(istype(maybe_this_area, /area/space)) // make sure its not space, just in case
+		if(istype(maybe_this_area, /area/space)) // make sure it's not space, just in case
 			continue
 
 		var/turf/open/possible_turf = null

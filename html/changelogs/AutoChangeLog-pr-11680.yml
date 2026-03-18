@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Reworked how unauthenticated and lobby menu windows clean up on logout"
-  - code_imp: "TGUI window close now cleans up more even if there is no client"
-  - bugfix: "Fix runtimes with tutorials ending tutorials twice"
-  - bugfix: "Fixed various places where spawning from lobby would fail to delete the new_player mob"
-  - bugfix: "Fixed niche logging not occurring when predators join"

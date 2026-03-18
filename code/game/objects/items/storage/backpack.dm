@@ -21,6 +21,7 @@
 	can_hold_skill = list(
 		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/storage/firstaid/regular/response = list(SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT),
 		)
 	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back

@@ -6931,7 +6931,7 @@
 /area/lv624/lazarus/main_hall)
 "aJJ" = (
 /turf/closed/wall/mineral/gold{
-	desc = "Here sits a golden statue of the sun, meant to praise the sky in it's benevolence.";
+	desc = "Here sits a golden statue of the sun, meant to praise the sky in its benevolence.";
 	name = "Statue of the Sky"
 	},
 /area/lv624/lazarus/main_hall)

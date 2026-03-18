@@ -474,7 +474,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/feweh //CKEY=feweh
 	name = "Pink's Ablative Armor Vest"
-	desc = "The fanciest bullet proof vest you've ever seen.  DONOR ITEM"
+	desc = "The fanciest bulletproof vest you've ever seen.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
@@ -544,7 +544,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Armor"
-	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid-resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
@@ -605,7 +605,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Armor"
-	desc = "Armor worn by the feared and respected Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Armor worn by the feared and respected Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commisar_armor_u"
 	item_state = "commisar_armor_u"
 
@@ -1156,7 +1156,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Helmet"
-	desc = "Helmet worn by the Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Helmet worn by the Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commissar_helmet_u"
 	item_state = "commissar_helmet_u"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1462,7 +1462,7 @@
 
 /obj/item/clothing/under/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Uniform"
-	desc = "Uniform worn by the Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Uniform worn by the Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commisar_jumpsuit_u"
 	worn_state = "commisar_jumpsuit_u"
 	flags_jumpsuit = FALSE
@@ -1589,7 +1589,7 @@
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Boot"
-	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-drenched environments safely. This prototype version lacks that feature.  DONOR ITEM"
 	icon_state = "marine"
 	item_state = "marine"
 
@@ -1698,7 +1698,7 @@
 
 /obj/item/clothing/gloves/marine/fluff/jedijas //CKEY=jedijasun (UNIQUE)
 	name = "Fists of Mandalore"
-	desc = "If Mandalore was a person, these would be it's fists...  DONOR ITEM"
+	desc = "If Mandalore was a person, these would be its fists...  DONOR ITEM"
 	icon_state = "marine_white"
 	item_state = "marine_wgloves"
 

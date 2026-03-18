@@ -350,8 +350,8 @@
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/fcred
-	name = "red paisley bandana headband"
-	desc = "A Fast Color red bandana worn by marines who'd rather let their guns do the talking."
+	name = "Red paisley headband"
+	desc = "A fast color red headband worn by marines who'd rather let their guns do the talking."
 	icon_state = "headband_fcred"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(

@@ -267,11 +267,11 @@ DEFINES in setup.dm, referenced here.
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
 			src.clean_blood()
 			var/image/shine = image('icons/effects/effects.dmi', src, "empdisable")
-			src.overlays += shine
+			overlays += shine
 			playsound(user, 'sound/handling/shine.ogg', 30, 1)
-			sleep(10)
+			do_after(user, 10)
 			if(!QDELETED(src))
-				src.overlays -= shine
+				overlays -= shine
 				user.visible_message("[user] holds [src] up to the light and nods approvingly.", null, null, 3)
 				animate(src, color = "#FFFFFF", time = 2)
 				animate(color = null, time = 3)

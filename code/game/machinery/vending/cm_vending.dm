@@ -823,7 +823,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return final_products
 
 /obj/structure/machinery/cm_vending/proc/get_unfiltered_products(mob/user)
-	return listed_products
+	if(length(listed_products) != 0)
+		return listed_products
+	else
+		return get_listed_products(user)
 
 /obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) // We're just going to skip the mess of access checks assuming xenos with thumbs are human and just allow them to access because it's funny

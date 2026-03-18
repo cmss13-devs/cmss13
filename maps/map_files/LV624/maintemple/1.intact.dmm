@@ -76,6 +76,24 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
+"an" = (
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ao" = (
+/obj/structure/closet/coffin/predator/ancient_stone{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ap" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "as" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1074,12 +1092,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"JS" = (
-/obj/structure/showcase/yautja/alt{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "KB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1105,12 +1117,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"LR" = (
-/obj/structure/closet/coffin/predator/ancient_stone{
-	pixel_x = 3
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "Mj" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1122,12 +1128,6 @@
 /area/lv624/ground/caves/sand_temple)
 "Mn" = (
 /obj/structure/showcase/yautja/alt,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
-"Mp" = (
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	pixel_x = 3
-	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Mr" = (
@@ -1755,7 +1755,7 @@ GT
 GT
 GT
 OC
-LR
+ao
 gL
 Jc
 Jc
@@ -1803,7 +1803,7 @@ Jc
 Jc
 Jc
 gL
-JS
+an
 OC
 TO
 Ai
@@ -1839,7 +1839,7 @@ GT
 GT
 GT
 oi
-LR
+ao
 gL
 Jc
 Jc
@@ -1887,7 +1887,7 @@ Jc
 Jc
 Jc
 gL
-JS
+an
 OC
 TO
 Ai
@@ -1923,7 +1923,7 @@ GT
 GT
 GT
 OC
-Mp
+ap
 gL
 Jc
 Jc
@@ -1971,7 +1971,7 @@ Jc
 Jc
 Jc
 gL
-JS
+an
 OC
 Pm
 Jz

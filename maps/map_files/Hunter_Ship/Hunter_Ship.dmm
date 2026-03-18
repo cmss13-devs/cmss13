@@ -46,6 +46,19 @@
 /obj/docking_port/stationary/marine_dropship/yautja_hangar_1,
 /turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
+"ag" = (
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
+	pixel_y = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22
+	},
+/turf/open/predship/hunter_catwalk,
+/area/yautja_ship/upper_deck/corridors)
 "ah" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -11605,20 +11618,6 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/bright_red/glow,
 /area/yautja_ship/upper_deck/prison)
-"zE" = (
-/obj/structure/prop/brazier/torch{
-	layer = 4.12;
-	pixel_y = -5
-	},
-/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
-	color = "#756e6a";
-	pixel_y = 4
-	},
-/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
-	pixel_y = 22
-	},
-/turf/open/predship/hunter_catwalk,
-/area/yautja_ship/lower_deck/corridors)
 "zF" = (
 /obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "White";
@@ -11822,9 +11821,6 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
 	color = "#756e6a";
 	pixel_y = 4
-	},
-/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
-	pixel_y = 22
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
 	pixel_y = 22
@@ -17914,6 +17910,20 @@
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/mortuary)
+"No" = (
+/obj/structure/prop/brazier/torch{
+	layer = 4.12;
+	pixel_y = -5
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
+	pixel_y = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22
+	},
+/turf/open/predship/hunter_catwalk,
+/area/yautja_ship/lower_deck/corridors)
 "Np" = (
 /obj/structure/target{
 	icon_state = "target_h"
@@ -20878,16 +20888,6 @@
 	},
 /turf/open/predship/tile/hunter_tile_5/east,
 /area/yautja_ship/lower_deck/scribe)
-"Un" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
-	color = "#756e6a";
-	pixel_y = 4
-	},
-/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
-	pixel_y = 22
-	},
-/turf/open/predship/hunter_catwalk,
-/area/yautja_ship/upper_deck/corridors)
 "Uo" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -27280,12 +27280,12 @@ vJ
 vD
 vy
 Lq
-zE
+No
 Lq
 Dm
 Dm
 Lq
-zE
+No
 Lq
 Dm
 Dm
@@ -27740,12 +27740,12 @@ vJ
 vD
 vy
 Lq
-zE
+No
 Lq
 Dm
 Dm
 Lq
-zE
+No
 Lq
 Dm
 Dm
@@ -43858,7 +43858,7 @@ yX
 yX
 SR
 Ex
-Un
+Ab
 Ex
 ru
 Sg
@@ -44318,7 +44318,7 @@ Ne
 Ne
 SQ
 Ex
-Ab
+ag
 Ex
 ru
 Sg

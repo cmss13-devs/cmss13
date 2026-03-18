@@ -16,6 +16,32 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"ae" = (
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"af" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ag" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/closet/coffin/predator/ancient_stone{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ah" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
@@ -135,13 +161,6 @@
 	anchored = 1
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"dE" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/closet/coffin/predator/ancient_stone{
-	pixel_x = 3
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "dF" = (
 /turf/open/gm/dirtgrassborder/north,
@@ -357,12 +376,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
-"jp" = (
-/obj/structure/showcase/yautja/alt{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "jq" = (
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/coast/beachcorner/south_east,
@@ -374,13 +387,6 @@
 "jZ" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/lv624/ground/caves/sand_temple)
-"kn" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/showcase/yautja/alt{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "kZ" = (
 /obj/structure/stairs/perspective{
@@ -693,12 +699,6 @@
 "xO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"ya" = (
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	pixel_x = 3
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "yf" = (
 /obj/effect/landmark/yautja_teleport,
@@ -1723,7 +1723,7 @@ GT
 GT
 GT
 xO
-dE
+ag
 ow
 Jc
 Jc
@@ -1771,7 +1771,7 @@ Jc
 Jc
 Jc
 gL
-jp
+ae
 OC
 HL
 Ai
@@ -1807,7 +1807,7 @@ GT
 GT
 GT
 Jm
-dE
+ag
 gL
 Jc
 Jc
@@ -1855,7 +1855,7 @@ Jc
 Jc
 Jc
 gL
-jp
+ae
 xO
 HL
 wU
@@ -1891,7 +1891,7 @@ GT
 GT
 GT
 xO
-ya
+ah
 gL
 Jc
 Jc
@@ -1939,7 +1939,7 @@ Jc
 Jc
 Jc
 gL
-kn
+af
 xO
 fG
 po

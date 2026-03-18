@@ -1007,6 +1007,14 @@
 "adV" = (
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
+"adW" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	dir = 1;
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -1055,6 +1063,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
+"aee" = (
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "aef" = (
 /turf/closed/wall,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
@@ -1121,6 +1135,13 @@
 	},
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aeq" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "aer" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -1370,6 +1391,12 @@
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_tcomms_road)
+"afr" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "afs" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/south,
@@ -11956,13 +11983,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"eme" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/showcase/yautja/alt{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "enn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -14988,13 +15008,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"kMX" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/closet/coffin/predator/ancient_stone{
-	pixel_x = 3
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "kNm" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -17293,12 +17306,6 @@
 /area/lv624/lazarus/medbay)
 "pws" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
-"pwF" = (
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	pixel_x = 3
-	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "pxc" = (
@@ -19844,8 +19851,7 @@
 /area/lv624/ground/caves/east_caves)
 "uDd" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	dir = 1;
+/obj/structure/closet/coffin/predator/ancient_stone{
 	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -20126,12 +20132,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"vfL" = (
-/obj/structure/showcase/yautja/alt{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "vfR" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -51699,13 +51699,13 @@ ahv
 ahv
 ahv
 aeg
-kMX
+uDd
 iSa
 mhZ
 mhZ
 mhZ
 pEV
-uDd
+adW
 cRm
 poE
 agX
@@ -52147,7 +52147,7 @@ ahv
 ahv
 ahv
 slW
-kMX
+uDd
 pEV
 mhZ
 mhZ
@@ -52377,7 +52377,7 @@ mhZ
 mhZ
 mhZ
 pEV
-vfL
+aee
 aeg
 poE
 gxd
@@ -52595,13 +52595,13 @@ ahv
 ahv
 ahv
 aeg
-pwF
+afr
 pEV
 mhZ
 mhZ
 mhZ
 pEV
-uDd
+adW
 slW
 poE
 fPi
@@ -52825,7 +52825,7 @@ mhZ
 mhZ
 mhZ
 pEV
-eme
+aeq
 aeg
 efJ
 eSb

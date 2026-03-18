@@ -69,6 +69,13 @@
 /obj/item/reagent_container/food/drinks/coffeecup,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
+"am" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple/powered)
 "as" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -132,7 +139,7 @@
 /area/lv624/ground/caves/sand_temple/powered)
 "aT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -176,7 +183,7 @@
 "cN" = (
 /obj/structure/platform/stone/runed_sandstone/north,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -184,7 +191,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "cT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -198,7 +205,7 @@
 /area/lv624/ground/caves/sand_temple)
 "dz" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -286,7 +293,7 @@
 /area/lv624/ground/caves/sand_temple)
 "eb" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -294,7 +301,7 @@
 /area/lv624/ground/caves/sand_temple)
 "el" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -322,7 +329,7 @@
 /area/lv624/ground/caves/sand_temple)
 "eM" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -430,7 +437,7 @@
 /area/lv624/ground/caves/sand_temple)
 "hA" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -472,7 +479,7 @@
 /area/lv624/ground/caves/sand_temple)
 "iu" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -516,7 +523,7 @@
 /area/lv624/ground/caves/sand_temple)
 "kd" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -524,7 +531,7 @@
 /area/lv624/ground/caves/sand_temple)
 "kM" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -610,7 +617,7 @@
 /area/lv624/ground/caves/sand_temple)
 "oR" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -621,7 +628,7 @@
 /area/lv624/ground/caves/sand_temple/powered)
 "po" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/whiteyellowfull/east,
@@ -649,7 +656,7 @@
 /area/lv624/ground/caves/sand_temple)
 "qZ" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -670,7 +677,7 @@
 "sa" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -715,7 +722,7 @@
 	name = "Alien Mine"
 	},
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -748,7 +755,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xg" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -757,7 +764,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xy" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -775,7 +782,7 @@
 "yh" = (
 /obj/structure/platform/stone/runed_sandstone,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -791,7 +798,7 @@
 /area/lv624/ground/caves/sand_temple)
 "zf" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -805,7 +812,7 @@
 "zG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -822,7 +829,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Ah" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -834,7 +841,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Ba" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -842,7 +849,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Bm" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -878,7 +885,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Cj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -947,7 +954,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Ff" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -955,7 +962,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Fp" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -1006,7 +1013,7 @@
 /area/lv624/ground/caves/sand_temple)
 "HK" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -1051,7 +1058,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Js" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -1142,7 +1149,7 @@
 /area/lv624/ground/caves/sand_temple)
 "NX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -1151,7 +1158,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "NZ" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -1222,7 +1229,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Qa" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -1264,7 +1271,7 @@
 /area/lv624/ground/caves/sand_temple)
 "RV" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -1291,7 +1298,7 @@
 "SF" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -1333,7 +1340,7 @@
 /area/lv624/ground/caves/sand_temple)
 "UA" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -1345,7 +1352,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "UP" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082"
+	color = "#b6a38f"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -2195,7 +2202,7 @@ hA
 mv
 mv
 kO
-PA
+am
 UP
 mv
 mv
@@ -2226,7 +2233,7 @@ mv
 kb
 mv
 kO
-PA
+am
 mv
 mv
 mv
@@ -2237,7 +2244,7 @@ po
 mv
 mv
 kO
-PA
+am
 UP
 mv
 mv
@@ -2246,7 +2253,7 @@ mv
 mv
 mv
 mv
-PA
+am
 uE
 uE
 uE
@@ -2279,7 +2286,7 @@ Ff
 mv
 mv
 kO
-PA
+am
 UP
 mv
 mv
@@ -2939,7 +2946,7 @@ ZX
 ZX
 ZX
 RY
-PA
+am
 mv
 mv
 mv
@@ -2981,7 +2988,7 @@ ZX
 ZX
 ZX
 RY
-PA
+am
 mv
 mv
 mv

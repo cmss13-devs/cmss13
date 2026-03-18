@@ -164,7 +164,7 @@
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
-	description = "A fertilizer that sacrifices most of the nutrients in its contents to boost health and to prolong the life expectancy"
+	description = "A fertilizer that sacrifices most of the nutrients in its contents to boost health and to prolong the life expectancy."
 	id = "left4zed"
 
 /datum/reagent/toxin/fertilizer/left4zed/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
@@ -301,7 +301,7 @@
 /datum/reagent/toxin/iron_sulfate
 	name = "Iron Sulfate"
 	id = "iron_sulfate"
-	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
+	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes."
 	reagent_state = LIQUID
 	color = "#303030"
 	chemclass = CHEM_CLASS_UNCOMMON

@@ -132,6 +132,7 @@
 		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", floor(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
+		list("Night Vision Optic", floor(scale * 2), /obj/item/device/helmet_visor/night_vision, VENDOR_ITEM_WELL_FUNDED),
 
 		list("ESSENTIAL DEVICES", -1, null, null),
 		list("Motion Detector", floor(scale * 4), /obj/item/device/motiondetector, VENDOR_ITEM_REGULAR),
@@ -536,6 +537,7 @@
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/smooth, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
+		list("M3 B12 Pattern Marine Armor", 10, /obj/item/clothing/suit/storage/marine/medium/leader, VENDOR_ITEM_WELL_FUNDED),
 
 		list("GLOVES", -1, null, null),
 		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),

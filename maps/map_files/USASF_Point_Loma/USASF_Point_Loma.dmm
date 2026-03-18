@@ -41006,8 +41006,6 @@
 "cTT" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /area/point_loma/airbase/exterior/east)
-"cTU" = (
-/area/point_loma/airbase/exterior/east)
 "cTV" = (
 /obj/structure/prop/static_tank/fuel,
 /turf/open/hybrisa/street,
@@ -161196,10 +161194,10 @@ aNI
 aNI
 dcd
 cVu
-cTU
-cTU
-cTU
-cTU
+dcd
+dcd
+dcd
+dcd
 cTL
 cTL
 bQd

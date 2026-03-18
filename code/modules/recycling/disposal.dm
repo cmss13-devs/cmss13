@@ -270,9 +270,15 @@
 
 ///Human interact with machine
 /obj/structure/machinery/disposal/attack_hand(mob/user as mob)
-	if(user && user.loc == src)
-		to_chat(usr, SPAN_DANGER("You cannot reach the controls from inside."))
-		return
+	if(user)
+		if(stat & NOPOWER && ishuman(user))
+			to_chat(usr, SPAN_NOTICE("You begin to empty the [name]."))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				eject()
+			return
+		if(user.loc == src)
+			to_chat(usr, SPAN_DANGER("You cannot reach the controls from inside."))
+			return
 
 	tgui_interact(user)
 

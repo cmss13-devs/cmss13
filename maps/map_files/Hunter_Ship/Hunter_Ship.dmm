@@ -4995,19 +4995,17 @@
 "kB" = (
 /obj/item/clothing/mask/gas/yautja/hunter{
 	anchored = 1;
-	pixel_y = 17;
+	pixel_y = 20;
 	pixel_x = 1
-	},
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = 3
 	},
 /obj/item/weapon/twohanded/yautja/spear{
 	anchored = 1;
-	pixel_y = 3
+	pixel_y = 8
+	},
+/obj/structure/morgue/sarcophagus/stone{
+	dir = 2;
+	pixel_x = -16;
+	pixel_y = -12
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/middle_deck/morgue)
@@ -6976,7 +6974,8 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja_ship/lower_deck/corridors)
 "pd" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -7517,20 +7516,16 @@
 /turf/open/predship/hull/non_weedable_hull/east,
 /area/yautja_ship/upper_deck/hangar_b)
 "qn" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = -3;
-	dir = 1;
-	pixel_y = 1
-	},
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
-	pixel_y = 4;
+	pixel_y = 11;
 	anchored = 1;
 	layer = 3.2
+	},
+/obj/structure/morgue/sarcophagus/stone{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = -13
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/middle_deck/morgue)
@@ -9473,14 +9468,14 @@
 	pixel_y = 8;
 	layer = 2.4
 	},
-/obj/item/weapon/shield/riot/yautja/ancient{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 8;
 	pixel_y = 4;
 	anchored = 1
+	},
+/obj/item/weapon/shield/riot/yautja/ancient/temple{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /turf/open/predship/hull,
 /area/yautja_ship/middle_deck/trophy_hall)
@@ -10131,19 +10126,15 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/lower_deck/cargo)
 "ws" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = -3;
-	dir = 1;
-	pixel_y = 1
-	},
 /obj/item/weapon/yautja/duelknife{
 	anchored = 1;
 	pixel_x = -1;
 	pixel_y = 3
+	},
+/obj/structure/morgue/sarcophagus/stone{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = -13
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/middle_deck/morgue)
@@ -10331,17 +10322,15 @@
 /turf/open/predship/hull,
 /area/yautja_ship/middle_deck/mainhall)
 "wI" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = 3
-	},
 /obj/item/clothing/mask/gas/yautja/hunter{
 	anchored = 1;
-	pixel_y = 17;
+	pixel_y = 20;
 	pixel_x = 1
+	},
+/obj/structure/morgue/sarcophagus/stone{
+	dir = 2;
+	pixel_x = -16;
+	pixel_y = -12
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/middle_deck/morgue)
@@ -10357,7 +10346,7 @@
 /turf/open/predship/hull/non_weedable_hull/east,
 /area/yautja_ship/middle_deck/mainhall)
 "wL" = (
-/turf/open/floor/carpet5_1,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/east,
 /area/yautja_ship/lower_deck/temple)
 "wM" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -10365,13 +10354,13 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/middle_deck/trophy_hall)
 "wN" = (
-/turf/open/floor/carpet13_5/west,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/northwest,
 /area/yautja_ship/lower_deck/temple)
 "wO" = (
 /turf/open/predship/tile/hunter_tile_6/east,
 /area/yautja_ship/lower_deck/firerange)
 "wP" = (
-/turf/open/floor/carpet9_4,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/west,
 /area/yautja_ship/lower_deck/temple)
 "wQ" = (
 /obj/structure/blocker/invisible_wall,
@@ -10462,7 +10451,8 @@
 /turf/open/predship/tile/red2,
 /area/yautja_ship/lower_deck/temple)
 "wY" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -11616,16 +11606,16 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja_ship/upper_deck/prison)
 "zE" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/brazier/torch{
+	layer = 4.12;
+	pixel_y = -5
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
 	pixel_y = 22
-	},
-/obj/structure/prop/brazier/torch{
-	layer = 4.12;
-	pixel_y = -5;
-	pixel_x = -6
 	},
 /turf/open/predship/hunter_catwalk,
 /area/yautja_ship/lower_deck/corridors)
@@ -11829,8 +11819,12 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/hangar_a)
 "Ab" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
 	pixel_y = 22
@@ -12174,7 +12168,7 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/trophy_hall)
 "AQ" = (
-/turf/open/floor/carpet14_10/west,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/northeast,
 /area/yautja_ship/lower_deck/temple)
 "AR" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north{
@@ -13332,14 +13326,10 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/prep)
 "DA" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = -3;
+/obj/structure/morgue/sarcophagus/stone{
 	dir = 1;
-	pixel_y = 1
+	pixel_x = -16;
+	pixel_y = -13
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/middle_deck/morgue)
@@ -14030,7 +14020,7 @@
 /turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "EW" = (
-/turf/open/floor/carpet15_15/west,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/dark,
 /area/yautja_ship/lower_deck/temple)
 "EX" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14115,7 +14105,7 @@
 /turf/open/predship/tile/hunter_tile_6/east,
 /area/yautja_ship/lower_deck/corridors)
 "Fg" = (
-/turf/open/floor/carpet6_2,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark,
 /area/yautja_ship/lower_deck/temple)
 "Fh" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -14292,10 +14282,12 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/prep)
 "FA" = (
-/obj/structure/prop/hunter/ancient_temple/giant_statue/base,
 /obj/structure/prop/hunter/ancient_temple/giant_statue{
 	pixel_y = 19;
 	dir = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable{
+	color = "#756e6a"
 	},
 /turf/open/predship/hunter_catwalk,
 /area/yautja_ship/lower_deck/temple)
@@ -15189,7 +15181,7 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/middle_deck/trophy_hall)
 "HE" = (
-/turf/open/floor/carpet7_3,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/southeast,
 /area/yautja_ship/lower_deck/temple)
 "HF" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -15656,7 +15648,7 @@
 /turf/open/predship/tile/hunter_tile_6/east,
 /area/yautja_ship/lower_deck/engine)
 "IB" = (
-/turf/open/floor/carpet11_12,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/southwest,
 /area/yautja_ship/lower_deck/temple)
 "IC" = (
 /obj/item/skull/despoiler{
@@ -15696,7 +15688,8 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/lower_deck/houndchamber)
 "IG" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -17921,20 +17914,6 @@
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/mortuary)
-"No" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
-	pixel_y = 4
-	},
-/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
-	pixel_y = 22
-	},
-/obj/structure/prop/brazier/torch{
-	layer = 4.12;
-	pixel_y = -5;
-	pixel_x = 5
-	},
-/turf/open/predship/hunter_catwalk,
-/area/yautja_ship/lower_deck/corridors)
 "Np" = (
 /obj/structure/target{
 	icon_state = "target_h"
@@ -18411,7 +18390,7 @@
 /turf/open/predship/tile/hunter_tile_6,
 /area/yautja_ship/lower_deck/forge)
 "Oq" = (
-/turf/open/floor/carpet10_8,
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/north,
 /area/yautja_ship/lower_deck/temple)
 "Or" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -19305,7 +19284,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja_ship/lower_deck/cargo)
 "QA" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -20494,10 +20474,12 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/middle_deck/mainhall)
 "Tp" = (
-/obj/structure/prop/hunter/ancient_temple/giant_statue/base,
 /obj/structure/prop/hunter/ancient_temple/giant_statue{
 	pixel_x = -16;
 	pixel_y = 19
+	},
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable{
+	color = "#756e6a"
 	},
 /turf/open/predship/hunter_catwalk,
 /area/yautja_ship/lower_deck/temple)
@@ -20896,6 +20878,16 @@
 	},
 /turf/open/predship/tile/hunter_tile_5/east,
 /area/yautja_ship/lower_deck/scribe)
+"Un" = (
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
+	pixel_y = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22
+	},
+/turf/open/predship/hunter_catwalk,
+/area/yautja_ship/upper_deck/corridors)
 "Uo" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -22033,21 +22025,6 @@
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/predship/tile/red3,
 /area/yautja_ship/middle_deck/mainhall)
-"WT" = (
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	pixel_y = 18;
-	pixel_x = 1
-	},
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus";
-	pixel_x = 3
-	},
-/turf/open/predship/hunter_catwalk_new,
-/area/yautja_ship/middle_deck/morgue)
 "WU" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -22587,7 +22564,8 @@
 /turf/open/predship/hull/non_weedable_hull,
 /area/yautja_ship/lower_deck/firerange)
 "Yk" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -22804,7 +22782,8 @@
 /turf/open/predship/hull/non_weedable_hull/west,
 /area/yautja_ship/lower_deck/elites)
 "YJ" = (
-/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
 	pixel_y = 4
 	},
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey{
@@ -27301,12 +27280,12 @@ vJ
 vD
 vy
 Lq
-No
+zE
 Lq
 Dm
 Dm
 Lq
-No
+zE
 Lq
 Dm
 Dm
@@ -34392,7 +34371,7 @@ Vc
 me
 lV
 bx
-WT
+wI
 wi
 DX
 qn
@@ -43879,7 +43858,7 @@ yX
 yX
 SR
 Ex
-Ab
+Un
 Ex
 ru
 Sg

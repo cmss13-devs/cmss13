@@ -108,7 +108,7 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "cG" = (
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "de" = (
@@ -135,6 +135,13 @@
 	anchored = 1
 	},
 /turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"dE" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/closet/coffin/predator/ancient_stone{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "dF" = (
 /turf/open/gm/dirtgrassborder/north,
@@ -176,7 +183,7 @@
 	pixel_x = -1;
 	pixel_y = 31
 	},
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ev" = (
@@ -249,7 +256,9 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/colorable{
+	color = "#6c4449"
+	},
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
@@ -309,9 +318,12 @@
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
-/obj/structure/morgue/sarcophagus,
 /obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
+	},
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	dir = 8;
+	pixel_y = 4
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -345,6 +357,12 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
+"jp" = (
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "jq" = (
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/coast/beachcorner/south_east,
@@ -356,6 +374,13 @@
 "jZ" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/lv624/ground/caves/sand_temple)
+"kn" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/showcase/yautja/alt{
+	dir = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "kZ" = (
 /obj/structure/stairs/perspective{
@@ -429,7 +454,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -473,7 +498,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
@@ -532,13 +557,11 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "ue" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	dir = 1;
+	pixel_x = 3
+	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "un" = (
@@ -611,7 +634,7 @@
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wt" = (
@@ -636,11 +659,9 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "wS" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	dir = 1;
+	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -672,6 +693,12 @@
 "xO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"ya" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "yf" = (
 /obj/effect/landmark/yautja_teleport,
@@ -705,7 +732,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "zu" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles,
@@ -757,7 +784,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "BI" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/strata/grey_multi_tiles,
@@ -904,7 +931,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "He" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/colorable{
+	color = "#6c4449"
+	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Hk" = (
@@ -989,7 +1018,7 @@
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -1132,7 +1161,7 @@
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /obj/effect/spider/stickyweb,
@@ -1694,7 +1723,7 @@ GT
 GT
 GT
 xO
-ue
+dE
 ow
 Jc
 Jc
@@ -1742,7 +1771,7 @@ Jc
 Jc
 Jc
 gL
-JN
+jp
 OC
 HL
 Ai
@@ -1778,7 +1807,7 @@ GT
 GT
 GT
 Jm
-ue
+dE
 gL
 Jc
 Jc
@@ -1826,7 +1855,7 @@ Jc
 Jc
 Jc
 gL
-JN
+jp
 xO
 HL
 wU
@@ -1862,7 +1891,7 @@ GT
 GT
 GT
 xO
-wS
+ya
 gL
 Jc
 Jc
@@ -1910,7 +1939,7 @@ Jc
 Jc
 Jc
 gL
-Mn
+kn
 xO
 fG
 po

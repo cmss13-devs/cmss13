@@ -213,7 +213,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_ADDICTIVE = 5)
+	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_ADDICTIVE = 1)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -239,6 +239,7 @@
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 /datum/reagent/copper
 	name = "Copper"

@@ -618,6 +618,7 @@
 	icon_state = "marinepack_chem"
 	item_state = "marinepack_chem"
 	item_state_slots = list(WEAR_BACK = "marinepack_chem")
+	max_storage_space = 18
 	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
 
 /obj/item/storage/backpack/marine/medic/chempack/Initialize()
@@ -798,6 +799,7 @@
 	icon_state = "marinesatch_chem"
 	item_state = "marinesatch_chem"
 	item_state_slots = list(WEAR_BACK = "marinesatch_chem")
+	max_storage_space = 12
 	var/obj/item/reagent_container/glass/minitank/large/internal_tank = null
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Initialize()

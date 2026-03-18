@@ -396,7 +396,7 @@
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "large_reagent_tank"
 	matter = list("metal" = 1000)
-	volume = 960
+	volume = 480
 	w_class = SIZE_LARGE
 	var/obj/item/storage/backpack/marine/owner_pack = null
 

@@ -1,0 +1,4 @@
+author: "halgmor"
+delete-after: True
+changes:
+  - rscadd: "HealthMate HUD added to the medic gear vendor."

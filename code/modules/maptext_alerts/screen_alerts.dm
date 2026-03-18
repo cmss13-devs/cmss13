@@ -10,13 +10,16 @@
  * * alert_type: typepath for screen text type we want to play here
  * * override_color: the color of the text to use
  */
-/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
+/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF", cancel_duplicate = FALSE)
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
 	if(override_color)
 		text_box.color = override_color
-
+	if(cancel_duplicate)
+		for(var/atom/i in client.screen_texts)
+			if(i.type == text_box.type)
+				return
 	LAZYADD(client.screen_texts, text_box)
 	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
 		INVOKE_ASYNC(text_box, TYPE_PROC_REF(/atom/movable/screen/text/screen_text, play_to_client))

@@ -38,7 +38,7 @@
 /obj/item/clothing/glasses/hud/health/proc/announce_to_user(datum/source, text, name)
 	var/mob/player = equipped_user.resolve()
 	playsound_client(player.client, 'sound/effects/radiostatic.ogg', player.loc, 25, FALSE)
-	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182")
+	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182", TRUE)
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"

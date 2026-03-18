@@ -202,7 +202,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HALLUCINOGENIC = 2)
+	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_ADDICTIVE = 2)
 
 /datum/reagent/sleen
 	name = "Sleen"
@@ -213,7 +213,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 3)
+	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_ADDICTIVE = 5)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -278,6 +278,7 @@
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_FUELING = 1)
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
@@ -344,7 +345,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_BIOCIDIC = 1)
+	properties = list(PROPERTY_BIOCIDIC = 1, PROPERTY_PNEUMOTOXIC = 3, PROPERTY_OCULOTOXIC = 1)
 
 /datum/reagent/fluorine
 	name = "Fluorine"
@@ -425,7 +426,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRHAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -683,6 +684,7 @@
 	reagent_state = GAS
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_TOXIC = 3, PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()

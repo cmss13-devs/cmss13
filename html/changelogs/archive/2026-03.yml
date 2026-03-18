@@ -186,3 +186,48 @@
   - balance: increases random HPR crate spawn chance
   - balance: reduces random flamer fuel crate spawn chance
   - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead
+2026-03-17:
+  MoondancerPony:
+  - bugfix: fixed reading papers inside folders
+  - spellcheck: fixed a few descriptions missing punctuation
+  Venuska1117:
+  - qol: Organizes Alien Tab, now verbs have categories for better visibility.
+  dawsonkeyes:
+  - rscadd: Staff may now send a Yautja Military Caste squad if they really, really
+      hate you
+  forest2001, DawsonKeyes:
+  - mapadd: Changed the Predship to Multi-Z.
+  - mapadd: Added a Hunter Shuttle.
+  - rscdel: Removed Predship Susbsystem as it is not required.
+  mrkivnv:
+  - rscadd: added new corporate bodyguard icons that depends on the rank status
+  - imageadd: bodyguard icons for TPPO, PPO, PPS, PPC
+2026-03-18:
+  TrollerNoob:
+  - ui: Toggle Ceiling Overlays action button now only appears when the Minimap is
+      actively open.
+  - rscadd: Xenos can now see the Minimap when the Queen is off her ovipositor, but
+      it will be a static version of the last Queen Minimap update. It returns to
+      live once the Queen is on ovi.
+  - qol: Queens on Ovi automatically have drawing tools available when opening their
+      Minimap.
+  - rscdel: Removed the Edit Minimap option from the Manage the Hive menu.
+  - bugfix: Fixed Minimaps not properly receiving updates from CIC.
+  - bugfix: Fixed Xenos being unable to see Queen drawings.
+  - bugfix: Fixed latejoin marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed spawned marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed live minimaps receiving drawing updates before the update was actually
+      sent.
+  - bugfix: Fixed Ceiling Overlays being applied when they were not toggled.
+  - bugfix: Removed the dim grey area outside the minimap when Ceiling Overlays were
+      toggled on.
+  forest2001, dimdimich1996:
+  - imageadd: Added new and updated sprites for Yautja related constructions and temples.
+  - maptweak: Adjusted existing temple areas on maps to accomodate sprite changes,
+      namely recolors and door orientation.

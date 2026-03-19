@@ -11678,7 +11678,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Medbay Storage";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -13734,7 +13734,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Engineering Maintenance";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor/almayer,
 /area/sulaco/engineering/storage)
@@ -20791,7 +20791,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Corporate Office";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor{
 	icon_state = "wood"

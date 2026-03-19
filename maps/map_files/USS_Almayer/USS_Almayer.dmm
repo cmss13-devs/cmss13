@@ -12061,6 +12061,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/command/cic)
 "aEE" = (
@@ -14502,6 +14503,11 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/lower_astronav)
+"aLE" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map/galaxy,
+/turf/open/floor/carpet,
+/area/almayer/command/cicconference)
 "aLF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
@@ -19813,6 +19819,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/sign/third_fleet_info{
+	pixel_y = 29
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -48248,7 +48260,7 @@
 /area/almayer/hallways/lower/starboard_umbilical)
 "ePz" = (
 /obj/structure/noticeboard{
-	desc = "The note is haphazardly attached to the cork board by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be dis-assembled and packed into a crate and sent to to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
+	desc = "The note is haphazardly attached to the corkboard by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be disassembled and packed into a crate and sent to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
 	pixel_y = 29
 	},
 /obj/structure/flora/pottedplant/random{
@@ -62888,7 +62900,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -89568,6 +89580,9 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
@@ -196843,7 +196858,7 @@ aAs
 aAs
 aDz
 iwW
-sTm
+aLE
 gwR
 sTm
 tdT
@@ -199210,13 +199225,13 @@ ssW
 qEk
 hrm
 wVW
-rOC
+aYH
 aqN
 tCT
 tCT
 tCT
 aDv
-aEC
+aqN
 wVW
 dNZ
 qEk

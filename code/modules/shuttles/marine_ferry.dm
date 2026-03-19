@@ -323,7 +323,7 @@
 
 //Starts out exactly the same as long_jump()
 //Differs in the target selection and later things enough to merit it's own proc
-//The backend for landmarks should be in it's own proc, but I use too many vars resulting from the backend to save much space
+//The backend for landmarks should be in its own proc, but I use too many vars resulting from the backend to save much space
 /datum/shuttle/ferry/marine/proc/long_jump_crash()
 	set waitfor = 0
 

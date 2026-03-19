@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimaps_by_z["[level]"] = new /datum/minimap_z_level_holder
 	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
 		return
-	var/datum/hud_displays/hud_data = minimaps_by_z["[level]"]
+	var/datum/minimap_z_level_holder/hud_data = minimaps_by_z["[level]"]
 	var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
 	var/icon/ceiling_overlay = icon('icons/ui_icons/minimap.dmi')
 	var/xmin = world.maxx
@@ -188,7 +188,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!target_client?.prefs?.show_minimap_ceiling_protection)
 		return null
 
-	var/datum/hud_displays/hud_data = minimaps_by_z["[z_level]"]
+	var/datum/minimap_z_level_holder/hud_data = minimaps_by_z["[z_level]"]
 	if(!hud_data)
 		return null
 
@@ -204,8 +204,8 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	// Clear the old minimap data but preserve the structure
-	var/datum/hud_displays/old_display = minimaps_by_z["[z_level]"]
-	minimaps_by_z["[z_level]"] = new /datum/hud_displays
+	var/datum/minimap_z_level_holder/old_display = minimaps_by_z["[z_level]"]
+	minimaps_by_z["[z_level]"] = new /datum/minimap_z_level_holder
 
 	// Copy over any existing drawn images
 	if(old_display?.drawing_image)

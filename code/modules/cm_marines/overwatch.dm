@@ -642,6 +642,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(cam)
 				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			concurrent.reset_view(new_cam)
+			set_onscreen_text(concurrent, cam_target)
 			concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 		if(camera_holder)
 			disconnect_holder()

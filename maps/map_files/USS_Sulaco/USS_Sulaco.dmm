@@ -179,9 +179,7 @@
 	pixel_x = -30
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "acg" = (
 /obj/structure/machinery/disposal,
@@ -1225,9 +1223,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "bDN" = (
 /turf/open/floor/almayer/blue/east,
@@ -1676,9 +1672,7 @@
 /turf/open/floor/plating/platebotc,
 /area/sulaco/brig)
 "cep" = (
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "cff" = (
 /obj/structure/surface/rack,
@@ -2970,9 +2964,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "dHD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -3983,9 +3975,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "eNG" = (
 /obj/structure/disposalpipe/segment{
@@ -4119,9 +4109,7 @@
 	pixel_y = 7
 	},
 /obj/item/tool/pen,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "fas" = (
 /turf/open/floor/almayer/research/containment/corner/east,
@@ -4868,9 +4856,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "fVy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -6589,9 +6575,7 @@
 	dir = 4;
 	icon_state = "pipe-j2"
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "ipj" = (
 /obj/structure/machinery/suit_storage_unit/standard_unit,
@@ -8014,9 +7998,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "jXd" = (
 /obj/structure/surface/table/almayer,
@@ -8235,9 +8217,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "kpV" = (
 /turf/closed/wall/almayer,
@@ -9169,9 +9149,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "lzy" = (
 /obj/structure/disposalpipe/segment{
@@ -10860,9 +10838,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "nPp" = (
 /turf/closed/wall/almayer/research/containment/wall/north,
@@ -11297,9 +11273,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "osf" = (
 /obj/structure/surface/rack,
@@ -11463,9 +11437,7 @@
 	pixel_x = -7
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "oDd" = (
 /obj/structure/machinery/power/apc/almayer/south,
@@ -12604,9 +12576,7 @@
 /turf/open/floor/prison/kitchen,
 /area/sulaco/cafeteria)
 "qmL" = (
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "qon" = (
 /turf/open/floor/almayer/red/northwest,
@@ -12937,9 +12907,7 @@
 	pixel_x = 0;
 	pixel_y = -30
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "qGx" = (
 /obj/structure/machinery/computer/telecomms/monitor,
@@ -15535,9 +15503,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "tWY" = (
 /turf/closed/wall/almayer/outer,
@@ -16548,9 +16514,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "vej" = (
 /turf/closed/shuttle/ert{
@@ -17784,9 +17748,7 @@
 	pixel_x = -7
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/carpet{
-	icon_state = "carpetnoconnect"
-	},
+/turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "wCO" = (
 /obj/item/paper_bin{

@@ -1354,7 +1354,6 @@
 "buj" = (
 /obj/structure/machinery/telecomms/processor/preset_three,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -2137,7 +2136,6 @@
 "cip" = (
 /obj/structure/machinery/telecomms/processor/preset_one,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -2961,7 +2959,6 @@
 "cWw" = (
 /obj/structure/machinery/telecomms/bus/preset_two,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -3212,7 +3209,6 @@
 "dho" = (
 /obj/structure/machinery/telecomms/processor/preset_two,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -4632,7 +4628,6 @@
 "evH" = (
 /obj/structure/machinery/telecomms/server/presets/engineering,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -5282,7 +5277,6 @@
 "feH" = (
 /obj/structure/machinery/telecomms/bus/preset_one,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -8190,7 +8184,6 @@
 "hZp" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -8330,7 +8323,6 @@
 	pixel_x = -19
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -8716,7 +8708,6 @@
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -8892,7 +8883,6 @@
 "iHz" = (
 /obj/structure/machinery/telecomms/server/presets/common,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -9031,7 +9021,6 @@
 /obj/structure/machinery/computer/aa_console,
 /obj/structure/bed/chair/ob_chair,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -9761,7 +9750,6 @@
 "jCd" = (
 /obj/structure/machinery/telecomms/bus/preset_three,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -12279,7 +12267,6 @@
 "lYr" = (
 /obj/structure/machinery/telecomms/server/presets/security,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -12701,7 +12688,6 @@
 "mtS" = (
 /obj/structure/prop/almayer/cannon_cables,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -13792,7 +13778,6 @@
 "nNF" = (
 /obj/structure/machinery/telecomms/processor/preset_four,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -13930,7 +13915,6 @@
 "nUV" = (
 /obj/structure/machinery/telecomms/receiver/preset,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -17316,7 +17300,6 @@
 "rxU" = (
 /obj/structure/prop/almayer/cannon_cable_connector,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -18877,7 +18860,6 @@
 "tfw" = (
 /obj/structure/machinery/telecomms/server/presets/command,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -20132,7 +20114,6 @@
 /area/sulaco/hallway/central_hall2)
 "ulP" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/ob_aa_cannon)
@@ -20573,7 +20554,6 @@
 "uFO" = (
 /obj/structure/machinery/telecomms/bus/preset_four,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -21822,7 +21802,6 @@
 "vRl" = (
 /obj/structure/machinery/telecomms/receiver/preset_left,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)
@@ -22282,7 +22261,6 @@
 "wka" = (
 /obj/structure/machinery/telecomms/server/presets/squads,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/sulaco/telecomms)

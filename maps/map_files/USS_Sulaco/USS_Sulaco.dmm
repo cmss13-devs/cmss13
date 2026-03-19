@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	name = "Bridge Maintenance";
+	pixel_x = -25
+	},
+/turf/open/floor/plating,
+/area/sulaco/bridge/maint)
+"aab" = (
+/obj/effect/landmark/yautja_teleport,
+/obj/structure/machinery/power/apc{
+	name = "Solar Array 2";
+	pixel_y = -25
+	},
+/turf/open/floor/plating,
+/area/sulaco/maintenance/south_solar_maint)
 "aaf" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -340,7 +356,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Disposals";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/machinery/pipedispenser/disposal,
 /turf/open/floor/plating,
@@ -349,7 +365,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Delta Prep";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -1031,7 +1047,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Deck 2 Hallway";
-	pixel_x = 34;
+	pixel_x = 25;
 	pixel_y = 0
 	},
 /obj/structure/machinery/light{
@@ -1039,14 +1055,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hallway/lower_main_hall)
-"bjl" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Bridge Maintenance";
-	pixel_x = -30
-	},
-/turf/open/floor/plating,
-/area/sulaco/bridge/maint)
 "bjN" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/warhead,
@@ -1103,7 +1111,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Charlie Prep";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -1978,7 +1986,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "EVA";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/surface/rack,
 /obj/item/tank/oxygen,
@@ -2876,7 +2884,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Chief Engineer's Quarters";
-	pixel_y = 30;
+	pixel_y = 25;
 	pixel_z = 0
 	},
 /obj/structure/machinery/keycard_auth{
@@ -3316,7 +3324,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "AI Chamber";
-	pixel_x = 30;
+	pixel_x = 25;
 	pixel_y = 0
 	},
 /obj/structure/machinery/light/small{
@@ -3332,7 +3340,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Engineering Hall";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -3587,7 +3595,8 @@
 /obj/structure/machinery/power/apc/almayer/west{
 	dir = 8;
 	name = "Engine Room APC";
-	start_charge = 1000
+	start_charge = 1000;
+	pixel_x = -25
 	},
 /obj/structure/stairs/perspective{
 	dir = 6;
@@ -4948,7 +4957,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Morgue Maintenance";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /turf/open/floor/plating,
@@ -5064,7 +5073,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Solar Array";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor/plating,
 /area/sulaco/maintenance/north_solar_maint)
@@ -5480,7 +5489,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Medbay";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -5717,7 +5726,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Fancy Quarters";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -5853,7 +5862,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Operating Theatre 2";
-	pixel_x = 30
+	pixel_x = 25
 	},
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -6029,7 +6038,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Telecomms Monitoring";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /turf/open/floor/almayer{
@@ -6702,7 +6711,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Marine Prep";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -8196,7 +8205,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Executive Quarters";
-	pixel_x = 30
+	pixel_x = 25
 	},
 /obj/effect/landmark/start/executive,
 /turf/open/floor/wood,
@@ -9128,7 +9137,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Research Division";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /obj/structure/surface/table/almayer,
@@ -10392,7 +10401,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Medbay Hallway";
-	pixel_x = 30
+	pixel_x = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver";
@@ -10689,7 +10698,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Hangar Bay";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /obj/structure/dropship_equipment/weapon/launch_bay,
@@ -11770,7 +11779,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Atmospherics";
-	pixel_x = -30;
+	pixel_x = -25;
 	start_charge = 90
 	},
 /obj/structure/machinery/light{
@@ -12375,10 +12384,6 @@
 	},
 /area/sulaco/cargo)
 "mfF" = (
-/obj/structure/machinery/power/apc{
-	name = "Solar Array 2";
-	pixel_y = -30
-	},
 /obj/structure/machinery/power/smes/buildable{
 	dir = 8
 	},
@@ -12782,7 +12787,7 @@
 	dir = 2;
 	name = "Telecomms";
 	pixel_x = 0;
-	pixel_y = -30
+	pixel_y = -25
 	},
 /turf/closed/wall/almayer,
 /area/sulaco/telecomms)
@@ -12822,7 +12827,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Central Hall 2";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -13370,7 +13375,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Briefing Room";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -15583,7 +15588,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Cafeteria";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/surface/table/almayer,
@@ -15900,7 +15905,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Cryogenic Storage";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /obj/item/device/flashlight/flare,
 /obj/structure/surface/table/almayer,
@@ -16655,7 +16660,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Officer's Quarters";
-	pixel_x = 30;
+	pixel_x = 25;
 	pixel_y = 0
 	},
 /obj/structure/machinery/light/small{
@@ -17508,7 +17513,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Medbay West";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -18818,7 +18823,7 @@
 	dir = 1;
 	name = "Lower Deck Maintenance";
 	pixel_x = 0;
-	pixel_y = 30
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -19034,7 +19039,9 @@
 /turf/closed/wall/almayer,
 /area/sulaco/cryosleep)
 "tlQ" = (
-/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/machinery/power/apc/almayer/north{
+	pixel_y = 25
+	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/silver/northeast,
 /area/sulaco/maintenance/lower_maint2)
@@ -19062,7 +19069,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Engineering";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -19103,7 +19110,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Showers";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -19818,7 +19825,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Medbay Storage";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /obj/structure/transmitter/rotary{
 	name = "Medical Storage Telephone";
@@ -20927,7 +20934,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Morgue";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /obj/structure/surface/table/almayer,
@@ -21031,7 +21038,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Secure Armory";
-	pixel_x = -30;
+	pixel_x = -25;
 	pixel_y = 0
 	},
 /obj/structure/surface/rack,
@@ -21100,7 +21107,7 @@
 	dir = 2;
 	name = "Cargo Office";
 	pixel_x = 0;
-	pixel_y = -30
+	pixel_y = -25
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
@@ -21389,7 +21396,7 @@
 	dir = 1;
 	name = "Firing Range";
 	pixel_x = 0;
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table/almayer,
@@ -21727,7 +21734,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Security";
-	pixel_x = 30
+	pixel_x = 25
 	},
 /obj/structure/surface/rack,
 /obj/item/weapon/baton,
@@ -22130,7 +22137,7 @@
 	dir = 1;
 	name = "Mechanics";
 	pixel_x = 0;
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -22451,7 +22458,8 @@
 "wmk" = (
 /obj/structure/machinery/power/apc/almayer/north{
 	dir = 1;
-	name = "Master APC"
+	name = "Master APC";
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -22886,7 +22894,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Operating Theatre 1";
-	pixel_x = 30
+	pixel_x = 25
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -23189,7 +23197,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	name = "Cargo Bay";
-	pixel_x = 30;
+	pixel_x = 25;
 	pixel_y = 0
 	},
 /turf/open/floor/almayer,
@@ -24090,7 +24098,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Bravo Prep";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -24264,7 +24272,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Alpha Prep";
-	pixel_x = -30
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -39737,7 +39745,7 @@ qAx
 qAx
 qAx
 qAx
-wOo
+aaa
 wOo
 wOo
 iHr
@@ -39810,7 +39818,7 @@ wOo
 wOo
 wOo
 gaw
-bjl
+wOo
 wOo
 wNw
 iHr
@@ -42287,7 +42295,7 @@ pWO
 vOa
 bhx
 bhx
-jzh
+aab
 mvW
 cqY
 cqY

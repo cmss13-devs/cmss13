@@ -3,7 +3,7 @@
  */
 
 /obj/item/device/multitool
-	name = "\improper Security Access Tuner" //Thats what is is in-universe. From Alien: Isolation.
+	name = "\improper Security Access Tuner" //Thats what it is in-universe. From Alien: Isolation.
 	desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
 	icon_state = "multitool"
 	item_state = "multitool"

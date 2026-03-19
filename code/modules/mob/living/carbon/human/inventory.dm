@@ -418,7 +418,7 @@
 			r_store.update_icon()
 
 		else
-			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
+			to_chat(src, SPAN_DANGER("You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPED_ITEM, equipping_item, slot)

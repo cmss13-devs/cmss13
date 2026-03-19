@@ -132,7 +132,7 @@
 		do_caboom()
 		return
 
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
 	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
@@ -142,7 +142,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
 /datum/behavior_delegate/runner_acider/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
 

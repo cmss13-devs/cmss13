@@ -112,7 +112,7 @@
 
 	hivenumber = Q.hivenumber
 	med_hud_set_status()
-	add_to_all_mob_huds()
+	add_to_all_mob_huds(hivenumber)
 
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
@@ -671,7 +671,7 @@
 			. += "Temporary Maturity: [time2text(timeleft(queen_age_temp_timer_id), "mm:ss")] remaining"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
-	set category = "Alien"
+	set category = "Alien.Hivemind-Control"
 	set name = "Set Hive Orders (50)"
 	set desc = "Give some specific orders to the hive. They can see this on the status pane."
 
@@ -696,7 +696,7 @@
 	last_special = world.time + 15 SECONDS
 
 /mob/living/carbon/xenomorph/queen/proc/hive_message()
-	set category = "Alien"
+	set category = "Alien.Hivemind"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible."
 	if(client.prefs.muted & MUTE_IC)
@@ -734,7 +734,7 @@
 /mob/living/carbon/xenomorph/proc/claw_toggle()
 	set name = "Permit/Disallow Harming"
 	set desc = "Allows you to permit the hive to harm/slash."
-	set category = "Alien"
+	set category = "Alien.Hivemind-Control"
 
 	if(stat)
 		to_chat(src, SPAN_WARNING("You can't do that now."))
@@ -792,7 +792,7 @@
 /mob/living/carbon/xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"
 	set desc = "Allows you to permit the hive to place construction nodes freely."
-	set category = "Alien"
+	set category = "Alien.Hivemind-Control"
 
 	if(stat)
 		to_chat(src, SPAN_WARNING("You can't do that now."))
@@ -851,7 +851,7 @@
 /mob/living/carbon/xenomorph/proc/destruction_toggle()
 	set name = "Permit/Disallow Special Structure Destruction"
 	set desc = "Allows you to permit the hive to destroy special structures freely."
-	set category = "Alien"
+	set category = "Alien.Hivemind-Control"
 
 	if(stat)
 		to_chat(src, SPAN_WARNING("You can't do that now."))
@@ -910,7 +910,7 @@
 /mob/living/carbon/xenomorph/proc/unnesting_toggle()
 	set name = "Permit/Disallow Unnesting"
 	set desc = "Allows you to restrict unnesting to drones."
-	set category = "Alien"
+	set category = "Alien.Hivemind-Control"
 
 	if(stat)
 		to_chat(src, SPAN_WARNING("You can't do that now."))

@@ -1472,3 +1472,93 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
+
+/datum/equipment_preset/uscm/hunted/marsoc
+	name = "Marine Raider (Hunted)"
+	assignment = JOB_MARINE_RAIDER
+	job_title = JOB_MARINE_RAIDER
+	role_comm_title = "Op."
+	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
+	skills = /datum/skills/hunted_specops // instant injectors but not instant trauma kits
+	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
+
+	minimap_icon = "sof_sg"
+
+/datum/equipment_preset/uscm/hunted/marsoc/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
+
+/datum/equipment_preset/uscm/hunted/marsoc/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre, WEAR_IN_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/marsoc, WEAR_IN_HELMET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_HELMET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40, WEAR_IN_JACKET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/xm40/ap, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
+
+/datum/equipment_preset/uscm/hunted/marsoc/sg
+	name = "Marine Raider Smartgunner (Hunted)"
+	skills = /datum/skills/hunted_specops/smartgun
+
+/datum/equipment_preset/uscm/hunted/marsoc/sg/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre, WEAR_IN_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/autoaim, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/marsoc/full_low_threat, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full_low_threat, WEAR_R_STORE)
+
+/datum/equipment_preset/uscm/hunted/marsoc/sl
+	name = "Marine Raider Team Leader (Hunted)"
+	assignment = JOB_MARINE_RAIDER_SL
+	job_title = JOB_MARINE_RAIDER_SL
+	role_comm_title = "TL."
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
+
+	minimap_icon = "leader"

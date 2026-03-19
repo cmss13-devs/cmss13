@@ -210,7 +210,7 @@
 
 /obj/item/clothing/under/tunic
 	name = "generic tunic"
-	desc = "A generic tunic woven by linen fabric. Its historical usage dates back to old human civillizations."
+	desc = "A generic tunic woven by linen fabric. Its historical usage dates back to old human civilizations."
 	icon_state = "roman_tunic"
 	item_state = "roman_tunic"
 	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'

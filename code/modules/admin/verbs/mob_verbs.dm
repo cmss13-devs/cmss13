@@ -38,7 +38,7 @@
 	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
-		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
+		if(!M || !O) //Extra check in case the mob was deleted while we were transferring.
 			return
 		change_ckey(M, O.ckey)
 	else

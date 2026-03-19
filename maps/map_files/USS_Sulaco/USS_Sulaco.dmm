@@ -10555,10 +10555,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/morgue)
-"mYC" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/outer,
-/area/sulaco/hangar)
 "mZf" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/transmitter/rotary{
@@ -25495,7 +25491,7 @@ dZt
 dZt
 dZt
 dZt
-mYC
+dZt
 dZt
 arL
 arL
@@ -41771,7 +41767,7 @@ uGX
 ckn
 ckn
 ckn
-bGT
+nIt
 uhP
 uhP
 wTr

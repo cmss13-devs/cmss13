@@ -8,47 +8,47 @@
 /area/sulaco/bridge
 	name = "\improper Sulaco Bridge"
 	icon_state = "bridge"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/bridge/quarters
 	name = "\improper Sulaco Officer's Quarters"
 	icon_state = "livingspace"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/bridge/office
 	name = "\improper Sulaco Executive's Office"
 	icon_state = "head_quarters"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/cap_office
 	name = "\improper Sulaco Captain's Office"
 	icon_state = "captain"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/bridge/maint
 	name = "\improper Sulaco Bridge Maintenance"
 	icon_state = "maintcentral"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay
 	name = "\improper Sulaco Medbay"
 	icon_state = "medbay"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/storage
 	name = "\improper Sulaco Medbay Storage"
 	icon_state = "medbay2"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/storage2
 	name = "\improper Sulaco Medbay Storage"
 	icon_state = "medbay3"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/west
 	name = "\improper Sulaco Medbay West"
 	icon_state = "medbay3"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/hangar
 	name = "\improper Sulaco Medbay Hangar"
@@ -58,12 +58,12 @@
 /area/sulaco/medbay/surgery_one
 	name = "\improper Sulaco Operating Theatre I"
 	icon_state = "surgery"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/surgery_two
 	name = "\improper Sulaco Operating Theatre II"
 	icon_state = "surgery"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/medbay/chemistry
 	name = "\improper Sulaco Chemistry"
@@ -73,12 +73,12 @@
 /area/sulaco/disposal
 	name = "\improper Sulaco Disposal"
 	icon_state = "disposal"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/brig
 	name = "\improper Sulaco Brig"
 	icon_state = "brig"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/solar
 	name = "Sulaco Solar Array"
@@ -88,31 +88,31 @@
 
 /area/sulaco/solar/south
 	icon_state = "panelsA"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/solar/north
 	icon_state = "panelsP"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/hallway
 	name = "\improper Sulaco Hallway"
 	icon_state = "hallC1"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/hallway/central_hall
 	name = "\improper Sulaco Central Hallway"
 	icon_state = "hallC1"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/hallway/central_hall2
 	name = "\improper Sulaco Central Hallway"
 	icon_state = "hallC2"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/hallway/central_hall3
 	name = "\improper Sulaco Central Hallway"
 	icon_state = "hallC3"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/hallway/lower_main_hall
 	name = "\improper Sulaco Main Hallway"
@@ -122,98 +122,98 @@
 /area/sulaco/briefing
 	name = "\improper Sulaco Briefing Room"
 	icon_state = "briefing"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 
 /area/sulaco/cryosleep
 	name = "\improper Sulaco Cryogenic Storage"
 	icon_state = "Sleep"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/showers
 	name = "\improper Sulaco Showers"
 	icon_state = "toilet"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/cafeteria
 	name = "\improper Sulaco Cafeteria"
 	icon_state = "cafeteria"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/cargo
 	name = "\improper Sulaco Main Cargo Bay"
 	icon_state = "quartstorage"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/ob_aa_cannon
 	name = "\improper Sulaco OB and AA Cannon"
 	icon_state = "red"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/cargo/office
 	name = "\improper Sulaco Cargo Office"
 	icon_state = "quartoffice"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/maintenance
 	name = "\improper Sulaco Maintenance"
 	icon_state = "fmaint"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering
 	name = "\improper Sulaco Engineering"
 	icon_state = "engine"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering/storage
 	name = "\improper Sulaco Engineering Storage"
 	icon_state = "engine_storage"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering/ce
 	name = "\improper Sulaco Chief's Office"
 	icon_state = "head_quarters"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering/atmos
 	name = "\improper Sulaco Atmospherics"
 	icon_state = "atmos"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering/engine
 	name = "\improper Sulaco Engine Chamber"
 	icon_state = "yellow"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/engineering/smes
 	name = "\improper Sulaco Engineering SMES"
 	icon_state = "engine_smes"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/marine
 	name = "\improper Sulaco Marine Prep"
 	icon_state = "storage"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/marine/alpha
 	name = "\improper Sulaco Alpha Marine Prep"
 	icon_state = "red"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/marine/bravo
 	name = "\improper Sulaco Bravo Marine Prep"
 	icon_state = "yellow"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/marine/charlie
 	name = "\improper Sulaco Charlie Marine Prep"
 	icon_state = "purple"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/marine/delta
 	name = "\improper Sulaco Delta Marine Prep"
 	icon_state = "bluenew"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/command/armory
 	name = "\improper Sulaco Secure Armory"
@@ -224,6 +224,11 @@
 	name = "\improper Sulaco Combat Correspondent Office"
 	icon_state = "red"
 	fake_zlevel = 1 // upperdeck
+
+/area/sulaco/command/intelligence
+	name = "\improper Sulaco Intelligence Office"
+	icon_state = "head_quarters"
+	fake_zlevel = 2 // lowerdeck
 
 /area/sulaco/research
 	name = "\improper Sulaco Research Division"
@@ -280,14 +285,14 @@
 	fake_zlevel = 2 //lowerdeck
 
 /area/sulaco/hangar/atmos
-	name = "\improper Sulaco Atmospherics"
+	name = "\improper Sulaco Lower Atmospherics"
 	icon_state = "blue-red2"
 	fake_zlevel = 2 //lowerdeck
 
 /area/sulaco/command/eva
 	name = "\improper Sulaco EVA Storage"
 	icon_state = "storage"
-	fake_zlevel = 1 //lowerdeck
+	fake_zlevel = 1 //upperdeck
 
 /area/sulaco/maintenance/rear_maintenance
 	name = "\improper Sulaco Lower Maintenance Deck"

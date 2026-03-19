@@ -222,7 +222,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cafeteria)
@@ -722,7 +721,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/sulaco/cargo)
@@ -1777,7 +1775,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/sulaco/cargo)
@@ -1825,7 +1822,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cafeteria)
@@ -2691,7 +2687,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/marine)
@@ -3588,7 +3583,6 @@
 	tag = "icon-door_open"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cafeteria)
@@ -5047,7 +5041,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/showers)
@@ -5168,7 +5161,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/sulaco/cargo)
@@ -6004,7 +5996,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/briefing)
@@ -7217,7 +7208,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/showers)
@@ -8119,7 +8109,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/showers)
@@ -10566,7 +10555,6 @@
 "ktn" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/hallway/central_hall)
@@ -11261,7 +11249,6 @@
 	id = "supply_elevator_railing"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cargo)
@@ -11567,7 +11554,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/sulaco/cargo)
@@ -13080,7 +13066,6 @@
 "mRV" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/command/eva)
@@ -14143,7 +14128,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/hallway/central_hall2)
@@ -14434,7 +14418,6 @@
 	tag = "icon-door_open"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/showers)
@@ -14482,7 +14465,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cargo)
@@ -14926,7 +14908,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cafeteria)
@@ -15968,7 +15949,6 @@
 	tag = "icon-door_open"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cafeteria)
@@ -16548,7 +16528,6 @@
 /area/sulaco/telecomms)
 "qIQ" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/marine)
@@ -16873,7 +16852,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cargo)
@@ -17125,7 +17103,6 @@
 "rmq" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/hangar/range)
@@ -17620,7 +17597,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/hangar/range)
@@ -19023,7 +18999,6 @@
 "tmP" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/briefing)
@@ -21739,7 +21714,6 @@
 "vNQ" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/hallway/central_hall3)
@@ -22255,7 +22229,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/sulaco/cargo)

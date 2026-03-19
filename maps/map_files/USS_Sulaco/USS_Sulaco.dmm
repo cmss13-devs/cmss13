@@ -449,6 +449,69 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
+"abw" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/machinery/door/window/southleft{
+	opacity = 1
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/sulaco/showers)
+"abx" = (
+/obj/structure/machinery/door/window/southleft{
+	opacity = 1
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/sulaco/showers)
+"aby" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/machinery/door/window/northright{
+	opacity = 1
+	},
+/obj/structure/toilet{
+	dir = 8;
+	pixel_x = -4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/sulaco/showers)
+"abz" = (
+/obj/structure/machinery/door/window/northright{
+	opacity = 1
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/open/floor/freezerfloor,
+/area/sulaco/showers)
+"abA" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1"
+	},
+/turf/open/floor/warnwhite/north,
+/area/sulaco/cryosleep)
 "acc" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -723,6 +786,9 @@
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/facepaint/brown,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/white,
 /area/sulaco/cryosleep)
 "auA" = (
@@ -1576,11 +1642,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/engineering)
-"bGT" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bHb" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
 /obj/structure/machinery/light/small,
@@ -37967,7 +38028,7 @@ rlu
 rlu
 rlu
 vhe
-agE
+abA
 pjW
 aaK
 tHQ
@@ -38633,9 +38694,9 @@ jNF
 hdp
 fjv
 fjv
-uVO
+aby
 jNF
-olE
+abw
 fjv
 fjv
 uZJ
@@ -38925,9 +38986,9 @@ jNF
 hdp
 fjv
 fjv
-pQC
+abz
 jNF
-pXb
+abx
 frj
 fjv
 xUO
@@ -42287,7 +42348,7 @@ uhP
 uhP
 uhP
 uhP
-bGT
+ckn
 ckn
 ckn
 sqv

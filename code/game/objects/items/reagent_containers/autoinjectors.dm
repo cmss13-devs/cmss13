@@ -609,7 +609,7 @@
 	if(!reagents.total_volume)
 		to_chat(usr, SPAN_WARNING("[src] is already empty!"))
 		return
-	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	playsound(loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 	to_chat(usr, SPAN_WARNING("You work the flush valve and empty [src]'s contents!"))
 	reagents.clear_reagents()
 	uses_left = 0

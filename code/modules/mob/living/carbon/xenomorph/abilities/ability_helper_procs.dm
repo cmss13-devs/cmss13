@@ -148,7 +148,7 @@
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
-		QDEL_IN(A, 20)
+		QDEL_IN(A, 2 SECONDS)
 		return
 
 	if(isturf(O))

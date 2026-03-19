@@ -404,7 +404,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PSYCHOSTIMULATING = 4, PROPERTY_ADDICTIVE = 2)
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 4, PROPERTY_ADDICTIVE = 1)
 
 /datum/reagent/medical/antidepressant/citalopram
 	name = "Citalopram"

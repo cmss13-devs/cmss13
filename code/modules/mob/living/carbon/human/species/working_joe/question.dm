@@ -81,7 +81,7 @@
 	key = "reportyou"
 	sound = 'sound/voice/joe/report_you.ogg'
 	haz_sound = 'sound/voice/joe/report_you_haz.ogg'
-	say_message = "You understand i'll have to report you for this?"
+	say_message = "You understand I'll have to report you for this?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 

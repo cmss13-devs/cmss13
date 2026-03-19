@@ -2177,7 +2177,6 @@
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 5e+007;
 	charge = 5e+007;
-	chargelevel = 200000;
 	dir = 4;
 	name = "Core Power Unit";
 	output = 150000
@@ -3172,7 +3171,6 @@
 "dfT" = (
 /obj/structure/machinery/power/smes/buildable{
 	charge = 3e+006;
-	chargelevel = 100000;
 	chargemode = 1;
 	cur_coils = 4;
 	dir = 4;
@@ -16991,7 +16989,6 @@
 "rhu" = (
 /obj/structure/machinery/power/smes/buildable{
 	charge = 5e+006;
-	chargelevel = 150000;
 	chargemode = 1;
 	cur_coils = 4;
 	dir = 4;
@@ -19378,7 +19375,6 @@
 "tFG" = (
 /obj/structure/machinery/power/smes/buildable{
 	charge = 5e+006;
-	chargelevel = 150000;
 	chargemode = 1;
 	cur_coils = 4;
 	dir = 4;

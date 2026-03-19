@@ -140,6 +140,77 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/liaison/quarters)
+"aaA" = (
+/obj/structure/machinery/cryopod{
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/silverfull,
+/area/sulaco/command/ai)
+"aaB" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/silver/east,
+/area/sulaco/command/ai)
+"aaC" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer/silverfull,
+/area/sulaco/command/ai)
+"aaD" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = -32
+	},
+/obj/structure/machinery/computer/working_joe{
+	dir = 1;
+	pixel_y = -20;
+	name = "MOTHER Maintenance Controller"
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"aaE" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"aaF" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"aaG" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/hallway/lower_main_hall)
+"aaH" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"aaI" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer/dark_sterile,
+/area/sulaco/research)
+"aaJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/closed/wall/almayer,
+/area/sulaco/hangar)
+"aaK" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/sulaco/cryosleep)
 "abb" = (
 /turf/open/floor/almayer/blue/west,
 /area/sulaco/marine/delta)
@@ -210,7 +281,6 @@
 	name = "\improper Research Hydroponics Workshop";
 	dir = 2
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/research)
@@ -758,7 +828,6 @@
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
 "aWx" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/maintenance/south_solar_maint)
@@ -918,10 +987,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/north_solar_maint)
-"bhr" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/outer,
-/area/sulaco/maintenance/lower_maint)
 "bhx" = (
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
@@ -1188,6 +1253,7 @@
 	pixel_y = 6;
 	pixel_x = -10
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/sterile_green,
 /area/sulaco/research)
 "bAS" = (
@@ -1269,8 +1335,8 @@
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
 "bFJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -2186,6 +2252,13 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
+/obj/structure/machinery/door_control{
+	id = "aidoor";
+	name = "MOTHER Core Access";
+	req_one_access_txt = "90;91;92";
+	pixel_y = -22;
+	pixel_x = -7
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "cQa" = (
@@ -2217,9 +2290,6 @@
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/research)
@@ -2474,7 +2544,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "dds" = (
@@ -2697,7 +2769,13 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/door_control{
+	id = "aidoor";
+	name = "MOTHER Core Access";
+	pixel_x = 24;
+	pixel_y = 24;
+	req_one_access_txt = "90;91;92"
+	},
 /turf/open/floor/almayer/silver/east,
 /area/sulaco/command/ai)
 "drK" = (
@@ -2754,7 +2832,7 @@
 /area/sulaco/maintenance/lower_maint)
 "dvi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/maintenance/north_solar_maint)
@@ -2781,12 +2859,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/north_solar_maint)
-"dyn" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/command/ai)
 "dyC" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/catalyst/silver{
@@ -3092,7 +3164,7 @@
 	req_one_access_txt = "2;7"
 	},
 /obj/structure/machinery/door/poddoor/almayer{
-	id = "tcomdoor";
+	id = "aidoor";
 	name = "Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3126,7 +3198,6 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall)
 "dRr" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
@@ -3348,12 +3419,6 @@
 /obj/item/paper_bin/uscm,
 /turf/open/floor/plating/almayer,
 /area/sulaco/ob_aa_cannon)
-"eeg" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/maintenance/north_solar_maint)
 "eeB" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/cargo)
@@ -4142,10 +4207,10 @@
 /turf/open/floor/almayer/sterile_green,
 /area/sulaco/research)
 "fck" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "fcx" = (
@@ -5069,10 +5134,6 @@
 /obj/structure/closet/crate/internals,
 /turf/open/floor/almayer/test_floor5,
 /area/sulaco/cargo)
-"giG" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/hangar)
 "gjb" = (
 /obj/structure/machinery/computer/med_data,
 /turf/open/floor/almayer/sterile_green_side/west,
@@ -5581,10 +5642,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
-"gQX" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/hallway/lower_main_hall)
 "gRg" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/almayer/orangefull,
@@ -5670,12 +5727,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hallway/lower_main_hall)
-"gYR" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/sulaco/cryosleep)
 "hau" = (
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/engineer{
 	dir = 8
@@ -6174,7 +6225,7 @@
 /area/sulaco/cryosleep)
 "hLc" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
@@ -6183,6 +6234,9 @@
 	dir = 8;
 	no_panel = 1;
 	not_weldable = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hangar)
@@ -6550,12 +6604,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/maintenance/lower_maint)
-"imG" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/maintenance/south_solar_maint)
 "imN" = (
 /turf/closed/wall/almayer,
 /area/sulaco/bridge)
@@ -6954,17 +7002,6 @@
 "iIU" = (
 /turf/closed/wall/almayer,
 /area/sulaco/medbay/surgery_one)
-"iIV" = (
-/obj/structure/machinery/door_control{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineBlast";
-	name = "Engine Room Blast Doors";
-	pixel_x = 0;
-	pixel_y = -30;
-	req_access_txt = "6"
-	},
-/turf/open/floor/plating,
-/area/sulaco/engineering/engine)
 "iJE" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -7373,12 +7410,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/sulaco/hangar/range)
-"jku" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/hangar)
 "jlv" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/portable_atmospherics/powered/pump,
@@ -7410,10 +7441,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/freezerfloor,
 /area/sulaco/showers)
-"jmV" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/white,
-/area/sulaco/research)
 "jnb" = (
 /obj/structure/machinery/seed_extractor{
 	density = 0;
@@ -7798,6 +7825,20 @@
 /area/sulaco/disposal)
 "jKs" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "tcomwind";
+	name = "Telecommunications Windows";
+	req_one_access_txt = "90;91;92";
+	pixel_x = 10;
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "tcomdoor";
+	name = "Telecommunications Access";
+	req_one_access_txt = "90;91;92";
+	pixel_x = 10;
+	pixel_y = -1
+	},
 /turf/open/floor/almayer/orange/west,
 /area/sulaco/telecomms/office)
 "jKw" = (
@@ -7890,7 +7931,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	id = "engine_electrical_maintenance";
-	locked = 1;
 	name = "\improper Engine Electrical Maintenance"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -8151,8 +8191,8 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/medbay/west)
 "kkn" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
 	},
 /turf/open/floor/almayer/plate,
 /area/sulaco/maintenance/lower_maint)
@@ -8225,12 +8265,6 @@
 "kqw" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/morgue)
-"krd" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/sulaco/research)
 "ksg" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -8296,10 +8330,6 @@
 	},
 /turf/open/floor/carpet11_12/west,
 /area/sulaco/liaison)
-"kvX" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/maintenance/south_solar_maint)
 "kwq" = (
 /turf/open/floor/almayer,
 /area/sulaco/engineering/storage)
@@ -8616,6 +8646,7 @@
 	pixel_x = 1;
 	pixel_y = -2
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/research)
 "kWv" = (
@@ -8742,12 +8773,6 @@
 "leA" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/sulaco/maintenance/lower_maint)
-"lfr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/almayer,
-/area/sulaco/hallway/lower_main_hall)
 "lfy" = (
 /obj/structure/closet/walllocker/emerglocker/south,
 /obj/structure/machinery/light,
@@ -8928,15 +8953,6 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/door_control{
-	id = "engine_electrical_maintenance";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -30;
-	pixel_y = 0;
-	req_access_txt = "7";
-	specialfunctions = 4
-	},
 /obj/structure/stairs/perspective{
 	dir = 5;
 	icon_state = "p_stair_full"
@@ -9077,7 +9093,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "lxg" = (
@@ -9178,7 +9196,8 @@
 /turf/open/floor/almayer,
 /area/sulaco/marine/bravo)
 "lAs" = (
-/obj/structure/machinery/light/small,
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/command/ai)
 "lAY" = (
@@ -9517,10 +9536,6 @@
 /turf/open/floor/almayer/silver/north,
 /area/sulaco/hallway/central_hall)
 "lVF" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	emp_proof = 1
-	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	emp_proof = 1
@@ -10774,10 +10789,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/medbay/west)
-"nKg" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/command/ai)
 "nKR" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/flasher{
@@ -11526,15 +11537,6 @@
 	},
 /turf/open/floor/wood,
 /area/sulaco/liaison/quarters)
-"oGw" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/maint,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/sulaco/maintenance/lower_maint)
 "oGE" = (
 /obj/item/stool,
 /turf/open/floor/almayer,
@@ -11548,6 +11550,17 @@
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_x = 32
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/ares_console{
+	dir = 8;
+	pixel_y = -9;
+	layer = 2.99;
+	name = "MOTHER Interface"
+	},
+/obj/structure/machinery/computer/view_objectives{
+	dir = 8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/command/ai)
@@ -12020,7 +12033,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	id = "engine_electrical_maintenance";
-	locked = 1;
 	name = "\improper Engine Electrical Maintenance"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -12100,12 +12112,6 @@
 "pry" = (
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/sulaco/command/armory)
-"psC" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/cryosleep)
 "ptn" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -12689,12 +12695,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/sulaco/marine)
-"quz" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/maintenance/south_solar_maint)
 "quY" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2
@@ -13859,15 +13859,6 @@
 /obj/structure/terminal{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "engine_electrical_maintenance";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = 30;
-	pixel_y = 0;
-	req_access_txt = "7";
-	specialfunctions = 4
-	},
 /turf/open/floor/plating,
 /area/sulaco/engineering/smes)
 "rPG" = (
@@ -14107,12 +14098,6 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/sulaco/brig)
-"sgC" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/maint,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer/test_floor4,
-/area/sulaco/maintenance/lower_maint)
 "sgU" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -14125,22 +14110,10 @@
 "shD" = (
 /obj/structure/largecrate/random,
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
-"shK" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "cl_quarter_maintenance_2";
-	emp_proof = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/sulaco/liaison/quarters)
 "sjL" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -15395,6 +15368,9 @@
 /area/sulaco/cargo/office)
 "tQu" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/cryosleep)
 "tQy" = (
@@ -15592,7 +15568,6 @@
 /area/sulaco/medbay/storage)
 "ucs" = (
 /obj/structure/sign/prop3,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer,
 /area/sulaco/hallway/central_hall3)
 "ucy" = (
@@ -15607,8 +15582,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
@@ -15647,7 +15622,6 @@
 /area/sulaco/engineering)
 "ugD" = (
 /obj/structure/sign/prop1,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer,
 /area/sulaco/hallway/central_hall3)
 "ugL" = (
@@ -15666,7 +15640,7 @@
 	pixel_y = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/sulaco/research)
@@ -15872,12 +15846,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/plating/almayer,
 /area/sulaco/cargo)
-"usn" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white,
-/area/sulaco/research)
 "uss" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -16379,12 +16347,6 @@
 "uXP" = (
 /turf/closed/wall/almayer/outer,
 /area/sulaco/marine/bravo)
-"uXS" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/hangar)
 "uYy" = (
 /obj/effect/landmark/start/professor,
 /obj/effect/landmark/late_join/cmo,
@@ -16632,12 +16594,6 @@
 /obj/structure/closet/walllocker/emerglocker/west,
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
-"vmZ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/maintenance/north_solar_maint)
 "vnb" = (
 /obj/structure/sign/safety/zero_g{
 	pixel_y = -32
@@ -17095,7 +17051,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/almayer{
-	id = "tcomdoor";
+	id = "aidoor";
 	name = "Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -17810,10 +17766,6 @@
 	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/marine/bravo)
-"wIl" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/sulaco/maintenance/lower_maint)
 "wIx" = (
 /obj/structure/machinery/atm{
 	name = "Weyland Yutani Automatic Teller Machine";
@@ -17898,15 +17850,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/charlie)
 "wMY" = (
-/obj/structure/machinery/door_control{
-	id = "engine_electrical_maintenance";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -30;
-	pixel_y = 0;
-	req_access_txt = "7";
-	specialfunctions = 4
-	},
 /obj/structure/stairs/perspective{
 	dir = 5;
 	icon_state = "p_stair_full"
@@ -18317,9 +18260,6 @@
 /obj/item/device/lightreplacer,
 /obj/item/device/flashlight/flare,
 /obj/structure/surface/table/almayer,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/white,
 /area/sulaco/cryosleep)
 "xtz" = (
@@ -18499,12 +18439,6 @@
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer,
 /area/sulaco/marine/delta)
-"xGN" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/command/ai)
 "xHg" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -18532,7 +18466,6 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "xIX" = (
-/obj/structure/machinery/cell_charger,
 /obj/structure/machinery/cell_charger,
 /obj/item/device/flashlight,
 /obj/item/tool/wrench,
@@ -21352,7 +21285,7 @@ gag
 kxX
 gHa
 ckn
-bGT
+ckn
 ckn
 ckn
 ckn
@@ -21926,7 +21859,7 @@ dAE
 uhj
 bAr
 kWn
-qDX
+aaI
 wgP
 iHw
 njT
@@ -21996,7 +21929,7 @@ njT
 njT
 njT
 njT
-usn
+njT
 njT
 njT
 qDX
@@ -22142,7 +22075,7 @@ upw
 dbB
 mth
 wwP
-krd
+wwP
 wwP
 qBL
 tUs
@@ -22282,7 +22215,7 @@ dck
 lvQ
 njT
 njT
-jmV
+njT
 njT
 njT
 njT
@@ -22589,7 +22522,7 @@ cSg
 sqx
 aez
 kQZ
-rsx
+aaD
 sYt
 ixj
 oie
@@ -22666,7 +22599,7 @@ uoj
 dPK
 lnZ
 drz
-tAI
+aaB
 tAI
 tAI
 tAI
@@ -22709,13 +22642,13 @@ uVi
 uVi
 dck
 dZt
-dZt
+arL
 jGa
-dZt
-dZt
-dZt
-dZt
-dZt
+arL
+arL
+arL
+arL
+arL
 lvQ
 wdr
 dck
@@ -22788,10 +22721,10 @@ jrS
 skq
 eVm
 skq
-dZt
+arL
 lvQ
 pqO
-inc
+dck
 ckn
 jeD
 fnc
@@ -22809,10 +22742,10 @@ cSg
 wdf
 rZf
 vwm
-xGN
+sYt
 sYt
 nTq
-mNo
+aaC
 dZD
 flJ
 sYt
@@ -22861,10 +22794,10 @@ wrx
 iKC
 eVm
 iKC
-dZt
+arL
 lvQ
 dck
-inc
+dck
 ckn
 jeD
 fnc
@@ -22880,14 +22813,14 @@ uus
 sma
 cSg
 ucI
-kTd
+kQZ
 dRr
-nKg
+sYt
 sYt
 mNo
 cVs
 lAs
-sYt
+aaA
 sYt
 sYt
 sYt
@@ -22934,7 +22867,7 @@ pzA
 bgC
 bgC
 bgC
-dZt
+arL
 lvQ
 dck
 nIt
@@ -22955,7 +22888,7 @@ cSg
 kBm
 kQZ
 vwm
-dyn
+sYt
 sYt
 mNo
 oHP
@@ -23007,7 +22940,7 @@ pzA
 pzA
 pzA
 pzA
-dZt
+arL
 lvQ
 dck
 nIt
@@ -23080,7 +23013,7 @@ pzA
 pzA
 pzA
 pzA
-dZt
+arL
 lvQ
 dck
 ckn
@@ -23146,14 +23079,14 @@ uVi
 nIt
 nIt
 nIt
-mYC
+dZt
 xog
 lIq
 pzA
 jOL
 eVm
 iKC
-mYC
+arL
 vrk
 dck
 jeD
@@ -23220,13 +23153,13 @@ dZt
 dZt
 dZt
 dZt
-dZt
-dZt
-dZt
+arL
+arL
+arL
 pls
 pls
 pls
-dZt
+arL
 jGa
 dZt
 dZt
@@ -23260,13 +23193,13 @@ fKY
 oeL
 oeP
 onu
-shK
-shK
-shK
+lSA
+lSA
+lSA
 lVF
-shK
-shK
-shK
+lSA
+lSA
+lSA
 onu
 lvQ
 dck
@@ -24255,7 +24188,7 @@ arL
 wLp
 tjK
 arL
-giG
+arL
 arL
 arL
 arL
@@ -24314,7 +24247,7 @@ uVi
 dZt
 dZt
 dZt
-uXS
+arL
 tid
 kYA
 iGu
@@ -24339,7 +24272,7 @@ nCV
 pom
 auA
 vwm
-vwm
+kBm
 kGg
 vwm
 vwm
@@ -24412,7 +24345,7 @@ uLj
 wxn
 bHW
 rZf
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24485,8 +24418,8 @@ kYA
 mLI
 hJU
 rZf
-vwm
-rZf
+phQ
+aaE
 vwm
 vwm
 fLa
@@ -24558,7 +24491,7 @@ kYA
 dIV
 auA
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24631,7 +24564,7 @@ kYA
 mLI
 auA
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24704,7 +24637,7 @@ kYA
 dIV
 auA
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24777,7 +24710,7 @@ kYA
 mLI
 lLl
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24850,7 +24783,7 @@ kYA
 mLI
 lLl
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24923,7 +24856,7 @@ kYA
 mLI
 lLl
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -24996,7 +24929,7 @@ kYA
 vxz
 auA
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -25069,7 +25002,7 @@ kYA
 dIV
 auA
 vwm
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -25142,7 +25075,7 @@ kYA
 mLI
 bHW
 rZf
-vwm
+kBm
 rZf
 vwm
 vwm
@@ -25212,10 +25145,10 @@ kYA
 kYA
 kYA
 kYA
-mLI
-hJU
-rZf
-vwm
+aaH
+aaG
+vhP
+dGI
 rZf
 vwm
 vwm
@@ -25274,7 +25207,7 @@ gDU
 gDU
 vLY
 wcF
-kXT
+rcg
 wcF
 wcF
 wcF
@@ -25284,12 +25217,12 @@ kXT
 edm
 gDU
 gDU
-gDU
+oNW
 fck
 auA
 vwm
-vwm
-rZf
+phQ
+aaF
 vwm
 vwm
 aav
@@ -25354,14 +25287,14 @@ dZt
 arL
 arL
 hLW
-arL
+aaJ
 bFJ
 nCV
-nCV
-jku
-gQX
-jHa
-lfr
+kIJ
+arL
+auA
+vwm
+kBm
 rZf
 vwm
 vwm
@@ -26310,9 +26243,9 @@ wof
 qgP
 qgP
 qgP
-sgC
+kpi
 qgP
-oGw
+qCG
 qgP
 xUt
 hua
@@ -26459,7 +26392,7 @@ lGu
 lGu
 dky
 kkn
-wIl
+lGu
 mSB
 tWY
 tWY
@@ -26534,7 +26467,7 @@ fOK
 vdk
 jCE
 bJN
-bhr
+tuI
 nIt
 ckn
 ckn
@@ -26603,11 +26536,11 @@ tuI
 hQf
 lGu
 lGu
-fOK
-wIl
-wIl
+sXm
+lGu
+lGu
 hQf
-bhr
+tuI
 nIt
 ckn
 uGX
@@ -26680,7 +26613,7 @@ tQB
 lvc
 qgP
 tuI
-bhr
+tuI
 nIt
 uGX
 uGX
@@ -36108,8 +36041,8 @@ nBy
 utA
 lrz
 shD
-bhx
-bhx
+ktr
+ktr
 hLc
 kpV
 mBE
@@ -36180,10 +36113,10 @@ jzh
 vHS
 vHS
 vHS
-quz
+vHS
 aWx
-kvX
-imG
+vHS
+vHS
 vHS
 vHS
 vHS
@@ -36906,7 +36839,7 @@ bhx
 bhx
 aab
 mvW
-cqY
+vFm
 cqY
 cqY
 vFm
@@ -37608,11 +37541,11 @@ sZm
 aXy
 urp
 dvi
-eeg
 urp
 urp
 urp
-vmZ
+urp
+urp
 tkH
 iUI
 iUI
@@ -37681,11 +37614,11 @@ tBV
 luk
 tkH
 tQu
-psC
 tkH
 tkH
 tkH
-psC
+tkH
+tkH
 xWH
 edp
 rWf
@@ -37753,12 +37686,12 @@ rlu
 rlu
 luk
 tkH
-iUI
+vym
 xsG
 icX
 iNK
 dqk
-vym
+iUI
 xQM
 eUQ
 rWf
@@ -37826,12 +37759,12 @@ rlu
 rlu
 vhe
 agE
-iUI
-hIW
+pjW
+aaK
 tHQ
 tHQ
 tHQ
-gYR
+tHQ
 fkX
 tHQ
 pfh
@@ -41348,7 +41281,7 @@ wTr
 dyC
 xEd
 dPJ
-iIV
+xEd
 rAA
 tOt
 tOt

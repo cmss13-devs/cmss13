@@ -75,9 +75,10 @@
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
-	name = "Corporate - E - Lawyer"
+	name = "Corporate - E - Legal Specialist"
 	assignment = JOB_LEGAL_SPECIALIST
 	job_title = JOB_LEGAL_SPECIALIST
+	paygrades = list(PAY_SHORT_WYC5L = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -100,9 +101,10 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
-	name = "Corporate - F - Lawyer"
+	name = "Corporate - F - Legal Supervisor"
 	assignment = JOB_LEGAL_SUPERVISOR
 	job_title = JOB_LEGAL_SUPERVISOR
+	paygrades = list(PAY_SHORT_WYC6L = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)

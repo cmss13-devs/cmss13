@@ -102,9 +102,7 @@
 	skills = /datum/skills/synthetic/cmb
 	minimap_icon = "pmc_syn"
 	minimap_background = "background_cmb"
-
-/datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY)
+	locked_generation = SYNTH_GEN_TWO
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth/load_gear(mob/living/carbon/human/new_human)
 	//backpack
@@ -244,13 +242,13 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "UA Police Synthetic"
 	languages = ALL_SYNTH_LANGUAGES
-	skills = /datum/skills/colonial_synthetic
+	skills = /datum/skills/synthetic/gen_two
 	minimap_icon = "synth"
 	minimap_background = "background_cmb"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY)
+	new_human.set_species(SYNTH_GEN_TWO)
 
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_gear(mob/living/carbon/human/new_human)
 	//backpack

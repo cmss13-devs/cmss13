@@ -22,9 +22,8 @@
 	acid_level = 3
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
-	fire_immunity = FIRE_MODIFIER
 	// 3x fire damage
-	fire_modifier_mult = FIRE_MULTIPLIER_DEADLY
+	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
 	tackle_min = 2
 	tackle_max = 6
@@ -52,6 +51,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tileoffset = 3
 	viewsize = 7
+	fire_immunity = FIRE_VULNERABILITY
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'

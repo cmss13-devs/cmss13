@@ -24,33 +24,29 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
 
-/mob/hologram/Initialize(mapload, mob/M)
-	if(!M)
+/mob/hologram/Initialize(mapload, mob/hologram)
+	if(!hologram)
 		return INITIALIZE_HINT_QDEL
 
 	. = ..()
 
 	GLOB.hologram_list += src
-	RegisterSignal(M, COMSIG_CLIENT_MOB_MOVE, PROC_REF(handle_move))
-	RegisterSignal(M, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
-	RegisterSignal(M, list(
-		COMSIG_MOB_TAKE_DAMAGE,
-		COMSIG_HUMAN_TAKE_DAMAGE,
-		COMSIG_XENO_TAKE_DAMAGE
-	), PROC_REF(take_damage))
-	RegisterSignal(M, list(
+	RegisterSignal(hologram, COMSIG_CLIENT_MOB_MOVE, PROC_REF(handle_move))
+	RegisterSignal(hologram, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
+	RegisterSignal(hologram, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(take_damage))
+	RegisterSignal(hologram, list(
 		COMSIG_BINOCULAR_ATTACK_SELF,
 		COMSIG_BINOCULAR_HANDLE_CLICK
 	), PROC_REF(handle_binoc))
 
-	linked_mob = M
+	linked_mob = hologram
 	linked_mob.reset_view()
 
-	name = "[initial(name)] ([M.name])"
+	name = "[initial(name)] ([hologram.name])"
 
 	leave_button = new initial_leave_button(null, action_icon_state)
 	leave_button.linked_hologram = src
-	leave_button.give_to(M)
+	leave_button.give_to(hologram)
 
 /mob/hologram/proc/handle_binoc()
 	SIGNAL_HANDLER

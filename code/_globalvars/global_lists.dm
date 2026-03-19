@@ -638,7 +638,7 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 /// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
 /proc/setup_wy_droid_emotes()
 	var/list/emotes_to_add = list()
-	for(var/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/colonial/wy_droid))
+	for(var/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid))
 		if(!initial(emote.key) || !initial(emote.say_message))
 			continue
 

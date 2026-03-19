@@ -169,13 +169,13 @@
 /turf/open/desert/desert_shore/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
@@ -291,13 +291,13 @@
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
@@ -323,13 +323,13 @@
 /turf/open/gm/river/desert/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()

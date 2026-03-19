@@ -25,10 +25,15 @@
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
+	var/add_thing = 1
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
-	slowdown(entity, bullet)
-	pushback(entity, bullet, 4)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
+	. = ..()
+	if(!M || !isliving(M))
+		return
+	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
+
+
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"

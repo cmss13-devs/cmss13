@@ -448,6 +448,9 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/living/proc/EyeBlind(amount)
+	eye_blind = max(max(eye_blind, amount), 0)
+	return
 
 /mob/living/proc/SetEyeBlind(amount)
 	eye_blind = max(amount, 0)
@@ -499,9 +502,22 @@
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(handle_fire_protection))
 	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
 
+/mob/living/carbon/xenomorph/grant_spawn_protection(duration)
+	status_flags |= RECENTSPAWN|GODMODE
+	fire_immunity |= FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
+
 /mob/living/proc/end_spawn_protection()
 	status_flags &= ~(RECENTSPAWN|GODMODE)
 	UnregisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/mob/living/carbon/xenomorph/end_spawn_protection()
+	status_flags &= ~(RECENTSPAWN|GODMODE)
+	fire_immunity = initial(fire_immunity)
+	if(hive?.active_hivebuffs)
+		var/datum/hivebuff/fire/fire_buff = locate() in hive.active_hivebuffs
+		if(fire_buff)
+			fire_buff.apply_buff_effects(src)
 
 /mob/living/proc/handle_fire_protection(mob/living/living, datum/reagent/chem)
 	SIGNAL_HANDLER

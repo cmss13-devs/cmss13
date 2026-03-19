@@ -225,6 +225,7 @@
 	dir = 2;
 	welded = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "S" = (

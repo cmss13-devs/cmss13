@@ -53,7 +53,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_labs)
 "eP" = (
 /obj/item/stack/rods,
@@ -149,7 +149,7 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "rH" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_labs)
 "tc" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -251,7 +251,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
 "Hp" = (
 /obj/structure/machinery/light{
@@ -371,7 +371,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_labs)
 "Xt" = (
 /obj/structure/surface/table,

@@ -1,4 +1,6 @@
 #define WO_MAX_WAVE 15
+#define WO_XENOS_WON 1
+#define WO_MARINES_WON 2
 
 //Global proc for checking if the game is whiskey outpost so I don't need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
@@ -217,12 +219,14 @@
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/list/living_player_list = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/num_humans = living_player_list[1]
+	//var/num_xenos = living_player_list[2]
 
-	if(C[1] == 0)
-		finished = 1 //Alien win
+	if(num_humans == 0)
+		finished = WO_XENOS_WON
 	else if(world.time > last_wave_time + 15 MINUTES) // Around 1:12 hh:mm
-		finished = 2 //Marine win
+		finished = WO_MARINES_WON
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
@@ -259,9 +263,9 @@
 ///////////////////////////////
 /datum/game_mode/whiskey_outpost/check_finished()
 	if(finished != 0)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
@@ -269,7 +273,7 @@
 /datum/game_mode/whiskey_outpost/declare_completion()
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
-	if(finished == 1)
+	if(finished == WO_XENOS_WON)
 		log_game("Round end result - xenos won")
 		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
@@ -282,7 +286,7 @@
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
 
-	else if(finished == 2)
+	else if(finished == WO_MARINES_WON)
 		log_game("Round end result - marines won")
 		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
@@ -820,3 +824,7 @@
 
 /datum/game_mode/whiskey_outpost/get_escape_menu()
 	return "Making a last stand on..."
+
+#undef WO_MAX_WAVE
+#undef WO_XENOS_WON
+#undef WO_MARINES_WON

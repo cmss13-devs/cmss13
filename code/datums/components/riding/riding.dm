@@ -6,8 +6,6 @@
  */
 /datum/component/riding
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	/// whether our last owners move was diagonally done to update move speeds, bool
-	var/last_move_diagonal = FALSE
 	///tick delay between movements, lower = faster, higher = slower
 	var/vehicle_move_delay = 2
 
@@ -28,8 +26,6 @@
 	var/list/allowed_turf_typecache
 	/// allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
 	var/list/forbid_turf_typecache
-	/// We don't need roads where we're going if this is TRUE, allow normal movement in space tiles
-	var/override_allow_spacemove = FALSE
 
 	/**
 	 * Ride check flags defined for the specific riding component types, so we know if we need arms, legs, or whatever.
@@ -67,13 +63,7 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, PROC_REF(vehicle_mob_unbuckle))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(vehicle_moved))
 
-/**
- * This proc handles all of the proc calls to things like set_vehicle_dir_layer() that a type of riding datum needs to call on creation
- *
- * The original riding component had these procs all called from the ridden object itself through the use of GetComponent() and LoadComponent()
- * This was obviously problematic for componentization, but while lots of the variables being set were able to be moved to component variables,
- * the proc calls couldn't be. Thus, anything that has to do an initial proc call should be handled here.
- */
+/// This proc handles all of the proc calls to things like set_vehicle_dir_layer() that a type of riding datum needs to call on creation
 /datum/component/riding/proc/handle_specials()
 	return
 
@@ -86,11 +76,11 @@
 		restore_position(mob)
 		unequip_buckle_inhands(mob)
 		DISABLE_BITFIELD(mob.flags_atom, NO_ZFALL)
-	if(!LAZYLEN(movable_parent.buckled_mobs))
+	if(LAZYLEN(movable_parent.buckled_mobs) == 1) // mob removal from buckled_mob happens after this signal, so the list will be empty if only 1 mob is in it
 		qdel(src)
 	UnregisterSignal(movable_parent, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
-/// Some ridable atoms may want to only show on top of the rider in certain directions, like wheelchairs
+/// Some ridable atoms may want to only show on top of the rider in certain directions
 /datum/component/riding/proc/handle_vehicle_layer(dir)
 	var/atom/movable/movable_parent = parent
 	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
@@ -141,10 +131,6 @@
 /datum/component/riding/proc/keycheck(mob/user)
 	if(!keytype)
 		return TRUE
-
-	//if(isVehicle(parent))
-	//	var/obj/vehicle/vehicle_parent = parent
-	//	return istype(vehicle_parent.inserted_key, keytype)
 
 	return user.is_holding_item_of_type(keytype, mainhand=FALSE)
 

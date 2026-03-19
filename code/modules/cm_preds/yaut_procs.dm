@@ -101,10 +101,6 @@
 	var/list/choices = list()
 	for(var/mob/living/carbon/M in view(1, src) - src)
 		if(Adjacent(M) && M.stat == DEAD)
-			if(ishuman(M))
-				var/mob/living/carbon/human/Q = M
-				if(Q.species && issamespecies(Q, src))
-					continue
 			choices += M
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
@@ -264,24 +260,3 @@
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-
-/area/yautja
-	name = "\improper Yautja Ship"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "hunter"
-	//music = "signal"
-	ambience_exterior = AMBIENCE_YAUTJA
-	ceiling = CEILING_METAL
-	powernet_name = "yautja_ship"
-	requires_power = FALSE
-	base_lighting_alpha = 155
-	base_lighting_color = "#ffc49c"
-	flags_area = AREA_YAUTJA_GROUNDS
-
-/area/yautja/lower_deck
-	name = "\improper Yautja Ship - Lower Deck"
-	base_lighting_alpha = 105
-
-/area/yautja/hangar
-	name = "\improper Yautja Ship - Hangar"
-	base_lighting_alpha = 180

@@ -2942,12 +2942,6 @@
 	tag = "icon-sterile"
 	},
 /area/sulaco/medbay/west)
-"dbf" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer{
-	icon_state = "silverfull"
-	},
-/area/sulaco/bridge)
 "dbh" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/plating,
@@ -38853,7 +38847,7 @@ cEz
 imN
 noe
 dIk
-dbf
+tbJ
 dSw
 uSJ
 pzi

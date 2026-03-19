@@ -169,6 +169,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/flashlight/under_barrel,
+		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,

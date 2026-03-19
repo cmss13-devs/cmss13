@@ -4461,9 +4461,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/marine/alpha{
-	dir = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/alpha)
 "fsX" = (
@@ -4581,9 +4579,6 @@
 "fyr" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
-	},
-/obj/structure/machinery/door/airlock/almayer/marine/alpha{
-	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
@@ -5785,7 +5780,9 @@
 /area/sulaco/maintenance/north_solar_maint)
 "hgl" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/marine/delta,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
+	dir = 2
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/delta)
 "hgL" = (
@@ -7245,9 +7242,6 @@
 "iXX" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
-	},
-/obj/structure/machinery/door/airlock/almayer/marine/bravo{
-	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
@@ -10944,9 +10938,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/marine/charlie{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/charlie)
@@ -11432,9 +11423,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/marine/bravo{
-	dir = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/bravo)
 "oCR" = (
@@ -11569,7 +11558,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/marine/delta,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -17844,9 +17832,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/marine/charlie{
-	dir = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/charlie)
 "wMY" = (

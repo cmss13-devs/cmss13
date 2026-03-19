@@ -629,22 +629,22 @@
 	internal_tank.owner_pack = src
 
 /obj/item/storage/backpack/marine/medic/chempack/Destroy()
-	if(internal_tank && !QDELETED(internal_tank))
+	if(!QDELETED(internal_tank))
 		internal_tank.owner_pack = null
 		qdel(internal_tank)
 	internal_tank = null
 	return ..()
 
-/obj/item/storage/backpack/marine/medic/chempack/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
+/obj/item/storage/backpack/marine/medic/chempack/attackby(obj/item/attacking_item, mob/living/user)
+	if(istype(attacking_item, /obj/item/reagent_container/glass/minitank/large))
 		if(internal_tank)
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
-		internal_tank = W
-		var/obj/item/reagent_container/glass/minitank/large/tank = W
+		internal_tank = attacking_item
+		var/obj/item/reagent_container/glass/minitank/large/tank = attacking_item
 		tank.owner_pack = src
-		user.drop_inv_item_on_ground(W)
-		W.moveToNullspace()
+		user.drop_inv_item_on_ground(attacking_item)
+		attacking_item.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
 		update_icon()
 		return
@@ -652,13 +652,13 @@
 		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
 		. = ..()
 		return
-	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister) \
-	|| istype(W, /obj/item/reagent_container/glass/minitank) \
-	|| (istype(W, /obj/item/reagent_container/hypospray) && !istype(W, /obj/item/reagent_container/hypospray/autoinjector)))
+	if(istype(attacking_item, /obj/item/reagent_container/glass/pressurized_canister) \
+	|| istype(attacking_item, /obj/item/reagent_container/glass/minitank) \
+	|| (istype(attacking_item, /obj/item/reagent_container/hypospray) && !istype(attacking_item, /obj/item/reagent_container/hypospray/autoinjector)))
 		if(!internal_tank.reagents.total_volume)
 			to_chat(user, SPAN_WARNING("[src]'s tank is empty. Remove it and refill at a pressurized chemical dispenser."))
 			return
-		var/obj/item/reagent_container/container = W
+		var/obj/item/reagent_container/container = attacking_item
 		if(container.reagents.total_volume >= container.volume)
 			to_chat(user, SPAN_WARNING("[container] is already full."))
 			return
@@ -667,6 +667,7 @@
 		if(transferred)
 			to_chat(user, SPAN_NOTICE("You refill [container] from [src]. ([internal_tank.reagents.total_volume]u remaining in tank.)"))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			update_icon()
 		return
 	. = ..()
 
@@ -817,30 +818,29 @@
 	internal_tank = null
 	return ..()
 
-/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/reagent_container/glass/minitank/large))
+/obj/item/storage/backpack/marine/satchel/medic/chemsatchel/attackby(obj/item/attacking_item, mob/living/user)
+	if(istype(attacking_item, /obj/item/reagent_container/glass/minitank/large))
 		if(internal_tank)
 			to_chat(user, SPAN_WARNING("[src] already has a tank installed. Remove it first."))
 			return
-		internal_tank = W
-		var/obj/item/reagent_container/glass/minitank/large/tank = W
+		internal_tank = attacking_item
+		var/obj/item/reagent_container/glass/minitank/large/tank = attacking_item
 		tank.owner_pack = src
-		user.drop_inv_item_on_ground(W)
-		W.moveToNullspace()
+		user.drop_inv_item_on_ground(attacking_item)
+		attacking_item.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You slide the tank into [src]."))
 		update_icon()
 		return
 	if(!internal_tank)
 		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
-		. = ..()
-		return
-	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister) \
-	|| istype(W, /obj/item/reagent_container/glass/minitank) \
-	|| (istype(W, /obj/item/reagent_container/hypospray) && !istype(W, /obj/item/reagent_container/hypospray/autoinjector)))
+		return ..()
+	if(istype(attacking_item, /obj/item/reagent_container/glass/pressurized_canister) \
+	|| istype(attacking_item, /obj/item/reagent_container/glass/minitank) \
+	|| (istype(attacking_item, /obj/item/reagent_container/hypospray) && !istype(attacking_item, /obj/item/reagent_container/hypospray/autoinjector)))
 		if(!internal_tank.reagents.total_volume)
 			to_chat(user, SPAN_WARNING("[src]'s tank is empty. Remove it and refill at a pressurized chemical dispenser."))
 			return
-		var/obj/item/reagent_container/container = W
+		var/obj/item/reagent_container/container = attacking_item
 		if(container.reagents.total_volume >= container.volume)
 			to_chat(user, SPAN_WARNING("[container] is already full."))
 			return
@@ -877,12 +877,10 @@
 		. += "The internal tank housing is empty."
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/update_icon()
-	overlays.Cut()
 	if(!internal_tank)
 		icon_state = "marinesatch_chem_notank"
 		item_state = "marinesatch_chem"
-		. = ..()
-		return
+		return ..()
 	icon_state = "marinesatch_chem"
 	item_state = "marinesatch_chem"
 	. = ..()

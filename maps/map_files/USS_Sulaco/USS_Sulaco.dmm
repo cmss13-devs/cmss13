@@ -176,7 +176,7 @@
 /area/sulaco/hallway/lower_main_hall)
 "aaF" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/sulaco/hallway/lower_main_hall)
@@ -201,6 +201,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/research)
+"aaJ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/hallway/lower_main_hall)
 "aaK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -249,9 +253,74 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
+"aaS" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/hallway/lower_main_hall)
+"aaT" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"aaU" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver/west,
+/area/sulaco/command/intelligence)
+"aaV" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/sulaco/command/intelligence)
+"aaW" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer/silver/east,
+/area/sulaco/command/intelligence)
+"aaX" = (
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"aaY" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/hallway/lower_main_hall)
+"aaZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer/mono,
+/area/sulaco/command/intelligence)
+"aba" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/silver/east,
+/area/sulaco/command/intelligence)
 "abb" = (
 /turf/open/floor/almayer/blue/west,
 /area/sulaco/marine/delta)
+"abc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/sulaco/command/intelligence)
+"abd" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"abe" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver/west,
+/area/sulaco/command/intelligence)
 "abf" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -259,6 +328,18 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/sulaco/cap_office)
+"abg" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/sulaco/command/intelligence)
+"abh" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/hallway/lower_main_hall)
 "abi" = (
 /obj/item/storage/box/masks{
 	pixel_x = 4;
@@ -273,10 +354,101 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/sulaco/medbay/storage2)
+"abj" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"abk" = (
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/sulaco/command/intelligence)
+"abl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer/silver/east,
+/area/sulaco/command/intelligence)
+"abm" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/sulaco/command/intelligence)
 "abn" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/brig)
+"abo" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/hallway/lower_main_hall)
+"abp" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/hallway/lower_main_hall)
+"abq" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/hallway/lower_main_hall)
+"abr" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer,
+/area/sulaco/hallway/lower_main_hall)
+"abs" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"abt" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"abu" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"abv" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
 "acc" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -1249,6 +1421,9 @@
 	dir = 4;
 	icon_state = "landingstripe"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "bwu" = (
@@ -1615,6 +1790,9 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
 	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -2957,6 +3135,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/delta)
 "dEc" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/sulaco/command/intelligence)
 "dEg" = (
@@ -4019,6 +4200,9 @@
 	dir = 1;
 	icon_state = "landingstripe"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "eLo" = (
@@ -4362,6 +4546,9 @@
 	name = "\improper Intelligence Officer Preparations";
 	req_access = list(19)
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/command/intelligence)
 "fnO" = (
@@ -4700,6 +4887,9 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
 	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -7296,7 +7486,10 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Computer Lab"
 	},
-/turf/open/floor/plating,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/sulaco/command/intelligence)
 "jaj" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -8999,6 +9192,9 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1;
 	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -10869,6 +11065,9 @@
 /area/sulaco/cafeteria)
 "nPd" = (
 /obj/effect/landmark/start/auxiliary_officer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/silver/southwest,
 /area/sulaco/command/intelligence)
 "nPg" = (
@@ -11983,16 +12182,6 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/open/floor/almayer/silver/northwest,
 /area/sulaco/bridge)
-"pgn" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	icon_state = "landingstripe"
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "phf" = (
 /obj/structure/morgue,
 /turf/open/floor/almayer/plate,
@@ -12336,6 +12525,9 @@
 "pOj" = (
 /obj/effect/landmark/start/intel,
 /obj/effect/landmark/late_join/intel,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
 /turf/open/floor/almayer/silver/south,
 /area/sulaco/command/intelligence)
 "pOP" = (
@@ -12480,6 +12672,9 @@
 /area/sulaco/medbay/storage2)
 "pZw" = (
 /obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer/silver/east,
@@ -23253,19 +23448,19 @@ uLj
 uLj
 uLj
 uLj
-uLj
-uLj
+abu
+abs
 bvT
-uLj
-uLj
-uLj
+abs
+abs
+abs
 bvT
 bRV
-uLj
-uLj
-uLj
+abs
+abs
+abs
 fFx
-kYA
+aaL
 kmF
 auA
 syu
@@ -23922,7 +24117,7 @@ kYA
 kYA
 kYA
 kYA
-pgn
+aaH
 aev
 vhP
 dGI
@@ -24129,8 +24324,8 @@ gDU
 gDU
 gDU
 gDU
-gDU
-oNW
+abv
+abt
 rcg
 rcg
 rcg
@@ -24508,11 +24703,11 @@ kYA
 kYA
 dIV
 auA
-vwm
+abr
 kBm
 rZf
 vwm
-vwm
+dRr
 fLa
 lMM
 lvQ
@@ -24586,16 +24781,16 @@ kBm
 rZf
 vwm
 vwm
-fLa
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-fLa
+auA
+auA
+auA
+auA
+auA
+auA
+auA
+aaS
+auA
+auA
 rrI
 xnY
 xnY
@@ -24659,16 +24854,16 @@ kBm
 rZf
 vwm
 vwm
-fLa
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-iFA
+abp
+kQZ
+kQZ
+rZf
+kGg
+kQZ
+kQZ
+rZf
+rZf
+auA
 rrI
 rrI
 xnY
@@ -24732,16 +24927,16 @@ kBm
 rZf
 vwm
 vwm
-fLa
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-fLa
+auA
+abo
+rZf
+abh
+kQZ
+rZf
+aaX
+kQZ
+aaJ
+auA
 rrI
 rrI
 xnY
@@ -24801,20 +24996,20 @@ kYA
 mLI
 lLl
 vwm
-kBm
+phQ
+vhP
+jHa
+jHa
+abq
+kTd
+kTd
+abj
+abd
+kTd
+aaY
+aaT
 rZf
-vwm
-vwm
-fLa
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-lvQ
-gjk
-fLa
+auA
 rrI
 rrI
 rrI
@@ -24950,7 +25145,7 @@ vwm
 kBm
 rZf
 vwm
-vwm
+dRr
 aav
 oyZ
 wFC
@@ -24958,7 +25153,7 @@ hjw
 dTC
 xPT
 afk
-iKU
+aaU
 fvO
 aau
 ckn
@@ -25019,7 +25214,7 @@ kYA
 kYA
 dIV
 auA
-vwm
+abr
 kBm
 rZf
 vwm
@@ -25027,11 +25222,11 @@ vwm
 aav
 rWY
 sLM
-dEc
+abk
 sLM
 fgx
 dEc
-sLM
+aaV
 xRY
 aau
 ckn
@@ -25100,11 +25295,11 @@ vwm
 aav
 tlQ
 qsz
-qsz
-qsz
-qsz
+abl
+aba
+aba
 pZw
-qsz
+aaW
 kiy
 aau
 ckn
@@ -25247,7 +25442,7 @@ aav
 tmw
 dWU
 wFC
-iKU
+abe
 iKU
 iKU
 nPd
@@ -25311,18 +25506,18 @@ nCV
 kIJ
 arL
 auA
-vwm
+abr
 kBm
 rZf
 vwm
-vwm
+dRr
 aav
 sWC
 lNb
-dEc
-dEc
-dEc
-sLM
+abm
+abg
+abc
+aaZ
 pOj
 wRV
 aau

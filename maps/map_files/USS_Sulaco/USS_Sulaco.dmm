@@ -4691,7 +4691,6 @@
 	name = "RO Warehouse Shutters";
 	pixel_x = -30;
 	pixel_y = 0;
-	pixel_z = 0;
 	req_one_access_txt = "1;21"
 	},
 /turf/open/floor/almayer,
@@ -4805,7 +4804,6 @@
 	name = "RO Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = -30;
-	pixel_z = 0;
 	req_one_access_txt = "2;21"
 	},
 /turf/open/floor/almayer{
@@ -5438,7 +5436,6 @@
 	name = "RO Line 2 Shutters";
 	pixel_x = 30;
 	pixel_y = -30;
-	pixel_z = 0;
 	req_one_access_txt = "1;21"
 	},
 /obj/structure/machinery/flasher_button{
@@ -21406,7 +21403,6 @@
 	name = "RO Line 1 Shutters";
 	pixel_x = -30;
 	pixel_y = 0;
-	pixel_z = 0;
 	req_one_access_txt = "1;21"
 	},
 /obj/structure/machinery/flasher_button{

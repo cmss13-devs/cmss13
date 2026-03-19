@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
 	..()
 	recoil = RECOIL_AMOUNT_TIER_4 //Same as m37 shotgun.
-
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/on_pocket_insertion() //Plays load sfx whenever a nade is put into storage.
 	playsound(usr, reload_sound, 25, 1)
@@ -289,9 +289,6 @@
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -316,9 +313,6 @@
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4 * 4)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -349,9 +343,6 @@
 	is_lobbing = TRUE
 	internal_slots = 3
 
-/obj/item/weapon/gun/launcher/grenade/m84/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m84/able_to_fire(mob/living/user)
 	. = ..()

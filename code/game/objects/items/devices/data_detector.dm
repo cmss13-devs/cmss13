@@ -4,19 +4,6 @@
 	icon_state = "datadetector"
 	item_state = "data_detector"
 	blip_type = "data"
-	var/objects_to_detect = list(
-		/obj/item/document_objective,
-		/obj/item/disk/objective,
-		/obj/item/device/mass_spectrometer/adv/objective,
-		/obj/item/device/reagent_scanner/adv/objective,
-		/obj/item/device/healthanalyzer/objective,
-		/obj/item/device/autopsy_scanner/objective,
-		/obj/item/paper/research_notes,
-		/obj/item/reagent_container/glass/beaker/vial/random,
-		/obj/item/storage/fancy/vials/random,
-		/obj/structure/machinery/computer/objective,
-		/obj/item/limb/head/synth,
-	)
 
 /obj/item/device/motiondetector/intel/get_help_text()
 	. = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
@@ -40,53 +27,47 @@
 
 	var/detected_sound = FALSE
 
-	for(var/obj/I in orange(detector_range, loc))
+	for(var/obj/object_being_searched in orange(detector_range, loc))
 		var/detected
-		for(var/DT in objects_to_detect)
-			if(istype(I, DT))
-				if(istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents))
-					break //We don't need to ping already looted containers
-				if(istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume)
-					break //We don't need to ping already looted containers
-				detected = TRUE
-			if(I.contents)
-				for(var/obj/item/CI in I.contents)
-					if(istype(CI, DT))
-						if(istype(CI, /obj/item/storage/fancy/vials/random) && !length(CI.contents))
-							break
-						if(istype(CI, /obj/item/reagent_container/glass/beaker/vial/random) && !CI.reagents?.total_volume)
-							break
-						detected = TRUE
-			if(human_user && detected)
-				show_blip(human_user, I)
+		if(object_being_searched.is_objective)
+			detected = TRUE
+		if(!detected && object_being_searched.contents)
+			for(var/obj/item/item_in_object in object_being_searched.contents)
+				if(item_in_object.is_objective)
+					detected = TRUE
+					break
+		if(human_user && detected)
+			show_blip(human_user, object_being_searched)
 
 		if(detected)
 			detected_sound = TRUE
 
 		CHECK_TICK
 
-	for(var/mob/M in orange(detector_range, loc))
+	for(var/mob/mob_checking in orange(detector_range, loc))
 		var/detected
-		if(loc == null || M == null)
+		if(loc == null)
 			continue
-		if(loc.z != M.z)
+		if(loc.z != mob_checking.z)
 			continue
-		if(M == loc)
+		if(mob_checking == loc)
 			continue //device user isn't detected
-		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
+		if((isxeno(mob_checking) || isyautja(mob_checking)) && mob_checking.stat == DEAD )
 			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && length(M.contents))
-			for(var/obj/I in M.contents_twice())
-				for(var/DT in objects_to_detect)
-					if(istype(I, DT))
-						if(istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents))
-							break
-						if(istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume)
-							break
-						detected = TRUE
-
+		if(!detected && ishuman(mob_checking) && mob_checking.stat == DEAD && length(mob_checking.contents))
+			storage_search:
+				for(var/obj/item/storage/storage_being_checked in mob_checking.contents_twice())
+					for(var/obj/item_on_mob in storage_being_checked.contents)
+						if(item_on_mob.is_objective)
+							detected = TRUE
+							break storage_search
+		if(!detected && ishuman(mob_checking) && mob_checking.stat == DEAD && length(mob_checking.contents)) //In case we're not in storage for some ungodly reason
+			for(var/obj/item_on_mob in mob_checking.contents)
+				if(item_on_mob.is_objective)
+					detected = TRUE
+					break
 		if(human_user && detected)
-			show_blip(human_user, M)
+			show_blip(human_user, mob_checking)
 			if(detected)
 				detected_sound = TRUE
 

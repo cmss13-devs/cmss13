@@ -7,6 +7,7 @@
 	var/layer_name = list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
 	var/variant = 0
 	var/variant_prefix_name = ""
+	var/bleed_layer = 0 //snow layer
 
 /turf/open/auto_turf/insert_self_into_baseturfs()
 	baseturfs += type
@@ -16,6 +17,12 @@
 
 /turf/open/auto_turf/can_dig_xeno_tunnel()
 	return TRUE //xenos can tunnel
+
+/turf/open/auto_turf/proc/layers_over(turf/open/other_turf)
+	if(istype(other_turf, /turf/open/auto_turf))
+		var/turf/open/auto_turf/other_auto_turf = other_turf
+		return bleed_layer > other_auto_turf.bleed_layer
+	return (bleed_layer > 0) // assume all non auto turfs have a bleed layer of 0
 
 //Update icon
 /turf/open/auto_turf/update_icon()
@@ -226,6 +233,9 @@
 		changing_layer(new_layer)
 
 	return XENO_NO_DELAY_ACTION
+
+/turf/open/auto_turf/snow/attack_larva(mob/living/carbon/xenomorph/larva/M)
+	return //Larvae can't do shit
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)

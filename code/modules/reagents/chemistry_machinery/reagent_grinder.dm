@@ -97,7 +97,7 @@
 		return FALSE
 
 	if(LAZYLEN(holdingitems) >= limit)
-		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+		to_chat(user, SPAN_WARNING("The machine cannot hold any more items."))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
 		if(limit == 16)
@@ -117,7 +117,7 @@
 				return
 			for(var/obj/item/I in B)
 				if(LAZYLEN(holdingitems) >= limit)
-					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+					to_chat(user, SPAN_WARNING("The machine cannot hold any more items."))
 					break
 				else
 					if(!is_type_in_list(I, blend_items) && !is_type_in_list(I, juice_items))
@@ -461,6 +461,7 @@
 
 		//Special Stuff
 		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),
+		/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall = list("dathwei" = 30),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)

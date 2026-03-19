@@ -245,7 +245,7 @@
 /turf/closed/ice/thin/intersection
 	icon_state = "Intersection"
 
-//Thin Ice Secret Wall
+//Ice Thin Secret Wall
 /turf/closed/ice/thin/secret
 	desc = "There is something inside..."
 
@@ -338,10 +338,6 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rasputin1"
 
-/turf/closed/shuttle/ert
-	icon = 'icons/turf/ert_shuttle.dmi'
-	icon_state = "stan4"
-
 /turf/closed/shuttle/dropship1
 	name = "\improper Alamo"
 	icon = 'icons/turf/dropship.dmi'
@@ -358,30 +354,6 @@
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE
 
-/turf/closed/shuttle/twe_dropship
-	name = "\improper UD4-UK"
-	icon = 'icons/turf/twedropship.dmi'
-	icon_state = "0,0"
-
-/turf/closed/shuttle/twe_dropship/transparent
-	opacity = FALSE
-
-/turf/closed/shuttle/upp_sof
-	name = "\improper UPP-DS-3 'Voron'"
-	icon = 'icons/turf/upp_sof_dropship.dmi'
-	icon_state = "0,0"
-
-/turf/closed/shuttle/upp_sof/transparent
-	opacity = FALSE
-
-/turf/closed/shuttle/upp_sof_alt
-	name = "\improper UPP-DS-3 'Volk'"
-	icon = 'icons/turf/upp_sof_alt_dropship.dmi'
-	icon_state = "0,0"
-
-/turf/closed/shuttle/upp_sof_alt/transparent
-	opacity = FALSE
-
 /turf/closed/shuttle/dropship3
 	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
@@ -393,23 +365,60 @@
 /turf/closed/shuttle/dropship3/tornado
 	name = "\improper Tornado"
 
-/turf/closed/shuttle/dropship3/tornado/typhoon
-	name = "\improper Typhoon"
-
-/turf/closed/shuttle/upp_dropship
-	name = "\improper Morana"
-	icon = 'icons/turf/upp_dropship.dmi'
-	icon_state = "1"
-
-/turf/closed/shuttle/upp_dropship/transparent
+/turf/closed/shuttle/dropship3/tornado/transparent
 	opacity = FALSE
 
-/turf/closed/shuttle/upp_dropship2
-	name = "\improper Devana"
-	icon = 'icons/turf/upp_dropship.dmi'
+/turf/closed/shuttle/dropship3/typhoon
+	name = "\improper Typhoon"
+
+/turf/closed/shuttle/dropship3/typhoon/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship_upp
+	name = "\improper Morana"
+	icon = 'icons/turf/dropship_upp.dmi'
 	icon_state = "1"
 
-/turf/closed/shuttle/upp_dropship2/transparent
+/turf/closed/shuttle/dropship_upp/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship_upp2
+	name = "\improper Devana"
+	icon = 'icons/turf/dropship_upp.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship_upp2/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof
+	name = "\improper UPP-DS-3 'Voron'"
+	icon = 'icons/turf/dropship_upp_sof.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof_alt
+	name = "\improper UPP-DS-3 'Volk'"
+	icon = 'icons/turf/dropship_upp_sof_alt.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof_alt/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship_twe
+	name = "\improper UD4-UK"
+	icon = 'icons/turf/dropship_twe.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/dropship_twe/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/ert
+	icon = 'icons/turf/ert_shuttle.dmi'
+	icon_state = "stan4"
+
+/turf/closed/shuttle/ert/transparent
 	opacity = FALSE
 
 /turf/closed/shuttle/escapepod
@@ -508,34 +517,34 @@
 
 // Hybrisa Shuttles & Dropships
 
-/turf/closed/shuttle/dropship4/WY
-	icon = 'icons/turf/dropship4.dmi'
+/turf/closed/shuttle/dropship_wy
+	icon = 'icons/turf/dropship_wy.dmi'
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship4/WY/HorizonRunner
+/turf/closed/shuttle/dropship_wy/HorizonRunner
 	name = "\improper WY-LWI Horizon Runner HR-150"
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship4/WY/HorizonRunner/transparent
+/turf/closed/shuttle/dropship_wy/HorizonRunner/transparent
 	opacity = FALSE
 
-/turf/closed/shuttle/dropship4/WY/StarGlider
+/turf/closed/shuttle/dropship_wy/StarGlider
 	name = "\improper WY-LWI StarGlider SG-200"
 	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship4/WY/StarGlider/transparent
+/turf/closed/shuttle/dropship_wy/StarGlider/transparent
 	opacity = FALSE
 
-/turf/closed/shuttle/dropship5/CLF
-	icon = 'icons/turf/CLF_dropship.dmi'
+/turf/closed/shuttle/dropship_clf
+	icon = 'icons/turf/dropship_clf.dmi'
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship5/CLF/Fire
+/turf/closed/shuttle/dropship_clf/Fire
 	name = "\improper UD-9M 'Dogbite'"
 	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent
+/turf/closed/shuttle/dropship_clf/Fire/transparent
 	opacity = FALSE

@@ -45,7 +45,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -367,6 +367,12 @@
 	var/cannot_slash = FALSE
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
+
+	// facehugger stuff
+	/// cooldown between dropping facehuggers
+	var/hugger_drop_cooldown = 0
+	/// cooldown between throwing facehuggers
+	var/hugger_throw_cooldown = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -841,7 +847,7 @@
 
 
 	//and display them
-	add_to_all_mob_huds()
+	add_to_all_mob_huds(hivenumber)
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
@@ -1208,6 +1214,32 @@
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
 
+	qdel(new_player)
+
+/mob/living/carbon/xenomorph/drop_inv_item_on_ground(obj/item/object, nomoveupdate, force)
+	if(istype(object, /obj/item/clothing/mask/facehugger) && !force)
+		if(world.time < hugger_drop_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before dropping another facehugger."))
+			return null
+		hugger_drop_cooldown = world.time + 2.5 SECONDS
+	return ..()
+
+/mob/living/carbon/xenomorph/throw_item(atom/target)
+	var/obj/item/object = get_active_hand()
+	if(istype(object, /obj/item/clothing/mask/facehugger))
+		if(world.time < hugger_throw_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before throwing another facehugger."))
+			return
+		hugger_throw_cooldown = world.time + 2.5 SECONDS
+		var/old_range = object.throw_range
+		object.throw_range = get_throw_range(object)
+		. = ..()
+		object.throw_range = old_range
+		return
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
+	return 1
 /**
  * Checks if user can mount src
  *

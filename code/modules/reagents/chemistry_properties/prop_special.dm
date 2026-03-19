@@ -168,7 +168,7 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates."))
+	E.visible_message(SPAN_DANGER("\The [E] rapidly mutates."))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
@@ -324,7 +324,7 @@
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS
 	code = "RAD"
-	description = "Controls the radius of a fire, using unknown means"
+	description = "Controls the radius of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -348,7 +348,7 @@
 /datum/chem_property/special/intensity
 	name = PROPERTY_INTENSITY
 	code = "INT"
-	description = "Controls the intensity of a fire, using unknown means"
+	description = "Controls the intensity of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -370,7 +370,7 @@
 /datum/chem_property/special/duration
 	name = PROPERTY_DURATION
 	code = "DUR"
-	description = "Controls the duration of a fire, using unknown means"
+	description = "Controls the duration of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666

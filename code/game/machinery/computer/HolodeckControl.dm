@@ -80,7 +80,7 @@
 		return
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		to_chat(user, "It's a holotable!  There are no bolts!")
+		to_chat(user, "It's a holotable! There are no bolts!")
 		return
 
 	. = ..()
@@ -168,13 +168,16 @@
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
+			visible_message(SPAN_NOTICE("Swish! \The [I] lands in \the [src]."), null, null, 3)
 		else
-			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
+			visible_message(SPAN_DANGER("\The [I] bounces off of \the [src]'s rim!"), null, null, 3)
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
 
+/obj/structure/holohoop/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15, north_offset = 15, south_offset = 15)
 
 /obj/structure/machinery/readybutton
 	name = "Ready Declaration Device"

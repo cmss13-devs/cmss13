@@ -201,16 +201,54 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/research)
-"aaJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/hangar)
 "aaK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/open/floor/white,
 /area/sulaco/cryosleep)
+"aaL" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"aaM" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8;
+	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"aaN" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"aaO" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer,
+/area/sulaco/cargo)
+"aaP" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/green/north,
+/area/sulaco/cargo)
+"aaQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/surface/rack,
+/turf/open/floor/almayer,
+/area/sulaco/cargo)
+"aaR" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/almayer,
+/area/sulaco/cargo)
 "abb" = (
 /turf/open/floor/almayer/blue/west,
 /area/sulaco/marine/delta)
@@ -1336,7 +1374,7 @@
 /area/sulaco/briefing)
 "bFJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -1929,10 +1967,6 @@
 	},
 /turf/open/floor/engine,
 /area/sulaco/engineering/atmos)
-"cqY" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/outer,
-/area/sulaco/maintenance/south_solar_maint)
 "csz" = (
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap/hidden,
@@ -4932,6 +4966,10 @@
 /turf/open/floor/almayer/sterile,
 /area/sulaco/brig)
 "fWs" = (
+/obj/vehicle/powerloader{
+	name = "Mark IV Powerloader";
+	dir = 4
+	},
 /turf/open/floor/mech_bay_recharge_floor,
 /area/sulaco/cargo)
 "fXd" = (
@@ -5222,6 +5260,7 @@
 /area/sulaco/maintenance/lower_maint)
 "gqk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer/green/north,
 /area/sulaco/cargo)
 "gqo" = (
@@ -6232,9 +6271,6 @@
 	no_panel = 1;
 	not_weldable = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hangar)
 "hMs" = (
@@ -6604,10 +6640,6 @@
 "imN" = (
 /turf/closed/wall/almayer,
 /area/sulaco/bridge)
-"inc" = (
-/obj/structure/lattice,
-/turf/closed/wall/almayer/outer,
-/area/sulaco/maintenance/lower_maint2)
 "ing" = (
 /turf/closed/cordon,
 /area/space)
@@ -8655,12 +8687,12 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hangar)
 "kXT" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
 	icon_state = "landingstripe"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -22420,7 +22452,7 @@ dck
 lvQ
 dck
 dck
-inc
+dck
 dck
 gak
 gyg
@@ -25126,9 +25158,9 @@ kYA
 kYA
 kYA
 kYA
-kYA
-kYA
-kYA
+aaN
+nCV
+aaL
 kYA
 kYA
 aaH
@@ -25201,7 +25233,7 @@ wcF
 wcF
 kXT
 edm
-gDU
+aaM
 gDU
 oNW
 fck
@@ -25267,13 +25299,13 @@ dZt
 dZt
 dZt
 dZt
-mYC
+dZt
 mYC
 dZt
 arL
 arL
 hLW
-aaJ
+arL
 bFJ
 nCV
 kIJ
@@ -36826,18 +36858,18 @@ bhx
 aab
 mvW
 vFm
-cqY
-cqY
 vFm
-cqY
-cqY
-cqY
-cqY
-cqY
 vFm
-cqY
-cqY
-cqY
+vFm
+vFm
+vFm
+vFm
+vFm
+vFm
+vFm
+vFm
+vFm
+vFm
 vFm
 vFm
 pOR
@@ -39352,13 +39384,13 @@ eeB
 xvC
 euC
 edc
-fFB
+aaQ
 kBO
-fFB
+aaQ
 fFB
 gqk
 oXZ
-xNb
+aaO
 fuz
 fWs
 bxQ
@@ -39425,13 +39457,13 @@ eeB
 lwZ
 dqs
 slB
-xNb
+aaO
 euC
+aaO
 xNb
+aaP
 xNb
-fuz
-xNb
-xNb
+aaO
 fuz
 uET
 bxQ
@@ -39496,15 +39528,15 @@ ikp
 ikp
 eeB
 lwZ
-skQ
-slB
-xNb
 euC
+slB
+aaO
+euC
+aaO
 xNb
+aaP
 xNb
-fuz
-xNb
-xNb
+aaO
 fuz
 kSe
 cCB
@@ -39571,13 +39603,13 @@ eeB
 lwZ
 skQ
 tZp
-rCr
+aaR
 euC
+aaO
 xNb
+aaP
 xNb
-fuz
-xNb
-xNb
+aaO
 fuz
 iBl
 bxQ
@@ -41392,7 +41424,7 @@ uGX
 uGX
 uGX
 uGX
-bGT
+ckn
 ckn
 ckn
 pHk

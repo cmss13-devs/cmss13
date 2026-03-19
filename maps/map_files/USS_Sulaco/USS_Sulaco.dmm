@@ -1,20 +1,28 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Bridge Maintenance";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating,
 /area/sulaco/bridge/maint)
 "aab" = (
 /obj/effect/landmark/yautja_teleport,
-/obj/structure/machinery/power/apc{
-	name = "Solar Array 2";
-	pixel_y = -25
-	},
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
+"aac" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/engine/vacuum,
+/area/sulaco/telecomms)
+"aad" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/sulaco/medbay/chemistry)
+"aae" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/wood,
+/area/sulaco/cap_office)
 "aaf" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -25,6 +33,113 @@
 	tag = "icon-silver (NORTH)"
 	},
 /area/sulaco/bridge)
+"aag" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
+	},
+/area/sulaco/bridge)
+"aah" = (
+/turf/closed/wall/almayer/white,
+/area/sulaco/medbay/surgery_one)
+"aai" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/sulaco/medbay/surgery_one)
+"aaj" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/sulaco/medbay/surgery_one)
+"aak" = (
+/turf/closed/wall/almayer/outer,
+/area/sulaco/medbay/surgery_one)
+"aal" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/sulaco/medbay/surgery_one)
+"aam" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/sulaco/medbay/surgery_one)
+"aan" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/sulaco/medbay/surgery_one)
+"aao" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/sulaco/medbay/surgery_one)
+"aap" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/alarm{
+	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/sulaco/medbay/surgery_one)
+"aaq" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/sulaco/medbay/surgery_one)
+"aar" = (
+/obj/structure/sink{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/sulaco/medbay/surgery_one)
+"aas" = (
+/turf/closed/wall/almayer/white/hull,
+/area/sulaco/medbay/surgery_one)
+"aat" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer,
+/area/sulaco/ob_aa_cannon)
 "abb" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -353,20 +468,12 @@
 	},
 /area/sulaco/engineering)
 "anY" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Disposals";
-	pixel_y = 25
-	},
 /obj/structure/machinery/pipedispenser/disposal,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating,
 /area/sulaco/disposal)
 "aoU" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Delta Prep";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
@@ -1044,15 +1151,10 @@
 /turf/closed/wall/almayer/outer,
 /area/sulaco/cargo)
 "biO" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Deck 2 Hallway";
-	pixel_x = 25;
-	pixel_y = 0
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hallway/lower_main_hall)
 "bjN" = (
@@ -1108,11 +1210,7 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "blT" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Charlie Prep";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "emerald";
@@ -1983,14 +2081,10 @@
 	},
 /area/sulaco/cap_office)
 "cff" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "EVA";
-	pixel_y = 25
-	},
 /obj/structure/surface/rack,
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
@@ -2807,7 +2901,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (WEST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "cUx" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2881,12 +2975,6 @@
 /turf/closed/wall/almayer/white,
 /area/sulaco/hangar)
 "cXg" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Chief Engineer's Quarters";
-	pixel_y = 25;
-	pixel_z = 0
-	},
 /obj/structure/machinery/keycard_auth{
 	pixel_x = 30
 	},
@@ -2897,6 +2985,7 @@
 	pixel_x = 19;
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	icon_state = "orangefull";
 	tag = "icon-orangefull"
@@ -3321,15 +3410,10 @@
 	},
 /area/sulaco/marine/charlie)
 "drz" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "AI Chamber";
-	pixel_x = 25;
-	pixel_y = 0
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -3337,15 +3421,11 @@
 	},
 /area/sulaco/command/ai)
 "drK" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Engineering Hall";
-	pixel_y = 25
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "dsK" = (
@@ -3592,15 +3672,12 @@
 	},
 /area/sulaco/medbay/surgery_two)
 "dFd" = (
-/obj/structure/machinery/power/apc/almayer/west{
-	dir = 8;
-	name = "Engine Room APC";
-	start_charge = 1000;
-	pixel_x = -25
-	},
 /obj/structure/stairs/perspective{
 	dir = 6;
 	icon_state = "p_stair_full"
+	},
+/obj/structure/machinery/power/apc/almayer/west{
+	name = "Engine Room APC"
 	},
 /turf/open/floor/plating,
 /area/sulaco/engineering/engine)
@@ -4954,12 +5031,7 @@
 	},
 /area/sulaco/showers)
 "ePa" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Morgue Maintenance";
-	pixel_x = -25;
-	pixel_y = 0
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
 "eQd" = (
@@ -5070,11 +5142,7 @@
 	},
 /area/sulaco/research)
 "eWG" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Solar Array";
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/north_solar_maint)
 "eWV" = (
@@ -5486,11 +5554,7 @@
 	},
 /area/sulaco/showers)
 "frC" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay";
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -5723,15 +5787,11 @@
 /area/sulaco/engineering)
 "fCM" = (
 /obj/structure/machinery/computer/secure_data/detective_computer,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Fancy Quarters";
-	pixel_y = 25
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
 	tag = "icon-intact-supply (SOUTHEAST)"
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet10-8";
@@ -5858,21 +5918,6 @@
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
-"fIZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Operating Theatre 2";
-	pixel_x = 25
-	},
-/obj/structure/machinery/bioprinter{
-	stored_metal = 1000
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
-	},
-/area/sulaco/medbay/surgery_two)
 "fJg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -6035,12 +6080,7 @@
 	},
 /area/sulaco/cryosleep)
 "fSA" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Telecomms Monitoring";
-	pixel_x = -25;
-	pixel_y = 0
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -6708,15 +6748,11 @@
 /turf/closed/wall/almayer,
 /area/sulaco/command/eva)
 "gBr" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Marine Prep";
-	pixel_y = 25
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (NORTH)"
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/sulaco/marine)
 "gBt" = (
@@ -8202,12 +8238,8 @@
 	},
 /area/sulaco/cafeteria)
 "ico" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Executive Quarters";
-	pixel_x = 25
-	},
 /obj/effect/landmark/start/executive,
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/wood,
 /area/sulaco/bridge/office)
 "icX" = (
@@ -8874,7 +8906,7 @@
 /area/sulaco/bridge/quarters)
 "iIU" = (
 /turf/closed/wall/almayer,
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "iIV" = (
 /obj/structure/machinery/door_control{
 	desc = "A remote control-switch for the engine control room blast doors.";
@@ -9134,17 +9166,12 @@
 /turf/open/floor/wood,
 /area/sulaco/cap_office)
 "iUo" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Research Division";
-	pixel_x = -25;
-	pixel_y = 0
-	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/research{
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -9675,7 +9702,7 @@
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "jxx" = (
 /obj/structure/machinery/cm_vending/clothing/tl/delta{
 	density = 0;
@@ -10143,7 +10170,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "jUt" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
@@ -10398,11 +10425,7 @@
 	},
 /area/sulaco/maintenance/lower_maint)
 "kkD" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Medbay Hallway";
-	pixel_x = 25
-	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer{
 	icon_state = "silver";
 	tag = "icon-silver"
@@ -10695,14 +10718,9 @@
 	},
 /area/sulaco/research)
 "kDi" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Hangar Bay";
-	pixel_x = -25;
-	pixel_y = 0
-	},
 /obj/structure/dropship_equipment/weapon/launch_bay,
 /obj/structure/surface/rack,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "kDD" = (
@@ -11675,11 +11693,7 @@
 	},
 /area/sulaco/telecomms/office)
 "lzp" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay Storage";
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -11776,12 +11790,6 @@
 	},
 /area/sulaco/engineering)
 "lEr" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Atmospherics";
-	pixel_x = -25;
-	start_charge = 90
-	},
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1"
@@ -11789,6 +11797,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer,
 /area/sulaco/engineering/atmos)
 "lEE" = (
@@ -12782,15 +12791,6 @@
 	tag = "icon-sterile"
 	},
 /area/sulaco/medbay)
-"myo" = (
-/obj/structure/machinery/power/apc{
-	dir = 2;
-	name = "Telecomms";
-	pixel_x = 0;
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/telecomms)
 "mAt" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12824,11 +12824,7 @@
 	},
 /area/sulaco/marine/alpha)
 "mBx" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Central Hall 2";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
@@ -12968,7 +12964,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "mJc" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer{
 	density = 0;
@@ -13372,14 +13368,10 @@
 /turf/open/floor/almayer,
 /area/sulaco/marine/alpha)
 "nlT" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Briefing Room";
-	pixel_y = 25
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
 "nnO" = (
@@ -13731,11 +13723,7 @@
 	},
 /area/sulaco/cargo)
 "nJr" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Engineering Maintenance";
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/sulaco/engineering/storage)
 "nJt" = (
@@ -14897,7 +14885,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (WEST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "oOd" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -15244,9 +15232,6 @@
 	},
 /area/sulaco/cryosleep)
 "pfx" = (
-/obj/structure/machinery/power/apc/almayer/west{
-	dir = 8
-	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8
@@ -15585,13 +15570,9 @@
 	},
 /area/sulaco/liaison)
 "pCf" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Cafeteria";
-	pixel_x = -25
-	},
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -15693,7 +15674,7 @@
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "pLi" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -15902,13 +15883,9 @@
 /area/sulaco/showers)
 "pXm" = (
 /obj/item/weapon/pole/wooden_cane,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Cryogenic Storage";
-	pixel_x = -25
-	},
 /obj/item/device/flashlight/flare,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "warnwhite"
@@ -16657,15 +16634,10 @@
 /turf/open/floor/almayer,
 /area/sulaco/cargo/office)
 "qNz" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Officer's Quarters";
-	pixel_x = 25;
-	pixel_y = 0
-	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating,
 /area/sulaco/bridge/quarters)
 "qOl" = (
@@ -17510,15 +17482,11 @@
 /area/sulaco/bridge)
 "rDv" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay West";
-	pixel_y = 25
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (NORTH)"
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -17854,7 +17822,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (WEST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "rTv" = (
 /obj/structure/closet/crate,
 /turf/open/floor/almayer{
@@ -18509,7 +18477,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (EAST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "sJH" = (
 /obj/structure/prop/invuln{
 	desc = "Floating cells are reserved for highly dangerous criminals. Whoever is out there is probably best left out there.";
@@ -18819,12 +18787,7 @@
 	},
 /area/sulaco/marine/bravo)
 "tcM" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Lower Deck Maintenance";
-	pixel_x = 0;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -19039,10 +19002,8 @@
 /turf/closed/wall/almayer,
 /area/sulaco/cryosleep)
 "tlQ" = (
-/obj/structure/machinery/power/apc/almayer/north{
-	pixel_y = 25
-	},
 /obj/structure/surface/rack,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/silver/northeast,
 /area/sulaco/maintenance/lower_maint2)
 "tlS" = (
@@ -19066,11 +19027,7 @@
 /area/sulaco/briefing)
 "tmT" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Engineering";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -19107,14 +19064,10 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Showers";
-	pixel_x = -25
-	},
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -19822,11 +19775,6 @@
 /obj/item/bodybag/cryobag,
 /obj/item/clothing/head/nursehat,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Medbay Storage";
-	pixel_x = -25
-	},
 /obj/structure/transmitter/rotary{
 	name = "Medical Storage Telephone";
 	phone_category = "Medical & Research Dept.";
@@ -19834,6 +19782,7 @@
 	pixel_x = -7;
 	pixel_y = 7
 	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -20706,6 +20655,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/brig)
 "uKX" = (
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -20788,11 +20738,7 @@
 	},
 /area/sulaco/cargo)
 "uOZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Corporate Office";
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -20931,13 +20877,8 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall2)
 "uWZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Morgue";
-	pixel_x = -25;
-	pixel_y = 0
-	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -21035,12 +20976,6 @@
 	},
 /area/sulaco/cargo/office)
 "uZc" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Armory";
-	pixel_x = -25;
-	pixel_y = 0
-	},
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
 /obj/item/weapon/gun/rifle/lmg,
@@ -21049,6 +20984,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -21103,13 +21039,8 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc{
-	dir = 2;
-	name = "Cargo Office";
-	pixel_x = 0;
-	pixel_y = -25
-	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/almayer,
 /area/sulaco/cargo/office)
 "vcA" = (
@@ -21392,14 +21323,9 @@
 /obj/item/ammo_magazine/pistol,
 /obj/item/ammo_magazine/pistol,
 /obj/item/weapon/gun/pistol/m4a3,
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Firing Range";
-	pixel_x = 0;
-	pixel_y = 25
-	},
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -21557,7 +21483,7 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "vzW" = (
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
 /obj/structure/machinery/light{
@@ -21731,14 +21657,10 @@
 /turf/open/floor/engine,
 /area/sulaco/engineering/atmos)
 "vLP" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Security";
-	pixel_x = 25
-	},
 /obj/structure/surface/rack,
 /obj/item/weapon/baton,
 /obj/item/device/hailer,
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -21770,7 +21692,7 @@
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "vMR" = (
 /obj/structure/machinery/cm_vending/clothing/marine/charlie,
 /obj/structure/machinery/camera/autoname{
@@ -22133,13 +22055,8 @@
 /turf/open/floor/almayer,
 /area/sulaco/marine)
 "vYR" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Mechanics";
-	pixel_x = 0;
-	pixel_y = 25
-	},
 /obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hangar/atmos)
 "vYW" = (
@@ -22456,14 +22373,12 @@
 	},
 /area/sulaco/engineering)
 "wmk" = (
-/obj/structure/machinery/power/apc/almayer/north{
-	dir = 1;
-	name = "Master APC";
-	pixel_y = 25
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
 	tag = "icon-intact-supply (SOUTHEAST)"
+	},
+/obj/structure/machinery/power/apc/almayer/north{
+	name = "Master APC"
 	},
 /turf/open/floor/plating,
 /area/sulaco/engineering/smes)
@@ -22891,17 +22806,13 @@
 	},
 /area/sulaco/liaison)
 "wIz" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Operating Theatre 1";
-	pixel_x = 25
-	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (EAST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "wIC" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
@@ -23194,12 +23105,7 @@
 	},
 /area/sulaco/hangar/range)
 "wYd" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	name = "Cargo Bay";
-	pixel_x = 25;
-	pixel_y = 0
-	},
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
 "wZP" = (
@@ -23637,7 +23543,7 @@
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile_green_corner (WEST)"
 	},
-/area/sulaco/medbay/surgery_two)
+/area/sulaco/medbay/surgery_one)
 "xBn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24095,11 +24001,7 @@
 	},
 /area/sulaco/brig)
 "xXL" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Bravo Prep";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -24269,11 +24171,7 @@
 	},
 /area/sulaco/maintenance/lower_maint)
 "yjj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Alpha Prep";
-	pixel_x = -25
-	},
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -27327,7 +27225,7 @@ mcR
 mcR
 mcR
 kGR
-hXh
+aac
 hXh
 hXh
 hXh
@@ -27399,7 +27297,7 @@ rZf
 pFc
 lxS
 mcR
-myo
+mcR
 mcR
 kZU
 kZU
@@ -27902,7 +27800,7 @@ ama
 jSU
 cmr
 boK
-uhg
+aad
 uhg
 nnO
 rzN
@@ -39281,7 +39179,7 @@ uGX
 uGX
 uGX
 uGX
-bRf
+aak
 bRf
 bRf
 bRf
@@ -39297,7 +39195,7 @@ lbp
 kLb
 kFo
 wCU
-lbp
+aag
 uyh
 imN
 imN
@@ -39353,8 +39251,8 @@ uGX
 fvU
 pOR
 pOR
-bRf
-bRf
+aak
+aak
 aLL
 aLL
 aLL
@@ -39378,7 +39276,7 @@ vNJ
 vNJ
 vNJ
 vNJ
-nYD
+aae
 nYD
 jZL
 tqE
@@ -39425,8 +39323,8 @@ uGX
 uGX
 fwi
 rlu
-bRf
-bRf
+aak
+aak
 iIU
 aLL
 cFF
@@ -39496,9 +39394,9 @@ uGX
 uGX
 uGX
 uGX
-bRf
-bRf
-bRf
+aak
+aak
+aak
 iIU
 iIU
 uuJ
@@ -39569,13 +39467,13 @@ uGX
 uGX
 uGX
 uGX
-bRf
-lSS
-aLL
-aLL
-aLL
-aLL
-aLL
+aak
+aas
+aah
+aah
+aah
+aah
+aah
 aLL
 dFc
 aLL
@@ -39642,8 +39540,8 @@ uGX
 uGX
 uGX
 uGX
-bRf
-aLL
+aak
+aah
 jwO
 oOb
 rTn
@@ -39715,11 +39613,11 @@ uGX
 uGX
 uGX
 uGX
-bRf
-aLL
-gHh
-skU
-rGP
+aak
+aah
+aao
+aaj
+aal
 pKh
 vzE
 aLL
@@ -39788,12 +39686,12 @@ uGX
 uGX
 uGX
 uGX
-bRf
-aLL
-tWZ
-skU
-cYl
-skU
+aak
+aah
+aap
+aaj
+aam
+aaj
 jTr
 aLL
 tWZ
@@ -39861,12 +39759,12 @@ uGX
 uGX
 uGX
 uGX
-bRf
-aLL
-yec
-skU
-skU
-skU
+aak
+aah
+aaq
+aaj
+aaj
+aaj
 mIQ
 aLL
 yec
@@ -39934,17 +39832,17 @@ nZi
 nZi
 nZi
 nZi
-bRf
-aLL
-cGy
-jXQ
+aak
+aah
+aar
+aan
 wIz
 sIV
-laa
+aai
 aLL
 cGy
 oTK
-fIZ
+ocl
 ocl
 fqm
 aLL
@@ -40007,12 +39905,12 @@ pPf
 pPf
 pPf
 pPf
-lSS
-aLL
-aLL
-aLL
-aLL
-aLL
+aas
+aah
+aah
+aah
+aah
+aah
 vLZ
 aLL
 bEr
@@ -44375,7 +44273,7 @@ eef
 qFb
 lux
 hvi
-lux
+aat
 qFb
 dwf
 hex

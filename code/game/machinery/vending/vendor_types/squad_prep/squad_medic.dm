@@ -16,15 +16,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Burn Kit", 1, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
 		list("Trauma Kit", 1, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
-		list("Blood Bag (O-)", 2, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
+		list("Blood Bag (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
 
 		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced Firstaid Kit", 10, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 3, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
-		list("Fire Firstaid Kit", 3, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
-		list("Toxin Firstaid Kit", 3, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Oxygen Firstaid Kit", 3, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
-		list("Radiation Firstaid Kit", 3, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
+		list("Advanced Firstaid Kit", 8, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
+		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
+		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
+		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
+		list("Radiation Firstaid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
 		list("Advanced Firstaid Kit (Empty)", 1, /obj/item/storage/firstaid/adv/empty, null, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", 0, null, null, null),
@@ -102,7 +102,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),
-		list("Medical Helmet Optic", 10, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
 		list("PAMPHLETS", 0, null, null, null),

@@ -627,6 +627,7 @@
 	internal_tank = new /obj/item/reagent_container/glass/minitank/large()
 	internal_tank.moveToNullspace()
 	internal_tank.owner_pack = src
+	update_icon()
 
 /obj/item/storage/backpack/marine/medic/chempack/Destroy()
 	if(!QDELETED(internal_tank))
@@ -650,8 +651,7 @@
 		return
 	if(!internal_tank)
 		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
-		. = ..()
-		return
+		return ..()
 	if(istype(attacking_item, /obj/item/reagent_container/glass/pressurized_canister) \
 	|| istype(attacking_item, /obj/item/reagent_container/glass/minitank) \
 	|| (istype(attacking_item, /obj/item/reagent_container/hypospray) && !istype(attacking_item, /obj/item/reagent_container/hypospray/autoinjector)))
@@ -699,16 +699,16 @@
 		icon_state = "marinepack_chem_notank"
 		item_state_slots = list(WEAR_BACK = "marinepack_medic")
 		. = ..()
-		if(loc && isliving(loc))
-			var/mob/living/M = loc
-			M.update_inv_back()
+		if(isliving(loc))
+			var/mob/living/living_holder = loc
+			living_holder.update_inv_back()
 		return
 	icon_state = "marinepack_chem"
 	item_state_slots = list(WEAR_BACK = "marinepack_chem")
 	. = ..()
-	if(loc && isliving(loc))
-		var/mob/living/M = loc
-		M.update_inv_back()
+	if(isliving(loc))
+		var/mob/living/living_holder = loc
+		living_holder.update_inv_back()
 	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
 		return
 	var/image/filling
@@ -812,7 +812,7 @@
 	update_icon()
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Destroy()
-	if(internal_tank && !QDELETED(internal_tank))
+	if(!QDELETED(internal_tank))
 		internal_tank.owner_pack = null
 		qdel(internal_tank)
 	internal_tank = null
@@ -879,11 +879,18 @@
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/update_icon()
 	if(!internal_tank)
 		icon_state = "marinesatch_chem_notank"
-		item_state = "marinesatch_chem"
-		return ..()
+		item_state_slots = list(WEAR_BACK = "marinesatch_medic")
+		. = ..()
+		if(isliving(loc))
+			var/mob/living/living_holder = loc
+			living_holder.update_inv_back()
+		return
 	icon_state = "marinesatch_chem"
-	item_state = "marinesatch_chem"
+	item_state_slots = list(WEAR_BACK = "marinesatch_chem")
 	. = ..()
+	if(isliving(loc))
+		var/mob/living/living_holder = loc
+		living_holder.update_inv_back()
 	if(!internal_tank.reagents || !internal_tank.reagents.total_volume)
 		return
 	var/image/filling

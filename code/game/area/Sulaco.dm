@@ -14,6 +14,12 @@
 	///Whether this area is additive or multiplicative towards evacuation progress
 	var/hijack_evacuation_type = EVACUATION_TYPE_NONE
 
+/area/sulaco/Initialize(mapload, ...)
+	. = ..()
+
+	if(hijack_evacuation_area)
+		SShijack.progress_areas[src] = power_equip
+
 /area/sulaco/bridge
 	name = "\improper Sulaco Bridge"
 	icon_state = "bridge"

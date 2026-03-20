@@ -650,8 +650,7 @@
 		return
 	if(!internal_tank)
 		to_chat(user, SPAN_WARNING("[src] has no canister installed. Insert an MS-22 Large Reagent Tank first."))
-		. = ..()
-		return
+		return ..()
 	if(istype(attacking_item, /obj/item/reagent_container/glass/pressurized_canister) \
 	|| istype(attacking_item, /obj/item/reagent_container/glass/minitank) \
 	|| (istype(attacking_item, /obj/item/reagent_container/hypospray) && !istype(attacking_item, /obj/item/reagent_container/hypospray/autoinjector)))

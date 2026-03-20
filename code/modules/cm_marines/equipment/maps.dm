@@ -184,6 +184,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 	var/map_name = SSmapping.configs[GROUND_MAP].map_name
 	var/obj/item/map/map = GLOB.map_type_list[map_name]
+	if (map_name == MAP_SULACO)
+		MAIN_AI_SYSTEM = "MOTHER v4.5"
 	if (!map && (map_name in GLOB.mapless_maps))
 		return // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
 	name = map.name

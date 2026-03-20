@@ -19,6 +19,7 @@
 
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
+	MAIN_AI_SYSTEM = "MOTHER v4.5"
 
 /area/sulaco/bridge
 	name = "\improper Sulaco Bridge"

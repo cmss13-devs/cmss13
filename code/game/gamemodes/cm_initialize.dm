@@ -355,7 +355,7 @@ Additional game mode variables.
 		return
 	if(!stranded_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_stranded_pred - new_player name=[stranded_candidate]")
-		message_admins("transform_stranded_pred attempted to trigger but the target player is missing a mind. - new_player name=[badblood_candidate]")
+		message_admins("transform_stranded_pred attempted to trigger but the target player is missing a mind. - new_player name=[stranded_candidate]")
 		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
 		return
 

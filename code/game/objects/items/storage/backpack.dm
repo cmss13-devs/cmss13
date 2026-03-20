@@ -699,8 +699,8 @@
 		item_state_slots = list(WEAR_BACK = "marinepack_medic")
 		. = ..()
 		if(loc && isliving(loc))
-			var/mob/living/M = loc
-			M.update_inv_back()
+			var/mob/living/living_holder = loc
+			living_holder.update_inv_back()
 		return
 	icon_state = "marinepack_chem"
 	item_state_slots = list(WEAR_BACK = "marinepack_chem")

@@ -5,10 +5,22 @@
 	powernet_name = "almayer"
 	ceiling_muffle = FALSE
 
+	///Whether this area is used for hijack evacuation progress
+	var/hijack_evacuation_area = FALSE
+
+	///The weight this area gives towards hijack evacuation progress
+	var/hijack_evacuation_weight = 0
+
+	///Whether this area is additive or multiplicative towards evacuation progress
+	var/hijack_evacuation_type = EVACUATION_TYPE_NONE
+
 /area/sulaco/bridge
 	name = "\improper Sulaco Bridge"
 	icon_state = "bridge"
 	fake_zlevel = 1 //upperdeck
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 1.1
+	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
 
 /area/sulaco/bridge/quarters
 	name = "\improper Sulaco Officer's Quarters"
@@ -184,6 +196,9 @@
 	name = "\improper Sulaco Engine Chamber"
 	icon_state = "yellow"
 	fake_zlevel = 1 //upperdeck
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 0.2
+	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/sulaco/engineering/smes
 	name = "\improper Sulaco Engineering SMES"
@@ -323,6 +338,28 @@
 /area/sulaco/hub/bottom
 	name = "\improper Sulaco Maintenance Hub"
 	icon_state = "yellow"
+
+/area/sulaco/lifeboat_pumps
+	name = "Lifeboat Fuel Pumps"
+	icon_state = "red"
+	requires_power = 1
+	fake_zlevel = 1
+	hijack_evacuation_area = TRUE
+	hijack_evacuation_weight = 0.1
+	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
+
+
+/area/sulaco/lifeboat_pumps/lower_north
+	name = "Lower Deck Northern Lifeboat Fuel Pump"
+
+/area/sulaco/lifeboat_pumps/lower_south
+	name = "Lower Deck Southern Lifeboat Fuel Pump"
+
+/area/sulaco/lifeboat_pumps/upper_north
+	name = "Upper Deck Northern Lifeboat Fuel Pump"
+
+/area/sulaco/lifeboat_pumps/upper_south
+	name = "Upper Deck Southern Lifeboat Fuel Pump"
 
 /area/shuttle
 	ceiling = CEILING_METAL

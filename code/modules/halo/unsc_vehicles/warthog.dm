@@ -382,6 +382,8 @@
 		return VEHICLE_SUPPORT_GUNNER_ONE
 
 /obj/vehicle/multitile/warthog/proc/is_valid_seat_locs_turf(mob/M, target_seat)
+	return TRUE
+/*
 	var/list/position = locs_positions[target_seat]["[dir]"]
 	var/turf/mob_turf = get_turf(M)
 	if(islist(position))
@@ -392,7 +394,7 @@
 		if(mob_turf == locs[position])
 			return TRUE
 	return FALSE
-
+*/
 /obj/vehicle/multitile/warthog/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(isliving(mover))
 		var/mob/living/M = mover

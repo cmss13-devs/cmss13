@@ -2,6 +2,7 @@
     "map_name": "USS Sulaco",
     "map_path": "map_files/USS_Sulaco",
     "map_file": "USS_Sulaco.dmm",
+    "ai_name": "MOTHER v4.5",
     "webmap_url": "changeme",
     "traits": [
         {

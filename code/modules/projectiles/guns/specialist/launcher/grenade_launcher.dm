@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
 	..()
 	recoil = RECOIL_AMOUNT_TIER_4 //Same as m37 shotgun.
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
+	set_fire_delay(FIRE_DELAY_TIER_GL)
 
 /obj/item/weapon/gun/launcher/grenade/on_pocket_insertion() //Plays load sfx whenever a nade is put into storage.
 	playsound(usr, reload_sound, 25, 1)

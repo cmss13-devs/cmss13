@@ -262,22 +262,16 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
-		playsound(user, 'sound/handling/gun_cleaning.ogg', 95, 1)
-		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
-			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
-			src.clean_blood()
-			var/image/shine = image('icons/effects/effects.dmi', src, "empdisable")
-			overlays += shine
-			playsound(user, 'sound/handling/shine.ogg', 30, 1)
-			do_after(user, 10)
-			if(!QDELETED(src))
-				overlays -= shine
-				user.visible_message("[user] holds [src] up to the light and nods approvingly.", null, null, 3)
-				animate(src, color = "#FFFFFF", time = 2)
-				animate(color = null, time = 3)
-		else
+		playsound(user, 'sound/handling/gun_cleaning.ogg', 85, 1)
+		if(!do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, attack_item, INTERRUPT_MOVED, NO_BUSY_ICON, status_effect = SLOW))
 			return
-
+		user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
+		clean_blood()
+		flick_overlay(src, image('icons/effects/effects.dmi', src, "empdisable"), 1 SECONDS)
+		playsound(user, 'sound/handling/shine.ogg', 25, 1)
+		user.visible_message("[user] holds [src] up to the light and nods approvingly.", null, null, 3)
+		animate(src, color = "#FFFFFF", time = 2)
+		animate(color = null, time = 3)
 
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))

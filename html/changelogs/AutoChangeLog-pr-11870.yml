@@ -1,0 +1,5 @@
+author: "MoondancerPony"
+delete-after: True
+changes:
+  - bugfix: "fixed neurotoxin dizziness cancelling binocular/zoom view offset"
+  - bugfix: "fixed deleted binoculars never un-zooming your view"

@@ -811,7 +811,7 @@
 	update_icon()
 
 /obj/item/storage/backpack/marine/satchel/medic/chemsatchel/Destroy()
-	if(internal_tank && !QDELETED(internal_tank))
+	if(!QDELETED(internal_tank))
 		internal_tank.owner_pack = null
 		qdel(internal_tank)
 	internal_tank = null

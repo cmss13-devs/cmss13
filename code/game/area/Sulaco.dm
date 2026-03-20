@@ -121,7 +121,7 @@
 
 /area/sulaco/briefing
 	name = "\improper Sulaco Briefing Room"
-	icon_state = "briefing"
+	icon_state = "law"
 	fake_zlevel = 1 //upperdeck
 
 
@@ -227,6 +227,11 @@
 
 /area/sulaco/command/intelligence
 	name = "\improper Sulaco Intelligence Office"
+	icon_state = "head_quarters"
+	fake_zlevel = 2 // lowerdeck
+
+/area/sulaco/command/sea
+	name = "\improper Sulaco Senior Enlisted Advisor Office"
 	icon_state = "head_quarters"
 	fake_zlevel = 2 // lowerdeck
 

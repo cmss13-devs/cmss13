@@ -48,7 +48,7 @@
 /datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/xenomorph/projectile_target, damage, damage_actual)
 	SIGNAL_HANDLER
 
-	if(projectile_target.fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_COMPLETE))
+	if(projectile_target.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
 		if(projectile_target.stat)
 			to_chat(projectile_target, SPAN_AVOIDHARM("You shrug off some persistent flames."))
 		return

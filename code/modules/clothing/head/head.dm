@@ -281,9 +281,24 @@
 	icon_state = "headbandred"
 	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 
+/obj/item/clothing/head/headband/red/static
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 	item_state_slots = list(WEAR_AS_GARB = "headbandtan")
+
+/obj/item/clothing/head/headband/intel
+	icon_state = "headbandintel"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_AS_GARB = "headbandintel",
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/brown
 	icon_state = "headbandbrown"
@@ -434,6 +449,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/clothing/head/headband/red = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/brown = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/gray = PREFIX_HAT_GARB_OVERRIDE, // _hat
+	/obj/item/clothing/head/headband/intel = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/squad = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
@@ -957,7 +973,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
@@ -1129,7 +1145,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cavalry
 	name = "\improper US cavalry hat"
-	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrence of heroism that is ongoing from as far as 19th century. Even though cavalry divison had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
+	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrance of heroism that is ongoing from as far as 19th century. Even though cavalry division had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
 	icon_state = "cavalry"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(

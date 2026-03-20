@@ -1092,9 +1092,8 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "yL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/platingdmg3,
 /area/varadero/interior/research/clfship)
 "yV" = (
 /obj/structure/barricade/sandbags/wired{
@@ -1748,9 +1747,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Mz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/platingdmg3,
 /area/varadero/interior/research/clfship)
 "MC" = (
 /obj/structure/machinery/light,
@@ -2022,9 +2020,8 @@
 /area/varadero/interior/research)
 "UF" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/platingdmg3,
 /area/varadero/interior/research/clfship)
 "UO" = (
 /turf/open/gm/grass/grass1/weedable,
@@ -2172,7 +2169,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Wz" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/varadero/interior/research/clfship)

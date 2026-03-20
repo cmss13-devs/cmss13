@@ -1,5 +1,0 @@
-author: "PhantornRU"
-delete-after: True
-changes:
-  - rscadd: "Option for the administration to remove mindless mobs when spawning ERT."
-  - refactor: "Refactored the code for waiting for a choice from the administrator during ERT spawn."

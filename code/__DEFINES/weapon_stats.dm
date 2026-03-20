@@ -152,7 +152,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
 
 /// Grenade launcher delays
-#define FIRE_DELAY_TIER_GL 32 // delay for the base grenade launcher type
+#define FIRE_DELAY_TIER_GL 3.2 SECONDS // delay for the base grenade launcher type
 
 /// General Delay Tiers
 #define FIRE_DELAY_TIER_1 12

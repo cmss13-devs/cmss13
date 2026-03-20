@@ -10340,9 +10340,9 @@
 /obj/structure/window/reinforced,
 /obj/structure/surface/table/almayer,
 /obj/item/weapon/chainofcommand,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 4;
-	name = "Dropship Remote Control Console";
+	layer = 2.99;
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/silverfull,
@@ -10519,13 +10519,13 @@
 /turf/open/floor/almayer/tcomms,
 /area/sulaco/telecomms)
 "maa" = (
-/obj/structure/machinery/computer/groundside_operations{
-	dir = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4
+	},
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/bridge)
 "maz" = (
@@ -15650,8 +15650,10 @@
 /area/sulaco/cargo)
 "tmw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/emails{
-	dir = 4
+/obj/structure/machinery/computer/intel{
+	dir = 4;
+	pixel_y = 0;
+	layer = 2.97
 	},
 /turf/open/floor/almayer/silver/northwest,
 /area/sulaco/command/intelligence)
@@ -19320,7 +19322,7 @@
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;
-	pixel_y = 19
+	pixel_y = 17
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;

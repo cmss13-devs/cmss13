@@ -32,11 +32,13 @@
 	name = "\improper Sulaco Officer's Quarters"
 	icon_state = "livingspace"
 	fake_zlevel = 1 //upperdeck
+	hijack_evacuation_area = FALSE
 
 /area/sulaco/bridge/office
 	name = "\improper Sulaco Executive's Office"
 	icon_state = "head_quarters"
 	fake_zlevel = 1 //upperdeck
+	hijack_evacuation_area = FALSE
 
 /area/sulaco/cap_office
 	name = "\improper Sulaco Captain's Office"
@@ -47,6 +49,7 @@
 	name = "\improper Sulaco Bridge Maintenance"
 	icon_state = "maintcentral"
 	fake_zlevel = 1 //upperdeck
+	hijack_evacuation_area = FALSE
 
 /area/sulaco/medbay
 	name = "\improper Sulaco Medbay"

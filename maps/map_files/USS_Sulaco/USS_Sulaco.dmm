@@ -216,17 +216,11 @@
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "aaM" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
 	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
-"aaN" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -539,13 +533,22 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/maintenance/lower_maint)
 "abE" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"abF" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -911,6 +914,13 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/silver/west,
 /area/sulaco/command/ai)
+"acA" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/structure/pipes/vents/scrubber,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
 "acB" = (
 /obj/structure/machinery/cm_vending/gear/sea{
 	pixel_y = 16;
@@ -1100,10 +1110,10 @@
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/lower_north)
 "adf" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
 	},
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "adg" = (
@@ -1210,6 +1220,18 @@
 /obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/upper_north)
+"adz" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/sulaco/hallway/central_hall3)
+"adA" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/sulaco/engineering/engine)
+"adB" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/sulaco/engineering/storage)
+"adC" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/sulaco/engineering)
 "adE" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Research Hydroponics Workshop";
@@ -2278,12 +2300,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
-"bFJ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "bFK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -4339,15 +4355,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
-"edm" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "edp" = (
 /obj/structure/machinery/cryopod/right{
 	dir = 4
@@ -9584,15 +9591,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hangar)
-"kXT" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "kYg" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -12583,12 +12581,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/charlie)
 "oNW" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "oOb" = (
@@ -17819,13 +17815,6 @@
 "vLU" = (
 /turf/open/floor/plating,
 /area/sulaco/briefing)
-"vLY" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "vLZ" = (
 /obj/structure/machinery/holosign/surgery{
 	id = "ot1"
@@ -18153,13 +18142,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/ob_aa_cannon)
-"wbY" = (
-/obj/structure/pipes/vents/scrubber,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "wct" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -18857,15 +18839,6 @@
 "wUh" = (
 /turf/open/floor/almayer/orangecorner/east,
 /area/sulaco/maintenance/lower_maint)
-"wUB" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "wUJ" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
@@ -25215,16 +25188,16 @@ acZ
 acZ
 acZ
 acZ
-wbY
-hDk
+acZ
+acA
 faz
 hDk
 hDk
 hDk
 hDk
 hDk
-faz
-wUB
+abF
+acZ
 acZ
 acZ
 acZ
@@ -26026,9 +25999,9 @@ kYA
 kYA
 kYA
 kYA
-aaN
-nCV
-aaL
+kYA
+kYA
+kYA
 kYA
 kYA
 acY
@@ -26091,18 +26064,18 @@ ada
 adp
 ada
 ada
-vLY
-adf
-abE
-adf
-adf
-adf
-adf
-abE
-kXT
-edm
-aaM
 ada
+adf
+abE
+oNW
+oNW
+oNW
+oNW
+abE
+oNW
+oNW
+aaM
+oNW
 oNW
 fck
 auA
@@ -26174,9 +26147,9 @@ arL
 arL
 hLW
 arL
-bFJ
-nCV
-kIJ
+wxn
+kYA
+kYA
 arL
 auA
 abr
@@ -41298,12 +41271,12 @@ paR
 ckc
 uVY
 ldM
-uPT
-uPT
-uPT
-uPT
-etS
-etS
+adB
+adB
+adB
+adB
+adz
+adz
 tnA
 lfQ
 ldM
@@ -41371,12 +41344,12 @@ tsk
 uLG
 glL
 ldM
-etS
+adz
 ckn
 ckn
 ckn
 ckn
-etS
+adz
 xEM
 blA
 ldM
@@ -41444,12 +41417,12 @@ rAA
 cwo
 vHV
 lHM
-rAA
+adC
 ckn
 ckn
 uGX
 uGX
-etS
+adz
 lrx
 blA
 ldM
@@ -41517,12 +41490,12 @@ rAA
 rWc
 mjK
 hoq
-rAA
+adC
 ckn
 uGX
 uGX
 uGX
-etS
+adz
 etS
 wuq
 tQZ
@@ -41590,12 +41563,12 @@ wlD
 hXw
 vJz
 qaH
-rAA
+adC
 ckn
 uGX
 uGX
 uGX
-tNB
+adA
 pUC
 ptn
 fJg
@@ -41663,12 +41636,12 @@ mgR
 lwP
 ani
 jnx
-rAA
-tNB
+adC
+adA
 rUY
 rUY
 rUY
-tNB
+adA
 iDr
 vjd
 xDV

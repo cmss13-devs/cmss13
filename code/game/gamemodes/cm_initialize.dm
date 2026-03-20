@@ -316,8 +316,9 @@ Additional game mode variables.
 		return
 	if(!badblood_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_badblood - new_player name=[badblood_candidate]")
-		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
-		//return
+		message_admins("transform_badblood attempted to trigger but the target player is missing a mind. - new_player name=[badblood_candidate]")
+		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
+		return
 
 	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
 	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
@@ -354,8 +355,9 @@ Additional game mode variables.
 		return
 	if(!stranded_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_stranded_pred - new_player name=[stranded_candidate]")
-		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
-		//return
+		message_admins("transform_stranded_pred attempted to trigger but the target player is missing a mind. - new_player name=[badblood_candidate]")
+		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
+		return
 
 	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
 	stranded_candidate.mind.transfer_to(new_stranded, TRUE)

@@ -142,7 +142,7 @@
 
 /datum/action/xeno_action/activable/lets_go_gambling
 
-	name = "Let's go gambling"
+	name = "Just one more spin"
 	action_icon_state = "gamble"
 	plasma_cost = 0
 	macro_path = ""

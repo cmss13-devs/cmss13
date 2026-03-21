@@ -264,6 +264,9 @@
 				ACCESS_WY_ARMORY,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
+		if(ACCESS_LIST_WY_PPO)
+			return list(ACCESS_WY_SECURITY) + get_access(ACCESS_LIST_MARINE_LIAISON)
+
 		if(ACCESS_LIST_WY_PMC)
 			return list(
 				ACCESS_WY_PMC,

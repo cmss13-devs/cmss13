@@ -385,7 +385,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	health = 300
 
 /mob/living/simple_animal/big/horse/yautja
-	name = "yautja horse"
+	name = "E'wun"
 	desc = "It is red because it hates you"
 	unique_tamer = TRUE
 	maxHealth = 500

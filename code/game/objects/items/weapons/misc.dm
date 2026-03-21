@@ -170,7 +170,7 @@
 		toggle_javelin(user)
 	..()
 
-/obj/item/weapon/javelin/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+/obj/item/weapon/javelin/horse(obj/flamer_fire/fire)
 	. = ..()
 
 /obj/item/weapon/javelin/horse/raise_javelin(mob/user as mob)

@@ -143,12 +143,12 @@
 
 /datum/component/riding/creature/horse
 	can_be_driven = TRUE
+	vehicle_move_delay = 1
 
 /datum/component/riding/creature/horse/Initialize(mob/living/riding_mob, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	. = ..()
 	var/mob/living/simple_animal/ridden = parent
 	riding_mob.density = FALSE
-	riding_mob.speed -= 1
 	ridden.stop_automated_movement = TRUE
 
 /datum/component/riding/creature/horse/RegisterWithParent()
@@ -159,7 +159,6 @@
 	var/mob/living/simple_animal/ridden = parent
 	for(var/mob/mob in ridden.buckled_mobs)
 		unequip_buckle_inhands(mob)
-		mob.speed += 1
 	ridden.density = TRUE
 	return ..()
 

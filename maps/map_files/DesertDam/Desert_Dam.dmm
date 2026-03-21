@@ -1186,7 +1186,7 @@
 	},
 /area/desert_dam/exterior/rock/level3)
 "adF" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "vent4";
 	pixel_y = 6
 	},
@@ -1317,7 +1317,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "adZ" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "vent5";
 	pixel_x = 16
 	},
@@ -1665,11 +1665,11 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-4"
 	},
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
@@ -1685,10 +1685,10 @@
 /turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/upper_hallway)
 "aff" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "windsock";
-	pixel_x = 6;
-	pixel_y = 2
+	pixel_y = 2;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -1757,6 +1757,14 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "vent2";
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2496,6 +2504,9 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/sky)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -6764,14 +6775,14 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/break_room)
 "avF" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-4"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
@@ -6779,23 +6790,23 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "avH" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
@@ -6919,10 +6930,10 @@
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awd" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "windsock";
-	pixel_x = 16;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = 16
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -13459,10 +13470,10 @@
 /turf/open/floor/prison/yellow/east,
 /area/desert_dam/building/hydroponics/stairwell)
 "aQc" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "windsock";
-	pixel_x = 13;
-	pixel_y = 19
+	pixel_y = 19;
+	pixel_x = 13
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/desert_dam/exterior/roof)
@@ -13740,10 +13751,10 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "aQX" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/cable/heavyduty,
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "solarpanel1"
 	},
-/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "aQY" = (
@@ -13789,7 +13800,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-4"
 	},
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -13811,7 +13822,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
 	},
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -13842,11 +13853,11 @@
 /turf/open/floor/plating/warnplate/east,
 /area/desert_dam/building/substation/southwest/solar)
 "aRo" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
@@ -31820,7 +31831,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "eHc" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "vent1";
 	pixel_y = 5;
 	pixel_x = -3
@@ -43348,11 +43359,10 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "jbF" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "flagpole";
-	layer = 4.11;
-	pixel_x = 4;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = 4
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -45094,7 +45104,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "jKa" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble,
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "jKn" = (
@@ -51943,10 +51953,10 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "mxe" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "windsock";
-	pixel_x = 8;
-	pixel_y = 19
+	pixel_y = 19;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -64101,10 +64111,9 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "rdv" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "vent2";
-	pixel_x = 4;
-	pixel_y = 2
+	pixel_x = 3
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -77512,7 +77521,7 @@
 /turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/stairwell/upper)
 "wrN" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull,
@@ -79234,10 +79243,10 @@
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/river_mouth/southern)
 "xeF" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
 	icon_state = "windsock";
-	pixel_x = 13;
-	pixel_y = 19
+	pixel_y = 19;
+	pixel_x = 13
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
@@ -205106,7 +205115,7 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
@@ -206276,7 +206285,7 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
@@ -207228,21 +207237,21 @@ jGi
 jGi
 jGi
 oSq
-acv
-acv
+ahJ
+ahJ
 ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
@@ -207918,7 +207927,7 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
@@ -208861,13 +208870,13 @@ ipW
 ipW
 ipW
 ipW
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
 ipW
 ipW
 ipW
@@ -209088,20 +209097,20 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
@@ -209329,13 +209338,13 @@ ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
@@ -209563,7 +209572,7 @@ ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
@@ -209797,7 +209806,7 @@ ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
@@ -210031,7 +210040,7 @@ ipW
 ipW
 ipW
 ipW
-rgB
+ahJ
 ipW
 ipW
 ipW
@@ -210258,15 +210267,15 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
 ipW
 ipW
 ipW
-rgB
-rgB
+ahJ
+ahJ
 ipW
 ipW
 ipW
@@ -211428,7 +211437,7 @@ ipW
 ipW
 ipW
 ipW
-acv
+ahJ
 ipW
 ipW
 ipW
@@ -216622,7 +216631,7 @@ wnN
 wnN
 dsS
 dsS
-rdv
+aft
 dsS
 dsS
 dsS
@@ -226505,7 +226514,7 @@ dsS
 dsS
 dsS
 dsS
-rdv
+aft
 jyV
 ipW
 ipW

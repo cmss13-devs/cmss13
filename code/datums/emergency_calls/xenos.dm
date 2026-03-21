@@ -3,7 +3,7 @@
 /datum/emergency_call/xenos
 	name = "Xenomorphs (Squad)"
 	mob_max = 7
-	probability = 5
+	probability = 1
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 
@@ -28,7 +28,7 @@
 
 	var/mob/living/carbon/xenomorph/new_xeno
 	if(!leader)
-		new_xeno = new /mob/living/carbon/xenomorph/ravager(spawn_loc)
+		new_xeno = new /mob/living/carbon/xenomorph/king(spawn_loc)
 		leader = new_xeno
 	else
 		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)

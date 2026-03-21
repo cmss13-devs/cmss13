@@ -2,7 +2,7 @@
 /datum/emergency_call/xeno_handler
 	name = "Xenomorph Handler"
 	mob_max = 8
-	probability = 0
+	probability = 1
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = FALSE
 	spawn_max_amount = TRUE

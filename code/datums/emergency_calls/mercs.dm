@@ -2,7 +2,7 @@
 /datum/emergency_call/mercs
 	name = "Freelancers (Squad)"
 	mob_max = 8
-	probability = 20
+	probability = 0
 	hostility = null // Random in New if null
 
 /datum/emergency_call/mercs/New()

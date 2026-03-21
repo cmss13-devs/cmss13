@@ -426,7 +426,8 @@
 	name = "Hunting Grounds - Youngblood Hunting Pack (Six members)"
 	blooding_name = "Youngblood Hunting Pack (Six members)"
 	mob_max = 6
-	mob_min = 4
-	time_required_for_job = 5 HOURS
-	youngblood_time = 10 HOURS
+	mob_min = 1
+	probability = 2
+	time_required_for_job = 0 HOURS
+	youngblood_time = 0 HOURS
 	youngblood_time_required_for_job = 0 HOURS

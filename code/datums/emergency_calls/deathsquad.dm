@@ -7,7 +7,7 @@
 	mob_max = 8
 	mob_min = 5
 	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
-	probability = 0
+	probability = 1
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
@@ -98,7 +98,7 @@
 	mob_max = 8
 	mob_min = 5
 	max_smartgunners = 1
-	probability = 0
+	probability = 1
 	home_base = /datum/lazy_template/ert/uscm_station
 	var/leader_preset = /datum/equipment_preset/uscm/marsoc/sl
 	var/member_preset = /datum/equipment_preset/uscm/marsoc
@@ -147,7 +147,7 @@
 	mob_max = 8
 	mob_min = 3
 	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
-	probability = 0
+	probability = 1
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	home_base = /datum/lazy_template/ert/yautja_station
 	hostility = TRUE

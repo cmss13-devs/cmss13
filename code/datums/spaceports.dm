@@ -9,29 +9,30 @@
 	var/list/allies
 
 /datum/spaceport/uscm
-	name = "Mont-Blanc 41 LG Station"
+	name = "Chinook Station"
 	allies = list(
-		/datum/emergency_call/solar_devils_full,
+		/datum/emergency_call/marsoc,
 	)
 
-/datum/spaceport/cmb
-	name = "Anchorpoint Station"
-	docking_message = "This is the Anchorpoint Colonial Marshals Bureau, we're initiating boarding procedure to investigate your distress signal."
+/datum/spaceport/predator
+	name = "Yautja Prime"
+	docking_message = "Invaders! Repel them!."
 	allies = list(
-		/datum/emergency_call/cmb,
+		/datum/emergency_call/yautja_mcaste,
+		/datum/emergency_call/young_bloods/six_members
 	)
 
 /datum/spaceport/upp
 	name = "Znoy Outpost"
 	docking_message = "Attention, USCM vessel. You have encroached on UPP territory. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	allies = list(
-		/datum/emergency_call/upp/friendly,
+		/datum/emergency_call/upp_commando
 	)
 
 /datum/spaceport/freelancers
-	name = "Irkala Station"
-	docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress in accordance with the Military Aid Act of 2177."
+	name = "Super Secret Illegal WY Station"
+	docking_message = "What? How did you find this place? You will not live to tell the tale."
 	allies = list(
-		/datum/emergency_call/contractors,
-		/datum/emergency_call/heavy_mercs/friendly,
+		/datum/emergency_call/death,
+		/datum/emergency_call/wy_commando/deathsquad
 	)

@@ -1,7 +1,7 @@
 /datum/emergency_call/contractors
 	name = "Military Contractors (Squad) (Friendly)"
 	mob_max = 7
-	probability = 10
+	probability = 0
 
 	max_engineers =  1
 	max_medics = 1

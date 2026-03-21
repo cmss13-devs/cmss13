@@ -6,7 +6,7 @@
 	mob_min = 10
 	arrival_message = "'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
 	objectives = "Pirate! Loot! Ransom!"
-	probability = 0
+	probability = 2
 	hostility = TRUE
 
 /datum/emergency_call/pirates/create_member(datum/mind/M, turf/override_spawn_loc)

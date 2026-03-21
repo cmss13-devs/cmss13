@@ -1865,17 +1865,6 @@
 	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/engineering)
-"bcP" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "bcV" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -14216,6 +14205,14 @@
 "rmD" = (
 /obj/structure/surface/rack,
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "rmN" = (
@@ -24998,7 +24995,7 @@ iFm
 kDi
 nRs
 wxn
-bcP
+kYA
 rmD
 gba
 ndk

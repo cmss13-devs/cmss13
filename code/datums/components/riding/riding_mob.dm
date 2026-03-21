@@ -165,7 +165,7 @@
 /datum/component/riding/creature/horse/handle_specials()
 	. = ..()
 	set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
-	set_vehicle_dir_layer(NORTH, ABOVE_MOB_LAYER)
+	set_vehicle_dir_layer(NORTH, ABOVE_LYING_MOB_LAYER)
 	set_vehicle_dir_layer(EAST, ABOVE_LYING_MOB_LAYER)
 	set_vehicle_dir_layer(WEST, ABOVE_LYING_MOB_LAYER)
 

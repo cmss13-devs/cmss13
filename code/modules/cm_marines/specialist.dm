@@ -244,7 +244,7 @@
 /datum/specialist_set/horse
 	name = "Cavalry Set"
 	role_name = "Cavalry"
-	skill_to_give = null
-	trait_to_give = null
+	skill_to_give = SKILL_SPEC_UPP //hijacking this for now
+	trait_to_give = "horse"
 	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/horse

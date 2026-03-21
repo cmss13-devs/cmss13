@@ -986,6 +986,16 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
+"acG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/autolathe/medilathe/partial{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/sulaco/research)
 "acI" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock/uscm)
@@ -2195,8 +2205,8 @@
 	name = "Main Research Laboratory Telephone";
 	phone_category = "Medical & Research Dept.";
 	phone_id = "Main Research Laboratory";
-	pixel_y = 6;
-	pixel_x = -10
+	pixel_y = 12;
+	pixel_x = -8
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/sterile_green,
@@ -22682,7 +22692,7 @@ njT
 njT
 njT
 njT
-qDX
+acG
 iHw
 njT
 njT

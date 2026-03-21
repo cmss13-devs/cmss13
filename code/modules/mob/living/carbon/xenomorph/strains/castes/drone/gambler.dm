@@ -143,7 +143,7 @@
 /datum/action/xeno_action/activable/lets_go_gambling
 
 	name = "Let's go gambling"
-	action_icon_state = "gardener_plant"
+	action_icon_state = "gamble"
 	plasma_cost = 0
 	macro_path = ""
 	action_type = XENO_ACTION_CLICK
@@ -236,7 +236,7 @@
 
 	var/list/all_icons = icon_states('icons/mob/hud/actions_xeno.dmi')
 	// lets not use the templates
-	var/list/blacklist = list("no name", "template", "template_active", "template_on", "blank", "border_reference", "+stack_3", "+stack_2", "+stack_1", "empowered")
+	var/list/blacklist = list("no name", "template", "template_active", "template_on", "template_won" "blank", "border_reference", "+stack_3", "+stack_2", "+stack_1", "empowered")
 	for(var/bad in blacklist)
 		all_icons.Remove(bad)
 

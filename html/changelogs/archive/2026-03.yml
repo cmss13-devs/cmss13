@@ -238,3 +238,10 @@
   - rscadd: HealthMate HUD added to the medic gear vendor.
   - rscadd: Added static red headband option alongside a red headband (camo conforming)
       version.
+2026-03-21:
+  MoondancerPony:
+  - bugfix: fixed an error when weeds covering a xenomorph corpse die
+  - bugfix: fixed neurotoxin dizziness cancelling binocular/zoom view offset
+  - bugfix: fixed deleted binoculars never un-zooming your view
+  - refactor: refactored plane render relay plate code to reduce overtime lag from
+      observing and changing mobs

@@ -1286,6 +1286,15 @@
 "aew" = (
 /turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/sky/level4)
+"aex" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"aey" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -78489,7 +78498,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+aex
 lxZ
 lHV
 wGY
@@ -79312,7 +79321,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+aey
 dkq
 iBr
 wGY

@@ -1117,6 +1117,14 @@
 	},
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/clf_dorms)
+"cZ" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/soro,
+/turf/open/floor/strata/orange_cover,
+/area/strata/interior/outpost/clf_dorms)
+"da" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
+/turf/open/floor/wood,
+/area/strata/interior/outpost/clf_office)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/outpost/clf_dorms)
@@ -2769,7 +2777,7 @@ Ef
 fR
 xH
 bL
-Sl
+cZ
 Sl
 Sl
 xH
@@ -2855,7 +2863,7 @@ cH
 cH
 bA
 cM
-xt
+da
 jw
 OF
 ev

@@ -280,13 +280,13 @@
 					return WY_COMP_ACCESS_DIRECTOR
 				if(PAY_SHORT_WYC9, PAY_SHORT_WYC8)
 					return WY_COMP_ACCESS_SENIOR_LEAD
-				if(PAY_SHORT_WYC7, PAY_SHORT_WYC6)
+				if(PAY_SHORT_WYC7, PAY_SHORT_WYC6, PAY_SHORT_WYC6L)
 					return WY_COMP_ACCESS_SUPERVISOR
 		if(card.assignment == JOB_CORPORATE_LIAISON)
 			return WY_COMP_ACCESS_LIAISON //4
 		if(card.assignment == JOB_CORPORATE_BODYGUARD)
 			return WY_COMP_ACCESS_LIAISON_GUARD //3
-		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC4))
+		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC5L || card.paygrade == PAY_SHORT_WYC4))
 			return WY_COMP_ACCESS_CORPORATE_SENIOR
 		return WY_COMP_ACCESS_CORPORATE
 	else

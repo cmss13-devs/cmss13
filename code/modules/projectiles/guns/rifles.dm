@@ -133,6 +133,13 @@
 /obj/item/weapon/gun/rifle/m41a/tactical
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/stock/rifle/collapsible)
+
+/obj/item/weapon/gun/rifle/m41a/army
+	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
+
+/obj/item/weapon/gun/rifle/m41a/army/full
+	current_mag = /obj/item/ammo_magazine/rifle/heap
+
 //-------------------------------------------------------
 //NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 
@@ -1052,8 +1059,8 @@
 
 /obj/item/weapon/gun/rifle/m16/m16a5
 	name = "\improper M16A5 rifle"
-	desc = "Modernized version of M16 platform rifle, probably originated from bottomless stockpiles of UA, when they switched to a newer designs. It is chambered in 5.56x45mm."
-	desc_lore = "The M16A5, introduced in 2016 has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
+	desc = "Modernized version of M16 platform rifle, probably originated from the bottomless stockpiles of the UA when they switched to a newer design. It is chambered in 5.56x45mm."
+	desc_lore = "The M16A5, introduced in 2016, has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
 	icon_state = "m16a5"
 	item_state = "m16a5"
 	attachable_allowed = list(
@@ -1490,6 +1497,11 @@
 /obj/item/weapon/gun/rifle/lmg/tactical/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2//equal to m41a dmg
+
+/obj/item/weapon/gun/rifle/lmg/army
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip)
+	current_mag = /obj/item/ammo_magazine/rifle/lmg/heap
+
 //-------------------------------------------------------
 
 
@@ -1965,6 +1977,11 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/extended
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
 
+/obj/item/weapon/gun/rifle/m4ra/army
+	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/extended_barrel, /obj/item/attachable/angledgrip)
+
+/obj/item/weapon/gun/rifle/m4ra/army/full
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/heap
 
 //-------------------------------------------------------
 

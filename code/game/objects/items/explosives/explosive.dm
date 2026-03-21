@@ -162,7 +162,7 @@
 		else
 			if(W.reagents.total_volume)
 				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
+					to_chat(user, SPAN_DANGER("\The [W] is too large for [name]."))
 					return
 				if(user.temp_drop_inv_item(W))
 					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
@@ -172,7 +172,7 @@
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			else
-				to_chat(user, SPAN_DANGER("\the [W] is empty."))
+				to_chat(user, SPAN_DANGER("\The [W] is empty."))
 
 /obj/item/explosive/proc/activate_sensors()
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)
@@ -226,13 +226,13 @@
 		G.reagents.trans_to(src, G.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transferring the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 
 
 	if(!QDELETED(src)) //the possible reactions didn't qdel src
-		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
+		if(reagents.total_volume) //The possible reactions didn't use up all reagents.
 			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 			steam.set_up(10, 0, get_turf(src))
 			steam.attach(src)

@@ -232,7 +232,7 @@
 
 /obj/item/storage/box/spec/horse/fill_preset_inventory()
 	new /obj/item/explosive/grenade/spawnergrenade/horse(src)
-	new /obj/item/weapon/javelin(src)
+	new /obj/item/weapon/javelin/horse(src)
 
 
 //maybe put in req for later use?

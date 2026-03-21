@@ -57,7 +57,7 @@
 			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
-			// If they have iff AND a marine headset they will recieve announcements
+			// If they have iff AND a marine headset they will receive announcements
 			var/obj/item/card/id/card = current_human.get_idcard()
 			if((FACTION_MARINE in card?.faction_group) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset/almayer)))
 				continue // Valid target

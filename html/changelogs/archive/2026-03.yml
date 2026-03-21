@@ -124,3 +124,124 @@
   - rscadd: Pickup hotkey has a memory of 5 items now
   Steelpoint:
   - rscadd: Tyrargo Rift may only be voted for if the server has at least 100 players.
+2026-03-09:
+  MistChristmas:
+  - bugfix: Dropship Crew now see their full list of buyables again... Sorry.
+  MoondancerPony:
+  - bugfix: made the FTL Hijack planet crash around twice as fast
+  - code_imp: unit tests should have fewer flaky failures now
+  hry-gh:
+  - bugfix: binding keys to tab now works
+  ori-disillusion-mirnov:
+  - admin: location is logged on hivemind usage and evolution logs
+  - bugfix: headbite execution log no longer lists the human as doing the headbite
+  riot:
+  - maptweak: The basketball hoops on LV-624's Fitness dome can now be walked through.
+2026-03-10:
+  Drathek:
+  - bugfix: Fixed queen no forfeit check not checking the relevant Z levels (namely
+      regarding hijack/FTL)
+  - bugfix: Fixed potential for hive collapse during hijack
+  MistChristmas:
+  - soundtweak: Normalise ambience that Abyssal uses to be quieter.
+2026-03-11:
+  MistChristmas:
+  - bugfix: Tyrago Rift Out of bounds areas disallow burrowing.
+  MoondancerPony:
+  - bugfix: fixed larvae being able to dig snow
+2026-03-12:
+  MistChristmas:
+  - bugfix: 'Unique items: I.E. Family Photo now belong to you even if they spawn
+      in your inventory instead of pocket.'
+  - bugfix: ARES correctly records OB/Supply Coords, stop the ship map shaking multiple
+      times from one OB being fired.
+  Nihisohel:
+  - rscadd: The style system is added! You can now examine certain items if they are
+      "stylish", and pressing unique action will change its onmob sprite to whichever
+      you prefer
+  - rscadd: The only stylish items so far are the USCM Patch, the Rosary, and the
+      new golden rosary item in the character loadout screen!
+  - code_imp: Adds a parent item for all patches, and makes the USCM patch its own
+      distinct type
+  - code_imp: Minorly tweaks inventory overlay to prioritize item_state first before
+      fallbacking to icon_state
+  - code_imp: Autodocs a few clothing variables
+  - bugfix: Fixes accessorized inv_icon overlay from being directional
+2026-03-14:
+  MistChristmas:
+  - bugfix: Xenomorph on dropship alert now only occurs after landing.
+  - bugfix: Intel job not properly being tied to roundstart gear_preset
+  - admin: G2s and Claymores now get logged when deployed.
+  MoondancerPony:
+  - rscdel: broke area-based lighting
+  - bugfix: fixed area-based lighting
+  - bugfix: fixed Tyrargo army CO survivors not starting with an unbuttoned jacket
+      due to an error
+  Riot:
+  - bugfix: Certain ERTs should now correctly spawn with basic first aid kits, as
+      they were meant to do for the past 3 years.
+  - bugfix: Fixes the army tgui prefixes
+  cuberound:
+  - balance: increases random sandbag crate spawn chance
+  - balance: increases random HPR crate spawn chance
+  - balance: reduces random flamer fuel crate spawn chance
+  - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead
+2026-03-17:
+  MoondancerPony:
+  - bugfix: fixed reading papers inside folders
+  - spellcheck: fixed a few descriptions missing punctuation
+  Venuska1117:
+  - qol: Organizes Alien Tab, now verbs have categories for better visibility.
+  dawsonkeyes:
+  - rscadd: Staff may now send a Yautja Military Caste squad if they really, really
+      hate you
+  forest2001, DawsonKeyes:
+  - mapadd: Changed the Predship to Multi-Z.
+  - mapadd: Added a Hunter Shuttle.
+  - rscdel: Removed Predship Susbsystem as it is not required.
+  mrkivnv:
+  - rscadd: added new corporate bodyguard icons that depends on the rank status
+  - imageadd: bodyguard icons for TPPO, PPO, PPS, PPC
+2026-03-18:
+  TrollerNoob:
+  - ui: Toggle Ceiling Overlays action button now only appears when the Minimap is
+      actively open.
+  - rscadd: Xenos can now see the Minimap when the Queen is off her ovipositor, but
+      it will be a static version of the last Queen Minimap update. It returns to
+      live once the Queen is on ovi.
+  - qol: Queens on Ovi automatically have drawing tools available when opening their
+      Minimap.
+  - rscdel: Removed the Edit Minimap option from the Manage the Hive menu.
+  - bugfix: Fixed Minimaps not properly receiving updates from CIC.
+  - bugfix: Fixed Xenos being unable to see Queen drawings.
+  - bugfix: Fixed latejoin marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed spawned marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed live minimaps receiving drawing updates before the update was actually
+      sent.
+  - bugfix: Fixed Ceiling Overlays being applied when they were not toggled.
+  - bugfix: Removed the dim grey area outside the minimap when Ceiling Overlays were
+      toggled on.
+  forest2001, dimdimich1996:
+  - imageadd: Added new and updated sprites for Yautja related constructions and temples.
+  - maptweak: Adjusted existing temple areas on maps to accomodate sprite changes,
+      namely recolors and door orientation.
+2026-03-19:
+  Jesters-Ballad:
+  - balance: Combat Toolbelts may now hold nails.
+  halgmor:
+  - rscadd: HealthMate HUD added to the medic gear vendor.
+  - rscadd: Added static red headband option alongside a red headband (camo conforming)
+      version.
+2026-03-21:
+  MoondancerPony:
+  - bugfix: fixed an error when weeds covering a xenomorph corpse die
+  - bugfix: fixed neurotoxin dizziness cancelling binocular/zoom view offset
+  - bugfix: fixed deleted binoculars never un-zooming your view
+  - refactor: refactored plane render relay plate code to reduce overtime lag from
+      observing and changing mobs

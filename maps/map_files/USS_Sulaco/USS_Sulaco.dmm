@@ -11396,27 +11396,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/medbay/chemistry)
-"noe" = (
-/obj/structure/machinery/door/window{
-	layer = 3.6;
-	name = "interior door";
-	req_access_txt = "19";
-	req_one_access_txt = "0"
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/transmitter{
-	name = "Combat Information Center Telephone";
-	phone_id = "Combat Information Center";
-	pixel_y = 29
-	},
-/turf/open/floor/almayer/silverfull,
-/area/sulaco/bridge)
 "noB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 8
@@ -34155,7 +34134,7 @@ uGX
 uGX
 cEz
 imN
-noe
+aRq
 dIk
 tbJ
 dSw

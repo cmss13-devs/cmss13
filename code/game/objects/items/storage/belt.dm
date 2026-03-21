@@ -2981,6 +2981,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/handful,
+		/obj/item/ammo_magazine/smg/nailgun,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,

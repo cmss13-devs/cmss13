@@ -681,6 +681,8 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 
 	// Refresh minimaps for this client
 	for(var/atom/movable/screen/minimap/mini_map in screen)
+		if(mini_map.assigned_map) // Skip shared popup maps
+			continue
 		mini_map.update_ceiling_overlay(src)
 
 //------------ GHOST PREFERENCES ---------------------------------

@@ -362,9 +362,6 @@
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
 
-	if(queen_manager.hive.hivenumber == XENO_HIVE_NORMAL)
-		options += "Edit Tacmap"
-
 	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management", options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
@@ -387,19 +384,7 @@
 			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
-		if("Edit Tacmap")
-			edit_tacmap()
 	return ..()
-
-/datum/action/xeno_action/onclick/manage_hive/proc/edit_tacmap()
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	var/datum/component/tacmap/tacmap_component = xeno.GetComponent(/datum/component/tacmap)
-
-	if(xeno in tacmap_component.interactees)
-		tacmap_component.on_unset_interaction(xeno)
-		tacmap_component.close_popout_tacmaps(xeno)
-	else
-		tacmap_component.show_tacmap(xeno)
 
 /datum/action/xeno_action/onclick/manage_hive/proc/permissions()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

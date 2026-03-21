@@ -7889,7 +7889,7 @@
 /area/desert_dam/building/security/interrogation)
 "azj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -14496,7 +14496,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aTP" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},

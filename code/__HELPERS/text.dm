@@ -122,6 +122,7 @@
 					t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
+			//
 
 			// 0  .. 9
 			if(48 to 57) //Numbers

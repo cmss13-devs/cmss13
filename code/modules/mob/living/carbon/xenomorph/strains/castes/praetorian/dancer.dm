@@ -1,7 +1,7 @@
 /datum/xeno_strain/dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = PRAETORIAN_DANCER
-	description = "You lose all acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility. This strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how your tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Your new Tail Stab adapts to your intent. When used in Disarm mode, it becomes a Blunt, armor-piercing strike. When enemies are brought close to death or slain by your claws, yellow tags spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of your tail abilities, and using a tail ability on a yellow-tagged target grants no cooldown penalty."
+	description = "You lose all acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility. This strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how your tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Your new Tail Stab adapts to your intent. When used in Disarm mode, it becomes a Blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of your tail abilities, and using a tail ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
 
@@ -34,7 +34,7 @@
 
 	prae.recalculate_everything()
 
-#define DANCER_LAST_TAG_SPREAD_DURATION 7 SECONDS
+#define DANCER_YELLOW_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_DIST 5
 #define DANCER_TAG_SPREAD_COUNT 5
@@ -123,14 +123,8 @@
 	if(consumed_spread)
 		spread_slash_triggered = TRUE
 
-	if(target_carbon.stat == UNCONSCIOUS)
+	if(target_carbon.health <= 0)
 		try_spread_tags_from(target_carbon)
-
-/datum/behavior_delegate/praetorian_dancer/on_kill_mob(mob/living/carbon/target_carbon)
-	if(!isxeno_human(target_carbon))
-		return
-
-	try_spread_tags_from(target_carbon)
 
 /datum/behavior_delegate/praetorian_dancer/proc/try_spread_tags_from(mob/living/carbon/human/source)
 	if(!ishuman(source))
@@ -140,7 +134,7 @@
 	if(!origin)
 		return
 
-	if(world.time < last_dancer_spread_time + DANCER_LAST_TAG_SPREAD_DURATION)
+	if(world.time < last_dancer_spread_time + DANCER_YELLOW_TAG_SPREAD_DURATION)
 		return
 
 	if(world.time < source.last_target_spread_time + DANCER_YELLOW_TAG_SPREAD_CD)
@@ -149,7 +143,7 @@
 
 	var/spread_count = 0
 
-	for(var/mob/living/carbon/human/human_target in view(DANCER_YELLOW_TAG_SPREAD_DIST, origin))
+	for(var/mob/living/carbon/human/human_target in view(DANCER_YELLOW_TAG_SPREAD_DIST))
 		if(human_target == source)
 			continue
 		if(human_target.stat == DEAD || human_target.stat == UNCONSCIOUS)

@@ -307,8 +307,6 @@
 	. = ..()
 	pack.cannons()
 
-#undef PREDATOR_ACTION_ON_CLICK
-
 //Misc actions
 /datum/action/yautja_emote_panel
 	name = "Open Emote Panel"

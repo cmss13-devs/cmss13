@@ -405,6 +405,7 @@
 // Drone strain flags
 #define DRONE_HEALER "Healer"
 #define DRONE_GARDENER "Gardener"
+#define DRONE_GAMBLER "Gambler"
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"

@@ -170,8 +170,8 @@
 		toggle_javelin(user)
 	..()
 
-/obj/item/weapon/javelin/horse(obj/flamer_fire/fire)
-	. = ..()
+/obj/item/weapon/javelin/horse
+	desc = "A large spear used by cavalry units. Extremely deadly in the right hands but hard to carry around. To throw the spear effectively, you have to raise it."
 
 /obj/item/weapon/javelin/horse/raise_javelin(mob/user as mob)
 	user.visible_message(SPAN_RED("\The [user] raises the [src]."))

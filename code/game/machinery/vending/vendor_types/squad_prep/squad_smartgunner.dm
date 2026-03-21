@@ -78,7 +78,19 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
 /obj/structure/machinery/cm_vending/gear/smartgun/get_listed_products(mob/user)
-	return GLOB.cm_vending_gear_smartgun
+	var/list/final_products = list()
+
+	for(var/product in GLOB.cm_vending_gear_engi)
+		if(product[length(product)] == null)
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_WELL_FUNDED && MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_POOR && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] <= VENDOR_ITEM_RECOMMENDED)
+			final_products += list(product)
+
+	return final_products
 
 /obj/structure/machinery/cm_vending/gear/smartgun/get_unfiltered_products(mob/user)
 	return GLOB.cm_vending_gear_smartgun
@@ -135,9 +147,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_smartgun
+	var/list/final_products = list()
 
-/obj/structure/machinery/cm_vending/gear/smartgun/get_unfiltered_products(mob/user)
+	for(var/product in GLOB.cm_vending_clothing_smartgun)
+		if(product[length(product)] == null)
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_WELL_FUNDED && MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_POOR && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] <= VENDOR_ITEM_RECOMMENDED)
+			final_products += list(product)
+
+	return final_products
+
+/obj/structure/machinery/cm_vending/clothing/smartgun/get_unfiltered_products(mob/user)
 	return GLOB.cm_vending_clothing_smartgun
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha

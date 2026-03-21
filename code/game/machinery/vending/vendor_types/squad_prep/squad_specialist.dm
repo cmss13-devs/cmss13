@@ -71,11 +71,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 		return GLOB.cm_vending_gear_spec_heavy
 	return GLOB.cm_vending_gear_spec
 
-/obj/structure/machinery/cm_vending/gear/spec/get_unfiltered_products(mob/user)
-	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
-		return GLOB.cm_vending_gear_spec_heavy
-	return GLOB.cm_vending_gear_spec
-
 /obj/structure/machinery/cm_vending/gear/spec/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	. = ..()
 	if(length(GLOB.primary_specialists_picked) >= /datum/job/marine/specialist::total_positions)

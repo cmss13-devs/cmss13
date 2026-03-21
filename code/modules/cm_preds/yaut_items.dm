@@ -63,13 +63,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_TROPHY)
-	var/thrall = FALSE//Used to affect icon generation.
+	var/random_icon = TRUE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
 	. = ..()
-	if(thrall)
+	if(!random_icon)
 		return
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -270,13 +270,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	var/thrall = FALSE//Used to affect icon generation.
+	var/random_icon = TRUE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 50
 
 /obj/item/clothing/shoes/yautja/Initialize(mapload, boot_number = rand(1,4), armor_material = "ebony")
 	. = ..(mapload, 0)
-	if(thrall)
+	if(!random_icon)
 		return
 	if(boot_number > 4)
 		boot_number = 1

@@ -296,64 +296,7 @@ DEFINES in setup.dm, referenced here.
 	if(istype(dropping, /obj/item/ammo_magazine))
 		if(!user.Adjacent(dropping))
 			return
-		var/obj/item/ammo_magazine/magazine = dropping
-		var/obj/item/ammo_magazine/handful/bullet = dropping
-		if(!istype(user) || user.is_mob_incapacitated(TRUE))
-			return
-		if(src != user.r_hand && src != user.l_hand)
-			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
-			return
-		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
-			to_chat(user, SPAN_WARNING("[dropping] must be carried to do that."))
-			return
-		//no tactical reload for the untrained.
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
-			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
-			return
-		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
-		if(flags_gun_features & GUN_INTERNAL_MAG)
-			unconventional_reload(user, magazine)
-			return
-
-		// actual tactical reloads
-		var/tac_reload_time = 1.5 SECONDS
-		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
-
-			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
-				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
-				return
-
-			if(current_mag)
-				unload(user, FALSE, TRUE)
-			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
-
-			var/old_mag_loc = magazine.loc
-			if(user.skills)
-				tac_reload_time = max(1.5 SECONDS - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-
-			var/obj/limb/opposite_hand
-			var/effect
-			if(user.l_hand == src) // cant find the helper proc for this so
-				opposite_hand = user.get_limb("r_arm")
-			else
-				opposite_hand = user.get_limb("l_arm")
-			if(opposite_hand.status & LIMB_DESTROYED)
-				tac_reload_time *= 3 DECISECONDS
-				effect = SLOW
-				to_chat(user, SPAN_WARNING("...but you'll have a harder time reloading with one arm!"))
-
-			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY, status_effect = effect))
-				return
-			if(magazine.loc != old_mag_loc || current_mag)
-				return
-
-			if(isstorage(magazine.loc))
-				var/obj/item/storage/master_storage = magazine.loc
-				master_storage.remove_from_storage(magazine)
-			reload(user, magazine)
-		else
-			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
-			return
+		tactical_reload(dropping, user)
 	else
 		..()
 
@@ -1054,3 +997,37 @@ DEFINES in setup.dm, referenced here.
 		return FALSE
 	torch.turn_light(toggle_on = on, forced = TRUE)
 	return TRUE
+
+///This performs a tactical reload with src using new_magazine to load the gun.
+/obj/item/weapon/gun/proc/tactical_reload(obj/item/ammo_magazine/new_magazine, mob/living/carbon/human/user)
+	if(!istype(new_magazine, /obj/item/ammo_magazine))
+		return
+	if(!istype(user) || user.is_mob_incapacitated(TRUE))
+		return
+	if(!istype(src, new_magazine.gun_type) || (new_magazine.type in src.accepted_ammo))
+		to_chat(user, SPAN_WARNING("[new_magazine] cannot fit into [src]!"))
+		return
+	if(src != user.r_hand && src != user.l_hand)
+		to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+		return
+	if(flags_gun_features & GUN_INTERNAL_MAG)
+		to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
+		return
+	//no tactical reload for the untrained.
+	if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
+		to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
+		return
+	to_chat(user, SPAN_NOTICE("You start a tactical reload."))
+	if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+		unload(user)
+	else
+		unload(user, FALSE, TRUE)
+	var/old_mag_loc = new_magazine.loc
+	var/tac_reload_time = 15
+	tac_reload_time = tac_reload_time/user.skills.get_skill_level(SKILL_GUN_HO)
+	if(!do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && new_magazine.loc == old_mag_loc && !current_mag)
+		return
+	if(isstorage(new_magazine.loc))
+		var/obj/item/storage/master_storage = new_magazine.loc
+		master_storage.remove_from_storage(new_magazine)
+	reload(user, new_magazine)

@@ -107,6 +107,9 @@
 			var/obj/limb/affecting = get_limb(rand_zone(attacking_mob.zone_selected, 70))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 
+			if(armor_degrade(raw_damage))
+				return
+
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[attacking_mob] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)

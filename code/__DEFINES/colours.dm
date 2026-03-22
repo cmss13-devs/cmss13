@@ -163,3 +163,6 @@
 /// Gun muzzle colors
 #define COLOR_LASER_RED "#FF8D8D"
 #define COLOR_MUZZLE_BLUE "#2CB2E8"
+
+/// Filters
+#define COLOR_TRANSPARENT_SHADOW "#03020781"

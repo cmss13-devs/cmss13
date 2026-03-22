@@ -170,3 +170,7 @@
 
 	if(istype(target_turf, /turf/open_space))
 		return target_turf.attack_hand(src)
+
+///How an atom interacts when clicked on with superstrength ability.
+/atom/proc/superstrength_interaction(mob/user as mob)
+	return

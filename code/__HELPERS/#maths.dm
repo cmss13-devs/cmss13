@@ -124,3 +124,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	if(sign == -1)
 		return min(new_value, threshold * -1)
 
+
+//Rounds up. Wow.
+#define ROUND_UP(x) ( -round(-(x)))

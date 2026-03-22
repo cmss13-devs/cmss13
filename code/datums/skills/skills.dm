@@ -22,6 +22,12 @@
 
 // Lots of defines here. See #define/skills.dm
 
+/datum/skill/gun_ho
+	skill_name = SKILL_GUN_HO
+	skill_level = SKILL_GUN_HO_UNTRAINED
+	max_skill_level = SKILL_GUN_HO_MAX
+
+
 /datum/skill/cqc
 	skill_name = SKILL_CQC
 	readable_skill_name = "CQC"

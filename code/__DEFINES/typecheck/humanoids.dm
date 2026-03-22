@@ -2,7 +2,7 @@
 #define ishuman(A) (istype(A, /mob/living/carbon/human) )
 
 //Check if the mob is an actual human (and not Yautja or Synth)
-#define ishuman_strict(A) (ishuman(A) && istype(A?:species, /datum/species/human))
+#define ishuman_strict(A) (ishuman(A) && istype(A?:species, /datum/species/human) || istype(A?:species, /datum/species/spartan))
 
 //Check if the mob is an actual human or Synth
 #define ishumansynth_strict(A)   (ishuman(A) && (istype(A?:species, /datum/species/human) || istype(A?:species, /datum/species/synthetic)))
@@ -11,6 +11,7 @@
 #define ismonkey(A) (ishuman(A) && istype(A?:species, /datum/species/monkey))
 #define isyautja(A) (ishuman(A) && istype(A?:species, /datum/species/yautja))
 #define isthrall(A) (ishuman(A) && istype(A?:species, /datum/species/human/hero/thrall))
+#define isspartan(A) (ishuman(A) && istype(A?:species, /datum/species/spartan))
 #define isresearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isSEA(A) (ishuman(A) && A.job == "Senior Enlisted Advisor")
 #define issynth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic))
@@ -27,6 +28,7 @@
 #define isspeciesmonkey(A) (A.species?.group == SPECIES_MONKEY)
 #define isspeciesyautja(A) (A.species?.group == SPECIES_YAUTJA)
 #define isspeciessynth(A) (A.species?.group == SPECIES_SYNTHETIC)
+#define isspeciesspartan(A) (A.species?.group == SPECIES_SPARTAN)
 
 //Size checks for carbon to use instead of typechecks. (Hellhounds are deprecated)
 #define iscarbonsizexeno(A) (A.mob_size >= MOB_SIZE_XENO_VERY_SMALL)

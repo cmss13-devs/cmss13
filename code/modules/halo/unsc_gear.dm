@@ -193,6 +193,15 @@
 		new /obj/item/ammo_magazine/spnkr(src)
 	update_icon()
 
+/obj/item/storage/backpack/marine/ammo_rack/spnkr/hold_spnkr
+	storage_slots = 3
+	can_hold = list(/obj/item/ammo_magazine/spnkr, /obj/item/weapon/gun/halo_launcher/spnkr)
+
+/obj/item/storage/pouch/explosive/unsc/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/grenade/high_explosive/unsc(src)
+
+
 //========== BOXES ==========
 
 /obj/item/storage/unsc_speckit

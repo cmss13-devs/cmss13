@@ -996,6 +996,14 @@
 			bullet_ping(P)
 			return
 
+		if(istype(wear_suit, /obj/item/clothing/suit/marine/unsc/mjolnir))
+			var/obj/item/clothing/suit/marine/unsc/mjolnir/armor = wear_suit
+			if(armor.armor_status)
+				if(ammo_flags & AMMO_LASER)
+					armor_degrade(P.damage)
+				else
+					armor_degrade(P.damage)
+
 	var/obj/limb/organ = get_limb(check_zone(P.def_zone)) //Let's finally get what organ we actually hit.
 	if(!organ)
 		return//Nope. Gotta shoot something!

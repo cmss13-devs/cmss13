@@ -97,6 +97,16 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 
+/mob/living/carbon/human/proc/armor_degrade(damage = 0)
+	if(istype(wear_suit, /obj/item/clothing/suit/marine/unsc/mjolnir))
+		var/obj/item/clothing/suit/marine/unsc/mjolnir/armor = wear_suit
+		if(armor.armor_status)
+			if(prob(50))
+				armor.armor_status -= 0.1
+			else
+				armor.armor_status -= 0.25
+			armor.armor_check()
+			return TRUE
 
 //Returns 1 if the attack hit, 0 if it missed.
 /mob/living/carbon/human/proc/attacked_by(obj/item/I, mob/living/user)

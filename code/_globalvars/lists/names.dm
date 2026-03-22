@@ -41,3 +41,6 @@ GLOBAL_LIST_INIT(weapon_surnames, list("Adze", "Axe", "Bagh Nakha", "Bo", "Bola"
 
 GLOBAL_LIST_INIT(pred_names, list("Nu'koir", "Za-ai'stba", "Au'stbep", "Gihn'thill", "Au'stbep", "Tud'tab", "Gehtu-a", "U-dan'dchu", "Bua'dtu", "A'ytein", "Yu-thwuahtou", "Yon'ta", "Pan'teiat", "Ban'ti", "Ve'thiad", "Ga-aiteith", "A'kah", "Dachande", "Bhua'tean", "Nahroirh", "Vateiann", "A'stbath", "I'ja", "Hai'dtath-Bha", "Zatailb", "Ca'tall", "A'staol", "Nago-Ill", "U'thath", "Ahn'tha", "Tocha", "Ba-A'ytall", "Mihn'tha"))
 GLOBAL_LIST_INIT(pred_last_names, list("Tha'jo", "Ba'ytui", "Thwa'dtei", "Vah'ka", "A'taar", "Zau'dqou", "Ma'kah", "Gahru"))
+
+GLOBAL_LIST_INIT(first_names_spartan_male, list("James","Harry","Kim","Nick","Will","Steven","Samuel","August","Charles","Shane","Charlie","Ted","Joe","Joseph","Anderson","Seth","Jeremy","Ethan","Shaw","Edd","Brendan","Billy","Cameron","Mandy","Mike","Jeffery","Palmer","Gillian","Gordon","Yang","Julian","Dusty","Walter","Oscar","Edwin","Kane","Batou"))
+GLOBAL_LIST_INIT(first_names_spartan_female, list("Elen","Cindy","Soren","Kelly","Robin","Thorne","Shina","Bretta","Tanya","Sasha","Myla","Iselda","Allyria","Grace","Lydia","Marissa","Eira","Eva","Alma","Julianne","Sei","Dana","Lara","Chell","Joyce","Frederica","Thea","Maro","Yuri","Dora","Jessica","Lilly","Luna","Talasea","Maya","Motoko","Sylvie"))

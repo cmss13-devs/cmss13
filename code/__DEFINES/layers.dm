@@ -123,7 +123,7 @@
 #define ABOVE_LYING_MOB_LAYER 3.9
 
 //#define MOB_LAYER 4
-
+#define MOB_UPPER_LAYER 4.07
 #define ABOVE_MOB_LAYER 4.1
 
 /// above ABOVE_MOB_LAYER because it's used for shallow river overlays which clips with the top of large xeno sprites.

@@ -56,6 +56,10 @@
 		return
 	var/mob/living/carbon/human/human_mob = user.mob
 	human_mob.spec_activation_one()
+	var/datum/action/human_action/activable/lunge/lunge_action = locate() in user.mob.actions
+	if(lunge_action)
+		lunge_action.action_activate()
+		return TRUE
 	return TRUE
 
 /datum/keybinding/human/specialist_two

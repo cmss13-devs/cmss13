@@ -199,3 +199,5 @@
 
 /// From /modules/animations/animations_library.dm and /code/modules/mob/mob.dm
 #define COMSIG_MOB_ANIMATING "mob_animating"
+
+#define COMSIG_MOB_THROW "mob_throw" //from base of /mob/throw_item(): (atom/target)

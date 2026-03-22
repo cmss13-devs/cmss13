@@ -410,6 +410,11 @@
 			return
 		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
 
+		var/list/throw_modifiers = list()
+		throw_modifiers["range_modifier"] = 0
+		throw_modifiers["speed_modifier"] = 0
+		SEND_SIGNAL(src, COMSIG_MOB_THROW, target, thrown_thing, throw_modifiers)
+
 		if(!lastarea)
 			lastarea = get_area(src.loc)
 		if(istype(loc, /turf/open/space))
@@ -426,14 +431,14 @@
 			if(alpha >= 50)
 				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
-			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
+			thrown_thing.throw_atom(target, thrown_thing.throw_range + throw_modifiers["range_modifier"], SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
 			animation_attack_on(target, 6)
 			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
 			if(alpha >= 50)
 				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
-			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
+			thrown_thing.throw_atom(target, thrown_thing.throw_range + throw_modifiers["range_modifier"], max(1, thrown_thing.throw_speed + throw_modifiers["speed_modifier"]), src, spin_throw)
 
 /mob/living/carbon/fire_act(exposed_temperature, exposed_volume)
 	..()

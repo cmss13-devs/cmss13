@@ -209,7 +209,7 @@ Can look good elsewhere as well.*/
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
 
-/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0, anim_flags = NONE)
 	if(!sections)
 		return
 	var/section = 360/sections
@@ -232,7 +232,7 @@ Can look good elsewhere as well.*/
 	var/matrix/last = matrix(transform)
 	matrix_list += last
 	speed /= sections
-	animate(src, transform = matrix_list[1], pixel_x = pixel_x + dx, pixel_y = pixel_y + dy, time = speed, loop_amount)
+	animate(src, transform = matrix_list[1], pixel_x = pixel_x + dx, pixel_y = pixel_y + dy, time = speed, loop_amount, flags = anim_flags)
 	for(var/i in 2 to sections)
 		animate(transform = matrix_list[i], pixel_x = pixel_x + dx*i, pixel_y = pixel_y + dy*i, time = speed)
 

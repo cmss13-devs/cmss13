@@ -1689,6 +1689,12 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/floor/almayer/plating/northeast,
 /area/space)
+"aeG" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper EVA"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/command/eva)
 "aeU" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -41993,8 +41999,8 @@ hjp
 vjd
 jKD
 gAZ
-iMR
-iMR
+aeG
+aeG
 gAZ
 xDV
 tYX

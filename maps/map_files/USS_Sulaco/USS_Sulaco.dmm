@@ -2137,6 +2137,10 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/cargo/office)
+"afN" = (
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
+/turf/open/floor/almayer/redfull,
+/area/sulaco/bridge)
 "afO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3201,9 +3205,9 @@
 	name = "\improper Courtyard Divider";
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	id = "Cell 2";
-	name = "\improper Courtyard Divider";
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "courtyard_cells";
+	name = "\improper Courtyard Lockdown Shutter";
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -6568,13 +6572,10 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/research)
 "erg" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/red/west,
 /area/sulaco/command/armory)
 "erl" = (
@@ -7660,10 +7661,7 @@
 /turf/open/floor/freezerfloor,
 /area/sulaco/showers)
 "fPv" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/red/west,
 /area/sulaco/command/armory)
 "fPT" = (
@@ -9860,10 +9858,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/morgue)
 "iRQ" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer/redcorner,
 /area/sulaco/command/armory)
 "iTD" = (
@@ -11423,10 +11418,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/sulaco/command/ai)
 "lot" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer/redfull,
 /area/sulaco/command/armory)
 "loU" = (
@@ -11871,10 +11863,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/liaison/quarters)
 "lSB" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/redfull,
 /area/sulaco/bridge)
 "lSF" = (
@@ -12074,7 +12063,8 @@
 /area/sulaco/bridge)
 "maz" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/lmg,
+/obj/item/folded_tent/cmd,
+/obj/item/flag/plantable/ua,
 /obj/item/weapon/gun/rifle/lmg,
 /turf/open/floor/almayer/redcorner/east,
 /area/sulaco/command/armory)
@@ -13646,10 +13636,7 @@
 /turf/open/floor/almayer/silver,
 /area/sulaco/bridge)
 "oAX" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/almayer/red/east,
 /area/sulaco/command/armory)
 "oCq" = (
@@ -18039,7 +18026,7 @@
 /turf/open/floor/almayer/plate,
 /area/sulaco/maintenance/lower_maint)
 "uSj" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
 /turf/open/floor/almayer/red/east,
 /area/sulaco/command/armory)
 "uSJ" = (
@@ -18167,7 +18154,6 @@
 /area/sulaco/cargo)
 "uZc" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/lmg,
 /obj/item/weapon/gun/rifle/lmg,
 /obj/structure/machinery/light{
 	dir = 8;
@@ -18501,12 +18487,12 @@
 /turf/open/floor/almayer/sterile_green_side,
 /area/sulaco/medbay/surgery_one)
 "vzW" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
 	},
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
 /turf/open/floor/almayer/red/east,
 /area/sulaco/command/armory)
 "vAb" = (
@@ -20184,13 +20170,10 @@
 /turf/open/floor/almayer/silver/west,
 /area/sulaco/command/intelligence)
 "xQg" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/red/west,
 /area/sulaco/command/armory)
 "xQo" = (
@@ -34827,7 +34810,7 @@ wgs
 fny
 esx
 jXG
-lSB
+afN
 cEz
 uGX
 uGX

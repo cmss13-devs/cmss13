@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed queen no forfeit check not checking the relevant Z levels (namely regarding hijack/FTL)"
-  - bugfix: "Fixed potential for hive collapse during hijack"

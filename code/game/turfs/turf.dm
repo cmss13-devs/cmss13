@@ -111,11 +111,6 @@
 	if(light_power && light_range)
 		update_light()
 
-	//Get area light
-	var/area/current_area = loc
-	if(current_area?.lighting_effect)
-		overlays += current_area.lighting_effect
-
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
@@ -725,9 +720,6 @@
 /turf/open/gm/river/can_dig_xeno_tunnel()
 	return FALSE
 
-/turf/open/snow/can_dig_xeno_tunnel()
-	return TRUE
-
 /turf/open/mars/can_dig_xeno_tunnel()
 	return TRUE
 
@@ -773,12 +765,6 @@
 
 /turf/open/mars/get_dirt_type()
 	return DIRT_TYPE_MARS
-
-/turf/open/snow/get_dirt_type()
-	if(bleed_layer)
-		return DIRT_TYPE_SNOW
-	else
-		return DIRT_TYPE_GROUND
 
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS

@@ -7853,7 +7853,7 @@
 /area/varadero/exterior/eastbeach)
 "gcF" = (
 /obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
+	desc = "A grave to a fishing buddy, long gone."
 	},
 /obj/item/clothing/head/boaterhat{
 	pixel_y = 5
@@ -20116,7 +20116,7 @@
 	pixel_y = -6;
 	pixel_x = -8;
 	name = "help";
-	desc = "A recent storm washed away any legible text"
+	desc = "A recent storm washed away any legible text."
 	},
 /obj/item/tool/pen,
 /turf/open/gm/dirt,
@@ -24301,7 +24301,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	layer = 3.6;
 	pixel_x = -12
 	},

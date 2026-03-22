@@ -888,11 +888,11 @@
 
 	if(user.eye_blind)
 		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
-	else if(user.stat || !ishuman(user))
+	else if(user.stat || !ishuman(user) || (user.dizziness > 100))
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint())
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)
@@ -902,9 +902,10 @@
 /obj/item/proc/unzoom(mob/living/user)
 	if(user.interactee == src)
 		user.unset_interaction()
-	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
-	SPAN_NOTICE("You look up from [zoom_device]."))
+	if(zoom) // don't give us the message if we aren't even zoomed in
+		var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+		INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
+		SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
@@ -912,11 +913,11 @@
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
+		UnregisterSignal(user.client, COMSIG_CLIENT_ANIMATING)
 		user.client.change_view(GLOB.world_view_size, src)
 		user.client.set_pixel_x(0)
 		user.client.set_pixel_y(0)
@@ -926,6 +927,11 @@
 
 	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
 		unzoom(mover)
+
+/obj/item/proc/zoom_handle_client_animate(client/source)
+	SIGNAL_HANDLER
+	if(source)
+		unzoom(source?.mob) // clients love to vanish and cause null reference exceptions :)
 
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -945,14 +951,13 @@
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
+		RegisterSignal(user.client, COMSIG_CLIENT_ANIMATING, PROC_REF(zoom_handle_client_animate))
 
 		zoom_initial_mob_dir = user.dir
 
-		var/tilesize = 32
-		var/viewoffset = tilesize * tileoffset
+		var/viewoffset = world.icon_size * tileoffset
 
 		switch(user.dir)
 			if(NORTH)

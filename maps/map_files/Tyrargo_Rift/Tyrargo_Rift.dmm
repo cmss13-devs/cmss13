@@ -1135,7 +1135,7 @@
 	layer = 3.01
 	},
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint{
-	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection.";
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid-resistant polymer coating, as well as enhanced ballistics protection.";
 	armor_bio = 40;
 	armor_melee = 25;
 	armor_internaldamage = 30;
@@ -67212,7 +67212,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmM" = (
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_x = 7;
 	pixel_y = 8
 	},
@@ -91746,7 +91746,7 @@
 	layer = 3.01
 	},
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint{
-	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection.";
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid-resistant polymer coating, as well as enhanced ballistics protection.";
 	armor_bio = 40;
 	armor_melee = 25;
 	armor_internaldamage = 30;

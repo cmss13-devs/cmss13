@@ -429,4 +429,3 @@
 	mob_min = 4
 	time_required_for_job = 5 HOURS
 	youngblood_time = 10 HOURS
-	youngblood_time_required_for_job = 0 HOURS

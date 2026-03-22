@@ -143,6 +143,10 @@
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
 	random_call.activate()
+	random_call = get_random_call()	//Double ert...
+	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
+		return
+	random_call.activate()
 	return
 
 /datum/emergency_call/proc/check_timelock(client/C, list/roles, hours)

@@ -48,11 +48,13 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, /datum/equipment_preset/upp/commando/dressed, TRUE, TRUE)
 	print_backstory(H)
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/upp_commando/low_threat
 	name = "UPP Commandos"
+	probability = 0
 
 /datum/emergency_call/upp_commando/low_threat/create_member(datum/mind/mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -77,3 +79,32 @@
 	print_backstory(person)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+
+/datum/emergency_call/upp_commando/ivan
+	probability = 1
+
+/datum/emergency_call/upp_commando/ivan/create_member(datum/mind/M, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	M.transfer_to(H, TRUE)
+
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER))    //First one spawned is always the leader.
+		leader = H
+		arm_equipment(H, /datum/equipment_preset/upp/ivan, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are Ivan, the strongest soldier of the UPP!"))
+	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		medics++
+		to_chat(H, SPAN_ROLE_HEADER("You are a Commando Medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		arm_equipment(H, /datum/equipment_preset/upp/commando/medic/dressed, TRUE, TRUE)
+		print_backstory(H)
+	else
+		to_chat(H, SPAN_ROLE_HEADER("You are a Commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		arm_equipment(H, /datum/equipment_preset/upp/commando/dressed, TRUE, TRUE)
+		print_backstory(H)
+
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

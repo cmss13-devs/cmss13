@@ -4,7 +4,7 @@
 	mob_max = 6
 	arrival_message = "'Ia! Ia!'"
 	objectives = "Support the Xenomorphs in any way, up to and including giving your life for them!"
-	probability = 0
+	probability = 1
 	hostility = TRUE
 	var/max_synths = 1
 	var/synths = 0
@@ -34,4 +34,5 @@
 		arm_equipment(H, /datum/equipment_preset/other/xeno_cultist, TRUE, TRUE)
 	print_backstory(H)
 
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

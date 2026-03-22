@@ -8,7 +8,7 @@
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	home_base = /datum/lazy_template/ert/pizza_station
-	probability = 2
+	probability = 0
 
 /datum/emergency_call/pizza/New()
 	. = ..()

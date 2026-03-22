@@ -422,7 +422,7 @@
 #define LURKER_VAMPIRE "Vampire"
 
 // Warrior strain flags
-#define WARRIOR_BOXER "Boxer"
+#define WARRIOR_YUJI "Yuji Itadori"
 
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"

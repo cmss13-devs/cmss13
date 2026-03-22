@@ -1,7 +1,7 @@
 /datum/xeno_strain/boxer
 
-	name = WARRIOR_BOXER
-	description = "In exchange for your ability to fling and shield yourself with slashes, you gain KO meter and the ability to resist stuns. Your punches will reset the cooldown of your Jab. Jab lets you close in and confuse your opponents while resetting Punch cooldown. Your slashes and abilities build up KO meter that later lets you deal damage, knockback, heal, and restore your stun resistance depending on how much KO meter you gained with a titanic Uppercut strike."
+	name = WARRIOR_YUJI
+	description = "BLACK FLASH!!!!!!!!!!!!!!!!!!"
 	icon_state_prefix = "Boxer"
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/lunge,
@@ -107,7 +107,7 @@
 	big_ko_icon.maptext_height = 16
 	big_ko_icon.color = "#FF0000"
 	big_ko_icon.maptext_x = -32
-	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
+	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>BLACK FLASH!</span>"
 	bound_xeno.client.images += big_ko_icon
 	addtimer(CALLBACK(src, PROC_REF(remove_big_ko)), 2 SECONDS)
 
@@ -496,7 +496,7 @@
 	if(knockout)
 		carbon_target.KnockOut(knockout_power)
 		behavior_delegate.display_ko_message(carbon_target)
-		playsound(carbon_target, 'sound/effects/dingding.ogg', 75, 1)
+		playsound(carbon_target, 'sound/effects/blackflash.ogg', 75, 1)
 
 	if(knockback)
 		carbon_target.explosion_throw(base_knockback * ko_counter, get_dir(upper_cut, carbon_target))

@@ -14,9 +14,9 @@ endmap
 
 map almayer
 	default
-	minplayers 100
+	minplayers 60
 endmap
 
 map sulaco
-	maxplayers 120
+	maxplayers 100
 endmap

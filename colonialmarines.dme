@@ -582,6 +582,7 @@
 #include "code\datums\emergency_calls\goons.dm"
 #include "code\datums\emergency_calls\hefa_knight.dm"
 #include "code\datums\emergency_calls\inspection.dm"
+#include "code\datums\emergency_calls\joe.dm"
 #include "code\datums\emergency_calls\mercs.dm"
 #include "code\datums\emergency_calls\pirates.dm"
 #include "code\datums\emergency_calls\pizza.dm"

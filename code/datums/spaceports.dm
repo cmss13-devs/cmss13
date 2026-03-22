@@ -26,7 +26,8 @@
 	name = "Znoy Outpost"
 	docking_message = "Attention, USCM vessel. You have encroached on UPP territory. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	allies = list(
-		/datum/emergency_call/upp_commando
+		/datum/emergency_call/upp_commando,
+		/datum/emergency_call/joe/upp
 	)
 
 /datum/spaceport/freelancers

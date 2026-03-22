@@ -1,5 +1,0 @@
-author: "forest2001, dimdimich1996"
-delete-after: True
-changes:
-  - imageadd: "Added new and updated sprites for Yautja related constructions and temples."
-  - maptweak: "Adjusted existing temple areas on maps to accomodate sprite changes, namely recolors and door orientation."

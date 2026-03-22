@@ -2048,10 +2048,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/sulaco/cargo)
-"afH" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/sulaco/cargo)
 "afI" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo,
@@ -12124,9 +12120,6 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "nuQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /obj/structure/machinery/cm_vending/sorted/attachments,
 /turf/open/floor/almayer/test_floor5,
 /area/sulaco/cargo)
@@ -13251,12 +13244,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/liaison/quarters)
-"oXZ" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/sulaco/cargo)
 "oYQ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -14308,9 +14295,6 @@
 /turf/open/floor/engine,
 /area/sulaco/engineering/atmos)
 "qNv" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer,
@@ -16707,12 +16691,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/silver,
 /area/sulaco/command/eva)
-"tZp" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/sulaco/cargo)
 "uai" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -40567,7 +40545,7 @@ eeB
 eeB
 lwZ
 fuz
-tZp
+slB
 aaR
 euC
 agf
@@ -40945,7 +40923,7 @@ iBl
 qFI
 afT
 nuQ
-afH
+lwZ
 edc
 kBO
 afE
@@ -41240,7 +41218,7 @@ afO
 lwZ
 lwZ
 lwZ
-oXZ
+lwZ
 lwZ
 lwZ
 vNa

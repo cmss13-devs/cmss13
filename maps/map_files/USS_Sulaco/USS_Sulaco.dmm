@@ -1035,6 +1035,12 @@
 /obj/docking_port/stationary/lifeboat_dock/sulaco/east,
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod3)
+"acN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/red/west,
+/area/sulaco/brig)
 "acO" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
@@ -36440,7 +36446,7 @@ gMz
 ajZ
 ajp
 ajA
-ajA
+acN
 ajA
 ajA
 ajp

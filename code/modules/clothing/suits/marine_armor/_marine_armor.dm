@@ -436,7 +436,7 @@
 	icon_state = "MB"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
-	specialty = "M3 pattern mod-'B' marine"
+	specialty = "B12 pattern mod-'B' marine"
 	lamp_icon = "lampr"
 
 /obj/item/clothing/suit/storage/marine/light/leader/mod_c

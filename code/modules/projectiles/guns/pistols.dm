@@ -919,7 +919,12 @@
 	)
 
 /obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
-	..()
+	if(LAZYLEN(starting_attachment_types))
+		for(var/path in starting_attachment_types)
+			var/obj/item/attachable/A = new path(src)
+			A.Attach(src)
+			update_attachable(A.slot)
+
 	var/obj/item/attachable/lasersight/vp/attachment = new(src)
 	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachment.hidden = FALSE

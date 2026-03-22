@@ -19,7 +19,7 @@
 	docking_message = "Invaders! Repel them!."
 	allies = list(
 		/datum/emergency_call/yautja_mcaste,
-		/datum/emergency_call/young_bloods/six_members
+		/datum/emergency_call/young_bloods/six_members,
 	)
 
 /datum/spaceport/upp
@@ -27,7 +27,7 @@
 	docking_message = "Attention, USCM vessel. You have encroached on UPP territory. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	allies = list(
 		/datum/emergency_call/upp_commando,
-		/datum/emergency_call/joe/upp
+		/datum/emergency_call/joe/upp,
 	)
 
 /datum/spaceport/freelancers
@@ -35,5 +35,5 @@
 	docking_message = "What? How did you find this place? You will not live to tell the tale."
 	allies = list(
 		/datum/emergency_call/death,
-		/datum/emergency_call/wy_commando/deathsquad
+		/datum/emergency_call/wy_commando/deathsquad,
 	)

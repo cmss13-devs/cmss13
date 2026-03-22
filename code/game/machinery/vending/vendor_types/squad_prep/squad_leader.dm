@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vet_leader, list(
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Modified M3 Pattern Armor 'A'", 0, /obj/item/clothing/suit/storage/marine/medium/leader/mod_a, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Modified M3 Pattern Armor 'B'", 0, /obj/item/clothing/suit/storage/marine/medium/leader/mod_b, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Modified M3 Pattern Armor 'C'", 0, /obj/item/clothing/suit/storage/marine/medium/leader/mod_c, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Modified M3 Pattern Armor 'C'", 0, /obj/item/clothing/suit/storage/marine/light/leader/mod_c, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),

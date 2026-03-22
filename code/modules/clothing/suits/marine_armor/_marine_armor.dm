@@ -424,34 +424,26 @@
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/medium/leader/mod_a
-	name = "\improper modified M3 pattern marine armor 'A'"
-	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+	name = "\improper modified B12 pattern marine armor 'A'"
+	desc = "A heavily altered suit of B12 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
 	icon_state = "MA"
-	specialty = "M3 pattern mod-'A' marine"
+	specialty = "B12 pattern mod-'A' marine"
 	lamp_icon = "lampr"
 
 /obj/item/clothing/suit/storage/marine/medium/leader/mod_b
-	name = "\improper modified M3 pattern marine armor 'B'"
-	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+	name = "\improper modified B12 pattern marine armor 'B'"
+	desc = "A heavily altered suit of B12 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
 	icon_state = "MB"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
 	specialty = "M3 pattern mod-'B' marine"
 	lamp_icon = "lampr"
 
-/obj/item/clothing/suit/storage/marine/medium/leader/mod_c
-	name = "\improper modified M3 pattern marine armor 'C'"
-	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+/obj/item/clothing/suit/storage/marine/light/leader/mod_c
+	name = "\improper modified M3-L pattern marine armor"
+	desc = "A heavily altered suit of lightweight M3-L pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
 	icon_state = "MC"
-	slowdown = SLOWDOWN_ARMOR_LIGHT
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	storage_slots = 2
-	specialty = "M3 pattern mod-'C' marine"
+	specialty = "M3-L pattern mod marine"
 	lamp_icon = "lampr"
 
 /obj/item/clothing/suit/storage/marine/tanker

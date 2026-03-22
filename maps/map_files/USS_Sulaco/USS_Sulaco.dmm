@@ -71,7 +71,6 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 30
 	},
-/obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/sulaco/medbay/surgery_one)
 "aaq" = (
@@ -89,9 +88,6 @@
 	pixel_y = 28
 	},
 /turf/open/floor/almayer/sterile_green_corner,
-/area/sulaco/medbay/surgery_one)
-"aas" = (
-/turf/closed/wall/almayer/white/hull,
 /area/sulaco/medbay/surgery_one)
 "aat" = (
 /obj/structure/machinery/power/apc/almayer/east,
@@ -312,13 +308,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/sulaco/command/intelligence)
-"abd" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/sulaco/hallway/lower_main_hall)
 "abe" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -360,6 +349,9 @@
 /area/sulaco/medbay/storage2)
 "abj" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -664,12 +656,6 @@
 /area/sulaco/maintenance/lower_maint2)
 "abU" = (
 /turf/closed/wall/almayer,
-/area/sulaco/command/sea)
-"abV" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
 /area/sulaco/command/sea)
 "abW" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -1942,6 +1928,13 @@
 "afp" = (
 /turf/closed/wall/almayer/outer,
 /area/sulaco/medbay/storage)
+"afq" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer/silverfull,
+/area/sulaco/bridge)
 "afU" = (
 /obj/structure/sign/prop3,
 /turf/closed/wall/almayer,
@@ -2077,9 +2070,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/sulaco/engineering/atmos)
-"aqb" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay/storage2)
 "arj" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -2389,12 +2379,16 @@
 	req_access_txt = "19";
 	req_one_access_txt = "0"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.9
 	},
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/bridge)
@@ -3010,6 +3004,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/bridge)
 "bLY" = (
@@ -3629,7 +3624,7 @@
 	desc = "STANDARD ISSUE MEDICINE\nDylovene:  Anti-toxin\nBicaridine: Wound stabilization\nDexalin: Oxygen Deprivation\nInaprovaline: Critical stabilization/respiration\nKelotane: Burn damage\nSpaceacillin: Infections\nTramadol: Light Pain Killer\nOxycodone: Strong Pain Killer\nTricordrazine: General treatment";
 	name = "\improper USCM Medicine guide"
 	},
-/turf/closed/wall/almayer/white/hull,
+/turf/closed/wall/almayer/white,
 /area/sulaco/medbay/storage2)
 "cCB" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -4295,9 +4290,6 @@
 /obj/structure/sign/safety/zero_g{
 	pixel_x = 0;
 	pixel_y = 30
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/almayer/green,
 /area/sulaco/cargo)
@@ -5986,9 +5978,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/sulaco/medbay)
-"fpB" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay)
 "fpS" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -6603,7 +6592,6 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/cm_vending/gear/executive_officer{
 	density = 0;
 	pixel_y = 25
@@ -6824,13 +6812,6 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/device/mass_spectrometer,
 /obj/structure/surface/table/almayer,
-/obj/structure/transmitter{
-	name = "Chemical Laboratory Telephone";
-	phone_category = "Medical & Research Dept.";
-	phone_id = "Chemistry Laboratory";
-	pixel_x = -8;
-	pixel_y = 28
-	},
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
@@ -6972,9 +6953,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/emerald/northwest,
 /area/sulaco/marine/charlie)
-"gEY" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay/storage)
 "gFp" = (
 /turf/open/floor/carpet15_15/west,
 /area/sulaco/liaison)
@@ -8197,6 +8175,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer/green/east,
 /area/sulaco/cargo)
 "itu" = (
@@ -9139,6 +9120,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/sulaco/medbay/surgery_one)
 "jxx" = (
@@ -10277,7 +10259,6 @@
 /area/sulaco/maintenance/lower_maint)
 "lfy" = (
 /obj/structure/closet/walllocker/emerglocker/south,
-/obj/structure/machinery/light,
 /turf/open/floor/almayer/silver,
 /area/sulaco/bridge)
 "lfK" = (
@@ -12431,13 +12412,6 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/sulaco/brig)
-"nYC" = (
-/obj/structure/sign/ROsign{
-	desc = "STANDARD ISSUE MEDICINE\nDylovene:  Anti-toxin\nBicaridine: Wound stabilization\nDexalin: Oxygen Deprivation\nInaprovaline: Critical stabilization/respiration\nKelotane: Burn damage\nSpaceacillin: Infections\nTramadol: Light Pain Killer\nOxycodone: Strong Pain Killer\nTricordrazine: General treatment";
-	name = "\improper USCM Medicine guide"
-	},
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay)
 "nYD" = (
 /turf/open/floor/wood,
 /area/sulaco/cap_office)
@@ -13344,9 +13318,6 @@
 /area/sulaco/medbay)
 "pci" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/platform{
 	dir = 8;
 	icon_state = "platform_deco"
@@ -13733,9 +13704,6 @@
 "pOR" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/space)
-"pPf" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay/west)
 "pPi" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
@@ -14449,6 +14417,9 @@
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
 	pixel_y = 25
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/sulaco/bridge/office)
@@ -17665,9 +17636,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine/charlie)
-"uXA" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/maintenance/north_solar_maint)
 "uXD" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -25793,7 +25761,7 @@ acn
 ack
 ace
 abZ
-abV
+abU
 rrI
 rrI
 rrI
@@ -26080,7 +26048,7 @@ abq
 kTd
 kTd
 abj
-abd
+vhP
 kTd
 aaY
 aaT
@@ -35046,7 +35014,7 @@ bRf
 bRf
 bRf
 aeS
-tfs
+afq
 tfs
 imN
 nQQ
@@ -35401,7 +35369,7 @@ uGX
 uGX
 uGX
 aak
-aas
+aah
 aah
 aah
 aah
@@ -35832,13 +35800,13 @@ uGX
 uGX
 uGX
 nZi
-pPf
-pPf
-pPf
-pPf
-pPf
-pPf
-aas
+vOW
+vOW
+vOW
+vOW
+vOW
+vOW
+aah
 aah
 aah
 aah
@@ -35905,7 +35873,7 @@ uGX
 uGX
 uGX
 nZi
-pPf
+vOW
 abR
 bYD
 qid
@@ -35978,7 +35946,7 @@ uGX
 uGX
 uGX
 nZi
-pPf
+vOW
 win
 kjY
 bug
@@ -36051,13 +36019,13 @@ uGX
 uGX
 uGX
 nZi
-pPf
+vOW
 dFN
 kII
 dFN
 kII
 dFN
-pPf
+vOW
 csz
 eTp
 ljc
@@ -36124,13 +36092,13 @@ uGX
 uGX
 uGX
 nZi
-pPf
-pPf
-pPf
-pPf
-pPf
-pPf
-pPf
+vOW
+vOW
+vOW
+vOW
+vOW
+vOW
+vOW
 ybd
 duM
 cZG
@@ -36203,7 +36171,7 @@ afb
 afb
 afb
 afb
-pPf
+vOW
 eSQ
 mZs
 sxq
@@ -36276,7 +36244,7 @@ afb
 afb
 afb
 afb
-pPf
+vOW
 hTf
 lTK
 uvj
@@ -36344,12 +36312,12 @@ uGX
 uGX
 uGX
 afp
-gEY
-gEY
-gEY
-gEY
-gEY
-gEY
+jXs
+jXs
+jXs
+jXs
+jXs
+jXs
 jXs
 jXs
 jXs
@@ -36417,7 +36385,7 @@ fvU
 pOR
 pOR
 afp
-gEY
+jXs
 hDE
 tKm
 bFK
@@ -36490,7 +36458,7 @@ fwi
 rlu
 rlu
 afp
-gEY
+jXs
 nwd
 oyN
 llr
@@ -36563,7 +36531,7 @@ fwi
 rlu
 rlu
 afp
-gEY
+jXs
 okj
 ubT
 fKo
@@ -36636,12 +36604,12 @@ qxX
 rlu
 rlu
 afp
-gEY
-gEY
-gEY
-gEY
-gEY
-gEY
+jXs
+jXs
+jXs
+jXs
+jXs
+jXs
 jXs
 jXs
 jXs
@@ -36714,7 +36682,7 @@ rim
 rim
 rim
 rim
-fpB
+uyM
 tEr
 fpt
 uQs
@@ -36787,7 +36755,7 @@ rlu
 rlu
 rlu
 rim
-nYC
+fYs
 esm
 rKg
 erl
@@ -36860,7 +36828,7 @@ rlu
 rlu
 rlu
 rim
-fpB
+uyM
 mkU
 erl
 rKg
@@ -36933,8 +36901,8 @@ rim
 rim
 rim
 rim
-fpB
-erl
+uyM
+afh
 rKg
 erl
 juZ
@@ -37001,12 +36969,12 @@ uVi
 fwi
 rlu
 rim
-fpB
-fpB
-fpB
-fpB
-fpB
-fpB
+uyM
+uyM
+uyM
+uyM
+uyM
+uyM
 jBj
 erl
 rKg
@@ -37074,7 +37042,7 @@ uVi
 fwi
 rlu
 rim
-fpB
+uyM
 afl
 afj
 afg
@@ -37147,7 +37115,7 @@ pOR
 rlu
 rlu
 rim
-fpB
+uyM
 afm
 erl
 erl
@@ -37220,7 +37188,7 @@ rlu
 rlu
 rlu
 rim
-fpB
+uyM
 afn
 erl
 afh
@@ -37293,7 +37261,7 @@ rlu
 rlu
 rlu
 rim
-fpB
+uyM
 afo
 afi
 afi
@@ -37366,12 +37334,12 @@ rlu
 rlu
 rlu
 rim
-fpB
-fpB
-fpB
-fpB
-fpB
-fpB
+uyM
+uyM
+uyM
+uyM
+uyM
+uyM
 erl
 wmA
 erl
@@ -37590,7 +37558,7 @@ rlu
 rlu
 rlu
 eip
-aqb
+pXB
 lzp
 cTl
 cTl
@@ -37663,7 +37631,7 @@ rlu
 rlu
 rlu
 eip
-aqb
+pXB
 cSt
 cvm
 hiu
@@ -37736,17 +37704,17 @@ rlu
 rlu
 rlu
 eip
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-uXA
+pXB
+pXB
+pXB
+pXB
+pXB
+pXB
+pXB
+pXB
+pXB
+pXB
+geT
 rQC
 dbh
 dbh

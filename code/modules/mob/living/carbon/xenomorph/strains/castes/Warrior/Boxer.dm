@@ -107,7 +107,7 @@
 	big_ko_icon.maptext_height = 16
 	big_ko_icon.color = "#FF0000"
 	big_ko_icon.maptext_x = -32
-	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>BLACK FLASH!</span>"
+	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KOKUSEN!</span>"
 	bound_xeno.client.images += big_ko_icon
 	addtimer(CALLBACK(src, PROC_REF(remove_big_ko)), 2 SECONDS)
 

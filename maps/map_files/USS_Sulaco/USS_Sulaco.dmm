@@ -89,6 +89,18 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/sulaco/medbay/surgery_one)
+"aas" = (
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_access = null;
+	req_access_txt = 37;
+	req_one_access = null;
+	pixel_y = 0;
+	density = 0;
+	can_block_movement = 0;
+	pixel_x = -15
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/command/intelligence)
 "aat" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer,
@@ -308,9 +320,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/sulaco/command/intelligence)
+"abd" = (
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/open/floor/plating,
+/area/sulaco/engineering/engine)
 "abe" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
 	},
 /turf/open/floor/almayer/silver/west,
 /area/sulaco/command/intelligence)
@@ -657,6 +678,16 @@
 "abU" = (
 /turf/closed/wall/almayer,
 /area/sulaco/command/sea)
+"abV" = (
+/obj/structure/closet/secure_closet,
+/obj/item/storage/backpack/marine/rocketpack,
+/obj/item/storage/backpack/marine/rocketpack,
+/obj/item/storage/backpack/marine/mortarpack,
+/obj/item/storage/backpack/marine/mortarpack,
+/obj/item/storage/backpack/marine/grenadepack,
+/obj/item/storage/backpack/marine/grenadepack,
+/turf/open/floor/almayer/cargo,
+/area/sulaco/engineering/engine)
 "abW" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
@@ -1718,17 +1749,17 @@
 /area/sulaco/briefing)
 "aeL" = (
 /obj/structure/machinery/recharge_station,
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/bridge)
 "aeM" = (
 /obj/structure/machinery/cryopod{
 	dir = 1
 	},
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/bridge)
 "aeN" = (
 /obj/effect/landmark/start/synthetic,
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/plating/plating_catwalk,
 /area/sulaco/bridge)
 "aeO" = (
 /obj/structure/machinery/medical_pod/sleeper,
@@ -1742,15 +1773,11 @@
 /area/sulaco/medbay/west)
 "aeQ" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/bridge)
 "aeR" = (
 /obj/structure/machinery/cm_vending/gear/synth,
-/turf/open/space,
-/area/sulaco/bridge)
-"aeS" = (
-/obj/structure/machinery/cm_vending/gear/synth,
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/bridge)
 "aeT" = (
 /obj/structure/machinery/light/small{
@@ -1929,12 +1956,30 @@
 /turf/closed/wall/almayer/outer,
 /area/sulaco/medbay/storage)
 "afq" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/plate,
 /area/sulaco/bridge)
+"afr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo_arrow,
+/area/sulaco/bridge)
+"afs" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plate,
+/area/sulaco/bridge)
+"aft" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/warnwhite,
+/area/sulaco/cryosleep)
+"afu" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/plating,
+/area/sulaco/disposal)
 "afU" = (
 /obj/structure/sign/prop3,
 /turf/closed/wall/almayer,
@@ -2057,11 +2102,6 @@
 	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/engineering)
-"anY" = (
-/obj/structure/machinery/pipedispenser/disposal,
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating,
-/area/sulaco/disposal)
 "aoU" = (
 /obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer/blue/east,
@@ -3504,8 +3544,8 @@
 	dir = 1;
 	layer = 2.9
 	},
-/obj/structure/closet/secure_closet/military_police,
-/turf/open/floor/almayer/redfull,
+/obj/structure/machinery/vending/security,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/brig)
 "cqP" = (
 /obj/structure/machinery/portable_atmospherics/canister/nitrogen,
@@ -3756,8 +3796,8 @@
 	dir = 1;
 	layer = 2.9
 	},
-/obj/structure/closet/secure_closet/military_police,
-/turf/open/floor/almayer/sterile,
+/obj/structure/machinery/vending/security,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/brig)
 "cNx" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/tl{
@@ -4823,16 +4863,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall)
-"dUC" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/military_police,
-/turf/open/floor/almayer/redfull,
-/area/sulaco/brig)
 "dUR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -6910,8 +6940,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/military_police,
-/turf/open/floor/almayer/sterile,
+/obj/structure/machinery/cm_vending/clothing/military_police,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/brig)
 "gBO" = (
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
@@ -7280,10 +7310,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine)
-"hcM" = (
-/obj/effect/landmark/start/engineering,
-/turf/open/floor/plating,
-/area/sulaco/disposal)
 "hcU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -9545,12 +9571,6 @@
 "jXQ" = (
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay/surgery_two)
-"jYp" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/disposal)
 "jZx" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -9814,10 +9834,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/brig)
-"kvc" = (
-/obj/item/clothing/head/ushanka,
-/turf/open/floor/plating,
-/area/sulaco/disposal)
 "kvn" = (
 /turf/open/floor/almayer,
 /area/sulaco/marine/delta)
@@ -10882,7 +10898,7 @@
 	name = "\improper Synthetic Storage";
 	req_one_access = list(36)
 	},
-/turf/open/floor/almayer/silverfull,
+/turf/open/floor/almayer/test_floor4,
 /area/sulaco/bridge)
 "lPY" = (
 /obj/structure/pipes/vents/scrubber{
@@ -10944,9 +10960,6 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/bridge)
-"lSS" = (
-/turf/closed/wall/almayer/white/hull,
-/area/sulaco/medbay/surgery_two)
 "lSX" = (
 /obj/structure/machinery/cm_vending/gear/leader{
 	density = 0;
@@ -11254,13 +11267,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/sulaco/engineering/atmos)
-"mhp" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/closet/crate,
-/turf/open/floor/plating,
-/area/sulaco/disposal)
 "mhM" = (
 /turf/open/floor/plating,
 /area/sulaco/bridge/quarters)
@@ -11682,8 +11688,8 @@
 /turf/open/floor/almayer/orange/north,
 /area/sulaco/maintenance/lower_maint)
 "mOP" = (
-/obj/structure/closet/secure_closet/warrant_officer,
-/turf/open/floor/almayer/redfull,
+/obj/structure/machinery/cm_vending/clothing/military_police_warden,
+/turf/open/floor/almayer/cargo,
 /area/sulaco/brig)
 "mPl" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -15345,8 +15351,12 @@
 	dir = 1;
 	layer = 2.9
 	},
-/obj/structure/closet/secure_closet/military_police,
-/turf/open/floor/almayer/sterile,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_access = null;
+	req_access_txt = 19;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/cargo,
 /area/sulaco/brig)
 "rWY" = (
 /obj/structure/surface/rack,
@@ -15754,16 +15764,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay/surgery_one)
-"sJH" = (
-/obj/structure/prop/invuln{
-	desc = "Floating cells are reserved for highly dangerous criminals. Whoever is out there is probably best left out there.";
-	icon = 'icons/obj/structures/doors/maintdoor.dmi';
-	icon_state = "door_closed";
-	layer = 2.5;
-	name = "cell door"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/sulaco/disposal)
 "sKv" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -26485,7 +26485,7 @@ vwm
 aav
 tmw
 dWU
-wFC
+aas
 abe
 iKU
 iKU
@@ -34942,7 +34942,7 @@ bRf
 bRf
 aeR
 aeN
-tfs
+afr
 lPu
 lyA
 bWA
@@ -35013,9 +35013,9 @@ bRf
 bRf
 bRf
 bRf
-aeS
+aeR
 afq
-tfs
+afs
 imN
 nQQ
 mjR
@@ -35158,7 +35158,7 @@ aLL
 aLL
 aLL
 aLL
-lSS
+aLL
 sOM
 sOM
 sOM
@@ -36786,7 +36786,7 @@ ixV
 oFs
 mOP
 tNu
-dUC
+gBD
 abn
 tNu
 jAt
@@ -38953,7 +38953,7 @@ xQM
 eUQ
 rWf
 iUI
-eWV
+aft
 eUQ
 sos
 pjA
@@ -41789,8 +41789,8 @@ uGX
 uGX
 ckn
 pHk
-pHk
-pHk
+ihi
+ihi
 ihi
 ihi
 eLQ
@@ -41861,11 +41861,11 @@ uGX
 uGX
 uGX
 ckn
-sJH
-kvc
 pHk
-anY
-jYp
+mwC
+mwC
+mwC
+mwC
 vDO
 kFv
 gSK
@@ -41935,10 +41935,10 @@ uGX
 uGX
 ckn
 pHk
-pHk
-pHk
-mhp
-hcM
+afu
+mwC
+mwC
+mwC
 vDO
 mwC
 bTH
@@ -42476,7 +42476,7 @@ uga
 rAA
 rtf
 dPJ
-xEd
+abd
 tNB
 ipj
 xDV
@@ -42622,7 +42622,7 @@ rUq
 dFd
 dPJ
 xEd
-jrE
+utt
 tNB
 hUR
 qRC
@@ -42695,7 +42695,7 @@ adF
 adF
 bwu
 hlm
-utt
+abV
 tNB
 bYE
 bYE

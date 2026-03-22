@@ -11,7 +11,7 @@
 	new_human.nutrition = NUTRITION_VERYLOW
 
 /datum/equipment_preset/unsc/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(75;MALE,25;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))

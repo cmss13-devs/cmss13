@@ -118,6 +118,10 @@
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"
 
+#define DROPSHIP_PELICAN_ECHO "dropship_pelican_echo" // Alamo Equivalent
+#define DROPSHIP_PELICAN_SIERRA "dropship_pelican_sierra" // Normandy Equivalent
+#define DROPSHIP_PELICAN_WHISKEY "dropship_pelican_whiskey" // Saipan Equivalent
+
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 

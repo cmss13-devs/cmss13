@@ -205,10 +205,10 @@
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
-	width = 11
-	height = 21
-	dwidth = 5
-	dheight = 10
+	height = 25
+	width = 21
+	dheight = 12
+	dwidth = 10
 
 	var/list/landing_lights = list()
 	var/auto_open = FALSE

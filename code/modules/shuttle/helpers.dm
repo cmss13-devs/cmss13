@@ -156,6 +156,13 @@
 		if(istype(blocking_obj, /obj/effect/alien/weeds))
 			continue // No need to push
 
+		if(istype(blocking_obj, /obj/structure/shuttle))
+			continue // don't push shuttle parts out of the shuttle.
+		if(istype(blocking_obj, /obj/effect/roof_node))
+			continue // don't push pelican roof nodes out of the shuttle.
+		if(istype(blocking_obj, /obj/structure/roof))
+			continue // don't push roofs out of the shuttle..
+
 		// Skip anything that'd just get crushed instead
 		if(istype(door, /obj/structure/machinery/door/airlock))
 			if(is_type_in_list(blocking_obj, door:resin_smushables)) // Done with : because of https://www.byond.com/forum/post/2954294

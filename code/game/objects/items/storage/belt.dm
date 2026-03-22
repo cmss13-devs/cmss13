@@ -171,8 +171,12 @@
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	icon = 'icons/halo/obj/items/clothing/belts/belts_by_faction/belt_unsc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/halo/mob/humans/onmob/clothing/belts/belts_by_faction/belt_unsc.dmi'
+	)
 	icon_state = "medicalbelt"
-	item_state = "medical"
+	item_state = "medicalbelt"
 	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
@@ -240,9 +244,10 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag"
 	item_state = "medicbag"
-	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+	icon = 'icons/halo/obj/items/clothing/belts/belts_by_faction/belt_unsc.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/halo/mob/humans/onmob/clothing/belts/belts_by_faction/belt_unsc.dmi'
 	)
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
 	max_storage_space = 42
@@ -261,8 +266,8 @@
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
 	)
-	flags_atom = FPRINT // has gamemode skin
 
+/*
 /obj/item/storage/belt/medical/lifesaver/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
@@ -281,7 +286,7 @@
 		if("urban")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
-
+*/
 /obj/item/storage/belt/medical/lifesaver/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)

@@ -336,10 +336,14 @@
 			// halo guns unsc
 			if("gun_ma5c")
 				sound = pick('sound/weapons/halo/gun_ma5c_1.ogg','sound/weapons/halo/gun_ma5c_2.ogg','sound/weapons/halo/gun_ma5c_3.ogg')
+			if("gun_ma5b")
+				sound = pick('sound/weapons/halo/ma5b/gun_ma5b_full_1.ogg', 'sound/weapons/halo/ma5b/gun_ma5b_full_2.ogg')
 			if("gun_m6c")
 				sound = pick('sound/weapons/halo/gun_m6c_1.ogg','sound/weapons/halo/gun_m6c_2.ogg','sound/weapons/halo/gun_m6c_3.ogg', 'sound/weapons/halo/gun_m6c_4.ogg')
 			if("gun_m6g")
 				sound = pick('sound/weapons/halo/gun_m6g_1.ogg','sound/weapons/halo/gun_m6g_2.ogg','sound/weapons/halo/gun_m6g_3.ogg','sound/weapons/halo/gun_m6g_4.ogg')
+			if("gun_m6d")
+				sound = pick('sound/weapons/halo/m6d/gun_m6d_1.ogg', 'sound/weapons/halo/m6d/gun_m6d_2.ogg', 'sound/weapons/halo/m6d/gun_m6d_3.ogg' ,'sound/weapons/halo/m6d/gun_m6d_4.ogg' ,'sound/weapons/halo/m6d/gun_m6d_5.ogg')
 			if("gun_srs99")
 				sound = pick('sound/weapons/halo/gun_srs99_1.ogg','sound/weapons/halo/gun_srs99_2.ogg','sound/weapons/halo/gun_srs99_3.ogg','sound/weapons/halo/gun_srs99_4.ogg')
 			if("gun_br55")
@@ -373,6 +377,9 @@
 			if("gun_plasma_overcharge")
 				sound = pick('sound/weapons/halo/plasma_pistol_overcharge/overcharge_fire_1.ogg', 'sound/weapons/halo/plasma_pistol_overcharge/overcharge_fire_2.ogg', 'sound/weapons/halo/plasma_pistol_overcharge/overcharge_fire_3.ogg')
 
+			//halo dryfire
+			if("ma5b_dryfire")
+				sound = pick('sound/weapons/halo/ma5b/ma5b_dryfire_1.ogg', 'sound/weapons/halo/ma5b/ma5b_dryfire_2.ogg', 'sound/weapons/halo/ma5b/ma5b_dryfire_3.ogg')
 
 			// Xeno
 			if("acid_hit")

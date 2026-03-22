@@ -486,6 +486,7 @@
 /obj/structure/dropship_equipment/fuel
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
+	density = FALSE
 
 
 /obj/structure/dropship_equipment/fuel/update_equipment()
@@ -874,6 +875,7 @@
 	point_cost = 200
 	fire_mission_only = FALSE
 	shorthand = "LCH"
+	density = FALSE
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
 	if(ship_base)
@@ -898,6 +900,7 @@
 	var/busy_winch
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
+	density = FALSE
 
 /obj/structure/dropship_equipment/medevac_system/upp
 	name = "\improper RMU-4M Medevac System UPP"
@@ -1196,6 +1199,7 @@
 	var/busy_winch
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
+	density = FALSE
 
 /obj/structure/dropship_equipment/fulton_system/upp
 	name = "\improper UPP RMU-19 Fulton Recovery System"
@@ -1373,6 +1377,7 @@
 	icon_state = "rappel_module_packaged"
 	point_cost = 50
 	combat_equipment = FALSE
+	density = FALSE
 	var/system_cooldown
 
 /obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)

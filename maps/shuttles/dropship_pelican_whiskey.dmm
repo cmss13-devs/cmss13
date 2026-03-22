@@ -1,0 +1,1157 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bs" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.1135;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	layer = 4.113;
+	buckling_y = 6;
+	non_north_layer = 4.113
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"bw" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.1155;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	layer = 4.115;
+	buckling_y = 6;
+	non_north_layer = 4.115
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"cw" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "7,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"dn" = (
+/obj/structure/platform/pelican{
+	pixel_x = -4
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 4
+	},
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Pelican Whiskey-194 Telephone";
+	phone_category = "Pelican";
+	phone_id = "Whiskey-194";
+	pixel_x = 16
+	},
+/turf/open/shuttle/pelican/directional/south,
+/area/shuttle/pelican/whiskey)
+"hq" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "8,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"iv" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "12,5";
+	opacity = 0
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"jc" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "9,2"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"jf" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "9,5"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"kf" = (
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.1155;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	layer = 4.115;
+	buckling_y = 6;
+	non_north_layer = 4.115
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"le" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.1135;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	layer = 4.113;
+	buckling_y = 6;
+	non_north_layer = 4.113
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"lf" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "4,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"lB" = (
+/obj/effect/roof_node/pelican,
+/obj/effect/attach_point/crew_weapon/dropship2/floor{
+	attach_id = 7
+	},
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/whiskey)
+"nz" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "10,5";
+	opacity = 0
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "10,6";
+	opacity = 0;
+	pixel_x = 32
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"ol" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "10,2";
+	opacity = 0
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "10,1";
+	opacity = 0;
+	pixel_x = -32
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"pe" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "3,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"qa" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "4,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"uR" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.1125;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	layer = 4.112;
+	buckling_y = 6;
+	non_north_layer = 4.112
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/obj/effect/attach_point/fuel/pelican_whiskey{
+	pixel_x = 13;
+	pixel_y = 13
+	},
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"xl" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "6,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"BE" = (
+/obj/effect/roof_node/pelican,
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,3";
+	pixel_y = -32;
+	opacity = 0
+	},
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/whiskey)
+"CR" = (
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "11,3";
+	opacity = 0
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/pelican{
+	pixel_y = 2;
+	density = 1
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 8
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "11,2";
+	opacity = 0;
+	pixel_x = -32
+	},
+/turf/open/shuttle/pelican/paneling/sideways,
+/area/shuttle/pelican/whiskey)
+"Do" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "3,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"DH" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "5,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"Ed" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.1145;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	layer = 4.114;
+	buckling_y = 6;
+	non_north_layer = 4.114
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"Fw" = (
+/obj/structure/bed/chair/dropship/pelican/east{
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 2;
+	north_layer = 4.55;
+	layer = 4.65;
+	buckling_y = 5;
+	buckling_x = 2
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 8
+	},
+/obj/structure/machinery/computer/dropship_weapons/pelican/whiskey{
+	pixel_x = -2;
+	pixel_y = -3;
+	layer = 4.5
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_three{
+	dir = 4;
+	pixel_x = -16;
+	alpha = 0
+	},
+/turf/open/shuttle/pelican/cockpit_seat,
+/area/shuttle/pelican/whiskey)
+"Gd" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "5,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"Gk" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "2,1"
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,1";
+	pixel_y = -32;
+	opacity = 0
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"Ir" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "9,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"IF" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "6,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"II" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "12,4";
+	opacity = 0
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"Ju" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "2,6"
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,6";
+	pixel_y = -32;
+	opacity = 0
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"Kc" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.11;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	buckling_y = 6
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"KU" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "7,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"ME" = (
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "11,4";
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_x = -17;
+	pixel_y = 4;
+	dir = 1;
+	north_layer = 4.1;
+	layer = 4.1;
+	buckling_x = -17;
+	buckling_y = 5
+	},
+/obj/structure/prop/pelican_holotank{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall/directional{
+	dir = 1
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "11,5";
+	opacity = 0;
+	pixel_x = 32
+	},
+/turf/open/shuttle/pelican/paneling/sideways,
+/area/shuttle/pelican/whiskey)
+"Ne" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "9,3"
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican,
+/area/shuttle/pelican/whiskey)
+"NA" = (
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/whiskey)
+"NZ" = (
+/obj/effect/roof_node/pelican,
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,3";
+	pixel_y = -32;
+	opacity = 0
+	},
+/obj/structure/roof/pelican_roof,
+/turf/open/shuttle/pelican/paneling/right,
+/area/shuttle/pelican/whiskey)
+"Ox" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.1145;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	layer = 4.114;
+	buckling_y = 6;
+	non_north_layer = 4.114
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"OK" = (
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.11;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	buckling_y = 6
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"Pw" = (
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/paneling/right,
+/area/shuttle/pelican/whiskey)
+"Qa" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.1115;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	layer = 4.111;
+	buckling_y = 6;
+	non_north_layer = 4.111
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"Tb" = (
+/obj/effect/roof_node/pelican,
+/obj/docking_port/mobile/marine_dropship/pelican/whiskey,
+/turf/open/shuttle/pelican/paneling/right,
+/area/shuttle/pelican/whiskey)
+"Tl" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "2,5";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,5";
+	pixel_y = -32;
+	opacity = 0
+	},
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"UY" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "9,1"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"UZ" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_e";
+	layer = 4.1115;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/west{
+	pixel_y = 6;
+	layer = 4.111;
+	buckling_y = 6;
+	non_north_layer = 4.111
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothe";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/turf/open/shuttle/pelican/directional/west,
+/area/shuttle/pelican/whiskey)
+"Vj" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "2,2";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "1,2";
+	pixel_y = -32;
+	opacity = 0
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/pelican/whiskey,
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+"XR" = (
+/obj/structure/shuttle/part/pelican{
+	icon_state = "8,6"
+	},
+/turf/template_noop,
+/area/shuttle/pelican/whiskey)
+"XS" = (
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "9,4";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/machinery/door/airlock/hatch/unsc/pelican/cockpit/whiskey,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/pelican/paneling/smooth,
+/area/shuttle/pelican/whiskey)
+"Yl" = (
+/obj/structure/gun_rack/halo/medkit{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/obj/effect/roof_node/pelican,
+/obj/effect/attach_point/crew_weapon/dropship2/floor{
+	attach_id = 7
+	},
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/whiskey)
+"Zo" = (
+/turf/template_noop,
+/area/template_noop)
+"ZD" = (
+/obj/structure/shuttle/part/pelican/directional_density{
+	icon_state = "seatslot_w";
+	layer = 4.1125;
+	opacity = 0
+	},
+/obj/structure/bed/chair/dropship/pelican/east{
+	pixel_y = 6;
+	layer = 4.112;
+	buckling_y = 6;
+	non_north_layer = 4.112
+	},
+/obj/structure/shuttle/part/pelican/no_dense{
+	icon_state = "wsmoothw";
+	opacity = 0
+	},
+/obj/effect/roof_node/pelican,
+/obj/structure/machinery/camera/autoname/almayer/dropship_three{
+	dir = 4;
+	pixel_x = -16;
+	alpha = 0
+	},
+/obj/effect/attach_point/fuel/pelican_whiskey{
+	pixel_x = -45;
+	pixel_y = 13
+	},
+/turf/open/shuttle/pelican/directional/east,
+/area/shuttle/pelican/whiskey)
+
+(1,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(2,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(3,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(4,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(5,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(6,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(7,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(8,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+UY
+hq
+cw
+xl
+DH
+lf
+Do
+Gk
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(9,1,1) = {"
+Zo
+Zo
+Zo
+ol
+jc
+Kc
+Qa
+ZD
+le
+Ox
+kf
+Vj
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(10,1,1) = {"
+Zo
+II
+CR
+Fw
+Ne
+Yl
+NA
+lB
+NA
+lB
+NA
+BE
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(11,1,1) = {"
+Zo
+iv
+ME
+dn
+XS
+Pw
+Pw
+Tb
+Pw
+Pw
+Pw
+NZ
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(12,1,1) = {"
+Zo
+Zo
+Zo
+nz
+jf
+OK
+UZ
+uR
+bs
+Ed
+bw
+Tl
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(13,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Ir
+XR
+KU
+IF
+Gd
+qa
+pe
+Ju
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(14,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(15,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(16,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(17,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(18,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(19,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(20,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}
+(21,1,1) = {"
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+"}

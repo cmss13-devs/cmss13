@@ -1774,7 +1774,9 @@
 /turf/open/floor/almayer/cargo,
 /area/sulaco/bridge)
 "aeS" = (
-/turf/open/space/basic,
+/obj/structure/surface/rack,
+/obj/item/device/assembly/voice,
+/turf/open/floor/almayer/orange/southwest,
 /area/sulaco/maintenance/lower_maint)
 "aeT" = (
 /obj/structure/machinery/light/small{
@@ -1992,16 +1994,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/cargo)
 "afv" = (
-/obj/structure/window/framed/almayer,
-/turf/open/space/basic,
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13;
+	dir = 1
+	},
+/turf/open/floor/almayer/cargo,
 /area/sulaco/maintenance/lower_maint)
-"afw" = (
-/turf/closed/wall/almayer,
-/area/space)
-"afx" = (
-/obj/structure/window/framed/almayer,
-/turf/open/space/basic,
-/area/space)
 "afy" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -8;
@@ -2552,9 +2551,198 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/plate,
 /area/sulaco/cargo)
+"agZ" = (
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/turf/open/floor/almayer/orangefull,
+/area/sulaco/maintenance/lower_maint)
+"aha" = (
+/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/orangefull,
+/area/sulaco/maintenance/lower_maint)
+"ahb" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer/orangefull,
+/area/sulaco/maintenance/lower_maint)
+"ahc" = (
+/turf/open/floor/almayer/orangecorner/west,
+/area/sulaco/maintenance/lower_maint)
+"ahd" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer,
+/area/sulaco/maintenance/lower_maint)
+"ahe" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer,
+/area/sulaco/maintenance/lower_maint)
+"ahf" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Flight Crew Cryobay"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/maintenance/lower_maint)
+"ahg" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "flightcryo";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/sulaco/maintenance/lower_maint)
+"ahh" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/vehicle_crew,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/orangecorner/east,
+/area/sulaco/maintenance/lower_maint)
+"ahi" = (
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/almayer/orange/north,
+/area/sulaco/maintenance/lower_maint)
+"ahj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/orange/north,
+/area/sulaco/maintenance/lower_maint)
 "ahk" = (
 /turf/open/floor/almayer,
 /area/sulaco/marine/bravo)
+"ahl" = (
+/obj/structure/machinery/door_control{
+	id = "flightcryo";
+	name = "Privacy Shutters";
+	pixel_x = -22;
+	pixel_y = 10;
+	req_access_txt = "19"
+	},
+/turf/open/floor/almayer/cargo_arrow,
+/area/sulaco/maintenance/lower_maint)
+"ahm" = (
+/obj/structure/stairs/perspective{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/maintenance/lower_maint)
+"ahn" = (
+/obj/effect/landmark/start/pilot/dropship_pilot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/maintenance/lower_maint)
+"aho" = (
+/obj/structure/broken_apc{
+	opacity = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahq" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahr" = (
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew,
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahs" = (
+/obj/structure/platform{
+	layer = 2.9
+	},
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13;
+	dir = 1
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/maintenance/lower_maint)
+"aht" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahu" = (
+/obj/effect/landmark/start/pilot/cas_pilot,
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/maintenance/lower_maint)
+"ahv" = (
+/obj/structure/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/maintenance/lower_maint)
+"ahw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/maintenance/lower_maint)
+"ahx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
+"ahy" = (
+/obj/effect/landmark/start/crew_chief,
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/maintenance/lower_maint)
+"ahz" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13;
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/maintenance/lower_maint)
+"ahA" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/maintenance/lower_maint)
+"ahB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/plate,
+/area/sulaco/maintenance/lower_maint)
 "ahP" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -27456,15 +27644,15 @@ uVi
 uVi
 uVi
 uVi
-uGX
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -27531,13 +27719,13 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -27600,26 +27788,26 @@ uVi
 uVi
 uVi
 uVi
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
-afw
 uVi
-aeS
-aeS
-aeS
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uGX
+uGX
+uGX
+uGX
+uGX
+nIt
+tuI
+tuI
+qgP
 ejq
 tQB
 lvc
@@ -27682,17 +27870,17 @@ uVi
 uVi
 uVi
 uVi
-afw
 uVi
 uVi
-uVi
-uVi
-afw
-afw
-afw
-afw
-qgP
-qgP
+uGX
+uGX
+uGX
+uGX
+uGX
+nIt
+uGX
+tuI
+agZ
 qZp
 sXm
 tWg
@@ -27709,8 +27897,8 @@ adK
 ads
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uVi
 uVi
 uVi
@@ -27755,17 +27943,17 @@ uVi
 uVi
 uVi
 uVi
-afx
 uVi
 uVi
-uVi
-aeS
-qgP
-aeS
-aeS
-aeS
-aeS
-qgP
+uGX
+uGX
+tuI
+tuI
+tuI
+tuI
+tuI
+tuI
+aha
 leA
 tQB
 fHX
@@ -27782,8 +27970,8 @@ adL
 ooU
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -27830,15 +28018,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-aeS
-aeS
-aeS
-aeS
-aeS
-aeS
-qgP
+uGX
+uGX
+tuI
+ahA
+ahw
+ahs
+ahl
+ahf
+jCE
 hvE
 nfP
 lGu
@@ -27855,8 +28043,8 @@ adL
 ooU
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -27901,17 +28089,17 @@ uVi
 uVi
 uVi
 uVi
-afx
 uVi
 uVi
-uVi
-aeS
+uGX
+uGX
+tuI
+ahB
+ahx
+aht
+ahm
 qgP
-aeS
-aeS
-aeS
-aeS
-aeS
+aFO
 dLh
 hcU
 aet
@@ -27928,8 +28116,8 @@ adL
 adD
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -27974,17 +28162,17 @@ uVi
 uVi
 uVi
 uVi
-afw
-afx
 uVi
-afx
-qgP
-qgP
-aeS
-aeS
-aeS
-aeS
-qgP
+uVi
+uGX
+uGX
+tuI
+ahy
+ahy
+ahu
+ahn
+ahg
+ahb
 tQB
 jCE
 lGu
@@ -28001,8 +28189,8 @@ adL
 ooU
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28049,15 +28237,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
+uGX
+uGX
+tuI
+ahv
+ahz
+ahv
+afv
 qgP
-qgP
-afv
-afv
-afv
-afv
-qgP
+agZ
 tQB
 eqf
 lGu
@@ -28074,8 +28262,8 @@ adL
 adG
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28122,15 +28310,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-afv
-aeS
-aeS
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+tuI
+tuI
+tuI
+tuI
+tuI
+tuI
+tuI
 qCG
 qgP
 kpi
@@ -28147,8 +28335,8 @@ adM
 adH
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28195,14 +28383,14 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-afx
-uVi
-uVi
-uVi
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+nIt
+tuI
+tuI
 aeS
 sXm
 xHg
@@ -28220,8 +28408,8 @@ ooU
 adI
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28268,15 +28456,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+tuI
+ahh
+ahc
 nsP
 jCE
 ydT
@@ -28293,8 +28481,8 @@ tuI
 tuI
 tuI
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28341,15 +28529,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-afw
-uVi
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+aho
+ahi
+ahd
 xip
 yiz
 dcQ
@@ -28366,8 +28554,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28414,15 +28602,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+ahp
+glz
+ahe
 geg
 tvw
 quZ
@@ -28439,8 +28627,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28487,15 +28675,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-afx
-uVi
-uVi
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+ahq
+qZp
+ooU
 kJz
 qgP
 enz
@@ -28512,8 +28700,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28560,15 +28748,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-afx
-uVi
-uVi
-aeS
-aeS
-aeS
-aeS
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+lGu
+ahj
+ooU
 gll
 qgP
 pLY
@@ -28585,8 +28773,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28633,15 +28821,15 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-afw
-afw
-afw
-qgP
-qgP
-qgP
-qgP
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+ahp
+qZp
+ooU
 gLf
 eql
 scZ
@@ -28658,8 +28846,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28695,26 +28883,26 @@ uVi
 uVi
 uVi
 uVi
-afx
-afx
-uVi
-afx
-afw
-afx
-afx
-uVi
-afx
-afw
-afw
-afw
-afw
-afw
 uVi
 uVi
-aeS
-aeS
-aeS
-aeS
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uGX
+uGX
+uGX
+uGX
+uGX
+tuI
+ahr
+qZp
+ooU
 kSQ
 uLB
 wUh
@@ -28731,8 +28919,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28772,13 +28960,13 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28804,8 +28992,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28845,13 +29033,13 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28877,8 +29065,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28918,13 +29106,13 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28950,8 +29138,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -28991,13 +29179,13 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -29023,8 +29211,8 @@ uGX
 uGX
 uGX
 uGX
-uGX
-uGX
+uVi
+uVi
 uGX
 uGX
 uGX
@@ -29142,35 +29330,35 @@ uVi
 uVi
 uVi
 uVi
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
+uVi
 uGX
 uGX
 uGX

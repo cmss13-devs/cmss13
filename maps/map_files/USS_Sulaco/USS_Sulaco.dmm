@@ -2001,6 +2001,26 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/sulaco/maintenance/lower_maint)
+"afw" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/research)
+"afx" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	id = "researchdoorint";
+	id_tag = "researchdoorint";
+	name = "\improper Medical Research Wing";
+	req_access_txt = "28";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
+/turf/open/floor/almayer/test_floor4,
+/area/sulaco/medbay/chemistry)
 "afy" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -8;
@@ -2743,12 +2763,265 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/sulaco/maintenance/lower_maint)
+"ahC" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "Pod Door";
+	unacidable = 1;
+	explo_proof = 1;
+	emp_proof = 1;
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahD" = (
+/obj/structure/sign/safety/zero_g{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"ahE" = (
+/turf/closed/wall/almayer,
+/area/space)
+"ahF" = (
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"ahG" = (
+/obj/docking_port/stationary/emergency_response/port2{
+	name = "Sulaco upper deck port landing pad"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/space)
+"ahH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"ahI" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/space)
+"ahJ" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/almayer/red/southeast,
+/area/space)
+"ahK" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/space)
+"ahL" = (
+/turf/open/floor/almayer/redcorner,
+/area/space)
+"ahM" = (
+/obj/structure/closet/secure_closet/injection{
+	req_access_txt = "1"
+	},
+/obj/item/storage/bible{
+	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
+	name = "Holy Bible"
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/almayer/redfull,
+/area/space)
+"ahN" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahO" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
 "ahP" = (
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/sulaco/hallway/central_hall)
+"ahQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating,
+/area/space)
+"ahR" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer/test_floor4,
+/area/space)
+"ahS" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahT" = (
+/obj/structure/largecrate/random,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahU" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahV" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating,
+/area/space)
+"ahW" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
+"ahX" = (
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/plating,
+/area/space)
+"ahY" = (
+/turf/open/floor/plating,
+/area/space)
+"ahZ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/space)
+"aia" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/space)
+"aib" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"aic" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/space)
+"aid" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"aie" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"aif" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer,
+/area/space)
+"aig" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/space)
+"aih" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/outer,
+/area/space)
+"aii" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating,
+/area/space)
+"aij" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"aik" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/turf/open/floor/plating,
+/area/space)
+"ail" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/space)
+"aim" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating,
+/area/space)
+"ain" = (
+/obj/structure/terminal{
+	dir = 4
+	},
+/obj/structure/machinery/power/monitor,
+/turf/open/floor/plating,
+/area/space)
+"aio" = (
+/obj/structure/machinery/power/smes/buildable{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
+"aip" = (
+/obj/effect/landmark/yautja_teleport,
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/plating,
+/area/space)
 "ajJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -12249,15 +12522,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	id = "researchdoorint";
-	id_tag = "researchdoorint";
-	name = "\improper Medical Research Wing";
-	req_access_txt = "28";
-	req_one_access = null
-	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/medbay/chemistry)
 "noB" = (
@@ -16804,15 +17070,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	id = "researchdoorint";
-	id_tag = "researchdoorint";
-	name = "\improper Medical Research Wing";
-	req_access_txt = "28";
-	req_one_access = null
-	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/research)
 "tSL" = (
@@ -22989,7 +23248,7 @@ eVX
 oMS
 lTk
 wwP
-qBL
+afw
 dGI
 rZf
 rZU
@@ -23646,7 +23905,7 @@ cmr
 boK
 aad
 uhg
-nnO
+afx
 rzN
 kQZ
 kQZ
@@ -44453,23 +44712,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+aii
+aia
+ahQ
+ahW
+ahQ
+ahQ
+ahS
+ahQ
+ahO
+ahE
+ahE
+ahL
+ahJ
+ahH
+ahF
+ahD
+xrX
 uVi
 uVi
 uVi
@@ -44526,23 +44785,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+aij
+aib
+ahY
+ahX
+ahV
+ahU
+ahT
+ahQ
+ahQ
+ahN
+ahE
+ahM
+ahE
+ahE
+ahE
+ahE
+xrX
 uVi
 uVi
 uVi
@@ -44599,23 +44858,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+ahQ
+aic
+ahZ
+ahE
+ahE
+ahE
+ahE
+ahR
+ahE
+ahE
+ahE
+ahE
+ahE
+ahE
+ahE
+ahE
+xrX
 uVi
 uVi
 uVi
@@ -44672,23 +44931,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+ahY
+aid
+ahE
+ahI
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahI
+aeE
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -44745,23 +45004,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+aik
+aid
+ahE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahG
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -44818,23 +45077,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+ahY
+aie
+ahE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -44891,23 +45150,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+ail
+aif
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -44964,23 +45223,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+ahY
+aif
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -45037,23 +45296,23 @@ uVi
 uVi
 uVi
 uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
-uVi
+aim
+aif
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uVi
 uVi
 uVi
@@ -45110,23 +45369,23 @@ uVi
 uGX
 uGX
 uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+ahY
+aig
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uGX
 uGX
 uGX
@@ -45183,23 +45442,23 @@ uVi
 uGX
 uGX
 uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+ain
+aif
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+aeE
+ahC
 uGX
 uGX
 uGX
@@ -45256,23 +45515,23 @@ uVi
 uGX
 uGX
 uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+aio
+aih
+aeE
+aeE
+aeE
+aeE
+ahK
+aeE
+aeE
+aeE
+aeE
+aeE
+ahK
+aeE
+aeE
+aeE
+ahC
 uGX
 uGX
 uGX
@@ -45329,23 +45588,23 @@ uVi
 uGX
 uGX
 uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
-uGX
+aip
+aih
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
+xrX
 uGX
 uGX
 uGX

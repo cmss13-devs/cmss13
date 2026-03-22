@@ -19,7 +19,6 @@
 	docking_message = "Invaders! Repel them!."
 	allies = list(
 		/datum/emergency_call/yautja_mcaste,
-		/datum/emergency_call/young_bloods/six_members,
 	)
 
 /datum/spaceport/upp
@@ -30,10 +29,17 @@
 		/datum/emergency_call/joe/upp,
 	)
 
-/datum/spaceport/freelancers
+/datum/spaceport/wy
 	name = "Super Secret Illegal WY Station"
 	docking_message = "What? How did you find this place? You will not live to tell the tale."
 	allies = list(
 		/datum/emergency_call/death,
 		/datum/emergency_call/wy_commando/deathsquad,
+	)
+
+/datum/spaceport/clown
+	name = "Clown Planet"
+	docking_message = "HONK!"
+	allies = list(
+		/datum/emergency_call/clown,
 	)

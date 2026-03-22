@@ -6,7 +6,7 @@
 	mob_max = 8
 	max_medics = 2 //Support T2 castes
 	max_engineers = 3 //Combat T2 castes
-	probability = 2
+	probability = 1
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 

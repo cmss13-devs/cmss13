@@ -19,4 +19,5 @@
 	arm_equipment(H, /datum/equipment_preset/fun/clown, TRUE, TRUE)
 	to_chat(H, SPAN_ROLE_HEADER("You are a clown!"))
 	to_chat(H, SPAN_ROLE_BODY("Make everyone laugh!"))
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

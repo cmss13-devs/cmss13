@@ -70,11 +70,16 @@
 	new_human.equip_to_slot_or_del(new /obj/item/coin/clown, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/stamp/clown, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/pie, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/pie, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/bananapeel, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/chimp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/chimp, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/pierrot_throat, WEAR_IN_BACK)
 
 	new_human.equip_to_slot(new /obj/item/toy/bikehorn(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot(new /obj/item/device/flashlight(new_human), WEAR_R_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/chimp, WEAR_WAIST) //I was gonna make monkey ERT, but I guess this is good enough.
 
 	new_human.contract_disease(new /datum/disease/pierrot_throat)
 

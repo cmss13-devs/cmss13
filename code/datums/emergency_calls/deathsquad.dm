@@ -127,6 +127,7 @@
 		arm_equipment(member, member_preset, TRUE, TRUE)
 	to_chat(member, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
 	to_chat(member, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
+	to_chat(member, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	return
 
 /datum/emergency_call/marsoc/covert

@@ -6,7 +6,7 @@
 	mob_min = 10
 	arrival_message = "'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
 	objectives = "Pirate! Loot! Ransom!"
-	probability = 2
+	probability = 1
 	hostility = TRUE
 
 /datum/emergency_call/pirates/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -27,4 +27,5 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a jolly pirate! Yarr!"))
 		to_chat(H, SPAN_ROLE_BODY("Loot this place for all it's worth! Take everything of value that's not nailed down!"))
 
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

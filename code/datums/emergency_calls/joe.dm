@@ -21,6 +21,7 @@
 		arm_equipment(H, /datum/equipment_preset/synth/working_joe/engi, TRUE, TRUE)
 	to_chat(H, SPAN_ROLE_HEADER("You are a joe!"))
 	to_chat(H, SPAN_ROLE_BODY("Save the non-joes!"))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/joe/upp
@@ -44,4 +45,5 @@
 	arm_equipment(H, /datum/equipment_preset/synth/working_joe/upp/fighting, TRUE, TRUE)
 	to_chat(H, SPAN_ROLE_HEADER("You are a combat synthetic!"))
 	to_chat(H, SPAN_ROLE_BODY("Exterminate all non-UPP personell!"))
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

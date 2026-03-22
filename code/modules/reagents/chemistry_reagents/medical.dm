@@ -90,7 +90,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_ANTICORROSIVE = 2)
+	properties = list(PROPERTY_ANTICORROSIVE = 1)
 
 /datum/reagent/medical/dermaline
 	name = "Dermaline"
@@ -101,7 +101,7 @@
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_ANTICORROSIVE = 3)
+	properties = list(PROPERTY_ANTICORROSIVE = 2)
 
 /datum/reagent/medical/dexalin
 	name = "Dexalin"
@@ -282,7 +282,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_NEOGENETIC = 2)
+	properties = list(PROPERTY_NEOGENETIC = 1)
 
 /datum/reagent/medical/meralyne
 	name = "Meralyne"
@@ -293,7 +293,7 @@
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEOGENETIC = 3)
+	properties = list(PROPERTY_NEOGENETIC = 2)
 
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"

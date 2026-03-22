@@ -275,10 +275,10 @@
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!..())
 		return
-	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
-	M.hallucination = max(M.hallucination, POTENCY_MULTIPLIER_MEDIUM * effective_potency) //Hallucinations and tox damage
-	M.apply_damage(effective_potency * delta_time, TOX)
+	M.heal_limb_damage(potency, potency)
+	if(potency > CREATE_MAX_TIER_1)
+		M.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, potency * POTENCY_MULTIPLIER_LOW)
+
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, potency = 1)
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)

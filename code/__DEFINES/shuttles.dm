@@ -113,6 +113,9 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK "lifeboat-rostock"
+#define MOBILE_SHUTTLE_LIFEBOAT_SULACO_EAST "lifeboat-sulaco-east"
+#define MOBILE_SHUTTLE_LIFEBOAT_SULACO_CENTER "lifeboat-sulaco-center"
+#define MOBILE_SHUTTLE_LIFEBOAT_SULACO_WEST "lifeboat-sulaco-west"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
 #define DROPSHIP_ALAMO "dropship_alamo"

@@ -564,6 +564,7 @@
 #include "code\datums\emergency_calls\bodyguard.dm"
 #include "code\datums\emergency_calls\cbrn.dm"
 #include "code\datums\emergency_calls\clf.dm"
+#include "code\datums\emergency_calls\clown.dm"
 #include "code\datums\emergency_calls\cmb.dm"
 #include "code\datums\emergency_calls\colonist.dm"
 #include "code\datums\emergency_calls\contractor.dm"

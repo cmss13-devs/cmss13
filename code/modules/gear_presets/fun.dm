@@ -64,9 +64,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/facepaint/clown, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/card/data/clown, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/clownburger, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/coin/clown, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/stamp/clown, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/pie, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/bananapeel, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/pierrot_throat, WEAR_IN_BACK)
 
 	new_human.equip_to_slot(new /obj/item/toy/bikehorn(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot(new /obj/item/device/flashlight(new_human), WEAR_R_STORE)
+
+	new_human.contract_disease(new /datum/disease/pierrot_throat)
 
 //*****************************************************************************************************/
 

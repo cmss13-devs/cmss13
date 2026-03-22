@@ -1,28 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aaa" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/outer/internal,
-/area/mainship_crashsite)
 "aab" = (
 /obj/structure/medical_supply_link,
-/turf/closed/wall/almayer/outer/internal,
-/area/mainship_crashsite)
-"aac" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
-/turf/closed/wall/almayer/outer/internal,
-/area/mainship_crashsite)
-"aad" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/outer/internal,
-/area/mainship_crashsite)
-"aae" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
 /turf/closed/wall/almayer/outer/internal,
 /area/mainship_crashsite)
 "aak" = (
@@ -17224,7 +17202,7 @@ rlu
 aak
 eBN
 eBN
-aac
+eBN
 eBN
 eBN
 eBN
@@ -17297,7 +17275,7 @@ rlu
 aak
 eBN
 eBN
-aad
+eBN
 aab
 eBN
 eBN
@@ -17370,9 +17348,9 @@ rlu
 aak
 eBN
 eBN
-aae
-aaa
-aaa
+eBN
+eBN
+eBN
 eBN
 eBN
 eBN

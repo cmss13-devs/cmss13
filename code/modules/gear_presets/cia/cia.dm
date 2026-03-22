@@ -98,7 +98,7 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "Marine Raider Advisor (CIA Senior Agent)"
+	name = "CIA Senior Agent (Marine Raider Advisor)"
 	minimum_age = 30
 	skills = /datum/skills/cia/field_agent/senior
 	selection_categories = list(FACTION_CIA)

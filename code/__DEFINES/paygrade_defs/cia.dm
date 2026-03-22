@@ -26,17 +26,23 @@
 /// CIA-SADM, Senior Administrator
 #define PAY_SHORT_CIA_SADM "CIA-SADM"
 
-/// CIA-ACOM, Acting Commissioner
+/// CIA-ACOM, Acting Commissioner (UACQS)
 #define PAY_SHORT_CIA_ACOM "CIA-ACOM"
 
-/// CIA-COM, Commissioner
+/// CIA-COM, Commissioner (UACQS)
 #define PAY_SHORT_CIA_COM "CIA-COM"
 
-/// CIA-DG, Director General
+/// CIA-DG, Director General (UACQS)
 #define PAY_SHORT_CIA_DG "CIA-DG"
 
-/// CIA-SG, Secretary General
+/// CIA-SG, Secretary General (UACQS)
 #define PAY_SHORT_CIA_SG "CIA-SG"
+
+/// CIA-DEPDIR, Deputy Director
+#define PAY_SHORT_CIA_DEPDIR "CIA-DEPDIR"
+
+/// CIA-DIR, Director
+#define PAY_SHORT_CIA_DIR "CIA-DIR"
 
 /// GRS-OPR, Operator
 #define PAY_SHORT_GRS_OPR "GRS-OPR"

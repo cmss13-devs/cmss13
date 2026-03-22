@@ -81,6 +81,20 @@
 	officer_grade = GRADE_FLAG
 	pay_multiplier = 10
 
+/datum/paygrade/cia/deputy_director
+	paygrade = PAY_SHORT_CIA_DEPDIR
+	name = "Deputy Director"
+	prefix = "Dep. Director"
+	officer_grade = GRADE_FLAG
+	pay_multiplier = 11
+
+/datum/paygrade/cia/director
+	paygrade = PAY_SHORT_CIA_DIR
+	name = "Director"
+	prefix = "Director"
+	officer_grade = GRADE_FLAG
+	pay_multiplier = 12
+
 /datum/paygrade/cia/grs
 	fprefix = "GRS."
 	paygrade = PAY_SHORT_GRS_OPR

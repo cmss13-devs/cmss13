@@ -243,6 +243,16 @@
 "aaO" = (
 /turf/open/floor/almayer/plating,
 /area/sulaco/cargo)
+"aaP" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer,
+/area/sulaco/cargo/office)
+"aaQ" = (
+/obj/structure/machinery/recharge_station{
+	layer = 2.8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/sulaco/cargo)
 "aaR" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -1721,6 +1731,12 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/bridge)
+"aeJ" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/almayer/green,
+/area/sulaco/cargo)
 "aeK" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/almayer,
@@ -2048,6 +2064,15 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/sulaco/cargo)
+"afH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/almayer/green/east,
+/area/sulaco/cargo)
 "afI" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo,
@@ -2261,6 +2286,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
 "agp" = (
@@ -2312,6 +2338,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/greencorner/east,
 /area/sulaco/cargo)
 "agx" = (
@@ -2340,6 +2367,7 @@
 	pixel_y = 6;
 	req_access_txt = "28"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/green/east,
 /area/sulaco/cargo)
 "agB" = (
@@ -2352,6 +2380,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/green/east,
 /area/sulaco/cargo)
 "agD" = (
@@ -2384,6 +2413,9 @@
 	name = "\improper Requisition's Office";
 	req_one_access = null;
 	req_one_access_txt = "1;26"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/cargo)
@@ -2499,6 +2531,27 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/space,
 /area/space)
+"agV" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/cargo)
+"agW" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer/plate,
+/area/sulaco/cargo)
+"agX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/green/east,
+/area/sulaco/cargo)
+"agY" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/plate,
+/area/sulaco/cargo)
 "ahk" = (
 /turf/open/floor/almayer,
 /area/sulaco/marine/bravo)
@@ -16361,9 +16414,7 @@
 	icon_state = "NW-out";
 	layer = 2.5
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/sulaco/cargo)
 "tJi" = (
@@ -40340,7 +40391,7 @@ afD
 brY
 htI
 guQ
-brY
+aaP
 brY
 brY
 afC
@@ -41202,8 +41253,8 @@ uVi
 ckn
 fxl
 ckv
-agC
-agC
+agX
+afH
 agC
 agA
 agw
@@ -41349,7 +41400,7 @@ ckn
 biE
 agQ
 hjC
-agF
+agV
 agD
 lwZ
 agx
@@ -41421,8 +41472,8 @@ uGX
 ckn
 biE
 rzi
-fnZ
-fnZ
+agY
+agW
 euC
 lwZ
 fuz
@@ -41434,7 +41485,7 @@ uOc
 wYd
 xNb
 afQ
-kZa
+aaQ
 gHP
 buk
 cYD
@@ -41495,8 +41546,8 @@ ckn
 biE
 fuz
 agF
-xNb
-euC
+gVg
+aeJ
 eLQ
 agy
 dce

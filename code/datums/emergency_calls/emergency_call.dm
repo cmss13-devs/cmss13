@@ -143,7 +143,7 @@
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
 	random_call.activate()
-	var/datum/emergency_call/random_call = get_random_call()	//Double ert...
+	random_call = get_random_call()	//Double ert...
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
 	random_call.activate()

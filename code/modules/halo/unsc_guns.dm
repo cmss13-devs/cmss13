@@ -116,7 +116,7 @@
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT * 0.85
+	damage_mult = BASE_BULLET_DAMAGE_MULT * 0.55
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	recoil = RECOIL_AMOUNT_TIER_5
 	fa_scatter_peak = 60

@@ -224,6 +224,11 @@
 	/// Whether or not the sight uses on_light and produces light
 	var/visor_glows = TRUE
 
+/obj/item/device/helmet_visor/night_vision/sniper
+	name = "rechargable night vision optic"
+	desc = "Provides limited night vision when attached to a helmet and activated. Can be recharged by removing it with a screwdriver and placing it in a recharger. Approximate battery life of 20 minutes."
+	power_use = 15
+
 /obj/item/device/helmet_visor/night_vision/Initialize(mapload, ...)
 	. = ..()
 	power_cell = new(src)

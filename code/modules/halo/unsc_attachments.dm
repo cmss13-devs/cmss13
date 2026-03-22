@@ -267,7 +267,7 @@
 
 /obj/item/attachable/srs_barrel
 	name = "\improper SRS99-AM sniper rifle barrel"
-	desc = "The detachable barrel of an SRS-99AM sniper rifle featuring a large muzzle brake at the end. Essential to the operation of the rifle. It's detachable nature allows it to be swapped out with other barrels featuring alternative integrated attachments. "
+	desc = "The detachable barrel of an SRS99-AM sniper rifle featuring a large muzzle brake at the end. Essential to the operation of the rifle. It's detachable nature allows it to be swapped out with other barrels featuring alternative integrated attachments. "
 	icon = 'icons/halo/obj/items/weapons/guns_by_faction/unsc/unsc_attachments.dmi'
 	icon_state = "srs_barrel"
 	attach_icon = "srs_barrel"

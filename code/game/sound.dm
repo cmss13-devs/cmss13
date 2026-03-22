@@ -359,6 +359,9 @@
 			if("gun_socom_smg")
 				sound = pick('sound/weapons/halo/gun_silenced_smg_1.ogg', 'sound/weapons/halo/gun_silenced_smg_2.ogg')
 
+			if("gun_hog_chaingun")
+				sound = pick('sound/vehicles/halo/warthog_fire_1.ogg', 'sound/vehicles/halo/warthog_fire_2.ogg')
+
 			// halo guns cov
 			if("gun_lightplasma")
 				sound = pick('sound/weapons/halo/gun_lightplasma_1.ogg','sound/weapons/halo/gun_lightplasma_2.ogg','sound/weapons/halo/gun_lightplasma_3.ogg','sound/weapons/halo/gun_lightplasma_4.ogg','sound/weapons/halo/gun_lightplasma_5.ogg')

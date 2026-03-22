@@ -37,7 +37,7 @@
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	density = FALSE
-	layer = 4.5
+	layer = 4.1
 
 
 /obj/structure/machinery/computer/dropship_weapons/pelican/echo

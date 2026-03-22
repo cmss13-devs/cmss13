@@ -264,6 +264,7 @@
 	new /obj/item/ammo_magazine/rifle/halo/sniper(src)
 	new /obj/item/ammo_magazine/rifle/halo/sniper(src)
 	new /obj/item/ammo_magazine/rifle/halo/sniper(src)
+	new /obj/item/device/helmet_visor/night_vision/sniper(src)
 
 
 /obj/structure/magazine_box/unsc
@@ -754,6 +755,13 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/halo/mob/humans/onmob/clothing/hats/hats_by_faction/hat_unsc.dmi'
 	)
+
+/obj/item/clothing/head/helmet/marine/unsc/Initialize()
+	..()
+	var/obj/item/attachable/flashlight/light = new /obj/item/attachable/flashlight
+	light.forceMove(pockets)
+	light.attached_item = src
+	light.turn_light(toggle_on = TRUE, forced = TRUE)
 
 /obj/item/clothing/head/helmet/marine/unsc/pilot
 	name = "\improper FH252 helmet"

@@ -860,6 +860,7 @@ Defined in conflicts.dm of the #defines folder.
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 	attach_icon = "flashlight_a"
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	light_mod = 6
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)

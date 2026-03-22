@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		if(char == " " || prob(clear_char_probability))
 			output_message += char
 		else
-			output_message += "*"
+			output_message += "ඞ"
 		index++
 	return output_message
 

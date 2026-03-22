@@ -272,32 +272,32 @@
 
 /obj/item/weapon/knife/gerber
 	name ="\improper Gerber mark II"
-	desc = "A famous fighting knife used in unofficial capacity by US troops during the Vietnam war. Later variants came with saw tooth serrations and were marketed as survival knives."
+	desc = "A famed fighting knife used in unofficial capacity by US troops during the Vietnam war. Later variants came with saw tooth serrations as part of being marketed as survival knives."
 	icon_state = "gerber"
 
 /obj/item/weapon/knife/kabar
 	name ="\improper Ka-Bar"
-	desc = "A fighting knife adopted and used by US troops from World War II to the Vietnam War. Its robust and simple construction has seen it be used as for utility as much as combat, by both civilians and soldiers."
+	desc = "A fighting knife adopted and used by US troops from World War II to the Vietnam War. Its robust and simple construction has seen it be used for utility as much as combat, by both civilians and soldiers."
 	icon_state = "kabar"
 
 /obj/item/weapon/knife/tanto
 	name ="\improper Tanto"
-	desc = "A kind of knife originating from Japan and imitated by Western countries some time after World War II. It has seen many use-cases, from self-defence to seppku, from being used as a concealed weapon to being ornament."
+	desc = "A kind of knife originating from Japan and imitated by Western countries some time after World War II. It has seen many use-cases over its very long-lived existence, from self-defence to seppuku."
 	icon_state = "tanto"
 
 /obj/item/weapon/knife/bowie
 	name ="\improper Bowie knife"
-	desc = "A style of large knife named after its most famous alleged user, often being more akin to a miniature machete in length and weight. Now <B>this</B> is a knife."
+	desc = "A style of large knife named after its most famous alleged user, often more akin to a miniature machete in length and weight. Now <B>this</B> is a knife."
 	icon_state = "bowie"
 
-/obj/item/weapon/knife/baker
+/obj/item/weapon/knife/baker // I believe this is meant to be Rambo's knife from First Blood
 	name ="\improper Baker knife"
-	desc = "" // Note to self: ask for origin of this knife, I can't find it while searching
+	desc = "An iconic survival and combat knife made originally as a movie prop; as much a character as the one that wielded it, and one whose narrative purpose was as real and functional as it was appealing."
 	icon_state = "baker"
 
 /obj/item/weapon/knife/shiv
 	name ="\improper shiv"
-	desc = "A kind of improvised knife commonly made by prisoners out of whatever can be fashioned into a stabbing weapon. By shiv standards, this one is quite fancily made and most likely has not seen the inside of a prison cell."
+	desc = "A kind of improvised knife commonly made by prisoners out of whatever can be fashioned into a stabbing weapon. By shiv standards this one is quite well-made, which means it most likely has not seen the inside of a prison cell."
 	icon_state = "shiv"
 
 // Demo and example of a 64x64 weapon.
@@ -331,6 +331,7 @@
 	name = "folding knife"
 	desc = "A knife with a retracting blade. This should not be seen normally, file an issue if you see this!"
 	icon_state = "razor_closed"
+	item_state = null
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -359,8 +360,10 @@
 	var/interaction_time = 2 SECONDS
 
 /*
-// This code only half-works: holstering via hotkey causes all this to be called, but holstering by clicking on the boots doesn't
-// As I am too lazy to sort this out now (18/01/2026), commenting it out fix later and to avoid confusion when quickholstering
+// This code only half-works: holstering via hotkey causes all this to be called, but holstering by clicking on the boots doesn't.
+// Specifically, putting something in storage via spriteclick does so via attackby, which bypasses the proc that sends the registered signal.
+// As I don't feel like trying to sort this out (22/03/2026), I'm commenting this out to avoid confusion when quickholstering and for someone to fix later.
+// I should've written down specifically which procs are involved, but I forgot to after I did the tests. attempt_insert_item() and can_be_inserted() are starting points.
 
 /obj/item/weapon/folding_knife/Initialize(mapload, ...)
 	. = ..()
@@ -369,21 +372,14 @@
 
 ///Check if the item can fit as a boot knife, var/source for signals
 /obj/item/weapon/folding_knife/proc/can_fit_in_shoe(source = src, mob/user, slot)
+	SIGNAL_HANDLER
+
 	if(slot != WEAR_IN_SHOES) //Only check if you try putting it in a shoe
 		return
 	if(razor_opened)
 		to_chat(user, SPAN_NOTICE("You cannot store [src] in your shoes until the blade is hidden."))
 		return COMPONENT_CANCEL_EQUIP
 */
-
-/obj/item/weapon/folding_knife/update_icon()
-	. = ..()
-	if(razor_opened)
-		icon_state = enabled_icon
-		item_state = enabled_icon
-		return
-	icon_state = disabled_icon
-	item_state = disabled_icon
 
 /obj/item/weapon/folding_knife/unique_action(mob/user)
 	if(changing_state)
@@ -394,14 +390,15 @@
 		return
 	changing_state = FALSE
 	playsound(user, enable_disable_sound, 15, 1)
-	change_razor_state(!razor_opened)
+	change_razor_state(!razor_opened, user)
 	to_chat(user, SPAN_NOTICE("You [razor_opened ? enabled_verb : disabled_verb] [src]'s blade."))
 
 ///Changes all the vars when opening/closing the knife
-/obj/item/weapon/folding_knife/proc/change_razor_state(opening = FALSE)
+/obj/item/weapon/folding_knife/proc/change_razor_state(opening = FALSE, mob/living/carbon/human/user)
 	razor_opened = opening
-	update_icon()
 	if(opening)
+		icon_state = enabled_icon
+		item_state = enabled_icon
 		force = MELEE_FORCE_NORMAL
 		throwforce = MELEE_FORCE_NORMAL
 		sharp = IS_SHARP_ITEM_ACCURATE
@@ -412,17 +409,21 @@
 		hitsound = 'sound/weapons/slash.ogg'
 		if(!(flags_item & CAN_DIG_SHRAPNEL))
 			flags_item |= CAN_DIG_SHRAPNEL
-		return
-	force = MELEE_FORCE_TIER_1
-	throwforce = MELEE_FORCE_TIER_1
-	sharp = FALSE
-	edge = FALSE
-	w_class = SIZE_TINY
-	flags_atom = FPRINT|QUICK_DRAWABLE
-	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
-	hitsound = 'sound/weapons/genhit3.ogg'
-	if(flags_item & CAN_DIG_SHRAPNEL)
-		flags_item &= ~CAN_DIG_SHRAPNEL
+	else
+		icon_state = disabled_icon
+		item_state = null
+		force = MELEE_FORCE_TIER_1
+		throwforce = MELEE_FORCE_TIER_1
+		sharp = FALSE
+		edge = FALSE
+		w_class = SIZE_TINY
+		flags_atom = FPRINT|QUICK_DRAWABLE
+		attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
+		hitsound = 'sound/weapons/genhit3.ogg'
+		if(flags_item & CAN_DIG_SHRAPNEL)
+			flags_item &= ~CAN_DIG_SHRAPNEL
+	user.update_inv_r_hand()
+	user.update_inv_l_hand()
 
 /obj/item/weapon/folding_knife/straight_razor
 	name = "straight razor"
@@ -518,7 +519,7 @@
 		return
 	changing_state = FALSE
 	playsound(user, enable_disable_sound, 15, 1)
-	change_razor_state(!razor_opened)
+	change_razor_state(!razor_opened, user)
 	to_chat(user, SPAN_NOTICE("You [razor_opened ? enabled_verb : disabled_verb] [src]'s blade."))
 
 /obj/item/weapon/folding_knife/butterfly
@@ -538,7 +539,7 @@
 		return
 	changing_state = FALSE
 	playsound(user, enable_disable_sound, 15, 1)
-	change_razor_state(!razor_opened)
+	change_razor_state(!razor_opened, user)
 	if(razor_opened)
 		user.visible_message(SPAN_NOTICE("[user] opens [src] with a cool flourish!"), SPAN_NOTICE("You open [src] with a cool flourish!"))
 	else

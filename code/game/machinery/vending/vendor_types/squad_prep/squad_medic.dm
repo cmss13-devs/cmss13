@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 		list("Corpsman Chempack", 0, /obj/item/storage/backpack/marine/medic/chempack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Corpsman Chemsatchel", 0, /obj/item/storage/backpack/marine/satchel/medic/chemsatchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 

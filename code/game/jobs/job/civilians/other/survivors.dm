@@ -181,8 +181,12 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	total_positions = 1
 	spawn_positions = 1
 	job_options = null
+	var/min_playercount = 70
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
+	if(count < min_playercount)
+		total_positions = 0
+		spawn_positions = 0
 	return spawn_positions
 
 /datum/job/civilian/survivor/synth/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
@@ -208,11 +212,12 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	total_positions = 0
 	spawn_positions = 0
 	job_options = null
+	var/min_playercount = 70
 
-/datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+/datum/job/civilian/survivor/commanding_officer/set_spawn_positions(count)
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
-	if(length(CO_survivor_types) || length(CO_insert_survivor_types))
+	if(count > min_playercount && (length(CO_survivor_types) || length(CO_insert_survivor_types)))
 		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions

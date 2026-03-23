@@ -553,6 +553,8 @@
 	overlay_content = "_sg"
 	magazine_type = /obj/item/ammo_magazine/smartgun
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_HEAVY
+
 
 /obj/item/ammo_box/magazine/m56a2/empty
 	empty = TRUE
@@ -576,6 +578,8 @@
 	overlay_content = "_m56d"
 	magazine_type = /obj/item/ammo_magazine/m56d
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_CUMBERSOME
+
 
 /obj/item/ammo_box/magazine/m56d/update_icon()
 	if(overlays)
@@ -597,6 +601,7 @@
 	overlay_content = "_m2c"
 	magazine_type = /obj/item/ammo_magazine/m2c
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_CUMBERSOME
 
 /obj/item/ammo_box/magazine/m2c/update_icon()
 	if(overlays)
@@ -629,6 +634,7 @@
 	overlay_content = "_m41ae2"
 	magazine_type = /obj/item/ammo_magazine/rifle/lmg
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_CUMBERSOME
 
 /obj/item/ammo_box/magazine/m41ae2/empty
 	empty = TRUE
@@ -661,6 +667,7 @@
 	overlay_content = "_flamer"
 	magazine_type = /obj/item/ammo_magazine/flamer_tank
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_HEAVY
 
 /obj/item/ammo_box/magazine/flamer/empty
 	empty = TRUE
@@ -683,6 +690,7 @@
 	overlay_content = "_reg"
 	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1
 	num_of_magazines = 8
+	weight_multiplier = MAG_BOX_WEIGHT_MEDIUM
 
 /obj/item/ammo_box/magazine/mk1/empty
 	empty = TRUE
@@ -1216,6 +1224,7 @@
 	overlay_content = "_mar"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/mar40/lmg
+	weight_multiplier = MAG_BOX_WEIGHT_MEDIUM
 
 /obj/item/ammo_box/magazine/mar50/update_icon()
 	if(overlays)

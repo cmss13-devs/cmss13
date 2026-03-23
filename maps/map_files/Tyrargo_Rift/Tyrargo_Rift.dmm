@@ -1453,6 +1453,10 @@
 	icon_state = "10"
 	},
 /area/tyrargo/indoors/saipan)
+"aen" = (
+/obj/structure/machinery/cryopod/no_cryo/right,
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/engineering)
 "aeo" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "18"
@@ -22730,6 +22734,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
+"aZY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/engineering)
 "aZZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -78940,11 +78950,17 @@
 	pixel_y = 17;
 	pixel_x = -33
 	},
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/engineering)
 "dPD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/underground/engineering)
 "dPE" = (
@@ -137628,7 +137644,7 @@ dzC
 dzC
 dPY
 dzC
-dzC
+aen
 dPC
 dvf
 dvf
@@ -137812,7 +137828,7 @@ dPL
 dPL
 dPZ
 dPS
-dPL
+aZY
 dPD
 dzi
 dvf

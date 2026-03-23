@@ -48,6 +48,7 @@ Additional game mode variables.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/predators	= list()
 	var/list/joes		= list()
+	var/list/colony_joes = list()
 	var/list/fax_responders = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
@@ -277,6 +278,91 @@ Additional game mode variables.
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
 
 	return new_predator
+
+//===================================================\\
+
+			  //COLONY JOE INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_joe)
+	colony_joes[new_joe.persistent_username] = list("Name" = new_joe.real_name, "Status" = "Alive")
+
+/datum/game_mode/proc/attempt_to_join_as_colony_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_colony_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe)
+		return
+
+	msg_admin_niche("([new_joe.key]) joined as a Colony Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_colony_joe_late_join(mob/joe_candidate, show_warning = TRUE)
+	if(!joe_candidate?.client)
+		return
+
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+
+	if(!joe_job)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
+
+	if(!joe_candidate.client.check_whitelist_status(WHITELIST_SYNTHETIC) && !joe_candidate.client.check_whitelist_status(WHITELIST_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synthetic."))
+		return FALSE
+
+	if(!(flags_round_type & MODE_COLONY_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes this round! Maybe the next one."))
+		return FALSE
+
+	if(joe_candidate.key in colony_joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Colony Working Joe! Give someone else a chance."))
+		return FALSE
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(joe_job.current_positions >= joe_job.total_positions)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Only [joe_job.total_positions] Colony Working Joes may spawn this round."))
+		return FALSE
+
+	return TRUE
+
+/datum/game_mode/proc/transform_colony_joe(mob/joe_candidate)
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_colony_joe")
+		return
+
+	var/turf/spawn_point = null
+	var/datum/job/joe_job = null
+	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+	else if(get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE]))
+		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
+	else
+		log_debug("No valid colony joe spawn points!")
+		return
+
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
+
+	if(!joe_job)
+		qdel(new_joe)
+		return
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	joe_job.current_positions++
+	joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	SSticker.minds += new_joe.mind
+	return new_joe
 
 //===================================================\\
 

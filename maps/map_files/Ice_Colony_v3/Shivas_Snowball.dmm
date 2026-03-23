@@ -446,7 +446,7 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "abE" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "abF" = (
@@ -455,10 +455,6 @@
 "abG" = (
 /turf/open/shuttle/elevator,
 /area/shiva/interior/colony/research_hab)
-"abH" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/cp_camp)
 "abI" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -633,7 +629,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
 "acm" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "acn" = (
@@ -1087,7 +1083,7 @@
 "adS" = (
 /obj/structure/surface/table,
 /obj/item/clothing/gloves/black,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/yellow/northeast,
 /area/shiva/interior/colony/research_hab)
@@ -1290,7 +1286,7 @@
 /area/shiva/interior/bar)
 "aez" = (
 /obj/structure/closet/emcloset,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/research_hab)
 "aeA" = (
@@ -1531,7 +1527,7 @@
 /turf/open/floor/darkbrown2/north,
 /area/shiva/interior/valley_huts/disposals)
 "afs" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
@@ -1551,7 +1547,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "afw" = (
@@ -1591,7 +1587,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "afC" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "afD" = (
@@ -1739,7 +1735,7 @@
 /area/shiva/interior/lz2_habs)
 "age" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "agf" = (
@@ -2002,7 +1998,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
@@ -2452,7 +2448,7 @@
 "aiv" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/medseceng)
 "aix" = (
@@ -2673,7 +2669,7 @@
 "ajY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/medseceng)
 "aka" = (
@@ -2711,14 +2707,14 @@
 /area/shiva/interior/colony/medseceng)
 "aks" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "akt" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "akv" = (
@@ -2751,13 +2747,13 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "akI" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "akL" = (
@@ -2846,7 +2842,7 @@
 /area/shiva/interior/colony/medseceng)
 "alt" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "alx" = (
@@ -2854,7 +2850,7 @@
 /obj/item/stack/sheet/wood{
 	amount = 15
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "aly" = (
@@ -2971,7 +2967,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "amk" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "amn" = (
@@ -3753,7 +3749,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "asy" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "asz" = (
@@ -3804,7 +3800,7 @@
 /area/shiva/interior/valley_huts/disposals)
 "asL" = (
 /obj/item/trash/syndi_cakes,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asO" = (
@@ -3905,7 +3901,7 @@
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atF" = (
@@ -4002,7 +3998,7 @@
 /area/shiva/interior/colony/medseceng)
 "auM" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
 "auS" = (
@@ -4253,7 +4249,7 @@
 /area/shiva/interior/garage)
 "axQ" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/northwest,
 /area/shiva/interior/garage)
 "axR" = (
@@ -4450,7 +4446,7 @@
 "azg" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "azk" = (
@@ -4464,7 +4460,7 @@
 /area/shiva/interior/colony/research_hab)
 "azo" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "azp" = (
@@ -4864,7 +4860,7 @@
 /area/shiva/interior/valley_huts/no2)
 "aDF" = (
 /obj/structure/largecrate/random,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -5214,7 +5210,7 @@
 /area/shiva/interior/valley_huts/no2)
 "aJe" = (
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts)
 "aJj" = (
@@ -5627,7 +5623,7 @@
 /area/shiva/interior/bar)
 "aOv" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_y = 24
@@ -6757,7 +6753,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "bnD" = (
@@ -6954,7 +6950,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/cp_colony_grounds)
 "bzK" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/lz1_valley)
 "bzZ" = (
@@ -7895,7 +7891,7 @@
 /area/shiva/interior/caves/s_lz2)
 "cLi" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
@@ -8626,7 +8622,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "dIE" = (
@@ -8926,10 +8922,6 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/shiva/exterior/cp_colony_grounds)
-"eep" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/shiva/wredfull,
-/area/shiva/interior/colony/medseceng)
 "efD" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/auto_turf/snow/layer1,
@@ -9230,7 +9222,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "eFm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/paper/research_notes,
 /obj/item/paper_bin,
 /obj/structure/machinery/light/double,
@@ -9315,7 +9307,7 @@
 /area/shiva/interior/colony/medseceng)
 "eKY" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
@@ -10185,7 +10177,7 @@
 /area/shiva/interior/colony/botany)
 "fPD" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/northeast,
 /area/shiva/interior/colony/medseceng)
 "fQX" = (
@@ -10689,10 +10681,6 @@
 /obj/item/clothing/under/colonist,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
-"gyT" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/valley)
 "gzc" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	icon_state = "psiphon:1"
@@ -11138,7 +11126,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "gZk" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "gZn" = (
@@ -11538,7 +11526,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "hBn" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "hBq" = (
@@ -12094,7 +12082,7 @@
 /obj/item/cell/hyper/empty,
 /obj/item/cell/hyper/empty,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -12900,7 +12888,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
 "iZF" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "iZX" = (
@@ -13709,7 +13697,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "kee" = (
@@ -13828,7 +13816,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/right_spiders)
 "klP" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts)
@@ -14416,7 +14404,7 @@
 /area/shiva/interior/bar)
 "kQi" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/n_admin)
 "kQF" = (
@@ -16166,7 +16154,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "mPu" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/valley)
 "mQl" = (
@@ -17308,7 +17296,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "oqt" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "oqy" = (
@@ -18089,7 +18077,7 @@
 /area/shiva/interior/colony/research_hab)
 "pvk" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/medseceng)
 "pvv" = (
@@ -18285,7 +18273,7 @@
 	pixel_y = -5
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "pEs" = (
@@ -20034,7 +20022,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "rRO" = (
@@ -22926,7 +22914,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "vhL" = (
@@ -23320,7 +23308,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "vIi" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts/no2)
@@ -23810,7 +23798,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "wwl" = (
@@ -23829,7 +23817,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
 "wwp" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "wwF" = (
@@ -24111,7 +24099,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "wTg" = (
@@ -24698,7 +24686,7 @@
 /area/shiva/interior/caves/cp_camp)
 "xMX" = (
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/caves/cp_camp)
 "xNe" = (
@@ -28734,7 +28722,7 @@ jmW
 lqT
 lqT
 wMh
-abH
+gZk
 wMh
 oRH
 oRH
@@ -57762,7 +57750,7 @@ mIL
 mIL
 mIL
 mIL
-gyT
+mPu
 mIL
 iMb
 iMb
@@ -59004,7 +58992,7 @@ aDn
 acT
 acT
 bhS
-eep
+amk
 amU
 acT
 afp

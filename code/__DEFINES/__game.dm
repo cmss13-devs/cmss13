@@ -45,6 +45,8 @@
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
 
+/// The Hunter Games battle royale mode
+#define GAMEMODE_HUNTER_GAMES "Hunter Games"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"

@@ -7,6 +7,7 @@
 	spawn_positions = 4
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
+	job_variants_check = TRUE
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
@@ -23,7 +24,12 @@
 
 	return filtered_job_options
 
-/datum/job/marine/leader/handle_job_options(option)
+/datum/job/marine/leader/handle_job_variant_options(option, mob/user)
+
+	if(user.client.check_whitelist_status(WHITELIST_COMMANDER) == FALSE)
+		gear_preset = /datum/equipment_preset/uscm/leader
+		return
+
 	switch(option)
 		if(SQUADLEAD)
 			gear_preset = /datum/equipment_preset/uscm/leader

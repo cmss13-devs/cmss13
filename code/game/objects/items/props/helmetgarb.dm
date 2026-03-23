@@ -688,5 +688,66 @@
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 	icon_state = "pestspray"
-	item_state_slots = list(WEAR_AS_GARB = "canteen") //PLACEHOLDER
+	item_state_slots = list(WEAR_AS_GARB = "pestspray")
 	w_class = SIZE_SMALL
+	flags_item = NOBLUDGEON
+	var/last_use = 1
+	var/use_delay = 1.5 SECONDS
+	var/uses = 8
+
+
+/obj/item/prop/helmetgarb/bug_spray/afterattack(atom/target, mob/user, proximity)
+	if(get_dist(user, target) > 2)
+		return
+	if(world.time < last_use + use_delay)
+		return
+	if(isstorage(target) || istype(target, /obj/structure/surface/table) || istype(target, /obj/structure/surface/rack) \
+	|| istype(target, /obj/structure/closet) || istype(target, /obj/item/reagent_container) \
+	|| istype(target, /obj/structure/sink) || istype(target, /obj/structure/janitorialcart) \
+	|| istype(target, /obj/structure/ladder) || istype(target, /atom/movable/screen))
+		return
+	if(!uses)
+		to_chat(user, SPAN_WARNING("The canister is empty."))
+		return
+	last_use = world.time
+	uses--
+	var/obj/effect/decal/chempuff/puff = new /obj/effect/decal/chempuff(get_turf(user))
+	puff.color = "#AAFFAA"
+	puff.move_towards(target, 3 DECISECONDS, 3)
+	playsound(loc, 'sound/effects/spray2.ogg', 25, 1, 3)
+	if(isliving(target))
+		var/mob/living/victim = target
+		if(victim == user)
+			user.visible_message(
+				SPAN_NOTICE("[user] sprays insect repellent all over themselves."),
+				SPAN_NOTICE("You spray insect repellent all over yourself. That ought to keep the bugs away.")
+			)
+		else
+			user.affected_message(victim,
+				SPAN_NOTICE("You spray insect repellent at [victim]."),
+				SPAN_NOTICE("[user] sprays insect repellent at you. You now smell faintly of chemicals."),
+				SPAN_NOTICE("[user] sprays insect repellent at [victim]."))
+	else
+		user.visible_message(
+			SPAN_NOTICE("[user] sprays insect repellent at [target]."),
+			SPAN_NOTICE("You spray insect repellent at [target]. That'll show those bugs.")
+		)
+	if(!uses)
+		to_chat(user, SPAN_WARNING("The canister sputters out. It's empty now."))
+
+/obj/item/prop/helmetgarb/helmet_bandolier
+	name = "helmet bandolier"
+	desc = "A strip of rifle cartridges for that classic grunt look."
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	icon_state = "helmet_bandolier"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+	)
+
+/obj/item/prop/helmetgarb/dog_tags
+	name = "dog tags"
+	desc = "A set of identification tags worn around the neck, tucked into the helmet band for safekeeping."
+	icon_state = "dog_tags"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)

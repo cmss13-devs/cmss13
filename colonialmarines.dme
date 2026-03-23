@@ -127,6 +127,7 @@
 #include "code\__DEFINES\turf_flags.dm"
 #include "code\__DEFINES\turfs.dm"
 #include "code\__DEFINES\tutorial.dm"
+#include "code\__DEFINES\unggoy.dm"
 #include "code\__DEFINES\unit_tests.dm"
 #include "code\__DEFINES\urls.dm"
 #include "code\__DEFINES\vehicle.dm"

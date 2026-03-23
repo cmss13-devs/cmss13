@@ -95,6 +95,11 @@
 	dwidth = 10
 	dheight = 17
 
+	callTime = 50 SECONDS
+	rechargeTime = 1 MINUTES
+	ignitionTime = DROPSHIP_WARMUP_TIME
+	prearrivalTime = DROPSHIP_WARMUP_TIME
+
 
 /obj/docking_port/mobile/marine_dropship/pelican/get_transit_path_type()
 	return /turf/open/space/transit/dropship/pelican
@@ -103,10 +108,6 @@
 /obj/docking_port/mobile/marine_dropship/pelican/echo
 	name = "D77H-TCE \"Pelican\" dropship Echo-530"
 	id = DROPSHIP_PELICAN_ECHO
-	callTime = 50 SECONDS
-	rechargeTime = 1 MINUTES
-	ignitionTime = DROPSHIP_WARMUP_TIME
-	prearrivalTime = DROPSHIP_WARMUP_TIME
 
 
 /obj/docking_port/mobile/marine_dropship/pelican/echo/get_transit_path_type()

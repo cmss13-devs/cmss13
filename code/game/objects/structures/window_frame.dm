@@ -8,6 +8,7 @@
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
 	health = 600
+	plane = TURF_PLANE
 	var/max_health = 600
 	var/obj/item/stack/sheet/sheet_type = /obj/item/stack/sheet/glass/reinforced
 	var/obj/structure/window/framed/almayer/window_type = /obj/structure/window/framed/almayer

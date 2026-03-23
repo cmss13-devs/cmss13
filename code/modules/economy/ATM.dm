@@ -22,6 +22,7 @@ log transactions
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
+	plane = TURF_PLANE
 	var/datum/money_account/authenticated_account
 	var/number_incorrect_tries = 0
 	var/previous_account_number = 0
@@ -488,3 +489,7 @@ log transactions
 		human_user.put_in_hands(E)
 	E.worth = sum
 	E.owner_name = authenticated_account.owner_name
+
+/obj/structure/machinery/atm/full_size
+	icon = 'icons/obj/structures/props/atm.dmi'
+	plane = GAME_PLANE

@@ -161,7 +161,7 @@
 	density = FALSE
 	store_mobs = FALSE
 	wall_mounted = TRUE
-
+	plane = TURF_PLANE
 
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()

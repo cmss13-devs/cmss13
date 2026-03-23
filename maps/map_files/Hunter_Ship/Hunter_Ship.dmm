@@ -46,6 +46,10 @@
 /obj/docking_port/stationary/marine_dropship/yautja_hangar_1,
 /turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
+"ag" = (
+/obj/structure/machinery/telecomms/server/presets/yaut,
+/turf/open/predship/hunter_catwalk_new,
+/area/yautja_ship/lower_deck/training_center)
 "ah" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -845,8 +849,8 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/trophy_hall)
 "bY" = (
-/obj/structure/foamed_metal/iron,
-/turf/open/predship/mainfloor/plain,
+/obj/structure/machinery/telecomms/bus/preset_yaut,
+/turf/open/predship/hunter_catwalk_new,
 /area/yautja_ship/lower_deck/training_center)
 "bZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -3782,6 +3786,10 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/predship,
 /area/yautja_ship/middle_deck/food)
+"hV" = (
+/obj/structure/machinery/telecomms/receiver/preset_yaut,
+/turf/open/predship/hunter_catwalk_new,
+/area/yautja_ship/lower_deck/training_center)
 "hW" = (
 /obj/structure/shuttle/engine/router{
 	color = "#c0baae"
@@ -30047,9 +30055,9 @@ kL
 kL
 kv
 bY
-bY
-bY
-bY
+am
+am
+am
 aj
 aj
 aj
@@ -30138,10 +30146,10 @@ kv
 kL
 kv
 kv
-bY
-bY
-bY
-bY
+ag
+am
+am
+am
 aj
 aj
 aj
@@ -30230,10 +30238,10 @@ kR
 kL
 kL
 kv
-bY
-bY
-bY
-bY
+am
+am
+am
+am
 aj
 aj
 aj
@@ -30322,10 +30330,10 @@ kR
 kL
 kL
 kv
-bY
-bY
-bY
-bY
+hV
+am
+am
+am
 kv
 kv
 kv

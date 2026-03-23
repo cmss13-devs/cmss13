@@ -435,7 +435,7 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-	QDEL_IN(player, 5)
+	QDEL_IN(player, 5 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)

@@ -620,8 +620,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
+			SEND_SIGNAL(client, COMSIG_CLIENT_ANIMATING)
 			if(buckled || resting)
 				client.set_pixel_x(0)
 				client.set_pixel_y(0)

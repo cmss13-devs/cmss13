@@ -832,7 +832,6 @@
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
 		user = usr
-
 	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
 	if(!selected_color)
 		return
@@ -1116,7 +1115,8 @@
 	max_storage_space = 4
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_DISABLE_USE_EMPTY
-	display_maptext = FALSE
+	base_icon = "pill_packet"
+	use_sound = 'sound/effects/pillpacket.ogg'
 
 /obj/item/storage/pill_bottle/packet/Initialize()
 	. = ..()
@@ -1155,7 +1155,7 @@
 		var/datum/reagents/current_reagents = current.reagents
 		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
 		if(current_reagent)
-			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
+			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[base_icon]_[length(contents)]")
 			filling.color = current_reagent.color
 			overlays += filling
 			return

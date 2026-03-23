@@ -109,6 +109,11 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/parasite = 0 // 0 = no, 1 = gain health from weed level.
 	var/immutable = 0 // If set, plant will never mutate. If -1, plant is  highly mutable.
 	var/alter_temp   // If set, the plant will periodically alter local temp by this amount.
+	//A points system to allow specific modifications
+	var/list/directed_mutation = list(
+		"Current Value" = 0,
+		"Max Value" = 0,
+	)
 
 	// Cosmetics.
 	var/plant_icon   // Icon to use for the plant growing in the tray.
@@ -321,9 +326,12 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/mutation_enable_check = FALSE
 	var/list/super_allowed_mutations[]
 	var/list/allowed_mutations[]
+	//Some Mutation controllers arent considered for rolling, like species mutation, and are placed at end of list
+	//If adding non rolled mutation need to adjust subtracted integer
+	var/length_minus_non_rolled_mutation_controllers = length(mutation_controller)-2
 
 	//Generates list of what mutation outcomes are allowed after considering mutation cancel and mutation enable effects
-	for(var/i in 1 to length(mutation_controller)-1)
+	for(var/i in 1 to length_minus_non_rolled_mutation_controllers)
 		var/mut_name = mutation_controller[i]
 		if(mutation_controller[mut_name] > 0)
 			super_allowed_mutations += list(i)
@@ -402,8 +410,20 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),
 											) = list(1,rand(1,2)))
+
+				//If conditions satisfied add 1 or 2u of a hydro chem to the plant, then increases directed mutation value
+				if (mutation_controller["Mutate Hydro Chem"] == -5 && (directed_mutation["Current Value"] < directed_mutation["Max Value"]) && !chems_special)
+					var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(rand(1,2)))
+					directed_mutation["Current Value"] = directed_mutation["Current Value"] + 1
+					if (directed_mutation["Current Value"] == directed_mutation["Max Value"])
+						source_turf.visible_message(SPAN_NOTICE("\The [display_name] makes a crackling noise and looks brittle!"))
+					else
+						source_turf.visible_message(SPAN_NOTICE("\The [display_name] makes a soft crackling noise."))
+					chem_to_add = new_chem
+
 				if(prob(40) && chems_special)
 					chem_to_add = list(pick(chems_special) = list(7,rand(5,8)))
+				mutation_controller["Mutation Hydro Chem"] = 0
 				chems += chem_to_add
 
 	//reset mutation_controller for next cycle
@@ -688,6 +708,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		new_seed.consume_gasses = consume_gasses.Copy()
 	if(exude_gasses)
 		new_seed.exude_gasses = exude_gasses.Copy()
+	if(directed_mutation)
+		new_seed.directed_mutation = directed_mutation.Copy()
 
 	new_seed.seed_name = "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
 	new_seed.display_name =  "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"

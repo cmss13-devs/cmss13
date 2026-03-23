@@ -178,6 +178,7 @@
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 #define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
+#define COMSIG_KB_XENO_RIP_LIMB "keybinding_rip_limb"
 
 // Yautja
 

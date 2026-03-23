@@ -73,6 +73,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Misc channels
 #define YAUT_FREQ 1205
 #define YAUT_OVR_FREQ 1206
+#define YAUT_SPEC_FREQ 1207
 #define DUT_FREQ 1210
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
@@ -171,6 +172,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_YAUTJA_OVERSEER = YAUT_OVR_FREQ,
+	RADIO_CHANNEL_YAUTJA_SPECOPS = YAUT_SPEC_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
@@ -249,7 +251,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 ))
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, CMB_FREQ, RMC_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -268,6 +270,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+
+//Bonus frequencies for special survivor factions
+#define SURVIVOR_FREQS list(SOF_FREQ, ARMY_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -327,6 +332,7 @@ SUBSYSTEM_DEF(radio)
 		"[WY_SEC_FREQ]" = "wysecradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[ARMY_FREQ]" = "armyradio",
 		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",
@@ -336,7 +342,6 @@ SUBSYSTEM_DEF(radio)
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
-		"[ARMY_FREQ]" = "hcradio",
 		"[FORECON_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",

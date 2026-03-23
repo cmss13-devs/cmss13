@@ -571,7 +571,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3)
 /// Whether this storage object has its items drawn (versus just opening it)
 #define STORAGE_USING_DRAWING_METHOD (1<<4)
-/// Wether the storage object can have items in it's leftmost slot be drawn
+/// Wether the storage object can have items in its leftmost slot be drawn
 #define STORAGE_USING_FIFO_DRAWING (1<<5)
 /// Whether you can click to empty an item
 #define STORAGE_CLICK_EMPTY (1<<6)

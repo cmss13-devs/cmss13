@@ -1,6 +1,11 @@
 ///from /turf/Entered
 #define COMSIG_MOVABLE_TURF_ENTERED "movable_turf_entered"
 
+/// from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/post_change_callbacks).
+/// `post_change_callbacks` is a list that signal handlers can mutate to append `/datum/callback` objects.
+/// They will be called with the new turf after the turf has changed.
+#define COMSIG_PRE_TURF_CHANGE "pre_turf_change"
+
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
@@ -23,4 +28,8 @@
 ///from base of /datum/turf_reservation/proc/Release: (datum/turf_reservation/reservation)
 #define COMSIG_TURF_RESERVATION_RELEASED "turf_reservation_released"
 
-#define COMSIG_TURF_JUMP_ENDED_HERE "turf_jump_ended_here" //from datum/element/jump/end_jump(): (jumper)
+///from datum/element/jump/end_jump(): (jumper)
+#define COMSIG_TURF_JUMP_ENDED_HERE "turf_jump_ended_here"
+
+///from /turf/proc/afterShuttleMove() : (/turf/old_turf)
+#define COMSIG_TURF_AFTER_SHUTTLE_MOVE "turf_after_shuttle_move"

@@ -106,6 +106,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		list("Combat Sterile Gloves", 0, /obj/item/clothing/gloves/marine/medical, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
+		list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Medical Helmet Visor", 0, /obj/item/device/helmet_visor/medical/advanced, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),

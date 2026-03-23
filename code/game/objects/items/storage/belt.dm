@@ -1282,7 +1282,7 @@
 
 /obj/item/storage/belt/grenade/large
 	name="\improper M276 pattern M40 Grenade rig Mk. II"
-	desc="The M276 Mk. II is is an upgraded version of the M276 grenade rig, with more storage capacity."
+	desc="The M276 Mk. II is an upgraded version of the M276 grenade rig, with more storage capacity."
 	storage_slots = 18
 	max_storage_space = 54
 
@@ -1860,7 +1860,7 @@
 
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
-	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
+	desc = "Special issue variant of the M276 - designed exclusively to securely hold an M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
 	icon_state = "m10_armor"
 	flags_atom = FPRINT // has gamemode skin
 	storage_slots = 4
@@ -2790,6 +2790,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/handful,
+		/obj/item/ammo_magazine/smg/nailgun,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,

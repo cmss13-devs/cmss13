@@ -23,5 +23,8 @@
             "Down": -1
         }
     ],
-    "nightmare_path": "maps/Nightmare/maps/USS_Almayer/"
+    "nightmare_path": "maps/Nightmare/maps/USS_Almayer/",
+    "ground_crash_template_name": "USS_Almayer_crash.dmm",
+    "crack_open_horizontal_positions": [174],
+    "open_space_bounds": [22, 311, -13, 113]
 }

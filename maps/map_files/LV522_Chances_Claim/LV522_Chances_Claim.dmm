@@ -1287,11 +1287,19 @@
 /turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/sky/level4)
 "aex" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
+"aey" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
-"aey" = (
+"aez" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
@@ -25257,7 +25265,7 @@
 "nkt" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/prop/almayer/computer/PC{
+/obj/structure/machinery/computer/objective{
 	dir = 8
 	},
 /turf/open/floor/prison/blue_plate/north,
@@ -30998,10 +31006,8 @@
 /area/lv522/atmos/east_reactor/south)
 "qpq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 6
+/obj/structure/machinery/computer/objective{
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
@@ -52395,8 +52401,8 @@ sXM
 rwM
 vxq
 bzL
+aez
 aey
-aex
 wbi
 nJv
 hpq
@@ -66601,7 +66607,7 @@ upr
 uLE
 jnB
 ild
-uLE
+aex
 lpH
 uKS
 ild

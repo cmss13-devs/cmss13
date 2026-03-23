@@ -11,12 +11,10 @@
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
 "aad" = (
-/obj/structure/machinery/cryopod/no_cryo/right{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/shiva/yellow/west,
-/area/shiva/interior/garage)
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/telecomm/lz1_biceps)
 "aae" = (
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
@@ -756,10 +754,11 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "acH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/late_join/working_joe/colony,
-/obj/effect/landmark/start/working_joe/colony,
-/turf/open/floor/shiva/north,
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/garage)
 "acI" = (
 /obj/structure/fence,
@@ -897,8 +896,9 @@
 /area/shiva/exterior/cp_colony_grounds)
 "adf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_cryo/right,
-/turf/open/floor/shiva/yellow/west,
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/start/working_joe/colony,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "adg" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -916,6 +916,11 @@
 "adi" = (
 /turf/open/floor/shiva/yellowcorners/north,
 /area/shiva/interior/colony/research_hab)
+"adj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_cryo/right,
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/garage)
 "adk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
@@ -14537,8 +14542,9 @@
 /area/shiva/exterior/cp_s_research)
 "kVe" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/objective{
-	dir = 8
+/obj/structure/machinery/computer/station_alert{
+	dir = 8;
+	pixel_y = 5
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -20068,9 +20074,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/aux_power)
 "rSL" = (
-/obj/item/weapon/gun/boltaction{
-	pixel_x = -6
-	},
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "rTk" = (
@@ -22468,9 +22472,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "uFA" = (
-/obj/item/weapon/gun/boltaction{
-	pixel_x = -6
-	},
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "uGw" = (
@@ -45370,7 +45372,7 @@ cXk
 sod
 sod
 wNj
-gzM
+aad
 blI
 blI
 lnY
@@ -50223,8 +50225,8 @@ afa
 ohb
 ohb
 afa
-adf
-aad
+adj
+acH
 aCz
 ktd
 cZk
@@ -50387,8 +50389,8 @@ aeL
 ver
 ver
 ver
-acH
-acH
+adf
+adf
 bYd
 ktd
 ktd

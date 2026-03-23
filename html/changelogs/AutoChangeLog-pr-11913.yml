@@ -1,0 +1,4 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - maptweak: "Removed a stray wall under a girder in the LV Destroyed Medbay variation."

@@ -7862,7 +7862,7 @@
 /area/varadero/exterior/eastbeach)
 "gcF" = (
 /obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
+	desc = "A grave to a fishing buddy, long gone."
 	},
 /obj/item/clothing/head/boaterhat{
 	pixel_y = 5
@@ -11925,6 +11925,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/item/restraint/handcuffs,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "jtU" = (
@@ -16969,7 +16970,7 @@
 /area/varadero/interior/cargo)
 "nOz" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/station_alert{
+/obj/structure/machinery/computer/objective{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -17465,7 +17466,6 @@
 /area/varadero/interior/hall_SE)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -17475,6 +17475,7 @@
 	name = "Checkpoint Lockdown";
 	pixel_y = 36
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/shiva/red/northwest,
 /area/varadero/interior/security)
 "oho" = (
@@ -20127,7 +20128,7 @@
 	pixel_y = -6;
 	pixel_x = -8;
 	name = "help";
-	desc = "A recent storm washed away any legible text"
+	desc = "A recent storm washed away any legible text."
 	},
 /obj/item/tool/pen,
 /turf/open/gm/dirt,
@@ -24312,7 +24313,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	layer = 3.6;
 	pixel_x = -12
 	},
@@ -29191,9 +29192,7 @@
 /area/varadero/interior/cargo)
 "xuT" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/emails{
-	pixel_y = 5
-	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "xuW" = (

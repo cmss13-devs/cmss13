@@ -4165,7 +4165,7 @@
 /area/whiskey_outpost/inside/engineering)
 "qI" = (
 /obj/structure/barricade/metal/wired,
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "cartridge_2_1";
 	layer = 2
 	},
@@ -5703,7 +5703,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "xl" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "cartridge_10"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -9031,7 +9031,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river)
 "Ps" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	dir = 5;
 	icon_state = "cartridge_10"
 	},

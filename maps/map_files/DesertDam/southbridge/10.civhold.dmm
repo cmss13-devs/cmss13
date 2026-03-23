@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/spawner/random/gun/civ,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -118,7 +118,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "fF" = (
@@ -175,7 +175,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "hZ" = (
@@ -257,7 +257,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "lr" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "mn" = (
@@ -348,7 +348,7 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ri" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rj" = (
@@ -437,7 +437,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uC" = (
@@ -556,7 +556,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -617,7 +617,7 @@
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "DN" = (
@@ -956,7 +956,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "Rb" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "Rn" = (
@@ -1116,7 +1116,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ZC" = (

@@ -186,7 +186,7 @@
 	///What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 	var/list/starting_attachment_types = null
 
-	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 	///Only guns of the same category can be fired together while dualwielding.
 	var/gun_category
 
@@ -247,6 +247,8 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+	/// How many empty shell casings are in the gun?
+	var/list/spent_casings = list()
 
 	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
 	var/has_second_wind = TRUE
@@ -1360,6 +1362,19 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
+	var/datum/ammo/fired_ammo = projectile_to_fire.ammo // reference for casing logic
+
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing // accurate case ejections for these guns would be better
+
+	else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS) // dont want to litter the ground too much, also dont want to unnecessarily increase the count for caseless weapons
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing
+
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+		eject_casing()
+
 	simulate_recoil(dual_wield, user, target)
 
 	//This is where the projectile leaves the barrel and deals with projectile code only.
@@ -1522,6 +1537,19 @@ and you're good to go.
 
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
+
+		// eject casing logic for PBs
+		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+			if(projectile_to_fire.ammo.shell_casing)
+				spent_casings += projectile_to_fire.ammo.shell_casing
+
+		else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+			if(projectile_to_fire.ammo.shell_casing)
+				spent_casings += projectile_to_fire.ammo.shell_casing
+
+		if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+			eject_casing()
+		//end
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -2293,6 +2321,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		in_chamber = null
 		ready_in_chamber() // obviously want to load the next round if any
 
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+		if(ammo.shell_casing)
+			spent_casings += ammo.shell_casing
+
+	else if (flags_gun_features & GUN_AUTO_EJECT_CASINGS) // drop a casing and prove a point
+		if(ammo.shell_casing)
+			spent_casings += ammo.shell_casing
+
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+		eject_casing()
+
 	if(gun_area.ceiling <= CEILING_GLASS)
 		gun_turf.ceiling_debris()
 
@@ -2349,3 +2388,20 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!explo_proof) // heavy explosions don't care if the weapon has it's protection left; else you'd get weird situations where OBs/yautja SD/etc leave damaged but working guns everywhere.
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 				deconstruct(FALSE)
+
+/// For ejecting the spent casing from corresponding guns
+/obj/item/weapon/gun/proc/eject_casing()
+	if(!length(spent_casings))
+		return
+
+	var/turf/ejection_turf = get_turf(src)
+	if(!ejection_turf)
+		return
+
+	for(var/casing_type in spent_casings)
+		var/obj/effect/decal/cleanable/ammo_casing/casing = new casing_type(ejection_turf)
+
+		var/eject_noise = casing.ejection_sfx
+		playsound(loc, eject_noise, 25, TRUE)
+
+	spent_casings.Cut()

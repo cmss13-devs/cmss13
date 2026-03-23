@@ -235,8 +235,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "rA" = (
@@ -286,9 +286,9 @@
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "wS" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "wU" = (
@@ -393,9 +393,9 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "Da" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "Dt" = (
@@ -486,8 +486,8 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "On" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "OW" = (
@@ -507,9 +507,9 @@
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "Qf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "Rz" = (

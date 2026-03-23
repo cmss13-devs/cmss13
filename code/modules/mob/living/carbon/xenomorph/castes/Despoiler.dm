@@ -225,7 +225,7 @@
 		xeno.overlays -= delegate.empowered_overlay
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, 'sound/voice/xeno/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
@@ -311,7 +311,7 @@
 
 	apply_cooldown()
 
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, 'sound/voice/xeno/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 1
 	var/empowered = delegate.next_ability_empowered

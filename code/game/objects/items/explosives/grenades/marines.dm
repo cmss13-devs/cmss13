@@ -892,7 +892,7 @@
 	explosion_power = 300
 	det_time = 50
 	unacidable = TRUE
-	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg
+	arm_sound = 'sound/voice/misc/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /obj/item/explosive/grenade/metal_foam

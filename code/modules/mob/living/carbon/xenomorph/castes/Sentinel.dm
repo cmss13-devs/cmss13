@@ -142,7 +142,7 @@
 
 	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
 	SPAN_XENOWARNING("You spit at [target]!") )
-	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/xeno/alien_spitacid.ogg' : 'sound/voice/xeno/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
 
 	slowspit_user.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin]
@@ -174,7 +174,7 @@
 
 	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
 	SPAN_XENOWARNING("You spit at [target]!") )
-	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/xeno/alien_spitacid.ogg' : 'sound/voice/xeno/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 
 	scatterspit_user.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/shotgun]

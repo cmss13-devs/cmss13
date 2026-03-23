@@ -477,7 +477,7 @@
 	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
 	playsound(user, pick(95;'sound/items/jingle_short.wav', 5;'sound/items/jingle_long.wav'), 25, TRUE)
 	if(prob(5))
-		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
+		playsound(target, pick('sound/voice/xeno/alien_queen_xmas.ogg', 'sound/voice/xeno/alien_queen_xmas_2.ogg'), 25, TRUE)
 	user.festivizer_hits_total++
 
 /obj/item/toy/festivizer/attack_alien(mob/living/carbon/xenomorph/M)

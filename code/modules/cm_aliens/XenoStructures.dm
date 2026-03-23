@@ -1275,7 +1275,7 @@
 			old_mob.free_for_ghosts(TRUE)
 	else
 		king.free_for_ghosts(TRUE)
-	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
+	playsound(src, 'sound/voice/xeno/alien_queen_command.ogg', 75, 0)
 
 	chosen_candidate = null
 

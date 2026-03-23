@@ -94,7 +94,7 @@
 		if(has_species(user, "Human"))
 			nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
 		else if(ismonkey(user))
-			nade_sound = sound('sound/voice/monkey_scream.ogg')
+			nade_sound = sound('sound/voice/misc/monkey_scream.ogg')
 		if(nade_sound)
 			playsound(user, nade_sound, 35)
 

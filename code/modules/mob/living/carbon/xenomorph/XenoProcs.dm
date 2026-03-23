@@ -30,7 +30,7 @@
 		for(var/datum/mind/living in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/xenomorph/xeno = living.current
 			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
-				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
+				playsound_client(xeno.client, 'sound/voice/xeno/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
 				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
 /proc/xeno_message_all(message = null, size = 3)
@@ -350,7 +350,7 @@
 
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
-			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/xeno/alien_pounce.ogg' : 'sound/voice/xeno/alien_pounce2.ogg', 25, 1)
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(carbon_mob)
@@ -434,7 +434,7 @@
 		deltimer(haul_timer)
 		return
 	to_chat(src, SPAN_XENOWARNING("We feel our grip loosen on [user], we will have to release them soon."))
-	playsound(src, 'sound/voice/alien_hiss2.ogg', 15)
+	playsound(src, 'sound/voice/xeno/alien_hiss2.ogg', 15)
 	haul_timer = addtimer(CALLBACK(src, PROC_REF(release_haul)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Releasing a dead hauled mob
@@ -458,7 +458,7 @@
 	user.handle_unhaul()
 	visible_message(SPAN_XENOWARNING("[src] releases [user] from their grip!"),
 	SPAN_XENOWARNING("We release [user] from our grip!"), null, 5)
-	playsound(src, 'sound/voice/alien_growl1.ogg', 15)
+	playsound(src, 'sound/voice/xeno/alien_growl1.ogg', 15)
 	log_interact(src, user, "[key_name(src)] released [key_name(user)] at [get_area_name(loc)]")
 	if(stuns)
 		user.adjust_effect(2, STUN)

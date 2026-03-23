@@ -273,6 +273,106 @@
 	animate(src, pixel_y = -50, time=2 SECONDS)
 	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
 
+// animation of the rocket actually hitting the ground
+/obj/effect/overlay/temp/cas_rocket_impact
+	name = "cas rocket impact animation"
+	effect_duration = 18
+	var/atom/rocket_ammo
+	var/size_mod = 1.2
+
+/obj/effect/overlay/temp/cas_rocket_impact/Initialize(mapload, atom/owner, rocket_size = 1.2)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	rocket_ammo = owner
+	size_mod = rocket_size
+	icon = rocket_ammo.icon
+	icon_state = "[initial(rocket_ammo.icon_state)]_proj"
+	transform = matrix().Turn(90)
+	transform *= size_mod
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=10)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for minirockets
+/obj/effect/overlay/temp/cas_minirocket_impact
+	name = "cas minirocket impact animation"
+	effect_duration = 15
+	var/atom/minirocket_ammo
+
+/obj/effect/overlay/temp/cas_minirocket_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	minirocket_ammo = owner
+	icon = minirocket_ammo.icon
+	icon_state = "[initial(minirocket_ammo.icon_state)]_proj"
+	transform = matrix().Turn(90)
+	transform *= 0.8
+	add_filter("motionblur", 1, motion_blur_filter(x = 1, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=8)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for the gau
+/obj/effect/overlay/temp/cas_cannon_impact
+	name = "cas cannon impact animation"
+	effect_duration = 12
+	var/atom/cannon_ammo
+
+/obj/effect/overlay/temp/cas_cannon_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	cannon_ammo = owner
+	icon = cannon_ammo.icon
+	icon_state = "[initial(cannon_ammo.icon_state)]_proj"
+	transform = matrix().Turn(-180) // Straight down
+	transform *= 1.2
+	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1)) // Light vertical blur
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=8)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for the cluster part of explosions
+/obj/effect/overlay/temp/cas_cluster_impact
+	name = "cas cluster impact animation"
+	effect_duration = 18
+	var/atom/bomb_ammo
+	var/size_mod = 1.5
+
+/obj/effect/overlay/temp/cas_cluster_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	bomb_ammo = owner
+	size_mod = bomb_size
+	icon = bomb_ammo.icon
+	icon_state = "[initial(bomb_ammo.icon_state)]_mini"
+	transform *= size_mod
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 2000
+	animate(src, pixel_y = 0, time=10)
+	animate(icon_state=null, icon=null, time=2)
+
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "empdisable"
@@ -352,3 +452,111 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS
+
+/obj/effect/overlay/temp/dropship_reticle
+	name = "Targeting Reticle"
+	desc = "A targeting reticle for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "direct_fire_reticle"
+	anchored = TRUE
+	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	effect_duration = 600
+
+	var/target_x = null
+	var/target_y = null
+	var/target_z = null
+	var/image/reticle_image = null
+
+	var/shuttle_tag = null
+
+/obj/effect/overlay/temp/dropship_reticle/New()
+	. = ..()
+	GLOB.dropship_reticles += src
+
+/obj/effect/overlay/temp/dropship_reticle/Destroy()
+	GLOB.dropship_reticles -= src
+	return ..()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/mob_user)
+	var/show_reticle = FALSE
+	if(GLOB.huds[MOB_HUD_DROPSHIP] && (mob_user in GLOB.huds[MOB_HUD_DROPSHIP].hudusers))
+		show_reticle = TRUE
+	if(show_reticle)
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			dropship_hud.add_hud_to(mob_user, src)
+		if(mob_user.client)
+			mob_user.client.images += src.get_reticle_image()
+	else
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			dropship_hud.remove_hud_from(mob_user, src)
+		if(mob_user.client)
+			mob_user.client.images -= src.get_reticle_image()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
+	if(!reticle_image)
+		var/turf/Target = locate(target_x, target_y, target_z)
+		reticle_image = image(icon, Target, icon_state, layer)
+		reticle_image.plane = ABOVE_LIGHTING_PLANE
+	return reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
+	target_x = x
+	target_y = y
+	target_z = z
+	reticle_image = null
+
+/obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
+	var/image/Image = src.get_reticle_image()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		for(var/mob/mob_user in dropship_hud.hudusers)
+			if(mob_user.client)
+				mob_user.client.images -= Image
+			dropship_hud.remove_hud_from(mob_user, src)
+	for(var/mob/living/carbon/human/mob_user in GLOB.alive_human_list)
+		if(mob_user.client)
+			mob_user.client.images -= Image
+
+/obj/effect/overlay/temp/dropship_reticle/direct
+	name = "Impact Reticle"
+	desc = "The projected suborbital impact zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "impact_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
+	var/obj/effect/overlay/temp/dropship_reticle/direct/On_Target = new()
+	On_Target.target_x = x
+	On_Target.target_y = y
+	On_Target.target_z = z
+	On_Target.reticle_image = null
+	return On_Target
+
+/obj/effect/overlay/temp/dropship_reticle/direct/New(loc)
+	if(loc)
+		qdel(src)
+		return
+	..()
+
+// --- Firemission Reticle ---
+/obj/effect/overlay/temp/dropship_reticle/firemission
+	name = "Firemission Reticle"
+	desc = "The projected firemission target zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "firemission_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
+	var/obj/effect/overlay/temp/dropship_reticle/firemission/On_Target = new()
+	On_Target.target_x = x
+	On_Target.target_y = y
+	On_Target.target_z = z
+	On_Target.reticle_image = null
+	return On_Target
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/New(loc)
+	if(loc)
+		qdel(src)
+		return
+	..()

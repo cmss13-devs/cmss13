@@ -1716,6 +1716,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
+"agu" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -46662,7 +46666,7 @@ lcf
 bMJ
 pAd
 skZ
-skZ
+agu
 jmQ
 lrf
 mSz
@@ -47090,7 +47094,7 @@ dbO
 skZ
 skZ
 dbO
-keO
+aah
 aah
 aah
 aah

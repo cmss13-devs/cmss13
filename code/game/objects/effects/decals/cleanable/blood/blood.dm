@@ -11,9 +11,9 @@
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
 	cleanable_type = CLEANABLE_BLOOD
 	overlay_on_initialize = FALSE
+	color= "#830303" // Color when wet.
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses
-	var/basecolor= "#830303" // Color when wet.
 	var/amount = 3
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
@@ -28,7 +28,7 @@
 /obj/effect/decal/cleanable/blood/Initialize(mapload, b_color)
 	. = ..()
 	if(b_color)
-		basecolor = b_color
+		color = b_color
 	update_icon()
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
@@ -53,7 +53,7 @@
 		return
 
 	var/mob/living/carbon/human/H = AM
-	H.add_blood(basecolor, BLOOD_FEET)
+	H.add_blood(color, BLOOD_FEET)
 
 	var/dry_time_left = 0
 	if(drying_time)
@@ -63,14 +63,9 @@
 		return
 
 	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, basecolor)
+		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, color)
 	else
-		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, basecolor, dry_time_left)
-
-/obj/effect/decal/cleanable/blood/update_icon()
-	if(basecolor == "rainbow")
-		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	color = basecolor
+		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, color, dry_time_left)
 
 /obj/effect/decal/cleanable/blood/proc/dry()
 	amount = 0
@@ -121,7 +116,7 @@
 
 /obj/effect/decal/cleanable/blood/writing/get_examine_text(mob/user)
 	. = ..()
-	. += "It reads: <font color='[basecolor]'>\"[message]\"<font>"
+	. += "It reads: <font color='[color]'>\"[message]\"<font>"
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
@@ -131,38 +126,37 @@
 	anchored = TRUE
 	layer = ABOVE_WEED_LAYER
 	icon = 'icons/effects/blood.dmi'
-	icon_state = ""
+	icon_state = "gib1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
-	var/fleshcolor = "#830303"
+	color = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 	overlays.Cut()
 
-	if(basecolor == "rainbow")
-		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	color = basecolor
-
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
-	if(!fleshcolor || fleshcolor == "rainbow")
-		fleshcolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	giblets.color = fleshcolor
+	giblets.color = color
 
 	overlays += giblets
 
 /obj/effect/decal/cleanable/blood/gibs/up
+	icon_state = "gibup1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibup1", "gibup1", "gibup1")
 
 /obj/effect/decal/cleanable/blood/gibs/down
+	icon_state = "gibdown1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibdown1", "gibdown1", "gibdown1")
 
 /obj/effect/decal/cleanable/blood/gibs/body
+	icon_state = "gibhead"
 	random_icon_states = list("gibhead", "gibtorso")
 
 /obj/effect/decal/cleanable/blood/gibs/limb
+	icon_state = "gibleg"
 	random_icon_states = list("gibleg", "gibarm")
 
 /obj/effect/decal/cleanable/blood/gibs/core
+	icon_state = "gibmid1"
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
 
@@ -172,7 +166,7 @@
 		sleep(3)
 		if (i > 0)
 			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
-			b.basecolor = src.basecolor
+			b.color = src.color
 			b.update_icon()
 			for(var/datum/disease/D in src.viruses)
 				var/datum/disease/ND = D.Copy(1)

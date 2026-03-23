@@ -1,0 +1,4 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - maptweak: "Shifted Solaris' LZ1 Sentry Locations to prevent a Sentry spawning on a container, and therefore being bugged inside it."

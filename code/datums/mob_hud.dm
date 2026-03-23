@@ -985,7 +985,6 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 	if(total_time < JOB_PLAYTIME_TIER_2)
 		marker = GLOB.hud_icon_new_player_2
 		low_time = TRUE
-
 	if(playtime <= JOB_PLAYTIME_TIER_1)
 		if(low_time)
 			marker = GLOB.hud_icon_new_player_1

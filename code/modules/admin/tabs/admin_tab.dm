@@ -100,6 +100,8 @@
 	if(new_STUI)
 		GLOB.STUI.tgui_interact(mob)
 
+	return TRUE
+
 /client/proc/invismin()
 	set name = "Invismin"
 	set category = "Admin.Game"
@@ -638,26 +640,39 @@
 		return
 
 	if(!isobserver(user))
-		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		to_chat(user, SPAN_WARNING("You can only become an imaginary friend while observing or aghosted!"))
 		return
 
 	var/mob/living/befriended_mob
-	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
+	var/selection_preference = "Mob"
+	if(check_rights(R_MOD))	// only staff get to see the key list
+		selection_preference = tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob"))
+	switch(selection_preference)
+		if("Mob")
+			var/list/cliented_mobs = list()
+			var/faction_preference = tgui_input_list(user, "Select target faction", "Imaginary Friend", FACTION_LIST_MARINE + FACTION_LIST_XENOMORPH + list(FACTION_WY, FACTION_SURVIVOR, "Other"))
+			if(faction_preference in FACTION_LIST_XENOMORPH)
+				cliented_mobs = GLOB.living_xeno_list.Copy()
+			else if(faction_preference in FACTION_LIST_HUMANOID)
+				cliented_mobs = GLOB.alive_human_list.Copy()
+			else
+				cliented_mobs = GLOB.living_player_list.Copy()
+			for(var/mob/checking_mob as anything in cliented_mobs)
+				if(checking_mob.faction == faction_preference && checking_mob.client)
+					continue
+				cliented_mobs -= checking_mob
+			if(!length(cliented_mobs))
+				to_chat(user, SPAN_WARNING("No valid mobs found!"))
+				return
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			if(!selected_mob)
+				return
+			befriended_mob = selected_mob
 		if("Key")
 			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
 			if(!selected_client)
 				return
 			befriended_mob = selected_client.mob
-		if("Mob")
-			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
-			for(var/mob/checking_mob as anything in cliented_mobs)
-				if(checking_mob.client)
-					continue
-				cliented_mobs -= checking_mob
-			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
-			if(!selected_mob)
-				return
-			befriended_mob = selected_mob
 
 	if(!isobserver(user))
 		return

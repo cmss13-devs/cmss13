@@ -8,6 +8,8 @@
 */
 
 /mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(active_action_cursor && active_action_cursor != ability)
+		clear_action_cursor()
 	if(selected_ability)
 		selected_ability.on_deselect(src)
 	if(!ability)

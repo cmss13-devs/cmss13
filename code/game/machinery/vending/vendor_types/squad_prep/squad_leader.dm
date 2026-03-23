@@ -126,6 +126,21 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	req_access = list(ACCESS_MARINE_LEADER)
 
 /obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/user)
+	var/list/final_products = list()
+
+	for(var/product in GLOB.cm_vending_gear_leader)
+		if(product[length(product)] == null)
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_WELL_FUNDED && MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] == VENDOR_ITEM_POOR && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+			final_products += list(product)
+		else if(product[length(product)] <= VENDOR_ITEM_RECOMMENDED)
+			final_products += list(product)
+	
+	return final_products
+
+/obj/structure/machinery/cm_vending/gear/leader/get_unfiltered_products(mob/user)
 	return GLOB.cm_vending_gear_leader
 
 //------------CLOTHING VENDOR---------------

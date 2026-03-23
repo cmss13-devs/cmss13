@@ -197,6 +197,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	.["valid_categories"] = list()
 
 	.["categories_to_objects"] = list()
+	
+	var/divider = 1
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+		divider = 2
 	for(var/pack_type in GLOB.supply_packs_datums)
 		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
 
@@ -213,8 +217,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			.["valid_categories"] |= pack.group
 
 		var/list_pack = pack.get_list_representation()
-
 		if(length(pack.group))
+			list_pack["cost"] = pack.cost / divider
 			if(!.["categories_to_objects"][pack.group])
 				.["categories_to_objects"][pack.group] = list()
 
@@ -232,6 +236,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!ishuman(ui.user))
 		return
 	var/mob/living/carbon/human/human_user = ui.user
+
+	var/divider = 1
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+		divider = 2
 
 	switch(action)
 		if("adjust_cart")
@@ -253,8 +261,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				if(isnum(adjust_to) && pack_type == picked_pack)
 					continue // if manually specifying number, we calculate later how many it can be set to
 
-				used_points += (iter_pack.cost * current_order[pack_type])
-				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
+				used_points += (iter_pack.cost * current_order[pack_type] / divider)
+				used_dollars += (iter_pack.dollar_cost * current_order[pack_type] / divider)
 
 			if(!isnum(adjust_to))
 				return
@@ -683,6 +691,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/supply_order/proc/buy(obj/structure/machinery/computer/supply/asrs/buyer)
 	var/ordered = list()
 
+	var/divider = 1
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+		divider = 2
+
 	for(var/datum/supply_packs/pack as anything in objects)
 		if(!buyer.is_buyable(pack))
 			continue
@@ -693,8 +705,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(buyer.linked_supply_controller.black_market_points - pack.dollar_cost < 0)
 			continue
 
-		buyer.linked_supply_controller.points -= pack.cost
-		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost
+		buyer.linked_supply_controller.points -= pack.cost / divider
+		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost / divider
 
 		if(buyer.linked_supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
 			// black market heat added is crate heat +- up to 25% of crate heat
@@ -1118,14 +1130,16 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		.["pending"] += list(
 			order.get_list_representation()
 		)
-
+	var/divider = 1
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/rich_marines))
+		divider = 2
 	var/used_points = 0
 	var/used_dollars = 0
 	for(var/pack_type in current_order)
 		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
 
-		used_points += (pack.cost * current_order[pack_type])
-		used_dollars += (pack.dollar_cost * current_order[pack_type])
+		used_points += (pack.cost * current_order[pack_type] / divider)
+		used_dollars += (pack.dollar_cost * current_order[pack_type] / divider)
 
 	.["used_points"] = used_points
 	.["used_dollars"] = used_dollars

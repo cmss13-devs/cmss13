@@ -182,6 +182,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hallway/lower_main_hall)
+"aaF" = (
+/turf/open/floor/almayer/redcorner/north,
+/area/sulaco/brig)
 "aaG" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -1793,6 +1796,12 @@
 /obj/item/device/assembly/voice,
 /turf/open/floor/almayer/orange/southwest,
 /area/sulaco/maintenance/lower_maint)
+"aeT" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -32
+	},
+/turf/open/floor/almayer/redcorner/west,
+/area/sulaco/brig)
 "aeU" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -2859,7 +2868,7 @@
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32
 	},
-/turf/open/floor/almayer/red/north,
+/turf/open/floor/almayer/redcorner/east,
 /area/sulaco/brig)
 "ahS" = (
 /obj/structure/machinery/light/red{
@@ -3259,7 +3268,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/brig)
 "ajb" = (
-/turf/open/floor/almayer/red/south,
+/turf/open/floor/almayer/redcorner/south,
 /area/sulaco/brig)
 "ajc" = (
 /obj/structure/machinery/brig_cell/perma_2{
@@ -3269,7 +3278,7 @@
 /area/sulaco/brig)
 "ajd" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer/red/south,
+/turf/open/floor/almayer/redcorner/west,
 /area/sulaco/brig)
 "aje" = (
 /obj/structure/stairs/perspective{
@@ -3282,9 +3291,6 @@
 /area/sulaco/brig)
 "ajf" = (
 /turf/open/floor/almayer/red/southwest,
-/area/sulaco/brig)
-"ajg" = (
-/turf/open/floor/almayer/red,
 /area/sulaco/brig)
 "ajh" = (
 /obj/structure/machinery/light/small,
@@ -3394,9 +3400,7 @@
 /turf/open/floor/almayer/red/north,
 /area/sulaco/brig)
 "ajx" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
+/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer/red/north,
 /area/sulaco/brig)
 "ajy" = (
@@ -4103,7 +4107,7 @@
 	pixel_y = 24;
 	pixel_x = 8
 	},
-/turf/open/floor/almayer/red/north,
+/turf/open/floor/almayer,
 /area/sulaco/brig)
 "alB" = (
 /obj/structure/machinery/light{
@@ -6499,9 +6503,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/hydrant{
-	pixel_y = 30
-	},
 /obj/structure/machinery/vending/security,
 /turf/open/floor/almayer/red/north,
 /area/sulaco/brig)
@@ -7512,7 +7513,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/warden,
 /obj/effect/landmark/late_join/warden,
-/turf/open/floor/almayer/sterile,
+/turf/open/floor/wood/ship,
 /area/sulaco/brig)
 "epj" = (
 /turf/open/floor/almayer/blue/west,
@@ -8315,15 +8316,6 @@
 "ftb" = (
 /turf/open/floor/almayer/redfull,
 /area/sulaco/brig)
-"fth" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
-/obj/item/storage/donut_box{
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/sterile,
-/area/sulaco/brig)
 "ftP" = (
 /obj/structure/machinery/door/poddoor/shutters{
 	density = 0;
@@ -8745,10 +8737,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/red/north,
+/turf/open/floor/almayer/redcorner/north,
 /area/sulaco/brig)
 "fXd" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -15967,7 +15956,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/almayer/sterile,
+/turf/open/floor/wood/ship,
 /area/sulaco/brig)
 "qUn" = (
 /obj/item/reagent_container/glass/beaker/large,
@@ -16807,7 +16796,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 1
 	},
-/turf/open/floor/almayer/redfull,
+/turf/open/floor/wood/ship,
 /area/sulaco/brig)
 "saL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -19312,12 +19301,6 @@
 /obj/structure/machinery/cm_vending/clothing/marine/charlie,
 /turf/open/floor/almayer/emeraldfull,
 /area/sulaco/marine/charlie)
-"vLP" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
-/turf/open/floor/almayer/redfull,
-/area/sulaco/brig)
 "vLZ" = (
 /obj/structure/machinery/holosign/surgery{
 	id = "ot1"
@@ -20009,7 +19992,7 @@
 /area/sulaco/hallway/central_hall3)
 "wCd" = (
 /obj/structure/machinery/cm_vending/clothing/military_police_warden,
-/turf/open/floor/almayer/redfull,
+/turf/open/floor/wood/ship,
 /area/sulaco/brig)
 "wCn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -36479,7 +36462,7 @@ oJl
 aiw
 ajw
 aiD
-ajb
+eBN
 aiQ
 aiH
 aiA
@@ -36552,7 +36535,7 @@ ajE
 aiw
 ajx
 ajl
-ajb
+ait
 aiR
 aiD
 aiB
@@ -36844,7 +36827,7 @@ ajF
 aiw
 ajw
 ajm
-ajb
+ait
 aiT
 aiD
 aiB
@@ -36977,7 +36960,7 @@ bNo
 ofm
 ieQ
 ajm
-ajA
+aeT
 aks
 akn
 kih
@@ -37060,10 +37043,10 @@ ajZ
 ajp
 ajA
 acN
-ajA
-ajA
-ajp
-ajf
+aaF
+ait
+sCH
+ait
 aiw
 aiq
 aiq
@@ -37136,7 +37119,7 @@ ajB
 ajB
 ajB
 ajq
-ajg
+ait
 aiU
 aiD
 aiD
@@ -37708,7 +37691,7 @@ ofm
 mdS
 uzn
 ixV
-ajw
+akv
 aiO
 ajm
 ait
@@ -37852,9 +37835,9 @@ uJa
 bNo
 aiw
 wCd
-fth
+aki
 dJq
-ajw
+aaF
 aiO
 akk
 akh
@@ -37997,7 +37980,7 @@ bNo
 tnP
 dUz
 aiw
-vLP
+vyk
 qTs
 aiw
 ahR

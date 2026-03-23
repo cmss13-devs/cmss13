@@ -157,7 +157,7 @@
 	return TRUE
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!ishuman(H) || isyautja(H))
+	if(!ishuman(H) || isyautja(H) || isunggoy(H) || issangheili(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
 		return
 	if(issynth(H))

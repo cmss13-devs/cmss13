@@ -170,7 +170,8 @@
 			return "Y*"
 		if("xenoblood")
 			return "X*"
-
+		if("sangheiliblood")
+			return "S*"
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()

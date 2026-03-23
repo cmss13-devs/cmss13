@@ -223,7 +223,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 
-	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
+	var/icon/eyes_s = new/icon("icon" = H.species.eye_icon, "icon_state" = H.species ? H.species.eyes : "eyes_s")
 
 	eyes_s.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 

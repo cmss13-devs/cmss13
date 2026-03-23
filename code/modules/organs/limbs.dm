@@ -102,7 +102,7 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
+	wound_overlay = image(owner?.species.dam_icon, "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
@@ -782,6 +782,13 @@ This function completely restores a damaged organ to perfect condition.
 		skin_color = owner.skin_color
 		body_type = owner.body_type
 
+	if(isspeciessangheili(owner))
+		skin_color = owner.skin_color
+		body_type = owner.body_type
+
+	if(isspeciesunggoy(owner))
+		skin_color = owner.skin_color
+		body_type = owner.body_type
 
 	if(isspeciesspartan(owner))
 		skin_color = owner.skin_color
@@ -1590,7 +1597,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/get_limb_icon()
 	. = ..()
 
-	var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -BODYPARTS_LAYER)
+	var/image/eyes = image(species.eye_icon, species.eyes, layer = -BODYPARTS_LAYER)
 	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
 	. += eyes
 

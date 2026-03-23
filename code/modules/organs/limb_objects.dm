@@ -49,6 +49,14 @@
 		skin_color_icon = H.skin_color
 		body_type_icon = H.body_type
 
+	if(isspeciessangheili(H))
+		skin_color_icon = H.skin_color
+		body_type_icon = H.body_type
+
+	if(isspeciesunggoy(H))
+		skin_color_icon = H.skin_color
+		body_type_icon = H.body_type
+
 	if(isspeciesspartan(H))
 		skin_color_icon = H.skin_color
 		body_type_icon = H.body_type
@@ -125,7 +133,7 @@
 		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[H.h_style]
 		if(hair_style)
 			var/icon/hair = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/eyes = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
+			var/icon/eyes = new/icon("icon" = H.species.eye_icon, "icon_state" = H.species ? H.species.eyes : "eyes_s")
 			if(hair_style.do_coloration)
 				hair.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
 				eyes.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)

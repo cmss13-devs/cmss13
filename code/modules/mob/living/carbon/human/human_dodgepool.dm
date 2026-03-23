@@ -1,0 +1,5 @@
+/mob/living/carbon/human/proc/handle_dodgepool()
+	if(COOLDOWN_FINISHED(src, cd_dodge_pool_regen))
+		dodge_pool = min(dodge_pool + dodge_pool_regen, dodge_pool_max)
+		if(dodge_pool_regen < dodge_pool_regen_max)
+			dodge_pool_regen = min(dodge_pool_regen + dodge_pool_regen_restoration, dodge_pool_regen_max)

@@ -34,6 +34,13 @@
 	update_icon()
 	max_shots = round((cell.maxcharge / charge_cost), 1)
 
+
+/obj/item/weapon/gun/energy/has_ammunition()
+	if(cell.charge >= charge_cost || in_chamber)
+		return TRUE
+	else
+		return FALSE
+
 /obj/item/weapon/gun/energy/Destroy()
 	QDEL_NULL(cell)
 	. = ..()

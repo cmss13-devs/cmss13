@@ -18,3 +18,8 @@
 #define BLOOD_COLOR_YAUTJA_DARK "#67934a"
 
 #define BLOOD_COLOR_ZOMBIE "#210000"
+
+// halo
+
+#define BLOOD_COLOR_SANGHEILI "#5b3278"
+#define BLOOD_COLOR_UNGGOY "#26d9dc"

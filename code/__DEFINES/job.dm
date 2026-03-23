@@ -586,3 +586,34 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, ROLES_WY_GOONS, ROLES_WY_PMC_ALL, ROLES_WY_COMMANDOS, CMB_RIOT_LIST)
 
 #define JOB_SPARTAN "Spartan"
+
+//Covenant
+//Covenant
+#define JOB_COV_CIV "Civilian"
+#define JOB_COV_MINOR "Minor"
+#define JOB_COV_MAJOR "Major"
+#define JOB_COV_ULTRA "Ultra"
+#define JOB_COV_ZEALOT "Zealot"
+#define JOB_COV_COMMANDER "Sub-Commander"
+#define JOB_COV_COMANDER "Commander"
+
+// Ministry
+#define JOB_COV_DEACON "Deacon"
+
+
+// Platoon jobs
+#define JOB_COV_MENIAL "Menial"
+#define JOB_COV_OBEDIENTARY "Obedientary"
+#define JOB_COV_LANCE_ULTRA "Lance Ultra"
+#define JOB_COV_LANCE_LEADER "Lance Leader"
+
+// Special jobs
+#define JOB_COV_HEAVY "Heavy"
+#define JOB_COV_HEAVY_ULTRA "Heavy Ultra"
+
+#define JOB_COV_SPECOPS "SpecOps"
+#define JOB_COV_SPECOPS_ULTRA "SpecOps Ultra"
+#define JOB_COV_SPECOPS_OFFICER "SpecOps Officer"
+#define JOB_COV_SPECOPS_LEADER "SpecOps Leader"
+
+//-------- HALO Ends Here --------//

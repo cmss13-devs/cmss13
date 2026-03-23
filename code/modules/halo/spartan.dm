@@ -44,6 +44,7 @@
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	flags_item = NODROP
+	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/head/helmet/marine/unsc/mjolnir
 	name = "\improper Mjolnir Mk IV helmet"
@@ -60,6 +61,7 @@
 	armor_laser = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
+	allowed_species_list = list(SPECIES_SPARTAN)
 	actions_types = list(/datum/action/item_action/toggle)
 	var/toggleable = TRUE
 
@@ -123,6 +125,7 @@
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	flags_item = NODROP
+	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/suit/marine/unsc/mjolnir
 	name = "\improper Mjolnir Mk IV armour"
@@ -146,6 +149,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	var/armor_status = 100
 	flags_item = NODROP
+	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/suit/marine/unsc/mjolnir/proc/armor_check()
 	var/new_stat
@@ -195,7 +199,7 @@
 	item_state_slots = list()
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	flags_item = NODROP
-
+	allowed_species_list = list(SPECIES_SPARTAN)
 
 	item_icons = list(
 		WEAR_BODY = 'icons/halo/mob/humans/onmob/clothing/uniforms_48.dmi',
@@ -391,14 +395,14 @@
 
 	darksight = 2
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-/*
+
 	dodge_pool = 10
 	dodge_pool_max = 10
 	dodge_pool_regen = 1
 	dodge_pool_regen_max = 1
 	dodge_pool_regen_restoration = 0.1
 	dp_regen_base_reactivation_time = 20
-*/
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
@@ -409,8 +413,8 @@
 
 	icobase = 'icons/halo/mob/humans/species/spartan/r_spartan.dmi'
 	deform = 'icons/halo/mob/humans/species/spartan/r_spartan.dmi'
-//	eye_icon = 'icons/halo/mob/humans/species/spartan/eyes.dmi'
-//	dam_icon = 'icons/halo/mob/humans/species/spartan/dam_spartan.dmi'
+	eye_icon = 'icons/halo/mob/humans/species/spartan/eyes.dmi'
+	dam_icon = 'icons/halo/mob/humans/species/spartan/dam_spartan.dmi'
 	blood_mask = 'icons/halo/mob/humans/species/spartan/blood_mask.dmi'
 	icon_template = 'icons/mob/humans/template_64.dmi'
 

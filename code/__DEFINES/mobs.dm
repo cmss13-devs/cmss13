@@ -358,6 +358,8 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_SYNTHETIC_K9 "Synthetic K9"
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
+#define SPECIES_SANGHEILI "Sangheili"
+#define SPECIES_UNGGOY "Unggoy"
 #define SPECIES_SPARTAN "Spartan"
 
 #define ALL_LIMBS list("head","chest","groin","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")

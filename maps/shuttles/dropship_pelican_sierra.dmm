@@ -255,9 +255,6 @@
 	opacity = 0
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/shuttle/pelican/directional/west,
 /area/shuttle/pelican/sierra)
 "Fw" = (
@@ -276,16 +273,12 @@
 	},
 /obj/structure/machinery/computer/dropship_weapons/pelican/sierra{
 	pixel_x = -2;
-	pixel_y = -3;
-	layer = 4.5
+	pixel_y = -3
 	},
 /obj/structure/machinery/camera/autoname/almayer/dropship_two{
 	dir = 4;
 	pixel_x = -16;
 	alpha = 0
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
 	},
 /turf/open/shuttle/pelican/cockpit_seat,
 /area/shuttle/pelican/sierra)
@@ -436,9 +429,6 @@
 	opacity = 0
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /turf/open/shuttle/pelican/directional/east,
 /area/shuttle/pelican/sierra)
 "OK" = (
@@ -478,9 +468,6 @@
 	layer = 4.111;
 	buckling_y = 6;
 	non_north_layer = 4.111
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
 	},
 /turf/open/shuttle/pelican/directional/east,
 /area/shuttle/pelican/sierra)
@@ -523,9 +510,6 @@
 	layer = 4.111;
 	buckling_y = 6;
 	non_north_layer = 4.111
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
 	},
 /turf/open/shuttle/pelican/directional/west,
 /area/shuttle/pelican/sierra)

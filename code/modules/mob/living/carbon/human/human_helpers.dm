@@ -172,6 +172,17 @@
 		body_size_icon = body_size
 		body_type_icon = body_type
 
+	if(isspeciessangheili(src))
+		skin_color_icon = skin_color
+		body_size_icon = body_size
+		body_type_icon = body_type
+
+	if(isspeciesunggoy(src))
+		skin_color_icon = skin_color
+		body_size_icon = body_size
+		body_type_icon = body_type
+
+
 	if(isspeciesspartan(src))
 		skin_color_icon = skin_color
 		body_size_icon = body_size

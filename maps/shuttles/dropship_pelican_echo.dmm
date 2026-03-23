@@ -35,9 +35,6 @@
 	opacity = 0
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/shuttle/pelican/directional/west,
 /area/shuttle/pelican/echo)
 "cw" = (
@@ -105,9 +102,6 @@
 	non_north_layer = 4.115
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /turf/open/shuttle/pelican/directional/east,
 /area/shuttle/pelican/echo)
 "le" = (
@@ -290,8 +284,7 @@
 /obj/effect/roof_node/pelican,
 /obj/structure/machinery/computer/dropship_weapons/pelican/echo{
 	pixel_x = -2;
-	pixel_y = -3;
-	layer = 4.5
+	pixel_y = -3
 	},
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
@@ -299,9 +292,6 @@
 	alpha = 0
 	},
 /obj/structure/blocker/invisible_wall/directional{
-	dir = 8
-	},
-/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/shuttle/pelican/cockpit_seat,
@@ -486,9 +476,6 @@
 	opacity = 0
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /turf/open/shuttle/pelican/directional/east,
 /area/shuttle/pelican/echo)
 "Tb" = (
@@ -532,9 +519,6 @@
 	opacity = 0
 	},
 /obj/effect/roof_node/pelican,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/shuttle/pelican/directional/west,
 /area/shuttle/pelican/echo)
 "Vj" = (

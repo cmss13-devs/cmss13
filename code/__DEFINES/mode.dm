@@ -336,6 +336,8 @@ DEFINE_BITFIELD(whitelist_status, list(
 
 #define DEFAULT_ALLY_BAN_LIST FACTION_LIST_XENOMORPH_CORRUPTEDLESS + FACTION_LIST_HUMANOID
 
+#define FACTION_COVENANT "Covenant"
+
 // Faction allegiances within a certain faction.
 
 #define FACTION_ALLEGIANCE_USCM_COMMANDER list("Doves", "Hawks", "Magpies", "Unaligned")

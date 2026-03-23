@@ -29,5 +29,7 @@ GLOBAL_LIST_EMPTY_TYPED(player_embryo_list, /obj/item/alien_embryo)
 GLOBAL_LIST_EMPTY_TYPED(hellhound_list, /mob/living/carbon/xenomorph/hellhound)
 GLOBAL_LIST_EMPTY_TYPED(zombie_list, /mob/living/carbon/human)
 GLOBAL_LIST_EMPTY_TYPED(yautja_mob_list, /mob/living/carbon/human)
+GLOBAL_LIST_EMPTY_TYPED(sangheili_mob_list, /mob/living/carbon/human)
+GLOBAL_LIST_EMPTY_TYPED(unggoy_mob_list, /mob/living/carbon/human)
 GLOBAL_LIST_EMPTY_TYPED(spartan_mob_list, /mob/living/carbon/human)
 

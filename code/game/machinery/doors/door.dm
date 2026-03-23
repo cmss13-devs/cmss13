@@ -259,6 +259,8 @@
 				continue // Don't block ourselves (only applicable when opening)
 			if(!blocking_structure.density && !istype(blocking_structure, /obj/structure/closet))
 				continue // Don't block if non-dense and not a closet (they toggle density)
+			if(istype(blocking_structure, /obj/structure/shuttle/part))
+				continue // Don't block a door with non-movable shuttle bits in it.
 			if(blocking_structure.anchored && istype(blocking_structure, /obj/structure/machinery/door))
 				continue // Don't block because of other doors (shutters) also in this location
 

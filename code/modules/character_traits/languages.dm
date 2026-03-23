@@ -67,6 +67,15 @@
 	language_name = LANGUAGE_YAUTJA
 	applyable = FALSE
 
+/datum/character_trait/language/sangheili
+	language_name = LANGUAGE_SANGHEILI
+	applyable = FALSE
+
+
+/datum/character_trait/language/unggoy
+	language_name = LANGUAGE_UNGGOY
+	applyable = FALSE
+
 /datum/character_trait/language/tactical_sign_language
 	language_name = LANGUAGE_TSL
 	applyable = FALSE

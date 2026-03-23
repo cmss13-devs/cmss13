@@ -11,6 +11,8 @@
 #define ismonkey(A) (ishuman(A) && istype(A?:species, /datum/species/monkey))
 #define isyautja(A) (ishuman(A) && istype(A?:species, /datum/species/yautja))
 #define isthrall(A) (ishuman(A) && istype(A?:species, /datum/species/human/hero/thrall))
+#define issangheili(A) (ishuman(A) && istype(A?:species, /datum/species/sangheili))
+#define isunggoy(A) (ishuman(A) && istype(A?:species, /datum/species/unggoy))
 #define isspartan(A) (ishuman(A) && istype(A?:species, /datum/species/spartan))
 #define isresearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isSEA(A) (ishuman(A) && A.job == "Senior Enlisted Advisor")
@@ -27,6 +29,8 @@
 #define isspecieshuman(A) (A.species?.group == SPECIES_HUMAN)
 #define isspeciesmonkey(A) (A.species?.group == SPECIES_MONKEY)
 #define isspeciesyautja(A) (A.species?.group == SPECIES_YAUTJA)
+#define isspeciessangheili(A) (A.species?.group == SPECIES_SANGHEILI)
+#define isspeciesunggoy(A) (A.species?.group == SPECIES_UNGGOY)
 #define isspeciessynth(A) (A.species?.group == SPECIES_SYNTHETIC)
 #define isspeciesspartan(A) (A.species?.group == SPECIES_SPARTAN)
 

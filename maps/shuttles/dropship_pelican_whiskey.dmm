@@ -280,8 +280,7 @@
 	},
 /obj/structure/machinery/computer/dropship_weapons/pelican/whiskey{
 	pixel_x = -2;
-	pixel_y = -3;
-	layer = 4.5
+	pixel_y = -3
 	},
 /obj/structure/machinery/camera/autoname/almayer/dropship_three{
 	dir = 4;

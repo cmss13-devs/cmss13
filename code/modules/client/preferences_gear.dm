@@ -496,19 +496,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
-	path = /obj/item/clothing/accessory/helmet/cover/netting
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/netting/desert
 	display_name = "Desert Helmet netting"
-	path = /obj/item/clothing/accessory/helmet/cover/netting/desert
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/netting/jungle
 	display_name = "Jungle Helmet netting"
-	path = /obj/item/clothing/accessory/helmet/cover/netting/jungle
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/netting/urban
 	display_name = "Urban Helmet netting"
-	path = /obj/item/clothing/accessory/helmet/cover/netting/urban
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
@@ -536,19 +536,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/raincover
 	display_name = "Rain cover"
-	path = /obj/item/clothing/accessory/helmet/cover/raincover
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/raincover/jungle
 	display_name = "Jungle Rain cover"
-	path = /obj/item/clothing/accessory/helmet/cover/raincover/jungle
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/raincover/desert
 	display_name = "Desert Rain cover"
-	path = /obj/item/clothing/accessory/helmet/cover/raincover/desert
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
-	path = /obj/item/clothing/accessory/helmet/cover/raincover/urban
+	path = /obj/item/toy/plush/shark
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"

@@ -164,6 +164,8 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define AI_FREQ 1500
 
+#define COV_FREQ 1502
+
 #define MAX_FREE_FREQ 1599 // -------------------------------------------------
 
 GLOBAL_LIST_INIT(radiochannels, list(
@@ -238,6 +240,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
 	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
+
+	RADIO_CHANNEL_COV = COV_FREQ,
 
 	RADIO_CHANNEL_FAX_WY = FAX_WY_FREQ,
 	RADIO_CHANNEL_FAX_USCM_HC = FAX_USCM_HC_FREQ,
@@ -340,6 +344,7 @@ SUBSYSTEM_DEF(radio)
 		"[COLONY_FREQ]" = "deptradio",
 		"[BUG_A_FREQ]" = "airadio",
 		"[BUG_B_FREQ]" = "aiprivradio",
+		"[COV_FREQ]" = "covradio",
 		"[UPP_FREQ]" = "syndradio",
 		"[UPP_CMD_FREQ]" = "opforcmd",
 		"[UPP_ENGI_FREQ]" = "opforeng",

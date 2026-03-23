@@ -44,3 +44,10 @@ GLOBAL_LIST_INIT(pred_last_names, list("Tha'jo", "Ba'ytui", "Thwa'dtei", "Vah'ka
 
 GLOBAL_LIST_INIT(first_names_spartan_male, list("James","Harry","Kim","Nick","Will","Steven","Samuel","August","Charles","Shane","Charlie","Ted","Joe","Joseph","Anderson","Seth","Jeremy","Ethan","Shaw","Edd","Brendan","Billy","Cameron","Mandy","Mike","Jeffery","Palmer","Gillian","Gordon","Yang","Julian","Dusty","Walter","Oscar","Edwin","Kane","Batou"))
 GLOBAL_LIST_INIT(first_names_spartan_female, list("Elen","Cindy","Soren","Kelly","Robin","Thorne","Shina","Bretta","Tanya","Sasha","Myla","Iselda","Allyria","Grace","Lydia","Marissa","Eira","Eva","Alma","Julianne","Sei","Dana","Lara","Chell","Joyce","Frederica","Thea","Maro","Yuri","Dora","Jessica","Lilly","Luna","Talasea","Maya","Motoko","Sylvie"))
+
+GLOBAL_LIST_INIT(first_names_sangheili, list("Ard","Aro","Arda","Fal","Fol","Cham","Chor","Thav","Zuka","Inka","Zhor","Zhar","Khar","Avam","Mag","Sroa","Srum","Reva","Kral","Thal","Thul","Oka","Jula","Roha","Toha","Bozza","Caro","N'roam","N'thavo","Lars","Lar","Rtuz","Suzo"))
+GLOBAL_LIST_INIT(last_names_sangheili, list("'Vosovee","'Vadamee","'Susamee","'Motakee","'Zuvamee","'Zomamee","'Naramee","'Tarumee","'Draomee","'Lagamee","'Charumee","'Lokee","'Malee","'Sahamee","'Moramee","'Charamee","'Rtanee","'Vutanee","'Mdagmee","'Kodamee","'Kudumee","'Modumee","'Sdoamee","'Vuhomee","'Refamee","'Refumee"))
+
+GLOBAL_LIST_INIT(first_names_unggoy, list("Bip","Bap","Bam","Brig","Lar","Dim","Kim","Yap","Yip","Yad","Yab","Bug","Yug","Lug","Pom","Yam","Gud","Gun","Dam","Flim","Flum","Flop","Flo","Stol","Kwas","Pig"))
+GLOBAL_LIST_INIT(last_names_unggoy, list("bip","bap","bam","brig","lard","dim","kim","yap","yip","yad","yab","bug","yug","lug","pom","yam","gud","gun","dam","flim","flum","flop","flo","stol","kwas","pig","as"))
+

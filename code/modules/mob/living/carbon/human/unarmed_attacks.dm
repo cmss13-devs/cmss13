@@ -69,3 +69,11 @@
 	attack_verb = list("maul")
 	damage = 15
 	shredding = TRUE
+
+/datum/unarmed_attack/punch/sangheili
+	attack_verb = list("pummel","slamm","punch")
+	damage = 20
+
+/datum/unarmed_attack/punch/unggoy
+	attack_verb = list("pummel","slamm","punch")
+	damage = 40

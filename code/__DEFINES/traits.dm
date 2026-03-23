@@ -173,6 +173,8 @@
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
+/// Knowledge of Covenant technology
+#define TRAIT_COV_TECH "t_cov_tech"
 /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
 #define TRAIT_SUPER_STRONG "t_super_strong"
 /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
@@ -333,6 +335,7 @@
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_YAUTJA_TECH,
+	TRAIT_COV_TECH,
 	TRAIT_SUPER_STRONG,
 	TRAIT_FOREIGN_BIO,
 	TRAIT_INTENT_EYES,
@@ -364,6 +367,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_DAZED" = TRAIT_DAZED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
+		"TRAIT_COV_TECH" = TRAIT_COV_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
 		"TRAIT_INTENT_EYES" = TRAIT_INTENT_EYES,

@@ -13,7 +13,9 @@
 	var/deform = 'icons/mob/humans/species/r_def_human.dmi' // Mutated icon set.
 	var/icobase_source // if we want to use sourcing system
 	var/deform_source
+	var/dam_icon = 'icons/mob/humans/dam_human.dmi'
 	var/eyes = "eyes_s"   // Icon for eyes.
+	var/eye_icon = 'icons/mob/humans/onmob/human_face.dmi'
 	var/special_body_types = FALSE
 
 	var/primitive   // Lesser form, if any (ie. monkey for humans)
@@ -59,6 +61,20 @@
 
 	var/body_temperature = 310.15 //non-IS_SYNTHETIC species will try to stabilize at this temperature. (also affects temperature processing)
 	var/reagent_tag  //Used for metabolizing reagents.
+
+	/// The current dodge pool
+	var/dodge_pool = 5
+	/// The maximum dodge pool
+	var/dodge_pool_max = 5
+	/// The regeneration rate of a dodge pool
+	var/dodge_pool_regen = 0.2
+	/// Maximum regeneration rate of a dodge pool
+	var/dodge_pool_regen_max = 0.2
+	/// Rate at which the dodge pool regen restores itself after the mob is fired at
+	var/dodge_pool_regen_restoration = 0.1
+	/// Base time until regeneration restarts after being fired at
+	var/dp_regen_base_reactivation_time = 30
+
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE

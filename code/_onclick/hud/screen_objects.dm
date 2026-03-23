@@ -57,6 +57,11 @@
 	var/datum/action/source_action
 	var/image/maptext_overlay
 
+/atom/movable/screen/action_button/covenant
+	icon = 'icons/halo/mob/hud/actions.dmi'
+	icon_state = "cov_template"
+
+
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 

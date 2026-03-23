@@ -71,6 +71,8 @@
 
 #define RADIO_CHANNEL_HYPERDYNE "Hyperdyne"
 
+#define RADIO_CHANNEL_COV "Covenant"
+
 //Listening Devices
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
 #define RADIO_CHANNEL_BUG_B "Listening Device B"

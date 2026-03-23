@@ -107,6 +107,11 @@
 			var/obj/limb/affecting = get_limb(rand_zone(attacking_mob.zone_selected, 70))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 
+			raw_damage = attack.damage + extra_cqc_dmg
+
+			if(check_energy_shield(damage = raw_damage, attack_text = "the hit"))
+				return
+
 			if(armor_degrade(raw_damage))
 				return
 
@@ -114,7 +119,6 @@
 
 			visible_message(SPAN_DANGER("[attacking_mob] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
 
-			raw_damage = attack.damage + extra_cqc_dmg
 			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
 			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)
 

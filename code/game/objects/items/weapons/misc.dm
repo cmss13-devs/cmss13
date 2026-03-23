@@ -169,3 +169,13 @@
 	if(do_after(user, 3.5 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_HOSTILE))
 		toggle_javelin(user)
 	..()
+
+/obj/item/weapon/javelin/horse
+	desc = "A large spear used by cavalry units. Extremely deadly in the right hands but hard to carry around. To throw the spear effectively, you have to raise it."
+
+/obj/item/weapon/javelin/horse/raise_javelin(mob/user as mob)
+	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
+	javelin_readied = TRUE
+	item_state = "javelin_w"
+	force = MELEE_FORCE_TIER_10
+	throw_range = 6

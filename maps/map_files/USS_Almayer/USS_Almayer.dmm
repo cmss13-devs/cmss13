@@ -19683,6 +19683,8 @@
 /area/almayer/shipboard/navigation)
 "aYH" = (
 /obj/structure/safe/cl_office,
+/obj/item/clothing/suit/marine/unsc/oni,
+/obj/item/clothing/head/cmcap/oni,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "aYI" = (
@@ -56837,6 +56839,17 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_aft_hallway)
+"jtz" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/pads/bracers/oni,
+/obj/item/clothing/accessory/pads/greaves/oni,
+/obj/item/clothing/accessory/pads/neckguard/oni,
+/obj/item/clothing/accessory/pads/oni,
+/obj/item/clothing/head/cmcap/oni,
+/obj/item/clothing/head/helmet/marine/unsc/oni,
+/obj/item/clothing/suit/marine/unsc/oni,
+/turf/open/floor/almayer,
+/area/almayer/command/corporateliaison)
 "jtU" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_p)
@@ -203673,7 +203686,7 @@ fdx
 gAk
 dzp
 rMT
-dzp
+jtz
 pBG
 jtU
 mRU

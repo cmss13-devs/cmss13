@@ -744,9 +744,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			y_bomb = text2num(params["y"])
 			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("MAC cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("MAC cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -1264,7 +1264,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(M.stat != CONSCIOUS || !M.client)
 				continue
 			playsound_client(M.client, 'sound/effects/ob_alert.ogg', M)
-			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
+			to_chat(M, SPAN_HIGHDANGER("MAC Cannon launch command detected!"))
 			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
 
 
@@ -1420,7 +1420,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(human.client)
 				shake_camera(human, 10, 1)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
-	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
+	current_squad.send_message("WARNING! Ballistic trans-atmospheric MAC fire detected! Get outside of Danger Close!")
 
 /obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/targetted_turf)
 	if(!targetted_turf)

@@ -27,7 +27,7 @@
 	desc = "Highly explosive bombardment ammo, to be loaded into the orbital cannon."
 	icon_state = "ob_he"
 
-	announce_message = "Additional Orbital Bombardment warheads (HE) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional MAC Rounds (HE) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 
@@ -38,7 +38,7 @@
 	desc = "Highly explosive bombardment ammo that fragments, to be loaded into the orbital cannon."
 	icon_state = "ob_cluster"
 
-	announce_message = "Additional Orbital Bombardment warheads (Cluster) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional MAC rounds (Cluster) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 
@@ -49,7 +49,7 @@
 	desc = "Highly flammable bombardment ammo, to be loaded into the orbital cannon."
 	icon_state = "ob_incend"
 
-	announce_message = "Additional Orbital Bombardment warheads (Incendiary) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional MAC rounds (Incendiary) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 

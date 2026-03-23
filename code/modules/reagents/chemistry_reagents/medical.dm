@@ -386,13 +386,13 @@
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
-	description = "Neutralizes the effects of alcohol in the bloodstream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine, ironically, becomes toxic upon overdosing."
+	description = "Neutralizes the effects of alcohol and active opioids in the bloodstream, by oxidizing it into water molecules. This also helps it act as a receptor agonist, and helps mitigate and clear addictions. Despite this, it does not stop immediate intoxication. Ethylredoxrazine, ironically, becomes toxic upon overdosing."
 	reagent_state = SOLID
 	color = "#605048" // rgb: 96, 80, 72
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_FOCUSING = 3)
+	properties = list(PROPERTY_FOCUSING = 3, PROPERTY_ANTIADDICTIVE = 3)
 
 ///////ANTIDEPRESSANTS///////
 /datum/reagent/medical/antidepressant/methylphenidate

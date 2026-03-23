@@ -171,7 +171,7 @@
 	icon_state = "cupola_1"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target/wart
-	max_rounds = 100
+	max_rounds = 60
 	gun_type = /obj/item/hardpoint/special/vulcan
 
 /obj/item/ammo_magazine/hardpoint/vulcan/update_icon()
@@ -179,6 +179,6 @@
 
 /datum/ammo/bullet/smartgun/holo_target/wart
 	name = "12.7x99 bullet"
-	damage = 26
+	damage = 24
 	penetration = ARMOR_PENETRATION_TIER_4
 	icon_state = "autocannon"

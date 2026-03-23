@@ -479,6 +479,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight
 	name = "\improper Freight Elevator Hatch"
 
+/obj/structure/machinery/door/airlock/multi_tile/elevator/brown
+	icon = 'icons/obj/structures/doors/4x1_elevator_brown.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'

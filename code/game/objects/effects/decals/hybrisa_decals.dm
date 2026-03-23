@@ -85,6 +85,29 @@
 /obj/effect/decal/hybrisa/gold/line4
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "Z_W"
+/obj/effect/decal/hybrisa/gold/corner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_C"
+
+//Colorable lines
+/obj/effect/decal/hybrisa/colorable_line
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_S"
+/obj/effect/decal/hybrisa/colorable_line/line1
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_S"
+/obj/effect/decal/hybrisa/colorable_line/line2
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_E"
+/obj/effect/decal/hybrisa/colorable_line/line3
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_N"
+/obj/effect/decal/hybrisa/colorable_line/line4
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_W"
+/obj/effect/decal/hybrisa/colorable_line/corner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "C_C"
 
 // Red & White Warning Stripes
 

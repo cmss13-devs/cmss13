@@ -1717,12 +1717,9 @@
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "agu" = (
-/obj/structure/machinery/cryopod/no_cryo/right{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering)
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -1767,6 +1764,13 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agE" = (
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering)
+"agF" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
@@ -46677,7 +46681,7 @@ lcf
 bMJ
 pAd
 skZ
-skZ
+agu
 jmQ
 lrf
 mSz
@@ -47105,7 +47109,7 @@ dbO
 skZ
 skZ
 dbO
-keO
+aah
 aah
 aah
 aah
@@ -52313,7 +52317,7 @@ bmR
 bnr
 bnr
 bok
-agu
+agE
 bpi
 mfQ
 ayr
@@ -52525,7 +52529,7 @@ bmm
 bmS
 tTI
 tTI
-agE
+agF
 boK
 nVq
 cKu

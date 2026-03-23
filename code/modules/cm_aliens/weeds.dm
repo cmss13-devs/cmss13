@@ -79,10 +79,8 @@
 		weeded_turf = turf
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
-	RegisterSignal(src, list(
-		COMSIG_ATOM_TURF_CHANGE,
-		COMSIG_MOVABLE_TURF_ENTERED
-	), PROC_REF(set_turf_weeded))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(set_turf_weeded))
+	RegisterSignal(turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(pre_turf_change))
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
@@ -96,6 +94,10 @@
 		weeded_turf.weeds = null
 
 	T.weeds = src
+
+// Before the turf changes, register a temporary callback to update `weeds` post-change.
+/obj/effect/alien/weeds/proc/pre_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+	post_change_callbacks += CALLBACK(src, PROC_REF(set_turf_weeded), source)
 
 /obj/effect/alien/weeds/proc/forsaken_handling()
 	SIGNAL_HANDLER

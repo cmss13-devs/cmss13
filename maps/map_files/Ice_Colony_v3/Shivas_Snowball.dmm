@@ -10,6 +10,11 @@
 "aac" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
+"aad" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/telecomm/lz1_biceps)
 "aae" = (
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
@@ -14519,8 +14524,9 @@
 /area/shiva/exterior/cp_s_research)
 "kVe" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/objective{
-	dir = 8
+/obj/structure/machinery/computer/station_alert{
+	dir = 8;
+	pixel_y = 5
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -14804,10 +14810,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "lnm" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "lnH" = (
 /obj/structure/flora/bush/snow{
@@ -20051,9 +20054,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/aux_power)
 "rSL" = (
-/obj/item/weapon/gun/boltaction{
-	pixel_x = -6
-	},
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "rTk" = (
@@ -22451,9 +22452,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "uFA" = (
-/obj/item/weapon/gun/boltaction{
-	pixel_x = -6
-	},
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "uGw" = (
@@ -45353,7 +45352,7 @@ cXk
 sod
 sod
 wNj
-gzM
+aad
 blI
 blI
 lnY

@@ -155,7 +155,7 @@
 
 /obj/structure/prop/tyrargo/military_evac_sign
 	name = "US military evacuation notice"
-	desc = "A evacuation poster, it reads: All residents of Tyrargo Rift and outlying areas are required to evacuate by 5:45pm/2182. All evacuees will be asked to provide identification and may be subject to medical testing. Evacuees resisting offical direction will be detained. Evacuation is mandatory."
+	desc = "An evacuation poster, it reads: All residents of Tyrargo Rift and outlying areas are required to evacuate by 5:45pm/2182. All evacuees will be asked to provide identification and may be subject to medical testing. Evacuees resisting official direction will be detained. Evacuation is mandatory."
 	icon = 'icons/obj/structures/props/wall_decorations/tyrargo32x64_signs.dmi'
 	icon_state = "evac_sign"
 	layer = WALL_OBJ_LAYER
@@ -214,7 +214,7 @@
 // Traffic Sign
 /obj/structure/prop/tyrargo/traffic_signal
 	name = "Portable Changeable Message Sign"
-	desc = "A PCMS, it displays offical instructions by the local authorities."
+	desc = "A PCMS, it displays official instructions by the local authorities."
 	icon = 'icons/obj/structures/props/industrial/traffic_signal.dmi'
 	icon_state = "traffic_1"
 	layer = BILLBOARD_LAYER

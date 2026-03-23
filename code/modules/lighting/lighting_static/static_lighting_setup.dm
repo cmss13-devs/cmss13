@@ -3,5 +3,5 @@
 		var/area/area = turf.loc
 		if(!area.static_lighting)
 			continue
-		new /datum/static_lighting_object(turf)
+		new /atom/movable/static_lighting_object(turf)
 		CHECK_TICK

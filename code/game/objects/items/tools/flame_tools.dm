@@ -230,6 +230,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarette a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)
+	RegisterSignal(src, COMSIG_OBJ_EXTINGUISH, PROC_REF(handle_extinguish))
 	if(w_class == SIZE_TINY)
 		AddElement(/datum/element/mouth_drop_item)
 
@@ -427,11 +428,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(!heat_source)
 		light()
-
-/obj/item/clothing/mask/cigarette/extinguish()
-	. = ..()
-	if(heat_source)
-		go_out()
 
 /obj/item/clothing/mask/cigarette/proc/handle_extinguish()
 	SIGNAL_HANDLER

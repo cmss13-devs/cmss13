@@ -163,7 +163,7 @@
 
 /datum/reagent/water/reaction_obj(obj/O, volume)
 	src = null
-	O.extinguish()
+	SEND_SIGNAL(O, COMSIG_OBJ_EXTINGUISH)
 
 /datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))

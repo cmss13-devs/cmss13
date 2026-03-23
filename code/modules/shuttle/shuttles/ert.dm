@@ -136,6 +136,13 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 5
+/obj/docking_port/mobile/emergency_response/ert6
+	name = "CIA Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT6
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/hunter
 	name = "Hunter Shuttle"
 	id = MOBILE_SHUTTLE_ID_HUNTER
@@ -225,6 +232,11 @@
 		WARNING("No port door found for [src]")
 	if(!starboard_door)
 		WARNING("No starboard door found for [src]")
+
+/obj/docking_port/mobile/emergency_response/big/cia_barge
+	name = "GRS Barge"
+	id = MOBILE_SHUTTLE_ID_ERT_BIG_CIA
+	area_type = /area/shuttle/grs_barge
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
@@ -446,6 +458,10 @@
 	name = "Military Caste Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 
+/datum/map_template/shuttle/cia_ert
+	name = "CIA Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
+
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -453,6 +469,10 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/big_cia
+	name = "GRS Barge"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG_CIA
 
 /datum/map_template/shuttle/port_umbilical_cord
 	name = "Port Umbilical Cord"

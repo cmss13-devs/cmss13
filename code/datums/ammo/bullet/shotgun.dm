@@ -54,6 +54,16 @@
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_5
 
+/datum/ammo/bullet/shotgun/slug/es7/incendiary
+	damage_type = BURN
+	hit_effect_color = "#ff7b00"
+
+/datum/ammo/bullet/shotgun/slug/es7/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.

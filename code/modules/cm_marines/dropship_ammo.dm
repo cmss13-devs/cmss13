@@ -261,12 +261,12 @@
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	set waitfor = 0
-	var/list/turf_list = RANGE_TURFS(3, impact) //This is its area of effect
+	var/list/turf_list = shuffle(RANGE_TURFS(3, impact)) //This is its area of effect
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
-	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
-		var/turf/U = pick(turf_list)
-		turf_list -= U
-		fire_spread_recur(U, create_cause_data(fired_from.name, source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
+	var/datum/reagent/fire_reagent = create_fire_reagent(5, 75, "#EE6515")
+	for(var/i in 1 to 16) //This is how many tiles within that area of effect will be randomly ignited
+		var/turf/target_turf = turf_list[i]
+		fire_spread(target_turf, create_cause_data(fired_from.name, source_mob), 1, fire_reagent)//Very, very intense, but goes out very quick
 
 	if(!ammo_count && !QDELETED(src))
 		qdel(src) //deleted after last laser beam is fired and impact the ground.
@@ -316,8 +316,9 @@
 
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
+	var/datum/reagent/fire_reagent = create_fire_reagent(15, 50, "#00b8ff")
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 175, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) //Small explosive power with a small fall off for a big explosion range
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, fire_reagent), 0.5 SECONDS) //Very intense but the fire doesn't last very long
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/keeper
@@ -357,8 +358,9 @@
 
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
+	var/datum/reagent/fire_reagent = create_fire_reagent(60, 30, "#EE6515")
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515"), 0.5 SECONDS) //Color changed into napalm's color to better convey how intense the fire actually is.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 6, fire_reagent), 0.5 SECONDS) //Color changed into napalm's color to better convey how intense the fire actually is.
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/thermobaric
@@ -371,7 +373,8 @@
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	var/datum/reagent/fire_reagent = create_fire_reagent(25, 50, "#c96500")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, fire_reagent), 0.5 SECONDS) //Very intense but the fire doesn't last very long
 	for(var/mob/living/carbon/victim in orange(5, impact))
 		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
 	QDEL_IN(src, 0.5 SECONDS)
@@ -425,7 +428,8 @@
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	..()
 	spawn(5)
-		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
+		var/datum/reagent/fire_reagent = create_fire_reagent(25, 20, "#EE6515")
+		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, fire_reagent)
 
 /obj/structure/ship_ammo/sentry
 	name = "\improper A/C-49-P Air Deployable Sentry"

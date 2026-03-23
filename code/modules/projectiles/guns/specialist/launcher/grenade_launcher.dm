@@ -214,9 +214,10 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	return FALSE
 
-
-//Doesn't use these. Listed for reference.
+//Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
 	return
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()

@@ -75,5 +75,19 @@
 						hud_icon_state = "bodyguard_pps"
 					if(PAY_SHORT_WY_SEC_PPC)
 						hud_icon_state = "bodyguard_ppc"
+		if(JOB_WY_PPO)
+			hud_icon_state = "bodyguard_ppo"
+		if(JOB_WY_PPS)
+			hud_icon_state = "bodyguard_pps"
+		if(JOB_WY_PPC)
+			hud_icon_state = "bodyguard_ppc"
+		if(JOB_WY_DPO)
+			hud_icon_state = "bodyguard_dpo"
+		if(JOB_WY_DPS)
+			hud_icon_state = "bodyguard_dps"
+		if(JOB_WY_DPC)
+			hud_icon_state = "bodyguard_dpc"
+
+
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "wy_[hud_icon_state]")

@@ -438,7 +438,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		qdel(src)
 		return
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound/Initialize()
+/obj/item/explosive/grenade/spawnergrenade/horse/Initialize()
 	. = ..()
 
 	force = 20

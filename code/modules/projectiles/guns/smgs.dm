@@ -95,6 +95,9 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/stock/smg/collapsible/brace,
+		/obj/item/attachable/cosmetic/m39_grip,
+		/obj/item/attachable/cosmetic/m39_ported,
+		/obj/item/attachable/cosmetic/m39_black_wrap,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -109,7 +112,7 @@
 		AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/smg/m39/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 24, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 24, "stock_y" = 15, "cosmetic_x" = 16, "cosmetic_y" = 16)
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	..()

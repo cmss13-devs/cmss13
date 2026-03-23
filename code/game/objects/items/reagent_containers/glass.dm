@@ -390,6 +390,26 @@
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 
+/obj/item/reagent_container/glass/minitank/large
+	name = "\improper MS-22 Large Reagent Tank"
+	desc = "A heavy-duty field tank capable of storing large volumes of medical chemicals. Designed to be housed inside a corpsman chempack and used to refill pressurized canisters and smart refill tanks in the field. A valve on the top allows flushing."
+	icon = 'icons/obj/items/tank.dmi'
+	icon_state = "large_reagent_tank"
+	matter = list("metal" = 1000)
+	volume = 480
+	w_class = SIZE_LARGE
+	var/obj/item/storage/backpack/marine/owner_pack = null
+
+/obj/item/reagent_container/glass/minitank/large/on_reagent_change()
+	update_icon()
+	if(!QDELETED(owner_pack))
+		owner_pack.update_icon()
+
+/obj/item/reagent_container/glass/minitank/large/flush_tank()
+	. = ..()
+	if(!QDELETED(owner_pack))
+		owner_pack.update_icon()
+
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."

@@ -35,6 +35,10 @@ and organ transplant code which may come in handy in future but haven't been edi
 	time = 3 SECONDS
 	repeat_step = TRUE
 
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//success handled in repeat code
+	failure_sound = 'sound/surgery/organ2.ogg'
+
 /datum/surgery_step/repair_robotic_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
 		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
@@ -87,6 +91,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	var/dam_amt = 5
 	target.apply_damage(10, TOX)
 	target.apply_damage(5, BRUTE, target_zone)

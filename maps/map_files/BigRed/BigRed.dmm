@@ -1716,6 +1716,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
+"agu" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -28690,7 +28694,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "nLm" = (
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_y = 7;
 	pixel_x = 12
 	},
@@ -30020,7 +30024,7 @@
 /area/bigredv2/caves/mining)
 "pcf" = (
 /obj/structure/sign/safety/manualopenclose{
-	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the the card reader being scraped up. Poor bastards.";
+	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the card reader being scraped up. Poor bastards.";
 	icon = 'icons/obj/structures/machinery/monitors.dmi';
 	icon_state = "auth_off";
 	name = "Access console";
@@ -46662,7 +46666,7 @@ lcf
 bMJ
 pAd
 skZ
-skZ
+agu
 jmQ
 lrf
 mSz
@@ -47090,7 +47094,7 @@ dbO
 skZ
 skZ
 dbO
-keO
+aah
 aah
 aah
 aah

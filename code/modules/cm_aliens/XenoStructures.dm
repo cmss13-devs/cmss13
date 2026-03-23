@@ -773,7 +773,7 @@
 		T = i
 		if(T.density)
 			continue
-		T.PlaceOnTop(resin_wall_type)
+		T.place_on_top(resin_wall_type)
 		T.walltype = turf_icon
 		T.update_connections(TRUE)
 		T.update_icon()

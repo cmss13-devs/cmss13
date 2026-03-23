@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Updated rust_g to 6.0.1 to address possible race conditions for spritesheet generation"

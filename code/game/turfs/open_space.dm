@@ -183,13 +183,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	/// A cache of open_space z to ground z representative of the height
 	var/static/alist/z_mapping = alist()
 
-/turf/open_space/ground_level/Initialize(mapload, list/arguments)
-	var/arg_count = length(arguments)
-	if(arg_count >= 2)
-		offset_x = arguments[1]
-		offset_y = arguments[2]
-		if(arg_count >= 3)
-			min_ground_z = max(arguments[3], 0)
+/turf/open_space/ground_level/Initialize(mapload)
+	offset_x = SShijack.crashed_offset_x
+	offset_y = SShijack.crashed_offset_y
+	min_ground_z = SShijack.crashed_ground_z_min
 	return ..()
 
 /turf/open_space/ground_level/get_turf_below()

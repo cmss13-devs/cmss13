@@ -67,5 +67,8 @@ map tyrargo_rift
 	minplayers 100
 endmap
 
+map cape_river
+endmap
+
 map whiskey_outpost_v2
 endmap

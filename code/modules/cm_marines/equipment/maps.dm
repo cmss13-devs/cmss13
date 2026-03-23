@@ -149,6 +149,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	desc = "A labeled blueprint of the UA city Tyrargo Rift."
 	html_link = "images/7/79/Tyrargo_Rift.png"
 
+/obj/item/map/cape_river
+	name = "\improper Cape River map"
+	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
+	html_link = "images/4/46/Cape_River.png"
+	color = "red"
+
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"
 	desc = "A diagrammatic map of the milky way, laid out by sector."
@@ -173,7 +179,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
-		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift()
+		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
+		MAP_CAPE_RIVER = new /obj/item/map/cape_river()
 	)
 
 //used by marine equipment machines to spawn the correct map.

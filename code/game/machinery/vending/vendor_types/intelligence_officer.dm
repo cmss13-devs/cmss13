@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("Fulton Device Stack", 10, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
 		list("Data Detector", 5, /obj/item/device/motiondetector/intel, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical HUD", 5, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
 
 		list("BINOCULARS", 0, null, null, null),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),

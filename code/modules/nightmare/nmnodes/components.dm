@@ -24,7 +24,7 @@
 /datum/component/nmnode_cond/proc/check_for_cond(datum/nmnode/source, datum/nmcontext/context)
 	SIGNAL_HANDLER
 	var/value = context.get_scenario_value(src.pname)
-#if defined(UNIT_TESTS)
+#if defined(REPRODUCIBLE_ENVIRONMENT)
 	return // Force true for testing (this could potentially make false positives though)
 #endif
 	if(!(negate ^ (value == pvalue)))
@@ -48,7 +48,7 @@
 
 /datum/element/nmnode_prob/proc/check_prob(datum/nmnode/source)
 	SIGNAL_HANDLER
-#if defined(UNIT_TESTS)
+#if defined(REPRODUCIBLE_ENVIRONMENT)
 	return // Force true for testing
 #endif
 	if(rand() > probvalue)

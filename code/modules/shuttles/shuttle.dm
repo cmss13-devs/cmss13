@@ -114,13 +114,21 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
+		for(var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in GLOB.shuttle_controls)
+			var/area/C_area = get_area(C)
+			if(C_area != area)
+				continue
 			C.animate_on()
 
-		for (var/turf/closed/shuttle/elevator/gears/G in area)
-			G.start()
+		for(var/list/turf_list in area.get_zlevel_turf_lists())
+			for(var/turf/closed/shuttle/elevator/gears/G in turf_list)
+				G.start()
 
-		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
+		// while GLOB.machines is a large list, an in-area loop checking each turf's contents would be worse
+		for (var/obj/structure/machinery/door/airlock/D in GLOB.machines)//For elevators
+			var/area/D_area = get_area(D)
+			if(D_area != area)
+				continue
 			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
 /datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
@@ -143,11 +151,15 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
+		for(var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in GLOB.shuttle_controls)
+			var/area/C_area = get_area(C)
+			if(C_area != area)
+				continue
 			C.animate_off()
 
-		for (var/turf/closed/shuttle/elevator/gears/G in area)
-			G.stop()
+		for(var/list/turf_list in area.get_zlevel_turf_lists())
+			for(var/turf/closed/shuttle/elevator/gears/G in turf_list)
+				G.stop()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
@@ -188,12 +200,13 @@
 	if (docking_controller && !docking_controller.undocked())
 		docking_controller.force_undock()
 
-	for(var/turf/T in destination)
-		for(var/obj/O in T)
-			if(istype(O, /obj/effect/landmark))
-				continue
-			qdel(O)
-		T.ScrapeAway()
+	for(var/list/turf_list in destination.get_zlevel_turf_lists())
+		for(var/turf/T in turf_list)
+			for(var/obj/O in T)
+				if(istype(O, /obj/effect/landmark))
+					continue
+				qdel(O)
+			T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
 		bug.gib(create_cause_data("squashing", initial(origin.name)))
@@ -217,15 +230,15 @@
 				M.Stun(3)
 				M.KnockDown(3)
 
-	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
-		if(iselevator)
-			if(istype(T,/turf/open/space))
+	for(var/list/turf_list in origin.get_zlevel_turf_lists())
+		for(var/turf/open/space/T in turf_list) // WOW so hacky - who cares. Abby
+			if(iselevator)
 				if(is_mainship_level(T.z))
 					T.ChangeTurf(/turf/open/floor/almayer/empty/requisitions)
 				else
 					T.ChangeTurf(/turf/open/gm/empty)
-		else if(istype(T,/turf/open/space))
-			T.ChangeTurf(/turf/open/floor/plating)
+			else
+				T.ChangeTurf(/turf/open/floor/plating)
 
 	return
 

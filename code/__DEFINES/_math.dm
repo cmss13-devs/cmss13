@@ -17,6 +17,8 @@
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( floor((x) / (y)) * (y) )
 
+#define ROUND_UP(x) (-round(-(x)))
+
 // Returns true if val is from min to max, inclusive.
 #define ISINRANGE(val, min, max) ((min) <= (val) && (val) <= (max))
 

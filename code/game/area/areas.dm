@@ -104,6 +104,7 @@
 	// rather than waiting for atoms to initialize.
 	if(unique)
 		GLOB.areas_by_type[type] = src
+	GLOB.all_areas += src
 	..()
 
 	initialize_power()
@@ -114,7 +115,6 @@
 	uid = ++global_uid
 	. = ..()
 	GLOB.active_areas += src
-	GLOB.all_areas += src
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
@@ -129,15 +129,16 @@
 		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
 
 	if(!(flags_area & AREA_UNWEEDABLE))
-		for(var/turf/current in src)
-			if(!current.density)
-				openable_turf_count++
-				continue
-			if(istype(current, /turf/closed/wall))
-				var/turf/closed/wall/current_wall = current
-				if(!(current_wall.turf_flags & TURF_HULL))
+		for(var/list/turf_list in get_zlevel_turf_lists())
+			for(var/turf/current in turf_list)
+				if(!current.density)
 					openable_turf_count++
 					continue
+				if(istype(current, /turf/closed/wall))
+					var/turf/closed/wall/current_wall = current
+					if(!(current_wall.turf_flags & TURF_HULL))
+						openable_turf_count++
+						continue
 
 	// If map_holder exists for SSweather, its already done its one-time setup
 	if(weather_enabled && SSweather.map_holder?.should_affect_area(src))
@@ -463,9 +464,13 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	if(!SSmapping.areas_in_z["[z]"])
-		SSmapping.areas_in_z["[z]"] = list()
-	SSmapping.areas_in_z["[z]"] += src
+	if(!has_contained_turfs())
+		return
+	var/alist/areas_in_z = SSmapping.areas_in_z
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	LAZYADD(areas_in_z[z], src)
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.

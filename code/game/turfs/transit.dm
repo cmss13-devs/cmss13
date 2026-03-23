@@ -79,7 +79,7 @@
 		return
 
 	//find a random spot to drop them
-	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z["[ground_z_levels[1]]"])
+	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z[ground_z_levels[1]])
 
 	for(var/area/maybe_this_area in potential_areas)
 		if(CEILING_IS_PROTECTED(maybe_this_area.ceiling, CEILING_PROTECTION_TIER_1)) // prevents out of bounds too

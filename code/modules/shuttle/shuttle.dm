@@ -401,11 +401,12 @@
 		var/max_x = WORLDMAXX_CUTOFF
 		var/max_y = WORLDMAXY_CUTOFF
 		for(var/area/area as anything in shuttle_areas)
-			for(var/turf/turf in area)
-				min_x = max(turf.x, min_x)
-				max_x = min(turf.x, max_x)
-				min_y = max(turf.y, min_y)
-				max_y = min(turf.y, max_y)
+			for(var/list/turf_list in area.get_zlevel_turf_lists())
+				for(var/turf/turf in turf_list)
+					min_x = max(turf.x, min_x)
+					max_x = min(turf.x, max_x)
+					min_y = max(turf.y, min_y)
+					max_y = min(turf.y, max_y)
 			CHECK_TICK
 
 		if(min_x == -1 || max_x == WORLDMAXX_CUTOFF)
@@ -477,7 +478,7 @@
 	var/list/all_turfs = return_ordered_turfs(x, y, z, dir)
 	for(var/i in 1 to length(all_turfs))
 		var/turf/curT = all_turfs[i]
-		var/area/cur_area = get_area(curT)
+		var/area/cur_area = curT.loc
 		if(istype(cur_area, area_type))
 			shuttle_areas[cur_area] = TRUE
 
@@ -697,9 +698,7 @@
 		var/turf/oldT = old_turfs[i]
 		if(!oldT || !istype(oldT.loc, area_type))
 			continue
-// var/area/old_area = oldT.loc
-		underlying_area.contents += oldT
-		//oldT.change_area(old_area, underlying_area) //lighting
+		oldT.change_area(oldT.loc, underlying_area) //lighting
 		oldT.empty(FALSE)
 
 		// Here we locate the bottomost shuttle boundary and remove all turfs above it

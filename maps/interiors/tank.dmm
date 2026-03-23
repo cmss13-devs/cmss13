@@ -61,7 +61,7 @@
 	icon_state = "back_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "l" = (
 /obj/structure/interior_wall/tank{
 	alpha = 50;
@@ -76,7 +76,7 @@
 	icon_state = "front_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "u" = (
 /obj/structure/prop/tank{
 	icon_state = "prop5"
@@ -92,31 +92,31 @@
 	layer = 2
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "y" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "B" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "C" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "D" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/tank)
 "G" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
 	dir = 4

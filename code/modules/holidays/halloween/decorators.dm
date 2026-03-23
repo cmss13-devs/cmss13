@@ -64,10 +64,11 @@
 	var/scale_rand = 0.3
 
 /datum/game_decorator/halloween/cobwebs/decorate()
-	for(var/turf/closed/wall/almayer/turf in world)
-		if(is_mainship_level(turf.z))
-			decorate_turf(turf)
-			CHECK_TICK
+	for(var/area/ship_area in GLOB.ship_areas)
+		for(var/list/turf_list in ship_area.get_zlevel_turf_lists())
+			for(var/turf/closed/wall/almayer/turf in turf_list)
+				decorate_turf(turf)
+				CHECK_TICK
 
 /datum/game_decorator/halloween/cobwebs/proc/decorate_turf(turf/closed/wall/almayer/turf)
 	var/static/list/order = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST) // Ordering of wall_connections

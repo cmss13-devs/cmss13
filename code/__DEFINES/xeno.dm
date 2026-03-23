@@ -409,6 +409,9 @@
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 #define HIVELORD_DESIGNER "Designer"
 
+// Sentinel strain flags
+#define SENTINEL_NEURO_SPITTER "Neurotoxin Spitter"
+
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 

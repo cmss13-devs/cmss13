@@ -145,6 +145,76 @@
 	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
+/datum/ammo/xeno/toxin/neuro
+	effect_power = XENO_NEURO_TIER_4
+	var/datum/callback/retro_neuro_callback
+
+/datum/ammo/xeno/toxin/neuro/New()
+	..()
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 6
+
+	retro_neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_retro_neuro))
+
+/datum/ammo/xeno/toxin/neuro/on_hit_mob(mob/M,obj/projectile/P)
+
+	retro_neuro_callback.Invoke(M, effect_power)
+
+// attempt 2
+/proc/apply_retro_neuro(mob/living/victim, power)
+	var/pass_down_the_line = FALSE
+
+	if(skillcheck(victim, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+		victim.visible_message(SPAN_DANGER("[victim] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neurotoxin
+	if(ishuman(victim))
+		var/mob/living/carbon/human/H = victim
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			return
+
+	if(ishuman(victim))
+		if(HAS_TRAIT(victim, KNOCKEDOUT_TRAIT) || pass_down_the_line) //second part is always false, but consistency is a great thing
+			pass_down_the_line = TRUE
+
+	if(!isxeno(victim))
+		if(victim.AmountKnockDown() > 4 || pass_down_the_line)
+			if(!pass_down_the_line)
+				victim.visible_message(SPAN_DANGER("[victim] falls limp on the ground."))
+			victim.KnockOut(30) //KO them. They already got rekt too much
+			pass_down_the_line = TRUE
+
+		var/no_clothes_neuro = FALSE
+
+		if(ishuman(victim))
+			var/mob/living/carbon/human/H = victim
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
+
+
+		if(HAS_TRAIT(victim, TRAIT_DAZED) || pass_down_the_line || no_clothes_neuro)
+			if(victim.AmountKnockDown() < 5)
+				victim.AdjustKnockDown(1 * power) // KD them a bit more
+				if(!pass_down_the_line)
+					victim.visible_message(SPAN_DANGER("[victim] falls prone."))
+			pass_down_the_line = TRUE
+
+		if(victim.superslowed || pass_down_the_line)
+			if(victim.dazed < 6)
+				victim.AdjustDaze(3 * power) // Daze them a bit more
+				if(!pass_down_the_line)
+					victim.visible_message(SPAN_DANGER("[victim] is visibly confused."))
+			pass_down_the_line = TRUE
+
+	if(victim.superslowed < 10)
+		victim.AdjustSuperslow(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			victim.visible_message(SPAN_DANGER("[victim] movements are slowed."))
+
+	if(HAS_TRAIT(victim, TRAIT_DAZED))
+		victim.visible_message(SPAN_DANGER("[victim] has the dazed trait."))
+		victim.visible_message(SPAN_DANGER("[victim] has [victim.AmountKnockDown()] knockdown."))
+		victim.visible_message(SPAN_DANGER("[victim] has [victim.superslowed] superslow"))
+
 /datum/ammo/xeno/acid
 	name = "acid spit"
 	icon_state = "xeno_acid_weak"

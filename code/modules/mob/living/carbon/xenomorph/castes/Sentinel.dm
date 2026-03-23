@@ -24,6 +24,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 
+	available_strains = list(/datum/xeno_strain/neuro_spitter)
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 	minimap_icon = "sentinel"
 
@@ -224,3 +225,35 @@
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template_xeno"
+
+/datum/action/xeno_action/activable/neuro_spit/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/neuro_spit = owner
+	if(!neuro_spit.check_state())
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
+		return
+
+	var/turf/current_turf = get_turf(neuro_spit)
+
+	if(!current_turf)
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	neuro_spit.visible_message(SPAN_XENOWARNING("[neuro_spit] spits at [target]!"),
+	SPAN_XENOWARNING("You spit at [target]!") )
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	playsound(neuro_spit.loc, sound_to_play, 25, 1)
+
+	neuro_spit.ammo = GLOB.ammo_list[/datum/ammo/xeno/toxin/neuro]
+	var/obj/projectile/projectile = new /obj/projectile(current_turf, create_cause_data(initial(neuro_spit.caste_type), neuro_spit))
+	projectile.generate_bullet(neuro_spit.ammo)
+	projectile.permutated += neuro_spit
+	projectile.def_zone = neuro_spit.get_limbzone_target()
+	projectile.fire_at(target, neuro_spit, neuro_spit, neuro_spit.ammo.max_range, neuro_spit.ammo.shell_speed)
+
+	apply_cooldown()
+	return ..()

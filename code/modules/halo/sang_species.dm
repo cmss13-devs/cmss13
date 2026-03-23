@@ -111,6 +111,8 @@
 				limb.time_to_knit = 1 MINUTES // 1 minute to self heal bone break, time is in tenths of a second
 
 	give_action(sangheili, /datum/action/human_action/activable/covenant/sangheili_kick)
+	give_action(sangheili, /datum/action/human_action/activable/lunge)
+	sangheili.AddComponent(/datum/component/leaping, _leap_range = 4, _leap_cooldown = 4 SECONDS, _leaper_allow_pass_flags = PASS_OVER|PASS_MOB_THRU)
 
 	sangheili.set_languages(list(LANGUAGE_SANGHEILI))
 	return ..()

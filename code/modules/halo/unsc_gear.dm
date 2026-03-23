@@ -193,10 +193,6 @@
 		new /obj/item/ammo_magazine/spnkr(src)
 	update_icon()
 
-/obj/item/storage/backpack/marine/ammo_rack/spnkr/hold_spnkr
-	storage_slots = 3
-	can_hold = list(/obj/item/ammo_magazine/spnkr, /obj/item/weapon/gun/halo_launcher/spnkr)
-
 /obj/item/storage/pouch/explosive/unsc/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive/unsc(src)
@@ -721,7 +717,7 @@
 		/obj/item/storage/belt/gun/xm51,
 		/obj/item/storage/belt/gun/m6,
 		/obj/item/storage/belt/gun/m7,
-		/obj/item/weapon/gun/halo_launcher/spnkr
+		/obj/item/weapon/gun/halo_launcher/spnkr,
 	)
 
 /obj/item/clothing/suit/marine/unsc
@@ -813,7 +809,7 @@
 	)
 
 /obj/item/clothing/head/helmet/marine/unsc/Initialize()
-	..()
+	. = ..()
 	var/obj/item/attachable/flashlight/light = new /obj/item/attachable/flashlight
 	light.forceMove(pockets)
 	light.attached_item = src

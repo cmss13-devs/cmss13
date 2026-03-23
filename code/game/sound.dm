@@ -368,6 +368,9 @@
 				sound = pick('sound/effects/shields/shield_down.ogg')
 			if("shield_pop")
 				sound = pick('sound/effects/shields/shield_pop_1.ogg', 'sound/effects/shields/shield_pop_2.ogg', 'sound/effects/shields/shield_pop_3.ogg')
+			if("energy_sword")
+				sound = pick('sound/weapons/halo/energy_sword/energy_sword_1.ogg', 'sound/weapons/halo/energy_sword/energy_sword_2.ogg')
+
 
 			// Covenant audio
 			if("pain_sangheili")

@@ -429,6 +429,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	var/anti_hug = 0
+	allowed_species_list = list(SPECIES_HUMAN, SPECIES_YAUTJA, SPECIES_SPARTAN)
 
 /obj/item/clothing/mask/update_clothing_icon()
 	if (ismob(src.loc))

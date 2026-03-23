@@ -950,7 +950,7 @@ Defined in conflicts.dm of the #defines folder.
 		attached_item.set_light_range(helm_mounted_light_range)
 		attached_item.set_light_power(helm_mounted_light_power)
 		attached_item.set_light_on(light_on)
-		activation.update_button_icon()
+		activation?.update_button_icon()
 		return
 
 	if(!isgun(loc))

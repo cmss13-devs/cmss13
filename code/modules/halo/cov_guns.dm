@@ -192,6 +192,7 @@
 		origin[1] = "[icon2html(src, user)] This is a Type-25 plasma pistol"
 		insert_line = "Standard Covenant direct energy weapon, firing magnetically contained balls of high-energy plasma, with significant kinetic punch. Despite being called a \"pistol\", the Type-25 is more than capable of killing fully armoured marines with a single well aimed bolt. Some Covies overcharge this thing, can obliterate a mans whole torso."
 	origin.Insert(2, insert_line)
+	. += SPAN_NOTICE("You could overcharge this for a powerful shot by holding down the trigger with <b>unique action</b>.")
 
 
 /obj/item/weapon/gun/energy/plasma/plasma_pistol/set_gun_config_values()
@@ -207,10 +208,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_scatter_peak = SCATTER_AMOUNT_TIER_8
-
-/obj/item/weapon/gun/energy/plasma/plasma_pistol/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("You could overcharge this for a powerful shot by holding down the trigger with <b>unique action</b>.")
 
 /obj/item/weapon/gun/energy/plasma/plasma_pistol/Initialize()
 	plasma_bolt = GLOB.ammo_list[plasma_bolt] //Gun initialize calls replace_ammo() so we need to set these first.

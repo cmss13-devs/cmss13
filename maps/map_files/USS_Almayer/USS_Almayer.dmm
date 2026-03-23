@@ -14405,12 +14405,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/lower_astronav)
-"aLE" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_starboard{
-	dwidth = 8
-	},
-/turf/open/space,
-/area/space)
 "aLF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating/northeast,
@@ -45557,7 +45551,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/computer/supply/asrs/vehicle,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "eLu" = (
@@ -49869,6 +49862,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/cm_vending/clothing/corporate_security,
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "gDt" = (
@@ -60612,10 +60606,6 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/rosary{
-	pixel_x = -4;
-	pixel_y = 5
-	},
 /obj/item/device/flashlight/lamp{
 	pixel_x = 3;
 	pixel_y = 1
@@ -67723,6 +67713,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "nTR" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/cm_vending/gear/corporate_security,
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "nTZ" = (
@@ -72222,7 +72213,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "pLa" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/plate,
+/turf/closed/wall/almayer,
 /area/almayer/command/corporateliaison)
 "pLt" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
@@ -77360,12 +77351,9 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "rKd" = (
-/obj/structure/machinery/floodlight/landing/floor{
-	color = "#dae2ff";
-	light_color = "#dae2ff"
-	},
-/turf/open/floor/plating,
-/area/almayer/hallways/hangar)
+/obj/docking_port/stationary/emergency_response/external/hangar_starboard,
+/turf/open/space,
+/area/space)
 "rKt" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32
@@ -88792,12 +88780,12 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "wiQ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "19;22"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Tanker Quarters";
+	req_one_access = list(19,27)
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "wiW" = (
@@ -93010,7 +92998,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "xNM" = (
-/obj/structure/machinery/cm_vending/gear/vehicle_crew,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/lower/vehiclehangar)
 "xOs" = (
@@ -131904,7 +131891,7 @@ aaa
 aaa
 aaa
 aaa
-bIc
+aaa
 aaa
 aaa
 aaa
@@ -131943,7 +131930,7 @@ aaa
 aaa
 aaa
 aaa
-aLE
+aaa
 aaa
 aaa
 aaa
@@ -132667,7 +132654,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+rKd
 aaa
 aaa
 aaa
@@ -132720,7 +132707,7 @@ rgt
 rgt
 ctw
 hAh
-aaa
+bIc
 aaa
 aaa
 aaa
@@ -134027,7 +134014,6 @@ bHB
 aZQ
 baI
 baI
-rKd
 baI
 baI
 baI
@@ -134039,11 +134025,12 @@ baI
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
-rKd
+baI
+baI
+baI
 baI
 baI
 bGH
@@ -134645,7 +134632,6 @@ bHB
 aZO
 baI
 baI
-rKd
 baI
 baI
 baI
@@ -134657,11 +134643,12 @@ baI
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
-rKd
+baI
+baI
+baI
 baI
 baI
 bGF
@@ -136294,7 +136281,6 @@ aZX
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
@@ -136305,11 +136291,12 @@ baI
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
-rKd
+baI
+baI
+baI
 baI
 baI
 bGO
@@ -136912,7 +136899,6 @@ aZV
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
@@ -136923,11 +136909,12 @@ baI
 baI
 baI
 baI
-rKd
 baI
 baI
 baI
-rKd
+baI
+baI
+baI
 baI
 baI
 bGM

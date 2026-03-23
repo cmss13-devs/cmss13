@@ -43,7 +43,6 @@
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	flags_item = NODROP
 	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/head/helmet/marine/unsc/mjolnir
@@ -62,6 +61,9 @@
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	allowed_species_list = list(SPECIES_SPARTAN)
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	unacidable = TRUE // reach dropped helmet larp
+	anti_hug = 6
 	actions_types = list(/datum/action/item_action/toggle)
 	var/toggleable = TRUE
 
@@ -124,7 +126,6 @@
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	flags_item = NODROP
 	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/suit/marine/unsc/mjolnir
@@ -148,7 +149,6 @@
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	var/armor_status = 100
-	flags_item = NODROP
 	allowed_species_list = list(SPECIES_SPARTAN)
 
 /obj/item/clothing/suit/marine/unsc/mjolnir/proc/armor_check()
@@ -198,7 +198,6 @@
 	drop_sound = "armorequip"
 	item_state_slots = list()
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
-	flags_item = NODROP
 	allowed_species_list = list(SPECIES_SPARTAN)
 
 	item_icons = list(

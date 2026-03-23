@@ -2008,6 +2008,7 @@
 #include "code\modules\halo\cov_bullets.dm"
 #include "code\modules\halo\cov_guns.dm"
 #include "code\modules\halo\cov_mags.dm"
+#include "code\modules\halo\cov_melee.dm"
 #include "code\modules\halo\halo_gunracks.dm"
 #include "code\modules\halo\insurgent_gear.dm"
 #include "code\modules\halo\oni_gear.dm"

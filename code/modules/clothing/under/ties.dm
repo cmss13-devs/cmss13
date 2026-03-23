@@ -20,6 +20,7 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 	var/original_item_path = /obj/item/clothing/accessory
 	worn_accessory_slot = 1
+	allowed_species_list = list(SPECIES_HUMAN, SPECIES_YAUTJA, SPECIES_SPARTAN)
 
 /obj/item/clothing/accessory/attack_self(mob/user)
 	if(flags_obj & OBJ_CAN_ACCESSORIZE)

@@ -28,6 +28,7 @@
 	var/req_skill_level
 	var/req_skill_explicit = FALSE
 	var/hud_type //hud type the glasses gives
+	allowed_species_list = list(SPECIES_HUMAN, SPECIES_YAUTJA, SPECIES_SPARTAN)
 
 /obj/item/clothing/glasses/Initialize(mapload, ...)
 	. = ..()

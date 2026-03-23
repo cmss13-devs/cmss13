@@ -22,6 +22,7 @@
 	w_class = SIZE_MEDIUM
 	pickup_sound = "armorequip"
 	drop_sound = "armorequip"
+	allowed_species_list = list(SPECIES_HUMAN, SPECIES_YAUTJA, SPECIES_SPARTAN)
 
 /obj/item/clothing/head/helmet/verb/hidehair()
 	set name = "Toggle Hair"

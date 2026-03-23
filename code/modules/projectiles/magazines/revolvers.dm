@@ -170,9 +170,12 @@
 
 	var/first_put = TRUE
 	for(var/ammo_path in rounds_in_cylinder)
-		var/obj/item/ammo_magazine/handful/new_handful = new()
+		var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+		if(!bullet)
+			continue
+		var/obj/item/ammo_magazine/handful/new_handful = new bullet.handful_type()
 		var/amount = rounds_in_cylinder[ammo_path]
-		new_handful.generate_handful(ammo_path, caliber, max_rounds, amount, gun_type)
+		new_handful.generate_handful(ammo_path, caliber, amount, gun_type)
 		if(first_put && user)
 			user.put_in_hands(new_handful) // only put the first one in their hands
 			first_put = FALSE

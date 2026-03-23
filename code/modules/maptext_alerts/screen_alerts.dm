@@ -10,13 +10,16 @@
  * * alert_type: typepath for screen text type we want to play here
  * * override_color: the color of the text to use
  */
-/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
+/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF", cancel_duplicate = FALSE)
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
 	if(override_color)
 		text_box.color = override_color
-
+	if(cancel_duplicate)
+		for(var/atom/i in client.screen_texts)
+			if(i.type == text_box.type)
+				return
 	LAZYADD(client.screen_texts, text_box)
 	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
 		INVOKE_ASYNC(text_box, TYPE_PROC_REF(/atom/movable/screen/text/screen_text, play_to_client))
@@ -89,6 +92,19 @@
 	play_delay = 0.3
 	fade_out_delay = 10 SECONDS
 	fade_out_time = 3 SECONDS
+
+
+/atom/movable/screen/text/screen_text/chemical_advisory
+	maptext_height = 64
+	maptext_width = 480
+	maptext_x = 0
+	maptext_y = 0
+	screen_loc = "LEFT,TOP-3"
+
+	letters_per_update = 1
+	fade_out_delay = 6 SECONDS
+	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
+	style_close = "</span>"
 
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()

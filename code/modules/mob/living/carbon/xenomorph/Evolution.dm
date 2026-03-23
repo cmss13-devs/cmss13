@@ -484,36 +484,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	return new_xeno
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
-	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type
-	var/free_slot = LAZYACCESS(hive.free_slots, selected_caste)
-	var/used_slot = LAZYACCESS(hive.used_slots, selected_caste)
-	if(free_slot > used_slot)
-		return TRUE
+	#define TIER_3 "3"
+	#define TIER_2 "2"
+	#define OPEN_SLOTS "open_slots"
+	#define GUARANTEED_SLOTS "guaranteed_slots"
 
-	var/used_tier_2_slots = length(hive.tier_2_xenos)
-	var/used_tier_3_slots = length(hive.tier_3_xenos)
-	for(var/caste_path in hive.free_slots)
-		var/slots_free = hive.free_slots[caste_path]
-		var/slots_used = hive.used_slots[caste_path]
-		if(!slots_used)
-			continue
-		var/datum/caste_datum/current_caste = caste_path
-		switch(initial(current_caste.tier))
-			if(2)
-				used_tier_2_slots -= min(slots_used, slots_free)
-			if(3)
-				used_tier_3_slots -= min(slots_used, slots_free)
-
-	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	var/totalXenos = floor(burrowed_factor)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		if(xeno.counts_for_slots)
-			totalXenos++
-
-	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
+	var/slots = hive.get_tier_slots()
+	if(tier == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && !slots[TIER_3][OPEN_SLOTS] && !slots[TIER_3][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 

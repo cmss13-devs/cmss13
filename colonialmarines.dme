@@ -2283,7 +2283,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\ravager\berserker.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\ravager\hedgehog.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\runner\acid.dm"
-#include "code\modules\mob\living\carbon\xenomorph\strains\castes\sentinel\neurospitter"
+#include "code\modules\mob\living\carbon\xenomorph\strains\castes\sentinel\neurospitter.dm"
 #include "code\modules\mob\living\silicon\death.dm"
 #include "code\modules\mob\living\silicon\login.dm"
 #include "code\modules\mob\living\silicon\say.dm"

@@ -128,64 +128,113 @@
 	else
 		icon_state = "6_pack_[length(contents)]"
 
-/obj/item/storage/box/clf
-	name = "D18-storing box"
-	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
+/obj/item/storage/box/fluff_gun
+	name = "Sidearm Storage Box"
+	desc = "Base item for prefrence weapons."
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	storage_slots = 7
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "m43case"
-	w_class = SIZE_SMALL
+
+/obj/item/storage/box/fluff_gun/clf
+	name = "D18-storing box"
+	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a few additional magazines for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
+	w_class = SIZE_SMALL //pocket pistols have smaller boxes because noone is going to put these in a belt
 	max_w_class = SIZE_TINY
-	storage_slots = 2
+	storage_slots = 4
 	can_hold = list(/obj/item/weapon/gun/pistol/clfpistol, /obj/item/ammo_magazine/pistol/clfpistol)
 
-/obj/item/storage/box/clf/fill_preset_inventory()
+/obj/item/storage/box/fluff_gun/clf/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/clfpistol(src)
 	new /obj/item/ammo_magazine/pistol/clfpistol(src)
+	new /obj/item/ammo_magazine/pistol/clfpistol(src)
+	new /obj/item/ammo_magazine/pistol/clfpistol(src)
 
-/obj/item/storage/box/upp //war trophy luger
+/obj/item/storage/box/fluff_gun/upp //war trophy luger
 	name = "Type 73 storing case"
-	desc = "A small case containing the once-standard sidearm of the UPP, the Type 73, and two additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
-	icon = 'icons/obj/items/storage/kits.dmi'
-	icon_state = "matebacase"
-	w_class = SIZE_MEDIUM
-	max_w_class = SIZE_MEDIUM
-	storage_slots = 3
+	desc = "A small case containing the once-standard sidearm of the UPP, the Type 73, and some additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
 	can_hold = list(/obj/item/weapon/gun/pistol/t73, /obj/item/ammo_magazine/pistol/t73)
 
-/obj/item/storage/box/upp/fill_preset_inventory()
+/obj/item/storage/box/fluff_gun/upp/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
 
-/obj/item/storage/box/action
+/obj/item/storage/box/fluff_gun/np92
+	name = "NP92 storing case"
+	desc = "A small case containing the standard sidearm of the UPP, the NP92, and some additional magazines. The contained sidearm is probably looted from a captured stockpile."
+	can_hold = list(/obj/item/weapon/gun/pistol/np92, /obj/item/ammo_magazine/pistol/np92)
+
+/obj/item/storage/box/fluff_gun/np92/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+	new /obj/item/ammo_magazine/pistol/np92(src)
+
+/obj/item/storage/box/fluff_gun/action
 	name = "AC71 'Action' storing case"
 	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
-	icon = 'icons/obj/items/storage/kits.dmi'
-	icon_state = "m43case"
-	w_class = SIZE_SMALL
+	w_class = SIZE_SMALL //pocket pistols have smaller boxes because noone is going to put these in a belt
 	max_w_class = SIZE_TINY
-	storage_slots = 3
+	storage_slots = 4
 	can_hold = list(/obj/item/weapon/gun/pistol/action, /obj/item/ammo_magazine/pistol/action)
 
-/obj/item/storage/box/action/fill_preset_inventory()
+/obj/item/storage/box/fluff_gun/action/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/action(src)
 	new /obj/item/ammo_magazine/pistol/action(src)
 	new /obj/item/ammo_magazine/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
 
-/obj/item/storage/box/plinker
+/obj/item/storage/box/fluff_gun/plinker
 	name = "W62 'Whisper' storing case"
 	desc = "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
-	icon = 'icons/obj/items/storage/kits.dmi'
-	icon_state = "m43case"
-	w_class = SIZE_MEDIUM
-	max_w_class = SIZE_SMALL
-	storage_slots = 3
 	can_hold = list(/obj/item/weapon/gun/pistol/holdout, /obj/item/ammo_magazine/pistol/holdout)
 
-/obj/item/storage/box/plinker/fill_preset_inventory()
+/obj/item/storage/box/fluff_gun/plinker/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+
+/obj/item/storage/box/fluff_gun/m1911
+	name = "M48A4 storing case"
+	desc = "A small case containing a M48A4, a modernized version of the classic M1911. It was most likely privately bought by a marine, or specially ordered by an officer."
+	can_hold = list(/obj/item/weapon/gun/pistol/m1911/fluff, /obj/item/ammo_magazine/pistol/m1911)
+
+/obj/item/storage/box/fluff_gun/m1911/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/m1911/fluff(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+
+/obj/item/storage/box/fluff_gun/l54
+	name = "L54 storing case"
+	desc = "A small case containing an L54 Service Pistol, the standard sidearm of the NSPA. It was most likely brought by a marine from home, or taken from a colony without permission."
+	can_hold = list(/obj/item/weapon/gun/pistol/l54, /obj/item/ammo_magazine/pistol/l54)
+
+/obj/item/storage/box/fluff_gun/l54/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+	new /obj/item/ammo_magazine/pistol/l54(src)
+
 
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"

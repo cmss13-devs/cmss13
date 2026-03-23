@@ -114,7 +114,7 @@
 		return
 	return ..()
 
-/obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
+/obj/item/tool/extinguisher/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(is_type_in_typecache(target, refill_sources))
 		if(!is_type_in_typecache(target, refill_excluded) && target != src)
 			if(!target.Adjacent(user))

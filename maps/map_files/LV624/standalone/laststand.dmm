@@ -2,6 +2,12 @@
 "aa" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/north_central_caves)
+"ab" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "ac" = (
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor/wood,
@@ -17,8 +23,26 @@
 	},
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
+"af" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ag" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/lv624/ground/caves/north_central_caves)
 "ah" = (
 /turf/closed/wall/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ai" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "aj" = (
 /obj/structure/largecrate/supply/explosives/mines{
@@ -78,13 +102,16 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"as" = (
+/obj/structure/bed/alien,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "at" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/candle,
-/obj/item/tool/match{
-	pixel_x = 6;
-	pixel_y = 3
-	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/carpet/bcarpet08,
 /area/lv624/ground/caves/north_central_caves)
 "au" = (
@@ -95,15 +122,37 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"av" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/flashlight/lantern,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/item/weapon/baseballbat/metal,
+/turf/open/floor/wood/wood_broken6,
+/area/lv624/ground/caves/north_central_caves)
 "aw" = (
 /turf/open/floor/wood/wood_broken6,
+/area/lv624/ground/caves/north_central_caves)
+"ax" = (
+/obj/structure/bed/alien,
+/obj/item/storage/pouch/flare/full,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "ay" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "aA" = (
-/obj/structure/barricade/sandbags/wired,
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_id = "Lakeside Bar";
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aB" = (
@@ -171,22 +220,24 @@
 /area/lv624/ground/caves/north_central_caves)
 "aQ" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/candle,
-/obj/item/stack/sheet/metal{
-	amount = 30;
-	pixel_x = 4;
-	pixel_y = 4
-	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/carpet/bcarpet01,
 /area/lv624/ground/caves/north_central_caves)
 "aR" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/tool/candle,
+/obj/item/tool/match{
+	pixel_x = 6;
+	pixel_y = 3
+	},
 /turf/open/floor/carpet/bcarpet02,
 /area/lv624/ground/caves/north_central_caves)
 "aS" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/candle,
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
 /turf/open/floor/carpet/bcarpet03,
 /area/lv624/ground/caves/north_central_caves)
 "aU" = (
@@ -279,10 +330,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "oA" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/device/flashlight/lantern{
-	pixel_x = 1;
-	pixel_y = 9
-	},
+/obj/item/tool/candle,
 /turf/open/floor/carpet/bcarpet09,
 /area/lv624/ground/caves/north_central_caves)
 "pH" = (
@@ -299,12 +347,6 @@
 /obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"qW" = (
-/obj/structure/bed/alien,
-/obj/structure/barricade/sandbags/wired,
-/obj/item/storage/pouch/flare/full,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "rq" = (
 /obj/structure/closet/cabinet,
 /obj/structure/barricade/sandbags/wired{
@@ -312,13 +354,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"tb" = (
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "EY" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/tool/candle,
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/carpet/bcarpet07,
 /area/lv624/ground/caves/north_central_caves)
 "Ic" = (
@@ -332,228 +375,200 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"Ms" = (
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor/wood/wood_broken3,
-/area/lv624/ground/caves/north_central_caves)
-"ND" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/device/flashlight/lantern,
-/obj/structure/barricade/sandbags/wired,
-/obj/item/weapon/baseballbat/metal,
-/turf/open/floor/wood/wood_broken6,
-/area/lv624/ground/caves/north_central_caves)
 "OT" = (
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
-"Td" = (
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor/wood/wood_broken,
-/area/lv624/ground/caves/north_central_caves)
-"UM" = (
-/obj/structure/bed/alien,
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
-"Yc" = (
-/obj/structure/transmitter/colony_net{
-	pixel_y = 32;
-	phone_category = "Lazarus Landing";
-	phone_id = "Lakeside Bar"
-	},
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 
 (1,1,1) = {"
+aD
+aD
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 aa
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-aD
-aD
 "}
 (2,1,1) = {"
-aa
+aD
+aD
 ah
-am
-aP
-bf
-bf
 OT
+bf
+bf
+aP
+am
 ah
-aD
-aD
+aa
 "}
 (3,1,1) = {"
-aa
+aD
+aD
 ah
-an
-bg
-aK
-bf
 mu
+bf
+aK
+bg
+an
 ah
-aD
-aD
+aa
 "}
 (4,1,1) = {"
-aa
+aD
+aD
 ah
-ao
+lP
 bf
 aC
 bf
-lP
+ao
 ah
-aD
-aD
+aa
 "}
 (5,1,1) = {"
-aa
 ah
-ap
-bf
-aP
-ba
+ah
+ah
 pH
+ba
+aP
+bf
+ap
 ah
-ah
-ah
+aa
 "}
 (6,1,1) = {"
-aa
 ah
-aq
 bf
-aw
+bf
+bf
 aK
+aw
 bf
-bf
-bf
+aq
 ah
+aa
 "}
 (7,1,1) = {"
-aa
-ah
-ar
-aC
+aZ
+ab
+aP
 bf
 bg
 bf
-aP
-aA
-aZ
+aC
+ar
+ah
+aa
 "}
 (8,1,1) = {"
-ah
-ah
-au
-aE
-bf
-bf
-aC
-bg
-aA
 aZ
+ab
+bg
+aC
+bf
+bf
+aE
+au
+ah
+ah
 "}
 (9,1,1) = {"
-ah
-ae
-bf
-aP
+aZ
+ab
+jP
 bf
 bb
 bf
-jP
-aA
-aZ
+aP
+bf
+ae
+ah
 "}
 (10,1,1) = {"
 ah
-ac
 bf
 bf
-bf
-bc
 oj
+bc
 bf
 bf
+bf
+ac
 ah
 "}
 (11,1,1) = {"
-ah
-ad
-aw
-bf
-bg
-aK
-bf
-ak
-tb
 lJ
+af
+ak
+bf
+aK
+bg
+bf
+aw
+ad
+ah
 "}
 (12,1,1) = {"
 ah
 bf
 bf
 bf
-aP
 bd
+aP
 bf
 bf
 bf
 ah
 "}
 (13,1,1) = {"
-ah
-bf
-bf
-aG
+aZ
+ab
+pS
+Ic
 aQ
 EY
-Ic
-pS
-aA
-aZ
+aG
+bf
+bf
+ah
 "}
 (14,1,1) = {"
-ah
-bf
-ak
-aG
+aZ
+ab
+aV
+Ic
 aR
 at
-Ic
-aV
-aA
-aZ
+aG
+ak
+bf
+ah
 "}
 (15,1,1) = {"
-ah
-aP
-bg
-aG
+aZ
+ag
+Lu
+Ic
 aS
 oA
-Ic
-Lu
-Ms
-aZ
+aG
+bg
+aP
+ah
 "}
 (16,1,1) = {"
 ah
 bf
 bf
-aP
 bf
 ak
 bf
+aP
 bf
 bf
 ah
@@ -561,120 +576,120 @@ ah
 (17,1,1) = {"
 ah
 bf
-bf
-aV
-aU
-fH
-bf
 aw
+bf
+fH
+aU
+aV
+bf
 bf
 ah
 "}
 (18,1,1) = {"
-ah
-Yc
-ak
-bf
-aV
-jQ
-bc
-bf
-aA
 aZ
+ab
+bf
+bc
+jQ
+aV
+bf
+ak
+aA
+ah
 "}
 (19,1,1) = {"
-ah
-ak
-bf
-aI
-ak
-bf
-bf
-aK
-aA
 aZ
+ab
+aK
+bf
+bf
+ak
+aI
+bf
+ak
+ah
 "}
 (20,1,1) = {"
-ah
-aj
-bf
-bf
-bf
-bf
-bf
-bf
-Td
 aZ
+ai
+bf
+bf
+bf
+bf
+bf
+bf
+aj
+ah
 "}
 (21,1,1) = {"
 ah
 ah
 ah
-ah
 aL
 ah
 aL
+ah
 ah
 ah
 ah
 "}
 (22,1,1) = {"
-aa
-ah
-al
-bf
-aC
-ah
-aP
-bf
-UM
 aZ
+as
+bf
+aP
+ah
+aC
+bf
+al
+ah
+aa
 "}
 (23,1,1) = {"
-aa
-ah
-ay
-bf
-aN
-ah
-bg
-bf
-ND
 aZ
+av
+bf
+bg
+ah
+aN
+bf
+ay
+ah
+aa
 "}
 (24,1,1) = {"
-aa
-ah
-aM
-bf
-aW
-ah
-bf
-ak
-qW
 aZ
+ax
+ak
+bf
+ah
+aW
+bf
+aM
+ah
+aa
 "}
 (25,1,1) = {"
-aa
-ah
-aB
+aZ
+rq
 aJ
 aJ
 lJ
 aJ
 aJ
-rq
-aZ
+aB
+ah
+aa
 "}
 (26,1,1) = {"
+ah
+ah
+aZ
+aZ
+ah
+aZ
+aZ
+ah
+ah
 aa
-ah
-ah
-aZ
-aZ
-ah
-aZ
-aZ
-ah
-ah
 "}

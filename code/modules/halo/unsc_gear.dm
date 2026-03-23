@@ -771,7 +771,7 @@
 		/obj/item/storage/belt/gun/xm51,
 		/obj/item/storage/belt/gun/m6,
 		/obj/item/storage/belt/gun/m7,
-		/obj/item/weapon/gun/halo_launcher/spnkr
+		/obj/item/weapon/gun/halo_launcher/spnkr,
 	)
 
 /obj/item/clothing/suit/marine/unsc/police

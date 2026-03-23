@@ -26,6 +26,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	set_light_range(0)
 
+	stop_listening_for_tacmap_clicks()
+
 	if(pulledby)
 		pulledby.stop_pulling()
 

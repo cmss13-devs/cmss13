@@ -8,7 +8,7 @@
 /area/lv624/ground/river/central_river)
 "ac" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/asteroidwarning/north,
+/turf/open/floor/plating/asteroidwarning/south,
 /area/lv624/ground/river/central_river)
 "ad" = (
 /obj/structure/fence,
@@ -79,6 +79,9 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
+"aw" = (
+/turf/open/floor/plating/asteroidwarning/south,
+/area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -94,9 +97,6 @@
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
-"lY" = (
-/turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "mq" = (
 /obj/structure/machinery/colony_floodlight,
@@ -220,22 +220,22 @@ aj
 aj
 as
 ai
-ag
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 ab
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ag
 "}
 (7,1,1) = {"
 ak
 aj
 as
 ai
-lY
+Yw
 DX
 iW
 DX
@@ -250,7 +250,7 @@ aj
 aj
 as
 ai
-lY
+Yw
 qL
 al
 al
@@ -258,14 +258,14 @@ BW
 DX
 DX
 DX
-Yw
+aw
 "}
 (9,1,1) = {"
 aj
 aj
 as
 ai
-lY
+Yw
 DX
 DX
 DX
@@ -273,22 +273,22 @@ DX
 DX
 iW
 DX
-Yw
+aw
 "}
 (10,1,1) = {"
 aj
 aj
 as
 ai
-ah
-af
-af
-af
-af
-af
-af
-af
 ad
+af
+af
+af
+af
+af
+af
+af
+ah
 "}
 (11,1,1) = {"
 aj

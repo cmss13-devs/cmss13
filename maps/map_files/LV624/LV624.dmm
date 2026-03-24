@@ -12,6 +12,13 @@
 "aac" = (
 /turf/closed/cordon,
 /area/space)
+"aad" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b6a38f"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
 "aae" = (
 /obj/item/stack/sheet/wood{
 	layer = 3.01
@@ -2314,7 +2321,7 @@
 	pixel_y = -5
 	},
 /obj/structure/sign/calendar{
-	pixel_y = 29
+	pixel_y = -29
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
@@ -2598,6 +2605,10 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b6a38f"
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "alp" = (
@@ -2605,11 +2616,19 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b6a38f"
+	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
 "alq" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
+	},
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b6a38f"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
@@ -3637,20 +3656,11 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"apD" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/closed/wall,
-/area/lv624/ground/barrens/east_barrens/ceiling)
 "apE" = (
 /obj/structure/disposalpipe/segment{
 	layer = 5.1;
 	name = "water pipe"
 	},
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
-"apF" = (
-/obj/structure/flora/jungle/planttop1,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
@@ -9727,9 +9737,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
@@ -48180,8 +48192,8 @@ sqj
 sqj
 sqj
 sqj
-apF
-apD
+alW
+iXj
 aps
 api
 iXj
@@ -54935,7 +54947,7 @@ rac
 aeT
 fTM
 aeT
-alq
+aad
 fTM
 fTM
 vCG

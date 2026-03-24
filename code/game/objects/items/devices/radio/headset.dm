@@ -1136,7 +1136,7 @@
 
 /obj/item/device/radio/headset/distress/WY/security/guard
 	name = "WY personal protection headset"
-	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :1 for WY Public, :y for WY Corporate and #y for WY Security."
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :m - medbay, :g - public, :1 for WY Public, :y for WY Corporate and #y for WY Security."
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(

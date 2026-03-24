@@ -37,49 +37,49 @@
 /turf/open/floor/warningcorner,
 /area/lv624/lazarus/landing_zones/lz1)
 "af" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "ag" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "ah" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "ai" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aj" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "ak" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "al" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "am" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -99,13 +99,13 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "ap" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aq" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -184,37 +184,18 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
 "aD" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aE" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"aF" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aG" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aH" = (
@@ -222,121 +203,16 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "aI" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aK" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aL" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aM" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
-/turf/open/floor/warning/north,
-/area/lv624/lazarus/landing_zones/lz1)
-"aN" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone{
-	dir = 8
-	},
-/turf/open/floor/warning/north,
-/area/lv624/lazarus/landing_zones/lz1)
-"aO" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 4
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aP" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 8
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aQ" = (
-/obj/structure/fence,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aR" = (
-/obj/structure/fence,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aS" = (
-/obj/structure/fence,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aT" = (
-/obj/structure/fence,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/landinglight/delaytwo,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aU" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight,
-/turf/open/gm/grass/grass1,
+/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aV" = (
 /obj/structure/barricade/metal/wired{
@@ -411,15 +287,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "dN" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -461,20 +329,6 @@
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"hb" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "hm" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/white,
@@ -600,20 +454,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"ph" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "pl" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -659,35 +499,10 @@
 "qO" = (
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
-"qS" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "qZ" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"sn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "sN" = (
 /obj/effect/landmark/railgun_camera_pos,
 /turf/open/floor,
@@ -726,20 +541,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"uN" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "uP" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -771,15 +572,6 @@
 "xi" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/quartstorage)
-"xp" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delayone,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
 "xt" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
@@ -788,17 +580,6 @@
 "xx" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"xR" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight{
-	dir = 1
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "xS" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -822,27 +603,8 @@
 "yY" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"zg" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "zH" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -915,17 +677,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"FT" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "Gh" = (
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -968,49 +719,8 @@
 /obj/structure/surface/rack,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"LF" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"LZ" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaythree,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"Md" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight/delaytwo,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
 "Mf" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"Mx" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "NA" = (
@@ -1049,21 +759,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
-/area/lv624/lazarus/landing_zones/lz1)
-"QA" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/delayone{
-	dir = 4
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "QV" = (
 /turf/template_noop,
@@ -1167,20 +862,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "XP" = (
 /turf/open/floor/warningcorner/east,
-/area/lv624/lazarus/landing_zones/lz1)
-"Ye" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/landinglight{
-	dir = 4
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "Yg" = (
 /obj/item/stack/sheet/wood{
@@ -2114,26 +1795,26 @@ yY
 yY
 yY
 yY
-aO
-aM
-aF
-hb
+yY
+So
+pl
+aj
 dN
-qS
-Ye
-hb
+ap
+al
+aj
 aD
-qS
-Ye
-hb
+ap
+al
+aj
 dN
-qS
-Ye
-QA
+ap
+al
+aj
 dN
-qS
-Ye
-hb
+ap
+al
+aj
 dN
 ap
 al
@@ -2159,7 +1840,7 @@ aY
 yY
 yY
 yY
-xp
+yY
 yY
 So
 aG
@@ -2181,7 +1862,7 @@ pl
 pl
 pl
 pl
-zg
+pl
 Et
 pl
 af
@@ -2205,7 +1886,7 @@ aX
 yY
 yY
 yY
-Mx
+yY
 yY
 So
 aI
@@ -2227,7 +1908,7 @@ pl
 pl
 pl
 pl
-xR
+pl
 pl
 pl
 ag
@@ -2251,7 +1932,7 @@ ba
 yY
 yY
 yY
-LZ
+yY
 yY
 So
 aJ
@@ -2273,7 +1954,7 @@ pl
 pl
 pl
 pl
-sn
+pl
 pl
 pl
 ah
@@ -2297,7 +1978,7 @@ bb
 yY
 yY
 yY
-Md
+yY
 yY
 So
 aK
@@ -2319,7 +2000,7 @@ pl
 pl
 CS
 pl
-FT
+pl
 pl
 pl
 ai
@@ -2343,7 +2024,7 @@ mc
 vA
 vA
 vA
-aQ
+vA
 yY
 So
 aG
@@ -2365,7 +2046,7 @@ pl
 pl
 pl
 pl
-zg
+pl
 pl
 pl
 af
@@ -2389,7 +2070,7 @@ CT
 xW
 yY
 yY
-aR
+vA
 yY
 So
 aI
@@ -2411,7 +2092,7 @@ pl
 pl
 pl
 pl
-xR
+pl
 pl
 pl
 ag
@@ -2435,7 +2116,7 @@ kd
 kd
 yY
 yY
-aS
+vA
 yY
 So
 aJ
@@ -2457,7 +2138,7 @@ pl
 aZ
 pl
 pl
-sn
+pl
 pl
 pl
 ah
@@ -2481,7 +2162,7 @@ ks
 kd
 xW
 yY
-aT
+vA
 yY
 So
 aK
@@ -2503,7 +2184,7 @@ pl
 pl
 pl
 pl
-FT
+pl
 pl
 pl
 ai
@@ -2527,7 +2208,7 @@ ks
 CT
 xW
 yY
-xp
+yY
 yY
 So
 aG
@@ -2549,7 +2230,7 @@ pl
 pl
 pl
 pl
-zg
+pl
 pl
 pl
 af
@@ -2573,7 +2254,7 @@ ks
 kd
 kd
 xW
-aU
+Tz
 yY
 So
 aI
@@ -2595,7 +2276,7 @@ pl
 pl
 pl
 pl
-xR
+pl
 pl
 pl
 ag
@@ -2619,7 +2300,7 @@ ks
 ks
 kd
 yY
-LZ
+yY
 yY
 So
 aJ
@@ -2641,7 +2322,7 @@ pl
 pl
 pl
 pl
-sn
+pl
 Et
 pl
 ah
@@ -2666,26 +2347,26 @@ xW
 kd
 yY
 yY
-aP
-aN
-aL
-uN
+yY
+So
+pl
+ak
 zH
-ph
-LF
-uN
+aq
+am
+ak
 zH
-ph
-LF
-uN
+aq
+am
+ak
 zH
-ph
-LF
-uN
+aq
+am
+ak
 zH
-ph
-LF
-uN
+aq
+am
+ak
 zH
 aq
 am

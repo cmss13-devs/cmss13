@@ -19,7 +19,7 @@
 /datum/paygrade/wy_ranks/wycPO
 	paygrade = PAY_SHORT_WYPO2
 	name = "Captain"
-	prefix = "Capt"
+	prefix = "Capt."
 	ranking = 1
 	pay_multiplier = 2
 
@@ -45,10 +45,26 @@
 	pay_multiplier = 5
 	officer_grade = GRADE_OFFICER
 
+/datum/paygrade/wy_ranks/wyc5l
+	paygrade = PAY_SHORT_WYC5L
+	name = "Legal Specialist"
+	prefix = "L. Spc."
+	ranking = 4
+	pay_multiplier = 5
+	officer_grade = GRADE_OFFICER
+
 /datum/paygrade/wy_ranks/wyc6
 	paygrade = PAY_SHORT_WYC6
 	name = "Executive Supervisor"
 	prefix = "Exec. Spvsr."
+	ranking = 5
+	pay_multiplier = 6
+	officer_grade = GRADE_OFFICER
+
+/datum/paygrade/wy_ranks/wyc6
+	paygrade = PAY_SHORT_WYC6L
+	name = "Legal Supervisor"
+	prefix = "L. Spvsr."
 	ranking = 5
 	pay_multiplier = 6
 	officer_grade = GRADE_OFFICER

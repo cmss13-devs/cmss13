@@ -176,24 +176,16 @@
 		"redemption_stimulant" = 3,
 	)
 
-/obj/item/device/internal_implant/rejuv/on_implanted(mob/living/M)
+/obj/item/device/internal_implant/rejuv/on_implanted(mob/living/implantee)
 	. = ..()
-	RegisterSignal(M, list(
-		COMSIG_MOB_TAKE_DAMAGE,
-		COMSIG_HUMAN_TAKE_DAMAGE,
-		COMSIG_XENO_TAKE_DAMAGE
-	), PROC_REF(check_revive))
+	RegisterSignal(implantee, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(check_revive))
 
-/obj/item/device/internal_implant/rejuv/proc/check_revive(mob/living/M, list/damagedata, damagetype)
+/obj/item/device/internal_implant/rejuv/proc/check_revive(mob/living/implantee, list/damagedata, damagetype)
 	SIGNAL_HANDLER
-	if((M.health - damagedata["damage"]) <= M.health_threshold_crit)
-		UnregisterSignal(M, list(
-			COMSIG_MOB_TAKE_DAMAGE,
-			COMSIG_HUMAN_TAKE_DAMAGE,
-			COMSIG_XENO_TAKE_DAMAGE
-		))
+	if((implantee.health - damagedata["damage"]) <= implantee.health_threshold_crit)
+		UnregisterSignal(implantee, COMSIG_MOB_TAKE_DAMAGE)
 
-		INVOKE_ASYNC(src, PROC_REF(revive), M)
+		INVOKE_ASYNC(src, PROC_REF(revive), implantee)
 
 /obj/item/device/internal_implant/rejuv/proc/revive(mob/living/M)
 	M.heal_all_damage()
@@ -255,14 +247,10 @@
 	var/brute_damage_mult = 0.85
 	var/bone_break_mult = 0.25
 
-/obj/item/device/internal_implant/subdermal_armor/on_implanted(mob/living/M)
+/obj/item/device/internal_implant/subdermal_armor/on_implanted(mob/living/implantee)
 	. = ..()
-	RegisterSignal(M, list(
-		COMSIG_MOB_TAKE_DAMAGE,
-		COMSIG_HUMAN_TAKE_DAMAGE,
-		COMSIG_XENO_TAKE_DAMAGE
-	), PROC_REF(handle_damage))
-	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, PROC_REF(handle_bonebreak))
+	RegisterSignal(implantee, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(handle_damage))
+	RegisterSignal(implantee, COMSIG_HUMAN_BONEBREAK_PROBABILITY, PROC_REF(handle_bonebreak))
 
 /obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER

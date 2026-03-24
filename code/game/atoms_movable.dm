@@ -39,12 +39,19 @@
 	/// Holds a reference to the emissive blocker overlay
 	var/emissive_overlay
 
+	/// A weakref to the mob currently interacting with us.
+	var/datum/weakref/interactor
+
 //===========================================================================
 /atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
 		qdel(I)
 	if(pulledby)
 		pulledby.stop_pulling()
+	if(interactor)
+		var/mob/real_interactor = interactor.resolve()
+		if(istype(real_interactor))
+			real_interactor.unset_interaction(src) // unsets interactor
 	QDEL_NULL(launch_metadata)
 	QDEL_NULL(em_block)
 	QDEL_NULL(emissive_overlay)
@@ -202,6 +209,7 @@
 		else
 			unset_interaction()
 	interactee = AM
+	AM.interactor = WEAKREF(src)
 	if(istype(interactee)) //some stupid code is setting datums as interactee...
 		interactee.on_set_interaction(src)
 
@@ -212,6 +220,7 @@
 		interactee = null
 		if(istype(prev_interactee))
 			prev_interactee.on_unset_interaction(src)
+			prev_interactee.interactor = null
 
 
 //things the user's machine must do just after we set the user's machine.
@@ -221,7 +230,7 @@
 
 /obj/on_set_interaction(mob/user)
 	..()
-	in_use = 1
+	in_use = TRUE
 
 
 //things the user's machine must do just before we unset the user's machine.
@@ -290,6 +299,7 @@
 	var/atom/movable/mstr = null //Used by clones for referral
 	var/proj_x = 0
 	var/proj_y = 0
+	var/proj_z = 0
 	unacidable = TRUE
 
 	var/list/image/hud_list
@@ -317,19 +327,20 @@
 	return src.mstr.bullet_act(P)
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(shift_x, shift_y)
-	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = FALSE
-	C.proj_x = shift_x
-	C.proj_y = shift_y
+/atom/movable/proc/create_clone_movable(shift_x, shift_y, shift_z)
+	var/atom/movable/clone/new_clone = new(loc)
+	new_clone.density = FALSE
+	new_clone.proj_x = shift_x
+	new_clone.proj_y = shift_y
+	new_clone.proj_z = shift_z
 
-	GLOB.clones.Add(C)
-	C.mstr = src //Link clone and master
-	src.clone = C
+	GLOB.clones.Add(new_clone)
+	new_clone.mstr = src //Link clone and master
+	clone = new_clone
 
 /atom/movable/proc/update_clone()
 	///---Var-Copy---////
-	clone.forceMove(locate(x + clone.proj_x, y + clone.proj_y, z))
+	clone.forceMove(locate(x + clone.proj_x, y + clone.proj_y, z + clone.proj_z))
 	//Translate clone position by projection factor
 	//This is done first to reduce movement latency
 

@@ -245,11 +245,7 @@
 /obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
-	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-		if(buckle_target.stat == DEAD || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS))
-			return
-
-	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+	if(buckle_target.mob_size > MOB_SIZE_XENO)
 		if(!can_carry_big)
 			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
 			return COMPONENT_BLOCK_BUCKLE
@@ -608,9 +604,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/roller/hospital/proc/create_body()
 	SIGNAL_HANDLER
-	body = new(loc)
+	body = new(src)
 	body.create_hud()
-	contents += body
 	arm_equipment(body, body_preset, TRUE, FALSE)
 	body.death(create_cause_data("exposure"))
 	update_icon()

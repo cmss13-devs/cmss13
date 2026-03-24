@@ -2,7 +2,7 @@
 
 /area/lv759
 	name = "LV-759 Hybrisa Prospera"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
 	powernet_name = "ground"
@@ -1021,7 +1021,7 @@
 /area/lv759/indoors/power_plant/equipment_west
 	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - West"
 
-// Marshalls (NSPA)
+// Marshals (NSPA)
 
 /area/lv759/indoors/colonial_marshals
 	name = "NSPA - Ironbridge Precinct"

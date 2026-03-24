@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Self destruct now pauses win condition checks during SD sequence and is explicitly a draw"
-  - code_imp: "Cleaned up some win condition handling"

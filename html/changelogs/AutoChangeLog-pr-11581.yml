@@ -1,5 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Mutated Despoiler is now Green Despoiler, not invisible one."
-  - bugfix: "Mutated King is also Green now."

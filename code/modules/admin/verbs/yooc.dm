@@ -12,7 +12,7 @@
 	if(!msg)
 		return
 
-	var/yooc_message = "YOOC: [src.key]([src.admin_holder.rank]): [msg]"
+	var/yooc_message = "YOOC: [src.username()]([src.admin_holder.rank]): [msg]"
 	log_admin(yooc_message)
 
 	msg = process_chat_markup(msg, list("*"))

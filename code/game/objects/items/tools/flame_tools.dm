@@ -306,8 +306,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	if(istype(target, /obj/item/reagent_container/glass)) //you can dip cigarettes into beakers
 		var/obj/item/reagent_container/glass/glass = target
-		var/transfered = glass.reagents.trans_to(src, chem_volume)
-		if(transfered) //if reagents were transfered, show the message
+		var/transferred = glass.reagents.trans_to(src, chem_volume)
+		if(transferred) //if reagents were transferred, show the message
 			to_chat(user, SPAN_NOTICE("You dip \the [src] into \the [glass]."))
 		else //if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)

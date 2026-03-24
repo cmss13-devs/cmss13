@@ -299,3 +299,7 @@
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/rifle/lasbolt
+	name = "Lasbolt"
+	icon_state = "lasbolt"

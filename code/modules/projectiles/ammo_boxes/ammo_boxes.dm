@@ -76,7 +76,7 @@
 	return
 
 /obj/item/ammo_box/magazine
-	name = "magazine box (M41A x 10)"
+	name = "magazine box (LAS x 10)"
 	icon_state = "base_m41" //base color of box
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay

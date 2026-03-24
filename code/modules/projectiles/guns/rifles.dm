@@ -43,14 +43,15 @@
 //M41A PULSE RIFLE
 
 /obj/item/weapon/gun/rifle/m41a
-	name = "\improper M41A pulse rifle MK2"
-	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	name = "\improper Imperial lasgun"   //Look on my code, ye mighty, and despair!
+	desc = "You're in the guard now, son."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
 	item_state = "m41a"
-	fire_sound = "gun_pulse"
+	fire_sound = "gun_grimdark"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
+	projectile_type = /obj/projectile/lasbolt
 	current_mag = /obj/item/ammo_magazine/rifle
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -93,7 +94,7 @@
 		/obj/item/attachable/scope/mini,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 	map_specific_decoration = TRUE
 	start_automatic = TRUE
 
@@ -105,7 +106,7 @@
 	if(istype(src, /obj/item/weapon/gun/rifle/m41a/corporate) || istype(src, /obj/item/weapon/gun/rifle/m41a/elite))
 		AddElement(/datum/element/corp_label/wy)
 	else
-		AddElement(/datum/element/corp_label/armat)
+		AddElement(/datum/element/corp_label/forgeworld)
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()

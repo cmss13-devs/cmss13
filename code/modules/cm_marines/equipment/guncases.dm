@@ -187,8 +187,8 @@
 
 //------------
 /obj/item/storage/box/guncase/m41a
-	name = "\improper M41A pulse rifle MK2 case"
-	desc = "A gun case containing the M41A pulse rifle MK2."
+	name = "\improper Imperial Lasgun case"
+	desc = "A gun case containing the Imperial Lasgun"
 	storage_slots = 5
 	can_hold = list(/obj/item/weapon/gun/rifle/m41a, /obj/item/ammo_magazine/rifle)
 

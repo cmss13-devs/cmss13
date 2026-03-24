@@ -301,5 +301,9 @@
 	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/rifle/lasbolt
-	name = "Lasbolt"
+	name = "lasbolt"
+	icon_state = "lasbolt"
+
+/datum/ammo/bullet/rifle/ap/lasbolt_ap
+	name = "armour piercing lasbolt"
 	icon_state = "lasbolt"

@@ -8,7 +8,7 @@
 	name = "projectile"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "bullet"
-	density = FALSE
+	density = FALSEa
 	unacidable = TRUE
 	anchored = TRUE //You will not have me, space wind!
 	flags_atom = NOINTERACT|NO_ZFALL //No real need for this, but whatever. Maybe this flag will do something useful in the future.

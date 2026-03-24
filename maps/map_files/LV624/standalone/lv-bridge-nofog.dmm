@@ -6,10 +6,6 @@
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/river/central_river)
-"ac" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/asteroidwarning/south,
-/area/lv624/ground/river/central_river)
 "ad" = (
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/northeast,
@@ -44,44 +40,48 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "am" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/asteroidwarning/south,
+/area/lv624/ground/river/central_river)
+"an" = (
+/turf/open/floor/plating/asteroidwarning/south,
+/area/lv624/ground/river/central_river)
+"ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/central_river)
-"an" = (
+"ap" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/central_river)
-"ao" = (
+"aq" = (
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"ap" = (
+"ar" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
-"aq" = (
+"as" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
-"ar" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/north_jungle)
-"as" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/north_jungle)
 "at" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_jungle)
 "au" = (
 /turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/north_east_jungle)
+/area/lv624/ground/jungle/north_jungle)
 "av" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"aw" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_east_jungle)
+"ax" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
-"aw" = (
-/turf/open/floor/plating/asteroidwarning/south,
-/area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -143,9 +143,9 @@
 (1,1,1) = {"
 aj
 aj
-ar
+at
 ai
-ao
+aq
 aa
 aa
 aa
@@ -158,9 +158,9 @@ lW
 (2,1,1) = {"
 aj
 aj
-as
+au
 mr
-ao
+aq
 aa
 aa
 aa
@@ -173,7 +173,7 @@ lW
 (3,1,1) = {"
 aj
 aj
-as
+au
 ai
 jr
 aa
@@ -188,7 +188,7 @@ lW
 (4,1,1) = {"
 yu
 aj
-at
+av
 ai
 jr
 aa
@@ -203,7 +203,7 @@ lW
 (5,1,1) = {"
 yu
 ak
-as
+au
 mq
 jr
 km
@@ -218,7 +218,7 @@ lW
 (6,1,1) = {"
 aj
 aj
-as
+au
 ai
 ab
 ae
@@ -233,7 +233,7 @@ ag
 (7,1,1) = {"
 ak
 aj
-as
+au
 ai
 Yw
 DX
@@ -243,12 +243,12 @@ DX
 DX
 Uh
 al
-ac
+am
 "}
 (8,1,1) = {"
 aj
 aj
-as
+au
 ai
 Yw
 qL
@@ -258,12 +258,12 @@ BW
 DX
 DX
 DX
-aw
+an
 "}
 (9,1,1) = {"
 aj
 aj
-as
+au
 ai
 Yw
 DX
@@ -273,12 +273,12 @@ DX
 DX
 iW
 DX
-aw
+an
 "}
 (10,1,1) = {"
 aj
 aj
-as
+au
 ai
 ad
 af
@@ -293,7 +293,7 @@ ah
 (11,1,1) = {"
 aj
 aj
-as
+au
 mq
 jr
 km
@@ -308,25 +308,25 @@ lW
 (12,1,1) = {"
 Pz
 VN
-au
+aw
 mr
+aq
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ao
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-am
 "}
 (13,1,1) = {"
 Pz
 EG
-av
-aq
+ax
+as
+ar
 ap
-an
 aa
 aa
 aa

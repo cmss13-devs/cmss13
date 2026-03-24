@@ -139,7 +139,7 @@
 
 	if (ishuman(source))
 		var/mob/living/carbon/human/sourcehuman = source
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < sourcehuman.health_threshold_crit) && !sourcehuman.get_target_lock(user.faction_group))
 			to_chat(user, SPAN_WARNING("You can't strip items of a crit or dead member of another faction!"))
 			return FALSE
 
@@ -209,22 +209,29 @@
 
 /datum/strippable_item/mob_item_slot/try_equip(atom/source, obj/item/equipping, mob/user)
 	. = ..()
-	if (!.)
+	if(!.)
 		return
 
-	if (!ismob(source))
+	if(!ismob(source))
 		return FALSE
-	if (user.action_busy)
+
+
+	var/mob/living/carbon/human/human_source = source
+	if(!human_source.has_limb_for_slot(key))
+		to_chat(user, SPAN_WARNING("[source] is missing the limb for this slot!"))
+		return FALSE
+
+	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
-	if (!equipping.mob_can_equip(
-		source,
-		key
-	))
-		to_chat(user, SPAN_WARNING("\The [equipping] doesn't fit in that place!"))
-		return FALSE
+
 	if(equipping.flags_item & WIELDED)
 		equipping.unwield(user)
+
+	if(!equipping.mob_can_equip(source, key))
+		to_chat(user, SPAN_WARNING("[equipping] doesn't fit in that place!"))
+		return FALSE
+
 	return TRUE
 
 /datum/strippable_item/mob_item_slot/start_equip(atom/source, obj/item/equipping, mob/user)
@@ -262,6 +269,7 @@
 		return FALSE
 
 	var/mob/sourcemob = source
+
 	sourcemob.equip_to_slot_if_possible(equipping, key)
 
 /datum/strippable_item/mob_item_slot/get_obscuring(atom/source)

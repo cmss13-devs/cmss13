@@ -144,9 +144,9 @@
 	. = ..()
 	if(isyautja(user))
 		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
-		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
+		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a humanoid you do extra damage as well."
 		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
-		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconcious or in critical state."
+		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconscious or in critical state."
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
@@ -162,8 +162,8 @@
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
-				if(isxeno(target))
-					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
+				if(ishuman(target))
+					target.apply_armoured_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 				playsound(target, 'sound/effects/hit_punch.ogg', 50)
 
 		if((INTENT_DISARM))
@@ -253,7 +253,7 @@
 		yautja_user.start_stomping()
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets), user), 10 SECONDS)
-		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets in front of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
 	if(gauntlet_deployed)
@@ -551,7 +551,7 @@
 	add_verb(user, /mob/living/carbon/human/proc/call_combi)
 	linked_to = user
 
-	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistible = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
@@ -722,7 +722,7 @@
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !isthrall(user))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
@@ -732,8 +732,8 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),
-				SPAN_NOTICE(" You easily catch [src]. "))
+			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air."),
+				SPAN_NOTICE("You easily catch [src]."))
 			return
 	..()
 
@@ -794,9 +794,9 @@
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
-	if(issamespecies(user, victim))
+	if(isspeciesyautja(victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
-		return
+		return TRUE
 
 	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal..."))
@@ -1038,6 +1038,13 @@
 	base_icon_state = "ancient_shield_alt"
 	item_state = "ancient_shield_alt"
 
+/obj/item/weapon/shield/riot/yautja/ancient/temple
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown alloy. Its time-worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon_state = "ancient_shield_temple"
+	base_icon_state = "ancient_shield_temple"
+	item_state = "ancient_shield_temple"
+
 /obj/item/weapon/shield/riot/yautja/bracer_shield
 	name = "bracer shield"
 	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
@@ -1097,7 +1104,7 @@
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(prob(60)) // fishing rods are prefered
+			if(prob(60)) // fishing rods are preferred
 				busy_fishing = FALSE
 				to_chat(user, SPAN_WARNING("You fail to catch anything!"))
 				return
@@ -1412,16 +1419,16 @@
 	w_class = SIZE_HUGE
 	pixel_x = -2
 	hud_offset = -2
-	var/charge_time = 0
-	var/last_regen = 0
+	// our charge. max of 100, min of 0. starts at 100
+	var/charge_time = 100
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	last_regen = world.time
 	update_icon()
+	AddElement(/datum/element/corp_label/dltalt) // only the rifle is special-issue, everything else comes from the clans
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
@@ -1776,7 +1783,7 @@
 
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
 	item_state = "bow"

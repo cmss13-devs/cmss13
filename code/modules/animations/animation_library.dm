@@ -179,7 +179,7 @@ Can look good elsewhere as well.*/
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
-	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED)) //it would look silly.
+	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED) || LAZYLEN(buckled_mobs)) //it would look silly.
 		return
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0

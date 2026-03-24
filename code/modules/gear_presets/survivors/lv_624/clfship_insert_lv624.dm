@@ -188,21 +188,14 @@
 	languages = ALL_SYNTH_LANGUAGES
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	skills = /datum/skills/colonial_synthetic
-	preset_generation_support = FALSE
+	skills = /datum/skills/synthetic/gen_two/gen_one
+	locked_generation = SYNTH_GEN_ONE
 	assignment = JOB_CLF_SYNTH
 	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	minimap_icon = "clf_synth"
 	minimap_background = "background_clf"
-
-/datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY_GEN_ONE)
-
-/datum/equipment_preset/synth/survivor/clf/load_skills(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/synth/survivor/clf/load_gear(mob/living/carbon/human/new_human)
 	//back

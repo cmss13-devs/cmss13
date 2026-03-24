@@ -3,16 +3,15 @@
 	faction_tag = FACTION_HYPERDYNE
 	base_icon_file = 'icons/mob/hud/factions/hyperdyne.dmi'
 
-/datum/faction/hyperdyne/modify_hud_holder(image/holder, mob/living/carbon/human/user)
+/datum/faction/hyperdyne/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/icon/override_icon_file
 	var/hud_icon_state
-	var/obj/item/card/id/id_card = user.get_idcard()
-	var/role
-	if(user.mind)
-		role = user.job
-	else if(id_card)
-		role = id_card.rank
-	switch(role)
+	var/_role = human.job
+	if(!_role)
+		var/obj/item/card/id/id_card = human.get_idcard()
+		if(id_card)
+			_role = id_card.rank
+	switch(_role)
 		if(JOB_HC_TRAINEE)
 			hud_icon_state = "trainee"
 		if(JOB_HC_JUNIOR_EXECUTIVE)
@@ -38,4 +37,4 @@
 		if(JOB_HC_DIRECTOR)
 			hud_icon_state = "director"
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, user, "hc_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "hc_[hud_icon_state]")

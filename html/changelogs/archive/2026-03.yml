@@ -1,0 +1,259 @@
+2026-03-01:
+  ComboTombo:
+  - rscadd: Added marine combat boots and gloves of different variants to the synthetic
+      clothing vendor and loadout menu
+  MistChristmas:
+  - admin: Psychic Property (ENCEPHALOPHRASIVE) is now Admin spawn only.
+2026-03-02:
+  Drathek:
+  - bugfix: Mass screenshot verb will now optionally disable all open_space blur planes
+      instead of just the first
+  Unknownity:
+  - balance: Roman weapons ie. Gladius, Javelin, Staff have been slightly damage buffed
+      to deal with Yautja armor better. Gladius and Javelin also have additional description
+      to them that you can raise/lower them.
+  - balance: Romans are now immune to shrapnel.
+  - bugfix: Roman Aquilifer's bear belt hat's onmob sprite facing west has been fixed.
+  - bugfix: Historical Prey are no longer able to spawn with loadout vanity items.
+  - bugfix: Romans no longer wear immersion breaking marine underwear.
+  - rscadd: Roman soldiers now get IDs.
+  dawsonkeyes:
+  - bugfix: Pepperspray effects no longer stack infinitely
+  ori-disillusion-mirnov:
+  - bugfix: whitelisted predators can no longer spawn as a youngblood
+2026-03-03:
+  MistChristmas:
+  - bugfix: Runner plush accepts no substitutes for a beret
+2026-03-04:
+  KCartridge:
+  - imagetweak: (Mapping) adds alpha to open_space
+2026-03-05:
+  Drathek:
+  - code_imp: Updated rust_g to 6.0.1 to address possible race conditions for spritesheet
+      generation
+  - bugfix: Fix larva fire protection trampling existing xeno fire signals
+  Drathek Harry:
+  - rscadd: 'FTL Hijack Evacuation: Old 50% threshold starts a FTL jump, 100% threshold
+      arrives at a station that indefinitely spawns ERTs, failure allows SD (and lifeboat
+      evac again if not crashed onto ground)'
+  - rscadd: Multiz stairs and open_space now check if the destination is fully closed
+      turfs to block travel (unless thrown in the case of open_space which will kill)
+  - rscadd: Added an automatic door controller that checks for mobs in the area it
+      is in that aren't dead and optionally some faction
+  - admin: Map template placement has new options namely a way to expand playable
+      space into space
+  - code_imp: Projectors now support z shifts, can use a projector anchor to automatically
+      detect a specific z, and initialize differently
+  - code_imp: open_space turfs now can override how they determine the turf below
+      them and SSmapping can determine Z transitions by coordinate
+  - code_imp: Added /area/template_noop/conditional to act as a normal area noop unless
+      the existing area matches a trigger
+  - code_imp: Space turfs update their icon differently (removes an istype(src) check
+  - code_imp: Weather subsystem can now support areas created after initialization
+  - code_imp: Various main ship z level checks were replaced with a slightly more
+      performant version
+  - code_imp: Warheads now respect current name in cause_data, and can disable a tertiary
+      explosion
+  - code_imp: Ship weapons code now handles cause_data better
+  - code_imp: ChangeTurf can now accept arbitrary arguments for Initialize of the
+      new turf
+  - code_imp: Cleaned up logic for update_connections for walls (they now update afterShuttleMove)
+  - soundadd: Added a reversed version of an existing supercapcitors_charging sound
+  - balance: Neurotoxin hallucinations cannot occur more frequently than every 15s
+      now
+  - balance: Most temporary hulls on the Almayer are now internal hull to prevent
+      mining during hijack
+  - balance: Resin traps now properly respect is_resin_allowed as they should have
+  - ui: Added FTL status to escape pods UI
+  - bugfix: Fixed ERT shuttles missing no tunnel flag
+  - bugfix: Fixed a couple ways for base lighting to double up overlays
+  - bugfix: Fixed a niche scenario where creating a mob hud would fail to offset blur
+      plane masters correctly if Initialize is delayed
+  - config: Shipmap json files now need to specify ground_crash_template_name, crack_open_horizontal_positions,
+      and open_space_bounds
+  - mapadd: Added a crashed Almayer template and umbilical docks
+  - maptweak: Changed umbilical cord docking ports on the Almayer with the south (port)
+      dock allowing larger shuttles and removed a stray pipe on bottom Z
+  - maptweak: All map borders that were a shuttle turf are converted to a cordon (UpdatePaths
+      script provided)
+  - maptweak: Fixed OOB/sky areas on LV624, Kutjevo, Hybrisa, New Varadero, Soro,
+      Chances Claim, and BigRed
+  MistChristmas:
+  - bugfix: Working Joes get the right skills
+  MoondancerPony:
+  - bugfix: fixed Trijent Dam water filtration causing extreme lag
+  - bugfix: fixed Trijent Dam red water not causing damage
+  - bugfix: fixed odd viewing angles on staircases
+  hry-gh:
+  - bugfix: makes the relay browser use the new calculation system
+2026-03-06:
+  BeagleGaming1:
+  - rscdel: Disables Byond macros
+  MistChristmas:
+  - spellcheck: Removed Illegal to distribute line from Oxycodone bottle
+  MoondancerPony:
+  - bugfix: Tyrargo Rift army survivors no longer show up as part of Alpha Squad on
+      the crew monitor.
+  Riot:
+  - rscadd: Adds US army ranks, applied to the survivors and ERT on Tyrargo Rift
+  - bugfix: Army survivors can now program the comms tower to accept their comms.
+  - bugfix: Army comms are now fully working, with their own radio key and working
+      comms color.
+2026-03-07:
+  Drathek:
+  - code_imp: Reworked how unauthenticated and lobby menu windows clean up on logout
+  - code_imp: TGUI window close now cleans up more even if there is no client
+  - bugfix: Fix runtimes with tutorials ending tutorials twice
+  - bugfix: Fixed various places where spawning from lobby would fail to delete the
+      new_player mob
+  - bugfix: Fixed niche logging not occurring when predators join
+  MoondancerPony:
+  - server: Linux servers now load the SSV Rostock properly
+  zzzmike:
+  - qol: FTL jump wording changed to make game mechanics more transparent
+2026-03-08:
+  Detective-Google:
+  - admin: the adjust job slots verb now allows you to modify roundstart slots as
+      well as latejoin ones.
+  Drathek:
+  - rscadd: Added marine manifest hotkey for humans & observers
+  - bugfix: Hive status hotkey now works for observers
+  MoondancerPony:
+  - spellcheck: fixed a lot of typos
+  Riot:
+  - rscadd: Pickup hotkey has a memory of 5 items now
+  Steelpoint:
+  - rscadd: Tyrargo Rift may only be voted for if the server has at least 100 players.
+2026-03-09:
+  MistChristmas:
+  - bugfix: Dropship Crew now see their full list of buyables again... Sorry.
+  MoondancerPony:
+  - bugfix: made the FTL Hijack planet crash around twice as fast
+  - code_imp: unit tests should have fewer flaky failures now
+  hry-gh:
+  - bugfix: binding keys to tab now works
+  ori-disillusion-mirnov:
+  - admin: location is logged on hivemind usage and evolution logs
+  - bugfix: headbite execution log no longer lists the human as doing the headbite
+  riot:
+  - maptweak: The basketball hoops on LV-624's Fitness dome can now be walked through.
+2026-03-10:
+  Drathek:
+  - bugfix: Fixed queen no forfeit check not checking the relevant Z levels (namely
+      regarding hijack/FTL)
+  - bugfix: Fixed potential for hive collapse during hijack
+  MistChristmas:
+  - soundtweak: Normalise ambience that Abyssal uses to be quieter.
+2026-03-11:
+  MistChristmas:
+  - bugfix: Tyrago Rift Out of bounds areas disallow burrowing.
+  MoondancerPony:
+  - bugfix: fixed larvae being able to dig snow
+2026-03-12:
+  MistChristmas:
+  - bugfix: 'Unique items: I.E. Family Photo now belong to you even if they spawn
+      in your inventory instead of pocket.'
+  - bugfix: ARES correctly records OB/Supply Coords, stop the ship map shaking multiple
+      times from one OB being fired.
+  Nihisohel:
+  - rscadd: The style system is added! You can now examine certain items if they are
+      "stylish", and pressing unique action will change its onmob sprite to whichever
+      you prefer
+  - rscadd: The only stylish items so far are the USCM Patch, the Rosary, and the
+      new golden rosary item in the character loadout screen!
+  - code_imp: Adds a parent item for all patches, and makes the USCM patch its own
+      distinct type
+  - code_imp: Minorly tweaks inventory overlay to prioritize item_state first before
+      fallbacking to icon_state
+  - code_imp: Autodocs a few clothing variables
+  - bugfix: Fixes accessorized inv_icon overlay from being directional
+2026-03-14:
+  MistChristmas:
+  - bugfix: Xenomorph on dropship alert now only occurs after landing.
+  - bugfix: Intel job not properly being tied to roundstart gear_preset
+  - admin: G2s and Claymores now get logged when deployed.
+  MoondancerPony:
+  - rscdel: broke area-based lighting
+  - bugfix: fixed area-based lighting
+  - bugfix: fixed Tyrargo army CO survivors not starting with an unbuttoned jacket
+      due to an error
+  Riot:
+  - bugfix: Certain ERTs should now correctly spawn with basic first aid kits, as
+      they were meant to do for the past 3 years.
+  - bugfix: Fixes the army tgui prefixes
+  cuberound:
+  - balance: increases random sandbag crate spawn chance
+  - balance: increases random HPR crate spawn chance
+  - balance: reduces random flamer fuel crate spawn chance
+  - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead
+2026-03-17:
+  MoondancerPony:
+  - bugfix: fixed reading papers inside folders
+  - spellcheck: fixed a few descriptions missing punctuation
+  Venuska1117:
+  - qol: Organizes Alien Tab, now verbs have categories for better visibility.
+  dawsonkeyes:
+  - rscadd: Staff may now send a Yautja Military Caste squad if they really, really
+      hate you
+  forest2001, DawsonKeyes:
+  - mapadd: Changed the Predship to Multi-Z.
+  - mapadd: Added a Hunter Shuttle.
+  - rscdel: Removed Predship Susbsystem as it is not required.
+  mrkivnv:
+  - rscadd: added new corporate bodyguard icons that depends on the rank status
+  - imageadd: bodyguard icons for TPPO, PPO, PPS, PPC
+2026-03-18:
+  TrollerNoob:
+  - ui: Toggle Ceiling Overlays action button now only appears when the Minimap is
+      actively open.
+  - rscadd: Xenos can now see the Minimap when the Queen is off her ovipositor, but
+      it will be a static version of the last Queen Minimap update. It returns to
+      live once the Queen is on ovi.
+  - qol: Queens on Ovi automatically have drawing tools available when opening their
+      Minimap.
+  - rscdel: Removed the Edit Minimap option from the Manage the Hive menu.
+  - bugfix: Fixed Minimaps not properly receiving updates from CIC.
+  - bugfix: Fixed Xenos being unable to see Queen drawings.
+  - bugfix: Fixed latejoin marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed spawned marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed live minimaps receiving drawing updates before the update was actually
+      sent.
+  - bugfix: Fixed Ceiling Overlays being applied when they were not toggled.
+  - bugfix: Removed the dim grey area outside the minimap when Ceiling Overlays were
+      toggled on.
+  forest2001, dimdimich1996:
+  - imageadd: Added new and updated sprites for Yautja related constructions and temples.
+  - maptweak: Adjusted existing temple areas on maps to accomodate sprite changes,
+      namely recolors and door orientation.
+2026-03-19:
+  Jesters-Ballad:
+  - balance: Combat Toolbelts may now hold nails.
+  halgmor:
+  - rscadd: HealthMate HUD added to the medic gear vendor.
+  - rscadd: Added static red headband option alongside a red headband (camo conforming)
+      version.
+2026-03-21:
+  MoondancerPony:
+  - bugfix: fixed an error when weeds covering a xenomorph corpse die
+  - bugfix: fixed neurotoxin dizziness cancelling binocular/zoom view offset
+  - bugfix: fixed deleted binoculars never un-zooming your view
+  - refactor: refactored plane render relay plate code to reduce overtime lag from
+      observing and changing mobs
+2026-03-24:
+  DangerRevolution:
+  - maptweak: Hybrisa Propsera, Chance's Claim, New Varadero and Tyrago Rift have
+      had Intel Terminals added to them. Shiva's Snowball has had one of the terminals
+      moved out of the South-East Hive location and instead south of Anti-Freeze Bar
+  - maptweak: Shifted Solaris' LZ1 Sentry Locations to prevent a Sentry spawning on
+      a container, and therefore being bugged inside it.
+  - maptweak: Removed a stray wall under a girder in the LV Destroyed Medbay variation.
+  ihatethisengine:
+  - balance: xenos get +1 second cooldown penalty for being interrupted mid building,
+      queen on boosted building gets +3 seconds penalty.
+  - code_imp: makes do_after check if the user or the target were qdeleted

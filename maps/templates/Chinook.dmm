@@ -834,7 +834,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/event)
 "cM" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
@@ -2835,7 +2835,7 @@
 /area/adminlevel/chinook/event)
 "kU" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/clothing/accessory/patch{
+/obj/item/clothing/accessory/patch/uscmpatch{
 	pixel_x = -3;
 	pixel_y = 6
 	},
@@ -4468,7 +4468,7 @@
 /turf/open/floor/almayer/bluecorner/north,
 /area/adminlevel/chinook/offices)
 "rH" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating/northeast,

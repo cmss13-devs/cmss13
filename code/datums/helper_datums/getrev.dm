@@ -82,5 +82,9 @@ CLIENT_VERB(showrevinfo)
 		var/datum/tgs_version/api_version = world.TgsApiVersion()
 		msg += "DMAPI version: [api_version.raw_parameter]"
 
+	var/code_modification = CONFIG_GET(string/code_modifications_message)
+	if(code_modification)
+		msg += code_modification
+
 	// Game mode odds
 	to_chat(src, SPAN_INFO(msg.Join("<br>")))

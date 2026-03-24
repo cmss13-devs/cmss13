@@ -26,7 +26,7 @@
 	if(adj_dizzy)
 		M.dizziness = max(0,M.dizziness + adj_dizzy * delta_time)
 	if(adj_drowsy)
-		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
+		M.drowsiness = max(0,M.drowsiness + adj_drowsy * delta_time)
 	if(adj_sleepy)
 		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 
@@ -281,13 +281,13 @@
 /datum/reagent/drink/souto/vanilla
 	name = "Vanilla Souto"
 	id = "souto_vanilla"
-	description = "A vanilla flavored soda that's canned in Havana"
+	description = "A vanilla flavored soda that's canned in Havana."
 	color = "#F9E5BC"
 
 /datum/reagent/drink/souto/pineapple
 	name = "Pineapple Souto"
 	id = "souto_pineapple"
-	description = "A pineapple flavored soda that's canned in Havana"
+	description = "A pineapple flavored soda that's canned in Havana."
 	color = "#FEEB75"
 
 //OTHER SODA//
@@ -336,7 +336,7 @@
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness +=5
-	M.drowsyness = 0
+	M.drowsiness = 0
 
 /datum/reagent/drink/cold/spacemountainwind
 	name = "Mountain Wind"
@@ -349,7 +349,7 @@
 /datum/reagent/drink/cold/dr_gibb
 	name = "Dr. Gibb"
 	id = "dr_gibb"
-	description = "A delicious blend of 42 different flavours"
+	description = "A delicious blend of 42 different flavours!"
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -6
 

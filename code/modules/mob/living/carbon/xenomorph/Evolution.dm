@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	do_evolve()
 
@@ -77,10 +77,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(hardcore)
-			to_chat(src, SPAN_WARNING("Nuh-uhh."))
-			return
-
 		if(SSticker.mode && hive.xeno_queen_timer > world.time)
 			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
 			return
@@ -93,6 +89,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		else
 			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
 			return
+
+	if(Check_WO())
+		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
+			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
+			return
+		on_mob_jump()
+		forceMove(get_turf(pick(GLOB.queen_spawns)))
+	else if(hardcore)
+		to_chat(src, SPAN_WARNING("Nuh-uhh."))
+		return
 
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
@@ -169,7 +175,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			if(3)
 				hive.tier_3_xenos |= new_xeno
 
-	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno]. (Location: [AREACOORD(loc)])")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -181,7 +187,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldn't be possible though
 		new_xeno.bruteloss = bruteloss //Transfers the damage over.
 		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()
@@ -244,10 +250,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
-		return FALSE
-
-	if(hardcore)
-		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
 
 	if(lock_evolve)
@@ -346,7 +348,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	if(!check_state())
 		return
@@ -370,6 +372,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
+		return FALSE
+
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
 	var/alleged_queens = hive.get_potential_queen_count()
@@ -407,13 +413,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
-		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
+		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno]. (Location: [AREACOORD(loc)])")
 
 	if(new_xeno.ckey)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
@@ -509,9 +515,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
-		return FALSE
-	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && islarva(src) && castepick != XENO_CASTE_DRONE)
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 
 	return TRUE

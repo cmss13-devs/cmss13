@@ -1143,7 +1143,7 @@
 		"Corporate Liaison" = TRACKER_CL
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/wy_sec)
+	initial_keys = list(/obj/item/device/encryptionkey/wy_bodyguard)
 
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"

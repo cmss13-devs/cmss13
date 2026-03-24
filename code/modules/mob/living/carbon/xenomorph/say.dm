@@ -99,7 +99,7 @@
 	if(!filter_message(src, message))
 		return
 
-	log_hivemind("[key_name(src)] : [message]")
+	log_hivemind("[key_name(src)] : [message] (AREA: [get_area_name(loc)])")
 
 	var/track = ""
 	var/overwatch_target = XENO_OVERWATCH_TARGET_HREF

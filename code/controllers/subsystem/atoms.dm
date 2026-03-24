@@ -168,6 +168,8 @@ SUBSYSTEM_DEF(atoms)
 
 /datum/controller/subsystem/atoms/proc/lateinit_roundstart_atoms()
 	for(var/atom/A as anything in roundstart_loaders)
+		if(QDELETED(A))
+			continue
 		A.LateInitialize()
 	roundstart_loaders.Cut()
 

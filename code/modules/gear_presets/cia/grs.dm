@@ -76,7 +76,7 @@
 	if(suit_type)
 		new_human.equip_to_slot_or_del(new suit_type, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/grs_knife, WEAR_FEET)
 	if(back_type)
 		new_human.equip_to_slot_or_del(new back_type, WEAR_BACK)
 

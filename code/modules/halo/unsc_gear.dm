@@ -510,8 +510,6 @@
 	new /obj/item/ammo_magazine/rifle/halo/ma5c(src)
 	new /obj/item/ammo_magazine/rifle/halo/ma5c(src)
 	new /obj/item/ammo_magazine/rifle/halo/ma5c(src)
-	new /obj/item/ammo_magazine/rifle/halo/ma5c(src)
-	new /obj/item/ammo_magazine/rifle/halo/ma5c(src)
 
 //===
 

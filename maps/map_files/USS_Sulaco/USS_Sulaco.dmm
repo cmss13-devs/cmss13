@@ -69,9 +69,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 30
-	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/sulaco/medbay/surgery_one)
 "aaq" = (
@@ -87,6 +84,10 @@
 "aar" = (
 /obj/structure/sink{
 	pixel_y = 28
+	},
+/obj/structure/machinery/alarm{
+	pixel_x = 30;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/sulaco/medbay/surgery_one)
@@ -125,15 +126,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/maintenance/lower_maint)
 "aax" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/door/poddoor/almayer{
-	name = "Pod Door";
-	unacidable = 1;
-	explo_proof = 1;
-	emp_proof = 1;
-	dir = 2
+/obj/structure/machinery/landinglight{
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/sulaco/maintenance/south_solar_maint)
 "aay" = (
 /obj/structure/machinery/light{
@@ -193,11 +189,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hallway/lower_main_hall)
 "aaH" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -222,10 +217,10 @@
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "aaM" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -437,39 +432,26 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "abs" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
-"abt" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "abu" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "abv" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/vents/scrubber,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "abw" = (
@@ -559,23 +541,12 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/maintenance/lower_maint)
-"abE" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "abF" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -584,13 +555,12 @@
 /turf/open/floor/almayer,
 /area/sulaco/hangar)
 "abH" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
-	},
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -604,15 +574,14 @@
 /turf/open/floor/almayer,
 /area/sulaco/hangar)
 "abJ" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/machinery/door_control{
 	id = "DeployWorkR";
 	name = "Shutter Control";
 	req_one_access_txt = "12;22";
 	pixel_x = -25
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -944,10 +913,10 @@
 /turf/open/floor/almayer/silver/west,
 /area/sulaco/command/ai)
 "acA" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/pipes/vents/scrubber,
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "acB" = (
@@ -1095,33 +1064,18 @@
 	},
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/lower_south)
-"acX" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "acY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "acZ" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
-"ada" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -1140,10 +1094,10 @@
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/lower_north)
 "adf" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/pipes/vents/pump,
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
-/obj/structure/pipes/vents/pump,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "adg" = (
@@ -1196,20 +1150,6 @@
 	},
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
-"adp" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
-"adq" = (
-/obj/structure/machinery/landinglight/ds1,
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "adr" = (
 /obj/structure/lattice,
 /obj/docking_port/stationary/emergency_response/external/hangar_port{
@@ -1658,14 +1598,15 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "aey" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/sign/safety/landingzone{
 	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "aez" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -1675,6 +1616,9 @@
 	},
 /obj/structure/sign/safety/chem_lab{
 	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/plate,
 /area/sulaco/hallway/lower_main_hall)
@@ -1704,15 +1648,15 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 1
-	},
 /obj/structure/machinery/door_control{
 	id = "vehicle_access";
 	name = "Shutter Controls";
 	req_one_access_txt = "7;19;27";
 	pixel_y = -23;
 	pixel_x = 10
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -2003,8 +1947,18 @@
 /area/sulaco/bridge)
 "afs" = (
 /obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/plate,
 /area/sulaco/bridge)
+"aft" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
 "afu" = (
 /obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/plating/plating_catwalk,
@@ -2315,6 +2269,12 @@
 /obj/structure/closet/crate/bravo,
 /turf/open/floor/plating,
 /area/sulaco/cargo)
+"agq" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
 "agr" = (
 /obj/structure/machinery/cm_vending/clothing/maintenance_technician,
 /obj/structure/machinery/light{
@@ -2330,6 +2290,12 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/cargo,
 /area/sulaco/cargo)
+"agt" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
 "agu" = (
 /obj/structure/barricade/handrail/medical,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -2351,7 +2317,9 @@
 /turf/open/floor/almayer/greencorner/east,
 /area/sulaco/cargo)
 "agx" = (
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/green/north,
 /area/sulaco/cargo)
 "agy" = (
@@ -2377,6 +2345,9 @@
 	req_access_txt = "28"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/green/east,
 /area/sulaco/cargo)
 "agB" = (
@@ -2489,11 +2460,18 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay)
 "agP" = (
 /obj/vehicle/powerloader{
 	name = "Mark IV Powerloader"
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer/green/north,
 /area/sulaco/cargo)
@@ -2795,13 +2773,13 @@
 /turf/open/floor/almayer,
 /area/sulaco/hallway/lower_main_hall)
 "ahI" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/safety/ladder{
 	pixel_y = 0;
 	pixel_x = 30
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -2816,20 +2794,16 @@
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/lower_north)
 "ahL" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/sign/safety/maint{
 	pixel_y = 0;
 	pixel_x = -30
 	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "ahM" = (
-/obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe"
-	},
 /obj/structure/sign/safety/suit_storage{
 	pixel_y = 30
 	},
@@ -2837,6 +2811,7 @@
 	pixel_x = 14;
 	pixel_y = 30
 	},
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "ahN" = (
@@ -3179,6 +3154,10 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
 /turf/open/floor/almayer,
 /area/sulaco/brig)
 "aiQ" = (
@@ -3292,6 +3271,12 @@
 "ajf" = (
 /turf/open/floor/almayer/red/southwest,
 /area/sulaco/brig)
+"ajg" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
 "ajh" = (
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/flasher{
@@ -3873,6 +3858,12 @@
 "akP" = (
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/sulaco/medbay)
+"akQ" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
 "akR" = (
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay)
@@ -3932,6 +3923,9 @@
 /area/sulaco/medbay/west)
 "alc" = (
 /obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating,
 /area/sulaco/disposal)
 "ald" = (
@@ -4138,8 +4132,9 @@
 /turf/open/floor/almayer,
 /area/sulaco/cafeteria)
 "alH" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/cafeteria)
@@ -4741,15 +4736,602 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/sulaco/engineering/atmos)
+"anm" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"ann" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"ano" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anp" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anq" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anr" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"ans" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"ant" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anu" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anv" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anx" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"any" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anz" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anA" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/lower_maint2)
+"anB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anC" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anD" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anE" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anF" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anH" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anI" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anK" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anL" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anM" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anN" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anO" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anP" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anR" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anS" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anT" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anU" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anV" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anW" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anX" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/plating,
+/area/sulaco/hangar)
+"anY" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "Pod Door";
+	unacidable = 1;
+	explo_proof = 1;
+	emp_proof = 1;
+	dir = 2
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/sulaco/maintenance/south_solar_maint)
+"anZ" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoa" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aob" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoc" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aod" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoe" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aof" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aog" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/red/north,
+/area/sulaco/brig)
+"aoh" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/brig)
+"aoi" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoj" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aok" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aol" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aom" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer,
+/area/sulaco/brig)
+"aon" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoo" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aop" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aoq" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aor" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aos" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/maintenance/south_solar_maint)
+"aot" = (
+/obj/structure/machinery/suit_storage_unit/standard_unit,
+/obj/structure/sign/safety/suit_storage{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer,
+/area/sulaco/engineering/storage)
+"aou" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/sulaco/hallway/central_hall)
+"aov" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/cargo)
+"aow" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/cargo)
+"aox" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/sulaco/medbay/surgery_two)
+"aoy" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/sulaco/cryosleep)
+"aoz" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/sulaco/showers)
+"aoA" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/green,
+/area/sulaco/cargo)
+"aoB" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/sulaco/cargo)
+"aoC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/green/north,
+/area/sulaco/cargo)
+"aoD" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoE" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoF" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoG" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoH" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoI" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoJ" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoK" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoL" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoM" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoN" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoO" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoP" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoQ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoR" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoS" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoT" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
 "aoU" = (
 /obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer/blue/east,
 /area/sulaco/marine/delta)
-"apZ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/sulaco/engineering/atmos)
-"arj" = (
+"aoV" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/sulaco/cargo)
+"aoW" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
 	name = "Pod Door";
@@ -4758,7 +5340,19 @@
 	emp_proof = 1;
 	dir = 2
 	},
-/turf/open/floor/plating,
+/turf/open/space/basic,
+/area/sulaco/cargo)
+"apZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer,
+/area/sulaco/engineering/atmos)
+"arj" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
 /area/sulaco/cargo)
 "arL" = (
 /turf/closed/wall/almayer,
@@ -4813,6 +5407,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
 "avU" = (
@@ -5019,7 +5614,8 @@
 /area/sulaco/engineering)
 "aRG" = (
 /obj/structure/machinery/cm_vending/clothing/marine/bravo,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/orangefull,
@@ -5100,7 +5696,9 @@
 	pixel_x = 0;
 	pixel_y = 30
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall)
 "bcb" = (
@@ -5357,11 +5955,10 @@
 /turf/open/floor/almayer/tcomms,
 /area/sulaco/telecomms)
 "buk" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1"
-	},
 /obj/structure/bed/chair,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/silver/east,
 /area/sulaco/command/combat_correspondent)
 "buG" = (
@@ -5397,12 +5994,11 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -5527,6 +6123,10 @@
 /obj/item/book/manual/surgery,
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/medbay/storage)
 "bGd" = (
@@ -5556,6 +6156,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
@@ -5706,12 +6310,11 @@
 /area/sulaco/hangar/range)
 "bRV" = (
 /obj/structure/closet/walllocker/emerglocker/west,
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -5720,8 +6323,9 @@
 /turf/open/floor/almayer,
 /area/sulaco/marine)
 "bSf" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/engineering/atmos)
@@ -5786,10 +6390,12 @@
 /area/sulaco/marine/alpha)
 "cbU" = (
 /obj/structure/closet/secure_closet/medical3,
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/light{
 	dir = 8;
 	invisibility = 101
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/sulaco/medbay/storage)
@@ -5873,7 +6479,8 @@
 	pixel_y = 0
 	},
 /obj/structure/machinery/cm_vending/clothing/marine/delta,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/bluefull,
@@ -5893,13 +6500,14 @@
 /obj/structure/machinery/power/smes/buildable{
 	name = "Core Power Unit"
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/plating,
 /area/sulaco/engineering/engine)
@@ -6034,10 +6642,6 @@
 	},
 /turf/open/floor/almayer,
 /area/sulaco/bridge)
-"cwy" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer,
-/area/sulaco/engineering/atmos)
 "cxu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -6646,9 +7250,7 @@
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "din" = (
-/obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe"
-	},
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "djp" = (
@@ -6763,8 +7365,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "dsK" = (
@@ -6789,10 +7393,12 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/machinery/camera/autoname,
 /obj/structure/sign/safety/zero_g{
 	pixel_x = 0;
 	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/disposal)
@@ -7061,7 +7667,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -7184,8 +7790,9 @@
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/marine/bravo)
 "dRh" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall)
@@ -7265,10 +7872,11 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/maintenance/south_solar_maint)
 "dVe" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/structure/machinery/suit_storage_unit/standard_unit,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/engineering/storage)
 "dVT" = (
@@ -7488,7 +8096,9 @@
 /turf/open/floor/plating,
 /area/sulaco/engineering/engine)
 "env" = (
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/engine/vacuum,
 /area/sulaco/telecomms)
 "enz" = (
@@ -7566,8 +8176,9 @@
 /area/sulaco/maintenance/lower_maint)
 "eql" = (
 /obj/structure/machinery/autolathe,
-/obj/structure/machinery/camera/autoname{
-	dir = 4
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/orange/west,
 /area/sulaco/maintenance/lower_maint)
@@ -7761,13 +8372,16 @@
 /area/sulaco/liaison)
 "eCY" = (
 /obj/structure/machinery/cm_vending/clothing/specialist/bravo,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine/bravo)
 "eDH" = (
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
 "eDY" = (
@@ -7846,15 +8460,15 @@
 /turf/open/floor/almayer,
 /area/sulaco/hangar/atmos)
 "eKS" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -7914,6 +8528,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/structure/machinery/alarm{
+	pixel_y = -30
+	},
 /turf/open/floor/carpet,
 /area/sulaco/cap_office)
 "eNG" = (
@@ -7970,7 +8587,9 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/sulaco/medbay/west)
 "eTh" = (
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/morgue)
 "eTp" = (
@@ -8059,7 +8678,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -8355,7 +8974,7 @@
 /area/sulaco/brig)
 "fvm" = (
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -8487,12 +9106,11 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -8503,6 +9121,9 @@
 "fGk" = (
 /obj/structure/machinery/body_scanconsole{
 	pixel_y = 3
+	},
+/obj/structure/machinery/alarm{
+	pixel_y = -30
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/sulaco/medbay/surgery_two)
@@ -8532,7 +9153,9 @@
 	pixel_x = 0;
 	pixel_y = 30
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
 "fJg" = (
@@ -8662,9 +9285,6 @@
 /obj/structure/closet/radiation,
 /obj/structure/machinery/light/small{
 	dir = 8
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
 	},
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering)
@@ -9155,9 +9775,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hangar/atmos)
 "gDU" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -9311,8 +9930,9 @@
 /area/sulaco/brig)
 "gMU" = (
 /obj/structure/machinery/cm_vending/clothing/specialist/charlie,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine/charlie)
@@ -9386,6 +10006,9 @@
 /area/sulaco/briefing)
 "gRg" = (
 /obj/structure/bed/chair/office/light,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering/ce)
 "gRj" = (
@@ -9433,12 +10056,8 @@
 /area/sulaco/briefing)
 "gWt" = (
 /obj/structure/bed/chair,
-/obj/item/device/radio/intercom{
-	anyai = 1;
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_x = 0;
-	pixel_y = 30
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/sulaco/medbay)
@@ -9572,7 +10191,6 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay/storage2)
 "hiW" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/bed/stool,
 /turf/open/floor/plating,
 /area/sulaco/disposal)
@@ -9790,7 +10408,7 @@
 /area/sulaco/marine/delta)
 "hDk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -10062,9 +10680,11 @@
 /obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/tool/crowbar,
-/obj/structure/machinery/camera/autoname,
 /obj/item/storage/firstaid/toxin,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering)
 "hVr" = (
@@ -10299,14 +10919,12 @@
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering)
 "isJ" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/safety/landingzone{
 	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/sulaco/cargo)
@@ -10324,8 +10942,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hangar/atmos)
 "itH" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/briefing)
@@ -10450,11 +11069,13 @@
 /turf/closed/wall/almayer,
 /area/sulaco/marine/alpha)
 "iAE" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/machinery/autolathe/armylathe/partial,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating,
 /area/sulaco/engineering/engine)
 "iAN" = (
@@ -10508,6 +11129,9 @@
 /turf/open/floor/almayer/uscm/south_face/southeast,
 /area/sulaco/cafeteria)
 "iDr" = (
+/obj/structure/machinery/alarm{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer/silver/north,
 /area/sulaco/command/eva)
 "iDs" = (
@@ -10601,6 +11225,9 @@
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/cargo)
@@ -10865,8 +11492,9 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/silver/west,
 /area/sulaco/hallway/central_hall2)
@@ -11160,7 +11788,9 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/sulaco/medbay/surgery_one)
 "jxx" = (
@@ -11225,7 +11855,9 @@
 	dir = 1
 	},
 /obj/structure/target/syndicate,
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hangar/range)
 "jCN" = (
@@ -11247,7 +11879,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall2)
 "jDJ" = (
@@ -11344,8 +11978,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/hallway/central_hall3)
 "jKD" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/command/eva)
@@ -11405,7 +12040,6 @@
 /turf/closed/wall/almayer,
 /area/sulaco/showers)
 "jOJ" = (
-/obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/sulaco/medbay)
 "jOL" = (
@@ -11614,6 +12248,10 @@
 "kih" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/red/west,
 /area/sulaco/brig)
@@ -11884,7 +12522,8 @@
 /turf/open/floor/carpet14_10/west,
 /area/sulaco/liaison/quarters)
 "kFo" = (
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -11931,12 +12570,6 @@
 	},
 /turf/open/floor/carpet13_5/west,
 /area/sulaco/liaison)
-"kIa" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/sulaco/hallway/central_hall)
 "kIJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -12321,12 +12954,11 @@
 /turf/open/floor/plating,
 /area/sulaco/engineering/engine)
 "lrp" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	icon_state = "landingstripe"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/landinglight{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -12520,8 +13152,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 8
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/telecomms/office)
@@ -12708,7 +13341,8 @@
 /area/sulaco/command/intelligence)
 "lNR" = (
 /obj/structure/machinery/cm_vending/clothing/marine/alpha,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/redfull,
@@ -12875,17 +13509,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/plate,
 /area/sulaco/cryosleep)
-"lYa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating,
-/area/sulaco/maintenance/south_solar_maint)
 "lYb" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -12989,6 +13612,10 @@
 /obj/structure/sign/safety/ladder{
 	pixel_y = 0;
 	pixel_x = -30
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/plating_striped,
 /area/sulaco/cargo)
@@ -13380,16 +14007,6 @@
 /obj/structure/sign/prop1,
 /turf/closed/wall/almayer,
 /area/sulaco/marine/delta)
-"mLI" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	icon_state = "landingstripe"
-	},
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "mNo" = (
 /turf/open/floor/almayer/silverfull,
 /area/sulaco/command/ai)
@@ -13636,8 +14253,9 @@
 /area/sulaco/research)
 "nkV" = (
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine/alpha)
@@ -13800,9 +14418,6 @@
 /obj/item/tool/crowbar,
 /obj/structure/closet/crate/secure/medical{
 	desc = "A secure medical crate for field doctors to take with them to the FOB."
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -14011,8 +14626,9 @@
 /turf/open/floor/almayer/silvercorner,
 /area/sulaco/hallway/central_hall)
 "nRo" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall3)
@@ -14181,8 +14797,9 @@
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/sulaco/hallway/central_hall2)
 "oej" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/orange,
 /area/sulaco/hangar/atmos)
@@ -14373,10 +14990,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine)
 "orS" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/carpet,
 /area/sulaco/bridge/office)
 "osf" = (
@@ -14670,10 +15288,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/marine/charlie)
 "oNW" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "oOb" = (
@@ -14898,6 +15516,9 @@
 "peL" = (
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/maintenance/south_solar_maint)
@@ -15280,7 +15901,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/marine)
 "pTS" = (
@@ -15310,9 +15933,6 @@
 /turf/open/floor/almayer/green/north,
 /area/sulaco/hallway/central_hall3)
 "pUC" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 30
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -15887,8 +16507,9 @@
 	density = 0;
 	pixel_y = 25
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/wood,
 /area/sulaco/bridge/office)
@@ -16024,9 +16645,6 @@
 	pixel_x = 28;
 	pixel_y = 0
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
 /turf/open/floor/almayer,
 /area/sulaco/cryosleep)
 "qZp" = (
@@ -16035,6 +16653,9 @@
 "qZD" = (
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/cargo)
@@ -16067,14 +16688,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/morgue)
-"rcg" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating,
-/area/sulaco/hangar)
 "rdK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/northwest,
@@ -16194,13 +16807,14 @@
 "rmD" = (
 /obj/structure/surface/rack,
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -16261,6 +16875,10 @@
 	amount = 50
 	},
 /obj/item/storage/toolbox/mechanical/green,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
 /turf/open/floor/almayer/green/west,
 /area/sulaco/cargo/office)
 "rrI" = (
@@ -16300,6 +16918,9 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/sulaco/maintenance/south_solar_maint)
 "rum" = (
@@ -16330,7 +16951,6 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering/ce)
 "rwZ" = (
@@ -16365,6 +16985,10 @@
 /area/sulaco/marine/charlie)
 "rzi" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1"
+	},
 /turf/open/floor/almayer/green/north,
 /area/sulaco/cargo)
 "rzw" = (
@@ -16402,11 +17026,12 @@
 /turf/closed/wall/almayer,
 /area/sulaco/engineering/atmos)
 "rAV" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/structure/machinery/light,
 /obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/cryosleep)
 "rBi" = (
@@ -16811,7 +17436,8 @@
 	pixel_y = 0
 	},
 /obj/structure/machinery/cm_vending/clothing/marine/alpha,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/redfull,
@@ -17058,8 +17684,10 @@
 /turf/open/floor/almayer,
 /area/sulaco/marine/delta)
 "sDt" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/bed/chair,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/cafeteria)
 "sFe" = (
@@ -17246,12 +17874,6 @@
 "sYt" = (
 /turf/closed/wall/almayer,
 /area/sulaco/command/ai)
-"sZy" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/sulaco/maintenance/south_solar_maint)
 "sZQ" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -17507,9 +18129,6 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/sulaco/showers)
@@ -17560,9 +18179,6 @@
 	name = "General Listening Channel";
 	pixel_x = 28;
 	pixel_y = 0
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 8
 	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/hallway/central_hall3)
@@ -17625,6 +18241,10 @@
 /area/sulaco/cafeteria)
 "tvw" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/orange/east,
 /area/sulaco/maintenance/lower_maint)
 "two" = (
@@ -18017,13 +18637,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/structure/machinery/alarm{
+/obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
-	pixel_x = -30;
-	pixel_y = 0
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
+	name = "ship-grade camera"
 	},
 /turf/open/floor/carpet,
 /area/sulaco/cap_office)
@@ -18034,15 +18650,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 30
-	},
-/obj/structure/machinery/camera/autoname,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/sulaco/medbay/surgery_two)
-"tXn" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
-/area/space)
 "tXU" = (
 /obj/structure/mirror{
 	pixel_y = 30
@@ -18246,6 +18855,10 @@
 /area/sulaco/ob_aa_cannon)
 "umq" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
 /turf/open/floor/almayer,
 /area/sulaco/cargo/office)
 "unL" = (
@@ -18408,9 +19021,6 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/sulaco/engineering/atmos)
@@ -18567,8 +19177,9 @@
 /area/sulaco/maintenance/north_solar_maint)
 "uGT" = (
 /obj/structure/machinery/cm_vending/clothing/specialist/delta,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/marine/delta)
@@ -18634,9 +19245,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/hallway/central_hall2)
 "uLj" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	icon_state = "landingstripe"
+/obj/structure/machinery/landinglight{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -18940,10 +19550,11 @@
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
 "vgg" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/bed/roller,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
 "vgL" = (
@@ -19101,7 +19712,7 @@
 	dir = 4
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -19276,11 +19887,12 @@
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/liaison/quarters)
 "vJg" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
 /obj/structure/reagent_dispensers/tank/fuel/gas/methane{
 	anchored = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
 	},
 /turf/open/floor/plating/airless,
 /area/sulaco/engineering/engine)
@@ -19315,7 +19927,8 @@
 /area/sulaco/medbay/surgery_one)
 "vMR" = (
 /obj/structure/machinery/cm_vending/clothing/marine/charlie,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/emeraldfull,
@@ -19378,6 +19991,10 @@
 /area/sulaco/medbay/west)
 "vPC" = (
 /obj/structure/closet/radiation,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/orangefull,
 /area/sulaco/engineering)
 "vPQ" = (
@@ -19442,7 +20059,8 @@
 /area/sulaco/medbay/west)
 "vSr" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta,
-/obj/structure/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
 	dir = 8
 	},
 /turf/open/floor/almayer/bluefull,
@@ -19468,13 +20086,15 @@
 	amount = 25
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/camera/autoname,
 /obj/structure/sign/safety/maint{
 	pixel_y = 0;
 	pixel_x = -30
 	},
 /obj/structure/sign/safety/waterhazard{
 	pixel_y = 30
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/sulaco/research)
@@ -19512,10 +20132,11 @@
 /turf/closed/wall/almayer,
 /area/sulaco/marine/charlie)
 "vXn" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/sulaco/medbay/chemistry)
 "vXz" = (
@@ -19616,9 +20237,8 @@
 /area/sulaco/cafeteria)
 "wcF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -19752,9 +20372,8 @@
 	icon_state = "tube1"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	icon_state = "landingstripe"
+/obj/structure/machinery/landinglight{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
@@ -20448,7 +21067,6 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/south_solar_maint)
 "xnY" = (
@@ -20561,12 +21179,13 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/tool/crowbar,
 /obj/item/tool/crowbar,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/orange,
 /area/sulaco/engineering)
 "xyo" = (
@@ -20758,10 +21377,11 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/fire,
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/sulaco/medbay/storage2)
 "xOZ" = (
@@ -20985,9 +21605,6 @@
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
 "yiz" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/west,
 /area/sulaco/maintenance/lower_maint)
@@ -25391,25 +26008,25 @@ mFd
 kYA
 mFd
 abL
-uLj
+acZ
 uLj
 abJ
-uLj
-uLj
+anF
+acZ
 uLj
 ahL
-uLj
-uLj
+anF
+acZ
 abu
-abs
+anG
 bvT
-abs
-abs
-abs
+anQ
+anO
+anG
 bvT
 bRV
-abs
-abs
+anJ
+anG
 abs
 fFx
 aaL
@@ -25536,7 +26153,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anV
 kYA
 kYA
 kYA
@@ -25558,7 +26175,7 @@ kYA
 kYA
 kYA
 kYA
-lrp
+anB
 kYA
 hJU
 kBm
@@ -25609,7 +26226,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anW
 kYA
 kYA
 kYA
@@ -25631,7 +26248,7 @@ kYA
 kYA
 kYA
 kYA
-lrp
+anC
 kYA
 auA
 dEH
@@ -25682,7 +26299,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anX
 kYA
 kYA
 kYA
@@ -25704,7 +26321,7 @@ kYA
 kYA
 kYA
 kYA
-lrp
+anD
 ndk
 ghK
 rzN
@@ -25828,7 +26445,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anV
 kYA
 kYA
 kYA
@@ -25901,7 +26518,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anW
 kYA
 kYA
 kYA
@@ -25923,7 +26540,7 @@ kYA
 kYA
 kYA
 kYA
-lrp
+anC
 ghK
 kJg
 kBm
@@ -25974,7 +26591,7 @@ uVi
 mFd
 kYA
 mFd
-din
+anX
 kYA
 kYA
 kYA
@@ -25996,7 +26613,7 @@ kYA
 kYA
 kYA
 kYA
-lrp
+anD
 ghK
 gXW
 kBm
@@ -26142,7 +26759,7 @@ kYA
 kYA
 kYA
 kYA
-mLI
+anB
 hJU
 rZf
 kBm
@@ -26193,7 +26810,7 @@ uVi
 dZt
 dZt
 tTL
-din
+anW
 kYA
 kYA
 kYA
@@ -26215,7 +26832,7 @@ kYA
 kYA
 kYA
 kYA
-mLI
+anC
 ghK
 omO
 kBm
@@ -26268,24 +26885,24 @@ dZt
 tTL
 abM
 gDU
-gDU
-gDU
-gDU
+anU
+anT
+anS
 gDU
 abH
-gDU
-gDU
+anT
+anS
 gDU
 abv
-abt
-rcg
-rcg
-rcg
-wlk
+aaM
+oNW
 wcF
+anK
+anM
+oNW
 wcF
-wcF
-wcF
+anK
+anH
 wlk
 wcF
 kIJ
@@ -26320,7 +26937,7 @@ dck
 dck
 dck
 dck
-uVi
+dck
 uVi
 uVi
 reS
@@ -26379,21 +26996,21 @@ abU
 abU
 abU
 abS
-rrI
-rrI
-rrI
-rrI
-abS
-rrI
-rrI
-rrI
-rrI
-abS
-rrI
-rrI
+akQ
+ant
+anp
+ann
+anv
+ant
+anp
+ann
+akQ
+anr
+anp
+ann
+akQ
 rrI
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26451,7 +27068,7 @@ ach
 aca
 jpr
 abU
-rrI
+anx
 rrI
 rrI
 rrI
@@ -26465,8 +27082,8 @@ rrI
 rrI
 rrI
 xnY
+aft
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26487,25 +27104,25 @@ kYA
 mFd
 xmR
 acZ
+uLj
+anI
+anF
 acZ
-acZ
-acZ
-acZ
-acZ
-acZ
-acZ
+uLj
+anI
+anF
 acZ
 acA
 faz
 hDk
-hDk
-hDk
-hDk
+anR
+anP
+anN
 hDk
 abF
-acZ
-acZ
-acZ
+anL
+anI
+anF
 acZ
 wxn
 bHW
@@ -26524,6 +27141,7 @@ aci
 acb
 abX
 abU
+any
 rrI
 rrI
 rrI
@@ -26537,9 +27155,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+agq
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26558,7 +27175,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+din
 kYA
 kYA
 kYA
@@ -26580,7 +27197,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+lrp
 hJU
 rZf
 phQ
@@ -26597,6 +27214,7 @@ acj
 acd
 abY
 abU
+anz
 rrI
 rrI
 rrI
@@ -26610,9 +27228,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+agt
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26631,7 +27248,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anV
 kYA
 kYA
 kYA
@@ -26670,6 +27287,7 @@ ack
 ace
 abZ
 abU
+anA
 rrI
 rrI
 rrI
@@ -26683,9 +27301,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+ajg
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26704,7 +27321,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anW
 kYA
 kYA
 kYA
@@ -26726,7 +27343,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+anC
 auA
 vwm
 kBm
@@ -26743,6 +27360,7 @@ auA
 aaS
 auA
 auA
+anx
 rrI
 rrI
 rrI
@@ -26756,9 +27374,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+aft
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26777,7 +27394,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anX
 kYA
 kYA
 kYA
@@ -26816,6 +27433,7 @@ kQZ
 rzN
 rZf
 auA
+any
 rrI
 rrI
 rrI
@@ -26829,9 +27447,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+agq
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26850,7 +27467,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+din
 kYA
 kYA
 kYA
@@ -26872,7 +27489,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+lrp
 aeC
 vwm
 kBm
@@ -26889,6 +27506,7 @@ aaX
 acf
 kQZ
 abW
+anz
 rrI
 rrI
 rrI
@@ -26902,9 +27520,8 @@ rrI
 rrI
 rrI
 rrI
-rrI
+agt
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26923,7 +27540,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anV
 kYA
 kYA
 kYA
@@ -26945,7 +27562,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+anB
 aeC
 vwm
 phQ
@@ -26963,21 +27580,21 @@ aaT
 ahC
 auA
 abT
-rrI
-rrI
-rrI
-rrI
-abT
-rrI
-rrI
-rrI
-rrI
-abT
-rrI
-rrI
+anm
+anu
+anq
+ano
+anw
+anu
+anq
+ano
+anm
+ans
+anq
+ano
+anm
 rrI
 pJk
-uVi
 uVi
 uVi
 reS
@@ -26996,7 +27613,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anW
 kYA
 kYA
 kYA
@@ -27018,7 +27635,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+anC
 aeC
 vwm
 kBm
@@ -27050,7 +27667,7 @@ dck
 dck
 dck
 dck
-uVi
+dck
 uVi
 uVi
 reS
@@ -27069,7 +27686,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anX
 kYA
 kYA
 kYA
@@ -27142,7 +27759,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+din
 kYA
 kYA
 kYA
@@ -27164,7 +27781,7 @@ kYA
 kYA
 kYA
 kYA
-dIV
+anE
 auA
 abr
 kBm
@@ -27215,7 +27832,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anV
 kYA
 kYA
 kYA
@@ -27237,7 +27854,7 @@ kYA
 kYA
 kYA
 kYA
-acX
+anB
 bHW
 rZf
 kBm
@@ -27288,7 +27905,7 @@ uVi
 mFd
 kYA
 mFd
-adq
+anW
 kYA
 kYA
 kYA
@@ -27362,27 +27979,27 @@ dZt
 dZt
 dZt
 ahN
-ada
+gDU
 fvm
-ada
-ada
-ada
-adp
-ada
-ada
-ada
+anT
+anS
+gDU
+abH
+anT
+anS
+gDU
 adf
-abE
+anM
 oNW
-oNW
-oNW
-oNW
-abE
-oNW
+wcF
+anK
+anH
+wlk
+wcF
 ahI
 aaM
 oNW
-oNW
+wcF
 fck
 auA
 aey
@@ -35629,8 +36246,8 @@ uGX
 uGX
 bRf
 bRf
-xrX
-xrX
+cEz
+cEz
 cEz
 imN
 amG
@@ -36511,8 +37128,8 @@ dfV
 xah
 ktn
 hVr
-ahP
-kIa
+aou
+bNo
 waT
 tnP
 ahP
@@ -36651,7 +37268,7 @@ aaj
 aLL
 cGy
 oTK
-ocl
+aox
 ocl
 fqm
 aLL
@@ -36679,7 +37296,7 @@ ajQ
 ajL
 cJn
 aiw
-ajw
+aog
 ajm
 ajc
 aiw
@@ -37475,7 +38092,7 @@ akA
 ait
 aiO
 ajm
-ait
+aom
 aiw
 aiw
 aiw
@@ -37555,7 +38172,7 @@ ajU
 aiw
 rjf
 aiD
-aiD
+aoh
 rjf
 ait
 aiV
@@ -38201,7 +38818,7 @@ per
 vPQ
 xnG
 rCh
-bhx
+jzh
 nBy
 utA
 lrz
@@ -38274,7 +38891,7 @@ awq
 eAx
 ktr
 auM
-jzh
+vHS
 vHS
 vHS
 vHS
@@ -38288,8 +38905,8 @@ vHS
 vHS
 vHS
 vHS
+vHS
 vFm
-cNE
 uGX
 uGX
 uGX
@@ -38346,23 +38963,23 @@ tYR
 ahX
 vPQ
 bhx
-sZy
-vHS
+dIs
+fbe
+aoo
+aoj
+aok
+aoe
+aoc
+aoj
+aok
+aoe
+aoc
+aoj
 rtE
+aoe
+aoc
 fbe
-fbe
-fbe
-fbe
-fbe
-fbe
-fbe
-fbe
-fbe
-rtE
-fbe
-fbe
-aax
-cNE
+anY
 uGX
 uGX
 uGX
@@ -38419,8 +39036,9 @@ gGn
 vPQ
 vPQ
 pPi
-sZy
-vHS
+dIs
+aop
+fbe
 fbe
 fbe
 fbe
@@ -38433,9 +39051,8 @@ fbe
 fbe
 fbe
 dUW
-fbe
 aax
-cNE
+anY
 uGX
 uGX
 uGX
@@ -38491,9 +39108,9 @@ vPQ
 vPQ
 vPQ
 vHS
-bhx
-lYa
-vHS
+xnG
+dIs
+aoq
 fbe
 fbe
 fbe
@@ -38507,8 +39124,8 @@ fbe
 fbe
 fbe
 fbe
-aax
-cNE
+anZ
+anY
 uGX
 uGX
 uGX
@@ -38566,6 +39183,7 @@ adt
 adt
 uwG
 dIs
+aor
 fbe
 fbe
 fbe
@@ -38579,9 +39197,8 @@ fbe
 fbe
 fbe
 fbe
-fbe
-aax
-tXn
+aoa
+anY
 uGX
 uGX
 uGX
@@ -38639,6 +39256,7 @@ ekl
 ahT
 bhx
 dIs
+aos
 fbe
 fbe
 fbe
@@ -38652,9 +39270,8 @@ fbe
 fbe
 fbe
 fbe
-fbe
-aax
-uGX
+aob
+anY
 uGX
 uGX
 uGX
@@ -38712,7 +39329,7 @@ adu
 adu
 ahS
 dIs
-fbe
+aop
 fbe
 fbe
 fbe
@@ -38727,7 +39344,7 @@ fbe
 fbe
 fbe
 aax
-uGX
+anY
 uGX
 uGX
 uGX
@@ -38785,6 +39402,7 @@ adu
 adu
 bhx
 rwZ
+aoq
 fbe
 fbe
 fbe
@@ -38798,9 +39416,8 @@ fbe
 fbe
 fbe
 fbe
-fbe
-aax
-uGX
+anZ
+anY
 uGX
 uGX
 uGX
@@ -38858,6 +39475,7 @@ adu
 adu
 aSL
 dIs
+aor
 fbe
 fbe
 fbe
@@ -38871,9 +39489,8 @@ fbe
 fbe
 fbe
 fbe
-fbe
-aax
-uGX
+aoa
+anY
 uGX
 uGX
 uGX
@@ -38932,21 +39549,21 @@ adu
 mfF
 mvW
 fbe
-fbe
-fbe
-fbe
+aod
+aol
+aoi
+aon
+aod
+aol
+aoi
+aof
+aod
 peL
+aoi
+aof
+aod
 fbe
-fbe
-fbe
-fbe
-fbe
-peL
-fbe
-fbe
-fbe
-aax
-uGX
+anY
 uGX
 uGX
 uGX
@@ -39019,7 +39636,7 @@ vFm
 vFm
 vFm
 vFm
-pOR
+vFm
 pOR
 pOR
 fBz
@@ -40447,7 +41064,7 @@ akV
 qZj
 iUI
 iUI
-iUI
+aoy
 tkH
 cKD
 abO
@@ -41029,7 +41646,7 @@ alo
 alo
 mDy
 tor
-aln
+aoz
 alr
 alo
 fjv
@@ -41147,7 +41764,7 @@ reS
 "}
 (103,1,2) = {"
 cUx
-uVi
+biE
 biE
 biE
 biE
@@ -41220,21 +41837,21 @@ reS
 "}
 (104,1,2) = {"
 cUx
-uVi
-arj
+aoW
 eeB
-eeB
-eeB
-eeB
+aoH
+aoL
+aoJ
+aoP
+aoN
+aoL
+aoJ
+aoP
+aoN
+aoL
+aoJ
 iGV
-eeB
-eeB
-eeB
-iGV
-eeB
-eeB
-iGV
-eeB
+aoH
 eeB
 cFq
 aZV
@@ -41293,7 +41910,7 @@ reS
 "}
 (105,1,2) = {"
 cUx
-uVi
+aoW
 arj
 eeB
 eeB
@@ -41308,7 +41925,7 @@ eeB
 eeB
 eeB
 ikp
-eeB
+aoD
 tkH
 tkH
 aHO
@@ -41366,8 +41983,8 @@ reS
 "}
 (106,1,2) = {"
 cUx
-uVi
-arj
+aoW
+aoS
 eeB
 eeB
 eeB
@@ -41381,7 +41998,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoE
 tkH
 tkH
 tkH
@@ -41439,8 +42056,8 @@ reS
 "}
 (107,1,2) = {"
 cUx
-uVi
-arj
+aoW
+aoT
 eeB
 eeB
 eeB
@@ -41454,7 +42071,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoF
 lwZ
 isJ
 agK
@@ -41512,8 +42129,8 @@ reS
 "}
 (108,1,2) = {"
 cUx
-uVi
-arj
+aoW
+aoV
 eeB
 eeB
 eeB
@@ -41527,7 +42144,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoG
 xvC
 fuz
 edc
@@ -41585,7 +42202,7 @@ reS
 "}
 (109,1,2) = {"
 cUx
-uVi
+aoW
 arj
 eeB
 eeB
@@ -41600,7 +42217,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoD
 lwZ
 dqs
 slB
@@ -41658,8 +42275,8 @@ reS
 "}
 (110,1,2) = {"
 cUx
-uVi
-arj
+aoW
+aoS
 eeB
 eeB
 eeB
@@ -41673,7 +42290,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoE
 lwZ
 agP
 slB
@@ -41731,8 +42348,8 @@ reS
 "}
 (111,1,2) = {"
 cUx
-uVi
-arj
+aoW
+aoT
 eeB
 eeB
 eeB
@@ -41746,7 +42363,7 @@ eeB
 eeB
 eeB
 eeB
-eeB
+aoF
 lwZ
 fuz
 slB
@@ -41804,20 +42421,20 @@ reS
 "}
 (112,1,2) = {"
 cUx
-uVi
-arj
+aoW
 eeB
-qZD
-eeB
-eeB
-eeB
-eeB
-eeB
-qZD
-eeB
-eeB
-eeB
-eeB
+aoO
+aoR
+aoK
+aoI
+aoO
+aoM
+aoK
+aoQ
+aoO
+aoM
+aoK
+aoI
 qZD
 eeB
 lwZ
@@ -41877,7 +42494,6 @@ reS
 "}
 (113,1,2) = {"
 cUx
-uVi
 biE
 biE
 biE
@@ -41894,7 +42510,8 @@ biE
 biE
 biE
 biE
-ddk
+biE
+aoC
 bOf
 qfD
 qfD
@@ -41908,7 +42525,7 @@ iBl
 xNb
 xNb
 aIV
-uiD
+aov
 bva
 bva
 bva
@@ -42066,7 +42683,7 @@ ldM
 cvd
 alP
 alP
-rQJ
+aot
 uPT
 rkp
 rGW
@@ -42346,7 +42963,7 @@ iBl
 xNb
 xNb
 obo
-uiD
+aow
 giB
 giB
 giB
@@ -42627,7 +43244,7 @@ biE
 rzi
 agY
 agW
-euC
+aoA
 lwZ
 fuz
 osN
@@ -42917,7 +43534,7 @@ uGX
 ckn
 biE
 agS
-xNb
+aoB
 xNb
 xNb
 agB
@@ -43803,7 +44420,7 @@ rjF
 and
 nWK
 lcq
-cwy
+mhm
 wTr
 wTr
 wTr

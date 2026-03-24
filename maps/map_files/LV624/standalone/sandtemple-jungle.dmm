@@ -1,4 +1,28 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"ab" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/jungle/south_west_jungle)
+"ac" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/lv624/ground/jungle/south_west_jungle)
+"ad" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/lv624/ground/jungle/south_west_jungle)
+"ae" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_west_jungle)
+"af" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_west_jungle)
 "aq" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
@@ -11,9 +35,6 @@
 "cP" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_west_jungle)
-"dy" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_west_jungle)
 "eV" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -38,11 +59,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"ja" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/jungle/south_west_jungle)
 "jy" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/dirtgrassborder/west,
@@ -62,10 +78,6 @@
 	throwforce = 26
 	},
 /turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/south_west_jungle)
-"lZ" = (
-/obj/effect/landmark/lizard_spawn,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/jungle/south_west_jungle)
 "ny" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -93,10 +105,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "rK" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/turf/open/gm/grass/grass2,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "ub" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -118,19 +127,12 @@
 "ux" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_west_jungle)
-"uV" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_west_jungle)
 "vt" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "vT" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
-/turf/open/gm/grass/grass2,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/south_west_jungle)
 "zh" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -164,12 +166,9 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"Ge" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/south_west_jungle)
 "Gi" = (
-/turf/open/gm/dirtgrassborder/south,
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "IP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -227,7 +226,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle)
 "Ok" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "QL" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -239,10 +241,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/south_west_jungle)
-"RS" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "Sj" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -270,137 +268,124 @@
 /area/lv624/ground/jungle/south_west_jungle)
 
 (1,1,1) = {"
-lR
-aq
-lf
 LW
-LW
-DF
-oA
-LM
-LW
-LW
-LW
-Mi
 Lv
+Mi
 LW
+LW
+LW
+LM
+oA
+DF
+LW
+LW
+lf
+aq
+lR
 "}
 (2,1,1) = {"
-DF
-oO
-DF
-LW
-TE
-NE
-oA
-DF
-oO
-LW
-TE
-ub
-ar
 Rj
+ar
+ub
+TE
+LW
+oO
+DF
+oA
+NE
+TE
+LW
+DF
+oO
+DF
 "}
 (3,1,1) = {"
-oA
-vt
-LV
-LW
-lf
-oD
-Bl
-LW
-LW
-LW
-TE
-Bs
-oA
 aq
+oA
+Bs
+TE
+LW
+LW
+LW
+Bl
+oD
+lf
+LW
+LV
+vt
+oA
 "}
 (4,1,1) = {"
-vt
-vt
-LV
-LV
-Mi
-oD
-oD
-LW
-LW
-dy
-ux
-jy
-ja
 oA
+ad
+jy
+ux
+ab
+LW
+LW
+oD
+oD
+Mi
+LV
+LV
+vt
+vt
 "}
 (5,1,1) = {"
-LW
-oA
-lf
-LV
-vT
-eV
-oD
-LW
-dy
-Ok
-Ng
-NU
-Ge
 AQ
+ae
+NU
+Ng
+vT
+ab
+LW
+oD
+zh
+Ok
+LV
+lf
+oA
+LW
 "}
 (6,1,1) = {"
 LW
-oD
-DF
-zh
-uj
+af
+NU
+XG
+NU
 rK
 oD
 oD
 Gi
-NU
-XG
-NU
-RS
+uj
+eV
+DF
+oD
 LW
 "}
 (7,1,1) = {"
-LV
-Nq
-zh
-uj
-uj
-uj
-fv
-eV
+oD
 Lz
 jV
 NU
 op
 IP
-oD
-"}
-(8,1,1) = {"
-uV
-oD
-cP
-uj
-uj
+zh
+fv
 uj
 uj
 uj
 eV
-lZ
-Kn
-IP
-oD
-El
+Nq
+LV
 "}
-(9,1,1) = {"
-vt
+(8,1,1) = {"
+El
 oD
-hq
+Lz
+Kn
+ac
+zh
 uj
 uj
 uj
@@ -408,49 +393,57 @@ uj
 uj
 QL
 oD
+aa
+"}
+(9,1,1) = {"
+LW
 LW
 FE
 LW
-LW
-"}
-(10,1,1) = {"
-DF
-oD
 oD
 cP
 uj
 uj
-WQ
-WQ
+uj
+uj
+uj
 ZL
 oD
+vt
+"}
+(10,1,1) = {"
 LW
 LW
 LW
 LW
+oD
+hq
+WQ
+WQ
+uj
+uj
+QL
+oD
+oD
+DF
 "}
 (11,1,1) = {"
 LW
-gb
-ui
-hq
-WQ
-ZL
+LW
+LW
+LW
+oD
 oD
 up
 oD
-oD
-LW
-LW
-LW
+hq
+WQ
+ZL
+ui
+gb
 LW
 "}
 (12,1,1) = {"
-LV
-oD
-oD
-oD
-vt
 LW
 LW
 oD
@@ -460,52 +453,57 @@ oD
 oD
 LW
 LW
+vt
+oD
+oD
+oD
+LV
 "}
 (13,1,1) = {"
-vt
+LW
+pB
+pB
 oD
-vt
-MG
+oD
+oD
+LW
+LW
+LW
 Sj
-LW
-LW
-LW
+MG
+vt
 oD
-oD
-oD
-pB
-pB
-LW
+vt
 "}
 (14,1,1) = {"
-LV
-qZ
-LW
-oA
-Bs
-vt
-LW
-LW
-LW
 LW
 oD
 ny
 oD
 LW
+LW
+LW
+LW
+vt
+Bs
+oA
+LW
+qZ
+LV
 "}
 (15,1,1) = {"
 LW
+oD
+oD
 LW
 LW
+LW
+LW
+LW
+oA
+oA
 LF
-oA
-oA
 LW
 LW
-LW
-LW
-LW
-oD
-oD
 LW
 "}

@@ -63,9 +63,9 @@
 	var/reagent_tag  //Used for metabolizing reagents.
 
 	/// The current dodge pool
-	var/dodge_pool = 5
+	var/dodge_pool = 1
 	/// The maximum dodge pool
-	var/dodge_pool_max = 5
+	var/dodge_pool_max = 1
 	/// The regeneration rate of a dodge pool
 	var/dodge_pool_regen = 0.2
 	/// Maximum regeneration rate of a dodge pool

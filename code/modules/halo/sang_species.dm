@@ -21,8 +21,8 @@
 	brute_mod = 0.8
 	slowdown = -0.2
 
-	dodge_pool = 20
-	dodge_pool_max = 20
+	dodge_pool = 10
+	dodge_pool_max = 10
 	dodge_pool_regen = 1
 	dodge_pool_regen_max = 1
 	dodge_pool_regen_restoration = 0.1

@@ -123,6 +123,9 @@
 		alert("Cannot revive a ghost")
 		return
 
+	if(tgui_alert(usr, "Are you sure you want to rejuvenate this player?", "Rejuvenate", list("Yes", "No")) != "Yes")
+		return
+
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)

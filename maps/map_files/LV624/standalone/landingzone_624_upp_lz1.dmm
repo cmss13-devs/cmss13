@@ -37,124 +37,64 @@
 /turf/open/floor/warningcorner,
 /area/lv624/lazarus/landing_zones/lz1)
 "af" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ag" = (
-/obj/structure/machinery/landinglight{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ah" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ai" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aj" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ak" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"al" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"am" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"an" = (
 /obj/structure/barricade/metal/wired{
 	health = 10;
 	is_wired = 1
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"ao" = (
+"ag" = (
 /obj/structure/barricade/metal/wired{
 	health = 10;
 	is_wired = 1
 	},
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
-"ap" = (
-/obj/structure/machinery/landinglight{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aq" = (
-/obj/structure/machinery/landinglight{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ar" = (
+"ah" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/warning/southwest,
 /area/lv624/lazarus/landing_zones/lz1)
-"as" = (
+"ai" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz1)
-"at" = (
+"aj" = (
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
-"au" = (
+"ak" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
-"av" = (
+"al" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aw" = (
+"am" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor/warningcorner,
 /area/lv624/lazarus/landing_zones/lz1)
-"ax" = (
+"an" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = -37;
 	layer = 2.7
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"ay" = (
+"ao" = (
 /obj/structure/noticeboard{
 	pixel_y = -30
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"az" = (
+"ap" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -163,17 +103,17 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aA" = (
+"aq" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aB" = (
+"ar" = (
 /obj/structure/machinery/newscaster{
 	pixel_y = -30
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aC" = (
+"as" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -183,38 +123,18 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
-"aD" = (
+"at" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
-"aE" = (
+"au" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"aG" = (
-/obj/structure/machinery/landinglight/delaythree,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aH" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
-"aI" = (
-/obj/structure/machinery/landinglight,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aJ" = (
-/obj/structure/machinery/landinglight/delayone,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aK" = (
-/obj/structure/machinery/landinglight/delaytwo,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aV" = (
+"av" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
@@ -224,39 +144,43 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"aW" = (
+"aw" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning/southwest,
 /area/lv624/lazarus/landing_zones/lz1)
-"aX" = (
+"ax" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1
 	},
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz1)
-"aY" = (
+"ay" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz1)
-"aZ" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"ba" = (
+"az" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
-"bb" = (
+"aA" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"aH" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"aZ" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "bk" = (
 /obj/effect/landmark/monkey_spawn,
@@ -287,7 +211,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "dN" = (
-/obj/structure/machinery/landinglight/delayone{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -329,6 +253,12 @@
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"hb" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "hm" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/white,
@@ -454,6 +384,12 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"ph" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "pl" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -499,10 +435,22 @@
 "qO" = (
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
+"qS" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "qZ" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"sn" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "sN" = (
 /obj/effect/landmark/railgun_camera_pos,
 /turf/open/floor,
@@ -541,6 +489,12 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
+"uN" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "uP" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -572,6 +526,10 @@
 "xi" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/quartstorage)
+"xp" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "xt" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
@@ -580,6 +538,12 @@
 "xx" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"xR" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "xS" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -603,8 +567,14 @@
 "yY" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"zH" = (
+"zg" = (
 /obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"zH" = (
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -677,6 +647,12 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"FT" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "Gh" = (
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -719,9 +695,27 @@
 /obj/structure/surface/rack,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"LF" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"LZ" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Md" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "Mf" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Mx" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "NA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -863,6 +857,12 @@
 "XP" = (
 /turf/open/floor/warningcorner/east,
 /area/lv624/lazarus/landing_zones/lz1)
+"Ye" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "Yg" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -936,7 +936,7 @@ Zy
 zN
 Rl
 iS
-ay
+ao
 QV
 QV
 QV
@@ -982,7 +982,7 @@ up
 zN
 Rl
 iS
-az
+ap
 QV
 QV
 QV
@@ -1028,7 +1028,7 @@ Zy
 zN
 Rl
 iS
-aA
+aq
 QV
 QV
 QV
@@ -1074,7 +1074,7 @@ Zy
 zN
 Rl
 iS
-aB
+ar
 QV
 QV
 QV
@@ -1214,7 +1214,7 @@ Zy
 Zy
 qK
 Zy
-av
+al
 gt
 Zg
 iy
@@ -1337,7 +1337,7 @@ kd
 aH
 yY
 yY
-at
+aj
 Xo
 QV
 QV
@@ -1397,7 +1397,7 @@ Zy
 Zy
 Zy
 Zy
-ax
+an
 YR
 xi
 Bf
@@ -1445,9 +1445,9 @@ Zy
 Zy
 Kh
 eg
-au
+ak
 bP
-ar
+ah
 GR
 GR
 GR
@@ -1474,7 +1474,7 @@ kd
 aH
 yY
 yY
-at
+aj
 So
 zS
 zS
@@ -1482,7 +1482,7 @@ zS
 Wi
 Xo
 Xo
-aC
+as
 bP
 wE
 wE
@@ -1493,7 +1493,7 @@ bP
 zI
 XP
 zS
-as
+ai
 oi
 GR
 GR
@@ -1536,7 +1536,7 @@ yg
 ll
 yg
 Yg
-aw
+am
 dy
 dy
 qO
@@ -1586,7 +1586,7 @@ ts
 Wa
 yY
 yY
-an
+af
 VQ
 Pv
 GR
@@ -1632,7 +1632,7 @@ ts
 XB
 yY
 Mf
-an
+af
 VQ
 Rd
 GR
@@ -1677,8 +1677,8 @@ Gh
 ts
 yY
 yY
-at
-ao
+aj
+ag
 VQ
 GR
 GR
@@ -1698,7 +1698,7 @@ pR
 pR
 yY
 mc
-aV
+av
 yY
 yY
 yY
@@ -1742,9 +1742,9 @@ Tx
 bk
 pR
 pR
-at
+aj
 mc
-aW
+aw
 yY
 yY
 yY
@@ -1790,7 +1790,7 @@ pR
 pR
 So
 xS
-aX
+ax
 yY
 yY
 yY
@@ -1798,27 +1798,27 @@ yY
 yY
 So
 pl
-aj
 dN
-ap
-al
-aj
-aD
-ap
-al
-aj
+hb
+Ye
+qS
 dN
-ap
-al
-aj
+at
+Ye
+qS
 dN
-ap
-al
-aj
+hb
+Ye
+qS
 dN
-ap
-al
-aj
+hb
+Ye
+qS
+dN
+hb
+Ye
+qS
+dN
 pl
 Wi
 Xo
@@ -1836,14 +1836,14 @@ pR
 pR
 So
 Yn
-aY
+ay
 yY
 yY
 yY
 yY
 yY
 So
-aG
+LZ
 pl
 Et
 pl
@@ -1865,7 +1865,7 @@ pl
 pl
 Et
 pl
-af
+sn
 zS
 zS
 zS
@@ -1882,14 +1882,14 @@ pR
 pR
 So
 xS
-aX
+ax
 yY
 yY
 yY
 yY
 yY
 So
-aI
+Mx
 pl
 pl
 pl
@@ -1911,7 +1911,7 @@ pl
 pl
 pl
 pl
-ag
+xR
 ae
 dy
 dy
@@ -1928,14 +1928,14 @@ pR
 pR
 Fd
 mc
-ba
+az
 yY
 yY
 yY
 yY
 yY
 So
-aJ
+xp
 pl
 pl
 pl
@@ -1957,7 +1957,7 @@ pl
 pl
 pl
 pl
-ah
+zg
 ts
 vA
 vA
@@ -1974,14 +1974,14 @@ pR
 pR
 yY
 mc
-bb
+aA
 yY
 yY
 yY
 yY
 yY
 So
-aK
+Md
 pl
 pl
 pl
@@ -2003,7 +2003,7 @@ pl
 pl
 pl
 pl
-ai
+FT
 ts
 vA
 dE
@@ -2027,7 +2027,7 @@ vA
 vA
 yY
 So
-aG
+LZ
 pl
 pl
 pl
@@ -2049,7 +2049,7 @@ pl
 pl
 pl
 pl
-af
+sn
 ts
 vA
 yY
@@ -2073,7 +2073,7 @@ yY
 vA
 yY
 So
-aI
+Mx
 pl
 pl
 pl
@@ -2095,7 +2095,7 @@ pl
 pl
 pl
 pl
-ag
+xR
 ts
 vA
 yY
@@ -2119,7 +2119,7 @@ yY
 vA
 yY
 So
-aJ
+xp
 pl
 pl
 pl
@@ -2141,7 +2141,7 @@ pl
 pl
 pl
 pl
-ah
+zg
 ts
 vA
 Jx
@@ -2165,7 +2165,7 @@ yY
 vA
 yY
 So
-aK
+Md
 pl
 pl
 pl
@@ -2187,7 +2187,7 @@ pl
 pl
 pl
 pl
-ai
+FT
 ts
 vA
 mY
@@ -2211,7 +2211,7 @@ yY
 yY
 yY
 So
-aG
+LZ
 pl
 pl
 pl
@@ -2233,7 +2233,7 @@ pl
 pl
 pl
 pl
-af
+sn
 ts
 vA
 mY
@@ -2257,7 +2257,7 @@ xW
 Tz
 yY
 So
-aI
+Mx
 pl
 pl
 pl
@@ -2279,7 +2279,7 @@ pl
 pl
 pl
 pl
-ag
+xR
 ts
 vA
 WL
@@ -2303,7 +2303,7 @@ yY
 yY
 yY
 So
-aJ
+xp
 pl
 Et
 pl
@@ -2325,7 +2325,7 @@ pl
 pl
 Et
 pl
-ah
+zg
 ts
 vA
 Mf
@@ -2350,27 +2350,27 @@ yY
 yY
 So
 pl
-ak
 zH
-aq
-am
-ak
+uN
+LF
+ph
 zH
-aq
-am
-ak
+uN
+LF
+ph
 zH
-aq
-am
-ak
+uN
+LF
+ph
 zH
-aq
-am
-ak
+uN
+LF
+ph
 zH
-aq
-am
-ak
+uN
+LF
+ph
+zH
 pl
 ts
 vA
@@ -2721,7 +2721,7 @@ pR
 uP
 pR
 pR
-aE
+au
 QV
 QV
 QV

@@ -318,7 +318,7 @@
 	var/x1 = coords[3] + scan_range
 	var/y1 = coords[4] + scan_range
 
-	for(var/xscan = x0; xscan < x1; xscan++)a
+	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
 			var/turf/searchspot = locate(xscan, yscan, src.z)
 			for(var/obj/structure/machinery/landinglight/light in searchspot)

@@ -2,6 +2,9 @@
 "a" = (
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
+"b" = (
+/turf/open/floor/warningcorner/north,
+/area/lv624/lazarus/landing_zones/lz1)
 "c" = (
 /turf/open/floor/loadingarea/west,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -45,10 +48,10 @@
 	name = "General Listening Channel";
 	pixel_x = -30
 	},
-/turf/open/floor/warning/southwest,
+/turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
 "p" = (
-/turf/open/floor/warning,
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "t" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -77,9 +80,6 @@
 /obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
-"R" = (
-/turf/open/floor/warningcorner/east,
-/area/lv624/lazarus/landing_zones/lz1)
 "T" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/bot/north,
@@ -100,6 +100,14 @@
 /area/lv624/lazarus/landing_zones/lz1)
 
 (1,1,1) = {"
+p
+d
+d
+d
+b
+a
+a
+o
 a
 a
 a
@@ -107,97 +115,89 @@ j
 a
 a
 a
-o
-a
-a
-R
-d
-d
-d
-p
 "}
 (2,1,1) = {"
+p
+m
 L
+m
+U
+m
+L
+p
+L
+k
+c
 c
 g
 c
-c
-k
 L
-p
-L
-m
-U
-m
-L
-m
-p
 "}
 (3,1,1) = {"
-m
-d
-L
-d
-t
-d
-m
 p
-O
+d
+d
 d
 F
 d
-d
-d
+O
 p
+m
+d
+t
+d
+L
+d
+m
 "}
 (4,1,1) = {"
+p
+m
+m
 T
+U
+d
+O
+p
+L
+d
+m
 d
 C
 d
-m
-d
-L
-p
-O
-d
-U
 T
-m
-m
-p
 "}
 (5,1,1) = {"
-C
-d
-X
-f
-L
-d
-L
 p
-O
+d
+d
 d
 P
 d
-d
-d
+O
 p
+L
+d
+L
+f
+X
+d
+C
 "}
 (6,1,1) = {"
-L
-d
-L
-d
-L
-d
-L
 p
 L
-L
-L
-t
 K
+t
+L
+L
 L
 p
+L
+d
+L
+d
+L
+d
+L
 "}

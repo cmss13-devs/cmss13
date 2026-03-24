@@ -3,19 +3,427 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
+"ab" = (
+/obj/item/device/multitool,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"ac" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"ad" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/obj/structure/machinery/light/small,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"ae" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
 "af" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
 	},
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
-"bt" = (
-/obj/item/device/multitool,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/vault2,
+"ag" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/robotics)
+"ah" = (
+/obj/structure/barricade/metal/wired{
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"ai" = (
+/obj/structure/closet/crate/supply,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"aj" = (
+/obj/structure/barricade/metal/wired{
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"ak" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"al" = (
+/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"am" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"an" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/dress,
+/obj/structure/machinery/light,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"ao" = (
+/obj/structure/bookcase,
+/obj/item/book/manual/research_and_development,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/security_space_law,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ap" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/crowbar,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/whiteyellow/southwest,
+/area/lv624/lazarus/corporate_dome)
+"aq" = (
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/item/coin/diamond,
+/obj/item/m_gift,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/storage/fancy/cigar,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light,
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ar" = (
+/obj/item/ammo_magazine/smg/mp5,
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"as" = (
+/turf/open/floor/whitebluecorner/west,
+/area/lv624/lazarus/corporate_dome)
+"at" = (
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
+/turf/open/floor/whitebluecorner,
+/area/lv624/lazarus/corporate_dome)
+"au" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Corporate Office";
+	pixel_y = -24;
+	dir = 1
+	},
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"av" = (
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_y = 28
+	},
+/turf/open/floor/plating/asteroidwarning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"aw" = (
+/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"ax" = (
+/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"ay" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"az" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/corporate_dome)
+"aA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/red/clicky{
+	pixel_y = 6
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"aB" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky,
+/turf/open/floor/whitebluecorner/east,
+/area/lv624/lazarus/corporate_dome)
+"aC" = (
+/obj/structure/showcase,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"aD" = (
+/obj/structure/showcase,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"aE" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"aF" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/north,
+/area/lv624/lazarus/corporate_dome)
+"aG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black_random,
+/turf/open/floor/whiteblue/north,
+/area/lv624/lazarus/corporate_dome)
+"aH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/obj/item/ashtray/glass,
+/obj/item/clothing/mask/cigarette,
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"aI" = (
+/turf/open/floor/whiteyellow/northwest,
+/area/lv624/lazarus/corporate_dome)
+"aJ" = (
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/corporate_dome)
+"aK" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aL" = (
+/turf/open/floor/whitebluecorner,
+/area/lv624/lazarus/corporate_dome)
+"aM" = (
+/turf/open/floor/plating/asteroidwarning/northwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"aN" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating/asteroidwarning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"aO" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whitebluecorner/north,
+/area/lv624/lazarus/corporate_dome)
+"aP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"aQ" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/warning,
+/area/lv624/lazarus/landing_zones/lz2)
+"aR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/warning,
+/area/lv624/lazarus/landing_zones/lz2)
+"aS" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/warning/southeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"aT" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/showcase,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"aU" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/showcase,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"aV" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"aW" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"aX" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"aY" = (
+/obj/structure/bookcase/manuals/medical,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"aZ" = (
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"ba" = (
+/turf/open/floor/warning/northeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"bb" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = -30
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"bc" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"bd" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/whiteyellow/northwest,
+/area/lv624/lazarus/corporate_dome)
+"be" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/corporate_dome)
+"bf" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"bg" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"bh" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"bi" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"bj" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"bk" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
 "bz" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -40,32 +448,11 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"cm" = (
-/obj/structure/bed/chair/comfy/beige,
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/corporate_dome)
 "cC" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"cD" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
-"cP" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/whiteyellow/southwest,
-/area/lv624/lazarus/corporate_dome)
-"di" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "dr" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -73,15 +460,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"dx" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
 "dL" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/vault2,
@@ -121,21 +499,6 @@
 	name = "\improper Corporation Office"
 	},
 /turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"gr" = (
-/obj/structure/safe{
-	spawnkey = 0
-	},
-/obj/item/coin/diamond,
-/obj/item/m_gift,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc,
-/obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/storage/fancy/cigar,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
 "gF" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -200,26 +563,6 @@
 	},
 /turf/open/floor/whiteyellow/east,
 /area/lv624/lazarus/corporate_dome)
-"hQ" = (
-/obj/item/storage/fancy/cigarettes/emeraldgreen,
-/turf/open/floor/whitebluecorner/east,
-/area/lv624/lazarus/corporate_dome)
-"ia" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/obj/structure/transmitter/colony_net{
-	phone_category = "Lazarus Landing";
-	phone_color = "blue";
-	phone_id = "Corporate Office";
-	pixel_y = 24
-	},
-/turf/open/floor/whiteyellow/northeast,
-/area/lv624/lazarus/corporate_dome)
 "in" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -242,11 +585,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
-"jj" = (
-/obj/item/ammo_magazine/smg/mp5,
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
 "jk" = (
 /obj/structure/machinery/cm_vending/sorted/tech/robotics,
 /turf/open/floor/plating/platebot,
@@ -274,9 +612,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
-"kj" = (
-/turf/open/floor/warning,
-/area/lv624/lazarus/landing_zones/lz2)
 "kk" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -291,15 +626,6 @@
 	},
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/corporate_dome)
-"lb" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
-"lm" = (
-/obj/structure/closet/crate/supply,
-/obj/item/stack/sheet/metal/large_stack,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/lv624/lazarus/landing_zones/lz2)
 "lp" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
@@ -361,24 +687,9 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"nu" = (
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	health = 10;
-	is_wired = 1
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
 "nw" = (
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
-"nB" = (
-/obj/structure/machinery/vending/cigarette,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/corporate_dome)
 "nQ" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -408,29 +719,11 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"pe" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
-"pm" = (
-/obj/structure/showcase,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteblue/northeast,
-/area/lv624/lazarus/corporate_dome)
 "pr" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/lazarus/landing_zones/lz2)
 "pt" = (
-/turf/open/floor/plating/asteroidwarning,
+/turf/open/floor/plating/asteroidwarning/south,
 /area/lv624/lazarus/landing_zones/lz2)
 "pu" = (
 /obj/structure/machinery/light/small{
@@ -438,17 +731,6 @@
 	},
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
-"pv" = (
-/obj/structure/flora/jungle/vines/light_3,
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/flora/jungle/planttop1,
-/turf/open/floor/plating,
-/area/lv624/lazarus/corporate_dome)
-"pK" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/warning/north,
-/area/lv624/lazarus/landing_zones/lz2)
 "pZ" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -464,23 +746,6 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "qG" = (
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/corporate_dome)
-"re" = (
-/turf/open/floor/whiteyellow,
-/area/lv624/lazarus/corporate_dome)
-"rp" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/floor/whiteyellow/southeast,
-/area/lv624/lazarus/corporate_dome)
-"ru" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/clothing/shoes/dress,
-/turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "rv" = (
 /obj/structure/machinery/constructable_frame{
@@ -514,10 +779,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"rL" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
 "rV" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
@@ -538,28 +799,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/corporate_dome)
-"th" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 16
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
-"tv" = (
-/obj/structure/bookcase/manuals/medical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
 "tC" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -591,14 +830,6 @@
 "uB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
-"vD" = (
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	health = 10;
-	is_wired = 1
-	},
-/turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "vU" = (
 /obj/structure/machinery/autolathe,
@@ -644,10 +875,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
-"yg" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/whiteyellow,
-/area/lv624/lazarus/corporate_dome)
 "yx" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -673,10 +900,6 @@
 "zE" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/landing_zones/lz2)
-"zM" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/warnplate,
-/area/lv624/lazarus/robotics)
 "zR" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -702,14 +925,6 @@
 "Af" = (
 /turf/closed/wall,
 /area/lv624/lazarus/robotics)
-"Av" = (
-/obj/structure/machinery/door_control{
-	id = "garage_lv";
-	name = "Garage Shutters";
-	pixel_y = -28
-	},
-/turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
 "Ax" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -719,13 +934,6 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"AD" = (
-/obj/structure/bed/chair/wheelchair{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/greengrid,
-/area/lv624/lazarus/corporate_dome)
 "AX" = (
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/robotics)
@@ -733,13 +941,6 @@
 /obj/structure/machinery/landinglight/ds2/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"Bs" = (
-/obj/structure/machinery/atm{
-	name = "Weyland-Yutani Automatic Teller Machine";
-	pixel_y = 30
-	},
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
 "BK" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
@@ -748,10 +949,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
-"Cc" = (
-/obj/structure/machinery/vending/coffee,
-/turf/open/floor/whiteblue/northeast,
-/area/lv624/lazarus/corporate_dome)
 "Cv" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Garage";
@@ -766,10 +963,6 @@
 /obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
-"CN" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/whiteyellow/southeast,
-/area/lv624/lazarus/corporate_dome)
 "CU" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -778,28 +971,6 @@
 	},
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz2)
-"CX" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin/wy{
-	pixel_y = 8
-	},
-/obj/item/tool/pen/clicky,
-/turf/open/floor/whitebluecorner,
-/area/lv624/lazarus/corporate_dome)
-"Dd" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin/wy{
-	pixel_y = 8
-	},
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/red/clicky{
-	pixel_y = 6
-	},
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/floor/whiteyellow/northeast,
-/area/lv624/lazarus/corporate_dome)
 "Di" = (
 /obj/structure/largecrate,
 /turf/open/floor/plating/platebot,
@@ -811,13 +982,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"DD" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 1
-	},
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
 "DJ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -866,13 +1030,6 @@
 "EQ" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
-"ER" = (
-/obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
 "Fd" = (
 /obj/structure/machinery/door_control{
 	id = "garage_lv";
@@ -883,9 +1040,6 @@
 /area/lv624/lazarus/corporate_dome)
 "Fh" = (
 /turf/open/floor/whiteyellowcorner/west,
-/area/lv624/lazarus/corporate_dome)
-"Fx" = (
-/turf/open/floor/whiteyellow/southwest,
 /area/lv624/lazarus/corporate_dome)
 "FD" = (
 /obj/structure/fence,
@@ -910,23 +1064,11 @@
 /obj/effect/landmark/good_item,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
-"GT" = (
-/obj/structure/bookcase,
-/obj/item/book/manual/research_and_development,
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/book/manual/security_space_law,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whiteblue/northeast,
-/area/lv624/lazarus/corporate_dome)
 "GY" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"Ho" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/corporate_dome)
 "Hq" = (
 /obj/effect/acid_hole{
 	dir = 4
@@ -935,9 +1077,6 @@
 /area/lv624/lazarus/corporate_dome)
 "Hu" = (
 /turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
-"Hv" = (
-/turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
 "HG" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
@@ -1030,24 +1169,8 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/robotics)
-"LM" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/corporate_dome)
 "Mb" = (
 /turf/open/floor/whiteblue/west,
-/area/lv624/lazarus/corporate_dome)
-"Mf" = (
-/obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
 "Mg" = (
 /obj/structure/barricade/metal/wired{
@@ -1081,16 +1204,6 @@
 "Mw" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"ME" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 1
-	},
-/turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
-"Ni" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitebluecorner/west,
-/area/lv624/lazarus/corporate_dome)
 "Nl" = (
 /turf/open/floor/whiteyellowcorner/north,
 /area/lv624/lazarus/corporate_dome)
@@ -1108,21 +1221,10 @@
 /obj/item/bananapeel,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"NO" = (
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"NW" = (
-/turf/open/floor/whitebluecorner/north,
-/area/lv624/lazarus/corporate_dome)
 "Oc" = (
 /obj/item/clothing/mask/gas,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
-"Om" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/warning/northwest,
-/area/lv624/lazarus/landing_zones/lz2)
 "Oy" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo,
 /turf/open/floor/plating,
@@ -1146,14 +1248,6 @@
 "Ps" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/lazarus/corporate_dome)
-"Pt" = (
-/turf/open/floor/whitebluecorner/east,
-/area/lv624/lazarus/corporate_dome)
-"PJ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/folder/black_random,
-/turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "PK" = (
 /obj/structure/machinery/mecha_part_fabricator,
@@ -1196,12 +1290,6 @@
 "Qq" = (
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
-"QO" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/crowbar,
-/obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/whiteyellow/northwest,
-/area/lv624/lazarus/corporate_dome)
 "QX" = (
 /obj/structure/surface/table,
 /obj/structure/prop/mech/drill,
@@ -1221,19 +1309,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"RM" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/showcase,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/corporate_dome)
 "RV" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass2,
@@ -1279,10 +1354,6 @@
 "TD" = (
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
-"TQ" = (
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/warning/north,
-/area/lv624/lazarus/landing_zones/lz2)
 "Uj" = (
 /obj/structure/prop/mech/parts/chassis/gygax,
 /turf/open/floor/vault2/west,
@@ -1291,24 +1362,6 @@
 /obj/item/storage/firstaid/toxin/empty,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"Ut" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/flashlight/lamp{
-	pixel_x = -7;
-	pixel_y = 15
-	},
-/obj/item/ashtray/glass,
-/obj/item/clothing/mask/cigarette,
-/obj/item/clothing/mask/cigarette{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/corporate_dome)
-"UE" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/warning/northeast,
-/area/lv624/lazarus/landing_zones/lz2)
 "UF" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -1327,10 +1380,6 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
-"Va" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/corporate_dome)
 "Vg" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -1370,19 +1419,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/robotics)
-"Xr" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/showcase,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
 "Xs" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -1399,21 +1435,6 @@
 "XI" = (
 /turf/open/floor/plating/asteroidwarning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
-"XX" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
-"Ye" = (
-/obj/structure/showcase,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
 "Yi" = (
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/barricade/metal/wired{
@@ -1421,10 +1442,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"Yq" = (
-/obj/structure/machinery/photocopier,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
 "YI" = (
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/gm/dirt,
@@ -1464,28 +1481,28 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
+Mt
+bQ
+bQ
+Mt
+Mt
+Mt
 RV
-Mt
-Mt
-Mt
-bQ
-bQ
-Mt
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -1506,28 +1523,28 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-Mt
-Mt
+bQ
+BM
 Mt
 nh
 Mt
-BM
-bQ
+Mt
+Mt
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -1544,36 +1561,36 @@ nc
 nc
 nc
 nc
-ht
-ht
 nc
 nc
 nc
 nc
-nc
-nc
-ht
-nc
-ht
-ht
-nc
-nc
-nc
-ht
-ht
-nc
-nc
-Ax
+yE
+hj
+Iy
 qw
 tO
 HY
-Iy
-hj
-yE
+Ax
+nc
+nc
+ht
+ht
+nc
+nc
+nc
+ht
+ht
+nc
+ht
 nc
 nc
 nc
 nc
+nc
+nc
+ht
+ht
 nc
 nc
 nc
@@ -1585,38 +1602,38 @@ nc
 nc
 nc
 nc
-ht
-ht
-ht
-ht
-ht
+nc
+nc
+nc
+nc
 nc
 ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
-ht
 FU
-lz
+FU
 pZ
 ix
 pZ
-FU
+lz
 FU
 ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
 nc
-nc
-nc
-nc
-nc
+ht
+ht
+ht
+ht
+ht
 nc
 nc
 nc
@@ -1627,38 +1644,38 @@ nc
 nc
 nc
 nc
+nc
+nc
+nc
+nc
 ht
-ht
-nQ
-ht
-ht
-ht
-ht
-nQ
-ht
-ht
-ht
-hj
-hj
-ht
-ht
-ht
-ht
-hj
 ht
 FU
-Mg
+Yi
 Tl
 Kr
 af
-Yi
+Mg
 FU
 ht
+hj
 ht
-nc
-nc
-nc
-nc
+ht
+ht
+ht
+hj
+hj
+ht
+ht
+ht
+nQ
+ht
+ht
+ht
+ht
+nQ
+ht
+ht
 nc
 nc
 nc
@@ -1669,38 +1686,38 @@ nc
 nc
 nc
 nc
+nc
+ht
+ht
+ht
 ht
 nQ
 Ax
 Ax
-fY
 Ax
 nQ
 nQ
+Xs
+Ax
+nQ
+nQ
+nQ
 Ax
 Ax
+nQ
 nQ
 hj
 nQ
-nQ
 Ax
 Ax
 nQ
 nQ
-nQ
 Ax
-Xs
-nQ
-nQ
-Ax
+fY
 Ax
 Ax
 nQ
 ht
-ht
-ht
-ht
-nc
 nc
 nc
 nc
@@ -1711,24 +1728,11 @@ nc
 nc
 nc
 nc
-ht
-Ax
-FZ
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
-FZ
-XC
+nc
+FU
+FU
+FU
+FU
 XC
 XC
 XC
@@ -1738,11 +1742,24 @@ XC
 XC
 XC
 XC
-FU
-FU
-FU
-FU
-nc
+XC
+FZ
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+FZ
+Ax
+ht
 nc
 nc
 nc
@@ -1753,20 +1770,11 @@ nc
 nc
 nc
 nc
-ht
-nQ
-BK
-Hu
-Qf
-Qf
-Qf
-Qf
-Qf
-Qf
-Qf
-Qf
-Qf
-Qf
+nc
+FU
+FZ
+aM
+aa
 Qf
 Qf
 Qf
@@ -1780,11 +1788,20 @@ Qf
 Qf
 Qf
 Qf
-aa
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
 vW
-FZ
-FU
-nc
+ZP
+nQ
+ht
 nc
 nc
 nc
@@ -1795,38 +1812,38 @@ nc
 nc
 nc
 nc
-ht
-nQ
-BK
+nc
+FU
+FU
 Hu
 Mw
-Rn
-Qh
-ZU
-jr
-Rn
-Qh
-ZU
-jr
-Rn
-Qh
-ZU
-jr
-Rn
-Qh
-ZU
-jr
-Rn
-Qh
-ZU
-jr
-Rn
 Mw
+Rn
+jr
+ZU
+Qh
+Rn
+jr
+ZU
+Qh
+Rn
+jr
+ZU
+Qh
+Rn
+jr
+ZU
+Qh
+Rn
+jr
+ZU
+Qh
+Rn
 Mw
 pt
-FU
-FU
-nc
+ZP
+nQ
+ht
 nc
 nc
 nc
@@ -1837,38 +1854,38 @@ nc
 nc
 nc
 nc
-ht
-Ax
-BK
-Hu
-Xb
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Tj
-Mw
-DD
-Mw
-pt
-FU
-ht
 nc
+ht
+FU
+Hu
+Mw
+aK
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+HG
+pt
+ZP
+Ax
+ht
 nc
 nc
 nc
@@ -1876,139 +1893,56 @@ nc
 "}
 (11,1,1) = {"
 nc
-nc
-nc
+bA
+OU
+Zk
+GY
 ht
-GH
-Ax
-BK
+FU
 Hu
+SG
 IP
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
 Mw
 oZ
 Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
 jy
-SG
 pt
-FU
+ZP
+Ax
+GH
 ht
-GY
-Zk
-bA
-OU
+nc
+nc
 nc
 "}
 (12,1,1) = {"
 nc
-nc
-ht
-ht
-hj
-nQ
-BK
-Hu
-Bc
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-HG
-Mw
-pt
-FU
-FU
-Ax
+om
+om
 Js
-om
-om
-nc
-"}
-(13,1,1) = {"
-nc
-nc
-ht
-ht
-ht
-nQ
-BK
-Hu
-Oy
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Pp
-Mw
-pt
-Om
-lz
-HY
-om
-Dr
-om
-nc
-"}
-(14,1,1) = {"
-nc
-nc
-nc
-ht
-ht
 Ax
-BK
+FU
+FU
 Hu
+Mw
 Xb
 Mw
 Mw
@@ -2032,67 +1966,67 @@ Mw
 Mw
 Mw
 rV
-Mw
 pt
-TQ
-CU
-kj
-om
-om
-om
-nc
-"}
-(15,1,1) = {"
-nc
-nc
-ht
-ht
+ZP
 nQ
-Ax
-BK
-Hu
-IP
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-oZ
-Mw
-Mw
-nc
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-jy
-Mw
-XX
-pK
-pZ
-kj
-om
-om
-om
-nc
-"}
-(16,1,1) = {"
-nc
-nc
-ht
-ht
 hj
-nQ
-BK
+ht
+ht
+nc
+nc
+"}
+(13,1,1) = {"
+nc
+om
+Dr
+om
+qw
+lz
+aP
 Hu
+Mw
+Oy
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Pp
+pt
+ZP
+nQ
+ht
+ht
+ht
+nc
+nc
+"}
+(14,1,1) = {"
+nc
+om
+om
+om
+aZ
+CU
+aQ
+Hu
+Mw
 Bc
 Mw
 Mw
@@ -2116,26 +2050,112 @@ Mw
 Mw
 Mw
 HG
-Mw
 pt
-TQ
-CU
-kj
-Mr
+ZP
+Ax
+ht
+ht
+nc
+nc
+nc
+"}
+(15,1,1) = {"
+nc
 om
+om
+om
+aZ
+pZ
+aR
+aN
+Mw
+IP
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+nc
+Mw
+Mw
+oZ
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+jy
+pt
+ZP
+Ax
+nQ
+ht
+ht
+nc
+nc
+"}
+(16,1,1) = {"
+nc
 EB
+om
+Mr
+aZ
+CU
+aQ
+Hu
+Mw
+Xb
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+rV
+pt
+ZP
+nQ
+hj
+ht
+ht
+nc
 nc
 "}
 (17,1,1) = {"
 nc
-nc
-ht
-ht
-ht
-nQ
-BK
+om
+om
+om
+ba
+FU
+aS
 Hu
+SG
 Oy
+Mw
+Mw
 Mw
 Mw
 Mw
@@ -2155,29 +2175,27 @@ Mw
 Mw
 Mw
 Mw
-Mw
-Mw
 Pp
-SG
 pt
-UE
-FU
-Hv
-om
-om
-om
+ZP
+nQ
+ht
+ht
+ht
+nc
 nc
 "}
 (18,1,1) = {"
 nc
 nc
-ht
-ht
-nQ
-Ax
-BK
+nc
+nc
+nc
+FU
+FU
 Hu
-Xb
+Mw
+Bc
 Mw
 Mw
 Mw
@@ -2199,29 +2217,27 @@ Mw
 Mw
 Mw
 Mw
-rV
-Mw
+HG
 pt
-FU
-FU
-nc
-nc
-nc
+ZP
+Ax
+nQ
+ht
+ht
 nc
 nc
 "}
 (19,1,1) = {"
 nc
 nc
+nc
+nc
+nc
 ht
-ht
-Ax
-Ax
-BK
+FU
 Hu
+Mw
 IP
-Mw
-Mw
 Mw
 Mw
 Mw
@@ -2241,110 +2257,112 @@ Mw
 Mw
 Mw
 Mw
-jy
 Mw
+Mw
+jy
 pt
-FU
+ZP
+Ax
+Ax
 ht
-nc
-nc
-nc
+ht
 nc
 nc
 "}
 (20,1,1) = {"
 nc
 nc
+nc
+nc
+nc
 ht
-ht
-nQ
-Ax
-BK
-Hu
-Bc
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Tj
-Mw
-HG
-Mw
-pt
 FU
+Hu
+Mw
+Xb
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+rV
+pt
+ZP
+Ax
+nQ
 ht
-nc
-nc
-nc
+ht
 nc
 nc
 "}
 (21,1,1) = {"
 nc
 nc
+nc
+nc
 ht
-hj
-hj
-nQ
-BK
+ht
+FU
 Hu
 Mw
-qD
-PO
-Qb
-dr
-qD
-PO
-Qb
-dr
-qD
-PO
-Qb
-dr
-qD
-PO
-Qb
-dr
-qD
-PO
-Qb
-dr
-qD
 Mw
+qD
+dr
+Qb
+PO
+qD
+dr
+Qb
+PO
+qD
+dr
+Qb
+PO
+qD
+dr
+Qb
+PO
+qD
+dr
+Qb
+PO
+qD
 Mw
 pt
-FU
+ZP
+nQ
+hj
+hj
 ht
-ht
-nc
-nc
 nc
 nc
 "}
 (22,1,1) = {"
 nc
+nc
+nc
+nc
 ht
-ht
-ht
-nQ
-Ax
-BK
+FU
+FU
 Dp
+Nz
 Nz
 Nz
 Nz
@@ -2368,37 +2386,23 @@ Nz
 Nz
 Nz
 Nz
-Nz
 XI
-FU
-FU
+ZP
+Ax
+nQ
 ht
-nc
-nc
-nc
+ht
+ht
 nc
 "}
 (23,1,1) = {"
 nc
+nc
+nc
+nc
 ht
-ht
-ht
-hj
-nQ
+FU
 FZ
-bz
-bz
-bz
-Vg
-Cy
-Cy
-Cy
-Cy
-Cy
-FZ
-en
-bz
-bz
 bz
 bz
 bz
@@ -2412,95 +2416,108 @@ bz
 bz
 bz
 bz
+bz
+bz
+en
 FZ
-FU
+Cy
+Cy
+Cy
+Cy
+Cy
+SF
+bz
+bz
+bz
+FZ
+nQ
+hj
 ht
-nc
-nc
-nc
+ht
+ht
 nc
 "}
 (24,1,1) = {"
+nc
+nc
+nc
+nc
 ht
-ht
-ht
-ht
-ht
-nQ
-BK
-bz
-YI
-bz
-ZP
-Ax
-Ax
-Ax
-Ax
-Ax
-UF
-sy
-bz
-bz
-bz
-bz
-bz
-bz
+FU
+FU
+FU
+FU
+FU
+lz
 bz
 Hu
 jw
 pt
 bz
-lz
-FU
-FU
-FU
-FU
-FU
+bz
+bz
+bz
+bz
+bz
+bz
+sy
+zE
+Ax
+Ax
+Ax
+Ax
+Ax
+BK
+bz
+YI
+bz
+ZP
+nQ
 ht
-nc
-nc
-nc
-nc
+ht
+ht
+ht
+ht
 "}
 (25,1,1) = {"
 nc
 nc
+nc
+nc
 ht
 ht
 ht
 ht
+ht
+ht
+FU
+FU
+Hu
+zw
+pt
+Vg
+Cy
+Cy
+tC
+bz
+bz
+bz
+bz
+zE
+Ax
+Lw
+Ax
+Ax
+uB
 BK
 bz
 bz
 bz
 ZP
-uB
-Ax
-Ax
-Lw
-Ax
-UF
-bz
-bz
-bz
-bz
-pr
-Cy
-Cy
-SF
-Hu
-zw
-pt
-FU
-FU
 ht
 ht
 ht
 ht
-ht
-ht
-nc
-nc
 nc
 nc
 "}
@@ -2508,40 +2525,40 @@ nc
 nc
 nc
 nc
+nc
 ht
-ht
-ht
-BK
-Sh
-Xh
-Sh
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+av
+zw
+pt
 ZP
+Ax
+nq
+UF
+bz
+bz
+Gf
+pr
+ai
 Ax
 Ax
 rE
 Ax
 Ax
-lm
-tC
-Gf
-bz
-bz
-zE
-nq
-Ax
 BK
-Hu
-zw
-Av
-qG
-qG
-qG
-qG
-qG
-qG
-qG
+Sh
+Xh
+Sh
+ZP
 ht
-nc
+ht
+ht
 nc
 nc
 nc
@@ -2549,71 +2566,54 @@ nc
 (27,1,1) = {"
 nc
 nc
-ht
-ht
-ht
-ht
-wP
-LI
-Xl
-LI
-Af
-kk
-kk
-DY
-Ax
-Ax
-Ax
+qG
+qG
+qG
+qG
+qG
+in
+Qk
+Qk
+in
+qG
+DJ
+DJ
+DJ
+qG
+uB
+mr
 UF
 bz
 bz
 bz
 zE
-mr
-uB
-qG
-DJ
-DJ
-DJ
-qG
-in
-Qk
-Qk
-in
-qG
-qG
-qG
-qG
-qG
+Ax
+Ax
+Ax
+DY
+kk
+kk
+Af
+LI
+Xl
+LI
+wP
+ht
+ht
+ht
+ht
 nc
 nc
 "}
 (28,1,1) = {"
 nc
 nc
-Af
-wP
-wP
-wP
-wP
-PW
-PL
-lM
-Af
-LI
-LI
-LI
-Af
-uB
-Ax
-UF
-bz
-oa
-Gf
-zE
-rW
-Ax
 qG
+kI
+gF
+Ps
+qG
+Qk
 Qk
 Qk
 Qk
@@ -2621,74 +2621,92 @@ Fd
 Qk
 Qk
 Qk
-Qk
 qG
-Ps
-gF
-kI
-qG
+Ax
+rW
+UF
+Gf
+oa
+bz
+zE
+Ax
+uB
+Af
+LI
+LI
+LI
+Af
+lM
+PL
+PW
+wP
+wP
+wP
+wP
+Af
 nc
 nc
 "}
 (29,1,1) = {"
 nc
 nc
-LI
-TD
-xX
-hv
-Af
-Kk
-kf
-nw
-Af
-gL
-tF
-iI
-LI
-nu
+qG
+Te
+Te
+Te
+zn
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+qG
+Ax
 Ax
 UF
+bz
+bz
 YI
-bz
-bz
 zE
 Ax
-Ax
-qG
-Qk
-Qk
-Qk
-Qk
-Qk
-Qk
-Qk
-Qk
-zn
-Te
-Te
-Te
-qG
+ah
+LI
+iI
+tF
+gL
+Af
+nw
+kf
+Kk
+Af
+hv
+xX
+TD
+LI
 nc
 nc
 "}
 (30,1,1) = {"
 nc
 nc
-LI
-lL
-wG
-TD
-bM
-UV
-kf
-nw
-bM
-TD
-HL
-iI
-LI
-nu
+qG
+Te
+UO
+LC
+qG
+ca
+Qk
+AA
+Rg
+Qk
+Qk
+Rg
+Qk
+qG
+uB
 Ax
 UF
 bz
@@ -2696,52 +2714,28 @@ bz
 bz
 zE
 Ax
-uB
-qG
-Qk
-Rg
-Qk
-Qk
-Rg
-AA
-Qk
-ca
-qG
-LC
-UO
-Te
-qG
+ah
+LI
+iI
+HL
+TD
+bM
+nw
+kf
+UV
+bM
+TD
+wG
+lL
+LI
 nc
 nc
 "}
 (31,1,1) = {"
 nc
-nc
-LI
-jk
-TD
-zR
-Af
-bt
-kf
-rL
-Af
-Mk
-TD
-Di
-LI
-nu
-Ax
-UF
-bz
-bz
-bz
-gP
-Li
 qG
 qG
-qG
-qG
+hi
 qG
 qG
 qG
@@ -2751,205 +2745,204 @@ qG
 qG
 qG
 qG
-hi
 qG
 qG
+qG
+qG
+Li
+FD
+bz
+bz
+bz
+zE
+Ax
+ah
+LI
+Di
+TD
+Mk
+Af
+ae
+kf
+ab
+Af
+zR
+TD
+jk
+LI
+nc
 nc
 "}
 (32,1,1) = {"
 nc
-Af
-Af
-Af
-eg
-Af
-Af
-Oc
-kf
-ki
-Af
-Af
-eg
-Af
-Af
-Af
-Li
-FD
+qG
+bi
+Mb
+bb
+qG
+aT
+aO
+cC
+as
+aC
+qG
+aw
+iH
+ZN
+al
+qG
+bz
+bz
 bz
 UN
 bz
-bz
-bz
-qG
-ER
-ZN
-iH
-Mf
-qG
-Ye
-NW
-cC
-Ni
-Xr
-qG
-Bs
-Mb
-lb
-qG
+gP
+Li
+Af
+Af
+Af
+eg
+Af
+Af
+ki
+kf
+Oc
+Af
+Af
+eg
+Af
+Af
+Af
 nc
 "}
 (33,1,1) = {"
 nc
+ui
+bj
+Sc
+Sc
+ui
+Sc
+Sc
+Sc
+Sc
+Sc
+ui
+Sc
+Sc
+Sc
+Sc
+ui
+bz
+NJ
+bz
+bz
+bz
+UN
+aj
 LI
-EA
+ag
 nw
-dL
-OQ
+gm
+nw
 nw
 nw
 kf
 nw
 nw
+OQ
+dL
 nw
-gm
-nw
-zM
+ot
 LI
-vD
-UN
-bz
-bz
-bz
-NJ
-bz
-ui
-Sc
-Sc
-Sc
-Sc
-ui
-Sc
-Sc
-Sc
-Sc
-Sc
-ui
-Sc
-Sc
-NO
-ui
 nc
 "}
 (34,1,1) = {"
 nc
+Sc
+bj
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+bz
+bz
+bz
+bz
+bz
+bz
+ak
 vY
 EA
 kf
 kf
-vU
-kf
-GI
-PK
-Uj
-kf
 yx
+kf
+Uj
+PK
+GI
+kf
+vU
 kf
 kf
 ot
 vY
-ME
-bz
-bz
-bz
-bz
-bz
-bz
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-Sc
-NO
-Sc
 nc
 "}
 (35,1,1) = {"
 nc
-LI
-EA
-nw
-nw
-nw
-gm
-EG
-kf
-nw
-nw
-pu
-nw
-DZ
-ot
-LI
-vD
+qG
+bk
+oi
+bc
+qG
+aU
+Sc
+Sc
+aL
+aD
+qG
+ax
+KO
+KO
+am
+qG
+Xh
 Sh
 Sh
 bz
 Sh
 Sh
-Xh
-qG
-di
-KO
-KO
-nB
-qG
-pm
-Pt
-Sc
-Sc
-RM
-qG
-Cc
-oi
-Ho
-qG
+aj
+LI
+EA
+DZ
+nw
+pu
+nw
+nw
+kf
+EG
+gm
+nw
+nw
+nw
+ot
+LI
 nc
 "}
 (36,1,1) = {"
 nc
-Af
-Af
-Af
-eg
-Af
-Af
-cD
-kf
-dL
-Af
-Af
-zS
-Af
-EQ
-EQ
-FU
-Mw
-Mw
-lz
-Mw
-Mw
-Mw
-qG
-qG
 qG
 qG
 qG
@@ -2964,56 +2957,103 @@ qG
 qG
 qG
 qG
+qG
+qG
+Mw
+Mw
+Mw
+lz
+Mw
+Mw
+FU
+EQ
+EQ
+Af
+zS
+Af
+Af
+dL
+kf
+ac
+Af
+Af
+eg
+Af
+Af
+Af
 nc
 "}
 (37,1,1) = {"
 nc
 nc
-LI
-ry
-TD
-mI
-Af
-pe
-kf
-rv
-Af
-Xk
-TD
-Tv
-LI
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
 qG
+HN
+HN
 qG
-th
-Mb
-Yq
+aV
+Sc
+Sc
 SQ
-Sc
-Sc
-dx
+aE
+Mb
+ay
 qG
-HN
-HN
 qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+LI
+Tv
+TD
+Xk
+Af
+rv
+kf
+ad
+Af
+mI
+TD
+ry
+LI
 nc
 nc
 "}
 (38,1,1) = {"
 nc
 nc
+qG
+bg
+DS
+xe
+Sc
+Sc
+Sc
+rK
+aF
+Sc
+as
+ar
+qG
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 LI
-TD
-HL
+iI
+Ei
 TD
 bM
 nw
@@ -3021,120 +3061,120 @@ kf
 nw
 bM
 TD
-Ei
-iI
+HL
+TD
 LI
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-qG
-jj
-NW
-Sc
-Va
-rK
-Sc
-Sc
-Sc
-xe
-DS
-AD
-qG
 nc
 nc
 "}
 (39,1,1) = {"
 nc
 nc
-LI
-TD
-lL
-Lx
-Af
-Is
-mi
-QX
-Af
-rI
-lL
-iI
-LI
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
 qG
-ru
-NW
-Sc
-Sc
-PJ
-SQ
-Sc
-Sc
-LM
-qG
-Wc
 nl
+Wc
 qG
+aW
+Sc
+Sc
+SQ
+aG
+Sc
+Sc
+as
+an
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+LI
+iI
+lL
+rI
+Af
+QX
+mi
+Is
+Af
+Lx
+lL
+TD
+LI
 nc
 nc
 "}
 (40,1,1) = {"
 nc
 nc
-Af
-LI
-LI
-LI
-Af
-ur
-AX
-AX
-Af
-LI
-LI
-LI
-Af
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
+um
 qG
-GT
-hQ
-Sc
-CX
-Ut
+qG
+qG
 qG
 Sc
 gq
 qG
+aH
+aB
+Sc
+at
+ao
 qG
-qG
-qG
-um
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+Af
+LI
+LI
+LI
+Af
+AX
+AX
+ur
+Af
+LI
+LI
+LI
+Af
 nc
 nc
 "}
 (41,1,1) = {"
+nc
+nc
+nc
+YK
+bd
+gO
+el
+Sc
+mx
+qG
+qG
+qG
+Et
+Hq
+qG
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -3152,68 +3192,45 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-qG
-Hq
-Et
-qG
-qG
-qG
-mx
-Sc
-el
-gO
-cP
-YK
-nc
-nc
-nc
 "}
 (42,1,1) = {"
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-QO
+bh
+be
+Sc
+Sc
+Sc
+Sc
+SQ
+aI
 Nl
 Sc
 Fh
-Fx
-SQ
-Sc
-Sc
-Sc
-Sc
-yg
-pv
+ap
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -3222,40 +3239,40 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-gr
-mF
-Sc
-No
-re
-SQ
-Sc
-Sc
-Ul
-Qq
-CN
 Mo
+bf
+mF
+Ul
+Sc
+Sc
+SQ
+aJ
+No
+Sc
+Qq
+aq
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -3264,40 +3281,40 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-qG
-ia
-cm
-Ic
+sC
+IQ
+aY
+mF
+Sc
 Sc
 gV
 Sc
-Sc
-Qq
-tv
-IQ
-sC
+Ic
+az
+au
+qG
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -3307,38 +3324,38 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-qG
-Dd
-hL
+IQ
+IQ
+aX
+XD
 XD
 SQ
 XD
-XD
-rp
-IQ
-IQ
+hL
+aA
+qG
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc
@@ -3350,36 +3367,36 @@ nc
 nc
 nc
 nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-nc
-qG
-SQ
-SQ
-SQ
-qG
-SQ
-SQ
-SQ
 IQ
+SQ
+SQ
+SQ
+qG
+SQ
+SQ
+SQ
+qG
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
 nc
 nc
 nc

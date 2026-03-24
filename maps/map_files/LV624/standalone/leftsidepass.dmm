@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/lv624/ground/river/west_river)
+"ab" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/west_river)
 "ac" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -26,12 +32,15 @@
 /area/lv624/ground/river/west_river)
 "ai" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/beachcorner/north_west,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/west_river)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
+"ak" = (
+/turf/open/gm/coast/beachcorner/north_west,
+/area/lv624/ground/jungle/west_jungle)
 "al" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/river,
@@ -40,20 +49,20 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
+"an" = (
+/turf/open/gm/coast/north,
+/area/lv624/ground/jungle/west_jungle)
 "ao" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
+"ap" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/lv624/ground/jungle/west_jungle)
 "aq" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/west_river)
-"ar" = (
-/turf/open/gm/coast/beachcorner/south_east,
-/area/lv624/ground/river/west_river)
 "au" = (
 /turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/west_jungle)
-"aw" = (
-/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -68,9 +77,6 @@
 /area/lv624/ground/jungle/west_jungle)
 "aU" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/river/west_river)
-"aX" = (
-/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/west_river)
 "bc" = (
 /turf/open/gm/river,
@@ -112,9 +118,6 @@
 "gX" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/river/west_river)
-"kE" = (
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/lv624/ground/jungle/west_jungle)
 "qG" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -142,9 +145,6 @@
 "KD" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
-"Ms" = (
-/turf/open/gm/coast/south,
-/area/lv624/ground/jungle/west_jungle)
 "Ok" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
@@ -161,212 +161,212 @@
 /area/lv624/ground/jungle/west_jungle)
 
 (1,1,1) = {"
-JC
-JC
-JC
-JC
-Oz
-Oz
+Dw
+Dw
+aU
+aU
+aU
+aU
 gX
-aU
-aU
-aU
-aU
-Dw
-Dw
+Oz
+Oz
+JC
+JC
+JC
+JC
 "}
 (2,1,1) = {"
-JC
-JC
-JC
-JC
-bi
-bi
+aC
+au
 ES
 ES
 VA
 ES
 ES
-au
-aC
+bi
+bi
+JC
+JC
+JC
+JC
 "}
 (3,1,1) = {"
-JC
-JC
-bi
+aD
+aE
+qG
+ES
+ES
+ES
+ES
 bi
 ag
 bi
-ES
-ES
-ES
-ES
-qG
-aE
-aD
+bi
+JC
+JC
 "}
 (4,1,1) = {"
-JC
+aE
+bV
+ES
+bz
+ad
+ad
+ai
+bi
+bi
 bi
 bh
 bi
-bi
-bi
-ai
-ad
-ad
-aq
-ES
-bV
-aE
+JC
 "}
 (5,1,1) = {"
-JC
-bi
-bi
-bi
-bz
+bV
+bV
+bV
+bL
+bc
+bc
+ao
 ad
-bm
-bc
-bc
-bt
-bV
-bV
-bV
+aq
+bi
+bi
+bi
+JC
 "}
 (6,1,1) = {"
-bi
-bi
-bi
-bi
+bV
+Za
+bV
 bL
+bc
 bc
 aj
 bc
-bc
 bt
+bi
+bi
+bi
+bi
+"}
+(7,1,1) = {"
 bV
 Za
 bV
-"}
-(7,1,1) = {"
-bi
+bL
+FJ
+Ok
+bc
+bc
+bt
 bi
 bx
 bi
-bL
-bc
-bc
-Ok
-FJ
-bt
-bV
-Za
-bV
+bi
 "}
 (8,1,1) = {"
-bi
+bV
+bV
+bV
+bL
+am
+bc
+bc
+bc
+bt
 bi
 bh
 bi
-bL
-bc
-bc
-bc
-am
-bt
-bV
-bV
-bV
+bi
 "}
 (9,1,1) = {"
+bV
+bV
+bV
+bL
+bc
+bc
+bc
+bc
+ao
+aq
+bi
+bi
 bx
-bi
-bi
-bz
-bm
-bc
-bc
-bc
-bc
-bt
-bV
-bV
-bV
 "}
 (10,1,1) = {"
-bf
-bi
-ac
-bL
+bV
+bV
+bV
+ab
+aa
 bc
-Ok
 al
-bc
-aX
-ar
-bV
-bV
-bV
-"}
-(11,1,1) = {"
-bi
-bz
-ad
-bm
-bc
-bN
-bc
+Ok
 bc
 bt
-bV
-bV
-bV
-bV
-"}
-(12,1,1) = {"
+ac
 bi
+bf
+"}
+(11,1,1) = {"
+bV
+bV
+bV
+bV
 bL
-bc
-bc
 bc
 bc
 bN
 bc
 ao
+ad
+aq
+bi
+"}
+(12,1,1) = {"
+bV
+bV
+ak
 zW
-aw
-bV
-bV
+bm
+bc
+bN
+bc
+bc
+bc
+bc
+bt
+bi
 "}
 (13,1,1) = {"
-bx
-bL
-ae
-bc
-bc
-bc
-bc
-bc
-bc
+bV
+bV
+an
 ve
-Ms
-bV
-bV
+bc
+bc
+bc
+bc
+bc
+bc
+ae
+bt
+bx
 "}
 (14,1,1) = {"
-bi
-bL
-af
+zW
+zW
+ap
+KD
+KD
 af
 af
 ah
 af
 af
-KD
-KD
-kE
-zW
-zW
+af
+bt
+bi
 "}

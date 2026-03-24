@@ -43,9 +43,42 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
-"dC" = (
-/turf/open/gm/coast/beachcorner2/south_east,
+"am" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/central_river)
+"an" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/lv624/ground/river/central_river)
+"ao" = (
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/central_river)
+"ap" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/central_river)
+"aq" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"ar" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"as" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"at" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"au" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_east_jungle)
+"av" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_east_jungle)
 "iW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -54,17 +87,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"jT" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/lv624/ground/river/central_river)
 "km" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"lS" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/south,
@@ -80,33 +106,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
-"ms" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirt,
-/area/lv624/ground/river/central_river)
-"mD" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"mE" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_east_jungle)
-"pF" = (
-/turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
 "qL" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/ground/river/central_river)
-"xB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"yj" = (
-/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
 "yu" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -133,44 +136,45 @@
 "VN" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"Wb" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_east_jungle)
 "Yw" = (
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"
-jr
-km
-aa
-aa
-aa
-aa
-aa
-aa
-pF
+aj
+aj
+ar
 ai
-mD
-aj
-aj
+ao
+aa
+aa
+aa
+aa
+aa
+aa
+km
+lW
 "}
 (2,1,1) = {"
-jr
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-pF
+aj
+aj
+as
 mr
-lS
-aj
-aj
+ao
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
 "}
 (3,1,1) = {"
+aj
+aj
+as
+ai
 jr
 aa
 aa
@@ -180,12 +184,12 @@ aa
 aa
 aa
 lW
-ai
-lS
-aj
-aj
 "}
 (4,1,1) = {"
+yu
+aj
+at
+ai
 jr
 aa
 aa
@@ -195,12 +199,12 @@ aa
 aa
 aa
 lW
-ai
-xB
-aj
-yu
 "}
 (5,1,1) = {"
+yu
+ak
+as
+mq
 jr
 km
 km
@@ -210,87 +214,87 @@ km
 km
 km
 lW
-mq
-lS
-ak
-yu
 "}
 (6,1,1) = {"
-ab
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ag
+aj
+aj
+as
 ai
-lS
-aj
-aj
+ag
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ab
 "}
 (7,1,1) = {"
-ac
-al
-Uh
-DX
-DX
+ak
+aj
+as
+ai
+lY
 DX
 iW
 DX
-lY
-ai
-lS
-aj
-ak
+DX
+DX
+Uh
+al
+ac
 "}
 (8,1,1) = {"
-Yw
-DX
-DX
-DX
-BW
-al
-al
-qL
-lY
+aj
+aj
+as
 ai
-lS
-aj
-aj
+lY
+qL
+al
+al
+BW
+DX
+DX
+DX
+Yw
 "}
 (9,1,1) = {"
-Yw
+aj
+aj
+as
+ai
+lY
+DX
+DX
+DX
+DX
 DX
 iW
 DX
-DX
-DX
-DX
-DX
-lY
-ai
-lS
-aj
-aj
+Yw
 "}
 (10,1,1) = {"
-ad
-af
-af
-af
-af
-af
-af
-af
-ah
+aj
+aj
+as
 ai
-lS
-aj
-aj
+ah
+af
+af
+af
+af
+af
+af
+af
+ad
 "}
 (11,1,1) = {"
+aj
+aj
+as
+mq
 jr
 km
 km
@@ -300,38 +304,34 @@ km
 km
 km
 lW
-mq
-lS
-aj
-aj
 "}
 (12,1,1) = {"
-jT
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-pF
-mr
-Wb
-VN
 Pz
+VN
+au
+mr
+ao
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+am
 "}
 (13,1,1) = {"
-km
-aa
-aa
-aa
-aa
-aa
-aa
-dC
-yj
-ms
-mE
-EG
 Pz
+EG
+av
+aq
+ap
+an
+aa
+aa
+aa
+aa
+aa
+aa
+km
 "}

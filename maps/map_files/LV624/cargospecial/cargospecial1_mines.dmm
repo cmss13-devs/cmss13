@@ -18,10 +18,8 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/quartstorage)
 "q" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/largecrate,
+/obj/structure/machinery/light/small,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "r" = (
@@ -53,37 +51,37 @@
 /area/lv624/lazarus/quartstorage)
 
 (1,1,1) = {"
-n
-n
-q
-v
 I
+v
+q
+n
+n
 "}
 (2,1,1) = {"
-a
-p
+r
+r
 b
-r
-r
+p
+a
 "}
 (3,1,1) = {"
-a
-p
+r
+r
 s
-r
-r
+p
+a
 "}
 (4,1,1) = {"
-a
-p
-t
-r
 v
+r
+t
+p
+a
 "}
 (5,1,1) = {"
-o
-n
+p
+p
 u
-p
-p
+n
+o
 "}

@@ -22,28 +22,14 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
-"ag" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/central_river)
 "ah" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"ai" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/jungle/north_jungle)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
-"ak" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner/north_west,
-/area/lv624/ground/river/central_river)
 "al" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /obj/structure/fence,
@@ -53,9 +39,10 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "an" = (
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/jungle/north_jungle)
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/central_river)
 "ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/west,
@@ -65,9 +52,8 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "aq" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/north_east,
-/area/lv624/ground/river/central_river)
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/lv624/ground/jungle/north_jungle)
 "ar" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner/south_west,
@@ -86,10 +72,9 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
 "av" = (
-/obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/central_river)
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/ground/jungle/north_jungle)
 "aw" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -112,10 +97,6 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"aB" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/river/central_river)
 "aC" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -123,18 +104,10 @@
 "aD" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
-"aE" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
 "aF" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
-/area/lv624/ground/river/central_river)
-"aG" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "aH" = (
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -154,9 +127,23 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
+"aM" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/central_river)
+"aN" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/lv624/ground/river/central_river)
 "aO" = (
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/southwest,
+/area/lv624/ground/river/central_river)
+"aP" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/central_river)
 "aQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -165,9 +152,14 @@
 "aR" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
-"aT" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/jungle/north_jungle)
+"aS" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/river/central_river)
+"aU" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/central_river)
 "aV" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirt,
@@ -179,42 +171,82 @@
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/ground/river/central_river)
+"aY" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/central_river)
 "aZ" = (
-/turf/open/gm/coast/beachcorner/south_east,
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/central_river)
 "ba" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/central_river)
+"bb" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/central_river)
+"bc" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/lv624/ground/river/central_river)
+"bd" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/lv624/ground/jungle/north_jungle)
 "be" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "bf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
+"bg" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/central_river)
+"bh" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/lv624/ground/jungle/north_jungle)
+"bi" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/ground/jungle/north_jungle)
+"bj" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"bk" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/lv624/ground/jungle/north_jungle)
+"bl" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/north_jungle)
+"bm" = (
+/obj/structure/flora/jungle/plantbot1,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"bn" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"bo" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/lv624/ground/jungle/north_jungle)
+"bp" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
 "bq" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"br" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+"bs" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/jungle/north_jungle)
-"bt" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/jungle/north_jungle)
-"bu" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/jungle/north_jungle)
-"bw" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"by" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"bz" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+"bv" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "bD" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -235,22 +267,11 @@
 "bN" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"cp" = (
-/obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/central_river)
-"gh" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/lv624/ground/jungle/north_jungle)
 "mf" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/river/central_river)
 "oa" = (
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/north_jungle)
-"px" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "pW" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -258,14 +279,6 @@
 /area/lv624/ground/river/central_river)
 "uc" = (
 /turf/open/gm/coast/beachcorner/north_west,
-/area/lv624/ground/river/central_river)
-"uC" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/coast/beachcorner/north_east,
-/area/lv624/ground/river/central_river)
-"wp" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "wu" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -290,10 +303,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
-"Hi" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "HT" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/river,
@@ -310,15 +319,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
-"Ow" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"Rp" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/north_jungle)
 "RE" = (
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
@@ -339,151 +339,156 @@
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"
-ab
-aj
-aB
-ax
-aq
-aK
-aK
-be
-bt
-aT
-bK
+bN
+bN
 bq
-bN
-bN
+bK
+aq
+bd
+RE
+aK
+aK
+aS
+ax
+aN
+aj
+ab
 "}
 (2,1,1) = {"
-ab
-ab
-bf
-bf
-aB
-XL
-aG
-aZ
-bf
-bt
-br
+bN
+bN
 bK
-bN
-bN
+bh
+bd
+bf
+aY
+aZ
+aD
+aN
+bf
+bf
+ab
+ab
 "}
 (3,1,1) = {"
-ab
-ab
+Ex
+bK
+bh
+bd
 bf
 bf
-Jl
+bf
 RE
 be
+Jl
 bf
 bf
-bf
-bt
-br
-bK
-Ex
+ab
+ab
 "}
 (4,1,1) = {"
-ab
-ab
-af
-ao
-ao
-mf
-be
+Ex
+bK
+bj
 bf
 Nc
 aV
 bf
-by
-bK
-Ex
+RE
+aH
+ao
+ao
+ar
+ab
+ab
 "}
 (5,1,1) = {"
-ab
-ak
-at
-aK
-aK
-wu
-be
+Ex
+bH
+bj
+bf
 bf
 DQ
 bf
-bf
-by
-bH
-Ex
+RE
+wu
+aK
+aK
+aC
+aP
+ab
 "}
 (6,1,1) = {"
-ab
-ah
+bN
+aq
+bk
+Jl
+Jl
+af
+ao
+at
+az
 az
 aF
 az
-az
-aC
-ao
-ar
-Jl
-Jl
-ai
-aT
-bN
+ap
+ab
 "}
 (7,1,1) = {"
-ac
-al
-YL
-YL
-YL
-YL
-YL
-YL
-YL
-YL
-aO
-Rp
-Hi
 bN
+bp
+bl
+aO
+YL
+YL
+YL
+YL
+YL
+YL
+YL
+YL
+al
+ac
 "}
 (8,1,1) = {"
-ad
-am
-am
-am
-am
-am
-am
-am
-am
-GU
-aW
-oa
-by
 bN
+bj
+oa
+aW
+GU
+am
+am
+am
+am
+am
+am
+am
+am
+ad
 "}
 (9,1,1) = {"
-ad
-am
-am
-am
-am
-am
-am
-am
-am
-am
-aW
-oa
-by
 aa
+bj
+oa
+aW
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ad
 "}
 (10,1,1) = {"
-ad
+bN
+bj
+oa
+aW
+am
+am
 am
 am
 am
@@ -491,192 +496,190 @@ Bv
 am
 am
 am
-am
-am
-aW
-oa
-by
-bN
+ad
 "}
 (11,1,1) = {"
-ae
-au
-au
-XY
-XY
-XY
-XY
-XY
-XY
-XY
-aX
-oa
-by
 bN
+bj
+oa
+aX
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+au
+au
+ae
 "}
 (12,1,1) = {"
-ab
-aL
-av
-aI
-az
-az
-az
-az
-aw
-ap
-Jl
-an
-gh
 bN
+bs
+av
+Jl
+ah
+aw
+az
+az
+az
+az
+aI
+an
+aL
+ab
 "}
 (13,1,1) = {"
-ab
-ab
-ah
-aK
-aK
-aK
-aD
-aR
-aR
-aZ
-bf
-Ow
-px
 bN
+bv
+bm
+bf
+aY
+aR
+aR
+XL
+aK
+aK
+aK
+ap
+ab
+ab
 "}
 (14,1,1) = {"
-ab
-ab
-ah
-aK
-aA
-aK
-be
+bN
+bK
+bj
 uc
 aJ
 aJ
 ba
-by
-bK
-bN
+RE
+aK
+aA
+aK
+ap
+ab
+ab
 "}
 (15,1,1) = {"
-af
-ao
-at
-aK
-aK
-aK
-be
-cp
-aK
-aK
-be
-by
-bD
 bN
+bD
+bj
+RE
+aK
+aK
+bb
+RE
+aK
+aK
+aK
+aC
+ao
+ar
 "}
 (16,1,1) = {"
-ag
-aK
-aK
-aK
-aK
-aD
-aZ
-RE
-aK
-aQ
-be
-by
-bD
 bN
+bD
+bj
+RE
+aQ
+aK
+be
+aY
+XL
+aK
+aK
+aK
+aK
+aM
 "}
 (17,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aE
-bf
+bN
+bN
+bn
 RE
-aQ
 aK
+aQ
 be
-bw
-bN
-bN
+bf
+aU
+aK
+aK
+aK
+aK
+ap
 "}
 (18,1,1) = {"
-aB
-aq
-aK
-aK
-aK
-be
-bf
-uC
-aR
-aR
-aZ
-bw
-bE
 bN
+bE
+bn
+aY
+aR
+aR
+bc
+bf
+RE
+aK
+aK
+aK
+aS
+aN
 "}
 (19,1,1) = {"
-ab
-ah
-aK
-aK
-ay
-aH
-aJ
-aJ
-aJ
-ba
-bf
-bw
-bN
 bq
+bN
+bn
+bf
+uc
+aJ
+aJ
+aJ
+mf
+ay
+aK
+aK
+ap
+ab
 "}
 (20,1,1) = {"
-ab
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-be
+bN
+bN
+bn
 bf
-bw
-bN
-bN
+RE
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+ap
+ab
 "}
 (21,1,1) = {"
-af
-at
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-be
-bf
-bw
-BA
 bN
+BA
+bn
+bf
+RE
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aC
+ar
 "}
 (22,1,1) = {"
-ah
-as
+bN
+bN
+bn
+bf
+bg
 aK
 aK
 aK
@@ -684,127 +687,127 @@ Ir
 aK
 aK
 aK
-wp
-bf
-bw
-bN
-bN
+as
+ap
 "}
 (23,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
+bN
+bN
+bn
+bf
+RE
 aK
 ay
 aK
-be
-bf
-bw
-bN
-bN
+aK
+aK
+aK
+aK
+aK
+ap
 "}
 (24,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-be
-bf
-bw
-Ex
 bN
+Ex
+bn
+bf
+RE
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+ap
 "}
 (25,1,1) = {"
-ah
+bN
+bN
+bn
+bf
+RE
 aK
-aK
-aA
+aQ
 aK
 wu
 aK
-aQ
+aA
 aK
-be
-bf
-bw
-bN
-bN
+aK
+ap
 "}
 (26,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aH
-ba
-by
-bK
 bN
+bK
+bj
+uc
+mf
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+ap
 "}
 (27,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-be
-by
-bH
 bq
+bH
+bj
+RE
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+ap
 "}
 (28,1,1) = {"
-ah
-aK
-aK
-aQ
-aK
-aK
+Ex
+bH
+bj
+RE
 aK
 HT
 YA
 aK
-be
-by
-bH
-Ex
+aK
+aK
+aQ
+aK
+aK
+ap
 "}
 (29,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-be
-by
-bK
 bN
+bK
+bj
+RE
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+ap
 "}
 (30,1,1) = {"
-ah
-aK
+bN
+bK
+bj
+aY
+XL
 aK
 aK
 aK
@@ -812,25 +815,22 @@ pW
 aK
 aK
 aK
-aD
-aZ
-by
-bK
-bN
+aK
+ap
 "}
 (31,1,1) = {"
-ah
-aK
-aK
-aK
-aK
-aK
-aK
-as
-aD
-aZ
-bu
-bz
-bK
 bN
+bK
+bo
+bi
+aY
+XL
+as
+aK
+aK
+aK
+aK
+aK
+aK
+ap
 "}

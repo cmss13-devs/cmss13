@@ -33,12 +33,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"f" = (
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/main_hall)
-"g" = (
-/turf/open/floor/whiteyellow/north,
-/area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -52,17 +46,14 @@
 "j" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
-"k" = (
-/obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/platingdmg3,
-/area/lv624/lazarus/main_hall)
 "l" = (
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "m" = (
-/obj/structure/target/syndicate,
-/turf/open/floor/red/northeast,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/red/southeast,
 /area/lv624/lazarus/security)
 "n" = (
 /obj/structure/machinery/deployable/barrier,
@@ -80,27 +71,53 @@
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/armory)
 "r" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/red/northeast,
+/obj/structure/target/syndicate,
+/turf/open/floor/red/southeast,
 /area/lv624/lazarus/security)
 "s" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "t" = (
-/turf/open/floor/red/northeast,
-/area/lv624/lazarus/security)
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/main_hall)
 "u" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
+"v" = (
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/main_hall)
 "w" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
-"y" = (
+"x" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/platingdmg3,
+/area/lv624/lazarus/main_hall)
+"z" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/east_central_jungle)
+"B" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	locked = 1;
+	name = "\improper Nexus Dome Armory"
+	},
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"C" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/machinery/light/small,
+/turf/open/floor/cult,
+/area/lv624/lazarus/armory)
+"D" = (
+/turf/open/floor/red/southeast,
+/area/lv624/lazarus/security)
+"E" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -109,25 +126,8 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/red/northeast,
+/turf/open/floor/red/southeast,
 /area/lv624/lazarus/security)
-"z" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/east_central_jungle)
-"A" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor/cult,
-/area/lv624/lazarus/armory)
-"B" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Armory"
-	},
-/turf/open/floor/cult,
-/area/lv624/lazarus/armory)
 "T" = (
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
@@ -143,86 +143,86 @@
 /area/lv624/lazarus/main_hall)
 
 (1,1,1) = {"
+z
+z
+i
+i
+i
+i
+a
+a
+a
 Y
-a
-a
-a
-i
-i
-i
-i
-z
-z
 "}
 (2,1,1) = {"
-b
-h
-e
-e
 i
-n
+i
+i
 s
+n
 i
-i
-i
+e
+e
+h
+b
 "}
 (3,1,1) = {"
-a
-a
-k
 i
-i
-A
-p
-u
 T
+u
+p
+C
 i
+i
+x
+a
+a
 "}
 (4,1,1) = {"
-a
-a
-l
-q
-w
-p
-p
-p
-p
 i
+p
+p
+p
+p
+w
+q
+l
+a
+a
 "}
 (5,1,1) = {"
-a
-a
-o
 i
-w
-w
-w
-w
 p
+w
+w
+w
+w
 i
+o
+a
+a
 "}
 (6,1,1) = {"
-c
-f
-a
-i
-i
-i
-i
 i
 B
 i
+i
+i
+i
+i
+a
+v
+c
 "}
 (7,1,1) = {"
-d
-g
-a
 j
+D
+E
+D
 m
 r
-t
-y
-t
 j
+a
+t
+d
 "}

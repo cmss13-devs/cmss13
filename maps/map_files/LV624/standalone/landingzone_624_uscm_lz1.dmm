@@ -20,11 +20,11 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "ae" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1
 	},
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "af" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
@@ -32,40 +32,70 @@
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
 "ag" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"ah" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"ai" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aj" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"ak" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"al" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/robotics)
-"ah" = (
+"am" = (
 /obj/structure/barricade/metal/wired{
 	health = 10;
 	is_wired = 1
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
-"ai" = (
+"an" = (
 /obj/structure/closet/crate/supply,
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/lazarus/landing_zones/lz2)
-"aj" = (
+"ao" = (
 /obj/structure/barricade/metal/wired{
 	health = 10;
 	is_wired = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"ak" = (
+"ap" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
-"al" = (
+"aq" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"am" = (
+"ar" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -74,13 +104,13 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"an" = (
+"as" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/dress,
 /obj/structure/machinery/light,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"ao" = (
+"at" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/research_and_development,
 /obj/item/book/manual/medical_diagnostics_manual,
@@ -88,13 +118,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ap" = (
+"au" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/crowbar,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/whiteyellow/southwest,
 /area/lv624/lazarus/corporate_dome)
-"aq" = (
+"av" = (
 /obj/structure/safe{
 	spawnkey = 0
 	},
@@ -107,19 +137,19 @@
 /obj/structure/machinery/light,
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ar" = (
+"aw" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"as" = (
+"ax" = (
 /turf/open/floor/whitebluecorner/west,
 /area/lv624/lazarus/corporate_dome)
-"at" = (
+"ay" = (
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/corporate_dome)
-"au" = (
+"az" = (
 /obj/item/storage/firstaid/adv/empty,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
@@ -136,7 +166,7 @@
 	},
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
-"av" = (
+"aA" = (
 /obj/structure/machinery/door_control{
 	id = "garage_lv";
 	name = "Garage Shutters";
@@ -144,21 +174,21 @@
 	},
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/lazarus/landing_zones/lz2)
-"aw" = (
+"aB" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
-"ax" = (
+"aC" = (
 /obj/structure/machinery/vending/cigarette,
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
-"ay" = (
+"aD" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_x = -8
@@ -171,13 +201,13 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"az" = (
+"aE" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
-"aA" = (
+"aF" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy{
 	pixel_y = 8
@@ -191,7 +221,7 @@
 	},
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
-"aB" = (
+"aG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin/wy{
 	pixel_y = 8
@@ -199,7 +229,7 @@
 /obj/item/tool/pen/clicky,
 /turf/open/floor/whitebluecorner/east,
 /area/lv624/lazarus/corporate_dome)
-"aC" = (
+"aH" = (
 /obj/structure/showcase,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -212,7 +242,7 @@
 	},
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"aD" = (
+"aI" = (
 /obj/structure/showcase,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -225,22 +255,22 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"aE" = (
+"aJ" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
-"aF" = (
+"aK" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/corporate_dome)
-"aG" = (
+"aL" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder/black_random,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/corporate_dome)
-"aH" = (
+"aM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -7;
@@ -254,56 +284,113 @@
 	},
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
-"aI" = (
+"aN" = (
 /turf/open/floor/whiteyellow/northwest,
 /area/lv624/lazarus/corporate_dome)
-"aJ" = (
+"aO" = (
 /turf/open/floor/whiteyellow/north,
 /area/lv624/lazarus/corporate_dome)
-"aK" = (
+"aP" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aQ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree,
 /obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"aL" = (
+"aR" = (
+/obj/structure/machinery/landinglight/ds2,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aS" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aT" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aU" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aV" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aW" = (
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/corporate_dome)
-"aM" = (
+"aX" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aY" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"aZ" = (
 /turf/open/floor/plating/asteroidwarning/northwest,
 /area/lv624/lazarus/landing_zones/lz2)
-"aN" = (
+"ba" = (
 /obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/lazarus/landing_zones/lz2)
-"aO" = (
+"bb" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
-"aP" = (
+"bc" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning/southwest,
 /area/lv624/lazarus/landing_zones/lz2)
-"aQ" = (
+"bd" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1
 	},
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz2)
-"aR" = (
+"be" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz2)
-"aS" = (
+"bf" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
-"aT" = (
+"bg" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -314,7 +401,7 @@
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
-"aU" = (
+"bh" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -325,7 +412,7 @@
 	},
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
-"aV" = (
+"bi" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -334,7 +421,7 @@
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
-"aW" = (
+"bj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -343,55 +430,55 @@
 	},
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
-"aX" = (
+"bk" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
-"aY" = (
+"bl" = (
 /obj/structure/bookcase/manuals/medical,
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
-"aZ" = (
+"bm" = (
 /turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
-"ba" = (
+"bn" = (
 /turf/open/floor/warning/northeast,
 /area/lv624/lazarus/landing_zones/lz2)
-"bb" = (
+"bo" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
 	pixel_y = -30
 	},
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
-"bc" = (
+"bp" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"bd" = (
+"bq" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/whiteyellow/northwest,
 /area/lv624/lazarus/corporate_dome)
-"be" = (
+"br" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/whiteyellow/north,
 /area/lv624/lazarus/corporate_dome)
-"bf" = (
+"bs" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
-"bg" = (
+"bu" = (
 /obj/structure/bed/chair/wheelchair{
 	dir = 4
 	},
@@ -400,25 +487,25 @@
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
-"bh" = (
+"bv" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
-"bi" = (
+"bw" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
-"bj" = (
+"bx" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"bk" = (
+"by" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
@@ -455,7 +542,15 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "dr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -590,7 +685,15 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "jr" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -600,7 +703,12 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "jy" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -739,7 +847,15 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz2)
 "qD" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -780,7 +896,12 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "rV" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -938,7 +1059,12 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/robotics)
 "Bc" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "BK" = (
@@ -982,6 +1108,18 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"DD" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "DJ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -1079,7 +1217,12 @@
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "HG" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1114,7 +1257,13 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "IP" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/effect/sentry_landmark/lz_2/top_left,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "IQ" = (
@@ -1226,7 +1375,12 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "Oy" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "OQ" = (
@@ -1240,7 +1394,12 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "Pp" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1257,7 +1416,15 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/robotics)
 "PO" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1270,7 +1437,15 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/robotics)
 "Qb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1279,7 +1454,15 @@
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "Qh" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1304,7 +1487,15 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "Rn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1327,7 +1518,9 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/lazarus/landing_zones/lz2)
 "SG" = (
-/obj/effect/sentry_landmark/lz_2/top_left,
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "SQ" = (
@@ -1395,7 +1588,12 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "Xb" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "Xh" = (
@@ -1465,7 +1663,15 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "ZU" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1773,7 +1979,7 @@ nc
 nc
 FU
 FZ
-aM
+aZ
 aa
 Qf
 Qf
@@ -1817,28 +2023,28 @@ FU
 FU
 Hu
 Mw
-Mw
-Rn
-jr
-ZU
+aP
 Qh
-Rn
-jr
 ZU
-Qh
-Rn
 jr
-ZU
-Qh
 Rn
+Qh
+ZU
 jr
-ZU
-Qh
 Rn
+Qh
+ZU
 jr
-ZU
-Qh
 Rn
+Qh
+ZU
+jr
+Rn
+Qh
+ZU
+jr
+Rn
+ai
 Mw
 pt
 ZP
@@ -1858,17 +2064,8 @@ nc
 ht
 FU
 Hu
-Mw
-aK
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
+Xb
+aQ
 Mw
 Tj
 Mw
@@ -1881,7 +2078,16 @@ Mw
 Mw
 Tj
 Mw
-HG
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+DD
+ae
 pt
 ZP
 Ax
@@ -1900,8 +2106,8 @@ GY
 ht
 FU
 Hu
-SG
 IP
+aR
 Mw
 oZ
 Mw
@@ -1922,8 +2128,8 @@ Mw
 Mw
 Mw
 Mw
-Mw
 jy
+SG
 pt
 ZP
 Ax
@@ -1942,93 +2148,8 @@ Ax
 FU
 FU
 Hu
-Mw
-Xb
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-rV
-pt
-ZP
-nQ
-hj
-ht
-ht
-nc
-nc
-"}
-(13,1,1) = {"
-nc
-om
-Dr
-om
-qw
-lz
-aP
-Hu
-Mw
-Oy
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Pp
-pt
-ZP
-nQ
-ht
-ht
-ht
-nc
-nc
-"}
-(14,1,1) = {"
-nc
-om
-om
-om
-aZ
-CU
-aQ
-Hu
-Mw
 Bc
-Mw
+aS
 Mw
 Mw
 Mw
@@ -2050,27 +2171,27 @@ Mw
 Mw
 Mw
 HG
+ag
 pt
 ZP
-Ax
+nQ
+hj
 ht
 ht
-nc
 nc
 nc
 "}
-(15,1,1) = {"
+(13,1,1) = {"
 nc
 om
+Dr
 om
-om
-aZ
-pZ
-aR
-aN
-Mw
-IP
-Mw
+qw
+lz
+bc
+Hu
+Oy
+aT
 Mw
 Mw
 Mw
@@ -2080,10 +2201,6 @@ Mw
 Mw
 Mw
 Mw
-nc
-Mw
-Mw
-oZ
 Mw
 Mw
 Mw
@@ -2091,28 +2208,32 @@ Mw
 Mw
 Mw
 Mw
-jy
+Mw
+Mw
+Mw
+Mw
+Pp
+ah
 pt
 ZP
-Ax
 nQ
 ht
 ht
+ht
 nc
 nc
 "}
-(16,1,1) = {"
+(14,1,1) = {"
 nc
-EB
 om
-Mr
-aZ
+om
+om
+bm
 CU
-aQ
+bd
 Hu
-Mw
 Xb
-Mw
+aU
 Mw
 Mw
 Mw
@@ -2134,6 +2255,91 @@ Mw
 Mw
 Mw
 rV
+ae
+pt
+ZP
+Ax
+ht
+ht
+nc
+nc
+nc
+"}
+(15,1,1) = {"
+nc
+om
+om
+om
+bm
+pZ
+be
+ba
+aX
+aR
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+nc
+Mw
+Mw
+oZ
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+jy
+SG
+pt
+ZP
+Ax
+nQ
+ht
+ht
+nc
+nc
+"}
+(16,1,1) = {"
+nc
+EB
+om
+Mr
+bm
+CU
+bd
+Hu
+Bc
+aS
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+HG
+ag
 pt
 ZP
 nQ
@@ -2148,12 +2354,12 @@ nc
 om
 om
 om
-ba
+bn
 FU
-aS
+bf
 Hu
-SG
-Oy
+aY
+aT
 Mw
 Mw
 Mw
@@ -2174,8 +2380,8 @@ Mw
 Mw
 Mw
 Mw
-Mw
 Pp
+ah
 pt
 ZP
 nQ
@@ -2194,10 +2400,8 @@ nc
 FU
 FU
 Hu
-Mw
-Bc
-Mw
-Mw
+Xb
+aU
 Mw
 Mw
 Mw
@@ -2217,7 +2421,9 @@ Mw
 Mw
 Mw
 Mw
-HG
+Mw
+rV
+ae
 pt
 ZP
 Ax
@@ -2236,8 +2442,8 @@ nc
 ht
 FU
 Hu
-Mw
-IP
+aX
+aR
 Mw
 Mw
 Mw
@@ -2258,8 +2464,8 @@ Mw
 Mw
 Mw
 Mw
-Mw
 jy
+SG
 pt
 ZP
 Ax
@@ -2278,17 +2484,8 @@ nc
 ht
 FU
 Hu
-Mw
-Xb
-Mw
-Tj
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
-Mw
+Bc
+aS
 Mw
 Tj
 Mw
@@ -2301,7 +2498,16 @@ Mw
 Mw
 Tj
 Mw
-rV
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+HG
+ag
 pt
 ZP
 Ax
@@ -2321,28 +2527,28 @@ ht
 FU
 Hu
 Mw
-Mw
-qD
-dr
-Qb
+aV
 PO
-qD
-dr
 Qb
-PO
-qD
 dr
-Qb
-PO
 qD
+PO
+Qb
 dr
-Qb
-PO
 qD
+PO
+Qb
 dr
-Qb
-PO
 qD
+PO
+Qb
+dr
+qD
+PO
+Qb
+dr
+qD
+aj
 Mw
 pt
 ZP
@@ -2534,7 +2740,7 @@ qG
 qG
 qG
 qG
-av
+aA
 zw
 pt
 ZP
@@ -2545,7 +2751,7 @@ bz
 bz
 Gf
 pr
-ai
+an
 Ax
 Ax
 rE
@@ -2672,7 +2878,7 @@ bz
 YI
 zE
 Ax
-ah
+am
 LI
 iI
 tF
@@ -2714,7 +2920,7 @@ bz
 bz
 zE
 Ax
-ah
+am
 LI
 iI
 HL
@@ -2756,13 +2962,13 @@ bz
 bz
 zE
 Ax
-ah
+am
 LI
 Di
 TD
 Mk
 Af
-ae
+ak
 kf
 ab
 Af
@@ -2776,20 +2982,20 @@ nc
 (32,1,1) = {"
 nc
 qG
-bi
+bw
 Mb
+bo
+qG
+bg
 bb
-qG
-aT
-aO
 cC
-as
-aC
+ax
+aH
 qG
-aw
+aB
 iH
 ZN
-al
+aq
 qG
 bz
 bz
@@ -2818,7 +3024,7 @@ nc
 (33,1,1) = {"
 nc
 ui
-bj
+bx
 Sc
 Sc
 ui
@@ -2839,9 +3045,9 @@ bz
 bz
 bz
 UN
-aj
+ao
 LI
-ag
+al
 nw
 gm
 nw
@@ -2860,7 +3066,7 @@ nc
 (34,1,1) = {"
 nc
 Sc
-bj
+bx
 Sc
 Sc
 Sc
@@ -2881,7 +3087,7 @@ bz
 bz
 bz
 bz
-ak
+ap
 vY
 EA
 kf
@@ -2902,20 +3108,20 @@ nc
 (35,1,1) = {"
 nc
 qG
-bk
+by
 oi
-bc
+bp
 qG
-aU
+bh
 Sc
 Sc
-aL
-aD
+aW
+aI
 qG
-ax
+aC
 KO
 KO
-am
+ar
 qG
 Xh
 Sh
@@ -2923,7 +3129,7 @@ Sh
 bz
 Sh
 Sh
-aj
+ao
 LI
 EA
 DZ
@@ -2990,13 +3196,13 @@ qG
 HN
 HN
 qG
-aV
+bi
 Sc
 Sc
 SQ
-aE
+aJ
 Mb
-ay
+aD
 qG
 qG
 nc
@@ -3029,17 +3235,17 @@ nc
 nc
 nc
 qG
-bg
+bu
 DS
 xe
 Sc
 Sc
 Sc
 rK
-aF
+aK
 Sc
-as
-ar
+ax
+aw
 qG
 qG
 nc
@@ -3074,15 +3280,15 @@ qG
 nl
 Wc
 qG
-aW
+bj
 Sc
 Sc
 SQ
-aG
+aL
 Sc
 Sc
+ax
 as
-an
 qG
 nc
 nc
@@ -3120,11 +3326,11 @@ qG
 Sc
 gq
 qG
-aH
-aB
+aM
+aG
 Sc
+ay
 at
-ao
 qG
 nc
 nc
@@ -3156,7 +3362,7 @@ nc
 nc
 nc
 YK
-bd
+bq
 gO
 el
 Sc
@@ -3197,18 +3403,18 @@ nc
 nc
 nc
 nc
-bh
-be
+bv
+br
 Sc
 Sc
 Sc
 Sc
 SQ
-aI
+aN
 Nl
 Sc
 Fh
-ap
+au
 qG
 nc
 nc
@@ -3240,17 +3446,17 @@ nc
 nc
 nc
 Mo
-bf
+bs
 mF
 Ul
 Sc
 Sc
 SQ
-aJ
+aO
 No
 Sc
 Qq
-aq
+av
 qG
 nc
 nc
@@ -3283,15 +3489,15 @@ nc
 nc
 sC
 IQ
-aY
+bl
 mF
 Sc
 Sc
 gV
 Sc
 Ic
+aE
 az
-au
 qG
 qG
 nc
@@ -3326,13 +3532,13 @@ nc
 nc
 IQ
 IQ
-aX
+bk
 XD
 XD
 SQ
 XD
 hL
-aA
+aF
 qG
 qG
 nc

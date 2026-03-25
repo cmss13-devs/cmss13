@@ -1,4 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - bugfix: "fixed odd viewing angles on staircases"

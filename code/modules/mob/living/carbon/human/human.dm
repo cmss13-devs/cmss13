@@ -1836,6 +1836,8 @@
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
+	qdel(new_player)
+
 /mob/living/carbon/human/point_to_atom(atom/A, turf/T)
 	if(isitem(A))
 		var/obj/item/item = A

@@ -527,6 +527,10 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define DUTCH_JOB_LIST list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
+//-------- PREDATOR DEATHSQUAD --------//
+#define JOB_MCASTE_ENFORCER "Military Caste Enforcer"
+#define JOB_MCASTE_SOLDIER "Military Caste Soldier"
+
 //---------- RESPONDERS ----------//
 /// This root job should never appear ingame, it's used to select the character slot.
 #define JOB_FAX_RESPONDER "Fax Responder"

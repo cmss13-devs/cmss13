@@ -484,7 +484,7 @@
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/interior/oob)
 "cW" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -667,7 +667,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/exterior/lz_pad)
 "kg" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -700,7 +700,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "kT" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -728,7 +728,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "lw" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -762,11 +762,11 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "mu" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "mv" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -780,7 +780,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
 "mM" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -964,7 +964,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "st" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1023,7 +1023,7 @@
 /turf/open/floor/kutjevo/colors/orange/edge/east,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "uo" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1075,7 +1075,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/Northwest_Colony)
 "wP" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1345,7 +1345,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "DT" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1373,7 +1373,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Ey" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "EB" = (
@@ -1401,7 +1401,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/lz_pad)
 "Fw" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "FB" = (
@@ -1486,7 +1486,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/lz_pad)
 "Hd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "Hh" = (
@@ -1576,7 +1576,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Kp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1686,7 +1686,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_pad)
 "NE" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1824,7 +1824,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Rj" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "Ro" = (

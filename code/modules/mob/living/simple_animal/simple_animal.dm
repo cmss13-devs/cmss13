@@ -85,8 +85,9 @@
 	return ..()
 
 /mob/living/simple_animal/Login()
-	if(src && src.client)
-		src.client.screen = null
+	if(client)
+		client.screen = null
+		client.render_plates_shown = alist()
 	..()
 
 /mob/living/simple_animal/updatehealth()

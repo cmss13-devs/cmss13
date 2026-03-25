@@ -1,5 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - bugfix: "fixed Trijent Dam water filtration causing extreme lag"
-  - bugfix: "fixed Trijent Dam red water not causing damage"

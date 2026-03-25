@@ -236,7 +236,7 @@
 /area/shiva/interior/colony/research_hab)
 "lM" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_y = 24

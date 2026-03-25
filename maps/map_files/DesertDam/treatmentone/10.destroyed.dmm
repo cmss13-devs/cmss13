@@ -958,7 +958,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "yn" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_y = 5
 	},
@@ -1134,7 +1134,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "EP" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "EY" = (

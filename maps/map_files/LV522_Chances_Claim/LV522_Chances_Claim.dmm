@@ -40357,15 +40357,6 @@
 /turf/open/gm/river,
 /area/lv522/indoors/c_block/mining)
 "uLz" = (
-/obj/effect/landmark/start/hunter_games,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight{
 	dir = 4

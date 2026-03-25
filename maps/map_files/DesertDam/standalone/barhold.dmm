@@ -492,7 +492,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "Aj" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
@@ -702,7 +702,7 @@
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Kz" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "KO" = (
@@ -992,7 +992,7 @@
 /turf/open/floor/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "XX" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "Zs" = (

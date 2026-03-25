@@ -162,7 +162,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "bi" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "bl" = (

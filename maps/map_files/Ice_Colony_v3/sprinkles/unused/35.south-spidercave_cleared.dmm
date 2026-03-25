@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/left_spiders)
 "af" = (
 /mob/living/simple_animal/hostile/giant_spider/hunter,
 /turf/open/auto_turf/ice/layer1,
@@ -248,7 +252,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "FF" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "FT" = (
@@ -661,7 +665,7 @@ By
 IQ
 IQ
 IQ
-FF
+aa
 IQ
 IQ
 FT

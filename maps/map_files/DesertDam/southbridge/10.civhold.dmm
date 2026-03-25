@@ -1048,7 +1048,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "Wx" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "WL" = (

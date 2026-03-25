@@ -638,7 +638,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/hydroponics)
 "fB" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "fY" = (

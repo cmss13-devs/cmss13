@@ -2,6 +2,10 @@
 "aaa" = (
 /turf/open/space,
 /area/space)
+"aab" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/north_west)
 "aac" = (
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
@@ -21,6 +25,18 @@
 "aag" = (
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
+"aah" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/valley/south/excavation)
+"aai" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
+"aaj" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/southeast)
 "aak" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -33,6 +49,10 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
+"aam" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/west)
 "aaq" = (
 /obj/structure/ice/thin/straight{
 	dir = 4
@@ -488,7 +508,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/north)
 "acu" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/north)
 "acv" = (
@@ -554,7 +574,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/engineering/electric)
 "acK" = (
@@ -793,7 +813,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
 "adB" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "adC" = (
@@ -854,7 +874,7 @@
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "adL" = (
@@ -1031,7 +1051,7 @@
 /obj/item/cell/hyper/empty,
 /obj/item/cell/hyper/empty,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering/tool)
@@ -1332,7 +1352,7 @@
 /area/ice_colony/surface/engineering/generator)
 "afv" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering/generator)
 "afw" = (
@@ -1792,14 +1812,14 @@
 /area/ice_colony/surface/engineering)
 "agZ" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/engineering)
 "aha" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering)
 "ahb" = (
@@ -1824,7 +1844,7 @@
 /area/ice_colony/surface/engineering)
 "ahe" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/engineering)
@@ -1857,7 +1877,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahl" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahm" = (
@@ -1876,7 +1896,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "ahq" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/southeast,
 /area/ice_colony/surface/engineering/generator)
 "ahr" = (
@@ -2463,7 +2483,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/engineering)
 "ajs" = (
@@ -2529,7 +2549,7 @@
 "ajB" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/surface/substation/smes)
 "ajC" = (
@@ -2707,7 +2727,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/engineering)
 "akj" = (
@@ -3005,7 +3025,7 @@
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
 "aln" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "alo" = (
@@ -3286,7 +3306,7 @@
 /turf/open/floor/darkyellowcorners2/north,
 /area/ice_colony/surface/substation)
 "amu" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
@@ -3492,7 +3512,7 @@
 "anb" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/southeast,
 /area/ice_colony/surface/substation)
 "anc" = (
@@ -3689,14 +3709,14 @@
 /area/ice_colony/surface/mining)
 "anH" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "anI" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "anJ" = (
@@ -3855,13 +3875,13 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoi" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoj" = (
@@ -4013,7 +4033,7 @@
 /area/ice_colony/surface/mining)
 "aoP" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoQ" = (
@@ -4021,7 +4041,7 @@
 /obj/item/stack/sheet/wood{
 	amount = 15
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoR" = (
@@ -4092,7 +4112,7 @@
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/treatment)
 "apc" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/treatment)
 "apd" = (
@@ -4125,7 +4145,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "api" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_e)
 "apj" = (
@@ -4160,7 +4180,7 @@
 /turf/open/floor/whitered/southeast,
 /area/ice_colony/surface/clinic/treatment)
 "apq" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "apr" = (
@@ -4329,7 +4349,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkgreen2/northwest,
 /area/ice_colony/surface/dorms)
@@ -4861,7 +4881,7 @@
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/treatment)
 "arA" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/west)
 "arB" = (
@@ -5309,7 +5329,7 @@
 "atm" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/colonist,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "atn" = (
@@ -6436,7 +6456,7 @@
 /area/ice_colony/surface/disposals)
 "axc" = (
 /obj/item/trash/syndi_cakes,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axd" = (
@@ -6550,7 +6570,7 @@
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axy" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axz" = (
@@ -6637,7 +6657,7 @@
 /area/ice_colony/surface/dorms/canteen)
 "axR" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/surface/dorms/canteen)
 "axS" = (
@@ -7115,7 +7135,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "azG" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "azH" = (
@@ -7156,7 +7176,7 @@
 /turf/open/floor/darkbrowncorners2/north,
 /area/ice_colony/surface/dorms)
 "azP" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "azQ" = (
@@ -7218,7 +7238,7 @@
 /area/ice_colony/surface/garage/one)
 "aAc" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
 "aAd" = (
@@ -7257,7 +7277,7 @@
 /area/ice_colony/surface/garage/two)
 "aAk" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAl" = (
@@ -7545,7 +7565,7 @@
 "aBl" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/garage/repair)
 "aBm" = (
@@ -7568,7 +7588,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBq" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/one)
 "aBr" = (
@@ -7825,7 +7845,7 @@
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/garage/two)
 "aCt" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/two)
 "aCu" = (
@@ -7981,7 +8001,7 @@
 /area/ice_colony/surface/garage/one)
 "aCS" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -8001,7 +8021,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkblue2/west,
 /area/ice_colony/surface/command/control/office)
 "aDa" = (
@@ -8027,7 +8047,7 @@
 /obj/structure/window/reinforced/tinted,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control/office)
 "aDd" = (
@@ -9152,7 +9172,7 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "aHb" = (
 /obj/structure/largecrate/random,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -9370,7 +9390,7 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHQ" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHS" = (
@@ -9709,7 +9729,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJg" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJh" = (
@@ -9735,7 +9755,7 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/surface/hangar/checkpoint)
 "aJm" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
@@ -9799,7 +9819,7 @@
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJF" = (
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJG" = (
@@ -9894,7 +9914,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aKk" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "aKl" = (
@@ -10015,7 +10035,7 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKS" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aKT" = (
@@ -10297,7 +10317,7 @@
 /area/ice_colony/surface/bar/bar)
 "aMb" = (
 /obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -10569,7 +10589,7 @@
 /area/ice_colony/exterior/surface/cliff)
 "aMZ" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
@@ -10660,7 +10680,7 @@
 /area/ice_colony/surface/bar/canteen)
 "aNt" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/tool/kitchen/utensil/knife,
 /turf/open/floor/freezerfloor,
@@ -10691,7 +10711,7 @@
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aNx" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
@@ -11924,7 +11944,7 @@
 "aSx" = (
 /obj/structure/surface/table,
 /obj/item/clothing/gloves/black,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/research/temporary)
@@ -11949,7 +11969,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkblue2/east,
 /area/ice_colony/surface/command/control/office)
 "aSB" = (
@@ -12455,7 +12475,7 @@
 /area/ice_colony/surface/research/temporary)
 "aUT" = (
 /obj/structure/closet/emcloset,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/research/temporary)
 "aUU" = (
@@ -12817,7 +12837,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -13229,7 +13249,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aYb" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
 "aYd" = (
@@ -13360,7 +13380,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/landing_pad)
 "aYD" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/landing_pad)
 "aYE" = (
@@ -13497,7 +13517,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aZs" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZt" = (
@@ -14106,7 +14126,7 @@
 /area/ice_colony/surface/excavation)
 "bcS" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/excavation)
 "bcT" = (
@@ -14123,7 +14143,7 @@
 "bcV" = (
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/excavation)
 "bcW" = (
@@ -14160,15 +14180,6 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/requesition)
 "bdh" = (
-/obj/effect/landmark/start/hunter_games,
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4
@@ -14421,7 +14432,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/excavation)
 "bej" = (
@@ -14735,7 +14746,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/surface/excavation)
 "bfI" = (
@@ -14803,7 +14814,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
 "bfX" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
 "bfY" = (
@@ -15374,7 +15385,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biN" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biO" = (
@@ -16451,7 +16462,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/underground/engineering/locker)
 "bnD" = (
@@ -16541,7 +16552,7 @@
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/research)
 "bnX" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/underground/hallway/north_west)
 "bnY" = (
@@ -16594,7 +16605,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/morgue)
 "boh" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/north_west)
 "boi" = (
@@ -16663,7 +16674,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bot" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/underground/engineering/locker)
 "bou" = (
@@ -16748,7 +16759,7 @@
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/underground/engineering)
 "boP" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/engineering)
@@ -16874,7 +16885,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "bpw" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "bpx" = (
@@ -18394,7 +18405,7 @@
 /turf/open/floor/darkgreen2/west,
 /area/ice_colony/underground/medical/lobby)
 "bve" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/medical/lobby)
 "bvf" = (
@@ -19535,7 +19546,7 @@
 /area/ice_colony/underground/command/center)
 "bzK" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkblue2/northeast,
 /area/ice_colony/underground/command/center)
 "bzL" = (
@@ -20167,7 +20178,7 @@
 /obj/structure/window/reinforced/tinted,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/command/center)
 "bBU" = (
@@ -20411,7 +20422,7 @@
 /area/ice_colony/underground/command/center)
 "bDd" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/center)
 "bDe" = (
@@ -23850,7 +23861,7 @@
 /turf/open/floor/plating/warnplate/north,
 /area/ice_colony/underground/crew/disposals)
 "bQm" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -24026,7 +24037,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQU" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQV" = (
@@ -25551,7 +25562,7 @@
 "bWs" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bWt" = (
@@ -25712,7 +25723,7 @@
 /turf/open/floor/icefloor/shuttle_floor6,
 /area/ice_colony/exterior/underground/caves/dig)
 "bWV" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
 "bWW" = (
@@ -25805,7 +25816,7 @@
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
 "bXl" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
 "bXm" = (
@@ -37600,7 +37611,7 @@ ahp
 ahp
 ahp
 alJ
-aKk
+aam
 alJ
 alJ
 alJ
@@ -38829,7 +38840,7 @@ bkr
 bkr
 blu
 bkr
-boh
+aab
 bkr
 bkr
 bkr
@@ -38980,7 +38991,7 @@ ahp
 alJ
 alJ
 alJ
-aKk
+aam
 alJ
 alJ
 alJ
@@ -46414,7 +46425,7 @@ aZW
 aZW
 aZW
 aZW
-biN
+aai
 aZW
 aZW
 aZW
@@ -69830,7 +69841,7 @@ aaQ
 aBp
 azz
 azz
-azP
+aah
 azz
 azz
 azz
@@ -82740,7 +82751,7 @@ awL
 awL
 awL
 awL
-aJg
+aaj
 awL
 aky
 aky

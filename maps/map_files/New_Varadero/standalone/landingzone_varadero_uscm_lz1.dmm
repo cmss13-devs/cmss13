@@ -113,7 +113,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "aQ" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/hall_N)
 "aR" = (
@@ -454,7 +454,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "di" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
 "dz" = (
@@ -571,15 +571,6 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/maintenance/north)
 "eR" = (
-/obj/effect/landmark/start/hunter_games,
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4
@@ -795,7 +786,7 @@
 /turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "gx" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
 "gy" = (
@@ -1458,7 +1449,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "mU" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
 "mW" = (
@@ -4192,7 +4183,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "JZ" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "Ka" = (
@@ -4589,7 +4580,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
 "Nb" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "Nm" = (

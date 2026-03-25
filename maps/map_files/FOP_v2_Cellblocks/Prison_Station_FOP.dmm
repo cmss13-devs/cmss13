@@ -1125,11 +1125,11 @@
 /turf/open/floor/prison/whitepurplecorner/east,
 /area/prison/research/secret/bioengineering)
 "adz" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research/secret/bioengineering)
 "adA" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
 "adB" = (
@@ -1728,7 +1728,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/prison/research/secret/containment)
 "afn" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/darkpurple2,
 /area/prison/research/secret/containment)
 "afo" = (
@@ -1918,6 +1918,10 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
+"afY" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/plating,
+/area/prison/hanger/main)
 "afZ" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -3017,6 +3021,10 @@
 /obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
+"ajB" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/prison/yard)
 "ajC" = (
 /obj/structure/machinery/flasher{
 	id = "suspended_EWN"
@@ -3521,7 +3529,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "alm" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "aln" = (
@@ -3765,7 +3773,7 @@
 /turf/open/floor/prison/darkpurple2/west,
 /area/prison/research/secret)
 "amj" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "amk" = (
@@ -4524,7 +4532,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/north/north)
 "aoS" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/north/north)
 "aoT" = (
@@ -4647,7 +4655,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "aps" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/medbay)
 "apt" = (
@@ -5364,7 +5372,7 @@
 /area/prison/hangar_storage/research)
 "arL" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/southwest,
 /area/prison/hangar_storage/research)
 "arM" = (
@@ -6558,7 +6566,7 @@
 /turf/open/floor/prison/kitchen,
 /area/prison/research)
 "awF" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "awG" = (
@@ -6735,7 +6743,7 @@
 /area/prison/research)
 "axp" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research)
 "axr" = (
@@ -7094,7 +7102,7 @@
 /turf/open/floor/prison/southwest,
 /area/prison/cellblock/highsec/north/north)
 "ayO" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/southwest,
 /area/prison/cellblock/highsec/north/north)
 "ayP" = (
@@ -7313,7 +7321,7 @@
 /area/prison/residential/north)
 "azN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/north)
 "azO" = (
@@ -7859,7 +7867,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/maxsec)
 "aBO" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/darkred2/east,
 /area/prison/security/checkpoint/maxsec)
 "aBP" = (
@@ -8256,7 +8264,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aDw" = (
@@ -8336,7 +8344,7 @@
 /turf/open/floor/prison/red/west,
 /area/prison/recreation/highsec/n)
 "aDO" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison/red/west,
 /area/prison/cellblock/highsec/north/south)
 "aDP" = (
@@ -8495,7 +8503,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/medbay/foyer)
 "aEr" = (
@@ -8546,7 +8554,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research)
 "aEz" = (
@@ -9002,7 +9010,7 @@
 /area/prison/research/secret/containment)
 "aGm" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/hangar_storage/main)
@@ -9703,7 +9711,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/north)
 "aIZ" = (
@@ -10231,7 +10239,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/north/south)
 "aLi" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/north/south)
 "aLj" = (
@@ -10350,7 +10358,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/north/south)
 "aLI" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/north/south)
 "aLK" = (
@@ -10442,7 +10450,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/monitoring/lowsec/ne)
 "aMc" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/darkred2/northeast,
 /area/prison/security/monitoring/lowsec/ne)
 "aMd" = (
@@ -10463,7 +10471,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/lowsec/ne)
 "aMj" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/north)
 "aMk" = (
@@ -10811,7 +10819,7 @@
 /turf/open/floor/prison/darkred2/southwest,
 /area/prison/security/monitoring/lowsec/ne)
 "aNB" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/darkredcorners2/west,
 /area/prison/security/monitoring/lowsec/ne)
 "aNC" = (
@@ -11485,7 +11493,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/lowsec/nw)
 "aQh" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/greencorner/north,
 /area/prison/cellblock/lowsec/nw)
 "aQi" = (
@@ -11561,7 +11569,7 @@
 /area/prison/cleaning)
 "aQx" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/greenfull,
 /area/prison/quarters/staff)
@@ -11664,7 +11672,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/west)
 "aQP" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/west)
 "aQQ" = (
@@ -11723,7 +11731,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
 "aRf" = (
@@ -12182,7 +12190,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/lowsec/ne)
 "aSX" = (
@@ -13604,7 +13612,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/prison/cellblock/highsec/north/south)
 "aYx" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/kitchen/southwest,
 /area/prison/cellblock/highsec/north/south)
 "aYy" = (
@@ -14058,7 +14066,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/east)
 "bap" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/canteen)
 "baq" = (
@@ -14888,7 +14896,7 @@
 /turf/open/floor/prison/blue/east,
 /area/prison/security/checkpoint/vip)
 "bdz" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bdA" = (
@@ -15090,7 +15098,7 @@
 /turf/open/floor/prison/kitchen,
 /area/prison/kitchen)
 "ben" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/kitchen,
 /area/prison/kitchen)
 "beo" = (
@@ -15749,7 +15757,7 @@
 /area/prison/yard)
 "bgI" = (
 /obj/item/ammo_casing,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
 "bgJ" = (
@@ -16094,7 +16102,7 @@
 /turf/open/floor/prison/greenfull,
 /area/prison/cellblock/lowsec/ne)
 "bhR" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/east)
 "bhT" = (
@@ -16296,7 +16304,7 @@
 /turf/open/floor/prison/green/north,
 /area/prison/hallway/central/east)
 "biC" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "biE" = (
@@ -16660,7 +16668,7 @@
 /area/prison/toilet/canteen)
 "bkk" = (
 /obj/structure/toilet,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/toilet/canteen)
 "bkl" = (
@@ -16726,7 +16734,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "bkB" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bkC" = (
@@ -16966,11 +16974,11 @@
 /turf/open/floor/prison/kitchen,
 /area/prison/toilet/canteen)
 "blB" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/entrance)
 "blC" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
 "blD" = (
@@ -17284,7 +17292,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/east)
 "bmM" = (
@@ -17471,7 +17479,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/hallway/central/east)
 "bnF" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bnG" = (
@@ -17552,7 +17560,7 @@
 "bnU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/entrance)
 "bnV" = (
@@ -17682,7 +17690,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "bor" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "bos" = (
@@ -17696,7 +17704,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/canteen)
 "bou" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/canteen)
 "bov" = (
@@ -18033,7 +18041,7 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "bpU" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "bpV" = (
@@ -18054,7 +18062,7 @@
 /turf/open/floor/prison/darkredcorners2/east,
 /area/prison/security/checkpoint/vip)
 "bqa" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bqb" = (
@@ -18074,7 +18082,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bqe" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
@@ -18727,7 +18735,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/store)
 "bsU" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/store)
 "bsV" = (
@@ -18830,7 +18838,7 @@
 /turf/open/floor/prison/green/west,
 /area/prison/cellblock/lowsec/sw)
 "bto" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "btp" = (
@@ -18920,7 +18928,7 @@
 /area/prison/holding/holding1)
 "btI" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/holding/holding1)
@@ -19028,7 +19036,7 @@
 /turf/open/floor/plating,
 /area/prison/visitation)
 "bud" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
 "bue" = (
@@ -19257,7 +19265,7 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/prison/cellblock/lowsec/se)
 "buW" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/east)
 "buX" = (
@@ -21206,7 +21214,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/east)
@@ -21257,7 +21265,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/east)
 "bDS" = (
@@ -21759,7 +21767,7 @@
 /turf/open/floor/prison,
 /area/prison/maintenance/hangar_barracks)
 "bFR" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -21786,7 +21794,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
@@ -22302,7 +22310,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -22517,7 +22525,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding2)
@@ -22972,7 +22980,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding2)
 "bKC" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding2)
 "bKD" = (
@@ -23761,7 +23769,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/engineering)
 "bOg" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2/east,
 /area/prison/hallway/east)
@@ -24160,7 +24168,7 @@
 /area/prison/engineering/atmos)
 "bQe" = (
 /obj/structure/bed/stool,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
 /area/prison/intake)
@@ -24244,7 +24252,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/toilet/security)
 "bQs" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/south)
@@ -24658,7 +24666,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bRZ" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/security)
 "bSb" = (
@@ -25004,7 +25012,7 @@
 "bTl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/east)
@@ -25192,7 +25200,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/laundry)
 "bTY" = (
@@ -25345,7 +25353,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bUy" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bUz" = (
@@ -26668,7 +26676,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security)
 "bZF" = (
@@ -27761,7 +27769,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security)
 "cew" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/floor_plate,
 /area/prison/recreation/medsec)
 "cex" = (
@@ -27867,7 +27875,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/hallway/engineering)
 "ceQ" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/hallway/engineering)
 "ceR" = (
@@ -27965,7 +27973,7 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "cfh" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/floor_plate,
 /area/prison/recreation/medsec)
 "cfi" = (
@@ -30263,7 +30271,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/disposal)
 "cou" = (
@@ -30547,7 +30555,7 @@
 /obj/structure/pipes/standard/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/disposal)
 "cpB" = (
@@ -30623,7 +30631,7 @@
 /area/prison/disposal)
 "cpS" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/disposal)
 "cpT" = (
@@ -30822,7 +30830,7 @@
 /turf/open/floor/prison/yellow/north,
 /area/prison/cellblock/mediumsec/east)
 "cqV" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cqW" = (
@@ -30980,7 +30988,7 @@
 /turf/open/floor/prison/yellowcorner,
 /area/prison/cellblock/mediumsec/west)
 "cry" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/yellow,
 /area/prison/cellblock/mediumsec/west)
 "crz" = (
@@ -31586,7 +31594,7 @@
 /turf/open/floor/prison/yellowcorner/west,
 /area/prison/cellblock/mediumsec/south)
 "ctZ" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison/yellow,
 /area/prison/cellblock/mediumsec/south)
 "cub" = (
@@ -32196,7 +32204,7 @@
 /turf/open/floor/prison/yellowfull,
 /area/prison/cellblock/mediumsec/west)
 "cws" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison/yellowcorner/east,
 /area/prison/cellblock/mediumsec/south)
@@ -32279,7 +32287,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison/yellowcorner/west,
 /area/prison/cellblock/mediumsec/south)
 "cwL" = (
@@ -32411,7 +32419,7 @@
 /turf/open/space,
 /area/space)
 "cxA" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "cxB" = (
@@ -33229,7 +33237,7 @@
 /area/prison/cellblock/mediumsec/east)
 "dMw" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "dOK" = (
@@ -33688,7 +33696,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/north)
 "fZb" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/south)
 "gas" = (
@@ -34207,7 +34215,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/north)
 "hNI" = (
@@ -34349,7 +34357,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "iif" = (
-/obj/effect/landmark/start/hunter_games,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/south)
 "iiI" = (
@@ -35404,7 +35412,7 @@
 	dir = 8;
 	flipped = 1
 	},
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/south)
 "mDi" = (
@@ -36100,7 +36108,7 @@
 /area/prison/hallway/central/north)
 "pnT" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "poa" = (
@@ -36617,7 +36625,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "rRJ" = (
-/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -72198,7 +72206,7 @@ aYJ
 aYJ
 aNq
 aNq
-bdz
+ajB
 aWS
 bmw
 aWR
@@ -86622,7 +86630,7 @@ aYM
 aYM
 aYM
 aYM
-bto
+afY
 aYM
 aYM
 bto

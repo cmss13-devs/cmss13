@@ -8,7 +8,7 @@
 		/datum/action/xeno_action/onclick/paralyzing_slash,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/neuro_spit
+		/datum/action/xeno_action/activable/neuro_spit,
 	)
 
 /datum/xeno_strain/neuro_spitter/apply_strain(mob/living/carbon/xenomorph/sentinel/sentinel)

@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(mapping)
 
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
-	/// list of traits and their associated z leves
+	/// list of traits and their associated z levels
 	var/list/z_trait_levels = list()
 
 	/// list of lazy templates that have been loaded

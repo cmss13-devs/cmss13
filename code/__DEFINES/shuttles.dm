@@ -25,6 +25,7 @@
 #define SHUTTLE_HEIGHT_TOO_LARGE "height too large"
 #define SHUTTLE_ALREADY_DOCKED "we are already docked"
 #define SHUTTLE_SOMEONE_ELSE_DOCKED "someone else docked"
+#define SHUTTLE_DOCK_DISABLED "docking port unresponsive"
 
 //Launching Shuttles to CentCom - used for escape shuttle code
 #define NOLAUNCH -1

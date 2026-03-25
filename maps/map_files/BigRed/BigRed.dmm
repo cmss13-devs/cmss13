@@ -45,7 +45,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "aan" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
@@ -65,7 +65,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "aar" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aas" = (
@@ -243,7 +243,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaZ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "aba" = (
@@ -298,7 +298,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abi" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "abj" = (
@@ -649,7 +649,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "acx" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "acy" = (
@@ -1551,7 +1551,7 @@
 /area/bigredv2/outside/space_port)
 "afN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/shard,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -1744,7 +1744,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "agA" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "agB" = (
@@ -1763,18 +1763,6 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"agE" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/mars,
-/area/bigredv2/outside/e)
-"agF" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/mars,
-/area/bigredv2/outside/c)
-"agG" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/outside/n)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -1897,7 +1885,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "ahi" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "ahj" = (
@@ -1906,7 +1894,7 @@
 /area/bigredv2/outside/marshal_office)
 "ahk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ahl" = (
@@ -1963,7 +1951,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
 "ahx" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
@@ -2122,7 +2110,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "aij" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_lambda)
@@ -2153,7 +2141,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "air" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -2258,7 +2246,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aiW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "aiX" = (
@@ -2407,7 +2395,7 @@
 /area/bigredv2/outside/marshal_office)
 "ajG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ajJ" = (
@@ -2680,7 +2668,7 @@
 /turf/open/floor/whitepurple/northwest,
 /area/bigredv2/caves/lambda/xenobiology)
 "alb" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurplecorner/north,
 /area/bigredv2/caves/lambda/xenobiology)
 "alc" = (
@@ -2725,7 +2713,7 @@
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
 "alo" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
 "alp" = (
@@ -2809,14 +2797,14 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves_north)
 "alI" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_north)
 "alJ" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_north)
 "alK" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -3013,7 +3001,7 @@
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "amD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "amE" = (
@@ -3373,7 +3361,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
 "aod" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -3960,7 +3948,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aqR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "aqU" = (
@@ -4015,7 +4003,7 @@
 /turf/open/floor/darkpurple2/east,
 /area/bigredv2/caves/lambda/xenobiology)
 "ard" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "arf" = (
@@ -4289,7 +4277,7 @@
 /area/bigredv2/outside/medical)
 "asA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/outside/medical)
 "asB" = (
@@ -4515,7 +4503,7 @@
 /area/bigredv2/outside/general_offices)
 "atF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -4593,7 +4581,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/chapel)
 "atQ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "atR" = (
@@ -4718,7 +4706,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
@@ -4968,7 +4956,7 @@
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "avx" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "avy" = (
@@ -5107,7 +5095,7 @@
 /area/bigredv2/outside/medical)
 "awn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "awo" = (
@@ -5130,11 +5118,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aww" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "awz" = (
@@ -5324,7 +5312,7 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "axu" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/nw)
 "axv" = (
@@ -5343,7 +5331,7 @@
 /area/bigredv2/outside/medical)
 "axA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "axB" = (
@@ -5425,7 +5413,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw/ceiling)
 "aya" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -5587,7 +5575,7 @@
 "ayI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayJ" = (
@@ -5653,7 +5641,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "azf" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/caves_lambda)
@@ -5930,7 +5918,7 @@
 /area/bigredv2/outside/medical)
 "aAA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "aAB" = (
@@ -6148,7 +6136,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "aBz" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_lambda)
@@ -6227,7 +6215,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aBS" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/c)
 "aBT" = (
@@ -6421,7 +6409,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/caves/eta/xenobiology)
 "aCM" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aCN" = (
@@ -6665,7 +6653,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
 "aEn" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
@@ -6709,7 +6697,7 @@
 "aEz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aEA" = (
@@ -6758,7 +6746,7 @@
 /area/bigredv2/outside/bar)
 "aEP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEQ" = (
@@ -6953,7 +6941,7 @@
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "aFL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aFM" = (
@@ -7475,7 +7463,7 @@
 /turf/open/floor/darkpurplecorners2/north,
 /area/bigredv2/caves/lambda/research)
 "aIO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -7512,7 +7500,7 @@
 /area/bigredv2/outside/cargo)
 "aIU" = (
 /obj/structure/pipes/vents/scrubber/on,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/research)
@@ -7559,7 +7547,7 @@
 /obj/structure/machinery/door/window{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/caves/lambda/virology)
@@ -8263,7 +8251,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "aMb" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "aMc" = (
@@ -8725,7 +8713,7 @@
 /area/bigredv2/outside/bar)
 "aNZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
 "aOa" = (
@@ -9155,7 +9143,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aPC" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aPD" = (
@@ -9381,7 +9369,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQn" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQo" = (
@@ -9530,7 +9518,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQW" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQX" = (
@@ -9543,7 +9531,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQZ" = (
@@ -9768,7 +9756,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aRM" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRP" = (
@@ -10305,7 +10293,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUP" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
@@ -10406,7 +10394,7 @@
 /area/bigredv2/outside/admin_building)
 "aVl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
 "aVm" = (
@@ -10539,7 +10527,7 @@
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/outside/admin_building)
 "aVY" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aVZ" = (
@@ -10704,7 +10692,7 @@
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/e)
 "aWL" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aWN" = (
@@ -10766,7 +10754,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/virology)
 "aWW" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/c)
 "aWX" = (
@@ -11130,7 +11118,7 @@
 /turf/open/floor/darkred2/north,
 /area/bigredv2/outside/admin_building)
 "aYV" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkred2/north,
 /area/bigredv2/outside/admin_building)
 "aYW" = (
@@ -11297,7 +11285,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
 "aZM" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZO" = (
@@ -11439,7 +11427,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/chapel/north,
 /area/bigredv2/outside/chapel)
 "bar" = (
@@ -11476,7 +11464,7 @@
 /area/bigredv2/outside/cargo)
 "baB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "baC" = (
@@ -11700,7 +11688,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbw" = (
@@ -11775,7 +11763,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bbI" = (
@@ -11925,7 +11913,7 @@
 /turf/open/floor/chapel/east,
 /area/bigredv2/outside/chapel)
 "bcn" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_virology)
 "bco" = (
@@ -12094,7 +12082,7 @@
 /turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcT" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -12156,7 +12144,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
 "bdk" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bdl" = (
@@ -12228,7 +12216,7 @@
 /area/bigredv2/outside/office_complex)
 "bdB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdC" = (
@@ -12519,7 +12507,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/office_complex)
 "bfk" = (
@@ -12882,7 +12870,7 @@
 /area/bigredv2/outside/office_complex)
 "bgO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bgP" = (
@@ -12906,7 +12894,7 @@
 /area/bigredv2/outside/office_complex)
 "bgT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "bgV" = (
@@ -12966,7 +12954,7 @@
 /turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/se)
 "bhr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "bhs" = (
@@ -13172,7 +13160,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bjk" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/office_complex)
 "bjl" = (
@@ -13188,7 +13176,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port_lz2)
 "bjo" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
 "bjp" = (
@@ -13247,7 +13235,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bjN" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
 "bjO" = (
@@ -13317,7 +13305,7 @@
 /turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/s)
 "bkq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/s)
 "bkr" = (
@@ -13590,7 +13578,7 @@
 /area/bigredv2/outside/filtration_plant)
 "blE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
@@ -13805,7 +13793,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "bmM" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
 "bmN" = (
@@ -14004,7 +13992,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/meson,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bny" = (
@@ -14135,7 +14123,7 @@
 /area/bigredv2/outside/engineering)
 "bnX" = (
 /obj/item/folder/yellow,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bnY" = (
@@ -14172,7 +14160,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "boe" = (
@@ -14243,7 +14231,7 @@
 "boH" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkyellowcorners2/east,
 /area/bigredv2/outside/engineering)
@@ -14323,7 +14311,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "boZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "bpa" = (
@@ -14485,7 +14473,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/engineering)
 "bpM" = (
@@ -14821,7 +14809,7 @@
 /area/bigredv2/outside/engineering)
 "brK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "brL" = (
@@ -14923,7 +14911,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bss" = (
@@ -14984,7 +14972,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
 "bsH" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_cave_cas)
 "bsI" = (
@@ -15004,7 +14992,7 @@
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/engineering)
 "bsL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkyellow2,
@@ -15117,7 +15105,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/lz2_south_cas)
 "btA" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "btB" = (
@@ -15206,7 +15194,7 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/s)
 "buy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_east)
 "buz" = (
@@ -15241,7 +15229,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_north)
 "buR" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "buU" = (
@@ -15289,7 +15277,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/lz2_south_cas)
 "bvH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/eta)
 "bvK" = (
@@ -15320,7 +15308,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "bvW" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/eta)
@@ -15332,12 +15320,12 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/eta)
 "bvZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
 "bwa" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
@@ -15495,7 +15483,7 @@
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
 "bxe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
@@ -15626,7 +15614,7 @@
 /area/bigredv2/caves/eta/storage)
 "bxG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkblue2/west,
 /area/bigredv2/caves/eta/storage)
@@ -15718,7 +15706,7 @@
 /area/bigredv2/caves/eta/research)
 "byb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "byc" = (
@@ -15756,7 +15744,7 @@
 /area/bigredv2/caves/eta/storage)
 "byk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
@@ -16061,7 +16049,7 @@
 /turf/open/mars_cave/mars_cave_22,
 /area/bigredv2/caves/eta/research)
 "bzo" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_research)
 "bzp" = (
@@ -16110,7 +16098,7 @@
 /turf/open/floor/darkgreencorners2,
 /area/bigredv2/caves/eta/storage)
 "bzy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bzz" = (
@@ -16231,7 +16219,7 @@
 /area/bigredv2/caves/eta/research)
 "bzU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
@@ -16278,7 +16266,7 @@
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves/eta/research)
 "bAe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_se)
@@ -16595,7 +16583,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBB" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
@@ -16744,7 +16732,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkgreencorners2/west,
 /area/bigredv2/caves/eta/research)
@@ -17088,7 +17076,7 @@
 /area/bigredv2/caves/eta/living)
 "bDC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
@@ -17114,7 +17102,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bDH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/caves/eta/living)
 "bDJ" = (
@@ -17309,7 +17297,7 @@
 /turf/open/mars_cave/mars_cave_22,
 /area/bigredv2/caves/eta/xenobiology)
 "bEt" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEv" = (
@@ -17846,7 +17834,7 @@
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "caD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/s)
 "caL" = (
@@ -17983,7 +17971,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/general_offices)
 "ciG" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/n)
 "ciY" = (
@@ -18547,7 +18535,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "cOc" = (
@@ -18581,7 +18569,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/eta/research)
 "cPg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/n)
 "cPh" = (
@@ -18760,7 +18748,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "daf" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
 "day" = (
@@ -18906,7 +18894,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "dka" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/n)
 "dkl" = (
@@ -19331,7 +19319,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "dHH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "dIb" = (
@@ -19436,7 +19424,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dNX" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
 "dOl" = (
@@ -19460,7 +19448,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dOZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/n)
 "dPb" = (
@@ -19528,7 +19516,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/lambda_cave_cas)
 "dSg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -20215,7 +20203,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "eEm" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
@@ -20790,7 +20778,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "fhI" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves_north)
 "fhJ" = (
@@ -20798,7 +20786,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "fia" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -21422,7 +21410,7 @@
 /area/bigredv2/outside/lz2_west_cas)
 "fTj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/e)
 "fTw" = (
@@ -21630,7 +21618,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gcR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves_sw)
 "gda" = (
@@ -21835,7 +21823,7 @@
 /turf/open/gm/river,
 /area/bigredv2/outside/c)
 "gpT" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz2_south_cas)
 "gqF" = (
@@ -21970,7 +21958,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/dorms)
 "gvZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet13_5/west,
 /area/bigredv2/outside/bar)
@@ -22524,7 +22512,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "hcb" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "hcH" = (
@@ -22734,7 +22722,7 @@
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "hoQ" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
 "hoY" = (
@@ -22849,7 +22837,7 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "hwy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
@@ -23022,7 +23010,7 @@
 /turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
 "hFg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_lambda)
@@ -23128,7 +23116,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "hKD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_se)
@@ -23158,7 +23146,7 @@
 /area/bigredv2/outside/medical)
 "hNg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
@@ -23605,7 +23593,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
 "iml" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
@@ -23776,7 +23764,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ivN" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "ivW" = (
@@ -23794,7 +23782,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
 "iwG" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_virology)
 "ixx" = (
@@ -24058,7 +24046,7 @@
 /turf/open/gm/river,
 /area/bigredv2/outside/engineering/reactor)
 "iOR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "iPE" = (
@@ -24078,7 +24066,7 @@
 /turf/open/gm/river,
 /area/bigredv2/outside/filtration_plant)
 "iQC" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "iQG" = (
@@ -24127,7 +24115,7 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/bigredv2/outside/telecomm/warehouse)
 "iTZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/space_port)
 "iUe" = (
@@ -24359,7 +24347,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
 "jjR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/e)
 "jkb" = (
@@ -24666,7 +24654,7 @@
 /turf/open/mars_cave/mars_cave_10,
 /area/bigredv2/caves_virology)
 "jDo" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/space_port_lz2)
 "jDy" = (
@@ -24745,7 +24733,7 @@
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/caves/mining)
 "jGS" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/mars,
 /area/bigredv2/outside/c)
@@ -25963,7 +25951,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "kNc" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "kNs" = (
@@ -26106,7 +26094,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
 "kVS" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/filtration_cave_cas)
 "kVT" = (
@@ -26140,7 +26128,7 @@
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
 "kWV" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_se)
 "kYs" = (
@@ -26428,7 +26416,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/admin_building)
 "lrH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "lrW" = (
@@ -27238,7 +27226,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "mij" = (
 /obj/item/folder/yellow,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "mio" = (
@@ -27778,7 +27766,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/e)
 "mNZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "mOc" = (
@@ -27797,7 +27785,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "mOZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/queen_spawn,
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfmining"
@@ -28053,12 +28041,12 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/eta)
 "nbi" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "nbu" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
 "nbL" = (
@@ -28473,7 +28461,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "nzb" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
@@ -29012,7 +29000,7 @@
 /turf/open/floor/whiteblue,
 /area/bigredv2/outside/medical)
 "oea" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
@@ -29273,7 +29261,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "opz" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_5,
 /area/bigredv2/caves/mining)
 "opK" = (
@@ -29372,7 +29360,7 @@
 /turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
 "ouD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars,
 /area/bigredv2/outside/c)
@@ -29515,7 +29503,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/bigredv2/caves_lambda)
 "ozZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
 "oAf" = (
@@ -30007,7 +29995,7 @@
 /turf/open/gm/grass/weedable,
 /area/bigredv2/caves/eta/living)
 "pbK" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave/mars_cave_2,
@@ -30527,7 +30515,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
 "pDV" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -30850,7 +30838,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "pXp" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
 "pXu" = (
@@ -31450,7 +31438,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "qAk" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
@@ -32425,7 +32413,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "ryQ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
 	},
@@ -32683,7 +32671,7 @@
 /area/bigredv2/caves/mining)
 "rNd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "rNp" = (
@@ -32902,7 +32890,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "rVE" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/n)
 "rVM" = (
@@ -33008,7 +32996,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "rYt" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves_north)
 "rYD" = (
@@ -33306,7 +33294,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "smw" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/grass/desert/lightgrass_7,
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -33624,7 +33612,7 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/nw)
 "sAG" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz2_south_cas)
 "sAS" = (
@@ -33644,7 +33632,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "sBu" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_east)
@@ -33778,7 +33766,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/c)
 "sHO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
@@ -34461,7 +34449,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "ttn" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
 "ttr" = (
@@ -35439,7 +35427,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "utQ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "uum" = (
@@ -36160,7 +36148,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "vkf" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/ne)
@@ -36255,7 +36243,7 @@
 /area/bigredv2/caves/mining)
 "vmL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "vmV" = (
@@ -36622,7 +36610,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/eta)
 "vDS" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/w)
 "vEF" = (
@@ -36812,7 +36800,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "vPr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/s)
 "vPL" = (
@@ -37024,11 +37012,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "wbD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/space_port_lz2)
 "wbY" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/n)
 "wcs" = (
@@ -37170,7 +37158,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "whG" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave,
 /area/bigredv2/outside/lz2_west_cas)
 "whL" = (
@@ -38390,7 +38378,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xuU" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_east)
@@ -38762,7 +38750,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/se)
 "xOi" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
@@ -38839,7 +38827,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "xUS" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "xUX" = (
@@ -59225,7 +59213,7 @@ aao
 aao
 aao
 xqW
-agG
+wbY
 dQR
 hQO
 aqL
@@ -59921,7 +59909,7 @@ amI
 aHD
 aIm
 aBR
-agF
+aCM
 aBR
 aMc
 apC
@@ -69304,7 +69292,7 @@ aCZ
 aqU
 lcb
 yfY
-agE
+aWL
 aKP
 aKP
 aKP

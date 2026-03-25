@@ -1822,22 +1822,6 @@
 "agU" = (
 /turf/open_space,
 /area/sky/level4)
-"agV" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland/south)
-"agW" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
-"agX" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
-"agY" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -8168,7 +8152,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
 "kns" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "koX" = (
@@ -9930,7 +9914,7 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "mYG" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "mYM" = (
@@ -10228,7 +10212,7 @@
 /turf/open/gm/river/red,
 /area/kutjevo/interior/oob)
 "nzv" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland/south)
 "nzP" = (
@@ -11145,7 +11129,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
 "oLs" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "oMw" = (
@@ -12718,7 +12702,7 @@
 /turf/open/gm/dirtgrassborder2/north,
 /area/kutjevo/exterior/complex_border/med_park)
 "rnM" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/stonyfields)
 "rob" = (
@@ -14403,7 +14387,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
 "tVs" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "tWv" = (
@@ -25494,7 +25478,7 @@ dxF
 jdu
 dmp
 rJl
-agV
+nzv
 dxF
 dxF
 dxF
@@ -26797,7 +26781,7 @@ hrz
 hrz
 bXl
 bXl
-agX
+oLs
 bXl
 dUE
 aHq
@@ -36829,7 +36813,7 @@ snr
 lcs
 orY
 kRM
-agW
+tVs
 wff
 fpO
 wff
@@ -48822,7 +48806,7 @@ bkR
 bkR
 bkR
 hSU
-agY
+mYG
 bkR
 bkR
 wTt

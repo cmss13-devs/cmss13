@@ -257,3 +257,9 @@
   - balance: xenos get +1 second cooldown penalty for being interrupted mid building,
       queen on boosted building gets +3 seconds penalty.
   - code_imp: makes do_after check if the user or the target were qdeleted
+2026-03-25:
+  realforest2001:
+  - rscadd: Added landing lights to the ERT landing bays.
+  - imageadd: Added some mapicons for the different landing light delay settings to
+      make it easier to see what is what on the map.
+  - code_imp: Restructured the procs that toggle landing lights on and off for simplicity.

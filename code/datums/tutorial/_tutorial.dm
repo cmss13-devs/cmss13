@@ -32,6 +32,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/completion_marked = FALSE
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
+	var/suspended_objective_update
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -167,10 +168,63 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)
 	SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE, message)
+	var/datum/hud/tutorial_hud = tutorial_mob.hud_used
+	if(length(tutorial_hud.tutorial_objective.maptext))
+		animate(tutorial_hud.tutorial_objective, alpha = 0, time = 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 0.6 SECONDS)
+	else
+		handle_onscreen_objective(message, tutorial_hud)
+
+/datum/tutorial/proc/handle_onscreen_objective(message, datum/hud/tutorial_hud)
+	if(suspended_objective_update)
+		deltimer(suspended_objective_update)
+	if(tutorial_mob.client.screen_texts)
+		suspended_objective_update = addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 2.5 SECONDS, TIMER_STOPPABLE)
+		return
+	tutorial_hud.tutorial_objective.maptext = ""
+	tutorial_hud.tutorial_objective.alpha = 255
+	update_onscreen_objective_position()
+	INVOKE_ASYNC(tutorial_hud.tutorial_objective, TYPE_PROC_REF(/atom/movable/screen/screentip/tutorial, update_onscreen_objective), message, tutorial_hud)
+
+/datum/tutorial/proc/update_onscreen_objective_position()
+	var/atom/movable/screen/action_button/hide_button = tutorial_mob.hud_used.hide_actions_toggle
+	var/atom/movable/screen/screentip/tutorial/tutorial_objective = tutorial_mob.hud_used.tutorial_objective
+	tutorial_objective.screen_loc = hide_button.get_button_screen_loc(length(tutorial_mob.actions) + 2)
+	tutorial_objective.maptext_width = tutorial_objective.maptext_width - tutorial_objective.maptext_x - 8	// slight padding on the right
+	if(tutorial_objective.maptext_width <= 240)	// smaller than half the screen, move it down a line instead
+		tutorial_objective.screen_loc = initial(tutorial_objective.screen_loc)
+
+/atom/movable/screen/screentip/tutorial/proc/update_onscreen_objective(message, datum/hud/tutorial_hud, list/style_override)
+
+	var/name_part = "<span class='langchat langchat_yell'>Current Objective:</span><br>"
+
+	var/list/lines_to_skip = list()
+	var/static/html_locate_regex = regex("<.*>")
+	var/tag_position = findtext(message, html_locate_regex)
+	var/reading_tag = TRUE
+	while(tag_position)
+		if(reading_tag)
+			if(message[tag_position] == ">")
+				reading_tag = FALSE
+			lines_to_skip += tag_position
+			tag_position++
+		else
+			tag_position = findtext(message, html_locate_regex, tag_position)
+			reading_tag = TRUE
+
+	var/message_length = length(message)
+	var/letters_per_update = 2
+
+	for(var/letter = 2 to message_length + letters_per_update step letters_per_update)
+		if(letter in lines_to_skip)
+			continue
+		tutorial_hud.tutorial_objective.maptext = "[name_part]<span class='langchat' style='font-size: 7px;'>[copytext_char(message, 1, letter)]</span>"
+		sleep(0.5)
 
 /// Initialize the tutorial mob.
 /datum/tutorial/proc/init_mob()
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
+	RegisterSignal(tutorial_mob.client, list(COMSIG_CLIENT_SCREEN_ADD, COMSIG_CLIENT_SCREEN_REMOVE), PROC_REF(update_onscreen_objective_position))
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
 	ADD_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 

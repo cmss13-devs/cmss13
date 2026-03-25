@@ -27,6 +27,7 @@
 	name = "CIA Strike Team (Hostile !DEATHSQUAD!)"
 	hostility = TRUE
 	is_deathsquad = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/cia_grs/large
 	name = "CIA Strike Team (Reinforced) (Friendly)"
@@ -46,6 +47,7 @@
 	name = "CIA Strike Team (Reinforced) (Hostile !DEATHSQUAD!)"
 	hostility = TRUE
 	is_deathsquad = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/cia_grs/New()
 	. = ..()

@@ -33,6 +33,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
 	var/suspended_objective_update
+	var/template_safety_override = FALSE
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -86,9 +87,13 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	deltimer(suspended_objective_update)
+
 	var/mob/old_tutorial_mob = tutorial_mob
 	if(old_tutorial_mob)
 		tutorial_mob = null // Clear it out so we don't double end the tutorial on logout via transfer_to
+		if(old_tutorial_mob.client)
+			UnregisterSignal(old_tutorial_mob.client, list(COMSIG_CLIENT_SCREEN_ADD, COMSIG_CLIENT_SCREEN_REMOVE))
 		remove_action(old_tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
 		if(old_tutorial_mob.client?.prefs && (completed || completion_marked))
 			old_tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
@@ -104,6 +109,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Verify the template loaded fully and without error.
 /datum/tutorial/proc/verify_template_loaded()
+	if(template_safety_override)
+		return TRUE
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
 	for(var/turf/tile as anything in CORNER_BLOCK(true_bottom_left_corner, initial(tutorial_template.width), initial(tutorial_template.height)))
@@ -166,9 +173,11 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	return scene_length + final_fade_out_delay
 
 /// Updates a player's objective in their status tab
-/datum/tutorial/proc/update_objective(message)
+/datum/tutorial/proc/update_objective(message, shown_onscreen = TRUE)
 	SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE, message)
 	var/datum/hud/tutorial_hud = tutorial_mob.hud_used
+	if(!shown_onscreen)
+		return
 	if(length(tutorial_hud.tutorial_objective.maptext))
 		animate(tutorial_hud.tutorial_objective, alpha = 0, time = 0.5 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 0.6 SECONDS)
@@ -178,6 +187,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/handle_onscreen_objective(message, datum/hud/tutorial_hud)
 	if(suspended_objective_update)
 		deltimer(suspended_objective_update)
+	if(!tutorial_mob.client)
+		return
 	if(tutorial_mob.client.screen_texts)
 		suspended_objective_update = addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 2.5 SECONDS, TIMER_STOPPABLE)
 		return
@@ -363,6 +374,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	name = "Tutorial Zone (7x7)"
 	mappath = "maps/tutorial/tutorial_7x7.dmm"
 	width = 7
+	height = 7
+
+/datum/map_template/tutorial/s11x7
+	name = "Tutorial Zone (11x7)"
+	mappath = "maps/tutorial/tutorial_11x7.dmm"
+	width = 11
 	height = 7
 
 /datum/map_template/tutorial/s15x10/hm

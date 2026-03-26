@@ -242,6 +242,11 @@ export class StorageProxy {
           await iframe.ready();
 
           if ((await iframe.ping()) === true) {
+            if (Byond.OPENDREAM === '1') {
+              console.log('Opendream mode');
+              return iframe;
+            }
+
             // Remove with 516... eventually
             if (await iframe.get('byondstorage-migrated')) return iframe;
 

@@ -97,16 +97,16 @@ SUBSYSTEM_DEF(minimaps)
 		// Filter raw_blips for observer maps to exclude labels
 		if(istype(target) && target.is_observer_minimap)
 			// For observer maps, filter out any labels
-			for(var/image/blip as anything in updator.raw_blips)
+			for(var/image/blip as anything in updater.raw_blips)
 				if(!blip.maptext)
 					combined_overlays += blip
 		else
 			// For non-observer maps, use all raw_blips
-			combined_overlays = updator.raw_blips.Copy()
+			combined_overlays = updater.raw_blips.Copy()
 
 		if(length(target.current_drawing_overlays))
 			combined_overlays += target.current_drawing_overlays
-		updator.minimap.overlays = combined_overlays
+		updater.minimap.overlays = combined_overlays
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(minimaps)
 						if(cic_drawings["[ztarget]-[flag]"])
 							holder.raw_blips += cic_drawings["[ztarget]-[flag]"]
 				else
-					// Other non-live updators get CIC drawings
+					// Other non-live updaters get CIC drawings
 					if(cic_drawings["[ztarget]-[flag]"])
 						holder.raw_blips += cic_drawings["[ztarget]-[flag]"]
 		if(!labels)
@@ -355,8 +355,8 @@ SUBSYSTEM_DEF(minimaps)
 			client_map.overlays = safe_overlays
 
 	// Now apply transmitted drawings to live minimaps only
-	for(var/datum/minimap_updator/updator in update_targets_unsorted)
-		var/atom/movable/screen/minimap/target = updator.minimap
+	for(var/datum/minimap_updater/updater in update_targets_unsorted)
+		var/atom/movable/screen/minimap/target = updater.minimap
 		if(istype(target) && target.live && target.minimap_flags & minimap_flag)
 			target.update_drawing_overlay(show_cic_drawings = FALSE)
 
@@ -390,8 +390,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /// Refreshes CIC drawing overlays for real time updates
 /datum/controller/subsystem/minimaps/proc/refresh_cic_drawing_overlays(zlevel, minimap_flag)
-	for(var/datum/minimap_updator/updator in update_targets_unsorted)
-		var/atom/movable/screen/minimap/target = updator.minimap
+	for(var/datum/minimap_updater/updater in update_targets_unsorted)
+		var/atom/movable/screen/minimap/target = updater.minimap
 		if(istype(target) && target.is_cic_minimap && target.target == zlevel && target.minimap_flags & minimap_flag)
 			target.update_drawing_overlay(show_cic_drawings = TRUE)
 
@@ -400,8 +400,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(!istype(target_map) || !target_map.live || target_map.drawing)
 		return
 
-	var/datum/minimap_updator/updator = updators_by_datum[target_map]
-	if(!updator)
+	var/datum/minimap_updater/updater = updaters_by_datum[target_map]
+	if(!updater)
 		return
 
 	// Check if there are any existing transmitted drawings for this map's flags and zlevel
@@ -422,14 +422,14 @@ SUBSYSTEM_DEF(minimaps)
 		// Add existing transmitted drawings to this live minimap
 		for(var/flag in bitfield2list(minimap_flags))
 			if(transmitted_drawings["[target_map.target]-[flag]"])
-				updator.raw_blips += transmitted_drawings["[target_map.target]-[flag]"]
+				updater.raw_blips += transmitted_drawings["[target_map.target]-[flag]"]
 			// Add all transmitted labels for this z-level and flag combination
 			for(var/key in transmitted_drawings)
 				if(findtext(key, "[target_map.target]-[flag]label-"))
-					updator.raw_blips += transmitted_drawings[key]
+					updater.raw_blips += transmitted_drawings[key]
 
 		// Update overlays to show existing drawings
-		target_map.overlays = updator.raw_blips
+		target_map.overlays = updater.raw_blips
 
 /// Removes client copy from tracking when deleted
 /datum/controller/subsystem/minimaps/proc/remove_client_copy(atom/movable/screen/minimap/source)

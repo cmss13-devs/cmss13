@@ -264,8 +264,7 @@
 		if(T == target)
 			break
 		sleep(2)
-	sleep(2)
-	qdel(W)
+	QDEL_IN(W, 2 DECISECONDS)
 
 #undef BASE_EXTINGUISHER_PWR
 #undef PYRO_EXTINGUISHER_PWR

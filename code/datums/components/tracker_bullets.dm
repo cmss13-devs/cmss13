@@ -6,19 +6,22 @@
 	var/ping_range = 9
 	var/ping_accum = 0
 	var/list/active_blips = list()
+	var/blip_duration = 2 SECONDS
 
-/datum/component/tracking_bullets/Initialize(mob/living/fired_by)
+/datum/component/tracking_bullets/Initialize(mob/living/fired_by, blip_duration = 2 SECONDS)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	shooter = fired_by
+	src.blip_duration = blip_duration
 	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(on_target_death))
 	START_PROCESSING(SSdcs, src)
 	timerid = addtimer(CALLBACK(src, PROC_REF(expire)), 10 SECONDS, TIMER_STOPPABLE)
 
-/datum/component/tracking_bullets/InheritComponent(datum/component/tracking_bullets/old_component, is_dupe, mob/living/fired_by)
+/datum/component/tracking_bullets/InheritComponent(datum/component/tracking_bullets/old_component, is_dupe, mob/living/fired_by, blip_duration = 2 SECONDS)
 	if(timerid)
 		deltimer(timerid)
+	src.blip_duration = blip_duration
 	timerid = addtimer(CALLBACK(src, PROC_REF(expire)), 10 SECONDS, TIMER_STOPPABLE)
 
 /datum/component/tracking_bullets/Destroy()
@@ -122,7 +125,7 @@
 
 	var/list/blip_data = list(viewer, blip_effect)
 	active_blips += list(blip_data)
-	addtimer(CALLBACK(src, PROC_REF(clear_tracker_blip), viewer, blip_effect, blip_data), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_tracker_blip), viewer, blip_effect, blip_data), blip_duration)
 
 /datum/component/tracking_bullets/proc/clear_tracker_blip(mob/living/carbon/human/viewer, obj/effect/detector_blip/blip_effect, list/blip_data)
 	active_blips -= list(blip_data)

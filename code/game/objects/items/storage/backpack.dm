@@ -1045,7 +1045,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	H.unset_interaction()
 
 	H.alpha = camo_alpha
-	H.FF_hit_evade = 1000
+	H.FF_hit_evade = 30
 	if(!allowed_stealth_shooting)
 		H.allow_gun_usage = allow_gun_usage
 
@@ -1104,7 +1104,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
 	cloak_cooldown = world.time + 0.8 SECONDS
-	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)

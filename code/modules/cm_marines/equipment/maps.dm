@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_NAME, MAP_ROSTOCK, MAP_HUNTERSHIP))
+
 /obj/item/map
 	name = "map"
 	icon = 'icons/obj/items/marine-items.dmi'
@@ -144,7 +146,7 @@
 
 /obj/item/map/tyrargo_rift
 	name = "\improper Tyrargo Rift map"
-	desc = "A labeled blueprint of the UA city Tyrargo Rift"
+	desc = "A labeled blueprint of the UA city Tyrargo Rift."
 	html_link = "images/7/79/Tyrargo_Rift.png"
 
 /obj/item/map/galaxy
@@ -174,11 +176,6 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift()
 	)
 
-/proc/map_should_have_map_item(map_name)
-	if (map_name == MAP_RUNTIME || map_name == MAP_CHINOOK || map_name == MAIN_SHIP_DEFAULT_NAME || map_name == MAP_ROSTOCK)
-		return FALSE // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
-	return TRUE
-
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
 
@@ -187,7 +184,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 	var/map_name = SSmapping.configs[GROUND_MAP].map_name
 	var/obj/item/map/map = GLOB.map_type_list[map_name]
-	if (!map && !map_should_have_map_item(map_name))
+	if (!map && (map_name in GLOB.mapless_maps))
 		return // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
 	name = map.name
 	desc = map.desc

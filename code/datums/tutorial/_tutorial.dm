@@ -388,8 +388,3 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	width = 15
 	height = 10
 
-/datum/map_template/tutorial/debug
-	name = "Tutorial Zone (8x8) (debug)"
-	mappath = "maps/tutorial/tutorial_test.dmm"
-	width = 8
-	height = 8

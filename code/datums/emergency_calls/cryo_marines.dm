@@ -12,6 +12,7 @@
 	shuttle_id = ""
 	var/leaders = 0
 	spawn_max_amount = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]

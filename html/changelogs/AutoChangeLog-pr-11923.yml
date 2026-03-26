@@ -1,4 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - bugfix: "fixed Tyrargo army CO survivors not starting with an unbuttoned jacket due to an error"

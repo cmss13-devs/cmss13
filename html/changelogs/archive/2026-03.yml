@@ -167,3 +167,123 @@
       fallbacking to icon_state
   - code_imp: Autodocs a few clothing variables
   - bugfix: Fixes accessorized inv_icon overlay from being directional
+2026-03-14:
+  MistChristmas:
+  - bugfix: Xenomorph on dropship alert now only occurs after landing.
+  - bugfix: Intel job not properly being tied to roundstart gear_preset
+  - admin: G2s and Claymores now get logged when deployed.
+  MoondancerPony:
+  - rscdel: broke area-based lighting
+  - bugfix: fixed area-based lighting
+  - bugfix: fixed Tyrargo army CO survivors not starting with an unbuttoned jacket
+      due to an error
+  Riot:
+  - bugfix: Certain ERTs should now correctly spawn with basic first aid kits, as
+      they were meant to do for the past 3 years.
+  - bugfix: Fixes the army tgui prefixes
+  cuberound:
+  - balance: increases random sandbag crate spawn chance
+  - balance: increases random HPR crate spawn chance
+  - balance: reduces random flamer fuel crate spawn chance
+  - balance: reduces random smartgun ammo crate spawn chance
+2026-03-15:
+  mrkivnv:
+  - imageadd: added new huddead and hudhcdead
+  - imagedel: deleted old huddead and hudhcdead
+2026-03-17:
+  MoondancerPony:
+  - bugfix: fixed reading papers inside folders
+  - spellcheck: fixed a few descriptions missing punctuation
+  Venuska1117:
+  - qol: Organizes Alien Tab, now verbs have categories for better visibility.
+  dawsonkeyes:
+  - rscadd: Staff may now send a Yautja Military Caste squad if they really, really
+      hate you
+  forest2001, DawsonKeyes:
+  - mapadd: Changed the Predship to Multi-Z.
+  - mapadd: Added a Hunter Shuttle.
+  - rscdel: Removed Predship Susbsystem as it is not required.
+  mrkivnv:
+  - rscadd: added new corporate bodyguard icons that depends on the rank status
+  - imageadd: bodyguard icons for TPPO, PPO, PPS, PPC
+2026-03-18:
+  TrollerNoob:
+  - ui: Toggle Ceiling Overlays action button now only appears when the Minimap is
+      actively open.
+  - rscadd: Xenos can now see the Minimap when the Queen is off her ovipositor, but
+      it will be a static version of the last Queen Minimap update. It returns to
+      live once the Queen is on ovi.
+  - qol: Queens on Ovi automatically have drawing tools available when opening their
+      Minimap.
+  - rscdel: Removed the Edit Minimap option from the Manage the Hive menu.
+  - bugfix: Fixed Minimaps not properly receiving updates from CIC.
+  - bugfix: Fixed Xenos being unable to see Queen drawings.
+  - bugfix: Fixed latejoin marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed spawned marine's minimaps not properly syncing with the last CIC
+      update.
+  - bugfix: Fixed live minimaps receiving drawing updates before the update was actually
+      sent.
+  - bugfix: Fixed Ceiling Overlays being applied when they were not toggled.
+  - bugfix: Removed the dim grey area outside the minimap when Ceiling Overlays were
+      toggled on.
+  forest2001, dimdimich1996:
+  - imageadd: Added new and updated sprites for Yautja related constructions and temples.
+  - maptweak: Adjusted existing temple areas on maps to accomodate sprite changes,
+      namely recolors and door orientation.
+2026-03-19:
+  Jesters-Ballad:
+  - balance: Combat Toolbelts may now hold nails.
+  halgmor:
+  - rscadd: HealthMate HUD added to the medic gear vendor.
+  - rscadd: Added static red headband option alongside a red headband (camo conforming)
+      version.
+2026-03-21:
+  MoondancerPony:
+  - bugfix: fixed an error when weeds covering a xenomorph corpse die
+  - bugfix: fixed neurotoxin dizziness cancelling binocular/zoom view offset
+  - bugfix: fixed deleted binoculars never un-zooming your view
+  - refactor: refactored plane render relay plate code to reduce overtime lag from
+      observing and changing mobs
+2026-03-24:
+  DangerRevolution:
+  - maptweak: Hybrisa Propsera, Chance's Claim, New Varadero and Tyrago Rift have
+      had Intel Terminals added to them. Shiva's Snowball has had one of the terminals
+      moved out of the South-East Hive location and instead south of Anti-Freeze Bar
+  - maptweak: Shifted Solaris' LZ1 Sentry Locations to prevent a Sentry spawning on
+      a container, and therefore being bugged inside it.
+  - maptweak: Removed a stray wall under a girder in the LV Destroyed Medbay variation.
+  ihatethisengine:
+  - balance: xenos get +1 second cooldown penalty for being interrupted mid building,
+      queen on boosted building gets +3 seconds penalty.
+  - code_imp: makes do_after check if the user or the target were qdeleted
+2026-03-25:
+  realforest2001:
+  - rscadd: Added landing lights to the ERT landing bays.
+  - imageadd: Added some mapicons for the different landing light delay settings to
+      make it easier to see what is what on the map.
+  - code_imp: Restructured the procs that toggle landing lights on and off for simplicity.
+2026-03-26:
+  Drathek:
+  - rscadd: Ever a shuttle fails to dock 5 times it will be sent to infinite transit
+      (null destination) so engines can recharge and it stops spamming
+  - bugfix: Shuttle computers for FTL/Crash only disable if they're for shipside shuttles
+  - bugfix: ERT shuttles now have FTL/Crash checking logic unlike before
+  - bugfix: 'Distress signals can now ignore FTL/Crashed checks: So now forsaken/hunting
+      grounds should be able to spawn again'
+  - bugfix: Pads now actually are deemed undockable shipside during FTL so other shuttles
+      cannot dock mid transit
+  - bugfix: Shuttles in transit to the ship now are returned to sender if FTL starts
+      charging
+  - bugfix: Dropships now reset autopilot on FTL start
+  - bugfix: Dropships and ERT shuttles now lift door lockdown on FTL/Crash since the
+      computer becomes uninteractable
+  - bugfix: Evac can be called when leaving FTL unintentionally (dropped out of warp)
+  - admin: Shuttle manipulator can fast recharge shuttles and can always use the Fly
+      action regardless of current shuttle state
+  - admin: Shuttle computers can be overriden to ignore ftl/crash checks via ignore_ftl_or_crash
+      bool
+  - code_imp: Tweaked SSmapping.levels_by_trait and SSmapping.level_trait logic
+  - code_imp: Disabled some unnecessary GetShuttle warnings for remote shuttle computers
+  - maptweak: Updated the FTL ground crash template to be faster to load and look
+      a bit nicer

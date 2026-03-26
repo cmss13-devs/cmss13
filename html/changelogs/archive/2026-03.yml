@@ -263,3 +263,27 @@
   - imageadd: Added some mapicons for the different landing light delay settings to
       make it easier to see what is what on the map.
   - code_imp: Restructured the procs that toggle landing lights on and off for simplicity.
+2026-03-26:
+  Drathek:
+  - rscadd: Ever a shuttle fails to dock 5 times it will be sent to infinite transit
+      (null destination) so engines can recharge and it stops spamming
+  - bugfix: Shuttle computers for FTL/Crash only disable if they're for shipside shuttles
+  - bugfix: ERT shuttles now have FTL/Crash checking logic unlike before
+  - bugfix: 'Distress signals can now ignore FTL/Crashed checks: So now forsaken/hunting
+      grounds should be able to spawn again'
+  - bugfix: Pads now actually are deemed undockable shipside during FTL so other shuttles
+      cannot dock mid transit
+  - bugfix: Shuttles in transit to the ship now are returned to sender if FTL starts
+      charging
+  - bugfix: Dropships now reset autopilot on FTL start
+  - bugfix: Dropships and ERT shuttles now lift door lockdown on FTL/Crash since the
+      computer becomes uninteractable
+  - bugfix: Evac can be called when leaving FTL unintentionally (dropped out of warp)
+  - admin: Shuttle manipulator can fast recharge shuttles and can always use the Fly
+      action regardless of current shuttle state
+  - admin: Shuttle computers can be overriden to ignore ftl/crash checks via ignore_ftl_or_crash
+      bool
+  - code_imp: Tweaked SSmapping.levels_by_trait and SSmapping.level_trait logic
+  - code_imp: Disabled some unnecessary GetShuttle warnings for remote shuttle computers
+  - maptweak: Updated the FTL ground crash template to be faster to load and look
+      a bit nicer

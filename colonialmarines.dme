@@ -792,7 +792,6 @@
 #include "code\datums\tutorial\ss13\_ss13.dm"
 #include "code\datums\tutorial\ss13\basic_ss13.dm"
 #include "code\datums\tutorial\ss13\intents.dm"
-#include "code\datums\tutorial\ss13\tutorial_debug.dm"
 #include "code\datums\tutorial\xenomorph\_xenomorph.dm"
 #include "code\datums\tutorial\xenomorph\abomination.dm"
 #include "code\datums\tutorial\xenomorph\xenomorph_basic.dm"

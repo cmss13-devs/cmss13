@@ -1045,7 +1045,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	H.unset_interaction()
 
 	H.alpha = camo_alpha
-	H.FF_hit_evade = 30
+	H.FF_hit_evade = 40
 	if(!allowed_stealth_shooting)
 		H.allow_gun_usage = allow_gun_usage
 

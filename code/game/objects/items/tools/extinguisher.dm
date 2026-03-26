@@ -96,54 +96,55 @@
 	))
 
 /obj/item/tool/extinguisher/attackby(obj/item/used_item, mob/user, params)
-	if(is_type_in_typecache(used_item, refill_sources))
-		if(!is_type_in_typecache(used_item, refill_excluded) && used_item != src)
-			if(used_item.reagents.get_reagent_amount("water") != used_item.reagents.total_volume)
-				to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
-				return
-			var/to_add = min(used_item.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
-			if(to_add > 0)
-				used_item.reagents.remove_reagent("water", to_add)
-				reagents.add_reagent("water", to_add)
-				to_chat(user, SPAN_NOTICE("[src] is now refilled."))
-				playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			else if(reagents.total_volume >= max_water)
-				to_chat(user, SPAN_WARNING("[src] is already full."))
-			else
-				to_chat(user, SPAN_WARNING("[used_item] doesn't have enough water."))
+	if(!is_type_in_typecache(used_item, refill_sources))
+		return ..()
+	if(is_type_in_typecache(used_item, refill_excluded) || used_item == src)
 		return
-	return ..()
+	if(used_item.reagents.get_reagent_amount("water") != used_item.reagents.total_volume)
+		to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
+		return
+	var/to_add = min(used_item.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
+	if(to_add > 0)
+		used_item.reagents.remove_reagent("water", to_add)
+		reagents.add_reagent("water", to_add)
+		to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+		playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
+	else if(reagents.total_volume >= max_water)
+		to_chat(user, SPAN_WARNING("[src] is already full."))
+	else
+		to_chat(user, SPAN_WARNING("[used_item] doesn't have enough water."))
 
-/obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
+/obj/item/tool/extinguisher/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(is_type_in_typecache(target, refill_sources))
-		if(!is_type_in_typecache(target, refill_excluded) && target != src)
-			if(!target.Adjacent(user))
+		if(is_type_in_typecache(target, refill_excluded) || target == src)
+			return
+		if(!proximity_flag)
+			return
+		if(istype(target, /obj/structure/sink))
+			var/obj/structure/sink/target_sink = target
+			if(target_sink.busy)
 				return
-			if(istype(target, /obj/structure/sink))
-				var/obj/structure/sink/target_sink = target
-				if(target_sink.busy)
-					return
-				var/to_add = max_water - reagents.total_volume
-				if(to_add > 0)
-					reagents.add_reagent("water", to_add)
-					to_chat(user, SPAN_NOTICE("[src] is now refilled."))
-					playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
-				else
-					to_chat(user, SPAN_WARNING("[src] is already full."))
-				return
-			if(target.reagents.get_reagent_amount("water") != target.reagents.total_volume)
-				to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
-				return
-			var/to_add = min(target.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
+			var/to_add = max_water - reagents.total_volume
 			if(to_add > 0)
-				target.reagents.remove_reagent("water", to_add)
 				reagents.add_reagent("water", to_add)
 				to_chat(user, SPAN_NOTICE("[src] is now refilled."))
 				playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			else if(reagents.total_volume >= max_water)
-				to_chat(user, SPAN_WARNING("[src] is already full."))
 			else
-				to_chat(user, SPAN_WARNING("[target] doesn't have enough water."))
+				to_chat(user, SPAN_WARNING("[src] is already full."))
+			return
+		if(target.reagents.get_reagent_amount("water") != target.reagents.total_volume)
+			to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
+			return
+		var/to_add = min(target.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
+		if(to_add > 0)
+			target.reagents.remove_reagent("water", to_add)
+			reagents.add_reagent("water", to_add)
+			to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+			playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		else if(reagents.total_volume >= max_water)
+			to_chat(user, SPAN_WARNING("[src] is already full."))
+		else
+			to_chat(user, SPAN_WARNING("[target] doesn't have enough water."))
 		return
 
 	if(safety || (!isturf(target) && !isturf(target.loc)))

@@ -427,6 +427,8 @@
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
+#define WALL_ANCIENT_BASE "ancient_stone"
+#define WALL_RUNEDSTONE "runedstone"
 #define WALL_NEW_VARADERO "new_varadero"
 #define WALL_NEW_VARADERO_REINFORCED "new_varadero_r"
 #define WALL_CONCRETE "concrete"

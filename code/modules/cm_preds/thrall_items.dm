@@ -10,7 +10,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
-	thrall = TRUE
+	random_icon = FALSE
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -57,7 +57,7 @@
 	item_icons = list(
 		WEAR_FEET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
-	thrall = TRUE
+	random_icon = FALSE
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,

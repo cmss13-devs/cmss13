@@ -1,32 +1,79 @@
-/datum/xeno_strain/boxer
+/datum/caste_datum/boxer
+	caste_type = XENO_CASTE_BOXER
+	tier = 2
 
-	name = WARRIOR_YUJI
-	description = "BLACK FLASH!!!!!!!!!!!!!!!!!!"
-	icon_state_prefix = "Boxer"
-	actions_to_remove = list(
-		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling,
-		/datum/action/xeno_action/activable/warrior_punch,
-	)
-	actions_to_add = list(
+	melee_damage_lower = XENO_DAMAGE_TIER_3
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_vehicle_damage = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_8
+	plasma_gain = XENO_PLASMA_GAIN_TIER_9
+	plasma_max = XENO_NO_PLASMA
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
+	armor_deflection = XENO_ARMOR_TIER_3
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_TIER_7
+
+	behavior_delegate_type = /datum/behavior_delegate/boxer_base
+
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
+	deevolves_to = list(XENO_CASTE_DEFENDER)
+	caste_desc = "A powerful front line combatant."
+	can_vent_crawl = 0
+
+	tackle_min = 2
+	tackle_max = 4
+
+	agility_speed_increase = -0.9
+
+	heal_resting = 1.4
+
+	minimum_evolve_time = 9 MINUTES
+
+	minimap_icon = "boxer"
+
+
+/mob/living/carbon/xenomorph/boxer
+	caste_type = XENO_CASTE_BOXER
+	name = XENO_CASTE_BOXER
+	desc = "Thats just a guy with pink hair."
+	icon = 'icons/mob/xenos/castes/tier_2/boxer.dmi'
+	icon_size = 64
+	icon_state = "Yuji Itadori Walking"
+	plasma_types = list(PLASMA_CHITIN)
+	pixel_x = -16
+	old_x = -16
+	tier = 2
+	pull_speed = 2 // about what it was before, slightly faster
+	organ_value = 2000
+	base_actions = list(
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/boxer_punch,
 		/datum/action/xeno_action/activable/jab,
 		/datum/action/xeno_action/activable/uppercut,
 	)
 
+	claw_type = CLAW_TYPE_SHARP
 
-	behavior_delegate_type = /datum/behavior_delegate/boxer
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/boxer.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/warrior.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
+	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
 
-/datum/xeno_strain/boxer/apply_strain(mob/living/carbon/xenomorph/warrior/warrior)
+	skull = /obj/item/skull/warrior
+	pelt = /obj/item/pelt/warrior
 
-	warrior.health_modifier += XENO_HEALTH_MOD_MED
-	warrior.armor_modifier += XENO_ARMOR_MOD_SMALL
-	warrior.recalculate_everything()
+	slash_sound = 'sound/weapons/punch1.ogg'
+	slash_verb = "punch"
+	slashes_verb = "punches"
+	speaking_noise = "yuji_talk"
 
-/datum/behavior_delegate/boxer
+/datum/behavior_delegate/boxer_base
 
-	name = "Boxer Warrior Behavior Delegate"
+	name = "Base Boxer Behavior Delegate"
 
 	var/ko_delay = 5 SECONDS
 	var/max_clear_head = 3
@@ -43,29 +90,27 @@
 	var/image/ko_icon
 	var/image/big_ko_icon
 
-/datum/behavior_delegate/boxer/New()
+/datum/behavior_delegate/boxer_base/New()
 	. = ..()
 	if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_XVX))
 		clear_head = 0
 		max_clear_head = 0
 
 
-/datum/behavior_delegate/boxer/append_to_stat()
+/datum/behavior_delegate/boxer_base/append_to_stat()
 	. = list()
 	if(punching_bag)
 		. +=  "Beating [punching_bag] - [ko_counter] hits"
 
 	. += "Clarity [clear_head] hits"
 
-
-
-/datum/behavior_delegate/boxer/on_life()
+/datum/behavior_delegate/boxer_base/on_life()
 	var/world_time = world.time
 	if(world_time > next_clear_head_regen && clear_head < max_clear_head)
 		clear_head++
 		next_clear_head_regen = world_time+ clear_head_delay
 
-/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/carbon_target, ko_boost = 0.5)
+/datum/behavior_delegate/boxer_base/melee_attack_additional_effects_target(mob/living/carbon/carbon_target, ko_boost = 0.5)
 
 	if(!ismob(carbon_target))
 		return
@@ -91,14 +136,14 @@
 	ko_reset_timer = addtimer(CALLBACK(src, PROC_REF(remove_ko)), ko_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_NO_HASH_WAIT | TIMER_STOPPABLE)
 
 
-/datum/behavior_delegate/boxer/proc/remove_ko()
+/datum/behavior_delegate/boxer_base/proc/remove_ko()
 	punching_bag = null
 	ko_counter = 0
 	if(bound_xeno.client && ko_icon)
 		bound_xeno.client.images -= ko_icon
 	ko_icon = null
 
-/datum/behavior_delegate/boxer/proc/display_ko_message(mob/carbon_target)
+/datum/behavior_delegate/boxer_base/proc/display_ko_message(mob/carbon_target)
 
 	big_ko_icon = image(null, carbon_target)
 	big_ko_icon.alpha = 196
@@ -111,165 +156,152 @@
 	bound_xeno.client.images += big_ko_icon
 	addtimer(CALLBACK(src, PROC_REF(remove_big_ko)), 2 SECONDS)
 
-/datum/behavior_delegate/boxer/proc/remove_big_ko()
+/datum/behavior_delegate/boxer_base/proc/remove_big_ko()
 	if(bound_xeno.client && big_ko_icon)
 		bound_xeno.client.images -= big_ko_icon
 	big_ko_icon = null
 
 
-/mob/living/carbon/xenomorph/warrior/Daze(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
+	///BOXER CLARITY STUFF GOES HERE
 
-/mob/living/carbon/xenomorph/warrior/SetDaze(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
-
-/mob/living/carbon/xenomorph/warrior/AdjustDaze(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
-
-/mob/living/carbon/xenomorph/warrior/KnockDown(amount, forced)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
-
-/mob/living/carbon/xenomorph/warrior/SetKnockDown(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
+/mob/living/carbon/xenomorph/boxer/Daze(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
 
 
-/mob/living/carbon/xenomorph/warrior/AdjustKnockDown(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
+/mob/living/carbon/xenomorph/boxer/SetDaze(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
 
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
-
-/mob/living/carbon/xenomorph/warrior/Stun(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
-
-/mob/living/carbon/xenomorph/warrior/SetStun(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
-
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
 
 
-/mob/living/carbon/xenomorph/warrior/AdjustStun(amount)
-	if(istype(strain, /datum/xeno_strain/boxer))
-		var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
-		if(istype(behavior_delegate, boxer_delegate))
-			if(boxer_delegate.clear_head <= 0)
-				..(amount)
-				return
-			if(boxer_delegate.clear_head_tickcancel == world.time)
-				return
+/mob/living/carbon/xenomorph/boxer/AdjustDaze(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
 
-			boxer_delegate.clear_head_tickcancel = world.time
-			boxer_delegate.clear_head--
-			if(boxer_delegate.clear_head <= 0)
-				boxer_delegate.clear_head = 0
-	else
-		return ..()
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+/mob/living/carbon/xenomorph/boxer/KnockDown(amount, forced)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+/mob/living/carbon/xenomorph/boxer/SetKnockDown(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+
+/mob/living/carbon/xenomorph/boxer/AdjustKnockDown(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+/mob/living/carbon/xenomorph/boxer/Stun(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+/mob/living/carbon/xenomorph/boxer/SetStun(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+
+/mob/living/carbon/xenomorph/boxer/AdjustStun(amount)
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = behavior_delegate
+	if(istype(behavior_delegate, boxer_delegate))
+		if(boxer_delegate.clear_head <= 0)
+			..(amount)
+			return
+		if(boxer_delegate.clear_head_tickcancel == world.time)
+			return
+
+		boxer_delegate.clear_head_tickcancel = world.time
+		boxer_delegate.clear_head--
+		if(boxer_delegate.clear_head <= 0)
+			boxer_delegate.clear_head = 0
+
+
+///boxer clarity end
+
 
 /datum/action/xeno_action/activable/boxer_punch
 
@@ -366,7 +398,7 @@
 	step_away(carbon, boxer)
 	if(prob(25)) // 25% chance to fly 2 tiles
 		step_away(carbon, boxer)
-	var/datum/behavior_delegate/boxer/boxer_delegate = boxer.behavior_delegate
+	var/datum/behavior_delegate/boxer_base/boxer_delegate = boxer.behavior_delegate
 	if(istype(boxer_delegate))
 		boxer_delegate.melee_attack_additional_effects_target(carbon, 1)
 
@@ -427,7 +459,7 @@
 	carbon_target.Daze(3)
 	carbon_target.Slow(5)
 
-	var/datum/behavior_delegate/boxer/behavior_delegate = boxer_jab.behavior_delegate
+	var/datum/behavior_delegate/boxer_base/behavior_delegate = boxer_jab.behavior_delegate
 	if(istype(behavior_delegate))
 		behavior_delegate.melee_attack_additional_effects_target(carbon_target, 1)
 	apply_cooldown()
@@ -443,7 +475,7 @@
 	if(!upper_cut.check_state())
 		return
 
-	var/datum/behavior_delegate/boxer/behavior_delegate = upper_cut.behavior_delegate
+	var/datum/behavior_delegate/boxer_base/behavior_delegate = upper_cut.behavior_delegate
 
 	if(!istype(behavior_delegate))
 		return

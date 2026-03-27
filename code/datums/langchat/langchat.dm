@@ -10,6 +10,7 @@
 /mob/living/carbon/xenomorph/hivelord/langchat_height = 64
 /mob/living/carbon/xenomorph/defender/langchat_height = 48
 /mob/living/carbon/xenomorph/warrior/langchat_height = 48
+/mob/living/carbon/xenomorph/boxer/langchat_height = 48
 /mob/living/carbon/xenomorph/king/langchat_height = 64
 /mob/living/carbon/xenomorph/despoiler/langchat_height = 64
 

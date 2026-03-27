@@ -636,6 +636,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
 			M = /mob/living/carbon/xenomorph/warrior
+		if(XENO_CASTE_BOXER)
+			M = /mob/living/carbon/xenomorph/boxer
 		if(XENO_CASTE_DEFENDER)
 			M = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_QUEEN)

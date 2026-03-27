@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 
 /obj/item/map/sorokyne_map
 	name = "\improper Sorokyne Strata map"
-	desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
+	desc = "A map of the UPP colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
 

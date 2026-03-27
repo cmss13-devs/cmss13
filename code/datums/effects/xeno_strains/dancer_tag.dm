@@ -41,11 +41,10 @@
 
 	if(ishuman(affected_atom))
 		target_human.update_xeno_hostile_hud()
-
-	if(spread)
-		to_chat(target_human, SPAN_XENODANGER("You calm down and get back to your senses."))
-		to_chat(source_xeno, SPAN_XENODANGER("Our surging instincts fade away, we no longer feel compelled to hunt them."))
-		spread = FALSE
+		if(spread)
+			to_chat(target_human, SPAN_XENODANGER("You calm down and get back to your senses."))
+			to_chat(source_xeno, SPAN_XENODANGER("Our surging instincts fade away, we no longer feel compelled to hunt them."))
+			spread = FALSE
 
 	return ..()
 

@@ -37,9 +37,8 @@
 
 
 /datum/effects/dancer_tag/Destroy()
-	var/mob/living/carbon/human/target_human = affected_atom
-
 	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/target_human = affected_atom
 		target_human.update_xeno_hostile_hud()
 		if(spread)
 			to_chat(target_human, SPAN_XENODANGER("You calm down and get back to your senses."))

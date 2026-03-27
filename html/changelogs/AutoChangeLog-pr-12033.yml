@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - spellcheck: "Reset key descriptions now say they must be recharged instead of reset after use to clear up a misconception"

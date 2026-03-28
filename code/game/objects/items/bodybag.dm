@@ -307,7 +307,10 @@
 	. = ..()
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/human in loc)
-		if(human.buckled || (human.stat == DEAD))
+		if(human.buckled)
+			continue
+		if(human.stat == DEAD && !(locate(/obj/item/alien_embryo) in human))
+			visible_message(SPAN_WARNING("\The [src] cannot store an uninfected corpse."))
 			continue
 		mobs_can_store += human
 	if(length(mobs_can_store))
@@ -334,6 +337,8 @@
 		open()
 		return
 	if(stasis_mob.stat == DEAD)// || !stasis_mob.key || !stasis_mob.client) // stop using cryobags for corpses and SSD/Ghosted
+		if(locate(/obj/item/alien_embryo) in stasis_mob) // infected, hold in stasis
+			return
 		STOP_PROCESSING(SSobj, src)
 		open()
 		visible_message(SPAN_NOTICE("\The [src] rejects the corpse."))

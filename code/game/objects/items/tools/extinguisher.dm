@@ -118,7 +118,7 @@
 	if(is_type_in_typecache(target, refill_sources))
 		if(is_type_in_typecache(target, refill_excluded) || target == src)
 			return
-		if(!proximity_flag)
+		if(!target.Adjacent(user))
 			return
 		if(istype(target, /obj/structure/sink))
 			var/obj/structure/sink/target_sink = target

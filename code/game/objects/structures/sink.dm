@@ -55,7 +55,7 @@
 
 
 /obj/structure/sink/attackby(obj/item/attacking_item, mob/living/user, list/mods)
-	if(istype(attacking_item, /obj/item/tool/extinguisher))
+	if(istype(attacking_item, /obj/item/tool/extinguisher) || istype(attacking_item, /obj/item/attachable/attached_gun/extinguisher))
 		return
 
 	if(busy)

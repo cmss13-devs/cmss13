@@ -380,6 +380,8 @@
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
 		view_tacmaps()
+	if(href_list[NOTIFY_HUMAN_HUD_ORDER])
+		play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)

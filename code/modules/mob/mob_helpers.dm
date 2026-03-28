@@ -594,6 +594,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if (source && action == NOTIFY_JUMP)
 		var/turf/T = get_turf(source)
 		track_link = " <a href='byond://?src=[REF(src)];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>(Jump)</a>"
+	if (source && action == NOTIFY_HUMAN_HUD_ORDER) //command_alert.dm
+		track_link = " <a href='byond://?src=[REF(src)];[NOTIFY_HUMAN_HUD_ORDER]=1;'>(Jump)</a>"
 	var/full_enter_link
 	if (enter_link)
 		full_enter_link = "<a href='byond://?src=[REF(src)];[enter_link]'>[(enter_text) ? "[enter_text]" : "(Claim)"]</a>"

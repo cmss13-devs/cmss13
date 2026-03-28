@@ -1,4 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - bugfix: "sorokyne strata map now properly calls the colony a UPP colony"

@@ -293,3 +293,6 @@
       after use to clear up a misconception
   Detective-Google:
   - bugfix: WYC6 Executive supervisor paygrade fixed
+2026-03-28:
+  ori-disillusion-mirnov:
+  - bugfix: sorokyne strata map now properly calls the colony a UPP colony

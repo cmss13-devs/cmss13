@@ -1309,6 +1309,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Medic Patch"
 	path = /obj/item/clothing/accessory/patch/medic_patch
 
+/datum/gear/civilian/patch/wypatch
+	display_name = "Weyland-Yutani patch"
+	path = /obj/item/clothing/accessory/patch/wy
+
 // Re-added some less lore conflicting patches back into civilian's gear
 
 ///Commented out until we have a factional system to restrict these properly

@@ -755,6 +755,7 @@
 	helmet_type = null
 	mask_type = null
 	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/synth
+	uses_special_name = TRUE
 
 /datum/equipment_preset/cia_global_response/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -838,6 +839,14 @@
 
 /datum/equipment_preset/cia_global_response/synth/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+
+/datum/equipment_preset/cia_global_response/synth/weak/survivor/load_name(mob/living/carbon/human/new_human, randomise)
+	var/final_name = "Alberto"
+	if(new_human.client && new_human.client.prefs)
+		final_name = new_human.client.prefs.synthetic_name
+		if(!final_name || final_name == "Undefined")
+			final_name = "Alberto"
+	new_human.change_real_name(new_human, final_name)
 
 
 #undef STRENGTH_NORM

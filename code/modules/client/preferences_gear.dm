@@ -1298,6 +1298,27 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
+
+/datum/gear/civilian/patch
+	display_name = "Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/freelancer_patch
+	fluff_cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/mercpatch
+	display_name = "Old Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/merc_patch
+
+/datum/gear/civilian/patch/medipatch
+	display_name = "Medic Patch"
+	path = /obj/item/clothing/accessory/patch/medic_patch
+
+/datum/gear/civilian/patch/wypatch
+	display_name = "Weyland-Yutani patch"
+	path = /obj/item/clothing/accessory/patch/wy
+
+// Re-added some less lore conflicting patches back into civilian's gear
+
 ///Commented out until we have a factional system to restrict these properly
 // /datum/gear/civilian/patch
 // 	display_name = "Weyland-Yutani shoulder patch, black"

@@ -18,8 +18,8 @@
 		/datum/xeno_strain/designer,
 	)
 
-	evolution_allowed = FALSE
 	caste_desc = "For all your resin needs."
+	early_evolves_to = list(XENO_CASTE_DESPOILER, XENO_CASTE_RAVAGER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_BOILER)
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS

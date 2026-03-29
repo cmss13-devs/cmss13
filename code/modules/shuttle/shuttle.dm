@@ -202,6 +202,7 @@
 
 	var/datum/map_template/shuttle/roundstart_template
 	var/json_key
+	var/disabled = FALSE
 	var/list/landing_lights = list()
 	var/landing_lights_on = FALSE
 
@@ -416,6 +417,7 @@
 	var/crashing = FALSE
 
 	var/shuttle_flags = NONE
+	var/dock_failures = 0
 
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
 #define WORLDMAXY_CUTOFF (world.maxx + 1)
@@ -580,6 +582,9 @@
 	if(!istype(S))
 		return SHUTTLE_NOT_A_DOCKING_PORT
 
+	if(S.disabled)
+		return SHUTTLE_DOCK_DISABLED
+
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK
 
@@ -630,7 +635,7 @@
 	set_idle()
 
 //call the shuttle to destination S
-/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
+/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S, force)
 	if(!check_dock(S))
 		WARNING("check_dock failed on request for [src]")
 		return
@@ -660,6 +665,11 @@
 			setTimer(ignitionTime)
 		else
 			stack_trace("Called request() with mode: [mode].")
+			if(force)
+				destination = S
+				set_mode(SHUTTLE_IGNITING)
+				on_ignition()
+				setTimer(ignitionTime)
 
 // called on entering the igniting state
 /obj/docking_port/mobile/proc/on_ignition()

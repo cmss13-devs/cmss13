@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added landing lights to the ERT landing bays."
-  - imageadd: "Added some mapicons for the different landing light delay settings to make it easier to see what is what on the map."
-  - code_imp: "Restructured the procs that toggle landing lights on and off for simplicity."

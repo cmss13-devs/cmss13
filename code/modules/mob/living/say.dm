@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			type = MESSAGE_TYPE_ADMINPM,
 			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
 			)
-		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
+		SEND_SOUND(user, sound('sound/effects/adminhelp-bwoink.ogg'))
 		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
 		return FALSE
 

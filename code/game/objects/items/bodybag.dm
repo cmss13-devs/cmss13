@@ -336,7 +336,7 @@
 		STOP_PROCESSING(SSobj, src)
 		open()
 		return
-	if(stasis_mob.stat == DEAD)// || !stasis_mob.key || !stasis_mob.client) // stop using cryobags for corpses and SSD/Ghosted
+	if(stasis_mob.stat == DEAD)
 		if(locate(/obj/item/alien_embryo) in stasis_mob) // infected, hold in stasis
 			return
 		STOP_PROCESSING(SSobj, src)

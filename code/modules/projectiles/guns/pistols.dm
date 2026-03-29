@@ -416,7 +416,7 @@
 
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
-	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil sping, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil spring, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
@@ -615,7 +615,7 @@
 
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersome and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "highpower"
 	item_state = "highpower"
@@ -712,7 +712,7 @@
 //unimplemented
 /obj/item/weapon/gun/pistol/highpower/tactical
 	name = "\improper MK-44 SOCOM Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersome and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
 	current_mag = /obj/item/ammo_magazine/pistol/highpower/black
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"

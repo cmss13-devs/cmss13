@@ -7,6 +7,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
+	ignore_ftl_or_crash = TRUE
 	/// Multiplier on the base RESERVE_HUNT_COOLDOWN when a given ERT is selected; 1 is no change.
 	var/timer_mult = 1
 	var/hunt_name
@@ -87,13 +88,13 @@
 		var/list/hunted_types = list(/datum/equipment_preset/pmc/pmc_standard/hunted, /datum/equipment_preset/pmc/pmc_medic/hunted, /datum/equipment_preset/pmc/technician/hunted, /datum/equipment_preset/goon/standard/hunted, /datum/equipment_preset/goon/lead/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
-		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched infront of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
+		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched in front of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
 	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
 		misc++
 		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
-		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. Its time to put your survival skills to the test."))
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
 	else
 		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
 		var/hunted_type = pick(hunted_types)
@@ -309,6 +310,7 @@
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/young_bloods/New()
 	. = ..()

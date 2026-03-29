@@ -112,11 +112,11 @@
 
 	var/static/list/options = list(
 		"Optimized Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_speednode"),
-		"Construct Node (70)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
+		"Construct Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
 		"Thicken Resin (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
 		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
-		"Remove Node (25)" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
-		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
+		"Remove Node" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
+		"Flexible Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
 	)
 
 	var/choice
@@ -132,17 +132,17 @@
 		if("Optimized Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/speed_node
 			des = TRUE
-		if("Flexible Node (60)")
+		if("Flexible Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/cost_node
 			des = TRUE
-		if("Construct Node (70)")
+		if("Construct Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
 			des = TRUE
 		if("Thicken Resin (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/upgrade_mouse.dmi')
 			rem = TRUE
-		if("Remove Node (25)")
+		if("Remove Node")
 			xeno.selected_design = /obj/effect/alien/resin/design/remove
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/remove_mouse.dmi')
 			rem = TRUE
@@ -836,9 +836,9 @@
 //-----// Design Cost Node //-----//
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Flexible Design Node (60)"
+	name = "Flexible Design Node (50)"
 	icon_state = "static_costnode"
-	plasma_cost = 60
+	plasma_cost = 50
 
 /obj/effect/alien/resin/design/cost_node/refresh_marker()
 	if(!chosenMark || !mark_meaning)
@@ -864,9 +864,9 @@
 //-----// Design Construct Node //-----//
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Construct Design Node (70)"
+	name = "Construct Design Node (50)"
 	icon_state = "static_constructnode"
-	plasma_cost = 70
+	plasma_cost = 50
 	/// Amount of plasma to donate when interacting with node.
 	var/plasma_donation = 70
 	/// Check if node is currently building something.
@@ -1401,8 +1401,8 @@
 	plasma_cost = 60
 
 /obj/effect/alien/resin/design/remove
-	name = "Remove Design Node (25)"
+	name = "Remove Design Node"
 	desc = "Channel our plasma to revert design node back to weeds."
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "remove_node"
-	plasma_cost = 25
+	plasma_cost = 0

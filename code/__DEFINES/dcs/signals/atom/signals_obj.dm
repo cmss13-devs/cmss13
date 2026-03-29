@@ -2,6 +2,20 @@
 // Sent after the limb has taken damage
 #define COMSIG_LIMB_TAKEN_DAMAGE "limb_taken_damage"
 
+// From /datum/surgery_step/tend_wounds/success()
+// Sent to command the limb's suture datum to add sutures, NOT when sutures are added.
+#define COMSIG_LIMB_ADD_SUTURES "limb_add_sutures"
+// Sent to check if the limb can be sutured.
+#define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
+// Sent to remove all sutures.
+#define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
+
+/// from /obj/limb/proc/remove_all_bleeding() : (external, internal)
+#define COMSIG_LIMB_STOP_BLEEDING "limb_stop_bleeding"
+
+/// From /datum/surgery_step/proc/success() : (obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
+#define COMSIG_LIMB_SURGERY_STEP_SUCCESS "limb_surgery_step_success"
+
 // From /datum/effects/bleeding/internal/process_mob() and /datum/effects/bleeding/external/process_mob()
 #define COMSIG_BLEEDING_PROCESS "bleeding_process"
 	#define COMPONENT_BLEEDING_CANCEL (1<<0)
@@ -52,9 +66,6 @@
 
 /// from /proc/vendor_successful_vend() : (obj/structure/machinery/cm_vending/vendor, list/itemspec, mob/living/carbon/human/user)
 #define COMSIG_VENDOR_SUCCESSFUL_VEND "vendor_successful_vend"
-
-/// from /obj/limb/proc/remove_all_bleeding() : (external, internal)
-#define COMSIG_LIMB_STOP_BLEEDING "limb_stop_bleeding"
 
 #define COMSIG_DROPSHIP_ADD_EQUIPMENT "dropship_add_equipment"
 #define COMSIG_DROPSHIP_REMOVE_EQUIPMENT "dropship_remove_equipment"

@@ -92,14 +92,14 @@
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
+	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && SSticker.mode.evolution_ovipositor_threshold)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
 	if(!filter_message(src, message))
 		return
 
-	log_hivemind("[key_name(src)] : [message]")
+	log_hivemind("[key_name(src)] : [message] (AREA: [get_area_name(loc)])")
 
 	var/track = ""
 	var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
@@ -121,7 +121,7 @@
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
 					if(isqueen(src))
-						var/mob/hologram/queen/queen_eye = client?.eye
+						var/mob/hologram/queen/queen_eye = client?.get_eye()
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
 						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")

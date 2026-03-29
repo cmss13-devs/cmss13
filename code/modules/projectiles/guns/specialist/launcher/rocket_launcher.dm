@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/launcher/rocket
 	name = "\improper common rocket launcher ancestor"
-	desc = "You should not be seeing this"
+	desc = "You should not be seeing this."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"
@@ -153,6 +153,7 @@
 			rocket.forceMove(src)
 			replace_ammo(,rocket)
 			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
+			update_icon()
 			if(reload_sound)
 				playsound(user, reload_sound, 25, 1)
 			else
@@ -165,6 +166,7 @@
 		current_mag = rocket
 		rocket.forceMove(src)
 		replace_ammo(,rocket)
+		update_icon()
 	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
@@ -182,6 +184,7 @@
 			SPAN_NOTICE("You unload [ammo] from [src]."))
 			make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
+			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
@@ -217,6 +220,18 @@
 /obj/item/weapon/gun/launcher/rocket/m5
 	name = "\improper M5 RPG"
 	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	map_specific_decoration = TRUE
+	has_empty_icon = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
+	attachable_allowed = list()
+
+/obj/item/weapon/gun/launcher/rocket/m5/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
+/obj/item/weapon/gun/launcher/rocket/m5/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	update_icon()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
@@ -263,6 +278,10 @@
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED
 
+/obj/item/weapon/gun/launcher/rocket/anti_tank/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
@@ -271,7 +290,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
 	name = "\improper M83A2 SADAR"
-	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
+	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip. It is sighted and fired from the shoulder."
 	var/fired = FALSE
 	can_be_reloaded = FALSE
 
@@ -377,6 +396,10 @@
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
+/obj/item/weapon/gun/launcher/rocket/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
 
@@ -409,7 +432,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/brute
 	name = "\improper M6H-BRUTE launcher system"
-	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
+	desc = "Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
@@ -423,9 +446,12 @@
 	var/f_aiming_time = 4 SECONDS
 	var/aiming = FALSE
 
+/obj/item/weapon/gun/launcher/rocket/brute/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/rocket/brute/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 17, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

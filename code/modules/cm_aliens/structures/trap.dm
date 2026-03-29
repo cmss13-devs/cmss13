@@ -224,7 +224,7 @@
 		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!xeno.try_fill_trap(src))
+	if(xeno.try_fill_trap(src))
 		return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/trap/proc/setup_tripwires()

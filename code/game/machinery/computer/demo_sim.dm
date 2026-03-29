@@ -40,7 +40,7 @@
 /obj/structure/machinery/computer/demo_sim/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "DemoSim", "[src.name]")
+		ui = new(user, src, "DemoSim", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/demo_sim/ui_state(mob/user) // we gotta do custom shit here so that it always closes instead of suspending

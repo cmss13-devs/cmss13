@@ -434,7 +434,7 @@
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
-				if(target_area.flags_area & AREA_NOTUNNEL)
+				if(target_area.flags_area & AREA_NOBURROW)
 					failed = TRUE
 					break
 				for(var/obj/structure/struct in turf_to_check)
@@ -471,41 +471,10 @@
 	radial_icon = "shield"
 
 /datum/hivebuff/fire/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	if(!xeno.caste)
-		return
-
-	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
-		RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-
-	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
-
+	xeno.fire_immunity |= FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_IGNORE_PEN
 
 /datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
-		UnregisterSignal(xeno, COMSIG_LIVING_PREIGNITION)
-	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		UnregisterSignal(xeno, list(
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED
-			))
-
-/datum/hivebuff/fire/proc/flamer_crossed_immune(mob/living/living, datum/reagent/reagent)
-	SIGNAL_HANDLER
-
-	if(reagent.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-
-
-/datum/hivebuff/fire/proc/fire_immune(mob/living/living)
-	SIGNAL_HANDLER
-
-	if(living.fire_reagent?.fire_penetrating && !HAS_TRAIT(living, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
+	xeno.fire_immunity = initial(xeno.fire_immunity)
 
 /datum/hivebuff/adaptability
 	name = "Boon of Adaptability"
@@ -531,7 +500,7 @@
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5 for 5 minutes"
+	desc = "Increases all xenomorph damage by 5 for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with sharp claws."
@@ -549,7 +518,7 @@
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10 for 10 minutes"
+	desc = "Increases all xenomorph damage by 10 for 10 minutes."
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."
@@ -565,3 +534,30 @@
 /datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	xeno.recalculate_damage()
+
+
+/datum/hivebuff/boost_structure
+	name = "Boon of Fortification"
+	desc = "Gives buffs out to all the structures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	tier = HIVEBUFF_TIER_MINOR
+
+	engage_flavourmessage = "The resin starts moving and shifting..."
+	duration = 5 MINUTES
+	number_of_required_pylons = 1
+	cost = 1
+	radial_icon = "building"
+
+/datum/hivebuff/boost_structure/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	var/hive_purchaser = hive.hivenumber
+
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BOOST_XENOMORPH_WALLS, hive_purchaser)
+
+/datum/hivebuff/boost_structure/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	var/hive_purchaser = hive.hivenumber
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, hive_purchaser)

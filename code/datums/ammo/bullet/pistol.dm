@@ -120,7 +120,7 @@
 
 /datum/ammo/bullet/pistol/heavy/highimpact
 	name = "high-impact pistol bullet"
-	debilitate = list(0,0.2,0,0,0,1,0,0)
+	debilitate = list(0,1,0,0,0,1,0,0)
 
 /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	name = "high-impact armor-piercing pistol bullet"
@@ -130,6 +130,9 @@
 /datum/ammo/bullet/pistol/heavy/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
+/datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle //Commander's variant
 	name = ".50 heavy pistol bullet"
@@ -260,6 +263,13 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/pistol/squash/heap
+	name = "high-explosive armor-piercing pistol bullet"
+
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_10
+
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"
 	damage_type = BURN
@@ -302,3 +312,21 @@
 
 /datum/ammo/bullet/pistol/l54_custom
 	penetration= ARMOR_PENETRATION_TIER_3
+
+// Used by M10 Auto-Pistol
+
+/datum/ammo/bullet/pistol/m10
+	name = "auto-pistol bullet"
+	damage = 24
+	accurate_range = 2
+	effective_range_max = 3
+	penetration = ARMOR_PENETRATION_TIER_1
+	shell_speed = AMMO_SPEED_TIER_5
+	damage_falloff = DAMAGE_FALLOFF_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_5
+	accuracy = HIT_ACCURACY_TIER_3
+
+/datum/ammo/bullet/pistol/m10/ap
+	name = "armor-piercing auto-pistol bullet"
+	damage = 18
+	penetration = ARMOR_PENETRATION_TIER_6

@@ -135,7 +135,7 @@
 		return
 
 	else if(istype(W, /obj/item/weapon/zombie_claws))
-		open()
+		open(user)
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
@@ -164,22 +164,21 @@
 
 /obj/structure/closet/bodybag/attack_hand(mob/living/user)
 	if(!opened)
+		if(open_cooldown > world.time)
+			to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
+			return
 		open_cooldown = world.time + 10 //1s cooldown for opening and closing, stop that spam! - stan_albatross
-	if(opened && open_cooldown > world.time)
-		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
-		return
-	user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 	. = ..()
 
 
-/obj/structure/closet/bodybag/close()
+/obj/structure/closet/bodybag/close(mob/user)
 	if(..())
 		density = FALSE
 		update_name()
 		return 1
 	return 0
 
-/obj/structure/closet/bodybag/open()
+/obj/structure/closet/bodybag/open(mob/user, force)
 	. = ..()
 	update_name()
 
@@ -286,7 +285,14 @@
 
 		overlays |= holo_card_icon
 
-/obj/structure/closet/bodybag/cryobag/open()
+/obj/structure/closet/bodybag/cryobag/attack_hand(mob/living/user)
+	if(!opened && stasis_mob && open_cooldown <= world.time)
+		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
+		user.attack_log += text("\[[time_stamp()]\] opened stasis bag containing <b>[key_name(stasis_mob)]</b> at [get_area(src)] ([loc.x],[loc.y],[loc.z])")
+		stasis_mob.attack_log += text("\[[time_stamp()]\] had their stasis bag opened by <b>[key_name(user)]</b> at [get_area(src)] ([loc.x],[loc.y],[loc.z])")
+	. = ..()
+
+/obj/structure/closet/bodybag/cryobag/open(mob/user, force)
 	. = ..()
 	if(stasis_mob)
 		stasis_mob.in_stasis = FALSE

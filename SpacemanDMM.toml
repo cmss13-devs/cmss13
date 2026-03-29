@@ -14,3 +14,4 @@ engine = "auxtools"
 [diagnostics]
 var_in_proc_parameter = "error"
 redefined_proc = "warning"
+override_precedes_definition = "error"

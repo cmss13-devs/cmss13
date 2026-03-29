@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder
 	name = "holder hardpoint"
-	desc = "Holder for other hardpoints"
+	desc = "Holder for other hardpoints."
 
 	// List of types of hardpoints that this hardpoint can hold
 	var/list/accepted_hardpoints

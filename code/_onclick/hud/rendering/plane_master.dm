@@ -4,7 +4,6 @@
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	blend_mode = BLEND_OVERLAY
 	plane = LOWEST_EVER_PLANE
-	var/show_alpha = 255
 	var/hide_alpha = 0
 
 	//--rendering relay vars--
@@ -12,13 +11,13 @@
 	var/render_relay_plane = RENDER_PLANE_GAME
 	///bool: Whether this plane should get a render target automatically generated
 	var/generate_render_target = TRUE
-	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
+	///integer: blend mode to apply to the render relay in case you don't want to use the plane_masters blend_mode
 	var/blend_mode_override
 	///reference: current relay this plane is utilizing to render
 	var/obj/render_plane_relay/relay
 
 /atom/movable/screen/plane_master/proc/Show(override)
-	alpha = override || show_alpha
+	alpha = override || initial(alpha)
 
 /atom/movable/screen/plane_master/proc/Hide(override)
 	alpha = override || hide_alpha
@@ -29,6 +28,18 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
+
+/atom/movable/screen/plane_master/turf
+	name = "turf plane master"
+	plane = TURF_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/turf/backdrop(mob/mymob)
+	. = ..()
+	remove_filter("AO")
+	if(istype(mymob) && mymob?.client?.prefs?.toggle_prefs & TOGGLE_AMBIENT_OCCLUSION)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/floor
 	name = "floor plane master"
@@ -54,6 +65,29 @@
 	plane = ABOVE_GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/above_blackness
+	name = "above blackness plane master"
+	plane = ABOVE_BLACKNESS_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/above_blackness/Initialize(mapload, ...)
+	. = ..()
+
+	add_filter("above_blur", 1, angular_blur_filter(0, 0, 0.3))
+
+/atom/movable/screen/plane_master/above_blackness_backdrop
+	name = "above blackness backdrop plane master"
+	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_MULTIPLY
+	alpha = 125
+
+/atom/movable/screen/plane_master/above_blackness_backdrop/Initialize()
+	. = ..()
+
+	add_filter("inset_shadow", 1, drop_shadow_filter(color = "#04080FAA", size = -20))
 
 /atom/movable/screen/plane_master/ghost
 	name = "ghost plane master"
@@ -187,8 +221,7 @@
 /atom/movable/screen/plane_master/escape_menu
 	name = "Escape Menu"
 	plane = ESCAPE_MENU_PLANE
-	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
-	render_relay_plane = RENDER_PLANE_MASTER
+	render_relay_plane = null
 
 /atom/movable/screen/plane_master/displacement
 	name = "displacement plane"
@@ -200,11 +233,23 @@
 /atom/movable/screen/plane_master/open_space
 	name = "open space plane"
 	plane = OPEN_SPACE_PLANE_START
+	var/offset = 0
 
-/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
+/atom/movable/screen/plane_master/open_space/New(loc, offset)
+	. = ..()
+	// This has to be done in New because /datum/hud/New will expect the plane to already be correct and maploading can delay Initialize
+	src.offset = offset
 	name = "open space plane [offset]"
 	plane -= offset
+
+/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
 	. = ..()
+	add_filters()
+
+/atom/movable/screen/plane_master/open_space/proc/remove_filters()
+	remove_filter("multizblur")
+
+/atom/movable/screen/plane_master/open_space/proc/add_filters()
 	add_filter("multizblur", 1, gauss_blur_filter(0.5 + 0.25 * (offset + 1)))
 
 /atom/movable/screen/plane_master/openspace_backdrop
@@ -222,7 +267,14 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "Seethrough"
+	name = "seethrough plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = SEETHROUGH_PLANE
+
+/atom/movable/screen/plane_master/minimap
+	name = "minimap plane"
+	plane = TACMAP_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR|PIXEL_SCALE
+	render_relay_plane = null
+	var/cur_x_shift = 0
+	var/cur_y_shift = 0

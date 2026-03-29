@@ -18,8 +18,8 @@ jobs:
         app-id: ${{ secrets.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-    - name: Clone
-      uses: actions/checkout@v3
+    - name: Clone Repo
+      uses: actions/checkout@v5
       with:
         token: ${{ steps.app-token-generation.outputs.token }}
 

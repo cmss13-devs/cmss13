@@ -100,7 +100,7 @@
 		dat += "No datums tagged :("
 
 	dat = dat.Join("<br>")
-	usr << browse(dat, "window=tag;size=800x480")
+	usr << browse(HTML_SKELETON(dat), "window=tag;size=800x480")
 
 #undef TAG_DEL
 #undef TAG_MARK

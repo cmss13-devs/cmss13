@@ -13,6 +13,8 @@
 #define MINUTES_TO_DECISECOND *600
 #define MINUTES_TO_HOURS /60
 
+#define DECISECONDS_TO_SECONDS /10
+#define DECISECONDS_TO_MINUTES /600
 #define DECISECONDS_TO_HOURS /36000
 
 GLOBAL_VAR_INIT(midnight_rollovers, 0)
@@ -41,11 +43,27 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/time_stamp() // Shows current GMT time
 	return time2text(world.timeofday, "hh:mm:ss")
 
-/proc/duration2text(time = world.time) // Shows current time starting at 0:00
-	return gameTimestamp("hh:mm", time)
+/// Duration in hh:mm with rollover into hours
+/proc/duration2text(time = world.time)
+	if(time < 24 HOURS)
+		return gameTimestamp("hh:mm", time)
 
-/proc/duration2text_sec(time = world.time) // shows minutes:seconds
-	return gameTimestamp("mm:ss", time)
+	var/hours = floor(time DECISECONDS_TO_HOURS)
+	var/minutes = floor((time - hours HOURS) DECISECONDS_TO_MINUTES)
+	if(minutes < 10)
+		minutes = "0[minutes]"
+	return "[hours]:[minutes]"
+
+/// Duration in mm:ss with rollover into minutes
+/proc/duration2text_sec(time = world.time)
+	if(time < 60 MINUTES)
+		return gameTimestamp("mm:ss", time)
+
+	var/minutes = floor(time DECISECONDS_TO_MINUTES)
+	var/seconds = floor((time - minutes MINUTES) DECISECONDS_TO_SECONDS)
+	if(seconds < 10)
+		seconds = "0[seconds]"
+	return "[minutes]:[seconds]"
 
 /proc/time_left_until(target_time, current_time, time_unit)
 	return ceil(target_time - current_time) / time_unit

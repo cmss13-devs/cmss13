@@ -31,8 +31,6 @@
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
 
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(turf_changed))
-
 	if(turned_on)
 		apply_area_effect()
 		start_processing()
@@ -94,7 +92,7 @@
 	if(!range_bounds)
 		range_bounds = SQUARE(x, y, area_range)
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return
 
@@ -104,8 +102,9 @@
 
 		apply_buff_to_player(H)
 
-/obj/structure/machinery/defenses/planted_flag/proc/turf_changed()
-	SIGNAL_HANDLER
+// regenerate our bounds after we move
+/obj/structure/machinery/defenses/planted_flag/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
 	if(range_bounds)
 		QDEL_NULL(range_bounds)
 
@@ -222,7 +221,7 @@
 	if(!M.x && !M.y && !M.z)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	targets |= M
 
 	for(var/mob/living/carbon/human/H in targets)

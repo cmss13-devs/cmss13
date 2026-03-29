@@ -48,12 +48,32 @@
     ],
     "survivor_message": "As the city burns, you find yourself among the dwindling few who survived the initial onslaught, The catastrophic breach shattered the once-prosperous world of LV-759, home to the large commercial & industrial Weyland-Yutani colony known as Hybrisa Prospera. Through sheer will or cunning, you've evaded the relentless alien onslaught so far... but the nightmare persists.",
     "announce_text": "An automated distress signal has been received from the Weyland-Yutani colony, Hybrisa Prospera — a vast, city-like settlement renowned for its immense wealth, extensive mining operations, and thriving commerce. Recently fully acquired from the TWE, this former colony is now a key asset for Weyland-Yutani, with a sprawling urban center housing thousands of residents and numerous smaller outer colonies under its control. The ###SHIPNAME### has been dispatched to investigate the situation.",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/hybrisa/HYBRISAcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/hybrisa/HYBRISAhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/hybrisa/HYBRISAmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/hybrisa/HYBRISAunaligned.html"
+    },
     "map_item_type": "/obj/item/map/lv759_map",
 	"monkey_types": [
         "monkey"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/LV759_Hybrisa_Prospera/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

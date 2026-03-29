@@ -134,12 +134,12 @@
 	var/list/turf/path = get_line(src, M, include_start_atom = FALSE)
 
 	var/blocked = FALSE
-	for(var/turf/T in path)
-		if(T.density || T.opacity)
+	for(var/turf/turf in path)
+		if(turf.density || turf.opacity)
 			blocked = TRUE
 			break
 
-		for(var/obj/structure/S in T)
+		for(var/obj/structure/S in turf)
 			if(S.opacity)
 				blocked = TRUE
 				break
@@ -148,7 +148,9 @@
 					blocked = TRUE
 					break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
+		for(var/obj/effect/particle_effect/smoke/smoke in turf)
+			if(!smoke.obscuring)
+				continue
 			blocked = TRUE
 			break
 

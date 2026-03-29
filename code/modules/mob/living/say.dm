@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":f" = SQUAD_MARINE_CRYO, ".f" = SQUAD_MARINE_CRYO, "#f" = RADIO_CHANNEL_PMC_MED,
 	":g" = RADIO_CHANNEL_ALMAYER, ".g" = RADIO_CHANNEL_ALMAYER, "#g" = RADIO_CHANNEL_CLF_GEN,
 	":j" = RADIO_CHANNEL_JTAC, ".j" = RADIO_CHANNEL_JTAC, "#j" = RADIO_CHANNEL_UPP_CCT,
-	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":k" = SQUAD_SOF, ".k" = RADIO_CHANNEL_YAUTJA_SPECOPS, "#k" = RADIO_CHANNEL_WY_WO,
 	"#l" = RADIO_CHANNEL_PROVOST, //l . and : reserved for Left hand
 	":m" = RADIO_CHANNEL_MEDSCI, ".m" = RADIO_CHANNEL_MEDSCI, "#m" = RADIO_CHANNEL_UPP_MED,
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,
@@ -21,15 +21,17 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":p" = RADIO_CHANNEL_MP , ".p" = RADIO_CHANNEL_MP , "#p" = RADIO_CHANNEL_PMC_GEN,
 	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
 	"#r" = RADIO_CHANNEL_YAUTJA, //r .r and :r reserved for Right hand
-	":s" = RADIO_CHANNEL_CIA, ".s" = RADIO_CHANNEL_CIA, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
+	":s" = SQUAD_ARMY, ".s" = SQUAD_ARMY, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
 	":t" = RADIO_CHANNEL_INTEL, ".t" = RADIO_CHANNEL_INTEL, "#t" = RADIO_CHANNEL_UPP_KDO,
 	":u" = RADIO_CHANNEL_REQ, ".u" = RADIO_CHANNEL_REQ, "#u" = RADIO_CHANNEL_UPP_GEN,
 	":v" = RADIO_CHANNEL_COMMAND , ".v" = RADIO_CHANNEL_COMMAND , "#v" = RADIO_CHANNEL_UPP_CMD,
 	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
-	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY,
+	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY_SEC,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	":2" = RADIO_CHANNEL_CIA, ".2" = RADIO_CHANNEL_CIA, "#2" = RADIO_CHANNEL_CIA,
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)
@@ -62,15 +64,29 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
+/mob/living/proc/show_speech_bubble(list/viewers, bubble_image, looping_bubble = FALSE, bubble_prefix = FALSE, animated = TRUE, image/speech_bubble)
+	var/list/speech_bubble_recipients = list()
+	for(var/mob/listener in viewers)
+		if(listener.client)
+			speech_bubble_recipients.Add(listener.client)
+	if(!speech_bubble)
+		if(bubble_prefix)
+			speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_icon][bubble_image]", TYPING_LAYER)
+		else
+			speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_image]", TYPING_LAYER)
 
-	var/mutable_appearance/speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon][bubble_name]", TYPING_LAYER)
 	speech_bubble.pixel_x = bubble_icon_x_offset
 	speech_bubble.pixel_y = bubble_icon_y_offset
+	speech_bubble.appearance_flags = RESET_TRANSFORM
+	speech_bubble.plane = ABOVE_GAME_PLANE
 
-	overlays += speech_bubble
+	if(animated)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay_to_clients), speech_bubble, speech_bubble_recipients, 3 SECONDS)
+	else
+		overlays += speech_bubble
 
-	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
+	if(!looping_bubble)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
@@ -87,8 +103,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
-		if(!dst && src.clone) //Will speak in src's location and the clone's
-			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
+		if(!dst && clone) //Will speak in src's location and the clone's
+			T = locate(loc.x + clone.proj_x, loc.y + clone.proj_y, loc.z + clone.proj_z)
 		else
 			T = get_turf(src)
 			dst++ //Only speak once
@@ -151,16 +167,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
+		show_speech_bubble(listening, speech_bubble_test, bubble_prefix = TRUE)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-		overlays += speech_bubble
-
-		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

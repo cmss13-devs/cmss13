@@ -299,7 +299,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
 			deconstruct(TRUE)
@@ -353,7 +353,7 @@
 
 /obj/structure/surface/table/verb/do_flip()
 	set name = "Flip table"
-	set desc = "Flips a non-reinforced table"
+	set desc = "Flips a non-reinforced table."
 	set category = "Object"
 	set src in oview(1)
 
@@ -415,7 +415,7 @@
 
 /obj/structure/surface/table/proc/do_put()
 	set name = "Put table back"
-	set desc = "Puts flipped table back"
+	set desc = "Puts flipped table back."
 	set category = "Object"
 	set src in oview(1)
 
@@ -591,6 +591,39 @@
 	icon_state = "prisontable"
 	table_prefix = "prison"
 
+/obj/structure/surface/table/reinforced/rostock_blend
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostockStable" //instance, this is a static table for req.
+	table_prefix = "rostockS"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall,
+	)
+
+/obj/structure/surface/table/reinforced/rostock_blend/north
+	icon_state = "rostockNtable"
+	table_prefix = "rostockN"
+
+/obj/structure/surface/table/reinforced/rostock_blend/east
+	icon_state = "rostockEtable"
+	table_prefix = "rostockE"
+
+/obj/structure/surface/table/reinforced/rostock_blend/west
+	icon_state = "rostockWtable"
+	table_prefix = "rostockW"
+
+/obj/structure/surface/table/reinforced/rostock_blend/flip(direction)
+	return FALSE
+
+/obj/structure/surface/table/reinforced/rostock_table
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostock_table" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "rostock_"
+
+/obj/structure/surface/table/reinforced/rostock_table/flip(direction)
+	return FALSE
+
 /obj/structure/surface/table/reinforced/almayer_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
 	icon_state = "reqStable" //instance, this is a static table for req.
@@ -703,3 +736,21 @@
 	. = ..()
 	if(.)
 		deconstruct(FALSE)
+
+/obj/structure/surface/hunter_shuttle_table
+	name = "console base"
+	desc = "A smooth metal alloy base table."
+	icon = 'icons/obj/structures/tables.dmi'
+	icon_state = "hs_table"
+	density = TRUE
+	layer = TABLE_LAYER
+	anchored = TRUE
+	throwpass = TRUE //You can throw objects over this, despite it's density.
+	breakable = FALSE
+	climbable = FALSE
+	wrenchable = FALSE
+	explo_proof = TRUE
+	health = 100
+
+/obj/structure/surface/hunter_shuttle_table/deconstruct(disassembled = TRUE)
+	return FALSE

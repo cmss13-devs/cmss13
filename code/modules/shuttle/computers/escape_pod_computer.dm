@@ -30,7 +30,7 @@
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "EscapePodConsole", "[src.name]")
+		ui = new(user, src, "EscapePodConsole", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_state(mob/user)
@@ -43,7 +43,9 @@
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/ui_data(mob/user)
 	. = list()
+
 	var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/turf/shuttle_location = get_turf(shuttle)
 
 	if(pod_state == STATE_IDLE && shuttle.evac_set)
 		pod_state = STATE_READY
@@ -60,6 +62,7 @@
 	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
+	.["in_ftl"] = !ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z)
 	.["launch_without_evac"] = launch_without_evac
 
 
@@ -72,6 +75,10 @@
 	switch(action)
 		if("force_launch")
 			if(!launch_without_evac && pod_state != STATE_READY && pod_state != STATE_DELAYED)
+				return
+
+			var/turf/shuttle_location = get_turf(shuttle)
+			if(!ignore_ftl_or_crash && SShijack.in_ftl && is_mainship_level(shuttle_location.z))
 				return
 
 			shuttle.evac_launch()
@@ -216,6 +223,9 @@
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/cryopod/evacuation/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)
 		to_chat(M, SPAN_WARNING("The cryogenic pod is already in use. You will need to find another."))
@@ -230,11 +240,15 @@
 
 /obj/structure/machinery/door/airlock/evacuation
 	name = "\improper Evacuation Airlock"
-	icon = 'icons/obj/structures/doors/pod_doors.dmi'
+	icon = 'icons/obj/structures/doors/escapepoddoor_yellow.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle
 	var/start_locked = TRUE
+	opacity = FALSE
+	glass = TRUE
+	open_layer = ABOVE_MOB_LAYER
+	closed_layer = ABOVE_MOB_LAYER
 
 /obj/structure/machinery/door/airlock/evacuation/Initialize()
 	. = ..()

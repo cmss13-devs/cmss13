@@ -40,7 +40,7 @@
 	if(new_human.client && new_human.client.prefs)
 		var/new_name = get_fax_responder_name(new_human.client)
 		if(new_name)
-			final_name = new_name
+			final_name = capitalize_first_letters(new_name)
 
 	new_human.change_real_name(new_human, final_name)
 

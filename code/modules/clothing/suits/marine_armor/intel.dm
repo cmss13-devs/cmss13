@@ -3,7 +3,7 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
 	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably. When worn, uniform accessories such as webbing cannot be attached due to the motion sensors occupying the clips."
-	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors clipped onto the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
+	desc_lore = "Armat Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors clipped onto the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
 	storage_slots = 5
 	/// XM4 Integral Motion Detector Ability
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/intel/toggle_motion_detector)
@@ -42,14 +42,16 @@
 	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
 	recon.toggle_motion_detector(owner)
 
-/datum/action/item_action/intel/toggle_motion_detector/proc/update_icon()
+/datum/action/item_action/intel/toggle_motion_detector/update_button_icon()
 	if(!holder_item)
 		return
 	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
 	if(recon.motion_detector)
-		button.icon_state = "template_on"
+		action_icon_state = "motion_detector_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "motion_detector"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/process()
 	if(!motion_detector)
@@ -73,7 +75,7 @@
 		playsound(loc,'sound/items/detector_turn_off.ogg', 25, 1)
 	motion_detector = !motion_detector
 	var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in actions
-	TMD.update_icon()
+	TMD.update_button_icon()
 	motion_detector()
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/proc/motion_detector()

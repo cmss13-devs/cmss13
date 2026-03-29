@@ -132,70 +132,49 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return output_message
 
 /**
- * Summary: proc that parses an html input string and scrambles the non-html string contents.
+ * Scrambles the non-html contents in the provided message using stars().
  *
  * Arguments:
- * * message - an html string value to be parsed and modified.
- *
- * Return:
- * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ * * message - The string with potential html content to scramble
+ * * clear_char_probability - The likelihood a character does not get converted into a *
  */
-/proc/stars_decode_html(message)
-	if(!length(message))
-		return
+/proc/stars_decode_html(message, clear_char_probability=25)
+	var/message_length = length(message)
+	if(!message_length)
+		return ""
 
-	// boolean value to know if the current indexed element needs to be scrambled.
-	var/parsing_message = FALSE
+	if(clear_char_probability >= 100)
+		return message
 
-	// boolean values to know if we are currently inside a double or single quotation.
-	var/in_single_quote = FALSE
-	var/in_double_quote = FALSE
-
-	// string of what tag we're currently in
-	var/current_tag = ""
-	var/escaped_tag = FALSE
-
-	// string that will be scrambled
-	var/current_string_to_scramble = ""
-
-	// output string after parse
+	var/regex/code_regex = regex(@#<head.*?>.*?</head>|<style.*?>.*?</style>|<.*?>#, "g")
 	var/output_message = ""
-	for(var/character_index in 1 to length(message))
-		var/current_char = message[character_index]
+	var/cur_index = 1
+	do
+		var/prev_index = cur_index
+		cur_index = code_regex.Find(message, code_regex.next)
+		if(prev_index != cur_index)
+			var/current_string = copytext(message, prev_index, cur_index)
+			output_message += stars(current_string, clear_char_probability)
+		if(cur_index)
+			output_message += code_regex.match
+			cur_index = code_regex.next
+	while(cur_index)
 
-		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
-		if(!parsing_message)
-			if(current_char == "'")
-				in_single_quote = !in_single_quote
-			if(current_char == "\"")
-				in_double_quote = !in_double_quote
-			if(in_single_quote || in_double_quote)
-				output_message += current_char
-				continue
-
-		if(current_char == ">")
-			parsing_message = TRUE
-			output_message += current_char
-			current_tag += current_char
-			if(findtext(current_tag, "<style>") == 1 || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
-				escaped_tag = TRUE
-			else if(escaped_tag && (findtext(current_tag, "</style>") == 1 || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
-				escaped_tag = FALSE
-			continue
-		if(current_char == "<")
-			parsing_message = FALSE
-			current_tag = ""
-			if(length(current_string_to_scramble))
-				var/scrambled_string = stars(current_string_to_scramble)
-				output_message += scrambled_string
-				current_string_to_scramble = ""
-
-		if(parsing_message && !escaped_tag)
-			current_string_to_scramble += current_char
-		else
-			output_message += current_char
-			current_tag += current_char
 	return output_message
+
+/**
+ * Gets a stars_decode_html result with a variable clarity based the faction's current comms clarity
+ *
+ * Arguments:
+ * * message - The message to garble (its length is used for clarity calculation)
+ * * faction - An optional faction define to check (otherwise announcement_max_clarity config value)
+ */
+/proc/get_garbled_announcement(message, faction)
+	var/clarity = SSradio.faction_coms_clarity[faction]
+	if(!clarity)
+		clarity = CONFIG_GET(number/announcement_max_clarity)
+
+	return stars_decode_html(message, clarity)
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -330,8 +309,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	M.shakecamera = world.time + steps * time_per_step
 	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
-	var/old_X = M.client.pixel_x
-	var/old_y = M.client.pixel_y
+	var/old_X = M.client.get_pixel_x()
+	var/old_y = M.client.get_pixel_y()
 
 	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1

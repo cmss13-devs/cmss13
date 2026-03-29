@@ -42,7 +42,7 @@
 	classic_keys = list("Y", "Z", "Ctrl+Y", "Ctrl+Z")
 	name = "activate_inhand"
 	full_name = "Activate in-hand"
-	description = "Uses whatever item you have inhand"
+	description = "Uses whatever item you have in-hand"
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
 /datum/keybinding/mob/activate_inhand/down(client/user)
@@ -220,3 +220,44 @@
 	if(.)
 		return
 	user.movement_locked = FALSE
+
+/datum/keybinding/mob/minimap
+	hotkey_keys = list("5")
+	classic_keys = list("5")
+	name = "toggle_minimap"
+	full_name = "Toggle Minimap"
+	keybind_signal = COMSIG_KB_MOB_TOGGLE_MINIMAP
+
+/datum/keybinding/mob/minimap/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/user_mob = user.mob
+	if(!(user.screen))
+		return
+	for(var/datum/action/minimap/user_map in user_mob.actions)
+		user_map.action_activate()
+	return TRUE
+
+/datum/keybinding/mob/manifest
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "manifest"
+	full_name = "View Marine Manifest"
+	keybind_signal = COMSIG_KB_MOB_MANIFEST
+
+/datum/keybinding/mob/manifest/can_use(client/user)
+	return isobserver(user.mob) || ishuman(user.mob) // Down will check faction
+
+/datum/keybinding/mob/manifest/down(client/user)
+	. = ..()
+	if(.)
+		return
+	if(isobserver(user.mob))
+		var/mob/dead/observer/ghost = user.mob
+		ghost.view_manifest()
+		return TRUE
+	if(ishuman(user.mob))
+		var/mob/living/carbon/human/person = user.mob
+		person.view_manifest() // This will check faction
+		return TRUE

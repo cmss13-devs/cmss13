@@ -48,6 +48,9 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/heap/empty
+	current_rounds = 0
+
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "An armor-piercing 10x24mm assault rifle magazine."
@@ -163,6 +166,9 @@
 	desc = "A magazine of high-explosive armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty
+	current_rounds = 0
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"
@@ -283,8 +289,31 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
+
+/obj/item/ammo_magazine/rifle/lmg/Initialize(...)
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/ammo_magazine/rifle/lmg/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_base_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "s_" + initial(icon_state)
+			. = TRUE
+		if("desert")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "d_" + initial(icon_state)
+			. = TRUE
+		if("classic")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "c_" + initial(icon_state)
+			. = TRUE
+		if("urban")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "u_" + initial(icon_state)
+			. = TRUE
+	return .
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
@@ -504,7 +533,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/nsg23/incendiary
-	name = "\improper NSG 23 incindiary magazine (10x24mm)"
+	name = "\improper NSG 23 incendiary magazine (10x24mm)"
 	desc = "A white phosphorus-tipped incendiary NSG 23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
@@ -624,7 +653,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/l23/incendiary
-	name = "\improper L23 incindiary magazine (8.88x51mm)"
+	name = "\improper L23 incendiary magazine (8.88x51mm)"
 	desc = "A white phosphorus-tipped incendiary 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
@@ -643,7 +672,7 @@
 
 /obj/item/ammo_magazine/rifle/l64
 	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
-	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo."
 	caliber = "8.88x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
 	icon_state = "l64"

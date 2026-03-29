@@ -317,7 +317,7 @@
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
-	desc = "An Ace of Spades"
+	desc = "An Ace of Spades."
 	item_state_slots = list(WEAR_AS_GARB = "ace_of_spades")
 
 /obj/item/toy/handcard/uno_reverse_red

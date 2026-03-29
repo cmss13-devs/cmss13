@@ -1,9 +1,6 @@
 ///from /mob/living/carbon/human/proc/force_say(): ()
 #define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
-#define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
-	#define COMPONENT_BLOCK_DAMAGE (1<<0)
-
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
 
@@ -66,9 +63,6 @@
 /// from /datum/surgery_step/proc/attempt_step()
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
 
-/// From /datum/surgery_step/proc/success() : (mob/user, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
-#define COMSIG_HUMAN_SURGERY_STEP_SUCCESS "human_surgery_step_success"
-
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()
 #define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"
 
@@ -87,5 +81,23 @@
 /// From /mob/living/carbon/human/UnarmedAttack()
 #define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
 
+/// from /modules/animations/animations_library.dm
+#define COMSIG_HUMAN_ANIMATING "human_animating"
+
+/// from /proc/transfer_marine_to_squad
+#define COMSIG_HUMAN_SQUAD_CHANGED "human_squad_change"
+
 /// From /mob/living/carbon/human/hud_set_holocard()
 #define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"
+
+/// From /datum/surgery_step/remove_larva/success()
+#define COMSIG_HUMAN_REMOVED_A_LARVA "human_removed_a_larva"
+
+/// From /datum/species/proc/attempt_rock_paper_scissors
+#define COMSIG_HUMAN_WON_RPS "human_won_rps"
+
+/// From /mob/living/carbon/human/help_shake_act
+#define COMSIG_HUMAN_HELPING_UP "human_helping_up"
+
+/// /datum/game_mode/colonialmarines/declare_completion
+#define COMSIG_HUMAN_FINISHED_ROUND "human_finished_round"

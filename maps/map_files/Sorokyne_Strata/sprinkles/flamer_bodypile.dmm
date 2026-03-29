@@ -1,0 +1,605 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ee" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"en" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"et" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ex" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/exterior/outpost_decks)
+"eA" = (
+/obj/item/bodybag,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"fm" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/exterior/outpost_decks)
+"fx" = (
+/obj/effect/decal/large_stain{
+	pixel_x = -6;
+	pixel_y = -14
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/body_bag_pile/charred,
+/obj/structure/prop/body_bag_pile/charred{
+	dir = 8;
+	layer = 4.1;
+	pixel_y = 30
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"fQ" = (
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/exterior/outpost_decks)
+"hc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"hG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"iN" = (
+/obj/item/weapon/gun/flamer/m240,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ls" = (
+/obj/structure/platform_decoration/metal/strata/west{
+	color = "#858680"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"og" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"oU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/closet/bodybag{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#390000"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"re" = (
+/obj/structure/platform/metal/strata/east{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"rH" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/exterior/north_outpost)
+"sj" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"tU" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ug" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/closet/bodybag{
+	pixel_y = 8
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"vf" = (
+/obj/structure/platform/metal/strata/north{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"vr" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"vG" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"vX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"wd" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"wQ" = (
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"xO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/closet/bodybag{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"xX" = (
+/obj/item/bodybag,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"zB" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/closet/bodybag,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"AN" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/White{
+	dir = 1;
+	pixel_x = 5
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"Ba" = (
+/obj/item/ammo_magazine/flamer_tank,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"DU" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/exterior/north_outpost)
+"EE" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/exterior/outpost_decks)
+"FN" = (
+/obj/structure/platform_decoration/metal/strata{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 9;
+	pixel_y = -24
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"Gn" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/exterior/outpost_decks)
+"GB" = (
+/obj/structure/platform_decoration/metal/strata/east{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash{
+	color = "#858680"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"GM" = (
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"He" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"HE" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"HN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/body_bag_pile{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"IC" = (
+/obj/structure/platform/metal/strata/north{
+	color = "#858680"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = -4;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"II" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"IP" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood,
+/obj/item/bodybag,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Jn" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"JO" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
+/obj/structure/closet/bodybag,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/exterior/outpost_decks)
+"Lj" = (
+/obj/effect/decal/cleanable/ash{
+	color = "#858680"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -16
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"LB" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/platform_decoration/metal/strata/north{
+	color = "#858680"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"Mg" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ME" = (
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"MJ" = (
+/obj/effect/decal/cleanable/ash{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"Nl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Oh" = (
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
+"ON" = (
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/exterior/outpost_decks)
+"Pu" = (
+/obj/structure/machinery/weather_siren{
+	pixel_y = -8
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/exterior/outpost_decks)
+"PN" = (
+/obj/structure/platform/metal/strata/east{
+	color = "#858680"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/ash{
+	color = "#858680"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Qa" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Qc" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/platform/metal/strata{
+	color = "#858680"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"QW" = (
+/obj/structure/closet/bodybag,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/outpost_decks)
+"Rq" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/exterior/outpost_decks)
+"RD" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/large_stain{
+	pixel_x = -3;
+	pixel_y = -21
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/strata{
+	color = "#858680"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"RR" = (
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/outpost_decks)
+"SQ" = (
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Up" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/north_outpost)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"VW" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Wp" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"XO" = (
+/obj/structure/platform/metal/strata/west{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Yz" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"Zr" = (
+/obj/structure/platform/metal/strata/west{
+	color = "#858680"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash{
+	color = "#858680"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+
+(1,1,1) = {"
+He
+hG
+hG
+Wp
+hG
+tU
+ug
+HN
+oU
+Wp
+"}
+(2,1,1) = {"
+vr
+vr
+vG
+GM
+iN
+wd
+xO
+Uu
+et
+vG
+"}
+(3,1,1) = {"
+og
+SQ
+vr
+ON
+EE
+HE
+IP
+JO
+EE
+ME
+"}
+(4,1,1) = {"
+SQ
+og
+Nl
+ee
+xX
+SQ
+Jn
+Ba
+en
+Qa
+"}
+(5,1,1) = {"
+Oh
+fQ
+AN
+zB
+FN
+re
+PN
+ls
+en
+SQ
+"}
+(6,1,1) = {"
+rH
+Gn
+Yz
+og
+Qc
+Lj
+fx
+vf
+HE
+Mg
+"}
+(7,1,1) = {"
+II
+Pu
+VW
+SQ
+RD
+wQ
+MJ
+IC
+vX
+vr
+"}
+(8,1,1) = {"
+II
+fm
+SQ
+en
+LB
+Zr
+XO
+GB
+eA
+SQ
+"}
+(9,1,1) = {"
+Up
+RR
+SQ
+sj
+QW
+hc
+vG
+sj
+en
+SQ
+"}
+(10,1,1) = {"
+DU
+ex
+SQ
+EE
+EE
+Qa
+SQ
+Rq
+EE
+og
+"}

@@ -21,7 +21,7 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
-	// so that folks dont constantly spam their ID, and play an 'id rejected' noise over and over
+	// so that folks don't constantly spam their ID, and play an 'id rejected' noise over and over
 	COOLDOWN_DECLARE(id_scan_cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)
@@ -43,7 +43,7 @@
 			else if(screen == 2)
 				event_triggered_by = usr
 				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
-					balloon_alert_to_viewers("Error! Insufficient clearence!")
+					balloon_alert_to_viewers("insufficient clearance!")
 					playsound(loc, 'sound/items/defib_failed.ogg')
 					COOLDOWN_START(src, id_scan_cooldown, 1 SECONDS)
 					return
@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			event_source.confirmed = 1
 			event_source.event_confirmed_by = usr
 		else
-			visible_message(SPAN_NOTICE("[src] states: ONLY ONE UNIQUE CODE DISK DETECTED"))
+			visible_message(SPAN_NOTICE("[src] states: ONLY ONE UNIQUE CODE DISK DETECTED."))
 
 	else if(screen == 2)
 		event_triggered_by = usr
@@ -277,7 +277,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
+			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
 			return
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
@@ -307,7 +307,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 				var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
+					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
 					return
 				gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 			timed_countdown(3 MINUTES)

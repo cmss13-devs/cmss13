@@ -11,11 +11,10 @@ env:
   browser: true
   node: true
 plugins:
-  - sonarjs
   - react
   - unused-imports
   - simple-import-sort
-  - "@typescript-eslint"
+  - '@typescript-eslint'
 settings:
   react:
     version: '18.2'
@@ -771,4 +770,5 @@ rules:
   simple-import-sort/exports: error
 
   ## Typescript
-  "@typescript-eslint/consistent-type-imports": [error, { fixStyle: inline-type-imports }]
+  '@typescript-eslint/consistent-type-imports':
+    [error, { fixStyle: inline-type-imports }]

@@ -1,6 +1,5 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-
 /*
 
 	All telecommunications interactions:
@@ -13,83 +12,88 @@
 	var/temp = "" // output message
 	var/construct_op = 0
 	var/deconstructable = FALSE
+	///Whether this is currently being manipulated to prevent doubling up
+	var/construction_busy = FALSE
 
-
-/obj/structure/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
-
-	// Using a multitool lets you access the receiver's interface
-	if(istype(P, /obj/item/device/multitool))
+/obj/structure/machinery/telecomms/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	// Using a multitool lets you access the receiver'new_item interface
+	if(istype(attacking_item, /obj/item/device/multitool))
 		attack_hand(user)
-
 	else
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
-			return 0
+			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			return FALSE
+
+	if(construction_busy)
+		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		return
 
 	switch(construct_op)
 		if(0)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
 				to_chat(user, "You unfasten the bolts.")
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				construct_op ++
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				construct_op++
 		if(1)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				to_chat(user, "You fasten the bolts.")
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				construct_op --
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				construct_op--
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You dislodge the external plating.")
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				construct_op ++
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+				construct_op++
 		if(2)
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You secure the external plating.")
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				construct_op --
-			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
-				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+				construct_op--
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
+				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, "You remove the cables.")
-				construct_op ++
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( user.loc )
-				A.amount = 5
-				stat |= BROKEN // the machine's been borked!
+				construct_op++
+				var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil( user.loc )
+				coil.amount = 5
+				stat |= BROKEN // the machine'new_item been borked!
 		if(3)
-			if(istype(P, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/A = P
-				if (A.use(5))
+			if(istype(attacking_item, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/coil = attacking_item
+				if(coil.use(5))
 					to_chat(user, SPAN_NOTICE("You insert the cables."))
 					construct_op--
-					stat &= ~BROKEN // the machine's not borked anymore!
+					stat &= ~BROKEN // the machine'new_item not borked anymore!
 				else
 					to_chat(user, SPAN_WARNING("You need five coils of wire for this."))
-			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 				to_chat(user, "You begin prying out the circuit board other components...")
-				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+				construction_busy = TRUE
+				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					construction_busy = FALSE
 					to_chat(user, "You finish prying out the components.")
 
 					// Drop all the component stuff
 					if(length(contents) > 0)
-						for(var/obj/x in src)
-							x.forceMove(user.loc)
+						for(var/obj/current in src)
+							current.forceMove(user.loc)
 					else
-
 						// If the machine wasn't made during runtime, probably doesn't have components:
 						// manually find the components and drop them!
 						var/newpath = circuitboard
-						var/obj/item/circuitboard/machine/C = new newpath
-						for(var/I in C.req_components)
-							for(var/i = 1, i <= C.req_components[I], i++)
-								newpath = I
-								var/obj/item/s = new newpath
-								s.forceMove(user.loc)
-								if(istype(P, /obj/item/stack/cable_coil))
-									var/obj/item/stack/cable_coil/A = P
-									A.amount = 1
+						var/obj/item/circuitboard/machine/board = new newpath
+						for(var/component in board.req_components)
+							for(var/i = 1, i <= board.req_components[component], i++)
+								newpath = component
+								var/obj/item/new_item = new newpath
+								new_item.forceMove(user.loc)
+								if(istype(attacking_item, /obj/item/stack/cable_coil))
+									var/obj/item/stack/cable_coil/coil = attacking_item
+									coil.amount = 1
 
 						// Drop a circuit board too
-						C.forceMove(user.loc)
+						board.forceMove(user.loc)
 					deconstruct()
+				construction_busy = FALSE
 
 /obj/structure/machinery/telecomms/deconstruct(disassembled = TRUE)
 	if(disassembled) // Create a machine frame and delete the current machine

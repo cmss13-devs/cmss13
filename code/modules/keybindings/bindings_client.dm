@@ -76,6 +76,11 @@ CLIENT_VERB(keyDown, _key as text)
 		if(kb.can_use(src) && kb.down(src) && keycount >= MAX_COMMANDS_PER_KEY)
 			break
 
+	if(full_key in prefs.key_to_custom_keybind)
+		var/datum/keybinding/custom/kb = prefs.key_to_custom_keybind[full_key]
+		if(kb.can_use(src))
+			kb.down(src)
+
 	admin_holder?.key_down(_key, src)
 	mob.focus?.key_down(_key, src)
 

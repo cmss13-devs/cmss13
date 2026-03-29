@@ -172,7 +172,7 @@
 	icon_state = "cluster_active"
 	det_time = 10
 	active = TRUE
-	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
+	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they can't be stored anywhere
 	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/flashbang/cluster/prime()

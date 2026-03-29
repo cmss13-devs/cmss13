@@ -87,7 +87,7 @@
 			if(4)
 				o += "WEST: "
 		if(tile_info[index] == null)
-			o += SPAN_WARNING("DATA UNAVAILABLE")
+			o += SPAN_WARNING("DATA UNAVAILABLE.")
 			. += o
 			continue
 		var/celsius = convert_k2c(tile_info[index][1])
@@ -140,7 +140,7 @@
 		return
 
 	if(alarmed && density && lockdown && !allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied.  Please wait for authorities to arrive, or for the alert to clear."))
+		to_chat(user, SPAN_WARNING("Access denied. Please wait for authorities to arrive, or for the alert to clear."))
 		return
 	else
 		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),

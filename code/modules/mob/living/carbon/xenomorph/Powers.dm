@@ -194,9 +194,9 @@
 
 	if(istype(resin_construct, /datum/resin_construction/resin_turf/wall))
 		if(thick)
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+			current_turf.place_on_top(/turf/closed/wall/resin/weedbound/thick)
 		else
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+			current_turf.place_on_top(/turf/closed/wall/resin/weedbound/normal)
 
 		qdel(the_node)
 		return TRUE
@@ -259,7 +259,7 @@
 		if(istype(AM, /obj/effect/alien/weeds))
 			found_weeds = TRUE
 		if(AM.density || istype(AM, /obj/effect/alien/resin))
-			to_chat(src, SPAN_XENONOTICE("Theres not enough space there for a resin mark."))
+			to_chat(src, SPAN_XENONOTICE("There's not enough space there for a resin mark."))
 			return FALSE
 
 	var/obj/effect/alien/resin/marker/NM = new /obj/effect/alien/resin/marker(target_turf, src)
@@ -277,5 +277,5 @@
 
 		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
-			//this is killing the tgui chat and I dont know why
+			//this is killing the tgui chat and I don't know why
 	return TRUE

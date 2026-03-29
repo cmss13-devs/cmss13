@@ -1,3 +1,12 @@
+#define KEYBIND_TYPE_SAY "say"
+#define KEYBIND_TYPE_ME "me"
+#define KEYBIND_TYPE_PICKSAY "picksay"
+
+#define COMSIG_KB_CUSTOM_KEYBIND_DOWN "keybinding_custom_down"
+
+#define KEYBIND_CUSTOM_MAX 60
+#define KEYBIND_CUSTOM_PICKSAY_MAX 30
+
 //Signals
 
 //General
@@ -29,12 +38,14 @@
 #define COMSIG_KB_CARBON_GIVEITEM_DOWN "keybinding_carbon_giveitem_down"
 #define COMSIG_KB_CARBON_WARCRY "keybinding_carbon_warcry"
 #define COMSIG_KB_CARBON_MEDIC "keybinding_carbon_medic"
+#define COMSIG_KB_CARBON_UNIQUEACTION "keybinding_carbon_uniqueaction"
 
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"
 #define COMSIG_KB_CLIENT_SCREENSHOT_DOWN "keybinding_client_screenshot_down"
 #define COMSIG_KB_CLIENT_TOGGLEFULLSCREEN_DOWN "keybinding_client_togglefullscreen_down"
 #define COMSIG_KB_CLIENT_MINIMALHUD_DOWN "keybinding_client_minimalhud_down"
+#define COMSIG_KB_CLIENT_SWITCHINPUT_DOWN "keybinding_client_switchinput_down"
 
 //Communication
 #define COMSIG_KB_CLIENT_OOC_DOWN "keybinding_client_ooc_down"
@@ -80,7 +91,6 @@
 #define COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT "keybinding_human_weapon_stockattachment"
 #define COMSIG_KB_HUMAN_WEAPON_AUTOEJECT "keybinding_human_weapon_autoeject"
 #define COMSIG_KB_HUMAN_WEAPON_UNDERBARREL "keybinding_human_weapon_underbarrel"
-#define COMSIG_KB_HUMAN_WEAPON_UNIQUEACTION "keybinding_human_weapon_uniqueaction"
 #define COMSIG_KB_HUMAN_WEAPON_SAFETY "keybinding_human_weapon_safety"
 #define COMSIG_KB_HUMAN_WEAPON_UNLOAD "keybinding_human_weapon_unload"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT "keybinding_human_weapon_attachment"
@@ -124,6 +134,8 @@
 #define COMSIG_KB_MOB_TARGETPREV_DOWN "keybinding_mob_targetprev_down"
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
 #define COMSIG_KB_MOB_LOOK_UP "keybinding_mob_look_up"
+#define COMSIG_KB_MOB_TOGGLE_MINIMAP "keybinding_toggle_minimap"
+#define COMSIG_KB_MOB_MANIFEST "keybinding_mob_manifest"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"
@@ -165,6 +177,7 @@
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
+#define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
 
 // Yautja
 

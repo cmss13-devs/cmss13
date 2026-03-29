@@ -151,7 +151,7 @@
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
 				living_carbon.visible_message(SPAN_DANGER("The barbed wire slices into [living_carbon]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
-				living_carbon.apply_damage(10)
+				living_carbon.apply_damage(10, enviro=TRUE)
 				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(living_carbon, "bonk", 75, FALSE)
 	..()
@@ -233,6 +233,7 @@
 	if(istype(item, /obj/item/weapon/zombie_claws))
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)
@@ -359,10 +360,14 @@
 // However, will look into fixing bugs w/diagonal movement different if this is
 // to hacky.
 /obj/structure/barricade/handle_rotation()
-	if (dir & EAST)
-		setDir(EAST)
-	else if(dir & WEST)
-		setDir(WEST)
+	var/direction = handle_barricade_stacking()
+	if(!direction)
+		if(dir & EAST)
+			setDir(EAST)
+		else if(dir & WEST)
+			setDir(WEST)
+	else
+		setDir(direction)
 	update_icon()
 
 /obj/structure/barricade/acid_spray_act()
@@ -466,8 +471,44 @@
 		return
 
 	user.next_move = world.time + 3 //slight spam prevention? you don't want every metal cade to turn into a doorway
-	setDir(turn(dir, 90 * rotation_dir))
-	update_icon()
+
+	var/new_dir = handle_barricade_stacking(turn(dir, 90 * rotation_dir))
+	if(new_dir && (new_dir != dir))
+		setDir(new_dir)
+		update_icon()
+	else
+		to_chat(user, SPAN_WARNING("Every other facing direction is occupied, you can't rotate it!"))
+
+/obj/structure/barricade/proc/handle_barricade_stacking(potential_dir = FALSE)
+	var/list/directions = list()
+	if(!potential_dir)
+		potential_dir = dir
+
+	for(var/obj/structure/barricade/cade in loc)
+		if(cade == src)
+			continue
+		directions += cade.dir
+
+	if(length(directions) == 0)
+		return potential_dir
+
+	if(length(directions) >= 4)
+		return FALSE //We shouldn't have four cades already there.
+
+	var/possible_directions = CARDINAL_DIRS	- directions
+	var/best_direction = turn(dir, 180)
+
+	if(potential_dir in possible_directions)
+		return potential_dir
+
+	if(best_direction in possible_directions)
+		return best_direction
+
+	else
+		possible_directions -= dir
+		if(!length(possible_directions))
+			return FALSE //We can't rotate it, all other directions are filled
+		return possible_directions[1]
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
 	if(mods[ALT_CLICK])

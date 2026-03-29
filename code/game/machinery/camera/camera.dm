@@ -368,7 +368,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)
 	viewing_users += user
-	user.client?.eye = get_turf(src)
+	user.client?.set_eye(get_turf(src))
 	user.client?.perspective = EYE_PERSPECTIVE
 
 /obj/structure/machinery/camera/cas/proc/remove_from_view(mob/living/carbon/human/user)

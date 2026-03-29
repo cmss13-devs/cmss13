@@ -1,0 +1,12 @@
+/obj/structure/reagent_dispensers/watertank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/water/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/acidtank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/sacid/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/pacidtank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/pacid/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/ethanoltank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/ethanol/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/ammoniatank/@SUBTYPES: /obj/structure/reagent_dispensers/tank/ammonia/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/yautja/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/yautja/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/spacecraft/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/spacecraft/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/gas/methane/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/methane/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/gas/hydrogen/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/oxygentank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/oxygen/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/custom/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/custom/@SUBTYPES{@OLD} 

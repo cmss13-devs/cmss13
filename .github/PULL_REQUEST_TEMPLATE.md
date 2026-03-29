@@ -5,7 +5,8 @@
 <!-- Remove this text and explain what the purpose of your PR is.
 
 Mention if you have tested your changes. If you changed a map, make sure you used the mapmerge tool.
-If this is an Issue Correction, you can type "Fixes Issue #169420" to link the PR to the corresponding Issue number #169420.
+If this addresses a reported issue, you can include "Fixes #12345" to link the PR to the corresponding Issue number #12345.
+For multiple issues you must include the "Fixes" keyword for each, e.g. "Fixes #12345, Fixes #12346, Fixes #12347". You cannot use multiple issue numbers with only one keyword.
 
 Remember: something that is self-evident to you might not be to others. Explain your rationale fully, even if you feel it goes without saying. -->
 
@@ -34,23 +35,25 @@ Put screenshots and videos here with an empty line between the screenshots and t
 
 :cl:
 add: Added something
-del: Removed old things
-qol: made something easier to use
+admin: messed with admin stuff
 balance: rebalanced something
-fix: fixed a few things
-spellcheck: fixed a few typos
-ui: changed something relating to user interfaces
 code: changed some code
-refactor: refactored some code
-soundadd: added a new sound thingy
-sounddel: removed an old sound thingy
+config: changed some config setting
+del: Removed old things
+fix: fixed a few things
 imageadd: added some icons and images
 imagedel: deleted some icons and images
+imagetweak: tweaked some icons and images
 mapadd: added a new map or section to a map
 maptweak: tweaked a map
-config: changed some config setting
-admin: messed with admin stuff
+qol: made something easier to use
+refactor: refactored some code
 server: something server ops should know
+soundadd: added a new sound thingy
+sounddel: removed an old sound thingy
+soundtweak: tweaked a sound thingy
+spellcheck: fixed a few typos
+ui: changed something relating to user interfaces
 /:cl:
 
 <!-- Both :cl:'s are required for the changelog to work! -->

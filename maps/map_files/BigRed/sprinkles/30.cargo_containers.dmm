@@ -416,7 +416,7 @@
 /area/bigredv2/outside/cargo)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bQ" = (
@@ -477,7 +477,7 @@
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/cargo)
 "bZ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cb" = (
@@ -494,7 +494,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cd" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ce" = (
@@ -593,7 +593,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ct" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},

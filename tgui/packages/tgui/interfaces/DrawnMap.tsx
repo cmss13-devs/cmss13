@@ -2,9 +2,16 @@ import { Component, createRef } from 'react';
 import { Box } from 'tgui/components';
 
 type DrawMapRrops = {
-  readonly svgData: (string | number | CanvasGradient | CanvasPattern)[];
+  readonly svgData?: (
+    | string
+    | number
+    | CanvasGradient
+    | CanvasPattern
+    | null
+  )[];
   readonly flatImage: string;
   readonly backupImage: string;
+  readonly showLoading?: boolean;
 };
 
 export class DrawnMap extends Component<DrawMapRrops> {
@@ -12,8 +19,9 @@ export class DrawnMap extends Component<DrawMapRrops> {
   containerRef: React.RefObject<HTMLDivElement>;
   flatImgSrc: string;
   img: HTMLImageElement | null;
-  svg: (string | number | CanvasGradient | CanvasPattern)[];
+  svg?: (string | number | CanvasGradient | CanvasPattern | null)[];
   state: { mapLoad: boolean; loadingBackup: boolean };
+  showLoading: boolean;
   constructor(props) {
     super(props);
     this.containerRef = createRef();
@@ -25,6 +33,7 @@ export class DrawnMap extends Component<DrawMapRrops> {
     };
     this.img = null;
     this.svg = this.props.svgData;
+    this.showLoading = this.props.showLoading ?? true;
   }
 
   componentDidMount() {
@@ -82,11 +91,13 @@ export class DrawnMap extends Component<DrawMapRrops> {
 
     return (
       <div ref={this.containerRef} className="TacticalMapDrawn">
-        {this.state.loadingBackup && !this.state.mapLoad && (
-          <Box my="40%">
-            <h1>Loading map...</h1>
-          </Box>
-        )}
+        {this.state.loadingBackup &&
+          !this.state.mapLoad &&
+          this.showLoading && (
+            <Box my="40%">
+              <h1>Loading map...</h1>
+            </Box>
+          )}
         {this.img && this.state.mapLoad && (
           <img src={this.img.src} width={size.width} height={size.height} />
         )}

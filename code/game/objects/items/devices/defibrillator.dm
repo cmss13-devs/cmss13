@@ -158,13 +158,13 @@
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
+		to_chat(user, SPAN_WARNING("You can't defibrillate [H]. You don't even know where to put the [fluff_tool]!"))
 		return
 	if(issynth(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
+		to_chat(user, SPAN_WARNING("You can't defibrillate [H]. You need a synthetic reset key for reboot!"))
 		return
 	if(!ready)
-		balloon_alert(user, "take out the [fluff_tool].")
+		balloon_alert(user, "take out the [fluff_tool]")
 		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
 		return
 	if(dcell.charge < charge_cost)
@@ -281,7 +281,7 @@
 				P.trigger(target)
 				target.reagents.remove_reagent(R.id, 1)
 				break
-	if(target.health > HEALTH_THRESHOLD_DEAD)
+	if(target.health > target.health_threshold_dead)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)
@@ -345,7 +345,7 @@
 
 /obj/item/device/defibrillator/synthetic
 	name = "W-Y synthetic reset key"
-	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It must be recharged after use."
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
 	item_state = "synth_reset_key"
@@ -372,6 +372,15 @@
 	sound_safety_on = 'sound/machines/click.ogg'
 	sound_safety_off = 'sound/machines/click.ogg'
 	sound_release = 'sound/items/synth_reset_key/release.ogg'
+
+/obj/item/device/defibrillator/synthetic/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/device/defibrillator/synthetic/seegson))
+		AddElement(/datum/element/corp_label/seegson)
+	if(istype(src, /obj/item/device/defibrillator/synthetic/hyperdyne))
+		AddElement(/datum/element/corp_label/hyperdyne)
+	if(istypestrict(src, /obj/item/device/defibrillator/synthetic) || istypestrict(src, /obj/item/device/defibrillator/synthetic/noskill))
+		AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/defibrillator/synthetic/update_icon()
 	icon_state = initial(icon_state)
@@ -410,31 +419,31 @@
 
 /obj/item/device/defibrillator/synthetic/noskill
 	name = "SMART W-Y synthetic reset key"
-	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It must be recharged after use. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "reset_key_ns"
 	noskill = TRUE
 
 /obj/item/device/defibrillator/synthetic/hyperdyne
 	name = "Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	desc = "An independent Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It must be recharged after use."
 	icon_state = "hyper_reset_key"
 
 /obj/item/device/defibrillator/synthetic/hyperdyne/noskill
 	name = "SMART Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	desc = "An independent Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It must be recharged after use. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "hyper_reset_ns_key"
 	noskill = TRUE
 
 /obj/item/device/defibrillator/synthetic/seegson
 	name = "Seegson Working Joe reboot key"
-	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
+	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It must be recharged after use."
 	icon_state = "seeg_reset_key"
 	sound_success = 'sound/items/synth_reset_key/seegson_revive.ogg'
 	synthetic_type_locked = /datum/equipment_preset/synth/working_joe
 
 /obj/item/device/defibrillator/synthetic/makeshift
 	name = "makeshift synthetic sparker"
-	desc = "A tool resembling a synthetic reset key, but extremely crude and made from spare parts, only capable of rebooting the system of a synthetic, with a small chance of corrupting that system. It can only be used once before being reset."
+	desc = "A tool resembling a synthetic reset key, but extremely crude and made from spare parts, only capable of rebooting the system of a synthetic, with a small chance of corrupting that system. It must be recharged after use."
 	icon_state = "makeshift_key"
 	should_spark = TRUE
 	sound_success = "sparks"

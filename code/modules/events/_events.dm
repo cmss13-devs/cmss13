@@ -74,7 +74,7 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event"))
+			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event."))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
@@ -88,7 +88,7 @@ Runs the event
 */
 /datum/round_event_control/proc/run_event(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
 	/*
-	* We clear our signals first so we dont cancel a wanted event by accident,
+	* We clear our signals first so we don't cancel a wanted event by accident,
 	* the majority of time the admin will probably want to cancel a single midround spawned random events
 	* and not multiple events called by others admins
 	* * In the worst case scenario we can still recall a event which we cancelled by accident, which is much better then to have a unwanted event
@@ -134,7 +134,7 @@ Runs the event
 	var/endWhen = 0 //When in the lifetime the event should end.
 
 	var/activeFor = 0 //How long the event has existed. You don't need to change this.
-	var/current_players = 0 //Amount of of alive, non-AFK human players on server at the time of event start
+	var/current_players = 0 //Amount of alive, non-AFK human players on server at the time of event start
 
 	/// Whether a admin wants this event to be cancelled
 	var/cancel_event = FALSE
@@ -223,7 +223,7 @@ Runs the event
 /datum/round_event/proc/kill()
 	SSevents.running -= src
 
-//Sets up the event then adds the event to the the list of running events
+//Sets up the event then adds the event to the list of running events
 /datum/round_event/New(my_processing = TRUE)
 	setup()
 	processing = my_processing

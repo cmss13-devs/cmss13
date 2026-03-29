@@ -6,7 +6,6 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
-	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
@@ -23,55 +22,51 @@
 
 	add_cleanable_overlays()
 
-	var/list/turf/open/auto_turf/auto_turf_dirs = list()
-	for(var/direction in GLOB.alldirs)
-		var/turf/open/auto_turf/T = get_step(src, direction)
-		if(!istype(T))
+	var/alist/auto_turf_dirs = alist()
+	for(var/turf/open/auto_turf/auto_neighbor in orange(1, src))
+		if(!auto_neighbor.layers_over(src))
 			continue
+		auto_turf_dirs[get_dir(src, auto_neighbor)] = auto_neighbor
 
-		if(bleed_layer >= T.bleed_layer)
-			continue
+	if(length(auto_turf_dirs))
+		var/list/handled_dirs = list()
+		var/list/unhandled_dirs = list()
+		for(var/direction in GLOB.diagonals)
+			var/x_dir = direction & (direction-1)
+			var/y_dir = direction - x_dir
 
-		auto_turf_dirs["[direction]"] = T
+			if(!(direction in auto_turf_dirs))
+				unhandled_dirs |= x_dir
+				unhandled_dirs |= y_dir
+				continue
 
-	var/list/handled_dirs = list()
-	var/list/unhandled_dirs = list()
-	for(var/direction in GLOB.diagonals)
-		var/x_dir = direction & (direction-1)
-		var/y_dir = direction - x_dir
+			var/turf/open/auto_turf/xy_turf = auto_turf_dirs[direction]
+			if((x_dir in auto_turf_dirs) && (y_dir in auto_turf_dirs))
+				var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
+				var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+				I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+				overlays += I
+				handled_dirs += x_dir
+				handled_dirs += y_dir
+				continue
 
-		if(!("[direction]" in auto_turf_dirs))
-			unhandled_dirs |= x_dir
-			unhandled_dirs |= y_dir
-			continue
-
-		var/turf/open/auto_turf/xy_turf = auto_turf_dirs["[direction]"]
-		if(("[x_dir]" in auto_turf_dirs) && ("[y_dir]" in auto_turf_dirs))
-			var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
+			var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
 			var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
-			handled_dirs += "[x_dir]"
-			handled_dirs += "[y_dir]"
-			continue
+			unhandled_dirs |= x_dir
+			unhandled_dirs |= y_dir
 
-		var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
-		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
-		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
-		overlays += I
-		unhandled_dirs |= x_dir
-		unhandled_dirs |= y_dir
-
-	for(var/direction in unhandled_dirs)
-		if(("[direction]" in auto_turf_dirs) && !("[direction]" in handled_dirs))
-			var/turf/open/auto_turf/turf = auto_turf_dirs["[direction]"]
-			var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
-			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
-			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
-			overlays += I
+		for(var/direction in unhandled_dirs)
+			if((direction in auto_turf_dirs) && !(direction in handled_dirs))
+				var/turf/open/auto_turf/turf = auto_turf_dirs[direction]
+				var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
+				var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
+				I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+				overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
@@ -94,10 +89,6 @@
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
-
-	var/area/my_area = loc
-	if(my_area.lighting_effect)
-		overlays += my_area.lighting_effect
 
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -130,7 +121,7 @@
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
-					if(singe_target.scorchable && !singe_target.scorchedness)  //much recurision checking
+					if(singe_target.scorchable && !singe_target.scorchedness)  //much recursion checking
 						singe_target.scorch(1)
 
 	update_icon()
@@ -166,6 +157,58 @@
 /turf/open/river
 	can_bloody = FALSE
 	supports_surgery = FALSE
+
+//Slipery slope
+/turf/open/slippery
+	name = "sloped roof"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grass1"
+	is_weedable = NOT_WEEDABLE
+
+/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(isliving(mover))
+		return FALSE
+
+/turf/open/slippery/Entered(atom/movable/crosser)
+	. = ..()
+	if(isobserver(crosser) || crosser.anchored)
+		return
+
+	if(!(isitem(crosser) || isliving(crosser)))
+		return
+
+	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+
+/turf/open/slippery/hull
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+
+/turf/open/slippery/hull/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/hull/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/dir/northwest
+	dir = NORTHWEST
+
 
 // Prison grass
 /turf/open/organic/grass
@@ -694,16 +737,16 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
 					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
-						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
+						to_chat(H, SPAN_WARNING("Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
 			river_slowdown -= 0.7
 			if(isboiler(C))
 				river_slowdown -= 1
+		river_slowdown = max(0, river_slowdown)
 
-		var/new_slowdown = C.next_move_slowdown + river_slowdown
-		C.next_move_slowdown = new_slowdown
+		C.next_move_slowdown += river_slowdown
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -762,6 +805,9 @@
 
 /turf/open/gm/river/pool
 	name = "pool"
+
+/turf/open/gm/river/pool/no_overlay
+	no_overlay = TRUE
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
@@ -946,6 +992,15 @@
 /turf/open/asphalt/cement/cement15
 	icon_state = "cement15"
 
+/turf/open/asphalt/cement/cement18
+	icon_state = "cement18"
+
+/turf/open/asphalt/cement/cement19
+	icon_state = "cement19"
+
+/turf/open/asphalt/cement/cement16
+	icon_state = "cement16"
+
 /turf/open/asphalt/cement/cement2
 	icon_state = "cement2"
 
@@ -1119,7 +1174,7 @@
 /turf/open/jungle/water
 	bushes_spawn = 0
 	name = "murky water"
-	desc = "thick, murky water"
+	desc = "Thick, murky water."
 	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
@@ -1144,7 +1199,7 @@
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			to_chat(M, SPAN_NOTICE(" You feel something slithering around your legs."))
+			to_chat(M, SPAN_NOTICE("You feel something slithering around your legs."))
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
@@ -1388,6 +1443,11 @@
 	allow_construction = FALSE
 	supports_surgery = TRUE
 
+/turf/open/shuttle/lifeboat/catwalk
+	icon = 'icons/turf/escapepods.dmi'
+	icon_state = "floor3"
+	dir = EAST
+
 /turf/open/shuttle/lifeboat/plating_striped
 	icon_state = "plating_striped"
 
@@ -1546,3 +1606,13 @@
 
 /turf/open/shuttle/vehicle/floor_3_9_1
 	icon_state = "floor_3_9_1"
+
+/turf/open/walkable_lattice
+	desc = "A support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "latticefull"
+
+/turf/open/walkable_lattice/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	return ..()

@@ -13,7 +13,7 @@ CLIENT_VERB(open_escape_menu)
 	if (!isnull(current_escape_menu))
 		qdel(current_escape_menu)
 		return
-
+	SEND_SIGNAL(src, COMSIG_CLIENT_ESCAPE_MENU_OPEN)
 	reset_held_keys()
 
 	new /datum/escape_menu(src)

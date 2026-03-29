@@ -224,6 +224,6 @@
 		if(watertemp == "boiling")
 			C.bodytemperature = min(T90C, C.bodytemperature + BODYTEMP_HEATING_MAX)
 			C.recalculate_move_delay = TRUE
-			C.apply_damage(5, BURN)
+			C.apply_damage(5, BURN, enviro=TRUE)
 			to_chat(C, SPAN_DANGER("The water is searing!"))
 			return

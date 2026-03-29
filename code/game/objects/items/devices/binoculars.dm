@@ -61,10 +61,6 @@
 	user.update_inv_r_hand()
 	user.update_inv_l_hand()
 
-/obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
-	. = ..()
-	on_unset_interaction(user)
-
 /obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 	RegisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION, PROC_REF(interaction_handler))
@@ -86,7 +82,7 @@
 /obj/item/device/binoculars/range
 	name = "rangefinder"
 	gender = NEUTER
-	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
+	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire its coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
 	item_state = "rangefinder"
 	var/laser_cooldown = 0
@@ -126,7 +122,7 @@
 
 /obj/item/device/binoculars/range/on_unset_interaction(mob/user)
 	..()
-	if(user && coord && !zoom)
+	if(coord && !zoom)
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
@@ -216,12 +212,12 @@
 	if(rangefinder_popup)
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y], HEIGHT [last_z].")))
 
 /obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Binoculars", "[src.name]")
+		ui = new(user, src, "Binoculars", "[capitalize(name)]")
 		ui.open()
 
 /obj/item/device/binoculars/range/ui_state(mob/user)
@@ -302,11 +298,11 @@
 /obj/item/device/binoculars/range/designator/on_unset_interaction(mob/user)
 	..()
 
-	if(user && (laser || coord) && !zoom)
+	if(!zoom)
 		if(laser)
-			qdel(laser)
+			QDEL_NULL(laser)
 		if(coord)
-			qdel(coord)
+			QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/designator/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
 	set waitfor = 0
@@ -540,7 +536,13 @@
 
 	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	return TRUE
-
+/obj/item/device/binoculars/range/designator/spotter/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Spot Target on equip in hands. Avoids toggle in pockets
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/spotter_target) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
@@ -576,7 +578,7 @@
 /obj/item/device/binoculars/designator/verb/switch_mode()
 	set category = "Weapons"
 	set name = "Change Laser Setting"
-	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for Mortars"
+	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for Mortars."
 	set src in usr
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -594,7 +596,7 @@
 			return
 		if(2)
 			las_mode = 0
-			to_chat(usr, SPAN_WARNING(" System offline, now this is just a pair of binoculars but heavier."))
+			to_chat(usr, SPAN_WARNING("System offline, now this is just a pair of binoculars but heavier."))
 			update_icon()
 			return
 	return
@@ -610,11 +612,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			to_chat(usr, SPAN_WARNING(" Airstrike plane is now N-S! If using mortars its now HE rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now N-S! If using mortars its now HE rounds!"))
 			return
 		if(1)
 			plane_toggle = 0
-			to_chat(usr, SPAN_WARNING(" Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
 			return
 	return
 
@@ -632,6 +634,10 @@
 		return FALSE
 	if(target.z != user.z)
 		return FALSE
+	var/area/targ_area = get_area(targeted_atom)
+	if(targ_area.ceiling >= CEILING_PROTECTION_TIER_1)
+		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+		return
 
 	var/list/modifiers = params2list(params) //Only single clicks.
 	if(modifiers[MIDDLE_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
@@ -648,7 +654,7 @@
 		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 5 minutes from lasing the target."))
 		return 0
 
-	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
+	to_chat(user, SPAN_BOLDNOTICE("You start lasing the target area."))
 	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) [ADMIN_JMP(T)].") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
 	if(las_mode == 1 && !las_r) // Heres our IR bomb code.
@@ -672,7 +678,13 @@
 		var/turf/target_2 = locate(T.x,T.y,T.z)
 		var/turf/target_3 = locate(T.x - offset_x,T.y - offset_y,T.z)
 		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
-		sleep(50) //AWW YEAH
+		playsound(target, 'sound/effects/rocketpod_fire.ogg', 70, 1)
+		sleep(2 SECONDS) //AWW YEAH
+		new /obj/effect/overlay/temp/blinking_laser(target)
+		new /obj/effect/overlay/temp/blinking_laser(target_2)
+		new /obj/effect/overlay/temp/blinking_laser(target_3)
+		new /obj/effect/overlay/temp/blinking_laser(target_4)
+		sleep(1 SECONDS)
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
 		flame_radius(cause_data, 3, target, , , , , )
 		explosion(target,  -1, 2, 3, 5, , , , cause_data)
@@ -710,6 +722,10 @@
 		var/turf/target = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_2 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
+		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+		sleep(4 SECONDS)
+		new /obj/effect/overlay/temp/blinking_laser(target)
+		sleep(1 SECONDS)
 		if(target && istype(target))
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
@@ -723,7 +739,7 @@
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
 			return
 
-/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
+/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, especially since its fucken already in the code.
 	lasering(user, targeted_atom, params)
 	return
 

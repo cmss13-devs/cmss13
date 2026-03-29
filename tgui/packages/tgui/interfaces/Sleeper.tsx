@@ -10,6 +10,7 @@ import {
   NoticeBox,
   ProgressBar,
   Section,
+  Tooltip,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
@@ -256,34 +257,27 @@ const SleeperChemicals = (props) => {
   const { occupant, chemicals, maxchem, amounts } = data;
   return (
     <Section title="Occupant Chemicals">
-      {chemicals.map((chem, i) => {
-        let barColor = '';
-        let odWarning;
-        if (chem.overdosing) {
-          barColor = 'bad';
-          odWarning = (
-            <Box color="bad">
-              <Icon name="exclamation-circle" />
-              &nbsp; Overdosing!
-            </Box>
-          );
-        } else if (chem.od_warning) {
-          barColor = 'average';
-          odWarning = (
-            <Box color="average">
-              <Icon name="exclamation-triangle" />
-              &nbsp; Close to overdosing
-            </Box>
-          );
-        }
-        return (
-          <Box key={i} backgroundColor="rgba(0, 0, 0, 0.33)" mb="0.5rem">
-            <Section
-              title={chem.title}
-              mx="0"
-              lineHeight="18px"
-              buttons={odWarning}
-            >
+      <LabeledList>
+        {chemicals.map((chem, i) => {
+          let barColor = '';
+          let odWarning;
+          if (chem.overdosing) {
+            barColor = 'bad';
+            odWarning = (
+              <Tooltip content="Overdosing!">
+                <Icon name="exclamation-circle" />
+              </Tooltip>
+            );
+          } else if (chem.od_warning) {
+            barColor = 'average';
+            odWarning = (
+              <Tooltip content="Close to overdosing">
+                <Icon name="exclamation-triangle" />
+              </Tooltip>
+            );
+          }
+          return (
+            <LabeledList.Item key={i} label={chem.title}>
               <Flex align="flex-start">
                 <ProgressBar
                   value={chem.occ_amount / maxchem}
@@ -291,7 +285,7 @@ const SleeperChemicals = (props) => {
                   title="Amount of chemicals currently inside the occupant / Total amount injectable by this machine"
                   mr="0.5rem"
                 >
-                  {chem.pretty_amount}/{maxchem}u
+                  {odWarning} {chem.pretty_amount}/{maxchem}u
                 </ProgressBar>
                 {amounts.map((a, i) => (
                   <Button
@@ -322,10 +316,10 @@ const SleeperChemicals = (props) => {
                   </Button>
                 ))}
               </Flex>
-            </Section>
-          </Box>
-        );
-      })}
+            </LabeledList.Item>
+          );
+        })}
+      </LabeledList>
     </Section>
   );
 };

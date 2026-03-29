@@ -2,7 +2,8 @@
 	name = "clothing"
 	pickupvol = 40
 	dropvol = 40
-	var/eye_protection = EYE_PROTECTION_NONE //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+
+	// armor protection values
 	var/armor_melee = 0
 	var/armor_bullet = 0
 	var/armor_laser = 0
@@ -11,32 +12,111 @@
 	var/armor_bio = 0
 	var/armor_rad = 0
 	var/armor_internaldamage = 0
+	var/eye_protection = EYE_PROTECTION_NONE
+
+	/// movement reduction/addition given by the clothing item
 	var/movement_compensation = 0
+
+	/// determines if you can unequip the item just by pressing on it on your inventory
 	var/drag_unequip = FALSE
-	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
-	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
-	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
+	///which type of blood overlay to use on the mob when bloodied
+	var/blood_overlay_type = ""
+
+	/// Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
+	var/list/clothing_traits
+
+	///are the clothing traits that are applied to the item active (acting on the mob) or not?
+	var/clothing_traits_active = TRUE
+
+	/// the list of selectable styles for the style system
+	var/list/style_postfix = list()
 
 	// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
-	/// Whether this item can be converted into an accessory when used
-	var/can_become_accessory = FALSE
+
 	/// default slot for accessories, pathed here for use for non-accessories
 	var/worn_accessory_slot = ACCESSORY_SLOT_DEFAULT
+
 	/// for pathing to different accessory subtypes with unique mechanics
 	var/accessory_path = /obj/item/clothing/accessory
+
 	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
 	var/worn_accessory_limit = 1
 
+	/// icons specific to this clothing item as an accessory
+	var/list/accessory_icons = null
+
+/obj/item/clothing/get_examine_text(mob/user)
+	. = ..()
+	for(var/obj/item/clothing/accessory/attached in accessories)
+		. += "[icon2html(attached, user)] \A [attached] is [attached.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
+
+	if(flags_obj & OBJ_IS_STYLISH) // currently only in the clothing parent, not like theres a use for it currently in other item subtypes
+		.+= SPAN_GREEN("This object is considered stylish. Press unique-action to change its style!")
+
+	if(flags_obj & OBJ_CAN_ACCESSORIZE)
+		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
+
+/obj/item/clothing/unique_action(mob/user)
+	if(flags_obj & OBJ_IS_STYLISH)
+		change_style(user)
+
+// helmet garbs are technically supported out of the box, but it requires following the naming convention of item_state being "base_style_X", otherwise it may just show empty, but its hardly going to be a problem since you might just be changing the style for the specific look itself anyway - nihi
+/obj/item/clothing/proc/change_style(mob/user)
+	if(!length(style_postfix))
+		return
+
+	var/base_state = initial(icon_state)
+
+	if(!user.client || user.client.prefs?.no_radials_preference)
+		var/current_index = 0
+		for(var/i = 1 to length(style_postfix))
+			if(item_state == "[base_state]_[style_postfix[i]]")
+				current_index = i
+				break
+
+		var/next_index = (current_index % length(style_postfix)) + 1
+		var/new_postfix = style_postfix[next_index]
+
+		item_state = "[base_state]_[new_postfix]"
+		update_clothing_icon()
+
+		to_chat(user, SPAN_GREEN("You change the style of [src]."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			if(item_state in icon_states(item_icons[WEAR_AS_GARB]))
+				LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
+				to_chat(user, SPAN_ORANGE("... and you also change its helmet garb style!"))
+		return
+
+	var/list/choices = list()
+
+	// radial stuff
+	for(var/postfix in style_postfix)
+		choices[postfix] = image(icon = accessory_icons[WEAR_BODY], icon_state = "[base_state]_[postfix]")
+
+	var/choice = show_radial_menu(user, user, choices, require_near = TRUE)
+	if(!choice)
+		return
+
+	item_state = "[base_state]_[choice]"
+	update_clothing_icon()
+
+	to_chat(user, SPAN_GREEN("You change the style of [src]."))
+	if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+		if(item_state in icon_states(item_icons[WEAR_AS_GARB]))
+			LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
+			to_chat(user, SPAN_ORANGE("... and you also change its helmet garb style!"))
+
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
-	if(!can_become_accessory)
+	if(!(flags_obj & OBJ_CAN_ACCESSORIZE))
 		to_chat(user, SPAN_NOTICE("[src] cannot be turned into an accessory."))
 		return
 
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
 	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
 	new_accessory.name = name
+	new_accessory.color = color
 	new_accessory.icon = icon
 	new_accessory.icon_state = icon_state
 	new_accessory.desc = desc
@@ -49,9 +129,9 @@
 	new_accessory.removable = TRUE
 	new_accessory.worn_accessory_slot = worn_accessory_slot
 	new_accessory.worn_accessory_limit = worn_accessory_limit
-	new_accessory.can_become_accessory = can_become_accessory
+	new_accessory.flags_obj = OBJ_CAN_ACCESSORIZE
 
-	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
+	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = (item_state || icon_state), "dir" = SOUTH) // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
 
 	new_accessory.original_item_path = src.type
 
@@ -59,7 +139,7 @@
 		user.put_in_hands(new_accessory)
 
 	to_chat(user, SPAN_NOTICE("You will start wearing [src] as an accessory."))
-	// we dont want duplicates man
+	// we don't want duplicates man
 	qdel(src)
 
 /obj/item/clothing/proc/revert_from_accessory(mob/user)
@@ -74,6 +154,7 @@
 		return
 
 	if(ismob(loc) && loc == user)
+		original_item.color = access.color
 		user.put_in_hands(original_item)
 
 	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))
@@ -82,7 +163,7 @@
 
 /obj/item/clothing/attack_self(mob/user)
 	. = ..()
-	if(can_become_accessory)
+	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		convert_to_accessory(user)
 
 /obj/item/clothing/get_examine_line(mob/user)
@@ -232,6 +313,7 @@
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -293,6 +375,7 @@
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	flags_armor_protection = BODY_FLAG_HANDS
+	flags_bodypart_hidden = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
@@ -346,7 +429,7 @@
 	set src in usr
 
 	if(!(flags_inventory & ALLOWINTERNALS))
-		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		to_chat(usr, SPAN_NOTICE("This mask doesn't support internals."))
 		return
 
 	if(!iscarbon(usr))
@@ -421,6 +504,7 @@
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
 
 	slowdown = SHOES_SLOWDOWN
@@ -522,12 +606,24 @@
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
 				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+
+	if(LAZYLEN(accessories))
+		for(var/obj/item/clothing/accessory/usable in accessories)
+			if(LAZYLEN(usable.actions))
+				for(var/datum/action/action in usable.actions)
+					action.give_to(user)
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
 	if(is_valid_slot(slot, TRUE))
 		for(var/trait in clothing_traits)
 			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+
+	if(LAZYLEN(accessories))
+		for(var/obj/item/clothing/accessory/usable in accessories)
+			if(LAZYLEN(usable.actions))
+				for(var/datum/action/action in usable.actions)
+					action.remove_from(user)
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

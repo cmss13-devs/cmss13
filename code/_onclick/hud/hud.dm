@@ -73,10 +73,13 @@
 
 	var/list/equip_slots = list()
 
+	var/atom/movable/screen/screentip/overwatch/overwatch_text
+
 
 /datum/hud/New(mob/owner)
 	mymob = owner
 	hide_actions_toggle = new
+	hide_actions_toggle.update_button_icon(owner)
 
 	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)- /atom/movable/screen/plane_master/rendering_plate - /atom/movable/screen/plane_master/open_space)
 		var/atom/movable/screen/plane_master/instance = new mytype()
@@ -93,6 +96,9 @@
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
+
+	overwatch_text = new(null, src)
+	static_inventory += overwatch_text
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
@@ -163,6 +169,8 @@
 
 	QDEL_LIST_ASSOC_VAL(plane_masters)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
+
+	QDEL_NULL(overwatch_text)
 
 	return ..()
 

@@ -4,16 +4,20 @@
  * @license MIT
  */
 
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'tgui/backend';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
 
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
+import { rebuildChat } from './chat/actions';
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
 import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
+import { selectHighlightKeywords } from './settings/selectors';
 
 export const Panel = (props) => {
   const audio = useAudio();
@@ -27,42 +31,51 @@ export const Panel = (props) => {
     }
   }
 
+  // Ensures the *current* values are retroactively highlighted.
+  const dispatch = useDispatch();
+  const honk = useSelector(selectHighlightKeywords);
+  useEffect(() => {
+    dispatch(rebuildChat());
+  }, [honk]);
+
   return (
     <Pane theme={settings.theme}>
       <Stack fill vertical>
-        <Stack.Item>
-          <Section fitted>
-            <Stack mr={1} align="center">
-              <Stack.Item grow overflowX="auto">
-                <ChatTabs />
-              </Stack.Item>
-              <Stack.Item>
-                <PingIndicator />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  color="grey"
-                  selected={audio.visible}
-                  icon="music"
-                  tooltip="Music player"
-                  tooltipPosition="bottom-start"
-                  onClick={() => audio.toggle()}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  icon={settings.visible ? 'times' : 'cog'}
-                  selected={settings.visible}
-                  tooltip={
-                    settings.visible ? 'Close settings' : 'Open settings'
-                  }
-                  tooltipPosition="bottom-start"
-                  onClick={() => settings.toggle()}
-                />
-              </Stack.Item>
-            </Stack>
-          </Section>
-        </Stack.Item>
+        {!game.tvMode && (
+          <Stack.Item>
+            <Section fitted>
+              <Stack mr={1} align="center">
+                <Stack.Item grow overflowX="auto">
+                  <ChatTabs />
+                </Stack.Item>
+                <Stack.Item>
+                  <PingIndicator />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    color="grey"
+                    selected={audio.visible}
+                    icon="music"
+                    tooltip="Music player"
+                    tooltipPosition="bottom-start"
+                    onClick={() => audio.toggle()}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon={settings.visible ? 'times' : 'cog'}
+                    selected={settings.visible}
+                    tooltip={
+                      settings.visible ? 'Close settings' : 'Open settings'
+                    }
+                    tooltipPosition="bottom-start"
+                    onClick={() => settings.toggle()}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Section>
+          </Stack.Item>
+        )}
         {audio.visible && (
           <Stack.Item>
             <Section>
@@ -77,7 +90,7 @@ export const Panel = (props) => {
         )}
         <Stack.Item grow>
           <Section fill fitted position="relative">
-            <Pane.Content scrollable>
+            <Pane.Content scrollable={!game.tvMode}>
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>

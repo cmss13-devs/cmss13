@@ -1,0 +1,47 @@
+:root {
+	--bg-color: #272727;
+}
+
+body.paper {
+	background-color: var(--bg-color);
+}
+
+div.punchcard-container {
+	position: relative;
+}
+
+table.punchcard {
+	position: absolute;
+	left: 40px;
+	top: 45px;
+	border-spacing: 8px;
+	table-layout: fixed;
+	width: max-content;
+}
+
+tr.punchcard {
+	height: 8.8px;
+}
+
+td.punchspacer {
+	width: 5.5px;
+}
+
+td.punchslot {
+	width: 25px;
+}
+
+td.punched {
+	background-color: var(--bg-color);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+td.punchmargin {
+	width: 60px;
+	max-width: 60px;
+	overflow: clip;
+	vertical-align: top;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+}

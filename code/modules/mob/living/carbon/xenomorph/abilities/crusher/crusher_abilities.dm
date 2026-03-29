@@ -21,7 +21,7 @@
 	tracks_target = FALSE
 	var/direct_hit_damage = 60
 	var/frontal_armor = 15
-	// Object types that dont reduce cooldown when hit
+	// Object types that don't reduce cooldown when hit
 	var/list/not_reducing_objects = list()
 
 

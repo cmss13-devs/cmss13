@@ -5,6 +5,11 @@
 	var/maxHealth = 100 //Maximum health that should be possible.
 	var/health = 100 //A mob's health
 
+	///How much health a mob has when it dies.
+	var/health_threshold_dead = -100
+	///How much health a mob has when it goes into crit state.
+	var/health_threshold_crit = -50
+
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
 	var/bruteloss = 0 //Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
 	var/oxyloss = 0 //Oxygen depravation damage (no air in lungs)
@@ -55,7 +60,6 @@
 	var/fire_stacks = 0 //Tracks how many stacks of fire we have on, max is
 	var/datum/reagent/fire_reagent
 
-	var/is_being_hugged = 0 //Is there a hugger humping our face?
 	var/chestburst = 0 // 0: normal, 1: bursting, 2: bursted.
 	var/first_xeno = FALSE //Are they the first wave of infected?
 	var/in_stasis = FALSE //Is the mob in stasis bag?

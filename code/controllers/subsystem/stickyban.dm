@@ -24,8 +24,9 @@ SUBSYSTEM_DEF(stickyban)
 	for(var/datum/view_record/stickyban_matched_cid/matched_cid as anything in get_impacted_cid_records(computer_id))
 		stickyban_ids += matched_cid.linked_stickyban
 
-	for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in get_impacted_ip_records(address))
-		stickyban_ids += matched_ip.linked_stickyban
+	if(!SSipcheck.is_whitelisted(ckey))
+		for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in get_impacted_ip_records(address))
+			stickyban_ids += matched_ip.linked_stickyban
 
 	if(!length(stickyban_ids))
 		return FALSE
@@ -124,6 +125,9 @@ SUBSYSTEM_DEF(stickyban)
 
 /// Adds a CID match to the specified stickyban.
 /datum/controller/subsystem/stickyban/proc/add_matched_cid(existing_ban_id, cid)
+	if(cid in CONFIG_GET(str_list/ignored_cids))
+		return
+
 	if(length(DB_VIEW(/datum/view_record/stickyban_matched_cid,
 		DB_AND(
 			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
@@ -202,6 +206,9 @@ SUBSYSTEM_DEF(stickyban)
  * Connections matching this CID will be blocked - provided the linked stickyban is active.
  */
 /datum/controller/subsystem/stickyban/proc/get_impacted_cid_records(cid)
+	if(cid in CONFIG_GET(str_list/ignored_cids))
+		return list()
+
 	return DB_VIEW(/datum/view_record/stickyban_matched_cid,
 			DB_COMP("cid", DB_EQUALS, cid)
 		)

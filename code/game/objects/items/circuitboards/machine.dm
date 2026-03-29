@@ -67,7 +67,7 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/pacman
 	name = "Circuit Board (PACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman
 
 	frame_desc = "Requires 1 Matter Bin, 1 Micro-Laser, 2 Pieces of Cable, and 1 Capacitor."
 	req_components = list(
@@ -79,12 +79,12 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/pacman/super
 	name = "Circuit Board (SUPERPACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman/super
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/super
 
 
 /obj/item/circuitboard/machine/pacman/mrs
 	name = "Circuit Board (MRSPACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman/mrs
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/mrs
 
 
 /obj/item/circuitboard/machine/rdserver
@@ -264,7 +264,7 @@ to destroy them and players will be able to make replacements.
 	name = "Circuit Board (Subspace Broadcaster)"
 	build_path = /obj/structure/machinery/telecomms/broadcaster
 
-	frame_desc = "Requires 2 Micro Manipulators, 1 Cable Coil, 1 Hyperwave Filter, 1 Ansible Crystal and 2 High-Powered Micro-Lasers. "
+	frame_desc = "Requires 2 Micro Manipulators, 1 Cable Coil, 1 Hyperwave Filter, 1 Ansible Crystal and 2 High-Powered Micro-Lasers."
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
@@ -286,7 +286,7 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/ghettosmes
 	name = "Circuit board (makeshift PSU)"
-	desc = "An APC circuit repurposed into some power storage device controller"
+	desc = "An APC circuit repurposed into some power storage device controller."
 	build_path = /obj/structure/machinery/power/smes/batteryrack/makeshift
 	frame_desc = "Requires 3 power cells."
 	req_components = list(/obj/item/cell = 3)

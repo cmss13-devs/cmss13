@@ -9,8 +9,8 @@ GLOBAL_DATUM(escape_menu_details, /atom/movable/screen/escape_menu/details)
 	return GLOB.escape_menu_details
 
 /atom/movable/screen/escape_menu/details
-	screen_loc = "EAST:-180,NORTH:-25"
-	maptext_height = 100
+	screen_loc = "EAST:-180,NORTH:-40"
+	maptext_height = 200
 	maptext_width = 200
 
 /atom/movable/screen/escape_menu/details/Initialize(mapload)
@@ -42,6 +42,7 @@ GLOBAL_DATUM(escape_menu_details, /atom/movable/screen/escape_menu/details)
 			Round Time: [duration2text()]<br />
 			[SSmapping.configs[GROUND_MAP].disable_ship_map ? "" : "Ship: [ship_map]<br />"]
 			Ground: [ground_map]<br />
+			Players: [length(GLOB.clients)]
 		</span>
 	"}
 

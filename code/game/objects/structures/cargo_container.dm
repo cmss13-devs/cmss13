@@ -34,6 +34,20 @@
 
 	return XENO_ATTACK_ACTION
 
+/obj/structure/cargo_container/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/cargo_container/ex_act(severity, direction)
 	. = ..()
 	update_health(severity * explosion_damage_multiplier)
@@ -61,6 +75,10 @@
 /obj/structure/cargo_container/grant
 	name = "Grant Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from The Grant Corporation, a manufacturer of medical and biotechnological parts.\nYou remember hearing about one of their latest drugs, and how dangerous it was... though they claimed to be close to finding a solution."
+
+/obj/structure/cargo_container/grant/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/grant)
 
 /obj/structure/cargo_container/grant/left
 	icon_state = "grant_l"
@@ -97,6 +115,10 @@
 	name = "Weyland-Yutani Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
 
+/obj/structure/cargo_container/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/cargo_container/wy/left
 	icon_state = "wy_l"
 
@@ -120,8 +142,12 @@
 	icon_state = "wy2_r"
 
 /obj/structure/cargo_container/armat
-	name = "ARMAT Cargo Container"
-	desc = "A large industrial container. This one is from ARMAT, the defense contractors behind the M41A and other marine weaponry."
+	name = "Armat Cargo Container"
+	desc = "A large industrial container. This one is from Armat, the defense contractors behind the M41A and other marine weaponry."
+
+/obj/structure/cargo_container/armat/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/structure/cargo_container/armat/left
 	icon_state = "armat_l"
@@ -135,6 +161,10 @@
 /obj/structure/cargo_container/hd
 	name = "Hyperdyne Systems Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Hyperdyne Systems, a manufacturer of synthetics, prosthetics, and weapons.\nWe don't speak about their former affiliations with the UPP."
+
+/obj/structure/cargo_container/hd/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/hyperdyne)
 
 /obj/structure/cargo_container/hd/left
 	icon_state = "hd_l"
@@ -182,6 +212,10 @@
 	bound_height = 32 //It's smaller than the rest
 	layer = ABOVE_XENO_LAYER //Due to size, needs to be above player and xenos
 
+/obj/structure/cargo_container/kelland/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/structure/cargo_container/kelland/left
 	icon_state = "kelland_l"
 
@@ -205,6 +239,10 @@
 	name = "Lockmart Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Lockheed Martin, a manufacturer of spaceships and spaceship parts.\nThey made the USCSS Nostromo... whatever happened to that ship, anyways?"
 
+/obj/structure/cargo_container/lockmart/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/lockmart)
+
 /obj/structure/cargo_container/lockmart/left
 	icon_state = "lockmart_l"
 
@@ -217,6 +255,10 @@
 /obj/structure/cargo_container/seegson
 	name = "Seegson Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Seegson, they makes just about anything and everything.\nYou notice this container has a peeling note on it, saying all contents were transferred from another station decades ago, how long has it been here?"
+
+/obj/structure/cargo_container/seegson/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/structure/cargo_container/seegson/left
 	icon_state = "seegson_l"
@@ -237,7 +279,7 @@
 		if(H.species.can_shred(H))
 
 			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
-					SPAN_WARNING("You beat against [src] to no effect"),
+					SPAN_WARNING("You beat against [src] to no effect."),
 					"You hear twisting metal.")
 
 	if(!damage_dealt)

@@ -1,0 +1,4 @@
+/obj/structure/pipes:
+  banned_neighbors:
+    /obj/structure/pipes:
+      identical: true

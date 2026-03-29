@@ -11,12 +11,14 @@
 
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return r_hand
 	else
 		return l_hand
 
 /mob/proc/get_hands()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return list(l_hand, r_hand)
 	else
@@ -30,6 +32,24 @@
 /mob/proc/get_held_index_of_item(obj/item/I)
 	var/list/handen = get_hands()
 	return handen.Find(I)
+
+/**
+ * Checks if this mob is holding a certain type of item in either active or inactive hand
+ * returns TRUE if found FALSE if not
+ * Args:
+ * * typepath: typepath to check for
+ * * mainhand: Whether to check active hand (otherwise inactive)
+ */
+/mob/proc/is_holding_item_of_type(typepath, mainhand=TRUE)
+	if(istype(get_held_item(), typepath))
+		return TRUE
+	if(mainhand)
+		if(istype(get_active_hand(), typepath))
+			return TRUE
+	else
+		if(istype(get_inactive_hand(), typepath))
+			return TRUE
+	return FALSE
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(obj/item/moved_item)

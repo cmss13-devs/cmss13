@@ -1,5 +1,0 @@
-author: "thevandie"
-delete-after: True
-changes:
-  - rscadd: "Adds a new description to the plump helmet mushroom."
-  - rscdel: "Deletes the weird description on the plump helmet mushroom."

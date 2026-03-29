@@ -18,6 +18,7 @@
 
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_GENERAL, ACCESS_WY_SECURITY, ACCESS_CIVILIAN_BRIG)
+	shield_flags = CAN_SHIELD_BASH
 	var/stunforce = 50
 	var/status = FALSE //whether the thing is on or not
 	var/obj/item/cell/bcell = null

@@ -211,3 +211,143 @@
   - balance: Adjusted some weapon statistics of the Desert Eagle/M1911.
   realforest2001:
   - bugfix: Blended wall shutters can now be used properly in east-west directions.
+2025-08-21:
+  MistChristmas:
+  - bugfix: Fix flashlight grip being listed twice for M37.
+  thevandie:
+  - rscadd: Adds a new description to the plump helmet mushroom.
+  - rscdel: Deletes the weird description on the plump helmet mushroom.
+2025-08-23:
+  BOBAMAx:
+  - bugfix: CL on solaris pmc insert won't spawn as a CMB marshal any more
+  Blue-Fox5:
+  - spellcheck: Fixed berserkers strain description giving out the wrong number of
+      rage you can obtain
+  Blundir:
+  - rscadd: yautja, working joes, provost now have unique bubbles types to them
+  - rscadd: yautja translator now has a unique speech and typing bubble
+  - rscadd: speech bubbles now render over huds like med/sec huds
+  - rscadd: whisper now shows runechat message above your head (if you are in range)
+  - imageadd: a lot of new bubble icons, resprite of old ones, adding a smooth fade
+      out animation to all of them
+  - bugfix: whispering while laying down (like in crit) no longer shows your speech
+      bubble under your legs
+  Icarus-The-Sun:
+  - qol: Allows Syringes to be worn in Suit Storage, Ear Slots, and Belt Slots
+  MeH0y:
+  - rscadd: Blooded Thrall system
+  - balance: thralls no longer have access to human weaponry
+  - bugfix: thralls can now interact with their mask functions
+  - bugfix: thralls can now use the combi-stick
+  - bugfix: thrall SD now works properly
+  - bugfix: thralls no longer go bald
+  - imageadd: Blooded thrall hud icon, new thrall armor set with 5 material types.
+  - maptweak: Added blooded thrall vendor on upper-deck, replaced the lower-deck youngblood
+      showers with thrall quarters.
+  Red-byte3D:
+  - bugfix: Fixes some broken vending code so you can properly vend apc gear if an
+      apc is "chosen"
+  - bugfix: Spec weapons no longer become null when you are wielding them near an
+      explosion
+  SirNightKnight:
+  - bugfix: fixed light fixture deconstruction getting stuck on removing the light
+      fitting.
+  TheGamerdk:
+  - spellcheck: Stationary -> Stationery in the CL's briefcase
+  - bugfix: You can no longer tunnel in vehicle interiors
+  - qol: You can no longer climb with C4 in your hands, as you're more likely to want
+      to plant it on the wall.
+  - bugfix: Can no longer extract infinite metal from walls
+  Vicacrov:
+  - qol: Hivelords can now evolve from 4 minutes instead of 3 minutes, the same time
+      as Defenders (drones should be around at 180/200 evolution when this announcement
+      comes, this is just to cut down on extra announcements).
+  jupyterkat:
+  - bugfix: fixed boiler being immune to crossing flames
+2025-08-24:
+  realforest2001:
+  - rscadd: Added floor logo decals for the USCM and WY
+2025-08-25:
+  FloranOtten:
+  - bugfix: fixed a runtime caused by fulton name formatting
+  TheGamerdk:
+  - bugfix: Synth heads will no longer be shot at by sentries
+  - bugfix: The Overwatch console now properly adresses the ranks of Lt.Col+
+  - qol: Forsaken ERT no longer pretends to be a distress beacon
+  - bugfix: FORECON CO no longer gets 2 guns when they love the M1911C
+  - bugfix: Further enforced adjacency requirements when planting C4 and subtypes
+  - bugfix: ASRS console UI now respects being broken/depowered/etc
+  - bugfix: Sentries will correctly handle mobs in inventories.
+  - bugfix: A dead King no longer stomps on their enemies
+  realforest2001:
+  - rscadd: Added designated Forecon listing on the crew monitor.
+2025-08-26:
+  CeUvi:
+  - imageadd: resprited loadout headset
+  SirNightKnight:
+  - bugfix: fixed the right inhand sprite for the classic mortar being invisible.
+  - bugfix: fixed the right inhand sprite for OT shells being invisible.
+  Zenith, Crowford:
+  - imageadd: Replaces and tweaks most of the bayonet sprites, adds larger more consistent
+      ones for the TWE, UPP & Antique sprites.
+  realforest2001:
+  - bugfix: Fixes the inhand sprites for all three PKD revolvers to use their existing
+      placeholders.
+2025-08-27:
+  Blue-Fox5:
+  - bugfix: cryotanks breaking no longer say "The floor"
+  Blundir:
+  - rscadd: HPR and RPG resprites, both now have full camo sets, RPG now has empty
+      state
+  - balance: HPR now has a functional folding stock which gives some stats
+  - balance: RPG now comes with interal magnetic harness
+  - bugfix: fixed vulture breaking bipod color on use
+  Gorap:
+  - rscadd: Added PMC CO Variant for Solaris Ridge
+  - rscadd: PMC Field Officer Beret. Slightly better PMC officer beret.
+  - rscadd: Added VP78 Mostly Empty Belt. (Was going to use this before I realized
+      how you can put holsters on people)
+  - rscadd: Added Ext M39 Corpo Variant for FOL.
+  - ui: Added Field Operation Leader Hud UI
+  - imageadd: Added the broken RTO Icons, Added FOL Hud Icon. Using TWE Radiopack
+      Sprite for it.
+  Jesters-Ballad:
+  - spellcheck: Added an m to make Dapening Dampening
+  LTNTS:
+  - maptweak: Adds a button to secure storage from the inside
+  Unknownity:
+  - bugfix: Zombie claws have attack delay against cades again.
+  Zenith:
+  - balance: Rebalanced health values for many Hybrisa map props, Cars, Windows, Shutters
+      ect. Should be much easier to break as both the Marines and Xenos.
+  - balance: Scrape-away is reduced by 5 minutes. Cave walls will now drop at 00:30.
+  - bugfix: Replaced a lot of windows with their correct versions, was reinforced
+      in some cases, as well as reduced the regular window health values.
+  - bugfix: Fixes broken offset road-railings, makes them one instance instead of
+      two per tile.
+  hry-gh:
+  - bugfix: fixes a runtime when people attempt to view the camera of a deleted marine
+  kiVts:
+  - balance: mou given a minor cooldown to closing and opening the breech. most players
+      shouldn't notice it.
+  realforest2001:
+  - bugfix: Made xeno restraints functional.
+  - rscadd: Added strong xeno restraints, that stop slashes.
+2025-08-28:
+  Drathek:
+  - bugfix: Filling an acid trap successfully no longer swipes at it
+  jupyterkat:
+  - rscadd: added spec icon for heavy armor spec
+2025-08-30:
+  Don Cycon:
+  - balance: Replaces flashlights in firesuit closets with M94 flare packets.
+  - balance: Replaces flashlights in survival pouches with lanterns.
+  FloranOtten:
+  - bugfix: Queen eye can now peep into tents
+  LTNTS:
+  - bugfix: fixes inability to do surgery on lifeboat catwalk
+  Lukas-Seltz:
+  - maptweak: Tweaked OT lab to have a better layout for easier use
+  ihatethisengine:
+  - rscadd: Rephrased Renegade defection message and added an announcement for marines
+      when Renegades appear

@@ -117,7 +117,7 @@
 	else
 		active = TRUE
 		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
-	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
+	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they can't be stored anywhere
 	update_icon()
 
 /obj/item/explosive/grenade/prime(force = FALSE)

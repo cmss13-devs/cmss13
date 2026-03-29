@@ -25,8 +25,6 @@
 
 	minimap_icon = "xenoqueen"
 
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
-
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING
@@ -46,6 +44,7 @@
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
 	aura_strength = 6
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -57,7 +56,6 @@
 		/datum/action/xeno_action/activable/destroy,
 		/datum/action/xeno_action/onclick/king_shield,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
@@ -81,6 +79,11 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
+	if(!should_block_game_interaction(src, TRUE)) // don't let admin-level kings mess up alliances
+		hive = GLOB.hive_datum[hivenumber]
+		hive.banned_allies = list("All")
+		if(hive.break_all_alliances())
+			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -91,6 +94,9 @@
 
 /mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
+
+	if(stat == DEAD)
+		return
 
 	var/turf/new_loc = get_turf(src)
 
@@ -120,6 +126,11 @@
 /mob/living/carbon/xenomorph/king/rogue
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
+
+/mob/living/carbon/xenomorph/king/death(cause, gibbed)
+	. = ..()
+	if(hive)
+		hive.setup_banned_allies()
 
 /*
 	REND ABILITY
@@ -294,7 +305,7 @@
 		return
 
 	var/area/target_area = get_area(target_turf)
-	if(target_area.flags_area & AREA_NOTUNNEL)
+	if(target_area.flags_area & AREA_NOBURROW)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
 
 	var/list/leap_line = get_line(xeno, target)
@@ -363,9 +374,8 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
-	while(target_turf && owner.loc != target_turf)
-		owner.forceMove(get_step(owner, get_dir(owner, target_turf)))
-		SLEEP_CHECK_DEATH(0.5, owner)
+	SLEEP_CHECK_DEATH(0.5 * (abs(owner.x-target_turf.x) + abs(owner.y - target_turf.y) + abs(owner.z - target_turf.z)), owner)
+	owner.forceMove(target_turf)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
 	var/descentTime = 5

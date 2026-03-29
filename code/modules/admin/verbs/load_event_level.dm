@@ -1,7 +1,7 @@
 /client/proc/load_event_level()
 	set category = "Admin.Events"
 	set name = "Map Template - New Z"
-	set desc = "Load a Map Template as a new event Z-Level"
+	set desc = "Load a Map Template as a new event Z-Level."
 
 	var/datum/map_template/template
 	var/client/C = usr.client

@@ -124,6 +124,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 13 SECONDS
+	ability_uses_acid_overlay = TRUE
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
 

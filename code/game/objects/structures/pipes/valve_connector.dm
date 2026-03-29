@@ -2,7 +2,7 @@
 	icon = 'icons/obj/pipes/valve.dmi'
 	icon_state = "map_valve0"
 	name = "manual valve"
-	desc = "A pipe valve"
+	desc = "A pipe valve."
 	level = 1
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH)
@@ -38,7 +38,7 @@
 	icon = 'icons/obj/pipes/tvalve.dmi'
 	icon_state = "map_tvalve0"
 	name = "manual switching valve"
-	desc = "A pipe valve"
+	desc = "A pipe valve."
 	level = 1
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH, WEST)

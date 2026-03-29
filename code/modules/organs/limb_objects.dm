@@ -134,7 +134,8 @@
 		overlays += lipstick
 
 	if(brainmob && brainmob.client)
-		brainmob.client.screen.len = null //clear the hud
+		brainmob.client.screen.Cut() //clear the hud
+		brainmob.client.render_plates_shown = alist()
 
 	transfer_identity(H)
 
@@ -216,6 +217,7 @@
 	brain_item_type = /obj/item/organ/brain/prosthetic
 	brain_mob_type = /mob/living/brain/synth
 	braindeath_on_decap = 0
+	is_objective = TRUE
 
 /obj/item/limb/head/synth/Initialize()
 	. = ..()

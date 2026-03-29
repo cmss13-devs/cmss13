@@ -42,7 +42,6 @@
 
 	///Chance of deflecting projectiles.
 	var/armor_deflection = 0
-	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
 	/// Windup for spits
@@ -83,7 +82,8 @@
 	var/hugger_nurturing = FALSE
 	var/huggers_max = 0
 	var/throwspeed = 0
-	var/hugger_delay = 0
+	/// delay time modifier it takes between hugger throws, only exclusively used by the carrier currently
+	var/hugger_throw_delay = 0
 	var/eggs_max = 0
 	var/egg_cooldown = 30
 	///Armor but for explosions
@@ -170,13 +170,3 @@
 
 /datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
-
-/datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
-
-	var/iconstate = minimap_icon ? minimap_icon : "unknown"
-	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
-	icon.appearance_flags = RESET_COLOR
-	background.overlays += icon
-
-	return background

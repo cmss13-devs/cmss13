@@ -4,7 +4,7 @@
 	name = "a meat spike"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "spike"
-	desc = "A spike for collecting meat from animals"
+	desc = "A spike for collecting meat from animals."
 	density = TRUE
 	anchored = TRUE
 	var/meat = 0

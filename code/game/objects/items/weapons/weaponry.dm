@@ -1,5 +1,5 @@
 /obj/item/weapon/banhammer
-	desc = "A banhammer"
+	desc = "A banhammer."
 	name = "banhammer"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
@@ -83,10 +83,11 @@
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"
-	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians."
+	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more force. Often carried by thugs and ruffians."
 	icon_state = "metalbat"
 	item_state = "metalbat"
 	force = MELEE_FORCE_STRONG
@@ -148,7 +149,7 @@
 
 /obj/item/weapon/butterfly/katana
 	name = "katana"
-	desc = "A ancient weapon from Japan."
+	desc = "An ancient weapon from Japan."
 	icon_state = "samurai"
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	force = MELEE_FORCE_VERY_STRONG

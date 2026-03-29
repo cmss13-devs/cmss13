@@ -208,7 +208,7 @@
 
 	if(param_var_name)
 		if(!(param_var_name in global.vars))
-			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables")
+			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables.")
 			return
 
 		if((param_var_name in locked) && !check_rights(R_DEBUG))

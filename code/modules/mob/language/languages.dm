@@ -92,6 +92,17 @@
 
 	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "ou", "nt", "on", "er", "ur", "an", "it", "te", "me", "la", "is", "ou", "nt", "on", "er", "ur", "an", "it", "te", "et", "me", "is", "qu", "se", "il", "ent", "que", "ait", "les", "lle", "our", "men", "ais", "est", "tre", "mai", "ous", "par", "ant", "ion", "eme", "tai", "ans", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
 
+/datum/language/forgotten
+	name = LANGUAGE_FORGOTTEN
+	desc = "An old human language forgotten to time. Doubt you will find anyone speaking this unless they got cryogenically frozen."
+	speech_verb = "utters"
+	ask_verb = "questions"
+	exclaim_verb = "shouts"
+	color = "tajaran_signlang"
+	key = "f"
+
+	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "he", "hi", "in", "is", "it", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to", "ve", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
+
 /datum/language/hellhound
 	name = LANGUAGE_HELLHOUND
 	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."

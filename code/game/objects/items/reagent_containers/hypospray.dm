@@ -14,7 +14,7 @@
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	possible_transfer_amounts = list(3, 5, 10, 15, 30)
+	possible_transfer_amounts = list(1,3,5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 	flags_item = NOBLUDGEON
@@ -212,7 +212,7 @@
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
 
-	to_chat(user, SPAN_NOTICE(" You inject [M] with [src]."))
+	to_chat(user, SPAN_NOTICE("You inject [M] with [src]."))
 	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
 	playsound(loc, injectSFX, injectVOL, 1)
 	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)

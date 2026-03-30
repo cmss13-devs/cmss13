@@ -20,7 +20,7 @@
 	key = "growl"
 	message = "growls."
 	sound = "alien_growl"
-	predalien_sound = 'sound/voice/predalien_growl.ogg'
+	predalien_sound = 'sound/voice/xeno/predalien_growl.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hiss
@@ -29,7 +29,7 @@
 	key = "hiss"
 	message = "hisses."
 	sound = "alien_hiss"
-	predalien_sound = 'sound/voice/predalien_hiss.ogg'
+	predalien_sound = 'sound/voice/xeno/predalien_hiss.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/needshelp
@@ -46,7 +46,7 @@
 	key = "roar"
 	message = "roars!"
 	sound = "alien_roar"
-	predalien_sound = 'sound/voice/predalien_roar.ogg'
+	predalien_sound = 'sound/voice/xeno/predalien_roar.ogg'
 	larva_sound = "alien_roar_larva"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -62,7 +62,7 @@
 /datum/emote/living/carbon/xeno/hellhound/roar
 	key = "roar"
 	message = "roars!"
-	sound = 'sound/voice/ed209_20sec.ogg'
+	sound = 'sound/voice/misc/ed209_20sec.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hellhound/growl

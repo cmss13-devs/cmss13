@@ -45,7 +45,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
-			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
+			playsound(loc, 'sound/voice/xeno/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
 				XQ.overwatch(XQ.observed_xeno, TRUE)
 			if(XQ.ovipositor)
@@ -95,11 +95,11 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(full_designation) ? full_designation : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else if(ispredalien(src))
-			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)
+			playsound(loc,'sound/voice/xeno/predalien_death.ogg', 25, TRUE)
 		else if(isfacehugger(src))
-			playsound(loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
+			playsound(loc, 'sound/voice/xeno/alien_facehugger_dies.ogg', 25, TRUE)
 		else
-			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
+			playsound(loc, prob(50) == 1 ? 'sound/voice/xeno/alien_death.ogg' : 'sound/voice/xeno/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
 			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED) && !hardcore)

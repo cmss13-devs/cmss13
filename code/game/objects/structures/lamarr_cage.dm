@@ -92,7 +92,7 @@
 	stat = DEAD
 
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
-	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+	playsound(src.loc, 'sound/voice/xeno/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
 		var/mob/M = loc

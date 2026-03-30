@@ -18,7 +18,7 @@
 /datum/decorator/christmas/queen/screech/decorate(mob/living/carbon/xenomorph/queen/queen)
 	if(!istype(queen))
 		return
-	queen.screech_sound_effect_list = list('sound/voice/alien_queen_xmas.ogg','sound/voice/alien_queen_xmas_2.ogg')
+	queen.screech_sound_effect_list = list('sound/voice/xeno/alien_queen_xmas.ogg','sound/voice/xeno/alien_queen_xmas_2.ogg')
 
 /datum/decorator/christmas/queen/hat/decorate(mob/living/carbon/xenomorph/queen/queen)
 	if(!istype(queen))

@@ -69755,6 +69755,7 @@
 /area/almayer/medical/containment)
 "nPs" = (
 /obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
 "nPx" = (
@@ -79516,6 +79517,7 @@
 	pixel_y = -26
 	},
 /obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
 "rJK" = (

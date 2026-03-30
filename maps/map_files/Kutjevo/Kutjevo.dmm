@@ -7579,7 +7579,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "jog" = (
-/obj/effect/landmark/static_comms/net_one,
+/obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/telecomm/lz1_south)
 "joo" = (
@@ -9715,7 +9715,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "mEb" = (
-/obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/telecomm/lz2_south)
 "mEe" = (

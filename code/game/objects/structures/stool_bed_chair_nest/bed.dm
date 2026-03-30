@@ -458,6 +458,14 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
 		update_icon()
 
+		// Notify all installed medevac systems of matching faction
+		for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
+			if(!istype(dropship))
+				continue
+			for(var/obj/structure/dropship_equipment/medevac_system/medevac_sys in dropship.equipments)
+				if(medevac_sys.ship_base && medevac_sys.faction_exclusive == faction)
+					medevac_sys.notify_new_stretcher(src)
+
 /obj/item/roller/medevac
 	name = "medevac stretcher"
 	desc = "A collapsed medevac stretcher that can be carried around."

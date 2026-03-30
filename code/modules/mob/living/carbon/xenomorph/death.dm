@@ -36,6 +36,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
+
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)

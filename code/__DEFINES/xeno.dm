@@ -789,4 +789,5 @@
 #define HUGGER_MAX_ACTIVE_TIME 7 SECONDS
 
 #define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
+#define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.
 #define CARRIER_HUGGER_THROW_RANGE 6

@@ -223,7 +223,7 @@
 		return
 
 	if(instant_trigger)
-		if(!child.leap_at_nearest_target())
+		if(!child.leap_at_nearest_target(EGG_JUMP_RANGE, src))
 			child.return_to_egg(src)
 	else
 		child.go_idle()

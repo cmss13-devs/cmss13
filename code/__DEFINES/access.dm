@@ -190,6 +190,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_LIST_WY_BASE "Wey-Yu (Basic)"
 ///Wey-Yu Corp Security access.
 #define ACCESS_LIST_WY_GOON "Wey-Yu (Goons)"
+///Wey-Yu Corp Sec PPO access.
+#define ACCESS_LIST_WY_PPO "Wey-Yu (PPO)"
 ///Wey-Yu PMCs access.
 #define ACCESS_LIST_WY_PMC "Wey-Yu (PMC)"
 ///Access levels for WY senior leadership

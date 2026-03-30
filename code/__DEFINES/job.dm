@@ -278,6 +278,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
 
+#define JOB_WY_PPO "W-Y Personal Protection Officer"
+#define JOB_WY_PPS "W-Y Personal Protection Specialist"
+#define JOB_WY_PPC "W-Y Personal Protection Coordinator"
+#define JOB_WY_DPO "W-Y Directorate Protection Officer"
+#define JOB_WY_DPS "W-Y Directorate Protection Specialist"
+#define JOB_WY_DPC "W-Y Directorate Protection Coordinator"
+
+#define ROLES_WY_GUARDS list(JOB_WY_PPO, JOB_WY_PPS, JOB_WY_PPC, JOB_WY_DPO, JOB_WY_DPS, JOB_WY_DPC, JOB_CORPORATE_BODYGUARD)
+
 //-------- Hyperdyne --------//
 
 #define JOB_HC_SEC "HC Security Guard"

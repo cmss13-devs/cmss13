@@ -431,6 +431,18 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM boonie hat, tan"
 	path = /obj/item/clothing/head/cmcap/boonie/tan
 
+/datum/gear/headwear/uscm/classic_boonie_olive
+	display_name = "USCM classic boonie hat, olive"
+	path = /obj/item/clothing/head/cmcap/boonie/classic
+
+/datum/gear/headwear/uscm/classic_boonie_tan
+	display_name = "USCM classic boonie hat, tan"
+	path = /obj/item/clothing/head/cmcap/boonie/classic/tan
+
+/datum/gear/headwear/uscm/buckethat
+	display_name = "USCM bucket hat"
+	path = /obj/item/clothing/head/cmcap/buckethat
+
 /datum/gear/headwear/uscm/cap
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap

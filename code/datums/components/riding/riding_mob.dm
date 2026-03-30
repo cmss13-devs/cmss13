@@ -140,3 +140,39 @@
 		carrying_runner.visible_message(SPAN_DANGER("[rider] topples off of [carrying_runner] as they both fall to the ground!"), \
 					SPAN_DANGER("You fall to the ground, bringing [rider] with you!"), SPAN_NOTICE("You hear two consecutive thuds."))
 		to_chat(rider, SPAN_DANGER("[carrying_runner] falls to the ground, bringing you with [carrying_runner.p_them()]!"))
+
+/datum/component/riding/creature/horse
+	can_be_driven = TRUE
+	vehicle_move_delay = 1
+
+/datum/component/riding/creature/horse/Initialize(mob/living/riding_mob, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
+	. = ..()
+	var/mob/living/simple_animal/ridden = parent
+	riding_mob.density = FALSE
+	ridden.stop_automated_movement = TRUE
+
+/datum/component/riding/creature/horse/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, PROC_REF(check_carrier_fall_over))
+
+/datum/component/riding/creature/horse/vehicle_mob_unbuckle(datum/source, force = FALSE)
+	var/mob/living/simple_animal/ridden = parent
+	for(var/mob/mob in ridden.buckled_mobs)
+		unequip_buckle_inhands(mob)
+	ridden.density = TRUE
+	return ..()
+
+/datum/component/riding/creature/horse/handle_specials()
+	. = ..()
+	set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
+	set_vehicle_dir_layer(NORTH, ABOVE_LYING_MOB_LAYER)
+	set_vehicle_dir_layer(EAST, ABOVE_LYING_MOB_LAYER)
+	set_vehicle_dir_layer(WEST, ABOVE_LYING_MOB_LAYER)
+
+/datum/component/riding/creature/horse/check_carrier_fall_over(mob/living/simple_animal/big/horse/carrying_horse)
+	for(var/mob/living/rider in carrying_horse.buckled_mobs)
+		carrying_horse.unbuckle(rider)
+		rider.KnockDown(1)
+		carrying_horse.visible_message(SPAN_DANGER("[rider] topples off of [carrying_horse] as they both fall to the ground!"), \
+					SPAN_DANGER("You fall to the ground, bringing [rider] with you!"), SPAN_NOTICE("You hear two consecutive thuds."))
+		to_chat(rider, SPAN_DANGER("[carrying_horse] falls to the ground, bringing you with [carrying_horse.p_them()]!"))

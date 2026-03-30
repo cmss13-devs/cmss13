@@ -226,6 +226,16 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
+/obj/item/storage/box/spec/horse
+	name = "\improper Cavalry equipment case"
+	desc = "A large case containing a horse caller, and a sword. Who thought horseback combat in the modern age was a good idea? \nDrag this sprite onto yourself to open it up!"
+	kit_overlay = "b18"
+	kit_name = "horse"
+
+/obj/item/storage/box/spec/horse/fill_preset_inventory()
+	new /obj/item/explosive/grenade/spawnergrenade/horse(src)
+	new /obj/item/weapon/javelin/horse(src)
+
 
 //maybe put in req for later use?
 /obj/item/storage/box/spec/B18

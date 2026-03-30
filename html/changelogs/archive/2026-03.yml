@@ -296,3 +296,7 @@
 2026-03-28:
   ori-disillusion-mirnov:
   - bugfix: sorokyne strata map now properly calls the colony a UPP colony
+2026-03-30:
+  Detective-Google:
+  - balance: the break action grenade launcher is no longer faster than the rotary
+      one.

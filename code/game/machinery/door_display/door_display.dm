@@ -314,26 +314,27 @@
 	if(inoperable() && !force)
 		return FALSE
 
-	for(var/obj/structure/machinery/door/airlock/D in targets)
-		if(!D.density)
+	for(var/obj/structure/machinery/door/airlock/target_door in targets)
+		if(!target_door.density)
 			continue
-		D.unlock(force)
-		if(D.operating != DOOR_OPERATING_OPENING)
-			D.open(force)
+		target_door.unlock(force)
+		target_door.open(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 		open = TRUE
 
 	return TRUE
 
 // Closes and unlocks doors, power check
-/obj/structure/machinery/door_display/research_cell/close_door()
-	if(inoperable())
+/obj/structure/machinery/door_display/research_cell/close_door(force = FALSE)
+	if(inoperable() && !force)
 		return FALSE
 
-	for(var/obj/structure/machinery/door/airlock/D in targets)
-		if(D.density)
+	for(var/obj/structure/machinery/door/airlock/target_door in targets)
+		if(target_door.density)
 			continue
-		D.close()
-		D.lock()
+		target_door.unlock(force)
+		target_door.close(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 		open = FALSE
 
 	return TRUE

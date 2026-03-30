@@ -82,6 +82,18 @@
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_HYPNOTIC = 1)
 
+/datum/reagent/toxin/gasp_toxin
+	name = "Gasp Toxin"
+	id = "gasptoxin"
+	description = "So called 'Gasp Toxin' is an extremely dangerous compound that acts as a sedative and paralyzes the lungs, effectively stopping respiration. Deadly in any dosage, the origin of this compound is unclear."
+	reagent_state = LIQUID
+	color = "#72478b"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	flags = REAGENT_NO_GENERATION|REAGENT_SCANNABLE
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_SEDATIVE = 5)
+
 /datum/reagent/toxin/minttoxin
 	name = "Mint Toxin"
 	id = "minttoxin"

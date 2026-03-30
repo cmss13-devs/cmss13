@@ -243,6 +243,11 @@
 	icon_state = "wy_sec_key"
 	channels = list(RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE)
 
+/obj/item/device/encryptionkey/wy_bodyguard
+	name = "\improper Weyland-Yutani Personel Protection encryption key"
+	icon_state = "wy_sec_key"
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE)
+
 /obj/item/device/encryptionkey/wy_pub
 	name = "\improper Weyland-Yutani Public encryption key"
 	icon_state = "wy_key"

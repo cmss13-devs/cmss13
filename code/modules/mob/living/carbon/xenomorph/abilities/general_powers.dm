@@ -305,8 +305,8 @@
 
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, final_build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
-			if(final_cooldown)
-				apply_cooldown_override(final_cooldown * xeno_cooldown_interrupt_modifier)
+			if(final_cooldown || xeno_cooldown_interrupt_penalty)
+				apply_cooldown_override(final_cooldown + xeno_cooldown_interrupt_penalty)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(final_cooldown)

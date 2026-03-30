@@ -523,9 +523,16 @@
 	bound_height = 64
 	bound_width = 64
 
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable
+	icon_state = "statue_base_big_colorable"
+
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base/small
 
 	icon_state = "statue_base_small"
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/small/colorable
+
+	icon_state = "statue_base_small_colorable"
 
 /obj/structure/prop/hunter/ancient_temple/small_statue
 	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
@@ -548,6 +555,9 @@
 	icon_state = "small_statue_base"
 	name = "stone statue base"
 	desc = "A stone statue base, ordorned with unknown symbols and runes."
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable
+	icon_state = "small_statue_base_colorable"
 
 /obj/structure/prop/hunter/ancient_temple/fountain_head
 	name = "carved stone head"

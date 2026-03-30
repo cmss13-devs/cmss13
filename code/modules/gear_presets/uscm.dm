@@ -286,7 +286,7 @@
 /datum/equipment_preset/uscm/spec/cryo/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/spec_kit/cryo, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/spec_kit/cryo, WEAR_L_HAND)
 
 //*****************************************************************************************************/
 
@@ -596,7 +596,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(new_human), WEAR_J_STORE)
@@ -697,7 +697,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_m39(new_human), WEAR_L_STORE)

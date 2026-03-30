@@ -179,7 +179,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_m39(new_human), WEAR_L_STORE)
 	add_common_wo_equipment(new_human)

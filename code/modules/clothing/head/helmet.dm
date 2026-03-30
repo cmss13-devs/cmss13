@@ -205,7 +205,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	/obj/item/storage/fancy/cigar/matchbook = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/cigarette/cigar = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/cigarette/cigar/classic = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/cigarette/cigar/tarbacks = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/electronic_cigarette = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/cigarette = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/cigarette/weed = NO_GARB_OVERRIDE,
 
 	// CARDS
 	/obj/item/toy/deck = NO_GARB_OVERRIDE,
@@ -314,6 +318,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/cartridge = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_bandolier = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/dog_tags = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/prescription_bottle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,

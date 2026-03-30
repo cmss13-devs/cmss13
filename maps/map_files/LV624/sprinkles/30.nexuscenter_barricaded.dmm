@@ -26,23 +26,8 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
-"ag" = (
-/obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "ah" = (
-/obj/structure/machinery/vending/snack,
-/obj/item/stack/sheet/metal{
-	amount = 30;
-	pixel_x = 4;
-	pixel_y = 4
-	},
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/main_hall)
 "ai" = (
@@ -151,20 +136,6 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor/floorscorched1,
-/area/lv624/lazarus/main_hall)
-"aA" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/obj/structure/barricade/wooden,
-/obj/item/ammo_casing,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
-"aB" = (
-/obj/structure/flora/pottedplant,
-/obj/structure/barricade/wooden,
-/obj/item/ammo_casing,
-/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aC" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -298,13 +269,15 @@
 /turf/open/floor/wall_thermite,
 /area/lv624/lazarus/main_hall)
 "aU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
 	},
-/turf/open/floor/damaged4,
+/turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "aV" = (
 /obj/structure/surface/table,
@@ -315,12 +288,13 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aX" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/item/ammo_casing,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 12
 	},
+/obj/item/limb/hand/l_hand,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "aY" = (
@@ -403,19 +377,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
-"bj" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/whitegreencorner,
-/area/lv624/lazarus/main_hall)
 "bk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/surface/table,
 /turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
-"bl" = (
-/obj/structure/surface/table,
-/turf/open/floor/whitegreencorner/west,
 /area/lv624/lazarus/main_hall)
 "bm" = (
 /turf/open/floor/floorscorched2,
@@ -514,25 +480,18 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "bB" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/effect/landmark/objective_landmark/far,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
-/turf/open/floor/floorscorched1,
+/obj/item/ammo_casing,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/damaged4,
 /area/lv624/lazarus/main_hall)
 "bC" = (
-/obj/effect/decal/cleanable/blood{
-	pixel_y = 12
-	},
-/obj/item/limb/hand/l_hand,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/gibs,
 /obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
 	},
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
@@ -575,12 +534,6 @@
 	},
 /turf/open/floor/floorscorched2,
 /area/lv624/lazarus/main_hall)
-"bH" = (
-/obj/structure/barricade/wooden,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_casing,
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/main_hall)
 "bI" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_magazine/smg/mp27,
@@ -619,12 +572,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor,
-/area/lv624/lazarus/main_hall)
-"bN" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/floor/whiteyellowcorner/north,
 /area/lv624/lazarus/main_hall)
 "bO" = (
 /obj/effect/landmark/good_item,
@@ -672,12 +619,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"bV" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_casing,
-/turf/open/floor/whitegreen,
-/area/lv624/lazarus/main_hall)
 "bW" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -696,6 +637,62 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
+"bZ" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/machinery/light/spot,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"ca" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"cb" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"cc" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing,
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/main_hall)
+"cd" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/main_hall)
+"ce" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing,
+/turf/open/floor/whitegreen/north,
+/area/lv624/lazarus/main_hall)
+"cf" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/whitegreencorner/east,
+/area/lv624/lazarus/main_hall)
+"cg" = (
+/obj/structure/surface/table,
+/turf/open/floor/whitegreencorner/north,
+/area/lv624/lazarus/main_hall)
 "zt" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -708,10 +705,10 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Cw" = (
-/turf/open/floor/whitegreencorner,
+/turf/open/floor/whitegreencorner/east,
 /area/lv624/lazarus/main_hall)
 "Cy" = (
-/turf/open/floor/whitegreencorner/west,
+/turf/open/floor/whitegreencorner/north,
 /area/lv624/lazarus/main_hall)
 "DY" = (
 /turf/closed/wall,
@@ -741,7 +738,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/chapel)
 "He" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -791,9 +788,6 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "IY" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/whiteyellowcorner/west,
 /area/lv624/lazarus/main_hall)
 "Jf" = (
@@ -804,6 +798,9 @@
 /turf/open/floor/whiteyellow/west,
 /area/lv624/lazarus/main_hall)
 "JK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/whiteyellowcorner/north,
 /area/lv624/lazarus/main_hall)
 "KQ" = (
@@ -827,7 +824,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "Me" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/main_hall)
 "Mf" = (
@@ -836,7 +833,12 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Mi" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/machinery/vending/snack,
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/main_hall)
 "Nk" = (
@@ -873,13 +875,13 @@ OK
 OK
 OK
 OK
-HH
-zt
+KQ
+ae
 IY
 JH
 JK
-ae
-KQ
+zt
+HH
 OK
 OK
 OK
@@ -890,13 +892,13 @@ OK
 OK
 OK
 OK
-HI
-zt
-bY
-aa
-ac
-zt
 KQ
+zt
+ac
+aa
+bY
+zt
+HI
 OK
 OK
 OK
@@ -905,221 +907,221 @@ OK
 (3,1,1) = {"
 OK
 OK
-Gs
-Gs
-Gs
-aV
-aM
-bb
-aK
-aV
 Ll
 KQ
 Ll
+aV
+aK
+bb
+aM
+aV
+Gs
+Gs
+Gs
 OK
 OK
 "}
 (4,1,1) = {"
 OK
 OK
-Gs
+KQ
 He
 HJ
+ab
+bq
 ac
 aN
 ac
-bq
-aW
 HJ
 Me
-KQ
+Gs
 OK
 OK
 "}
 (5,1,1) = {"
-Fz
-Fz
-Gs
-Hf
-ar
-aC
-aQ
-av
-ar
-bH
-bO
-Mf
-Ll
-NT
 KQ
+NT
+Ll
+Hf
+bO
+cc
+ar
+av
+aQ
+aC
+ar
+Mf
+Gs
+Fz
+Fz
 "}
 (6,1,1) = {"
-zt
-ae
-ab
-ak
-as
-aE
-aR
-bg
-bz
-bI
-bP
-bU
-aW
-zt
 Ie
+zt
+ab
+bU
+bP
+bI
+bz
+bg
+aR
+aE
+as
+ak
+aW
+ae
+zt
 "}
 (7,1,1) = {"
-aa
-ac
-ab
-al
-at
-aF
-aS
-bh
-bA
-bJ
-aP
-bd
-aV
-zt
 bK
+zt
+aV
+bd
+aP
+bJ
+bA
+bh
+aS
+aF
+at
+al
+aW
+ac
+aa
 "}
 (8,1,1) = {"
 Cw
-ai
-aj
-am
+Cw
+cf
+al
 av
-aG
+aZ
 aU
 bi
 bB
-aZ
+aG
 av
-al
-bj
-Cw
+am
+aj
+ai
 Cw
 "}
 (9,1,1) = {"
-FT
+OM
 Ft
-ad
-an
-aw
-aH
+bk
+ce
+bQ
+bL
 aX
 bn
 bC
-bL
-bQ
-bV
-bk
+aH
+aw
+an
+ad
 Ft
-OM
+FT
 "}
 (10,1,1) = {"
 Cy
-ae
-af
-ap
-ax
-aI
-aT
-bp
-bD
-bM
-bm
-bW
-bl
 bK
+cg
+bW
+bm
+bM
+bD
+bp
+aT
+aI
+ax
+ap
+af
+ae
 Cy
 "}
 (11,1,1) = {"
 zt
-aa
-ab
-aq
-ay
-aJ
-aY
-br
-bE
-bc
-bR
-bX
-aW
 BB
+ab
+bX
+bR
+bc
+bE
+br
+aY
+aJ
+ay
+aq
+aW
+aa
 zt
 "}
 (12,1,1) = {"
-ac
+zt
 zt
 ab
-zv
-az
 aP
-bd
-bs
-bx
-bz
 bS
+bz
+bx
+bs
+bd
 aP
+az
+zv
 aW
 zt
-zt
+ac
 "}
 (13,1,1) = {"
-Fu
-DY
-DY
-ag
-aA
-aO
-aD
-bt
-bF
-bN
-bT
-Mf
-Nk
-NU
 ON
+NU
+Nk
+Hf
+bT
+cd
+bF
+bt
+aD
+aO
+ca
+bZ
+DY
+DY
+Fu
 "}
 (14,1,1) = {"
 OK
 OK
-DY
-ah
-aB
-aL
-Jf
-bu
-bG
-bm
-Ln
-Mi
 Nk
+ah
+Ln
+bm
+bG
+bu
+Jf
+aL
+cb
+Mi
+DY
 OK
 OK
 "}
 (15,1,1) = {"
 OK
 OK
-DY
-DY
-DY
+Lp
+Lp
+Lp
 Il
-be
-bv
 bo
+bv
+be
 Il
-Lp
-Lp
-Lp
+DY
+DY
+DY
 OK
 OK
 "}
@@ -1128,13 +1130,13 @@ OK
 OK
 OK
 OK
-DY
-au
-bf
-bw
-ba
-au
 Lq
+au
+ba
+bw
+bf
+au
+DY
 OK
 OK
 OK
@@ -1145,13 +1147,13 @@ OK
 OK
 OK
 OK
-DY
-Ir
-ac
-by
-ao
-Ii
 Lq
+Ii
+ao
+by
+ac
+Ir
+DY
 OK
 OK
 OK

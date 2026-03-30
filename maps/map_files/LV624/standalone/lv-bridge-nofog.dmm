@@ -6,10 +6,6 @@
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/river/central_river)
-"ac" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/ground/river/central_river)
 "ad" = (
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/northeast,
@@ -43,9 +39,49 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
-"dC" = (
-/turf/open/gm/coast/beachcorner2/south_east,
+"am" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/asteroidwarning/south,
 /area/lv624/ground/river/central_river)
+"an" = (
+/turf/open/floor/plating/asteroidwarning/south,
+/area/lv624/ground/river/central_river)
+"ao" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/lv624/ground/river/central_river)
+"ap" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/lv624/ground/river/central_river)
+"aq" = (
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/central_river)
+"ar" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/lv624/ground/river/central_river)
+"as" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"at" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"au" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"av" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_jungle)
+"aw" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_east_jungle)
+"ax" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/north_east_jungle)
 "iW" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -54,23 +90,13 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"jT" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/lv624/ground/river/central_river)
 "km" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"lS" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
-"lY" = (
-/turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "mq" = (
 /obj/structure/machinery/colony_floodlight,
@@ -80,33 +106,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
-"ms" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirt,
-/area/lv624/ground/river/central_river)
-"mD" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"mE" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_east_jungle)
-"pF" = (
-/turf/open/gm/coast/south,
-/area/lv624/ground/river/central_river)
 "qL" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/ground/river/central_river)
-"xB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
-"yj" = (
-/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
 "yu" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -133,44 +136,45 @@
 "VN" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"Wb" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_east_jungle)
 "Yw" = (
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"
-jr
-km
-aa
-aa
-aa
-aa
-aa
-aa
-pF
+aj
+aj
+at
 ai
-mD
-aj
-aj
+aq
+aa
+aa
+aa
+aa
+aa
+aa
+km
+lW
 "}
 (2,1,1) = {"
-jr
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-pF
+aj
+aj
+au
 mr
-lS
-aj
-aj
+aq
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
 "}
 (3,1,1) = {"
+aj
+aj
+au
+ai
 jr
 aa
 aa
@@ -180,12 +184,12 @@ aa
 aa
 aa
 lW
-ai
-lS
-aj
-aj
 "}
 (4,1,1) = {"
+yu
+aj
+av
+ai
 jr
 aa
 aa
@@ -195,12 +199,12 @@ aa
 aa
 aa
 lW
-ai
-xB
-aj
-yu
 "}
 (5,1,1) = {"
+yu
+ak
+au
+mq
 jr
 km
 km
@@ -210,12 +214,12 @@ km
 km
 km
 lW
-mq
-lS
-ak
-yu
 "}
 (6,1,1) = {"
+aj
+aj
+au
+ai
 ab
 ae
 ae
@@ -225,57 +229,57 @@ ae
 ae
 ae
 ag
-ai
-lS
-aj
-aj
 "}
 (7,1,1) = {"
-ac
-al
-Uh
-DX
-DX
+ak
+aj
+au
+ai
+Yw
 DX
 iW
 DX
-lY
-ai
-lS
-aj
-ak
+DX
+DX
+Uh
+al
+am
 "}
 (8,1,1) = {"
-Yw
-DX
-DX
-DX
-BW
-al
-al
-qL
-lY
+aj
+aj
+au
 ai
-lS
-aj
-aj
+Yw
+qL
+al
+al
+BW
+DX
+DX
+DX
+an
 "}
 (9,1,1) = {"
+aj
+aj
+au
+ai
 Yw
+DX
+DX
+DX
+DX
 DX
 iW
 DX
-DX
-DX
-DX
-DX
-lY
-ai
-lS
-aj
-aj
+an
 "}
 (10,1,1) = {"
+aj
+aj
+au
+ai
 ad
 af
 af
@@ -285,12 +289,12 @@ af
 af
 af
 ah
-ai
-lS
-aj
-aj
 "}
 (11,1,1) = {"
+aj
+aj
+au
+mq
 jr
 km
 km
@@ -300,38 +304,34 @@ km
 km
 km
 lW
-mq
-lS
-aj
-aj
 "}
 (12,1,1) = {"
-jT
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-pF
-mr
-Wb
-VN
 Pz
+VN
+aw
+mr
+aq
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ao
 "}
 (13,1,1) = {"
-km
-aa
-aa
-aa
-aa
-aa
-aa
-dC
-yj
-ms
-mE
-EG
 Pz
+EG
+ax
+as
+ar
+ap
+aa
+aa
+aa
+aa
+aa
+aa
+km
 "}

@@ -1,7 +1,36 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/sleep_console,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/whitebluefull,
+/area/lv624/lazarus/medbay)
+"ab" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/whitebluefull,
+/area/lv624/lazarus/medbay)
 "ac" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"ad" = (
+/obj/structure/surface/table,
+/obj/item/stack/medical/bruise_pack{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/surgical,
+/obj/item/storage/belt/medical/full,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
 "ae" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/medbay)
@@ -12,21 +41,29 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"ah" = (
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
 "ai" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
-"aj" = (
-/obj/structure/machinery/sleep_console,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/whitebluefull,
+"ak" = (
+/turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "al" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
+"am" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/storage/surgical_tray,
+/obj/structure/machinery/light,
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/medbay)
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
@@ -34,43 +71,8 @@
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
-"ao" = (
-/obj/structure/surface/table,
-/obj/item/stack/medical/bruise_pack{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/clothing/mask/surgical,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/storage/belt/medical/full,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whiteblue/north,
-/area/lv624/lazarus/medbay)
-"ap" = (
-/obj/structure/machinery/medical_pod/bodyscanner,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/open/floor/whitebluefull,
-/area/lv624/lazarus/medbay)
 "aq" = (
 /turf/open/floor/white,
-/area/lv624/lazarus/medbay)
-"ar" = (
-/turf/open/floor/whiteblue/north,
-/area/lv624/lazarus/medbay)
-"as" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/storage/surgical_tray,
-/turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/medbay)
 "at" = (
 /obj/structure/surface/table/reinforced,
@@ -87,6 +89,14 @@
 "aw" = (
 /obj/item/reagent_container/hypospray,
 /turf/open/floor/white,
+/area/lv624/lazarus/medbay)
+"ax" = (
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/medbay)
+"ay" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/medbay)
 "az" = (
 /obj/effect/landmark/crap_item,
@@ -110,6 +120,32 @@
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
+"aD" = (
+/obj/item/stack/medical/ointment,
+/obj/structure/machinery/light,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
+"aE" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
+"aF" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
+"aG" = (
+/obj/structure/machinery/light,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
+"aH" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
 "aI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/whitebluefull,
@@ -118,36 +154,66 @@
 /obj/structure/machinery/bioprinter,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
+"aK" = (
+/obj/item/tool/crowbar,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/medbay)
+"aL" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/whiteblue/north,
+/area/lv624/lazarus/medbay)
+"aM" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/north,
+/area/lv624/lazarus/medbay)
+"aN" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/whitebluecorner/north,
+/area/lv624/lazarus/medbay)
 "aO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aP" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/open/floor/whiteblue/north,
+/turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/medbay)
-"aU" = (
+"aQ" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/science,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
+"aR" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whiteblue/north,
+/area/lv624/lazarus/medbay)
+"aS" = (
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/medbay)
+"aT" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/colony/south_medbay_road)
+"aV" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/colony/south_medbay_road)
+"aW" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/colony/south_medbay_road)
 "aX" = (
 /turf/open/floor,
 /area/lv624/lazarus/medbay)
 "aY" = (
 /obj/item/clothing/under/colonist,
 /turf/open/floor/white,
-/area/lv624/lazarus/medbay)
-"bb" = (
-/obj/structure/machinery/vending/coffee,
-/turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "bc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
@@ -160,21 +226,12 @@
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/medbay)
 "bi" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/whitebluecorner/north,
-/area/lv624/lazarus/medbay)
-"bk" = (
-/obj/structure/machinery/vending/snack,
-/turf/open/floor/whiteblue/north,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/medbay)
 "bo" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
-"bp" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
-/obj/structure/machinery/light,
-/turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "bq" = (
 /obj/structure/bed,
@@ -186,14 +243,6 @@
 /obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
-"bu" = (
-/obj/item/tool/crowbar,
-/turf/open/floor/whiteblue/north,
-/area/lv624/lazarus/medbay)
-"bw" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
-/area/lv624/ground/colony/south_medbay_road)
 "bx" = (
 /obj/item/trash/plate,
 /turf/open/floor/white,
@@ -211,10 +260,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
-"bB" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/whitebluecorner/west,
-/area/lv624/lazarus/medbay)
 "bE" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
@@ -231,15 +276,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "bN" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/medbay)
-"io" = (
-/obj/item/stack/medical/ointment,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/whiteblue/north,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/whitebluecorner/west,
 /area/lv624/lazarus/medbay)
 "mA" = (
 /obj/structure/window/framed/colony,
@@ -264,22 +302,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"qP" = (
-/obj/effect/landmark/corpsespawner/colonist/random/burst,
-/obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/whiteblue/north,
-/area/lv624/lazarus/medbay)
-"tr" = (
-/obj/item/storage/firstaid/toxin,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/medbay)
-"us" = (
-/obj/structure/filingcabinet,
-/obj/structure/machinery/light,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/medbay)
 "uD" = (
 /obj/item/storage/firstaid,
 /turf/open/floor/white,
@@ -293,20 +315,9 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"wz" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/colony/south_medbay_road)
-"yd" = (
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/medbay)
 "zE" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"zF" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/medbay)
 "zL" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -343,9 +354,6 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"ES" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,
 /obj/structure/machinery/light{
@@ -361,10 +369,6 @@
 	pixel_y = 6
 	},
 /turf/open/floor/whitebluefull,
-/area/lv624/lazarus/medbay)
-"Le" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "LQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -407,11 +411,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
-"Vq" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/medbay)
 "VI" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -419,39 +418,35 @@
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "YV" = (
-/turf/open/floor/whitebluecorner/west,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-zE
-zE
-we
 zE
 zE
 qK
 zE
 zE
+we
+zE
+zE
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 "}
 (2,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
 zE
 zE
 zE
@@ -459,289 +454,299 @@ zE
 zE
 zE
 zE
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 "}
 (3,1,1) = {"
-ac
-ac
-ac
-ag
-ac
-ae
-mA
-mA
-bo
-mA
-af
+Es
 zE
 zE
 LQ
 zE
 zE
-Es
+af
+mA
+bo
+mA
+mA
+ae
+ac
+ag
+ac
+ac
+ac
 "}
 (4,1,1) = {"
-ac
-ac
-ae
-ae
-ae
-ae
+bE
+bE
+aT
+af
+mA
+mA
+af
 VI
-aO
 bq
+aO
 VI
-af
-mA
-mA
-af
-bw
-bE
-bE
+ae
+ae
+ae
+ae
+ac
+ac
 "}
 (5,1,1) = {"
-ac
-ac
-ae
-an
-En
-af
-af
+bF
+bF
+aV
+mA
+QQ
+qr
+Gu
 aP
 CZ
 YV
-Gu
-qr
-QQ
-mA
-ES
-bF
-bF
+af
+af
+En
+an
+ae
+ac
+ac
 "}
 (6,1,1) = {"
-ac
-ac
-ae
-ao
-av
-tr
-af
-io
-aq
+bF
+bF
+aV
+mA
+aL
 aq
 aY
 aq
-zF
-mA
-ES
-bF
-bF
+aq
+aD
+af
+ax
+av
+ad
+ae
+ac
+ac
 "}
 (7,1,1) = {"
-ac
-ae
-ae
-qP
+bF
+bF
+af
+af
+aM
+aq
+aq
 aq
 az
+aq
 TK
-aq
 az
 aq
-aq
-aq
-bp
-af
-af
-bF
-bF
+ah
+ae
+ae
+ac
 "}
 (8,1,1) = {"
-ac
-ae
-ai
-bi
-aw
-aq
-aq
-aq
-aq
-aq
-bs
-bx
-bB
-bN
+bF
+bF
 bo
-bF
-bF
+bi
+aN
+bx
+bs
+aq
+aq
+aq
+aq
+aq
+aw
+bN
+ai
+ae
+ac
 "}
 (9,1,1) = {"
-ac
-ae
-aj
-aA
-aA
-aI
-af
-bb
-aq
-vC
-bu
-by
-aq
-aq
+bF
+bF
 TK
-bF
-bF
+aq
+aq
+by
+aK
+vC
+aq
+aE
+af
+aI
+aA
+aA
+aa
+ae
+ac
 "}
 (10,1,1) = {"
-ac
-ae
-ap
-aq
-aq
-aJ
-af
-bk
-aq
-JK
-ar
-aq
-aq
-aq
-aq
-bF
 bI
+bF
+aq
+aq
+aq
+aq
+ak
+JK
+aq
+aF
+af
+aJ
+aq
+aq
+ab
+ae
+ac
 "}
 (11,1,1) = {"
-ac
-ae
-Qu
+bF
+bF
+mA
+aS
 qC
-az
-aq
-TK
-aq
+QG
 aq
 uD
 aq
-QG
-bg
-yd
-mA
-bF
-bF
-"}
-(12,1,1) = {"
-ac
-ae
-ae
-ar
-aA
-AO
 aq
-aq
-aq
-aq
-aq
-aq
-us
-af
-af
-bF
-bF
-"}
-(13,1,1) = {"
-ac
-ac
-ae
-as
-aB
-Le
-af
-aU
-aq
+TK
 aq
 az
-pc
-Vq
+bg
+Qu
+ae
+ac
+"}
+(12,1,1) = {"
+bF
+bF
+af
+af
+aQ
+aq
+aq
+aq
+aq
+aq
+aq
+AO
+aA
+ak
+ae
+ae
+ac
+"}
+(13,1,1) = {"
+bF
+bF
+aV
 mA
-ES
-bF
-bF
+aR
+pc
+az
+aq
+aq
+aG
+af
+ay
+aB
+am
+ae
+ac
+ac
 "}
 (14,1,1) = {"
-ac
-ac
-ae
-at
-aC
-af
-af
-aP
-aq
-bg
-Pi
-DR
-bA
+bF
+bF
+aV
 mA
-ES
-bF
-bF
+bA
+DR
+Pi
+qC
+aq
+aH
+af
+af
+aC
+at
+ae
+ac
+ac
 "}
 (15,1,1) = {"
-ac
-ac
-ae
-ae
-ae
-ae
-VI
-aq
-aq
-VI
+bF
+bF
+aW
 af
 mA
 mA
 af
-wz
-bF
-bF
+VI
+aq
+aq
+VI
+ae
+ae
+ae
+ae
+ac
+ac
 "}
 (16,1,1) = {"
-ac
-ac
-ac
-ac
-ac
+bF
+bF
+aW
+Pe
+Pe
+Pe
 ae
 ae
 aq
 bc
 ae
 ae
-Pe
-Pe
-Pe
-wz
-bF
-bF
+ac
+ac
+ac
+ac
+ac
 "}
 (17,1,1) = {"
+bK
+bF
+aW
+Pe
+zL
+Np
+Pe
+ae
+aX
+aX
+ae
 ac
 ac
 al
 au
 ac
 ac
-ae
-aX
-aX
-ae
-Pe
-zL
-Np
-Pe
-wz
-bF
-bK
 "}

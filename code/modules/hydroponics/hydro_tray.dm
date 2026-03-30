@@ -72,7 +72,9 @@
 		"New Chems" = 0,
 		"New Chems2" = 0,
 		"New Chems3" = 0,
+		//Non Rolled Mutations If adding more need to adjust mutation code in seed_datums
 		"Mutate Species" = 0,
+		"Mutate Hydro Chem" = 0,
 		)
 
 

@@ -925,7 +925,7 @@
 /datum/equipment_preset/survivor/hybrisa/wey_po
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
 	job_title = JOB_WY_PILOT
-	assignment = "Weyland-Yutani - Commercial Pilot"
+	assignment = JOB_WY_PILOT
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY

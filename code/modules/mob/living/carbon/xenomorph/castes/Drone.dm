@@ -15,6 +15,7 @@
 	available_strains = list(
 		/datum/xeno_strain/gardener,
 		/datum/xeno_strain/healer,
+		/datum/xeno_strain/gambler,
 	)
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER

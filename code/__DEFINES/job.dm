@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WO_XO "Lieutenant Commander"
 #define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
 #define JOB_WO_SO "Veteran Honor Guard"
-#define JOB_WO_CREWMAN "Honor Guard Weapons Specialist"
+#define JOB_WO_WARDEN "Honor Guard Weapons Specialist"
 #define JOB_WO_POLICE "Honor Guard"
 
 #define JOB_WO_PILOT "Mortar Crew"

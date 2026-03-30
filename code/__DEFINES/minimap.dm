@@ -80,6 +80,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
 #define MINIMAP_SQUAD_ARMY "#349c30"
+#define MINIMAP_SQUAD_USASF "#000080"
 #define MINIMAP_SQUAD_INTEL "#053818"
 
 //Prison
@@ -105,6 +106,9 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_AREA_DERELICT "#920190ee"
 #define MINIMAP_AREA_OOB "#3a3a3a"
 #define MINIMAP_AREA_COMMS "#00b3ffe7"
+
+// Point Loma
+#define MINIMAP_AREA_CARGO "#9B8F75"
 
 // Ceiling colors
 #define MINIMAP_CEILING_TIER_GLASS "#b2e6f19a"

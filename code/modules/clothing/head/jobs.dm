@@ -55,6 +55,14 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi'
 	)
 
+/obj/item/clothing/head/beret/navy
+	name = "Navy beret"
+	desc = "Navy beret"
+	icon_state = "navy_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
+
 //Security
 /obj/item/clothing/head/beret/sec
 	name = "security beret"

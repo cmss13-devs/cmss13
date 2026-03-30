@@ -2131,3 +2131,23 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
 
+/obj/item/clothing/under/marine/navy
+	name = "\improper navy uniform"
+	desc = "Formal navy uniform."
+	icon_state = "formal_navy"
+	worn_state = "formal_navy"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/USASF.dmi'
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = 0
+	item_icons = list(
+		WEAR_BODY = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/USASF.dmi',
+	)
+

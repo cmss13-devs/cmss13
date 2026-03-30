@@ -25,6 +25,7 @@
 
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
+	var/base_icon = "sensor_"
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
@@ -34,19 +35,19 @@
 	..()
 	if(!buildstate && is_on)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is online."
-		icon_state = "sensor_"
+		icon_state = "[base_icon]"
 	else if (!buildstate && !is_on)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is offline."
-		icon_state = "sensor_off"
+		icon_state = "[base_icon]off"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a blowtorch, wirecutters, then a wrench to repair it."
-		icon_state = "sensor_broken"
+		icon_state = "[base_icon]broken"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use wirecutters, then a wrench to repair it."
-		icon_state = "sensor_broken"
+		icon_state = "[base_icon]broken"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a wrench to repair it."
-		icon_state = "sensor_broken"
+		icon_state = "[base_icon]broken"
 
 /obj/structure/machinery/sensortower/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
@@ -256,6 +257,33 @@ Higher severity explosion will damage the sensor tower more
 		cur_tick = 0
 		stop_processing()
 	update_icon()
+
+/obj/structure/machinery/sensortower/short_range
+	desc = "This tower does not look that powerful, it detects only in short range and does not penetrate floors."
+	icon_state = "sensors_tower_small_broken"
+	var/sensor_radius = 30
+	base_icon = "sensors_tower_small_"
+
+/obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(current_xeno.z != z)
+			if(WEAKREF(current_xeno) in minimap_added)
+				SSminimaps.remove_marker(current_xeno)
+				current_xeno.add_minimap_marker()
+				minimap_added -= WEAKREF(current_xeno)
+			continue
+		if(get_dist(current_xeno, src) > sensor_radius)
+			if(WEAKREF(current_xeno) in minimap_added)
+				SSminimaps.remove_marker(current_xeno)
+				current_xeno.add_minimap_marker()
+				minimap_added -= WEAKREF(current_xeno)
+			continue
+
+		SSminimaps.remove_marker(current_xeno)
+		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))
+		minimap_added += WEAKREF(current_xeno)
+
+
 
 #undef SENSORTOWER_BUILDSTATE_WORKING
 #undef SENSORTOWER_BUILDSTATE_BLOWTORCH

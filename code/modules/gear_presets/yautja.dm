@@ -33,6 +33,7 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_status(mob/living/carbon/human/new_human)
+	. = ..()
 	new_human.nutrition = NUTRITION_VERYLOW //Eat before you hunt.
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
@@ -174,6 +175,7 @@
 	clan_rank = CLAN_RANK_BLOODED_INT
 
 /datum/equipment_preset/yautja/equipped/load_status(mob/living/carbon/human/new_human)
+	. = ..()
 	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/yautja/equipped/load_gear(mob/living/carbon/human/new_human)
@@ -216,6 +218,7 @@
 	minimap_icon = "predator" // ditto
 
 /datum/equipment_preset/yautja/emissary/load_status(mob/living/carbon/human/new_human)
+	. = ..()
 	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/yautja/emissary/load_gear(mob/living/carbon/human/new_human, client/mob_client)

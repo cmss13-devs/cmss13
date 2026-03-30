@@ -885,9 +885,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 
-	firelevel -= 2 + weather_smothering_strength //reduce the intensity by 2 as default or more if in weather ---- weather_smothering_strength is set as /datum/weather_event's fire_smothering_strength
 
 	return
+
+/obj/flamer_fire/proc/process_firelevel()
+	firelevel -= 2 + weather_smothering_strength //reduce the intensity by 2 as default or more if in weather ---- weather_smothering_strength is set as /datum/weather_event's fire_smothering_strength
 
 /obj/flamer_fire/proc/update_in_weather_status()
 	SIGNAL_HANDLER
@@ -898,6 +900,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0
+
+/obj/flamer_fire/lasting
+	desc = "Ouch, this one does not look like it will go out on its own."
+
+/obj/flamer_fire/lasting/process_firelevel()
+	return
 
 /proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level)
 	var/direction_angle = dir2angle(direction)

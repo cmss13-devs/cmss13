@@ -208,3 +208,13 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/structure/stairs/multiz/rock
+	icon = 'icons/obj/structures/stairs/ramp.dmi'
+	icon_state = "dark_ramp"
+
+/obj/structure/stairs/multiz/rock/up
+	direction = UP
+
+/obj/structure/stairs/multiz/rock/down
+	direction = DOWN

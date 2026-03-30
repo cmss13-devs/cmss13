@@ -272,6 +272,19 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/usasf
+	name = SQUAD_USASF
+	equipment_color = "#000080"
+	chat_color = "#000080"
+	radio_freq = USASF_FREQ
+	minimap_color = "#000080"
+	background_icon = "background_ua"
+	minimap_color = MINIMAP_SQUAD_USASF
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"

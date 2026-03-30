@@ -60,3 +60,8 @@
 /datum/origin/uscm/convict/smuggling
 	name = ORIGIN_USCM_CONVICT_SMUGGLING
 	desc = "Where you were born is irrelevant, as far as anyone is concerned you were convicted for smuggling (and likely some piracy) and offered a way out: the USCM."
+
+/datum/origin/uscm/usasf
+	name = ORIGIN_USASF
+	desc = "You were born, and then you enlisted in the USASF."
+

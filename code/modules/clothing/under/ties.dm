@@ -652,6 +652,16 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 32nd Armor Brigade."
 	icon_state = "armorpatch"
 
+/obj/item/clothing/accessory/patch/usasf // For some raeson this was in the code but unused.
+	name = "USASF patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Aerospace Force."
+	icon_state = "usasfpatch"
+
+/obj/item/clothing/accessory/patch/usasf/helljumper // ToDO: Find a use for this. ATM unused.
+	name = "Para-Rescue patch"
+	desc = "A fire-resistant shoulder patch, worn by the absolute badasses of the USASF 7th Para-Rescue Battalion. Feet first into hell!"
+	icon_state = "usasfhelljumperpatch"
+
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"
 	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation, or perhaps ironic mockery, depending on your viewpoint."

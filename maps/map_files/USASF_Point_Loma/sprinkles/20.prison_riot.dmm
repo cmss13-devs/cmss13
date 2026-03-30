@@ -1,0 +1,2614 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"ax" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/hidden/purple,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"ay" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/microwave{
+	pixel_y = 10
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"aE" = (
+/obj/structure/machinery/door/airlock/glass_security/colony,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter";
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"aF" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"aQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"aW" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter"
+	},
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"bI" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"bL" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = 17
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"ca" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_y = 11;
+	pixel_x = -2
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"cd" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"cj" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"cl" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"cx" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"cU" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/brig/prisoner,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"cZ" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8
+	},
+/obj/structure/pipes/vents,
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"dd" = (
+/obj/structure/closet/secure_closet/marshal{
+	pixel_x = 9
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "armor_blood";
+	pixel_x = -5;
+	pixel_y = -12
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"do" = (
+/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"dD" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 2
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"dE" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"dP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/red/northeast,
+/area/point_loma/research_facility/security_hq)
+"dT" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"el" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"em" = (
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"fe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/hybrisa/prisonbed,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"fo" = (
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"fw" = (
+/obj/structure/filingcabinet/security{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/security{
+	pixel_x = -7
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"fx" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/vehicle_clamp,
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"fz" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"fW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"fX" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gh" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gx" = (
+/obj/structure/pipes/vents,
+/obj/structure/mirror{
+	pixel_y = 36;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gB" = (
+/obj/structure/fence/slim/dark,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gL" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gO" = (
+/obj/structure/machinery/light/small{
+	pixel_x = 11
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"gV" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"gY" = (
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/research_facility/security_hq)
+"gZ" = (
+/obj/structure/machinery/door/airlock/glass_security/colony,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter";
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"hu" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"hB" = (
+/obj/structure/closet/secure_closet/marshal{
+	pixel_x = 9
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"hR" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	pixel_y = 1;
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"ie" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 26
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"iB" = (
+/obj/structure/closet/secure_closet/guncabinet/blue/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/head/helmet/riot/vintage_riot,
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"iH" = (
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/faxmachine{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"iM" = (
+/obj/structure/machinery/fermenter,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"iR" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -14
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"iS" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 20
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"je" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"jr" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"jO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/corsat/redcorner/north,
+/area/point_loma/research_facility/security_hq)
+"jQ" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter"
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"kb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"ku" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"kA" = (
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"kB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"kG" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/gun/uscm_primary,
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"kU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"kV" = (
+/obj/structure/closet/hydrant/empty{
+	pixel_x = -28
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -14
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"lA" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/shotgun/beanbag,
+/obj/item/ammo_magazine/shotgun/beanbag{
+	pixel_y = -6
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"lB" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/closet/secure_closet/brig/prisoner,
+/turf/open/floor/corsat/red/northeast,
+/area/point_loma/research_facility/security_hq)
+"lC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/glass_security/colony{
+	panel_open = 1;
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter";
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"lJ" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 2;
+	pixel_y = 30
+	},
+/obj/structure/machinery/door_control{
+	id = "Colony Brig Lockdown Shutters";
+	name = "Brig Lockdown Shutters";
+	pixel_x = -24;
+	pixel_y = -5;
+	req_access_txt = "3"
+	},
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"lU" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/screwdriver{
+	pixel_y = -3;
+	pixel_x = 12
+	},
+/obj/effect/spawner/random/gun/clf_secondary,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"lV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"lY" = (
+/obj/structure/pipes/vents,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"ma" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/target{
+	name = "punching bag";
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"me" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/vending/hydroseeds{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"mf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"mE" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -14
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"mF" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"mJ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"mX" = (
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/item/tape{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"nY" = (
+/obj/structure/machinery/firealarm{
+	pixel_x = -25
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"oe" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/storage/box/legcuffs{
+	pixel_x = -3;
+	pixel_y = -8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"og" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"ow" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/toolbox/emergency{
+	pixel_y = 7;
+	pixel_x = -3
+	},
+/obj/item/device/taperecorder/empty{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"oy" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window{
+	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 8;
+	id = "bot_armory";
+	name = "\improper Armory Shutters"
+	},
+/obj/item/shard,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"pe" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small/blue,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"pj" = (
+/obj/structure/machinery/flasher_button{
+	pixel_x = -22
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"po" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"pr" = (
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"pL" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"pY" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"ql" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"qp" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = -24
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"qv" = (
+/obj/structure/machinery/firealarm{
+	pixel_x = 25
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"qG" = (
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 1;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = 13
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"qI" = (
+/obj/structure/machinery/door/airlock/security/colony{
+	dir = 1
+	},
+/turf/open/floor/shiva/wredfull,
+/area/point_loma/research_facility/security_hq)
+"qJ" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400";
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"qV" = (
+/obj/structure/machinery/door_control{
+	id = "Colony Brig Lockdown Shutters";
+	name = "Brig Lockdown Shutters";
+	pixel_x = 8;
+	pixel_y = 25;
+	req_access_txt = "3"
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"rr" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 15;
+	pixel_x = 8
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"rs" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/redcorner/north,
+/area/point_loma/research_facility/security_hq)
+"rv" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave{
+	pixel_y = 10
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"sa" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/redcorner/north,
+/area/point_loma/research_facility/security_hq)
+"sj" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"sn" = (
+/obj/structure/pipes/standard/manifold/hidden/purple,
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"sM" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 1
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"ti" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/red/southeast,
+/area/point_loma/research_facility/security_hq)
+"tG" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_x = -5
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"tM" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"tS" = (
+/obj/structure/machinery/vending/snack{
+	pixel_y = 16;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"tV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"ut" = (
+/obj/structure/filingcabinet/security{
+	pixel_x = 7
+	},
+/obj/structure/filingcabinet/security{
+	pixel_x = -8
+	},
+/turf/open/floor/corsat/red/southeast,
+/area/point_loma/research_facility/security_hq)
+"uU" = (
+/obj/structure/sink{
+	pixel_y = 18
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"vs" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"vw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"vP" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -10;
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"wn" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/medical_wall{
+	pixel_x = 27;
+	pixel_y = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"wA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/southwest,
+/area/point_loma/research_facility/security_hq)
+"wJ" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"wM" = (
+/obj/structure/machinery/vending/cola{
+	density = 0;
+	pixel_y = 16;
+	pixel_x = -4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"wV" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"xl" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"xz" = (
+/obj/structure/machinery/flasher_button{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400";
+	pixel_y = 1;
+	pixel_x = 5
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"xA" = (
+/turf/closed/wall/new_varadero,
+/area/point_loma/research_facility/security_hq)
+"xP" = (
+/obj/structure/machinery/vending/security{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"yg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"yh" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"yj" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/donut_box{
+	pixel_y = 7
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"yl" = (
+/obj/structure/closet/secure_closet/brig/prisoner,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"yA" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"yB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/flasher{
+	pixel_y = 22
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"yO" = (
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"yQ" = (
+/obj/structure/machinery/firealarm{
+	pixel_x = -25
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"yU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"zy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"zA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 6
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Ae" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter"
+	},
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Ap" = (
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	pixel_y = 1;
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"AQ" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"AX" = (
+/obj/effect/decal/cleanable/spiderling_remains,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Be" = (
+/obj/structure/machinery/vending/security{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/red/northeast,
+/area/point_loma/research_facility/security_hq)
+"Bf" = (
+/obj/structure/machinery/flasher{
+	pixel_y = 22
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"BB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/brig/prisoner,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"BG" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/northeast,
+/area/point_loma/research_facility/security_hq)
+"BU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"BZ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 10
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Ch" = (
+/obj/structure/closet/secure_closet/warden,
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"Cs" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"CA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/redcorner/west,
+/area/point_loma/research_facility/security_hq)
+"CT" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"CU" = (
+/obj/structure/closet/medical_wall{
+	pixel_y = -26
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Dl" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Du" = (
+/turf/open/floor/corsat/redcorner/west,
+/area/point_loma/research_facility/security_hq)
+"DB" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"DC" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/belt/gun/l54,
+/obj/item/storage/belt/security/brown,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"DL" = (
+/obj/structure/closet/secure_closet/brig/prisoner,
+/obj/structure/machinery/light/small{
+	pixel_x = 11
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"DO" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat/red/southwest,
+/area/point_loma/research_facility/security_hq)
+"DP" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Ef" = (
+/obj/structure/machinery/door/airlock/security/colony,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"Ej" = (
+/obj/structure/machinery/door/window/ultra,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Er" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"Es" = (
+/obj/item/device/radio/electropack,
+/obj/structure/surface/rack,
+/turf/open/floor/shiva/wredfull,
+/area/point_loma/research_facility/security_hq)
+"Ex" = (
+/turf/open/floor/shiva/red/east,
+/area/point_loma/research_facility/security_hq)
+"ER" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"EZ" = (
+/obj/structure/machinery/door/airlock/security/colony,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "exposed01-supply"
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/wredfull,
+/area/point_loma/research_facility/security_hq)
+"Fo" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_x = -24
+	},
+/obj/structure/closet/secure_closet/guncabinet/blue/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/head/helmet/riot/vintage_riot,
+/turf/open/floor/corsat/red/southwest,
+/area/point_loma/research_facility/security_hq)
+"FK" = (
+/obj/structure/machinery/firealarm{
+	pixel_x = 25
+	},
+/obj/structure/closet/secure_closet/brig/prisoner,
+/turf/open/floor/corsat/red/southeast,
+/area/point_loma/research_facility/security_hq)
+"Gc" = (
+/obj/item/shard,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Ge" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Gf" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter";
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"Gi" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Gj" = (
+/turf/open/floor/corsat/red/northeast,
+/area/point_loma/research_facility/security_hq)
+"Gp" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_4";
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/obj/structure/machinery/light/small/blue,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Hm" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"Hy" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window,
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"HC" = (
+/obj/structure/target{
+	name = "punching bag";
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"HZ" = (
+/turf/template_noop,
+/area/template_noop)
+"IF" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"IO" = (
+/obj/structure/pipes/vents,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/structure/mirror{
+	pixel_y = 36;
+	pixel_x = -1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Jo" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/handcuffs{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/device/megaphone{
+	pixel_x = 1;
+	pixel_y = -4
+	},
+/turf/open/floor/corsat/red/southwest,
+/area/point_loma/research_facility/security_hq)
+"Jq" = (
+/turf/open/floor/corsat/red/southwest,
+/area/point_loma/research_facility/security_hq)
+"JK" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Kn" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"KD" = (
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"KL" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400";
+	pixel_y = 8;
+	pixel_x = 16
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"KS" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"KT" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#687d89";
+	alpha = 220;
+	layer = 3.2;
+	open = 1
+	},
+/obj/item/shard,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"KW" = (
+/obj/structure/machinery/flasher{
+	pixel_y = -22
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 6;
+	pixel_x = 7
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 5
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"KZ" = (
+/obj/item/weapon/shield/riot{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"La" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Lk" = (
+/turf/open/floor/corsat/redcorner/north,
+/area/point_loma/research_facility/security_hq)
+"LI" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/effect/spawner/random/technology_scanner{
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"Mk" = (
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Mt" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Nd" = (
+/turf/closed/wall/rock/brown,
+/area/point_loma/research_facility/security_hq)
+"Ne" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Ng" = (
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Ob" = (
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/glasses/sunglasses{
+	pixel_y = -5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Od" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 8
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Og" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquareslight,
+/area/point_loma/research_facility/security_hq)
+"Oo" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = -26
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"OB" = (
+/turf/open/floor/corsat/red/southeast,
+/area/point_loma/research_facility/security_hq)
+"OU" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"Pk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Pn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Ps" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/flashbangs{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/storage/box/flashbangs{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/storage/box/flashbangs,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"Py" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#687d89";
+	alpha = 220;
+	layer = 3.2
+	},
+/obj/structure/window/framed/new_varadero/foundation,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Qs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Qw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control{
+	id = "bot_armory";
+	name = "\improper Shutters";
+	pixel_x = -21;
+	pixel_y = 11;
+	req_access_txt = "3"
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"QD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"QZ" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Rf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"RI" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"RP" = (
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/research_facility/security_hq)
+"Sa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"Sn" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12;
+	pixel_x = 12
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"So" = (
+/obj/structure/machinery/firealarm{
+	pixel_x = -25
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"St" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"SH" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"SM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"SX" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/window/reinforced{
+	health = 80;
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Tl" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"TM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"TZ" = (
+/obj/structure/machinery/door_control{
+	id = "bot_armory";
+	name = "\improper Shutters";
+	pixel_x = 22;
+	pixel_y = 11;
+	req_access_txt = "3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Us" = (
+/obj/structure/machinery/photocopier,
+/obj/item/folder{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Uw" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"UC" = (
+/obj/structure/machinery/flasher_button{
+	pixel_y = 25
+	},
+/turf/open/floor/corsat/red/northwest,
+/area/point_loma/research_facility/security_hq)
+"UF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"UM" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/evidence{
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/obj/item/weapon/baton{
+	pixel_y = 6;
+	pixel_x = -3
+	},
+/turf/open/floor/corsat/red/southeast,
+/area/point_loma/research_facility/security_hq)
+"Vj" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 12;
+	pixel_y = 16
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"VB" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/item/storage/box/ids{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/storage/box/zipcuffs{
+	pixel_y = 2
+	},
+/turf/open/floor/corsat,
+/area/point_loma/research_facility/security_hq)
+"VU" = (
+/obj/structure/fence/slim/dark/door{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Wi" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Wo" = (
+/obj/structure/closet/secure_closet/marshal{
+	pixel_x = 9
+	},
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"Ws" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "Colony Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter"
+	},
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Wt" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Wx" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -16
+	},
+/obj/structure/closet/firecloset{
+	pixel_y = 2;
+	pixel_x = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Xf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"Xm" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/drinks/coffeecup,
+/turf/open/floor/corsat/red,
+/area/point_loma/research_facility/security_hq)
+"Xn" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 3;
+	pixel_x = 5
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
+"Xs" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/item/weapon/baton/damaged,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"XK" = (
+/obj/structure/machinery/door/airlock/security/colony,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 8;
+	id = "bot_armory";
+	name = "\improper Armory Shutters"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"XL" = (
+/turf/open/floor/corsat/red/east,
+/area/point_loma/research_facility/security_hq)
+"XQ" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/corsat/retrosquares,
+/area/point_loma/research_facility/security_hq)
+"Yo" = (
+/obj/structure/machinery/door/airlock/glass_security/colony,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Yy" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"YS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/west,
+/area/point_loma/research_facility/security_hq)
+"YV" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/security_hq)
+"Zn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/redcorner/east,
+/area/point_loma/research_facility/security_hq)
+"ZN" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red/west,
+/area/point_loma/research_facility/security_hq)
+
+(1,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+Gf
+Gf
+gY
+gY
+gY
+HZ
+HZ
+HZ
+"}
+(2,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+RP
+lV
+pr
+gY
+Nd
+gY
+HZ
+HZ
+HZ
+"}
+(3,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+jQ
+pr
+cZ
+KW
+gY
+Nd
+gY
+HZ
+HZ
+HZ
+"}
+(4,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+gY
+gY
+Gf
+Gf
+Gf
+Gf
+gY
+gY
+kb
+pr
+pL
+gY
+gY
+gY
+HZ
+HZ
+HZ
+"}
+(5,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+gY
+me
+dE
+dE
+dE
+AQ
+iM
+RP
+RP
+xz
+Og
+qI
+Es
+RP
+HZ
+HZ
+HZ
+"}
+(6,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+Gf
+Gf
+gY
+em
+em
+yh
+em
+em
+em
+tG
+RP
+xA
+qp
+xA
+RP
+RP
+RP
+RP
+RP
+"}
+(7,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+jQ
+jQ
+dE
+dE
+em
+em
+em
+Wt
+em
+yU
+em
+em
+RP
+EZ
+xA
+RP
+iB
+yO
+Fo
+RP
+"}
+(8,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+uU
+em
+dE
+em
+XQ
+XQ
+lY
+em
+em
+fW
+mf
+Ae
+vw
+DO
+RP
+fx
+kA
+Kn
+RP
+"}
+(9,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+jQ
+DB
+em
+em
+em
+XQ
+XQ
+kB
+XQ
+XQ
+QZ
+sj
+RP
+qV
+SH
+RP
+kG
+kA
+Ps
+RP
+"}
+(10,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+jQ
+DB
+em
+ER
+zA
+Gi
+Gi
+ax
+ay
+Vj
+Od
+IF
+Ws
+sn
+Xm
+RP
+hu
+kA
+dT
+RP
+"}
+(11,1,1) = {"
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+jQ
+sM
+ad
+xl
+gV
+ma
+HC
+kB
+vs
+em
+po
+em
+aW
+ku
+cd
+RP
+lA
+kA
+LI
+RP
+"}
+(12,1,1) = {"
+HZ
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+gZ
+RP
+aE
+RP
+RP
+lC
+RP
+RP
+lC
+RP
+RP
+cx
+Sa
+RP
+zy
+kA
+Sa
+RP
+"}
+(13,1,1) = {"
+RP
+RP
+Ch
+nY
+bL
+DO
+RP
+ie
+CU
+RP
+Qs
+fe
+RP
+QD
+fe
+RP
+vP
+fe
+RP
+tS
+fo
+RP
+BG
+TZ
+OB
+RP
+"}
+(14,1,1) = {"
+RP
+lJ
+Lk
+kA
+kA
+fw
+RP
+wJ
+yg
+RP
+gx
+pe
+RP
+gx
+Gp
+RP
+IO
+pe
+RP
+wM
+fo
+RP
+oy
+RP
+XK
+RP
+"}
+(15,1,1) = {"
+RP
+dP
+KS
+RI
+je
+ut
+RP
+Xs
+kA
+RP
+yB
+fe
+RP
+Bf
+fe
+RP
+yB
+fe
+RP
+OU
+Du
+fz
+lU
+Qw
+wA
+RP
+"}
+(16,1,1) = {"
+RP
+Ef
+RP
+VB
+Hy
+RP
+RP
+RP
+Yo
+RP
+Ej
+Er
+RP
+el
+Er
+RP
+Gc
+bI
+RP
+Cs
+iS
+Sn
+Yy
+kA
+fo
+RP
+"}
+(17,1,1) = {"
+RP
+CT
+aQ
+KD
+Jq
+RP
+iR
+kA
+kA
+RP
+UC
+mE
+pj
+yO
+mE
+pj
+pY
+Jq
+Py
+cx
+SX
+mX
+Mk
+YV
+fo
+RP
+"}
+(18,1,1) = {"
+kU
+cl
+Xf
+sa
+CA
+ZN
+Xf
+KL
+Xf
+ZN
+jO
+Rf
+Pk
+TM
+Rf
+Pk
+Pn
+fo
+Py
+rr
+iH
+qG
+Ob
+Us
+Oo
+RP
+"}
+(19,1,1) = {"
+Gj
+XL
+Mt
+XL
+XL
+XL
+XL
+La
+XL
+Ex
+UF
+UF
+UF
+Ne
+Zn
+Ge
+Wi
+fo
+KT
+cx
+kA
+ql
+gL
+kA
+qJ
+RP
+"}
+(20,1,1) = {"
+RP
+Uw
+og
+kA
+DP
+RP
+Wx
+qv
+kA
+RP
+BB
+ow
+oe
+cj
+lB
+UF
+tV
+FK
+Py
+Xn
+Ge
+Wi
+kA
+kA
+fo
+RP
+"}
+(21,1,1) = {"
+RP
+RP
+RP
+Yo
+RP
+RP
+RP
+RP
+gY
+gY
+xA
+xA
+xA
+xA
+xA
+kA
+mJ
+RP
+RP
+tM
+KZ
+rv
+yj
+kA
+fo
+RP
+"}
+(22,1,1) = {"
+HZ
+gY
+So
+kA
+fX
+Dl
+kA
+gY
+HZ
+HZ
+gY
+gY
+gY
+gY
+xP
+YS
+SM
+YS
+yO
+rs
+gh
+Wi
+kA
+Ge
+fo
+dD
+"}
+(23,1,1) = {"
+HZ
+gY
+Tl
+kA
+gB
+kA
+gO
+gY
+HZ
+HZ
+HZ
+HZ
+gY
+gY
+Be
+UF
+wn
+jr
+jr
+BZ
+aF
+JK
+yA
+St
+ti
+wV
+"}
+(24,1,1) = {"
+HZ
+gY
+gB
+VU
+gB
+kA
+yl
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+gY
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+Wi
+BU
+RP
+RP
+"}
+(25,1,1) = {"
+HZ
+gY
+kA
+kA
+kA
+kA
+yl
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+ca
+yO
+kV
+yO
+mF
+Xf
+yQ
+Hm
+yO
+Jo
+RP
+"}
+(26,1,1) = {"
+HZ
+gY
+cU
+kA
+yl
+kA
+DL
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+RP
+dd
+Ap
+Wo
+Ap
+hB
+hR
+DC
+DC
+UM
+RP
+"}
+(27,1,1) = {"
+HZ
+gY
+yl
+kA
+yl
+kA
+yl
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+RP
+"}
+(28,1,1) = {"
+HZ
+gY
+yl
+kA
+yl
+kA
+yl
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+RP
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+"}
+(29,1,1) = {"
+HZ
+gY
+gY
+Ng
+do
+AX
+gY
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+"}
+(30,1,1) = {"
+HZ
+HZ
+gY
+gY
+gY
+gY
+gY
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+HZ
+"}

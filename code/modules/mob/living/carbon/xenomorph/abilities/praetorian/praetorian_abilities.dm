@@ -120,12 +120,37 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 SECONDS
-	plasma_cost = 180
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 50
 
 	// Config
+	/// Max distance of the hook
 	var/max_distance = 6
+	/// How many tiles the hooked targets can be thrown
+	var/secondary_throw_distance = 3
+	/// Windup of the hook
 	var/windup = 8 DECISECONDS
+	/// Determines if its the first hook or the second part
+	var/ability_used_once = FALSE
+	/// Targets that were caught by the hook
+	var/list/targets_added = list()
+	/// Targets that have been collided by the thrown people (second part of the hook)
+	var/list/targets_collided = list()
+	/// Last thrown target
+	var/throw_count = 0
+	/// Tail sprite thats hooked to the target post first hook
+	var/static/image/tail_image
+	/// Targetted turf that the targets will be thrown to
+	var/throw_turf
+	/// Tail sprite thats hooked to the target post first hook
+	var/obj/effect/beam/tail_beam
+	/// if the targets thrown hit an obstacle, humans, walls eg.
+	var/hit_obstacle = FALSE
+	/// How many were affected by the hooks
+	var/affected_count = 0
+	/// Telegraphed turfs
+	var/list/telegraph_atom_list = list()
+	var/list/turf_list = list()
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -139,31 +164,13 @@
 	// Configurables
 	var/damage = 20
 
-
-// This one is more tightly coupled than I'd like, but oh well
-// unused
-/*datum/action/xeno_action/onclick/crush
-	name = "Crush"
-	action_icon_state = "prae_crush"
-	action_text = "crush"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
-	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 10 SECONDS
-	plasma_cost = 80*/
-
-// Tail lash
-/datum/action/xeno_action/activable/tail_lash
-	name = "Tail Lash"
-	action_icon_state = "prae_tail_lash"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
+/datum/action/xeno_action/activable/send_back
+	name = "Send Back"
+	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 13 SECONDS
-	plasma_cost = 80
-
-	// Config
-	var/fling_dist = 3
-	var/windup = 2 DECISECONDS
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 100
+	var/fling_damage = 40
 
 ////////// Dancer Abilities
 

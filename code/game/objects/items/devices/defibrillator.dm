@@ -395,7 +395,7 @@
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
-		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
+		to_chat(user, SPAN_WARNING("You can't use \a [src] on a living being!"))
 		return FALSE
 	if(!ready)
 		balloon_alert(user, "activate it first!")

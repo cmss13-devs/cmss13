@@ -1084,7 +1084,7 @@
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("You are banished from \the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 
 	var/mob/living/carbon/human/original_human = user.mind?.original
@@ -1671,7 +1671,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		//If this buff isn't combinable, check if any other active hivebuffs aren't combinable
 		if(!initial(possible_hivebuff.is_combineable))
 			var/found_conflict = FALSE
 			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
@@ -1703,7 +1703,7 @@
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to each other."
 
 /datum/xeno_mark_define/fortify
 	name = "Fortify"

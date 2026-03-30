@@ -6,7 +6,7 @@
 	mob_max = 8
 	max_medics = 2 //Support T2 castes
 	max_engineers = 3 //Combat T2 castes
-	probability = 5
+	probability = 1
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 
@@ -32,7 +32,7 @@
 
 	var/mob/living/carbon/xenomorph/new_xeno
 	if(!leader)
-		var/picked = pick(/mob/living/carbon/xenomorph/ravager, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/crusher, /mob/living/carbon/xenomorph/despoiler)
+		var/picked = pick(/mob/living/carbon/xenomorph/king)
 		new_xeno = new picked(spawn_loc)
 		leader = new_xeno
 		hive_leader = TRUE

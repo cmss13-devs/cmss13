@@ -7,7 +7,7 @@
 	mob_max = 8
 	mob_min = 5
 	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
-	probability = 0
+	probability = 1
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
@@ -56,6 +56,7 @@
 
 /datum/emergency_call/death/low_threat
 	name = "Weyland Whiteout Operators"
+	probability = 0
 
 // DEATH SQUAD--------------------------------------------------------------------------------
 /datum/emergency_call/death/low_threat/create_member(datum/mind/player, turf/override_spawn_loc)
@@ -98,7 +99,7 @@
 	mob_max = 8
 	mob_min = 5
 	max_smartgunners = 1
-	probability = 0
+	probability = 1
 	home_base = /datum/lazy_template/ert/uscm_station
 	var/leader_preset = /datum/equipment_preset/uscm/marsoc/sl
 	var/member_preset = /datum/equipment_preset/uscm/marsoc
@@ -126,6 +127,7 @@
 		arm_equipment(member, member_preset, TRUE, TRUE)
 	to_chat(member, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
 	to_chat(member, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
+	to_chat(member, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 	return
 
 /datum/emergency_call/marsoc/covert
@@ -135,6 +137,7 @@
 	sg_preset = /datum/equipment_preset/uscm/marsoc/sg/covert
 
 /datum/emergency_call/marsoc/low_threat
+	probability = 0
 	name = "Marine Raider Operatives"
 	leader_preset = /datum/equipment_preset/uscm/marsoc/low_threat/sl
 	member_preset = /datum/equipment_preset/uscm/marsoc/low_threat
@@ -147,7 +150,7 @@
 	mob_max = 8
 	mob_min = 3
 	arrival_message = "'Des#<oy *&l th!^ @he Anci#*$!>- d=!#?ee unwor%*y o# *xist?n&*.'"
-	probability = 0
+	probability = 1
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	home_base = /datum/lazy_template/ert/yautja_station
 	hostility = TRUE
@@ -180,5 +183,6 @@
 
 /datum/emergency_call/yautja_mcaste/low_threat
 	name = "Yautja Military Caste Soldiers"
+	probability = 0
 	team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer/low_threat
 	team_member_preset = /datum/equipment_preset/yautja/soldier/low_threat

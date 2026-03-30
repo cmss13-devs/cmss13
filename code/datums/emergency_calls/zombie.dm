@@ -1,9 +1,9 @@
 
 /datum/emergency_call/zombie
 	name = "Zombies"
-	mob_max = 8
+	mob_max = 10
 	mob_min = 1
-	probability = 0
+	probability = 1
 	auto_shuttle_launch = TRUE //can't use the shuttle console with zombie claws, so has to autolaunch.
 	hostility = TRUE
 
@@ -24,3 +24,5 @@
 	if(H && H.loc)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Zombie!"))
 		to_chat(H, SPAN_ROLE_BODY("Spread... Consume... Infect..."))
+
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))

@@ -256,6 +256,7 @@
 	if(!ignore_ftl_or_crash && (SShijack.in_ftl || SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH))
 		members = list()
 		candidates = list()
+		message_admins("Aborting distress beacon, not setup to bypass FTL or [MAIN_SHIP_NAME] Crash.")
 		return
 
 	//We've got enough!

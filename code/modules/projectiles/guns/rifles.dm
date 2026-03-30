@@ -1778,6 +1778,17 @@
 	random_spawn_muzzle = list()
 	bonus_overlay_x = 1
 	bonus_overlay_y = 0
+	var/iff_enabled = TRUE
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/Initialize(mapload, ...)
+	LAZYADD(actions_types, /datum/action/item_action/toggle_alt_iff)
+	. = ..()
+	if(iff_enabled)
+		LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+		))
+		AddComponent(/datum/component/iff_fire_prevention, 5)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 21, "stock_y" = 18)
@@ -1798,6 +1809,46 @@
 	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_delay(FIRE_DELAY_TIER_12)
 	scatter = SCATTER_AMOUNT_TIER_8
+
+/datum/action/item_action/toggle_alt_iff/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle IFF"
+	action_icon_state = "iff_toggle_on"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle_alt_iff/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/type71/carbine/commando/protag_gun = holder_item
+	protag_gun.toggle_iff(usr)
+	if(protag_gun.iff_enabled)
+		action_icon_state = "iff_toggle_on"
+	else
+		action_icon_state = "iff_toggle_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+// -- ability actions procs -- \\
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/proc/toggle_iff(mob/user)
+	iff_enabled = !iff_enabled
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+	recalculate_attachment_bonuses()
+	if(iff_enabled)
+		if(!GetComponent(src, /datum/component/iff_fire_prevention))
+			AddComponent(/datum/component/iff_fire_prevention, 5)
+			SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+	else
+		remove_bullet_trait("iff")
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+		GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/deathsquad
+	current_mag = /obj/item/ammo_magazine/rifle/type71/heap
 
 	//-------------------------------------------------------
 

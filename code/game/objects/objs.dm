@@ -328,9 +328,6 @@
 
 	O.name += " ([label])"
 
-/obj/proc/extinguish()
-	return
-
 /obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)

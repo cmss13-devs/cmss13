@@ -19,6 +19,7 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		/obj/effect/landmark/lizard_spawn,
 		/obj/effect/fake_attacker,
 		/atom/movable/lighting_mask, //leave it alone
+		/atom/movable/static_lighting_object, // ditto
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
 		/obj/merge_conflict_marker,
 		/obj/effect/projector_anchor, // Needs a link ID set to work as intended

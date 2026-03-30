@@ -41,6 +41,8 @@ All ShuttleMove procs go here
 	else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
 		if(thing.anchored)
 			// Ordered by most likely:
+			if(istype(thing, /atom/movable/static_lighting_object))
+				return
 			if(istype(thing, /obj/structure/machinery/landinglight))
 				return
 			if(istype(thing, /obj/docking_port))
@@ -280,7 +282,7 @@ All ShuttleMove procs go here
 
 /* ***********************************Misc move procs************************************/
 
-/atom/movable/lighting_object/onShuttleMove()
+/atom/movable/static_lighting_object/onShuttleMove()
 	return FALSE
 
 /obj/docking_port/mobile/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)

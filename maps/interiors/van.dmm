@@ -18,13 +18,13 @@
 	},
 /obj/effect/vehicle_roof/van,
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "f" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "h" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -40,7 +40,7 @@
 	icon_state = "front_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "j" = (
 /obj/structure/interior_wall/van{
 	icon_state = "background_2"
@@ -49,7 +49,7 @@
 	icon_state = "roof_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "n" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
@@ -74,7 +74,7 @@
 	icon_state = "roof_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "s" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/vehicle_roof/van,
@@ -115,19 +115,19 @@
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield,
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "w" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "x" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "y" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -145,13 +145,13 @@
 	icon_state = "back_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "E" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/van)
 "F" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;

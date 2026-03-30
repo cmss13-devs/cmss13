@@ -2021,11 +2021,7 @@
 
 /turf/open/floor/almayer/empty/requisitions/get_depths_turfs()
 	var/area/elevator_area = GLOB.supply_controller.shuttle?.get_location_area()
-
-	var/turf_list = list()
-	for(var/turf/turf in elevator_area)
-		turf_list |= turf
-	return turf_list
+	return elevator_area?.get_turfs_from_all_zlevels()
 
 /// Vehicle bay pit.
 /turf/open/floor/almayer/empty/vehicle_bay

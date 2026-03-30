@@ -243,22 +243,42 @@ SUBSYSTEM_DEF(hijack)
 			initiate_ftl_charge()
 
 		// Calculate new progression
-		for(var/area/almayer/cycled_area as anything in current_run)
-			current_run -= cycled_area
+		// i couldnt get a nicer way to work so you get this
 
-			if(progress_areas[cycled_area] != cycled_area.power_equip)
-				progress_areas[cycled_area] = !progress_areas[cycled_area]
-				announce_area_power_change(cycled_area)
+		if(MAIN_SHIP_NAME == MAP_SULACO)
+			for(var/area/sulaco/cycled_area as anything in current_run)
+				current_run -= cycled_area
 
-			if(progress_areas[cycled_area])
-				switch(cycled_area.hijack_evacuation_type)
-					if(EVACUATION_TYPE_ADDITIVE)
-						current_run_progress_additive += cycled_area.hijack_evacuation_weight
-					if(EVACUATION_TYPE_MULTIPLICATIVE)
-						current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
+				if(progress_areas[cycled_area] != cycled_area.power_equip)
+					progress_areas[cycled_area] = !progress_areas[cycled_area]
+					announce_area_power_change(cycled_area)
 
-			if(MC_TICK_CHECK)
-				return
+				if(progress_areas[cycled_area])
+					switch(cycled_area.hijack_evacuation_type)
+						if(EVACUATION_TYPE_ADDITIVE)
+							current_run_progress_additive += cycled_area.hijack_evacuation_weight
+						if(EVACUATION_TYPE_MULTIPLICATIVE)
+							current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
+
+				if(MC_TICK_CHECK)
+					return
+		else
+			for(var/area/almayer/cycled_area as anything in current_run)
+				current_run -= cycled_area
+
+				if(progress_areas[cycled_area] != cycled_area.power_equip)
+					progress_areas[cycled_area] = !progress_areas[cycled_area]
+					announce_area_power_change(cycled_area)
+
+				if(progress_areas[cycled_area])
+					switch(cycled_area.hijack_evacuation_type)
+						if(EVACUATION_TYPE_ADDITIVE)
+							current_run_progress_additive += cycled_area.hijack_evacuation_weight
+						if(EVACUATION_TYPE_MULTIPLICATIVE)
+							current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
+
+				if(MC_TICK_CHECK)
+					return
 
 		last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
 		current_progress += last_run_progress_change

@@ -398,12 +398,14 @@
 	shrapnel_spread = 360
 	health = 50
 	var/disarmed = FALSE
-	var/explosion_size = 100
+	var/explosion_strength = 100
 	var/explosion_falloff = 50
 	var/mine_level = 1
 	var/deploy_time = 0
 	var/mine_state = ""
+	var/mine_mode = ""
 	var/timer_id
+	var/rearm_desc
 
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()
 	mine_level++
@@ -411,33 +413,63 @@
 	if(mine_level < 4)
 		timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
+/obj/item/explosive/mine/sharp/proc/set_mine_mode(mode)
+	mine_mode = mode
+
 /obj/item/explosive/mine/sharp/check_for_obstacles(mob/living/user)
 	return FALSE
 
 /obj/item/explosive/mine/sharp/attackby(obj/item/W, mob/user)
 	if(user.action_busy)
 		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
-		SPAN_NOTICE("You start disarming [src]."))
-		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
-			SPAN_WARNING("You stop disarming [src]."))
-			return
-		if(!active)//someone beat us to it
-			return
-	user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
-	SPAN_NOTICE("You finish disarming [src]."))
-	disarm()
+	if(!disarmed)
+		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+			SPAN_NOTICE("You start disarming [src]."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				SPAN_WARNING("You stop disarming [src]."))
+				return
+			if(!active)//someone beat us to it
+				return
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			SPAN_NOTICE("You finish disarming [src]."))
+			disarm()
+	else
+		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+				to_chat(user, SPAN_WARNING("You don't seem to know how to rearm \the [src]..."))
+				return
+			var/turf = get_turf(src)
+			for(var/obj/item/explosive/mine/existing_mine in turf)
+				if(existing_mine != src)
+					to_chat(user, SPAN_WARNING("There is already a mine deployed here!"))
+					return
+			user.visible_message(SPAN_NOTICE("[user] starts rearming [src]."), \
+			SPAN_NOTICE("You start rearming [src]."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+				user.visible_message(SPAN_WARNING("[user] stops rearming [src]."), \
+				SPAN_WARNING("You stop rearming [src]."))
+				return
+			if(active)//someone beat us to it
+				return
+			user.visible_message(SPAN_NOTICE("[user] finishes rearming [src]."), \
+			SPAN_NOTICE("You finish rearming [src]."))
+			rearm(user)
 	return
 
 /obj/item/explosive/mine/sharp/set_tripwire()
 	if(!active && !tripwire)
-		for(var/direction in CARDINAL_ALL_DIRS)
-			var/tripwire_loc = get_turf(get_step(loc,direction))
-			tripwire = new(tripwire_loc)
+		if (mine_mode == SHARP_DIRECTED_MODE)
+			tripwire = new(src)
 			tripwire.linked_claymore = src
 			active = TRUE
+		else
+			for(var/direction in CARDINAL_ALL_DIRS)
+				var/tripwire_loc = get_turf(get_step(loc,direction))
+				tripwire = new(tripwire_loc)
+				tripwire.linked_claymore = src
+				active = TRUE
 
 /obj/item/explosive/mine/sharp/prime(mob/user)
 	set waitfor = FALSE
@@ -446,17 +478,25 @@
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
 	if(mine_level == 1)
-		explosion_size = 100
+		explosion_strength = 100
 	else if(mine_level == 2)
-		explosion_size = 100
+		explosion_strength = 100
 		explosion_falloff = 25
 	else if(mine_level == 3)
-		explosion_size = 125
+		explosion_strength = 125
 		explosion_falloff = 30
 	else
-		explosion_size = 125
+		explosion_strength = 125
 		explosion_falloff = 25
-	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
+	switch(mine_mode)
+		if(SHARP_DIRECTED_MODE)
+			explosion_falloff = explosion_strength
+		if(SHARP_SAFE_MODE)
+			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, src))
+				if (human.get_target_lock(iff_signal))
+					disarm()
+					return
+	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 
@@ -465,12 +505,19 @@
 	active = FALSE
 	triggered = FALSE
 	icon_state = "sharp_mine_disarmed"
-	desc = "A disarmed P9 SHARP rifle dart, useless now."
+	rearm_desc = desc
+	desc = "A disarmed P9 SHARP rifle dart. With the right training, it can potentially be rearmed with a security access tuner."
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
 	deltimer(timer_id)
-	add_to_garbage(src)
+	playsound(src, 'sound/weapons/smartgun_fail.ogg', src, 25)
 
+/obj/item/explosive/mine/sharp/proc/rearm(mob/user)
+	disarmed = FALSE
+	mine_level = 1
+	desc = rearm_desc
+	addtimer(CALLBACK(src, PROC_REF(disarm)), 5 MINUTES, TIMER_DELETE_ME)
+	deploy_mine(user)
 
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)
 	if(disarmed)
@@ -482,16 +529,17 @@
 		return
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
+	if(user && src.loc == user)
+		user.drop_inv_item_on_ground(src)
 
 	cause_data = create_cause_data(initial(name), user, src)
-	if(user)
-		user.drop_inv_item_on_ground(src)
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
 	deploy_time = world.time
 	mine_state = icon_state
 	timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+	anchored = TRUE
 	for(var/mob/living/carbon/mob in range(1, src))
 		try_to_prime(mob)
 
@@ -529,22 +577,34 @@
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
-	if(mine_level == 1)
+
+	var/datum/reagent
+	var/smoke_radius = 2
+	var/flame_radius = 2
+
+	if(mine_level == 2)
+		reagent = new /datum/reagent/napalm/green()
+	else if(mine_level == 3)
+		reagent = new /datum/reagent/napalm/ut()
+	else
+		reagent = new /datum/reagent/napalm/ut()
+		flame_radius = 3
+	switch(mine_mode)
+		if (SHARP_DIRECTED_MODE)
+			smoke_radius = 0
+			flame_radius = 0
+		if (SHARP_SAFE_MODE)
+			for(var/mob/living/carbon/human in range(flame_radius, src))
+				if (human.get_target_lock(iff_signal))
+					disarm()
+					return
+
+	if (mine_level > 1)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+		new /obj/flamer_fire(loc, cause_data, reagent, flame_radius)
+	else
+		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
-		var/smoke_radius = 2
 		smoke.set_up(smoke_radius, 0, loc)
 		smoke.start()
-		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
-	else if(mine_level == 2)
-		var/datum/reagent/napalm/green/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, 2)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
-	else if(mine_level == 3)
-		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, 2)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
-	else
-		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, 3)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	qdel(src)

@@ -863,6 +863,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slurring()
 	handle_slowed()
 	handle_superslowed()
+	handle_hushed()
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -873,6 +874,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
+
+/mob/living/proc/handle_hushed()
+	if(hushed)
+		adjust_effect(-1, HUSHED)
+	return hushed
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)

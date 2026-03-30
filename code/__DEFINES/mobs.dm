@@ -88,6 +88,7 @@
 #define SLOW "slow"
 #define SUPERSLOW "superslow"
 #define ROOT "root"
+#define HUSHED "hushed"
 
 //=================================================
 

@@ -97,6 +97,7 @@
 			return
 	cmd_admin_pm(whom, msg)
 
+SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg)

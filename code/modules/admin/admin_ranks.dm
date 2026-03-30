@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/cmdb_api_key
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_SENSITIVE
 
 /**
  * Using the API backed admins/admin_ranks requires a response from the endpoint following this schema:

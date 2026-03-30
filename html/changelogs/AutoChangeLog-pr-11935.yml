@@ -1,0 +1,5 @@
+author: "halgmor"
+delete-after: True
+changes:
+  - rscadd: "Fire extinguishers (portable extinguishers and underslung extinguishers) can now be refilled from water bottles, flasks, sinks, water tanks, and water coolers."
+  - bugfix: "Fixed existing bug where adjacent extinguisher spray was not appearing visually"

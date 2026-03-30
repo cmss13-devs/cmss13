@@ -36,15 +36,15 @@
 /area/strata/exterior/far_north_outpost)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "ag" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 3;
 	pixel_y = 9
@@ -408,8 +408,8 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/strata/fake_wood,
 /area/strata/exterior/far_north_outpost)
 "aW" = (
@@ -515,12 +515,12 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bi" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bj" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 3;
 	pixel_y = 9
@@ -547,7 +547,7 @@
 /area/strata/exterior/far_north_outpost)
 "bn" = (
 /obj/structure/barricade/plasteel/wired,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/strata/fake_wood,
 /area/strata/exterior/far_north_outpost)
 "bo" = (
@@ -585,7 +585,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bt" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bu" = (
@@ -593,7 +593,7 @@
 	color = "#a98c7c";
 	pixel_y = -5
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bv" = (
@@ -609,7 +609,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "bx" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "by" = (
@@ -618,7 +618,7 @@
 /area/strata/exterior/far_north_outpost)
 "bz" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bA" = (
@@ -626,13 +626,13 @@
 /area/strata/interior/out_of_bounds)
 "bB" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bC" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bD" = (
@@ -640,7 +640,7 @@
 	pixel_x = -5;
 	pixel_y = -14
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bE" = (
@@ -658,7 +658,7 @@
 /area/strata/exterior/far_north_outpost)
 "bG" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bH" = (
@@ -745,27 +745,27 @@
 /area/strata/exterior/far_north_outpost)
 "bU" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bV" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bW" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/clothing/mask/gas/upp_pfb,
 /obj/item/trash/cigbutt,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "bX" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/trash/cigbutt,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
@@ -808,12 +808,12 @@
 	pixel_x = -4;
 	pixel_y = 18
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "cf" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/item/trash/cigbutt,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
@@ -1187,7 +1187,7 @@
 /area/strata/exterior/far_north_outpost)
 "fd" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "fg" = (
@@ -1254,8 +1254,8 @@
 /area/strata/exterior/far_north_outpost)
 "hW" = (
 /obj/effect/landmark/corpsespawner/clf,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -1540,9 +1540,9 @@
 	pixel_x = 2;
 	pixel_y = 15
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "rZ" = (
@@ -1859,8 +1859,8 @@
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_dorms)
 "DK" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/strata/fake_wood,
 /area/strata/exterior/far_north_outpost)
 "Ef" = (
@@ -1970,9 +1970,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "Ib" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/barricade/sandbags{
 	dir = 8;
 	color = "#a98c7c"
@@ -1980,11 +1980,11 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "It" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "Ix" = (
@@ -2026,8 +2026,8 @@
 /area/strata/interior/outpost/clf_dorms)
 "JY" = (
 /obj/item/weapon/gun/smg/fp9000,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -2059,7 +2059,7 @@
 /area/strata/exterior/far_north_outpost)
 "KC" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "Ld" = (
@@ -2091,8 +2091,8 @@
 /area/strata/interior/outpost/clf_dorms)
 "Ni" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "Nv" = (
@@ -2162,9 +2162,9 @@
 	layer = 3.1;
 	pixel_y = 38
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "PA" = (
@@ -2192,7 +2192,7 @@
 	color = "#a98c7c";
 	pixel_y = -5
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)
 "PJ" = (
@@ -2329,7 +2329,7 @@
 	pixel_x = 2;
 	pixel_y = 15
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)
 "Vd" = (
@@ -2378,9 +2378,9 @@
 /area/strata/exterior/far_north_outpost)
 "VC" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "VR" = (
@@ -2396,7 +2396,7 @@
 /obj/structure/barricade/sandbags{
 	color = "#a98c7c"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/barricade/sandbags{
 	dir = 8;
 	color = "#a98c7c"
@@ -2408,7 +2408,7 @@
 	pixel_x = 2;
 	pixel_y = 15
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "Wq" = (

@@ -17,7 +17,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "ae" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -26,7 +26,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ag" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
@@ -76,7 +76,7 @@
 /area/shiva/interior/colony/s_admin)
 "ap" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
@@ -271,7 +271,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "hN" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "iF" = (
@@ -590,7 +590,7 @@
 /area/shiva/interior/colony/s_admin)
 "uh" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ul" = (
@@ -801,7 +801,7 @@
 /turf/open/floor/shiva/green/southeast,
 /area/shiva/interior/colony/botany)
 "zw" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "zA" = (
@@ -902,7 +902,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "CZ" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Dg" = (
@@ -1099,7 +1099,7 @@
 /area/shiva/interior/colony/botany)
 "Ko" = (
 /obj/structure/bed/chair,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Kp" = (
@@ -1347,7 +1347,7 @@
 /area/shiva/interior/colony/s_admin)
 "Td" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Tj" = (
@@ -1370,7 +1370,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "TI" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
@@ -1390,7 +1390,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
 "UD" = (

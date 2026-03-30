@@ -11,8 +11,8 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "fS" = (
@@ -59,10 +59,10 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "mW" = (
@@ -171,7 +171,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "yl" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "zw" = (
@@ -260,9 +260,9 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Jr" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Jy" = (
@@ -321,10 +321,10 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Ri" = (
@@ -337,23 +337,23 @@
 	health = 50;
 	icon_state = "folding_3"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Su" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal10"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "SQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Tp" = (
@@ -368,10 +368,10 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -383,7 +383,7 @@
 	icon_state = "mgibbl2";
 	pixel_y = 8
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Vc" = (
@@ -430,7 +430,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ZU" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ZZ" = (
@@ -442,13 +442,13 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 

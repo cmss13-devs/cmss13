@@ -458,7 +458,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "fT" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "fU" = (

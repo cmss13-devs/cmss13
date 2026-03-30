@@ -6,6 +6,7 @@
 	item_state = ""
 	w_class = SIZE_TINY
 	var/translate_apollo = FALSE
+	var/translate_artemis = FALSE
 	var/translate_hive = FALSE
 	var/list/channels = list()
 	var/list/tracking_options
@@ -14,6 +15,10 @@
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
 	translate_apollo = TRUE
+
+/obj/item/device/encryptionkey/binary/colony
+	icon_state = "binary_key"
+	translate_artemis = TRUE
 
 /obj/item/device/encryptionkey/almayer
 	name = "Almayer Radio Encryption Key"
@@ -168,6 +173,7 @@
 	name = "AI Integrated Radio Encryption Key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
 	translate_apollo = TRUE
+	translate_artemis = TRUE
 
 // MARINE SQUADS
 

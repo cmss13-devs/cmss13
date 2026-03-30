@@ -753,6 +753,13 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
+"acH" = (
+/obj/structure/machinery/cryopod/no_cryo/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/garage)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -887,6 +894,12 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"adf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/start/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "adg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -903,6 +916,11 @@
 "adi" = (
 /turf/open/floor/shiva/yellowcorners/north,
 /area/shiva/interior/colony/research_hab)
+"adj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_cryo/right,
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/garage)
 "adk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
@@ -15264,9 +15282,11 @@
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metal_foam,
-/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "lPC" = (
@@ -50201,8 +50221,8 @@ afa
 ohb
 ohb
 afa
-aeY
-aBV
+adj
+acH
 aCz
 ktd
 cZk
@@ -50365,8 +50385,8 @@ aeL
 ver
 ver
 ver
-aeL
-aeL
+adf
+adf
 bYd
 ktd
 ktd

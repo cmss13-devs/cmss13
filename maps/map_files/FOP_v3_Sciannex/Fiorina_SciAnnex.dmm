@@ -390,6 +390,16 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
+"abs" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/maintenance)
+"abt" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -17450,6 +17460,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "nrn" = (
+/obj/structure/machinery/cryopod/no_cryo,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fiorina/maintenance)
 "nrU" = (
@@ -20304,6 +20315,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "pxL" = (
+/obj/structure/machinery/cryopod/no_cryo{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/maintenance)
 "pxX" = (
@@ -56740,8 +56755,8 @@ vZX
 vZX
 vZX
 jwc
-qsF
-kTs
+abt
+abs
 gfo
 gfo
 ivK

@@ -22,7 +22,7 @@
 /obj/structure/closet/emcloset/Initialize()
 	. = ..()
 
-#ifndef UNIT_TESTS
+#ifndef REPRODUCIBLE_ENVIRONMENT
 	switch (pick_weight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 1, "delete" = 1)))
 #else
 	var/test = "both"

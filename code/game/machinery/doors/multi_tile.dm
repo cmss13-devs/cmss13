@@ -243,10 +243,10 @@
 	queen_pryable = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(xeno.hive_pos != XENO_QUEEN)
+	if(!queen_pryable)
 		return ..()
 
-	if(!queen_pryable)
+	if(xeno.hive_pos != XENO_QUEEN)
 		return ..()
 
 	if(xeno.action_busy)

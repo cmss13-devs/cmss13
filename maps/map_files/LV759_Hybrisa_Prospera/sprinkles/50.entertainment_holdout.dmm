@@ -1,0 +1,1329 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = 14;
+	layer = 3.1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"be" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"co" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"cq" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime4"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"cE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"cH" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Low security prisoners would smuggle in arcade tickets after visitations. The tickets act as a stand in for paper currency in the prison economy, they're backed by the cigarette standard, since one ticket nets one cigarette at the prize booth. The cigarettes also get smuggled back in.";
+	name = "\improper arcade tickets";
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/toy/prize/honk{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 4;
+	pixel_y = 26
+	},
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"cR" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	layer = 4;
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = -5;
+	pixel_y = 17;
+	layer = 2.7
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"cV" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime2"
+	},
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/structure/sign/poster/corporate{
+	layer = 2.9;
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"dy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"dF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/gun/pistol/highchance,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/obj/structure/prop/hybrisa/misc/urinal/dark{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"dG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"dL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/bananapeel{
+	desc = "A bunch of tiny bits of shattered metal.";
+	icon = 'icons/obj/items/shards.dmi';
+	icon_state = "shrapnelsmall";
+	name = "piece of shrapnel";
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/weapon/broken_bottle,
+/obj/item/small_shards{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/template_noop)
+"et" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/structure/prop/hybrisa/furniture/tables/tablepool,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"eA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/sign/safety/bathwomens{
+	pixel_x = 14;
+	pixel_y = -26
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"eQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"eT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/obj/structure/largecrate/random/mini,
+/obj/structure/largecrate/random/mini{
+	layer = 4;
+	pixel_y = 14
+	},
+/obj/structure/bed/chair/wood/normal{
+	layer = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/template_noop)
+"gB" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"iE" = (
+/obj/item/stack/sheet/wood{
+	layer = 4.1;
+	pixel_x = 14;
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/wood{
+	layer = 4.1;
+	pixel_x = 14;
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/wood,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"iH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"iX" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"ja" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"jg" = (
+/obj/effect/decal/strata_decals/grime/grime1,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_y = 15
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/item/trash/cigbutt,
+/obj/item/trash/eat{
+	pixel_x = 18;
+	pixel_y = -15
+	},
+/obj/item/trash/hotdog{
+	pixel_y = -11
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1;
+	pixel_x = -1;
+	pixel_y = -7
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"jL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 14;
+	layer = 3.1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"jU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"kV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/helmetgarb/spent_buckshot,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 6
+	},
+/obj/item/ashtray/glass{
+	icon_state = "ashtray_bork_gl";
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"lU" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"md" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"ok" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "1-4";
+	layer = 5;
+	level = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/platingdmg3/west,
+/area/template_noop)
+"ol" = (
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = 18;
+	pixel_y = 7
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/south,
+/area/template_noop)
+"oK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/west,
+/area/template_noop)
+"oV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 3
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"pM" = (
+/obj/structure/machinery/computer/arcade{
+	layer = 4;
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/obj/structure/sign/poster/nspa{
+	pixel_y = 34;
+	pixel_x = -7;
+	layer = 2.9
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/template_noop)
+"qy" = (
+/obj/effect/decal/strata_decals/grime/grime1,
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"qA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"qD" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_x = 7;
+	pixel_y = 12;
+	layer = 2.7
+	},
+/obj/structure/sign/poster/ad{
+	layer = 4;
+	pixel_x = -12;
+	pixel_y = 34
+	},
+/obj/structure/sign/poster/ad{
+	pixel_x = 4;
+	pixel_y = 32;
+	layer = 2.6
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	layer = 3.7
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400";
+	pixel_y = 14;
+	pixel_x = -4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"qJ" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"qO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"rs" = (
+/obj/structure/bed/bedroll{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"rZ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 11;
+	pixel_y = 14
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/stuffing{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -21;
+	pixel_y = -9
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"sU" = (
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"uc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/pen{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt";
+	pixel_x = -8;
+	buckling_y = -8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
+/area/template_noop)
+"uf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "8-9";
+	layer = 5;
+	level = 2
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "6-8";
+	layer = 5
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating,
+/area/template_noop)
+"uU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"vw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/wet_sign{
+	pixel_y = 18
+	},
+/obj/item/tool/mop{
+	pixel_y = 20
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -9;
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"vJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"wS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast,
+/area/template_noop)
+"xb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/computer/arcade{
+	layer = 4;
+	pixel_y = 12;
+	pixel_x = -2
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/north,
+/area/template_noop)
+"xC" = (
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"xY" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"yd" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"yn" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/monkey_spawn,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"ys" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"zy" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime2"
+	},
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"zA" = (
+/obj/item/trash/eat,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 11;
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 12
+	},
+/obj/item/weapon/gun/shotgun/merc,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"zU" = (
+/turf/template_noop,
+/area/template_noop)
+"AP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"BU" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"CC" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4;
+	layer = 2;
+	pixel_x = 12;
+	pixel_y = 2;
+	buckling_x = 12;
+	buckling_y = 2
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gibarm_flesh"
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"CU" = (
+/obj/structure/prop/hybrisa/furniture/tables/tablepool{
+	pixel_y = -16
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"DJ" = (
+/obj/item/trash/cheesie{
+	pixel_x = 6;
+	pixel_y = 26
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/template_noop)
+"DS" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/obj/structure/machinery/light/small,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"DX" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Et" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stool{
+	pixel_x = -1;
+	pixel_y = 27
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southwest,
+/area/template_noop)
+"EM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime1,
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"Fp" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"FD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"FQ" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Gv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/obj/structure/machinery/vending/cola{
+	density = 0;
+	layer = 4;
+	level = 3;
+	pixel_y = 16
+	},
+/obj/structure/largecrate/random/mini/chest/c{
+	layer = 4;
+	level = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/template_noop)
+"GC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southwest,
+/area/template_noop)
+"Hf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime1,
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"ID" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"IU" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/sign/safety/bathmens{
+	pixel_y = -26
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Jd" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Low security prisoners would smuggle in arcade tickets after visitations. The tickets act as a stand in for paper currency in the prison economy, they're backed by the cigarette standard, since one ticket nets one cigarette at the prize booth. The cigarettes also get smuggled back in.";
+	name = "\improper arcade tickets";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Jp" = (
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 8
+	},
+/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/barricade/wooden{
+	dir = 4;
+	layer = 3.7
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Jq" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3";
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 9;
+	pixel_y = 13
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"Ks" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"LH" = (
+/obj/structure/bed/bedroll{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Me" = (
+/obj/structure/surface/table/gamblingtable{
+	layer = 3
+	},
+/obj/item/prop/colony/game{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	layer = 3.5;
+	pixel_y = 62
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
+/area/template_noop)
+"Mz" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"MM" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/largecrate/random/mini{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/obj/structure/sign/poster/ad{
+	pixel_x = 7;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/obj/item/small_shards{
+	pixel_x = 17;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/template_noop)
+"NS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2";
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/template_noop)
+"OE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/template_noop)
+"ON" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	layer = 4;
+	pixel_x = -9;
+	pixel_y = 32
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Pu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"PQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/machinery/light/small,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Re" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Ri" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 21;
+	pixel_x = -4
+	},
+/obj/item/toy/plush/farwa{
+	pixel_y = 22;
+	pixel_x = -2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/template_noop)
+"Rl" = (
+/obj/item/stool{
+	pixel_x = -4;
+	pixel_y = 23
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"SG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"SP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 4;
+	layer = 3.2;
+	name = "Television set";
+	network = null;
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Td" = (
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/obj/structure/window/framed/hybrisa/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"Ui" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/template_noop)
+"Vz" = (
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/window/framed/hybrisa/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"Xp" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"Xw" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/template_noop)
+"XA" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/machinery/door_control{
+	id = "Entertainment Complex";
+	name = "Storm Shutters";
+	pixel_x = 27
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/template_noop)
+"XV" = (
+/obj/item/trash/kepler,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast,
+/area/template_noop)
+"Yb" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/urinal/dark{
+	pixel_y = 32;
+	layer = 4
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime2"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/template_noop)
+"Yy" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	layer = 4;
+	pixel_y = 19
+	},
+/obj/structure/largecrate/random/mini{
+	layer = 4;
+	level = 3;
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/template_noop)
+"Zj" = (
+/obj/effect/decal/strata_decals/grime/grime1,
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble9{
+	pixel_x = 18;
+	pixel_y = 12
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble3{
+	pixel_x = -18;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+
+(1,1,1) = {"
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+sU
+sU
+sU
+sU
+sU
+"}
+(2,1,1) = {"
+sU
+Td
+sU
+Td
+sU
+Td
+sU
+zU
+zU
+sU
+yn
+sU
+FQ
+sU
+"}
+(3,1,1) = {"
+Vz
+cR
+Rl
+oV
+SP
+cH
+sU
+xC
+Xw
+sU
+lU
+sU
+Re
+sU
+"}
+(4,1,1) = {"
+sU
+ol
+wS
+XV
+uc
+AP
+sU
+cV
+gB
+EM
+dF
+ON
+eQ
+sU
+"}
+(5,1,1) = {"
+sU
+Yy
+et
+CU
+DJ
+vJ
+qO
+ID
+uU
+Pu
+SG
+PQ
+sU
+Ui
+"}
+(6,1,1) = {"
+be
+eT
+iH
+qA
+Ri
+Xp
+iX
+ok
+IU
+sU
+Yb
+ac
+sU
+jg
+"}
+(7,1,1) = {"
+xC
+Gv
+kV
+CC
+dL
+LH
+Vz
+md
+dy
+sU
+sU
+sU
+sU
+Zj
+"}
+(8,1,1) = {"
+sU
+MM
+zA
+Me
+OE
+BU
+Fp
+cE
+eA
+ys
+qJ
+jL
+sU
+Hf
+"}
+(9,1,1) = {"
+sU
+pM
+xY
+Jq
+NS
+ja
+Mz
+uf
+iE
+FD
+Ks
+DS
+sU
+co
+"}
+(10,1,1) = {"
+sU
+xb
+Et
+GC
+oK
+rs
+sU
+zy
+yd
+qy
+vw
+jU
+dG
+sU
+"}
+(11,1,1) = {"
+sU
+qD
+Jd
+rZ
+XA
+Jp
+sU
+xC
+Xw
+sU
+Re
+sU
+Re
+sU
+"}
+(12,1,1) = {"
+sU
+Td
+sU
+Td
+sU
+Td
+sU
+zU
+zU
+sU
+cq
+sU
+DX
+sU
+"}
+(13,1,1) = {"
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+zU
+sU
+sU
+sU
+sU
+sU
+"}

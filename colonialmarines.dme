@@ -2253,6 +2253,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Boiler.dm"
+#include "code\modules\mob\living\carbon\xenomorph\castes\Boxer.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Burrower.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Carrier.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\caste_datum.dm"

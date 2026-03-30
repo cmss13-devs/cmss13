@@ -15,7 +15,7 @@
 		. = larva_sound
 
 /datum/emote/living/carbon/xeno/growl
-	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/boxer)
 
 	key = "growl"
 	message = "growls."
@@ -24,7 +24,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hiss
-	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/boxer)
 
 	key = "hiss"
 	message = "hisses."
@@ -33,7 +33,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/needshelp
-	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/boxer)
 
 	key = "needshelp"
 	message = "needs help!"
@@ -41,7 +41,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/roar
-	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/boxer)
 
 	key = "roar"
 	message = "roars!"
@@ -51,9 +51,32 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/tail
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/boxer)
 	key = "tail"
 	message = "swipes its tail."
 	sound = "alien_tail_swipe"
+
+/datum/emote/living/carbon/xeno/boxer	///yuji
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph/boxer)
+	keybind = FALSE
+
+/datum/emote/living/carbon/xeno/boxer/roar
+	key = "roar"
+	message = "ヘイ！オー・ピー・ピー！"
+	sound = 'sound/voice/opp.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/xeno/boxer/iamyou
+	key = "iamyou"
+	message = "受け入れるよ、真人、私はお前だ。."
+	sound = 'sound/voice/iamyou.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/xeno/boxer/whatareyou
+	key = "whatareyou"
+	message = "お前は一体何者だ、真人！"
+	sound = 'sound/voice/whatareyou.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hellhound
 	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph/hellhound)

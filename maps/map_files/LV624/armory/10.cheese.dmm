@@ -40,7 +40,7 @@
 /area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "i" = (
@@ -60,8 +60,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "m" = (
@@ -89,8 +89,8 @@
 /area/lv624/lazarus/armory)
 "q" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature,
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature,
 /turf/open/floor/cult,
@@ -150,7 +150,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
 "A" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "B" = (
@@ -182,8 +182,8 @@
 /area/lv624/lazarus/armory)
 "Q" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
 	pixel_y = 6
 	},

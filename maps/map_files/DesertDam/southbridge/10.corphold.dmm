@@ -59,7 +59,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "am" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ar" = (

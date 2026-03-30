@@ -1,0 +1,188 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/space/transit/north{
+	opacity = 1
+	},
+/area/misc/tutorial)
+"d" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"g" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/misc/tutorial)
+"h" = (
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/misc/tutorial)
+"i" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/misc/tutorial)
+"m" = (
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	opacity = 0
+	},
+/area/misc/tutorial)
+"u" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"v" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"z" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"B" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/misc/tutorial)
+"D" = (
+/obj/structure/machinery/cryopod/tutorial,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"E" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/area/misc/tutorial)
+"F" = (
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/misc/tutorial)
+"H" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	id = null;
+	needs_power = 0
+	},
+/turf/open/shuttle/plating,
+/area/misc/tutorial)
+"Q" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	opacity = 0
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	id = null;
+	needs_power = 0;
+	dir = 4
+	},
+/turf/open/shuttle/plating,
+/area/misc/tutorial)
+"R" = (
+/turf/open/space/transit/north{
+	density = 1
+	},
+/area/misc/tutorial)
+"S" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+"V" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/misc/tutorial)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+R
+R
+R
+R
+R
+a
+"}
+(3,1,1) = {"
+B
+d
+d
+m
+d
+d
+B
+"}
+(4,1,1) = {"
+B
+z
+z
+D
+z
+V
+B
+"}
+(5,1,1) = {"
+H
+h
+u
+u
+u
+i
+H
+"}
+(6,1,1) = {"
+B
+E
+S
+S
+S
+E
+B
+"}
+(7,1,1) = {"
+H
+F
+u
+u
+u
+g
+H
+"}
+(8,1,1) = {"
+B
+v
+v
+S
+v
+v
+B
+"}
+(9,1,1) = {"
+B
+d
+d
+Q
+d
+d
+B
+"}
+(10,1,1) = {"
+a
+R
+R
+R
+R
+R
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}

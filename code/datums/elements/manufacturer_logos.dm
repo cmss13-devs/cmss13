@@ -78,6 +78,10 @@
 	manufacturer = "dltalt"
 	full_name = "<span class='corp_label_red'>Dl'talt Foundry</span>"
 
+/datum/element/corp_label/forgeworld
+	manufacturer = "forgeworld"
+	full_name = "<span class='corp_label_red'>Forge World Achlys III</span>"
+
 /datum/element/corp_label/Attach(datum/target)
 	. = ..()
 	if(!length(manufacturer))
@@ -92,3 +96,4 @@
 	SIGNAL_HANDLER
 	var/logo = "[icon2html('icons/ui_icons/logos.dmi', user, manufacturer, extra_classes = "corplogo", non_standard_size = TRUE)]"
 	examine_list += SPAN_INFO("On [source] you can see [full_name] logo, it reads: [logo]")
+

@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("PRIMARY WEAPON (CHOOSE 1)", 0, null, null, null),
 	list("ES-7 Supernova Electrostatic Shockgun", 15, /obj/effect/essentials_set/es7_nonlethal, MARINE_CAN_BUY_KIT, VENDOR_ITEM_RECOMMENDED),
 	list("M39 Submachine Gun", 0, /obj/effect/essentials_set/wy_m39, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
-	list("M41A Pulse Rifle MK2", 0, /obj/effect/essentials_set/wy_m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+	list("Imperial Lasgun", 0, /obj/effect/essentials_set/wy_m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 	list("NSG23 Assault Rifle", 0, /obj/effect/essentials_set/wy_nsg23, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 	list("SIDEARM (CHOOSE 1)", 0, null, null, null),

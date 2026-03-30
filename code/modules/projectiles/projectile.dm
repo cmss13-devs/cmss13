@@ -1346,3 +1346,7 @@
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE
 #undef DEBUG_XENO_DEFENSE
+
+/obj/projectile/lasbolt
+	icon_state = "lasbolt"
+

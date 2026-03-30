@@ -5,7 +5,7 @@
 //M41A (MK2) PULSE RIFLE AMMUNITION
 
 /obj/item/ammo_magazine/rifle
-	name = "\improper M41A magazine (10x24mm)"
+	name = "\improper Lasgun power pack"
 	desc = "A 10x24mm assault rifle magazine."
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/assault_rifles.dmi'
@@ -16,14 +16,14 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
 		)
 	w_class = SIZE_MEDIUM
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/rifle/lasbolt
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
 	ammo_band_icon = "+m41a_band"
 	ammo_band_icon_empty = "+m41a_band_e"
 
 /obj/item/ammo_magazine/rifle/extended
-	name = "\improper M41A extended magazine (10x24mm)"
+	name = "\improper Lasgun extended power pack"
 	desc = "An extended 10x24mm assault rifle magazine."
 	icon_state = "m41a_extended"
 	max_rounds = 60
@@ -43,7 +43,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/heap
-	name = "\improper M41A HEAP magazine (10x24mm)"
+	name = "\improper Lasgun HEAP power pack (10x24mm)"
 	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
@@ -52,10 +52,10 @@
 	current_rounds = 0
 
 /obj/item/ammo_magazine/rifle/ap
-	name = "\improper M41A AP magazine (10x24mm)"
+	name = "\improper Lasgun AP power pack (10x24mm)"
 	desc = "An armor-piercing 10x24mm assault rifle magazine."
 	desc_lore = "Unlike standard HEAP magazines, these reserve bullets do not have depleted uranium tips. Instead, these rounds trade off some of their bullet package for a lighter weight, reducing damage but increasing penetration capabilities and muzzle velocity."
-	default_ammo = /datum/ammo/bullet/rifle/ap
+	default_ammo = /datum/ammo/bullet/rifle/ap/lasbolt_ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/le

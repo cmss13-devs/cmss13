@@ -22,7 +22,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky after all
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
-	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
+	fire_delay_group = null
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"

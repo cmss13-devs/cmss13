@@ -7319,7 +7319,7 @@
 /area/kutjevo/interior/power)
 "iUX" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/jar,
+/obj/item/reagent_container/glass/beaker/jar,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "iWE" = (

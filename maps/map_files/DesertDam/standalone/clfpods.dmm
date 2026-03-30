@@ -530,7 +530,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
-	closed = 0
+	closed = 0;
+	density = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -869,7 +870,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
-	closed = 0
+	closed = 0;
+	density = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1224,7 +1226,8 @@
 "vZ" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 4;
-	closed = 0
+	closed = 0;
+	density = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1990,7 +1993,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
-	closed = 0
+	closed = 0;
+	density = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)

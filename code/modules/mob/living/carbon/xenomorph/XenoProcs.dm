@@ -768,11 +768,11 @@
 	var/dir_to_nest = get_dir(host_to_nest, nest_structural_base)
 
 	if(!host_to_nest.Adjacent(supplier_turf))
-		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall it's being nested on!"))
 		return
 
 	if(!locate(dir_to_nest) in GLOB.cardinals)
-		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall it's being nested on!"))
 		return
 
 	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_to_nest))

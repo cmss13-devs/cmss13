@@ -63,13 +63,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_TROPHY)
-	var/thrall = FALSE//Used to affect icon generation.
+	var/random_icon = TRUE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
 	. = ..()
-	if(thrall)
+	if(!random_icon)
 		return
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -145,6 +145,41 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "fullarmor_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
+/// emissary armor
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary
+	name = "YM4 pattern clan armor"
+	desc = "A suit of oversized armor built from M3 pattern plating and Smart-Gunner mesh, built for something larger than any normal man."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+	icon_state = "halfarmor_elite_emissary_classic"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "halfarmor_elite_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
+	camo_type = "desert"
+	icon_state = "halfarmor_elite_emissary_desert"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "halfarmor_elite_emissary_jungle"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/snow
+	camo_type = "snow"
+	icon_state = "halfarmor_elite_emissary_snow"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/urban
+	camo_type = "urban"
+	icon_state = "halfarmor_elite_emissary_urban"
+
+/obj/item/clothing/suit/armor/yautja/hunter/emissary/camo_conforming
+	conforming = TRUE
+
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
@@ -159,7 +194,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	var/councillor_override = FALSE
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
@@ -235,13 +270,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	var/thrall = FALSE//Used to affect icon generation.
+	var/random_icon = TRUE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 50
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
-	..()
-	if(thrall)
+/obj/item/clothing/shoes/yautja/Initialize(mapload, boot_number = rand(1,4), armor_material = "ebony")
+	. = ..(mapload, 0)
+	if(!random_icon)
 		return
 	if(boot_number > 4)
 		boot_number = 1
@@ -265,6 +300,40 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/clothing/shoes/yautja/hunter/knife
 	spawn_item_type = /obj/item/weapon/yautja/knife
+
+// emissary greaves
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary
+	name = "clan combat boots"
+	desc = "A pair of armored boots modified with human armor plating, though still scaled to fit a hunter."
+	var/conforming = FALSE
+	var/camo_type = "classic"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
+	. = ..(mapload, 0)
+	if(conforming)
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	icon_state = "elite_y-boots1_emissary_[camo_type]"
+	LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_[camo_type]")
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/desert
+	camo_type = "desert"
+	icon_state = "elite_y-boots1_emissary_desert"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/jungle
+	camo_type = "jungle"
+	icon_state = "elite_y-boots1_emissary_jungle"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/snow
+	camo_type = "snow"
+	icon_state = "elite_y-boots1_emissary_snow"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/urban
+	camo_type = "urban"
+	icon_state = "elite_y-boots1_emissary_urban"
+
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming
+	conforming = TRUE
 
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
@@ -417,20 +486,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(H.client && H.client.clan_info)
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!SSpredships.is_clanship_loaded(CV?.clan_id))
-					continue
-				ship_to_tele += list("[CV.name]" = "[CV.clan_id]: [CV.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
-
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
 
 	// Getting an arrival point
 	var/turf/target_turf
@@ -438,7 +494,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
 		target_turf = get_turf(pickedYT)
 	else
-		target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
+		target_turf = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!istype(target_turf))
 		return
 
@@ -1423,7 +1479,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/skull/burrower
 	name = "Burrower skull"
-	desc = "Skull of of a digging xenomorph, master of subterranean assault."
+	desc = "Skull of a digging xenomorph, master of subterranean assault."
 	icon_state = "burrower_skull"
 
 /obj/item/skull/drone
@@ -1470,7 +1526,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/pelt/despoiler
 	name = "Despoiler pelt"
-	desc = "The pelt of a decrepit wretch, the surface still stinging your hands"
+	desc = "The pelt of a decrepit wretch, the surface still stinging your hands."
 	icon_state = "despoiler_pelt"
 
 /obj/item/pelt/lurker
@@ -1594,7 +1650,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/wirecutters/yautja
 	name = "\improper alien wirecutters"
-	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	desc = "This cuts wires, also flesh. Made of some razor-sharp animal teeth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
 	item_state = "wirescutter"
@@ -1605,7 +1661,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/screwdriver/yautja
 	name = "\improper alien screwdriver"
-	desc = "Some hightech screwing abilities."
+	desc = "Some high-tech screwing abilities."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
 	item_state = "screwdriver"
@@ -1618,7 +1674,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/device/multitool/yautja
 	name = "\improper alien multitool"
-	desc = "Top notch alien tech for B&E through hacking."
+	desc = "Top-notch alien tech for B&E through hacking."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "multitool"
 	item_state = "multitool"

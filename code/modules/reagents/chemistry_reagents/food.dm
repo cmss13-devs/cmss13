@@ -218,10 +218,10 @@
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-				victim.AdjustEyeBlur(25)
-				victim.AdjustEyeBlind(10)
-				victim.apply_effect(3, STUN)
-				victim.apply_effect(3, WEAKEN)
+				victim.EyeBlur(25)
+				victim.EyeBlind(10)
+				victim.Stun(3)
+				victim.KnockDown(3)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"
@@ -271,10 +271,11 @@
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPNOTIC = 7, PROPERTY_HYPOXEMIC = 6, PROPERTY_EXCRETING = 2, PROPERTY_HEPATOPEUTIC = 2)
+
 /datum/reagent/zygacine
 	name = "Zygacine"
 	id = "zygacine"
-	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely."
 	reagent_state = LIQUID
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL

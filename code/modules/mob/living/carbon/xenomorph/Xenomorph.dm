@@ -851,7 +851,7 @@
 
 
 	//and display them
-	add_to_all_mob_huds(hivenumber)
+	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
@@ -1432,6 +1432,8 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+
+	qdel(new_player)
 
 /mob/living/carbon/xenomorph/drop_inv_item_on_ground(obj/item/object, nomoveupdate, force)
 	if(istype(object, /obj/item/clothing/mask/facehugger) && !force)

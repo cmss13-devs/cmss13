@@ -9,6 +9,7 @@
 	var/client/owner
 
 	shuttle_id = null
+	ignore_ftl_or_crash = TRUE
 
 	ert_message = "Several characters have been offered up to be played by the admins"
 

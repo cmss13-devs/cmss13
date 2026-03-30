@@ -227,7 +227,7 @@
 
 		//play the receiving admin the adminhelp sound (if they have them enabled)
 		if(recipient.prefs.toggles_sound & SOUND_ADMINHELP)
-			SEND_SOUND(recipient, sound('sound/effects/adminhelp_new.ogg'))
+			SEND_SOUND(recipient, sound('sound/effects/adminhelp-bwoink.ogg'))
 	else
 		if(CLIENT_IS_STAFF(src)) //sender is an admin but recipient is not. Do BIG RED TEXT
 			var/already_logged = FALSE
@@ -261,7 +261,7 @@
 				log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 
 			//always play non-admin recipients the adminhelp sound
-			SEND_SOUND(recipient, sound('sound/effects/adminhelp_new.ogg'))
+			SEND_SOUND(recipient, sound('sound/effects/adminhelp-bwoink.ogg'))
 
 		else //neither are admins
 			if(!current_ticket)

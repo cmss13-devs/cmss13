@@ -25,6 +25,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	name = text
 	return src
 
+/obj/effect/statclick/Topic(href, href_list)
+	if(usr.client && usr.client.admin_holder)
+		Action(href_list["action"])
+
+/obj/effect/statclick/proc/Action(action)
+	return
+
 /obj/effect/statclick/debug
 	var/class
 

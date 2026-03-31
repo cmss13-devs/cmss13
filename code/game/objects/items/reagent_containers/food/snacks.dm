@@ -2842,7 +2842,7 @@
 
 /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 	name = "Vegetable pizza slice"
-	desc = "A slice of the most green pizza of all pizzas not containing green ingredients "
+	desc = "A slice of the most green pizza of all pizzas not containing green ingredients."
 	icon = 'icons/obj/items/food/pizza.dmi'
 	icon_state = "vegetablepizzaslice"
 	item_state_slots = list(WEAR_AS_GARB = "pizza")

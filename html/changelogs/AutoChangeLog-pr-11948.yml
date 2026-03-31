@@ -1,5 +1,0 @@
-author: "mrkivnv"
-delete-after: True
-changes:
-  - imageadd: "added new huddead and hudhcdead"
-  - imagedel: "deleted old huddead and hudhcdead"

@@ -661,7 +661,7 @@
 /datum/reagent/foaming_agent/stabilized
 	name = "Stabilized metallic foam"
 	id = "stablefoam"
-	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame."
 	reagent_state = LIQUID
 	color = "#d4b8d1"
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -777,7 +777,7 @@
 /datum/reagent/napalm/sticky
 	name = "Sticky-Napalm"
 	id = "stickynapalm"
-	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage."
 	reagent_state = LIQUID
 	color = "#f8e3b2"
 	burncolor = "#f8e3b2"
@@ -794,7 +794,7 @@
 /datum/reagent/napalm/high_damage
 	name = "High-Combustion Napalm Fuel"
 	id = "highdamagenapalm"
-	description = "A custom napalm mix, higher damage but not as sticky"
+	description = "A custom napalm mix, higher damage but not as sticky."
 	reagent_state = LIQUID
 	color = "#c51c1c"
 	burncolor = "#c51c1c"

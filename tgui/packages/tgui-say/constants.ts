@@ -173,8 +173,8 @@ export const RADIO_PREFIXES = {
     label: 'SOF',
   },
   '.k ': {
-    id: 'sof',
-    label: 'SOF',
+    id: 'yautja',
+    label: 'Military',
   },
   '#k ': {
     id: 'specops',

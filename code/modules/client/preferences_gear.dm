@@ -449,6 +449,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/headwear/uscm/headband_red
 	display_name = "USCM headband, red"
+	path = /obj/item/clothing/head/headband/red/static
+
+/datum/gear/headwear/uscm/headband_red_camo
+	display_name = "USCM headband, red (camo conforming)"
 	path = /obj/item/clothing/head/headband/red
 
 /datum/gear/headwear/uscm/headband_intel

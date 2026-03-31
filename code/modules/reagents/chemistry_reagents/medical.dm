@@ -398,7 +398,7 @@
 /datum/reagent/medical/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
-	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning, etc.)"
+	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex: reasoning, inhibiting behaviors, organizing, problem solving, planning, etc."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)

@@ -270,66 +270,66 @@
 //-----------------------M10 Pistol Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m10
-	name = "magazine box (M10 x 22)"
+	name = "magazine box (M10 x 16)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m10"
 	overlay_content = "_apc"
-	num_of_magazines = 22
+	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/pistol/m10
 
 /obj/item/ammo_box/magazine/m10/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/extended
-	name = "magazine box (Ext m10 x 14)"
+	name = "magazine box (Ext m10 x 10)"
 	overlay_ammo_type = "_ext"
 	overlay_content = "_apc"
-	num_of_magazines = 14
+	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/extended
 
 /obj/item/ammo_box/magazine/m10/extended/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/drum
-	name = "magazine box (Drum m10 x 12)"
+	name = "magazine box (Drum m10 x 8)"
 	overlay_ammo_type = "_drum"
 	overlay_content = "_apc"
-	num_of_magazines = 12
+	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum
 
 /obj/item/ammo_box/magazine/m10/drum/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap
-	name = "magazine box (M10 AP x 22)"
+	name = "magazine box (M10 AP x 16)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_gun_type = "_m10"
 	overlay_content = "_ap"
-	num_of_magazines = 22
+	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap
 
 /obj/item/ammo_box/magazine/m10/ap/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap/extended
-	name = "magazine box (Ext AP m10 x 14)"
+	name = "magazine box (Ext AP m10 x 10)"
 	overlay_ammo_type = "_ext_ap"
 	overlay_content = "_ap"
-	num_of_magazines = 14
+	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/extended
 
 /obj/item/ammo_box/magazine/m10/ap/extended/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap/drum
-	name = "magazine box (Drum AP m10 x 12)"
+	name = "magazine box (Drum AP m10 x 8)"
 	overlay_ammo_type = "_drum_ap"
 	overlay_content = "_ap"
-	num_of_magazines = 12
+	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/drum
 
 /obj/item/ammo_box/magazine/m10/ap/drum/empty

@@ -81,22 +81,77 @@
 	else
 		return ..()
 
-/obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/tank/water) && get_dist(user,target) <= 1)
-		var/obj/object = target
-		if(object.reagents.contains_harmful_substances())
-			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
+/obj/item/tool/extinguisher
+	var/static/list/refill_sources = typecacheof(list(
+		/obj/structure/sink,
+		/obj/structure/reagent_dispensers/tank/water,
+		/obj/structure/reagent_dispensers/water_cooler,
+		/obj/item/reagent_container/food/drinks/cans/waterbottle,
+		/obj/item/reagent_container/food/drinks/flask,
+	))
+	var/static/list/refill_excluded = typecacheof(list(
+		/obj/structure/sink/puddle,
+		/obj/structure/reagent_dispensers/tank/water/yautja,
+		/obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
+	))
+
+/obj/item/tool/extinguisher/attackby(obj/item/used_item, mob/user, params)
+	if(!is_type_in_typecache(used_item, refill_sources))
+		return ..()
+	if(is_type_in_typecache(used_item, refill_excluded) || used_item == src)
+		return
+	if(used_item.reagents.get_reagent_amount("water") != used_item.reagents.total_volume)
+		to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
+		return
+	var/to_add = min(used_item.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
+	if(to_add > 0)
+		used_item.reagents.remove_reagent("water", to_add)
+		reagents.add_reagent("water", to_add)
+		to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+		playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
+	else if(reagents.total_volume >= max_water)
+		to_chat(user, SPAN_WARNING("[src] is already full."))
+	else
+		to_chat(user, SPAN_WARNING("[used_item] doesn't have enough water."))
+
+/obj/item/tool/extinguisher/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(is_type_in_typecache(target, refill_sources))
+		if(is_type_in_typecache(target, refill_excluded) || target == src)
 			return
-		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled."))
-		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
+		if(!target.Adjacent(user))
+			return
+		if(istype(target, /obj/structure/sink))
+			var/obj/structure/sink/target_sink = target
+			if(target_sink.busy)
+				return
+			var/to_add = max_water - reagents.total_volume
+			if(to_add > 0)
+				reagents.add_reagent("water", to_add)
+				to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+				playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			else
+				to_chat(user, SPAN_WARNING("[src] is already full."))
+			return
+		if(target.reagents.get_reagent_amount("water") != target.reagents.total_volume)
+			to_chat(user, SPAN_WARNING("You cannot refill [src] with the contents of this."))
+			return
+		var/to_add = min(target.reagents.get_reagent_amount("water"), max_water - reagents.total_volume)
+		if(to_add > 0)
+			target.reagents.remove_reagent("water", to_add)
+			reagents.add_reagent("water", to_add)
+			to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+			playsound(user, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		else if(reagents.total_volume >= max_water)
+			to_chat(user, SPAN_WARNING("[src] is already full."))
+		else
+			to_chat(user, SPAN_WARNING("[target] doesn't have enough water."))
 		return
 
 	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()
 
 	if(src.reagents.total_volume < 1)
-		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
+		to_chat(usr, SPAN_DANGER("[src] is empty."))
 		return
 
 	if(world.time < src.last_use + 20)
@@ -209,7 +264,7 @@
 		if(T == target)
 			break
 		sleep(2)
-	qdel(W)
+	QDEL_IN(W, 2 DECISECONDS)
 
 #undef BASE_EXTINGUISHER_PWR
 #undef PYRO_EXTINGUISHER_PWR

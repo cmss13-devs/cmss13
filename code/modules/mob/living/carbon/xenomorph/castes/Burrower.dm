@@ -121,7 +121,7 @@
 		return
 
 	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area & AREA_NOTUNNEL)
+	if(current_area.flags_area & AREA_NOBURROW)
 		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
 		return
 
@@ -154,12 +154,6 @@
 	if(hauled)
 		hauled.forceMove(src)
 
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-		RegisterSignal(src, list(
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		), PROC_REF(flamer_crossed_immune))
 	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
@@ -181,12 +175,6 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	alpha = initial(alpha)
@@ -249,7 +237,7 @@
 		return
 
 	var/area/area_to_get = get_area(target)
-	if(area_to_get.flags_area & AREA_NOTUNNEL || get_dist(src, target) > 15)
+	if(area_to_get.flags_area & AREA_NOBURROW || get_dist(src, target) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
@@ -362,7 +350,8 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
+	var/area/current_area = get_area(turf)
+	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z) || current_area.flags_area & AREA_NOTUNNEL)
 		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return
 

@@ -1621,7 +1621,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_noun = "data"
 	display_name = "runtimes"
 	packet_icon = "seed-replicapod"
-	products = list(/mob/living/simple_animal/cat/Runtime)
+	products = list(/mob/living/simple_animal/small/cat/Runtime)
 	plant_icon = "replicapod"
 
 	requires_nutrients = 0

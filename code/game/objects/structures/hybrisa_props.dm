@@ -1383,53 +1383,10 @@
 
 /obj/structure/prop/hybrisa/airport
 	name = "nose cone"
-	icon = 'icons/obj/structures/props/dropship/dropship_parts.dmi'
-	icon_state = "dropshipfrontwhite1"
+	icon = 'icons/turf/dropship_wy.dmi'
+	icon_state = "100"
 	unslashable = TRUE
 	unacidable = TRUE
-
-/obj/structure/prop/hybrisa/airport/dropshipnosecone
-	name = "nose cone"
-	icon_state = "dropshipfrontwhite1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-	density = TRUE
-
-/obj/structure/prop/hybrisa/airport/dropshipwingleft
-	name = "wing"
-	icon_state = "dropshipwingtop1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipwingright
-	name = "wing"
-	icon_state = "dropshipwingtop2"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipvent1left
-	name = "vent"
-	icon_state = "dropshipvent1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipvent2right
-	name = "vent"
-	icon_state = "dropshipvent2"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipventleft
-	name = "vent"
-	icon_state = "dropshipvent3"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipventright
-	name = "vent"
-	icon_state = "dropshipvent4"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
 
 // Dropship damage
 
@@ -1846,7 +1803,11 @@
 	if(..())
 		return TRUE
 
-	if(!brewing && cup && user.Adjacent(src) && user.put_in_hands(cup))
+	if(brewing)
+		to_chat(user, SPAN_WARNING("[src] is still brewing [vends]."))
+		return FALSE
+
+	if(cup && user.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 		update_icon()
@@ -1885,7 +1846,7 @@
 /obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user, amount)
 	brewing = FALSE
 	cup?.reagents?.add_reagent(vends, amount)
-	if(user?.Adjacent(src) && user.put_in_hands(cup))
+	if(user?.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 	else

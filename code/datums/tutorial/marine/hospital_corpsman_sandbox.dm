@@ -46,7 +46,7 @@
 	/// List of ACTIVELY MOVING patient NPCs
 	var/list/mob/living/carbon/human/realistic_dummy/active_agents = list()
 	/// List of NPC inventory items that needs to be removed when they asked to leave
-	var/list/obj/item/clothing/suit/storage/marine/medium/cleanup = list()
+	var/list/obj/item/cleanup = list()
 	/// Ref to any patient NPC actively moving
 	var/mob/living/carbon/human/realistic_dummy/active_agent
 	/// Ref to late-spawned patient NPC that has a chance to appear during a treatment phase
@@ -216,6 +216,8 @@
 		simulate_condition(active_agent)
 		var/obj/item/clothing/suit/storage/marine/medium/armor = active_agent.get_item_by_slot(WEAR_JACKET)
 		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
+		var/obj/item/clothing/head/helmet/marine/helmet = active_agent.get_item_by_slot(WEAR_HEAD)
+		RegisterSignal(helmet, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)	// Gives time for NPCs to pass out or die, if their condition is severe enough
 	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && prob(75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
@@ -464,8 +466,8 @@
 		active_agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
-	for(var/obj/item/clothing/suit/storage/marine/medium/armor as anything in cleanup)
-		item_cleanup(armor)
+	for(var/obj/item/cleanup_item as anything in cleanup)
+		item_cleanup(cleanup_item)
 	if(!length(agents))
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
@@ -538,19 +540,19 @@
 	if(length(dragging_agents) || length(active_agents))
 		movement_handler()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/dropped)
 	SIGNAL_HANDLER
-
-	if(!(armor in cleanup))
-		cleanup |= armor // marks item for removal once the dummy is ready
-		UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
-		return
+	if(dropped in cleanup)
+		cleanup -= dropped
+		var/obj/item/storage/internal/stored_items = locate(/obj/item/storage/internal) in dropped
+		if(stored_items)
+			var/turf/dumping_turf = get_turf(dropped)
+			for(var/obj/item/stored_item as anything in stored_items)
+				stored_items.remove_from_storage(stored_item, dumping_turf)
+		QDEL_IN(dropped, 1 SECONDS)
 	else
-		cleanup -= armor
-		var/obj/item/storage/internal/armor_storage = locate(/obj/item/storage/internal) in armor
-		for(var/obj/item/item as anything in armor_storage)
-			armor_storage.remove_from_storage(item, get_turf(armor))
-		QDEL_IN(armor, 1 SECONDS)
+		cleanup |= dropped // marks item for removal once the dummy is ready
+		UnregisterSignal(dropped, COMSIG_ITEM_UNEQUIPPED)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
 	. = ..()

@@ -511,6 +511,7 @@
 	name = "small box of zip cuffs"
 	desc = "A small box full of zip cuffs."
 	w_class = SIZE_MEDIUM
+	max_storage_space = 7
 
 /obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs/zip(src)
@@ -567,7 +568,7 @@
 	)
 
 	//multiplier to time required to empty the box into chem master
-	var/time_to_empty = 3
+	var/time_to_empty = 0.3 SECONDS
 
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()

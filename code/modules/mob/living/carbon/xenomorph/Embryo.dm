@@ -257,7 +257,7 @@
 		new_xeno = new(affected_mob)
 
 	if(hive)
-		hive.add_xeno(new_xeno)
+		new_xeno.set_hive_and_update(hive.hivenumber)
 		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
@@ -340,6 +340,7 @@
 		larva_embryo.grant_spawn_protection(1 SECONDS)
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		SEND_SIGNAL(larva_embryo, COMSIG_MOVABLE_Z_CHANGED, 0, (get_turf(victim)).z)
+		SEND_SIGNAL(larva_embryo, COMSIG_XENO_BURSTED)
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
 		if(larva_embryo.client)

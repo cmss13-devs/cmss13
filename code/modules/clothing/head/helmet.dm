@@ -172,8 +172,8 @@
 
 
 /obj/item/clothing/head/helmet/roman/eaglebearer
-	name = "\improper Aquilifier's bear pelt mask"
-	desc = "a bear pelt and mask that was worn by a Roman Aquilifier, a prestigious role meant to inspire troops in battles."
+	name = "\improper Aquilifer's bear pelt mask"
+	desc = "a bear pelt and mask that was worn by a Roman Aquilifer, a prestigious role meant to inspire troops in battles."
 	icon_state = "eaglebearer_hat"
 	item_state = "eaglebearer_hat"
 	worn_x_dimension = 64
@@ -306,21 +306,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/cartridge = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/prescription_bottle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
@@ -351,6 +352,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband/red = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/brown = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/head/headband/intel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/rebel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
@@ -375,7 +377,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/paper = NO_GARB_OVERRIDE,
 	/obj/item/device/flashlight/flare = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headset = NO_GARB_OVERRIDE,
-	/obj/item/clothing/accessory/patch = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/patch/uscmpatch = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad_main = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/cec_patch = NO_GARB_OVERRIDE,
@@ -420,6 +422,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "helmet"
 	item_state = "helmet"
+	blood_overlay_type = "m10helmet"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
@@ -566,6 +569,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(.)
+		return
+
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
 		var/ammo_level = "more than half full."
@@ -1057,6 +1064,24 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_L_HAND = "helmet",
 		WEAR_R_HAND = "helmet"
 	)
+
+/obj/item/clothing/head/helmet/marine/rto/army
+	name = "\improper Personal body armor system helmet"
+	desc = "The personal body armor system helmet is the standard issue combat helmet for the US Army. Selected over the M12 pattern helmet during combat trials, it offers allegedly superior protection compared to the M12 series, at over four times the cost. Though it's far more uncomfortable to wear."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+	)
+	icon_state = "army_helmet"
+	item_state = "army_helmet"
+	specialty = "Personal body armor system"
+	flags_atom = NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/helmet/marine/rto/army/engi
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+
+/obj/item/clothing/head/helmet/marine/rto/army/medic
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"

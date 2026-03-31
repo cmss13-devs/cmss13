@@ -440,6 +440,10 @@
 	},
 /turf/open/floor/plating,
 /area/sulaco/hangar)
+"abt" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/almayer,
+/area/sulaco/cafeteria)
 "abu" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/landinglight{
@@ -541,6 +545,15 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/sulaco/maintenance/lower_maint)
+"abE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/golden_cup{
+	desc = "A golden cup, won in the championship final against the USS Sulaco ca. 2172";
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer,
+/area/sulaco/cafeteria)
 "abF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -1064,6 +1077,18 @@
 	},
 /turf/open/floor/plating,
 /area/sulaco/lifeboat_pumps/lower_south)
+"acX" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/medium_stack{
+	amount = 40;
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/plasteel/small_stack{
+	amount = 15
+	},
+/turf/open/floor/almayer/cargo,
+/area/sulaco/cargo)
 "acY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -2246,6 +2271,10 @@
 	dir = 4
 	},
 /obj/structure/surface/rack,
+/obj/item/storage/backpack/marine,
+/obj/item/storage/backpack/marine,
+/obj/item/storage/backpack/industrial,
+/obj/item/storage/backpack/industrial,
 /turf/open/floor/almayer/cargo,
 /area/sulaco/cargo)
 "agm" = (
@@ -2882,6 +2911,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_y = -30
 	},
+/obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/almayer,
 /area/sulaco/hallway/central_hall2)
 "ahY" = (
@@ -4023,7 +4053,7 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	id = "pressoffice";
+	id = "ROlobby2";
 	name = "\improper RO Line 2"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -7006,7 +7036,7 @@
 	icon_state = "E"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/green/east,
+/turf/open/floor/almayer,
 /area/sulaco/cargo)
 "cWa" = (
 /obj/structure/bed/chair/office/dark{
@@ -10926,6 +10956,7 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
+/obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/green/northwest,
 /area/sulaco/cargo)
 "itu" = (
@@ -12637,6 +12668,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	sub_name = "Requisitions";
+	gender = "female";
+	radio_alert_tag = ":u"
 	},
 /turf/open/floor/almayer,
 /area/sulaco/cargo/office)
@@ -20912,6 +20950,12 @@
 /area/sulaco/hangar/range)
 "wYd" = (
 /obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/marine,
+/obj/item/storage/backpack/marine,
+/obj/item/storage/backpack/marine,
+/obj/item/storage/backpack/marine,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer,
 /area/sulaco/cargo)
 "wZP" = (
@@ -41004,7 +41048,7 @@ nOD
 bEN
 mEn
 cQa
-alE
+abt
 tQy
 hVd
 gNj
@@ -41444,7 +41488,7 @@ alE
 alE
 alI
 nVE
-mCK
+fpc
 aRP
 aRP
 wgC
@@ -41517,7 +41561,7 @@ rVc
 rVc
 alI
 ork
-mCK
+fpc
 aRP
 aRP
 cHa
@@ -41806,7 +41850,7 @@ xZP
 vXz
 alE
 alS
-wir
+abE
 dwH
 tQy
 cNN
@@ -42295,7 +42339,7 @@ lwZ
 agP
 slB
 aly
-euC
+xNb
 agf
 xNb
 agf
@@ -42368,7 +42412,7 @@ lwZ
 fuz
 slB
 aaR
-euC
+xNb
 agf
 xNb
 agf
@@ -42739,7 +42783,7 @@ kBb
 kBb
 liv
 agl
-agf
+acX
 iBl
 qFI
 afT

@@ -534,6 +534,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/officer_cap
 	path = /obj/item/clothing/head/cmcap/bridge
 
+/datum/gear/synthetic/headwear/wy_cap
+	path = /obj/item/clothing/head/cmcap/wy_cap
+
 /datum/gear/synthetic/headwear/fedora_tan
 	path = /obj/item/clothing/head/fedora
 

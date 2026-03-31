@@ -287,3 +287,23 @@
   - code_imp: Disabled some unnecessary GetShuttle warnings for remote shuttle computers
   - maptweak: Updated the FTL ground crash template to be faster to load and look
       a bit nicer
+2026-03-27:
+  ComboTombo:
+  - spellcheck: Reset key descriptions now say they must be recharged instead of reset
+      after use to clear up a misconception
+  Detective-Google:
+  - bugfix: WYC6 Executive supervisor paygrade fixed
+2026-03-28:
+  ori-disillusion-mirnov:
+  - bugfix: sorokyne strata map now properly calls the colony a UPP colony
+2026-03-30:
+  Detective-Google:
+  - balance: the break action grenade launcher is no longer faster than the rotary
+      one.
+2026-03-31:
+  halgmor:
+  - rscadd: Fire extinguishers (portable extinguishers and underslung extinguishers)
+      can now be refilled from water bottles, flasks, sinks, water tanks, and water
+      coolers.
+  - bugfix: Fixed existing bug where adjacent extinguisher spray was not appearing
+      visually

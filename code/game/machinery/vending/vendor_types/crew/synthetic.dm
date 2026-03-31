@@ -918,8 +918,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/wy_patch_square
 	path = /obj/item/clothing/accessory/patch/wysquare
 
-/datum/gear/synthetic/wy_patch_pmc
-	path = /obj/item/clothing/accessory/patch/wy_faction
+/datum/gear/synthetic/hd_patch
+	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools

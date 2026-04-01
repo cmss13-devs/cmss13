@@ -192,9 +192,9 @@
 
 
 		if(HAS_TRAIT(victim, TRAIT_DAZED) || pass_down_the_line || no_clothes_neuro)
-			if(victim.AmountKnockDown() < 5)
+			if(victim.AmountKnockDown() < 4)
 				victim.AdjustKnockDown(1 * power) // KD them a bit more
-				if(!pass_down_the_line)
+				if(!pass_down_the_line && victim.AmountKnockDown() > 0)
 					victim.visible_message(SPAN_DANGER("[victim] falls prone."))
 			pass_down_the_line = TRUE
 
@@ -209,11 +209,6 @@
 		victim.AdjustSuperslow(3 * power) // Superslow them a bit more
 		if(!pass_down_the_line)
 			victim.visible_message(SPAN_DANGER("[victim] movements are slowed."))
-
-	if(HAS_TRAIT(victim, TRAIT_DAZED))
-		victim.visible_message(SPAN_DANGER("[victim] has the dazed trait."))
-		victim.visible_message(SPAN_DANGER("[victim] has [victim.AmountKnockDown()] knockdown."))
-		victim.visible_message(SPAN_DANGER("[victim] has [victim.superslowed] superslow"))
 
 /datum/ammo/xeno/acid
 	name = "acid spit"

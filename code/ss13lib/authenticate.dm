@@ -78,7 +78,7 @@
 
 	try
 		decoded = json_decode(response.body)
-	catch(exception/decode_error)
+	catch(var/exception/decode_error)
 		SS13LIB_ERROR_LOG("Failed to decode JSON response from server: [decode_error.name]")
 		return FALSE
 
@@ -173,12 +173,12 @@
 		return
 
 	var/client/authenticating_client = client
-	client.mob = null
+	authenticating_client.mob = null
 
 	// We have to re-enter here to properly go through the consumers client Initialization flow
 	// which should have been fully interrupted by early returning the mob we are currently in
 	// assuming this has been integrated properly and we are at the **top** of /client/New
-	client.New(list2params(
+	authenticating_client.New(list2params(
 		list("auth_ticket" = auth_ticket)
 	))
 	return

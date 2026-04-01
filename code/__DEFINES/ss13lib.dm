@@ -5,13 +5,13 @@
 #define SS13LIB world.get_or_init_ss13lib()
 
 /// Consumers must add this to **the top** of /client/New, before any setup is performed on a client.
-#define SS13LIB_CLIENT var/ss13lib_client_return = SS13LIB.handle_client(src, args[1]); if (ss13lib_client_return) return ss13lib_client_return
+#define SS13LIB_CLIENT var/ss13lib_client_return = (SS13LIB).handle_client(src, args[1]); if (ss13lib_client_return) return ss13lib_client_return
 
 /// Consumers must call this as early as possible in /world/Topic
-#define SS13LIB_TOPIC var/ss13lib_topic_return = SS13LIB.handle_topic(args[1]); if(ss13lib_topic_return) return ss13lib_topic_return
+#define SS13LIB_TOPIC var/ss13lib_topic_return = (SS13LIB).handle_topic(args[1]); if(ss13lib_topic_return) return ss13lib_topic_return
 
 /// Consumers must call this at the start of /client/IsBanned()
-#define SS13LIB_ISBANNED var/ss13lib_ban_return = SS13LIB.handle_banned(args[1], args[2], args[3]); if(!isnull(ss13lib_ban_return)) return ss13lib_ban_return
+#define SS13LIB_ISBANNED var/ss13lib_ban_return = (SS13LIB).handle_banned(args[1], args[2], args[3]); if(!isnull(ss13lib_ban_return)) return ss13lib_ban_return
 
 //! CONFIGURATION
 

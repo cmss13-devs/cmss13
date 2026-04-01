@@ -235,6 +235,9 @@
 /obj/item/storage/box/spec/horse/fill_preset_inventory()
 	new /obj/item/explosive/grenade/spawnergrenade/horse(src)
 	new /obj/item/weapon/javelin/horse(src)
+	new /obj/item/reagent_container/food/snacks/grown/apple(src)
+	new /obj/item/reagent_container/food/snacks/grown/apple(src)
+	new /obj/item/reagent_container/food/snacks/grown/apple(src)
 
 
 //maybe put in req for later use?

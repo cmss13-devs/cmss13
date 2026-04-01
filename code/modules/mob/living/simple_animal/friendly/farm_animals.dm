@@ -290,7 +290,6 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	response_disarm = "gently pushes aside the"
 	response_harm   = "kicks the"
 	attacktext = "kicks"
-	buckle_flags = CAN_BUCKLE
 	maxHealth = 50
 	health = 50
 	// Do we register a unique rider?
@@ -310,6 +309,27 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	var/image/pony_hair_dead = image('icons/mob/animal.dmi', icon_state = "pony_hair_dead")
 	pony_hair_dead.color = ponycolors[2]
 	overlays += "pony_hair_dead"
+
+/mob/living/simple_animal/big/horse/attackby(obj/item/apple_i_hope, mob/user)
+	. = ..()
+	if(istype(apple_i_hope, /obj/item/reagent_container/food/snacks/grown/apple))
+		to_chat(world, SPAN_DANGER("[name] eats the apple, and regains all their strength!"))
+		src.rejuvenate()
+		overlays.Cut()
+		icon_state = "pony"
+		apply_colour()
+		qdel(apple_i_hope)
+	else
+		to_chat(user, SPAN_DANGER("[name] only eats apples."))
+
+/mob/living/simple_animal/big/horse/get_projectile_hit_chance(obj/projectile/P)
+	. = ..()
+	if(.)
+		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
+			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
+		)
+			return FALSE
 
 /mob/living/simple_animal/big/horse/proc/tamed(mob/living/tamer)
 	ENABLE_BITFIELD(buckle_flags, CAN_BUCKLE)
@@ -381,15 +401,18 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	name = "cavalry horse"
 	desc = "A horse trained for combat. Charge!!"
 	unique_tamer = TRUE
-	maxHealth = 300
-	health = 300
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
+	maxHealth = 1500
+	health = 1500
 
 /mob/living/simple_animal/big/horse/yautja
 	name = "E'wun"
 	desc = "It is red because it hates you"
 	unique_tamer = TRUE
-	maxHealth = 500
-	health = 500
+	faction = FACTION_YAUTJA
+	maxHealth = 2000
+	health = 2000
 	ponycolors = list("#aa0000", "#444444")
 
 /obj/item/explosive/grenade/spawnergrenade/horse

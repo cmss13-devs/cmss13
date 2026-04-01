@@ -107,6 +107,8 @@
 #include "code\__DEFINES\skills.dm"
 #include "code\__DEFINES\sounds.dm"
 #include "code\__DEFINES\speech_channels.dm"
+#include "code\__DEFINES\ss13lib.config.dm"
+#include "code\__DEFINES\ss13lib.dm"
 #include "code\__DEFINES\stamina.dm"
 #include "code\__DEFINES\stats.dm"
 #include "code\__DEFINES\status_effects.dm"
@@ -2715,3 +2717,5 @@
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
 // END_INCLUDE
+
+#include "code\ss13lib\ss13lib.dme"

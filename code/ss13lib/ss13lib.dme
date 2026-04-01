@@ -1,0 +1,17 @@
+#ifdef SS13LIB_DEBUG
+
+#warn SS13LIB_DEBUG must not be set in production.
+// #define SS13LIB_EXTERNAL_CONFIGURATION
+
+#include "../ss13lib.dm"
+#endif
+
+#include "__internal_includes.dm"
+#include "authenticate.dm"
+#include "banned.dm"
+#include "bootstrap.dm"
+#include "handshake.dm"
+#include "heartbeat.dm"
+#include "http.dm"
+#include "topic.dm"
+#include "z__internal_undefs.dm"

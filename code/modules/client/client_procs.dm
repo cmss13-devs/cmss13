@@ -273,6 +273,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//CONNECT//
 	///////////
 /client/New(TopicData)
+	SS13LIB_CLIENT
+
 	soundOutput = new /datum/soundOutput(src)
 
 	process_preauthorization(params2list(TopicData))

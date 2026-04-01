@@ -10,6 +10,7 @@
 		guest_bypass_with_ext_auth = TRUE,
 		byond_user = TRUE
 	)
+	SS13LIB_ISBANNED
 
 	var/ckey = ckey(key)
 

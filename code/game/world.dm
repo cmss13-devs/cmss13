@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC
-
+	SS13LIB_TOPIC
 
 	var/list/response = list()
 

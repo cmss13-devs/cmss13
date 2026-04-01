@@ -42,7 +42,6 @@
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 	var/base_fury = 999999
 	var/next_slash_buffed = FALSE
-	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg')
 
 /mob/living/carbon/xenomorph/drone/proc/queen_gut(atom/target)
 	if(!iscarbon(target))

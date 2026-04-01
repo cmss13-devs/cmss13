@@ -78,6 +78,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
+
+	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg')
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

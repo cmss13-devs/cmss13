@@ -42248,10 +42248,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices)
-"dqF" = (
-/obj/item/clothing/under/marine/crew,
-/turf/open/floor/almayer/plating_striped/north,
-/area/almayer/squads/req)
 "drj" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -43172,7 +43168,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/obj/item/clothing/under/marine/crew,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "dJH" = (
@@ -52309,11 +52304,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
-"hzo" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/clothing/under/marine/crew,
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/lower/cryo_cells)
 "hzs" = (
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 5
@@ -146988,7 +146978,7 @@ aCX
 atH
 bdl
 buz
-dqF
+bZr
 bmD
 bNP
 sMz
@@ -148125,7 +148115,7 @@ rLK
 xss
 xss
 uHk
-hzo
+dXb
 dXb
 dXb
 dXb

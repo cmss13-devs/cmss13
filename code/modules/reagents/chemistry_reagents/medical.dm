@@ -202,6 +202,27 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
+/datum/reagent/medical/thwei/cov
+	name = "Cathwei"
+	id = "cathwei"
+	color = "#cc99ff"
+	properties = list(
+		PROPERTY_CARDIOSTABILIZING = 4,
+		PROPERTY_ORGANSTABILIZE = 1,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+		PROPERTY_OCULOPEUTIC = 2,
+		PROPERTY_NEUROPEUTIC = 2,
+		PROPERTY_HEPATOPEUTIC = 2,
+		PROPERTY_NEPHROPEUTIC = 2,
+		PROPERTY_PNEUMOPEUTIC = 2,
+		PROPERTY_CARDIOPEUTIC = 2,
+	)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
+
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"

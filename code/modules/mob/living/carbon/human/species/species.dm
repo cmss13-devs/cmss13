@@ -75,6 +75,8 @@
 	/// Base time until regeneration restarts after being fired at
 	var/dp_regen_base_reactivation_time = 30
 
+	/// used for inherent glow
+	var/luminosity = 0
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE

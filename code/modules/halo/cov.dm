@@ -1,6 +1,18 @@
 #define ACCESSORY_SLOT_SANG_SHOULDER "Sang Shoulder"
 #define ACCESSORY_SLOT_SANG_WEBBING "Sang Webbing"
 
+/mob/living/carbon/human/proc/handle_luminosity()
+	var/new_luminosity = 0
+	if(species)
+		new_luminosity += species.luminosity
+	if(on_fire)
+		new_luminosity += min(fire_stacks, 5)
+	set_light_range(new_luminosity) // light up cov
+	if(new_luminosity)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
+
 
 /obj/item/device/radio/headset/almayer/marine/covenant
 	name = "\improper covenant communicator"
@@ -8,6 +20,9 @@
 	icon = 'icons/halo/obj/items/clothing/covenant/radio.dmi'
 	icon_state = "headset"
 	frequency = COV_FREQ
+	initial_keys = list()
+	ignore_z = TRUE
+	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 //======================
 // COVIE BELTS
@@ -181,6 +196,7 @@
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	anti_hug = 6
 
 /obj/item/clothing/head/helmet/marine/sangheili/minor
 	name = "\improper Sangheili Minor helmet"
@@ -365,6 +381,7 @@
 	item_icons = list(
 		WEAR_FACE = 'icons/halo/mob/humans/onmob/clothing/unggoy/mask.dmi'
 	)
+	anti_hug = 6
 
 /obj/item/clothing/suit/marine/unggoy
 	name = "placeholder Unggoy combat harness"
@@ -497,3 +514,94 @@
 	name = "\improper Sangheili Zealot shoulder pads"
 	icon_state = "sangpads_zealot"
 	item_state = "sangpads_zealot"
+
+/obj/item/storage/pouch/firstaid/full/alternate/cov
+	name = "Covenant First Aid Pouch"
+	desc = "full of alien healing supplies"
+	color = "#CC99FF"
+	storage_slots = 6
+
+	can_hold = list(
+	/obj/item/storage/pill_bottle/packet/tricordrazine/cov,
+	/obj/item/stack/medical/splint/cov,
+	/obj/item/stack/medical/ointment/cov,
+	/obj/item/stack/medical/bruise_pack/cov,
+	/obj/item/reagent_container/food/snacks/protein_pack/cov,
+	/obj/item/reagent_container/hypospray/autoinjector/cov,
+	)
+
+/obj/item/storage/pouch/firstaid/full/alternate/cov/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/packet/tricordrazine/cov(src)
+	new /obj/item/stack/medical/splint/cov(src)
+	new /obj/item/stack/medical/ointment/cov(src)
+	new /obj/item/stack/medical/bruise_pack/cov(src)
+	new /obj/item/reagent_container/food/snacks/protein_pack/cov(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/cov(src)
+
+
+/obj/item/stack/medical/bruise_pack/cov
+	name = "Covenant Bandages"
+	desc = "Bandages, for covenant."
+	color = "#CC99FF"
+	alien = TRUE
+
+/obj/item/storage/pill_bottle/packet/tricordrazine/cov
+	name = "Covenant Healing Pills"
+	desc = "Pills that heal covenant"
+	color = "#CC99FF"
+
+/obj/item/stack/medical/splint/cov
+	name = "Covenant Splints"
+	desc = "Splints for covenant fractures"
+	color = "#CC99FF"
+	alien = TRUE
+
+/obj/item/stack/medical/ointment/cov
+	name = "Covenant Ointment"
+	desc = "Ointment for Covenant Burns"
+	color = "#CC99FF"
+	alien = TRUE
+
+/obj/item/reagent_container/food/snacks/protein_pack/cov
+	name = "Covenant Nutrient Brick"
+	desc = "Is this even food?"
+	filling_color = "#CC99FF"
+	color = "#CC99FF"
+
+/obj/item/reagent_container/hypospray/autoinjector/cov
+	name = "covenant recovery stimulant"
+	desc = "A stimulant said to stabilize sangheili and unggoy warriors and help recover from internal wounds."
+	chemname = "cathwei"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "crystal"
+	injectSFX = 'sound/items/pred_crystal_inject.ogg'
+	autoinjector_type = "thwei"
+	injectVOL = 15
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE
+	volume = REAGENTS_OVERDOSE
+	uses_left = 1
+	black_market_value = 25
+	color = "#CC99FF"
+
+/obj/item/reagent_container/hypospray/autoinjector/cov/attack(mob/M as mob, mob/user as mob)
+	if(ishuman_strict(M))
+		to_chat(user, SPAN_DANGER("You would not desecrate your equipment using it on a lowly human."))
+		return
+	if(HAS_TRAIT(user, TRAIT_COV_TECH))
+		..()
+	else
+		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
+
+	if(uses_left == 0)
+		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
+
+/obj/item/reagent_container/hypospray/autoinjector/cov/proc/remove_crystal()
+	visible_message(SPAN_DANGER("[src] collapses into nothing."))
+	qdel(src)
+
+/obj/item/reagent_container/hypospray/autoinjector/cov/update_icon()
+	overlays.Cut()
+	if(uses_left && autoinjector_type) //does not apply a colored fill overlay like the rest of the autoinjectors
+		var/image/filling = image('icons/obj/items/hunter/pred_gear.dmi', src, "[autoinjector_type]_[uses_left]")
+		overlays += filling
+		return

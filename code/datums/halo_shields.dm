@@ -20,7 +20,7 @@
 	time_to_regen = 15 SECONDS
 
 /datum/halo_shield/sangheili/minor
-	max_shield_strength = 150
+	max_shield_strength = 100
 	recovery_time = 5 SECONDS
 
 /datum/halo_shield/sangheili/major

@@ -28,6 +28,10 @@
 	dodge_pool_regen_restoration = 0.2
 	dp_regen_base_reactivation_time = 35
 
+	luminosity = 1
+	darksight = 2
+	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
 	icobase = 'icons/halo/mob/humans/species/unggoy/r_unggoy.dmi'
 	deform = 'icons/halo/mob/humans/species/unggoy/r_unggoy.dmi'
 	eye_icon = 'icons/halo/mob/humans/species/unggoy/eyes.dmi'

@@ -325,7 +325,7 @@
 /datum/ammo/bullet/rifle/srs99
 	name = "APFSDS bullet"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 200
+	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_8
 	accurate_range = 24
 	accuracy = HIT_ACCURACY_TIER_10
@@ -342,6 +342,16 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating),
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/datum/ammo/bullet/rifle/srs99/on_hit_mob(mob/target, obj/projectile/bullet)
+	var/mob/living/living_target = target
+	if(ishuman(living_target))
+		living_target.apply_armoured_damage(damage * 0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	if(isxeno(living_target))
+		living_target.apply_armoured_damage(damage * 1.2, ARMOR_BULLET, BRUTE, null, penetration)
+
+	if((bullet.projectile_flags & PROJECTILE_BULLSEYE) && target == bullet.original)
+		pushback(target, bullet, 3)
 
 // pistol ammo
 

@@ -80,6 +80,7 @@
 	updatehealth()
 
 	handle_dodgepool()
+	handle_luminosity()
 
 	//Status updates, death etc.
 	handle_regular_status_updates() //Optimized a bit

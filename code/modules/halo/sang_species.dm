@@ -28,6 +28,10 @@
 	dodge_pool_regen_restoration = 0.1
 	dp_regen_base_reactivation_time = 20
 
+	luminosity = 2
+	darksight = 2
+	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000

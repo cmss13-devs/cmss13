@@ -165,6 +165,7 @@
 
 /mob/living/carbon/human/ExtinguishMob()
 	. = ..()
+	handle_luminosity()
 	SEND_SIGNAL(src, COMSIG_HUMAN_EXTINGUISH)
 
 /mob/living/proc/update_fire()

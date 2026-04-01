@@ -194,7 +194,7 @@
 		if(HAS_TRAIT(victim, TRAIT_DAZED) || pass_down_the_line || no_clothes_neuro)
 			if(victim.AmountKnockDown() < 4)
 				victim.AdjustKnockDown(1 * power) // KD them a bit more
-				if(!pass_down_the_line && victim.AmountKnockDown() > 0)
+				if(!pass_down_the_line)
 					victim.visible_message(SPAN_DANGER("[victim] falls prone."))
 			pass_down_the_line = TRUE
 

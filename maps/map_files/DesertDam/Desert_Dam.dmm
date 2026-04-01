@@ -1757,6 +1757,9 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/turf/closed/wall/r_wall/bunker/floodgate,
+/area/desert_dam/exterior/river/riverside_east)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2496,6 +2499,9 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/building/warehouse/warehouse)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -14938,6 +14944,9 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/exterior/rock/level3)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22286,11 +22295,6 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
-"brf" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/exterior/river/riverside_central_north)
 "brg" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -66473,9 +66477,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
 "scV" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
+/turf/closed/wall/r_wall/bunker/floodgate,
 /area/desert_dam/exterior/river_mouth/southern)
 "sdc" = (
 /obj/structure/surface/table/reinforced,
@@ -164558,7 +164560,7 @@ qaR
 qaR
 qaR
 qaR
-brf
+kEr
 ajN
 ojk
 jJE
@@ -166196,7 +166198,7 @@ qaR
 qaR
 qaR
 qaR
-brf
+kEr
 wxO
 sfe
 sfe
@@ -190164,7 +190166,7 @@ gxr
 gxr
 gxr
 gxr
-cYS
+aft
 oyS
 vcj
 qkY
@@ -194377,7 +194379,7 @@ oAg
 oAg
 oAg
 oAg
-cYS
+aft
 qaR
 qaR
 qaR
@@ -204768,17 +204770,17 @@ wnN
 wnN
 wnN
 wnN
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
 ipW
 ipW
 ipW
@@ -205002,7 +205004,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -205012,7 +205014,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 ipW
 ipW
 ipW
@@ -205236,7 +205238,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -205246,7 +205248,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 ipW
 ipW
 ipW
@@ -205470,7 +205472,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -205480,7 +205482,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 ipW
 ipW
 ipW
@@ -205701,10 +205703,10 @@ wnN
 wnN
 wnN
 wnN
-xkb
-xkb
-xkb
-xkb
+ahJ
+ahJ
+ahJ
+ahJ
 acw
 acw
 acw
@@ -205714,14 +205716,14 @@ acw
 acw
 acw
 acw
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
-xkb
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
+ahJ
 ipW
 ipW
 wnN
@@ -205935,7 +205937,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -205955,7 +205957,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -206169,7 +206171,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -206189,7 +206191,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -206403,7 +206405,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -206423,7 +206425,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -206637,7 +206639,7 @@ wnN
 wnN
 wnN
 wnN
-xkb
+ahJ
 acw
 acw
 acw
@@ -206657,7 +206659,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -206869,10 +206871,10 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 xkb
@@ -206891,7 +206893,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -207103,10 +207105,10 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -207125,7 +207127,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -207337,10 +207339,10 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -207359,7 +207361,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -207570,11 +207572,11 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -207593,7 +207595,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -207804,11 +207806,11 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -207827,7 +207829,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -208038,11 +208040,11 @@ wnN
 wnN
 wnN
 wnN
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -208061,7 +208063,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -208270,13 +208272,13 @@ ipW
 ipW
 wnN
 wnN
-adE
-adE
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -208295,7 +208297,7 @@ acw
 acw
 acw
 acw
-xkb
+ahJ
 wnN
 wnN
 wnN
@@ -208504,13 +208506,13 @@ ipW
 ipW
 wnN
 wnN
-adE
-adE
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acw
 acw
 acw
@@ -208738,13 +208740,13 @@ ipW
 ipW
 wnN
 wnN
-adE
-adE
-adE
-adE
-adE
-adE
-xkb
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+ahJ
 acZ
 acZ
 acZ
@@ -208972,8 +208974,8 @@ ipW
 ipW
 ipW
 wnN
-adE
-adE
+aUZ
+aUZ
 adE
 adE
 adE
@@ -209206,8 +209208,8 @@ ipW
 ipW
 ipW
 wnN
-adE
-adE
+aUZ
+aUZ
 adE
 adE
 adE
@@ -209937,7 +209939,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -210171,7 +210173,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -210405,7 +210407,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -210639,7 +210641,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -210873,7 +210875,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -211107,7 +211109,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -211341,7 +211343,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -211575,7 +211577,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 wnN
 wnN
 wnN
@@ -211809,15 +211811,15 @@ aci
 aci
 aci
 aci
-joU
-joU
-joU
-joU
-joU
-joU
-joU
-joU
-joU
+abh
+abh
+abh
+abh
+abh
+abh
+abh
+abh
+abh
 vTg
 "}
 (65,1,3) = {"
@@ -212051,7 +212053,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 vTg
 "}
 (66,1,3) = {"
@@ -212285,7 +212287,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 vTg
 "}
 (67,1,3) = {"
@@ -212519,7 +212521,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 vTg
 "}
 (68,1,3) = {"
@@ -212753,7 +212755,7 @@ aci
 aci
 aci
 aci
-joU
+abh
 vTg
 "}
 (69,1,3) = {"
@@ -212978,8 +212980,8 @@ aci
 aci
 aci
 aci
-joU
-joU
+abh
+abh
 rWQ
 rWQ
 rWQ
@@ -213212,7 +213214,7 @@ acr
 acr
 acr
 acr
-joU
+abh
 wnN
 rWQ
 rWQ
@@ -213446,7 +213448,7 @@ acB
 acs
 acs
 acs
-joU
+abh
 wnN
 rWQ
 rWQ
@@ -213675,12 +213677,12 @@ kwC
 joU
 joU
 joU
-joU
-joU
-joU
-joU
-joU
-joU
+abh
+abh
+abh
+abh
+abh
+abh
 wnN
 rWQ
 rWQ

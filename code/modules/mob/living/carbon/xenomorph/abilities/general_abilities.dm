@@ -92,8 +92,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
-	var/xeno_cooldown_interrupt_modifier = 3
+	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building or when interrupted.
+	var/xeno_cooldown_interrupt_penalty = 1 SECONDS
 	/// Something went wrong, for example, you can't build here
 	var/xeno_cooldown_fail = 1
 	/// Placement time increase modifier

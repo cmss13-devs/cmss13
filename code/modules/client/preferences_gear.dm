@@ -1369,7 +1369,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/cat_ears
 	display_name = "Cat ears (Squad)"
 	path = /obj/item/prop/helmetgarb/cat_ears
-	cost = 3
 	slot = WEAR_IN_BACK
 
 /datum/gear/eyewear/sunglasses/hippie_shades/nightblue

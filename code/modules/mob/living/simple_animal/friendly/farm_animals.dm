@@ -325,7 +325,6 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 /mob/living/simple_animal/big/horse/get_projectile_hit_chance(obj/projectile/P)
 	. = ..()
 	if(.)
-		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
 			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
 		)

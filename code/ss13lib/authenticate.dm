@@ -55,8 +55,9 @@
 	var/stored_launcher_details = connection_to_launcher["[new_client.address]+[new_client.computer_id]"]
 	if(stored_launcher_details)
 		SS13LIB_INFO_LOG("Reconnection detected for [new_client.address], serving launcher browser.")
-		var/mob/ss13lib_holder_mob/mob = new(locate(1, 1, 1), stored_launcher_details)
-		return mob
+
+		new_client.mob = new /mob/ss13lib_holder_mob(locate(1, 1, 1), stored_launcher_details)
+		return new_client.mob
 
 	var/key_to_skip = new_client.key
 	isbanned_hook_ignore |= key_to_skip

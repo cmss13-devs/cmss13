@@ -202,7 +202,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_ADDICTIVE = 2)
+	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_ADDICTIVE = 1)
 
 /datum/reagent/sleen
 	name = "Sleen"
@@ -213,7 +213,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_ADDICTIVE = 1)
+	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"

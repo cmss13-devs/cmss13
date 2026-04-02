@@ -196,6 +196,8 @@
 		return
 
 	var/client/authenticating_client = client
+
+	key = null
 	authenticating_client.mob = null
 
 	// We have to re-enter here to properly go through the consumers client Initialization flow

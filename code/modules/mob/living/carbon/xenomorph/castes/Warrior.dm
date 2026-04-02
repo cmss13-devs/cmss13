@@ -31,6 +31,10 @@
 
 	minimap_icon = "warrior"
 
+	available_strains = list(
+		/datum/xeno_strain/boxer,
+	)
+
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR

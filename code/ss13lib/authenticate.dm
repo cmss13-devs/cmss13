@@ -144,9 +144,10 @@
 			}).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
-					return response.json().then((object) => {
-						location.href = `byond://?src=${mob_reference}&command=${endpoint}&body=${encodeURIComponent(JSON.stringify(object))}`
-						return object;
+					return response.json().then((returned) => {
+						BYOND.winget(null, "url").then((url) => {
+							BYOND.command(`.url ${url.url}?auth_ticket=${returned["auth_ticket"]}`)
+						})
 					});
 				}
 			});

@@ -410,3 +410,19 @@
 /datum/emote/living/carbon/human/burstscream/run_langchat(mob/living/user, list/group)
 	. = ..()
 	user.show_speech_bubble(group, "pain")
+
+/datum/emote/living/carbon/human/flip
+	key = "flip"
+	message = "does a flip!"
+	cooldown = 6 SECONDS
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/flip/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	user.animation_spin(5, 1)
+	if(prob(10))
+		user.KnockDown(2)
+		to_chat(user, SPAN_WARNING("You fall on the ground facefirst!"))
+		user.apply_armoured_damage(60, ARMOR_MELEE, BURN, "head", 5)

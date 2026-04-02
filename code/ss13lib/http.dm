@@ -6,7 +6,10 @@
 #if defined(SS13LIB_HTTP_FIRE_AND_FORGET)
 	SS13LIB_HTTP_FIRE_AND_FORGET(method, url, data)
 #elif defined(rustg_http_request_fire_and_forget)
-	rustg_http_request_fire_and_forget(method, url, json_encode(data), null, null)
+	if(!isnull(data))
+		rustg_http_request_fire_and_forget(method, url, json_encode(data), json_encode(list("Content-Type" = "application/json")), null)
+	else
+		rustg_http_request_fire_and_forget(method, url, null, null, null)
 #elif DM_VERSION >= 516 && DM_BUILD >= 1664
 	world.Export(url, data, 0, null, method)
 #else
@@ -33,7 +36,7 @@
 
 	// The `data` field sent to rust-g will *always* be JSON-encoded here and put in the body.
 #elif defined(rustg_http_request_async) && defined(rustg_http_check_request) && defined(RUSTG_JOB_NO_RESULTS_YET)
-	var/identifier = rustg_http_request_async(method, url, json_encode(data), null, null)
+	var/identifier = rustg_http_request_async(method, url, json_encode(data), json_encode(list("Content-Type" = "application/json")), null)
 	var/raw = rustg_http_check_request(identifier)
 	while(raw == RUSTG_JOB_NO_RESULTS_YET)
 		sleep(world.tick_lag)

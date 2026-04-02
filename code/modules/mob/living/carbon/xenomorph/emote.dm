@@ -76,3 +76,29 @@
 	message = "hisses."
 	sound = "giant_lizard_hiss"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/xeno/queen/twerk
+	key = "tk"
+	message = "moves the trunk."
+	sound = "alien_roar"
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph/queen)
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/xeno/queen/twerk/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/xenomorph/queenie = user
+	queenie.Stun(3)
+	queenie.setDir(NORTH)
+	shake_it_up(queenie)
+
+/datum/emote/living/carbon/xeno/queen/twerk/proc/shake_it_up(mob/living/carbon/xenomorph/queenie)
+	queenie.icon_state = "twerky"
+	queenie.icon_override = TRUE
+	sleep(3 SECONDS)
+	release_me(queenie)
+
+/datum/emote/living/carbon/xeno/queen/twerk/proc/release_me(mob/living/carbon/xenomorph/queenie)
+	queenie.icon_override = FALSE
+	queenie.update_icons()
+	queenie.setDir(SOUTH)
+

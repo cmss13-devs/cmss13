@@ -320,6 +320,7 @@
 	var/selected_design_mark
 
 	var/icon_xeno
+	var/icon_override = FALSE
 	var/icon_xenonid
 	var/xenonid_pixel_x
 	var/xenonid_pixel_y

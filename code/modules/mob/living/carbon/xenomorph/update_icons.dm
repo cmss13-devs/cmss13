@@ -71,6 +71,8 @@
 	color = HAS_TRAIT(src, TRAIT_NO_COLOR) ? null : hive.color
 
 /mob/living/carbon/xenomorph/update_icons()
+	if(icon_override) // tehee
+		return
 	if(!caste)
 		return
 
@@ -78,7 +80,6 @@
 	update_fire()
 	update_wounds()
 	update_inv_back()
-
 	if(behavior_delegate?.on_update_icons())
 		return
 

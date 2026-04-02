@@ -33,24 +33,39 @@
 
 		SS13LIB_WARNING_LOG("Failed to authenticate user via SS13Hub.")
 
+		var/key_to_skip = new_client.key
+		isbanned_hook_ignore += key_to_skip
+
 		// TODO: provide more feedback to Guest-banned users
-		if(SS13LIB_GUESTS_BANNED)
+		if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
+			isbanned_hook_ignore -= key_to_skip
 			del(new_client)
 			// No further work to occur in /client/New(), this user is gone.
 			return TRUE
+		isbanned_hook_ignore -= key_to_skip
+
 
 	var/stored_launcher_details = connection_to_launcher["[new_client.address]+[new_client.computer_id]"]
 	if(stored_launcher_details)
 		var/mob/ss13lib_holder_mob/mob = new(null, stored_launcher_details)
 		return mob
 
+	var/key_to_skip = new_client.key
+	isbanned_hook_ignore += key_to_skip
+
 	// TODO: provide more feedback to Guest-banned users
-	if(SS13LIB_GUESTS_BANNED)
+	if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
+		isbanned_hook_ignore -= key_to_skip
 		del(new_client)
 		return TRUE
+	isbanned_hook_ignore -= key_to_skip
 
 	// No handling required for this user, already authenticated via BYOND
 	return FALSE
+
+/// When we send a Guest that we've already screened (and they have failed to authenticate)
+/// we just send them back into world.IsBanned() to determine if they should exit or not
+/datum/ss13lib/var/isbanned_hook_ignore = list()
 
 /datum/ss13lib_auth_response
 	var/ckey_to_use

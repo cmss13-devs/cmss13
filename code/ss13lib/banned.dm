@@ -23,6 +23,10 @@
 	// This user is not a Guest and should be handled by the usual /world/IsBanned,
 	return null
 
+/// When we send a Guest that we've already screened (and they have failed to authenticate)
+/// we just send them back into world.IsBanned() to determine if they should exit or not
+/datum/ss13lib/var/isbanned_hook_ignore = list()
+
 /// If a specified **key** is a Guest account
 /datum/ss13lib/proc/is_guest(key)
 	var/static/regex/guest_regex

@@ -24,6 +24,8 @@
 
 		if(response)
 			var/resolved_key = response.key ? response.key : "[response.username][SS13LIB_CKEY_SUFFIX]"
+			isbanned_hook_ignore |= resolved_key
+
 			SS13LIB_INFO_LOG("Auth succeeded for [new_client.key], resolved key: [resolved_key]")
 
 			var/is_banned = world.IsBanned(resolved_key, new_client.address, new_client.computer_id)
@@ -42,7 +44,7 @@
 		SS13LIB_WARNING_LOG("Failed to authenticate [new_client.key] via SS13Hub.")
 
 		var/key_to_skip = new_client.key
-		isbanned_hook_ignore += key_to_skip
+		isbanned_hook_ignore |= key_to_skip
 
 		if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
 			SS13LIB_INFO_LOG("Unauthenticated user [new_client.key] is banned, disconnecting.")
@@ -57,7 +59,7 @@
 		return mob
 
 	var/key_to_skip = new_client.key
-	isbanned_hook_ignore += key_to_skip
+	isbanned_hook_ignore |= key_to_skip
 
 	if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
 		del(new_client)
@@ -65,10 +67,6 @@
 
 	SS13LIB_INFO_LOG("No auth ticket for [new_client.key], proceeding as BYOND-authenticated user.")
 	return FALSE
-
-/// When we send a Guest that we've already screened (and they have failed to authenticate)
-/// we just send them back into world.IsBanned() to determine if they should exit or not
-/datum/ss13lib/var/isbanned_hook_ignore = list()
 
 /datum/ss13lib/proc/check_auth_ticket(auth_ticket) as /datum/ss13lib_auth_response
 	if(!src.server_id)

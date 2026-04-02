@@ -20831,6 +20831,22 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"bmP" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/item/tool/screwdriver{
+	pixel_y = 2;
+	pixel_x = 11
+	},
+/obj/item/device/multitool{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -21638,6 +21654,22 @@
 	},
 /turf/open_space,
 /area/desert_dam/interior/caves/temple)
+"bpb" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/clipboard{
+	pixel_x = 12;
+	pixel_y = -5
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bpc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
@@ -168439,7 +168471,7 @@ mJF
 aYn
 qaR
 qaR
-otd
+bmP
 aCT
 awU
 amU
@@ -172842,7 +172874,7 @@ ybV
 ybV
 ida
 kPy
-aeD
+bpb
 qaR
 aeD
 aeD

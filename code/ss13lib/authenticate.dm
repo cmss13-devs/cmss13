@@ -56,7 +56,7 @@
 	if(stored_launcher_details)
 		SS13LIB_INFO_LOG("Reconnection detected for [new_client.address], serving launcher browser.")
 
-		new_client.mob = new /mob/ss13lib_holder_mob(locate(1, 1, 1), stored_launcher_details)
+		new_client.mob = new /mob/ss13lib_holder_mob(null, stored_launcher_details)
 		return new_client.mob
 
 	var/key_to_skip = new_client.key

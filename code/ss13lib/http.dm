@@ -45,7 +45,8 @@
 		var/decoded = json_decode(raw)
 		response.status_code = decoded["status_code"]
 		response.body = decoded["body"]
-	catch
+	catch(var/exception/rustg_http_error)
+		SS13LIB_ERROR_LOG("Failed to decode rust-g HTTP, [raw]: [rustg_http_error.name]")
 		response.errored = TRUE
 
 	// The `data` field sent via world.Export is as an associative list, and will be received

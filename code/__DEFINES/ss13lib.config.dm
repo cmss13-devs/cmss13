@@ -15,8 +15,8 @@
 #define SS13LIB_ROUND_GAMEMODE GLOB.master_mode // GLOB.master_mode
 #define SS13LIB_ROUND_ID GLOB.round_id // GLOB.round_id
 
-#define SS13LIB_INFO_LOG(X) log_debug(X)
-#define SS13LIB_WARNING_LOG(X) log_debug(X)
-#define SS13LIB_ERROR_LOG(X) log_debug(X)
+#define SS13LIB_INFO_LOG(X) log_debug("\[SS13LIB INFO\] [X]")
+#define SS13LIB_WARNING_LOG(X) log_debug("\[SS13LIB WARNING\] [X]")
+#define SS13LIB_ERROR_LOG(X) log_debug("\[SS13LIB ERROR\] [X]")
 
 #define SS13LIB_GUESTS_BANNED CONFIG_GET(flag/guest_ban)

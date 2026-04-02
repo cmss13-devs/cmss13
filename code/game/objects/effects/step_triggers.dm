@@ -3,7 +3,7 @@
 /obj/effect/step_trigger
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
-	invisibility = 101 // nope cant see this shit
+	invisibility = 101 // nope can't see this shit
 	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
@@ -139,6 +139,7 @@
 		if(A.clone)
 			A.clone.proj_x *= -1 //Swap places with the clone
 			A.clone.proj_y *= -1
+			A.clone.proj_z *= -1
 			A.update_clone() //Update No. 2
 
 

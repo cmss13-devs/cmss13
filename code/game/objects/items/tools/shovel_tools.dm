@@ -87,16 +87,11 @@
 				return
 
 			var/transfer_amount = dirt_amt_per_dig
-			if(istype(T,/turf/open))
-				var/turf/open/OT = T
-				if(OT.bleed_layer)
-					transfer_amount = min(OT.bleed_layer, dirt_amt_per_dig)
-					if(istype(T, /turf/open/auto_turf))
-						var/turf/open/auto_turf/AT = T
-						AT.changing_layer(AT.bleed_layer - transfer_amount)
-					else
-						OT.bleed_layer -= transfer_amount
-						OT.update_icon(1,0)
+			if(istype(T,/turf/open/auto_turf))
+				var/turf/open/auto_turf/AT = T
+				if(AT.bleed_layer)
+					transfer_amount = min(AT.bleed_layer, dirt_amt_per_dig)
+					AT.changing_layer(AT.bleed_layer - transfer_amount)
 			to_chat(user, SPAN_NOTICE("You dig up some [dirt_type_to_name(turfdirt)]."))
 			dirt_amt = transfer_amount
 			dirt_type = turfdirt

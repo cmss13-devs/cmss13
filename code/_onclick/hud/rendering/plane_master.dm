@@ -4,7 +4,6 @@
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	blend_mode = BLEND_OVERLAY
 	plane = LOWEST_EVER_PLANE
-	var/show_alpha = 255
 	var/hide_alpha = 0
 
 	//--rendering relay vars--
@@ -12,13 +11,13 @@
 	var/render_relay_plane = RENDER_PLANE_GAME
 	///bool: Whether this plane should get a render target automatically generated
 	var/generate_render_target = TRUE
-	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
+	///integer: blend mode to apply to the render relay in case you don't want to use the plane_masters blend_mode
 	var/blend_mode_override
 	///reference: current relay this plane is utilizing to render
 	var/obj/render_plane_relay/relay
 
 /atom/movable/screen/plane_master/proc/Show(override)
-	alpha = override || show_alpha
+	alpha = override || initial(alpha)
 
 /atom/movable/screen/plane_master/proc/Hide(override)
 	alpha = override || hide_alpha
@@ -234,11 +233,23 @@
 /atom/movable/screen/plane_master/open_space
 	name = "open space plane"
 	plane = OPEN_SPACE_PLANE_START
+	var/offset = 0
 
-/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
+/atom/movable/screen/plane_master/open_space/New(loc, offset)
+	. = ..()
+	// This has to be done in New because /datum/hud/New will expect the plane to already be correct and maploading can delay Initialize
+	src.offset = offset
 	name = "open space plane [offset]"
 	plane -= offset
+
+/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
 	. = ..()
+	add_filters()
+
+/atom/movable/screen/plane_master/open_space/proc/remove_filters()
+	remove_filter("multizblur")
+
+/atom/movable/screen/plane_master/open_space/proc/add_filters()
 	add_filter("multizblur", 1, gauss_blur_filter(0.5 + 0.25 * (offset + 1)))
 
 /atom/movable/screen/plane_master/openspace_backdrop

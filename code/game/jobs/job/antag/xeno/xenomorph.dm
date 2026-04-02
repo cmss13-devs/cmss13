@@ -62,7 +62,7 @@
 			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
 			for(var/turf/open/ground_in_range in neighbor_turfs)
 				var/area/in_range_area = get_area(ground_in_range)
-				if(in_range_area.flags_area & AREA_NOTUNNEL)
+				if(in_range_area.flags_area & AREA_NOBURROW)
 					continue
 				var/finish_proc = TRUE
 				for(var/obj/found_object in ground_in_range)
@@ -77,7 +77,7 @@
 			bad_entries |= wall_in_range //no viable turfs found for this wall; we remove it
 		new_entries -= bad_entries
 		list_to_search = new_entries
-		if(count > 20) // we dont got all day, we got a game to play baby!
+		if(count > 20) // we don't got all day, we got a game to play baby!
 			start_nest = new /obj/structure/bed/nest(human_to_transform.loc)
 			start_nest.dir = NORTH
 			break

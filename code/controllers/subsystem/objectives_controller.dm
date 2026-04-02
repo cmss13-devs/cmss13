@@ -125,12 +125,7 @@ SUBSYSTEM_DEF(objectives)
 	var/research_legendary_hints = 8
 
 	//A stub of tweaking item spawns based on map
-	switch(SSmapping.configs[GROUND_MAP])
-		if(MAP_LV_624)
-			paper_scraps = 35
-			progress_reports = 12
-			folders = 25
-			disks = 25
+	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_CORSAT)
 			research_papers = 30
 			experimental_devices = 20
@@ -165,6 +160,8 @@ SUBSYSTEM_DEF(objectives)
 	for(var/i=0;i<paper_scraps;i++)
 		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/paper)
+		if(prob(10)) // Seed a couple punchcards in at 10% chance * paper_scraps
+			spawn_objective_at_landmark(dest, /obj/effect/spawner/punch_cards)
 	for(var/i=0;i<progress_reports;i++)
 		var/dest = pick(10;"close", 55;"medium", 3;"far", 10;"science", 20*relative_document_ratio_close;"close_documents", 30*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/report)
@@ -254,20 +251,18 @@ SUBSYSTEM_DEF(objectives)
 	if(!picked_location)
 		CRASH("Unable to pick a location at [dest] for [it]")
 
-	var/generated = FALSE
-	for(var/obj/O in picked_location)
-		if(istype(O, /obj/structure/closet) || istype(O, /obj/structure/safe) || istype(O, /obj/structure/filingcabinet))
-			if(istype(O, /obj/structure/closet))
-				var/obj/structure/closet/c = O
-				if(c.opened)
-					continue //container is open, don't put stuff into it
-			var/obj/item/IT = new it(O)
-			O.contents += IT
-			generated = TRUE
-			break
+	for(var/obj/cur_obj in picked_location)
+		if(istype(cur_obj, /obj/structure/closet))
+			var/obj/structure/closet/cur_closet = cur_obj
+			if(cur_closet.opened)
+				continue //container is open, don't put stuff into it
+			new it(cur_obj)
+			return
+		if(istype(cur_obj, /obj/structure/safe) || istype(cur_obj, /obj/structure/filingcabinet))
+			new it(cur_obj)
+			return
 
-	if(!generated)
-		new it(picked_location)
+	new it(picked_location)
 
 /datum/controller/subsystem/objectives/proc/pre_round_start()
 	SIGNAL_HANDLER

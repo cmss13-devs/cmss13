@@ -52,6 +52,9 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
+		/mob/living/carbon/human/proc/mark_blooded,
+		/mob/living/carbon/human/proc/mark_youngblood,
+		/mob/living/carbon/human/proc/unmark_youngblood,
 		/mob/living/carbon/human/proc/mark_panel,
 	)
 
@@ -144,11 +147,25 @@
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
 
-/datum/species/yautja/handle_dead_death(mob/living/carbon/human/H, gibbed)
-	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
+/datum/species/yautja/handle_dead_death(mob/living/carbon/human/predator, gibbed)
+	set_predator_status(predator, gibbed ? "Gibbed" : "Dead")
 
-/datum/species/yautja/handle_cryo(mob/living/carbon/human/H)
-	set_predator_status(H, "Cryo")
+/datum/species/yautja/handle_cryo(mob/living/carbon/human/predator)
+	set_predator_status(predator, "Cryo")
+	if(counts_for_slots(predator))
+		SSticker.mode.pred_current_num--
+
+/datum/species/yautja/proc/counts_for_slots(mob/living/carbon/human/predator)
+	if(predator.client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL))
+		return FALSE
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	if(!pred_job)
+		return
+	if(predator.client)
+		var/pred_rank = pred_job.get_whitelist_status(predator.client)
+		if(pred_rank == CLAN_RANK_LEADER)
+			return FALSE
+	return TRUE
 
 /datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
 	if(!H.persistent_username)

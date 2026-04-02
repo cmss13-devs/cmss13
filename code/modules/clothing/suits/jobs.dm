@@ -8,8 +8,8 @@
 	desc = "A basic blue apron."
 	icon_state = "apron"
 	item_state = "apron"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
-	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (
 		/obj/item/reagent_container/spray/plantbgone,
@@ -34,6 +34,7 @@
 	desc = "Looks eerie and weird, almost as if it belongs to a cult."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
+	blood_overlay_type = "suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -75,6 +76,7 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun"
 	item_state = "nun"
+	blood_overlay_type = "suit"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
@@ -93,6 +95,7 @@
 	desc = "An apron used by a high-class chef."
 	icon_state = "chef"
 	item_state = "chef"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	gas_transfer_coefficient = 0.90
 
@@ -118,6 +121,7 @@
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	item_state = "apronchef"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -139,6 +143,7 @@
 /obj/item/clothing/suit/chef/classic/stain
 	icon_state = "apronchef_stain"
 	item_state = "apronchef_stain"
+	blood_overlay_type = "apron"
 
 //Detective
 /obj/item/clothing/suit/storage/CMB/trenchcoat
@@ -150,6 +155,7 @@
 	)
 	icon_state = "trench_tan"
 	item_state = "trench_tan"
+	blood_overlay_type = "suit"
 	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
@@ -170,6 +176,7 @@
 	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
 	icon_state = "detective"
 	item_state = "detective"
+	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/police/black
 	name = "\improper black police trench-coat"
@@ -182,6 +189,7 @@
 	name = "jacket"
 	desc = "A forensics technician jacket."
 	item_state = "det_suit"
+	blood_overlay_type = "coat"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(
@@ -263,7 +271,7 @@
 	icon_state = "hazard"
 	item_state = "hazard"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
-	blood_overlay_type = "armor"
+	blood_overlay_type = "vest"
 	allowed = list (
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
@@ -336,7 +344,7 @@
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	has_buttons = TRUE
-	blood_overlay_type = "coat"
+	blood_overlay_type = "jacket"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
 	name = "blue suit-jacket"
@@ -378,7 +386,7 @@
 	name = "windbreaker parent object"
 	desc = "This shouldn't be here..."
 	icon = 'icons/obj/items/clothing/suits/windbreakers.dmi'
-	blood_overlay_type = "armor"
+	blood_overlay_type = "jacket"
 	allowed = list(
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
@@ -391,6 +399,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/backpack/general_belt,
 		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,
@@ -470,7 +479,7 @@
 	desc = "They suspend pants."
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	icon_state = "suspenders"
-	blood_overlay_type = "armor"
+	blood_overlay_type = ""
 	flags_armor_protection = 0
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',

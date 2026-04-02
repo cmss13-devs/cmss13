@@ -22,3 +22,11 @@
 	mid_sounds = 'sound/machines/telephone/phone_busy.ogg'
 	mid_length = 5 SECONDS
 	volume = 15
+
+/datum/looping_sound/generator
+	start_sound = 'sound/machines/generator/generator_start.ogg'
+	start_length = 0.4 SECONDS
+	mid_sounds = 'sound/machines/generator/generator_mid1.ogg'
+	mid_length = 0.4 SECONDS
+	end_sound = 'sound/machines/generator/generator_end.ogg'
+	volume = 40

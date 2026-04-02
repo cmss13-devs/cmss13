@@ -64,7 +64,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(perc)
+/mob/living/carbon/human/proc/update_power_display(perc, material)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
@@ -87,6 +87,8 @@
 				hud_used.pred_power_icon.icon_state = "powerbar20"
 			else
 				hud_used.pred_power_icon.icon_state = "powerbar10"
+		if(material)
+			hud_used.pred_power_icon.icon_state = hud_used.pred_power_icon.icon_state + "_" + material
 
 /mob/living/carbon/human/proc/butcher()
 	set category = "Yautja.Misc"
@@ -99,10 +101,6 @@
 	var/list/choices = list()
 	for(var/mob/living/carbon/M in view(1, src) - src)
 		if(Adjacent(M) && M.stat == DEAD)
-			if(ishuman(M))
-				var/mob/living/carbon/human/Q = M
-				if(Q.species && issamespecies(Q, src))
-					continue
 			choices += M
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
@@ -262,23 +260,3 @@
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-
-/area/yautja
-	name = "\improper Yautja Ship"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "hunter"
-	//music = "signal"
-	ambience_exterior = AMBIENCE_YAUTJA
-	ceiling = CEILING_METAL
-	requires_power = FALSE
-	base_lighting_alpha = 155
-	base_lighting_color = "#ffc49c"
-	flags_area = AREA_YAUTJA_GROUNDS
-
-/area/yautja/lower_deck
-	name = "\improper Yautja Ship - Lower Deck"
-	base_lighting_alpha = 105
-
-/area/yautja/hangar
-	name = "\improper Yautja Ship - Hangar"
-	base_lighting_alpha = 180

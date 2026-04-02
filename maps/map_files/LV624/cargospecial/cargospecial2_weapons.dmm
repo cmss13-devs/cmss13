@@ -59,7 +59,7 @@
 /obj/item/stack/sheet/wood{
 	amount = 2
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 

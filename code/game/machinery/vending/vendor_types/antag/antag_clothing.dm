@@ -36,7 +36,7 @@
 		products_sets = listed_products[H.assigned_equipment_preset.type]
 	else
 		if(!(/datum/equipment_preset/clf in listed_products))
-			listed_products[/datum/equipment_preset/clf] = GLOB.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
+			listed_products[/datum/equipment_preset/clf] = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
 		products_sets = listed_products[/datum/equipment_preset/clf]
 	return products_sets
 
@@ -144,7 +144,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Medical Scrubs, Purple", 12, /obj/item/clothing/under/rank/medical/purple, null, VENDOR_ITEM_REGULAR),
 	list("Medical Scrubs, Olive", 12, /obj/item/clothing/under/rank/medical/olive, null, VENDOR_ITEM_REGULAR),
 	list("Medical Scrubs, Grey", 12, /obj/item/clothing/under/rank/medical/grey, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, White", 12, /obj/item/clothing/under/rank/medical, null, VENDOR_ITEM_REGULAR),
+	list("Medical Scrubs, Brown", 12, /obj/item/clothing/under/rank/medical/brown, null, VENDOR_ITEM_REGULAR),
+	list("Medical Scrubs, White", 12, /obj/item/clothing/under/rank/medical/white, null, VENDOR_ITEM_REGULAR),
+	list("Medical Scrubs, Black", 12, /obj/item/clothing/under/rank/medical/morgue, null, VENDOR_ITEM_REGULAR),
+	list("Medical Scrubs, White and Orange-Striped", 12, /obj/item/clothing/under/rank/medical/pharmacist, null, VENDOR_ITEM_REGULAR),
 	list("White T-Shirt and Brown Jeans", 12, /obj/item/clothing/under/tshirt/w_br, null, VENDOR_ITEM_REGULAR),
 	list("Gray T-Shirt and Blue Jeans", 12, /obj/item/clothing/under/tshirt/gray_blu, null, VENDOR_ITEM_REGULAR),
 	list("Red T-Shirt and Black Jeans", 12, /obj/item/clothing/under/tshirt/r_bla, null, VENDOR_ITEM_REGULAR),
@@ -188,15 +191,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("UL8 ushanka", 12, /obj/item/clothing/head/uppcap/ushanka, null, VENDOR_ITEM_REGULAR),
 	list("UL8c ushanka", 12, /obj/item/clothing/head/uppcap/ushanka/civi, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/blue, null, VENDOR_ITEM_REGULAR),
-	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Cap, Green", 12, /obj/item/clothing/head/surgery/green, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Light Blue", 12, /obj/item/clothing/head/surgery/lightblue, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Purple", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Olive", 12, /obj/item/clothing/head/surgery/olive, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Grey", 12, /obj/item/clothing/head/surgery/grey, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Brown", 12, /obj/item/clothing/head/surgery/brown, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, White", 12, /obj/item/clothing/head/surgery/white, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, Black", 12, /obj/item/clothing/head/surgery/morgue, null, VENDOR_ITEM_REGULAR),
+	list("Surgical Cap, White and Orange-Striped", 12, /obj/item/clothing/head/surgery/pharmacist, null, VENDOR_ITEM_REGULAR),
 	list("Beanie", 12, /obj/item/clothing/head/beanie, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Engineering", 12, /obj/item/clothing/head/beret/eng, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Purple", 12, /obj/item/clothing/head/beret/jan, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Red", 12, /obj/item/clothing/head/beret/cm/red, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Standard", 12, /obj/item/clothing/head/beret/cm, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Tan", 12, /obj/item/clothing/head/beret/cm/tan, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Green", 12, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Beret, Green", 12, /obj/item/clothing/head/beret/cm, null, VENDOR_ITEM_REGULAR),
 	list("Beret, Black", 12, /obj/item/clothing/head/beret/cm/black, null, VENDOR_ITEM_REGULAR),
 	list("Beret, White", 12, /obj/item/clothing/head/beret/cm/white, null, VENDOR_ITEM_REGULAR),
 	list("Bio Hood", 12, /obj/item/clothing/head/bio_hood/synth, null, VENDOR_ITEM_REGULAR),
@@ -243,8 +253,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Windbreaker, Green", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_green, null, VENDOR_ITEM_REGULAR),
 	list("Windbreaker, First Responder", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr, null, VENDOR_ITEM_REGULAR),
 	list("Windbreaker, Exploration", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, null, VENDOR_ITEM_REGULAR),
-	list("Labcoat", 12, /obj/item/clothing/suit/storage/labcoat, null, VENDOR_ITEM_REGULAR),
-	list("Labcoat, Researcher", 12, /obj/item/clothing/suit/storage/labcoat/researcher, null, VENDOR_ITEM_REGULAR),
+	list("Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat, null, VENDOR_ITEM_REGULAR),
+	list("Lab Coat, Researcher", 12, /obj/item/clothing/suit/storage/labcoat/researcher, null, VENDOR_ITEM_REGULAR),
+	list("Lab Coat, Pharmaceutical Physician", 12, /obj/item/clothing/suit/storage/labcoat/pharmacist, null, VENDOR_ITEM_REGULAR),
+	list("High-Cut Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat/short, null, VENDOR_ITEM_REGULAR),
+	list("Low-Cut Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat/long, null, VENDOR_ITEM_REGULAR),
+	list("Medical's Apron", 12, /obj/item/clothing/suit/chef/classic/medical, null, VENDOR_ITEM_REGULAR),
 	list("Quartermaster Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/RO, null, VENDOR_ITEM_REGULAR),
 	list("Bio Suit", 12, /obj/item/clothing/suit/storage/synthbio, null, VENDOR_ITEM_REGULAR),
 	list("Black Suit Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, null, VENDOR_ITEM_REGULAR),

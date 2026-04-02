@@ -66,7 +66,11 @@
 		set_range()
 	update_icon()
 	update_minimap_icon()
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
+
+// We've changed position and have to recalculate our bounds.
+/obj/structure/machinery/defenses/sentry/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	unset_range()
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	SSminimaps.remove_marker(src)
@@ -86,7 +90,7 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return FALSE
 
@@ -424,21 +428,23 @@
 			continue
 
 		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
+		for(var/turf/turf in path)
+			if(turf.density || turf.opacity)
 				blocked = TRUE
 				break
 
-			for(var/obj/structure/S in T)
+			for(var/obj/structure/S in turf)
 				if(S.opacity)
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/V in T)
+			for(var/obj/vehicle/multitile/V in turf)
 				blocked = TRUE
 				break
 
-			for(var/obj/effect/particle_effect/smoke/S in T)
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 
@@ -658,6 +664,11 @@
 		if(TURRET_BATTERY_STATE_DEAD)
 			. += SPAN_INFO("It appears to be offline.")
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/handle_vehicle_bump(obj/vehicle/multitile/bumping_vehicle)
+	var/mob/driver = bumping_vehicle.seats[VEHICLE_DRIVER]
+	to_chat(driver, SPAN_WARNING("[src] is in the way!"))
+	return FALSE // Prevent movement over
+
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
 	battery_state = state
 	switch(state)
@@ -791,7 +802,7 @@
 
 /obj/structure/machinery/defenses/sentry/launchable
 	name = "\improper UA 571-O sentry post"
-	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 100-round drum magazine with 500 rounds stored internally.  Due to the deployment method it is incapable of being moved."
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 100-round drum magazine with 500 rounds stored internally. Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
@@ -859,7 +870,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

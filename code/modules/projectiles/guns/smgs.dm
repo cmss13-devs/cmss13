@@ -25,6 +25,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/magnetic_harness,
 	)
 
@@ -71,6 +72,7 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/bayonet,
@@ -127,6 +129,12 @@
 /obj/item/weapon/gun/smg/m39/training
 	current_mag = /obj/item/ammo_magazine/smg/m39/rubber
 
+/obj/item/weapon/gun/smg/m39/army
+	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/reflex, /obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight)
+
+/obj/item/weapon/gun/smg/m39/army/heap
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/smg/m39/elite
@@ -151,6 +159,7 @@
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight/grip,
 	)
 	random_spawn_muzzle = list(
@@ -245,6 +254,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
@@ -310,6 +320,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/verticalgrip,
@@ -390,6 +401,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
@@ -482,7 +494,7 @@
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
-			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -539,6 +551,7 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
@@ -695,6 +708,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
@@ -741,7 +755,7 @@
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
 			jammed = FALSE
-			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -824,6 +838,7 @@
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 /obj/item/weapon/gun/smg/fp9000/pmc/Initialize()

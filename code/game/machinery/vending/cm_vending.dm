@@ -18,6 +18,7 @@
 	wrenchable = FALSE
 	var/hackable = FALSE
 	var/hacked = FALSE
+	var/untippable = FALSE
 
 	var/vendor_theme = VENDOR_THEME_COMPANY //sets vendor theme in NanoUI
 
@@ -82,9 +83,9 @@ IN_USE used for vending/denying
 
 	if(stat & NOPOWER || stat & TIPPED_OVER) //tipping off without breaking uses "_off" sprite
 		overlays += image(icon, "[icon_state]_off")
-	if(stat & MAINT) //if we require maintenance, then it is completely "_broken"
+	if(stat & BROKEN) //if we require maintenance, then it is completely "_broken"
 		overlays += image(icon, "[initial(icon_state)]_broken")
-		if(stat & IN_REPAIR) //if someone started repairs, they unscrewed "_panel"
+		if(!(stat & MAINT)) //if someone started repairs, they unscrewed "_panel"
 			overlays += image(icon, "[icon_state]_panel")
 
 	if(stat & TIPPED_OVER) //finally, if it is tipped over, flip the sprite
@@ -336,16 +337,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 	update_icon()
 
 /obj/structure/machinery/cm_vending/proc/tip_over() //tipping over, flipping back is enough, unless vendor was broken before being tipped over
-	stat |= TIPPED_OVER
-	density = FALSE
+	if(!untippable)
+		stat |= TIPPED_OVER
+		density = FALSE
 	if(!(stat & MAINT))
 		stat |= BROKEN
 		stat &= ~WORKING
 	update_icon()
 
 /obj/structure/machinery/cm_vending/proc/flip_back()
-	density = TRUE
-	stat &= ~TIPPED_OVER
+	if(!untippable)
+		density = TRUE
+		stat &= ~TIPPED_OVER
 	if(!(stat & MAINT)) //we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
 		stat &= ~BROKEN
 		stat |= WORKING
@@ -357,25 +360,26 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
-
-	if(stat & MAINT)
-		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
+	if(stat & TIPPED_OVER)
+		return "[nominative] needs to be uprighted."
+	else if(stat & MAINT)
+		return "[possessive] broken panel still needs to be [SPAN_BOLD("unscrewed")] and removed."
 	else if(stat & REPAIR_STEP_ONE)
-		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
+		return "[possessive] broken wires still need to be [SPAN_BOLD("cut")] and removed from the vendor."
 	else if(stat & REPAIR_STEP_TWO)
-		return "[nominative] needs to have <b>new wiring</b> installed."
+		return "[nominative] needs to have [SPAN_BOLD("new wiring")] installed."
 	else if(stat & REPAIR_STEP_THREE)
-		return "[nominative] needs to have a <b>metal</b> panel installed."
+		return "[nominative] needs to have a [SPAN_BOLD("metal")] panel installed."
 	else if(stat & REPAIR_STEP_FOUR)
-		return "[possessive] new panel needs to be <b>fastened</b> to it."
+		return "[possessive] new panel needs to be [SPAN_BOLD("fastened")] to it."
 	else
 		return "[nominative] is being affected by some power-related issue."
 
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/user)
-	if(stat & TIPPED_OVER || unslashable)
-		to_chat(user, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+	if(stat & TIPPED_OVER || unslashable || (untippable && (stat & BROKEN)))
+		to_chat(user, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
 	if(user.a_intent == INTENT_HARM && !unslashable)
@@ -403,6 +407,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 			spark_system.set_up(5, 5, get_turf(src))
 			hacked = TRUE
 		return XENO_ATTACK_ACTION
+	if(untippable)
+		to_chat(user, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
+		return XENO_NO_DELAY_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
@@ -419,6 +426,22 @@ GLOBAL_LIST_EMPTY(vending_products)
 		SPAN_DANGER("You knock [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		tip_over()
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/machinery/cm_vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(stat & TIPPED_OVER || unslashable || (untippable && (stat & BROKEN)))
+		return TAILSTAB_COOLDOWN_NONE
+	if(prob(xeno.melee_damage_upper))
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail beyond recognition!"),
+		SPAN_DANGER("You enter a frenzy and smash [src] with your tail apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		malfunction()
+		tip_over()
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src] with its tail!"),
+		SPAN_DANGER("You slash [src] with your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)
 	if(stat & TIPPED_OVER)
@@ -696,7 +719,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
 			return TRUE
@@ -719,7 +742,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
 			return TRUE
@@ -738,7 +761,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
 				return FALSE
 			if(!M || !M.use(1))
-				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
+				to_chat(user, SPAN_WARNING("You need a sheet of metal to construct a new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
 			stat &= ~REPAIR_STEP_THREE
@@ -793,7 +816,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/card/id/idcard = human_user.get_idcard()
 		if(!idcard)
 			if(display)
-				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
+				to_chat(user, SPAN_WARNING("Access denied. No ID card detected."))
 				vend_fail()
 			return FALSE
 
@@ -851,7 +874,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_AUTOEQUIP
+	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_UNIFORM_AUTOEQUIP
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	. = ..(user)
@@ -868,7 +891,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK | VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
@@ -1424,9 +1447,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				var/rankpath = get_rank_pins(card.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-					var/obj/item/clothing/accessory/patch/uscmpatch = new()
+					var/obj/item/clothing/accessory/patch/uscmpatch/uscmpatch = new()
 					underclothes.attach_accessory(user, rank_insignia)
 					underclothes.attach_accessory(user, uscmpatch)
+
+
+	if(vend_flags & VEND_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+			if(Adjacent(user) && !(istype(new_item, /obj/item/clothing/accessory) && (vend_flags & VEND_UNIFORM_AUTOEQUIP))) //istype accessory check is required as its going to duplicate with autoequip otherwise, also means it cant be put in hand if the slot is full, but at this point some sacrifices have gotta be done - nihi
+				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip
@@ -1438,11 +1467,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 						clothing.attach_accessory(user, new_item)
 			else
 				user.equip_to_appropriate_slot(new_item)
-
-	if(vend_flags & VEND_TO_HAND)
-		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-			if(Adjacent(user))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+				new_item.update_icon()
 
 	new_item.post_vendor_spawn_hook(user)
 

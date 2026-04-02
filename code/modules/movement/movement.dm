@@ -72,8 +72,13 @@
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)
+	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
+		. = FALSE
 	if (.)
 		Moved(oldloc, direct)
+
+	handle_rotation()
+	
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
@@ -107,6 +112,10 @@
 		. = doMove(destination)
 	else
 		CRASH("No valid destination passed into forceMove")
+
+	// Bring the buckled_mob with us. No Move(), on_move callbacks, or any of this bullshit, we just got teleported
+	if(buckled_mob && loc == destination)
+		buckled_mob.forceMove(destination)
 
 
 /atom/movable/proc/moveToNullspace()

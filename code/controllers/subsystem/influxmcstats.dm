@@ -42,6 +42,6 @@ SUBSYSTEM_DEF(influxmcstats)
 			subsystem_name_cache[SS.type] = "SS[get_last_path_element.group[1]]"
 		var/SSname = subsystem_name_cache[SS.type]
 		if(!SSname)
-			stack_trace("Influx MC Stats couldnt name a subsystem, type=[SS.type]")
+			stack_trace("Influx MC Stats couldn't name a subsystem, type=[SS.type]")
 			continue
 		SSinfluxdriver.enqueue_stats("sstimings", list("ss" = SSname), list("cost" = SS.cost, "tick_overrun" = SS.tick_overrun, "tick_usage" = SS.tick_usage, "wait" = SS.wait))

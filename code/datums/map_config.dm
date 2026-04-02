@@ -17,6 +17,14 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	// Crash site configs for shipmaps
+	/// Shipmap: The name of the template to load in the event of a FTL ground crash
+	var/ground_crash_template_name = null // "USS_Almayer_crash.dmm"
+	/// Shipmap: A list of x positions can be the start of a crack in the event of a FTL crash
+	var/list/crack_open_horizontal_positions = null // list(174)
+	/// Shipmap: A list of bounds in the form of minx, maxx, miny, maxy of space that will convert to open space in the event of a FTL crash
+	var/list/open_space_bounds = null // list(22, 311, -13, 113)
+
 	var/webmap_url
 	var/short_name
 
@@ -33,6 +41,7 @@
 	var/announce_text = ""
 	var/infection_announce_text = ""
 	var/liaison_briefing = ""
+	var/list/co_briefing_files = list()
 
 	var/squads_max_num = 4
 
@@ -191,6 +200,14 @@
 
 	map_file = json["map_file"]
 
+	ground_crash_template_name = json["ground_crash_template_name"]
+	if(islist(json["crack_open_horizontal_positions"]))
+		crack_open_horizontal_positions = json["crack_open_horizontal_positions"]
+	if(islist(json["open_space_bounds"]))
+		open_space_bounds = json["open_space_bounds"]
+		if(length(open_space_bounds) != 4 || open_space_bounds[OPEN_SPACE_BOUNDS_MINX] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] || open_space_bounds[OPEN_SPACE_BOUNDS_MINY] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXY])
+			log_world("map_config open_space_bounds is invalid!")
+
 	var/dirpath = "maps/"
 	if(override_map)
 		dirpath = "data/"
@@ -345,7 +362,7 @@
 	traits = json["traits"]
 	if(islist(traits))
 		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
+			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP] && !ztraits[ZTRAIT_BACKGROUND_MAP])
 				ztraits[ZTRAIT_GROUND] = TRUE
 	else if(traits)
 		log_world("map_config traits is not a list!")
@@ -393,6 +410,9 @@
 
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
+
+	if(islist(json["co_briefing"]))
+		co_briefing_files = json["co_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

@@ -167,7 +167,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/filtration_cave_cas)
 "lO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
 "nk" = (
@@ -353,7 +353,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "xY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
 "yR" = (
@@ -381,7 +381,7 @@
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "Ai" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "Aw" = (
@@ -448,7 +448,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/filtration_plant)
 "EP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "Fe" = (
@@ -512,7 +512,7 @@
 /area/bigredv2/outside/filtration_plant)
 "Jo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/filtration_plant)
 "Jp" = (

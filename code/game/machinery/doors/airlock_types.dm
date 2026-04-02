@@ -272,6 +272,9 @@
 	req_one_access = list(ACCESS_YAUTJA_ANCIENT)
 	unslashable = TRUE
 
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane
+	plane = TURF_PLANE
+
 //FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
 
 /obj/structure/machinery/door/airlock/prison_hatch
@@ -400,6 +403,16 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced
 	name = "\improper Reinforced Secure Airlock"
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced
+	name = "\improper Evacuation Airlock"
+	icon = 'icons/obj/structures/doors/escapepoddoor_black.dmi'
+	masterkey_resist = TRUE
+	req_access = null
+	opacity = FALSE
+	glass = TRUE
+	open_layer = ABOVE_MOB_LAYER
+	closed_layer = ABOVE_MOB_LAYER
 
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony
 	req_access = null
@@ -894,7 +907,7 @@
 	if(!locked)
 		return ..()
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open."))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
 		open(1)

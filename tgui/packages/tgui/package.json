@@ -5,10 +5,10 @@
   "dependencies": {
     "common": "workspace:*",
     "dateformat": "^5.0.3",
-    "dompurify": "^3.2.5",
+    "dompurify": "^3.3.1",
     "highlight.js": "^11.11.1",
-    "js-yaml": "^4.1.0",
-    "marked": "^15.0.11",
+    "js-yaml": "^4.1.1",
+    "marked": "^15.0.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-popper": "^2.3.0",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@popperjs/core": "^2.11.8",
     "@types/marked": "4.3.2",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1"
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7"
   }
 }

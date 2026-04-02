@@ -47,7 +47,6 @@
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/dirlock_slowdown = TRUE // are they slowed down by dirlocking
 	var/monkeyizing = null //Carbon
 	var/hand = null
 
@@ -64,7 +63,7 @@
 	var/paralyzed = 0 //Carbon
 	var/druggy = 0 //Carbon
 	var/confused = 0 //Carbon
-	var/drowsyness = 0.0//Carbon
+	var/drowsiness = 0.0//Carbon
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
@@ -334,7 +333,7 @@
 			return
 
 		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
-			to_chat(usr, "This can only be used on people with +MOD permissions")
+			to_chat(usr, "This can only be used on people with +MOD permissions.")
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")

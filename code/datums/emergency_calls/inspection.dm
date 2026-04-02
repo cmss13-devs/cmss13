@@ -93,6 +93,7 @@
 	name = "Inspection - Corporate"
 	mob_max = 2
 	mob_min = 1
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
@@ -128,7 +129,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
 		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
 	else
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_security, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are part of a Weyland-Yutani PMC Investigation Team!"))
 		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
 		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
@@ -168,7 +169,7 @@
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/wy/exec_supervisor/lawyer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Lead Corporate Attorney!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the USCM abides by it's signed contracts provided by the local Liaison and that they have not forgotten the real hand that feeds them."))
+		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the USCM abides by its signed contracts provided by the local Liaison and that they have not forgotten the real hand that feeds them."))
 		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are to act as legal counsel in any way. Your basic duty is to make a detailed report of anything involving the Liaison, any other WY personnel and of course any contract violations on board the ship."))
 		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
 	else
@@ -180,7 +181,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
-// Colonial Marshals - UA Law Enforcement / Investigative Federal Agents which usually watch over Colonies. Also a good option for prisoner transfers, investigating corporate corruption, survivor rescues, or illict trade practices(black market).
+// Colonial Marshals - UA Law Enforcement / Investigative Federal Agents which usually watch over Colonies. Also a good option for prisoner transfers, investigating corporate corruption, survivor rescues, or illicit trade practices(black market).
 /datum/emergency_call/inspection_cmb
 	name = "Inspection - Colonial Marshals Investigation Team"
 	mob_max = 4
@@ -201,7 +202,7 @@
 /datum/emergency_call/inspection_cmb/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
-	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
+	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your jurisdiction."
 
 	will_spawn_icc_liaison = prob(90)
 	will_spawn_cmb_observer = prob(10)
@@ -222,7 +223,7 @@
 	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/synth/cmb, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
@@ -261,7 +262,7 @@
 		to_chat(M, SPAN_BOLD("You are an Interstellar Commerce Liaison, originally from [pick(70;"The United Americas", 25;"Sol", 5;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You are [pick(30; "skeptical", 40;"ambicable", 30;"supportive")] of Weyland-Yutani."))
 		to_chat(M, SPAN_BOLD("Your headset is equipped with several frequencies, including a gifted key from The ICC's parent company, Weyland-Yutani, to try to incentivize your support. Use it for communication."))
-		to_chat(M, SPAN_BOLD("As the ICC Agent attached to the CMB Office at Anchorpoint Station, your job is to observe and ensure fair trade practices. Inspect and document cargo shipments for suspected illict activity as needed. You should coordinate with the Marshals, and command(preferably for a warrant) in order to make arrests if necessary."))
+		to_chat(M, SPAN_BOLD("As the ICC Agent attached to the CMB Office at Anchorpoint Station, your job is to observe and ensure fair trade practices. Inspect and document cargo shipments for suspected illicit activity as needed. You should coordinate with the Marshals, and command(preferably for a warrant) in order to make arrests if necessary."))
 		to_chat(M, SPAN_BOLD("Serving alongside such reputable men has made you a more virtuous person, especially compared to the Corporate Liaisons of other heavy-weight organizations."))
 		to_chat(M, SPAN_BOLD("Work with the Colonial Marshals in their investigations and report to command if you suspect smuggling or illicit trade is happening."))
 	else if(M == cmb_observer)
@@ -277,7 +278,7 @@
 		to_chat(M, SPAN_BOLD("Following the lead of your Marshal, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
 		to_chat(M, SPAN_BOLD("You have interstellar jurisdiction as a CMB Official to enforce Colonial and Earth law, but you cannot and should not override Marine Law on a Marine Ship."))
 		to_chat(M, SPAN_BOLD("You have been stationed at Anchorpoint Station for [pick(80;"several months", 10;"only a week", 10;"years")] investigating henious crimes among the frontier."))
-		to_chat(M, SPAN_BOLD("The laws of arth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
+		to_chat(M, SPAN_BOLD("The Earth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 

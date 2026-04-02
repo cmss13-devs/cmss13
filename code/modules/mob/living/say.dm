@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":f" = SQUAD_MARINE_CRYO, ".f" = SQUAD_MARINE_CRYO, "#f" = RADIO_CHANNEL_PMC_MED,
 	":g" = RADIO_CHANNEL_ALMAYER, ".g" = RADIO_CHANNEL_ALMAYER, "#g" = RADIO_CHANNEL_CLF_GEN,
 	":j" = RADIO_CHANNEL_JTAC, ".j" = RADIO_CHANNEL_JTAC, "#j" = RADIO_CHANNEL_UPP_CCT,
-	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":k" = SQUAD_SOF, ".k" = RADIO_CHANNEL_YAUTJA_SPECOPS, "#k" = RADIO_CHANNEL_WY_WO,
 	"#l" = RADIO_CHANNEL_PROVOST, //l . and : reserved for Left hand
 	":m" = RADIO_CHANNEL_MEDSCI, ".m" = RADIO_CHANNEL_MEDSCI, "#m" = RADIO_CHANNEL_UPP_MED,
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,
@@ -21,15 +21,17 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":p" = RADIO_CHANNEL_MP , ".p" = RADIO_CHANNEL_MP , "#p" = RADIO_CHANNEL_PMC_GEN,
 	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
 	"#r" = RADIO_CHANNEL_YAUTJA, //r .r and :r reserved for Right hand
-	":s" = RADIO_CHANNEL_CIA, ".s" = RADIO_CHANNEL_CIA, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
+	":s" = SQUAD_ARMY, ".s" = SQUAD_ARMY, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
 	":t" = RADIO_CHANNEL_INTEL, ".t" = RADIO_CHANNEL_INTEL, "#t" = RADIO_CHANNEL_UPP_KDO,
 	":u" = RADIO_CHANNEL_REQ, ".u" = RADIO_CHANNEL_REQ, "#u" = RADIO_CHANNEL_UPP_GEN,
 	":v" = RADIO_CHANNEL_COMMAND , ".v" = RADIO_CHANNEL_COMMAND , "#v" = RADIO_CHANNEL_UPP_CMD,
 	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
-	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY,
+	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY_SEC,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	":2" = RADIO_CHANNEL_CIA, ".2" = RADIO_CHANNEL_CIA, "#2" = RADIO_CHANNEL_CIA,
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)
@@ -56,7 +58,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
 			)
 		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
-		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		log_admin("[user?.ckey] triggered the chat filter with the following message: [message].")
 		return FALSE
 
 	return TRUE
@@ -101,8 +103,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
-		if(!dst && src.clone) //Will speak in src's location and the clone's
-			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
+		if(!dst && clone) //Will speak in src's location and the clone's
+			T = locate(loc.x + clone.proj_x, loc.y + clone.proj_y, loc.z + clone.proj_z)
 		else
 			T = get_turf(src)
 			dst++ //Only speak once
@@ -171,7 +173,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

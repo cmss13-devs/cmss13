@@ -23,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -141,8 +141,6 @@
 	var/blood_color = ""
 	/// taken from blood.dm
 	appearance_flags = KEEP_TOGETHER
-	/// lets us know if the item is an objective or not
-	var/is_objective = FALSE
 
 	/// Allows for bigger than 32x32 sprites.
 	var/worn_x_dimension = 32
@@ -207,9 +205,9 @@
 
 	return ..()
 
-/obj/item/ex_act(severity, explosion_direction)
+/obj/item/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
+	explosion_throw(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
@@ -364,7 +362,7 @@
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
@@ -855,10 +853,6 @@
 	if(src in usr)
 		attack_self(usr)
 
-
-/obj/item/proc/IsShield()
-	return FALSE
-
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
 	while(L && !istype(L, /turf/))
@@ -884,6 +878,7 @@
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
 		return
+	QDEL_NULL(user.observed_atom)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
 	for(var/obj/item/I in user.contents)
@@ -893,11 +888,11 @@
 
 	if(user.eye_blind)
 		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
-	else if(user.stat || !ishuman(user))
+	else if(user.stat || !ishuman(user) || (user.dizziness > 100))
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint())
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)
@@ -907,9 +902,10 @@
 /obj/item/proc/unzoom(mob/living/user)
 	if(user.interactee == src)
 		user.unset_interaction()
-	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
-	SPAN_NOTICE("You look up from [zoom_device]."))
+	if(zoom) // don't give us the message if we aren't even zoomed in
+		var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+		INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
+		SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
@@ -917,20 +913,25 @@
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
+		UnregisterSignal(user.client, COMSIG_CLIENT_ANIMATING)
 		user.client.change_view(GLOB.world_view_size, src)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 
 /obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
 		unzoom(mover)
+
+/obj/item/proc/zoom_handle_client_animate(client/source)
+	SIGNAL_HANDLER
+	if(source)
+		unzoom(source?.mob) // clients love to vanish and cause null reference exceptions :)
 
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -950,28 +951,27 @@
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
+		RegisterSignal(user.client, COMSIG_CLIENT_ANIMATING, PROC_REF(zoom_handle_client_animate))
 
 		zoom_initial_mob_dir = user.dir
 
-		var/tilesize = 32
-		var/viewoffset = tilesize * tileoffset
+		var/viewoffset = world.icon_size * tileoffset
 
 		switch(user.dir)
 			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(-viewoffset)
 			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(viewoffset)
+				user.client.set_pixel_y(0)
 			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(-viewoffset)
+				user.client.set_pixel_y(0)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"

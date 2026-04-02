@@ -45,7 +45,7 @@
 
 /obj/item/explosive/plastic/attack_hand(mob/user)
 	if(active)
-		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
+		to_chat(user, SPAN_WARNING("You can't just pick up [src] while it is active! Use a multitool!"))
 		return
 	. = ..()
 
@@ -101,7 +101,7 @@
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()
-		target.contents += src
+		forceMove(target)
 		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
 		overlay.layer = ABOVE_XENO_LAYER
 		target.overlays += overlay

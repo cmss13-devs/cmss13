@@ -127,12 +127,27 @@
 /datum/species/human/hero/thrall
 	name = "Thrall"
 	name_plural = "Thralls"
+	pain_type = /datum/pain/yautja
+	stamina_type = /datum/stamina/none
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|NO_SHRAPNEL
+	mob_inherent_traits = list(
+		TRAIT_DEXTROUS,
+		TRAIT_IRON_TEETH,
+		TRAIT_SUPER_STRONG,
+	)
 	weed_slowdown_mult = 0
 	acid_blood_dodge_chance = 70
+	total_health = 150
+
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/butcher,
+		/mob/living/carbon/human/proc/mark_for_hunt,
+		/mob/living/carbon/human/proc/remove_from_hunt,
+	)
 
 /datum/species/human/hero/thrall/handle_post_spawn(mob/living/carbon/human/thrall)
-	thrall.universal_understand = FALSE
-	return ..()
+	thrall.universal_understand = TRUE
+	thrall.status_flags |= NO_PERMANENT_DAMAGE
 
 /datum/species/human/hero/thrall/handle_death(mob/living/carbon/human/thrall)
 	GLOB.yautja_mob_list -= thrall

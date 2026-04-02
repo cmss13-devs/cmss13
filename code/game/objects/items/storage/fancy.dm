@@ -1,6 +1,6 @@
 /*
  * The 'fancy' path is for objects like donut boxes that show how many items are in the storage item on the sprite itself
- * .. Sorry for the shitty path name, I couldnt think of a better one.
+ * .. Sorry for the shitty path name, I couldn't think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
  * TODO: Cigarette boxes should be ported to this standard
@@ -534,7 +534,26 @@
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
 	is_random = TRUE
+	is_objective = TRUE
 
+/obj/item/storage/fancy/vials/random/handle_item_insertion(obj/item/storage/S)
+	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
+
+/obj/item/storage/fancy/vials/random/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	is_objective = FALSE
+	if(!length(contents))
+		return
+	else
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
@@ -596,7 +615,7 @@
 
 /obj/item/storage/fancy/trading_card/Initialize()
 	if(!collection_color)
-		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initialize this'll have to run prior to that
 
 	. = ..()
 

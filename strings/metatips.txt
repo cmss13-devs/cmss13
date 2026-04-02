@@ -21,3 +21,4 @@ Control of intelligence is important: be it for retrieving it as marine, or deny
 If the lobby music is too loud or bothering you, you can disable it in Preferences tab at top right.
 Maps can and will be unpredictably modified by the Nightmare system - stay frosty while roaming around!
 You can go to GitHub to view code of the game and propose modifications of your own.
+Resisting can interrupt many different wind-up actions such as de-oving.

@@ -15,7 +15,7 @@
 	var/right_click = LAZYACCESS(modifiers, RIGHT_CLICK)
 	var/alt_click = LAZYACCESS(modifiers, ALT_CLICK)
 	var/ctrl_click = LAZYACCESS(modifiers, CTRL_CLICK)
-	if(istype(clicked_atom, /atom/movable/screen/radial)) //we're actively using radials in basic mode, so dont intercept any clicks that target those.
+	if(istype(clicked_atom, /atom/movable/screen/radial)) //we're actively using radials in basic mode, so don't intercept any clicks that target those.
 		return TRUE
 	if(istype(clicked_atom, /turf))
 		var/turf/clicked_turf = clicked_atom
@@ -33,9 +33,9 @@
 					upgrade_version = upgrade_reference[i]
 					break
 			if(upgrade_version)
-				clicked_turf.PlaceOnTop(upgrade_version)
+				clicked_turf.place_on_top(upgrade_version)
 			else
-				clicked_turf.PlaceOnTop(/turf/open/floor/plating)
+				clicked_turf.place_on_top(/turf/open/floor/plating)
 			log_admin("Build Mode: [key_name(admin_building)] built [upgrade_version] at [AREACOORD(clicked_turf)]")
 			return
 		else if(right_click && !alt_click && !ctrl_click)
@@ -65,7 +65,7 @@
 						if(istype(clicked_atom, i))
 							downgrade_version = downgrade_reference[i]
 					if(downgrade_version)
-						clicked_turf.PlaceOnTop(downgrade_version)
+						clicked_turf.place_on_top(downgrade_version)
 					else
 						clicked_turf.ScrapeAway()
 					log_admin("Build Mode: [key_name(admin_building)] downgraded [clicked_turf] at [AREACOORD(clicked_turf)]")

@@ -127,7 +127,7 @@
 /mob/ss13lib_holder_mob/Login()
 	SS13LIB_INFO_LOG("[ckey] logging into holder mob.")
 
-	var/static/basehtml = {"
+	var/static/basehtml = @{"
 <!DOCTYPE html>
 <html>
 

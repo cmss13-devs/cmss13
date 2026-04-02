@@ -30,8 +30,8 @@
 /// Mandatory field
 #define SS13LIB_PLAYER_COUNT // length(GLOB.clients)
 
-/// The display name of this server on the SS13Hub. Not exceeding 64 characters, otherwise
-/// the server will not be listed on the hub
+/// The display name of this server on the SS13Hub. Not exceeding 128
+/// characters, otherwise it may be truncated
 /// Mandatory field
 #define SS13LIB_SERVER_DISPLAY_NAME // CONFIG_GET(string/servername)
 
@@ -109,5 +109,7 @@
 	var/key
 	/// The SS13Hub username, always present.
 	var/username
+	/// Account creation timestamp (ISO 8601).
+	var/created_at
 	/// Anonymized hardware ID for this client, null if not provided.
 	var/hwid

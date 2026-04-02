@@ -112,6 +112,7 @@
 	auth.ckey = decoded["ckey"]
 	auth.key = decoded["key"]
 	auth.username = decoded["username"]
+	auth.created_at = decoded["created_at"]
 	auth.hwid = decoded["hwid"]
 
 	return auth
@@ -131,18 +132,17 @@
 	<script>
 		const port = %LAUNCHER_PORT%;
 		const key = %LAUNCHER_KEY%;
-
 		const mob_reference = %MOB_REFERENCE%;
 
 		window.contact = (endpoint, params) => {
 			const url = params ? `http://localhost:${port}/${endpoint}?${params}` : `http://localhost:${port}/${endpoint}`;
 			return fetch(url, {
-				'Launcher-Key': key,
+				headers: { 'Launcher-Key': key },
 			}).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
 					return response.json().then((object) => {
-						location.href = `byond://?src=%OBJ_REFERENCE%&command=${endpoint}&body=${encodeURIComponent(JSON.stringify(object))}`
+						location.href = `byond://?src=${mob_reference}&command=${endpoint}&body=${encodeURIComponent(JSON.stringify(object))}`
 						return object;
 					});
 				}
@@ -153,7 +153,7 @@
 
 <body>
 	<script>
-		window.contact("auth");
+		window.contact("auth-ticket");
 	</script>
 </body>
 
@@ -174,7 +174,7 @@
 	var/command = href_list["command"]
 	var/body = href_list["body"]
 
-	if(command != "auth" || !body)
+	if(command != "auth-ticket" || !body)
 		return
 
 	var/returned

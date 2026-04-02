@@ -36,6 +36,10 @@
 		"server_tags" = SS13LIB_SERVER_TAGS,
 #endif
 
+#ifdef SS13LIB_CLIENT_VERSION
+		"client_version" = "[SS13LIB_CLIENT_VERSION].[SS13LIB_CLIENT_BUILD]",
+#endif
+
 		"round" = list(
 #ifdef SS13LIB_ROUND_MAP_NAME
 			"map_name" = SS13LIB_ROUND_MAP_NAME,

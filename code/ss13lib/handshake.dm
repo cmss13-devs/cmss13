@@ -1,6 +1,8 @@
 /datum/ss13lib
 	/// The ID for this server. This must be sent in all authentication requests
 	var/server_id
+	/// Whether the library has completed initialisation
+	var/ready = FALSE
 
 #define SS13LIB_MAX_HANDSHAKE_ATTEMPTS 3
 

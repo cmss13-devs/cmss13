@@ -6,7 +6,11 @@
 
 	var/static/datum/ss13lib/lib
 	if(!lib)
-		lib = new
+		lib = new /datum/ss13lib
+		lib.start()
+
+	while(!lib.ready)
+		sleep(world.tick_lag)
 
 	return lib
 
@@ -18,9 +22,10 @@
 	var/static/_ = SS13LIB
 #endif
 
-/datum/ss13lib/New()
+/datum/ss13lib/proc/start()
 	if(!perform_handshake())
-		return FALSE // unrecoverable error for SS13Lib, cannot communicate with SS13Hub
+		return FALSE
+	ready = TRUE
 
 #ifndef SS13LIB_HEARTBEAT_HANDLER
 /// Only perform any work here if we're set up to do so.

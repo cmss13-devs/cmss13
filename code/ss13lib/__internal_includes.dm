@@ -1,5 +1,5 @@
 #ifndef SS13LIB_HUB_SERVER
-#define SS13LIB_HUB_SERVER "https://hub.spacestation13.com"
+#define SS13LIB_HUB_SERVER "https://hub.spacestation13.com/api/server"
 #endif
 
 #ifndef SS13LIB_SERVER_PORT

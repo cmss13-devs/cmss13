@@ -64,10 +64,10 @@
 	var/datum/ss13lib_http_response/response = perform_http_request(
 		SS13LIB_HTTP_POST,
 		"[SS13LIB_HUB_SERVER]/authenticate",
-		json_encode(list(
+		list(
 			"auth_ticket" = auth_ticket,
 			"server_id" = src.server_id
-		))
+		)
 	)
 
 	if(!response || response.errored)

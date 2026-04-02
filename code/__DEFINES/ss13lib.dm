@@ -54,6 +54,14 @@
 /// Mandatory field
 #define SS13LIB_SERVER_LANGUAGE // en
 
+/// What BYOND client version players should use to connect.
+/// Optional field - if not defined, the launcher will use its default
+#define SS13LIB_CLIENT_VERSION // world.byond_version
+
+/// What BYOND client build players should use to connect.
+/// Optional field - paired with SS13LIB_CLIENT_VERSION
+#define SS13LIB_CLIENT_BUILD // world.byond_build
+
 //! All fields prefixed with _ROUND_ are optional, many of these are not applicable to some kinds of SS13 servers
 
 /// What map is currently being played on

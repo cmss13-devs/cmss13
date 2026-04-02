@@ -14,7 +14,9 @@
 
 /// If a specified **key** is a Guest account
 /datum/ss13lib/proc/is_guest(key)
-	var/static/regex/guest_regex = regex(@"^Guest-\d+$")
+	var/static/regex/guest_regex
+	if(!guest_regex)
+		guest_regex = regex(@"^Guest-\d+$")
 
 	if(guest_regex.Find(key))
 		return TRUE

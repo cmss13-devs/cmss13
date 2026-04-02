@@ -10458,10 +10458,21 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aGO" = (
-/obj/structure/machinery/colony_floodlight,
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/item/tool/screwdriver{
+	pixel_y = 2;
+	pixel_x = 11
+	},
+/obj/item/device/multitool{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
 "aGP" = (
 /turf/open/floor/neutral,
 /area/desert_dam/interior/dam_interior/engine_room)
@@ -17883,11 +17894,20 @@
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
 "bel" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8;
-	layer = 2.02
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 11;
+	pixel_y = 11
 	},
-/turf/open/asphalt/cement/cement1,
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/clipboard{
+	pixel_x = 12;
+	pixel_y = -5
+	},
+/turf/open/desert/rock/deep/rock3,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bem" = (
 /obj/structure/machinery/light{
@@ -18579,6 +18599,8 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
 "bgj" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bgk" = (
@@ -19835,8 +19857,12 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/pred_ship)
 "bjR" = (
-/turf/open/asphalt/cement/cement12,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8;
+	layer = 2.02
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bjS" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1;
@@ -20709,7 +20735,7 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmv" = (
-/turf/open/asphalt/cement/cement2,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmw" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20734,7 +20760,7 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmz" = (
-/turf/open/asphalt/cement/cement4,
+/turf/open/asphalt/cement/cement12,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmA" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20815,10 +20841,7 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmM" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
+/turf/open/asphalt/cement/cement2,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/north,
@@ -20826,27 +20849,14 @@
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "bmO" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+"bmP" = (
+/obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"bmP" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/coffeecup/wy{
-	pixel_x = 10;
-	pixel_y = 11
-	},
-/obj/item/tool/screwdriver{
-	pixel_y = 2;
-	pixel_x = 11
-	},
-/obj/item/device/multitool{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/turf/open/desert/dirt/desert_transition_edge1/southwest,
-/area/desert_dam/exterior/valley/valley_medical)
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -21655,20 +21665,10 @@
 /turf/open_space,
 /area/desert_dam/interior/caves/temple)
 "bpb" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 11;
-	pixel_y = 11
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
 	},
-/obj/structure/prop/server_equipment/laptop{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/clipboard{
-	pixel_x = 12;
-	pixel_y = -5
-	},
-/turf/open/desert/rock/deep/rock3,
+/turf/open/asphalt/cement/cement1,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bpc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -168471,7 +168471,7 @@ mJF
 aYn
 qaR
 qaR
-bmP
+aGO
 aCT
 awU
 amU
@@ -172874,7 +172874,7 @@ ybV
 ybV
 ida
 kPy
-bpb
+bel
 qaR
 aeD
 aeD
@@ -173101,12 +173101,12 @@ mUT
 iCL
 ihw
 dqS
-bgj
-bgj
 bmv
+bmv
+bmM
 reX
-bgj
-bgj
+bmv
+bmv
 rhr
 aeD
 aeD
@@ -173334,14 +173334,14 @@ xmG
 mUT
 iCL
 oId
-bmM
-bgj
-bgj
+bmP
+bmv
+bmv
+bmO
 bmz
-bjR
+bmv
+bmv
 bgj
-bgj
-aGO
 fdY
 are
 oId
@@ -173568,14 +173568,14 @@ jtK
 mUT
 jmR
 cLO
-bmO
+bpb
 mpk
 ger
 mpk
 mpk
 ger
 mpk
-bel
+bjR
 cLO
 cLO
 cLO

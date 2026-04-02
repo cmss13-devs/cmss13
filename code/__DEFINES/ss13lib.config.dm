@@ -1,5 +1,8 @@
 #define SS13LIB_EXTERNAL_CONFIGURATION
 
+#define SS13LIB_EXTERNAL_INIT
+#define SS13LIB_EXTERNAL_HEARTBEAT
+
 #define SS13LIB_PLAYER_COUNT length(GLOB.clients) // length(GLOB.clients)
 #define SS13LIB_SERVER_DISPLAY_NAME CONFIG_GET(string/servername) // CONFIG_GET(string/servername)
 #define SS13LIB_NETWORK_IDENTIFIER "cm-ss13" // CONFIG_GET(string/network_identifier)

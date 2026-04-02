@@ -90,4 +90,14 @@
 /// authenticate themselves via SS13Hub
 #define SS13LIB_GUESTS_BANNED // CONFIG_GET(flag/guestban)
 
+/// If the codebase would like to handle initializing SS13Lib themselves
+/// instead of it being started automatically
+#define SS13LIB_EXTERNAL_INIT
+
+/// If the codebase would like to handle the regular heartbeat to the hub
+/// isntead of it being looped internally. This must fire at least every minute
+/// as servers are only considered active if they have had a successful heartbeat
+/// within the last two minutes. It is recommended to fire every 30 seconds.
+#define SS13LIB_EXTERNAL_HEARTBEAT
+
 #endif

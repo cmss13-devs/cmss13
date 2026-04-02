@@ -14,7 +14,7 @@
 
 	return lib
 
-#ifndef SS13LIB_INIT_HANDLER
+#ifndef SS13LIB_EXTERNAL_INIT
 /// If the codebase doesn't start us up, start us up ourselves.
 /// /static/ variables within procs are initialised early within global init order,
 /// so we can begin handshaking with the hub server as early as possible
@@ -27,7 +27,7 @@
 		return FALSE
 	ready = TRUE
 
-#ifndef SS13LIB_HEARTBEAT_HANDLER
+#ifndef SS13LIB_EXTERNAL_HEARTBEAT
 /// Only perform any work here if we're set up to do so.
 /// Servers can override the heartbeat loop if they use a custom
 /// MC setup and don't want us running our own loop.

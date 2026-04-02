@@ -124,6 +124,8 @@
 	src.stored_launcher_details = stored_launcher_details
 
 /mob/ss13lib_holder_mob/Login()
+	SS13LIB_INFO_LOG("[ckey] logging into holder mob.")
+
 	. = ..()
 
 	var/static/basehtml = {"

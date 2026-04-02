@@ -95,4 +95,19 @@
 /// within the last two minutes. It is recommended to fire every 30 seconds.
 #define SS13LIB_EXTERNAL_HEARTBEAT
 
+/// If this is defined, after authenticating, SS13Lib will save this field to the client
+/// which can be used for identification of the upstream username, hwid or account age.
+/// This shoulds be typed as /datum/ss13lib_auth_response
+#define SS13LIB_CLIENT_INFO(X) // X.hub_info
+
 #endif
+
+/datum/ss13lib_auth_response
+	/// The BYOND ckey if the user has a linked BYOND account, null otherwise.
+	var/ckey
+	/// The BYOND display key if the user has a linked BYOND account, null otherwise.
+	var/key
+	/// The SS13Hub username, always present.
+	var/username
+	/// Anonymized hardware ID for this client, null if not provided.
+	var/hwid

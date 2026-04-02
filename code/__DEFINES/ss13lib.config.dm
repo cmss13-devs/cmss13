@@ -18,3 +18,6 @@
 #define SS13LIB_INFO_LOG(X) log_debug("\[SS13LIB INFO\] [X]")
 #define SS13LIB_WARNING_LOG(X) log_debug("\[SS13LIB WARNING\] [X]")
 #define SS13LIB_ERROR_LOG(X) log_debug("\[SS13LIB ERROR\] [X]")
+
+/client/var/datum/ss13lib_auth_response/hub_info
+#define SS13LIB_CLIENT_INFO(X) X.hub_info

@@ -23,8 +23,10 @@
 #endif
 
 /datum/ss13lib/proc/start()
+	SS13LIB_INFO_LOG("SS13Lib v[SS13LIB_VERSION] starting.")
 	if(!perform_handshake())
 		return FALSE
+	SS13LIB_INFO_LOG("SS13Lib initialised successfully.")
 	ready = TRUE
 
 #ifndef SS13LIB_EXTERNAL_HEARTBEAT

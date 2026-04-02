@@ -56,17 +56,18 @@
 	// as a form body. This avoids having to write to the file system here, but means the
 	// consuming server must allow for both form body and JSON body input
 #elif DM_VERSION >= 516 && DM_BUILD >= 1664
+	SS13LIB_INFO_LOG("HTTP [method] [url] (world.Export)")
 	var/raw = world.Export(url, data, 0, null, method)
-
-
 
 	response = new
 
 	if(!raw)
+		SS13LIB_ERROR_LOG("HTTP [method] [url]: world.Export returned null")
 		response.errored = TRUE
 	else
 		response.status_code = text2num(copytext(raw["STATUS"], 1, 4))
 		response.body = file2text(raw["CONTENT"])
+		SS13LIB_INFO_LOG("HTTP [method] [url]: status [response.status_code]")
 
 		if(response.status_code == 0)
 			response.errored = TRUE

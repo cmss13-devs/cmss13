@@ -8,6 +8,8 @@
 	if(!query)
 		return FALSE
 
+	SS13LIB_INFO_LOG("Received topic query, preparing response.")
+
 	var/response = list(
 #ifndef SS13LIB_PLAYER_COUNT
 #error SS13LIB_PLAYER_COUNT must be defined if using external SS13Lib configuration!

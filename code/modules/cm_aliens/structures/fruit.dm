@@ -231,7 +231,7 @@
 		// and halve the healing over time
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_DNH, regeneration_ticks, 1, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit, but our adapted form prevents us from reaping the full benefits of this fruit..."))
-		recipient.balloon_alert(recipient, "we recover a little, and slowly regenerate our form...", text_color = "#17991B")
+		recipient.balloon_alert(recipient, "we recover a little, and slowly regenerate our form", text_color = "#17991B")
 	if(do_consume)
 		finish_consume(recipient)
 

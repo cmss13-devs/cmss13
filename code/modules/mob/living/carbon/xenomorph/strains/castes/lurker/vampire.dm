@@ -245,7 +245,7 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.armor_deflection_buff += 20
+	xeno.armor_deflection_buff += 20 //damage reduction for the duration of headbite's doafter
 	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively- rooting itself into place."),
 	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively, channeling our strength into defending our form."))
 
@@ -256,10 +256,7 @@
 	// To make sure that the headbite does nothing if the target is moved away.
 	if(!xeno.Adjacent(target_carbon))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
-<<<<<<< Updated upstream
-=======
 		xeno.armor_deflection_buff -= 20
->>>>>>> Stashed changes
 		return
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))

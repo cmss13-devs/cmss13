@@ -162,10 +162,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
 				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("you feel nervous as you manipulate your tools", "You feel insecure and unsure of yourself", "You feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
+				message += "[pick("you feel nervous as you manipulate your tools", "you feel insecure and unsure of yourself", "you feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a secure bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are mortified, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a secure bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))

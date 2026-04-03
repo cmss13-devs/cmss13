@@ -24,6 +24,8 @@
 	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
 	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
+	lurker.received_phero_caps["recovery"] = 1.5 //Prevents benefits from recovery pheromones entirely.
+	lurker.healer_DNH == TRUE //Prevents healing from healer-strain drones.
 
 	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
 	execute_hud.add_hud_to(lurker, lurker)
@@ -106,7 +108,7 @@
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			if(!xeno.on_fire)
 				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-				xeno.gain_health(45)
+				xeno.gain_health(60)
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -243,15 +245,21 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
+	xeno.armor_deflection_buff += 20
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively- rooting itself into place."),
+	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively, channeling our strength into defending our form."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
+		xeno.armor_deflection_buff -= 20
 		return
 
 	// To make sure that the headbite does nothing if the target is moved away.
 	if(!xeno.Adjacent(target_carbon))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
+<<<<<<< Updated upstream
+=======
+		xeno.armor_deflection_buff -= 20
+>>>>>>> Stashed changes
 		return
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))
@@ -268,4 +276,5 @@
 	xeno.emote("roar")
 	log_attack("[key_name(target_carbon)] was executed by [key_name(xeno)] with a headbite!")
 	apply_cooldown()
+	xeno.armor_deflection_buff -= 20
 	return ..()

@@ -113,6 +113,10 @@
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
+	if(target_xeno.healer_DNH == TRUE) //Prevents healing vampire strain Lurkers
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] has shirked our aid... Stupid loner!"))
+		return
+
 	//Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
 	if(target_xeno.mob_size == MOB_SIZE_SMALL)
 		amount = amount * 0.15

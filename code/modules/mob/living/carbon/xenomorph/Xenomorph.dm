@@ -213,6 +213,7 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+	var/healer_DNH = FALSE
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)

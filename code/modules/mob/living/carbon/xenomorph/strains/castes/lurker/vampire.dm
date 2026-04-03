@@ -247,7 +247,7 @@
 
 	xeno.armor_deflection_buff += 20 //damage reduction for the duration of headbite's doafter
 	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively- rooting itself into place."),
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively, channeling our strength into defending our form."))
+	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively, channeling our strength into defending our form. Then-"))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		xeno.armor_deflection_buff -= 20
@@ -273,5 +273,5 @@
 	xeno.emote("roar")
 	log_attack("[key_name(target_carbon)] was executed by [key_name(xeno)] with a headbite!")
 	apply_cooldown()
-	xeno.armor_deflection_buff -= 20
+	xeno.armor_deflection_buff -= 20 //final check to make sure the temporary deflection is gone
 	return ..()

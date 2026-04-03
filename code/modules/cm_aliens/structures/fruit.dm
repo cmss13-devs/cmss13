@@ -19,6 +19,7 @@
 	var/time_to_mature = 15 SECONDS
 	var/heal_amount = 75
 	var/regeneration_amount_total = 0
+	var/regeneration_amount_DNH = 0
 	var/regeneration_ticks = 1
 	var/mature_icon_state = "fruit_lesser"
 	var/consumed_icon_state = "fruit_spent"
@@ -207,6 +208,7 @@
 	time_to_mature = 30 SECONDS
 	heal_amount = 75
 	regeneration_amount_total = 100
+	regeneration_amount_DNH = 50
 	regeneration_ticks = 5
 	icon_state = "fruit_greater_immature"
 	mature_icon_state = "fruit_greater"
@@ -216,12 +218,20 @@
 /obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(!mature)
 		return
-	if(recipient && !QDELETED(recipient))
+	if(recipient && !QDELETED(recipient) && (!recipient.healer_DNH == TRUE))
 		recipient.gain_health(heal_amount)
 		//Every second, heal them for 20.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
 		recipient.balloon_alert(recipient, "we recover a bit and start regenerating rapidly", text_color = "#17991B")
+
+	//If target has disallowed xenomorph healing sources (in the case of vamp-lurker)
+	else if(recipient && !QDELETED(recipient) && (recipient.healer_DNH == TRUE))
+		recipient.gain_health(heal_amount / 2) // halve the initial healing chunk
+		// and halve the healing over time
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_DNH, regeneration_ticks, 1, show_baloon_alert = TRUE)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit, but our adapted form prevents us from reaping the full benefits of this fruit..."))
+		recipient.balloon_alert(recipient, "we recover a little, and slowly regenerate our form...", text_color = "#17991B")
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -239,6 +249,7 @@
 	time_to_mature = 45 SECONDS
 	heal_amount = 0
 	regeneration_amount_total = 75
+	regeneration_amount_DNH = 39 //no decimals...
 	regeneration_ticks = 15
 	icon_state = "fruit_unstable_immature"
 	mature_icon_state = "fruit_unstable"
@@ -252,12 +263,21 @@
 	gardener_sac_color = "#179973"
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
-	if(mature && recipient && !QDELETED(recipient))
+	if(mature && recipient && !QDELETED(recipient) && (!recipient.healer_DNH == TRUE))
 		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		//Every second, heal them for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, and begin to slowly regenerate."))
-		recipient.balloon_alert(recipient, "our regeneration quickens and carapace thickens", text_color = "#179973")
+		recipient.balloon_alert(recipient, "our regeneration quickens and our carapace thickens", text_color = "#179973")
+
+	//If target has disallowed xenomorph healing sources (in the case of vamp-lurker)
+	else if(recipient && !QDELETED(recipient) && (recipient.healer_DNH == TRUE))
+		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
+		//reduces total healing from 75 > 39, effectively halving.
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_DNH, regeneration_ticks, 1, show_baloon_alert = TRUE)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, but our form hampers our ability to regenerate."))
+		recipient.balloon_alert(recipient, "our regeneration trickles and our carapace thickens", text_color = "#179973")
+
 	if(do_consume)
 		finish_consume(recipient)
 

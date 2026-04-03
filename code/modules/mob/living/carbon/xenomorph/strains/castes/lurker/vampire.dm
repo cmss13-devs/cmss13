@@ -25,7 +25,7 @@
 	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
 	lurker.received_phero_caps["recovery"] = 1.5 //Prevents benefits from recovery pheromones entirely.
-	lurker.healer_DNH == TRUE //Prevents healing from healer-strain drones.
+	lurker.healer_DNH = TRUE //Prevents healing from healer-strain drones.
 
 	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
 	execute_hud.add_hud_to(lurker, lurker)

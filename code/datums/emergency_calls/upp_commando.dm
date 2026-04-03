@@ -54,6 +54,7 @@
 /datum/emergency_call/upp_commando/low_threat
 	name = "UPP Commandos"
 	probability = 5
+	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
 
 /datum/emergency_call/upp_commando/low_threat/create_member(datum/mind/mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

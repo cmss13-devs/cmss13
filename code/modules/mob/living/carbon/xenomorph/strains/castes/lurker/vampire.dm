@@ -106,7 +106,7 @@
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			if(!xeno.on_fire)
 				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-				xeno.gain_health(30)
+				xeno.gain_health(45)
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -254,10 +254,6 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
 		return
 
-	if(target_carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
-		return
-
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
@@ -266,7 +262,7 @@
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
 	if(!xeno.on_fire)
-		xeno.gain_health(150)
+		xeno.gain_health(210)
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")

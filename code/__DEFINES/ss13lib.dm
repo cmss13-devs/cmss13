@@ -35,6 +35,21 @@
 /// Mandatory field
 #define SS13LIB_SERVER_DISPLAY_NAME // CONFIG_GET(string/servername)
 
+/// What language this server should be advertised as being for. This is an ISO 639-1 code, eg:
+/// "en", "ru", "es"
+/// Mandatory field
+#define SS13LIB_SERVER_LANGUAGE // en
+
+/// A secondary field that will be visible to users
+/// Up to 1024 characters, no HTML encoding.
+/// Optional field
+#define SS13LIB_SERVER_DESCRIPTION // "A very fun server."
+
+/// Links that will be visible/clickable to users on the launcher
+/// Up to 10, with discord/wiki/web/github/forum as "type" options
+/// Optional field
+#define SS13LIB_SERVER_LINKS // list(list("type" = "web", "link" = "https://myserver.com"))
+
 /// If this server has a maximum number of connected players
 /// Optional field
 #define SS13LIB_PLAYER_LIMIT // CONFIG_GET(number/popcap)
@@ -49,10 +64,9 @@
 /// Optional field
 #define SS13LIB_SERVER_TAGS // CONFIG_GET(str_list/server_tags)
 
-/// What language this server should be advertised as being for. This is an ISO 639-1 code, eg:
-/// "en", "ru", "es"
-/// Mandatory field
-#define SS13LIB_SERVER_LANGUAGE // en
+/// If users are to connect to a different IP than the one the hub is communicating to
+/// Optional field
+#define SS13LIB_CONNECTION_ADDRESS // direct.myserver.com:1337
 
 /// What BYOND client version players should use to connect.
 /// Optional field - if not defined, the launcher will use its default

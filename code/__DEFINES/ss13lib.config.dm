@@ -5,8 +5,10 @@
 
 #define SS13LIB_PLAYER_COUNT length(GLOB.clients) // length(GLOB.clients)
 #define SS13LIB_SERVER_DISPLAY_NAME CONFIG_GET(string/servername) // CONFIG_GET(string/servername)
+#define SS13LIB_SERVER_DESCRIPTION "The year is 2182. High Command has dispatched the USS Almayer to the frontier. You are a member of the Falling Falcons - 2nd Company, 2nd Battalion, 4th Brigade.\n\nYour orders are simple: Respond to an unknown distress signal, secure the colony, and neutralise any threats. But on the rim of known space, nothing is ever simple."
+#define SS13LIB_SERVER_LINKS list(list("type" = "discord", "url" = CONFIG_GET(string/discordurl)), list("type" = "wiki", "url" = CONFIG_GET(string/wikiurl)), list("type" = "forum", "url" = CONFIG_GET(string/forumurl)), list("type" = "github", "url" = CONFIG_GET(string/githuburl)))
 #define SS13LIB_NETWORK_IDENTIFIER "cm-ss13" // CONFIG_GET(string/network_identifier)
-#define SS13LIB_SERVER_TAGS list("Total Conversion") // CONFIG_GET(str_list/server_tags)
+#define SS13LIB_SERVER_TAGS list("total conversion", "teams", "combat") // CONFIG_GET(str_list/server_tags)
 #define SS13LIB_SERVER_LANGUAGE "en" // en
 
 #define SS13LIB_ROUND_MAP_NAME SSmapping.configs[GROUND_MAP].map_name // SSmapping.current_map.map_name

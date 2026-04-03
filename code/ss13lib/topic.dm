@@ -26,6 +26,10 @@
 #endif
 		"language" = SS13LIB_SERVER_LANGUAGE,
 
+#ifdef SS13LIB_DESCRIPTION
+		"description" = SS13LIB_DESCRIPTION,
+#endif
+
 #ifdef SS13LIB_PLAYER_LIMIT
 		"pop_cap" = SS13LIB_PLAYER_LIMIT,
 #endif
@@ -40,6 +44,14 @@
 
 #ifdef SS13LIB_CLIENT_VERSION
 		"client_version" = "[SS13LIB_CLIENT_VERSION].[SS13LIB_CLIENT_BUILD]",
+#endif
+
+#ifdef SS13LIB_LINKS
+		"links" = SS13LIB_LINKS,
+#endif
+
+#ifdef SS13LIB_CONNECTION_ADDRESS
+		"connection_address" = SS13LIB_CONNECTION_ADDRESS,
 #endif
 
 		"round" = list(

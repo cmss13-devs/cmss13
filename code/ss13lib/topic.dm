@@ -26,8 +26,8 @@
 #endif
 		"language" = SS13LIB_SERVER_LANGUAGE,
 
-#ifdef SS13LIB_DESCRIPTION
-		"description" = SS13LIB_DESCRIPTION,
+#ifdef SS13LIB_SERVER_DESCRIPTION
+		"description" = SS13LIB_SERVER_DESCRIPTION,
 #endif
 
 #ifdef SS13LIB_PLAYER_LIMIT
@@ -46,8 +46,8 @@
 		"client_version" = "[SS13LIB_CLIENT_VERSION].[SS13LIB_CLIENT_BUILD]",
 #endif
 
-#ifdef SS13LIB_LINKS
-		"links" = SS13LIB_LINKS,
+#ifdef SS13LIB_SERVER_LINKS
+		"links" = SS13LIB_SERVER_LINKS,
 #endif
 
 #ifdef SS13LIB_CONNECTION_ADDRESS

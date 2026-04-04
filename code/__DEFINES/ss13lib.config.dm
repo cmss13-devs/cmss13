@@ -1,8 +1,5 @@
 #define SS13LIB_EXTERNAL_CONFIGURATION
 
-#define SS13LIB_EXTERNAL_INIT
-#define SS13LIB_EXTERNAL_HEARTBEAT
-
 #define SS13LIB_PLAYER_COUNT length(GLOB.clients) // length(GLOB.clients)
 #define SS13LIB_SERVER_DISPLAY_NAME CONFIG_GET(string/servername) // CONFIG_GET(string/servername)
 #define SS13LIB_SERVER_DESCRIPTION "The year is 2182. High Command has dispatched the USS Almayer to the frontier. You are a member of the Falling Falcons - 2nd Company, 2nd Battalion, 4th Brigade.\n\nYour orders are simple: Respond to an unknown distress signal, secure the colony, and neutralise any threats. But on the rim of known space, nothing is ever simple."

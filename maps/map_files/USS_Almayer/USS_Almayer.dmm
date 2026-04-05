@@ -3914,7 +3914,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = -24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -4304,7 +4304,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = 24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -44167,7 +44167,7 @@
 	name = "ARES Core Access";
 	pixel_x = -32;
 	pixel_y = 40;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -45099,9 +45099,9 @@
 "drU" = (
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
-	name = "ARES WorkingJoe Bay Shutters";
+	name = "ARES Synth Bay Shutters";
 	pixel_x = 24;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92;36"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
@@ -51426,7 +51426,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92;36"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -60943,7 +60943,7 @@
 	name = "ARES Core Access";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -64623,7 +64623,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -67508,7 +67508,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
@@ -67808,9 +67808,9 @@
 "naj" = (
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
-	name = "ARES WorkingJoe Bay Shutters";
+	name = "ARES Synth Bay Shutters";
 	pixel_x = -24;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -78778,7 +78778,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
@@ -82858,7 +82858,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
@@ -89618,7 +89618,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "90;91;92;36"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)

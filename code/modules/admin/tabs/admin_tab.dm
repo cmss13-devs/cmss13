@@ -228,10 +228,10 @@
 
 	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
-	for(var/mob/living/M in view(usr.client))
-		M.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
-		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		M.AddSleepingIcon()
+	for(var/mob/living/living_target in view(usr.client))
+		living_target.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
+		living_target.SetKnockOut(9999999, TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.AddSleepingIcon()
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
@@ -245,9 +245,9 @@
 
 	if(alert("This wake ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
-	for(var/mob/living/M in view(usr.client))
-		M.sleeping = 0 //set their sleep to zero and remove their icon
-		M.RemoveSleepingIcon()
+	for(var/mob/living/living_target in view(usr.client))
+		living_target.SetKnockOut(0, TRUE) //set their KnockOut to zero and remove their icon
+		living_target.RemoveSleepingIcon()
 
 	message_admins("[key_name(usr)] used Toggle Wake In View.")
 

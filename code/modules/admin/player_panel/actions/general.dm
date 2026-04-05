@@ -36,14 +36,14 @@
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
 	if(!istype(target, /mob/living))
 		return TRUE
-	var/mob/living/living = target
+	var/mob/living/living_target = target
 
-	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
-		living.sleeping = 0
-		living.RemoveSleepingIcon()
+	if(living_target.IsKnockOut()) //if they're already KnockOut, set their sleep to zero and remove the icon
+		living_target.SetKnockOut(0, TRUE)
+		living_target.RemoveSleepingIcon()
 	else
-		living.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		living.AddSleepingIcon()
+		living_target.SetKnockOut(9999999, TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 

@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/proc/add_to_all_mob_huds()
 	return
 
-/mob/hologram/queen/add_to_all_mob_huds(hivenumber)
+/mob/hologram/queen/add_to_all_mob_huds()
 	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		hud.add_to_hud(src)
 	hud_set_new_player()
 
-/mob/living/carbon/xenomorph/add_to_all_mob_huds(hivenumber)
+/mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)

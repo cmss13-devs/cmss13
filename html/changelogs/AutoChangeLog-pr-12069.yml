@@ -1,0 +1,4 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - bugfix: "walkman headphones will now show up again when you wear them on your ears"

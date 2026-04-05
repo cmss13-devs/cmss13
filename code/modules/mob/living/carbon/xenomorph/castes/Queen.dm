@@ -112,7 +112,7 @@
 
 	hivenumber = Q.hivenumber
 	med_hud_set_status()
-	add_to_all_mob_huds(hivenumber)
+	add_to_all_mob_huds()
 
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
@@ -1099,6 +1099,14 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
 
+	// If minimap was open before going on ovi, switch to drawing tools version
+	var/datum/action/minimap/minimap_action = locate() in actions
+	if(minimap_action?.minimap_displayed)
+		minimap_action.toggle_minimap(FALSE)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			tacmap_component.show_tacmap(src)
+
 	START_PROCESSING(SShive_status, hive.hive_ui)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_MOUNT_OVIPOSITOR)
@@ -1150,6 +1158,19 @@
 
 	if(!instant_dismount)
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
+
+	// Close tacmap drawing tools if open, and reopen the regular minimap
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	var/had_tacmap_open = FALSE
+	if(tacmap_component && (src in tacmap_component.interactees))
+		tacmap_component.on_unset_interaction(src)
+		tacmap_component.close_popout_tacmaps(src)
+		had_tacmap_open = TRUE
+
+	if(had_tacmap_open)
+		var/datum/action/minimap/minimap_action = locate() in actions
+		if(minimap_action && !minimap_action.minimap_displayed)
+			minimap_action.action_activate()
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
 

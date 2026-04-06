@@ -220,6 +220,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = -25
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/containment)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -2704,6 +2716,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
+"agr" = (
+/obj/structure/sign/poster/art2{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/medical_science)
 "ags" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -2712,6 +2730,11 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/officer_study)
+"agt" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/machinery/light,
+/turf/open_space,
+/area/almayer/medical/containment)
 "agu" = (
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/officer_study)
@@ -3834,6 +3857,17 @@
 "aiK" = (
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/upper/fore_hallway)
+"aiL" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -26
+	},
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
+"aiM" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
 "aiN" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -3971,7 +4005,7 @@
 	icon_state = "S"
 	},
 /turf/open_space,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/containment)
 "ajj" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/general_equipment)
@@ -6281,11 +6315,8 @@
 /area/almayer/medical/medical_science)
 "apS" = (
 /obj/structure/platform/metal/almayer_smooth/north,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open_space,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/containment)
 "apT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredgesmooth2/north,
@@ -8365,7 +8396,7 @@
 	},
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/containment)
 "avH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -8388,8 +8419,8 @@
 /area/almayer/living/bridgebunks)
 "avL" = (
 /obj/structure/sign/poster{
-	pixel_x = 23;
-	pixel_y = 7
+	pixel_x = 25;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/blue/southeast,
 /area/almayer/living/bridgebunks)
@@ -37977,6 +38008,9 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
 "bRk" = (
@@ -37990,9 +38024,6 @@
 /obj/structure/sign/poster/pinup{
 	pixel_x = 25;
 	pixel_y = 6
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
@@ -38358,6 +38389,11 @@
 /obj/structure/sign/calendar/wy{
 	pixel_y = 28
 	},
+/obj/structure/machinery/door_control/cl{
+	pixel_y = -12;
+	name = "Safe Shutters";
+	id = "CL_Safe"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bRV" = (
@@ -38392,14 +38428,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
-"bRZ" = (
-/obj/structure/machinery/door_control/cl{
-	pixel_y = 24;
-	name = "Safe Shutters";
-	id = "CL_Safe"
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "bSa" = (
 /obj/structure/target,
 /turf/open/floor/almayer/plating_striped/east,
@@ -38411,9 +38439,10 @@
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/cryo_cells)
 "bSc" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	id = "CL_Safe"
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "CL_Safe";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -42008,6 +42037,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bZM" = (
@@ -43704,6 +43736,9 @@
 /area/almayer/medical/upper_medical)
 "cdf" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/upper_medical)
 "cdg" = (
@@ -44442,7 +44477,7 @@
 "ceP" = (
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/containment)
 "ceQ" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/structure/bed/chair{
@@ -44677,10 +44712,6 @@
 	dir = 2
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/medical/medical_science)
-"cfs" = (
-/obj/structure/platform/metal/almayer_smooth/north,
-/turf/open_space,
 /area/almayer/medical/medical_science)
 "cft" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -50448,9 +50479,9 @@
 /area/almayer/living/briefing)
 "dSp" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/sign/safety/bathunisex{
-	pixel_x = 13;
-	pixel_y = 25
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = -16
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
@@ -71030,12 +71061,6 @@
 	},
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/command/corporateliaison)
-"mSi" = (
-/obj/structure/bed/sofa/vert/grey/top{
-	pixel_y = 11
-	},
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south1)
 "mSl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -91381,11 +91406,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/port_fore)
 "vmN" = (
-/obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	pixel_y = 8
+	pixel_y = 12
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
@@ -94308,7 +94332,7 @@
 /area/almayer/hallways/upper/port)
 "wse" = (
 /turf/open_space,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/containment)
 "wsh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -98244,6 +98268,9 @@
 /area/almayer/lifeboat_pumps/south1)
 "xVI" = (
 /obj/structure/largecrate/random/case,
+/obj/structure/machinery/light{
+	pixel_x = -16
+	},
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
 "xVS" = (
@@ -98278,13 +98305,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
-"xWO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -25
-	},
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "xWT" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -178532,7 +178552,7 @@ bYi
 bYi
 bYi
 aWR
-bXA
+aaE
 bWu
 bWu
 bWu
@@ -203337,7 +203357,7 @@ uzy
 abB
 add
 add
-add
+bny
 adq
 nwL
 cUo
@@ -203749,7 +203769,7 @@ add
 ajI
 add
 add
-add
+aiL
 adq
 iFn
 nwL
@@ -204469,8 +204489,8 @@ awW
 awW
 abB
 add
-xWO
-adq
+add
+aiM
 adq
 aFH
 aFH
@@ -204500,8 +204520,8 @@ ayE
 ayd
 axq
 lIj
-pgD
 nUv
+aJU
 aJU
 pIV
 baw
@@ -204572,8 +204592,8 @@ awW
 awW
 acW
 qdQ
+eFT
 hhA
-adq
 adq
 aFH
 dBs
@@ -204603,8 +204623,8 @@ wjQ
 dbX
 uag
 lIj
-pgD
-mSi
+awJ
+wHp
 avj
 gVF
 kuk
@@ -204675,8 +204695,8 @@ oGC
 awW
 acW
 add
+add
 bny
-adq
 adq
 adq
 vwV
@@ -204706,8 +204726,8 @@ lIj
 ayf
 lIj
 lIj
-pgD
 nUv
+aJU
 aJU
 sgU
 baw
@@ -209039,7 +209059,7 @@ bSO
 bSz
 oxc
 pBG
-bRZ
+eAN
 bRG
 pBG
 pGh
@@ -209119,7 +209139,7 @@ ovG
 aoJ
 alk
 cey
-cfs
+apS
 wse
 ceP
 cey
@@ -209224,7 +209244,7 @@ amk
 cey
 avF
 wse
-ceP
+agt
 cey
 aIP
 aoK
@@ -209325,11 +209345,11 @@ cgQ
 ajz
 cfZ
 cey
-cfs
+apS
 wse
 ceP
 cey
-kXw
+agr
 aoK
 cds
 ccS

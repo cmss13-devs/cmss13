@@ -461,7 +461,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "doctor"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/medic, /obj/item/storage/backpack/marine/medic)
@@ -500,7 +500,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "researcher"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/medic, /obj/item/storage/backpack/marine/medic)

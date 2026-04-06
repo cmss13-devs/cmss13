@@ -172,7 +172,7 @@
 	minimum_age = 23
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
-
+	minimap_background = "background_command"
 	minimap_icon = "cmp"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
@@ -261,7 +261,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "crmp"
-
+	minimap_background = "background_command"
 	assignment = JOB_RIOT_CHIEF
 	job_title = JOB_RIOT_CHIEF
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)

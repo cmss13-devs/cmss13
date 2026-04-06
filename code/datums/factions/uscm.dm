@@ -110,24 +110,24 @@
 			if(id_card)
 				_role = id_card.rank
 		switch(_role)
+			if(JOB_CMC)
+				marine_rk = "cmc"
+			if(JOB_ACMC)
+				marine_rk = "acmc"
+			if(JOB_GENERAL)
+				marine_rk = "general"
+			if(JOB_COLONEL)
+				marine_rk = "col"
 			if(JOB_XO, JOB_WO_XO)
 				marine_rk = "xo"
-				border_rk = "command"
 			if(JOB_CO, JOB_WO_CO)
 				marine_rk = "co"
-				border_rk = "command"
 			if(JOB_USCM_OBSV)
 				marine_rk = "vo"
-				border_rk = "command"
-			if(JOB_SO)
+			if(JOB_SO, JOB_WO_SO)
 				marine_rk = "so"
-				border_rk = "command"
 			if(JOB_AUXILIARY_OFFICER)
 				marine_rk = "aso"
-				border_rk = "command"
-			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
-				marine_rk = "general"
-				border_rk = "command"
 			if(JOB_PLT_MED)
 				marine_rk = "med"
 			if(JOB_PLT_SL)
@@ -161,7 +161,6 @@
 				marine_rk = "dcc"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
-				border_rk = "command"
 			if(JOB_POLICE)
 				if(current_human.rank_fallback == "hgmp")
 					marine_rk = "hgmp"
@@ -173,35 +172,34 @@
 				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
-				border_rk = "command"
 			if(JOB_CHIEF_REQUISITION, JOB_WO_CHIEF_REQUISITION)
 				marine_rk = "ro"
 			if(JOB_CARGO_TECH, JOB_WO_REQUISITION)
 				marine_rk = "ct"
 			if(JOB_CHIEF_ENGINEER, JOB_WO_CHIEF_ENGINEER)
 				marine_rk = "ce"
-				border_rk = "command"
 			if(JOB_MAINT_TECH)
 				marine_rk = "mt"
 			if(JOB_ORDNANCE_TECH, JOB_WO_ORDNANCE_TECH)
 				marine_rk = "ot"
+			if(JOB_COMBAT_REPORTER, JOB_WO_CORPORATE_LIAISON)
+				marine_rk = "comrec"
 			if(JOB_CMO, JOB_WO_CMO)
 				marine_rk = "cmo"
-				border_rk = "command"
 			if(JOB_DOCTOR, JOB_WO_DOCTOR)
 				marine_rk = "doctor"
-				border_rk = "command"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
-				border_rk = "command"
+			if(JOB_PHARMACIST)
+				marine_rk = "pharmacist"
+			if(JOB_SURGEON)
+				marine_rk = "surgeon"
 			if(JOB_RESEARCHER, JOB_WO_RESEARCHER)
 				marine_rk = "researcher"
-				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
 			if(JOB_SEA)
 				marine_rk = "sea"
-				border_rk = "command"
 			if(JOB_SYNTH, JOB_WO_SYNTH)
 				marine_rk = "syn"
 				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
@@ -218,23 +216,23 @@
 				marine_rk = "pvtml"
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
-				border_rk = "command"
 			if(JOB_PROVOST_UNDERCOVER)
 				marine_rk = "pvuc"
-				border_rk = "command"
 			if(JOB_PROVOST_CINSPECTOR)
 				marine_rk = "pvci"
-				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
-				border_rk = "command"
 			if(JOB_PROVOST_DMARSHAL)
 				marine_rk = "pvdm"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+			if(JOB_PROVOST_MARSHAL)
 				marine_rk = "pvm"
-				border_rk = "command"
-			//CIA
+			if(JOB_PROVOST_SMARSHAL)
+				marine_rk = "pvsm"
+			if(JOB_PROVOST_CMARSHAL)
+				marine_rk = "pvcm"
+			// CIA
+			if(JOB_CIA)
+				marine_rk = "cia"
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
 			if(JOB_CIA_UACQS_ADMN)

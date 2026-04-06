@@ -1,3 +1,7 @@
+#define DESIRED_RATIO 0.5 //0.5 xenos per marine.
+#define COMPENSATION_RATE 0.8 //Per xeno below the ratio, how many xenos do you get?
+#define MINIMUM_HIJACK_LARVA 5
+
 /datum/hive_status
 	var/name = FACTION_XENOMORPH
 
@@ -865,13 +869,17 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(ceil(COMPENSATION_RATE * ((shipside_humans_weighted_count * DESIRED_RATIO) - xenos_count)), MINIMUM_HIJACK_LARVA)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 	// No buffs in hijack
 	for(var/datum/hivebuff/buff in active_hivebuffs)
 		buff._on_cease()
+
+//#define DESIRED_RATIO 0.5 //0.5 xenos per marine.
+//#define COMPENSATION_RATE 0.8 //idk
+
 
 /datum/hive_status/proc/bless_on_hijack()
 	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
@@ -1699,7 +1707,6 @@
 		return FALSE
 	return TRUE
 
-
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
 /datum/xeno_mark_define
@@ -1761,3 +1768,6 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+#undef DESIRED_RATIO
+#undef COMPENSATION_RATE
+#undef MINIMUM_HIJACK_LARVA

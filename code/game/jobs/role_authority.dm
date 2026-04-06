@@ -325,10 +325,18 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
 	if(!J)
 		return 0
+	if(GLOB.ROLES_CIC.Find(J.title))
+		return 1.5	//officer gear is stronger than marine gear.
+	if(GLOB.ROLES_POLICE.Find(J.title))
+		return 1	//I think MPs do actually have slightly better skills/gear than the standard marine but will set to 1.
+	if(J.title == JOB_SQUAD_SPECIALIST)
+		return 2
+	if(J.title == JOB_SQUAD_SMARTGUN)
+		return 1.5
 	if(GLOB.ROLES_MARINES.Find(J.title))
 		return 1
 	if(GLOB.ROLES_XENO.Find(J.title))
-		return 1
+		return 1.5	//Greenos are a huge force multiplier in hijack. Not too sure what to set this to.
 	if(J.title == JOB_SURVIVOR)
 		return 1
 	return SHIPSIDE_ROLE_WEIGHT

@@ -39,6 +39,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
 		var/name = record_entry.fields["name"]
 		var/rank = record_entry.fields["rank"]
+		var/paygrade_prefix = record_entry.fields["paygrade_prefix"]
 		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
 			continue
@@ -46,9 +47,10 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		if(record_entry.fields["mob_faction"] != FACTION_MARINE && !(rank in USCM_SHARED_JOBS))
 			continue
 
+		var/display_name = "[paygrade_prefix] [name]"
 		var/entry_dept = null
 		var/list/entry = list(
-			"name" = name,
+			"name" = display_name,
 			"rank" = rank,
 			"squad" = squad,
 			"is_active" = record_entry.fields["p_stat"]

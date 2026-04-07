@@ -59,8 +59,8 @@ Defenders with a lowered crest can open existing holes in walls.
 As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
 Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.
 Any Xenomorph can close resin doors behind you when being chased! Click on an open door on any intent but harm to close it
-As a Xenomorph, be weary when prying open powered doors, as they'll automatically close after some time.
-As a Xenomorph, i you find that you keep getting yourself killed because you accidentally deactivate your abilities from double tapping their hotkeys, try disabling ability deactivation in your preferences!
+As a Xenomorph, be wary when prying open powered doors, as they'll automatically close after some time.
+As a Xenomorph, if you find that you keep getting yourself killed because you accidentally deactivate your abilities from double tapping their hotkeys, try disabling ability deactivation in your preferences!
 You can spit acid at claymores to activate them early - and if a marine is ontop of a claymore while its activated… find out for yourself!
 As a Xenomorph, if you're aware that a marine has a Motion Detector, you can hold still while behind a door to get the drop on them!
 As a Queen, in the hive status window you can adjust health levels, so you only see those you need to heal.

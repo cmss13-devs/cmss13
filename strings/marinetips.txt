@@ -108,11 +108,11 @@ When paradropping, you can toss any large item (such as a backpack, pouch, or gu
 Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
 A synthetic's head can be reattached to their body by a skilled doctor. Save your synth!
 Switching to your sidearm is not faster than reloading.
-You can refill extinguishers from  canteens, flasks, water bottles, and water tanks.
+You can refill extinguishers from canteens, flasks, water bottles, and water tanks.
 You can middle mouse click to open containers, even if your hands are full, and you can open nested inventories this way.
 Resin doors will collapse instantly if there’s no walls or doors adjacent to support them- Breach resin defences more quickly by targeting their supporting structures instead!
 It’s much faster to do surgeries steps in parallel instead of series- For instance, opening incisions with a scalpel on every fractured limb instead of performing surgery step by step individually for each limb! This saves a LOT of time since you don’t need to switch tools constantly.
- Underbarrel grenade launchers, the M85 and M92 all have IFF, passing through marines as they fire! Fire your grenades without fear of blowing up your teammates! (Until you do it anyway.)
+Underbarrel grenade launchers, the M85 and M92 all have IFF, passing through marines as they fire! Fire your grenades without fear of blowing up your teammates! (Until you do it anyway.)
 An officer who acts and takes the initiative will sometimes be wrong; An officer who takes no action is always wrong.
 True leadership is forged in the crucible of military defeat, and the actions taken to rise above it and seize victory.
 Fire support can end up supporting your enemy instead.
@@ -120,7 +120,7 @@ As a Corpsman, if you’re treating a patient near the frontline, remember to ke
 As a Smartgunner, remember to constantly switch between your smartgun modes in combat depending on the situation!
 Handthrown grenade timers usually go off a little bit after 3 beeps, throw it then if you want the shortest timer. Beep, beep, beep, bee-…
 M37 is best used in harm intent and at pointblank range. If you miss within 1 tile, you won’t shoot, but it will put you on shooting cooldown for 1 second! But if you hit within 1 tile, youll always get the highest possible damage on your target. Stay sharp, marine.
-Marines take less bullets to kill then xenomorphs
+Marines take less bullets to kill than xenomorphs
 Make sure to bring flares. Noone wants to be blind against these things…
 The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.
 

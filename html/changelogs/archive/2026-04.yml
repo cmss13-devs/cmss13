@@ -15,3 +15,6 @@
   MistChristmas:
   - rscadd: Labels are more strict on what they allow. Only alphanumeric characters
       plus common punctuation, spaces, underscore, hyphen, plus, and vertical bar.
+2026-04-08:
+  MistChristmas:
+  - bugfix: Psychic Property still generating and not being Admin spawn only.

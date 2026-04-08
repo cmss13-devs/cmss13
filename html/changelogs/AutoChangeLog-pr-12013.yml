@@ -1,0 +1,4 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - maptweak: "Changed the spawn markers on Kutjevo Refinery's Comms to prevent two towers spawning next to eachother."

@@ -103,7 +103,6 @@
 				holder.overlays += IMG3
 	else
 		var/marine_rk
-		var/border_rk
 		var/_role = current_human.job
 		if(!_role)
 			var/obj/item/card/id/id_card = current_human.get_idcard()

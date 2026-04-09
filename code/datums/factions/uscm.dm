@@ -231,8 +231,6 @@
 			if(JOB_PROVOST_CMARSHAL)
 				marine_rk = "pvcm"
 			// CIA
-			if(JOB_CIA)
-				marine_rk = "cia"
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
 			if(JOB_CIA_UACQS_ADMN)

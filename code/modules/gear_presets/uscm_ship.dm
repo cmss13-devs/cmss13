@@ -672,7 +672,7 @@
 	minimum_age = 23
 	skills = /datum/skills/pilot
 
-	minimap_icon = "pilot2"
+	minimap_icon = "pilot"
 	minimap_background = "background_officer"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)

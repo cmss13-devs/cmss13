@@ -277,5 +277,3 @@
 			I.color = "#5A934A"
 			holder.overlays += I
 			holder.overlays += image(file_to_use, current_human, "hudsquad_[marine_rk]")
-			if(border_rk)
-				holder.overlays += image(file_to_use, current_human, "hudmarineborder[border_rk]")

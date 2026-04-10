@@ -171,6 +171,17 @@
 	maxHealth = 50
 	holder_type = /obj/item/holder/cat/Jones
 
+/mob/living/simple_animal/small/cat/Jones/noble
+	name = "Noble"
+	real_name = "Noble"
+	desc = "A gentle, old cat, with a small scar on her nose."
+	gender = FEMALE
+	holder_type = /obj/item/holder/cat/Jones/noble
+
+/obj/item/holder/cat/Jones/noble
+	name = "\improper Noble"
+	desc = "A gentle, old cat, with a small scar on her nose."
+
 /mob/living/simple_animal/small/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww."
@@ -179,3 +190,13 @@
 	icon_dead = "kitten_dead"
 	holder_type = /obj/item/holder/cat/kitten
 	gender = NEUTER
+
+/mob/living/simple_animal/small/cat/kitten/nuke
+	name = "Nuclear Bomb"
+	desc = "Oh my god. Is he armed?"
+	holder_type = /obj/item/holder/cat/kitten/nuke
+	gender = MALE
+
+/obj/item/holder/cat/kitten/nuke
+	name = "Nuclear Bomb"
+	desc = "You feel fuzzy just holding him."

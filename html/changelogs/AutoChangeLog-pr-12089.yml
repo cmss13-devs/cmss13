@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - bugfix: "fixes server lag when updating the minimap, after having opened and closed the minimap sufficient times in a round"

@@ -18,3 +18,10 @@
 2026-04-08:
   MistChristmas:
   - bugfix: Psychic Property still generating and not being Admin spawn only.
+2026-04-09:
+  DangerRevolution:
+  - maptweak: Changed the spawn markers on Kutjevo Refinery's Comms to prevent two
+      towers spawning next to eachother.
+  ori-disillusion-mirnov:
+  - imageadd: readd old hudead and hudhcdead
+  - imagedel: deleted new huddead and hudhcdead

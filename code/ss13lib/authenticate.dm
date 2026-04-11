@@ -1,7 +1,7 @@
 /// Performs authentication for a fresh client against the SS13Hub authentication API
 /// Requires us to know our server id first, as this must be sent during every authentication request.
-/// We also store the details for the clients launcher_port/key, as we can use these to retrieve thier
-/// authticket in the event of a DreamSeeker reconnection
+/// We also store the details for the clients launcher_port/key, as we can use these to retrieve their
+/// auth ticket in the event of a DreamSeeker reconnection
 /datum/ss13lib/proc/handle_client(client/new_client, connection_params)
 	SS13LIB_INFO_LOG("handle_client: [new_client.key] from [new_client.address]")
 	var/params_list = params2list(connection_params)
@@ -9,14 +9,6 @@
 
 	var/launcher_port = params_list["launcher_port"]
 	var/launcher_key = params_list["launcher_key"]
-
-	var/static/connection_to_launcher = list()
-	if(launcher_port && launcher_key)
-		SS13LIB_INFO_LOG("Storing launcher details for [new_client.address]+[new_client.computer_id]")
-		connection_to_launcher["[new_client.address]+[new_client.computer_id]"] = list(
-			"port" = launcher_port,
-			"key" = launcher_key
-		)
 
 	if(auth_ticket)
 		SS13LIB_INFO_LOG("Authenticating [new_client.key] with auth ticket.")
@@ -39,6 +31,7 @@
 #endif
 
 			new_client.key = resolved_key
+			setup_launcher(new_client, launcher_port, launcher_key)
 			return FALSE
 
 		SS13LIB_WARNING_LOG("Failed to authenticate [new_client.key] via SS13Hub.")
@@ -51,12 +44,12 @@
 			del(new_client)
 			return TRUE
 
+		return FALSE
 
-	var/stored_launcher_details = connection_to_launcher["[new_client.address]+[new_client.computer_id]"]
-	if(stored_launcher_details)
+	if(is_guest(new_client.key) && ("[new_client.address]+[new_client.computer_id]" in connection_details_has_launcher))
 		SS13LIB_INFO_LOG("Reconnection detected for [new_client.address], serving launcher browser.")
 
-		new_client.mob = new /mob/ss13lib_holder_mob(null, stored_launcher_details)
+		new_client.mob = new /mob/ss13lib_holder_mob(null)
 		return new_client.mob
 
 	var/key_to_skip = new_client.key
@@ -118,14 +111,9 @@
 
 	return auth
 
-/mob/ss13lib_holder_mob
-	var/stored_launcher_details
-
-/mob/ss13lib_holder_mob/New(loc, stored_launcher_details)
-	src.stored_launcher_details = stored_launcher_details
-
 /// We create a browser that will communicate with the launcher to grab our auth ticket
-/// and then rejoin the game with .url to avoid re-entering /client/New() with a client
+/// and then rejoin the game with .url to avoid re-entering /client/New() with a client.
+/// We assume that we have already successfully created a normal launcher datum
 /mob/ss13lib_holder_mob/Login()
 	SS13LIB_INFO_LOG("[ckey] logging into holder mob.")
 
@@ -133,15 +121,20 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<script>
-		const port = %LAUNCHER_PORT%;
-		const key = %LAUNCHER_KEY%;
+<head></head>
 
-		window.contact = (endpoint, params) => {
-			const url = params ? `http://localhost:${port}/${endpoint}?${params}` : `http://localhost:${port}/${endpoint}`;
-			return fetch(url, {
-				headers: { 'Launcher-Key': key },
+<body>
+	<script>
+		(function() {
+			const port = localStorage.getItem('port');
+			const key = localStorage.getItem('key');
+
+			if(!port || !key) {
+				return;
+			}
+
+			fetch(`http://localhost:${port}/auth-ticket`, {
+					headers: { 'Launcher-Key': key },
 			}).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
@@ -152,21 +145,12 @@
 					});
 				}
 			});
-		}
-	</script>
-</head>
-
-<body>
-	<script>
-		window.contact("auth-ticket");
+		})();
 	</script>
 </body>
 
 </html>
 	"}
 
-	var/html = replacetext(basehtml, "%LAUNCHER_PORT%", json_encode(stored_launcher_details["port"]))
-	html = replacetext(html, "%LAUNCHER_KEY%", json_encode(stored_launcher_details["key"]))
-
-	src << browse(html, "window=launcher-browser,size=1x1,titlebar=0,can_resize=0")
-	winset(client, "launcher-browser", "is-visible=false")
+	src << browse(basehtml, "window=ss13lib-reconnection-launcher,size=1x1,titlebar=0,can_resize=0")
+	winset(client, "ss13lib-reconnection-launcher", "is-visible=false")

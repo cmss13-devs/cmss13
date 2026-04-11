@@ -13,6 +13,9 @@
 /// Consumers must call this at the start of /client/IsBanned()
 #define SS13LIB_ISBANNED var/ss13lib_ban_return = (SS13LIB).handle_banned(args[1], args[2], args[3]); if(!isnull(ss13lib_ban_return)) return ss13lib_ban_return
 
+/// Consumers must call this as early as possible in /world/Reboot
+#define SS13LIB_REBOOT (SS13LIB).handle_reboot()
+
 //! CONFIGURATION
 
 // It is recommended to copy these defines and configure them externally
@@ -68,13 +71,20 @@
 /// Optional field
 #define SS13LIB_CONNECTION_ADDRESS // direct.myserver.com:1337
 
-/// What BYOND client version players should use to connect.
-/// Optional field - if not defined, the launcher will use its default
-#define SS13LIB_CLIENT_VERSION // world.byond_version
+//! Engine fields, relevant to the version of the engine that users must use to join
+//! All engine fields are optional.
 
-/// What BYOND client build players should use to connect.
-/// Optional field - paired with SS13LIB_CLIENT_VERSION
-#define SS13LIB_CLIENT_BUILD // world.byond_build
+/// The minimum BYOND version.build that clients must have to connect.
+/// Format: "version.build", eg: "516.1664"
+#define SS13LIB_ENGINE_MIN_VERSION // "516.1664"
+
+/// The maximum BYOND version.build that clients are allowed to connect with.
+/// Format: "version.build", eg: "516.1700"
+#define SS13LIB_ENGINE_MAX_VERSION // "516.1700"
+
+/// A list of specific BYOND version.build strings that are blocked from connecting.
+/// Format: list of "version.build" strings
+#define SS13LIB_ENGINE_BLACKLISTED_VERSIONS // list("516.1670", "516.1671")
 
 //! All fields prefixed with _ROUND_ are optional, many of these are not applicable to some kinds of SS13 servers
 
@@ -104,14 +114,14 @@
 #define SS13LIB_EXTERNAL_INIT
 
 /// If the codebase would like to handle the regular heartbeat to the hub
-/// isntead of it being looped internally. This must fire at least every minute
+/// instead of it being looped internally. This must fire at least every minute
 /// as servers are only considered active if they have had a successful heartbeat
 /// within the last two minutes. It is recommended to fire every 30 seconds.
 #define SS13LIB_EXTERNAL_HEARTBEAT
 
 /// If this is defined, after authenticating, SS13Lib will save this field to the client
 /// which can be used for identification of the upstream username, hwid or account age.
-/// This shoulds be typed as /datum/ss13lib_auth_response
+/// This should be typed as /datum/ss13lib_auth_response
 #define SS13LIB_CLIENT_INFO(X) // X.hub_info
 
 #endif

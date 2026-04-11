@@ -42,9 +42,20 @@
 		"server_tags" = SS13LIB_SERVER_TAGS,
 #endif
 
-#ifdef SS13LIB_CLIENT_VERSION
-		"client_version" = "[SS13LIB_CLIENT_VERSION].[SS13LIB_CLIENT_BUILD]",
+
+		"engine" = list(
+#ifdef SS13LIB_ENGINE_MIN_VERSION
+			"min_version" = SS13LIB_ENGINE_MIN_VERSION,
 #endif
+
+#ifdef SS13LIB_ENGINE_MAX_VERSION
+			"max_version" = SS13LIB_ENGINE_MAX_VERSION,
+#endif
+
+#ifdef SS13LIB_ENGINE_BLACKLISTED_VERSIONS
+			"blacklisted_versions" = SS13LIB_ENGINE_BLACKLISTED_VERSIONS,
+#endif
+		),
 
 #ifdef SS13LIB_SERVER_LINKS
 		"links" = SS13LIB_SERVER_LINKS,

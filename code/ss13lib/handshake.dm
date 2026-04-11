@@ -35,13 +35,13 @@
 			sleep(i * 10)
 			continue
 
-		var/server_id = body["server_id"]
-		if(!server_id)
+		var/retrieved_id = body["server_id"]
+		if(!retrieved_id)
 			SS13LIB_WARNING_LOG("Response from hub server was invalid, attempt [i]/[SS13LIB_MAX_HANDSHAKE_ATTEMPTS].")
 			sleep(i * 10)
 			continue
 
-		src.server_id = server_id
+		src.server_id = retrieved_id
 		break
 
 	if(src.server_id)

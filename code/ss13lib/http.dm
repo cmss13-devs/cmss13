@@ -69,7 +69,7 @@
 		response.body = file2text(raw["CONTENT"])
 		SS13LIB_INFO_LOG("HTTP [method] [url]: status [response.status_code]")
 
-		if(response.status_code == 0)
+		if(!response.status_code)
 			response.errored = TRUE
 
 #else

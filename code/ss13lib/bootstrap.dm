@@ -25,6 +25,7 @@
 /datum/ss13lib/proc/start()
 	SS13LIB_INFO_LOG("SS13Lib v[SS13LIB_VERSION] starting.")
 	if(!perform_handshake())
+		ready = TRUE
 		return FALSE
 	SS13LIB_INFO_LOG("SS13Lib initialised successfully.")
 	ready = TRUE
@@ -36,6 +37,8 @@
 	heartbeat_loop()
 
 /datum/ss13lib/proc/heartbeat_loop()
+	set waitfor = FALSE
+
 	while(TRUE)
 		perform_heartbeat()
 		sleep(300)

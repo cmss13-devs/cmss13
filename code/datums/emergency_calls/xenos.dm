@@ -1,5 +1,5 @@
 
-//Xenomorphs, hostile to everyone.
+//Xenomorphs, hostile to everyone except the Prime hive.
 /datum/emergency_call/xenos
 	name = "Xenomorphs (Squad)"
 	mob_max = 7
@@ -9,7 +9,7 @@
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... &#*)- What *&# fuck-- &#**#^#^)-- *h GOD- they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Vriess respond-- #&...*#&^#.. signal... &#*)- What *&# fuck-- &#**#^#^)-- *h GOD- they're in the vent---... Priority Warning: Signal lost."
 	objectives = "Across the stars... For the Empress!"
 
 
@@ -37,6 +37,15 @@
 	M.transfer_to(new_xeno, TRUE)
 
 	QDEL_NULL(current_mob)
+
+/datum/emergency_call/xenos/corpsespawner(turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+	var/list/obj/effect/landmark/corpse
+	if(!istype(spawn_loc))
+		return //No usable spawn.
+
+	for()
+
 
 
 /datum/emergency_call/xenos/platoon

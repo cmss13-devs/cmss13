@@ -5,7 +5,6 @@
 	mob_max = 1
 	mob_min = 1
 	arrival_message = "'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas're getting cold.'"
-	objectives = "Well, shit. That's not a commercial liner. Still, someone in that ship's gotta be hungry. Let's find out who ordered these pizzas, and get outta here..."
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	home_base = /datum/lazy_template/ert/pizza_station
@@ -13,7 +12,7 @@
 
 /datum/emergency_call/pizza/New()
 	. = ..()
-	objectives = "Make sure you get a tip!"
+	objectives = "That's... not a commercial liner... Make sure you get a tip!"
 
 /datum/emergency_call/pizza/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

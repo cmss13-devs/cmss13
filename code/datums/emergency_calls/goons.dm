@@ -1,14 +1,14 @@
 /datum/emergency_call/goon
 	name = "Weyland-Yutani Corporate Security (Squad)"
 	mob_max = 6
-	probability = 0
+	probability = 25 //The most common ERT alongside UPP. Represents the largest responding force in Neroid alongside CMB.
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	home_base = /datum/lazy_template/ert/weyland_station
 
 /datum/emergency_call/goon/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security shuttle inbound to your distress beacon. We are coming to help."
+	arrival_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security shuttle inbound to your distress signal. We are coming to help."
 	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
 
 /datum/emergency_call/goon/create_member(datum/mind/M, turf/override_spawn_loc)

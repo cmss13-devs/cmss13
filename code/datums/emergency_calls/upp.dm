@@ -4,7 +4,7 @@
 /datum/emergency_call/upp
 	name = "UPP Naval Infantry (Squad) (RANDOM)"
 	mob_max = 9
-	probability = 20
+	probability = 25 //Significant chance. With a significant chance of being hostile. The wildcards and unlikely allies of the UA.
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT3
 	home_base = /datum/lazy_template/ert/upp_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
@@ -22,7 +22,7 @@
 /datum/emergency_call/upp/New()
 	. = ..()
 	if(isnull(hostility))
-		hostility = pick(50;FALSE,50;TRUE)
+		hostility = pick(33;FALSE,66;TRUE) // 2/3 chance of being hostile.
 	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
 	if(hostility)
 		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."

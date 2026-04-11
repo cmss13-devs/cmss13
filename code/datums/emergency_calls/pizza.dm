@@ -4,11 +4,12 @@
 	name = "Pizza Delivery"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas are getting cold.'"
+	arrival_message = "'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas're getting cold.'"
+	objectives = "Well, shit. That's not a commercial liner. Still, someone in that ship's gotta be hungry. Let's find out who ordered these pizzas, and get outta here..."
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	home_base = /datum/lazy_template/ert/pizza_station
-	probability = 2
+	probability = 5 //Very low probability, and mostly just for jokes. Still- that's what happens when you broadcast your location, someone might just prank you with Pizza.
 
 /datum/emergency_call/pizza/New()
 	. = ..()

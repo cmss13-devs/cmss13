@@ -3,14 +3,14 @@
 /datum/emergency_call/xenos
 	name = "Xenomorphs (Squad)"
 	mob_max = 7
-	probability = 5
+	probability = 10 //Xeno reinforcements shouldn't be too common, but just common enough to throw the hive a bone.
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
-	objectives = "For the Empress!"
+	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... &#*)- What *&# fuck-- &#**#^#^)-- *h GOD- they're in the vent---... Priority Warning: Signal lost."
+	objectives = "Across the stars... For the Empress!"
 
 
 /datum/emergency_call/xenos/spawn_items()

@@ -2,7 +2,7 @@
 /datum/emergency_call/cmb
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
-	probability = 10
+	probability = 20 //The most common ERT alongside UPP. Represents the largest responding force in Neroid alongside Wey-Yu expeditionaries.
 	home_base = /datum/lazy_template/ert/weyland_station
 
 	var/max_synths = 1

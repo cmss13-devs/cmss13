@@ -6,14 +6,14 @@
 	mob_max = 8
 	max_medics = 2 //Support T2 castes
 	max_engineers = 3 //Combat T2 castes
-	probability = 5
+	probability = 15 //More common than regular xeno ERT, but less common than actual reinforcements or UPP.
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 
 /datum/emergency_call/feral_xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
-	objectives = "Destroy everything!"
+	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... &#*)- What *&# fuck-- &#**#^#^)-- *h GOD- they're in the vent---... Priority Warning: Signal lost."
+	objectives = "...Other hive- they're here... fighting hosts? Kill... KILL THEM ALL!"
 
 /datum/emergency_call/feral_xenos/spawn_items()
 	var/turf/drop_spawn = get_spawn_point(TRUE)

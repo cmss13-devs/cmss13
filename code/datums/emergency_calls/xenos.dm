@@ -38,14 +38,6 @@
 
 	QDEL_NULL(current_mob)
 
-/datum/emergency_call/xenos/corpsespawner(turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
-	var/list/obj/effect/landmark/corpse
-	if(!istype(spawn_loc))
-		return //No usable spawn.
-
-	for()
-
 
 
 /datum/emergency_call/xenos/platoon

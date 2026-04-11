@@ -106,7 +106,7 @@
 
 
 /obj/docking_port/mobile/marine_dropship/pelican/echo
-	name = "D77H-TCE \"Pelican\" dropship Echo-530"
+	name = "Echo-530"
 	id = DROPSHIP_PELICAN_ECHO
 
 
@@ -115,7 +115,7 @@
 
 
 /obj/docking_port/mobile/marine_dropship/pelican/sierra
-	name = "D77H-TCE \"Pelican\" dropship Sierra-822"
+	name = "Sierra-822"
 	id = DROPSHIP_PELICAN_SIERRA
 
 
@@ -124,7 +124,7 @@
 
 
 /obj/docking_port/mobile/marine_dropship/pelican/whiskey
-	name = "D77H-TCE \"Pelican\" dropship Whiskey-194"
+	name = "Whiskey-194"
 	id = DROPSHIP_PELICAN_WHISKEY
 
 

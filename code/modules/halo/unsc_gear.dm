@@ -800,6 +800,7 @@
 	desc = "Standard-issue helmet to the UNSC Marine Corps. Various attachment points on the helmet allow for various equipment to be fitted to the helmet."
 	icon = 'icons/halo/obj/items/clothing/hats/hats_by_faction/hat_unsc.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	built_in_visors = null
 	start_down_visor_type = null
 	item_icons = list(

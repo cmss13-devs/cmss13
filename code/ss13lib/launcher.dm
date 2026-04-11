@@ -9,7 +9,7 @@
 
 /datum/ss13lib/proc/setup_launcher(client/setup_client, port, key)
 	var/hash = "[setup_client.address]+[setup_client.computer_id]"
-	var/has_existing = hash in connection_details_has_launcher
+	var/has_existing = (hash in connection_details_has_launcher)
 
 	if(!port || !key)
 		if(!has_existing)

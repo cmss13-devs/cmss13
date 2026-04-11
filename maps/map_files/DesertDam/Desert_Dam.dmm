@@ -1192,11 +1192,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
-"adG" = (
-/turf/closed/wall/r_wall/bunker{
-	name = "reinforced metal wall"
-	},
-/area/sky)
 "adH" = (
 /turf/closed/wall/almayer/outer,
 /area/desert_dam/exterior/roof)
@@ -1757,6 +1752,13 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
+	},
+/obj/structure/cable/heavyduty,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/exterior/roof)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2496,6 +2498,15 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/exterior/roof)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -14938,6 +14949,24 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/exterior/roof)
+"aVa" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/exterior/roof)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20445,6 +20474,15 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
+"blD" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer{
+	icon_state = "solarpanel1"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/exterior/roof)
 "blE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -205450,19 +205488,19 @@ wnN
 wnN
 wnN
 wnN
-adG
-adG
-adG
-adG
-adG
+buo
+buo
+buo
+buo
+buo
 ipW
 ipW
 ipW
 ipW
-adG
-adG
-adG
-adG
+buo
+buo
+buo
+buo
 wnN
 wnN
 wnN
@@ -205684,17 +205722,17 @@ wnN
 ipW
 wnN
 wnN
-adG
+buo
 ipW
 ipW
-adG
-ipW
-ipW
-ipW
+buo
 ipW
 ipW
 ipW
-adG
+ipW
+ipW
+ipW
+buo
 ipW
 wnN
 wnN
@@ -206882,7 +206920,7 @@ acw
 acw
 acw
 adp
-xkb
+btb
 adg
 acw
 acw
@@ -211328,7 +211366,7 @@ adv
 aci
 aci
 aci
-joU
+abh
 aci
 aci
 aci
@@ -211562,7 +211600,7 @@ adv
 aci
 aci
 adr
-joU
+abh
 adi
 aci
 aci
@@ -211796,7 +211834,7 @@ adv
 aci
 aci
 aci
-joU
+abh
 aci
 aci
 aci
@@ -213066,11 +213104,11 @@ ipW
 ipW
 ipW
 ipW
-adG
-adG
-adG
-adG
-adG
+buo
+buo
+buo
+buo
+buo
 ipW
 ipW
 ipW
@@ -213300,11 +213338,11 @@ ipW
 ipW
 ipW
 ipW
-adG
+buo
 wnN
 wnN
 wnN
-adG
+buo
 ipW
 ipW
 ipW
@@ -213534,7 +213572,7 @@ ipW
 ipW
 ipW
 ipW
-adG
+buo
 wnN
 wnN
 wnN
@@ -213768,7 +213806,7 @@ ipW
 ipW
 ipW
 ipW
-adG
+buo
 wnN
 wnN
 wnN
@@ -214002,7 +214040,7 @@ ipW
 ipW
 ipW
 ipW
-adG
+buo
 wnN
 wnN
 wnN
@@ -214236,7 +214274,7 @@ ipW
 ipW
 ipW
 ipW
-adG
+buo
 wnN
 wnN
 ipW
@@ -214470,8 +214508,8 @@ ipW
 ipW
 ipW
 ipW
-adG
-adG
+buo
+buo
 ipW
 ipW
 ipW
@@ -216236,11 +216274,11 @@ ipW
 ipW
 bhG
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
+dsS
+dsS
+dsS
+rdv
+dsS
 aNy
 wnN
 wnN
@@ -216473,8 +216511,8 @@ dsS
 aNy
 aNy
 aNy
-aNy
-aNy
+dsS
+dsS
 aNy
 aNy
 wnN
@@ -216707,8 +216745,8 @@ dsS
 aNy
 aNy
 aNy
-aNy
-aNy
+dsS
+dsS
 aNy
 aNy
 aNy
@@ -216941,8 +216979,8 @@ dsS
 aNy
 aNy
 aNy
-aNy
-aNy
+dsS
+dsS
 aNy
 aNy
 aNy
@@ -217171,12 +217209,12 @@ ipW
 ipW
 ipW
 bhG
+aRz
+aQV
+aQV
+aQV
+aRw
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -217405,12 +217443,12 @@ ipW
 ipW
 ipW
 bhG
+aRA
+blD
+ahJ
+aft
+aRx
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -217639,12 +217677,12 @@ ipW
 ipW
 ipW
 bhG
+aRA
+aQY
+aRh
+aQY
+aRx
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -217873,12 +217911,12 @@ ipW
 ipW
 ipW
 bhG
+aRA
+blD
+aUZ
+aft
+aRx
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -218107,12 +218145,12 @@ ipW
 ipW
 ipW
 bhG
+aRA
+aQY
+aRh
+aQY
+aRx
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -218341,12 +218379,12 @@ dWI
 dWI
 dWI
 dsS
+aRA
+blD
+aVa
+aft
+aRx
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -218575,12 +218613,12 @@ dsS
 dsS
 dsS
 dsS
+aRB
+aQZ
+aQZ
+aQZ
+aRy
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -218805,16 +218843,16 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
-dsS
-dsS
 aND
 aNy
 aNy
 aNy
 aNy
 aNy
+aNy
+aNy
+dsS
+dsS
 aNy
 aNy
 aNy
@@ -219038,10 +219076,6 @@ ipW
 ipW
 ipW
 bhG
-dsS
-dsS
-dsS
-dsS
 mMg
 aNE
 aNy
@@ -219049,6 +219083,10 @@ aNy
 aNy
 aNy
 aNy
+aNy
+aNy
+dsS
+dsS
 aNy
 aNy
 aNy
@@ -219273,16 +219311,16 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
-dsS
-dsS
 aNG
 aNy
 aNy
 aNy
 aNy
 aNy
+aNy
+aNy
+dsS
+dsS
 aNy
 aNy
 aNy
@@ -219511,12 +219549,12 @@ dsS
 dsS
 dsS
 dsS
+aRz
+aQV
+aQV
+aQV
+aRw
 dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -219743,14 +219781,14 @@ uAu
 jGi
 dsS
 dsS
+aTI
 dsS
+aRA
+blD
+ahJ
+aft
+aRx
 dsS
-dsS
-aNy
-aNy
-aNy
-aNy
-aNy
 aNy
 aNy
 aNy
@@ -219977,13 +220015,13 @@ ipW
 ipW
 bhG
 dsS
+aTK
 dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
+aRA
+aQY
+aRh
+aQY
+aRx
 dsS
 aNy
 aNy
@@ -220213,11 +220251,11 @@ bhG
 dsS
 dsS
 dsS
-dsS
-dsS
-dsS
-dsS
-dsS
+aRA
+blD
+aUZ
+aft
+aRx
 dsS
 aNy
 aNy
@@ -220447,11 +220485,11 @@ bhG
 dsS
 aNy
 aNy
-dsS
-dsS
-dsS
-dsS
-rdv
+aRA
+aQY
+aRh
+aQY
+aRx
 dsS
 aNy
 aNy
@@ -220681,11 +220719,11 @@ bhG
 dsS
 aNy
 aNy
-jKa
-dsS
-aTI
-dsS
-dsS
+aRA
+blD
+aVa
+aft
+aRx
 dsS
 aNy
 aNy
@@ -220915,11 +220953,11 @@ bhG
 dsS
 aNy
 aNy
-dsS
-dsS
-aTK
-dsS
-dsS
+aRB
+aQZ
+aQZ
+aQZ
+aRy
 dsS
 aNy
 aNy
@@ -221381,7 +221419,7 @@ ipW
 ipW
 bhG
 dsS
-dsS
+jKa
 dsS
 dsS
 dsS

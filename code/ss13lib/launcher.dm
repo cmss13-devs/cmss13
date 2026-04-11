@@ -8,7 +8,8 @@
 	var/list/connection_details_has_launcher = list()
 
 /datum/ss13lib/proc/setup_launcher(client/setup_client, port, key)
-	var/has_existing = "[setup_client.address]+[setup_client.computer_id]" in connection_details_has_launcher
+	var/hash = "[setup_client.address]+[setup_client.computer_id]"
+	var/has_existing = hash in connection_details_has_launcher
 
 	if(!port || !key)
 		if(!has_existing)
@@ -20,7 +21,7 @@
 	launcher.setup(setup_client, port, key)
 
 	ckey_to_launcher[setup_client.ckey] = launcher
-	connection_details_has_launcher |= "[setup_client.address]+[setup_client.computer_id]"
+	connection_details_has_launcher |= key
 
 	return TRUE
 

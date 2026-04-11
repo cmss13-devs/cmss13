@@ -46,7 +46,8 @@
 
 		return FALSE
 
-	if(is_guest(new_client.key) && ("[new_client.address]+[new_client.computer_id]" in connection_details_has_launcher))
+	var/hash = "[new_client.address]+[new_client.computer_id]"
+	if(is_guest(new_client.key) && (hash in connection_details_has_launcher))
 		SS13LIB_INFO_LOG("Reconnection detected for [new_client.address], serving launcher browser.")
 
 		new_client.mob = new /mob/ss13lib_holder_mob(null)

@@ -18,6 +18,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	var/hal_screwyhud = 0 //1 - critical, 2 - dead, 3 - oxygen indicator, 4 - toxin indicator
 	var/handling_hal = FALSE
 	var/hal_crit = FALSE
+	COOLDOWN_DECLARE(give_item_cooldown)
 
 /mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal)

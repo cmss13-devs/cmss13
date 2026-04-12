@@ -12,7 +12,6 @@
 	arrival_message = "[MAIN_SHIP_NAME], this is UNSC High Command; Recon craft nearby are reading a flood hulk on collision course with you!"
 
 /datum/emergency_call/zombie/create_member(datum/mind/M, turf/override_spawn_loc)
-	set waitfor = 0
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
@@ -23,7 +22,5 @@
 
 	arm_equipment(H, /datum/equipment_preset/other/zombie, TRUE, TRUE)
 
-	sleep(20)
-	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Zombie!"))
-		to_chat(H, SPAN_ROLE_BODY("Spread... Consume... Infect..."))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_ROLE_HEADER("You are a Zombie!")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_ROLE_BODY("Spread... Consume... Infect...")), 1 SECONDS)

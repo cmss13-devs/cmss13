@@ -7,7 +7,7 @@
 
 	/// The allies that will be spawned by arriving at this station (only one entry chosen randomly per call)
 	var/list/allies
-
+/*
 /datum/spaceport/uscm
 	name = "Mont-Blanc 41 LG Station"
 	allies = list(
@@ -34,4 +34,12 @@
 	allies = list(
 		/datum/emergency_call/contractors,
 		/datum/emergency_call/heavy_mercs/friendly,
+	)
+*/
+/datum/spaceport/unsc
+	name = "UNSC Orbital Weapons Platform Mackay Station"
+	docking_message = "Attention, UNSC Vessel. We're boarding to help you shake those Covenant off."
+	allies = list(
+		/datum/emergency_call/unsc,
+		/datum/emergency_call/unsc/odst,
 	)

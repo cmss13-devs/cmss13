@@ -493,6 +493,13 @@
 	attach_id = 6
 
 
+/obj/effect/attach_point/crew_weapon/pelican_echo
+	ship_tag = DROPSHIP_PELICAN_ECHO
+
+/obj/effect/attach_point/crew_weapon/pelican_echo/floor
+	plane = FLOOR_PLANE
+
+
 /obj/effect/attach_point/fuel/pelican_echo
 	ship_tag = DROPSHIP_PELICAN_ECHO
 	layer = 4.13
@@ -557,6 +564,12 @@
 	attach_id = 6
 
 
+/obj/effect/attach_point/crew_weapon/pelican_sierra
+	ship_tag = DROPSHIP_PELICAN_SIERRA
+
+/obj/effect/attach_point/crew_weapon/pelican_sierra/floor
+	plane = FLOOR_PLANE
+
 /obj/effect/attach_point/fuel/pelican_sierra
 	ship_tag = DROPSHIP_PELICAN_SIERRA
 	layer = 4.13
@@ -620,6 +633,11 @@
 /obj/effect/attach_point/electronics/pelican_whiskey/right
 	attach_id = 6
 
+/obj/effect/attach_point/crew_weapon/pelican_whiskey
+	ship_tag = DROPSHIP_PELICAN_WHISKEY
+
+/obj/effect/attach_point/crew_weapon/pelican_whiskey/floor
+	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/fuel/pelican_whiskey
 	ship_tag = DROPSHIP_PELICAN_WHISKEY

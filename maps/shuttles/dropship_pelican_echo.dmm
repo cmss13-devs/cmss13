@@ -143,8 +143,8 @@
 /area/shuttle/pelican/echo)
 "nL" = (
 /obj/effect/roof_node/pelican,
-/obj/effect/attach_point/crew_weapon/dropship2/floor{
-	attach_id = 7
+/obj/effect/attach_point/crew_weapon/pelican_echo/floor{
+	attach_id = 9
 	},
 /turf/open/shuttle/pelican/paneling/left,
 /area/shuttle/pelican/echo)
@@ -366,6 +366,13 @@
 	},
 /turf/template_noop,
 /area/shuttle/pelican/echo)
+"Lh" = (
+/obj/effect/roof_node/pelican,
+/obj/effect/attach_point/crew_weapon/pelican_echo/floor{
+	attach_id = 8
+	},
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/echo)
 "ME" = (
 /obj/structure/shuttle/part/pelican/no_dense{
 	icon_state = "11,4";
@@ -557,7 +564,7 @@
 	pixel_y = 25
 	},
 /obj/effect/roof_node/pelican,
-/obj/effect/attach_point/crew_weapon/dropship2/floor{
+/obj/effect/attach_point/crew_weapon/pelican_echo/floor{
 	attach_id = 7
 	},
 /turf/open/shuttle/pelican/paneling/left,
@@ -845,7 +852,7 @@ Fw
 Ne
 Yl
 NA
-nL
+Lh
 NA
 nL
 NA

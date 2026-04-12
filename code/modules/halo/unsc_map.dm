@@ -488,7 +488,7 @@
 	icon = 'icons/halo/turf/walls/unsc_window.dmi'
 	icon_state = "unsc_window0"
 	basestate = "unsc_window"
-	health = 300
+	health = 60
 	reinf = TRUE
 	window_frame = /obj/structure/window_frame/unsc
 
@@ -526,7 +526,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/unsc/reinforced/hull
-	turf_flags = WALL_HULL
+	turf_flags = TURF_HULL
 	icon_state = "unsc_hull"
 
 /turf/closed/wall/unsc/reinforced/hull/titanium_a

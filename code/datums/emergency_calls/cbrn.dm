@@ -42,7 +42,7 @@
 /datum/emergency_call/cbrn/ert
 	name = "CBRN (Distress)"
 	arrival_message = "Attention, this is the USS Kurtz, we have dispatched a CBRN squad to your ship per your distress call. Stand by for arrival."
-	probability = 10
+	probability = 0
 
 /datum/emergency_call/cbrn/ert/New()
 	..()

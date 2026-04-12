@@ -4,7 +4,7 @@
 /datum/emergency_call/upp
 	name = "UPP Naval Infantry (Squad) (RANDOM)"
 	mob_max = 9
-	probability = 20
+	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT3
 	home_base = /datum/lazy_template/ert/upp_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp

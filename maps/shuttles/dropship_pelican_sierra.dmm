@@ -129,6 +129,13 @@
 	},
 /turf/template_noop,
 /area/shuttle/pelican/sierra)
+"lE" = (
+/obj/effect/roof_node/pelican,
+/obj/effect/attach_point/crew_weapon/pelican_sierra/floor{
+	attach_id = 8
+	},
+/turf/open/shuttle/pelican/paneling/left,
+/area/shuttle/pelican/sierra)
 "nz" = (
 /obj/structure/shuttle/part/pelican{
 	icon_state = "10,5";
@@ -320,8 +327,8 @@
 /area/shuttle/pelican/sierra)
 "Jt" = (
 /obj/effect/roof_node/pelican,
-/obj/effect/attach_point/crew_weapon/dropship2/floor{
-	attach_id = 7
+/obj/effect/attach_point/crew_weapon/pelican_sierra/floor{
+	attach_id = 9
 	},
 /turf/open/shuttle/pelican/paneling/left,
 /area/shuttle/pelican/sierra)
@@ -548,7 +555,7 @@
 	pixel_y = 25
 	},
 /obj/effect/roof_node/pelican,
-/obj/effect/attach_point/crew_weapon/dropship2/floor{
+/obj/effect/attach_point/crew_weapon/pelican_sierra/floor{
 	attach_id = 7
 	},
 /turf/open/shuttle/pelican/paneling/left,
@@ -836,7 +843,7 @@ Fw
 Ne
 Yl
 NA
-Jt
+lE
 NA
 Jt
 NA

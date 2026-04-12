@@ -2,7 +2,7 @@
 /datum/emergency_call/cmb
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
-	probability = 10
+	probability = 0
 	home_base = /datum/lazy_template/ert/weyland_station
 
 	var/max_synths = 1
@@ -214,7 +214,7 @@
 	name = "CMB - Colonial Marshals Riot Control Unit (Friendly)"
 	mob_max = 8
 	mob_min = 3
-	probability = 20
+	probability = 0
 	home_base = /datum/lazy_template/ert/weyland_station
 	max_heavies = 1
 	max_medics = 2

@@ -261,38 +261,38 @@
 	switch(high_priority)
 		// USCM JOBS
 		if(JOB_SQUAD_MARINE)
-			return /datum/equipment_preset/uscm/private_equipped
+			return /datum/equipment_preset/unsc/pfc/equipped
 		if(JOB_SQUAD_ENGI)
-			return /datum/equipment_preset/uscm/engineer_equipped
+			return /datum/equipment_preset/unsc/pfc/equipped
 		if(JOB_SQUAD_LEADER)
-			return /datum/equipment_preset/uscm/leader_equipped
+			return /datum/equipment_preset/unsc/leader/equipped
 		if(JOB_SQUAD_MEDIC)
-			return /datum/equipment_preset/uscm/medic_equipped
+			return /datum/equipment_preset/unsc/medic/equipped
 		if(JOB_SQUAD_SPECIALIST)
-			return /datum/equipment_preset/uscm/specialist_equipped
+			return /datum/equipment_preset/unsc/spec/equipped_sniper
 		if(JOB_SQUAD_SMARTGUN)
 			return /datum/equipment_preset/uscm/smartgunner_equipped
 		if(JOB_SQUAD_TEAM_LEADER)
-			return /datum/equipment_preset/uscm/tl_equipped
+			return /datum/equipment_preset/unsc/tl/equipped
 		if(JOB_CO)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_CO]
 			return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(owner)]"]
 		if(JOB_SO)
-			return /datum/equipment_preset/uscm_ship/so
+			return /datum/equipment_preset/unsc/platco/equipped
 		if(JOB_XO)
-			return /datum/equipment_preset/uscm_ship/xo
+			return /datum/equipment_preset/unsc/platco/equipped
 		if(JOB_AUXILIARY_OFFICER)
 			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_CAS_PILOT)
-			return /datum/equipment_preset/uscm_ship/gp/full
+			return /datum/equipment_preset/unsc/pilot/equipped
 		if(JOB_TANK_CREW)
 			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_DROPSHIP_PILOT)
-			return /datum/equipment_preset/uscm_ship/dp/full
+			return /datum/equipment_preset/unsc/pilot/equipped
 		if(JOB_DROPSHIP_CREW_CHIEF)
-			return /datum/equipment_preset/uscm_ship/dcc/full
+			return /datum/equipment_preset/unsc/pilot/equipped
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
 		if(JOB_CORPORATE_BODYGUARD)

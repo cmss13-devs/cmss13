@@ -1,9 +1,9 @@
 /datum/job/marine/smartgunner
 	title = JOB_SQUAD_SMARTGUN
-	total_positions = 4
-	spawn_positions = 4
-	allow_additional = 1
-	scaled = 1
+	total_positions = 0
+	spawn_positions = 0
+	allow_additional = 0
+	scaled = 0
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/sg
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support."

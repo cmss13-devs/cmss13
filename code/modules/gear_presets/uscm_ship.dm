@@ -50,8 +50,9 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	job_title = JOB_CORPORATE_LIAISON
+	manifest_title = "ONI Liaison"
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
-	role_comm_title = "CL"
+	role_comm_title = "ONI Spc"
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
@@ -100,7 +101,7 @@
 	assignment = JOB_CORPORATE_BODYGUARD
 	job_title = JOB_CORPORATE_BODYGUARD
 	paygrades = list(PAY_SHORT_WY_SEC_TPPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_PPO = JOB_PLAYTIME_TIER_1, PAY_SHORT_WY_SEC_PPS = JOB_PLAYTIME_TIER_3, PAY_SHORT_WY_SEC_PPC = JOB_PLAYTIME_TIER_4)
-	role_comm_title = "CB"
+	role_comm_title = "ONI Sec"
 	skills = /datum/skills/wy_goon
 
 	minimap_icon = "goon_guard"

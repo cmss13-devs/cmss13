@@ -3,7 +3,7 @@
     "map_name": "UNSC Valley Forge",
     "map_path": "map_files/UNSC_Valley_Forge",
     "map_file": "UNSC_Valley_Forge.dmm",
-    "webmap_url": "Almayer",
+    "webmap_url": "UNSC_Valley_Forge_V1",
     "traits": [{"Marine Main Ship": true}],
     "nightmare_path": "maps/Nightmare/maps/UNSC_Valley_Forge/",
     "ground_crash_template_name": "USS_Almayer_crash.dmm",

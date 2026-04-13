@@ -400,6 +400,7 @@
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/belt/gun/m6,
 		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,

@@ -22368,7 +22368,6 @@
 /area/almayer/medical/medical_science)
 "piM" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/vending/snack,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
@@ -22822,11 +22821,6 @@
 	},
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/lower/starboard_umbilical)
-"pBD" = (
-/obj/structure/window/framed/unsc,
-/obj/structure/window/framed/unsc,
-/turf/open/floor/plating,
-/area/almayer/squads/bravo)
 "pCk" = (
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
@@ -26626,7 +26620,6 @@
 	pixel_x = -8;
 	pixel_y = 28
 	},
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze{
 	pixel_x = 2;
 	pixel_y = 9
@@ -55372,7 +55365,7 @@ xwd
 eSO
 uiz
 wpu
-pBD
+bQl
 ylH
 sVq
 ylH

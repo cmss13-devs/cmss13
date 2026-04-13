@@ -421,7 +421,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hands slip off [target]'s prosthesis a resounding clunk."),
 		SPAN_WARNING("[user]'s hands slip off your prosthesis with a resounding clunk."),
-		SPAN_WARNING("[user] can't quite get a grip on [target]'s prosthesis with a resounding clunk."))
+		SPAN_WARNING("[user]'s hands slip off [target]'s prosthesis with a resounding clunk."))
 
 	log_interact(user, target, "[key_name(user)] failed to remove the last of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name].")
 	return FALSE

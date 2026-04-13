@@ -145,7 +145,7 @@
 		// Add points depending on who controls it
 		var/turf/T = get_turf(target)
 		var/area/A = get_area(T)
-		if(istype(A, /area/almayer/medical/morgue) || istype(A, /area/almayer/medical/containment))
+		if(istype(A, /area/ship/almayer/medical/morgue) || istype(A, /area/ship/almayer/medical/containment))
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)
@@ -238,7 +238,7 @@
 	deactivate()
 
 /datum/cm_objective/move_mob/almayer
-	destination = /area/almayer
+	destination = /area/ship/almayer
 
 /datum/cm_objective/move_mob/almayer/survivor
 	name = "Rescue the Survivor"

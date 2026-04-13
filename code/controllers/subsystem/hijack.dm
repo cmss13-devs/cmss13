@@ -244,42 +244,22 @@ SUBSYSTEM_DEF(hijack)
 			initiate_charge_ftl()
 
 		// Calculate new progression
-		// i couldnt get a nicer way to work so you get this
+		for(var/area/ship/cycled_area as anything in current_run)
+			current_run -= cycled_area
 
-		if(MAIN_SHIP_NAME == MAP_SULACO)
-			for(var/area/sulaco/cycled_area as anything in current_run)
-				current_run -= cycled_area
+			if(progress_areas[cycled_area] != cycled_area.power_equip)
+				progress_areas[cycled_area] = !progress_areas[cycled_area]
+				announce_area_power_change(cycled_area)
 
-				if(progress_areas[cycled_area] != cycled_area.power_equip)
-					progress_areas[cycled_area] = !progress_areas[cycled_area]
-					announce_area_power_change(cycled_area)
+			if(progress_areas[cycled_area])
+				switch(cycled_area.hijack_evacuation_type)
+					if(EVACUATION_TYPE_ADDITIVE)
+						current_run_progress_additive += cycled_area.hijack_evacuation_weight
+					if(EVACUATION_TYPE_MULTIPLICATIVE)
+						current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
 
-				if(progress_areas[cycled_area])
-					switch(cycled_area.hijack_evacuation_type)
-						if(EVACUATION_TYPE_ADDITIVE)
-							current_run_progress_additive += cycled_area.hijack_evacuation_weight
-						if(EVACUATION_TYPE_MULTIPLICATIVE)
-							current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
-
-				if(MC_TICK_CHECK)
-					return
-		else
-			for(var/area/almayer/cycled_area as anything in current_run)
-				current_run -= cycled_area
-
-				if(progress_areas[cycled_area] != cycled_area.power_equip)
-					progress_areas[cycled_area] = !progress_areas[cycled_area]
-					announce_area_power_change(cycled_area)
-
-				if(progress_areas[cycled_area])
-					switch(cycled_area.hijack_evacuation_type)
-						if(EVACUATION_TYPE_ADDITIVE)
-							current_run_progress_additive += cycled_area.hijack_evacuation_weight
-						if(EVACUATION_TYPE_MULTIPLICATIVE)
-							current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
-
-				if(MC_TICK_CHECK)
-					return
+			if(MC_TICK_CHECK)
+				return
 
 		last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
 		current_progress += last_run_progress_change
@@ -517,26 +497,26 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/heat_engine_room()
 	engine_room_heated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/ship/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T90C
 	for(var/mob/current_mob as anything in GLOB.living_player_list)
 		if(current_mob?.stat != CONSCIOUS)
 			continue
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
+		if(istype(mob_area, /area/ship/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
 	engine_room_superheated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/ship/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T120C //slowly deals burn at this temp
 	for(var/mob/current_mob as anything in GLOB.living_player_list)
 		if(current_mob?.stat != CONSCIOUS)
 			continue
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
+		if(istype(mob_area, /area/ship/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()

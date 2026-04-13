@@ -347,7 +347,7 @@
 		return FALSE
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
-	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
+	if(!istype(loc.loc, /area/ship/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
 		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
 		return FALSE
 

@@ -328,7 +328,7 @@
 	width  = 6
 	height = 9
 	airlock_id = "s_engi_ext"
-	airlock_area = /area/almayer/engineering/upper_engineering/notunnel
+	airlock_area = /area/ship/almayer/engineering/upper_engineering/notunnel
 
 /obj/docking_port/stationary/emergency_response/external/port5
 	name = "Almayer starboard external airlock"
@@ -337,7 +337,7 @@
 	width  = 6
 	height = 9
 	airlock_id = "n_engi_ext"
-	airlock_area = /area/almayer/engineering/upper_engineering/notunnel
+	airlock_area = /area/ship/almayer/engineering/upper_engineering/notunnel
 
 /obj/docking_port/stationary/emergency_response/external/hangar_port
 	name = "Almayer hanger port external airlock"
@@ -348,7 +348,7 @@
 	dheight = 21
 	dwidth  = 0
 	airlock_id = "s_umbilical"
-	airlock_area = /area/almayer/hallways/lower/port_umbilical
+	airlock_area = /area/ship/almayer/hallways/lower/port_umbilical
 
 /obj/docking_port/stationary/emergency_response/external/hangar_starboard
 	name = "Almayer hanger starboard external airlock"
@@ -359,7 +359,7 @@
 	dheight = 12
 	dwidth  = 0
 	airlock_id = "n_umbilical"
-	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
+	airlock_area = /area/ship/almayer/hallways/lower/starboard_umbilical
 
 /obj/docking_port/stationary/emergency_response/external/hangar_port_upp
 	name = "Rostock hanger port external airlock"

@@ -354,7 +354,7 @@
 		if(istype(E, /obj/structure/dropship_equipment/adv_comp/docking))
 			var/list/crash_turfs = list()
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
-				if(istype(get_area(TU), /area/almayer/hallways/hangar))
+				if(istype(get_area(TU), /area/ship/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(length(crash_turfs))
 				T_trg = pick(crash_turfs)

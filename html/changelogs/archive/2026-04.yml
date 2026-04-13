@@ -25,3 +25,7 @@
   ori-disillusion-mirnov:
   - imageadd: readd old hudead and hudhcdead
   - imagedel: deleted new huddead and hudhcdead
+2026-04-11:
+  hry-gh:
+  - bugfix: fixes server lag when updating the minimap, after having opened and closed
+      the minimap sufficient times in a round

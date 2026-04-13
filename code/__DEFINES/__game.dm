@@ -43,6 +43,7 @@
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
+#define MAP_VALLEY_FORGE "UNSC_Valley_Forge" // halo event ship
 #define MAP_HUNTERSHIP "Hunter Ship"
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"

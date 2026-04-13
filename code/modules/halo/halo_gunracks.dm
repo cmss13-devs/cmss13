@@ -52,7 +52,9 @@
 	name = "halo gun rack holder"
 	desc = "A UNSC weapon rack."
 	icon = 'icons/halo/obj/structures/gun_racks.dmi'
-	icon_state = "template"
+	icon_state = "ma5c"
+	allowed_type = /obj/item/weapon/gun/rifle/halo/ma5c
+	populate_type = /obj/item/weapon/gun/rifle/halo/ma5c
 
 /obj/structure/gun_rack/halo/medkit
 	name = "medkit station"

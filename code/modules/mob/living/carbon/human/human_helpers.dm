@@ -445,7 +445,7 @@
 	if(ishuman(mob))
 		var/mob/living/carbon/human/human = mob
 		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD) && !isxeno(mob)) // block cov strip/dragging but not xeno capping
 		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

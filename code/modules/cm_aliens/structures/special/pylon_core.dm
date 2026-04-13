@@ -56,9 +56,19 @@
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/process(delta_time)
-	if(lesser_drone_spawns < lesser_drone_spawn_limit)
-		// One every 10 seconds while on ovi, one every 120-ish seconds while off ovi
-		lesser_drone_spawns = min(lesser_drone_spawns + ((linked_hive.living_xeno_queen?.ovipositor ? 0.1 : 0.008) * delta_time), lesser_drone_spawn_limit)
+	var/charge_limit = lesser_drone_spawn_limit
+	if(istype(src, /obj/effect/alien/resin/special/pylon/core))
+		var/obj/effect/alien/resin/special/pylon/core/core = src
+		if(core.hijack_lesser_drone_regen)
+			charge_limit = 20
+
+	if(lesser_drone_spawns < charge_limit)
+		var/regen_rate = linked_hive.living_xeno_queen?.ovipositor ? 0.1 : 0.008
+		if(istype(src, /obj/effect/alien/resin/special/pylon/core))
+			var/obj/effect/alien/resin/special/pylon/core/core = src
+			if(core.hijack_lesser_drone_regen)
+				regen_rate = 0.2
+		lesser_drone_spawns = min(lesser_drone_spawns + (regen_rate * delta_time), charge_limit)
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
@@ -77,7 +87,13 @@
 	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)
 		lesser_count++
 
-	. += "Currently holding [SPAN_NOTICE("[floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
+	var/max_lesser_drone_spawns = lesser_drone_spawn_limit
+	if(istype(src, /obj/effect/alien/resin/special/pylon/core))
+		var/obj/effect/alien/resin/special/pylon/core/core = src
+		if(core.hijack_lesser_drone_regen)
+			max_lesser_drone_spawns = 20
+
+	. += "Currently holding [SPAN_NOTICE("[floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[max_lesser_drone_spawns]")] lesser drones."
 	. += "There are currently [SPAN_NOTICE("[lesser_count]")] lesser drones in the hive. The hive can support a total of [SPAN_NOTICE("[linked_hive.lesser_drone_limit]")] lesser drones at present."
 
 /obj/effect/alien/resin/special/pylon/attack_ghost(mob/dead/observer/user)
@@ -235,6 +251,7 @@
 	var/spawn_cooldown = 30 SECONDS
 	var/surge_cooldown = 90 SECONDS
 	var/surge_incremental_reduction = 3 SECONDS
+	var/hijack_lesser_drone_regen = FALSE
 
 	plane = FLOOR_PLANE
 
@@ -245,12 +262,21 @@
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_INBOUND, PROC_REF(on_hijack_inbound))
+	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND)
+		hijack_lesser_drone_regen = TRUE
+
 	// Pick the closest xeno resource activator
 
 	update_minimap_icon()
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
+
+/obj/effect/alien/resin/special/pylon/core/proc/on_hijack_inbound()
+	SIGNAL_HANDLER
+
+	hijack_lesser_drone_regen = TRUE
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -410,6 +436,8 @@
 		. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/Destroy()
+	UnregisterSignal(SSdcs, COMSIG_GLOB_HIJACK_INBOUND)
+
 	if(linked_hive)
 		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null

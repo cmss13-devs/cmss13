@@ -1067,6 +1067,10 @@
 	msg_admin_niche("[key_name(hugger)] has joined as a facehugger at ([A.x],[A.y],[A.z]).")
 
 /datum/hive_status/proc/update_lesser_drone_limit()
+	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND)
+		lesser_drone_limit = INFINITY
+		return
+
 	var/countable_xeno_iterator = 0
 	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
 		if(cycled_xeno.counts_for_slots)
@@ -1097,9 +1101,10 @@
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+	var/lesser_drone_join_delay = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND ? 25 SECONDS : JOIN_AS_LESSER_DRONE_DELAY
+	if(world.time - user.timeofdeath < lesser_drone_join_delay)
+		var/time_left = floor((user.timeofdeath + lesser_drone_join_delay - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [lesser_drone_join_delay / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -1760,4 +1765,3 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
-

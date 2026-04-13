@@ -522,12 +522,12 @@
 	storage_slots = 6
 
 	can_hold = list(
-	/obj/item/storage/pill_bottle/packet/tricordrazine/cov,
-	/obj/item/stack/medical/splint/cov,
-	/obj/item/stack/medical/ointment/cov,
-	/obj/item/stack/medical/bruise_pack/cov,
-	/obj/item/reagent_container/food/snacks/protein_pack/cov,
-	/obj/item/reagent_container/hypospray/autoinjector/cov,
+		/obj/item/storage/pill_bottle/packet/tricordrazine/cov,
+		/obj/item/stack/medical/splint/cov,
+		/obj/item/stack/medical/ointment/cov,
+		/obj/item/stack/medical/bruise_pack/cov,
+		/obj/item/reagent_container/food/snacks/protein_pack/cov,
+		/obj/item/reagent_container/hypospray/autoinjector/cov,
 	)
 
 /obj/item/storage/pouch/firstaid/full/alternate/cov/fill_preset_inventory()

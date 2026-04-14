@@ -355,6 +355,10 @@
 
 /datum/equipment_preset/synth/survivor/solaris/corporate
 	name = "Survivor - Solaris - Synthetic - Corporate Assistant"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Assistant Synthetic"
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"

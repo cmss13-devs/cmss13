@@ -119,7 +119,6 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_SULACO_WEST "lifeboat-sulaco-west"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
-
 #define DROPSHIP_ALAMO "dropship_alamo"
 #define DROPSHIP_NORMANDY "dropship_normandy"
 #define DROPSHIP_SAIPAN "dropship_saipan"

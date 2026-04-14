@@ -210,7 +210,6 @@ SUBSYSTEM_DEF(hijack)
 		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
 		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
-		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 
@@ -423,6 +422,13 @@ SUBSYSTEM_DEF(hijack)
 			lifeboat.status = LIFEBOAT_ACTIVE
 			lifeboat_dock.open_dock()
 
+/// Turns off ability to manually take off lifeboats
+/datum/controller/subsystem/hijack/proc/deactivate_lifeboats()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.status = LIFEBOAT_INACTIVE
+
 /// Unlocks all marine dropship and optionally ert dropship doors on the mainship
 /datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
@@ -497,14 +503,6 @@ SUBSYSTEM_DEF(hijack)
 		if(istype(pad, /obj/docking_port/stationary/vehicle_elevator))
 			continue
 		pad.disabled = TRUE
-
-/// Turns off ability to manually take off lifeboats
-/datum/controller/subsystem/hijack/proc/deactivate_lifeboats()
-	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
-		if(lifeboat && lifeboat.available)
-			lifeboat.status = LIFEBOAT_INACTIVE
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -988,6 +986,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ftl_charge()
 	in_ftl = TRUE
 	in_ftl_time = world.time
+
 	// Return to sender any shuttles already in transit to the ship
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle as anything in SSshuttle.mobile)
 		if(shuttle.destination && is_mainship_level(shuttle.destination.z))
@@ -996,6 +995,7 @@ SUBSYSTEM_DEF(hijack)
 	// Disable all non-pod/elevator pads
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_pad_landing()
+
 	marine_announcement("Initiating quantum jump. Opening virtual mass field. Lifeboats and pods disabled until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
@@ -1063,7 +1063,6 @@ SUBSYSTEM_DEF(hijack)
 
 	// Allow pads to work again except marine_dropship pads
 	allow_dropship_pad_landing()
-
 
 	if(!unintentionally)
 		shakeship(

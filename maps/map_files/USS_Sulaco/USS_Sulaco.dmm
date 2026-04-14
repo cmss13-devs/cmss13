@@ -16,7 +16,7 @@
 "aad" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer/dark_sterile,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "aae" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/wood,
@@ -429,6 +429,9 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/ship/sulaco/hallway/lower_main_hall)
+"abr" = (
+/turf/closed/wall/almayer/outer,
+/area/ship/sulaco/medbay/chemistry)
 "abs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -1823,11 +1826,11 @@
 "aeY" = (
 /obj/structure/window/framed/almayer/white,
 /turf/open/floor/almayer/dark_sterile2,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "aeZ" = (
 /obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer/dark_sterile2,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	req_one_access = null;
@@ -1837,7 +1840,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afb" = (
 /turf/closed/wall/almayer,
 /area/ship/sulaco/medbay/west)
@@ -1846,11 +1849,11 @@
 	pixel_x = -1
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afd" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer/sterile_green_side,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afe" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
@@ -1902,7 +1905,7 @@
 	pixel_x = 7
 	},
 /turf/open/floor/almayer/sterile_green_side/southwest,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "aff" = (
 /turf/closed/wall/almayer,
 /area/ship/sulaco/command/combat_correspondent)
@@ -1915,24 +1918,25 @@
 	},
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer/sterile_green_side/west,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afh" = (
 /obj/structure/medical_supply_link,
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
 	pixel_x = -1
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afi" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_x = 30
 	},
 /turf/open/floor/almayer/sterile_green_side/northeast,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afj" = (
+/obj/structure/machinery/power/apc/almayer/hardened/west,
 /turf/open/floor/almayer/sterile_green_side/west,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/CICmap{
@@ -1943,7 +1947,7 @@
 "afl" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_corner/north,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afm" = (
 /obj/structure/transmitter{
 	name = "Chemical Laboratory Telephone";
@@ -1953,15 +1957,15 @@
 	pixel_y = 28
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afn" = (
 /obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/almayer/sterile_green_side/north,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afo" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_corner,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "afp" = (
 /turf/closed/wall/almayer/outer,
 /area/ship/sulaco/medbay/storage)
@@ -2021,7 +2025,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer/test_floor4,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "afy" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -8;
@@ -2189,6 +2193,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/ship/sulaco/hallway/central_hall3)
+"afW" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/dark_sterile,
+/area/ship/sulaco/medbay/chemistry)
 "afX" = (
 /obj/structure/machinery/cm_vending/sorted/uniform_supply,
 /turf/open/floor/almayer/green/west,
@@ -2489,7 +2497,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "agO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -2499,7 +2507,7 @@
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
-/area/ship/sulaco/medbay)
+/area/ship/sulaco/medbay/chemistry)
 "agP" = (
 /obj/vehicle/powerloader{
 	name = "Mark IV Powerloader"
@@ -2662,6 +2670,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/ship/sulaco/maintenance/lower_maint)
+"aho" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/ship/sulaco/medbay/chemistry)
 "ahp" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/prop/vehicles/tank/apc/destroyed{
@@ -4294,7 +4308,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "amb" = (
 /turf/open/floor/almayer/flooredge/north,
 /area/ship/sulaco/engineering)
@@ -6078,7 +6092,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/medical_supply_link,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "bpl" = (
 /obj/structure/machinery/cm_vending/clothing/tl/delta{
 	density = 0;
@@ -6782,7 +6796,7 @@
 "cmr" = (
 /obj/structure/machinery/chem_master,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "cms" = (
 /obj/structure/platform{
 	dir = 8;
@@ -6798,7 +6812,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "coF" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 30
@@ -7409,7 +7423,7 @@
 /obj/item/storage/fancy/vials,
 /obj/item/storage/fancy/vials,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "deX" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -9852,7 +9866,7 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "gxh" = (
 /obj/structure/machinery/cm_vending/gear/medic{
 	density = 0;
@@ -12297,7 +12311,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "jSY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -12812,7 +12826,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "kPp" = (
 /turf/open/floor/almayer/silvercorner/south,
 /area/ship/sulaco/hallway/central_hall)
@@ -14464,14 +14478,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/ship/sulaco/briefing)
-"nnO" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
-/turf/open/floor/almayer/test_floor4,
-/area/ship/sulaco/medbay/chemistry)
 "noB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 8;
@@ -15794,7 +15800,7 @@
 /obj/item/tool/hand_labeler,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "pom" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -16441,7 +16447,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "qBF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -16778,7 +16784,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "qUC" = (
 /obj/structure/sign/prop2,
 /turf/closed/wall/almayer,
@@ -17991,7 +17997,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "sOB" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/command{
@@ -20335,7 +20341,7 @@
 	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/sterile_green,
-/area/ship/sulaco/medbay/chemistry)
+/area/ship/sulaco/research)
 "vXz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -25196,14 +25202,14 @@ njT
 njT
 njT
 njT
-uHC
+njT
 coz
 kOd
-uHC
-uHC
-uHC
-uHC
-uHC
+njT
+njT
+njT
+njT
+njT
 brW
 auA
 wzG
@@ -25269,10 +25275,10 @@ add
 add
 add
 bDT
-uHC
+njT
 gwN
-uhg
-uhg
+iHw
+iHw
 vXn
 qUn
 pmT
@@ -25342,14 +25348,14 @@ add
 add
 ade
 adb
-uHC
+njT
 deN
 qBm
-uhg
-uhg
-uhg
-uhg
-nnO
+iHw
+iHw
+iHw
+iHw
+tRa
 phQ
 kTd
 jHa
@@ -25415,13 +25421,13 @@ add
 adg
 adc
 adc
-uHC
+njT
 ama
 jSU
 cmr
 boK
 aad
-uhg
+iHw
 afx
 rzN
 kQZ
@@ -35569,13 +35575,13 @@ uGX
 cEz
 uGX
 cEz
-xrX
-ckn
 cEz
 ckn
 cEz
 ckn
-xrX
+cEz
+ckn
+cEz
 cEz
 uGX
 cEz
@@ -38614,13 +38620,13 @@ uGX
 uVi
 fwi
 rlu
-rim
-rim
-rim
-rim
-rim
-rim
-uyM
+abr
+abr
+abr
+abr
+abr
+abr
+uHC
 agz
 hMs
 erl
@@ -38687,13 +38693,13 @@ uGX
 uVi
 fwi
 rlu
-rim
-uyM
-uyM
-uyM
-uyM
-uyM
-uyM
+abr
+uHC
+uHC
+uHC
+uHC
+uHC
+uHC
 jBj
 hMs
 erl
@@ -38760,8 +38766,8 @@ uGX
 uVi
 fwi
 rlu
-rim
-uyM
+abr
+uHC
 afl
 afj
 afg
@@ -38833,11 +38839,11 @@ pOR
 pOR
 rlu
 rlu
-rim
-uyM
+abr
+uHC
 afm
 agN
-erl
+uhg
 afd
 aeZ
 mxG
@@ -38906,10 +38912,10 @@ rlu
 rlu
 rlu
 rlu
-rim
-uyM
+abr
+uHC
 afn
-hMs
+aho
 afh
 afe
 aeY
@@ -38979,12 +38985,12 @@ rlu
 rlu
 rlu
 rlu
-rim
-uyM
+abr
+uHC
 afo
 agO
 afi
-uXk
+afW
 afa
 uXk
 agv
@@ -39052,13 +39058,13 @@ rlu
 rlu
 rlu
 rlu
-rim
-uyM
-uyM
-uyM
-uyM
-uyM
-uyM
+abr
+uHC
+uHC
+uHC
+uHC
+uHC
+uHC
 akY
 wmA
 akR
@@ -39125,13 +39131,13 @@ rlu
 rlu
 rlu
 rlu
-rim
-rim
-rim
-rim
-rim
-rim
-uyM
+abr
+abr
+abr
+abr
+abr
+abr
+uHC
 uyM
 uyM
 uyM

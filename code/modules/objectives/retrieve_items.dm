@@ -12,6 +12,8 @@
 		/area/ship/almayer/command/securestorage,
 		/area/ship/almayer/command/computerlab,
 		/area/ship/almayer/medical/medical_science,
+		/area/ship/sulaco/research,
+		/area/ship/sulaco/command/intelligence,
 	)
 
 /datum/cm_objective/retrieve_item/New(atom/target)
@@ -65,6 +67,7 @@
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	target_areas = list(
 		/area/ship/almayer,
+		/area/ship/sulaco,
 	)
 
 /datum/cm_objective/retrieve_item/fulton/proc/clean_up_fulton()

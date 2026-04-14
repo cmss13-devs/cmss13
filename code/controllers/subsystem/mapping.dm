@@ -433,6 +433,15 @@ SUBSYSTEM_DEF(mapping)
 		return MAIN_SHIP_DEFAULT_NAME
 	return MC.map_name
 
+/// Gets a name for the marine AI
+/datum/controller/subsystem/mapping/proc/get_main_ai_name()
+	if(!configs)
+		return DEFAULT_AI_SYSTEM
+	var/datum/map_config/MC = configs[SHIP_MAP]
+	if(!MC)
+		return DEFAULT_AI_SYSTEM
+	return MC.ai_name
+
 /datum/controller/subsystem/mapping/proc/lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
 	RETURN_TYPE(/datum/turf_reservation)
 

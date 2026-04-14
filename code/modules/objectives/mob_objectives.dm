@@ -143,9 +143,9 @@
 		var/corpse_val = score_corpse(target)
 
 		// Add points depending on who controls it
-		var/turf/T = get_turf(target)
-		var/area/A = get_area(T)
-		if(istype(A, /area/ship/almayer/medical/morgue) || istype(A, /area/ship/almayer/medical/containment))
+		var/turf/target_turf = get_turf(target)
+		var/area/target_area = get_area(target_turf)
+		if(target_area.body_recovery_area)
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)
@@ -168,7 +168,6 @@
 #define MOB_FAILS_ON_DEATH 2
 
 /datum/cm_objective/move_mob
-	var/area/destination
 	var/mob/living/target
 	var/mob_can_die = MOB_CAN_COMPLETE_AFTER_DEATH
 	objective_flags = OBJECTIVE_DO_NOT_TREE
@@ -193,7 +192,6 @@
 		UnregisterSignal(target, COMSIG_XENO_REVIVED)
 	else
 		UnregisterSignal(target, COMSIG_HUMAN_REVIVED)
-	destination = null
 	target = null
 	return ..()
 
@@ -226,7 +224,8 @@
 
 /datum/cm_objective/move_mob/check_completion()
 	. = ..()
-	if(istype(get_area(target),destination))
+	var/area/target_area = get_area(target)
+	if(target_area.survivor_recovery_area)
 		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
 			complete()
 			return TRUE
@@ -238,7 +237,6 @@
 	deactivate()
 
 /datum/cm_objective/move_mob/almayer
-	destination = /area/ship/almayer
 
 /datum/cm_objective/move_mob/almayer/survivor
 	name = "Rescue the Survivor"

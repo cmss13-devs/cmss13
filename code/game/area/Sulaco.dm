@@ -255,6 +255,7 @@
 /area/ship/sulaco/research
 	name = "\improper Sulaco Research Division"
 	icon_state = "science"
+	body_recovery_area = TRUE
 	fake_zlevel = 2 //lowerdeck
 
 /area/ship/sulaco/telecomms
@@ -294,6 +295,7 @@
 /area/ship/sulaco/morgue
 	name = "\improper Sulaco Morgue"
 	icon_state = "operating"
+	body_recovery_area = TRUE
 	fake_zlevel = 2 //lowerdeck
 
 /area/ship/sulaco/hangar

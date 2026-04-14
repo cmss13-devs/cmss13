@@ -7,6 +7,7 @@
 	ceiling = CEILING_METAL
 	ceiling_muffle = FALSE
 	weather_enabled = FALSE
+	survivor_recovery_area = TRUE
 
 	flags_area = AREA_NOSECURECADES
 
@@ -719,6 +720,7 @@
 /area/ship/almayer/medical/morgue
 	name = "\improper Morgue"
 	icon_state = "operating"
+	body_recovery_area = TRUE
 	fake_zlevel = 1 // upperdeck
 
 /area/ship/almayer/medical/operating_room_one
@@ -762,6 +764,7 @@
 /area/ship/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
+	body_recovery_area = TRUE
 	fake_zlevel = 1 // upperdeck
 
 /area/ship/almayer/medical/containment/cell

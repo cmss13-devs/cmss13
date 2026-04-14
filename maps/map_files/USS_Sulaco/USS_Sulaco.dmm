@@ -9890,7 +9890,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/autoname,
-/obj/structure/machinery/door/airlock/almayer/autoname,
 /turf/open/floor/almayer/test_floor4,
 /area/ship/sulaco/hallway/central_hall2)
 "gzY" = (

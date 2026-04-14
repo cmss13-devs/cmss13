@@ -119,7 +119,7 @@
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))//Can't be seen/detected to trigger alert.
 		return FALSE
 	var/area/pass_area = get_area(get_step(passer, passer.dir))
-	if(istype(pass_area, /area/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
+	if(istype(pass_area, /area/ship/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
 		return FALSE
 	var/obj/item/card/id/idcard
 	var/check_contents = TRUE

@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(ticker)
 					/datum/controller/subsystem/vote/proc/initiate_vote,
 					"gamemode",
 					"SERVER",
-					CALLBACK(src, PROC_REF(handle_map_reboot)),
+					CALLBACK(src, PROC_REF(handle_shipmap_vote)),
 					TRUE
 				), 3 SECONDS)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
@@ -163,6 +163,16 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		return FALSE
 	return TRUE
+
+/datum/controller/subsystem/ticker/proc/handle_shipmap_vote()
+	addtimer(CALLBACK(
+		SSvote,
+		/datum/controller/subsystem/vote/proc/initiate_vote,
+		"shipmap",
+		"SERVER",
+		CALLBACK(src, PROC_REF(handle_map_reboot)),
+		TRUE
+	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/handle_map_reboot()
 	addtimer(CALLBACK(

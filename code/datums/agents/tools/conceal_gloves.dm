@@ -1,7 +1,8 @@
 /obj/item/clothing/gloves/antag
 	name = "suspicious gloves"
-	desc = "Black gloves, both insulated and immune to the detection of " + MAIN_AI_SYSTEM + "."
+	desc = "Black gloves, both insulated and immune to the detection of " + DEFAULT_AI_SYSTEM + "."
 	// "[]" won't work here because it wouldn't be a constant expression
+	// DEFAULT_AI_SYSTEM for the same reason, admin-only item i've never seen used so if the ai name is wrong its not the end of the world
 
 	icon_state = "black"
 	item_state = "bgloves"

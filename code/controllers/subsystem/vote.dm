@@ -328,8 +328,6 @@ SUBSYSTEM_DEF(vote)
 							continue
 					maps += i
 				choices.Add(maps)
-				if(length(choices) < 2)
-					return FALSE
 			if("custom")
 				question = input(usr, "What is the vote for?")
 				if(!question)

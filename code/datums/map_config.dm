@@ -16,6 +16,7 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
+	var/ai_name = "ARES v3.2"
 
 	// Crash site configs for shipmaps
 	/// Shipmap: The name of the template to load in the event of a FTL ground crash
@@ -199,6 +200,8 @@
 	short_name = json["short_name"]
 
 	map_file = json["map_file"]
+
+	ai_name = json["ai_name"]
 
 	ground_crash_template_name = json["ground_crash_template_name"]
 	if(islist(json["crack_open_horizontal_positions"]))

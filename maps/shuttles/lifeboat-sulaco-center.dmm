@@ -1,0 +1,181 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/shuttle/escapepod{
+	dir = 1;
+	icon_state = "wall2"
+	},
+/area/shuttle/lifeboat)
+"c" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"e" = (
+/turf/open/shuttle/escapepod/north,
+/area/shuttle/lifeboat)
+"p" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 1
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"r" = (
+/obj/structure/machinery/cryopod/evacuation{
+	dir = 8
+	},
+/obj/structure/sign/safety/escapepod{
+	pixel_y = 32
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"t" = (
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PL-1";
+	dir = 1
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"v" = (
+/obj/docking_port/mobile/crashable/lifeboat/sulaco/center,
+/turf/closed/shuttle/escapepod{
+	dir = 4
+	},
+/area/shuttle/lifeboat)
+"w" = (
+/obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"x" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall7";
+	dir = 1
+	},
+/area/shuttle/lifeboat)
+"A" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall9";
+	dir = 1
+	},
+/area/shuttle/lifeboat)
+"J" = (
+/turf/closed/shuttle/escapepod{
+	dir = 1;
+	icon_state = "wall11"
+	},
+/area/shuttle/lifeboat)
+"N" = (
+/turf/closed/shuttle/escapepod{
+	dir = 1
+	},
+/area/shuttle/lifeboat)
+"O" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall6";
+	dir = 1
+	},
+/area/shuttle/lifeboat)
+"Q" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall5";
+	dir = 1
+	},
+/area/shuttle/lifeboat)
+"R" = (
+/obj/structure/machinery/cryopod/evacuation{
+	dir = 8
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+"T" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	name = "pilot seat"
+	},
+/turf/open/shuttle/escapepod/north,
+/area/shuttle/lifeboat)
+"W" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/lifeboat{
+	dir = 1
+	},
+/turf/open/shuttle/escapepod/north,
+/area/shuttle/lifeboat)
+"Y" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	name = "pilot seat"
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/shuttle/lifeboat)
+
+(1,1,1) = {"
+O
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+v
+"}
+(2,1,1) = {"
+x
+r
+R
+R
+R
+R
+R
+R
+R
+Y
+c
+a
+"}
+(3,1,1) = {"
+t
+e
+e
+e
+e
+e
+e
+e
+e
+T
+W
+a
+"}
+(4,1,1) = {"
+x
+w
+w
+w
+w
+w
+w
+w
+w
+Y
+p
+a
+"}
+(5,1,1) = {"
+A
+J
+J
+J
+J
+J
+J
+J
+J
+J
+J
+N
+"}

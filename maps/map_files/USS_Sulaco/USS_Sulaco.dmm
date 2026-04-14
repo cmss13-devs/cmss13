@@ -13,10 +13,6 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/engine/vacuum,
 /area/ship/sulaco/telecomms)
-"aad" = (
-/obj/structure/machinery/power/apc/almayer/east,
-/turf/open/floor/almayer/dark_sterile,
-/area/ship/sulaco/research)
 "aae" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/wood,
@@ -25426,7 +25422,7 @@ ama
 jSU
 cmr
 boK
-aad
+iHw
 iHw
 afx
 rzN

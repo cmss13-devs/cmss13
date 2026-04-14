@@ -29,3 +29,6 @@
   hry-gh:
   - bugfix: fixes server lag when updating the minimap, after having opened and closed
       the minimap sufficient times in a round
+2026-04-14:
+  Jesters-Ballad:
+  - rscadd: Added Three Patches to Civilian Gear

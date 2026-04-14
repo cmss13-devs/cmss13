@@ -21,7 +21,7 @@
 
 #define CanPhysicallyInteractWith(user, target) CanInteractWith(user, target, GLOB.physical_state)
 
-#define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
+#define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }a
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 

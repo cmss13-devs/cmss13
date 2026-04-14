@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(hijack)
 			current_run_mobs -= current_mob
 
 			if(!current_mob || current_mob.stat == DEAD)
-				continue
+				continuea
 			var/turf/mob_turf = get_turf(current_mob)
 			if(!mob_turf || !is_mainship_level(mob_turf.z))
 				continue

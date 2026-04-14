@@ -24,9 +24,25 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/chemical_not_completed_objective_list = list() //List of not completed objective reagents indexed by ID associated with the objective value
 	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
 	var/list/research_computers = list()
+	var/next_research_item_announcement = 0
+	var/next_novel_research_item_announcement = 0
 
 /datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
+
+/datum/chemical_data/proc/get_announceable_research_item_name(obj/item/research_item)
+	if(!research_item || istype(research_item, /obj/item/research_upgrades/reroll))
+		return null
+	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
+		var/datum/research_upgrades/upgrade = upgrade_type
+		if(upgrade.behavior != RESEARCH_UPGRADE_ITEM)
+			continue
+		var/announce_path = upgrade.item_reference
+		if(!announce_path || announce_path == /obj/item/research_upgrades/reroll)
+			continue
+		if(research_item.type == announce_path)
+			return upgrade.name
+	return null
 
 /datum/chemical_data/proc/save_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_documents["[document_type]"])
@@ -48,7 +64,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 			break
 	return report
 
-/datum/chemical_data/proc/publish_document(obj/item/paper/research_report/R, document_type, title)
+/datum/chemical_data/proc/publish_document(obj/item/paper/research_report/R, document_type, title, mob/living/carbon/human/publisher = null)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
 	var/save_time = worldtime2text()
@@ -59,6 +75,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		"document"=R
 	)
 	research_publications["[document_type]"] += list(new_document)
+	if(is_stim_report(R))
+		announce_published_stim(R, publisher)
 
 /datum/chemical_data/proc/unpublish_document(document_type, title)
 	if(!research_publications["[document_type]"])
@@ -83,6 +101,78 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	// remove all published references
 	for(var/published_doc in all_published_references)
 		published_docs -= list(published_doc)
+	return TRUE
+
+/datum/chemical_data/proc/is_stim_report(obj/item/paper/research_report/R)
+	var/datum/reagent/stim = R?.data
+	if(!istype(stim))
+		return FALSE
+	if(stim.flags & REAGENT_TYPE_STIMULANT)
+		return TRUE
+	for(var/datum/chem_property/property in stim.properties)
+		if(property.category & PROPERTY_TYPE_STIMULANT)
+			return TRUE
+	return FALSE
+
+/datum/chemical_data/proc/get_all_marine_research_targets()
+	. = list()
+	for(var/mob/living/carbon/human/recipient as anything in GLOB.alive_human_list)
+		if(!recipient.client || recipient.stat != CONSCIOUS || isyautja(recipient))
+			continue
+		if(recipient.faction != FACTION_MARINE && !(FACTION_MARINE in recipient.faction_group))
+			continue
+		.[recipient] = TRUE
+
+/datum/chemical_data/proc/send_research_update(list/targets, screen_message, chat_message)
+	if(!length(targets) || !screen_message || !chat_message)
+		return
+	for(var/mob/living/carbon/human/recipient as anything in targets)
+		playsound_client(recipient.client, 'sound/effects/radiostatic.ogg', recipient.loc, 25, FALSE)
+		to_chat(recipient, SPAN_BLUE("<B>Research Update:</B> [chat_message]"), type = MESSAGE_TYPE_RADIO)
+		recipient.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Research Update</u></span><br>[screen_message]", /atom/movable/screen/text/screen_text/command_order, "#67d692")
+
+/datum/chemical_data/proc/announce_published_stim(obj/item/paper/research_report/R, mob/living/carbon/human/publisher = null)
+	var/datum/reagent/stim = R?.data
+	if(!istype(stim))
+		return
+	var/list/targets = get_all_marine_research_targets()
+	if(!length(targets))
+		return
+
+	var/duration_multiplier = stim.custom_metabolism ? round(REAGENTS_METABOLISM / stim.custom_metabolism, 0.1) : 0
+	var/duration_text = duration_multiplier ? "[duration_multiplier]x" : "Unknown"
+	var/publisher_name = publisher ? publisher.real_name : "Unknown"
+	var/screen_message = "[stim.name] | OD [stim.overdose]u | Dur [duration_text]<br>Publisher: [publisher_name]"
+	var/chat_message = "[stim.name] published by [publisher_name]. OD [stim.overdose]u. Duration [duration_text]."
+	send_research_update(targets, screen_message, chat_message)
+
+/datum/chemical_data/proc/announce_research_item_available(item_name, amount_available, mob/living/carbon/human/announcer = null)
+	if(!item_name || !amount_available || !announcer)
+		return FALSE
+	if(world.time < next_research_item_announcement)
+		return FALSE
+	var/list/targets = get_all_marine_research_targets()
+	if(!length(targets))
+		return FALSE
+
+	var/quantity_suffix = amount_available > 0 ? " (x[amount_available])" : ""
+	var/screen_message = "[announcer.real_name] has made [item_name] available[quantity_suffix]."
+	var/chat_message = "[announcer.real_name] has made [item_name] available[quantity_suffix]."
+	next_research_item_announcement = world.time + 2 MINUTES
+	send_research_update(targets, screen_message, chat_message)
+	return TRUE
+
+/datum/chemical_data/proc/announce_novel_product_caution(mob/living/carbon/human/announcer = null)
+	if(!announcer)
+		return FALSE
+	if(world.time < next_novel_research_item_announcement)
+		return FALSE
+	var/list/targets = get_all_marine_research_targets()
+	if(!length(targets))
+		return FALSE
+
+	next_novel_research_item_announcement = world.time + 10 MINUTES
+	send_research_update(targets, "Novel product developed, advise caution.", "Novel product developed, advise caution.")
 	return TRUE
 
 /datum/chemical_data/proc/save_new_properties(list/properties)
@@ -214,4 +304,3 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	clue["text"] = chem.name
 
 	return clue
-

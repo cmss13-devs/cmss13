@@ -49,7 +49,11 @@
 			for(var/category in GLOB.chemical_data.research_documents)
 				pool += category
 			pool = sortAssoc(pool)
-			response = tgui_input_list(usr,"Select a category:", "Categories", pool)
+			if(!length(pool))
+				to_chat(user, SPAN_WARNING("No saved research categories exist yet. Please create a new category."))
+				response = input(usr,"Please enter the category of the paper:")
+			else
+				response = tgui_input_list(usr,"Select a category:", "Categories", pool)
 		else if(response == "New")
 			response = input(usr,"Please enter the category of the paper:")
 		if(!response)
@@ -64,6 +68,31 @@
 		GLOB.chemical_data.reroll_chemicals()
 		visible_message(SPAN_NOTICE("[user] inserts [reroll] in [src], Rerolling contract chemicals."))
 		qdel(reroll)
+		return
+
+	var/research_item_name = GLOB.chemical_data.get_announceable_research_item_name(B)
+	if(research_item_name)
+		if(world.time < GLOB.chemical_data.next_research_item_announcement)
+			var/time_remaining = max(GLOB.chemical_data.next_research_item_announcement - world.time, 0)
+			to_chat(user, SPAN_WARNING("Relays re-calibrating. Please standby for [DisplayTimeText(time_remaining)]."))
+			return
+		var/default_amount = 1
+		if(istype(B, /obj/item/stack))
+			var/obj/item/stack/stack_item = B
+			default_amount = max(stack_item.amount, 1)
+		var/amount_available = tgui_input_number(user, "How Many?", "Research Update", default_amount, 1000, 1, 20 SECONDS, TRUE)
+		if(!amount_available)
+			return
+		if(!GLOB.chemical_data.announce_research_item_available(research_item_name, amount_available, user))
+			var/time_remaining = max(GLOB.chemical_data.next_research_item_announcement - world.time, 0)
+			to_chat(user, SPAN_WARNING("Relays re-calibrating. Please standby for [DisplayTimeText(time_remaining)]."))
+		return
+
+	if(GET_DEFAULT_ROLE(user.job) == JOB_RESEARCHER)
+		if(!GLOB.chemical_data.announce_novel_product_caution(user))
+			var/time_remaining = max(GLOB.chemical_data.next_novel_research_item_announcement - world.time, 0)
+			to_chat(user, SPAN_WARNING("Relays re-calibrating. Please standby for [DisplayTimeText(time_remaining)]."))
+		return
 
 /obj/structure/machinery/computer/research/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -181,7 +210,7 @@
 			if(!report)
 				to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
 				return
-			GLOB.chemical_data.publish_document(report, print_type, print_title)
+			GLOB.chemical_data.publish_document(report, print_type, print_title, user)
 		if("unpublish_document")
 			var/print_title = params["print_title"]
 			var/print_type = params["print_type"]

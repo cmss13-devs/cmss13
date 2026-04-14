@@ -41,9 +41,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 100
 	clearance_req = 1
-
-/datum/research_upgrades/machinery/autodoc/internal_bleed/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc)
+	item_reference = /obj/item/research_upgrades/autodoc
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
@@ -51,9 +49,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 1500
 	clearance_req = 3
-
-/datum/research_upgrades/machinery/autodoc/broken_bone/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc/tier2(machine_loc)
+	item_reference = /obj/item/research_upgrades/autodoc/tier2
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
@@ -61,9 +57,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 1500
 	clearance_req = 2
-
-/datum/research_upgrades/machinery/autodoc/organ_damage/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc/tier3(machine_loc)
+	item_reference = /obj/item/research_upgrades/autodoc/tier3
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Embryo Removal"
@@ -71,9 +65,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 4000
 	clearance_req = 6
-
-/datum/research_upgrades/machinery/autodoc/larva_removal/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc/tier4(machine_loc)
+	item_reference = /obj/item/research_upgrades/autodoc/tier4
 
 /datum/research_upgrades/machinery/grinderspeed
 	name = "Reagent-Grinder Upgrade"
@@ -146,6 +138,7 @@
 	minimum_price = 100
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/stack/medical/splint/nano/research
 
 /datum/research_upgrades/item/nanosplints/on_purchase(turf/machine_loc)
 	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, can't be higher than five, go change max_amount in the nanosplint itself, then change it.

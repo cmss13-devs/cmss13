@@ -143,7 +143,7 @@ const CompoundRecord = (props: CompoundRecordProps) => {
               </Button>
             </Flex.Item>
           )}
-          {isMainTerminal && !compound.isPublished && (
+          {!compound.isPublished && (
             <Flex.Item>
               <Button
                 icon="upload"

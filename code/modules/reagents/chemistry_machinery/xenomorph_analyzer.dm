@@ -238,4 +238,3 @@
 		attempt_process_queue(user)
 	else
 		queue_proccessing = FALSE
-

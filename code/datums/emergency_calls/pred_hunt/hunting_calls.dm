@@ -311,6 +311,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
 	ignore_ftl_or_crash = TRUE
+	alert_sound = 'sound/items/pred_bracer.ogg'
 
 /datum/emergency_call/young_bloods/New()
 	. = ..()

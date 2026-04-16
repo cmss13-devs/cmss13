@@ -94,6 +94,9 @@
 	if(!loc)
 		return FALSE
 
+	if(!SSnightmare.get_scenario_value("predator_round"))
+		SSnightmare.set_scenario_value("predator_round", TRUE)
+
 	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 

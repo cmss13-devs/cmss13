@@ -96,7 +96,7 @@
 "aA" = (
 /obj/structure/machinery{
 	density = 1;
-	icon = "icons\obj\structures\doors\personaldoor.dmsi";
+	icon = 'icons/obj/structures/doors/personaldoor.dmi';
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;

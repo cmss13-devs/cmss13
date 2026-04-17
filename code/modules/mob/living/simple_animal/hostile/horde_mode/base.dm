@@ -289,12 +289,20 @@
 		AttackingTarget()
 		return TRUE
 
+/mob/living/simple_animal/hostile/alien/horde_mode/LoseTarget()
+	target_mob = null
+	return ..()
+
 //--------------------------------
 // MOVEMENT
 
 /mob/living/simple_animal/hostile/alien/horde_mode/MoveToTarget()
-	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_IMMOBILIZED))
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_IMMOBILIZED))
 		return
+	if(stat == DEAD)
+		LoseTarget()
+		find_random_target()
+		ForceMoveToTarget()
 
 	stop_automated_movement = TRUE
 	if(!target_mob || SA_attackable(target_mob))

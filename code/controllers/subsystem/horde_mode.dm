@@ -238,10 +238,10 @@ SUBSYSTEM_DEF(horde_mode)
 	return pick(all_players)
 
 /datum/controller/subsystem/horde_mode/proc/return_random_xeno()
-	var/list/all_xenos
+	var/list/all_xenos = list()
 	for(var/list/xenos_in_list as anything in current_xenos)
 		var/mob/living/xeno_mob = xenos_in_list
-		if(xeno_mob.stat != DEAD)
+		if(xeno_mob.stat != DEAD && xeno_mob.hivenumber != XENO_HIVE_CORRUPTED)
 			all_xenos += xeno_mob
 	return pick(all_xenos)
 

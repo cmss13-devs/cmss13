@@ -1,11 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "ab" = (
 /obj/structure/item_purchase/perk_machine/revive,
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
-"ac" = (
-/obj/structure/machinery/light,
-/obj/effect/landmark/horde_mode/marinespawn,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
 "ad" = (
@@ -17,6 +16,7 @@
 	pixel_y = 31;
 	pixel_x = 0
 	},
+/obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/whitered/northwest,
 /area/horde_mode/medical)
 "af" = (
@@ -37,18 +37,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/horde_mode/outside)
-"aj" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/grimy,
-/area/space)
 "ak" = (
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/center)
@@ -60,20 +48,15 @@
 /turf/open/floor/white,
 /area/horde_mode/center)
 "an" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/item_purchase/door{
 	door_id = 8;
 	dir = 8;
-	unlock_area = /area/horde_mode/engineering
+	unlock_area = /area/horde_mode/medical
 	},
 /turf/open/floor/plating,
 /area/horde_mode/medical)
 "ao" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/white,
 /area/horde_mode/medical)
 "ap" = (
@@ -82,11 +65,13 @@
 /turf/open/floor/plating,
 /area/horde_mode/medical)
 "aq" = (
+/obj/structure/bed/portable_surgery,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/whitered/northwest,
 /area/horde_mode/medical)
 "ar" = (
 /obj/structure/item_purchase/perk_machine,
-/turf/open/floor/white,
+/turf/open/floor/whitered/northeast,
 /area/horde_mode/medical)
 "as" = (
 /turf/open/floor/bar,
@@ -97,35 +82,21 @@
 "au" = (
 /turf/open/floor/whiteredcorner/east,
 /area/horde_mode/medical)
-"av" = (
-/obj/item/stock_parts/matter_bin/super,
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/floor/wood,
-/area/horde_mode/center)
+"aw" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "ax" = (
 /turf/open/floor/whitered/northeast,
 /area/horde_mode/medical)
 "ay" = (
 /turf/open/floor/whitegreencorner,
 /area/horde_mode/center)
-"az" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowcorner/east,
-/area/horde_mode/center)
 "aA" = (
 /obj/structure/machinery{
 	density = 1;
-	icon = "icons\obj\structures\doors\personaldoor.dmi";
+	icon = "icons\obj\structures\doors\personaldoor.dmsi";
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
@@ -137,13 +108,8 @@
 /area/horde_mode/medical)
 "aB" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/white,
-/area/horde_mode/center)
-"aC" = (
-/obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
 /area/horde_mode/center)
 "aD" = (
 /turf/open/floor/whiteyellowfull/east,
@@ -151,12 +117,6 @@
 "aE" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellow/north,
-/area/horde_mode/center)
-"aF" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
 "aG" = (
 /turf/open/floor,
@@ -168,9 +128,6 @@
 /turf/open/floor/white,
 /area/horde_mode/center)
 "aI" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellow,
 /area/horde_mode/center)
@@ -178,15 +135,12 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
-"aK" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/horde_mode/center)
 "aL" = (
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/science)
 "aM" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/science)
 "aN" = (
@@ -194,24 +148,15 @@
 /area/horde_mode/science)
 "aO" = (
 /obj/structure/flora/grass/ice/both,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "aP" = (
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
-"aQ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/surface/table,
-/obj/item/clothing/ears/earmuffs,
-/turf/open/floor/red/northwest,
-/area/space)
 "aR" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "aS" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -219,15 +164,9 @@
 /turf/open/floor/bot/north,
 /area/horde_mode/outside)
 "aT" = (
-/obj/structure/item_purchase/hedp,
+/obj/structure/item_purchase/gear,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"aU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/freezerfloor,
-/area/horde_mode/science)
+/area/horde_mode/lobby)
 "aV" = (
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/lobby)
@@ -247,8 +186,7 @@
 /area/horde_mode/lobby)
 "ba" = (
 /obj/structure/item_purchase/door/wide{
-	door_id = 2;
-	unlock_area = /area/horde_mode/medical
+	door_id = 2
 	},
 /turf/open/floor/plating,
 /area/horde_mode/lobby)
@@ -256,10 +194,8 @@
 /turf/open/floor/bot/north,
 /area/horde_mode/lobby)
 "bc" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "bd" = (
@@ -269,62 +205,28 @@
 /obj/structure/upgrade_station,
 /turf/open/floor,
 /area/horde_mode/lobby)
-"bf" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/newscaster{
-	pixel_x = -30
-	},
-/obj/structure/machinery/photocopier{
-	pixel_y = 12
-	},
-/obj/item/tool/wrench,
-/turf/open/floor/wood,
-/area/space)
 "bg" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/outside)
-"bh" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
 "bi" = (
 /obj/structure/mystery_purchase/goodies,
 /turf/open/floor/chapel/north,
 /area/horde_mode/science)
 "bj" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/airlock_assembly/multi_tile{
+	dir = 4;
+	anchored = 1
 	},
-/obj/structure/item_purchase/gear,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"bk" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor,
-/area/horde_mode/science)
-"bl" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "bm" = (
 /obj/structure/window/framed/colony,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/horde_mode/outside)
 "bn" = (
-/obj/structure/item_purchase/door/wide{
-	unlock_area = /area/horde_mode/center;
-	dir = 4
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/horde_mode/lobby)
 "bo" = (
@@ -343,155 +245,497 @@
 /obj/effect/landmark/horde_mode/marinespawn,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
-"bs" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/horde_mode/science)
-"bt" = (
-/turf/open/floor/cult,
-/area/space)
 "bu" = (
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/outside)
-"bv" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/landmark/horde_mode/marinespawn,
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
-"bw" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
 "bx" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/landmark/horde_mode/marinespawn,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
-"bA" = (
-/obj/item/stack/sheet/wood{
-	amount = 2
+"by" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/dirtgrassborder/south,
+/area/horde_mode/outside)
+"bz" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/dirt,
+/area/horde_mode/outside)
+"bB" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"bC" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"bD" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"bE" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"bF" = (
+/obj/structure/prop/horde_mode/light_fixture/yellow{
+	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/bot/north,
+/turf/open/floor/white,
+/area/horde_mode/center)
+"bG" = (
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"bH" = (
+/obj/structure/prop/horde_mode/light_fixture/small/red,
+/turf/open/floor/whitered/southeast,
+/area/horde_mode/medical)
+"bI" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/whitered,
+/area/horde_mode/medical)
+"bJ" = (
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/whitered/southeast,
+/area/horde_mode/medical)
+"bK" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "bL" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 4
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
+"bM" = (
+/obj/structure/terminal,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
+"bN" = (
+/obj/structure/bed/portable_surgery,
+/turf/open/floor/whitered/west,
+/area/horde_mode/medical)
+"bO" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
+"bP" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/white,
+/area/horde_mode/medical)
+"bQ" = (
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"bR" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/horde_mode/light_fixture/small/yellow,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
+"bS" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/whitered/north,
+/area/horde_mode/medical)
+"bT" = (
+/obj/structure/item_purchase/machete,
+/turf/open/floor/whitered/southwest,
+/area/horde_mode/medical)
+"bU" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"bV" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/whitered/west,
+/area/horde_mode/medical)
+"bW" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"bX" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/bar,
+/area/horde_mode/medical)
+"bY" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"bZ" = (
+/obj/structure/prop/horde_mode/chair{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "ca" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"co" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
+"cb" = (
+/obj/structure/surface/table/uninteractable,
+/obj/item/stack/medical/advanced/bruise_pack,
+/turf/open/floor/whitered,
+/area/horde_mode/medical)
+"cc" = (
+/obj/structure/prop/horde_mode/light_fixture/small/red,
+/turf/open/floor/whitered,
+/area/horde_mode/medical)
+"cd" = (
+/obj/structure/surface/table/uninteractable{
+	icon_state = "prisontable"
 	},
-/turf/open/floor/whiteyellowcorner,
+/obj/item/storage/firstaid/fire/empty{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/obj/item/storage/firstaid/adv/empty{
+	pixel_x = 0;
+	pixel_y = -3
+	},
+/turf/open/floor/whitered/northeast,
+/area/horde_mode/medical)
+"ce" = (
+/obj/structure/surface/table/uninteractable{
+	icon_state = "prisontable"
+	},
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"cf" = (
+/obj/structure/surface/table/uninteractable{
+	icon_state = "prisontable"
+	},
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"cg" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whitered,
+/area/horde_mode/medical)
+"ch" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/whiteredfull,
+/area/horde_mode/medical)
+"ci" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/whitered,
+/area/horde_mode/medical)
+"cj" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/floor/bot/north,
+/area/horde_mode/outside)
+"ck" = (
+/obj/structure/mystery_purchase/weapons,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
+"cl" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whiteredcorner/east,
+/area/horde_mode/medical)
+"cm" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/whitered/north,
+/area/horde_mode/medical)
+"cn" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/horde_mode/outside)
+"cp" = (
+/obj/structure/bed/sofa/south/white/right,
+/turf/open/floor/whitered/north,
+/area/horde_mode/medical)
+"cq" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"cr" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whitered/north,
+/area/horde_mode/medical)
+"cs" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 8
+	},
+/turf/open/floor/whitered/west,
+/area/horde_mode/medical)
+"ct" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/bar,
+/area/horde_mode/medical)
+"cu" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 4
+	},
+/turf/open/floor/whitered/east,
+/area/horde_mode/medical)
+"cv" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/floor/warning/west,
+/area/horde_mode/outside)
+"cw" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/whitered/north,
+/area/horde_mode/medical)
+"cx" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/whitered/northeast,
+/area/horde_mode/medical)
+"cy" = (
+/obj/structure/prop/horde_mode/light_fixture/yellow,
+/turf/open/floor/white,
+/area/horde_mode/center)
+"cz" = (
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/floor/loadingarea/west,
+/area/horde_mode/outside)
+"cA" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 8
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/horde_mode/center)
+"cB" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 1
+	},
+/turf/open/floor/white,
 /area/horde_mode/center)
 "cC" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "cD" = (
 /turf/open/floor/plating/platebotc,
 /area/horde_mode/outside)
+"cE" = (
+/obj/structure/prop/horde_mode/chair{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"cF" = (
+/obj/structure/surface/table/uninteractable,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"cG" = (
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"cH" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/chapel,
+/area/horde_mode/science)
 "cI" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
+"cJ" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/whitegreen/north,
+/area/horde_mode/center)
+"cK" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/horde_mode/science)
 "cL" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
 	},
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"cP" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/item_purchase/door,
-/turf/open/floor/freezerfloor,
-/area/horde_mode/science)
-"cT" = (
-/obj/structure/surface/table,
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
-"da" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
+"cM" = (
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/grimy,
-/area/space)
+/turf/open/floor/plating,
+/area/horde_mode/science)
+"cN" = (
+/turf/open/floor/whiteyellowfull/east,
+/area/horde_mode/lobby)
+"cO" = (
+/obj/effect/landmark/horde_mode/marinespawn,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/horde_mode/lobby)
+"cP" = (
+/obj/structure/item_purchase/door{
+	unlock_area = /area/horde_mode/science
+	},
+/turf/open/floor/freezerfloor,
+/area/horde_mode/science)
+"cQ" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/freezerfloor,
+/area/horde_mode/science)
+"cR" = (
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"cS" = (
+/obj/structure/prop/horde_mode/light_fixture/small/blue,
+/turf/open/floor,
+/area/horde_mode/lobby)
+"cT" = (
+/obj/structure/surface/table/uninteractable,
+/turf/open/floor/bluecorner,
+/area/horde_mode/science)
+"cU" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/plating,
+/area/horde_mode/science)
+"cV" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/whiteyellowfull/east,
+/area/horde_mode/lobby)
+"cW" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/horde_mode/science)
+"cX" = (
+/obj/structure/prop/horde_mode/light_fixture/small/blue,
+/turf/open/floor/purple/northwest,
+/area/horde_mode/lobby)
+"cY" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/bluecorner,
+/area/horde_mode/science)
+"cZ" = (
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/horde_mode/science)
+"db" = (
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/purple/northwest,
+/area/horde_mode/lobby)
+"dc" = (
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/horde_mode/center)
+"dd" = (
+/obj/effect/landmark/horde_mode/marinespawn,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/horde_mode/lobby)
+"de" = (
+/turf/open/floor/whitegreen,
+/area/horde_mode/center)
+"df" = (
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/horde_mode/lobby)
+"dg" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"dh" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
+"di" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "dj" = (
 /turf/open/floor/whitered/southeast,
 /area/horde_mode/medical)
 "dn" = (
-/obj/item/trash/popcorn,
-/turf/open/floor/wood,
-/area/space)
-"dC" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/surface/table,
-/turf/open/floor/red/northeast,
-/area/space)
-"dE" = (
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/chair{
 	dir = 8
 	},
-/turf/open/floor/red/northeast,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "dF" = (
 /obj/structure/machinery/atm{
 	name = "Automatic Teller Machine";
 	pixel_y = 30
 	},
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 8
 	},
 /turf/open/floor/white,
 /area/horde_mode/center)
 "dO" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/cult,
-/area/space)
+/obj/structure/prop/horde_mode/comms_relay,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "dS" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"dT" = (
-/obj/structure/machinery/deployable/barrier,
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/cult,
-/area/space)
-"dV" = (
-/obj/structure/closet/cabinet,
-/obj/item/reagent_container/food/snacks/syndicake{
-	layer = 2.6
-	},
-/turf/open/floor/grimy,
-/area/space)
+/area/horde_mode/lobby)
 "dX" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/effect/landmark/horde_mode/xenospawn,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "ej" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/bar,
 /area/horde_mode/medical)
 "em" = (
@@ -502,9 +746,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"eU" = (
-/turf/open/floor/red/east,
-/area/space)
 "ff" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor/warningcorner/west,
@@ -516,9 +757,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/horde_mode/outside)
-"fB" = (
-/turf/open/floor/redcorner/east,
-/area/space)
 "fV" = (
 /obj/structure/noticeboard{
 	pixel_y = 30
@@ -534,28 +772,15 @@
 	dir = 4
 	},
 /obj/effect/glowshroom,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
-"gl" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/horde_mode/medical)
 "gw" = (
+/obj/effect/landmark/horde_mode/marinespawn,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "gD" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/horde_mode/outside)
-"gH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
-"gJ" = (
-/turf/open/floor/red,
-/area/space)
 "gU" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/horde_mode/outside)
@@ -563,30 +788,21 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"hF" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/space)
 "hN" = (
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /obj/item/tool/mop,
-/turf/open/floor/white,
-/area/horde_mode/center)
-"hO" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
+/obj/structure/prop/horde_mode/light_fixture/small/red{
 	dir = 4
 	},
-/turf/open/floor/whiteyellowcorner/west,
+/turf/open/floor/white,
 /area/horde_mode/center)
 "hT" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/horde_mode/outside)
 "id" = (
 /turf/closed/wall/indestructible/other,
-/area/space)
+/area/horde_mode/engineering)
 "ik" = (
 /obj/effect/decal/mecha_wreckage/ripley{
 	anchored = 1;
@@ -605,17 +821,11 @@
 /turf/open/floor/vault,
 /area/horde_mode/outside)
 "in" = (
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 8
 	},
 /turf/open/floor/white,
 /area/horde_mode/center)
-"iq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "iv" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engineering Dome";
@@ -626,7 +836,9 @@
 /turf/open/floor/delivery,
 /area/horde_mode/outside)
 "iw" = (
-/obj/structure/pipes/vents/pump,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 1
+	},
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
 "ix" = (
@@ -638,53 +850,26 @@
 "iz" = (
 /turf/open/floor/whitegreencorner/west,
 /area/horde_mode/center)
-"iD" = (
-/obj/structure/showcase{
-	layer = 3.1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/space)
-"iH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/vault,
-/area/horde_mode/outside)
 "iM" = (
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 1
 	},
-/turf/open/floor/white,
-/area/horde_mode/center)
-"iU" = (
-/obj/structure/machinery/vending/snack,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "iV" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
+/obj/structure/prop/horde_mode/light_fixture/small/blue,
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
 "iW" = (
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 1
+	},
 /turf/open/floor/chapel/north,
 /area/horde_mode/science)
-"jf" = (
-/obj/structure/largecrate,
-/turf/open/floor/bot/north,
-/area/horde_mode/outside)
 "jq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/whitegreen,
 /area/horde_mode/center)
 "ju" = (
@@ -694,10 +879,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/horde_mode/outside)
-"jy" = (
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/red/east,
-/area/space)
 "jB" = (
 /turf/open/floor/warningcorner/east,
 /area/horde_mode/outside)
@@ -705,23 +886,14 @@
 /obj/structure/item_purchase/hedp,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
-"jE" = (
-/turf/open/floor/red/southwest,
-/area/space)
 "jH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/grimy,
-/area/space)
+/obj/structure/prop/horde_mode/reactor,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "jK" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/warning/north,
 /area/horde_mode/outside)
-"jO" = (
-/obj/structure/surface/rack,
-/turf/open/floor/cult,
-/area/space)
 "jR" = (
 /obj/structure/fence/overgrown{
 	density = 0
@@ -740,28 +912,13 @@
 /area/horde_mode/outside)
 "kG" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"kO" = (
-/turf/open/floor/redfull/northwest,
-/area/space)
+/area/horde_mode/lobby)
 "lg" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/whiteyellowcorner/east,
 /area/horde_mode/center)
-"lG" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/filingcabinet,
-/turf/open/floor/redcorner/north,
-/area/space)
-"lL" = (
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/red/north,
-/area/space)
 "lM" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -770,14 +927,11 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"mg" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/freezerfloor,
-/area/horde_mode/science)
 "mt" = (
 /obj/structure/item_purchase/firstaid,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
 /turf/open/floor/whiteblue/northeast,
 /area/horde_mode/center)
 "mz" = (
@@ -785,17 +939,14 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/horde_mode/outside)
 "mB" = (
-/obj/structure/showcase,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/wood,
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
 "mK" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
-/area/space)
+/area/horde_mode/engineering)
 "mO" = (
 /obj/structure/fence{
 	density = 0
@@ -819,32 +970,15 @@
 /area/horde_mode/outside)
 "nh" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "ns" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/bot/north,
 /area/horde_mode/lobby)
-"ny" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/white,
-/area/horde_mode/medical)
 "nB" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/horde_mode/outside)
-"nR" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/freezerfloor,
-/area/horde_mode/science)
-"nS" = (
-/obj/structure/machinery/vending/coffee,
-/turf/open/floor/white,
-/area/horde_mode/center)
 "nU" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
@@ -862,20 +996,17 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/vault,
 /area/horde_mode/outside)
-"oh" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
 "ol" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "ov" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /obj/structure/mirror{
 	pixel_y = -30
+	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
 	},
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
@@ -883,13 +1014,6 @@
 /obj/structure/item_purchase/firstaid_adv,
 /turf/open/floor/whitered/southwest,
 /area/horde_mode/medical)
-"oP" = (
-/obj/effect/decal/cleanable/vomit,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
 "oT" = (
 /turf/open/floor/whiteredcorner/north,
 /area/horde_mode/medical)
@@ -919,48 +1043,20 @@
 /area/horde_mode/outside)
 "py" = (
 /obj/item/trash/cheesie,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "pH" = (
-/obj/structure/machinery/light{
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
 	dir = 8
 	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"pM" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor,
-/area/horde_mode/center)
-"pO" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
-"pQ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellow/north,
-/area/horde_mode/center)
+/area/horde_mode/lobby)
 "pV" = (
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/turf/open/floor/grimy,
-/area/space)
-"pY" = (
-/obj/structure/coatrack,
-/turf/open/floor/grimy,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "qg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -978,32 +1074,17 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/horde_mode/center)
-"qp" = (
-/obj/structure/machinery/light,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
 "qq" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 8
 	},
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 1
+	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "qz" = (
 /turf/open/floor/whiteyellow/east,
-/area/horde_mode/center)
-"qA" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/white,
 /area/horde_mode/center)
 "qC" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -1021,22 +1102,9 @@
 /area/horde_mode/outside)
 "qR" = (
 /obj/effect/decal/cleanable/blood,
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"qS" = (
-/obj/structure/bookcase,
-/obj/item/bananapeel,
-/obj/item/book/manual/research_and_development,
-/obj/item/book/manual/security_space_law,
-/turf/open/floor/wood,
-/area/space)
-"qT" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/chem_dispenser/soda/beer{
-	pixel_y = 26
-	},
-/turf/open/floor/grimy,
-/area/space)
+/area/horde_mode/lobby)
 "qZ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
@@ -1044,46 +1112,22 @@
 "rc" = (
 /turf/open/floor/warning/east,
 /area/horde_mode/outside)
-"rq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/grass,
-/area/horde_mode/center)
-"rr" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/rdconsole,
-/turf/open/floor/grimy,
-/area/space)
 "rw" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
+/obj/structure/prop/horde_mode/vent_spawn,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"rA" = (
-/turf/open/floor/red/northwest,
-/area/space)
 "rD" = (
 /obj/structure/machinery/status_display{
 	pixel_y = -32
 	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "rF" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/item_purchase/door,
+/obj/structure/item_purchase/door{
+	unlock_area = /area/horde_mode/medical
+	},
 /turf/open/floor/bar,
 /area/horde_mode/medical)
-"rN" = (
-/obj/structure/target/syndicate,
-/turf/open/floor/red/northeast,
-/area/space)
-"rS" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
-/turf/open/floor/wood,
-/area/space)
 "rX" = (
 /obj/structure/surface/rack,
 /turf/open/floor/vault,
@@ -1096,78 +1140,39 @@
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "sb" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/wood,
-/area/space)
+/obj/structure/horde_mode_dump,
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
+	dir = 1
+	},
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "si" = (
 /obj/structure/flora/bush,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
-"sp" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
-"su" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "sF" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 8
 	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"sG" = (
-/obj/item/stock_parts/scanning_module/phasic,
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/horde_mode/center)
+/area/horde_mode/lobby)
 "sH" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
 	dir = 1
 	},
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
-"sQ" = (
-/obj/item/folder/red,
-/turf/open/floor/redfull/northwest,
-/area/space)
 "sT" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/structure/pipes/standard/manifold/hidden/cyan{
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
 	dir = 1
 	},
 /turf/open/floor,
 /area/horde_mode/center)
-"tg" = (
-/obj/structure/filingcabinet/chestdrawer,
-/turf/open/floor/grimy,
-/area/space)
-"tj" = (
-/obj/item/clothing/glasses/regular,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/grimy,
-/area/space)
 "tk" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -1185,26 +1190,19 @@
 /turf/open/floor/white,
 /area/horde_mode/center)
 "tx" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "tB" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "tM" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
 /obj/effect/landmark/horde_mode/marinespawn,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 8
+	},
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
 "tN" = (
@@ -1213,7 +1211,7 @@
 "tV" = (
 /obj/structure/item_purchase/door/wide{
 	door_id = 2;
-	unlock_area = /area/horde_mode/medical
+	unlock_area = /area/horde_mode/science
 	},
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
@@ -1232,6 +1230,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/horde_mode/outside)
 "uv" = (
+/obj/effect/landmark/horde_mode/xenospawn,
 /turf/open/floor/warning/northeast,
 /area/horde_mode/outside)
 "vc" = (
@@ -1247,21 +1246,9 @@
 "vM" = (
 /turf/open/floor/warning/north,
 /area/horde_mode/outside)
-"vS" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/med_data/laptop,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/grimy,
-/area/space)
 "vT" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
-/area/horde_mode/outside)
-"vY" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/vault,
 /area/horde_mode/outside)
 "vZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -1277,21 +1264,8 @@
 /obj/structure/closet,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
-"wu" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "wy" = (
 /turf/open/floor/whiteredcorner/west,
-/area/horde_mode/medical)
-"wO" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/closed/wall/indestructible/other,
 /area/horde_mode/medical)
 "wQ" = (
 /turf/open/floor/whiteyellowcorner/east,
@@ -1311,15 +1285,13 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/horde_mode/outside)
 "xh" = (
-/obj/structure/machinery/light/small{
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
 	dir = 4
 	},
-/turf/open/floor/grimy,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "xj" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/item_purchase/abr40,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
@@ -1330,12 +1302,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whitegreencorner,
 /area/horde_mode/center)
-"xG" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/space)
 "xP" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -1343,10 +1309,13 @@
 	name = "General Listening Channel";
 	pixel_x = -30
 	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "ya" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /obj/structure/mirror{
 	icon_state = "mirror_broke";
 	pixel_x = 30
@@ -1359,39 +1328,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
-"yh" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/turf/open/floor/redcorner,
-/area/space)
-"yv" = (
-/obj/item/trash/candy,
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/obj/structure/sign/calendar{
-	pixel_y = 29
-	},
-/turf/open/floor/wood,
-/area/space)
-"yC" = (
-/obj/structure/noticeboard{
-	pixel_y = 30
-	},
-/obj/item/trash/cheesie,
-/turf/open/floor/wood,
-/area/space)
 "yG" = (
 /turf/open/floor/loadingarea/west,
 /area/horde_mode/outside)
@@ -1401,20 +1337,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"zr" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
-"zv" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Armory";
-	req_one_access_txt = "19;106"
-	},
-/turf/open/floor/cult,
-/area/space)
 "zG" = (
 /turf/open/floor/loadingarea/north,
 /area/horde_mode/outside)
@@ -1425,19 +1347,6 @@
 "zS" = (
 /turf/open/floor/white,
 /area/horde_mode/center)
-"zW" = (
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/horde_mode/center)
-"zX" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whitered/west,
-/area/horde_mode/medical)
 "Af" = (
 /obj/structure/fence/overgrown{
 	density = 0
@@ -1445,39 +1354,31 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/horde_mode/outside)
 "Ah" = (
-/obj/structure/largecrate/random,
+/obj/effect/landmark/horde_mode/xenospawn,
 /turf/open/floor/bot/north,
 /area/horde_mode/outside)
-"Al" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/grass,
-/area/horde_mode/center)
 "Aq" = (
-/obj/structure/machinery/light,
 /obj/structure/item_purchase/ammo_refill,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
+	dir = 4
+	},
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
 "Au" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
 /obj/structure/item_purchase/injector_refill{
 	pixel_y = 32
 	},
 /turf/open/floor/white,
 /area/horde_mode/center)
 "Av" = (
-/obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "\improper Nexus Dome Command Quarter";
-	req_access_txt = "100"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/item_purchase/door{
+	door_id = 9;
+	dir = 8;
+	unlock_area = /area/horde_mode/engineering
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/horde_mode/engineering)
 "Az" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -1493,17 +1394,11 @@
 /area/horde_mode/center)
 "AD" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
 	dir = 1
 	},
 /turf/open/floor/white,
 /area/horde_mode/center)
-"AP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "AR" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -1513,19 +1408,13 @@
 	},
 /turf/open/floor/warning/west,
 /area/horde_mode/outside)
-"AS" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/whitered,
-/area/horde_mode/medical)
 "Bw" = (
-/obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/surface/table/uninteractable,
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
+	dir = 1
 	},
-/turf/open/floor/wood/wood_broken4,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "By" = (
 /turf/open/floor/whiteyellow/west,
 /area/horde_mode/center)
@@ -1534,76 +1423,38 @@
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "BL" = (
-/obj/structure/machinery/light,
 /obj/structure/bed,
+/obj/structure/prop/horde_mode/light_fixture/small/purple,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "BR" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 4
 	},
 /turf/open/floor/white,
-/area/horde_mode/center)
-"BT" = (
-/obj/item/phone{
-	desc = "A model of an ancient Earth communication device.";
-	force = 8
-	},
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/wood,
 /area/horde_mode/center)
 "BZ" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"Cp" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/trash/cheesie,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/space)
 "Cr" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/terminal{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/grimy,
-/area/space)
-"Cs" = (
-/obj/structure/showcase{
-	desc = "A stand with a plastic display of some kind of weird machine.";
-	icon_state = "coinpress0"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/horde_mode/center)
+/obj/structure/prop/horde_mode/light_fixture/small/yellow,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Ct" = (
 /turf/open/floor/whiteredfull,
 /area/horde_mode/medical)
 "Cu" = (
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
 	dir = 1
 	},
 /turf/open/floor/white,
@@ -1626,11 +1477,10 @@
 /area/horde_mode/center)
 "Dm" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "Do" = (
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/light_fixture/small/red{
 	dir = 8
 	},
 /turf/open/floor/whitered/west,
@@ -1638,52 +1488,40 @@
 "Dq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/candle,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
 /turf/open/floor/chapel/west,
 /area/horde_mode/science)
 "Dx" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/wood,
-/area/space)
-"DE" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/medical)
+/obj/structure/prop/horde_mode/vent_spawn,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "DL" = (
 /turf/open/floor/chapel/east,
 /area/horde_mode/science)
 "DS" = (
-/turf/open/floor/grimy,
-/area/space)
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
+	dir = 8
+	},
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Ei" = (
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/structure/prop/horde_mode/light_fixture/small/red{
+	dir = 8
 	},
 /turf/open/floor/whitered/northwest,
 /area/horde_mode/medical)
 "El" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/obj/structure/machinery/light{
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "Eu" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
 /area/horde_mode/outside)
-"Ev" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/horde_mode/center)
 "Ex" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -1692,58 +1530,35 @@
 "Ey" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "EC" = (
 /obj/structure/largecrate/random,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "EG" = (
 /obj/structure/item_purchase/door{
 	door_id = 8;
 	dir = 8;
-	unlock_area = /area/horde_mode/engineering
+	unlock_area = /area/horde_mode/medical
 	},
 /turf/open/floor/bar,
 /area/horde_mode/medical)
 "EN" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/grimy,
-/area/space)
-"EQ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor,
-/area/horde_mode/center)
-"EZ" = (
-/turf/open/floor/red/north,
-/area/space)
+/obj/structure/prop/horde_mode/smes,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Fh" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
-	},
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/white,
 /area/horde_mode/medical)
 "Fi" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
+/obj/structure/terminal{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/grimy,
-/area/space)
-"Fj" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light/small,
-/obj/structure/machinery/computer/objective{
-	dir = 1
-	},
-/turf/open/floor/grimy,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Fl" = (
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
 	dir = 8
 	},
 /turf/open/floor/loadingarea/east,
@@ -1756,8 +1571,9 @@
 /area/horde_mode/outside)
 "Fr" = (
 /obj/structure/surface/rack,
+/obj/structure/prop/horde_mode/light_fixture/small/blue,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "Ft" = (
 /turf/open/floor/whiteyellowcorner/west,
 /area/horde_mode/center)
@@ -1767,33 +1583,10 @@
 "FC" = (
 /turf/open/floor/chapel/north,
 /area/horde_mode/science)
-"FN" = (
-/obj/structure/bed,
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/grimy,
-/area/space)
-"FQ" = (
-/turf/open/floor/wood,
-/area/space)
 "FS" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/horde_mode/outside)
-"FU" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/horde_mode/center)
-"Gf" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/space)
 "Go" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/horde_mode/outside)
@@ -1804,55 +1597,25 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/horde_mode/outside)
 "GA" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/flashlight/lamp{
-	pixel_x = 6;
-	pixel_y = 14
-	},
-/turf/open/floor/redcorner/west,
-/area/space)
-"GC" = (
-/obj/item/trash/cheesie,
-/turf/open/floor/wood/wood_broken4,
-/area/space)
-"GF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/effect/landmark/horde_mode/marinespawn,
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
+/obj/structure/item_purchase/perk_machine/speed,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "GK" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "GN" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
-"GP" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor,
-/area/horde_mode/center)
-"GU" = (
-/obj/structure/safe/floor{
-	name = "safe";
-	spawnkey = 0
-	},
-/turf/open/floor/grimy,
-/area/space)
 "GV" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "GX" = (
 /obj/structure/item_purchase/door/wide{
 	door_id = 2;
-	unlock_area = /area/horde_mode/medical
+	unlock_area = /area/horde_mode/center
 	},
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
@@ -1865,27 +1628,20 @@
 "Hi" = (
 /obj/structure/item_purchase/door/wide{
 	door_id = 2;
-	unlock_area = /area/horde_mode/medical
+	unlock_area = /area/horde_mode/center
 	},
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
+/area/horde_mode/lobby)
 "Hv" = (
 /obj/structure/item_purchase/m39,
 /turf/open/floor/whiteblue/northwest,
 /area/horde_mode/center)
-"Hx" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "HM" = (
 /obj/item/trash/chips,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "HV" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "Ia" = (
@@ -1893,7 +1649,7 @@
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "Il" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /obj/structure/mirror{
 	pixel_x = 30
 	},
@@ -1902,12 +1658,14 @@
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
 "Ir" = (
-/turf/closed/wall/r_wall,
-/area/space)
-"II" = (
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/prop/horde_mode/light_fixture/small/yellow{
+	dir = 4
 	},
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
+"II" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
 /turf/open/floor/whitered/northwest,
 /area/horde_mode/medical)
 "IK" = (
@@ -1917,17 +1675,15 @@
 /obj/structure/closet,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
-"JK" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/white,
-/area/horde_mode/center)
 "JN" = (
 /turf/open/floor/warningcorner/north,
 /area/horde_mode/outside)
 "JO" = (
 /obj/structure/flora/pottedplant,
 /obj/item/trash/cheesie,
-/obj/structure/pipes/vents/pump,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "JR" = (
@@ -1943,17 +1699,13 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"Kc" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/turf/open/floor/redfull/northwest,
-/area/space)
 "Kk" = (
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 8
+	},
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
 "Kn" = (
@@ -1963,7 +1715,8 @@
 "Ku" = (
 /obj/structure/item_purchase/door/wide{
 	dir = 4;
-	door_id = 4
+	door_id = 4;
+	unlock_area = /area/horde_mode/science
 	},
 /turf/open/floor/white,
 /area/horde_mode/science)
@@ -1989,28 +1742,26 @@
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "Ln" = (
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/chair{
 	dir = 4
 	},
+/obj/structure/prop/horde_mode/light_fixture/small/red,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "Lw" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"LC" = (
-/obj/structure/machinery/light,
-/turf/open/floor/whitepurplecorner/east,
-/area/horde_mode/outside)
 "LP" = (
 /turf/open/floor/whiteyellowcorner,
 /area/horde_mode/center)
 "LU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/item_purchase/door/wide{
+	dir = 4;
+	door_id = 4
 	},
-/turf/open/floor/wood/wood_broken6,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Mm" = (
 /obj/structure/machinery/shower{
 	dir = 8
@@ -2018,16 +1769,9 @@
 /obj/effect/glowshroom,
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
-"MB" = (
-/obj/structure/window_frame/colony,
-/turf/open/floor/plating,
-/area/horde_mode/science)
 "MC" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
 "MP" = (
@@ -2036,33 +1780,10 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/horde_mode/outside)
-"MU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/purple/northwest,
-/area/horde_mode/lobby)
-"Na" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whitegreencorner/west,
-/area/horde_mode/center)
 "Ne" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/horde_mode/outside)
-"Np" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/horde_mode/center)
-"Nx" = (
-/obj/structure/target,
-/turf/open/floor/red/northwest,
-/area/space)
 "Nz" = (
 /turf/open/floor/whiteyellow/north,
 /area/horde_mode/center)
@@ -2072,6 +1793,9 @@
 	frequency = 1469;
 	name = "General Listening Channel";
 	pixel_y = 30
+	},
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
+	dir = 1
 	},
 /turf/open/floor/chapel/east,
 /area/horde_mode/science)
@@ -2095,77 +1819,28 @@
 "Ot" = (
 /turf/open/gm/dirt,
 /area/horde_mode/outside)
-"Oz" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/trash/cigbutt/cigarbutt,
-/obj/structure/machinery/cell_charger,
-/obj/item/storage/fancy/cigarettes/wypacket,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/wood,
-/area/space)
 "OP" = (
 /turf/open/floor/chapel,
 /area/horde_mode/science)
 "OQ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /obj/item/trash/plate,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"OR" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating,
-/area/horde_mode/science)
-"OV" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/red/north,
-/area/space)
-"OW" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
-"OZ" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/megaphone,
-/turf/open/floor/grimy,
-/area/space)
 "Pk" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"Py" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/wood,
-/area/horde_mode/center)
-"PA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
+/area/horde_mode/lobby)
 "PE" = (
 /turf/open/floor/whitered/north,
 /area/horde_mode/medical)
-"PJ" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/bluecorner,
-/area/horde_mode/science)
 "PK" = (
 /obj/item/trash/cheesie,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "PO" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/device/flashlight/lamp,
-/obj/structure/surface/table,
+/obj/structure/surface/table/uninteractable,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "PP" = (
@@ -2183,19 +1858,14 @@
 "PY" = (
 /obj/structure/item_purchase/door/wide{
 	dir = 4;
-	door_id = 4
+	door_id = 4;
+	unlock_area = /area/horde_mode/medical
 	},
 /turf/open/floor/bar,
 /area/horde_mode/medical)
-"PZ" = (
-/obj/effect/decal/cleanable/cobweb2,
-/obj/structure/surface/rack,
-/turf/open/floor/cult,
-/area/space)
 "Qa" = (
-/obj/structure/surface/table/woodentable,
-/turf/open/floor/grimy,
-/area/space)
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Qb" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -2208,21 +1878,14 @@
 /turf/open/floor/white,
 /area/horde_mode/medical)
 "Qn" = (
-/obj/structure/machinery/light{
+/obj/structure/surface/table/uninteractable,
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
 	dir = 4
 	},
-/obj/structure/surface/table,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"Qo" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowcorner/north,
-/area/horde_mode/center)
 "Qv" = (
-/obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/small{
+/obj/structure/prop/horde_mode/light_fixture/small/blue{
 	dir = 8
 	},
 /turf/open/floor/white,
@@ -2239,18 +1902,6 @@
 	},
 /turf/open/gm/dirtgrassborder/east,
 /area/horde_mode/outside)
-"QT" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_y = 30
-	},
-/turf/open/floor/wood,
-/area/space)
 "Rb" = (
 /obj/structure/item_purchase/door/wide{
 	unlock_area = /area/horde_mode/center;
@@ -2259,29 +1910,25 @@
 /turf/open/floor/white,
 /area/horde_mode/lobby)
 "Rl" = (
-/obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/prop/horde_mode/light_fixture/small/red,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "Rt" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/whitegreen/north,
 /area/horde_mode/center)
 "Rx" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Marshal Office";
-	req_one_access_txt = "104;3"
+/obj/structure/item_purchase/door{
+	door_id = 9;
+	dir = 8;
+	unlock_area = /area/horde_mode/engineering
 	},
 /turf/open/floor,
-/area/space)
+/area/horde_mode/engineering)
 "RF" = (
-/obj/structure/machinery/light{
+/obj/structure/surface/table/uninteractable,
+/obj/structure/prop/horde_mode/light_fixture/small/purple{
 	dir = 8
 	},
-/obj/structure/surface/table,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "RJ" = (
@@ -2298,6 +1945,7 @@
 /area/horde_mode/outside)
 "RZ" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "Se" = (
@@ -2309,35 +1957,11 @@
 "Sl" = (
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"Sq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/white,
-/area/horde_mode/center)
-"Sx" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/device/taperecorder,
-/turf/open/floor/grimy,
-/area/space)
 "Sz" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/horde_mode/xenospawn,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"SG" = (
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/red,
-/area/space)
-"SH" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/vault,
-/area/horde_mode/outside)
-"SK" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whitegreencorner,
-/area/horde_mode/center)
 "SU" = (
 /obj/structure/item_purchase/perk_machine/gunnut,
 /turf/open/floor/whiteblue/southwest,
@@ -2355,22 +1979,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/vault,
 /area/horde_mode/lobby)
-"Tr" = (
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/redfull/northwest,
-/area/space)
-"Tw" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
-"TA" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/open/floor/wood,
-/area/space)
 "TH" = (
 /obj/structure/fence/overgrown{
 	density = 0
@@ -2380,9 +1988,6 @@
 "TS" = (
 /obj/structure/sink{
 	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
 	},
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
@@ -2401,9 +2006,9 @@
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "Uh" = (
-/obj/structure/bookcase,
-/turf/open/floor/wood,
-/area/space)
+/obj/structure/machinery/disposal,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "Uo" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/whiteyellowfull/east,
@@ -2414,10 +2019,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"Uw" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor/grimy,
-/area/space)
 "Uy" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/candle,
@@ -2426,30 +2027,15 @@
 "UD" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/structure/machinery/light,
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "UE" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "UL" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/whiteyellowfull/east,
-/area/horde_mode/center)
-"UM" = (
-/obj/structure/machinery/door/airlock/almayer/command/colony{
-	dir = 1;
-	locked = 1;
-	name = "\improper Nexus Dome Director's Quarters";
-	req_access_txt = "100"
-	},
-/turf/open/floor/cult,
-/area/space)
-"UW" = (
-/obj/structure/machinery/vending,
-/turf/open/floor/white,
 /area/horde_mode/center)
 "Va" = (
 /obj/structure/machinery{
@@ -2493,51 +2079,16 @@
 	},
 /turf/open/floor/whitered/west,
 /area/horde_mode/medical)
-"VD" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/freezerfloor,
-/area/horde_mode/science)
 "VH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/horde_mode/center)
-"VI" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/cult,
-/area/space)
-"VN" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
 "VU" = (
-/obj/structure/machinery/light/small,
-/obj/structure/bed/chair{
+/obj/structure/prop/horde_mode/light_fixture/yellow,
+/obj/structure/prop/horde_mode/chair{
 	dir = 4
 	},
 /turf/open/floor/white,
 /area/horde_mode/center)
-"VY" = (
-/obj/item/frame/table,
-/turf/open/floor/white,
-/area/horde_mode/center)
-"We" = (
-/obj/item/bedsheet/rd,
-/obj/item/weapon/pole/fancy_cane,
-/obj/structure/bed{
-	desc = "For prime comfort.";
-	name = "fancy bed"
-	},
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/grimy,
-/area/space)
 "Wg" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2549,9 +2100,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
 "Wm" = (
@@ -2559,32 +2107,13 @@
 /area/horde_mode/lobby)
 "Wn" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot,
+/obj/structure/prop/horde_mode/light_fixture/yellow,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"Wo" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ashtray/bronze,
-/turf/open/floor/red/west,
-/area/space)
-"Wv" = (
-/turf/open/floor/red/west,
-/area/space)
 "Ww" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"Wy" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/command/colony{
-	locked = 1;
-	name = "\improper Nexus Dome Marshal's Quarters";
-	req_access_txt = "100"
-	},
-/turf/open/floor/cult,
-/area/space)
 "WA" = (
 /obj/structure/machinery{
 	density = 1;
@@ -2597,68 +2126,29 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/white,
 /area/horde_mode/center)
-"WD" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellow,
-/area/horde_mode/center)
 "WN" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
-"WU" = (
-/obj/item/tool/pickaxe/jackhammer{
-	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards. This one is dull and nearly useless.";
-	force = 3;
-	name = "display jackhammer"
-	},
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/wood,
-/area/horde_mode/center)
 "WW" = (
 /turf/open/floor/whitered/southwest,
 /area/horde_mode/medical)
-"WX" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor/redfull/northwest,
-/area/space)
 "Xk" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/horde_mode/outside)
-"Xs" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/white,
-/area/horde_mode/center)
 "XB" = (
 /turf/open/floor/whitered,
 /area/horde_mode/medical)
-"XI" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/white,
-/area/horde_mode/center)
-"XL" = (
-/obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
-/area/space)
 "XT" = (
 /turf/open/floor/whitered/east,
 /area/horde_mode/medical)
 "XV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/horde_mode/outside)
 "XY" = (
@@ -2674,16 +2164,6 @@
 "Yj" = (
 /turf/open/floor/whiteyellow,
 /area/horde_mode/center)
-"Yr" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/trash/chips,
-/obj/structure/transmitter/colony_net/rotary{
-	phone_category = "Lazarus Landing";
-	phone_color = "blue";
-	phone_id = "Director's Office"
-	},
-/turf/open/floor/wood,
-/area/space)
 "YB" = (
 /obj/structure/fence/overgrown{
 	density = 0
@@ -2697,7 +2177,7 @@
 /turf/open/floor/chapel/north,
 /area/horde_mode/science)
 "YT" = (
-/obj/structure/bed/chair,
+/obj/structure/prop/horde_mode/chair,
 /turf/open/floor/white,
 /area/horde_mode/center)
 "YU" = (
@@ -2718,14 +2198,8 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/whiteyellowcorner/east,
 /area/horde_mode/center)
-"Zr" = (
-/turf/open/floor/redcorner/west,
-/area/space)
 "Zz" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/grass,
 /area/horde_mode/center)
 "ZD" = (
@@ -2733,14 +2207,13 @@
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "ZM" = (
-/turf/open/floor/red/northeast,
-/area/space)
+/obj/structure/item_purchase/door/wide,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "ZR" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/grimy,
-/area/space)
+/obj/structure/item_purchase/m41a,
+/turf/open/floor/whiteyellow/northwest,
+/area/horde_mode/engineering)
 "ZS" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/freezerfloor,
@@ -2755,14 +2228,14 @@ Ve
 Ve
 Ve
 Ve
-LC
+Ve
 Om
 Sl
 Sl
 Sl
 Sl
 vT
-Sl
+aa
 Sl
 Sl
 xa
@@ -2772,15 +2245,15 @@ QH
 Vm
 Vm
 gD
+bz
+Ot
+Ot
+bz
 Ot
 Ot
 Ot
 Ot
-Ot
-Ot
-Ot
-Ot
-Ot
+bz
 Ot
 Ot
 Ot
@@ -2821,7 +2294,7 @@ Sl
 Ia
 Sl
 hn
-Sl
+aa
 Sl
 Sl
 Sl
@@ -2837,7 +2310,7 @@ ix
 Ot
 Ot
 Ot
-Ot
+bz
 Ot
 Ot
 qg
@@ -2852,7 +2325,7 @@ Ot
 Ot
 TT
 Sl
-Sl
+aa
 XY
 nB
 Sl
@@ -2870,7 +2343,7 @@ bm
 Sl
 Yi
 WN
-WN
+aw
 cL
 Vu
 Sl
@@ -2879,22 +2352,22 @@ Sl
 Sl
 Sl
 Sl
-Sl
+aa
 ak
-aK
+CA
 lg
 Zb
-aC
+CA
 lg
 Zb
-aC
+CA
 ak
 bo
-gD
+cn
 Ot
 Ot
 Ot
-Ot
+bz
 PP
 Sl
 nB
@@ -2903,14 +2376,14 @@ Sl
 JX
 YU
 Ot
-Ot
+bz
 Ot
 TT
 Yi
 Vu
 Sl
 Sl
-Sl
+aa
 Kn
 nB
 "}
@@ -2929,20 +2402,20 @@ WN
 WN
 Up
 nB
+aa
 Sl
 Sl
-Sl
 aL
 aL
 aL
 aL
+Cu
 zS
 zS
 zS
 zS
 zS
-zS
-zS
+cy
 id
 id
 id
@@ -2955,7 +2428,7 @@ dX
 Sl
 Yi
 Vu
-Sl
+aa
 JT
 Ot
 Ot
@@ -2989,17 +2462,17 @@ aL
 aL
 aL
 Wg
-Wg
+cK
 aL
-nS
 zS
 zS
 zS
+rw
 am
 zS
 zS
 id
-dT
+Qa
 dO
 id
 id
@@ -3029,7 +2502,7 @@ Sl
 Sl
 hn
 Sl
-Sl
+aa
 Sl
 Sl
 nB
@@ -3041,7 +2514,7 @@ zn
 Sl
 aL
 aL
-Wg
+cK
 Wg
 ts
 aP
@@ -3051,25 +2524,25 @@ Cu
 zS
 zS
 zS
-JK
+cy
 id
 id
-VI
-bt
-bt
-bt
+Qa
+Qa
+Qa
+Qa
 id
 id
 id
 Sl
-nf
+bU
 Az
 zn
 Sl
 JT
 Ot
 Ot
-Ot
+bz
 Ot
 Ot
 Ot
@@ -3089,16 +2562,16 @@ Sl
 Sl
 nB
 Sl
-Sl
+aa
 Sl
 Sl
 aL
 aL
 aL
-mg
 aP
 aP
 aP
+cQ
 aP
 ov
 aL
@@ -3108,29 +2581,29 @@ zS
 zS
 zS
 id
-jO
-bt
-bt
-bt
-bt
+DS
+Qa
+bO
+Qa
+bO
 id
-qT
+id
 id
 id
 Sl
 Sl
 XY
-Sl
+aa
 JT
 Ot
 Ot
 Ot
 Ot
 Ot
-Ot
+bz
 Ot
 kj
-Sl
+aa
 Sl
 nB
 "}
@@ -3145,35 +2618,35 @@ qC
 Sl
 Sl
 aL
-bs
-bs
+aM
+aM
 aL
 PO
 aL
-nR
+aP
 GY
 GY
 GY
 aP
 ZS
 aL
-zS
+Cu
 zS
 zS
 zS
 zS
 id
-PZ
-jO
-jO
-jO
-bt
+Qa
+Qa
+Dx
+Qa
+Qa
 id
 ZR
-FN
+Qa
 id
 mK
-XL
+mK
 id
 Sl
 JT
@@ -3191,15 +2664,15 @@ nB
 "}
 (9,1,1) = {"
 wS
-wS
+dh
 Qb
 Sl
 Sl
 Sl
 Sl
-Qc
+dg
 Sl
-bs
+aM
 ph
 GK
 xP
@@ -3210,25 +2683,25 @@ aL
 aL
 aL
 TS
-VD
+aP
 cP
-Sq
-co
+zS
+LP
 qz
 wQ
-zS
+cy
+id
+Qa
+bO
+Qa
+ck
 id
 id
-id
-id
-id
-zv
-id
+Qa
+bO
 DS
-jH
-DS
-DS
-DS
+Qa
+Qa
 mK
 Sl
 wa
@@ -3254,45 +2727,45 @@ Ia
 Sl
 Sl
 Sl
-bs
+aM
 ph
 ph
 ph
-iq
-OR
+ph
+at
 gh
+cW
 Kk
-Kk
-VD
-aU
+aP
+aP
 aP
 aL
 zS
-WD
-BT
+Yj
+aD
 Nz
 zS
 id
-rN
-dE
-ZM
-dC
+mK
+Qa
 ZM
 id
+id
+id
 pV
-jH
-DS
-DS
-OZ
+Qa
+Qa
+Dx
+Qa
 mK
 Sl
 Sl
-Sl
+aa
 Sl
 Ia
 JT
 Ot
-Ot
+bz
 Ot
 TT
 Sl
@@ -3310,10 +2783,10 @@ Sl
 aL
 aL
 aL
-sH
+GK
 ph
+cY
 ph
-Hx
 aL
 Wl
 Qx
@@ -3322,23 +2795,23 @@ aL
 ya
 Il
 aL
-tu
-WD
-Py
+cB
+Yj
+aD
 Nz
 zS
 id
-Nx
-rA
-rA
-aQ
-rA
-id
-dV
+Qa
+Qa
+Qa
 jH
-pY
-GU
-Fj
+jH
+id
+jH
+jH
+Qa
+Qa
+Qa
 id
 Sl
 Kn
@@ -3351,7 +2824,7 @@ Ot
 Ot
 TT
 Sl
-Sl
+aa
 nB
 "}
 (12,1,1) = {"
@@ -3362,11 +2835,11 @@ Sl
 nB
 Sl
 Sl
-bs
+aM
 cT
 JO
-su
-PJ
+GK
+GK
 py
 tB
 aL
@@ -3383,17 +2856,17 @@ mB
 Nz
 VU
 id
-mK
-mK
-mK
-mK
-Rx
-id
-id
-Wy
+pV
+Dx
+Qa
+Qa
+Qa
 id
 id
 id
+bZ
+Qa
+bR
 id
 id
 id
@@ -3415,12 +2888,12 @@ Qb
 wS
 ol
 Sl
+aa
 Sl
-Sl
-bs
+aM
 cT
-iq
-zr
+ph
+ph
 ph
 ph
 ph
@@ -3433,24 +2906,24 @@ Uy
 wR
 aL
 GV
-WD
-Py
+Yj
+aD
 Nz
 zS
 id
-yh
-jy
-eU
-eU
-fB
-id
+Qa
+Qa
+bO
+Qa
+Qa
+DS
 Uh
-xG
-Bw
 id
-vS
-tj
-We
+Bw
+Qa
+Qa
+EN
+EN
 id
 Sl
 Sz
@@ -3458,7 +2931,7 @@ Sl
 YU
 Ot
 Ot
-Ot
+bz
 TT
 Sl
 Sl
@@ -3466,7 +2939,7 @@ Sl
 "}
 (14,1,1) = {"
 Lw
-ol
+di
 nB
 Sl
 Sl
@@ -3474,9 +2947,9 @@ vT
 aL
 aL
 jD
-Hx
 ph
 ph
+cY
 ZD
 UD
 aL
@@ -3485,25 +2958,25 @@ OP
 DL
 OP
 DL
-OP
+cH
 aM
 in
-WD
-WU
+Yj
+aD
 aE
 zS
 mK
-SG
-kO
-kO
-kO
-OV
-id
-qS
-xG
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
+mK
 dn
-id
-rr
+Qa
+Qa
 Fi
 Cr
 id
@@ -3529,7 +3002,7 @@ Sl
 aL
 sH
 ph
-wu
+GK
 ph
 ph
 ph
@@ -3543,39 +3016,39 @@ at
 at
 Ku
 zS
-hO
+Ft
 By
 AA
 zS
 mK
-SG
-Kc
-sQ
-kO
-EZ
-id
-iD
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
+Qa
 LU
-FQ
-id
-id
-id
-Cr
+Qa
+Qa
+Qa
+bO
+bM
 EN
 id
 Sl
 Sl
 JT
-Ot
+bz
 Ot
 Ot
 kj
 JX
-Sl
+aa
 Sl
 "}
 (16,1,1) = {"
-Sl
+aa
 Sl
 Sl
 BA
@@ -3584,39 +3057,39 @@ aL
 aL
 ph
 ph
-Hx
+ph
 ph
 ph
 ZD
 bq
 aL
-bk
+Vn
 at
+cU
 at
-at
-at
+cM
 at
 aN
 zS
-gH
+zS
 zS
 zS
 zS
 mK
 GA
-Wo
-jE
-Tr
-lL
-id
-yC
-xG
-hF
-bf
-FQ
-UM
-jH
-tg
+Ir
+Qa
+Qa
+Dx
+Qa
+bO
+Qa
+Qa
+bO
+Qa
+Qa
+bM
+EN
 id
 id
 Sl
@@ -3635,11 +3108,11 @@ qC
 Sl
 Sl
 Sl
-bs
+aM
 uj
 ph
 ZD
-Hx
+cY
 ph
 ph
 ph
@@ -3652,26 +3125,26 @@ wR
 aL
 aL
 aL
-zS
-aF
+Cu
+aD
 wQ
 zS
-zS
+cy
 id
 mK
 id
-gJ
-WX
-lL
-id
-QT
-Cp
-Oz
-Yr
+bO
+Qa
+Qa
+Qa
+Qa
+mK
+Qa
+Qa
 Dx
-Ir
-aj
-Uw
+Qa
+Qa
+Qa
 Qa
 mK
 Sl
@@ -3687,17 +3160,17 @@ Sl
 (18,1,1) = {"
 Vu
 nB
+aa
 Sl
 Sl
-Sl
-bs
+aM
 Uf
-AP
+cZ
 ph
-wu
+GK
 ph
 ph
-ph
+cZ
 Jv
 aL
 DL
@@ -3708,35 +3181,35 @@ aL
 Hv
 Ww
 zS
-aF
 aD
+mB
 wQ
 zS
 Ww
 SU
 mK
-Zr
-Wv
-lG
-id
-yv
-TA
-sb
-rS
-GC
+Qa
+Qa
 Ir
-da
+jH
+jH
+id
+sb
+Qa
+Qa
+Ir
+Qa
 xh
-Sx
+Qa
 mK
 Sl
 YU
 Ot
-Ot
+bz
 Ot
 TT
 Sl
-Sl
+aa
 Sl
 "}
 (19,1,1) = {"
@@ -3749,21 +3222,21 @@ aL
 aL
 aL
 aL
-Hx
+ph
 tV
 aL
 aL
 aL
 aL
 aM
-MB
+aM
 aM
 aM
 aL
 AD
 zS
 zS
-EQ
+aG
 aD
 aD
 wQ
@@ -3779,8 +3252,8 @@ id
 mK
 Av
 mK
-Ir
-Gf
+id
+id
 id
 id
 id
@@ -3799,14 +3272,14 @@ Sl
 Sl
 MP
 gU
-aK
-qA
-zS
-Xs
-zS
-gH
+CA
+dc
 zS
 zS
+dc
+zS
+zS
+dc
 zS
 YT
 RF
@@ -3818,27 +3291,27 @@ am
 zS
 zS
 HM
-EQ
+aG
 fZ
 UL
 aD
 CG
 AC
-zS
+bF
 zS
 zS
 YT
 OQ
 iM
+bF
 zS
 zS
-gH
-zS
-UW
-gH
-Xs
 zS
 zS
+bF
+zS
+zS
+bF
 CA
 Ot
 Ot
@@ -3847,7 +3320,7 @@ Ot
 kj
 Sl
 nU
-Sl
+aa
 "}
 (21,1,1) = {"
 Gw
@@ -3859,21 +3332,21 @@ zS
 zS
 zS
 zS
-oP
+KW
 zS
 zS
 zS
 am
 zS
 zS
-zS
+rw
 zS
 zS
 zS
 zS
 KW
 zS
-GP
+fZ
 Uo
 UL
 UL
@@ -3887,16 +3360,16 @@ zS
 zS
 zS
 zS
-gH
 zS
 zS
-gH
+zS
+zS
 zS
 zS
 zS
 Va
 Ot
-Ot
+bz
 Ot
 Ot
 kj
@@ -3914,7 +3387,7 @@ zS
 zS
 zS
 zS
-gH
+zS
 zS
 ay
 ay
@@ -3930,7 +3403,7 @@ zS
 CG
 MC
 bL
-FU
+UL
 fZ
 zS
 zS
@@ -3942,10 +3415,10 @@ ay
 ay
 ay
 xD
-SK
+ay
 zS
 zS
-gH
+zS
 am
 zS
 zS
@@ -3961,56 +3434,56 @@ Sl
 "}
 (23,1,1) = {"
 Ot
+bz
 Ot
 Ot
-Ot
-aK
+CA
 zS
 zS
+rw
 zS
 zS
-oh
-jq
+de
 nh
 VH
 GN
 VH
-Al
-Ev
+Zz
+VH
 nh
 VH
 HV
-Rt
-Sq
-Sq
+cJ
+zS
+zS
 iV
 Cy
 sT
-pM
-Sq
+fZ
+zS
 jq
 Dm
 VH
 UE
-rq
+VH
 aO
 VH
 si
 VH
 Zz
 Rt
-Sq
-VN
+zS
+zS
 rw
 zS
 zS
 CA
 Ot
 Ot
-Ot
+bz
 Ot
 TT
-Sl
+aa
 Sl
 Sl
 "}
@@ -4024,14 +3497,14 @@ zS
 am
 am
 zS
-gH
+zS
 zS
 iz
 iz
 iz
 iz
 iz
-Na
+iz
 iz
 iz
 iz
@@ -4039,8 +3512,8 @@ zS
 zS
 CG
 UL
-UL
-zW
+cA
+Uo
 fZ
 zS
 zS
@@ -4056,7 +3529,7 @@ iz
 zS
 zS
 zS
-gH
+zS
 zS
 zS
 Va
@@ -4079,7 +3552,7 @@ zS
 zS
 am
 zS
-gH
+zS
 zS
 zS
 zS
@@ -4095,7 +3568,7 @@ zS
 zS
 fZ
 UL
-aF
+aD
 UL
 zS
 zS
@@ -4111,7 +3584,7 @@ zS
 am
 zS
 zS
-gH
+zS
 zS
 CG
 KX
@@ -4129,46 +3602,46 @@ Sl
 Sl
 xa
 uq
-aC
+CA
 PK
-zS
-PA
-zS
-gH
+cR
 zS
 zS
+zS
+zS
+cR
 zS
 YT
 Qn
 iM
-gH
 zS
 zS
+cR
 zS
 PK
 zS
 zS
 aG
 aG
-aF
+aD
 aD
 zS
 am
-zS
+bG
 zS
 zS
 YT
-VY
+zS
 iM
-OW
+zS
+bG
 zS
 zS
 zS
+bG
 zS
 zS
-gH
-zS
-zS
+bG
 CA
 Ot
 Ot
@@ -4176,11 +3649,11 @@ Ot
 Ot
 kj
 qZ
-WN
+aw
 Vu
 "}
 (27,1,1) = {"
-Ia
+aa
 Sl
 Se
 Se
@@ -4189,32 +3662,32 @@ aV
 aV
 aV
 aV
-MU
+Wm
 GX
 aV
 aV
 aV
 aV
-id
-tx
+aV
+cN
 Hi
-id
-id
+aV
+aV
 Au
 zS
 zS
 aG
 aD
-aF
+aD
 AA
 zS
 aB
 al
-gl
+ap
 EG
-gl
-gl
-gl
+ap
+ap
+ap
 al
 al
 al
@@ -4242,25 +3715,25 @@ Sl
 Sl
 aZ
 wk
-GF
-bw
-MU
+tM
+Wm
+Wm
 Wm
 Wm
 tM
 ab
 aV
 sF
-pO
 gw
+cN
 pH
-id
+aV
 mt
 Ww
 zS
 aD
-aD
-Qo
+mB
+AA
 zS
 hN
 NP
@@ -4275,9 +3748,9 @@ oy
 al
 aq
 Do
+bN
 ZZ
-zX
-ZZ
+WW
 al
 vZ
 Sl
@@ -4299,40 +3772,40 @@ aZ
 pl
 Wm
 af
-bv
+br
 af
 Wm
 Wm
-qp
+ad
 aV
 EC
 Ey
 qR
 rD
-id
-id
-id
-Ln
+aV
+aV
+aV
+cE
 aJ
 AA
-gH
+zS
 Ln
 al
 al
 al
-PE
+cp
 Qi
+bP
+ao
 Qi
-Qi
-Qi
-Qi
+bP
 wy
-Qi
-Qi
+bV
+oT
 Qi
 Fh
-ny
-Qi
+xn
+bH
 al
 Sl
 Sl
@@ -4348,33 +3821,33 @@ nB
 Sl
 Sl
 Sl
-Sl
+aa
 Sl
 aV
 aV
 ag
-Wm
-MU
-br
+db
 Wm
 br
 Wm
+br
+cX
 aV
 cC
 gw
-gw
+cN
 gw
 gw
 Pk
-id
-GV
+aV
+cF
 am
 zS
-gH
+zS
 GV
-gl
+ap
 II
-ZZ
+cs
 oT
 Qi
 Qi
@@ -4382,21 +3855,21 @@ Qi
 Qi
 Qi
 xn
-XT
-Qi
-Qi
+bW
+au
+bP
 ao
-Qi
+bI
 al
 al
+aa
 Sl
 Sl
-Sl
-Sl
+aa
 Sl
 Sl
 cI
-Sl
+aa
 nB
 "}
 (31,1,1) = {"
@@ -4409,26 +3882,26 @@ Sl
 aV
 xj
 bx
-MU
+Wm
 Wm
 af
 Wm
 Wm
 aV
 qq
-gw
+cN
 aR
-gw
+cN
 aR
 Fr
-id
+aV
 dF
 LP
 qz
-az
+wQ
 in
-gl
-PE
+ap
+cw
 as
 Qi
 Qi
@@ -4436,12 +3909,12 @@ Ct
 Qi
 Qi
 Qi
-XB
+cb
 al
+bS
 Qi
-Qi
-DE
-Qi
+xn
+bJ
 al
 Sl
 cI
@@ -4460,42 +3933,42 @@ nB
 nB
 nB
 Sl
-Sl
+aa
 aV
 aV
 iw
-sp
+Wm
 br
 Wm
 Wm
-ac
+br
 aV
 bj
 gw
+cN
 gw
-gw
-gw
+cN
 kG
-id
+aV
 fV
 Yj
-av
-pQ
+aD
+Nz
 zS
 PY
 as
-as
+ct
 Qi
 Ct
+ch
 Ct
-Ct
+bP
 Qi
-Qi
-XB
+cc
 al
 ar
-Qi
-Qi
+bQ
+dj
 al
 al
 Sl
@@ -4522,20 +3995,20 @@ Wm
 af
 Wm
 ad
-Wm
+db
 ad
 aV
-bl
+aR
+cN
 gw
-gw
-gw
+cN
 gw
 dS
-id
+aV
 PW
 Yj
-Np
-pQ
+aD
+Nz
 zS
 as
 as
@@ -4559,13 +4032,13 @@ Kn
 Sl
 Sl
 Sl
-Go
+by
 Ot
 Ot
 Ot
 "}
 (34,1,1) = {"
-Sl
+aa
 lM
 qC
 Sl
@@ -4574,7 +4047,7 @@ nB
 Sl
 aZ
 br
-Wm
+df
 br
 Wm
 af
@@ -4583,18 +4056,18 @@ bn
 tx
 gw
 gw
-gw
-gw
+cN
+cN
 aR
-id
-Cu
+aV
+cG
 Yj
-Cs
-pQ
+mB
+Nz
 zS
-gl
+ap
 PE
-as
+ej
 as
 as
 as
@@ -4602,8 +4075,8 @@ Qi
 Qi
 Qi
 wy
-ZZ
-WW
+Do
+bT
 al
 al
 al
@@ -4624,40 +4097,40 @@ Sl
 Sl
 Sl
 Sl
-Sl
+aa
 Sl
 Sl
 aV
 aV
 aV
-bh
-br
+Wm
+dd
 Wm
 br
 bd
-bl
-gw
-gw
 aR
-gw
+cN
+cV
+aR
+cO
 aT
-id
+aV
 aH
 Yj
-Np
-pQ
+aD
+Nz
 KW
-gl
-ax
-XT
-XT
-au
+ap
+cx
+cu
+cq
+cl
 xn
-XT
-XT
-XT
+ce
+cf
+ce
 au
-as
+bX
 XB
 al
 al
@@ -4693,21 +4166,21 @@ aV
 El
 gw
 gw
-gw
-id
-id
-id
+cN
+aV
+aV
+aV
 zS
 Yj
-sG
-pQ
-zS
+aD
+Nz
+Rl
 al
 al
 al
 al
-PE
-XB
+cm
+ci
 al
 al
 al
@@ -4721,17 +4194,17 @@ nU
 Sl
 Sl
 Sl
-lV
+bB
 Yi
 Vu
 Sl
-Sl
+aa
 Sl
 nB
 "}
 (37,1,1) = {"
 bu
-Sl
+aa
 Sl
 bm
 RK
@@ -4739,7 +4212,7 @@ RK
 RK
 RK
 RK
-SH
+RK
 RK
 bu
 aV
@@ -4755,7 +4228,7 @@ zS
 am
 Ft
 By
-Qo
+AA
 zS
 zS
 Rl
@@ -4766,14 +4239,14 @@ wy
 Vy
 WW
 al
-ax
-XT
+cd
+bY
 dj
 ap
 et
 Sl
 Sl
-Sl
+aa
 Ia
 Sl
 Sl
@@ -4803,24 +4276,24 @@ bp
 Fl
 vz
 vz
-aX
+cS
 aV
 tu
 zS
 zS
 zS
 zS
-gH
 zS
 zS
 zS
-gl
+zS
+ap
 PE
 as
 as
 as
-XB
-wO
+cc
+al
 al
 al
 al
@@ -4864,28 +4337,28 @@ zS
 zS
 zS
 PK
+rw
 zS
-Tw
-Sq
-Sq
-Sq
+zS
+zS
+zS
 rF
+as
+as
 ej
-ej
-ej
-ej
-AS
+as
+XB
 al
 al
 Sl
 nB
 nB
-nB
-nB
-nB
+Lw
+Lw
+Lw
 RZ
-ol
-Sl
+wS
+Lw
 nf
 Az
 zn
@@ -4923,24 +4396,24 @@ zS
 zS
 am
 zS
-XI
-gl
-PE
+zS
+ap
+cr
 as
 as
 as
-XB
+cg
 al
 Se
 Se
 Lw
 nB
-nB
-nB
-Qb
 Lw
-ol
-BZ
+Lw
+Ex
+bE
+wS
+bC
 nB
 Sl
 hn
@@ -4970,7 +4443,7 @@ be
 aX
 aX
 aV
-qA
+cG
 zS
 am
 zS
@@ -4978,27 +4451,27 @@ zS
 zS
 zS
 zS
-iU
+zS
 al
 ax
-XT
+bQ
 as
 XT
-dj
+bH
 al
 Sl
 Se
 BZ
 Lw
-nB
-nB
 Lw
-Lw
-Lw
+bK
+bE
+bE
+bE
 XV
 BZ
 Sl
-Sl
+aa
 Sl
 lM
 qC
@@ -5032,7 +4505,7 @@ zS
 zS
 zS
 zS
-zS
+Rl
 ak
 al
 ap
@@ -5045,12 +4518,12 @@ Sl
 Se
 BZ
 Lw
-nB
-nB
-Qb
-Qb
+Lw
+Lw
+Ex
+Ex
 Xk
-ol
+wS
 ol
 Qb
 nB
@@ -5093,19 +4566,19 @@ Sl
 Sl
 vM
 fk
-Ah
+fk
 fk
 tN
 Ia
 Se
 Qb
 Qb
-nB
-nB
-nB
 Lw
-nB
 Lw
+Lw
+bE
+Lw
+bD
 Qb
 tk
 Sl
@@ -5144,7 +4617,7 @@ RM
 RM
 RM
 mZ
-RM
+cv
 RM
 jB
 qL
@@ -5153,15 +4626,15 @@ qL
 tN
 vc
 Se
-Sl
+aa
 BZ
+bE
 Lw
-nB
-nB
 Lw
-ol
-nB
-nB
+bE
+wS
+Lw
+Lw
 ol
 Sl
 Sl
@@ -5174,7 +4647,7 @@ zJ
 bu
 bg
 bg
-iH
+RK
 RK
 RK
 rX
@@ -5184,25 +4657,25 @@ RK
 rX
 RK
 of
-vY
+RK
 bg
 bg
 uv
 rc
 rc
 ff
-bA
+aS
 yG
 yG
 yG
-yG
+cz
 yG
 fk
 tN
 aS
 fk
-jf
-aS
+fk
+cj
 fk
 Ah
 tN
@@ -5210,17 +4683,17 @@ tN
 Se
 Se
 Qb
+bE
+bK
 Lw
-nB
-nB
-nB
-nB
-nB
+Lw
+Lw
+Lw
 Lw
 wS
 ol
 Sl
-Sl
+aa
 Sl
 Sl
 "}
@@ -5246,13 +4719,13 @@ Sl
 Sl
 Ia
 vM
-jf
-qL
-fk
-qL
-fk
-qL
 Ah
+qL
+fk
+qL
+fk
+qL
+fk
 tN
 zG
 qL

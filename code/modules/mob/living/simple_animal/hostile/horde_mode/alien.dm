@@ -40,11 +40,7 @@
 
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_xeno_target()
-	if(length(SShorde_mode.corrupted_xenos) && prob(66))
-		target_mob = pick(SShorde_mode.corrupted_xenos)
-		return
-
-	target_mob = SShorde_mode.return_random_player()
+	target_mob = SShorde_mode.return_random_xeno()
 
 ///PROCS FOR HANDLING FIRE.
 /mob/living/simple_animal/hostile/alien/horde_mode/IgniteMob()
@@ -53,13 +49,14 @@
 		roar_emote()
 
 /mob/living/simple_animal/hostile/alien/horde_mode/handle_fire()
-	if(..())
+	. = ..()
+
+	if(!last_damage_data)
 		return
 
-	health -= fire_reagent.intensityfire * fire_damage_multiplier
 	var/mob/player_mob = last_damage_data.resolve_mob()
 	last_hit_by = player_mob
-	if(stat != DEAD)
+	if(stat != DEAD && on_fire)
 		SShorde_mode.update_points(player_mob, 10)
 		balloon_alert(player_mob, "+10")
 

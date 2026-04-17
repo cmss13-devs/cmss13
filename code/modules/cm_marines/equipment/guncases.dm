@@ -95,6 +95,19 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
 //------------
+//M46C pulse rifle
+/obj/item/storage/box/guncase/m46c
+	name = "\improper M46C pulse rifle MK1 AP case"
+	desc = "A gun case containing the M46C pulse rifle loaded with AP rounds. Uses standard MK1 & MK2 rifle magazines."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/rifle/m46c, /obj/item/ammo_magazine/rifle/m41aMK1)
+
+/obj/item/storage/box/guncase/m46c/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m46c/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+
+//------------
 //M85A1 grenade launcher
 /obj/item/storage/box/guncase/m85a1
 	name = "\improper M85A1 grenade launcher case"

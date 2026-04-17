@@ -578,6 +578,9 @@
 	var/is_locked = TRUE
 	var/iff_enabled = TRUE
 
+/obj/item/weapon/gun/rifle/m46c/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
 	. = ..()

@@ -2,7 +2,7 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("COMMANDER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
-		list("M46C Pulse Rifle", 0, /obj/effect/essentials_set/co/riflepreset, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("M46C Pulse Rifle", 0, /obj/item/storage/box/guncase/m46c, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 		list("M56A2C Smartgun", 0, /obj/item/storage/box/m56a2c_system, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
@@ -40,27 +40,27 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Medical Visor", 5, /obj/item/device/helmet_visor/medical/advanced, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
-		list("RAIL ATTACHMENTS", 0, null, null, null),
-		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("S5-Micro Dot Sight", 15, /obj/item/attachable/reddot/small, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
+		list("RAIL ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
+		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MISC_CAN_BUY_RAIL, VENDOR_ITEM_REGULAR),
+		list("S5-Micro Dot Sight", 0, /obj/item/attachable/reddot/small, MISC_CAN_BUY_RAIL, VENDOR_ITEM_REGULAR),
+		list("Reflex Sight", 0, /obj/item/attachable/reflex, MISC_CAN_BUY_RAIL, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", 0, /obj/item/attachable/scope/mini, MISC_CAN_BUY_RAIL, VENDOR_ITEM_REGULAR),
 
-		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),
-		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Grenade Launcher", 5, /obj/item/attachable/attached_gun/grenade, null, VENDOR_ITEM_REGULAR),
+		list("UNDERBARREL ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
+		list("Laser Sight", 0, /obj/item/attachable/lasersight, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Angled Grip", 0, /obj/item/attachable/angledgrip, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Shotgun", 0, /obj/item/attachable/attached_gun/shotgun, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", 0, /obj/item/attachable/attached_gun/extinguisher, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flamethrower", 0, /obj/item/attachable/attached_gun/flamer, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Grenade Launcher", 0, /obj/item/attachable/attached_gun/grenade, MISC_CAN_BUY_UNDER, VENDOR_ITEM_REGULAR),
 
-		list("BARREL ATTACHMENTS", 0, null, null, null),
-		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Extended Recoil Compensator", 15, /obj/item/attachable/extended_barrel/vented, null, VENDOR_ITEM_REGULAR),
-		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor, Compact", 15, /obj/item/attachable/suppressor/sleek, null, VENDOR_ITEM_REGULAR),
+		list("BARREL ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
+		list("Extended Barrel", 0, /obj/item/attachable/extended_barrel, MISC_CAN_BUY_BARREL, VENDOR_ITEM_REGULAR),
+		list("Extended Recoil Compensator", 0, /obj/item/attachable/extended_barrel/vented, MISC_CAN_BUY_BARREL, VENDOR_ITEM_REGULAR),
+		list("Recoil Compensator", 0, /obj/item/attachable/compensator, MISC_CAN_BUY_BARREL, VENDOR_ITEM_REGULAR),
+		list("Suppressor", 0, /obj/item/attachable/suppressor, MISC_CAN_BUY_BARREL, VENDOR_ITEM_REGULAR),
+		list("Suppressor, Compact", 0, /obj/item/attachable/suppressor/sleek, MISC_CAN_BUY_BARREL, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/gear/commanding_officer
@@ -167,10 +167,4 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/megaphone,
 		/obj/item/clothing/accessory/device/whistle/trench,
-	)
-
-// This gets around the COs' weapon not spawning without incendiary mag.
-/obj/effect/essentials_set/co/riflepreset
-	spawned_gear_list = list(
-		/obj/item/weapon/gun/rifle/m46c,
 	)

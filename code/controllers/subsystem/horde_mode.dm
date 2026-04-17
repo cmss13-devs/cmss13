@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(horde_mode)
 
 			var/spawn_loc = picked_vent.loc
 			picked_vent.animate_vent()
-			picked_vent.balloon_alert_to_viewers("something starts crawling out...")
+			picked_vent.balloon_alert_to_viewers(UNLINT("something starts crawling out..."))
 			picked_vent.is_spawning = TRUE
 			sleep(3 SECONDS)
 			var/mob_type = pick(xeno_type)

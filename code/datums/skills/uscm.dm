@@ -11,7 +11,7 @@ United States Colonial Marines
 /datum/skills/pfc/horde_mode
 	name = "Stranded Marine"
 	skills = list(
-		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 	)
 
 /datum/skills/pfc/crafty

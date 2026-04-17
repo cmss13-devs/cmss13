@@ -23,5 +23,5 @@
 		/datum/action/horde_mode_action/eviscerate,
 		/datum/action/horde_mode_action/scissor_cut,
 		/datum/action/horde_mode_action/rush,
-		/datum/action/horde_mode_action/toss_mob/clothesline
+		/datum/action/horde_mode_action/toss_mob/clothesline,
 		)

@@ -310,7 +310,7 @@
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 	icon_state = "door_open"
 
-/obj/structure/horde_mode/prop/door_open/Initialize(mapload, ...)
+/obj/structure/horde_mode/door_open/Initialize(mapload, ...)
 	. = ..()
 	playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
 	animate(src, icon_state = "door_opening", time = 0.5 SECONDS)
@@ -718,9 +718,6 @@
 /obj/structure/mystery_purchase/goodies/proc/set_item_overlay(obj/item/random_item)
 	if(ispath(random_item, /obj/item/horde_mode/stim))
 		var/obj/item/horde_mode/stim/picked_stim = random_item
-		var/image/reagent_image = image(picked_stim.icon, icon_state = picked_stim.reagent_image_fill)
-		reagent_image.color = picked_stim.reagent_color
-		hovering_effect.overlays += reagent_image
 
 /obj/structure/mystery_purchase/goodies/pick_up_item(mob/user)
 	. = ..()

@@ -113,23 +113,13 @@
 /obj/item/horde_mode/stim
 	name = "stim"
 	icon = 'icons/obj/items/syringe.dmi'
-	icon_state = "empty_skill"
-	var/image/reagent_image
-	var/reagent_image_fill = "custom_ez_1"
-	var/reagent_color = "#80ff80"
-
-/obj/item/horde_mode/stim/Initialize(mapload, ...)
-	. = ..()
-	reagent_image = image(icon, icon_state = reagent_image_fill)
-	reagent_image.color = reagent_color
-	overlays += reagent_image
+	icon_state = "hypo"
 
 //INJECTOR STIM BASE
 ////////////////////
 /obj/item/horde_mode/stim/injector
 	name = "\improper autoinjector filled with water"
 	desc = "An one-use auto-injector loaded with water. <b>Designed to be disposed after use.</b>"
-	reagent_color = COLOR_MODERATE_BLUE
 	var/inject_desc = "You feel slightly more hydrated?..."
 
 /obj/item/horde_mode/stim/injector/attack_self(mob/user)
@@ -168,7 +158,6 @@
 /obj/item/horde_mode/stim/injector/healing
 	name = "\improper disposable hypergenetic autoinjector"
 	desc = "An one-use auto-injector loaded with a mix of advanced healing chemicals, used for treating various types of damage extremely rapidly. Doesn't require any training to use. <b>Designed to be disposed after use.</b>"
-	reagent_color = COLOR_DARK_RED
 	inject_desc = "Your heart immediately starts beating faster."
 
 /obj/item/horde_mode/stim/injector/healing/inject(mob/living/carbon/human/target, mob/living/user)
@@ -182,7 +171,6 @@
 /obj/item/horde_mode/stim/injector/speed
 	name = "\improper disposable musclestimulating autoinjector"
 	desc = "An one-use auto-injector loaded with fast metabolizing musclestimulating chemicals, used for giving the user a short rush of speed. Doesn't require any training to use. <b>Designed to be disposed after use.</b>"
-	reagent_color = COLOR_YELLOW
 	inject_desc = "Your legs immediately start burning up."
 
 /obj/item/horde_mode/stim/injector/speed/get_examine_text(mob/user)
@@ -200,7 +188,6 @@
 /obj/item/horde_mode/stim/injector/max_health
 	name = "\improper disposable cardiopeutic autoinjector"
 	desc = "An one-use auto-injector loaded with chemicals that excelerates blood flow, its production and the user's heartrate. This results in the user being able to withstand more punishment for a brief period of time. Doesn't require any training to use. <b>Designed to be disposed after use.</b>"
-	reagent_color = COLOR_STRONG_VIOLET
 	inject_desc = "Your heart immediately tenses up."
 
 /obj/item/horde_mode/stim/injector/max_health/inject(mob/living/carbon/human/target, mob/living/user)
@@ -219,7 +206,6 @@
 	name = "\improper stat stim"
 	desc = "An experimental stimulant that permanently enhances a user's stat."
 	icon_state = "stimpack"
-	reagent_image_fill = "+stimpack_custom"
 	inject_desc = "Nothing happens."
 	var/stat_modifier = 0.05
 
@@ -228,7 +214,6 @@
 /obj/item/horde_mode/stim/injector/stat_mod/health
 	name = "\improper vitality stim"
 	desc = "An experimental stimulant that permanently enhances the user's endurance."
-	reagent_color = COLOR_DARK_RED
 	inject_desc = "Everything starts to feel clearer."
 	stat_modifier = 10
 
@@ -243,7 +228,6 @@
 /obj/item/horde_mode/stim/injector/stat_mod/speed
 	name = "\improper marathon stim"
 	desc = "An experimental stimulant that permanently enhances the user's conditioning."
-	reagent_color = COLOR_YELLOW
 	inject_desc = "Everything starts to feel lighter."
 	stat_modifier = 0.05
 
@@ -261,7 +245,6 @@
 	desc = "A product of shady and questionable research, this stimulant is designed to be used on xenomorphs. It modifies their genetic makeup and neural pathways in order to make them more accommodating to humans."
 	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "stimpack"
-	reagent_image_fill = "+stimpack_custom"
 
 /obj/item/horde_mode/stim/cipher/get_examine_text(mob/user)
 	. = ..()

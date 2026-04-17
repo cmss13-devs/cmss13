@@ -1294,18 +1294,28 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"aeA" = (
+"aey" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"aeB" = (
+"aez" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"aeC" = (
+"aeA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
+"aeB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_cryo/right,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
+"aeC" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/plating,
@@ -1321,16 +1331,6 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
-"aeE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_cryo/right,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"aeF" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -65386,7 +65386,7 @@ jmG
 unS
 uKE
 jwM
-aeE
+aeB
 sOR
 oVk
 gwP
@@ -65592,8 +65592,8 @@ qxm
 iSF
 uKS
 uXO
-aeF
 aeC
+aeA
 ild
 eHF
 iXy
@@ -67243,8 +67243,8 @@ qNI
 wsT
 vBd
 tUg
-aeB
-aeA
+aez
+aey
 eHF
 ftK
 pMs

@@ -1007,6 +1007,13 @@
 "adV" = (
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
+"adW" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -1059,7 +1066,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/recharge_station,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aef" = (
@@ -1128,12 +1134,6 @@
 	},
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aeq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/lazarus/quart)
 "aer" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -50186,7 +50186,7 @@ aCB
 aDa
 aDz
 aDY
-aee
+adW
 aFv
 aFv
 eYh
@@ -50410,7 +50410,7 @@ azR
 azR
 azR
 aDY
-aeq
+aee
 aFv
 aFv
 aFB
@@ -50634,7 +50634,7 @@ aCC
 aBC
 aDB
 aEb
-aeq
+aee
 aFv
 aFv
 aGu

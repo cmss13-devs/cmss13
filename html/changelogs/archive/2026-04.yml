@@ -32,3 +32,7 @@
 2026-04-14:
   Jesters-Ballad:
   - rscadd: Added Three Patches to Civilian Gear
+2026-04-16:
+  JackieEstegado:
+  - bugfix: Organ healing chemicals no longer produce messages falsely indicating
+      organ damage being taken.

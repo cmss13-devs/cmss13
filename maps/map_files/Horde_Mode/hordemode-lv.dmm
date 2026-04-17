@@ -1,0 +1,5697 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/chem_dispenser/soda{
+	pixel_y = 22
+	},
+/turf/open/floor/barber/west,
+/area/space)
+"aj" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/grimy,
+/area/space)
+"am" = (
+/obj/item/stack/sheet/wood{
+	layer = 3.01
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"ap" = (
+/obj/structure/surface/table,
+/obj/item/clothing/glasses/sunglasses/big,
+/obj/structure/machinery/light,
+/turf/open/floor/purple/northwest,
+/area/space)
+"at" = (
+/turf/open/floor/plating,
+/area/space)
+"av" = (
+/obj/item/stock_parts/matter_bin/super,
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/wood,
+/area/space)
+"aw" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/turf/open/floor/bluecorner,
+/area/space)
+"az" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/east,
+/area/space)
+"aH" = (
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/space)
+"aO" = (
+/obj/structure/flora/grass/ice/both,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"aQ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/item/clothing/ears/earmuffs,
+/turf/open/floor/red/northwest,
+/area/space)
+"aS" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/turf/open/floor/bot/north,
+/area/space)
+"bf" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/newscaster{
+	pixel_x = -30
+	},
+/obj/structure/machinery/photocopier{
+	pixel_y = 12
+	},
+/obj/item/tool/wrench,
+/turf/open/floor/wood,
+/area/space)
+"bh" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"bk" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor,
+/area/space)
+"bl" = (
+/obj/item/tool/crowbar,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"bo" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirtgrassborder/east,
+/area/space)
+"bt" = (
+/turf/open/floor/cult,
+/area/space)
+"bA" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/bot/north,
+/area/space)
+"bI" = (
+/obj/structure/bed,
+/obj/item/bedsheet/mime,
+/turf/open/floor/purple/northwest,
+/area/space)
+"bL" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"bV" = (
+/obj/structure/surface/table,
+/obj/structure/mirror{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"bY" = (
+/obj/structure/largecrate,
+/turf/open/floor/vault,
+/area/space)
+"ca" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"cg" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/bar,
+/area/space)
+"co" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/whiteyellowcorner,
+/area/space)
+"cv" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/white,
+/area/space)
+"cy" = (
+/obj/structure/surface/table,
+/obj/item/poster,
+/obj/item/clothing/glasses/regular/hipster,
+/turf/open/floor/bluecorner,
+/area/space)
+"cC" = (
+/obj/structure/surface/table,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"cD" = (
+/turf/open/floor/plating/platebotc,
+/area/space)
+"cI" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass/grass1,
+/area/space)
+"cJ" = (
+/obj/structure/machinery/requests_console{
+	pixel_x = 30
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"cL" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"cP" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Nexus Dome Bathroom";
+	req_access_txt = "100"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/space)
+"cT" = (
+/obj/structure/surface/table,
+/turf/open/floor/bluecorner,
+/area/space)
+"da" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/grimy,
+/area/space)
+"dd" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/vault,
+/area/space)
+"dj" = (
+/turf/open/floor/bar,
+/area/space)
+"dn" = (
+/obj/item/trash/popcorn,
+/turf/open/floor/wood,
+/area/space)
+"dC" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/turf/open/floor/red/northeast,
+/area/space)
+"dE" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/red/northeast,
+/area/space)
+"dF" = (
+/obj/structure/machinery/atm{
+	name = "Automatic Teller Machine";
+	pixel_y = 30
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"dO" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/cult,
+/area/space)
+"dS" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"dT" = (
+/obj/structure/machinery/deployable/barrier,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/cult,
+/area/space)
+"dV" = (
+/obj/structure/closet/cabinet,
+/obj/item/reagent_container/food/snacks/syndicake{
+	layer = 2.6
+	},
+/turf/open/floor/grimy,
+/area/space)
+"dW" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"dX" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/grass/grass1,
+/area/space)
+"ej" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/space)
+"em" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/space)
+"et" = (
+/obj/item/shard,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/space)
+"eC" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/purple/northwest,
+/area/space)
+"eU" = (
+/turf/open/floor/red/east,
+/area/space)
+"ff" = (
+/obj/item/tool/crowbar/red,
+/turf/open/floor/warningcorner/west,
+/area/space)
+"fk" = (
+/turf/open/floor/bot/north,
+/area/space)
+"fo" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/space)
+"fB" = (
+/turf/open/floor/redcorner/east,
+/area/space)
+"fV" = (
+/obj/structure/noticeboard{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/space)
+"fZ" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor,
+/area/space)
+"gh" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/effect/glowshroom,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/space)
+"gl" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/space)
+"gm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/space)
+"gw" = (
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"gC" = (
+/obj/structure/closet{
+	density = 0;
+	icon_state = "open";
+	opened = 1
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"gD" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/space)
+"gF" = (
+/obj/structure/closet,
+/obj/structure/window/reinforced/tinted,
+/turf/open/floor/bluecorner,
+/area/space)
+"gH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"gJ" = (
+/turf/open/floor/red,
+/area/space)
+"gQ" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Nexus Cargo Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"gR" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/turf/open/floor/bar,
+/area/space)
+"gU" = (
+/turf/open/gm/dirtgrassborder/west,
+/area/space)
+"hn" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"hF" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/space)
+"hN" = (
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop,
+/obj/item/tool/mop,
+/turf/open/floor/white,
+/area/space)
+"hO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/west,
+/area/space)
+"hS" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/barber/west,
+/area/space)
+"hT" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/space)
+"id" = (
+/turf/closed/wall/indestructible/other,
+/area/space)
+"ik" = (
+/obj/effect/decal/mecha_wreckage/ripley{
+	anchored = 1;
+	name = "MkIV Powerloader Wreckage"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault,
+/area/space)
+"in" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"iq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"iv" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Engineering Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/delivery,
+/area/space)
+"iw" = (
+/obj/item/reagent_container/food/snacks/donkpocket,
+/obj/structure/flora/pottedplant,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/purple/northwest,
+/area/space)
+"ix" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/space)
+"iz" = (
+/turf/open/floor/whitegreencorner/west,
+/area/space)
+"iD" = (
+/obj/structure/showcase{
+	layer = 3.1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/space)
+"iH" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/vault,
+/area/space)
+"iM" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/space)
+"iQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"iU" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/white,
+/area/space)
+"iV" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"iW" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/chapel/north,
+/area/space)
+"jf" = (
+/obj/structure/largecrate,
+/turf/open/floor/bot/north,
+/area/space)
+"jj" = (
+/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal{
+	pixel_x = 5
+	},
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"jo" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Nexus Dome Freezer";
+	req_access_txt = "100"
+	},
+/turf/open/floor,
+/area/space)
+"jq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/whitegreen,
+/area/space)
+"ju" = (
+/obj/effect/decal/remains/xeno,
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/space)
+"jy" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/red/east,
+/area/space)
+"jB" = (
+/turf/open/floor/warningcorner/east,
+/area/space)
+"jD" = (
+/obj/structure/surface/table,
+/obj/item/toy/deck,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/bluecorner,
+/area/space)
+"jE" = (
+/turf/open/floor/red/southwest,
+/area/space)
+"jH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/grimy,
+/area/space)
+"jK" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/warning/north,
+/area/space)
+"jN" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"jO" = (
+/obj/structure/surface/rack,
+/turf/open/floor/cult,
+/area/space)
+"jR" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/space)
+"jX" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/computerframe{
+	anchored = 1
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"kj" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/north,
+/area/space)
+"ko" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/space)
+"kG" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"kO" = (
+/turf/open/floor/redfull/northwest,
+/area/space)
+"ld" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/grilledcheese,
+/turf/open/floor/freezerfloor,
+/area/space)
+"lg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/whiteyellowcorner/east,
+/area/space)
+"lk" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave,
+/turf/open/floor/barber/west,
+/area/space)
+"lG" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/turf/open/floor/redcorner/north,
+/area/space)
+"lL" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/red/north,
+/area/space)
+"lM" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass1,
+/area/space)
+"lV" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"md" = (
+/obj/structure/bed/stool,
+/turf/open/floor/bar,
+/area/space)
+"mg" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/freezerfloor,
+/area/space)
+"mt" = (
+/obj/structure/item_purchase/firstaid,
+/turf/open/floor/whiteblue/northeast,
+/area/space)
+"mz" = (
+/obj/structure/foamed_metal,
+/turf/open/gm/dirtgrassborder/north,
+/area/space)
+"mB" = (
+/obj/structure/showcase,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/space)
+"mK" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/space)
+"mO" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/space)
+"mZ" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/warning/southwest,
+/area/space)
+"nf" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"nh" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"ns" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/bot/north,
+/area/space)
+"ny" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"nB" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/space)
+"nN" = (
+/obj/structure/bed,
+/obj/item/bedsheet/hos,
+/turf/open/floor/purple/northwest,
+/area/space)
+"nR" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/freezerfloor,
+/area/space)
+"nS" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/white,
+/area/space)
+"nU" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1,
+/area/space)
+"oa" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 8
+	},
+/turf/open/floor/warning/west,
+/area/space)
+"of" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/vault,
+/area/space)
+"oh" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/space)
+"ol" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass1,
+/area/space)
+"ov" = (
+/obj/structure/surface/table,
+/obj/structure/mirror{
+	pixel_y = -30
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"oy" = (
+/obj/structure/surface/table,
+/obj/item/clothing/suit/chef/classic,
+/turf/open/floor/freezerfloor,
+/area/space)
+"oP" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"oT" = (
+/obj/structure/surface/table,
+/obj/item/trash/plate,
+/turf/open/floor/bar,
+/area/space)
+"pc" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/turf/open/floor/barber/west,
+/area/space)
+"pg" = (
+/obj/structure/machinery/gibber,
+/turf/open/floor/freezerfloor,
+/area/space)
+"ph" = (
+/turf/open/floor/bluecorner,
+/area/space)
+"pk" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault,
+/area/space)
+"pl" = (
+/obj/structure/bed,
+/obj/item/bedsheet/yellow,
+/turf/open/floor/purple/northwest,
+/area/space)
+"px" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/space)
+"py" = (
+/obj/item/trash/cheesie,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bluecorner,
+/area/space)
+"pB" = (
+/obj/structure/surface/table,
+/obj/item/trash/snack_bowl{
+	pixel_y = 9
+	},
+/turf/open/floor/barber/west,
+/area/space)
+"pH" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"pM" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor,
+/area/space)
+"pO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"pQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/north,
+/area/space)
+"pV" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/grimy,
+/area/space)
+"pX" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/vault,
+/area/space)
+"pY" = (
+/obj/structure/coatrack,
+/turf/open/floor/grimy,
+/area/space)
+"qe" = (
+/obj/structure/surface/table,
+/obj/item/clothing/head/chefhat,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/item/tool/kitchen/rollingpin,
+/turf/open/floor/freezerfloor,
+/area/space)
+"qg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/space)
+"qh" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"qi" = (
+/obj/structure/machinery{
+	density = 1;
+	dir = 4;
+	icon = 'icons/obj/structures/doors/2x1generic.dmi';
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/space)
+"qk" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/vault,
+/area/space)
+"qp" = (
+/obj/structure/bed,
+/obj/structure/machinery/light,
+/turf/open/floor/purple/northwest,
+/area/space)
+"qq" = (
+/obj/structure/dispenser,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"qz" = (
+/turf/open/floor/whiteyellow/east,
+/area/space)
+"qA" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/white,
+/area/space)
+"qC" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass/grass1,
+/area/space)
+"qG" = (
+/obj/structure/sign/safety/maint,
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/south,
+/area/space)
+"qH" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/open/floor/freezerfloor,
+/area/space)
+"qL" = (
+/turf/open/floor,
+/area/space)
+"qO" = (
+/obj/structure/bed,
+/turf/open/floor/bluecorner,
+/area/space)
+"qR" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"qS" = (
+/obj/structure/bookcase,
+/obj/item/bananapeel,
+/obj/item/book/manual/research_and_development,
+/obj/item/book/manual/security_space_law,
+/turf/open/floor/wood,
+/area/space)
+"qT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/chem_dispenser/soda/beer{
+	pixel_y = 26
+	},
+/turf/open/floor/grimy,
+/area/space)
+"qW" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/bar,
+/area/space)
+"qZ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass/grass1,
+/area/space)
+"rb" = (
+/obj/item/reagent_container/food/snacks/grown/banana,
+/turf/open/floor/barber/west,
+/area/space)
+"rc" = (
+/turf/open/floor/warning/east,
+/area/space)
+"rq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/grass,
+/area/space)
+"rr" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/rdconsole,
+/turf/open/floor/grimy,
+/area/space)
+"rw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/white,
+/area/space)
+"rA" = (
+/turf/open/floor/red/northwest,
+/area/space)
+"rD" = (
+/obj/structure/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"rF" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Nexus Dome Canteen";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/space)
+"rN" = (
+/obj/structure/target/syndicate,
+/turf/open/floor/red/northeast,
+/area/space)
+"rS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/space)
+"rX" = (
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/space)
+"sa" = (
+/obj/effect/landmark/hunter_primary,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"sb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood,
+/area/space)
+"si" = (
+/obj/structure/flora/bush,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"sp" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"su" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"sv" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/mousetraps,
+/turf/open/floor/vault,
+/area/space)
+"sF" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"sG" = (
+/obj/item/stock_parts/scanning_module/phasic,
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/space)
+"sH" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"sL" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"sQ" = (
+/obj/item/folder/red,
+/turf/open/floor/redfull/northwest,
+/area/space)
+"sT" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 12
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor,
+/area/space)
+"tg" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/grimy,
+/area/space)
+"tj" = (
+/obj/item/clothing/glasses/regular,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/grimy,
+/area/space)
+"tk" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"ts" = (
+/obj/effect/glowshroom,
+/turf/open/floor/freezerfloor,
+/area/space)
+"tu" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/space)
+"tx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"tz" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/turf/open/floor/vault,
+/area/space)
+"tB" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"tM" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"tN" = (
+/turf/open/floor/warning,
+/area/space)
+"tQ" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/bomb_supply,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"tV" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Nexus Dome Male Dormitories";
+	req_access_txt = "100"
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"ud" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = 29
+	},
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"uj" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/bluecorner,
+/area/space)
+"uq" = (
+/turf/open/gm/dirtgrassborder/east,
+/area/space)
+"uv" = (
+/turf/open/floor/warning/northeast,
+/area/space)
+"uA" = (
+/obj/item/tool/mop,
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"uG" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 1
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"uK" = (
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/vault,
+/area/space)
+"vc" = (
+/turf/open/floor/warning/southwest,
+/area/space)
+"vz" = (
+/turf/open/floor/loadingarea/east,
+/area/space)
+"vI" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/vault,
+/area/space)
+"vM" = (
+/turf/open/floor/warning/north,
+/area/space)
+"vO" = (
+/obj/structure/closet{
+	density = 0;
+	icon_state = "open";
+	opened = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"vS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/grimy,
+/area/space)
+"vT" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1,
+/area/space)
+"vW" = (
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/space)
+"vY" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/vault,
+/area/space)
+"vZ" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"wa" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/space)
+"wk" = (
+/obj/structure/closet,
+/turf/open/floor/purple/northwest,
+/area/space)
+"wu" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"wy" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"wM" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/bar,
+/area/space)
+"wO" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/bar,
+/area/space)
+"wQ" = (
+/turf/open/floor/whiteyellowcorner/east,
+/area/space)
+"wR" = (
+/turf/open/floor/chapel/west,
+/area/space)
+"wS" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/space)
+"xa" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/space)
+"xh" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/grimy,
+/area/space)
+"xi" = (
+/obj/structure/surface/table,
+/obj/item/tool/pen{
+	layer = 3.1
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"xj" = (
+/obj/structure/bed{
+	desc = "For prime comfort.";
+	name = "fancy bed"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"xn" = (
+/turf/open/floor/freezerfloor,
+/area/space)
+"xr" = (
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/vault,
+/area/space)
+"xy" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"xD" = (
+/turf/open/floor/whitegreencorner,
+/area/space)
+"xG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/space)
+"xP" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"ya" = (
+/obj/structure/surface/table,
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 30
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"yh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/redcorner,
+/area/space)
+"yv" = (
+/obj/item/trash/candy,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/space)
+"yC" = (
+/obj/structure/noticeboard{
+	pixel_y = 30
+	},
+/obj/item/trash/cheesie,
+/turf/open/floor/wood,
+/area/space)
+"yG" = (
+/turf/open/floor/loadingarea/west,
+/area/space)
+"yZ" = (
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/bluecorner,
+/area/space)
+"zn" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"zr" = (
+/obj/item/stack/medical/advanced/bruise_pack,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"zv" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	locked = 1;
+	name = "\improper Nexus Dome Armory";
+	req_one_access_txt = "19;106"
+	},
+/turf/open/floor/cult,
+/area/space)
+"zG" = (
+/turf/open/floor/loadingarea/north,
+/area/space)
+"zJ" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/platebotc,
+/area/space)
+"zS" = (
+/turf/open/floor/white,
+/area/space)
+"zW" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"zX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Af" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/space)
+"Ah" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/bot/north,
+/area/space)
+"Ak" = (
+/obj/structure/surface/table,
+/obj/item/trash/candy,
+/turf/open/floor/bar,
+/area/space)
+"Al" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"Aq" = (
+/obj/structure/surface/table,
+/turf/open/floor/purple/northwest,
+/area/space)
+"Au" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/item_purchase/injector_refill{
+	pixel_y = 32
+	},
+/turf/open/floor/white,
+/area/space)
+"Av" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	name = "\improper Nexus Dome Command Quarter";
+	req_access_txt = "100"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"Az" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"AA" = (
+/turf/open/floor/whiteyellowcorner/north,
+/area/space)
+"AC" = (
+/obj/item/trash/raisins,
+/turf/open/floor/white,
+/area/space)
+"AD" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/machinery/light/spot{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/space)
+"AM" = (
+/obj/structure/machinery/fermenter,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"AP" = (
+/obj/structure/closet,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"AR" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/warning/west,
+/area/space)
+"AS" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/bar,
+/area/space)
+"Be" = (
+/obj/item/storage/firstaid,
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/space)
+"Bw" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken4,
+/area/space)
+"By" = (
+/turf/open/floor/whiteyellow/west,
+/area/space)
+"BA" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"BL" = (
+/obj/structure/bed/roller,
+/obj/structure/machinery/light,
+/turf/open/floor/bluecorner,
+/area/space)
+"BR" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"BT" = (
+/obj/item/phone{
+	desc = "A model of an ancient Earth communication device.";
+	force = 8
+	},
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/space)
+"BZ" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Cd" = (
+/obj/structure/machinery/door/window/westleft,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Cp" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/trash/cheesie,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/space)
+"Cr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/grimy,
+/area/space)
+"Cs" = (
+/obj/structure/showcase{
+	desc = "A stand with a plastic display of some kind of weird machine.";
+	icon_state = "coinpress0"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/space)
+"Ct" = (
+/turf/open/floor/barber/west,
+/area/space)
+"Cu" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/space)
+"Cy" = (
+/obj/effect/landmark/late_join,
+/turf/closed/wall/mineral/gold{
+	desc = "Here sits a golden statue of the sun, meant to praise the sky in its benevolence.";
+	name = "Statue of the Sky"
+	},
+/area/space)
+"CA" = (
+/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/blocker/forcefield/horde_mode,
+/turf/open/floor/plating,
+/area/space)
+"CD" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"CG" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/white,
+/area/space)
+"CJ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"Dm" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"Do" = (
+/obj/structure/kitchenspike,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Dq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/candle,
+/turf/open/floor/chapel/west,
+/area/space)
+"Dx" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/space)
+"DE" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"DI" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/freezerfloor,
+/area/space)
+"DL" = (
+/turf/open/floor/chapel/east,
+/area/space)
+"DS" = (
+/turf/open/floor/grimy,
+/area/space)
+"Ei" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/bar,
+/area/space)
+"El" = (
+/obj/structure/largecrate/random,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Eu" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/space)
+"Ev" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/space)
+"Ex" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Ey" = (
+/obj/structure/machinery/bot/mulebot{
+	auto_pickup = 0;
+	auto_return = 0;
+	health = 1;
+	on = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"EC" = (
+/obj/structure/largecrate/random,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"EG" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Nexus Dome Canteen";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/bar,
+/area/space)
+"EN" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/grimy,
+/area/space)
+"EQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/space)
+"ER" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/bar,
+/area/space)
+"EZ" = (
+/turf/open/floor/red/north,
+/area/space)
+"Fa" = (
+/obj/structure/machinery/chem_master/condimaster,
+/obj/structure/surface/table,
+/turf/open/floor/barber/west,
+/area/space)
+"Fh" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Fi" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/grimy,
+/area/space)
+"Fj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/light/small,
+/obj/structure/machinery/computer/objective{
+	dir = 1
+	},
+/turf/open/floor/grimy,
+/area/space)
+"Fl" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/loadingarea/east,
+/area/space)
+"Fm" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/space)
+"Fr" = (
+/obj/structure/surface/rack,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Ft" = (
+/turf/open/floor/whiteyellowcorner/west,
+/area/space)
+"Fz" = (
+/turf/open/floor/warning/northwest,
+/area/space)
+"FA" = (
+/obj/structure/closet{
+	density = 0;
+	icon_state = "open";
+	opened = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"FC" = (
+/turf/open/floor/chapel/north,
+/area/space)
+"FF" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"FN" = (
+/obj/structure/bed,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/grimy,
+/area/space)
+"FQ" = (
+/turf/open/floor/wood,
+/area/space)
+"FS" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/space)
+"FU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"FY" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/turf/open/floor/purple/northwest,
+/area/space)
+"Gf" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"Gh" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/purple/northwest,
+/area/space)
+"Go" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/space)
+"Gr" = (
+/obj/structure/surface/table,
+/obj/item/trash/cheesie,
+/turf/open/floor/bluecorner,
+/area/space)
+"Gw" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/west,
+/area/space)
+"Gy" = (
+/obj/item/tool/kitchen/knife/butcher,
+/obj/structure/surface/rack,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"GA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/turf/open/floor/redcorner/west,
+/area/space)
+"GC" = (
+/obj/item/trash/cheesie,
+/turf/open/floor/wood/wood_broken4,
+/area/space)
+"GF" = (
+/obj/structure/closet,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"GK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/bluecorner,
+/area/space)
+"GN" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"GP" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/space)
+"GU" = (
+/obj/structure/safe/floor{
+	name = "safe";
+	spawnkey = 0
+	},
+/turf/open/floor/grimy,
+/area/space)
+"GV" = (
+/obj/structure/surface/table,
+/turf/open/floor/white,
+/area/space)
+"GX" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Nexus Dome Female Dormitories";
+	req_access_txt = "100"
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"GY" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/machinery/door/window{
+	dir = 8
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Hi" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Nexus Cargo Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Hv" = (
+/obj/structure/item_purchase/m39,
+/turf/open/floor/whiteblue/northwest,
+/area/space)
+"Hx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"HM" = (
+/obj/item/trash/chips,
+/turf/open/floor/white,
+/area/space)
+"HP" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"HV" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"HW" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Ia" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Ig" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Il" = (
+/obj/structure/surface/table,
+/obj/structure/mirror{
+	pixel_x = 30
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/freezerfloor,
+/area/space)
+"Ir" = (
+/turf/closed/wall/r_wall,
+/area/space)
+"II" = (
+/obj/structure/device/broken_piano,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/bar,
+/area/space)
+"IK" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/space)
+"Jh" = (
+/obj/item/reagent_container/food/drinks/flask/barflask,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"Jn" = (
+/obj/structure/closet,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"Jv" = (
+/obj/structure/closet,
+/turf/open/floor/bluecorner,
+/area/space)
+"JJ" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/bar,
+/area/space)
+"JK" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/white,
+/area/space)
+"JN" = (
+/turf/open/floor/warningcorner/north,
+/area/space)
+"JO" = (
+/obj/structure/flora/pottedplant,
+/obj/item/trash/cheesie,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/bluecorner,
+/area/space)
+"JR" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/space)
+"JT" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/south,
+/area/space)
+"JX" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Ka" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/white,
+/area/space)
+"Kc" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/redfull/northwest,
+/area/space)
+"Kk" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/space)
+"Kn" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Kq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/mob/living/simple_animal/big/corgi/puppy{
+	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
+	name = "\improper Mister Wiggles"
+	},
+/turf/open/floor/grimy,
+/area/space)
+"Ku" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Nexus Dome Chapel";
+	req_access_txt = "100"
+	},
+/turf/open/floor/white,
+/area/space)
+"KI" = (
+/obj/structure/machinery/still,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"KQ" = (
+/obj/structure/surface/table,
+/obj/item/device/megaphone,
+/obj/item/tool/wrench,
+/turf/open/floor/purple/northwest,
+/area/space)
+"KW" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/white,
+/area/space)
+"KX" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/white,
+/area/space)
+"La" = (
+/obj/structure/foamed_metal,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Ll" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/white,
+/area/space)
+"Ln" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"Lp" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/bar,
+/area/space)
+"Lw" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/space)
+"LC" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"LP" = (
+/turf/open/floor/whiteyellowcorner,
+/area/space)
+"LQ" = (
+/obj/structure/machinery/smartfridge,
+/turf/open/floor/barber/west,
+/area/space)
+"LU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/wood/wood_broken6,
+/area/space)
+"Mi" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/space)
+"Mk" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/vault,
+/area/space)
+"Mm" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/effect/glowshroom,
+/turf/open/floor/freezerfloor,
+/area/space)
+"MB" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/space)
+"MC" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"MG" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 30
+	},
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/reagent_container/food/snacks/donkpocket,
+/turf/open/floor/barber/west,
+/area/space)
+"MP" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/space)
+"MU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/space)
+"Na" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whitegreencorner/west,
+/area/space)
+"Ne" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/space)
+"Nj" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/barber/west,
+/area/space)
+"Np" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/space)
+"Nx" = (
+/obj/structure/target,
+/turf/open/floor/red/northwest,
+/area/space)
+"Nz" = (
+/turf/open/floor/whiteyellow/north,
+/area/space)
+"NK" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/chapel/east,
+/area/space)
+"NN" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/door/window/westright{
+	layer = 2.9
+	},
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"NP" = (
+/obj/structure/item_purchase/ammo_refill,
+/turf/open/floor/whiteblue/southeast,
+/area/space)
+"NQ" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Leisure Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/whitepurple/northeast,
+/area/space)
+"Om" = (
+/turf/closed/wall,
+/area/space)
+"Oo" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/processor,
+/turf/open/floor/barber/west,
+/area/space)
+"Ot" = (
+/turf/open/gm/dirt,
+/area/space)
+"Oz" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/structure/machinery/cell_charger,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/wood,
+/area/space)
+"OH" = (
+/obj/structure/surface/table/gamblingtable,
+/turf/open/floor/bar,
+/area/space)
+"OP" = (
+/turf/open/floor/chapel,
+/area/space)
+"OQ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/item/trash/plate,
+/turf/open/floor/white,
+/area/space)
+"OR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating,
+/area/space)
+"OV" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/red/north,
+/area/space)
+"OW" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"OZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/megaphone,
+/turf/open/floor/grimy,
+/area/space)
+"Pi" = (
+/obj/structure/bed,
+/turf/open/floor/purple/northwest,
+/area/space)
+"Pk" = (
+/obj/structure/machinery/recharge_station,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Py" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/space)
+"PA" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"PE" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/bar,
+/area/space)
+"PI" = (
+/obj/structure/surface/table,
+/obj/item/phone,
+/turf/open/floor/purple/northwest,
+/area/space)
+"PJ" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bluecorner,
+/area/space)
+"PK" = (
+/obj/item/trash/cheesie,
+/turf/open/floor/white,
+/area/space)
+"PO" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/device/flashlight/lamp,
+/obj/structure/surface/table,
+/turf/open/floor/bluecorner,
+/area/space)
+"PP" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/space)
+"PQ" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/turf/open/floor/vault,
+/area/space)
+"PW" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/space)
+"PY" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Nexus Dome Canteen";
+	req_access_txt = "100"
+	},
+/turf/open/floor/bar,
+/area/space)
+"PZ" = (
+/obj/effect/decal/cleanable/cobweb2,
+/obj/structure/surface/rack,
+/turf/open/floor/cult,
+/area/space)
+"Qa" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/grimy,
+/area/space)
+"Qb" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Qc" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Qi" = (
+/obj/structure/closet/secure_closet/bar,
+/turf/open/floor/freezerfloor,
+/area/space)
+"Qk" = (
+/obj/item/stack/sheet/wood{
+	layer = 3.01
+	},
+/turf/open/floor/white,
+/area/space)
+"Qm" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"Qn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/cheeseburger,
+/turf/open/floor/white,
+/area/space)
+"Qo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/north,
+/area/space)
+"Qv" = (
+/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"Qx" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"QH" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/east,
+/area/space)
+"QT" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/space)
+"Rb" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/white,
+/area/space)
+"Rl" = (
+/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"Rt" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/whitegreen/north,
+/area/space)
+"Rx" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	locked = 1;
+	name = "\improper Nexus Dome Marshal Office";
+	req_one_access_txt = "104;3"
+	},
+/turf/open/floor,
+/area/space)
+"RF" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/item/trash/cheesie,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/white,
+/area/space)
+"RJ" = (
+/obj/structure/fence,
+/turf/open/gm/grass/grass1,
+/area/space)
+"RK" = (
+/turf/open/floor/vault,
+/area/space)
+"RM" = (
+/turf/open/floor/warning/west,
+/area/space)
+"RZ" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Se" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Sl" = (
+/turf/open/gm/grass/grass1,
+/area/space)
+"Sn" = (
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"Sq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/white,
+/area/space)
+"Sx" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/taperecorder,
+/turf/open/floor/grimy,
+/area/space)
+"Sz" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass/grass1,
+/area/space)
+"SG" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/red,
+/area/space)
+"SH" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/space)
+"SK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whitegreencorner,
+/area/space)
+"SN" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/colonist,
+/turf/open/floor/vault,
+/area/space)
+"SU" = (
+/obj/structure/item_purchase/perk_machine/gunnut,
+/turf/open/floor/whiteblue/southwest,
+/area/space)
+"SY" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/freezerfloor,
+/area/space)
+"Te" = (
+/obj/structure/machinery{
+	density = 1;
+	dir = 4;
+	icon = 'icons/obj/structures/doors/2x1generic.dmi';
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/vault,
+/area/space)
+"Tr" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/redfull/northwest,
+/area/space)
+"Tw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/white,
+/area/space)
+"Tx" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"TA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/space)
+"TH" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/space)
+"TS" = (
+/obj/structure/sink{
+	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"TT" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/space)
+"Uf" = (
+/obj/structure/closet{
+	density = 0;
+	icon_state = "open";
+	opened = 1
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"Uh" = (
+/obj/structure/bookcase,
+/turf/open/floor/wood,
+/area/space)
+"Uo" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"Up" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"Uw" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/grimy,
+/area/space)
+"Ux" = (
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/freezerfloor,
+/area/space)
+"Uy" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/candle,
+/turf/open/floor/chapel/north,
+/area/space)
+"UC" = (
+/obj/structure/surface/table,
+/turf/open/floor/barber/west,
+/area/space)
+"UD" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/structure/machinery/light,
+/turf/open/floor/bluecorner,
+/area/space)
+"UE" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"UL" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"UM" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	locked = 1;
+	name = "\improper Nexus Dome Director's Quarters";
+	req_access_txt = "100"
+	},
+/turf/open/floor/cult,
+/area/space)
+"UW" = (
+/obj/structure/machinery/vending,
+/turf/open/floor/white,
+/area/space)
+"Va" = (
+/obj/structure/machinery{
+	density = 1;
+	dir = 4;
+	icon = 'icons/obj/structures/doors/2x1generic.dmi';
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/white,
+/area/space)
+"Ve" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"Vm" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/east,
+/area/space)
+"Vn" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor,
+/area/space)
+"Vr" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/space)
+"Vu" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"Vy" = (
+/obj/structure/surface/table,
+/turf/open/floor/bar,
+/area/space)
+"VB" = (
+/obj/structure/surface/table,
+/obj/item/trash/plate,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/bar,
+/area/space)
+"VD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/space)
+"VH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/grass,
+/area/space)
+"VI" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/cult,
+/area/space)
+"VN" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"VU" = (
+/obj/structure/machinery/light/small,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/space)
+"VY" = (
+/obj/item/frame/table,
+/turf/open/floor/white,
+/area/space)
+"We" = (
+/obj/item/bedsheet/rd,
+/obj/item/weapon/pole/fancy_cane,
+/obj/structure/bed{
+	desc = "For prime comfort.";
+	name = "fancy bed"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/grimy,
+/area/space)
+"Wg" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/machinery/door/window,
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Wl" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"Wm" = (
+/turf/open/floor/purple/northwest,
+/area/space)
+"Wn" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/machinery/light/spot,
+/turf/open/floor/white,
+/area/space)
+"Wo" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ashtray/bronze,
+/turf/open/floor/red/west,
+/area/space)
+"Wv" = (
+/turf/open/floor/red/west,
+/area/space)
+"Ww" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/white,
+/area/space)
+"Wy" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	locked = 1;
+	name = "\improper Nexus Dome Marshal's Quarters";
+	req_access_txt = "100"
+	},
+/turf/open/floor/cult,
+/area/space)
+"WA" = (
+/obj/structure/machinery{
+	density = 1;
+	icon = 'icons/obj/structures/doors/2x1generic.dmi';
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/white,
+/area/space)
+"WB" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/turf/open/floor/barber/west,
+/area/space)
+"WD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow,
+/area/space)
+"WN" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass/grass1,
+/area/space)
+"WU" = (
+/obj/item/tool/pickaxe/jackhammer{
+	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards. This one is dull and nearly useless.";
+	force = 3;
+	name = "display jackhammer"
+	},
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/space)
+"WW" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/bar,
+/area/space)
+"WX" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/redfull/northwest,
+/area/space)
+"Xi" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/bed/chair,
+/turf/open/floor/bar,
+/area/space)
+"Xk" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/space)
+"Xs" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/space)
+"XB" = (
+/obj/item/frame/table,
+/turf/open/floor/bar,
+/area/space)
+"XI" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/white,
+/area/space)
+"XL" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
+/area/space)
+"XT" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/freezerfloor,
+/area/space)
+"XV" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/space)
+"XY" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/grass/grass1,
+/area/space)
+"Yi" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass/grass1,
+/area/space)
+"Yj" = (
+/turf/open/floor/whiteyellow,
+/area/space)
+"Yr" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/chips,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Director's Office"
+	},
+/turf/open/floor/wood,
+/area/space)
+"Yy" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/bar,
+/area/space)
+"Yz" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"YB" = (
+/obj/structure/fence/overgrown,
+/turf/open/gm/dirtgrassborder/west,
+/area/space)
+"YG" = (
+/obj/item/clothing/under/shorts/blue,
+/turf/open/floor/whitepurplecorner/east,
+/area/space)
+"YI" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/box/matches,
+/obj/item/tool/candle,
+/turf/open/floor/chapel/north,
+/area/space)
+"YT" = (
+/obj/structure/bed/chair,
+/turf/open/floor/white,
+/area/space)
+"YU" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/south,
+/area/space)
+"Zb" = (
+/obj/structure/machinery{
+	density = 1;
+	icon = 'icons/obj/structures/doors/2x1generic.dmi';
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/whiteyellowcorner/east,
+/area/space)
+"Zr" = (
+/turf/open/floor/redcorner/west,
+/area/space)
+"Zz" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/space)
+"ZD" = (
+/obj/structure/bed,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/bluecorner,
+/area/space)
+"ZH" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/whiteyellowfull/east,
+/area/space)
+"ZM" = (
+/turf/open/floor/red/northeast,
+/area/space)
+"ZR" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/grimy,
+/area/space)
+"ZS" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/freezerfloor,
+/area/space)
+"ZZ" = (
+/obj/item/reagent_container/food/snacks/grown/banana{
+	pixel_x = -8
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/freezerfloor,
+/area/space)
+
+(1,1,1) = {"
+Sn
+Sn
+Sn
+Qm
+Sn
+LC
+Om
+Sl
+Sl
+Sl
+Sl
+vT
+Sl
+Sl
+Sl
+xa
+QH
+QH
+QH
+Vm
+Vm
+gD
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+mz
+La
+La
+La
+Sl
+Ir
+mK
+iv
+mK
+Ir
+lV
+Sl
+Sl
+Sl
+Sl
+nB
+nB
+"}
+(2,1,1) = {"
+Sn
+Sn
+Sn
+Sn
+Sn
+Ve
+gl
+Sl
+BA
+Yi
+Vu
+Sl
+Sl
+Ia
+Sl
+hn
+Sl
+Sl
+Sl
+Sl
+RJ
+Go
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+ix
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+qg
+FS
+La
+La
+La
+Sl
+qG
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+XY
+nB
+Sl
+nB
+nB
+"}
+(3,1,1) = {"
+YG
+Sn
+ud
+uA
+jj
+dW
+gl
+Sl
+Yi
+WN
+WN
+cL
+Vu
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
+id
+mK
+lg
+Zb
+XL
+lg
+Zb
+XL
+id
+bo
+gD
+Ot
+Ot
+Ot
+Ot
+PP
+Sl
+nB
+Sl
+Sl
+JX
+YU
+Ot
+Ot
+Ot
+TT
+Yi
+Vu
+Sl
+Sl
+Sl
+Kn
+nB
+"}
+(4,1,1) = {"
+Sn
+Sn
+Om
+gl
+gl
+gl
+Om
+vZ
+nf
+WN
+WN
+WN
+Up
+nB
+Sl
+Sl
+Sl
+id
+id
+id
+id
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+id
+id
+id
+id
+nB
+uq
+uq
+hT
+dX
+Sl
+Yi
+Vu
+Sl
+JT
+Ot
+Ot
+Ot
+kj
+nf
+zn
+Sl
+Ia
+Sl
+Sl
+nB
+"}
+(5,1,1) = {"
+NQ
+gl
+Om
+Sl
+Sl
+Sl
+Sl
+Sl
+nB
+nf
+Az
+WN
+Up
+Kn
+Sl
+id
+id
+id
+Wg
+Wg
+id
+nS
+zS
+zS
+zS
+zS
+zS
+zS
+id
+dT
+dO
+id
+id
+id
+nB
+Sl
+Sl
+Yi
+WN
+Up
+Sl
+JT
+Ot
+Ot
+Ot
+TH
+YB
+YB
+YB
+jR
+Sl
+Sl
+Sl
+"}
+(6,1,1) = {"
+Sl
+Sl
+hn
+Sl
+Sl
+Sl
+Sl
+nB
+nB
+Sl
+lV
+nf
+zn
+Sl
+id
+id
+Wg
+Wg
+ts
+xn
+id
+id
+Cu
+zS
+zS
+zS
+JK
+id
+id
+VI
+bt
+bt
+bt
+id
+id
+id
+Sl
+nf
+Az
+zn
+Sl
+JT
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+ca
+"}
+(7,1,1) = {"
+Sl
+Sl
+Sl
+Sl
+cI
+Sl
+Sl
+nB
+Sl
+Sl
+Sl
+Sl
+id
+id
+id
+mg
+xn
+xn
+xn
+xn
+ov
+id
+zS
+zS
+zS
+zS
+zS
+id
+jO
+bt
+bt
+bt
+bt
+id
+qT
+id
+id
+Sl
+Sl
+XY
+Sl
+JT
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+nB
+"}
+(8,1,1) = {"
+fo
+Eu
+BZ
+nB
+Sl
+lM
+qC
+Sl
+Sl
+id
+mK
+mK
+id
+PO
+id
+nR
+GY
+GY
+GY
+xn
+ZS
+id
+zS
+zS
+zS
+zS
+zS
+id
+PZ
+jO
+jO
+jO
+bt
+id
+ZR
+FN
+id
+mK
+XL
+id
+Sl
+JT
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+Ot
+kj
+Qc
+Sl
+nB
+"}
+(9,1,1) = {"
+wS
+wS
+Qb
+Sl
+Sl
+Sl
+Sl
+Qc
+Sl
+mK
+ph
+GK
+xP
+ph
+id
+at
+id
+id
+id
+TS
+VD
+cP
+Sq
+co
+qz
+wQ
+zS
+id
+id
+id
+id
+id
+zv
+id
+DS
+jH
+DS
+DS
+DS
+mK
+Sl
+wa
+Vm
+QH
+QH
+Af
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+nB
+"}
+(10,1,1) = {"
+wS
+Qb
+Ex
+ol
+Sl
+Ia
+Sl
+Sl
+Sl
+mK
+yZ
+Gr
+cT
+iq
+OR
+gh
+Kk
+Kk
+cP
+ny
+xn
+id
+zS
+WD
+BT
+Nz
+zS
+id
+rN
+dE
+ZM
+dC
+ZM
+id
+pV
+Kq
+DS
+DS
+OZ
+mK
+Sl
+Sl
+Sl
+Sl
+Ia
+JT
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+nB
+"}
+(11,1,1) = {"
+nB
+Lw
+nB
+Sl
+Sl
+Sl
+Sl
+id
+id
+id
+sH
+cT
+xi
+HP
+id
+Wl
+Qx
+Mm
+id
+ya
+Il
+id
+tu
+WD
+Py
+Nz
+zS
+id
+Nx
+rA
+rA
+aQ
+rA
+id
+dV
+jH
+pY
+GU
+Fj
+id
+Sl
+Kn
+Sl
+lM
+qC
+JT
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+nB
+"}
+(12,1,1) = {"
+nB
+nB
+nB
+Sl
+nB
+Sl
+Sl
+mK
+cT
+JO
+su
+PJ
+py
+tB
+id
+id
+at
+id
+id
+id
+id
+id
+BR
+WD
+mB
+Nz
+VU
+id
+mK
+mK
+mK
+mK
+Rx
+id
+id
+Wy
+id
+id
+id
+id
+id
+id
+Sl
+Sl
+Sl
+JT
+Ot
+Ot
+Ot
+TT
+Sl
+lV
+nB
+"}
+(13,1,1) = {"
+fo
+Qb
+wS
+ol
+Sl
+Sl
+Sl
+mK
+cy
+iq
+zr
+id
+id
+id
+id
+FC
+wR
+YI
+Dq
+Uy
+wR
+id
+GV
+WD
+Py
+Nz
+zS
+id
+yh
+jy
+eU
+eU
+fB
+id
+Uh
+xG
+Bw
+id
+vS
+tj
+We
+id
+Sl
+Sz
+Sl
+YU
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+Sl
+"}
+(14,1,1) = {"
+Lw
+ol
+nB
+Sl
+Sl
+vT
+id
+id
+jD
+jN
+ph
+aw
+ZD
+UD
+id
+NK
+OP
+DL
+OP
+DL
+OP
+gl
+in
+WD
+WU
+Nz
+zS
+mK
+SG
+kO
+kO
+kO
+OV
+id
+qS
+xG
+dn
+id
+rr
+Fi
+Cr
+id
+id
+Sl
+vT
+YU
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+nB
+"}
+(15,1,1) = {"
+XY
+Sl
+BZ
+Sl
+Sl
+Sl
+id
+sH
+ph
+wu
+ph
+Jv
+Uf
+Jv
+id
+Vn
+at
+at
+at
+at
+at
+Ku
+zS
+hO
+By
+AA
+zS
+mK
+SG
+Kc
+sQ
+kO
+EZ
+id
+iD
+LU
+FQ
+id
+id
+id
+Cr
+EN
+id
+Sl
+Sl
+JT
+Ot
+Ot
+Ot
+kj
+JX
+Sl
+Sl
+"}
+(16,1,1) = {"
+Sl
+Sl
+Sl
+BA
+Sl
+id
+id
+id
+id
+Hx
+ph
+id
+id
+id
+id
+bk
+at
+at
+at
+at
+at
+zS
+zS
+gH
+zS
+zS
+zS
+mK
+GA
+Wo
+jE
+Tr
+lL
+id
+yC
+xG
+hF
+bf
+FQ
+UM
+jH
+tg
+id
+id
+Sl
+JT
+Ot
+Ot
+Ot
+kj
+Ia
+Sl
+Sl
+"}
+(17,1,1) = {"
+lM
+qC
+Sl
+Sl
+Sl
+mK
+uj
+CJ
+qO
+Hx
+ph
+aw
+ZD
+BL
+id
+iW
+wR
+FC
+wR
+id
+id
+id
+zS
+tx
+wQ
+zS
+zS
+id
+mK
+id
+gJ
+WX
+lL
+id
+QT
+Cp
+Oz
+Yr
+Dx
+Ir
+aj
+Uw
+Qa
+mK
+Sl
+JT
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+Sl
+"}
+(18,1,1) = {"
+Vu
+nB
+Sl
+Sl
+Sl
+mK
+Uf
+AP
+gF
+wu
+ph
+FA
+Jv
+Jv
+id
+DL
+OP
+DL
+OP
+id
+Hv
+Ww
+zS
+tx
+gw
+wQ
+zS
+Ww
+SU
+mK
+Zr
+Wv
+lG
+id
+yv
+TA
+sb
+rS
+GC
+Ir
+da
+xh
+Sx
+mK
+Sl
+YU
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+Sl
+"}
+(19,1,1) = {"
+zn
+Sl
+Se
+Se
+id
+id
+id
+id
+id
+Hx
+tV
+id
+id
+id
+id
+gl
+MB
+gl
+gl
+id
+AD
+zS
+zS
+EQ
+gw
+gw
+wQ
+zS
+Wn
+id
+Rx
+mK
+id
+id
+id
+id
+mK
+Av
+mK
+Ir
+Gf
+id
+id
+id
+id
+mO
+Ot
+Ot
+Ot
+TT
+Sl
+nB
+Sl
+"}
+(20,1,1) = {"
+Sl
+Sl
+MP
+gU
+mK
+qA
+zS
+Xs
+zS
+gH
+zS
+zS
+zS
+YT
+RF
+iM
+zS
+zS
+zS
+zS
+zS
+zS
+HM
+EQ
+fZ
+UL
+gw
+CG
+AC
+zS
+zS
+Ka
+YT
+OQ
+iM
+zS
+zS
+gH
+zS
+UW
+gH
+Xs
+Ll
+zS
+CA
+Ot
+Ot
+Ot
+Ot
+kj
+Sl
+nU
+Sl
+"}
+(21,1,1) = {"
+Gw
+Gw
+ju
+Ot
+qi
+zS
+zS
+cv
+zS
+oP
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+KW
+zS
+GP
+Uo
+bl
+UL
+CG
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+gH
+zS
+zS
+gH
+zS
+Qk
+Ll
+Va
+Ot
+Ot
+Ot
+Ot
+kj
+Sl
+Sl
+Sl
+"}
+(22,1,1) = {"
+Ot
+Ot
+Ot
+Ot
+Vr
+zS
+zS
+cv
+qh
+gH
+zS
+xD
+xD
+xD
+xD
+xD
+xD
+xD
+xD
+xD
+zS
+zS
+CG
+MC
+bL
+FU
+fZ
+zS
+zS
+xD
+xD
+xD
+xD
+xD
+xD
+xD
+xD
+SK
+zS
+zS
+gH
+zS
+zS
+Ll
+KX
+Ot
+Ot
+Ot
+Ot
+kj
+lM
+qC
+Sl
+"}
+(23,1,1) = {"
+Ot
+Ot
+Ot
+Ot
+mK
+Qk
+Qk
+zS
+zS
+oh
+jq
+nh
+VH
+GN
+VH
+Al
+Ev
+nh
+VH
+HV
+Rt
+Sq
+Sq
+iV
+Cy
+sT
+pM
+Sq
+jq
+Dm
+VH
+UE
+rq
+aO
+VH
+si
+VH
+Zz
+Rt
+Sq
+VN
+rw
+zS
+zS
+CA
+Ot
+Ot
+Ot
+Ot
+TT
+Sl
+Sl
+Sl
+"}
+(24,1,1) = {"
+Ot
+Ot
+Ot
+Ot
+qi
+Qk
+zS
+cv
+CD
+gH
+zS
+iz
+iz
+iz
+iz
+iz
+Na
+iz
+iz
+iz
+zS
+zS
+CG
+UL
+UL
+zW
+fZ
+zS
+zS
+iz
+iz
+iz
+iz
+iz
+iz
+iz
+iz
+iz
+zS
+zS
+zS
+gH
+Ll
+Ll
+Va
+Ot
+Ot
+Ot
+Ot
+TT
+Sl
+nB
+Sl
+"}
+(25,1,1) = {"
+Vm
+Vm
+Fm
+Ot
+Vr
+Qk
+cv
+zS
+zS
+gH
+zS
+zS
+zS
+zS
+zS
+zS
+gH
+zS
+zS
+zS
+zS
+zS
+zS
+fZ
+UL
+tx
+UL
+zS
+zS
+zS
+KW
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+am
+Ll
+CG
+KX
+Ot
+Ot
+Ot
+Ot
+TT
+Yi
+Vu
+Sl
+"}
+(26,1,1) = {"
+Sl
+Sl
+xa
+uq
+XL
+PK
+Qk
+PA
+zS
+gH
+zS
+zS
+zS
+YT
+Qn
+iM
+gH
+zS
+zS
+zS
+PK
+zS
+zS
+qL
+qL
+tx
+gw
+zS
+zS
+zS
+zS
+zS
+YT
+VY
+iM
+OW
+zS
+zS
+zS
+zS
+XI
+gH
+zS
+zS
+CA
+Ot
+Ot
+Ot
+Ot
+kj
+qZ
+WN
+Vu
+"}
+(27,1,1) = {"
+Ia
+Sl
+Se
+Se
+id
+id
+id
+id
+id
+MU
+GX
+id
+id
+id
+id
+id
+gQ
+Hi
+id
+id
+Au
+zS
+zS
+qL
+gw
+tx
+AA
+zS
+Wn
+id
+gl
+EG
+gl
+gl
+gl
+id
+id
+id
+id
+id
+id
+Gf
+id
+id
+id
+Vm
+QH
+QH
+QH
+px
+qZ
+WN
+sa
+"}
+(28,1,1) = {"
+Sl
+nB
+Sl
+Sl
+Sl
+CA
+wk
+GF
+gC
+FF
+sL
+Jn
+vO
+wk
+id
+sF
+pO
+gw
+pH
+id
+mt
+Ww
+zS
+gw
+gw
+Qo
+zS
+hN
+NP
+id
+ae
+Ct
+Nj
+Oo
+UC
+qe
+oy
+ld
+id
+Do
+SY
+zX
+ZZ
+id
+vZ
+Sl
+Sl
+lM
+qC
+Sl
+nf
+zn
+nB
+"}
+(29,1,1) = {"
+Sl
+nB
+nB
+Sl
+Sl
+CA
+pl
+FY
+Pi
+MU
+Wm
+nN
+FY
+qp
+id
+EC
+Ey
+qR
+rD
+id
+id
+id
+Ln
+gw
+AA
+gH
+Ln
+id
+id
+id
+MG
+Ct
+Ct
+Ct
+Ct
+xn
+wy
+qH
+id
+DI
+Fh
+ny
+Qi
+id
+Sl
+Sl
+nB
+Sl
+Sl
+Sl
+Sl
+nB
+nB
+"}
+(30,1,1) = {"
+Sl
+Sl
+Sl
+Sl
+Sl
+id
+id
+id
+id
+FF
+Wm
+id
+id
+id
+id
+cC
+jX
+NN
+Cd
+Ig
+Pk
+id
+GV
+zS
+zS
+gH
+GV
+gl
+II
+md
+pc
+Ct
+Fa
+LQ
+Ct
+xn
+xn
+XT
+id
+Gy
+zX
+Ux
+id
+id
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
+cI
+Sl
+nB
+"}
+(31,1,1) = {"
+Sl
+Sl
+Qc
+Sl
+Sl
+Sl
+id
+xj
+tM
+MU
+Wm
+wk
+wk
+wk
+id
+qq
+gw
+xy
+gw
+gw
+Fr
+id
+dF
+LP
+qz
+az
+in
+gl
+cg
+md
+pB
+Ct
+Ct
+Ct
+Ct
+iQ
+cJ
+xn
+jo
+xn
+DE
+pg
+id
+Sl
+cI
+Sl
+Sl
+Sl
+Ia
+Sl
+JR
+gU
+nB
+"}
+(32,1,1) = {"
+Sl
+nB
+nB
+nB
+Sl
+Sl
+id
+id
+iw
+sp
+Wm
+Gh
+bI
+qp
+id
+EC
+Fr
+gw
+Fr
+gw
+kG
+id
+fV
+Yj
+av
+pQ
+zS
+PY
+dj
+md
+Ct
+Ct
+Ct
+Ct
+rb
+id
+id
+at
+id
+at
+id
+id
+id
+Sl
+Sl
+Sl
+nB
+Sl
+Sl
+Ne
+IK
+Ot
+Ot
+"}
+(33,1,1) = {"
+nU
+vT
+nB
+Sl
+Sl
+Sl
+Sl
+CA
+PI
+Wm
+Wm
+id
+id
+id
+id
+EC
+Yz
+gw
+Tx
+gw
+dS
+id
+PW
+Yj
+Np
+pQ
+zS
+dj
+dj
+md
+UC
+UC
+lk
+hS
+WB
+id
+JJ
+Lp
+Yy
+dj
+dj
+id
+Qc
+Sl
+Sl
+Kn
+Sl
+Sl
+Sl
+Go
+Ot
+Ot
+Ot
+"}
+(34,1,1) = {"
+Sl
+lM
+qC
+Sl
+Sl
+nB
+Sl
+CA
+Aq
+uG
+Wm
+Jh
+Wm
+bV
+id
+EC
+Tx
+gw
+tQ
+gw
+AM
+id
+Cu
+Yj
+Cs
+pQ
+zS
+gl
+dj
+dj
+dj
+dj
+id
+id
+id
+id
+Xi
+Vy
+WW
+qW
+id
+id
+Sl
+Sl
+nB
+nB
+Sl
+ca
+Sl
+em
+gD
+Ot
+Ot
+"}
+(35,1,1) = {"
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
+id
+id
+id
+bh
+Wm
+eC
+ap
+id
+EC
+ZH
+gw
+dS
+gw
+KI
+id
+aH
+Yj
+Np
+pQ
+KW
+gl
+OH
+dj
+dj
+dj
+dj
+ER
+dj
+dj
+dj
+XB
+XB
+id
+id
+Sl
+Sl
+Sl
+JX
+Sl
+Sl
+Sl
+nB
+Sl
+ko
+uq
+uq
+"}
+(36,1,1) = {"
+Sl
+Sl
+Sl
+id
+gl
+gl
+gl
+id
+RK
+id
+id
+id
+KQ
+Aq
+id
+El
+HW
+gw
+Tx
+id
+id
+id
+zS
+Yj
+sG
+pQ
+zS
+id
+id
+id
+dj
+Lp
+Lp
+Lp
+Lp
+dj
+PE
+dj
+dj
+CA
+Sl
+Sl
+nU
+Sl
+Sl
+Sl
+lV
+Yi
+Vu
+Sl
+Sl
+Sl
+nB
+"}
+(37,1,1) = {"
+id
+Sl
+Sl
+gl
+RK
+RK
+bY
+RK
+RK
+SH
+RK
+id
+id
+id
+id
+id
+id
+at
+id
+id
+Qv
+zS
+zS
+Ft
+By
+Qo
+zS
+zS
+Rl
+id
+Ei
+oT
+Vy
+Vy
+gR
+dj
+dj
+PE
+dj
+CA
+et
+Sl
+Sl
+Sl
+Ia
+Sl
+Sl
+qZ
+WN
+cL
+Vu
+Sl
+nB
+"}
+(38,1,1) = {"
+id
+id
+Sl
+gl
+bY
+RK
+RK
+rX
+RK
+rX
+RK
+rX
+RK
+id
+vz
+Fl
+vz
+vz
+qL
+id
+tu
+zS
+zS
+zS
+zS
+gH
+zS
+zS
+zS
+gl
+dj
+Ak
+gR
+Vy
+VB
+wO
+id
+id
+id
+id
+nB
+Qb
+Lw
+Sl
+lM
+qC
+Yi
+WN
+WN
+Az
+zn
+Sl
+nB
+"}
+(39,1,1) = {"
+cD
+id
+Sl
+gl
+pX
+RK
+RK
+rX
+RK
+rX
+RK
+Mk
+RK
+Te
+fk
+fk
+fk
+fk
+zG
+Rb
+zS
+zS
+zS
+PK
+zS
+Tw
+Sq
+Sq
+Sq
+rF
+gm
+ej
+ej
+ej
+AS
+id
+id
+Sl
+nB
+nB
+nB
+nB
+nB
+RZ
+ol
+Sl
+nf
+Az
+zn
+Sl
+Sl
+Sl
+Sl
+"}
+(40,1,1) = {"
+cD
+id
+id
+id
+RK
+RK
+xr
+SN
+RK
+rX
+RK
+rX
+RK
+vI
+fk
+fk
+ns
+fk
+zG
+Rb
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+XI
+gl
+dj
+wM
+dj
+id
+id
+id
+Se
+Se
+Lw
+nB
+nB
+nB
+Qb
+Lw
+ol
+BZ
+nB
+Sl
+hn
+Sl
+Sl
+nB
+Sl
+"}
+(41,1,1) = {"
+cD
+cD
+id
+dd
+RK
+RK
+RK
+rX
+RK
+Mi
+RK
+rX
+RK
+id
+id
+id
+qL
+qL
+qL
+id
+qA
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+iU
+id
+dj
+id
+EG
+id
+RM
+vc
+Sl
+Se
+BZ
+Lw
+nB
+nB
+Lw
+Lw
+Lw
+XV
+BZ
+Sl
+Sl
+Sl
+lM
+qC
+Sl
+"}
+(42,1,1) = {"
+cD
+cD
+pk
+RK
+RK
+RK
+RK
+qk
+RK
+Be
+RK
+rX
+RK
+RK
+tz
+id
+id
+CA
+CA
+id
+id
+zS
+zS
+zS
+zS
+zS
+zS
+zS
+id
+id
+CA
+id
+qL
+qL
+qL
+tN
+Sl
+Se
+BZ
+Lw
+nB
+nB
+Qb
+Qb
+Xk
+ol
+ol
+Qb
+nB
+Sl
+Sl
+Sl
+Sl
+"}
+(43,1,1) = {"
+cD
+cD
+pk
+RK
+RK
+RK
+RK
+rX
+RK
+rX
+RK
+rX
+RK
+RK
+RK
+RK
+pk
+Fz
+RM
+vc
+id
+CA
+KX
+WA
+CA
+KX
+WA
+CA
+id
+Sl
+Sl
+vM
+fk
+Ah
+fk
+tN
+Ia
+Se
+Qb
+Qb
+nB
+nB
+nB
+Lw
+nB
+Lw
+Qb
+tk
+Sl
+Sl
+cI
+Sl
+Sl
+"}
+(44,1,1) = {"
+cD
+cD
+Om
+dd
+RK
+RK
+RK
+Mk
+RK
+vW
+RK
+sv
+RK
+RK
+RK
+RK
+ik
+jK
+qL
+JN
+AR
+RM
+RM
+RM
+oa
+RM
+RM
+RM
+mZ
+RM
+RM
+jB
+qL
+qL
+qL
+tN
+vc
+Se
+Sl
+BZ
+Lw
+nB
+nB
+Lw
+ol
+nB
+nB
+ol
+Sl
+Sl
+Sl
+Sl
+Sl
+"}
+(45,1,1) = {"
+zJ
+id
+id
+id
+iH
+bY
+RK
+PQ
+RK
+rX
+RK
+rX
+RK
+of
+vY
+id
+id
+uv
+rc
+rc
+ff
+bA
+yG
+yG
+yG
+yG
+yG
+fk
+tN
+aS
+fk
+jf
+aS
+fk
+Ah
+tN
+tN
+Se
+Se
+Qb
+Lw
+nB
+nB
+nB
+nB
+nB
+Lw
+wS
+ol
+Sl
+Sl
+Sl
+Sl
+"}
+(46,1,1) = {"
+id
+id
+nB
+id
+RK
+RK
+RK
+rX
+RK
+rX
+RK
+rX
+RK
+RK
+uK
+gl
+Sl
+Sl
+Sl
+Ia
+vM
+jf
+qL
+fk
+qL
+fk
+qL
+Ah
+tN
+zG
+qL
+qL
+qL
+qL
+qL
+tN
+tN
+Sl
+Se
+Sl
+Qb
+Lw
+nB
+nB
+nB
+Lw
+Lw
+Qb
+Lw
+BZ
+Sl
+Sl
+vZ
+"}

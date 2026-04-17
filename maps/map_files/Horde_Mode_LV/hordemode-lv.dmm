@@ -58,7 +58,6 @@
 /area/horde_mode/center)
 "an" = (
 /obj/structure/item_purchase/door{
-	door_id = 8;
 	dir = 8;
 	unlock_area = /area/horde_mode/medical
 	},
@@ -222,9 +221,7 @@
 /turf/open/floor/plating,
 /area/horde_mode/lobby)
 "ba" = (
-/obj/structure/item_purchase/door/wide{
-	door_id = 2
-	},
+/obj/structure/item_purchase/door/wide,
 /turf/open/floor/plating,
 /area/horde_mode/lobby)
 "bb" = (
@@ -1240,7 +1237,6 @@
 /area/horde_mode/outside)
 "tV" = (
 /obj/structure/item_purchase/door/wide{
-	door_id = 2;
 	unlock_area = /area/horde_mode/science
 	},
 /turf/open/floor/bluecorner,
@@ -1396,7 +1392,6 @@
 /area/horde_mode/center)
 "Av" = (
 /obj/structure/item_purchase/door{
-	door_id = 9;
 	dir = 8;
 	unlock_area = /area/horde_mode/engineering
 	},
@@ -1560,7 +1555,6 @@
 /area/horde_mode/lobby)
 "EG" = (
 /obj/structure/item_purchase/door{
-	door_id = 8;
 	dir = 8;
 	unlock_area = /area/horde_mode/medical
 	},
@@ -1637,7 +1631,6 @@
 /area/horde_mode/center)
 "GX" = (
 /obj/structure/item_purchase/door/wide{
-	door_id = 2;
 	unlock_area = /area/horde_mode/center
 	},
 /turf/open/floor/purple/northwest,
@@ -1650,7 +1643,6 @@
 /area/horde_mode/science)
 "Hi" = (
 /obj/structure/item_purchase/door/wide{
-	door_id = 2;
 	unlock_area = /area/horde_mode/center
 	},
 /turf/open/floor/whiteyellowfull/east,
@@ -1738,7 +1730,6 @@
 "Ku" = (
 /obj/structure/item_purchase/door/wide{
 	dir = 4;
-	door_id = 4;
 	unlock_area = /area/horde_mode/science
 	},
 /turf/open/floor/white,
@@ -1780,8 +1771,7 @@
 /area/horde_mode/center)
 "LU" = (
 /obj/structure/item_purchase/door/wide{
-	dir = 4;
-	door_id = 4
+	dir = 4
 	},
 /turf/open/floor/whiteyellow/northwest,
 /area/horde_mode/engineering)
@@ -1881,7 +1871,6 @@
 "PY" = (
 /obj/structure/item_purchase/door/wide{
 	dir = 4;
-	door_id = 4;
 	unlock_area = /area/horde_mode/medical
 	},
 /turf/open/floor/bar,
@@ -1941,7 +1930,6 @@
 /area/horde_mode/center)
 "Rx" = (
 /obj/structure/item_purchase/door{
-	door_id = 9;
 	dir = 8;
 	unlock_area = /area/horde_mode/engineering
 	},

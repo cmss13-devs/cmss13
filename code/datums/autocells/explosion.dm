@@ -249,7 +249,7 @@ as having entered the turf.
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE, playsound = TRUE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -272,10 +272,11 @@ as having entered the turf.
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 
-	if(power >= 300) //Make BIG BOOMS
-		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
-	else
-		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
+	if(playsound)
+		if(power >= 300) //Make BIG BOOMS
+			playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
+		else
+			playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 	if(power > EXPLOSION_MAX_POWER)

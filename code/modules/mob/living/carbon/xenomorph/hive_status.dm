@@ -963,6 +963,10 @@
 	return indexed_hive.is_ally(src)
 
 /datum/hive_status/proc/is_ally(mob/living/living_mob)
+	if(isanimalhordemode(living_mob))
+		var/mob/living/simple_animal/hostile/alien/horde_mode/zenomorf = living_mob
+		if(zenomorf.hivenumber == hivenumber)
+			return TRUE
 	if(isxeno(living_mob))
 		var/mob/living/carbon/xenomorph/zenomorf = living_mob
 		if(zenomorf.hivenumber == hivenumber)
@@ -1328,6 +1332,35 @@
 
 /datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
+
+/datum/hive_status/horde_mode
+	reporting_id = "horde_mode"
+	hivenumber = XENO_HIVE_HORDEMODE
+
+	hive_flags = XENO_SLASH_ALLOW_ALL
+	hive_flags_locked = TRUE
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = FALSE
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+
+/datum/hive_status/horde_mode/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/horde_mode/corrupted
+	prefix = "Corrupted "
+	color = "#80ff80"
+	ui_color ="#4d994d"
+
+	reporting_id = "horde_mode_corrupted"
+	hivenumber = XENO_HIVE_HORDEMODE_CORRUPTED
+
+/datum/hive_status/horde_mode/corrupted/is_ally(mob/living/carbon/C)
+	if(ishuman(C))
+		return TRUE
+
+	return ..()
 
 /datum/hive_status/yautja
 	name = FACTION_XENOMORPH_HELLHOUNDS

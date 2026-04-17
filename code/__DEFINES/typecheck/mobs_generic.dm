@@ -6,6 +6,7 @@
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
 #define isanimalhostile(A) (istype(A, /mob/living/simple_animal/hostile))
 #define isanimalretaliate(A) (istype(A, /mob/living/simple_animal/hostile/retaliate))
+#define isanimalhordemode(A) (istype(A, /mob/living/simple_animal/hostile/alien/horde_mode))
 #define iscorgi(A) (istype(A, /mob/living/simple_animal/big/corgi))
 #define iscrab(A) (istype(A, /mob/living/simple_animal/small/crab))
 #define iscat(A) (istype(A, /mob/living/simple_animal/small/cat))

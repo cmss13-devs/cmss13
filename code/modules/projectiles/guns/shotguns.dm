@@ -420,6 +420,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
+/obj/item/weapon/gun/shotgun/combat/buckshot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+
 //SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper XM38 tactical shotgun"

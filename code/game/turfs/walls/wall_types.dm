@@ -374,6 +374,7 @@
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
+	walltype = WALL_REINFORCED
 
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"

@@ -813,6 +813,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			xeno_target.emote("roar")
 		xeno_target.plasma_stored = xeno_target.plasma_max
 
+	target.last_damage_data = weapon_cause_data
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
@@ -831,8 +832,10 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				to_chat(target, SPAN_DANGER("[isxeno(target) ? "We" : "You"] step over the flames."))
 		return
 
-	target.last_damage_data = weapon_cause_data
-	target.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	if(isanimal(target))
+		target.health -= burn_damage
+	else
+		target.apply_damage(burn_damage, BURN) //This makes fire stronk.
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.

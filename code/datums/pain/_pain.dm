@@ -248,6 +248,8 @@
 	current_pain = 0
 	pain_slowdown = 0
 
+	if(isnull(source_mob?.effects_list))
+		return TRUE
 	for(var/datum/effects/pain/P in source_mob.effects_list)
 		qdel(P)
 

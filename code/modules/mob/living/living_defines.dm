@@ -77,6 +77,7 @@
 	var/do_bump_delay = 0 // Flag to tell us to delay movement because of being bumped
 
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
+	var/extra_move_delay_modifier = 0
 
 	var/blood_type = "X*"
 

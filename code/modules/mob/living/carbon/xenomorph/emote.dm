@@ -1,5 +1,5 @@
 /datum/emote/living/carbon/xeno
-	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph)
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/hostile/alien)
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/facehugger, /mob/living/carbon/xenomorph/larva)
 	keybind_category = CATEGORY_XENO_EMOTE
 	var/predalien_sound

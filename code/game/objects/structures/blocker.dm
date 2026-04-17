@@ -166,6 +166,9 @@
 /obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
 	return TRUE
 
+/obj/structure/blocker/forcefield/horde_mode
+	types = list(/mob/living/carbon/human)
+
 // for fuel pump since it's a large sprite.
 /obj/structure/blocker/fuelpump
 	name = "\improper Fuel Pump"

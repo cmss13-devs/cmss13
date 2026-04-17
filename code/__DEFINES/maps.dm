@@ -28,6 +28,7 @@ require only minor tweaks.
 #define ZTRAIT_AWAY  "Away"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE "TechTree"
+#define ZTRAIT_HORDE_MODE "Horde Mode"
 /// Exists outside the mainstream round, like pred ship.
 #define ZTRAIT_BACKGROUND_MAP "Background Map"
 

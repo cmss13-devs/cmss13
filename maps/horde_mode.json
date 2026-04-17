@@ -1,0 +1,15 @@
+{
+    "override_map": true,
+    "map_name": "Horde Mode",
+    "map_path": "map_files/Horde_Mode",
+    "map_file": "hordemode.dmm",
+	"survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv"
+    ],
+    "traits": [{"Horde Mode": true}],
+    "camouflage": "jungle",
+	"disable_ship_map": true,
+    "gamemodes": [
+        "Horde Mode"
+    ]
+}

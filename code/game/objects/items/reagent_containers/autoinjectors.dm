@@ -390,6 +390,42 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/merabicard
+	name = "meralyne-bicardine autoinjector"
+	desc = "An one-use auto-injector loaded with a mix of meralyne and bicardine, used for treating high amounts of brute trauma over a short period of time. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
+	chemname = "custom_ez"
+	mixed_chem = TRUE
+	uses_left = 1
+	amount_per_transfer_from_this = 15
+	volume = 15
+	skilllock = SKILL_MEDICAL_DEFAULT
+
+/obj/item/reagent_container/hypospray/autoinjector/merabicard/Initialize()
+	. = ..()
+	reagents.add_reagent("bicaridine", 7.5)
+	reagents.add_reagent("meralyne", 7.5)
+	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/keloderm
+	name = "kelotane-dermaline autoinjector"
+	desc = "An one-use auto-injector loaded with a mix of kelotane and dermaline, used for treating severe burns over a short period of time. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
+	chemname = "custom_ez"
+	mixed_chem = TRUE
+	uses_left = 1
+	amount_per_transfer_from_this = 15
+	volume = 15
+	skilllock = SKILL_MEDICAL_DEFAULT
+
+/obj/item/reagent_container/hypospray/autoinjector/keloderm/Initialize()
+	. = ..()
+	reagents.add_reagent("kelotane", 7.5)
+	reagents.add_reagent("dermaline", 7.5)
+	update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
 	desc = "An autoinjector loaded with a single dose of a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."

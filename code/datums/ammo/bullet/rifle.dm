@@ -56,6 +56,19 @@
 	if(T.density)
 		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
+/datum/ammo/bullet/rifle/explosive/light
+	name = "light explosive rifle bullet"
+
+/datum/ammo/bullet/rifle/explosive/light/on_hit_mob(mob/M, obj/projectile/P)
+	cell_explosion(get_turf(M), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/rifle/explosive/light/on_hit_obj(obj/O, obj/projectile/P)
+	cell_explosion(get_turf(O), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/rifle/explosive/light/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density)
+		cell_explosion(T, 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 
@@ -133,6 +146,15 @@
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/bullet/rifle/incendiary/napalmx
+	name = "incendiary rifle bullet"
+
+/datum/ammo/bullet/rifle/incendiary/napalmx/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, reagent = /datum/reagent/napalm/blue)
 	))
 
 /datum/ammo/bullet/rifle/m4ra

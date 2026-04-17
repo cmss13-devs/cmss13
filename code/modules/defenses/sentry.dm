@@ -27,6 +27,7 @@
 	var/omni_directional = FALSE
 	var/additional_rounds_stored = FALSE
 	var/sentry_range = SENTRY_RANGE
+	var/fire_sound = null
 
 	has_camera = TRUE
 
@@ -292,6 +293,9 @@
 		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return
 
+	if(fire_sound)
+		playsound(loc, fire_sound, 50, 1)
+
 	last_fired = world.time
 
 	if(QDELETED(owner_mob))
@@ -485,6 +489,74 @@
 		return
 
 	fire(target)
+
+/obj/structure/machinery/defenses/sentry/horde_mode
+	name = "\improper disposable UA 571-C sentry gun"
+	desc = "A deployable, disposable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 150-round drum magazine. After emptying its magazine, the turret will diassemble itself into an inert package."
+	handheld_type = /obj/item/defenses/handheld/sentry/horde_mode
+	ammo = new /obj/item/ammo_magazine/sentry/small
+	omni_directional = TRUE
+	density = FALSE
+	fire_delay = 0.35 SECONDS
+	fire_sound = "sentry_fire"
+
+/obj/structure/machinery/defenses/sentry/horde_mode/process()
+	if(!turned_on)
+		stop_processing()
+		return
+	if(!ammo.current_rounds)
+		stop_processing()
+		balloon_alert_to_viewers("begins to disassemble itself")
+		visible_message(SPAN_WARNING("[src] begins to disassemble itself..."))
+		sleep(4 SECONDS)
+		visible_message(SPAN_WARNING("[src] disassembles itself into a neat little package-- which is completely useless to you!"))
+		new /obj/item/prop/disassembled_horde_mode_sentry(loc)
+		qdel(src)
+
+	if(!range_bounds)
+		set_range()
+	for(var/mob/living/simple_animal/hostile/alien/horde_mode/enemy in range(sentry_range, src))
+		if(enemy.faction != FACTION_MARINE)
+			targets += enemy
+	if(!targets)
+		return FALSE
+
+	if(!target && length(targets))
+		target = pick(targets)
+
+	get_target(target)
+	return TRUE
+
+/obj/structure/machinery/defenses/sentry/horde_mode/attack_hand(mob/user)
+	user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
+
+	if(!do_after(user, 0.75 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
+
+	playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
+	var/turf/T = get_turf(src)
+	power_off()
+	HD.forceMove(T)
+	transfer_label_component(HD)
+	HD.dropped = 1
+	HD.update_icon()
+	placed = 0
+	forceMove(HD)
+
+	return
+
+/obj/item/prop/disassembled_horde_mode_sentry
+	name = "disassembled disposable UA 571-C sentry gun"
+	desc = "Well, it's of no use to you now."
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
+	icon_state = "hangar_comp"
+
+/obj/item/prop/disassembled_horde_mode_sentry/Initialize(mapload, ...)
+	. = ..()
+	QDEL_IN(src, 5 SECONDS)
+	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 ///Updates the vehicles minimap icon
 /obj/structure/machinery/defenses/sentry/proc/update_minimap_icon(firing, off)

@@ -23,6 +23,10 @@
 	max_rounds = 500
 	current_rounds = 500
 
+/obj/item/ammo_magazine/sentry/small
+	desc = "An ammo drum of 150 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	max_rounds = 150
+
 /obj/item/ammo_magazine/sentry/premade/dumb
 	default_ammo = /datum/ammo/bullet/turret/dumb
 

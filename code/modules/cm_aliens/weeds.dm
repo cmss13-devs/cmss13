@@ -17,7 +17,10 @@
 	health = WEED_HEALTH_STANDARD
 	var/weed_strength = WEED_LEVEL_STANDARD
 	var/node_range = WEED_RANGE_STANDARD
+	var/decay_speed = WEED_BASE_DECAY_SPEED
 	var/secreting = FALSE
+	///Multiplies the slowdown for walking on hostile weeds.
+	var/slow_multiplier = 1
 
 	var/hibernate = FALSE
 
@@ -181,7 +184,7 @@
 
 	var/mob/living/crossing_mob = atom_movable
 
-	var/weed_slow = weed_strength
+	var/weed_slow = weed_strength * slow_multiplier
 	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
 		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
 			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
@@ -579,7 +582,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), decay_speed + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 
@@ -600,6 +603,23 @@
 
 /obj/effect/alien/weeds/node/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
+
+/obj/effect/alien/weeds/node/horde_mode
+	slow_multiplier = 0.5
+	decay_speed = 2 SECONDS
+
+/obj/effect/alien/weeds/node/horde_mode/cluster
+	health = WEED_HEALTH_HIVE
+	weed_strength = WEED_LEVEL_HIVE
+	node_range = WEED_RANGE_PYLON
+	overlay_node = FALSE
+	spread_on_semiweedable = TRUE
+	slow_multiplier = 0.05
+	var/resin_parent
+
+/obj/effect/alien/weeds/node/weak/horde_mode
+	slow_multiplier = 0.75
+	decay_speed = 2 SECONDS
 
 /obj/effect/alien/weeds/node/hunted
 	hivenumber = XENO_HIVE_HUNTED

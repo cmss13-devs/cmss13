@@ -455,6 +455,7 @@
 	density = TRUE
 	health = 150
 	light_range = 6
+	light_color = LIGHT_COLOR_FIRE
 	light_on = TRUE
 	/// What obj this becomes when it gets to its next stage of construction / ignition
 	var/frame_type
@@ -646,6 +647,13 @@
 /obj/structure/prop/brazier/campfire/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/structure/prop/brazier/campfire/unextinguishable
+	extinguishable = FALSE
+	fuel_stage_time = INFINITY
+
+/obj/structure/prop/brazier/campfire/unextinguishable/fuel_drain(looping)
+	return
 
 #undef STATE_COMPLETE
 #undef STATE_FUEL

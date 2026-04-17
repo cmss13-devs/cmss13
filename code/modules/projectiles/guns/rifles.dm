@@ -635,6 +635,15 @@
 		name_after_co(user)
 		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
 
+/obj/item/weapon/gun/rifle/m46c/horde_mode
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
+	is_locked = FALSE
+	iff_enabled = FALSE
+
+/obj/item/weapon/gun/rifle/m46c/horde_mode/Initialize(mapload, ...)
+	. = ..()
+	LAZYREMOVE(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
+
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()

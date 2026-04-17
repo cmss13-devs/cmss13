@@ -256,6 +256,13 @@
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 
+// -- horde mode perks --
+#define TRAIT_PERK_JUGGERNAUT "t_p_juggernaut"
+#define TRAIT_PERK_SPEED "t_p_speed"
+#define TRAIT_PERK_EXPLOSIVE_RESISTANCE "t_p_explosive_resistance"
+#define TRAIT_PERK_REVIVE "t_p_revive"
+#define TRAIT_PERK_GUNNUT "t_p_gunnut"
+
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
@@ -537,6 +544,8 @@ GLOBAL_LIST(trait_name_map)
 #define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"
+/// traits from horde mode perks
+#define PERK_TRAIT "perk"
 /// traits transparent turf
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// traits from wall hiding

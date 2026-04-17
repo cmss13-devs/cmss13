@@ -196,6 +196,50 @@
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
+//HORDE MODE PROJECTILES
+/datum/ammo/xeno/acid/neuro
+	name = "acidic neurotoxin spit"
+	icon_state = "neurotoxin"
+	ping = "ping_x"
+	damage = 10
+
+/datum/ammo/xeno/acid/neuro/on_hit_mob(mob/hit_mob, obj/projectile/P)
+	if(ishuman(hit_mob))
+		hit_mob.visible_message(SPAN_DANGER("[hit_mob]'s movements are slowed."))
+		hit_mob.apply_effect(0.5, SLOW)
+	..()
+
+/datum/ammo/xeno/acid/glob
+	name = "acid glob"
+	damage = 30
+	scatter = SCATTER_AMOUNT_TIER_3
+	var/spray_type = /obj/effect/xenomorph/spray/weak/no_stun
+
+/datum/ammo/xeno/acid/glob/on_hit_mob(mob/hit_mob, obj/projectile/proj)
+	create_glob(proj)
+	..()
+
+/datum/ammo/xeno/acid/glob/on_hit_turf(turf/Turf, obj/projectile/proj)
+	create_glob(proj)
+	..()
+
+/datum/ammo/xeno/acid/glob/on_hit_obj(turf/Turf, obj/projectile/proj)
+	create_glob(proj)
+	..()
+
+/datum/ammo/xeno/acid/glob/do_at_max_range(obj/projectile/proj)
+	create_glob(proj)
+
+/datum/ammo/xeno/acid/glob/proc/create_glob(obj/projectile/proj)
+	var/mob/living/simple_animal/hostile/alien/horde_mode/source_xeno = proj.firer
+	new spray_type(get_turf(proj), create_cause_data("acid spray"), source_xeno.hivenumber)
+	for(var/turf/turf in range(1, get_turf(proj)))
+		var/obj/effect/xenomorph/spray/spray = new spray_type(turf, create_cause_data("acid spray"), source_xeno.hivenumber)
+		for(var/mob/living/carbon/human in turf)
+			if(human.faction == source_xeno.faction)
+				continue
+			spray.apply_spray(human)
+
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
 	icon_state = "xeno_acid_normal"

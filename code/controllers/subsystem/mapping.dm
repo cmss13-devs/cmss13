@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(mapping)
 			errorList |= pm.original_path
 		// CM Snowflake for Mass Screenshot dimensions auto detection
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
-			var/datum/space_level/zlevel = z_list[start_z + z - 1]
+			var/datum/space_level/zlevel = z_list[start_z + z - 2]
 			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
 		load_group_bounds[name] = bounds
 

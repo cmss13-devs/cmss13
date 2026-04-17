@@ -139,6 +139,9 @@ GLOBAL_LIST_INIT(ROLES_FACTION_CLASH, ROLES_USCM + JOB_PREDATOR)
 
 GLOBAL_LIST_INIT(ROLES_CM_VS_UPP, (ROLES_USCM + UPP_JOB_LIST)- JOB_CAS_PILOT - JOB_ORDNANCE_TECH)
 
+/// Horde mode spawns
+GLOBAL_LIST_INIT(ROLES_HORDE_MODE, list(JOB_HORDE))
+
 
 GLOBAL_LIST_INIT(ROLES_UNASSIGNED, list(JOB_SQUAD_MARINE))
 //Role lists used for switch() checks in show_blurb_uscm(). Cosmetic, determines ex. "Engineering, USS Almayer", "2nd Bat. 'Falling Falcons'" etc.

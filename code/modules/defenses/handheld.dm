@@ -132,6 +132,23 @@
 		if("Omni-Sentry Upgrade")
 			return /obj/item/defenses/handheld/sentry/omni
 
+/obj/item/defenses/handheld/sentry/horde_mode
+	name = "\improper disposable UA 571-C sentry gun"
+	desc = "A deployable, disposable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 150-round drum magazine. After emptying its magazine, the turret will diassemble itself into an inert package."
+	defense_type = /obj/structure/machinery/defenses/sentry/horde_mode
+
+/obj/item/defenses/handheld/sentry/horde_mode/Initialize()
+	. = ..()
+	SShorde_mode.sentries_active++
+
+/obj/item/defenses/handheld/sentry/horde_mode/Destroy()
+	. = ..()
+	SShorde_mode.sentries_active--
+
+/obj/item/defenses/handheld/sentry/horde_mode/deploy_handheld(mob/living/carbon/human/user)
+	. = ..()
+	TR.power_on()
+
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
 	icon_state = "DMR uac_sentry_handheld"
@@ -190,6 +207,10 @@
 	icon_state = "Light upp_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/upp/light
 	deployment_time = 2 SECONDS
+
+/obj/item/defenses/handheld/sentry/horde_mode
+	defense_type = /obj/structure/machinery/defenses/sentry/horde_mode
+
 
 // FLAMER BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry/flamer

@@ -107,19 +107,30 @@
 					if(2)
 						hud_used.healths.icon_state = "health7"
 					else
-						var/pain_percentage = max(pain.get_pain_percentage(), 100 - (stamina.current_stamina/stamina.max_stamina)*100) // Get the highest value from either
-						switch(pain_percentage)
-							if(80 to 100)
+						if(pain.feels_pain)
+							var/pain_percentage = max(pain.get_pain_percentage(), 100 - (stamina.current_stamina/stamina.max_stamina)*100) // Get the highest value from either
+							switch(pain_percentage)
+								if(80 to 100) hud_used.healths.icon_state = "health6"
+								if(60 to 80) hud_used.healths.icon_state = "health5"
+								if(50 to 60) hud_used.healths.icon_state = "health4"
+								if(40 to 50) hud_used.healths.icon_state = "health3"
+								if(20 to 40) hud_used.healths.icon_state = "health2"
+								if(1 to 20) hud_used.healths.icon_state = "health1"
+								else hud_used.healths.icon_state = "health0"
+						else
+							///This variable represents the mob's current health (taking into account if their max health is more than 100).
+							var/actual_health = health / species.total_health
+							if(actual_health < 0.2)
 								hud_used.healths.icon_state = "health6"
-							if(60 to 80)
+							else if(actual_health >= 0.2 && actual_health < 0.4)
 								hud_used.healths.icon_state = "health5"
-							if(50 to 60)
+							else if(actual_health >= 0.4 && actual_health < 0.5)
 								hud_used.healths.icon_state = "health4"
-							if(40 to 50)
+							else if(actual_health >= 0.5 && actual_health < 0.6)
 								hud_used.healths.icon_state = "health3"
-							if(20 to 40)
+							else if(actual_health >= 0.6 && actual_health < 0.8)
 								hud_used.healths.icon_state = "health2"
-							if(1 to 20)
+							else if(actual_health >= 0.8 && actual_health < 1)
 								hud_used.healths.icon_state = "health1"
 							else
 								hud_used.healths.icon_state = "health0"

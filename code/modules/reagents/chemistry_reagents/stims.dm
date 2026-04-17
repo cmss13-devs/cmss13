@@ -40,6 +40,12 @@
 		PROPERTY_PAINKILLING = 3,
 	)
 
+/datum/reagent/stimulant/speed_stimulant/fast_metabolism
+	name = "Unconcentrated Speed Stimulant"
+	description = "A highly experimental performance enhancement stimulant that metabolises extremely quickly. It is not addictive."
+	id = "speed_stimulant_fast_metabolism"
+	custom_metabolism = AMOUNT_PER_TIME(1, 1 SECONDS)
+
 /datum/reagent/stimulant/brain_stimulant
 	name = "Brain Stimulant"
 	id = "brain_stimulant"

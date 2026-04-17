@@ -517,6 +517,10 @@
 	permutated |= L
 	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(L) || L.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
+	if(isanimalhordemode(firer) && isanimalhordemode(L))
+		var/mob/living/xeno_owner = firer
+		if(xeno_owner.faction == L.faction)
+			return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
 

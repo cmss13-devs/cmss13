@@ -228,6 +228,7 @@
 		/obj/item/stack/medical/ointment,
 		/obj/item/reagent_container/hypospray/autoinjector,
 		/obj/item/storage/pill_bottle/packet,
+		/obj/item/horde_mode/stim,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
 	)
@@ -278,6 +279,12 @@
 
 /obj/item/storage/pouch/firstaid/full/pills/wy
 	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/horde_mode/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/keloderm(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/merabicard(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/hunted
 	name = "old pouch"

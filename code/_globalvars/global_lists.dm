@@ -225,7 +225,9 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
-	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
+	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial(),
+	XENO_HIVE_HORDEMODE = new /datum/hive_status/horde_mode(),
+	XENO_HIVE_HORDEMODE_CORRUPTED = new /datum/hive_status/horde_mode/corrupted()
 ))
 
 GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)

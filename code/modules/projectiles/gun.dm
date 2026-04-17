@@ -55,6 +55,10 @@
 	var/cock_cooldown = 0
 	///Delay before we can cock again, in tenths of seconds
 	var/cock_delay = 30
+	///If set, the fired bullet will ALWAYS be of this type, even if the gun has something else loaded.
+	var/datum/ammo/ammo_override = null
+	///% chance to not subtract ammo from the magazine when firing.
+	var/chance_to_keep_ammo = 0
 
 	/**How the bullet will behave once it leaves the gun, also used for basic bullet damage and effects, etc.
 	Ammo will be replaced on New() for things that do not use mags.**/
@@ -131,6 +135,8 @@
 	var/extra_delay = 0
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
 	var/PB_burst_bullets_fired = 0
+	///Was the PB fired yet or no?
+	var/PB_fired = FALSE
 
 	// Full auto
 	///Whether or not the gun is firing full-auto
@@ -1140,7 +1146,8 @@ and you're good to go.
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
 		apply_traits(in_chamber)
-		current_mag.current_rounds-- //Subtract the round from the mag.
+		if(!prob(chance_to_keep_ammo))
+			current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
 
 
@@ -1155,6 +1162,8 @@ and you're good to go.
 		var/mob/M = loc
 		weapon_source_mob = M
 	var/obj/projectile/P = new projectile_type(src, create_cause_data(bullet_source, weapon_source_mob))
+	if(ammo_override)
+		chambered = new ammo_override
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
@@ -1420,6 +1429,7 @@ and you're good to go.
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
+	PB_fired = FALSE
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		if(user.action_busy)
 			to_chat(user, SPAN_WARNING("You are a bit preoccupied to commit suicide at the moment."))
@@ -1526,6 +1536,7 @@ and you're good to go.
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
 		simulate_recoil(1, user)
+		PB_fired = TRUE
 
 
 		projectile_to_fire.firer = user

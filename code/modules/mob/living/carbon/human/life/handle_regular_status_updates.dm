@@ -36,13 +36,20 @@
 		apply_effect(3, PARALYZE)
 
 	if((species.flags & HAS_HARDCRIT) && health_threshold_crit > health)
-		var/already_in_crit = FALSE
-		for(var/datum/effects/crit/C in effects_list)
-			already_in_crit = TRUE
-			break
-		// Need to only apply if it's not already active
-		if(!already_in_crit)
-			new /datum/effects/crit/human(src)
+		if(HAS_TRAIT(src, TRAIT_PERK_REVIVE))
+			rejuvenate()
+			to_chat(src, SPAN_USERDANGER("You feel your heart fading... but then it kicks into overdrive! You've got another chance!"))
+			playsound_client(src.client, 'sound/effects/heart_beat_short_intense.ogg', 80)
+			REMOVE_TRAIT(src, TRAIT_PERK_REVIVE, PERK_TRAIT)
+			return
+		else
+			var/already_in_crit = FALSE
+			for(var/datum/effects/crit/C in effects_list)
+				already_in_crit = TRUE
+				break
+			// Need to only apply if its not already active
+			if(!already_in_crit)
+				new /datum/effects/crit/human(src)
 
 	if(IsKnockOut())
 		blinded = TRUE

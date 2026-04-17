@@ -204,6 +204,9 @@
 
 	var/bonus_damage = 25
 
+/obj/effect/xenomorph/spray/weak/no_stun
+	stun_duration = 0
+
 /obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/carbone)
 	if(ishuman(carbone))
 		var/mob/living/carbon/human/hooman = carbone
@@ -252,6 +255,9 @@
 
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
+
+/obj/effect/xenomorph/spray/strong/no_stun/short_duration
+	time_to_live = 6
 
 /obj/effect/xenomorph/spray/despoiler
 	icon_state = "acid2-strong"

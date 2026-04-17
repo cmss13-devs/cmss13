@@ -496,6 +496,20 @@
 
 	return TRUE
 
+/obj/structure/surface/table/uninteractable
+	reinforced = TRUE
+	climbable = FALSE
+	breakable = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
+	health = INFINITY
+
+/obj/structure/surface/table/uninteractable/ex_act(severity, direction)
+	return
+
+/obj/structure/surface/table/uninteractable/bullet_act(obj/projectile/bullet)
+	bullet_ping(bullet)
+
 /*
  * Wooden tables
  */

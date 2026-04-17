@@ -8,6 +8,12 @@ United States Colonial Marines
 	name = "Private"
 	//same as default
 
+/datum/skills/pfc/horde_mode
+	name = "Stranded Marine"
+	skills = list(
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC
+	)
+
 /datum/skills/pfc/crafty
 	name = "Crafty Private"
 	skills = list(

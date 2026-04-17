@@ -22,6 +22,8 @@
 
 	mobility_flags = MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT
 
+	var/melee_damage_taken_multiplier = 1
+
 	var/icon_living = ""
 	var/icon_dead = ""
 	var/icon_gib = null
@@ -75,13 +77,21 @@
 	///This damage is taken when atmos doesn't fit all the requirements above
 	var/unsuitable_atoms_damage = 2
 	var/fire_overlay
+	///All brute damage recieved will be multiplied by this number
+	var/brute_damage_mod = 1
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
-	SSmob.living_misc_mobs += src
+	if(isanimalhordemode(src))
+		SShorde_mode_mobs.living_misc_mobs += src
+	else
+		SSmob.living_misc_mobs += src
 
 /mob/living/simple_animal/Destroy()
-	SSmob.living_misc_mobs -= src
+	if(isanimalhordemode(src))
+		SShorde_mode_mobs.living_misc_mobs -= src
+	else
+		SSmob.living_misc_mobs -= src
 	return ..()
 
 /mob/living/simple_animal/Login()
@@ -168,13 +178,11 @@
 			GLOB.dead_mob_list -= src
 			GLOB.alive_mob_list += src
 			set_stat(CONSCIOUS)
-//			lying = 0
-//			density = TRUE
 			reload_fullscreens()
 		return 0
 
 
-	if(health < 1)
+	if(health < 1 && stat != DEAD)
 		death()
 
 	if(health > maxHealth)
@@ -297,7 +305,10 @@
 	if(!.)
 		return //was already dead
 	SSmob.living_misc_mobs -= src
-	icon_state = icon_dead
+	if(health <= -100)
+		gib()
+	else
+		icon_state = icon_dead
 	black_market_value = dead_black_market_value
 	set_body_position(LYING_DOWN)
 
@@ -427,7 +438,7 @@
 		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
-	health = clamp(health - damage, 0, maxHealth)
+	health = min(health - damage * brute_damage_mod, maxHealth)
 
 /mob/living/simple_animal/adjustFireLoss(damage)
 	health = clamp(health - damage, 0, maxHealth)

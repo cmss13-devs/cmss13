@@ -15,6 +15,7 @@
 		change_real_name(src, "unknown")
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 	. = ..()
+	register_human_init_signals()
 
 	prev_gender = gender // Debug for plural genders
 
@@ -144,9 +145,33 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
+	for(var/list/player as anything in SShorde_mode.current_players)
+		if(player["mob"] == src)
+			var/list/perk_list = list()
+			if(HAS_TRAIT(src, TRAIT_PERK_JUGGERNAUT))
+				perk_list += "Juggernaut"
+			if(HAS_TRAIT(src, TRAIT_PERK_SPEED))
+				perk_list += "Speed"
+			if(HAS_TRAIT(src, TRAIT_PERK_EXPLOSIVE_RESISTANCE))
+				perk_list += "Explosive Resistance"
+			if(HAS_TRAIT(src, TRAIT_PERK_REVIVE))
+				perk_list += "Revive"
+			if(HAS_TRAIT(src, TRAIT_PERK_GUNNUT))
+				perk_list += "Gun Nut"
+			. += "Points: [player["points"]]"
+			. += "Wave: [SShorde_mode.round]"
+			if(length(perk_list))
+				var/perk_list_text = perk_list.Join(", ")
+				. += "Perks: [perk_list_text]"
+
+			break
+
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
+
+	if(HAS_TRAIT(src, TRAIT_PERK_EXPLOSIVE_RESISTANCE))
+		severity *= 0.10
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -170,43 +195,34 @@
 		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
-	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION) || !HAS_TRAIT(src, TRAIT_PERK_EXPLOSIVE_RESISTANCE))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
 	/// Reduces effects by armor value.
 	var/bomb_armor_mult = ((CLOTHING_ARMOR_HARDCORE - bomb_armor) * 0.01)
 
-	if(severity >= 30)
-		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
-	var/obj/item/item1 = get_active_hand()
-	var/obj/item/item2 = get_inactive_hand()
-	var/knockdown_value = severity * 0.1
-	var/knockout_value = damage * 0.1
-	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire)) //explosions slow down but way less stun
-		var/knockdown_minus_armor = min(max(knockdown_value * bomb_armor_mult - 0.5 SECONDS, 0), 0.5 SECONDS) //only explosions with more then 20 severity stun
-		apply_effect(floor(knockdown_minus_armor), WEAKEN)
-		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
-		var/slowdown_minus_armor =min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS)
-		apply_effect(floor(slowdown_minus_armor), SUPERSLOW)
-		apply_effect(floor(slowdown_minus_armor) * 2, SLOW)
-		damage *= 0.5 //we reduce after checking eye flash and stun and slow
-		severity *= 0.5
-	else
-		// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
-		var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
-		apply_effect(floor(knockdown_minus_armor), WEAKEN)
-		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+	if(!HAS_TRAIT(src, TRAIT_PERK_EXPLOSIVE_RESISTANCE))
+		if(severity >= 30)
+			flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
 
+		// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+		var/knockdown_value = severity * 0.1
+		var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+		var/obj/item/item1 = get_active_hand()
+		var/obj/item/item2 = get_inactive_hand()
+		apply_effect(floor(knockdown_minus_armor), WEAKEN)
+		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+		var/knockout_value = damage * 0.1
 		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 		apply_effect(floor(knockout_minus_armor), PARALYZE)
 		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
-	explosion_throw(severity, direction)
+		explosion_throw(severity, direction)
 
-	if(item1 && isturf(item1.loc))
-		item1.explosion_throw(severity, direction)
-	if(item2 && isturf(item2.loc))
-		item2.explosion_throw(severity, direction)
+		if(item1 && isturf(item1.loc))
+			item1.explosion_throw(severity, direction)
+		if(item2 && isturf(item2.loc))
+			item2.explosion_throw(severity, direction)
 
 	if(damage >= 0)
 		b_loss += damage * 0.5
@@ -259,18 +275,18 @@
 /mob/living/carbon/human/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")
-	else
-		if(M.attack_sound)
-			playsound(loc, M.attack_sound, 25, 1)
-		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
-		last_damage_data = create_cause_data(initial(M.name), M)
-		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
-		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
-		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
-		apply_damage(damage, BRUTE, affecting, enviro=TRUE)
+		return
+	if(M.attack_sound)
+		playsound(loc, M.attack_sound, 25, 1)
+	for(var/mob/O in viewers(src, null))
+		O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
+	last_damage_data = create_cause_data(initial(M.name), M)
+	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
+	src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
+	var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
+	var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
+	var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
+	apply_damage(damage, BRUTE, affecting)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
@@ -1812,7 +1828,8 @@
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
 /proc/setup_human(mob/living/carbon/human/target, mob/new_player/new_player, is_late_join = FALSE)
-	new_player.spawning = TRUE
+	if(isnewplayer(new_player))
+		new_player.spawning = TRUE
 	new_player.close_spawn_windows()
 	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)
 

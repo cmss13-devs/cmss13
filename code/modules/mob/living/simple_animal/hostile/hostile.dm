@@ -24,11 +24,11 @@
 	target_mob_ref = null
 	return ..()
 
-/mob/living/simple_animal/hostile/proc/FindTarget()
+/mob/living/simple_animal/hostile/proc/FindTarget(range = 10)
 
 	var/atom/T = null
 	stop_automated_movement = 0
-	for(var/atom/A in ListTargets(10))
+	for(var/atom/A in ListTargets(range))
 
 		if(A == src)
 			continue
@@ -91,7 +91,15 @@
 	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!Adjacent(target_mob))
 		return
+	face_atom(target_mob)
 	if(isliving(target_mob))
+		animation_attack_on(target_mob)
+		if(ishuman(target_mob))
+			var/mob/living/carbon/human/human_target = target_mob
+			if(human_target.check_shields(0, name))
+				animation_attack_on(human_target)
+				playsound(human_target.loc, "bonk", 25, FALSE)
+				return
 		target_mob.attack_animal(src)
 		animation_attack_on(target_mob)
 		flick_attack_overlay(target_mob, "slash")

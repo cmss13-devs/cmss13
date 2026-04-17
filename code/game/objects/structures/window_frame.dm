@@ -223,6 +223,19 @@
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/colony/reinforced
 
+/obj/structure/window_frame/colony/reinforced/horde_mode
+	density = FALSE
+
+/obj/structure/window_frame/colony/reinforced/horde_mode/attackby(obj/item/W, mob/living/user)
+	return
+
+/obj/structure/window_frame/colony/reinforced/horde_mode/ex_act(power)
+	return
+
+/obj/structure/window_frame/colony/reinforced/horde_mode/bullet_act(obj/projectile/P)
+	bullet_ping(P)
+	return
+
 //Chigusa frames
 
 /obj/structure/window_frame/chigusa

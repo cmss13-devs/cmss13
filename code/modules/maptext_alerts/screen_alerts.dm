@@ -16,6 +16,8 @@
 	text_box.player = client
 	if(override_color)
 		text_box.color = override_color
+	if(!client)
+		return
 
 	LAZYADD(client.screen_texts, text_box)
 	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap

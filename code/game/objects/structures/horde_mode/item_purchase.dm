@@ -560,7 +560,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/effect/hovering_effect
-	var/list/high_tier_gear = list(/obj/item/weapon/gun/flamer)
+	var/list/high_tier_gear = list(/obj/item/weapon/gun/flamer/m240)
 	var/list/med_tier_gear = list(/obj/item/weapon/gun/shotgun/combat/buckshot)
 	var/list/low_tier_gear = list(/obj/item/weapon/gun/rifle/m4ra)
 	var/cost = 750
@@ -729,7 +729,7 @@
 // Weapon mystery box
 /////////////////////
 /obj/structure/mystery_purchase/weapons
-	high_tier_gear = list(/obj/item/weapon/gun/flamer, /obj/item/weapon/gun/rifle/m46c/horde_mode, /obj/item/weapon/gun/shotgun/combat/marsoc, /obj/item/weapon/gun/rifle/m41aMK1)
+	high_tier_gear = list(/obj/item/weapon/gun/flamer/m240, /obj/item/weapon/gun/rifle/m46c/horde_mode, /obj/item/weapon/gun/shotgun/combat/marsoc, /obj/item/weapon/gun/rifle/m41aMK1)
 	med_tier_gear = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/weapon/gun/shotgun/combat/buckshot, /obj/item/weapon/gun/rifle/mar40/lmg, /obj/item/weapon/gun/rifle/m41a, /obj/item/weapon/gun/rifle/type71/carbine, /obj/item/weapon/gun/rifle/lmg, /obj/item/weapon/gun/rifle/xm177)
 	low_tier_gear = list(/obj/item/weapon/gun/rifle/m4ra, /obj/item/weapon/gun/smg/mp5, /obj/item/weapon/gun/smg/fp9000, /obj/item/weapon/gun/rifle/mar40/lmg, /obj/item/weapon/gun/rifle/mar40/carbine)
 
@@ -792,7 +792,7 @@
 
 	//Yes, almost all of these are references to random pieces of media/famous people.
 	switch(weapon_path)
-		if(/obj/item/weapon/gun/flamer)
+		if(/obj/item/weapon/gun/flamer/m240)
 			item_to_upgrade.name = "\proper Meltdown"
 			item_to_upgrade.desc = SPAN_DANGER("Things are going to be pretty hot in here soon.")
 			item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_7)

@@ -16,6 +16,7 @@ SUBSYSTEM_DEF(horde_mode)
 	var/list/spawnable_bosses = list()
 	var/list/corrupted_xenos = list()
 	var/list/area/horde_mode/map_areas = list()
+	var/list/player_clients = list()
 
 	///How many xenos can be alive before we stop spawning them.
 	var/spawn_max = 2
@@ -77,6 +78,9 @@ SUBSYSTEM_DEF(horde_mode)
 	if(!amount_to_spawn && !length(current_xenos) && !round_ended)
 		COOLDOWN_START(src, round_cooldown, (20 + round) SECONDS)
 		round_ended = TRUE
+		for(var/list/player_in_list as anything in current_players)
+			var/mob/living/player_mob = player_in_list["mob"]
+			player_mob.rejuvenate()
 		send_player_message(SPAN_HIGHDANGER("Seems like the horde has died down... Take a breather and ready yourself for the next one."))
 
 	if(!amount_to_spawn && !length(current_xenos) && COOLDOWN_FINISHED(src, round_cooldown))
@@ -197,13 +201,10 @@ SUBSYSTEM_DEF(horde_mode)
 	if(round == 24)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/hivelord)
 		send_player_message(SPAN_XENOHIGHDANGER("Stronger weeds start appearing..."))
-	if(round == 26)
-		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/ravager)
-		send_player_message(SPAN_XENOHIGHDANGER("A killer is loose..."))
 	if(round == 28)
-		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/boss)
+		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/ravager)
 		bosses_to_spawn++
-		send_player_message(SPAN_XENOHIGHDANGER("You hear menacing stomps in the distance..."))
+		send_player_message(SPAN_XENOHIGHDANGER("A killer is loose..."))
 	if(round == 29)
 		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/boss)
 		bosses_to_spawn++
@@ -235,6 +236,14 @@ SUBSYSTEM_DEF(horde_mode)
 		if(player_mob.stat != DEAD)
 			all_players += player_mob
 	return pick(all_players)
+
+/datum/controller/subsystem/horde_mode/proc/return_random_xeno()
+	var/list/all_xenos
+	for(var/list/xenos_in_list as anything in current_xenos)
+		var/mob/living/xeno_mob = xenos_in_list
+		if(xeno_mob.stat != DEAD)
+			all_xenos += xeno_mob
+	return pick(all_xenos)
 
 /datum/controller/subsystem/horde_mode/proc/handle_purchase(mob/living/player_mob, cost)
 	for(var/list/player as anything in current_players)

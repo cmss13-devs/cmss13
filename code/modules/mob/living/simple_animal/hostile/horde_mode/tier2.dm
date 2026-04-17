@@ -14,7 +14,7 @@
 /mob/living/simple_animal/hostile/alien/horde_mode/lurker/vampire
 	desc = "A fast alien with sharp claws, and an intense thirst for blood."
 	strain_icon_path = 'icons/mob/xenos/castes/tier_2/lurker.dmi'
-	strain_icon_state = "Vampire Lurker Walking"
+	strain_icon_state = "Vampire Lurker"
 	health = HORDE_MODE_HEALTH_LOW
 	maxHealth = HORDE_MODE_HEALTH_LOW
 	melee_damage_lower = HORDE_MODE_DAMAGE_LOW

@@ -113,7 +113,7 @@
 /obj/item/horde_mode/stim
 	name = "stim"
 	icon = 'icons/obj/items/syringe.dmi'
-	icon_state = "empty_ez"
+	icon_state = "empty_skill"
 	var/image/reagent_image
 	var/reagent_image_fill = "custom_ez_1"
 	var/reagent_color = "#80ff80"

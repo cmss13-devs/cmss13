@@ -1190,9 +1190,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
+	if(src.client in SShorde_mode.player_clients)
+		to_chat(src, SPAN_WARNING("You were already in the round! You'll be rejuvenated at the end of this wave."))
+		return
+
 	var/mob/new_player/player = src
 	if(!player.stat || !player.mind)
 		return
+	SShorde_mode.player_clients += src.client
 
 	for(var/num_of_spawns in SShorde_mode.marine_spawns)
 		var/spawn_loc = SAFEPICK(SShorde_mode.marine_spawns)
@@ -1203,7 +1208,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		setup_human(spawned_marine, player, FALSE)
 		arm_equipment(spawned_marine, /datum/equipment_preset/uscm/horde_mode_marine, FALSE, TRUE)
 
-		SShorde_mode.current_players += list(list("mob" = spawned_marine, "points" = 500))
+		SShorde_mode.current_players += list(list("mob" = spawned_marine, "points" = 500, "client" = src.client))
 		spawned_marine.pain = new /datum/pain/human_hero()
 		spawned_marine.status_flags |= NO_PERMANENT_DAMAGE
 

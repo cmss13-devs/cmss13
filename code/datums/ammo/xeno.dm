@@ -203,10 +203,10 @@
 	ping = "ping_x"
 	damage = 10
 
-/datum/ammo/xeno/acid/neuro/on_hit_mob(mob/hit_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/neuro/on_hit_mob(mob/living/hit_mob, obj/projectile/P)
 	if(ishuman(hit_mob))
 		hit_mob.visible_message(SPAN_DANGER("[hit_mob]'s movements are slowed."))
-		hit_mob.apply_effect(0.5, SLOW)
+		hit_mob.Slow(0.5)
 	..()
 
 /datum/ammo/xeno/acid/glob

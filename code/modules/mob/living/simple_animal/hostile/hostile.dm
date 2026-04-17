@@ -89,6 +89,8 @@
 
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
 	var/mob/living/target_mob = target_mob_ref?.resolve()
+	if(!target_mob)
+		return
 	if(!Adjacent(target_mob))
 		return
 	face_atom(target_mob)
@@ -143,11 +145,15 @@
 				target_mob_ref = WEAKREF(FindTarget())
 
 			if(HOSTILE_STANCE_ATTACK)
+				if(!target_mob_ref)
+					target_mob_ref = WEAKREF(FindTarget())
 				if(destroy_surroundings)
 					DestroySurroundings()
 				MoveToTarget()
 
 			if(HOSTILE_STANCE_ATTACKING)
+				if(!target_mob_ref)
+					target_mob_ref = WEAKREF(FindTarget())
 				if(!AttackTarget() && destroy_surroundings)
 					DestroySurroundings()
 

@@ -28,9 +28,18 @@
 	///How many points do you get for killing them?
 	var/kill_reward = 150
 	var/mob/target_mob
+	affected_by_fire = TRUE
 
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_target()
+	if(length(SShorde_mode.corrupted_xenos) && prob(66))
+		target_mob = pick(SShorde_mode.corrupted_xenos)
+		return
+
+	target_mob = SShorde_mode.return_random_player()
+
+///Gives us a random target to hunt down.
+/mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_xeno_target()
 	if(length(SShorde_mode.corrupted_xenos) && prob(66))
 		target_mob = pick(SShorde_mode.corrupted_xenos)
 		return

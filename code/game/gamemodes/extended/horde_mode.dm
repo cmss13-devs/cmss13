@@ -1,20 +1,15 @@
 /datum/game_mode/horde_mode
 	name = "Horde Mode"
 	config_tag = "Horde Mode"
+	flags_round_type = MODE_NO_LATEJOIN|MODE_NO_SPAWN
 	required_players = 1
 	latejoin_larva_drop = 0
 	static_comms_amount = 0
 	votable = FALSE
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
-	role_mappings = list(
-		/datum/equipment_preset/uscm/horde_mode_marine = JOB_HORDE,
-	)
 
 /datum/game_mode/horde_mode/announce()
 	to_world("<B>The current game mode is - Horde Mode!</B>")
-
-/datum/game_mode/horde_mode/get_roles_list()
-	return GLOB.ROLES_HORDE_MODE
 
 /datum/game_mode/horde_mode/post_setup()
 	round_time_lobby = world.time

@@ -258,6 +258,9 @@
 	if(!target_mob && hivenumber != XENO_HIVE_CORRUPTED)
 		find_random_target()
 		ForceMoveToTarget()
+	else if(!target_mob && hivenumber == XENO_HIVE_CORRUPTED)
+		find_random_xeno_target()
+		ForceMoveToTarget()
 
 	return ..()
 

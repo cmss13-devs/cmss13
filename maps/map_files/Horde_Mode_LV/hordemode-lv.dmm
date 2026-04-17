@@ -7,6 +7,11 @@
 /obj/structure/item_purchase/perk_machine/revive,
 /turf/open/floor/purple/northwest,
 /area/horde_mode/lobby)
+"ac" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "ad" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/purple/northwest,
@@ -35,7 +40,11 @@
 "ai" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall,
+/area/horde_mode/outside)
+"aj" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/closed/wall/strata_ice/jungle,
 /area/horde_mode/outside)
 "ak" = (
 /turf/closed/wall/indestructible/other,
@@ -82,6 +91,10 @@
 "au" = (
 /turf/open/floor/whiteredcorner/east,
 /area/horde_mode/medical)
+"av" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/horde_mode/outside)
 "aw" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/effect/landmark/horde_mode/xenospawn,
@@ -93,6 +106,12 @@
 "ay" = (
 /turf/open/floor/whitegreencorner,
 /area/horde_mode/center)
+"az" = (
+/mob/living/simple_animal/big/corgi/puppy{
+	name = "\improper lv horde mode"
+	},
+/turf/open/floor/whitepurplecorner/east,
+/area/horde_mode/outside)
 "aA" = (
 /obj/structure/machinery{
 	density = 1;
@@ -111,6 +130,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/white,
 /area/horde_mode/center)
+"aC" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/effect/landmark/horde_mode/xenospawn,
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "aD" = (
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
@@ -118,6 +142,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellow/north,
 /area/horde_mode/center)
+"aF" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/horde_mode/outside)
 "aG" = (
 /turf/open/floor,
 /area/horde_mode/center)
@@ -135,6 +164,10 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
+"aK" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/closed/wall/strata_ice/jungle,
+/area/horde_mode/outside)
 "aL" = (
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/science)
@@ -153,6 +186,10 @@
 "aP" = (
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
+"aQ" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/closed/wall/strata_ice/jungle,
+/area/horde_mode/outside)
 "aR" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/whiteyellowfull/east,
@@ -1132,13 +1169,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/vault,
 /area/horde_mode/outside)
-"sa" = (
-/obj/effect/landmark/hunter_primary,
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 9
-	},
-/turf/open/gm/grass/grass1,
-/area/horde_mode/outside)
 "sb" = (
 /obj/structure/horde_mode_dump,
 /obj/structure/prop/horde_mode/light_fixture/small/yellow{
@@ -1336,13 +1366,6 @@
 	dir = 9
 	},
 /turf/open/gm/grass/grass1,
-/area/horde_mode/outside)
-"zG" = (
-/turf/open/floor/loadingarea/north,
-/area/horde_mode/outside)
-"zJ" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/platebotc,
 /area/horde_mode/outside)
 "zS" = (
 /turf/open/floor/white,
@@ -2223,66 +2246,66 @@
 /area/horde_mode/medical)
 
 (1,1,1) = {"
-Ve
-Ve
-Ve
-Ve
-Ve
-Ve
+bu
+bu
+bu
+bu
+bu
+bu
 Om
-Sl
-Sl
-Sl
-Sl
-vT
-aa
-Sl
-Sl
-xa
-QH
-QH
-QH
-Vm
-Vm
-gD
-bz
-Ot
-Ot
-bz
-Ot
-Ot
-Ot
-Ot
-bz
-Ot
-Ot
-Ot
-Ot
-Ot
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
 mz
 La
 La
 La
-Sl
+nB
 ah
 ai
 iv
 ai
 ah
-lV
-Sl
-Sl
-Sl
-Sl
+nB
+nB
+nB
+nB
+nB
 nB
 nB
 "}
 (2,1,1) = {"
+bu
 Ve
 Ve
 Ve
-Ve
-Ve
+az
 Ve
 bm
 Sl
@@ -2290,7 +2313,7 @@ BA
 Yi
 Vu
 Sl
-Sl
+aa
 Ia
 Sl
 hn
@@ -2300,15 +2323,15 @@ Sl
 Sl
 RJ
 Go
+bz
 Ot
 Ot
-Ot
-Ot
+bz
 Ot
 Ot
 ix
 Ot
-Ot
+bz
 Ot
 bz
 Ot
@@ -2333,7 +2356,7 @@ nB
 nB
 "}
 (3,1,1) = {"
-Ve
+bu
 Ve
 ud
 Ve
@@ -2388,7 +2411,7 @@ Kn
 nB
 "}
 (4,1,1) = {"
-Ve
+bu
 Ve
 Om
 bm
@@ -2495,10 +2518,10 @@ YB
 jR
 Sl
 Sl
-Sl
+nB
 "}
 (6,1,1) = {"
-Sl
+nB
 Sl
 hn
 Sl
@@ -2550,10 +2573,10 @@ Ot
 kj
 Sl
 Sl
-ca
+nB
 "}
 (7,1,1) = {"
-Sl
+nB
 Sl
 Sl
 Sl
@@ -2663,7 +2686,7 @@ Sl
 nB
 "}
 (9,1,1) = {"
-wS
+aF
 dh
 Qb
 Sl
@@ -2718,7 +2741,7 @@ Sl
 nB
 "}
 (10,1,1) = {"
-wS
+aF
 Qb
 Ex
 ol
@@ -2935,10 +2958,10 @@ bz
 TT
 Sl
 Sl
-Sl
+nB
 "}
 (14,1,1) = {"
-Lw
+fo
 di
 nB
 Sl
@@ -2993,7 +3016,7 @@ Sl
 nB
 "}
 (15,1,1) = {"
-XY
+nB
 Sl
 BZ
 Sl
@@ -3045,11 +3068,11 @@ Ot
 kj
 JX
 aa
-Sl
+nB
 "}
 (16,1,1) = {"
+nB
 aa
-Sl
 Sl
 BA
 Sl
@@ -3100,10 +3123,10 @@ Ot
 kj
 Ia
 Sl
-Sl
+nB
 "}
 (17,1,1) = {"
-lM
+aK
 qC
 Sl
 Sl
@@ -3155,10 +3178,10 @@ Ot
 kj
 Sl
 Sl
-Sl
+nB
 "}
 (18,1,1) = {"
-Vu
+nB
 nB
 aa
 Sl
@@ -3210,10 +3233,10 @@ Ot
 TT
 Sl
 aa
-Sl
+nB
 "}
 (19,1,1) = {"
-zn
+nB
 Sl
 Se
 Se
@@ -3265,10 +3288,10 @@ Ot
 TT
 Sl
 nB
-Sl
+nB
 "}
 (20,1,1) = {"
-Sl
+nB
 Sl
 MP
 gU
@@ -3319,11 +3342,11 @@ Ot
 Ot
 kj
 Sl
-nU
-aa
+ac
+nB
 "}
 (21,1,1) = {"
-Gw
+nB
 Gw
 ju
 Ot
@@ -3375,10 +3398,10 @@ Ot
 kj
 Sl
 Sl
-Sl
+nB
 "}
 (22,1,1) = {"
-Ot
+nB
 Ot
 Ot
 Ot
@@ -3430,10 +3453,10 @@ Ot
 kj
 lM
 qC
-Sl
+nB
 "}
 (23,1,1) = {"
-Ot
+nB
 bz
 Ot
 Ot
@@ -3485,10 +3508,10 @@ Ot
 TT
 aa
 Sl
-Sl
+nB
 "}
 (24,1,1) = {"
-Ot
+nB
 Ot
 Ot
 Ot
@@ -3540,10 +3563,10 @@ Ot
 TT
 Sl
 nB
-Sl
+nB
 "}
 (25,1,1) = {"
-Vm
+nB
 Vm
 Fm
 Ot
@@ -3595,10 +3618,10 @@ Ot
 TT
 Yi
 Vu
-Sl
+nB
 "}
 (26,1,1) = {"
-Sl
+nB
 Sl
 xa
 uq
@@ -3650,11 +3673,11 @@ Ot
 kj
 qZ
 aw
-Vu
+nB
 "}
 (27,1,1) = {"
+nB
 aa
-Sl
 Se
 Se
 bu
@@ -3705,10 +3728,10 @@ QH
 px
 qZ
 WN
-sa
+nB
 "}
 (28,1,1) = {"
-Sl
+nB
 nB
 Sl
 Sl
@@ -3763,7 +3786,7 @@ zn
 nB
 "}
 (29,1,1) = {"
-Sl
+nB
 nB
 nB
 Sl
@@ -3818,7 +3841,7 @@ nB
 nB
 "}
 (30,1,1) = {"
-Sl
+nB
 Sl
 Sl
 aa
@@ -3873,7 +3896,7 @@ aa
 nB
 "}
 (31,1,1) = {"
-Sl
+nB
 Sl
 Qc
 Sl
@@ -3928,7 +3951,7 @@ gU
 nB
 "}
 (32,1,1) = {"
-Sl
+nB
 nB
 nB
 nB
@@ -3980,10 +4003,10 @@ Sl
 Ne
 IK
 Ot
-Ot
+nB
 "}
 (33,1,1) = {"
-nU
+aQ
 vT
 nB
 Sl
@@ -4035,11 +4058,11 @@ Sl
 by
 Ot
 Ot
-Ot
+nB
 "}
 (34,1,1) = {"
-aa
-lM
+nB
+aC
 qC
 Sl
 Sl
@@ -4090,10 +4113,10 @@ Sl
 em
 gD
 Ot
-Ot
+nB
 "}
 (35,1,1) = {"
-Sl
+nB
 Sl
 Sl
 Sl
@@ -4145,10 +4168,10 @@ nB
 Sl
 ko
 uq
-uq
+nB
 "}
 (36,1,1) = {"
-Sl
+nB
 Sl
 Sl
 bg
@@ -4313,7 +4336,7 @@ Sl
 nB
 "}
 (39,1,1) = {"
-cD
+bu
 bu
 Sl
 bm
@@ -4365,10 +4388,10 @@ zn
 Sl
 Sl
 Sl
-Sl
+nB
 "}
 (40,1,1) = {"
-cD
+bu
 bu
 bg
 bg
@@ -4420,10 +4443,10 @@ hn
 Sl
 Sl
 nB
-Sl
+nB
 "}
 (41,1,1) = {"
-cD
+bu
 cD
 bg
 RK
@@ -4475,10 +4498,10 @@ aa
 Sl
 lM
 qC
-Sl
+nB
 "}
 (42,1,1) = {"
-cD
+bu
 cD
 pk
 RK
@@ -4530,10 +4553,10 @@ nB
 Sl
 Sl
 Sl
-Sl
+nB
 "}
 (43,1,1) = {"
-cD
+bu
 cD
 pk
 RK
@@ -4585,10 +4608,10 @@ Sl
 Sl
 cI
 Sl
-Sl
+nB
 "}
 (44,1,1) = {"
-cD
+bu
 cD
 Om
 RK
@@ -4640,10 +4663,10 @@ Sl
 Sl
 Sl
 Sl
-Sl
+nB
 "}
 (45,1,1) = {"
-zJ
+bu
 bu
 bg
 bg
@@ -4665,7 +4688,7 @@ rc
 rc
 ff
 aS
-yG
+cz
 yG
 yG
 cz
@@ -4695,60 +4718,60 @@ ol
 Sl
 aa
 Sl
-Sl
+nB
 "}
 (46,1,1) = {"
 bu
 bu
-nB
+bu
 bg
-RK
-RK
-RK
-rX
-RK
-rX
-RK
-rX
-RK
-RK
-RK
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
 bm
-Sl
-Sl
-Sl
-Ia
-vM
-Ah
-qL
-fk
-qL
-fk
-qL
-fk
-tN
-zG
-qL
-qL
-qL
-qL
-qL
-tN
-tN
-Sl
-Se
-Sl
-Qb
-Lw
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+bu
 nB
 nB
 nB
-Lw
-Lw
-Qb
-Lw
-BZ
-Sl
-Sl
-vZ
+av
+fo
+nB
+nB
+nB
+fo
+fo
+av
+fo
+aj
+nB
+nB
+nB
 "}

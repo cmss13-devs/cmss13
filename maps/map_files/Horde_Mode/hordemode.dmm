@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/mob/living/simple_animal/big/corgi/puppy{
+	name = "\improper horde mode"
+	},
+/turf/open/gm/grass/grass1,
+/area/horde_mode/outside)
 "ac" = (
 /turf/closed/wall/r_wall/bunker,
 /area/horde_mode/lobby)
@@ -2518,7 +2524,7 @@ XG
 eM
 Fx
 Av
-eM
+aa
 Fx
 "}
 (8,1,1) = {"

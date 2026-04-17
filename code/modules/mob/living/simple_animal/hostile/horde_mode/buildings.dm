@@ -47,18 +47,16 @@
 	///What type of weeds this cluster spreads.
 	var/node_type = /obj/effect/alien/weeds/node/horde_mode/cluster
 	///Reference to the main node that is spreading weeds.
-	var/node
+	var/obj/effect/alien/weeds/node/horde_mode/cluster/weed_node
 
 /obj/structure/horde_mode_resin/hive_cluster/Initialize(mapload, hive_owner)
 	. = ..()
 	var/obj/effect/alien/weeds/node/horde_mode/cluster/weed_node = new node_type(loc, null, null, hive_owner)
 	weed_node.resin_parent = src
-	node = weed_node
 
 /obj/structure/horde_mode_resin/hive_cluster/Destroy()
 	. = ..()
-	QDEL_NULL(node)
-	node = null
+	weed_node = null
 
 //--------------------------------
 // RECOVERY NODE

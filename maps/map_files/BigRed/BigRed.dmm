@@ -1716,13 +1716,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
-"agu" = (
-/obj/structure/machinery/cryopod/no_cryo/right{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/outside/engineering)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -1766,17 +1759,24 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"agE" = (
-/obj/effect/landmark/crap_item,
+"agF" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/dark,
-/area/bigredv2/outside/engineering)
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
+"agG" = (
+/obj/structure/machinery/cryopod/no_cryo,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agI" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -14194,7 +14194,7 @@
 /area/bigredv2/outside/engineering)
 "bok" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_cryo/right,
+/obj/structure/largecrate/random,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (
@@ -14260,8 +14260,6 @@
 /area/bigredv2/outside/engineering)
 "boK" = (
 /obj/item/trash/kepler/flamehot,
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -52313,7 +52311,7 @@ bmR
 bnr
 bnr
 bok
-agu
+bnr
 bpi
 mfQ
 ayr
@@ -52525,7 +52523,7 @@ bmm
 bmS
 tTI
 tTI
-agE
+iQC
 boK
 nVq
 cKu
@@ -65302,8 +65300,8 @@ bkU
 bkU
 bkU
 bkU
-bkU
-bkU
+agF
+agF
 awp
 bWk
 bWk
@@ -65513,10 +65511,10 @@ bpX
 awp
 bkT
 blG
-bkT
-bkU
-bkT
-bkU
+agI
+agI
+agG
+agG
 awp
 bWk
 bWk

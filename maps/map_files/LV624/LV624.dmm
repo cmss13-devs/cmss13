@@ -1007,10 +1007,6 @@
 "adV" = (
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
-"adW" = (
-/obj/structure/machinery/cryopod/no_cryo,
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -1059,6 +1055,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
+"aee" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "aef" = (
 /turf/closed/wall,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
@@ -1125,6 +1128,12 @@
 	},
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aeq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "aer" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -5983,21 +5992,22 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aEZ" = (
-/obj/structure/largecrate/random,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFa" = (
-/obj/structure/largecrate/random,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cryopod/no_cryo,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFb" = (
@@ -6101,17 +6111,6 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
-"aFy" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/costume/butler,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/lazarus/quart)
-"aFA" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
-/obj/effect/spawner/random/tech_supply,
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/lazarus/quart)
 "aFB" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
@@ -6119,17 +6118,18 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFC" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFD" = (
-/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/cryopod/no_cryo{
+	pixel_y = 13;
+	layer = 3.1
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFE" = (
@@ -8744,7 +8744,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTv" = (
@@ -12502,13 +12501,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"fAs" = (
-/obj/structure/machinery/cryopod/no_cryo{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "fAz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /obj/structure/medical_supply_link,
@@ -12637,8 +12629,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fLh" = (
@@ -12687,8 +12678,6 @@
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fQD" = (
@@ -42829,8 +42818,8 @@ kvo
 mNO
 fFN
 aTM
-adW
-fAs
+aTM
+aTM
 aSX
 aVH
 aTq
@@ -50197,8 +50186,8 @@ aCB
 aDa
 aDz
 aDY
-aEV
-aFy
+aee
+aFv
 aFv
 eYh
 aFv
@@ -50421,8 +50410,8 @@ azR
 azR
 azR
 aDY
-aEV
-aFA
+aeq
+aFv
 aFv
 aFB
 aFv
@@ -50645,8 +50634,8 @@ aCC
 aBC
 aDB
 aEb
-aEV
-aFB
+aeq
+aFv
 aFv
 aGu
 aFv

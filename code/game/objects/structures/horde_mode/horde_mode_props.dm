@@ -136,6 +136,12 @@
 	var/area/horde_mode/current_area = get_area(src)
 	current_area.vents_in_area += src
 
+/obj/structure/prop/horde_mode/vent_spawn/Destroy()
+	. = ..()
+	SShorde_mode.vent_spawns -= src
+	var/area/horde_mode/current_area = get_area(src)
+	current_area.vents_in_area -= src
+
 /obj/structure/prop/horde_mode/vent_spawn/proc/animate_vent()
 	playsound(src, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 50, 1, sound_range = 7)
 	animate(src, pixel_x = rand(-2,2), pixel_y = rand(-2,2), time = 1 SECONDS, loop = 4, easing = JUMP_EASING)

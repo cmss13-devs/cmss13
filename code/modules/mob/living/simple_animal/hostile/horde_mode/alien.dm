@@ -34,6 +34,7 @@
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_target()
 	if(length(SShorde_mode.corrupted_xenos) && prob(66))
 		target_mob = pick(SShorde_mode.corrupted_xenos)
+		target_mob_ref = WEAKREF(target_mob)
 		return
 
 	target_mob = SShorde_mode.return_random_player()

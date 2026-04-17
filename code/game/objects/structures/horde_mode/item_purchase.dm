@@ -718,6 +718,8 @@
 /obj/structure/mystery_purchase/goodies/proc/set_item_overlay(obj/item/random_item)
 	if(ispath(random_item, /obj/item/horde_mode/stim))
 		var/obj/item/horde_mode/stim/picked_stim = random_item
+		var/image/reagent_image = image(picked_stim.icon)
+		hovering_effect.overlays += reagent_image
 
 /obj/structure/mystery_purchase/goodies/pick_up_item(mob/user)
 	. = ..()

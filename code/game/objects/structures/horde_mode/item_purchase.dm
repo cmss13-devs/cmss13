@@ -310,7 +310,7 @@
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 	icon_state = "door_open"
 
-/obj/structure/horde_mode/door_open/Initialize(mapload, ...)
+/obj/structure/prop/horde_mode/door_open/Initialize(mapload, ...)
 	. = ..()
 	playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
 	animate(src, icon_state = "door_opening", time = 0.5 SECONDS)

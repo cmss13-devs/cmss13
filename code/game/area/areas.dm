@@ -19,6 +19,7 @@
 	invisibility = INVISIBILITY_LIGHTING
 	minimap_color = null
 	var/lightswitch = 1
+	var/list/vents_in_area = list()
 
 	/// Bitfield of special area features
 	var/flags_area = NO_FLAGS

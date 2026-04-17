@@ -8,7 +8,6 @@
 	requires_power = FALSE
 	ceiling = CEILING_METAL
 	var/unlocked = FALSE
-	var/list/vents_in_area = list()
 
 /area/horde_mode/outside
 	name = "Lost Colony - Outside"

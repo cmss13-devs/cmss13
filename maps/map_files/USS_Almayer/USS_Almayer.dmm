@@ -5816,7 +5816,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/engineering/lower/engine_core)
 "aog" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -6080,7 +6080,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
 "aoN" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -12061,6 +12061,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/command/cic)
 "aEE" = (
@@ -14502,6 +14503,11 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/lower_astronav)
+"aLE" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map/galaxy,
+/turf/open/floor/carpet,
+/area/almayer/command/cicconference)
 "aLF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
@@ -19813,6 +19819,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/sign/third_fleet_info{
+	pixel_y = 29
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20337,19 +20349,19 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
 "aZO" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "aZP" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "aZQ" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "aZR" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "aZS" = (
@@ -20370,22 +20382,13 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
-"aZV" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"aZW" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"aZX" = (
-/obj/structure/machinery/landinglight/ds1,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"aZY" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+"aZU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "aZZ" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -20421,6 +20424,18 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
+"baf" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
+"bag" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "bah" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -20671,7 +20686,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "baH" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -20700,7 +20715,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "baM" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -20733,12 +20751,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
-"baS" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "baT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -20765,7 +20777,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "baX" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -21318,7 +21330,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -21479,7 +21491,7 @@
 	icon_state = "S"
 	},
 /obj/structure/prop/almayer/hangar_stencil,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -22024,7 +22036,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bdO" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -22067,12 +22079,6 @@
 /obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"bdU" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "bdV" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -22109,12 +22115,6 @@
 /obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
-"bea" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "beb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
@@ -22169,7 +22169,7 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/shipboard/navigation)
 "beg" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -22828,7 +22828,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bfL" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -22908,12 +22908,6 @@
 /obj/structure/barricade/handrail/no_vault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
-"bfV" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "bfW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -22940,12 +22934,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/prop/almayer/comp_open,
 /turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
-"bfZ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bga" = (
 /obj/structure/machinery/light/red{
@@ -23015,7 +23003,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bgj" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -23495,6 +23483,9 @@
 /area/almayer/middeck/req)
 "bhj" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/port_point_defense)
 "bhk" = (
@@ -24851,7 +24842,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bjS" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -24931,12 +24922,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/middeck/maintenance/sb)
-"bkd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "bke" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -24955,12 +24940,6 @@
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/spec,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
-"bkh" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "bki" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -25071,7 +25050,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "bks" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -25393,6 +25372,12 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)
+"blb" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "blc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
@@ -30132,6 +30117,13 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/maintenance/sp)
+"bvh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "bvi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -30399,6 +30391,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
+"bvS" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bvT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
@@ -34188,7 +34186,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -34275,7 +34273,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -34737,6 +34735,12 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/upper/port)
+"bGb" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bGc" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -34933,25 +34937,25 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bGF" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bGG" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bGH" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bGI" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -34981,30 +34985,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGM" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGN" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGO" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGP" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -35753,7 +35733,6 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "bIP" = (
 /obj/docking_port/stationary/emergency_response/port3,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/stern_point_defense)
 "bIQ" = (
@@ -36479,6 +36458,7 @@
 /area/almayer/shipboard/starboard_point_defense)
 "bKV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/starboard_point_defense)
 "bKW" = (
@@ -37118,6 +37098,12 @@
 	},
 /turf/open/floor/almayer/emerald/east,
 /area/almayer/squads/charlie)
+"bMz" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bMA" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -39212,6 +39198,12 @@
 /obj/structure/machinery/recharger,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/command/corporateliaison)
+"bRO" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bRP" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -40469,6 +40461,34 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
+"bUI" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUJ" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUK" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUL" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUM" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bUN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
@@ -40477,9 +40497,21 @@
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
+"bUP" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bUQ" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
+"bUR" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUS" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "bUT" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -40493,6 +40525,43 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"bUV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"bUW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bUX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bUY" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bUZ" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVa" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bVb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -40500,6 +40569,13 @@
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
+"bVc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bVd" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
@@ -40511,6 +40587,60 @@
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
+"bVf" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVg" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVh" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVi" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVj" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"bVk" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVl" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVm" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "bVn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -40523,16 +40653,36 @@
 	},
 /turf/open/floor/almayer/blue/east,
 /area/almayer/squads/delta)
+"bVp" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bVq" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
+"bVr" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bVs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
+"bVt" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVu" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bVv" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -40550,6 +40700,31 @@
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
+"bVz" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVA" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bVC" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVD" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "bVE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Bay";
@@ -40560,6 +40735,49 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
+"bVF" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVG" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVI" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVJ" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVK" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVL" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "bVM" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
@@ -40568,13 +40786,67 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/engine_core)
+"bVO" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVP" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVQ" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "bVR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_s)
+"bVS" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "bVU" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/port_point_defense)
+"bVV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
+"bVW" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/shipboard/starboard_point_defense)
+"bVX" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/shipboard/starboard_point_defense)
+"bVY" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/shipboard/starboard_point_defense)
+"bVZ" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/shipboard/starboard_point_defense)
 "bWd" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -48248,7 +48520,7 @@
 /area/almayer/hallways/lower/starboard_umbilical)
 "ePz" = (
 /obj/structure/noticeboard{
-	desc = "The note is haphazardly attached to the cork board by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be dis-assembled and packed into a crate and sent to to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
+	desc = "The note is haphazardly attached to the corkboard by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be disassembled and packed into a crate and sent to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
 	pixel_y = 29
 	},
 /obj/structure/flora/pottedplant/random{
@@ -56993,10 +57265,10 @@
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/underdeck/req)
 "iEn" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
-/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "iEr" = (
@@ -62888,7 +63160,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -66902,10 +67174,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "mMP" = (
@@ -67269,10 +67541,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
 "mUI" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
-/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "mUP" = (
@@ -70393,7 +70665,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
 "ohE" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/structure/bed/chair{
@@ -75814,9 +76086,6 @@
 /turf/open/floor/almayer/blue/northeast,
 /area/almayer/squads/delta)
 "qrp" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
-	},
 /obj/structure/platform_decoration/metal/almayer,
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -75833,6 +76102,9 @@
 	dir = 4;
 	pixel_x = 2;
 	pixel_y = 6
+	},
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -76034,12 +76306,12 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/charlie)
 "qwS" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/bed/chair{
 	dir = 1
+	},
+/obj/structure/machinery/landinglight{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -77316,7 +77588,7 @@
 /turf/open/floor/almayer/blue,
 /area/almayer/hallways/upper/fore_hallway)
 "qUL" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/bed/chair{
@@ -87210,11 +87482,11 @@
 /turf/open/floor/almayer/plating_striped/northeast,
 /area/almayer/engineering/lower/engine_core)
 "vbf" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
-	},
 /obj/structure/bed/chair{
 	dir = 4
+	},
+/obj/structure/machinery/landinglight{
+	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -89569,6 +89841,9 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "vTv" = (
@@ -89786,7 +90061,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/shipboard/brig/cells)
 "vWJ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/structure/bed/chair{
@@ -93944,10 +94219,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
-/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "xBs" = (
@@ -95346,9 +95621,6 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "yeN" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
-	},
 /obj/structure/bed/chair{
 	can_buckle = 0;
 	dir = 4
@@ -95364,6 +95636,9 @@
 	dir = 4;
 	pixel_x = 2;
 	pixel_y = 6
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -136474,21 +136749,21 @@ jHt
 apN
 bHB
 btO
-bdU
+beg
 aog
-bdU
-bfV
-baM
-bkd
-bdU
-bfV
-baM
-bkd
-bdU
-bfV
-baM
-vbf
-vbf
+beg
+bgj
+baX
+bks
+beg
+bgj
+baX
+bks
+beg
+bgj
+baX
+bVm
+bVj
 vbf
 yeN
 qrp
@@ -137504,27 +137779,27 @@ eXq
 kCm
 bHB
 btO
-bea
+bdO
 aoN
-bea
-bfZ
-baS
-bkh
-bea
-bfZ
-baS
-bkh
-bea
-bfZ
-baS
-bkh
+bdO
+bfL
+baH
+bjS
+bdO
+bfL
+baH
+bjS
+bdO
+bfL
+baH
+bjS
 ohE
 vWJ
 qUL
 qwS
 iEn
 mMB
-baS
+baH
 bGL
 bHB
 aYt
@@ -137606,7 +137881,7 @@ aqM
 aqt
 xyw
 bHB
-aZV
+aZO
 baI
 baI
 baI
@@ -137628,7 +137903,7 @@ baI
 baI
 baI
 baI
-bGM
+bGF
 bHB
 aqs
 bcm
@@ -137709,7 +137984,7 @@ aBt
 aqt
 aXh
 bHB
-aZW
+aZP
 baI
 baI
 baI
@@ -137731,7 +138006,7 @@ baI
 baI
 baI
 baI
-bGN
+bGG
 bHB
 xAY
 gHZ
@@ -137812,7 +138087,7 @@ akz
 aqt
 caM
 bHB
-aZX
+aZQ
 baI
 baI
 baI
@@ -137834,7 +138109,7 @@ baI
 baI
 baI
 baI
-bGO
+bGH
 bHB
 xAY
 gHZ
@@ -137915,7 +138190,7 @@ rYJ
 eXq
 xyw
 bHB
-aZY
+aZR
 baI
 baI
 baI
@@ -137937,7 +138212,7 @@ baI
 baI
 baI
 baI
-bGP
+bGI
 bHB
 xAY
 gHZ
@@ -138018,7 +138293,7 @@ bLP
 eXq
 eVm
 bHB
-aZV
+aZO
 baI
 baI
 baI
@@ -138040,7 +138315,7 @@ baI
 baI
 baI
 baI
-bGM
+bGF
 bHB
 tIS
 bcm
@@ -138121,7 +138396,7 @@ aBw
 aqt
 xyw
 bHB
-aZW
+aZP
 baI
 baI
 baI
@@ -138143,7 +138418,7 @@ baI
 baI
 baI
 baI
-bGN
+bGG
 bHB
 btO
 cdA
@@ -138224,7 +138499,7 @@ aqO
 aqt
 xyw
 bHB
-aZX
+aZQ
 baI
 baI
 baI
@@ -138246,7 +138521,7 @@ baI
 baI
 baI
 baI
-bGO
+bGH
 bHB
 aYt
 cdA
@@ -138327,7 +138602,7 @@ aBz
 aqt
 aXj
 bHB
-aZY
+aZR
 baI
 baI
 baI
@@ -138349,7 +138624,7 @@ baI
 baI
 baI
 baI
-bGP
+bGI
 bHB
 vxb
 bcm
@@ -138430,7 +138705,7 @@ eXq
 eXq
 mrD
 bHB
-aZV
+aZO
 baI
 baI
 baI
@@ -138452,7 +138727,7 @@ baI
 baI
 baI
 baI
-bGM
+bGF
 bHB
 btO
 cdA
@@ -138533,7 +138808,7 @@ aRu
 bcm
 aXj
 bHB
-aZW
+aZP
 baI
 baI
 baI
@@ -138555,7 +138830,7 @@ baI
 baI
 baI
 baI
-bGN
+bGG
 bHB
 btO
 cdA
@@ -138636,7 +138911,7 @@ aRu
 bcm
 xyw
 bHB
-aZX
+aZQ
 baI
 baI
 baI
@@ -138658,7 +138933,7 @@ baI
 baI
 baI
 baI
-bGO
+bGH
 bHB
 uAb
 bcm
@@ -140765,19 +141040,19 @@ aaa
 bLa
 bKY
 atU
-aKS
-aKS
-aKS
-aKS
-bJQ
-bJQ
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
+bVI
+bVQ
+bVO
+bVK
+bVV
+bVT
+bVO
+bVK
+bVI
+bVQ
+bVO
+bVK
+bVI
 aKS
 atw
 aLL
@@ -140843,19 +141118,19 @@ emC
 bSf
 cml
 bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
+bvS
+bUK
+bUI
+bMz
+bvS
+bUK
+bUI
+bMz
+bvS
+bUK
+bUI
+bMz
+bvS
 abl
 bfi
 aPX
@@ -140867,7 +141142,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVW
 aKS
 aKS
 aKS
@@ -140881,7 +141156,7 @@ aKS
 aKS
 aKS
 pzG
-aKS
+bVC
 bby
 aLL
 bJr
@@ -140945,7 +141220,7 @@ weC
 bIr
 bIl
 cml
-bWe
+bUM
 bWe
 bWe
 bHb
@@ -140970,7 +141245,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVX
 aKS
 aKS
 aKS
@@ -140984,7 +141259,7 @@ aKS
 aKS
 aKS
 aKS
-aKS
+bVD
 bby
 bJv
 bJr
@@ -141048,7 +141323,7 @@ weC
 bHF
 bIm
 cml
-bWe
+bUP
 bWe
 bHb
 bHb
@@ -141062,7 +141337,7 @@ bWe
 bWe
 bWe
 bWe
-bhj
+aZU
 aVA
 aPX
 aaa
@@ -141073,7 +141348,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVY
 aKS
 aKS
 aKS
@@ -141087,7 +141362,7 @@ aKS
 aKS
 aKS
 aKS
-aKS
+bVF
 atw
 bJv
 bJr
@@ -141151,7 +141426,7 @@ cpk
 bVd
 bIm
 cml
-bWe
+bUR
 bWe
 bHb
 bHb
@@ -141165,7 +141440,7 @@ bWe
 bWe
 bWe
 bWe
-abl
+baf
 aVA
 aPX
 aaa
@@ -141176,7 +141451,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVZ
 aKS
 aKS
 aKS
@@ -141190,7 +141465,7 @@ aKS
 aKS
 aKS
 aKS
-aKS
+bVG
 bby
 bJv
 bbS
@@ -141254,6 +141529,7 @@ weC
 bIt
 bIm
 cml
+bUS
 bWe
 bWe
 bWe
@@ -141267,8 +141543,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-abl
+bag
 aVA
 aPX
 aaa
@@ -141279,7 +141554,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVW
 aKS
 aKS
 aKS
@@ -141293,7 +141568,7 @@ aKS
 bJQ
 bJQ
 aKS
-aKS
+bVC
 bby
 bJv
 bJr
@@ -141357,6 +141632,7 @@ weC
 bHF
 bIm
 qzc
+bUM
 bWe
 bWe
 bWe
@@ -141370,8 +141646,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-abl
+blb
 aVA
 aPX
 aaa
@@ -141382,7 +141657,7 @@ aaa
 aaa
 bLa
 bKY
-atU
+bVX
 aKS
 aKS
 aKS
@@ -141396,7 +141671,7 @@ bJQ
 bJQ
 bJQ
 aKS
-aKS
+bVD
 atw
 bJv
 bJr
@@ -141460,6 +141735,7 @@ fvN
 bVd
 bIm
 qzc
+bUP
 bWe
 bWe
 bWe
@@ -141473,8 +141749,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-bhj
+aZU
 aVA
 aPX
 aaa
@@ -141499,7 +141774,7 @@ bJQ
 bJQ
 aKS
 aKS
-bJQ
+bVH
 atw
 bJx
 bJr
@@ -141563,7 +141838,7 @@ weC
 bIu
 bSf
 cml
-bWe
+bUV
 bWe
 bWe
 bWe
@@ -141577,7 +141852,7 @@ bWe
 bWe
 bHb
 bWe
-bhj
+bvh
 aVA
 aPX
 aaa
@@ -141589,19 +141864,19 @@ aaa
 bLa
 bKY
 atU
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
+bVJ
+bVS
+bVP
+bVL
+bVJ
+bVS
+bVP
+bVL
+bVJ
+bVS
+bVP
+bVL
+bVJ
 aKS
 bby
 aLL
@@ -141667,19 +141942,19 @@ xbg
 bSf
 cml
 bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
+bGb
+bUL
+bUJ
+bRO
+bGb
+bUL
+bUJ
+bRO
+bGb
+bUL
+bUJ
+bRO
+bGb
 abl
 aVA
 aPX
@@ -155739,19 +156014,19 @@ aad
 gFP
 vVI
 lMb
-bIN
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-bIN
-bIN
+bVf
+bVp
+bVk
+bVh
+bVf
+bVp
+bVk
+bVh
+bVf
+bVp
+bVk
+bVh
+bVf
 lMb
 bIA
 gFP
@@ -155841,21 +156116,21 @@ aaa
 aad
 gFP
 bJi
-lMb
-bIN
-lMb
-lMb
-lMb
+bVt
 lMb
 lMb
 bIN
 bIN
+bIN
+lMb
+bIN
+lMb
 lMb
 lMb
 lMb
 lMb
 bIP
-lMb
+bUW
 bIB
 gFP
 ajZ
@@ -155944,13 +156219,10 @@ aaa
 aad
 gFP
 bJj
+bVu
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+bIN
+bIN
 bIN
 bIN
 bIN
@@ -155959,6 +156231,9 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+bUX
 bIC
 gFP
 ajZ
@@ -156047,13 +156322,7 @@ aaa
 aad
 gFP
 bJi
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+bVz
 lMb
 bIN
 bIN
@@ -156062,6 +156331,12 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+bUY
 amS
 gFP
 ajZ
@@ -156150,6 +156425,7 @@ aaa
 aad
 gFP
 bJk
+bVA
 lMb
 lMb
 lMb
@@ -156163,8 +156439,7 @@ lMb
 lMb
 lMb
 lMb
-lMb
-lMb
+bUZ
 gsi
 gFP
 ajZ
@@ -156253,6 +156528,7 @@ aaa
 aad
 gFP
 aoO
+bVt
 lMb
 lMb
 lMb
@@ -156266,8 +156542,7 @@ lMb
 lMb
 lMb
 lMb
-lMb
-lMb
+bVa
 amS
 gFP
 ajZ
@@ -156356,14 +156631,7 @@ aaa
 aad
 gFP
 riT
-lMb
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-bIN
+bVu
 lMb
 lMb
 lMb
@@ -156371,6 +156639,13 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+bUX
 bIC
 gFP
 ajZ
@@ -156459,21 +156734,21 @@ aaa
 aad
 gFP
 aoO
+bVB
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 lMb
 bIN
-bIN
 lMb
-lMb
-lMb
-bIN
-bIN
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+bVc
 bIB
 gFP
 ajZ
@@ -156563,19 +156838,19 @@ aad
 gFP
 bJl
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+bVg
+bVr
+bVl
+bVi
+bVg
+bVr
+bVl
+bVi
+bVg
+bVr
+bVl
+bVi
+bVg
 lMb
 gsi
 gFP
@@ -196843,7 +197118,7 @@ aAs
 aAs
 aDz
 iwW
-sTm
+aLE
 gwR
 sTm
 tdT
@@ -199210,13 +199485,13 @@ ssW
 qEk
 hrm
 wVW
-rOC
+aYH
 aqN
 tCT
 tCT
 tCT
 aDv
-aEC
+aqN
 wVW
 dNZ
 qEk

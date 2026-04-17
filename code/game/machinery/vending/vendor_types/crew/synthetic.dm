@@ -330,6 +330,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/civilian/red_tshirt_black_jeans
 	path = /obj/item/clothing/under/tshirt/r_bla
 
+/datum/gear/synthetic/civilian/khaki_workwear
+	path = /obj/item/clothing/under/colonist/workwear/khaki
+
+/datum/gear/synthetic/civilian/pink_workwear
+	path = /obj/item/clothing/under/colonist/workwear/pink
+
+/datum/gear/synthetic/civilian/green_workwear
+	path = /obj/item/clothing/under/colonist/workwear/green
+
+/datum/gear/synthetic/civilian/blue_workwear
+	path = /obj/item/clothing/under/colonist/workwear/blue
+
 /datum/gear/synthetic/civilian/frontier
 	path = /obj/item/clothing/under/rank/frontier
 
@@ -365,6 +377,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/civilian/white_suit_pants
 	path = /obj/item/clothing/under/liaison_suit/corporate_formal
+
+/datum/gear/synthetic/civilian/black_suit_pants
+	path = /obj/item/clothing/under/liaison_suit/black
 
 /datum/gear/synthetic/civilian/grey_suit_pants
 	path = /obj/item/clothing/under/detective/grey
@@ -724,6 +739,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/webbing
 	path = /obj/item/clothing/suit/storage/webbing
+
+/datum/gear/synthetic/suit/brown_webbing
+	path = /obj/item/clothing/suit/storage/webbing/brown
+
+/datum/gear/synthetic/suit/black_webbing
+	path = /obj/item/clothing/suit/storage/webbing/black
 
 /datum/gear/synthetic/suit/utility_vest
 	path = /obj/item/clothing/suit/storage/utility_vest

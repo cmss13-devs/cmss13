@@ -2004,7 +2004,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "asT" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "atz" = (
@@ -2275,7 +2275,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_south)
 "aKl" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -3081,7 +3081,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
 "ccs" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -3878,7 +3878,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/Northwest_Colony)
 "dhL" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -3953,7 +3953,7 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/lz_river)
 "dpt" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -4163,7 +4163,7 @@
 /area/kutjevo/interior/oob)
 "dEI" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "dEO" = (
@@ -4232,7 +4232,7 @@
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/kutjevo/exterior/runoff_river)
 "dIo" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -4791,7 +4791,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "exI" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "eyk" = (
@@ -5186,7 +5186,7 @@
 /turf/open/floor/kutjevo/colors/cyan/inner_corner/east,
 /area/kutjevo/interior/complex/med/auto_doc)
 "ffP" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -6433,7 +6433,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/east)
 "hnq" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -7976,7 +7976,7 @@
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/botany/east)
 "jUK" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -9184,7 +9184,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "lNl" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -9789,7 +9789,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/auto_doc)
 "mIT" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "mJq" = (
@@ -11643,7 +11643,7 @@
 /turf/open/floor/mech_bay_recharge_floor,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "ptH" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -11928,7 +11928,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/interior/power/comms)
 "pPz" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12304,7 +12304,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "qzr" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12505,7 +12505,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "qTI" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12519,7 +12519,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "qVc" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13022,7 +13022,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
 "rMV" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13039,7 +13039,7 @@
 /turf/open/floor/coagulation/icon8_3,
 /area/kutjevo/interior/colony_north)
 "rPq" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "rQa" = (
@@ -13190,7 +13190,7 @@
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "saK" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "sbb" = (
@@ -13300,7 +13300,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles/southeast,
 /area/kutjevo/interior/colony_south/power2)
 "slB" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13611,7 +13611,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "sKo" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13624,7 +13624,7 @@
 /area/kutjevo/exterior/runoff_river)
 "sLf" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "sLx" = (
@@ -13728,7 +13728,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/colony_central)
 "sUt" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "sUu" = (
@@ -13956,7 +13956,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
 "tld" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -14257,7 +14257,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_pad)
 "tHI" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -14538,7 +14538,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/oob)
 "uhO" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "uhV" = (
@@ -14693,7 +14693,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "usd" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -15884,7 +15884,7 @@
 /turf/open/gm/dirtgrassborder2/east,
 /area/kutjevo/exterior/complex_border/med_park)
 "wrk" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -15961,7 +15961,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_bridge)
 "wvX" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "wwc" = (
@@ -16275,7 +16275,7 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/complex/med)
 "wXf" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -16653,7 +16653,7 @@
 /turf/open/gm/dirtgrassborder2/wall3,
 /area/kutjevo/exterior/complex_border/med_park)
 "xDR" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -16906,7 +16906,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/complex/botany/east_tech)
 "yaE" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,

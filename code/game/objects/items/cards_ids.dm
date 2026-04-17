@@ -160,7 +160,7 @@
 
 /obj/item/card/id/data
 	name = "identification holo-badge"
-	desc = "A plain, mass produced holo-badge."
+	desc = "A plain, mass-produced holo-badge."
 	icon_state = "data"
 	item_state = "card-id"
 

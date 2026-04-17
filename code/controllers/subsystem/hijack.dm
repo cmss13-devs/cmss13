@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
-	/// If the ship has crashed onto a ground map and the ftl_turfs are now turf/open_space
+	/// If the ship has crashed onto a ground map and space turfs have been replaced with turf/open_space
 	var/crashed = FALSE
 
 	/// The x offset for open_space turfs to ground when crashed
@@ -121,9 +121,6 @@ SUBSYSTEM_DEF(hijack)
 
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
-
-	/// A list of turfs to edit to FTL-ness
-	var/list/ftl_turfs = list()
 
 	/// A list of all fuel pumps
 	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
@@ -354,7 +351,7 @@ SUBSYSTEM_DEF(hijack)
 		if(3)
 			shipwide_ai_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 		if(4)
-			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
+			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name]. Lifeboats and pods re-enabled.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
@@ -471,7 +468,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct(from_ftl = FALSE)
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	shipwide_ai_announcement("[from_ftl ? "Hyperdrive tachyon shunt no longer operable. " : ""]Remaining fuel transferred to on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
+	shipwide_ai_announcement("[from_ftl ? "Hyperdrive tachyon shunt no longer operable. Lifeboats and pods re-enabled. " : ""]Remaining fuel transferred to on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /// Signal handler for COMSIG_GLOB_GENERATOR_SET_OVERLOADING
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/power_generator/reactor/source, new_overloading)
@@ -724,9 +721,11 @@ SUBSYSTEM_DEF(hijack)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	// Update shipside space turfs to open_space
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		set_ftl_turf_open(space_turf)
-		CHECK_TICK
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			set_ftl_turf_open(space_turf)
+			CHECK_TICK
 	crashed = TRUE
 
 	shakeship(
@@ -936,7 +935,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_charge_ftl()
 	in_ftl = TRUE
 	in_ftl_time = world.time
-	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	marine_announcement("Initiating quantum jump. Opening virtual mass field. Lifeboats and pods disabled until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /// Updates a specific space turf to have the speedspace animation
@@ -959,7 +958,7 @@ SUBSYSTEM_DEF(hijack)
 		// Don't bother with open_space further out
 		space_turf.icon_state = "black"
 		return
-	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y, crashed_ground_z_min)
+	space_turf.ChangeTurf(/turf/open_space/ground_level)
 
 /// Called to enter FTP warp
 /datum/controller/subsystem/hijack/proc/enter_ftl()
@@ -970,8 +969,11 @@ SUBSYSTEM_DEF(hijack)
 		osound = FALSE
 	)
 
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		set_ftl_turf(space_turf)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			set_ftl_turf(space_turf)
+			CHECK_TICK
 
 	shipwide_ai_announcement("ALERT: Prolonged exposure outside hypersleep chambers during a tachyon quantum jump can be fatal. Seek hypersleep chambers if possible.", HIJACK_ANNOUNCE)
 
@@ -995,10 +997,11 @@ SUBSYSTEM_DEF(hijack)
 	in_ftl = FALSE
 	current_run_mobs.Cut()
 
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		unset_ftl_turf(space_turf)
-
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/z_level in ship_zs)
+		for(var/turf/open/space/space_turf in Z_TURFS(z_level))
+			unset_ftl_turf(space_turf)
+			CHECK_TICK
 
 	if(!unintentionally)
 		shakeship(

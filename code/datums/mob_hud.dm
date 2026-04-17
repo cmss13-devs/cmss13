@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/proc/add_to_all_mob_huds()
 	return
 
-/mob/hologram/queen/add_to_all_mob_huds(hivenumber)
+/mob/hologram/queen/add_to_all_mob_huds()
 	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		hud.add_to_hud(src)
 	hud_set_new_player()
 
-/mob/living/carbon/xenomorph/add_to_all_mob_huds(hivenumber)
+/mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
@@ -790,7 +790,19 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(faction == FACTION_MILITARY_CASTE)
+		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+			new_icon_state = "soldierhud_wl"
+		else
+			new_icon_state = "soldierhud"
+		if(job == JOB_MCASTE_ENFORCER)
+			if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+				new_icon_state = "enforcerhud_wl"
+			else
+				new_icon_state = "enforcerhud"
+		holder.icon_state = new_icon_state
+		return // we don't mess with colors or whitelist status checks
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_icon_state = "councilhud"

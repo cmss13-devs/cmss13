@@ -109,7 +109,8 @@
 		return
 	GLOB.RoleAuthority.free_role_admin(GLOB.RoleAuthority.roles_for_mode[role], TRUE, src)
 
-/client/proc/modify_slot()
+
+/client/proc/modify_job_slot()
 	set name = "Adjust Job Slots"
 	set category = "Server.Round"
 
@@ -117,7 +118,7 @@
 		return
 
 	var/roles[] = new
-	var/datum/job/J
+	var/datum/job/selected_job
 
 	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
@@ -129,17 +130,32 @@
 			continue
 		roles += role_name
 
-	var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
+	var/role = tgui_input_list(src, "Select a role to modify.", "Modify amount of slots", roles, 60 SECONDS)
 	if(!role)
 		return
-	J = GLOB.RoleAuthority.roles_by_name[role]
-	var/tpos = J.spawn_positions
-	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos)
-	if(isnull(num))
+
+	selected_job = GLOB.RoleAuthority.roles_by_name[role]
+
+	var/slot_type = tgui_input_list(src, "Modify roundstart or latejoin slots?", "Modify which slots?", list("Roundstart", "Latejoin"), 30 SECONDS)
+	if(!slot_type)
 		return
-	if(!GLOB.RoleAuthority.modify_role(J, num))
-		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-	message_admins("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
+
+	var/tpos  = selected_job.spawn_positions
+	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]", "Number", tpos)
+	if(isnull(slot_number))
+		return
+
+	if(slot_type == "Roundstart")
+		var/confirmation = tgui_alert(src, "Altering roundstart slots will disable automatic slot scaling, are you sure?", "Confirm?", list("Yes", "No"), 30 SECONDS)
+		if(!confirmation || (confirmation == "No"))
+			return
+		selected_job.spawn_positions = slot_number
+		selected_job.scaled = FALSE
+	else if(slot_type == "Latejoin")
+		if(!GLOB.RoleAuthority.modify_role(selected_job, slot_number))
+			to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
+	message_admins("[key_name(usr)] adjusted [slot_type] job slots of [selected_job.title] to be [slot_number].")
+
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"

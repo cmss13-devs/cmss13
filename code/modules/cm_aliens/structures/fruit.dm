@@ -322,7 +322,7 @@
 
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED
-	desc = "A strange purple-ish fruit-looking thing."
+	desc = "A strange purplish fruit-looking thing."
 	time_to_mature = 35 SECONDS
 	icon_state = "fruit_speed_immature"
 	mature_icon_state = "fruit_speed"

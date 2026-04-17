@@ -546,7 +546,7 @@
 /obj/item/device/cassette_tape/cargocrate
 	name = "weyland yutani cassette"
 	id = 13
-	desc = "A blue metallic cassette with a weyland yutani logo."
+	desc = "A blue metallic cassette with a Weyland-Yutani logo."
 	icon_state = "cassette_wy"
 	side1_icon = "cassette_wy"
 

@@ -2732,4 +2732,5 @@
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
 #include "maps\map_files\Horde_Mode\hordemode.dmm"
+#include "maps\map_files\Horde_Mode_LV\hordemode-lv.dmm"
 // END_INCLUDE

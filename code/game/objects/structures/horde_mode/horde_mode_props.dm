@@ -129,17 +129,17 @@
 	icon = 'icons/obj/pipes/vent_scrubber.dmi'
 	icon_state = "map_vent"
 	var/is_spawning = FALSE
+	var/area/horde_mode/current_area
 
 /obj/structure/prop/horde_mode/vent_spawn/Initialize(mapload, ...)
 	. = ..()
 	SShorde_mode.vent_spawns += src
-	var/area/horde_mode/current_area = get_area(src)
+	current_area = get_area(src)
 	current_area.vents_in_area += src
 
 /obj/structure/prop/horde_mode/vent_spawn/Destroy()
 	. = ..()
 	SShorde_mode.vent_spawns -= src
-	var/area/horde_mode/current_area = get_area(src)
 	current_area.vents_in_area -= src
 
 /obj/structure/prop/horde_mode/vent_spawn/proc/animate_vent()

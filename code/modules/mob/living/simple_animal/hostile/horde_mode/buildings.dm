@@ -58,6 +58,7 @@
 /obj/structure/horde_mode_resin/hive_cluster/Destroy()
 	. = ..()
 	QDEL_NULL(node)
+	node = null
 
 //--------------------------------
 // RECOVERY NODE

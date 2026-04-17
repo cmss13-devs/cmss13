@@ -1,8 +1,6 @@
 {
     "override_map": true,
     "map_name": "Horde Mode LV",
-    "map_path": "map_files/Horde_Mode_LV",
-    "map_file": "hordemode-lv.dmm",
 	"survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv"
     ],

@@ -297,7 +297,7 @@
 // MOVEMENT
 
 /mob/living/simple_animal/hostile/alien/horde_mode/MoveToTarget()
-	if(target_mob.stat == DEAD)
+	if(target_mob.stat == DEAD || !target_mob)
 		LoseTarget()
 		if(hivenumber != XENO_HIVE_CORRUPTED)
 			find_random_target()

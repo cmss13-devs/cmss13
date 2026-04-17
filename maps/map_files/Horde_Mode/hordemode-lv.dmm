@@ -1,10 +1,44 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery{
+	density = 1;
+	icon = "icons\obj\structures\doors\personaldoor.dmi";
+	icon_state = "door_closed";
+	name = "Door";
+	unacidable = 1;
+	unslashable = 1;
+	dir = 4
+	},
+/turf/open/floor/bar,
+/area/space)
+"ab" = (
+/obj/structure/item_purchase/perk_machine/revive,
+/turf/open/floor/purple/northwest,
+/area/space)
+"ac" = (
+/obj/structure/machinery/light,
+/turf/open/floor/purple/northwest,
+/area/space)
+"ad" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/purple/northwest,
+/area/space)
 "ae" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 22
 	},
 /turf/open/floor/barber/west,
+/area/space)
+"af" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor/purple/northwest,
+/area/space)
+"ag" = (
+/obj/structure/surface/table/uninteractable,
+/obj/structure/machinery/recharger,
+/turf/open/floor/purple/northwest,
 /area/space)
 "aj" = (
 /obj/item/device/radio/intercom{
@@ -17,21 +51,6 @@
 	dir = 4
 	},
 /turf/open/floor/grimy,
-/area/space)
-"am" = (
-/obj/item/stack/sheet/wood{
-	layer = 3.01
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/space)
-"ap" = (
-/obj/structure/surface/table,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/structure/machinery/light,
-/turf/open/floor/purple/northwest,
 /area/space)
 "at" = (
 /turf/open/floor/plating,
@@ -109,11 +128,6 @@
 	},
 /turf/open/floor,
 /area/space)
-"bl" = (
-/obj/item/tool/crowbar,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
 "bo" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/east,
@@ -128,23 +142,10 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/bot/north,
 /area/space)
-"bI" = (
-/obj/structure/bed,
-/obj/item/bedsheet/mime,
-/turf/open/floor/purple/northwest,
-/area/space)
 "bL" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"bV" = (
-/obj/structure/surface/table,
-/obj/structure/mirror{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/open/floor/purple/northwest,
 /area/space)
 "bY" = (
 /obj/structure/largecrate,
@@ -165,13 +166,6 @@
 	dir = 5
 	},
 /turf/open/floor/whiteyellowcorner,
-/area/space)
-"cv" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 7
-	},
-/turf/open/floor/white,
 /area/space)
 "cy" = (
 /obj/structure/surface/table,
@@ -307,10 +301,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/space)
-"eC" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/open/floor/purple/northwest,
-/area/space)
 "eU" = (
 /turf/open/floor/red/east,
 /area/space)
@@ -356,21 +346,6 @@
 /area/space)
 "gw" = (
 /turf/open/floor/whiteyellowfull/east,
-/area/space)
-"gC" = (
-/obj/structure/closet{
-	density = 0;
-	icon_state = "open";
-	opened = 1
-	},
-/obj/structure/window/reinforced/tinted,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/turf/open/floor/purple/northwest,
 /area/space)
 "gD" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -482,8 +457,6 @@
 /turf/open/floor/delivery,
 /area/space)
 "iw" = (
-/obj/item/reagent_container/food/snacks/donkpocket,
-/obj/structure/flora/pottedplant,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/purple/northwest,
 /area/space)
@@ -596,15 +569,6 @@
 "jK" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/warning/north,
-/area/space)
-"jN" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bluecorner,
 /area/space)
 "jO" = (
 /obj/structure/surface/rack,
@@ -740,11 +704,6 @@
 /area/space)
 "nB" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
-"nN" = (
-/obj/structure/bed,
-/obj/item/bedsheet/hos,
-/turf/open/floor/purple/northwest,
 /area/space)
 "nR" = (
 /obj/structure/window/reinforced/tinted,
@@ -907,12 +866,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/space)
-"qh" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/space)
 "qi" = (
 /obj/structure/machinery{
 	density = 1;
@@ -932,8 +885,8 @@
 /turf/open/floor/vault,
 /area/space)
 "qp" = (
-/obj/structure/bed,
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/purple/northwest,
 /area/space)
 "qq" = (
@@ -1123,12 +1076,6 @@
 	},
 /turf/open/floor/bluecorner,
 /area/space)
-"sL" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor/purple/northwest,
-/area/space)
 "sQ" = (
 /obj/item/folder/red,
 /turf/open/floor/redfull/northwest,
@@ -1198,11 +1145,6 @@
 "tN" = (
 /turf/open/floor/warning,
 /area/space)
-"tQ" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/bomb_supply,
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
 "tV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -1235,12 +1177,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/whitepurplecorner/east,
 /area/space)
-"uG" = (
-/obj/structure/bed/chair/comfy/lime{
-	dir = 1
-	},
-/turf/open/floor/purple/northwest,
-/area/space)
 "uK" = (
 /obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/vault,
@@ -1257,20 +1193,6 @@
 /area/space)
 "vM" = (
 /turf/open/floor/warning/north,
-/area/space)
-"vO" = (
-/obj/structure/closet{
-	density = 0;
-	icon_state = "open";
-	opened = 1
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/turf/open/floor/purple/northwest,
 /area/space)
 "vS" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -1369,13 +1291,10 @@
 /turf/open/floor/bluecorner,
 /area/space)
 "xj" = (
-/obj/structure/bed{
-	desc = "For prime comfort.";
-	name = "fancy bed"
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/item_purchase/abr40,
 /turf/open/floor/purple/northwest,
 /area/space)
 "xn" = (
@@ -1403,9 +1322,6 @@
 /turf/open/floor/wood,
 /area/space)
 "xP" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -1463,10 +1379,6 @@
 /area/space)
 "yG" = (
 /turf/open/floor/loadingarea/west,
-/area/space)
-"yZ" = (
-/obj/structure/bed/chair/wheelchair,
-/turf/open/floor/bluecorner,
 /area/space)
 "zn" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1531,7 +1443,8 @@
 /turf/open/floor/grass,
 /area/space)
 "Aq" = (
-/obj/structure/surface/table,
+/obj/structure/machinery/light,
+/obj/structure/item_purchase/ammo_refill,
 /turf/open/floor/purple/northwest,
 /area/space)
 "Au" = (
@@ -1573,10 +1486,6 @@
 	dir = 1
 	},
 /turf/open/floor/white,
-/area/space)
-"AM" = (
-/obj/structure/machinery/fermenter,
-/turf/open/floor/whiteyellowfull/east,
 /area/space)
 "AP" = (
 /obj/structure/closet,
@@ -1702,7 +1611,7 @@
 /turf/open/floor/white,
 /area/space)
 "Cy" = (
-/obj/effect/landmark/late_join,
+/obj/effect/landmark/observer_start,
 /turf/closed/wall/mineral/gold{
 	desc = "Here sits a golden statue of the sun, meant to praise the sky in its benevolence.";
 	name = "Statue of the Sky"
@@ -1712,12 +1621,6 @@
 /obj/structure/window_frame/colony/reinforced/horde_mode,
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
-/area/space)
-"CD" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor/white,
 /area/space)
 "CG" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -1779,7 +1682,6 @@
 /turf/open/floor/bar,
 /area/space)
 "El" = (
-/obj/structure/largecrate/random,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -1907,15 +1809,6 @@
 "FC" = (
 /turf/open/floor/chapel/north,
 /area/space)
-"FF" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/purple/northwest,
-/area/space)
 "FN" = (
 /obj/structure/bed,
 /obj/structure/pipes/vents/pump{
@@ -1937,22 +1830,11 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/space)
-"FY" = (
-/obj/structure/bed,
-/obj/item/bedsheet/purple,
-/turf/open/floor/purple/northwest,
-/area/space)
 "Gf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space)
-"Gh" = (
-/obj/structure/bed,
-/obj/item/bedsheet/purple,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/purple/northwest,
 /area/space)
 "Go" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -1987,7 +1869,6 @@
 /turf/open/floor/wood/wood_broken4,
 /area/space)
 "GF" = (
-/obj/structure/closet,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -2062,26 +1943,15 @@
 /obj/item/trash/chips,
 /turf/open/floor/white,
 /area/space)
-"HP" = (
-/obj/structure/bed/chair/comfy/orange{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bluecorner,
-/area/space)
 "HV" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/space)
 "HW" = (
-/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/spawner/random/toolbox,
 /turf/open/floor/whiteyellowfull/east,
 /area/space)
 "Ia" = (
@@ -2115,23 +1985,6 @@
 /area/space)
 "IK" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/space)
-"Jh" = (
-/obj/item/reagent_container/food/drinks/flask/barflask,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/turf/open/floor/purple/northwest,
-/area/space)
-"Jn" = (
-/obj/structure/closet,
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/turf/open/floor/purple/northwest,
 /area/space)
 "Jv" = (
 /obj/structure/closet,
@@ -2170,10 +2023,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/space)
-"Ka" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/white,
-/area/space)
 "Kc" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -2191,16 +2040,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/space)
-"Kq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/mob/living/simple_animal/big/corgi/puppy{
-	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
-	name = "\improper Mister Wiggles"
-	},
-/turf/open/floor/grimy,
-/area/space)
 "Ku" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome Chapel";
@@ -2208,14 +2047,13 @@
 	},
 /turf/open/floor/white,
 /area/space)
-"KI" = (
-/obj/structure/machinery/still,
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
 "KQ" = (
-/obj/structure/surface/table,
-/obj/item/device/megaphone,
-/obj/item/tool/wrench,
+/obj/structure/surface/table/uninteractable,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	pixel_y = 5;
+	pixel_x = -2;
+	dir = 8
+	},
 /turf/open/floor/purple/northwest,
 /area/space)
 "KW" = (
@@ -2229,10 +2067,6 @@
 "La" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/grass/grass1,
-/area/space)
-"Ll" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/white,
 /area/space)
 "Ln" = (
 /obj/structure/bed/chair{
@@ -2439,10 +2273,6 @@
 /obj/item/device/megaphone,
 /turf/open/floor/grimy,
 /area/space)
-"Pi" = (
-/obj/structure/bed,
-/turf/open/floor/purple/northwest,
-/area/space)
 "Pk" = (
 /obj/structure/machinery/recharge_station,
 /obj/structure/window/reinforced{
@@ -2467,15 +2297,7 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/bar,
 /area/space)
-"PI" = (
-/obj/structure/surface/table,
-/obj/item/phone,
-/turf/open/floor/purple/northwest,
-/area/space)
 "PJ" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bluecorner,
@@ -2535,12 +2357,6 @@
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor/freezerfloor,
 /area/space)
-"Qk" = (
-/obj/item/stack/sheet/wood{
-	layer = 3.01
-	},
-/turf/open/floor/white,
-/area/space)
 "Qm" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/whitepurplecorner/east,
@@ -2550,7 +2366,6 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/cheeseburger,
 /turf/open/floor/white,
 /area/space)
 "Qo" = (
@@ -2623,8 +2438,6 @@
 	dir = 8
 	},
 /obj/structure/surface/table,
-/obj/item/trash/cheesie,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/space)
 "RJ" = (
@@ -2715,11 +2528,6 @@
 	dir = 10
 	},
 /turf/open/floor/white,
-/area/space)
-"Tx" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/whiteyellowfull/east,
 /area/space)
 "TA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -3079,12 +2887,6 @@
 	},
 /turf/open/floor/bar,
 /area/space)
-"Yz" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
-/obj/effect/spawner/random/tech_supply,
-/turf/open/floor/whiteyellowfull/east,
-/area/space)
 "YB" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/west,
@@ -3138,11 +2940,6 @@
 	pixel_x = -30
 	},
 /turf/open/floor/bluecorner,
-/area/space)
-"ZH" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
-/turf/open/floor/whiteyellowfull/east,
 /area/space)
 "ZM" = (
 /turf/open/floor/red/northeast,
@@ -3671,7 +3468,7 @@ Sl
 Sl
 Sl
 mK
-yZ
+ph
 Gr
 cT
 iq
@@ -3696,7 +3493,7 @@ dC
 ZM
 id
 pV
-Kq
+jH
 DS
 DS
 OZ
@@ -3729,7 +3526,7 @@ id
 sH
 cT
 xi
-HP
+Hx
 id
 Wl
 Qx
@@ -3890,7 +3687,7 @@ vT
 id
 id
 jD
-jN
+Hx
 ph
 aw
 ZD
@@ -4242,7 +4039,7 @@ CG
 AC
 zS
 zS
-Ka
+zS
 YT
 OQ
 iM
@@ -4253,7 +4050,7 @@ zS
 UW
 gH
 Xs
-Ll
+zS
 zS
 CA
 Ot
@@ -4273,7 +4070,7 @@ Ot
 qi
 zS
 zS
-cv
+zS
 zS
 oP
 zS
@@ -4291,7 +4088,7 @@ KW
 zS
 GP
 Uo
-bl
+UL
 UL
 CG
 zS
@@ -4308,8 +4105,8 @@ zS
 zS
 gH
 zS
-Qk
-Ll
+zS
+zS
 Va
 Ot
 Ot
@@ -4328,8 +4125,8 @@ Ot
 Vr
 zS
 zS
-cv
-qh
+zS
+zS
 gH
 zS
 xD
@@ -4364,7 +4161,7 @@ zS
 gH
 zS
 zS
-Ll
+zS
 KX
 Ot
 Ot
@@ -4381,8 +4178,8 @@ Ot
 Ot
 Ot
 mK
-Qk
-Qk
+zS
+zS
 zS
 zS
 oh
@@ -4436,10 +4233,10 @@ Ot
 Ot
 Ot
 qi
-Qk
 zS
-cv
-CD
+zS
+zS
+zS
 gH
 zS
 iz
@@ -4473,8 +4270,8 @@ zS
 zS
 zS
 gH
-Ll
-Ll
+zS
+zS
 Va
 Ot
 Ot
@@ -4491,8 +4288,8 @@ Vm
 Fm
 Ot
 Vr
-Qk
-cv
+zS
+zS
 zS
 zS
 gH
@@ -4527,8 +4324,8 @@ zS
 zS
 zS
 zS
-am
-Ll
+gH
+zS
 CG
 KX
 Ot
@@ -4547,7 +4344,7 @@ xa
 uq
 XL
 PK
-Qk
+zS
 PA
 zS
 gH
@@ -4581,7 +4378,7 @@ zS
 zS
 zS
 zS
-XI
+zS
 gH
 zS
 zS
@@ -4659,12 +4456,12 @@ Sl
 CA
 wk
 GF
-gC
-FF
-sL
-Jn
-vO
-wk
+tM
+MU
+Wm
+Wm
+tM
+ab
 id
 sF
 pO
@@ -4713,12 +4510,12 @@ Sl
 Sl
 CA
 pl
-FY
-Pi
-MU
 Wm
-nN
-FY
+af
+MU
+af
+Wm
+Wm
 qp
 id
 EC
@@ -4768,13 +4565,13 @@ Sl
 Sl
 id
 id
-id
-id
-FF
+ag
 Wm
-id
-id
-id
+MU
+Wm
+Wm
+Wm
+Wm
 id
 cC
 jX
@@ -4824,12 +4621,12 @@ Sl
 Sl
 id
 xj
-tM
+ad
 MU
 Wm
-wk
-wk
-wk
+af
+Wm
+Wm
 id
 qq
 gw
@@ -4882,14 +4679,14 @@ id
 iw
 sp
 Wm
-Gh
-bI
-qp
+Wm
+Wm
+ac
 id
-EC
-Fr
+tx
 gw
-Fr
+gw
+gw
 gw
 kG
 id
@@ -4934,17 +4731,17 @@ Sl
 Sl
 Sl
 CA
-PI
 Wm
+af
 Wm
+ad
+Wm
+ad
 id
-id
-id
-id
-EC
-Yz
+tx
 gw
-Tx
+gw
+gw
 gw
 dS
 id
@@ -4989,19 +4786,19 @@ Sl
 nB
 Sl
 CA
-Aq
-uG
 Wm
-Jh
 Wm
-bV
-id
-EC
-Tx
+Wm
+Wm
+af
+Wm
+at
+tx
 gw
-tQ
 gw
-AM
+gw
+gw
+gw
 id
 Cu
 Yj
@@ -5048,15 +4845,15 @@ id
 id
 bh
 Wm
-eC
-ap
-id
-EC
-ZH
+Wm
+Wm
+at
+tx
 gw
-dS
 gw
-KI
+gw
+gw
+gw
 id
 aH
 Yj
@@ -5109,7 +4906,7 @@ id
 El
 HW
 gw
-Tx
+gw
 id
 id
 id
@@ -5162,7 +4959,7 @@ id
 id
 id
 id
-id
+at
 at
 id
 id
@@ -5398,7 +5195,7 @@ iU
 id
 dj
 id
-EG
+aa
 id
 RM
 vc

@@ -120,7 +120,7 @@ As a Corpsman, if you’re treating a patient near the frontline, remember to ke
 As a Smartgunner, remember to constantly switch between your smartgun modes in combat depending on the situation!
 Handthrown grenade timers usually go off a little bit after 3 beeps, throw it then if you want the shortest timer. Beep, beep, beep, bee-…
 M37 is best used in harm intent and at pointblank range. If you miss within 1 tile, you won’t shoot, but it will put you on shooting cooldown for 1 second! But if you hit within 1 tile, youll always get the highest possible damage on your target. Stay sharp, marine.
-Marines take less bullets to kill than xenomorphs
+Marines take fewer bullets to kill than xenomorphs
 Make sure to bring flares. Noone wants to be blind against these things…
 The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.
 

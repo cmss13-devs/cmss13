@@ -110,10 +110,33 @@
 /obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
+"au" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
+"aw" = (
+/obj/structure/stairs/perspective{
+	color = "#b6a38f";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/template_noop,
+/area/template_noop)
+"ax" = (
+/obj/structure/stairs/perspective{
+	color = "#b6a38f";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/template_noop,
+/area/template_noop)
 "aZ" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/corsat/squareswood/north,
@@ -191,7 +214,7 @@
 /area/desert_dam/interior/caves/temple)
 "fX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -383,7 +406,7 @@
 /area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -701,16 +724,16 @@ an
 an
 an
 an
-mA
-mA
-mA
-mA
-mA
-mA
-mA
-mA
-mA
-mA
+ax
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 MH
 MH
 Li
@@ -977,7 +1000,7 @@ mB
 mB
 mB
 mB
-uK
+au
 mB
 ao
 "}
@@ -1003,7 +1026,7 @@ AU
 mB
 Gz
 mB
-uK
+au
 mB
 ap
 "}
@@ -1016,7 +1039,7 @@ MH
 WV
 am
 mB
-uK
+au
 mB
 mB
 YH
@@ -1154,7 +1177,7 @@ mB
 mB
 mB
 mB
-uK
+au
 AU
 AU
 fl

@@ -468,7 +468,7 @@
 		return
 
 	if(user_id_card)
-		user_id_card.loc = get_turf(src)
+		user_id_card.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
 		if(operable()) // Powered. Console can response.
@@ -479,7 +479,7 @@
 		user_id_card = null
 
 	else if(target_id_card)
-		target_id_card.loc = get_turf(src)
+		target_id_card.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
 		if(operable()) // Powered. Make comp proceed ejection

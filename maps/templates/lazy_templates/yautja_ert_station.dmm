@@ -1,0 +1,6620 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/turf/open/predship/hunter_catwalk,
+/area/adminlevel/ert_station/yautja_station)
+"ac" = (
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 8
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"aj" = (
+/obj/effect/hunter/rune{
+	dir = 8
+	},
+/turf/open/predship/mainfloor/direction_2/west,
+/area/adminlevel/ert_station/yautja_station)
+"ak" = (
+/obj/effect/hunter/bridge_border/corner{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"an" = (
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_left"
+	},
+/obj/structure/showcase{
+	desc = "A console that gives an advanced readout of the station's power network.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Power Monitoring Console";
+	density = 0;
+	pixel_x = 7
+	},
+/turf/open/predship/tile/hunter_tile_2/west,
+/area/adminlevel/ert_station/yautja_station)
+"aM" = (
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"aO" = (
+/obj/structure/machinery/door_control/yautja{
+	id = "pred_ert_armory";
+	pixel_y = -20;
+	name = "Armory Lockdown";
+	req_one_access = list(390,392,393)
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"aQ" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"aR" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	color = "#63594d";
+	pixel_x = -33;
+	pixel_y = 8;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	pixel_y = -2;
+	color = "#692e2e"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"aT" = (
+/obj/structure/machinery/door/poddoor/yautja/armory{
+	id = "pred_ert_armory"
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"aU" = (
+/obj/effect/hunter/rune,
+/turf/open/predship/mainfloor/direction_3/east,
+/area/adminlevel/ert_station/yautja_station)
+"bg" = (
+/obj/effect/hunter/rune/corner_2{
+	dir = 8;
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"bi" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/direction_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"bl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/surgery/FixOVein/predatorFixOVein,
+/obj/item/tool/surgery/bonegel/predatorbonegel,
+/obj/item/tool/surgery/bonesetter/predatorbonesetter,
+/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"bI" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	pixel_y = -2;
+	color = "#692e2e"
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"bM" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = 8
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"bO" = (
+/turf/open/predship/hull/non_weedable_hull/southeast,
+/area/adminlevel/ert_station/yautja_station)
+"cg" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"cP" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"dl" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"do" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"eb" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"ec" = (
+/obj/structure/bed/chair/hunter{
+	dir = 1
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"ei" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/storage/belt/utility/pred/full{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/utility/pred/full{
+	pixel_y = 3
+	},
+/obj/item/storage/belt/utility/pred/full{
+	pixel_y = 10
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"ey" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
+	layer = 3.1;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 8;
+	color = "#912727"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"eF" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = 16;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = 9;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"eO" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden{
+	dir = 9;
+	color = "#6b675e"
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"eR" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"fb" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	dir = 4;
+	icon_state = "White";
+	color = "#63594d";
+	pixel_x = -28;
+	pixel_y = -8;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature.";
+	layer = 2.9
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"fe" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
+	pixel_x = 6;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 7;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
+	pixel_y = 0;
+	pixel_x = -5;
+	color = "#9b1818"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"fy" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/structure/prop/hunter/misc/feed{
+	dir = 10
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"fI" = (
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"fL" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"fP" = (
+/obj/structure/machinery/power/smes/magical/yautja,
+/obj/structure/terminal{
+	color = "#c0baae";
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"fQ" = (
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"gh" = (
+/obj/structure/machinery/cryopod/no_store/yautja,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"gH" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red5,
+/area/adminlevel/ert_station/yautja_station)
+"gK" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"gO" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/turf/open/predship/tile/hunter_tile_6/east,
+/area/adminlevel/ert_station/yautja_station)
+"hf" = (
+/obj/effect/hunter/rune/corner_2{
+	dir = 8
+	},
+/turf/open/predship/mainfloor/corner,
+/area/adminlevel/ert_station/yautja_station)
+"hi" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"hn" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"hr" = (
+/turf/open/predship/tile/red5,
+/area/adminlevel/ert_station/yautja_station)
+"hs" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"hE" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 7;
+	layer = 2.9;
+	color = "#9bb1be"
+	},
+/obj/item/tool/wirecutters/yautja{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/tool/surgery/FixOVein/predatorFixOVein{
+	pixel_x = 8;
+	pixel_y = -1;
+	layer = 2.9
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"hH" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"hP" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"hT" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/gun/launcher/spike,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"ir" = (
+/turf/open/predship/hunter_catwalk_new,
+/area/adminlevel/ert_station/yautja_station)
+"ix" = (
+/obj/structure/terminal{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/effect/hunter/rune/stripes_arrow{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"iK" = (
+/obj/structure/surface/hunter_shuttle_table,
+/obj/structure/showcase{
+	desc = "A console used for operating the station's defense systems, internal and external.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "overwatch";
+	name = "Station Defense Array Console";
+	pixel_y = 9;
+	density = 0
+	},
+/turf/open/predship/tile/hunter_tile_2/west,
+/area/adminlevel/ert_station/yautja_station)
+"iL" = (
+/obj/structure/closet/crate{
+	color = "#6b675e"
+	},
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/obj/item/falcon_drone,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"iP" = (
+/obj/effect/hunter/bridge_border/edge,
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"jf" = (
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"ji" = (
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"jm" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/hull,
+/area/adminlevel/ert_station/yautja_station)
+"jt" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie";
+	pixel_y = -7;
+	pixel_x = -2
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"jH" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"jR" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"kc" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"kr" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"kt" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 8
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"kv" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"kM" = (
+/obj/effect/hunter/rune{
+	dir = 8
+	},
+/turf/open/predship/mainfloor/direction_1,
+/area/adminlevel/ert_station/yautja_station)
+"kS" = (
+/turf/open/space/basic,
+/area/space)
+"kV" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"le" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/tool/kitchen/tray{
+	color = "#c1a384";
+	pixel_y = 9;
+	layer = 2.9
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"lr" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"ly" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6;
+	layer = 3;
+	color = "#c1a384";
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"lR" = (
+/obj/structure/platform_decoration/metal/hunter/east{
+	pixel_y = 7
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"lV" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"ma" = (
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"mP" = (
+/obj/effect/hunter/rune{
+	pixel_y = -1;
+	dir = 8
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west{
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"mY" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"nG" = (
+/obj/effect/hunter/rune,
+/turf/open/predship/mainfloor/direction_2,
+/area/adminlevel/ert_station/yautja_station)
+"nN" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden{
+	dir = 5;
+	color = "#6b675e"
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"nP" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"of" = (
+/obj/effect/hunter/bridge_border/brown,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = 8;
+	pixel_y = 1;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	dir = 8;
+	icon_state = "White";
+	color = "#63594d";
+	pixel_x = -7;
+	pixel_y = 6;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"os" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Secure Armory Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/obj/structure/machinery/door_control/yautja{
+	id = "pred_ert_armory";
+	pixel_y = 22;
+	name = "Armory Lockdown";
+	req_one_access = list(390,392,393)
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"oD" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"oG" = (
+/obj/effect/hunter/bridge_border/edge{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"oI" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"oM" = (
+/obj/structure/showcase/yautja/alt{
+	pixel_y = 18
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north{
+	pixel_y = -20
+	},
+/obj/structure/platform_decoration/metal/hunter/east{
+	pixel_y = -20
+	},
+/obj/structure/platform_decoration/metal/hunter/west{
+	pixel_y = -20
+	},
+/turf/open/predship,
+/area/adminlevel/ert_station/yautja_station)
+"oO" = (
+/obj/effect/hunter/bridge_border{
+	dir = 4
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"pj" = (
+/turf/open/predship/hunter_grate/north,
+/area/adminlevel/ert_station/yautja_station)
+"pm" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"pK" = (
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"pO" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"qs" = (
+/obj/structure/machinery/iv_drip{
+	pixel_y = 17;
+	color = "#9bb1be"
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"qv" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"qy" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"qC" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/obj/structure/bed/bedroll{
+	color = "#6b675e";
+	dir = 8
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"qI" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"qS" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"rc" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"rv" = (
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"rN" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"rQ" = (
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/structure/closet/yautja/big,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"rT" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/chem_dispenser/soda/beer/yautja{
+	pixel_y = 10;
+	pixel_x = -1
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"so" = (
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
+	},
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"sG" = (
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"sM" = (
+/obj/structure/closet/coffin/predator{
+	pixel_y = 5
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"sQ" = (
+/obj/effect/hunter/rune/corner_2{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = -1
+	},
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"tr" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"tx" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/device/flashlight/lantern/yautja,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"tU" = (
+/obj/structure/prop/hunter/catwalk/corner/four,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"ui" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/prop/hunter/misc/feed{
+	dir = 10
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"uj" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/obj/structure/prop/hunter/catwalk/corner/eight{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"um" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/trash/falcon_drone,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"uu" = (
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"ux" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_3,
+/area/adminlevel/ert_station/yautja_station)
+"uB" = (
+/obj/structure/machinery/autodoc_console/yautja{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"uD" = (
+/obj/structure/showcase{
+	desc = "A console used for monitoring various station systems.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Monitor";
+	pixel_x = -17;
+	pixel_y = -9
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"uH" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	dir = 1;
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = -20;
+	pixel_y = -4;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"uM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/weldingtool/yautja{
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_x = 1;
+	pixel_y = -19
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"uP" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"uY" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/prop/hunter/misc/feed{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"vb" = (
+/turf/open/predship/hull/non_weedable_hull/southwest,
+/area/adminlevel/ert_station/yautja_station)
+"vm" = (
+/turf/open/predship/hull,
+/area/adminlevel/ert_station/yautja_station)
+"vt" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/hunter_tile_6/east,
+/area/adminlevel/ert_station/yautja_station)
+"vy" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/yautja/chained/combistick,
+/obj/item/weapon/yautja/chained/combistick{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/weapon/yautja/chained/combistick{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/weapon/yautja/chained/combistick{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"vG" = (
+/obj/effect/hunter/rune/corner_2{
+	dir = 1;
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"vN" = (
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"wk" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/wirecutters/yautja{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/item/tool/weldingtool/yautja{
+	pixel_y = 3;
+	pixel_x = 6
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"wn" = (
+/obj/structure/machinery/sleep_console/yautja{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"wy" = (
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"wK" = (
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_left"
+	},
+/obj/structure/showcase{
+	desc = "A console that gives an advanced readout of a docked shuttle's sustained damage, if any.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Damage Control Console";
+	density = 0;
+	pixel_x = 7
+	},
+/obj/effect/hunter/bridge_border/corner,
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"wN" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/beaker/cryopredmix{
+	color = "#9b1818";
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/obj/item/reagent_container/glass/beaker/cryopredmix{
+	color = "#9b1818";
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/reagent_container/glass/beaker/cryopredmix{
+	color = "#9b1818";
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"wW" = (
+/obj/structure/machinery/medical_pod/bodyscanner/yautja{
+	pixel_y = 8;
+	dir = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"xs" = (
+/obj/effect/hunter/bridge_border/corner{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2;
+	pixel_y = 4;
+	buckling_y = 4
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"xv" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	name = "\improper Holding Cell";
+	opacity = 0;
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/yautja/open{
+	id = "ertprisonlockdown";
+	dir = 4
+	},
+/turf/open/predship/hunter_catwalk_new,
+/area/adminlevel/ert_station/yautja_station)
+"xA" = (
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727";
+	dir = 1;
+	layer = 2.8
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"xJ" = (
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"xK" = (
+/obj/effect/hunter/bridge_border/corner,
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"xS" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"xX" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"ye" = (
+/obj/effect/hunter/bridge_border/corner,
+/turf/closed/wall/huntership,
+/area/adminlevel/ert_station/yautja_station)
+"yf" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	dir = 2;
+	name = "\improper Meeting Chamber"
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"yu" = (
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
+	},
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"yC" = (
+/obj/structure/machinery/cryopod/no_store/yautja,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"yI" = (
+/obj/structure/machinery/autolathe/yautja,
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"yP" = (
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_right"
+	},
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_x = -7;
+	desc = "Used to monitor active health sensors of all Yautja in the selected system, right from home. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	},
+/obj/effect/hunter/bridge_border/corner{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"zc" = (
+/obj/structure/machinery/chem_dispenser/yauja{
+	req_skill_level = 1
+	},
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Monitor";
+	pixel_y = 24;
+	density = 0;
+	desc = null
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"zp" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"zw" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/mainfloor/direction_2/north,
+/area/adminlevel/ert_station/yautja_station)
+"zD" = (
+/obj/structure/platform_decoration/metal/hunter/west{
+	pixel_y = 7
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"zE" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/crowbar/yautja{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/tool/weldingtool/yautja{
+	pixel_y = -4;
+	pixel_x = 3
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"zF" = (
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 4
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"zR" = (
+/obj/structure/bed/chair/hunter{
+	pixel_y = 7;
+	buckling_y = 7
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"zV" = (
+/obj/structure/sink{
+	pixel_y = 25;
+	color = "#c1a384"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Ad" = (
+/obj/effect/hunter/rune/corner{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/edge,
+/area/adminlevel/ert_station/yautja_station)
+"Al" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"Aq" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/machinery/medical_pod/sleeper/yautja{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"At" = (
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"AA" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red5,
+/area/adminlevel/ert_station/yautja_station)
+"AJ" = (
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"AU" = (
+/obj/structure/machinery/chem_master/yautja{
+	req_skill_level = 1
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"Be" = (
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_y = 25
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Bh" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727";
+	dir = 1;
+	layer = 2.8
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
+	},
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Bi" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_2/east,
+/area/adminlevel/ert_station/yautja_station)
+"Bj" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/captain{
+	color = "#aba9a9";
+	pixel_x = -1
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Bs" = (
+/obj/effect/hunter/rune{
+	pixel_x = -1
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Bu" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"BE" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"BJ" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"BM" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
+	},
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"BO" = (
+/obj/structure/prop/hunter/catwalk/corner/five,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"BV" = (
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"BY" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Ce" = (
+/obj/structure/machinery/vending/dinnerware/yautja,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"Cf" = (
+/turf/open/predship/hull/non_weedable_hull/west,
+/area/adminlevel/ert_station/yautja_station)
+"Cm" = (
+/obj/effect/hunter/rune/corner_2{
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Ct" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/device/healthanalyzer/alien{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"CH" = (
+/obj/structure/bed/chair/hunter{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"CM" = (
+/obj/effect/hunter/bridge_border/brown/edge,
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"CO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/healthanalyzer/alien{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 1;
+	layer = 2.9;
+	color = "#9bb1be"
+	},
+/obj/item/tool/surgery/scalpel/predatorscalpel{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/tool/surgery/circular_saw/predatorbonesaw{
+	pixel_y = 2
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"CT" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Do" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Dy" = (
+/obj/docking_port/stationary/emergency_response/idle_port7{
+	name = "Yautja Prime Orbital Station"
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"DA" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"DC" = (
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"DS" = (
+/turf/open/predship/hull/non_weedable_hull/east,
+/area/adminlevel/ert_station/yautja_station)
+"DU" = (
+/obj/structure/curtain/leather/alt_2,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"DZ" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Ed" = (
+/obj/effect/hunter/rune{
+	pixel_x = 1;
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Ee" = (
+/obj/structure/closet/coffin/predator{
+	pixel_y = 5
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/adminlevel/ert_station/yautja_station)
+"Ex" = (
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"Ey" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/adminlevel/ert_station/yautja_station)
+"EV" = (
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2;
+	buckling_y = 4;
+	pixel_y = 4
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"Fi" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/surgery/cautery/predatorcautery,
+/obj/item/tool/surgery/circular_saw/predatorbonesaw,
+/obj/item/tool/surgery/hemostat/predatorhemostat,
+/obj/item/tool/surgery/retractor/predatorretractor,
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Monitor";
+	pixel_y = 24;
+	density = 0;
+	desc = null
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Fl" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Fp" = (
+/obj/structure/curtain/leather/alt_2,
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/space/basic,
+/area/adminlevel/ert_station/yautja_station)
+"Fq" = (
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/wood/poor,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/gambling,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/structure/closet/yautja/big,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Fs" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
+	layer = 3.1;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"FR" = (
+/obj/structure/surface/hunter_shuttle_table{
+	icon_state = "hs_table_right"
+	},
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_x = -7;
+	desc = "Used to monitor active health sensors of all Yautja in the selected system, right from home. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	},
+/turf/open/predship/tile/hunter_tile_2/west,
+/area/adminlevel/ert_station/yautja_station)
+"FY" = (
+/obj/effect/hunter/rune/corner_2,
+/turf/open/predship/mainfloor/corner/north,
+/area/adminlevel/ert_station/yautja_station)
+"Ge" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727";
+	dir = 1;
+	layer = 2.8
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Gh" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	pixel_y = -2;
+	color = "#692e2e"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Gi" = (
+/obj/effect/hunter/rune/corner{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/edge/north,
+/area/adminlevel/ert_station/yautja_station)
+"Gr" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"Gx" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/gun/energy/yautja/plasmacarbine{
+	pixel_y = -9
+	},
+/obj/item/weapon/gun/energy/yautja/plasmacarbine,
+/obj/item/weapon/gun/energy/yautja/plasmacarbine{
+	pixel_y = 8
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"GL" = (
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"GV" = (
+/obj/structure/closet/coffin/predator{
+	pixel_y = 5
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Hb" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"Hf" = (
+/obj/effect/hunter/bridge_border{
+	dir = 8
+	},
+/obj/structure/machinery/prop/almayer/CICmap/yautja{
+	pixel_y = 3;
+	desc = "A globe designed by the hunters to show them the location of prey across their many hunting grounds."
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"Hj" = (
+/obj/effect/hunter/rune{
+	pixel_y = -1;
+	dir = 8
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east{
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Hw" = (
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 1
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"HC" = (
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"HM" = (
+/obj/effect/hunter/bridge_border/brown/edge,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"HV" = (
+/turf/open/predship/hull/non_weedable_hull/northeast,
+/area/adminlevel/ert_station/yautja_station)
+"HW" = (
+/obj/structure/machinery/cryo_cell/yautja{
+	pixel_x = 1;
+	light_on = 1;
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3
+	},
+/obj/structure/pipes/standard/cap/hidden{
+	color = "#6b675e"
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Ic" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	density = 0;
+	dir = 8;
+	pixel_x = -19;
+	pixel_y = -9
+	},
+/obj/structure/machinery/door_control/yautja{
+	id = "ertprisonlockdown";
+	pixel_y = 10;
+	name = "Holding Cell Lockdown";
+	pixel_x = -21;
+	req_one_access_txt = "390"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Im" = (
+/obj/structure/reagent_dispensers/tank/water/yautja,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Is" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"IH" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"IK" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/crowbar/yautja{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/trash/falcon_drone,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Ja" = (
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Jb" = (
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Jc" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Jh" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"Ji" = (
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/structure/closet/yautja/big,
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Jk" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/tile/hunter_tile_5/west,
+/area/adminlevel/ert_station/yautja_station)
+"Jm" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/machinery/medical_pod/autodoc/yautja{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Jo" = (
+/obj/effect/hunter/rune{
+	pixel_y = -1;
+	dir = 8
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Jt" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2
+	},
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/adminlevel/ert_station/yautja_station)
+"JU" = (
+/obj/structure/pipes/portables_connector{
+	dir = 1;
+	color = "#6b675e"
+	},
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Ln" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Lw" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"LA" = (
+/obj/effect/hunter/rune/corner,
+/turf/open/predship/mainfloor/edge/west,
+/area/adminlevel/ert_station/yautja_station)
+"Mf" = (
+/obj/effect/hunter/bridge_border/brown/edge{
+	dir = 8
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Mg" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/adminlevel/ert_station/yautja_station)
+"Mi" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2"
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"Mn" = (
+/turf/open/floor/corsat/box,
+/area/adminlevel/ert_station/yautja_station)
+"Mv" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"MT" = (
+/obj/effect/hunter/bridge_border/edge{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"Nc" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"Nj" = (
+/obj/effect/hunter/rune/corner{
+	dir = 8
+	},
+/turf/open/predship/mainfloor/edge/east,
+/area/adminlevel/ert_station/yautja_station)
+"Nu" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 4
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Nv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = -2
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"NB" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2";
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"NE" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"NL" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	dir = 2
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"NW" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/predship/hunter_catwalk_new,
+/area/adminlevel/ert_station/yautja_station)
+"NX" = (
+/obj/effect/hunter/bridge_border/edge{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"NZ" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Oc" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/mainfloor/direction_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"Od" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727";
+	dir = 1;
+	layer = 2.8
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 8;
+	color = "#912727"
+	},
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Ot" = (
+/obj/effect/hunter/bridge_border/small_stair_left{
+	dir = 4
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Ou" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/adminlevel/ert_station/yautja_station)
+"OC" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"OG" = (
+/obj/structure/machinery/door/airlock/yautja/secure,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Pd" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"Py" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Secure Armory Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"PH" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	density = 0;
+	layer = 2.79
+	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle,
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = 8
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"PJ" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"PY" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_x = -26;
+	pixel_y = 24;
+	layer = 3.1
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24;
+	layer = 3.1
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"PZ" = (
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Qi" = (
+/obj/structure/surface/hunter_shuttle_table,
+/obj/structure/showcase{
+	desc = "A console for managing the fuel and power supply of a docked Military Caste shuttle.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "overwatch";
+	name = "Shuttle Logistics Console";
+	pixel_y = 9;
+	density = 0
+	},
+/obj/effect/hunter/bridge_border{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"QK" = (
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727";
+	dir = 1;
+	layer = 2.8
+	},
+/obj/structure/showcase{
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	color = "#c0baae";
+	desc = "A ventilation shaft for electrical machinery."
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"QW" = (
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/stack/yautja_rope,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/storage/belt/utility/pred/full,
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Rf" = (
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/adminlevel/ert_station/yautja_station)
+"Rr" = (
+/obj/structure/terminal{
+	color = "#c0baae";
+	dir = 8
+	},
+/obj/effect/hunter/rune/stripes_arrow{
+	dir = 4;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"Rt" = (
+/obj/structure/machinery/door/poddoor{
+	name = "\improper Docking Umbilical";
+	dir = 4
+	},
+/turf/closed/wall/huntership,
+/area/adminlevel/ert_station/yautja_station)
+"Ru" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/chem_dispenser/soda/yautja{
+	pixel_y = 10
+	},
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"RC" = (
+/turf/open/predship/hull/non_weedable_hull/northwest,
+/area/adminlevel/ert_station/yautja_station)
+"RU" = (
+/obj/effect/hunter/bridge_border/small_stair_right{
+	dir = 8
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"RY" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/wirecutters/yautja{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = -2
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/yautja_station)
+"Sa" = (
+/obj/effect/hunter/bridge_border,
+/turf/open/predship/tile/red2,
+/area/adminlevel/ert_station/yautja_station)
+"Si" = (
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/structure/closet/yautja/big,
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"So" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/turf/open/predship/tile/hunter_tile_6/east,
+/area/adminlevel/ert_station/yautja_station)
+"Ss" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"SA" = (
+/turf/closed/wall/huntership,
+/area/adminlevel/ert_station/yautja_station)
+"SM" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = -3;
+	pixel_y = -5;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"SQ" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/obj/structure/prop/hunter/misc/feed{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"Tc" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/adminlevel/ert_station/yautja_station)
+"Tu" = (
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"Tx" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/direction_1/east,
+/area/adminlevel/ert_station/yautja_station)
+"TR" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"TY" = (
+/obj/effect/hunter/bridge_border/corner{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/tile/hunter_tile_1,
+/area/adminlevel/ert_station/yautja_station)
+"TZ" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/direction_2/north,
+/area/adminlevel/ert_station/yautja_station)
+"Ub" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/twohanded/yautja/glaive/alt,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Ut" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"UA" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"UG" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"UM" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/medicomp/full{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/item/storage/medicomp/full{
+	pixel_y = 2
+	},
+/obj/item/storage/medicomp/full{
+	pixel_x = -1;
+	pixel_y = -7
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"UW" = (
+/obj/effect/hunter/rune,
+/turf/open/predship/mainfloor/direction_1/north,
+/area/adminlevel/ert_station/yautja_station)
+"Va" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/xemeatpie{
+	name = "Elite Hunter's Xenopie"
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/trash/tray{
+	color = "#c1a384";
+	pixel_y = 20;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice{
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/snacks/xenomeatbreadslice{
+	pixel_y = 19;
+	pixel_x = 3
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Vf" = (
+/turf/open/predship/hull/non_weedable_hull/north,
+/area/adminlevel/ert_station/yautja_station)
+"Vi" = (
+/turf/open/predship/hull/non_weedable_hull,
+/area/adminlevel/ert_station/yautja_station)
+"Vm" = (
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/obj/structure/bed/bedroll{
+	color = "#6b675e";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"VF" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"VK" = (
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/adminlevel/ert_station/yautja_station)
+"VO" = (
+/obj/effect/hunter/rune{
+	dir = 8
+	},
+/turf/open/predship/mainfloor/direction_3/north,
+/area/adminlevel/ert_station/yautja_station)
+"VQ" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"VZ" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west{
+	layer = 2.52
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north{
+	pixel_y = 7
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"Wc" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"Wh" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/juicer/yautja,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Wo" = (
+/turf/open/predship,
+/area/adminlevel/ert_station/yautja_station)
+"Wt" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+"WC" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2
+	},
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"WH" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
+/turf/open/predship/tile/hunter_tile_3/west,
+/area/adminlevel/ert_station/yautja_station)
+"WO" = (
+/obj/structure/machinery/body_scanconsole/yautja{
+	pixel_x = 1;
+	pixel_y = 8;
+	dir = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"WS" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/twohanded/yautja/spear,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"WU" = (
+/obj/structure/machinery/power/smes/magical/yautja,
+/obj/structure/terminal{
+	color = "#c0baae";
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"Xb" = (
+/obj/effect/hunter/bridge_border/small_stair_right{
+	dir = 4
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Xd" = (
+/obj/structure/pipes/standard/simple/hidden{
+	dir = 1;
+	color = "#6b675e"
+	},
+/obj/effect/hunter/rune/stripes_arrow{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/hunter/rune{
+	dir = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/box,
+/area/adminlevel/ert_station/yautja_station)
+"Xf" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/surgery/wound_clamp{
+	pixel_y = -4;
+	pixel_x = 1
+	},
+/obj/item/tool/surgery/stabilizer_gel{
+	pixel_y = 1;
+	pixel_x = 8
+	},
+/obj/item/tool/surgery/healing_gun{
+	pixel_y = 7
+	},
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Xi" = (
+/obj/effect/hunter/bridge_border/small_stair_left{
+	dir = 8
+	},
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Xv" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"XD" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_1/west,
+/area/adminlevel/ert_station/yautja_station)
+"XK" = (
+/obj/structure/machinery/door/poddoor{
+	name = "\improper Hangar Bay Door"
+	},
+/turf/closed/wall/huntership,
+/area/adminlevel/ert_station/yautja_station)
+"XQ" = (
+/obj/structure/machinery/optable/yautja,
+/turf/open/predship/tile/red,
+/area/adminlevel/ert_station/yautja_station)
+"Ya" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 8;
+	color = "#52443b";
+	pixel_x = 13;
+	pixel_y = -2;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/red3,
+/area/adminlevel/ert_station/yautja_station)
+"Yc" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/yautja_station)
+"Yr" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
+	},
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/adminlevel/ert_station/yautja_station)
+"YR" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 8;
+	color = "#912727"
+	},
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/predship/tile/red4/glow,
+/area/adminlevel/ert_station/yautja_station)
+"Zp" = (
+/obj/structure/showcase{
+	desc = "A console used for monitoring various station systems.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Monitor";
+	pixel_x = -17;
+	pixel_y = 10;
+	layer = 3.1
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"Zr" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east{
+	layer = 2.52
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north{
+	pixel_y = 7
+	},
+/turf/open/predship/tile/hunter_tile_3,
+/area/adminlevel/ert_station/yautja_station)
+"Zz" = (
+/obj/structure/reagent_dispensers/tank/water/yautja,
+/turf/open/predship/hunter_catwalk_alt,
+/area/adminlevel/ert_station/yautja_station)
+"ZL" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown,
+/obj/structure/prop/hunter/catwalk/corner/eight,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/adminlevel/ert_station/yautja_station)
+"ZP" = (
+/obj/structure/pipes/unary/freezer/yautja{
+	dir = 4
+	},
+/turf/open/predship/hunter_grille,
+/area/adminlevel/ert_station/yautja_station)
+"ZW" = (
+/obj/effect/hunter/bridge_border/brown,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 4;
+	color = "#63594d";
+	pixel_x = -15;
+	pixel_y = -22;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/adminlevel/ert_station/yautja_station)
+
+(1,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(2,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+RC
+SA
+vb
+kS
+RC
+SA
+vb
+kS
+RC
+SA
+vb
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(3,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(4,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(5,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(6,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+RC
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+vb
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(7,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+RC
+Vf
+SA
+SA
+Yc
+Yc
+Yc
+Yc
+Yc
+Yc
+SA
+SA
+SA
+Yc
+Yc
+SA
+Yc
+Yc
+SA
+Vi
+Cf
+vb
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(8,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+Vf
+SA
+SA
+bI
+SM
+Bj
+ji
+Gh
+ji
+Gh
+Ya
+Bj
+SA
+Gi
+Ad
+SA
+NW
+ir
+SA
+SA
+SA
+Vi
+Cf
+Cf
+vb
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(9,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+ji
+kV
+ZW
+fQ
+fQ
+fQ
+of
+fQ
+NZ
+rv
+DU
+bi
+VO
+SA
+NE
+Mv
+Nc
+Vm
+SA
+SA
+SA
+SA
+Vi
+Cf
+vb
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(10,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+rv
+fb
+jH
+jH
+uH
+jH
+jH
+jH
+Ut
+ji
+DU
+Tx
+kM
+SA
+Mv
+HC
+BJ
+qC
+SA
+PH
+PH
+SA
+SA
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(11,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+Vf
+SA
+SA
+VF
+Bj
+ji
+Gh
+ji
+Bj
+ji
+aR
+vN
+SA
+TZ
+aj
+SA
+NB
+xv
+NB
+SA
+SA
+Ja
+Ja
+Ja
+vy
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(12,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+HV
+Vf
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+Tx
+kM
+Mn
+uu
+uu
+Mn
+Ic
+SA
+Py
+PZ
+PZ
+ma
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(13,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+HV
+DS
+DS
+DS
+DS
+Vf
+vm
+vm
+vm
+vm
+SA
+Ce
+bi
+VO
+uu
+Jt
+Ey
+uu
+ji
+aT
+Ja
+Ja
+Ja
+iL
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(14,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Vf
+vm
+vm
+vm
+vm
+Yc
+Ru
+Tx
+kM
+uu
+ly
+Va
+uu
+rv
+aT
+pK
+pK
+pK
+Gx
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(15,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+RC
+Cf
+Vf
+vm
+vm
+vm
+vm
+SA
+rT
+TZ
+aj
+uu
+Tc
+Mg
+uu
+rv
+aT
+pK
+pK
+pK
+Gx
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(16,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+RC
+Cf
+Vf
+SA
+SA
+Yc
+Yc
+Yc
+SA
+SA
+SA
+Tx
+kM
+Mn
+uu
+uu
+Mn
+ji
+aT
+Ja
+Ja
+Ja
+Ja
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(17,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+RC
+Cf
+Vf
+Yc
+Yc
+SA
+xS
+Wt
+BE
+BE
+hi
+Do
+SA
+Oc
+VO
+Mn
+uu
+uu
+Mn
+aO
+SA
+os
+PZ
+PZ
+ma
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(18,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+Yc
+Yc
+tU
+ZL
+Jb
+WC
+WC
+WC
+kc
+Jc
+yf
+Tx
+kM
+uu
+Jt
+Ey
+uu
+oI
+SA
+Ja
+Ja
+Ja
+vy
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(19,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+an
+pj
+pj
+gO
+Jk
+jm
+jm
+jm
+jm
+do
+Fp
+TZ
+aj
+uu
+jt
+le
+uu
+VQ
+SA
+bM
+bM
+SA
+SA
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(20,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+Vf
+Yc
+iK
+ec
+Ja
+vt
+zR
+jm
+PY
+rN
+jm
+Gr
+Fp
+Tx
+kM
+uu
+Tc
+Mg
+uu
+CT
+SA
+SA
+SA
+SA
+Vi
+DS
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(21,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+FR
+pj
+pj
+So
+gK
+jm
+jm
+jm
+jm
+dl
+Fp
+bi
+VO
+Mn
+uu
+uu
+Mn
+SA
+SA
+Vi
+DS
+DS
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(22,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+Vf
+Yc
+Yc
+Yc
+BO
+uj
+DZ
+Al
+Yr
+Yr
+BM
+cP
+yf
+Tx
+kM
+ji
+rv
+Im
+SA
+SA
+Vi
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(23,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+Cf
+SA
+Cf
+kS
+kS
+HV
+DS
+Vf
+Yc
+Yc
+SA
+tr
+nP
+BE
+BE
+hn
+BY
+SA
+zw
+aj
+vN
+hr
+QW
+SA
+Vi
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(24,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+HV
+DS
+Vf
+SA
+SA
+Yc
+Yc
+Yc
+SA
+SA
+SA
+Nj
+LA
+ji
+rv
+QW
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(25,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+HV
+DS
+Vf
+vm
+vm
+vm
+vm
+SA
+oI
+Wc
+Fl
+Fl
+OC
+SA
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(26,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+RC
+Cf
+Cf
+Cf
+SA
+Cf
+Cf
+Cf
+SA
+Cf
+Cf
+Cf
+SA
+Cf
+Cf
+Cf
+vb
+kS
+kS
+kS
+kS
+kS
+Vf
+vm
+vm
+vm
+vm
+SA
+VQ
+VK
+Ja
+VK
+IK
+SA
+Vi
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(27,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+RC
+Cf
+Vf
+SA
+Yc
+Yc
+SA
+Yc
+Yc
+SA
+SA
+SA
+Yc
+Yc
+SA
+Yc
+Yc
+SA
+Vi
+Cf
+Cf
+Cf
+Cf
+Cf
+Vf
+vm
+vm
+vm
+vm
+SA
+VQ
+VK
+Ja
+VK
+wk
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(28,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+RC
+Vf
+SA
+SA
+SA
+xX
+Ss
+Ss
+oD
+fP
+xA
+yu
+so
+fP
+xX
+Ss
+Ss
+oD
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+Yc
+Yc
+Yc
+SA
+SA
+VQ
+VK
+Ja
+VK
+rQ
+Yc
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+vb
+"}
+(29,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+RC
+Vf
+SA
+SA
+kt
+kt
+ji
+vN
+hr
+vN
+Rr
+Ge
+AA
+Ln
+Rr
+vN
+hr
+vN
+Ja
+ei
+zE
+RY
+Ja
+Fq
+Si
+Mi
+gh
+yC
+gh
+gh
+yC
+SA
+CT
+VK
+Ja
+VK
+Ji
+SA
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+Vi
+"}
+(30,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+Vf
+SA
+SA
+Bu
+GL
+Zz
+At
+At
+At
+At
+At
+Bh
+Fs
+rc
+At
+At
+At
+At
+At
+At
+At
+At
+At
+vN
+vN
+NL
+ji
+vN
+hr
+rv
+vN
+SA
+SA
+OG
+SA
+OG
+SA
+SA
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+bO
+"}
+(31,1,1) = {"
+kS
+kS
+kS
+kS
+RC
+Vf
+SA
+Ex
+vN
+ji
+vN
+hr
+vN
+ji
+jf
+hr
+jf
+ji
+jf
+hr
+jf
+ji
+vN
+Ja
+jf
+jf
+rv
+At
+ji
+rv
+Mi
+vN
+rv
+ji
+vN
+rv
+uD
+Zp
+jf
+vN
+jf
+Ja
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(32,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+SA
+SA
+Ex
+jf
+jf
+jf
+jf
+Gi
+aU
+UW
+nG
+UW
+aU
+UW
+nG
+UW
+aU
+UW
+nG
+UW
+Ad
+jf
+At
+vN
+tx
+SA
+kv
+Ss
+oD
+AU
+hr
+vN
+Ja
+jf
+hr
+jf
+Ja
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(33,1,1) = {"
+kS
+kS
+kS
+RC
+Cf
+SA
+oM
+Ex
+vN
+hr
+vN
+ji
+Nj
+Bi
+XD
+ux
+XD
+Bi
+XD
+ux
+XD
+Bi
+XD
+ux
+FY
+kM
+ji
+At
+vN
+hT
+SA
+SA
+SA
+SA
+zc
+Wh
+fe
+hr
+Ja
+vN
+Ja
+eF
+Yc
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+vb
+"}
+(34,1,1) = {"
+kS
+kS
+RC
+Cf
+Cf
+SA
+SA
+At
+ab
+At
+At
+At
+pO
+At
+At
+zD
+At
+At
+At
+At
+At
+At
+ab
+At
+bi
+VO
+jf
+At
+ji
+Ub
+SA
+SQ
+uY
+SA
+NB
+NB
+SA
+qs
+Ja
+hr
+Ja
+Ct
+Yc
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+Vi
+"}
+(35,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+ab
+xJ
+DA
+DA
+DA
+wy
+cg
+TR
+Zr
+DA
+DA
+DA
+DA
+DA
+DA
+pm
+ab
+Tx
+kM
+vN
+At
+At
+At
+At
+rv
+VK
+ac
+kr
+zF
+SA
+zV
+jf
+Ja
+jf
+Ja
+Yc
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+bO
+"}
+(36,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+Dy
+qS
+At
+TZ
+aj
+oO
+Xi
+RU
+oO
+At
+Mf
+Ou
+Jh
+VK
+Pd
+NL
+vN
+qI
+UM
+Xf
+wN
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(37,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+IH
+pO
+Tx
+kM
+ye
+xK
+ak
+SA
+uP
+Lw
+At
+Ee
+Ee
+Ee
+SA
+Be
+vG
+Ed
+Cm
+ZP
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(38,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+BV
+At
+bi
+VO
+wK
+MT
+iP
+xs
+Is
+eb
+kV
+fQ
+fQ
+NZ
+Mi
+ji
+Hj
+HW
+Xd
+eO
+Yc
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+vb
+"}
+(39,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+BV
+At
+Tx
+kM
+Qi
+CH
+fI
+Hf
+Is
+qv
+qy
+sM
+sM
+GV
+Mi
+vN
+Jo
+HW
+Xd
+JU
+Yc
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+Vi
+"}
+(40,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+BV
+At
+TZ
+aj
+yP
+NX
+oG
+EV
+Is
+eb
+hP
+jH
+jH
+Ut
+Mi
+ji
+mP
+HW
+Xd
+nN
+Yc
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+bO
+"}
+(41,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+Hb
+lV
+Tx
+kM
+SA
+TY
+Tu
+SA
+UG
+Lw
+At
+Ee
+Ee
+Ee
+SA
+Be
+sQ
+Bs
+bg
+jR
+Yc
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(42,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+Ja
+PJ
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+HC
+qS
+At
+bi
+VO
+Sa
+Ot
+Xb
+Sa
+At
+HM
+Rf
+eR
+VK
+fL
+NL
+vN
+UA
+Aq
+zp
+Jm
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(43,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+XK
+Ja
+ab
+mY
+Xv
+Xv
+Xv
+sG
+hs
+hH
+VZ
+Xv
+Xv
+Xv
+Xv
+Xv
+Xv
+lr
+ab
+Tx
+kM
+vN
+At
+At
+At
+At
+rv
+VK
+CM
+DC
+Hw
+SA
+zV
+jf
+wn
+jf
+uB
+Yc
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+Cf
+vb
+"}
+(44,1,1) = {"
+kS
+kS
+HV
+DS
+DS
+SA
+SA
+At
+ab
+At
+At
+At
+lV
+At
+At
+lR
+At
+At
+At
+At
+At
+At
+ab
+At
+TZ
+aj
+jf
+At
+ji
+um
+SA
+fy
+ui
+SA
+NB
+NB
+SA
+qs
+Ja
+hr
+WO
+jf
+Yc
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+vm
+Vi
+"}
+(45,1,1) = {"
+kS
+kS
+kS
+HV
+DS
+SA
+oM
+Ex
+vN
+hr
+vN
+ji
+Gi
+aU
+UW
+nG
+UW
+aU
+UW
+nG
+UW
+aU
+UW
+nG
+hf
+kM
+ji
+At
+vN
+WS
+SA
+SA
+SA
+SA
+Fi
+XQ
+bl
+hr
+Ja
+vN
+wW
+jf
+Yc
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+bO
+"}
+(46,1,1) = {"
+kS
+kS
+kS
+kS
+Vf
+SA
+SA
+Ex
+jf
+jf
+jf
+jf
+Nj
+Bi
+XD
+ux
+XD
+Bi
+XD
+ux
+XD
+Bi
+XD
+ux
+XD
+LA
+jf
+At
+vN
+tx
+SA
+kv
+Ss
+oD
+hE
+hr
+CO
+Ja
+jf
+hr
+SA
+SA
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(47,1,1) = {"
+kS
+kS
+kS
+kS
+HV
+Vf
+SA
+WH
+vN
+ji
+vN
+hr
+vN
+ji
+jf
+hr
+jf
+ji
+jf
+hr
+jf
+ji
+vN
+Ja
+jf
+jf
+rv
+At
+ji
+rv
+Mi
+vN
+rv
+ji
+vN
+rv
+ji
+Ja
+jf
+SA
+SA
+Vi
+DS
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(48,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+Vf
+SA
+SA
+Bu
+GL
+Zz
+At
+At
+At
+At
+At
+Od
+ey
+YR
+At
+At
+At
+At
+At
+At
+At
+At
+At
+vN
+vN
+NL
+ji
+vN
+hr
+rv
+vN
+vN
+Ja
+SA
+SA
+Vi
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(49,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+HV
+Vf
+SA
+SA
+Nu
+Nu
+ji
+vN
+hr
+vN
+ix
+QK
+gH
+aQ
+ix
+vN
+hr
+vN
+Ja
+yI
+uM
+Nv
+Ja
+vN
+ji
+Mi
+gh
+yC
+gh
+gh
+yC
+vN
+Ja
+SA
+Vi
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(50,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+HV
+Vf
+SA
+SA
+SA
+xX
+Ss
+Ss
+oD
+WU
+xA
+aM
+AJ
+WU
+xX
+Ss
+Ss
+oD
+SA
+SA
+SA
+SA
+Rt
+Rt
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+SA
+Vi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(51,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+HV
+DS
+Vf
+SA
+Yc
+Yc
+SA
+Yc
+Yc
+SA
+SA
+SA
+Yc
+Yc
+SA
+Yc
+Yc
+SA
+Vi
+DS
+SA
+jf
+jf
+SA
+Wo
+Wo
+SA
+Wo
+Wo
+SA
+DS
+DS
+bO
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(52,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+HV
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+bO
+kS
+SA
+ji
+rv
+SA
+Wo
+Wo
+SA
+Wo
+Wo
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(53,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+rv
+ji
+SA
+Wo
+Wo
+SA
+Wo
+Wo
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(54,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+jf
+jf
+SA
+Wo
+Wo
+SA
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(55,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+ji
+rv
+SA
+kS
+kS
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(56,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+rv
+ji
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(57,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+jf
+jf
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(58,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+SA
+Rt
+Rt
+SA
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}

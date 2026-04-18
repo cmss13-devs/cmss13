@@ -27,21 +27,25 @@
 	)
 
 	if(response.errored)
-		SS13LIB_WARNING_LOG("Attestation request failed.")
+		SS13LIB_WARNING_LOG("Attestation request failed (HTTP layer error).")
+		return FALSE
+
+	if(response.status_code != 200)
+		SS13LIB_WARNING_LOG("Attestation rejected by hub (status [response.status_code]): [response.body]")
 		return FALSE
 
 	var/body
 	try
 		body = json_decode(response.body)
 	catch
-		SS13LIB_WARNING_LOG("Could not decode attestation response.")
+		SS13LIB_WARNING_LOG("Could not decode attestation response: [response.body]")
 		return FALSE
 
 	if(body && body["verified_domain"])
 		SS13LIB_INFO_LOG("Domain attestation successful: [body["verified_domain"]]")
 		return TRUE
 
-	SS13LIB_WARNING_LOG("Attestation rejected by hub.")
+	SS13LIB_WARNING_LOG("Attestation response missing verified_domain: [response.body]")
 	return FALSE
 
 #undef SS13LIB_ED25519_SIGNATURE_BASE64_LENGTH

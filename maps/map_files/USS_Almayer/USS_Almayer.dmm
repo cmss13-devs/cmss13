@@ -67645,7 +67645,8 @@
 	dir = 8
 	},
 /obj/structure/machinery/autodispenser{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
@@ -93330,7 +93331,9 @@
 	pixel_y = 28;
 	pixel_x = -1
 	},
-/obj/structure/machinery/xenoanalyzer,
+/obj/structure/machinery/xenoanalyzer{
+	unacidable = 1
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "xqy" = (

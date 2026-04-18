@@ -110,7 +110,7 @@ A synthetic's head can be reattached to their body by a skilled doctor. Save you
 Switching to your sidearm is not faster than reloading.
 You can refill extinguishers from canteens, flasks, water bottles, and water tanks.
 You can middle mouse click to open containers, even if your hands are full, and you can open nested inventories this way.
-Resin doors will collapse instantly if there’s no walls or doors adjacent to support them- Breach resin defences more quickly by targeting their supporting structures instead!
+Resin doors will collapse instantly if there’s no walls or doors adjacent to support them- Breach resin defenses more quickly by targeting their supporting structures instead!
 It’s much faster to do surgery steps in parallel instead of series- For instance, opening incisions with a scalpel on every fractured limb instead of performing surgery step by step individually for each limb! This saves a LOT of time since you don’t need to switch tools constantly.
 Underbarrel grenade launchers, the M85 and M92 all have IFF, passing through marines as they fire! Fire your grenades without fear of blowing up your teammates! (Until you do it anyway.)
 An officer who acts and takes the initiative will sometimes be wrong; An officer who takes no action is always wrong.

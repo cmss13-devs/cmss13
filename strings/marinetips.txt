@@ -119,7 +119,7 @@ Fire support can end up supporting your enemy instead.
 As a Corpsman, if you’re treating a patient near the frontline, remember to keep aware of your surroundings and avoid tunnel visioning. Falling back with your patient when the frontline is struggling can mean the difference between two free captures or two combat-capable marines.
 As a Smartgunner, remember to constantly switch between your smartgun modes in combat depending on the situation!
 Handthrown grenade timers usually go off a little bit after 3 beeps, throw it then if you want the shortest timer. Beep, beep, beep, bee-…
-M37 is best used on harm intent and at pointblank range. If you miss within 1 tile, you won’t shoot, but it will put you on shooting cooldown for 1 second! But if you hit within 1 tile, youll always get the highest possible damage on your target. Stay sharp, marine.
+M37 is best used on harm intent and at point blank range. If you hit within 1 tile, you'll always get the highest possible damage on your target. Stay sharp, marine.
 Marines take fewer bullets to kill than xenomorphs
 Make sure to bring flares. Noone wants to be blind against these things…
 The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.

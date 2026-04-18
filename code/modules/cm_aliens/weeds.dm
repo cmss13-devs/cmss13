@@ -617,6 +617,10 @@
 	slow_multiplier = 0.05
 	var/resin_parent
 
+/obj/effect/alien/weeds/node/horde_mode/cluster/Destroy()
+	. = ..()
+	resin_parent = null
+
 /obj/effect/alien/weeds/node/weak/horde_mode
 	slow_multiplier = 0.75
 	decay_speed = 2 SECONDS

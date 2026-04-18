@@ -17,6 +17,12 @@
 #define SS13LIB_ROUND_GAMEMODE GLOB.master_mode // GLOB.master_mode
 #define SS13LIB_ROUND_ID GLOB.round_id // GLOB.round_id
 
+#define SS13LIB_ATTEST_DOMAIN CONFIG_GET(string/verified_domain)
+#define SS13LIB_ATTEST_PRIVKEY CONFIG_GET(string/verified_domain_privkey)
+
+#define SS13LIB_ED25519_SIGN(privkey, message) rustg_ed25519_sign(privkey, message)
+#define SS13LIB_UNIX_EPOCH rustg_unix_timestamp()
+
 #define SS13LIB_INFO_LOG(X) log_debug("\[SS13LIB INFO\] [X]")
 #define SS13LIB_WARNING_LOG(X) log_debug("\[SS13LIB WARNING\] [X]")
 #define SS13LIB_ERROR_LOG(X) log_debug("\[SS13LIB ERROR\] [X]")

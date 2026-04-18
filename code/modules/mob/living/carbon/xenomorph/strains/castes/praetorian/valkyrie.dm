@@ -36,7 +36,7 @@
 	var/fury_max = 200
 	var/fury_per_attack = 15
 	var/fury_per_life = 5
-	var/heal_range =  3
+	var/heal_range =  5
 	var/raging = FALSE
 
 	// State
@@ -467,9 +467,6 @@
 	if(!check_plasma_owner())
 		return
 
-	if(!behavior.use_internal_fury_ability(retrieve_cost))
-		return
-
 	if(!check_and_use_plasma_owner())
 		return
 
@@ -561,3 +558,21 @@
 	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
 	return ..()
+
+/datum/status_effect/grace_period
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = null
+	remove_on_fullheal = TRUE
+	duration = 3 SECONDS
+	var/list/bit_to_remove = list(CANSTUN,CANDAZE,CANSLOW)
+
+/datum/status_effect/grace_period/on_creation(mob/living/new_owner, ...)
+	. = ..()
+	for(var/bit in bit_to_remove)
+		new_owner.status_flags &= bit
+
+/datum/status_effect/grace_period/on_remove()
+	. = ..()
+	for(var/bit in bit_to_remove)
+		owner.status_flags |= bit
+

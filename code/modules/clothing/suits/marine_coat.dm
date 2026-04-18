@@ -41,6 +41,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 
 	//Buttons

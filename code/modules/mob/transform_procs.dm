@@ -110,12 +110,13 @@
 
 	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
-	new_xeno.hivenumber = XENO_HIVE_CORRUPTED
+
+	new_xeno.set_hive_and_update(hivenumber_alienize)
 
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
 
-	to_chat(new_xeno, "<B>Your new form ripples with strength that confounds you. You are now... perfection.</B>")
+	to_chat(new_xeno, "<B>Our new form ripples with strength that confounds you. We are now... perfection.</B>")
 	qdel(src)
 	return
 

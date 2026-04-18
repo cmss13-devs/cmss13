@@ -23,15 +23,21 @@
 
 		if(property_CIP)
 			level = property_CIP.level //check level on CIP for hivenumber_alienize
-			hivenumber_alienize = GLOB.hive_datum[level]
+			to_chat(affected_mob, "Cipheriiiiing")
+			var/hivenumber = GLOB.hive_datum[level]
+			var/datum/hive_status/hive = hivenumber
+			hivenumber_alienize = hive
 
 	for(var/datum/reagent/ciphering_reagent_predator as anything in affected_mob.reagents.reagent_list)
 		var/datum/chem_property/property_CIP_PRED = ciphering_reagent_predator.get_property(PROPERTY_CIPHERING_PREDATOR) //checks for predalien hivenumber
 
 		if(property_CIP_PRED)
 			level = property_CIP_PRED.level //check level on PCI for hivenumber_alienize
-			hivenumber_alienize = GLOB.hive_datum[level]
-			alienize_list = XENO_CASTE_PREDALIEN
+			to_chat(affected_mob, "Predatore")
+			var/hivenumber = GLOB.hive_datum[level]
+			var/datum/hive_status/hive = hivenumber
+			hivenumber_alienize = hive
+			alienize_list = list(XENO_CASTE_PREDALIEN)
 
 
 	switch(stage)
@@ -57,7 +63,7 @@
 				to_chat(affected_mob, pick(SPAN_DANGER("Your skin feels very tight."), SPAN_DANGER("Your blood boils!")))
 				affected_mob.take_limb_damage(3)
 			if (prob(5))
-				affected_mob.whisper(pick("Soon we will be one...", "Must... evolve...", "Capture...", "We are perfect.", "Hsssshhhhh!"))
+				affected_mob.whisper(pick("Soon we will be one...", "Must... evolve...", "Capture...", "You are perfect.", "Hsssshhhhh!"))
 			if (prob(8))
 				to_chat(affected_mob, SPAN_DANGER("You can feel... something...inside you."))
 		if(5)

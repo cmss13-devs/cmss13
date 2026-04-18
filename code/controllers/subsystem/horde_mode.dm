@@ -235,7 +235,8 @@ SUBSYSTEM_DEF(horde_mode)
 		var/mob/living/player_mob = player_in_list["mob"]
 		if(player_mob.stat != DEAD)
 			all_players += player_mob
-	return pick(all_players)
+	if(len(all_players))
+		return pick(all_players)
 
 /datum/controller/subsystem/horde_mode/proc/return_random_xeno()
 	var/list/all_xenos = list()

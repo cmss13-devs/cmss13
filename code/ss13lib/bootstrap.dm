@@ -27,6 +27,12 @@
 	if(!perform_handshake())
 		ready = TRUE
 		return FALSE
+
+#ifdef SS13LIB_ATTEST_DOMAIN
+	if(!perform_attestation())
+		SS13LIB_WARNING_LOG("Domain attestation failed, server will continue without verification.")
+#endif
+
 	SS13LIB_INFO_LOG("SS13Lib initialised successfully.")
 	ready = TRUE
 

@@ -34,8 +34,12 @@
 		"pop_cap" = SS13LIB_PLAYER_LIMIT,
 #endif
 
-#ifdef SS13LIB_NETWORK_IDENTIFIER
-		"network_identifier" = SS13LIB_NETWORK_IDENTIFIER,
+#ifdef SS13LIB_COMMUNITY_NAME
+		"community_name" = SS13LIB_COMMUNITY_NAME,
+#endif
+
+#ifdef SS13LIB_REGION
+		"region" = SS13LIB_REGION,
 #endif
 
 #ifdef SS13LIB_SERVER_TAGS
@@ -84,6 +88,10 @@
 
 #ifdef SS13LIB_ROUND_GAMEMODE
 			"gamemode" = SS13LIB_ROUND_GAMEMODE,
+#endif
+
+#ifdef SS13LIB_ROUND_STATE
+			"state" = SS13LIB_ROUND_STATE,
 #endif
 		)
 	)

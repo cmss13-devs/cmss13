@@ -1,6 +1,8 @@
 /datum/ss13lib
 	/// The ID for this server. This must be sent in all authentication requests
 	var/server_id
+	/// Nonce from the last handshake, used for domain attestation
+	var/nonce
 	/// Whether the library has completed initialisation
 	var/ready = FALSE
 
@@ -42,6 +44,7 @@
 			continue
 
 		src.server_id = retrieved_id
+		src.nonce = body["nonce"]
 		break
 
 	if(src.server_id)

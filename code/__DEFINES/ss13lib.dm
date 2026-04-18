@@ -57,10 +57,18 @@
 /// Optional field
 #define SS13LIB_PLAYER_LIMIT // CONFIG_GET(number/popcap)
 
-/// If this server belongs to a known network of servers, this can be provided here.
-/// This only provides a small logo next to the listing on the launcher page
+/// The name of the community or network of servers this server belongs to.
 /// Optional field
-#define SS13LIB_NETWORK_IDENTIFIER // CONFIG_GET(string/network_identifier)
+#define SS13LIB_COMMUNITY_NAME // CONFIG_GET(string/community_name)
+
+/// The geographic region where this server is hosted.
+/// Values: "africa_central", "africa_north", "africa_south", "antarctica",
+///   "asia_east", "asia_north", "asia_southeast", "central_america",
+///   "europe_east", "europe_west", "greenland", "india", "middle_east",
+///   "north_america_central", "north_america_east", "north_america_west",
+///   "oceania", "south_america_east", "south_america_south", "south_america_west"
+/// Optional field
+#define SS13LIB_REGION // "north_america_east"
 
 /// What tags this server should have on the SS13Hub. This is from a predefined list of available tags,
 /// available at: <source code link to backend parsing for tags>
@@ -103,6 +111,10 @@
 /// What the ID of the current round is
 #define SS13LIB_ROUND_ID // GLOB.round_id
 
+/// The current state of the round
+/// Values: "initializing", "lobby", "playing", "finished"
+#define SS13LIB_ROUND_STATE // "playing"
+
 //! LIBRARY CONFIGURATION
 
 #define SS13LIB_INFO_LOG(X) // log_debug(X)
@@ -123,6 +135,28 @@
 /// which can be used for identification of the upstream username, hwid or account age.
 /// This should be typed as /datum/ss13lib_auth_response
 #define SS13LIB_CLIENT_INFO(X) // X.hub_info
+
+//! DOMAIN ATTESTATION
+//! Optional. Proves domain ownership to the hub via DNS TXT record + ed25519 signature.
+
+/// The domain to attest ownership of. Must have a _ss13hub TXT record with the matching ed25519 pubkey.
+/// Optional field — if not defined, attestation is skipped.
+#define SS13LIB_ATTEST_DOMAIN // CONFIG_GET(string/verified_domain)
+
+/// Ed25519 signing implementation. Takes a base64 private key and a message string,
+/// returns a base64-encoded signature. The consumer must provide this — typically via rustg.
+/// Required if SS13LIB_ATTEST_DOMAIN is defined.
+#define SS13LIB_ED25519_SIGN(privkey, message) // rustg_ed25519_sign(privkey, message)
+
+/// Base64-encoded ed25519 private key (32-byte seed). The corresponding public key
+/// must appear in the _ss13hub DNS TXT record as: ss13hub-ed25519=<base64-pubkey>
+/// Required if SS13LIB_ATTEST_DOMAIN is defined.
+#define SS13LIB_ATTEST_PRIVKEY // CONFIG_GET(string/verified_private_key) = "base64-encoded-32-byte-seed"
+
+/// Returns the current Unix timestamp (seconds since 1970-01-01). The consumer must
+/// provide this — typically via rustg
+/// Required if SS13LIB_ATTEST_DOMAIN is defined.
+#define SS13LIB_UNIX_EPOCH // rustg_unix_timestamp()
 
 #endif
 

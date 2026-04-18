@@ -56,7 +56,8 @@
 
 /obj/structure/horde_mode_resin/hive_cluster/Destroy()
 	. = ..()
-	weed_node.resin_parent = null
+	if(weed_node)
+		weed_node.resin_parent = null
 	weed_node = null
 
 //--------------------------------

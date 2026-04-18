@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(horde_mode)
 		to_chat(player_mob, message)
 
 /datum/controller/subsystem/horde_mode/proc/return_random_player()
-	var/list/all_players
+	var/list/all_players = list()
 	for(var/list/player_in_list as anything in current_players)
 		var/mob/living/player_mob = player_in_list["mob"]
 		if(player_mob.stat != DEAD)

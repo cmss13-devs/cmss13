@@ -550,3 +550,6 @@
 	#define url_decode(text) rustg_url_decode(text)
 #endif
 
+/// Signs `message` bytes with `secret_key`.
+/// Returns base64-encoded raw 64-byte signature, or `ERROR: ...`.
+#define rustg_ed25519_sign(secret_key, message) RUSTG_CALL(RUST_G, "ed25519_sign")(secret_key, message)

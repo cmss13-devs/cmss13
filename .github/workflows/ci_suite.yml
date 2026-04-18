@@ -14,11 +14,11 @@ jobs:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Restore SpacemanDMM cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
@@ -27,14 +27,14 @@ jobs:
       - name: Setup Bun
         uses: ./.github/actions/setup_bun
       - name: Restore Bootstrap cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: tools/bootstrap/.cache
           key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-bootstrap-
       - name: Restore Rust cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cargo
           key: ${{ runner.os }}-rust-${{ hashFiles('dependencies.sh')}}
@@ -69,11 +69,11 @@ jobs:
     name: Lint with OpenDream
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 9
-      - uses: actions/checkout@v4
-      - uses: robinraju/release-downloader@v1.9
+      - uses: actions/checkout@v6
+      - uses: robinraju/release-downloader@616444d935c04e4269e694a274bd94383479ecde
         with:
           repository: "OpenDreamProject/OpenDream"
           tag: "latest"
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup Bun
         uses: ./.github/actions/setup_bun
       - name: Restore BYOND from Cache
@@ -113,7 +113,7 @@ jobs:
       group: find_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Find Maps
         id: map_finder
         run: |
@@ -181,7 +181,7 @@ jobs:
       group: test_windows-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup Bun
         uses: ./.github/actions/setup_bun
       - name: Configure BYOND version from inputs
@@ -198,7 +198,7 @@ jobs:
           echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
           echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
       - name: Restore BYOND cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: C:\\byond
           key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}

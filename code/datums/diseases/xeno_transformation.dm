@@ -105,8 +105,8 @@
 				affected_mob.apply_damage(10, TOX)
 			if (prob(20))
 				affected_mob.updatehealth()
-				var/turf/T = find_loc(affected_mob)
-				gibs(T)
+				var/turf/hxenoturf = find_loc(affected_mob)
+				gibs(hxenoturf)
 				var/mob/living/carbon/human/H = affected_mob
 				H.Alienize(alienize_list, hivenumber_alienize)
 				src.cure()

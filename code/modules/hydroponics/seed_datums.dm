@@ -410,20 +410,11 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),
 											) = list(1,rand(1,2)))
-
-				//If conditions satisfied add 1 or 2u of a hydro chem to the plant, then increases directed mutation value
-				if (mutation_controller["Mutate Hydro Chem"] == -5 && (directed_mutation["Current Value"] < directed_mutation["Max Value"]) && !chems_special)
-					var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(rand(1,2)))
-					directed_mutation["Current Value"] = directed_mutation["Current Value"] + 1
-					if (directed_mutation["Current Value"] == directed_mutation["Max Value"])
-						source_turf.visible_message(SPAN_NOTICE("\The [display_name] makes a crackling noise and looks brittle!"))
-					else
-						source_turf.visible_message(SPAN_NOTICE("\The [display_name] makes a soft crackling noise."))
-					chem_to_add = new_chem
+				//Trigger Copper Sulfate adding hydrochems to non special plants
+				SEND_SIGNAL(processing_tray, COMSIG_DIRECTED_MUTATION, processing_tray)
 
 				if(prob(40) && chems_special)
 					chem_to_add = list(pick(chems_special) = list(7,rand(5,8)))
-				mutation_controller["Mutation Hydro Chem"] = 0
 				chems += chem_to_add
 
 	//reset mutation_controller for next cycle

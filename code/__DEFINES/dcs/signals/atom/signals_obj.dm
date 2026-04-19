@@ -75,3 +75,6 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+// Directed Mutation Trigger Signal
+#define COMSIG_DIRECTED_MUTATION "comsig_directed_mutation"

@@ -116,7 +116,7 @@
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
 
-	to_chat(new_xeno, "<B>Our new form ripples with strength that confounds you. We are now... perfection.</B>")
+	to_chat(new_xeno, "<B>Our new form ripples with strength that confounds us. We are now... perfection.</B>")
 	qdel(src)
 	return
 

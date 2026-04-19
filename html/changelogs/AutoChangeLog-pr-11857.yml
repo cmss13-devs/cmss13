@@ -1,4 +1,0 @@
-author: "DangerRevolution"
-delete-after: True
-changes:
-  - maptweak: "Removed some accessible OOB areas on Chance's Claim that could be tunneled into / cored etc"

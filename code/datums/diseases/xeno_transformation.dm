@@ -50,6 +50,7 @@
 		if(3)
 			if(xenospeaker == FALSE)
 				xenospeaker = TRUE
+				affected_mob.apply_effect(3, DAZE)
 				to_chat(affected_mob, SPAN_XENOHIGHDANGER("Something in your mind tears- and your thoughts don't sound the way they did before."))
 				affected_mob.add_language(LANGUAGE_XENOMORPH) //For roleplay purposes. You're gonna be one of them soon, anyway.
 				give_action(affected_mob, /datum/action/human_action/activable/cult/speak_hivemind) //Lets the victim speak in their hivemind, but not spectate xenos. Fun for roleplay.

@@ -200,7 +200,7 @@
 /datum/chem_property/special/embryonic
 	name = PROPERTY_EMBRYONIC
 	code = "MYO"
-	description = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organisaffected_mob."
+	description = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666

@@ -39,6 +39,7 @@
 
 	switch(stage)
 		if(1)
+			to_chat(affected_mob, "Something has begun within you.") //Feedback for XT
 		if(2)
 			if (prob(1))
 				to_chat(affected_mob, "Your throat feels scratchy.")

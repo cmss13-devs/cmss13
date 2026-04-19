@@ -563,7 +563,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
 	remove_on_fullheal = TRUE
-	duration = 3 SECONDS
+	duration = 30 SECONDS
 	var/list/bit_to_remove = list(CANSTUN,CANDAZE,CANSLOW)
 
 /datum/status_effect/grace_period/on_creation(mob/living/new_owner, ...)

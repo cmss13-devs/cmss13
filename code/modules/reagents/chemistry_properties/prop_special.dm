@@ -96,7 +96,6 @@
 		var/obj/limb/L = pick(H.limbs)
 		if(L)
 			L.fracture(100)
-		to_chat(M, "Something has begun within you.") //Feedback for the use of DDI.
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()

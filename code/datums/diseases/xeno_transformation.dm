@@ -10,7 +10,7 @@
 	stage_prob = 100 //Guaranteed stage advance per check, but minimum age keeps it a consistent length.
 	agent = "Rip-LEY Mutagenic Microbes"
 	affected_species = list("Human")
-	stage_minimum_age = 80
+	stage_minimum_age = 60
 	var/hivenumber_alienize = XENO_HIVE_NORMAL
 	var/alienize_list = XENO_T1_CASTES //define first then check for PCI during disease infection
 	var/level = 0

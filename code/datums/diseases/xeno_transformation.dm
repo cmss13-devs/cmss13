@@ -107,7 +107,7 @@
 				affected_mob.updatehealth()
 				var/turf/hxenoturf = find_loc(affected_mob)
 				gibs(hxenoturf)
-				var/mob/living/carbon/human/H = affected_mob
-				H.Alienize(alienize_list, hivenumber_alienize)
+				var/mob/living/carbon/human/humanmob = affected_mob
+				humanmob.Alienize(alienize_list, hivenumber_alienize)
 				src.cure()
 

@@ -376,6 +376,7 @@
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)
 		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
 		allied_xenomorphs.clear_debuffs()
+		allied_xenomorphs.apply_status_effect(/datum/status_effect/grace_period)
 	apply_cooldown()
 	return ..()
 
@@ -564,15 +565,13 @@
 	alert_type = null
 	remove_on_fullheal = TRUE
 	duration = 30 SECONDS
-	var/list/bit_to_remove = list(CANSTUN,CANDAZE,CANSLOW)
+
 
 /datum/status_effect/grace_period/on_creation(mob/living/new_owner, ...)
 	. = ..()
-	for(var/bit in bit_to_remove)
-		new_owner.status_flags &= bit
+	new_owner.status_flags &= ~(CANSTUN|CANDAZE|CANSLOW|CANKNOCKDOWN|CANKNOCKOUT)
 
 /datum/status_effect/grace_period/on_remove()
 	. = ..()
-	for(var/bit in bit_to_remove)
-		owner.status_flags |= bit
+	owner.status_flags |= (CANSTUN|CANDAZE|CANSLOW|CANKNOCKDOWN|CANKNOCKOUT)
 

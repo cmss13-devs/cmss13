@@ -109,6 +109,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/whiteout/medical/commando, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 
+
 /datum/equipment_preset/pmc/commando/gunner
 	name = "Weyland-Yutani Commando (Gunner) (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -314,6 +315,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/whiteout/medical/commando, WEAR_IN_BACK)
+
 
 /datum/equipment_preset/pmc/commando/dogcatcher
 	name = "Weyland-Yutani Commando (Dog Catcher)"

@@ -564,14 +564,16 @@
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
 	remove_on_fullheal = TRUE
-	duration = 30 SECONDS
+	duration = 3 SECONDS
 
 
 /datum/status_effect/grace_period/on_creation(mob/living/new_owner, ...)
 	. = ..()
 	new_owner.status_flags &= ~(CANSTUN|CANDAZE|CANSLOW|CANKNOCKDOWN|CANKNOCKOUT)
+	new_owner.add_filter("grace", 1, list("type" = "outline", "color" = "#21a310", "size" = 1))
 
 /datum/status_effect/grace_period/on_remove()
 	. = ..()
 	owner.status_flags |= (CANSTUN|CANDAZE|CANSLOW|CANKNOCKDOWN|CANKNOCKOUT)
+	owner.remove_filter("grace")
 

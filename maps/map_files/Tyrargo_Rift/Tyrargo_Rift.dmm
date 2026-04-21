@@ -695,6 +695,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/indoors/engineering/ground)
+"acb" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/tyrargo/indoors/museum_storage/ground)
 "acc" = (
 /obj/structure/largecrate/empty/case{
 	pixel_x = -2;
@@ -706,6 +709,11 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
+"ace" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/outdoors/colony_streets/north_east)
 "acf" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/nailgun,
@@ -730,6 +738,20 @@
 	},
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/tyrargo/indoors/engineering/ground)
+"ack" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
 "acl" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "22"
@@ -57733,7 +57755,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/museum_storage/ground)
 "djA" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -64935,10 +64957,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/tyrargo/indoors/museum_storage/ground)
-"ehv" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/asphalt/cement,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehx" = (
 /obj/item/reagent_container/food/snacks/meatpizzaslice{
@@ -173067,18 +173085,18 @@ fdm
 doT
 fbF
 djz
-ckE
-cma
-cma
-ckE
-ckE
-ckE
-ckE
-ckE
-ckE
-cma
-ehv
-ehv
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
+dbB
 dbB
 dbB
 doL
@@ -173409,7 +173427,7 @@ ctq
 csS
 crb
 eiC
-eiR
+ack
 fec
 fdZ
 afl
@@ -173960,7 +173978,7 @@ eje
 eRO
 eRM
 crb
-eOQ
+eiC
 eiR
 fed
 afp
@@ -173997,7 +174015,7 @@ aIq
 cls
 cls
 cls
-ckE
+acb
 bTI
 ckL
 ckE
@@ -174144,7 +174162,7 @@ cqz
 iHk
 eRN
 eRL
-eOQ
+eiC
 eiR
 fee
 fea
@@ -174328,7 +174346,7 @@ bta
 bta
 csf
 crb
-csl
+cqE
 crQ
 ada
 crr
@@ -174549,11 +174567,11 @@ aaX
 aIq
 aIq
 aIq
-ckE
-ckE
+dbB
+acb
 adi
-ckE
-ckE
+acb
+acb
 chx
 cil
 aHT
@@ -174700,15 +174718,15 @@ eiX
 eiT
 crI
 eiH
-eiF
+ace
 eiC
-ckE
+acb
 aln
 aln
 fdh
 eiy
 fdQ
-ckE
+acb
 eRr
 eRr
 aIq
@@ -174733,11 +174751,11 @@ aaX
 aIq
 aIq
 aIq
-ckE
+dbB
 ehx
 eiw
-ckE
-ckE
+acb
+acb
 chx
 dpy
 aHT
@@ -174917,11 +174935,11 @@ aaX
 aIq
 aIq
 aIq
-ckE
+dbB
 ehr
 eiw
-ckE
-ckE
+acb
+acb
 chz
 ayX
 cjT
@@ -175101,10 +175119,10 @@ aIq
 cls
 cls
 cls
-ckE
+dbB
 ehy
 cpC
-ckE
+acb
 chH
 ehl
 cim
@@ -175285,10 +175303,10 @@ cym
 aIq
 aIq
 aIq
-ckE
+dbB
 cli
 ehu
-ckE
+acb
 chH
 chz
 ckb
@@ -175469,10 +175487,10 @@ cDe
 aIq
 cpl
 aIq
-ckE
+dbB
 bpm
 aaR
-ckE
+acb
 chH
 chx
 ehh
@@ -175653,10 +175671,10 @@ aIq
 aIq
 cls
 cls
-ckE
+dbB
 cli
 eiw
-ckE
+acb
 axS
 chx
 aGV
@@ -175837,7 +175855,7 @@ cls
 cpD
 cls
 cls
-ckE
+dbB
 axJ
 eiw
 bta

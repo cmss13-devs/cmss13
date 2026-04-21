@@ -271,7 +271,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
 
-	if(health < maxHealth)
+	if(health < maxHealth && SSobjectives.first_drop_complete) //lets xenomorphs evolve while injured predrop
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 

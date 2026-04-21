@@ -141,7 +141,7 @@
 		return
 
 	if(LAZYLEN(player.screen_texts))
-		player.screen_texts[1].play_to_client() // Theres more?
+		player.screen_texts[1].play_to_client() // There's more?
 /**
  * Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  * category is a text string. Each mob may only have one alert per category; the previous one will be replaced

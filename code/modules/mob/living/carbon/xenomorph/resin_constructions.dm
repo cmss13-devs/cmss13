@@ -117,7 +117,7 @@
 /datum/resin_construction/resin_turf/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
 
-	build_turf.PlaceOnTop(path)
+	build_turf.place_on_top(path)
 
 	var/turf/closed/wall/resin/resin_wall = build_turf
 	if (istype(resin_wall) && pass_hivenumber)

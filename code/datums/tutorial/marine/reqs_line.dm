@@ -110,7 +110,7 @@
 		/obj/item/device/binoculars/range = list("Rangefinders"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/stack/fulton = list("Fultons", "Fulton pack"),
-		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
+		/obj/item/pamphlet/upgradeable/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
 		/obj/item/explosive/grenade/high_explosive/m15 = list("M15", "M15 nade", "M15 Grenade"),
 		/obj/item/explosive/mine = list("Claymore", "Mine", "M20 Claymore"),

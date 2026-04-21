@@ -97,7 +97,7 @@
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
 
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_shards = round((shards / max_shards) * 100, 10)
 	if(percentage_shards)
@@ -115,7 +115,7 @@
 
 
 /datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()

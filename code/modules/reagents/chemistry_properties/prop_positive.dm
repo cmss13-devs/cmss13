@@ -289,7 +289,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions. Forces some negative mutations in plants."
+	description = "Treats deteriorated hepatocytes and damaged tissue in the liver, restoring organ functions. Forces some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -418,7 +418,7 @@
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
 	code = "CDP"
-	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forces mutation of produced chemicals in plants."
+	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forced mutation of produced chemicals in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -877,9 +877,9 @@
 	code = "FUL"
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
-	value = 1
+	value = 2
 	intensity_per_level = -3
-	duration_per_level = 8
+	duration_per_level = 7
 
 	intensitymod_per_level = -0.1
 	durationmod_per_level = 0.2
@@ -901,9 +901,9 @@
 	code = "OXI"
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
-	value = 1
-	intensity_per_level = 8
-	duration_per_level = -3
+	value = 2
+	intensity_per_level = 7
+	duration_per_level = -4
 
 	intensitymod_per_level = 0.2
 	durationmod_per_level = -0.1
@@ -929,7 +929,7 @@
 	code = "FLW"
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
-	value = 1
+	value = 2
 	range_per_level = 2
 
 	intensitymod_per_level = -0.05
@@ -939,7 +939,7 @@
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
 	code = "EXP"
-	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
+	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontaneous detonation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	volatile = TRUE
@@ -960,7 +960,7 @@
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants are able to be harvested repeatedly."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
@@ -1124,7 +1124,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modfying yield and mutation."
+	description = "Fixes genetic defects, disfigurements, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

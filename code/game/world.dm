@@ -10,6 +10,12 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	view = "15x15"
 	cache_lifespan = 0 //stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
+// tick checking during reference finding in unit tests can cause knock-on failures elsewhere
+// and really loop checks in CI can just do that too, so it's best to have them off
+// todo: determine if this should just be #ifdef UNIT_TESTS for simplicity
+#ifdef FIND_REF_NO_CHECK_TICK
+	loop_checks = FALSE
+#endif
 
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
@@ -54,13 +60,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	init_global_referenced_datums()
 
-	var/testing_locally = (world.params && world.params["local_test"])
-	var/running_tests = (world.params && world.params["run_tests"])
 	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
-	running_tests = TRUE
+	sleep_offline = FALSE
 	#endif
-	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
-	sleep_offline = (!running_tests && !testing_locally)
 
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
@@ -89,19 +91,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.obfs_x = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_y = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_z = rand(-10, 10)   //A number between -10 and 10
-
-	// If the server's configured for local testing, get everything set up ASAP.
-	// Shamelessly stolen from the test manager's host_tests() proc
-	if(testing_locally)
-		GLOB.master_mode = "Extended"
-
-		// Wait for the game ticker to initialize
-		while(!SSticker.initialized)
-			sleep(10)
-
-		// Start the game ASAP
-		SSticker.request_start()
-	return
 
 /proc/start_logging()
 	GLOB.round_id = SSentity_manager.round.id
@@ -228,10 +217,13 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
+
 	for(var/thing in GLOB.clients)
 		if(!thing)
 			continue
 		var/client/C = thing
+		C.control_server?.restart("Server restarting...")
+
 		C?.tgui_panel?.send_roundrestart()
 		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")

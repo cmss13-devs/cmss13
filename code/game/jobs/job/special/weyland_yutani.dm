@@ -107,7 +107,7 @@
 
 /datum/job/special/wey_yu/pmc/synth
 	title = JOB_PMC_SYNTH
-	gear_preset = /datum/equipment_preset/pmc/synth
+	gear_preset = /datum/equipment_preset/synth/pmc
 
 /datum/job/special/wey_yu/pmc/director
 	title = JOB_PMC_DIRECTOR
@@ -126,6 +126,6 @@
 	gear_preset = /datum/equipment_preset/pmc/commando/gunner
 
 /datum/job/special/wey_yu/pmc/commando_dogcatcher
-	title = JOB_WY_COMMANDO_DOGCATHER
+	title = JOB_WY_COMMANDO_DOGCATCHER
 	gear_preset = /datum/equipment_preset/pmc/commando/dogcatcher
 

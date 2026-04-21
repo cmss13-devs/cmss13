@@ -21,6 +21,7 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
 	var/is_disabled = FALSE
+	var/action_queued = FALSE
 
 	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
 	var/fire_cooldown_time = 500 SECONDS
@@ -475,7 +476,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	new /obj/effect/overlay/temp/ob_impact (target, warhead, 1.5)
 	sleep(10)
-	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	var/datum/cause_data/cause_data = create_cause_data(name, source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
 
@@ -483,8 +484,9 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		handle_ob_shake(target)
-		sleep(double_explosion_delay)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		if(double_explosion_delay)
+			sleep(double_explosion_delay)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		qdel(src)
 		return
 
@@ -493,8 +495,9 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		if(!T.density)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			handle_ob_shake(target)
-			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			if(double_explosion_delay)
+				sleep(double_explosion_delay)
+				cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			qdel(src)
 			return
 

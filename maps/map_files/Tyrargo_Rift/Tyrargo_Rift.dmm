@@ -170,6 +170,12 @@
 "aax" = (
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/engineering/ground)
+"aay" = (
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "aaz" = (
 /turf/open/floor/strata/green3,
 /area/tyrargo/indoors/market/ground)
@@ -195,12 +201,23 @@
 "aaE" = (
 /turf/open/floor/strata/green3/east,
 /area/tyrargo/indoors/market/ground)
+"aaF" = (
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "aaG" = (
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "aaH" = (
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/indoors/security/ground)
+"aaI" = (
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "aaJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer{
@@ -219,6 +236,11 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/indoors/security/ground)
+"aaL" = (
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "aaM" = (
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/oob/outdoors)
@@ -576,6 +598,10 @@
 	},
 /turf/open/asphalt/cement/cement14,
 /area/tyrargo/oob/outdoors)
+"abM" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "abN" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
@@ -586,6 +612,11 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
+"abO" = (
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/landing_zone_2/east_trench)
 "abP" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
@@ -608,6 +639,29 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/stripe_red/east,
 /area/tyrargo/indoors/engineering/ground)
+"abT" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/landing_zone_2/east_trench)
+"abU" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/landing_zone_2/east_trench)
+"abV" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/landing_zone_2/east_trench)
 "abW" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	pixel_x = -1
@@ -149506,11 +149560,11 @@ bvk
 bvk
 bkt
 bfL
-bvk
-bwQ
-bvk
-bwQ
-bwQ
+abT
+aaL
+aaL
+aaL
+aay
 bvQ
 bvk
 esD
@@ -149690,11 +149744,11 @@ bvk
 bfU
 bxg
 bvW
-bvk
-bwQ
-bwQ
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bvk
 bvk
 bvk
@@ -149874,11 +149928,11 @@ bxg
 bwa
 bwa
 bvW
-bwQ
-bwQ
-bwQ
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bvk
 bvI
 bvk
@@ -150058,11 +150112,11 @@ esH
 rKn
 bku
 bvW
-bvk
-bvk
-bvk
-bwQ
-bwQ
+abV
+abO
+abO
+abO
+aaI
 bwQ
 bvJ
 bvk
@@ -150426,11 +150480,11 @@ bvk
 coU
 bvI
 bvN
-bvk
-bvk
-bvk
-bwQ
-bwQ
+abT
+aaL
+aaL
+aaL
+aay
 bwQ
 bvk
 bvN
@@ -150610,11 +150664,11 @@ bwh
 bwc
 etj
 bwT
-bvk
-bvk
-bvk
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bwQ
 bvK
 bzN
@@ -150794,11 +150848,11 @@ bvB
 esR
 bvH
 bwa
-bwQ
-bwQ
-bwQ
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bwQ
 bvk
 bvN
@@ -150978,11 +151032,11 @@ bvx
 bvk
 bJJ
 bwT
-bvk
-bvk
-bvk
-bvk
-bwQ
+abV
+abO
+abO
+abO
+aaI
 bwQ
 bvC
 bzN
@@ -151346,11 +151400,11 @@ esE
 bfV
 bvk
 bwT
-bvk
-bvk
-bvk
-bwQ
-bwQ
+abT
+aaL
+aaL
+aaL
+aay
 bvk
 bvC
 bzN
@@ -151530,11 +151584,11 @@ bwa
 bvO
 bxg
 bwa
-bvk
-bvk
-bvk
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bvk
 bvk
 bzN
@@ -151714,11 +151768,11 @@ bbU
 bkC
 bfT
 bvW
-bwQ
-bwQ
-bwQ
-bwQ
-bwQ
+abU
+abM
+abM
+abM
+aaF
 bvk
 bvk
 bzN
@@ -151898,11 +151952,11 @@ bvk
 bvk
 esR
 bfO
-bvk
-bvk
-bvk
-bvk
-bvk
+abV
+abO
+abO
+abO
+aaI
 bvk
 esE
 bvG

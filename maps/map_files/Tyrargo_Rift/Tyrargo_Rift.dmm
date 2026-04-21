@@ -20337,12 +20337,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
-"aZY" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/tyrargo/underground/sewer/south)
 "aZZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -60921,7 +60915,7 @@
 	dir = 4
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/indoors/sewer_treatment/lower)
 "dso" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
@@ -116805,7 +116799,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsx
 ddD
 cKl
@@ -116815,7 +116809,7 @@ cKl
 ddE
 bFL
 bvP
-bta
+aen
 bgJ
 drU
 dqu
@@ -116989,7 +116983,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsx
 bFL
 cKl
@@ -116999,7 +116993,7 @@ cKl
 dUt
 bFL
 cZv
-bta
+aen
 hNj
 drX
 drP
@@ -117173,7 +117167,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsx
 bFL
 cKl
@@ -117183,7 +117177,7 @@ cKl
 ddE
 bFL
 cZv
-bta
+aen
 hNj
 drY
 ceN
@@ -117357,7 +117351,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsx
 bFL
 cKl
@@ -117367,7 +117361,7 @@ cKl
 ddE
 dUr
 cZv
-bta
+aen
 hNj
 drY
 ceN
@@ -117541,7 +117535,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsx
 bFL
 cKl
@@ -117551,7 +117545,7 @@ ddH
 ddE
 dUr
 cZv
-bta
+aen
 hNj
 drY
 ceN
@@ -117725,7 +117719,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 afy
 afx
 afw
@@ -117735,7 +117729,7 @@ cZO
 ddE
 bFL
 cZv
-bta
+aen
 hNj
 drZ
 drQ
@@ -117909,7 +117903,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+aen
 dsy
 bFL
 cKl
@@ -117919,7 +117913,7 @@ ddE
 cKl
 dUs
 cZv
-bta
+aen
 bgK
 dqz
 dqz
@@ -119753,7 +119747,7 @@ aen
 aen
 dsv
 dWk
-aZY
+ceK
 dsm
 dsm
 dWi

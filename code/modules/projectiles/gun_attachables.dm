@@ -3047,30 +3047,42 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	gun.damage_mult = 1
 
-/obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
-	if(G.active_attachable == src)
+/obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/attached_gun, mob/living/user, turn_off)
+	if(attached_gun.active_attachable == src)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are no longer using [src]."))
 			playsound(user, gun_deactivate_sound, 30, 1)
-		G.active_attachable = null
+		attached_gun.active_attachable = null
 		icon_state = initial(icon_state)
-		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
-		G.recalculate_attachment_bonuses()
+		UnregisterSignal(attached_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+		attached_gun.recalculate_attachment_bonuses()
+		update_ammo_hud(user)
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
 			playsound(user, gun_activate_sound, 60, 1)
-		G.active_attachable = src
-		G.damage_mult = 1
-		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
+		attached_gun.active_attachable = src
+		attached_gun.damage_mult = 1
+		RegisterSignal(attached_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
+		update_ammo_hud(user)
 
-	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
+	SEND_SIGNAL(attached_gun, COMSIG_GUN_INTERRUPT_FIRE)
 
-	for(var/X in G.actions)
-		var/datum/action/A = X
-		A.update_button_icon()
-	return 1
+	for(var/gun_actions in attached_gun.actions)
+		var/datum/action/action_datum = gun_actions
+		action_datum.update_button_icon()
+	return TRUE
+
+/obj/item/attachable/attached_gun/proc/update_ammo_hud(mob/living/user)
+	var/atom/movable/screen/ammo/ammo_hud = user.hud_used.ammo
+	ammo_hud.update_hud(user)
+
+/obj/item/attachable/attached_gun/proc/get_attachment_ammo_type()
+	return null
+
+/obj/item/attachable/attached_gun/proc/get_attachment_ammo_count()
+	return 0
 
 /obj/item/attachable/attached_gun/flare_launcher
 	name = "U2 flare launcher"
@@ -3149,6 +3161,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(current_rounds) . += "It has [current_rounds] grenade\s left."
 	else . += "It's empty."
 
+/obj/item/attachable/attached_gun/grenade/get_attachment_ammo_type()
+	if(length(loaded_grenades))
+		var/obj/item/explosive/grenade/G = loaded_grenades[1]
+		return list(G.hud_state, G.hud_state_empty)
+	else
+		return list("grenade_empty_flash", "grenade_empty_flash")
+
+/obj/item/attachable/attached_gun/grenade/get_attachment_ammo_count()
+	return LAZYLEN(loaded_grenades)
+
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
 		return
@@ -3193,15 +3215,15 @@ Defined in conflicts.dm of the #defines folder.
 		playsound(src, open_sound, 15, 1)
 	update_icon()
 
-/obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/G, mob/user)
+/obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/inserting_grenade, mob/user)
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
 		return
-	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
+	if(!istype(inserting_grenade) || istype(inserting_grenade, /obj/item/explosive/grenade/spawnergrenade/))
 		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 		return
-	if(!G.active) //can't load live grenades
-		if(!G.underslug_launchable)
+	if(!inserting_grenade.active) //can't load live grenades
+		if(!inserting_grenade.underslug_launchable)
 			to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 			return
 		if(current_rounds >= max_rounds)
@@ -3209,9 +3231,10 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			playsound(user, 'sound/weapons/grenade_insert.wav', 25, 1)
 			current_rounds++
-			loaded_grenades += G
-			to_chat(user, SPAN_NOTICE("You load \the [G] into \the [src]."))
-			user.drop_inv_item_to_loc(G, src)
+			loaded_grenades += inserting_grenade
+			to_chat(user, SPAN_NOTICE("You load \the [inserting_grenade] into \the [src]."))
+			user.drop_inv_item_to_loc(inserting_grenade, src)
+			update_ammo_hud(user)
 
 /obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
 	. = TRUE //Always uses special unloading.
@@ -3281,6 +3304,7 @@ Defined in conflicts.dm of the #defines folder.
 	current_rounds--
 	cocked = FALSE // we have fired so uncock the gun
 	loaded_grenades.Cut(1,2)
+	update_ammo_hud(user)
 
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
@@ -3353,6 +3377,12 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. += "It's empty."
 
+/obj/item/attachable/attached_gun/flamer/get_attachment_ammo_type()
+	return list("flame", "flame_empty_flash")
+
+/obj/item/attachable/attached_gun/flamer/get_attachment_ammo_count()
+	return round(100 * current_rounds/max_rounds)
+
 /obj/item/attachable/attached_gun/flamer/update_icon()
 	. = ..()
 	attach_icon = initial(attach_icon)
@@ -3417,6 +3447,7 @@ Defined in conflicts.dm of the #defines folder.
 		current_rounds += fuel_amt
 		fuel_holder.reagents.remove_reagent(to_remove.id, fuel_amt)
 		fuel_holder.update_icon()
+		update_ammo_hud(user)
 	else
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
@@ -3457,7 +3488,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!current_rounds)
 		return
 	if(distance >= max_range)
-		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		update_ammo_hud(user)
 		return
 
 	current_rounds -= min(round_usage_per_tile, current_rounds)
@@ -3478,16 +3509,15 @@ Defined in conflicts.dm of the #defines folder.
 
 	flame_turf(current_turf, user)
 	if(stop_at_turf)
-		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		update_ammo_hud(user)
 		return
 
 	distance++
 	prev_turf = current_turf
 
 	if(!length(turfs))
-		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		update_ammo_hud(user)
 	addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
-
 
 /obj/item/attachable/attached_gun/flamer/proc/flame_turf(turf/T, mob/living/user)
 	if(!istype(T))
@@ -3537,8 +3567,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
-	else . += "It's empty."
+	if(current_rounds > 0)
+		to_chat(user, "It has [current_rounds] shell\s left.")
+	else
+		to_chat(user, "It's empty.")
+
+
+/obj/item/attachable/attached_gun/shotgun/get_attachment_ammo_type()
+	return list(ammo.hud_state, ammo.hud_state_empty)
+
+/obj/item/attachable/attached_gun/shotgun/get_attachment_ammo_count()
+	return current_rounds
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
@@ -3561,6 +3600,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(mag.current_rounds <= 0)
 					user.temp_drop_inv_item(mag)
 					qdel(mag)
+				update_ammo_hud(user)
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
 
@@ -3677,6 +3717,12 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	. += SPAN_WARNING("It's empty.")
 
+/obj/item/attachable/attached_gun/extinguisher/get_attachment_ammo_type()
+	return list("flame_blue", "flame_empty_flash") //placeholder
+
+/obj/item/attachable/attached_gun/extinguisher/get_attachment_ammo_count()
+	return round(100 * internal_extinguisher.reagents.total_volume/internal_extinguisher.max_water)
+
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(slot)
 	return "It has a [icon2html(src)] [name] ([floor(internal_extinguisher.reagents.total_volume)]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
@@ -3688,7 +3734,9 @@ Defined in conflicts.dm of the #defines folder.
 	if(!internal_extinguisher)
 		return
 	if(..())
-		return internal_extinguisher.afterattack(target, user)
+		. = internal_extinguisher.afterattack(target, user)
+		update_ammo_hud(user)
+
 
 /obj/item/attachable/attached_gun/extinguisher/proc/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/mini/integrated_flamer()

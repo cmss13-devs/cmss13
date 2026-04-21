@@ -40,7 +40,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer_nozzle
 	)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 
 
@@ -272,7 +272,7 @@
 	if(stop_at_turf)
 		flame_adjacent(current_turf, user, chem)
 		playsound(current_turf, src.get_fire_sound(), 50, TRUE)
-		show_percentage(user)
+		update_percentage(user)
 		return
 
 	distance++
@@ -280,7 +280,7 @@
 
 	playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(update_percentage), user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/flame_adjacent(turf/turfed, mob/living/user, datum/reagent/chem)
 	if(!istype(turfed))
@@ -348,12 +348,12 @@
 
 	chemical.volume = max(chemical.volume - ammount_used, 0)
 
-	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+	current_mag.reagents.total_volume = chemical.volume // this is needed for update_percentage to work
 
 	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of smoke, empty the tank
 		current_mag.reagents.clear_reagents()
 
-	show_percentage(user)
+	update_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
 	last_fired = world.time
@@ -401,16 +401,31 @@
 
 	chemical.volume = max(chemical.volume - ammount_used, 0)
 
-	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+	current_mag.reagents.total_volume = chemical.volume // this is needed for update_percentage to work
 
 	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
 		current_mag.reagents.clear_reagents()
 
-	show_percentage(user)
+	update_percentage(user)
 
-/obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
+/obj/item/weapon/gun/flamer/proc/update_percentage(mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
+		var/atom/movable/screen/ammo/ammo_hud = user.hud_used.ammo
+		ammo_hud.update_hud(user)
+
+/obj/item/weapon/gun/flamer/get_ammo_type()
+	if(!current_mag)
+		return list("empty_flash", "empty_flash")
+	else
+		var/obj/item/ammo_magazine/flamer_tank/flame_tank = current_mag
+		return list(flame_tank.hud_state, flame_tank.hud_state_empty)
+
+/obj/item/weapon/gun/flamer/get_ammo_count()
+	if(!current_mag)
+		return 0
+	else
+		return round(current_mag.get_ammo_percent())
+
 
 /obj/item/weapon/gun/flamer/m240
 	name = "\improper M240A1 incinerator unit"
@@ -439,7 +454,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/flamer/m240/spec/unique_action(mob/user)

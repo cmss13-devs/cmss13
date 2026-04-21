@@ -391,6 +391,8 @@
 	linked_flamer.current_mag = active_fuel
 	linked_flamer.update_icon()
 
+	var/atom/movable/screen/ammo/ammo_hud = user.hud_used.ammo
+	ammo_hud.update_hud(user)
 	return TRUE
 
 /obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()

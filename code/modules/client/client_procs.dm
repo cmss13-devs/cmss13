@@ -44,7 +44,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_auto_shove,
-	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -60,6 +59,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_leadership_spoken_orders,
 	/client/proc/toggle_cocking_to_hand,
 	/client/proc/toggle_wield_assist,
+	/client/proc/toggle_disable_gun_ammo_counter,
 ))
 
 /client/proc/reduce_minute_count()

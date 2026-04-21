@@ -59,8 +59,8 @@
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17)
 ///This toggles whether selecting the same ability again can toggle it off
 #define TOGGLE_ABILITY_DEACTIVATION_OFF (1<<18)
-///limit how often the ammo is displayed when using semi-automatic fire
-#define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)
+/// Toggles HUD ammo counter
+#define TOGGLE_DISABLE_GUN_AMMO_COUNTER (1<<19)
 ///Toggles between automatically shoving xenomorphs in the way as Queen.
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
 ///Toggles whether activating marine leader orders will be spoken or not

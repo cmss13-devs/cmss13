@@ -36,7 +36,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
@@ -139,6 +139,24 @@
 /obj/item/weapon/gun/smartgun/cock(mob/user)
 	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
 	return
+
+/obj/item/weapon/gun/smartgun/get_ammo_type()
+	if(!ammo)
+		return list("smartgun", "smartgun_empty_flash")
+	else //for clarity's sake, smartguns will not return the chamber ammo but the magazine ammo
+		return list(ammo.hud_state, ammo.hud_state_empty)
+
+/obj/item/weapon/gun/smartgun/get_ammo_count()
+	if(!current_mag)
+		return 0
+	else
+		return current_mag.current_rounds
+
+/obj/item/weapon/gun/smartgun/display_ammo(mob/user)
+	if(flags_gun_features & GUN_AMMO_COUNTER)
+		var/atom/movable/screen/ammo/ammo_hud = user.hud_used.ammo
+		ammo_hud.update_hud(user)
+	return //no text warn, would clutter chat
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -486,6 +504,7 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
 	TAT.update_icon()
+	display_ammo(user)
 
 /obj/item/weapon/gun/smartgun/replace_ammo()
 	..()

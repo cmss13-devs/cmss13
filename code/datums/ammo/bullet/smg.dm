@@ -13,6 +13,8 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
+	hud_state = "smg"
+	hud_state_empty = "smg_empty_flash"
 	damage = 34
 	accurate_range = 4
 	effective_range_max = 4
@@ -24,10 +26,11 @@
 
 /datum/ammo/bullet/smg/m39
 	name = "high-velocity submachinegun bullet" //i don't want all smgs to inherit 'high velocity'
+	hud_state = "smg_hv"
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
-
+	hud_state = "smg_ap"
 	damage = 26
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
@@ -42,6 +45,7 @@
 
 /datum/ammo/bullet/smg/ap/toxin
 	name = "toxic submachinegun bullet"
+	hud_state = "smg_tox"
 	var/acid_per_hit = 5
 	var/organic_damage_mult = 3
 
@@ -71,6 +75,7 @@
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
+	hud_state = "smg_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -86,8 +91,8 @@
 
 /datum/ammo/bullet/smg/ap/penetrating
 	name = "wall-penetrating submachinegun bullet"
+	hud_state = "smg_wp"
 	shrapnel_chance = 0
-
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -110,7 +115,7 @@
 /datum/ammo/bullet/smg/rubber
 	name = "rubber submachinegun bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
-
+	hud_state = "smg_light"
 	damage = 0
 	stamina_damage = 10
 	shrapnel_chance = 0

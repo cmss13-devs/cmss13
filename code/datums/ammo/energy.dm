@@ -26,6 +26,8 @@
 /datum/ammo/energy/taser
 	name = "taser bolt"
 	icon_state = "stun"
+	hud_state = "taser"
+	hud_state_empty = "battery_empty"
 	damage_type = OXY
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
 	stamina_damage = 45

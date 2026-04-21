@@ -7,6 +7,8 @@
 // Used by M4A3, M4A4, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
+	hud_state = "pistol"
+	hud_state_empty = "pistol_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -22,9 +24,11 @@
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
+	hud_state = "pistol_light"
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranquilizer bullet"
+	hud_state = "pistol_tranq"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 60
 	damage = 15
@@ -34,6 +38,7 @@
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
+	hud_state = "pistol_hollow"
 
 	damage = 55 //hollowpoint is strong
 	penetration = 0 //hollowpoint can't pierce armor!
@@ -42,6 +47,7 @@
 // Used by M4A3 AP and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
+	hud_state = "pistol_ap"
 
 	damage = 25
 	accuracy = HIT_ACCURACY_TIER_2
@@ -50,6 +56,7 @@
 
 /datum/ammo/bullet/pistol/ap/penetrating
 	name = "wall-penetrating pistol bullet"
+	hud_state = "pistol_wp"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -63,6 +70,7 @@
 
 /datum/ammo/bullet/pistol/ap/toxin
 	name = "toxic pistol bullet"
+	hud_state = "pistol_tox"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
@@ -89,6 +97,7 @@
 
 /datum/ammo/bullet/pistol/rubber
 	name = "rubber pistol bullet"
+	hud_state = "pistol_light"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
 	damage = 0
@@ -136,6 +145,8 @@
 
 /datum/ammo/bullet/pistol/deagle //Commander's variant
 	name = ".50 heavy pistol bullet"
+	hud_state = "pistol_eagle_super"
+	hud_state_empty = "pistol_eagle_empty"
 	damage = 60
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	accuracy = -HIT_ACCURACY_TIER_3
@@ -145,6 +156,7 @@
 
 /datum/ammo/bullet/pistol/deagle/highimpact
 	name = ".50 high-impact pistol bullet"
+	hud_state = "pistol_eagle_highimpact"
 	penetration = ARMOR_PENETRATION_TIER_4
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -179,6 +191,7 @@
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
+	hud_state = "pistol_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -221,6 +234,7 @@
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
+	hud_state = "pistol_tox"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
@@ -240,6 +254,7 @@
 
 /datum/ammo/bullet/pistol/squash/penetrating
 	name = "wall-penetrating squash-head pistol bullet"
+	hud_state = "pistol_wp"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -251,6 +266,7 @@
 
 /datum/ammo/bullet/pistol/squash/incendiary
 	name = "incendiary squash-head pistol bullet"
+	hud_state = "pistol_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -281,6 +297,8 @@
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
 	icon_state = "monkey1"
+	hud_state = "monkey"
+	hud_state_empty = "monkey_empty"
 	ping = null //no bounce off.
 	damage_type = BURN
 	debilitate = list(4,4,0,0,0,0,0,0)

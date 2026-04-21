@@ -6,6 +6,9 @@
 
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	hud_state = "shotgun_buckshot"
+	hud_state_empty = "shotgun_empty_flash"
+
 
 /datum/ammo/bullet/shotgun/setup_faction_clash_values()
 	. = ..()
@@ -15,7 +18,7 @@
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	handful_state = "slug_shell"
-
+	hud_state = "shotgun_slug"
 	accurate_range = 8
 	max_range = 8
 	damage = 70
@@ -46,6 +49,7 @@
 	name = "electrostatic solid slug"
 	icon_state = "bullet_iff"
 	handful_state = "es7_slug"
+	hud_state = "taser"
 	sound_miss = "energy_miss"
 	sound_bounce = "energy_bounce"
 	hit_effect_color = "#00aeff"
@@ -56,6 +60,7 @@
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
+	hud_state = "shotgun_beanbag"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
@@ -82,6 +87,7 @@
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
 	handful_state = "shock_slug"
 	icon_state = "cm_laser"
+	hud_state = "taser"
 	sound_override = 'sound/weapons/gun_es7.ogg'
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 	sound_hit = "energy_hit"
@@ -109,6 +115,7 @@
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"
 	handful_state = "incendiary_slug"
+	hud_state = "shotgun_fire_slug"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -139,6 +146,7 @@
 	name = "flechette shell"
 	icon_state = "flechette"
 	handful_state = "flechette_shell"
+	hud_state = "shotgun_flechette"
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/flechette_spread
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -177,6 +185,7 @@
 	name = "buckshot shell"
 	icon_state = "buckshot"
 	handful_state = "buckshot_shell"
+	hud_state = "shotgun_buckshot"
 	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/spread
 
@@ -198,6 +207,7 @@
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
 	handful_state = "incen_buckshot"
+	hud_state = "shotgun_fire_buck"
 	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()
@@ -246,6 +256,7 @@
 	name = "heavy buckshot shell"
 	icon_state = "buckshot"
 	handful_state = "heavy_buckshot"
+	hud_state = "shotgun_buckshot"
 	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/spread
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
@@ -270,6 +281,7 @@
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
 	name = "dragon's breath shell"
 	handful_state = "heavy_dragonsbreath"
+	hud_state = "shotgun_fire_buck"
 	multiple_handful_name = TRUE
 	damage_type = BURN
 	damage = 60
@@ -294,7 +306,7 @@
 /datum/ammo/bullet/shotgun/heavy/slug
 	name = "heavy shotgun slug"
 	handful_state = "heavy_slug"
-
+	hud_state = "shotgun_slug"
 	accurate_range = 7
 	max_range = 8
 	damage = 90 //ouch.
@@ -324,6 +336,7 @@
 	icon_state = "beanbag"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
+	hud_state = "shotgun_beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
@@ -345,6 +358,7 @@
 	name = "heavy flechette shell"
 	icon_state = "flechette"
 	handful_state = "heavy_flechette"
+	hud_state = "shotgun_flechette"
 	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/flechette_spread
 

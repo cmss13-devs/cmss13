@@ -6,6 +6,8 @@
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
+	hud_state = "rifle"
+	hud_state_empty = "rifle_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	damage = 40
@@ -58,7 +60,7 @@
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
-
+	hud_state = "rifle_ap"
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
 
@@ -113,13 +115,14 @@
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
-
+	hud_state = "rifle_light"
 	damage = 0
 	stamina_damage = 15
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
+	hud_state = "rifle_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -137,6 +140,8 @@
 
 /datum/ammo/bullet/rifle/m4ra
 	name = "A19 high velocity bullet"
+	hud_state = "hivelo"
+	hud_state_empty = "hivelo_empty_flash"
 	shrapnel_chance = 0
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -178,6 +183,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"
+	hud_state = "hivelo_fire"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = 40
@@ -194,6 +200,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/impact
 	name = "A19 high velocity impact bullet"
+	hud_state = "hivelo_impact"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = 40
@@ -222,12 +229,12 @@
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
-
+	hud_state = "rifle_heavy"
 	damage = 55
 
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
-
+	hud_state = "rifle_heavy"
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_3
 
@@ -238,7 +245,7 @@
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
-
+	hud_state = "rifle_heavy_ap"
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 

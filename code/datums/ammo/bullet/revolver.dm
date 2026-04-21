@@ -6,6 +6,8 @@
 
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
+	hud_state = "revolver"
+	hud_state_empty = "revolver_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	damage = 72
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -13,6 +15,7 @@
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
+	hud_state = "revolver_ap"
 	damage = 55
 	shrapnel_chance = 0
 	damage_falloff = 0
@@ -21,7 +24,7 @@
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
-
+	hud_state = "revolver_heavy"
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
@@ -37,6 +40,7 @@
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"
+	hud_state = "revolver_fire"
 	damage = 40
 
 /datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
@@ -47,6 +51,7 @@
 
 /datum/ammo/bullet/revolver/marksman/toxin
 	name = "toxic revolver bullet"
+	hud_state = "revolver_toxin"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
@@ -66,6 +71,7 @@
 
 /datum/ammo/bullet/revolver/penetrating
 	name = "wall-penetrating revolver bullet"
+	hud_state = "revolver_wp"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -85,6 +91,7 @@
 
 /datum/ammo/bullet/revolver/upp/shrapnel
 	name = "shrapnel shot"
+	hud_state = "revolver_shrapnel"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
@@ -135,7 +142,7 @@
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
-
+	hud_state = "revolver_heavy"
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
@@ -148,6 +155,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
+	hud_state = "revolver_highimpact"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_5
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -162,6 +170,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
 	name = ".454 heavy explosive revolver bullet"
+	hud_state = "revolver_explosive"
 	damage = 100
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1

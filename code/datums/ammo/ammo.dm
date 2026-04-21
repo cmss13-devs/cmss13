@@ -4,6 +4,10 @@
 	var/headshot_state = null
 	var/icon = 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state = "bullet"
+	///Bullet type on the Ammo HUD
+	var/hud_state = "unknown"
+	///Empty bullet type on the Ammo HUD
+	var/hud_state_empty = "unknown"
 	/// The icon that is displayed when the bullet bounces off something.
 	var/ping = "ping_b"
 	/// When it deals damage.

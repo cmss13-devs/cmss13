@@ -26,7 +26,7 @@
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.close(user) so they don't still have the screen open!
 	var/open_chamber = TRUE
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
@@ -175,6 +175,9 @@
 				to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
 				return
 		fire_grenade(target,user)
+		var/atom/movable/screen/ammo/ammo_hud = user.hud_used.ammo
+		ammo_hud.update_hud(user)
+
 
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
@@ -214,7 +217,15 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/get_ammo_type()
+	if(length(cylinder.contents) == 0)
+		return list("grenade_empty_flash", "grenade_empty_flash")
+	else
+		var/obj/item/explosive/grenade/F = cylinder.contents[1]
+		return list(F.hud_state, F.hud_state_empty)
 
+/obj/item/weapon/gun/launcher/grenade/get_ammo_count()
+	return length(cylinder.contents)
 
 //Doesn't use these. Listed for reference.
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()

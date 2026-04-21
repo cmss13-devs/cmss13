@@ -6,7 +6,8 @@
 
 /datum/ammo/bullet/lever_action
 	name = "lever-action bullet"
-
+	hud_state = "sniper"
+	hud_state_empty = "sniper_empty_flash"
 	damage = 80
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1

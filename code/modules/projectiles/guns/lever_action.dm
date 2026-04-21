@@ -409,6 +409,20 @@ their unique feature is that a direct hit will buff your damage and firerate
 	. = ..()
 	AddElement(/datum/element/corp_label/armat)
 
+/obj/item/weapon/gun/lever_action/xm88/get_ammo_type()
+	if(!ammo)
+		return list("sniper", "sniper_empty_flash")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/lever_action/xm88/get_ammo_count()
+	if(!current_mag)
+		return in_chamber ? 1 : 0
+	else
+		return in_chamber ? (current_mag.current_rounds + 1) : current_mag.current_rounds
+
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_2)

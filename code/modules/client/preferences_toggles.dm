@@ -270,7 +270,6 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
-		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
@@ -288,6 +287,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_disable_gun_ammo_counter'>Toggle Gun Ammo Counter</a><br>",
 	)
 
 	var/dat = ""
@@ -324,12 +324,6 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, msg)
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
-	prefs.save_preferences()
-
-
-/client/proc/toggle_ammo_display_type()
-	prefs.toggle_prefs ^= TOGGLE_AMMO_DISPLAY_TYPE
-	to_chat(usr, SPAN_NOTICE("Guns in semi-automatic mode will now display the ammo on every [SPAN_BOLD(prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "fifth bullet and when the mag has less than 15 rounds left" : "single bullet")]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand
@@ -684,6 +678,19 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 		if(mini_map.assigned_map) // Skip shared popup maps
 			continue
 		mini_map.update_ceiling_overlay(src)
+
+CLIENT_VERB(toggle_disable_gun_ammo_counter)
+	set name = "Toggle HUD Ammo Counter"
+	set category = "Preferences.UI"
+	set desc = "Toggles the on-screen ammo counter UI."
+
+	prefs.toggle_prefs ^= TOGGLE_DISABLE_GUN_AMMO_COUNTER
+	if(prefs.toggle_prefs & TOGGLE_DISABLE_GUN_AMMO_COUNTER)
+		to_chat(src, "Modern guns will no longer display an ammo counter when wielded.")
+	else
+		to_chat(src, "Modern guns will now display an ammo counter when wielded.")
+	prefs.save_preferences()
+
 
 //------------ GHOST PREFERENCES ---------------------------------
 

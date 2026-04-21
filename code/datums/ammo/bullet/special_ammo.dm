@@ -7,6 +7,8 @@
 /datum/ammo/bullet/smartgun
 	name = "smartgun tracer bullet"
 	icon_state = "bullet_iff"
+	hud_state = "smartgun"
+	hud_state_empty = "smartgun_empty_flash"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
@@ -32,7 +34,7 @@
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
-
+	hud_state = "smartgun_ap"
 	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
@@ -50,6 +52,7 @@
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun tracer bullet"
 	icon_state = "bullet_iff"
+	hud_state = "smartgun_radioactive"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
@@ -69,6 +72,7 @@
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	name = "irradiated AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
+	hud_state = "smartgun_radioactive_ap"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	accurate_range = 22
@@ -172,6 +176,8 @@
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
 	name = "machinegun bullet"
 	icon_state = "bullet" // Keeping it bog standard with the turret but allows it to be changed
+	hud_state = "rifle_heavy"
+	hud_state_empty = "rifle_empty_flash"
 
 	accurate_range = 12
 	damage = 36
@@ -219,6 +225,8 @@
 
 /datum/ammo/bullet/machinegun/medium // for T37, UPP MMG
 	name = "medium machinegun bullet"
+	hud_state = "rifle_heavy"
+	hud_state_empty = "rifle_empty_flash"
 
 	accurate_range = 10
 	damage =  50
@@ -234,6 +242,8 @@
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
+	hud_state = "minigun"
+	hud_state_empty = "minigun_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
@@ -257,6 +267,8 @@
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
+	hud_state = "rifle_heavy"
+	hud_state_empty = "rifle_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_2
@@ -264,11 +276,13 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
 	damage = 45 //7.62x51 is scary
-	penetration= ARMOR_PENETRATION_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pkp
 	name = "machinegun bullet"
+	hud_state = "rifle_heavy"
+	hud_state_empty = "rifle_empty_flash"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_1

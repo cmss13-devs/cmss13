@@ -333,6 +333,12 @@
 	unique_action.screen_loc = ui_datum.ui_gun_unique
 	static_inventory += unique_action
 
+	ammo = new /atom/movable/screen/ammo()
+	ammo.alpha = ui_alpha
+	ammo.screen_loc = ui_datum.UI_AMMO
+
+
+
 /datum/hud/human/proc/draw_status_effects(datum/custom_hud/ui_datum)
 	slowed_icon = new /atom/movable/screen()
 	slowed_icon.icon = ui_datum.ui_style_icon

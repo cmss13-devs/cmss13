@@ -27,6 +27,10 @@
 	var/max_range = 5
 	var/max_duration = 30
 
+	var/hud_state = "flame"
+	var/hud_state_empty = "flame_empty_flash"
+
+
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
 
@@ -160,6 +164,7 @@
 	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crystallized goo."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
+	hud_state = "flame_green"
 	max_rounds = 200
 
 	max_range = 7
@@ -221,6 +226,7 @@
 	desc_lore = "Unlike its thinner contemporaries, this special ultra-thick variant of napalm is easily extinguished, but disperses over a wide area and lingers on the ground in a viscous mess. The composition reacts violently with inorganic materials to break them down, causing severe structural damage. Handle with extreme caution."
 	caliber = "Napalm B"
 	flamer_chem = "napalmb"
+	hud_state = "flame_green"
 
 	max_range = 6
 
@@ -230,6 +236,7 @@
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustible liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with extreme caution."
 	caliber = "Napalm X"
 	flamer_chem = "napalmx"
+	hud_state = "flame_blue"
 
 	max_range = 6
 
@@ -245,6 +252,7 @@
 /obj/item/ammo_magazine/flamer_tank/custom/large
 	name = "M240 large custom incinerator tank"
 	desc = "A large fuel tank for use in the M240-T incinerator unit. This one has been modified with a pressure regulator and a large internal propellant tank. Must be manually attached."
+	hud_state = "flame_blue"
 	gun_type = /obj/item/weapon/gun/flamer/m240/spec
 	max_rounds = 250
 

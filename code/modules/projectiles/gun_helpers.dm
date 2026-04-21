@@ -351,6 +351,7 @@ DEFINES in setup.dm, referenced here.
 				var/obj/item/storage/master_storage = magazine.loc
 				master_storage.remove_from_storage(magazine)
 			reload(user, magazine)
+			display_ammo()
 		else
 			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
 			return
@@ -391,6 +392,12 @@ DEFINES in setup.dm, referenced here.
 				//  \\
 				//  \\
 //----------------------------------------------------------
+
+/obj/item/weapon/gun/proc/get_ammo_type()
+	return null //usually a list
+
+/obj/item/weapon/gun/proc/get_ammo_count()
+	return 0
 
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)

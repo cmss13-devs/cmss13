@@ -1186,10 +1186,12 @@
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	xeno.add_language(LANGUAGE_ENGLISH)
+	LAZYORASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
 	xeno.remove_language(LANGUAGE_ENGLISH)
+	LAZYBITREMOVEASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))

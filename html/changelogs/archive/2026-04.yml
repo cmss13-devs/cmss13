@@ -1,0 +1,66 @@
+2026-04-04:
+  ori-disillusion-mirnov:
+  - maptweak: synths now spawn in the ares core. their old spawn is replaced with
+      a janitor closet
+2026-04-06:
+  MistChristmas:
+  - code_imp: Add a Hear only language flag, And lazy list defines for adding and
+      removing bitflags.
+  - bugfix: Corrupted Xenos can no longer speak English.
+  - ui: Check known languages menu will let you know if you can't speak a language
+      but can understand it.
+  ori-disillusion-mirnov:
+  - bugfix: walkman headphones will now show up again when you wear them on your ears
+2026-04-07:
+  MistChristmas:
+  - rscadd: Labels are more strict on what they allow. Only alphanumeric characters
+      plus common punctuation, spaces, underscore, hyphen, plus, and vertical bar.
+2026-04-08:
+  MistChristmas:
+  - bugfix: Psychic Property still generating and not being Admin spawn only.
+2026-04-09:
+  DangerRevolution:
+  - maptweak: Changed the spawn markers on Kutjevo Refinery's Comms to prevent two
+      towers spawning next to eachother.
+  ori-disillusion-mirnov:
+  - imageadd: readd old hudead and hudhcdead
+  - imagedel: deleted new huddead and hudhcdead
+2026-04-11:
+  hry-gh:
+  - bugfix: fixes server lag when updating the minimap, after having opened and closed
+      the minimap sufficient times in a round
+2026-04-14:
+  Jesters-Ballad:
+  - rscadd: Added Three Patches to Civilian Gear
+2026-04-16:
+  JackieEstegado:
+  - bugfix: Organ healing chemicals no longer produce messages falsely indicating
+      organ damage being taken.
+2026-04-18:
+  DangerRevolution:
+  - maptweak: Removed some accessible OOB areas on Chance's Claim that could be tunneled
+      into / cored etc
+  JackieEstegado:
+  - bugfix: Marines now need to take the wrappers off their food instead of just eating
+      through it.
+  - qol: Food wrappers will now go into a hand if possible, instead of onto the ground.
+  - qol: Unpowered disposal bins can now be manually emptied by hand.
+  LC4492:
+  - spellcheck: The 'Funny Telephone Booths' in Fiorina aren't funny anymore.
+  MistChristmas:
+  - rscadd: Cooldowns to give and force showing papers. Force showing papers also
+      need the receiving person to be on help intent as well.
+  Nomoresolvalou:
+  - rscadd: Added Weyland Yutani hat and patches to the synth loadout picker.
+  Red-byte3D:
+  - balance: Scouts HV bullets now add a small "MD" like blip to every non-faction
+      you shoot, blipping continously and revealing their position like an MD would,
+      for every marine thats close to the xenomorph for 10 seconds.
+  Unknownity:
+  - bugfix: Desert Moon temple walls are indestructible again.
+2026-04-21:
+  Ammoniacres:
+  - rscadd: Added a few extra properties to a variety of basic chemicals. Medical
+      chems not affected by this change.
+  - rscadd: Space drugs are now (minorly) addictive!
+  - bugfix: Fixed PROPERTY_HEMORRHAGING on radium, preventing it from working properly.

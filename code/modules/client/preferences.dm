@@ -681,7 +681,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Gun Ammo Counter: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DISABLE_GUN_AMMO_COUNTER]'><b>[toggle_prefs & TOGGLE_DISABLE_GUN_AMMO_COUNTER ? "Off" : "On"]</b></a><br>"
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DISABLE_GUN_AMMO_COUNTER]'><b>[toggle_prefs & TOGGLE_DISABLE_GUN_AMMO_COUNTER ? "Off" : "On"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>"

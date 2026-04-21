@@ -145,10 +145,10 @@
 	name = "Dress Blues - (O-10) General"
 	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
 
-/datum/equipment_preset/uscm_event/dress/officer/general/gen
+/datum/equipment_preset/uscm_event/dress/officer/general/acmc
 	name = "Dress Blues - (O-10C) Assistant Commandant of the Marine Corps"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 
-/datum/equipment_preset/uscm_event/dress/officer/general/gen
+/datum/equipment_preset/uscm_event/dress/officer/general/cmc
 	name = "Dress Blues - (O-10S) Commandant of the Marine Corps"
 	paygrades = list(PAY_SHORT_MO10CS = JOB_PLAYTIME_TIER_0)

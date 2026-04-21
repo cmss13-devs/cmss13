@@ -49,7 +49,8 @@
 	plasma_cost = 0
 
 	// Config options
-	distance = 4
+	distance = 3
+	//distance_sc = 5 //greater distance on spriteclick, less distance when using to escape
 	knockdown = FALSE
 	freeze_self = FALSE
 
@@ -67,7 +68,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_tail_jab
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 7 SECONDS
+	xeno_cooldown = 5 SECONDS
 
 /datum/action/xeno_action/activable/headbite
 	name = "Headbite"

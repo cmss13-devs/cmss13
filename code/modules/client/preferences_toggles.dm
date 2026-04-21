@@ -287,7 +287,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_disable_gun_ammo_counter'>Toggle Gun Ammo Counter</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_disable_gun_ammo_counter'>Toggle Gun Ammo Counter</a><br>",
 	)
 
 	var/dat = ""

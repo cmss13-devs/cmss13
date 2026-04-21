@@ -1,0 +1,6 @@
+author: "Ammoniacres"
+delete-after: True
+changes:
+  - rscadd: "Added a few extra properties to a variety of basic chemicals. Medical chems not affected by this change."
+  - rscadd: "Space drugs are now (minorly) addictive!"
+  - bugfix: "Fixed PROPERTY_HEMORRHAGING on radium, preventing it from working properly."

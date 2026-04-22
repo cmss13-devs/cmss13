@@ -8,6 +8,14 @@
 	if(!query)
 		return FALSE
 
+#ifdef SS13LIB_HUB_VISIBILITY
+	if(!SS13LIB_HUB_VISIBILITY)
+		return FALSE
+#else
+	if(!world.visibility)
+		return FALSE
+#endif
+
 	SS13LIB_INFO_LOG("Received topic query, preparing response.")
 
 	var/response = list(
@@ -32,10 +40,6 @@
 
 #ifdef SS13LIB_PLAYER_LIMIT
 		"pop_cap" = SS13LIB_PLAYER_LIMIT,
-#endif
-
-#ifdef SS13LIB_COMMUNITY_NAME
-		"community_name" = SS13LIB_COMMUNITY_NAME,
 #endif
 
 #ifdef SS13LIB_REGION

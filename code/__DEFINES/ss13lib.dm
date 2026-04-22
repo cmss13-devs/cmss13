@@ -57,10 +57,6 @@
 /// Optional field
 #define SS13LIB_PLAYER_LIMIT // CONFIG_GET(number/popcap)
 
-/// The name of the community or network of servers this server belongs to.
-/// Optional field
-#define SS13LIB_COMMUNITY_NAME // CONFIG_GET(string/community_name)
-
 /// The geographic region where this server is hosted.
 /// Values: "africa_central", "africa_north", "africa_south", "antarctica",
 ///   "asia_east", "asia_north", "asia_southeast", "central_america",
@@ -136,10 +132,17 @@
 /// This should be typed as /datum/ss13lib_auth_response
 #define SS13LIB_CLIENT_INFO(X) // X.hub_info
 
+/// Controls whether SS13Lib responds to hub topic queries with server information.
+/// If defined and truthy, the server will be visible on the hub. If falsy, topic
+/// queries are silently ignored. If not defined, falls back to world.visibility.
+/// Optional field
+#define SS13LIB_HUB_VISIBILITY // world.visibility
+
 //! DOMAIN ATTESTATION
 //! Optional. Proves domain ownership to the hub via DNS TXT record + ed25519 signature.
 
 /// The domain to attest ownership of. Must have a _ss13hub TXT record with the matching ed25519 pubkey.
+/// Maximum 32 characters.
 /// Optional field — if not defined, attestation is skipped.
 #define SS13LIB_ATTEST_DOMAIN // CONFIG_GET(string/verified_domain)
 

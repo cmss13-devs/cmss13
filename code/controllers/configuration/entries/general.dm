@@ -752,6 +752,16 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	key_mode = KEY_MODE_TEXT_UNALTERED
 	value_mode = VALUE_MODE_TEXT
 
+/datum/config_entry/string/ss13lib_region
+
+/datum/config_entry/string/ss13lib_engine_min_version
+
+/datum/config_entry/string/ss13lib_engine_max_version
+
+/datum/config_entry/str_list/ss13lib_engine_blacklisted_versions
+
+/datum/config_entry/string/ss13lib_connection_address
+
 /datum/config_entry/string/verified_domain
 	protection = CONFIG_ENTRY_LOCKED
 

@@ -58,3 +58,13 @@
       for every marine thats close to the xenomorph for 10 seconds.
   Unknownity:
   - bugfix: Desert Moon temple walls are indestructible again.
+2026-04-21:
+  Ammoniacres:
+  - rscadd: Added a few extra properties to a variety of basic chemicals. Medical
+      chems not affected by this change.
+  - rscadd: Space drugs are now (minorly) addictive!
+  - bugfix: Fixed PROPERTY_HEMORRHAGING on radium, preventing it from working properly.
+2026-04-22:
+  Drathek:
+  - bugfix: Fixes a couple stylesheet errors affecting tactical sign language (both
+      chats) and hyperdyne radios (non-fancy chat)

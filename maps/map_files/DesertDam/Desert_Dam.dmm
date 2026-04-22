@@ -25347,7 +25347,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "cKn" = (
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "cKp" = (
@@ -62026,11 +62026,8 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/west_wing_hallway)
 "qRB" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)

@@ -694,6 +694,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
 	if(for_client || (!popup && !live))
+		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
+
+		if(hashed_minimaps[client_hash])
+			return hashed_minimaps[client_hash]
+
 		if(!hashed_minimaps[hash])
 			// Create and cache the base minimap
 			var/atom/movable/screen/minimap/base_map = new(null, null, zlevel, flags, live, popup, drawing)
@@ -749,6 +754,7 @@ SUBSYSTEM_DEF(minimaps)
 					// No frozen state available, apply current transmitted drawings only
 					map.update_drawing_overlay(show_cic_drawings = FALSE)
 
+		hashed_minimaps[client_hash] = map
 		return map
 
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]

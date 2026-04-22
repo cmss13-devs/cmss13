@@ -197,7 +197,7 @@
 	for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
 		if(dock.name == dock_name)
 			var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
-			ert.request(target)
+			ert.request(target, force=TRUE)
 			launched=TRUE
 	if(!launched)
 		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))

@@ -67644,7 +67644,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/autodispenser,
+/obj/structure/machinery/autodispenser{
+	dir = 4
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "ncG" = (

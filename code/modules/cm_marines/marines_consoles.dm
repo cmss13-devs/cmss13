@@ -468,7 +468,7 @@
 		return
 
 	if(user_id_card)
-		user_id_card.loc = get_turf(src)
+		user_id_card.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
 		if(operable()) // Powered. Console can response.
@@ -479,7 +479,7 @@
 		user_id_card = null
 
 	else if(target_id_card)
-		target_id_card.loc = get_turf(src)
+		target_id_card.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
 		if(operable()) // Powered. Make comp proceed ejection
@@ -1025,10 +1025,6 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_MESS_SERGEANT = 62,
 				// 70-149: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
-				JOB_ARMY_TROOPER = 72,
-				JOB_ARMY_ENGI = 73,
-				JOB_ARMY_MEDIC = 74,
-				JOB_ARMY_SYN = 75,
 				// 150+: Civilian/other
 				JOB_CORPORATE_LIAISON = 150,
 				JOB_CORPORATE_BODYGUARD = 151,
@@ -1103,6 +1099,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_FORECON_SUPPORT = 144,
 				JOB_FORECON_RIFLEMAN = 145,
 				JOB_FORECON_SYN = 146,
+
+				JOB_ARMY_CO = 160,
+				JOB_ARMY_SNCO = 160,
+				JOB_ARMY_MARKSMAN = 161,
+				JOB_ARMY_SMARTGUNNER = 162,
+				JOB_ARMY_MEDIC = 163,
+				JOB_ARMY_ENGI = 164,
+				JOB_ARMY_TROOPER = 165,
+				JOB_ARMY_SYN = 166,
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")

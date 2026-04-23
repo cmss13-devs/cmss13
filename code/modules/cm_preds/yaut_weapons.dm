@@ -253,7 +253,7 @@
 		yautja_user.start_stomping()
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets), user), 10 SECONDS)
-		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets in front of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
 	if(gauntlet_deployed)
@@ -1038,6 +1038,13 @@
 	base_icon_state = "ancient_shield_alt"
 	item_state = "ancient_shield_alt"
 
+/obj/item/weapon/shield/riot/yautja/ancient/temple
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown alloy. Its time-worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon_state = "ancient_shield_temple"
+	base_icon_state = "ancient_shield_temple"
+	item_state = "ancient_shield_temple"
+
 /obj/item/weapon/shield/riot/yautja/bracer_shield
 	name = "bracer shield"
 	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
@@ -1412,16 +1419,16 @@
 	w_class = SIZE_HUGE
 	pixel_x = -2
 	hud_offset = -2
-	var/charge_time = 0
-	var/last_regen = 0
+	// our charge. max of 100, min of 0. starts at 100
+	var/charge_time = 100
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	last_regen = world.time
 	update_icon()
+	AddElement(/datum/element/corp_label/dltalt) // only the rifle is special-issue, everything else comes from the clans
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst

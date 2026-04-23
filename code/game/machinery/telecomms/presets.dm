@@ -220,9 +220,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
-
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
-	register_with_turf()
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
@@ -279,8 +277,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON survivors
-						freq_listening |= SOF_FREQ
+					if(FACTION_MARINE in user.faction_group) //FORECON/Army survivors
+						freq_listening |= SURVIVOR_FREQS
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
@@ -400,12 +398,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	overlays += corruption_image
 
-/// Handles re-registering signals on new turfs if changed
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
-	SIGNAL_HANDLER
-
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
-
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"
 	autolinkers = list("relay")
@@ -452,7 +444,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -464,7 +456,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ, ARMY_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ, ARMY_FREQ)
 
 //Buses
 
@@ -483,7 +475,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -499,7 +491,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
 	network = "tcommsat"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
 //Processors
@@ -564,7 +556,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering
@@ -579,7 +571,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("centcomm")
 
 //Broadcasters

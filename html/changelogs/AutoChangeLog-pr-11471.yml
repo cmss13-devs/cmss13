@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Data Detector now detects things in labcoats and other such storages properly."

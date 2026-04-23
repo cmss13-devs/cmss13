@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "More spell and grammar checks done in strings of text."

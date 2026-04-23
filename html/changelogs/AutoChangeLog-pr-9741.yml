@@ -1,0 +1,15 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - balance: "Improved Dancer strain."
+  - balance: "Decresed Imaple and Tail Trip \"miss\" cooldowns from 1.5s to 0.7s."
+  - balance: "Increased Tail Trip range from 1 tile to 2 tiles."
+  - balance: "Dodge ability active time is reduced from 10s to 7s, in exchange ability now behaves similar to lurker invisibility, 1s used is 2s cooldown, can be deactivated at any time."
+  - balance: "Dancer get passive \"dodge_threshold\" ability , dancer can avoid 1 every 6th projectile, when \"Dodge\" ability is active it increases to 1 every 3rd projectile."
+  - rscadd: "New \"dodge_threshold\" system, this system makes you avoid projectiles, you cannot avoid following: sniper ammo, rockets, explosives, melee and Fire."
+  - rscadd: "New \"Yellow Tags\" system, have same usage as red variant of marks but to trigger yellow marks you need to drive target to critical condition (health under 0)"
+  - rscadd: "Slashing \"Yellow Tags\" now resets cooldown of both Impale and Tail Trip abilities, if you use ability on target instead of slashing, you will reset that specific ability cooldown."
+  - rscadd: "New \"Tail Lance\" ability for Dancer, new tailstab that changes depending on intent, on DISARM intent it will cause 8 AP damage to targeted limb, its usage cooldown is 3 seconds."
+  - rscadd: "Dancer now have recovery multiplier of 1.35 but their phermone gains cannot be higher than \"strong\" tier."
+  - rscadd: "Dodge now have new \"afterimage\" effect, its purely visual addition to indicate if dodge ability is active."
+  - rscadd: "Spectators now gain new HUD option called \"Xeno Effects HUD\", this hud allows you to see effects that are exclusive to Xeno players."

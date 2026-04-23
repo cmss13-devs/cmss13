@@ -8,11 +8,14 @@
 */
 
 /mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(selected_ability)
+		selected_ability.on_deselect(src)
 	if(!ability)
 		selected_ability = null
 		client?.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
+	selected_ability.on_select(src)
 	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
 		client?.set_right_click_menu_mode(shift_only = TRUE)
 
@@ -89,8 +92,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
-	var/xeno_cooldown_interrupt_modifier = 3
+	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building or when interrupted.
+	var/xeno_cooldown_interrupt_penalty = 1 SECONDS
 	/// Something went wrong, for example, you can't build here
 	var/xeno_cooldown_fail = 1
 	/// Placement time increase modifier

@@ -1,12 +1,11 @@
 ///*****************************US Army Survivors************************************************/
 /datum/equipment_preset/survivor/army
 	name = "Survivor - US Army"
-	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
 	job_title  = JOB_ARMY_TROOPER
-	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
@@ -210,12 +209,13 @@
 	add_army_weapon(new_human)
 	spawn_fluff_item(new_human)
 	spawn_pouch(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e2, WEAR_ACCESSORY)
 
 ///*****************************//
 
 /datum/equipment_preset/survivor/army/engineer
 	name = "Survivor - US Army Combat Engineering Technician"
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_ENGI
 	job_title  = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
@@ -229,13 +229,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e3, WEAR_ACCESSORY)
 	add_army_weapon(new_human)
 	spawn_fluff_item(new_human)
 	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/medic
 	name = "Survivor - US Army Combat Medical Technician"
-	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
@@ -252,13 +253,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e3, WEAR_ACCESSORY)
 	spawn_fluff_item(new_human)
 	add_army_weapon(new_human)
 	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/marksman
 	name = "Survivor - US Army Marksman"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4E = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MARKSMAN
 	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
@@ -275,10 +277,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/extended(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e4s, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/army/gunner
 	name = "Survivor - US Army Heavy Gunner"
-	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE4E = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
@@ -292,6 +295,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/empty(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot(new /obj/item/smartgun_battery(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e4s, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon(new_human)
 	spawn_pouch(new_human)
@@ -299,7 +303,7 @@
 
 /datum/equipment_preset/survivor/army/sl
 	name = "Survivor - US Army Squad Leader"
-	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
@@ -308,6 +312,7 @@
 /datum/equipment_preset/survivor/army/sl/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e7, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
@@ -319,7 +324,7 @@
 
 /datum/equipment_preset/survivor/army/co
 	name = "Survivor - US Army Commander"
-	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AO4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_CO
 	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
@@ -332,13 +337,16 @@
 	var/obj/item/clothing/suit/storage/jacket/marine/service/green/jacket = new()
 	var/obj/item/clothing/accessory/patch/army/patch_army = new()
 	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
+	var/obj/item/clothing/accessory/ranks/army/o4/boards = new()
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/army, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/army/infantry, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/o4, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(jacket, WEAR_JACKET)
-	jacket.toggle(new_human)
+	jacket.toggle_buttoned(new_human)
 	jacket.attach_accessory(new_human,patch_army)
 	jacket.attach_accessory(new_human,patch_infantry)
+	jacket.attach_accessory(new_human,boards)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine/army(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_BACK)
@@ -367,7 +375,7 @@
 
 /datum/equipment_preset/synth/survivor/army
 	name = "Survivor - US Army Synthetic"
-	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
 	job_title  = "Synthetic"

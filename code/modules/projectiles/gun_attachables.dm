@@ -470,7 +470,7 @@ Defined in conflicts.dm of the #defines folder.
 	AUTOWIKI_SKIP(TRUE)
 
 	name = "\improper T9 tactical bayonet"
-	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
+	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detachments and outposts across the sector."
 	icon_state = "bayonet_tanto"
 	item_state = "bayonet_tanto"
 	attach_icon = "bayonet_tanto_a"
@@ -1041,7 +1041,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/laser_light_combo //Unique attachment for the VP78 based on the fact it has a Laser-Light Module in AVP2010
 	name = "VP78 Laser-Light Module"
-	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCMs next generation pistol program. All VP78 pistols come equipped with the module."
+	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCM's next generation pistol program. All VP78 pistols come equipped with the module."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "vplaserlight"
 	attach_icon = "vplaserlight_a"
@@ -3666,7 +3666,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	attachment_action_type = /datum/action/item_action/toggle/ext
 	slot = "under"
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_MELEE
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
@@ -3696,10 +3696,16 @@ Defined in conflicts.dm of the #defines folder.
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
+/obj/item/attachable/attached_gun/extinguisher/reload_attachment(obj/item/used_item, mob/user)
+	internal_extinguisher.attackby(used_item, user)
+
+/obj/item/attachable/attached_gun/extinguisher/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	return internal_extinguisher.afterattack(target, user, proximity_flag, click_parameters)
+
 /obj/item/attachable/attached_gun/extinguisher/pyro
 	name = "HME-88B underbarrel extinguisher"
 	desc = "An experimental Taiho-Technologies HME-88B underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
-	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE //not removable
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_MELEE //not removable
 
 /obj/item/attachable/attached_gun/extinguisher/pyro/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/pyro()

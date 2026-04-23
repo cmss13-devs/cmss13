@@ -21,6 +21,7 @@
 // SOFTWARE.
 /datum/entity_link
 	var/parent_entity
+	var/parent_field = DB_DEFAULT_ID_FIELD
 	var/child_entity
 	var/child_field
 
@@ -35,4 +36,4 @@
 	var/list/child_requests
 
 /datum/entity_link/proc/get_filter(parent_alias, child_alias)
-	return new /datum/db/filter/link(parent_alias, DB_DEFAULT_ID_FIELD, child_alias, child_field) 
+	return new /datum/db/filter/link(parent_alias, parent_field, child_alias, child_field)

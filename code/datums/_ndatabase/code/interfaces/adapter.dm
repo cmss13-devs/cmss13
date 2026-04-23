@@ -24,19 +24,19 @@
 /datum/db/adapter/proc/sync_table_meta()
 	return
 
-/datum/db/adapter/proc/sync_table(type_name, table_name, list/field_types)
+/datum/db/adapter/proc/sync_table(type_name, table_name, id_field_name, id_field_type, list/field_types)
 	return
 
-/datum/db/adapter/proc/sync_index(index_name, table_name, list/fields, unique, cluster)
+/datum/db/adapter/proc/sync_index(index_name, table_name, id_field_name, list/fields, unique, cluster)
 	return
 
 /datum/db/adapter/proc/read_table(table_name, list/ids, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/update_table(table_name, list/values, datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/update_table(table_name, id_field_name, list/values, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/insert_table(table_name, list/values, datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/insert_table(table_name, id_field_name, list/values, datum/callback/CB, sync=FALSE)
 	return
 
 /datum/db/adapter/proc/delete_table(table_name, list/ids, datum/callback/CB, sync=FALSE)
@@ -53,6 +53,31 @@
 
 
 // DEFAULT IMPLEMENTATIONS
+
+/datum/db/adapter/proc/fieldtype2text(typeid)
+	return
+
+/datum/db/adapter/proc/fields2text(list/L)
+	var/list/result = list()
+	for(var/item in L)
+		result += "[item] [fieldtype2text(L[item])]"
+	return jointext(result, ",")
+
+/datum/db/adapter/proc/fields2savetext(list/L)
+	var/list/result = list()
+	for(var/item in L)
+		result += "[item]:[L[item]]"
+	return jointext(result, ",")
+
+/datum/db/adapter/proc/savetext2fields(text)
+	var/list/result = list()
+	var/list/split1 = splittext(text, ",")
+	for(var/field in split1)
+		var/list/split2 = splittext(field, ":")
+		result[split2[1]] = text2num(split2[2])
+	return result
+
+
 // DO NOT USE EXCEPT IN ADAPTER CODE
 
 /datum/db/adapter/proc/get_filter_comparison(datum/db/filter/comparison/filter, list/casts, list/pflds)

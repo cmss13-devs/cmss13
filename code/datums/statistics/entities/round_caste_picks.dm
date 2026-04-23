@@ -35,7 +35,7 @@
 		field_types[lowertext(replacetext(caste_name, " ", "_"))] = DB_FIELDTYPE_INT
 
 /datum/entity_meta/round_caste_picks/map(datum/entity/round_caste_picks/entity, list/values)
-	entity.id = "[values[DB_DEFAULT_ID_FIELD]]"
+	entity.id = "[values[id_field_name]]"
 	for(var/field in field_types)
 		if((field == "round_id") || (field == "xenos_won"))
 			entity.vars[field] = values[field]
@@ -45,7 +45,7 @@
 /datum/entity_meta/round_caste_picks/unmap(datum/entity/round_caste_picks/entity, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values[DB_DEFAULT_ID_FIELD] = entity.id
+		values[id_field_name] = entity.id
 	for(var/field in field_types)
 		if((field == "round_id") || (field == "xenos_won"))
 			values[field] = entity.vars[field]

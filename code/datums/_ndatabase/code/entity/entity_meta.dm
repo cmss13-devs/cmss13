@@ -26,8 +26,12 @@
 	var/active_entity = TRUE
 	var/key_field = null
 
+	/// Lets start from scratch, you decided to change how you track your data or link it. Who knows what up on your mind. Maybe you need little of space for it. On _ndatabase side it always converts to id in vars
+	var/id_field_name = DB_DEFAULT_ID_FIELD
+	var/id_field_type = DB_DEFAULT_ID_FIELD_TYPE
+
 	// bitwise hint field
-	var/hints = 0
+	var/hints = NO_FLAGS
 
 	var/list/datum/db/index/indexes
 
@@ -55,7 +59,7 @@
 
 // redefine this for faster operations
 /datum/entity_meta/proc/map(datum/entity/ET, list/values)
-	var/strid = "[values[DB_DEFAULT_ID_FIELD]]"
+	var/strid = "[values[id_field_name]]"
 	ET.id = strid
 	for(var/F in field_types)
 		ET.vars[F] = values[F]
@@ -64,7 +68,7 @@
 /datum/entity_meta/proc/unmap(datum/entity/ET, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values[DB_DEFAULT_ID_FIELD] = ET.id
+		values[id_field_name] = ET.id
 	for(var/F in field_types)
 		values[F] = ET.vars[F]
 	return values
@@ -82,7 +86,6 @@
 			ET.invalidate()
 
 	ET.post_creation()
-
 	return ET
 
 /datum/entity_meta/proc/make_new_by_key(key_value)
@@ -96,13 +99,50 @@
 	var/datum/entity/ET = new entity_type()
 	ET.metadata = src
 	ET.vars[key_field] = key_value
+	ET.cached_keys_managed = list(strval)
 	key_managed[strval] = ET
 	return ET
 
+/datum/entity_meta/proc/make_new_by_index(datum/db/index/I, ...)
+	if(!I)
+		CRASH("Attempted to create entity without index. Entity is [type]")
+	if(length(I.fields) != length(args))
+		CRASH("Attempted to create entity with keys and values mismatch. Entity is [type]")
+	var/strval = I.get_strval(args)
+	if(key_managed[strval])
+		return key_managed[strval]
+	var/datum/entity/ET = new entity_type()
+	ET.metadata = src
+	I.assign_entity_values(ET, args)
+	ET.cached_keys_managed = list(strval)
+	key_managed[strval] = ET
+	return ET
+
+/datum/entity_meta/proc/update_links(datum/entity/ET)
+	if(length(ET.cached_keys_managed))
+		for(var/strval in ET.cached_keys_managed)
+			key_managed -= strval
+		ET.cached_keys_managed = null
+	if(!key_field && !indexes)
+		return
+	ET.cached_keys_managed = list()
+	for(var/datum/db/index/I as anything in indexes)
+		var/strval = ""
+		for(var/field in I.fields)
+			strval += "[field]:[ET.vars[field]];"
+		ET.cached_keys_managed += strval
+		key_managed[strval] = ET
+	if(key_field)
+		ET.cached_keys_managed += "[ET.vars[key_field]]"
+		key_managed["[ET.vars[key_field]]"] = ET
+	return
+
 /datum/entity_meta/proc/on_read(datum/entity/ET)
+	update_links(ET)
 	return
 
 /datum/entity_meta/proc/on_update(datum/entity/ET)
+	update_links(ET)
 	return
 
 /datum/entity_meta/proc/on_insert(datum/entity/ET)

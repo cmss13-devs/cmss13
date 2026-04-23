@@ -23,6 +23,7 @@
 	var/id
 	var/status
 	var/datum/entity_meta/metadata
+	var/list/cached_keys_managed
 	var/__key_synced = FALSE
 
 /datum/entity/proc/save()
@@ -41,9 +42,7 @@
 		qdel(src)
 		return
 	status = DB_ENTITY_STATE_DELETED
-	metadata.managed -= src.id
-	if(metadata.key_field)
-		metadata.key_managed -= "[vars[metadata.key_field]]"
+	unmanage_from_meta()
 	metadata.to_delete |= src
 
 /datum/entity/proc/invalidate()
@@ -56,11 +55,14 @@
 	metadata.to_read -= src
 	metadata.to_delete -= src
 	metadata.to_update -= src
-	metadata.managed -= src.id
-	if(metadata.key_field)
-		metadata.key_managed -= "[vars[metadata.key_field]]"
+	unmanage_from_meta()
 	if(!id)
 		status = DB_ENTITY_STATE_ADD_DETACH
+
+/datum/entity/proc/unmanage_from_meta()
+	metadata.managed -= id
+	for(var/strval in cached_keys_managed)
+		metadata.key_managed -= strval
 
 /datum/entity/Destroy()
 	detach()

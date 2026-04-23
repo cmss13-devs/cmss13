@@ -224,7 +224,7 @@ SUBSYSTEM_DEF(vote)
 				break
 
 		if(!found)
-			vote = SSentity_manager.select(/datum/entity/map_vote)
+			vote = DB_ENTITY(/datum/entity/map_vote)
 			vote.map_name = i
 			vote.total_votes = 0
 			vote.save()
@@ -308,7 +308,7 @@ SUBSYSTEM_DEF(vote)
 				choices.Add(maps)
 				if(!length(choices))
 					return FALSE
-				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
+				DB_FILTER(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
 
 				if(CONFIG_GET(flag/allow_vote_adjustment_callback))
 					vote_adjustment_callback = CALLBACK(src, PROC_REF(map_vote_adjustment))

@@ -26,3 +26,23 @@
 
 	// name for the database
 	var/name
+
+// redefine this for faster operations
+/datum/db/index/proc/make_filters_for_index(...)
+	. = list()
+	for(var/i = 1 to length(fields))
+		. += DB_COMP(fields[i], DB_EQUALS, args[i])
+	if(length(.) == 1)
+		return .[1]
+	return DB_AND(arglist(.))
+
+// redefine this for faster operations
+/datum/db/index/proc/get_strval(list/values)
+	. = ""
+	for(var/i = 1 to length(fields))
+		. += "[fields[i]]:[values[i]];"
+
+// redefine this for faster operations
+/datum/db/index/proc/assign_entity_values(datum/entity/ET, list/values)
+	for(var/i = 1 to length(fields))
+		ET.vars[fields[i]] = values[i]

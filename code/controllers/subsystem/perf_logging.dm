@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(perf_logging)
 	round.map_name = ground.map_name
 	var/datum/entity/mc_controller/C
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
-		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
+		C = DB_EKEY(/datum/entity/mc_controller, "[SS.type]")
 		if(!C)
 			continue
 		C.wait_time = SS.wait
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(perf_logging)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!C?.id)
 		return // Skip ones that were never taken for recording to begin with
-	var/datum/entity/mc_record/record = SSentity_manager.select(/datum/entity/mc_record)
+	var/datum/entity/mc_record/record = DB_ENTITY(/datum/entity/mc_record)
 	record.round_time = ord
 	record.round_id = round.id
 	record.controller_id = C.id
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(perf_logging)
 /// Insert a new timing record for the MC as a whole
 /datum/controller/subsystem/perf_logging/proc/update_mc_timing()
 	SHOULD_NOT_SLEEP(TRUE)
-	var/datum/entity/mc_timing_info/timing_info = SSentity_manager.select(/datum/entity/mc_timing_info)
+	var/datum/entity/mc_timing_info/timing_info = DB_ENTITY(/datum/entity/mc_timing_info)
 	timing_info.total_time_taken = tcost * (1 SECONDS)
 	timing_info.round_id = round.id
 	timing_info.round_time = ord

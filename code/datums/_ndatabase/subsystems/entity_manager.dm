@@ -89,12 +89,11 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	adapter.sync_table_meta()
 	for(var/ET in tables)
 		var/datum/entity_meta/EM = tables[ET]
-		adapter.sync_table(EM.entity_type, EM.table_name, EM.field_types)
-		if(EM.indexes)
-			for(var/datum/db/index/I in EM.indexes)
-				adapter.sync_index(I.name, EM.table_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
+		adapter.sync_table(EM.entity_type, EM.table_name, EM.id_field_name, EM.id_field_type, EM.field_types)
+		for(var/datum/db/index/I as anything in EM.indexes)
+			adapter.sync_index(I.name, EM.table_name, EM.id_field_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
 		if(EM.key_field)
-			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, list(EM.key_field), TRUE, TRUE)
+			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, EM.id_field_name, list(EM.key_field), TRUE, TRUE)
 
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
@@ -120,17 +119,17 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	meta.to_insert = list() // release the list early
 	meta.inserting = to_insert
 	var/list/unmap = list()
-	for(var/datum/entity/item in to_insert)
+	for(var/datum/entity/item as anything in to_insert)
 		var/list/value = meta.unmap(item, FALSE)
 		unmap.Add(list(value))
 
-	adapter.insert_table(meta.table_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_insert), meta, to_insert))
+	adapter.insert_table(meta.table_name, meta.id_field_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_insert), meta, to_insert))
 
 /datum/controller/subsystem/entity_manager/proc/after_insert(datum/entity_meta/meta, list/datum/entity/inserted_entities, first_id)
 	var/currid = text2num("[first_id]")
 	meta.inserting = list()
 	// order between those two has to be same
-	for(var/datum/entity/IE in inserted_entities)
+	for(var/datum/entity/IE as anything in inserted_entities)
 		IE.id = "[currid]"
 		meta.on_insert(IE)
 		meta.on_action(IE)
@@ -147,14 +146,14 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		return
 	meta.to_update = list() // release the list early
 	var/list/unmap = list()
-	for(var/datum/entity/item in to_update)
+	for(var/datum/entity/item as anything in to_update)
 		var/list/value = meta.unmap(item)
 		unmap.Add(list(value))
 
-	adapter.update_table(meta.table_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_update), meta, to_update))
+	adapter.update_table(meta.table_name, meta.id_field_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_update), meta, to_update))
 
 /datum/controller/subsystem/entity_manager/proc/after_update(datum/entity_meta/meta, list/datum/entity/updated_entities)
-	for(var/datum/entity/IE in updated_entities)
+	for(var/datum/entity/IE as anything in updated_entities)
 		IE.status = DB_ENTITY_STATE_SYNCED
 		meta.on_update(IE)
 		meta.on_action(IE)
@@ -165,13 +164,13 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		return
 	meta.to_delete = list() // release the list early
 	var/list/ids = list()
-	for(var/datum/entity/item in to_delete)
+	for(var/datum/entity/item as anything in to_delete)
 		ids += item.id
 
 	adapter.delete_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_delete), meta, to_delete))
 
 /datum/controller/subsystem/entity_manager/proc/after_delete(datum/entity_meta/meta, list/datum/entity/deleted_entities)
-	for(var/datum/entity/IE in deleted_entities)
+	for(var/datum/entity/IE as anything in deleted_entities)
 		IE.status = DB_ENTITY_STATE_BROKEN
 		meta.on_delete(IE)
 
@@ -181,14 +180,14 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		return
 	meta.to_read = list() // release the list early
 	var/list/ids = list()
-	for(var/datum/entity/item in to_select)
+	for(var/datum/entity/item as anything in to_select)
 		ids += item.id
 
 	adapter.read_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select), meta, to_select))
 
 /datum/controller/subsystem/entity_manager/proc/after_select(datum/entity_meta/meta, list/datum/entity/selected_entities, uqid, list/results)
 	for(var/list/IE in results)
-		var/datum/entity/ET = meta.managed["[IE[DB_DEFAULT_ID_FIELD]]"]
+		var/datum/entity/ET = meta.managed["[IE[meta.id_field_name]]"]
 		var/old_status = ET.status
 		ET.status = DB_ENTITY_STATE_SYNCED
 		meta.map(ET, IE)
@@ -220,7 +219,7 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	else
 		resultset = list()
 		for(var/list/IE in results)
-			var/id = "[IE[DB_DEFAULT_ID_FIELD]]"
+			var/id = "[IE[meta.id_field_name]]"
 			var/datum/entity/ET = meta.managed[id]
 			if(!ET)
 				ET = meta.make_new(id, FALSE)
@@ -272,7 +271,43 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 	// safe to select
 	var/list/IE = results[1]
-	ET.id = "[IE[DB_DEFAULT_ID_FIELD]]"
+	ET.id = "[IE[meta.id_field_name]]"
+	meta.managed[ET.id] = ET
+	ET.status = DB_ENTITY_STATE_SYNCED
+	meta.map(ET, IE)
+	meta.on_read(ET)
+	meta.on_action(ET)
+
+/datum/controller/subsystem/entity_manager/proc/select_by_index(entity_type, index_name, ...)
+	var/datum/entity_meta/meta = tables[entity_type]
+	if(!meta || !meta.indexes)
+		return null
+	var/datum/db/index/I
+	for(I as anything in meta.indexes)
+		if(I.name == index_name)
+			break
+		I = null
+	var/datum/entity/ET = meta.make_new_by_index(I, args)
+	if(!ET.__key_synced)
+		ET.__key_synced = TRUE
+		adapter.read_filter(meta.table_name, I.make_filters_for_index(args), CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select_by_index), ET, meta, I))
+	return ET
+
+/datum/controller/subsystem/entity_manager/proc/after_select_by_index(datum/entity/ET, datum/entity_meta/meta, datum/db/index/I, quid, list/results)
+	var/r_len = length(results)
+	if(!r_len) // safe to insert
+		meta.to_insert |= ET
+		return
+
+	if(r_len > length(I.fields))
+		var/key_values_text = ""
+		for(var/K in I.fields)
+			key_values_text += "[K]:[ET.vars[K]]"
+		CRASH("Secondary Key constraint violation on [ET.type], keys: [key_values_text]")
+
+	// safe to select
+	var/list/IE = results[1]
+	ET.id = "[IE[meta.id_field_name]]"
 	meta.managed[ET.id] = ET
 	ET.status = DB_ENTITY_STATE_SYNCED
 	meta.map(ET, IE)
@@ -294,7 +329,7 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		to_write.Add(V)
 
 /datum/controller/subsystem/entity_manager/proc/setup_round_id()
-	round = SSentity_manager.select(/datum/entity/mc_round)
+	round = DB_ENTITY(/datum/entity/mc_round)
 	round.save()
 	round.sync_then(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(start_logging)))
 

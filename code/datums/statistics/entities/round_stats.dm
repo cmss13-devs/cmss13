@@ -326,7 +326,7 @@
 	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		return
 
-	var/datum/entity/round_caste_picks/caste_picks = SSentity_manager.tables[/datum/entity/round_caste_picks].make_new()
+	var/datum/entity/round_caste_picks/caste_picks = DB_ENTITY(/datum/entity/round_caste_picks)
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()
 

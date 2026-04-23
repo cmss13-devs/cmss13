@@ -35,7 +35,7 @@ CLIENT_VERB(view_clan_info)
 			return
 
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
+			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view)
 
 			var/clans = list()
 			for(var/datum/view_record/clan_view/CV in CPV)
@@ -275,7 +275,7 @@ CLIENT_VERB(view_clan_info)
 				var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
 
 				for(var/datum/view_record/clan_playerbase_view/CP in CPV)
-					var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id)
+					var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player, CP.player_id)
 					pl.sync()
 
 					pl.clan_id = null
@@ -339,7 +339,7 @@ CLIENT_VERB(view_clan_info)
 					return
 
 				var/is_clan_manager = has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER, warn = FALSE)
-				var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
+				var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view)
 
 				var/list/clans = list()
 				for(var/datum/view_record/clan_view/CV in CPV)
@@ -414,7 +414,7 @@ CLIENT_VERB(view_clan_info)
 					chosen_rank = ranks[input]
 
 					if(chosen_rank.limit_type)
-						var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
+						var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_AND(DB_COMP("clan_id", DB_EQUALS, target.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
 						var/players_in_rank = length(CPV)
 
 						switch(chosen_rank.limit_type)
@@ -423,7 +423,7 @@ CLIENT_VERB(view_clan_info)
 									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] slots)"))
 									return
 							if(CLAN_LIMIT_SIZE)
-								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
+								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
 								var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)

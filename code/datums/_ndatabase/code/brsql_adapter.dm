@@ -92,20 +92,20 @@
 	else
 		SSdatabase.create_query(query_gettable, CB)
 
-/datum/db/adapter/brsql_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/update_table(table_name, id_field_name, list/values, datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
-	var/query_updatetable = getquery_update_table(table_name, values, qpars)
+	var/query_updatetable = getquery_update_table(table_name, id_field_name, values, qpars)
 	if(sync)
 		SSdatabase.create_parametric_query_sync(query_updatetable, qpars, CB)
 	else
 		SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
 
-/datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/insert_table(table_name, id_field_name, list/values, datum/callback/CB, sync = FALSE)
 	set waitfor = FALSE
 
 	var/length = length(values)
 	var/list/qpars = list()
-	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
+	var/query_inserttable = getquery_insert_table(table_name, id_field_name, values, qpars)
 	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
 	if(sync)
 		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
@@ -143,7 +143,8 @@
 	else
 		SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
-/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, list/field_types)
+/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, id_field_name, id_field_type, list/field_types)
+	var/id_field = "[id_field_name] [fieldtype2text(id_field_type)]"
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
 	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
@@ -151,9 +152,9 @@
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
 	if(!length(table_meta.results)) // Table doesn't exist
-		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
+		return internal_create_table(table_name, id_field, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
 
-	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]
+	var/id =  table_meta.results[1][id_field_name]
 	var/old_fields = savetext2fields(table_meta.results[1]["fields_current"])
 	var/old_hash = table_meta.results[1]["fields_hash"]
 	var/field_text = fields2savetext(field_types)
@@ -166,12 +167,12 @@
 	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
-		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
+		return internal_drop_table(table_name) && internal_create_table(table_name, id_field, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
 
-	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
+	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, id_field_name, old_fields) && \
 		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
 
-/datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, list/fields, unique, cluster)
+/datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, id_field_name, list/fields, unique, cluster)
 	var/list/qpars = list()
 	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, qpars)
 	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, qpars)
@@ -181,7 +182,7 @@
 	if(!length(index_meta.results)) // Index doesn't exist
 		return internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields)
 
-	var/id =  index_meta.results[1][DB_DEFAULT_ID_FIELD]
+	var/id =  index_meta.results[1][id_field_name]
 	var/old_hash = index_meta.results[1]["fields_hash"]
 	var/field_text = jointext(fields, ",")
 	var/new_hash = sha1(field_text)
@@ -192,8 +193,8 @@
 	// Index can be updated only by recreating it
 	return internal_drop_index(index_name, table_name) && internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields, id)
 
-/datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, field_types)
-	var/query = getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, id_field, field_types)
+	var/query = getquery_systable_maketable(table_name, id_field, field_types)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new table [table_name], error: '[sit_check.error]'"
@@ -279,8 +280,8 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, list/field_types_old)
-	var/list/fields = list(DB_DEFAULT_ID_FIELD)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, id_field_name, list/field_types_old)
+	var/list/fields = list(id_field_name)
 	for(var/field in field_types_old)
 		fields += field
 
@@ -291,8 +292,8 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, list/field_types_old)
-	var/list/fields = list(DB_DEFAULT_ID_FIELD)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, id_field_name, list/field_types_old)
+	var/list/fields = list(id_field_name)
 	for(var/field in field_types_old)
 		fields += field
 
@@ -372,15 +373,15 @@
 	var/unique_text = unique?"UNIQUE":""
 	var/field_text = jointext(fields,",")
 	return {"
-		CREATE [unique_text] INDEX [index_name]  on `[connection.database]`.`[table_name]` (
+		CREATE [unique_text] INDEX [index_name] on `[connection.database]`.`[table_name]` (
 			[field_text]
 		);
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_systable_maketable(table_name, field_types)
+/datum/db/adapter/brsql_adapter/proc/getquery_systable_maketable(table_name, id_field, field_types)
 	return {"
 		CREATE TABLE `[connection.database]`.`[table_name]` (
-			id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, [fields2text(field_types)]
+			[id_field] NOT NULL AUTO_INCREMENT PRIMARY KEY, [fields2text(field_types)]
 		);
 	"}
 
@@ -448,7 +449,7 @@
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE [get_filter(filter, null, pflds)]
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, list/values, list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, id_field_name, list/values, list/pflds)
 	var/calltext = ""
 	var/insert_items = ""
 	var/first = TRUE
@@ -458,7 +459,7 @@
 		var/local_text = ""
 		var/local_first = TRUE
 		for(var/field in fields)
-			if(field == DB_DEFAULT_ID_FIELD)
+			if(field == id_field_name)
 				continue
 			if(!local_first)
 				local_text+=","
@@ -479,7 +480,7 @@
 		INSERT INTO `[connection.database]`.`[table_name]` ([insert_items]) VALUES [calltext];
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, list/values, list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, id_field_name, list/values, list/pflds)
 	var/calltext = ""
 	var/first = TRUE
 	var/id = 0
@@ -487,7 +488,7 @@
 		var/esfield = "[field]"
 		if(!first)
 			calltext += ","
-		var/is_id = field == DB_DEFAULT_ID_FIELD
+		var/is_id = field == id_field_name
 		if(is_id)
 			id = values[field]
 			continue
@@ -504,7 +505,7 @@
 		UPDATE `[connection.database]`.`[table_name]` SET [calltext] WHERE id = [id];
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_table(table_name, list/values, list/parameters)
+/datum/db/adapter/brsql_adapter/proc/getquery_update_table(table_name, id_field_name, list/values, list/parameters)
 	var/calltext = ""
 	var/update_items = ""
 	var/first = TRUE
@@ -516,7 +517,7 @@
 		var/local_text = ""
 		var/local_first = TRUE
 		for(var/field in fields)
-			var/is_id = field == DB_DEFAULT_ID_FIELD
+			var/is_id = field == id_field_name
 			if(!found_id && is_id)
 				found_id = TRUE
 			var/esfield = "`[field]`"
@@ -568,12 +569,28 @@
 /datum/db/adapter/brsql_adapter/proc/getquery_update_table_delete_column(table_name, column_name)
 	return "ALTER TABLE `[connection.database]`.`[table_name]` DROP COLUMN `[column_name]`;"
 
-/datum/db/adapter/brsql_adapter/proc/fieldtype2text(typeid)
+/datum/db/adapter/brsql_adapter/fieldtype2text(typeid)
 	switch(typeid)
+		if(DB_FIELDTYPE_TINYINT)
+			return "TINYINT"
+		if(DB_FIELDTYPE_TINYINT_UNSIGNED)
+			return "TINYINT UNSIGNED"
+		if(DB_FIELDTYPE_SMALLINT)
+			return "SMALLINT"
+		if(DB_FIELDTYPE_SMALLINT_UNSIGNED)
+			return "SMALLINT UNSIGNED"
+		if(DB_FIELDTYPE_MEDIUMINT)
+			return "MEDIUMINT"
+		if(DB_FIELDTYPE_MEDIUMINT_UNSIGNED)
+			return "MEDIUMINT UNSIGNED"
 		if(DB_FIELDTYPE_INT)
 			return "INT"
+		if(DB_FIELDTYPE_INT_UNSIGNED)
+			return "INT UNSIGNED"
 		if(DB_FIELDTYPE_BIGINT)
 			return "BIGINT"
+		if(DB_FIELDTYPE_BIGINT_UNSIGNED)
+			return "BIGINT UNSIGNED"
 		if(DB_FIELDTYPE_CHAR)
 			return "VARCHAR(1)"
 		if(DB_FIELDTYPE_STRING_SMALL)
@@ -593,26 +610,6 @@
 		if(DB_FIELDTYPE_DECIMAL)
 			return "DECIMAL(18,5)"
 	return FALSE
-
-/datum/db/adapter/brsql_adapter/proc/fields2text(list/L)
-	var/list/result = list()
-	for(var/item in L)
-		result += "[item] [fieldtype2text(L[item])]"
-	return jointext(result, ",")
-
-/datum/db/adapter/brsql_adapter/proc/fields2savetext(list/L)
-	var/list/result = list()
-	for(var/item in L)
-		result += "[item]:[L[item]]"
-	return jointext(result, ",")
-
-/datum/db/adapter/brsql_adapter/proc/savetext2fields(text)
-	var/list/result = list()
-	var/list/split1 = splittext(text, ",")
-	for(var/field in split1)
-		var/list/split2 = splittext(field, ":")
-		result[split2[1]] = text2num(split2[2])
-	return result
 
 /datum/db/adapter/brsql_adapter/prepare_view(datum/entity_view_meta/view)
 	var/list/datum/entity_meta/meta_to_load = list(BRSQL_ROOT_NAME = view.root_entity_meta)

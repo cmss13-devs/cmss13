@@ -39,7 +39,7 @@
 		field_types[lowertext(replacetext(spec_kit::kit_name, " ", "_"))] = DB_FIELDTYPE_INT
 
 /datum/entity_meta/initial_spec_picks/map(datum/entity/initial_spec_picks/entity, list/values)
-	var/strid = "[values[DB_DEFAULT_ID_FIELD]]"
+	var/strid = "[values[id_field_name]]"
 	entity.id = strid
 	for(var/field in field_types)
 		if((field == "round_id") || (field == "marines_won"))
@@ -50,7 +50,7 @@
 /datum/entity_meta/initial_spec_picks/unmap(datum/entity/initial_spec_picks/entity, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values[DB_DEFAULT_ID_FIELD] = entity.id
+		values[id_field_name] = entity.id
 	for(var/field in field_types)
 		if((field == "round_id") || (field == "marines_won"))
 			values[field] = entity.vars[field]

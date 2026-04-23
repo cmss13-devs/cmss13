@@ -21,6 +21,7 @@
 // SOFTWARE.
 #define DB_ENTITY SSentity_manager.select
 #define DB_EKEY SSentity_manager.select_by_key
+#define DB_INDEX SSentity_manager.select_by_index
 #define DB_FILTER SSentity_manager.filter_then
 #define DB_FILTER_LOCAL SSentity_manager.filter_local
 #define DB_META SSentity_manager.tables
@@ -38,8 +39,6 @@
 #define DB_ENTITY_MAX_CONNECTIONS 30
 #define DB_ENTITY_USUAL_CONNECTIONS 20
 #define DB_QUERY_RECHECK_TIMEOUT 1 //yes, just 0.1 of a second
-
-#define DB_DEFAULT_ID_FIELD "id"
 
 #define DB_ORDER_BY_DEFAULT 0
 #define DB_ORDER_BY_ASC 1
@@ -89,17 +88,28 @@
 #define DB_ENTITY_STATE_FRESH 9
 
 //field types
-#define DB_FIELDTYPE_INT 1
-#define DB_FIELDTYPE_BIGINT 2
-#define DB_FIELDTYPE_CHAR 3 // 1 symbol
-#define DB_FIELDTYPE_STRING_SMALL 4 // 16 symbols
-#define DB_FIELDTYPE_STRING_MEDIUM 5 // 64 symbols
-#define DB_FIELDTYPE_STRING_LARGE 6 // 256 symbols
-#define DB_FIELDTYPE_STRING_MAX 7 // 4000 symbols
-#define DB_FIELDTYPE_DATE 8
-#define DB_FIELDTYPE_TEXT 9 // any amount of symbols but really inefficient
-#define DB_FIELDTYPE_BLOB 10
-#define DB_FIELDTYPE_DECIMAL 11
+#define DB_FIELDTYPE_TINYINT 1
+#define DB_FIELDTYPE_TINYINT_UNSIGNED 2
+#define DB_FIELDTYPE_SMALLINT 3
+#define DB_FIELDTYPE_SMALLINT_UNSIGNED 4
+#define DB_FIELDTYPE_MEDIUMINT 5
+#define DB_FIELDTYPE_MEDIUMINT_UNSIGNED 6
+#define DB_FIELDTYPE_INT 7
+#define DB_FIELDTYPE_INT_UNSIGNED 8
+#define DB_FIELDTYPE_BIGINT 9
+#define DB_FIELDTYPE_BIGINT_UNSIGNED 10
+#define DB_FIELDTYPE_CHAR 11 // 1 symbol
+#define DB_FIELDTYPE_STRING_SMALL 12 // 16 symbols
+#define DB_FIELDTYPE_STRING_MEDIUM 13 // 64 symbols
+#define DB_FIELDTYPE_STRING_LARGE 14 // 256 symbols
+#define DB_FIELDTYPE_STRING_MAX 15 // 4000 symbols
+#define DB_FIELDTYPE_DATE 16
+#define DB_FIELDTYPE_TEXT 17 // any amount of symbols but really inefficient
+#define DB_FIELDTYPE_BLOB 18
+#define DB_FIELDTYPE_DECIMAL 19
+
+#define DB_DEFAULT_ID_FIELD "id"
+#define DB_DEFAULT_ID_FIELD_TYPE DB_FIELDTYPE_BIGINT_UNSIGNED // To be fair, this sound like a lot. For logs, and etc ok, for less spammy db data, not.
 
 #define DB_EQUALS 0
 #define DB_NOTEQUAL 1

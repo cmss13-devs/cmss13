@@ -71,6 +71,12 @@
 /// Optional field
 #define SS13LIB_SERVER_TAGS // CONFIG_GET(str_list/server_tags)
 
+/// Controls whether SS13Lib responds to hub topic queries with server information.
+/// If defined and truthy, the server will be visible on the hub. If falsy, topic
+/// queries are silently ignored. If not defined, falls back to world.visibility.
+/// Optional field
+#define SS13LIB_HUB_VISIBILITY // world.visibility
+
 /// If users are to connect to a different IP than the one the hub is communicating to
 /// Optional field
 #define SS13LIB_CONNECTION_ADDRESS // direct.myserver.com:1337
@@ -131,12 +137,6 @@
 /// which can be used for identification of the upstream username, hwid or account age.
 /// This should be typed as /datum/ss13lib_auth_response
 #define SS13LIB_CLIENT_INFO(X) // X.hub_info
-
-/// Controls whether SS13Lib responds to hub topic queries with server information.
-/// If defined and truthy, the server will be visible on the hub. If falsy, topic
-/// queries are silently ignored. If not defined, falls back to world.visibility.
-/// Optional field
-#define SS13LIB_HUB_VISIBILITY // world.visibility
 
 //! DOMAIN ATTESTATION
 //! Optional. Proves domain ownership to the hub via DNS TXT record + ed25519 signature.

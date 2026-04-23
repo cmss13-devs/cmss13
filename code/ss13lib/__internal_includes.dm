@@ -33,3 +33,5 @@
 #ifndef SS13LIB_QUERY_CODE
 #define SS13LIB_QUERY_CODE "ss13hub"
 #endif
+
+#define SS13LIB_PREFLIGHT_CODE "ss13hub_preflight"

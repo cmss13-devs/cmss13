@@ -2,7 +2,11 @@
 
 #define SS13LIB_ED25519_SIGNATURE_BASE64_LENGTH 88
 
-/datum/ss13lib/proc/perform_attestation()
+/datum/ss13lib/proc/perform_attestation(domain)
+	if(!domain)
+		SS13LIB_INFO_LOG("Could not perform attestation as no domain provided.")
+		return FALSE
+
 	if(!src.server_id || !src.nonce)
 		SS13LIB_WARNING_LOG("Cannot attest: missing server_id or nonce.")
 		return FALSE
@@ -23,7 +27,7 @@
 		"[SS13LIB_HUB_SERVER]/attest",
 		list(
 			"server_id" = src.server_id,
-			"domain" = SS13LIB_ATTEST_DOMAIN,
+			"domain" = domain,
 			"timestamp" = timestamp,
 			"signature" = signature,
 		)

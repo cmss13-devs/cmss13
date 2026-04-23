@@ -3,6 +3,8 @@
 	var/server_id
 	/// Nonce from the last handshake, used for domain attestation
 	var/nonce
+	/// Poll key from the last handshake, included in topic responses
+	var/poll_key
 	/// Whether the library has completed initialisation
 	var/ready = FALSE
 
@@ -45,6 +47,7 @@
 
 		src.server_id = retrieved_id
 		src.nonce = body["nonce"]
+		src.poll_key = body["poll_key"]
 		break
 
 	if(src.server_id)

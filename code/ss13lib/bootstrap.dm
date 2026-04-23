@@ -29,7 +29,9 @@
 		return FALSE
 
 #ifdef SS13LIB_ATTEST_DOMAIN
-	if(!perform_attestation())
+	var/domain = SS13LIB_ATTEST_DOMAIN
+
+	if(length(domain) && !perform_attestation(domain))
 		SS13LIB_WARNING_LOG("Domain attestation failed, server will continue without verification.")
 #endif
 

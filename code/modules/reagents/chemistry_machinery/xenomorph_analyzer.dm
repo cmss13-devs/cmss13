@@ -19,7 +19,7 @@
 	var/busy = FALSE
 	var/queue_proccessing = FALSE
 	var/caste_of_organ = null
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/structure/machinery/xenoanalyzer/Initialize(mapload, ...)
 	. = ..()

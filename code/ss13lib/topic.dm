@@ -7,7 +7,18 @@
 	if(parameters[SS13LIB_PREFLIGHT_CODE])
 		if(!src.server_id)
 			return FALSE
-		return json_encode(list("server_id" = src.server_id))
+		var/response = list("server_id" = src.server_id)
+#ifdef SS13LIB_ATTEST_DOMAIN
+		var/challenge = parameters["challenge"]
+		if(challenge)
+			var/domain = SS13LIB_ATTEST_DOMAIN
+			if(domain)
+				var/message = "[challenge]:[domain]"
+				var/signature = SS13LIB_ED25519_SIGN(SS13LIB_ATTEST_PRIVKEY, message)
+				response["domain"] = domain
+				response["signature"] = signature
+#endif
+		return json_encode(response)
 
 	if(!parameters[SS13LIB_QUERY_CODE])
 		return FALSE

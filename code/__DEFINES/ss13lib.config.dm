@@ -33,19 +33,5 @@
 #define SS13LIB_WARNING_LOG(X) log_debug("\[SS13LIB WARNING\] [X]")
 #define SS13LIB_ERROR_LOG(X) log_debug("\[SS13LIB ERROR\] [X]")
 
-/proc/ss13lib_round_state()
-	if(!SSticker)
-		return "initializing"
-	switch(SSticker.current_state)
-		if(GAME_STATE_STARTUP, GAME_STATE_SETTING_UP)
-			return "initializing"
-		if(GAME_STATE_PREGAME)
-			return "lobby"
-		if(GAME_STATE_PLAYING)
-			return "playing"
-		if(GAME_STATE_FINISHED)
-			return "finished"
-	return "initializing"
-
 /client/var/datum/ss13lib_auth_response/hub_info
 #define SS13LIB_CLIENT_INFO(X) X.hub_info

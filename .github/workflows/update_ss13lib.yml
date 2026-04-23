@@ -1,0 +1,94 @@
+name: Update SS13Lib
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+env:
+  HEADER_PATH: code/__DEFINES/ss13lib.dm
+  LIBRARY_PATH: code/ss13lib
+  BASE_BRANCH: master
+
+jobs:
+  update-ss13lib:
+    runs-on: ubuntu-24.04
+    name: Update SS13Lib
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Clone
+        uses: actions/checkout@v6
+
+      - name: Branch
+        run: |
+          git branch -f ss13lib-update
+          git checkout ss13lib-update
+          git reset --hard "$BASE_BRANCH"
+
+      - name: Fetch latest SS13Lib
+        run: |
+          TMPDIR=$(mktemp -d)
+          git clone --depth 1 https://github.com/hry-gh/ss13lib.git "$TMPDIR/ss13lib"
+
+          cp "$TMPDIR/ss13lib/ss13lib.dm" "$HEADER_PATH"
+
+          rm -rf "$LIBRARY_PATH"/*
+          cp -r "$TMPDIR/ss13lib/dmsrc/"* "$LIBRARY_PATH/"
+
+          rm -rf "$TMPDIR"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate App Token
+        id: app-token-generation
+        if: steps.changes.outputs.changed == 'true' && env.APP_PRIVATE_KEY != '' && env.APP_ID != ''
+        uses: actions/create-github-app-token@v3.1.1
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+        env:
+          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+          APP_ID: ${{ secrets.APP_ID }}
+
+      - name: Configure Git Identity
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token-generation.outputs.token }}
+        run: |
+          if [ -n "$GH_TOKEN" ]; then
+            APP_SLUG=$(gh api /app --jq .slug)
+            APP_ID_NUM=$(gh api /app --jq .id)
+            git config user.name "${APP_SLUG}[bot]"
+            git config user.email "${APP_ID_NUM}+${APP_SLUG}[bot]@users.noreply.github.com"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          fi
+
+      - name: Commit and Push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git add "$HEADER_PATH" "$LIBRARY_PATH"
+          git commit -m 'Update SS13Lib'
+          git push -f -u origin ss13lib-update
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "ss13lib-update"
+          destination_branch: ${{ env.BASE_BRANCH }}
+          pr_title: "Automatic SS13Lib Update"
+          pr_body: "This pull request updates SS13Lib to the latest version. Please check `${{ env.HEADER_PATH }}` for any new or changed defines that may need configuration in `code/__DEFINES/ss13lib.config.dm`."
+          pr_label: "Tools"
+          pr_allow_empty: false
+          github_token: ${{ steps.app-token-generation.outputs.token || secrets.GITHUB_TOKEN }}

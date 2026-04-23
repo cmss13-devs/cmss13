@@ -241,6 +241,20 @@
 /// Game has round finished
 #define GAME_STATE_FINISHED 4
 
+/proc/ss13lib_round_state()
+	if(!SSticker)
+		return "initializing"
+	switch(SSticker.current_state)
+		if(GAME_STATE_STARTUP, GAME_STATE_SETTING_UP)
+			return "initializing"
+		if(GAME_STATE_PREGAME)
+			return "lobby"
+		if(GAME_STATE_PLAYING)
+			return "playing"
+		if(GAME_STATE_FINISHED)
+			return "finished"
+	return "initializing"
+
 /**
 	Create a new timer and add it to the queue.
 	* Arguments:

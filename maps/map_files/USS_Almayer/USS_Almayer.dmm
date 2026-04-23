@@ -67644,10 +67644,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/autodispenser{
-	dir = 4;
-	unacidable = 1
-	},
+/obj/structure/machinery/autodispenser,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "ncG" = (
@@ -93331,9 +93328,7 @@
 	pixel_y = 28;
 	pixel_x = -1
 	},
-/obj/structure/machinery/xenoanalyzer{
-	unacidable = 1
-	},
+/obj/structure/machinery/xenoanalyzer,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "xqy" = (

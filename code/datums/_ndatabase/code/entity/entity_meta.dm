@@ -99,7 +99,7 @@
 	var/datum/entity/ET = new entity_type()
 	ET.metadata = src
 	ET.vars[key_field] = key_value
-	ET.cached_keys_managed = list(strval)
+	ET.__keys_cache = list(strval)
 	key_managed[strval] = ET
 	return ET
 
@@ -114,35 +114,38 @@
 	var/datum/entity/ET = new entity_type()
 	ET.metadata = src
 	I.assign_entity_values(ET, values)
-	ET.cached_keys_managed = list(strval)
+	ET.__keys_cache = list(strval)
 	key_managed[strval] = ET
 	return ET
 
-/datum/entity_meta/proc/update_links(datum/entity/ET)
-	if(length(ET.cached_keys_managed))
-		for(var/strval in ET.cached_keys_managed)
-			key_managed -= strval
-		ET.cached_keys_managed = null
+/datum/entity_meta/proc/update_managed_keys(datum/entity/ET)
 	if(!key_field && !indexes)
 		return
-	ET.cached_keys_managed = list()
+	remove_managed_keys(ET)
+	ET.__keys_cache = list()
 	for(var/datum/db/index/I as anything in indexes)
 		var/strval = ""
 		for(var/field in I.fields)
 			strval += "[field]:[ET.vars[field]];"
-		ET.cached_keys_managed += strval
+		ET.__keys_cache += strval
 		key_managed[strval] = ET
 	if(key_field)
-		ET.cached_keys_managed += "[ET.vars[key_field]]"
-		key_managed["[ET.vars[key_field]]"] = ET
+		var/strval = "[ET.vars[key_field]]"
+		ET.__keys_cache += strval
+		key_managed[strval] = ET
 	return
 
+// Chaos&Evil: while(key_managed.Remove(ET))
+/datum/entity_meta/proc/remove_managed_keys(datum/entity/ET)
+	for(var/K in ET.__keys_cache)
+		key_managed -= K
+
 /datum/entity_meta/proc/on_read(datum/entity/ET)
-	update_links(ET)
+	update_managed_keys(ET)
 	return
 
 /datum/entity_meta/proc/on_update(datum/entity/ET)
-	update_links(ET)
+	update_managed_keys(ET)
 	return
 
 /datum/entity_meta/proc/on_insert(datum/entity/ET)

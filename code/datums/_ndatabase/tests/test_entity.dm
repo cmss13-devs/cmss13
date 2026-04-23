@@ -8,6 +8,20 @@
 	table_name = "test_table"
 	field_types = list("name"=DB_FIELDTYPE_STRING_MEDIUM, "description"=DB_FIELDTYPE_STRING_MAX, "value"=DB_FIELDTYPE_BIGINT)
 
+	var/datum/db/index/test_index/index
+
+/datum/db/index/test_index
+	fields = list("name", "description")
+	hints = DB_INDEXHINT_UNIQUE
+
+	name = "__test_unique_index"
+
+/datum/entity_meta/test_entity/New()
+	..()
+
+	index = new ()
+	indexes = list(index)
+
 // redefine this for faster operations
 /datum/entity_meta/test_entity/map(datum/entity/test_entity/ET, list/values)
 	ET.id = text2num(values[id_field_name])

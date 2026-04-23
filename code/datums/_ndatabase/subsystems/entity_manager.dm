@@ -287,10 +287,11 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 		if(I.name == index_name)
 			break
 		I = null
+	args.Cut(1, 2)
 	var/datum/entity/ET = meta.make_new_by_index(I, args)
 	if(!ET.__key_synced)
 		ET.__key_synced = TRUE
-		adapter.read_filter(meta.table_name, I.make_filters_for_index(args), CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select_by_index), ET, meta, I))
+		adapter.read_filter(meta.table_name, I.make_filters_for_index(arglist(args)), CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select_by_index), ET, meta, I))
 	return ET
 
 /datum/controller/subsystem/entity_manager/proc/after_select_by_index(datum/entity/ET, datum/entity_meta/meta, datum/db/index/I, quid, list/results)

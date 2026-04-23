@@ -103,17 +103,17 @@
 	key_managed[strval] = ET
 	return ET
 
-/datum/entity_meta/proc/make_new_by_index(datum/db/index/I, ...)
+/datum/entity_meta/proc/make_new_by_index(datum/db/index/I, list/values)
 	if(!I)
 		CRASH("Attempted to create entity without index. Entity is [type]")
-	if(length(I.fields) != length(args))
+	if(length(I.fields) != length(values))
 		CRASH("Attempted to create entity with keys and values mismatch. Entity is [type]")
-	var/strval = I.get_strval(args)
+	var/strval = I.get_strval(values)
 	if(key_managed[strval])
 		return key_managed[strval]
 	var/datum/entity/ET = new entity_type()
 	ET.metadata = src
-	I.assign_entity_values(ET, args)
+	I.assign_entity_values(ET, values)
 	ET.cached_keys_managed = list(strval)
 	key_managed[strval] = ET
 	return ET

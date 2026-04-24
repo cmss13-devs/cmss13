@@ -56821,13 +56821,6 @@
 "dcl" = (
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
-"dcm" = (
-/obj/structure/machinery/power/apc/power/east{
-	start_charge = 30
-	},
-/obj/effect/blocker/water,
-/turf/open/floor/prison/darkyellow2/east,
-/area/tyrargo/underground/oob_area)
 "dcn" = (
 /obj/effect/landmark/map_item,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -63431,12 +63424,6 @@
 	},
 /turf/open/floor/prison/green/north,
 /area/tyrargo/underground/oob_area)
-"dsS" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 30
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/oob_area)
 "dsT" = (
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
@@ -67791,13 +67778,6 @@
 "dDL" = (
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2,
-/area/tyrargo/underground/oob_area)
-"dDM" = (
-/obj/structure/machinery/power/apc/power/south{
-	start_charge = 30
-	},
-/obj/effect/blocker/water,
-/turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/oob_area)
 "dDN" = (
 /obj/effect/decal/cleanable/generic,
@@ -78351,9 +78331,6 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/oob_area)
 "eeT" = (
-/obj/structure/machinery/power/apc/power/south{
-	start_charge = 0
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/spawner/random/powercell{
 	pixel_x = -1;
@@ -79052,9 +79029,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/oob_area)
 "egM" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 30
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/underground/oob_area)
@@ -132480,7 +132454,7 @@ dVY
 cLY
 edS
 dqY
-dsS
+elz
 aZY
 dUF
 bta
@@ -135195,7 +135169,7 @@ dNV
 dWe
 dNA
 dWa
-dDM
+dDJ
 bTB
 dDB
 dDm
@@ -136168,7 +136142,7 @@ dqM
 cZc
 cYV
 cYV
-dcm
+cYV
 dca
 cYV
 cZG

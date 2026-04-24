@@ -1,0 +1,4 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - balance: "turing dispenser and xeno analyzer thingy are no longer meltable"

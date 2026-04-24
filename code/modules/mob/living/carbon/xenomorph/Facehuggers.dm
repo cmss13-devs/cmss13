@@ -239,6 +239,11 @@
 	if(stat == DEAD)
 		..()
 		return
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/victim = L
+		if(ishuman_strict(victim) && !istype(victim.head, /obj/item/clothing/head/helmet))
+			stat = CONSCIOUS
+			leaping = TRUE
 
 	if(stat == UNCONSCIOUS)
 		return
@@ -247,6 +252,8 @@
 	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
 	throwing = FALSE
 	rebounding = FALSE
+
+
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)

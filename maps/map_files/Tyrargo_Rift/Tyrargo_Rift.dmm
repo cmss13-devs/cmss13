@@ -98,6 +98,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
+"aao" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 30
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
 "aap" = (
 /obj/item/prop{
 	icon = 'icons/obj/structures/resources_64x64.dmi';
@@ -62618,6 +62625,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15"
+	},
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 30
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
@@ -128447,7 +128457,7 @@ dLt
 dCG
 dCu
 dzP
-dJk
+aao
 dtC
 dKa
 dJR

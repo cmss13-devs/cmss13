@@ -562,11 +562,11 @@
 
 /obj/effect/landmark/survivor_spawner/upp
 	icon_state = "surv_upp"
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	equipment = /datum/equipment_preset/survivor/upp/soldier
 	CO_equipment = /datum/equipment_preset/survivor/upp/soldier
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -576,7 +576,6 @@
 /obj/effect/landmark/survivor_spawner/upp/sapper
 	equipment = /datum/equipment_preset/survivor/upp/sapper
 	CO_equipment = /datum/equipment_preset/survivor/upp/sapper
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -586,7 +585,6 @@
 /obj/effect/landmark/survivor_spawner/upp/medic
 	equipment = /datum/equipment_preset/survivor/upp/medic
 	CO_equipment = /datum/equipment_preset/survivor/upp/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -596,7 +594,6 @@
 /obj/effect/landmark/survivor_spawner/upp/specialist
 	equipment = /datum/equipment_preset/survivor/upp/specialist
 	CO_equipment = /datum/equipment_preset/survivor/upp/specialist
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -606,7 +603,6 @@
 /obj/effect/landmark/survivor_spawner/upp/squad_leader
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	CO_equipment = /datum/equipment_preset/survivor/upp/squad_leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -617,11 +613,11 @@
 
 /obj/effect/landmark/survivor_spawner/twe
 	icon_state = "surv_twe"
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper
 	equipment = /datum/equipment_preset/survivor/iasf/paratrooper
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
@@ -630,8 +626,6 @@
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/engi
 	equipment = /datum/equipment_preset/survivor/iasf/engi
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
@@ -641,8 +635,6 @@
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/medic
 	equipment = /datum/equipment_preset/survivor/iasf/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
@@ -651,8 +643,6 @@
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/pilot
 	equipment = /datum/equipment_preset/survivor/iasf/pilot
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
@@ -661,8 +651,6 @@
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/squad_leader
 	equipment = /datum/equipment_preset/survivor/iasf/squad_leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
@@ -671,10 +659,12 @@
 
 /// Soro UPP - SOF - Survivors
 
+/obj/effect/landmark/survivor_spawner/SOF_survivor
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+
 /obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
 	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
@@ -686,7 +676,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
 	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
@@ -698,7 +687,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor/medic
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
 	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
@@ -710,7 +698,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
 	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
@@ -722,7 +709,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
 	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")

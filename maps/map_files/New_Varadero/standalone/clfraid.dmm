@@ -69,7 +69,7 @@
 	pixel_x = -1;
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/varadero,
+/obj/effect/landmark/survivor_spawner/clf/lead/varadero,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "ca" = (
@@ -946,7 +946,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "vF" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/varadero,
+/obj/effect/landmark/survivor_spawner/clf/engi/varadero,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "vM" = (
@@ -1880,7 +1880,7 @@
 /turf/open/floor/shiva/purple,
 /area/varadero/interior/research)
 "Sa" = (
-/obj/effect/landmark/survivor_spawner/clf_medic/varadero,
+/obj/effect/landmark/survivor_spawner/clf/medic/varadero,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Sj" = (

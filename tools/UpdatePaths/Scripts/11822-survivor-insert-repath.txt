@@ -1,0 +1,73 @@
+# CLF spawners
+/obj/effect/landmark/survivor_spawner/clf_lead : /obj/effect/landmark/survivor_spawner/clf/lead{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi : /obj/effect/landmark/survivor_spawner/clf/engi{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic : /obj/effect/landmark/survivor_spawner/clf/medic{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/solaris : /obj/effect/landmark/survivor_spawner/clf/lead/solaris{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/solaris : /obj/effect/landmark/survivor_spawner/clf/engi/solaris{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/solaris : /obj/effect/landmark/survivor_spawner/clf/medic/solaris{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/trijent : /obj/effect/landmark/survivor_spawner/clf/lead/trijent{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/trijent : /obj/effect/landmark/survivor_spawner/clf/engi/trijent{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/trijent : /obj/effect/landmark/survivor_spawner/clf/medic/trijent{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/fiorina : /obj/effect/landmark/survivor_spawner/clf/lead/fiorina{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/fiorina : /obj/effect/landmark/survivor_spawner/clf/engi/fiorina{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/fiorina : /obj/effect/landmark/survivor_spawner/clf/medic/fiorina{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/shivas : /obj/effect/landmark/survivor_spawner/clf/lead/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/shivas : /obj/effect/landmark/survivor_spawner/clf/engi/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/shivas : /obj/effect/landmark/survivor_spawner/clf/medic/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/kutjevo : /obj/effect/landmark/survivor_spawner/clf/lead/kutjevo{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/kutjevo : /obj/effect/landmark/survivor_spawner/clf/engi/kutjevo{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/kutjevo : /obj/effect/landmark/survivor_spawner/clf/medic/kutjevo{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/soro : /obj/effect/landmark/survivor_spawner/clf/lead/soro{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/soro : /obj/effect/landmark/survivor_spawner/clf/engi/soro{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/soro : /obj/effect/landmark/survivor_spawner/clf/medic/soro{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/varadero : /obj/effect/landmark/survivor_spawner/clf/lead/varadero{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/varadero : /obj/effect/landmark/survivor_spawner/clf/engi/varadero{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/varadero : /obj/effect/landmark/survivor_spawner/clf/medic/varadero{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa : /obj/effect/landmark/survivor_spawner/clf/lead/hybrisa{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_engi/hybrisa : /obj/effect/landmark/survivor_spawner/clf/engi/hybrisa{@OLD}
+/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa : /obj/effect/landmark/survivor_spawner/clf/medic/hybrisa{@OLD}
+
+# Weyland Yutani spawners
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl : /obj/effect/landmark/survivor_spawner/wy/cl{@OLD}
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon : /obj/effect/landmark/survivor_spawner/wy/goon{@OLD}
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic : /obj/effect/landmark/survivor_spawner/wy/medic{@OLD}
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi : /obj/effect/landmark/survivor_spawner/wy/engi{@OLD}
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead : /obj/effect/landmark/survivor_spawner/wy/lead{@OLD}
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc : /obj/effect/landmark/survivor_spawner/wy/goon/bigred{@OLD}
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic : /obj/effect/landmark/survivor_spawner/wy/medic/bigred{@OLD}
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer : /obj/effect/landmark/survivor_spawner/wy/engi/bigred{@OLD}
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader : /obj/effect/landmark/survivor_spawner/wy/lead/bigred{@OLD}
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl : /obj/effect/landmark/survivor_spawner/wy/cl/bigred{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando : /obj/effect/landmark/survivor_spawner/wy/goon/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl : /obj/effect/landmark/survivor_spawner/wy/cl/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc : /obj/effect/landmark/survivor_spawner/wy/medic/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority : /obj/effect/landmark/survivor_spawner/wy/medic/shivas/medium_priority{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng : /obj/effect/landmark/survivor_spawner/wy/engi/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng/medium_priority : /obj/effect/landmark/survivor_spawner/wy/engi/shivas/medium_priority{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci : /obj/effect/landmark/survivor_spawner/wy/sci/shivas{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci/medium_priority : /obj/effect/landmark/survivor_spawner/wy/sci/shivas/medium_priority{@OLD}
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ : /obj/effect/landmark/survivor_spawner/civ/shivas{@OLD}
+
+# CMB spawners
+/obj/effect/landmark/survivor_spawner/fiorina_armory_cmb : /obj/effect/landmark/survivor_spawner/cmb/fiorina{@OLD}
+/obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control : /obj/effect/landmark/survivor_spawner/cmb/fiorina/riot{@OLD}
+
+# FORECON spawners
+/obj/effect/landmark/survivor_spawner/lv522_forecon_tech : /obj/effect/landmark/survivor_spawner/forecon/tech{@OLD}
+/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman : /obj/effect/landmark/survivor_spawner/forecon/marksman{@OLD}
+/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner : /obj/effect/landmark/survivor_spawner/forecon/smartgunner{@OLD}
+/obj/effect/landmark/survivor_spawner/lv522_forecon_sniper : /obj/effect/landmark/survivor_spawner/forecon/sniper{@OLD}
+/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader : /obj/effect/landmark/survivor_spawner/forecon/squad_leader{@OLD}
+
+# Army spawners
+/obj/effect/landmark/survivor_spawner/us_army_engineer : /obj/effect/landmark/survivor_spawner/army/engineer{@OLD}
+/obj/effect/landmark/survivor_spawner/us_army_medic : /obj/effect/landmark/survivor_spawner/army/medic{@OLD}
+/obj/effect/landmark/survivor_spawner/us_army_marksman : /obj/effect/landmark/survivor_spawner/army/marksman{@OLD}
+/obj/effect/landmark/survivor_spawner/us_army_gunner : /obj/effect/landmark/survivor_spawner/army/gunner{@OLD}
+/obj/effect/landmark/survivor_spawner/us_army_sl : /obj/effect/landmark/survivor_spawner/army/sl{@OLD}
+
+# UPP spawners
+/obj/effect/landmark/survivor_spawner/upp_sapper : /obj/effect/landmark/survivor_spawner/upp/sapper{@OLD}
+/obj/effect/landmark/survivor_spawner/upp_medic : /obj/effect/landmark/survivor_spawner/upp/medic{@OLD}
+/obj/effect/landmark/survivor_spawner/upp_specialist : /obj/effect/landmark/survivor_spawner/upp/specialist{@OLD}
+/obj/effect/landmark/survivor_spawner/squad_leader : /obj/effect/landmark/survivor_spawner/upp/squad_leader{@OLD}

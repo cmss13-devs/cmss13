@@ -1917,7 +1917,7 @@
 /obj/structure/tent/med{
 	icon = 'icons/obj/structures/tents_deployed_jungle.dmi'
 	},
-/obj/effect/landmark/survivor_spawner/clf_medic/soro,
+/obj/effect/landmark/survivor_spawner/clf/medic/soro,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
 "Gl" = (
@@ -2142,7 +2142,7 @@
 	dir = 4;
 	pixel_x = 5
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/soro,
+/obj/effect/landmark/survivor_spawner/clf/lead/soro,
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_office)
 "OQ" = (
@@ -2480,7 +2480,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/checkpoints/clf)
 "YU" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/soro,
+/obj/effect/landmark/survivor_spawner/clf/engi/soro,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
 	},

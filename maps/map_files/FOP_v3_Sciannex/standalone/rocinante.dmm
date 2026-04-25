@@ -262,7 +262,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "cS" = (
-/obj/effect/landmark/survivor_spawner/clf_medic/fiorina,
+/obj/effect/landmark/survivor_spawner/clf/medic/fiorina,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "cW" = (
@@ -1796,7 +1796,7 @@
 /area/fiorina/station/clf_ship)
 "Vx" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/clf_lead/fiorina,
+/obj/effect/landmark/survivor_spawner/clf/lead/fiorina,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "VJ" = (
@@ -1840,7 +1840,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "VS" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/fiorina,
+/obj/effect/landmark/survivor_spawner/clf/engi/fiorina,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "VY" = (

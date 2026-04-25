@@ -478,7 +478,7 @@
 /obj/structure/machinery/light/double{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/upp_medic,
+/obj/effect/landmark/survivor_spawner/upp/medic,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "hH" = (
@@ -1769,7 +1769,7 @@
 /area/desert_dam/building/bar/bar)
 "GY" = (
 /obj/item/trash/used_stasis_bag,
-/obj/effect/landmark/survivor_spawner/squad_leader,
+/obj/effect/landmark/survivor_spawner/upp/squad_leader,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "GZ" = (
@@ -2034,7 +2034,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/obj/effect/landmark/survivor_spawner/upp_sapper,
+/obj/effect/landmark/survivor_spawner/upp/sapper,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "NK" = (
@@ -2457,7 +2457,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/upp_specialist,
+/obj/effect/landmark/survivor_spawner/upp/specialist,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "VA" = (

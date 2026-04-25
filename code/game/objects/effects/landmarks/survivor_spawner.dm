@@ -53,9 +53,7 @@
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
-/obj/effect/landmark/survivor_spawner/clf_lead
-	icon_state = "surv_clf"
-	hostile = TRUE
+/obj/effect/landmark/survivor_spawner/clf/lead
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
@@ -67,11 +65,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/clf_engi
-	icon_state = "surv_clf"
-	hostile = TRUE
+/obj/effect/landmark/survivor_spawner/clf/engi
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
@@ -83,11 +77,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/clf_medic
-	icon_state = "surv_clf"
-	hostile = TRUE
+/obj/effect/landmark/survivor_spawner/clf/medic
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
@@ -99,8 +89,6 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
 //Big Red CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/solaris
@@ -109,19 +97,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/solaris
+/obj/effect/landmark/survivor_spawner/clf/lead/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Under your command, your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You ordered the men to hunker down and  to prepare for the worst, not knowing what fate awaits your team in these caves..."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/solaris
+/obj/effect/landmark/survivor_spawner/clf/engi/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/solaris
+/obj/effect/landmark/survivor_spawner/clf/medic/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -135,19 +123,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/trijent
+/obj/effect/landmark/survivor_spawner/clf/lead/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted you ordering the ship to be abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After ordering some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. You ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your men hang by a thread, stuck on an unknown world surrounded by unknown enemies."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/trijent
+/obj/effect/landmark/survivor_spawner/clf/engi/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/trijent
+/obj/effect/landmark/survivor_spawner/clf/medic/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -161,19 +149,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. The plan was simple: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/fiorina
+/obj/effect/landmark/survivor_spawner/clf/lead/fiorina
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. Your plan was genius and foolproof: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, in a stroke of terrible luck, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/fiorina
+/obj/effect/landmark/survivor_spawner/clf/engi/fiorina
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. The plan was simple: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/fiorina
+/obj/effect/landmark/survivor_spawner/clf/medic/fiorina
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -187,19 +175,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/shivas
+/obj/effect/landmark/survivor_spawner/clf/lead/shivas
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and you ordered everyone to hold here until you can come up with a new plan."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/shivas
+/obj/effect/landmark/survivor_spawner/clf/engi/shivas
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/shivas
+/obj/effect/landmark/survivor_spawner/clf/medic/shivas
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -216,7 +204,7 @@
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
 
-/obj/effect/landmark/survivor_spawner/clf_lead/kutjevo
+/obj/effect/landmark/survivor_spawner/clf/lead/kutjevo
 	intro_text = list("<h2>You are a CLF member running a smuggling operation!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -225,7 +213,7 @@
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
 
-/obj/effect/landmark/survivor_spawner/clf_engi/kutjevo
+/obj/effect/landmark/survivor_spawner/clf/engi/kutjevo
 	intro_text = list("<h2>You are a CLF member running a smuggling operation!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -234,7 +222,7 @@
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
 
-/obj/effect/landmark/survivor_spawner/clf_medic/kutjevo
+/obj/effect/landmark/survivor_spawner/clf/medic/kutjevo
 	intro_text = list("<h2>You are a CLF member running a smuggling operation!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -251,19 +239,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/soro
+/obj/effect/landmark/survivor_spawner/clf/lead/soro
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Unbeknownst to your men, your request for extraction from HQ has been denied..."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/soro
+/obj/effect/landmark/survivor_spawner/clf/engi/soro
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/soro
+/obj/effect/landmark/survivor_spawner/clf/medic/soro
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -277,19 +265,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/varadero
+/obj/effect/landmark/survivor_spawner/clf/lead/varadero
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/varadero
+/obj/effect/landmark/survivor_spawner/clf/engi/varadero
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/varadero
+/obj/effect/landmark/survivor_spawner/clf/medic/varadero
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -303,19 +291,19 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa
+/obj/effect/landmark/survivor_spawner/clf/lead/hybrisa
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, you ordered your cell to launch an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_engi/hybrisa
+/obj/effect/landmark/survivor_spawner/clf/engi/hybrisa
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
-/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa
+/obj/effect/landmark/survivor_spawner/clf/medic/hybrisa
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -323,8 +311,15 @@
 
 //Weyland-Yutani Survivors//
 
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
+/obj/effect/landmark/survivor_spawner/wy
+	equipment = /datum/equipment_preset/survivor/corporate
+	CO_equipment = /datum/equipment_preset/survivor/corporate
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	icon_state = "surv_wy"
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/wy/cl
 	equipment = /datum/equipment_preset/survivor/corporate/executive
 	CO_equipment = /datum/equipment_preset/survivor/corporate/executive
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
@@ -333,10 +328,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Liaison stationed on LV-624 from Weyland-Yutani. You were tipped off about some very peculiar looking eggs recovered from the alien temple North-East of the colony. Being the smart Executive the Company hired you to be, you decided to prepare your office for the worst when the first 'facehugger' was born in the vats of the Research Dome. Turned out, you were right, everyone who called you crazy and called these the new 'synthetics' is now dead, you along with your Corporate Security detail are the only survivors due to your paranoia. The xenomorph onslaught was relentless, a fuel tank was shot by one of the Officers, leading to the destruction of a part of the dome, along with a lot of the defences being melted. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/goon
 	equipment = /datum/equipment_preset/survivor/goon
 	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
@@ -345,10 +337,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Officer stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from the Marshals Offices to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and a lot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
 
-	spawn_priority = SPAWN_PRIORITY_MEDIUM
-
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/medic
 	equipment = /datum/equipment_preset/survivor/goon/medic
 	CO_equipment = /datum/equipment_preset/survivor/goon/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
@@ -357,10 +346,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Medic stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from the Medbay to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and a lot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/engi
 	equipment = /datum/equipment_preset/survivor/goon/engineer
 	CO_equipment = /datum/equipment_preset/survivor/goon/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
@@ -369,10 +355,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Technician stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from Engineering to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and a lot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/lead
 	equipment = /datum/equipment_preset/survivor/goon/lead
 	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
@@ -381,10 +364,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Lead stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to organize the security forces present, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and a lot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/goon/bigred
 	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
@@ -396,10 +376,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_MEDIUM
-
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/medic/bigred
 	equipment = /datum/equipment_preset/survivor/pmc/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
@@ -411,10 +388,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/engi/bigred
 	equipment = /datum/equipment_preset/survivor/pmc/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
@@ -426,10 +400,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/lead/bigred
 	equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
@@ -441,10 +412,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/cl/bigred
 	equipment = /datum/equipment_preset/survivor/corporate/manager
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
@@ -456,12 +424,9 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
 //Shivas Panic Room Survivors//
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/goon/shivas
 	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	CO_equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
@@ -469,10 +434,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a commando stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. While you were assigned to protecting the people taking shelter in the Panic Room, the rest of your team was spread out throughout the colony. You have not seen any of them since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/cl/shivas
 	equipment = /datum/equipment_preset/survivor/corporate/asstmanager
 	CO_equipment = /datum/equipment_preset/survivor/corporate/asstmanager
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
@@ -481,10 +443,7 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are the Assistant Operations Manager stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons you one-day said were 'useless' and a waste of Company dollars. You remember that Administrator Stahl sent out a distress beacon to any ship in range, hoping to get picked up by the Company, he ran to the Spaceport. You have not seen him since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/medic/shivas
 	equipment = /datum/equipment_preset/survivor/doctor/shiva
 	CO_equipment = /datum/equipment_preset/survivor/doctor/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth_teal
@@ -493,13 +452,10 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Doctor working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the xenomorphs have a sort of implanter which latches on to your face and then... something bursts out of your chest, through the rib cage. You had plenty of those cases at the Medical Bay. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority
+/obj/effect/landmark/survivor_spawner/wy/medic/shivas/medium_priority
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/engi/shivas
 	equipment = /datum/equipment_preset/survivor/engineer/shiva
 	CO_equipment = /datum/equipment_preset/survivor/engineer/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/engineer_synth
@@ -508,13 +464,10 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are an Engineer working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the xenomorphs seem to be able to see in the dark, as you saw one grab a co-worker trying to fix the generators after the power went out. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng/medium_priority
+/obj/effect/landmark/survivor_spawner/wy/engi/shivas/medium_priority
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
-	icon_state = "surv_wy"
+/obj/effect/landmark/survivor_spawner/wy/sci/shivas
 	equipment = /datum/equipment_preset/survivor/scientist/shiva
 	CO_equipment = /datum/equipment_preset/survivor/scientist/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
@@ -523,12 +476,10 @@
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Scientist working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the XX-121 species, codenamed that by Research Director Clarke, have a variety of different species, what you can assume a 'leader' of some sort and that their acid is deadly should it come in contact with you or the shutters. You ran far from the labs and have not seen some your coworkers since. In their attempts at trying to breach in, these so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci/medium_priority
+/obj/effect/landmark/survivor_spawner/wy/sci/shivas/medium_priority
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ
+/obj/effect/landmark/survivor_spawner/civ/shivas
 	equipment = /datum/equipment_preset/survivor/civilian
 	CO_equipment = /datum/equipment_preset/survivor/civilian
 	synth_equipment = /datum/equipment_preset/synth/survivor/chef_synth
@@ -541,7 +492,13 @@
 
 //CMB Survivors//
 
-/obj/effect/landmark/survivor_spawner/fiorina_armory_cmb
+/obj/effect/landmark/survivor_spawner/cmb
+	equipment = /datum/equipment_preset/survivor/cmb
+	CO_equipment = /datum/equipment_preset/survivor/cmb
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/cmb/fiorina
 	equipment = /datum/equipment_preset/survivor/cmb/riot
 	CO_equipment = /datum/equipment_preset/survivor/cmb/riot
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/riotsynth
@@ -550,9 +507,7 @@
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
 	story_text = "You are a part of Riot Control Unit of the Office of the Colonial Marshals. Your dispatcher received a distress signal from the infamous Fiorina Maximum Penitentiary. You figured it was just another typical case of the prison dealing with a riot their understaffed security force couldn't handle, with more and more of its personnel getting dispatched elsewhere in the galaxy. This wasn't the first time OCM officers were called in to assist, but unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control
+/obj/effect/landmark/survivor_spawner/cmb/fiorina/riot
 	equipment = /datum/equipment_preset/survivor/cmb/ua
 	CO_equipment = /datum/equipment_preset/survivor/cmb/ua
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/ua_synth
@@ -561,63 +516,63 @@
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
 	story_text = "You are a United Americas Riot Control Officer. Your dispatcher received a request from the local OCM Outpost, requesting some men to intervene assist a OCM Officer with handling a riot at Fiorina. The prison was an understaffed mess so you weren't too surprised they had sent out a distress signal, calling you in to do their jobs yet again. Unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
 ////************Military Survivors************////
 
 // Forecon //
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_tech
-	equipment = /datum/equipment_preset/survivor/forecon/tech
+/obj/effect/landmark/survivor_spawner/forecon
+	equipment = /datum/equipment_preset/survivor/forecon
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman
+/obj/effect/landmark/survivor_spawner/forecon/tech
+	equipment = /datum/equipment_preset/survivor/forecon/tech
+
+/obj/effect/landmark/survivor_spawner/forecon/marksman
 	equipment = /datum/equipment_preset/survivor/forecon/marksman
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner
+/obj/effect/landmark/survivor_spawner/forecon/smartgunner
 	equipment = /datum/equipment_preset/survivor/forecon/smartgunner
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_sniper
+/obj/effect/landmark/survivor_spawner/forecon/sniper
 	equipment = /datum/equipment_preset/survivor/forecon/sniper
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
+/obj/effect/landmark/survivor_spawner/forecon/squad_leader
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader
-	spawn_priority = SPAWN_PRIORITY_HIGH
-
-// Trijent UPP insert
-
-/obj/effect/landmark/survivor_spawner/upp
-	icon_state = "surv_upp"
 
 // US Army //
 
-/obj/effect/landmark/survivor_spawner/us_army_engineer
-	equipment = /datum/equipment_preset/survivor/army/engineer
+/obj/effect/landmark/survivor_spawner/army
+	equipment = /datum/equipment_preset/survivor/army
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
-/obj/effect/landmark/survivor_spawner/us_army_medic
+/obj/effect/landmark/survivor_spawner/army/engineer
+	equipment = /datum/equipment_preset/survivor/army/engineer
+
+/obj/effect/landmark/survivor_spawner/army/medic
 	equipment = /datum/equipment_preset/survivor/army/medic
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/us_army_marksman
+/obj/effect/landmark/survivor_spawner/army/marksman
 	equipment = /datum/equipment_preset/survivor/army/marksman
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/us_army_gunner
+/obj/effect/landmark/survivor_spawner/army/gunner
 	equipment = /datum/equipment_preset/survivor/army/gunner
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/us_army_sl
+/obj/effect/landmark/survivor_spawner/army/sl
 	equipment = /datum/equipment_preset/survivor/army/sl
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 // UPP Recon //
 
-/obj/effect/landmark/survivor_spawner/upp/soldier
+/obj/effect/landmark/survivor_spawner/upp
 	icon_state = "surv_upp"
+
+/obj/effect/landmark/survivor_spawner/upp/soldier
 	equipment = /datum/equipment_preset/survivor/upp/soldier
 	CO_equipment = /datum/equipment_preset/survivor/upp/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
@@ -627,8 +582,7 @@
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_LOW
 
-/obj/effect/landmark/survivor_spawner/upp_sapper
-	icon_state = "surv_upp"
+/obj/effect/landmark/survivor_spawner/upp/sapper
 	equipment = /datum/equipment_preset/survivor/upp/sapper
 	CO_equipment = /datum/equipment_preset/survivor/upp/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
@@ -638,8 +592,7 @@
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/upp_medic
-	icon_state = "surv_upp"
+/obj/effect/landmark/survivor_spawner/upp/medic
 	equipment = /datum/equipment_preset/survivor/upp/medic
 	CO_equipment = /datum/equipment_preset/survivor/upp/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
@@ -649,8 +602,7 @@
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/upp_specialist
-	icon_state = "surv_upp"
+/obj/effect/landmark/survivor_spawner/upp/specialist
 	equipment = /datum/equipment_preset/survivor/upp/specialist
 	CO_equipment = /datum/equipment_preset/survivor/upp/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
@@ -660,8 +612,7 @@
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
-/obj/effect/landmark/survivor_spawner/squad_leader
-	icon_state = "surv_upp"
+/obj/effect/landmark/survivor_spawner/upp/squad_leader
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	CO_equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp

@@ -262,7 +262,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aS" = (
-/obj/effect/landmark/survivor_spawner/clf_medic,
+/obj/effect/landmark/survivor_spawner/clf/medic,
 /turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
 "aT" = (
@@ -450,7 +450,7 @@
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/clf_lead,
+/obj/effect/landmark/survivor_spawner/clf/lead,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "gg" = (
@@ -735,7 +735,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "nj" = (
-/obj/effect/landmark/survivor_spawner/clf_engi,
+/obj/effect/landmark/survivor_spawner/clf/engi,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "nt" = (

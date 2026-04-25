@@ -5060,7 +5060,7 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "anR" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/survivor_spawner/us_army_medic,
+/obj/effect/landmark/survivor_spawner/army/medic,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "anS" = (
@@ -14462,7 +14462,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/effect/landmark/survivor_spawner/us_army_sl,
+/obj/effect/landmark/survivor_spawner/army/sl,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
@@ -17133,7 +17133,7 @@
 	icon_state = "sandbag_0"
 	},
 /obj/effect/spawner/random/powercell,
-/obj/effect/landmark/survivor_spawner/us_army_marksman,
+/obj/effect/landmark/survivor_spawner/army/marksman,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPw" = (
@@ -17153,7 +17153,7 @@
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 30
 	},
-/obj/effect/landmark/survivor_spawner/us_army_engineer,
+/obj/effect/landmark/survivor_spawner/army/engineer,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPy" = (
@@ -17483,7 +17483,7 @@
 	pixel_y = -10;
 	layer = 2.1
 	},
-/obj/effect/landmark/survivor_spawner/us_army_gunner,
+/obj/effect/landmark/survivor_spawner/army/gunner,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQf" = (

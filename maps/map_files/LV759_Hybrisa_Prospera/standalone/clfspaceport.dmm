@@ -1588,7 +1588,7 @@
 /turf/open/floor/prison/ramptop/north,
 /area/lv759/indoors/spaceport/cargo)
 "wb" = (
-/obj/effect/landmark/survivor_spawner/clf_engi,
+/obj/effect/landmark/survivor_spawner/clf/engi,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1638,7 +1638,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa,
+/obj/effect/landmark/survivor_spawner/clf/lead/hybrisa,
 /turf/open/floor/strata/yellow3,
 /area/lv759/indoors/spaceport/cargo)
 "ww" = (
@@ -3292,7 +3292,7 @@
 	pixel_x = -2
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa,
+/obj/effect/landmark/survivor_spawner/clf/medic/hybrisa,
 /turf/open/floor/prison/southwest,
 /area/lv759/indoors/spaceport/clf_dropship)
 "WW" = (

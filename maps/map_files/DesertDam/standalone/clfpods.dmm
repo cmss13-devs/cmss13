@@ -1474,7 +1474,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Cw" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/trijent,
+/obj/effect/landmark/survivor_spawner/clf/engi/trijent,
 /turf/open/asphalt,
 /area/desert_dam/building/medical/garage)
 "CS" = (
@@ -1645,7 +1645,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "GZ" = (
-/obj/effect/landmark/survivor_spawner/clf_medic/trijent,
+/obj/effect/landmark/survivor_spawner/clf/medic/trijent,
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/exterior/valley/valley_medical)
 "Hk" = (
@@ -2159,7 +2159,7 @@
 	dir = 8;
 	pixel_y = 3
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/trijent,
+/obj/effect/landmark/survivor_spawner/clf/lead/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "XW" = (

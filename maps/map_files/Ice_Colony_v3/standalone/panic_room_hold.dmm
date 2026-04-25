@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng,
+/obj/effect/landmark/survivor_spawner/wy/engi/shivas,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "ab" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority,
+/obj/effect/landmark/survivor_spawner/wy/medic/shivas/medium_priority,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -329,7 +329,7 @@
 /area/shiva/interior/colony/s_admin)
 "kB" = (
 /obj/structure/bed/bedroll,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/obj/effect/landmark/survivor_spawner/wy/medic/shivas,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kP" = (
@@ -505,7 +505,7 @@
 /area/shiva/interior/colony/s_admin)
 "rQ" = (
 /obj/item/ammo_magazine/rifle/boltaction,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng/medium_priority,
+/obj/effect/landmark/survivor_spawner/wy/engi/shivas/medium_priority,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "sq" = (
@@ -544,7 +544,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci/medium_priority,
+/obj/effect/landmark/survivor_spawner/wy/sci/shivas/medium_priority,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tu" = (
@@ -740,7 +740,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl,
+/obj/effect/landmark/survivor_spawner/wy/cl/shivas,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "yi" = (
@@ -767,7 +767,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "yQ" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/obj/effect/landmark/survivor_spawner/wy/sci/shivas,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "yS" = (
@@ -873,7 +873,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
 "BU" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/obj/effect/landmark/survivor_spawner/civ/shivas,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -1200,7 +1200,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "Nu" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/obj/effect/landmark/survivor_spawner/civ/shivas,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "NC" = (
@@ -1248,7 +1248,7 @@
 /area/shiva/interior/colony/s_admin)
 "PV" = (
 /obj/structure/bed/bedroll,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando,
+/obj/effect/landmark/survivor_spawner/wy/goon/shivas,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Qh" = (

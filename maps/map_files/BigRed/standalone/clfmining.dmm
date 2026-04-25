@@ -613,7 +613,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "iI" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/solaris,
+/obj/effect/landmark/survivor_spawner/clf/engi/solaris,
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "jb" = (
@@ -2322,7 +2322,7 @@
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "Ks" = (
-/obj/effect/landmark/survivor_spawner/clf_lead/solaris,
+/obj/effect/landmark/survivor_spawner/clf/lead/solaris,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves/mining)
 "Kv" = (
@@ -2890,7 +2890,7 @@
 	icon_state = "4-8";
 	name = "heavy duty power cable"
 	},
-/obj/effect/landmark/survivor_spawner/clf_medic/solaris,
+/obj/effect/landmark/survivor_spawner/clf/medic/solaris,
 /turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/caves/mining)
 "Sv" = (

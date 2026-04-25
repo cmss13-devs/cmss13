@@ -309,7 +309,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/kutjevo,
+/obj/effect/landmark/survivor_spawner/clf/lead/kutjevo,
 /turf/open/floor/almayer,
 /area/kutjevo/interior/colony/clf_shuttle)
 "nO" = (
@@ -426,7 +426,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/stonyfields)
 "tW" = (
-/obj/effect/landmark/survivor_spawner/clf_medic/kutjevo,
+/obj/effect/landmark/survivor_spawner/clf/medic/kutjevo,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/clf_lz)
 "tZ" = (
@@ -843,7 +843,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "OE" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/kutjevo,
+/obj/effect/landmark/survivor_spawner/clf/engi/kutjevo,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "OT" = (

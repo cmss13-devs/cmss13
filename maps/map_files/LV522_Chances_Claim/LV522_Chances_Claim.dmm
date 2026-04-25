@@ -11066,7 +11066,7 @@
 /obj/structure/bed/bedroll{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner,
+/obj/effect/landmark/survivor_spawner/forecon/smartgunner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/west,
@@ -16103,7 +16103,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv522_forecon_tech,
+/obj/effect/landmark/survivor_spawner/forecon/tech,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "iBQ" = (
@@ -20062,7 +20062,7 @@
 /area/lv522/indoors/c_block/casino)
 "kAj" = (
 /obj/structure/bed/chair/comfy,
-/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader,
+/obj/effect/landmark/survivor_spawner/forecon/squad_leader,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "kAn" = (
@@ -22336,7 +22336,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman,
+/obj/effect/landmark/survivor_spawner/forecon/marksman,
 /turf/open/floor/platingdmg1,
 /area/lv522/indoors/a_block/admin)
 "lLl" = (
@@ -33208,7 +33208,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv522_forecon_sniper,
+/obj/effect/landmark/survivor_spawner/forecon/sniper,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "rls" = (

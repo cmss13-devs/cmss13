@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi,
+/obj/effect/landmark/survivor_spawner/wy/engi,
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
 "ab" = (
@@ -313,7 +313,7 @@
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "mw" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
+/obj/effect/landmark/survivor_spawner/wy/goon,
 /obj/item/ammo_casing/cartridge,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
@@ -424,7 +424,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/obj/effect/landmark/survivor_spawner/wy/cl,
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
 "sm" = (
@@ -522,7 +522,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
+/obj/effect/landmark/survivor_spawner/wy/medic,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
@@ -838,7 +838,7 @@
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "Sb" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
+/obj/effect/landmark/survivor_spawner/wy/goon,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "SO" = (
@@ -963,7 +963,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ZT" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
+/obj/effect/landmark/survivor_spawner/wy/lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 

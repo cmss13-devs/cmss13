@@ -160,7 +160,7 @@
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "aW" = (
-/obj/effect/landmark/survivor_spawner/clf_lead/shivas,
+/obj/effect/landmark/survivor_spawner/clf/lead/shivas,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "bg" = (
@@ -1177,7 +1177,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "Em" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/shivas,
+/obj/effect/landmark/survivor_spawner/clf/engi/shivas,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -1763,7 +1763,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "Uc" = (
-/obj/effect/landmark/survivor_spawner/clf_medic/shivas,
+/obj/effect/landmark/survivor_spawner/clf/medic/shivas,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "Ui" = (

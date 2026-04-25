@@ -53,7 +53,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "bC" = (
-/obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control,
+/obj/effect/landmark/survivor_spawner/cmb/fiorina/riot,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "bO" = (
@@ -433,7 +433,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "qw" = (
-/obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control,
+/obj/effect/landmark/survivor_spawner/cmb/fiorina/riot,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "qQ" = (
@@ -607,7 +607,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
 "xI" = (
-/obj/effect/landmark/survivor_spawner/fiorina_armory_cmb,
+/obj/effect/landmark/survivor_spawner/cmb/fiorina,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "xM" = (
@@ -784,7 +784,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "ER" = (
-/obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control,
+/obj/effect/landmark/survivor_spawner/cmb/fiorina/riot,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "EV" = (

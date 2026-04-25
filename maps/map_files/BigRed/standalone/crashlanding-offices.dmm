@@ -98,7 +98,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer,
+/obj/effect/landmark/survivor_spawner/wy/engi/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "av" = (
@@ -691,7 +691,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/obj/effect/landmark/survivor_spawner/wy/goon/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "qw" = (
@@ -781,7 +781,7 @@
 	dir = 8
 	},
 /obj/item/limb/hand/l_hand,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader,
+/obj/effect/landmark/survivor_spawner/wy/lead/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "wn" = (
@@ -794,7 +794,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/obj/effect/landmark/survivor_spawner/wy/goon/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "wO" = (
@@ -1212,7 +1212,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/wy/cl/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Qh" = (
@@ -1414,7 +1414,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic,
+/obj/effect/landmark/survivor_spawner/wy/medic/bigred,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 

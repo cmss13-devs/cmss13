@@ -61479,13 +61479,6 @@
 /obj/structure/curtain/red,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/underground/mall)
-"dwf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/west{
-	start_charge = 30
-	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/tyrargo/underground/mall)
 "dwy" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/decal/cleanable/dirt,
@@ -128289,7 +128282,7 @@ dtC
 dvk
 dtN
 dFO
-dwf
+bTz
 bsw
 bsw
 bsw

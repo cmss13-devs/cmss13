@@ -67,8 +67,6 @@
 
 /obj/effect/landmark/survivor_spawner/clf/engi
 	equipment = /datum/equipment_preset/survivor/clf/engineer
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -79,8 +77,6 @@
 
 /obj/effect/landmark/survivor_spawner/clf/medic
 	equipment = /datum/equipment_preset/survivor/clf/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -322,7 +318,6 @@
 /obj/effect/landmark/survivor_spawner/wy/cl
 	equipment = /datum/equipment_preset/survivor/corporate/executive
 	CO_equipment = /datum/equipment_preset/survivor/corporate/executive
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -331,7 +326,6 @@
 /obj/effect/landmark/survivor_spawner/wy/goon
 	equipment = /datum/equipment_preset/survivor/goon
 	CO_equipment = /datum/equipment_preset/survivor/goon/lead
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -340,7 +334,6 @@
 /obj/effect/landmark/survivor_spawner/wy/medic
 	equipment = /datum/equipment_preset/survivor/goon/medic
 	CO_equipment = /datum/equipment_preset/survivor/goon/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Medic!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -349,7 +342,6 @@
 /obj/effect/landmark/survivor_spawner/wy/engi
 	equipment = /datum/equipment_preset/survivor/goon/engineer
 	CO_equipment = /datum/equipment_preset/survivor/goon/engineer
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Technician!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -358,7 +350,6 @@
 /obj/effect/landmark/survivor_spawner/wy/lead
 	equipment = /datum/equipment_preset/survivor/goon/lead
 	CO_equipment = /datum/equipment_preset/survivor/goon/lead
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Lead!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")

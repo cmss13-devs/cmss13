@@ -22346,7 +22346,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	layer = 2.9
 	},
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "bdT" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -76191,7 +76191,7 @@
 /obj/structure/lattice,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform_decoration/metal/almayer/southwest,
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZy" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -76216,7 +76216,7 @@
 /obj/structure/lattice,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform_decoration/metal/almayer/southeast,
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
@@ -76382,7 +76382,7 @@
 	},
 /obj/structure/lattice,
 /obj/structure/platform_decoration/metal/almayer/northeast,
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZP" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -76397,7 +76397,7 @@
 	},
 /obj/structure/lattice,
 /obj/structure/platform_decoration/metal/almayer/northwest,
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZQ" = (
 /obj/structure/closet/hydrant{
@@ -76808,7 +76808,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	layer = 2.9
 	},
-/turf/open/floor/plating,
+/turf/open/hybrisa/street/underground_unweedable,
 /area/tyrargo/indoors/power_substation_outskirt)
 "eaJ" = (
 /obj/effect/decal/cleanable/dirt,

@@ -1016,8 +1016,8 @@
 "axA" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = -10
 	},
@@ -9134,8 +9134,8 @@
 "gXd" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -9695,15 +9695,15 @@
 "hrz" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -11435,8 +11435,8 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -23152,8 +23152,8 @@
 "rMT" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -23383,14 +23383,14 @@
 "rUQ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 17;
 	pixel_y = 21
 	},
@@ -28129,8 +28129,8 @@
 "vCL" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},

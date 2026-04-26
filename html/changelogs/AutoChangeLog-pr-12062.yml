@@ -1,0 +1,8 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - bugfix: "The elevator landing at Trijent Dam's wilderness valley now has an APC powering it"
+  - bugfix: "The APCs powering the elevator landings at Trijent Dam's wilderness and medical valleys now have metal walls and floors to allow for field repairs without requiring admin intervention"
+  - bugfix: "The elevator shaft at the medical valley now has a docking port"
+  - maptweak: "Added two new areas to Trijent Dam that can be powered with an APC: \"Medical Valley Elevator Landing\" and \"Wilderness Valley Elevator Landing\""
+  - spellcheck: "Changed \"curtesy\" to \"courtesy\" in the elevator control panel"

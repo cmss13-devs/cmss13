@@ -114,3 +114,10 @@
   - balance: Allows NSG to have flashlight grip.
   ori-disillusion-mirnov:
   - balance: turing dispenser and xeno analyzer thingy are no longer meltable
+2026-04-26:
+  KornFlaks:
+  - rscadd: King vote list is now randomized between different voters.
+  MistChristmas:
+  - bugfix: Dropship controls now recognise Senior Command Access as valid.
+  private-tristan:
+  - rscadd: Added a total of 41 new tips to the game!

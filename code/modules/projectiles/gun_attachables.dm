@@ -3666,7 +3666,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	attachment_action_type = /datum/action/item_action/toggle/ext
 	slot = "under"
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_MELEE
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
@@ -3696,10 +3696,16 @@ Defined in conflicts.dm of the #defines folder.
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
+/obj/item/attachable/attached_gun/extinguisher/reload_attachment(obj/item/used_item, mob/user)
+	internal_extinguisher.attackby(used_item, user)
+
+/obj/item/attachable/attached_gun/extinguisher/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	return internal_extinguisher.afterattack(target, user, proximity_flag, click_parameters)
+
 /obj/item/attachable/attached_gun/extinguisher/pyro
 	name = "HME-88B underbarrel extinguisher"
 	desc = "An experimental Taiho-Technologies HME-88B underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
-	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE //not removable
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_MELEE //not removable
 
 /obj/item/attachable/attached_gun/extinguisher/pyro/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/pyro()

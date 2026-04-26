@@ -1149,7 +1149,7 @@
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
-			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
+			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, shuffle(voting_candidates))
 
 	candidates = voting_candidates
 

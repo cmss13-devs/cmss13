@@ -1,5 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "xenos get +1 second cooldown penalty for being interrupted mid building, queen on boosted building gets +3 seconds penalty."
-  - code_imp: "makes do_after check if the user or the target were qdeleted"

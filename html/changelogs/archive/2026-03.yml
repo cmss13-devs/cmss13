@@ -245,3 +245,65 @@
   - bugfix: fixed deleted binoculars never un-zooming your view
   - refactor: refactored plane render relay plate code to reduce overtime lag from
       observing and changing mobs
+2026-03-24:
+  DangerRevolution:
+  - maptweak: Hybrisa Propsera, Chance's Claim, New Varadero and Tyrago Rift have
+      had Intel Terminals added to them. Shiva's Snowball has had one of the terminals
+      moved out of the South-East Hive location and instead south of Anti-Freeze Bar
+  - maptweak: Shifted Solaris' LZ1 Sentry Locations to prevent a Sentry spawning on
+      a container, and therefore being bugged inside it.
+  - maptweak: Removed a stray wall under a girder in the LV Destroyed Medbay variation.
+  ihatethisengine:
+  - balance: xenos get +1 second cooldown penalty for being interrupted mid building,
+      queen on boosted building gets +3 seconds penalty.
+  - code_imp: makes do_after check if the user or the target were qdeleted
+2026-03-25:
+  realforest2001:
+  - rscadd: Added landing lights to the ERT landing bays.
+  - imageadd: Added some mapicons for the different landing light delay settings to
+      make it easier to see what is what on the map.
+  - code_imp: Restructured the procs that toggle landing lights on and off for simplicity.
+2026-03-26:
+  Drathek:
+  - rscadd: Ever a shuttle fails to dock 5 times it will be sent to infinite transit
+      (null destination) so engines can recharge and it stops spamming
+  - bugfix: Shuttle computers for FTL/Crash only disable if they're for shipside shuttles
+  - bugfix: ERT shuttles now have FTL/Crash checking logic unlike before
+  - bugfix: 'Distress signals can now ignore FTL/Crashed checks: So now forsaken/hunting
+      grounds should be able to spawn again'
+  - bugfix: Pads now actually are deemed undockable shipside during FTL so other shuttles
+      cannot dock mid transit
+  - bugfix: Shuttles in transit to the ship now are returned to sender if FTL starts
+      charging
+  - bugfix: Dropships now reset autopilot on FTL start
+  - bugfix: Dropships and ERT shuttles now lift door lockdown on FTL/Crash since the
+      computer becomes uninteractable
+  - bugfix: Evac can be called when leaving FTL unintentionally (dropped out of warp)
+  - admin: Shuttle manipulator can fast recharge shuttles and can always use the Fly
+      action regardless of current shuttle state
+  - admin: Shuttle computers can be overriden to ignore ftl/crash checks via ignore_ftl_or_crash
+      bool
+  - code_imp: Tweaked SSmapping.levels_by_trait and SSmapping.level_trait logic
+  - code_imp: Disabled some unnecessary GetShuttle warnings for remote shuttle computers
+  - maptweak: Updated the FTL ground crash template to be faster to load and look
+      a bit nicer
+2026-03-27:
+  ComboTombo:
+  - spellcheck: Reset key descriptions now say they must be recharged instead of reset
+      after use to clear up a misconception
+  Detective-Google:
+  - bugfix: WYC6 Executive supervisor paygrade fixed
+2026-03-28:
+  ori-disillusion-mirnov:
+  - bugfix: sorokyne strata map now properly calls the colony a UPP colony
+2026-03-30:
+  Detective-Google:
+  - balance: the break action grenade launcher is no longer faster than the rotary
+      one.
+2026-03-31:
+  halgmor:
+  - rscadd: Fire extinguishers (portable extinguishers and underslung extinguishers)
+      can now be refilled from water bottles, flasks, sinks, water tanks, and water
+      coolers.
+  - bugfix: Fixed existing bug where adjacent extinguisher spray was not appearing
+      visually

@@ -1352,6 +1352,7 @@
 	name = FACTION_XENOMORPH_HUNTED
 	reporting_id = "hunted"
 	hivenumber = XENO_HIVE_HUNTED
+	prefix = "Hunted "
 
 	ui_color = "#135029"
 	dynamic_evolution = FALSE

@@ -17,7 +17,10 @@
 #define SS13LIB_ENGINE_BLACKLISTED_VERSIONS CONFIG_GET(str_list/ss13lib_engine_blacklisted_versions)
 
 #define SS13LIB_ROUND_MAP_NAME SSmapping.configs[GROUND_MAP].map_name
-#define SS13LIB_ROUND_DURATION ROUND_TIME
+
+GLOBAL_VAR(round_started_at)
+#define SS13LIB_ROUND_STARTED_AT_UNIX GLOB.round_started_at
+
 #define SS13LIB_ROUND_SECURITY_LEVEL get_security_level()
 #define SS13LIB_ROUND_GAMEMODE GLOB.master_mode
 #define SS13LIB_ROUND_ID GLOB.round_id

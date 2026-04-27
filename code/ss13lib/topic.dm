@@ -98,8 +98,12 @@
 			"map_name" = SS13LIB_ROUND_MAP_NAME,
 #endif
 
-#ifdef SS13LIB_ROUND_DURATION
-			"duration" = SS13LIB_ROUND_DURATION,
+#ifdef SS13LIB_ROUND_STARTED_AT_UNIX
+			"started_at_unix" = SS13LIB_ROUND_STARTED_AT_UNIX,
+#endif
+
+#ifdef SS13LIB_ROUND_STARTED_AT_BYOND
+			"started_at_byond" = SS13LIB_ROUND_STARTED_AT_BYOND,
 #endif
 
 #ifdef SS13LIB_ROUND_ID

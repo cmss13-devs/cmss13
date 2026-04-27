@@ -7,6 +7,8 @@
 	var/poll_key
 	/// Whether the library has completed initialisation
 	var/ready = FALSE
+	/// Whether we have already warned about being blacklist-hidden
+	var/blacklist_warned = FALSE
 
 #define SS13LIB_MAX_HANDSHAKE_ATTEMPTS 3
 
@@ -14,10 +16,17 @@
 /datum/ss13lib/proc/perform_handshake()
 	SS13LIB_INFO_LOG("Beginning handshake with hub server.")
 
+	var/handshake_url = "[SS13LIB_HUB_SERVER]/handshake?port=[SS13LIB_SERVER_PORT]&version=[SS13LIB_VERSION]"
+#ifdef SS13LIB_AUTH_METHODS
+	var/list/auth_methods = SS13LIB_AUTH_METHODS
+	if(length(auth_methods))
+		handshake_url += "&auth_methods=[jointext(auth_methods, ",")]"
+#endif
+
 	for(var/i in 1 to SS13LIB_MAX_HANDSHAKE_ATTEMPTS)
 		var/datum/ss13lib_http_response/response = perform_http_request(
 			SS13LIB_HTTP_GET,
-			"[SS13LIB_HUB_SERVER]/handshake?port=[SS13LIB_SERVER_PORT]&version=[SS13LIB_VERSION]",
+			handshake_url,
 		)
 
 		if(response.errored)

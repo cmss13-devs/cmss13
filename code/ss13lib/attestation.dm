@@ -12,9 +12,6 @@
 		return FALSE
 
 	var/timestamp = SS13LIB_UNIX_EPOCH
-	var/dot_pos = findtext(timestamp, ".")
-	if(dot_pos)
-		timestamp = copytext(timestamp, 1, dot_pos)
 	var/message = "[src.server_id]:[src.nonce]:[timestamp]"
 	var/signature = SS13LIB_ED25519_SIGN(SS13LIB_ATTEST_PRIVKEY, message)
 

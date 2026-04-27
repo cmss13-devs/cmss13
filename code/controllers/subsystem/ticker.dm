@@ -228,6 +228,7 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.ooc_allowed = FALSE
 
 	round_start_time = world.time
+	GLOB.round_started_at = rustg_unix_timestamp()
 
 	CHECK_TICK
 	for(var/I in round_start_events)

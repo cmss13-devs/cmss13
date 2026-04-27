@@ -12,7 +12,7 @@
 
 	if(auth_ticket)
 		SS13LIB_INFO_LOG("Authenticating [new_client.key] with auth ticket.")
-		var/datum/ss13lib_auth_response/response = check_auth_ticket(auth_ticket)
+		var/datum/ss13lib_auth_response/response = check_auth_ticket(auth_ticket, new_client.address)
 
 		if(response)
 			var/resolved_key = response.key ? response.key : "[response.username][SS13LIB_CKEY_SUFFIX]"
@@ -63,7 +63,7 @@
 	SS13LIB_INFO_LOG("No auth ticket for [new_client.key], proceeding as BYOND-authenticated user.")
 	return FALSE
 
-/datum/ss13lib/proc/check_auth_ticket(auth_ticket) as /datum/ss13lib_auth_response
+/datum/ss13lib/proc/check_auth_ticket(auth_ticket, client_ip) as /datum/ss13lib_auth_response
 	if(!src.server_id)
 		SS13LIB_ERROR_LOG("No server ID from successful handshake, cannot validate auth ticket.")
 		return FALSE
@@ -74,7 +74,8 @@
 		"[SS13LIB_HUB_SERVER]/authenticate",
 		list(
 			"auth_ticket" = auth_ticket,
-			"server_id" = src.server_id
+			"server_id" = src.server_id,
+			"client_ip" = client_ip
 		)
 	)
 
@@ -104,11 +105,12 @@
 	SS13LIB_INFO_LOG("Auth ticket validated, username: [decoded["username"]]")
 
 	var/datum/ss13lib_auth_response/auth = new
-	auth.ckey = decoded["ckey"]
 	auth.key = decoded["key"]
 	auth.username = decoded["username"]
 	auth.created_at = decoded["created_at"]
 	auth.hwid = decoded["hwid"]
+	auth.discord_id = decoded["discord_id"]
+	auth.steam_id = decoded["steam_id"]
 
 	return auth
 

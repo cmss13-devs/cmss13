@@ -1761,6 +1761,12 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2500,6 +2506,13 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -10402,6 +10415,21 @@
 /obj/structure/closet/crate/foodcart,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
+"aGE" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
 "aGF" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -14915,6 +14943,10 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_medical)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19874,7 +19906,7 @@
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bjS" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -21678,7 +21710,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bpc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -22888,17 +22920,6 @@
 "btg" = (
 /turf/open/floor/prison/darkbrowncorners2/southwest,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
-"bth" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1;
-	layer = 2
-	},
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bti" = (
 /obj/structure/inflatable,
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -22944,15 +22965,6 @@
 	},
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/north_tunnel)
-"bto" = (
-/obj/effect/decal/sand_overlay/sand2/corner2,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "btp" = (
 /obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/interior/plastic,
@@ -22973,17 +22985,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"btt" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "btu" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -22997,16 +22998,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"btw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 2
-	},
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "btx" = (
 /obj/structure/prop/invuln/rope{
 	pixel_x = 13;
@@ -26304,6 +26295,9 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "cuO" = (
@@ -28693,20 +28687,9 @@
 	pixel_x = -32
 	},
 /obj/effect/decal/sand_overlay/sand2{
-	dir = 5
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
-	pixel_x = -32
-	},
-/obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/floor/prison/sterile_white/west,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "drB" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -44499,6 +44482,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "jtk" = (
+/obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
 "jts" = (
@@ -46885,6 +46869,9 @@
 /area/desert_dam/building/substation/west)
 "kse" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 "ksg" = (
@@ -47970,21 +47957,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_medical_elevator_landing)
@@ -64509,25 +64481,9 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rhr" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 6
-	},
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/power/apc/no_power/west,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/floor/prison/sterile_white/west,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "rhB" = (
 /obj/structure/machinery/computer/med_data,
@@ -67873,6 +67829,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "szg" = (
+/obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "szj" = (
@@ -172110,7 +172067,7 @@ oIu
 oIu
 oIu
 oIu
-cRc
+ahJ
 ckJ
 lkt
 dbE
@@ -172344,7 +172301,7 @@ jkC
 oxt
 xOl
 oIu
-cRc
+aGE
 ckJ
 wIZ
 xCi
@@ -172578,7 +172535,7 @@ fhw
 fhw
 dRl
 oIu
-oYM
+aUZ
 hQd
 bpZ
 bpZ
@@ -173294,7 +173251,7 @@ hQd
 hQd
 hQd
 skX
-rxa
+aft
 svg
 ueF
 lCh
@@ -174619,12 +174576,12 @@ mUT
 iCL
 ihw
 dqS
-btw
-btt
+bmv
+bmv
 bmM
 reX
-bto
-bth
+bmv
+bmv
 rhr
 aeD
 aeD
@@ -175087,12 +175044,12 @@ mUT
 jmR
 cLO
 bpb
-mpk
+ger
 ger
 mpk
 mpk
 ger
-mpk
+ger
 bjR
 cLO
 cLO

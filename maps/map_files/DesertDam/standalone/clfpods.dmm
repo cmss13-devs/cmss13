@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
 "ab" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
@@ -558,20 +563,30 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/outgoing)
 "bT" = (
-/obj/structure/closet/bodybag,
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "bU" = (
-/obj/structure/closet/bodybag{
-	icon_state = "bodybag_open"
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = -6
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "bV" = (
-/obj/structure/bed/bedroll,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_medical)
 "bW" = (
 /turf/closed/wall/r_wall,
@@ -595,6 +610,9 @@
 	icon_state = "gibleg";
 	pixel_x = -3;
 	pixel_y = 5
+	},
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -646,6 +664,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dJ" = (
+/obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "dV" = (
@@ -920,6 +939,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "mq" = (
+/obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
 "mt" = (
@@ -1910,6 +1930,9 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "Ql" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
 "Qx" = (
@@ -3146,7 +3169,7 @@ kH
 bW
 bV
 cR
-Ql
+aa
 Ql
 Wg
 Qx

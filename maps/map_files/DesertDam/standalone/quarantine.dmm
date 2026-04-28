@@ -79,6 +79,28 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"an" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"ao" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
 "aW" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
@@ -485,7 +507,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rA" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_medical)
 "rC" = (
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
@@ -715,6 +738,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_medical)
 "AV" = (
+/obj/structure/machinery/light,
 /obj/structure/inflatable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -786,6 +810,9 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_medical)
 "Dw" = (
@@ -1311,6 +1338,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "TR" = (
 /obj/structure/inflatable,
+/obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "TU" = (
@@ -1406,6 +1434,9 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "Wy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 "WD" = (
@@ -2017,7 +2048,7 @@ wf
 wf
 wf
 wf
-bx
+an
 VP
 dP
 fx
@@ -2040,7 +2071,7 @@ wf
 wf
 wf
 wf
-bx
+ao
 VP
 dM
 UW

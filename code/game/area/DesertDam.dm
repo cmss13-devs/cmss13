@@ -1124,7 +1124,6 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
-	always_unpowered = 0
 
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing
 	name = "Wilderness Valley Elevator Landing"

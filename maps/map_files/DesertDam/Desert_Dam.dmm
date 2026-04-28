@@ -18614,7 +18614,7 @@
 "bgj" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bgk" = (
 /obj/structure/prop/dam/large_boulder/boulder1{
@@ -20744,7 +20744,7 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmv" = (
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmw" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20864,7 +20864,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -28689,7 +28689,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "drB" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -64483,7 +64483,7 @@
 "rhr" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "rhB" = (
 /obj/structure/machinery/computer/med_data,

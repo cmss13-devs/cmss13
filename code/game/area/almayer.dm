@@ -268,6 +268,15 @@
 /area/almayer/shipboard/brig/interrogation
 	name = "\improper Brig Interrogation Room"
 
+/area/almayer/shipboard/brig/visitation
+	name = "\improper Brig Visitation"
+
+/area/almayer/shipboard/brig/visitation_waiting
+	name = "\improper Brig Visitation Waiting Room"
+
+/area/almayer/shipboard/brig/yard
+	name = "\improper Brig Yard"
+
 /area/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"
 

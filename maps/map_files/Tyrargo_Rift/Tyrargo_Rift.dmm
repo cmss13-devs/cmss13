@@ -339,6 +339,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"abf" = (
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 30
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
 	pixel_y = -33;
@@ -112443,7 +112449,7 @@ bWS
 bWM
 boz
 boz
-bTX
+abf
 bTX
 bUa
 bTU

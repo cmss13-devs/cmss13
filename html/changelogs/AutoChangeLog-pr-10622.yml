@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "Resin doors and walls construct wall above them when made in open, damage taken by that wall is transfered to the lower wall and they get destroyed in unison. Bullet pings on upper wall are mirrored on lower one to alert the xenos"

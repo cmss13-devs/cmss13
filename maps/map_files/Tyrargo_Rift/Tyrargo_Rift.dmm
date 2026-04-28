@@ -20194,7 +20194,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aVp" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aVq" = (
@@ -21719,7 +21719,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "aYd" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
@@ -24496,7 +24496,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
 "bdE" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/tiretrack{
@@ -25969,39 +25969,39 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/oob)
 "bha" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhf" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -26014,55 +26014,55 @@
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhg" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhh" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhi" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhj" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhk" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhl" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhm" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bhn" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bho" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/almayer/plating,
@@ -26631,12 +26631,12 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bim" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bin" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
@@ -26652,17 +26652,17 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/east_trench)
 "bip" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "biq" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bir" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bis" = (
@@ -26674,15 +26674,15 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "bit" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "biu" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "biv" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "biw" = (
@@ -69727,6 +69727,7 @@
 	pixel_x = 14;
 	pixel_y = 32
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dtf" = (
@@ -72213,6 +72214,10 @@
 "dzA" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = -2;
+	pixel_y = 11
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/underground/mall)
@@ -76102,15 +76107,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
 	},
-/obj/structure/prop/server_equipment/laptop/closed{
-	pixel_x = -2;
-	pixel_y = 11
-	},
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_full_bl";
 	pixel_x = 7;
 	pixel_y = -2
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/underground/mall)
 "dIM" = (
@@ -105244,6 +105246,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/misc/power_cell,
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "hsz" = (

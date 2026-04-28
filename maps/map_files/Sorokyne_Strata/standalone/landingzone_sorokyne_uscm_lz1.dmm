@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/interior/landing_zones/near_lz1)
 "ab" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/landing_zones/near_lz1)
@@ -66,6 +72,12 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
+"aq" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
 "ar" = (
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost/south_dormitories)
@@ -481,6 +493,18 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
+"bE" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
+"bF" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
 "bG" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -491,10 +515,47 @@
 	},
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/mining_outpost)
+"bH" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
+"bI" = (
+/turf/open/floor/plating,
+/area/template_noop)
+"bJ" = (
+/turf/template_noop,
+/area/strata/interior/landing_zones/lz1)
 "bK" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/landing_zones/near_lz1)
+"bL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
+"bM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
+"bN" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
+"bO" = (
+/obj/structure/machinery/landinglight,
+/turf/open/asphalt/cement,
+/area/strata/interior/landing_zones/lz1)
 "bT" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/plating,
@@ -572,10 +633,10 @@
 /turf/template_noop,
 /area/template_noop)
 "cX" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement3,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "cZ" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
@@ -623,12 +684,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/landing_zones/near_lz1)
-"dB" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/strata/interior/landing_zones/lz1)
 "dL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -729,10 +784,10 @@
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/mining_outpost)
 "eW" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "fh" = (
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -807,12 +862,6 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement/cement3,
-/area/strata/interior/landing_zones/lz1)
-"hj" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
 /area/strata/interior/landing_zones/lz1)
 "hl" = (
 /obj/structure/platform/metal/strata/west,
@@ -1012,15 +1061,9 @@
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost)
-"lT" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/asphalt/cement/cement14,
-/area/strata/interior/landing_zones/lz1)
 "lV" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree,
-/turf/open/asphalt/cement/cement12,
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "lZ" = (
 /obj/item/lightstick/planted,
@@ -1030,10 +1073,6 @@
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/mining_outpost)
-"mo" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
-/turf/open/asphalt/cement/cement12,
-/area/strata/interior/landing_zones/lz1)
 "mr" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/south_dormitories)
@@ -1196,12 +1235,6 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
-"qP" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/strata/interior/landing_zones/lz1)
 "qV" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement/cement12,
@@ -1287,8 +1320,9 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/hive)
 "tl" = (
-/obj/structure/machinery/landinglight/ds1,
-/turf/open/asphalt/cement/cement12,
+/obj/structure/machinery/landinglight,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "tr" = (
 /obj/structure/machinery/light/small,
@@ -1305,10 +1339,10 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/landing_zones/near_lz1)
 "tI" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "tO" = (
 /obj/structure/flora/pottedplant{
@@ -1585,10 +1619,10 @@
 /turf/open/floor/strata/white_cyan1,
 /area/strata/interior/mining_outpost)
 "zD" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement3,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "zO" = (
 /obj/structure/fence/slim/upp,
@@ -1690,12 +1724,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
-"Bl" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/strata/interior/landing_zones/lz1)
 "Bn" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -1726,17 +1754,14 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "Cd" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor/strata/floor3,
+/turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
 "Cy" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/turf/open/asphalt/cement/cement12,
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "CH" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1766,13 +1791,6 @@
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/hive)
-"Dn" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/strata/interior/landing_zones/lz1)
 "Dy" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -1845,8 +1863,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "FN" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
-/turf/open/asphalt/cement/cement12,
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "FP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -1872,13 +1890,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
-"Gr" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
-/turf/open/floor/plating,
-/area/strata/interior/landing_zones/lz1)
 "Gs" = (
 /obj/structure/sign/prop1,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -1969,10 +1980,10 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/landing_zones/near_lz1)
 "IF" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "IK" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -2039,13 +2050,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
-"JZ" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement3,
-/area/strata/interior/landing_zones/lz1)
 "Kl" = (
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
@@ -2412,10 +2416,10 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/landing_zones/near_lz1)
 "To" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement3,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "Tr" = (
 /obj/structure/reagent_dispensers/beerkeg,
@@ -2469,10 +2473,10 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/flight_control)
 "Uv" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "Uz" = (
 /obj/structure/stairs/perspective{
@@ -2568,10 +2572,10 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/flight_control)
 "WH" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement3,
+/turf/open/asphalt/cement,
 /area/strata/interior/landing_zones/lz1)
 "WJ" = (
 /obj/structure/machinery/power/apc/no_power/east,
@@ -2899,8 +2903,8 @@ hl
 hl
 hl
 hl
-lT
 Xk
+Vh
 Vh
 Ow
 QK
@@ -2958,10 +2962,10 @@ IF
 eW
 tI
 Uv
-IF
 xq
 XH
 RF
+ai
 ai
 BR
 BL
@@ -2999,7 +3003,6 @@ RF
 Fk
 Cy
 jZ
-jZ
 yh
 jZ
 jZ
@@ -3020,9 +3023,10 @@ jZ
 yh
 jZ
 jZ
-hj
+aq
 XH
 RF
+ai
 ai
 ai
 ai
@@ -3080,10 +3084,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-qP
+bE
 XH
 RF
+ai
 ai
 bK
 bK
@@ -3141,10 +3145,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-Bl
+bF
 XH
 RF
+ai
 ai
 bK
 bK
@@ -3202,10 +3206,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-dB
+bH
 XH
 RF
+ai
 ai
 ai
 ai
@@ -3263,10 +3267,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-hj
+aq
 XH
 RF
+ai
 ai
 ai
 ai
@@ -3312,10 +3316,8 @@ jZ
 jZ
 jZ
 jZ
-jZ
-cV
-jZ
-jZ
+bJ
+bI
 jZ
 jZ
 jZ
@@ -3325,9 +3327,11 @@ jZ
 jZ
 jZ
 jZ
-qP
+jZ
+bE
 qV
 kh
+ai
 iD
 sP
 sP
@@ -3363,7 +3367,7 @@ yn
 ai
 RF
 Fk
-tl
+bO
 jZ
 jZ
 jZ
@@ -3385,10 +3389,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-Bl
+bF
 XH
 RF
+ai
 Ta
 bK
 bK
@@ -3424,7 +3428,7 @@ vv
 ai
 RF
 Fk
-mo
+lV
 jZ
 jZ
 jZ
@@ -3446,10 +3450,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-Dn
+bH
 XH
 RF
+ai
 Ta
 bK
 bK
@@ -3507,10 +3511,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-hj
+aq
 XH
 RF
+ai
 BR
 Sx
 Sx
@@ -3568,10 +3572,10 @@ jZ
 jZ
 jZ
 jZ
-jZ
-qP
+bE
 XH
 RF
+ai
 ag
 WJ
 af
@@ -3607,8 +3611,7 @@ Ji
 ai
 RF
 Fk
-tl
-Gr
+bO
 jZ
 yh
 jZ
@@ -3630,9 +3633,10 @@ jZ
 yh
 jZ
 jZ
-Bl
+bF
 XH
 RF
+ai
 ag
 ak
 eE
@@ -3669,17 +3673,13 @@ ai
 RF
 Fk
 xq
-cX
-WH
-To
-JZ
 WH
 zD
-To
+bN
 cX
 WH
-zD
-To
+bM
+bL
 cX
 WH
 zD
@@ -3691,9 +3691,13 @@ To
 cX
 WH
 zD
+To
+cX
+WH
 xq
 XH
 RF
+ai
 ae
 eE
 cV
@@ -3741,7 +3745,6 @@ By
 By
 By
 By
-By
 Gg
 By
 By
@@ -3755,6 +3758,7 @@ By
 By
 ld
 RF
+ai
 ae
 eE
 cV
@@ -3814,7 +3818,7 @@ VT
 VT
 VT
 jl
-VT
+aa
 Cd
 XJ
 eE

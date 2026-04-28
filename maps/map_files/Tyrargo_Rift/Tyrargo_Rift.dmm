@@ -31159,11 +31159,6 @@
 /obj/structure/platform/stone/tyrargo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
-"buR" = (
-/obj/structure/platform/metal/hybrisa/metalplatform3/east,
-/obj/structure/platform/metal/hybrisa/metalplatform3/east,
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/landing_zone_2)
 "buT" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
@@ -148326,7 +148321,7 @@ aKC
 aKC
 aKC
 aKC
-buR
+aKC
 aKC
 aSJ
 bud

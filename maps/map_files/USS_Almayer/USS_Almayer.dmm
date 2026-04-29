@@ -199,6 +199,11 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/barricade/handrail/no_vault,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/cargo,
+/area/almayer/shipboard/brig/execution)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -20756,6 +20761,11 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/glasses/sunglasses/blindfold{
+	pixel_x = 4;
+	pixel_y = -3
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution)
 "baT" = (
@@ -22082,6 +22092,7 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/power/apc/almayer/south,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution)
 "bdV" = (
@@ -22129,6 +22140,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution)
 "beb" = (
@@ -30257,6 +30269,7 @@
 /obj/item/restraint/handcuffs,
 /obj/item/restraint/handcuffs,
 /obj/item/restraint/handcuffs,
+/obj/item/device/flash,
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/processing)
 "bvI" = (
@@ -34928,6 +34941,7 @@
 /area/almayer/hallways/hangar)
 "bGM" = (
 /obj/structure/barricade/handrail/no_vault,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/brig/execution)
 "bGN" = (
@@ -40982,6 +40996,7 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/brig/execution)
 "bWC" = (
@@ -41030,9 +41045,11 @@
 	layer = 3.33;
 	pixel_x = 2
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/brig/execution)
 "bWI" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/redcorner/east,
 /area/almayer/shipboard/brig/execution)
 "bWJ" = (
@@ -41223,6 +41240,11 @@
 /area/almayer/shipboard/brig)
 "bXn" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17;
+	can_block_movement = 0
+	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/brig)
 "bXo" = (
@@ -41237,6 +41259,9 @@
 /area/almayer/shipboard/brig)
 "bXq" = (
 /obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig)
 "bXr" = (
@@ -43884,6 +43909,10 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = -18
+	},
+/obj/item/storage/box/ids{
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig)
@@ -51178,6 +51207,10 @@
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/firealarm{
 	pixel_y = -28
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = -5;
+	pixel_x = 31
 	},
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/shipboard/brig/perma)
@@ -165870,7 +165903,7 @@ bWI
 jNT
 bWv
 bWj
-bGN
+aaD
 bdU
 mtl
 bGS

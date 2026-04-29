@@ -199,10 +199,6 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
-"aaD" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/upper/s_bow)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -44428,6 +44424,10 @@
 	name = "\improper Brig Lockdown Shutter"
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/upper/s_bow)
+"ceu" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
 "ceC" = (
 /obj/structure/prop/almayer/ship_memorial,
@@ -196553,7 +196553,7 @@ bdH
 aad
 aag
 uDg
-aaD
+ceu
 xkc
 cdL
 cen

@@ -359,7 +359,7 @@
 	assignment = JOB_USCM_OBSV
 	job_title = JOB_USCM_OBSV
 	role_comm_title = "VO"
-	minimap_background = "background_medical_WO"
+	minimap_background = "background_officer_visiting"
 
 /datum/equipment_preset/uscm_co/visitor/ltcol
 	name = "USCM Observer (Lt. Col.) (VO)"

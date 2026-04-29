@@ -339,6 +339,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"abf" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river/desert/shallow_edge/east,
+/area/tyrargo/outdoors/outskirts/river)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
 	pixel_y = -33;
@@ -550,6 +554,10 @@
 	},
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/indoors/engineering/ground)
+"abH" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/shallow_corner/east,
+/area/tyrargo/outdoors/outskirts/river)
 "abI" = (
 /obj/structure/machinery/computer/telecomms/server{
 	pixel_x = -3;
@@ -631,6 +639,12 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/landing_zone_2)
+"abU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/tyrargo/outdoors/outskirts/river)
 "abV" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
@@ -754,6 +768,9 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"acr" = (
+/turf/open/predship/hunter_catwalk_alt,
+/area/tyrargo/outdoors/outskirts/river)
 "acs" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "29"
@@ -763,6 +780,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/security/ground)
+"acu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/tyrargo/outdoors/outskirts/river)
 "acv" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "34"
@@ -787,6 +811,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"acz" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/tyrargo/outdoors/outskirts/river)
 "acA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/prison,
@@ -1005,6 +1033,14 @@
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
+"adf" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/tyrargo/outdoors/outskirts/river)
+"adg" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/shallow_corner/north,
+/area/tyrargo/outdoors/outskirts/river)
 "adh" = (
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
@@ -1071,6 +1107,10 @@
 "adr" = (
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
+"ads" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/gm/river/desert/shallow_edge/northwest,
+/area/tyrargo/outdoors/outskirts/river)
 "adt" = (
 /obj/structure/platform/stone/tyrargo,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1246,6 +1286,10 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
+"adS" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/tyrargo/outdoors/outskirts/river)
 "adT" = (
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/corsat/blue/west,
@@ -1686,6 +1730,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"afv" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/outdoors/outskirts/river)
 "afw" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -54623,6 +54673,7 @@
 	pixel_y = -1;
 	density = 0
 	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/gm/river/desert/shallow_edge,
 /area/tyrargo/outdoors/outskirts/river)
 "cKd" = (
@@ -54631,16 +54682,20 @@
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
-"cKe" = (
-/turf/open/gm/river/desert/shallow_corner,
-/area/tyrargo/outdoors/outskirts/river)
 "cKf" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "cKg" = (
-/turf/open/gm/river/desert/shallow_edge/northeast,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
 /area/tyrargo/outdoors/outskirts/river)
 "cKh" = (
 /obj/structure/prop/rock{
@@ -119242,16 +119297,16 @@ bsw
 bsw
 bsw
 bsw
-bsw
 bsO
-cJY
-cKb
-ceG
-ceG
-ceG
-ceG
-cJR
-cJT
+bsO
+ads
+adg
+acz
+acz
+acz
+acz
+abH
+abf
 cJt
 bsw
 bsw
@@ -119426,16 +119481,16 @@ bsw
 bsw
 bsw
 bsw
-bsw
-cJY
-cKb
-ceG
-ceG
-ceG
-ceG
-ceG
-cIX
-bsw
+bsO
+abU
+abU
+abU
+abU
+abU
+abU
+abU
+abU
+bsO
 bsw
 bsw
 bsw
@@ -119610,16 +119665,16 @@ bsw
 bsw
 bsw
 bsw
-bsw
-cJZ
-ceG
-cKd
-ceG
-ceG
-ceG
-cJR
-cJt
-bsw
+bsO
+acr
+acr
+acr
+acr
+acr
+acr
+acr
+acr
+bsO
 bsw
 bsw
 bsw
@@ -119794,16 +119849,16 @@ bsw
 bsw
 bsw
 bsw
-cJY
-cKb
-ceG
-ceG
-ceG
-ceG
-cJR
-cJt
-bsw
-bsw
+afv
+acr
+acr
+acr
+acr
+acr
+acr
+acr
+acr
+bsO
 bsw
 bsw
 bsw
@@ -119979,15 +120034,15 @@ bsw
 bsw
 bsw
 cKg
-cJT
-cKe
-ceG
-ceG
-ceG
-cIX
-bsw
-bsw
-bsw
+acu
+acu
+acu
+acu
+acu
+acu
+acu
+acu
+bsO
 bsw
 bsw
 bsw
@@ -120164,14 +120219,14 @@ bsw
 bsw
 bsO
 bsO
-cJZ
-ceG
-ceG
-ceG
+adS
+adf
+adf
+adf
 cKc
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw

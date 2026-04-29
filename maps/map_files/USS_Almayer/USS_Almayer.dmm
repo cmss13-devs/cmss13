@@ -52955,7 +52955,12 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "gFu" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/visitation)
 "gFP" = (
@@ -54664,23 +54669,6 @@
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
-"hnE" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "visitationshutter";
-	name = "\improper Visitation Shutters";
-	closed_layer = 3.4;
-	layer = 3.4
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/visitation)
 "hoc" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
@@ -69554,6 +69542,9 @@
 	id = "visitationaccess";
 	req_access = list(3)
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/visitation)
 "nri" = (
@@ -72391,6 +72382,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/visitation)
 "otq" = (
@@ -72924,9 +72916,6 @@
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_x = -16
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/visitation)
@@ -76285,7 +76274,7 @@
 /area/almayer/living/briefing)
 "qaX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/visitation)
@@ -82218,6 +82207,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "soB" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/visitation)
 "soP" = (
@@ -86211,9 +86201,6 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
 /obj/structure/machinery/shower{
 	dir = 1
 	},
@@ -86522,10 +86509,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
-"ucV" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/brig/visitation)
 "udf" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 15;
@@ -197106,9 +197089,9 @@ hae
 oDy
 vNp
 oEg
+mKk
+vNp
 gFu
-ucV
-bWQ
 lzO
 bWQ
 dlE
@@ -197316,7 +197299,7 @@ uSZ
 vNp
 kuJ
 rWn
-hnE
+kuJ
 fgt
 vNp
 vNp

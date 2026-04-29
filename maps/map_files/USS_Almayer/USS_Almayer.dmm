@@ -69552,7 +69552,7 @@
 	pixel_y = -8;
 	name = "Visitation Access";
 	id = "visitationaccess";
-	req_access = List(3)
+	req_access = list(3)
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/visitation)

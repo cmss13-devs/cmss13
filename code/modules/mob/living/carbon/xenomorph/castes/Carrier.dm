@@ -36,6 +36,7 @@
 
 	aura_strength = 2
 	hugger_throw_delay = 5 DECISECONDS
+
 	egg_cooldown = 25 SECONDS
 
 	minimum_evolve_time = 5 MINUTES
@@ -99,6 +100,8 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 	var/hugger_retrieve_timer = 5 DECISECONDS
+	var/launch_speed = 1.8 SECONDS //how fast you throw huggers on harm intent
+	var/hugger_launch_cooldown = 5 SECONDS //the cooldown when you throw huggers on harm intent
 
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
@@ -309,7 +312,19 @@
 		return
 
 	if(world.time >= hugger_throw_cooldown)
-		hugger_throw_cooldown = world.time + caste.hugger_throw_delay
+		if(a_intent == INTENT_HARM)
+			if(!do_after(src, launch_speed, INTERRUPT_ALL, BUSY_ICON_HOSTILE, child, INTERRUPT_ALL))
+				to_chat(src, SPAN_WARNING("You stop launching \the [child]!"))
+				hugger_throw_cooldown = world.time + hugger_launch_cooldown
+				return
+			else
+				child.launched = TRUE
+
+		if(child.launched == TRUE)
+			hugger_throw_cooldown = world.time + hugger_launch_cooldown
+		else
+			hugger_throw_cooldown = world.time + caste.hugger_throw_delay
+
 		update_action_buttons()
 		drop_inv_item_on_ground(child, force = TRUE)
 		child.throw_atom(object, CARRIER_HUGGER_THROW_RANGE, caste.throwspeed)

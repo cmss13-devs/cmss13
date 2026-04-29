@@ -27,6 +27,7 @@
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = FALSE
 
+	var/launched = FALSE //Was the hugger thrown by a carrier on harm intent?
 	var/attached = FALSE
 	var/leaping = FALSE //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -241,7 +242,9 @@
 		return
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/victim = target
-		if(ishuman_strict(victim) && !istype(victim.head, /obj/item/clothing/head/helmet))
+		if(ishuman_strict(victim) && launched)
+			target.apply_effect(2, WEAKEN)
+			sleep(25)
 			stat = CONSCIOUS
 			leaping = TRUE
 

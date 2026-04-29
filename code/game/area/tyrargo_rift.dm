@@ -48,7 +48,7 @@
 	name = "Firebase Charlie - Landing Zone One"
 	icon_state = "yellow"
 	is_landing_zone = TRUE
-	minimap_color = MINIMAP_AREA_LZ
+	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 	linked_lz = DROPSHIP_LZ1
 	requires_power = FALSE
 	ambience_exterior = AMBIENCE_TYRARGO_CITY

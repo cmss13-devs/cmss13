@@ -339,6 +339,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"abf" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
 	pixel_y = -33;
@@ -550,6 +557,11 @@
 	},
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/indoors/engineering/ground)
+"abH" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
 "abI" = (
 /obj/structure/machinery/computer/telecomms/server{
 	pixel_x = -3;
@@ -631,6 +643,10 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/landing_zone_2)
+"abU" = (
+/obj/structure/blocker,
+/turf/closed/wall/strata_ice/forest/rock,
+/area/tyrargo/oob)
 "abV" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
@@ -754,6 +770,13 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"acr" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 10
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
 "acs" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "29"
@@ -763,6 +786,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/security/ground)
+"acu" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
 "acv" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "34"
@@ -88688,6 +88716,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdm" = (
@@ -88745,6 +88774,7 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "fdt" = (
@@ -88791,6 +88821,7 @@
 /obj/structure/sign/minefield/alt{
 	pixel_y = 5
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdy" = (
@@ -88804,6 +88835,7 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "fdA" = (
@@ -88833,6 +88865,7 @@
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdD" = (
@@ -88918,6 +88951,7 @@
 /obj/structure/sign/minefield/alt{
 	pixel_y = 5
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdK" = (
@@ -88952,6 +88986,7 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "fdO" = (
@@ -89017,6 +89052,7 @@
 /obj/structure/sign/minefield/alt{
 	pixel_y = 5
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdS" = (
@@ -89107,6 +89143,7 @@
 /area/tyrargo/oob/outdoors)
 "fec" = (
 /obj/item/explosive/mine/active/no_iff,
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob/outdoors)
 "fed" = (
@@ -89116,6 +89153,7 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "fee" = (
@@ -89129,6 +89167,7 @@
 /area/tyrargo/oob/outdoors)
 "feg" = (
 /obj/item/explosive/mine/active/no_iff,
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "feh" = (
@@ -89147,6 +89186,7 @@
 	pixel_x = -9;
 	pixel_y = 12
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fej" = (
@@ -100354,12 +100394,12 @@ eWj
 bFo
 fdz
 fdx
-bHy
-bHy
-bHE
+bum
+bum
+abH
 fds
-bFo
-bFo
+eWo
+eWo
 bHq
 fdi
 bFo
@@ -100527,23 +100567,23 @@ bFo
 bFo
 bFo
 fdP
-bFo
-bFo
+eWo
+eWo
 fdJ
-fdj
-fdj
-fdj
-eWg
-bFo
+abf
+abf
+abf
+acr
+eWo
 fdC
-bHy
+bum
 bHy
 bHy
 fdu
 fdt
 bHy
 eWg
-bFo
+eWo
 fdm
 bFo
 bFo
@@ -100711,7 +100751,7 @@ fdj
 fdj
 eWg
 bFo
-bFo
+eWo
 eux
 bHy
 fdI
@@ -100727,7 +100767,7 @@ bsw
 bsw
 bsw
 fdp
-fdj
+abf
 fdn
 bFo
 bFo
@@ -100888,13 +100928,13 @@ bFo
 bFo
 bFo
 fdV
-fdj
-fdj
-bHy
-bHy
+abf
+abf
+bum
+bum
 fdR
-bHy
-fdj
+bum
+abf
 fdN
 bHy
 bsw
@@ -100911,11 +100951,11 @@ bsw
 bsw
 bsw
 fdq
-bHy
-bHy
-fdj
+bum
+bum
+abf
 fdl
-fdj
+abf
 eqU
 bsw
 bsw
@@ -101065,14 +101105,14 @@ bFo
 fef
 bFo
 fdV
-fdj
-fdj
-fdj
-fdj
-fdj
-fdj
-bHy
-bHy
+abf
+abf
+abf
+abf
+abf
+abf
+bum
+bum
 eWF
 fdk
 eWF
@@ -101248,7 +101288,7 @@ bFn
 bFo
 bFo
 bFo
-eWi
+acu
 fdR
 eWF
 eWF
@@ -101432,7 +101472,7 @@ bHy
 bFo
 fdP
 bFo
-eWi
+acu
 eWF
 fdk
 bsw
@@ -101616,7 +101656,7 @@ bHy
 bFo
 eWj
 fef
-eWi
+acu
 eWF
 bsw
 bsw
@@ -101800,7 +101840,7 @@ bFn
 bFo
 eWj
 bFo
-eWi
+acu
 eWF
 bsw
 bsw
@@ -102168,7 +102208,7 @@ bFo
 bFo
 fef
 fek
-bHy
+bum
 eWF
 bsw
 bsw
@@ -102352,7 +102392,7 @@ bIV
 bFo
 bFo
 eWi
-bHy
+bum
 fea
 bsw
 bsw
@@ -102536,7 +102576,7 @@ bFo
 bFo
 eWj
 eHC
-bHy
+bum
 fea
 bsw
 bsw
@@ -102720,7 +102760,7 @@ bFn
 fdP
 eWj
 fdX
-eWi
+acu
 fea
 bsw
 bsw
@@ -102904,7 +102944,7 @@ bFn
 eWj
 feq
 bFo
-eWi
+acu
 eWF
 fdY
 bsw
@@ -103088,8 +103128,8 @@ bFn
 bFo
 bHq
 bFo
-eWi
-bHy
+acu
+bum
 eWF
 bsw
 bsw
@@ -103273,7 +103313,7 @@ bFo
 bFo
 fdH
 eHC
-bHy
+bum
 fdu
 bsw
 bsw
@@ -103457,7 +103497,7 @@ bFn
 bFo
 bFo
 eux
-bHy
+bum
 fdZ
 bsw
 bsw
@@ -103641,7 +103681,7 @@ bFo
 bFo
 bFo
 fee
-eWF
+eXM
 fea
 bsw
 bsw
@@ -104009,7 +104049,7 @@ bFo
 bFo
 fef
 eux
-bHy
+bum
 fea
 bsw
 bsw
@@ -104193,7 +104233,7 @@ bFo
 fer
 bFo
 eWi
-eWF
+eXM
 fea
 bsw
 bsw
@@ -104561,7 +104601,7 @@ feo
 eWh
 bFo
 fdP
-bHy
+bum
 eWF
 bsw
 bsw
@@ -104745,7 +104785,7 @@ eWi
 eWh
 bFo
 bFo
-eWi
+acu
 feb
 bsw
 bsw
@@ -104929,7 +104969,7 @@ feu
 eWh
 bFo
 fef
-eWi
+acu
 fea
 bsw
 bsw
@@ -105113,7 +105153,7 @@ fev
 fet
 bFo
 fdX
-eWi
+acu
 fea
 bsw
 bsw
@@ -105297,7 +105337,7 @@ bFo
 bFo
 fel
 bFo
-eWi
+acu
 fea
 bsw
 bsw
@@ -105481,7 +105521,7 @@ eWj
 bFo
 bFo
 bFo
-eWi
+acu
 fea
 bsw
 bsw
@@ -105665,7 +105705,7 @@ eWj
 bHq
 fef
 eux
-bHy
+bum
 fea
 bsw
 bsw
@@ -105848,8 +105888,8 @@ fey
 bFo
 bFo
 eux
-bHy
-bHy
+bum
+bum
 fea
 bsw
 bsw
@@ -106216,7 +106256,7 @@ bFo
 fef
 bFo
 fem
-bHy
+bum
 eWF
 bsw
 bsw
@@ -106768,7 +106808,7 @@ bFo
 bFo
 bFo
 fen
-bHy
+bum
 eWF
 bsw
 bsw
@@ -106952,7 +106992,7 @@ bHq
 bFo
 fef
 fdK
-eWi
+acu
 eWF
 bsw
 bsw
@@ -107136,7 +107176,7 @@ bFo
 bFo
 bFo
 feo
-bHy
+bum
 eWF
 bsw
 bsw
@@ -107320,7 +107360,7 @@ bHq
 bFo
 fel
 eHC
-bHy
+bum
 fea
 bsw
 bsw
@@ -107504,7 +107544,7 @@ bFo
 bFo
 bFo
 bHq
-eWF
+eXM
 fea
 bsw
 bsw
@@ -107712,7 +107752,7 @@ bsw
 bsw
 bsw
 bsw
-bsw
+abU
 bsw
 bsw
 bsw
@@ -107872,7 +107912,7 @@ bFn
 fdM
 eWj
 bFo
-bHy
+bum
 fea
 bsw
 bsw
@@ -108056,7 +108096,7 @@ bGL
 bFn
 bFo
 fdK
-eWi
+acu
 fea
 bsw
 bsw
@@ -151852,7 +151892,7 @@ faz
 faz
 qNt
 bSk
-bRx
+bRd
 bRA
 nSY
 bJN

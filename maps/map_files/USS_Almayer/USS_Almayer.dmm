@@ -199,6 +199,10 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/upper/s_bow)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -28127,6 +28131,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/almayer/silvercorner/south,
 /area/almayer/shipboard/brig/visitation_waiting)
 "brb" = (
@@ -43611,6 +43616,7 @@
 	pixel_y = 30
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
 "ccD" = (
@@ -61305,6 +61311,7 @@
 /obj/effect/landmark/late_join/warden,
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "jgW" = (
@@ -89845,8 +89852,8 @@
 /turf/open/floor/carpet,
 /area/almayer/living/pilotbunks)
 "vkR" = (
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/bed/sofa/south/grey,
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "vlj" = (
@@ -196546,7 +196553,7 @@ bdH
 aad
 aag
 uDg
-gkr
+aaD
 xkc
 cdL
 cen

@@ -186,13 +186,15 @@
 			if(JOB_CMO, JOB_WO_CMO)
 				marine_rk = "cmo"
 			if(JOB_DOCTOR, JOB_WO_DOCTOR)
-				marine_rk = "doctor"
+				var/obj/item/card/id/id_card = current_human.get_idcard()
+				if(id_card.assignment == JOB_SURGEON)
+					marine_rk = "surgeon"
+				else if(id_card.assignment == JOB_PHARMACIST)
+					marine_rk = "pharmacist"
+				else
+					marine_rk = "doctor"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
-			if(JOB_PHARMACIST)
-				marine_rk = "pharmacist"
-			if(JOB_SURGEON)
-				marine_rk = "surgeon"
 			if(JOB_RESEARCHER, JOB_WO_RESEARCHER)
 				marine_rk = "researcher"
 			if(JOB_NURSE)

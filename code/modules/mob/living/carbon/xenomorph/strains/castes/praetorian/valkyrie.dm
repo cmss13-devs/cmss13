@@ -36,7 +36,7 @@
 	var/fury_max = 200
 	var/fury_per_attack = 15
 	var/fury_per_life = 5
-	var/heal_range =  5
+	var/heal_range =  3
 	var/raging = FALSE
 
 	// State

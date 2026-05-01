@@ -802,8 +802,8 @@
 	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
-	name = "researcher clothes"
-	desc = "A simple set of civilian clothes worn by researchers."
+	name = "blue sweater and light tan pants"
+	desc = "Believe it or not, this was the favorite clothing combination of academic scholars across the stars for a long time, thankfully they have been growing a better... aesthetical sense in recent years, decreasing it's popularity."
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"

@@ -220,6 +220,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/medical/containment)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -2704,6 +2710,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
+"agr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/medical/containment)
 "ags" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -5318,9 +5331,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "anz" = (
-/obj/structure/machinery/photocopier{
-	layer = 2.9
-	},
+/obj/structure/machinery/computer/med_data,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
 "anA" = (
@@ -8753,7 +8764,23 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/intel)
 "awQ" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/clipboard,
+/obj/item/folder/black,
+/obj/item/folder/blue{
+	pixel_y = 5
+	},
+/obj/item/folder/black,
+/obj/item/folder/white,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
 "awR" = (
@@ -12967,7 +12994,9 @@
 	pixel_y = 0;
 	pixel_x = 26
 	},
-/obj/structure/machinery/photocopier/wyphotocopier,
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_y = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "aID" = (
@@ -16482,22 +16511,19 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/closet/secure_closet/professor_dummy{
-	pixel_y = 32
+/obj/structure/sign/catclock{
+	pixel_y = 28;
+	pixel_x = 7
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
 "aSo" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Bathroom";
-	dir = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/obj/structure/machinery/door/airlock/almayer/white{
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
@@ -16897,7 +16923,7 @@
 /area/almayer/middeck/engineer)
 "aTt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Containment Analysis Airlock";
+	name = "\improper Containment Analysis";
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -17658,7 +17684,7 @@
 "aVi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	dir = 8;
-	name = "\improper Decontamination Lounge Airlock"
+	name = "\improper Decontamination Lounge"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
@@ -22194,7 +22220,7 @@
 "bfN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	dir = 8;
-	name = "\improper Decontamination Lounge Airlock"
+	name = "\improper Decontamination Lounge"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
@@ -22299,6 +22325,9 @@
 	dir = 2;
 	req_one_access = list(28,206,207);
 	id_tag = "ResearchStairs_A"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
@@ -39495,7 +39524,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
 "bUD" = (
 /obj/structure/closet/emcloset,
@@ -40119,6 +40148,9 @@
 	req_one_access = list(28,206,207);
 	queen_pryable = 0
 	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)
 "bWB" = (
@@ -40228,6 +40260,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)
@@ -40380,6 +40415,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
 	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)
 "bWZ" = (
@@ -40494,17 +40532,23 @@
 	icon_state = "test_warning_red"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
-	name = "\improper Umbilical Containment Airlock";
+	name = "\improper Umbilical Containment";
 	req_one_access = list(28,206,207);
 	id = null;
 	id_tag = "Containment_Cell_Umbilical_B"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 2
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
 "bXk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 2
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
@@ -40535,12 +40579,13 @@
 	},
 /area/almayer/medical/containment/cell)
 "bXn" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Tank Storage Airlock";
-	req_one_access = list(28,206,207);
-	dir = 2
-	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/door/airlock/almayer/white{
+	name = "\improper Tank Storage";
+	dir = 2;
+	req_one_access = list(28,206,207);
+	req_access = list()
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
 "bXo" = (
@@ -40602,7 +40647,7 @@
 /area/almayer/medical/containment/cell)
 "bXt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Containment Analysis Airlock";
+	name = "\improper Containment Analysis";
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -42177,12 +42222,13 @@
 	icon_state = "test_warning_red"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
-	name = "\improper Umbilical Containment Airlock";
+	name = "\improper Umbilical Containment";
 	req_one_access = list(28,206,207);
 	id = null;
 	id_tag = "Containment_Cell_Umbilical_A"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
 "bZZ" = (
@@ -42357,6 +42403,9 @@
 	dir = 2;
 	req_one_access = list(28,206,207);
 	queen_pryable = 0
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)
@@ -43561,20 +43610,21 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "ccS" = (
-/obj/structure/machinery/computer/research{
-	pixel_y = 3;
-	dir = 8;
-	pixel_x = -3
-	},
 /obj/item/ashtray/plastic{
 	pixel_x = -7;
-	pixel_y = 18
+	pixel_y = 14
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 7;
 	pixel_y = -26
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/research{
+	pixel_y = 3;
+	dir = 8;
+	pixel_x = -3;
+	layer = 3.02
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "ccT" = (
@@ -43586,27 +43636,19 @@
 	pixel_y = 1;
 	pixel_x = -4
 	},
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = 22
-	},
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = 22
-	},
-/obj/item/cell/high{
-	pixel_x = 5;
-	pixel_y = 22
-	},
-/obj/item/cell/high{
-	pixel_x = 5;
-	pixel_y = 22
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/cell/high{
+	pixel_x = -16;
+	pixel_y = 14
+	},
+/obj/item/cell/high{
+	pixel_x = -16;
+	pixel_y = 14
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "ccU" = (
@@ -43636,6 +43678,10 @@
 	amount = 20;
 	pixel_x = 2;
 	pixel_y = 3
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 9;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
@@ -43824,16 +43870,17 @@
 "cds" = (
 /obj/structure/machinery/centrifuge{
 	pixel_y = 8;
-	pixel_x = -1;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -3;
+	pixel_y = -5;
 	layer = 3.01
 	},
 /obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 13;
-	pixel_y = -10
+	pixel_x = 6;
+	pixel_y = -10;
+	layer = 3.01
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
@@ -43845,6 +43892,19 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/biohazard_lockdown{
+	pixel_y = -11;
+	pixel_x = 4
+	},
+/obj/item/cell/high{
+	pixel_x = -12;
+	pixel_y = -9
+	},
+/obj/item/cell/high{
+	pixel_x = -12;
+	pixel_y = -9;
+	layer = 3.01
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "cdu" = (
@@ -45380,10 +45440,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "cgV" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Bathroom"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
@@ -45392,6 +45448,10 @@
 	icon_state = "NE-out";
 	pixel_y = 1;
 	pixel_x = 1
+	},
+/obj/structure/machinery/door/airlock/almayer/white{
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/medical_science)
@@ -50539,7 +50599,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "\improper Field Medical Equipment Storage";
 	req_one_access = null;
-	req_one_access_txt = "1;5;39"
+	req_one_access_txt = "5;19;39"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -51039,7 +51099,7 @@
 	icon_state = "pipe-j2"
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
 "egt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -58375,8 +58435,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/p_bow)
 "hng" = (
-/obj/structure/sign/catclock{
-	pixel_y = 28
+/obj/structure/closet/secure_closet/professor_dummy{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
@@ -70134,15 +70194,6 @@
 "mzg" = (
 /turf/open/floor/almayer/emerald,
 /area/almayer/squads/charlie)
-"mzq" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 2;
-	pixel_x = -12
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/sterile_green_side,
-/area/almayer/medical/upper_medical)
 "mzs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -71113,8 +71164,7 @@
 "mTd" = (
 /obj/structure/machinery/centrifuge{
 	pixel_y = 8;
-	pixel_x = -1;
-	layer = 3.1
+	pixel_x = -1
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
@@ -93865,26 +93915,13 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "wiW" = (
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/obj/item/clipboard,
-/obj/item/folder/white,
-/obj/item/folder/black,
-/obj/item/folder/black,
-/obj/item/folder/blue{
-	pixel_y = 5;
-	pixel_x = 6
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/machinery/photocopier{
+	layer = 2.9;
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/upper_medical)
@@ -177101,7 +177138,7 @@ bWu
 caW
 bdP
 cav
-bXk
+agr
 bZE
 bZu
 rzN
@@ -177204,7 +177241,7 @@ bWu
 caX
 bWN
 caw
-bXk
+agr
 aVN
 byp
 bZk
@@ -177929,8 +177966,8 @@ bWu
 bZM
 cXC
 bYj
-bdW
-bdW
+aaE
+aaE
 bga
 bYj
 avH
@@ -203578,7 +203615,7 @@ kcp
 aCY
 aCY
 qmK
-oIp
+lSN
 pTS
 awF
 hRk
@@ -203681,7 +203718,7 @@ aDM
 ana
 aDc
 hOd
-oIp
+lSN
 qUK
 awF
 gyh
@@ -207178,7 +207215,7 @@ ajl
 anz
 vgx
 hme
-mzq
+iUo
 vOy
 cfP
 cfz
@@ -207400,7 +207437,7 @@ ccv
 ccn
 asn
 lXl
-poD
+yiu
 bUv
 bUk
 pBG
@@ -207481,7 +207518,7 @@ aef
 kqN
 agA
 lXl
-qdJ
+lGh
 qmW
 ajl
 xyt
@@ -207687,7 +207724,7 @@ aef
 afs
 agA
 lXl
-yiu
+poD
 bBH
 ajl
 ajl
@@ -207709,7 +207746,7 @@ dVu
 oDR
 cbH
 aiO
-yiu
+poD
 tru
 pBG
 pBG
@@ -207996,7 +208033,7 @@ aef
 pHG
 abE
 tkF
-poD
+yiu
 bBH
 ajl
 aID
@@ -208018,7 +208055,7 @@ aoM
 vgB
 vOy
 rnM
-poD
+yiu
 qmW
 pBG
 ojQ
@@ -208305,7 +208342,7 @@ aef
 nIS
 eWF
 aiO
-poD
+yiu
 bBH
 ajl
 aQZ
@@ -208327,7 +208364,7 @@ ccz
 vOy
 vOy
 tkF
-poD
+yiu
 bBH
 pBG
 bUg
@@ -208636,7 +208673,7 @@ mwR
 qXS
 ccc
 aiO
-yiu
+poD
 bBH
 pBG
 ubI
@@ -208739,7 +208776,7 @@ ccB
 cco
 oYZ
 cbN
-yiu
+poD
 bUA
 pBG
 pBG
@@ -209543,7 +209580,7 @@ tob
 tob
 cGd
 rnM
-lGh
+qdJ
 bBH
 vOy
 chw
@@ -209561,7 +209598,7 @@ cdv
 ccV
 vOy
 lXl
-yiu
+poD
 bUG
 bUD
 mRU
@@ -209756,11 +209793,11 @@ cca
 cca
 liY
 apU
-cca
-cca
-cca
-cca
-cca
+vOy
+vOy
+vOy
+vOy
+vOy
 ean
 cdQ
 cdx
@@ -209955,7 +209992,7 @@ agK
 agu
 eup
 aiO
-qdJ
+lGh
 bBH
 vOy
 chy
@@ -209973,7 +210010,7 @@ sNz
 ccZ
 vOy
 lXl
-poD
+yiu
 bBH
 aQx
 bcg
@@ -210058,7 +210095,7 @@ aGg
 aFR
 aej
 dfA
-qdJ
+lGh
 bBH
 vOy
 chz
@@ -210076,7 +210113,7 @@ tfH
 cca
 vOy
 piQ
-poD
+yiu
 bBH
 nIN
 viv

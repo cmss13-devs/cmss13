@@ -340,14 +340,16 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
 			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
@@ -443,14 +445,16 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
 			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)

@@ -387,7 +387,7 @@
 /turf/closed/wall/mineral
 	name = "mineral wall"
 	desc = "This shouldn't exist."
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/mineral_wall.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
 	var/mineral
@@ -433,24 +433,54 @@
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone."
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	icon_state = "ancient_stone"
 	mineral = "runed sandstone"
-	color = "#b29082"
+	color = null
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
+	walltype = WALL_ANCIENT_BASE
+	var/decoration_type
+	blend_turfs = list(/turf/closed/wall)
+	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
+	noblend_turfs = list(/turf/closed/wall/almayer/research/containment)
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
-/turf/closed/wall/mineral/sandstone/runed/decor
-	name = "runed sandstone temple wall"
-	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
-	icon = 'icons/turf/walls/runedstone.dmi'
-	icon_state = "runedstone"
-	walltype = "runedstone"
+/turf/closed/wall/mineral/sandstone/runed/LateInitialize()
+	. = ..()
+	if(prob(20))
+		decoration_type = rand(0,3)
+	update_icon()
+
+/turf/closed/wall/mineral/sandstone/runed/update_icon()
+	if(decoration_type == null)
+		return ..()
+	if(neighbors_bitfield == (EAST|WEST))
+		special_icon = TRUE
+		icon_state = "ancient_stone_deco_wall[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
+
+/turf/closed/wall/mineral/sandstone/runed/decor
+	name = "decorated sandstone temple wall"
+	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco.dmi'
+
+/turf/closed/wall/mineral/sandstone/runed/decor_2
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+
+/turf/closed/wall/mineral/sandstone/runed/decor_3
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+
+
+
 
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
@@ -519,7 +549,24 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
-/turf/closed/wall/cult/hunting_grounds
+/turf/closed/wall/cult/dark_temple
+	name = "dark temple wall"
+	desc = "Dark temple walls, the bricks look ancient - made of a rare type of stone."
+	icon = 'icons/turf/walls/hunter/runedstone.dmi'
+	icon_state = "runedstone"
+	walltype = WALL_RUNEDSTONE
+	color = "#524e49"
+	blend_turfs = list(/turf/closed/wall)
+	noblend_turfs = list(/turf/closed/wall/almayer/research/containment)
+
+/turf/closed/wall/cult/dark_temple/attack_alien(mob/living/carbon/xenomorph/user)
+	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	return
+
+/turf/closed/wall/cult/dark_temple/can_be_dissolved()
+	return 2
+
+/turf/closed/wall/cult/dark_temple/hunting_grounds
 	name = "wall"
 	turf_flags = TURF_HULL
 
@@ -583,6 +630,7 @@
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_BLACK
+	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/mineral/bone_resin)
 
 /turf/closed/wall/rock/Initialize(mapload)
 	. = ..()
@@ -865,7 +913,9 @@
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
+	var/turf/closed/wall/resin/above/upper_wall
 	var/boosted_regen = FALSE
+	var/should_grow_up = TRUE
 	COOLDOWN_DECLARE(automatic_heal)
 
 /turf/closed/wall/resin/Initialize(mapload)
@@ -873,6 +923,8 @@
 
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
+
+	set_hive_data(src, hivenumber)
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
@@ -884,6 +936,10 @@
 			if(area.linked_lz)
 				AddComponent(/datum/component/resin_cleanup)
 			area.current_resin_count++
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && istype(above,/turf/open_space) && should_grow_up)
+		above.place_on_top(/turf/closed/wall/resin/above)
+		upper_wall = above
 
 /turf/closed/wall/resin/Destroy(force)
 	. = ..()
@@ -891,8 +947,13 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
-
-
+	if(upper_wall)
+		upper_wall.dismantle_wall()
+		upper_wall = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 /turf/closed/wall/resin/process()
 	. = ..()
 
@@ -933,6 +994,67 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+/turf/closed/wall/resin/above
+	flags_atom = NO_ZFALL
+	name = "resin high wall"
+	var/turf/closed/wall/resin/wall_below
+	var/obj/structure/mineral_door/resin/door_below
+	should_grow_up = FALSE
+
+/turf/closed/wall/resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset)
+	. = ..()
+	if(wall_below)
+		wall_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
+	if(door_below)
+		door_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
+
+/turf/closed/wall/resin/above/Initialize(mapload)
+	. = ..()
+	var/turf/below = SSmapping.get_turf_below(src)
+	if(!below)
+		dismantle_wall()
+		return
+
+	if(istype(below, /turf/closed/wall/resin))
+		wall_below = below
+		wall_below.upper_wall = src
+		hivenumber = wall_below.hivenumber
+		set_hive_data(src, hivenumber)
+		return
+
+	for(var/obj in below.contents)
+		if(istype(obj, /obj/structure/mineral_door/resin))
+			door_below = obj
+			door_below.upper_wall = src
+			hivenumber = door_below.hivenumber
+			set_hive_data(src, hivenumber)
+			return
+
+	dismantle_wall()
+
+
+/turf/closed/wall/resin/above/Destroy(force)
+	. = ..()
+	if(wall_below)
+		wall_below.upper_wall = null //we should not get here naturaly
+		wall_below = null
+	if(door_below)
+		door_below.upper_wall = null
+		door_below = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && istransparentturf(above))
+		above.update_vis_contents()
+
+/turf/closed/wall/resin/above/take_damage(dam, mob/M)
+	if(wall_below)
+		wall_below.take_damage(dam, M)
+		return
+	if(door_below)
+		door_below.take_damage(dam,M)
+		return
+	dismantle_wall() //something went wrong and we are floating
+
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
@@ -1511,15 +1633,27 @@
 	return FALSE
 
 /turf/closed/wall/huntership
-	name = "hunter wall"
+	name = "hunter ship hull"
 	desc = "Nigh indestructible walls that make up the hull of a hunter ship."
 	icon = 'icons/turf/walls/hunter.dmi'
-	icon_state = "metal"//DMI specific name
+	icon_state = "hull"
 	walltype = WALL_HUNTERSHIP
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/huntership/outerhull
+	name = "hunter ship outer hull"
+
+/turf/closed/wall/huntership/innerhull
+	name = "hunter ship inner hull"
+	icon_state = "innerhull"
+
+/turf/closed/wall/huntership/reinforced
+	name = "hunter ship reinforced hull"
+	icon_state = "reinforced"
+
 /turf/closed/wall/huntership/destructible
 	name = "degraded hunter wall"
+	icon_state = "hunter"
 	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
 	turf_flags = NO_FLAGS

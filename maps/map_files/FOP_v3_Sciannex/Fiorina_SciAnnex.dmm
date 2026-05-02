@@ -1006,8 +1006,8 @@
 "axA" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = -10
 	},
@@ -1458,7 +1458,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "aOT" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -1556,7 +1556,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "aTe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "aTx" = (
@@ -2018,7 +2018,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "bne" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "bnh" = (
@@ -2245,7 +2245,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/oob)
 "bxe" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -2548,7 +2548,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "bIz" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -3119,7 +3119,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/lowsec/east)
 "cfG" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -3709,7 +3709,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "cFg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -4044,7 +4044,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco/east_disco)
 "cRZ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -4925,7 +4925,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "dDI" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -5616,7 +5616,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "ehy" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "eio" = (
@@ -6126,7 +6126,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "eAM" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -6169,7 +6169,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "eDp" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -6322,7 +6322,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4;
 	pixel_x = -7
 	},
@@ -6404,7 +6404,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/disco/east_disco)
 "eLB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -6591,7 +6591,7 @@
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
 "eSF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -6794,7 +6794,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "eZr" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "eZK" = (
@@ -7973,7 +7973,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "fZd" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -8367,7 +8367,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "grA" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -8647,13 +8647,13 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/fiorina/station/research_cells/east)
 "gAQ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "gBe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "gBw" = (
@@ -9124,8 +9124,8 @@
 "gXd" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -9685,15 +9685,15 @@
 "hrz" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -10435,7 +10435,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/telecomm/lz1_cargo)
 "hTh" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -11425,8 +11425,8 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -11753,7 +11753,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "iTt" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "iTE" = (
@@ -12781,7 +12781,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "jKz" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -13419,7 +13419,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
 "klB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "klC" = (
@@ -13976,7 +13976,7 @@
 /area/fiorina/tumor/aux_engi)
 "kIh" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -14454,7 +14454,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "laz" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -14502,7 +14502,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/disco/east_disco)
 "lcm" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -17170,7 +17170,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
 "nfh" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -19313,7 +19313,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/tumor/aux_engi)
 "oGR" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -21812,7 +21812,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/lowsec/east)
 "qGe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -22710,7 +22710,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/research_cells/basketball)
 "rrD" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -23137,8 +23137,8 @@
 "rMT" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -23368,14 +23368,14 @@
 "rUQ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 17;
 	pixel_y = 21
 	},
@@ -25026,7 +25026,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "tgK" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "tgL" = (
@@ -25527,7 +25527,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/fiorina/station/flight_deck)
 "tyC" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -26464,7 +26464,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "unp" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -27076,7 +27076,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "uNs" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "uNB" = (
@@ -27823,7 +27823,7 @@
 /turf/open/ice/noweed,
 /area/fiorina/station/research_cells/basketball)
 "vrA" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -28114,8 +28114,8 @@
 "vCL" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -29480,7 +29480,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "wKx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -30271,7 +30271,7 @@
 /turf/open/floor/prison/green,
 /area/fiorina/station/transit_hub)
 "xrH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,

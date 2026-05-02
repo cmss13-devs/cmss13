@@ -26,19 +26,19 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aai" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aaj" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aak" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aal" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "aam" = (
@@ -46,7 +46,7 @@
 /area/bigredv2/outside/space_port)
 "aan" = (
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -55,7 +55,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "aap" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -72,7 +72,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "aat" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -84,7 +84,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aav" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -130,7 +130,7 @@
 /turf/open/floor/asteroidplating,
 /area/bigredv2/outside/space_port)
 "aaE" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -140,7 +140,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaG" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -201,13 +201,13 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aaS" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "aaT" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -247,7 +247,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "aba" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -303,7 +303,7 @@
 /area/bigredv2/outside/space_port)
 "abj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -349,7 +349,7 @@
 /area/bigredv2/caves_north)
 "abt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -704,7 +704,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "acK" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -742,7 +742,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/telecomm)
 "acS" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -807,7 +807,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adg" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -883,7 +883,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adw" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -956,7 +956,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adJ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1083,25 +1083,25 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "aeh" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "aei" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "aej" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port)
 "aek" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
@@ -1397,10 +1397,10 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/space_port_lz2)
 "afp" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/effect/landmark/spycam_start,
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
-/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "afq" = (
@@ -1716,6 +1716,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
+"agu" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
 "agv" = (
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/outside/space_port)
@@ -12966,34 +12970,34 @@
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_east)
 "bhu" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhv" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhw" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhx" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port_lz2)
 "bhF" = (
@@ -13040,7 +13044,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "bid" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -13105,7 +13109,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/office_complex)
 "biH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -13150,7 +13154,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/se)
 "bjd" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -13174,7 +13178,7 @@
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/se)
 "bjn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -13185,7 +13189,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "bjp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -13244,7 +13248,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "bjO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -14403,7 +14407,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "bpu" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -14554,7 +14558,7 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "bqd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -14606,7 +14610,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bqE" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -14688,7 +14692,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "brb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -14887,25 +14891,25 @@
 /turf/open/floor/asteroidplating,
 /area/bigredv2/outside/space_port_lz2)
 "bsb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port_lz2)
 "bsc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port_lz2)
 "bsd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port_lz2)
 "bse" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
@@ -28690,7 +28694,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "nLm" = (
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_y = 7;
 	pixel_x = 12
 	},
@@ -46662,7 +46666,7 @@ lcf
 bMJ
 pAd
 skZ
-skZ
+agu
 jmQ
 lrf
 mSz
@@ -47090,7 +47094,7 @@ dbO
 skZ
 skZ
 dbO
-keO
+aah
 aah
 aah
 aah

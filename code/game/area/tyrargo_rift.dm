@@ -34,7 +34,7 @@
 	icon_state = "unknown"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	requires_power = FALSE
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
@@ -569,7 +569,7 @@
 	icon_state = "Holodeck"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	requires_power = FALSE
 
 /area/tyrargo/underground/engineering
@@ -649,7 +649,7 @@
 	name = "32nd Armor Division: Staging Area - Southern Outskirts"
 	icon_state = "Holodeck"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_SEC_CAVE
 	ceiling = CEILING_MAX
 	ceiling_muffle = FALSE

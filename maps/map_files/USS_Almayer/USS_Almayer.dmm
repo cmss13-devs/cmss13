@@ -763,9 +763,6 @@
 /obj/structure/bed/chair/wheelchair{
 	dir = 1
 	},
-/obj/structure/bed/chair/wheelchair{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/plating_catwalk,
@@ -3648,24 +3645,6 @@
 /obj/item/clothing/accessory/storage/surg_vest/black/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

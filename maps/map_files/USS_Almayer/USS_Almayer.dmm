@@ -220,6 +220,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/turf/open/floor/grass,
+/area/almayer/medical/upper_medical)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -598,11 +601,14 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
 "abF" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake ppflowers"
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -2701,6 +2707,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
+"agr" = (
+/obj/structure/machinery/photocopier{
+	layer = 2.9;
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/upper_medical)
 "ags" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -3392,7 +3406,10 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ahN" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake ywflowers"
+	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ahO" = (
@@ -5246,10 +5263,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
-"anp" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1,
-/area/almayer/medical/upper_medical)
 "anq" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -8445,9 +8458,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "avZ" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	desc = "Just like a real plant, but fake!";
+	name = "fake fullgrass"
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -8729,26 +8745,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/intel)
-"awQ" = (
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/obj/item/clipboard,
-/obj/item/folder/black,
-/obj/item/folder/blue{
-	pixel_y = 5
-	},
-/obj/item/folder/black,
-/obj/item/folder/white,
-/turf/open/floor/almayer/sterile_green_side/north,
-/area/almayer/medical/upper_medical)
 "awR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/flora/pottedplant{
@@ -10806,7 +10802,11 @@
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/upper_engineering)
 "aCo" = (
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	desc = "Just like a real plant, but fake!";
+	name = "fake fullgrass"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "aCp" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
@@ -12931,7 +12931,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aIx" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake ppflowers"
+	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aIy" = (
@@ -12950,7 +12953,10 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aIB" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	desc = "Just like a real plant, but fake!";
+	name = "fake fullgrass"
+	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aIC" = (
@@ -13368,8 +13374,11 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/command/cic)
 "aJJ" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/bed/chair,
+/obj/structure/flora/bush/ausbushes/var3/brflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake brflowers"
+	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aJK" = (
@@ -13504,7 +13513,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aKg" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake brflowers"
+	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aKh" = (
@@ -14154,7 +14166,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/turf/open/gm/grass/grass1,
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "aLT" = (
 /turf/closed/wall/almayer,
@@ -20134,11 +20146,11 @@
 /area/almayer/hallways/hangar)
 "baS" = (
 /obj/structure/sign/safety/ladder{
-	pixel_x = 15;
 	pixel_y = 28
 	},
 /obj/structure/sign/safety/medical{
-	pixel_y = 28
+	pixel_y = 28;
+	pixel_x = 15
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -24168,11 +24180,11 @@
 /area/almayer/squads/alpha)
 "bkh" = (
 /obj/structure/sign/safety/ladder{
-	pixel_x = 15;
 	pixel_y = -26
 	},
 /obj/structure/sign/safety/medical{
-	pixel_y = -26
+	pixel_y = -26;
+	pixel_x = 15
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_fore_hallway)
@@ -39780,12 +39792,12 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_point_defense)
 "bVE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay";
-	req_one_access = null
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Upper Medical Corridors";
+	req_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
@@ -44148,9 +44160,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "cdY" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	name = "fake ppflowers";
+	desc = "Just like a real plant, but fake!"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "cdZ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -44323,6 +44337,13 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
 "cev" = (
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "Research Armory";
+	name = "Emergency Research Armory Release";
+	pixel_x = -31;
+	pixel_y = 26
+	},
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/medical/upper_medical)
 "cew" = (
@@ -44542,7 +44563,7 @@
 	light_color = "#a7dbc7";
 	dir = 8
 	},
-/turf/open/gm/grass/grass1,
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "ceY" = (
 /obj/structure/machinery/light/red{
@@ -44656,8 +44677,11 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 32
 	},
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	name = "fake ppflowers";
+	desc = "Just like a real plant, but fake!"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "cfm" = (
 /obj/structure/flora/pottedplant{
@@ -57617,12 +57641,15 @@
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
 "gXl" = (
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers{
+	name = "fake brflowers";
+	desc = "Just like a real plant, but fake!"
+	},
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 4
 	},
-/turf/open/gm/grass/grass1,
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "gXs" = (
 /obj/effect/step_trigger/ares_alert/terminals,
@@ -64773,8 +64800,11 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "kbn" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	name = "fake grassybush";
+	desc = "Just like a real plant, but fake!"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "kbv" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -74387,12 +74417,15 @@
 /turf/open/floor/almayer/emerald/north,
 /area/almayer/squads/charlie)
 "ojH" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	desc = "Just like a real plant, but fake!";
+	name = "fake ppflowers"
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -82746,7 +82779,11 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	desc = "Just like a real plant, but fake!";
+	name = "fake fullgrass"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "rHB" = (
 /obj/item/ammo_box/magazine/misc/mre/empty{
@@ -88951,7 +88988,11 @@
 /obj/structure/machinery/status_display{
 	pixel_x = 32
 	},
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	desc = "Just like a real plant, but fake!";
+	name = "fake fullgrass"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "uoA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -92654,15 +92695,15 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "vLj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay";
-	req_one_access = null
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Upper Medical Corridors";
+	req_access = list()
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
 "vLp" = (
@@ -93778,7 +93819,7 @@
 "whc" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 7;
-	pixel_y = 25
+	pixel_y = 28
 	},
 /turf/open/floor/almayer/blue/north,
 /area/almayer/hallways/upper/midship_hallway)
@@ -93897,11 +93938,23 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/machinery/photocopier{
-	layer = 2.9;
-	pixel_y = 16;
-	density = 0
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	pixel_x = 7;
+	pixel_y = 16
 	},
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/item/folder/blue{
+	pixel_y = 5
+	},
+/obj/item/folder/white,
+/obj/item/folder/black,
+/obj/item/folder/black,
+/obj/item/clipboard,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/upper_medical)
 "wjq" = (
@@ -97937,8 +97990,11 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/underdeck/req)
 "xNu" = (
-/obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/lavendergrass{
+	name = "fake lavendergrass";
+	desc = "Just like a real plant, but fake!"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "xNv" = (
 /obj/structure/platform/metal/almayer/north,
@@ -98899,8 +98955,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "yjb" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/bush/ausbushes/ausbush{
+	name = "fake ausbush";
+	desc = "Just like a real plant, but fake!"
+	},
+/turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "yjq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -205860,7 +205919,7 @@ ajy
 cfL
 aoe
 yjb
-anp
+cdY
 ceJ
 ces
 cec
@@ -206170,7 +206229,7 @@ cfn
 aoe
 aoe
 gXl
-aCo
+aaE
 xdS
 awj
 cdJ
@@ -207294,7 +207353,7 @@ aiO
 lGh
 bBH
 ajl
-awQ
+hng
 axm
 akw
 vDa
@@ -207397,7 +207456,7 @@ ccr
 efV
 bBH
 ajl
-hng
+agr
 axm
 hPN
 vCk

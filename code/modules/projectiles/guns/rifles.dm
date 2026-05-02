@@ -1783,11 +1783,11 @@
 /obj/item/weapon/gun/rifle/type71/carbine/commando/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/toggle_alt_iff)
 	. = ..()
+	AddComponent(/datum/component/iff_fire_prevention, 5)
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
-		AddComponent(/datum/component/iff_fire_prevention, 5)
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
@@ -1838,14 +1838,11 @@
 
 	recalculate_attachment_bonuses()
 	if(iff_enabled)
-		if(!GetComponent(src, /datum/component/iff_fire_prevention))
-			AddComponent(/datum/component/iff_fire_prevention, 5)
-			SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 	else
 		remove_bullet_trait("iff")
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
-		GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/deathsquad
 	current_mag = /obj/item/ammo_magazine/rifle/type71/heap

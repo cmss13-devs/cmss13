@@ -714,6 +714,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/mining)
+"acc" = (
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/charon/below_deck/front)
 "acd" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -4356,6 +4359,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/log_ext)
+"alh" = (
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/charon/below_deck/front)
 "ali" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/ramptop/north,
@@ -4720,6 +4726,10 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/med_ext)
+"amk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/charon/below_deck/front)
 "aml" = (
 /obj/structure/platform/stone/strata,
 /obj/structure/platform/stone/strata/west,
@@ -13389,7 +13399,7 @@
 "aML" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/corsat/plate,
-/area/navalis/indoors/charon/below_deck/middle)
+/area/navalis/indoors/charon/below_deck/front)
 "aMM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
@@ -37636,7 +37646,7 @@
 	},
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/corsat/squares,
-/area/navalis/indoors/charon/below_deck/middle)
+/area/navalis/indoors/charon/below_deck/front)
 "oEl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -38285,7 +38295,7 @@
 	layer = 5
 	},
 /turf/open/floor/corsat/plate,
-/area/navalis/indoors/charon/below_deck/middle)
+/area/navalis/indoors/charon/below_deck/front)
 "paD" = (
 /turf/open/floor/prison/cell_stripe/west,
 /area/navalis/indoors/industrial/power)
@@ -112169,7 +112179,7 @@ hCk
 bhh
 bhh
 bhh
-gLf
+acc
 gLf
 gLf
 gLf
@@ -112333,7 +112343,7 @@ aLN
 aLN
 aMp
 aLf
-gLf
+acc
 wbk
 wbk
 wbk
@@ -112497,7 +112507,7 @@ aLK
 aLK
 bYh
 ayB
-wbk
+alh
 wbk
 wbk
 aLU
@@ -112661,7 +112671,7 @@ pEU
 pEU
 xKV
 bYh
-wbk
+alh
 aMC
 aMC
 nGT
@@ -112825,7 +112835,7 @@ aNf
 mPt
 tcG
 bYh
-nGT
+amk
 aMC
 sFl
 sCA
@@ -112989,7 +112999,7 @@ hCk
 gmx
 tcG
 bYh
-nGT
+amk
 wbk
 sFl
 sCA
@@ -113153,7 +113163,7 @@ hCk
 wsA
 tcG
 bYh
-nGT
+amk
 wbk
 wbk
 nGT
@@ -113317,7 +113327,7 @@ hCk
 wsA
 tcG
 bYh
-nGT
+amk
 wbk
 wbk
 nGT
@@ -113481,7 +113491,7 @@ hCk
 dKz
 tcG
 bYh
-nGT
+amk
 wbk
 sFl
 sCA
@@ -113645,7 +113655,7 @@ pvY
 pvY
 tcG
 bYh
-nGT
+amk
 aMC
 sFl
 sFl
@@ -113809,7 +113819,7 @@ pvY
 pvY
 fVX
 aLu
-nGT
+amk
 tOO
 aMC
 wbk

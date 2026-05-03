@@ -1419,8 +1419,8 @@
 	basestate = "prison_cellwindow"
 	health = 100
 
-
 // Abyssal Windows \\
+
 // Standard
 
 /obj/structure/window/framed/abyssal/standard

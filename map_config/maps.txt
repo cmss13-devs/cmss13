@@ -70,6 +70,10 @@ map tyrargo_rift
 	minplayers 100
 endmap
 
+map conam_81_abyssal
+	maxplayers 85
+endmap
+
 map cape_river
 endmap
 

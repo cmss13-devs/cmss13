@@ -20,7 +20,7 @@
 /area/template_noop)
 "o" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/template_noop)
+/area/fiorina/oob)
 "s" = (
 /turf/open/floor/prison/greenfull/northwest,
 /area/template_noop)
@@ -138,7 +138,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/upgradeable/engineer,
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "X" = (

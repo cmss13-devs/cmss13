@@ -281,6 +281,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
   const provost: Array<Observable> = [];
+  const ArmySquad: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.mutiny_status?.includes('Mutineer')) {
@@ -311,6 +312,8 @@ const marineSplitter = (members: Array<Observable>) => {
       SOFSquad.push(x);
     } else if (x.job?.includes('Provost')) {
       provost.push(x);
+    } else if (x.job?.includes('Army')) {
+      ArmySquad.push(x);
     } else {
       other.push(x);
     }
@@ -331,6 +334,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
     buildSquadObservable('Provost', 'red', provost),
+    buildSquadObservable('Army', 'green', ArmySquad),
   ];
   return squads;
 };
@@ -468,20 +472,20 @@ const weyyuSplitter = (members: Array<Observable>) => {
   const whiteout: Array<Observable> = [];
   const wycommando: Array<Observable> = [];
   const pmc: Array<Observable> = [];
-  const goons: Array<Observable> = [];
+  const security: Array<Observable> = [];
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.job?.includes('Whiteout')) {
       whiteout.push(x);
-    } else if (x.job?.includes('Death Squad')) {
-      whiteout.push(x);
     } else if (x.job?.includes('W-Y Commando')) {
       wycommando.push(x);
     } else if (x.job?.includes('PMC')) {
       pmc.push(x);
-    } else if (x.job?.includes('Corporate Security')) {
-      goons.push(x);
+    } else if (x.job?.includes('Security')) {
+      security.push(x);
+    } else if (x.job?.includes('Bodyguard')) {
+      security.push(x);
     } else {
       other.push(x);
     }
@@ -489,9 +493,9 @@ const weyyuSplitter = (members: Array<Observable>) => {
 
   const squads = [
     buildSquadObservable('PMCs', 'white', pmc),
-    buildSquadObservable('Goons', 'orange', goons),
+    buildSquadObservable('Security Forces', 'orange', security),
     buildSquadObservable('Corporate', 'white', other),
-    buildSquadObservable('W-Y Commando', 'white', wycommando),
+    buildSquadObservable('W-Y Commandos', 'white', wycommando),
     buildSquadObservable('Whiteout', 'red', whiteout),
   ];
   return squads;
@@ -518,6 +522,29 @@ const tweSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Other', 'grey', other),
   ];
   return squads;
+};
+
+const yautjaSplitter = (members: Array<Observable>) => {
+  const youngblood: Array<Observable> = [];
+  const mcaste: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('Young Blood')) {
+      youngblood.push(x);
+    } else if (x.job?.includes('Military Caste')) {
+      mcaste.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const preds = [
+    buildSquadObservable('Hunters', 'green', other),
+    buildSquadObservable('Young Bloods', 'brown', youngblood),
+    buildSquadObservable('Military Caste', 'red', mcaste),
+  ];
+  return preds;
 };
 
 /**
@@ -651,7 +678,12 @@ const ObservableContent = () => {
         section={responders}
         title="Fax Responders"
       />
-      <ObservableSection color="green" section={predators} title="Predators" />
+      <GroupedObservable
+        color="green"
+        section={predators}
+        title="Predators"
+        splitter={yautjaSplitter}
+      />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
       <ObservableSection
         color="orange"

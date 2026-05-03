@@ -17,7 +17,7 @@
 			affected_mob.bodytemperature -= 10
 			affected_mob.recalculate_move_delay = TRUE
 			if(prob(1) && prob(10))
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 			if(prob(1))

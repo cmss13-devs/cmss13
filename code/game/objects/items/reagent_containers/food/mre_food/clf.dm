@@ -67,7 +67,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/clf/vegetablepizza
 	name = "wrapped vegetable pizza"
 	icon_state = "clf_vegetablepizza"
-	desc = "A smaller size wrapped pizza, vegeterian friendly, has some cheese on it tho."
+	desc = "A smaller size wrapped pizza, vegetarian friendly, has some cheese on it tho."
 
 /obj/item/reagent_container/food/snacks/mre_food/clf/vegetablepizza/Initialize()
 	. = ..()

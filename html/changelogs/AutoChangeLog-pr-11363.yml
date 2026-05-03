@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Acid Harness no longer warns of erroneous ODs when you have more than one reagent"

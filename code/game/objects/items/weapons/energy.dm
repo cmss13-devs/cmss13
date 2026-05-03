@@ -28,13 +28,13 @@
 
 	active = !active
 	if(active)
-		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
+		to_chat(user, SPAN_NOTICE("The axe is now energised."))
 		force = 150
 		icon_state = "axe1"
 		w_class = SIZE_HUGE
 		heat_source = 3500
 	else
-		to_chat(user, SPAN_NOTICE(" The axe can now be concealed."))
+		to_chat(user, SPAN_NOTICE("The axe can now be concealed."))
 		force = 40
 		icon_state = "axe0"
 		w_class = SIZE_HUGE

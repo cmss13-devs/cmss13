@@ -321,6 +321,10 @@
 	drag_delay = 1 //Pulling something on wheels is easy
 	picked_up_item = null
 
+/obj/structure/bed/chair/office/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_PREBUCKLE, PROC_REF(check_buckle))
+
 /obj/structure/bed/chair/office/Collide(atom/A)
 	..()
 	if(!buckled_mob)
@@ -345,6 +349,15 @@
 			victim.apply_effect(6, STUTTER)
 			victim.apply_damage(10, BRUTE, def_zone)
 		occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
+
+/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/obj/structure/bed/chair/office/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
+	SIGNAL_HANDLER
+
+	if(buckle_target.mob_size > MOB_SIZE_XENO)
+		if(!can_carry_big)
+			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
+			return COMPONENT_BLOCK_BUCKLE
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"

@@ -92,6 +92,7 @@
 	name = "surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
+	blood_overlay_type = "surgcap"
 	icon = 'icons/obj/items/clothing/hats/surgical_caps.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/surgical_caps.dmi'
@@ -100,7 +101,7 @@
 
 /obj/item/clothing/head/surgery/blue
 	name = "doctor's surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries. "
+	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue

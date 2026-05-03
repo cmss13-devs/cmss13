@@ -340,6 +340,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Collector")
 				icon_state = "halfarmor_legacy_collector"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector")
+			if("Shadow")
+				icon_state = "halfarmor_legacy_collector_dark"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector_dark")
 		user.update_inv_wear_suit()
 		return
 
@@ -393,6 +396,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Collector")
 				icon_state = "halfarmor_legacy_collector"
 				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector")
+			if("Shadow")
+				icon_state = "halfarmor_legacy_collector_dark"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector_dark")
 		user.update_inv_wear_mask()
 		return
 
@@ -454,6 +460,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Collector")
 				icon_state = "legacy_y-boots_collector"
 				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector")
+			if("Shadow")
+				icon_state = "legacy_y-boots_collector_dark"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector_dark")
 		user.update_inv_shoes()
 		return
 

@@ -329,17 +329,17 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
+				icon_state = "halfarmor_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_dragon")
 			if("Swamp")
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
+				icon_state = "halfarmor_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_swamp")
 			if("Enforcer")
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
+				icon_state = "halfarmor_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_enforcer")
 			if("Collector")
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
+				icon_state = "halfarmor_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector")
 		user.update_inv_wear_suit()
 		return
 
@@ -382,17 +382,17 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
+				icon_state = "halfarmor_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_dragon")
 			if("Swamp")
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
+				icon_state = "halfarmor_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_swamp")
 			if("Enforcer")
-				icon_state = "pred_mask_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
+				icon_state = "halfarmor_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_enforcer")
 			if("Collector")
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+				icon_state = "halfarmor_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector")
 		user.update_inv_wear_mask()
 		return
 
@@ -439,6 +439,23 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(!user?.client?.prefs)
 		return
 	var/client/mob_client = user.client
+
+	if(mob_client.prefs.predator_use_legacy != "None")
+		switch(mob_client.prefs.predator_use_legacy)
+			if("Dragon")
+				icon_state = "legacy_y-boots_dragon"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_dragon")
+			if("Swamp")
+				icon_state = "legacy_y-boots_swamp"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_swamp")
+			if("Enforcer")
+				icon_state = "legacy_y-boots_enforcer"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_enforcer")
+			if("Collector")
+				icon_state = "legacy_y-boots_collector"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector")
+		user.update_inv_shoes()
+		return
 
 	if(mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)

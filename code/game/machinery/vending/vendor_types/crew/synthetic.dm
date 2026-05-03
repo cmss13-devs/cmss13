@@ -590,6 +590,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/officer_cap
 	path = /obj/item/clothing/head/cmcap/bridge
 
+/datum/gear/synthetic/headwear/wy_cap
+	path = /obj/item/clothing/head/cmcap/wy_cap
+
 /datum/gear/synthetic/headwear/fedora_tan
 	path = /obj/item/clothing/head/fedora
 
@@ -905,6 +908,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/purple_tie
 	path = /obj/item/clothing/accessory/tie/purple
+
+/datum/gear/synthetic/wy_patch
+	path = /obj/item/clothing/accessory/patch/wy
+
+/datum/gear/synthetic/wy_patch_white
+	path = /obj/item/clothing/accessory/patch/wy_white
+
+/datum/gear/synthetic/wy_patch_square
+	path = /obj/item/clothing/accessory/patch/wysquare
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools

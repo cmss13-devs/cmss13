@@ -149,6 +149,11 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	desc = "A labeled blueprint of the UA city Tyrargo Rift."
 	html_link = "images/7/79/Tyrargo_Rift.png"
 
+/obj/item/map/sekhmet_swamp_map
+	name = "\improper SI-391 Sekhmet Swamp map"
+	desc = "An overview of the Sekhmet Swamp research facility schematics."
+	html_link = "images/1/18/Map_icecolony.png"
+
 /obj/item/map/white_antre_map
 	name = "\improper White Antre Research Facility map"
 	desc = "An overview of the White Antre facility schematics."
@@ -192,6 +197,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
+		MAP_SEKHMET_SWAMP = new /obj/item/map/sekhmet_swamp_map(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
 		MAP_CONAM_81_ABYSSAL = new /obj/item/map/new_varadero(),
 		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),

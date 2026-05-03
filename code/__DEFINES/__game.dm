@@ -41,6 +41,7 @@
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
+#define MAP_SEKHMET_SWAMP "SI-391 Sekhmet Swamp"
 #define MAP_CONAM_81_ABYSSAL "Con-Am 81 'Abyssal'"
 #define MAP_CAPE_RIVER "Cape River Mining Colony"
 #define MAP_NAVALIS "Navalis Platform 13"//multiz version

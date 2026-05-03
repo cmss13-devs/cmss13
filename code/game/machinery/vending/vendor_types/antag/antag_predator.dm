@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_suit()
 		return
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "halfarmor_elite_anubys"
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -396,7 +396,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_mask()
 		return
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				item_icons = list(
@@ -440,7 +440,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "legacy_y-boots_dragon"
@@ -457,7 +457,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_shoes()
 		return
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "elite_y-boots1_anubys"

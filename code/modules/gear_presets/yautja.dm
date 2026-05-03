@@ -49,6 +49,9 @@
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
+		if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+			bracer_material = lowertext(mob_client.prefs.predator_use_legacy)
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 
 	if(new_human.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))

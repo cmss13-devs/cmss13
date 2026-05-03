@@ -83,3 +83,20 @@
 /datum/timelock/young_blood/New(name, time_required, list/roles)
 	. = ..()
 	src.roles = JOB_YOUNGBLOOD_ROLES_LIST
+
+
+/// Does this client have access to Yautja Legacy sets?
+/client/proc/can_use_pred_legacies()
+	return check_whitelist_status(WHITELIST_YAUTJA_LEGACY)
+
+/// Does this client have access to Yautja Special (Elite) sets?
+/client/proc/can_use_pred_specials()
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	if(!pred_job)
+		return FALSE
+	var/clanrank = pred_job.get_whitelist_status(src)
+
+	if(!(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
+		return FALSE
+
+	return TRUE

@@ -6,9 +6,9 @@
 	name = "alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
 	)
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
@@ -269,9 +269,9 @@
 	name = "alien stone mask"
 	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_mask.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask.dmi'
 	)
 	icon_state = "pred_mask1_ebony"
 

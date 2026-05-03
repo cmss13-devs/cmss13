@@ -201,7 +201,7 @@
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates(hive, abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
+		var/list/candidates = get_alien_candidates(GLOB.hive_datum[hivenumber], abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
 		if(candidates && length(candidates))
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)
@@ -262,27 +262,35 @@
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 
+	start_bursting(new_xeno, picked)
+/obj/item/alien_embryo/proc/start_bursting(mob/living/carbon/xenomorph/larva/new_xeno, mob/picked)
 	new_xeno.update_icons()
-
 	new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!
+	stage = 7 // Begin the autoburst countdown
+
+// Inform observers to grab some popcorn if it isnt nested
+	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+		var/area/burst_area = get_area(src)
+		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
+		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	// If we have a candidate, transfer it over
-	if(picked)
-		new_xeno.key = picked.key
+	if(!picked)
+		return
+	new_xeno.key = picked.key
+	if(new_xeno.client)
+		new_xeno.client.change_view(GLOB.world_view_size)
+		if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+			window_flash(new_xeno.client)
 
-		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
-			if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
-				window_flash(new_xeno.client)
+	SSround_recording.recorder.track_player(new_xeno)
+	if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
+		ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
 
-		SSround_recording.recorder.track_player(new_xeno)
-		if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
-			ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
-
-		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
+	to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+	to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+	playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	// Inform observers to grab some popcorn if it isn't nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))

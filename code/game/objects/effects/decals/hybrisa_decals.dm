@@ -184,6 +184,14 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "bloodtrail"
 
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "claw_blood_human"
+
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "claw_blood_xeno"
+
 /obj/effect/decal/hybrisa/tiretrack
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "tiremarks"

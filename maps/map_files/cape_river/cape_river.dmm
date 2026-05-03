@@ -1795,7 +1795,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "afq" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -2003,7 +2003,7 @@
 /turf/open/desert/rock/deep/transition/southwest,
 /area/caperiver/outdoors/scrublands/north_west)
 "afZ" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "aga" = (
@@ -2738,7 +2738,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "aik" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -3974,7 +3974,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
 "amk" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -5061,7 +5061,7 @@
 /turf/open/floor/prison/ramptop/east,
 /area/caperiver/telecomms/telecomm_3)
 "apE" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -5139,7 +5139,7 @@
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/bushlands)
 "apT" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -6066,7 +6066,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/northwest,
 /area/caperiver/telecomms/telecomm_3)
 "asL" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -6550,7 +6550,7 @@
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/caperiver/outdoors/landing_zone_2/river)
 "aum" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -8469,7 +8469,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/caperiver/outdoors/scrublands/central)
 "azV" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "azW" = (
@@ -8857,7 +8857,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/caperiver/indoors/caves/s)
 "aBj" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "aBk" = (
@@ -10313,7 +10313,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/central)
 "aFx" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -10953,7 +10953,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/telecomms/telecomm_2)
 "aHC" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12237,7 +12237,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/south)
 "aLu" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13946,7 +13946,7 @@
 /turf/open/floor/prison/ramptop/north,
 /area/caperiver/outdoors/scrublands/north)
 "aQH" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "aQI" = (
@@ -14228,7 +14228,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/caperiver/outdoors/road/south)
 "aRF" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -15989,7 +15989,7 @@
 /turf/open/desert/rock/deep/transition/southwest,
 /area/caperiver/outdoors/scrublands/north)
 "aXc" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -30952,7 +30952,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "ckf" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -33210,7 +33210,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/bushlands)
 "dYN" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -33490,7 +33490,7 @@
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/indoors/miningbase/admin)
 "efQ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -42580,7 +42580,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "kCf" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -48348,7 +48348,7 @@
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/support)
 "oKc" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -48382,7 +48382,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/con_am_exterior/south)
 "oKV" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -53903,7 +53903,7 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/unknown)
 "sEB" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -56908,7 +56908,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/south)
 "uUm" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -59850,7 +59850,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/caperiver/indoors/conambase/recreational)
 "xlg" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,

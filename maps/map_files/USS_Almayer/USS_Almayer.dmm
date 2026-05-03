@@ -41250,12 +41250,12 @@
 "bXp" = (
 /obj/structure/platform/metal/almayer_smooth/west,
 /obj/structure/stairs/multiz/up,
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
 "bXq" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/stairs/multiz/up,
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
 "bXr" = (
 /obj/structure/platform/metal/almayer_smooth/west,
@@ -41291,7 +41291,7 @@
 	icon_state = "ramptop"
 	},
 /obj/structure/platform/metal/almayer_smooth,
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
 "bXw" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -41426,7 +41426,7 @@
 	icon_state = "ramptop"
 	},
 /obj/structure/platform/metal/almayer_smooth/north,
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
 "bXL" = (
 /obj/structure/stairs{
@@ -41434,7 +41434,7 @@
 	icon_state = "ramptop"
 	},
 /obj/structure/platform/metal/stair_cut/almayer_smooth_right,
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
 "bXM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -42580,7 +42580,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "observationshutters";
-	name = "\improper Interrogation Shutters";
+	name = "\improper Observation Shutters";
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -61248,14 +61248,6 @@
 	name = "Visitation Waiting Room Telephone";
 	pixel_y = 10
 	},
-/obj/structure/transmitter/no_dnd{
-	dir = 4;
-	pixel_x = -17;
-	phone_category = "MP Dept.";
-	phone_id = "Visitation Waiting Room";
-	name = "Visitation Waiting Room Telephone";
-	pixel_y = 10
-	},
 /obj/structure/sign/safety/commline_connection{
 	pixel_x = -17;
 	pixel_y = -7
@@ -63202,11 +63194,11 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/sentencing{
 	dir = 1;
-	pixel_y = -6
+	pixel_y = -5
 	},
 /obj/structure/machinery/computer/secure_data{
 	dir = 1;
-	pixel_y = -6;
+	pixel_y = -5;
 	pixel_x = 20
 	},
 /turf/open/floor/almayer/plate,
@@ -66135,6 +66127,9 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/snacks/sliceable/bread,
+/obj/item/reagent_container/food/snacks/sliceable/bread,
+/obj/item/reagent_container/food/snacks/sliceable/bread,
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "ljf" = (
@@ -90684,7 +90679,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt{
 	dir = 1;
-	pixel_y = -6;
+	pixel_y = -5;
 	pixel_x = 5
 	},
 /obj/item/prop/tableflag/uscm{

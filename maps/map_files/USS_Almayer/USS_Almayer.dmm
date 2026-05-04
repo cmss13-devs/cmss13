@@ -41260,7 +41260,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/west,
-/obj/structure/platform_decoration/metal/almayer_smooth/northwest,
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest{
+	layer = 3.01
+	},
 /turf/open/floor/almayer/cargo/no_build,
 /area/almayer/shipboard/brig)
 "bXn" = (
@@ -41440,7 +41442,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform/metal/almayer_smooth/west,
 /obj/structure/flora/pottedplant,
-/obj/structure/platform_decoration/metal/almayer_smooth/northwest,
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest{
+	layer = 3.01
+	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig)
 "bXJ" = (
@@ -48661,12 +48665,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cryogenics Bay"
 	},
-/obj/structure/platform/metal/almayer_smooth/north{
-	layer = 2.8
-	},
-/obj/structure/platform/metal/almayer_smooth{
-	layer = 2.8
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cryo)
 "dGU" = (
@@ -54227,7 +54225,9 @@
 	},
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/platform_decoration/metal/almayer_smooth/northeast,
+/obj/structure/platform_decoration/metal/almayer_smooth/northeast{
+	layer = 3.01
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/cryo)
 "gdJ" = (
@@ -61414,7 +61414,9 @@
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/platform_decoration/metal/almayer_smooth/northeast,
+/obj/structure/platform_decoration/metal/almayer_smooth/northeast{
+	layer = 3.01
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "jgW" = (
@@ -77057,7 +77059,9 @@
 /obj/structure/machinery/cryopod,
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/west,
-/obj/structure/platform_decoration/metal/almayer_smooth/northwest,
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest{
+	layer = 3.01
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/cryo)
 "pQN" = (

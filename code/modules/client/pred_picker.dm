@@ -34,8 +34,7 @@
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 	if(!pred_job)
 		return
-	var/clanrank = pred_job.get_whitelist_status(user.client)
-	if(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN))
+	if(user.client.can_use_pred_specials())
 		.["can_use_unique"] = TRUE
 	else
 		.["can_use_unique"] = FALSE
@@ -79,6 +78,8 @@
 	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
 	.["uniques"] = PRED_UNIQUES
+	if(user.client.can_use_pred_specials(higher_lock = TRUE))
+		.["uniques"] = PRED_UNIQUES_ALL
 
 
 /datum/pred_picker/ui_data(mob/user)
@@ -290,10 +291,13 @@
 
 		if("unique")
 			var/selected = params["selected"]
-			if(!selected || !(selected in PRED_UNIQUES))
-				return
 
 			if(!ui.user.client?.can_use_pred_specials())
+				prefs.predator_use_unique = "None"
+				return
+			if(!selected || !(selected in PRED_UNIQUES_ALL))
+				return
+			if(!ui.user.client?.can_use_pred_specials(higher_lock = TRUE) && (selected in PRED_UNIQUES_LEAD))
 				return
 
 			prefs.predator_use_unique = selected

@@ -23036,6 +23036,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
@@ -40935,6 +40940,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -16;
+	pixel_y = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";

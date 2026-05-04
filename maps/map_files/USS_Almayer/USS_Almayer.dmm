@@ -199,6 +199,13 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/prison/kitchen,
+/area/almayer/shipboard/brig/yard)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11701,14 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/kitchen,
+/area/almayer/shipboard/brig/yard)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -41874,11 +41889,12 @@
 "bYG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
-	pixel_y = 3
+	wires = 13
 	},
 /obj/structure/machinery/vending/snack{
 	pixel_x = -18;
-	pixel_y = 4
+	pixel_y = 1;
+	wires = 13
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
@@ -42076,24 +42092,24 @@
 	pixel_x = -11
 	},
 /obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 6
+	pixel_x = -11;
+	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 6
+	pixel_x = -11;
+	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 6
+	pixel_x = -11;
+	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 6
+	pixel_x = -11;
+	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 9
+	pixel_x = -11;
+	pixel_y = 16
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
@@ -42646,15 +42662,15 @@
 	phone_category = "MP Dept.";
 	phone_id = "Brig Warden's Office";
 	pixel_x = 6;
-	pixel_y = -6
-	},
-/obj/structure/machinery/recharger{
-	pixel_x = -11;
-	pixel_y = -7
+	pixel_y = -3
 	},
 /obj/structure/sign/safety/commline_connection{
 	pixel_x = 13;
 	pixel_y = -26
+	},
+/obj/item/trash/hotdog{
+	pixel_x = -13;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/shipboard/brig/cells)
@@ -42855,16 +42871,10 @@
 /obj/structure/machinery/computer/working_joe{
 	pixel_y = 16
 	},
-/obj/item/folder/black{
-	pixel_x = -4
-	},
+/obj/structure/machinery/recharger,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "caQ" = (
-/obj/item/device/camera{
-	pixel_x = -25;
-	pixel_y = 3
-	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/cells)
@@ -43383,7 +43393,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/sentencing{
 	dir = 8;
-	pixel_y = 6
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/perma)
@@ -43718,7 +43728,7 @@
 "ccH" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt{
-	pixel_x = -19
+	pixel_x = -18
 	},
 /obj/item/prop/tableflag/uscm{
 	layer = 3.03;
@@ -43927,7 +43937,7 @@
 	pixel_x = -18
 	},
 /obj/item/storage/box/ids{
-	pixel_x = -6;
+	pixel_x = -4;
 	pixel_y = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -44077,7 +44087,7 @@
 	pixel_y = -16
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -4;
+	pixel_x = -1;
 	pixel_y = -30
 	},
 /turf/open/floor/almayer/plate,
@@ -52898,7 +52908,8 @@
 	name = "Chief MP's rubber stamp"
 	},
 /obj/item/clipboard{
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_x = -9;
@@ -63164,7 +63175,8 @@
 "jVa" = (
 /obj/structure/machinery/vending/cola{
 	pixel_x = -6;
-	pixel_y = 4
+	pixel_y = 1;
+	wires = 13
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
@@ -63240,11 +63252,11 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/sentencing{
 	dir = 1;
-	pixel_y = -5
+	pixel_y = -4
 	},
 /obj/structure/machinery/computer/secure_data{
 	dir = 1;
-	pixel_y = -5;
+	pixel_y = -4;
 	pixel_x = 20
 	},
 /turf/open/floor/almayer/plate,
@@ -66173,9 +66185,15 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/food/snacks/sliceable/bread,
-/obj/item/reagent_container/food/snacks/sliceable/bread,
-/obj/item/reagent_container/food/snacks/sliceable/bread,
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 6
+	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "ljf" = (
@@ -73076,7 +73094,9 @@
 	pixel_y = 29;
 	pixel_x = 4
 	},
-/obj/item/trash/sosjerky,
+/obj/item/trash/sosjerky{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/yard)
 "ohL" = (
@@ -73973,14 +73993,15 @@
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 7
+	pixel_y = 5
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
-	pixel_y = -4
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig)
@@ -76578,17 +76599,19 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm{
 	pixel_x = 11;
-	pixel_y = 2
+	pixel_y = 4;
+	layer = 3.1
 	},
 /obj/item/tool/pen{
-	pixel_x = 9
+	pixel_x = 9;
+	layer = 3.2
 	},
 /obj/structure/transmitter/rotary{
 	name = "Brig CMP's Office Telephone";
 	phone_category = "MP Dept.";
 	phone_id = "Brig CMP's Office";
 	pixel_x = -3;
-	pixel_y = -2
+	pixel_y = -1
 	},
 /obj/structure/machinery/door_control{
 	id = "cmpprivacy";
@@ -90733,7 +90756,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt{
 	dir = 1;
-	pixel_y = -5;
+	pixel_y = -4;
 	pixel_x = 5
 	},
 /obj/item/prop/tableflag/uscm{
@@ -94602,7 +94625,8 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
 	dir = 8;
-	pixel_y = 13
+	pixel_y = 13;
+	layer = 3
 	},
 /obj/structure/machinery/door_control{
 	id = "Brig Lockdown Shutters";
@@ -94693,6 +94717,11 @@
 /area/almayer/underdeck/vehicle)
 "xaM" = (
 /obj/structure/closet/secure_closet/fridge/groceries/stock,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "xaN" = (
@@ -195740,7 +195769,7 @@ bZx
 bZz
 bZj
 nYd
-thL
+aaD
 jVa
 bYA
 nEc
@@ -195843,7 +195872,7 @@ bZx
 bZz
 bZj
 liZ
-thL
+aaD
 bYG
 bYA
 azg
@@ -195946,7 +195975,7 @@ bZK
 bZz
 bZj
 uaU
-thL
+aDL
 xaM
 bYA
 hIG

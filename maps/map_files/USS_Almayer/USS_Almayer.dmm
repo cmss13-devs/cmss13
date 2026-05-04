@@ -42088,26 +42088,26 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 8;
-	pixel_x = -11
+	pixel_x = -7
 	},
 /obj/item/trash/plate{
-	pixel_x = -11;
+	pixel_x = -7;
 	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = -11;
+	pixel_x = -7;
 	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = -11;
+	pixel_x = -7;
 	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = -11;
+	pixel_x = -7;
 	pixel_y = 14
 	},
 /obj/item/trash/plate{
-	pixel_x = -11;
+	pixel_x = -7;
 	pixel_y = 16
 	},
 /turf/open/floor/prison/kitchen,
@@ -50845,7 +50845,7 @@
 	dir = 4
 	},
 /obj/item/toy/deck/uno{
-	pixel_x = 5;
+	pixel_x = 1;
 	pixel_y = 5
 	},
 /turf/open/floor/almayer,
@@ -56783,10 +56783,10 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm{
 	pixel_y = 7;
-	pixel_x = -5
+	pixel_x = -3
 	},
 /obj/item/tool/pen{
-	pixel_x = -5
+	pixel_x = -4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -64772,29 +64772,29 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm{
 	pixel_y = 7;
-	pixel_x = -5
+	pixel_x = -4
 	},
 /obj/item/tool/pen{
-	pixel_x = -7
+	pixel_x = -5
 	},
 /obj/structure/machinery/door_control{
 	id = "Cell Privacy Shutters";
 	name = "Cell Privacy Shutters";
-	pixel_x = 8;
+	pixel_x = 10;
 	pixel_y = 9;
 	req_access = list(3)
 	},
 /obj/structure/machinery/door_control{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown Shutters";
-	pixel_x = 8;
+	pixel_x = 10;
 	pixel_y = 2;
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door_control{
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutters";
-	pixel_x = 8;
+	pixel_x = 10;
 	req_access_txt = "3";
 	pixel_y = -5
 	},
@@ -74013,15 +74013,15 @@
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
-	pixel_y = 5
+	pixel_y = 6
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
-	pixel_y = 1
+	pixel_y = 2
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
-	pixel_y = -3
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig)
@@ -85460,7 +85460,8 @@
 "tov" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/microwave{
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = 4
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
@@ -93013,7 +93014,8 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
-	sub_name = "Permanent Confinement"
+	sub_name = "Permanent Confinement";
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/perma)
@@ -95329,7 +95331,8 @@
 "xpw" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
-	sub_name = "Processing"
+	sub_name = "Processing";
+	pixel_x = -4
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_y = -25

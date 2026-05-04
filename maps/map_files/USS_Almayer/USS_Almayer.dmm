@@ -41572,7 +41572,7 @@
 /obj/structure/machinery/door_control{
 	id = "firearm_storage_armory";
 	name = "Armory Lockdown";
-	pixel_y = 10;
+	pixel_y = 3;
 	req_access_txt = "4";
 	pixel_x = 23
 	},

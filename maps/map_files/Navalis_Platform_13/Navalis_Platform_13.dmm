@@ -837,7 +837,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "acn" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -865,7 +867,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "acq" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -4573,14 +4577,8 @@
 /area/navalis/outdoors/comm_one)
 "alL" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
-/obj/structure/prop/hybrisa/misc/floorprops/grate4{
-	dir = 1
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/indoors/charon/surface_deck/main_deck)
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
 "alM" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /obj/structure/blocker/forcefield/all{
@@ -5350,7 +5348,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/oob/empty_space)
+/area/navalis/outdoors/exterior/log_ext)
 "aoe" = (
 /turf/closed/wall/hybrisa/colony,
 /area/navalis/indoors/logistic/primary_storage)
@@ -6290,6 +6288,12 @@
 "arX" = (
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"arY" = (
+/obj/structure/blocker/invisible_wall,
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
 "arZ" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -9041,15 +9045,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
-"aAB" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/pipes/standard/simple/visible/purple{
-	dir = 1
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "aAC" = (
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 5
@@ -9370,7 +9365,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/oob/empty_space)
+/area/navalis/outdoors/exterior/log_ext)
 "aBx" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 8
@@ -9440,7 +9435,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "aBD" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -10421,10 +10418,6 @@
 	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/port_hallway)
-"aDV" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/oob/empty_space)
 "aDW" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/darkbrown2/north,
@@ -11020,7 +11013,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "aFB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -12785,20 +12780,47 @@
 	},
 /turf/open/floor/prison/rampbottom/east,
 /area/navalis/outdoors/comm_one)
-"aKU" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/pipes/standard/simple/visible/purple{
-	dir = 1
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "aKV" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/command/upper_deck/server)
+"aKW" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 6
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_y = 19
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
+	pixel_y = -5
+	},
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	layer = 4.2;
+	pixel_y = 10
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	pixel_y = 19
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
 "aKX" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /turf/solid_open_space{
@@ -12841,6 +12863,24 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/indoors/ice_cavern)
+"aLc" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
 "aLd" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
@@ -12928,7 +12968,12 @@
 	icon_state = "W";
 	pixel_y = -1
 	},
-/turf/open/floor/corsat/blue/east,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	dir = 4
+	},
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	name = "PSV Charon"
+	},
 /area/navalis/indoors/charon/below_deck/middle)
 "aLr" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -12991,10 +13036,26 @@
 /obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
+"aLB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
 "aLC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/indoors/ice_cavern)
+"aLD" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/floor/plating/catwalk/grate/alt,
+/area/navalis/outdoors/comm_one)
 "aLE" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/oob)
@@ -13016,6 +13077,10 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/navalis/indoors/ice_cavern)
+"aLH" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/turf/open/floor/plating/catwalk/grate/alt,
+/area/navalis/oob/empty_space)
 "aLI" = (
 /obj/structure/cable/white{
 	icon_state = "2-5";
@@ -13150,6 +13215,11 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/navalis/indoors/ice_cavern)
+"aMb" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
+/turf/open/floor/plating/catwalk/grate/alt,
+/area/navalis/oob/empty_space)
 "aMc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/west,
@@ -13335,6 +13405,10 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/charon/below_deck/rear)
+"aMB" = (
+/obj/structure/barricade/handrail/strata/navalis,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/exterior/med_ext)
 "aMC" = (
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/charon/below_deck/middle)
@@ -13467,6 +13541,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob)
+"aNa" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/landing_zone_1)
 "aNb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -13540,6 +13617,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer2,
 /area/navalis/oob/empty_space)
 "aNj" = (
@@ -13578,6 +13656,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
 "aNq" = (
@@ -13643,6 +13722,9 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob)
+"aNB" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/exterior/med_ext)
 "aNC" = (
 /obj/structure/prop/invuln/rope{
 	pixel_y = 23
@@ -15485,13 +15567,6 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/indoors/residential/landing_pad)
-"aSJ" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/auto_turf/ice/layer1,
-/area/navalis/oob/empty_space)
 "aSK" = (
 /obj/structure/machinery/colony_floodlight/navalis_wall_light,
 /turf/open/floor/plating/catwalk/grate,
@@ -16052,12 +16127,6 @@
 	},
 /turf/open_space,
 /area/navalis/indoors/ice_cavern)
-"aUb" = (
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/indoors/charon/surface_deck/main_deck)
 "aUc" = (
 /obj/structure/platform/stone/strata/north,
 /turf/open_space,
@@ -16089,13 +16158,6 @@
 /obj/structure/platform/stone/strata,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
-"aUi" = (
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/auto_turf/ice/layer1,
-/area/navalis/oob/empty_space)
 "aUj" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/blocker/forcefield/all{
@@ -16140,14 +16202,6 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
-"aUp" = (
-/obj/structure/platform/metal/hybrisa/metalplatform5,
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/auto_turf/ice/layer2,
-/area/navalis/oob/empty_space)
 "aUq" = (
 /obj/structure/platform/metal/strata,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -16213,11 +16267,9 @@
 	pixel_x = 2
 	},
 /obj/structure/platform/stone/strata/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob/empty_space)
+/area/navalis/oob)
 "aUw" = (
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
@@ -16288,9 +16340,6 @@
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
 /obj/structure/platform/stone/strata/west,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
 "aUJ" = (
@@ -16465,12 +16514,6 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
-"aVi" = (
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/closed/wall/shiva/ice,
-/area/navalis/oob)
 "aVj" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/platform/stone/strata/west,
@@ -16528,6 +16571,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer0,
 /area/navalis/oob/empty_space)
 "aVv" = (
@@ -16581,6 +16625,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
 "aVE" = (
@@ -16615,6 +16660,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
 "aVK" = (
@@ -16625,6 +16671,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
 "aVL" = (
@@ -16635,6 +16682,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
 "aVM" = (
@@ -16737,6 +16785,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
 "aWd" = (
@@ -16887,6 +16936,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer0,
 /area/navalis/oob/empty_space)
 "aWH" = (
@@ -16897,6 +16947,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
 "aWJ" = (
@@ -17038,6 +17089,12 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/xeno_growth/residential)
+"aXi" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/landing_zone_1)
 "aXj" = (
 /obj/structure/platform/stone/strata/west,
 /turf/closed/wall/mineral/bone_resin,
@@ -17063,6 +17120,12 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
+"aXm" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/exterior/med_ext)
 "aXn" = (
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
@@ -18419,6 +18482,34 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/indoors/charon/surface_deck/main_deck)
+"bbO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"bbP" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"bbQ" = (
+/obj/structure/platform/stone/strata/north,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
+"bbR" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
+"bbS" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
 "bbT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2smooth/west,
@@ -19217,6 +19308,20 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_stern)
+"bee" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
+"bef" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob)
 "beg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -19235,6 +19340,22 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/residential/maint_stern)
+"bej" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
+"bek" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
 "bel" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -19355,12 +19476,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/almayer/tcomms,
 /area/navalis/indoors/command/upper_deck/server)
-"beG" = (
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/auto_turf/ice/layer1,
-/area/navalis/oob/empty_space)
 "beH" = (
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
@@ -19386,17 +19501,9 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
-"beN" = (
-/obj/structure/platform/stone/strata,
-/turf/open/auto_turf/ice/layer0,
-/area/navalis/oob/empty_space)
 "beO" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob/empty_space)
-"beP" = (
-/obj/structure/platform/stone/strata/west,
-/turf/open/auto_turf/ice/layer0,
 /area/navalis/oob/empty_space)
 "beQ" = (
 /obj/structure/platform/stone/strata/east,
@@ -21979,7 +22086,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "cvJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -23461,17 +23570,6 @@
 	},
 /turf/open/floor/prison/green/north,
 /area/navalis/indoors/command/aft_hallway)
-"dBg" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/solid_open_space{
-	density = 0
-	},
-/area/navalis/oob)
 "dBo" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -23928,7 +24026,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "dSa" = (
 /obj/structure/prop/oilrig/support_beam/brown,
@@ -26072,7 +26172,10 @@
 /area/navalis/oob/water)
 "fzy" = (
 /obj/structure/barricade/handrail/wire,
-/turf/open_space,
+/obj/structure/blocker/invisible_wall,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "fzF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27423,13 +27526,6 @@
 "gxJ" = (
 /turf/open/floor/prison/green/southeast,
 /area/navalis/indoors/med_sci/upper_level/on_duty)
-"gxP" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "gxR" = (
 /obj/structure/bed/sofa/vert/white/top,
 /obj/structure/machinery/camera/autoname{
@@ -28916,7 +29012,9 @@
 "hIt" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "hIu" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -30674,7 +30772,7 @@
 "jdA" = (
 /obj/structure/platform/metal/hybrisa/metalplatform2,
 /turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/outdoors/landing_zone_2)
+/area/navalis/outdoors/exterior/log_ext)
 "jdO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning"
@@ -31310,7 +31408,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "jFk" = (
 /obj/structure/bed/chair,
@@ -31708,7 +31808,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob)
 "jXh" = (
@@ -31905,7 +32004,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "kdC" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
@@ -32250,16 +32351,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
-"kso" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/closed/wall/shiva/ice,
-/area/navalis/oob)
 "kst" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/hybrisa/colony/reinforced,
@@ -32611,7 +32702,7 @@
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
 /turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/outdoors/landing_zone_2)
+/area/navalis/outdoors/exterior/log_ext)
 "kGI" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -32699,14 +32790,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2)
-"kIv" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "kIy" = (
 /obj/structure/barricade/handrail/strata/navalis,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -35190,8 +35273,8 @@
 /turf/open/floor/prison/blue/north,
 /area/navalis/outdoors/landing_zone_1)
 "mEJ" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
-/turf/open/floor/plating/catwalk/grate/alt,
+/obj/structure/barricade/handrail/strata/navalis,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_1)
 "mEO" = (
 /obj/structure/prop/resin_prop{
@@ -36046,7 +36129,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "npi" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -36265,7 +36350,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open/floor/corsat/plate,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "nyR" = (
 /obj/effect/alien/resin/sticky,
@@ -38612,13 +38699,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/escapepod/west,
 /area/navalis/oob/powered)
-"pnH" = (
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "pnK" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -42050,7 +42130,9 @@
 "rKU" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "rKZ" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -43935,13 +44017,6 @@
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/chemical_store)
-"teT" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "tfA" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate4{
@@ -45588,6 +45663,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_1)
 "utE" = (
@@ -45725,10 +45801,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/industrial/mining)
-"uxK" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/oob/empty_space)
 "uxP" = (
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
@@ -47662,14 +47734,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water)
-"vVu" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "vVA" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -48238,7 +48302,10 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/obj/structure/blocker/invisible_wall,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "wso" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -48704,7 +48771,9 @@
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wGq" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "wHk" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -49553,7 +49622,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/solid_open_space{
+	density = 0
+	},
 /area/navalis/oob/empty_space)
 "xqZ" = (
 /obj/structure/sign/poster/safety{
@@ -50276,13 +50347,6 @@
 "xSB" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/upper_deck/air_traffic_control)
-"xSL" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "xSO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -110552,10 +110616,10 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 wGq
 wGq
-tAt
+akU
 tAt
 tAt
 tAt
@@ -110715,7 +110779,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 rKU
 alk
 alk
@@ -112013,7 +112077,7 @@ azG
 azG
 bhn
 aTk
-dBg
+fRq
 bhh
 bhg
 sbz
@@ -113316,7 +113380,7 @@ aMS
 aMS
 aMS
 azG
-aVi
+azG
 hCk
 mkl
 mkl
@@ -113480,7 +113544,7 @@ aMS
 aMS
 aMS
 aMS
-aVi
+azG
 hCk
 mkl
 mkl
@@ -113644,7 +113708,7 @@ aMS
 aMS
 aMS
 aMS
-aVi
+azG
 jWM
 hCk
 mkl
@@ -113809,7 +113873,7 @@ aMS
 aMS
 aMS
 aMS
-aVi
+azG
 jWM
 hCk
 mkl
@@ -113974,7 +114038,7 @@ aMS
 aMS
 aMS
 azG
-aVi
+azG
 jWM
 hCk
 aMr
@@ -114139,7 +114203,7 @@ aMS
 aMS
 azG
 azG
-aVi
+azG
 jWM
 hCk
 pvY
@@ -114304,7 +114368,7 @@ aMS
 aMS
 azG
 azG
-aVi
+azG
 jWM
 hCk
 hCk
@@ -114469,11 +114533,11 @@ azG
 azG
 azG
 azG
-aVi
-aVi
-aVi
-aVi
-jWM
+azG
+azG
+azG
+azG
+azG
 hCk
 hCk
 aLq
@@ -114638,31 +114702,31 @@ azG
 azG
 azG
 azG
-kso
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
-crn
+azG
+azG
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 asq
 asq
 ari
@@ -114802,31 +114866,31 @@ azG
 azG
 azG
 azG
-aVi
-aVi
-aVi
-aVi
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
-aTk
+azG
+azG
+azG
+azG
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 asq
 asq
 ari
@@ -134183,23 +134247,23 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -134346,7 +134410,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 aTk
 aTk
@@ -134364,7 +134428,7 @@ aTk
 aTk
 aTk
 akU
-aTk
+akU
 tAt
 tAt
 tAt
@@ -134505,11 +134569,11 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
-kVD
-kVD
-kVD
+tAt
+tAt
+tAt
+tAt
+tAt
 akU
 aTk
 xuP
@@ -134529,12 +134593,12 @@ bsY
 jjl
 aTk
 akU
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -134699,7 +134763,7 @@ aTk
 aTk
 aTk
 akU
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -134864,7 +134928,7 @@ bsY
 jjl
 aTk
 akU
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -134994,7 +135058,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 qbD
 cRY
@@ -135028,7 +135092,7 @@ tNL
 cRY
 fLg
 aTk
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -135158,7 +135222,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 bMy
 uvz
@@ -135192,7 +135256,7 @@ cTA
 tKj
 xED
 aTk
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -135322,7 +135386,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 aSB
 qkp
@@ -135356,7 +135420,7 @@ lWd
 mEm
 bpA
 bdi
-kVD
+tAt
 aHA
 aAq
 aAq
@@ -135520,7 +135584,7 @@ lWd
 mEm
 xED
 alV
-kVD
+tAt
 xEC
 cCP
 ycI
@@ -135684,7 +135748,7 @@ lWd
 mEm
 xED
 aTk
-kVD
+tAt
 tAt
 cCP
 cCP
@@ -135848,7 +135912,7 @@ lWd
 mEm
 xED
 alV
-kVD
+tAt
 xEC
 cCP
 jUb
@@ -136012,7 +136076,7 @@ lWd
 mEm
 xED
 aTk
-kVD
+tAt
 tAt
 cCP
 cCP
@@ -136176,7 +136240,7 @@ lWd
 mEm
 qsv
 bdi
-kVD
+tAt
 aHA
 unX
 unX
@@ -136340,7 +136404,7 @@ lWd
 mEm
 xED
 alV
-kVD
+tAt
 xEC
 cCP
 ycI
@@ -136504,7 +136568,7 @@ lWd
 mEm
 xED
 aTk
-kVD
+tAt
 tAt
 cCP
 cCP
@@ -136668,7 +136732,7 @@ lWd
 mEm
 xED
 alV
-kVD
+tAt
 xEC
 cCP
 jUb
@@ -136832,7 +136896,7 @@ lWd
 mEm
 xED
 aTk
-kVD
+tAt
 tAt
 cCP
 cCP
@@ -136996,7 +137060,7 @@ lWd
 mEm
 bpA
 bdi
-kVD
+tAt
 nxB
 sFj
 sFj
@@ -137126,7 +137190,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 bMy
 dMN
@@ -137156,11 +137220,11 @@ aTv
 gaD
 sNz
 kjl
-vhb
+lWd
 oFr
 xED
 aTk
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -137290,7 +137354,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 pKK
 fxq
@@ -137318,13 +137382,13 @@ kjl
 aGY
 aGY
 aGY
-aGY
-aGY
+kjl
+kjl
+lWd
 nJC
-fxq
 wTK
 aTk
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -137454,7 +137518,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aTk
 aTk
 pKK
@@ -137481,14 +137545,14 @@ lWd
 lWd
 nJC
 fxq
-fxq
-fxq
-fxq
+caC
+aXi
+aNa
 mEJ
 utx
 aTk
 akU
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -137619,7 +137683,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 akU
 aTk
 aqy
@@ -137645,14 +137709,14 @@ amj
 sDf
 eBn
 ayF
-aqy
-aqy
-aqy
-aqy
-aTk
+bbO
+aXm
+aNB
+aMB
+aLH
 aTk
 tAt
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -137782,8 +137846,8 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
+tAt
+tAt
 bcw
 bcu
 arU
@@ -137809,14 +137873,14 @@ ihH
 aoE
 aoA
 ehL
-sKf
-arU
-arU
-arU
-bcu
+bbP
+aXm
+aNB
+aMB
+aMb
 bcc
-kVD
-kVD
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -137945,7 +138009,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 bcu
 fxc
@@ -137974,9 +138038,9 @@ aoE
 aoA
 ezf
 dzr
-maM
-gEZ
-gEZ
+wmy
+aoE
+aoE
 aoF
 gcp
 aBO
@@ -138108,7 +138172,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 aTk
 gEZ
@@ -138271,7 +138335,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 akU
@@ -138434,7 +138498,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -138597,7 +138661,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -138760,7 +138824,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 aTk
 aTk
@@ -138924,7 +138988,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 aKX
 aTk
 aoE
@@ -139088,7 +139152,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -139252,7 +139316,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -139416,7 +139480,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -139580,7 +139644,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 oTy
 aoE
@@ -139744,7 +139808,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bdQ
 bdO
 wmy
@@ -139908,7 +139972,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcw
 bdK
 wmy
@@ -140072,7 +140136,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 xLS
 aoE
@@ -140236,7 +140300,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -140400,7 +140464,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -140564,7 +140628,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 oTy
 aoE
@@ -140728,7 +140792,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 jkh
 bdW
 wmy
@@ -140892,7 +140956,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcw
 bdK
 wmy
@@ -141056,7 +141120,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 xLS
 aoE
@@ -141220,7 +141284,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -141384,7 +141448,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -141548,7 +141612,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 oTy
 aoE
@@ -141712,7 +141776,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 jkh
 bdO
 wmy
@@ -141876,7 +141940,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcw
 bdK
 wmy
@@ -142040,7 +142104,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 xLS
 aoE
@@ -142204,7 +142268,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -143515,7 +143579,7 @@ aLj
 fMd
 pyE
 aLj
-akU
+aTk
 aTk
 bcF
 oTy
@@ -143678,9 +143742,9 @@ aLj
 fMd
 pyE
 aLj
-akU
-akU
-kVD
+aTk
+aTk
+tAt
 jkh
 bdO
 wmy
@@ -143841,11 +143905,11 @@ aLj
 fMd
 pyE
 aLj
-akU
-akU
+aTk
+aTk
 tAt
 tAt
-kVD
+tAt
 bcF
 wmy
 aoE
@@ -144009,7 +144073,7 @@ aTk
 tAt
 tAt
 tAt
-kVD
+tAt
 bcF
 ndd
 aoE
@@ -144170,10 +144234,10 @@ eWl
 eWl
 bcu
 bck
-kVD
-kVD
 tAt
-kVD
+tAt
+tAt
+tAt
 jkh
 aFd
 ndd
@@ -144336,9 +144400,9 @@ axi
 gcp
 aBO
 bcc
-kVD
-kVD
-kVD
+tAt
+tAt
+tAt
 jkh
 aFd
 ndd
@@ -144502,9 +144566,9 @@ axi
 bcm
 bcu
 bcu
-bck
+bcc
 tAt
-bdQ
+jkh
 aVS
 aUk
 wmy
@@ -144673,14 +144737,14 @@ tAt
 aas
 aQs
 aSk
-aKU
-aAB
+arW
+anr
 asN
 aQp
 aQp
 atr
-aKU
-aAB
+arW
+anr
 asN
 aQp
 aQo
@@ -148738,10 +148802,10 @@ aVh
 azG
 azG
 aFh
-aPi
-aPi
+bee
+bee
 aVD
-aVs
+bej
 azG
 aSl
 aSl
@@ -149063,9 +149127,9 @@ tAt
 aVt
 aVh
 azG
-aSR
+bfg
 aWI
-aPi
+bee
 aNM
 aNT
 aMS
@@ -149227,7 +149291,7 @@ tAt
 aVM
 azG
 azG
-aSS
+bek
 aNM
 aNs
 aNT
@@ -149391,7 +149455,7 @@ aVt
 aVh
 azG
 azG
-aSS
+bek
 aUc
 aMS
 aMS
@@ -149554,7 +149618,7 @@ tAt
 aVM
 azG
 azG
-aSR
+bfg
 aWI
 aUc
 aMS
@@ -149718,7 +149782,7 @@ tAt
 aVM
 azG
 azG
-aSS
+bek
 aNM
 aNT
 aMS
@@ -149882,7 +149946,7 @@ tAt
 aVN
 aVg
 azG
-aSS
+bek
 aUc
 aMS
 aMS
@@ -150210,7 +150274,7 @@ aDK
 aDK
 aDK
 aDK
-aPi
+bee
 aUc
 aMS
 aMS
@@ -150374,7 +150438,7 @@ aDK
 aDK
 aDK
 aQE
-aPi
+bee
 aUd
 aWZ
 aWZ
@@ -150468,8 +150532,8 @@ aKc
 pXR
 lmb
 aBw
-pYk
-aDV
+anZ
+egr
 muo
 vKt
 kIp
@@ -150538,9 +150602,9 @@ tAt
 tAt
 aDK
 aDK
-aQE
-aPi
-ami
+bft
+bee
+bef
 aVL
 aWY
 aWV
@@ -150631,8 +150695,8 @@ aKc
 pXR
 pXR
 cBW
-uxK
-unv
+lpX
+anZ
 kGt
 muo
 aaL
@@ -150705,7 +150769,7 @@ aDK
 aDK
 aDK
 aDK
-aPi
+bee
 aVK
 aUd
 aVr
@@ -150795,7 +150859,7 @@ pXR
 pXR
 cBW
 aod
-pYk
+anZ
 jdA
 rSH
 dKk
@@ -150870,11 +150934,11 @@ aDK
 aDK
 aDK
 aDK
-ami
-aPi
+bef
+bee
 aWW
 aWU
-aPi
+bee
 aPi
 aUV
 aUQ
@@ -150957,9 +151021,9 @@ aKc
 onz
 pXR
 cBW
-aod
-pYk
-pYk
+aLD
+anV
+anV
 aoc
 aKT
 anY
@@ -151034,11 +151098,11 @@ aDK
 aQE
 aQE
 aDK
-aPi
-aPi
+bee
+bee
 aWX
-aPi
-ami
+bee
+bef
 aDK
 aPi
 aPi
@@ -151120,9 +151184,9 @@ pXR
 pXR
 pXR
 vTC
-aod
-pYk
-pYk
+aLD
+anV
+anV
 anV
 krp
 tJO
@@ -151199,9 +151263,9 @@ aQE
 aQE
 aDK
 aDK
-ami
-ami
-ami
+bef
+bef
+bef
 aQE
 aDK
 aDK
@@ -152519,8 +152583,8 @@ aVh
 azG
 azG
 azG
-aUw
-bhn
+bbS
+bbR
 tAt
 qCg
 cOk
@@ -153420,9 +153484,9 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
-kVD
+aTk
+aTk
+aTk
 tAt
 tAt
 tAt
@@ -153583,11 +153647,11 @@ tAt
 tAt
 tAt
 tAt
-kVD
+aTk
 njj
 njj
 njj
-kVD
+aTk
 tAt
 tAt
 tAt
@@ -153746,13 +153810,13 @@ tAt
 tAt
 tAt
 tAt
-xSL
+bcw
 rBQ
 rBQ
 rBQ
 rBQ
 rBQ
-teT
+bcc
 tAt
 tAt
 tAt
@@ -153903,24 +153967,24 @@ mgM
 mgM
 aol
 nyA
-gxP
-gxP
-gxP
-gxP
-gxP
-gxP
-gxP
-vVu
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
+bcK
 gCx
 rYJ
 rYJ
 rYJ
 atG
-kIv
-gxP
-gxP
-gxP
-gxP
+bcm
+bcu
+bcu
+bcu
+bcu
 isl
 isl
 isl
@@ -154809,7 +154873,7 @@ aDK
 aQE
 aDK
 aQE
-beP
+aVy
 aWc
 aNi
 aGi
@@ -154974,7 +155038,7 @@ aDK
 aDK
 aQE
 aQE
-beI
+aDK
 aNp
 azG
 aUg
@@ -155139,14 +155203,14 @@ aDK
 aDK
 aDK
 aDK
-beN
+aTZ
 azG
 azG
-aFm
+beR
 beJ
 aUE
 aUv
-aUp
+asq
 hCk
 hCk
 thk
@@ -155310,13 +155374,13 @@ azG
 azG
 azG
 azG
-beH
-aUi
-aUi
-aSJ
-aUb
+bbQ
+asq
+asq
+asq
+asq
 alL
-pnH
+qZs
 qZs
 qZs
 qcI
@@ -155475,9 +155539,9 @@ aml
 azG
 azG
 azG
-beH
-beG
-beG
+aFh
+asq
+asq
 asq
 asq
 asq
@@ -155639,7 +155703,7 @@ aDK
 aUf
 aUf
 aUf
-beI
+aDK
 asq
 asq
 asq
@@ -156207,9 +156271,9 @@ oLu
 wza
 oLu
 aeT
-abG
-qOc
-aBy
+aLB
+aLc
+aKW
 cvA
 jYP
 oLu
@@ -156708,9 +156772,9 @@ tww
 tww
 aJw
 asq
-tAt
-tAt
-tAt
+arY
+arY
+arY
 amz
 anf
 rIY
@@ -157038,7 +157102,7 @@ asq
 asq
 asq
 tAt
-eEP
+arY
 amz
 abY
 tsG
@@ -157202,7 +157266,7 @@ asq
 asq
 asq
 tAt
-eEP
+arY
 amz
 abZ
 amE
@@ -157366,7 +157430,7 @@ asq
 asq
 asq
 tAt
-eEP
+arY
 amY
 amA
 amE
@@ -157530,7 +157594,7 @@ asq
 asq
 asq
 tAt
-eEP
+arY
 amY
 amA
 amE
@@ -157694,7 +157758,7 @@ asq
 asq
 tAt
 tAt
-eEP
+arY
 amz
 amO
 amE
@@ -178455,7 +178519,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 kVD
 aTk
 aTk
@@ -178618,7 +178682,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 akU
 aTk
@@ -178781,7 +178845,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 aTk
 tAt
@@ -178944,7 +179008,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 akU
@@ -179107,7 +179171,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -179270,7 +179334,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 tAt
 tAt
@@ -179433,7 +179497,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+tAt
 tAt
 akU
 aTk
@@ -189580,7 +189644,7 @@ eyY
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -189744,7 +189808,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -189908,7 +189972,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190072,7 +190136,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190236,7 +190300,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190361,7 +190425,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 kVD
 tAt
@@ -190400,7 +190464,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190525,8 +190589,8 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
+akU
+akU
 kVD
 tAt
 tAt
@@ -190564,7 +190628,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190690,7 +190754,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 tAt
 tAt
@@ -190728,7 +190792,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -190854,7 +190918,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 tAt
 tAt
@@ -190892,7 +190956,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -191018,7 +191082,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 tAt
 tAt
@@ -191056,7 +191120,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -191182,7 +191246,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 tAt
 tAt
@@ -191345,8 +191409,8 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
+akU
+akU
 kVD
 tAt
 dvZ
@@ -191509,7 +191573,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 tAt
 dvZ
@@ -191549,7 +191613,7 @@ tAt
 tAt
 tAt
 tAt
-kVD
+aTk
 aTk
 tAt
 tAt
@@ -191673,7 +191737,7 @@ tAt
 tAt
 tAt
 tAt
-tAt
+akU
 kVD
 dvZ
 dvZ
@@ -191837,7 +191901,7 @@ tAt
 tAt
 ete
 fGf
-tAt
+akU
 tAt
 dvZ
 dvZ
@@ -192622,7 +192686,7 @@ aMQ
 aMQ
 tAt
 tAt
-kVD
+aTk
 kYL
 kYL
 hoK
@@ -192664,7 +192728,7 @@ geS
 bdL
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -192785,11 +192849,11 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
-tAt
-kVD
-kVD
+aTk
+aTk
+akU
+aTk
+aTk
 api
 cEG
 icw
@@ -192828,7 +192892,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -192949,11 +193013,11 @@ kVD
 kVD
 kVD
 kVD
-kVD
-kVD
-kVD
-tAt
-tAt
+aTk
+aTk
+aTk
+akU
+akU
 api
 icw
 icw
@@ -192992,7 +193056,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193156,7 +193220,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193320,7 +193384,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193484,7 +193548,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193648,7 +193712,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193812,7 +193876,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -193976,7 +194040,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194140,7 +194204,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194304,7 +194368,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194468,7 +194532,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194632,7 +194696,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194796,7 +194860,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -194960,7 +195024,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195124,7 +195188,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195288,7 +195352,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195452,7 +195516,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195616,7 +195680,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195780,7 +195844,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -195944,7 +196008,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196108,7 +196172,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196272,7 +196336,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196436,7 +196500,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196600,7 +196664,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196764,7 +196828,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -196928,7 +196992,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -197092,7 +197156,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -197256,7 +197320,7 @@ bdL
 bdL
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -197420,7 +197484,7 @@ bdL
 tAt
 tAt
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -197583,8 +197647,8 @@ geS
 bdL
 tAt
 tAt
-tAt
-tAt
+akU
+akU
 tAt
 tAt
 tAt
@@ -197746,8 +197810,8 @@ geS
 geS
 bdL
 tAt
-tAt
-tAt
+akU
+akU
 tAt
 tAt
 tAt
@@ -197910,7 +197974,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -198074,7 +198138,7 @@ geS
 geS
 pNx
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -198238,7 +198302,7 @@ geS
 geS
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -198402,7 +198466,7 @@ geS
 bdL
 bdL
 tAt
-tAt
+akU
 tAt
 tAt
 tAt
@@ -199357,14 +199421,14 @@ aRD
 dvZ
 dvZ
 dvZ
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 ncP
 ncP
 ncP
@@ -199372,15 +199436,15 @@ ncP
 ncP
 ncP
 ncP
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 dvZ
 dvZ
 dvZ

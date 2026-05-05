@@ -29,8 +29,8 @@
 					new_title_text = "Exile Broadcast"
 				if(FACTION_YAUTJA_STRANDED)
 					new_title_text = "Faint Broadcast"
-		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
-		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[new_title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		var/broad_text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[new_title_text]</u></span><br>" + broad_text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
 		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
 		playsound_client(hunter.client, elder_picked, 25)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Message Log:")]<br>[SPAN_YAUTJABOLDBIG("[new_title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)

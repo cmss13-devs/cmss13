@@ -51,7 +51,7 @@
 
 		var/list/xenobone_list = list("Defender", "Warrior", "Praetorian")
 
-		if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+		if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
 			bracer_material = lowertext(mob_client.prefs.predator_use_legacy)
 		else if(mob_client.can_use_pred_specials() && (mob_client.prefs.predator_use_unique in xenobone_list))
 			bracer_material = "xenobone"

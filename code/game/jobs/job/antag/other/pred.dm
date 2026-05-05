@@ -87,7 +87,7 @@
 
 /// Does this client have access to Yautja Legacy sets?
 /client/proc/can_use_pred_legacies()
-	return check_whitelist_status(WHITELIST_YAUTJA_LEGACY)
+	return check_whitelist_status_list(list(WHITELIST_YAUTJA_LEGACY, WHITELIST_YAUTJA_COUNCIL, WHITELIST_YAUTJA_LEADER))
 
 /// Does this client have access to Yautja Special (Elite) sets?
 /client/proc/can_use_pred_specials(higher_lock = FALSE)

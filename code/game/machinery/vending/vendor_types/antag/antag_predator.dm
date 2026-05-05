@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -346,6 +346,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Serpent")
 				icon_state = "halfarmor_legacy_serpent"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_serpent")
+			if("Knight")
+				icon_state = "halfarmor_legacy_knight"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_knight")
 		user.update_inv_wear_suit()
 		return
 
@@ -399,7 +402,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -422,6 +425,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 				)
 				icon_state = "halfarmor_legacy_serpent"
 				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_serpent")
+			if("Knight")
+				icon_state = "halfarmor_legacy_knight"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_knight")
 		user.update_inv_wear_mask()
 		return
 
@@ -492,7 +498,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "legacy_y-boots_dragon"
@@ -512,6 +518,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Serpent")
 				icon_state = "legacy_y-boots_serpent"
 				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_serpent")
+			if("Knight")
+				icon_state = "legacy_y-boots_knight"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_knight")
 		user.update_inv_shoes()
 		return
 

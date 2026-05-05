@@ -23,7 +23,7 @@
 	if(!player)
 		return
 
-	.["can_use_legacy"] = user.client.check_whitelist_status(WHITELIST_YAUTJA_LEGACY)
+	.["can_use_legacy"] = user.client.can_use_pred_legacies()
 
 	var/list/options = list(WHITELIST_NORMAL)
 	if(player.whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))

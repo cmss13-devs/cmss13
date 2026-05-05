@@ -168,7 +168,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "fullcape"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR

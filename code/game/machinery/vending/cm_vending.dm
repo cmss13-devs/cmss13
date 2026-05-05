@@ -858,7 +858,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				.["theme"] = VENDOR_THEME_UPP
 			if(FACTION_CLF)
 				.["theme"] = VENDOR_THEME_CLF
-			if(FACTION_YAUTJA)
+			if(FACTION_YAUTJA, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED, FACTION_YAUTJA_YOUNG)
 				.["theme"] = VENDOR_THEME_YAUTJA
 	.["show_points"] = show_points | use_snowflake_points
 

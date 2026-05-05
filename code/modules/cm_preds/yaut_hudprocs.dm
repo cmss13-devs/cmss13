@@ -317,7 +317,7 @@
 		log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as dishonorable!")
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 		if(istype(bracer))
-			message_all_yautja("[real_name] has un-marked [T] as dishonorable!'.", broadcast_networks = bracer.received_networks)
+			message_all_yautja("[real_name] has un-marked [T] as dishonorable!.", broadcast_networks = bracer.received_networks)
 
 		T.hunter_data.dishonored_set = null
 		hunter_data.dishonored_targets -= T

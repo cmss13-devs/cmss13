@@ -152,7 +152,7 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A, teleportation_type)
+/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A)
 	set waitfor = 0
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
@@ -166,27 +166,10 @@
 		M = User.pulling
 
 	if(teleport_x && teleport_y && teleport_z)
-		/* TODO: replace this -spookydonut
-		switch(teleportation_type)
-			if(1)
-				sleep(animation_teleport_quick_out(A)) //Sleep for the duration of the animation.
-			if(2)
-				sleep(animation_teleport_magic_out(A))
-			if(3)
-				sleep(animation_teleport_spooky_out(A))*/
-
 		if(A && A.loc)
 			A.forceMove(locate(teleport_x,teleport_y,teleport_z))
 		if(M && M.loc)
 			M.forceMove(locate(teleport_x,teleport_y,teleport_z))
-			/*
-			switch(teleportation_type)
-				if(1)
-					animation_teleport_quick_in(A)
-				if(2)
-					animation_teleport_magic_in(A)
-				if(3)
-					animation_teleport_spooky_in(A)*/
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
@@ -266,7 +249,7 @@
 	teleport_x = destination.x //Configure the destination locations.
 	teleport_y = destination.y
 	teleport_z = destination.z
-	..(traveler, 1) //Run the parent proc for teleportation.
+	..(traveler) //Run the parent proc for teleportation.
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 

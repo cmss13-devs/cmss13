@@ -616,6 +616,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"//placeholder
 	req_access = null
+	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_BADBLOOD)
 	vendor_role = list(JOB_BADBLOOD, JOB_STRANDED_PRED, JOB_PRED_SURVIVOR)
 
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/right

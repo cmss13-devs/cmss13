@@ -9,7 +9,7 @@
 
 /obj/effect/landmark/badblood_spawn
 	name = "badblood spawn"
-	icon = 'icons/temp_landmark.dmi' // Change before merge
+	icon = 'icons/landmarks.dmi'
 	icon_state = "badblood_spawn"
 
 /obj/effect/landmark/badblood_spawn/New()

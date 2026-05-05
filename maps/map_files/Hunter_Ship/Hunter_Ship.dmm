@@ -4729,7 +4729,7 @@
 "jM" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/lower_deck/corridors)
@@ -6818,7 +6818,7 @@
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
 	dir = 1;
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -6970,7 +6970,7 @@
 "pa" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -7125,7 +7125,7 @@
 "pi" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -8488,7 +8488,7 @@
 "sv" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)
@@ -12352,7 +12352,7 @@
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
 	dir = 1;
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)
@@ -17644,7 +17644,7 @@
 "MC" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393)
+	req_one_access = list(391,392,393,394)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)

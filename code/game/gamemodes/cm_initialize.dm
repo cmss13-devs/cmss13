@@ -282,6 +282,12 @@ Additional game mode variables.
 		new_player_mob.spawning = TRUE
 		new_player_mob.close_spawn_windows()
 
+	var/datum/job/predator_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	if(!predator_job)
+		stack_trace("Tried to spawn a predator but the job could not be found!")
+		to_chat(pred_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+
 	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
@@ -289,13 +295,7 @@ Additional game mode variables.
 	if(new_player_mob)
 		qdel(new_player_mob)
 
-	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-
-	if(!J)
-		qdel(new_predator)
-		return
-
-	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	GLOB.RoleAuthority.equip_role(new_predator, predator_job, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.", broadcast_network = YAUTJA_NET_HUNTING)
@@ -328,7 +328,7 @@ Additional game mode variables.
 		stack_trace("Tried to spawn a badblood but the job could not be found!")
 		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
 		return
-	
+
 	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
 	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
 	new_badblood.client = badblood_candidate.client
@@ -363,9 +363,9 @@ Additional game mode variables.
 	var/datum/job/stranded_job = GLOB.RoleAuthority.roles_by_name[JOB_STRANDED_PRED]
 	if(!stranded_job)
 		stack_trace("Tried to spawn a stranded pred but the job could not be found!")
-		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
 		return
-	
+
 	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
 	stranded_candidate.mind.transfer_to(new_stranded, TRUE)
 	new_stranded.client = stranded_candidate.client

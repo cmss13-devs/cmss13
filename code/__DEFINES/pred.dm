@@ -9,7 +9,7 @@
 #define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector", "Shadow", "Serpent", "Knight")
 #define PRED_UNIQUES list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior")
 #define PRED_UNIQUES_LEAD list("Praetorian")
-#define PRED_UNIQUES_ALL PRED_UNIQUES + PRED_UNIQUES_LEAD
+#define PRED_UNIQUES_ALL list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior", "Praetorian")
 #define PRED_SKIN_COLOR list("tan", "green", "purple", "blue", "red", "black")
 
 #define PRED_YAUTJA_CAPE "yautja cape"

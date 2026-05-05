@@ -309,7 +309,7 @@
 /datum/equipment_preset/goon/researcher/lead
 	name = "Weyland-Yutani Corporate Research Consultant (Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	role_comm_title = "CRC L."
+	role_comm_title = "CRC L"
 	assignment = JOB_WY_RESEARCH_LEAD
 	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)

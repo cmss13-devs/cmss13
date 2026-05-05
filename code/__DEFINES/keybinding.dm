@@ -98,6 +98,7 @@
 #define COMSIG_KB_HUMAN_WEAPON_SHOTGUN_TUBE "keybinding_human_weapon_shotgun_tube"
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE "keybinding_human_weapon_toggle_frontline_mode"
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF "keybinding_human_weapon_toggle_iff"
+#define COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST "keybinding_human_weapon_toggle_aim_assist"
 
 //Living
 #define COMSIG_KB_SURGERY_INTENT_DOWN "keybinding_living_surgery_intent_down"

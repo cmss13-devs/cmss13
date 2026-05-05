@@ -91,7 +91,7 @@
 
 /mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	if (!check_state())
+	if(!check_state())
 		return FALSE
 
 	if(!isliving(movable_atom))
@@ -268,20 +268,20 @@
 /datum/action/xeno_action/activable/lunge/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/lunge_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
 			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
-	if (!affected_atom)
+	if(!affected_atom)
 		return
 
-	if (!isturf(lunge_user.loc))
+	if(!isturf(lunge_user.loc))
 		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if (!lunge_user.check_state() || lunge_user.agility)
+	if(!lunge_user.check_state() || lunge_user.agility)
 		return
 
 	if(lunge_user.can_not_harm(affected_atom) || !ismob(affected_atom))
@@ -292,7 +292,7 @@
 	if(carbon.stat == DEAD)
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	apply_cooldown()
@@ -302,7 +302,7 @@
 
 	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
 
-	if (lunge_user.Adjacent(carbon))
+	if(lunge_user.Adjacent(carbon))
 		lunge_user.start_pulling(carbon,1)
 		if(ishuman(carbon))
 			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
@@ -314,16 +314,16 @@
 /datum/action/xeno_action/activable/fling/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/fling_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
+	if(!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
 		return
 
-	if (!fling_user.check_state() || fling_user.agility)
+	if(!fling_user.check_state() || fling_user.agility)
 		return
 
-	if (!fling_user.Adjacent(affected_atom))
+	if(!fling_user.Adjacent(affected_atom))
 		return
 
 	var/mob/living/carbon/carbon = affected_atom
@@ -340,7 +340,7 @@
 		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
@@ -368,23 +368,23 @@
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/punch_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
+	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
-	if (!punch_user.check_state() || punch_user.agility)
+	if(!punch_user.check_state() || punch_user.agility)
 		return
 
 	var/distance = get_dist(punch_user, affected_atom)
 
-	if (distance > 2)
+	if(distance > 2)
 		return
 
 	var/mob/living/carbon/carbon = affected_atom
 
-	if (!punch_user.Adjacent(carbon))
+	if(!punch_user.Adjacent(carbon))
 		return
 
 	if(carbon.stat == DEAD)
@@ -394,10 +394,10 @@
 
 	var/obj/limb/target_limb = carbon.get_limb(check_zone(punch_user.zone_selected))
 
-	if (ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
 		target_limb = carbon.get_limb("chest")
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	carbon.last_damage_data = create_cause_data(initial(punch_user.caste_type), punch_user)

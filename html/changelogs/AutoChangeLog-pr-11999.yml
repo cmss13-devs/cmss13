@@ -1,0 +1,5 @@
+author: "mrkivnv"
+delete-after: True
+changes:
+  - imageadd: "added new sechud icons for marines and provost, added IO sechud icon"
+  - imagedel: "deleted old sechud icons for marines and provost, removed MP Cadet sechud icon"

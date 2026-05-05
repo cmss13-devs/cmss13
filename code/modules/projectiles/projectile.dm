@@ -868,7 +868,7 @@
 
 	if(isliving(bullet.firer))
 		var/mob/living/shooter_living = bullet.firer
-		if(!can_see(shooter_living,src))
+		if(!can_see(shooter_living,src,6))
 			. -= 15 //Can't see the target (Opaque thing between shooter and target)
 
 /mob/living/carbon/human/get_projectile_hit_chance(obj/projectile/bullet)

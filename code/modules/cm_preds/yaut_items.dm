@@ -2086,4 +2086,9 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		to_chat(src, SPAN_XENOANNOUNCE("Our connection to the hivemind has been restored!"))
 	return TRUE
 
+/mob/living/carbon/xenomorph/hellhound/handle_enthrall()
+	return FALSE
+/mob/living/carbon/xenomorph/hellhound/handle_dethrall()
+	return FALSE
+
 #undef RESERVE_HUNT_COOLDOWN

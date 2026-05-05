@@ -548,18 +548,18 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	if(check_channel == RADIO_CHANNEL_HEADSET)
 		check_channel = default_freq
 
-	if((check_channel == RADIO_CHANNEL_YAUTJA_OVERSEER) || (!(channel == RADIO_CHANNEL_HEADSET) && !(check_channel in channels)))
+	if((check_channel == RADIO_CHANNEL_YAUTJA_OVERSEER) || (channel != RADIO_CHANNEL_HEADSET && !(check_channel in channels)))
 		return ..()
 
 	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(hellhound.stat)
 			continue
 		// Check that it should actually be hearing this stuff.
-		if((check_channel == RADIO_CHANNEL_YAUTJA) && !(hellhound.faction == FACTION_YAUTJA))
+		if((check_channel == RADIO_CHANNEL_YAUTJA) && hellhound.faction != FACTION_YAUTJA)
 			continue
-		if((check_channel == RADIO_CHANNEL_YAUTJA_STRANDED) && !(hellhound.faction == FACTION_YAUTJA_STRANDED))
+		if((check_channel == RADIO_CHANNEL_YAUTJA_STRANDED) && hellhound.faction != FACTION_YAUTJA_STRANDED)
 			continue
-		if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && !(hellhound.faction == FACTION_YAUTJA_BADBLOOD))
+		if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && hellhound.faction != FACTION_YAUTJA_BADBLOOD)
 			continue
 		to_chat(hellhound, SPAN_YAUTJABOLD("\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."))
 
@@ -1135,7 +1135,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 			icon_state = "yauttrap1"
 	..()
 
-/obj/item/hunting_trap/attack_self(mob/living/carbon/human/user as mob)
+/obj/item/hunting_trap/attack_self(mob/living/carbon/human/user)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -1150,7 +1150,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_NOTICE("[src] is now armed."))
 		if(isspeciesyautja(user))
 			armed_faction = user.faction
-		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has armed \the [src] at [get_location_in_text(user)].</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has armed [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has armed \a [src] at [get_location_in_text(user)].")
 		user.drop_held_item()
 
@@ -1211,10 +1211,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 					to_chat(trap_target, SPAN_NOTICE("We carefully avoid stepping on the trap."))
 					return
 				trapMob(trap_target)
-				for(var/mob/O in viewers(trap_target, null))
-					if(O == trap_target)
+				for(var/mob/viewer in viewers(trap_target, null))
+					if(viewer == trap_target)
 						continue
-					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[trap_target] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
+					viewer.show_message(SPAN_WARNING("[icon2html(src, viewer)] <B>[trap_target] gets caught in [src].</B>"), SHOW_MESSAGE_VISIBLE)
 			else if(isanimal(trap_mob))
 				armed = FALSE
 				var/mob/living/simple_animal/simple_mob = trap_mob
@@ -2008,7 +2008,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		return FALSE
 	var/mob/living/carbon/xenomorph/thrall_target = target
 
-	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || !(user.faction == FACTION_YAUTJA_BADBLOOD))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || user.faction != FACTION_YAUTJA_BADBLOOD)
 		to_chat(user, SPAN_WARNING("You have no idea what you're doing with this thing."))
 		return FALSE
 
@@ -2035,7 +2035,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 				SPAN_WARNING("You decide not to enthrall [thrall_target]."))
 		return FALSE
 
-	if(!tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No",), 10 SECONDS) == "Yes")
+	if(!tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No"), 10 SECONDS) == "Yes")
 		to_chat(user, SPAN_WARNING("The hivemind resists your attempt to break the connection! (This player does not wish to be a thrall.)"))
 		return FALSE
 

@@ -1335,7 +1335,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 	return results
 
 /datum/crewmonitor/yautja/proc/get_assignment_title(mob/living/carbon/human/hunter)
-	var/assignment_title = "Yautja"
+	var/assignment_title = "Unknown"
 	if(!hunter)
 		return assignment_title
 	var/preset_name = hunter.assigned_equipment_preset?.name

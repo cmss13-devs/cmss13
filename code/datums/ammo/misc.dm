@@ -247,7 +247,7 @@
 	loaded_icon = "trap"
 	arrow_icon = "arrow_trap"
 
-/datum/ammo/arrow/snare/on_hit_mob(mob/mob,obj/projectile/projectile)
+/datum/ammo/arrow/snare/on_hit_mob(mob/mob, obj/projectile/projectile)
 	mob.apply_effect(1, STUN)
 	mob.apply_effect(3, DAZE)
 	var/obj/item/arrow/snare/arrow = new(get_turf(mob))

@@ -43,7 +43,7 @@
 		return
 	var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
 	playsound(user, reload_sound, 25, TRUE)
-	current_mag.current_rounds--
+	current_mag.current_rounds = 0
 	if(user)
 		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from [src]."))
 		user.put_in_hands(unloaded_arrow)
@@ -154,7 +154,7 @@
 
 /obj/item/arrow/proc/change_warhead(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
+		to_chat(user, SPAN_NOTICE("You attempt to tweak [src], but nothing happens."))
 		return
 	if(activated)
 		activated = FALSE
@@ -178,7 +178,7 @@
 
 /obj/item/arrow/dynamic_warhead/change_warhead(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
+		to_chat(user, SPAN_NOTICE("You attempt to tweak [src], but nothing happens."))
 		return
 	if(activated)
 		activated = FALSE
@@ -226,12 +226,12 @@
 
 /obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
 
 /obj/item/storage/belt/gun/quiver/dynamic/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/arrow/dynamic_warhead(src)
 
 /obj/item/arrow/snare
@@ -249,27 +249,27 @@
 /obj/item/arrow/snare/change_warhead(mob/user)
 	return
 
-/obj/item/arrow/snare/proc/trigger_snare(mob/living/carbon/C)
+/obj/item/arrow/snare/proc/trigger_snare(mob/living/carbon/target)
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = 5, resistible = TRUE)
+	var/list/tether_effects = apply_tether(src, target, range = 5, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 
-	trapped_mob = C
+	trapped_mob = target
 
 	icon_state = "arrow_trap_active"
-	playsound(C,'sound/weapons/tablehit1.ogg', 25, 1)
-	to_chat(C, "[icon2html(src, C)] \red <B>You get caught in \the [src]!</B>")
+	playsound(target,'sound/weapons/tablehit1.ogg', 25, 1)
+	to_chat(target, "[icon2html(src, target)] \red <B>You get caught in [src]!</B>")
 
-	C.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].</font>")
-	log_attack("[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(target)] was caught in \a [src] at [get_location_in_text(target)].</font>")
+	log_attack("[key_name(target)] was caught in \a [src] at [get_location_in_text(target)].")
 
-	if(ishuman(C))
-		C.emote("pain")
-	if(isxeno(C))
-		var/mob/living/carbon/xenomorph/xeno = C
-		C.emote("needhelp")
+	if(ishuman(target))
+		target.emote("pain")
+	if(isxeno(target))
+		var/mob/living/carbon/xenomorph/xeno = target
+		target.emote("needhelp")
 		xeno.AddComponent(/datum/component/status_effect/interference, 100) // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(xeno, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	disarm_timer = addtimer(CALLBACK(src, PROC_REF(disarm)), 30 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -282,33 +282,32 @@
 	icon_state = "arrow_trap"
 	if(user)
 		to_chat(user, SPAN_NOTICE("[src] is now disarmed."))
-		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if(trapped_mob)
 		if(isxeno(trapped_mob))
-			var/mob/living/carbon/xenomorph/X = trapped_mob
-			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
-		trapped_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(trapped_mob)] was freed frin \a [src].</font>")
+			var/mob/living/carbon/xenomorph/xeno = trapped_mob
+			UnregisterSignal(xeno, COMSIG_XENO_PRE_HEAL)
+		trapped_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(trapped_mob)] was freed from \a [src].</font>")
 		trapped_mob = null
 	cleanup_tether()
 
 /obj/item/arrow/snare/proc/cleanup_tether()
-	if (tether_effect)
-		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
-		qdel(tether_effect)
-		tether_effect = null
+	if(!tether_effect)
+		return
+	UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
+	QDEL_NULL(tether_effect)
 
 /obj/item/arrow/snare/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
 /obj/item/arrow/snare/attack_hand(mob/living/carbon/human/user)
-	if(anchored)
-		if(trapped_mob && (trapped_mob == user))
-			user.resist()
-			return
-		else if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			disarm(user)
-		else
-			return
-	. = ..()
+	if(!anchored)
+		return ..()
+	if(trapped_mob && trapped_mob == user)
+		user.resist()
+		return
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		disarm(user)
+		return ..()

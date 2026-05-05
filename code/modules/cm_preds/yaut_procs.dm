@@ -19,9 +19,9 @@
 			if(YAUTJA_NET_ALL)
 				new_title_text = "Unidentified Broadcast"
 	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
-		if(!pred_can_receive_message(hunter, list(broadcast_network)))
+		if(!pred_can_receive_message(hunter, broadcast_network))
 			continue
-		if((elder_user = "AutomatedMessage") && (broadcast_network == YAUTJA_NET_ALL))
+		if(elder_user == "AutomatedMessage" && broadcast_network == YAUTJA_NET_ALL)
 			switch(hunter.faction)//Horrific code, fix it.
 				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG)
 					new_title_text = "Elder Overseer"
@@ -79,13 +79,13 @@
 
 	var/input = tgui_input_text(src, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
 	if(!input)
-		return FALSE
+		return
 	if(is_living_yautja)
 		var/target_net = mob.faction
 		if(!(target_net in FACTION_LIST_ALL_YAUTJA))
 			target_net = YAUTJA_NET_HUNTING
 		elder_overseer_message(input, mob.real_name, "[key_name(src)]", target_net)
-		return TRUE
+		return
 
 	var/new_broadcast_network = YAUTJA_NET_HUNTING
 	var/choice = tgui_alert(usr, "Who is this announcement for?", "Target Network?", list("Hunting Party", "Bad-Bloods", "Stranded", "All"))

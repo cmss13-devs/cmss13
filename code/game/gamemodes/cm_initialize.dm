@@ -166,7 +166,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as a Yautja, [new_predator.real_name].")
 
-	if(pred_candidate && !QDELETED(pred_candidate))
+	if(!QDELETED(pred_candidate))
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/attempt_to_join_as_badblood(mob/badblood_candidate)
@@ -176,7 +176,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as a Yautja Bad-Blood, [new_predator.real_name].")
 
-	if(badblood_candidate)
+	if(!QDELETED(badblood_candidate))
 		badblood_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/attempt_to_make_stranded_pred(mob/stranded_candidate)
@@ -186,7 +186,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as a Stranded Yautja, [new_predator.real_name].")
 
-	if(stranded_candidate)
+	if(!QDELETED(stranded_candidate))
 		stranded_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
@@ -234,20 +234,25 @@ Additional game mode variables.
 /datum/game_mode/proc/has_been_predator(key)
 	if(key in yautja_hunters)
 		return TRUE
-	else if(key in yautja_youngbloods)
+	if(key in yautja_youngbloods)
 		return TRUE
-	else if(key in yautja_badbloods)
+	if(key in yautja_badbloods)
 		return TRUE
-	else if(key in yautja_stranded)
+	if(key in yautja_stranded)
 		return TRUE
-	else
-		return FALSE
+	return FALSE
 
+/// Attempts to load the predator survival base if its not already loaded. Returns TRUE if it is/was fully loaded.
 /datum/game_mode/proc/load_predsurv_base()
+	if(loaded_predsurv_base == "loading")
+		UNTIL(loaded_predsurv_base != "loading")
+		return !!loaded_predsurv_base
+	if(loaded_predsurv_base != "loading")
+		return TRUE
 	loaded_predsurv_base = "loading"
 	loaded_predsurv_base = SSmapping.lazy_load_template(/datum/lazy_template/predsurv_base, force = TRUE)
-	if(!loaded_predsurv_base || (loaded_predsurv_base == "loading"))
-		log_debug("Error loading pred survivor base!")
+	if(!loaded_predsurv_base || loaded_predsurv_base == "loading")
+		stack_trace("Error loading pred survivor base!")
 		loaded_predsurv_base = null
 		return FALSE
 	return TRUE
@@ -304,14 +309,12 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_badblood")
 		return
 
-	if(!loaded_predsurv_base)
-		load_predsurv_base()
-		if(!loaded_predsurv_base)
-			return FALSE
+	if(!load_predsurv_base())
+		return
 
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred survivor in transform_badblood.")
+		stack_trace("Failed to find spawn point for pred survivor in transform_badblood.")
 		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!badblood_candidate?.mind) // Legacy check
@@ -320,15 +323,15 @@ Additional game mode variables.
 		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
 		return
 
+	var/datum/job/badblood_job = GLOB.RoleAuthority.roles_by_name[JOB_BADBLOOD]
+	if(!badblood_job)
+		stack_trace("Tried to spawn a badblood but the job could not be found!")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+	
 	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
 	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
 	new_badblood.client = badblood_candidate.client
-
-	var/datum/job/badblood_job = GLOB.RoleAuthority.roles_by_name[JOB_BADBLOOD]
-
-	if(!badblood_job)
-		qdel(new_badblood)
-		return
 
 	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
 
@@ -341,16 +344,14 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_stranded_pred")
 		return
 
-	if(!loaded_predsurv_base)
-		load_predsurv_base()
-		if(!loaded_predsurv_base)
-			return FALSE
+	if(!load_predsurv_base())
+		return
 
 	//var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
 	//var/turf/spawn_point = get_turf(position)
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred survivor in transform_stranded_pred.")
+		stack_trace("Failed to find spawn point for pred survivor in transform_stranded_pred.")
 		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!stranded_candidate?.mind) // Legacy check
@@ -359,15 +360,15 @@ Additional game mode variables.
 		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
 		return
 
+	var/datum/job/stranded_job = GLOB.RoleAuthority.roles_by_name[JOB_STRANDED_PRED]
+	if(!stranded_job)
+		stack_trace("Tried to spawn a stranded pred but the job could not be found!")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+	
 	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
 	stranded_candidate.mind.transfer_to(new_stranded, TRUE)
 	new_stranded.client = stranded_candidate.client
-
-	var/datum/job/stranded_job = GLOB.RoleAuthority.roles_by_name[JOB_STRANDED_PRED]
-
-	if(!stranded_job)
-		qdel(new_stranded)
-		return
 
 	GLOB.RoleAuthority.equip_role(new_stranded, stranded_job, new_stranded.loc)
 

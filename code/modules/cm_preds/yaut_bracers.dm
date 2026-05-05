@@ -57,7 +57,7 @@
 	if(slot == WEAR_HANDS)
 		START_PROCESSING(SSobj, src)
 		owner = user
-		if(badblood || (owner.faction == FACTION_YAUTJA_BADBLOOD) || (owner.faction == FACTION_YAUTJA_STRANDED))
+		if(badblood || owner.faction == FACTION_YAUTJA_BADBLOOD || owner.faction == FACTION_YAUTJA_STRANDED)
 			return
 		if(isyautja(owner))
 			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
@@ -1437,13 +1437,10 @@
 		return
 
 	var/mob/source_mob = user.client.get_eye()
-	var/is_local = FALSE
-	if(source_mob == user)
-		is_local = TRUE
+	var/is_local = source_mob == user
 
 	var/list/heard = get_mobs_in_view(7, source_mob)
-	if(!(user in heard))
-		heard += user
+	heard |= user
 	for(var/mob/heard_mob in heard)
 		if(heard_mob.ear_deaf)
 			heard -= heard_mob

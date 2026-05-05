@@ -147,7 +147,7 @@
 				survivor_job = JOB_STRANDED_PRED
 
 /datum/timelock/pred_surv
-	name = "Bad Blood Roles"
+	name = "Yautja Survivor Roles"
 
 /datum/timelock/pred_surv/New(name, time_required, list/roles)
 	. = ..()

@@ -326,7 +326,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -352,7 +353,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_suit()
 		return
 
-	if(mob_client.can_use_pred_specials() && (mob_client.prefs.predator_use_unique in PRED_UNIQUES))
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "halfarmor_elite_anubys"
@@ -375,7 +377,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_suit()
 		return
 
-	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (mob_client.prefs.predator_use_unique in PRED_UNIQUES_LEAD))
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Praetorian")
 				icon_state = "halfarmor_lead_xenobone_p"
@@ -402,7 +404,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "pred_mask_legacy_dragon"
@@ -431,7 +434,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_mask()
 		return
 
-	if(mob_client.can_use_pred_specials() && (mob_client.prefs.predator_use_unique in PRED_UNIQUES))
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				item_icons = list(
@@ -466,7 +470,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_mask()
 		return
 
-	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (mob_client.prefs.predator_use_unique in PRED_UNIQUES_LEAD))
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Praetorian")
 				item_icons = list(
@@ -498,7 +502,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "legacy_y-boots_dragon"
@@ -524,7 +529,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_shoes()
 		return
 
-	if(mob_client.can_use_pred_specials() && (mob_client.prefs.predator_use_unique in PRED_UNIQUES))
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "elite_y-boots1_anubys"
@@ -547,7 +553,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_shoes()
 		return
 
-	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (mob_client.prefs.predator_use_unique in PRED_UNIQUES_LEAD))
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Praetorian")
 				icon_state = "lead_y-boots_xenobone_p"

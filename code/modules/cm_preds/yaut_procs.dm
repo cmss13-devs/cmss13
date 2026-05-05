@@ -98,8 +98,10 @@
 			new_broadcast_network = YAUTJA_NET_STRANDED
 		if("All")
 			new_broadcast_network = YAUTJA_NET_ALL
+		else
+			return
 	elder_overseer_message(input, elder_user = "[key_name(src)]", broadcast_network = new_broadcast_network)
-	return TRUE
+	return
 
 /mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)

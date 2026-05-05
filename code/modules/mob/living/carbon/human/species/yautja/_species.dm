@@ -178,6 +178,8 @@
 			GM.yautja_hunters[predator.persistent_username]["Status"] = status
 		else if(predator.persistent_username in GM.yautja_youngbloods)
 			GM.yautja_youngbloods[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_stranded)
+			GM.yautja_stranded[predator.persistent_username]["Status"] = status
 		else if(predator.persistent_username in GM.yautja_badbloods)
 			GM.yautja_badbloods[predator.persistent_username]["Status"] = status
 		else if(predator.faction == FACTION_YAUTJA_YOUNG)

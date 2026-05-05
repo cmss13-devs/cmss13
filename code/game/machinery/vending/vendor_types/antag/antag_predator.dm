@@ -405,29 +405,29 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(mob_client.can_use_pred_legacies() && (mob_client.prefs.predator_use_legacy in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "halfarmor_legacy_dragon"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_dragon")
+				icon_state = "pred_mask_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_dragon")
 			if("Swamp")
-				icon_state = "halfarmor_legacy_swamp"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_swamp")
+				icon_state = "pred_mask_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_swamp")
 			if("Enforcer")
-				icon_state = "halfarmor_legacy_enforcer"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_enforcer")
+				icon_state = "pred_mask_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_enforcer")
 			if("Collector")
-				icon_state = "halfarmor_legacy_collector"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector")
+				icon_state = "pred_mask_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_collector")
 			if("Shadow")
-				icon_state = "halfarmor_legacy_collector_dark"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector_dark")
+				icon_state = "pred_mask_legacy_collector_dark"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_collector_dark")
 			if("Serpent")
 				item_icons = list(
 					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
 				)
-				icon_state = "halfarmor_legacy_serpent"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_serpent")
+				icon_state = "pred_mask_legacy_serpent"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_serpent")
 			if("Knight")
-				icon_state = "halfarmor_legacy_knight"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_knight")
+				icon_state = "pred_mask_legacy_knight"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_knight")
 		user.update_inv_wear_mask()
 		return
 

@@ -183,10 +183,10 @@
 			new spray_type(loc, cause_data, hivenumber)
 			for(var/turf/target_turf in range(1,loc))
 				var/obj/effect/xenomorph/spray/acid_splash = new spray_type(target_turf, cause_data, hivenumber)
-				for(var/mob/living/carbon/target_human in target_turf)
-					if(target_human.ally_of_hivenumber(hivenumber))
+				for(var/mob/living/carbon/target_carbon in target_turf)
+					if(target_carbon.ally_of_hivenumber(hivenumber))
 						continue
-					acid_splash.apply_spray(target_human)
+					acid_splash.apply_spray(target_carbon)
 			set_state()
 			clear_tripwires()
 	if(!target_area)

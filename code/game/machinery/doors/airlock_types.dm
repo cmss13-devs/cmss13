@@ -445,6 +445,9 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'

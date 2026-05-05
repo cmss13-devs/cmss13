@@ -1,0 +1,4 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - bugfix: "Fix missing 'hydrosecureoff' sprite for the Botany locker."

@@ -1144,6 +1144,7 @@
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
 	initial_keys = list(/obj/item/device/encryptionkey/wy_bodyguard)
+	minimap_type = /datum/action/minimap/marine
 
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"

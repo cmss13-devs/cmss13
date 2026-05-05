@@ -1,0 +1,5 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - bugfix: "Fixes missing broken/nopower versions of certain computers."
+  - imagetweak: "Adds new nopower/broken version for the tactical map, tweaks the sprite itself. Adds more directions to the techweb computer sprite."

@@ -186,9 +186,9 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	GLOB.deployed_fultons += src
 
 	if(ishuman(attached_atom))
-		var/mob/living/L = attached_atom
-		L.setDir(original_dir)
-		L.set_lying_angle(90)
+		var/mob/living/attached_living = attached_atom
+		attached_living.setDir(original_dir)
+		attached_living.set_lying_angle(90)
 
 	attached_atom.overlays -= list(I, cables, chute)
 	attached_atom.layer = originalLayer

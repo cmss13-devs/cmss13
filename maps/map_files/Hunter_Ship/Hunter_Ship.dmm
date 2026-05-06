@@ -1975,7 +1975,7 @@
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
 	pixel_x = -9;
-	req_one_access_txt = "391"
+	req_one_access_txt = "394"
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/armory)
@@ -9622,7 +9622,7 @@
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
-	req_one_access_txt = "391"
+	req_one_access_txt = "392"
 	},
 /obj/effect/hunter/rune{
 	dir = 1

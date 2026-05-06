@@ -1,4 +1,5 @@
 Acid pillars can be sneakily placed next to a door in order to surprise marines.
+Acid pillars are amazing at extinguishing fellow sisters- Place them near the frontline for maximum effect.
 Alien structures like clusters, walls, or pillars are vital to your victory, be it as cover or to delay and funnel marines.
 Always thank your drones and Hivelords for supporting the hive!
 Don't underestimate survivors. They have no armor but that makes them very fast, they're inherently hardier than marines and have various tricks up their sleeves.
@@ -57,3 +58,10 @@ Some smaller Xenomorphs such as Runners can hide behind barricades by resting ag
 Defenders with a lowered crest can open existing holes in walls.
 As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
 Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.
+Any Xenomorph can close resin doors behind you when being chased! Click on an open door on any intent but harm to close it
+As a Xenomorph, be wary when prying open powered doors, as they'll automatically close after some time.
+As a Xenomorph, if you find that you keep getting yourself killed because you accidentally deactivate your abilities from double tapping their hotkeys, try disabling ability deactivation in your preferences!
+Xenomorphs can spit acid at claymores to activate them early - and if a marine is on top of a claymore while its activated… find out for yourself!
+As a Xenomorph, if you're aware that a marine has a Motion Detector, you can hold still while behind a door to get the drop on them!
+As a Queen, in the hive status window you can adjust health levels, so you only see those you need to heal.
+

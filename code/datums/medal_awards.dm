@@ -694,6 +694,12 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
+			if(recommendation.recipient_rank == JOB_CO)
+				to_chat(user, SPAN_WARNING("You cannot give a medal to your Commanding Officer!"))
+				return
+			if(recommendation.recipient_rank == JOB_SYNTH)
+				to_chat(user, SPAN_WARNING("What is a Synthetic going to do with a medal?"))
+				return
 
 			var/choice = tgui_alert(user, "Would you like to change the medal text?", "Medal Citation", list("Yes", "No"))
 			var/medal_citation = recommendation.reason

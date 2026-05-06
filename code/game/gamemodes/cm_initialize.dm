@@ -247,7 +247,7 @@ Additional game mode variables.
 	if(loaded_predsurv_base == "loading")
 		UNTIL(loaded_predsurv_base != "loading")
 		return !!loaded_predsurv_base
-	if(loaded_predsurv_base != "loading")
+	if(loaded_predsurv_base && loaded_predsurv_base != "loading")
 		return TRUE
 	loaded_predsurv_base = "loading"
 	loaded_predsurv_base = SSmapping.lazy_load_template(/datum/lazy_template/predsurv_base, force = TRUE)
@@ -453,10 +453,8 @@ Additional game mode variables.
 	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_fax_responder")
 		return FALSE
-	if(!loaded_fax_base)
-		load_fax_base()
-		if(!loaded_fax_base)
-			return FALSE
+	if(!load_fax_base())
+		return
 
 	responder_candidate.close_spawn_windows()
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
@@ -488,10 +486,15 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/load_fax_base()
+	if(loaded_fax_base == "loading")
+		UNTIL(loaded_fax_base != "loading")
+		return !!loaded_fax_base
+	if(loaded_fax_base && loaded_fax_base != "loading")
+		return TRUE
 	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
-	if(!loaded_fax_base || (loaded_fax_base == "loading"))
-		log_debug("Error loading fax response base!")
+	if(!loaded_fax_base || loaded_fax_base == "loading")
+		stack_trace("Error loading fax response base!")
 		loaded_fax_base = null
 		return FALSE
 	return TRUE

@@ -618,7 +618,7 @@
 	if(!young_hunter.hunter_data.youngblood_set || src == young_hunter.hunter_data.youngblood_set)
 
 		log_interact(src, young_hunter, "[key_name(src)] has un-marked [key_name(young_hunter)] as their student!")
-		message_all_yautja("[real_name] has un-marked [young_hunter] as their student!'.")
+		message_all_yautja("[real_name] has un-marked [young_hunter] as their student!.")
 
 		young_hunter.hunter_data.youngblood_set = null
 		young_hunter.hunter_data.youngblood_marked = FALSE

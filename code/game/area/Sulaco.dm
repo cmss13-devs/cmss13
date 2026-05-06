@@ -365,6 +365,23 @@
 /area/ship/sulaco/lifeboat_pumps/upper_south
 	name = "Upper Deck Southern Lifeboat Fuel Pump"
 
+/area/ship/sulaco/underdeck
+	name = "USS Sulaco - Under Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/ship/sulaco/underdeck/hangar
+	name = "USS Sulaco - Under Deck Hangar"
+	icon_state = "hangar"
+
+/area/ship/sulaco/underdeck/req
+	name = "USS Sulaco - Under Deck Cargo"
+	icon_state = "req"
+
+/area/ship/sulaco/underdeck/vehicle
+	name = "USS Sulaco - Under Deck Vehicle Bay"
+	icon_state = "req"
+
 /area/shuttle
 	ceiling = CEILING_METAL
 	requires_power = 0

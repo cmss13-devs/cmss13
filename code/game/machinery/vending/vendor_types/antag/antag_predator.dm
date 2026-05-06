@@ -350,6 +350,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Knight")
 				icon_state = "halfarmor_legacy_knight"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_knight")
+			if("Seeker")
+				icon_state = "halfarmor_legacy_seeker"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_seeker")
 		user.update_inv_wear_suit()
 		return
 
@@ -431,6 +434,12 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Knight")
 				icon_state = "pred_mask_legacy_knight"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_knight")
+			if("Seeker")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_legacy_seeker"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_seeker")
 		user.update_inv_wear_mask()
 		return
 
@@ -526,6 +535,9 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Knight")
 				icon_state = "legacy_y-boots_knight"
 				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_knight")
+			if("Seeker")
+				icon_state = "legacy_y-boots_seeker"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_seeker")
 		user.update_inv_shoes()
 		return
 

@@ -6,7 +6,7 @@
 #define PRED_RETRO_MATERIALS list("retro", "ebony", "silver", "bronze", "crimson", "bone")
 #define PRED_TRANSLATORS list(PRED_TECH_MODERN, PRED_TECH_RETRO, PRED_TECH_COMBO)
 #define PRED_INVIS_SOUNDS list(PRED_TECH_MODERN, PRED_TECH_RETRO)
-#define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector", "Shadow", "Serpent", "Knight")
+#define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector", "Shadow", "Serpent", "Knight", "Seeker")
 #define PRED_UNIQUES list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior")
 #define PRED_UNIQUES_LEAD list("Praetorian")
 #define PRED_UNIQUES_ALL list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior", "Praetorian")

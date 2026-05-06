@@ -224,7 +224,7 @@
 		log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as honored!")
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 		if(istype(bracer))
-			message_all_yautja("[real_name] has un-marked [T] as honored!'.", broadcast_networks = bracer.received_networks)
+			message_all_yautja("[real_name] has un-marked [T] as honored!", broadcast_networks = bracer.received_networks)
 
 		T.hunter_data.honored_set = null
 		hunter_data.honored_targets += T
@@ -317,7 +317,7 @@
 		log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as dishonorable!")
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 		if(istype(bracer))
-			message_all_yautja("[real_name] has un-marked [T] as dishonorable!.", broadcast_networks = bracer.received_networks)
+			message_all_yautja("[real_name] has un-marked [T] as dishonorable!", broadcast_networks = bracer.received_networks)
 
 		T.hunter_data.dishonored_set = null
 		hunter_data.dishonored_targets -= T
@@ -353,7 +353,7 @@
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as a Gear Carrier!")
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 	if(istype(bracer))
-		message_all_yautja("[real_name] has marked [T] as a Gear Carrier!'.", broadcast_networks = bracer.received_networks)
+		message_all_yautja("[real_name] has marked [T] as a Gear Carrier!", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.gear_set = src
 	hunter_data.gear_targets += T
@@ -387,7 +387,7 @@
 	log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as a Gear Carrier!")
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 	if(istype(bracer))
-		message_all_yautja("[real_name] has un-marked [T] as a Gear Carrier!'.", broadcast_networks = bracer.received_networks)
+		message_all_yautja("[real_name] has un-marked [T] as a Gear Carrier!", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.gear_set = null
 	hunter_data.gear_targets -= T
@@ -479,7 +479,7 @@
 		log_interact(src, thrall, "[key_name(src)] has released [key_name(thrall)] from thralldom!")
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 		if(istype(bracer))
-			message_all_yautja("[real_name] has released [thrall] from thralldom!'.", broadcast_networks = bracer.received_networks)
+			message_all_yautja("[real_name] has released [thrall] from thralldom!", broadcast_networks = bracer.received_networks)
 
 		thrall.set_species("Human")
 		thrall.allow_gun_usage = TRUE

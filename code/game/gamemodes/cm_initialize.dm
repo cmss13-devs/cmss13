@@ -309,6 +309,12 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_badblood")
 		return
 
+	var/mob/new_player/new_player_mob
+	if(isnewplayer(badblood_candidate))
+		new_player_mob = badblood_candidate
+		new_player_mob.spawning = TRUE
+		new_player_mob.close_spawn_windows()
+
 	if(!load_predsurv_base())
 		return
 
@@ -333,6 +339,9 @@ Additional game mode variables.
 	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
 	new_badblood.client = badblood_candidate.client
 
+	if(new_player_mob)
+		qdel(new_player_mob)
+
 	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
 
 	return new_badblood
@@ -343,6 +352,12 @@ Additional game mode variables.
 	if(!stranded_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_stranded_pred")
 		return
+
+	var/mob/new_player/new_player_mob
+	if(isnewplayer(stranded_candidate))
+		new_player_mob = stranded_candidate
+		new_player_mob.spawning = TRUE
+		new_player_mob.close_spawn_windows()
 
 	if(!load_predsurv_base())
 		return
@@ -369,6 +384,9 @@ Additional game mode variables.
 	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
 	stranded_candidate.mind.transfer_to(new_stranded, TRUE)
 	new_stranded.client = stranded_candidate.client
+
+	if(new_player_mob)
+		qdel(new_player_mob)
 
 	GLOB.RoleAuthority.equip_role(new_stranded, stranded_job, new_stranded.loc)
 

@@ -555,15 +555,15 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		if(hellhound.stat)
 			continue
 		// Check that it should actually be hearing this stuff.
-		if((check_channel == RADIO_CHANNEL_YAUTJA) && hellhound.faction != FACTION_YAUTJA)
+		if(check_channel == RADIO_CHANNEL_YAUTJA && hellhound.faction != FACTION_YAUTJA)
 			continue
-		if((check_channel == RADIO_CHANNEL_YAUTJA_STRANDED) && hellhound.faction != FACTION_YAUTJA_STRANDED)
+		if(check_channel == RADIO_CHANNEL_YAUTJA_STRANDED && hellhound.faction != FACTION_YAUTJA_STRANDED)
 			continue
-		if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && hellhound.faction != FACTION_YAUTJA_BADBLOOD)
+		if(check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD && hellhound.faction != FACTION_YAUTJA_BADBLOOD)
 			continue
 		to_chat(hellhound, SPAN_YAUTJABOLD("\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."))
 
-	if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD))
+	if(check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD)
 		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_YAUTJA_BADBLOOD]
 		if(istype(hive))
 			for(var/mob/living/carbon/xenomorph/enthralled in hive.totalXenos)
@@ -2012,7 +2012,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		to_chat(user, SPAN_WARNING("You have no idea what you're doing with this thing."))
 		return FALSE
 
-	if((thrall_target.hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (thrall_target.faction == FACTION_YAUTJA_BADBLOOD))
+	if(thrall_target.hivenumber == XENO_HIVE_YAUTJA_BADBLOOD || (thrall_target.faction == FACTION_YAUTJA_BADBLOOD))
 		to_chat(user, SPAN_WARNING("This serpent is already enthralled... what are you doing?"))
 		return FALSE
 
@@ -2035,7 +2035,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 				SPAN_WARNING("You decide not to enthrall [thrall_target]."))
 		return FALSE
 
-	if(!tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No"), 10 SECONDS) == "Yes")
+	if(tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No"), 10 SECONDS) != "Yes")
 		to_chat(user, SPAN_WARNING("The hivemind resists your attempt to break the connection! (This player does not wish to be a thrall.)"))
 		return FALSE
 
@@ -2048,7 +2048,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/enthrall(mob/living/user, force = FALSE)
-	if((hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (faction == FACTION_YAUTJA_BADBLOOD))
+	if(hivenumber == XENO_HIVE_YAUTJA_BADBLOOD || faction == FACTION_YAUTJA_BADBLOOD)
 		return FALSE
 	if(!force && ((caste_type in XENO_T0_CASTES) || (caste_type in GLOB.hivebreaker_banned_castes)))
 		return FALSE

@@ -37,7 +37,7 @@
 /obj/structure/machinery/computer/skills/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if (src.z > 6)
+	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 		return
 	var/dat

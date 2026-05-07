@@ -1,4 +1,0 @@
-author: "AnCopper"
-delete-after: True
-changes:
-  - bugfix: "fixed fultons flying up sideways on human corpses"

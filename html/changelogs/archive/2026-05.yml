@@ -16,3 +16,9 @@
   - imageadd: added new sechud icons for marines and provost, added IO sechud icon
   - imagedel: deleted old sechud icons for marines and provost, removed MP Cadet sechud
       icon
+2026-05-07:
+  AnCopper:
+  - bugfix: fixed fultons flying up sideways on human corpses
+  matttheficus:
+  - code_imp: added checks to prevent COs or Synthetics from being given medals or
+      ribbons by non-admins.

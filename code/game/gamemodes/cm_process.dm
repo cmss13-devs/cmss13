@@ -69,7 +69,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(length(GLOB.medal_awards))
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
+		dat +=  SPAN_ROUNDBODY("<br>Medal and Ribbon Awards:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
 			for(var/i in 1 to length(recipient_award.medal_names))

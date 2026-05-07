@@ -73,6 +73,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Misc channels
 #define YAUT_FREQ 1205
 #define YAUT_OVR_FREQ 1206
+#define YAUT_SPEC_FREQ 1207
 #define DUT_FREQ 1210
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
@@ -81,11 +82,13 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
-#define PMC_CMD_FREQ 1232
-#define PMC_FREQ 1233
-#define PMC_ENGI_FREQ 1234
-#define PMC_MED_FREQ 1235
-#define PMC_CCT_FREQ 1236
+#define WY_PUB_FREQ 1232
+#define WY_SEC_FREQ 1233
+#define PMC_CMD_FREQ 1234
+#define PMC_FREQ 1235
+#define PMC_ENGI_FREQ 1236
+#define PMC_MED_FREQ 1237
+#define PMC_CCT_FREQ 1238
 #define WY_WO_FREQ 1239
 
 //UPP Channels (1250-1269)
@@ -129,6 +132,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define PVST_FREQ 1473
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
+#define ARMY_FREQ 1476
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -162,6 +166,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_YAUTJA_OVERSEER = YAUT_OVR_FREQ,
+	RADIO_CHANNEL_YAUTJA_SPECOPS = YAUT_SPEC_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
@@ -190,6 +195,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_CBRN = CBRN_FREQ,
 	SQUAD_FORECON = FORECON_FREQ,
 	SQUAD_SOLAR = SOF_FREQ,
+	SQUAD_ARMY = ARMY_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
@@ -200,6 +206,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
+	RADIO_CHANNEL_WY_PUB = WY_PUB_FREQ,
+	RADIO_CHANNEL_WY_SEC = WY_SEC_FREQ,
 	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
 	RADIO_CHANNEL_PMC_CMD = PMC_CMD_FREQ,
 	RADIO_CHANNEL_PMC_ENGI = PMC_ENGI_FREQ,
@@ -231,7 +239,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 ))
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, CMB_FREQ, RMC_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -240,7 +248,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define CLF_FREQS list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
 
 // PMC Frequencies
-#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
+#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ)
 
 //Listening Device Frequencies
 #define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
@@ -250,6 +258,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+
+//Bonus frequencies for special survivor factions
+#define SURVIVOR_FREQS list(SOF_FREQ, ARMY_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -278,13 +289,21 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 SUBSYSTEM_DEF(radio)
 	name = "radio"
-	flags = SS_NO_FIRE|SS_NO_INIT
+	wait = 30 SECONDS
+	flags = SS_KEEP_TIMING|SS_NO_INIT
 	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 
 	//Keeping a list of tcomm machines to see which Z level has comms
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
+
+	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
+	var/list/last_command_zs = list()
+	/// The current coms clarity per faction for Zs without coms (otherwise announcement_max_clarity config value)
+	var/list/faction_coms_clarity = list(FACTION_MARINE = 100)
+	/// The currently unsolved encryption_sequences for a faction (only the ones listed here decay)
+	var/list/faction_coms_codes = list(FACTION_MARINE = list())
 
 	var/static/list/freq_to_span = list(
 		"[COMM_FREQ]" = "comradio",
@@ -297,8 +316,11 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[WY_PUB_FREQ]" = "wypubradio",
+		"[WY_SEC_FREQ]" = "wysecradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[ARMY_FREQ]" = "armyradio",
 		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",
@@ -331,6 +353,24 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
 		"[HDC_FREQ]" = "hdcradio",
 	)
+
+/datum/controller/subsystem/radio/fire(resumed)
+	var/decay_rate = CONFIG_GET(number/announcement_clarity_decay)
+	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
+	var/oldest_time = world.time - ((100 - clarity_min) / decay_rate * wait)
+
+	for(var/faction in faction_coms_codes)
+		// Clean out any old codes (Assumption: They're ordered)
+		var/list/codes = faction_coms_codes[faction]
+		var/index
+		for(index in 1 to length(codes))
+			var/datum/encryption_sequence/current = codes[index]
+			if(current.time >= oldest_time)
+				break
+		codes.Cut(1, index)
+
+		// Decay current clarity
+		faction_coms_clarity[faction] = max(faction_coms_clarity[faction] - decay_rate, clarity_min)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)
@@ -368,8 +408,8 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
+///Returns lists of Z levels that have comms
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
-	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
@@ -383,8 +423,13 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
-	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
+	if(frequency == COMM_FREQ)
+		last_command_zs = target_zs
 	return target_zs
+
+/// Call this when a cached frequency changed (e.g. tcoms going down/up)
+/datum/controller/subsystem/radio/proc/update_cache()
+	get_available_tcomm_zs(COMM_FREQ)
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))

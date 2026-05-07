@@ -38,7 +38,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
+/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -53,6 +53,9 @@
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
 				H.reagents.remove_reagent(med.id, drain, TRUE)
+
+	if(!apply_effect)
+		return
 
 	if(!isxeno(M))
 		if(insta_neuro)
@@ -172,12 +175,15 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()
 	if(. == FALSE)
 		return
-
-	new /datum/effects/acid(M, P.firer)
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(target_mob, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -218,6 +224,58 @@
 		PAS = new /datum/effects/prae_acid_stacks(H)
 	else
 		PAS.increment_stack_count()
+
+/datum/ammo/xeno/acid/despoiler
+	name = "corrosive spit"
+	icon_state = "xeno_acid_lingering"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER|AMMO_HITS_TARGET_TURF
+	accuracy = HIT_ACCURACY_MULT_TIER_5
+	accurate_range_min_strict = 3
+	accurate_range = 32
+	max_range = 7
+	shell_speed = AMMO_SPEED_TIER_2
+	damage = 20
+	var/acid_progression = 10
+
+/datum/ammo/xeno/acid/despoiler/on_hit_turf(turf/turf, obj/projectile/projectile)
+	. = ..()
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(isxeno(projectile.firer))
+		var/mob/living/carbon/xenomorph/xeno = projectile.firer
+		hivenumber = xeno.hivenumber
+
+	var/obj/effect/lingering_acid/acid = locate() in turf
+	if(!acid)
+		new /obj/effect/lingering_acid(turf, hivenumber)
+
+/datum/ammo/xeno_acid/despoiler/do_at_max_range(obj/projectile/projectile)
+	on_hit_turf(get_turf(projectile), projectile)
+
+/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
+	. = ..()
+	if(. == FALSE)
+		return
+	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
+	acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	acid_effect.enhance_acid()
+	acid_effect.increment_duration(acid_progression)
+	splatter(mob, 1, projectile)
+
+/datum/ammo/xeno/acid/despoiler/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	if(istype(target_object, /obj/structure/barricade))
+		var/obj/structure/barricade/barricade = target_object
+		var/datum/effects/acid/acid_effect = locate() in barricade
+		if(!acid_effect)
+			barricade.acid_spray_act()
+
+	on_hit_turf(get_turf(target_object), proj_hit)
+
+/datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
+	for(var/mob/living/carbon/human/victim in range(range, mob))
+		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
+		if(!acid_effect)
+			new /datum/effects/acid/(victim, projectile.firer)
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"
@@ -306,8 +364,12 @@
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
 	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
-	new /datum/effects/acid(moob, proj.firer)
 	drop_nade(get_turf(proj), proj,TRUE)
+	var/datum/effects/acid/acid_effect = locate() in moob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(moob, proj.firer)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

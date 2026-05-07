@@ -1,9 +1,3 @@
-#define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
-#define MAX_IMPREGNATION_TIME 15 SECONDS
-
-#define MIN_ACTIVE_TIME 5 SECONDS //Time between being dropped and going idle
-#define MAX_ACTIVE_TIME 15 SECONDS
-
 /obj/item/clothing/mask/facehugger
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
@@ -26,50 +20,53 @@
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
-	throw_range = 1
 	vision_impair = VISION_IMPAIR_MAX
 	layer = FACEHUGGER_LAYER
 	black_market_value = 20
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = FALSE
-	var/strength = 5
+
 	var/attached = FALSE
 	var/leaping = FALSE //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
+
 	/// How many units of stims are drained upon hugging
 	var/stim_drain = 30
 
 	/// The timer for the hugger to jump
 	/// at the nearest human
 	var/jump_timer
+
 	/// Delay of time between the hugger jumping
 	/// at the nearest human
-	var/time_between_jumps = 5 SECONDS
+	var/time_between_jumps = 2.5 SECONDS
+
 	/// How many times the hugger will try to jump at
 	/// the nearest human before dying
-	var/jumps_left = 2
+	var/jumps_left = 5
 
 	var/time_to_live = 30 SECONDS
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenos/effects_xenoids.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
-	var/new_icon = icon_xeno
 	if (hive)
 		hivenumber = hive
-
 		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]
-		if(HAS_TRAIT(hive_s, TRAIT_XENONID))
-			new_icon = icon_xenonid
+		for(var/trait in hive_s.hive_inherited_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	icon = new_icon
 	set_hive_data(src, hivenumber)
+	if(HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = null
+	if(HAS_TRAIT(src, TRAIT_XENONID))
+		icon = icon_xenonid
 	go_active()
 
 	if (hivenumber != XENO_HIVE_TUTORIAL)
@@ -263,16 +260,16 @@
 	if(!isturf(loc))
 		return FALSE
 
-	for(var/mob/living/M in loc)
-		if(can_hug(M, hivenumber))
-			attach(M)
+	for(var/mob/living/human in loc)
+		if(can_hug(human, hivenumber))
+			attach(human)
 			return TRUE
 
 	var/mob/living/target
-	for(var/mob/living/M in view(3, src))
-		if(!can_hug(M, hivenumber))
+	for(var/mob/living/human in view(FACEHUGGER_JUMP_RANGE, src))
+		if(!can_hug(human, hivenumber))
 			continue
-		target = M
+		target = human
 		break
 	if(!target)
 		return FALSE
@@ -280,7 +277,7 @@
 	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"),
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
-	throw_atom(target, 3, SPEED_FAST)
+	throw_atom(target, FACEHUGGER_JUMP_RANGE, SPEED_FAST)
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
@@ -396,7 +393,7 @@
 	jump_timer = null
 	// Reset the jumps left to their original count
 	jumps_left = initial(jumps_left)
-	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
+	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(HUGGER_MIN_ACTIVE_TIME, HUGGER_MAX_ACTIVE_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
@@ -553,11 +550,14 @@
 					m_helmet.add_hugger_damage()
 				update_inv_head()
 
-	if(!wear_mask)
+	/// Don't need to continue if no mask or already can't infect.
+	if(!wear_mask || !can_infect)
 		return can_infect
 
 	var/obj/item/clothing/mask/W = wear_mask
-	if(istype(W))
+	if(!istype(W))
+		drop_inv_item_on_ground(wear_mask) // drop any item from the face that isn't being checked for anti-hug.
+	else
 		if(W.flags_item & NODROP)
 			return FALSE
 
@@ -576,7 +576,6 @@
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)
-
 	return can_infect
 
 /datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)

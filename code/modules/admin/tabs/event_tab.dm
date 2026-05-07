@@ -55,7 +55,7 @@
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
 		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
@@ -197,7 +197,7 @@
 	for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
 		if(dock.name == dock_name)
 			var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
-			ert.request(target)
+			ert.request(target, force=TRUE)
 			launched=TRUE
 	if(!launched)
 		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))
@@ -360,7 +360,7 @@
 
 /client/proc/view_faxes()
 	set name = "Reply to Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Admin.Events"
 
 	if(!admin_holder)
@@ -505,7 +505,7 @@
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
 		nukename = "Encrypted Operational Blockbuster"
-	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("Yes", "No"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
 
@@ -545,7 +545,7 @@
 
 /client/proc/force_hijack()
 	set name = "Force Hijack"
-	set desc = "Force a dropship to be hijacked"
+	set desc = "Force a dropship to be hijacked."
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
@@ -608,7 +608,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive."
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -971,7 +971,7 @@
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay))
 				return
-			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
+			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should a second explosion have? (0 to disable)", "Set double delay", 6)
 			if(isnull(OBShell.double_explosion_delay))
 				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
@@ -1051,7 +1051,7 @@
 			return
 
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
-		warhead.warhead_impact(target)
+		warhead.warhead_impact(target, warhead)
 
 	else
 		warhead.forceMove(target)

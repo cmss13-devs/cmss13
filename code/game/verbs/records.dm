@@ -95,7 +95,7 @@ CLIENT_VERB(own_records)
 
 	var/target = input(usr, "What CKey do you wish to check?", "Target")
 	if(!target)
-		to_chat(src, SPAN_WARNING("Invalid Target"))
+		to_chat(src, SPAN_WARNING("Invalid Target."))
 		return
 	target = ckey(target)
 

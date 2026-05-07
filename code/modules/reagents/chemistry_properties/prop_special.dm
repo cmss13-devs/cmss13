@@ -2,13 +2,14 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 8
-//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
+//IF YOU ADD A NEW LEGENDARY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
 	description = "Boosts the potency of all other properties in this chemical when inside the body by 0.5 levels for every level that this property has."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	value = 5
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level * 0.5)
@@ -16,14 +17,15 @@
 /datum/chem_property/special/optimized
 	name = PROPERTY_OPTIMIZED
 	code = "OPM"
-	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	description = "Chemical molecule is structured differently, resulting in more efficient and easy synthesis process."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	value = 3
 
 /datum/chem_property/special/optimized/update_reagent()
 	var/datum/chemical_reaction/reaction_chem = GLOB.chemical_reactions_list[holder.id]
 	if(reaction_chem)
-		reaction_chem.result_amount = 2
+		reaction_chem.result_amount = 3
 	. = ..()
 
 /datum/chem_property/special/hypergenetic
@@ -32,6 +34,7 @@
 	description = "Regenerates all types of cell membranes mending damage in all organs and limbs."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_MEDICINE
+	value = 2
 
 /datum/chem_property/special/hypergenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency)
@@ -107,6 +110,7 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 	max_level = 1
+	value = 6
 
 /datum/chem_property/special/regulating/reset_reagent()
 	holder.flags = initial(holder.flags)
@@ -164,7 +168,7 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
+	E.visible_message(SPAN_DANGER("\The [E] rapidly mutates."))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
@@ -289,7 +293,7 @@
 	M.set_effect(0, PARALYZE)
 	M.silent = 0
 	M.dizziness = 0
-	M.drowsyness = 0
+	M.drowsiness = 0
 	M.stuttering = 0
 	M.confused = 0
 	M.sleeping = 0
@@ -320,7 +324,7 @@
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS
 	code = "RAD"
-	description = "Controls the radius of a fire, using unknown means"
+	description = "Controls the radius of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -344,7 +348,7 @@
 /datum/chem_property/special/intensity
 	name = PROPERTY_INTENSITY
 	code = "INT"
-	description = "Controls the intensity of a fire, using unknown means"
+	description = "Controls the intensity of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -366,7 +370,7 @@
 /datum/chem_property/special/duration
 	name = PROPERTY_DURATION
 	code = "DUR"
-	description = "Controls the duration of a fire, using unknown means"
+	description = "Controls the duration of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -384,3 +388,36 @@
 	holder.durationfire += 1 * level
 	holder.durationmod += 0.1 * level
 	..()
+
+/datum/chem_property/special/encephalophrasive
+	name = PROPERTY_ENCEPHALOPHRASIVE
+	code = "ESP"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_STIMULANT
+	value = 8
+
+/datum/chem_property/special/encephalophrasive/on_delete(mob/living/chem_host)
+	..()
+
+	chem_host.pain.recalculate_pain()
+	remove_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+
+/datum/chem_property/special/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
+	give_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+
+/datum/chem_property/special/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.pain.apply_pain(1 * potency)
+
+/datum/chem_property/special/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+
+/datum/chem_property/special/encephalophrasive/process_critical(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_effect(20, PARALYZE)

@@ -34,19 +34,20 @@
 /mob/living/silicon/drop_held_items()
 	return
 
-/mob/living/silicon/emp_act(severity)
+/mob/living/silicon/emp_act(severity, datum/cause_data/cause_data)
 	. = ..()
 	switch(severity)
 		if(1)
-			src.take_limb_damage(20)
+			take_limb_damage(20)
 			apply_effect(rand(5,10), STUN)
 		if(2)
-			src.take_limb_damage(10)
+			take_limb_damage(10)
 			apply_effect(rand(1,5), STUN)
 	flash_eyes(EYE_PROTECTION_FLAVOR, TRUE, light_type = /atom/movable/screen/fullscreen/flash/noise)
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
+	log_emp(src, cause_data)
 
 /mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
 	return //immune
@@ -148,11 +149,11 @@
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src, src)
-		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Disabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Disabled</B>"))
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src, src)
-		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Enabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Enabled</B>"))
 
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"

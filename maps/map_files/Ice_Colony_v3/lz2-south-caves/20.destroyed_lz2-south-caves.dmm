@@ -78,10 +78,7 @@
 /area/shiva/exterior/lz2_fortress)
 "B" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
-"D" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "E" = (
 /obj/item/weapon/ice_axe/red,
 /turf/open/auto_turf/ice/layer0,
@@ -148,9 +145,6 @@
 	pixel_y = -19
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
-"W" = (
-/turf/closed/wall/shiva/ice,
 /area/shiva/interior/caves/s_lz2)
 "X" = (
 /turf/open/auto_turf/ice/layer0,
@@ -245,7 +239,7 @@ X
 (6,1,1) = {"
 k
 k
-W
+L
 p
 a
 v
@@ -260,7 +254,7 @@ P
 (7,1,1) = {"
 k
 k
-W
+L
 P
 Y
 X
@@ -275,7 +269,7 @@ P
 (8,1,1) = {"
 k
 k
-W
+L
 G
 X
 q
@@ -289,15 +283,15 @@ P
 "}
 (9,1,1) = {"
 k
-D
-W
+L
+L
 X
 Y
 E
 P
 h
-W
-W
+L
+L
 P
 P
 P
@@ -310,10 +304,10 @@ P
 P
 l
 a
-W
-W
-W
-W
+L
+L
+L
+L
 P
 a
 "}

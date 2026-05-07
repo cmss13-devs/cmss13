@@ -179,6 +179,7 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define CLEANABLE_BLOOD_GIBS "blood gibs"
 #define CLEANABLE_TRACKS "tracks"
 #define CLEANABLE_JUNK "junk" //Gibs, Robot debris, etcetera
+#define CLEANABLE_IGNITABLE "ignitable" //liquid fuel
 #define CLEANABLE_MISC "misc" //Anything else
 
 //For nuke announcements
@@ -210,8 +211,12 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define OBJ_NO_HELMET_BAND (1<<1)
 /// Marks the object as helmet garb
 #define OBJ_IS_HELMET_GARB (1<<2)
+/// Marks the object as stylish for the style system
+#define OBJ_IS_STYLISH (1<<3)
+/// If the object can be converted into an accessory
+#define OBJ_CAN_ACCESSORIZE (1<<4)
 /// can you customize the description/name of the thing?
-#define OBJ_UNIQUE_RENAME (1<<3)
+#define OBJ_UNIQUE_RENAME (1<<5)
 
 // For reinforced table status
 #define RTABLE_WEAKENED 1
@@ -226,3 +231,6 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define REMOVE_CROWBAR  (1<<0)
 #define BREAK_CROWBAR   (1<<1)
 #define REMOVE_SCREWDRIVER (1<<2)
+
+/// How many fields maximum are allowed on papers
+#define PAPER_MAX_FIELDS 51

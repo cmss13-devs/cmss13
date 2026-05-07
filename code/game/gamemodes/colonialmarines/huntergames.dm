@@ -408,7 +408,7 @@
 			break
 
 	if(finished == 1 && !QDELETED(winner) && istype(winner))
-		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"))
+		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.username()]) << defeated all enemies!</B></FONT>"))
 		to_world("<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>")
 
 	else if(finished == 2)

@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		return
 
 	send_reboot_sound()
-	addtimer(CALLBACK(PROC_REF(Master.Shutdown)), 3 SECONDS)
+	addtimer(CALLBACK(PROC_REF(Master.Shutdown())), 3 SECONDS)
 	var/server = CONFIG_GET(string/server)
 
 	for(var/thing in GLOB.clients)

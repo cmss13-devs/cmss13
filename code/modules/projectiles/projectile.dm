@@ -1,5 +1,5 @@
 //Some debug variables. Toggle them to 1 in order to see the related debug messages. Helpful when testing out formulas.
-#define DEBUG_HIT_CHANCE 1
+#define DEBUG_HIT_CHANCE 0
 #define DEBUG_HUMAN_DEFENSE 0
 #define DEBUG_XENO_DEFENSE 0
 
@@ -389,7 +389,7 @@
 			traveled_in_closed ++
 
 	if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
-		if(z == starting.z)
+		if(z == starting.z && !istype(current_turf, /turf/open_space))
 			traveled_in_closed ++
 		else
 			traveled_in_open ++
@@ -671,8 +671,7 @@
 
 	if(target && target.z != starting.z)
 		if(traveled_in_open < traveled_in_closed)
-			effective_accuracy = effective_accuracy * max(0, (1 - (1/(1+traveled_in_open)) * (traveled_in_closed - traveled_in_open)))
-
+			effective_accuracy = effective_accuracy * max(0, (1 - (1/(1.1 + traveled_in_open)) * (traveled_in_closed - traveled_in_open - 1)))
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))

@@ -435,7 +435,7 @@
 
 /datum/hud/proc/draw_screen_border(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	screen_border = new /atom/movable/screen/border()
-	screen_border.icon = 'icons/mob/hud/cm_hud/cmhud_border.dmi'
+	screen_border.icon = 'icons/mob/hud/cm_hud/cm_hud_border.dmi'
 	screen_border.screen_loc = ui_datum.ui_screen_border
 	infodisplay += screen_border
 

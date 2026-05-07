@@ -2012,7 +2012,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		to_chat(user, SPAN_WARNING("You have no idea what you're doing with this thing."))
 		return FALSE
 
-	if(thrall_target.hivenumber == XENO_HIVE_YAUTJA_BADBLOOD || (thrall_target.faction == FACTION_YAUTJA_BADBLOOD))
+	if(thrall_target.hivenumber == XENO_HIVE_YAUTJA_BADBLOOD || thrall_target.faction == FACTION_YAUTJA_BADBLOOD)
 		to_chat(user, SPAN_WARNING("This serpent is already enthralled... what are you doing?"))
 		return FALSE
 

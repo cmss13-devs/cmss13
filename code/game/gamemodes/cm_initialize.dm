@@ -247,7 +247,7 @@ Additional game mode variables.
 	if(loaded_predsurv_base == "loading")
 		UNTIL(loaded_predsurv_base != "loading")
 		return !!loaded_predsurv_base
-	if(loaded_predsurv_base && loaded_predsurv_base != "loading")
+	if(loaded_predsurv_base != null)
 		return TRUE
 	loaded_predsurv_base = "loading"
 	loaded_predsurv_base = SSmapping.lazy_load_template(/datum/lazy_template/predsurv_base, force = TRUE)
@@ -489,7 +489,7 @@ Additional game mode variables.
 	if(loaded_fax_base == "loading")
 		UNTIL(loaded_fax_base != "loading")
 		return !!loaded_fax_base
-	if(loaded_fax_base && loaded_fax_base != "loading")
+	if(loaded_fax_base != null)
 		return TRUE
 	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)

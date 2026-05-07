@@ -1,6 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - code_imp: "Add a Hear only language flag, And lazy list defines for adding and removing bitflags."
-  - bugfix: "Corrupted Xenos can no longer speak English."
-  - ui: "Check known languages menu will let you know if you can't speak a language but can understand it."

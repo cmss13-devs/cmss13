@@ -30,7 +30,7 @@
 // Magazines
 /datum/supply_packs_asrs/gun/ammo_hpr
 	reference_package = /datum/supply_packs/ammo_hpr
-	cost = ASRS_LOWEST_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_m4a3_mag_box
 	reference_package = /datum/supply_packs/ammo_m4a3_mag_box
@@ -72,14 +72,7 @@
 
 /datum/supply_packs_asrs/ammo_smartgun
 	reference_package = /datum/supply_packs/ammo_smartgun
-
-/datum/supply_packs_asrs/ammo_napalm
-	reference_package = /datum/supply_packs/ammo_napalm
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_napalm_gel
-	reference_package = /datum/supply_packs/ammo_napalm_gel
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_flamer_mixed
 	reference_package = /datum/supply_packs/ammo_flamer_mixed
@@ -105,7 +98,7 @@
 
 /datum/supply_packs_asrs/sandbags
 	reference_package = /datum/supply_packs/sandbags
-	cost = ASRS_LOWEST_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 // ============================
 // FOOD POOL - for Mess Tech gradual supplies throughout the round

@@ -60,6 +60,10 @@
 	requires_power = FALSE
 	base_lighting_alpha = 0
 
+/area/shuttle/hunter
+	icon = 'icons/turf/area_yautja.dmi'
+	icon_state = "blue"
+
 /area/shuttle/trijent_shuttle
 	name = "Trijent Elevator"
 	icon = 'icons/turf/area_almayer.dmi'

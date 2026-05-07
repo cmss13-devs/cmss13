@@ -179,6 +179,9 @@
 	set desc = "Rip off a limb from living pray."
 	set category = "Alien"
 
+	if(!isxeno(src))
+		return
+
 	if(caste_type != XENO_CASTE_WARRIOR)
 		to_chat(src, SPAN_WARNING("Only Warriors can do this!"))
 		return

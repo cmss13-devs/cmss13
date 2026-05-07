@@ -4005,6 +4005,12 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/point_loma/airbase/interior/cargo)
+"amq" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 10
+	},
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/airbase/exterior/crash_site)
 "amr" = (
 /turf/open/floor/shiva/bluecorners/east,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
@@ -4089,6 +4095,9 @@
 "amB" = (
 /turf/closed/wall/rock/brown,
 /area/point_loma/research_facility/research/park)
+"amC" = (
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/airbase/exterior/crash_site)
 "amD" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/shiva/blue/east,
@@ -4115,6 +4124,12 @@
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/shiva/blue/northwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"amJ" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "amK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/prop/magazine/book/spacebeast{
@@ -4168,6 +4183,13 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"amP" = (
+/obj/structure/stairs/multiz/rock/up{
+	drag_delay = 4;
+	dir = 5
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "amQ" = (
 /obj/structure/machinery/cell_charger{
 	pixel_y = 6
@@ -4216,6 +4238,15 @@
 	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
+"amX" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 4;
+	pixel_y = 24;
+	pixel_x = -19
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/purple,
+/area/point_loma/oob/sky)
 "amY" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/book/manual/paperwork{
@@ -4285,6 +4316,10 @@
 	},
 /turf/open/floor/corsat/browncorner/west,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"anj" = (
+/obj/effect/decal/cleanable/blood/yautja,
+/turf/open/floor/corsat/purple,
+/area/point_loma/oob/sky)
 "ank" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -4302,6 +4337,12 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"anl" = (
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_10_1"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/oob/sky)
 "anm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -4313,6 +4354,11 @@
 "ann" = (
 /turf/open/new_varadero/alt_concrete/warning/corner/southwest,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"ano" = (
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/point_loma/oob/sky)
 "anp" = (
 /obj/structure/catwalk/bigred,
 /turf/open/floor/corsat/box,
@@ -4330,6 +4376,14 @@
 /obj/structure/curtain/open/shower,
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"ant" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/yautja,
+/turf/open/floor/corsat/purple/north,
+/area/point_loma/oob/sky)
 "anu" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -4353,6 +4407,15 @@
 /obj/item/tool/wet_sign,
 /turf/open/floor/shiva/blue/northwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"anx" = (
+/obj/structure/stairs/perspective{
+	color = "#656c6b";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/point_loma/oob/sky)
 "any" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -4362,6 +4425,15 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
+"anz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/red,
+/area/point_loma/oob/sky)
 "anA" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/shiva/blue/west,
@@ -4404,6 +4476,16 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/blue/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"anG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_10_1"
+	},
+/turf/open/floor/corsat/red,
+/area/point_loma/oob/sky)
 "anH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning"
@@ -4488,6 +4570,11 @@
 /obj/effect/decal/large_stain,
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"anS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/corsat/red/east,
+/area/point_loma/oob/sky)
 "anT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -4542,6 +4629,17 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"aoc" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	dir = 4;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
+	},
+/obj/structure/stairs/multiz/rock{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/point_loma/oob/sky)
 "aod" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow2";
@@ -4591,6 +4689,11 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"aom" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/oob/sky)
 "aon" = (
 /obj/structure/window/framed/new_varadero/foundation,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
@@ -4699,6 +4802,29 @@
 	},
 /turf/open/floor/corsat/greenwhite,
 /area/point_loma/research_facility/medical)
+"aoE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard{
+	pixel_y = -16
+	},
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/point_loma/oob/sky)
+"aoF" = (
+/obj/structure/stairs/multiz/rock{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/point_loma/oob/sky)
+"aoG" = (
+/obj/structure/stairs/multiz/rock/down{
+	dir = 4
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob/sky)
 "aoH" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/cardboard/full_stack,
@@ -4741,6 +4867,14 @@
 /obj/effect/landmark/corpsespawner/hybrisa/sanitation,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aoN" = (
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/obj/item/shard{
+	pixel_x = -11
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/oob/sky)
 "aoO" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 10
@@ -4782,6 +4916,24 @@
 /obj/item/tool/wrench,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aoU" = (
+/obj/structure/stairs/multiz/rock/down{
+	dir = 5
+	},
+/obj/structure/stairs/multiz/rock/down{
+	dir = 4
+	},
+/turf/open/new_varadero/dock_concrete,
+/area/point_loma/oob/sky)
+"aoV" = (
+/obj/structure/stairs/multiz/rock{
+	dir = 4
+	},
+/obj/item/shard{
+	pixel_x = 8
+	},
+/turf/open/floor/plating,
+/area/point_loma/oob/sky)
 "aoW" = (
 /obj/item/tool/wet_sign{
 	pixel_x = -5;
@@ -4813,6 +4965,12 @@
 	},
 /turf/open/floor/corsat/greenwhite,
 /area/point_loma/research_facility/medical)
+"apc" = (
+/obj/structure/stairs/multiz/rock/down{
+	dir = 5
+	},
+/turf/open_space,
+/area/point_loma/oob/sky)
 "apd" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -1
@@ -45985,6 +46143,8 @@
 /obj/structure/bed/chair/comfy/hybrisa/black{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/purple,
 /area/point_loma/oob/sky)
 "djr" = (
@@ -46009,6 +46169,7 @@
 /area/point_loma/oob/sky)
 "djv" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/effect/decal/cleanable/blood/yautja,
 /turf/open/floor/corsat/squares,
 /area/point_loma/oob/sky)
 "djw" = (
@@ -46127,13 +46288,6 @@
 	},
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/oob/sky)
-"djJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
-	dir = 1;
-	locked = 1
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/oob/sky)
 "djK" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 8
@@ -46199,7 +46353,12 @@
 	icon_state = "4-9";
 	layer = 5
 	},
-/turf/open/new_varadero/dock_concrete,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	dir = 4;
+	id = "cannon";
+	name = "ATC Lobby Lockdown"
+	},
+/turf/open/floor/plating,
 /area/point_loma/oob/sky)
 "djV" = (
 /turf/open/floor/corsat/purple/northwest,
@@ -46274,13 +46433,18 @@
 /area/point_loma/oob/sky)
 "dki" = (
 /obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/hybrisa/dirt/sand_2,
 /turf/open/floor/corsat/squares,
 /area/point_loma/oob/sky)
 "dkj" = (
+/obj/effect/decal/hybrisa/dirt/sand_2,
 /turf/open/floor/corsat/red/east,
 /area/point_loma/oob/sky)
 "dkk" = (
-/turf/open/new_varadero/dock_concrete,
+/obj/structure/stairs/multiz/rock/up{
+	dir = 10
+	},
+/turf/open_space,
 /area/point_loma/oob/sky)
 "dkl" = (
 /obj/structure/platform/metal/strata/east,
@@ -46312,7 +46476,8 @@
 /area/point_loma/oob/sky)
 "dkq" = (
 /obj/structure/platform/metal/strata/west,
-/turf/open/floor/corsat/squares,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/platingdmg3/west,
 /area/point_loma/oob/sky)
 "dkr" = (
 /obj/structure/prop/power_transformer{
@@ -46361,6 +46526,7 @@
 "dky" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/hybrisa/dirt/sand_2,
 /turf/open/floor/corsat/squares,
 /area/point_loma/oob/sky)
 "dkz" = (
@@ -46379,7 +46545,8 @@
 /turf/open/floor/corsat/redcorner/east,
 /area/point_loma/oob/sky)
 "dkD" = (
-/turf/open/floor/corsat/red/northeast,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/plating/platingdmg3/west,
 /area/point_loma/oob/sky)
 "dkE" = (
 /obj/structure/platform/metal/strata/east,
@@ -159310,10 +159477,10 @@ bQT
 bUA
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
+amP
+amJ
+amJ
+amq
 bQT
 bQT
 bQT
@@ -159493,9 +159660,9 @@ bUA
 bUA
 bUA
 bUA
-bUA
-bUA
-bUA
+amC
+amC
+amC
 bUA
 bUA
 bUA
@@ -159674,10 +159841,10 @@ bQT
 bUA
 bQT
 bQT
+amC
+amC
 bQT
-bQT
-bQT
-bQT
+amC
 bUA
 bQT
 bQT
@@ -202443,12 +202610,12 @@ alv
 alv
 alv
 alv
-dkk
-dkk
-dkk
-dkk
-dkk
-dkk
+bTS
+bTS
+bTS
+bTS
+bTS
+bTS
 aPc
 djV
 djA
@@ -202624,8 +202791,8 @@ bTS
 bTS
 bTS
 bTS
-dkk
-dkk
+bTS
+bTS
 dji
 aPc
 djz
@@ -203178,10 +203345,10 @@ dkv
 dkr
 dkm
 dkg
-djY
-djN
+anz
+anx
 djD
-dju
+anl
 djo
 djj
 alD
@@ -203363,8 +203530,8 @@ dkh
 djZ
 djO
 djE
-dju
-djo
+ano
+amX
 aPc
 alD
 alD
@@ -203910,7 +204077,7 @@ djZ
 djR
 djE
 dju
-djo
+anj
 aPc
 sym
 sym
@@ -204088,7 +204255,7 @@ dkx
 dku
 dkp
 dkh
-djY
+anG
 djM
 djD
 dju
@@ -204267,12 +204434,12 @@ dkL
 dkI
 dkC
 dky
-dkq
+aom
 dkq
 dki
 djY
 djN
-djD
+ant
 djv
 djo
 djl
@@ -204448,9 +204615,9 @@ dji
 dji
 dji
 dkD
-dkj
-dkj
-dkj
+aoN
+aoE
+anS
 dkj
 dka
 djL
@@ -204626,13 +204793,13 @@ bTS
 bTS
 bTS
 bTS
-dkk
-dkk
+bTS
+bTS
 dji
-aPc
-djz
-djz
-djz
+aoV
+aoF
+aoF
+aoc
 aPc
 dkb
 djS
@@ -204808,12 +204975,12 @@ bTS
 bTS
 bTS
 bTS
-dkk
-dkk
-dkk
-dkk
-dkk
-dkk
+bTS
+bTS
+bTS
+apc
+aoU
+aoG
 dkk
 aPc
 dkc
@@ -204990,17 +205157,17 @@ bTS
 bTS
 bTS
 bTS
-aPc
-dkk
-dkk
-dkk
-dkk
-dkk
-dkk
+bTS
+bTS
+bTS
+bTS
+bTS
+bTS
+bTS
 aPc
 dkd
 djU
-djJ
+djz
 aPc
 djs
 dji

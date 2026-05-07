@@ -15,6 +15,7 @@
 	var/alienize_list = XENO_T1_CASTES //define first then check for PCI during disease infection
 	var/level = 0
 	var/xenospeaker = FALSE
+	var/start = FALSE
 
 /datum/disease/xeno_transformation/stage_act()
 	..()
@@ -39,7 +40,9 @@
 
 	switch(stage)
 		if(1)
-			to_chat(affected_mob, "Something has begun within you.") //Feedback for XT
+			if (start == FALSE)
+				to_chat(affected_mob, "Something has begun within you.") //Feedback for XT
+				start = TRUE
 		if(2)
 			if (prob(1))
 				to_chat(affected_mob, "Your throat feels scratchy.")
@@ -48,7 +51,7 @@
 			if (prob(1))
 				to_chat(affected_mob, "Something catches in your throat.")
 		if(3)
-			if(xenospeaker == FALSE)
+			if (xenospeaker == FALSE)
 				xenospeaker = TRUE
 				affected_mob.apply_effect(3, DAZE)
 				to_chat(affected_mob, SPAN_XENOHIGHDANGER("Something in your mind tears- and your thoughts don't sound the way they did before."))
@@ -60,7 +63,7 @@
 					SSticker.mode.xenomorphs += affected_mob.mind
 
 				var/datum/hive_status/hive = GLOB.hive_datum[hivenumber_alienize]
-				if(hive)
+				if (hive)
 					affected_mob.faction = hive.internal_faction
 					affected_mob.hivenumber = hivenumber_alienize
 			if (prob(5))
@@ -83,25 +86,25 @@
 			if (prob(5))
 				affected_mob.whisper(pick("Soon we will be one...", "Must... evolve...", "Capture...", "You are perfect."))
 			if (prob(8))
-				to_chat(affected_mob, SPAN_XENODANGER("You can feel... something...inside you."))
+				to_chat(affected_mob, SPAN_XENODANGER("You can feel... something... inside you."))
 		if(5)
-			if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+			if (!isxeno(affected_mob) && !HAS_TRAIT(src, TRAIT_KNOCKEDOUT)) //prevents transformed xeno from suffering stage 5 checks continually(?)
 				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
-											SPAN_XENOHIGHDANGER("There's- a screaming coming from inside us- a voice so loud our insides rush at the ends of our skin to make space for its light- it won't be long now..."))
+				SPAN_XENOHIGHDANGER("There's- a screaming coming from inside us- a voice so loud our insides rush at the ends of our skin to make space for its light- it won't be long now..."))
 				affected_mob.apply_effect(3, PARALYZE)
 				affected_mob.make_jittery(105)
 				affected_mob.take_limb_damage(1)
 			if (prob(5))
 				affected_mob.whisper(pick("So close...", "Evolve- EVOLVE- NOW!", "Capture... them... all...", "Just... a little... more...", "Hsssshhhhh!", "It's all so clear, now."))
-			if(prob(10))
+			if (prob(10))
 				to_chat(affected_mob, SPAN_DANGER("Your skin feels impossibly calloused..."))
 				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				var/message = pick("There's an emptiness inside of you.", "The organelles in your chest grieve for what you aren't.", "Your heart starts beating rapidly, and each beat is painful.")
 				message = SPAN_XENOBOLDNOTICE("[message].")
 				to_chat(affected_mob, message)
 				affected_mob.apply_damage(10, TOX)
-			if (prob(20))
+			if (prob(5))
 				affected_mob.updatehealth()
 				var/turf/hxenoturf = find_loc(affected_mob)
 				gibs(hxenoturf)

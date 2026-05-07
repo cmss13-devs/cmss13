@@ -272,6 +272,9 @@
 	req_one_access = list(ACCESS_YAUTJA_ANCIENT)
 	unslashable = TRUE
 
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane
+	plane = TURF_PLANE
+
 //FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
 
 /obj/structure/machinery/door/airlock/prison_hatch
@@ -438,6 +441,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"

@@ -960,7 +960,7 @@
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants are able to be harvested repeatedly."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1

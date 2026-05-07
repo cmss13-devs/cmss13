@@ -79,7 +79,7 @@
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags)
+	if(pass_flags)
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
@@ -176,7 +176,7 @@
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if (!living_carbon.throwing)
+		if(!living_carbon.throwing)
 			return
 
 		if(crusher_resistant)

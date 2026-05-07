@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(mapping)
 
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
-	/// list of traits and their associated z leves
+	/// list of traits and their associated z levels
 	var/list/z_trait_levels = list()
 
 	/// list of lazy templates that have been loaded
@@ -241,6 +241,10 @@ SUBSYSTEM_DEF(mapping)
 	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)
 	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
 		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
+
+	var/datum/map_config/hunter_map = new
+	hunter_map.LoadConfig("maps/huntership.json", TRUE)
+	Loadship(FailedZs, hunter_map.map_name, hunter_map.map_path, hunter_map.map_file, hunter_map.traits, ZTRAITS_ADMIN, override_map_path = "maps/")
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"

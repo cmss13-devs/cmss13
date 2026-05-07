@@ -10,7 +10,7 @@
 	stage_prob = 100 //Guaranteed stage advance per check, but minimum age keeps it a consistent length.
 	agent = "Rip-LEY Mutagenic Microbes"
 	affected_species = list("Human")
-	stage_minimum_age = 60
+	stage_minimum_age = 120
 	var/hivenumber_alienize = XENO_HIVE_NORMAL
 	var/alienize_list = XENO_T1_CASTES //define first then check for PCI during disease infection
 	var/level = 0
@@ -52,12 +52,9 @@
 				xenospeaker = TRUE
 				affected_mob.apply_effect(3, DAZE)
 				to_chat(affected_mob, SPAN_XENOHIGHDANGER("Something in your mind tears- and your thoughts don't sound the way they did before."))
-				affected_mob.add_language(LANGUAGE_XENOMORPH) //For roleplay purposes. You're gonna be one of them soon, anyway.
+				affected_mob.universal_understand = 1 //universal understanding for roleplay's sake.
+				affected_mob.set_languages(list(LANGUAGE_XENOMORPH)) //You're gonna be one of them soon, anyway.
 				give_action(affected_mob, /datum/action/human_action/activable/cult/speak_hivemind) //Lets the victim speak in their hivemind, but not spectate xenos. Fun for roleplay.
-				affected_mob.remove_language(LANGUAGE_ENGLISH)
-				affected_mob.remove_language(ALL_HUMAN_LANGUAGES) //No servant of the Queen Mother speaks American.
-				affected_mob.add_language(LANGUAGE_ENGLISH)
-				LAZYORASSOC(affected_mob.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 				if(SSticker.mode && affected_mob.mind)
 					SSticker.mode.xenomorphs += affected_mob.mind

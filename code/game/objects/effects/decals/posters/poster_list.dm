@@ -161,7 +161,7 @@ Template
 /datum/poster/poster_31
 	icon_state="poster31"
 	name = "safety goggles"
-	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES"
+	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES'."
 
 /datum/poster/poster_32
 	icon_state="poster32"

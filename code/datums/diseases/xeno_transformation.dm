@@ -104,7 +104,7 @@
 				message = SPAN_XENOBOLDNOTICE("[message].")
 				to_chat(affected_mob, message)
 				affected_mob.apply_damage(10, TOX)
-			if (prob(5))
+			if (prob(1))
 				affected_mob.updatehealth()
 				var/turf/hxenoturf = find_loc(affected_mob)
 				gibs(hxenoturf)

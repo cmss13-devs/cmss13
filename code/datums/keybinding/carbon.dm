@@ -153,7 +153,4 @@
 	var/mob/living/carbon/human/human = user.mob
 	var/obj/item/held_item = human.get_held_item()
 	held_item.use_unique_action()
-
-	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
-	current_xeno.rip_limb()
 	return TRUE

@@ -454,7 +454,7 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_fax_responder")
 		return FALSE
 	if(!load_fax_base())
-		return
+		return FALSE
 
 	responder_candidate.close_spawn_windows()
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)

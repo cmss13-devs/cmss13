@@ -1,7 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - imageadd: "Adds hud and minimap icons for the HC Security Guard and HC Security Guard Synth"
-  - bugfix: "The Executive Bodyguard's minimap icon and faction HUD icon will now appear."
-  - bugfix: "The W-Y Commercial Pilot's assignment name has been changed."
-  - bugfix: "Removes unnecessary periods from some Goon role comm names."

@@ -92,6 +92,11 @@
 	if(user.grab_level >= GRAB_AGGRESSIVE)
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 
+/obj/item/grab/use_unique_action()
+	..()
+	if(isxeno(usr))
+		unique_action(usr)
+
 /obj/item/grab/unique_action(mob/user)
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/current_xeno = user

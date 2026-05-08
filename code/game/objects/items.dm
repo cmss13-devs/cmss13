@@ -1173,9 +1173,6 @@
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		return
 	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		if(isxeno(usr))
-			unique_action(usr)
-			return
 		to_chat(usr, SPAN_WARNING("Not right now."))
 		return
 

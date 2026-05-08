@@ -330,6 +330,9 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/clothing/under/chainshirt/hunter/scalable,
 		/obj/item/clothing/suit/armor/yautja/hunter/scalable,
+		/obj/item/falcon_drone,
+		/obj/item/storage/belt/gun/quiver,
+		/obj/item/arrow,
 	)
 
 /datum/asset/spritesheet/vending_products/register()

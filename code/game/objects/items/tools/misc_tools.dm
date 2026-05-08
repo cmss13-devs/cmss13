@@ -93,6 +93,7 @@
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 		//Now let them choose the text.
 		var/str = copytext(reject_bad_text(tgui_input_text(user, "Label text?", "Set label", "", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)), 1, MAX_NAME_LEN)
+		str = replace_non_alphanumeric_plus(str)
 		if(!str || !length(str))
 			to_chat(user, SPAN_NOTICE("Label text cleared. You can now remove labels."))
 			label = null

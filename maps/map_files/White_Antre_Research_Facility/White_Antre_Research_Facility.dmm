@@ -9028,9 +9028,6 @@
 "aui" = (
 /turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/main_level/engineering)
-"auj" = (
-/turf/closed/wall/r_wall/biodome,
-/area/white_antre/oob)
 "auk" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 1
@@ -129560,7 +129557,7 @@ euM
 ayZ
 ayT
 ayP
-auj
+ayM
 aQv
 azj
 azh
@@ -129583,9 +129580,9 @@ ayZ
 ayS
 ayT
 bki
-auj
+ayM
 aoO
-auj
+ayM
 bkf
 azj
 ayS
@@ -129608,7 +129605,7 @@ euM
 ayZ
 ayT
 ayP
-auj
+ayM
 aQv
 azj
 azh
@@ -129727,9 +129724,9 @@ euM
 byL
 byJ
 bjX
-auj
-auj
-auj
+ayM
+ayM
+ayM
 bjW
 boW
 bbX
@@ -129750,11 +129747,11 @@ euM
 awm
 ayW
 ayO
-auj
-auj
-auj
-auj
-auj
+ayM
+ayM
+ayM
+ayM
+ayM
 azk
 ayW
 awN
@@ -129775,9 +129772,9 @@ euM
 byL
 byJ
 bjX
-auj
-auj
-auj
+ayM
+ayM
+ayM
 bjW
 boW
 bbX
@@ -129896,7 +129893,7 @@ euM
 byK
 ayR
 ayN
-auj
+ayM
 azn
 azl
 azh
@@ -129919,9 +129916,9 @@ aza
 ayS
 ayR
 ayN
-auj
+ayM
 bkg
-auj
+ayM
 azn
 azl
 ayS
@@ -129944,7 +129941,7 @@ euM
 byK
 ayR
 ayN
-auj
+ayM
 azn
 azl
 azh
@@ -133613,13 +133610,13 @@ euM
 ayS
 ayT
 ayP
-auj
+ayM
 azV
 azV
-auj
+ayM
 azV
 azV
-auj
+ayM
 azm
 azj
 ayS
@@ -133781,13 +133778,13 @@ euM
 ayW
 ayO
 atS
-auj
-auj
-auj
-auj
-auj
-auj
-auj
+ayM
+ayM
+ayM
+ayM
+ayM
+ayM
+ayM
 afX
 azk
 ayW
@@ -133951,9 +133948,9 @@ ayR
 ayX
 ayX
 ayN
-auj
+ayM
 azY
-auj
+ayM
 azn
 ayX
 ayX

@@ -469,7 +469,7 @@
 	playsound(user, sound_file, 25, TRUE)
 
 	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, PROC_REF(disable_flying_movement))
-	user.throw_atom(t_turf, max_distance, leap_speed, launch_type = LOW_LAUNCH, pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB)
+	user.throw_atom(target_turf, max_distance, leap_speed, launch_type = LOW_LAUNCH, pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB)
 	user.visible_message(SPAN_WARNING("[user] leaps at [target_atom]!"), SPAN_WARNING("You leap at [target_atom]!"))
 
 	UnregisterSignal(user, COMSIG_CLIENT_MOB_MOVE)

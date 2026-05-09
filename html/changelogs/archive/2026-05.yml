@@ -1,0 +1,24 @@
+2026-05-06:
+  LC4492:
+  - bugfix: Fix missing 'hydrosecureoff' sprite for the Botany locker.
+  - bugfix: Fixes missing broken/nopower versions of certain computers.
+  - imagetweak: Adds new nopower/broken version for the tactical map, tweaks the sprite
+      itself. Adds more directions to the techweb computer sprite.
+  - rscadd: Added a new double-tile Maintenance Hatch.
+  - imagetweak: Tweaks the sprite of the single-tile version, just a little.
+  Puckaboo2:
+  - imageadd: Adds hud and minimap icons for the HC Security Guard and HC Security
+      Guard Synth
+  - bugfix: The Executive Bodyguard's minimap icon and faction HUD icon will now appear.
+  - bugfix: The W-Y Commercial Pilot's assignment name has been changed.
+  - bugfix: Removes unnecessary periods from some Goon role comm names.
+  mrkivnv:
+  - imageadd: added new sechud icons for marines and provost, added IO sechud icon
+  - imagedel: deleted old sechud icons for marines and provost, removed MP Cadet sechud
+      icon
+2026-05-07:
+  AnCopper:
+  - bugfix: fixed fultons flying up sideways on human corpses
+  matttheficus:
+  - code_imp: added checks to prevent COs or Synthetics from being given medals or
+      ribbons by non-admins.

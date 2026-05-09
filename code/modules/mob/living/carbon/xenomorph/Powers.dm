@@ -475,12 +475,11 @@
 #undef RESIN_TRAP
 
 /mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)
-	if(!target)
-		return FALSE
-
 	target.visible_message(SPAN_XENONOTICE("[target] starts to shudder!"))
 	to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [target]!"))
 	if(!do_after(src, delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
+		if(!target)
+			return FALSE
 		target.visible_message(SPAN_XENONOTICE("[target] stops shuddering!"))
 		to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [target]!"))
 		return FALSE

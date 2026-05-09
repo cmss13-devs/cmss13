@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Bone Third-Cape", 0, /obj/item/clothing/yautja_cape/bone/third, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Falcon Drone", 20, /obj/item/falcon_drone, null, VENDOR_ITEM_REGULAR),
@@ -96,7 +97,9 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Damaged-Cape", 0, /obj/item/clothing/yautja_cape/damaged, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Full-Cape", 0, /obj/item/clothing/yautja_cape, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Bone Full-Cape", 0, /obj/item/clothing/yautja_cape/bone, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Ceremonial Cape", 0, /obj/item/clothing/yautja_cape/ceremonial, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Ceremonial Bone Cape", 0, /obj/item/clothing/yautja_cape/bone/ceremonial, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Falcon Drone", 20, /obj/item/falcon_drone, null, VENDOR_ITEM_REGULAR),
@@ -506,6 +509,12 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Warrior")
 				icon_state = "halfarmor_elite_xenobone_w"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "halfarmor_elite_seeker_a"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_seeker_a")
+			if("Seeker Adept")
+				icon_state = "halfarmor_elite_seeker_b"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_seeker_b")
 		user.update_inv_wear_suit()
 		return
 
@@ -608,6 +617,12 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 				)
 				icon_state = "pred_mask_elite_xenobone_w"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "pred_mask_elite_seeker_a"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_seeker_a")
+			if("Seeker Adept")
+				icon_state = "pred_mask_elite_seeker_b"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_seeker_b")
 		user.update_inv_wear_mask()
 		return
 
@@ -696,6 +711,12 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Warrior")
 				icon_state = "elite_y-boots_xenobone_w"
 				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "elite_y-boots_seeker_a"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_seeker_a")
+			if("Seeker Adept")
+				icon_state = "elite_y-boots_seeker_b"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_seeker_b")
 		user.update_inv_shoes()
 		return
 

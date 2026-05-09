@@ -7,7 +7,7 @@
 #define PRED_TRANSLATORS list(PRED_TECH_MODERN, PRED_TECH_RETRO, PRED_TECH_COMBO)
 #define PRED_INVIS_SOUNDS list(PRED_TECH_MODERN, PRED_TECH_RETRO)
 #define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector", "Shadow", "Serpent", "Knight", "Seeker")
-#define PRED_UNIQUES list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior")
+#define PRED_UNIQUES list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior", "Seeker Initiate", "Seeker Adept")
 #define PRED_UNIQUES_LEAD list("Praetorian")
 #define PRED_UNIQUES_ALL list("None", "Anubys", "Cleopatra", "Plated", "Ronin", "Defender", "Warrior", "Praetorian")
 #define PRED_SKIN_COLOR list("tan", "green", "purple", "blue", "red", "black")
@@ -19,6 +19,9 @@
 #define PRED_YAUTJA_QUARTER_CAPE "yautja quarter-cape"
 #define PRED_YAUTJA_PONCHO "yautja poncho"
 #define PRED_YAUTJA_DAMAGED_CAPE "yautja damaged cape"
+#define PRED_YAUTJA_BONE_CAPE_FULL "yautja bone cape"
+#define PRED_YAUTJA_BONE_CAPE_THIRD "yautja bone third-cape"
+#define PRED_YAUTJA_BONE_CAPE_CEREMONIAL "yautja ceremonial bone cape"
 
 #define SD_TYPE_BIG   0
 #define SD_TYPE_SMALL 1

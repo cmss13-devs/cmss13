@@ -233,8 +233,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
-	if(can_recolor)
-		color = new_color
+	color = new_color
+	if(!can_recolor) //Why this is necessary I don't know, but it won't work any other way.
+		color = null
 
 /obj/item/clothing/yautja_cape/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

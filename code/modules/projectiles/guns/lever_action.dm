@@ -65,30 +65,32 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
 
-/obj/item/weapon/gun/lever_action/wield(mob/M)
+/obj/item/weapon/gun/lever_action/wield(mob/gun_weilder)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(M, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
+		RegisterSignal(gun_weilder, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
 
-/obj/item/weapon/gun/lever_action/unwield(mob/M)
+/obj/item/weapon/gun/lever_action/unwield(mob/gun_weilder)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		UnregisterSignal(M, COMSIG_BULLET_DIRECT_HIT)
+		UnregisterSignal(gun_weilder, COMSIG_BULLET_DIRECT_HIT)
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
 	reset_hit_buff(user)
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, obj/item/weapon/gun/projectile_source, one_hand_lever = FALSE)
 	SIGNAL_HANDLER
+	if(projectile_source != src)
+		return FALSE
 	var/mob/living/carbon/human/human_user = user
 	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
-		return
+		return FALSE
 	else if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
 		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_SKILLED))
 			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
-			return
+			return FALSE
 		else
 			to_chat(user, SPAN_DANGER("Augh! Your hand catches on the [lever_name]!!"))
 			var/obj/limb/O = human_user.get_limb(human_user.hand ? "l_hand" : "r_hand")
@@ -98,13 +100,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 			O.fracture()
 			O.status &= ~LIMB_SPLINTED
 			human_user.pain.recalculate_pain()
-			return
+			return FALSE
 
 	if(!istype(target))
-		return //sanity...
+		return FALSE //sanity...
 
 	else if(target.stat == DEAD || !(flags_gun_lever_action & USES_STREAKS))
-		return
+		return FALSE
 
 	else
 		if(streak)
@@ -114,7 +116,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		streak++
 		playsound(user, lever_hitsound, 25, FALSE)
 	if(!(flags_gun_lever_action & USES_STREAKS))
-		return
+		return FALSE
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
 	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
@@ -286,7 +288,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(flags_gun_lever_action & MOVES_WHEN_LEVERING)
 		to_chat(user, SPAN_WARNING("<i>You spin \the [src] one-handed! Fuck yeah!<i>"))
 		animation_wrist_flick(src)
-	direct_hit_buff(user, ,TRUE)
+	direct_hit_buff(user, , src,TRUE)
 
 /obj/item/weapon/gun/lever_action/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -503,21 +505,23 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
 		return NONE
-	if(floating_penetration && in_chamber) //has to go before actual firing
+	if(in_chamber) //has to go before actual firing
 		var/obj/projectile/P = in_chamber
-		switch(floating_penetration)
-			if(FLOATING_PENETRATION_TIER_1)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
-				direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
-			if(FLOATING_PENETRATION_TIER_2)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
-				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
-			if(FLOATING_PENETRATION_TIER_3)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
-				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
-			if(FLOATING_PENETRATION_TIER_4)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
-				direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
+		if(floating_penetration)
+			switch(floating_penetration)
+				if(FLOATING_PENETRATION_TIER_1)
+					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
+					direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
+				if(FLOATING_PENETRATION_TIER_2)
+					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
+				if(FLOATING_PENETRATION_TIER_3)
+					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
+				if(FLOATING_PENETRATION_TIER_4)
+					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+					direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
+		P.projectile_flags |= PROJECTILE_BULLSEYE
 	return ..()
 
 /obj/item/weapon/gun/lever_action/xm88/unload(mob/user)
@@ -549,8 +553,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(one_hand_lever)
 		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/xm88/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/xm88/direct_hit_buff(mob/user, mob/target, /obj/item/weapon/gun/projectile_source, one_hand_lever = FALSE)
 	. = ..()
+	if(!.)
+		return
 	playsound(target, direct_hit_sound, 75)
 
 #undef FLOATING_PENETRATION_TIER_0

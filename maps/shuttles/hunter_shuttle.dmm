@@ -264,7 +264,7 @@
 	pixel_y = -1;
 	name = "Lockdown";
 	id = "yaut_shut_lock";
-	req_one_access = list(390,392,393)
+	req_one_access = list(390,392,393,394)
 	},
 /turf/open/predship/tile/hunter_tile_2/west,
 /area/shuttle/hunter)

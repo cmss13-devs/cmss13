@@ -65,15 +65,15 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
 
-/obj/item/weapon/gun/lever_action/wield(mob/gun_weilder)
+/obj/item/weapon/gun/lever_action/wield(mob/gun_wielder)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(gun_weilder, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
+		RegisterSignal(gun_wielder, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
 
-/obj/item/weapon/gun/lever_action/unwield(mob/gun_weilder)
+/obj/item/weapon/gun/lever_action/unwield(mob/gun_wielder)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		UnregisterSignal(gun_weilder, COMSIG_BULLET_DIRECT_HIT)
+		UnregisterSignal(gun_wielder, COMSIG_BULLET_DIRECT_HIT)
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()

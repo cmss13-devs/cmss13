@@ -180,7 +180,7 @@
 					serialized["background_icon"] = human.assigned_squad.background_icon
 				else
 					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
-				
+
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
 					continue
@@ -203,7 +203,8 @@
 					wy += list(serialized)
 				else if(human.faction in FACTION_LIST_HYPERDYNE)
 					hyperdyne += list(serialized)
-				else if(human.faction in FACTION_LIST_YAUTJA)
+				else if(human.faction in FACTION_LIST_ALL_YAUTJA)
+					serialized["job"] = human.job
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)

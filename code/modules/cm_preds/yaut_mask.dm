@@ -51,6 +51,7 @@
 	..()
 	forceMove(location)
 	if(!random_icon)
+		LAZYSET(item_state_slots, WEAR_FACE, icon_state)
 		return
 
 	if(legacy != "None")
@@ -273,15 +274,64 @@
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
+/obj/item/clothing/mask/gas/yautja/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	anti_hug = 30
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("It has been worn from long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
+	)
+	icon_state = "pred_mask_bb_patchwork"
+	random_icon = FALSE
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/patchwork_alt
+	icon_state = "pred_mask_bb_patchworkalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/lunatic
+	icon_state = "pred_mask_bb_lunatic"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav
+	icon_state = "pred_mask_bb_scav"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/scav_alt
+	icon_state = "pred_mask_bb_scavalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/venator
+	icon_state = "pred_mask_bb_venator"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando
+	icon_state = "pred_mask_bb_commando"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/commando_alt
+	icon_state = "pred_mask_bb_commandoalt"
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/bane
+	icon_state = "pred_mask_bb_bane"
+
 // emissary mask
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/badblood/emissary
+	icon_state = "pred_mask_bb_emissary_classic"
 
-/obj/item/clothing/mask/gas/yautja/hunter/emissary
-	icon_state = "pred_mask_elite_emissary"
 
-/obj/item/clothing/mask/gas/yautja/hunter/emissary/New() // guarantee this icon vs randomization
-	..()
-	icon_state = "pred_mask_elite_emissary"
-	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
 
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor

@@ -506,22 +506,22 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
 		return NONE
 	if(in_chamber) //has to go before actual firing
-		var/obj/projectile/P = in_chamber
+		var/obj/projectile/projectile_to_shoot = in_chamber
 		if(floating_penetration)
 			switch(floating_penetration)
 				if(FLOATING_PENETRATION_TIER_1)
-					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
+					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
 					direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
 				if(FLOATING_PENETRATION_TIER_2)
-					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
 					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 				if(FLOATING_PENETRATION_TIER_3)
-					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
 					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 				if(FLOATING_PENETRATION_TIER_4)
-					P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
 					direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
-		P.projectile_flags |= PROJECTILE_BULLSEYE
+		projectile_to_shoot.projectile_flags |= PROJECTILE_BULLSEYE
 	return ..()
 
 /obj/item/weapon/gun/lever_action/xm88/unload(mob/user)
@@ -542,8 +542,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	cur_onehand_chance = initial(cur_onehand_chance)
 	direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
 	if(in_chamber)
-		var/obj/projectile/P = in_chamber
-		P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
+		var/obj/projectile/projectile_to_shoot = in_chamber
+		projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
 	floating_penetration = FLOATING_PENETRATION_TIER_0
 	//these are init configs and so cannot be initial()
 	set_fire_delay(FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_12)

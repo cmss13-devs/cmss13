@@ -101,6 +101,8 @@
 	var/range_build_capable = FALSE
 	var/needs_weeds = FALSE
 	var/care_about_adjacency = FALSE
+	/// If you are able to build across Z-levels or not (IGNORE_BUILD_DISTANCE bypasses this).
+	var/can_build_cross_z = FALSE
 
 	plasma_cost = 1
 

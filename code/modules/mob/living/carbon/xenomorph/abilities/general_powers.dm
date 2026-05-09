@@ -303,7 +303,7 @@
 	if(range_build_capable && care_about_adjacency)
 		apply_cooldown_override(final_cooldown)
 
-	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, final_build_speed_mod))
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, can_build_cross_z, final_build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(final_cooldown || xeno_cooldown_interrupt_penalty)
 				apply_cooldown_override(final_cooldown + xeno_cooldown_interrupt_penalty)

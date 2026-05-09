@@ -14,7 +14,7 @@
 #define RESIN_TREE 14
 #define RESIN_TRAP 15
 
-/mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, cross_z_level_building = FALSE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -84,6 +84,10 @@
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
+		return SECRETE_RESIN_FAIL
+
+	if(extra_build_dist != IGNORE_BUILD_DISTANCE && (target.z != src.z && !cross_z_level_building))
+		to_chat(src, SPAN_XENOWARNING("We can't build on other floors!"))
 		return SECRETE_RESIN_FAIL
 
 	if(thick) //hivelords can thicken existing resin structures.
@@ -167,13 +171,12 @@
 
 					construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
 					playsound(target.loc, "alien_resin_break", 25)
-					construct_target.health -= initial(construct_target.health) * 2
-					construct_target.healthcheck()
+					construct_target.deconstruct(FALSE)
 				else
 					construct_target.template.add_crystal(src)
 				return TRUE
 
-			// In practice, Membrane and Wall are treated as the same, but future modularity is good, so they are identified as seperate things
+			// In practice, Membrane and Wall are treated as the same, but future modularity is good so they are identified as seperate things
 			if(RESIN_WALL to RESIN_WALL_MEMBRANE)
 				var/turf/closed/wall/resin/resin_wall = target
 				if(!can_deconstruct)
@@ -232,8 +235,7 @@
 
 				faststicky.visible_message(SPAN_XENONOTICE("[faststicky] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				faststicky.health -= initial(faststicky.health) * 2
-				faststicky.healthcheck()
+				faststicky.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_SPIKE)
@@ -246,8 +248,7 @@
 
 				resin_spike.visible_message(SPAN_XENONOTICE("[resin_spike] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				resin_spike.health -= initial(resin_spike.health) * 2
-				resin_spike.healthcheck()
+				resin_spike.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_ACIDPILLAR)
@@ -263,8 +264,7 @@
 
 				acidpillar.visible_message(SPAN_XENONOTICE("[acidpillar] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				acidpillar.health -= initial(acidpillar.health) * 2
-				acidpillar.healthcheck()
+				acidpillar.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_RECOVERY)
@@ -283,8 +283,7 @@
 
 				recovery.visible_message(SPAN_XENONOTICE("[recovery] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				recovery.health -= initial(recovery.health) * 2
-				recovery.healthcheck()
+				recovery.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_CLUSTER)
@@ -299,8 +298,7 @@
 
 					cluster.visible_message(SPAN_XENONOTICE("[cluster] crumbles!"))
 					playsound(target.loc, "alien_resin_break", 25)
-					cluster.health -= initial(cluster.health) * 2
-					cluster.healthcheck()
+					cluster.deconstruct(FALSE)
 				else
 					cluster.do_repair(src)
 				return TRUE
@@ -330,8 +328,7 @@
 
 				eggmorph.visible_message(SPAN_XENONOTICE("[eggmorph] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				eggmorph.health -= initial(eggmorph.health) * 2
-				eggmorph.healthcheck()
+				eggmorph.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_TREE)
@@ -350,8 +347,7 @@
 
 				plasma_tree.visible_message(SPAN_XENONOTICE("[plasma_tree] crumbles!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				plasma_tree.health -= initial(plasma_tree.health) * 2
-				plasma_tree.healthcheck()
+				plasma_tree.deconstruct(FALSE)
 				return TRUE
 
 			if(RESIN_TRAP)
@@ -368,8 +364,7 @@
 
 				resin_trap.visible_message(SPAN_XENONOTICE("[resin_trap] collapses in on itself!"))
 				playsound(target.loc, "alien_resin_break", 25)
-				resin_trap.health -= initial(resin_trap.health) * 2
-				resin_trap.healthcheck()
+				resin_trap.deconstruct(FALSE)
 				return TRUE
 
 	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
@@ -480,6 +475,9 @@
 #undef RESIN_TRAP
 
 /mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)
+	if(!target)
+		return FALSE
+
 	target.visible_message(SPAN_XENONOTICE("[target] starts to shudder!"))
 	to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [target]!"))
 	if(!do_after(src, delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))

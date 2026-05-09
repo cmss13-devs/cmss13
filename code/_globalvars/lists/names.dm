@@ -32,6 +32,11 @@ GLOBAL_LIST_INIT(first_names_male_gladiator, list("Augustus", "Maximus", "Septim
 GLOBAL_LIST_INIT(first_names_female_gladiator, list("Aelia", "Caecilia", "Camilla", "Claudia", "Flavia", "Martina", "Theodora", "Gaia", "Decima", "Lucia", "Maxima", "Octavia", "Prima", "Statia", "Tiberia", "Tulla", "Volusa", "Priscilla", "Julia"))
 GLOBAL_LIST_INIT(last_names_gladiator, list("Caesar", "Afer", "Aventus", "Brutus", "Corvus", "Gallicanus", "Hispanus", "Italicus", "Laurentius", "Sicilianus", "Crispus", "Catus", "Longinus", "Magus", "Scaevola", "Varus", "Aquila", "Lepidus", "Pisces", "Serpens", "Taurus", "Aemilius", "Aurelius", "Cassius", "Cornelius", "Julius", "Octavius", "Pompeius", "Valerius", "Regulus", "Drusus", "Urbanus", "Cicero", "Sulla"))
 
+GLOBAL_LIST_INIT(first_names_male_landsknecht, list()) // fill these in
+GLOBAL_LIST_INIT(first_names_female_landsknecht, list())
+GLOBAL_LIST_INIT(last_names_landsknecht, list())
+
+
 GLOBAL_LIST_INIT(first_names_male_dutch, list("Raymond", "Jesse", "Jack", "John", "Sam", "Aaron", "Charlie", "Ellis", "Nick", "Francis", "Louis"))
 GLOBAL_LIST_INIT(first_names_female_dutch, list("Chelsea", "Mira", "Jessica", "Catherine", "Eliza", "Emma", "Ashley", "Annie", "Alicia", "Miranda", "Ellen"))
 

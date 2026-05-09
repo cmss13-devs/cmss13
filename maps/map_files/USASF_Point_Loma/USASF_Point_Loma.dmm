@@ -4188,7 +4188,7 @@
 	drag_delay = 4;
 	dir = 5
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "amQ" = (
 /obj/structure/machinery/cell_charger{
@@ -4920,19 +4920,13 @@
 /obj/structure/stairs/multiz/rock/down{
 	dir = 5
 	},
-/obj/structure/stairs/multiz/rock/down{
-	dir = 4
-	},
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/oob/sky)
 "aoV" = (
-/obj/structure/stairs/multiz/rock{
-	dir = 4
-	},
 /obj/item/shard{
 	pixel_x = 8
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/oob/sky)
 "aoW" = (
 /obj/item/tool/wet_sign{
@@ -4966,10 +4960,8 @@
 /turf/open/floor/corsat/greenwhite,
 /area/point_loma/research_facility/medical)
 "apc" = (
-/obj/structure/stairs/multiz/rock/down{
-	dir = 5
-	},
-/turf/open_space,
+/obj/structure/blocker/invisible_wall,
+/turf/open/walkable_lattice,
 /area/point_loma/oob/sky)
 "apd" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
@@ -22682,6 +22674,16 @@
 "btQ" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
+"bua" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"bug" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "bui" = (
 /turf/open_space,
 /area/point_loma/airbase/cave/south/upper)
@@ -23385,9 +23387,10 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
 "bxA" = (
-/obj/structure/stairs{
-	dir = 1
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 4
 	},
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
 "bxB" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -23669,6 +23672,10 @@
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"bBu" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/turf/open/predship/mainfloor/corner/west,
+/area/point_loma/airbase/exterior/east)
 "bBF" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
@@ -23676,7 +23683,7 @@
 	id = "cannon";
 	name = "ATC Lobby Lockdown"
 	},
-/turf/closed/wall/new_varadero,
+/turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bBP" = (
 /obj/structure/prop/dam/crane/damaged,
@@ -32562,7 +32569,9 @@
 /area/point_loma/airbase/exterior/west)
 "cju" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/hybrisa/street/sidewalkcenter/west,
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
 "cjx" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
@@ -41068,6 +41077,7 @@
 /area/space)
 "cTA" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
+/obj/effect/decal/hybrisa/lattice,
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/point_loma/airbase/exterior/east)
 "cTB" = (
@@ -41149,7 +41159,11 @@
 /turf/open/hybrisa/street,
 /area/point_loma/airbase/exterior/west)
 "cTR" = (
-/turf/open/predship/plating,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/red_glow/on,
 /area/point_loma/airbase/exterior/west)
 "cTS" = (
 /turf/open/predship/mainfloor/plain,
@@ -41481,7 +41495,11 @@
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/research)
 "cVd" = (
-/obj/structure/stairs,
+/obj/effect/hunter/fake_platform/hunter/west{
+	layer = 3
+	},
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
 "cVe" = (
 /obj/effect/decal/hybrisa/road/lines1,
@@ -46597,6 +46615,13 @@
 	},
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
+"dDi" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site)
 "dGG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -46608,6 +46633,15 @@
 	},
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
+"dVF" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "dZf" = (
 /obj/structure/prop/brazier{
 	pixel_y = 2;
@@ -46620,18 +46654,89 @@
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"egx" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"ehs" = (
+/obj/effect/hunter/rune,
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "overwatch";
+	name = "Reactor Control Console";
+	pixel_y = 9;
+	density = 0;
+	desc = "A console that operates the reactor intake and pulse engines that power the clan ship.";
+	pixel_x = 16
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/showcase{
+	desc = "A console used for monitoring engine performance and various other ship systems.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = -11;
+	pixel_y = 4
+	},
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/airbase/exterior/crash_site)
 "ehT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "SEWarehouse"
 	},
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/point_loma/airbase/exterior/west)
+"enn" = (
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable{
+	color = "#756e6a";
+	pixel_y = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey{
+	pixel_y = 22;
+	name = "temple guardian statue"
+	},
+/turf/open/predship/hunter_catwalk,
+/area/point_loma/airbase/exterior/crash_site)
+"erc" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"eAk" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site)
+"eDk" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
 "eFq" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 1
 	},
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"eQL" = (
+/obj/effect/hunter/fake_platform/hunter/west{
+	layer = 3
+	},
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"eXy" = (
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/crash_site)
 "fbA" = (
 /obj/effect/hunter/rune{
 	dir = 4
@@ -46651,14 +46756,40 @@
 	},
 /turf/open/predship/mainfloor/direction_2/north,
 /area/point_loma/oob/sky)
+"fnn" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"fog" = (
+/obj/structure/girder,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "ftV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/mainfloor/borderless_vertical,
 /area/point_loma/oob/sky)
+"fyC" = (
+/turf/open/predship/tile/hunter_tile_6/east,
+/area/point_loma/airbase/exterior/west)
+"gaw" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/point_loma/airbase/exterior/east)
+"giw" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/crash_site)
 "gkz" = (
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/interior/research)
+"gtX" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "gvu" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
@@ -46669,6 +46800,13 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/point_loma/oob/sky)
+"gDZ" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco{
+	dir = 8;
+	pixel_x = -3
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "gFn" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
@@ -46686,6 +46824,22 @@
 	},
 /turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
+"gLg" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
+"gUH" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 4
+	},
+/obj/effect/hunter/fake_platform/hunter/east{
+	layer = 3
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "gUO" = (
 /obj/effect/hunter/rune,
 /turf/open/predship/mainfloor/direction_2,
@@ -46694,6 +46848,31 @@
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"hgg" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26;
+	layer = 3.1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Engine Monitor";
+	pixel_y = 24;
+	density = 0
+	},
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
+"hhV" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "hoq" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
@@ -46704,10 +46883,63 @@
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/predship/tile/red3,
 /area/point_loma/oob/sky)
+"hBn" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 5
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "hLc" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"hOj" = (
+/obj/structure/bed/bedroll{
+	color = "#6b675e";
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/predship/hunter_catwalk_alt,
+/area/space)
+"hVH" = (
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/airbase/exterior/west)
+"hWN" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/red_glow,
+/area/point_loma/airbase/exterior/crash_site)
+"hYC" = (
+/obj/effect/hunter/bridge_border/brown/small_stair_right{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"iBl" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"iCQ" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/airbase/exterior/west)
+"iKH" = (
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = -2;
+	dir = 8
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "iLw" = (
 /obj/effect/hunter/rune/corner{
 	dir = 1
@@ -46729,6 +46961,10 @@
 	},
 /turf/open/shuttle/bright_red/glow,
 /area/point_loma/oob/sky)
+"iYy" = (
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "jaI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -46746,6 +46982,36 @@
 "jby" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/oob/sky)
+"jhx" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"jiL" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"jky" = (
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"jnx" = (
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/crash_site)
+"jvu" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/point_loma/airbase/exterior/crash_site)
+"jAr" = (
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/airbase/exterior/crash_site)
 "jYc" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
@@ -46804,6 +47070,16 @@
 	},
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
+"kXH" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
+"lgJ" = (
+/obj/effect/hunter/bridge_border/brown/small_stair_left{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
 "ljC" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/predship/mainfloor/plain,
@@ -46831,6 +47107,23 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
+"lze" = (
+/turf/open/predship/mainfloor/direction_1/north,
+/area/point_loma/airbase/exterior/crash_site)
+"lFS" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/obj/item/clothing/under/chainshirt/thrall,
+/turf/open/predship/hunter_catwalk_alt,
+/area/space)
 "lXD" = (
 /obj/effect/hunter/rune{
 	dir = 8
@@ -46851,12 +47144,35 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"mpu" = (
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "mKt" = (
 /obj/effect/hunter/rune/corner{
 	dir = 8
 	},
 /turf/open/predship/mainfloor/edge/east,
 /area/point_loma/oob/sky)
+"mOj" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae"
+	},
+/obj/structure/showcase{
+	desc = "A vent for a high-power generator.";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -21;
+	pixel_x = -7;
+	color = "#c0baae"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/point_loma/airbase/exterior/crash_site)
 "mTo" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 8;
@@ -46865,15 +47181,61 @@
 	},
 /turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/oob/sky)
+"mZf" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "ncW" = (
 /turf/closed/wall/huntership/innerhull,
 /area/point_loma/oob)
+"ndX" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "nfT" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
 	},
 /turf/open/predship/tile/red3,
 /area/point_loma/oob/sky)
+"njX" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/crash_site)
+"nwa" = (
+/obj/structure/window/framed/colony/reinforced/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2";
+	dir = 8
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/west)
+"nwZ" = (
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"nFd" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "nNr" = (
 /obj/structure/prop/hunter/trophy_display/center,
 /turf/open/predship/mainfloor/plain,
@@ -46891,9 +47253,28 @@
 	},
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/point_loma/oob/sky)
+"nXS" = (
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/obj/effect/hunter/fake_platform/hunter/east{
+	layer = 3
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "nYp" = (
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/interior)
+"oai" = (
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/east)
+"oaF" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/red_glow,
+/area/point_loma/airbase/exterior/crash_site)
 "odI" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown{
@@ -46901,6 +47282,15 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/point_loma/oob/sky)
+"oio" = (
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"oiG" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/crash_site)
 "ojZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
@@ -46909,6 +47299,17 @@
 "olZ" = (
 /turf/open/predship/tile/hunter_tile_2/east,
 /area/point_loma/oob/sky)
+"orO" = (
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "body_scanner_closed";
+	name = "stasis pod";
+	desc = "A large automated capsule with LED displays intended to store worthy warriors and animals for future hunts on isolated planets.";
+	layer = 2.999;
+	dir = 1
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "ovS" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -46924,26 +47325,73 @@
 	},
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/point_loma/oob/sky)
+"oLS" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
+"oTg" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "pcB" = (
 /obj/structure/prop/hunter/trophy_display/top_right,
 /obj/structure/blocker/invisible_wall,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"pdo" = (
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/oob/sky)
+"pdw" = (
+/turf/open/predship/mainfloor/direction_1/north,
+/area/point_loma/airbase/exterior/east)
 "pge" = (
 /turf/closed/wall/huntership/innerhull,
 /area/point_loma/airbase/exterior/crash_site)
+"pqW" = (
+/turf/open/predship/mainfloor/plain,
+/area/space)
 "pFC" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 8
 	},
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"pGm" = (
+/obj/structure/closet/yautja,
+/turf/open/predship/mainfloor/plain,
+/area/space)
+"pQZ" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/crash_site)
+"pRi" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/crash_site)
 "pRY" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"pVw" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "qbV" = (
 /obj/effect/hunter/bridge_border/brown/edge,
 /turf/open/predship/tile/red2,
@@ -46974,6 +47422,28 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/point_loma/oob/sky)
+"qmg" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"qux" = (
+/obj/structure/showcase/yautja/ancient{
+	dir = 1;
+	layer = 4.12;
+	pixel_y = 22
+	},
+/obj/structure/prop/hunter/ancient_temple/small_statue/base{
+	pixel_y = 4
+	},
+/turf/open/predship/hunter_catwalk,
+/area/point_loma/airbase/exterior/crash_site)
 "qNH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/predship/mainfloor/borderless_vertical,
@@ -47012,6 +47482,18 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/predship/tile/red,
 /area/point_loma/oob/sky)
+"qUX" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"qUY" = (
+/obj/effect/decal/cleanable/dirt/sand_2,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/east)
 "rax" = (
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
@@ -47021,12 +47503,29 @@
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
+"rcO" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "rdB" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
+"rmx" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/crash_site)
 "rqS" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
@@ -47037,6 +47536,14 @@
 /obj/structure/prop/hunter/trophy_display/bottom_left,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"rut" = (
+/obj/structure/window/framed/colony/reinforced/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2";
+	dir = 8
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "rxR" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -47047,6 +47554,21 @@
 "rAe" = (
 /turf/closed/wall/huntership/reinforced,
 /area/point_loma/oob/sky)
+"rAw" = (
+/obj/structure/shuttle/engine/router{
+	layer = 2.9;
+	color = "#c0baae"
+	},
+/obj/structure/machinery/power/smes/magical/yautja,
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
+	},
+/obj/structure/terminal{
+	color = "#c0baae";
+	pixel_x = -3
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "rBo" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 4;
@@ -47055,6 +47577,13 @@
 	},
 /turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/oob/sky)
+"rEr" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site)
 "rEM" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -47064,6 +47593,11 @@
 	},
 /turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
+"rFE" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "rLc" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -47075,6 +47609,24 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/predship/tile/red3,
 /area/point_loma/oob/sky)
+"seX" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/showcase{
+	desc = "A console used for monitoring engine performance and various other ship systems.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/airbase/exterior/crash_site)
 "spT" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -47084,13 +47636,41 @@
 "sym" = (
 /turf/open/walkable_lattice,
 /area/point_loma/oob/sky)
-"sEl" = (
-/turf/open/walkable_lattice,
+"syn" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
+"sEl" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"sIp" = (
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
+"sKQ" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/east)
 "taL" = (
 /obj/effect/hunter/rune/corner,
 /turf/open/predship/mainfloor/edge/west,
 /area/point_loma/oob/sky)
+"tbe" = (
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/shuttle/bright_red/glow,
+/area/point_loma/airbase/exterior/crash_site)
+"tea" = (
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "tkI" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
@@ -47110,6 +47690,18 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/predship/mainfloor/borderless_horizontal,
 /area/point_loma/oob/sky)
+"tEx" = (
+/turf/open/predship/mainfloor/corner,
+/area/point_loma/airbase/exterior/east)
+"tEU" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
+"tHZ" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/east)
 "tKj" = (
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
@@ -47158,6 +47750,10 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/point_loma/oob/sky)
+"uKH" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site)
 "uOq" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 4
@@ -47165,6 +47761,9 @@
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
+"uTG" = (
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/east)
 "vgg" = (
 /obj/structure/prop/hunter/trophy_display,
 /obj/structure/blocker/invisible_wall,
@@ -47176,6 +47775,24 @@
 	},
 /turf/open/predship/mainfloor/direction_3,
 /area/point_loma/oob/sky)
+"viI" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26;
+	layer = 2.49
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Engine Monitor";
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
 "vqP" = (
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
@@ -47195,10 +47812,39 @@
 	},
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
+"vvA" = (
+/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "vGN" = (
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
+"vRE" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/east)
+"vUG" = (
+/turf/closed/wall/huntership/destructible/reinforced,
+/area/space)
+"vUN" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/east)
+"vWJ" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/airbase/exterior/west)
+"wjd" = (
+/obj/effect/hunter/rune,
+/obj/structure/bed/chair/hunter{
+	pixel_x = 16;
+	buckling_x = 16;
+	dir = 1
+	},
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/airbase/exterior/west)
 "wym" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -47206,6 +47852,9 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
+"wHR" = (
+/turf/open/predship/mainfloor/corner/west,
+/area/point_loma/airbase/exterior/crash_site)
 "wNs" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/predship/mainfloor/plain,
@@ -47236,12 +47885,25 @@
 	},
 /turf/open/predship/tile/hunter_tile_2/east,
 /area/point_loma/oob/sky)
+"xcE" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "xmv" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "SEWarehouse"
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
+"xmJ" = (
+/turf/open/predship/mainfloor/corner/north,
+/area/point_loma/airbase/exterior/east)
 "xqy" = (
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
@@ -47249,6 +47911,15 @@
 /obj/structure/prop/hunter/trophy_display/bottom_right,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
+"xtT" = (
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/airbase/exterior/west)
+"xxV" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "xID" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown{
@@ -47256,6 +47927,30 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/point_loma/oob/sky)
+"xIJ" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae"
+	},
+/obj/structure/showcase{
+	desc = "A vent for a high-power generator.";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -21;
+	pixel_x = 6;
+	color = "#c0baae"
+	},
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/point_loma/airbase/exterior/crash_site)
 "xJt" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -47278,9 +47973,22 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/point_loma/oob/sky)
+"xPw" = (
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site)
 "xSs" = (
 /turf/closed/wall/huntership/innerhull,
 /area/point_loma/airbase/exterior/west)
+"yly" = (
+/obj/structure/prop/hunter/ancient_temple/giant_statue{
+	pixel_y = 17;
+	dir = 4
+	},
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable{
+	color = "#756e6a"
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 
 (1,1,1) = {"
 aug
@@ -154777,7 +155485,7 @@ cTK
 cTK
 bPH
 bPH
-bPH
+tea
 cTQ
 cTQ
 cTQ
@@ -154959,7 +155667,7 @@ cTK
 cTK
 bPH
 bPH
-bPH
+tea
 cTQ
 cTQ
 cTQ
@@ -155141,7 +155849,7 @@ cUz
 bRz
 bQT
 bQT
-bQT
+mpu
 cJd
 aoZ
 aoZ
@@ -155500,8 +156208,8 @@ aNI
 aNI
 bRz
 bRz
-aNI
-aNI
+fog
+fog
 cUz
 cUz
 aNI
@@ -155683,7 +156391,7 @@ cUz
 bxA
 cUz
 cUz
-cVd
+iYy
 cUz
 cUz
 aNI
@@ -155862,10 +156570,10 @@ cUz
 cUz
 cUz
 cUz
-bxA
-cUz
-cUz
-cVd
+gUH
+tEU
+oio
+nXS
 cUz
 cUz
 aNI
@@ -156044,7 +156752,7 @@ cUz
 cUz
 aNI
 aNI
-aNI
+yly
 cWm
 dbM
 aNI
@@ -156055,8 +156763,8 @@ bRz
 bRz
 bRz
 bRz
-cTQ
-cTQ
+pVw
+bPH
 cTQ
 cTQ
 cTQ
@@ -156237,9 +156945,9 @@ aNI
 aNI
 aNI
 aNI
-cTK
-cTK
-cTQ
+pVw
+pVw
+pVw
 cTQ
 cTQ
 aoZ
@@ -156408,9 +157116,9 @@ cUz
 cUz
 cUz
 cUz
-bxA
-cUz
-cUz
+eQL
+fnn
+egx
 cVd
 cUz
 cUz
@@ -156421,9 +157129,9 @@ cUz
 cUz
 cTS
 cTS
-cTK
-cTK
-cTQ
+pVw
+pVw
+pVw
 aoZ
 bPH
 ajF
@@ -156593,7 +157301,7 @@ cUz
 bxA
 cUz
 cUz
-cVd
+iYy
 cUz
 cUz
 cUz
@@ -156604,7 +157312,7 @@ cUz
 cTS
 cTS
 cTS
-cTK
+pVw
 cTK
 aoZ
 bPH
@@ -156778,15 +157486,15 @@ bRz
 bRz
 bRz
 bRz
-aNI
-aNI
-aNI
-aNI
 bRz
-cTR
-cTR
-cTR
-cTR
+bRz
+bRz
+rut
+rut
+nwa
+cTK
+cTS
+jky
 cTK
 cTK
 bPH
@@ -156960,16 +157668,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+xIJ
+rAw
+tbe
+pQZ
+gLg
+ndX
+cTS
+bua
+fyC
 cTK
 bPH
 cjo
@@ -157117,7 +157825,7 @@ bQT
 bRz
 bRz
 bRz
-bRz
+aNI
 cUz
 cUz
 cUz
@@ -157142,16 +157850,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+mOj
+rAw
+tbe
+njX
+nFd
+oLS
+cTS
+bua
+fyC
 cTK
 bPH
 ajF
@@ -157297,30 +158005,25 @@ bQT
 bQT
 bQT
 bQT
-bQT
-bRz
-bRz
-bRz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-aNI
-aNI
+bUA
 bRz
 aNI
 aNI
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
 aNI
 aNI
 bRz
@@ -157329,11 +158032,16 @@ aNI
 aNI
 aNI
 bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+xIJ
+rAw
+tbe
+pge
+hgg
+dVF
+cTS
+bua
+fyC
 cTK
 bPH
 ajF
@@ -157479,30 +158187,25 @@ bQT
 bQT
 bQT
 bQT
+bUA
 bQT
-bQT
-bRz
-bRz
 bRz
 bRz
 aNI
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
 aNI
 aNI
-bRz
-aNI
-aNI
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
+cUz
 aNI
 aNI
 bRz
@@ -157511,11 +158214,16 @@ aNI
 aNI
 aNI
 bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+mOj
+rAw
+tbe
+ehs
+wjd
+hVH
+lgJ
+sIp
+fyC
 cTK
 bPH
 ajF
@@ -157655,17 +158363,16 @@ bQT
 bQT
 bQT
 bUA
+bUA
+vvA
+hhV
+hhV
+vvA
+bUA
+bUA
 bQT
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bRz
 bRz
 bRz
 aNI
@@ -157677,7 +158384,8 @@ aNI
 aNI
 cUz
 cUz
-bRz
+cUz
+cUz
 aNI
 aNI
 aNI
@@ -157688,16 +158396,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+xIJ
+rAw
+tbe
+seX
+iCQ
+xtT
+hYC
+nwZ
+fyC
 cTK
 bPH
 ajF
@@ -157850,36 +158558,36 @@ bQT
 bQT
 bRz
 bRz
+aNI
+aNI
+aNI
+aNI
+aNI
+bRz
+bRz
+tEU
+oio
 bRz
 bRz
 bRz
 bRz
 bRz
 bRz
-bRz
-cUz
-cUz
-bRz
 aNI
 aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-aNI
-aNI
-aNI
-aNI
-bRz
+jvu
+mOj
+rAw
+tbe
+pge
+viI
 cTR
-cTR
-cTR
-cTR
-cTR
+cTS
+bua
+fyC
 cTK
 bPH
 ajF
@@ -158031,20 +158739,20 @@ bQT
 bQT
 bQT
 bQT
-bQT
+sEl
 bRz
 bRz
 bRz
 bRz
 bRz
 bRz
+iKH
+uKH
+pRi
+gDZ
 bRz
-cUz
-cUz
-bRz
-bRz
-bRz
-bRz
+aNI
+aNI
 bRz
 bRz
 aNI
@@ -158052,16 +158760,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+xIJ
+rAw
+tbe
+giw
+rFE
+vWJ
+cTS
+bua
+fyC
 cTK
 bPH
 ajF
@@ -158213,18 +158921,18 @@ bQT
 bQT
 bQT
 bQT
-bQT
+sEl
+jhx
+jhx
 sEl
 sEl
 sEl
-sEl
-sEl
-aNI
-aNI
-cUz
-cUz
-aNI
-aNI
+bug
+syn
+eAk
+eXy
+syn
+kXH
 aNI
 aNI
 pge
@@ -158234,16 +158942,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+jvu
+mOj
+rAw
+tbe
+oiG
+gtX
+vWJ
+cTS
+bua
+fyC
 cTK
 bPH
 ajF
@@ -158396,17 +159104,17 @@ bQT
 bQT
 bQT
 bQT
+qUX
+qUX
+qUX
 sEl
 sEl
-sEl
-sEl
-sEl
-aNI
 bRz
-cUz
-cUz
+enn
+uKH
+pRi
+qux
 bRz
-aNI
 aNI
 aNI
 pge
@@ -158416,16 +159124,16 @@ aNI
 aNI
 aNI
 bRz
-aNI
-aNI
-aNI
-aNI
 bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+bRz
+bRz
+rut
+rut
+nwa
+cTK
+cTS
+erc
+cTK
 cTK
 bPH
 ajF
@@ -158578,36 +159286,36 @@ bQT
 bQT
 bQT
 bUA
+qUX
+xcE
+qUX
+mZf
 sEl
-sEl
-sEl
-sEl
-sEl
+bRz
+enn
+uKH
+pRi
+qux
+bRz
+pge
+pge
+pge
+pge
+pge
+bRz
+bRz
 bRz
 bRz
 cUz
 cUz
-bRz
-bRz
-pge
-pge
-pge
-pge
-pge
-bRz
-bRz
-bRz
-bRz
-aNI
-aNI
-aNI
-aNI
-bRz
-cTR
-cTR
-cTR
-cTR
-cTR
+cUz
+cUz
+cUz
+cTS
+cTS
+cTS
+cTS
+cTS
 cTK
 bPH
 ajF
@@ -158760,17 +159468,17 @@ bQT
 bQT
 bQT
 bUA
-sEl
-sEl
-sEl
-sEl
-sEl
-aNI
-aNI
-cUz
-cUz
-aNI
-aNI
+xxV
+xcE
+qUX
+oTg
+mZf
+bug
+syn
+eAk
+eXy
+syn
+kXH
 aNI
 aNI
 pge
@@ -158942,17 +159650,17 @@ bQT
 bQT
 bQT
 bUA
+oTg
+rcO
+oTg
 sEl
-sEl
-sEl
-sEl
-sEl
-aNI
+mZf
 bRz
-cUz
-cUz
+enn
+uKH
+pRi
+qux
 bRz
-aNI
 aNI
 aNI
 pge
@@ -159124,17 +159832,17 @@ bQT
 bQT
 bQT
 bUA
+oTg
+xxV
 sEl
 sEl
 sEl
-sEl
-sEl
-aNI
 bRz
-cUz
-cUz
+enn
+uKH
+pRi
+qux
 bRz
-aNI
 aNI
 aNI
 bRz
@@ -159155,7 +159863,7 @@ cTK
 cTK
 cTS
 cTK
-bPH
+pVw
 ajF
 ajF
 ajF
@@ -159295,26 +160003,26 @@ bQT
 bUA
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+jAr
+jAr
+jAr
+jAr
+jAr
 bQT
 bQT
 bQT
 bQT
 bQT
 bUA
+rcO
+qmg
 sEl
 sEl
 sEl
-sEl
-sEl
-bRz
-bRz
-cUz
-cUz
+bug
+jiL
+eAk
+rmx
 bRz
 bRz
 bRz
@@ -159336,9 +160044,9 @@ cUn
 cTL
 cTL
 cTT
-bxu
-bxu
-bxu
+tHZ
+vRE
+vUN
 bYO
 bxu
 bxu
@@ -159478,49 +160186,49 @@ bUA
 bQT
 bQT
 amP
-amJ
+hBn
 amJ
 amq
-bQT
+jAr
 bQT
 bQT
 bQT
 bQT
 bQT
 bUA
-bQT
-bQT
+xcE
+jhx
 pge
 pge
 pge
 bRz
-aNI
+oaF
+dDi
+wHR
+lze
+lze
+lze
+lze
+lze
+cUz
+lze
+lze
 cUz
 cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
-cUz
+lze
+lze
+lze
+lze
+lze
+lze
+pdw
+pdw
+pdw
+pdw
 dcd
-dcd
-dcd
-dcd
-dcd
-bxu
-bYN
-bxu
+tHZ
+qUY
+vUN
 bxu
 bxu
 bxu
@@ -159659,25 +160367,25 @@ bQT
 bUA
 bUA
 bUA
-bUA
+jAr
 amC
 amC
 amC
+jAr
 bUA
 bUA
 bUA
 bUA
 bUA
 bUA
-bUA
-bQT
-bQT
+xcE
+jhx
 bRz
-aNI
+orO
 aNI
 bRz
-aNI
-cUz
+hWN
+rEr
 cUz
 cjG
 cUz
@@ -159852,15 +160560,15 @@ bQT
 bQT
 bQT
 bQT
-bQT
+sEl
 bRz
 bRz
-aNI
-aNI
+orO
 aNI
 aNI
 cUz
-cUz
+iBl
+jnx
 bRz
 bRz
 bRz
@@ -159883,7 +160591,7 @@ cTL
 bYM
 cTL
 cTL
-bQf
+eDk
 bQf
 bQf
 bQf
@@ -160041,8 +160749,8 @@ bRz
 bRz
 bRz
 bRz
-cUz
-cUz
+xPw
+jnx
 bRz
 aNI
 cjI
@@ -160223,8 +160931,8 @@ aNI
 aNI
 aNI
 bRz
-dcd
-dcd
+oai
+uTG
 cTL
 cVl
 cVl
@@ -160406,7 +161114,7 @@ aNI
 aNI
 aNI
 dcd
-dcd
+uTG
 cTL
 cVl
 cVl
@@ -160588,7 +161296,7 @@ aNI
 aNI
 aNI
 dcd
-dcd
+uTG
 cTL
 cVl
 cVm
@@ -160770,7 +161478,7 @@ aNI
 aNI
 aNI
 dcd
-dcd
+uTG
 cTL
 cVl
 cVl
@@ -160951,8 +161659,8 @@ aNI
 aNI
 aNI
 bRz
-dcd
-dcd
+oai
+uTG
 bYM
 cVl
 cVm
@@ -161133,8 +161841,8 @@ bRz
 bRz
 bRz
 bRz
-dcd
-dcd
+oai
+uTG
 cTL
 cVl
 cVl
@@ -161315,8 +162023,8 @@ cUz
 cUz
 cUz
 cUz
-dcd
-dcd
+tEx
+uTG
 bYM
 cVl
 cVl
@@ -161497,8 +162205,8 @@ cUz
 cUz
 cUz
 cUz
-dcd
-dcd
+xmJ
+uTG
 cTL
 cVl
 cVl
@@ -161679,8 +162387,8 @@ aNI
 aNI
 aNI
 aNI
-dcd
-dcd
+oai
+uTG
 cTL
 cVl
 cVq
@@ -161861,8 +162569,8 @@ bRz
 aNI
 aNI
 aNI
-dcd
-dcd
+oai
+uTG
 cTL
 cTL
 cTL
@@ -162043,12 +162751,12 @@ aNI
 aNI
 aNI
 aNI
-dcd
-cVu
-dcd
-dcd
-dcd
-dcd
+oai
+bBu
+pdw
+pdw
+pdw
+pdw
 cTJ
 cTJ
 bQd
@@ -162225,12 +162933,12 @@ aNI
 aNI
 aNI
 aNI
-dcd
+oai
 cVu
-bZl
-bXW
-bxu
-bxu
+sKQ
+gaw
+vUN
+vUN
 bQf
 bQf
 bQd
@@ -162408,8 +163116,8 @@ bRz
 bRz
 bRz
 cTL
-bQf
-bQf
+eDk
+eDk
 bZE
 bxu
 bxu
@@ -202414,8 +203122,8 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
+dji
 alv
 alv
 alv
@@ -202596,7 +203304,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
+dji
 bTS
 bTS
 alv
@@ -202778,6 +203486,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -202786,8 +203495,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -202960,6 +203668,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -202968,8 +203677,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -203142,16 +203850,16 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
 bTS
 bTS
 bTS
@@ -203324,6 +204032,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -203332,8 +204041,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -203506,7 +204214,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -203688,7 +204396,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -203870,7 +204578,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -204052,7 +204760,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -204234,6 +204942,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -204242,8 +204951,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -204416,16 +205124,16 @@ bTS
 bTS
 bTS
 bTS
+dji
+dji
+dji
 bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+dji
+dji
+dji
 bTS
 bTS
 bTS
@@ -204598,6 +205306,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -204606,8 +205315,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -204780,13 +205488,7 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+dji
 bTS
 bTS
 bTS
@@ -204796,11 +205498,17 @@ bTS
 bTS
 bTS
 dji
+bTS
+bTS
+bTS
+dji
+apc
+dji
 aoV
-aoF
+pdo
 aoF
 aoc
-aPc
+pdo
 dkb
 djS
 djH
@@ -204962,6 +205670,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -204970,19 +205679,18 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+dji
+apc
+apc
 apc
 aoU
 aoG
 dkk
-aPc
+pdo
 dkc
 djT
 djI
@@ -205144,6 +205852,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -205152,19 +205861,18 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
+dji
+apc
+apc
+apc
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-aPc
+pdo
 dkd
 djU
 djz
@@ -205326,6 +206034,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -205334,22 +206043,21 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
+dji
+apc
+apc
+apc
 bTS
 bTS
 bTS
+pdo
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
-alv
+alQ
+alQ
 alD
 alD
 alD
@@ -205508,6 +206216,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -205516,22 +206225,21 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
+dji
+apc
+apc
+apc
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
-alv
-alv
+pdo
+alQ
+alQ
+alQ
 alv
 alv
 alv
@@ -205690,27 +206398,27 @@ bTS
 bTS
 bTS
 bTS
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+apc
+apc
+apc
+apc
+apc
+apc
+alQ
 alv
 alv
 alD
@@ -205872,6 +206580,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -205880,18 +206589,17 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+apc
+apc
+apc
+apc
+apc
+alQ
 alv
 alv
 alD
@@ -206054,6 +206762,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -206062,17 +206771,16 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+apc
+apc
+apc
+apc
+alQ
 alv
 alv
 alD
@@ -206236,6 +206944,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -206244,16 +206953,15 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+apc
+apc
+apc
+alQ
 alv
 alv
 alD
@@ -206418,6 +207126,7 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
@@ -206426,15 +207135,14 @@ bTS
 bTS
 bTS
 bTS
+dji
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+apc
+apc
+alQ
 alv
 alv
 alD
@@ -206600,22 +207308,22 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-alv
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+dji
+alQ
 alv
 alv
 alD
@@ -206796,7 +207504,7 @@ bTS
 bTS
 bTS
 bTS
-alv
+alQ
 alv
 alv
 alD
@@ -206977,7 +207685,7 @@ bTS
 bTS
 bTS
 bTS
-alv
+alQ
 alv
 alv
 alD
@@ -224222,16 +224930,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+pqW
+pqW
+pqW
 aDP
 aDP
 aDP
@@ -224404,16 +225112,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+pqW
+lFS
+vUG
+lFS
+pqW
+vUG
+vUG
+pqW
+pqW
 aDP
 aDP
 aDP
@@ -224586,16 +225294,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+pqW
+hOj
+vUG
+hOj
+pqW
+pqW
+vUG
+pqW
+pqW
 aDP
 aDP
 aDP
@@ -224768,16 +225476,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+pqW
+vUG
+vUG
+vUG
+pqW
+vUG
+vUG
+vUG
+pqW
 aDP
 aDP
 aDP
@@ -224950,16 +225658,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+pqW
+pqW
+pqW
+pqW
+pqW
+pqW
+pqW
+pqW
+vUG
+vUG
 aDP
 aDP
 aDP
@@ -225132,16 +225840,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+pqW
+pqW
+pqW
+pqW
+pqW
+pqW
+vUG
+pqW
+pqW
+vUG
 aDP
 aDP
 aDP
@@ -225314,16 +226022,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+pqW
+pqW
+pqW
+pqW
+pqW
+vUG
+lFS
+pqW
+vUG
 aDP
 aDP
 aDP
@@ -225496,16 +226204,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+pGm
+pGm
+pGm
+pGm
+pqW
+vUG
+hOj
+pqW
+vUG
 aDP
 aDP
 aDP
@@ -225678,16 +226386,16 @@ aDP
 aDP
 aDP
 aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
-aDP
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
+vUG
 aDP
 aDP
 aDP

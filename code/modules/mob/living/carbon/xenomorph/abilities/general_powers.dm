@@ -148,7 +148,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/release_haul/can_use_action()
-	return TRUE //we should be allways able to do this
+	return TRUE //we should always be able to do this
 
 /datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner

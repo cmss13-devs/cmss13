@@ -143,7 +143,7 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
 		activated_once = TRUE
 		button.icon_state = "template_xeno_active"
-		get_inital_shield()
+		get_initial_shield()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()

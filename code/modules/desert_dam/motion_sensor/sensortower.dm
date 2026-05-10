@@ -1,9 +1,9 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
 #define SENSORTOWER_BUILDSTATE_WORKING 0
-#define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
+#define SENSORTOWER_BUILDSTATE_WRENCH 1
 #define SENSORTOWER_BUILDSTATE_WIRECUTTERS 2
-#define SENSORTOWER_BUILDSTATE_WRENCH 3
+#define SENSORTOWER_BUILDSTATE_BLOWTORCH 3
 
 /obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
@@ -235,17 +235,20 @@
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/sensortower/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
 Higher severity explosion will damage the sensor tower more
 */
 /obj/structure/machinery/sensortower/ex_act(severity)
-	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+	if(buildstate >= SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			buildstate += 1
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
 			buildstate = 3
 	if(is_on)
@@ -255,6 +258,6 @@ Higher severity explosion will damage the sensor tower more
 	update_icon()
 
 #undef SENSORTOWER_BUILDSTATE_WORKING
-#undef SENSORTOWER_BUILDSTATE_BLOWTORCH
-#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
 #undef SENSORTOWER_BUILDSTATE_WRENCH
+#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
+#undef SENSORTOWER_BUILDSTATE_BLOWTORCH

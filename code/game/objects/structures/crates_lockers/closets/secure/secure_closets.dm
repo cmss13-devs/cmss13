@@ -78,7 +78,7 @@
 				to_chat(mob, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
 		update_icon()
 	else
-		to_chat(user, SPAN_NOTICE("Access Denied"))
+		to_chat(user, SPAN_NOTICE("Access Denied."))
 
 /obj/structure/closet/secure_closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
@@ -150,3 +150,14 @@
 	broken = TRUE
 	locked = FALSE
 	..()
+
+/obj/structure/closet/secure_closet/proc/lock()
+	if(!locked && !opened)
+		locked = TRUE
+		update_icon()
+
+/obj/structure/closet/secure_closet/proc/unlock() //for when you want the locker to unlock itself without user input.
+	if(locked && !opened)
+		locked = FALSE
+		update_icon()
+

@@ -6,6 +6,7 @@
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
+	var/spawn_chance = 100
 
 /obj/effect/landmark/New()
 	tag = "landmark*[name]"
@@ -117,6 +118,10 @@
 	name = "distress_groundside_xeno"
 	icon_state = "spawn_distress_xeno"
 
+/obj/effect/landmark/ert_spawns/groundside_army
+	name = "distress_groundside_army"
+	icon_state = "spawn_distress_wo"
+
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
@@ -168,6 +173,7 @@
 	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
 
 #undef MAXIMUM_LIZARD_AMOUNT
+
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"
@@ -455,13 +461,13 @@
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
-	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's dont exist in code anymore?
+	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's don't exist in code anymore?
 
 /obj/effect/landmark/start/whiskey/chef
 	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef //Need to create a WO variant in the future
 
-//****************************************** CIVILLIANS & MEDBAY ************************************************/
+//****************************************** CIVILIANS & MEDBAY ************************************************/
 
 /obj/effect/landmark/start/whiskey/liaison
 	icon_state = "cc_spawn"
@@ -635,7 +641,7 @@
 	var/broken_on_spawn = FALSE
 
 /obj/effect/landmark/static_comms/proc/spawn_tower()
-	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms(loc)
+	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new (loc)
 	if(broken_on_spawn)
 		commstower.update_health(damage = health) //fuck it up
 	qdel(src)
@@ -662,6 +668,79 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+// AMMO SPAWN (tyrargo)
+
+// m41a ammo
+
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn
+	name = "m41a ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle(loc)
+
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn
+	name = "m41a extended ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/extended(loc)
+
+// M4RA Rifle ammo
+
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn
+	name = "m4ra ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/m4ra(loc)
+
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn
+	name = "m41a extended ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/m4ra/extended(loc)
+
+// vp78 ammo
+/obj/effect/landmark/ammo_spawn/vp78_ammo
+	name = "vp78 ammo"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/vp78_ammo/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/pistol/vp78(loc)
+
+// smg ammo
+/obj/effect/landmark/ammo_spawn/smg_ammo
+	name = "SMG ammo (60)"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/smg_ammo/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/smg/m39(loc)
 
 // zombie spawn
 /obj/effect/landmark/zombie
@@ -687,7 +766,7 @@
 		GLOB.zombie_landmarks -= src
 	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
 	observer.see_invisible = SEE_INVISIBLE_LIVING
-	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
+	observer.client.set_eye(src) // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
 /obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
@@ -695,7 +774,7 @@
 	if(!zombie.hud_used)
 		zombie.create_hud()
 	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
-	observer.client.eye = zombie
+	observer.client.set_eye(zombie)
 	observer.mind.transfer_to(zombie)
 	if(spawns_left <= 0)
 		qdel(src)

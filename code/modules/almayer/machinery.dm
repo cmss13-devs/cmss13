@@ -110,13 +110,24 @@
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 
-//Bugfix to handle cases for ghosts/observers that dont automatically close uis on move.
+//Bugfix to handle cases for ghosts/observers that don't automatically close uis on move.
 /obj/structure/machinery/prop/almayer/CICmap/proc/on_move(mob/source, oldloc)
 	SIGNAL_HANDLER
 	if(Adjacent(source))
 		return
 	on_unset_interaction(source)
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+
+/obj/structure/machinery/prop/almayer/CICmap/update_icon()
+	if(stat & BROKEN)
+		icon_state = "maptableb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "maptable0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
 
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"

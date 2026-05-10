@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/outside/eta)
 "ao" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/outside/lz2_south_cas)
@@ -192,7 +195,7 @@
 /area/bigredv2/outside/lz2_south_cas)
 "yw" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves)
+/area/bigredv2/outside/lz2_south_cas)
 "zB" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
@@ -1319,10 +1322,10 @@ Le
 Le
 "}
 (42,1,1) = {"
-yw
-yw
-yw
-yw
+aa
+aa
+aa
+aa
 cR
 cR
 cR

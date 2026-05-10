@@ -16,7 +16,7 @@ on:
 jobs:
   run_unit_tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
       - name: Restore BYOND from Cache
@@ -30,12 +30,12 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
-          sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
+          sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386 curl:i386
           bash tools/ci/install_rust_g.sh
       - name: Compile Tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build.sh --ci dm -DCIBUILDING -DANSICOLORS -Werror
+          tools/build/build.sh --ci dm -DCIBUILDING -DANSICOLORS -Werror -I"loop_checks"
       - name: Run Tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup

@@ -12,6 +12,8 @@
 	var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
 	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/deconstructible = TRUE
+	///Whether this is currently being manipulated to prevent doubling up
+	var/construction_busy = FALSE
 
 /obj/structure/machinery/computer/Initialize()
 	. = ..()
@@ -86,38 +88,44 @@
 	return text
 
 
-/obj/structure/machinery/computer/attackby(obj/item/I, mob/user)
-	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
+/obj/structure/machinery/computer/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && circuit)
 		if(!deconstructible)
 			to_chat(user, SPAN_WARNING("You can't figure out how to deconstruct [src]..."))
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know how to deconstruct [src]..."))
 			return
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
-			var/obj/item/circuitboard/computer/M = new circuit( A )
-			A.circuit = M
-			A.anchored = TRUE
+		if(construction_busy)
+			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			return
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		construction_busy = TRUE
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			var/obj/structure/computerframe/frame = new /obj/structure/computerframe(loc)
+			var/obj/item/circuitboard/computer/board = new circuit(frame)
+			frame.circuit = board
+			frame.anchored = TRUE
 			for (var/obj/C in src)
 				C.forceMove(loc)
-			if (src.stat & BROKEN)
+			if (stat & BROKEN)
 				to_chat(user, SPAN_NOTICE("The broken glass falls out."))
-				new /obj/item/shard( src.loc )
-				A.state = 3
-				A.icon_state = "3"
+				new /obj/item/shard( loc )
+				frame.build_state = COMPUTERFRAME_STATE_NO_GLASS
+				frame.icon_state = "3"
 			else
 				to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
-				A.state = 4
-				A.icon_state = "4"
-			M.disassemble(src)
+				frame.build_state = COMPUTERFRAME_STATE_COMPLETE
+				frame.icon_state = "4"
+			board.disassemble(src)
 			deconstruct()
+		construction_busy = FALSE
+		return
 	else
 		if(isxeno(user))
-			src.attack_alien(user)
+			attack_alien(user)
 			return
-		src.attack_hand(user)
+		attack_hand(user)
 	return ..()
 
 /obj/structure/machinery/computer/attack_hand(mob/living/user)

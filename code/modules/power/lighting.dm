@@ -142,7 +142,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	light_system = STATIC_LIGHT
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
@@ -167,6 +167,9 @@
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
+
+/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/light/blue
 	icon_state = "btube1"
@@ -641,11 +644,12 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/stabbing_xeno)
+/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(is_broken())
-		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
+		to_chat(xeno, SPAN_WARNING("[src] is already broken!"))
 		return
-	stabbing_xeno.visible_message(SPAN_DANGER("\The [stabbing_xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"), SPAN_DANGER("We smash [src] with our tail!"), null, 5)
+	xeno.tail_stab_animation(src, blunt_stab)
 	broken() //Smashola!
 	return TAILSTAB_COOLDOWN_VERY_LOW
 
@@ -771,9 +775,8 @@
 /obj/structure/machinery/landinglight
 	name = "landing light"
 	icon = 'icons/obj/structures/props/landinglights.dmi'
-	icon_state = "landingstripe"
+	icon_state = "landingstripe0"
 	desc = "A landing light, if it's flashing stay clear!"
-	var/id = "" // ID for landing zone
 	anchored = TRUE
 	density = FALSE
 	layer = BELOW_TABLE_LAYER
@@ -781,11 +784,16 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
 	light_color = LIGHT_COLOR_FLARE
+	explo_proof = TRUE
+	emp_proof = TRUE
 	var/obj/docking_port/stationary/marine_dropship/linked_port = null
+	var/icon_on = "landingstripe0_on"
+	var/icon_off = "landingstripe_off"
+	var/light_strength = 2
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -802,83 +810,27 @@
 		linked_port = null
 
 /obj/structure/machinery/landinglight/proc/turn_off()
-	icon_state = initial(icon_state)
+	icon_state = icon_off
 	set_light(0)
 
-/obj/structure/machinery/landinglight/ds1
-	id = "USS Almayer Dropship 1" // ID for landing zone
-
-/obj/structure/machinery/landinglight/ds2
-	id = "USS Almayer Dropship 2" // ID for landing zone
-
-/obj/structure/machinery/landinglight/upp_ds1
-	id = "SSV Rostock Dropship 1" // ID for landing zone
-
-/obj/structure/machinery/landinglight/upp_ds2
-	id = "SSV Rostock Dropship 2" // ID for landing zone
-
 /obj/structure/machinery/landinglight/proc/turn_on()
-	icon_state = initial(icon_state) + "0"
-	set_light(2)
+	icon_state = icon_on
+	set_light(light_strength)
 
-/obj/structure/machinery/landinglight/ds1/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
+/obj/structure/machinery/landinglight/delayone
+	icon_state = "landingstripe1"
+	icon_on = "landingstripe1_on"
 
-/obj/structure/machinery/landinglight/ds1/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
+/obj/structure/machinery/landinglight/delaytwo
+	icon_state = "landingstripe2"
+	icon_on = "landingstripe2_on"
 
-/obj/structure/machinery/landinglight/ds1/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
+/obj/structure/machinery/landinglight/delaythree
+	icon_state = "landingstripe3"
+	icon_on = "landingstripe3_on"
 
-/obj/structure/machinery/landinglight/ds2/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/ds2/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/ds1/spoke
-	icon_state = "lz_spoke_light"
-
-/obj/structure/machinery/landinglight/ds1/spoke/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(3)
-
-/obj/structure/machinery/landinglight/ds2/spoke
-	icon_state = "lz_spoke_light"
-
-/obj/structure/machinery/landinglight/ds2/spoke/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(3)
+/obj/structure/machinery/landinglight/spoke
+	icon_state = "lz_spoke_light_off"
+	icon_on = "lz_spoke_light_on"
+	icon_off = "lz_spoke_light_off"
+	light_strength = 3

@@ -111,7 +111,7 @@
 			dat+= "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>"
 		else
 			dat+= "<BODY class='paper'>[P.info][P.stamps]</BODY>"
-		show_browser(human_user, dat, P.name, name)
+		show_browser(human_user, dat, P.name, name, width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=P.extra_stylesheets, extra_headers=P.extra_headers)
 		P.add_fingerprint(usr)
 	else if(istype(src[page], /obj/item/photo))
 		var/obj/item/photo/P = src[page]

@@ -51,7 +51,10 @@
 
 	var/list/uniform_sets = null
 
-
+	/// All presets are in "All" and "Faction" (drawn from the faction variable)
+	var/selection_categories = list()
+	/// Doesn't automatically become included in the Faction category.
+	var/no_faction_category = FALSE
 
 /datum/equipment_preset/New()
 	if(!manifest_title)
@@ -151,7 +154,7 @@
 	ID.faction = faction
 	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
-	ID.rank = manifest_title
+	ID.rank = job_title
 	ID.registered_name = new_human.real_name
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
@@ -169,6 +172,11 @@
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_languages(languages)
+
+/datum/equipment_preset/proc/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.vendor_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
+	new_human.vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	new_human.vendor_buyable_categories = MARINE_CAN_BUY_ALL
 
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(!new_human.hud_used)
@@ -191,6 +199,7 @@
 	load_status(new_human, mob_client)
 	load_vanity(new_human, mob_client)
 	load_traits(new_human, mob_client)
+	load_vendor_points(new_human, mob_client)
 	if(GLOB.round_statistics && count_participant)
 		GLOB.round_statistics.track_new_participant(faction)
 
@@ -198,9 +207,6 @@
 
 	new_human.regenerate_icons()
 
-	new_human.marine_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
-	new_human.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	new_human.marine_buyable_categories = MARINE_CAN_BUY_ALL
 	new_human.hud_set_squad()
 	new_human.add_to_all_mob_huds()
 
@@ -211,6 +217,7 @@
 		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
 		current_gear.equip_to_user(new_human)
 
+	SEND_SIGNAL(new_human, COMSIG_POST_VANITY_UPDATE)
 	//Gives ranks to the ranked
 	var/current_rank = paygrades[1]
 	var/obj/item/card/id/I = new_human.get_idcard()
@@ -281,6 +288,14 @@
 	for(var/trait in real_client.prefs.traits)
 		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
 		character_trait.apply_trait(new_human, src)
+
+/// condensed the backpack selector into a proc, 1 = bag, 2 = satchel, 3 = chestrig
+/datum/equipment_preset/proc/get_backpack_item(mob/living/carbon/human/new_human, default_backpack = /obj/item/storage/backpack/marine/satchel, primary_backpack = /obj/item/storage/backpack/marine)
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		return primary_backpack
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		return /obj/item/storage/backpack/marine/satchel/chestrig
+	return default_backpack
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
@@ -735,7 +750,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)
 	switch(random_gear)
 		if(0)
@@ -750,7 +765,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 
-/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,3)
 	switch(random_gear)
 		if(0)
@@ -759,8 +774,6 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(new_human), WEAR_IN_BACK)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/antiweed(new_human), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/new_human) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.
@@ -885,7 +898,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
  * For the most part you will stil get a shotgun but there is an off chance you get something unique.
- * If you dont like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
+ * If you don't like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
  * Some weapons may not appear at all in a colony so they will need the extra ammo.
  * MERC, and DB needed a handfull of shells to compete with the normal CMB.
  */

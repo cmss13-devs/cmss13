@@ -81,11 +81,11 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 
 /datum/admins/proc/job_ban(mob/M)
 	if(!ismob(M))
-		to_chat(usr, "This can only be used on instances of type /mob")
+		to_chat(usr, "This can only be used on instances of type /mob.")
 		return
 
 	if(!M.ckey) //sanity
-		to_chat(usr, "This mob has no ckey")
+		to_chat(usr, "This mob has no ckey.")
 		return
 	if(!GLOB.RoleAuthority)
 		to_chat(usr, "The Role Authority is not set up!")
@@ -149,6 +149,12 @@ WARNING!*/
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'><font color=red>[ERT_JOB_YOUNGBLOOD]</font></a></td>"
 	else
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'>[ERT_JOB_YOUNGBLOOD]</a></td>"
+
+	//Yautja Survivor
+	if(jobban_isbanned(M, JOB_PRED_SURVIVOR, P) || isbanned_dept)
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[JOB_PRED_SURVIVOR];jobban4=\ref[M]'><font color=red>[JOB_PRED_SURVIVOR]</font></a></td>"
+	else
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[JOB_PRED_SURVIVOR];jobban4=\ref[M]'>[JOB_PRED_SURVIVOR]</a></td>"
 
 	//Survivor
 	if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)

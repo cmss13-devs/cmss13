@@ -55,3 +55,9 @@
 
 // From /obj/limb/proc/apply_splints() : (mob/living/user)
 #define COMSIG_LIVING_LIMB_SPLINTED "living_limb_splinted"
+
+#define COMSIG_RIDDEN_DRIVER_MOVE "driver_move"
+	#define COMPONENT_DRIVER_BLOCK_MOVE (1<<0)
+
+///from /mob/living/proc/set_lying_angle
+#define COMSIG_LIVING_SET_LYING_ANGLE "living_set_lying_angle"

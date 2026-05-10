@@ -16,7 +16,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
-	var/no_skill_req // should the computer require the OW skill to use
+	/// If skill check is forgone.
+	var/no_skill_req
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -27,10 +28,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/y_bomb = 0
 	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
-	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
-	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
-	var/z_hidden = 0 //which z level is ignored when showing marines.
-	var/marine_filter = list() // individual marine hiding control - list of string references
+	/// The overwatch computer is busy launching an OB/SB, lock controls
+	var/busy_lockout = FALSE
+	/// If dead marines in the squad are listed
+	var/dead_hidden = FALSE
+	/// The z level ignored when showing marines.
+	var/z_hidden = 0
+	/// individual marine hiding control - list of string references
+	var/marine_filter = list()
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 	var/obj/structure/orbital_cannon/current_orbital_cannon
@@ -42,9 +47,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/freq = CRYO_FREQ
 
-	///List of saved coordinates, format of ["x", "y", "z", "comment"]
+	/// List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
-	///Currently selected UI theme
+	/// Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
@@ -53,6 +58,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/add_pmcs = FALSE
 	var/show_command_squad = FALSE
 	var/tgui_interaction_distance = 1
+
+	var/list/invalid_turfs = list(/turf/open/space, /turf/open_space, /turf/open/slippery)
 
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
@@ -80,7 +87,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=TRUE)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	GLOB.active_overwatch_consoles -= src
@@ -590,7 +597,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 	switch(action)
 		if("pick_squad")
 			if(current_squad)
@@ -614,11 +621,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 				return TRUE
+
 		if("logout")
 			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 					if(resolve_root.name == "Root" && resolve_root.faction == faction)
-						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 						break
 			if(current_squad?.release_overwatch())
 				if(isSilicon(user))
@@ -636,7 +644,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					var/mob/concurrent = user_ref.resolve()
 					if(!concurrent)
 						continue
-					concurrent.reset_view(null)
+					stop_watching_camera(concurrent)
 					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			if(camera_holder)
@@ -647,88 +655,88 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("message")
 			if(current_squad)
-				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad:", "Squad Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
-					current_squad.send_message(input, 1) //message, adds username
-					current_squad.send_maptext(input, "Squad Message:")
+					current_squad.transmit_alert("", input, "", "Squad Message:", user) //message, adds username
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to all Marines of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(user)] sent '[input]' to squad [current_squad].")
 
 		if("sl_message")
 			if(current_squad)
-				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad leader:", "SL Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
-					current_squad.send_message(input, 1, 1) //message, adds username, only to leader
-					current_squad.send_maptext(input, "Squad Leader Message:", 1)
+					current_squad.transmit_alert("", input, "", "Squad Leader Message:", user, only_leader=TRUE) //message, adds username, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(user)] sent '[input]' to Squad Leader [current_squad.squad_leader] of squad [current_squad].")
 
-		if("check_primary")
+		if("remind_primary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.primary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of primary objectives: [current_squad.primary_objective].")]")
-					current_squad.send_message("Your primary objective is '[current_squad.primary_objective]'. See Status pane for details.")
-					current_squad.send_maptext(current_squad.primary_objective, "Primary Objective:")
+					current_squad.remind_objective(primary=TRUE)
 
-		if("check_secondary")
+		if("remind_secondary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.secondary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of secondary objectives: [current_squad.secondary_objective].")]")
-					current_squad.send_message("Your secondary objective is '[current_squad.secondary_objective]'. See Status pane for details.")
-					current_squad.send_maptext(current_squad.secondary_objective, "Secondary Objective:")
+					current_squad.remind_objective(primary=FALSE)
 
 		if("set_primary")
-			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's primary objective?", "Primary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
 			if(target_squad && input)
-				target_squad.primary_objective = "[input] ([worldtime2text()])"
-				target_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
-				target_squad.send_maptext(input, "Primary Objective Updated:")
+				target_squad.transmit_objective(input, primary=TRUE)
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[target_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [target_squad]'s primary objective to '[input]'.")
+				log_overwatch("[key_name(user)] set [target_squad]'s primary objective to '[input]'.")
 				return TRUE
 
 		if("set_secondary")
-			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's secondary objective?", "Secondary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
-			if(input)
-				target_squad.secondary_objective = input + " ([worldtime2text()])"
-				target_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
-				target_squad.send_maptext(input, "Secondary Objective Updated:")
+			if(target_squad && input)
+				target_squad.transmit_objective(input, primary=FALSE)
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[target_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [target_squad]'s secondary objective to '[input]'.")
+				log_overwatch("[key_name(user)] set [target_squad]'s secondary objective to '[input]'.")
 				return TRUE
+
 		if("replace_lead")
 			if(!params["ref"])
 				return
 			change_lead(user, params["ref"])
+			return TRUE
 
 		if("insubordination")
 			mark_insubordination()
+			return TRUE
+
 		if("transfer_marine")
 			transfer_squad()
+			return TRUE
 
 		if("change_locations_ignored")
 			switch(z_hidden)
 				if(HIDE_NONE)
 					z_hidden = HIDE_ALMAYER
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
 				if(HIDE_ALMAYER)
 					z_hidden = HIDE_GROUND
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")
 				else
 					z_hidden = HIDE_NONE
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("No location is ignored anymore.")]")
+			return TRUE
+
 		if("tacmap_unpin")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 			if(user in tacmap_component.interactees)
 				tacmap_component.on_unset_interaction(user)
 			else
 				tacmap_component.show_tacmap(user)
+
 		if("dropbomb")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
@@ -736,9 +744,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			y_bomb = text2num(params["y"])
 			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -752,7 +760,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
-					handle_supplydrop()
+					handle_supplydrop(user)
 
 		if("save_coordinates")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -761,6 +769,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				popleft(saved_coordinates)
 			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"])))
 			return TRUE
+
 		if("change_coordinate_comment")
 			if(!params["index"] || !params["comment"])
 				return
@@ -772,7 +781,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("watch_camera")
 			if(isRemoteControlling(user))
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 			if(!params["target_ref"])
 				return
@@ -798,7 +807,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						var/mob/concurrent = user_ref.resolve()
 						if(!concurrent)
 							continue
-						concurrent.reset_view(null)
+						stop_watching_camera(concurrent)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					disconnect_holder()
 					cam = null
@@ -811,12 +820,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 							continue
 						if(cam)
 							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-						concurrent.reset_view(new_cam)
+						start_watching_camera(concurrent, new_cam)
+						set_onscreen_text(concurrent, cam_target)
 						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 					if(camera_holder)
 						disconnect_holder()
 					cam = new_cam
 					connect_holder(new_holder)
+
 		if("change_operator")
 			if(operator != user)
 				if(operator && isSilicon(operator))
@@ -825,18 +836,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 					for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 						if(resolve_root.name == "Root" && resolve_root.faction == faction)
-							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 							break
 				if(!current_squad || current_squad.assume_overwatch(user))
 					operator = user
 				if(isSilicon(user))
-					to_chat(user, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
 					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
 				else
 					var/mob/living/carbon/human/human = operator
 					var/obj/item/card/id/ID = human.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+				return TRUE
 
 		// groundside ops functions
 
@@ -869,12 +881,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(squad == "root" && show_command_squad)
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
 					if(resolve_root.name == "Root" && resolve_root.faction == faction)
-						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 			else
 				current_squad = locate(params["squad"])
 
 		if("announce")
-			var/mob/living/carbon/human/human_user = usr	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
+			var/mob/living/carbon/human/human_user = user	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			var/announcement_type = params["announcement_type"]
@@ -888,23 +900,23 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
 
-			if(usr.client.prefs.muted & MUTE_IC)
-				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+			if(user.client.prefs.muted & MUTE_IC)
+				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
 
 			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
-				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
-			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
-				to_chat(usr, SPAN_WARNING("Access denied."))
+			if(announcement_faction != FACTION_MARINE && user.faction != announcement_faction)
+				to_chat(user, SPAN_WARNING("Access denied."))
 				return
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !(usr in dview(1, src)))
+			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			if(!input || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
-			if(ishuman(usr))
-				var/mob/living/carbon/human/human = usr
+			if(ishuman(user))
+				var/mob/living/carbon/human/human = user
 				var/obj/item/card/id/id = human.get_idcard()
 				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
@@ -912,23 +924,23 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 				if(announcement_type == "shipside")
 					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-					message_admins("[key_name(user)] has made a shipwide annoucement.")
+					message_admins("[key_name(user)] has made a shipwide announcement.")
 					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
 				else
 					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-					message_admins("[key_name(usr)] has made a command announcement.")
-					log_announcement("[key_name(usr)] has announced the following: [input]")
+					message_admins("[key_name(user)] has made a command announcement.")
+					log_announcement("[key_name(user)] has announced the following: [input]")
 					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 
 		if("selectlz")
-			SSticker.mode.pick_a_lz(usr)
+			SSticker.mode.pick_a_lz(user)
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling. Please stand by."))
 				return FALSE
-			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
@@ -941,7 +953,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			open_medal_panel(user, src)
 
 		if("activate_echo")
-			var/mob/living/carbon/human/human_user = usr
+			var/mob/living/carbon/human/human_user = user
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
@@ -954,20 +966,28 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
 
-			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
+			var/reason = strip_html(input(user, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
-			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
+			if(alert(user, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
 			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
 			echo_squad.engage_squad(TRUE)
-			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
+			message_admins("[key_name(user)] activated Echo Squad for '[reason]'.")
 
 		if("distress")
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
+
+			if(SShijack.in_ftl)
+				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+				return FALSE
+
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				return FALSE
 
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
@@ -1117,7 +1137,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		selected_sl.comm_title = "SL"
 	else //an acting SL
 		selected_sl.comm_title = "aSL"
-	ADD_TRAIT(selected_sl, TRAIT_LEADERSHIP, TRAIT_SOURCE_SQUAD_LEADER)
+	ADD_TRAIT(selected_sl, TRAIT_ACTING_LEAD, TRAIT_SOURCE_SQUAD_LEADER)
 
 	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 	switch(faction)
@@ -1140,6 +1160,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	selected_sl.update_inv_head() //updating marine helmet leader overlays
 	selected_sl.update_inv_wear_suit()
 
+	var/obj/item/device/radio/headset/earpiece = selected_sl.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_LZ
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
 	if(user.is_mob_incapacitated(TRUE) || ui_status(user) == UI_CLOSE || user.blinded) //user can't see - not sure why canmove is here.
@@ -1151,7 +1174,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				continue
 			if(cam)
 				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-			concurrent.reset_view(null)
+			stop_watching_camera(concurrent)
 		if(camera_holder)
 			disconnect_holder()
 		cam = null
@@ -1166,7 +1189,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(user.client.view != GLOB.world_view_size)
 				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				return
-			user.reset_view(cam)
+			start_watching_camera(user, cam)
+			set_onscreen_text(user, camera_holder.loc)
 			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
@@ -1174,7 +1198,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!isRemoteControlling(user) && concurrent_users)
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		user.reset_view(null)
+		stop_watching_camera(user)
 		concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
@@ -1183,6 +1207,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		user.unset_interaction()
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
+	tacmap_component.close_popout_tacmaps(user)
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1289,7 +1314,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transfered!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transferred!")]")
 		return
 
 	var/obj/item/card/id/card = transfer_marine.get_idcard()
@@ -1326,8 +1351,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad, card)
 	if(.)
-		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
-		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transferred from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
+		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transferred to [new_squad]!</font>")
 	else
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
 
@@ -1339,7 +1364,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1351,6 +1376,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
+	if(current_orbital_cannon.action_queued)
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon is busy processing another bombardment!")]")
+		return
+
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
 	var/z_coord = deobfuscate_z(z_bomb)
@@ -1359,30 +1388,30 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	var/turf/T = locate(x_coord, y_coord, z_coord)
+	var/turf/targetted_turf = locate(x_coord, y_coord, z_coord)
 
-	if(isnull(T) || istype(T, /turf/open/space))
+	if(isnull(targetted_turf) || is_type_in_list(targetted_turf, invalid_turfs))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	if(protected_by_pylon(TURF_PROTECTION_OB, T))
+	if(protected_by_pylon(TURF_PROTECTION_OB, targetted_turf))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
 		return
 
-	var/area/A = get_area(T)
+	var/area/targetted_area = get_area(targetted_turf)
 
-	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
+	if(istype(targetted_area) && CEILING_IS_PROTECTED(targetted_area.ceiling, CEILING_DEEP_UNDERGROUND))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
-
 	//All set, let's do this.
-	busy = TRUE
+	busy_lockout = TRUE
+	current_orbital_cannon.action_queued = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
-	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), T), 2 SECONDS)
+	playsound(targetted_turf,'sound/effects/alert.ogg', 25, 1)  //Placeholder
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), targetted_turf), 2 SECONDS)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, begin_fire)), 6 SECONDS)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, targetted_turf), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/human in GLOB.alive_mob_list)
@@ -1393,28 +1422,31 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 
-/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/T)
-	if(!T)
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/targetted_turf)
+	if(!targetted_turf)
 		return
 
 	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
 	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
-	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
+	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(targetted_turf)] has been fired!", source = targetted_turf, alert_overlay = warhead_appearance, extra_large = TRUE)
+
+	SScmtv.spectate_event("Orbital Bombardment", targetted_turf, 40 SECONDS, zoom_out = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X:[obfuscate_x(targetted_turf.x)], Y:[obfuscate_y(targetted_turf.y)], Z:[obfuscate_z(targetted_turf.z)] in [get_area(targetted_turf)]")
 
-	busy = FALSE
-	if(istype(T))
-		current_orbital_cannon.fire_ob_cannon(T, user, current_squad)
+	if(istype(targetted_turf))
+		current_orbital_cannon.fire_ob_cannon(targetted_turf, user, current_squad)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
+	busy_lockout = FALSE
+	current_orbital_cannon.action_queued = FALSE
 
-/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
+/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop(mob/user)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(!usr)
+	if(!user)
 		return
 
-	if(busy)
+	if(busy_lockout)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
@@ -1431,17 +1463,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
-	var/turf/T = locate(x_coord, y_coord, z_coord)
-	if(!T)
+	var/turf/targetted_turf = locate(x_coord, y_coord, z_coord)
+	if(!targetted_turf)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
-	var/area/A = get_area(T)
+	var/area/A = get_area(targetted_turf)
 	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 
-	if(istype(T, /turf/open/space) || T.density)
+	if(is_type_in_list(targetted_turf, invalid_turfs) || targetted_turf.density)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
@@ -1449,21 +1481,93 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The crate is not secure on the drop pad. Get Requisitions to close the crate!")]")
 		return
 
-	busy = TRUE
+	busy_lockout = TRUE
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
 	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
-	if(ismob(usr))
-		var/mob/M = usr
-		M.count_niche_stat(STATISTICS_NICHE_CRATES)
+	user.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
-	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
+	pod.launch(targetted_turf)
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X:[obfuscate_x(targetted_turf.x)], Y:[obfuscate_y(targetted_turf.y)], Z:[obfuscate_z(targetted_turf.z)].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
-	busy = FALSE
+	busy_lockout = FALSE
+
+/obj/structure/machinery/computer/overwatch/proc/start_watching_camera(mob/watcher, atom/target)
+	watcher.reset_view(target)
+
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	if(!plane_controller)
+		return
+
+	plane_controller.add_filter("overwatch_saturation", 1, color_matrix_filter(color_matrix_saturation(0.65)))
+
+	var/icon/overlay_icon = icon('icons/mob/hud/minimap_overlay.dmi')
+	var/overlay_color = rgb(255, 255, 255, 128)
+	plane_controller.add_filter("overwatch_overlay1", 3, layering_filter(x = -480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay2", 4, layering_filter(x = 0, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay3", 5, layering_filter(x = -480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay4", 6, layering_filter(x = 0, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+
+/obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
+	watcher.reset_view(null)
+	set_onscreen_text(watcher, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	if(!plane_controller)
+		return
+
+	plane_controller.remove_filter("overwatch_saturation")
+
+	plane_controller.remove_filter("overwatch_overlay1")
+	plane_controller.remove_filter("overwatch_overlay2")
+	plane_controller.remove_filter("overwatch_overlay3")
+	plane_controller.remove_filter("overwatch_overlay4")
+	plane_controller.remove_filter("overwatch_overlay5")
+	plane_controller.remove_filter("overwatch_overlay6")
+
+/obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
+	if(target == null)
+		watcher.hud_used.overwatch_text.maptext = ""
+		return
+	else if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/watched_marine = target
+		var/obj/item/card/id/card = watched_marine.get_idcard()
+		var/marine_rank = ""
+		if(card && card.paygrade)
+			var/datum/paygrade/watched_marine_paygrade = GLOB.paygrades[card.paygrade]
+			if(watched_marine_paygrade)
+				marine_rank = watched_marine_paygrade.prefix + ". "
+
+		var/area/current_area = get_area(watched_marine)
+		var/job_name = ""
+		if(watched_marine.job)
+			job_name = watched_marine.job
+		else if(card?.rank) //decapitated marine is mindless,
+			job_name = card.rank
+
+		var/health_color = ""
+		var/health_status
+		switch(watched_marine.stat)
+			if(CONSCIOUS)
+				health_status = "Alive"
+				health_color = "green"
+			if(UNCONSCIOUS)
+				health_status = "Unconscious"
+				health_color = "yellow"
+			if(DEAD)
+				health_status = "Dead"
+				health_color = "red"
+
+		var/name_part = "<span class='langchat langchat_yell'>[marine_rank][watched_marine.real_name]</span><br>"
+		var/location_part = "<span class='langchat' style='font-size: 7px;'>[sanitize_area(current_area.name)]</span><br>"
+		var/job_part = "<span class='langchat' style='font-size: 6px;'>[job_name] - </span>"
+		var/living_part = "<span class='langchat' style='color: [health_color]'>[health_status]</span>"
+
+		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
 
 /obj/structure/machinery/computer/overwatch/almayer
 	density = FALSE

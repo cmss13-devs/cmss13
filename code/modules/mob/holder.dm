@@ -86,7 +86,7 @@
 
 /obj/item/holder/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww"
+	desc = "D'aaawwww."
 	icon_state = "kitten_rest"
 
 /obj/item/holder/cat/Jones
@@ -183,7 +183,7 @@
 
 /obj/item/holder/rat/pet/marvin
 	name = "Marvin"
-	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygienic."
 	icon_state = "rat_black"
 
 /obj/item/holder/rat/pet/ikit

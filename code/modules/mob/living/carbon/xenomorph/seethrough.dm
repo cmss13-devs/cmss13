@@ -72,6 +72,7 @@
 	animate(trickery_image, alpha = target_alpha, time = animation_time)
 
 	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect))
+	RegisterSignal(fool, COMSIG_MOB_GHOSTIZE, PROC_REF(on_client_ghost))
 
 ///Remove the screen object and make us appear solid to ourselves again
 /datum/component/seethrough_mob/proc/untrick_mob()
@@ -95,6 +96,13 @@
 
 	var/mob/fool = parent
 	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
+	clear_image(trickery_image, fool.client)
+
+/datum/component/seethrough_mob/proc/on_client_ghost()
+	SIGNAL_HANDLER
+
+	var/mob/fool = parent
+	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
 	clear_image(trickery_image, fool.client)
 
 /datum/component/seethrough_mob/proc/toggle_active()

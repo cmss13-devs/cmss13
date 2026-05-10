@@ -937,14 +937,14 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
 				xeno_victim.KnockDown(height * 1.5 * stun_modifier)
 				xeno_victim.Stun(height * 1.5 * stun_modifier)
-				xeno_victim.Slow(height * 6 * stun_modifier)
-				xeno_victim.Daze(height * 4.5 * stun_modifier)
+				xeno_victim.Slow(height * 3.5 * stun_modifier)
+				xeno_victim.Daze(height * 2.5 * stun_modifier)
 			else
 				xeno_victim.KnockDown(height * 0.5 * stun_modifier)
 				xeno_victim.Stun(height * 0.5 * stun_modifier)
 				xeno_victim.Superslow(height * 1 * stun_modifier)
 				xeno_victim.Slow(height * 2 * stun_modifier)
-				xeno_victim.Daze(height * 2.5 * stun_modifier)
+				xeno_victim.Daze(height * 1.5 * stun_modifier)
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)

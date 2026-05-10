@@ -147,9 +147,6 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()
 
-/datum/action/xeno_action/onclick/release_haul/can_use_action()
-	return TRUE //we should always be able to do this
-
 /datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())

@@ -8,7 +8,9 @@
 	flags_equip_slot = SLOT_FACE
 	actions_types = list(/datum/action/item_action/toggle/use/whistle)
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE

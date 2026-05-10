@@ -244,10 +244,6 @@
 	use_attachment.screen_loc = ui_datum.ui_gun_attachment
 	static_inventory += use_attachment
 
-	// toggle_raillight = new /atom/movable/screen/gun/rail_light()
-	// toggle_raillight.screen_loc = ui_datum.ui_gun_railtoggle
-	// static_inventory += toggle_raillight
-
 	eject_mag = new /atom/movable/screen/gun/eject_magazine()
 	eject_mag.screen_loc = ui_datum.ui_gun_eject
 	static_inventory += eject_mag

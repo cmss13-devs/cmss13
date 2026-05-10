@@ -86,7 +86,7 @@
 /datum/custom_hud/proc/hud_slot_offset(obj/item/A, ui_slot)
 	var/coords = splittext(ui_slot, ",")
 	var/coords_x = splittext(coords[1], ":")
-	return "hud:[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
+	return "hud:[coords_x[2]]:[text2num(coords_x[3])+A.hud_offset],[coords[2]]"
 
 /datum/custom_hud/old
 	ui_style_icon = 'icons/mob/hud/human_old.dmi'

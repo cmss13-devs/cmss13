@@ -254,6 +254,9 @@
 	/// the icon for spinning the gun
 	var/temp_icon = null
 
+	/// if the gun should have alternative large slot on the hud
+	var/large_hud_slot = FALSE
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again

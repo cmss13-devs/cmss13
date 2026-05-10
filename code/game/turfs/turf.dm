@@ -963,5 +963,3 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	xeno_victim.Slow(1.5)
 	xeno_victim.Daze(1)
 
-
-

@@ -954,9 +954,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		return
 	var/mob/living/carbon/xenomorph/xeno_victim = victim
 	if(xeno_victim.mob_size >= MOB_SIZE_BIG)
-		xeno_victim.Superslow(2)
-		xeno_victim.Slow(2.5)
-		xeno_victim.Daze(3)
+		xeno_victim.Superslow(1.5)
+		xeno_victim.Slow(2)
+		xeno_victim.Daze(1.5)
 		return
 
 	xeno_victim.Superslow(1)

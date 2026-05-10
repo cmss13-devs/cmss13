@@ -164,7 +164,7 @@ AddTimelock(/datum/job/antag/pred_surv, list(
 
 /// Does this client have access to Yautja Special (Elite) sets?
 /client/proc/can_use_pred_specials(higher_lock = FALSE)
-	if(check_whitelist_status_list(list(WHITELIST_YAUTJA_COUNCIL, WHITELIST_YAUTJA_LEADER)))
+	if(check_whitelist_status_list(list(WHITELIST_YAUTJA_LEGACY, WHITELIST_YAUTJA_COUNCIL, WHITELIST_YAUTJA_LEADER)))
 		return TRUE
 
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]

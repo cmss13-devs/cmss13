@@ -1,0 +1,4 @@
+author: "BlitzArde"
+delete-after: True
+changes:
+  - maptweak: "Added late_join landmark for Synthetics to spawn in the ARES Core"

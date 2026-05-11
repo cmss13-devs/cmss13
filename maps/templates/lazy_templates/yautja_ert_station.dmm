@@ -53,7 +53,7 @@
 	id = "pred_ert_armory";
 	pixel_y = -20;
 	name = "Armory Lockdown";
-	req_one_access = list(390,392,393)
+	req_one_access = list(390,392,393,394)
 	},
 /turf/open/predship/tile/red4/glow,
 /area/adminlevel/ert_station/yautja_station)
@@ -787,7 +787,7 @@
 	id = "pred_ert_armory";
 	pixel_y = 22;
 	name = "Armory Lockdown";
-	req_one_access = list(390,392,393)
+	req_one_access = list(390,392,393,394)
 	},
 /turf/open/predship/tile/hunter_tile_6/north,
 /area/adminlevel/ert_station/yautja_station)

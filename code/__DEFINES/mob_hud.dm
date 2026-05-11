@@ -29,6 +29,7 @@
 #define XENO_EXECUTE "29" // Execute thershold, vampire
 #define NEW_PLAYER_HUD "30" //Makes it easy to see new players.
 #define SPYCAM_HUD "31" //Remote control spy cameras.
+#define XENO_HOSTILE_TAG_SPREAD "32" // dancer prae yellow 'tag'
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1

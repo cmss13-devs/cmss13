@@ -3,7 +3,7 @@
 	desc = "A flight computer that can be used for autopilot or long-range flights."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_SENIOR)
 	unacidable = TRUE
 	explo_proof = TRUE
 	needs_power = FALSE
@@ -409,7 +409,7 @@
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
-	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
+	elder_overseer_message("The serpent Queen has commanded the landing shuttle to depart.")
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))

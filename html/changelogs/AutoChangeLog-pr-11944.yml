@@ -1,0 +1,7 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - balance: "Gives most xenos See Through."
+  - balance: "Xenos can now haul by reinforcing Grab. (Grab target and Press default: Z)"
+  - balance: "Xenos gain \"Rip Limb\" verb but only Warrior can use it, can also be activated by unique action (like shotgun pump button) and binded separately to button."
+  - balance: "Resin Fruits now can be picked up using Alt+Click, fruits now mention they can be picked this way in description."

@@ -95,6 +95,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/fool = parent
+	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
 	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
 	clear_image(trickery_image, fool.client)
 

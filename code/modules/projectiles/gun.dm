@@ -254,6 +254,9 @@
 	/// the icon for spinning the gun
 	var/temp_icon = null
 
+	/// if the gun should have alternative large slot on the hud
+	var/large_hud_slot = FALSE
+
 	/// for referencing the timer subsystem, such as the wield queue timer
 	var/gun_timer_id
 
@@ -561,6 +564,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			force_light(on = FALSE)
 			ADD_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 
+	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
+	attachment_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/action_hud = user?.hud_used.unique_action
+	action_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
@@ -620,11 +629,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		dat += attached_attachment.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
+		if(flags_gun_features & GUN_AMMO_COUNTER)
+			dat += "Ammo counter shows [get_ammo_count()] round\s remaining.<br>"
 		if(current_mag && current_mag.current_rounds > 0)
-			if(flags_gun_features & GUN_AMMO_COUNTER)
-				dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
-			else
-				dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
+			dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else
 			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 
@@ -845,6 +853,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else //Max level skill of firearms.
 			wield_time -= 2*2
 
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+	counter.add_hud(user)
+	counter.update_hud(user)
 	update_mouse_pointer(user, TRUE)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
@@ -858,6 +869,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user.client)
 			UnregisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW)
 		slowdown = initial(slowdown)
+	var/atom/movable/screen/gun/toggle_firemode/firemode_hud = user?.hud_used.toggle_burst
+	firemode_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
+	attachment_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/action_hud = user?.hud_used.unique_action
+	action_hud.update_hud(user)
+	var/atom/movable/screen/gun/eject_magazine/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+	if(counter)
+		counter.remove_hud(user)
 
 /// SIGNAL_HANDLER for COMSIG_CLIENT_RESET_VIEW to ensure the mouse_pointer is set correctly
 /obj/item/weapon/gun/proc/handle_view(client/user, atom/target)
@@ -950,6 +972,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if(!in_chamber)
 			load_into_chamber()
 
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 	update_icon()
 	return TRUE
 
@@ -981,6 +1005,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -999,14 +1025,17 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		current_mag.forceMove(get_turf(src))//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)
+		user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+		SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 
 	playsound(user, unload_sound, 25, 1, 5)
-	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
-	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
 	current_mag = null
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 
 	update_icon()
+	display_ammo(user)
 
 ///Unload a chambered round, if one exists, and empty the chamber.
 /obj/item/weapon/gun/proc/unload_chamber(mob/user)
@@ -1377,7 +1406,7 @@ and you're good to go.
 		if(fire_delay_group && delay_left > 0)
 			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-
+	display_ammo(user)
 	shots_fired++
 
 	if(dual_wield && !fired_by_akimbo)
@@ -1694,6 +1723,7 @@ and you're good to go.
 		QDEL_NULL(projectile_to_fire)
 		in_chamber = null
 		reload_into_chamber(user) //Reload the sucker.
+		display_ammo(user)
 	else
 		click_empty(user)//If there's no projectile, we can't do much.
 		if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
@@ -1822,6 +1852,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		dry_fire_text = "<b>*click*</b>"
 
 	if(user)
+		display_ammo(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
 		playsound(user, actual_sound, 25, 1, 5) //5 tile range
 	else
@@ -1830,18 +1861,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment
 	// currently activated
-	if(active_attachable)
-		return
 
 	if(!user)
 		user = gun_user
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
-		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
-			return
-		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
+	if(flags_gun_features & GUN_AMMO_COUNTER)
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+		counter.update_hud(user)
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
@@ -2142,7 +2168,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2213,7 +2239,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

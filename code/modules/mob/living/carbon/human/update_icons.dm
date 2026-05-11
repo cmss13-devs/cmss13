@@ -366,14 +366,13 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_undergarments()
 	update_inv_wear_id()
 
-
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
 	if(!wear_id)
 		return
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
 		client.add_to_screen(wear_id)
-		wear_id.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_id, hud_used.ui_datum.ui_id)
+		wear_id.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_id, hud_used.ui_datum.ui_idcard)
 
 	var/obj/item/card/id/card = get_idcard()
 	if(!card)
@@ -424,8 +423,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[GLASSES_LAYER] = I
 		apply_overlay(GLASSES_LAYER)
 
-
-
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
 	if(wear_l_ear || wear_r_ear)
@@ -447,8 +444,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 		overlays_standing[EARS_LAYER] = standing_image
 		apply_overlay(EARS_LAYER)
-
-
 
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
@@ -472,13 +467,12 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[SHOES_LAYER] = I
 	apply_overlay(SHOES_LAYER)
 
-
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)
 	if(s_store)
 		if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
 			client.add_to_screen(s_store)
-			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_sstore1)
+			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_s_store)
 
 		if(species.flags & NO_OVERLAYS && !s_store.force_overlays_on)
 			return
@@ -696,7 +690,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.add_to_screen(r_hand)
-		r_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(r_hand, hud_used.ui_datum.ui_rhand)
+		r_hand.screen_loc = hud_used.ui_datum.ui_item_rhand
 
 	var/image/I = r_hand.get_mob_overlay(src, WEAR_R_HAND)
 	I.layer = -R_HAND_LAYER
@@ -711,7 +705,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.add_to_screen(l_hand)
-		l_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(l_hand, hud_used.ui_datum.ui_lhand)
+		l_hand.screen_loc = hud_used.ui_datum.ui_item_lhand
 
 	var/image/I = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 	I.layer = -L_HAND_LAYER

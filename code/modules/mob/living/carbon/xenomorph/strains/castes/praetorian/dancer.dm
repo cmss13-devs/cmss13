@@ -318,7 +318,7 @@
 	behavior.dodge_activated = TRUE
 	behavior.dodge_start_time = world.time
 	behavior.safe_click_cooldown = world.time + 1 SECONDS
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.dodge_threshold -= 3
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)

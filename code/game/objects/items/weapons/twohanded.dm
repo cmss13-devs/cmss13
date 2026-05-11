@@ -58,10 +58,21 @@
 	remove_offhand(user)
 	return TRUE
 
-/obj/item/proc/place_offhand(mob/user,item_name)
+/obj/item/proc/place_offhand(mob/user, item_name)
 	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
+	if(istype(src, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/gun_item = src
+		if(gun_item.large_hud_slot)
+			offhand.icon_state = ""
+			gun_item.screen_loc = "hud:2:24,7:34"
+			if(!user.hand)
+				user.hud_used.r_hand_hud_object.icon_state = "hand_double"
+				user.hud_used.r_hand_hud_object.layer = ABOVE_HUD_LAYER
+			else
+				user.hud_used.l_hand_hud_object.icon_state = "hand_double"
+				user.hud_used.l_hand_hud_object.screen_loc = "hud:1:44,7:28"
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
 	offhand.flags_item |= WIELDED
@@ -69,16 +80,27 @@
 	offhand.force = 0 // ditto
 	user.put_in_inactive_hand(offhand)
 	user.update_inv_l_hand(0)
-	user.update_inv_r_hand()
+	user.update_inv_r_hand(0)
 
 /obj/item/proc/remove_offhand(mob/user)
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
+	if(istype(src, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/gun_item = src
+		if(gun_item.large_hud_slot)
+			if(!user.hand)
+				user.hud_used.r_hand_hud_object.icon_state = "hand_active"
+				user.hud_used.r_hand_hud_object.layer = HUD_LAYER
+				gun_item.screen_loc = "hud:1:44,7:28"
+			else
+				user.hud_used.l_hand_hud_object.screen_loc = "hud:2:44,7:28"
+				user.hud_used.l_hand_hud_object.icon_state = "hand_active"
+				gun_item.screen_loc = "hud:2:44,7:28"
 	if(istype(offhand))
 		offhand.unwield(user)
 	user.update_inv_l_hand(0)
-	user.update_inv_r_hand()
+	user.update_inv_r_hand(0)
 
 /obj/item/weapon/twohanded/wield(mob/user)
 	. = ..()
@@ -112,7 +134,7 @@
 /obj/item/weapon/twohanded/offhand
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
-	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 

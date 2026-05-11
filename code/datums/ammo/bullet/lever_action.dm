@@ -6,7 +6,8 @@
 
 /datum/ammo/bullet/lever_action
 	name = "lever-action bullet"
-
+	hud_state = "rifle"
+	hud_state_empty = "rifle_empty"
 	damage = 80
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
@@ -19,6 +20,7 @@
 //intended mechanic is to have xenos hit with it show up very frequently on any MDs around
 /datum/ammo/bullet/lever_action/tracker
 	name = "tracking lever-action bullet"
+	hud_state = "rifle_fire"
 	icon_state = "redbullet"
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_3
@@ -32,6 +34,7 @@
 /datum/ammo/bullet/lever_action/training
 	name = "lever-action blank"
 	icon_state = "blank"
+	hud_state = "rifle_blank"
 	damage = 70  //blanks CAN hurt you if shot very close
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
@@ -43,6 +46,7 @@
 //unused, and unobtainable... for now
 /datum/ammo/bullet/lever_action/marksman
 	name = "marksman lever-action bullet"
+	hud_state = "rifle_fire"
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12

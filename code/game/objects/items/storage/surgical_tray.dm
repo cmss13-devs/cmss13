@@ -60,6 +60,12 @@
 	return ..()
 
 /obj/item/storage/surgical_tray/update_icon()
+
+	if(length(contents))
+		item_state = "surgical_tray"
+	else
+		item_state = "surgical_tray_e"
+
 	if(!huge)
 		if(length(contents))
 			icon_state = "compact_surgical_tray"

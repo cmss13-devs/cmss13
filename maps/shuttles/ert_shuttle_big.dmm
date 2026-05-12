@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/docking_port/mobile/emergency_response/big,
+/turf/template_noop,
+/area/template_noop)
 "aN" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/item/storage/box/gloves{
@@ -624,10 +628,6 @@
 "PE" = (
 /turf/closed/wall/almayer/white/hull,
 /area/shuttle/ert)
-"Qb" = (
-/obj/docking_port/mobile/emergency_response/big,
-/turf/closed/wall/almayer/white/hull,
-/area/shuttle/ert)
 "Qr" = (
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
@@ -893,7 +893,7 @@ rv
 Ro
 PE
 PE
-Tp
+aa
 Tp
 Tp
 Tp
@@ -1148,7 +1148,7 @@ NB
 rv
 rv
 YN
-Qb
+PE
 "}
 (10,1,1) = {"
 zZ

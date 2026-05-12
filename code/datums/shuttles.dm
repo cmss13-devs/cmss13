@@ -54,7 +54,7 @@
 				++xcrd
 			--ycrd
 
-/datum/map_template/shuttle/load(turf/T, centered, register=TRUE)
+/datum/map_template/shuttle/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1, expand_type=null, keep_within_ztrait=FALSE, register=TRUE)
 	. = ..()
 	if(!.)
 		return
@@ -66,6 +66,7 @@
 		// the docking port.
 
 		for(var/obj/docking_port/mobile/port in place)
+			port.calculate_docking_port_information(src)
 			SSatoms.InitializeAtoms(list(port))
 			if(register)
 				port.register()

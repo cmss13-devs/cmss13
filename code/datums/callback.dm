@@ -21,7 +21,7 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 		Example:
 			CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(some_proc_here))
 
-	Proc defined on current(src) object (when in a /proc/ and NOT AN OVERRIDE) OR overridden at src or any of it's parents:
+	Proc defined on current(src) object (when in a /proc/ and NOT AN OVERRIDE) OR overridden at src or any of its parents:
 		PROC_REF
 		Example:
 			CALLBACK(src, PROC_REF(some_proc_here))

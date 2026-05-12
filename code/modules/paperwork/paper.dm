@@ -59,6 +59,8 @@
 	var/document_title
 	var/datum/prefab_document/doc_datum_type
 
+	COOLDOWN_DECLARE(show_paper_cooldown)
+
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
 /obj/item/paper/Initialize(mapload, photo_list)
@@ -146,19 +148,28 @@
 	else
 		read_paper(user, scramble=TRUE)
 
-/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/human_target, mob/living/carbon/user)
 
 	if(user.zone_selected == "eyes")
-		if(!ishumansynth_strict(M))
+		if(!ishumansynth_strict(human_target))
+			return
+		if(!COOLDOWN_FINISHED(src, show_paper_cooldown))
+			to_chat(user, SPAN_WARNING("You can not do that again for a while."))
+			return
+		if(human_target.a_intent != INTENT_HELP)
+			user.visible_message(SPAN_WARNING("[human_target] stops [user] from showing them [src]"),
+			SPAN_WARNING("[human_target] stops you from showing them the [src]."))
+			COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
 			return
 
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
-		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
-		examine(M)
+		user.visible_message(SPAN_NOTICE("[user] holds up a paper and shows it to [human_target]."),
+		SPAN_NOTICE("You show the paper to [human_target]."))
+		COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
+		examine(human_target)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		if(ishuman(human_target))
+			var/mob/living/carbon/human/H = human_target
 			if(H == user)
 				to_chat(user, SPAN_NOTICE("You wipe off the face paint with [src]."))
 				H.lip_style = null
@@ -740,6 +751,7 @@
 	var/full_report
 	var/grant
 	var/contract
+	is_objective = TRUE
 
 /obj/item/paper/research_notes/Initialize(mapload, data, note_type, contract)
 	. = ..()

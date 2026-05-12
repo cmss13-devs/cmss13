@@ -1,0 +1,7 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscdel: "Removed click z level climbing, keeps bump climb (this fixes some issues with M56D)"
+  - balance: "Shifts multiz fall stuns to slow, superslow and daze (disables abilities)"
+  - balance: "Xenos receive tiny superslow, slow and daze on climbing down without falling, slightly increased on big xenos"
+  - balance: "Daze now does not disable releasing hauled"

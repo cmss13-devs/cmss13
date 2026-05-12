@@ -839,6 +839,9 @@
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
 
+	if(user.action_busy)
+		return
+
 	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return

@@ -425,8 +425,8 @@
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
-	product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	product_ads = "Bring some criminals in!;Don't forget - peacekeeping is good!;Your tools, our pleasure!.;Handcuffs!;We're here to help! ;Don't laze, grab a tase!;Donuts provided by Cuppa Joes!?; A Doves best friend!"
+	product_slogans = "Bring some criminals in!;Don't forget - peacekeeping is good!;Your tools, our pleasure.;Handcuffs!;We're here to help!;Don't laze, grab a tase!;Donuts provided by Cuppa Joes!?; A Doves best friend!"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)

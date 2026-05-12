@@ -6,8 +6,7 @@
 	not_weldable = TRUE
 	use_power = USE_POWER_NONE
 	autoclose = FALSE
-	locked = TRUE
-	icon_state = "door_locked"
+	icon_state = "door_closed"
 	stat = 0
 	heavy = TRUE
 	masterkey_resist = TRUE
@@ -255,3 +254,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/dark
 	icon = 'icons/obj/structures/doors/hunter/colorable_ancient_temple_door.dmi'
 	color = "#4a4641"
+
+/obj/structure/machinery/door/airlock/sandstone/runed/dark/destroyable
+	unacidable = FALSE //Destroyable version of the temple doors
+	damage_cap = HEALTH_WALL

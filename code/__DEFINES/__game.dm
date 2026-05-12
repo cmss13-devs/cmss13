@@ -317,7 +317,8 @@
 #define CEILING_DEEP_UNDERGROUND_METAL 4.2
 #define CEILING_REINFORCED_METAL 4.3
 #define CEILING_RESIN 4.4
-#define CEILING_MAX 4.5
+#define CEILING_SANDSTONE_TEMPLE 4.5
+#define CEILING_MAX 4.6
 
 // Helpers
 /// Only use the CEILING_PROTECTION_TIER_X defines for `protection_level`

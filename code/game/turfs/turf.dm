@@ -696,6 +696,8 @@
 			return "The ceiling above is sandstone. That's not going to stop anything."
 		if(CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS)
 			return "It is underground. The ceiling above is made of sandstone. Can probably stop most ordnance."
+		if(CEILING_SANDSTONE_TEMPLE)
+			return "The ceiling above is reinforced sandstone capable of withstanding anything you can throw at it."
 		else
 			return "It is in the open."
 

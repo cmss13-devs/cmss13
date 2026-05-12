@@ -468,6 +468,11 @@
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
 
+/turf/closed/wall/mineral/sandstone/runed/unbreakable
+	name = "hardened sandstone temple wall"
+	turf_flags = TURF_HULL
+	icon_state = "ancient_stone_hull"
+
 /turf/closed/wall/mineral/sandstone/runed/decor
 	name = "decorated sandstone temple wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
@@ -567,8 +572,9 @@
 	return 2
 
 /turf/closed/wall/cult/dark_temple/hunting_grounds
-	name = "wall"
+	name = "hardened dark temple wall"
 	turf_flags = TURF_HULL
+	icon_state = "runedstone_hull"
 
 /turf/closed/wall/cult/make_girder(destroyed_girder)
 	return

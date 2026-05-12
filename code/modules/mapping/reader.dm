@@ -28,7 +28,7 @@
 #define MAP_DMM "dmm"
 /**
  * TGM SPEC:
- * TGM is a derevation of DMM, with restrictions placed on it
+ * TGM is a derivative of DMM, with restrictions placed on it
  * to make it easier to parse and to reduce merge conflicts/ease their resolution
  *
  * Requirements:
@@ -134,7 +134,7 @@
 #define TRIM_TEXT(text) (trim_reduced(text))
 
 /**
- * Helper and recommened way to load a map file
+ * Helper and recommend way to load a map file
  * - dmm_file: The path to the map file
  * - x_offset: The x offset to load the map at
  * - y_offset: The y offset to load the map at
@@ -148,7 +148,7 @@
  * - y_upper: The maximum y coordinate to load
  * - z_lower: The minimum z coordinate to load
  * - z_upper: The maximum z coordinate to load
- * - place_on_top: Whether to use /turf/proc/PlaceOnTop rather than /turf/proc/ChangeTurf
+ * - place_on_top: Whether to use /turf/proc/place_on_top rather than /turf/proc/ChangeTurf
  * - new_z: If true, a new z level will be created for the map
  * - delete: CM/TGMC addition, if we need to manually clear turf contents before spawning stuff
  */
@@ -207,7 +207,7 @@
 	var/stored_index = 1
 	var/list/regexOutput
 	//multiz lool
-	dmm_regex.next = stored_index // CM addition: Neccessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
+	dmm_regex.next = stored_index // CM addition: Necessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
 		// Datum var lookup is expensive, this isn't
@@ -337,14 +337,14 @@
 	SSatoms.map_loader_begin(REF(src))
 
 	// Loading used to be done in this proc
-	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should stil tell our parents we failed
+	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should still tell our parents we failed
 	// Since well, we did
-	var/sucessful = FALSE
+	var/successful = FALSE
 	switch(map_format)
 		if(MAP_TGM)
-			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 		else
-			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 
 	// And we are done lads, call it off
 	SSatoms.map_loader_stop(REF(src))
@@ -368,7 +368,7 @@
 		testing("Skipped loading [turfsSkipped] default turfs")
 	#endif
 
-	return sucessful
+	return successful
 
 // Wanna clear something up about maps, talking in 255x255 here
 // In the tgm format, each gridset contains 255 lines, each line representing one tile, with 255 total gridsets
@@ -422,7 +422,7 @@
 		x_delta_with = min(x_delta_with, world.maxx)
 
 	// We're gonna skip all the entries above the upper x, or maxx if cropMap is set
-	// The last column is guarenteed to have the highest x value we;ll encounter
+	// The last column is guaranteed to have the highest x value we;ll encounter
 	// Even if z scales, this still works
 	var/datum/grid_set/last_column = gridSets[length(gridSets)]
 	var/final_x = last_column.xcrd + x_relative_to_absolute
@@ -481,7 +481,7 @@
 
 		// We're gonna track the first and last pairs of coords we find
 		// Since x is always incremented in steps of 1, we only need to deal in y
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_y = 0
@@ -631,7 +631,7 @@
 			expanded_x = TRUE
 
 		// We're gonna track the first and last pairs of coords we find
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_x = 0
@@ -892,7 +892,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		.[model_key] = list(members, members_attributes)
 	return .
 
-/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z, delete)
+/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, place_on_top as num, new_z, delete)
 	// If we don't have a turf, nothing we will do next will actually acomplish anything, so just go back
 	// Note, this would actually drop area vvs in the tile, but like, why tho
 	if(!crds)
@@ -914,7 +914,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	//first instance the /area and remove it from the members list
 	index = length(members)
 	var/area/old_area
-	if(members[index] != /area/template_noop)
+	if(!ispath(members[index], /area/template_noop)) // CM Edit for /area/template_noop/conditional support
 		if(members_attributes[index] != default_list)
 			world.preloader_setup(members_attributes[index], members[index])//preloader for assigning  set variables on atom creation
 		var/area/area_instance = loaded_areas[members[index]]
@@ -942,6 +942,37 @@ GLOBAL_LIST_EMPTY(map_model_default)
 
 		if(GLOB.use_preloader)
 			world.preloader_load(area_instance)
+	else if(ispath(members[index], /area/template_noop/conditional)) // CM Edit for /area/template_noop/conditional support START
+		if(!new_z)
+			old_area = crds.loc
+		var/area/template_noop/conditional/template_area = members[index]
+		if(!old_area || istype(old_area, template_area::trigger_area_type))
+			var/area_type = template_area::resulting_area_type
+			if(members_attributes[index] != default_list)
+				world.preloader_setup(members_attributes[index], area_type)//preloader for assigning  set variables on atom creation
+			var/area/area_instance = loaded_areas[area_type]
+			if(!area_instance)
+				// If this parsed map doesn't have that area already, we check the global cache
+				area_instance = GLOB.areas_by_type[area_type]
+				// If the global list DOESN'T have this area it's either not a unique area, or it just hasn't been created yet
+				if(!area_instance)
+					area_instance = new area_type(null)
+					if(!area_instance)
+						CRASH("[area_type] failed to be new'd, what'd you do?")
+				loaded_areas[area_type] = area_instance
+
+//			if(!new_z)
+//				old_area.turfs_to_uncontain += crds
+//				area_instance.contained_turfs.Add(crds)
+			area_instance.contents.Add(crds)
+			if(old_area)
+				// Make sure atoms leave their old area and enter the new area
+				for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+					old_area.Exited(turf_atom)
+					area_instance.Entered(turf_atom, crds)
+
+			if(GLOB.use_preloader)
+				world.preloader_load(area_instance) // CM Edit for /area/template_noop/conditional support END
 
 	// Index right before /area is /turf
 	index--
@@ -961,7 +992,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 				qdel(turf_atom, force = TRUE)
 
 		// Note: we make the assertion that the last path WILL be a turf. if it isn't, this will fail.
-		if(placeOnTop)
+		if(place_on_top)
 			instance = crds.load_on_top(members[index], CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))
 		else if(no_changeturf)
 			instance = create_atom(members[index], crds)//first preloader pass
@@ -1053,7 +1084,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	if(text[1] == "\"")
 		// insert implied locate \" and length("\"") here
 		// It's a minimal timesave but it is a timesave
-		// Safe becuase we're guarenteed trimmed constants
+		// Safe becuase we're guaranteed trimmed constants
 		return copytext(text, 2, -1)
 
 	// list

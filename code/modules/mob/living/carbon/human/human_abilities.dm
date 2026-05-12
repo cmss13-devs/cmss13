@@ -210,7 +210,7 @@ CULT
 
 	if(assigned_droppod)
 		if(tgui_alert(H, "Do you want to recall the current pod?",\
-			"Recall Droppod", list("No", "Yes")) == "Yes")
+			"Recall Droppod", list("Yes", "No")) == "Yes")
 			if(!assigned_droppod)
 				return
 

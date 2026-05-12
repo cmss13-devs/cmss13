@@ -269,7 +269,7 @@
 		update_icon()
 		looping = TRUE
 
-/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/power/power_generator/reactor/attackby(obj/item/attacking_item, mob/user)

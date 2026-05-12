@@ -272,3 +272,5 @@ CLIENT_ERROR_VERSION 514
 # just keep generating new ones. Kind of doesn't matter.
 IGNORED_CIDS 4055623708
 
+## Extra line of info to append to showrevinfo verb
+# CODE_MODIFICATIONS_MESSAGE Additional code modifications available at <a href='https://google.com'>https://google.com</a>.

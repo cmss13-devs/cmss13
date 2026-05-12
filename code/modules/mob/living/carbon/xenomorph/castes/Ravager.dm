@@ -23,7 +23,6 @@
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_LURKER)
 	caste_desc = "A brutal, devastating front-line attacker."
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
 	available_strains = list(
@@ -51,7 +50,10 @@
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
 	organ_value = 3000
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
+
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -143,7 +145,7 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
 		activated_once = TRUE
 		button.icon_state = "template_active"
-		get_inital_shield()
+		get_initial_shield()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
@@ -155,7 +157,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
-	button.icon_state = "template_xeno_xeno"
+	button.icon_state = "template_xeno"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
 	xeno.create_empower()
 
@@ -217,7 +219,7 @@
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Our glow fades away, the power leaving our form!"))
 	xeno.remove_filter("empower_rage")
 
-/datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
+/datum/action/xeno_action/onclick/empower/proc/get_initial_shield()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!activated_once)

@@ -77,7 +77,7 @@
 	if(user.action_busy)
 		return
 
-	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("No", "Yes"), 15 SECONDS)
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("Yes", "No"), 15 SECONDS)
 	if(!choice)
 		return
 

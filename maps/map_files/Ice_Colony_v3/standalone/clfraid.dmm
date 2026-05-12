@@ -5,7 +5,6 @@
 /area/shiva/interior/colony/s_admin)
 "ab" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "ac" = (
@@ -117,6 +116,17 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
+"av" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"aw" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -185,9 +195,8 @@
 /area/shiva/interior/colony/s_admin)
 "cr" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/shiva/interior/colony/clf_shuttle)
 "cx" = (
@@ -241,7 +250,7 @@
 /area/shiva/interior/colony/s_admin)
 "dN" = (
 /obj/structure/machinery/light,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/shiva/interior/colony/clf_shuttle)
 "dX" = (
 /obj/effect/landmark/survivor_spawner,
@@ -256,7 +265,7 @@
 	dir = 1;
 	name = "\improper Colony Garage Repair Station"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "eT" = (
 /turf/closed/shuttle/ert{
@@ -527,7 +536,7 @@
 /turf/open/floor/shiva/greenfull,
 /area/shiva/interior/colony/botany)
 "nN" = (
-/obj/structure/window/framed/shiva,
+/obj/structure/window/framed/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "oa" = (
@@ -548,7 +557,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "\improper Colony Dormitories"
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "oV" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -713,9 +722,8 @@
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "sA" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/clf_shuttle)
 "sJ" = (
 /obj/structure/bed/chair{
@@ -798,10 +806,10 @@
 /area/shiva/interior/colony/s_admin)
 "tS" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "tW" = (
@@ -871,9 +879,8 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "xb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/shiva/interior/colony/clf_shuttle)
 "xh" = (
@@ -884,7 +891,7 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "xw" = (
@@ -894,7 +901,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/colony/clf_shuttle)
 "xC" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
@@ -932,9 +939,6 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
-"yG" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/shiva/interior/colony/clf_shuttle)
 "yK" = (
 /obj/structure/coatrack,
 /turf/open/floor/wood,
@@ -1017,10 +1021,8 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "AZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/clf_shuttle)
 "Ba" = (
 /obj/structure/machinery/computer/cameras{
@@ -1058,7 +1060,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "BZ" = (
 /turf/closed/wall/shiva/ice,
-/area/shiva/exterior/junkyard/cp_bar)
+/area/shiva/interior/oob)
 "Cb" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -1125,9 +1127,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "Dt" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/clf_shuttle)
 "Dv" = (
 /obj/structure/prop/ice_colony/soil_net,
@@ -1201,10 +1202,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
-"Ff" = (
-/obj/structure/window/framed/shiva,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
 "Fl" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
@@ -1249,7 +1246,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/colony/clf_shuttle)
 "GO" = (
 /obj/structure/machinery/light/double{
@@ -1368,7 +1365,7 @@
 /area/shiva/interior/colony/s_admin)
 "IZ" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/shiva/interior/colony/clf_shuttle)
@@ -1441,7 +1438,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "JR" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/shiva/interior/colony/clf_shuttle)
@@ -1467,10 +1464,10 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/shiva/interior/colony/clf_shuttle)
 "KE" = (
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "KK" = (
@@ -1611,10 +1608,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "PO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/clf_shuttle)
 "PW" = (
 /turf/closed/shuttle/ert{
@@ -1674,7 +1669,7 @@
 /area/shiva/exterior/junkyard)
 "Ri" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "Rk" = (
@@ -1742,7 +1737,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "SR" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/shiva/interior/colony/clf_shuttle)
@@ -1753,9 +1748,6 @@
 "SY" = (
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/s_admin)
-"Tn" = (
-/turf/closed/wall/shiva/ice,
 /area/shiva/interior/colony/s_admin)
 "TW" = (
 /obj/effect/decal/cleanable/blood{
@@ -1807,12 +1799,6 @@
 /obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
-"Vy" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper Panic Room Shutters"
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/s_admin)
 "Vz" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
@@ -1885,6 +1871,11 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "XC" = (
 /obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/adv{
 	pixel_x = 3;
 	pixel_y = 5
@@ -2068,16 +2059,16 @@ NC
 ZQ
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 rY
 rY
-Tn
-Tn
+BZ
+BZ
 Gz
 Gz
 Gz
@@ -2096,15 +2087,15 @@ CA
 NC
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 Gz
 mz
@@ -2124,15 +2115,15 @@ bL
 Me
 Cb
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 DL
 EM
@@ -2302,7 +2293,7 @@ Kf
 Co
 pM
 DH
-Vy
+ZO
 af
 Bi
 pX
@@ -2792,9 +2783,9 @@ wr
 "}
 (27,1,1) = {"
 tY
-CA
-NC
-NC
+Me
+Me
+Me
 DU
 DU
 DU
@@ -2820,9 +2811,9 @@ wr
 "}
 (28,1,1) = {"
 SD
-bL
-Me
-Cb
+aw
+NC
+av
 DU
 DU
 DU
@@ -2849,7 +2840,7 @@ wr
 (29,1,1) = {"
 SD
 oP
-Ff
+tY
 oP
 DU
 DU
@@ -3063,8 +3054,8 @@ Ui
 ty
 Vv
 Kx
-yG
-yG
+LK
+LK
 dN
 Io
 sZ

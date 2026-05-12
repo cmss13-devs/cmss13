@@ -110,7 +110,7 @@
 					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 					var/mob/living/carbon/T = target
 					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
-						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe"))
+						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe."))
 						return
 
 					if(ishuman(T))
@@ -143,7 +143,7 @@
 					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 					return
 
-				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
+				to_chat(user, SPAN_NOTICE("You fill the syringe with [trans] units of the solution."))
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
@@ -212,7 +212,7 @@
 
 				trans = reagents.trans_to(target, amount_per_transfer_from_this)
 
-			to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
+			to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
 			if (reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
@@ -357,7 +357,7 @@
 					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 					return
 
-				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
+				to_chat(user, SPAN_NOTICE("You fill the syringe with [trans] units of the solution."))
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
@@ -385,7 +385,7 @@
 				src.reagents.reaction(target, INGEST)
 			spawn(5)
 				var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-				to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
+				to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
 				if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
 					mode = SYRINGE_DRAW
 					update_icon()
@@ -486,11 +486,11 @@
 	mode = SYRINGE_INJECT
 	update_icon()
 
-/obj/item/reagent_container/syringe/robot/inoprovaline
-	name = "\improper syringe (Inoprovaline)"
+/obj/item/reagent_container/syringe/robot/inaprovaline
+	name = "\improper syringe (Inaprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
 
-/obj/item/reagent_container/syringe/robot/inoprovaline/Initialize()
+/obj/item/reagent_container/syringe/robot/inaprovaline/Initialize()
 	. = ..()
 	reagents.add_reagent("inaprovaline", 15)
 	mode = SYRINGE_INJECT

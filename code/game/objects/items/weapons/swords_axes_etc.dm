@@ -39,7 +39,7 @@
 	if(M.stuttering < 8)
 		M.stuttering = 8
 
-	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall"))
+	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall."))
 
 //Telescopic baton
 /obj/item/weapon/telebaton
@@ -148,7 +148,7 @@
 		icon_state = "eshield[active]"
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		to_chat(user, SPAN_NOTICE("[src] is now active."))
 		shield_chance = readied_block
 
 	else
@@ -156,7 +156,7 @@
 		icon_state = "eshield[active]"
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 		shield_chance = SHIELD_CHANCE_NONE
 
 	if(istype(user,/mob/living/carbon/human))

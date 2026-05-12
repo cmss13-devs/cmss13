@@ -16,16 +16,16 @@
 		if(2)
 /*
 			if(affected_mob.sleeping && prob(40))  //removed until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 */
 			if(affected_mob.body_position == LYING_DOWN && prob(40))  //changed FROM prob(10) until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 			if(prob(1) && prob(5))
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 			if(prob(1))
@@ -39,16 +39,16 @@
 		if(3)
 /*
 			if(affected_mob.sleeping && prob(25))  //removed until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 */
 			if(affected_mob.body_position == LYING_DOWN && prob(25))  //changed FROM prob(5) until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 			if(prob(1) && prob(1))
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				cure()
 				return
 			if(prob(1))

@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
 	for (var/M in GLOB.power_update_requests_by_machine)
 		to_chat(usr, "[M] = [GLOB.power_update_requests_by_machine[M]]")
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
 	for (var/A in GLOB.power_update_requests_by_area)
 		to_chat(usr, "[A] = [GLOB.power_update_requests_by_area[A]]")

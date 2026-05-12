@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: PR Feedback
+    url: https://forum.cm-ss13.com/w/pr-feedback
+    about: General pull request feedback can be submitted privately on the forums here.
   - name: Game Breaking Exploits
     url: https://discord.gg/cmss13
-    about: Securely disclose high priority issues to a member of the Maintainer Team here.
+    about: Securely disclose high priority issues in a DM to a member of the Maintainer Team here.

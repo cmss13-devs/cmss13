@@ -207,7 +207,7 @@
 
 /obj/item/prop/almayer/flight_recorder/colony
 	name = "\improper CIR-60 colony information recorder"
-	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
+	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually referred to the black box, although this one comes in bloody red."
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
@@ -286,7 +286,7 @@
 
 /obj/item/prop/magazine/book/borntokill
 	name = "\improper Born to Kill"
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for it's bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
+	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for its bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
 	icon_state = "book_green"
 	item_state = "book_green"
 
@@ -304,7 +304,7 @@
 
 /obj/item/prop/magazine/book/theartofwar
 	name = "The Art of War"
-	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot. "
+	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot."
 	icon_state = "book_red"
 	item_state = "book_red"
 

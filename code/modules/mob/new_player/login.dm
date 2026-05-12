@@ -54,6 +54,7 @@
 /mob/new_player/ui_data(mob/user)
 	. = ..()
 
+	// If you have a runtime here it likely means your new_player didn't get qdeleted after transfering client off it
 	.["character_name"] = client.prefs ? client.prefs.real_name : client.key
 
 	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
@@ -100,11 +101,11 @@
 			// Otherwise the preview dummy will runtime
 			// because atoms aren't initialized yet
 			if(SSticker.current_state < GAME_STATE_PREGAME)
-				to_chat(src, SPAN_WARNING("Game is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("Game is still starting up, please wait."))
 				return FALSE
 
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
 				return FALSE
 
 			client.prefs.ShowChoices(src)
@@ -112,7 +113,7 @@
 
 		if("playtimes")
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
 				return FALSE
 
 			if(client.player_data)

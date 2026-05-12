@@ -15,7 +15,12 @@
     "skipLibCheck": true,
     "strict": false,
     "strictNullChecks": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "tgui/*": ["packages/tgui/*"],
+      "common/*": ["packages/common/*"]
+    }
   },
   "include": ["./*.d.ts", "./packages"]
 }

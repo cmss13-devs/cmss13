@@ -59,13 +59,27 @@
 	going_state  = "human2"
 	amount = 0
 
+/obj/effect/decal/cleanable/blood/tracks/pawprints
+	name = "pawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "paw1"
+	going_state  = "paw2"
+	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/clawprints
+	name = "clawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "claw1"
+	going_state  = "claw2"
+	amount = 0
+
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"
 	gender = PLURAL
-	desc = "Whoops..."
+	desc = "They look like tracks left by wheels."
 	coming_state = "wheels"
 	going_state  = ""
-	desc = "They look like tracks left by wheels."
-	gender = PLURAL
 	random_icon_states = null
 	amount = 0

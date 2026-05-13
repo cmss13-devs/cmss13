@@ -907,6 +907,28 @@
 			if(xeno.hivenumber == hivenumber)
 				return FALSE
 
+		if(dodge_threshold > 0)
+			if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
+				projectiles_counted = 0
+				last_projectile_time = 0
+			else if(!(ammo_flags & (AMMO_SNIPER | AMMO_ROCKET)))
+				if(last_projectile_time && world.time - last_projectile_time >= 6 SECONDS)
+					projectiles_counted = 0
+
+				projectiles_counted++
+				last_projectile_time = world.time
+
+				if(projectiles_counted >= dodge_threshold)
+					projectiles_counted = 0
+					last_projectile_time = 0
+
+					xeno_jitter(5 DECISECONDS)
+					if(bullet.ammo.sound_miss)
+						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
+					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+					return FALSE
+
 		if(mob_size == MOB_SIZE_SMALL)
 			. -= 10
 		else if(mob_size >= MOB_SIZE_BIG)

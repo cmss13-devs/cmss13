@@ -160,6 +160,9 @@
 
 	return ..()
 
+/datum/action/xeno_action/onclick/release_haul/can_use_action()
+	return TRUE //we should always be able to do this
+
 /datum/action/xeno_action/onclick/choose_resin/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())

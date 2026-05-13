@@ -126,6 +126,19 @@
 	var/new_name = "Elder [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
+// Council (ELDER)
+/datum/equipment_preset/yautja/enforcer
+	name = "Yautja Enforcer (Councillor)"
+	minimap_icon = "predator_elder"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = PRED_YAUTJA_THIRD_CAPE
+	clan_rank = CLAN_RANK_ELDER_INT
+
+/datum/equipment_preset/yautja/enforcer/load_name(mob/living/carbon/human/new_human, randomise)
+	. = ..()
+	var/new_name = "Elder [new_human.real_name]"
+	new_human.change_real_name(new_human, new_name)
+
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = YAUTJA_LEADER

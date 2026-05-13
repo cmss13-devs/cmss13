@@ -96,7 +96,7 @@
 		return FALSE
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(!(predator_round.flags_round_type & MODE_PREDATOR))
+	if(!(predator_round.flags_round_type & MODE_PREDATOR) && (hivenumber != XENO_HIVE_NORMAL))
 		var/datum/job/pred_job = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
 		if(istype(pred_job) && !pred_job.spawn_positions)
 			pred_job.set_spawn_positions(GLOB.players_preassigned)

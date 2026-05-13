@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - bugfix: "\"FOR THE HIVE\" ability now create correctly chat message explaining cause of death."

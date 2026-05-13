@@ -913,7 +913,9 @@
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
+	var/turf/closed/wall/resin/above/upper_wall
 	var/boosted_regen = FALSE
+	var/should_grow_up = TRUE
 	COOLDOWN_DECLARE(automatic_heal)
 
 /turf/closed/wall/resin/Initialize(mapload)
@@ -921,6 +923,8 @@
 
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
+
+	set_hive_data(src, hivenumber)
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
@@ -932,6 +936,10 @@
 			if(area.linked_lz)
 				AddComponent(/datum/component/resin_cleanup)
 			area.current_resin_count++
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && istype(above,/turf/open_space) && should_grow_up)
+		above.place_on_top(/turf/closed/wall/resin/above)
+		upper_wall = above
 
 /turf/closed/wall/resin/Destroy(force)
 	. = ..()
@@ -939,8 +947,13 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
-
-
+	if(upper_wall)
+		upper_wall.dismantle_wall()
+		upper_wall = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 /turf/closed/wall/resin/process()
 	. = ..()
 
@@ -981,6 +994,67 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+/turf/closed/wall/resin/above
+	flags_atom = NO_ZFALL
+	name = "resin high wall"
+	var/turf/closed/wall/resin/wall_below
+	var/obj/structure/mineral_door/resin/door_below
+	should_grow_up = FALSE
+
+/turf/closed/wall/resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset)
+	. = ..()
+	if(wall_below)
+		wall_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
+	if(door_below)
+		door_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)
+
+/turf/closed/wall/resin/above/Initialize(mapload)
+	. = ..()
+	var/turf/below = SSmapping.get_turf_below(src)
+	if(!below)
+		dismantle_wall()
+		return
+
+	if(istype(below, /turf/closed/wall/resin))
+		wall_below = below
+		wall_below.upper_wall = src
+		hivenumber = wall_below.hivenumber
+		set_hive_data(src, hivenumber)
+		return
+
+	for(var/obj in below.contents)
+		if(istype(obj, /obj/structure/mineral_door/resin))
+			door_below = obj
+			door_below.upper_wall = src
+			hivenumber = door_below.hivenumber
+			set_hive_data(src, hivenumber)
+			return
+
+	dismantle_wall()
+
+
+/turf/closed/wall/resin/above/Destroy(force)
+	. = ..()
+	if(wall_below)
+		wall_below.upper_wall = null //we should not get here naturaly
+		wall_below = null
+	if(door_below)
+		door_below.upper_wall = null
+		door_below = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && istransparentturf(above))
+		above.update_vis_contents()
+
+/turf/closed/wall/resin/above/take_damage(dam, mob/M)
+	if(wall_below)
+		wall_below.take_damage(dam, M)
+		return
+	if(door_below)
+		door_below.take_damage(dam,M)
+		return
+	dismantle_wall() //something went wrong and we are floating
+
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"

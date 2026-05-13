@@ -86,7 +86,7 @@
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
 		return SECRETE_RESIN_FAIL
 
-	if(extra_build_dist != IGNORE_BUILD_DISTANCE && (target.z != src.z && !cross_z_level_building))
+	if(target.z != src.z && !cross_z_level_building)
 		to_chat(src, SPAN_XENOWARNING("We can't build on other floors!"))
 		return SECRETE_RESIN_FAIL
 

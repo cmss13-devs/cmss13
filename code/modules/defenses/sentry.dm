@@ -855,14 +855,15 @@
 		return
 
 	if(sheets.amount >= upgrade_cost)
+		upgraded = TRUE
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			upgraded = FALSE
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
 			return
 
 		if(sheets.use(upgrade_cost))
 			health_max = health_upgrade
 			health = health_max
-			upgraded = TRUE
 			to_chat(user, SPAN_WARNING("You added some metal plating to the [name], increasing its durability!"))
 		else
 			to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))

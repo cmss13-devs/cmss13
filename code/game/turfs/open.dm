@@ -791,6 +791,7 @@
 
 /turf/open/gm/river/acid
 	name = "acidic water"
+	default_name = "acidic water"
 
 /turf/open/gm/river/acid/Initialize(mapload, ...)
 	. = ..()

@@ -312,7 +312,7 @@
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
-	if(target_mob)
+	if(target_mob && ((target_mob.faction == user.faction) || target_mob.stat))
 		roller.buckle_mob(target_mob, user)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)

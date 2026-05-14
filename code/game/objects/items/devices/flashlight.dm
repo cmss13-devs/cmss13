@@ -172,11 +172,15 @@
 	throw_range = 15
 	matter = list("metal" = 10,"glass" = 5)
 	raillight_compatible = 0
+	COOLDOWN_DECLARE(penlight_assesment_cooldown)
 
-/obj/item/device/flashlight/pen/attack(mob/living/carbon/human/being as mob, mob/living/user as mob)
+/obj/item/device/flashlight/pen/attack(mob/living/carbon/human/being, mob/living/user)
 	add_fingerprint(user)
 	if(user.a_intent == INTENT_HELP)
 		if(on && user.zone_selected == "eyes")
+			if(!COOLDOWN_FINISHED(user, penlight_assesment_cooldown))
+				to_chat(giver, SPAN_WARNING("You can not do that again for a while."))
+				return
 			if(!ishuman_strict(being)) //robots and aliens are unaffected
 				return
 			var/reaction = null
@@ -228,6 +232,7 @@
 					being.flash_eyes()
 					reaction = "don't really know what you are looking for, you don't know anything about medicine"
 			user.visible_message("[user] directs [src] to [being]'s eyes.", "You point [src] to [being.p_their()] eyes to begin analysing them further and... you [reaction].")
+			COOLDOWN_START(user, penlight_assesment_cooldown, 5 SECONDS)
 	return ..()
 
 /obj/item/device/flashlight/drone

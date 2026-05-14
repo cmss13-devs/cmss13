@@ -1,4 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - bugfix: "fixed stacking health upgrades for sentry posts"

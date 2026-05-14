@@ -76,21 +76,23 @@
 	return
 
 /obj/structure/filingcabinet/Topic(href, href_list)
-	. = ..()
-	if(.)
+	if(..())
+		return
+	if(!usr.Adjacent(src))
+		close_browser(usr, "filingcabinet")
 		return
 	if(href_list["retrieve"])
+		var/obj/item/P = locate(href_list["retrieve"])
+		if (!P || P.loc != src || !usr.can_use_hands() || !usr.Adjacent(src))
+			if(usr.Adjacent(src)) attack_hand(usr) //refresh so removed files disappear
+			return
 		close_browser(usr, "filingcabinet") // Close the menu
-
-		//var/retrieveindex = text2num(href_list["retrieve"])
-		var/obj/item/P = locate(href_list["retrieve"])//contents[retrieveindex]
-		if(istype(P) && (P.loc == src) && src.Adjacent(usr))
-			usr.put_in_hands(P)
-			updateUsrDialog()
-			icon_state = "[initial(icon_state)]-open"
-			spawn(0)
-				sleep(5)
-				icon_state = initial(icon_state)
+		usr.put_in_hands(P)
+		updateUsrDialog()
+		icon_state = "[initial(icon_state)]-open"
+		addtimer(CALLBACK(src, .proc/reset_icon),5)
+/obj/structure/filingcabinet/proc/reset_icon()
+	icon_state = initial(icon_state)
 
 /obj/structure/filingcabinet/research
 	name = "automated sorting cabinet"

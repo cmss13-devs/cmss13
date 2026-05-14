@@ -338,7 +338,7 @@
 	name = "\improper US Army flask"
 	icon_state = "flask_army"
 	item_state = "flask_army"
-	desc = "A metal flask embossed with the US Army logo and probably filled with a slurry of water, motor oil, and medicinal alcohol. Albiet, higher quality motor oil compared to Marine rations."
+	desc = "A metal flask embossed with the US Army logo and probably filled with a slurry of water, motor oil, and medicinal alcohol. Albeit, higher quality motor oil compared to Marine rations."
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani
 	name = "\improper Weyland-Yutani flask"

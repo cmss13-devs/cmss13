@@ -64,8 +64,9 @@
 		new_xeno.nocrit(xeno_wave)
 		xeno_pool -= userInput
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/new_player_mob = xeno_candidate
+			new_player_mob.close_spawn_windows()
+			new_player_mob.spawning = TRUE
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return TRUE
 	else
@@ -98,8 +99,9 @@
 
 		if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 			if(isnewplayer(xeno_candidate))
-				var/mob/new_player/N = xeno_candidate
-				N.close_spawn_windows()
+				var/mob/new_player/new_player_mob = xeno_candidate
+				new_player_mob.close_spawn_windows()
+				new_player_mob.spawning = TRUE
 			if(transfer_xeno(xeno_candidate, new_xeno))
 				return TRUE
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")

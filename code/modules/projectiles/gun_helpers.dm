@@ -62,7 +62,7 @@ DEFINES in setup.dm, referenced here.
 	Also where the gun will do final attachment calculations if the gun fired an attachment bullet.
 	This must return positive to continue burst firing or so that you don't hear *click*.
 
-	delete_bullet() //Important for point blanking and and jams, but can be called on for other reasons (that are
+	delete_bullet() //Important for point blanking and jams, but can be called on for other reasons (that are
 	not currently used). If the gun makes a bullet but doesn't fire it, this will be called on through clear_jam().
 	This is also used to delete the bullet when you directly fire a bullet without going through the Fire() process,
 	like with the mentioned point blanking/suicide.

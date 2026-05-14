@@ -286,7 +286,7 @@
 
 /obj/item/prop/magazine/book/borntokill
 	name = "\improper Born to Kill"
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for it's bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
+	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for its bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
 	icon_state = "book_green"
 	item_state = "book_green"
 

@@ -1354,7 +1354,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(is_sharp(W) || istype(W, /obj/item/shard/shrapnel))
 		W.embedded_organ = src
 		owner.embedded_items += W
-		if(is_sharp(W)) // Only add the verb if its not a shrapnel
+		if(is_sharp(W)) // Only add the verb if it's not a shrapnel
 			add_verb(owner, /mob/proc/yank_out_object)
 	W.add_mob_blood(owner)
 

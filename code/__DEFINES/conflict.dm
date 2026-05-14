@@ -289,7 +289,7 @@
 #define MOLOTOV_POTENCY_MAX 20
 #define MOLOTOV_TIME_MAX 20
 
-/// A gun filled with this percentage of it's total ammo or lower is considered to have low ammo
+/// A gun filled with this percentage of its total ammo or lower is considered to have low ammo
 #define GUN_LOW_AMMO_PERCENTAGE 0.25
 
 // Fire

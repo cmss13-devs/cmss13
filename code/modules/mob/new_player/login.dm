@@ -54,6 +54,7 @@
 /mob/new_player/ui_data(mob/user)
 	. = ..()
 
+	// If you have a runtime here it likely means your new_player didn't get qdeleted after transfering client off it
 	.["character_name"] = client.prefs ? client.prefs.real_name : client.key
 
 	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""

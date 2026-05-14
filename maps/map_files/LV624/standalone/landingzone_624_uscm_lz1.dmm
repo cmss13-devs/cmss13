@@ -68,7 +68,7 @@
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "dr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -252,7 +252,7 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "jr" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -262,7 +262,7 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "jy" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -457,7 +457,7 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz2)
 "qD" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -519,7 +519,7 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "rV" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -730,7 +730,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/robotics)
 "Bc" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "Bs" = (
@@ -812,7 +812,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "DD" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /obj/effect/sentry_landmark/lz_2/bottom_left,
@@ -940,7 +940,7 @@
 /turf/open/floor/warning/southeast,
 /area/lv624/lazarus/landing_zones/lz2)
 "HG" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -975,7 +975,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "IP" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "IQ" = (
@@ -1124,7 +1124,7 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz2)
 "Oy" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "OQ" = (
@@ -1138,7 +1138,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "Pp" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1163,7 +1163,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/robotics)
 "PO" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1176,7 +1176,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/robotics)
 "Qb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1185,7 +1185,7 @@
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "Qh" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1216,7 +1216,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "Rn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1346,7 +1346,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "Xb" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "Xh" = (
@@ -1448,7 +1448,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "ZU" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,

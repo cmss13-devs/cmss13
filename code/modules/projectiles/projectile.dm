@@ -670,7 +670,7 @@
 
 	if(target && target.z != starting.z)
 		if(traveled_in_open < traveled_in_closed)
-			effective_accuracy = effective_accuracy * max(0, (1 - (1/(1.1 + traveled_in_open)) * (traveled_in_closed - traveled_in_open - 1)))
+			effective_accuracy = 0
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b> (open: [traveled_in_open] closed: [traveled_in_closed])"))

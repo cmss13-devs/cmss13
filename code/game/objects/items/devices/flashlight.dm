@@ -118,9 +118,8 @@
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
-		var/mob/living/carbon/human/beingB = assestment_target //mob has protective eyewear
-		if(ishuman(beingB) && ((beingB.head && beingB.head.flags_inventory & COVEREYES) || (beingB.wear_mask && beingB.wear_mask.flags_inventory & COVEREYES) || (beingB.glasses && beingB.glasses.flags_inventory & COVEREYES)))
-			to_chat(user, SPAN_NOTICE("You're going to need to remove [(beingB.head && beingB.head.flags_inventory & COVEREYES) ? "that helmet" : (beingB.wear_mask && beingB.wear_mask.flags_inventory & COVEREYES) ? "that mask": "those glasses"] first."))
+		if(ishuman(assestment_target) && ((assestment_target.head && assestment_target.head.flags_inventory & COVEREYES) || (assestment_target.wear_mask && assestment_target.wear_mask.flags_inventory & COVEREYES) || (assestment_target.glasses && assestment_target.glasses.flags_inventory & COVEREYES)))
+			to_chat(user, SPAN_NOTICE("You're going to need to remove [(assestment_target.head && assestment_target.head.flags_inventory & COVEREYES) ? "that helmet" : (assestment_target.wear_mask && assestment_target.wear_mask.flags_inventory & COVEREYES) ? "that mask": "those glasses"] first."))
 			return
 
 		if(assestment_target == user) //they're using it on themselves
@@ -228,6 +227,7 @@
 					reaction = "don't really know what you are looking for, you don't know anything about medicine"
 			user.visible_message("[user] directs [src] to [assestment_target]'s eyes.", "You point [src] to [assestment_target.p_their()] eyes to begin analysing them further and... you [reaction].")
 			COOLDOWN_START(user, penlight_assesment_cooldown, 10 SECONDS)
+			log_interact(user, assestment_target, "[key_name(user)] eye assessed [key_name(assestment_target)] with a [name] at [get_area_name(user.loc)] ([user.loc.x], [user.loc.y], [user.loc.z])")
 	return ..()
 
 /obj/item/device/flashlight/drone

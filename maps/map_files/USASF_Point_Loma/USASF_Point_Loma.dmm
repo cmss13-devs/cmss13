@@ -47050,6 +47050,11 @@
 	},
 /turf/open/floor/plating/wood,
 /area/point_loma/oob/sky)
+"eVx" = (
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
 "eWp" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/cleanable/dirt/sand_3,
@@ -47346,6 +47351,15 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/exterior/west)
+"gzp" = (
+/obj/effect/hunter/rune,
+/obj/structure/bed/chair/hunter{
+	pixel_x = 16;
+	buckling_x = 16;
+	dir = 1
+	},
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/oob/sky)
 "gDZ" = (
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco{
 	dir = 8;
@@ -47507,11 +47521,38 @@
 "hkC" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast,
 /area/point_loma/airbase/interior/research)
+"hkW" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "hoq" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
 /turf/open/predship/hunter_grate/north,
+/area/point_loma/oob/sky)
+"hpJ" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26;
+	layer = 2.49
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Engine Monitor";
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
 "hxX" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -47660,6 +47701,26 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
+"izh" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26;
+	layer = 3.1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Engine Monitor";
+	pixel_y = 24;
+	density = 0
+	},
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "iBl" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
@@ -47848,6 +47909,15 @@
 "jAr" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/exterior/crash_site)
+"jAM" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "jCa" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt/sand_2,
@@ -47923,6 +47993,12 @@
 "jMK" = (
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/garage)
+"jQM" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/oob/sky)
 "jTL" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/cleanable/dirt/sand_1,
@@ -48042,10 +48118,20 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/predship/tile/red2,
 /area/point_loma/oob/sky)
+"kCP" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "kHS" = (
 /obj/effect/decal/hybrisa/road/corner,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/central)
+"kJl" = (
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/oob/sky)
 "kLF" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -48367,6 +48453,11 @@
 	},
 /turf/open/predship/mainfloor/edge/east,
 /area/point_loma/oob/sky)
+"mKv" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "mOj" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -48550,6 +48641,11 @@
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/point_loma/research_facility/crash_site)
+"nAp" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "nFd" = (
 /obj/effect/hunter/catwalk/hunter_grate{
 	dir = 4
@@ -48698,6 +48794,11 @@
 "onw" = (
 /turf/open/floor/corsat/redcorner,
 /area/point_loma/airbase/interior/garage)
+"ook" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "opo" = (
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/shiva/red,
@@ -48725,6 +48826,12 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/garage)
+"osY" = (
+/obj/effect/hunter/bridge_border/brown/small_stair_left{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
 "oux" = (
 /obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/new_varadero/concrete,
@@ -48741,6 +48848,15 @@
 /obj/item/trash/tray,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
+"oFQ" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "oGQ" = (
 /obj/structure/sign/poster/pimp,
 /turf/closed/wall/new_varadero/concrete,
@@ -48814,6 +48930,13 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/airbase/exterior/west)
+"pbh" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "pcB" = (
 /obj/structure/prop/hunter/trophy_display/top_right,
 /obj/structure/blocker/invisible_wall,
@@ -48853,6 +48976,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
+"poB" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "pqG" = (
 /turf/open/floor/shiva/red/north,
 /area/point_loma/airbase/mining_colony/interior/security)
@@ -49142,6 +49272,13 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/predship/mainfloor/borderless_vertical,
 /area/point_loma/oob/sky)
+"qOj" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "qQr" = (
 /turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/oob/sky)
@@ -49233,6 +49370,31 @@
 	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
+"qWq" = (
+/obj/effect/hunter/rune,
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "overwatch";
+	name = "Reactor Control Console";
+	pixel_y = 9;
+	density = 0;
+	desc = "A console that operates the reactor intake and pulse engines that power the clan ship.";
+	pixel_x = 16
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/showcase{
+	desc = "A console used for monitoring engine performance and various other ship systems.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = -11;
+	pixel_y = 4
+	},
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/oob/sky)
 "qXO" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/hybrisa/dirt,
@@ -49412,6 +49574,9 @@
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/predship/red_glow/on,
 /area/point_loma/airbase/exterior/west)
+"rHD" = (
+/turf/closed/wall/huntership/innerhull,
+/area/point_loma/oob/sky)
 "rLc" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -49544,6 +49709,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/interior/fire_station)
+"sTT" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "sVX" = (
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/exterior/west)
@@ -49668,6 +49840,12 @@
 "tKj" = (
 /turf/open/predship/hunter_catwalk,
 /area/point_loma/oob/sky)
+"tKU" = (
+/obj/effect/hunter/bridge_border/brown/small_stair_right{
+	dir = 1
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
 "tLj" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/red,
@@ -49683,6 +49861,11 @@
 /area/point_loma/airbase/interior/garage)
 "tQx" = (
 /turf/open/floor/plating/wood_broken2,
+/area/point_loma/oob/sky)
+"tRd" = (
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
 "tTv" = (
 /obj/effect/decal/warning_stripes{
@@ -49984,6 +50167,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/garage)
+"vBk" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "vGN" = (
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/predship/tile/red2,
@@ -50038,6 +50225,15 @@
 	},
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/research)
+"whZ" = (
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "wjd" = (
 /obj/effect/hunter/rune,
 /obj/structure/bed/chair/hunter{
@@ -50047,6 +50243,24 @@
 	},
 /turf/open/predship/mainfloor/direction_3/east,
 /area/point_loma/airbase/exterior/west)
+"wlc" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/showcase{
+	desc = "A console used for monitoring engine performance and various other ship systems.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/oob/sky)
 "wof" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	autoname = 1;
@@ -50054,6 +50268,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/interior/garage)
+"wub" = (
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/oob/sky)
 "wvk" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 4
@@ -203733,9 +203950,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-alv
-alv
+alQ
+alQ
+alQ
 alD
 alD
 alD
@@ -203915,12 +204132,12 @@ bTS
 bTS
 bTS
 bTS
-alv
-alv
-alv
+alQ
+whZ
+sTT
+jAM
 alD
-alD
-alD
+kVk
 alD
 alv
 alv
@@ -204098,11 +204315,11 @@ bTS
 bTS
 bTS
 fDw
+hkW
+poB
+kCP
 alD
-alD
-alD
-alD
-alD
+kVk
 alD
 alv
 alv
@@ -204280,11 +204497,11 @@ bTS
 bTS
 bTS
 fDw
+rHD
+izh
+oFQ
 alD
-alD
-alD
-alD
-alD
+kVk
 alv
 alv
 alv
@@ -204462,11 +204679,11 @@ bTS
 bTS
 bTS
 fDw
-alD
-alD
-alD
-alD
-alD
+qWq
+gzp
+kJl
+osY
+tRd
 alD
 alD
 alD
@@ -204644,11 +204861,11 @@ bTS
 bTS
 bTS
 fDw
-alD
-alD
-alD
-alD
-alD
+wlc
+jQM
+wub
+tKU
+eVx
 alD
 alD
 alD
@@ -204826,11 +205043,11 @@ bTS
 bTS
 bTS
 fDw
+rHD
+hpJ
+pbh
 alD
-alD
-alD
-alD
-alD
+kVk
 alv
 alv
 alv
@@ -205008,11 +205225,11 @@ bTS
 bTS
 bTS
 fDw
+qOj
+ook
+mKv
 alD
-alD
-alD
-alD
-alD
+kVk
 alD
 alD
 alv
@@ -205189,12 +205406,12 @@ bTS
 bTS
 bTS
 bTS
-alv
-alv
-alv
+alQ
+nAp
+vBk
+mKv
 alD
-alD
-alD
+kVk
 alD
 alD
 alv
@@ -205371,9 +205588,9 @@ bTS
 bTS
 bTS
 bTS
-bTS
-alv
-alv
+alQ
+alQ
+alQ
 alD
 alD
 alD

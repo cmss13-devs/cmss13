@@ -25,15 +25,15 @@
 	var/p_y = 0 // the pixel location of the clicked/aimed location in target turf
 
 	var/current  = null
-	var/atom/shot_from  = null // the object which shot us
-	var/atom/original  = null // the original target clicked
-	var/atom/firer  = null // Who shot it
+	var/atom/shot_from = null // the object which shot us
+	var/atom/original = null // the original target clicked
+	var/atom/firer = null // Who shot it
 
 	var/turf/target_turf = null
-	var/turf/starting  = null // the projectile's starting turf
+	var/turf/starting = null // the projectile's starting turf
 
-	var/turf/path[]  = null
-	var/permutated[]  = null // we've passed through these atoms, don't try to hit them again
+	var/turf/path[] = null
+	var/permutated[] = null // we've passed through these atoms, don't try to hit them again
 
 	/// Additional ammo flags applied to the projectile
 	var/projectile_override_flags = NONE
@@ -388,10 +388,11 @@
 		else
 			traveled_in_closed++
 	else if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
-		if(z == starting.z && !istype(current_turf, /turf/open_space))
-			traveled_in_closed++
-		else
+		var/turf/above = SSmapping.get_turf_above(current_turf)
+		if(istype(current_turf, /turf/open_space) || (above && istype(above, /turf/open_space))) //we either are flying up in open or we did curve down already but above us is open
 			traveled_in_open++
+		else
+			traveled_in_closed++
 
 
 	// Check we're still flying - in the highly unlikely but apparently possible case

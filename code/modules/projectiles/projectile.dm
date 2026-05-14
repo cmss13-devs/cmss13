@@ -674,7 +674,9 @@
 			effective_accuracy = effective_accuracy * max(0, (1 - (1/(1.1 + traveled_in_open)) * (traveled_in_closed - traveled_in_open - 1)))
 
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))
+	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b> (open: [traveled_in_open] closed: [traveled_in_closed])"))
+	var/turf/fire_turf = get_turf(firer)
+	fire_turf?.maptext = "[effective_accuracy]"
 	#endif
 
 	return effective_accuracy

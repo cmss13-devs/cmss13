@@ -384,15 +384,14 @@
 	vis_travelled++
 	if(original.z > starting.z)
 		if(istype(current_turf, /turf/open_space)) //if we target up we move up and count open space tiles as open
-			traveled_in_open ++
+			traveled_in_open++
 		else
-			traveled_in_closed ++
-
-	if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
+			traveled_in_closed++
+	else if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
 		if(z == starting.z && !istype(current_turf, /turf/open_space))
-			traveled_in_closed ++
+			traveled_in_closed++
 		else
-			traveled_in_open ++
+			traveled_in_open++
 
 
 	// Check we're still flying - in the highly unlikely but apparently possible case

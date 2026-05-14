@@ -84,7 +84,9 @@
 	if(href_list["retrieve"])
 		var/obj/item/P = locate(href_list["retrieve"])
 		if (!P || P.loc != src || !usr.can_use_hands() || !usr.Adjacent(src))
-			if(usr.Adjacent(src)) attack_hand(usr) //refresh so removed files disappear
+			if(usr.Adjacent(src))
+				attack_hand(usr)
+				to_chat(usr, SPAN_WARNING("The document you're looking for isn't in \the [src] anymore."))//refresh so removed files disappear
 			return
 		close_browser(usr, "filingcabinet") // Close the menu
 		usr.put_in_hands(P)

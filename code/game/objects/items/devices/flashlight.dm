@@ -179,7 +179,7 @@
 	if(user.a_intent == INTENT_HELP)
 		if(on && user.zone_selected == "eyes")
 			if(!COOLDOWN_FINISHED(user, penlight_assesment_cooldown))
-				to_chat(giver, SPAN_WARNING("You can not do that again for a while."))
+				to_chat(user, SPAN_WARNING("You can not do that again for a while."))
 				return
 			if(!ishuman_strict(being)) //robots and aliens are unaffected
 				return

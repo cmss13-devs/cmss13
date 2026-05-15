@@ -46845,7 +46845,7 @@
 /turf/open/predship/red_glow/on,
 /area/point_loma/airbase/exterior/west)
 "dVO" = (
-/obj/structure/stairs/multiz/rock{
+/obj/structure/stairs/perspective/rock{
 	dir = 8
 	},
 /turf/open/predship/plating,
@@ -48773,7 +48773,7 @@
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
 "oiC" = (
-/obj/structure/stairs/multiz/rock{
+/obj/structure/stairs/perspective/rock{
 	dir = 8
 	},
 /turf/open/predship/plating,

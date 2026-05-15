@@ -132,3 +132,11 @@
   - maptweak: 'Added two new areas to Trijent Dam that can be powered with an APC:
       "Medical Valley Elevator Landing" and "Wilderness Valley Elevator Landing"'
   - spellcheck: Changed "curtesy" to "courtesy" in the elevator control panel
+2026-04-28:
+  cuberound:
+  - rscadd: Resin doors and walls construct wall above them when made in open, damage
+      taken by that wall is transfered to the lower wall and they get destroyed in
+      unison. Bullet pings on upper wall are mirrored on lower one to alert the xenos
+2026-04-29:
+  Rocky0558:
+  - bugfix: Sensor tower now damaging by explosions rather than repairing

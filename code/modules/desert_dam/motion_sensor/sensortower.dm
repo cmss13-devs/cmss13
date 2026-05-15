@@ -1,9 +1,9 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
 #define SENSORTOWER_BUILDSTATE_WORKING 0
-#define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
+#define SENSORTOWER_BUILDSTATE_WRENCH 1
 #define SENSORTOWER_BUILDSTATE_WIRECUTTERS 2
-#define SENSORTOWER_BUILDSTATE_WRENCH 3
+#define SENSORTOWER_BUILDSTATE_BLOWTORCH 3
 
 /obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
@@ -26,10 +26,11 @@
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
 	var/base_icon = "sensor_"
+	var/tacmap_icon = "sensor_tower"
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "sensor_tower"))
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, tacmap_icon))
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()
@@ -243,13 +244,13 @@
 Higher severity explosion will damage the sensor tower more
 */
 /obj/structure/machinery/sensortower/ex_act(severity)
-	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+	if(buildstate >= SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			buildstate += 1
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
 			buildstate = 3
 	if(is_on)
@@ -263,6 +264,7 @@ Higher severity explosion will damage the sensor tower more
 	icon_state = "sensors_tower_small_broken"
 	var/sensor_radius = 30
 	base_icon = "sensors_tower_small_"
+	tacmap_icon = "sensor_tower_small"
 
 /obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
@@ -286,6 +288,6 @@ Higher severity explosion will damage the sensor tower more
 
 
 #undef SENSORTOWER_BUILDSTATE_WORKING
-#undef SENSORTOWER_BUILDSTATE_BLOWTORCH
-#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
 #undef SENSORTOWER_BUILDSTATE_WRENCH
+#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
+#undef SENSORTOWER_BUILDSTATE_BLOWTORCH

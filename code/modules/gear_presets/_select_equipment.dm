@@ -55,6 +55,8 @@
 	var/selection_categories = list()
 	var/corpse = FALSE
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+	/// Doesn't automatically become included in the Faction category.
+	var/no_faction_category = FALSE
 
 /datum/equipment_preset/New()
 	if(!manifest_title)
@@ -203,6 +205,11 @@
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_languages(languages)
 
+/datum/equipment_preset/proc/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.vendor_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
+	new_human.vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	new_human.vendor_buyable_categories = MARINE_CAN_BUY_ALL
+
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(!new_human.hud_used)
 		new_human.create_hud()
@@ -224,6 +231,7 @@
 	load_status(new_human, mob_client)
 	load_vanity(new_human, mob_client)
 	load_traits(new_human, mob_client)
+	load_vendor_points(new_human, mob_client)
 	if(GLOB.round_statistics && count_participant)
 		GLOB.round_statistics.track_new_participant(faction)
 
@@ -231,9 +239,6 @@
 
 	new_human.regenerate_icons()
 
-	new_human.marine_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
-	new_human.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	new_human.marine_buyable_categories = MARINE_CAN_BUY_ALL
 	new_human.hud_set_squad()
 	new_human.add_to_all_mob_huds()
 

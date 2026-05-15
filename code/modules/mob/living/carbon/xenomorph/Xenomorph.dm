@@ -610,7 +610,7 @@
 		. |= COMPONENT_XENO_FRENZY
 
 /mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
-	return 0
+	return
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos

@@ -135,6 +135,7 @@
 	is_on = TRUE
 	cur_tick = 0
 	update_icon()
+	add_xenos_to_minimap()
 	START_PROCESSING(SSslowobj, src)
 	return TRUE
 

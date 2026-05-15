@@ -254,7 +254,7 @@
 //
 
 /datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno_player = owner
+	var/mob/living/carbon/xenomorph/warrior/xeno_player = owner
 
 	if(!action_cooldown_check())
 		return
@@ -277,8 +277,11 @@
 
 	return ..()
 
-/mob/living/carbon/xenomorph/proc/activate_reflective_shield(duration, chance)
+/mob/living/carbon/xenomorph/warrior/proc/activate_reflective_shield(duration, chance)
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
+
+	if(!istype(behavior))
+		return
 
 	if(behavior.reflective_shield_active)
 		return
@@ -304,7 +307,7 @@
 	src.remove_filter("reflective_shield")
 	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
 
-/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+/mob/living/carbon/xenomorph/warrior/proc/get_reflection_chance(obj/projectile/bullet)
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
 
 	if(!istype(behavior))

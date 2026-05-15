@@ -254,7 +254,7 @@
 //
 
 /datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno_player = owner
+	var/mob/living/carbon/xenomorph/warrior/xeno_player = owner
 
 	if(!action_cooldown_check())
 		return

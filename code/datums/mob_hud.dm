@@ -978,7 +978,12 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")
 
-	var/floored_found = HAS_TRAIT(src, TRAIT_FLOORED) && body_position == LYING_DOWN && !buckled // Targets that are forcefully floored and unable to stand up.
+	var/floored_found = FALSE
+	for(var/datum/effects/floored_target/normal_effect in effects_list)
+		if(!QDELETED(normal_effect))
+			floored_found = TRUE
+			break
+
 	if(floored_found)
 		var/image/floored = image('icons/mob/hud/hud.dmi', src, "xeno_floored")
 		floored.appearance_flags = KEEP_APART | RESET_TRANSFORM

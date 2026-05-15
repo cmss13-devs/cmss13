@@ -9,7 +9,7 @@
 
 // this proc could use refactoring at some point
 /mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, unblockable = FALSE)
-	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
+	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_HAULED))

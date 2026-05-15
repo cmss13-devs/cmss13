@@ -45,7 +45,7 @@
 
 /datum/action/xeno_action/onclick/toggle_plates
 	name = "Toggle Encasing Plates"
-	action_icon_state = "crest_defense"
+	action_icon_state = "encased_plates"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_plates
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 3 SECONDS
@@ -55,7 +55,7 @@
 
 /datum/action/xeno_action/activable/plate_bash
 	name = "Plate Bash"
-	action_icon_state = "charge"
+	action_icon_state = "plate_bash"
 	macro_path = /datum/action/xeno_action/verb/verb_plate_bash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -65,7 +65,7 @@
 
 /datum/action/xeno_action/onclick/tail_swing
 	name = "Tail Swing"
-	action_icon_state = "tail_sweep"
+	action_icon_state = "tail_swing"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_swing
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -78,7 +78,7 @@
 
 /datum/action/xeno_action/onclick/reflective_shield
 	name = "Reflective Shield"
-	action_icon_state = "fortify"
+	action_icon_state = "reflective_shield"
 	macro_path = /datum/action/xeno_action/verb/verb_reflective_shield
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -93,7 +93,7 @@
 
 /datum/action/xeno_action/activable/plate_slam
 	name = "Plate Slam"
-	action_icon_state = "burrow"
+	action_icon_state = "plate_slam"
 	macro_path = /datum/action/xeno_action/verb/verb_plate_slam
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5

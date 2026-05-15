@@ -1,6 +1,6 @@
 /datum/xeno_strain/shielder
 	name = WARRIOR_SHIELDER
-	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down, but the cooldown is doubled. Tail Swing knocks down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Plate Slam has a 5-second windup and then pins a prone enemy, draining 30 plasma per second to extend knockdown up to 12 seconds; being interrupted during windup causes a heavy cooldown penalty. Reflective Shield locks your plates into a stance for 13 seconds, reflecting bullets based on your facing: high from the front, medium from the sides, and low from behind."
+	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down, but the cooldown is doubled. Tail Swing knocks down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Plate Slam has a 5-second windup and then pins enemy down for 7 seconds if they are standing, 10 seconds if they were prone, to stop pinning down enemy, disengage encased plates or use ability twice on same target; being interrupted during windup causes a heavy cooldown penalty. Reflective Shield locks your plates into a stance for 13 seconds, reflecting bullets based on your facing: high from the front, medium from the sides, and low from behind."
 	flavor_description = "Where there's a sword, there's a shield."
 	icon_state_prefix = "Shielder"
 
@@ -13,8 +13,8 @@
 		/datum/action/xeno_action/onclick/toggle_plates, //1st
 		/datum/action/xeno_action/activable/plate_bash, //2nd
 		/datum/action/xeno_action/onclick/tail_swing, //3rd
-		/datum/action/xeno_action/activable/plate_slam, //4th
-		/datum/action/xeno_action/onclick/reflective_shield, //5th
+		/datum/action/xeno_action/onclick/reflective_shield, //4th
+		/datum/action/xeno_action/activable/plate_slam, //5th
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_shielder
@@ -255,7 +255,6 @@
 
 /datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno_player = owner
-	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
 
 	if(!action_cooldown_check())
 		return
@@ -263,6 +262,8 @@
 	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
 		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
 
 	xeno_player.activate_reflective_shield(SHIELDER_REFLECTION_DURATION, SHIELDER_REFLECTION_BASE_CHANCE) // A: how long, B: how much % is reflected. (remember to edit reflection chance)
 
@@ -385,6 +386,9 @@
 		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
+	for(var/datum/effects/floored_target/floored_target in carbon_target.effects_list)
+		qdel(floored_target)
+
 	if((carbon_target.status_flags & XENO_HOST) || HAS_TRAIT(carbon_target, TRAIT_NESTED))
 		to_chat(xeno_player, SPAN_DANGER("We don't want to harm this host!"))
 		return
@@ -392,7 +396,7 @@
 	xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] gets ready to pin [carbon_target] down!"), SPAN_XENODANGER("We start to get ready to pin [carbon_target] down with our plates!"))
 
 
-	if(!do_after(xeno_player, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno_player, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno_player, SPAN_DANGER("We lose our balance!"))
 		to_chat(carbon_target, SPAN_DANGER("You notice the enemy lose their balance!"))
 		xeno_cooldown *= 0.5
@@ -445,12 +449,18 @@
 
 	if(carbon_target.body_position != LYING_DOWN)
 		shield_slam_timer_id = addtimer(CALLBACK(src, PROC_REF(end_plate_slam)), 7 SECONDS, TIMER_STOPPABLE)
+		new /datum/effects/floored_target(carbon_target, xeno_player, , , 7 SECONDS)
 		xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] bashes [carbon_target] down!"), SPAN_XENODANGER("We bash [carbon_target] down and pin them with our plates!"))
 		carbon_target.apply_effect(1, WEAKEN)
 		playsound(xeno_player, 'sound/effects/hit_kick.ogg', 35, 1)
 	else
 		shield_slam_timer_id = addtimer(CALLBACK(src, PROC_REF(end_plate_slam)), 10 SECONDS, TIMER_STOPPABLE)
+		new /datum/effects/floored_target(carbon_target, xeno_player, , , 10 SECONDS)
 		xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] pins [carbon_target] down!"), SPAN_XENODANGER("We pin [carbon_target] down with our plates!"))
+
+	if(ishuman(carbon_target))
+		var/mob/living/carbon/human/target_human = carbon_target
+		target_human.update_xeno_hostile_hud()
 
 	to_chat(carbon_target, SPAN_DANGER("You are slammed to the ground and pinned down by armored plates!"))
 
@@ -476,6 +486,9 @@
 	xeno_player.anchored = FALSE
 	REMOVE_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
+
+	for(var/datum/effects/floored_target/floored_target in target.effects_list)
+		qdel(floored_target)
 
 //
 // Custom Proc(s)

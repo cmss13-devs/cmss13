@@ -253,6 +253,102 @@
 // 4th ability
 //
 
+/datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
+
+	if(!action_cooldown_check())
+		return
+
+	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
+		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
+		return
+
+	xeno_player.activate_reflective_shield(SHIELDER_REFLECTION_DURATION, SHIELDER_REFLECTION_BASE_CHANCE) // A: how long, B: how much % is reflected. (remember to edit reflection chance)
+
+	for(var/action_type in action_types_to_cd)
+		var/datum/action/xeno_action/xeno_action = get_action(xeno_player, action_type)
+		if(!istype(xeno_action))
+			continue
+		xeno_action.apply_cooldown_override(cooldown_duration)
+
+	apply_cooldown()
+
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/activate_reflective_shield(duration, chance)
+	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
+
+	if(behavior.reflective_shield_active)
+		return
+
+	behavior.reflective_shield_active = TRUE
+	behavior.reflective_shield_chance = chance
+
+	src.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
+	to_chat(src, SPAN_XENOWARNING("We adjust our plates and get ready for incoming attacks!"))
+	visible_message(SPAN_XENOWARNING("[src] shifts its stance, its reflexive defense faltering."))
+
+	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
+
+/mob/living/carbon/xenomorph/proc/remove_reflective_shield()
+	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
+
+	if(!behavior.reflective_shield_active)
+		return
+
+	behavior.reflective_shield_active = FALSE
+	behavior.reflective_shield_chance = 0
+
+	src.remove_filter("reflective_shield")
+	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
+
+/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
+
+	if(!behavior.reflective_shield_active)
+		return 0
+
+	if((bullet.ammo.flags_ammo_behavior & ARMOR_PENETRATION_TIER_10) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET))
+		return //we don't want to reflect wall penetrating bullets or rockets.
+
+	var/base_chance = behavior.reflective_shield_chance
+	var/projectile_dir = 0
+
+	if(!bullet.firer)
+		return 0
+
+	projectile_dir = get_dir(bullet.firer.loc, src)
+
+	if(projectile_dir == REVERSE_DIR(src.dir))
+		return base_chance
+
+	for(var/side_dir in get_perpen_dir(src.dir))
+		if(projectile_dir == side_dir)
+			return base_chance * SHIELDER_SIDE_REFLECTION_PROCENTAGE //only gets ?% value of base reflection chance.
+
+	return base_chance * SHIELDER_BACK_REFLECTION_PROCENTAGE
+
+/obj/projectile/proc/reflect_projectile_at_firer(mob/living/carbon/xenomorph/xeno_player, obj/projectile/bullet)
+	if(!bullet.firer || !isturf(loc))
+		return
+
+	var/obj/projectile/new_proj = new(get_turf(xeno_player), create_cause_data("reflective shield"))
+	new_proj.generate_bullet(bullet.ammo)
+	new_proj.damage = bullet.damage * SHIELDER_REFLECTED_BULLET_DAMAGE
+	new_proj.accuracy = HIT_ACCURACY_TIER_8
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+
+	var/angle = Get_Angle(xeno_player, bullet.firer) + rand(-45, 45)
+	var/atom/target = get_angle_target_turf(xeno_player, angle, get_dist(xeno_player, bullet.firer))
+	new_proj.fire_at(target, xeno_player, xeno_player, 7, speed = bullet.ammo.shell_speed)
+
+	to_chat(xeno_player, SPAN_XENOWARNING("We reflect [bullet] back at [bullet.firer]!"))
+
+//
+// 5th ability
+//
+
 /datum/action/xeno_action/activable/plate_slam/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
@@ -380,103 +476,6 @@
 	xeno_player.anchored = FALSE
 	REMOVE_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
-
-//
-// 5th ability
-//
-
-/datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno_player = owner
-	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
-
-	if(!action_cooldown_check())
-		return
-
-	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
-		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
-		return
-
-	xeno_player.activate_reflective_shield(SHIELDER_REFLECTION_DURATION, SHIELDER_REFLECTION_BASE_CHANCE) // A: how long, B: how much % is reflected. (remember to edit reflection chance)
-
-	for(var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/xeno_action = get_action(xeno_player, action_type)
-		if(!istype(xeno_action))
-			continue
-		xeno_action.apply_cooldown_override(cooldown_duration)
-
-	apply_cooldown()
-
-	return ..()
-
-/mob/living/carbon/xenomorph/proc/activate_reflective_shield(duration, chance)
-	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
-
-	if(behavior.reflective_shield_active)
-		return
-
-	behavior.reflective_shield_active = TRUE
-	behavior.reflective_shield_chance = chance
-
-	src.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
-	to_chat(src, SPAN_XENOWARNING("We adjust our plates and get ready for incoming attacks!"))
-	visible_message(SPAN_XENOWARNING("[src] shifts its stance, its reflexive defense faltering."))
-
-	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
-
-/mob/living/carbon/xenomorph/proc/remove_reflective_shield()
-	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
-
-	if(!behavior.reflective_shield_active)
-		return
-
-	behavior.reflective_shield_active = FALSE
-	behavior.reflective_shield_chance = 0
-
-	src.remove_filter("reflective_shield")
-	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
-
-/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
-	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
-
-	if(!behavior.reflective_shield_active)
-		return 0
-
-	if((bullet.ammo.flags_ammo_behavior & ARMOR_PENETRATION_TIER_10) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET))
-		return //we don't want to reflect wall penetrating bullets or rockets.
-
-	var/base_chance = behavior.reflective_shield_chance
-	var/projectile_dir = 0
-
-	if(!bullet.firer)
-		return 0
-
-	projectile_dir = get_dir(bullet.firer.loc, src)
-
-	if(projectile_dir == REVERSE_DIR(src.dir))
-		return base_chance
-
-	for(var/side_dir in get_perpen_dir(src.dir))
-		if(projectile_dir == side_dir)
-			return base_chance * SHIELDER_SIDE_REFLECTION_PROCENTAGE //only gets ?% value of base reflection chance.
-
-	return base_chance * SHIELDER_BACK_REFLECTION_PROCENTAGE
-
-/obj/projectile/proc/reflect_projectile_at_firer(mob/living/carbon/xenomorph/xeno_player, obj/projectile/bullet)
-	if(!bullet.firer || !isturf(loc))
-		return
-
-	var/obj/projectile/new_proj = new(get_turf(xeno_player), create_cause_data("reflective shield"))
-	new_proj.generate_bullet(bullet.ammo)
-	new_proj.damage = bullet.damage * SHIELDER_REFLECTED_BULLET_DAMAGE
-	new_proj.accuracy = HIT_ACCURACY_TIER_8
-	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
-
-	var/angle = Get_Angle(xeno_player, bullet.firer) + rand(-45, 45)
-	var/atom/target = get_angle_target_turf(xeno_player, angle, get_dist(xeno_player, bullet.firer))
-	new_proj.fire_at(target, xeno_player, xeno_player, 7, speed = bullet.ammo.shell_speed)
-
-	to_chat(xeno_player, SPAN_XENOWARNING("We reflect [bullet] back at [bullet.firer]!"))
-
 
 //
 // Custom Proc(s)

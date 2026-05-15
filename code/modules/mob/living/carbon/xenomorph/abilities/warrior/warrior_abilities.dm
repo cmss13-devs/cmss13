@@ -76,24 +76,12 @@
 	var/hit_enemy = FALSE
 	var/hit_grenade = FALSE
 
-/datum/action/xeno_action/activable/plate_slam
-	name = "Plate Slam"
-	action_icon_state = "burrow"
-	macro_path = /datum/action/xeno_action/verb/verb_plate_slam
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	plasma_cost = 80
-	xeno_cooldown = 20 SECONDS
-
-	/// Shield slam addtimer ID (for deletion)
-	var/shield_slam_timer_id = TIMER_ID_NULL
-
 /datum/action/xeno_action/onclick/reflective_shield
 	name = "Reflective Shield"
 	action_icon_state = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_reflective_shield
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 100
 	xeno_cooldown = 30 SECONDS
 
@@ -102,3 +90,15 @@
 		/datum/action/xeno_action/activable/plate_slam,
 	)
 	var/cooldown_duration = 13 SECONDS
+
+/datum/action/xeno_action/activable/plate_slam
+	name = "Plate Slam"
+	action_icon_state = "burrow"
+	macro_path = /datum/action/xeno_action/verb/verb_plate_slam
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+	plasma_cost = 80
+	xeno_cooldown = 20 SECONDS
+
+	/// Shield slam addtimer ID (for deletion)
+	var/shield_slam_timer_id = TIMER_ID_NULL

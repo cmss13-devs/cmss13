@@ -26,10 +26,11 @@
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
 	var/base_icon = "sensor_"
+	var/tacmap_icon = "sensor_tower"
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "sensor_tower"))
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, tacmap_icon))
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()
@@ -263,6 +264,7 @@ Higher severity explosion will damage the sensor tower more
 	icon_state = "sensors_tower_small_broken"
 	var/sensor_radius = 30
 	base_icon = "sensors_tower_small_"
+	tacmap_icon = "sensor_tower_small"
 
 /obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)

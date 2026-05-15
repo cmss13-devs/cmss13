@@ -14,6 +14,11 @@ jobs:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
+      - name: DreamAnnotate
+        uses: alexkar598/DreamAnnotate@v3
+        with:
+          dreamchecker: true
+          dreammaker: true
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
@@ -57,13 +62,6 @@ jobs:
           tools/build/build.sh --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
-          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
-      - name: Annotate Lints
-        uses: yogstation13/DreamAnnotate@v2
-        if: success() || failure()
-        with:
-          outputFile: output-annotations.txt
-
 
   odlint:
     name: Lint with OpenDream

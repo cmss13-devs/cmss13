@@ -62,6 +62,7 @@ jobs:
           tools/build/build.sh --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
+          ~/dreamchecker
 
   odlint:
     name: Lint with OpenDream

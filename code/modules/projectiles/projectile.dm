@@ -506,27 +506,27 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_OBJ, obj, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/projectile/proc/handle_mob(mob/living/living)
+/obj/projectile/proc/handle_mob(mob/living/target_living)
 	// If we've already handled this atom, don't do it again
 
-	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, living, .) & COMPONENT_BULLET_PASS_THROUGH)
+	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && living.stat == DEAD) || (living in permutated))
+	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
 
-	if(istype(living, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/xeno = living
+	if(isxeno(target_living))
+		var/mob/living/carbon/xenomorph/warrior/xeno = target_living
 		var/directional_chance = xeno.get_reflection_chance(src)
 		if(directional_chance > 0 && prob(directional_chance))
 			reflect_projectile_at_firer(xeno, src)
 			return TRUE
 
-	permutated |= living
-	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(living) || living.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+	permutated |= target_living
+	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(target_living) || target_living.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
 
-	var/hit_chance = living.get_projectile_hit_chance(src)
+	var/hit_chance = target_living.get_projectile_hit_chance(src)
 
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
 
@@ -534,86 +534,86 @@
 		var/direct_hit = FALSE
 
 		// Wasn't the clicked target
-		if(original != living)
+		if(original != target_living)
 			def_zone = rand_zone()
 
 		// Xenos get a RNG limb miss chance regardless of being clicked target or not, see below
-		else if(isxeno(living) && hit_roll > hit_chance - 20)
+		else if(isxeno(target_living) && hit_roll > hit_chance - 20)
 			def_zone = rand_zone()
 
 		// Other targets do the same roll with penalty - a near hit will hit but redirected to another limb
-		else if(!isxeno(living) && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
+		else if(!isxeno(target_living) && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
 			def_zone = rand_zone()
 
 		else
 			direct_hit = TRUE
 			if(firer)
-				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, living)
+				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, target_living)
 
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
 		// simply to avoid them from resetting target to chest every time they want to shoot a xeno
 
-		if(!direct_hit || !isxeno(living)) // For normal people or direct hits we apply the limb accuracy penalty
+		if(!direct_hit || !isxeno(target_living)) // For normal people or direct hits we apply the limb accuracy penalty
 			hit_chance -= GLOB.base_miss_chance[def_zone]
 		// else for direct hits on xenos, we skip it, pretending it's a chest shot with zero penalty
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([living]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
+		to_world(SPAN_DEBUG("([target_living]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
 		#endif
 
-		if(hit_chance > hit_roll && !(living.status_flags & RECENTSPAWN))
+		if(hit_chance > hit_roll && !(target_living.status_flags & RECENTSPAWN))
 			#if DEBUG_HIT_CHANCE
-			to_world(SPAN_DEBUG("([living]) Hit."))
+			to_world(SPAN_DEBUG("([target_living]) Hit."))
 			#endif
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
 			// The current turf is the "surface" of the target
 			if(ammo_flags & AMMO_STRIKES_SURFACE)
-				var/turf/turf = get_turf(living)
+				var/turf/turf = get_turf(target_living)
 
 				// We "hit" the current turf but strike the actual blockage
 				ammo.on_hit_turf(get_turf(src),src)
 				turf.bullet_act(src)
-			else if(living && living.loc && (living.bullet_act(src) != -1))
-				ammo.on_hit_mob(living,src, firer)
+			else if(target_living && target_living.loc && (target_living.bullet_act(src) != -1))
+				ammo.on_hit_mob(target_living,src, firer)
 
 				// If we are a xeno shooting something
-				if(istype(ammo, /datum/ammo/xeno) && isxeno(firer) && living.stat != DEAD && ammo.apply_delegate)
+				if(istype(ammo, /datum/ammo/xeno) && isxeno(firer) && target_living.stat != DEAD && ammo.apply_delegate)
 					var/mob/living/carbon/xenomorph/xeno = firer
 					if(xeno.behavior_delegate)
 						var/datum/behavior_delegate/MD = xeno.behavior_delegate
-						MD.ranged_attack_additional_effects_target(living)
-						MD.ranged_attack_additional_effects_self(living)
+						MD.ranged_attack_additional_effects_target(target_living)
+						MD.ranged_attack_additional_effects_self(target_living)
 
 				// If the thing we're hitting is a Xeno
-				if(istype(living, /mob/living/carbon/xenomorph))
-					var/mob/living/carbon/xenomorph/xeno = living
+				if(istype(target_living, /mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/xeno = target_living
 					if(xeno.behavior_delegate)
 						xeno.behavior_delegate.on_hitby_projectile(ammo)
 
 			. = TRUE
-		else if(living.body_position != LYING_DOWN)
-			animatation_displace_reset(living)
+		else if(target_living.body_position != LYING_DOWN)
+			animatation_displace_reset(target_living)
 			if(ammo.sound_miss)
-				playsound_client(living.client, ammo.sound_miss, get_turf(living), 75, TRUE)
-			living.visible_message(SPAN_AVOIDHARM("[src] misses [living]!"),
+				playsound_client(target_living.client, ammo.sound_miss, get_turf(target_living), 75, TRUE)
+			target_living.visible_message(SPAN_AVOIDHARM("[src] misses [target_living]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-			var/log_message = "[src] narrowly missed [key_name(living)]"
+			var/log_message = "[src] narrowly missed [key_name(target_living)]"
 
 			var/mob/living/carbon/shotby = firer
 			if(istype(shotby))
-				living.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(living)]"
-				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(living)]"
-				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(living)]"
+				target_living.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(target_living)]"
+				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(target_living)]"
+				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(target_living)]"
 			log_attack(log_message)
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([living]) Missed."))
+		to_world(SPAN_DEBUG("([target_living]) Missed."))
 		#endif
 
-	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, living, .) & COMPONENT_BULLET_PASS_THROUGH)
+	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)

@@ -277,7 +277,7 @@
 
 	return ..()
 
-/mob/living/carbon/xenomorph/proc/activate_reflective_shield(duration, chance)
+/mob/living/carbon/xenomorph/warrior/proc/activate_reflective_shield(duration, chance)
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
 
 	if(behavior.reflective_shield_active)
@@ -292,7 +292,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
 
-/mob/living/carbon/xenomorph/proc/remove_reflective_shield()
+/mob/living/carbon/xenomorph/warrior/proc/remove_reflective_shield()
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
 
 	if(!behavior.reflective_shield_active)
@@ -304,8 +304,11 @@
 	src.remove_filter("reflective_shield")
 	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
 
-/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+/mob/living/carbon/xenomorph/warrior/proc/get_reflection_chance(obj/projectile/bullet)
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
+
+	if(!istype(behavior, /datum/behavior_delegate/warrior_shielder))
+		return
 
 	if(!behavior.reflective_shield_active)
 		return 0

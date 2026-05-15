@@ -516,7 +516,7 @@
 		return FALSE
 
 	if(isxeno(target_living))
-		var/mob/living/carbon/xenomorph/warrior/xeno = target_living
+		var/mob/living/carbon/xenomorph/xeno = target_living
 		var/directional_chance = xeno.get_reflection_chance(src)
 		if(directional_chance > 0 && prob(directional_chance))
 			reflect_projectile_at_firer(xeno, src)

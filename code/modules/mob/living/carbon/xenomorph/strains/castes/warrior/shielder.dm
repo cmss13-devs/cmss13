@@ -307,7 +307,7 @@
 	src.remove_filter("reflective_shield")
 	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
 
-/mob/living/carbon/xenomorph/warrior/proc/get_reflection_chance(obj/projectile/bullet)
+/mob/living/carbon/xenomorph/warrior/get_reflection_chance(obj/projectile/bullet)
 	var/datum/behavior_delegate/warrior_shielder/behavior = src.behavior_delegate
 
 	if(!istype(behavior))

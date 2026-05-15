@@ -563,6 +563,10 @@
 			groundside_humans++
 			continue
 
+		if(isyautja(current_mob))
+			groundside_humans += 2 // Yautja are a bigger threat
+			continue
+
 		if(isxeno(current_mob))
 			groundside_xenos++
 			continue

@@ -382,14 +382,15 @@
 	forceMove(next_turf)
 	distance_travelled++
 	vis_travelled++
-	if(original.z > starting.z)
-		if(istype(current_turf, /turf/open_space)) //if we target up we move up and count open space tiles as open
+	if(original.z > starting.z && original.z == z)
+		if(istype(next_turf, /turf/open_space)) //if we target up we move up and count open space tiles as open
 			traveled_in_open++
 		else
 			traveled_in_closed++
 	else if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
-		var/turf/above = SSmapping.get_turf_above(current_turf)
-		if(istype(current_turf, /turf/open_space) || (above && istype(above, /turf/open_space))) //we either are flying up in open or we did curve down already but above us is open
+		traveled_in_open = max(1, traveled_in_open)
+		var/turf/above = SSmapping.get_turf_above(next_turf)
+		if(istype(next_turf, /turf/open_space) || (next_turf.z == original.z && above && istype(above, /turf/open_space))) //we either are flying up in open or we did curve down already but above us is open
 			traveled_in_open++
 		else
 			traveled_in_closed++
@@ -672,6 +673,8 @@
 	if(target && target.z != starting.z)
 		if(traveled_in_open < traveled_in_closed)
 			effective_accuracy = 0
+		else if(traveled_in_open == traveled_in_closed)
+			effective_accuracy *= 0.5
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b> (open: [traveled_in_open] closed: [traveled_in_closed])"))

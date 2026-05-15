@@ -166,6 +166,7 @@
 		ammo_primary = ammo_primary_def
 		ammo_secondary = ammo_secondary_def
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+	update_action_icons()
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -249,6 +250,10 @@
 			overlays += "+[base_gun_icon]_cover_closed"
 	else
 		overlays += "+[base_gun_icon]_cover_open"
+	update_action_icons()
+/obj/item/weapon/gun/smartgun/proc/update_action_icons()
+	for (var/datum/action/item_action/smartgun/Action in actions)
+		Action.update_button_icon()
 
 //---ability actions--\\
 
@@ -262,190 +267,172 @@
 		return
 
 /datum/action/item_action/smartgun/update_button_icon()
+	if(!holder_item || !button)
+		return
+	refresh_icon_state()
+	button.overlays.Cut()
+	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/smartgun/proc/refresh_icon_state()
 	return
 
 /datum/action/item_action/smartgun/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Motion Detector"
 	button.name = name
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_motion_detector/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_motion_detector(owner)
+	if(G)
+		G.toggle_motion_detector(owner)
+	update_button_icon()
 
-/datum/action/item_action/smartgun/toggle_motion_detector/update_button_icon()
+/datum/action/item_action/smartgun/toggle_motion_detector/refresh_icon_state()
 	if(!holder_item)
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.motion_detector)
-		action_icon_state = "motion_detector_off"
-	else
-		action_icon_state = "motion_detector"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
+	if(G)
+		action_icon_state = G.motion_detector ? "motion_detector_off" : "motion_detector"
 
 /datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Auto Fire"
-	action_icon_state = "autofire"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_auto_fire/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_auto_fire(owner)
+	if(G)
+		G.toggle_auto_fire(owner)
+	update_button_icon()
 
-/datum/action/item_action/smartgun/toggle_auto_fire/proc/update_icon()
+/datum/action/item_action/smartgun/toggle_auto_fire/refresh_icon_state()
 	if(!holder_item)
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.auto_fire)
-		action_icon_state = "autofire_off"
-	else
-		action_icon_state = "autofire"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	if(G)
+		action_icon_state = G.auto_fire ? "autofire_off" : "autofire"
 
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Aim Assist"
 	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST
-
-	update_icon()
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_aim_assist/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
-	smortgun.toggle_aim_assist(owner)
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		G.toggle_aim_assist(owner)
+	update_button_icon()
 
-/datum/action/item_action/smartgun/toggle_aim_assist/proc/update_icon()
+/datum/action/item_action/smartgun/toggle_aim_assist/refresh_icon_state()
 	if(!holder_item)
 		return
-	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
-	if(smortgun.aim_assist)
-		action_icon_state = "aimassist"
-	else
-		action_icon_state = "aimassist_off"
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state = G.aim_assist ? "aimassist_off" : "aimassist"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Accuracy Improvement"
-	action_icon_state = "accuracy_improvement"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
+
+/datum/action/item_action/smartgun/toggle_accuracy_improvement/refresh_icon_state()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state = G.accuracy_improvement ? "accuracy_improvement_off" : "accuracy_improvement"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_accuracy_improvement(owner)
-	if(G.accuracy_improvement)
-		action_icon_state = "accuracy_improvement_off"
-	else
-		action_icon_state = "accuracy_improvement"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	if(G)
+		G.toggle_accuracy_improvement(owner)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Recoil Compensation"
-	action_icon_state = "recoil_compensation"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
+
+/datum/action/item_action/smartgun/toggle_recoil_compensation/refresh_icon_state()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state= G.recoil_compensation ? "recoil_compensation_off" : "recoil_compensation"
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_recoil_compensation(owner)
-	if(G.recoil_compensation)
-		action_icon_state = "recoil_compensation_off"
-	else
-		action_icon_state = "recoil_compensation"
-	button.overlays.Cut()
-	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
+	if(G)
+		G.toggle_recoil_compensation(owner)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Frontline Mode"
-	action_icon_state = "frontline_toggle_off"
 	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
+
+/datum/action/item_action/smartgun/toggle_frontline_mode/refresh_icon_state()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state= G.frontline_enabled ? "frontline_toggle_on" : "frontline_toggle_off"
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/gun = holder_item
-	gun.toggle_frontline_mode(owner)
-	if(gun.frontline_enabled)
-		action_icon_state = "frontline_toggle_on"
-	else
-		action_icon_state = "frontline_toggle_off"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		G.toggle_frontline_mode(owner)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle IFF"
-	action_icon_state = "iff_toggle_on"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
+
+/datum/action/item_action/smartgun/toggle_lethal_mode/refresh_icon_state()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state = G.iff_enabled ? "iff_toggle_on" : "iff_toggle_off"
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_lethal_mode(owner)
-	if(G.iff_enabled)
-		action_icon_state = "iff_toggle_on"
-	else
-		action_icon_state = "iff_toggle_off"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	if(G)
+		G.toggle_lethal_mode(owner)
+	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_ammo_type/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Ammo Type"
-	action_icon_state = "ammo_swap_normal"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	update_button_icon()
+
+/datum/action/item_action/smartgun/toggle_ammo_type/refresh_icon_state()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
+	if(G)
+		action_icon_state = G.secondary_toggled ? "ammo_swap_ap" : "ammo_swap_normal"
 
 /datum/action/item_action/smartgun/toggle_ammo_type/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_ammo_type(owner)
-
-/datum/action/item_action/smartgun/toggle_ammo_type/proc/update_icon()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.secondary_toggled)
-		action_icon_state = "ammo_swap_ap"
-	else
-		action_icon_state = "ammo_swap_normal"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	if(G)
+		G.toggle_ammo_type(owner)
+	update_button_icon()
 
 //more general procs
-
 /obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
 	frontline_enabled = !frontline_enabled
 	if(frontline_enabled && !iff_enabled)
 		iff_enabled = TRUE //force IFF on if you want to frontline
-		for(var/datum/action/item_action/smartgun/toggle_lethal_mode/IFF_Action in actions)
-			if (iff_enabled)
-				IFF_Action.action_icon_state = "iff_toggle_on"
-			else
-				IFF_Action.action_icon_state = "iff_toggle_off"
-			IFF_Action.button.overlays.Cut()
-			IFF_Action.button.overlays += image('icons/mob/hud/actions.dmi', IFF_Action.button, IFF_Action.action_icon_state)
 		if(user)
 			to_chat(user, SPAN_NOTICE("Frontline mode requires IFF to be on. Enabling IFF systems..."))
 	if (user)
@@ -467,6 +454,7 @@
 ///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
 ///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
+	update_action_icons()
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
@@ -498,8 +486,7 @@
 	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
-	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
-	TAT.update_icon()
+	update_action_icons()
 
 /obj/item/weapon/gun/smartgun/replace_ammo()
 	..()
@@ -530,6 +517,7 @@
 ///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
 ///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
+	update_action_icons()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(aim_assist && !auto_fire)
@@ -595,8 +583,7 @@
 	balloon_alert(user, "autofire [auto_fire ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
-	var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-	TAF.update_icon()
+	update_action_icons()
 	auto_fire()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
@@ -615,14 +602,12 @@
 /obj/item/weapon/gun/smartgun/proc/enable_auto_aim(mob/user)
 	drain += 50
 	START_PROCESSING(SSobj, src)
-	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
-	aim_assist_action.update_icon()
+	update_action_icons()
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/disable_auto_aim(mob/user)
 	drain -= 50
-	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
-	aim_assist_action.update_icon()
+	update_action_icons()
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/reset_autoshot_image()
@@ -668,8 +653,7 @@
 		process_shot(human_user, warned)
 	else
 		auto_fire = FALSE
-		var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-		TAF.update_icon()
+		update_action_icons()
 		auto_fire()
 
 /obj/item/weapon/gun/smartgun/proc/get_assist_target(mob/living/user, target)
@@ -816,8 +800,7 @@
 	balloon_alert(user, "motion detector [motion_detector ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
-	var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in actions
-	TMD.update_button_icon()
+	update_action_icons()
 	motion_detector()
 
 /obj/item/weapon/gun/smartgun/proc/motion_detector()

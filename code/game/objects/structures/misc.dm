@@ -401,6 +401,9 @@
 /obj/structure/stairs/perspective/ice
 	icon = 'icons/obj/structures/stairs/perspective_stairs_ice.dmi'
 
+/obj/structure/stairs/perspective/rock
+	icon = 'icons/obj/structures/stairs/ramp.dmi'
+	icon_state = "dark_ramp"
 
 // Prop
 /obj/structure/ore_box

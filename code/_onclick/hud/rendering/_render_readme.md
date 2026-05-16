@@ -13,7 +13,7 @@ When you create an atom, this will always create an internal byond structure cal
 Finally, we arrive at clientside behavior, where we have two main clientside functions: GetMapIcons, and Render. GetMapIcons is responsible for actual rendering calculations on the clientside; such as "Group Icons and Set Bounds", which performs clientside calculations for transform matrices. Note that particles here are handled in a separate thread and are not displayed in the clientside profiler. Render handles the actual drawing of the screen.
 
 For debugging rendering issues, it's recommended you do two things:
-A) Talk to someone who has inside knowledge (like lummox) about it; most of this is undocumented and buggy often.
+A) Talk to someone who has inside knowledge (like lummox) about it; most of this is undocumented and often buggy.
 B) Use the undocumented debug printer, which reads off data on icons rendering. This is very dense but can be useful in some cases. To use: Right click top tab -> Options & Messages -> Client -> Command -> Enter ".debug profile mapicons" and press Enter -> go to your Byond directory and find BYOND/cfg/mapicons.json. Yes, this is one giant one-line json.
 
 ## Known internal snowflake

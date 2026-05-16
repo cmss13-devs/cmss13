@@ -6033,10 +6033,12 @@
 /turf/open/new_varadero/alt_concrete/warning/corner,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asj" = (
-/obj/structure/bed/chair/comfy{
-	dir = 5
+/obj/structure/machinery/shower{
+	dir = 4;
+	on = 1
 	},
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
+/obj/effect/decal/large_stain,
+/turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/interior/research)
 "ask" = (
 /obj/structure/machinery/door/firedoor,
@@ -6090,13 +6092,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asr" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue/west,
-/area/point_loma/airbase/interior/research)
-"ass" = (
-/obj/structure/bed,
-/obj/item/bedsheet/blue,
-/turf/open/floor/plating/wood,
+/turf/open/floor/plating/plating_catwalk/shiva,
 /area/point_loma/airbase/interior/research)
 "ast" = (
 /obj/structure/disposaloutlet{
@@ -6229,9 +6225,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
-"asP" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue,
-/area/point_loma/airbase/interior/research)
 "asQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
@@ -7832,6 +7825,10 @@
 	},
 /turf/open/floor/corsat/greenwhite/northwest,
 /area/point_loma/research_facility/medical)
+"awR" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "awS" = (
 /turf/open/floor/corsat/yellow/east,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
@@ -7853,6 +7850,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"awV" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/plating/platingdmg3,
+/area/point_loma/airbase/interior/research)
 "awW" = (
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 2
@@ -7954,6 +7955,13 @@
 "axl" = (
 /turf/open/shuttle/escapepod/floor2/west,
 /area/point_loma/research_facility/hallway/east)
+"axm" = (
+/obj/structure/machinery/shower{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -7978,6 +7986,10 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
+"axq" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axr" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -7987,6 +7999,9 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
+"axs" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axt" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -8064,6 +8079,9 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
+"axA" = (
+/turf/open/floor/plating/platingdmg3,
+/area/point_loma/airbase/interior/research)
 "axB" = (
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
 /obj/structure/shuttle/part/dropship2/transparent/left_outer_bottom_wing,
@@ -8106,6 +8124,11 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"axH" = (
+/obj/structure/machinery/disposal,
+/obj/item/trash/chunk,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axI" = (
 /obj/structure/machinery/message_server{
 	pixel_x = -18
@@ -8129,6 +8152,14 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"axL" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -8257,6 +8288,10 @@
 /obj/structure/machinery/big_computers/computerbrown/computer3,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"axX" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axY" = (
 /turf/open/floor/shiva/blue/southwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
@@ -8312,6 +8347,9 @@
 	},
 /turf/open/shuttle/escapepod/floor3/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"ayf" = (
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayg" = (
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/new_varadero,
@@ -8322,6 +8360,13 @@
 	},
 /turf/open/shuttle/escapepod/floor3/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"ayi" = (
+/obj/structure/bed/chair{
+	pixel_y = 1;
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayj" = (
 /obj/structure/prop/server_equipment/laptop/on{
 	icon_state = "broadcast receiver"
@@ -8334,6 +8379,15 @@
 	},
 /turf/open/floor/corsat/greenwhite/north,
 /area/point_loma/research_facility/medical)
+"ayl" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "aym" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/corsat/squares,
@@ -8355,6 +8409,11 @@
 /obj/item/ashtray/glass,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
+"ayq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayr" = (
 /obj/item/device/binoculars/civ{
 	pixel_y = 15
@@ -8429,6 +8488,12 @@
 "ayA" = (
 /turf/open/shuttle/escapepod/floor3/north,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"ayB" = (
+/obj/structure/surface/table/holotable,
+/obj/structure/surface/table/holotable,
+/obj/item/reagent_container/food/snacks/syndicake,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/objective,
@@ -8451,18 +8516,56 @@
 	},
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
+"ayH" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 5;
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayI" = (
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
+"ayJ" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayK" = (
 /turf/open/floor/corsat/yellowcorner/north,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayL" = (
 /turf/open/floor/corsat/yellowcorner/east,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
+"ayM" = (
+/obj/structure/surface/table/holotable,
+/obj/item/trash/cheesie,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayN" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/point_loma/research_facility/research/park/opening)
+"ayO" = (
+/obj/structure/surface/table/holotable,
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
+"ayP" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+	pixel_y = 34;
+	lazy_nodes = 0;
+	layer = 3
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/under/suit_jacket/director,
@@ -8582,6 +8685,19 @@
 	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"azh" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	pixel_y = 25
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
+"azi" = (
+/obj/structure/machinery/vending/dinnerware{
+	pixel_y = 23
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "azj" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/landmark/objective_landmark/close,
@@ -8613,6 +8729,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park/opening)
+"azo" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "azp" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/corsat/purple/north,
@@ -8632,6 +8755,11 @@
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"azt" = (
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/point_loma/airbase/exterior/crash_site)
 "azu" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2,
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -8673,6 +8801,12 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob)
+"azz" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azA" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/corpsespawner/miner,
@@ -8701,6 +8835,14 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
 /area/point_loma/oob)
+"azE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/snack_bowl,
+/obj/item/reagent_container/food/snacks/soylentviridians{
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azF" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 8
@@ -8727,6 +8869,22 @@
 "azI" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"azJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = -9
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/snacks/taco,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
+"azK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/stew,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azL" = (
 /obj/structure/machinery/door/poddoor/railing/upp{
 	dir = 2
@@ -8766,6 +8924,9 @@
 "azP" = (
 /turf/open/new_varadero/alt_concrete/warning/south,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"azQ" = (
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azR" = (
 /obj/item/lightstick/variant/planted{
 	pixel_x = 10;
@@ -8790,6 +8951,21 @@
 "azV" = (
 /turf/open/new_varadero/alt_concrete/warning/east,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"azW" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
+"azX" = (
+/obj/structure/surface/rack{
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/flour,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
+"azY" = (
+/obj/structure/machinery/gibber,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azZ" = (
 /obj/structure/machinery/door/poddoor/railing/upp{
 	dir = 8
@@ -8821,6 +8997,18 @@
 	},
 /turf/open/new_varadero/alt_concrete/warning/corner/northeast,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"aAe" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/condiment/enzyme{
+	pixel_y = 21;
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "aAf" = (
 /obj/structure/machinery/door/poddoor/railing/upp,
 /obj/structure/machinery/door/poddoor/railing/upp{
@@ -8922,6 +9110,13 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/interior/workshop)
+"aAs" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/processor{
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "aAt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	autoname = 1;
@@ -8954,6 +9149,16 @@
 	},
 /turf/open/floor/corsat/greenwhite/northeast,
 /area/point_loma/research_facility/medical)
+"aAy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/hybrisa/coffee_machine,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
+"aAz" = (
+/obj/structure/sign/safety/coffee,
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/airbase/interior)
 "aAA" = (
 /obj/item/reagent_container/glass/rag{
 	desc = "A pile of clothing, these need washing...";
@@ -47287,8 +47492,9 @@
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/oob)
 "ehW" = (
-/obj/structure/bed/hybrisa/prisonbed,
-/turf/open/floor/plating/wood,
+/obj/structure/surface/table/holotable,
+/obj/item/trash/USCMtray,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "eif" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -155387,13 +155593,13 @@ aLe
 cKF
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+azX
+azQ
+cJd
+ayP
+ayJ
+ayl
+axH
 cJd
 mSl
 mSl
@@ -155569,14 +155775,14 @@ aLe
 cKF
 cJc
 cWA
-mSl
-ehW
-ehW
-ehW
-ehW
-ehW
-mSl
+azY
+azQ
 cJd
+axX
+ayM
+ehW
+axL
+aty
 mSl
 mSl
 mSl
@@ -155751,14 +155957,14 @@ aZS
 aZP
 cJc
 cWA
-mSl
-ehW
-ehW
-ehW
-ehW
-ehW
-mSl
-cJd
+aAe
+azQ
+azt
+azh
+ayf
+ayf
+axX
+aty
 mSl
 mSl
 mSl
@@ -155933,14 +156139,14 @@ aLe
 cKF
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+aAs
+azQ
+aty
+azi
+axX
+axX
+axX
+atF
 mSl
 mSl
 mSl
@@ -155958,10 +156164,10 @@ cJb
 cVc
 ckv
 ckv
-ape
-asP
+cVc
+axm
 asj
-arz
+axm
 cVc
 aqw
 ckv
@@ -156114,14 +156320,14 @@ aLe
 aLe
 cKF
 cJc
-cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+aAz
+aAy
+azQ
+azz
+ayf
+axX
+ayq
+ayf
 mSl
 mSl
 mSl
@@ -156140,10 +156346,10 @@ cJb
 cVc
 ckv
 ckv
-cVc
-jjh
+axq
+axs
 asr
-cVc
+axq
 cVc
 aqI
 apr
@@ -156297,18 +156503,18 @@ aLe
 cKE
 cJc
 cWA
+azQ
+azW
+azE
+ayf
+ayf
+axX
+axX
+aty
 mSl
-ehW
-ehW
-ehW
-ehW
-ehW
+mSl
 mSl
 cJd
-mSl
-mSl
-mSl
-cJd
 bQT
 bQT
 bQT
@@ -156322,11 +156528,11 @@ cJb
 cVc
 ckv
 ckv
-cVc
-ckv
-ass
-cVc
-arz
+axA
+axs
+axq
+axs
+awV
 aqJ
 apD
 cVc
@@ -156479,18 +156685,18 @@ aLe
 bBP
 cJc
 cWA
+azQ
+azQ
+azJ
+ayf
+ayO
+ayB
+ayi
+aty
 mSl
-ehW
-ehW
-ehW
-ehW
-ehW
+mSl
 mSl
 cJd
-mSl
-mSl
-mSl
-cJd
 bQT
 bQT
 bQT
@@ -156504,7 +156710,7 @@ cjL
 cjL
 cjL
 cjL
-cVc
+cjL
 uPX
 uPX
 cVc
@@ -156661,13 +156867,13 @@ aLe
 bPH
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+azQ
+azQ
+azK
+azo
+ayH
+ayH
+ayf
 cJd
 mSl
 mSl
@@ -156690,9 +156896,9 @@ cjL
 uPX
 uPX
 uPX
-ckv
-ckv
-ckv
+awR
+awR
+awR
 cVc
 ckv
 ckv

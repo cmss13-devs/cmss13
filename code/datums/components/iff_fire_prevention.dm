@@ -25,6 +25,9 @@
 /datum/component/iff_fire_prevention/proc/check_firing_lane(obj/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
 	SIGNAL_HANDLER
 
+	if(!COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
+		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
 	var/angle = Get_Angle(user, target)
 
 	var/range_to_check = user.get_maximum_view_range()
@@ -44,15 +47,13 @@
 
 	//Don't shoot yourself, thanks
 	if(target == user)
-		if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
-			playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
-			to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-			COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
+		playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+		to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
+		COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
 		if(iff_additional_fire_delay)
 			var/obj/item/weapon/gun/gun = firing_weapon
 			if(istype(gun))
 				gun.last_fired = world.time + iff_additional_fire_delay
-				SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
 				SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
 		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
@@ -89,15 +90,13 @@
 			if(checked_living.get_target_lock(user.faction_group))
 				if(HAS_TRAIT(checked_living, TRAIT_CLOAKED))
 					continue
-				if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
-					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
-					to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-					COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
+				playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+				to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
+				COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
 				if(iff_additional_fire_delay)
 					var/obj/item/weapon/gun/gun = firing_weapon
 					if(istype(gun))
 						gun.last_fired = world.time + iff_additional_fire_delay
-						SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
 						SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
 				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 

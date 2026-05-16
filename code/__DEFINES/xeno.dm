@@ -422,7 +422,7 @@
 #define LURKER_VAMPIRE "Vampire"
 
 // Warrior strain flags
-#define WARRIOR_SHIELDER "Shielder"
+#define WARRIOR_BULWARK "Bulwark"
 
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"
@@ -452,7 +452,7 @@
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
 #define XENO_DAMAGE_MOD_VERY_SMALL  5
-#define XENO_DAMAGE_MOD_SHIELDER  8
+#define XENO_DAMAGE_MOD_BULWARK  8
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15
 #define XENO_DAMAGE_MOD_LARGE   20
@@ -751,6 +751,8 @@
 // dancer defines
 #define DANCER_DODGE_TIME 7 SECONDS
 
+// bulwark defines
+#define BULWARK_REFLECTIVE_TIME 10 SECONDS
 
 // drone fruits
 

@@ -41,17 +41,17 @@
 	var/base_punch_damage_pred = 25
 	var/damage_variance = 5
 
-///Shielder Strain
+///Bulwark Strain
 
 /datum/action/xeno_action/onclick/toggle_plates
 	name = "Toggle Encasing Plates"
 	action_icon_state = "encased_plates"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_plates
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 2 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
-	var/speed_debuff = 1
+	var/speed_debuff = 0.5
 
 /datum/action/xeno_action/activable/plate_bash
 	name = "Plate Bash"
@@ -70,7 +70,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 20
-	xeno_cooldown = 11 SECONDS
+	xeno_cooldown = 10 SECONDS
 
 	var/swing_range = 1
 	var/hit_enemy = FALSE
@@ -82,14 +82,19 @@
 	macro_path = /datum/action/xeno_action/verb/verb_reflective_shield
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	plasma_cost = 100
-	xeno_cooldown = 30 SECONDS
 
-	var/action_types_to_cd = list(
-		/datum/action/xeno_action/onclick/toggle_plates,
-		/datum/action/xeno_action/activable/plate_slam,
-	)
-	var/cooldown_duration = 13 SECONDS
+	/// used to calculate reflective plates refunding.
+	var/duration = BULWARK_REFLECTIVE_TIME
+	/// reflective plates addtimer ID (for deletion)
+	var/reflective_shield_timer_id = TIMER_ID_NULL
+	/// Used to countdown BULWARK_REFLECTIVE_TIME.
+	var/reflective_start_time = -1
+	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
+	var/reflective_refund_multiplier = 2.0
+	/// Used in calculation, finalized number will be displayed as cooldown.
+	var/reflective_recharge_time = null
+	/// Cooldown after activation to prevent accidental double click.
+	var/reflective_safe_click_cooldown = 0
 
 /datum/action/xeno_action/activable/plate_slam
 	name = "Plate Slam"
@@ -99,6 +104,3 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 	plasma_cost = 80
 	xeno_cooldown = 20 SECONDS
-
-	/// Shield slam addtimer ID (for deletion)
-	var/shield_slam_timer_id = TIMER_ID_NULL

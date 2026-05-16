@@ -267,6 +267,8 @@
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
+#define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
 /// Used by shielder to check plates are used.
 #define TRAIT_ABILITY_PLATE_SLAM "t_ability_plate_slam"
 
@@ -350,6 +352,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_REAGENT_SCANNER,
 	TRAIT_ABILITY_BURROWED,
 	TRAIT_ABILITY_ENCLOSED_PLATES,
+	TRAIT_ABILITY_REFLECTIVE_PLATES,
 	TRAIT_ABILITY_PLATE_SLAM,
 	TRAIT_VULTURE_USER,
 	TRAIT_IN_TUTORIAL,

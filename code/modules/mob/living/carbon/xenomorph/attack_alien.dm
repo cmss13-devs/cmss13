@@ -403,7 +403,7 @@
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into [xeno]!"),
 		SPAN_DANGER("The barbed wire slices into us!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		if(istype(xeno.strain, /datum/xeno_strain/shielder))
+		if(istype(xeno.strain, /datum/xeno_strain/bulwark))
 			xeno.apply_damage(5, enviro=TRUE)
 		else
 			xeno.apply_damage(10, enviro=TRUE)

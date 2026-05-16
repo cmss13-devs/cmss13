@@ -985,9 +985,6 @@
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
-	if(plasma_stored < plasma_max)
-		plasma_stored = plasma_max
-
 /mob/living/carbon/xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE
 	speed = speed_modifier

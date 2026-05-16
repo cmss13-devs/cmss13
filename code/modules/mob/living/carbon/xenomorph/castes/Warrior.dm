@@ -15,7 +15,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
-	available_strains = list(/datum/xeno_strain/shielder)
+	available_strains = list(/datum/xeno_strain/bulwark)
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)

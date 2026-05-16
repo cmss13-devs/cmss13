@@ -227,8 +227,8 @@
 
 	if(isxeno(attacker))
 		var/mob/living/carbon/xenomorph/xeno = attacker
-		if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/shielder))
-			return prob(25) //Shielder can attack through wired cade with 75% chance.
+		if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/bulwark))
+			return prob(25) //Bulwark can attack through wired cade with 75% chance.
 
 	return prob(max(30,(100.0*health)/maxhealth))
 

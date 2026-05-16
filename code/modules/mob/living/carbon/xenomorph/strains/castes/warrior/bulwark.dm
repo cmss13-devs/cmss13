@@ -2,7 +2,7 @@
 	name = WARRIOR_BULWARK
 	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down, but the cooldown is doubled. Tail Swing knocks down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Plate Slam has a 3-second windup and then pins enemy down for 7 seconds if they are standing, 10 seconds if they were prone, to stop pinning down enemy, disengage encased plates or use ability twice on same target; being interrupted during windup causes a heavy cooldown penalty. Reflective Shield allows you to can stop this ability at any time to gain 1s used as 2s cooldown, reflecting bullets up to 10 seconds, high from the front, medium from the sides, and low from behind."
 	flavor_description = "Where there's a sword, there's a shield."
-	icon_state_prefix = "Shielder"
+	icon_state_prefix = "Bulwark"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/warrior_punch,
@@ -61,7 +61,7 @@
 	. += "Front Armor: +[frontal_armor + bound_xeno.front_armor]"
 	. += "Side Armor: +[sided_armor + bound_xeno.side_armor]"
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
-		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Melee Damage."
+		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Claws Damage."
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)
 	if(ability_used.reflective_start_time != -1)
 		time_left = (BULWARK_REFLECTIVE_TIME - (world.time - ability_used.reflective_start_time)) / 10

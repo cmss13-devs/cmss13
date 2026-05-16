@@ -6036,10 +6036,12 @@
 /turf/open/new_varadero/alt_concrete/warning/corner,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asj" = (
-/obj/structure/bed/chair/comfy{
-	dir = 5
+/obj/structure/machinery/shower{
+	dir = 4;
+	on = 1
 	},
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
+/obj/effect/decal/large_stain,
+/turf/open/floor/strata/white_cyan2/west,
 /area/point_loma/airbase/interior/research)
 "ask" = (
 /obj/structure/machinery/door/firedoor,
@@ -6093,14 +6095,11 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asr" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue/west,
+/turf/open/floor/plating/plating_catwalk/shiva,
 /area/point_loma/airbase/interior/research)
 "ass" = (
-/obj/structure/bed,
-/obj/item/bedsheet/blue,
-/turf/open/floor/plating/wood,
-/area/point_loma/airbase/interior/research)
+/turf/open/predship/mainfloor/direction_4,
+/area/point_loma/airbase/exterior/west)
 "ast" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -6233,8 +6232,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "asP" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/blue,
-/area/point_loma/airbase/interior/research)
+/obj/structure/girder,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/west)
 "asQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
@@ -7836,8 +7836,9 @@
 /turf/open/floor/corsat/greenwhite/northwest,
 /area/point_loma/research_facility/medical)
 "awR" = (
-/turf/open/predship/mainfloor/direction_4,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "awS" = (
 /turf/open/floor/corsat/yellow/east,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
@@ -7860,9 +7861,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "awV" = (
-/obj/structure/girder,
-/turf/open/predship/mainfloor/plain,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/plating/platingdmg3,
+/area/point_loma/airbase/interior/research)
 "awW" = (
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 2
@@ -7965,8 +7966,12 @@
 /turf/open/shuttle/escapepod/floor2/west,
 /area/point_loma/research_facility/hallway/east)
 "axm" = (
-/turf/open/predship/mainfloor/direction_4,
-/area/point_loma/airbase/exterior/east)
+/obj/structure/machinery/shower{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -7992,8 +7997,9 @@
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
 "axq" = (
-/turf/open/predship/mainfloor/direction_2/west,
-/area/point_loma/airbase/exterior/west)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axr" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -8004,8 +8010,8 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "axs" = (
-/turf/open/predship/mainfloor/corner/west,
-/area/point_loma/airbase/exterior/west)
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/airbase/interior/research)
 "axt" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -8084,8 +8090,8 @@
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
 "axA" = (
-/turf/open/predship/mainfloor/corner/north,
-/area/point_loma/airbase/exterior/west)
+/turf/open/floor/plating/platingdmg3,
+/area/point_loma/airbase/interior/research)
 "axB" = (
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
 /obj/structure/shuttle/part/dropship2/transparent/left_outer_bottom_wing,
@@ -8129,8 +8135,10 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "axH" = (
-/turf/open/predship/mainfloor/direction_2/north,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/machinery/disposal,
+/obj/item/trash/chunk,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axI" = (
 /obj/structure/machinery/message_server{
 	pixel_x = -18
@@ -8155,8 +8163,13 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "axL" = (
-/turf/open/predship/mainfloor/corner,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -8286,10 +8299,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "axX" = (
-/obj/effect/decal/hybrisa/lattice,
-/obj/structure/girder,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/west)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "axY" = (
 /turf/open/floor/shiva/blue/southwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
@@ -8346,8 +8358,8 @@
 /turf/open/shuttle/escapepod/floor3/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "ayf" = (
-/turf/open/predship/tile/hunter_tile_5/east,
-/area/point_loma/airbase/exterior/west)
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/point_loma/airbase/exterior/crash_site)
 "ayg" = (
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/new_varadero,
@@ -8359,7 +8371,11 @@
 /turf/open/shuttle/escapepod/floor3/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "ayi" = (
-/turf/open/predship/mainfloor/direction_3/east,
+/obj/structure/bed/chair{
+	pixel_y = 1;
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayj" = (
 /obj/structure/prop/server_equipment/laptop/on{
@@ -8374,7 +8390,13 @@
 /turf/open/floor/corsat/greenwhite/north,
 /area/point_loma/research_facility/medical)
 "ayl" = (
-/turf/open/predship/mainfloor/direction_2/east,
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "aym" = (
 /obj/structure/closet/firecloset/full,
@@ -8398,7 +8420,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayq" = (
-/turf/open/predship/tile/hunter_tile_5/east,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayr" = (
 /obj/item/device/binoculars/civ{
@@ -8475,7 +8499,10 @@
 /turf/open/shuttle/escapepod/floor3/north,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "ayB" = (
-/turf/open/predship/mainfloor/direction_4,
+/obj/structure/surface/table/holotable,
+/obj/structure/surface/table/holotable,
+/obj/item/reagent_container/food/snacks/syndicake,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayC" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8500,16 +8527,23 @@
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayH" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/predship/plating,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 5;
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayI" = (
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayJ" = (
-/obj/structure/girder,
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayK" = (
 /turf/open/floor/corsat/yellowcorner/north,
@@ -8518,30 +8552,29 @@
 /turf/open/floor/corsat/yellowcorner/east,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayM" = (
-/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable{
-	color = "#756e6a"
-	},
-/obj/structure/prop/hunter/ancient_temple/giant_statue{
-	pixel_y = 14;
-	dir = 8;
-	pixel_x = -14
-	},
-/turf/open/predship/tile/hunter_tile_5/east,
+/obj/structure/surface/table/holotable,
+/obj/item/trash/cheesie,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayN" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/point_loma/research_facility/research/park/opening)
 "ayO" = (
-/turf/open/predship/hunter_catwalk_new,
+/obj/structure/surface/table/holotable,
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayP" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
+/obj/structure/machinery/light/double{
+	dir = 8
 	},
-/obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/predship/plating,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+	pixel_y = 34;
+	lazy_nodes = 0;
+	layer = 3
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "ayQ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8663,16 +8696,17 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "azh" = (
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	pixel_y = 25
 	},
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/plating,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "azi" = (
-/turf/open/predship/mainfloor/corner/east,
+/obj/structure/machinery/vending/dinnerware{
+	pixel_y = 23
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "azj" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -8706,7 +8740,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park/opening)
 "azo" = (
-/turf/open/predship/mainfloor/direction_4/north,
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "azp" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
@@ -8728,14 +8766,9 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/super_death_cannon/observation)
 "azt" = (
-/obj/structure/showcase{
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "body_scanner_open";
-	name = "stasis pod";
-	desc = "A large automated capsule with LED displays intended to store worthy warriors and animals for future hunts on isolated planets.";
-	layer = 3.3
-	},
-/turf/open/predship/hull,
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/turf/open/floor/plating/icefloor,
 /area/point_loma/airbase/exterior/crash_site)
 "azu" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2,
@@ -8779,11 +8812,10 @@
 /turf/open_space,
 /area/point_loma/oob)
 "azz" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2
 	},
-/turf/open/predship/plating,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azA" = (
 /obj/structure/bed/chair,
@@ -8814,11 +8846,12 @@
 /turf/open_space,
 /area/point_loma/oob)
 "azE" = (
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/snack_bowl,
+/obj/item/reagent_container/food/snacks/soylentviridians{
+	pixel_y = 12
 	},
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/predship/plating,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azF" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -8847,10 +8880,20 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "azJ" = (
-/turf/open/predship/mainfloor/edge/north,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = -9
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/snacks/taco,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azK" = (
-/turf/open/predship/mainfloor/direction_4/west,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/stew,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azL" = (
 /obj/structure/machinery/door/poddoor/railing/upp{
@@ -8892,11 +8935,7 @@
 /turf/open/new_varadero/alt_concrete/warning/south,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "azQ" = (
-/obj/effect/decal/cleanable/dirt/sand_2,
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/plating,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azR" = (
 /obj/item/lightstick/variant/planted{
@@ -8923,19 +8962,19 @@
 /turf/open/new_varadero/alt_concrete/warning/east,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "azW" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/east)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/point_loma/airbase/exterior/crash_site)
 "azX" = (
-/turf/closed/wall/huntership,
+/obj/structure/surface/rack{
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/flour,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azY" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/hunter_catwalk_new,
+/obj/structure/machinery/gibber,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "azZ" = (
 /obj/structure/machinery/door/poddoor/railing/upp{
@@ -8969,8 +9008,16 @@
 /turf/open/new_varadero/alt_concrete/warning/corner/northeast,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
 "aAe" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/hunter_catwalk_new,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/condiment/enzyme{
+	pixel_y = 21;
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "aAf" = (
 /obj/structure/machinery/door/poddoor/railing/upp,
@@ -9074,9 +9121,11 @@
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/interior/workshop)
 "aAs" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/predship/hunter_catwalk_new,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/processor{
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "aAt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
@@ -9111,15 +9160,15 @@
 /turf/open/floor/corsat/greenwhite/northeast,
 /area/point_loma/research_facility/medical)
 "aAy" = (
-/obj/structure/curtain/leather/alt_1,
-/turf/open/predship/plating,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/hybrisa/coffee_machine,
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/exterior/crash_site)
 "aAz" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/sign/safety/coffee,
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/airbase/interior)
 "aAA" = (
 /obj/item/reagent_container/glass/rag{
 	desc = "A pile of clothing, these need washing...";
@@ -9139,7 +9188,7 @@
 /turf/open/floor/darkbrown2/northwest,
 /area/point_loma/airbase/interior/cargo)
 "aAD" = (
-/turf/open/predship/hunter_catwalk_new,
+/turf/open/predship/mainfloor/direction_4,
 /area/point_loma/airbase/exterior/east)
 "aAE" = (
 /obj/structure/closet/basketball,
@@ -9237,35 +9286,18 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/medical)
 "aAP" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/hunter_catwalk_new,
-/area/point_loma/airbase/exterior/east)
+/turf/open/predship/mainfloor/direction_2/west,
+/area/point_loma/airbase/exterior/west)
 "aAQ" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/whitebluefull,
 /area/point_loma/research_facility/gym/basketball)
 "aAR" = (
-/obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/machinery/door/airlock/yautja/secure{
-	dir = 2
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/corner/west,
+/area/point_loma/airbase/exterior/west)
 "aAS" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
-	},
-/obj/structure/platform_decoration/metal/hunter{
-	pixel_y = 26;
-	layer = 3.1;
-	dir = 1
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/corner/north,
+/area/point_loma/airbase/exterior/west)
 "aAT" = (
 /obj/effect/acid_hole{
 	dir = 1
@@ -9309,26 +9341,11 @@
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
 "aBa" = (
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 1
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_2/north,
+/area/point_loma/airbase/exterior/west)
 "aBb" = (
-/obj/effect/hunter/bridge_border/brown/large_stair{
-	dir = 1;
-	pixel_x = -2
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/platform_decoration/metal/hunter{
-	pixel_y = 25
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/corner,
+/area/point_loma/airbase/exterior/west)
 "aBc" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "medbay"
@@ -9374,9 +9391,10 @@
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/gym/basketball)
 "aBl" = (
-/obj/structure/machinery/door/airlock/yautja/secure,
-/turf/open/predship/mainfloor/plain,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/west)
 "aBm" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -9397,13 +9415,11 @@
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
 "aBp" = (
-/obj/structure/curtain/leather/alt_1,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/east)
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/point_loma/airbase/exterior/west)
 "aBq" = (
-/obj/structure/curtain/leather/alt_1,
-/turf/open/predship/hunter_catwalk_new,
-/area/point_loma/airbase/exterior/east)
+/turf/open/predship/mainfloor/direction_3/east,
+/area/point_loma/airbase/exterior/crash_site)
 "aBr" = (
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/research_facility/hallway/north)
@@ -9440,8 +9456,8 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
 "aBw" = (
-/turf/open/walkable_lattice,
-/area/point_loma/airbase/exterior/west)
+/turf/open/predship/mainfloor/direction_2/east,
+/area/point_loma/airbase/exterior/crash_site)
 "aBx" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
@@ -9483,29 +9499,14 @@
 /turf/open/floor/shiva/yellow/east,
 /area/point_loma/airbase/interior/cargo/lower)
 "aBE" = (
-/obj/item/restraint/legcuffs{
-	pixel_y = 2;
-	pixel_x = 5
-	},
-/turf/open/predship/hunter_catwalk_new,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aBF" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/floor/wood,
 /area/point_loma/research_facility/gym/basketball)
 "aBG" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/obj/item/paper{
-	pixel_y = 8;
-	pixel_x = 13
-	},
-/obj/item/tool/pen/blue{
-	pixel_y = 5;
-	pixel_x = 20
-	},
-/turf/open/predship/hunter_catwalk_new,
+/turf/open/predship/mainfloor/direction_4,
 /area/point_loma/airbase/exterior/crash_site)
 "aBH" = (
 /obj/structure/holohoop{
@@ -9550,22 +9551,14 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "aBO" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/meat/fish{
-	pixel_x = 4;
-	pixel_y = 8
-	},
-/turf/open/predship/hunter_catwalk_new,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aBP" = (
-/obj/effect/decal/cleanable/dirt/sand_2,
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/east)
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "aBQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
 /turf/open/floor/corsat/squares,
@@ -9584,8 +9577,16 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
 "aBS" = (
-/turf/open/predship/mainfloor/direction_1,
-/area/point_loma/airbase/exterior/west)
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable{
+	color = "#756e6a"
+	},
+/obj/structure/prop/hunter/ancient_temple/giant_statue{
+	pixel_y = 14;
+	dir = 8;
+	pixel_x = -14
+	},
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/point_loma/airbase/exterior/crash_site)
 "aBT" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
@@ -9597,7 +9598,7 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
 "aBU" = (
-/turf/open/predship/mainfloor/edge/west,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aBV" = (
 /obj/structure/machinery/conveyor{
@@ -9643,7 +9644,13 @@
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
 "aCa" = (
-/turf/open/predship/mainfloor/corner/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aCb" = (
 /obj/structure/surface/rack,
@@ -9656,10 +9663,16 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/medical)
 "aCd" = (
-/turf/open/predship/mainfloor/corner,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aCe" = (
-/turf/open/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/corner/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aCf" = (
 /obj/structure/janitorialcart,
@@ -9682,8 +9695,8 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aCh" = (
-/turf/open/predship/mainfloor/direction_1/east,
-/area/point_loma/airbase/exterior/west)
+/turf/open/predship/mainfloor/direction_4/north,
+/area/point_loma/airbase/exterior/crash_site)
 "aCi" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -17;
@@ -9851,10 +9864,14 @@
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
 "aCA" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/mainfloor/plain,
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "body_scanner_open";
+	name = "stasis pod";
+	desc = "A large automated capsule with LED displays intended to store worthy warriors and animals for future hunts on isolated planets.";
+	layer = 3.3
+	},
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "aCB" = (
 /obj/structure/bed/chair{
@@ -9872,9 +9889,12 @@
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "aCE" = (
-/obj/structure/window/framed/colony/reinforced/yautja,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
 /turf/open/predship/plating,
-/area/point_loma/airbase/exterior/east)
+/area/point_loma/airbase/exterior/crash_site)
 "aCF" = (
 /obj/item/reagent_container/glass/rag{
 	pixel_y = -11;
@@ -9922,7 +9942,11 @@
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/north)
 "aCK" = (
-/turf/open/predship/mainfloor/direction_2/west,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aCL" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
@@ -9995,8 +10019,7 @@
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aCV" = (
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/mainfloor/direction_2/west,
+/turf/open/predship/mainfloor/edge/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aCW" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
@@ -10020,8 +10043,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
 "aCZ" = (
-/obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_4/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aDa" = (
 /obj/structure/cargo_container/horizontal/blue/top,
@@ -10056,7 +10078,11 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aDe" = (
-/turf/open/predship/mainfloor/direction_3/north,
+/obj/effect/decal/cleanable/dirt/sand_2,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aDf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -10124,7 +10150,10 @@
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
 "aDn" = (
-/turf/open/predship/mainfloor/direction_3/north,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/east)
 "aDo" = (
 /turf/open/floor/almayer/blackfull/west,
@@ -10260,11 +10289,13 @@
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo)
 "aDH" = (
-/turf/open/predship/mainfloor/direction_2/north,
+/turf/closed/wall/huntership,
 /area/point_loma/airbase/exterior/crash_site)
 "aDI" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/mainfloor/direction_2/north,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aDJ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -10274,15 +10305,13 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park)
 "aDL" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/predship/mainfloor/direction_3/west,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aDM" = (
+/obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 26
-	},
-/turf/open/predship/mainfloor/direction_3/west,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aDN" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -10305,11 +10334,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park)
 "aDS" = (
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 4
-	},
-/turf/open/predship/mainfloor/direction_3/west,
-/area/point_loma/airbase/exterior/east)
+/obj/structure/curtain/leather/alt_1,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aDT" = (
 /obj/structure/machinery/light{
 	needs_power = 0
@@ -10317,11 +10344,13 @@
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/research_facility/cave/west)
 "aDU" = (
-/turf/open/predship/mainfloor/direction_3/west,
-/area/point_loma/airbase/exterior/east)
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aDV" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/predship/mainfloor/direction_3/west,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/east)
 "aDW" = (
 /obj/structure/machinery/computer/telecomms/server{
@@ -10330,9 +10359,10 @@
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/airbase/interior/workshop)
 "aDX" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/mainfloor/direction_3/west,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/east)
 "aDY" = (
 /obj/structure/window/framed/new_varadero/foundation,
@@ -10351,16 +10381,24 @@
 /turf/open/floor/wood,
 /area/point_loma/research_facility/gym/basketball)
 "aEa" = (
+/obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/machinery/door/airlock/yautja/secure{
-	explo_proof = 1;
-	name = "\improper Kitchen";
-	dir = 1
+	dir = 2
 	},
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aEb" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/predship/mainfloor/direction_4,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26;
+	layer = 3.1;
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aEc" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook,
@@ -10387,10 +10425,13 @@
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/cargo)
 "aEh" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 1
 	},
-/turf/open/predship/tile/red6,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aEi" = (
 /obj/structure/platform/broken{
@@ -10400,16 +10441,16 @@
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aEj" = (
-/obj/item/weapon/yautja/knife{
-	name = "sacred ceremonial dagger";
-	pixel_y = 33;
-	anchored = 1;
-	layer = 3.2
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1;
+	pixel_x = -2
 	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 25
 	},
-/turf/open/predship/tile/red6,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aEk" = (
 /obj/structure/pipes/standard/simple/visible{
@@ -10428,7 +10469,8 @@
 /turf/open/floor/almayer/blackfull/west,
 /area/point_loma/research_facility/research/east)
 "aEn" = (
-/turf/open/predship/tile/red6,
+/obj/structure/machinery/door/airlock/yautja/secure,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
 "aEo" = (
 /obj/structure/largecrate/random/barrel/yellow{
@@ -10594,14 +10636,9 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/research/east)
 "aEL" = (
-/obj/effect/decal/heavy_cable/cable_horizontal{
-	pixel_y = 18
-	},
-/obj/effect/decal/heavy_cable/cable_horizontal{
-	pixel_y = 1
-	},
+/obj/structure/curtain/leather/alt_1,
 /turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/area/point_loma/airbase/exterior/east)
 "aEM" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/open/floor/strata/multi_tiles/west,
@@ -10656,9 +10693,9 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
 "aES" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/tile/red,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/curtain/leather/alt_1,
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/airbase/exterior/east)
 "aET" = (
 /obj/structure/barricade/sandbags{
 	dir = 4
@@ -10669,11 +10706,8 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/research_facility/hallway/north)
 "aEV" = (
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 4
-	},
-/turf/open/predship/tile/red,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/walkable_lattice,
+/area/point_loma/airbase/exterior/west)
 "aEW" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/bio_hood/scientist{
@@ -10706,10 +10740,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/point_loma/research_facility/research/park)
 "aFa" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/platform_decoration/metal/hunter/east,
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/tile/red,
+/obj/item/restraint/legcuffs{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aFb" = (
 /obj/structure/surface/table,
@@ -10726,8 +10761,18 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "aFd" = (
-/obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/predship/tile/red,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/obj/item/paper{
+	pixel_y = 8;
+	pixel_x = 13
+	},
+/obj/item/tool/pen/blue{
+	pixel_y = 5;
+	pixel_x = 20
+	},
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aFe" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10824,26 +10869,22 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/point_loma/research_facility/research/west)
 "aFx" = (
-/obj/item/weapon/shield/riot/yautja/ancient{
-	anchored = 1;
-	layer = 2.9;
-	pixel_x = 1
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
 	},
-/obj/item/weapon/yautja/knife{
-	color = "#ffd65c";
-	name = "sacred ceremonial dagger";
-	anchored = 1
+/obj/item/reagent_container/food/snacks/meat/fish{
+	pixel_x = 4;
+	pixel_y = 8
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
 "aFy" = (
-/obj/item/weapon/shield/riot/yautja{
-	anchored = 1;
-	layer = 2.9;
-	pixel_x = 1
+/obj/effect/decal/cleanable/dirt/sand_2,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/east)
 "aFz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/new_varadero/concrete,
@@ -10905,14 +10946,8 @@
 /turf/open/floor/floorscorched1,
 /area/point_loma/research_facility/research/west)
 "aFM" = (
-/obj/structure/terminal{
-	dir = 1
-	},
-/obj/effect/decal/heavy_cable/cable_vertical{
-	pixel_x = 16
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/west)
 "aFN" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/corsat/squares,
@@ -10953,10 +10988,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/east)
 "aFV" = (
-/obj/structure/terminal{
-	dir = 1
-	},
-/turf/open/predship/plating,
+/turf/open/predship/mainfloor/edge/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aFW" = (
 /obj/effect/decal/warning_stripes{
@@ -11000,19 +11032,10 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
 "aGe" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown{
-	dir = 8
-	},
-/obj/effect/hunter/bridge_border/brown,
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
-	},
-/turf/open/predship/plating,
+/turf/open/predship/mainfloor/corner/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aGf" = (
-/turf/open/predship/tile/hunter_tile_5/south,
+/turf/open/predship/mainfloor/corner,
 /area/point_loma/airbase/exterior/crash_site)
 "aGg" = (
 /obj/structure/pipes/standard/simple/visible{
@@ -11054,28 +11077,11 @@
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/research_facility/research/west)
 "aGn" = (
-/obj/structure/bed/chair/hunter{
-	dir = 1;
-	pixel_y = 3;
-	buckling_y = 3;
-	layer = 3.2
-	},
-/turf/open/predship/tile/hunter_tile_5/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aGo" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown{
-	dir = 8
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 4
-	},
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/west)
 "aGp" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/barricade/sandbags{
@@ -11094,19 +11100,14 @@
 /area/point_loma/oob)
 "aGr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown,
-/turf/open/predship/plating,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site)
 "aGs" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 4;
-	pixel_x = -2;
-	buckling_x = -2
-	},
-/turf/open/predship/tile/hunter_tile_5/south,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/window/framed/colony/reinforced/yautja,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/east)
 "aGt" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
@@ -11274,12 +11275,7 @@
 /turf/open/floor/corsat/brown,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aGS" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8;
-	pixel_x = 2;
-	buckling_x = 2
-	},
-/turf/open/predship/tile/hunter_tile_5/south,
+/turf/open/predship/mainfloor/direction_2/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aGT" = (
 /obj/structure/cable{
@@ -11328,13 +11324,8 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
 "aGZ" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown{
-	dir = 4
-	},
-/turf/open/predship/plating,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/direction_2/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aHa" = (
 /obj/effect/decal/medical_decals{
@@ -11345,13 +11336,8 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
 "aHb" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/stew{
-	pixel_y = 9
-	},
-/turf/open/predship/hull,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aHc" = (
 /obj/effect/decal/cleanable/dirt{
@@ -11382,8 +11368,8 @@
 /turf/open/shuttle/lifeboat/plating_striped/north,
 /area/point_loma/research_facility/research/west)
 "aHg" = (
-/turf/open/hybrisa/street,
-/area/point_loma/airbase/interior/research)
+/turf/open/predship/mainfloor/direction_3/north,
+/area/point_loma/airbase/exterior/crash_site)
 "aHh" = (
 /obj/structure/prop/invuln/pipe_water{
 	pixel_y = 15
@@ -11443,11 +11429,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "aHp" = (
-/obj/structure/stairs/multiz/rock/down{
-	dir = 8
-	},
-/turf/open/predship/mainfloor/direction_2/north,
-/area/point_loma/airbase/exterior/crash_site/opening)
+/turf/open/predship/mainfloor/direction_3/north,
+/area/point_loma/airbase/exterior/east)
 "aHq" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/floor3,
@@ -11468,10 +11451,7 @@
 /turf/open/floor/corsat/purple,
 /area/point_loma/research_facility/research/west)
 "aHt" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/predship/hull,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aHu" = (
 /obj/structure/cable/white{
@@ -11496,8 +11476,8 @@
 /turf/open/floor/corsat/purple,
 /area/point_loma/research_facility/research/west)
 "aHw" = (
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/mainfloor/corner/east,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aHx" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -11538,12 +11518,8 @@
 /turf/open_space,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "aHC" = (
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 8
-	},
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/mainfloor/direction_1,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aHD" = (
 /obj/structure/cable/white{
@@ -11578,11 +11554,18 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/research/west)
 "aHH" = (
-/turf/open/predship/mainfloor/direction_2/north,
-/area/point_loma/airbase/exterior/crash_site/opening)
-"aHI" = (
-/turf/open/predship/mainfloor/edge/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/predship/mainfloor/direction_3/west,
 /area/point_loma/airbase/exterior/crash_site)
+"aHI" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/predship/mainfloor/direction_3/west,
+/area/point_loma/airbase/exterior/east)
 "aHJ" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/blue3/east,
@@ -11629,8 +11612,8 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/research/west)
 "aHR" = (
-/turf/open/predship/mainfloor/edge,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_3/west,
+/area/point_loma/airbase/exterior/east)
 "aHS" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -11696,16 +11679,9 @@
 /turf/open/floor/prison/ramptop,
 /area/point_loma/airbase/interior/cargo)
 "aIb" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown,
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1
-	},
-/obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/mainfloor/direction_3/west,
+/area/point_loma/airbase/exterior/east)
 "aIc" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -11721,12 +11697,10 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/point_loma/research_facility/research/west)
 "aIe" = (
-/obj/structure/bed/chair/hunter{
-	pixel_y = 7;
-	buckling_y = 7
-	},
-/turf/open/predship/tile/hunter_tile_5/west,
-/area/point_loma/airbase/exterior/crash_site)
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/mainfloor/direction_3/west,
+/area/point_loma/airbase/exterior/east)
 "aIf" = (
 /obj/structure/platform/metal/strata/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -11756,16 +11730,9 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/point_loma/research_facility/research/west)
 "aIk" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown{
-	dir = 4
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1
-	},
-/obj/effect/hunter/bridge_border/brown/corner{
+/obj/structure/machinery/door/airlock/yautja/secure{
+	explo_proof = 1;
+	name = "\improper Kitchen";
 	dir = 1
 	},
 /turf/open/predship/plating,
@@ -11832,8 +11799,8 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "aIt" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/mainfloor/corner/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/mainfloor/direction_4,
 /area/point_loma/airbase/exterior/crash_site)
 "aIu" = (
 /obj/effect/decal/warning_stripes{
@@ -11849,20 +11816,25 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
 "aIv" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 8
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/mainfloor/direction_1/east,
+/turf/open/predship/tile/red6,
 /area/point_loma/airbase/exterior/crash_site)
 "aIw" = (
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/tile/red,
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 33;
+	anchored = 1;
+	layer = 3.2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/tile/red6,
 /area/point_loma/airbase/exterior/crash_site)
 "aIx" = (
-/obj/effect/hunter/bridge_border/brown/small_stair,
-/turf/open/predship/tile/red,
+/turf/open/predship/tile/red6,
 /area/point_loma/airbase/exterior/crash_site)
 "aIy" = (
 /obj/structure/platform/metal/strata,
@@ -11935,10 +11907,13 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "aII" = (
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/tile/red,
+/obj/effect/decal/heavy_cable/cable_horizontal{
+	pixel_y = 18
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal{
+	pixel_y = 1
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aIJ" = (
 /obj/structure/fence/dark,
@@ -11965,7 +11940,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
 "aIM" = (
-/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aIN" = (
@@ -11988,8 +11963,10 @@
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/cargo)
 "aIQ" = (
-/obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/predship/plating,
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aIR" = (
 /obj/effect/decal/warning_stripes{
@@ -12115,12 +12092,9 @@
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/research/west)
 "aJf" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/machinery/processor/yautja{
-	pixel_y = 5
-	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east,
+/obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aJg" = (
@@ -12142,6 +12116,7 @@
 /turf/open/new_varadero,
 /area/point_loma/airbase/interior/cargo)
 "aJj" = (
+/obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aJk" = (
@@ -12151,19 +12126,17 @@
 /turf/open/floor/corsat,
 /area/shuttle/drop1/point_loma)
 "aJl" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 1
 	},
-/obj/structure/machinery/juicer/yautja{
-	pixel_x = -6;
-	pixel_y = 7
+/obj/item/weapon/yautja/knife{
+	color = "#ffd65c";
+	name = "sacred ceremonial dagger";
+	anchored = 1
 	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	color = "#9b1818";
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/turf/open/predship/tile/red,
+/turf/closed/wall/huntership/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "aJm" = (
 /obj/structure/machinery/big_computers/messaging_server/black{
@@ -12194,8 +12167,13 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "aJq" = (
-/turf/open/predship/mainfloor/direction_1,
-/area/point_loma/airbase/exterior/crash_site/opening)
+/obj/item/weapon/shield/riot/yautja{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 1
+	},
+/turf/closed/wall/huntership/destructible/reinforced,
+/area/point_loma/airbase/exterior/crash_site)
 "aJr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -12208,21 +12186,23 @@
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/research_facility/research/west)
 "aJt" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/terminal{
+	dir = 1
 	},
-/turf/open/predship/tile/red,
+/obj/effect/decal/heavy_cable/cable_vertical{
+	pixel_x = 16
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aJu" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen,
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/research_facility/research/west)
 "aJv" = (
-/obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 8
+/obj/structure/terminal{
+	dir = 1
 	},
-/turf/open/predship/mainfloor/corner/east,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aJw" = (
 /obj/structure/stairs{
@@ -12244,11 +12224,16 @@
 /turf/open/floor/whiteyellow/north,
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "aJy" = (
-/obj/structure/machinery/door/airlock/yautja/secure/ancient{
-	name = "\improper Ancient Quarters";
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/predship/tile/red,
+/obj/effect/hunter/bridge_border/brown,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aJz" = (
 /obj/structure/machinery/washing_machine,
@@ -12303,11 +12288,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/interior/workshop/upper)
 "aJH" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 1;
-	pixel_x = 2
-	},
-/turf/open/predship/tile/red,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "aJI" = (
 /turf/open/floor/shiva/yellow/southwest,
@@ -12347,11 +12328,13 @@
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/cargo)
 "aJP" = (
-/obj/structure/bed/chair/comfy/yautja{
+/obj/structure/bed/chair/hunter{
 	dir = 1;
-	pixel_x = -1
+	pixel_y = 3;
+	buckling_y = 3;
+	layer = 3.2
 	},
-/turf/open/predship/tile/red,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aJQ" = (
 /obj/structure/window/framed/new_varadero/foundation,
@@ -12429,8 +12412,19 @@
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKb" = (
-/turf/open/walkable_lattice,
-/area/point_loma/airbase/exterior/crash_site/opening)
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aKc" = (
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	dir = 2;
@@ -12463,8 +12457,12 @@
 /turf/open/floor/wood,
 /area/point_loma/airbase/interior/cargo/upper)
 "aKg" = (
-/turf/open/predship/mainfloor/direction_1/east,
-/area/point_loma/airbase/exterior/crash_site/opening)
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aKh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/warning_stripes{
@@ -12529,20 +12527,12 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKm" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -2;
+	buckling_x = -2
 	},
-/obj/item/tool/kitchen/rollingpin{
-	pixel_y = 1;
-	pixel_x = -5;
-	color = "#c1a384"
-	},
-/obj/item/tool/kitchen/knife{
-	pixel_x = 10;
-	pixel_y = 5;
-	color = "#c1a384"
-	},
-/turf/open/predship/tile/red,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "aKn" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1{
@@ -12555,11 +12545,12 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/point_loma/research_facility/briefing)
 "aKp" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 8
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8;
+	pixel_x = 2;
+	buckling_x = 2
 	},
-/turf/open/predship/mainfloor/corner/north,
+/turf/open/predship/tile/hunter_tile_5/south,
 /area/point_loma/airbase/exterior/crash_site)
 "aKq" = (
 /obj/structure/machinery/requests_console{
@@ -12624,7 +12615,13 @@
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/research_facility/hallway/north)
 "aKA" = (
-/turf/open/walkable_lattice,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aKB" = (
 /obj/structure/bed/chair{
@@ -12675,7 +12672,13 @@
 /turf/open/floor/shiva/yellowcorners/east,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKH" = (
-/turf/open/predship/mainfloor/direction_3,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_y = 9
+	},
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "aKI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12690,15 +12693,8 @@
 /turf/open/floor/shiva/yellowcorners/north,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKK" = (
-/obj/structure/window/framed/colony/reinforced/hull/yautja,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	color = "#fbebe2"
-	},
-/obj/structure/curtain/colorable{
-	color = "#6c4449"
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/interior/research)
 "aKL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -12706,12 +12702,11 @@
 /turf/open/floor/shiva/yellow/east,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKM" = (
-/obj/structure/machinery/door/airlock/yautja/secure/ancient{
-	name = "\improper Ancient Quarters";
-	dir = 2
+/obj/structure/stairs/multiz/rock/down{
+	dir = 8
 	},
-/turf/open/predship/tile/red,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_2/north,
+/area/point_loma/airbase/exterior/crash_site/opening)
 "aKN" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/space)
@@ -12800,7 +12795,10 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/interior/cargo/lower)
 "aKZ" = (
-/turf/open/predship/mainfloor/direction_2,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/hull,
 /area/point_loma/airbase/exterior/crash_site)
 "aLa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -12856,28 +12854,16 @@
 /turf/open/floor/shiva/yellow/northeast,
 /area/point_loma/airbase/interior/cargo/lower)
 "aLh" = (
-/obj/structure/bed/alien/yautja/leader,
-/obj/item/bedsheet/colorable{
-	pixel_x = -1;
-	color = "#692e2e"
-	},
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "Plain";
-	dir = 8;
-	color = "#63594d";
-	pixel_x = 5;
-	pixel_y = 7;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature.";
-	layer = 2.7
-	},
-/turf/open/predship/tile/red2,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/corner/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aLi" = (
-/obj/structure/closet/yautja,
-/obj/item/map/current_map,
-/obj/item/device/flashlight/lantern/yautja,
-/turf/open/predship/tile/red2,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/mainfloor/direction_1,
 /area/point_loma/airbase/exterior/crash_site)
 "aLj" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -12886,12 +12872,8 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "aLk" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/turf/open/predship/tile/red2,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_2/north,
+/area/point_loma/airbase/exterior/crash_site/opening)
 "aLl" = (
 /obj/structure/bed/chair{
 	pixel_x = 8
@@ -12963,10 +12945,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/interior/cargo/lower)
 "aLt" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/predship/tile/red2,
+/turf/open/predship/mainfloor/edge/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aLu" = (
 /obj/structure/pipes/vents/pump,
@@ -13198,8 +13177,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/east)
 "aMb" = (
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
-/turf/open/predship/tile/red,
+/turf/open/predship/mainfloor/edge,
 /area/point_loma/airbase/exterior/crash_site)
 "aMc" = (
 /obj/structure/machinery/vending/cigarette,
@@ -13240,7 +13218,15 @@
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/lower)
 "aMh" = (
-/turf/open/predship/tile/red2,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aMi" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -13265,20 +13251,11 @@
 /turf/open/floor/corsat/purplewhite,
 /area/point_loma/research_facility/research/east)
 "aMl" = (
-/obj/structure/closet/yautja,
-/obj/item/map/current_map,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "Plain";
-	dir = 8;
-	color = "#63594d";
-	pixel_x = 5;
+/obj/structure/bed/chair/hunter{
 	pixel_y = 7;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature.";
-	layer = 2.7
+	buckling_y = 7
 	},
-/turf/open/predship/tile/red2,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "aMm" = (
 /obj/structure/surface/table/almayer{
@@ -13301,12 +13278,19 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "aMo" = (
-/obj/structure/bed/alien/yautja/leader,
-/obj/item/bedsheet/colorable{
-	pixel_x = -1;
-	color = "#692e2e"
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4
 	},
-/turf/open/predship/tile/red2,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aMp" = (
 /obj/structure/surface/table/almayer{
@@ -13379,10 +13363,8 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "aMx" = (
-/obj/structure/girder,
-/obj/effect/decal/hybrisa/lattice,
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/asphalt,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/mainfloor/corner/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aMy" = (
 /obj/structure/bed/chair{
@@ -13411,49 +13393,30 @@
 /turf/open/floor/corsat,
 /area/point_loma/oob)
 "aMD" = (
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "Plain";
-	color = "#52443b";
-	pixel_x = 1;
-	pixel_y = -2;
-	layer = 2.9;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature.";
-	dir = 4
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
 	},
-/obj/structure/bed/chair/hunter{
-	dir = 8;
-	pixel_y = 21;
-	pixel_x = -3
-	},
-/turf/open/predship/tile/red,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/mainfloor/direction_1/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aME" = (
-/obj/structure/prop/hunter/misc/prop_armor/elder_alt{
-	pixel_y = 31
-	},
-/turf/open/predship/tile/red2,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aMF" = (
-/obj/structure/machinery/door/airlock/yautja/secure/elder,
-/turf/open/predship/plating,
+/obj/effect/hunter/bridge_border/brown/small_stair,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aMG" = (
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
 "aMH" = (
-/obj/structure/prop/ice_colony/tiger_rug{
-	dir = 1;
-	icon_state = "White";
-	color = "#52443b";
-	pixel_x = 5;
-	pixel_y = -27;
-	layer = 2.9;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature."
-	},
-/turf/open/predship/tile/red2,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aMI" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -13550,9 +13513,8 @@
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aMS" = (
-/obj/structure/girder,
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/asphalt,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aMT" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -13624,9 +13586,8 @@
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aNc" = (
-/obj/structure/girder,
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/sidewalkcenter/south,
+/obj/structure/window/framed/colony/reinforced/yautja,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aNd" = (
 /obj/structure/machinery/door/airlock/maintenance/colony{
@@ -13705,17 +13666,11 @@
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aNl" = (
-/obj/structure/closet/yautja/big,
-/obj/item/map/current_map,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/weapon/shield/riot/yautja/ancient{
-	anchored = 1;
-	layer = 2.9;
-	pixel_y = 31
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/skull/praetorian{
-	pixel_x = -1;
-	pixel_y = 33
+/obj/structure/machinery/processor/yautja{
+	pixel_y = 5
 	},
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
@@ -13727,10 +13682,6 @@
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aNn" = (
-/obj/structure/bed/alien/yautja/leader,
-/obj/item/bedsheet/colorable{
-	color = "#692e2e"
-	},
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aNo" = (
@@ -13806,33 +13757,28 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/west)
 "aNA" = (
-/obj/structure/bed/alien/yautja/leader,
-/obj/item/bedsheet/colorable{
-	pixel_x = -1;
-	color = "#692e2e"
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "White";
-	color = "#52443b";
-	pixel_x = -9;
-	pixel_y = 8;
-	layer = 2.9;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature."
+/obj/structure/machinery/juicer/yautja{
+	pixel_x = -6;
+	pixel_y = 7
 	},
-/turf/open/predship/tile/red2,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	color = "#9b1818";
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aNB" = (
-/obj/item/skull/queen{
-	pixel_y = 31;
-	anchored = 1;
-	pixel_x = 1
-	},
-/turf/open/predship/tile/red2,
-/area/point_loma/airbase/exterior/crash_site)
+/turf/open/predship/mainfloor/direction_1,
+/area/point_loma/airbase/exterior/crash_site/opening)
 "aNC" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/new_varadero/taupe_concrete,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aND" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
@@ -13858,11 +13804,11 @@
 /turf/open/floor/corsat/purplewhite,
 /area/point_loma/research_facility/research/east)
 "aNG" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
 	},
-/turf/open/predship/tile/red3,
+/turf/open/predship/mainfloor/corner/east,
 /area/point_loma/airbase/exterior/crash_site)
 "aNH" = (
 /obj/structure/pipes/standard/simple/visible{
@@ -13907,13 +13853,11 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "aNQ" = (
-/obj/effect/hunter/bridge_border/brown/small_stair{
+/obj/structure/machinery/door/airlock/yautja/secure/ancient{
+	name = "\improper Ancient Quarters";
 	dir = 8
 	},
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/structure/platform_decoration/metal/hunter,
-/obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/predship/plating,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aNR" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
@@ -13933,45 +13877,47 @@
 /turf/open/floor/new_varadero/alt_concrete/floor,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
 "aNV" = (
-/obj/structure/bed/chair/hunter{
-	pixel_y = 7;
-	buckling_y = 7;
-	dir = 1
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1;
+	pixel_x = 2
 	},
-/turf/open/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aNW" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1;
+	pixel_x = -1
+	},
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
+"aNX" = (
+/turf/open/walkable_lattice,
+/area/point_loma/airbase/exterior/crash_site/opening)
+"aNY" = (
+/turf/open/predship/mainfloor/direction_1/east,
+/area/point_loma/airbase/exterior/crash_site/opening)
+"aNZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/rollingpin{
+	pixel_y = 1;
+	pixel_x = -5;
+	color = "#c1a384"
+	},
+/obj/item/tool/kitchen/knife{
+	pixel_x = 10;
+	pixel_y = 5;
+	color = "#c1a384"
+	},
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
+"aOa" = (
+/obj/structure/platform_decoration/metal/hunter/west,
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 8
 	},
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/platform_decoration/metal/hunter/west,
-/obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
-"aNX" = (
-/obj/structure/girder,
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street,
-/area/point_loma/airbase/exterior/crash_site)
-"aNY" = (
-/obj/structure/largecrate/hunter_games_guns/mediocre,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
-"aNZ" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/fake_platform/hunter/north{
-	layer = 2.50;
-	pixel_y = 6
-	},
-/obj/structure/platform_decoration/metal/hunter/east{
-	pixel_y = 8
-	},
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
-"aOa" = (
-/turf/open/predship/hunter_catwalk_alt,
+/turf/open/predship/mainfloor/corner/north,
 /area/point_loma/airbase/exterior/crash_site)
 "aOb" = (
 /obj/effect/decal/new_varadero/warning/straight{
@@ -13980,46 +13926,54 @@
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/fuel_storage)
 "aOc" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street,
+/turf/open/walkable_lattice,
 /area/point_loma/airbase/exterior/crash_site)
 "aOd" = (
-/obj/effect/hunter/bridge_border/brown/large_stair{
-	dir = 1
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/structure/platform_decoration/metal/hunter/west{
-	pixel_y = 1
-	},
-/obj/structure/platform_decoration/metal/hunter/east,
-/obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/hunter_catwalk_alt,
+/turf/open/predship/mainfloor/direction_3,
 /area/point_loma/airbase/exterior/crash_site)
 "aOe" = (
-/obj/structure/machinery/door/airlock/yautja,
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2"
+	},
+/obj/structure/curtain/colorable{
+	color = "#6c4449"
+	},
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "aOf" = (
-/obj/structure/bed/chair/hunter{
-	pixel_y = 7;
-	buckling_y = 7
+/obj/structure/machinery/door/airlock/yautja/secure/ancient{
+	name = "\improper Ancient Quarters";
+	dir = 2
 	},
-/turf/open/predship/tile/hunter_tile_5/south,
+/turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
 "aOg" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/predship/plating,
+/turf/open/predship/mainfloor/direction_2,
 /area/point_loma/airbase/exterior/crash_site)
 "aOh" = (
-/obj/structure/platform_decoration/metal/hunter{
-	pixel_y = -7
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	color = "#692e2e"
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 8;
+	color = "#63594d";
+	pixel_x = 5;
+	pixel_y = 7;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature.";
+	layer = 2.7
+	},
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "aOi" = (
-/obj/structure/machinery/door/airlock/yautja,
-/turf/open/predship/mainfloor/plain,
+/obj/structure/closet/yautja,
+/obj/item/map/current_map,
+/obj/item/device/flashlight/lantern/yautja,
+/turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
 "aOj" = (
 /obj/item/tool/pickaxe,
@@ -14033,6 +13987,19 @@
 	},
 /turf/open/floor/strata/blue2,
 /area/point_loma/research_facility/hallway/east)
+"aOl" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
+"aOm" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
 "aOn" = (
 /obj/structure/sign/safety/ammunition{
 	pixel_x = -18;
@@ -14040,9 +14007,70 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
+"aOo" = (
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
+"aOp" = (
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
+"aOq" = (
+/obj/structure/closet/yautja,
+/obj/item/map/current_map,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 8;
+	color = "#63594d";
+	pixel_x = 5;
+	pixel_y = 7;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature.";
+	layer = 2.7
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
+"aOr" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	color = "#692e2e"
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
 "aOs" = (
 /turf/open/floor/prison/ramptop,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aOt" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/crash_site)
+"aOu" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	color = "#52443b";
+	pixel_x = 1;
+	pixel_y = -2;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature.";
+	dir = 4
+	},
+/obj/structure/bed/chair/hunter{
+	dir = 8;
+	pixel_y = 21;
+	pixel_x = -3
+	},
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
+"aOv" = (
+/obj/structure/prop/hunter/misc/prop_armor/elder_alt{
+	pixel_y = 31
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
 "aOw" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt/cement_sunbleached,
@@ -14054,13 +14082,40 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
+"aOy" = (
+/obj/structure/machinery/door/airlock/yautja/secure/elder,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aOz" = (
 /obj/item/stack/sandbags/large_stack,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park)
+"aOA" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	dir = 1;
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = 5;
+	pixel_y = -27;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
+"aOB" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street/asphalt,
+/area/point_loma/airbase/exterior/crash_site)
 "aOC" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/north)
+"aOD" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/point_loma/airbase/exterior/crash_site)
 "aOE" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
@@ -14104,6 +14159,21 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
+"aOL" = (
+/obj/structure/closet/yautja/big,
+/obj/item/map/current_map,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_y = 31
+	},
+/obj/item/skull/praetorian{
+	pixel_x = -1;
+	pixel_y = 33
+	},
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
 "aOM" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4
@@ -14127,6 +14197,13 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"aOQ" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	color = "#692e2e"
+	},
+/turf/open/predship/tile/red,
+/area/point_loma/airbase/exterior/crash_site)
 "aOR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -14139,6 +14216,23 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/point_loma/research_facility/research/park)
+"aOT" = (
+/obj/structure/bed/alien/yautja/leader,
+/obj/item/bedsheet/colorable{
+	pixel_x = -1;
+	color = "#692e2e"
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = -9;
+	pixel_y = 8;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
 "aOU" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3,
 /turf/open/auto_turf/sand_white/layer0,
@@ -14152,6 +14246,14 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"aOX" = (
+/obj/item/skull/queen{
+	pixel_y = 31;
+	anchored = 1;
+	pixel_x = 1
+	},
+/turf/open/predship/tile/red2,
+/area/point_loma/airbase/exterior/crash_site)
 "aOY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
@@ -14201,6 +14303,10 @@
 "aPc" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/oob/sky)
+"aPd" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/new_varadero/taupe_concrete,
+/area/point_loma/airbase/exterior/crash_site)
 "aPe" = (
 /turf/open/new_varadero/sidewalk/west,
 /area/point_loma/airbase/interior/fuel_storage)
@@ -14209,12 +14315,50 @@
 /obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park)
+"aPg" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/tile/red3,
+/area/point_loma/airbase/exterior/crash_site)
+"aPh" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
+	},
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aPi" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "garage_ice_2"
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/interior/garage)
+"aPj" = (
+/obj/structure/bed/chair/hunter{
+	pixel_y = 7;
+	buckling_y = 7;
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/point_loma/airbase/exterior/crash_site)
+"aPk" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
+"aPl" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/exterior/crash_site)
 "aPm" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 8
@@ -14222,6 +14366,22 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop,
 /area/point_loma/airbase/interior/cargo)
+"aPn" = (
+/obj/structure/largecrate/hunter_games_guns/mediocre,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
+"aPo" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north{
+	layer = 2.50;
+	pixel_y = 6
+	},
+/obj/structure/platform_decoration/metal/hunter/east{
+	pixel_y = 8
+	},
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aPp" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 7;
@@ -14235,18 +14395,53 @@
 "aPq" = (
 /turf/open/gm/river/soro,
 /area/point_loma/research_facility/research/park)
+"aPr" = (
+/turf/open/predship/hunter_catwalk_alt,
+/area/point_loma/airbase/exterior/crash_site)
 "aPs" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aPt" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/exterior/crash_site)
+"aPu" = (
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/west{
+	pixel_y = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/hunter_catwalk_alt,
+/area/point_loma/airbase/exterior/crash_site)
 "aPv" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/soro,
 /area/point_loma/research_facility/research/park)
+"aPw" = (
+/obj/structure/machinery/door/airlock/yautja,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aPx" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south_west)
+"aPy" = (
+/obj/structure/bed/chair/hunter{
+	pixel_y = 7;
+	buckling_y = 7
+	},
+/turf/open/predship/tile/hunter_tile_5/south,
+/area/point_loma/airbase/exterior/crash_site)
+"aPz" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
 "aPA" = (
 /obj/structure/machinery/colony_floodlight/searchlight,
 /turf/open/auto_turf/sand_white/layer0,
@@ -14256,6 +14451,12 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /turf/open_space,
 /area/point_loma/airbase/cave/opening)
+"aPC" = (
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = -7
+	},
+/turf/closed/wall/huntership/destructible/reinforced,
+/area/point_loma/airbase/exterior/crash_site)
 "aPD" = (
 /obj/structure/fence/slim/dark/door,
 /turf/open/auto_turf/sand_white/layer0,
@@ -14264,6 +14465,10 @@
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south_west)
+"aPF" = (
+/obj/structure/machinery/door/airlock/yautja,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/airbase/exterior/crash_site)
 "aPG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -48338,8 +48543,9 @@
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/oob)
 "ehW" = (
-/obj/structure/bed/hybrisa/prisonbed,
-/turf/open/floor/plating/wood,
+/obj/structure/surface/table/holotable,
+/obj/item/trash/USCMtray,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/exterior/crash_site)
 "eif" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -156450,13 +156656,13 @@ aLe
 cKF
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+azX
+azQ
+cJd
+ayP
+ayJ
+ayl
+axH
 cJd
 mSl
 mSl
@@ -156632,14 +156838,14 @@ aLe
 cKF
 cJc
 cWA
-mSl
-ehW
-ehW
-ehW
-ehW
-ehW
-mSl
+azY
+azQ
 cJd
+axX
+ayM
+ehW
+axL
+aty
 mSl
 mSl
 mSl
@@ -156814,14 +157020,14 @@ aZS
 aZP
 cJc
 cWA
-mSl
-ehW
-ehW
-ehW
-ehW
-ehW
-mSl
-cJd
+aAe
+azQ
+azt
+azh
+ayf
+ayf
+axX
+aty
 mSl
 mSl
 mSl
@@ -156830,10 +157036,10 @@ bQT
 bQT
 bQT
 cJb
-aHg
-aHg
-aHg
-aHg
+aKK
+aKK
+aKK
+aKK
 cJb
 cJb
 cVc
@@ -156996,14 +157202,14 @@ aLe
 cKF
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+aAs
+azQ
+aty
+azi
+axX
+axX
+axX
+atF
 mSl
 mSl
 mSl
@@ -157012,19 +157218,19 @@ bQT
 bQT
 bQT
 cJb
-aHg
-aHg
-aHg
-aHg
+aKK
+aKK
+aKK
+aKK
 cJb
 cJb
 cVc
 ckv
 ckv
-ape
-asP
+cVc
+axm
 asj
-arz
+axm
 cVc
 aqw
 ckv
@@ -157177,14 +157383,14 @@ aLe
 aLe
 cKF
 cJc
-cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+aAz
+aAy
+azQ
+azz
+ayf
+axX
+ayq
+ayf
 mSl
 mSl
 mSl
@@ -157194,19 +157400,19 @@ bQT
 bQT
 bQT
 cJb
-aHg
-aHg
-aHg
-aHg
+aKK
+aKK
+aKK
+aKK
 cJb
 cJb
 cVc
 ckv
 ckv
-cVc
-jjh
+axq
+axs
 asr
-cVc
+axq
 cVc
 aqI
 apr
@@ -157360,36 +157566,36 @@ aLe
 cKE
 cJc
 cWA
+azQ
+azW
+azE
+ayf
+ayf
+axX
+axX
+aty
 mSl
-ehW
-ehW
-ehW
-ehW
-ehW
+mSl
 mSl
 cJd
-mSl
-mSl
-mSl
-cJd
 bQT
 bQT
 bQT
 cJb
-aHg
-aHg
-aHg
-aHg
+aKK
+aKK
+aKK
+aKK
 cJb
 cJb
 cVc
 ckv
 ckv
-cVc
-ckv
-ass
-cVc
-arz
+axA
+axs
+axq
+axs
+awV
 aqJ
 apD
 cVc
@@ -157542,14 +157748,14 @@ aLe
 bBP
 cJc
 cWA
-mSl
-ehW
-ehW
-ehW
-ehW
-ehW
-mSl
-cJd
+azQ
+azQ
+azJ
+ayf
+ayO
+ayB
+ayi
+aty
 mSl
 mSl
 mSl
@@ -157558,16 +157764,16 @@ bQT
 bQT
 bQT
 cJb
-aHg
-aHg
-aHg
-aHg
+aKK
+aKK
+aKK
+aKK
 cJb
 cjL
 cjL
 cjL
 cjL
-cVc
+cjL
 uPX
 uPX
 cVc
@@ -157724,13 +157930,13 @@ aLe
 bPH
 cJc
 cWA
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
-mSl
+azQ
+azQ
+azK
+azo
+ayH
+ayH
+ayf
 cJd
 mSl
 mSl
@@ -157753,9 +157959,9 @@ cjL
 uPX
 uPX
 uPX
-ckv
-ckv
-ckv
+awR
+awR
+awR
 cVc
 ckv
 ckv
@@ -158283,7 +158489,7 @@ bRz
 bRz
 bRz
 bRz
-aKA
+aOc
 cwV
 cwV
 cwV
@@ -158456,16 +158662,16 @@ bQT
 bQT
 bQT
 bQT
-ayJ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKb
+aBP
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
+aNX
 cwV
 cwV
 cwV
@@ -158638,16 +158844,16 @@ bQT
 bQT
 bQT
 sEl
-ayJ
-ayJ
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKb
+aBP
+aBP
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aNX
 cwV
 cwV
 cwV
@@ -158818,18 +159024,18 @@ cUy
 cUy
 cUy
 cUy
-aOc
-aOc
+aPt
+aPt
+aPl
+bRz
+bRz
+bRz
+bRz
+bRz
+bRz
+bRz
+bRz
 aNX
-bRz
-bRz
-bRz
-bRz
-bRz
-bRz
-bRz
-bRz
-aKb
 cwV
 cwV
 cwV
@@ -159001,18 +159207,18 @@ cUy
 cUy
 cUy
 cUy
+aPt
+aPl
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
+aOg
 aOc
 aNX
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKZ
-aKA
-aKb
 cwV
 cwV
 cwV
@@ -159028,7 +159234,7 @@ cwV
 cVs
 cVs
 cVs
-aBw
+aEV
 cTK
 xSs
 xSs
@@ -159182,19 +159388,19 @@ cUy
 cUy
 cUy
 cUy
-aOc
+aPt
+aPl
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
+aOd
 aNX
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKH
-aKb
 cwV
 cwV
 cwV
@@ -159207,10 +159413,10 @@ cwV
 cwV
 cwV
 cwV
-aBw
-aBw
-aBw
-aBw
+aEV
+aEV
+aEV
+aEV
 cTS
 xSs
 xSs
@@ -159389,9 +159595,9 @@ cwV
 cwV
 cwV
 cwV
-aBw
+aEV
 cTS
-aBw
+aEV
 cTS
 cTS
 cTS
@@ -159547,23 +159753,23 @@ bQT
 bQT
 bRz
 bRz
-aNY
-aNY
+aPn
+aPn
 bRz
-aMh
-aMh
-aNA
+aOp
+aOp
+aOT
 pge
-aMh
-aMh
-aLh
+aOp
+aOp
+aOh
 bRz
 hyy
 hyy
 hyy
 hyy
 hyy
-aHp
+aKM
 hyy
 hyy
 hyy
@@ -159571,7 +159777,7 @@ hyy
 hyy
 hyy
 hyy
-aCh
+aGo
 cTS
 cTS
 cTS
@@ -159730,21 +159936,21 @@ bQT
 bRz
 aNI
 aNI
+aPn
+bRz
+aOv
+aOp
+aOi
+bRz
+aOv
+aOp
+aOi
+bRz
 aNY
-bRz
-aME
-aMh
-aLi
-bRz
-aME
-aMh
-aLi
-bRz
-aKg
-aJq
+aNB
 bsa
 bsa
-aHH
+aLk
 bsb
 bsa
 bsa
@@ -159753,9 +159959,9 @@ bsa
 bsa
 bsa
 bsa
-aCh
+aGo
 cTS
-aBS
+aFM
 cTK
 cTS
 cTS
@@ -159909,18 +160115,18 @@ bQT
 bQT
 bQT
 bQT
-aOh
-aOg
-aOd
-aNZ
+aPC
+aPz
+aPu
+aPo
 bRz
-aMh
-aMh
-aLk
+aOp
+aOp
+aOl
 bRz
-aMh
-aMh
-aLk
+aOp
+aOp
+aOl
 bRz
 xPw
 jnx
@@ -159935,7 +160141,7 @@ lze
 lze
 lze
 lze
-aCd
+aGf
 cUz
 jnx
 bRz
@@ -159945,7 +160151,7 @@ cUz
 cUz
 cUz
 bRz
-ayJ
+aBP
 sEl
 mpu
 cJd
@@ -160092,36 +160298,36 @@ bQY
 bQY
 bRz
 bRz
-aOa
-aOa
-aOa
+aPr
+aPr
+aPr
 bRz
-aMh
-aMh
-aLt
+aOp
+aOp
+aOm
 bRz
-aMh
-aMh
-aLt
+aOp
+aOp
+aOm
 bRz
 xPw
 jnx
 bRz
 bRz
-aHI
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCa
+aLt
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGe
 jnx
-ayq
-ayq
+aBE
+aBE
 bRz
 cUz
 cUz
@@ -160275,14 +160481,14 @@ bRz
 bRz
 bRz
 bRz
-aOe
+aPw
 bRz
 bRz
-aMF
+aOy
 bRz
 bRz
 bRz
-aMF
+aOy
 bRz
 bRz
 bRz
@@ -160302,15 +160508,15 @@ atE
 atE
 xPw
 jnx
-ayq
-ayq
+aBE
+aBE
 bRz
 bRz
 fog
 fog
 cUz
 cUz
-ayH
+aBO
 sEl
 cUy
 cUy
@@ -160468,7 +160674,7 @@ cUz
 lze
 lze
 lze
-aCd
+aGf
 jnx
 cUz
 cUz
@@ -160484,16 +160690,16 @@ aNI
 atE
 xPw
 wHR
-ayi
-ayi
+aBq
+aBq
 bxA
-ayi
-ayi
+aBq
+aBq
 iYy
-ayi
-ayi
-ayi
-ayH
+aBq
+aBq
+aBq
+aBO
 bRz
 cUy
 cUy
@@ -160635,22 +160841,22 @@ bQY
 bQY
 bQY
 bRz
-aCe
-aCe
+aGn
+aGn
 cUz
-aCe
-aCe
-aCe
+aGn
+aGn
+aGn
 cUz
 cUz
-aCe
+aGn
 cUz
-aCe
-aCe
-aCe
-aCe
-aCe
-aCa
+aGn
+aGn
+aGn
+aGn
+aGn
+aGe
 jnx
 cUz
 cUz
@@ -160665,18 +160871,18 @@ aNI
 aNI
 aNI
 xPw
-azi
-ayl
-ayl
+aCe
+aBw
+aBw
 gUH
 tEU
 oio
 nXS
-ayl
-ayl
-ayl
-ayl
-ayl
+aBw
+aBw
+aBw
+aBw
+aBw
 bRz
 bRz
 cTQ
@@ -160819,19 +161025,19 @@ bQY
 bRz
 bRz
 bRz
-aOi
+aPF
 bRz
 bRz
 bRz
-aNW
-aNQ
+aPk
+aPh
 bRz
-aMF
-bRz
-bRz
+aOy
 bRz
 bRz
-ayq
+bRz
+bRz
+aBE
 xPw
 jnx
 cUz
@@ -160848,20 +161054,20 @@ aNI
 aNI
 xPw
 jnx
-ayq
-ayq
+aBE
+aBE
 yly
 cWm
 dbM
-ayq
-ayM
+aBE
+aBS
 cUz
 fog
 fog
 bRz
 bRz
 bRz
-axX
+aBl
 tea
 cTQ
 cTQ
@@ -161003,17 +161209,17 @@ aNI
 aNI
 aNI
 bRz
-aGf
-aGf
-aGf
-aGf
+aJH
+aJH
+aJH
+aJH
 bRz
-aMh
-aMh
-aMh
-aLt
+aOp
+aOp
+aOp
+aOm
 bRz
-ayq
+aBE
 xPw
 jnx
 bRz
@@ -161030,13 +161236,13 @@ aNI
 aNI
 xPw
 jnx
-ayq
-ayq
-ayq
+aBE
+aBE
+aBE
 cWm
 dbM
-ayq
-ayq
+aBE
+aBE
 cUz
 aNI
 aNI
@@ -161185,17 +161391,17 @@ bRz
 aNI
 aNI
 bRz
-aOf
-aHt
-aHt
-aNV
+aPy
+aKZ
+aKZ
+aPj
 bRz
-aMh
-aMh
-aMH
-aLk
+aOp
+aOp
+aOA
+aOl
 bRz
-ayq
+aBE
 xPw
 jnx
 bRz
@@ -161212,19 +161418,19 @@ aNI
 aNI
 xPw
 wHR
-ayi
-ayi
+aBq
+aBq
 eQL
 fnn
 egx
 cVd
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
 hVH
 hVH
 pVw
@@ -161367,17 +161573,17 @@ bRz
 aNI
 aNI
 bRz
-aGf
-aGf
-aGf
-aGf
+aJH
+aJH
+aJH
+aJH
 bRz
-aNB
-aMh
-aMh
-aMl
+aOX
+aOp
+aOp
+aOq
 bRz
-ayq
+aBE
 xPw
 jnx
 bRz
@@ -161393,23 +161599,23 @@ aNI
 aNI
 aNI
 xPw
-azi
-ayl
-ayl
+aCe
+aBw
+aBw
 bxA
-ayl
-ayl
+aBw
+aBw
 iYy
-ayl
-ayl
-ayl
-ayl
-ayl
-ayl
-ayl
+aBw
+aBw
+aBw
+aBw
+aBw
+aBw
+aBw
 xtT
 xtT
-axA
+aAS
 pVw
 cTK
 aoZ
@@ -161549,17 +161755,17 @@ bRz
 bRz
 bRz
 bRz
-aIQ
-aIQ
-aIQ
-aIQ
+aNc
+aNc
+aNc
+aNc
 bRz
-aME
-aMh
-aMh
-aMo
+aOv
+aOp
+aOp
+aOr
 bRz
-ayq
+aBE
 xPw
 jnx
 bRz
@@ -161576,8 +161782,8 @@ aNI
 aNI
 xPw
 jnx
-ayq
-ayq
+aBE
+aBE
 bRz
 bRz
 bRz
@@ -161591,7 +161797,7 @@ rut
 rut
 nwa
 cTK
-axH
+aBa
 jky
 cTK
 cTK
@@ -161741,12 +161947,12 @@ bRz
 bRz
 bRz
 bRz
-ayq
+aBE
 xPw
 wHR
 lze
 lze
-aHR
+aMb
 atE
 aNI
 aNI
@@ -161758,13 +161964,13 @@ aNI
 atE
 xPw
 jnx
-ayq
-ayq
-aAR
-ayO
-ayO
-ayO
-ayO
+aBE
+aBE
+aEa
+aBU
+aBU
+aBU
+aBU
 bRz
 jvu
 xIJ
@@ -161773,7 +161979,7 @@ tbe
 pQZ
 gLg
 ndX
-axH
+aBa
 bua
 fyC
 cTK
@@ -161923,7 +162129,7 @@ bQT
 bRz
 bRz
 bRz
-ayq
+aBE
 xPw
 cUz
 cUz
@@ -161940,13 +162146,13 @@ atE
 atE
 xPw
 jnx
-ayq
-ayq
-aAR
-ayO
-ayO
-ayO
-ayO
+aBE
+aBE
+aEa
+aBU
+aBU
+aBU
+aBU
 bRz
 jvu
 mOj
@@ -161955,7 +162161,7 @@ tbe
 njX
 nFd
 oLS
-axH
+aBa
 bua
 fyC
 cTK
@@ -162105,7 +162311,7 @@ bQT
 bQT
 bUA
 bRz
-ayq
+aBE
 xPw
 cUz
 cUz
@@ -162120,15 +162326,15 @@ lze
 lze
 lze
 lze
-aCd
+aGf
 jnx
-ayq
-ayq
+aBE
+aBE
 bRz
-ayO
-azt
-azt
-ayO
+aBU
+aCA
+aCA
+aBU
 bRz
 jvu
 xIJ
@@ -162137,7 +162343,7 @@ tbe
 pge
 hgg
 dVF
-axH
+aBa
 bua
 fyC
 cTK
@@ -162288,29 +162494,29 @@ bQT
 bUA
 bQT
 mpu
-aHI
+aLt
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGn
+aGe
 aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCe
-aCa
-azi
-aCe
-aCe
-aBU
-ayq
-ayq
+aGn
+aGn
+aFV
+aBE
+aBE
 bRz
-ayO
-azt
-azt
-ayO
+aBU
+aCA
+aCA
+aBU
 bRz
 jvu
 mOj
@@ -162473,26 +162679,26 @@ mpu
 mpu
 bRz
 bRz
-ayq
-ayq
-ayq
-ayq
-ayq
-ayq
-ayq
-ayq
-aDH
-aCK
-ayq
-ayq
-ayq
-ayq
-ayq
+aBE
+aBE
+aBE
+aBE
+aBE
+aBE
+aBE
+aBE
+aHt
+aGS
+aBE
+aBE
+aBE
+aBE
+aBE
 bRz
-ayO
-azt
-azt
-ayO
+aBU
+aCA
+aCA
+aBU
 bRz
 jvu
 xIJ
@@ -162656,25 +162862,25 @@ bQT
 bQT
 bRz
 bRz
-ayq
-ayq
-ayq
-ayq
-ayq
+aBE
+aBE
+aBE
+aBE
+aBE
 bRz
 bRz
-aDI
-aCV
-bRz
-bRz
-bRz
+aHw
+aGZ
 bRz
 bRz
 bRz
-ayO
-azt
-azt
-ayO
+bRz
+bRz
+bRz
+aBU
+aCA
+aCA
+aBU
 bRz
 jvu
 mOj
@@ -162683,7 +162889,7 @@ tbe
 pge
 viI
 cTR
-axH
+aBa
 bua
 fyC
 cTK
@@ -162845,18 +163051,18 @@ bRz
 bRz
 bRz
 iKH
-aDL
-aCZ
+aHC
+aHb
 gDZ
 bRz
-ayO
-aBE
+aBU
+aFa
 bRz
 bRz
-ayO
-azt
-azt
-ayO
+aBU
+aCA
+aCA
+aBU
 bRz
 jvu
 xIJ
@@ -162865,7 +163071,7 @@ tbe
 giw
 rFE
 vWJ
-axH
+aBa
 bua
 fyC
 cTK
@@ -163031,14 +163237,14 @@ eAk
 eXy
 syn
 kXH
-ayO
-aBG
-azX
-aAS
-azz
-azz
-azz
-ayP
+aBU
+aFd
+aDH
+aEb
+aCE
+aCE
+aCE
+aCa
 bRz
 jvu
 mOj
@@ -163047,7 +163253,7 @@ tbe
 oiG
 gtX
 vWJ
-axH
+aBa
 bua
 fyC
 cTK
@@ -163209,18 +163415,18 @@ sEl
 sEl
 bRz
 enn
-aDL
-aCZ
+aHC
+aHb
 qux
 bRz
-ayO
-ayO
-azX
-aBa
-azE
-azE
-azE
-azh
+aBU
+aBU
+aDH
+aEh
+aCK
+aCK
+aCK
+aCd
 bRz
 bRz
 bRz
@@ -163229,7 +163435,7 @@ rut
 rut
 nwa
 cTK
-axH
+aBa
 erc
 cTK
 cTK
@@ -163391,15 +163597,15 @@ mZf
 sEl
 bRz
 enn
-aDL
-aCZ
+aHC
+aHb
 qux
 bRz
-azX
-azX
-azX
-azX
-azX
+aDH
+aDH
+aDH
+aDH
+aDH
 bRz
 bRz
 bRz
@@ -163407,12 +163613,12 @@ bRz
 bRz
 bRz
 bRz
-ayq
-ayq
-ayf
+aBE
+aBE
+aBp
 cTK
-axH
-axq
+aBa
+aAP
 cTK
 cTK
 bPH
@@ -163575,26 +163781,26 @@ bug
 syn
 eAk
 eXy
-aCA
+aGr
 kXH
-ayO
-aBO
-azX
-ayO
-azY
+aBU
+aFx
+aDH
+aBU
+aDI
 bRz
-azJ
+aCV
 lze
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
 hVH
 hVH
-axL
-axs
+aBb
+aAR
 hVH
 tea
 bPH
@@ -163755,29 +163961,29 @@ sEl
 mZf
 bRz
 enn
-aDL
-aCZ
+aHC
+aHb
 qux
 bRz
-ayO
-ayO
-azX
-aAe
-aAe
+aBU
+aBU
+aDH
+aDL
+aDL
 bRz
 xPw
-azi
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-awR
-awR
-awR
-awR
-awR
+aCe
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+ass
+ass
+ass
+ass
+ass
 tea
 bPH
 ajF
@@ -163937,18 +164143,18 @@ sEl
 sEl
 bRz
 enn
-aDL
-aCZ
+aHC
+aHb
 qux
 bRz
-ayO
-ayO
+aBU
+aBU
 bRz
-aBb
-aAs
+aEj
+aDM
 bRz
-azK
-azo
+aCZ
+aCh
 bRz
 bRz
 bRz
@@ -163959,7 +164165,7 @@ xSs
 cTK
 cTK
 cTK
-awV
+asP
 cTK
 pVw
 ajF
@@ -164126,11 +164332,11 @@ bRz
 bRz
 bRz
 bRz
-aBl
+aEn
 bRz
 bRz
-azK
-azo
+aCZ
+aCh
 bRz
 bRz
 cVp
@@ -164303,22 +164509,22 @@ bRz
 oaF
 dDi
 wHR
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
-ayi
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
+aBq
 dcd
 dcd
 dcd
@@ -164480,32 +164686,32 @@ xcE
 jhx
 bRz
 orO
-aFM
+aJt
 bRz
 hWN
 rEr
-azi
+aCe
 cjG
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-ayB
-axm
-axm
-axm
-axm
-axm
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aBG
+aAD
+aAD
+aAD
+aAD
+aAD
 cju
 cTA
 bQG
@@ -164662,18 +164868,18 @@ sEl
 bRz
 bRz
 orO
-aFV
-aEL
+aJv
+aII
 cUz
 iBl
-aDe
+aHg
 bRz
-aAy
-aAy
+aDS
+aDS
 cVp
 bRz
-aAy
-aAy
+aDS
+aDS
 bRz
 bRz
 bRz
@@ -164847,17 +165053,17 @@ bRz
 bRz
 bRz
 bRz
-aDM
-aDe
-aAy
-ayO
+aHH
+aHg
+aDS
+aBU
 cjI
-azY
+aDI
 bRz
-ayO
-aAz
-ayO
-azQ
+aBU
+aDU
+aBU
+aDe
 bRz
 pge
 pge
@@ -165020,25 +165226,25 @@ bQT
 bQT
 bQT
 bQT
-aIQ
-aIw
-aIb
-aGr
-aGr
-aGr
-aGe
-aES
+aNc
+aME
+aMh
+aKg
+aKg
+aKg
+aJy
+aIM
 bRz
 oai
-aDn
-aBp
+aHp
+aEL
 cVl
-aAP
+aDX
 cVl
 cTL
 cVl
-aAD
-azW
+aDV
+aDn
 cTL
 cTL
 ncW
@@ -165201,25 +165407,25 @@ bUA
 bQT
 bQT
 bQT
+aNc
+aNc
+aMF
+aJH
+aKm
+aKm
+aKm
+aJH
 aIQ
-aIQ
-aIx
-aGf
-aGs
-aGs
-aGs
-aGf
-aEV
-aEa
-aDS
-aDn
+aIk
+aHI
+aHp
 cTL
-aAD
+aDV
 cVl
-aAD
+aDV
 cTL
-aAD
-azW
+aDV
+aDn
 cVm
 cTL
 cUT
@@ -165382,26 +165588,26 @@ bQT
 bUA
 bQT
 bQT
-aIQ
-aIQ
-aJf
-aII
-aIe
-aHt
-aHb
+aNc
+aNc
+aNl
+aMH
+aMl
+aKZ
+aKH
 cVE
-aGn
-aFa
+aJP
+aJf
 bRz
-aDS
-aDn
-aCE
+aHI
+aHp
+aGs
 cVl
 cVm
-azW
-aBp
-azW
-aAD
+aDn
+aEL
+aDn
+aDV
 cTL
 cTL
 cTL
@@ -165563,26 +165769,26 @@ bQT
 bQT
 bUA
 bQT
+aNc
+aNc
+aNn
+aNn
+aMF
+aJH
+aKp
+aKp
+aKp
+aJH
 aIQ
-aIQ
-aJj
-aJj
-aIx
-aGf
-aGS
-aGS
-aGS
-aGf
-aEV
-aEa
-aDS
-aDn
-aCE
-aAD
+aIk
+aHI
+aHp
+aGs
+aDV
 cVl
-aAP
-aBq
-aAD
+aDX
+aES
+aDV
 cVl
 cTL
 cUT
@@ -165745,27 +165951,27 @@ bQT
 bQT
 bUA
 bQT
-aIQ
-aKm
-aJt
-aJl
-aIM
-aIk
-aGZ
-aGZ
-aGZ
-aGo
-aFd
+aNc
+aNZ
+aNC
+aNA
+aMS
+aMo
+aKA
+aKA
+aKA
+aKb
+aJj
 bRz
-aDU
-aDn
-aCE
+aHR
+aHp
+aGs
 cVl
 cVm
 cVl
-aBp
+aEL
 cVl
-aAP
+aDX
 cTL
 cUT
 cUT
@@ -165939,15 +166145,15 @@ bRz
 bRz
 bRz
 bRz
-aDU
+aHR
+aHp
+aGs
+aDV
 aDn
-aCE
-aAD
-azW
-aAD
+aDV
 cTL
-aAD
-azW
+aDV
+aDn
 cTL
 cTa
 cTd
@@ -166107,29 +166313,29 @@ bQW
 bQW
 bzl
 bVc
-aMx
-ayi
-ayi
+aOt
+aBq
+aBq
 lze
 lze
-ayi
-ayi
+aBq
+aBq
 lze
 lze
-ayi
-ayi
-ayi
-ayi
-ayi
+aBq
+aBq
+aBq
+aBq
+aBq
 tEx
 uTG
 bYM
 cVl
-aAP
+aDX
 cVl
 cTL
 cVl
-aAP
+aDX
 cTL
 cTa
 cUV
@@ -166286,31 +166492,31 @@ bQT
 bQT
 bQT
 bQW
-aNC
-aNc
-aMS
-aEb
-aEb
-aEb
-aKp
-aJv
-aEb
-aEb
+aPd
+aOD
+aOB
 aIt
-aHw
-aEb
-aEb
-aEb
-aEb
-aEb
+aIt
+aIt
+aOa
+aNG
+aIt
+aIt
+aMx
+aLh
+aIt
+aIt
+aIt
+aIt
+aIt
 xmJ
 uTG
 cTL
-aAD
+aDV
 cVl
-aAD
+aDV
 cTL
-aAP
+aDX
 cVl
 cTL
 cTa
@@ -166467,32 +166673,32 @@ bQT
 bQT
 bQT
 bQT
-aNC
+aPd
 bRz
 bRz
 bRz
 bRz
 bRz
 bRz
-aJy
-aJy
+aNQ
+aNQ
 bRz
 bRz
 uKH
 pRi
-aEh
-aEh
-aEh
-aEh
-aEh
-aDV
+aIv
+aIv
+aIv
+aIv
+aIv
+aIb
+aHp
+cTL
 aDn
-cTL
-azW
 cVq
-aBP
+aFy
 cTL
-azW
+aDn
 cTL
 cTL
 bQd
@@ -166652,23 +166858,23 @@ bQT
 bRz
 bRz
 bRz
-aJt
-aJt
-aMb
-aKK
-aJj
-aJj
+aNC
+aNC
+aOo
+aOe
+aNn
+aNn
 bRz
 bRz
+aMD
+aLi
 aIv
-aHC
-aEh
 bRz
 bRz
-aFx
-aEh
-aDV
-aDn
+aJl
+aIv
+aIb
+aHp
 cTL
 cTL
 cTL
@@ -166833,23 +167039,23 @@ bQT
 bRz
 bRz
 bRz
-aNl
-aJj
-aMD
-aJj
-aKM
-aJj
-aJH
+aOL
+aNn
+aOu
+aNn
+aOf
+aNn
+aNV
 pge
 pge
 aNI
 aNI
-aEh
+aIv
 bRz
 bRz
-aFy
-aEj
-aDV
+aJq
+aIw
+aIb
 bBu
 pdw
 pdw
@@ -167014,24 +167220,24 @@ bQT
 bQT
 bRz
 bRz
-aNG
+aPg
+aOQ
 aNn
-aJj
-aJj
-aJj
-aKK
-aJj
-aJP
+aNn
+aNn
+aOe
+aNn
+aNW
 pge
 pge
 cVO
 cVO
-aEn
-aEn
-aEn
-aEn
-aEn
-aDX
+aIx
+aIx
+aIx
+aIx
+aIx
+aIe
 cVu
 sKQ
 gaw

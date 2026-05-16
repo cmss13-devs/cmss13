@@ -49,7 +49,7 @@
 	if(target == user)
 		playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
 		to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-		COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
+		COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN + iff_additional_fire_delay)
 		if(iff_additional_fire_delay)
 			var/obj/item/weapon/gun/gun = firing_weapon
 			if(istype(gun))
@@ -92,7 +92,7 @@
 					continue
 				playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
 				to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-				COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
+				COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN + iff_additional_fire_delay)
 				if(iff_additional_fire_delay)
 					var/obj/item/weapon/gun/gun = firing_weapon
 					if(istype(gun))

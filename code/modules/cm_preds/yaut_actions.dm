@@ -399,7 +399,7 @@
 
 /datum/action/predator_action/leap
 	name = "Leap"
-	action_icon_state = "leap_placeholder"
+	action_icon_state = "leap"
 	listen_signal = COMSIG_KB_YAUTJA_LEAP
 	active = FALSE
 	var/max_distance = 7

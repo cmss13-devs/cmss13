@@ -10,6 +10,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/picked_chem = FALSE
 	var/has_new_properties = FALSE
 	var/ddi_discovered = FALSE
+	var/myco_discovered = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here

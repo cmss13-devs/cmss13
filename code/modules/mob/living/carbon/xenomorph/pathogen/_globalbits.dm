@@ -80,6 +80,11 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	spread_on_semiweedable = TRUE
 
+/obj/effect/alien/weeds/node/pathogen/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
+	..()
+	create_reagents(30)
+	reagents.add_reagent(BLOOD_BLIGHT, 30)
+
 /obj/effect/alien/weeds/pathogen
 	name = "mycelium blight"
 	desc = "A mycelium growth of strange origins..."

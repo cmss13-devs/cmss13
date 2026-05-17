@@ -42,23 +42,21 @@
 /obj/structure/filingcabinet/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
-		for(var/allowed_type in allowed_types)
-			if(istype(I, allowed_type))
-				I.forceMove(src)
+		if(is_type_in_list(I, allowed_types))
+			I.forceMove(src)
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 		return ..()
-	for(var/allowed_type in allowed_types)
-		if(istype(P, allowed_type))
-			to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
-			if(user.drop_inv_item_to_loc(P, src))
-				icon_state = "[initial(icon_state)]-open"
-				sleep(5)
-				icon_state = initial(icon_state)
-				updateUsrDialog()
-			return
+	if(is_type_in_list(P, allowed_types))
+		to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
+		if(user.drop_inv_item_to_loc(P, src))
+			icon_state = "[initial(icon_state)]-open"
+			sleep(5)
+			icon_state = initial(icon_state)
+			updateUsrDialog()
+		return
 	to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
@@ -72,8 +70,6 @@
 		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 	dat += "</table></center>"
 	show_browser(user, dat, name, "filingcabinet", width = 350, height = 300)
-
-	return
 
 /obj/structure/filingcabinet/Topic(href, href_list)
 	if(..())
@@ -92,9 +88,11 @@
 		usr.put_in_hands(P)
 		updateUsrDialog()
 		icon_state = "[initial(icon_state)]-open"
-		addtimer(CALLBACK(src, .proc/reset_icon),5)
+		addtimer(CALLBACK(src, "reset_icon"),0.5 SECONDS)
 /obj/structure/filingcabinet/proc/reset_icon()
 	icon_state = initial(icon_state)
+
+/* Automated Research Sorting Cabinet*/
 
 /obj/structure/filingcabinet/research
 	name = "automated sorting cabinet"
@@ -115,6 +113,7 @@
 
 /obj/structure/filingcabinet/research/ui_static_data(mob/user)
 	var/list/data = list()
+	data["paper_data"] = list()
 	for(var/document_obj in paper_contents)
 		var/obj/item/paper/research_report/document_report = document_obj
 		var/chemical_value = 0
@@ -125,15 +124,16 @@
 				//this should give us the absolutely rough estimate of how good paper is, value var on properties are a mess, so nada.
 				chemical_value += properties_document.level * attitude
 				properties_codes_level += list(list(
-				"code" = properties_document.code,
-				"level" = properties_document.level))
-		chemical_value += document_report.data.overdose / 5
+					"code" = properties_document.code,
+					"level" = properties_document.level))
+		chemical_value += ((document_report.data?.overdose || 0) / 5)
 		var/list/document_spliced = splittext(document_report.name," ")
+		var/doc_type_string = length(document_spliced) ? document_spliced[1] : ""
 		data["paper_data"] += list(list(
-			"name" = document_report.data.name,
+			"name" = document_report.data?.name,
 			"document_id" = document_report.data?.id,
 			"completed" = document_report.completed,
-			"overdose" = document_report.data.overdose,
+			"overdose" = document_report.data?.overdose,
 			"overall_value" = chemical_value,
 			"document_type" = (document_spliced[1] == "Contract" ? 1 : (document_spliced[1] == "Synthesis" ? 2 : 3)),
 			"properties_list" = properties_codes_level,
@@ -142,7 +142,8 @@
 		data["paper_data"] = null
 	return data
 /obj/structure/filingcabinet/research/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
+	if(..())
+		return
 	switch(action)
 		if("take_out_document")
 			for(var/obj/item/paper/research_report/document_report as anything in paper_contents)
@@ -152,7 +153,7 @@
 				LAZYREMOVE(paper_contents, document_report)
 				update_static_data_for_all_viewers()
 				return TRUE
-
+	return FALSE
 
 /obj/structure/filingcabinet/research/attackby(obj/item/attacked_item, mob/user)
 	if(HAS_TRAIT(attacked_item, TRAIT_TOOL_WRENCH))
@@ -161,94 +162,101 @@
 		var/obj/item/paper/research_notes/note = attacked_item
 		if(note.note_type != "synthesis")
 			return
-		attacked_item = note.convert_to_chem_report()
-	for(var/allowed_type in allowed_types)
-		if(istype(attacked_item, allowed_type))
+		var/obj/item/new_report = note.convert_to_chem_report()
+		if(!new_report)
+			return
+		attacked_item = new_report
+		if(is_type_in_list(attacked_item, allowed_types))
 			var/obj/item/paper/research_report/document_report = attacked_item
 			if(document_report.valid_report && !isnull(document_report.data))
 				var/duplicate = FALSE
 				for(var/obj/item/paper/research_report/document_inside in paper_contents)
-					if(document_inside.data.id == document_report.data.id)
+					if(document_inside.data?.id == document_report.data?.id)
 						duplicate = TRUE
 						to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is identical document already in the array."))
 						break
 				if(duplicate)
 					return
 				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
-				user.drop_inv_item_to_loc(attacked_item, src)
+				if(attacked_item.loc == user)
+					user.drop_inv_item_to_loc(attacked_item, src)
+				else
+					attacked_item.forceMove(src)
 				LAZYADD(paper_contents, attacked_item)
-				icon_state = initial(icon_state)+"-open"
-				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
+				icon_state = "[initial(icon_state)]-open"
+				addtimer(CALLBACK(src, "reset_icon"), 0.5 SECONDS)
 				update_static_data_for_all_viewers()
 			else
 				to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but is refused."))
 				return
-
 /*
  * Security Record Cabinets
  */
 /obj/structure/filingcabinet/security
-	var/virgin = 1
+	var/virgin = TRUE
 
 
 /obj/structure/filingcabinet/security/proc/populate()
-	if(virgin)
-		for(var/datum/data/record/G in GLOB.data_core.general)
-			var/datum/data/record/S
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
-					S = R
-					break
-			if(S)
-				var/obj/item/paper/P = new /obj/item/paper(src)
-				P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-				P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-				P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-				var/counter = 1
-				while(S.fields["com_[counter]"])
-					P.info += "[S.fields["com_[counter]"]]<BR>"
-					counter++
-				P.info += "</TT>"
-				P.name = "Security Record ([G.fields["name"]])"
-			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
-						//before the records have been generated, so we do this inside the loop.
+	if(!virgin)
+		return
+	virgin = FALSE
+	if(!GLOB.data_core?.general)
+		return
+	for(var/datum/data/record/G in GLOB.data_core.general)
+		var/datum/data/record/S
+		for(var/datum/data/record/R in GLOB.data_core.security)
+			if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
+				S = R
+				break
+		if(S)
+			var/obj/item/paper/P = new /obj/item/paper(src)
+			P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+			P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
+			P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/counter = 1
+			while(!isnull(S.fields["com_[counter]"])) //prevent infin looping
+				P.info += "[S.fields["com_[counter]"]]<BR>"
+				counter++
+			P.info += "</TT>"
+			P.name = "Security Record ([G.fields["name"]])"
 
-/obj/structure/filingcabinet/security/attack_hand()
+/obj/structure/filingcabinet/security/attack_hand(mob/user)
 	populate()
-	..()
+	return ..()
 
 /*
  * Medical Record Cabinets
  */
 /obj/structure/filingcabinet/medical
-	var/virgin = 1
+	var/virgin = TRUE
 
 /obj/structure/filingcabinet/medical/proc/populate()
-	if(virgin)
-		for(var/datum/data/record/G in GLOB.data_core.general)
-			var/datum/data/record/M
-			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-				if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
-					M = R
-					break
-			if(M)
-				var/obj/item/paper/P = new /obj/item/paper(src)
-				P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
-				P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
+	if(!virgin)
+		return
+	virgin = FALSE
+	if(!GLOB.data_core?.general)
+		return
+	for(var/datum/data/record/G in GLOB.data_core.general)
+		var/datum/data/record/M
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+			if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
+				M = R
+				break
+		if(M)
+			var/obj/item/paper/P = new /obj/item/paper(src)
+			P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
+			P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
+			P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["blood_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["minor_disability"]]<BR>\nDetails: [M.fields["minor_disability_details"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["major_disability"]]<BR>\nDetails: [M.fields["major_disability_details"]]<BR>\n<BR>\nAllergies: [M.fields["allergies"]]<BR>\nDetails: [M.fields["allergies_details"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["diseases"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["diseases_details"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/counter = 1
+			while (!isnull(M.fields["com_[counter]"])) //prevent infin looping
+				P.info += "[M.fields["com_[counter]"]]<BR>"
+				counter++
+			P.info += "</TT>"
+			P.name = "Medical Record ([G.fields["name"]])"
 
-				P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["blood_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["minor_disability"]]<BR>\nDetails: [M.fields["minor_disability_details"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["major_disability"]]<BR>\nDetails: [M.fields["major_disability_details"]]<BR>\n<BR>\nAllergies: [M.fields["allergies"]]<BR>\nDetails: [M.fields["allergies_details"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["diseases"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["diseases_details"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
-				var/counter = 1
-				while(M.fields["com_[counter]"])
-					P.info += "[M.fields["com_[counter]"]]<BR>"
-					counter++
-				P.info += "</TT>"
-				P.name = "Medical Record ([G.fields["name"]])"
-			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
-						//before the records have been generated, so we do this inside the loop.
-
-/obj/structure/filingcabinet/medical/attack_hand()
+/obj/structure/filingcabinet/medical/attack_hand(mob/user)
 	populate()
-	..()
+	return ..()
 
 /*
  * Hydroponics Cabinets

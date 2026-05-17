@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_XENO_HIVE_HUNTED = new /datum/mob_hud/xeno/xeno_hive_hunted(),
 	MOB_HUD_XENO_HIVE_RENEGADE = new /datum/mob_hud/xeno/xeno_hive_renegade(),
 	MOB_HUD_XENO_HIVE_TUTORIAL = new /datum/mob_hud/xeno/xeno_hive_tutorial(),
+	MOB_HUD_XENO_HIVE_PATHOGEN = new /datum/mob_hud/xeno/xeno_hive_pathogen(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
@@ -204,6 +205,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno/xeno_hive_hunted
 /datum/mob_hud/xeno/xeno_hive_renegade
 /datum/mob_hud/xeno/xeno_hive_tutorial
+/datum/mob_hud/xeno/xeno_hive_pathogen
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE)
@@ -378,6 +380,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
 		if(XENO_HIVE_TUTORIAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
+		if(XENO_HIVE_PATHOGEN)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_PATHOGEN]
 	if(!hive_choice)
 		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
 	hud.add_hud_to(src, src)

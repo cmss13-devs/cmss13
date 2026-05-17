@@ -877,7 +877,7 @@
 	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL, see_humans_on_tacmap = FALSE)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return FALSE
@@ -889,6 +889,9 @@
 
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	if(see_humans_on_tacmap)
+		update_minimap_see_humans()
 
 	generate_name()
 

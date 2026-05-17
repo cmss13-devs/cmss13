@@ -586,7 +586,16 @@
 /obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params)
 	var/turf/origin_turf = get_origin_turf()
 
-	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)
+	// Spawn projectile outside the vehicle hull so riders aren't hit.
+	var/turf/spawn_turf = origin_turf
+	if(owner && length(owner.locs) > 1)
+		var/list/path = get_line(origin_turf, get_turf(target))
+		for(var/turf/T as anything in path)
+			if(!(T in owner.locs))
+				spawn_turf = T
+				break
+
+	var/obj/projectile/projectile_to_fire = generate_bullet(user, spawn_turf)
 	ammo.current_rounds--
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 

@@ -832,7 +832,7 @@
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
-				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
+				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN, TRUE)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				if(xeno.hauled_mob?.resolve())

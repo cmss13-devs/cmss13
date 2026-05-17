@@ -26,7 +26,7 @@
 
 	new_member.transfer_to(new_xeno, TRUE)
 
-	new_xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
+	new_xeno.set_hive_and_update(XENO_HIVE_FORSAKEN, TRUE)
 	new_xeno.lock_evolve = TRUE
 
 	QDEL_NULL(current_mob)

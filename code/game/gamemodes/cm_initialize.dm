@@ -430,13 +430,18 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
 	var/list/options = get_fax_responder_slots(responder_candidate)
-	if(!options || !options.len)
+	if(!options || !length(options))
 		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
 		return FALSE
 
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
+		return FALSE
+
+	options = get_fax_responder_slots(responder_candidate)
+	if(!(choice in options))
+		to_chat(responder_candidate, SPAN_WARNING("Error: Option is no longer available."))
 		return FALSE
 
 	if(!transform_fax_responder(responder_candidate, choice))

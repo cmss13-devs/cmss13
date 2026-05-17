@@ -32,10 +32,12 @@
 		return FALSE
 	if(!can_play_special_job(possible_overmind.client, XENO_CASTE_QUEEN))
 		return FALSE
+	if(ispopper(possible_overmind))
+		return FALSE
 	return TRUE
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/admin_request_overmind(mob/living/carbon/xenomorph/possible_overmind)
-	if(overmind_mob)
+	if(overmind_mob && !ispopper(possible_overmind))
 		return FALSE
 
 	for(var/client/admin in GLOB.admins)
@@ -106,6 +108,8 @@
 	return TRUE
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/strengthen_overmind()
+	if(overmind_strengthened)
+		return FALSE
 	overmind_strengthened = TRUE
 	if(overmind_mob)
 		to_chat(overmind_mob, SPAN_PATHOGEN_ANNOUNCE("Your blight core has grown stronger! New abilities are now possible."))

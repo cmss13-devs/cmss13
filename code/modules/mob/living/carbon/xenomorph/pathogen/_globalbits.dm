@@ -221,7 +221,7 @@
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_blight_slash
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	ability_primacy = XENO_PRIMARY_ACTION_5
 	xeno_cooldown = 12 SECONDS
 	plasma_cost = 50
 

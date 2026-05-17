@@ -5496,13 +5496,6 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink,
 /area/point_loma/airbase/interior/research)
-"aqJ" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	pixel_y = 7
-	},
-/turf/open/floor/hybrisa/carpet/rug_colorable/pink/north,
-/area/point_loma/airbase/interior/research)
 "aqK" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation)
@@ -5802,6 +5795,14 @@
 /area/point_loma/research_facility/medical)
 "arz" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 14;
+	pixel_x = 1;
+	layer = 2.96
+	},
+/obj/item/book/manual/marine_law{
+	pixel_x = -3
+	},
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/research)
 "arA" = (
@@ -6100,6 +6101,12 @@
 "asr" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/point_loma/airbase/interior/research)
+"ass" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "Research Park"
+	},
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "ast" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -6231,6 +6238,9 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"asP" = (
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "asQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
@@ -6416,12 +6426,6 @@
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
-"ato" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_y = 16
-	},
-/turf/open/floor/plating/wood,
-/area/point_loma/airbase/exterior/crash_site)
 "atp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow2";
@@ -14050,10 +14054,6 @@
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/research)
-"aOq" = (
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/plating/platingdmg3,
-/area/point_loma/airbase/interior/research)
 "aOr" = (
 /obj/structure/machinery/shower{
 	dir = 4;
@@ -14821,6 +14821,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aQJ" = (
+/obj/structure/surface/table/holotable,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aQK" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -14924,6 +14928,25 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
+"aRc" = (
+/obj/structure/noticeboard{
+	pixel_y = 32;
+	pixel_x = 3
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes";
+	pixel_x = 4
+	},
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/airbase/interior/research)
 "aRd" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/shiva/north,
@@ -14955,6 +14978,13 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRh" = (
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/washing_machine{
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aRi" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 4
@@ -14985,6 +15015,21 @@
 /obj/structure/closet/cabinet/hybrisa/metal,
 /turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRn" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
+"aRo" = (
+/obj/structure/surface/table/holotable,
+/obj/item/prop/magazine/boots/n117{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aRp" = (
 /obj/structure/surface/table,
 /obj/item/clothing/gloves/marine/insulated,
@@ -15034,6 +15079,10 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRv" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/airbase/interior/research)
 "aRw" = (
 /obj/structure/desertdam/decals/road_stop,
 /obj/effect/decal/warning_stripes{
@@ -15062,6 +15111,18 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/book/manual/upphistory{
+	pixel_x = 5
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = 14;
+	pixel_x = 1;
+	layer = 2.96
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "aRB" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -15097,6 +15158,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/point_loma/research_facility/research/park)
+"aRH" = (
+/obj/structure/bedsheetbin,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
+"aRI" = (
+/obj/structure/surface/table/holotable,
+/obj/item/prop/magazine/dirty,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aRJ" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/desertdam/decals/road_edge{
@@ -15163,6 +15233,14 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aRR" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "aRS" = (
 /obj/structure/machinery/conveyor,
 /obj/structure/ore_box,
@@ -15262,6 +15340,19 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
+"aSf" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/obj/item/toy/prize/marauder{
+	pixel_x = -8;
+	pixel_y = 10;
+	pickupvol = 0
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "aSg" = (
 /obj/item/stool{
 	pixel_x = -3;
@@ -15303,6 +15394,14 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aSk" = (
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/washing_machine{
+	pixel_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aSl" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -15318,6 +15417,10 @@
 	},
 /turf/open/floor/whitebluefull,
 /area/point_loma/research_facility/gym/basketball)
+"aSo" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aSp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat,
@@ -15357,6 +15460,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"aSw" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aSx" = (
 /turf/open/new_varadero/sidewalk/sidewalkfull,
 /area/point_loma/airbase/interior/workshop)
@@ -15448,6 +15555,10 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aSK" = (
+/obj/structure/sign/poster/pinup,
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/airbase/interior/research)
 "aSL" = (
 /obj/effect/decal/medical_decals{
 	dir = 4;
@@ -15500,6 +15611,10 @@
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aSS" = (
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/point_loma/airbase/interior/research)
 "aST" = (
 /obj/structure/largecrate/supply/floodlights,
 /obj/effect/decal/warning_stripes{
@@ -15536,6 +15651,10 @@
 "aSX" = (
 /turf/open/space/basic,
 /area/space)
+"aSY" = (
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/point_loma/airbase/interior/research)
 "aSZ" = (
 /turf/open/floor/shiva/bluecorners/west,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
@@ -15549,6 +15668,20 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aTb" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "Research Park"
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
+"aTc" = (
+/obj/structure/bed/sofa/vert/white/bot,
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
+"aTd" = (
+/obj/structure/bed/sofa/vert/white,
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior/research)
 "aTe" = (
 /obj/structure/surface/table,
 /obj/item/robot_parts/robot_component/radio,
@@ -15559,6 +15692,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aTf" = (
+/obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/point_loma/airbase/interior)
 "aTg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15603,6 +15740,10 @@
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_left,
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aTm" = (
+/obj/structure/bed/sofa/vert/white/top,
+/turf/open/floor/plating/wood,
+/area/point_loma/airbase/interior)
 "aTn" = (
 /obj/effect/acid_hole,
 /turf/closed/wall/new_varadero/concrete/reinforced,
@@ -15673,6 +15814,10 @@
 	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aTx" = (
+/obj/item/prop/magazine/dirty,
+/turf/open/floor/plating/catwalk,
+/area/point_loma/oob/sky)
 "aTy" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/yellow/east,
@@ -154682,7 +154827,10 @@ cJd
 cJd
 cWA
 cWA
-cWA
+aTf
+aSY
+aSY
+aSY
 cVc
 cVc
 cVc
@@ -154694,10 +154842,7 @@ cVc
 cVc
 cVc
 cVc
-cVc
-cVc
-cVc
-cVc
+aRc
 cVc
 aoZ
 aoZ
@@ -154860,7 +155005,7 @@ cJd
 mSl
 mSl
 mSl
-mSl
+aty
 mSl
 mSl
 mSl
@@ -154871,17 +155016,17 @@ ckv
 ckv
 ckv
 ckv
+aSY
 ckv
 ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-iUp
+aSS
+asP
+aSk
+aRH
+aQJ
+aRh
+aQJ
+aoZ
 iUp
 iUp
 aoZ
@@ -155042,28 +155187,28 @@ aty
 mSl
 mSl
 mSl
+aty
 mSl
 mSl
 mSl
-mSl
-fzY
+aTm
+aTd
+aTd
+aTc
 ckv
 ckv
 ckv
+aSY
 ckv
 ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-iUp
+aSS
+aSo
+asP
+asP
+asP
+asP
+aRb
+aoZ
 iUp
 iUp
 aoZ
@@ -155224,7 +155369,7 @@ aty
 mSl
 mSl
 mSl
-mSl
+atF
 mSl
 mSl
 mSl
@@ -155235,17 +155380,17 @@ ckv
 ckv
 ckv
 ckv
+aTb
 ckv
 ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
+ass
+asP
+asP
+asP
+asP
+asP
+asP
+ass
 iUp
 iUp
 aoZ
@@ -155420,14 +155565,14 @@ ckv
 ckv
 ckv
 ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
-ckv
+asP
+aSw
+aRn
+aRI
+aRo
+aRn
+asP
+asP
 iUp
 iUp
 aoZ
@@ -155603,10 +155748,10 @@ cVc
 ckv
 ckv
 cVc
+aSK
 cVc
 cVc
-cVc
-cVc
+aRv
 cVc
 cVc
 cVc
@@ -155787,7 +155932,7 @@ ckv
 ape
 asB
 arJ
-arz
+aRR
 cVc
 apH
 ckv
@@ -156131,7 +156276,7 @@ mSl
 mSl
 auj
 cJd
-ato
+mSl
 atc
 mSl
 cJd
@@ -156515,7 +156660,7 @@ ckv
 ape
 asJ
 arV
-arz
+aSf
 cVc
 apL
 ckv
@@ -156880,7 +157025,7 @@ cVc
 ckv
 asg
 cVc
-arz
+aRA
 aqm
 apq
 cVc
@@ -157607,9 +157752,9 @@ ckv
 aOv
 aOu
 aOt
-aOu
-aOq
-aqJ
+aOv
+aOv
+asI
 apD
 cVc
 ckv
@@ -199804,7 +199949,7 @@ bTS
 jby
 jby
 jby
-jby
+aTx
 jby
 jby
 jby

@@ -92,3 +92,12 @@
   - bugfix: fixed stacking health upgrades for sentry posts
   seanlol092:
   - qol: named the LZ
+2026-05-17:
+  MistChristmas:
+  - bugfix: Give Penlight eye assessment a cooldown, and lower it's blind time
+  - admin: Add logging to the penlight eye assesment
+  Puckaboo2:
+  - spellcheck: '"Updater", "Separator", and "Percentage" have been spellchecked.'
+  realforest2001:
+  - bugfix: Marking for hunt no longer stays behind after claiming trophy parts.
+  - balance: Added a Leap/Jump ability to Yautja.

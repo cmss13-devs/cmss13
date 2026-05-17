@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "Huggers now leap up to 2 tiles from the egg it activates from instead of 1"

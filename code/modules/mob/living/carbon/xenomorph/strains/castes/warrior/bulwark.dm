@@ -89,10 +89,6 @@
 		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield"
 		return TRUE
 
-/datum/behavior_delegate/warrior_bulwark/handle_death()
-	var/datum/action/xeno_action/activable/plate_slam/ability_used = get_action(bound_xeno, /datum/action/xeno_action/activable/plate_slam)
-	ability_used.end_plate_slam()
-
 //
 // 1st ability
 //

@@ -199,6 +199,17 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/yard)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11705,16 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/yard)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -41068,6 +41089,7 @@
 /obj/item/weapon/gun/rifle/m4ra,
 /obj/item/ammo_box/magazine/m4ra,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/bodybags,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/execution_storage)
 "bWJ" = (
@@ -42162,6 +42184,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
 "bZn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
 "bZo" = (
@@ -42170,14 +42197,19 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bZp" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/brig/yard)
-"bZq" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/yard)
+"bZq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13;
+	dir = 1
+	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/yard)
 "bZr" = (
 /turf/open/floor/almayer/plating_striped/north,
@@ -42193,6 +42225,10 @@
 	req_access = list(3)
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
 "bZt" = (
@@ -80589,6 +80625,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 2;
+	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/yard)
@@ -196609,7 +196650,7 @@ bZV
 bZN
 bZC
 bZn
-bZg
+aaD
 bYy
 bYK
 bYy
@@ -196712,7 +196753,7 @@ bZW
 hvd
 hvd
 bZp
-bZg
+aDL
 bYy
 bYM
 bYB
@@ -196815,7 +196856,7 @@ bZX
 bZP
 hvd
 bZq
-bZg
+aDL
 bYy
 oEE
 bYC

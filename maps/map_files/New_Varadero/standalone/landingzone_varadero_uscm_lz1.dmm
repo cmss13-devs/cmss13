@@ -34,7 +34,7 @@
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
 "af" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
@@ -44,7 +44,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
@@ -78,7 +78,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "ay" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/gibs,
@@ -572,7 +572,7 @@
 /area/varadero/interior/maintenance/north)
 "eR" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -642,7 +642,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "fr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -659,7 +659,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "fC" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -1026,7 +1026,7 @@
 /turf/open/floor/plating/icefloor,
 /area/varadero/interior/oob)
 "iP" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -1354,7 +1354,7 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz1_near)
 "lT" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "lY" = (
@@ -1615,7 +1615,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/maintenance/north)
 "oA" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -1679,7 +1679,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "oJ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -1780,7 +1780,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "pj" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -1791,13 +1791,13 @@
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/pontoon_beach)
 "pt" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "py" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing/floor{
@@ -2509,7 +2509,7 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
 "vc" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -2821,7 +2821,7 @@
 /turf/open/gm/dirt/desert1,
 /area/varadero/exterior/lz1_near)
 "xL" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "xM" = (
@@ -2904,7 +2904,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "yA" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -2977,7 +2977,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "zk" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "zn" = (
@@ -3013,7 +3013,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "zA" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 22
 	},
@@ -3083,7 +3083,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "Ap" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/item/stack/cable_coil/cut,
@@ -3319,7 +3319,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/varadero/exterior/pontoon_beach)
 "Cm" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -3872,7 +3872,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "GF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -4117,7 +4117,7 @@
 /area/varadero/interior/hall_N)
 "Jw" = (
 /obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
+	desc = "A grave to a fishing buddy, long gone."
 	},
 /obj/item/clothing/head/boaterhat{
 	pixel_y = 5
@@ -4443,7 +4443,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "LN" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -4526,7 +4526,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "MB" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -4789,7 +4789,7 @@
 /turf/open/gm/coast/west,
 /area/varadero/exterior/lz1_near)
 "PC" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/item/prop/almayer/comp_open,
@@ -5057,7 +5057,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "Sg" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/structure/machinery/floodlight/landing/floor{
@@ -5149,7 +5149,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "Ta" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "Tb" = (
@@ -5257,7 +5257,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/morgue)
 "TH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -5403,7 +5403,7 @@
 /area/varadero/exterior/pontoon_beach/lz)
 "UT" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
@@ -5968,7 +5968,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
 "Zr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/asteroidfloor/north,

@@ -194,9 +194,9 @@
 
 	if(istype(resin_construct, /datum/resin_construction/resin_turf/wall))
 		if(thick)
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+			current_turf.place_on_top(/turf/closed/wall/resin/weedbound/thick)
 		else
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+			current_turf.place_on_top(/turf/closed/wall/resin/weedbound/normal)
 
 		qdel(the_node)
 		return TRUE

@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
-		var/obj/equipping_gear = new path
+		var/obj/item/equipping_gear = new path
 		if(user.equip_to_appropriate_slot(equipping_gear))
 			return
 
@@ -84,6 +84,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 		if(drop_instead_of_del)
 			equipping_gear.forceMove(get_turf(user))
+			equipping_gear.dropped(user)
 			return
 
 		qdel(equipping_gear)
@@ -448,6 +449,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/headwear/uscm/headband_red
 	display_name = "USCM headband, red"
+	path = /obj/item/clothing/head/headband/red/static
+
+/datum/gear/headwear/uscm/headband_red_camo
+	display_name = "USCM headband, red (camo conforming)"
 	path = /obj/item/clothing/head/headband/red
 
 /datum/gear/headwear/uscm/headband_intel
@@ -556,7 +561,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/rosary
 	display_name = "Rosary"
-	path = /obj/item/prop/helmetgarb/rosary
+	path = /obj/item/clothing/accessory/rosary
+
+/datum/gear/helmet_garb/rosary/gold
+	display_name = "Golden rosary"
+	path = /obj/item/clothing/accessory/rosary/gold
 
 /datum/gear/helmet_garb/spent_buck
 	display_name = "Spent buckshot"
@@ -1288,6 +1297,25 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
+
+
+/datum/gear/civilian/patch
+	display_name = "Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/freelancer_patch
+	fluff_cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/mercpatch
+	display_name = "Old Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/merc_patch
+
+/datum/gear/civilian/patch/medipatch
+	display_name = "Medic Patch"
+	path = /obj/item/clothing/accessory/patch/medic_patch
+
+
+
+// Re-added some less lore conflicting patches back into civilian's gear
 
 ///Commented out until we have a factional system to restrict these properly
 // /datum/gear/civilian/patch

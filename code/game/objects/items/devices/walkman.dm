@@ -14,6 +14,12 @@
 		)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	item_state_slots = list(
+		WEAR_L_EAR = "walkman",
+		WEAR_R_EAR = "walkman",
+		WEAR_IN_BELT = "walkman",
+		WEAR_IN_J_STORE = "walkman"
+	)
 	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)

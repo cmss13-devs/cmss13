@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"/" = "Divide",
 	"-" = "Subtract",
 	"+" = "Add",
-	"DECIMAL" = "Decimal",
+	"," = "Decimal",
 	"CLEAR" = "Center",
 	"PAUSE" = "Pause",
 	"CONTEXTMENU" = "Apps",

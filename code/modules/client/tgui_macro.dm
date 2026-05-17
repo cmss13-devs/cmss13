@@ -84,6 +84,8 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/list/tempList = list()
 			for(var/i in splittext(full_key, "+"))
+				if(i == "")
+					i = "+" //we split by + so empty means input was +
 				if(GLOB._kbMap[i])
 					tempList += GLOB._kbMap[i]
 				else

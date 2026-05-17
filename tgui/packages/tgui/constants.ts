@@ -46,6 +46,7 @@ export const COLORS = {
     echo: '#027d02',
     foxtrot: '#4a4740',
     raiders: '#6e1919',
+    forecon: '#32CD32',
   },
   // Damage type colors
   damageType: {
@@ -97,6 +98,11 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
+    name: 'Yautja SpecOps',
+    freq: 1207,
+    color: '#1ecc43',
+  },
+  {
     name: "Dutch's Dozen",
     freq: 1210,
     color: '#1ecc43',
@@ -122,28 +128,38 @@ export const RADIO_CHANNELS = [
     color: '#fe9b24',
   },
   {
-    name: 'PMC CMD',
-    freq: 1232,
-    color: '#4dc5ce',
-  },
-  {
-    name: 'PMC',
+    name: 'WY Corp',
     freq: 1233,
-    color: '#4dc5ce',
+    color: '#f5a747',
   },
   {
-    name: 'PMC ENG',
+    name: 'WY Sec',
+    freq: 1233,
+    color: '#d07a11',
+  },
+  {
+    name: 'PMC CMD',
     freq: 1234,
     color: '#4dc5ce',
   },
   {
-    name: 'PMC MED',
+    name: 'PMC',
     freq: 1235,
     color: '#4dc5ce',
   },
   {
-    name: 'PMC CCT',
+    name: 'PMC ENG',
     freq: 1236,
+    color: '#4dc5ce',
+  },
+  {
+    name: 'PMC MED',
+    freq: 1237,
+    color: '#4dc5ce',
+  },
+  {
+    name: 'PMC CCT',
+    freq: 1238,
     color: '#4dc5ce',
   },
   {
@@ -245,6 +261,11 @@ export const RADIO_CHANNELS = [
     name: 'Provost',
     freq: 1473,
     color: '#9b0612',
+  },
+  {
+    name: 'Army',
+    freq: 1476,
+    color: '#318779',
   },
   {
     name: 'Sentry',

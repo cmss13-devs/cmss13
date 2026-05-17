@@ -21,6 +21,12 @@
 /obj/structure/machinery/door/airlock/process()
 	..()
 	if (arePowerSystemsOn())
+		//sparks for shocks
+		if (secondsElectrified != 0 && prob(25))
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, src)
+			sparks.start()
+		//do command
 		execute_current_command()
 	else
 		stop_processing()
@@ -44,7 +50,7 @@
 	if(operating)
 		return //emagged or busy doing something else
 
-	if (isnull(cur_command) || inoperable())
+	if ((isnull(cur_command) || inoperable()) && secondsElectrified == 0) //dont stop processing if electrified because we need to spark
 		//Nothing to do, stop processing!
 		//Or power out, in case we also stop doing stuff
 		stop_processing()
@@ -54,7 +60,8 @@
 	if (command_completed(cur_command))
 		cur_command = null
 		//Nothing to do, stop processing!
-		stop_processing()
+		if (secondsElectrified == 0)
+			stop_processing()
 
 /obj/structure/machinery/door/airlock/proc/do_command(command)
 	switch(command)
@@ -242,7 +249,7 @@
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 
 	else if(radio_connection)
 		var/datum/signal/signal = new

@@ -97,6 +97,8 @@
 	//some vehicles have special slots for dead revivable corpses for various reasons
 	//revivable corpses slots
 	var/revivable_dead_slots = 0
+	//To prevent the dead from taking up all passenger slots and making the vehicle un-enterable.
+	var/perma_dead_slots = 2
 	//Special roles categories slots. These allow to set specific roles in categories with their own slots.
 	//For example, (list(JOB_CREWMAN, JOB_UPP_CREWMAN) = 2) means that USCM and UPP crewman will always have 2 slots reserved for them.
 	//Only first encounter of job will be checked for slots, so don't put job in more than one category.
@@ -167,6 +169,10 @@
 	icon_state = "cargo_engine"
 
 	var/move_on_turn = FALSE
+	///Minimap flags to use for this vehicle
+	var/minimap_flags = MINIMAP_FLAG_USCM
+	///Minimap iconstate to use for this vehicle
+	var/minimap_icon_state
 
 /obj/vehicle/multitile/Initialize()
 	. = ..()
@@ -188,6 +194,7 @@
 
 	healthcheck()
 	update_icon()
+	update_minimap_icon()
 
 	GLOB.all_multi_vehicles += src
 
@@ -375,7 +382,7 @@
 			H.deactivate()
 			H.remove_buff(src)
 		else
-			all_broken = 0 //if something exists but isnt broken
+			all_broken = 0 //if something exists but isn't broken
 
 	if(all_broken)
 		toggle_cameras_status()
@@ -384,6 +391,7 @@
 	//vehicle is dead, no more lights
 	if(health <= 0 && lighting_holder.light_range)
 		lighting_holder.set_light_on(FALSE)
+		update_minimap_icon()
 	else
 		if(!lighting_holder.light)
 			lighting_holder.set_light_on(TRUE)
@@ -459,3 +467,13 @@
 	SIGNAL_HANDLER
 
 	forceMove(get_turf(mover))
+
+///Updates the vehicles minimap icon
+/obj/vehicle/multitile/proc/update_minimap_icon(modules_broken)
+	if(!minimap_icon_state)
+		return
+	SSminimaps.remove_marker(src)
+	minimap_icon_state = initial(minimap_icon_state)
+	if(health <= 0 || modules_broken)
+		minimap_icon_state += "_wreck"
+	SSminimaps.add_marker(src, minimap_flags, image('icons/ui_icons/map_blips_large.dmi', null, minimap_icon_state, HIGH_FLOAT_LAYER))

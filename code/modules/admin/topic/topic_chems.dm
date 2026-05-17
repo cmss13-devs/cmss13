@@ -2,7 +2,7 @@
 	message_admins("[usr] spawned in a container of [target] with a volume of [volume]u")
 
 	if(volume > 300)
-		var/obj/structure/reagent_dispensers/fueltank/custom/C = new(usr.loc, volume, target)
+		var/obj/structure/reagent_dispensers/tank/fuel/custom/C = new(usr.loc, volume, target)
 		C.reagents.add_reagent(target, volume)
 
 		if(alert(usr, "Do you want to set the explosive capabilities on your fueltank? (This will disallow transferring to and from the tank)", "", "Yes", "No") == "Yes")

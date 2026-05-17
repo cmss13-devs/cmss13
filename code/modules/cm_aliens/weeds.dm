@@ -57,7 +57,7 @@
 	set_hive_data(src, hivenumber)
 	if(spread_on_semiweedable && weed_strength == WEED_LEVEL_HARDY)
 		if(color)
-			var/list/RGB = ReadRGB(color)
+			var/list/RGB = rgb2num(color)
 			RGB[1] = clamp(RGB[1] + 35, 0, 255)
 			RGB[2] = clamp(RGB[2] + 35, 0, 255)
 			RGB[3] = clamp(RGB[3] + 35, 0, 255)
@@ -79,10 +79,8 @@
 		weeded_turf = turf
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
-	RegisterSignal(src, list(
-		COMSIG_ATOM_TURF_CHANGE,
-		COMSIG_MOVABLE_TURF_ENTERED
-	), PROC_REF(set_turf_weeded))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(set_turf_weeded))
+	RegisterSignal(turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(pre_turf_change))
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
@@ -96,6 +94,10 @@
 		weeded_turf.weeds = null
 
 	T.weeds = src
+
+// Before the turf changes, register a temporary callback to update `weeds` post-change.
+/obj/effect/alien/weeds/proc/pre_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+	post_change_callbacks += CALLBACK(src, PROC_REF(set_turf_weeded), source)
 
 /obj/effect/alien/weeds/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -230,6 +232,7 @@
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
+		var/obj/effect/alien/resin/design/old_design
 
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
@@ -244,6 +247,11 @@
 
 			if(old_fruit)
 				old_fruit.unregister_weed_expiration_signal()
+
+			old_design = locate() in T
+
+			if(old_design)
+				old_design.unregister_weed_expiration_signal_design()
 
 			qdel(W)
 
@@ -263,6 +271,9 @@
 
 		if(old_fruit)
 			old_fruit.register_weed_expiration_signal(new_weed)
+
+		if(old_design)
+			old_design.register_weed_expiration_signal_design(new_weed)
 
 	on_weed_expand(src, weeds)
 	if(parent)
@@ -532,6 +543,7 @@
 
 	. = ..(mapload, src)
 
+	// Create the overlay with the determined icon_state
 	if(!staticnode)
 		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
@@ -589,6 +601,9 @@
 /obj/effect/alien/weeds/node/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
 
+/obj/effect/alien/weeds/node/hunted
+	hivenumber = XENO_HIVE_HUNTED
+
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE
 	weed_strength = WEED_LEVEL_HIVE
@@ -625,6 +640,9 @@
 
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
+
+/obj/effect/alien/weeds/node/pylon/hunted
+	hivenumber = XENO_HIVE_HUNTED
 
 /obj/effect/alien/weeds/node/pylon/cluster
 	spread_on_semiweedable = TRUE

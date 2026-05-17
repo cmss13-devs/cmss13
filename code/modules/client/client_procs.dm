@@ -58,6 +58,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_crit_type,
 	/client/proc/set_flashing_lights_pref,
 	/client/proc/toggle_leadership_spoken_orders,
+	/client/proc/toggle_cocking_to_hand,
+	/client/proc/toggle_wield_assist,
 ))
 
 /client/proc/reduce_minute_count()
@@ -107,7 +109,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second."))
 			return
 
 	// Tgui Topic middleware
@@ -167,18 +169,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			for(var/photo in info.photo_list)
 				usr << browse_rsc(info.photo_list[photo], photo)
 
-		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message", width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=info.extra_stylesheets, extra_headers=info.extra_headers)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
-
 	else if(href_list["tacmaps_panel"])
 		GLOB.tacmap_admin_panel.tgui_interact(mob)
-
-	else if(href_list["MapView"])
-		if(isxeno(mob))
-			return
-		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -273,22 +269,25 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
-
 	///////////
 	//CONNECT//
 	///////////
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
+
+	process_preauthorization(params2list(TopicData))
+
 	TopicData = null //Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
+	if(!CanLogin())
+		qdel(src)
+		return
+
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
-
-	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
-		winset(src, "", "browser-options=byondstorage")
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
@@ -305,6 +304,142 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
+	// we should interrupt this here, now
+	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
+		mob = new /mob/unauthenticated(locate(1, 1, 1))
+		return mob
+
+	PreLogin()
+
+	. = ..() //calls mob.Login()
+
+	PostLogin()
+
+/// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
+/client/proc/process_preauthorization(list/topic_headers)
+	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
+
+	if(!length(types_to_oidc_endpoint))
+		return
+
+	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
+		var/access_code = topic_headers[oidc_type]
+		if(!access_code)
+			continue
+
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+			"Authorization" = "Bearer [access_code]"
+		))
+		request.begin_async()
+
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.error)
+			continue
+
+		var/response_decoded = json_decode(response.body)
+
+		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[oidc_type]
+		if(!ckey_to_find)
+			continue
+
+		var/fallback = splittext(ckey_to_find, "?")
+		if(length(fallback) == 2)
+			ckey_to_find = fallback[1]
+			fallback = fallback[2]
+		else
+			fallback = null
+
+		var/found_ckey = response_decoded
+		for(var/split in splittext(ckey_to_find, "."))
+			found_ckey = found_ckey[split]
+
+			if(!found_ckey)
+				break
+
+		if(!length(found_ckey))
+			if(length(fallback))
+				found_ckey = response_decoded[fallback]
+
+			if(!length(found_ckey))
+				continue
+
+		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
+		ckey = found_ckey
+
+		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
+		if(is_banned)
+			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
+			qdel(src)
+			return FALSE
+
+		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[oidc_type]
+		if(!username_to_find)
+			break
+
+		var/found_username = response_decoded
+		for(var/split in splittext(username_to_find, "."))
+			found_username = found_username[split]
+
+			if(!found_username)
+				break
+
+		if(!length(found_username))
+			break
+
+		log_access("PREAUTHORIZATION: user [found_ckey] assigned username [found_username].")
+		external_username = found_username
+		break
+
+	var/launcher_port = topic_headers["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, topic_headers)
+		server.setup()
+
+/client/proc/CanLogin()
+	// Version check below if we ever need to start checking against BYOND versions again.
+	var/breaking_version = CONFIG_GET(number/client_error_version)
+	var/breaking_build = CONFIG_GET(number/client_error_build)
+	var/warn_version = CONFIG_GET(number/client_warn_version)
+	var/warn_build = CONFIG_GET(number/client_warn_build)
+
+	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
+		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later.")
+		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+		return FALSE
+
+	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version].[byond_build]<br>"
+			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
+			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			src << browse(HTML_SKELETON(msg), "window=warning_popup")
+		else
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later.")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+
+	if (num2text(byond_build) in GLOB.blacklisted_builds)
+		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of BYOND is blacklisted.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("BYOND build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of BYOND. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
+		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
+		return FALSE
+
+	return TRUE
+
+/client/proc/PreLogin()
 	player_entity = setup_player_entity(ckey)
 
 	if(check_localhost_status())
@@ -344,49 +479,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.player_details[ckey] = player_details
 
 	view = GLOB.world_view_size
-	. = ..() //calls mob.Login()
 
-	if(SSinput.initialized)
-		INVOKE_ASYNC(src, /client/proc/set_macros)
+/client/proc/PostLogin()
+	add_verb(src, collect_client_verbs())
 
-	// Version check below if we ever need to start checking against BYOND versions again.
-	var/breaking_version = CONFIG_GET(number/client_error_version)
-	var/breaking_build = CONFIG_GET(number/client_error_build)
-	var/warn_version = CONFIG_GET(number/client_warn_version)
-	var/warn_build = CONFIG_GET(number/client_warn_build)
+	check_ip_vpn()
 
-	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
-		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
-		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
-		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
-		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-		qdel(src)
-		return
-
-	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
-		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
-			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version].[byond_build]<br>"
-			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
-			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
-			src << browse(msg, "window=warning_popup")
-		else
-			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
-			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-
-	if (num2text(byond_build) in GLOB.blacklisted_builds)
-		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of byond. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
-		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
-		qdel(src)
-		return
+	acquire_dpi()
 
 	// Initialize tgui panel
 	stat_panel.initialize(
@@ -404,6 +503,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	tgui_panel.initialize()
 	tgui_say.initialize()
 
+	if(SSinput.initialized)
+		INVOKE_ASYNC(src, /client/proc/set_macros)
+
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
 
@@ -420,10 +522,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	enable_hardware_graphics()
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
-
-	acquire_dpi()
 
 	send_assets()
 
@@ -443,9 +543,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
 
-	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
-	// set_night_skin()
-
 	if(!tooltips && prefs.tooltips)
 		tooltips = new(src)
 
@@ -454,6 +551,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
@@ -496,10 +594,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
-
 #undef TOPIC_SPAM_DELAY
 #undef UPLOAD_LIMIT
 #undef MIN_CLIENT_VERSION
+
+/client/var/external_username
+
+/// To be used when displaying a client's "username" to players
+/client/proc/username()
+	if(external_username)
+		return external_username
+
+	return key
 
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
@@ -542,8 +648,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
 /client/proc/acquire_dpi()
-	set waitfor = FALSE
-
 	// Remove with 516
 	if(byond_version < 516)
 		return
@@ -602,7 +706,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(key as text|null)
+CLIENT_VERB(read_key_down, key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -611,7 +715,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(key as text|null)
+CLIENT_VERB(read_key_up, key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -695,6 +799,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+				if(/datum/keybinding/client/switch_input::name)
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"input.focus=true?map.focus=true:input.focus=true\\\"\"")
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
 						var/say = tgui_say_create_open_command(SAY_CHANNEL)
@@ -754,6 +860,23 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 					winset(src, "tgui_say.browser", "focus=true")
 
+/client/proc/disable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode off\"")
+
+/client/proc/enable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
+
+/client/proc/reset_graphics()
+	disable_hardware_graphics()
+	sleep(1)
+	enable_hardware_graphics()
+
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in screen
+	if (!plane_master)
+		return
+
+	plane_master.backdrop(mob)
+
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 		winset(src, "mainwindow", "is-fullscreen=true;menu=")
@@ -788,7 +911,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 	return FALSE
 
-/client/verb/fix_stat_panel()
+CLIENT_VERB(fix_stat_panel)
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
@@ -808,6 +931,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				continue
 
 		remove_from_screen(object)
+	render_plates_shown = alist()
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
@@ -871,7 +995,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return total_t3_playtime
 
-/client/verb/action_hide_menu()
+CLIENT_VERB(action_hide_menu)
 	set name = "Show/Hide Actions"
 	set category = "IC"
 
@@ -950,6 +1074,39 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+#ifdef SPACEMAN_DMM
+/client/VAR_PRIVATE/eye
+/client/VAR_PRIVATE/pixel_x
+/client/VAR_PRIVATE/pixel_y
+#endif
+
+/client/proc/set_eye(new_eye)
+	SEND_SIGNAL(src, COMSIG_CLIENT_EYE_CHANGED, new_eye)
+
+	eye = new_eye
+
+/client/proc/get_eye() as /atom
+	RETURN_TYPE(/atom)
+
+	return eye
+
+/client/proc/set_pixel_x(new_pixel_x)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_X_CHANGED, new_pixel_x)
+
+	pixel_x = new_pixel_x
+
+/client/proc/get_pixel_x() as num
+	return pixel_x
+
+/client/proc/set_pixel_y(new_pixel_y)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_Y_CHANGED, new_pixel_y)
+
+	pixel_y = new_pixel_y
+
+/client/proc/get_pixel_y() as num
+	return pixel_y
+
 
 GLOBAL_VAR(ooc_rank_dmi)
 GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())

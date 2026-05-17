@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
 	..()
 	recoil = RECOIL_AMOUNT_TIER_4 //Same as m37 shotgun.
-
+	set_fire_delay(FIRE_DELAY_TIER_GL)
 
 /obj/item/weapon/gun/launcher/grenade/on_pocket_insertion() //Plays load sfx whenever a nade is put into storage.
 	playsound(usr, reload_sound, 25, 1)
@@ -282,12 +282,13 @@
 	internal_slots = 6
 	direct_draw = FALSE
 
+/obj/item/weapon/gun/launcher/grenade/m92/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -312,9 +313,6 @@
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4 * 1.5)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -345,9 +343,6 @@
 	is_lobbing = TRUE
 	internal_slots = 3
 
-/obj/item/weapon/gun/launcher/grenade/m84/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m84/able_to_fire(mob/living/user)
 	. = ..()
@@ -357,14 +352,14 @@
 			return FALSE
 
 //-------------------------------------------------------
-//M79 Grenade Launcher subtype of the M81
+//M85A1 Grenade Launcher subtype of the M81
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
-	name = "\improper M79 grenade launcher"
-	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1//m85a1 variant for marines
+	name = "\improper M85A1 grenade launcher"
+	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi-automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertise to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
-	icon_state = "m79"
-	item_state = "m79"
+	icon_state = "m85a1"
+	item_state = "m85a1"
 	flags_equip_slot = SLOT_BACK
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
@@ -385,10 +380,20 @@
 		/obj/item/attachable/reflex,
 	)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 18, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
+
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/m79
+	name = "\improper M79 grenade launcher"
+	desc = "A heavy, low-angle 40mm grenade launcher. Looks to be a hobbyist modification made to resemble a Vietnam War prop. This version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+	icon_state = "m79"
+	icon_state = "m79"

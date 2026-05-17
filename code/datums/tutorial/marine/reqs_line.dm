@@ -10,7 +10,7 @@
 
 /// Simulates the Requisitions Line experience for newcomers
 /datum/tutorial/marine/reqs_line
-	name = "Marine - Requistions Line"
+	name = "Marine - Requisitions Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
 	icon_state = "cargotech"
 	tutorial_id = "marine_req_1"
@@ -67,9 +67,9 @@
 		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun", "UBS"),
 		/obj/item/attachable/verticalgrip = list("VG", "Vert Grip", "Vertical Grip"),
 		/obj/item/attachable/stock/rifle = list("Solid Stock", "M41 stock", "M41 Solid Stock"),
-		/obj/item/attachable/stock/shotgun = list("M37 Stock", "Wooden stock"),
+		/obj/item/attachable/stock/synth/collapsible = list("M37A2 Stock", "Collapsible Stock"),
 		/* GEAR */
-		/obj/item/weapon/gun/shotgun/pump = list("M37", "shotgun"),
+		/obj/item/weapon/gun/shotgun/pump/m37a = list("M37", "shotgun"),
 		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),
 		/obj/item/weapon/gun/rifle/m4ra = list("M4RA", "M4RA Battle Rifle"),
 		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
@@ -82,7 +82,7 @@
 		/obj/item/storage/box/guncase/m56d = list("M56D", "HMG", "M56"),
 		/obj/item/storage/box/guncase/m2c = list("M2C"),
 		/obj/item/storage/box/guncase/flamer = list("Flamer", "Flamer kit", "Incinerator"),
-		/obj/item/storage/box/guncase/m79 = list("GL", "Grenade launcher", "M79", "M79 Grenade launcher"),
+		/obj/item/storage/box/guncase/m85a1 = list("GL", "Grenade launcher", "M85A1", "M85A1 Grenade launcher"),
 		/obj/item/clothing/accessory/storage/black_vest = list("Black webbing", "Black webbing vest"),
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest = list("Brown webbing", "Brown webbing vest"),
 		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "Normal webbing", "Web"),
@@ -110,7 +110,7 @@
 		/obj/item/device/binoculars/range = list("Rangefinders"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/stack/fulton = list("Fultons", "Fulton pack"),
-		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
+		/obj/item/pamphlet/upgradeable/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
 		/obj/item/explosive/grenade/high_explosive/m15 = list("M15", "M15 nade", "M15 Grenade"),
 		/obj/item/explosive/mine = list("Claymore", "Mine", "M20 Claymore"),
@@ -128,7 +128,7 @@
 		/obj/item/ammo_magazine/rifle/extended = list("Ext Mk2", "MK2 Extended", "Extended MK2 mag"),
 		/obj/item/ammo_magazine/smartgun = list("Smartgun drum", "SG drum"),
 		/obj/item/ammo_magazine/rifle/lmg = list("HPR mag", "Heavy pulse rifle mag", "M41AE2 box"),
-		/obj/item/ammo_magazine/rifle/xm51 = list("XM51 mag"),
+		/obj/item/ammo_magazine/rocket/brute = list("Brute warhead", "Brute rocket"),
 	)
 
 /datum/tutorial/marine/reqs_line/Destroy(force)
@@ -243,7 +243,7 @@
 		request += pick(catalogue)
 		if(i < 6) // Only telescope catalogues the first 5 times as the chances compound
 			catalogue += request
-	spawn_agent(request, "Lv [survival_wave]. ")
+	spawn_agent(request, "Lv [survival_wave].")
 
 /// Called when an agent presents at the line window and needs to make a request
 /datum/tutorial/marine/reqs_line/proc/a_new_challenger_appears(turf/source, mob/living/carbon/human/challenger)

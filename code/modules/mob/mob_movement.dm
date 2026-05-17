@@ -42,7 +42,7 @@
 	return
 
 //This gets called when you press the delete button.
-/client/verb/delete_key_pressed()
+CLIENT_VERB(delete_key_pressed)
 	set hidden = TRUE
 
 	if(!usr.pulling)
@@ -50,7 +50,7 @@
 		return
 	usr.stop_pulling()
 
-/client/verb/swap_hand()
+CLIENT_VERB(swap_hand)
 	set name = ".SwapMobHand"
 	set hidden = TRUE
 
@@ -60,13 +60,13 @@
 
 
 
-/client/verb/attack_self()
+CLIENT_VERB(attack_self)
 	set hidden = TRUE
 	if(mob)
 		mob.mode()
 	return
 
-/client/verb/drop_item()
+CLIENT_VERB(drop_item)
 	set hidden = TRUE
 	mob.drop_item_v()
 	return
@@ -160,7 +160,7 @@
 		to_chat(src, SPAN_NOTICE("You cannot crawl while a xeno is grabbing you."))
 		return
 
-	//Check if you are being grabbed and if so attemps to break it
+	//Check if you are being grabbed and if so attempts to break it
 	if(mob.pulledby)
 		if(mob.is_mob_restrained(0))
 			next_movement = world.time + 20 //to reduce the spam
@@ -255,7 +255,7 @@
 
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)))
-		to_chat(src, SPAN_NOTICE(" <B>You slipped!</B>"))
+		to_chat(src, SPAN_NOTICE("<B>You slipped!</B>"))
 		src.inertia_dir = src.last_move_dir
 		step(src, src.inertia_dir)
 		return 0
@@ -295,7 +295,7 @@
 		dense_object++
 
 	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
+	//TODO: If we implement objects drifting in space this needs to really push them
 	//Due to a few issues only anchored and dense objects will now work.
 	if(!dense_object)
 		for(var/obj/O in oview(1, src))
@@ -307,7 +307,7 @@
 
 
 /mob/proc/Process_Spaceslipping(prob_slip = 5)
-	//Setup slipage
+	//Setup slippage
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.

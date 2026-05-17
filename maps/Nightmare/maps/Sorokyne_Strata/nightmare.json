@@ -44,5 +44,11 @@
 	"chance": 1.0,
 	"path": "standalone/clfcamp.dmm",
 	"when": { "lvevent": "clfcrash" }
+	},
+	{
+	"type": "map_insert",
+	"landmark": "flamer_bodypile",
+	"chance": 0.60,
+	"path": "sprinkles/flamer_bodypile.dmm"
 	}
 ]

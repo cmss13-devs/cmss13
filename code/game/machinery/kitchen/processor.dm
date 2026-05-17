@@ -136,7 +136,7 @@
 	for(var/O in src.contents)
 		var/datum/food_processor_process/P = select_recipe(O)
 		if (!P)
-			log_admin("DEBUG: [O] in processor havent suitable recipe. How do you put it in?") //-rastaf0
+			log_admin("DEBUG: [O] in processor does not have a suitable recipe. How do you put it in?") //-rastaf0
 			continue
 		src.processing = 1
 		user.visible_message(SPAN_NOTICE("[user] turns on [src]."),
@@ -147,8 +147,8 @@
 		sleep(P.time)
 		P.process(src.loc, O)
 		src.processing = 0
-	src.visible_message(SPAN_NOTICE("\the [src] finished processing."),
-		"You hear the food processor stopping/")
+	src.visible_message(SPAN_NOTICE("\The [src] finished processing."),
+		"You hear the food processor stopping.")
 
 /obj/structure/machinery/processor/yautja
 	name = "food grinder"

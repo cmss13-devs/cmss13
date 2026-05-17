@@ -38,8 +38,8 @@
 
 /// used to make mobs skip bioscans
 #define AREA_AVOID_BIOSCAN (1<<0)
-/// makes it so the area can not be tunneled to
-#define AREA_NOTUNNEL (1<<1)
+/// makes it so the area can not be burrowed into or burrow from there.
+#define AREA_NOBURROW (1<<1)
 /// xenos can join whilst in this area (for admin zlevel)
 #define AREA_ALLOW_XENO_JOIN (1<<2)
 /// Flags the area as a containment area
@@ -54,6 +54,10 @@
 #define AREA_YAUTJA_HANGABLE (1<<7)
 /// Makes it so barricades can't be anchored and starts unsecured.
 #define AREA_NOSECURECADES (1<<8)
+/// Flags the area, preventing the creation of xeno tunnels, overwriting can_dig_xeno_tunnel.
+#define AREA_NOTUNNEL (1<<9)
+/// Flags the area as heavily ventilated clearing most /obj/effect/particle_effect in a few ticks.
+#define AREA_HEAVILY_VENTILATED (1<<10)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
@@ -165,7 +169,7 @@
 #define ASSEMBLY_UNLOCKED 1
 #define ASSEMBLY_LOCKED 2
 
-// RESEARCH UPGRADES DEFINES //
+// RESEARCH DEFINES //
 
 // Matrix CAS Upgrades
 #define MATRIX_DEFAULT 0
@@ -194,8 +198,7 @@
 #define EMERGENCY_PLATE_OD_WARNING 1
 #define EMERGENCY_PLATE_ADJUSTED_WARNING 2
 
-
-// RESEARCH UPGRADES DEFINES END
+// RESEARCH DEFINES END
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"
@@ -325,3 +328,5 @@
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1
+
+#define RIDING_OFFSET_ALL "ALL"

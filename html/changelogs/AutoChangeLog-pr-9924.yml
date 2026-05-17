@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "ASB ammunition for Pyro Spec and Scout Spec now drop the correct contents."

@@ -151,7 +151,7 @@
 	dat += "<b>Notes or Comments:</b><br><span class=\"paper_field\"></span><br><br>"
 	dat += "<b>Defendant Signature:</b> <span class=\"paper_field\"></span><br>"
 	dat += "</div> <!-- /message-body-text -->"
-	dat += "<hr style=\"margin-bottom:-3px; margin-top:3px;\">"
+	dat += "<hr style=\"margin-bottom:3px; margin-top:3px;\">"
 	dat += "<div class=\"message-signature-text\">"
 	dat += "<p class=\"signature-title\">Right to Appeal</p>"
 	dat += "<p>Anyone under the jurisdiction of Marine Law has the right to appeal their punishment to their choice of the Chief of Military Police (CMP) or the Commander, the requested handler may designate another valid party to handle it in their place. Should either be involved in the arrest of the defendant they must designate another valid party.</p>"

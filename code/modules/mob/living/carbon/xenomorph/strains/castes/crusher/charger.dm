@@ -610,7 +610,7 @@
 	charger_ability.stop_momentum()
 
 // Legacy Tank dispenser
-// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
+// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vulnerable to bullets,explosions, etc and not just the charger.
 // For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
 
 /obj/structure/dispenser/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
@@ -631,7 +631,7 @@
 
 // ye olde weldertanke
 
-/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/reagent_dispensers/tank/fuel/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -680,7 +680,7 @@
 			COMSIG_XENO_STOP_MOMENTUM,
 			COMSIG_XENO_START_CHARGING,
 		))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 	return ..()
 
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)

@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { toFixed } from 'common/math';
 import { numberOfDecimalDigits } from 'common/math';
 import { useState } from 'react';
@@ -30,128 +29,157 @@ type MasterFilter = {
       MASK_INVERSE: number;
       MASK_SWAP: number;
     };
-
-    angular_blur: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-      };
+  };
+  angular_blur: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
     };
-    displace: {
-      defaults: {
-        x: number;
-        y: number;
-        size: null | number;
-        icon: string;
-        render_source: '';
-      };
+  };
+  color: {
+    defaults: {
+      color: string;
+      space: number;
     };
-    drop_shadow: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-        offset: number;
-        color: string;
-      };
+    enums: {
+      FILTER_COLOR_RGB: number;
+      FILTER_COLOR_HSV: number;
+      FILTER_COLOR_HSL: number;
+      FILTER_COLOR_HCY: number;
     };
-    blur: {
-      defaults: {
-        size: number;
-      };
+  };
+  displace: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+      icon: string;
+      render_source: '';
     };
-    layer: {
-      defaults: {
-        x: number;
-        y: number;
-        icon: string;
-        render_source: string;
-        flags: number;
-        color: string;
-        transform: null | number;
-        blend_mode: number;
-      };
+  };
+  drop_shadow: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+      offset: number;
+      color: string;
     };
-    motion_blur: {
-      defaults: {
-        x: number;
-        y: number;
-      };
+  };
+  blur: {
+    defaults: {
+      size: number;
     };
-    outline: {
-      defaults: {
-        size: number;
-        color: string;
-        flags: number;
-      };
-      flags: {
-        OUTLINE_SHARP: number;
-        OUTLINE_SQUARE: number;
-      };
+  };
+  layer: {
+    defaults: {
+      x: number;
+      y: number;
+      icon: string;
+      render_source: string;
+      flags: number;
+      color: string;
+      transform: null | number[];
+      blend_mode: number;
     };
-    radial_blur: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-      };
+    enums: {
+      BLEND_DEFAULT: number;
+      BLEND_OVERLAY: number;
+      BLEND_ADD: number;
+      BLEND_SUBTRACT: number;
+      BLEND_MULTIPLY: number;
+      BLEND_INSET_OVERLAY: number;
     };
-    rays: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-        color: string;
-        offset: number;
-        density: number;
-        threshold: number;
-        factor: number;
-        flags: number;
-      };
-      flags: {
-        FILTER_OVERLAY: number;
-        FILTER_UNDERLAY: number;
-      };
+  };
+  motion_blur: {
+    defaults: {
+      x: number;
+      y: number;
     };
-    ripple: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-        repeat: number;
-        radius: number;
-        falloff: number;
-        flags: number;
-      };
-      flags: {
-        WAVE_BOUNDED: number;
-      };
+  };
+  outline: {
+    defaults: {
+      size: number;
+      color: string;
+      flags: number;
     };
-    wave: {
-      defaults: {
-        x: number;
-        y: number;
-        size: number;
-        offset: number;
-        flags: number;
-      };
-      flags: {
-        WAVE_SIDEWAYS: number;
-        WAVE_BOUNDED: number;
-      };
+    flags: {
+      OUTLINE_SHARP: number;
+      OUTLINE_SQUARE: number;
+    };
+  };
+  radial_blur: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+    };
+  };
+  rays: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+      color: string;
+      offset: number;
+      density: number;
+      threshold: number;
+      factor: number;
+      flags: number;
+    };
+    flags: {
+      FILTER_OVERLAY: number;
+      FILTER_UNDERLAY: number;
+    };
+  };
+  ripple: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+      repeat: number;
+      radius: number;
+      falloff: number;
+      flags: number;
+    };
+    flags: {
+      WAVE_BOUNDED: number;
+    };
+  };
+  wave: {
+    defaults: {
+      x: number;
+      y: number;
+      size: number;
+      offset: number;
+      flags: number;
+    };
+    flags: {
+      WAVE_SIDEWAYS: number;
+      WAVE_BOUNDED: number;
     };
   };
 };
 
-type Data = {
-  filter_info: MasterFilter;
-  target_name: string;
-  target_filter_data: string[];
+type ActiveFilters = { type: string; priority: number } & Partial<MasterFilter>;
+
+type FilterEntryProps = {
+  readonly name: string;
+  readonly value: any;
+  readonly hasValue: boolean;
+  readonly filterName: string;
+  readonly filterType: string;
 };
 
-const FilterIntegerEntry = (props) => {
-  const { value, name, filterName } = props;
+export type Data = {
+  filter_info: MasterFilter;
+  target_name: string;
+  target_filter_data: Record<string, ActiveFilters>;
+};
+
+const FilterIntegerEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act } = useBackend();
   return (
     <NumberInput
@@ -173,8 +201,8 @@ const FilterIntegerEntry = (props) => {
   );
 };
 
-const FilterFloatEntry = (props) => {
-  const { value, name, filterName } = props;
+const FilterFloatEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act } = useBackend();
   const [step, setStep] = useState(0.01);
 
@@ -213,8 +241,37 @@ const FilterFloatEntry = (props) => {
   );
 };
 
-const FilterTextEntry = (props) => {
-  const { value, name, filterName } = props;
+const FilterTransformEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
+  const { act } = useBackend();
+
+  return (
+    <Box>
+      {value?.map((current_value: number, current_index: number) => (
+        <NumberInput
+          key={current_index}
+          value={current_value}
+          minValue={0}
+          maxValue={1}
+          step={1}
+          onDrag={(new_value) =>
+            act('modify_filter_value', {
+              name: filterName,
+              new_data: {
+                [name]: value!.map((x: number, i: number) =>
+                  i === current_index ? new_value : x,
+                ),
+              },
+            })
+          }
+        />
+      ))}
+    </Box>
+  );
+};
+
+const FilterTextEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act } = useBackend();
 
   return (
@@ -233,8 +290,8 @@ const FilterTextEntry = (props) => {
   );
 };
 
-const FilterColorEntry = (props) => {
-  const { value, filterName, name } = props;
+const FilterColorEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act } = useBackend();
   return (
     <>
@@ -263,8 +320,8 @@ const FilterColorEntry = (props) => {
   );
 };
 
-const FilterIconEntry = (props) => {
-  const { value, filterName } = props;
+const FilterIconEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act } = useBackend();
   return (
     <>
@@ -283,13 +340,13 @@ const FilterIconEntry = (props) => {
   );
 };
 
-const FilterFlagsEntry = (props) => {
-  const { name, value, filterName, filterType } = props;
+const FilterFlagsEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
   const { act, data } = useBackend<Data>();
 
   const filterInfo = data.filter_info;
-  const flags = filterInfo[filterType]['flags'];
-  return map(flags, (bitField: number, flagName) => (
+  const flags: Record<string, number> = filterInfo[filterType]['flags'];
+  return Object.entries(flags).map(([flagName, bitField]) => (
     <Button.Checkbox
       checked={value & bitField}
       onClick={() =>
@@ -307,8 +364,32 @@ const FilterFlagsEntry = (props) => {
   ));
 };
 
-const FilterDataEntry = (props) => {
-  const { name, value, hasValue, filterName } = props;
+const FilterEnumEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
+  const { act, data } = useBackend<Data>();
+
+  const filterInfo = data.filter_info;
+  const enums: Record<string, number> = filterInfo[filterType]['enums'];
+  return Object.entries(enums).map(([enumName, enumNumber]) => (
+    <Button.Checkbox
+      checked={value === enumNumber}
+      onClick={() =>
+        act('modify_filter_value', {
+          name: filterName,
+          new_data: {
+            [name]: enumNumber,
+          },
+        })
+      }
+      key={enumName}
+    >
+      {enumName}
+    </Button.Checkbox>
+  ));
+};
+
+const FilterDataEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
 
   const filterEntryTypes = {
     int: <FilterIntegerEntry {...props} />,
@@ -317,6 +398,8 @@ const FilterDataEntry = (props) => {
     color: <FilterColorEntry {...props} />,
     icon: <FilterIconEntry {...props} />,
     flags: <FilterFlagsEntry {...props} />,
+    enum: <FilterEnumEntry {...props} />,
+    transform: <FilterTransformEntry {...props} />,
   };
 
   const filterEntryMap = {
@@ -334,6 +417,10 @@ const FilterDataEntry = (props) => {
     threshold: 'float',
     factor: 'float',
     repeat: 'int',
+    alpha: 'int',
+    space: 'enum',
+    blend_mode: 'enum',
+    transform: 'transform',
   };
 
   return (
@@ -348,7 +435,10 @@ const FilterDataEntry = (props) => {
   );
 };
 
-const FilterEntry = (props) => {
+const FilterEntry = (props: {
+  readonly name: string;
+  readonly filterDataEntry: ActiveFilters;
+}) => {
   const { act, data } = useBackend<Data>();
   const { name, filterDataEntry } = props;
   const { type, priority, ...restOfProps } = filterDataEntry;
@@ -420,7 +510,7 @@ const FilterEntry = (props) => {
   );
 };
 
-export const Filteriffic = (props) => {
+export const Filteriffic = (props: any) => {
   const { act, data } = useBackend<Data>();
   const name = data.target_name || 'Unknown Object';
   const filters = data.target_filter_data || {};
@@ -482,8 +572,12 @@ export const Filteriffic = (props) => {
           {!hasFilters ? (
             <Box>No filters</Box>
           ) : (
-            map(filters, (entry, key) => (
-              <FilterEntry filterDataEntry={entry} name={key} key={key} />
+            Object.entries(filters).map(([name, filterData]) => (
+              <FilterEntry
+                filterDataEntry={filterData}
+                name={name}
+                key={name}
+              />
             ))
           )}
         </Section>

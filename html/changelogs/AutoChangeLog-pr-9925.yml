@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - qol: "Cryo Cell's auto-eject now waits for Toxin damage to heal"

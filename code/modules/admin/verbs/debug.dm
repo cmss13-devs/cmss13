@@ -60,7 +60,7 @@
 
 	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
 	if(!istype(X))
-		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+		to_chat(usr, "This can only be done to instances of type /mob/living/carbon.")
 		return
 
 	cmd_admin_change_their_hivenumber(X)
@@ -93,6 +93,10 @@
 	if(!sleep_duration)
 		return
 
+	var/multi_z_effects = tgui_alert(usr, "What Multi-Z effects do you want to disable?", "Multi-Z Effects", list("All", "Dropshadow + Blur", "Dropshadow", "Nothing"))
+	if(!multi_z_effects)
+		return
+
 	if(!mob)
 		return
 
@@ -104,6 +108,23 @@
 		mob.hud_used.show_hud(HUD_STYLE_NOHUD)
 	mob.animate_movement = NO_STEPS
 
+	var/atom/movable/screen/plane_master/openspace_backdrop/open_space_shadow = locate() in screen
+	var/list/open_space_blurs = list()
+	for(var/atom/movable/screen/plane_master/open_space/open_space_blur in screen)
+		open_space_blurs += open_space_blur
+
+	switch(multi_z_effects)
+		if("All")
+			open_space_shadow.Hide()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Hide()
+		if("Dropshadow + Blur")
+			open_space_shadow.Hide()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.remove_filters()
+		if("Dropshadow")
+			open_space_shadow.Hide()
+
 	message_admins(WRAP_STAFF_LOG(usr, "started a mass screenshot operation."))
 
 	var/half_chunk_size = view + 1
@@ -113,20 +134,24 @@
 	var/cur_z = mob.z
 	var/width
 	var/height
+	var/offset_x = 0
+	var/offset_y = 0
 	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
 		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
-		cur_x += cur_level.bounds[MAP_MINX] - 1
-		cur_y += cur_level.bounds[MAP_MINY] - 1
+		offset_x = cur_level.bounds[MAP_MINX] - 1
+		cur_x += offset_x
+		offset_y = cur_level.bounds[MAP_MINY] - 1
+		cur_y += offset_y
 		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 3
 		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 3
 	else
 		width = world.maxx - half_chunk_size + 2
 		height = world.maxy - half_chunk_size + 2
-	var/width_inside = width - 1
-	var/height_inside = height - 1
+	var/width_inside = width - 1 + offset_x
+	var/height_inside = height - 1 + offset_y
 
-	while(cur_y < height)
-		while(cur_x < width)
+	while(cur_y < height + offset_y)
+		while(cur_x < width + offset_x)
 			mob.on_mob_jump()
 			mob.forceMove(locate(cur_x, cur_y, cur_z))
 			sleep(sleep_duration)
@@ -140,6 +165,18 @@
 		cur_x = half_chunk_size
 		cur_y += chunk_size
 		cur_y = min(cur_y, height_inside)
+
+	switch(multi_z_effects)
+		if("All")
+			open_space_shadow.Show()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Show()
+		if("Dropshadow + Blur")
+			open_space_shadow.Show()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.add_filters()
+		if("Dropshadow")
+			open_space_shadow.Show()
 
 	mob.alpha = initial(mob.alpha)
 	if(mob.hud_used)
@@ -242,7 +279,7 @@
 	set name = "Create Bank Account"
 
 	if(!ishuman(target))
-		to_chat(src, SPAN_WARNING("This only works on humans"))
+		to_chat(src, SPAN_WARNING("This only works on humans."))
 		return
 
 	var/mob/living/carbon/human/account_user = target
@@ -288,7 +325,7 @@
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
-	set desc = "Assume control of the mob"
+	set desc = "Assume control of the mob."
 	set category = null
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
@@ -316,7 +353,7 @@
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"
 	set name = "List Processing Items"
-	set desc = "For scheduler debugging"
+	set desc = "For scheduler debugging."
 
 	var/list/individual_counts = list()
 	for(var/datum/disease/M in SSdisease.all_diseases)
@@ -348,7 +385,7 @@
 /client/proc/allow_browser_inspect()
 	set category = "Debug"
 	set name = "Allow Browser Inspect"
-	set desc = "Allow browser debugging via inspect"
+	set desc = "Allow browser debugging via inspect."
 
 	if(!check_rights(R_DEBUG) || !isclient(src))
 		return
@@ -358,7 +395,9 @@
 		return
 
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
-	winset(src, "", "browser-options=byondstorage,find,devtools,refresh")
+	winset(src, null, list("browser-options" = "+devtools"))
+	winset(src, null, list("browser-options" = "+find"))
+	winset(src, null, list("browser-options" = "+refresh"))
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

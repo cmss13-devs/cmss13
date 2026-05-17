@@ -9,25 +9,36 @@ SUBSYSTEM_DEF(inactivity)
 
 	var/list/client/current_run = list()
 
+/datum/controller/subsystem/inactivity/stat_entry(msg)
+	msg = "Clients:[length(GLOB.clients)] Players:[length(GLOB.player_list)] NewPlayers:[length(GLOB.new_player_list)]"
+	return ..()
+
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
-	if(list_clear_nulls(GLOB.clients))
-		debug_log("Removed nulls from GLOB.clients!")
-	if(list_clear_nulls(GLOB.player_list))
-		debug_log("Removed nulls from GLOB.player_list!")
-	if(list_clear_nulls(GLOB.new_player_list))
-		debug_log("Removed nulls from GLOB.new_player_list!")
-
-	if(!CONFIG_GET(flag/kick_inactive))
-		return
-
 	if(!resumed)
+		if(list_clear_nulls(GLOB.clients))
+			debug_log("Removed nulls from GLOB.clients!")
+		if(list_clear_nulls(GLOB.player_list))
+			debug_log("Removed nulls from GLOB.player_list!")
+		if(list_clear_nulls(GLOB.new_player_list))
+			debug_log("Removed nulls from GLOB.new_player_list!")
+
+		if(!CONFIG_GET(flag/kick_inactive))
+			return
+
 		current_run = GLOB.clients.Copy()
 
 	while(length(current_run))
 		var/client/current = current_run[length(current_run)]
 		current_run.len--
 
+		if(QDELETED(current))
+			if(MC_TICK_CHECK)
+				return
+			continue
+
 		if(CLIENT_IS_AFK_SAFE(current)) //Skip admins.
+			if(MC_TICK_CHECK)
+				return
 			continue
 
 		if(current.is_afk(INACTIVITY_KICK))

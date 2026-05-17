@@ -56,11 +56,24 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(length(predators))
-		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+	var/dat = ""
+	if(length(yautja_hunters))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Hunting Party was:")
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
+	if(length(yautja_youngbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Young-Bloods were:")
+		for(var/entry in yautja_youngbloods)
+			dat += "<br>[entry] was [yautja_youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_youngbloods[entry]["Status"]])")]"
+	if(length(yautja_stranded))
+		dat += SPAN_ROUNDBODY("<br><br>The Stranded Yautja were:")
+		for(var/entry in yautja_stranded)
+			dat += "<br>[entry] was [yautja_stranded[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_stranded[entry]["Status"]])")]"
+	if(length(yautja_badbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Bad-Bloods were:")
+		for(var/entry in yautja_badbloods)
+			dat += "<br>[entry] was [yautja_badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_badbloods[entry]["Status"]])")]"
+	if(dat)
 		to_world("[dat]")
 
 
@@ -69,7 +82,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(length(GLOB.medal_awards))
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
+		dat +=  SPAN_ROUNDBODY("<br>Medal and Ribbon Awards:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
 			for(var/i in 1 to length(recipient_award.medal_names))
@@ -139,13 +152,39 @@ GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
 // 30 minutes in
 GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
+/// Asks the user (optional) to pick the primary LZ if both LZ1 and LZ2 exist and it hasn't been set yet
+/// If only one, or no user, it will pick the first available
+/datum/game_mode/proc/pick_a_lz(mob/user)
+	if(active_lz)
+		return
+
+	var/lz1 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	var/lz2 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+
+	if(lz1 && lz2 && user)
+		var/lz_choices = list("LZ 1", "LZ 2")
+		var/new_lz = tgui_input_list(user, "Select primary LZ", "LZ Select", lz_choices)
+		if(!new_lz)
+			return
+		if(new_lz == "LZ 1")
+			select_lz(lz1)
+		else
+			select_lz(lz2)
+		return
+
+	if(lz1 || lz2)
+		select_lz(lz1 || lz2)
+		return
+
+	CRASH("No /obj/structure/machinery/computer/shuttle/dropship/flight/lz1 or lz2 found!")
+
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)
 	if(active_lz)
 		return
 	active_lz = console
 	// The announcement to all Humans.
 	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
-	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
+	var/input = "Command Order Issued.\n\n[get_area(active_lz)] has been designated as the primary landing zone."
 	marine_announcement(input, name)
 
 /datum/game_mode/proc/announce_bioscans()

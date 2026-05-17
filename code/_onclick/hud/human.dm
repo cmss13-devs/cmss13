@@ -94,7 +94,7 @@
 
 	if(!iszombie(owner))
 		draw_nutrition(ui_datum)
-	draw_locator_spot(ui_datum)
+	draw_locator_spot(owner, ui_datum)
 	draw_zone_sel(ui_datum, ui_alpha, ui_color)
 	draw_gun_related(ui_datum, ui_alpha)
 
@@ -301,7 +301,7 @@
 	nutrition_icon.screen_loc = ui_datum.UI_NUTRITION_LOC
 	infodisplay += nutrition_icon
 
-/datum/hud/human/proc/draw_locator_spot(datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_locator_spot(mob/living/carbon/human/owner, datum/custom_hud/ui_datum)
 	locate_leader = new /atom/movable/screen/squad_leader_locator()
 	locate_leader.icon = ui_datum.ui_style_icon
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC

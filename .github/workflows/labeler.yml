@@ -4,6 +4,9 @@ on:
     types: [opened, reopened, synchronize, edited]
 jobs:
   label:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
@@ -26,11 +29,18 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           wget "https://raw.githubusercontent.com/${{ github.repository }}/master/.github/add_labels.py"
+
+      - name: Work around setup-python cache issue
+        # see https://github.com/actions/setup-python/issues/807
+        if: hashFiles('**/requirements.txt', '**/pyproject.toml') == ''
+        shell: bash
+        run: touch requirements.txt
       - name: Set up Python
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v6
         with:
           python-version: 3.8
+          cache: 'pip'
       - name: Install dependencies
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
@@ -45,3 +55,20 @@ jobs:
           REPO: ${{ github.repository }}
           TOKEN: ${{ steps.app-token-generation.outputs.token }}
           PR_NUMBER: ${{ github.event.number }}
+
+      - name: size-label
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        uses: "pascalgn/size-label-action@v0.5.5"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token-generation.outputs.token }}
+          IGNORED: "**/bun.lock"
+        with:
+          sizes: >
+            {
+              "0": "XS",
+              "20": "S",
+              "50": "M",
+              "200": "L",
+              "800": "XL",
+              "2000": "XXL"
+            }

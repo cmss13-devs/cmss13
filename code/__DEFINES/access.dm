@@ -160,8 +160,12 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_YAUTJA_ELITE 391
 /// Elders+ only
 #define ACCESS_YAUTJA_ELDER 392
+/// Clan Leaders+ only
+#define ACCESS_YAUTJA_LEADER 393
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 393
+#define ACCESS_YAUTJA_ANCIENT 394
+/// Badbloods
+#define ACCESS_YAUTJA_BADBLOOD 395
 
 /// Anything in a tutorial sequence that shouldn't be accessed
 #define ACCESS_TUTORIAL_LOCKED 998
@@ -197,7 +201,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 ///All access levels associated with Weyland Yutani
 #define ACCESS_LIST_WY_ALL "Wey-Yu (ALL)"
 
-///All the access levels in the civillian category, excluding Press.
+///All the access levels in the civilian category, excluding Press.
 #define ACCESS_LIST_COLONIAL_ALL "Colonial (ALL)"
 ///Used by the Wey-Yu - Civil Authority Liaison
 #define ACCESS_LIST_CIVIL_LIAISON "Colonial (Liaison)"

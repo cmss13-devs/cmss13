@@ -25,10 +25,15 @@
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
+	var/add_thing = 1
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
-	slowdown(entity, bullet)
-	pushback(entity, bullet, 4)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
+	. = ..()
+	if(!M || !isliving(M))
+		return
+	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
+
+
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"
@@ -135,6 +140,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
 /datum/ammo/bullet/revolver/mateba/New()
 	..()
@@ -143,13 +149,13 @@
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_5
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
 	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
+	damage = 50
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
@@ -174,7 +180,7 @@
 	..()
 	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
+/datum/ammo/bullet/revolver/webley //Mateba(Unica) round without the knockdown.
 	name = ".455 Webley bullet"
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8

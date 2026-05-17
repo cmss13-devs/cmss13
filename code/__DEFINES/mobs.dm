@@ -1,9 +1,6 @@
 /// Multiplier for Stun/KD/KO/etc durations in new backend, due to old system being based on life ticks
 #define GLOBAL_STATUS_MULTIPLIER 20 // each in-code unit is worth 20ds of duration
 
-#define HEALTH_THRESHOLD_DEAD -100
-#define HEALTH_THRESHOLD_CRIT -50
-
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
@@ -84,6 +81,7 @@
 #define AGONY "agony" // Added in PAIN!
 #define STUTTER "stutter"
 #define EYE_BLUR "eye_blur"
+#define EYE_BLIND "eye_blind"
 #define DROWSY "drowsy"
 #define SLUR "slur"
 #define DAZE "daze"
@@ -137,11 +135,13 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_YAUTJA_BADBLOOD "xeno_hive_yautja_badblood"
+#define XENO_HIVE_HUNTED "xeno_hive_hunted"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_YAUTJA_BADBLOOD, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
 
 //=================================================
 
@@ -264,6 +264,10 @@
 #define ACTION_BLUE_POWER_UP 16
 #define ACTION_PURPLE_POWER_UP 17
 
+#define BUSY_ICON_CLIMBING 18
+
+#define EMOTE_ICON_WALLBOOSTING 19
+
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD 1
@@ -299,6 +303,7 @@
 #define EMOTING_HEADBUTT   (1<<2)
 #define EMOTING_TAIL_SWIPE (1<<3)
 #define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
+#define EMOTING_WALL_BOOSTING (1<<5)
 
 //forcesay types
 #define SUDDEN 0

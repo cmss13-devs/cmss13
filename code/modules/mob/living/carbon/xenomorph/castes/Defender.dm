@@ -42,6 +42,7 @@
 	organ_value = 1000
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -50,7 +51,6 @@
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/defender.dmi'
@@ -130,7 +130,7 @@
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.update_icons()
 
 	apply_cooldown()
@@ -278,7 +278,7 @@
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
 		fortify_switch(xeno, FALSE)
 		if(xeno.selected_ability != src)
-			button.icon_state = "template"
+			button.icon_state = "template_xeno"
 
 	apply_cooldown()
 	return ..()

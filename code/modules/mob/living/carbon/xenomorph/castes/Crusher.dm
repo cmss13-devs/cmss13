@@ -53,6 +53,7 @@
 	rebounds = FALSE // no more fucking pinball crooshers
 	organ_value = 3000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -60,7 +61,6 @@
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -523,6 +523,6 @@
 		found.on_removal()
 		qdel(found)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 
 	xeno.overlay_shields()

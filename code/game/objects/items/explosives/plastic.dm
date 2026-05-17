@@ -45,7 +45,7 @@
 
 /obj/item/explosive/plastic/attack_hand(mob/user)
 	if(active)
-		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
+		to_chat(user, SPAN_WARNING("You can't just pick up [src] while it is active! Use a multitool!"))
 		return
 	. = ..()
 
@@ -101,7 +101,7 @@
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()
-		target.contents += src
+		forceMove(target)
 		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
 		overlay.layer = ABOVE_XENO_LAYER
 		target.overlays += overlay
@@ -128,6 +128,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
+		anchored = TRUE
 		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
@@ -173,6 +174,7 @@
 			if(!isigniter(detonator.a_left) && !issignaller(detonator.a_left))
 				detonator.a_left.activate()
 	active = FALSE
+	anchored = FALSE
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
@@ -226,7 +228,7 @@
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
 
-	return TRUE
+	return user.Adjacent(target)
 
 /obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))

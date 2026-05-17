@@ -33,7 +33,6 @@
 	var/pain_reduction_required = PAIN_REDUCTION_FULL
 	///How much training is needed to do this surgery?
 	var/required_surgery_skill = SKILL_SURGERY_TRAINED
-
 	var/step_in_progress = FALSE
 	///The step the surgery is currently on. When status > number of steps, the surgery ends.
 	var/status = 1

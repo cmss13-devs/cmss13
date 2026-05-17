@@ -300,7 +300,7 @@
 //------------------------For M10 Auto Pistol ----------------
 
 /datum/supply_packs/ammo_m10_pistol_mag_box
-	name = "Magazine box (M10, 22x regular mags)"
+	name = "Magazine box (M10, 16x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10,
 	)
@@ -310,7 +310,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m10_pistol_mag_box_extended
-	name = "Magazine box (M10, 14x extended mags)"
+	name = "Magazine box (M10, 10x extended mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/extended,
 	)
@@ -318,17 +318,6 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M10 extended magazines crate"
 	group = "Ammo"
-
-/datum/supply_packs/ammo_m10_pistol_mag_box_drum
-	name = "Magazine box (M10, 12x drum mags)"
-	contains = list(
-		/obj/item/ammo_box/magazine/m10/drum,
-	)
-	cost = 50
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M10 drum magazines crate"
-	group = "Ammo"
-
 
 //------------------------Smartgunner stuff----------------
 
@@ -502,8 +491,11 @@
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/pistol/m10,
-		/obj/item/ammo_magazine/pistol/m10/extended,
+		/obj/item/ammo_magazine/pistol/m10,
+		/obj/item/ammo_magazine/pistol/m10/ap/extended,
 		/obj/item/ammo_magazine/pistol/m10/drum,
+		/obj/item/ammo_magazine/pistol/m10/extended,
+		/obj/item/ammo_magazine/pistol/m10/extended,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver,

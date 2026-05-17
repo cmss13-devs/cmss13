@@ -84,6 +84,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 
@@ -101,6 +102,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 

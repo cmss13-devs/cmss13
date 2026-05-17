@@ -1,7 +1,7 @@
 import { classes } from 'common/react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
-import { type BoxProps, unit } from './Box';
+import { Box, type BoxProps, unit } from './Box';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Popper } from './Popper';
@@ -30,6 +30,8 @@ type Props = {
   clipSelectedText: boolean;
   /** Color of dropdown button */
   color: string;
+  /** Color of options in the dropdown */
+  dropdownTextColor: string;
   /** Disables the dropdown */
   disabled: boolean;
   /** Overwrites selection text with this. Good for objects etc. */
@@ -72,6 +74,7 @@ export function Dropdown(props: Props) {
     className,
     clipSelectedText = true,
     color = 'default',
+    dropdownTextColor = 'white',
     disabled,
     displayText,
     icon,
@@ -87,7 +90,6 @@ export function Dropdown(props: Props) {
     selected,
     width = '15rem',
   } = props;
-
   const [open, setOpen] = useState(false);
   const adjustedOpen = over ? !open : open;
   const innerRef = useRef<HTMLDivElement>(null);
@@ -175,7 +177,11 @@ export function Dropdown(props: Props) {
                   onSelected?.(value);
                 }}
               >
-                {typeof option === 'string' ? option : option.displayText}
+                {typeof option === 'string' ? (
+                  <Box style={{ color: dropdownTextColor }}>{option}</Box>
+                ) : (
+                  option.displayText
+                )}
               </div>
             );
           })}
@@ -210,7 +216,11 @@ export function Dropdown(props: Props) {
             }}
           >
             {displayText ||
-              (selected && getOptionValue(selected)) ||
+              (selected && (
+                <Box style={{ color: dropdownTextColor }}>
+                  {getOptionValue(selected)}
+                </Box>
+              )) ||
               placeholder}
           </span>
           {!noChevron && (

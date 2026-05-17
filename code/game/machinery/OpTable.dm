@@ -271,7 +271,7 @@
 			if(!C.stasis_mob)
 				return
 			M = C.stasis_mob
-			C.open()
+			C.open(user)
 			user.stop_pulling()
 			user.start_pulling(M)
 		else
@@ -281,11 +281,11 @@
 
 /obj/structure/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	if(buckled_mob)
-		to_chat(patient, SPAN_NOTICE(" <B>The table is already occupied!</B>"))
+		to_chat(patient, SPAN_NOTICE("<B>The table is already occupied!</B>"))
 		return FALSE
 
 	if(patient.buckled)
-		to_chat(patient, SPAN_NOTICE(" <B>Unbuckle first!</B>"))
+		to_chat(patient, SPAN_NOTICE("<B>Unbuckle first!</B>"))
 		return FALSE
 
 	return TRUE

@@ -1,4 +1,0 @@
-author: "MistChristmas, Drathek"
-delete-after: True
-changes:
-  - bugfix: "fixed TGUI search crashes"

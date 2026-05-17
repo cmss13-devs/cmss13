@@ -19,6 +19,7 @@
 #define islesserdrone(A) (istype(A, /mob/living/carbon/xenomorph/lesser_drone))
 #define ispraetorian(A) (istype(A, /mob/living/carbon/xenomorph/praetorian))
 #define isqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
+#define isking(A) (istype(A, /mob/living/carbon/xenomorph/king))
 #define isravager(A) (istype(A, /mob/living/carbon/xenomorph/ravager))
 #define isrunner(A) (istype(A, /mob/living/carbon/xenomorph/runner))
 #define issentinel(A) (istype(A, /mob/living/carbon/xenomorph/sentinel))
@@ -28,8 +29,8 @@
 
 #define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
 
-/// Returns true/false based on if the xenomorph can harm the passed carbon mob.
-/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
+/// Returns true if the xenomorph can not harm the passed carbon mob.
+/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob, check_hive_flags=TRUE)
 	if(!istype(attempt_harm_mob))
 		return FALSE
 
@@ -39,6 +40,15 @@
 	if(!hive)
 		return FALSE
 
+	if(check_hive_flags && !caste?.is_intelligent)
+		if(!HAS_FLAG(hive.hive_flags, XENO_SLASH_NORMAL))
+			return TRUE
+		if(!HAS_FLAG(hive.hive_flags, XENO_SLASH_INFECTED))
+			if(attempt_harm_mob.status_flags & XENO_HOST)
+				for(var/obj/item/alien_embryo/embryo in attempt_harm_mob)
+					if(HIVE_ALLIED_TO_HIVE(hivenumber, embryo.hivenumber))
+						return TRUE
+
 	if(hivenumber == XENO_HIVE_RENEGADE)
 		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
 		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
@@ -47,6 +57,11 @@
 		return TRUE
 
 	return hive.is_ally(attempt_harm_mob)
+
+/mob/living/carbon/xenomorph/proc/claw_restrained()
+	if(legcuffed && legcuffed.stop_xeno_slash)
+		return TRUE
+	return FALSE
 
 // need this to set the data for walls/eggs/huggers when they are initialized
 /proc/set_hive_data(atom/focused_atom, hivenumber)

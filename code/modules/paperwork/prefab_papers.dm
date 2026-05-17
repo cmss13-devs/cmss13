@@ -60,7 +60,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/selected = GLOB.prefab_papers[chosen].type
 	if(!user.Adjacent(src))
 		return
- 
+
 	var/obj/item/paper/prefab/document = new selected
 	document.forceMove(user.loc)
 	user.put_in_hands(document)
@@ -121,11 +121,17 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	. = ..()
 	name = document_title || "BLANK"
 
+/obj/item/paper/prefab/uacqs_notice
+	document_title = "UACQS Inspection Notice"
+	doc_datum_type = /datum/prefab_document/uacqs/commissioner
+	document_category = "UACQS"
+
 // ########## Provost MP Forms  ########## \\
 
 /obj/item/paper/prefab/carbon/military_police
 	name = "Blank MP Document"
 	document_category = PAPER_CATEGORY_MP
+	icon_state = "paper_uscm_words"
 
 /obj/item/paper/prefab/carbon/military_police/ops_report
 	document_title = "PR201 - Operations Report"
@@ -152,6 +158,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/provost
 	name = "Blank Provost Document"
 	document_category = PAPER_CATEGORY_PROVOST
+	icon_state = "paper_uscm_words"
 
 /obj/item/paper/prefab/provost/standard
 	document_title = "PR202 - Provost Missive"
@@ -174,6 +181,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/uscm
 	name = "Blank USCM Document"
 	document_category = PAPER_CATEGORY_USCM
+	icon_state = "paper_uscm_words"
 
 /obj/item/paper/prefab/uscm/ops_report
 	document_title = "UAM421 - Operations Report"
@@ -184,6 +192,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/uscm_highcom
 	name = "Blank USCMHC Document"
 	document_category = PAPER_CATEGORY_USCM_HC
+	icon_state = "paper_uscm_words"
 
 /obj/item/paper/prefab/uscm_highcom/arrest_warrant
 	document_title = "UAM211 - Arrest Warrant"
@@ -202,6 +211,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/liaison
 	name = "Blank WY Document"
 	document_category = PAPER_CATEGORY_LIAISON
+	icon_state = "paper_wy_words"
 
 /obj/item/paper/prefab/liaison/ops_report
 	document_title = "WY435 - Local Operations Report"
@@ -232,6 +242,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/wey_yu
 	name = "Blank WYC Document"
 	document_category = PAPER_CATEGORY_WEYYU_HC
+	icon_state = "paper_wy_words"
 
 /obj/item/paper/prefab/wey_yu/standard
 	document_title = "WY101 - Directorate Communication"

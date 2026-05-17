@@ -54,6 +54,9 @@
 
     window.addEventListener('message', (messageEvent) => {
       switch (messageEvent.data.type) {
+        case 'ping':
+          messageEvent.source.postMessage(true, "*");
+          break;
         case 'get':
           get(messageEvent.data.key).then((value) => {
             messageEvent.source.postMessage({key: messageEvent.data.key, value: value}, "*");

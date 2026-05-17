@@ -66,7 +66,7 @@
 
 	var/obj/item/card/id/idcard = human_user.get_idcard()
 	if(!idcard) //not wearing an ID
-		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected"))
+		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
 		return
 
 	if(!idcard.check_biometrics(human_user))
@@ -285,7 +285,8 @@
 		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
-		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+		list("WY Corporate Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+		list("WY Public Encryption Key", 5, /obj/item/device/encryptionkey/wy_pub, "white", "WY public comms encryption key, for conducting business."),
 
 		list("SMOKABLES", 0, null, null, null),
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
@@ -298,7 +299,7 @@
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
-		list("STATIONARY", 0, null, null, null),
+		list("STATIONERY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),

@@ -9,7 +9,7 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/cyborg
-	desc = "beep boop borp"
+	desc = "Beep boop borp."
 	name = "cyborg gloves"
 	icon_state = "black"
 	item_state = "r_hands"
@@ -18,7 +18,7 @@
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
-	icon_state = "black"
+	icon_state = "veteran"
 	item_state = "black"
 	siemens_coefficient = 0.6
 

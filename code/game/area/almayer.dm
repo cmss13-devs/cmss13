@@ -63,7 +63,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_CIC
 	soundscape_interval = 50
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/almayer/command/cichallway
 	name = "\improper Secure Command Hallway"
@@ -81,7 +81,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 120
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	is_resin_allowed = FALSE
 	resin_construction_allowed = FALSE
@@ -100,13 +100,13 @@
 	name = "\improper Upper Deck Telecommunications"
 	icon_state = "tcomms"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/almayer/command/self_destruct
 	name = "\improper Upper Deck Self-Destruct Core Room"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/almayer/command/corporateliaison
 	name = "\improper Corporate Liaison Office"
@@ -164,7 +164,7 @@
 	name = "\improper Upper Deck Port Engineering"
 
 /area/almayer/engineering/upper_engineering/notunnel
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	requires_power = FALSE
 
 /area/almayer/engineering/ce_room
@@ -219,7 +219,7 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/weapon_room/notunnel
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	requires_power = FALSE
 
 /area/almayer/shipboard/starboard_point_defense
@@ -497,6 +497,9 @@
 /area/almayer/maint/hull/lower/p_bow
 	name = "\improper Lower Deck Port-Bow Hull"
 
+/area/almayer/maint/hull/lower/lower_astronav
+	name = "\improper Lower Deck Weapons Control Maintenance"
+
 /area/almayer/maint/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 
@@ -764,7 +767,7 @@
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL|AREA_CONTAINMENT
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT
 
 /area/almayer/medical/containment/cell/cl
 	name = "\improper Storage Room"
@@ -837,12 +840,12 @@
 	name = "\improper Unknown Area"
 	icon_state = "selfdestruct"
 	fake_zlevel = 2 // lowerdeck
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW
 
 /area/almayer/engineering/airmix
 	icon_state = "selfdestruct"
 	requires_power = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/almayer/lifeboat_pumps
 	name = "Lifeboat Fuel Pumps"
@@ -874,13 +877,13 @@
 	name = "\improper Port Lifeboat Docking"
 	icon_state = "lifeboat"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "shuttle2"
 	requires_power = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 //Placeholder.
 /area/almayer/evacuation/pod1
@@ -923,3 +926,85 @@
 /area/almayer/evacuation/stranded/pod16
 /area/almayer/evacuation/stranded/pod17
 /area/almayer/evacuation/stranded/pod18
+
+//Mid-Deck
+
+/area/almayer/middeck
+	name = "USS Almayer - Middle Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/almayer/middeck/hanger
+	name = "Middle Deck - Hangerbay Catwalks"
+	icon_state = "hangar"
+
+/area/almayer/middeck/medical
+	name = "Middle Deck - Medical Catwalks"
+	icon_state = "medical"
+
+/area/almayer/middeck/engineer
+	name = "Middle Deck - Engineering Catwalks"
+	icon_state = "workshop"
+
+/area/almayer/middeck/req
+	name = "Middle Deck - Requisition Catwalks"
+	icon_state = "req"
+
+/area/almayer/middeck/briefing
+	name = "Middle Deck - Briefing Catwalks"
+	icon_state = "briefing"
+
+/area/almayer/middeck/maintenance
+	name = "\improper Middle Deck Maintenance - Parent"
+
+//Bow
+
+/area/almayer/middeck/maintenance/bow
+	name = "\improper Middle Deck Maintenance - Bow"
+
+/area/almayer/middeck/maintenance/pb
+	name = "\improper Middle Deck Maintenance - Port-Bow"
+
+/area/almayer/middeck/maintenance/sb
+	name = "\improper Middle Deck Maintenance - Starboard-Bow"
+
+//Fore
+
+/area/almayer/middeck/maintenance/amidship
+	name = "\improper Middle Deck Maintenance - Amidship"
+
+/area/almayer/middeck/maintenance/sf
+	name = "\improper Middle Deck Maintenance - Starboard-Fore"
+
+/area/almayer/middeck/maintenance/sp
+	name = "\improper Middle Deck Maintenance - Port-Fore"
+
+//Aft
+
+/area/almayer/middeck/maintenance/aft
+	name = "\improper Middle Deck Maintenance - Aft"
+
+/area/almayer/middeck/maintenance/saft
+	name = "\improper Middle Deck Maintenance - Starboard-Aft"
+
+/area/almayer/middeck/maintenance/paft
+	name = "\improper Middle Deck Maintenance - Port-Aft"
+
+//Admin Lower Level
+
+/area/almayer/underdeck
+	name = "USS Almayer - Under Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/almayer/underdeck/hangar
+	name = "USS Almayer - Under Deck Hangar"
+	icon_state = "hangar"
+
+/area/almayer/underdeck/req
+	name = "USS Almayer - Under Deck Cargo"
+	icon_state = "req"
+
+/area/almayer/underdeck/vehicle
+	name = "USS Almayer - Under Deck Vehicle Bay"
+	icon_state = "req"

@@ -45,7 +45,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD, HUD_BRAINWORM)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD, HUD_BRAINWORM)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -69,6 +69,13 @@
 	var/static/list/walking_state_cache = list()
 	var/has_walking_icon_state = FALSE
 
+	/// Timer for dodge_threshold
+	var/last_projectile_time = 0
+	/// Counts how many bullets hit xeno before dodge_threshold occurs.
+	var/projectiles_counted = 0
+	/// Guaranteed bullet dodge every X bullet shoot (don't work when you are laying down or UNCONSCIOUS)
+	var/dodge_threshold = 0
+
 	//////////////////////////////////////////////////////////////////
 	//
 	// Core Stats
@@ -84,7 +91,7 @@
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
-	var/crit_health = -100 // What negative healthy they die in.
+	health_threshold_dead = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	can_crawl = FALSE
@@ -128,10 +135,12 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
+	var/fire_immunity = FIRE_IMMUNITY_NONE
 
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
@@ -155,9 +164,10 @@
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
 
-	var/pslash_delay = 0
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents queen evolution and deactivates dchat death messages
 
-	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
+	///Can the xeno rest and passively heal?
+	var/can_heal = TRUE
 
 	//Naming variables
 	var/caste_type = "Drone"
@@ -179,6 +189,9 @@
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
+	///The type of minimap this xeno has access too
+	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
+	var/datum/weakref/minimap_ref
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -252,7 +265,7 @@
 	var/life_slow_reduction = -1.5
 	//Research organ harvesting.
 	var/organ_removed = FALSE
-	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	/// value of organ in each caste, e.g. 7k is autodoc larva removal. runner is 500
 	var/organ_value = 0
 
 	var/obj/item/skull/skull = /obj/item/skull
@@ -280,7 +293,6 @@
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
-	var/ripping_limb = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -306,8 +318,19 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
+	// Designer stuff
+	var/obj/effect/alien/resin/design/selected_design = null
+	var/list/available_design = list()
+	var/list/current_design = list()
+	var/max_design_nodes = 0
+	var/selected_design_mark
+
 	var/icon_xeno
 	var/icon_xenonid
+	var/xenonid_pixel_x
+	var/xenonid_pixel_y
+	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
+	var/acid_overlay
 
 	bubble_icon = "alien"
 
@@ -350,6 +373,12 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
+	// facehugger stuff
+	/// cooldown between dropping facehuggers
+	var/hugger_drop_cooldown = 0
+	/// cooldown between throwing facehuggers
+	var/hugger_throw_cooldown = 0
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
@@ -372,6 +401,8 @@
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
+
+	AddComponent(/datum/component/seethrough_mob)
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
@@ -406,45 +437,33 @@
 			old_xeno.iff_tag = null
 
 	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
+		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-
-		//Fire immunity signals
-		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
-			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
-		else
-			UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED
-			))
-
-		if(caste.spit_types && length(caste.spit_types))
-			ammo = GLOB.ammo_list[caste.spit_types[1]]
-
-		acid_splash_cooldown = caste.acid_splash_cooldown
-
-		if(caste.adjust_size_x != 1)
-			var/matrix/matrix = matrix()
-			matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
-			apply_transform(matrix)
-
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-
-		job = caste.caste_type // Used for tracking the caste playtime
-
-	else
+	if(!caste_type || !GLOB.xeno_datum_list[caste_type])
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
+	caste = GLOB.xeno_datum_list[caste_type]
+
+	//Fire immunity check signals
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed))
+
+	if(caste.spit_types && length(caste.spit_types))
+		ammo = GLOB.ammo_list[caste.spit_types[1]]
+
+	acid_splash_cooldown = caste.acid_splash_cooldown
+
+	if(caste.adjust_size_x != 1)
+		var/matrix/matrix = matrix()
+		matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
+		apply_transform(matrix)
+
+	behavior_delegate = new caste.behavior_delegate_type()
+	behavior_delegate.bound_xeno = src
+	behavior_delegate.add_to_xeno()
+	resin_build_order = caste.resin_build_order
+
+	job = caste.caste_type // Used for tracking the caste playtime
 
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
@@ -475,15 +494,15 @@
 
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
-		hardcore = 1 //Prevents healing and queen evolution
+		hardcore = TRUE
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && hivenumber != XENO_HIVE_TUTORIAL)
+	if(hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= SEE_MOBS
+	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -508,12 +527,27 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
+	if(hive.hivenumber != XENO_HIVE_NORMAL)
+		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
+	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
+	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
 	creation_time = world.time
 
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.remove_from(src)
+
+	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
+	ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
@@ -525,10 +559,16 @@
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
+
+	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
+	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
+	background.overlays += xeno
 	if(IS_XENO_LEADER(src))
-		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "xenoleader")
+		background.overlays += overlay
+		SSminimaps.add_marker(src, flags, background)
 		return
-	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
+	SSminimaps.add_marker(src, flags, background)
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -542,25 +582,22 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
+/// Signal handler for COMSIG_LIVING_FLAMER_CROSSED and COMSIG_LIVING_FLAMER_FLAMED to check fire_immunity result
+/mob/living/carbon/xenomorph/proc/flamer_crossed(mob/living/target, datum/reagent/applied_reagent)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+	if(applied_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN))
 		return
 
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
-	SIGNAL_HANDLER
-
-	if(R.fire_penetrating)
-		return
-
-	. = COMPONENT_NO_BURN
 	// Burrowed xenos also cannot be ignited
-	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+	var/burrowed = HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)
+
+	. = NONE
+	if((fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || burrowed)
+		. |= COMPONENT_NO_BURN
+	if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrowed)
 		. |= COMPONENT_NO_IGNITE
-	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
 
 //Off-load this proc so it can be called freely
@@ -580,6 +617,7 @@
 
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
+	hud_set_design_marks()
 
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
@@ -590,8 +628,6 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
-		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -765,13 +801,18 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat == DEAD)
 		return TRUE
+	if(legcuffed)
+		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		if(stealth)
+			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
+			return FALSE
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		return FALSE
 	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
 		var/mob/living/carbon/human/synthetic/puller_synth = puller
@@ -805,6 +846,7 @@
 	hud_set_plasma()
 	hud_set_pheromone()
 	hud_set_marks()
+	hud_set_design_marks()
 
 
 	//and display them
@@ -828,7 +870,7 @@
 /mob/living/carbon/xenomorph/get_eye_protection()
 	return EYE_PROTECTION_WELDING
 
-/mob/living/carbon/xenomorph/get_pull_miltiplier()
+/mob/living/carbon/xenomorph/get_pull_multiplier()
 	return pull_multiplier
 
 /mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
@@ -845,7 +887,7 @@
 
 	new_hive.add_xeno(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()
@@ -895,7 +937,10 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
-	if (new_max_health == maxHealth)
+	if(hive)
+		new_max_health += hive.hive_stat_modifier_flat["health"]
+		new_max_health *= hive.hive_stat_modifier_multiplier["health"]
+	if(new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
 	if(health < maxHealth)
@@ -911,6 +956,11 @@
 
 	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
+	if(hive)
+		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
+		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
+		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
+		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
 	if (new_plasma_max == plasma_max)
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
@@ -922,6 +972,9 @@
 /mob/living/carbon/xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE
 	speed = speed_modifier
+	if(hive)
+		speed += hive.hive_stat_modifier_flat["speed"]
+		speed *= hive.hive_stat_modifier_multiplier["speed"]
 	if(caste)
 		speed += caste.speed
 	SEND_SIGNAL(src, COMSIG_XENO_RECALCULATE_SPEED)
@@ -930,6 +983,11 @@
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
 	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
+	if(hive)
+		armor_deflection += hive.hive_stat_modifier_flat["armor"]
+		armor_deflection *= hive.hive_stat_modifier_multiplier["armor"]
+		armor_explosive_buff += hive.hive_stat_modifier_flat["explosivearmor"]
+		armor_explosive_buff *= hive.hive_stat_modifier_multiplier["explosivearmor"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
@@ -939,10 +997,20 @@
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
 		melee_vehicle_damage += caste.melee_vehicle_damage
+	if(hive)
+		melee_damage_lower += hive.hive_stat_modifier_flat["damage"]
+		melee_damage_upper += hive.hive_stat_modifier_flat["damage"]
+		melee_vehicle_damage += hive.hive_stat_modifier_flat["damage"]
+		melee_damage_lower *= hive.hive_stat_modifier_multiplier["damage"]
+		melee_damage_upper *= hive.hive_stat_modifier_multiplier["damage"]
+		melee_vehicle_damage *= hive.hive_stat_modifier_multiplier["damage"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_evasion()
 	if(caste)
 		evasion = evasion_modifier + caste.evasion
+	if(hive)
+		evasion += hive.hive_stat_modifier_flat["evasion"]
+		evasion *= hive.hive_stat_modifier_multiplier["evasion"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
@@ -1048,11 +1116,17 @@
 	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
-/mob/living/carbon/xenomorph/IgniteMob()
+/mob/living/carbon/xenomorph/IgniteMob(force)
+	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+	if(!force && !penetrating)
+		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+			return IGNITE_FAILED
+
 	. = ..()
+
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
-		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+		if(!(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || penetrating || force)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/xenomorph/ExtinguishMob()
@@ -1070,10 +1144,15 @@
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
 
-/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
+/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
-	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
+	if(. && !can_reenter_corpse && !transfer && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
+	if(selected_ability)
+		selected_ability.action_deselect()
+		if(selected_ability.charge_time)
+			selected_ability.stop_charging_ability()
+		set_selected_ability(null)
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
 	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)
@@ -1137,3 +1216,73 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+
+	qdel(new_player)
+
+/mob/living/carbon/xenomorph/drop_inv_item_on_ground(obj/item/object, nomoveupdate, force)
+	if(istype(object, /obj/item/clothing/mask/facehugger) && !force)
+		if(world.time < hugger_drop_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before dropping another facehugger."))
+			return null
+		hugger_drop_cooldown = world.time + 2.5 SECONDS
+	return ..()
+
+/mob/living/carbon/xenomorph/throw_item(atom/target)
+	var/obj/item/object = get_active_hand()
+	if(istype(object, /obj/item/clothing/mask/facehugger))
+		if(world.time < hugger_throw_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before throwing another facehugger."))
+			return
+		hugger_throw_cooldown = world.time + 2.5 SECONDS
+		var/old_range = object.throw_range
+		object.throw_range = get_throw_range(object)
+		. = ..()
+		object.throw_range = old_range
+		return
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
+	return 1
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	return FALSE
+
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_XENOWARNING("You cannot mount [src]!"))
+			return
+		to_chat(src, SPAN_XENOWARNING("[target] cannot mount you!"))
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, usr, target_hands_needed = 1)
+
+/mob/living/carbon/xenomorph/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(isxeno(user))
+		return
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

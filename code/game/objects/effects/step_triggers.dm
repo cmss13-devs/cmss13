@@ -3,7 +3,7 @@
 /obj/effect/step_trigger
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
-	invisibility = 101 // nope cant see this shit
+	invisibility = 101 // nope can't see this shit
 	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
@@ -139,6 +139,7 @@
 		if(A.clone)
 			A.clone.proj_x *= -1 //Swap places with the clone
 			A.clone.proj_y *= -1
+			A.clone.proj_z *= -1
 			A.update_clone() //Update No. 2
 
 
@@ -151,7 +152,7 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A, teleportation_type)
+/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A)
 	set waitfor = 0
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
@@ -165,27 +166,10 @@
 		M = User.pulling
 
 	if(teleport_x && teleport_y && teleport_z)
-		/* TODO: replace this -spookydonut
-		switch(teleportation_type)
-			if(1)
-				sleep(animation_teleport_quick_out(A)) //Sleep for the duration of the animation.
-			if(2)
-				sleep(animation_teleport_magic_out(A))
-			if(3)
-				sleep(animation_teleport_spooky_out(A))*/
-
 		if(A && A.loc)
 			A.forceMove(locate(teleport_x,teleport_y,teleport_z))
 		if(M && M.loc)
 			M.forceMove(locate(teleport_x,teleport_y,teleport_z))
-			/*
-			switch(teleportation_type)
-				if(1)
-					animation_teleport_quick_in(A)
-				if(2)
-					animation_teleport_magic_in(A)
-				if(3)
-					animation_teleport_spooky_in(A)*/
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
@@ -244,6 +228,28 @@
 	teleport_y = place.y
 	teleport_z = place.z
 	..(young_hunter, 1)
+
+/obj/effect/step_trigger/teleporter/yautja_survivor/Trigger(mob/living/user) // For whitelised preds
+
+	var/mob/living/traveler = user
+
+	if(!istype(traveler))
+		return
+
+	if(!HAS_TRAIT(traveler, TRAIT_YAUTJA_TECH))
+		to_chat(traveler, SPAN_WARNING("You aren't sure how you got here, but you are sure you aren't leaving!"))
+		return
+
+	var/turf/destination
+	if(length(GLOB.yautja_teleports)) //We have some possible locations.
+		var/pick = tgui_input_list(traveler, "Where do you wish to start? You cannot return here, so ensure you have your equipment.", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		destination = GLOB.yautja_teleport_descs[pick]
+	if(!destination || (traveler.loc != loc))
+		return
+	teleport_x = destination.x //Configure the destination locations.
+	teleport_y = destination.y
+	teleport_z = destination.z
+	..(traveler) //Run the parent proc for teleportation.
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 

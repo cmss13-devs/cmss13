@@ -20,6 +20,9 @@
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 
+	/// the username() of the last mob that logged in
+	var/persistent_username
+
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
 	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
@@ -60,7 +63,7 @@
 	var/paralyzed = 0 //Carbon
 	var/druggy = 0 //Carbon
 	var/confused = 0 //Carbon
-	var/drowsyness = 0.0//Carbon
+	var/drowsiness = 0.0//Carbon
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
@@ -91,6 +94,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 	var/list/embedded = list()   // Embedded items, since simple mobs don't have organs.
 	var/list/datum/language/languages = list()  // For speaking/listening.
+	var/list/language_flags = list()
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
 	var/emote_type = 1 // Define emote default type, 1 for seen emotes, 2 for heard emotes
 
@@ -330,7 +334,7 @@
 			return
 
 		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
-			to_chat(usr, "This can only be used on people with +MOD permissions")
+			to_chat(usr, "This can only be used on people with +MOD permissions.")
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")

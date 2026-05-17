@@ -2,11 +2,11 @@
 
 (function () {
   // Utility functions
-  let hasOwn = Object.prototype.hasOwnProperty;
-  let assign = function (target) {
+  const hasOwn = Object.prototype.hasOwnProperty;
+  const assign = function (target) {
     for (let i = 1; i < arguments.length; i++) {
-      let source = arguments[i];
-      for (let key in source) {
+      const source = arguments[i];
+      for (const key in source) {
         if (hasOwn.call(source, key)) {
           target[key] = source[key];
         }
@@ -14,8 +14,8 @@
     }
     return target;
   };
-  let parseMetaTag = function (name) {
-    let content = document.getElementById(name).getAttribute('content');
+  const parseMetaTag = function (name) {
+    const content = document.getElementById(name).getAttribute('content');
     if (content === '[' + name + ']') {
       return null;
     }
@@ -25,7 +25,7 @@
   // BYOND API object
   // ------------------------------------------------------
 
-  let Byond = (window.Byond = {});
+  const Byond = (window.Byond = {});
 
   // Expose inlined metadata
   Byond.windowId = parseMetaTag('tgui:windowId');
@@ -39,20 +39,20 @@
 
   // Trident engine version
   Byond.TRIDENT = (function () {
-    let groups = navigator.userAgent.match(/Trident\/(\d+).+?;/i);
-    let majorVersion = groups && groups[1];
+    const groups = navigator.userAgent.match(/Trident\/(\d+).+?;/i);
+    const majorVersion = groups && groups[1];
     return majorVersion ? parseInt(majorVersion, 10) : null;
   })();
 
   // Blink engine version
   Byond.BLINK = (function () {
-    let groups = navigator.userAgent.match(/Chrome\/(\d+)\./);
-    let majorVersion = groups && groups[1];
+    const groups = navigator.userAgent.match(/Chrome\/(\d+)\./);
+    const majorVersion = groups && groups[1];
     return majorVersion ? parseInt(majorVersion, 10) : null;
   })();
 
   // Basic checks to detect whether this page runs in BYOND
-  let isByond =
+  const isByond =
     (Byond.TRIDENT !== null || Byond.BLINK !== null || window.cef_to_byond) &&
     location.hostname === '127.0.0.1' &&
     location.search !== '?external';
@@ -69,7 +69,7 @@
   Byond.__callbacks__ = [];
 
   // Reviver for BYOND JSON
-  let byondJsonReviver = function (key, value) {
+  const byondJsonReviver = function (key, value) {
     if (typeof value === 'object' && value !== null && value.__number__) {
       return parseFloat(value.__number__);
     }
@@ -87,7 +87,7 @@
     let url = (path || '') + '?';
     let i = 0;
     if (params) {
-      for (let key in params) {
+      for (const key in params) {
         if (hasOwn.call(params, key)) {
           if (i++ > 0) {
             url += '&';
@@ -114,7 +114,7 @@
     }
     // Send an HTTP request to DreamSeeker's HTTP server.
     // Allows sending much bigger payloads.
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.send();
   };
@@ -123,8 +123,8 @@
     if (!window.Promise) {
       throw new Error('Async calls require API level of ES2015 or later.');
     }
-    let index = Byond.__callbacks__.length;
-    let promise = new window.Promise((resolve) => {
+    const index = Byond.__callbacks__.length;
+    const promise = new window.Promise((resolve) => {
       Byond.__callbacks__.push(resolve);
     });
     Byond.call(
@@ -150,8 +150,8 @@
     if (id === null) {
       id = '';
     }
-    let isArray = propName instanceof Array;
-    let isSpecific = propName && propName !== '*' && !isArray;
+    const isArray = propName instanceof Array;
+    const isSpecific = propName && propName !== '*' && !isArray;
     let promise = Byond.callAsync('winget', {
       id: id,
       property: (isArray && propName.join(',')) || propName || '*',
@@ -170,7 +170,7 @@
     } else if (typeof id === 'object') {
       return Byond.call('winset', id);
     }
-    let props = {};
+    const props = {};
     if (typeof propName === 'string') {
       props[propName] = propValue;
     } else {
@@ -188,7 +188,7 @@
     }
   };
 
-  let MAX_PACKET_SIZE = 1024;
+  const MAX_PACKET_SIZE = 1024;
 
   Byond.sendMessage = function (type, payload) {
     let message =
@@ -199,7 +199,7 @@
       message.payload = JSON.stringify(message.payload);
 
       if (!Byond.TRIDENT && message.payload.length > MAX_PACKET_SIZE) {
-        let chunks = [];
+        const chunks = [];
 
         for (
           let i = 0, charsLength = message.payload.length;
@@ -210,7 +210,7 @@
         }
 
         for (let i = 0; i < chunks.length; i++) {
-          let to_send = chunks[i];
+          const to_send = chunks[i];
 
           message = {
             type: type,
@@ -246,7 +246,7 @@
   };
 
   Byond.subscribeTo = function (type, listener) {
-    let _listener = function (_type, payload) {
+    const _listener = function (_type, payload) {
       if (_type === type) {
         listener(payload);
       }
@@ -258,43 +258,43 @@
   // Asset loaders
   // ------------------------------------------------------
 
-  let RETRY_ATTEMPTS = 5;
-  let RETRY_WAIT_INITIAL = 500;
-  let RETRY_WAIT_INCREMENT = 500;
+  const RETRY_ATTEMPTS = 5;
+  const RETRY_WAIT_INITIAL = 500;
+  const RETRY_WAIT_INCREMENT = 500;
 
-  let loadedAssetByUrl = {};
+  const loadedAssetByUrl = {};
 
-  let isStyleSheetLoaded = function (node, url) {
-    let styleSheet = node.sheet;
+  const isStyleSheetLoaded = function (node, url) {
+    const styleSheet = node.sheet;
     if (styleSheet) {
       return styleSheet.rules.length > 0;
     }
     return false;
   };
 
-  let injectNode = function (node) {
+  const injectNode = function (node) {
     if (!document.body) {
       setTimeout(() => {
         injectNode(node);
       });
       return;
     }
-    let refs = document.body.childNodes;
-    let ref = refs[refs.length - 1];
+    const refs = document.body.childNodes;
+    const ref = refs[refs.length - 1];
     ref.parentNode.insertBefore(node, ref.nextSibling);
   };
 
-  let loadAsset = function (options) {
-    let url = options.url;
-    let type = options.type;
-    let sync = options.sync;
-    let attempt = options.attempt || 0;
+  const loadAsset = function (options) {
+    const url = options.url;
+    const type = options.type;
+    const sync = options.sync;
+    const attempt = options.attempt || 0;
     if (loadedAssetByUrl[url]) {
       return;
     }
     loadedAssetByUrl[url] = options;
     // Generic retry function
-    let retry = function () {
+    const retry = function () {
       if (attempt >= RETRY_ATTEMPTS) {
         let errorMessage =
           'Error: Failed to load the asset ' +
@@ -350,7 +350,7 @@
       if (!sync) {
         node.media = 'only x';
       }
-      let removeNodeAndRetry = function () {
+      const removeNodeAndRetry = function () {
         node.parentNode.removeChild(node);
         node = null;
         retry();
@@ -388,10 +388,10 @@
     if (window.navigator.msSaveBlob) {
       window.navigator.msSaveBlob(blob, filename);
     } else if (window.showSaveFilePicker) {
-      let accept = {};
+      const accept = {};
       accept[blob.type] = [ext];
 
-      let opts = {
+      const opts = {
         suggestedName: filename,
         types: [
           {
@@ -452,8 +452,8 @@ window.onerror = function (msg, url, line, col, error) {
   stack = window.__augmentStack__(stack, error);
   // Print error to the page
   if (Byond.strictMode) {
-    let errorRoot = document.getElementById('FatalError');
-    let errorStack = document.getElementById('FatalError__stack');
+    const errorRoot = document.getElementById('FatalError');
+    const errorStack = document.getElementById('FatalError__stack');
     if (errorRoot) {
       errorRoot.className = 'FatalError FatalError--visible';
       if (window.onerror.__stack__) {
@@ -461,11 +461,11 @@ window.onerror = function (msg, url, line, col, error) {
       } else {
         window.onerror.__stack__ = stack;
       }
-      let textProp = 'textContent';
+      const textProp = 'textContent';
       errorStack[textProp] = window.onerror.__stack__;
     }
     // Set window geometry
-    let setFatalErrorGeometry = function () {
+    const setFatalErrorGeometry = function () {
       Byond.winset(Byond.windowId, {
         titlebar: true,
         'is-visible': true,
@@ -526,9 +526,9 @@ window.update = function (rawMessage) {
     return;
   }
   // Parse the message
-  let message = Byond.parseJson(rawMessage);
+  const message = Byond.parseJson(rawMessage);
   // Notify listeners
-  let listeners = window.update.listeners;
+  const listeners = window.update.listeners;
   for (let i = 0; i < listeners.length; i++) {
     listeners[i](message.type, message.payload);
   }
@@ -549,15 +549,15 @@ window.update.flushQueue = function (listener) {
     }
   }
   // Process queued messages on provided listener
-  let queue = window.update.queue;
+  const queue = window.update.queue;
   for (let i = 0; i < queue.length; i++) {
-    let message = Byond.parseJson(queue[i]);
+    const message = Byond.parseJson(queue[i]);
     listener(message.type, message.payload);
   }
 };
 
 window.replaceHtml = function (inline_html) {
-  let children = document.body.childNodes;
+  const children = document.body.childNodes;
 
   for (let i = 0; i < children.length; i++) {
     if (children[i].nodeValue == ' tgui:inline-html-start ') {

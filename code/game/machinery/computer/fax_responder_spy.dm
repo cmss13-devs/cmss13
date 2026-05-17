@@ -280,9 +280,9 @@
 		spy_operator.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			spy_operator.client.eye = is_watching
+			spy_operator.client.set_eye(is_watching)
 		else
-			spy_operator.client.eye = src
+			spy_operator.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 

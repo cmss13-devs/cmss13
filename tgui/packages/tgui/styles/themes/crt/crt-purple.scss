@@ -1,0 +1,37 @@
+@use 'sass:meta';
+
+$light: hsl(288, 67%, 51%);
+$dark: hsl(10, 67%, 3%);
+
+@use '../../base.scss' with (
+  $color-bg: $dark,
+  $color-fg: $light
+);
+
+@use '../crt.scss';
+
+.theme-crtpurple {
+  @extend %theme-crt;
+
+  @keyframes purpleConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: purpleConfirmFlicker 5s infinite;
+    &:hover {
+      animation: none;
+    }
+  }
+}

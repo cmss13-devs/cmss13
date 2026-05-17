@@ -32,45 +32,53 @@ export const Book = () => {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    let toParse = marked.parse(
-      (overrideContents ? overrideContents : contents)
+    const updatePage = async () => {
+      const rawText = (overrideContents ? overrideContents : contents)
         .trim()
-        .replaceAll(replacementRegex, ''),
-    );
+        .replaceAll(replacementRegex, '');
 
-    const matches = Array.from(toParse.matchAll(imageRegex));
-    for (const match of matches) {
-      const asset = resolveAsset(match[1]);
-      toParse = toParse.replace(match[0], `src="${asset}"`);
-    }
+      let toParse = await marked.parse(rawText);
 
-    ref.current!.innerHTML = toParse;
-
-    const rect = ref.current!.getBoundingClientRect();
-
-    let page = 0;
-    const pages: Element[][] = [];
-
-    const list = ref.current!.children;
-    for (let i = 0; i < list.length; i++) {
-      const limit = (page + 1) * (670 - rect.top);
-      const element = list[i];
-
-      const elementRect = element.getBoundingClientRect();
-
-      if (elementRect.top > limit) {
-        page++;
+      const matches = Array.from(toParse.matchAll(imageRegex));
+      for (const match of matches) {
+        const asset = resolveAsset(match[1]);
+        toParse = toParse.replace(match[0], `src="${asset}"`);
       }
 
-      const existingPage = pages.at(page);
-      if (existingPage) {
-        existingPage.push(element);
-      } else {
-        pages.splice(page, 0, [element]);
+      if (!ref.current) {
+        return;
       }
-    }
 
-    setPages(pages);
+      ref.current.innerHTML = toParse;
+
+      const rect = ref.current.getBoundingClientRect();
+
+      let page = 0;
+      const pages: Element[][] = [];
+
+      const list = ref.current.children;
+      for (let i = 0; i < list.length; i++) {
+        const limit = (page + 1) * (670 - rect.top);
+        const element = list[i];
+
+        const elementRect = element.getBoundingClientRect();
+
+        if (elementRect.top > limit) {
+          page++;
+        }
+
+        const existingPage = pages.at(page);
+        if (existingPage) {
+          existingPage.push(element);
+        } else {
+          pages.splice(page, 0, [element]);
+        }
+      }
+
+      setPages(pages);
+    };
+
+    updatePage();
   }, [overrideContents]);
 
   useEffect(() => {

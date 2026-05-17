@@ -42440,10 +42440,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/ladder{
-	id = "bunker_lad";
-	height = 1
-	},
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer,
 /area/tyrargo/underground/bunker/south)
 "bYt" = (
@@ -54716,11 +54713,8 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cLM" = (
-/obj/structure/ladder{
-	id = "bunker_lad";
-	height = 2
-	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "cLN" = (

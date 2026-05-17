@@ -2639,11 +2639,8 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "sn" = (
-/obj/structure/ladder{
-	id = "bunker_lad";
-	height = 2
-	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "so" = (

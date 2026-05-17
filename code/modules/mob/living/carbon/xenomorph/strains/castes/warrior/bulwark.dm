@@ -14,7 +14,6 @@
 		/datum/action/xeno_action/activable/plate_bash, //2nd
 		/datum/action/xeno_action/onclick/tail_swing, //3rd
 		/datum/action/xeno_action/onclick/reflective_shield, //4th
-		/datum/action/xeno_action/activable/plate_slam, //5th
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_bulwark
@@ -118,9 +117,6 @@
 		xeno_player.front_armor -= BULWARK_FRONT_ARMOR
 		xeno_player.side_armor -= BULWARK_SIDE_ARMOR
 		xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
-
-		if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM))
-			end_plate_slam()
 	else
 		ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
 		to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
@@ -162,10 +158,6 @@
 		return
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
-
-	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM))
-		xeno_player.balloon_alert(xeno_player, "we need to stop pinning down the target!", text_color = "#7d32bb", delay = 1 SECONDS)
-		return
 
 	var/mob/living/carbon/carbon_target = target_atom
 	if(carbon_target.stat == DEAD)
@@ -286,10 +278,6 @@
 		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
-	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM))
-		to_chat(xeno_player, SPAN_XENODANGER("We stop pinning down target to do our reflective stance!"))
-		end_plate_slam()
-
 	if(!check_and_use_plasma_owner(100))
 		return
 
@@ -395,150 +383,7 @@
 // 5th ability
 //
 
-/datum/action/xeno_action/activable/plate_slam/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno_player = owner
-
-	if(!iscarbon(target_atom))
-		return
-
-	var/mob/living/carbon/carbon_target = target_atom
-
-	if(!isxeno_human(carbon_target) || xeno_player.can_not_harm(carbon_target))
-		to_chat(xeno_player, SPAN_DANGER("We need a target!"))
-		return
-
-	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES))
-		to_chat(xeno_player, SPAN_DANGER("We need to stop our reflective stance!"))
-		return
-
-	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM))
-		if(HAS_TRAIT(carbon_target, TRAIT_ABILITY_PLATE_SLAM))
-			end_plate_slam()
-			return
-		to_chat(xeno_player, SPAN_DANGER("We are already pinning down our target!"))
-		return
-
-	if(HAS_TRAIT(carbon_target, TRAIT_ABILITY_PLATE_SLAM))
-		to_chat(xeno_player, SPAN_DANGER("This target is already pinned down!"))
-		return
-
-	if(get_dist(xeno_player, carbon_target) > 1)
-		to_chat(xeno_player, SPAN_DANGER("We need to get closer to target!"))
-		return
-
-	XENO_ACTION_CHECK(xeno_player)
-
-	if(carbon_target.stat == DEAD)
-		return
-
-	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
-		xeno_player.balloon_alert(xeno_player, "we need to tense up our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
-		return
-
-	for(var/datum/effects/floored_target/floored_target in carbon_target.effects_list)
-		qdel(floored_target)
-
-	if((carbon_target.status_flags & XENO_HOST) || HAS_TRAIT(carbon_target, TRAIT_NESTED))
-		to_chat(xeno_player, SPAN_DANGER("We don't want to harm this host!"))
-		return
-
-	xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] gets ready to pin [carbon_target] down!"), SPAN_XENODANGER("We start to get ready to pin [carbon_target] down with our plates!"))
-
-	if(!do_after(xeno_player, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(xeno_player, SPAN_DANGER("We lose our balance!"))
-		to_chat(carbon_target, SPAN_DANGER("You notice the enemy lose their balance!"))
-		xeno_cooldown *= 0.5
-		apply_custom_cooldown()
-		return
-
-	if(HAS_TRAIT(carbon_target, TRAIT_ABILITY_PLATE_SLAM))
-		to_chat(xeno_player, SPAN_DANGER("This target is already pinned down!"))
-		return
-
-	if(get_dist(xeno_player, carbon_target) > 1)
-		to_chat(xeno_player, SPAN_DANGER("We miss our target!"))
-		to_chat(carbon_target, SPAN_DANGER("You slip past the shield of plates as they smash into the ground beside you!"))
-		playsound(xeno_player, 'sound/effects/alien_footstep_charge3.ogg', 25, 0)
-		xeno_cooldown *= 0.5
-		apply_custom_cooldown()
-		return
-
-	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
-		xeno_player.balloon_alert(xeno_player, "we need to keep our plates tensed up!", text_color = "#7d32bb", delay = 1 SECONDS)
-		return
-
-	if(carbon_target.stat == DEAD)
-		return
-
-	if(ishuman(carbon_target))
-		var/mob/living/carbon/human/human = carbon_target
-		INVOKE_ASYNC(carbon_target, TYPE_PROC_REF(/mob, emote), "scream")
-		human.update_xeno_hostile_hud()
-
-	xeno_player.emote("roar")
-
-	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
-
-	xeno_player.face_atom(carbon_target)
-	xeno_player.animation_attack_on(carbon_target)
-
-	carbon_target.anchored = TRUE
-	xeno_player.anchored = TRUE
-
-	ADD_TRAIT(carbon_target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
-	ADD_TRAIT(carbon_target, TRAIT_FLOORED, TRAIT_SOURCE_ABILITY("plate_slam"))
-	ADD_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
-
-	ADD_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
-	ADD_TRAIT(carbon_target, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
-
-	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
-	behavior.plate_slam_target = WEAKREF(carbon_target)
-
-	if(carbon_target.body_position != LYING_DOWN)
-		behavior.shield_slam_timer_id = addtimer(CALLBACK(src, PROC_REF(end_plate_slam)), 7 SECONDS, TIMER_STOPPABLE)
-		new /datum/effects/floored_target(carbon_target, xeno_player, , , 7 SECONDS)
-		xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] bashes [carbon_target] down!"), SPAN_XENODANGER("We bash [carbon_target] down and pin them with our plates!"))
-		carbon_target.apply_effect(1, WEAKEN)
-		playsound(xeno_player, 'sound/effects/hit_kick.ogg', 35, 1)
-	else
-		behavior.shield_slam_timer_id = addtimer(CALLBACK(src, PROC_REF(end_plate_slam)), 10 SECONDS, TIMER_STOPPABLE)
-		new /datum/effects/floored_target(carbon_target, xeno_player, , , 10 SECONDS)
-		xeno_player.visible_message(SPAN_XENODANGER("[xeno_player] pins [carbon_target] down!"), SPAN_XENODANGER("We pin [carbon_target] down with our plates!"))
-
-	if(ishuman(carbon_target))
-		var/mob/living/carbon/human/target_human = carbon_target
-		target_human.update_xeno_hostile_hud()
-
-	to_chat(carbon_target, SPAN_DANGER("You are slammed to the ground and pinned down by armored plates!"))
-
-	apply_custom_cooldown()
-
-	return ..()
-
-
-/datum/action/xeno_action/proc/end_plate_slam()
-	var/mob/living/carbon/xenomorph/xeno_player = owner
-
-	if(!istype(xeno_player))
-		return
-
-	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
-	target = behavior.plate_slam_target.resolve()
-
-	deltimer(target, behavior.shield_slam_timer_id)
-
-	target.anchored = FALSE
-	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
-	REMOVE_TRAIT(target, TRAIT_FLOORED, TRAIT_SOURCE_ABILITY("plate_slam"))
-	REMOVE_TRAIT(target, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
-
-	xeno_player.anchored = FALSE
-	REMOVE_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("plate_slam"))
-	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_PLATE_SLAM, TRAIT_SOURCE_ABILITY("plate_slam"))
-
-	for(var/datum/effects/floored_target/floored_target in target.effects_list)
-		qdel(floored_target)
+// (need replacement)
 
 //
 // Custom Proc(s)

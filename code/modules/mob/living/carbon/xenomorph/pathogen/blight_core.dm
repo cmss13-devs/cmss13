@@ -253,7 +253,7 @@
 /obj/effect/alien/resin/special/pylon/pathogen_core/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber) && allowed_to_overmind(attacking_xeno))
 		if(tgui_alert(attacking_xeno, "Do you seek to become the Mycelial Overmind?", "Become Overmind?", list("Yes", "No"), 5 SECONDS) == "Yes")
-			if(last_overmind_key == attacking_xeno.key)
+			if(last_overmind_key == attacking_xeno.key && do_after(attacking_xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				make_overmind(attacking_xeno)
 			else
 				admin_request_overmind(attacking_xeno)

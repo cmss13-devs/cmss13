@@ -199,6 +199,8 @@
 	if(core.overmind_mob != creature)
 		return FALSE
 
-	core.unset_overmind()
+	to_chat(creature, SPAN_WARNING("Resist to cancel leaving the overmind."))
+	if(do_after(creature, 10 SECONDS, INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+		core.unset_overmind()
 
 	return ..()

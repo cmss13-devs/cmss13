@@ -553,7 +553,7 @@
 
 	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
 	ref = minimap_ref.resolve()
-	ref.minimap_flags |= get_minimap_flag_for_faction()
+	ref.minimap_flags |= get_minimap_flag_for_faction(hive.hivenumber)
 	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)

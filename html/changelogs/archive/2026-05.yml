@@ -80,3 +80,24 @@
   - balance: Xenos receive tiny superslow, slow and daze on climbing down without
       falling, slightly increased on big xenos
   - balance: Daze now does not disable releasing hauled
+2026-05-14:
+  TrollerNoob:
+  - refactor: Refactored Point Blank backend. You may now Point Blank as fast as your
+      gun's firerate allows, and you may continue firing after a Point Blank when
+      on Automatic Fire mode.
+  Venuska1117:
+  - bugfix: '"FOR THE HIVE" ability now create correctly chat message explaining cause
+      of death.'
+  labeo0:
+  - bugfix: fixed stacking health upgrades for sentry posts
+  seanlol092:
+  - qol: named the LZ
+2026-05-17:
+  MistChristmas:
+  - bugfix: Give Penlight eye assessment a cooldown, and lower it's blind time
+  - admin: Add logging to the penlight eye assesment
+  Puckaboo2:
+  - spellcheck: '"Updater", "Separator", and "Percentage" have been spellchecked.'
+  realforest2001:
+  - bugfix: Marking for hunt no longer stays behind after claiming trophy parts.
+  - balance: Added a Leap/Jump ability to Yautja.

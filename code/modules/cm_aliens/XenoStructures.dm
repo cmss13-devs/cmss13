@@ -368,6 +368,7 @@
 	var/close_delay = 100
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
+	var/turf/closed/wall/resin/above/upper_wall
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
@@ -395,6 +396,11 @@
 			AddComponent(/datum/component/resin_cleanup)
 		area.current_resin_count++
 
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(istype(above, /turf/open_space))
+		above.place_on_top(/turf/closed/wall/resin/above)
+		upper_wall = above
+
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
@@ -404,6 +410,10 @@
 	..()
 	healthcheck()
 	return 1
+
+/obj/structure/mineral_door/resin/proc/take_damage(dam, mob/mob)
+	health -= dam
+	healthcheck()
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
 	if(W.pry_capable == IS_PRY_CAPABLE_FORCE && user.a_intent != INTENT_HARM)
@@ -497,10 +507,15 @@
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
+	if(upper_wall)
+		upper_wall.dismantle_wall()
+		upper_wall = null
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
+	if(upper_wall)
+		upper_wall.dismantle_wall()
 	spawn(0)
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)

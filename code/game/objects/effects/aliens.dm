@@ -569,8 +569,7 @@
 	icon_state = "boiler_bombard_heavy"
 
 /obj/effect/xenomorph/boiler_bombard/proc/make_smoke()
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno))
-	S.time_to_live = smoke_duration
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno), smoke_duration)
 	S.spread_speed = smoke_duration + 5 // No spreading
 
 	qdel(src)

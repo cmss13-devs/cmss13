@@ -29,12 +29,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/open_space/attack_hand(mob/user)
-	climb_down(user)
-
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
 	. = ..()
 	if(. && !mover.throwing && isliving(mover) && check_blocked())
@@ -110,6 +104,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		var/mob/living/L = user
 		tank_at_destination.mark_on_top(L)
 
+	below.on_climb_down(user)
 	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)

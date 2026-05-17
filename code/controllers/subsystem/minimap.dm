@@ -1364,10 +1364,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/should_be_live = FALSE
 	if(xeno == xeno.hive?.living_xeno_queen)
 		should_be_live = TRUE // Queens always get live
-	else if(xeno.hive?.living_xeno_queen?.ovipositor)
-		should_be_live = TRUE // Queen is on ovipositor, all xenos get live
 	else if(!xeno.hive?.tacmap_requires_queen_ovi)
 		should_be_live = TRUE // This Hive doesn't require queen ovi (forsaken for example)
+	else if(xeno.hive?.living_xeno_queen?.ovipositor)
+		should_be_live = TRUE // Queen is on ovipositor, all xenos get live
 
 	// If live status changed, reset the map so it gets recreated with correct mode
 	if(live != should_be_live)

@@ -327,7 +327,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
+	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/boiler)
 	specialty = "M2 pattern MP"
 	black_market_value = 20
 
@@ -335,7 +335,6 @@
 	name = "\improper M3 pattern warden MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
 	icon_state = "warden"
-	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern warden MP"
 
@@ -343,7 +342,6 @@
 	name = "\improper M3 pattern chief MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
 	icon_state = "warrant_officer"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern chief MP"
 	black_market_value = 30

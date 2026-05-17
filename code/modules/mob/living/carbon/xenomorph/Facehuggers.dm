@@ -265,7 +265,7 @@
 			return TRUE
 
 	var/mob/living/target
-	for(var/mob/living/human in oview(range, loc))
+	for(var/mob/living/human in view(range, src))
 		if(!can_hug(human, hivenumber))
 			continue
 		target = human

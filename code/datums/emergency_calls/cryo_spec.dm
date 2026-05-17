@@ -7,6 +7,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	spawn_max_amount = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/cryo_spec/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/candidates_clean = list()

@@ -525,16 +525,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 		points = available_points_to_display
 	else
 		if(use_snowflake_points)
-			points = marine.marine_snowflake_points
+			points = marine.vendor_snowflake_points
 		else if(use_points)
-			points = marine.marine_points
+			points = marine.vendor_points
 
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/category = myprod[4]
-		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
+		if(points >= p_cost && (!category || ((category in marine.vendor_buyable_categories) && (marine.vendor_buyable_categories[category]))))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
@@ -651,15 +651,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 			available_points_to_display -= cost
 	else
 		if(use_snowflake_points)
-			if(user.marine_snowflake_points < cost)
+			if(user.vendor_snowflake_points < cost)
 				return FALSE
 			else
-				user.marine_snowflake_points -= cost
+				user.vendor_snowflake_points -= cost
 		else
-			if(user.marine_points < cost)
+			if(user.vendor_points < cost)
 				return FALSE
 			else
-				user.marine_points -= cost
+				user.vendor_points -= cost
 
 /obj/structure/machinery/cm_vending/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -719,7 +719,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
 			return TRUE
@@ -742,7 +742,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
 			return TRUE
@@ -761,7 +761,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
 				return FALSE
 			if(!M || !M.use(1))
-				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
+				to_chat(user, SPAN_WARNING("You need a sheet of metal to construct a new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
 			stat &= ~REPAIR_STEP_THREE
@@ -858,7 +858,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				.["theme"] = VENDOR_THEME_UPP
 			if(FACTION_CLF)
 				.["theme"] = VENDOR_THEME_CLF
-			if(FACTION_YAUTJA)
+			if(FACTION_YAUTJA, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED, FACTION_YAUTJA_YOUNG)
 				.["theme"] = VENDOR_THEME_YAUTJA
 	.["show_points"] = show_points | use_snowflake_points
 
@@ -1447,7 +1447,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				var/rankpath = get_rank_pins(card.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-					var/obj/item/clothing/accessory/patch/uscmpatch = new()
+					var/obj/item/clothing/accessory/patch/uscmpatch/uscmpatch = new()
 					underclothes.attach_accessory(user, rank_insignia)
 					underclothes.attach_accessory(user, uscmpatch)
 
@@ -1476,11 +1476,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		return TRUE
 	var/buying_category = listed_products[4]
 	if(buying_category)
-		if(!(buying_category in vending_human.marine_buyable_categories))
+		if(!(buying_category in vending_human.vendor_buyable_categories))
 			return FALSE
-		if(!vending_human.marine_buyable_categories[buying_category])
+		if(!vending_human.vendor_buyable_categories[buying_category])
 			return FALSE
-		vending_human.marine_buyable_categories[buying_category] -= 1
+		vending_human.vendor_buyable_categories[buying_category] -= 1
 	return TRUE
 
 // Unload ALL the items throwing them around randomly, optionally destroying the vendor

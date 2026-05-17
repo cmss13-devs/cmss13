@@ -327,7 +327,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/boiler)
+	uniform_restricted = list(/obj/item/clothing/under/marine)
 	specialty = "M2 pattern MP"
 	black_market_value = 20
 

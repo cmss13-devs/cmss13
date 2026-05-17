@@ -57,3 +57,47 @@
       it.
   - rscadd: Added new categories in Yautja vendors and backend to support.
   - rscadd: Added independent comms relays for Yautja.
+2026-05-11:
+  realforest2001:
+  - imageadd: Splits the yautja icon files.
+2026-05-12:
+  BlitzArde:
+  - maptweak: Added late_join landmark for Synthetics to spawn in the ARES Core
+  Blundir:
+  - bugfix: fixed round end sounds not playing
+  Venuska1117:
+  - balance: Gives most xenos See Through.
+  - balance: 'Xenos can now haul by reinforcing Grab. (Grab target and Press default:
+      Z)'
+  - balance: Xenos gain "Rip Limb" verb but only Warrior can use it, can also be activated
+      by unique action (like shotgun pump button) and binded separately to button.
+  - balance: Resin Fruits now can be picked up using Alt+Click, fruits now mention
+      they can be picked this way in description.
+  cuberound:
+  - rscdel: Removed click z level climbing, keeps bump climb (this fixes some issues
+      with M56D)
+  - balance: Shifts multiz fall stuns to slow, superslow and daze (disables abilities)
+  - balance: Xenos receive tiny superslow, slow and daze on climbing down without
+      falling, slightly increased on big xenos
+  - balance: Daze now does not disable releasing hauled
+2026-05-14:
+  TrollerNoob:
+  - refactor: Refactored Point Blank backend. You may now Point Blank as fast as your
+      gun's firerate allows, and you may continue firing after a Point Blank when
+      on Automatic Fire mode.
+  Venuska1117:
+  - bugfix: '"FOR THE HIVE" ability now create correctly chat message explaining cause
+      of death.'
+  labeo0:
+  - bugfix: fixed stacking health upgrades for sentry posts
+  seanlol092:
+  - qol: named the LZ
+2026-05-17:
+  MistChristmas:
+  - bugfix: Give Penlight eye assessment a cooldown, and lower it's blind time
+  - admin: Add logging to the penlight eye assesment
+  Puckaboo2:
+  - spellcheck: '"Updater", "Separator", and "Percentage" have been spellchecked.'
+  realforest2001:
+  - bugfix: Marking for hunt no longer stays behind after claiming trophy parts.
+  - balance: Added a Leap/Jump ability to Yautja.

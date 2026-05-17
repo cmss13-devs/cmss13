@@ -425,9 +425,9 @@
 	// Checkc if we're inside a tank and trying to exit
 	if(inside_tank)
 		var/tank_found = FALSE
-		for(var/obj/O in T)
-			var/obj/vehicle/multitile/tank/M = _owning_tank_of(O)
-			if(M == inside_tank || O == inside_tank)
+		for(var/obj/obj in turf)
+			var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
+			if(M == inside_tank || obj == inside_tank)
 				tank_found = TRUE
 				break
 
@@ -499,10 +499,10 @@
 		return FALSE
 	permutated |= obj
 
-	var/obj/vehicle/multitile/tank/M = _owning_tank_of(O)
+	var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
 	if(!M)
-		if(istype(O, /obj/vehicle/multitile/tank))
-			M = O
+		if(istype(obj, /obj/vehicle/multitile/tank))
+			M = obj
 
 	// this block allows projectiles fired from outside the tank to travel inside it.
 	if(M)

@@ -412,7 +412,7 @@
 	return 1
 
 /obj/structure/mineral_door/resin/proc/take_damage(dam, mob/mob)
-	health -= dam
+	update_health(dam)
 	healthcheck()
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
@@ -427,10 +427,6 @@
 		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
-
-/obj/structure/mineral_door/resin/proc/take_damage(damage)
-	update_health(damage)
-	healthcheck()
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))

@@ -61883,10 +61883,6 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/sewer_treatment/lower)
-"djz" = (
-/obj/effect/blocker/water,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/tyrargo/underground/oob_area)
 "djA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -66858,6 +66854,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 1;
+	pixel_x = -32
+	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/tyrargo/underground/apartment)
 "dIk" = (
@@ -71003,7 +71003,6 @@
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ebX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/blocker/water,
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/underground/oob_area)
 "eci" = (
@@ -71301,19 +71300,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"edL" = (
-/obj/effect/blocker/water,
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/tyrargo/underground/oob_area)
-"eed" = (
-/obj/effect/blocker/water,
-/turf/open/auto_turf/hybrisa_auto_turf/layer3,
-/area/tyrargo/underground/oob_area)
-"eee" = (
-/obj/effect/blocker/water,
-/obj/effect/blocker/water,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/tyrargo/underground/oob_area)
 "eej" = (
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
@@ -139066,10 +139052,10 @@ ddI
 ddI
 ddI
 ddI
-edL
 ddI
-edL
-edL
+ddI
+ddI
+ddI
 ddI
 ddI
 bsw
@@ -139428,7 +139414,7 @@ bsw
 bsw
 bsw
 bsw
-edL
+ddI
 ebT
 ekS
 ekS
@@ -139612,9 +139598,9 @@ bsw
 bsw
 bsw
 bsw
-edL
-djz
-djz
+ddI
+ekS
+ekS
 iPc
 bgN
 bgL
@@ -139797,7 +139783,7 @@ bsw
 bsw
 bsw
 ebX
-eee
+ekS
 ekS
 fun
 bgO
@@ -139981,8 +139967,8 @@ bsw
 bsw
 bsw
 ddI
-djz
-eed
+ekS
+djw
 ekS
 ekS
 ekS

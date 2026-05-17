@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno/xeno_hive_tutorial
 
 /datum/mob_hud/xeno_hostile
-	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
+	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE)
 
 /datum/mob_hud/execute_hud
 	hud_icons = list(XENO_EXECUTE)
@@ -808,7 +808,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(faction == FACTION_MILITARY_CASTE)
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		new_icon_state = "badbloodhud"
+	else if(faction == FACTION_MILITARY_CASTE)
 		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
 			new_icon_state = "soldierhud_wl"
 		else
@@ -831,7 +833,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
 		player_clan.sync()
 
-		holder.color = player_clan.color
+		if(faction != FACTION_YAUTJA_BADBLOOD)
+			holder.color = player_clan.color
 
 	hud_list[HUNTER_CLAN] = holder
 
@@ -933,16 +936,19 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 	var/image/acid_holder = hud_list[XENO_HOSTILE_ACID]
 	var/image/slow_holder = hud_list[XENO_HOSTILE_SLOW]
 	var/image/tag_holder = hud_list[XENO_HOSTILE_TAG]
+	var/image/tag_spread_holder = hud_list[XENO_HOSTILE_TAG_SPREAD]
 	var/image/freeze_holder = hud_list[XENO_HOSTILE_FREEZE]
 
 	acid_holder.icon_state = "hudblank"
 	slow_holder.icon_state = "hudblank"
 	tag_holder.icon_state = "hudblank"
+	tag_spread_holder.icon_state = "hudblank"
 	freeze_holder.icon_state = "hudblank"
 
 	acid_holder.overlays.Cut()
 	slow_holder.overlays.Cut()
 	tag_holder.overlays.Cut()
+	tag_spread_holder.overlays.Cut()
 	freeze_holder.overlays.Cut()
 
 	var/acid_found = FALSE
@@ -966,13 +972,22 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
 
 	var/tag_found = FALSE
-	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!QDELETED(DT))
+	for(var/datum/effects/dancer_tag/normal/normal_tag in effects_list)
+		if(!QDELETED(normal_tag))
 			tag_found = TRUE
 			break
 
-	if (tag_found)
+	if(tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
+
+	var/spread_tag_found = FALSE
+	for(var/datum/effects/dancer_tag/spread/spread_tag in effects_list)
+		if(!QDELETED(spread_tag))
+			spread_tag_found = TRUE
+			break
+
+	if(spread_tag_found)
+		tag_spread_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag_yellow")
 
 	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP && !buckled // Eligible targets are unable to move but can stand and aren't buckled (eg nested) - This is to convey that they are temporarily unable to move
 	if (freeze_found)

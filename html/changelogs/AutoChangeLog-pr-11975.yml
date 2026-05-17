@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Organ healing chemicals no longer produce messages falsely indicating organ damage being taken."

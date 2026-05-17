@@ -56,7 +56,7 @@
 
 	icon_xeno = 'icons/mob/pathogen/popper.dmi'
 	icon_xenonid = 'icons/mob/pathogen/popper.dmi'
-	need_weeds = FALSE
+	need_weeds = TRUE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

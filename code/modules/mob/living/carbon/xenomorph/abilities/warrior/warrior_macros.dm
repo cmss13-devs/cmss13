@@ -41,13 +41,6 @@
 	var/action_name = "Tail Swing"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_plate_slam()
-	set category = "Alien"
-	set name = "Plate Slam"
-	set hidden = TRUE
-	var/action_name = "Plate Slam"
-	handle_xeno_macro(src, action_name)
-
 /datum/action/xeno_action/verb/verb_reflective_shield()
 	set category = "Alien"
 	set name = "Reflective Shield"

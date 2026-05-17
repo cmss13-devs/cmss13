@@ -95,12 +95,3 @@
 	var/reflective_recharge_time = null
 	/// Cooldown after activation to prevent accidental double click.
 	var/reflective_safe_click_cooldown = 0
-
-/datum/action/xeno_action/activable/plate_slam
-	name = "Plate Slam"
-	action_icon_state = "plate_slam"
-	macro_path = /datum/action/xeno_action/verb/verb_plate_slam
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
-	plasma_cost = 80
-	xeno_cooldown = 20 SECONDS

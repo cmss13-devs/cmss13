@@ -72,8 +72,6 @@
 	else
 		boosted_structure = FALSE
 
-
 /obj/effect/alien/resin/special/proc/get_protection_level()
 	return TURF_PROTECTION_NONE
-
 

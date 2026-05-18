@@ -1,6 +1,6 @@
 #define CLUSTER_REPAIR_TIME (4 SECONDS)
 #define CLUSTER_WEEDS_REGROWTH_TIME (15 SECONDS)
-//
+// 3 people nested for the god damn thingamajig
 #define MOBS_NESTED_NEAR 3
 
 /obj/effect/alien/resin/special/cluster

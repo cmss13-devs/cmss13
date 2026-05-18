@@ -139,7 +139,7 @@
 			"properties_list" = properties_codes_level,
 		))
 	if(!length(data["paper_data"]))
-		data["paper_data"] = null
+		data["paper_data"] = list()
 	return data
 
 /obj/structure/filingcabinet/research/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

@@ -21,7 +21,7 @@
 	docking_message = "This is Chief Deputy Marshal Whittaker with the Colonial Marshal Bureau, Anchorpoint Station. We're investigating the nature of your distress signal. Initiate docking procedures at tower four."
 	allies = list(
 		/datum/emergency_call/cmb/riot_control,
-		/datum/emergency_call/cmb/anchorpoint, //Marine detachment.
+		/datum/emergency_call/cmb,
 	)
 
 /datum/spaceport/upp

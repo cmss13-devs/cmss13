@@ -160,37 +160,36 @@
 	if(HAS_TRAIT(attacked_item, TRAIT_TOOL_WRENCH))
 		return ..()
 	if(istype(attacked_item, /obj/item/paper/research_notes))
-		var/obj/item/paper/research_notes/note = attacked_item
-		if(note.note_type != "synthesis")
-			to_chat(user, SPAN_WARNING("You try to slot the notes into a sorting tray, but they are refused."))
-			return
-		var/obj/item/paper/research_report/new_report = note.convert_to_chem_report()
-		if(!new_report)
-			to_chat(user, SPAN_WARNING("The notes could not be converted into a valid report."))
-			return
-		if(!new_report.valid_report || isnull(new_report.data))
-			to_chat(user, SPAN_WARNING("You try to slot the converted notes into a sorting tray, but they are refused."))
-			qdel(new_report) //clean up failed instance
-			return
-		var/duplicate = FALSE
-		for(var/obj/item/paper/research_report/document_inside in paper_contents)
-			if(document_inside.data?.id == new_report.data?.id)
-				duplicate = TRUE
-				break
-		if(duplicate)
-			to_chat(user, SPAN_WARNING("You try to slot the document into a sorting tray, but there is an identical document already in the array."))
-			qdel(new_report)
-			return
+		if(istype(attacked_item, /obj/item/paper/research_notes/unique))
+			var/obj/item/paper/research_notes/unique/unique_note = attacked_item
+			var/obj/item/paper/research_report/new_report = unique_note.convert_to_chem_report()
+			if(!new_report)
+				to_chat(user, SPAN_WARNING("The notes could not be converted into a valid report."))
+				return
+			if(!new_report.valid_report || isnull(new_report.data))
+				to_chat(user, SPAN_WARNING("You try to slot the converted notes into a sorting tray, but they are refused."))
+				qdel(new_report) //clean up failed instance
+				return
+			var/duplicate = FALSE
+			for(var/obj/item/paper/research_report/document_inside in paper_contents)
+				if(document_inside.data?.id == new_report.data?.id)
+					duplicate = TRUE
+					break
+			if(duplicate)
+				to_chat(user, SPAN_WARNING("You try to slot the document into a sorting tray, but there is an identical document already in the array."))
+				qdel(new_report)
+				return
 
-		to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
-		qdel(note)
-		new_report.forceMove(src)
-		LAZYADD(paper_contents, new_report)
-		icon_state = "[initial(icon_state)]-open"
-		addtimer(CALLBACK(src, "reset_icon"), 0.5 SECONDS)
-		update_static_data_for_all_viewers()
+			to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+			qdel(unique_note)
+			new_report.forceMove(src)
+			LAZYADD(paper_contents, new_report)
+			icon_state = "[initial(icon_state)]-open"
+			addtimer(CALLBACK(src, "reset_icon"), 0.5 SECONDS)
+			update_static_data_for_all_viewers()
+			return
+		to_chat(user, SPAN_WARNING("You try to slot the note into a sorting tray, but it is refused."))
 		return
-
 	if(is_type_in_list(attacked_item, allowed_types))
 		var/obj/item/paper/research_report/document_report = attacked_item
 		if(!document_report.valid_report || isnull(document_report.data))

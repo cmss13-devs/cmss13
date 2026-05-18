@@ -63,6 +63,8 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/datum/space_level/z_level as anything in SSmapping.z_list)
 		load_new_z(null, z_level)
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_NEW_Z, PROC_REF(load_new_z))
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
@@ -118,6 +120,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 
 	var/level = z_level.z_value
+	ASSERT(!minimaps_by_z["[level]"], "Duplicate load_new_z call for [level]!")
 	minimaps_by_z["[level]"] = new /datum/hud_displays
 	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
 		return

@@ -567,12 +567,26 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
 	icon_state = "thick resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2
 	mineralType = "thick resin"
+
+/obj/structure/mineral_door/resin/pathogen
+	name = "mycelial door"
+	icon = 'icons/mob/pathogen/pathogen_effects.dmi'
+	icon_state = "mycelium"
+	mineralType = "mycelium"
+
+/obj/structure/mineral_door/resin/pathogen/thick
+	name = "thick mycelial door"
+	icon_state = "thick mycelium"
+	health = HEALTH_DOOR_XENO_THICK
+	hardness = 2
+	mineralType = "thick mycelium"
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"

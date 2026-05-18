@@ -56,6 +56,9 @@
 			if(wall.type == /turf/closed/wall/resin)
 				wall.ChangeTurf(/turf/closed/wall/resin/thick)
 				total_resin_cost = XENO_THICKEN_WALL_COST
+			else if(wall.type == /turf/closed/wall/resin/pathogen)
+				wall.ChangeTurf(/turf/closed/wall/resin/thick/pathogen)
+				total_resin_cost = XENO_THICKEN_WALL_COST
 			else if(wall.type == /turf/closed/wall/resin/membrane)
 				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 				total_resin_cost = XENO_THICKEN_MEMBRANE_COST

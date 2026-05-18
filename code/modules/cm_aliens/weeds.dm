@@ -712,4 +712,26 @@
 /obj/effect/resin_construct/transparent/weak
 	icon_state = "WeakTransparentConstruct"
 
+/obj/effect/pathogen_construct
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	icon = 'icons/mob/pathogen/pathogen_effects.dmi'
+
+/obj/effect/pathogen_construct/door
+	icon_state = "DoorConstruct"
+
+/obj/effect/pathogen_construct/thickdoor
+	icon_state = "ThickDoorConstruct"
+
+/obj/effect/pathogen_construct/thick
+	icon_state = "ThickConstruct"
+
+/obj/effect/pathogen_construct/weak
+	icon_state = "WeakConstruct"
+
+/obj/effect/pathogen_construct/transparent/thick
+	icon_state = "ThickTransparentConstruct"
+
+/obj/effect/pathogen_construct/transparent/weak
+	icon_state = "WeakTransparentConstruct"
+
 #undef WEED_BASE_GROW_SPEED

@@ -23,8 +23,14 @@
 	evolution_allowed = FALSE
 
 	heal_resting = 1
+	max_build_dist = 1
 
 	minimap_icon = "popper"
+
+/datum/caste_datum/pathogen/popper/New()
+	. = ..()
+
+	resin_build_order = GLOB.resin_build_order_pathogen_popper
 
 /mob/living/carbon/xenomorph/popper
 	caste_type = PATHOGEN_CREATURE_POPPER
@@ -41,8 +47,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
-		/datum/action/xeno_action/onclick/place_spore_sac/fatal, // Macro 2 // Needs rethinking on ease of access
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper, //first macro
+		/datum/action/xeno_action/onclick/choose_resin, //second macro
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		/datum/action/xeno_action/onclick/place_spore_sac/fatal, // fourth macro // Needs rethinking on ease of access
 //		/datum/action/xeno_action/onclick/release_spores,
 	)
 	inherent_verbs = list(
@@ -95,7 +103,7 @@
 	action_icon_state = "place_trap"
 	plasma_cost = 700
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	var/fatal_use = FALSE
 
 /datum/action/xeno_action/onclick/place_spore_sac/fatal

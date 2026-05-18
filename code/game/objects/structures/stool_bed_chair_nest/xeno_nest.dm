@@ -26,6 +26,8 @@
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		icon = 'icons/mob/pathogen/pathogen_effects.dmi'
 
 	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
 	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)

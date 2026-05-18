@@ -61,7 +61,7 @@
 	pay_multiplier = 6
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/wy_ranks/wyc6
+/datum/paygrade/wy_ranks/wyc6l
 	paygrade = PAY_SHORT_WYC6L
 	name = "Legal Supervisor"
 	prefix = "L. Spvsr."

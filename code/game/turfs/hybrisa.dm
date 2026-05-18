@@ -243,6 +243,9 @@
 	icon_state = "carpet_colorable"
 	color = "#9f8184"
 
+/turf/open/floor/hybrisa/carpet/carpet_colorable/dark
+	icon_state = "carpet_colorable"
+	color = "#756e6a"
 
 /turf/open/floor/hybrisa/carpet/carpet_deco_colorable
 	icon_state = "carpet_deco_colorable"
@@ -434,6 +437,36 @@
 	dir = NORTHWEST
 
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/southeast
+	dir = SOUTHEAST
+
+// Rug Dark
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark
+	icon_state = "rug_colorable"
+	color = "#756e6a"
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/west
+	dir = WEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/hybrisa/carpet/rug_colorable/dark/southeast
 	dir = SOUTHEAST
 
 /turf/open/floor/hybrisa/carpet/carpetfadedred
@@ -1073,7 +1106,7 @@
 	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, looks like nothing you can do will penetrate the hull."
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"
-	walltype = WALL_HUNTERSHIP
+	walltype = WALL_ENGINEERSHIP
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/engineership/destructible

@@ -101,3 +101,9 @@
   realforest2001:
   - bugfix: Marking for hunt no longer stays behind after claiming trophy parts.
   - balance: Added a Leap/Jump ability to Yautja.
+2026-05-18:
+  KCartridge:
+  - qol: Seperated MP 'essentials kit' into vendor
+  Red-byte3D:
+  - balance: Huggers now leap up to 2 tiles from the egg it activates from instead
+      of 1

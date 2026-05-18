@@ -944,6 +944,12 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("Logistics IMP Backpack", 15, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
 	list("Expedition Chestrig", 15, /obj/item/storage/backpack/marine/satchel/intel/chestrig, null, VENDOR_ITEM_REGULAR),
 	list("Expedition Satchel", 15, /obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel, null, VENDOR_ITEM_REGULAR),
+	list("Green Poncho", 30, /obj/item/clothing/accessory/poncho/green, null, VENDOR_ITEM_REGULAR),
+	list("Brown Poncho", 30, /obj/item/clothing/accessory/poncho/brown, null, VENDOR_ITEM_REGULAR),
+	list("Black Poncho", 30, /obj/item/clothing/accessory/poncho/black, null, VENDOR_ITEM_REGULAR),
+	list("Blue Poncho", 30, /obj/item/clothing/accessory/poncho/blue, null, VENDOR_ITEM_REGULAR),
+	list("Purple Poncho", 30, /obj/item/clothing/accessory/poncho/purple, null, VENDOR_ITEM_REGULAR),
+
 ))
 
 //------------EXPERIMENTAL TOOL KITS---------------

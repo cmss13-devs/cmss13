@@ -62,12 +62,12 @@
 	return FALSE
 
 /obj/structure/barricade/plasteel/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY)
+		close(src)
+		return TRUE
 	if(V.seats[VEHICLE_DRIVER])
 		close(src)
-		return FALSE
-	else
-		. = ..()
-		return FALSE
+	return ..()
 
 /obj/structure/barricade/deployable/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes [src]!"))

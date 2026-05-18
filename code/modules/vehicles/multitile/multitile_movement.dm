@@ -159,6 +159,11 @@
 	var/bound_height_tiles = bound_height / world.icon_size
 	var/list/old_turfs = CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles)
 
+	for(var/turf/T as anything in old_turfs)
+		for(var/obj/structure/barricade/B in T)
+			if(!QDELETED(B) && B.last_bumped != world.time && (B.dir & direction))
+				Collide(B)
+
 	var/turf/new_loc = get_step(src, direction)
 	min_turf = locate(new_loc.x + bound_x_tiles, new_loc.y + bound_y_tiles, z)
 
@@ -177,7 +182,11 @@
 
 		if(!T.Enter(src))
 			can_move = FALSE
-			break
+
+		for(var/obj/structure/barricade/B in T)
+			if(!QDELETED(B) && B.last_bumped != world.time)
+				if(REVERSE_DIR(B.dir) & direction)
+					Collide(B)
 
 		// any other tile-blocking items that weren't caught by !T.Enter
 		for(var/atom/A in T)

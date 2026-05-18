@@ -1183,13 +1183,6 @@
 
 // Below is UI for old players.
 
-/datum/action/xeno_action/onclick/change_design/give_to(mob/living/carbon/xenomorph/xeno)
-	. = ..()
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(xeno.selected_design.icon_state))
-	button.overlays += image(icon_file, button, action_icon_state)
-
 /datum/action/xeno_action/onclick/change_design/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/choose_design))
 

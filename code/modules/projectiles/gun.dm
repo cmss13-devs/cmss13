@@ -1429,7 +1429,7 @@ and you're good to go.
 		return
 
 	if(EXECUTION_CHECK) //Execution
-		if(!able_to_fire(user)) //Can they actually use guns in the first place?
+		if(!able_to_fire(user, TRUE)) //Can they actually use guns in the first place?
 			return ..()
 		if(flags_gun_features & GUN_CANT_EXECUTE)
 			return ..()
@@ -1449,6 +1449,8 @@ and you're good to go.
 	if(flags_gun_features & GUN_BURST_FIRING || !able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
+	// Backend to make PB scale off of fire_delay instead of attack_speed
+	user.next_move = world.time - attack_speed + fire_delay
 
 	//The following relating to bursts was borrowed from Fire code.
 	var/check_for_attachment_fire = FALSE
@@ -1588,10 +1590,12 @@ and you're good to go.
 				else if(preference != DUAL_WIELD_NONE) //DUAL_WIELD_FIRE, Akimbo firing. Forced if weapons are automatic because it doesn't make sense.
 					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
 
+		var/executed = FALSE
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 			attacked_mob.death()
 			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
+			executed = TRUE
 		// No projectile code to handhold us, we do the cleaning ourselves:
 		QDEL_NULL(projectile_to_fire)
 		in_chamber = null
@@ -1602,19 +1606,48 @@ and you're good to go.
 			break //Nothing else to do here, time to cancel out.
 
 		if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
-			extra_delay = fire_delay * 0.5
-			sleep(burst_delay)
+			// Use fire_delay for point blank timing instead of attack_speed
+			var/pb_delay = fire_delay
+			// And burst delay instead of fire delay for burst fire pb
+			if(gun_firemode == GUN_FIREMODE_BURSTFIRE)
+				pb_delay = burst_delay
+			sleep(pb_delay)
 			if(get_dist(user, attacked_mob) > 1) //We can each move around while burst-PBing, but if we get too far from the target, we'll have to shoot at them normally.
 				PB_burst_bullets_fired = bullets_fired
 				break
 
+		// For full auto weapons, transition to auto fire after a PB if they're still holding down lmb
+		if(gun_firemode == GUN_FIREMODE_AUTOMATIC && bullets_fired == 1 && !executed)
+			PB_burst_bullets_fired = bullets_fired
+			break
+
 	flags_gun_features &= ~GUN_BURST_FIRING
+
+	// After a successful point blank, set proper fire delay to prevent bypassing gun's fire_delay during the auto fire transition
+	if(!check_for_attachment_fire)
+		last_fired = world.time
+
 	display_ammo(user)
 
 	if(PB_burst_bullets_fired)
-		Fire(get_turf(attacked_mob), user, reflex = TRUE) //Reflex prevents dual-wielding.
+		if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
+			set_target(get_turf(attacked_mob))
+			gun_user = user
+			// Trigger the autofire component AFTER the fire_delay from the point blank shot
+			addtimer(CALLBACK(src, PROC_REF(delayed_autofire_trigger)), fire_delay)
+		else
+			Fire(get_turf(attacked_mob), user, reflex = TRUE) //Reflex prevents dual-wielding.
+
+		// Clear the PB burst tracking variable now that we've handled the transition
+		PB_burst_bullets_fired = 0
 
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+///Delayed autofire trigger for automatic weapons after point blank attacks
+/obj/item/weapon/gun/proc/delayed_autofire_trigger()
+	// Only trigger if we're still in automatic mode and have a valid target/user
+	if(gun_firemode == GUN_FIREMODE_AUTOMATIC && target && gun_user)
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 
 #undef EXECUTION_CHECK
@@ -1715,7 +1748,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(current_mag?.current_rounds > 0)
 		return TRUE //Loaded magazine.
 
-/obj/item/weapon/gun/proc/able_to_fire(mob/user)
+/obj/item/weapon/gun/proc/able_to_fire(mob/user, is_point_blank = FALSE)
 	/*
 	Removed ishuman() check. There is no reason for it, as it just eats up more processing, and adding fingerprints during the fire cycle is silly.
 	Consequently, predators are able to fire while cloaked.
@@ -1781,6 +1814,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		// The rest is delay-related. If we're firing full-auto it doesn't matter
 		if(fa_firing)
 			return TRUE
+
+		// For point blank attacks, use gun's actual fire rate instead of attack_speed timing
+		if(is_point_blank)
+			var/time_since_last = world.time - last_fired
+			var/required_delay = fire_delay
+
+			if(time_since_last >= required_delay)
+				return TRUE
+			else if(PB_burst_bullets_fired && !(flags_gun_features & GUN_BURST_FIRING)) // Allow continuation of point blank bursts, but not during active bursts
+				return TRUE
+			return
 
 		var/next_shot
 

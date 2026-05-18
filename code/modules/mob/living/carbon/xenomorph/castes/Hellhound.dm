@@ -128,7 +128,8 @@
 	..()
 	SetKnockDown(0.5 SECONDS) // faster because theyre already slow as hell
 
-/mob/living/carbon/xenomorph/hellhound/proc/handle_weed_slowdown(mob/user, list/slowdata)
+/// Signal handler for COMSIG_MOB_WEED_SLOWDOWN that when registered causes the xeno to ignore weed slowdown.
+/mob/living/carbon/xenomorph/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER
 	slowdata["movement_slowdown"] *= 0
 

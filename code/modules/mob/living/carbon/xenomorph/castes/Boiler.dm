@@ -65,6 +65,7 @@
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,

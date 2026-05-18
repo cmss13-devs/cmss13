@@ -18,6 +18,7 @@
 	name = "Anchorpoint Station"
 	docking_message = "This is the Anchorpoint Colonial Marshals Bureau, we're initiating boarding procedure to investigate your distress signal."
 	allies = list(
+		/datum/emergency_call/cmb/riot_control,
 		/datum/emergency_call/cmb,
 	)
 

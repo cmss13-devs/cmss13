@@ -283,7 +283,6 @@
 	ping = "ping_x"
 	debilitate = list(2,2,0,1,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
-	var/datum/effect_system/smoke_spread/smoke_system
 	spit_cost = 200
 	pre_spit_warn = TRUE
 	spit_windup = 5 SECONDS
@@ -293,8 +292,10 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 	shell_speed = 0.75
 	max_range = 16
+	var/datum/effect_system/smoke_spread/smoke_system
 	/// range on the smoke in tiles from center
 	var/smokerange = 4
+	/// The multiplier for the smoke lifetime
 	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
@@ -335,7 +336,6 @@
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/projectile/proj)
-	var/lifetime_mult = 1.0
 	var/datum/cause_data
 	if(isboiler(proj.firer))
 		cause_data = proj.weapon_cause_data

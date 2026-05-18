@@ -89,7 +89,13 @@ SUBSYSTEM_DEF(minimaps)
 			continue
 
 		var/atom/movable/screen/minimap/target = updater.minimap
-		if(istype(target) && !target.live)
+		var/is_live = FALSE
+		var/is_observer = FALSE
+		if(istype(target))
+			is_live = target.live
+			is_observer = target.is_observer_minimap
+
+		if(!is_live)
 			update_targets_unsorted -= updater
 			continue
 
@@ -97,7 +103,7 @@ SUBSYSTEM_DEF(minimaps)
 		var/list/combined_overlays = list()
 
 		// Filter raw_blips for observer maps to exclude labels
-		if(istype(target) && target.is_observer_minimap)
+		if(is_observer)
 			// For observer maps, filter out any labels
 			for(var/image/blip as anything in updater.raw_blips)
 				if(!blip.maptext)

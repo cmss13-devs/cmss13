@@ -135,12 +135,13 @@
 			"completed" = document_report.completed,
 			"overdose" = document_report.data?.overdose,
 			"overall_value" = chemical_value,
-			"document_type" = (document_spliced[1] == "Contract" ? 1 : (document_spliced[1] == "Synthesis" ? 2 : 3)),
+			"document_type" = (doc_type_string == "Contract" ? 1 : (doc_type_string == "Synthesis" ? 2 : 3)),
 			"properties_list" = properties_codes_level,
 		))
 	if(!length(data["paper_data"]))
 		data["paper_data"] = null
 	return data
+
 /obj/structure/filingcabinet/research/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return
@@ -162,33 +163,58 @@
 		var/obj/item/paper/research_notes/note = attacked_item
 		if(note.note_type != "synthesis")
 			return
-		var/obj/item/new_report = note.convert_to_chem_report()
+		var/obj/item/paper/research_report/new_report = note.convert_to_chem_report()
 		if(!new_report)
+			to_chat(user, SPAN_WARNING("The notes could not be converted into a valid report."))
 			return
-		attacked_item = new_report
-		if(is_type_in_list(attacked_item, allowed_types))
-			var/obj/item/paper/research_report/document_report = attacked_item
-			if(document_report.valid_report && !isnull(document_report.data))
-				var/duplicate = FALSE
-				for(var/obj/item/paper/research_report/document_inside in paper_contents)
-					if(document_inside.data?.id == document_report.data?.id)
-						duplicate = TRUE
-						to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is identical document already in the array."))
-						break
-				if(duplicate)
-					return
-				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
-				if(attacked_item.loc == user)
-					user.drop_inv_item_to_loc(attacked_item, src)
-				else
-					attacked_item.forceMove(src)
-				LAZYADD(paper_contents, attacked_item)
-				icon_state = "[initial(icon_state)]-open"
-				addtimer(CALLBACK(src, "reset_icon"), 0.5 SECONDS)
-				update_static_data_for_all_viewers()
-			else
-				to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but is refused."))
+		if(!new_report.valid_report || isnull(new_report.data))
+			to_chat(user, SPAN_WARNING("You try to slot the converted notes into a sorting tray, but they are refused."))
+			qdel(new_report) //clean up failed instance
+			return
+		var/duplicate = FALSE
+		for(var/obj/item/paper/research_report/document_inside in paper_contents)
+			if(document_inside.data?.id == new_report.data?.id)
+				duplicate = TRUE
+				break
+		if(duplicate)
+			to_chat(user, SPAN_WARNING("You try to slot the document into a sorting tray, but there is an identical document already in the array."))
+			qdel(new_report)
+			return
+
+		to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+		qdel(note)
+		new_report.forceMove(src)
+		LAZYADD(paper_contents, new_report)
+		icon_state = "[initial(icon_state)]-open"
+		addtimer(CALLBACK(src, "reset_icon"), 0.5 SECONDS)
+		update_static_data_for_all_viewers()
+		return
+
+	if(is_type_in_list(attacked_item, allowed_types))
+		var/obj/item/paper/research_report/document_report = attacked_item
+		if(document_report.valid_report && !isnull (document_report.data))
+			var/duplicate = FALSE
+			for(var/obj/item/paper/research_report/document_inside in paper_contents)
+				if(document_inside.data?.id == document_report.data?.id)
+					duplicate = TRUE
+					to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is an identical document already in the array."))
+					break
+			if(duplicate)
 				return
+			to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+			if(attacked_item.loc == user)
+				user.drop_inv_item_to_loc(attacked_item, src)
+			else
+				attacked_item.forceMove(src)
+			LAZYADD(paper_contents, attacked_item)
+			icon_state = "[initial(icon_state)]-open"
+			addtimer(CALLBACK(src, "reset_icon"),0.5 SECONDS)
+			update_static_data_for_all_viewers()
+			return
+		else
+			to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but it is refused."))
+			return
+
 /*
  * Security Record Cabinets
  */

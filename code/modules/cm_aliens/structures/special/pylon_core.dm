@@ -36,6 +36,10 @@
 
 	icon_state = "pylon"
 
+
+/obj/effect/alien/resin/special/pylon/get_protection_level()
+	return protection_level
+
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 

@@ -1,5 +1,7 @@
 #define CLUSTER_REPAIR_TIME (4 SECONDS)
 #define CLUSTER_WEEDS_REGROWTH_TIME (15 SECONDS)
+//
+#define MOBS_NESTED_NEAR 3
 
 /obj/effect/alien/resin/special/cluster
 	name = XENO_STRUCTURE_CLUSTER
@@ -21,18 +23,32 @@
 	var/plasma_required_to_repair = 300
 	COOLDOWN_DECLARE(time_for_auto_repair)
 
+	var/protection_level = TURF_PROTECTION_NONE
+	var/list/roofed_turfs = list()
+	var/nested_mob_count = 0
+
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()
 	update_minimap_icon()
 
+	if(node)
+		for(var/turf/covered_turf in range(node.node_range, src))
+			LAZYADD(covered_turf.linked_pylons, src)
+			roofed_turfs += covered_turf
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/ui_icons/map_blips.dmi', null, "cluster"))
 
 /obj/effect/alien/resin/special/cluster/Destroy()
+	for(var/turf/covered_turf as anything in roofed_turfs)
+		LAZYREMOVE(covered_turf.linked_pylons, src)
+	roofed_turfs = null
+
 	QDEL_NULL(node)
 	SSminimaps.remove_marker(src)
 	return ..()
@@ -44,12 +60,12 @@
 	else
 		return ..()
 
-
 /obj/effect/alien/resin/special/cluster/process()
 	. = ..()
+	scan_for_nested_roof()
 
 	if(!boosted_structure)
-		STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSdcs, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
@@ -59,6 +75,24 @@
 		automatic_repair()
 
 	COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
+
+/obj/effect/alien/resin/special/cluster/proc/scan_for_nested_roof()
+	if(!node)
+		return
+
+	var/count = 0
+	for(var/turf/scanned_turf in range(node.node_range, src))
+		for(var/mob/living/nested_mob in scanned_turf)
+			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
+				continue
+			count++
+
+	nested_mob_count = count
+
+	if(nested_mob_count >= MOBS_NESTED_NEAR)
+		protection_level = TURF_PROTECTION_CAS
+	else
+		protection_level = TURF_PROTECTION_NONE
 
 /obj/effect/alien/resin/special/cluster/proc/start_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
@@ -129,5 +163,9 @@
 	W.resin_parent = src
 	return W
 
+/obj/effect/alien/resin/special/cluster/get_protection_level()
+	return protection_level
+
 #undef CLUSTER_REPAIR_TIME
 #undef CLUSTER_WEEDS_REGROWTH_TIME
+#undef MOBS_NESTED_NEAR

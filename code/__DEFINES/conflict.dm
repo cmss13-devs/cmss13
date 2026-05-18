@@ -77,6 +77,7 @@
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
+#define GUN_AKIMBO_ALLOWED (1<<18) // bypass akimbo malus
 
 #define USES_STREAKS (1<<0)
 #define DANGEROUS_TO_ONEHAND_LEVER (1<<1)

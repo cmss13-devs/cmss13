@@ -423,6 +423,29 @@
 	specialty = "B12 pattern marine"
 	light_range = 5
 
+/obj/item/clothing/suit/storage/marine/medium/leader/mod_a
+	name = "\improper modified B12 pattern marine armor 'A'"
+	desc = "A heavily altered suit of B12 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+	icon_state = "MA"
+	specialty = "B12 pattern mod-'A' marine"
+	lamp_icon = "lampr"
+
+/obj/item/clothing/suit/storage/marine/medium/leader/mod_b
+	name = "\improper modified B12 pattern marine armor 'B'"
+	desc = "A heavily altered suit of B12 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+	icon_state = "MB"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 4
+	specialty = "B12 pattern mod-'B' marine"
+	lamp_icon = "lampr"
+
+/obj/item/clothing/suit/storage/marine/light/leader/mod_c
+	name = "\improper modified M3-L pattern marine armor"
+	desc = "A heavily altered suit of lightweight M3-L pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
+	icon_state = "MC"
+	specialty = "M3-L pattern mod marine"
+	lamp_icon = "lampr"
+
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
 	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."

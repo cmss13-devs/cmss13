@@ -30,6 +30,8 @@
 	var/flags_startup_parameters = NO_FLAGS
 	///Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 	var/flags_whitelist = NO_FLAGS
+	///Set to TRUE by jobs that allow for variants based on whitelists, permissions, or other checks that require /mob/user to be passed to them.
+	var/job_variants_check = FALSE
 
 	///If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes
@@ -361,6 +363,10 @@
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)
+	return
+
+/// Intended to be overwritten to handle when a job has variants that can be selected that depend on user data.
+/datum/job/proc/handle_job_variant_options(option, /mob/user)
 	return
 
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected

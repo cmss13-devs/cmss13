@@ -1264,6 +1264,8 @@ and you're good to go.
 	if(!reflex && !dual_wield && user)
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_AKIMBO_ALLOWED))
+			dual_wield = FALSE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	if(!fire_return)

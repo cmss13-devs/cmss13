@@ -896,6 +896,58 @@
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
 
+/obj/item/weapon/gun/pistol/vp78/vp78m6
+	name = "\improper VP78M6 pistol"
+	desc = "The VP78M6, often called the 'Mod Six', or just 'Sixes', are enhanced variants of the VP78 combat pistol. Smoother trigger assemblies, formed grips, longer shrouded barrels. These M6's have been modified to have special counterweights in the receivers and under the barrels to resist muzzle climb, allowing for much better handling, so much better, in fact, that holding just one doesn't feel right."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	icon_state = "vp78m6"
+	item_state = "vp78m6"
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
+	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg' // yes we are normalized bro -8db :D
+	force = 8
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight/vp,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
+	if(LAZYLEN(starting_attachment_types))
+		for(var/path in starting_attachment_types)
+			var/obj/item/attachable/A = new path(src)
+			A.Attach(src)
+			update_attachable(A.slot)
+
+	var/obj/item/attachable/lasersight/vp/attachment = new(src)
+	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachment.hidden = FALSE
+	attachment.Attach(src)
+	update_attachable(attachment.slot)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
 
 //-------------------------------------------------------
 /*

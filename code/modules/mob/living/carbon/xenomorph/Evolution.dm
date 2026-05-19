@@ -411,9 +411,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
 
+	var/atom/devolve_location = loc
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
-		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno]. (Location: [AREACOORD(loc)])")
+		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno]. (Location: [AREACOORD(devolve_location)])")
 
 	if(new_xeno.ckey)
 		GLOB.deevolved_ckeys += new_xeno.ckey

@@ -23,7 +23,7 @@
 	var/plasma_required_to_repair = 300
 	COOLDOWN_DECLARE(time_for_auto_repair)
 
-	var/protection_level = TURF_PROTECTION_NONE
+	protection_level = TURF_PROTECTION_NONE
 	var/list/roofed_turfs = list()
 	var/nested_mob_count = 0
 
@@ -33,22 +33,19 @@
 	update_minimap_icon()
 
 	if(node)
-		for(var/turf/covered_turf in range(node.node_range, src))
+		for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
 			LAZYADD(covered_turf.linked_pylons, src)
-			roofed_turfs += covered_turf
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
-	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+	RegisterSignal(SSfastobj, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
+	RegisterSignal(SSfastobj, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
 
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/ui_icons/map_blips.dmi', null, "cluster"))
 
 /obj/effect/alien/resin/special/cluster/Destroy()
-	for(var/turf/covered_turf as anything in roofed_turfs)
+	for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
 		LAZYREMOVE(covered_turf.linked_pylons, src)
-	roofed_turfs = null
-
 	QDEL_NULL(node)
 	SSminimaps.remove_marker(src)
 	return ..()
@@ -65,7 +62,7 @@
 	scan_for_nested_roof()
 
 	if(!boosted_structure)
-		STOP_PROCESSING(SSdcs, src)
+		STOP_PROCESSING(SSfastobj, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
@@ -81,7 +78,7 @@
 		return
 
 	var/count = 0
-	for(var/turf/scanned_turf in range(node.node_range, src))
+	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
 		for(var/mob/living/nested_mob in scanned_turf)
 			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
 				continue
@@ -100,7 +97,7 @@
 		return
 	else
 		boosted_structure = TRUE
-		START_PROCESSING(SSdcs, src)
+		START_PROCESSING(SSfastobj, src)
 
 /obj/effect/alien/resin/special/cluster/proc/stop_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
@@ -163,8 +160,6 @@
 	W.resin_parent = src
 	return W
 
-/obj/effect/alien/resin/special/cluster/get_protection_level()
-	return protection_level
 
 #undef CLUSTER_REPAIR_TIME
 #undef CLUSTER_WEEDS_REGROWTH_TIME

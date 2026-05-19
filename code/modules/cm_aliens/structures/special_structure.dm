@@ -16,6 +16,7 @@
 	block_range = 1
 	var/boosted_structure = FALSE
 	var/datum/hive_status/linked_hive
+	var/protection_level = TURF_PROTECTION_NONE
 
 	plane = FLOOR_PLANE
 
@@ -72,6 +73,4 @@
 	else
 		boosted_structure = FALSE
 
-/obj/effect/alien/resin/special/proc/get_protection_level()
-	return TURF_PROTECTION_NONE
 

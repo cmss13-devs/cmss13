@@ -115,7 +115,7 @@
 		minimap_added.Remove(xeno)
 
 /obj/vehicle/multitile/arc/process()
-var/turf/arc_turf = get_turf(src)
+	var/turf/arc_turf = get_turf(src)
 	if((health <= 0) || !visible_in_tacmap || !is_ground_level(arc_turf.z))
 		return
 

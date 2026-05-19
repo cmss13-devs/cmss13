@@ -107,3 +107,12 @@
   Red-byte3D:
   - balance: Huggers now leap up to 2 tiles from the egg it activates from instead
       of 1
+2026-05-19:
+  DarkLordCabbage:
+  - bugfix: hopefully fixes some erroneous triggers for surgery initiation messages
+  cuberound:
+  - balance: reduces average autobreake time from 3.3 hours to 8 minutes
+  - bugfix: xenos clear from sensor tower instantly when it gets broken
+  - bugfix: sensos add xenos instantly to the tacmap when turned on
+  larentoun:
+  - balance: Crusher Melee Attacks now Slow for 2 Seconds (was 3.5 Seconds)

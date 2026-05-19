@@ -1,6 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "reduces average autobreake time from 3.3 hours to 8 minutes"
-  - bugfix: "xenos clear from sensor tower instantly when it gets broken"
-  - bugfix: "sensos add xenos instantly to the tacmap when turned on"

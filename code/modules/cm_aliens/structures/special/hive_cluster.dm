@@ -94,7 +94,6 @@
 		return
 	else
 		boosted_structure = TRUE
-		START_PROCESSING(SSfastobj, src)
 
 /obj/effect/alien/resin/special/cluster/proc/stop_boost(source, hive_purchaser)
 	SIGNAL_HANDLER

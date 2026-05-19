@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - bugfix: "hopefully fixes some erroneous triggers for surgery initiation messages"

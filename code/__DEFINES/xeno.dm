@@ -788,7 +788,7 @@
 #define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
 #define MAX_IMPREGNATION_TIME 15 SECONDS
 
-#define HUGGER_ACTIVE_TIME 3.5 SECONDS //Time between being dropped and being able to jump
+#define HUGGER_ACTIVE_TIME 3 SECONDS //Time between being dropped and being able to jump
 
 #define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
 #define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.

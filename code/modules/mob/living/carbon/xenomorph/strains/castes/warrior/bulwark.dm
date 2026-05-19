@@ -22,23 +22,26 @@
 	warrior.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_1
 	warrior.add_plasma += XENO_PLASMA_TIER_2
 	warrior.speed += XENO_SPEED_TIER_1
-	warrior.tackle_min_modifier += 2
 	warrior.tackle_max_modifier += 1
 
 	warrior.recalculate_everything()
 
 //
-// Passive benefits
+// bulwark config
 //
 
 #define BULWARK_FRONT_ARMOR 10
 #define BULWARK_SIDE_ARMOR 5
 #define BULWARK_GRENADE_SWEEP_THROW 2
 #define BULWARK_REFLECTION_DURATION 10 SECONDS
-#define BULWARK_REFLECTION_BASE_CHANCE 80
-#define BULWARK_SIDE_REFLECTION_PROCENTAGE 0.8
-#define BULWARK_BACK_REFLECTION_PROCENTAGE 0.35
+#define BULWARK_REFLECTION_CHANCE_BASE 80
+#define BULWARK_REFLECTION_CHANCE_SIDES 65
+#define BULWARK_REFLECTION_CHANCE_BACK 30
 #define BULWARK_REFLECTED_BULLET_DAMAGE 0.5
+
+//
+// Passive benefits
+//
 
 /datum/behavior_delegate/warrior_bulwark
 	name = "Bulwark Warrior Behavior Delegate"
@@ -48,12 +51,6 @@
 
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
-	/// Chance to reflect projectile when hit while reflective shield is active.
-	var/reflective_shield_chance = 0
-	/// Store target of plate slam ability.
-	var/datum/weakref/plate_slam_target = null
-	/// Shield slam addtimer ID (for deletion)
-	var/shield_slam_timer_id = TIMER_ID_NULL
 
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
 	. = list()
@@ -113,6 +110,7 @@
 		xeno_player.front_armor -= BULWARK_FRONT_ARMOR
 		xeno_player.side_armor -= BULWARK_SIDE_ARMOR
 		xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
+		xeno_player.tackle_min_modifier -= 2
 	else
 		ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
 		to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
@@ -123,7 +121,9 @@
 		xeno_player.front_armor += BULWARK_FRONT_ARMOR
 		xeno_player.side_armor += BULWARK_SIDE_ARMOR
 		xeno_player.damage_modifier -= XENO_DAMAGE_MOD_BULWARK
+		xeno_player.tackle_min_modifier += 2
 
+	xeno_player.recalculate_tackle()
 	xeno_player.update_icons()
 
 	apply_cooldown()
@@ -278,7 +278,6 @@
 		return
 
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
-	behavior.reflective_shield_chance = BULWARK_REFLECTION_BASE_CHANCE
 	button.icon_state = "template_active"
 	reflective_start_time = world.time
 	reflective_safe_click_cooldown = world.time + 1 SECONDS
@@ -314,7 +313,6 @@
 		return
 
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
-	behavior.reflective_shield_chance = 0
 	button.icon_state = "template_xeno"
 	xeno_player.remove_filter("reflective_shield")
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
@@ -340,24 +338,23 @@
 		return
 
 	if((bullet.ammo.flags_ammo_behavior & ARMOR_PENETRATION_TIER_10) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET))
-		return //we don't want to reflect wall penetrating bullets or rockets.
+		return //we don't want to reflect high-armor piercing bullets or rockets.
 
-	var/base_chance = behavior.reflective_shield_chance
 	var/projectile_dir = 0
 
 	if(!bullet.firer)
 		return
 
-	projectile_dir = get_dir(bullet.firer.loc, src)
+	projectile_dir = bullet.dir
 
-	if(projectile_dir == REVERSE_DIR(src.dir))
-		return base_chance
+	if(src.dir & REVERSE_DIR(projectile_dir))
+		return BULWARK_REFLECTION_CHANCE_BASE
 
 	for(var/side_dir in get_perpen_dir(src.dir))
 		if(projectile_dir == side_dir)
-			return base_chance * BULWARK_SIDE_REFLECTION_PROCENTAGE //only gets ?% value of base reflection chance.
+			return BULWARK_REFLECTION_CHANCE_SIDES
 
-	return base_chance * BULWARK_BACK_REFLECTION_PROCENTAGE
+	return BULWARK_REFLECTION_CHANCE_BACK
 
 /obj/projectile/proc/reflect_projectile_at_firer(mob/living/carbon/xenomorph/xeno_player, obj/projectile/bullet)
 	if(!bullet.firer || !isturf(loc))

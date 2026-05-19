@@ -1,5 +1,18 @@
-/datum/reagent/blood/xeno_blood/blight
+/datum/reagent/blightfluid
 	name = "Blight Fluid"
+	id = "blightfluid"
+	description = "What is this...?"
+	color = "#ceb8b0"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_HIGH_VALUE
+	properties = list(PROPERTY_PAINING = 1, PROPERTY_FLUXING = 1, PROPERTY_HEMOSITIC = 1)
+	flags = REAGENT_NO_GENERATION|REAGENT_SCANNABLE
+
+/datum/reagent/blood/xeno_blood/blight
+	name = "Concentrated Blight Fluid"
 	id = BLOOD_BLIGHT
 	description = "What is this...?"
 	color = "#ceb8b0"

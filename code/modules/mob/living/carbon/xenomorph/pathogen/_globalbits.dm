@@ -83,7 +83,7 @@
 /obj/effect/alien/weeds/node/pathogen/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
 	. = ..()
 	create_reagents(30)
-	reagents.add_reagent(BLOOD_BLIGHT, 30)
+	reagents.add_reagent("blightfluid", 30)
 
 /obj/effect/alien/weeds/pathogen
 	name = "mycelium blight"

@@ -28,15 +28,6 @@
 			var/hivenumber = GLOB.hive_datum[level]
 			hivenumber_alienize = hivenumber
 
-	for(var/datum/reagent/ciphering_reagent_predator as anything in affected_mob.reagents.reagent_list)
-		var/datum/chem_property/property_CIP_PRED = ciphering_reagent_predator.get_property(PROPERTY_CIPHERING_PREDATOR) //checks for predalien hivenumber
-
-		if(property_CIP_PRED)
-			level = property_CIP_PRED.level //check level on PCI for hivenumber_alienize
-			var/hivenumber = GLOB.hive_datum[level]
-			hivenumber_alienize = hivenumber
-			alienize_list = list(XENO_CASTE_PREDALIEN)
-
 
 	switch(stage)
 		if(1)

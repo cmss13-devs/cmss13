@@ -1,6 +1,6 @@
 #define CLUSTER_REPAIR_TIME (4 SECONDS)
 #define CLUSTER_WEEDS_REGROWTH_TIME (15 SECONDS)
-// 3 people nested for the god damn thingamajig
+// This is what decides the # of people that require nesting to put the 'pylon protection' into effect.
 #define MOBS_NESTED_NEAR 3
 
 /obj/effect/alien/resin/special/cluster
@@ -24,7 +24,6 @@
 	COOLDOWN_DECLARE(time_for_auto_repair)
 
 	protection_level = TURF_PROTECTION_NONE
-	var/list/roofed_turfs = list()
 	var/nested_mob_count = 0
 
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
@@ -36,8 +35,8 @@
 		for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
 			LAZYADD(covered_turf.linked_pylons, src)
 
-	RegisterSignal(SSfastobj, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
-	RegisterSignal(SSfastobj, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
 
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -61,17 +60,15 @@
 	. = ..()
 	scan_for_nested_roof()
 
-	if(!boosted_structure)
-		STOP_PROCESSING(SSfastobj, src)
-		return
+	if(boosted_structure)
 
-	if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
-		return
+		if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
+			return
 
-	if(health <= maxhealth)
-		automatic_repair()
+		if(health <= maxhealth)
+			automatic_repair()
 
-	COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
+		COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
 
 /obj/effect/alien/resin/special/cluster/proc/scan_for_nested_roof()
 	if(!node)

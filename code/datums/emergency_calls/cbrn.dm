@@ -93,7 +93,7 @@
 	..()
 	var/cbrn_team_name = "Unit [pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
 	arrival_message = "[MAIN_SHIP_NAME], CBRN [cbrn_team_name] has been dispatched. Comply with all Biohazard Control instructions from [cbrn_team_name]."
-	objectives = "You are a member of the CBRN [cbrn_team_name] dispatched to quell a serious biological threat to [MAIN_SHIP_NAME]. Further orders may be provided."
+	objectives = "You are a member of the CBRN [cbrn_team_name] dispatched to quell a serious biological threat to [MAIN_SHIP_NAME]. You are not responsible for assisting the marines on the colony, remain aboard the [MAIN_SHIP_NAME] and enforce any necessary biohazard containment procedures. Further orders may be provided."
 
 /datum/emergency_call/cbrn/pathogen/create_member(datum/mind/new_mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

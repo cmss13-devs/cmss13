@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Give Penlight eye assessment a cooldown, and lower it's blind time"
-  - admin: "Add logging to the penlight eye assesment"

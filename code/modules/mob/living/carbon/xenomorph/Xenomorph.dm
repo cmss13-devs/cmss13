@@ -534,10 +534,14 @@
 
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
+	if(hive.hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
+	else
+		minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+		var/datum/action/minimap/ref = minimap_ref.resolve()
+		ref.give_to(src, ref)
+		RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
 
 	creation_time = world.time
 
@@ -547,11 +551,14 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.remove_from(src)
+	var/datum/action/minimap/ref
+	if(minimap_ref)
+		ref = minimap_ref.resolve()
+		ref.remove_from(src)
 
 	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
 	ref = minimap_ref.resolve()
+	ref.minimap_flags |= get_minimap_flag_for_faction(hive.hivenumber)
 	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
@@ -908,6 +915,9 @@
 
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	if(new_hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
 
 	generate_name()
 

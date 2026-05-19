@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "DS sprites rotate correctly with DS direction change (mainly for ert)"

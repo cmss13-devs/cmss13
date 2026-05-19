@@ -27,8 +27,8 @@
 	. = ..()
 	bound_width = x_dim * world.icon_size
 	bound_height = y_dim * world.icon_size
-	register_turf_signals()
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_turf_signals))
+	for(var/turf/turf in locs)
+		RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(movable_entering_tent), override = TRUE)
 
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
@@ -45,11 +45,6 @@
 		roof_image.plane = ROOF_PLANE
 		roof_image.appearance_flags = KEEP_APART
 		src.overlays += roof_image
-
-/obj/structure/tent/proc/register_turf_signals()
-	SIGNAL_HANDLER
-	for(var/turf/turf in locs)
-		RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(movable_entering_tent), override = TRUE)
 
 /obj/structure/tent/proc/movable_entering_tent(turf/hooked, atom/movable/subject)
 	SIGNAL_HANDLER

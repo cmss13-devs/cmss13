@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - maptweak: "For New Varadero, moves the northern LZ1 comms spawn southward near the main access hallways, adjacent to the chapel. The rational for this is to make it equally as challenging to defend this comm spawn as every other possible comm spawn location, as the far north comms spawn currently is easier to defend in comparison."

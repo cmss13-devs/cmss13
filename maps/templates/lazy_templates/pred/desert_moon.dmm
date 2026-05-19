@@ -12,7 +12,7 @@
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
 "ac" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room/desert/interior)
 "ad" = (
 /obj/item/skull/warrior{
@@ -34,17 +34,17 @@
 "af" = (
 /obj/structure/prop/hunter/trophy_display,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ag" = (
 /obj/structure/prop/hunter/trophy_display/top_center,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ah" = (
 /obj/structure/prop/hunter/trophy_display/top_right,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ai" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -52,7 +52,7 @@
 	layer = 2.9;
 	pixel_x = 1
 	},
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "aj" = (
 /obj/structure/machinery/door_control/yautja{
@@ -302,7 +302,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/south)
 "bu" = (
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple/entrance/desert)
 "bv" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
@@ -983,7 +983,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves)
 "dX" = (
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "dY" = (
 /obj/item/weapon/broken_bottle,
@@ -1451,7 +1451,7 @@
 /area/yautja_grounds/caves/north_east)
 "gg" = (
 /obj/structure/machinery/prop/yautja/bubbler,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room/desert/interior)
 "gh" = (
 /turf/closed/wall/rock/orange,
@@ -1557,7 +1557,7 @@
 /area/yautja_grounds/caves/north_west)
 "gI" = (
 /obj/structure/prop/brazier/frame/full/torch,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple/entrance/desert)
 "gJ" = (
 /turf/open/mars_cave/mars_dirt_5,
@@ -1961,14 +1961,14 @@
 /area/yautja_grounds/temple)
 "iG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iH" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple)
 "iI" = (
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/temple)
 "iJ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -1976,7 +1976,7 @@
 /area/yautja_grounds/temple)
 "iK" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iL" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -1988,62 +1988,62 @@
 /area/yautja_grounds/temple)
 "iN" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "iO" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "iP" = (
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "iQ" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "iR" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "iT" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iU" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iV" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "iW" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "iX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "iY" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "iZ" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "ja" = (
 /obj/structure/curtain/leather/alt,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "jb" = (
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "jc" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -2052,15 +2052,15 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "jd" = (
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "je" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "jf" = (
 /obj/item/skull/praetorian{
@@ -2110,14 +2110,14 @@
 	pixel_x = 17;
 	pixel_y = 34
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "jl" = (
 /obj/item/skull/warrior{
 	pixel_y = 35;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "jm" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
@@ -2143,7 +2143,7 @@
 /area/yautja_grounds/temple/entrance/desert)
 "jp" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple/entrance/desert)
 "jq" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -2151,7 +2151,7 @@
 /area/yautja_grounds/temple/entrance/desert)
 "jr" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple/entrance/desert)
 "js" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -2163,7 +2163,7 @@
 /area/yautja_grounds/temple/entrance/desert)
 "ju" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple/entrance/desert)
 "jv" = (
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -2200,7 +2200,7 @@
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple)
 "jB" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -2287,7 +2287,7 @@
 	layer = 3;
 	pixel_y = -1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple)
 "jM" = (
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -2315,7 +2315,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west{
 	pixel_x = -4
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "jP" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west{
@@ -2331,7 +2331,7 @@
 	pixel_y = -7;
 	pixel_x = -4
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple)
 "jR" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -2357,7 +2357,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west{
 	pixel_x = -4
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "jU" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -2370,14 +2370,14 @@
 	anchored = 1;
 	layer = 2.9
 	},
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "jW" = (
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = -7;
 	pixel_x = -4
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "jX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west{
@@ -2386,7 +2386,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = -4
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/turf/open/predship/tile/red5,
 /area/yautja_grounds/temple)
 "jY" = (
 /obj/structure/prop/hunter/misc/prop_armor{
@@ -2398,14 +2398,14 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "jZ" = (
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = -7;
 	pixel_x = -4
 	},
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "ka" = (
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -2545,7 +2545,7 @@
 	color = "#6b675e"
 	},
 /obj/item/reagent_container/glass/rag/polishing_rag,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room/desert/interior)
 "kJ" = (
 /turf/open/mars_cave/mars_cave_16,
@@ -2855,7 +2855,7 @@
 /obj/structure/showcase/yautja/alt{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/yautja_grounds/temple)
 "lP" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle{
@@ -2976,7 +2976,7 @@
 /obj/structure/prop/brazier/frame/full{
 	pixel_y = 3
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple/entrance/desert)
 "mh" = (
 /obj/item/ammo_magazine/rifle/m41aMK1/heap{
@@ -3218,7 +3218,7 @@
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple/entrance/desert)
 "uA" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/temple)
 "va" = (
 /obj/structure/closet/crate{
@@ -3234,7 +3234,7 @@
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/desert/east)
 "wh" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple/entrance/desert)
 "wu" = (
 /obj/structure/surface/rack{
@@ -3274,7 +3274,7 @@
 /obj/structure/showcase/yautja/alt{
 	pixel_y = 18
 	},
-/turf/open/shuttle/dropship/predship,
+/turf/open/predship,
 /area/yautja_grounds/temple)
 "xV" = (
 /turf/closed/wall/kutjevo/rock,
@@ -3356,7 +3356,7 @@
 /area/yautja_grounds/caves)
 "Cj" = (
 /obj/structure/prop/brazier/torch,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "Co" = (
 /obj/structure/closet/coffin/predator,
@@ -3484,7 +3484,7 @@
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/yautja_grounds/caves)
 "MT" = (
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "MX" = (
 /obj/structure/platform/stone/kutjevo/west,
@@ -3557,7 +3557,7 @@
 /area/yautja_grounds/temple/entrance/desert)
 "Sn" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/temple/entrance/desert)
 "Sq" = (
 /turf/open/gm/river/desert/shallow_edge,
@@ -3566,11 +3566,11 @@
 /obj/structure/prop/brazier{
 	pixel_y = 3
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/yautja_grounds/temple)
 "Um" = (
 /obj/structure/prop/brazier/torch,
-/turf/closed/wall/cult/hunting_grounds,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "Up" = (
 /turf/open/floor/engine/cult,
@@ -3587,7 +3587,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/temple)
 "Vr" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
@@ -3604,7 +3604,7 @@
 	color = "#6b675e"
 	},
 /obj/item/reagent_container/glass/rag/polishing_rag,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room/desert/interior)
 "Wk" = (
 /turf/closed/wall/kutjevo/rock,

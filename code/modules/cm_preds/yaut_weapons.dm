@@ -479,7 +479,6 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
-	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"

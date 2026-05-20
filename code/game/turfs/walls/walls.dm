@@ -254,9 +254,7 @@
 	. = ..()
 
 	if(turf_flags & TURF_HULL)
-		if(isobserver(user))
-			return
-		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
+		.+= SPAN_WARNING("This cannot even be scratched by any tools.")
 		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
 
 	if(!damage)

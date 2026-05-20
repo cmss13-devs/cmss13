@@ -116,3 +116,8 @@
   - bugfix: sensos add xenos instantly to the tacmap when turned on
   larentoun:
   - balance: Crusher Melee Attacks now Slow for 2 Seconds (was 3.5 Seconds)
+2026-05-20:
+  MistChristmas:
+  - bugfix: Forsaken can now track humans on their TacMap like they should've
+  Wabberspace:
+  - rscadd: Adds a research synthetic preset, alongside an icon and job-registry.

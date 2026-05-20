@@ -1,0 +1,4 @@
+author: "BlitzArde"
+delete-after: True
+changes:
+  - qol: "Introduced options to make custom binds yautja or synth specific"

@@ -33,17 +33,19 @@
 		return FALSE
 
 	var/usermob = user?.mob
+	if(ishuman(usermob))
+		var/mob/living/carbon/human/human_based_mob = usermob
 
-	if(isxeno(usermob))
-		return when_xeno
+		if(isspecieshuman(human_based_mob))
+			return when_human
 
-	if(isyautja(usermob))
-		return when_yautja
+		if(isspeciesyautja(human_based_mob))
+			return when_yautja
 
-	if(issynth(usermob))
-		return when_synth
+		if(isspeciessynth(human_based_mob))
+			return when_synth
 
-	return when_human
+	return when_xeno
 
 /datum/keybinding/custom/down(client/user)
 	. = ..()

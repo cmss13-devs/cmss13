@@ -32,13 +32,15 @@
 	if(!COOLDOWN_FINISHED(src, last_fired))
 		return FALSE
 
-	if(isxeno(user?.mob))
+	var/usermob = user?.mob
+
+	if(isxeno(usermob))
 		return when_xeno
 
-	if(isyautja(user?.mob))
+	if(isyautja(usermob))
 		return when_yautja
 
-	if(issynth(user?.mob))
+	if(issynth(usermob))
 		return when_synth
 
 	return when_human

@@ -76,7 +76,9 @@
 
 	var/count = 0
 	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
-		for(var/mob/living/nested_mob in scanned_turf)
+		for(var/mob/living/carbon/human/nested_mob in scanned_turf)
+			if(nested_mob.spawned_corpse)
+				continue
 			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
 				continue
 			count++

@@ -2408,7 +2408,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	var/turf/gun_turf = user.loc
 	var/area/gun_area = gun_turf.loc
 
-	if(user.a_intent < INTENT_GRAB)
+	if(user.a_intent != INTENT_GRAB)
 		return TRUE
 
 	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER)) // XO and CO

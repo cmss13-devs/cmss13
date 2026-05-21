@@ -11,7 +11,7 @@
 	var/network = "Ground"
 	var/recharge_cooldown = 15
 	var/recharge_rate = 10
-	var/energy = 50
+	var/energy = 100
 	var/max_energy = 100
 	// dynamic chemical supply variables
 	var/base_recharge_rate = 10

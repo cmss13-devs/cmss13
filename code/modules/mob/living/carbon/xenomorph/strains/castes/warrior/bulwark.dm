@@ -102,6 +102,7 @@
 	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
 		if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES))
 			to_chat(xeno_player, SPAN_WARNING("We break our reflective stance!"))
+			ability_used.reflective_safe_click_cooldown = -1
 			ability_used.remove_reflective_shield()
 		REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
 		to_chat(xeno_player, SPAN_XENOWARNING("We lower our plates."))
@@ -200,7 +201,7 @@
 // 3rd ability
 //
 
-/datum/action/xeno_action/onclick/tail_swing/use_ability(atom/A)
+/datum/action/xeno_action/onclick/tail_swing/use_ability()
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
 	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
@@ -259,7 +260,7 @@
 // 4th ability
 //
 
-/datum/action/xeno_action/onclick/reflective_shield/use_ability(atom/target_atom)
+/datum/action/xeno_action/onclick/reflective_shield/use_ability()
 	var/mob/living/carbon/xenomorph/warrior/xeno_player = owner
 
 	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
@@ -318,6 +319,7 @@
 		return
 
 	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_SIEGEBORN))
+		REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_SIEGEBORN, TRAIT_SOURCE_ABILITY("siegeborn"))
 		stop_yellow_visual()
 
 	var/datum/action/xeno_action/onclick/siegeborn/siege_used = get_action(xeno_player, /datum/action/xeno_action/onclick/siegeborn)

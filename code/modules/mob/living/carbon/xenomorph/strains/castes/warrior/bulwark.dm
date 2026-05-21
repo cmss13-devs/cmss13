@@ -48,10 +48,13 @@
 /datum/behavior_delegate/warrior_bulwark
 	name = "Bulwark Warrior Behavior Delegate"
 
+	var/frontal_armor = BULWARK_FRONT_ARMOR
+	var/sided_armor = BULWARK_SIDE_ARMOR
+
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
 	. = list()
-	. += "Front Armor: +[BULWARK_FRONT_ARMOR + bound_xeno.front_armor]"
-	. += "Side Armor: +[BULWARK_SIDE_ARMOR + bound_xeno.side_armor]"
+	. += "Front Armor: +[frontal_armor + bound_xeno.front_armor]"
+	. += "Side Armor: +[sided_armor + bound_xeno.side_armor]"
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
 		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Claws Damage."
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)

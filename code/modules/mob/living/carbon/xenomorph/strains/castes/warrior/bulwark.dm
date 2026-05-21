@@ -404,7 +404,7 @@
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_SIEGEBORN, TRAIT_SOURCE_ABILITY("siegeborn"))
 	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		xeno_player.add_filter("bulwark_yellow_outline", 1, list("type" = "outline", "color" = "#e4d614af", "size" = 1))
-		xeno_player.balloon_alert(xeno_player, "Our reflexes are improved!")
+		xeno_player.balloon_alert(xeno_player, "our reflexes are improved!")
 		to_chat(xeno_player, SPAN_XENONOTICE("We improve our reflective stance!"))
 		apply_cooldown()
 		return

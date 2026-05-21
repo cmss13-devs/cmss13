@@ -53,8 +53,8 @@
 
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
 	. = list()
-	. += "Front Armor: +[frontal_armor + bound_xeno.front_armor]"
-	. += "Side Armor: +[sided_armor + bound_xeno.side_armor]"
+	. += "Front Armor: +[frontal_armor]"
+	. += "Side Armor: +[sided_armor]"
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
 		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Claws Damage."
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)
@@ -71,11 +71,11 @@
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(xeno_player.dir & REVERSE_DIR(projectile_direction))
-		damagedata["armor"] += BULWARK_FRONT_ARMOR
+		damagedata["armor"] += frontal_armor
 	else
 		for(var/side_direction in get_perpen_dir(xeno_player.dir))
 			if(projectile_direction == side_direction)
-				damagedata["armor"] += BULWARK_SIDE_ARMOR
+				damagedata["armor"] += sided_armor
 				return
 
 /datum/behavior_delegate/warrior_bulwark/on_update_icons()
@@ -99,6 +99,10 @@
 	if(!istype(xeno_player))
 		return
 
+	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
+	if(!istype(behavior))
+		return
+
 	XENO_ACTION_CHECK(xeno_player)
 
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(xeno_player, /datum/action/xeno_action/onclick/reflective_shield)
@@ -113,8 +117,8 @@
 		xeno_player.ability_speed_modifier -= speed_debuff
 		xeno_player.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		button.icon_state = "template_xeno"
-		xeno_player.front_armor -= BULWARK_FRONT_ARMOR
-		xeno_player.side_armor -= BULWARK_SIDE_ARMOR
+		behavior.frontal_armor -= BULWARK_FRONT_ARMOR
+		behavior.sided_armor -= BULWARK_SIDE_ARMOR
 		xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
 		xeno_player.tackle_min_modifier -= 2
 	else
@@ -124,8 +128,8 @@
 		xeno_player.ability_speed_modifier += speed_debuff
 		xeno_player.mob_size = MOB_SIZE_BIG //knockback immune
 		button.icon_state = "template_active"
-		xeno_player.front_armor += BULWARK_FRONT_ARMOR
-		xeno_player.side_armor += BULWARK_SIDE_ARMOR
+		behavior.frontal_armor += BULWARK_FRONT_ARMOR
+		behavior.sided_armor += BULWARK_SIDE_ARMOR
 		xeno_player.damage_modifier -= XENO_DAMAGE_MOD_BULWARK
 		xeno_player.tackle_min_modifier += 2
 

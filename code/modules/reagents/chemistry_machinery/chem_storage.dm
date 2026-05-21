@@ -1,3 +1,5 @@
+#define DYNAMIC_CHEM_STORAGE_MULTIPLIER 10
+
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"
 	desc = "Storage system for a large supply of chemicals, which slowly recharges."
@@ -44,10 +46,10 @@
 	return ..()
 
 /// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
-/// multiplier works by dividing total marine pop by 50
-/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier, round_start=FALSE)
+/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
 	if(!dynamic_storage)
 		return
+	var/multiplier = 1 + (scale -1 ) * DYNAMIC_CHEM_STORAGE_MULTIPLIER
 	recharge_rate = floor(base_recharge_rate * multiplier)
 	max_energy = floor(base_max_energy * multiplier)
 	if(round_start)

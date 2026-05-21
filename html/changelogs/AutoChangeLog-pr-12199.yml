@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Crowbar traited items like the tactical prybar no longer bash barricades when you try to link them"

@@ -48,8 +48,8 @@
 /obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier, round_start=FALSE)
 	if(!dynamic_storage)
 		return
-	recharge_rate |= floor(base_recharge_rate * multiplier)
-	max_energy |= floor(base_max_energy * multiplier)
+	recharge_rate = floor(base_recharge_rate * multiplier)
+	max_energy = floor(base_max_energy * multiplier)
 	if(round_start)
 		energy = max_energy
 

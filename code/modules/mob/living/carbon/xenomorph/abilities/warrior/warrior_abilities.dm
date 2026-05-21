@@ -48,7 +48,7 @@
 	action_icon_state = "encased_plates"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_plates
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 2 SECONDS
+	xeno_cooldown = 1 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
 	var/speed_debuff = 0.5
@@ -73,8 +73,6 @@
 	xeno_cooldown = 10 SECONDS
 
 	var/swing_range = 1
-	var/hit_enemy = FALSE
-	var/hit_grenade = FALSE
 
 /datum/action/xeno_action/onclick/reflective_shield
 	name = "Reflective Shield"
@@ -95,3 +93,17 @@
 	var/reflective_recharge_time = null
 	/// Cooldown after activation to prevent accidental double click.
 	var/reflective_safe_click_cooldown = 0
+
+/datum/action/xeno_action/onclick/siegeborn
+	name = "Siegeborn"
+	action_icon_state = "siegeborn_heal"
+	macro_path = /datum/action/xeno_action/verb/verb_siegeborn
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	plasma_cost = 20
+	xeno_cooldown = 17 SECONDS
+
+	/// Requires 120 damage taken within 5 seconds to activate the ability
+	var/damage_threshold = 120
+	/// Initially zero, gets damage added when the ability is activated
+	var/damage_accumulated = 0

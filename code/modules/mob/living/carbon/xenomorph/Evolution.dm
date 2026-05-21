@@ -279,7 +279,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+	if(agility || fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_SIEGEBORN))
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 

@@ -45,12 +45,13 @@
 
 /// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
 /// multiplier works by dividing total marine pop by 50
-/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier)
+/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier, round_start=FALSE)
 	if(!dynamic_storage)
 		return
 	recharge_rate |= floor(base_recharge_rate * multiplier)
 	max_energy |= floor(base_max_energy * multiplier)
-	energy = max_energy
+	if(round_start)
+		energy = max_energy
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()

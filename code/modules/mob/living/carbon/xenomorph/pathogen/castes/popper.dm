@@ -29,8 +29,7 @@
 
 /datum/caste_datum/pathogen/popper/New()
 	. = ..()
-
-	resin_build_order = GLOB.resin_build_order_pathogen_popper
+	resin_build_order = GLOB.resin_build_order_pathogen_base
 
 /mob/living/carbon/xenomorph/popper
 	caste_type = PATHOGEN_CREATURE_POPPER
@@ -47,7 +46,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper, //first macro
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen/macro_one, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/onclick/place_spore_sac/fatal, // fourth macro // Needs rethinking on ease of access
@@ -76,7 +75,7 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "pathogen_talk"
 
-	mob_size = MOB_SIZE_XENO_SMALL
+	mob_size = MOB_SIZE_XENO_VERY_SMALL
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
 	fire_immunity = FIRE_VULNERABILITY

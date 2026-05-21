@@ -1,6 +1,6 @@
-/datum/reagent/blightfluid
+/datum/reagent/blood/xeno_blood/blight
 	name = "Blight Fluid"
-	id = "blightfluid"
+	id = BLOOD_BLIGHT
 	description = "What is this...?"
 	color = "#ceb8b0"
 	overdose = REAGENTS_OVERDOSE
@@ -11,33 +11,33 @@
 	properties = list(PROPERTY_PAINING = 1, PROPERTY_FLUXING = 1, PROPERTY_HEMOSITIC = 1)
 	flags = REAGENT_NO_GENERATION|REAGENT_SCANNABLE
 
-/datum/reagent/blood/xeno_blood/blight
+/datum/reagent/blood/xeno_blood/blight/strong
 	name = "Concentrated Blight Fluid"
-	id = BLOOD_BLIGHT
+	id = BLOOD_BLIGHT_ADV
 	description = "What is this...?"
 	color = "#ceb8b0"
 	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	overdose_critical = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_PAINING = 2, PROPERTY_FLUXING = 3, PROPERTY_HEMOSITIC = 2, PROPERTY_MYCOTAINTED = 1)
 	flags = REAGENT_NO_GENERATION
 
-/datum/reagent/blood/xeno_blood/blight/on_mob_life(mob/living/M)
+/datum/reagent/blood/xeno_blood/blight/strong/on_mob_life(mob/living/target_mob)
 	. = ..()
 	if(!.)
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable)
+	if(ishuman(target_mob))
+		var/mob/living/carbon/human/human_mob = target_mob
+		if((locate(/obj/item/alien_embryo) in human_mob.contents) || (human_mob.species.flags & IS_SYNTHETIC) || !human_mob.huggable || iszombie(human_mob) || iswalker(human_mob))
 			volume = 0
 			return
-		if(volume < overdose_critical)
+		if(volume < overdose)
 			return
 		//it turns into an actual bloodburster at this point
 		volume = 0
-		new /obj/item/alien_embryo/bloodburster(H)
-		to_chat(H, SPAN_WARNING("Your body tremors as something moves under your skin!"))
+		new /obj/item/alien_embryo/bloodburster(human_mob)
+		to_chat(human_mob, SPAN_WARNING("Your body tremors as something moves under your skin!"))
 
 /datum/reagent/toxin/mycotoxin
 	name = "Mycotoxin"

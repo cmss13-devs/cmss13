@@ -43,7 +43,7 @@
 	base_pixel_y = -20
 	pull_speed = -0.5
 	viewsize = 9
-	organ_value = 5000
+	organ_value = 2000
 
 	mob_size = MOB_SIZE_XENO_VERY_SMALL
 

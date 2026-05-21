@@ -117,7 +117,8 @@
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"
 
-#define BLOOD_BLIGHT "strongblightfluid"
+#define BLOOD_BLIGHT "blightfluid"
+#define BLOOD_BLIGHT_ADV "strongblightfluid"
 
 // Flags for Reagent
 

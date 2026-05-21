@@ -27,6 +27,7 @@
 
 	minimap_icon = "matriarch"
 	evolution_allowed = FALSE
+	royal_caste = TRUE
 
 /mob/living/carbon/xenomorph/matriarch
 	caste_type = PATHOGEN_CREATURE_MATRIARCH
@@ -51,6 +52,7 @@
 		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
 		/datum/action/xeno_action/onclick/blight_wave, // Macro 4
+		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -60,7 +62,6 @@
 
 	icon_xeno = 'icons/mob/pathogen/matriarch.dmi'
 	icon_xenonid = 'icons/mob/pathogen/matriarch.dmi'
-	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

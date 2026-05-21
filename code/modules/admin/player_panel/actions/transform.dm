@@ -186,6 +186,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	"Pathogen Creatures (Major)" = list(
 	list(
+	name = PATHOGEN_CREATURE_CONDITOR,
+	key = /mob/living/carbon/xenomorph/conditor,
+	color="white"
+	),
+	list(
 	name = PATHOGEN_CREATURE_BRUTE,
 	key = /mob/living/carbon/xenomorph/brute,
 	color = "white"
@@ -193,6 +198,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_VENATOR,
 	key = /mob/living/carbon/xenomorph/venator,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_HARBINGER,
+	key = /mob/living/carbon/xenomorph/harbinger,
 	color="white"
 	),
 	list(

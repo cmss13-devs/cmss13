@@ -263,7 +263,7 @@
 	construction_name = "thick mycelium membrane"
 	cost = XENO_RESIN_MEMBRANE_THICK_COST
 
-	build_path = /turf/closed/wall/resin/membrane/thick
+	build_path = /turf/closed/wall/resin/membrane/pathogen/thick
 	build_animation_effect = /obj/effect/pathogen_construct/transparent/thick
 
 /datum/resin_construction/resin_turf/membrane/pathogen/overmind

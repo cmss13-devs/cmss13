@@ -205,8 +205,8 @@
 		/datum/action/xeno_action/activable/queen_heal/pathogen_mind, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
-		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
-		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/choose_resin/pathogen/overmind_macro, //fourth macro
+		/datum/action/xeno_action/activable/secrete_resin/pathogen/overmind_macro, //fifth macro
 		/datum/action/xeno_action/onclick/blight_wave/overmind,
 		)
 

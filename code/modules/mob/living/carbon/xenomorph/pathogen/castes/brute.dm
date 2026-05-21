@@ -2,12 +2,12 @@
 	caste_type = PATHOGEN_CREATURE_BRUTE
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_6
+	melee_damage_lower = XENO_DAMAGE_TIER_6 //Stats TBC
 	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_8
-	max_health = XENO_HEALTH_TIER_14
+	max_health = XENO_HEALTH_TIER_13
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
-	plasma_max = XENO_PLASMA_TIER_7
+	plasma_max = XENO_PLASMA_TIER_5
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
@@ -26,6 +26,7 @@
 
 	minimap_icon = "brute"
 	evolution_allowed = FALSE
+	royal_caste = TRUE
 
 /mob/living/carbon/xenomorph/brute
 	caste_type = PATHOGEN_CREATURE_BRUTE
@@ -55,7 +56,6 @@
 
 	icon_xeno = 'icons/mob/pathogen/brute.dmi'
 	icon_xenonid = 'icons/mob/pathogen/brute.dmi'
-	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'

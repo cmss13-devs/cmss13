@@ -676,6 +676,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/venator
 		if(PATHOGEN_CREATURE_BRUTE)
 			M = /mob/living/carbon/xenomorph/brute
+		if(PATHOGEN_CREATURE_HARBINGER)
+			M = /mob/living/carbon/xenomorph/harbinger
+		if(PATHOGEN_CREATURE_CONDITOR)
+			M = /mob/living/carbon/xenomorph/conditor
 		if(PATHOGEN_CREATURE_MATRIARCH)
 			M = /mob/living/carbon/xenomorph/matriarch
 //		if(PATHOGEN_CREATURE_OVERMIND)

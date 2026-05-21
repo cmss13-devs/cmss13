@@ -108,6 +108,7 @@
 		start_vote()
 		addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(start_hatching), TRUE), 25 SECONDS)
+		message_admins("PATHOGEN: Matriarch hatching early due to low human presence (<12) on the colony.")
 		STOP_PROCESSING(SSobj, src)
 		return
 

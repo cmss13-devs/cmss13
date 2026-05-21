@@ -119,12 +119,17 @@ GLOBAL_LIST_INIT(resin_build_order_pathogen_overmind, list(
 	/datum/resin_construction/resin_obj/popper_cocoon
 ))
 
-GLOBAL_LIST_INIT(resin_build_order_pathogen_popper, list(
+GLOBAL_LIST_INIT(resin_build_order_pathogen_base, list(
 	/datum/resin_construction/resin_turf/wall/pathogen,
 	/datum/resin_construction/resin_turf/membrane/pathogen,
 	/datum/resin_construction/resin_obj/door/pathogen
 ))
 
+GLOBAL_LIST_INIT(resin_build_order_pathogen_better, list(
+	/datum/resin_construction/resin_turf/wall/pathogen/thick,
+	/datum/resin_construction/resin_turf/membrane/pathogen/thick,
+	/datum/resin_construction/resin_obj/door/pathogen/thick
+))
 
 //Xeno Leader Mark Meanings
 GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin_mark_meanings())

@@ -2,16 +2,16 @@
 	caste_type = PATHOGEN_CREATURE_NEOMORPH
 	tier = 2
 
-	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_4
 	melee_vehicle_damage = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
-	plasma_max = XENO_PLASMA_TIER_4
+	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
-	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_9
+	evasion = XENO_EVASION_MEDIUM
+	speed = XENO_SPEED_TIER_8
 
 	attack_delay = 2
 
@@ -20,11 +20,15 @@
 
 	deevolves_to = list(PATHOGEN_CREATURE_SPRINTER)
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(PATHOGEN_CREATURE_BRUTE)
+	evolves_to = list(PATHOGEN_CREATURE_CONDITOR, PATHOGEN_CREATURE_BRUTE)
 
 	heal_resting = 1
 
 	minimap_icon = "neomorph"
+
+/datum/caste_datum/pathogen/neomorph/New()
+	. = ..()
+	resin_build_order = GLOB.resin_build_order_pathogen_base
 
 /mob/living/carbon/xenomorph/neomorph
 	caste_type = PATHOGEN_CREATURE_NEOMORPH
@@ -36,16 +40,19 @@
 	pixel_x = -12
 	old_x = -12
 	tier = 2
-	organ_value = 10000
+	organ_value = 5000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
 		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 1
-		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 2
-		/datum/action/xeno_action/onclick/blight_slash,
+		/datum/action/xeno_action/onclick/choose_resin/pathogen, // Macro 2 // Shared macro with Conditor
+		/datum/action/xeno_action/activable/secrete_resin/pathogen, // Macro 3 // Shared macro with Conditor
+		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 4
+		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -57,7 +64,6 @@
 
 	icon_xeno = 'icons/mob/pathogen/neomorph.dmi'
 	icon_xenonid = 'icons/mob/pathogen/neomorph.dmi'
-	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
@@ -94,6 +100,7 @@
 	freeze_self = TRUE // Should we freeze ourselves after the lunge?
 	freeze_time = 5
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
+	ability_primacy = XENO_PRIMARY_ACTION_1
 
 /datum/action/xeno_action/activable/headbite/neomorph
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4

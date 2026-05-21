@@ -7,11 +7,11 @@
 	melee_vehicle_damage = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_10
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
-	plasma_max = XENO_PLASMA_TIER_6
+	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_1
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_8
+	speed = XENO_SPEED_TIER_9
 
 	attack_delay = 1.7
 
@@ -20,7 +20,7 @@
 
 	deevolves_to = list(PATHOGEN_CREATURE_SPRINTER)
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(PATHOGEN_CREATURE_VENATOR)
+	evolves_to = list(PATHOGEN_CREATURE_VENATOR, PATHOGEN_CREATURE_HARBINGER)
 
 	heal_resting = 1.5
 
@@ -36,16 +36,15 @@
 	pixel_x = -12
 	old_x = -12
 	tier = 2
-	organ_value = 10000
+	organ_value = 5000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 1
 		/datum/action/xeno_action/activable/pounce/lurker, // Macro 2
-		/datum/action/xeno_action/onclick/blight_slash,
+		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -57,7 +56,6 @@
 
 	icon_xeno = 'icons/mob/pathogen/blight.dmi'
 	icon_xenonid = 'icons/mob/pathogen/blight.dmi'
-	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

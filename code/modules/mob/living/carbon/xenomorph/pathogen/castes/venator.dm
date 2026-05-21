@@ -2,7 +2,7 @@
 	caste_type = PATHOGEN_CREATURE_VENATOR
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_6
+	melee_damage_lower = XENO_DAMAGE_TIER_6 //Stats TBC
 	melee_damage_upper = XENO_DAMAGE_TIER_7
 	melee_vehicle_damage = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_TIER_12
@@ -27,6 +27,7 @@
 
 	minimap_icon = "venator"
 	evolution_allowed = FALSE
+	royal_caste = TRUE
 
 /mob/living/carbon/xenomorph/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR
@@ -44,11 +45,11 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
-		/datum/action/xeno_action/activable/mycotoxin,
 		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/venator_savage, // Macro 3
-		/datum/action/xeno_action/onclick/blight_slash,
+		//, // Macro 4
+		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -58,7 +59,6 @@
 
 	icon_xeno = 'icons/mob/pathogen/venator.dmi'
 	icon_xenonid = 'icons/mob/pathogen/venator.dmi'
-	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

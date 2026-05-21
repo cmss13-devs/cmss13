@@ -62,6 +62,9 @@
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
+/datum/action/xeno_action/onclick/shift_spits/not_primary
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
 	name = "Release"
@@ -81,6 +84,12 @@
 
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
+
+/datum/action/xeno_action/onclick/choose_resin/pathogen
+	name = "Choose Mycelium Structure"
+
+/datum/action/xeno_action/onclick/choose_resin/pathogen/overmind_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
@@ -118,6 +127,16 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/pathogen
+	name = "Shape Mycelium"
+
+/datum/action/xeno_action/activable/secrete_resin/pathogen/thick
+	name = "Shape Thick Mycelium"
+	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/pathogen/overmind_macro
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker
@@ -464,6 +483,9 @@
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+/datum/action/xeno_action/activable/xeno_spit/macro_four
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

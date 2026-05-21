@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "we no longer update_icons of every xenomorph every life tick"

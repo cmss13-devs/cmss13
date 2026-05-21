@@ -47,10 +47,3 @@
 	set hidden = TRUE
 	var/action_name = "Reflective Plates"
 	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_siegeborn()
-	set category = "Alien"
-	set name = "Siegeborn"
-	set hidden = TRUE
-	var/action_name = "Siegeborn"
-	handle_xeno_macro(src, action_name)

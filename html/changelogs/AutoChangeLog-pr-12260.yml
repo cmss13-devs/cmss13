@@ -1,0 +1,4 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - bugfix: "devolve location and ckey logging, and add timeouts to the evolve/devolve TGUI lists"

@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("M276 Pattern Military Police Rig", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("Security HUD-Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -67,6 +68,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("M276 Pattern Military Police Rig", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("Security HUD-Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Warden M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),

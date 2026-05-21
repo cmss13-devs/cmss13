@@ -1,4 +1,0 @@
-author: "Wabberspace"
-delete-after: True
-changes:
-  - rscadd: "Adds a research synthetic preset, alongside an icon and job-registry."

@@ -1,4 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - rscadd: "Synth repair bays can now reactivate fully repaired dead synths."

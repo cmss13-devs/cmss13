@@ -1,4 +1,0 @@
-author: "npukoJl"
-delete-after: True
-changes:
-  - bugfix: "Senators now have their badge, not the council one"

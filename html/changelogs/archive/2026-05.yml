@@ -121,3 +121,24 @@
   - bugfix: Forsaken can now track humans on their TacMap like they should've
   Wabberspace:
   - rscadd: Adds a research synthetic preset, alongside an icon and job-registry.
+2026-05-21:
+  BlitzArde:
+  - qol: Introduced options to make custom binds yautja or synth specific
+  Detective-Google:
+  - rscadd: Synth repair bays can now reactivate fully repaired dead synths.
+  Jesters-Ballad:
+  - balance: Scythes Restored
+  MistChristmas:
+  - bugfix: Crowbar traited items like the tactical prybar no longer bash barricades
+      when you try to link them
+  cuberound:
+  - bugfix: we no longer update_icons of every xenomorph every life tick
+  npukoJl:
+  - bugfix: Senators now have their badge, not the council one
+  ori-disillusion-mirnov:
+  - bugfix: devolve location and ckey logging, and add timeouts to the evolve/devolve
+      TGUI lists
+  realforest2001:
+  - imageadd: Fixed icon issues with certain marine roles.
+  zzzmike:
+  - qol: MP/Warden/CMP have a basic medical optic option in vendor

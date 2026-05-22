@@ -46,6 +46,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/command_channel_key = ":v"
 
 	var/freq = CRYO_FREQ
+	var/squad_radio_vlairty = 100 //radio garble clarity bar
 
 	/// List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
@@ -479,6 +480,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
+	data = pack_radio_data()
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -526,6 +528,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/list/data = list()
 
 	data["theme"] = ui_theme
+
+	data = pack_radio_data()
 
 	if(!current_squad)
 		data["squad_list"] = list()
@@ -1675,6 +1679,32 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
+
+/obj/structure/machinery/computer/overwatch/proc/get_radio_clarity()
+	var/ground_z = length(SSmapping.levels_by_trait(ZTRAIT_GROUND)) ? SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] : null
+	var/current_clarity
+	if(ground_z && (ground_z in SSradio.get_available_tcomm_zs(COMM_FREQ)))
+		return 100
+	if(SSradio.faction_coms_clarity && SSradio.faction_coms_clarity[faction])
+		current_clarity = SSradio.faction_coms_clarity[faction]
+		if(SSradio.faction_coms_codes && length(SSradio.faction_coms_codes[faction]))
+			return current_clarity
+	return 15
+
+/obj/structure/machinery/computer/overwatch/proc/pack_radio_data()
+	var/list/clarity_data = list ()
+	var/clarity = get_radio_clarity()
+	clarity_data["radio_clarity"] = clarity
+	if(clarity >= 80)
+		clarity_data["clarity_color"] = "good"
+		clarity_data["clarity_status"] = "STABLE"
+	else if(clarity >= 45)
+		clarity_data["clarity_color"] = "average"
+		clarity_data["clarity_status"] = "DEGRADED"
+	else
+		clarity_data["clarity_color"] = "bad"
+		clarity_data["clarity_status"] = "CRITICAL BLACKOUT"
+	return clarity_data
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

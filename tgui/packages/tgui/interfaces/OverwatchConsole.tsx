@@ -8,6 +8,7 @@ import {
   Input,
   LabeledControls,
   NumberInput,
+  ProgressBar,
   Section,
   Stack,
   Table,
@@ -69,6 +70,9 @@ type Data = {
   ob_safety: Boolean;
   supply_cooldown: number;
   operator: string;
+  radio_clarity: number;
+  clarity_color: string;
+  clarity_status: string;
 };
 
 export const OverwatchConsole = (props) => {
@@ -213,20 +217,22 @@ const MainDashboard = (props) => {
         </>
       }
     >
-      <Table mb="5px">
-        <Table.Row bold>
-          <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
-          <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell textAlign="center">
-            {primary_objective ? primary_objective : 'NONE'}
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            {secondary_objective ? secondary_objective : 'NONE'}
-          </Table.Cell>
-        </Table.Row>
-      </Table>
+    <Stack vertical={false} justify="space-between" align="stretch">
+      <Stack.Item grow={1} mr={1}>
+        <Table mb="5px">
+          <Table.Row bold>
+            <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
+            <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+           <Table.Cell textAlign="center">
+              {primary_objective ? primary_objective : 'NONE'}
+            </Table.Cell>
+            <Table.Cell textAlign="center">
+             {secondary_objective ? secondary_objective : 'NONE'}
+            </Table.Cell>
+          </Table.Row>
+        </Table>
       <Box textAlign="center">
         <Button
           inline
@@ -284,7 +290,26 @@ const MainDashboard = (props) => {
           MESSAGE SQUAD LEADER
         </Button>
       </Box>
-    </Section>
+      </Stack.Item>
+      <Stack.Item width="150px">
+        <Box>
+          <Box textAlign="center" bold color="label" mb={0.5}>
+            SIGNAL CLARITY
+          </Box>
+          <Box textAlign="center" mb={1} fontSize="12px">
+            {data.clarity_status}
+          </Box>
+          <ProgressBar
+            value={data.radio_clarity / 100}
+            color={data.clarity_color || 'red'}
+            height="18px"/>
+          <Box textAlign="center" mt={0.5} bold color="white">
+            {data.radio_clarity}%
+          </Box>
+        </Box>
+      </Stack.Item>
+    </Stack>
+  </Section>
   );
 };
 

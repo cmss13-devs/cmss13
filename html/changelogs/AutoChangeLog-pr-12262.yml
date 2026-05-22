@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "Oppressor's Abduct can't hook through cades on an angle now."

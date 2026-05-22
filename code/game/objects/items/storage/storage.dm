@@ -58,7 +58,7 @@
 	/// the name of the tether itself, fluff
 	var/retrieval_name = "retrieval cable"
 	/// the icon used for the tether
-	var/tether_icon = "chain"
+	var/tether_icon = "wire_rope"
 
 /obj/item/storage/get_examine_text(mob/user)
 	. = ..()

@@ -368,8 +368,10 @@
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER
+	if(!wearer)
+		return
 	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset?.minimap_icon)
 		return
 
 	var/obj/item/card/id/ID = wearer.get_idcard()

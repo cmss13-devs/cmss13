@@ -328,7 +328,7 @@
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return
 
-	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET))
+	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET) || (bullet.ammo.flags_ammo_behavior & AMMO_XENO))
 		return //we don't want to reflect sniper bullets or rockets.
 
 	var/projectile_dir = 0

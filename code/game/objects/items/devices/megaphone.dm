@@ -13,13 +13,7 @@
 
 	var/spam_cooldown_time = 1.5 SECONDS
 	var/amplifying = FALSE
-	var/hush_enabled = TRUE
 	COOLDOWN_DECLARE(spam_cooldown)
-
-/obj/item/device/megaphone/Initialize(mapload, ...)
-	. = ..()
-	var/datum/action/item_action/megaphone_hush/hush_action = new(src)
-	hush_action.update_button_icon()
 
 /obj/item/device/megaphone/get_examine_text(mob/user)
 	. = ..()
@@ -27,10 +21,6 @@
 		. += SPAN_HELPFUL("It is currently toggled on and amplifying your voice.")
 	else
 		. += SPAN_WARNING("It is currently toggled off.")
-	if(hush_enabled)
-		. += SPAN_HELPFUL("The hush function is enabled.")
-	else
-		. += SPAN_WARNING("The hush function is disabled.")
 
 
 /obj/item/device/megaphone/unique_action(mob/living/user)
@@ -40,11 +30,6 @@
 	else
 		to_chat(user, SPAN_NOTICE("You toggle the [name] off."))
 
-	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
-
-/obj/item/device/megaphone/proc/toggle_hush(mob/user)
-	hush_enabled = !hush_enabled
-	to_chat(user, SPAN_NOTICE("You toggle the hush function [hush_enabled ? "on" : "off"]."))
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
 /obj/item/device/megaphone/attack_self(mob/living/user)
@@ -90,7 +75,6 @@
 		// mobs that pass the conditionals will be added here
 		var/list/mob/langchat_long_listeners = list()
 		var/paygrade = user.get_paygrade()
-		var/leader = skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED)
 
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
@@ -107,7 +91,7 @@
 
 			if(isliving(listener))
 				var/mob/living/audience = listener
-				if(hush_enabled && leader && !HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+				if(skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED) && !HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 					if(user.faction == audience.faction && !(audience.mob_flags & MUTINY_MUTINEER))
 						audience.set_hushed(5 DECISECONDS) // though deciseconds might be a bit misleading
 						to_chat(audience, SPAN_WARNING("You hush yourself as [user] broadcasts authoritatively through the [src]!"))
@@ -123,29 +107,3 @@
 	// not on active hand
 	else
 		to_chat(user, SPAN_DANGER("You can only broadcast with the [name] when it is in your active hand!"))
-
-/datum/action/item_action/megaphone_hush
-	name = "Toggle Hush"
-	action_icon_state = "hush_on"
-
-/datum/action/item_action/megaphone_hush/New(Target, obj/item/holder)
-	..()
-	button.name = name
-
-/datum/action/item_action/megaphone_hush/action_activate()
-	. = ..()
-	var/obj/item/device/megaphone/megaphone = holder_item
-
-	if(istype(megaphone))
-		megaphone.toggle_hush(owner)
-		update_button_icon()
-
-/datum/action/item_action/megaphone_hush/update_button_icon()
-	var/obj/item/device/megaphone/megaphone = holder_item
-
-	if(megaphone.hush_enabled)
-		action_icon_state = "hush_on"
-	else
-		action_icon_state = "hush_off"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

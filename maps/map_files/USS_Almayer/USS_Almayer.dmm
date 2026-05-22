@@ -64151,6 +64151,7 @@
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "ltm" = (

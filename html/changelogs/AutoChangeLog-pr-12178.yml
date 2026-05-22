@@ -1,4 +1,0 @@
-author: "matttheficus"
-delete-after: True
-changes:
-  - code_imp: "added checks to prevent COs or Synthetics from being given medals or ribbons by non-admins."

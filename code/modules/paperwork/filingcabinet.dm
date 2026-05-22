@@ -220,32 +220,32 @@
  * Security Record Cabinets
  */
 /obj/structure/filingcabinet/security
-	var/virgin = TRUE
+	var/is_unopened = TRUE
 
 
 /obj/structure/filingcabinet/security/proc/populate()
-	if(!virgin)
+	if(!is_unopened)
 		return
-	virgin = FALSE
+	is_unopened = FALSE
 	if(!GLOB.data_core?.general)
 		return
-	for(var/datum/data/record/G in GLOB.data_core.general)
-		var/datum/data/record/S
-		for(var/datum/data/record/R in GLOB.data_core.security)
-			if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
-				S = R
+	for(var/datum/data/record/general_record in GLOB.data_core.general)
+		var/datum/data/record/security_record
+		for(var/datum/data/record/security_cabinet_record in GLOB.data_core.security)
+			if((security_cabinet_record.fields["name"] == general_record.fields["name"] || security_cabinet_record.fields["id"] == general_record.fields["id"]))
+				security_record = security_cabinet_record
 				break
-		if(S)
-			var/obj/item/paper/P = new /obj/item/paper(src)
-			P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-			P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-			P.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nIncidents: [S.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+		if(security_record)
+			var/obj/item/paper/security_record_paper = new /obj/item/paper(src)
+			security_record_paper.info = "<CENTER><B>Security Record</B></CENTER><BR>"
+			security_record_paper.info += "Name: [general_record.fields["name"]] ID: [general_record.fields["id"]]<BR>\nSex: [general_record.fields["sex"]]<BR>\nAge: [general_record.fields["age"]]<BR>\nPhysical Status: [general_record.fields["p_stat"]]<BR>\nMental Status: [general_record.fields["m_stat"]]<BR>"
+			security_record_paper.info += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [security_record.fields["criminal"]]<BR>\n<BR>\nIncidents: [security_record.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
 			var/counter = 1
-			while(!isnull(S.fields["com_[counter]"])) //prevent infin looping
-				P.info += "[S.fields["com_[counter]"]]<BR>"
+			while(!isnull(security_record.fields["com_[counter]"])) //prevent infin looping
+				security_record_paper.info += "[security_record.fields["com_[counter]"]]<BR>"
 				counter++
-			P.info += "</TT>"
-			P.name = "Security Record ([G.fields["name"]])"
+			security_record_paper.info += "</TT>"
+			security_record_paper.name = "Security Record ([general_record.fields["name"]])"
 
 /obj/structure/filingcabinet/security/attack_hand(mob/user)
 	populate()
@@ -255,31 +255,31 @@
  * Medical Record Cabinets
  */
 /obj/structure/filingcabinet/medical
-	var/virgin = TRUE
+	var/is_unopened = TRUE
 
 /obj/structure/filingcabinet/medical/proc/populate()
-	if(!virgin)
+	if(!is_unopened)
 		return
-	virgin = FALSE
+	is_unopened = FALSE
 	if(!GLOB.data_core?.general)
 		return
-	for(var/datum/data/record/G in GLOB.data_core.general)
-		var/datum/data/record/M
-		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-			if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
-				M = R
+	for(var/datum/data/record/general_record in GLOB.data_core.general)
+		var/datum/data/record/medical_record
+		for(var/datum/data/record/medical_cabinet_record as anything in GLOB.data_core.medical)
+			if((medical_cabinet_record.fields["name"] == general_record.fields["name"] || medical_cabinet_record.fields["id"] == general_record.fields["id"]))
+				medical_record = medical_cabinet_record
 				break
-		if(M)
-			var/obj/item/paper/P = new /obj/item/paper(src)
-			P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
-			P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-			P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["blood_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["minor_disability"]]<BR>\nDetails: [M.fields["minor_disability_details"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["major_disability"]]<BR>\nDetails: [M.fields["major_disability_details"]]<BR>\n<BR>\nAllergies: [M.fields["allergies"]]<BR>\nDetails: [M.fields["allergies_details"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["diseases"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["diseases_details"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+		if(medical_record)
+			var/obj/item/paper/medical_record_paper = new /obj/item/paper(src)
+			medical_record_paper.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
+			medical_record_paper.info += "Name: [general_record.fields["name"]] ID: [general_record.fields["id"]]<BR>\nSex: [general_record.fields["sex"]]<BR>\nAge: [general_record.fields["age"]]<BR>\nPhysical Status: [general_record.fields["p_stat"]]<BR>\nMental Status: [general_record.fields["m_stat"]]<BR>"
+			medical_record_paper.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [medical_record.fields["blood_type"]]<BR>\n<BR>\nMinor Disabilities: [medical_record.fields["minor_disability"]]<BR>\nDetails: [medical_record.fields["minor_disability_details"]]<BR>\n<BR>\nMajor Disabilities: [medical_record.fields["major_disability"]]<BR>\nDetails: [medical_record.fields["major_disability_details"]]<BR>\n<BR>\nAllergies: [medical_record.fields["allergies"]]<BR>\nDetails: [medical_record.fields["allergies_details"]]<BR>\n<BR>\nCurrent Diseases: [medical_record.fields["diseases"]] (per disease info placed in log/comment section)<BR>\nDetails: [medical_record.fields["diseases_details"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[medical_record.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
 			var/counter = 1
-			while (!isnull(M.fields["com_[counter]"])) //prevent infin looping
-				P.info += "[M.fields["com_[counter]"]]<BR>"
+			while (!isnull(medical_record.fields["com_[counter]"])) //prevent infin looping
+				medical_record_paper.info += "[medical_record.fields["com_[counter]"]]<BR>"
 				counter++
-			P.info += "</TT>"
-			P.name = "Medical Record ([G.fields["name"]])"
+			medical_record_paper.info += "</TT>"
+			medical_record_paper.name = "Medical Record ([general_record.fields["name"]])"
 
 /obj/structure/filingcabinet/medical/attack_hand(mob/user)
 	populate()

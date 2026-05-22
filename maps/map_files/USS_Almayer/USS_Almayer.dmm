@@ -20768,6 +20768,11 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"baS" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/area/almayer/command/airoom)
 "baT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -22096,6 +22101,11 @@
 /obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
+"bdU" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "bdV" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -22132,6 +22142,10 @@
 /obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
+"bea" = (
+/obj/structure/machinery/cryopod/joe/seegson/alt,
+/turf/open/floor/almayer/aicore/no_build/ai_cargo,
+/area/almayer/command/airoom)
 "beb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
@@ -64148,8 +64162,6 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/squads/req)
 "ltc" = (
-/obj/effect/landmark/late_join/working_joe,
-/obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
@@ -177965,8 +177977,8 @@ qQS
 qQS
 afM
 ebN
-tId
-fVx
+bea
+baS
 aZV
 ebN
 naj
@@ -178068,8 +178080,8 @@ fVx
 fVx
 afN
 ebN
-tId
-qQS
+bea
+bdU
 mIJ
 wiu
 xDC

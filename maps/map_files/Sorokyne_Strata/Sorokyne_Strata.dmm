@@ -8873,6 +8873,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
+"ayh" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
 "ayi" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/south,
@@ -13137,8 +13142,6 @@
 	pixel_x = 1;
 	density = 0
 	},
-/obj/effect/landmark/late_join/working_joe/colony,
-/obj/effect/landmark/start/working_joe/colony,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKz" = (
@@ -19165,8 +19168,6 @@
 	pixel_x = -2;
 	density = 0
 	},
-/obj/effect/landmark/late_join/working_joe/colony,
-/obj/effect/landmark/start/working_joe/colony,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "bbB" = (
@@ -75105,7 +75106,7 @@ aGr
 dCb
 oKo
 aKy
-dgB
+ayh
 aMX
 ohY
 kUU
@@ -75280,7 +75281,7 @@ uWG
 dCb
 oKo
 bbA
-dgB
+ayh
 aNb
 aJb
 aJb

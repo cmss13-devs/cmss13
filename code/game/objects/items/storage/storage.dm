@@ -39,29 +39,24 @@
 
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
+	/*
+	* Before you define a new variable to storages,
+	* consider to yourself if it can be implemented as a bitflag
+	* Storage items are one of the most common items spawned within the server,
+	* and any reduction of memory overhead is gladly appreciated and helps overall performance
+	*/
+
+	// Skill locked storage variables, determined by the STORAGE_CAN_HOLD_SKILL_ONLY flag
 	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
 	var/list/can_hold_skill = list()
-
-	///if true, then we can only hold items found in fill_preset_inventory, default false as otherwise you wont be able to fit anything in, if at least runtime something
-	var/preset_hold_only = FALSE
-
-	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
-	var/can_hold_skill_only = FALSE
 
 	/// The required skill for opening this storage if it is inside another storage type
 	var/required_skill_for_nest_opening = null
 
 	/// The required level of a skill for opening this storage if it is inside another storage type
 	var/required_skill_level_for_nest_opening = null
+	// -------------------------------------------------------------------------------------- end
 
-	/// Can this storage be used to instantly grab pills from
-	var/instant_pill_grabbable = FALSE
-
-	/// What mode is the storage instant grab mode in if you are grabbing pills from it
-	var/instant_pill_grab_mode = 1 //On by default
-
-	/// if true, then the storage of the item applies a movement malus when held by a mob dictated by the len of items in the storage
-	var/weighted_storage = FALSE // dont combine this with weighted items unless you want to be slow as fuck
 	/// the weight multiplier for items in contents
 	var/weight_multiplier = STORAGE_WEIGHT_DEFAULT
 
@@ -83,7 +78,7 @@
 /obj/item/storage/get_examine_text(mob/living/user)
 	. = ..()
 
-	if(weighted_storage)
+	if(storage_flags & STORAGE_WEIGHTED)
 		. += SPAN_INFO("This storage item is cumbersome enough to [SPAN_RED("weigh you down")] based on the mass within its contents!")
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -114,19 +109,19 @@
 
 /obj/item/storage/pickup(mob/user, silent)
 	. = ..()
-	if(weighted_storage)
+	if(storage_flags & STORAGE_WEIGHTED)
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_delay))
 
 /obj/item/storage/proc/weight_delay(mob/user, list/movedata)
 	SIGNAL_HANDLER
 	for(var/obj/item/storage/inv in user.contents)
-		if(inv.weighted_storage)
+		if(inv.storage_flags & STORAGE_WEIGHTED)
 			movedata["move_delay"] += inv.contents.len * weight_multiplier
 			break // only really need to call this once
 
 /obj/item/storage/dropped(mob/user, silent)
 	. = ..()
-	if(weighted_storage)
+	if(storage_flags & STORAGE_WEIGHTED)
 		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 // weighted storage end
@@ -497,7 +492,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		for(var/can_hold_skill_typepath in can_hold_skill)
 			if(ispath(type_to_hold, can_hold_skill_typepath) && user.skills?.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
 				return TRUE
-		if(can_hold_skill_only)
+		if(storage_flags & STORAGE_CAN_HOLD_SKILL_ONLY)
 			return FALSE
 
 	for(var/A in cant_hold)
@@ -920,17 +915,17 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 /obj/item/storage/Initialize()
 	. = ..()
-	if (!(storage_flags & STORAGE_QUICK_GATHER))
+	if(!(storage_flags & STORAGE_QUICK_GATHER))
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 
-	if (!(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+	if(!(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
 		verbs -= /obj/item/storage/verb/toggle_draw_mode
 
-	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
+	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
 		verbs -= /obj/item/storage/verb/empty_verb
 		verbs -= /obj/item/storage/verb/toggle_click_empty
 		verbs -= /obj/item/storage/verb/shake_verb
-	if (!instant_pill_grabbable) // For removing pills from bottles quickly
+	if(!(storage_flags & STORAGE_INSTANT_PILL_GRABBABLE))
 		verbs -= /obj/item/storage/verb/toggle_pill_bottle_mode
 
 	boxes = new
@@ -958,10 +953,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		select_gamemode_skin(type)
 	post_skin_selection()
 	fill_preset_inventory()
-	if(preset_hold_only)
+
+	if(storage_flags & STORAGE_PRESET_HOLD_ONLY)
 		can_hold = list()
 		for(var/obj/item/list in contents)
 			can_hold |= list.type
+
 	update_icon()
 
 /*
@@ -1086,8 +1083,8 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 
 /obj/item/storage/verb/toggle_pill_bottle_mode() //A verb that can (should) only be used if in hand/equipped
 	set category = "Object"
-	set name = "Toggle pill bottle mode"
+	set name = "Toggle Pill Bottle Mode"
 	set src in usr
 	if(src && ishuman(usr))
-		instant_pill_grab_mode = !instant_pill_grab_mode
-		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+		storage_flags ^= STORAGE_INSTANT_PILL_GRAB_MODE
+		to_chat(usr, SPAN_NOTICE("You will now [(storage_flags & STORAGE_INSTANT_PILL_GRAB_MODE) ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))

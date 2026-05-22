@@ -526,7 +526,7 @@
 	throw_range = 0
 	xeno_types = null
 	var/base_icon_state = "ammo_pack"
-	weighted_storage = TRUE
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_WEIGHTED
 	weight_multiplier = STORAGE_WEIGHT_HEAVY
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()

@@ -169,9 +169,6 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
-	/// if this item adds a movement speed malus when carried based on its weight class, shouldnt be able to affect your speed if its inserted in a storage item
-	var/weighted_item = FALSE
-
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -325,7 +322,7 @@
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
-	if(weighted_item)
+	if(flags_item & ITEM_WEIGHTED)
 		. += SPAN_INFO("This item is quite cumbersome and will [SPAN_RED("weigh you down")] when carried!")
 
 /obj/item/attack_hand(mob/user)
@@ -418,7 +415,7 @@
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
-	if(weighted_item)
+	if(flags_item & ITEM_WEIGHTED)
 		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
@@ -437,7 +434,7 @@
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
-	if(weighted_item)
+	if(flags_item & ITEM_WEIGHTED)
 		if(w_class >= SIZE_LARGE)
 			if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 				to_chat(user, SPAN_HIGHDANGER("You grimace as you barely manage to lift \the [src] above your knees."))

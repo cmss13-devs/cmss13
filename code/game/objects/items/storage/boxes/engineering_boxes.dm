@@ -22,7 +22,6 @@ Engineering parts and scraps and lights and tubes and stuff
 	)
 	max_storage_space = 42 //holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
-	preset_hold_only = FALSE
 
 /obj/item/storage/box/lights/bulbs/fill_preset_inventory()
 	for(var/i in 1 to 21)

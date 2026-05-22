@@ -96,6 +96,8 @@
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 /// The item will incur click delay if an empty adjacent tile is clicked
 #define ADJACENT_CLICK_DELAY (1<<16)
+/// if this item adds a movement speed malus when carried based on its weight class, shouldnt be able to affect your speed if its inserted in a storage item
+#define ITEM_WEIGHTED (1<<17)
 //==========================================================================================
 
 
@@ -582,6 +584,16 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_DISABLE_USE_EMPTY (1<<12)
 /// Whether the user can withdraw the items in storage while being hauled by a xeno
 #define STORAGE_ALLOW_WHILE_HAULED (1<<13)
+/// whether the storage object can only hold items that were in its fill_preset_inventory
+#define STORAGE_PRESET_HOLD_ONLY (1<<14)
+/// whether or not we only check for items in can_hold_skill rather than can_hold or free usage
+#define STORAGE_CAN_HOLD_SKILL_ONLY (1<<15)
+/// whether or not we can instantly grab pills from this storage
+#define STORAGE_INSTANT_PILL_GRABBABLE (1<<16)
+/// the current toggle state that determines pill grabbing, or grabbing the bottle instead, if it were me id defunct this instead, its pretty goddamn useless and click dragging the bottle out of your inventory is faster but oh fucking well i guess
+#define STORAGE_INSTANT_PILL_GRAB_MODE (1<<17)
+/// whether the storage of the item applies a movement malus based on contents length
+#define STORAGE_WEIGHTED (1<<18) // don't combine this with weighted_items if you want to be slow as fuck when holding the object
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTANEOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)

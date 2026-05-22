@@ -176,7 +176,7 @@
 	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
-	instant_pill_grabbable = TRUE // If TRUE, pills can be taken directly from bottles while in hand/equipped.
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_INSTANT_PILL_GRABBABLE |STORAGE_INSTANT_PILL_GRAB_MODE
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -233,7 +233,7 @@
 
 /obj/item/storage/belt/medical/get_examine_text()
 	. = ..()
-	. += SPAN_NOTICE("The belt is currently set to [instant_pill_grab_mode ? "take pills directly from bottles": "NOT take pills directly from bottles"].")
+	. += SPAN_NOTICE("The belt is currently set to [HAS_FLAG(storage_flags, STORAGE_INSTANT_PILL_GRAB_MODE) ? "take pills directly from bottles": "NOT take pills directly from bottles"].")
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"

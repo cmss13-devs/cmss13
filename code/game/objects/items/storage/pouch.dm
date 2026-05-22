@@ -745,6 +745,7 @@
 	desc = "It can carry small medical supplies."
 	icon_state = "medical"
 	storage_slots = 4
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_INSTANT_PILL_GRABBABLE|STORAGE_INSTANT_PILL_GRAB_MODE
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -761,7 +762,6 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 	)
-	instant_pill_grabbable = TRUE // If TRUE, pills can be taken directly from bottles while in hand/equipped.
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -875,6 +875,7 @@
 	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
 	icon_state = "frt_med"
 	storage_slots = 4
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_INSTANT_PILL_GRABBABLE|STORAGE_INSTANT_PILL_GRAB_MODE
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -887,7 +888,6 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 	)
-	instant_pill_grabbable = TRUE // If TRUE, pills can be taken directly from bottles while in hand/equipped.
 
 /obj/item/storage/pouch/first_responder/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -960,7 +960,7 @@
 
 /obj/item/storage/pouch/engikit
 	name = "engineer kit pouch"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CAN_HOLD_SKILL_ONLY
 	icon_state = "construction"
 	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
 	storage_slots = 6
@@ -979,11 +979,10 @@
 		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/device/defibrillator/synthetic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 	)
-	can_hold_skill_only = TRUE
 
 /obj/item/storage/pouch/medkit
 	name = "medical kit pouch"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CAN_HOLD_SKILL_ONLY|STORAGE_INSTANT_PILL_GRABBABLE|STORAGE_INSTANT_PILL_GRAB_MODE
 	icon_state = "medkit"
 	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
 	storage_slots = 7
@@ -1008,8 +1007,6 @@
 		/obj/item/tool/surgery/hemostat = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/tool/surgery/retractor = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
-	can_hold_skill_only = TRUE
-	instant_pill_grabbable = TRUE // If TRUE, pills can be taken directly from bottles while in hand/equipped.
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -1066,7 +1063,7 @@
 	new /obj/item/stack/medical/advanced/ointment(src)
 
 /obj/item/storage/pouch/medkit/full/toxin/cbrn
-	can_hold_skill_only = FALSE // Given to non-medically trained personnel.
+	storage_flags = STORAGE_FLAGS_POUCH
 
 /obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)

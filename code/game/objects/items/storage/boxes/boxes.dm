@@ -24,15 +24,14 @@ Probably best to include it in this directory but atomization be damned
 	storage_slots = null
 	max_w_class = SIZE_LARGE
 	w_class = SIZE_MEDIUM
-	storage_flags = STORAGE_FLAGS_BOX
-	preset_hold_only = TRUE
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_PRESET_HOLD_ONLY
 
 // END OF PARENT //
 
 /obj/item/storage/box/survival
 	name = "box of survival gear"
 	desc = "An ordinary box, but you feel like you can store stuff in this without too much restrictions."
-	preset_hold_only = FALSE // amuse me with this
+	storage_flags = STORAGE_FLAGS_BOX // amuse me with this
 
 /obj/item/storage/box/survival/fill_preset_inventory()
 	new /obj/item/clothing/mask/breath( src )

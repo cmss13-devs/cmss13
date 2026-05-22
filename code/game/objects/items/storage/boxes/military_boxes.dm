@@ -14,7 +14,7 @@ and it really wouldnt make that much of a difference
 	item_state = "minebox"
 	storage_slots = 5
 	can_hold = list(/obj/item/explosive/mine)
-	preset_hold_only = FALSE
+	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/explosive_mines/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -34,7 +34,7 @@ and it really wouldnt make that much of a difference
 	icon = 'icons/obj/items/storage/packets.dmi'
 	storage_slots = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
-	preset_hold_only = FALSE
+	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/m94/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -72,7 +72,7 @@ and it really wouldnt make that much of a difference
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	can_hold = list(/obj/item/explosive/grenade/high_explosive)
-	preset_hold_only = FALSE
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_WEIGHTED
 	var/base_icon
 	var/model_icon = "model_m40"
 	var/type_icon = "hedp"
@@ -82,7 +82,6 @@ and it really wouldnt make that much of a difference
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-	weighted_storage = TRUE
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()

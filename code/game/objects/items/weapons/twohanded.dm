@@ -375,16 +375,14 @@
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
-	var/really_heavy = FALSE
 
 /obj/item/weapon/twohanded/breacher/synth
 	name = "\improper B5 Breaching Hammer"
 	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
+	flags_item = TWOHANDED|ITEM_WEIGHTED
 	force_wielded = MELEE_FORCE_VERY_STRONG
-	really_heavy = TRUE
-	weighted_item = TRUE
 
 /obj/item/weapon/twohanded/breacher/synth/attack(target as mob, mob/living/user as mob)
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))

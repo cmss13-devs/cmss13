@@ -770,9 +770,9 @@
 	if(!isstorage(loc))
 		return FALSE
 	var/obj/item/storage/container_holding_pill = loc
-	if(!container_holding_pill.instant_pill_grabbable)
+	if(!HAS_FLAG(container_holding_pill.storage_flags, STORAGE_INSTANT_PILL_GRABBABLE))
 		return FALSE
-	if(!container_holding_pill.instant_pill_grab_mode)
+	if(!HAS_FLAG(container_holding_pill.storage_flags, STORAGE_INSTANT_PILL_GRAB_MODE))
 		return FALSE
 	if(!can_storage_interact(user))
 		error_idlock(user)

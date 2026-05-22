@@ -455,7 +455,7 @@
 		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
 		if(user.action_busy)
 			return
-		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+		if((current_hammer.flags_item & ITEM_WEIGHTED) && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 			to_chat(user, SPAN_WARNING("You can't use [current_hammer] properly!"))
 			return
 		if(turf_flags & TURF_HULL)

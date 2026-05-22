@@ -39,6 +39,7 @@
 #define BULWARK_REFLECTION_CHANCE_SIDES 65
 #define BULWARK_REFLECTION_CHANCE_BACK 30
 #define BULWARK_REFLECTED_BULLET_DAMAGE 0.5
+#define BULWARK_REFLECTED_BULLET_ACCURACY 80
 
 //
 // Passive benefits
@@ -353,7 +354,7 @@
 	var/obj/projectile/new_proj = new(get_turf(xeno_player), create_cause_data("reflective shield"))
 	new_proj.generate_bullet(bullet.ammo)
 	new_proj.damage = bullet.damage * BULWARK_REFLECTED_BULLET_DAMAGE
-	new_proj.accuracy = 80
+	new_proj.accuracy = BULWARK_REFLECTED_BULLET_ACCURACY
 	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
 
 	var/angle = Get_Angle(xeno_player, bullet.firer) + rand(-25, 25)

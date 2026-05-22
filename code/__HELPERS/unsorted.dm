@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -364,10 +365,11 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE)
 	var/mob/M
 	var/client/C
 	var/key
+	var/username
 
 	if(!whom)
 		return "*null*"
@@ -375,10 +377,12 @@
 		C = whom
 		M = C.mob
 		key = C.key
+		username = C.username()
 	else if(ismob(whom))
 		M = whom
 		C = M.client
 		key = M.key
+		username = M.username()
 	else if(istype(whom, /datum))
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
@@ -391,7 +395,10 @@
 		if(include_link && C)
 			. += "<a href='byond://?priv_msg=[C.ckey]'>"
 
-		. += key
+		if(show_username && username && username != key)
+			. += "[username] ([key])"
+		else
+			. += key
 
 		if(include_link)
 			if(C) . += "</a>"
@@ -413,6 +420,10 @@
 
 /proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
+
+/// Returns key_name with username shown when it differs from key - for admin contexts
+/proc/key_name_with_username(whom, include_name = 1)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
@@ -839,7 +850,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+		if(QDELETED(busy_user) || !istype(busy_user)) // Checks if busy_user exists
+			. = FALSE
+			break
+		if(has_target && (QDELETED(target) || !istype(target))) // Checks if the target exists and is not destroyed
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
@@ -1357,6 +1371,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1364,6 +1384,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 

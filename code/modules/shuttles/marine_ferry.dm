@@ -221,16 +221,6 @@
 
 	sleep(warmup_time) //Warming up
 
-	if(!queen_locked)
-		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
-			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
-				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
-				set_security_level(SEC_LEVEL_RED)
-				break
-
 	moving_status = SHUTTLE_INTRANSIT
 
 	for(var/X in equipments)
@@ -294,6 +284,16 @@
 
 	open_doors(turfs_trg) //And now open the doors
 
+	if(!queen_locked)
+		for(var/turf/T in turfs_src)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
+				var/name = "Unidentified Lifesigns"
+				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+				set_security_level(SEC_LEVEL_RED)
+				break
+
 	//END: Heavy lifting backend
 
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED))
@@ -323,7 +323,7 @@
 
 //Starts out exactly the same as long_jump()
 //Differs in the target selection and later things enough to merit it's own proc
-//The backend for landmarks should be in it's own proc, but I use too many vars resulting from the backend to save much space
+//The backend for landmarks should be in its own proc, but I use too many vars resulting from the backend to save much space
 /datum/shuttle/ferry/marine/proc/long_jump_crash()
 	set waitfor = 0
 

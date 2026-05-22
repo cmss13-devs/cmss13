@@ -23,6 +23,8 @@ Buildable meters
 #define PIPE_MTVALVE 18
 #define PIPE_MANIFOLD4W 19
 #define PIPE_CAP 20
+#define PIPE_UP 21
+#define PIPE_DOWN 22
 
 #define PIPE_GAS_FILTER_M 23
 #define PIPE_GAS_MIXER_T 24
@@ -548,6 +550,12 @@ Buildable meters
 
 		if(PIPE_CAP)
 			new_pipe = new /obj/structure/pipes/standard/cap(loc)
+
+		if(PIPE_UP)
+			new_pipe = new /obj/structure/pipes/multiz/up(loc)
+
+		if(PIPE_DOWN)
+			new_pipe = new /obj/structure/pipes/multiz/down(loc)
 
 		if(PIPE_SUPPLY_CAP)
 			new_pipe = new /obj/structure/pipes/standard/cap/hidden/supply(loc)

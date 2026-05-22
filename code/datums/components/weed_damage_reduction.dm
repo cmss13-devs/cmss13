@@ -3,11 +3,6 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage_mult = 1
-	var/static/list/signal_damage_types = list(
-		COMSIG_MOB_TAKE_DAMAGE,
-		COMSIG_HUMAN_TAKE_DAMAGE,
-		COMSIG_XENO_TAKE_DAMAGE
-	)
 	var/glow_color = "#ff14ff"
 	var/base_alpha = 110
 
@@ -21,14 +16,14 @@
 	src.glow_color = glow_color
 
 /datum/component/weed_damage_mult/RegisterWithParent()
-	RegisterSignal(parent, signal_damage_types, PROC_REF(set_incoming_damage))
+	RegisterSignal(parent, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(set_incoming_damage))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(check_for_filter))
 
 	var/mob/M = parent
 	check_for_filter(M, M.loc, 0, FALSE)
 
 /datum/component/weed_damage_mult/UnregisterFromParent()
-	UnregisterSignal(parent, signal_damage_types)
+	UnregisterSignal(parent, COMSIG_MOB_TAKE_DAMAGE)
 	var/mob/M = parent
 	M.remove_filter("weed_damage_mult")
 

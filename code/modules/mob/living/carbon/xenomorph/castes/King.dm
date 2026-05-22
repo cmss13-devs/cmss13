@@ -25,8 +25,6 @@
 
 	minimap_icon = "xenoqueen"
 
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
-
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING
@@ -46,8 +44,10 @@
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
 	aura_strength = 6
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,

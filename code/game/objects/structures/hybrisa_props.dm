@@ -1383,53 +1383,10 @@
 
 /obj/structure/prop/hybrisa/airport
 	name = "nose cone"
-	icon = 'icons/obj/structures/props/dropship/dropship_parts.dmi'
-	icon_state = "dropshipfrontwhite1"
+	icon = 'icons/turf/dropship_wy.dmi'
+	icon_state = "100"
 	unslashable = TRUE
 	unacidable = TRUE
-
-/obj/structure/prop/hybrisa/airport/dropshipnosecone
-	name = "nose cone"
-	icon_state = "dropshipfrontwhite1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-	density = TRUE
-
-/obj/structure/prop/hybrisa/airport/dropshipwingleft
-	name = "wing"
-	icon_state = "dropshipwingtop1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipwingright
-	name = "wing"
-	icon_state = "dropshipwingtop2"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipvent1left
-	name = "vent"
-	icon_state = "dropshipvent1"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipvent2right
-	name = "vent"
-	icon_state = "dropshipvent2"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipventleft
-	name = "vent"
-	icon_state = "dropshipvent3"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/airport/dropshipventright
-	name = "vent"
-	icon_state = "dropshipvent4"
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
 
 // Dropship damage
 

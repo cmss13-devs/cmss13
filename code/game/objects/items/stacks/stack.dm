@@ -193,7 +193,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 					to_chat(ui.user, SPAN_WARNING("[object] is blocking you from constructing \the [recipe.title]!"))
 					return FALSE
 
-	if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(ui.user.loc, /turf/open/snow) || istype(ui.user.loc, /turf/open/auto_turf/snow)))
+	if((recipe.flags & RESULT_REQUIRES_SNOW) && !istype(ui.user.loc, /turf/open/auto_turf/snow))
 		to_chat(ui.user, SPAN_WARNING("The [recipe.title] must be built on snow!"))
 		return FALSE
 

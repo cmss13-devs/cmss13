@@ -392,7 +392,7 @@ This function restores all limbs.
 		return TRUE
 
 	var/list/damagedata = list("damage" = damage, "enviro" = enviro)
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
 		return
 	damage = damagedata["damage"]
 

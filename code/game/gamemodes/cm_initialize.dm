@@ -340,13 +340,18 @@ Additional game mode variables.
 		return
 
 	var/turf/spawn_point = null
-	var/datum/job/joe_job = null
+	var/list/joe_types = SSmapping.configs[GROUND_MAP].colony_joe_types
+
+	if(length(joe_types) == 0)
+		to_chat(joe_candidate, SPAN_WARNING("This map does not have colony joe spawns, and a colony joe round should not have started!"))
+		return
+
+	var/datum/job/joe_job = pick(joe_types)
+	if(!ispath(joe_job))
+		joe_job = text2path(joe_job)
+
 	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
 		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
-		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
-	else if(get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE])))
-		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE]))
-		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
 	else
 		log_debug("No valid colony joe spawn points!")
 		return
@@ -354,12 +359,21 @@ Additional game mode variables.
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 
+	// text2path wont text to path so you get this
+	switch(joe_job)
+		if(/datum/job/civilian/working_joe/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+			joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
+		if(/datum/job/civilian/working_joe/daniel)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
+		if(/datum/job/antag/upp/dzho_automaton)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_JOE]
+
 	if(!joe_job)
 		qdel(new_joe)
 		return
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
-	joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	SSticker.minds += new_joe.mind
 	return new_joe

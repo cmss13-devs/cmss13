@@ -76,6 +76,10 @@
 		to_chat(usr, SPAN_WARNING("Wait for the round to start!"))
 		return
 
+	if(length(SSmapping.configs[GROUND_MAP].colony_joe_types) == 0)
+		to_chat(usr, SPAN_WARNING("This map doesn't support colony joes!"))
+		return
+
 	var/datum/game_mode/joe_round = SSticker.mode
 	if(tgui_alert(usr, "Are you sure you want to force-toggle Colony Joe spawning? Colony Joes are currently [(joe_round.flags_round_type & MODE_COLONY_JOE) ? "ENABLED" : "DISABLED"].", "Toggle Colony Joe Spawning", list("Yes", "No")) != "Yes")
 		return

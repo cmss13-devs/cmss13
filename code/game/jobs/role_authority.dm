@@ -233,7 +233,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		joe_chance = 20
 		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
 
-	if(prob(joe_chance) && !Check_WO())
+	if(prob(joe_chance) && !Check_WO() && length(SSmapping.configs[GROUND_MAP].colony_joe_types) != 0)
 		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.

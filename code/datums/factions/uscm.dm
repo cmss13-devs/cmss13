@@ -32,8 +32,6 @@
 				marine_rk = "xo"
 			if(JOB_CO, JOB_WO_CO)
 				marine_rk = "co"
-			if(JOB_GENERAL)
-				marine_rk = "general"
 			if(JOB_CAS_PILOT)
 				marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT)
@@ -104,10 +102,9 @@
 	else
 		var/marine_rk
 		var/_role = current_human.job
-		if(!_role)
-			var/obj/item/card/id/id_card = current_human.get_idcard()
-			if(id_card)
-				_role = id_card.rank
+		var/obj/item/card/id/id_card = current_human.get_idcard()
+		if(!_role && id_card)
+			_role = id_card.rank
 		switch(_role)
 			if(JOB_CMC)
 				marine_rk = "cmc"
@@ -116,7 +113,12 @@
 			if(JOB_GENERAL)
 				marine_rk = "general"
 			if(JOB_COLONEL)
-				marine_rk = "col"
+				if(id_card && id_card.paygrade)
+					switch(id_card.paygrade)
+						if(PAY_SHORT_MO4)
+							marine_rk = "ltcol"
+						if(PAY_SHORT_MO5)
+							marine_rk  = "col"
 			if(JOB_XO, JOB_WO_XO)
 				marine_rk = "xo"
 			if(JOB_CO, JOB_WO_CO)
@@ -234,6 +236,8 @@
 			// CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			if(JOB_CIA_UACQS_ADMN)
+				marine_rk = "uacqs_lia"
 			if(JOB_CIA_UACQS_ADMN)
 				marine_rk = "uacqs"
 			if(JOB_CIA_UACQS_COMR)

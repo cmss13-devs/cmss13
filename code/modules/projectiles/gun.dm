@@ -738,7 +738,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		damage = in_ammo.damage * damage_mult
 		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
-		falloff = in_ammo.damage_falloff * damage_falloff_mult
+		falloff = max(0, in_ammo.damage_falloff * damage_falloff_mult)
 
 		penetration = in_ammo.penetration
 
@@ -833,6 +833,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	// dont want a wield when it's not on the user, obviously
 	if(loc != user)
+		return
+
+	if(user.get_active_hand() != src) // obviously this isnt the case, but this is required for toggle_wield_assist shenanigans
+		if(gun_timer_id)
+			deltimer(gun_timer_id)
+			gun_timer_id = null
+
+			to_chat(user, SPAN_WARNING("You stop trying to wield \the [src]."))
+
 		return
 
 	if(world.time < pull_time) //Need to wait until it's pulled out to aim
@@ -1980,7 +1989,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult, 0.1) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
-	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
+	projectile_to_fire.damage_falloff = max(0, damage_falloff_mult * projectile_to_fire.ammo.damage_falloff)
 	projectile_to_fire.damage_buildup = damage_buildup_mult * projectile_to_fire.ammo.damage_buildup
 
 	projectile_to_fire.effective_range_min = effective_range_min + projectile_to_fire.ammo.effective_range_min //Add on ammo-level value, if specified.

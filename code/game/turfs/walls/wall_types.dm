@@ -1649,6 +1649,7 @@
 
 /turf/closed/wall/huntership/reinforced
 	name = "hunter ship reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/huntership/destructible

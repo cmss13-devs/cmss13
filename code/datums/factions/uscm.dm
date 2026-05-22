@@ -188,7 +188,6 @@
 			if(JOB_CMO, JOB_WO_CMO)
 				marine_rk = "cmo"
 			if(JOB_DOCTOR, JOB_WO_DOCTOR)
-				var/obj/item/card/id/id_card = current_human.get_idcard()
 				if(id_card.assignment == JOB_SURGEON)
 					marine_rk = "surgeon"
 				else if(id_card.assignment == JOB_PHARMACIST)

@@ -24,7 +24,7 @@
 	COOLDOWN_DECLARE(time_for_auto_repair)
 
 	protection_level = TURF_PROTECTION_NONE
-	var/nested_mob_count = 0
+	var/list/weakrefs_of_bursted = list()
 
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
@@ -43,8 +43,10 @@
 	SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/ui_icons/map_blips.dmi', null, "cluster"))
 
 /obj/effect/alien/resin/special/cluster/Destroy()
-	for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
-		LAZYREMOVE(covered_turf.linked_pylons, src)
+	if(node)
+		for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
+			LAZYREMOVE(covered_turf.linked_pylons, src)
+	weakrefs_of_bursted = null
 	QDEL_NULL(node)
 	SSminimaps.remove_marker(src)
 	return ..()
@@ -70,22 +72,33 @@
 
 		COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
 
+
+/obj/effect/alien/resin/special/cluster/proc/count_nested()
+	var/existing_bursted = length(weakrefs_of_bursted)
+	if(existing_bursted >= MOBS_NESTED_NEAR)
+		return TRUE
+
+	var/num_nested = 0
+	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
+		for(var/mob/living/carbon/human/nested_mob in scanned_turf)
+			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
+				continue
+			var/datum/weakref/nested_weakref = WEAKREF(nested_mob)
+			if(nested_weakref in weakrefs_of_bursted)
+				continue
+			num_nested++
+			if(nested_mob.chestburst)
+				weakrefs_of_bursted += nested_weakref
+
+			if(existing_bursted + num_nested >= MOBS_NESTED_NEAR)
+				return TRUE
+
+	return FALSE
+
 /obj/effect/alien/resin/special/cluster/proc/scan_for_nested_roof()
 	if(!node)
 		return
-
-	var/count = 0
-	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
-		for(var/mob/living/carbon/human/nested_mob in scanned_turf)
-			if(nested_mob.spawned_corpse)
-				continue
-			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
-				continue
-			count++
-
-	nested_mob_count = count
-
-	if(nested_mob_count >= MOBS_NESTED_NEAR)
+	if(count_nested())
 		protection_level = TURF_PROTECTION_CAS
 	else
 		protection_level = TURF_PROTECTION_NONE

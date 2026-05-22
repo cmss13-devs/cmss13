@@ -8874,8 +8874,11 @@
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
 "ayh" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
+/obj/structure/machinery/cryopod/joe/seegson{
+	pixel_y = 25;
+	pixel_x = -2;
+	density = 0
+	},
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "ayi" = (
@@ -13639,6 +13642,11 @@
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
+"aLR" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
 "aLS" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -16157,6 +16165,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
+"aSX" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "aSY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -5;
@@ -19135,10 +19147,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
-"bbu" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "bbv" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/strata/cyan2/east,
@@ -19162,14 +19170,6 @@
 /obj/item/reagent_container/food/condiment/enzyme,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/canteen/bar)
-"bbA" = (
-/obj/structure/machinery/cryopod/joe/seegson{
-	pixel_y = 25;
-	pixel_x = -2;
-	density = 0
-	},
-/turf/open/floor/strata,
-/area/strata/interior/outpost/engi)
 "bbB" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/sheet/wood,
@@ -75106,7 +75106,7 @@ aGr
 dCb
 oKo
 aKy
-ayh
+aLR
 aMX
 ohY
 kUU
@@ -75280,8 +75280,8 @@ aUV
 uWG
 dCb
 oKo
-bbA
 ayh
+aLR
 aNb
 aJb
 aJb
@@ -77546,7 +77546,7 @@ gAm
 ceI
 avZ
 aEc
-bbu
+aSX
 aCa
 dLT
 bFA

@@ -396,12 +396,12 @@
 "abv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky/level4)
-"aby" = (
+"abw" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
-"abz" = (
+"abx" = (
 /obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
@@ -54064,8 +54064,8 @@ wOO
 wOO
 wOO
 fEZ
-abz
-aby
+abx
+abw
 hPm
 mnC
 lFE
@@ -54246,8 +54246,8 @@ pGs
 pGs
 pGs
 fEZ
-abz
-aby
+abx
+abw
 hPm
 mnC
 lFE

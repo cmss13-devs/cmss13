@@ -1831,11 +1831,11 @@
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
-"agY" = (
+"agX" = (
 /obj/structure/machinery/cryopod/joe/weyland,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/power)
-"agZ" = (
+"agY" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
@@ -25569,7 +25569,7 @@ xzY
 xzY
 vMP
 xHm
-agY
+agX
 jhS
 jhS
 kVJ
@@ -25736,7 +25736,7 @@ hQj
 psz
 vdC
 xHm
-agZ
+agY
 hQj
 agV
 lAT

@@ -753,6 +753,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
+"acH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/joe/weyland/alt,
+/turf/open/floor/shiva/yellow/southeast,
+/area/shiva/interior/garage)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -887,6 +892,11 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"adf" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "adg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -2398,16 +2408,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
-"aic" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/joe/weyland/alt,
-/turf/open/floor/shiva/yellow/southeast,
-/area/shiva/interior/garage)
-"aid" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/garage)
 "aii" = (
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
@@ -49724,7 +49724,7 @@ azK
 ver
 pKb
 azK
-aid
+adf
 ver
 aCx
 ktd
@@ -49890,7 +49890,7 @@ ohb
 afa
 vUL
 aeS
-aic
+acH
 ktd
 cZk
 bIV

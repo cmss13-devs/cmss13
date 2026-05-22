@@ -91,6 +91,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH_INTEL "Intelligence Synthetic"
 #define JOB_SYNTH_MP "Military Police Synthetic"
 #define JOB_SYNTH_CMD "Command Support Synthetic"
+#define JOB_SYNTH_SCI "Research Synthetic"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"

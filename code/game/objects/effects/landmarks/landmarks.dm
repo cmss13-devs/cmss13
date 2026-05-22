@@ -519,6 +519,11 @@
 	icon_state = "late_join_delta"
 	squad = SQUAD_MARINE_4
 
+/obj/effect/landmark/late_join/synthetic
+	name = "synthetic late join"
+	icon_state = "late_join_misc"
+	job = JOB_SYNTH
+
 /obj/effect/landmark/late_join/working_joe
 	name = "working joe late join"
 	icon_state = "late_join_misc"

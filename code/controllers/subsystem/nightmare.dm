@@ -144,7 +144,7 @@ SUBSYSTEM_DEF(nightmare)
 	if(nodetype)
 		return new nodetype(parsed)
 	else
-		CRASH("Tried to instanciate an invalid node type")
+		CRASH("Tried to instantiate an invalid node type")
 
 /// Returns whether the ground context indicates a hostile survivor scenario
 /datum/controller/subsystem/nightmare/proc/get_scenario_is_hostile_survivor()

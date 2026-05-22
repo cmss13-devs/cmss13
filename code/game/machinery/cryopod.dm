@@ -574,7 +574,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	return FALSE
 
 /obj/structure/machinery/cryopod/joe/seegson // joe storage closets
-	icon = 'working_joe_storage.dmi'
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
 	icon_state = "working_joe_storage_empty"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -657,7 +657,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	SEND_SIGNAL(src, COMSIG_CRYOPOD_GO_OUT)
 
 /obj/structure/machinery/cryopod/joe/weyland
-	icon = 'working_joe_storage.dmi'
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
 	icon_state = "working_joe_storage_empty_dark"
 	unslashable = TRUE
 	unacidable = TRUE

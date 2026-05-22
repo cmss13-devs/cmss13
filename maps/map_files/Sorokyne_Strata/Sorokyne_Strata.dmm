@@ -8873,12 +8873,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
-"ayh" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/late_join/dzho_automaton/colony,
-/obj/effect/landmark/start/dzho_automaton/colony,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "ayi" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/south,
@@ -13138,7 +13132,13 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKy" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/cryopod/joe/seegson{
+	pixel_y = 25;
+	pixel_x = 1;
+	density = 0
+	},
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/start/working_joe/colony,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKz" = (
@@ -13634,10 +13634,6 @@
 /area/strata/interior/outpost/engi)
 "aLQ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/turf/open/floor/strata,
-/area/strata/interior/outpost/engi)
-"aLR" = (
-/obj/structure/machinery/vending/coffee,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aLS" = (
@@ -16158,10 +16154,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
-"aSX" = (
-/obj/structure/machinery/cryopod/no_cryo,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "aSY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -5;
@@ -19167,6 +19159,16 @@
 /obj/item/reagent_container/food/condiment/enzyme,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/canteen/bar)
+"bbA" = (
+/obj/structure/machinery/cryopod/joe/seegson{
+	pixel_y = 25;
+	pixel_x = -2;
+	density = 0
+	},
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/start/working_joe/colony,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
 "bbB" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/sheet/wood,
@@ -52914,13 +52916,6 @@
 "uqB" = (
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/bball)
-"uqY" = (
-/obj/structure/machinery/cryopod/no_cryo{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "urF" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan2/west,
@@ -75110,7 +75105,7 @@ aGr
 dCb
 oKo
 aKy
-aLR
+dgB
 aMX
 ohY
 kUU
@@ -75284,7 +75279,7 @@ aUV
 uWG
 dCb
 oKo
-dgB
+bbA
 dgB
 aNb
 aJb
@@ -77726,8 +77721,8 @@ ceI
 awa
 bDj
 aQV
-ayh
-ayh
+bFA
+bFA
 bXq
 oKo
 ceI
@@ -77901,8 +77896,8 @@ twi
 awc
 bDj
 bFA
-aSX
-uqY
+bXq
+bXq
 bXq
 aUS
 xYB

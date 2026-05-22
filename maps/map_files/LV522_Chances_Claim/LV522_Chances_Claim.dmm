@@ -1294,32 +1294,6 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"aey" = (
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"aez" = (
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"aeA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"aeB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_cryo/right,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"aeC" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -2725,8 +2699,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bbi" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet/atmos_personal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
@@ -36407,10 +36381,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/cryopod/no_cryo/right{
-	pixel_y = 13;
-	layer = 3.1
-	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "sOW" = (
@@ -65386,7 +65356,7 @@ jmG
 unS
 uKE
 jwM
-aeB
+jwM
 sOR
 oVk
 gwP
@@ -65592,8 +65562,8 @@ qxm
 iSF
 uKS
 uXO
-aeC
-aeA
+ild
+jwM
 ild
 eHF
 iXy
@@ -67243,8 +67213,8 @@ qNI
 wsT
 vBd
 tUg
-aez
-aey
+liN
+ild
 eHF
 ftK
 pMs

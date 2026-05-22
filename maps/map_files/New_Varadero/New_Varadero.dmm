@@ -396,15 +396,15 @@
 "abv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky/level4)
-"abw" = (
+"aby" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/electrical)
-"abx" = (
-/obj/structure/machinery/cryopod/no_cryo,
-/turf/open/floor/shiva/yellow/east,
-/area/varadero/interior/electrical)
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
+"abz" = (
+/obj/structure/machinery/cryopod/joe/weyland/alt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
 "abK" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -17953,13 +17953,6 @@
 /obj/item/tool/soap/syndie,
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
-"oBP" = (
-/obj/structure/machinery/cryopod/no_cryo{
-	pixel_y = 13;
-	layer = 3.1
-	},
-/turf/open/floor/shiva/yellow/east,
-/area/varadero/interior/electrical)
 "oBQ" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt"
@@ -53693,8 +53686,8 @@ mvi
 kCA
 sHs
 cbq
-abw
-abw
+kCA
+kCA
 pkX
 nsl
 kCA
@@ -53875,8 +53868,8 @@ oIC
 jtU
 jtU
 qId
-abx
-oBP
+jtU
+jtU
 kLA
 vnH
 jtU
@@ -54071,8 +54064,8 @@ wOO
 wOO
 wOO
 fEZ
-mnC
-mnC
+abz
+aby
 hPm
 mnC
 lFE
@@ -54253,8 +54246,8 @@ pGs
 pGs
 pGs
 fEZ
-fsU
-mnC
+abz
+aby
 hPm
 mnC
 lFE

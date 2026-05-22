@@ -1763,15 +1763,6 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"agE" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating,
-/area/bigredv2/outside/filtration_plant)
-"agF" = (
-/obj/structure/machinery/cryopod/no_cryo,
-/turf/open/floor/plating,
-/area/bigredv2/outside/filtration_plant)
 "agG" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating,
@@ -1781,6 +1772,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agI" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -1828,6 +1829,16 @@
 "agQ" = (
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/xenobiology)
+"agR" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = -2;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "agS" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -65087,7 +65098,7 @@ atJ
 asv
 asv
 awp
-bkT
+agI
 bkU
 bkT
 bkU
@@ -65300,12 +65311,12 @@ bep
 bep
 bqa
 awp
+agR
 bkU
 bkU
 bkU
 bkU
-agE
-agE
+bkU
 awp
 bWk
 bWk
@@ -65517,8 +65528,8 @@ bkT
 blG
 agG
 agG
-agF
-agF
+bkT
+bkU
 awp
 bWk
 bWk

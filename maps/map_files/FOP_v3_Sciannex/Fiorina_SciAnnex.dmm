@@ -390,15 +390,14 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
-"abs" = (
+"abu" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/maintenance)
-"abt" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
@@ -16900,6 +16899,12 @@
 /area/fiorina/station/civres_blue)
 "mTM" = (
 /obj/item/tool/warning_cone,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mUd" = (
@@ -17460,7 +17465,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "nrn" = (
-/obj/structure/machinery/cryopod/no_cryo,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fiorina/maintenance)
 "nrU" = (
@@ -20315,10 +20319,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "pxL" = (
-/obj/structure/machinery/cryopod/no_cryo{
-	pixel_y = 13;
-	layer = 3.1
-	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/maintenance)
 "pxX" = (
@@ -54624,7 +54624,7 @@ oPU
 oMu
 oPU
 eLu
-cME
+abu
 cPq
 cME
 cME
@@ -56755,8 +56755,8 @@ vZX
 vZX
 vZX
 jwc
-abt
-abs
+qsF
+kTs
 gfo
 gfo
 ivK

@@ -15,7 +15,8 @@
 	var/y_dim = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
-	var/cold_protection_factor = 0.4
+	/// Insulated enough to protect armorless patients in the medical tent
+	var/cold_protection_factor = 0.7
 
 	/// Roof display icon_state or null to disable
 	var/roof_state
@@ -26,8 +27,8 @@
 	. = ..()
 	bound_width = x_dim * world.icon_size
 	bound_height = y_dim * world.icon_size
-	register_turf_signals()
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_turf_signals))
+	for(var/turf/turf in locs)
+		RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(movable_entering_tent), override = TRUE)
 
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
@@ -45,11 +46,6 @@
 		roof_image.appearance_flags = KEEP_APART
 		src.overlays += roof_image
 
-/obj/structure/tent/proc/register_turf_signals()
-	SIGNAL_HANDLER
-	for(var/turf/turf in locs)
-		RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(movable_entering_tent), override = TRUE)
-
 /obj/structure/tent/proc/movable_entering_tent(turf/hooked, atom/movable/subject)
 	SIGNAL_HANDLER
 	if(!ismob(subject))
@@ -65,7 +61,7 @@
 		var/mob/hologram/hologram_mob = subject_mob
 		subject_mob = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
@@ -88,7 +84,7 @@
 		var/mob/hologram/hologram_mob = subject
 		subject = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
 /mob/proc/tent_deletion_clean_up(obj/structure/tent/deleting_tent)

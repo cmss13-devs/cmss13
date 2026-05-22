@@ -1,6 +1,6 @@
 /// Variant of /datum/component/riding specifically for living mobs
 /datum/component/riding/creature
-	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
+	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to player controlled mobs, which is passive)
 	var/can_be_driven = TRUE
 
 
@@ -10,7 +10,7 @@
 
 	. = ..()
 	var/mob/living/living_parent = parent
-	living_parent.stop_pulling() // was only used on humans previously, may change some other behavior
+	living_parent.stop_pulling()
 	ENABLE_BITFIELD(riding_mob.flags_atom, NO_ZFALL)
 	log_riding(living_parent, riding_mob)
 	riding_mob.glide_size = living_parent.glide_size
@@ -29,7 +29,7 @@
 /datum/component/riding/creature/RegisterWithParent()
 	. = ..()
 	if(can_be_driven)
-		RegisterSignal(parent, COMSIG_RIDDEN_DRIVER_MOVE, PROC_REF(driver_move)) // this isn't needed on riding humans or cyborgs since the rider can't control them
+		RegisterSignal(parent, COMSIG_RIDDEN_DRIVER_MOVE, PROC_REF(driver_move)) // this isn't needed on player controlled mobs since the rider can't control them
 
 /// Creatures need to be logged when being mounted
 /datum/component/riding/creature/proc/log_riding(mob/living/living_parent, mob/living/rider)
@@ -38,17 +38,16 @@
 
 	log_interact(rider, living_parent, "[rider] started riding [living_parent]")
 
-// this applies to humans and most creatures, but is replaced again for cyborgs
 /datum/component/riding/creature/ride_check(mob/living/rider)
 	var/mob/living/living_parent = parent
 
 	var/kick_us_off
 	if(HAS_TRAIT_FROM(living_parent, TRAIT_UNDENSE, LYING_DOWN_TRAIT)) // if we move while on the ground, the rider falls off
 		kick_us_off = TRUE
-	// for piggybacks and (redundant?) borg riding, check if the rider is stunned/restrained
+	// check if the rider is stunned/restrained
 	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (rider.grab_level == GRAB_CHOKE || rider.is_mob_incapacitated(TRUE)))
 		kick_us_off = TRUE
-	// for fireman carries, check if the ridden is stunned/restrained
+	// check if the ridden is stunned/restrained
 	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (rider.grab_level == GRAB_CHOKE || living_parent.is_mob_incapacitated(TRUE)))
 		kick_us_off = TRUE
 
@@ -74,12 +73,10 @@
 			to_chat(user, SPAN_WARNING("You need a [initial(key.name)] to ride [movable_parent]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
-	var/turf/next = get_step(living_parent, direction)
 	step(living_parent, direction)
-	last_move_diagonal = ((direction & (direction - 1)) && (living_parent.loc == next))
-	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal ? 2 : 1) * vehicle_move_delay)
+	COOLDOWN_START(src, vehicle_move_cooldown, vehicle_move_delay)
 
-/// Yeets the rider off, used for animals and cyborgs, redefined for humans who shove their piggyback rider off
+/// Yeets the rider off
 /datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE)
 	var/atom/movable/movable_parent = parent
 	movable_parent.unbuckle(rider)

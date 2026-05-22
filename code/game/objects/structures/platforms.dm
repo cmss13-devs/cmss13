@@ -260,6 +260,12 @@
 /obj/structure/platform/stone/stair_cut/soro_right
 	icon_state = "strata_rock_platform_stair_alt"
 
+/obj/structure/platform/stone/stair_cut/tyrargo_left
+	icon_state = "tyrargo_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/tyrargo_right
+	icon_state = "tyrargo_rock_platform_stair_alt"
+
 /obj/structure/platform/stone/stair_cut/kutjevo_left
 	icon_state = "kutjevo_rock_stair"
 
@@ -282,11 +288,24 @@
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_left
 	icon_state = "stone_stair"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_right
 	icon_state = "stone_stair_alt"
-	color = "#b29082"
+	color = "#b6a38f"
+
+/// Ancient-Temple platform stair-cut
+/obj/structure/platform/stone/stair_cut/ancient_temple_left
+	icon_state = "ancient_platform_stair_left"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_right
+	icon_state = "ancient_platform_stair_right"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_alt_left
+	icon_state = "ancient_platform_stair_alt_left"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_alt_right
+	icon_state = "ancient_platform_stair_alt_right"
 
 //------------------------------------//
 //       Metal based Platforms        //
@@ -452,6 +471,32 @@
 /obj/structure/platform/stone/mineral/west
 	dir = WEST
 
+// Tyrargo Rock
+
+/obj/structure/platform/stone/tyrargo
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "tyrargo_rock_platform"
+
+/obj/structure/platform/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform/stone/tyrargo/west
+	dir = WEST
+
+//--//
+
+/obj/structure/platform/stone/mineral
+	icon_state = "stone"
+
+/obj/structure/platform/stone/mineral/north
+	dir = NORTH
+/obj/structure/platform/stone/mineral/east
+	dir = EAST
+/obj/structure/platform/stone/mineral/west
+	dir = WEST
+
 
 /obj/structure/platform/stone/sandstone
 	name = "sandstone platform"
@@ -470,13 +515,36 @@
 /obj/structure/platform/stone/runed_sandstone
 	name = "sandstone temple platform"
 	icon_state = "stone"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform/stone/runed_sandstone/north
 	dir = NORTH
 /obj/structure/platform/stone/runed_sandstone/east
 	dir = EAST
 /obj/structure/platform/stone/runed_sandstone/west
+	dir = WEST
+
+/// Ancient-Temple platforms
+/obj/structure/platform/stone/ancient_temple
+	name = "stone platform"
+	desc = "A platform supporting elevated ground, made of stone. It appears to be carved with deocorative symbols."
+	icon_state = "ancient_platform"
+
+/obj/structure/platform/stone/ancient_temple/north
+	dir = NORTH
+/obj/structure/platform/stone/ancient_temple/east
+	dir = EAST
+/obj/structure/platform/stone/ancient_temple/west
+	dir = WEST
+
+/obj/structure/platform/stone/ancient_temple/alt
+	icon_state = "ancient_platform_alt"
+
+/obj/structure/platform/stone/ancient_temple/alt/north
+	dir = NORTH
+/obj/structure/platform/stone/ancient_temple/alt/east
+	dir = EAST
+/obj/structure/platform/stone/ancient_temple/alt/west
 	dir = WEST
 
 //------------------------------------//
@@ -643,6 +711,20 @@
 /obj/structure/platform_decoration/stone/soro/west
 	dir = WEST
 
+//TYRARGO
+
+/obj/structure/platform_decoration/stone/tyrargo
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "tyrargo_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/tyrargo/west
+	dir = WEST
+
 
 /obj/structure/platform_decoration/stone/mineral
 	icon_state = "stone_deco"
@@ -671,13 +753,36 @@
 /obj/structure/platform_decoration/stone/runed_sandstone
 	name = "sandstone temple platform corner"
 	icon_state = "stone_deco"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north
 	dir = NORTH
 /obj/structure/platform_decoration/stone/runed_sandstone/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
+	dir = WEST
+
+/// Ancient-Temple platform deco
+/obj/structure/platform_decoration/stone/ancient_temple
+	name = "stone platform corner"
+	desc = "A platform supporting elevated ground, made of stone. It appears to be carved with deocorative symbols."
+	icon_state = "ancient_platform_deco"
+
+/obj/structure/platform_decoration/stone/ancient_temple/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/ancient_temple/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/ancient_temple/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/ancient_temple/alt
+	icon_state = "ancient_platform_alt_deco"
+
+/obj/structure/platform_decoration/stone/ancient_temple/alt/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/ancient_temple/alt/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/ancient_temple/alt/west
 	dir = WEST
 
 /// Hybrisa Platforms

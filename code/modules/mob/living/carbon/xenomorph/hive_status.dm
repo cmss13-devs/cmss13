@@ -72,7 +72,7 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
-	var/list/hive_inherant_traits
+	var/list/hive_inherited_traits
 
 	// Cultist Info
 	var/mob/living/carbon/leading_cult_sl
@@ -174,6 +174,30 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	// Hive Stat Modifiers
+	// Makes sweeping increases/decreases to certain stats of Xenos in the Hive
+	// Flat decreases obviously just need - added before the value (except for speed cause speed is special and needs the opposite)
+	var/list/hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_NONE,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_NONE,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	var/list/hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)
@@ -198,7 +222,7 @@
 
 	setup_banned_allies()
 
-///Generate the image()'s requried for the evolution radial menu.
+///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
 		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
@@ -246,7 +270,7 @@
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
 		if(ishuman(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
 
 		if(issynth(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
@@ -849,6 +873,22 @@
 	for(var/datum/hivebuff/buff in active_hivebuffs)
 		buff._on_cease()
 
+/datum/hive_status/proc/bless_on_hijack()
+	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.caste.tier > 3)
+			return
+
+		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
+			return
+
+
+		if(xeno.caste.tier > 0)
+			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+			transmute_action.give_to(xeno)
+
+
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
@@ -1146,10 +1186,12 @@
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	xeno.add_language(LANGUAGE_ENGLISH)
+	LAZYORASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
 	xeno.remove_language(LANGUAGE_ENGLISH)
+	LAZYBITREMOVEASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))
@@ -1237,6 +1279,27 @@
 
 	need_round_end_check = TRUE
 
+	hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_MED,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_LOW,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_10,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_15,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_30,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = -XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
@@ -1285,10 +1348,70 @@
 /datum/hive_status/yautja/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
+/datum/hive_status/yautja_bad
+	name = FACTION_XENOMORPH_BADBLOOD
+	reporting_id = "enthralled"
+	hivenumber = XENO_HIVE_YAUTJA_BADBLOOD
+	internal_faction = FACTION_YAUTJA_BADBLOOD
+
+	prefix = "Enthralled "
+
+	color = "#cccc00"
+	ui_color = "#135029"
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = FALSE
+	evolution_rate = 0
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+
+	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
+
+	hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_MED,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_LOW,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_10,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_15,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_30,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = -XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
+/datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.handle_enthrall()
+
+/datum/hive_status/yautja_bad/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.handle_dethrall()
+
+/datum/hive_status/yautja_bad/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
 /datum/hive_status/hunted
 	name = FACTION_XENOMORPH_HUNTED
 	reporting_id = "hunted"
 	hivenumber = XENO_HIVE_HUNTED
+	prefix = "Hunted "
 
 	ui_color = "#135029"
 	dynamic_evolution = FALSE
@@ -1319,7 +1442,7 @@
 	color = "#6abd99"
 	ui_color = "#6abd99"
 
-	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
+	hive_inherited_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
@@ -1533,7 +1656,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	if(faction == FACTION_MARINE && ares_can_interface())
-		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and succesfully supressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and successfully suppressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)

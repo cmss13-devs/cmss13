@@ -13,6 +13,7 @@
 	desc = "A sterile mask designed to help prevent the spread of diseases."
 	icon_state = "sterile"
 	item_state = "sterile"
+	blood_overlay_type = "sterile"
 	w_class = SIZE_SMALL
 	flags_inventory = COVERMOUTH
 	flags_armor_protection = 0

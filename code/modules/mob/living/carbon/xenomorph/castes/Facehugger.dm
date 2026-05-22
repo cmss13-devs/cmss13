@@ -36,7 +36,7 @@
 	see_in_dark = 8
 	tier = 0  //Facehuggers don't count towards Pop limits
 	acid_blood_damage = 5
-	crit_health = 0
+	health_threshold_dead = 0
 	crit_grace_time = 0
 	gib_chance = 75
 	mob_size = MOB_SIZE_SMALL
@@ -50,6 +50,7 @@
 	can_hivemind_speak = FALSE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,

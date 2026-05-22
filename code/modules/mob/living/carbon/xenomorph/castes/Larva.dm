@@ -36,7 +36,7 @@
 	see_in_dark = 8
 	tier = 0  //Larva's don't count towards Pop limits
 	age = XENO_NO_AGE
-	crit_health = -25
+	health_threshold_dead = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
 	speaking_noise = "larva_talk"
@@ -63,9 +63,11 @@
 	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
 		larva_state = LARVA_STATE_NORMAL
 		generate_name()
+		update_icons()
 	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
 		larva_state = LARVA_STATE_MATURE
 		generate_name()
+		update_icons()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/warn_away_timer()

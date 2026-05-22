@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/recharge_station/Destroy()
 	if(occupant)
-		to_chat(occupant, SPAN_NOTICE(" <B>Critical failure of [name]. Unit ejected.</B>"))
+		to_chat(occupant, SPAN_NOTICE("<B>Critical failure of [name]. Unit ejected.</B>"))
 		go_out()
 	return ..()
 
@@ -54,7 +54,7 @@
 
 	if(current_internal_charge <= 0)
 		if(occupant)
-			to_chat(occupant, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
+			to_chat(occupant, SPAN_NOTICE("<B>The [name] is currently out of power. Please come back later!</B>"))
 			go_out()
 
 	var/chargemode = 0
@@ -190,9 +190,15 @@
 							current_organ.rejuvenate()
 							to_chat(occupant, "Internal component repaired.")
 
+			if(!doing_stuff && humanoid_occupant.is_revivable() && (humanoid_occupant.stat == DEAD))
+				if(check_revive(humanoid_occupant))
+					doing_stuff = TRUE
+					do_revive(humanoid_occupant)
+
 		if(!doing_stuff)
 			to_chat(occupant, "Maintenance cycle completed. All systems nominal.")
 			go_out()
+
 
 
 /obj/structure/machinery/recharge_station/proc/go_out()
@@ -257,10 +263,10 @@
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
 	if (!issynth(usr))
-		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the [name]!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>Only non-organics may enter the [name]!</B>"))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The [name] is already occupied!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>The [name] is already occupied!</B>"))
 		return
 	move_mob_inside(usr)
 	return
@@ -300,3 +306,58 @@
 	else
 		..(sourcemob, message, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
+
+
+/obj/structure/machinery/recharge_station/proc/check_revive(mob/living/carbon/human/revive_target)
+	if(!revive_target)
+		return FALSE
+
+	if(!issynth(revive_target))
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Non-synthetic target detected."))
+		return FALSE
+
+	if(revive_target.stat != DEAD)
+		return FALSE
+
+	if(!revive_target.is_revivable())
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic's general condition does not allow reviving."))
+		return FALSE
+
+	if(!revive_target.check_tod())
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic has sustained irrecoverable core damage."))
+		return FALSE
+	return TRUE
+
+/obj/structure/machinery/recharge_station/proc/do_revive(mob/living/carbon/human/revived_target)
+	if(!revived_target)
+		return
+
+	var/mob/dead/observer/ghost = revived_target.get_ghost()
+	if(istype(ghost) && ghost.client)
+		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
+			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
+
+	playsound(get_turf(src), 'sound/mecha/powerup.ogg' , 25, 0)
+	sleep(3 SECONDS)
+
+	if(!revived_target.is_revivable())
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic's general condition does not allow reviving."))
+
+	if(!revived_target.client && !(revived_target.status_flags & FAKESOUL)) //Freak case, no client at all. This is a braindead mob (like a colonist)
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Non-specific core damage detected, Attempting to re-activate..."))
+
+	if(isobserver(revived_target.mind?.current) && !revived_target.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
+		revived_target.mind.transfer_to(revived_target, TRUE)
+
+	if(revived_target.health > revived_target.health_threshold_dead)
+		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Synthetic reset complete."))
+		msg_admin_niche("[key_name_admin(revived_target)] was revived by [src] at [get_area_name(src)].")
+		playsound(get_turf(src), 'sound/items/synth_reset_key/boot_on.ogg', 25, 0)
+		revived_target.handle_revive()
+		to_chat(revived_target, SPAN_NOTICE("You suddenly awaken, reactivated."))
+		if(revived_target.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
+			window_flash(revived_target.client)
+	else
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Reactivation failed. chassis too damaged, repair damage and try again.")) //Freak case
+		playsound(get_turf(src), 'sound/items/synth_reset_key/shortbeep.ogg', 25, 0)

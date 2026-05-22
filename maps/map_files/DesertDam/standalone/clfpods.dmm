@@ -209,9 +209,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
-"aL" = (
-/turf/closed/wall,
-/area/desert_dam/building/medical/garage)
 "aM" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3/west,
@@ -906,18 +903,12 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_medical)
 "lA" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
@@ -1183,9 +1174,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uU" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
@@ -1635,12 +1623,18 @@
 "Gg" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
 /obj/structure/sign/banners/clf_worn{
 	pixel_y = 32
 	},
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/exterior/valley/valley_medical)
 "GM" = (
@@ -1681,9 +1675,6 @@
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "Iq" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
@@ -1757,12 +1748,6 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_medical)
-"LG" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Mc" = (
 /obj/structure/barricade/sandbags/wired{
@@ -2373,7 +2358,7 @@ kH
 jc
 nF
 am
-LG
+vp
 Zc
 Qi
 zz
@@ -3169,8 +3154,8 @@ bo
 Vo
 bg
 ID
-aL
-Av
+ID
+pu
 Av
 iK
 HM

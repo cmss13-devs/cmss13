@@ -177,6 +177,7 @@
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
+		SEND_SIGNAL(user, COMSIG_HUMAN_REMOVED_A_LARVA)
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

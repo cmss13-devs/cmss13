@@ -34,7 +34,7 @@
 /obj/item/implant/proc/islegal()
 	return 0
 
-/obj/item/implant/proc/meltdown() //breaks it down, making implant unrecongizible
+/obj/item/implant/proc/meltdown() //breaks it down, making implant unrecongizeable
 	to_chat(imp_in, SPAN_WARNING("You feel something melting inside [part ? "your [part.display_name]" : "you"]!"))
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
@@ -342,7 +342,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 <HR>
 <b>Implant Details:</b><BR>
 <b>Function:</b> Marks the host as WY property and allow special monitoring functions.<BR>
-<b>Special Features:</b> Will make the host more resistent to brainwashing techniques.<BR>
+<b>Special Features:</b> Will make the host more resistant to brainwashing techniques.<BR>
 <b>Integrity:</b> Implant will last approximately ten years."}
 	return dat
 
@@ -378,7 +378,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	if (src.uses < 1) return 0
 	if (emote == "pale")
 		src.uses--
-		to_chat(source, SPAN_NOTICE(" You feel a sudden surge of energy!"))
+		to_chat(source, SPAN_NOTICE("You feel a sudden surge of energy!"))
 		source.set_effect(0, STUN)
 		source.set_effect(0, WEAKEN)
 		source.set_effect(0, PARALYZE)

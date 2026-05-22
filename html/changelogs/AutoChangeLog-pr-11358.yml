@@ -1,7 +1,0 @@
-author: "Nihisohel, EldritchSack for the sprites"
-delete-after: True
-changes:
-  - rscadd: "Whistles are now automatically used when an order is being given"
-  - rscadd: "Additionally, adds a trench whistle, capable of further enhancing leadership orders at the cost of longer cooldown, slowing you down momentarily, and audibly revealing your location"
-  - balance: "Changed the normal whistle cooldown from 10 seconds to 5 seconds, putting my trust in everyone not to spam this shit"
-  - balance: "These trench whistles are only available to SLs, COs, and XOs, and remains a vendor choice for the FTLs and SOs"

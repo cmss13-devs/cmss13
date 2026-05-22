@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
 											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
-											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
+											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_EXPLOSIVE),\
 											PROPERTY_BONEMENDING = list(PROPERTY_CRYSTALLIZATION, PROPERTY_NUTRITIOUS)))
 
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
@@ -223,6 +223,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
+	XENO_HIVE_YAUTJA_BADBLOOD = new /datum/hive_status/yautja_bad(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
@@ -256,7 +257,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel", "Chestrig"))
 
 	//NVG colors
 GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))
@@ -423,6 +424,8 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		path_presets_list[preset.type] = preset
 
 		var/list/categories_to_check = list("All", preset.faction)
+		if(preset.no_faction_category)
+			categories_to_check = list("All")
 		categories_to_check += preset.selection_categories
 		for(var/category in categories_to_check)
 			if(!(category in all_categories))
@@ -638,7 +641,7 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 /// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
 /proc/setup_wy_droid_emotes()
 	var/list/emotes_to_add = list()
-	for(var/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/colonial/wy_droid))
+	for(var/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid))
 		if(!initial(emote.key) || !initial(emote.say_message))
 			continue
 

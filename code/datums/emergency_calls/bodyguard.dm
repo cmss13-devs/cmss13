@@ -68,9 +68,9 @@
 
 /datum/emergency_call/wy_bodyguard/pmc/sec
 	name = "Weyland-Yutani PMC Enforcer (Executive Bodyguard Detail)"
-	equipment_preset = /datum/equipment_preset/pmc/pmc_detainer
+	equipment_preset = /datum/equipment_preset/pmc/pmc_security
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_lead_investigator
-	spawn_header = "You are a Weyland-Yutani PMC Detainer!"
+	spawn_header = "You are a Weyland-Yutani PMC Security Enforcer!"
 	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
 
 /datum/emergency_call/wy_bodyguard/commando
@@ -85,8 +85,8 @@
 	to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 	to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
 	to_chat(response_mob, SPAN_BOLD("You are well-informed of the xenomorph threat."))
-	to_chat(response_mob, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
-	to_chat(response_mob, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector. "))
+	to_chat(response_mob, SPAN_BOLD("You are part of Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawal of the Neroid Sector."))
+	to_chat(response_mob, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector."))
 	to_chat(response_mob, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani Corporate Liaison."))
 	to_chat(response_mob, SPAN_BOLD("The USCSS Nisshoku contains a crew of roughly fifty commandos, and thirty scientists and support personnel."))
 	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))

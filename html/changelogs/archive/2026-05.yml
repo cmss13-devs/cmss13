@@ -80,3 +80,15 @@
   - balance: Xenos receive tiny superslow, slow and daze on climbing down without
       falling, slightly increased on big xenos
   - balance: Daze now does not disable releasing hauled
+2026-05-14:
+  TrollerNoob:
+  - refactor: Refactored Point Blank backend. You may now Point Blank as fast as your
+      gun's firerate allows, and you may continue firing after a Point Blank when
+      on Automatic Fire mode.
+  Venuska1117:
+  - bugfix: '"FOR THE HIVE" ability now create correctly chat message explaining cause
+      of death.'
+  labeo0:
+  - bugfix: fixed stacking health upgrades for sentry posts
+  seanlol092:
+  - qol: named the LZ

@@ -69,7 +69,4 @@ i guess
 	new /obj/item/clothing/shoes/stompers(src)
 
 /obj/item/storage/box/stompers/update_icon()
-	if(!length(contents))
-		icon_state = "stomper_box_e"
-	else
-		icon_state = "stomper_box"
+	icon_state = "[initial(icon_state)][length(contents) ? "" : "_e"]"

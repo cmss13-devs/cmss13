@@ -41,11 +41,7 @@ and it really wouldnt make that much of a difference
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
-	if(!length(contents))
-		icon_state = "m94_e"
-	else
-		icon_state = "m94"
-
+	icon_state = "[initial(icon_state)][length(contents) ? "" : "_e"]"
 
 /obj/item/storage/box/m94/signal
 	name = "\improper M89-S signal flare pack"
@@ -55,13 +51,6 @@ and it really wouldnt make that much of a difference
 /obj/item/storage/box/m94/signal/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/device/flashlight/flare/signal(src)
-
-/obj/item/storage/box/m94/signal/update_icon()
-	if(!length(contents))
-		icon_state = "m89_e"
-	else
-		icon_state = "m89"
-
 
 /obj/item/storage/box/nade_box
 	name = "\improper M40 HEDP grenade box"

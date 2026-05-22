@@ -116,7 +116,7 @@
 	SIGNAL_HANDLER
 	for(var/obj/item/storage/inv in user.contents)
 		if(inv.storage_flags & STORAGE_WEIGHTED)
-			movedata["move_delay"] += inv.contents.len * weight_multiplier
+			movedata["move_delay"] += length(inv.contents) * weight_multiplier
 			break // only really need to call this once
 
 /obj/item/storage/dropped(mob/user, silent)

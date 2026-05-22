@@ -433,22 +433,22 @@
 	do_pickup_animation(user)
 
 	if(flags_item & ITEM_WEIGHTED)
-		if(w_class >= SIZE_LARGE)
-			if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
+		throw_range = initial(throw_range) //surely this wont cause any problems
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
+			throw_range = rand(1, 3) // yeah you arent throwing that thing properly
+
+			if(w_class >= SIZE_LARGE)
 				to_chat(user, SPAN_HIGHDANGER("You grimace as you barely manage to lift \the [src] above your knees."))
 				user.apply_effect(3, EYE_BLUR)
-				RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_class_delay))
 			else
-				return
-		else if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
-			to_chat(user, SPAN_DANGER("You can feel the weight on \the [src], it's going to slow you down unless you put it away."))
+				to_chat(user, SPAN_DANGER("You can feel the weight on \the [src], it's going to slow you down unless you put it away."))
 			RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_class_delay))
 		else
-			return
+			return TRUE
 
 	return TRUE
 
-/obj/item/proc/weight_class_delay(mob/living/M, list/movedata)
+/obj/item/proc/weight_class_delay(mob/living/weight_delay, list/movedata)
 	SIGNAL_HANDLER
 	movedata["move_delay"] += w_class
 

@@ -34,8 +34,8 @@ Probably best to include it in this directory but atomization be damned
 	storage_flags = STORAGE_FLAGS_BOX // amuse me with this
 
 /obj/item/storage/box/survival/fill_preset_inventory()
-	new /obj/item/clothing/mask/breath( src )
-	new /obj/item/tank/emergency_oxygen( src )
+	new /obj/item/clothing/mask/breath(src)
+	new /obj/item/tank/emergency_oxygen(src)
 
 // wycaps is only here to show you how to fill the preset inventory of a box using a for loop,
 // rather than pasting the line over and over again, for maximum readability

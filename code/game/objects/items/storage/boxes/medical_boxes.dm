@@ -111,7 +111,7 @@ Y'know medical stuff, and research adjacent stuff
 	storage_slots = STORAGE_SLOTS_DEFAULT
 
 /obj/item/storage/box/cdeathalarm_kit/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/i in 1 to 6)
 		new /obj/item/implantcase/death_alarm(src)
 	new /obj/item/implanter(src)
 
@@ -134,27 +134,15 @@ Y'know medical stuff, and research adjacent stuff
 	desc = "Drymate brand farwa cubes, shipped from Ahdomai. Just add water!"
 	monkey_type = /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube
 
-/obj/item/storage/box/monkeycubes/farwacubes/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
-		new monkey_type(src)
-
 /obj/item/storage/box/monkeycubes/stokcubes
 	name = "stok cube box"
 	desc = "Drymate brand stok cubes, shipped from Moghes. Just add water!"
 	monkey_type = /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube
 
-/obj/item/storage/box/monkeycubes/stokcubes/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
-		new monkey_type(src)
-
 /obj/item/storage/box/monkeycubes/neaeracubes
 	name = "neaera cube box"
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
 	monkey_type = /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube
-
-/obj/item/storage/box/monkeycubes/neaeracubes/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
-		new monkey_type(src)
 
 /obj/item/storage/box/monkeycubes/yautja
 	name = "weird cube box"
@@ -176,7 +164,7 @@ Y'know medical stuff, and research adjacent stuff
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
-		new /obj/item/storage/pill_bottle( src )
+		new /obj/item/storage/pill_bottle(src)
 
 /obj/item/storage/box/autoinjectors
 	name = "box of autoinjectors"

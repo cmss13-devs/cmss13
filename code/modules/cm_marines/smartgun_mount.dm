@@ -1295,6 +1295,7 @@
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
+	gun_has_gamemode_skin = FALSE
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)

@@ -1,0 +1,6 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - rscadd: "Added paygrades prefixes to the crew manifest"
+  - ui: "Paygrade prefixes in the crew manifest are in a separate column. Names are in line with each other"
+  - spellcheck: "Slightly shortened two researcher paygrade prefixes"

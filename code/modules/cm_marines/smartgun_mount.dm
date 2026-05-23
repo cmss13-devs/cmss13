@@ -520,6 +520,7 @@
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/hmg.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
 	unslashable = TRUE
@@ -1263,8 +1264,9 @@
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_fire_delay)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
-	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	name = "\improper scoped M38D heavy machine gun nest"
+	desc = "A scoped M38D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	icon_state = "M38D"
 	fire_delay = 2
 	rounds = 1500
 	rounds_max = 1500

@@ -1,6 +1,6 @@
 /obj/item/device/megaphone
 	name = "\improper megaphone"
-	desc = "A device used to project your voice. Loudly. Pressing unique action will toggle voice amplification on and off. While active on your active hand, speaking will project your message to a much larger area."
+	desc = "A device used to project your voice. Loudly."
 	icon_state = "megaphone"
 	item_state = "megaphone"
 	icon = 'icons/obj/items/tools.dmi'
@@ -23,15 +23,30 @@
 
 /obj/item/device/megaphone/get_examine_text(mob/user)
 	. = ..()
+
+	. += SPAN_NOTICE("<a href='byond://?src=\ref[src];instructions=1'>Megaphone Instructions</a>")
+
 	if(amplifying)
 		. += SPAN_HELPFUL("It is currently toggled on and amplifying your voice.")
 	else
 		. += SPAN_WARNING("It is currently toggled off.")
+
 	if(hush_enabled)
 		. += SPAN_HELPFUL("The hush function is enabled.")
 	else
 		. += SPAN_WARNING("The hush function is disabled.")
 
+/obj/item/device/megaphone/Topic(href, href_list)
+	. = ..()
+
+	if(href_list["instructions"])
+		var/msg = "[SPAN_NOTICE("<b><u>Megaphone Instructions</u></b>")]<br>"
+		msg += "[SPAN_NOTICE("<b>Voice Amplification:</b>")] Pressing unique-action will toggle voice amplification on and off. While active on your active hand, speaking will project your message to a much larger area.<br>"
+		msg += "<br>" // humble indent
+		msg += "[SPAN_NOTICE("<b>Hushing:</b>")] Additionally, if you are trained in leadership, you may utilize the ability to 'hush' your audience, inducing silence as you project your authority to them, however you can only do so if you are in view of them."
+		to_chat(usr, boxed_message(msg))
+
+		return
 
 /obj/item/device/megaphone/unique_action(mob/living/user)
 	amplifying = !amplifying
@@ -43,6 +58,10 @@
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
 /obj/item/device/megaphone/proc/toggle_hush(mob/user)
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+		to_chat(user, SPAN_WARNING("You do not have the training required to use the hush function."))
+		return
+
 	hush_enabled = !hush_enabled
 	to_chat(user, SPAN_NOTICE("You toggle the hush function [hush_enabled ? "on" : "off"]."))
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
@@ -103,7 +122,7 @@
 					broadcast = speaking.scramble(message)
 				broadcast = "<span class='[speaking.color]'>\"[broadcast]\"</span>"
 
-			listener.show_message("<B>[paygrade][user]</B> broadcasts, [FONT_SIZE_LARGE(broadcast)]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			listener.show_message("<B>[paygrade][user]</B> broadcasts, [FONT_SIZE_LARGE(broadcast)]", SHOW_MESSAGE_AUDIBLE, chat_type = MESSAGE_TYPE_LOCALCHAT)
 
 			if(isliving(listener))
 				var/mob/living/audience = listener
@@ -125,11 +144,11 @@
 		to_chat(user, SPAN_DANGER("You can only broadcast with the [name] when it is in your active hand!"))
 
 /datum/action/item_action/megaphone_hush
-	name = "Toggle Hush"
 	action_icon_state = "hush_on"
 
 /datum/action/item_action/megaphone_hush/New(Target, obj/item/holder)
 	..()
+	name = "Toggle Megaphone Hushing"
 	button.name = name
 
 /datum/action/item_action/megaphone_hush/action_activate()

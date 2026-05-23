@@ -17230,6 +17230,7 @@
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
 "aXP" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
+/obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "aXQ" = (
@@ -23055,6 +23056,15 @@
 /obj/structure/window/framed/new_varadero/foundation,
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
+"bnC" = (
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
+"bnD" = (
+/obj/effect/decal/cleanable/blood/drip/yautja,
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
 "bnF" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8
@@ -33473,6 +33483,7 @@
 /area/point_loma/research_facility/crash_site)
 "cfJ" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/bed/sofa/vert/grey,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
 "cfK" = (
@@ -122328,7 +122339,7 @@ bIO
 bIO
 aXP
 cfJ
-bIO
+bnC
 bIO
 aWB
 aWe
@@ -122690,9 +122701,9 @@ bJw
 bJw
 bIO
 bIO
-bIO
-cEX
-bIO
+aXy
+bnD
+bnC
 bIO
 aWG
 aWi

@@ -17177,6 +17177,11 @@
 	},
 /turf/open/new_varadero/sidewalk/sidewalkfull,
 /area/point_loma/airbase/interior/fuel_storage)
+"aXN" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/point_loma/oob/sky)
 "aXO" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -17187,6 +17192,14 @@
 	},
 /turf/open/asphalt/cement_shaded/northwest,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
+"aXP" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/point_loma/oob/sky)
 "aXQ" = (
 /turf/open/floor/shiva/radiator_tile2,
 /area/point_loma/airbase/interior/workshop)
@@ -17212,6 +17225,21 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
+"aXU" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/point_loma/oob/sky)
+"aXV" = (
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24
+	},
+/obj/effect/hunter/bridge_border/brown/large_stair{
+	dir = 1
+	},
+/turf/open/predship/tile/hunter_tile_5/north,
+/area/point_loma/oob/sky)
 "aXW" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/radiator_tile2,
@@ -17240,6 +17268,11 @@
 /obj/structure/flora/grass/colorable/point_loma/heavy/two,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
+"aYc" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/point_loma/oob/sky)
 "aYd" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer1,
@@ -17253,6 +17286,12 @@
 	},
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/fuel_storage)
+"aYf" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/point_loma/oob/sky)
 "aYg" = (
 /obj/structure/sign/safety/coffee{
 	pixel_y = 1
@@ -17280,6 +17319,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/purplewhite/east,
 /area/point_loma/research_facility/research/east)
+"aYk" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/tile/hunter_tile_5/east,
+/area/point_loma/oob/sky)
 "aYl" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/shiva/red,
@@ -52340,7 +52384,7 @@
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "wNs" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/point_loma/oob/sky)
 "wNN" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -210741,8 +210785,8 @@ aXy
 aXy
 aXy
 alv
-aWX
-aWe
+sym
+sym
 aWY
 aWY
 aWY
@@ -210923,13 +210967,13 @@ alv
 alv
 alv
 alv
-alD
-alD
+aXU
+aXN
 alv
 alv
 alv
-alD
-alD
+alv
+alv
 alv
 alD
 alD
@@ -211099,19 +211143,19 @@ alD
 alD
 alD
 wNs
+uhJ
+tKj
+uhJ
+olZ
+uhJ
+olZ
+aXV
+aXP
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aWT
+aWB
 alD
 alD
 alD
@@ -211462,7 +211506,7 @@ alD
 alD
 alD
 alD
-wNs
+aYc
 kAg
 fiA
 kij
@@ -211644,7 +211688,7 @@ alD
 alD
 alD
 alD
-alD
+aYf
 fiD
 tmU
 alS
@@ -211826,7 +211870,7 @@ alD
 uhJ
 tKj
 uhJ
-wNs
+aYk
 fiD
 tmU
 alS
@@ -213100,7 +213144,7 @@ alD
 mTo
 lqU
 mTo
-wNs
+aYc
 mKt
 fbA
 vhE
@@ -213282,15 +213326,15 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aYf
+uhJ
+tKj
+uhJ
+olZ
+uhJ
+olZ
+uhJ
+olZ
 alv
 alv
 alv
@@ -213464,12 +213508,12 @@ alD
 alD
 alD
 alD
-wNs
-alD
-alD
-alD
-alD
-alD
+aYk
+uhJ
+tKj
+uhJ
+olZ
+uhJ
 alv
 alv
 alv

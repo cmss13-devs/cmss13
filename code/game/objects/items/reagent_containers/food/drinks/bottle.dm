@@ -91,7 +91,7 @@
 	return
 
 /obj/item/reagent_container/food/drinks/bottle/attackby(obj/item/I, mob/living/user)
-	if(!isGlass || !istype(I, /obj/item/paper) || istype(I, /obj/item/paper/research_notes || istype(I, /obj/item/paper/research_report))) //prevents research papers from being used for molotovs, parity with paper scraps
+	if(!isGlass || !istype(I, /obj/item/paper) || !is_objective) //prevents research papers from being used for molotovs, parity with paper scraps
 		return ..()
 	if(!reagents || !length(reagents.reagent_list))
 		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))

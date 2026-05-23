@@ -13,6 +13,7 @@ type ManifestData = {
 };
 
 type Crew = {
+  paygrade_prefix: string;
   name: string;
   rank: string;
   squad?: string | null;

@@ -72,7 +72,7 @@
 
 		COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
 
-
+/// Counts nested including any previous bursts up to MOBS_NESTED_NEAR and returns whether that number is met
 /obj/effect/alien/resin/special/cluster/proc/count_nested()
 	var/existing_bursted = length(weakrefs_of_bursted)
 	if(existing_bursted >= MOBS_NESTED_NEAR)
@@ -82,6 +82,8 @@
 	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
 		for(var/mob/living/carbon/human/nested_mob in scanned_turf)
 			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
+				continue
+			if(nested_mob.spawned_corpse)
 				continue
 			var/datum/weakref/nested_weakref = WEAKREF(nested_mob)
 			if(nested_weakref in weakrefs_of_bursted)

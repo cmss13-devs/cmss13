@@ -25198,23 +25198,174 @@
 /obj/structure/girder,
 /turf/open/new_varadero,
 /area/point_loma/oob/sky)
+"btV" = (
+/obj/structure/ladder/multiz/yautja,
+/obj/structure/ladder/multiz/yautja,
+/turf/open/predship/plating,
+/area/point_loma/airbase/exterior/crash_site)
+"btW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"btX" = (
+/turf/open/predship/tile/hunter_tile_6/north,
+/area/point_loma/oob/sky)
+"btY" = (
+/obj/structure/machinery/shower{
+	dir = 4;
+	color = "#c1a384"
+	},
+/obj/structure/machinery/shower{
+	dir = 1;
+	color = "#c1a384"
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
+"btZ" = (
+/obj/structure/machinery/shower{
+	dir = 1;
+	color = "#c1a384"
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
 "bua" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/predship/mainfloor/direction_2/west,
 /area/point_loma/airbase/exterior/west)
+"bub" = (
+/obj/item/reagent_container/glass/rag/polishing_rag,
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 9
+	},
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buc" = (
+/obj/structure/machinery/shower{
+	dir = 4;
+	color = "#c1a384"
+	},
+/obj/effect/hunter/bridge_border/brown,
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
+"bud" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/oob/sky)
+"bue" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Showers"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/oob/sky)
+"buf" = (
+/obj/structure/machinery/shower{
+	color = "#c1a384";
+	pixel_y = 22
+	},
+/obj/structure/machinery/shower{
+	dir = 4;
+	color = "#c1a384"
+	},
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
 "bug" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
+"buh" = (
+/obj/structure/machinery/shower{
+	color = "#c1a384";
+	pixel_y = 22
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/item/tool/soap/syndie{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
 "bui" = (
 /turf/open_space,
 /area/point_loma/airbase/cave/south/upper)
+"buj" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/oob/sky)
 "buk" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/white,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"bul" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/oob/sky)
+"bum" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/oob/sky)
+"bun" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buo" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
+"bup" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/left_centre,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
+"buq" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/centre,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
+"bur" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/right_centre,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
 "bus" = (
 /obj/structure/largecrate,
 /turf/open/floor/corsat,
@@ -25233,10 +25384,69 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/white,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"buw" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/right,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
+"bux" = (
+/turf/closed/wall/huntership,
+/area/point_loma/oob/sky)
+"buy" = (
+/obj/structure/ladder/multiz/yautja,
+/turf/open/predship/hunter_catwalk,
+/area/point_loma/oob/sky)
+"buz" = (
+/obj/structure/ladder/multiz/yautja,
+/turf/open/predship/hunter_catwalk_alt,
+/area/point_loma/oob/sky)
+"buA" = (
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/predship/hunter_catwalk,
+/area/point_loma/oob/sky)
 "buB" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/white,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"buC" = (
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/obj/item/weapon/shield/riot/yautja{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 32
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 35;
+	anchored = 1;
+	pixel_x = 17
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/predship/hunter_catwalk,
+/area/point_loma/oob/sky)
+"buD" = (
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/turf/open/predship/tile/red3,
+/area/point_loma/oob/sky)
+"buE" = (
+/obj/effect/hunter/rune/corner{
+	dir = 1
+	},
+/turf/closed/wall/huntership/destructible/reinforced,
+/area/point_loma/oob/sky)
+"buF" = (
+/obj/effect/hunter/rune/corner,
+/turf/closed/wall/huntership/destructible/reinforced,
+/area/point_loma/oob/sky)
 "buP" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
@@ -43676,10 +43886,6 @@
 /obj/structure/machinery/light,
 /turf/open/new_varadero/alt_concrete,
 /area/space)
-"cVO" = (
-/obj/structure/ladder/multiz,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
 "cVP" = (
 /obj/structure/pipes/portables_connector{
 	dir = 1
@@ -48628,12 +48834,6 @@
 "dwM" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/interior/garage)
-"dzI" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/predship/hunter_catwalk,
-/area/point_loma/oob/sky)
 "dAj" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -50054,14 +50254,6 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
-"kWQ" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 4;
-	pixel_y = 5;
-	buckling_y = 5
-	},
-/turf/open/predship/hunter_catwalk,
-/area/point_loma/oob/sky)
 "kXH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -50093,14 +50285,6 @@
 "lll" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
 /area/point_loma/airbase/interior/research)
-"lqU" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8;
-	pixel_y = 5;
-	buckling_y = 5
-	},
-/turf/open/predship/hunter_catwalk,
-/area/point_loma/oob/sky)
 "lrW" = (
 /obj/structure/largecrate/supply/supplies/water,
 /obj/structure/largecrate/random/mini/small_case{
@@ -50388,14 +50572,6 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
-"mTo" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8;
-	pixel_y = 5;
-	buckling_y = 5
-	},
-/turf/open/predship/hunter_catwalk_alt,
-/area/point_loma/oob/sky)
 "mUh" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table/reinforced/prison,
@@ -50726,12 +50902,6 @@
 /obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
-"ovS" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/turf/open/predship/hunter_catwalk_alt,
-/area/point_loma/oob/sky)
 "oAQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westleft,
@@ -51435,14 +51605,6 @@
 	},
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
-"rBo" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 4;
-	pixel_y = 5;
-	buckling_y = 5
-	},
-/turf/open/predship/hunter_catwalk_alt,
-/area/point_loma/oob/sky)
 "rEr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
@@ -163095,8 +163257,8 @@ bQT
 bQT
 sEl
 sEl
-bRz
-bRz
+ayJ
+ayJ
 ayq
 ayq
 ayq
@@ -163279,11 +163441,11 @@ bQT
 sEl
 sEl
 sEl
-bRz
-bRz
-bRz
-bRz
-bRz
+ayJ
+ayJ
+ayJ
+ayJ
+ayJ
 bRz
 iKH
 aDL
@@ -167465,8 +167627,8 @@ aJj
 aJP
 pge
 pge
-cVO
-cVO
+aNI
+aNI
 aEn
 aEn
 aEn
@@ -167647,10 +167809,10 @@ bRz
 bRz
 pge
 pge
-bRz
-bRz
-bRz
-bRz
+btV
+btV
+pge
+pge
 bRz
 bRz
 bRz
@@ -167827,12 +167989,12 @@ bQW
 bQW
 bQW
 bQW
-bQW
-bQW
-bQW
-bQW
-bQW
-bQW
+pge
+pge
+pge
+pge
+pge
+pge
 bQW
 bQW
 bQW
@@ -208066,14 +208228,14 @@ alQ
 sym
 btt
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alv
+alv
+uhJ
+uhJ
+uhJ
+uhJ
+uhJ
+uhJ
 alv
 bty
 btv
@@ -208248,14 +208410,14 @@ qQr
 sym
 btt
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bux
+buo
+uhJ
+btX
+btX
+btX
+btX
+btX
 alv
 bty
 btv
@@ -208430,14 +208592,14 @@ sym
 sym
 btt
 alv
-alD
-alD
-alD
-alD
-alD
+bux
+bup
+uhJ
+btX
+buj
 alv
-alD
-alD
+btX
+btX
 alv
 bty
 btv
@@ -208612,14 +208774,14 @@ sym
 sym
 btt
 alv
+bux
+buq
+uhJ
+btX
+bul
 alv
-alv
-alv
-alv
-alv
-alv
-alD
-alD
+btX
+btX
 alv
 bty
 btv
@@ -208794,14 +208956,14 @@ alv
 sym
 btt
 alv
-alD
-alD
-alD
-alD
-alD
+bux
+bur
+uhJ
+btX
+bum
 alv
-alD
-alD
+btX
+btX
 alv
 bty
 btv
@@ -208976,14 +209138,14 @@ alD
 sym
 btt
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bux
+buw
+uhJ
+btX
+btX
+btX
+btX
+btX
 alv
 bty
 btv
@@ -209158,14 +209320,14 @@ alv
 bty
 btt
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alv
+alv
+uhJ
+uhJ
+uhJ
+uhJ
+uhJ
+uhJ
 alv
 bty
 btv
@@ -209346,8 +209508,8 @@ alv
 alv
 alv
 alv
-alv
-alD
+uhJ
+uhJ
 alv
 bty
 btv
@@ -210069,14 +210231,14 @@ bty
 btt
 alv
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bun
+bun
+bun
+alv
+buf
+buc
+btY
+alv
 alD
 alD
 alD
@@ -210254,10 +210416,10 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
+alv
+buh
+bud
+btZ
 alv
 alD
 alD
@@ -210436,10 +210598,10 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
+alv
+alv
+bue
+alv
 alv
 alD
 alD
@@ -210798,13 +210960,13 @@ alv
 alv
 alD
 alD
-alv
-alv
-alv
-alv
-alv
-alv
-alv
+alD
+alD
+alD
+alD
+alD
+bub
+btW
 alD
 alD
 alD
@@ -211684,13 +211846,13 @@ apc
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-uhJ
-tKj
-uhJ
+alv
+rEM
+wym
+tUo
+xqy
+tUo
+xqy
 btT
 fiD
 tmU
@@ -211865,14 +212027,14 @@ dji
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-alD
-rBo
-kWQ
-rBo
+btN
+alv
+gKe
+tlu
+dNe
+nfT
+uOq
+rOx
 btR
 fiD
 tmU
@@ -212038,23 +212200,23 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+sym
+sym
+sym
+sym
+sym
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-ovS
-dzI
-ovS
+sym
+btN
+alv
+buA
+rxR
+qQr
+olZ
+kPh
+dZf
 btR
 fiD
 kVk
@@ -212220,23 +212382,23 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
+sym
+sym
+sym
+sym
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-mTo
-lqU
-mTo
+sym
+btN
+btN
+alQ
+xPg
+qeg
+spT
+xcy
+gvu
+odI
 btR
 fiD
 tmU
@@ -212403,22 +212565,22 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
+sym
+sym
 sym
 sym
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-uhJ
-tKj
-uhJ
+sym
+sym
+btN
+btN
+alQ
+qiw
+qeg
+spT
+xcy
+oLA
+uDI
 btR
 fiD
 tmU
@@ -212585,22 +212747,22 @@ bTS
 bTS
 bTS
 bTS
-bTS
 sym
 sym
 sym
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-rBo
-kWQ
-rBo
+sym
+sym
+sym
+btN
+btN
+btN
+buE
+hoq
+qeg
+xcy
+spT
+oLA
+uDI
 btR
 fiD
 tmU
@@ -212771,18 +212933,18 @@ sym
 sym
 sym
 sym
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-ovS
-dzI
-ovS
+sym
+sym
+btN
+btN
+sym
+buF
+hoq
+qeg
+xcy
+spT
+maZ
+xID
 btR
 kAg
 moa
@@ -212958,13 +213120,13 @@ sym
 sym
 sym
 sym
-alD
-alD
-alD
-alD
-mTo
-lqU
-mTo
+alQ
+buC
+nSw
+olZ
+qQr
+jYc
+dZf
 wNs
 mKt
 fbA
@@ -213140,16 +213302,16 @@ sym
 sym
 sym
 sym
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alQ
+buD
+qbV
+hxX
+vGN
+rLc
+kAq
 btS
-uhJ
-tKj
+buz
+buy
 uhJ
 olZ
 uhJ
@@ -213322,7 +213484,7 @@ sym
 sym
 sym
 sym
-alD
+alv
 alD
 alD
 alD

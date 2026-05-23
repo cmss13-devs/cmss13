@@ -7613,7 +7613,7 @@
 /area/point_loma/research_facility/super_death_cannon/engineering)
 "awn" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/plating/wood,
+/turf/open/floor/hybrisa/wood/darkerwood,
 /area/point_loma/airbase/exterior/crash_site)
 "awo" = (
 /obj/structure/surface/table/almayer,
@@ -7630,7 +7630,7 @@
 	pixel_x = 9;
 	pixel_y = 1
 	},
-/turf/open/floor/plating/wood,
+/turf/open/floor/hybrisa/wood/darkerwood,
 /area/point_loma/airbase/exterior/crash_site)
 "awp" = (
 /obj/structure/machinery/mill,
@@ -7653,7 +7653,7 @@
 	pixel_y = 12;
 	pixel_x = 3
 	},
-/turf/open/floor/plating/wood,
+/turf/open/floor/hybrisa/wood/darkerwood,
 /area/point_loma/airbase/exterior/crash_site)
 "aws" = (
 /obj/structure/platform/metal/kutjevo/west,
@@ -16250,7 +16250,9 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aUQ" = (
-/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/bed/sofa/south/grey/right{
+	pixel_y = 5
+	},
 /turf/open/floor/shiva/blue/north,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aUR" = (
@@ -16517,11 +16519,6 @@
 	density = 0;
 	pixel_x = 8;
 	pixel_y = 16
-	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 16;
-	pixel_x = -8
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/north,
 /area/point_loma/oob/sky)
@@ -23065,6 +23062,9 @@
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bnE" = (
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/airbase/exterior/crash_site)
 "bnF" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8
@@ -24612,9 +24612,19 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
+"bse" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/airbase/exterior/crash_site)
 "bsf" = (
 /turf/open/floor/almayer/research/containment/yautja,
 /area/point_loma/research_facility/crash_site)
+"bsg" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	pixel_y = 22
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bsh" = (
 /obj/structure/girder,
 /turf/open/floor/corsat,
@@ -24623,11 +24633,36 @@
 /obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/floor/almayer/research/containment/yautja,
 /area/point_loma/research_facility/crash_site)
+"bsj" = (
+/obj/structure/bed/sofa/south/grey/left{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bsk" = (
+/obj/structure/bed/sofa/south/grey{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bsl" = (
+/obj/structure/bed/sofa/south/grey/right{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bsm" = (
 /obj/item/stack/rods,
 /obj/item/stack/rods,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/crash_site)
+"bsn" = (
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bso" = (
 /obj/structure/girder,
 /turf/open/floor/plating/burnt_platingdmg3,
@@ -24640,6 +24675,10 @@
 /obj/item/stack/rods,
 /turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
+"bsr" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bss" = (
 /obj/item/skull/hivelord,
 /turf/closed/wall/huntership/outerhull,
@@ -24656,6 +24695,14 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/huntership/outerhull,
 /area/point_loma/oob)
+"bsw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/secure/briefcase{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
 "bsx" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -24705,6 +24752,15 @@
 	},
 /turf/open/floor/strata/blue2,
 /area/point_loma/research_facility/laundry)
+"bsD" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
 "bsE" = (
 /obj/structure/sink{
 	dir = 8;
@@ -24737,6 +24793,14 @@
 /obj/structure/barricade/handrail/hybrisa,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
+"bsK" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
 "bsL" = (
 /obj/structure/sink{
 	dir = 8;
@@ -24805,6 +24869,40 @@
 	},
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/laundry)
+"bsR" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails{
+	light_color = "#96DED1";
+	light_on = 1;
+	light_range = 1;
+	dir = 4
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bsS" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bsT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
+"bsU" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 1;
+	pixel_x = 24
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
 "bsV" = (
 /turf/closed/wall/rock/brown,
 /area/point_loma/airbase/mining_colony/exterior/security/south)
@@ -24815,6 +24913,109 @@
 "bsX" = (
 /turf/closed/wall/rock/brown,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/south)
+"bsY" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
+"bsZ" = (
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
+"bta" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
+"btb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper{
+	pixel_x = -5
+	},
+/obj/item/paper{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
+"btc" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"btd" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails{
+	light_color = "#96DED1";
+	light_on = 1;
+	light_range = 1;
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
+"bte" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
+"btf" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"btg" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 14;
+	pixel_x = 1;
+	layer = 2.96
+	},
+/obj/item/paper{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/paper{
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
+"bth" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/clothing/head/beret/cm/tan{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
 "bti" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
@@ -24822,6 +25023,42 @@
 "btj" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
+"btk" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_x = -4;
+	pixel_y = 20;
+	density = 0;
+	opacity = 0
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"btl" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/hybrisa/coffee_machine,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"btm" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"btn" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "btp" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/asphalt/cement_sunbleached,
@@ -44750,7 +44987,9 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/dark,
 /area/point_loma/airbase/exterior/crash_site)
 "daw" = (
-/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/bed/sofa/south/grey/right{
+	pixel_y = 5
+	},
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
@@ -154903,7 +155142,7 @@ cKF
 cJc
 cWA
 awx
-mSl
+bnE
 avg
 auu
 aur
@@ -155084,8 +155323,8 @@ aLe
 cKF
 cJc
 cWA
-mSl
-mSl
+bnE
+bnE
 avn
 atS
 atS
@@ -155266,7 +155505,7 @@ aLe
 cKF
 cJc
 cWA
-mSl
+bnE
 awn
 avu
 auG
@@ -155448,7 +155687,7 @@ aZS
 aZP
 cJc
 awJ
-mVk
+bse
 awo
 avE
 auJ
@@ -155630,8 +155869,8 @@ aLe
 cKE
 cJc
 awK
-mSl
-mSl
+bnE
+bnE
 avT
 atS
 atS
@@ -200221,12 +200460,12 @@ bTS
 jby
 jby
 alC
+btk
+clp
+clp
+clp
 aVl
-clp
-clp
-clp
-wTW
-wTW
+bsn
 aTN
 alC
 clp
@@ -200770,7 +201009,7 @@ aVR
 aVq
 aUs
 aUs
-aUH
+bsT
 aUs
 aUs
 aTW
@@ -200952,8 +201191,8 @@ aVR
 aVq
 aVa
 aUM
-aUz
-aUz
+aUH
+bsw
 aUt
 aTW
 aOq
@@ -201133,9 +201372,9 @@ jby
 dgi
 aVq
 aVi
+bta
 aUz
-aUz
-aUz
+bsD
 aUt
 aTW
 aTI
@@ -201315,9 +201554,9 @@ jby
 aVR
 aVq
 aVa
-aUz
-aUz
-aUz
+btb
+bsU
+bsK
 aUt
 aTW
 ato
@@ -201498,7 +201737,7 @@ aVS
 aVq
 aUs
 aUs
-aUH
+aUz
 aUs
 aUs
 aTW
@@ -202405,12 +202644,12 @@ bTS
 jby
 jby
 alC
+btl
+btf
+btc
 clp
 clp
-clp
-clp
-clp
-clp
+bsr
 clp
 clp
 clp
@@ -202587,13 +202826,13 @@ bTS
 jby
 jby
 rrL
-clp
-clp
-clp
-clp
+bsr
+bsZ
+bsZ
+bsY
 clp
 alC
-clp
+bsg
 clp
 clp
 clp
@@ -202769,13 +203008,13 @@ bTS
 jby
 jby
 rrL
-clp
-clp
-clp
-clp
-clp
+btm
+btg
+btd
+bsZ
+bsR
 alC
-clp
+bsj
 clp
 clp
 clp
@@ -202951,13 +203190,13 @@ bTS
 jby
 jby
 rrL
-clp
-clp
-clp
-clp
-clp
+btn
+bsY
+bte
+bsZ
+bsS
 alC
-clp
+bsk
 clp
 clp
 clp
@@ -203132,14 +203371,14 @@ bTS
 bTS
 jby
 jby
-rrL
-clp
-clp
-clp
-clp
-clp
+dgi
+btn
+bth
+btd
+bsZ
+bsR
 alC
-clp
+bsk
 clp
 clp
 clp
@@ -203314,14 +203553,14 @@ bTS
 bTS
 jby
 jby
+dgi
+btn
+clp
+bsS
+bsr
+bsS
 alC
-clp
-clp
-clp
-clp
-clp
-alC
-clp
+bsl
 clp
 clp
 clp

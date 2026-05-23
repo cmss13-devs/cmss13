@@ -145,3 +145,8 @@
 2026-05-22:
   larentoun:
   - bugfix: Oppressor's Abduct can't hook through cades on an angle now.
+2026-05-23:
+  KCartridge:
+  - qol: Mutes SecTech Vendors
+  MistChristmas:
+  - bugfix: Some areas that you could anchor cades on the Almayer you now can't.

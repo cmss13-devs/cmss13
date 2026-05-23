@@ -986,7 +986,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
 		if(oldLoc.z != destination.z)
-			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
+			AM.onTransitZ(oldLoc.z, destination.z)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)

@@ -47,10 +47,10 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		if(record_entry.fields["mob_faction"] != FACTION_MARINE && !(rank in USCM_SHARED_JOBS))
 			continue
 
-		var/display_name = "[paygrade_prefix] [name]"
 		var/entry_dept = null
 		var/list/entry = list(
-			"name" = display_name,
+			"paygrade_prefix" = paygrade_prefix,
+			"name" = name,
 			"rank" = rank,
 			"squad" = squad,
 			"is_active" = record_entry.fields["p_stat"]

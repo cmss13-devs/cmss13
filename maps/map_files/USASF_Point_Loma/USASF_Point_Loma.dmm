@@ -25105,7 +25105,7 @@
 /area/point_loma/oob/sky)
 "btC" = (
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/plating,
 /area/point_loma/oob/sky)
 "btD" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -25207,7 +25207,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/oob/sky)
 "btX" = (
 /turf/open/predship/tile/hunter_tile_6/north,
@@ -25249,7 +25249,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/oob/sky)
 "buc" = (
 /obj/structure/machinery/shower{
@@ -25342,13 +25342,6 @@
 	layer = 2.79
 	},
 /turf/open/predship/hunter_catwalk_new,
-/area/point_loma/oob/sky)
-"bun" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
 "buo" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter,
@@ -25446,6 +25439,62 @@
 "buF" = (
 /obj/effect/hunter/rune/corner,
 /turf/closed/wall/huntership/destructible/reinforced,
+/area/point_loma/oob/sky)
+"buG" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus";
+	pixel_x = -3;
+	dir = 1;
+	pixel_y = 1
+	},
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buH" = (
+/turf/open/predship/hunter_grille,
+/area/point_loma/oob/sky)
+"buI" = (
+/obj/structure/prop/hunter/misc/feed{
+	dir = 6
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buJ" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/predship/plating,
+/area/point_loma/oob/sky)
+"buK" = (
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/oob/sky)
+"buL" = (
+/obj/structure/prop/hunter/misc/feed{
+	dir = 10
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buM" = (
+/obj/structure/closet/yautja,
+/turf/open/predship/hunter_catwalk_new,
+/area/point_loma/oob/sky)
+"buN" = (
+/obj/structure/prop/hunter/misc/feed{
+	dir = 10
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/mainfloor/plain,
+/area/point_loma/oob/sky)
+"buO" = (
+/obj/structure/prop/hunter/misc/feed{
+	dir = 6
+	},
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/sky)
 "buP" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
@@ -49546,7 +49595,7 @@
 /area/point_loma/airbase/interior/fire_station)
 "hag" = (
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/hunter_catwalk_new,
 /area/point_loma/oob/sky)
 "hcr" = (
 /obj/structure/bed/hybrisa/bunkbed1{
@@ -50293,13 +50342,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/interior/fire_station)
-"lsY" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	basestate = "pred_window";
-	icon_state = "pred_window0"
-	},
-/turf/open/predship/mainfloor/plain,
-/area/point_loma/oob/sky)
 "ltJ" = (
 /turf/open/floor/corsat/redcorner/west,
 /area/point_loma/airbase/interior/garage)
@@ -52374,10 +52416,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/interior/garage)
-"wOD" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/predship/hull/non_weedable_hull,
-/area/point_loma/oob/sky)
 "wPK" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -205135,9 +205173,9 @@ qQr
 btH
 btG
 qQr
-alv
-alD
-alv
+alQ
+alQ
+alQ
 jZr
 jZr
 bTS
@@ -205317,9 +205355,9 @@ qQr
 btH
 btG
 qQr
-alv
-alD
-alD
+buJ
+buL
+buL
 alv
 jZr
 jZr
@@ -205499,10 +205537,10 @@ alv
 btH
 btG
 qQr
-alv
-alD
-alD
-alD
+buJ
+buI
+buI
+buI
 alv
 alQ
 alQ
@@ -205681,12 +205719,12 @@ qQr
 btH
 btG
 qQr
-alv
-alD
-alD
-alD
-alD
-alD
+buJ
+buL
+buL
+buN
+buL
+buL
 alQ
 alQ
 dgi
@@ -205863,13 +205901,13 @@ bto
 btz
 bts
 qQr
-alv
-alD
-alD
-alD
-alD
-alD
-alD
+buJ
+buI
+buI
+buO
+buI
+buI
+buI
 alQ
 alQ
 cxl
@@ -206045,14 +206083,14 @@ btx
 alD
 bts
 qQr
-btF
-btF
-btF
-alv
-alv
-alv
-alv
-alv
+alQ
+buJ
+buJ
+buJ
+buJ
+buJ
+buJ
+alQ
 alQ
 alQ
 cxl
@@ -207512,13 +207550,13 @@ btA
 btu
 bto
 bto
+buH
+buH
+buH
+buH
 alD
-alD
-alD
-alD
-alD
-alv
-wOD
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -207694,13 +207732,13 @@ btz
 alD
 alD
 btr
+buH
+buH
+buH
+buH
 alD
-alD
-alD
-alD
-alD
-alv
-wOD
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -207876,13 +207914,13 @@ btB
 btx
 alD
 bts
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -208058,13 +208096,13 @@ alv
 bty
 btv
 btt
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -208230,23 +208268,23 @@ btt
 alv
 alv
 alv
-uhJ
-uhJ
-uhJ
-uhJ
-uhJ
-uhJ
+buK
+buK
+buK
+buK
+buK
+buK
 alv
 bty
 btv
 btt
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -208412,23 +208450,23 @@ btt
 alv
 bux
 buo
-uhJ
+buK
 btX
 btX
 btX
 btX
-btX
+buK
 alv
 bty
 btv
 btt
 alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+buH
+buH
+buH
+buH
+alv
+alv
 bTS
 bTS
 ctM
@@ -208594,23 +208632,23 @@ btt
 alv
 bux
 bup
-uhJ
+buK
 btX
 buj
 alv
 btX
-btX
+buK
 alv
 bty
 btv
 btt
 alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+buH
+buH
+buH
+buH
+alv
+alv
 bTS
 bTS
 ctM
@@ -208776,23 +208814,23 @@ btt
 alv
 bux
 buq
-uhJ
+buK
 btX
 bul
 alv
 btX
-btX
+buK
 alv
 bty
 btv
 btt
 alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+buH
+buH
+buH
+buH
+alv
+alv
 bTS
 bTS
 ctM
@@ -208958,23 +208996,23 @@ btt
 alv
 bux
 bur
-uhJ
+buK
 btX
 bum
 alv
 btX
-btX
+buK
 alv
 bty
 btv
 btt
 alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+buH
+buH
+buH
+buH
+alv
+alv
 bTS
 bTS
 ctM
@@ -209140,23 +209178,23 @@ btt
 alv
 bux
 buw
-uhJ
+buK
 btX
 btX
 btX
 btX
-btX
+buK
 alv
 bty
 btv
 btt
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -209322,23 +209360,23 @@ btt
 alv
 alv
 alv
-uhJ
-uhJ
-uhJ
-uhJ
-uhJ
-uhJ
+buK
+buK
+buK
+buK
+buK
+buK
 alv
 bty
 btv
 btt
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -209514,13 +209552,13 @@ alv
 bty
 btv
 btt
-alv
-alD
-alD
-alD
-alD
-lsY
-wOD
+alQ
+buG
+buH
+buH
+buG
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -209696,13 +209734,13 @@ aOo
 btz
 alD
 btu
+buH
+buH
+buH
+buH
 alD
-alD
-alD
-alD
-alD
-alv
-wOD
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -209878,13 +209916,13 @@ aOm
 btx
 alD
 btr
+buH
+buH
+buH
+buH
 alD
-alD
-alD
-alD
-alD
-alv
-wOD
+alQ
+alQ
 bTS
 bTS
 ctM
@@ -210065,8 +210103,8 @@ alv
 alv
 alv
 alv
-alv
-alv
+alQ
+alQ
 brb
 bhP
 bzz
@@ -210230,10 +210268,10 @@ alD
 bty
 btt
 alv
-alD
-bun
-bun
-bun
+buK
+bum
+bum
+bum
 alv
 buf
 buc
@@ -210412,10 +210450,10 @@ sym
 bty
 btt
 alv
-alD
-alD
-alD
-alD
+buK
+buH
+buH
+buK
 alv
 buh
 bud
@@ -210594,10 +210632,10 @@ alv
 bty
 btt
 alv
-alD
-alD
-alD
-alD
+buK
+buH
+buH
+buK
 alv
 alv
 bue
@@ -210776,15 +210814,15 @@ btB
 btx
 btt
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+buK
+buH
+buH
+buK
+buH
+buH
+buH
+buH
+buH
 alD
 alD
 alD
@@ -210958,13 +210996,13 @@ alv
 alv
 alv
 alv
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+buK
+buK
+buK
+buK
+buH
+buH
+buH
 bub
 btW
 alD
@@ -211122,9 +211160,9 @@ apc
 alQ
 alv
 alv
-alD
-alD
-alD
+buH
+buH
+buH
 btR
 uhJ
 tKj
@@ -211134,19 +211172,19 @@ uhJ
 olZ
 btL
 btJ
-alD
-alD
-alD
-btz
-btu
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
+buH
 hag
 alv
 alv
@@ -211157,8 +211195,8 @@ alv
 alv
 alv
 alv
-alv
-alv
+alQ
+alQ
 ctO
 ctL
 bzz
@@ -211303,10 +211341,10 @@ apc
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
+buH
+buH
+buH
+buH
 btR
 iPF
 qhM
@@ -211325,10 +211363,10 @@ gUO
 gUO
 qhM
 iLw
-alL
-alL
-alL
-alL
+buM
+buM
+buM
+buM
 alv
 alv
 alv
@@ -211484,11 +211522,11 @@ apc
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-alD
+buH
+buH
+buH
+buH
+buH
 wNs
 kAg
 fiA
@@ -211665,12 +211703,12 @@ apc
 alQ
 alv
 alv
-alD
-alD
-alD
-alD
-alD
-alD
+buH
+buH
+buH
+buH
+buH
+buH
 btS
 fiD
 tmU
@@ -213485,12 +213523,12 @@ sym
 sym
 sym
 alv
-alD
-alD
-alD
-alD
-alD
-alD
+buH
+buH
+buH
+buH
+buH
+buH
 btT
 uhJ
 tKj

@@ -507,7 +507,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	for(var/path in starting_accessories)
 		var/obj/item/clothing/accessory/helmet_accessory = new path(src)
-		attach_accessory(helmet_accessory)
+		attach_accessory(null, helmet_accessory)
 
 	helmet_overlays = list() //To make things simple.
 
@@ -1071,7 +1071,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "sl_helmet"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
-	starting_accessories = list(/obj/item/clothing/accessory/helmet/backstrap/dust_ruffle)
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
@@ -1086,6 +1085,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_L_HAND = "helmet",
 		WEAR_R_HAND = "helmet"
 	)
+	starting_accessories = list(/obj/item/clothing/accessory/helmet/backstrap/dust_ruffle)
+
 
 /obj/item/clothing/head/helmet/marine/rto/army
 	name = "\improper Personal body armor system helmet"
@@ -1098,6 +1099,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "army_helmet"
 	specialty = "Personal body armor system"
 	flags_atom = NO_GAMEMODE_SKIN
+	starting_accessories = null
 
 /obj/item/clothing/head/helmet/marine/rto/army/engi
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
@@ -1176,6 +1178,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	anti_hug = 6
 	force = 20
 	specialty = "B18"
+	starting_accessories = null
+
 
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M3-G4 grenadier helmet"
@@ -1216,7 +1220,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
-
+	starting_accessories = null
 
 /datum/action/item_action/radio_helmet/use_phone/New(mob/living/user, obj/item/holder)
 	..()

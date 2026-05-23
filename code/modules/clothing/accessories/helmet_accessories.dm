@@ -45,7 +45,14 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/accessory/accessories_by_map/jungle.dmi',
 	)
 
-/obj/item/clothing/accessory/helmet/backstrap/marine_lobster/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/accessory/helmet/backstrap/marine_lobster/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type, null)
+
+/obj/item/clothing/accessory/helmet/backstrap/marine_lobster/select_gamemode_skin(expected_type, list/override_icon_state)
 	. = ..()
 	if(flags_atom & MAP_COLOR_INDEX)
 		return

@@ -154,6 +154,8 @@
 
 
 	if(found_target < PATHOGEN_CYCLONE_MIN_HITS)
+		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cyclone"))
+		xeno.anchored = FALSE
 		return..()
 
 	var/total_shield_value = cycle_shield_value * cycles

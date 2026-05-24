@@ -3,7 +3,7 @@
 	id = BLOOD_BLIGHT
 	description = "What is this...?"
 	color = "#ceb8b0"
-	overdose = REAGENTS_OVERDOSE
+	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_SPECIAL
@@ -16,7 +16,7 @@
 	id = BLOOD_BLIGHT_ADV
 	description = "What is this...?"
 	color = "#ceb8b0"
-	overdose = REAGENTS_OVERDOSE
+	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE

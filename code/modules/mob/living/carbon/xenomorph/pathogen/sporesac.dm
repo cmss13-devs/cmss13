@@ -30,7 +30,7 @@
 
 /obj/effect/pathogen/spore_sac/get_examine_text(mob/user)
 	. = ..()
-	if(is_pathogen_creature(user))
+	if(is_pathogen_creature(user) || isobserver(user))
 		. += SPAN_PATHOGEN("It has created [spore_batch]/[max_batches ? max_batches : "Unlimited"] batches of spores during its lifetime.")
 
 /obj/effect/pathogen/spore_sac/proc/create_spore_triggers()

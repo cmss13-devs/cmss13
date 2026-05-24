@@ -1763,11 +1763,33 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"agF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"agG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -1815,6 +1837,11 @@
 "agQ" = (
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/xenobiology)
+"agR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "agS" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1884,6 +1911,14 @@
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"ahg" = (
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/darkyellowcorners2/north,
+/area/bigredv2/outside/filtration_plant)
+"ahh" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "ahi" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
@@ -18182,11 +18217,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
-"cuk" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "cuG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -19307,11 +19337,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
-"dFP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/writing,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "dFR" = (
 /obj/item/stack/sheet/wood{
 	pixel_y = -8
@@ -24450,10 +24475,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/w)
-"joE" = (
-/obj/effect/decal/cleanable/blood/writing,
-/turf/open/floor/darkyellowcorners2/north,
-/area/bigredv2/outside/filtration_plant)
 "jph" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -25396,10 +25417,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/medical)
-"kie" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "kip" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/asteroidwarning/west,
@@ -28988,11 +29005,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"oaj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "obf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lambda-graveyard"
@@ -29745,12 +29757,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/space_port)
-"oLx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "oMd" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 13
@@ -39160,12 +39166,6 @@
 /obj/item/weapon/broken_bottle,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"yjZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/flamer/survivor,
-/turf/open/floor/dark,
-/area/bigredv2/outside/filtration_plant)
 "ykb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -61707,9 +61707,9 @@ bhU
 awp
 bkK
 bBg
-oaj
-oLx
-dFP
+agR
+agF
+agE
 bnE
 wvK
 wvK
@@ -61919,9 +61919,9 @@ nvn
 bhU
 awp
 bkL
-joE
+ahg
 fBo
-yjZ
+agG
 bng
 bnF
 bof
@@ -62132,9 +62132,9 @@ wBu
 aHF
 awp
 bkM
-kie
+ahh
 blV
-cuk
+agI
 bnh
 wvK
 wvK

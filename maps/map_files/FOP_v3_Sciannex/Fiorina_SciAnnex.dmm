@@ -390,6 +390,55 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
+"abs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abt" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/reagent_container/food/snacks/xenoburger,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abu" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abv" = (
+/obj/item/weapon/gun/flamer/survivor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abw" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abx" = (
+/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"aby" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abz" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -3081,12 +3130,6 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
-"cdZ" = (
-/obj/item/weapon/gun/flamer/survivor,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
 "cee" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
@@ -4641,10 +4684,6 @@
 /obj/structure/machinery/vending/hydroseeds,
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
-"drY" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
 "drZ" = (
 /obj/item/clothing/mask/cigarette,
 /turf/open/floor/prison/whitepurple/northwest,
@@ -5082,10 +5121,6 @@
 	},
 /turf/open/floor/prison/yellow,
 /area/fiorina/station/disco/east_disco)
-"dJV" = (
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
 "dKo" = (
 /obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/carpet,
@@ -11648,15 +11683,6 @@
 "iOY" = (
 /turf/open/floor/prison/whitegreen/southeast,
 /area/fiorina/tumor/ice_lab)
-"iPb" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
 "iPv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
@@ -16345,11 +16371,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec/east)
-"mwI" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/reagent_container/food/snacks/xenoburger,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
 "mwK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
@@ -18413,12 +18434,6 @@
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/medbay)
-"oaU" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
 "obh" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/prison,
@@ -19581,11 +19596,6 @@
 "oPR" = (
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
-"oPS" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
 "oPU" = (
 /turf/open/floor/prison,
 /area/fiorina/station/park)
@@ -27035,10 +27045,6 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/telecomm/lz1_tram)
-"uLD" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
 "uLJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/station_alert,
@@ -27202,12 +27208,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
-"uRj" = (
-/obj/effect/landmark/corpsespawner/chef,
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
 "uRv" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -75117,9 +75117,9 @@ jii
 mPW
 cpP
 aFK
-oPS
-oPS
-iPb
+abu
+abu
+abs
 fnD
 oUg
 oUg
@@ -75328,10 +75328,10 @@ pUG
 jii
 puE
 hTf
-uLD
-uRj
-cdZ
-mwI
+abz
+abx
+abv
+abt
 pbp
 qGn
 pbp
@@ -75540,9 +75540,9 @@ jii
 wHV
 puE
 cJv
-drY
-oaU
-dJV
+abA
+aby
+abw
 eqQ
 eqQ
 eqQ

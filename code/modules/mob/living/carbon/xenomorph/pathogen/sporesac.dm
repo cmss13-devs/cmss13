@@ -30,7 +30,12 @@
 
 /obj/effect/pathogen/spore_sac/get_examine_text(mob/user)
 	. = ..()
-	if(is_pathogen_creature(user) || isobserver(user))
+	var/patho_user = is_pathogen_creature(user) || isobserver(user)
+	if(spore_status == SPORES_DEPLOYED)
+		. += SPAN_RED("It has released it's spores!")
+		if(patho_user)
+			. += SPAN_ORANGE("It will regenerate spores in [COOLDOWN_SECONDSLEFT(src, regeneration_timer)] seconds!")
+	if(patho_user)
 		. += SPAN_PATHOGEN("It has created [spore_batch]/[max_batches ? max_batches : "Unlimited"] batches of spores during its lifetime.")
 
 /obj/effect/pathogen/spore_sac/proc/create_spore_triggers()
@@ -102,13 +107,6 @@
 	spore_batch++
 	if(!COOLDOWN_FINISHED(src, regeneration_timer))
 		COOLDOWN_RESET(src, regeneration_timer)
-
-/obj/effect/pathogen/spore_sac/get_examine_text(mob/user)
-	. = ..()
-	if(spore_status == SPORES_DEPLOYED)
-		. += SPAN_RED("It has released it's spores!")
-		if(is_pathogen_creature(user))
-			. += SPAN_ORANGE("It will regenerate spores in [COOLDOWN_SECONDSLEFT(src, regeneration_timer)] seconds!")
 
 /obj/effect/pathogen/spore_sac/bullet_act(obj/projectile/P)
 	..()

@@ -1214,6 +1214,15 @@
 	assignment = "Landsknechte Kapitan"
 	job_title = "Landsknechte Kapitan"
 
+/datum/equipment_preset/other/hunted/landsknechten/captain/load_gear(mob/living/carbon/human/new_human)
+
+
+	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
 /datum/equipment_preset/other/hunted/landsknechten/doppelsoldner
 	name = "Old-German Double-Mercenary (Hunted)"
 	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
@@ -1221,6 +1230,15 @@
 	skills = /datum/skills/landsknechten/doppelsoldner
 	assignment = "Landsknechte Doppelsoldner"
 	job_title = "Landsknechte Doppelsoldner"
+
+/datum/equipment_preset/other/hunted/landsknechten/doppelsoldner/load_gear(mob/living/carbon/human/new_human)
+
+
+	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/landsknechten/pikeman
 	name = "Old-German Pikeman (Hunted)"

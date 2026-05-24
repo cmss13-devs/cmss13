@@ -133,7 +133,7 @@
 	if(!popper.check_plasma(plasma_cost))
 		return
 	if(fatal_use)
-		to_chat(popper, SPAN_XENOHIGHDANGER("Creaeting this spore sac will consume all our energy and we will die!"))
+		to_chat(popper, SPAN_XENOHIGHDANGER("Creating this spore sac will consume all our energy and we will die!"))
 	if(!do_after(popper, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 	popper.use_plasma(plasma_cost)

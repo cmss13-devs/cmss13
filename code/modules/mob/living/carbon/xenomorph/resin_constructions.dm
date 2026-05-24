@@ -20,6 +20,9 @@
 	/// Whether this construction gets more expensive the more saturated the area is
 	var/scaling_cost = FALSE
 
+	/// Whether this construction can be built on hardy weeds or equiv, regardless of the terrain below.
+	var/override_partial_weeds = FALSE
+
 /datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
@@ -35,7 +38,7 @@
 			has_node = TRUE
 			break
 
-		if(!has_node)
+		if(!has_node || override_partial_weeds)
 			to_chat(X, SPAN_WARNING("You can't do that here without design nodes."))
 			return FALSE
 
@@ -180,6 +183,7 @@
 	name = "Mycelium Wall"
 	desc = "A mycelium wall, able to block passage."
 	construction_name = "mycelium wall"
+	override_partial_weeds = TRUE
 
 	build_path = /turf/closed/wall/resin/pathogen
 	build_animation_effect = /obj/effect/pathogen_construct/weak
@@ -253,6 +257,7 @@
 	name = "Mycelium Membrane"
 	desc = "Mycelium membrane that can be seen through."
 	construction_name = "mycelium membrane"
+	override_partial_weeds = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane/pathogen
 	build_animation_effect = /obj/effect/pathogen_construct/transparent/weak
@@ -340,6 +345,7 @@
 	construction_name = "mycelium door"
 	cost = XENO_RESIN_DOOR_COST
 	scaling_cost = TRUE
+	override_partial_weeds = TRUE
 
 	build_path = /obj/structure/mineral_door/resin/pathogen
 	build_animation_effect = /obj/effect/pathogen_construct/door

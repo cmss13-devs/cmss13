@@ -480,6 +480,21 @@
 	do_pathogen_evolve()
 	return
 
+/mob/living/carbon/xenomorph/conditor/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/conditor/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/harbinger/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/harbinger/do_evolve()
+	do_pathogen_evolve()
+	return
+
+
 // Brute & Matriarch Init handled in their own files.
 
 /mob/living/carbon/xenomorph/brute/do_evolve()

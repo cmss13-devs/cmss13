@@ -31,7 +31,7 @@
 /area/fiorina/oob)
 "l" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22;
 	can_block_movement = 0
 	},

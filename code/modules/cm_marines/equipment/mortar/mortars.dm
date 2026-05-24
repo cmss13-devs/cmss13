@@ -207,7 +207,7 @@
 	if(lase_mode)
 		. += SPAN_NOTICE("It's in laser targeting mode.")
 		if(aimed)
-			. += SPAN_NOTICE("It's aimed on target and ready to fire!")
+			. += SPAN_NOTICE("It's aimed on-target and ready to fire!")
 	else
 		. += SPAN_NOTICE("It's in coordinate targeting mode.")
 
@@ -583,7 +583,7 @@
 
 /obj/structure/mortar/wo
 	fixed = TRUE
-	offset_per_turfs = 50 // The mortar is located at the edge of the map in WO, This to to prevent mass FF
+	offset_per_turfs = 50 // The mortar is located at the edge of the map in WO, This is to prevent mass FF
 	max_range = 999
 
 //The portable mortar item

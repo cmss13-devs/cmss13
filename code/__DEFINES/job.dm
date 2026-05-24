@@ -90,6 +90,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH_INTEL "Intelligence Synthetic"
 #define JOB_SYNTH_MP "Military Police Synthetic"
 #define JOB_SYNTH_CMD "Command Support Synthetic"
+#define JOB_SYNTH_SCI "Research Synthetic"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
@@ -525,6 +526,10 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_DUTCH_MEDIC "Dutch's Dozen - Medic"
 
 #define DUTCH_JOB_LIST list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
+
+//-------- PREDATOR DEATHSQUAD --------//
+#define JOB_MCASTE_ENFORCER "Military Caste Enforcer"
+#define JOB_MCASTE_SOLDIER "Military Caste Soldier"
 
 //---------- RESPONDERS ----------//
 /// This root job should never appear ingame, it's used to select the character slot.

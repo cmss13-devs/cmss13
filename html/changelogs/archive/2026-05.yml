@@ -142,3 +142,34 @@
   - imageadd: Fixed icon issues with certain marine roles.
   zzzmike:
   - qol: MP/Warden/CMP have a basic medical optic option in vendor
+2026-05-22:
+  larentoun:
+  - bugfix: Oppressor's Abduct can't hook through cades on an angle now.
+2026-05-23:
+  KCartridge:
+  - qol: Mutes SecTech Vendors
+  MistChristmas:
+  - bugfix: Some areas that you could anchor cades on the Almayer you now can't.
+2026-05-24:
+  ComboTombo:
+  - rscadd: Added paygrades prefixes to the crew manifest
+  - ui: Paygrade prefixes in the crew manifest are in a separate column. Names are
+      in line with each other
+  - spellcheck: Slightly shortened two researcher paygrade prefixes
+  Drathek:
+  - bugfix: Fixed some tacmap runtimes with hunting grounds
+  - bugfix: Fixed a bad COMSIG_MOVABLE_Z_CHANGED call
+  LC4492:
+  - spellcheck: Changes 'USCM headband, green' to 'USCM headband, area of operations
+      speciifc' on the preference loadout menu.
+  Mr-Carp:
+  - bugfix: Added description for shotgun sentry
+  - bugfix: Shotgun sentry no longer defaults to the base sentry description
+  Ordosian:
+  - imageadd: New Carrier sprites including skull and pelt done by Wei and DimDim.
+  Teragen:
+  - balance: Commando Helmets now start with medic Medhuds
+  kitchenenthusiast:
+  - spellcheck: Standardizes grammar in leadership orders
+  labeo0:
+  - bugfix: fixed burning icons of some boxes

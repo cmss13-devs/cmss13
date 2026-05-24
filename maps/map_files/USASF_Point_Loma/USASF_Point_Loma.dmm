@@ -3702,7 +3702,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "alv" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/oob/sky)
 "alw" = (
 /obj/effect/decal/warning_stripes{
@@ -10823,7 +10823,7 @@
 	name = "sacred ceremonial dagger";
 	anchored = 1
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "aFy" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -10831,7 +10831,7 @@
 	layer = 2.9;
 	pixel_x = 1
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "aFz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14004,7 +14004,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -7
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "aOi" = (
 /obj/structure/machinery/door/airlock/yautja,
@@ -16088,7 +16088,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "aUq" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/interior/research)
 "aUr" = (
 /obj/structure/machinery/colony_floodlight,
@@ -24599,7 +24599,7 @@
 /turf/open/floor/almayer/research/containment/yautja/alt,
 /area/point_loma/research_facility/crash_site)
 "bsa" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site/opening)
 "bsb" = (
 /turf/open/predship/mainfloor/direction_2/west,
@@ -25434,11 +25434,11 @@
 /obj/effect/hunter/rune/corner{
 	dir = 1
 	},
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/oob/sky)
 "buF" = (
 /obj/effect/hunter/rune/corner,
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/oob/sky)
 "buG" = (
 /obj/structure/showcase{
@@ -30784,7 +30784,7 @@
 /turf/open/floor/shiva/redcorners/east,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRz" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "bRA" = (
 /obj/structure/machinery/colony_floodlight,
@@ -32099,7 +32099,7 @@
 /area/point_loma/research_facility/hallway/east)
 "bYM" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/east)
 "bYN" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
@@ -43342,10 +43342,10 @@
 /turf/closed/wall/huntership/innerhull,
 /area/point_loma/airbase/exterior/east)
 "cTK" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/west)
 "cTL" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/east)
 "cTM" = (
 /turf/open/hybrisa/street,
@@ -43487,7 +43487,7 @@
 "cUn" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/east)
 "cUo" = (
 /obj/structure/platform{
@@ -43646,7 +43646,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/space)
 "cUT" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/oob)
 "cUU" = (
 /obj/structure/bookcase{
@@ -43792,7 +43792,7 @@
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/central)
 "cVp" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/crash_site)
 "cVq" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
@@ -45547,7 +45547,7 @@
 /turf/open/floor/shiva/snow_mat/east,
 /area/point_loma/airbase/exterior/east)
 "dbk" = (
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/space)
 "dbl" = (
 /obj/item/stack/rods,
@@ -46285,7 +46285,7 @@
 /turf/open_space,
 /area/point_loma/airbase/exterior/north)
 "ddI" = (
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/point_loma/airbase/exterior/west)
 "ddJ" = (
 /obj/structure/prop/new_varadero_props/radar_dish,
@@ -46326,7 +46326,7 @@
 /turf/open_space,
 /area/point_loma/oob)
 "ddT" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/point_loma/airbase/exterior/north)
 "ddU" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/seven,
@@ -52286,7 +52286,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/point_loma/airbase/interior/garage)
 "vUG" = (
-/turf/closed/wall/huntership/destructible/reinforced,
+/turf/closed/wall/huntership/dark/destructible/reinforced,
 /area/space)
 "vUN" = (
 /obj/effect/decal/hybrisa/lattice,

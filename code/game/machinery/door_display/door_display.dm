@@ -218,6 +218,17 @@
 	open_shutter(TRUE)
 	open_door(TRUE)
 
+/obj/structure/machinery/door_display/research_cell/update_icon()
+	if(stat & BROKEN)
+		icon_state = "researchb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "research0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
+
 // TGUI \\
 
 /obj/structure/machinery/door_display/research_cell/tgui_interact(mob/user, datum/tgui/ui)

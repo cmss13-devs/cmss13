@@ -231,6 +231,35 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint
+	name = "\improper Maintenance Hatch"
+	icon = 'icons/obj/structures/doors/2x1maintdoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_MAINT)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/colony/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced
+	name = "\improper Reinforced Maintenance Hatch"
+	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
+	autoname = TRUE
+ 
 //------Containment 3-tile Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment
@@ -261,7 +290,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter
 	name = "\improper Containment Door"
 	icon = 'icons/obj/structures/doors/medical_shutter.dmi'
-
 
 //------Dropship Cargo Doors -----//
 

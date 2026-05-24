@@ -9,7 +9,8 @@
 /area/shuttle/lifeboat)
 "bk" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,5"
+	icon_state = "26,5";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -85,7 +86,8 @@
 /area/shuttle/lifeboat)
 "ng" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,6"
+	icon_state = "25,6";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -103,20 +105,23 @@
 /area/shuttle/lifeboat)
 "oi" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,0"
+	icon_state = "0,0";
+	desc = "Separates you from certain death."
 	},
 /obj/docking_port/mobile/crashable/lifeboat/rostock,
 /turf/template_noop,
 /area/shuttle/lifeboat)
 "ow" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,3"
+	icon_state = "0,3";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
 "pf" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,0"
+	icon_state = "1,0";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -129,7 +134,8 @@
 /area/shuttle/lifeboat)
 "qb" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,6"
+	icon_state = "0,6";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -185,7 +191,8 @@
 /area/shuttle/lifeboat)
 "zu" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,4"
+	icon_state = "0,4";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -204,7 +211,8 @@
 /area/shuttle/lifeboat)
 "Ay" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,1"
+	icon_state = "0,1";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -236,7 +244,8 @@
 /area/shuttle/lifeboat)
 "Cm" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,0"
+	icon_state = "25,0";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -265,7 +274,8 @@
 /area/template_noop)
 "Fx" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,6"
+	icon_state = "1,6";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -315,7 +325,8 @@
 /area/shuttle/lifeboat)
 "JO" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,1"
+	icon_state = "26,1";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -360,7 +371,8 @@
 /area/shuttle/lifeboat)
 "OC" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,2"
+	icon_state = "0,2";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
@@ -451,7 +463,8 @@
 /area/shuttle/lifeboat)
 "ZV" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,5"
+	icon_state = "0,5";
+	desc = "Separates you from certain death."
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)

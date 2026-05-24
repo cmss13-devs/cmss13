@@ -1844,10 +1844,9 @@
 	hive_orders = "Kill everyone and everything."
 
 	free_slots = list(
-		/datum/caste_datum/pathogen/neomorph = 3,
-		/datum/caste_datum/pathogen/blight = 3,
-		/datum/caste_datum/pathogen/brute = 1,
-		/datum/caste_datum/pathogen/venator = 2,
+		/datum/caste_datum/pathogen/neomorph = 2,
+		/datum/caste_datum/pathogen/conditor = 1,
+		/datum/caste_datum/pathogen/venator = 1,
 	)
 
 	hive_structures_limit = list(

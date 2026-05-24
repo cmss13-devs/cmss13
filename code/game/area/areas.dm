@@ -48,10 +48,6 @@
 	var/is_landing_zone = FALSE
 	/// Allow construction of resin walls, and other special
 	var/resin_construction_allowed = TRUE
-	/// Will this area grant intel points if a body is put in it?
-	var/body_recovery_area = FALSE
-	/// Will this area complete the move_mob objective?
-	var/survivor_recovery_area = FALSE
 
 	// Weather
 	var/weather_enabled = TRUE // Manual override for weather if set to false

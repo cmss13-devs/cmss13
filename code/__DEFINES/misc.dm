@@ -58,6 +58,10 @@
 #define AREA_NOTUNNEL (1<<9)
 /// Flags the area as heavily ventilated clearing most /obj/effect/particle_effect in a few ticks.
 #define AREA_HEAVILY_VENTILATED (1<<10)
+/// Flags the area as somewhere bodies can be placed for intel points.
+#define AREA_BODY_RECOVERY (1<<11)
+/// Flags the area as somewhere survivors will be counted as rescued.
+#define AREA_SURVIVOR_RECOVERY (1<<12)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

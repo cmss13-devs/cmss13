@@ -145,7 +145,7 @@
 		// Add points depending on who controls it
 		var/turf/target_turf = get_turf(target)
 		var/area/target_area = get_area(target_turf)
-		if(target_area.body_recovery_area)
+		if(target_area.flags_area & AREA_BODY_RECOVERY)
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)
@@ -225,7 +225,7 @@
 /datum/cm_objective/move_mob/check_completion()
 	. = ..()
 	var/area/target_area = get_area(target)
-	if(target_area.survivor_recovery_area)
+	if(target_area.flags_area & AREA_SURVIVOR_RECOVERY)
 		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
 			complete()
 			return TRUE

@@ -22,3 +22,8 @@ If the lobby music is too loud or bothering you, you can disable it in Preferenc
 Maps can and will be unpredictably modified by the Nightmare system - stay frosty while roaming around!
 You can go to GitHub to view code of the game and propose modifications of your own.
 Resisting can interrupt many different wind-up actions such as de-oving.
+You have to save yourself before you can save others.
+When faced with overwhelming resistance, consider pulling back.
+To be a badass, you first must be bad.
+In the main lobby screen, you can click on the USCM logo to minimize the UI, allowing you to view the full artwork
+

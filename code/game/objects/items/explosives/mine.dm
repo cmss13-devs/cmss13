@@ -404,6 +404,7 @@
 	var/deploy_time = 0
 	var/mine_state = ""
 	var/timer_id
+	/// What ammo should it create when converted back
 	var/datum/ammo/rifle/sharp/ammo_path = /datum/ammo/rifle/sharp/explosive
 
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()

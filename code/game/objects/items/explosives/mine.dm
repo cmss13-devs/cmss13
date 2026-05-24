@@ -421,7 +421,7 @@
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if(!active)
-			convert_back()
+			convert_into_ammo()
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 		SPAN_NOTICE("You start disarming [src]."))
@@ -434,7 +434,7 @@
 		user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
 		SPAN_NOTICE("You finish disarming [src]."))
 		disarm()
-		convert_back()
+		convert_into_ammo()
 	return
 
 /obj/item/explosive/mine/sharp/set_tripwire()
@@ -480,8 +480,8 @@
 	deltimer(timer_id)
 	add_to_garbage(src)
 
-/// Converts the mine back into a bullet
-/obj/item/explosive/mine/sharp/proc/convert_back()
+/// Converts the mine back into usable ammo
+/obj/item/explosive/mine/sharp/proc/convert_into_ammo()
 	var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 	new_handful.generate_handful(ammo_path, /obj/item/ammo_magazine/rifle/sharp::caliber, 5, 1, /obj/item/weapon/gun/rifle/sharp::type)
 	qdel(src)

@@ -80,3 +80,96 @@
   - balance: Xenos receive tiny superslow, slow and daze on climbing down without
       falling, slightly increased on big xenos
   - balance: Daze now does not disable releasing hauled
+2026-05-14:
+  TrollerNoob:
+  - refactor: Refactored Point Blank backend. You may now Point Blank as fast as your
+      gun's firerate allows, and you may continue firing after a Point Blank when
+      on Automatic Fire mode.
+  Venuska1117:
+  - bugfix: '"FOR THE HIVE" ability now create correctly chat message explaining cause
+      of death.'
+  labeo0:
+  - bugfix: fixed stacking health upgrades for sentry posts
+  seanlol092:
+  - qol: named the LZ
+2026-05-17:
+  MistChristmas:
+  - bugfix: Give Penlight eye assessment a cooldown, and lower it's blind time
+  - admin: Add logging to the penlight eye assesment
+  Puckaboo2:
+  - spellcheck: '"Updater", "Separator", and "Percentage" have been spellchecked.'
+  realforest2001:
+  - bugfix: Marking for hunt no longer stays behind after claiming trophy parts.
+  - balance: Added a Leap/Jump ability to Yautja.
+2026-05-18:
+  KCartridge:
+  - qol: Seperated MP 'essentials kit' into vendor
+  Red-byte3D:
+  - balance: Huggers now leap up to 2 tiles from the egg it activates from instead
+      of 1
+2026-05-19:
+  DarkLordCabbage:
+  - bugfix: hopefully fixes some erroneous triggers for surgery initiation messages
+  cuberound:
+  - balance: reduces average autobreake time from 3.3 hours to 8 minutes
+  - bugfix: xenos clear from sensor tower instantly when it gets broken
+  - bugfix: sensos add xenos instantly to the tacmap when turned on
+  larentoun:
+  - balance: Crusher Melee Attacks now Slow for 2 Seconds (was 3.5 Seconds)
+2026-05-20:
+  MistChristmas:
+  - bugfix: Forsaken can now track humans on their TacMap like they should've
+  Wabberspace:
+  - rscadd: Adds a research synthetic preset, alongside an icon and job-registry.
+2026-05-21:
+  BlitzArde:
+  - qol: Introduced options to make custom binds yautja or synth specific
+  Detective-Google:
+  - rscadd: Synth repair bays can now reactivate fully repaired dead synths.
+  Jesters-Ballad:
+  - balance: Scythes Restored
+  MistChristmas:
+  - bugfix: Crowbar traited items like the tactical prybar no longer bash barricades
+      when you try to link them
+  cuberound:
+  - bugfix: we no longer update_icons of every xenomorph every life tick
+  npukoJl:
+  - bugfix: Senators now have their badge, not the council one
+  ori-disillusion-mirnov:
+  - bugfix: devolve location and ckey logging, and add timeouts to the evolve/devolve
+      TGUI lists
+  realforest2001:
+  - imageadd: Fixed icon issues with certain marine roles.
+  zzzmike:
+  - qol: MP/Warden/CMP have a basic medical optic option in vendor
+2026-05-22:
+  larentoun:
+  - bugfix: Oppressor's Abduct can't hook through cades on an angle now.
+2026-05-23:
+  KCartridge:
+  - qol: Mutes SecTech Vendors
+  MistChristmas:
+  - bugfix: Some areas that you could anchor cades on the Almayer you now can't.
+2026-05-24:
+  ComboTombo:
+  - rscadd: Added paygrades prefixes to the crew manifest
+  - ui: Paygrade prefixes in the crew manifest are in a separate column. Names are
+      in line with each other
+  - spellcheck: Slightly shortened two researcher paygrade prefixes
+  Drathek:
+  - bugfix: Fixed some tacmap runtimes with hunting grounds
+  - bugfix: Fixed a bad COMSIG_MOVABLE_Z_CHANGED call
+  LC4492:
+  - spellcheck: Changes 'USCM headband, green' to 'USCM headband, area of operations
+      speciifc' on the preference loadout menu.
+  Mr-Carp:
+  - bugfix: Added description for shotgun sentry
+  - bugfix: Shotgun sentry no longer defaults to the base sentry description
+  Ordosian:
+  - imageadd: New Carrier sprites including skull and pelt done by Wei and DimDim.
+  Teragen:
+  - balance: Commando Helmets now start with medic Medhuds
+  kitchenenthusiast:
+  - spellcheck: Standardizes grammar in leadership orders
+  labeo0:
+  - bugfix: fixed burning icons of some boxes

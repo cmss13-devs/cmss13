@@ -199,6 +199,15 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/cells)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11703,15 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 5";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/shipboard/brig/cells)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -20868,6 +20886,15 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
+"bbi" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 4";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/shipboard/brig/cells)
 "bbj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -23286,6 +23313,15 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
+"bgG" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 3";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/shipboard/brig/cells)
 "bgH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -43230,6 +43266,10 @@
 "cby" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 1";
+	pixel_x = -24
+	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/cells)
 "cbz" = (
@@ -43494,6 +43534,10 @@
 "cca" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
+/obj/structure/machinery/flasher{
+	id = "Cell 6";
+	pixel_x = -24
+	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/cells)
 "ccb" = (
@@ -195295,7 +195339,7 @@ xhU
 bsp
 jCX
 uvY
-cca
+aDL
 xkd
 bZz
 bZg
@@ -195604,7 +195648,7 @@ kHo
 bsp
 cak
 uvY
-cca
+bbi
 xkd
 hjM
 xTH
@@ -195913,7 +195957,7 @@ ccA
 bsp
 tpn
 uvY
-cca
+bgG
 xkd
 xvQ
 eDt
@@ -196223,7 +196267,7 @@ ccC
 pdT
 otp
 xkd
-cby
+aaD
 tzd
 xkd
 cby

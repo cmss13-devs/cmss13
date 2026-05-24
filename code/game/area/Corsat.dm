@@ -20,7 +20,7 @@
 	name = "\improper Unknown Area"
 	icon_state = "corsat_hull"
 	ceiling = CEILING_REINFORCED_METAL
-	requires_power = FALSEa
+	requires_power = FALSE
 
 //SIGMA SECTOR
 

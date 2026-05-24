@@ -263,10 +263,10 @@
 
 /obj/structure/machinery/door/airlock/yautja/secure
 	heavy = TRUE
-	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER, ACCESS_YAUTJA_ANCIENT)
 
 /obj/structure/machinery/door/airlock/yautja/secure/elder
-	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER, ACCESS_YAUTJA_ANCIENT)
 
 /obj/structure/machinery/door/airlock/yautja/secure/ancient
 	req_one_access = list(ACCESS_YAUTJA_ANCIENT)

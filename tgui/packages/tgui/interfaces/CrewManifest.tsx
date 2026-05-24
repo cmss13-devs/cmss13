@@ -13,6 +13,7 @@ type ManifestData = {
 };
 
 type Crew = {
+  paygrade_prefix: string;
   name: string;
   rank: string;
   squad?: string | null;
@@ -116,17 +117,27 @@ export const CrewManifest = (props, context) => {
                     className={index % 2 === 0 ? 'row-even' : 'row-odd'}
                   >
                     <TableCell
-                      width="50%"
+                      width="15%"
+                      textAlign="right"
+                      pr="5px"
+                      pt="5px"
+                      pb="5px"
+                      nowrap
+                    >
+                      {crew.paygrade_prefix}
+                    </TableCell>
+                    <TableCell
+                      width="40%"
                       textAlign="left"
                       pt="5px"
                       pb="5px"
-                      pl="10px"
+                      pl="5px"
                       nowrap
                     >
                       {crew.name}
                     </TableCell>
                     <TableCell
-                      width="45%"
+                      width="40%"
                       textAlign="right"
                       pr="2%"
                       pt="5px"

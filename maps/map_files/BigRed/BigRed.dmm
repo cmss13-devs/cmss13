@@ -1763,6 +1763,13 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agE" = (
+/obj/effect/landmark{
+	name = "Yautja Temple Spawn Location";
+	desc = "Temporary landmark, not for full merge"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -71344,7 +71351,7 @@ aao
 aao
 aao
 aao
-aao
+agE
 aab
 "}
 (152,1,1) = {"

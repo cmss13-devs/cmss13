@@ -478,7 +478,6 @@
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
 	deltimer(timer_id)
-	add_to_garbage(src)
 
 /// Converts the mine back into usable ammo
 /obj/item/explosive/mine/sharp/proc/convert_into_ammo()

@@ -79,7 +79,7 @@ Don't underestimate the mortar: with ammo and proper communication it can hit su
 You can shoot through tents, but they won't protect you much in return.
 Reqs doesn't have an infinite budget.
 Good Reqs can land supplies anywhere outside - given coords - and sometimes in a minimal amount of time.
-A ‘point blank’ or ‘PB’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect.
+A ‘point blank’ or ‘PB’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect. It also does bonus damage if the target is already knocked down.
 Intel Officers can be put in a different squad by going to CIC and requesting it.
 Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
 If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
@@ -107,3 +107,20 @@ If you push crates out of a dropship when paradropping, it will land near the pa
 When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
 Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
 A synthetic's head can be reattached to their body by a skilled doctor. Save your synth!
+Switching to your sidearm is not faster than reloading.
+You can refill extinguishers from canteens, flasks, water bottles, and water tanks.
+You can middle mouse click to open containers, even if your hands are full, and you can open nested inventories this way.
+Resin doors will collapse instantly if there’s no walls or doors adjacent to support them- Breach resin defenses more quickly by targeting their supporting structures instead!
+It’s much faster to do surgery steps in parallel instead of series- For instance, opening incisions with a scalpel on every fractured limb instead of performing surgery step by step individually for each limb! This saves a LOT of time since you don’t need to switch tools constantly.
+Underbarrel grenade launchers, the M85 and M92 all have IFF, passing through marines as they fire! Fire your grenades without fear of blowing up your teammates! (Until you do it anyway.)
+An officer who acts and takes the initiative will sometimes be wrong; An officer who takes no action is always wrong.
+True leadership is forged in the crucible of military defeat, and the actions taken to rise above it and seize victory.
+Fire support can end up supporting your enemy instead.
+As a Corpsman, if you’re treating a patient near the frontline, remember to keep aware of your surroundings and avoid tunnel vision. Falling back with your patient when the frontline is struggling can mean the difference between two free captures or two combat-capable marines.
+As a Smartgunner, remember to constantly switch between your smartgun modes in combat depending on the situation!
+Handthrown grenade timers usually go off a little bit after 3 beeps, throw it then if you want the shortest timer. Beep, beep, beep, bee-…
+M37 is best used on harm intent and at point blank range. If you hit within 1 tile, you'll always get the highest possible damage on your target. Stay sharp, marine.
+Marines take fewer bullets to kill than xenomorphs.
+Make sure to bring flares. No one wants to be blind against these things…
+The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.
+

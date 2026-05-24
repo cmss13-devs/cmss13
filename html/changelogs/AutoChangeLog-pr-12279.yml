@@ -1,0 +1,5 @@
+author: "Mr-Carp"
+delete-after: True
+changes:
+  - bugfix: "Added description for shotgun sentry"
+  - bugfix: "Shotgun sentry no longer defaults to the base sentry description"

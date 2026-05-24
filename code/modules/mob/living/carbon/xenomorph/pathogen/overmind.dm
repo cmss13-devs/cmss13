@@ -59,6 +59,7 @@
 	overmind_mob.forceMove(loc)
 	overmind_mob.cannot_slash = TRUE
 	overmind_mob.invisibility = 60
+	overmind_mob.anchored = TRUE
 
 	overmind_stored_stuff["plasmagen"] = overmind_mob.plasma_gain
 	overmind_stored_stuff["plasmamax"] = overmind_mob.plasma_max
@@ -155,6 +156,7 @@
 	overmind_stored_stuff["aura"] = null
 
 	overmind_mob.cannot_slash = FALSE
+	overmind_mob.anchored = FALSE
 	overmind_mob.invisibility = initial(overmind_mob.invisibility)
 	overmind_mob.hive.set_living_xeno_queen(null)
 	linked_hive.remove_hive_leader(overmind_mob)

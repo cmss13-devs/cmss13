@@ -83,6 +83,8 @@
 	counts_for_slots = FALSE
 
 	counts_for_roundend = FALSE
+	health_threshold_dead = 0
+	var/spore_morphed = FALSE
 
 /mob/living/carbon/xenomorph/popper/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
@@ -90,8 +92,15 @@
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
+/mob/living/carbon/xenomorph/popper/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
+	var/mob/dead/observer/ghost = ..()
+	ghost?.bypass_time_of_death_checks_hugger = spore_morphed
+	return ghost
+
 /mob/living/carbon/xenomorph/popper/death(cause, gibbed)
 	. = ..()
+	if(spore_morphed)
+		return
 	new /obj/effect/pathogen/spore_cloud(loc)
 
 /mob/living/carbon/xenomorph/popper/start_pulling(atom/movable/AM)
@@ -110,39 +119,42 @@
 	fatal_use = TRUE
 
 /datum/action/xeno_action/onclick/place_spore_sac/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/popper = owner
-	if(!popper.check_state())
+	var/mob/living/carbon/xenomorph/patho_owner = owner
+	if(!patho_owner.check_state())
 		return
 
-	var/turf/target_turf = get_turf(popper)
+	var/turf/target_turf = get_turf(patho_owner)
 	if(!istype(target_turf))
-		to_chat(popper, SPAN_XENOWARNING("We can't do that here."))
+		to_chat(patho_owner, SPAN_XENOWARNING("We can't do that here."))
 		return
 	var/area/turf_area = get_area(target_turf)
 	if(istype(turf_area,/area/shuttle/drop1/lz1) || istype(turf_area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(popper, SPAN_WARNING("We sense this is not a suitable area for creating a spore sac."))
+		to_chat(patho_owner, SPAN_WARNING("We sense this is not a suitable area for creating a spore sac."))
 		return
 	if(isnull(turf_area) || !(turf_area.is_resin_allowed))
 		if(!turf_area || turf_area.flags_area & AREA_UNWEEDABLE)
-			to_chat(popper, SPAN_XENOWARNING("This area is unsuited to host the confluence!"))
+			to_chat(patho_owner, SPAN_XENOWARNING("This area is unsuited to host the confluence!"))
 			return
-		to_chat(popper, SPAN_XENOWARNING("It's too early to spread the confluence this far."))
+		to_chat(patho_owner, SPAN_XENOWARNING("It's too early to spread the confluence this far."))
 		return
-	if(!target_turf.check_spore_sac_placement(popper))
+	if(!target_turf.check_spore_sac_placement(patho_owner))
 		return
-	if(!popper.check_plasma(plasma_cost))
+	if(!patho_owner.check_plasma(plasma_cost))
 		return
 	if(fatal_use)
-		to_chat(popper, SPAN_XENOHIGHDANGER("Creating this spore sac will consume all our energy and we will die!"))
-	if(!do_after(popper, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(patho_owner, SPAN_XENOHIGHDANGER("Creating this spore sac will consume all our energy and we will die!"))
+	if(!do_after(patho_owner, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
-	popper.use_plasma(plasma_cost)
-	playsound(popper.loc, "alien_resin_build", 25)
-	new /obj/effect/pathogen/spore_sac(target_turf)
-	to_chat(popper, SPAN_XENONOTICE("We place a spore sac on the ground."))
+	patho_owner.use_plasma(plasma_cost)
+	playsound(patho_owner.loc, "alien_resin_build", 25)
+	new /obj/effect/pathogen/spore_sac/three_uses(target_turf)
+	to_chat(patho_owner, SPAN_XENONOTICE("We place a spore sac on the ground."))
 	if(fatal_use)
-		to_chat(popper, SPAN_XENOHIGHDANGER("The spore sac consumes all our energy!"))
-		popper.gib("Spore Morphing")
+		to_chat(patho_owner, SPAN_XENOHIGHDANGER("The spore sac consumes all our energy!"))
+		patho_owner.gib("Spore Morphing")
+		if(ispopper(patho_owner))
+			var/mob/living/carbon/xenomorph/popper/popper = patho_owner
+			popper.spore_morphed = TRUE
 	return ..()
 
 /turf/proc/check_spore_sac_placement(mob/living/carbon/xenomorph/xeno)
@@ -380,20 +392,21 @@
 			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Overmind re-admits you."))
 			return FALSE
 
-	var/mob/living/carbon/human/original_human = user.mind?.original
-	if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
-		to_chat(user, SPAN_WARNING("You cannot become a Popper until you are no longer alive in a nest."))
-		return FALSE
+	if(!user.bypass_time_of_death_checks_hugger)
+		var/mob/living/carbon/human/original_human = user.mind?.original
+		if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
+			to_chat(user, SPAN_WARNING("You cannot become a Popper until you are no longer alive in a nest."))
+			return FALSE
 
-	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
-		return FALSE
+		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+			return FALSE
 
-	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
-		return FALSE
+		if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
+			var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+			return FALSE
 
 	if(!has_popper_slot())
 		to_chat(user, SPAN_WARNING("The Mycelial Confluence cannot support another Popper at this time!"))

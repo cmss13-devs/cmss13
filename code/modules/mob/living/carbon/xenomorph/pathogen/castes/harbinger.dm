@@ -1,3 +1,6 @@
+/// The minimum number of people to hit on the first spin to trigger the extra spins.
+#define PATHOGEN_CYCLONE_MIN_HITS 2
+
 /datum/caste_datum/pathogen/harbinger
 	caste_type = PATHOGEN_CREATURE_HARBINGER
 	tier = 3
@@ -41,6 +44,7 @@
 	tier = 3
 	organ_value = 8000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -149,12 +153,17 @@
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, base_damage), ARMOR_MELEE, BRUTE, "chest", armor_pen)
 
 
-	if(found_target >= 2)
-		var/total_shield_value = cycle_shield_value * cycles
-		var/total_shield_duration = (cycle_shield_duration * cycles) - min(0.5 SECONDS * cycles, 2 SECONDS)
-		xeno.add_xeno_shield(total_shield_value, XENO_SHIELD_SOURCE_CYCLONE, /datum/xeno_shield/harbinger)
-		xeno.overlay_shields()
-		addtimer(CALLBACK(src, PROC_REF(remove_shield)), total_shield_duration)
+	if(found_target < PATHOGEN_CYCLONE_MIN_HITS)
+		return..()
+
+	var/total_shield_value = cycle_shield_value * cycles
+	var/total_shield_duration = (cycle_shield_duration * cycles) - min(0.5 SECONDS * cycles, 2 SECONDS)
+	xeno.add_xeno_shield(total_shield_value, XENO_SHIELD_SOURCE_CYCLONE, /datum/xeno_shield/harbinger)
+	xeno.overlay_shields()
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), total_shield_duration)
+
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cyclone"))
+	xeno.anchored = FALSE
 
 	var/current_cycle = 0
 	while(current_cycle < cycles)
@@ -162,10 +171,10 @@
 		current_cycle++
 
 		var/current_cycle_delay = max(1.5 SECONDS, cycle_delay - cycle_delay_modifier)
-		if(!do_after(xeno, current_cycle_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, current_cycle_delay, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
 			break
 
-		xeno.spin_circle()
+		xeno.spin_circle(6)
 		xeno.emote("growl")
 
 		var/cycle_range = min(range, 4)
@@ -188,9 +197,6 @@
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, cycle_damage), ARMOR_MELEE, BRUTE, "chest", armor_pen / 2)
 		range++
-
-	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cyclone"))
-	xeno.anchored = FALSE
 
 	return ..()
 

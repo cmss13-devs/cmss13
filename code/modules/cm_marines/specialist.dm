@@ -111,10 +111,11 @@
 	redeemer.hud_set_squad()
 	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
-		idcard.set_assignment((redeemer.assigned_squad ? (redeemer.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([role_name])")
+		var/assignment_name = "[role_name] Specialist"
+		idcard.set_assignment("[redeemer.assigned_squad ? redeemer.assigned_squad : ""] [assignment_name]")
 		idcard.minimap_icon_override = rank_icon
 		redeemer.update_minimap_icon()
-		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), idcard.assignment)
+		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), assignment_name)
 	return TRUE
 
 /datum/specialist_set/proc/refund_set(mob/living/carbon/human/refunder)

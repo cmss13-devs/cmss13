@@ -97,7 +97,7 @@
 
 	var/armor_pen = 20
 	var/base_damage = 25
-	var/base_range = 1
+	var/base_range = 2
 	var/cycles = 4
 	var/cycle_damage = 15
 	var/cycle_delay = 3 SECONDS

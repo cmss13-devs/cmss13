@@ -110,9 +110,10 @@
 			ceiling_action.hidden = TRUE
 			user.update_action_buttons()
 
-		// Clean up drawing tool references
+		// Clean up drawing tool references and mark CIC minimap inactive
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
 		user_map?.active_draw_tool = null
+		user_map?.is_cic_minimap = FALSE
 
 	interactees -= user
 	user.client.mouse_pointer_icon = null

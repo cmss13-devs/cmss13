@@ -1,0 +1,4 @@
+author: "Teragen"
+delete-after: True
+changes:
+  - balance: "Commando Helmets now start with medic Medhuds"

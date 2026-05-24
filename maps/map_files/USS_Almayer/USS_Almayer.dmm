@@ -220,6 +220,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-5";
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/powered)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -2704,6 +2711,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
+"agr" = (
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock SU-5";
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/powered)
 "ags" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -40185,6 +40199,9 @@
 /obj/item/storage/toolbox/emergency{
 	pixel_y = -2
 	},
+/obj/structure/pipes/vents/pump/no_boom{
+	pixel_y = 0
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/containment)
 "bWF" = (
@@ -40327,6 +40344,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/medical/containment)
 "bWT" = (
@@ -40502,11 +40520,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
 "bXi" = (
-/obj/structure/pipes/vents/pump/no_boom{
-	name = "Secure Reinforced Air Vent";
-	pixel_x = 16;
-	pixel_y = -16
-	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/flooredge/northwest,
 /area/almayer/medical/containment)
 "bXj" = (
@@ -41852,9 +41866,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "bZu" = (
-/obj/structure/pipes/vents/pump/no_boom{
-	name = "Secure Reinforced Air Vent"
-	},
+/obj/structure/pipes/vents/pump/no_boom,
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/containment)
 "bZv" = (
@@ -44271,12 +44283,13 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/medical_science)
 "ceo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	dir = 8;
-	name = "\improper Cryosleep Storage Room"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Cryosleep Storage Room";
+	req_one_access = list(28,206,207);
+	req_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/medical_science)
@@ -53916,15 +53929,15 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "fnA" = (
-/obj/structure/machinery/door/airlock/almayer/research/reinforced{
-	access_modified = 1;
-	name = "\improper CMO's Bedroom";
-	req_one_access_txt = "1;5"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/white{
+	name = "\improper CMO's Bedroom";
+	req_one_access = list(28,206,207);
+	req_one_access_txt = "1;5"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
 "fnI" = (
@@ -205168,7 +205181,7 @@ mis
 mis
 mis
 mis
-eOM
+agr
 awW
 akt
 aHA
@@ -205228,7 +205241,7 @@ eOM
 atX
 sMM
 dVR
-eOM
+aaE
 ojX
 ojX
 ojX

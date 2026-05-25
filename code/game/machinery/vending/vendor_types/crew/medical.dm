@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 
 		list("SHOULDER PATCHES (CHOOSE 5)", 0, null, null, null),
 		list("Weyland-Yutani round patch, black", 0, /obj/item/clothing/accessory/patch/wy, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Weyland-Yutani square patch, black" 0, /obj/item/clothing/accessory/patch/wysquare, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Weyland-Yutani square patch, black", 0, /obj/item/clothing/accessory/patch/wysquare, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Weyland-Yutani round patch, white", 0, /obj/item/clothing/accessory/patch/wy_white, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 

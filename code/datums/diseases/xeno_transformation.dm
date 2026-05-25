@@ -47,7 +47,7 @@
 				affected_mob.apply_effect(3, DAZE)
 				to_chat(affected_mob, SPAN_XENOHIGHDANGER("Something in your mind tears- and your thoughts don't sound the way they did before."))
 				affected_mob.universal_understand = 1 //universal understanding for roleplay's sake.
-				affected_mob.set_languages(list(LANGUAGE_XENOMORPH)) //You're gonna be one of them soon, anyway.
+				affected_mob.set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) //You're gonna be one of them soon, anyway.
 				give_action(affected_mob, /datum/action/human_action/activable/cult/speak_hivemind) //Lets the victim speak in their hivemind, but not spectate xenos. Fun for roleplay.
 
 				if(SSticker.mode && affected_mob.mind)

@@ -25512,9 +25512,25 @@
 /obj/structure/machinery/processor,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"buS" = (
+/obj/structure/window/framed/colony/reinforced/yautja,
+/turf/open/space/basic,
+/area/point_loma/oob/sky)
 "buT" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"buU" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/space/basic,
+/area/point_loma/oob/sky)
+"buV" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/yautja,
+/turf/open/predship/red_glow/on,
+/area/point_loma/oob/sky)
 "buY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/sliceable/orangecake{
@@ -50248,13 +50264,6 @@
 "kAq" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/predship/tile/red2,
-/area/point_loma/oob/sky)
-"kCP" = (
-/obj/structure/prop/hunter/fake_platform/hunter,
-/obj/effect/hunter/catwalk/hunter_grate{
-	dir = 4
-	},
-/turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
 "kHS" = (
 /obj/effect/decal/hybrisa/road/corner,
@@ -206041,15 +206050,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 alQ
 alQ
 alQ
-alD
-alD
+alQ
+alQ
+alQ
+rAe
+rAe
+rAe
 alD
 alD
 alv
@@ -206223,15 +206232,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 alQ
 whZ
 sTT
 jAM
 alD
+buU
+sym
+sym
+buS
 kVk
 alD
 alv
@@ -206405,15 +206414,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 hkW
 poB
-kCP
+buV
 alD
+buU
+sym
+sym
+buS
 kVk
 alD
 alv
@@ -206587,15 +206596,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 rHD
 izh
 oFQ
 alD
+alQ
+rAe
+rAe
+rAe
 kVk
 alv
 alv
@@ -206769,15 +206778,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 qWq
 gzp
 kJl
 osY
+alQ
+alD
+alD
+alD
 tRd
 aOo
 aOo
@@ -206951,15 +206960,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 wlc
 jQM
 wub
 tKU
+alQ
+alD
+alD
+alD
 eVx
 aOm
 aOm
@@ -207133,15 +207142,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 rHD
 hpJ
 pbh
 alD
+alQ
+rAe
+rAe
+rAe
 kVk
 alv
 alv
@@ -207315,15 +207324,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 fDw
 qOj
 ook
 mKv
 alD
+buU
+sym
+sym
+buS
 kVk
 alD
 alD
@@ -207497,15 +207506,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 alQ
 nAp
 vBk
 mKv
 alD
+buU
+sym
+sym
+buS
 kVk
 alD
 alD
@@ -207679,15 +207688,15 @@ bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
 alQ
 alQ
 alQ
-alD
-alD
+alQ
+alQ
+alQ
+rAe
+rAe
+rAe
 alD
 alD
 alD

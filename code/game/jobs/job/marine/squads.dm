@@ -498,7 +498,7 @@
 	if(only_leader)
 		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
 			if(transmitter)
-				squad_leader << sound('sound/effects/tech_notification.ogg')
+				squad_leader << playsound('sound/effects/tech_notification.ogg')
 			if(squad_leader in targets_to_garble)
 				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
 			else
@@ -508,7 +508,7 @@
 	for(var/mob/living/carbon/human/marine in marines_list)
 		if(marine.stat == CONSCIOUS && marine.client) //Only living and connected people in our squad
 			if(transmitter)
-				marine << sound('sound/effects/tech_notification.ogg')
+				marine << playsound('sound/effects/tech_notification.ogg')
 			if(marine in targets_to_garble)
 				to_chat(marine, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
 			else

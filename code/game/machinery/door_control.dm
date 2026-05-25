@@ -69,32 +69,36 @@
 	shuttle.control_doors("force-lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
-	for(var/obj/structure/machinery/door/airlock/D in range(range))
-		if(D.id_tag == id)
+	for(var/obj/structure/machinery/door/airlock/target_door in range(range))
+		if(target_door.id_tag == id)
 			if(specialfunctions & OPEN)
-				if (D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+				if (target_door.density)
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == CONTROL_STATE_OPEN)
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 1
+					target_door.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
-					D.lock()
+					if(target_door.density)
+						target_door.lock()
+					else
+						INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+						addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = -1
+					target_door.secondsElectrified = -1
 				if(specialfunctions & SAFE)
-					D.safe = 0
+					target_door.safe = 0
 			else
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 0
+					target_door.remoteDisabledIdScanner = 0
 				if(specialfunctions & BOLTS)
-					if(!D.isWireCut(4) && D.arePowerSystemsOn())
-						D.unlock()
+					if(!target_door.isWireCut(4) && target_door.arePowerSystemsOn())
+						target_door.unlock()
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = 0
+					target_door.secondsElectrified = 0
 				if(specialfunctions & SAFE)
-					D.safe = 1
+					target_door.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_cell_divider()
 	for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall in range(range))

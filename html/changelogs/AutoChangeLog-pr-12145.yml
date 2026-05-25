@@ -1,0 +1,4 @@
+author: "labeo0"
+delete-after: True
+changes:
+  - qol: "Crit xenos do not need to Rest to get healing from Recovery Node."

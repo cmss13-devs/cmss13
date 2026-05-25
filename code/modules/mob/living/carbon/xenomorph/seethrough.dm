@@ -73,12 +73,16 @@
 
 	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect))
 	RegisterSignal(fool, COMSIG_MOB_GHOSTIZE, PROC_REF(on_client_ghost))
+	is_active = TRUE
 
 ///Remove the screen object and make us appear solid to ourselves again
-/datum/component/seethrough_mob/proc/untrick_mob()
+/datum/component/seethrough_mob/proc/untrick_mob(skip_animation)
 	var/mob/fool = parent
 	animate(trickery_image, alpha = 255, time = animation_time)
-	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
+	UnregisterSignal(parent, list(COMSIG_MOB_LOGOUT, COMSIG_MOB_GHOSTIZE))
+	if(skip_animation)
+		clear_image(trickery_image, fool.client)
+		return
 
 	//after playing the fade-in animation, remove the image and the trick atom
 	addtimer(CALLBACK(src, PROC_REF(clear_image), trickery_image, fool.client), animation_time)
@@ -89,26 +93,18 @@
 	atom_parent.vis_contents -= render_source_atom
 	atom_parent.render_target = initial_render_target_value
 	remove_from?.images -= removee
+	is_active = FALSE
 
 ///Effect is disabled when they log out because client gets deleted
 /datum/component/seethrough_mob/proc/on_client_disconnect()
 	SIGNAL_HANDLER
 
-	var/mob/fool = parent
-	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
-	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
-	clear_image(trickery_image, fool.client)
+	untrick_mob(skip_animation = TRUE)
 
 /datum/component/seethrough_mob/proc/on_client_ghost()
 	SIGNAL_HANDLER
 
-	var/mob/fool = parent
-	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
-	clear_image(trickery_image, fool.client)
+	untrick_mob(skip_animation = TRUE)
 
 /datum/component/seethrough_mob/proc/toggle_active()
-	is_active = !is_active
-	if(is_active)
-		trick_mob()
-	else
-		untrick_mob()
+	is_active ? untrick_mob() : trick_mob()

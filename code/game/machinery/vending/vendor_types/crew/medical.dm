@@ -241,8 +241,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 
 		list("LABCOATS (CHOOSE 1)", 0, null, null, null),
 		list("Lab coat, white", 0, /obj/item/clothing/suit/storage/labcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_MANDATORY),
-		list("High-cut lab coat, white", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
-		list("Low-cut lab coat, white", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
+		list("High-cut lab coat, white", 0, /obj/item/clothing/suit/storage/labcoat/short, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
+		list("Low-cut lab coat, white", 0, /obj/item/clothing/suit/storage/labcoat/long, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
 		list("Lab coat, tan", 0, /obj/item/clothing/suit/storage/labcoat/researcher, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 		list("LACEUPS (CHOOSE 2)", 0, null, null, null),

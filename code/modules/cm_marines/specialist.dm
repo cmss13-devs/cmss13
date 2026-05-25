@@ -117,7 +117,6 @@
 		idcard.minimap_icon_override = rank_icon
 		redeemer.update_minimap_icon()
 		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), assignment_name)
-		GLOB.data_core.manifest_inject(redeemer)
 	return TRUE
 
 /datum/specialist_set/proc/refund_set(mob/living/carbon/human/refunder)

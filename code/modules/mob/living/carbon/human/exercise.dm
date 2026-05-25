@@ -112,10 +112,29 @@ Verbs related to getting fucking jacked, bro
 
 /mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(on_knees = FALSE)
 	//humans have 100 stamina
-	//default loss per pushup = 2.5 stamina
+	//default loss per pushup = 2.5 stamina if going by the body bases
 	var/stamina_loss = 2.5
+
+	// kinda like the chemical spectrum lol
+	var/type_index = GLOB.body_type_spectrum.Find(body_type)
+	var/type_base = GLOB.body_type_spectrum.Find("No Muscles")
+	if(type_index && type_base)
+		stamina_loss -= (type_index - type_base) * 0.5
+
+	var/size_index = GLOB.body_size_spectrum.Find(body_size)
+	var/size_base = GLOB.body_size_spectrum.Find("Average")
+	if(size_index && size_base)
+		stamina_loss += (size_index - size_base) * 1
+
+	//tldr, no stamina modifiers if youre a regular old schmoe
+
+	// lore accuracy
+	if(origin == ORIGIN_USCM_AW)
+		stamina_loss -= 1
+
 	if(!skills || issynth(src))
 		return 0 // damn tin cans
+
 	switch(skills.get_skill_level(SKILL_ENDURANCE))
 		if(SKILL_ENDURANCE_NONE)
 			stamina_loss += 5

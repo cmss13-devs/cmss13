@@ -20,9 +20,11 @@ Verbs related to getting fucking jacked, bro
 	if(choice == "Proper ones")
 		visible_message(SPAN_NOTICE("[src] shifts \his weight onto \his hands and feet."), SPAN_NOTICE("You move your weight onto your hands and feet."), SPAN_NOTICE("You hear rustling."))
 		execute_pushups(on_knees = FALSE)
+
 	if(choice == "On my knees")
 		visible_message(SPAN_NOTICE("[src] shifts \his weight onto \his knees. What a wimp."), SPAN_NOTICE("You move your weight onto your knees. WEAK!"), SPAN_NOTICE("You hear rustling."))
 		execute_pushups(on_knees = TRUE)
+
 	else
 		return
 
@@ -35,6 +37,7 @@ Verbs related to getting fucking jacked, bro
 	var/staminaloss
 	var/matrix/matrix = matrix() //all this to make their face actually face the floor... sigh... I hate resting code
 	apply_transform(matrix)
+
 	if(dir == WEST)
 		matrix.Turn(270)
 	else if(dir == EAST)
@@ -46,25 +49,33 @@ Verbs related to getting fucking jacked, bro
 		else
 			dir = WEST
 			matrix.Turn(270)
+
 	apply_transform(matrix)
 
 	while(stamina.current_stamina > 10)
 		if(!can_do_pushup())
 			return
 		staminaloss = calculate_stamina_loss_per_pushup(on_knees)
+
 		animate(src, pixel_y = target_y, time = 0.8 SECONDS, easing = QUAD_EASING) //down to the floor
+
 		if(!do_after(src, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			visible_message(SPAN_NOTICE("[src] stops doing pushups."), SPAN_NOTICE("You stop doing pushups."), SPAN_NOTICE("You hear movements."))
 			animate(src, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 			return
+
 		animate(src, pixel_y = 0, time = 0.8 SECONDS, easing = QUAD_EASING) //back up
+
 		if(!do_after(src, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			visible_message(SPAN_NOTICE("[src] stops doing pushups."), SPAN_NOTICE("You stop doing pushups."), SPAN_NOTICE("You hear movements."))
 			animate(src, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 			return
+
 		pushups_in_a_row++
-		visible_message(SPAN_BOLDNOTICE("[src] does a pushup - [pushups_in_a_row] done so far!"), SPAN_BOLDNOTICE("You do a pushup - [pushups_in_a_row] done so far!"), SPAN_NOTICE("You hear rustling."))
+		visible_message(SPAN_BOLDNOTICE("[src] does a [on_knees ? "knee " : ""]pushup - [pushups_in_a_row] done so far!"), SPAN_BOLDNOTICE("You do a [on_knees ? "knee " : ""]pushup - [pushups_in_a_row] done so far!"), SPAN_NOTICE("You hear rustling."))
+
 		stamina.apply_damage(staminaloss)
+
 		if(stamina.current_stamina < 10)
 			to_chat(src, SPAN_WARNING("You slump down to the floor, too tired to keep going."))
 			return
@@ -100,10 +111,10 @@ Verbs related to getting fucking jacked, bro
 
 /mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(on_knees = FALSE)
 	//humans have 100 stamina
-	//default loss per pushup = 5 stamina
+	//default loss per pushup = 2.5 stamina
 	var/stamina_loss = 5
 	if(!skills || issynth(src))
-		return 0
+		return 0 // damn tin cans
 	switch(skills.get_skill_level(SKILL_ENDURANCE))
 		if(SKILL_ENDURANCE_NONE)
 			stamina_loss += 5
@@ -113,10 +124,14 @@ Verbs related to getting fucking jacked, bro
 			stamina_loss -= 2
 		if(SKILL_ENDURANCE_EXPERT)
 			stamina_loss -= 3
+
+	// yesssss, more comprehensive stamina calculations that makes sense
 	if(wear_suit)
-		stamina_loss += 0.5
+		stamina_loss += wear_suit.w_class * 0.5
 	if(back)
-		stamina_loss += 0.5
+		stamina_loss += back.w_class * 0.5
+
+	// probably make the checks below dynamic, but in the future, not today
 	if(pain.get_pain_percentage() >= 20)
 		stamina_loss += 3
 	if(nutrition <= NUTRITION_LOW)
@@ -129,4 +144,39 @@ Verbs related to getting fucking jacked, bro
 		stamina_loss = 1
 	if(isyautja(src))
 		stamina_loss = stamina_loss/2
+
 	return stamina_loss
+
+/mob/living/carbon/human/proc/do_single_pushup(on_knees = FALSE) // evil copy paste code
+	if(!can_do_pushup())
+		return
+
+	var/matrix/matrix = matrix()
+	apply_transform(matrix)
+
+	if(dir == WEST)
+		matrix.Turn(270)
+	else if(dir == EAST)
+		matrix.Turn(90)
+	else
+		if(prob(50))
+			dir = EAST
+			matrix.Turn(90)
+		else
+			dir = WEST
+			matrix.Turn(270)
+
+	apply_transform(matrix)
+
+	var/staminaloss = calculate_stamina_loss_per_pushup(on_knees)
+	animate(src, pixel_y = -5, time = 0.8 SECONDS, easing = QUAD_EASING) //down to the floor
+	if(!do_after(src, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		animate(src, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
+		return
+
+	animate(src, pixel_y = 0, time = 0.8 SECONDS, easing = QUAD_EASING) //back up
+	if(!do_after(src, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+
+	visible_message(SPAN_BOLDNOTICE("[src] does a [on_knees ? "knee " : ""]pushup!"), SPAN_BOLDNOTICE("You do a [on_knees ? "knee " : ""]pushup!"), SPAN_NOTICE("You hear rustling."))
+	stamina.apply_damage(staminaloss)

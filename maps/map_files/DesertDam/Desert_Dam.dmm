@@ -21724,6 +21724,11 @@
 /turf/open_space,
 /area/desert_dam/exterior/rock)
 "bpl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"bpm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1;
@@ -21733,15 +21738,6 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer/research/containment/corner2,
-/area/desert_dam/interior/lab_northeast/east_lab_biology)
-"bpm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/open/floor/almayer/research/containment/corner3,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
@@ -22236,18 +22232,27 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger/roof)
 "brh" = (
-/turf/open/floor/almayer/research/containment/corner/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/corner3,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bri" = (
-/turf/open/floor/almayer/research/containment/corner_var2/west,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "brj" = (
+/turf/open/floor/almayer/research/containment/corner_var2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
 /turf/open/floor/almayer/research/containment/entrance,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"brk" = (
+"brl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1;
@@ -22255,7 +22260,7 @@
 	},
 /turf/open/floor/almayer/research/containment/entrance/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brl" = (
+"brm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1;
@@ -22266,19 +22271,19 @@
 	},
 /turf/open/floor/almayer/research/containment/corner_var2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brm" = (
+"brn" = (
 /turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brn" = (
+"bro" = (
 /turf/open/floor/almayer/research/containment/corner_var1/north,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"bro" = (
+"brp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
 /turf/open/floor/almayer/research/containment/entrance/east,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brp" = (
+"brq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -22287,15 +22292,12 @@
 	},
 /turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brq" = (
-/turf/open/floor/almayer/research/containment/corner/west,
-/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/lobby)
 "brs" = (
-/turf/open/floor/almayer/research/containment/corner_var1,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -22312,6 +22314,9 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"brw" = (
+/turf/open/floor/almayer/research/containment/corner_var1,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brH" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -49328,6 +49333,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "lVl" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/writing,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "lVo" = (
@@ -152354,7 +152360,7 @@ iOn
 kGe
 sWm
 sWm
-sWm
+bpl
 akI
 gfD
 qZe
@@ -171712,7 +171718,7 @@ vTg
 (144,1,2) = {"
 vTg
 vmC
-brp
+brq
 fmJ
 rnc
 fmJ
@@ -171953,7 +171959,7 @@ vfL
 hmi
 vmC
 ejF
-brm
+brn
 jiq
 wAN
 hmi
@@ -172181,13 +172187,13 @@ vTg
 vTg
 vmC
 ejF
-brq
+brs
 jiq
 ayl
 hmi
 vmC
 ejF
-brn
+bro
 jiq
 ayl
 hmi
@@ -172416,13 +172422,13 @@ vTg
 vmC
 wmd
 ojt
-brk
+brl
 ojt
 eLT
 vmC
 wmd
 ojt
-brk
+brl
 ojt
 byS
 vmC
@@ -176860,13 +176866,13 @@ vTg
 (166,1,2) = {"
 vTg
 vmC
-brp
+brq
 fmJ
 fmJ
 deF
 vmC
+brq
 brp
-bro
 fmJ
 dOt
 vmC
@@ -177095,7 +177101,7 @@ vTg
 vTg
 vmC
 ejF
-brs
+brw
 pMh
 hmi
 qGP
@@ -177329,12 +177335,12 @@ vTg
 vTg
 vmC
 ejF
-brq
+brs
 hPz
 hmi
 qGP
 ejF
-brn
+bro
 ayl
 hmi
 vmC
@@ -177570,7 +177576,7 @@ vmC
 wmd
 ojt
 lHi
-brl
+brm
 vmC
 ydo
 lmW
@@ -181787,8 +181793,8 @@ ani
 nOW
 ani
 uZy
-brj
-brh
+brk
+bri
 lDG
 duU
 duj
@@ -182025,7 +182031,7 @@ fdN
 sWf
 sWf
 sWf
-bpl
+bpm
 iNY
 lCL
 wrb
@@ -182493,7 +182499,7 @@ ucs
 lxm
 lxm
 lxm
-bpm
+brh
 iNY
 lCL
 wrb
@@ -182723,7 +182729,7 @@ ani
 ani
 ani
 aub
-brj
+brk
 tnm
 lDG
 nit
@@ -182958,7 +182964,7 @@ ani
 ani
 aub
 bRx
-bri
+brj
 xBs
 kKQ
 duj

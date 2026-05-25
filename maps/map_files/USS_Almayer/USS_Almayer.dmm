@@ -199,6 +199,19 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
+/turf/open/floor/almayer/red/south,
+/area/almayer/shipboard/brig/armory)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11707,24 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 20
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 20;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/armory)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -20868,6 +20899,22 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
+"bbi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 20
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/brig/armory)
 "bbj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -23107,6 +23154,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/bodybags,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/execution_storage)
 "bgs" = (
@@ -23286,6 +23334,12 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
+"bgG" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/sb)
 "bgH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -40911,7 +40965,8 @@
 /obj/structure/window/reinforced/ultra,
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_y = 16
+	pixel_y = 16;
+	buckling_y = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -40923,7 +40978,8 @@
 /obj/structure/window/reinforced/ultra,
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_y = 16
+	pixel_y = 16;
+	buckling_y = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -40993,14 +41049,16 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_y = 16
+	pixel_y = 16;
+	buckling_y = 16
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/brig/execution)
 "bWA" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_y = 16
+	pixel_y = 16;
+	buckling_y = 16
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/brig/execution)
@@ -41047,7 +41105,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_y = 16
+	pixel_y = 16;
+	buckling_y = 16
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/brig/execution)
@@ -41068,7 +41127,6 @@
 /obj/item/weapon/gun/rifle/m4ra,
 /obj/item/ammo_box/magazine/m4ra,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/bodybags,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/execution_storage)
 "bWJ" = (
@@ -41384,9 +41442,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/armory)
-"bXB" = (
-/turf/open/floor/almayer/red/south,
-/area/almayer/shipboard/brig/armory)
 "bXC" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -41401,7 +41456,7 @@
 	pixel_x = 15;
 	pixel_y = -5;
 	phone_category = "MP Dept.";
-	phone_id = "Armory";
+	phone_id = "Brig Armory";
 	name = "Armory Telephone"
 	},
 /obj/structure/sign/safety/commline_connection{
@@ -41499,6 +41554,11 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/brig/armory)
 "bXR" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/brig/armory)
 "bXS" = (
@@ -41557,23 +41617,7 @@
 	pixel_x = -11;
 	pixel_y = -1
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice4";
-	pixel_x = -16;
-	pixel_y = 16
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /turf/open/floor/almayer/no_build,
-/area/almayer/shipboard/brig/armory)
-"bXY" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/brig/armory)
 "bXZ" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -41587,13 +41631,9 @@
 /obj/structure/machinery/door_control{
 	id = "firearm_storage_armory";
 	name = "Armory Lockdown";
-	pixel_y = 3;
+	pixel_y = 8;
 	req_access_txt = "4";
 	pixel_x = 23
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/armory)
@@ -41601,18 +41641,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/req)
-"bYb" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/brig/armory)
 "bYc" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "bYd" = (
@@ -41626,10 +41655,6 @@
 	pixel_x = -8;
 	pixel_y = 5
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "bYe" = (
@@ -41640,8 +41665,9 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 20
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
@@ -41654,15 +41680,6 @@
 /obj/structure/sign/safety/ammunition{
 	pixel_x = 32;
 	pixel_y = -8
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice8";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
@@ -41701,7 +41718,18 @@
 "bYj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = -5
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/armory)
@@ -41746,6 +41774,16 @@
 /obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 20
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 20;
+	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
@@ -42993,9 +43031,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/medical)
-"caZ" = (
-/turf/open/floor/almayer_hull,
-/area/almayer/shipboard/brig/perma)
 "cba" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	dir = 2;
@@ -44254,10 +44289,8 @@
 	pixel_x = 2
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	layer = 5.4
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cryo)
@@ -51287,21 +51320,7 @@
 	pixel_x = 2
 	},
 /obj/structure/platform/metal/almayer_smooth/north,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/machinery/camera/autoname/almayer,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	layer = 5.4
-	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cryo)
 "eMb" = (
@@ -56058,6 +56077,15 @@
 /obj/structure/sign/safety/stairs{
 	pixel_y = -7;
 	pixel_x = -17
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -16;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/cryo)
@@ -61488,9 +61516,11 @@
 /obj/effect/landmark/late_join/warden,
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/platform_decoration/metal/almayer_smooth/northeast{
 	layer = 3.01
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
@@ -64575,6 +64605,15 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 16;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/cryo)
 "kya" = (
@@ -71729,17 +71768,6 @@
 	pixel_y = 1
 	},
 /obj/structure/platform/metal/almayer_smooth,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice1";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	layer = 5.4
-	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cryo)
 "nCM" = (
@@ -77138,6 +77166,7 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/northwest{
 	layer = 3.01
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/cryo)
 "pQN" = (
@@ -89543,6 +89572,10 @@
 "vaS" = (
 /obj/effect/landmark/start/police,
 /obj/effect/landmark/late_join/police,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "vaV" = (
@@ -135584,7 +135617,7 @@ aad
 nBJ
 avs
 eQR
-eQR
+bTW
 aiX
 aqv
 bKP
@@ -135996,7 +136029,7 @@ aad
 nBJ
 eQR
 eQR
-ldF
+eox
 aiX
 iWH
 aqe
@@ -167311,7 +167344,7 @@ lrq
 bYi
 bXX
 bXQ
-bXB
+bXC
 lrq
 azJ
 azJ
@@ -167412,9 +167445,9 @@ bhs
 bjH
 lrq
 bYj
-bXY
 bXR
-bXC
+bXR
+aaD
 lrq
 azJ
 azJ
@@ -167511,7 +167544,7 @@ bdH
 bdH
 byx
 bkU
-aJS
+bgG
 biR
 lrq
 bYk
@@ -167618,7 +167651,7 @@ aJS
 bYs
 lrq
 bYl
-bYb
+lrq
 bXT
 lrq
 lrq
@@ -167926,10 +167959,10 @@ bkC
 bjY
 bYt
 bYp
-bXU
+bbi
 bYe
-bXU
-bXF
+bbi
+aDL
 lrq
 bjc
 aLn
@@ -194008,7 +194041,7 @@ hPI
 hPI
 hPI
 hPI
-caZ
+aag
 ajY
 aaa
 aaa
@@ -194103,7 +194136,7 @@ aaf
 aaf
 aaf
 aag
-aKQ
+ccj
 hPI
 rib
 rbK

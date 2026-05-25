@@ -32,7 +32,8 @@ Verbs related to getting fucking jacked, bro
 /mob/living/carbon/human/proc/execute_pushups(on_knees = FALSE)
 	if(!can_do_pushup())
 		return
-	var/target_y = -5
+
+	var/target_y = on_knees ? -2.5 : -5
 	var/pushups_in_a_row
 	var/staminaloss
 	var/matrix/matrix = matrix() //all this to make their face actually face the floor... sigh... I hate resting code
@@ -151,6 +152,7 @@ Verbs related to getting fucking jacked, bro
 	if(!can_do_pushup())
 		return
 
+	var/target_y = on_knees ? -2.5 : -5
 	var/matrix/matrix = matrix()
 	apply_transform(matrix)
 
@@ -169,7 +171,7 @@ Verbs related to getting fucking jacked, bro
 	apply_transform(matrix)
 
 	var/staminaloss = calculate_stamina_loss_per_pushup(on_knees)
-	animate(src, pixel_y = -5, time = 0.8 SECONDS, easing = QUAD_EASING) //down to the floor
+	animate(src, pixel_y = target_y, time = 0.8 SECONDS, easing = QUAD_EASING) //down to the floor
 	if(!do_after(src, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		animate(src, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 		return

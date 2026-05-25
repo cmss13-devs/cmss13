@@ -113,7 +113,7 @@ Verbs related to getting fucking jacked, bro
 /mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(on_knees = FALSE)
 	//humans have 100 stamina
 	//default loss per pushup = 2.5 stamina
-	var/stamina_loss = 5
+	var/stamina_loss = 2.5
 	if(!skills || issynth(src))
 		return 0 // damn tin cans
 	switch(skills.get_skill_level(SKILL_ENDURANCE))

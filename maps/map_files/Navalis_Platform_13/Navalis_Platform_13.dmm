@@ -4636,6 +4636,10 @@
 /obj/structure/platform_decoration/stone/strata/east,
 /turf/open_space,
 /area/navalis/indoors/xeno_growth/residential)
+"alV" = (
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/residential/accessway)
 "alW" = (
 /turf/open/floor/prison/darkbrowncorners2,
 /area/navalis/outdoors/landing_zone_2)
@@ -24489,7 +24493,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/command/upper_deck/port)
 "enL" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/med_sci/upper_level/sci_lab)
@@ -45006,11 +45010,11 @@
 /turf/open/floor/prison/ramptop,
 /area/navalis/oob/water)
 "tVG" = (
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -157964,7 +157968,7 @@ asq
 aqO
 arw
 aqO
-apI
+alV
 apI
 pOw
 pWK

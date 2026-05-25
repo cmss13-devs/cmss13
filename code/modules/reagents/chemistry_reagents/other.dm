@@ -48,6 +48,7 @@
 	color = BLOOD_COLOR_YAUTJA
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
+	properties = list(PROPERTY_CROSSMETABOLIZING = 1) // Yautja blood should... you know, let you know how they metabolize.
 
 /datum/reagent/blood/synth_blood
 	name = "Synthetic Blood"

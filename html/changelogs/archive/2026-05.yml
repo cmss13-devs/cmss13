@@ -173,3 +173,37 @@
   - spellcheck: Standardizes grammar in leadership orders
   labeo0:
   - bugfix: fixed burning icons of some boxes
+2026-05-25:
+  Ammoniacres:
+  - bugfix: removed being able to make molotovs with research intel papers!
+  Nihisohel, Sponge in discord for HUD sprites:
+  - rscadd: Megaphones can now be used as an amplifier, allowing loud text by talking
+      normally as long as it is toggled on via unique_action and only when spoken
+      when it is on the active hand
+  - balance: Megaphones, when amplified, increases its listener range by a screens
+      worth, ensuring that people can hear you from farther away
+  - rscadd: Introduces the "hushed" status effect, which forces whisper on inflicted
+      mobs.
+  - rscadd: Megaphone broadcasting (the original method of use) now inflicts hushed
+      on non-leader humans
+  - balance: Megaphone hushing lasts for approximately 3 seconds, which should be
+      more than enough for the next broadcast, probably
+  - balance: Megaphone broadcast cooldown is reduced from 2 seconds to 1.5 seconds
+  - balance: Megaphones are no longer a universal translator
+  - balance: Hostile and neutral factions don't really care about what you are broadcasting
+      and would not get hushed by your speech
+  - bugfix: Megaphone broadcasting now shows your rank
+  - code_imp: Langchat_speech now supports language scrambling
+  - code_imp: Megaphones now respect the color of the language when broadcasting
+  - code_imp: Megaphones can now auto_punctuate
+  - code_imp: The show_message proc now support chat_filters, undefined by default
+  - refactor: Deprecates langchat_long_speech and folds it into langchat_speech
+  - bugfix: Fixes the notification when attempting to use a megaphone while player
+      muted, it was fetching the megaphone rather than the user for some reason
+  - bugfix: Fixes being able to open multiple windows of the tgui_input_text proc,
+      which is used by a LOT of things, including the megaphone.
+  labeo0:
+  - qol: Crit xenos do not need to Rest to get healing from Recovery Node.
+  zzzmike:
+  - bugfix: stops infinite medical optics
+  - spellcheck: reworked wall description to apply logically to observers

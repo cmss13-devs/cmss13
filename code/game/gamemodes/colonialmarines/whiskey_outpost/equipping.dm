@@ -122,7 +122,7 @@ Listen in on your radio, and pay attention to provide fire support for the marin
 
 
 //*************************************
-//---------REQUISITIONS OFFICER--------
+//---------Quartermaster--------
 //*************************************/
 /datum/job/logistics/requisition/whiskey
 	title = JOB_WO_CHIEF_REQUISITION

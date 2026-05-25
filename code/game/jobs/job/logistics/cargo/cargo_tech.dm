@@ -4,7 +4,7 @@
 	spawn_positions = 2
 	allow_additional = 1
 	scaled = 1
-	supervisors = "the requisitions officer"
+	supervisors = "the quartermaster"
 	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/cargo

@@ -148,3 +148,6 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
+
+	//allows picking voice
+	var/gender_voice = MALE

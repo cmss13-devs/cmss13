@@ -165,6 +165,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/be_random_body = 0 //whether we have a random appearance every round
 	var/gender = MALE //gender of character (well duh)
+	var/gender_voice = MALE
 	var/body_presentation
 
 	var/age = 19 //age of character
@@ -429,6 +430,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == PLURAL ? "Non-Binary" : gender == MALE ? "Male" : "Female"]</b></a><br>"
+			if(gender == PLURAL)
+				dat += "<b>Voice:</b> <a href='byond://?_src_=prefs;preference=gender_voice'><b>[gender_voice == MALE ? "Male" : "Female"]</b></a><br>"
 
 			dat += "<b>Skin Color:</b> [skin_color]<br>"
 			dat += "<b>Body Size:</b> [body_size]<br>"
@@ -1821,6 +1824,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(picker_ui)
 						picker_ui.send_update()
 
+				if("gender_voice")
+					gender_voice = gender_voice == MALE ? FEMALE : MALE
+
 				if("hear_adminhelps")
 					toggles_sound ^= SOUND_ADMINHELP
 
@@ -2152,6 +2158,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	character.age = age
 	character.gender = gender
+	character.gender_voice = gender_voice
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
@@ -2233,6 +2240,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	character.age = age
 	character.gender = gender
+	character.gender_voice = gender_voice
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size

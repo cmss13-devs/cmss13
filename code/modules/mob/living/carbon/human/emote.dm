@@ -159,7 +159,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/medic/get_sound(mob/living/user)
-	if(user.gender == MALE)
+	if(user.gender_voice == MALE)
 		return pick('sound/voice/corpsman.ogg', 'sound/voice/corpsman_up.ogg', 'sound/voice/corpsman_over_here.ogg', 'sound/voice/i_need_a_corpsman_1.ogg', 'sound/voice/i_need_a_corpsman_2.ogg', 'sound/voice/im_hit_get_doc_up_here.ogg', 'sound/voice/get_doc_up_here_im_hit.ogg', 20;'sound/voice/i_cant_feel_my_legs_corpsman.ogg', 0.5;'sound/voice/human_male_medic_rare_1.ogg', 0.5;'sound/voice/human_male_medic.ogg', 1;'sound/voice/human_male_medic_rare_2.ogg')
 	else
 		return 'sound/voice/human_female_medic.ogg'
@@ -202,7 +202,7 @@
 
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
-		if(user.gender == MALE)
+		if(user.gender_voice == MALE)
 			return get_sfx("male_pain")
 		else
 			return get_sfx("female_pain")
@@ -245,7 +245,7 @@
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(ishuman_strict(user))
-		if(user.gender == MALE)
+		if(user.gender_voice == MALE)
 			return get_sfx("male_scream")
 		else
 			return get_sfx("female_scream")
@@ -370,9 +370,9 @@
 	if(ishumansynth_strict(user))
 		switch(user.faction)
 			if(FACTION_UPP, FACTION_HUNTED_UPP)
-				return get_sfx("[user.gender]_upp_warcry")
+				return get_sfx("[user.gender_voice]_upp_warcry")
 			else
-				return get_sfx("[user.gender]_warcry")
+				return get_sfx("[user.gender_voice]_warcry")
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"
@@ -397,8 +397,8 @@
 /datum/emote/living/carbon/human/burstscream/get_sound(mob/living/carbon/human/user)
 	if(!user.species)
 		return
-	if(user.species.burstscreams[user.gender])
-		return user.species.burstscreams[user.gender]
+	if(user.species.burstscreams[user.gender_voice])
+		return user.species.burstscreams[user.gender_voice]
 	if(user.species.burstscreams[NEUTER])
 		return user.species.burstscreams[NEUTER]
 

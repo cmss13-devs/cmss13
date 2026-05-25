@@ -1,5 +1,6 @@
 /mob/living/carbon
 	gender = MALE
+	gender_voice = MALE
 	mobility_flags = MOBILITY_FLAGS_CARBON_DEFAULT
 
 	var/life_tick = 0   // The amount of life ticks that have processed on this mob.

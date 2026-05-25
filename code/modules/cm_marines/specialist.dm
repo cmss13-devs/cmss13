@@ -113,7 +113,7 @@
 	if(idcard)
 		var/assignment_name = "[role_name] Specialist"
 		idcard.set_assignment("[redeemer.assigned_squad ? redeemer.assigned_squad : ""] [assignment_name]")
-		redeemer.assigned_equipment_preset.manifest_title = assignment_name
+		redeemer.role_title_override = assignment_name
 		idcard.minimap_icon_override = rank_icon
 		redeemer.update_minimap_icon()
 		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), assignment_name)

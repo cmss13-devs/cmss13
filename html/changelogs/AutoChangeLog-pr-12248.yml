@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed some tacmap runtimes with hunting grounds"
-  - bugfix: "Fixed a bad COMSIG_MOVABLE_Z_CHANGED call"

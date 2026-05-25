@@ -1,0 +1,5 @@
+author: "Ammoniacres"
+delete-after: True
+changes:
+  - balance: "guaranteed the survivor flamethrower spawn on Sorokyne Strata, Solaris Ridge, Trijent Dam and Fiorina Science Annex, bringing the map to parity with other maps in terms of survivor loot."
+  - balance: "whitelisted VESG nozzles for the survivor flamethrower."

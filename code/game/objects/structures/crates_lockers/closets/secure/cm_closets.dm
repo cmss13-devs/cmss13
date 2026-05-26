@@ -295,8 +295,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/reagent_container/glass/bucket(src)
 
 //ALAMAYER CARGO CLOSET
-/obj/structure/closet/secure_closet/req_officer
-	name = "\improper RO's Locker"
+/obj/structure/closet/secure_closet/quartermaster
+	name = "\improper QM's Locker"
 	req_access = list(ACCESS_MARINE_RO)
 	icon_state = "secure_locked_cargo"
 	icon_closed = "secure_unlocked_cargo"
@@ -305,15 +305,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_broken = "secure_broken_cargo"
 	icon_off = "secure_off_cargo"
 
-/obj/structure/closet/secure_closet/req_officer/Initialize()
-	. = ..()
-	new /obj/item/device/radio/headset/almayer/mcom/qm(src)
-	new /obj/item/clothing/under/rank/qm_suit(src)
-	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/storage/belt/marine(src)
-	new /obj/item/clothing/head/cmcap/req(src)
-	new /obj/item/device/flashlight(src)
-	new /obj/item/storage/backpack/marine/satchel(src)
+/obj/structure/closet/secure_closet/quartermaster/Initialize()
+    . = ..()
+    new /obj/item/device/radio/headset/almayer/mcom/qm(src)
+    new /obj/item/clothing/under/rank/qm_suit(src)
+    new /obj/item/clothing/shoes/marine(src)
+    new /obj/item/storage/belt/marine(src)
+    new /obj/item/clothing/head/cmcap/req(src)
+    new /obj/item/device/flashlight(src)
+    new /obj/item/storage/backpack/marine/satchel(src)
+    return
 
 /obj/structure/closet/secure_closet/cargotech
 	name = "Cargo Technician's Locker"

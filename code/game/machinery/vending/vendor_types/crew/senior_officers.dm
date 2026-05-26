@@ -9,7 +9,7 @@
 		var/list/combined = list()
 		combined += GLOB.cm_vending_clothing_xo
 		combined += GLOB.cm_vending_clothing_chief_engineer
-		combined += GLOB.cm_vending_clothing_req_officer
+		combined += GLOB.cm_vending_clothing_quartermaster
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
 		combined += GLOB.cm_vending_clothing_auxiliary_officer
@@ -19,7 +19,7 @@
 	else if(user.job == JOB_CHIEF_ENGINEER)
 		return GLOB.cm_vending_clothing_chief_engineer
 	else if(user.job == JOB_CHIEF_REQUISITION)
-		return GLOB.cm_vending_clothing_req_officer
+		return GLOB.cm_vending_clothing_quartermaster
 	else if(user.job == JOB_CMO)
 		return GLOB.cm_vending_clothing_cmo
 	else if(user.job == JOB_CHIEF_POLICE)
@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 
 
 //------------ CHIEF REQ ---------------
-GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
+GLOBAL_LIST_INIT(cm_vending_clothing_quartermaster, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),

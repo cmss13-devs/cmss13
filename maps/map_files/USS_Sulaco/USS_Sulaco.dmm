@@ -307,6 +307,14 @@
 	},
 /turf/open/floor/almayer/orange,
 /area/ship/sulaco/marine/bravo)
+"aaN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/toy/beach_ball/holoball{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer,
+/area/ship/sulaco/cafeteria)
 "aaO" = (
 /turf/open/floor/almayer/red/south,
 /area/ship/sulaco/marine/alpha)
@@ -546,6 +554,56 @@
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/ship/sulaco/medbay/west)
+"abG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/crayons{
+	layer = 3.1;
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer,
+/area/ship/sulaco/cafeteria)
+"abH" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar/tarbacks,
+/obj/item/reagent_container/food/snacks/mre_pack/xmas3{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer,
+/area/ship/sulaco/cafeteria)
+"abI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/glasses/disco_fever{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/box/matches{
+	pixel_x = -11;
+	pixel_y = -3
+	},
+/turf/open/floor/almayer,
+/area/ship/sulaco/cafeteria)
+"abJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/mre_pack/meal5{
+	pixel_y = 10;
+	pixel_x = -15
+	},
+/turf/open/floor/almayer,
+/area/ship/sulaco/cafeteria)
 "acg" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/structure/pipes/vents/pump{
@@ -5010,6 +5068,26 @@
 /area/ship/sulaco/command/intelligence)
 "eDX" = (
 /obj/structure/surface/table/almayer,
+/obj/item/ashtray/bronze{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	layer = 3.7;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	layer = 3.7;
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Looks like someone spat in it.";
+	name = "dip cup";
+	pixel_x = -4;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer,
 /area/ship/sulaco/cafeteria)
 "eEg" = (
@@ -9849,6 +9927,10 @@
 "jAp" = (
 /obj/item/reagent_container/food/snacks/hotdog,
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mre_pack/meal5{
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /turf/open/floor/almayer,
 /area/ship/sulaco/cafeteria)
 "jAC" = (
@@ -16068,7 +16150,13 @@
 /turf/open/floor/almayer/test_floor4,
 /area/ship/sulaco/hallway/central_hall2)
 "qtL" = (
-/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	dir = 1;
+	layer = 2;
+	pixel_y = -12;
+	network = list("Combat Correspondent Live","WY");
+	name = "Wall-Mounted Television Set"
+	},
 /turf/open/floor/almayer,
 /area/ship/sulaco/cafeteria)
 "quI" = (
@@ -55259,7 +55347,7 @@ gcx
 ggc
 gqb
 gHr
-eDX
+aaN
 jAp
 qtL
 sGE
@@ -55325,14 +55413,14 @@ nzD
 orD
 edm
 oqO
-eDX
+abI
 hWc
 orn
 rgN
 tpX
 fIF
 gHr
-eDX
+abG
 eDX
 mdE
 sGE
@@ -55398,8 +55486,8 @@ nzD
 qrI
 edm
 sFa
-eDX
-eDX
+abJ
+abH
 sRh
 gcx
 ggc

@@ -1823,11 +1823,11 @@
 /turf/open_space,
 /area/sky/level4)
 "agV" = (
-/obj/effect/landmark/spore_sac_rng/ten,
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/spring)
 "agW" = (
-/obj/effect/landmark/spore_sac_rng/ten,
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
 "ahp" = (

@@ -1954,7 +1954,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aho" = (
-/obj/effect/landmark/spore_sac_rng/ten,
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/virology)
 "ahp" = (
@@ -1964,7 +1964,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahq" = (
-/obj/effect/landmark/spore_sac_rng/twenty,
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/virology)
 "ahr" = (

@@ -161,3 +161,8 @@
 /datum/gamemode_modifier/no_random_spores
 	modifier_name = "No random Spore Sacs"
 	modifier_desc = "Stops pathogen spore sacs randomly spawning."
+
+/datum/gamemode_modifier/no_random_spores/set_active(enabled)
+	. = ..()
+	if(SSticker.current_state >= GAME_STATE_PLAYING)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))

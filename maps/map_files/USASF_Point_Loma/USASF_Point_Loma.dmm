@@ -26731,6 +26731,12 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/predship/tile/red5,
 /area/point_loma/research_facility/crash_site)
+"byy" = (
+/obj/structure/stairs/perspective/rock{
+	dir = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
 "byz" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva/red,
@@ -114770,7 +114776,7 @@ bLq
 asb
 bJw
 bJw
-bJf
+byy
 oiC
 oiC
 oiC

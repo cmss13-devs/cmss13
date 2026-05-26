@@ -226,24 +226,24 @@ const MainDashboard = (props) => {
           </Table.Row>
           <Table.Row>
             <Table.Cell textAlign="center">
-              {primary_objective ? primary_objective : 'NONE'}
+            {primary_objective ? primary_objective : 'NONE'}
             </Table.Cell>
             <Table.Cell textAlign="center">
-             {secondary_objective ? secondary_objective : 'NONE'}
+            {secondary_objective ? secondary_objective : 'NONE'}
             </Table.Cell>
           </Table.Row>
         </Table>
-        <Table style= {{ border: 'none', background: 'none' }}>
-          <Table.Row style= {{ border: 'none', background: 'none' }}>
-            <Table.Cell width="50%" style= {{ border: 'none' }} textAlign="right">
+        <Table style={{ border: 'none', background: 'none' }}>
+          <Table.Row style={{ border: 'none', background: 'none' }}>
+            <Table.Cell width="50%" style={{ border: 'none' }} textAlign="right">
               <Stack vertical= {false} justify="flex-end">
               <Button
                 inline
                 mt= {0.5}
                 width="49%"
                 icon="envelope"
-                style= {{ textAlign: 'Center'}}
-                onClick= {() => act('set_primary')}
+                style={{ textAlign: 'Center'}}
+                onClick={() => act('set_primary')}
                 >
                 SET PRIMARY
               </Button>
@@ -251,26 +251,26 @@ const MainDashboard = (props) => {
               <Button
                 width="49%"
                 inline
-                mt= {0.5}
+                mt={0.5}
                 icon="person"
-                style= {{ textAlign: 'Center'}}
-                onClick= {() => act('remind_primary')}
+                style={{ textAlign: 'Center'}}
+                onClick={() => act('remind_primary')}
                 >
                 REMIND PRIMARY
               </Button>
               )}
             </Stack>
           </Table.Cell>
-          <Table.Cell style= {{ border: 'none' }} textAlign="left">
-            <Stack vertical= {false} justify="flex-start">
+          <Table.Cell style={{ border: 'none' }} textAlign="left">
+            <Stack vertical={false} justify="flex-start">
               <Button
                 inline
-                mt= {0.5}
+                mt={0.5}
                 width="49%"
                 icon="envelope"
-                style= {{ textAlign: 'Center'}}
-                onClick= {() => act('set_secondary')}
-              >
+                style={{ textAlign: 'Center'}}
+                onClick={() => act('set_secondary')}
+                >
               SET SECONDARY
               </Button>
               {secondary_objective && (
@@ -278,9 +278,9 @@ const MainDashboard = (props) => {
                 inline
                 mt={0.5}
                 width="49%"
-                style= {{ textAlign: 'Center'}}
+                style={{ textAlign: 'Center'}}
                 icon="person"
-                onClick= {() => act('remind_secondary')}
+                onClick={() => act('remind_secondary')}
               >
               REMIND SECONDARY
               </Button>
@@ -288,26 +288,26 @@ const MainDashboard = (props) => {
             </Stack>
           </Table.Cell>
         </Table.Row>
-        <Table.Row style= {{ border: 'none', background: 'none' }}>
-          <Table.Cell width="50%" style= {{ border: 'none' }} textAlign="right">
+        <Table.Row style={{ border: 'none', background: 'none' }}>
+          <Table.Cell width="50%" style={{ border: 'none' }} textAlign="right">
             <Button
                 inline
                 mt= {0.5}
                 width="65%"
                 icon="envelope"
-                style= {{ textAlign: 'Center'}}
-                onClick= {() => act('message')}
-              >
+                style={{ textAlign: 'Center'}}
+                onClick={() => act('message')}
+                >
               MESSAGE SQUAD
               </Button>
             </Table.Cell>
-            <Table.Cell width="50%" style= {{ border: 'none' }} textAlign="left">
+            <Table.Cell width="50%" style={{ border: 'none' }} textAlign="left">
               <Button
                 inline
-                mt= {0.5}
+                mt={0.5}
                 width="65%"
                 icon="envelope"
-                style= {{ textAlign: 'Center'}}
+                style={{ textAlign: 'Center'}}
                 onClick= {() => act('sl_message')}
                 >
                 MESSAGE SQUAD LEADER
@@ -318,20 +318,20 @@ const MainDashboard = (props) => {
       </Stack.Item>
       <Stack.Item width="120px">
         <Box>
-          <Box textAlign="center" bold color="label" mb= {0.5}>
+          <Box textAlign="center" bold color="label" mb={0.5}>
           SIGNAL CLARITY
           </Box>
-          <Box textAlign="center" mb= {1} fontSize="12px">
+          <Box textAlign="center" mb={1} fontSize="12px">
           {data.clarity_status}
           </Box>
             <ProgressBar
-              value= {Number(data.radio_clarity)/100}
-              color= {data.clarity_color || 'red'}
+              value={Number(data.radio_clarity)/100}
+              color={data.clarity_color || 'red'}
               height='18px'
             >
             {''}
             </ProgressBar>
-            <Box textAlign="center" mt= {0.5} bold color="white">
+            <Box textAlign="center" mt={0.5} bold color="white">
             {data.radio_clarity}%
             </Box>
           </Box>

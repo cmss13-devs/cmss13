@@ -410,7 +410,7 @@
 #define HIVELORD_DESIGNER "Designer"
 
 // Spitter strain flags
-#define SPITTER_VENATOR "Venator"
+#define SPITTER_DISSOLVER "Dissolver"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"

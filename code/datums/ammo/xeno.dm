@@ -185,7 +185,7 @@
 		return
 	new /datum/effects/acid(target_mob, P.firer)
 
-/datum/ammo/xeno/acid/spatter/venator_corrosive_spit
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
 	name = "Corrosive spit"
 	spit_cost =  45
 	damage = 45
@@ -193,31 +193,31 @@
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
 
-/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/venator(target_mob.loc)
+	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc)
 
-/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/venator(target_object.loc)
+	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc)
 
-/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/venator(T)
+	new/obj/effect/xenomorph/spray/no_stun/dissolver(T)
 
-/datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	name = "Enzymatic breath"
 	spit_cost = 55
 	damage = 10
 	bonus_projectiles_amount = 4
-	scatter = SCATTER_AMOUNT_VENATOR
-	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
+	scatter = SCATTER_AMOUNT_DISSOLVER
+	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
 	spit_windup = 1 SECONDS
 
-/datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
 	bonus_projectiles_amount = 0
 
-/datum/ammo/xeno/acid/venator_acid_blob
+/datum/ammo/xeno/acid/dissolver_acid_blob
 	name = "Acid blob"
 	damage = 25
 	spit_cost = 65
@@ -230,7 +230,7 @@
 
 
 
-/datum/ammo/xeno/acid/venator_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()
 	spread_acid(target_mob.loc, direct_spread)
 	if(!istype(target_mob,/mob/living/carbon/human))
@@ -243,28 +243,28 @@
 		acid_effect.enhance_acid()
 
 
-/datum/ammo/xeno/acid/venator_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
 	spread_acid(target_object.loc, pick(indirect_spreads))
 
-/datum/ammo/xeno/acid/venator_acid_blob/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	spread_acid(T, pick(indirect_spreads))
 
-/datum/ammo/xeno/acid/venator_acid_blob/do_at_max_range(obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/P)
 	. = ..()
 	spread_acid(P.loc, pick(indirect_spreads))
 
-/datum/ammo/xeno/acid/venator_acid_blob/proc/spread_acid(location, list/directions)
+/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions)
 	if(istype(location, /turf/closed))
 		return
-	new/obj/effect/xenomorph/spray/no_stun/venator(location)
+	new/obj/effect/xenomorph/spray/no_stun/dissolver(location)
 	var/turf/spread_location
 	for(var/direction in directions)
 		spread_location = get_step(location, direction)
 		if(istype(spread_location,/turf/closed))
 			continue
-		new/obj/effect/xenomorph/spray/no_stun/venator(spread_location)
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(spread_location)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

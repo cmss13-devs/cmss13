@@ -363,7 +363,7 @@
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "QM"
 	minimum_age = 25
-	skills = /datum/skills/RO
+	skills = /datum/skills/QM
 
 	minimap_icon = "cargo"
 	minimap_background = "background_command"

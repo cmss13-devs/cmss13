@@ -421,8 +421,8 @@ COMMAND STAFF
 		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_TRAINED,
 	)
 
-/datum/skills/RO
-	name = "Requisition Officer"
+/datum/skills/QM
+	name = "Quartermaster"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,

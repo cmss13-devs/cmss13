@@ -351,7 +351,7 @@
 	job_title = JOB_WO_CHIEF_REQUISITION
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "QM"
-	skills = /datum/skills/RO
+	skills = /datum/skills/QM
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"

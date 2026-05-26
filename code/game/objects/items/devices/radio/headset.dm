@@ -572,7 +572,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/qm
 	desc = "A headset used by the quartermaster for controlling their slave(s). Channels are as follows: :u - requisitions, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
-	name = "requisition officer radio headset"
+	name = "Quartermaster radio headset"
 	icon_state = "ro_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/qm)
 	frequency = REQ_FREQ

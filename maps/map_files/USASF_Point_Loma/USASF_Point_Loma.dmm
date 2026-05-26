@@ -8922,7 +8922,7 @@
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/east)
 "azX" = (
-/turf/closed/wall/huntership,
+/turf/closed/wall/huntership/dark,
 /area/point_loma/airbase/exterior/crash_site)
 "azY" = (
 /obj/structure/bed/bedroll{
@@ -161308,15 +161308,15 @@ jnx
 bRz
 bRz
 bRz
+azX
 atE
-atE
 aNI
 aNI
 aNI
 aNI
 aNI
-atE
-atE
+azX
+azX
 xPw
 jnx
 ayq
@@ -161490,7 +161490,7 @@ jnx
 bRz
 bRz
 bRz
-atE
+azX
 bRz
 aNI
 aNI
@@ -161498,7 +161498,7 @@ aNI
 aNI
 aNI
 aNI
-atE
+azX
 xPw
 wHR
 ayi
@@ -162764,7 +162764,7 @@ wHR
 lze
 lze
 aHR
-atE
+azX
 bRz
 aNI
 aNI
@@ -162772,7 +162772,7 @@ aNI
 aNI
 aNI
 aNI
-atE
+azX
 xPw
 jnx
 ayq
@@ -162946,15 +162946,15 @@ cUz
 cUz
 cUz
 jnx
-atE
-atE
+azX
+azX
 aNI
 aNI
 aNI
 aNI
 aNI
-atE
-atE
+azX
+azX
 xPw
 jnx
 ayq

@@ -55,6 +55,8 @@
 		security_map[security.fields["id"]] = security
 
 	for (var/datum/data/record/general in GLOB.data_core.general)
+		if (general.fields["rank"] == SYNTH_WORKING_JOE)
+			continue
 		var/id = general.fields["id"]
 		var/datum/data/record/security = security_map[id]
 

@@ -9,16 +9,16 @@
 	icon_off = "secureqmoff"
 
 /obj/structure/closet/secure_closet/cargo/Initialize()
-    . = ..()
-    new /obj/item/clothing/under/rank/cargo(src)
-    new /obj/item/clothing/shoes/brown(src)
-    new /obj/item/clothing/gloves/black(src)
-    new /obj/item/clothing/suit/fire/firefighter(src)
-    new /obj/item/tank/emergency_oxygen(src)
-    new /obj/item/clothing/mask/gas(src)
-    new /obj/item/clothing/glasses/meson(src)
-    new /obj/item/clothing/head/soft(src)
-    return
+	. = ..()
+	new /obj/item/clothing/under/rank/cargo(src)
+	new /obj/item/clothing/shoes/brown(src)
+	new /obj/item/clothing/gloves/black(src)
+	new /obj/item/clothing/suit/fire/firefighter(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/clothing/glasses/meson(src)
+	new /obj/item/clothing/head/soft(src)
+	return
 
 /obj/structure/closet/secure_closet/quartermaster_uscm
 	name = "Quartermaster's Locker"

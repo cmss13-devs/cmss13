@@ -306,15 +306,15 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_off = "secure_off_cargo"
 
 /obj/structure/closet/secure_closet/quartermaster/Initialize()
-    . = ..()
-    new /obj/item/device/radio/headset/almayer/mcom/qm(src)
-    new /obj/item/clothing/under/rank/qm_suit(src)
-    new /obj/item/clothing/shoes/marine(src)
-    new /obj/item/storage/belt/marine(src)
-    new /obj/item/clothing/head/cmcap/req(src)
-    new /obj/item/device/flashlight(src)
-    new /obj/item/storage/backpack/marine/satchel(src)
-    return
+	. = ..()
+	new /obj/item/device/radio/headset/almayer/mcom/qm(src)
+	new /obj/item/clothing/under/rank/qm_suit(src)
+	new /obj/item/clothing/shoes/marine(src)
+	new /obj/item/storage/belt/marine(src)
+	new /obj/item/clothing/head/cmcap/req(src)
+	new /obj/item/device/flashlight(src)
+	new /obj/item/storage/backpack/marine/satchel(src)
+	return
 
 /obj/structure/closet/secure_closet/cargotech
 	name = "Cargo Technician's Locker"

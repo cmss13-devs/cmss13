@@ -199,6 +199,9 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/maint/hull/upper/s_bow)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11697,18 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	dir = 1;
+	name = "\improper Brig Maintenance";
+	closeOtherId = "permastarboard"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "perma_lockdown";
+	name = "\improper Perma Lockdown Shutter"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/upper/s_bow)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -40840,6 +40855,13 @@
 	id = "Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
 	},
+/obj/item/device/motion_sensor/mp{
+	alert_message = "ALERT: Unauthorized movement detected in Execution Preperation Maintenance Hatch!";
+	pixel_x = 8;
+	pixel_y = -8;
+	area_based = 0;
+	anchored = 1
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/shipboard/brig/execution_storage)
 "bWk" = (
@@ -41519,6 +41541,16 @@
 	layer = 3.33;
 	pixel_x = 2
 	},
+/obj/structure/machinery/door_control{
+	pixel_x = -7;
+	pixel_y = 26;
+	name = "Maintenance Shutters";
+	id = "brigstairs";
+	req_access = list(3)
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 36
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/armory)
 "bXS" = (
@@ -41598,13 +41630,24 @@
 /area/almayer/squads/req)
 "bYb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	dir = 2;
-	name = "\improper Brig Maintenance"
+/obj/item/device/motion_sensor/mp{
+	alert_message = "ALERT: Unauthorized movement detected in Middeck Security Stairwell Entrance!";
+	pixel_x = 8;
+	anchored = 1;
+	pixel_y = 8;
+	area_based = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
+	},
+/obj/structure/machinery/door/airlock/almayer/security/reinforced{
+	dir = 2;
+	name = "\improper Brig Maintenance"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Brig Stairwell Shutters";
+	id = "brigstairs"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig)
@@ -43897,7 +43940,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	dir = 2;
-	name = "\improper Brig Maintenance"
+	name = "\improper Brig Maintenance";
+	closeOtherId = "permastarboard"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Brig Lockdown Shutters";
@@ -43906,6 +43950,13 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "perma_lockdown";
 	name = "\improper Perma Lockdown Shutter"
+	},
+/obj/item/device/motion_sensor/mp{
+	alert_message = "ALERT: Unauthorized movement detected in Starboard Perma Cells Maintenance Hatch!";
+	pixel_x = 8;
+	pixel_y = 8;
+	anchored = 1;
+	area_based = 0
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/perma)
@@ -43927,7 +43978,6 @@
 /area/almayer/shipboard/brig)
 "ccZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	closeOtherId = "briglobby";
 	dir = 2;
 	name = "\improper Offices and Secondary Cells"
 	},
@@ -47386,13 +47436,21 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/engineering/upper_engineering/port)
 "dbs" = (
-/obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	dir = 2;
-	name = "\improper Brig Maintenance"
+/obj/item/device/motion_sensor/mp{
+	alert_message = "ALERT: Unauthorized movement detected in Port Perma Cells Maintenance Hatch!";
+	pixel_x = 8;
+	pixel_y = -8;
+	anchored = 1;
+	area_based = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "perma_lockdown";
 	name = "\improper Perma Lockdown Shutter"
+	},
+/obj/structure/machinery/door/airlock/almayer/security/reinforced{
+	dir = 2;
+	name = "\improper Brig Maintenance";
+	closeOtherId = "permaport"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/perma)
@@ -57111,7 +57169,6 @@
 /area/almayer/underdeck/vehicle)
 "hoK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	closeOtherId = "briglobby";
 	dir = 2;
 	name = "\improper Brig Equipment"
 	},
@@ -72183,7 +72240,8 @@
 "nNg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
-	dir = 8
+	dir = 8;
+	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/silver/southeast,
@@ -73173,7 +73231,8 @@
 "ohu" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Brig Maintenance"
+	name = "\improper Brig Maintenance";
+	closeOtherId = "permaport"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Brig Lockdown Shutters";
@@ -194748,7 +194807,7 @@ uDg
 cth
 cth
 cer
-xkc
+aaD
 gkr
 xkc
 xkc
@@ -194851,7 +194910,7 @@ uDg
 gkr
 xkc
 xkc
-gkr
+aDL
 cYo
 gkr
 gkr

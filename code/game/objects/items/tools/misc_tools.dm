@@ -500,9 +500,9 @@
 	name = "CMB rubber stamp"
 	icon_state = "stamp-cmb"
 
-/obj/item/tool/stamp/ro
+/obj/item/tool/stamp/qm
 	name = "quartermaster's rubber stamp"
-	icon_state = "stamp-ro"
+	icon_state = "stamp-qm"
 
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet
 	name = "carpenter's hammer"

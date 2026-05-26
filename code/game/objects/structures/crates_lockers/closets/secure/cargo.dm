@@ -37,7 +37,7 @@
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/gloves/yellow(src)
 	new /obj/item/device/flashlight(src)
-	new /obj/item/tool/stamp/ro(src)
+	new /obj/item/tool/stamp/qm(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/device/megaphone(src)

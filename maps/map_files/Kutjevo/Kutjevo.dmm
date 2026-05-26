@@ -1822,6 +1822,14 @@
 "agU" = (
 /turf/open_space,
 /area/sky/level4)
+"agV" = (
+/obj/effect/landmark/spore_sac_rng/ten,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/spring)
+"agW" = (
+/obj/effect/landmark/spore_sac_rng/ten,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/spring)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -45579,7 +45587,7 @@ dxF
 skx
 uzJ
 skx
-skx
+agW
 iNI
 iNI
 fdH
@@ -46254,7 +46262,7 @@ eVR
 mct
 hET
 ewl
-iNI
+agV
 skx
 oQb
 kgx
@@ -46912,8 +46920,8 @@ dxF
 dxF
 vhC
 uzJ
-skx
-iNI
+agW
+agV
 xuN
 ebv
 mNv
@@ -47253,7 +47261,7 @@ iNI
 iNI
 iNI
 iNI
-iNI
+agV
 iNI
 skx
 uzJ

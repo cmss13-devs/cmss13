@@ -1851,6 +1851,10 @@
 "ahf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
+"ahg" = (
+/obj/effect/landmark/spore_sac_rng/ten,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -1864,6 +1868,10 @@
 /obj/item/attachable/suppressor,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
+"ahj" = (
+/obj/effect/landmark/spore_sac_rng/ten,
+/turf/open/floor/cult,
+/area/lv624/ground/caves/south_west_caves)
 "ahk" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1
@@ -1886,6 +1894,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
+"ahn" = (
+/obj/effect/landmark/spore_sac_rng/ten,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_west_caves)
 "ahr" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/gm/dirt,
@@ -23495,14 +23507,14 @@ esp
 nBh
 nBh
 nBh
-nBh
+ahj
 nBh
 nBh
 eVH
 nBh
 nBh
 nBh
-nBh
+ahj
 nBh
 nBh
 nBh
@@ -25293,14 +25305,14 @@ ahF
 ahF
 ahF
 ahF
-ahF
+ahg
 ahF
 ahF
 fDT
 ahF
 ahF
 ahF
-ahF
+ahg
 ahF
 ahF
 ane
@@ -26854,7 +26866,7 @@ ane
 ane
 ahF
 ahF
-ahF
+ahg
 doe
 pIl
 eZg
@@ -27310,7 +27322,7 @@ qSS
 pIl
 dWM
 fmW
-fmW
+ahn
 fmW
 fmW
 sAI

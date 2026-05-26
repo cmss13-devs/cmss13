@@ -21723,6 +21723,14 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
+"bpl" = (
+/obj/effect/landmark/spore_sac_rng/twenty,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bpm" = (
+/obj/effect/landmark/spore_sac_rng/twenty,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/west_caves)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -92857,7 +92865,7 @@ rfS
 aZa
 acl
 acl
-acl
+bpl
 aEp
 aem
 rfS
@@ -94968,7 +94976,7 @@ acl
 acl
 acl
 acl
-acl
+bpl
 acl
 acl
 aEn
@@ -95189,7 +95197,7 @@ rfS
 rfS
 rfS
 aem
-aem
+bpm
 aEy
 acl
 acl
@@ -95218,7 +95226,7 @@ acl
 acl
 acl
 aYW
-acl
+bpl
 acl
 aEp
 aem
@@ -99190,7 +99198,7 @@ rfS
 rfS
 acl
 acl
-acl
+bpl
 acl
 acl
 aEw

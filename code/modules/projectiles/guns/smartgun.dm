@@ -1024,7 +1024,7 @@
 
 		In the aftermath of their "victory", there was a significant amount of unrecovered gear, which the Front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplaries. These were then placed into a makeshift frame of primitive and rudimentary make, due to there being no detailed schematics or resources at hand. After that, it was issued out as a desperate measure of giving an equal fire-support weapon to it's troops.
 
-		After studies done on this frankenstein of a weapon by the USCM, it reportedly was made using parts from the slightly outdated M560. As  an unintentioned flaw, it jams constantly- requiring extensive and frequent maintenance, to the point of near-unreliability. The M560's barrel seems to be blamed for this. The M57 and L56A2 were also scrapped for spare-parts for the body, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells. All in all... it's a miracle this gun even works."}
+		After studies done on this frankenstein of a weapon by the USCM, it reportedly was made using parts from the slightly outdated M560. As an unintentional flaw, it jams constantly- requiring extensive and frequent maintenance, to the point of near-unreliability. The M560's barrel seems to be blamed for this. The M57 and L56A2 were also scrapped for spare-parts for the body, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells. All in all... it's a miracle this gun even works."}
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"

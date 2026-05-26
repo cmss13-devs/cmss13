@@ -64,6 +64,12 @@
 		zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask)
 		zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
+	if(zombie.back)
+		zombie.drop_inv_item_on_ground(zombie.back, FALSE, TRUE)
+	if(zombie.wear_l_ear)
+		zombie.drop_inv_item_on_ground(zombie.wear_l_ear, FALSE, TRUE)
+	if(zombie.wear_r_ear)
+		zombie.drop_inv_item_on_ground(zombie.wear_r_ear, FALSE, TRUE)
 
 	var/obj/item/weapon/zombie_claws/no_infect/pathogen/ZC = new(zombie)
 	ZC.icon_state = "claw_r"

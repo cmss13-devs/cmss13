@@ -26727,6 +26727,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
+"byx" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/predship/tile/red5,
+/area/point_loma/research_facility/crash_site)
 "byz" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva/red,
@@ -111876,9 +111880,9 @@ aFk
 bqf
 bqw
 bqw
-bqw
-bqw
-bqw
+byx
+byx
+byx
 bqw
 bqw
 bqw

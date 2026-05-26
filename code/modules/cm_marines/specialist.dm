@@ -111,7 +111,7 @@
 	redeemer.hud_set_squad()
 	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
-		var/assignment_name = "[role_name] Specialist"
+		var/assignment_name = role_name
 		idcard.set_assignment("[redeemer.assigned_squad ? redeemer.assigned_squad : ""] [assignment_name]")
 		redeemer.role_title_override = assignment_name
 		idcard.minimap_icon_override = rank_icon
@@ -145,7 +145,7 @@
 
 /datum/specialist_set/sadar
 	name = "Demolitionist Set"
-	role_name = "Demo"
+	role_name = JOB_SQUAD_SPECIALIST_DEMO
 	skill_to_give = SKILL_SPEC_ROCKET
 	trait_to_give = "demo"
 	rank_icon = "spec_demo"
@@ -162,7 +162,7 @@
 
 /datum/specialist_set/scout
 	name = "Scout Set"
-	role_name = "Scout"
+	role_name = JOB_SQUAD_SPECIALIST_SCOUT
 	skill_to_give = SKILL_SPEC_SCOUT
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
@@ -178,7 +178,7 @@
 
 /datum/specialist_set/sniper
 	name = "Sniper Set"
-	role_name = "Sniper"
+	role_name = JOB_SQUAD_SPECIALIST_SNIPER
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "sniper"
 	rank_icon = "spec_sniper"
@@ -189,7 +189,7 @@
 
 /datum/specialist_set/anti_mat_sniper
 	name = "Anti-Materiel Sniper Set"
-	role_name = "Heavy Sniper"
+	role_name = JOB_SQUAD_SPECIALIST_HEAVY_SNIPER
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "antimat_sniper"
 	rank_icon = "spec_sniper"
@@ -200,7 +200,7 @@
 
 /datum/specialist_set/grenadier
 	name = "Heavy Grenadier Set"
-	role_name = "Grenadier"
+	role_name = JOB_SQUAD_SPECIALIST_GRENADIER
 	skill_to_give = SKILL_SPEC_GRENADIER
 	trait_to_give = "grenadier"
 	rank_icon = "spec_grenadier"
@@ -211,7 +211,7 @@
 
 /datum/specialist_set/sharp_operator
 	name = "SHARP Operator Set"
-	role_name = "SHARP"
+	role_name = JOB_SQUAD_SPECIALIST_SHARP
 	skill_to_give = SKILL_SPEC_GRENADIER
 	rank_icon = "spec_sharp"
 	kit_typepath = /obj/item/storage/box/spec/sharp_operator
@@ -221,7 +221,7 @@
 
 /datum/specialist_set/pyro
 	name = "Pyro Set"
-	role_name = "Pyro"
+	role_name = JOB_SQUAD_SPECIALIST_PYRO
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
 	rank_icon = "spec_pyro"
@@ -229,7 +229,7 @@
 
 /datum/specialist_set/heavy
 	name = "Heavy Armor Set"
-	role_name = "Heavy"
+	role_name = JOB_SQUAD_SPECIALIST_HEAVY
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
 	rank_icon = "spec_heavy"

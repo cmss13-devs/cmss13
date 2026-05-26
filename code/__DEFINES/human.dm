@@ -222,3 +222,20 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 5
+
+//--- body 'cosmetic' stuff ---//
+
+#define BODY_TYPE_NOMUSCLE "No Muscles"
+/// default body type
+#define BODY_TYPE_LEAN "Lean"
+#define BODY_TYPE_RIPPED "Ripped"
+
+#define BODY_SIZE_THIN "Thin"
+/// default body size
+#define BODY_SIZE_AVERAGE "Average"
+#define BODY_SIZE_LARGE "Large"
+
+/// default skin color
+#define SKIN_COLOR_PALE2 "Pale 2"
+
+//--- end ---//

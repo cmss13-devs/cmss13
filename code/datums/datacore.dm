@@ -171,73 +171,59 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	locked += record_locked
 
 
-/proc/get_id_photo(mob/living/carbon/human/H)
+/proc/get_id_photo(mob/living/carbon/human/camera_subject)
 	var/icon/preview_icon = null
 
 	//var/g = "m"
-	//if (H.gender == FEMALE)
+	//if (camera_subject.gender == FEMALE)
 	// g = "f"
 
-	var/icon/icobase = H.species.icobase
+	var/icon/icobase = camera_subject.species.icobase
 	var/icon/temp
 
-	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
-	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
-	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[camera_subject.skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	var/skin_color_icon = set_skin_color?.icon_name
 
-	var/skin_color_icon
-	var/body_type_icon
-	var/body_size_icon
+	var/datum/body_type/set_body_type = GLOB.body_type_list[camera_subject.body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	var/body_type_icon = set_body_type?.icon_name
 
-	if(!set_skin_color)
-		skin_color_icon = "pale2"
-	else
-		skin_color_icon = set_skin_color.icon_name
+	var/datum/body_size/set_body_size = GLOB.body_size_list[camera_subject.body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	var/body_size_icon = set_body_size?.icon_name
 
-	if(!set_body_type)
-		body_type_icon = "lean"
-	else
-		body_type_icon = set_body_type.icon_name
-
-	if(!set_body_size)
-		body_size_icon = "avg"
-	else
-		body_size_icon = set_body_size.icon_name
-
-	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "torso", skin_color_icon))
-	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "groin", skin_color_icon))
+	preview_icon = new /icon(icobase, get_limb_icon_name(camera_subject.species, body_size_icon, body_type_icon, camera_subject.gender, "torso", skin_color_icon))
+	temp = new /icon(icobase, get_limb_icon_name(camera_subject.species, body_size_icon, body_type_icon, camera_subject.gender, "groin", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
-	temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, "head", skin_color_icon))
+	temp = new /icon(icobase, get_limb_icon_name(camera_subject.species, body_size_icon, body_type_icon, camera_subject.gender, "head", skin_color_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
-	for(var/obj/limb/E in H.limbs)
-		if(E.status & LIMB_DESTROYED)
+	for(var/obj/limb/subject_limbs in camera_subject.limbs)
+		if(subject_limbs.status & LIMB_DESTROYED)
 			continue
-		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
-		if(E.status & LIMB_ROBOT)
+		temp = new /icon(icobase, get_limb_icon_name(camera_subject.species, body_size_icon, body_type_icon, camera_subject.gender, subject_limbs.name, skin_color_icon))
+		if(subject_limbs.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 	//Tail
-	if(H.species.tail)
-		temp = new/icon("icon" = H.species.icobase, "icon_state" = "[H.species.tail]_s")
+	if(camera_subject.species.tail)
+		temp = new/icon("icon" = camera_subject.species.icobase, "icon_state" = "[camera_subject.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 
-	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
+	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = camera_subject.species ? camera_subject.species.eyes : "eyes_s")
 
-	eyes_s.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
+	eyes_s.Blend(rgb(camera_subject.r_eyes, camera_subject.g_eyes, camera_subject.b_eyes), ICON_ADD)
 
-	var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[H.h_style]
+	var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[camera_subject.h_style]
 	if(hair_style)
 		var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-		hair_s.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
+		hair_s.Blend(rgb(camera_subject.r_hair, camera_subject.g_hair, camera_subject.b_hair), ICON_ADD)
 		eyes_s.Blend(hair_s, ICON_OVERLAY)
 
-	var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[H.f_style]
+	var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[camera_subject.f_style]
 	if(facial_hair_style)
 		var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-		facial_s.Blend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
+		facial_s.Blend(rgb(camera_subject.r_facial, camera_subject.g_facial, camera_subject.b_facial), ICON_ADD)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null

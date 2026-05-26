@@ -121,16 +121,17 @@ Verbs related to getting fucking jacked, bro
 
 	// kinda like the chemical spectrum lol
 	var/type_index = GLOB.body_type_spectrum.Find(body_type)
-	var/type_base = GLOB.body_type_spectrum.Find("No Muscles")
+	var/type_base = GLOB.body_type_spectrum.Find(BODY_TYPE_NOMUSCLE)
 	if(type_index && type_base)
 		stamina_loss -= (type_index - type_base) * 0.5
 
 	var/size_index = GLOB.body_size_spectrum.Find(body_size)
-	var/size_base = GLOB.body_size_spectrum.Find("Average")
+	var/size_base = GLOB.body_size_spectrum.Find(BODY_SIZE_AVERAGE)
 	if(size_index && size_base)
 		stamina_loss += (size_index - size_base) * 1
 
 	//tldr, no stamina modifiers if youre a regular old schmoe
+	// also for preds, the above would just return 0 and the rest of the calculations will run as normal
 
 	// lore accuracy
 	if(origin == ORIGIN_USCM_AW)

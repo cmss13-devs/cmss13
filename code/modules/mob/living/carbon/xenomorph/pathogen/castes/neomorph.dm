@@ -23,6 +23,7 @@
 	evolves_to = list(PATHOGEN_CREATURE_CONDITOR, PATHOGEN_CREATURE_BRUTE)
 
 	heal_resting = 1
+	max_build_dist = 1
 
 	minimap_icon = "neomorph"
 

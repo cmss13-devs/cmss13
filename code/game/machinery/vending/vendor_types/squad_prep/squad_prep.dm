@@ -430,7 +430,6 @@
 
 	listed_products = list(
 		list("ATTACHMENTS", -1, null, null),
-		list("Barrel Charger", 1, /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 1, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 3, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 		list("Suppressor, Compact", 3, /obj/item/attachable/suppressor/sleek, VENDOR_ITEM_REGULAR),

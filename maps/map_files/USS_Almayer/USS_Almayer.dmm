@@ -16298,9 +16298,9 @@
 "aQy" = (
 /obj/structure/transmitter{
 	dir = 8;
-	name = "RO Office Telephone";
+	name = "QM Office Telephone";
 	phone_category = "Offices";
-	phone_id = "RO Office";
+	phone_id = "QM Office";
 	pixel_x = 16
 	},
 /turf/open/floor/almayer/green/east,

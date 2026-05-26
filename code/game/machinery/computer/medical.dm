@@ -220,7 +220,6 @@
 
 /obj/structure/machinery/computer/med_data/ui_data(mob/user)
 	. = ..()
-
 	// Map medical records via id
 	var/list/records = list()
 	var/list/medical_record = list()
@@ -228,6 +227,8 @@
 		medical_record[medical.fields["id"]] = medical
 
 	for (var/datum/data/record/general in GLOB.data_core.general)
+		if(!is_record_visible(general))
+			continue
 		var/id_number = general.fields["id"]
 		var/datum/data/record/medical = medical_record[id_number]
 

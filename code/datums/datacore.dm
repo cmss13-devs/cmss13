@@ -250,3 +250,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	qdel(clothes_s)
 
 	return preview_icon
+
+//remove joes from medical and sec records; leaving open as a list
+//in case someone comes up with others who should be excluded
+/proc/is_record_visible(datum/data/record/console_record)
+	if(!console_record)
+		return FALSE
+	var/static/list/hidden_ranks = list(
+		SYNTH_WORKING_JOE
+	)
+	return !(console_record.fields["rank"] in hidden_ranks)

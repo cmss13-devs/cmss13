@@ -49,17 +49,15 @@
 	.["scanner"] = scanner_status
 
 	// Map security records via id
-	var/list/records = list()
 	var/list/security_map = list()
 	for (var/datum/data/record/security in GLOB.data_core.security)
 		security_map[security.fields["id"]] = security
-
+	var/list/records = list()
 	for (var/datum/data/record/general in GLOB.data_core.general)
-		if (general.fields["rank"] == SYNTH_WORKING_JOE)
+		if(!is_record_visible(general))
 			continue
 		var/id = general.fields["id"]
 		var/datum/data/record/security = security_map[id]
-
 		var/list/record = list(
 			"id" = id,
 			"general_name" = general.fields["name"],

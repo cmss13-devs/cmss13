@@ -571,6 +571,7 @@ const yautjaSplitter = (members: Array<Observable>) => {
 const ObservableContent = () => {
   const { data } = useBackend<OrbitData>();
   const {
+    special_mobs = [],
     humans = [],
     responders = [],
     marines = [],
@@ -603,6 +604,11 @@ const ObservableContent = () => {
 
   return (
     <Stack vertical>
+      <ObservableSection
+        color="xeno"
+        section={special_mobs}
+        title="Special Mobs"
+      />
       <GroupedObservable
         color="blue"
         section={marines}

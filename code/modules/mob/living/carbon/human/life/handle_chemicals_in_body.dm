@@ -48,6 +48,9 @@
 			has_cryo_medicine = FALSE
 
 	for(var/datum/reagent/cur_reagent in reagents.reagent_list)
+		if(!has_cryo_medicine && !istype(cur_reagent, /datum/reagent/generated) && !istype(cur_reagent, /datum/reagent/borer))
+			continue
+
 		var/list/mods = list( REAGENT_EFFECT = TRUE,
 								REAGENT_BOOST = FALSE,
 								REAGENT_PURGE = FALSE,
@@ -75,4 +78,4 @@
 			cur_reagent.holder.remove_reagent(cur_reagent.id, cur_reagent.custom_metabolism * delta_time)
 
 		cur_reagent.handle_dead_processing(src, mods, delta_time)
-		return TRUE
+	return TRUE

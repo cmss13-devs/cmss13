@@ -29,7 +29,7 @@
 		return
 
 	M.transfer_to(H, TRUE)
-
+	to_chat(H, SPAN_ALERT("[objectives]"))
 	players_to_offer -= H
 
 	return

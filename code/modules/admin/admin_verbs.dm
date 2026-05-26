@@ -146,6 +146,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/get_whitelisted_clients,
 	/client/proc/modifiers_panel,
 	/client/proc/setup_delayed_event_spawns,
+	/client/proc/borer_broadcast,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(

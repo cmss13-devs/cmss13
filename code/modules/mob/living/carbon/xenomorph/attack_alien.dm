@@ -59,7 +59,7 @@
 			if(attacking_xeno.behavior_delegate && attacking_xeno.behavior_delegate.handle_slash(src))
 				return XENO_NO_DELAY_ACTION
 
-			if(stat == DEAD)
+			if(stat == DEAD || (status_flags & FAKEDEATH))
 				to_chat(attacking_xeno, SPAN_WARNING("[src] is dead, why would we want to touch it?"))
 				return XENO_NO_DELAY_ACTION
 
@@ -323,14 +323,14 @@
 	xeno.animation_attack_on(src)
 
 /mob/living/proc/is_xeno_grabbable()
-	if(stat == DEAD)
+	if(stat == DEAD || (status_flags & FAKEDEATH))
 		return FALSE
 	if(status_flags & INCORPOREAL)
 		return FALSE
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD)
+	if(((stat != DEAD) && !(status_flags & FAKEDEATH)) || chestburst)
 		return TRUE
 
 	if(status_flags & XENO_HOST)

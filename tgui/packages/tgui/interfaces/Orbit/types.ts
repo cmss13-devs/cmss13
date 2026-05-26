@@ -2,6 +2,7 @@ import type { BooleanLike } from 'common/react';
 
 export type OrbitData = {
   auto_observe: BooleanLike;
+  special_mobs: Observable[];
   humans: Observable[];
   marines: Observable[];
   survivors: Observable[];

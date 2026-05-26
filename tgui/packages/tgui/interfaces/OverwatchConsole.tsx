@@ -236,7 +236,7 @@ const MainDashboard = (props) => {
       <Box textAlign="center">
         <Button
           inline
-          width="23%"
+          width="48%"
           icon="envelope"
           onClick={() => act('set_primary')}
         >
@@ -245,7 +245,7 @@ const MainDashboard = (props) => {
         {primary_objective && (
           <Button
             inline
-            width="23%"
+            width="48%"
             icon="person"
             onClick={() => act('remind_primary')}
           >
@@ -254,7 +254,7 @@ const MainDashboard = (props) => {
         )}
         <Button
           inline
-          width="23%"
+          width="48%"
           icon="envelope"
           onClick={() => act('set_secondary')}
         >
@@ -263,7 +263,7 @@ const MainDashboard = (props) => {
         {secondary_objective && (
           <Button
             inline
-            width="23%"
+            width="48%"
             icon="person"
             onClick={() => act('remind_secondary')}
           >
@@ -299,10 +299,26 @@ const MainDashboard = (props) => {
           <Box textAlign="center" mb={1} fontSize="12px">
             {data.clarity_status}
           </Box>
-          <ProgressBar
-            value={data.radio_clarity / 100}
-            color={data.clarity_color || 'red'}
-            height="18px"/>
+          <Box
+            style={{
+            width: '100%',
+            height: '18px',
+            backgroundColor: 'black',
+            border: '1px solid rgba(255,255,255,0.2)',
+            marginBottom: '4px'
+            }}
+          >
+          <Box
+            style={{
+            width: Number(data.radio_clarity) + '%',
+            height: "100%",
+            minHeight: '18px',
+            backgroundColor: data.clarity_color || 'red'
+            }}
+          >
+            &nbsp;
+          </Box>
+          </Box>
           <Box textAlign="center" mt={0.5} bold color="white">
             {data.radio_clarity}%
           </Box>

@@ -448,6 +448,13 @@
 		list("M276 Pattern General Revolver Holster Rig", 8, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 G8-A General Utility Pouch", 8, /obj/item/storage/backpack/general_belt, VENDOR_ITEM_RECOMMENDED),
 
+		list("POUCHES", -1, null, null),
+		list("Small Document Pouch", 8, /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
+		list("Magazine Pouch", 8, /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Pouch", 8, /obj/item/storage/pouch/shotgun, VENDOR_ITEM_REGULAR),
+		list("Medium General Pouch", 8, /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
+		list("Pistol Magazine Pouch", 8, /obj/item/storage/pouch/magazine/pistol, VENDOR_ITEM_REGULAR),
+
 		list("STANDARD EQUIPMENT", -1, null, null, null),
 		list("Marine Combat Boots", 8, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Marine Brown Combat Boots", 8, /obj/item/clothing/shoes/marine/brown, VENDOR_ITEM_REGULAR),

@@ -34365,12 +34365,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/command)
-"ceO" = (
-/obj/structure/machinery/m56d_hmg{
-	dir = 8
-	},
-/turf/open/floor/plating/platingdmg1,
-/area/point_loma/research_facility/crash_site)
 "ceP" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
@@ -112418,7 +112412,7 @@ brp
 brp
 brp
 bJE
-ceO
+bJE
 aFk
 bqf
 bJE

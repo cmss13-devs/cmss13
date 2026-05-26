@@ -38183,6 +38183,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/shipboard/brig/medical)
 "bPI" = (
@@ -43484,6 +43485,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
 "cbT" = (
@@ -43534,6 +43536,9 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
@@ -72755,6 +72760,9 @@
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
 	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
 "nVX" = (
@@ -77405,6 +77413,9 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
@@ -83346,6 +83357,9 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
@@ -94481,6 +94495,7 @@
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
 	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
 "wSn" = (

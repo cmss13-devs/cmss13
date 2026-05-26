@@ -285,10 +285,10 @@ const MainDashboard = (props) => {
                   REMIND SECONDARY
                   </Button>
                 )}
-              </Stack>
-            </Table.Cell>
+            </Stack>
+          </Table.Cell>
           </Table.Row>
-        <Table.Row style={{ border: 'none', background: 'none' }}>
+          <Table.Row style={{ border: 'none', background: 'none' }}>
           <Table.Cell width="50%" style={{ border: 'none' }} textAlign="right">
             <Button
                 inline
@@ -302,17 +302,17 @@ const MainDashboard = (props) => {
             </Button>
           </Table.Cell>
           <Table.Cell width="50%" style={{ border: 'none' }} textAlign="left">
-              <Button
-                inline
-                mt={0.5}
-                width="65%"
-                icon="envelope"
-                style={{ textAlign: 'Center' }}
-                onClick={() => act('sl_message')}
-                >
-                MESSAGE SQUAD LEADER
-              </Button>
-            </Table.Cell>
+            <Button
+              inline
+              mt={0.5}
+              width="65%"
+              icon="envelope"
+              style={{ textAlign: 'Center' }}
+              onClick={() => act('sl_message')}
+              >
+              MESSAGE SQUAD LEADER
+            </Button>
+          </Table.Cell>
           </Table.Row>
         </Table>
       </Stack.Item>
@@ -334,9 +334,9 @@ const MainDashboard = (props) => {
             <Box textAlign="center" mt={0.5} bold color="white">
             {data.radio_clarity}%
             </Box>
-          </Box>
-        </Stack.Item>
-      </Stack>
+        </Box>
+      </Stack.Item>
+    </Stack>
     </Section>
   );
 };

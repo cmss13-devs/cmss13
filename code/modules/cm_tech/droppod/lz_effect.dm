@@ -38,3 +38,7 @@
 /obj/effect/warning/explosive/gas
 	name = "gas warning"
 	color = "#42acd6"
+
+/obj/effect/warning/yautja_leap
+	name = "leap warning"
+	color = "#0b5226"

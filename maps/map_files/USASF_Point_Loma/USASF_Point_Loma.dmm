@@ -4132,6 +4132,12 @@
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/shiva/blue/northwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"amJ" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/stone/soro_colorable_immune/loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
 "amK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/prop/magazine/book/spacebeast{
@@ -4915,6 +4921,12 @@
 /obj/item/tool/wrench,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"aoU" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/east,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/stone/soro_colorable_immune/loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
 "aoV" = (
 /obj/item/shard{
 	pixel_x = 8
@@ -4952,6 +4964,11 @@
 	},
 /turf/open/floor/corsat/greenwhite,
 /area/point_loma/research_facility/medical)
+"apc" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/stone/soro_colorable_immune/loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
 "apd" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -1
@@ -13800,6 +13817,11 @@
 	},
 /turf/open/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
+"aNC" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/west,
+/obj/structure/platform/stone/soro_colorable_immune/loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
 "aND" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
@@ -14398,7 +14420,7 @@
 "aPB" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "aPC" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -26628,6 +26650,20 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/slippery/hull/dir/northeast,
 /area/point_loma/oob/sky)
+"byj" = (
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byk" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/east,
+/obj/structure/platform/stone/soro_colorable_immune/loma/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byl" = (
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
 "bym" = (
 /obj/item/tool/pickaxe/jackhammer,
 /obj/structure/surface/rack,
@@ -26636,6 +26672,29 @@
 	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"byn" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/north,
+/obj/structure/platform/stone/soro_colorable_immune/loma/west,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byo" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byp" = (
+/obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byq" = (
+/obj/structure/platform/stone/soro_colorable_immune/loma/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/airbase/cave/opening)
+"byr" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bys" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 8
@@ -26643,6 +26702,10 @@
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"byt" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "byu" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal2"
@@ -35261,25 +35324,25 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciG" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciH" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciI" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciJ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/fifteen,
@@ -35289,7 +35352,7 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciL" = (
 /obj/effect/stairs/down,
@@ -35300,7 +35363,7 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciN" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/fourteen,
@@ -35309,14 +35372,14 @@
 "ciO" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciP" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciQ" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
@@ -35329,13 +35392,13 @@
 "ciU" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciV" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciW" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/east,
@@ -35344,12 +35407,12 @@
 "ciX" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciY" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "ciZ" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/fifteen,
@@ -35359,14 +35422,14 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cjb" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform/stone/soro_colorable_immune/loma/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cjc" = (
 /obj/effect/stairs/down,
@@ -35376,14 +35439,14 @@
 "cjd" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cje" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/west,
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cjf" = (
 /obj/structure/flora/grass/colorable/point_loma/light/seven,
@@ -41734,13 +41797,13 @@
 "cHi" = (
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cHj" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/north,
 /obj/structure/platform_decoration/stone/soro_colorable_immune/loma/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open_space,
+/turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/opening)
 "cHl" = (
 /obj/structure/barricade/sandbags{
@@ -150072,7 +150135,7 @@ bPl
 bPl
 bPl
 ciV
-cEi
+amJ
 bPl
 bPl
 bPl
@@ -150252,9 +150315,9 @@ bPl
 bPl
 bPl
 bPl
-anY
-ciW
-cHh
+byn
+byl
+apc
 bPl
 bPl
 bPl
@@ -150435,9 +150498,9 @@ aeX
 aeX
 aeX
 ciX
-ciT
+byj
 cHi
-cEi
+amJ
 bPl
 bPl
 bPl
@@ -150618,8 +150681,8 @@ aeX
 cjc
 aeX
 ciX
-ciT
-cHh
+byj
+apc
 bPl
 bPl
 bPl
@@ -150796,12 +150859,12 @@ bPl
 bPl
 bPl
 cHj
-aNR
+aNC
 aeX
 aeX
 aeX
 aPB
-cHg
+aoU
 bPl
 bPl
 aeX
@@ -150977,9 +151040,9 @@ bPl
 bPl
 ciB
 bPl
-aLV
-aVH
-aNR
+byq
+byp
+aNC
 aeX
 aeX
 aeX
@@ -151159,9 +151222,9 @@ bPl
 bPl
 bPl
 cwe
-cHe
-ciT
-aMz
+byk
+byj
+byo
 aeX
 aeX
 aeX
@@ -151342,7 +151405,7 @@ bPl
 bPl
 bPl
 bPl
-aLV
+byq
 cjd
 cja
 aeX
@@ -151524,7 +151587,7 @@ bPl
 bPl
 bPl
 bPl
-cHe
+byk
 cje
 aeX
 aeX
@@ -152074,7 +152137,7 @@ aeX
 aeX
 cjb
 ciY
-aNR
+aNC
 aeX
 aeX
 aeX
@@ -152255,13 +152318,13 @@ aeX
 asb
 bPl
 bPl
-cHe
+byk
 ciU
-aNR
+aNC
 aeX
 aeX
 ciI
-cEi
+amJ
 bPl
 bPl
 bPl
@@ -152438,12 +152501,12 @@ asb
 bPl
 bPl
 bPl
-cHe
+byk
 ciO
 aeX
 aeX
 aPB
-cHg
+aoU
 bPl
 cwe
 bPl
@@ -164757,7 +164820,7 @@ aZC
 aZC
 aZC
 aZC
-aZC
+byt
 aZC
 aZC
 aZC
@@ -164940,7 +165003,7 @@ aZC
 aZC
 aZC
 aZC
-aZC
+byr
 aZC
 aZC
 aZC

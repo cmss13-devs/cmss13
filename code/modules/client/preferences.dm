@@ -1812,10 +1812,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("gender")
 					if(gender == MALE)
 						gender = FEMALE
+						gender_voice = FEMALE
 					else if(gender == FEMALE)
 						gender = PLURAL
 					else
 						gender = MALE
+						gender_voice = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 
@@ -2158,7 +2160,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	character.age = age
 	character.gender = gender
-	character.gender_voice = gender_voice
+	if(gender == PLURAL)
+		character.gender_voice = gender_voice
+	else
+		character.gender_voice = gender
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
@@ -2240,7 +2245,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	character.age = age
 	character.gender = gender
-	character.gender_voice = gender_voice
+	if(gender == PLURAL)
+		character.gender_voice = gender_voice
+	else
+		character.gender_voice = gender
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size

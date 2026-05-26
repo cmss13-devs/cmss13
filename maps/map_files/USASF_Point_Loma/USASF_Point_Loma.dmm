@@ -4132,12 +4132,6 @@
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/shiva/blue/northwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
-"amJ" = (
-/obj/structure/stairs/multiz/rock/up{
-	dir = 4
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/crash_site)
 "amK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/prop/magazine/book/spacebeast{
@@ -4822,16 +4816,13 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/point_loma/oob/sky)
 "aoF" = (
-/obj/structure/stairs/multiz/rock{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/point_loma/oob/sky)
 "aoG" = (
 /obj/structure/stairs/multiz/rock/down{
 	dir = 4
 	},
-/turf/open/new_varadero/dock_concrete,
+/turf/open/walkable_lattice,
 /area/point_loma/oob/sky)
 "aoH" = (
 /obj/structure/surface/rack,
@@ -4924,12 +4915,6 @@
 /obj/item/tool/wrench,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/interior/engineering)
-"aoU" = (
-/obj/structure/stairs/multiz/rock/down{
-	dir = 5
-	},
-/turf/open/new_varadero/dock_concrete,
-/area/point_loma/oob/sky)
 "aoV" = (
 /obj/item/shard{
 	pixel_x = 8
@@ -4967,10 +4952,6 @@
 	},
 /turf/open/floor/corsat/greenwhite,
 /area/point_loma/research_facility/medical)
-"apc" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/walkable_lattice,
-/area/point_loma/oob/sky)
 "apd" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -1
@@ -13818,10 +13799,6 @@
 	pixel_x = 1
 	},
 /turf/open/predship/tile/red2,
-/area/point_loma/airbase/exterior/crash_site)
-"aNC" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "aND" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
@@ -25531,6 +25508,15 @@
 /obj/effect/landmark/corpsespawner/yautja,
 /turf/open/predship/red_glow/on,
 /area/point_loma/oob/sky)
+"buW" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"buX" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "buY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/sliceable/orangecake{
@@ -25551,6 +25537,10 @@
 /obj/structure/machinery/microwave,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"bva" = (
+/obj/structure/girder,
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/airbase/exterior/crash_site)
 "bvb" = (
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/shiva/yellow/north,
@@ -25616,6 +25606,44 @@
 	},
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bvi" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 2;
+	pixel_y = 11
+	},
+/obj/item/clothing/head/hardhat{
+	pixel_x = 10;
+	pixel_y = 1
+	},
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/greenbandana,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvj" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvk" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvl" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 4
+	},
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/airbase/exterior/crash_site)
+"bvm" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bvn" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -25633,6 +25661,12 @@
 /obj/structure/prop/static_tank/fuel,
 /turf/open/hybrisa/street,
 /area/point_loma/airbase/exterior/east)
+"bvr" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 5
+	},
+/turf/open/floor/plating/panelscorched,
+/area/point_loma/airbase/exterior/crash_site)
 "bvs" = (
 /obj/structure/safe/floor,
 /turf/open/floor/shiva/yellow,
@@ -25655,6 +25689,11 @@
 	},
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bvw" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bvx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -25701,6 +25740,19 @@
 /obj/structure/machinery/floodlight,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bvE" = (
+/obj/structure/girder,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvF" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bvG" = (
 /obj/structure/surface/table,
 /obj/item/clipboard{
@@ -25741,6 +25793,25 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"bvL" = (
+/obj/structure/surface/table,
+/obj/item/storage/beer_pack{
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvM" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bvN" = (
+/obj/structure/bed/chair/comfy/hybrisa/red{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bvO" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -25764,6 +25835,11 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bvP" = (
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bvQ" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/bronze{
@@ -25867,6 +25943,55 @@
 	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"bwc" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/chips,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwd" = (
+/obj/structure/surface/table,
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/item/newspaper{
+	name = "character sheet";
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/item/toy/dice/d20,
+/obj/item/trash/wy_chips_pepper{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwe" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwf" = (
+/obj/structure/bed/chair{
+	pixel_y = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwg" = (
+/obj/structure/machinery/computer/crew/colony,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bwh" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
@@ -25886,6 +26011,31 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/workshop)
+"bwk" = (
+/obj/structure/machinery/computer/station_alert,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwl" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_y = 10;
+	pixel_x = -5
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwm" = (
+/obj/structure/bed/chair/comfy/bravo,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bwn" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/new_varadero/ship,
@@ -25943,6 +26093,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/workshop)
+"bwv" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bww" = (
 /obj/structure/sign/poster/hunk{
 	pixel_x = -6;
@@ -26021,6 +26176,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bwH" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass,
+/turf/open/space/basic,
+/area/point_loma/airbase/exterior/crash_site)
 "bwI" = (
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/new_varadero/concrete/hull,
@@ -26036,6 +26195,16 @@
 	},
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bwK" = (
+/turf/open/space/basic,
+/area/point_loma/airbase/exterior/crash_site)
+"bwL" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	autoname = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bwM" = (
 /obj/structure/surface/table,
 /obj/structure/prop/cash_register/broken/open{
@@ -26046,6 +26215,25 @@
 "bwN" = (
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/mining_colony/interior/corporate)
+"bwO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwP" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bwQ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/fire/firefighter{
+	pixel_x = -6
+	},
+/obj/item/clothing/suit/fire/firefighter{
+	pixel_x = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bwR" = (
 /obj/structure/surface/table,
 /obj/item/cprbot_broken,
@@ -26085,6 +26273,10 @@
 /obj/effect/decal/cleanable/dirt/sand_3,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bwX" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bwY" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
@@ -26195,6 +26387,34 @@
 /obj/structure/flora/grass/colorable/point_loma/heavy/six,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/east)
+"bxw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt/sand_2,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxx" = (
+/obj/structure/window/framed/new_varadero/foundation,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/exterior/crash_site)
+"bxy" = (
+/obj/structure/surface/rack,
+/obj/item/tool/extinguisher{
+	pixel_y = 6;
+	pixel_x = 6
+	},
+/obj/item/tool/extinguisher{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxz" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bxA" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 4
@@ -26216,6 +26436,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bxD" = (
+/obj/structure/reagent_dispensers/tank/fuel{
+	anchored = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bxE" = (
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	panel_open = 1;
@@ -26227,9 +26453,97 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/east)
+"bxF" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_y = 24
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxG" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 8;
+	autoname = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxH" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/obj/item/tool/pen{
+	pixel_y = -1;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxI" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/window/framed/new_varadero/foundation,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/exterior/crash_site)
+"bxJ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxK" = (
+/obj/structure/machinery/power/smes/buildable{
+	name = "colony distribution SMES"
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxL" = (
+/obj/vehicle/powerloader,
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
 "bxN" = (
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
+"bxO" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	pixel_y = 24
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/crash_site)
+"bxP" = (
+/obj/structure/window/framed/new_varadero/foundation,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/exterior/north)
+"bxQ" = (
+/turf/open/floor/corsat/squares,
+/area/point_loma/airbase/exterior/north)
+"bxR" = (
+/turf/closed/wall/huntership/dark,
+/area/point_loma/oob)
+"bxS" = (
+/turf/open/floor/corsat/purple/southeast,
+/area/point_loma/oob/sky)
+"bxT" = (
+/obj/structure/platform/broken,
+/obj/structure/platform/broken{
+	dir = 8
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
 "bxU" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/research_facility/command)
@@ -26237,6 +26551,83 @@
 /obj/effect/decal/cleanable/blood/splatter/yautja,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/caves)
+"bxW" = (
+/obj/structure/platform/broken,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"bxX" = (
+/obj/structure/platform/broken,
+/obj/structure/platform/broken{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"bxY" = (
+/turf/open/floor/corsat/purple/east,
+/area/point_loma/oob/sky)
+"bxZ" = (
+/obj/structure/platform/broken{
+	dir = 8
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"bya" = (
+/obj/structure/platform/broken{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"byb" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"byc" = (
+/obj/structure/platform/broken{
+	dir = 8
+	},
+/obj/structure/platform/broken{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"byd" = (
+/obj/structure/platform/broken{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"bye" = (
+/obj/structure/platform/broken{
+	dir = 4
+	},
+/obj/structure/platform/broken{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open_space,
+/area/point_loma/oob/sky)
+"byf" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat/purple/northeast,
+/area/point_loma/oob/sky)
+"byg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/slippery/hull/dir/northwest,
+/area/point_loma/oob/sky)
+"byh" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/slippery/hull/dir/north,
+/area/point_loma/oob/sky)
+"byi" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/slippery/hull/dir/northeast,
+/area/point_loma/oob/sky)
 "bym" = (
 /obj/item/tool/pickaxe/jackhammer,
 /obj/structure/surface/rack,
@@ -26487,11 +26878,6 @@
 /area/point_loma/airbase/exterior/east)
 "bBF" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	dir = 2;
-	id = "cannon";
-	name = "ATC Lobby Lockdown"
-	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bBP" = (
@@ -35679,10 +36065,6 @@
 	},
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"cmn" = (
-/obj/structure/flora/grass/colorable/point_loma/light/one,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/north)
 "cmo" = (
 /obj/structure/flora/grass/colorable/point_loma/heavy/eight,
 /turf/open/auto_turf/sand_white/layer1,
@@ -46287,10 +46669,6 @@
 "ddD" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/airbase/exterior/north)
-"ddE" = (
-/obj/structure/flora/grass/colorable/point_loma/heavy/eight,
-/turf/closed/wall/new_varadero,
-/area/point_loma/airbase/exterior/north)
 "ddF" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
@@ -48738,9 +49116,9 @@
 /area/point_loma/oob/sky)
 "dkk" = (
 /obj/structure/stairs/multiz/rock/up{
-	dir = 10
+	dir = 4
 	},
-/turf/open_space,
+/turf/open/walkable_lattice,
 /area/point_loma/oob/sky)
 "dkl" = (
 /obj/structure/platform/metal/strata/east,
@@ -48875,14 +49253,6 @@
 "dkL" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/corsat/red/northeast,
-/area/point_loma/oob/sky)
-"dkM" = (
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	dir = 2;
-	id = "cannon";
-	name = "ATC Lobby Lockdown"
-	},
-/turf/open/floor/plating,
 /area/point_loma/oob/sky)
 "dkN" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
@@ -49655,7 +50025,7 @@
 "hhV" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat,
 /area/point_loma/airbase/exterior/crash_site)
 "hhX" = (
 /obj/structure/bed/sofa/vert/white,
@@ -49718,12 +50088,6 @@
 /obj/structure/sign/poster/nspa,
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
-"hBn" = (
-/obj/structure/stairs/multiz/rock/up{
-	dir = 5
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/crash_site)
 "hCb" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/hybrisa/tiretrack{
@@ -52261,7 +52625,7 @@
 /area/point_loma/airbase/interior/garage)
 "vvA" = (
 /obj/structure/window/framed/new_varadero/foundation/reinforced,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat,
 /area/point_loma/airbase/exterior/crash_site)
 "vyI" = (
 /obj/structure/bed/hybrisa/bunkbed1{
@@ -162555,18 +162919,18 @@ cLU
 cHB
 bxN
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxK
+aZC
+aZC
+bxD
+bxD
+bwX
+bwX
+bwP
 bUA
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
 bQT
 bQT
@@ -162737,18 +163101,18 @@ cLV
 cHC
 bxN
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
+bxK
+aZC
+aZC
+aZC
+aZC
+bvm
+bxw
+aZC
+bwL
+aZC
+aZC
+aZC
 bUA
 bQT
 bQT
@@ -162919,18 +163283,18 @@ cLV
 cHC
 bxN
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxK
+aZC
+aZC
+aZC
+aZC
+bxy
+bvm
+bwQ
 bUA
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
 bQT
 bQT
@@ -163110,18 +163474,18 @@ bUz
 bUz
 bUz
 bUz
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
 bUA
 vvA
 hhV
-hhV
+vvA
 vvA
 bUA
 bUA
-bQT
+bUA
 ayJ
 ayJ
 bRz
@@ -163292,22 +163656,22 @@ cHr
 cHr
 bUG
 bUz
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-sEl
-sEl
-ayJ
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+buX
+buX
+buW
 ayJ
 ayq
 ayq
@@ -163474,22 +163838,22 @@ aEi
 aAH
 bDU
 bBF
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-sEl
-sEl
+aZC
+aZC
+aZC
+bwH
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+buX
+buX
 sEl
 ayJ
 ayJ
@@ -163656,22 +164020,22 @@ bUJ
 aZJ
 bDU
 bBF
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+bwK
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 sEl
 jhx
 jhx
@@ -163838,23 +164202,23 @@ bUJ
 aZJ
 bDU
 bBF
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+bUA
 qUX
 qUX
 qUX
@@ -164020,22 +164384,22 @@ aFu
 aDr
 bDU
 bBF
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 qUX
 xcE
@@ -164202,22 +164566,22 @@ cHs
 cHs
 bEp
 bUz
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 xxV
 xcE
@@ -164384,22 +164748,22 @@ bBR
 bUz
 bUz
 bUz
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+bwH
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 oTg
 rcO
@@ -164566,22 +164930,22 @@ aZC
 ckF
 aZC
 bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+bwK
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 oTg
 xxV
@@ -164739,31 +165103,31 @@ cHL
 dda
 cMh
 bUT
+bxL
 aZC
 aZC
 aZC
 aZC
 aZC
+aZC
+aZC
+bwO
 aZC
 aZC
 aZC
 bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
+aZC
+aZC
 jAr
 jAr
 jAr
 jAr
 jAr
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 rcO
 qmg
@@ -164921,31 +165285,31 @@ bDm
 dcZ
 cMh
 bUT
-aZC
-aZC
-ckF
+bxL
 aZC
 ckF
 aZC
 ckF
+aZC
+ckF
+aZC
+aZC
+aZC
+aZC
 aZC
 bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
+aZC
+aZC
 amP
-hBn
-amJ
-amq
 jAr
-bQT
-bQT
-bQT
-bQT
-bQT
+jAr
+jAr
+jAr
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 xcE
 jhx
@@ -165112,16 +165476,16 @@ aZC
 aZC
 aZC
 bUA
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
 bUA
 bUA
 jAr
-amC
-amC
-amC
+bvr
+bvl
+amq
 jAr
 bUA
 bUA
@@ -165285,24 +165649,24 @@ bDm
 dcZ
 cMh
 bUT
-aZC
-ckF
-aZC
-aZC
-aZC
+bUA
+bxI
+bxx
+bxx
+bxx
+bxx
+bxx
+bUA
+bUA
 aZC
 aZC
 aZC
 bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
+bwg
+bvm
+aZC
 amC
-amC
-bQT
+aZC
 amC
 bUA
 bQT
@@ -165476,16 +165840,16 @@ aZC
 aZC
 aZC
 bUA
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bwk
+bvN
+aZC
+aZC
+aZC
+aZC
 bUA
 bQT
 bQT
@@ -165649,25 +166013,25 @@ cMh
 cMh
 cMh
 bUT
+aZC
+bxJ
+bxz
+aZC
+bxF
+bxz
+aZC
+aZC
 bUA
+aZC
+aZC
+aZC
 bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bwl
+bvP
+aZC
+aZC
+aZC
+aZC
 bUA
 bQT
 bQT
@@ -165831,25 +166195,25 @@ cMh
 cMh
 cMh
 bUT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+bxH
+bxz
+bxz
+bxz
+aZC
+aZC
+bwL
+aZC
+aZC
+aZC
+bwL
+aZC
+bwc
+bvF
+aZC
+bvm
+aZC
 bUA
 bQT
 bQT
@@ -166005,34 +166369,34 @@ aOE
 aOE
 bJw
 ddD
-ddD
-bUA
-bUA
-bUA
-bUA
+bxP
+bxx
+bxx
+bxx
+bxx
 bUA
 ckj
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 ckj
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bUA
+bwm
+bwd
+bvL
+aZC
+aZC
+bvi
+bva
 bQT
 bQT
 aIQ
@@ -166186,35 +166550,35 @@ aOV
 aOV
 aOV
 bJw
-aOC
-aOC
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxQ
+bxQ
+bxz
+bxM
+aZC
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bUA
+aZC
+bwe
+aZC
+aZC
+aZC
+bvj
+bva
 bQT
 aIQ
 aIQ
@@ -166368,35 +166732,35 @@ aOV
 aOV
 aOV
 bJw
-aOC
-cmn
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxQ
+bxQ
+aZC
+bxO
+aZC
+aZC
+aZC
+aZC
+bwL
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+aZC
+aZC
+aZC
 bUA
-bQT
-bQT
-bQT
-bUA
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bUA
+bwv
+bwf
+bvM
+bvw
+aZC
+bvk
+bva
 bQT
 aIQ
 aKm
@@ -166550,14 +166914,20 @@ aOV
 aOV
 aOV
 bJw
-aOC
-aOC
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxQ
+bxQ
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
+bUA
+bUA
+bUA
+bxG
+bUA
+bxG
 bUA
 bUA
 bUA
@@ -166567,18 +166937,12 @@ bUA
 bUA
 bUA
 bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bUA
-bQT
-bQT
-bUA
-bUA
-bUA
+bva
+bvE
+bvE
+bva
+bva
+bva
 bRz
 bRz
 bRz
@@ -166732,21 +167096,21 @@ aOV
 aOV
 aOV
 bJw
-aOC
-aOC
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxQ
+bxQ
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bQW
+bQW
+bQW
+bQW
+bQW
 bQT
 bQT
 bQT
@@ -166757,7 +167121,7 @@ bQT
 bQT
 bQT
 bQW
-bQW
+sEl
 bzl
 bVc
 aMx
@@ -166914,32 +167278,32 @@ aOV
 aOV
 aOV
 bJw
-aOC
-aOC
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bxQ
+bxQ
+aZC
+aZC
+aZC
+aZC
+aZC
+aZC
 bUA
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
 bQW
-aNC
+bQW
+bQW
+bQW
+bQW
+bQT
+bQT
+bQT
+bQT
+bQT
+bQT
+bQT
+bQT
+bQT
+sEl
+sEl
 aNc
 aMS
 aEb
@@ -167097,7 +167461,7 @@ aOV
 aOV
 bJw
 ddD
-ddE
+ddD
 bUA
 bUA
 bUA
@@ -167106,6 +167470,11 @@ bUA
 bUA
 bUA
 bQT
+bQW
+bQW
+bQW
+bQW
+bQW
 bQT
 bQT
 bQT
@@ -167114,13 +167483,8 @@ bQT
 bQT
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-aNC
+sEl
+sEl
 bRz
 bRz
 bRz
@@ -167288,6 +167652,11 @@ bQT
 dcP
 bQT
 bQT
+bQW
+bQW
+bQW
+bQW
+bQW
 bQT
 bQT
 bQT
@@ -167296,12 +167665,7 @@ bQT
 bQT
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+sEl
 bRz
 bRz
 bRz
@@ -167470,19 +167834,19 @@ bQT
 dcP
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
 bRz
 bRz
 bRz
@@ -167652,19 +168016,19 @@ bQT
 dcP
 bQT
 bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
-bQT
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
+bQW
 bRz
 bRz
 aNG
@@ -204647,12 +205011,12 @@ bTS
 bTS
 cxN
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -204829,12 +205193,12 @@ bTS
 bTS
 cxN
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205006,17 +205370,17 @@ qQr
 alv
 alv
 alv
-jZr
+bxR
 bTS
 bTS
 cxN
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205185,20 +205549,20 @@ qQr
 btH
 btG
 qQr
-alQ
-alQ
-alQ
-jZr
-jZr
+bun
+bun
+bun
+bxR
+bxR
 bTS
 cxN
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205371,16 +205735,16 @@ buJ
 buL
 buL
 alv
-jZr
-jZr
+bxR
+bxR
 cxN
+sym
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205554,15 +205918,15 @@ buI
 buI
 buI
 alv
-alQ
-alQ
+bun
+bun
+sym
 cxl
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205737,14 +206101,14 @@ buL
 buN
 buL
 buL
-alQ
-alQ
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+bun
+bun
+sym
+cxl
+cxl
+cxl
+cxl
+cxl
 cxl
 cxC
 bTS
@@ -205920,9 +206284,9 @@ buO
 buI
 buI
 buI
-alQ
-alQ
-cxl
+bun
+bun
+sym
 cxl
 cxl
 cxl
@@ -206050,12 +206414,12 @@ bTS
 bTS
 bTS
 bTS
-alQ
-alQ
-alQ
-alQ
-alQ
-alQ
+bun
+bun
+bun
+bun
+bun
+bun
 rAe
 rAe
 rAe
@@ -206095,17 +206459,17 @@ btx
 alD
 bts
 qQr
-alQ
+bun
 buJ
 buJ
 buJ
 buJ
 buJ
 buJ
-alQ
-alQ
-alQ
-cxl
+bun
+bun
+bun
+sym
 cxl
 cxl
 cxl
@@ -206232,7 +206596,7 @@ bTS
 bTS
 bTS
 bTS
-alQ
+bun
 whZ
 sTT
 jAM
@@ -206262,17 +206626,17 @@ vgg
 rtx
 btH
 btG
-alQ
-alQ
-alQ
+bun
+bun
+bun
 qQr
 qQr
 qQr
 qQr
 qQr
-alQ
-alQ
-alQ
+bun
+bun
+bun
 btA
 alD
 btu
@@ -206286,9 +206650,9 @@ aOo
 aOo
 bto
 btw
-alQ
-alQ
-cxl
+bun
+bun
+sym
 cxl
 cxl
 cxl
@@ -206444,7 +206808,7 @@ wSt
 nNr
 btH
 btG
-alQ
+bun
 alS
 alS
 alS
@@ -206454,7 +206818,7 @@ alS
 alS
 alS
 alS
-alQ
+bun
 btA
 btr
 sym
@@ -206469,9 +206833,9 @@ sym
 btx
 bts
 alv
-alQ
-alQ
-dgi
+bun
+bun
+sym
 cxl
 cxl
 cxC
@@ -206601,7 +206965,7 @@ rHD
 izh
 oFQ
 alD
-alQ
+bun
 rAe
 rAe
 rAe
@@ -206626,7 +206990,7 @@ wSt
 nNr
 btH
 btG
-alQ
+bun
 alS
 alS
 alS
@@ -206636,7 +207000,7 @@ alS
 alS
 alS
 alS
-alQ
+bun
 bty
 btt
 btC
@@ -206652,9 +207016,9 @@ sym
 btt
 alv
 alv
-alQ
-alQ
-cxl
+bun
+bun
+sym
 cxl
 cxC
 bTS
@@ -206783,7 +207147,7 @@ qWq
 gzp
 kJl
 osY
-alQ
+bun
 alD
 alD
 alD
@@ -206835,8 +207199,8 @@ btt
 alv
 alv
 alv
-alQ
-alQ
+bun
+bun
 cxl
 cxC
 bTS
@@ -206965,7 +207329,7 @@ wlc
 jQM
 wub
 tKU
-alQ
+bun
 alD
 alD
 alD
@@ -207018,9 +207382,9 @@ alv
 alv
 alv
 alv
-alQ
-alQ
-alQ
+bun
+bun
+bun
 bTS
 bTS
 bTS
@@ -207147,7 +207511,7 @@ rHD
 hpJ
 pbh
 alD
-alQ
+bun
 rAe
 rAe
 rAe
@@ -207202,8 +207566,8 @@ alD
 alD
 alv
 alv
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 bTS
@@ -207385,8 +207749,8 @@ alD
 alD
 alD
 alv
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -207506,7 +207870,7 @@ bTS
 bTS
 bTS
 bTS
-alQ
+bun
 nAp
 vBk
 mKv
@@ -207567,8 +207931,8 @@ buH
 buH
 buH
 alD
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -207688,12 +208052,12 @@ bTS
 bTS
 bTS
 bTS
-alQ
-alQ
-alQ
-alQ
-alQ
-alQ
+bun
+bun
+bun
+bun
+bun
+bun
 rAe
 rAe
 rAe
@@ -207718,7 +208082,7 @@ sym
 sym
 sym
 sym
-alQ
+qQr
 alS
 alS
 bTS
@@ -207749,8 +208113,8 @@ buH
 buH
 buH
 alD
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -207873,15 +208237,15 @@ bTS
 bTS
 bTS
 bTS
-dji
-dji
-alv
-alv
-alv
-alv
-alv
-alv
-alv
+cxN
+sym
+bun
+bun
+bun
+bun
+bun
+bun
+bun
 alv
 alv
 alv
@@ -207900,7 +208264,7 @@ djz
 aPc
 dji
 dji
-alQ
+bun
 alS
 alS
 alS
@@ -207910,7 +208274,7 @@ alS
 alS
 alS
 alS
-alQ
+bun
 btA
 btr
 aOm
@@ -207931,8 +208295,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -208055,15 +208419,15 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-alv
-alv
-alv
-alv
-alv
-alv
+cxN
+sym
+bun
+bun
+bun
+bun
+bun
+bun
+bun
 alv
 alv
 alv
@@ -208082,7 +208446,7 @@ djA
 djn
 dji
 dji
-alQ
+bun
 alS
 alS
 alS
@@ -208092,7 +208456,7 @@ alS
 alS
 alS
 alS
-alQ
+bun
 bty
 btt
 alv
@@ -208113,8 +208477,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -208237,21 +208601,21 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
+cxN
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
 dji
 aPc
 djz
@@ -208264,17 +208628,17 @@ djB
 djt
 djn
 djj
-alQ
-alQ
-alQ
+bun
+bun
+bun
 qQr
 qQr
 qQr
 qQr
-qQr
-alQ
-alQ
-alQ
+bun
+bun
+bun
+bun
 sym
 btt
 alv
@@ -208295,8 +208659,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -208419,19 +208783,19 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+pdo
 dji
 dji
 dji
@@ -208610,11 +208974,11 @@ dji
 dji
 dji
 dji
-dji
-bTS
-bTS
-bTS
-dkM
+pdo
+sym
+sym
+pdo
+dju
 dkJ
 dkE
 dkA
@@ -208784,19 +209148,19 @@ bTS
 bTS
 bTS
 dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dkM
+djV
+djA
+djA
+djA
+djA
+djA
+djA
+djn
+pdo
+pdo
+pdo
+pdo
+dju
 dkK
 dkF
 dkB
@@ -208966,19 +209330,19 @@ bTS
 bTS
 bTS
 dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dkM
+djC
+byc
+bxZ
+bxZ
+bxZ
+bxZ
+bxT
+djo
+dju
+dju
+dju
+dju
+dju
 dkK
 dkG
 dks
@@ -209148,19 +209512,19 @@ bTS
 bTS
 bTS
 dji
+djC
+byd
 bTS
 bTS
+byb
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dkM
+bxW
+djo
+dju
+dju
+dju
+dju
+dju
 dkK
 dkG
 dks
@@ -209205,8 +209569,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -209330,19 +209694,19 @@ bTS
 bTS
 bTS
 dji
+djC
+byd
 bTS
 bTS
 bTS
 bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dkM
+bxW
+djo
+dju
+dju
+dju
+dju
+dju
 dkK
 dkG
 dks
@@ -209387,8 +209751,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -209512,19 +209876,19 @@ bTS
 bTS
 bTS
 dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dkM
+djC
+bye
+bya
+bya
+bya
+bya
+bxX
+djo
+dju
+dju
+dju
+dju
+dju
 dkK
 dkG
 dkt
@@ -209569,8 +209933,8 @@ buG
 buH
 buH
 buG
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -209694,19 +210058,19 @@ bTS
 bTS
 bTS
 dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dkM
+byf
+bxY
+bxY
+bxY
+bxY
+bxY
+bxY
+bxS
+pdo
+pdo
+pdo
+pdo
+dju
 dkK
 dkH
 dku
@@ -209751,8 +210115,8 @@ buH
 buH
 buH
 alD
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -209878,17 +210242,17 @@ bTS
 dji
 dji
 dji
-bTS
-bTS
-bTS
-bTS
 dji
 dji
 dji
-bTS
-bTS
-bTS
-dkM
+dji
+dji
+dji
+pdo
+sym
+sym
+pdo
+dju
 dkL
 dkI
 dkC
@@ -209933,8 +210297,8 @@ buH
 buH
 buH
 alD
-alQ
-alQ
+bun
+bun
 bTS
 bTS
 ctM
@@ -210057,19 +210421,19 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+pdo
 dji
 dji
 dji
@@ -210115,8 +210479,8 @@ alv
 alv
 alv
 alv
-alQ
-alQ
+bun
+bun
 brb
 bhP
 bzz
@@ -210239,21 +210603,21 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
 dji
 aoV
 pdo
@@ -210421,24 +210785,24 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
-aoU
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+aoG
 aoG
 dkk
 pdo
@@ -210603,23 +210967,23 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
 bTS
 bTS
 bTS
@@ -210785,30 +211149,30 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
 bTS
 bTS
 bTS
 pdo
 bTS
-alQ
-alQ
+bun
+bun
 alD
 btN
 btN
@@ -210967,30 +211331,30 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
 bTS
 bTS
 bTS
 pdo
-alQ
-alQ
-alQ
+bun
+bun
+bun
 alv
 alv
 alv
@@ -211149,27 +211513,27 @@ bTS
 bTS
 bTS
 bTS
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
-apc
-apc
-apc
-alQ
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 buH
@@ -211207,8 +211571,8 @@ alv
 alv
 alv
 alv
-alQ
-alQ
+bun
+bun
 ctO
 ctL
 bzz
@@ -211331,26 +211695,26 @@ bTS
 bTS
 bTS
 bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
-apc
-apc
-alQ
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 buH
@@ -211504,34 +211868,34 @@ bsc
 bsc
 bsc
 bsc
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
-apc
-alQ
+byg
+cxk
+cxk
+cxk
+cxk
+cxk
+cxk
+cxk
+cxk
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 buH
@@ -211686,33 +212050,33 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-apc
-alQ
+byh
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 buH
@@ -211868,32 +212232,32 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-bTS
-bTS
-bTS
-dji
-apc
-apc
-alQ
+byh
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxN
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 alv
@@ -212050,31 +212414,31 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-dji
-alQ
+byh
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxO
+cxG
+cxG
+cxG
+cxG
+cxG
+cxG
+cxG
+cxC
+sym
+sym
+sym
+sym
+sym
+sym
+bun
 alv
 alv
 btN
@@ -212232,16 +212596,16 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+byh
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
 bTS
 bTS
 bTS
@@ -212255,7 +212619,7 @@ sym
 sym
 sym
 sym
-alQ
+bun
 alv
 alv
 sym
@@ -212414,16 +212778,16 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+byh
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxl
+cxC
 bTS
 bTS
 bTS
@@ -212436,7 +212800,7 @@ sym
 sym
 sym
 sym
-alQ
+bun
 alv
 alv
 sym
@@ -212596,16 +212960,16 @@ bTS
 bTS
 bTS
 bTS
-bsc
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
-bTS
+byi
+cxG
+cxG
+cxG
+cxG
+cxG
+cxG
+cxG
+cxG
+cxD
 bTS
 bTS
 bTS
@@ -213170,7 +213534,7 @@ sym
 sym
 sym
 sym
-alQ
+bun
 buC
 nSw
 olZ
@@ -213352,7 +213716,7 @@ sym
 sym
 sym
 sym
-alQ
+bun
 buD
 qbV
 hxX

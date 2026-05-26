@@ -306,12 +306,13 @@
 
 		if(!silent_inhale)
 			human_passer.visible_message(SPAN_HIGHDANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_EFFINGHIGHDANGER("You inhale [src] as you walk through it!"))
+			human_passer.emote("cough")
 		var/area/breath_area = get_area(src)
 		if(breath_area)
-			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores [silent_inhale ? "(silently) " : ""]at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)
 			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores at \the <b>[breath_area]</b>"))
 		else
-			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores!", source = human_passer, action = NOTIFY_ORBIT)
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores[silent_inhale ? " (silently) " : ""]!", source = human_passer, action = NOTIFY_ORBIT)
 			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores"))
 		return TRUE
 	inhaling = FALSE

@@ -38,7 +38,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/flamer_nozzle
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -999,6 +999,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 
 /obj/item/weapon/gun/flamer/survivor/get_fire_sound()

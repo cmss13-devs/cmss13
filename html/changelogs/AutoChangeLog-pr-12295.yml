@@ -1,0 +1,5 @@
+author: "NotTzeentchian"
+delete-after: True
+changes:
+  - bugfix: "US Army Synthetic Survivor can no longer retrieve the Experiment Tool Token"
+  - bugfix: "32nd Armoured Division Tank Crewman is now considered US Army"

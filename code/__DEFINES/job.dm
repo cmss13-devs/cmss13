@@ -23,6 +23,14 @@
 #define JOB_SQUAD_ENGI "Combat Technician"
 #define JOB_SQUAD_MEDIC "Hospital Corpsman"
 #define JOB_SQUAD_SPECIALIST "Weapons Specialist"
+#define JOB_SQUAD_SPECIALIST_SCOUT "Scout Specialist"
+#define JOB_SQUAD_SPECIALIST_SNIPER "Sniper Specialist"
+#define JOB_SQUAD_SPECIALIST_HEAVY_SNIPER "Heavy Sniper Specialist"
+#define JOB_SQUAD_SPECIALIST_DEMO "Demo Specialist"
+#define JOB_SQUAD_SPECIALIST_GRENADIER "Grenadier Specialist"
+#define JOB_SQUAD_SPECIALIST_SHARP "SHARP Specialist"
+#define JOB_SQUAD_SPECIALIST_PYRO "Pyro Specialist"
+#define JOB_SQUAD_SPECIALIST_HEAVY "Heavy Specialist"
 #define JOB_SQUAD_TEAM_LEADER "Fireteam Leader"
 #define JOB_SQUAD_SMARTGUN "Smartgunner"
 #define JOB_SQUAD_ROLES /datum/timelock/squad
@@ -91,6 +99,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH_INTEL "Intelligence Synthetic"
 #define JOB_SYNTH_MP "Military Police Synthetic"
 #define JOB_SYNTH_CMD "Command Support Synthetic"
+#define JOB_SYNTH_SCI "Research Synthetic"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
@@ -374,10 +383,11 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_ARMY_SMARTGUNNER "US Army Heavy Gunner"
 #define JOB_ARMY_SNCO "US Army Squad Leader"
 #define JOB_ARMY_CO "US Army Commander"
+#define JOB_ARMY_TANK "US Army Tank Crewman"
 #define JOB_ARMY_SYN "US Army Synthetic"
 
 
-#define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_SYN)
+#define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_TANK, JOB_ARMY_SYN)
 
 //--US Aerospace Forces (USASF)--//
 #define JOB_USASF_ENLISTED "USASF Enlisted"

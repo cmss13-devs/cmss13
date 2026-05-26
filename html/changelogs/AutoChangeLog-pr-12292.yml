@@ -1,0 +1,4 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - bugfix: "Fixed SHARP Flechette Dart direct hits not registering the additional flechette properly, along with other projectile direct hits interactions."

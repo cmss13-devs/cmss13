@@ -24,6 +24,7 @@
 	var/slowed = 0 // X_SLOW_AMOUNT
 	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/sleeping = 0
+	var/hushed = 0 // forced whispering, very annoying that silent exists but whatever
 
 	///a list of all status effects the mob has
 	var/list/status_effects

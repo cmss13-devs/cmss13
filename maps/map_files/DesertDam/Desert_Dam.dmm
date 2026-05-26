@@ -21724,12 +21724,13 @@
 /turf/open_space,
 /area/desert_dam/exterior/rock)
 "bpl" = (
-/obj/effect/landmark/spore_sac_rng/twenty,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/west_caves)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
 "bpm" = (
 /obj/effect/landmark/spore_sac_rng/twenty,
-/turf/open/desert/rock/deep/rock3,
+/turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
@@ -22223,6 +22224,10 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/hanger/roof)
+"brh" = (
+/obj/effect/landmark/spore_sac_rng/twenty,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/west_caves)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -49258,6 +49263,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "lVl" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/writing,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "lVo" = (
@@ -92865,7 +92871,7 @@ rfS
 aZa
 acl
 acl
-bpl
+bpm
 aEp
 aem
 rfS
@@ -94976,7 +94982,7 @@ acl
 acl
 acl
 acl
-bpl
+bpm
 acl
 acl
 aEn
@@ -95197,7 +95203,7 @@ rfS
 rfS
 rfS
 aem
-bpm
+brh
 aEy
 acl
 acl
@@ -95226,7 +95232,7 @@ acl
 acl
 acl
 aYW
-bpl
+bpm
 acl
 aEp
 aem
@@ -99198,7 +99204,7 @@ rfS
 rfS
 acl
 acl
-bpl
+bpm
 acl
 acl
 aEw
@@ -152284,7 +152290,7 @@ iOn
 kGe
 sWm
 sWm
-sWm
+bpl
 akI
 gfD
 qZe

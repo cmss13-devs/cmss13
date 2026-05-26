@@ -425,8 +425,8 @@
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
-	product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -727,7 +727,7 @@
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"
 	desc = "A vending machine meant to be use for cooks."
-	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	product_ads = "If you're out of ingredients I am here for you!All my organic produce is fresh!;Don't let my potatoes go stale, time for you to cook some fries!"
 	icon_state = "snack" //TODO: placeholder, make a proper unique sprite
 	hacking_safety = TRUE
 	products = list(

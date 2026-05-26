@@ -241,8 +241,8 @@
 	warhead.clear_falloff = 400
 	warhead.standard_power = 0
 	warhead.standard_falloff = 30
-	warhead.clear_delay = 3
-	warhead.double_explosion_delay = 6
+	warhead.clear_delay = 0
+	warhead.double_explosion_delay = 0 // No third explosion please
 	warhead.warhead_impact(target) // This is a blocking call
 	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
 
@@ -442,15 +442,15 @@
 	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_TYRARGO_RIFT)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. A great battle rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty cordon here to cover our western flank whilst another sub-hive overtakes a stronghold to your east that is filled with thousands of hosts!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any remaining hostile hosts to your west until you have secured yourselves.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrango Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrargo Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Be on guard my children. I have sensed that the petrid sewers of this so called city could be flooded by the hosts at a moments notice if the hosts restore power to the area. The button to release this putrid water is found in the metal structure the hosts call the sewer treatement plant.", "everything", QUEEN_MOTHER_ANNOUNCE), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Analysis of city layout plans have identified a possible tactical advantage. A release valve can be triggered within the City Sewer Treatment Plant, this valve will flood the lower sewer tunnels with water, expunging a significant amount of xenobiological growth.\n\nHowever, this valve must be powered by repairing a special APC located within the underground power-substation, located east of the underground sewer treatment plant.", "ARES 3.2 Strategic Notice", 'sound/AI/commandreport.ogg'), 20 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrango evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrargo evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements, more XX-121 clusters are encroaching from our east. We’re under heavy attack from all quarters and have lost half of our Longstreet tank support to Crushers.\n\nWe’ve exhausted our HEAP munitions and have had to switch to soft-point munitions. We can’t take this for much longer, requesting urgent support from Almayer forces, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 60 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrango. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrango evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrargo. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrargo evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer! Bugs are pouring into the inner perimeter! Civilians are taking up arms to defend the site, but they’re untrained.\n\nWe’re being overrun, we need fire support now! Now god dammit!", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 120 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrango is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrargo is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
 
 
 
@@ -560,6 +560,10 @@
 			groundside_humans++
 			continue
 
+		if(isyautja(current_mob))
+			groundside_humans += 2 // Yautja are a bigger threat
+			continue
+
 		if(isxeno(current_mob))
 			groundside_xenos++
 			continue
@@ -578,7 +582,7 @@
 			continue
 		shake_camera(current_mob, 3, 1)
 
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/double_klaxon.ogg', volume = 10)
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	if(!active_lz)
@@ -630,7 +634,7 @@
 	else if (force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR // Times up.
 
-/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	. = ..()
 	if(.[2] != 0) // index 2 = num_xenos
 		return .
@@ -642,13 +646,18 @@
 		if(hive.need_round_end_check && !hive.can_delay_round_end())
 			continue
 		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
-			//Some Queen is alive, we shouldn't end the game yet
-			.[2]++
+			var/turf/queen_turf = get_turf(hive.living_xeno_queen)
+			if(queen_turf?.z in z_levels)
+				//Some Queen is alive, we shouldn't end the game yet
+				.[2]++
 	return .
 
 /datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
+
+	if(is_in_endgame)
+		return // Don't handle hive collapse for hijack
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.need_round_end_check && !hive.can_delay_round_end())

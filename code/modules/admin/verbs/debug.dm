@@ -109,14 +109,19 @@
 	mob.animate_movement = NO_STEPS
 
 	var/atom/movable/screen/plane_master/openspace_backdrop/open_space_shadow = locate() in screen
-	var/atom/movable/screen/plane_master/open_space/open_space_blur = locate() in screen
+	var/list/open_space_blurs = list()
+	for(var/atom/movable/screen/plane_master/open_space/open_space_blur in screen)
+		open_space_blurs += open_space_blur
+
 	switch(multi_z_effects)
 		if("All")
 			open_space_shadow.Hide()
-			open_space_blur.Hide()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Hide()
 		if("Dropshadow + Blur")
 			open_space_shadow.Hide()
-			open_space_blur.remove_filters()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.remove_filters()
 		if("Dropshadow")
 			open_space_shadow.Hide()
 
@@ -164,10 +169,12 @@
 	switch(multi_z_effects)
 		if("All")
 			open_space_shadow.Show()
-			open_space_blur.Show()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.Show()
 		if("Dropshadow + Blur")
 			open_space_shadow.Show()
-			open_space_blur.add_filters()
+			for(var/atom/movable/screen/plane_master/open_space/open_space_blur as anything in open_space_blurs)
+				open_space_blur.add_filters()
 		if("Dropshadow")
 			open_space_shadow.Show()
 

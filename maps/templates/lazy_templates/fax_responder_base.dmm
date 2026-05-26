@@ -716,11 +716,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "gX" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall";
-	unacidable = 1
-	},
+/turf/closed/cordon,
 /area/adminlevel/ert_station/fax_response_station)
 "hd" = (
 /obj/effect/decal/warning_stripes{

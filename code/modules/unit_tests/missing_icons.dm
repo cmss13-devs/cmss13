@@ -49,7 +49,7 @@
 			if(initial(item_path.flags_item) & ITEM_ABSTRACT)
 				continue // Ignore abstract
 
-		// Ensure that its not invisible/honk in mapping
+		// Ensure that it's not invisible/honk in mapping
 		var/initial_icon = initial(obj_path.icon)
 		var/initial_icon_state = initial(obj_path.icon_state)
 		if(!isnull(initial_icon) && !isnull(initial_icon_state))

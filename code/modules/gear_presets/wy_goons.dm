@@ -298,7 +298,7 @@
 
 /datum/equipment_preset/goon/lead/bodyguard
 	name = "Weyland-Yutani Corporate Security Lead (CL Bodyguard)"
-	role_comm_title = "CS L. BodyG."
+	role_comm_title = "CS L. BodyG"
 
 /datum/equipment_preset/goon/lead/bodyguard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
@@ -380,7 +380,7 @@
 /datum/equipment_preset/goon/researcher/lead
 	name = "Weyland-Yutani Corporate Research Consultant (Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	role_comm_title = "CRC L."
+	role_comm_title = "CRC L"
 	assignment = JOB_WY_RESEARCH_LEAD
 	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)

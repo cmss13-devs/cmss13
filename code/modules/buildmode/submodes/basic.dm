@@ -33,9 +33,9 @@
 					upgrade_version = upgrade_reference[i]
 					break
 			if(upgrade_version)
-				clicked_turf.PlaceOnTop(upgrade_version)
+				clicked_turf.place_on_top(upgrade_version)
 			else
-				clicked_turf.PlaceOnTop(/turf/open/floor/plating)
+				clicked_turf.place_on_top(/turf/open/floor/plating)
 			log_admin("Build Mode: [key_name(admin_building)] built [upgrade_version] at [AREACOORD(clicked_turf)]")
 			return
 		else if(right_click && !alt_click && !ctrl_click)
@@ -65,7 +65,7 @@
 						if(istype(clicked_atom, i))
 							downgrade_version = downgrade_reference[i]
 					if(downgrade_version)
-						clicked_turf.PlaceOnTop(downgrade_version)
+						clicked_turf.place_on_top(downgrade_version)
 					else
 						clicked_turf.ScrapeAway()
 					log_admin("Build Mode: [key_name(admin_building)] downgraded [clicked_turf] at [AREACOORD(clicked_turf)]")

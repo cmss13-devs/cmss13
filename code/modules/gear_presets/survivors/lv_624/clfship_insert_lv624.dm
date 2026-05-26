@@ -271,3 +271,4 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/cosmetic/clf_flag(new_human), WEAR_IN_BACK) //flag for the smartgun. Never stop repping *real* freedom.

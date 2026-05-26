@@ -289,14 +289,16 @@
 
 	/// list of linked explosives to handle
 	var/list/linked_charges = list()
+	/// if the button has been pressed in past 4 seconds
 	var/pressed = FALSE
 	/// max number of charges that can be connected to one detonator
-	var/maximal_connected_charges = 5
+	var/maximum_connected_charges = 5
 
-/obj/item/satchel_charge_detonator/proc/can_connect()
-	if(length(linked_charges)>= maximal_connected_charges)
-		return FALSE
-	return TRUE
+/obj/item/satchel_charge_detonator/Destroy()	//Clear all connections to linked charges if the detonator is destroyed
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		charges.linked_detonator = null
+	linked_charges = null
+	return ..()
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attack_self, detonate charges
 	. = ..()
@@ -330,15 +332,14 @@
 		return TRUE
 	return
 
-/obj/item/satchel_charge_detonator/Destroy()	//Clear all connections to linked charges if the detonator is destroyed
-	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
-		charges.linked_detonator = null
-	linked_charges = null
-	return ..()
-
 /obj/item/satchel_charge_detonator/get_examine_text()
 	.=..()
 	. += "\nAlt+click to ping linked charges"
+
+/obj/item/satchel_charge_detonator/proc/can_connect()
+	if(length(linked_charges) >= maximum_connected_charges)
+		return FALSE
+	return TRUE
 
 /obj/item/explosive/satchel_charge
 	name = "M17 Satchel Charge"
@@ -365,6 +366,12 @@
 	var/activated = FALSE
 	/// if the charge is armed and waiting for a detonator signal
 	var/armed = FALSE
+
+
+/obj/item/explosive/satchel_charge/Destroy()
+	linked_detonator?.linked_charges -= src
+	linked_detonator = null
+	return ..()
 
 /obj/item/explosive/satchel_charge/attack_self(mob/user)	//activate the charge in hand after it has been linked to a detonator, can not be activated in a safe zone
 	. = ..()
@@ -411,15 +418,6 @@
 		playsound(loc, 'sound/handling/charge-connection.ogg', 25, 1)
 		icon_state = "satchel_linked"
 
-/obj/item/explosive/satchel_charge/proc/un_activate()	//deactivate nd active charge, does not delink from detonator
-	if(activated)
-		activated = FALSE
-		w_class = SIZE_SMALL
-		if(linked_detonator)
-			icon_state = "satchel_linked"
-		else
-			icon_state = "satchel"
-
 /obj/item/explosive/satchel_charge/throw_atom(atom/target, range, speed, atom/thrower, spin, launch_type, pass_flags)
 	. = ..()
 	dir = get_dir(src, thrower)
@@ -427,19 +425,6 @@
 		icon_state = "satchel_primed"
 		arming_timer  = addtimer(CALLBACK(src, PROC_REF(arm)), arming_time, TIMER_UNIQUE)
 		beep()
-
-/obj/item/explosive/satchel_charge/proc/beep(beep_once)
-	playsound(loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
-	if(!armed && beep_once != TRUE)
-		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
-
-
-/obj/item/explosive/satchel_charge/proc/arm()
-	activated = FALSE
-	if(!linked_detonator || armed)
-		return
-	icon_state = "satchel_armed"
-	armed = TRUE
 
 /obj/item/explosive/satchel_charge/pickup(mob/user) //picking up an armed satchel will disarm it but not deactivate it
 	if(armed)
@@ -451,6 +436,28 @@
 		w_class = SIZE_SMALL
 	return ..()
 
+
+/obj/item/explosive/satchel_charge/proc/un_activate()	//deactivate nd active charge, does not delink from detonator
+	if(activated)
+		activated = FALSE
+		w_class = SIZE_SMALL
+		if(linked_detonator)
+			icon_state = "satchel_linked"
+		else
+			icon_state = "satchel"
+
+/obj/item/explosive/satchel_charge/proc/beep(beep_once)
+	playsound(loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
+	if(!armed && beep_once != TRUE)
+		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
+
+/obj/item/explosive/satchel_charge/proc/arm()
+	activated = FALSE
+	if(!linked_detonator || armed)
+		return
+	icon_state = "satchel_armed"
+	armed = TRUE
+
 /obj/item/explosive/satchel_charge/proc/detonate(triggerer)
 	if(!armed || linked_detonator != triggerer)
 		return FALSE
@@ -458,8 +465,4 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/explosive/satchel_charge/Destroy()
-	linked_detonator?.linked_charges -= src
-	linked_detonator = null
-	return ..()
 

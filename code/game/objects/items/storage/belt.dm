@@ -1289,7 +1289,7 @@
 
 /obj/item/storage/belt/marine/satchelcharge
 	name = "\improper M910 Pattern EOD Harness"
-	desc = "A specialized storage rig designed to carry a high volume of various demolition charges, blasting caps, and fuses for explosive ordinance disposal. A separate, smaller pouch made to fit a detonator is affixed to the upper part of the shoulder strap. Made to hold a detonator, this pouch has been recently fitted with an anti-electromagnetic liner after one too many... incidents."
+	desc = "A specialized storage rig designed to carry a high volume of various demolition charges, blasting caps, and fuses for explosive ordinance disposal. A separate, smaller pouch made to fit a detonator is affixed to the upper part of the shoulder strap. Made to hold a detonator, this pouch has been recently fitted with an foil liner to block signals after a series of... accidents."
 	storage_slots = 15
 	can_hold = list(/obj/item/explosive/satchel_charge, /obj/item/satchel_charge_detonator)
 	var/starting_charges = 5

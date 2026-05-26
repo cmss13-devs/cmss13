@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_quartermaster, list(
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
-		list("Rubber Stamp", 10, /obj/item/tool/stamp/qm, null, VENDOR_ITEM_REGULAR),
+		list("Rubber Stamp", 10, /obj/item/tool/stamp/ro, null, VENDOR_ITEM_REGULAR),
 	))
 
 

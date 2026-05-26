@@ -56,7 +56,6 @@
 	if(!auto_squad)
 		transfer_marine_to_squad(new_human, pick(GLOB.RoleAuthority.squads), new_human.assigned_squad, new_human.wear_id)
 
-	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
 

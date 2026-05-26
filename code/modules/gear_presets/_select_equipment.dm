@@ -207,6 +207,8 @@
 	load_languages(new_human, mob_client)
 	load_age(new_human, mob_client)
 	load_id(new_human, mob_client)
+	load_dodgepool(new_human)
+	enable_dodgepool(new_human, TRUE)
 	if(show_job_gear)
 		load_gear(new_human, mob_client)
 	load_status(new_human, mob_client)

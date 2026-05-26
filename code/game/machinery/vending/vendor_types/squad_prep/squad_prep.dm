@@ -36,9 +36,9 @@
 		list("M82F Flare Gun", floor(scale * 50), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("M6C Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6c, VENDOR_ITEM_REGULAR),
-		list("M6G Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6g, VENDOR_ITEM_REGULAR),
-		list("M6A Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6a, VENDOR_ITEM_REGULAR),
+		list("M6C Service Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6c, VENDOR_ITEM_REGULAR),
+		list("M6G Heavy Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6g, VENDOR_ITEM_REGULAR),
+		list("M6A Compact Magnum Magazine", floor(scale * 50), /obj/item/ammo_magazine/pistol/halo/m6a, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", -1, null, null),
 		list("M6 Magnum Flashlight", floor(scale * 50), /obj/item/attachable/flashlight/m6, VENDOR_ITEM_REGULAR),

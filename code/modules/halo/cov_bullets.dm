@@ -22,11 +22,26 @@
 	damage = 80
 	shell_speed = AMMO_SPEED_TIER_4
 
+// Shooting a warthog (or any vehicle) with a charged plasma shot stops it from moving momentarily
+/datum/ammo/energy/plasma/plasma_pistol/overcharge/on_hit_obj(obj/target_object, obj/projectile/projectile)
+	if(!istype(target_object, /obj/vehicle/multitile))
+		return ..()
+
+	var/vehicle_slowdown_time = 5 SECONDS
+	var/obj/vehicle/multitile/wart = target_object
+	wart.next_move = world.time + vehicle_slowdown_time
+	playsound(wart, 'sound/effects/sebb_explode.ogg', 35)
+	wart.visible_message(SPAN_HIGHDANGER("[icon2html(wart, viewers(wart))] \The [wart] lurches as overcharged plasma slams into it-- it's temporarily EMPed!"))
+	new /obj/effect/overlay/temp/sebb(get_turf(wart))
+	new /obj/effect/overlay/temp/emp_sparks(get_turf(src))
+	empulse(wart, 1, 2)
+
+
 /datum/ammo/energy/plasma/plasma_rifle
 	name = "plasma bolt"
 	icon_state = "plasma_blue"
 	shell_speed = AMMO_SPEED_TIER_4
-	accurate_range = 8
+	accurate_range = 6
 	max_range = 24
 	damage = 38
 

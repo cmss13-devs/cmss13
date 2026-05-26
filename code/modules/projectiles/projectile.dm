@@ -885,6 +885,9 @@
 		if(dodge_pool)
 			. -= dodge_pool * 8
 
+		if(HAS_TRAIT(src, TRAIT_IN_OPEN_VEHICLE))
+			. -= 1
+
 		var/mob/living/carbon/human/shooter_human = bullet.firer
 		if(istype(shooter_human))
 			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))

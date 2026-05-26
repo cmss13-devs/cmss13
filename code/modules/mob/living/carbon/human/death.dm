@@ -73,6 +73,12 @@
 
 	give_action(src, /datum/action/ghost)
 
+	if(buckled && HAS_TRAIT(src, TRAIT_IN_OPEN_VEHICLE))
+		if(prob(75))
+			var/obj/vehicle/multitile/warthog/open_vehicle = buckled
+			var/mob/living/carbon/human/source = src
+			open_vehicle.manual_unbuckle(source)
+
 	if(!should_block_game_interaction(src) && istype(SSticker.mode, /datum/game_mode/colonialmarines) && !(datum_flags & DF_VAR_EDITED) && ckey)
 		var/datum/entity/marine_death/death_entry = DB_ENTITY(/datum/entity/marine_death)
 		death_entry.load_data(src, cause)

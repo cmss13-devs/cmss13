@@ -224,6 +224,28 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("yellow folder", /obj/item/folder/yellow), \
 		)), \
 	null, \
+	new/datum/stack_recipe_list("Empty UNSC Boxes",list( \
+		new/datum/stack_recipe("empty MRE crate", /obj/item/ammo_box/magazine/misc/unsc/mre/empty), \
+		new/datum/stack_recipe("empty flare crate", /obj/item/ammo_box/magazine/misc/unsc/flare/empty), \
+		new/datum/stack_recipe("empty signal flare crate", /obj/item/ammo_box/magazine/misc/unsc/flare/signal/empty), \
+		new/datum/stack_recipe("empty M9 frag grenade crate", /obj/item/ammo_box/magazine/misc/unsc/grenade/empty), \
+		new/datum/stack_recipe("empty 40mm launchable grenade crate", /obj/item/ammo_box/magazine/misc/unsc/grenade/launchable/empty), \
+		new/datum/stack_recipe("empty medical packets crate", /obj/item/ammo_box/magazine/misc/unsc/medical_packets/empty), \
+		new/datum/stack_recipe("empty M7 ammo packets crate", /obj/item/ammo_box/magazine/misc/unsc/m7_ammo/empty), \
+		null, \
+		new/datum/stack_recipe("empty UNSC magazine box (MA5C)", /obj/item/ammo_box/magazine/unsc/ma5c/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (MA5C AP)", /obj/item/ammo_box/magazine/unsc/ma5c/shredder/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (MA5B)", /obj/item/ammo_box/magazine/unsc/ma5b/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (MA5B AP)", /obj/item/ammo_box/magazine/unsc/ma5b/shredder/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (BR55)", /obj/item/ammo_box/magazine/unsc/br55/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (BR55 EXT)", /obj/item/ammo_box/magazine/unsc/br55/extended/empty), \
+		null, \
+		new/datum/stack_recipe("empty UNSC magazine box (M6C)", /obj/item/ammo_box/magazine/unsc/small/m6c/empty), \
+		new/datum/stack_recipe("empty UNSC magazine box (M6C/SOCOM)", /obj/item/ammo_box/magazine/unsc/small/m6c/socom/empty), \
+		new/datum/stack_recipe("empty UNSC box (M6G)", /obj/item/ammo_box/magazine/unsc/small/m6g/empty), \
+		new/datum/stack_recipe("empty UNSC (M6D)", /obj/item/ammo_box/magazine/unsc/small/m6d/empty), \
+		)), \
+	null, \
 	new/datum/stack_recipe_list("empty ammo boxes",list( \
 		new/datum/stack_recipe("empty magazine box (88 Mod 4 AP)", /obj/item/ammo_box/magazine/mod88/empty), \
 		new/datum/stack_recipe("empty magazine box (SU-6)", /obj/item/ammo_box/magazine/su6/empty), \

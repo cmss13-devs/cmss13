@@ -110,6 +110,9 @@
 	if(!owner)
 		return NONE
 
+	if(user.stat == DEAD || user.stat == UNCONSCIOUS)
+		return NONE
+
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need both hands to use \the [name]."))
 		return NONE

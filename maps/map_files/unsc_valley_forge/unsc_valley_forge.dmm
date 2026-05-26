@@ -1148,7 +1148,6 @@
 	dir = 4;
 	pixel_x = 5
 	},
-/obj/effect/landmark/start/liaison,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/almayer/command/corporateliaison)
 "aPF" = (
@@ -3481,6 +3480,7 @@
 /obj/item/tool/pen{
 	pixel_y = -5
 	},
+/obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "cun" = (
@@ -5341,9 +5341,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/bravo)
 "dKD" = (
-/obj/item/clothing/suit/storage/webbing/black,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+/obj/effect/landmark/start/liaison,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/almayer/command/corporateliaison)
 "dKK" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
@@ -5714,18 +5714,39 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/north2)
 "dWH" = (
-/obj/item/prop/almayer/box,
 /obj/structure/machinery/door_control{
 	id = "crate_room4";
 	name = "storage shutters";
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/cobweb2/dynamic,
-/obj/item/packageWrap,
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 17
 	},
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/ammo_magazine/rifle/halo/vk78,
+/obj/item/weapon/gun/rifle/halo/vk78,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
 "dWM" = (
@@ -6849,7 +6870,16 @@
 	pixel_x = -25;
 	pixel_y = -1
 	},
-/obj/structure/largecrate/random/case/double,
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/unsc/mre{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/ammo_box/magazine/misc/unsc/mre{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/ammo_box/magazine/misc/unsc/mre,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "eIP" = (
@@ -7903,6 +7933,8 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "fqH" = (
@@ -8557,14 +8589,22 @@
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
+/obj/item/explosive/grenade/high_explosive/unsc/launchable{
+	pixel_x = 7
+	},
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
 /obj/item/explosive/grenade/high_explosive/unsc/launchable,
-/obj/item/explosive/grenade/high_explosive/unsc/launchable,
-/obj/item/explosive/grenade/high_explosive/unsc/launchable,
-/obj/item/explosive/grenade/high_explosive/unsc/launchable,
-/obj/item/explosive/grenade/high_explosive/unsc/launchable,
+/obj/item/explosive/grenade/high_explosive/unsc/launchable{
+	pixel_x = 3
+	},
+/obj/item/explosive/grenade/high_explosive/unsc/launchable{
+	pixel_x = -4
+	},
+/obj/item/explosive/grenade/high_explosive/unsc/launchable{
+	pixel_x = -7
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -10103,29 +10143,6 @@
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
 	},
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_morgue1_req"
-	},
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/halo/ma3a,
-/obj/item/weapon/gun/rifle/halo/ma3a{
-	pixel_y = 6
-	},
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
-/obj/item/ammo_magazine/rifle/halo/ma3a,
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
 "gQd" = (
@@ -15013,6 +15030,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/ammo_box/magazine/unsc/br55{
+	pixel_y = 9
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "jVC" = (
@@ -17682,7 +17702,9 @@
 "lVC" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/unsc/small/m6c,
-/obj/item/ammo_box/magazine/unsc/small/m6c,
+/obj/item/ammo_box/magazine/unsc/small/m6c{
+	pixel_y = -5
+	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -21950,7 +21972,6 @@
 /obj/structure/bed/chair/comfy/hybrisa/black{
 	dir = 8
 	},
-/obj/effect/landmark/start/liaison,
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
 /area/almayer/command/corporateliaison)
 "oUd" = (
@@ -24995,10 +25016,28 @@
 /area/almayer/engineering/lower)
 "qSe" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/marine,
-/obj/item/storage/backpack/marine,
-/obj/item/storage/backpack/marine,
-/obj/item/storage/backpack/marine,
+/obj/item/tool/hand_labeler,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
+/obj/item/storage/backpack/marine/satchel/unsc,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
@@ -25687,9 +25726,15 @@
 /obj/item/ammo_magazine/rifle/halo/br55/extended,
 /obj/item/ammo_magazine/rifle/halo/br55/extended,
 /obj/item/ammo_magazine/rifle/halo/br55/extended,
+/obj/item/ammo_magazine/rifle/halo/br55/extended{
+	pixel_x = -3;
+	pixel_y = -3
+	},
 /obj/item/ammo_magazine/rifle/halo/br55/extended,
-/obj/item/ammo_magazine/rifle/halo/br55/extended,
-/obj/item/ammo_magazine/rifle/halo/br55/extended,
+/obj/item/ammo_magazine/rifle/halo/br55/extended{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -26360,20 +26405,28 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_point_defense)
 "rRV" = (
-/obj/structure/closet/crate/freezer/cooler{
-	pixel_x = -7
-	},
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_x = 10;
-	pixel_y = -4
-	},
-/obj/item/reagent_container/food/drinks/cans/aspen,
-/obj/item/reagent_container/food/drinks/cans/aspen,
-/obj/item/reagent_container/food/drinks/cans/aspen,
-/obj/item/reagent_container/food/drinks/cans/aspen,
 /obj/structure/sign/safety/storage{
 	pixel_x = -24
 	},
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/weapon/gun/rifle/halo/ma3a{
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
+/obj/item/ammo_magazine/rifle/halo/ma3a,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "rSt" = (
@@ -31315,7 +31368,9 @@
 "voI" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/unsc/small/m6g,
-/obj/item/ammo_box/magazine/unsc/small/m6g,
+/obj/item/ammo_box/magazine/unsc/small/m6g{
+	pixel_y = -4
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -31561,13 +31616,19 @@
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
+/obj/item/ammo_magazine/rifle/halo/ma5c/shredder{
+	pixel_x = -3;
+	pixel_y = -3
+	},
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
-/obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
-/obj/item/ammo_magazine/rifle/halo/ma5c/shredder,
+/obj/item/ammo_magazine/rifle/halo/ma5c/shredder{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -41595,7 +41656,7 @@ yhq
 yhq
 yhq
 yhq
-dKD
+yhq
 gQR
 rVU
 cCl
@@ -42950,7 +43011,7 @@ aPA
 qKd
 xtc
 yck
-awf
+dKD
 mXs
 brq
 kZp

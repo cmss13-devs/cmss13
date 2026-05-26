@@ -257,6 +257,8 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+/// When someone is in an open-topped vehicle.
+#define TRAIT_IN_OPEN_VEHICLE "t_in_open_vehicle"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
@@ -351,6 +353,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_IN_TUTORIAL,
 	TRAIT_SPEC_KIT,
 	TRAIT_SPEC_VENDOR,
+	TRAIT_IN_OPEN_VEHICLE,
 ))
 
 /*
@@ -393,6 +396,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 		"TRAIT_SPEC_KIT" = TRAIT_SPEC_KIT,
 		"TRAIT_SPEC_VENDOR" = TRAIT_SPEC_VENDOR,
+		"TRAIT_IN_OPEN_VEHICLE" = 	TRAIT_IN_OPEN_VEHICLE,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

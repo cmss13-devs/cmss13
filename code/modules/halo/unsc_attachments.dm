@@ -351,6 +351,10 @@
 		attach_icon = "m6d_light"
 		original_attach = "m6d_light"
 		..()
+	if(istype(subject, /obj/item/weapon/gun/pistol/halo/m6a))
+		attach_icon = "m6c_light" // no sprite for the m6a to have a light atm
+		original_attach = "m6c_light"
+		..()
 	else return
 
 /obj/item/attachable/flashlight/m6c_socom

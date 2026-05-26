@@ -390,12 +390,20 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5c
 	num_of_magazines = 48
 
+/obj/item/ammo_box/magazine/unsc/ma5c/empty
+	empty = TRUE
+
+
 /obj/item/ammo_box/magazine/unsc/ma5c/shredder
 	name = "UNSC magazine box (MA5C x 24, AP shredder)"
-	desc = "An ammo box storing 24 magazines of MA5C ammunition"
+	desc = "An ammo box storing 24 magazines of AP MA5C ammunition"
 	overlay_ammo_type = "_shred"
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5c/shredder
 	num_of_magazines = 24
+
+/obj/item/ammo_box/magazine/unsc/ma5c/shredder/empty
+	empty = TRUE
+
 
 /obj/item/ammo_box/magazine/unsc/ma5b
 	name = "UNSC magazine box (MA5B x 48)"
@@ -405,12 +413,20 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5b
 	num_of_magazines = 48
 
+/obj/item/ammo_box/magazine/unsc/ma5b/empty
+	empty = TRUE
+
+
 /obj/item/ammo_box/magazine/unsc/ma5b/shredder
-	name = "UNSC magazine box (MA5B x 48)"
-	desc = "An ammo box storing 48 magazines of MA5B ammunition"
+	name = "UNSC magazine box (MA5B x 24, AP shredder)"
+	desc = "An ammo box storing 24 magazines of AP MA5B ammunition"
 	overlay_ammo_type = "_shred"
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5b/shredder
 	num_of_magazines = 24
+
+/obj/item/ammo_box/magazine/unsc/ma5b/shredder/empty
+	empty = TRUE
+
 
 /obj/item/ammo_box/magazine/unsc/br55
 	name = "UNSC magazine box (BR55 x 32)"
@@ -420,11 +436,19 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/br55
 	num_of_magazines = 32
 
+/obj/item/ammo_box/magazine/unsc/br55/empty
+	empty = TRUE
+
+
 /obj/item/ammo_box/magazine/unsc/br55/extended
 	name = "UNSC magazine box (BR55 x 32, extended)"
 	desc = "An ammo box storing 32 magazines of BR55 ammunition"
 	overlay_ammo_type = "_ext"
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/br55/extended
+
+/obj/item/ammo_box/magazine/unsc/br55/extended/empty
+	empty = TRUE
+
 
 /obj/item/ammo_box/magazine/unsc/small
 	name = "UNSC magazine box"
@@ -440,12 +464,20 @@
 	magazine_type = /obj/item/ammo_magazine/pistol/halo/m6c
 	num_of_magazines = 22
 
+/obj/item/ammo_box/magazine/unsc/small/m6c/empty
+	empty = TRUE
+
+
 /obj/item/ammo_box/magazine/unsc/small/m6c/socom
 	name = "UNSC magazine box (M6C/SOCOM x 22)"
 	desc = "An ammo box storing 22 magazines of M6C/SOCOM ammunition."
 	icon_state = "base_ammosmall4"
 	overlay_ammo_type = "_extsmall"
 	magazine_type = /obj/item/ammo_magazine/pistol/halo/m6c/socom
+
+/obj/item/ammo_box/magazine/unsc/small/m6c/socom/empty
+	empty = TRUE
+
 
 /obj/item/ammo_box/magazine/unsc/small/m6g
 	name = "UNSC magazine box (M6G x 22)"
@@ -454,12 +486,20 @@
 	magazine_type = /obj/item/ammo_magazine/pistol/halo/m6g
 	num_of_magazines = 22
 
+/obj/item/ammo_box/magazine/unsc/small/m6g/empty
+	empty = TRUE
+
+
 /obj/item/ammo_box/magazine/unsc/small/m6d
 	name = "UNSC magazine box (M6D x 22)"
 	desc = "An ammo box storing 22 magazines of M6D ammunition."
 	icon_state = "base_ammosmall3"
 	magazine_type = /obj/item/ammo_magazine/pistol/halo/m6d
 	num_of_magazines = 22
+
+/obj/item/ammo_box/magazine/unsc/small/m6d/empty
+	empty = TRUE
+
 
 //===========================//CUSTOM ARMOR WEBBING\\================================\\
 

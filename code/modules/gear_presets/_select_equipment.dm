@@ -173,6 +173,19 @@
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_languages(languages)
 
+
+/datum/equipment_preset/proc/load_dodgepool(mob/living/carbon/human/new_human)
+	new_human.dodge_pool = new_human.species.dodge_pool
+	new_human.dodge_pool_max = new_human.species.dodge_pool_max
+	new_human.dodge_pool_regen = new_human.species.dodge_pool_regen
+	new_human.dodge_pool_regen_max = new_human.species.dodge_pool_regen_max
+	new_human.dodge_pool_regen_restoration = new_human.species.dodge_pool_regen_restoration
+
+
+/datum/equipment_preset/proc/enable_dodgepool(mob/living/carbon/human/new_human, true_or_false)
+	new_human.dodge_pool_enabled = true_or_false
+
+
 /datum/equipment_preset/proc/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.vendor_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
 	new_human.vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS

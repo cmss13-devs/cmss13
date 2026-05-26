@@ -5,14 +5,16 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	sound_hit = "plasma_impact"
 	sound_miss = "plasma_miss"
+	effective_range_max = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 /datum/ammo/energy/plasma/plasma_pistol
 	name = "light plasma bolt"
 	icon_state = "plasma_teal"
-	accurate_range = 10
+	accurate_range = 8
 	max_range = 20
 	damage = 28
-	accuracy = HIT_ACCURACY_TIER_3
+	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
 
 /datum/ammo/energy/plasma/plasma_pistol/overcharge
@@ -24,7 +26,7 @@
 	name = "plasma bolt"
 	icon_state = "plasma_blue"
 	shell_speed = AMMO_SPEED_TIER_4
-	accurate_range = 14
+	accurate_range = 8
 	max_range = 24
 	damage = 38
 

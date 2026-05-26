@@ -881,6 +881,10 @@
 			return FALSE
 		if(mobility_aura)
 			. -= mobility_aura * 5
+
+		if(dodge_pool)
+			. -= dodge_pool * 8
+
 		var/mob/living/carbon/human/shooter_human = bullet.firer
 		if(istype(shooter_human))
 			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))
@@ -1012,6 +1016,16 @@
 			bullet.ammo.on_shield_block(src)
 			bullet_ping(bullet)
 			return
+
+	if(!(ammo_flags & AMMO_ROCKET))
+		if(istype(wear_suit, /obj/item/clothing/suit/marine/shielded))
+			var/obj/item/clothing/suit/marine/shielded/shield = wear_suit
+			if(shield.shield_strength >= 1)
+				if(ammo_flags & AMMO_LASER)
+					check_energy_shield(bullet.damage, "[bullet]", shield.shield_strength)
+				else
+					check_energy_shield(bullet.damage * 0.25, "[bullet]", shield.shield_strength)
+				return
 
 	var/obj/limb/organ = get_limb(check_zone(bullet.def_zone)) //Let's finally get what organ we actually hit.
 	if(!organ)

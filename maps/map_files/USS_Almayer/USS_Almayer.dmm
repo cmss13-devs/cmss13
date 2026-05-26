@@ -43084,7 +43084,7 @@
 /obj/structure/holohoop{
 	density = 0;
 	pixel_y = 24;
-	layer = 3.4;
+	layer = 4.4;
 	id = "prisonbball";
 	side = "left"
 	},
@@ -94383,7 +94383,7 @@
 /obj/structure/holohoop{
 	dir = 1;
 	pixel_y = -13;
-	layer = 2;
+	layer = 1;
 	id = "prisonbball";
 	side = "right"
 	},

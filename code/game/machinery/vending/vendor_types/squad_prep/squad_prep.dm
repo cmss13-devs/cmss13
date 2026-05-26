@@ -440,7 +440,7 @@
 		list("Burst Fire Assembly", 3, /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
 		list("Gyroscopic Stabilizer", 2, /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
 		list("Laser Sight", 3, /obj/item/attachable/lasersight, VENDOR_ITEM_RECOMMENDED),
-		list("Micro Laser Sight", 3, /obj/item/attachable/lasersight/micro, VENDOR_ITEM_RECOMMENDED),
+		list("Underbarrel Flashlight Grip", 6, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("M276 Pattern Shotgun Shell Loading Rig", 8, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),

@@ -32,6 +32,15 @@
 /obj/effect/pathogen/spore_sac/three_uses
 	max_batches = 3
 
+/obj/effect/pathogen/spore_sac/silent
+	silent_release = TRUE
+
+/obj/effect/pathogen/spore_sac/one_use
+	max_batches = 1
+
+/obj/effect/pathogen/spore_sac/three_uses
+	max_batches = 3
+
 /obj/effect/pathogen/spore_sac/get_examine_text(mob/user)
 	. = ..()
 	var/patho_user = is_pathogen_creature(user) || isobserver(user)
@@ -429,7 +438,7 @@
 		qdel(src)
 		return
 	if(silent_sac)
-		new /obj/effect/pathogen/spore_cloud/silent(loc)
+		new /obj/effect/pathogen/spore_sac/silent(loc)
 	else
-		new /obj/effect/pathogen/spore_cloud(loc)
+		new /obj/effect/pathogen/spore_sac(loc)
 	qdel(src)

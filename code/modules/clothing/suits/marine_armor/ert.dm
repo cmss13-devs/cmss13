@@ -529,6 +529,7 @@
 /obj/item/clothing/suit/storage/militia/full/smartgun
 	name = "colonial militia full armor harness"
 	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smartgunner harness, allowing the use of smartgun system electronics."
+	storage_slots = 2 //small nerf to compensate
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
 //===========================//CMB\\================================\\

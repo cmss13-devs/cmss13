@@ -250,7 +250,7 @@
 	new_human.equip_to_slot_or_del(new_uniform, WEAR_BODY)
 
 	var/obj/item/clothing/accessory/clf_cape/new_cape = new()
-	var/obj/item/clothing/suit/storage/militia/full/new_gambeson = new()
+	var/obj/item/clothing/suit/storage/militia/full/smartgun/new_gambeson = new()
 	new_gambeson.attach_accessory(new_human, new_cape)
 	new_human.equip_to_slot_or_del(new_gambeson, WEAR_JACKET)
 
@@ -266,10 +266,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/clf(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
-
-	spawn_weapon(/obj/item/weapon/gun/smg/fp9000, /obj/item/ammo_magazine/smg/fp9000, new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf(new_human), WEAR_L_HAND)

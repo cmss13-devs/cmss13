@@ -157,3 +157,7 @@
 /datum/gamemode_modifier/disable_wj_spawns
 	modifier_name = "Disable Working Joe"
 	modifier_desc = "Disables Working Joes from spawning."
+
+/datum/gamemode_modifier/no_random_spores
+	modifier_name = "No random Spore Sacs"
+	modifier_desc = "Stops pathogen spore sacs randomly spawning."

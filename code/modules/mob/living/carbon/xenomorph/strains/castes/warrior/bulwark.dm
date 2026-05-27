@@ -347,22 +347,6 @@
 
 	return BULWARK_REFLECTION_CHANCE_BACK
 
-/obj/projectile/proc/reflect_projectile_at_firer(mob/living/carbon/xenomorph/xeno_player, obj/projectile/bullet)
-	if(!bullet.firer || !isturf(loc))
-		return
-
-	var/obj/projectile/new_proj = new(get_turf(xeno_player), create_cause_data("reflective shield"))
-	new_proj.generate_bullet(bullet.ammo)
-	new_proj.damage = bullet.damage * BULWARK_REFLECTED_BULLET_DAMAGE
-	new_proj.accuracy = BULWARK_REFLECTED_BULLET_ACCURACY
-	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
-
-	var/angle = Get_Angle(xeno_player, bullet.firer) + rand(-25, 25)
-	var/atom/target = get_angle_target_turf(xeno_player, angle, get_dist_sqrd(xeno_player, bullet.firer))
-	new_proj.fire_at(target, xeno_player, xeno_player, 7, speed = bullet.ammo.shell_speed)
-
-	to_chat(xeno_player, SPAN_XENOWARNING("We reflect [bullet] back at [bullet.firer]!"))
-
 //
 // Custom Proc(s)
 //

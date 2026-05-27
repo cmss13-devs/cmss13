@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("SQUAD LEADER KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential SL Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-		list("Special Issue Rifle(For you or your squad)", 0, null, null, null),
+		list("SPECIAL ISSUE RIFLE(FOR YOU OR YOUR SQUAD)", 0, null, null, null),
 		list("BR55 Battle Rifle", 0, /obj/item/weapon/gun/rifle/halo/br55, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 
 		list("CLOTHING ITEMS", 0, null, null, null),

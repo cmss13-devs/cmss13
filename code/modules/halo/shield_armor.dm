@@ -361,10 +361,6 @@
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 
-/obj/item/clothing/suit/marine/shielded/sangheili/minor/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/pads/sangheili/minor/pads = new()
-	src.attach_accessory(null, pads, TRUE)
 
 /obj/item/clothing/suit/marine/shielded/sangheili/major
 
@@ -380,10 +376,6 @@
 	armor_laser = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/suit/marine/shielded/sangheili/major/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/pads/sangheili/major/pads = new()
-	src.attach_accessory(null, pads, TRUE)
 
 /obj/item/clothing/suit/marine/shielded/sangheili/ultra
 
@@ -399,10 +391,6 @@
 	armor_laser = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
-/obj/item/clothing/suit/marine/shielded/sangheili/ultra/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/pads/sangheili/ultra/pads = new()
-	src.attach_accessory(null, pads, TRUE)
 
 /obj/item/clothing/suit/marine/shielded/sangheili/zealot
 
@@ -418,7 +406,11 @@
 	armor_laser = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
-/obj/item/clothing/suit/marine/shielded/sangheili/zealot/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/pads/sangheili/zealot/pads = new()
-	src.attach_accessory(null, pads, TRUE)
+/obj/item/clothing/suit/marine/shielded/sangheili/honor_guard // mega op but thats ok
+	name = "\improper Sangheili Honor Guard combat harness"
+	icon_state = "sang_major"
+	shield = SANG_SHIELD_HONOR_GUARD
+	armor_melee = CLOTHING_ARMOR_GIGAHIGH
+	armor_bullet = CLOTHING_ARMOR_GIGAHIGH
+	armor_laser = CLOTHING_ARMOR_GIGAHIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGHDOUBLEPLUSGOOD

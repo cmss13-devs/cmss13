@@ -1,5 +1,7 @@
 #define ACCESSORY_SLOT_SANG_SHOULDER "Sang Shoulder"
 #define ACCESSORY_SLOT_SANG_WEBBING "Sang Webbing"
+#define ACCESSORY_SLOT_UNGGOY_SHOULDER "Unggoy Shoulder"
+#define ACCESSORY_SLOT_UNGGOY_BICEP "Unggoy Bicep"
 
 /mob/living/carbon/human/proc/handle_luminosity()
 	var/new_luminosity = 0
@@ -32,7 +34,7 @@
 	name = "\improper Covenant ammunition belt"
 	desc = "A modular attachment for a warrior's combat harness that accepts several hard case blister units for personal storage, and to holster weaponry. Thanks to advancements in smart-materials, the belt is theoretically a true 'one size fits all' design."
 	icon = 'icons/halo/obj/items/clothing/covenant/belts.dmi'
-	icon_state = "sangbelt_minor"
+	icon_state = "sang_minor"
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/attachable/bayonet,
@@ -59,8 +61,8 @@
 /obj/item/storage/belt/marine/covenant/sangheili
 	name = "\improper Sangheili ammunition belt"
 	desc = "A modular attachment for a warrior's combat harness that accepts several hard case blister units for personal storage, and to holster weaponry. Thanks to advancements in smart-materials, the belt is theoretically a true 'one size fits all' design."
-	icon_state = "sangbelt_minor"
-	item_state = "sangbelt_minor"
+	icon_state = "sang_minor"
+	item_state = "sang_minor"
 	item_icons = list(
 		WEAR_WAIST = 'icons/halo/mob/humans/onmob/clothing/sangheili/belts.dmi'
 		)
@@ -72,64 +74,226 @@
 
 /obj/item/storage/belt/marine/covenant/sangheili/major
 	name = "\improper Sangheili Major ammunition belt"
-	icon_state = "sangbelt_major"
-	item_state = "sangbelt_major"
+	icon_state = "sang_major"
+	item_state = "sang_major"
 
 /obj/item/storage/belt/marine/covenant/sangheili/major/stored_needles
 
 /obj/item/storage/belt/marine/covenant/sangheili/ultra
 	name = "\improper Sangheili Ultra ammunition belt"
-	icon_state = "sangbelt_ultra"
-	item_state = "sangbelt_ultra"
+	icon_state = "sang_ultra"
+	item_state = "sang_ultra"
 
 /obj/item/storage/belt/marine/covenant/sangheili/zealot
 	name = "\improper Sangheili Zealot ammunition belt"
-	icon_state = "sangbelt_zealot"
-	item_state = "sangbelt_zealot"
+	icon_state = "sang_zealot"
+	item_state = "sang_zealot"
+
+/obj/item/storage/belt/marine/covenant/sangheili/specops
+	name = "\improper Sangheili Special Operations ammunition belt"
+	icon_state = "sang_specops"
+	item_state = "sang_specops"
+
+/obj/item/storage/belt/marine/covenant/sangheili/specops/ultra
+	name = "\improper Sangheili Special Operations Ultra ammunition belt"
+	icon_state = "sang_specultra"
+	item_state = "sang_specultra"
+
+/obj/item/storage/belt/marine/covenant/sangheili/stealth
+	name = "\improper Sangheili Stealth ammunition belt"
+	icon_state = "sang_stealth"
+	item_state = "sang_stealth"
+
+/obj/item/storage/belt/marine/covenant/sangheili/honor_guard
+	name = "\improper Sangheili Honor Guard ammunition belt"
+	icon_state = "sang_honorguard"
+	item_state = "sang_honorguard"
 
 /obj/item/storage/belt/marine/covenant/unggoy
 	name = "\improper Unggoy ammunition belt"
-	icon_state = "gruntbelt_minor"
-	item_state = "gruntbelt_minor"
+	icon_state = "unggoy_minor"
+	item_state = "unggoy_minor"
 	item_icons = list(
 		WEAR_WAIST = 'icons/halo/mob/humans/onmob/clothing/unggoy/belts.dmi'
 		)
 
 /obj/item/storage/belt/marine/covenant/unggoy/minor
 	name = "\improper Unggoy Minor ammunition belt"
-	icon_state = "gruntbelt_minor"
-	item_state = "gruntbelt_minor"
+	icon_state = "unggoy_minor"
+	item_state = "unggoy_minor"
 
 /obj/item/storage/belt/marine/covenant/unggoy/major
 	name = "\improper Unggoy Major ammunition belt"
-	icon_state = "gruntbelt_major"
-	item_state = "gruntbelt_major"
+	icon_state = "unggoy_major"
+	item_state = "unggoy_major"
 
 /obj/item/storage/belt/marine/covenant/unggoy/heavy
 	name = "\improper Unggoy ammunition belt"
-	icon_state = "gruntbelt_heavy"
-	item_state = "gruntbelt_heavy"
+	icon_state = "unggoy_heavy"
+	item_state = "unggoy_heavy"
 
 /obj/item/storage/belt/marine/covenant/unggoy/ultra
 	name = "\improper Unggoy Ultra ammunition belt"
-	icon_state = "gruntbelt_ultra"
-	item_state = "gruntbelt_ultra"
+	icon_state = "unggoy_ultra"
+	item_state = "unggoy_ultra"
 
 /obj/item/storage/belt/marine/covenant/unggoy/specops
-	name = "\improper Unggoy SpecOps ammunition belt"
-	icon_state = "gruntbelt_specops"
-	item_state = "gruntbelt_specops"
+	name = "\improper Unggoy Special Operations ammunition belt"
+	icon_state = "unggoy_specops"
+	item_state = "unggoy_specops"
 
 /obj/item/storage/belt/marine/covenant/unggoy/specops_ultra
-	name = "\improper Unggoy SpecOps ammunition belt"
-	icon_state = "gruntbelt_specops_ultra"
-	item_state = "gruntbelt_specops_ultra"
+	name = "\improper Unggoy Special Operations ammunition belt"
+	icon_state = "unggoy_specultra"
+	item_state = "unggoy_specultra"
+
+//======================
+// COVIE BACKPACKS
+//======================
+
+/obj/item/storage/backpack/covenant/unggoy
+	name = "\improper Unggoy methane tank pack"
+	desc = "A gas tank full of methane. It comes with limited magnetic attachment points."
+	icon = 'icons/halo/obj/items/clothing/covenant/back.dmi'
+	icon_state = "unggoy_minor_1"
+	item_state = "unggoy_minor_1"
+	item_icons = list(
+		WEAR_BACK = 'icons/halo/mob/humans/onmob/clothing/unggoy/back.dmi'
+		)
+	worn_accessible = TRUE
+	max_storage_space = 10
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+
+
+/obj/item/storage/backpack/covenant/unggoy/minor/pointy
+	name = "\improper Unggoy Minor methane tank pack"
+	icon_state = "unggoy_minor_1"
+	item_state = "unggoy_minor_1"
+
+
+/obj/item/storage/backpack/covenant/unggoy/minor/curlback
+	name = "\improper Unggoy Minor methane tank pack"
+	icon_state = "unggoy_minor_2"
+	item_state = "unggoy_minor_2"
+
+
+/obj/item/storage/backpack/covenant/unggoy/minor/doubleprong
+	name = "\improper Unggoy Minor methane tank pack"
+	icon_state = "unggoy_minor_3"
+	item_state = "unggoy_minor_3"
+
+
+/obj/item/storage/backpack/covenant/unggoy/minor/canister
+	name = "\improper Unggoy Minor methane tank pack"
+	icon_state = "unggoy_minor_4"
+	item_state = "unggoy_minor_4"
+
+
+/obj/item/storage/backpack/covenant/unggoy/major/pointy
+	name = "\improper Unggoy Major methane tank pack"
+	icon_state = "unggoy_major_1"
+	item_state = "unggoy_major_1"
+
+/obj/item/storage/backpack/covenant/unggoy/major/curlback
+	name = "\improper Unggoy Major methane tank pack"
+	icon_state = "unggoy_major_2"
+	item_state = "unggoy_major_2"
+
+/obj/item/storage/backpack/covenant/unggoy/major/doubleprong
+	name = "\improper Unggoy Major methane tank pack"
+	icon_state = "unggoy_major_3"
+	item_state = "unggoy_major_3"
+
+/obj/item/storage/backpack/covenant/unggoy/major/canister
+	name = "\improper Unggoy Major methane tank pack"
+	icon_state = "unggoy_major_4"
+	item_state = "unggoy_major_4"
+
+/obj/item/storage/backpack/covenant/unggoy/ultra/pointy
+	name = "\improper Unggoy Ultra methane tank pack"
+	icon_state = "unggoy_ultra_1"
+	item_state = "unggoy_ultra_1"
+
+/obj/item/storage/backpack/covenant/unggoy/ultra/curlback
+	name = "\improper Unggoy Ultra methane tank pack"
+	icon_state = "unggoy_ultra_2"
+	item_state = "unggoy_ultra_2"
+
+/obj/item/storage/backpack/covenant/unggoy/ultra/doubleprong
+	name = "\improper Unggoy Ultra methane tank pack"
+	icon_state = "unggoy_ultra_3"
+	item_state = "unggoy_ultra_3"
+
+/obj/item/storage/backpack/covenant/unggoy/ultra/canister
+	name = "\improper Unggoy Ultra methane tank pack"
+	icon_state = "unggoy_ultra_4"
+	item_state = "unggoy_ultra_4"
+
+/obj/item/storage/backpack/covenant/unggoy/heavy/pointy
+	name = "\improper Unggoy Heavy methane tank pack"
+	icon_state = "unggoy_heavy_1"
+	item_state = "unggoy_heavy_1"
+
+/obj/item/storage/backpack/covenant/unggoy/heavy/curlback
+	name = "\improper Unggoy Heavy methane tank pack"
+	icon_state = "unggoy_heavy_2"
+	item_state = "unggoy_heavy_2"
+
+/obj/item/storage/backpack/covenant/unggoy/heavy/doubleprong
+	name = "\improper Unggoy Heavy methane tank pack"
+	icon_state = "unggoy_heavy_3"
+	item_state = "unggoy_heavy_3"
+
+/obj/item/storage/backpack/covenant/unggoy/heavy/canister
+	name = "\improper Unggoy Heavy methane tank pack"
+	icon_state = "unggoy_heavy_4"
+	item_state = "unggoy_heavy_4"
+
+/obj/item/storage/backpack/covenant/unggoy/specops/pointy
+	name = "\improper Unggoy Special Operations methane tank pack"
+	icon_state = "unggoy_specops_1"
+	item_state = "unggoy_specops_1"
+
+/obj/item/storage/backpack/covenant/unggoy/specops/curlback
+	name = "\improper Unggoy Special Operations methane tank pack"
+	icon_state = "unggoy_specops_2"
+	item_state = "unggoy_specops_2"
+
+/obj/item/storage/backpack/covenant/unggoy/specops/doubleprong
+	name = "\improper Unggoy Special Operations methane tank pack"
+	icon_state = "unggoy_specops_3"
+	item_state = "unggoy_specops_3"
+
+/obj/item/storage/backpack/covenant/unggoy/specops/canister
+	name = "\improper Unggoy Special Operations methane tank pack"
+	icon_state = "unggoy_specops_4"
+	item_state = "unggoy_specops_4"
+
+/obj/item/storage/backpack/covenant/unggoy/specops_ultra/pointy
+	name = "\improper Unggoy Special Operations Ultra methane tank pack"
+	icon_state = "unggoy_specultra_1"
+	item_state = "unggoy_specultra_1"
+
+/obj/item/storage/backpack/covenant/unggoy/specops_ultra/curlback
+	name = "\improper Unggoy Special Operations Ultra methane tank pack"
+	icon_state = "unggoy_specultra_2"
+	item_state = "unggoy_specultra_2"
+
+/obj/item/storage/backpack/covenant/unggoy/specops_ultra/doubleprong
+	name = "\improper Unggoy Special Operations Ultra methane tank pack"
+	icon_state = "unggoy_specultra_3"
+	item_state = "unggoy_specultra_3"
+
+/obj/item/storage/backpack/covenant/unggoy/specops_ultra/canister
+	name = "\improper Unggoy Special Operations Ultra methane tank pack"
+	icon_state = "unggoy_specultra_4"
+	item_state = "unggoy_specultra_4"
 
 /obj/item/clothing/gloves/marine/sangheili
 	name = "\improper Sangheili gauntlets"
 	desc = "Simple gauntlets worn over the wrists of a Sangheili, made of common nanolaminate composites. Fitted precisely, these gauntlets do not interfere whatsoever with the warriors work, and in the case where pure brute strength is needed, prove sufficient as improvised weapons."
 	icon = 'icons/halo/obj/items/clothing/covenant/gloves.dmi'
-	icon_state = "sanggauntlets_minor"
+	icon_state = "sang_minor"
 	item_state = "sangauntlets_minor"
 
 	item_icons = list(
@@ -148,7 +312,7 @@
 
 /obj/item/clothing/gloves/marine/sangheili/major
 	name = "\improper Sangheili Major gauntlets"
-	icon_state = "sanggauntlets_major"
+	icon_state = "sang_major"
 
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -157,7 +321,7 @@
 
 /obj/item/clothing/gloves/marine/sangheili/ultra
 	name = "\improper Sangheili Ultra gauntlets"
-	icon_state = "sanggauntlets_ultra"
+	icon_state = "sang_ultra"
 
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
@@ -166,19 +330,130 @@
 
 /obj/item/clothing/gloves/marine/sangheili/zealot
 	name = "\improper Sangheili Zealot gauntlets"
-	icon_state = "sanggauntlets_zealot"
+	icon_state = "sang_zealot"
 
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
 	armor_laser = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
+/obj/item/clothing/gloves/marine/sangheili/specops
+	name = "\improper Sangheili Special Operations gauntlets"
+	icon_state = "sang_specops"
+
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGH
+	armor_laser = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/gloves/marine/sangheili/specops/ultra
+	name = "\improper Sangheili Special Operations Ultra gauntlets"
+	icon_state = "sang_specultra"
+
+	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_VERYHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/gloves/marine/sangheili/stealth
+	name = "\improper Sangheili Stealth gauntlets"
+	icon_state = "sang_stealth"
+
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/gloves/marine/sangheili/honor_guard // deflects ur bullets
+	name = "\improper Sangheili Honor Guard gauntlets"
+	icon_state = "sang_honorguard"
+
+	armor_melee = CLOTHING_ARMOR_GIGAHIGH
+	armor_bullet = CLOTHING_ARMOR_GIGAHIGH
+	armor_laser = CLOTHING_ARMOR_GIGAHIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGHDOUBLEPLUSGOOD
+
+//======================
+// UNGGOY
+//======================
+
+/obj/item/clothing/gloves/marine/unggoy
+	name = "\improper Unggoy bracers"
+	desc = "Simple bracers worn over the wrists of an Unggoy."
+	icon = 'icons/halo/obj/items/clothing/covenant/gloves.dmi'
+	icon_state = "unggoy_minor"
+	item_state = "unggoy_minor"
+
+	item_icons = list(
+		WEAR_HANDS = 'icons/halo/mob/humans/onmob/clothing/unggoy/gloves.dmi'
+	)
+
+	allowed_species_list = list(SPECIES_UNGGOY)
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/gloves/marine/unggoy/minor
+	name = "\improper Unggoy Minor bracers"
+
+/obj/item/clothing/gloves/marine/unggoy/major
+	name = "\improper Unggoy Major bracers"
+	icon_state = "unggoy_major"
+	item_state = "unggoy_major"
+
+/obj/item/clothing/gloves/marine/unggoy/ultra
+	name = "\improper Unggoy Ultra bracers"
+	icon_state = "unggoy_ultra"
+	item_state = "unggoy_ultra"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/gloves/marine/unggoy/heavy
+	name = "\improper Unggoy Heavy bracers"
+	icon_state = "unggoy_heavy"
+	item_state = "unggoy_heavy"
+
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+
+/obj/item/clothing/gloves/marine/unggoy/specops
+	name = "\improper Unggoy Special Operations bracers"
+	icon_state = "unggoy_specops"
+	item_state = "unggoy_specops"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/gloves/marine/unggoy/specops_ultra
+	name = "\improper Unggoy Special Operations Ultra bracers"
+	icon_state = "unggoy_specultra"
+	item_state = "unggoy_specultra"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
 /obj/item/clothing/head/helmet/marine/sangheili
 	name = "\improper Sangheili helmet"
 	desc = "A nanolaminate helmet inspired by ancient Sangheili armours of the Pre-Covenant, having not changed its design in fifty generations. Fitted with comprehensive communications and smart-link systems allowing the wearer to maintain both control of their levies and fine operation of their weapons."
 	icon = 'icons/halo/obj/items/clothing/covenant/helmets.dmi'
-	icon_state = "sanghelmet_minor"
-	item_state = "sanghelmet_minor"
+	icon_state = "sang_minor_1"
+	item_state = "sang_minor_1"
 
 	item_icons = list(
 		WEAR_HEAD = 'icons/halo/mob/humans/onmob/clothing/sangheili/hat.dmi'
@@ -201,39 +476,190 @@
 /obj/item/clothing/head/helmet/marine/sangheili/minor
 	name = "\improper Sangheili Minor helmet"
 
+/obj/item/clothing/head/helmet/marine/sangheili/minor/manta_hat
+	icon_state = "sang_minor_2"
+
 /obj/item/clothing/head/helmet/marine/sangheili/major
 	name = "\improper Sangheili Major helmet"
-	icon_state = "sanghelmet_major"
+	icon_state = "sang_major_1"
 
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 
+/obj/item/clothing/head/helmet/marine/sangheili/major/manta_hat
+	icon_state = "sang_major_2"
+
 /obj/item/clothing/head/helmet/marine/sangheili/ultra
 	name = "\improper Sangheili Ultra helmet"
-	icon_state = "sanghelmet_ultra"
+	icon_state = "sang_ultra_1"
 
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_laser = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
+
+/obj/item/clothing/head/helmet/marine/sangheili/ultra/manta_hat
+	icon_state = "sang_ultra_2"
+
 /obj/item/clothing/head/helmet/marine/sangheili/zealot
 	name = "\improper Sangheili Zealot helmet"
-	icon_state = "sanghelmet_zealot"
+	icon_state = "sang_zealot_1"
 
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
 	armor_laser = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
+/obj/item/clothing/head/helmet/marine/sangheili/zealot/manta_hat
+	icon_state = "sang_zealot_2"
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops
+	name = "\improper Sangheili Special Operations helmet"
+	icon_state = "sang_specops_1"
+
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGH
+	armor_laser = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops/manta_hat
+	icon_state = "sang_specops_2"
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops/assault
+	name = "Sangheili Special Operations Assault helmet"
+	icon_state = "sang_specops_3"
+	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKGASEFFECT
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops/ultra
+	name = "\improper Sangheili Special Operations Ultra helmet"
+	icon_state = "sang_specultra_1"
+
+	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_VERYHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops/ultra/manta_hat
+	icon_state = "sang_specultra_2"
+
+/obj/item/clothing/head/helmet/marine/sangheili/specops/ultra/assault
+	name = "Sangheili Special Operations Ultra Assault helmet"
+	icon_state = "sang_specultra_3"
+	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKGASEFFECT
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/helmet/marine/sangheili/stealth
+	name = "\improper Sangheili Stealth helmet"
+	icon_state = "sang_stealth_1"
+
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/head/helmet/marine/sangheili/stealth/manta_hat
+	icon_state = "sang_stealth_2"
+
+/obj/item/clothing/head/helmet/marine/sangheili/stealth/assault
+	name = "Sangheili Stealth Assault helmet"
+	icon_state = "sang_stealth_3"
+	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKGASEFFECT
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/helmet/marine/sangheili/honor_guard // kill everyone forever. stupidly op but its ok.
+	name = "\improper Sangheili Honor Guard helmet"
+	icon_state = "sang_honorguard"
+	item_icons = list(
+		WEAR_HEAD = 'icons/halo/mob/humans/onmob/clothing/sangheili/hat_64.dmi'
+	)
+
+	armor_melee = CLOTHING_ARMOR_GIGAHIGH
+	armor_bullet = CLOTHING_ARMOR_GIGAHIGH
+	armor_laser = CLOTHING_ARMOR_GIGAHIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGHDOUBLEPLUSGOOD
+
+//======================
+// UNGGOY
+//======================
+
+/obj/item/clothing/head/helmet/marine/unggoy
+	name = "\improper Unggoy helmet"
+	desc = "A nanolaminate helmet for Unggoy."
+	icon = 'icons/halo/obj/items/clothing/covenant/helmets.dmi'
+	icon_state = "unggoy_minor_assault"
+	item_state = "unggoy_minor_assault"
+
+	item_icons = list(
+		WEAR_HEAD = 'icons/halo/mob/humans/onmob/clothing/unggoy/hat.dmi'
+	)
+
+	allowed_species_list = list(SPECIES_UNGGOY)
+
+	flags_marine_helmet = NO_FLAGS
+	flags_inventory = NO_FLAGS
+	flags_inv_hide = NO_FLAGS
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	built_in_visors = list()
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/head/helmet/marine/unggoy/minor
+	name = "\improper Unggoy Minor assault helmet"
+	icon_state = "unggoy_minor_assault"
+	item_state = "unggoy_minor_assault"
+
+/obj/item/clothing/head/helmet/marine/unggoy/major
+	name = "\improper Unggoy Major assault helmet"
+	icon_state = "unggoy_major_assault"
+	item_state = "unggoy_major_assault"
+
+/obj/item/clothing/head/helmet/marine/unggoy/ultra
+	name = "\improper Unggoy Ultra assault helmet"
+	icon_state = "unggoy_ultra_assault"
+	item_state = "unggoy_ultra_assault"
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/helmet/marine/unggoy/heavy
+	name = "\improper Unggoy Heavy assault helmet"
+	icon_state = "unggoy_heavy_assault"
+	item_state = "unggoy_heavy_assault"
+
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+
+
+/obj/item/clothing/head/helmet/marine/unggoy/specops
+	name = "\improper Unggoy Special Operations assault helmet"
+	icon_state = "unggoy_specops_assault"
+	item_state = "unggoy_specops_assault"
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/helmet/marine/unggoy/specops_ultra
+	name = "\improper Unggoy Special Operations assault helmet"
+	icon_state = "unggoy_specultra_assault"
+	item_state = "unggoy_specultra_assault"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+
 /obj/item/clothing/shoes/sangheili
 	name = "Sangheili combat boots"
 	desc = "A pair of fitted greaves and accompanying boots. While the external nanolaminate construction may suggest rigidity and discomfort, the internal lining is surprisingly plush, wicking sweat and passively regulating tempature. These benefits allow the warrior to focus on the art of killing, and not how much they may hate marching."
 	icon = 'icons/halo/obj/items/clothing/covenant/shoes.dmi'
-	icon_state = "sangboots_minor"
-	item_state = "sangboots_minor"
+	icon_state = "sang_minor"
+	item_state = "sang_minor"
 
 	drop_sound = "armorequip"
 
@@ -253,7 +679,7 @@
 
 /obj/item/clothing/shoes/sangheili/major
 	name = "Sangheili Major combat boots"
-	icon_state = "sangboots_major"
+	icon_state = "sang_major"
 
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -262,7 +688,7 @@
 
 /obj/item/clothing/shoes/sangheili/ultra
 	name = "Sangheili Ultra combat boots"
-	icon_state = "sangboots_ultra"
+	icon_state = "sang_ultra"
 
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
@@ -270,13 +696,128 @@
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
 /obj/item/clothing/shoes/sangheili/zealot
-	name = "Sangheili Zealot combat boots"
-	icon_state = "sangboots_zealot"
+	name = "\improper Sangheili Zealot combat boots"
+	icon_state = "sang_zealot"
 
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
 	armor_laser = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/shoes/sangheili/specops
+	name = "\improper Sangheili Special Operations combat boots"
+	icon_state = "sang_specops"
+
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGH
+	armor_laser = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/shoes/sangheili/specops/ultra
+	name = "\improper Sangheili Special Operations Ultra combat boots"
+	icon_state = "sang_specultra"
+
+	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_VERYHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/shoes/sangheili/stealth
+	name = "\improper Sangheili Stealth combat boots"
+	icon_state = "sang_stealth"
+
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/shoes/sangheili/honor_guard
+	name = "\improper Sangheili Honor Guard combat boots"
+	icon_state = "sang_honorguard"
+
+	armor_melee = CLOTHING_ARMOR_GIGAHIGH
+	armor_bullet = CLOTHING_ARMOR_GIGAHIGH
+	armor_laser = CLOTHING_ARMOR_GIGAHIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGHDOUBLEPLUSGOOD
+
+//======================
+// UNGGOY
+//======================
+
+/obj/item/clothing/shoes/unggoy
+	name = "\improper Unggoy greaves"
+	desc = "A pair of fitted greaves."
+	icon = 'icons/halo/obj/items/clothing/covenant/shoes.dmi'
+	icon_state = "unggoy_minor"
+	item_state = "unggoy_minor"
+
+	drop_sound = "armorequip"
+
+	item_icons = list(
+		WEAR_FEET = 'icons/halo/mob/humans/onmob/clothing/unggoy/shoes.dmi'
+	)
+
+	allowed_species_list = list(SPECIES_UNGGOY)
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/shoes/unggoy/minor
+	name = "\improper Unggoy Minor greaves"
+	icon_state = "unggoy_minor"
+	item_state = "unggoy_minor"
+
+/obj/item/clothing/shoes/unggoy/major
+	name = "\improper Unggoy Major greaves"
+	icon_state = "unggoy_major"
+	item_state = "unggoy_major"
+
+/obj/item/clothing/shoes/unggoy/ultra
+	name = "Unggoy Ultra greaves"
+	icon_state = "unggoy_ultra"
+	item_state = "unggoy_ultra"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/shoes/unggoy/heavy
+	name = "Unggoy Heavy greaves"
+	icon_state = "unggoy_heavy"
+	item_state = "unggoy_heavy"
+
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+
+/obj/item/clothing/shoes/unggoy/specops
+	name = "Unggoy Special Operations greaves"
+	icon_state = "unggoy_specops"
+	item_state = "unggoy_specops"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/shoes/unggoy/specops_ultra
+	name = "Unggoy Special Operations Ultra greaves"
+	icon_state = "unggoy_specultra"
+	item_state = "unggoy_specultra"
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/under/marine/covenant
 	name = "undersuit"
@@ -301,12 +842,19 @@
 	drop_sound = "armorequip"
 	allowed_species_list = list(SPECIES_SANGHEILI)
 	item_state_slots = list()
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET
 
 	item_icons = list(
-		WEAR_BODY = 'icons/halo/mob/humans/onmob/sangheili/uniforms.dmi',
-		WEAR_L_HAND = 'icons/halo/mob/humans/onmob/items_lefthand_halo.dmi',
-		WEAR_R_HAND = 'icons/halo/mob/humans/onmob/items_righthand_halo.dmi'
+		WEAR_BODY = 'icons/halo/mob/humans/onmob/clothing/sangheili/uniforms.dmi',
 	)
+
+/obj/item/clothing/under/marine/covenant/sangheili/fullbody
+	name = "\improper full-coverage Sangheili undersuit"
+	flags_jumpsuit = null
+	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
+	icon_state = "sangheili_undersuit_2"
+	item_state = "sangheili_undersuit_2"
+	worn_state = "sangheili_undersuit_2"
 
 /obj/item/clothing/under/marine/covenant/unggoy
 	name = "Unggoy magnetic webbing"
@@ -383,6 +931,10 @@
 	)
 	anti_hug = 6
 
+/obj/item/clothing/mask/gas/unggoy/specops
+	icon_state = "specops_mask"
+	item_state = "specops_mask"
+
 /obj/item/clothing/suit/marine/unggoy
 	name = "placeholder Unggoy combat harness"
 	desc = "A combat harness made to fit an Unggoy. Placeholder."
@@ -402,6 +954,8 @@
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+	valid_accessory_slots = list(ACCESSORY_SLOT_UNGGOY_BICEP, ACCESSORY_SLOT_UNGGOY_SHOULDER)
 
 /obj/item/clothing/suit/marine/unggoy/minor
 	name = "Unggoy Minor combat harness"
@@ -491,35 +1045,194 @@
 	name = "\improper Sangheili shoulder pads"
 	desc = "Pauldrons of venerable design, fitted to a warrior's combat harness to protect the upper arms. While simple in function, the strong nanolaminate composites of these pauldrons provide ample protection."
 	icon = 'icons/halo/obj/items/clothing/covenant/accessories.dmi'
-	icon_state = "sangpads_minor"
-	item_state = "sangpads_minor"
+	icon_state = "sang_minor_1"
+	item_state = "sang_minor_1"
+	allowed_species_list = list(SPECIES_SANGHEILI)
 	worn_accessory_slot = ACCESSORY_SLOT_SANG_SHOULDER
 	flags_atom = NO_GAMEMODE_SKIN
 	accessory_icons = list(WEAR_BODY = 'icons/halo/mob/humans/onmob/clothing/sangheili/accessories.dmi', WEAR_JACKET = 'icons/halo/mob/humans/onmob/clothing/sangheili/accessories.dmi')
 
 /obj/item/clothing/accessory/pads/sangheili/minor
 	name = "\improper Sangheili Minor shoulder pads"
+	icon_state = "sang_minor_1"
+	item_state = "sang_minor_1"
+
+/obj/item/clothing/accessory/pads/sangheili/minor/variant_2
+	icon_state = "sang_minor_2"
+	item_state = "sang_minor_2"
+
+/obj/item/clothing/accessory/pads/sangheili/minor/variant_3
+	icon_state = "sang_minor_3"
+	item_state = "sang_minor_3"
 
 /obj/item/clothing/accessory/pads/sangheili/major
 	name = "\improper Sangheili Major shoulder pads"
-	icon_state = "sangpads_major"
-	item_state = "sangpads_major"
+	icon_state = "sang_major_1"
+	item_state = "sang_major_1"
+
+/obj/item/clothing/accessory/pads/sangheili/major/variant_2
+	icon_state = "sang_major_2"
+	item_state = "sang_major_2"
+
+/obj/item/clothing/accessory/pads/sangheili/major/variant_3
+	icon_state = "sang_major_3"
+	item_state = "sang_major_3"
 
 /obj/item/clothing/accessory/pads/sangheili/ultra
 	name = "\improper Sangheili Ultra shoulder pads"
-	icon_state = "sangpads_ultra"
-	item_state = "sangpads_ultra"
+	icon_state = "sang_ultra_1"
+	item_state = "sang_ultra_1"
+
+/obj/item/clothing/accessory/pads/sangheili/ultra/variant_2
+	icon_state = "sang_ultra_2"
+	item_state = "sang_ultra_2"
+
+/obj/item/clothing/accessory/pads/sangheili/ultra/variant_3
+	icon_state = "sang_ultra_3"
+	item_state = "sang_ultra_3"
 
 /obj/item/clothing/accessory/pads/sangheili/zealot
 	name = "\improper Sangheili Zealot shoulder pads"
-	icon_state = "sangpads_zealot"
-	item_state = "sangpads_zealot"
+	icon_state = "sang_zealot_1"
+	item_state = "sang_zealot_1"
+
+/obj/item/clothing/accessory/pads/sangheili/zealot/variant_2
+	icon_state = "sang_zealot_2"
+	item_state = "sang_zealot_2"
+
+/obj/item/clothing/accessory/pads/sangheili/zealot/variant_3
+	icon_state = "sang_zealot_3"
+	item_state = "sang_zealot_3"
+
+/obj/item/clothing/accessory/pads/sangheili/specops
+	name = "\improper Sangheili Special Operations shoulder pads"
+	icon_state = "sang_specops_1"
+	item_state = "sang_specops_1"
+
+/obj/item/clothing/accessory/pads/sangheili/specops/variant_2
+	icon_state = "sang_specops_2"
+	item_state = "sang_specops_2"
+
+/obj/item/clothing/accessory/pads/sangheili/specops/variant_3
+	icon_state = "sang_specops_3"
+	item_state = "sang_specops_3"
+
+/obj/item/clothing/accessory/pads/sangheili/specops/ultra
+	name = "\improper Sangheili Special Operations Ultra shoulder pads"
+	icon_state = "sang_specultra_1"
+	item_state = "sang_specultra_1"
+
+/obj/item/clothing/accessory/pads/sangheili/specops/ultra/variant_2
+	icon_state = "sang_specultra_2"
+	item_state = "sang_specultra_2"
+
+/obj/item/clothing/accessory/pads/sangheili/specops/ultra/variant_3
+	icon_state = "sang_specultra_3"
+	item_state = "sang_specultra_3"
+
+/obj/item/clothing/accessory/pads/sangheili/stealth
+	name = "\improper Sangheili Stealth shoulder pads"
+	icon_state = "sang_stealth_1"
+	item_state = "sang_stealth_1"
+
+/obj/item/clothing/accessory/pads/sangheili/stealth/variant_2
+	icon_state = "sang_stealth_2"
+	item_state = "sang_stealth_2"
+
+/obj/item/clothing/accessory/pads/sangheili/stealth/variant_3
+	icon_state = "sang_stealth_3"
+	item_state = "sang_stealth_3"
+
+/obj/item/clothing/accessory/pads/sangheili/honor_guard
+	name = "\improper Sangheili Honor Guard shoulder pads"
+	icon_state = "sang_honorguard"
+	item_state = "sang_honorguard"
+
+//======================
+// UNGGOY
+//======================
+
+/obj/item/clothing/accessory/pads/unggoy
+	name = "\improper Unggoy shoulder pads"
+	desc = "Pauldrons of venerable design, fitted to a warrior's combat harness to protect the upper arms. While simple in function, the strong nanolaminate composites of these pauldrons provide ample protection."
+	icon = 'icons/halo/obj/items/clothing/covenant/accessories.dmi'
+	icon_state = "unggoy_minor_shoulder"
+	item_state = "unggoy_minor_shoulder"
+	allowed_species_list = list(SPECIES_UNGGOY)
+	worn_accessory_slot = ACCESSORY_SLOT_UNGGOY_SHOULDER
+	flags_atom = NO_GAMEMODE_SKIN
+	accessory_icons = list(WEAR_BODY = 'icons/halo/mob/humans/onmob/clothing/unggoy/accessories.dmi', WEAR_JACKET = 'icons/halo/mob/humans/onmob/clothing/unggoy/accessories.dmi')
+
+/obj/item/clothing/accessory/pads/unggoy/minor
+	name = "\improper Unggoy Minor shoulder pads"
+
+/obj/item/clothing/accessory/pads/unggoy/major
+	name = "\improper Unggoy Major shoulder pads"
+	icon_state = "unggoy_major_shoulder"
+	item_state = "unggoy_major_shoulder"
+
+/obj/item/clothing/accessory/pads/unggoy/ultra
+	name = "\improper Unggoy Ultra shoulder pads"
+	icon_state = "unggoy_ultra_shoulder"
+	item_state = "unggoy_ultra_shoulder"
+
+/obj/item/clothing/accessory/pads/unggoy/heavy
+	name = "\improper Unggoy Heavy shoulder pads"
+	icon_state = "unggoy_heavy_shoulder"
+	item_state = "unggoy_heavy_shoulder"
+
+/obj/item/clothing/accessory/pads/unggoy/specops
+	name = "\improper Unggoy Special Operations shoulder pads"
+	icon_state = "unggoy_specops_shoulder"
+	item_state = "unggoy_specops_shoulder"
+
+/obj/item/clothing/accessory/pads/unggoy/specops_ultra
+	name = "\improper Unggoy Special Operations Ultra shoulder pads"
+	icon_state = "unggoy_specultra_shoulder"
+	item_state = "unggoy_specultra_shoulder"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep
+	name = "\improper Unggoy bicep armor"
+	desc = "Pauldrons of venerable design, fitted to a warrior's combat harness to protect the upper arms. While simple in function, the strong nanolaminate composites of these pauldrons provide ample protection."
+	icon = 'icons/halo/obj/items/clothing/covenant/accessories.dmi'
+	icon_state = "unggoy_minor_bicep"
+	item_state = "unggoy_minor_bicep"
+	worn_accessory_slot = ACCESSORY_SLOT_UNGGOY_BICEP
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/minor
+	name = "\improper Unggoy Minor bicep armor"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/major
+	name = "\improper Unggoy Major bicep armor"
+	icon_state = "unggoy_major_bicep"
+	item_state = "unggoy_major_bicep"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/ultra
+	name = "\improper Unggoy Ultra bicep armor"
+	icon_state = "unggoy_ultra_bicep"
+	item_state = "unggoy_ultra_bicep"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/heavy
+	name = "\improper Unggoy Heavy bicep armor"
+	icon_state = "unggoy_heavy_bicep"
+	item_state = "unggoy_heavy_bicep"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/specops
+	name = "\improper Unggoy Special Operations bicep armor"
+	icon_state = "unggoy_specops_bicep"
+	item_state = "unggoy_specops_bicep"
+
+/obj/item/clothing/accessory/pads/unggoy/bicep/specops_ultra
+	name = "\improper Unggoy Special Operations Ultra bicep armor"
+	icon_state = "unggoy_specultra_bicep"
+	item_state = "unggoy_specultra_bicep"
+
 
 /obj/item/storage/pouch/firstaid/full/alternate/cov
 	name = "Covenant First Aid Pouch"
 	desc = "full of alien healing supplies"
 	color = "#CC99FF"
-	storage_slots = 6
+	storage_slots = 7
 
 	can_hold = list(
 		/obj/item/storage/pill_bottle/packet/tricordrazine/cov,
@@ -532,11 +1245,12 @@
 
 /obj/item/storage/pouch/firstaid/full/alternate/cov/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/tricordrazine/cov(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/cov(src)
 	new /obj/item/stack/medical/splint/cov(src)
 	new /obj/item/stack/medical/ointment/cov(src)
 	new /obj/item/stack/medical/bruise_pack/cov(src)
 	new /obj/item/reagent_container/food/snacks/protein_pack/cov(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/cov(src)
+	new /obj/item/reagent_container/food/snacks/protein_pack/cov(src)
 
 
 /obj/item/stack/medical/bruise_pack/cov
@@ -570,7 +1284,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/cov
 	name = "covenant recovery stimulant"
-	desc = "A stimulant said to stabilize sangheili and unggoy warriors and help recover from internal wounds."
+	desc = "A combat stimulant which stabilizes downed covenant, similar to inaprovaline."
 	chemname = "cathwei"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"

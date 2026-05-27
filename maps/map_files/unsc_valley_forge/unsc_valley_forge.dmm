@@ -7764,6 +7764,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
+"flp" = (
+/turf/closed/wall/unsc,
+/area/almayer/command/airoom)
 "flu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54894,11 +54897,11 @@ xho
 xho
 xho
 nub
-faC
-faC
-faC
-faC
-faC
+flp
+flp
+flp
+flp
+flp
 rsv
 vCF
 dkr
@@ -54997,7 +55000,7 @@ faC
 faC
 faC
 faC
-faC
+flp
 jSB
 cjT
 txx

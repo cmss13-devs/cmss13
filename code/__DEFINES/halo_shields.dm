@@ -4,3 +4,4 @@
 #define SANG_SHIELD_ULTRA /datum/halo_shield/sangheili/ultra
 #define SANG_SHIELD_ZEALOT /datum/halo_shield/sangheili/zealot
 #define SANG_SHIELD_STEALTH /datum/halo_shield/sangheili/stealth
+#define SANG_SHIELD_HONOR_GUARD /datum/halo_shield/sangheili/honor_guard

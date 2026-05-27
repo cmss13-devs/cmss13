@@ -35,6 +35,11 @@
 	max_shield_strength = 400
 	recovery_time = 2 SECONDS
 
+/datum/halo_shield/sangheili/honor_guard
+	max_shield_strength = 600
+	recovery_time = 2 SECONDS
+	time_to_regen = 10 SECONDS
+
 /datum/halo_shield/sangheili/stealth
 	max_shield_strength = 100
 	time_to_regen = 10 SECONDS

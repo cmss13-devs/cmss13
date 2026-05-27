@@ -309,6 +309,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/unsc/corpsman(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(new_human), WEAR_IN_BACK)
 
+/datum/equipment_preset/unsc/spartan/equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_HIGH
+
 /datum/equipment_preset/unsc/spartan/sniper
 	name = "Spartan Sniper"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
@@ -346,6 +349,9 @@
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/halo(new_human), WEAR_BACK)
 
+/datum/equipment_preset/unsc/spartan/sniper/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_HIGH
+
 /datum/equipment_preset/unsc/spartan/cqc
 	name = "Spartan CQC"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
@@ -373,6 +379,8 @@
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/halo/m90(new_human), WEAR_BACK)
 
+/datum/equipment_preset/unsc/spartan/cqc/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_HIGH
 
 /datum/species/spartan
 	group = SPECIES_SPARTAN

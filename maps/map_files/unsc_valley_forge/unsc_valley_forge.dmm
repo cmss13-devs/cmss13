@@ -218,9 +218,9 @@
 /area/almayer/command/securestorage)
 "ahV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_x = 16;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_x = 24
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/intel)
@@ -296,9 +296,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/bridgebunks)
 "akj" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_y = 32;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_y = 30
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -769,7 +769,7 @@
 /area/almayer/engineering/lower/engine_core)
 "aCi" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "aCy" = (
@@ -928,7 +928,7 @@
 /turf/open/floor/almayer/emeraldcorner,
 /area/almayer/squads/charlie)
 "aIM" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "aIO" = (
@@ -1165,7 +1165,7 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/hallways/lower/repair_bay)
 "aPH" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha_bravo_shared)
 "aQe" = (
@@ -1338,7 +1338,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/lower/engine_core)
 "aVy" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#dae2ff";
 	dir = 8
@@ -1953,9 +1953,9 @@
 /turf/closed/wall/unsc,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bll" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_y = 31;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_y = 24
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/bridgebunks)
@@ -1987,7 +1987,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie_delta_shared)
 "blQ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 4
@@ -2029,6 +2029,13 @@
 	},
 /turf/open/shuttle/escapepod/floor1,
 /area/almayer/maint/lower/cryo_cells)
+"bog" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/vehiclehangar)
 "boo" = (
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/armory)
@@ -2115,7 +2122,10 @@
 "buh" = (
 /obj/structure/machinery/cm_vending/clothing/vehicle_crew{
 	density = 0;
-	pixel_x = -32
+	pixel_x = -30
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -2352,9 +2362,9 @@
 /turf/open/floor/almayer,
 /area/almayer/command/airoom)
 "bBk" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
-	pixel_y = 32;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo{
+	density = 0;
+	pixel_y = 30
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -2777,7 +2787,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering/port)
 "bTt" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/closed/wall/unsc,
 /area/almayer/shipboard/sea_office)
 "bTv" = (
@@ -3952,9 +3962,9 @@
 /turf/open/floor/plating,
 /area/almayer/squads/delta)
 "cLc" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
-	pixel_y = 25;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo{
+	density = 0;
+	pixel_y = 24
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
@@ -4302,7 +4312,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/space)
 "cVR" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/space/basic,
 /area/almayer/engineering/upper_engineering/port)
 "cWG" = (
@@ -4349,15 +4359,10 @@
 /turf/closed/wall/unsc/reinforced/hull,
 /area/almayer/shipboard/brig/chief_mp_office)
 "cZi" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7";
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer/plate,
+/turf/closed/wall/unsc,
 /area/almayer/hallways/lower/vehiclehangar)
 "cZB" = (
 /obj/structure/machinery/cm_vending/clothing/medic/charlie,
@@ -4450,9 +4455,16 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "dcQ" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
+"dcV" = (
+/obj/structure/machinery/cm_vending/clothing/staff_officer{
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/bridgebunks)
 "ddU" = (
 /turf/open/floor/almayer/green/southeast,
 /area/almayer/squads/req)
@@ -4644,7 +4656,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "dlU" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
 "dmv" = (
@@ -5464,7 +5476,7 @@
 	},
 /area/almayer/medical/containment/cell)
 "dPq" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 4
@@ -5539,7 +5551,7 @@
 	light_color = "#a7dbc7";
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/lower_medical_medbay)
 "dQV" = (
@@ -7309,17 +7321,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_midship_hallway)
 "eWB" = (
-/obj/structure/bookcase{
-	icon_state = "book-5";
-	pixel_x = -1;
-	pixel_y = 19;
-	density = 0;
-	opacity = 0
-	},
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/book/manual/surgery,
-/obj/item/book/manual/research_and_development,
-/obj/item/book/manual/ripley_build_and_repair,
+/obj/structure/surface/rack,
+/obj/item/clothing/under/marine/crew/med/officer,
+/obj/item/storage/belt/gun/m6/full_m6g,
+/obj/item/clothing/suit/storage/webbing/black,
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/upper_medical)
 "eXc" = (
@@ -7386,7 +7391,7 @@
 "eYo" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
-	pixel_y = 25
+	pixel_y = 24
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
@@ -8482,7 +8487,7 @@
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/lockerroom)
 "fFt" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/hallways/lower/port_midship_hallway)
 "fFK" = (
@@ -9251,7 +9256,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "ghH" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer/green/east,
 /area/almayer/squads/req)
 "giH" = (
@@ -11504,6 +11509,13 @@
 "hHN" = (
 /obj/structure/machinery/computer/aa_console,
 /obj/structure/bed/chair/ob_chair,
+/obj/item/paper{
+	info = "The damn PD gun is on the fritz, you can try and override the targeting, but it probably won't do anything. - Engineer Matthews";
+	color = "950000";
+	pixel_x = -10;
+	pixel_y = 6;
+	name = "taped paper"
+	},
 /turf/open/floor/almayer/tcomms,
 /area/almayer/shipboard/weapon_room)
 "hHP" = (
@@ -12624,7 +12636,7 @@
 /turf/open/floor/plating,
 /area/almayer/maint/hull/lower/p_bow)
 "isJ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering/port)
 "itc" = (
@@ -13014,8 +13026,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "iGo" = (
-/obj/structure/machinery/power/apc/almayer/east,
-/turf/open/floor/almayer/plate,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/vehiclehangar)
 "iGy" = (
 /obj/structure/surface/table/almayer,
@@ -13047,10 +13061,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "iHy" = (
-/obj/effect/landmark/start/marine/engineer/charlie,
-/obj/effect/landmark/late_join/charlie,
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie)
+/turf/closed/wall/unsc/reinforced/hull,
+/area/almayer/hallways/lower/vehiclehangar)
 "iHC" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -13243,7 +13255,7 @@
 /area/almayer/squads/req)
 "iMD" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "iNa" = (
@@ -13295,6 +13307,9 @@
 "iPB" = (
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/almayer/blue/east,
@@ -13809,7 +13824,7 @@
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/medical_science)
 "jfH" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	light_color = "#a7dbc7"
@@ -14049,7 +14064,7 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = -32
 	},
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/redfull,
 /area/almayer/squads/req)
 "jlU" = (
@@ -14709,7 +14724,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "jHj" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "jHM" = (
@@ -16185,10 +16200,6 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "kNe" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer{
-	density = 0;
-	pixel_y = 31
-	},
 /obj/structure/surface/rack,
 /obj/item/clothing/under/marine/crew/command,
 /obj/item/clothing/under/marine/crew/command,
@@ -16256,7 +16267,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "kPq" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering/port)
 "kPA" = (
@@ -16703,7 +16714,7 @@
 "lgo" = (
 /obj/structure/machinery/cm_vending/clothing/dress{
 	req_access = list(1);
-	pixel_y = 32;
+	pixel_y = 30;
 	density = 0
 	},
 /turf/open/floor/wood/ship,
@@ -17028,7 +17039,7 @@
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "lsN" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo{
 	pixel_y = 15;
 	density = 0
 	},
@@ -18258,7 +18269,6 @@
 "mpW" = (
 /obj/structure/anti_air_cannon,
 /obj/structure/surface/table/almayer,
-/obj/item/paper,
 /obj/item/tool/pen,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/weapon_room)
@@ -18681,7 +18691,8 @@
 /turf/open/floor/almayer/blue/northeast,
 /area/almayer/living/bridgebunks)
 "mDd" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo{
+	density = 0;
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/plate,
@@ -18741,6 +18752,10 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/chemistry)
+"mFt" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/vehiclehangar)
 "mFQ" = (
 /obj/item/reagent_container/glass/beaker/bluespace{
 	pixel_y = 20
@@ -19495,7 +19510,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "nfs" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "nfF" = (
@@ -20634,7 +20649,7 @@
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/bravo)
+/area/almayer/maint/hull/lower/l_a_s)
 "nUW" = (
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/almayer/medical/lower_medical_medbay)
@@ -20706,7 +20721,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/command/telecomms)
 "oac" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#dae2ff";
 	dir = 1
@@ -21015,7 +21030,7 @@
 /turf/open/floor/almayer/emerald/east,
 /area/almayer/squads/charlie)
 "ong" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "oob" = (
@@ -21545,7 +21560,7 @@
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/engineering/lower/engine_core)
 "oFg" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "oFo" = (
@@ -21975,13 +21990,13 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
 /area/almayer/command/corporateliaison)
 "oUd" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_y = 25;
-	density = 0
-	},
 /obj/structure/machinery/keycard_auth{
 	pixel_x = 24;
 	pixel_y = -3
+	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_y = 24
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
@@ -22565,7 +22580,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_aft_hallway)
 "poE" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "poJ" = (
@@ -22727,7 +22742,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/command/airoom)
 "puU" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "pvk" = (
@@ -22854,9 +22869,12 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/maint/hull/lower/l_m_p)
 "pCr" = (
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/bravo)
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cichallway)
 "pCS" = (
 /obj/structure/window/framed/unsc,
 /turf/open/floor/plating,
@@ -23294,7 +23312,7 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/charlie_delta_shared)
 "pWP" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/green,
 /area/almayer/squads/req)
 "pXf" = (
@@ -23350,7 +23368,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "pYA" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#dae2ff";
 	dir = 8
@@ -24020,8 +24038,9 @@
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
 "qmr" = (
-/obj/effect/landmark/start/marine/charlie,
 /obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/start/marine/engineer/charlie,
+/obj/effect/landmark/start/marine/charlie,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "qmV" = (
@@ -24034,6 +24053,10 @@
 "qni" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/starboard_garden)
+"qok" = (
+/obj/structure/foamed_metal,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_a_s)
 "qon" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -24244,7 +24267,7 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "qur" = (
@@ -24253,7 +24276,7 @@
 /area/almayer/engineering/lower/workshop)
 "quW" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
 	density = 0;
 	pixel_x = -32
 	},
@@ -24525,7 +24548,7 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/command/telecomms)
 "qBY" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/almayer/command/corporateliaison)
 "qCe" = (
@@ -25282,7 +25305,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "rbF" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "rbU" = (
@@ -25852,9 +25875,9 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/command/computerlab)
 "rvG" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_x = 16;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_x = 24
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/intel)
@@ -26602,7 +26625,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_lobby)
 "rZI" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 4
@@ -26761,9 +26784,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_aft_hallway)
 "sfM" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	density = 0
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_x = -1;
+	pixel_y = 5;
+	opacity = 0
 	},
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/research_and_development,
+/obj/item/book/manual/ripley_build_and_repair,
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/upper_medical)
 "sfR" = (
@@ -26836,7 +26866,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sgU" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/almayer/command/corporateliaison)
 "sha" = (
@@ -27000,7 +27030,7 @@
 /turf/open/floor/plating,
 /area/almayer/medical/lower_medical_medbay)
 "snd" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "snq" = (
@@ -27280,7 +27310,7 @@
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/containment)
 "svK" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 4
@@ -27374,9 +27404,9 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/ce_room)
 "szw" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	pixel_x = -32;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo{
+	density = 0;
+	pixel_x = -30
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -27757,10 +27787,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_umbilical)
 "sQy" = (
-/obj/effect/landmark/start/marine/bravo,
-/obj/effect/landmark/late_join/bravo,
-/turf/open/floor/almayer,
-/area/almayer/squads/bravo)
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/vehiclehangar)
 "sRb" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
@@ -27816,8 +27848,8 @@
 "sSn" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/marine/crew/command,
-/obj/item/storage/belt/gun/m6/full_m6c/m4a,
 /obj/item/clothing/suit/storage/webbing/black,
+/obj/item/storage/belt/gun/m6/full_m6g,
 /turf/open/floor/almayer/blue/southwest,
 /area/almayer/living/auxiliary_officer_office)
 "sSr" = (
@@ -28395,7 +28427,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "tos" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/halo,
 /turf/open/floor/almayer/mono,
 /area/almayer/engineering/upper_engineering/port)
 "tot" = (
@@ -28612,7 +28644,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
 "twM" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7"
 	},
@@ -29887,7 +29919,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/squads/delta)
 "uoY" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie_delta_shared)
 "uoZ" = (
@@ -30421,7 +30453,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/lower/cryo_cells)
 "uMv" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/hallways/lower/port_midship_hallway)
 "uMH" = (
@@ -32642,7 +32674,7 @@
 /area/almayer/command/telecomms)
 "waS" = (
 /obj/structure/machinery/cm_vending/clothing/commanding_officer{
-	pixel_y = 32;
+	pixel_y = 30;
 	density = 0
 	},
 /turf/open/floor/wood/ship,
@@ -32788,6 +32820,13 @@
 /obj/item/frame/fire_alarm,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
+"whC" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "wie" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
 /turf/open/floor/almayer/plate,
@@ -33577,6 +33616,13 @@
 "wLK" = (
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/maint/hull/lower/stern)
+"wMS" = (
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/vehiclehangar)
 "wNq" = (
 /obj/structure/shuttle/part/dropship_upp/transparent/outer_right_weapons,
 /obj/effect/attach_point/weapon/pelican_sierra/right_fore,
@@ -33786,6 +33832,9 @@
 /obj/docking_port/stationary/escape_pod/east,
 /turf/open/floor/plating,
 /area/almayer/maint/hull/lower/p_bow)
+"wTd" = (
+/turf/closed/wall/unsc/reinforced,
+/area/almayer/hallways/lower/vehiclehangar)
 "wTm" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/atmospipes,
@@ -33923,10 +33972,9 @@
 /turf/closed/wall/unsc/reinforced/hull/titanium_a,
 /area/almayer/shipboard/port_missiles)
 "wYc" = (
-/obj/item/clothing/under/marine/crew/med/officer,
-/obj/structure/surface/rack,
-/obj/item/storage/belt/gun/m6/full_m6g,
-/obj/item/clothing/suit/storage/webbing/black,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	density = 0
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "wYo" = (
@@ -34127,6 +34175,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_aft_hallway)
+"xeX" = (
+/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/start/marine/engineer/charlie,
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/charlie)
 "xfl" = (
 /obj/structure/machinery/chem_simulator{
 	density = 0;
@@ -34736,9 +34789,9 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "xCI" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
-	pixel_x = -32;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo{
+	density = 0;
+	pixel_x = -30
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -34988,7 +35041,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
 "xMm" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/halo,
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7"
 	},
@@ -35430,6 +35483,7 @@
 	pixel_x = 8;
 	pixel_y = 5
 	},
+/obj/item/clothing/accessory/pads/greaves/oni,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/almayer/command/corporateliaison)
 "ycn" = (
@@ -40099,7 +40153,7 @@ mnC
 mnC
 tcN
 jiY
-mnC
+pCr
 mnC
 mnC
 knK
@@ -40305,7 +40359,7 @@ muv
 muv
 muv
 muv
-muv
+cZi
 muv
 muv
 muv
@@ -40510,9 +40564,9 @@ rzk
 cTA
 lVo
 sgo
-pkj
-qYD
-gzL
+jBv
+iGo
+jBv
 sgo
 gWJ
 rzk
@@ -40613,9 +40667,9 @@ sWE
 sWE
 kvN
 sgo
-pkj
-paK
-gzL
+jBv
+sQy
+jBv
 sgo
 foA
 sWE
@@ -40716,9 +40770,9 @@ jBv
 jBv
 jBv
 jKo
-iGo
 iFt
-cZi
+iFt
+iFt
 jKo
 jBv
 jBv
@@ -40819,9 +40873,9 @@ gmC
 gmC
 gmC
 muv
-muv
-sgo
-muv
+pkj
+qYD
+gzL
 muv
 kOr
 kOr
@@ -40921,11 +40975,11 @@ yhq
 yhq
 yhq
 yhq
-yhq
-yhq
-yhq
-rOu
-yhq
+sgo
+pkj
+paK
+gzL
+sgo
 yhq
 yhq
 yhq
@@ -41024,11 +41078,11 @@ iOx
 iOx
 iOx
 iOx
-tbp
-iOx
-iOx
-iOx
-tbp
+sgo
+mFt
+bog
+wMS
+sgo
 iOx
 iOx
 iOx
@@ -41127,11 +41181,11 @@ iIq
 yhq
 yhq
 yhq
-sfe
-sfe
-myw
-sfe
-sfe
+iHy
+iHy
+wTd
+iHy
+iHy
 yhq
 yhq
 yhq
@@ -41233,7 +41287,7 @@ cCl
 rxQ
 cCl
 cCl
-cCl
+whC
 rxQ
 cCl
 cCl
@@ -45069,7 +45123,7 @@ xVN
 pXf
 oEa
 mtK
-iFu
+dcV
 aBD
 mtK
 brq
@@ -56244,9 +56298,9 @@ vxf
 pSg
 pSg
 vxf
-sQy
-sQy
-sQy
+vxf
+vxf
+vxf
 grs
 xxd
 aDb
@@ -56307,7 +56361,7 @@ rLu
 rLu
 gxz
 qmr
-qmr
+xeX
 vQb
 gxz
 uXq
@@ -56347,9 +56401,9 @@ vxf
 vxf
 vxf
 vxf
-pSg
-pSg
-pSg
+qok
+qok
+fnB
 fnB
 fnB
 kIS
@@ -56393,14 +56447,14 @@ mSA
 qeI
 vCF
 qyl
-esS
-esS
-esS
-esS
 gxz
-iHy
-iHy
-iHy
+gxz
+gxz
+gxz
+gxz
+gxz
+gxz
+gxz
 gxz
 rLu
 rLu
@@ -56449,10 +56503,10 @@ vxf
 vxf
 nQw
 nQw
-vxf
-vxf
-vxf
-vxf
+fnB
+qok
+qok
+qok
 fnB
 kuH
 kuH
@@ -56500,10 +56554,10 @@ esS
 dVd
 dVd
 dVd
-gxz
-rLu
-rLu
-rLu
+dVd
+dVd
+dVd
+dVd
 gxz
 gxz
 gxz
@@ -56552,10 +56606,10 @@ tEB
 ixx
 ixx
 ixx
-vxf
-vxf
-vxf
-vxf
+fnB
+fnB
+fnB
+fnB
 fnB
 kuH
 kuH
@@ -56603,11 +56657,11 @@ esS
 dVd
 dVd
 dVd
-gxz
-gxz
-gxz
-gxz
-gxz
+dVd
+dVd
+dVd
+esS
+esS
 aEz
 uVi
 hIU
@@ -56655,10 +56709,10 @@ ixx
 ixx
 ixx
 ixx
-kPA
-pCr
-pCr
-pCr
+ixx
+nQw
+nQw
+nQw
 fnB
 kIS
 fnB

@@ -202,7 +202,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 
 		if(clf)
-			flick("[initial(icon_state)]send_clf", src)
+			flick("fax_backpacksend_clf", src)
 		else
 			flick("[initial(icon_state)]send", src)
 		updateUsrDialog()
@@ -634,8 +634,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			if(clf)
-				flick("[initial(receiver.icon_state)]receive_clf", receiver)
+			if(receiver.clf)
+				flick("fax_backpackreceive_clf", receiver)
 			else
 				flick("[initial(receiver.icon_state)]receive", receiver)
 
@@ -983,6 +983,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
 		user.drop_held_item(src)
 		forceMove(deployedfax)
+		set_light(1, null, COLOR_RED)
 		return
 	return ..()
 

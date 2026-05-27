@@ -64,7 +64,7 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
 
-	user.set_interaction(src) //hello??? dummy comment because my commit got lost in the cloud???
+	user.set_interaction(src)
 	var/dat = "<center><table>"
 	for(var/obj/item/stored_document in src)
 		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[stored_document]'>[stored_document.name]</a></td></tr>"

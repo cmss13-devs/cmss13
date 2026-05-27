@@ -3,6 +3,7 @@
     "map_path": "map_files/Fort_McNeil",
     "map_file": "Fort_McNeil.dmm",
     "webmap_url": "LV624",
+    "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",

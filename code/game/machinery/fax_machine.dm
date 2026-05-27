@@ -911,11 +911,13 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
 	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare best managed through spontaneous invasive responses and dead drops. Recent incursions in the Neroid sector by the USCM sometimes necessitate a change of plans.
 
-		This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but correspondents are high priority targets for Cell operations nonetheless.
+        This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but Liberation insurgents have only been engaging the USCM well-after the events of Xibou.
 
-		The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+        This implies the machine is a possible military sponsor of some kind, though from where or who is unclear. Despite this, correspondents of any kind are high-priority targets for insurgent cell operations, journalism-through-hostile-coercion and kidnapping military media members being very beneficial for the Front's image.
 
-		If you aren't here to emancipate the masses, treat this device *very* carefully."}
+        The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+        If you aren't here to emancipate the masses, treat this device *very* carefully."}
 
 	icon_state = "fax_backpack_clf"
 	needs_power = FALSE
@@ -929,13 +931,15 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/item/device/fax_backpack/clf
 	name = "\improper Hacked Portable Press Fax Machine"
 	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
-	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare being best managed through spontaneous invasive responses and dead drops. However, recent incursions into the Neroid sector by the USCM necessitate a change of plans.
+	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare best managed through spontaneous invasive responses and dead drops. Recent incursions in the Neroid sector by the USCM sometimes necessitate a change of plans.
 
-		This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but correspondents are high priority targets for Cell operations nonetheless.
+        This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but Liberation insurgents have only been engaging the USCM well-after the events of Xibou.
 
-		The device itself is a mess of wires and haphazard modifications to prevent tracebacks, and provide meaningful encryption to communications. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+        This implies the machine is a possible military sponsor of some kind, though from where or who is unclear. Despite this, correspondents of any kind are high-priority targets for insurgent cell operations, journalism-through-hostile-coercion and kidnapping military media members being very beneficial for the Front's image.
 
-		If you aren't here to emancipate the masses, treat this device *very* carefully."}
+        The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+        If you aren't here to emancipate the masses, treat this device *very* carefully."}
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax_backpack_clf"
 	item_state = "fax_backpack_clf"
@@ -1034,36 +1038,38 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	. = ..()
 	if(user.faction != FACTION_CLF)
 
-		if(user.skills.get_skill_level(SKILL_ENGINEER) == SKILL_ENGINEER_ENGI)
-			. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
-			return
+		switch(user.skills.get_skill_level(SKILL_ENGINEER))
+			if(SKILL_ENGINEER_ENGI)
+				. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+				return
+			if(SKILL_ENGINEER_MASTER, SKILL_ENGINEER_MAX)
+				. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+				return
+			else
+				. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+				return
 
-		if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)
-			. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
-			return
-
-	if(user.faction == FACTION_CLF)
-		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 	else
-		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 		return
 
 /obj/item/device/fax_backpack/clf/get_examine_text(mob/user) //have to do it twice, unfortunately
 	. = ..()
 	if(user.faction != FACTION_CLF)
 
-		if(user.skills.get_skill_level(SKILL_ENGINEER) == SKILL_ENGINEER_ENGI)
-			. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
-			return
+		switch(user.skills.get_skill_level(SKILL_ENGINEER))
+			if(SKILL_ENGINEER_ENGI)
+				. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+				return
+			if(SKILL_ENGINEER_MASTER, SKILL_ENGINEER_MAX)
+				. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+				return
+			else
+				. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+				return
 
-		if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)
-			. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
-			return
-
-	if(user.faction == FACTION_CLF || (isobserver(user)))
-		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 	else
-		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 		return
 
 /datum/fax

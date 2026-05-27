@@ -68,6 +68,17 @@
 			continue
 		target_turf = get_step(tethered_atom, dir)
 		if(get_dist(target_turf, affected_atom) <= range && tethered_atom.Move(target_turf))
+			if(isliving(affected_atom))
+				var/mob/living/puller = affected_atom
+				if(puller.slowed <= 0) // so we dont spam it all the time
+					puller.visible_message(SPAN_WARNING("[puller] struggles to pull [tethered_atom] along!"), SPAN_WARNING("You struggle to pull [tethered_atom] along!"))
+				// evil weight class dynamic slowdown
+				var/base_slow = 1
+				if(isitem(tethered_atom))
+					var/obj/item/pulled = tethered_atom
+					base_slow = max(1, pulled.w_class - 2)
+				puller.Slow(base_slow)
+
 			return
 
 	// Integrity of tether is compromised (cannot maintain range), so delete it

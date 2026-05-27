@@ -21,6 +21,18 @@
 		/obj/item/device/walkman,
 	)
 
+	//var/gyroscopic_armature = "potato_arm"
+	var/armature_icon = "wire_rope"
+	var/armature_range = 2
+
+/obj/item/clothing/suit/storage/marine/smartgunner/get_examine_text(mob/user)
+	. = ..()
+
+	// ill be real, this is kind of dumb, but it works as a stopgap solution for now
+	var/list/retri = list()
+	if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+		. += SPAN_HELPFUL("The [src] is connected to [retri["source"]] via the gyroscopic armature.")
+
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")
@@ -78,3 +90,130 @@
 		name = "M56 reinforced snow combat harness"
 	else
 		name = "M56 reinforced combat harness"
+
+// SMARTGUN RETRIEVAL START (or whats essentially just a copy and paste of drop_retrieval.dm)
+
+/datum/element/drop_retrieval/smartgun
+	parent_type = /datum/element/drop_retrieval/gun
+	id_arg_index = 3
+	compatible_types = list(/obj/item/weapon/gun/smartgun)
+	var/obj/item/weapon/gun/smartgun/gun
+	var/obj/item/clothing/suit/storage/harness
+	var/datum/effects/tethering/active_tether
+	var/armature_icon
+	var/armature_range
+
+/datum/element/drop_retrieval/smartgun/Attach(datum/target, slot, obj/item/clothing/suit/storage/new_harness, icon, range)
+	. = ..(target, slot)
+	if(.)
+		return
+	gun = target
+	harness = new_harness
+	armature_icon = icon
+	armature_range = range
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(check_tether))
+	RegisterSignal(harness, COMSIG_MOVABLE_MOVED, PROC_REF(harness_moved))
+	RegisterSignal(harness, COMSIG_DROP_RETRIEVAL_CHECK, PROC_REF(dr_check))
+
+/datum/element/drop_retrieval/smartgun/dr_check(obj/item/dropped, list/retri) // thanks segrain i guess
+	. = ..()
+	if(islist(retri))
+		if(dropped == gun)
+			retri["source"] = harness
+		else if(dropped == harness)
+			retri["source"] = gun
+
+/datum/element/drop_retrieval/smartgun/Detach(datum/source, force)
+	if(active_tether)
+		UnregisterSignal(active_tether, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(active_tether)
+	UnregisterSignal(source, list(COMSIG_MOVABLE_MOVED, COMSIG_ITEM_HOLSTER))
+	if(harness)
+		UnregisterSignal(harness, list(COMSIG_MOVABLE_MOVED, COMSIG_DROP_RETRIEVAL_CHECK))
+	gun = null
+	harness = null
+	return ..()
+
+/datum/element/drop_retrieval/smartgun/dropped(obj/item/weapon/gun/smartgun/smartie, mob/user)
+	. = ..()
+	maintain_tether()
+
+/datum/element/drop_retrieval/smartgun/proc/check_tether(atom/movable/source)
+	SIGNAL_HANDLER
+
+	if(active_tether)
+		if(source.loc == harness)
+			QDEL_NULL(active_tether)
+			return
+		var/atom/current_target = active_tether.tethered?.affected_atom
+		var/atom/desired_target = get_tether_target()
+		if(current_target != desired_target)
+			qdel(active_tether)
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/smartgun/proc/harness_moved(datum/source)
+	SIGNAL_HANDLER
+
+	if(active_tether)
+		var/atom/current_anchor = active_tether.affected_atom
+		var/atom/desired_anchor = get_anchor()
+		if(current_anchor != desired_anchor)
+			qdel(active_tether)
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/smartgun/proc/tether_deleted(datum/source)
+	SIGNAL_HANDLER
+
+	if(active_tether == source)
+		active_tether = null
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/smartgun/proc/maintain_tether()
+	if(active_tether)
+		return
+
+	if(!gun || gun.loc == harness)
+		return
+
+	var/atom/anchor = get_anchor()
+	var/atom/target = get_tether_target()
+
+	if(anchor == target)
+		return
+
+	if(get_dist(anchor, target) > armature_range)
+		step_towards(target, anchor)
+		return
+
+	var/list/tether_data = apply_tether(anchor, target, range = armature_range, icon = armature_icon)
+	active_tether = tether_data["tetherer_tether"]
+	RegisterSignal(active_tether, COMSIG_PARENT_QDELETING, PROC_REF(tether_deleted))
+
+/datum/element/drop_retrieval/smartgun/proc/get_anchor()
+	var/atom/object = harness
+	var/i = 0
+	while(object && !ismob(object) && i < 10)
+		if(isturf(object.loc))
+			return object
+		object = object.loc
+		i++
+	if(ismob(object))
+		return object
+	return harness
+
+/datum/element/drop_retrieval/smartgun/proc/get_tether_target()
+	var/atom/item = gun
+	var/i = 0
+	while(item && !ismob(item) && i < 10)
+		if(isturf(item.loc))
+			return item
+		item = item.loc
+		i++
+	if(ismob(item))
+		return item
+	return gun
+
+// SMARTGUN RETRIEVAL END

@@ -182,6 +182,10 @@
 	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
+	var/list/retri = list()
+	if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+		. += SPAN_HELPFUL("[src] is connected to the [retri["source"]] via the gyroscopic armature.")
+
 	if(battery && get_dist(user, src) <= 1)
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
@@ -228,6 +232,19 @@
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
 		return
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_J_STORE && ishuman(user))
+		var/mob/living/carbon/human/gunner = user
+		var/obj/item/clothing/suit/storage/marine/smartgunner/harness = gunner.wear_suit
+		if(istype(harness) && (harness.flags_inventory & SMARTGUN_HARNESS)) // might as well check the flag too, makes sense really
+			AddElement(/datum/element/drop_retrieval/smartgun, auto_retrieval_slot, harness, harness.armature_icon, harness.armature_range)
+
+			var/list/retri = list()
+			if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+				to_chat(gunner, SPAN_NOTICE("You connect [src] to [retri["source"]] via the gyroscopic armature."))
+				balloon_alert(gunner, "Armature Connected")
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open && has_cover)
@@ -460,17 +477,19 @@
 	if(.)
 		if(!ishuman(user))
 			return FALSE
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/gunner = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			balloon_alert(user, "insufficient skills")
+			balloon_alert(user, "Insufficient Skills")
 			return FALSE
-		if(requires_harness)
-			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-				balloon_alert(user, "harness required")
-				return FALSE
+
+		if(requires_harness && !(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT))
+			to_chat(gunner, SPAN_WARNING("[src] must be connected to a gyroscopic armature to fire!"))
+			balloon_alert(user, "No Armature")
+			return FALSE
+
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
-			balloon_alert(user, "cannot fire; feed cover open")
+			to_chat(gunner, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			balloon_alert(user, "Cannot fire; Feed Cover Open")
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
@@ -481,7 +500,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, user)] You changed [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You will now fire [secondary_toggled ? SPAN_GREEN("armor piercing rounds") : SPAN_ORANGE("highly precise rounds")]."))
 	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
@@ -1138,7 +1157,6 @@
 /obj/item/weapon/gun/smartgun/admin
 	requires_power = FALSE
 	requires_battery = FALSE
-	requires_harness = FALSE
 
 /obj/item/smartgun_battery
 	name = "\improper DV9 smartgun battery"

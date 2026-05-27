@@ -26,10 +26,10 @@
 		to_chat(thrower, SPAN_WARNING("\The [source] clanks on the ground."))
 	return COMPONENT_CANCEL_THROW
 
-/datum/element/drop_retrieval/proc/dropped(obj/item/I, mob/user)
+/datum/element/drop_retrieval/proc/dropped(obj/item/dropped, mob/user)
 	SIGNAL_HANDLER
 
-/datum/element/drop_retrieval/proc/dr_check(obj/item/I)
+/datum/element/drop_retrieval/proc/dr_check(obj/item/dropped, list/retri)
 	SIGNAL_HANDLER
 
 	return COMPONENT_DROP_RETRIEVAL_PRESENT
@@ -151,7 +151,7 @@
 		return
 
 	if(get_dist(anchor, target) > container.sling_range) // really annoying edgecase code i needed to do here if the storage item is picked up farther than the sling_range yet phone.dm has this handled safely somehow, probably some element limitation or something w/e - nihi
-		container.unsling(forced = TRUE)
+		step_towards(target, anchor) // although i could check if the anchor is a mob, im more or less mimicking the interaction phone.dm has
 		return
 
 	var/list/tether_data = apply_tether(anchor, target, range = container.sling_range, icon = container.tether_icon)
@@ -186,9 +186,13 @@
 	return object
 
 /datum/action/item_action/break_tether
-	name = "Break Tether"
 	action_icon_state = "break_tether"
 	var/obj/item/storage/storage_item
+
+/datum/action/item_action/break_tether/New(Target, obj/item/holder)
+	..()
+	name = "Break Tether"
+	button.name = name
 
 /datum/action/item_action/break_tether/action_activate()
 	. = ..()

@@ -48,9 +48,6 @@
 			has_cryo_medicine = FALSE
 
 	for(var/datum/reagent/cur_reagent in reagents.reagent_list)
-		if(!has_cryo_medicine && !istype(cur_reagent, /datum/reagent/generated) && !istype(cur_reagent, /datum/reagent/borer))
-			continue
-
 		var/list/mods = list( REAGENT_EFFECT = TRUE,
 								REAGENT_BOOST = FALSE,
 								REAGENT_PURGE = FALSE,

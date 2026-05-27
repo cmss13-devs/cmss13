@@ -41,33 +41,33 @@
 
 /obj/structure/filingcabinet/Initialize()
 	. = ..()
-	for(var/obj/item/I in loc)
-		if(is_type_in_list(I, allowed_types))
-			I.forceMove(src)
+	for(var/obj/current_obj in loc)
+		if(is_type_in_list(current_obj, allowed_types))
+			current_obj.forceMove(src)
 
 
-/obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
+/obj/structure/filingcabinet/attackby(obj/item/attacking_item, mob/user)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 		return ..()
-	if(is_type_in_list(P, allowed_types))
-		to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
-		if(user.drop_inv_item_to_loc(P, src))
+	if(is_type_in_list(attacking_item, allowed_types))
+		to_chat(user, SPAN_NOTICE("You put [attacking_item] in [src]."))
+		if(user.drop_inv_item_to_loc(attacking_item, src))
 			icon_state = "[initial(icon_state)]-open"
 			sleep(5)
 			icon_state = initial(icon_state)
 			updateUsrDialog()
 		return
-	to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
+	to_chat(user, SPAN_NOTICE("You can't put [attacking_item] in [src]!"))
 
-/obj/structure/filingcabinet/attack_hand(mob/user as mob)
+/obj/structure/filingcabinet/attack_hand(mob/user)
 	if(length(contents) <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
 
 	user.set_interaction(src)
 	var/dat = "<center><table>"
-	for(var/obj/item/P in src)
-		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
+	for(var/obj/item/stored_document in src)
+		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[stored_document]'>[stored_document.name]</a></td></tr>"
 	dat += "</table></center>"
 	show_browser(user, dat, name, "filingcabinet", width = 350, height = 300)
 
@@ -78,14 +78,14 @@
 		close_browser(usr, "filingcabinet")
 		return
 	if(href_list["retrieve"])
-		var/obj/item/P = locate(href_list["retrieve"])
-		if (!P || P.loc != src || !usr.can_use_hands() || !usr.Adjacent(src))
+		var/obj/item/filed_document = locate(href_list["retrieve"])
+		if (!filed_document || filed_document.loc != src || !usr.can_use_hands() || !usr.Adjacent(src))
 			if(usr.Adjacent(src))
 				attack_hand(usr)
 				to_chat(usr, SPAN_WARNING("The document you're looking for isn't in \the [src] anymore."))//refresh so removed files disappear
 			return
 		close_browser(usr, "filingcabinet") // Close the menu
-		usr.put_in_hands(P)
+		usr.put_in_hands(filed_document)
 		updateUsrDialog()
 		icon_state = "[initial(icon_state)]-open"
 		addtimer(CALLBACK(src, "reset_icon"),0.5 SECONDS)

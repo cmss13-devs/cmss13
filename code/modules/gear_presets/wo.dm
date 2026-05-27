@@ -22,7 +22,7 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
-	minimap_icon = "co"
+	minimap_icon = "co_wo"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
@@ -117,7 +117,7 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "xo"
+	minimap_icon = "xo_wo"
 	minimap_background = "background_command"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -171,7 +171,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "hgsl"
-	minimap_background = "background_mp"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/new_human)
 
@@ -208,7 +208,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "vhg"
-	minimap_background = "background_mp"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/satchel/sec, /obj/item/storage/backpack/security)
@@ -355,7 +355,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"
-	minimap_background = "background_command"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/tech, /obj/item/storage/backpack/marine/tech)
@@ -418,7 +418,7 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "cmo"
+	minimap_icon = "cmo_wo"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/new_human)
@@ -460,8 +460,8 @@
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
-	minimap_icon = "doctor"
-	minimap_background = "background_officer"
+	minimap_icon = "medic"
+	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/medic, /obj/item/storage/backpack/marine/medic)
@@ -499,8 +499,8 @@
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
 
-	minimap_icon = "researcher"
-	minimap_background = "background_officer"
+	minimap_icon = "chemist_wo"
+	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/medic, /obj/item/storage/backpack/marine/medic)

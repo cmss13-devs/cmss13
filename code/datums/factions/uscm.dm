@@ -173,21 +173,21 @@
 				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
-			if(JOB_CHIEF_REQUISITION, JOB_WO_CHIEF_REQUISITION)
+			if(JOB_CHIEF_REQUISITION)
 				marine_rk = "ro"
-			if(JOB_CARGO_TECH, JOB_WO_REQUISITION)
+			if(JOB_CARGO_TECH)
 				marine_rk = "ct"
-			if(JOB_CHIEF_ENGINEER, JOB_WO_CHIEF_ENGINEER)
+			if(JOB_CHIEF_ENGINEER)
 				marine_rk = "ce"
 			if(JOB_MAINT_TECH)
 				marine_rk = "mt"
-			if(JOB_ORDNANCE_TECH, JOB_WO_ORDNANCE_TECH)
+			if(JOB_ORDNANCE_TECH)
 				marine_rk = "ot"
-			if(JOB_COMBAT_REPORTER, JOB_WO_CORPORATE_LIAISON)
+			if(JOB_COMBAT_REPORTER)
 				marine_rk = "comrec"
-			if(JOB_CMO, JOB_WO_CMO)
+			if(JOB_CMO)
 				marine_rk = "cmo"
-			if(JOB_DOCTOR, JOB_WO_DOCTOR)
+			if(JOB_DOCTOR)
 				if(id_card.assignment == JOB_SURGEON)
 					marine_rk = "surgeon"
 				else if(id_card.assignment == JOB_PHARMACIST)
@@ -196,7 +196,7 @@
 					marine_rk = "doctor"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
-			if(JOB_RESEARCHER, JOB_WO_RESEARCHER)
+			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
@@ -249,6 +249,10 @@
 			if(JOB_RIOT_CHIEF)
 				marine_rk = "crmp"
 			// Whiskey Outpost
+			if(JOB_WO_CO)
+				marine_rk = "wo_co"
+			if(JOB_WO_XO)
+				marine_rk = "wo_xo"
 			if(JOB_WO_CHIEF_POLICE)
 				marine_rk = "hgsl"
 			if(JOB_WO_SO)
@@ -257,9 +261,17 @@
 				marine_rk = "hgspec"
 			if(JOB_WO_POLICE)
 				marine_rk = "hg"
+			if(JOB_WO_CMO)
+				marine_rk = "wo_cmo"
+			if(JOB_WO_DOCTOR)
+				marine_rk = "wo_doctor"
+			if(JOB_WO_RESEARCHER)
+				marine_rk = "wo_chemist"
+			if(JOB_WO_CHIEF_REQUISITION)
+				marine_rk = "wo_ro"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
-			// Check squad marines here too, for the unique ones
+			// Check squad marines here too, for the unique onesc
 			if(JOB_SQUAD_ENGI, JOB_WO_SQUAD_ENGINEER)
 				marine_rk = "engi"
 			if(JOB_SQUAD_MEDIC, JOB_WO_SQUAD_MEDIC)

@@ -639,66 +639,66 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			else
 				flick("[initial(receiver.icon_state)]receive", receiver)
 
-				playsound(receiver.loc, "sound/machines/fax.ogg", 15)
-				// give the sprite some time to flick
-				spawn(30)
-					var/obj/item/paper/P = new(receiver.loc,faxcontents.photo_list)
-					if(!faxcontents.paper_name)
-						P.name = "faxed message"
+			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
+			// give the sprite some time to flick
+			spawn(30)
+				var/obj/item/paper/P = new(receiver.loc,faxcontents.photo_list)
+				if(!faxcontents.paper_name)
+					P.name = "faxed message"
+				else
+					P.name = "faxed message ([faxcontents.paper_name])"
+				P.info = "[faxcontents.data]"
+				if(faxcontents.extra_headers)
+					P.extra_headers = faxcontents.extra_headers.Copy()
+				if(faxcontents.extra_stylesheets)
+					P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
+				P.update_icon()
+				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+				var/encrypted = FALSE
+
+				switch(network)
+					if(FAX_NET_USCM_HC)
+						stampoverlay.icon_state = "paper_stamp-uscm"
+						encrypted = TRUE
+					if(FAX_NET_CMB)
+						stampoverlay.icon_state = "paper_stamp-cmb"
+						network = "NC4 UA Federal Secure Network."
+						encrypted = TRUE
+					if(FAX_NET_WY_HC)
+						stampoverlay.icon_state = "paper_stamp-weyyu"
+						encrypted = TRUE
+					if(FAX_NET_TWE_HC)
+						stampoverlay.icon_state = "paper_stamp-twe"
+						encrypted = TRUE
+					if(FAX_NET_UPP_HC)
+						stampoverlay.icon_state = "paper_stamp-upp"
+						encrypted = TRUE
+					if(FAX_NET_CLF_HC)
+						stampoverlay.icon_state = "paper_stamp-clf"
+						encrypted = TRUE
+					if(FAX_NET_PRESS_HC)
+						stampoverlay.icon_state = "paper_stamp-rd"
+						encrypted = TRUE
 					else
-						P.name = "faxed message ([faxcontents.paper_name])"
-					P.info = "[faxcontents.data]"
-					if(faxcontents.extra_headers)
-						P.extra_headers = faxcontents.extra_headers.Copy()
-					if(faxcontents.extra_stylesheets)
-						P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
-					P.update_icon()
-					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					var/encrypted = FALSE
-
-					switch(network)
-						if(FAX_NET_USCM_HC)
-							stampoverlay.icon_state = "paper_stamp-uscm"
-							encrypted = TRUE
-						if(FAX_NET_CMB)
-							stampoverlay.icon_state = "paper_stamp-cmb"
-							network = "NC4 UA Federal Secure Network."
-							encrypted = TRUE
-						if(FAX_NET_WY_HC)
-							stampoverlay.icon_state = "paper_stamp-weyyu"
-							encrypted = TRUE
-						if(FAX_NET_TWE_HC)
-							stampoverlay.icon_state = "paper_stamp-twe"
-							encrypted = TRUE
-						if(FAX_NET_UPP_HC)
-							stampoverlay.icon_state = "paper_stamp-upp"
-							encrypted = TRUE
-						if(FAX_NET_CLF_HC)
-							stampoverlay.icon_state = "paper_stamp-clf"
-							encrypted = TRUE
-						if(FAX_NET_PRESS_HC)
-							stampoverlay.icon_state = "paper_stamp-rd"
-							encrypted = TRUE
-						else
-							stampoverlay.icon_state = "paper_stamp-fax"
+						stampoverlay.icon_state = "paper_stamp-fax"
 
 
-					if(encrypted)
-						if(!P.stamped)
-							P.stamped = new
-						P.stamped += /obj/item/tool/stamp
-						P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
-					else
-						P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
-					P.overlays += stampoverlay
-					if(sending_priority)
-						playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
-						receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-						receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
-						if((receiver.radio_alert_tag != null) && !sent_radio_alert)
-							ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
-							sent_radio_alert = TRUE
-			qdel(faxcontents)
+				if(encrypted)
+					if(!P.stamped)
+						P.stamped = new
+					P.stamped += /obj/item/tool/stamp
+					P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
+				else
+					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
+				P.overlays += stampoverlay
+				if(sending_priority)
+					playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
+					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
+						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
+						sent_radio_alert = TRUE
+		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "\improper CMB Incident Command Center Fax Machine"

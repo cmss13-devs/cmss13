@@ -151,10 +151,10 @@
 	to_chat(patho_owner, SPAN_XENONOTICE("We place a spore sac on the ground."))
 	if(fatal_use)
 		to_chat(patho_owner, SPAN_XENOHIGHDANGER("The spore sac consumes all our energy!"))
-		patho_owner.gib("Spore Morphing")
 		if(ispopper(patho_owner))
 			var/mob/living/carbon/xenomorph/popper/popper = patho_owner
 			popper.spore_morphed = TRUE
+		patho_owner.gib("Spore Morphing")
 	return ..()
 
 /turf/proc/check_spore_sac_placement(mob/living/carbon/xenomorph/xeno)

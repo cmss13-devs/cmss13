@@ -999,6 +999,7 @@
 	name = "cell Door"
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = FALSE
+	openspeed = 4 //shorter open animation.
 
 /obj/structure/machinery/door/airlock/prison/horizontal
 	dir = SOUTH

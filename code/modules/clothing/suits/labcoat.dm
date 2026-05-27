@@ -393,3 +393,24 @@
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
 	blood_overlay_type = "suit"
+
+/obj/item/clothing/suit/storage/labcoat/lasalle
+	name = "sealed research coat"
+	desc = "A high-quality lab coat worn by Lasalle Bionational science personnel. Constructed from durable synthetic materials for work in hazardous research environments."
+	icon_state = "labcoat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/LASALLE.dmi'
+	)
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/storage/labcoat/lasalle/blue
+	icon_state = "labcoat_blue"
+
+/obj/item/clothing/suit/storage/labcoat/lasalle/purple
+	icon_state = "labcoat_purple"
+
+/obj/item/clothing/suit/storage/labcoat/lasalle/green
+	icon_state = "labcoat_green"

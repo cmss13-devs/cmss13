@@ -329,3 +329,15 @@
 	icon_state = "lasalle_brown_gloves"
 	item_state = "lasalle_brown_gloves"
 	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/science_gloves
+	name = "chemical handling gloves"
+	desc = "A pair of thick protective gloves intended for handling hazardous materials, volatile compounds, and biological contaminants."
+	icon_state = "long_gloves"
+	item_state = "long_gloves"
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/gloves/marine/science_gloves/yellow
+	icon_state = "long_yellow_gloves"
+	item_state = "long_yellow_gloves"

@@ -537,7 +537,7 @@
 /turf/open/floor/strata/seeg3/east,
 /area/ice_colony/surface/engineering/electric)
 "adB" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -2;
 	pixel_y = 7
 	},
@@ -2464,11 +2464,11 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/mining)
 "and" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 10;
 	pixel_y = 12
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = -7
 	},
@@ -3182,7 +3182,7 @@
 /turf/open/lava/basalt/basalt7,
 /area/ice_colony/exterior/surface/valley/southwest)
 "asE" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 6;
 	pixel_y = 18
 	},
@@ -3369,7 +3369,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "atQ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -3;
 	pixel_y = 15
 	},
@@ -3580,7 +3580,7 @@
 	pixel_x = 1;
 	pixel_y = 12
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 16;
 	pixel_y = -4
 	},
@@ -5841,7 +5841,7 @@
 /obj/structure/prop/fire_colony/dense/planter_box/plated/dark{
 	dir = 4
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_y = 8
 	},
 /obj/structure/machinery/light{
@@ -5986,7 +5986,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/storage_unit/power)
 "aJV" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 12
 	},
@@ -7202,7 +7202,7 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3{
 	pixel_y = 7
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 4;
 	pixel_y = -7
 	},
@@ -7990,7 +7990,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_2,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aVd" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -3;
 	pixel_y = 6
 	},
@@ -9013,7 +9013,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "baj" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -4;
 	pixel_y = 12
 	},
@@ -11166,7 +11166,7 @@
 /turf/open/lava/metal/warnplate,
 /area/ice_colony/exterior/surface/landing_pad)
 "brc" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -9;
 	pixel_y = -3
 	},
@@ -12591,7 +12591,7 @@
 /turf/open/floor/strata/medbay4/north,
 /area/ice_colony/surface/research/field_gear)
 "bHk" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_y = 9
 	},
 /turf/open/lava/brock,
@@ -13120,7 +13120,7 @@
 /turf/open/lava/hot_lava/L_piece/east,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "bON" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -8
 	},
 /turf/open/lava/basalt/basalt0,
@@ -13158,7 +13158,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northeast)
 "bPh" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "bPi" = (
@@ -13931,7 +13931,7 @@
 /turf/open/floor/strata/seeg4/east,
 /area/ice_colony/surface/dorms/restroom_w)
 "cae" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 13;
 	pixel_y = -4
 	},
@@ -14906,7 +14906,7 @@
 /turf/open/lava/metal/plating_catwalk,
 /area/ice_colony/surface/hydroponics/north)
 "cqs" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -5;
 	pixel_y = 1
 	},
@@ -15792,7 +15792,7 @@
 	pixel_x = 15;
 	pixel_y = -20
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -15926,7 +15926,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/underground/hangar)
 "cEH" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -8;
 	pixel_y = -2
 	},
@@ -16629,7 +16629,7 @@
 /turf/open/lava/basalt/glowing/basalt3,
 /area/ice_colony/exterior/surface/valley/north)
 "cQI" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -7;
 	pixel_y = 14
 	},
@@ -16672,7 +16672,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/northeast)
 "cRi" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 1;
 	pixel_y = 13
 	},
@@ -17129,7 +17129,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "cXn" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -6
 	},
 /turf/open/lava/brock,
@@ -18884,7 +18884,7 @@
 	pixel_x = -9;
 	pixel_y = -3
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 4;
 	pixel_y = 13
 	},
@@ -19108,7 +19108,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/bar/bar)
 "dyI" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -19496,7 +19496,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/north)
 "dFo" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 12;
 	pixel_y = -1
 	},
@@ -19763,7 +19763,7 @@
 /area/ice_colony/exterior/surface/valley/north)
 "dII" = (
 /obj/structure/platform_decoration/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -2;
 	pixel_y = 11
 	},
@@ -20015,7 +20015,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "dLy" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 11
 	},
@@ -20922,7 +20922,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "dZG" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -21872,7 +21872,7 @@
 "emr" = (
 /obj/structure/platform_decoration/stone/lava/west,
 /obj/structure/platform_decoration/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -22289,7 +22289,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "erj" = (
 /obj/structure/platform_decoration/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = 2
 	},
@@ -22405,7 +22405,7 @@
 /turf/open/lava/hot_lava/L_piece/north,
 /area/ice_colony/exterior/surface/clearing/pass)
 "esN" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -21;
 	pixel_y = -1
 	},
@@ -22440,7 +22440,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/garage/one)
 "etg" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 7;
 	pixel_y = -12
 	},
@@ -23120,7 +23120,7 @@
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/east,
 /obj/structure/platform/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -11;
 	pixel_y = -1
 	},
@@ -23714,7 +23714,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "eKW" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -23931,7 +23931,7 @@
 /turf/open/lava/basalt/basalt8,
 /area/ice_colony/exterior/surface/clearing/pass)
 "eNm" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -9;
 	pixel_y = 18
 	},
@@ -24522,7 +24522,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "eUr" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 6;
 	pixel_y = 18
 	},
@@ -26995,7 +26995,7 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/clearing/pass)
 "fDI" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_y = 11;
 	pixel_x = -6
 	},
@@ -27525,7 +27525,7 @@
 "fKQ" = (
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/east,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = -2
 	},
@@ -28463,7 +28463,7 @@
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/west,
 /obj/structure/platform/stone/lava/east,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_y = -10
 	},
 /turf/open/lava/brock,
@@ -28850,7 +28850,7 @@
 /turf/open/floor/strata/seeg3/east,
 /area/ice_colony/surface/dorms/restroom_w)
 "gbt" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -29440,7 +29440,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "glu" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -2;
 	pixel_y = 14
 	},
@@ -29647,7 +29647,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_4,
 /area/ice_colony/exterior/surface/valley/northeast)
 "goJ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 16
 	},
@@ -30977,7 +30977,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/northeast)
 "gIA" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 11
 	},
@@ -31239,7 +31239,7 @@
 /turf/open/lava/metal/warnplate/northeast,
 /area/ice_colony/surface/research)
 "gMo" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -9;
 	pixel_y = -3
 	},
@@ -31910,7 +31910,7 @@
 /turf/open/lava/hot_lava,
 /area/ice_colony/exterior/surface/clearing/pass)
 "gUj" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 3;
 	pixel_y = 8
 	},
@@ -32100,7 +32100,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/hangar/checkpoint)
 "gXC" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 3;
 	pixel_y = 8
 	},
@@ -32191,7 +32191,7 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/canteen)
 "gYN" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -5;
 	pixel_y = -3
 	},
@@ -32217,7 +32217,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/dorms/restroom_w)
 "gZi" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -32272,7 +32272,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "haL" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -32374,7 +32374,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "hbU" = (
 /obj/structure/platform/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 12;
 	pixel_y = 31
 	},
@@ -32601,7 +32601,7 @@
 /turf/open/floor/strata/deco2,
 /area/ice_colony/surface/dorms/restroom_e)
 "heh" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 1;
 	pixel_y = 11
 	},
@@ -32803,7 +32803,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/dorms/restroom_w)
 "hhc" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 7;
 	pixel_y = 1
 	},
@@ -32924,7 +32924,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "hil" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -3;
 	pixel_y = 13
 	},
@@ -33040,7 +33040,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/pass)
 "hkr" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -3;
 	pixel_y = 1
 	},
@@ -33108,7 +33108,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/north)
 "hlt" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 5;
 	pixel_y = 1
 	},
@@ -33440,7 +33440,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
 "hpY" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/north)
 "hqk" = (
@@ -33558,7 +33558,7 @@
 /area/ice_colony/exterior/surface/landing_pad_external)
 "hrH" = (
 /obj/structure/platform_decoration/stone/lava/east,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = -3
 	},
@@ -33947,7 +33947,7 @@
 /turf/open/floor/strata/altgreen3/north,
 /area/ice_colony/surface/hydroponics/north)
 "hwA" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 10
 	},
@@ -34407,7 +34407,7 @@
 /turf/open/floor/strata/floor3,
 /area/ice_colony/surface/clinic/treatment)
 "hDd" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 8;
 	pixel_y = -16
 	},
@@ -34468,7 +34468,7 @@
 	pixel_x = 12;
 	pixel_y = -4
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -10;
 	pixel_y = -5
 	},
@@ -34651,7 +34651,7 @@
 /turf/open/lava/basalt/cave/south_east,
 /area/ice_colony/exterior/surface/valley/west)
 "hFz" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -2;
 	pixel_y = 12
 	},
@@ -35433,7 +35433,7 @@
 /turf/open/lava/basalt/basalt12,
 /area/ice_colony/exterior/surface/clearing/south)
 "hRT" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /obj/structure/machinery/weather_siren{
 	dir = 4;
 	pixel_x = -8;
@@ -36690,7 +36690,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/clearing/north)
 "inE" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_y = 1
 	},
 /obj/structure/machinery/weather_siren{
@@ -36925,7 +36925,7 @@
 	pixel_x = 6;
 	pixel_y = 11
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -8;
 	pixel_y = -3
 	},
@@ -37666,7 +37666,7 @@
 /turf/open/floor/strata/smooth_dir/southwest,
 /area/ice_colony/surface/dorms/restroom_w)
 "iBs" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 8
 	},
@@ -38131,7 +38131,7 @@
 /turf/open/lava/basalt/glowing/basalt2,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "iHP" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -1;
 	pixel_y = 16
 	},
@@ -38471,7 +38471,7 @@
 /area/ice_colony/exterior/surface/valley/north)
 "iMR" = (
 /obj/structure/platform/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -4;
 	pixel_y = 8
 	},
@@ -38578,7 +38578,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_9,
 /area/ice_colony/exterior/surface/valley/northeast)
 "iPb" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "iPh" = (
@@ -39298,7 +39298,7 @@
 /area/ice_colony/surface/storage_unit/telecomms)
 "iXW" = (
 /obj/structure/platform/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 5;
 	pixel_y = 23
 	},
@@ -40130,7 +40130,7 @@
 /turf/open/lava/metal/filtrationside_lava/northeast,
 /area/ice_colony/underground/hangar)
 "jkY" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 16;
 	pixel_y = 13
 	},
@@ -40157,7 +40157,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_3,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "jlt" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 14
 	},
@@ -40214,7 +40214,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "jlY" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -12;
 	pixel_y = -7
 	},
@@ -40528,7 +40528,7 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
 "jsu" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/southeast)
 "jsv" = (
@@ -42181,7 +42181,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/ice_colony/exterior/surface/clearing/pass)
 "jVh" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/north)
 "jVs" = (
@@ -42252,7 +42252,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/clearing/south)
 "jWD" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -11;
 	pixel_y = -1
 	},
@@ -42388,7 +42388,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/pass)
 "jYu" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -6;
 	pixel_y = -1
 	},
@@ -42728,7 +42728,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "kdJ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "kdN" = (
@@ -43843,7 +43843,7 @@
 /turf/closed/wall/lava/solaris_dark,
 /area/ice_colony/surface/dorms/restroom_w)
 "kuo" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "kuI" = (
@@ -44305,7 +44305,7 @@
 /turf/open/lava/asteroid/directions/west,
 /area/ice_colony/exterior/surface/valley/southwest)
 "kBy" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -1;
 	pixel_y = 11
 	},
@@ -45275,7 +45275,7 @@
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -45536,7 +45536,7 @@
 /turf/open/lava/hot_lava/L_piece/west,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "kRB" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 15;
 	pixel_y = 17
 	},
@@ -46180,7 +46180,7 @@
 /turf/open/lava/hot_lava,
 /area/ice_colony/exterior/surface/valley/north)
 "lbt" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southeast)
 "lbu" = (
@@ -47261,7 +47261,7 @@
 /turf/open/floor/strata/sand4/east,
 /area/ice_colony/surface/garage/one)
 "lqJ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -5;
 	pixel_y = -2
 	},
@@ -47986,7 +47986,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/north)
 "lAy" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 7;
 	pixel_y = 1
 	},
@@ -48351,7 +48351,7 @@
 /turf/open/floor/strata/deco,
 /area/ice_colony/surface/requesitions)
 "lFT" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "lGD" = (
@@ -48414,7 +48414,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "lHj" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -1;
 	pixel_y = 11
 	},
@@ -48798,7 +48798,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_6,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "lMt" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -50024,7 +50024,7 @@
 /area/ice_colony/exterior/surface/clearing/north)
 "meg" = (
 /obj/structure/platform/stone/lava/north,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -1;
 	pixel_y = -4
 	},
@@ -50650,7 +50650,7 @@
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -11;
 	pixel_y = 23
 	},
@@ -52909,7 +52909,7 @@
 /turf/open/floor/strata/deco2,
 /area/ice_colony/surface/dorms/restroom_e)
 "mSF" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 4;
 	pixel_y = 7
 	},
@@ -53959,7 +53959,7 @@
 /turf/open/lava/hot_lava/side/south,
 /area/ice_colony/exterior/surface/valley/north)
 "nhj" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -10;
 	pixel_y = -6
 	},
@@ -54232,7 +54232,7 @@
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/ice_colony/surface/bar/bar)
 "nll" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 23;
 	pixel_y = -8
 	},
@@ -54586,7 +54586,7 @@
 /turf/open/lava/metal/warnplate,
 /area/ice_colony/surface/disposals)
 "nqp" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -1;
 	pixel_y = -5
 	},
@@ -58391,7 +58391,7 @@
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -5;
 	pixel_y = 1
 	},
@@ -58407,7 +58407,7 @@
 "owQ" = (
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 12
 	},
 /turf/open/lava/brock,
@@ -61576,7 +61576,7 @@
 /turf/open/floor/grass,
 /area/ice_colony/surface/dorms/restroom_w)
 "ptF" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 1;
 	pixel_y = 9
 	},
@@ -63264,7 +63264,7 @@
 /obj/structure/prop/fire_colony/dense/planter_box/plated/dark{
 	dir = 4
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_y = 8
 	},
 /turf/open/lava/metal/plating_catwalk,
@@ -65196,7 +65196,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "qqO" = (
 /obj/structure/platform/stone/lava/east,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -4;
 	pixel_y = 17
 	},
@@ -65331,7 +65331,7 @@
 /area/ice_colony/surface/requesitions)
 "qsz" = (
 /obj/structure/platform_decoration/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -13;
 	pixel_y = 3
 	},
@@ -65482,7 +65482,7 @@
 	pixel_x = -28;
 	pixel_y = -2
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "qur" = (
@@ -66064,7 +66064,7 @@
 /turf/open/floor/strata/blue1,
 /area/ice_colony/surface/dorms/restroom_w)
 "qCL" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -29;
 	pixel_y = 32
 	},
@@ -67603,7 +67603,7 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2{
 	pixel_y = 16
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -8;
 	pixel_y = 3
 	},
@@ -67997,7 +67997,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "rcj" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -7;
 	pixel_y = 6
 	},
@@ -69008,7 +69008,7 @@
 	pixel_x = -6;
 	pixel_y = 17
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "rqD" = (
@@ -69158,7 +69158,7 @@
 /turf/open/lava/basalt/basalt_dug,
 /area/ice_colony/exterior/surface/valley/southwest)
 "rss" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -5;
 	pixel_y = 11
 	},
@@ -69621,7 +69621,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "ryi" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 8;
 	pixel_y = 13
 	},
@@ -71157,7 +71157,7 @@
 	pixel_x = -38;
 	pixel_y = -15
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -2;
 	pixel_y = 7
 	},
@@ -71170,7 +71170,7 @@
 /turf/open/lava/asteroid/directions/north,
 /area/ice_colony/exterior/surface/clearing/north)
 "rSy" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -71619,7 +71619,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "rZP" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -72483,7 +72483,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/ice_colony/surface/bar/bar)
 "smi" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 1
 	},
@@ -72617,7 +72617,7 @@
 /turf/open/lava/hot_lava/L_piece/south,
 /area/ice_colony/exterior/surface/valley/north)
 "sne" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -73258,7 +73258,7 @@
 /turf/open/floor/strata/sand4,
 /area/ice_colony/surface/research)
 "syc" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -8;
 	pixel_y = -3
 	},
@@ -73432,7 +73432,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/north)
 "sAT" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -1;
 	pixel_y = 9
 	},
@@ -73615,7 +73615,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south)
 "sDE" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 7;
 	pixel_y = -6
 	},
@@ -73737,7 +73737,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/dorms/restroom_w)
 "sEu" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -2;
 	pixel_y = 5
 	},
@@ -73770,7 +73770,7 @@
 /area/ice_colony/exterior/surface/valley/south)
 "sES" = (
 /obj/effect/lava/edges/basalt/l_piece,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -73806,7 +73806,7 @@
 /area/ice_colony/surface/research)
 "sFY" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 7;
 	pixel_y = -12
 	},
@@ -74866,7 +74866,7 @@
 /turf/open/floor/corsat/solid/directions/southeast,
 /area/ice_colony/surface/dorms/restroom_w)
 "sXr" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 7;
 	pixel_y = 4
 	},
@@ -78043,7 +78043,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/ice_colony/surface/storage_unit/research)
 "tRi" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 26;
 	pixel_y = 8
 	},
@@ -78065,7 +78065,7 @@
 /turf/open/lava/metal/filtrationside_lava,
 /area/ice_colony/exterior/surface/clearing/pass)
 "tSm" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 3;
 	pixel_y = 9
 	},
@@ -78212,7 +78212,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "tUn" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 1;
 	pixel_y = 2
 	},
@@ -79938,7 +79938,7 @@
 /turf/open/lava/asteroid/directions/west,
 /area/ice_colony/exterior/surface/valley/southwest)
 "utZ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /obj/structure/flora/alien/chilli_bush/chilli_bush_2{
 	pixel_x = -24;
 	pixel_y = -11
@@ -80210,7 +80210,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/hydroponics/north)
 "uxS" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 1;
 	pixel_y = 2
 	},
@@ -80392,7 +80392,7 @@
 	pixel_x = 3;
 	pixel_y = 9
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -11;
 	pixel_y = -3
 	},
@@ -80453,7 +80453,7 @@
 "uAl" = (
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/west,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 7;
 	pixel_y = -3
 	},
@@ -80728,7 +80728,7 @@
 	pixel_x = 11;
 	pixel_y = 10
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "uEz" = (
@@ -80779,7 +80779,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "uEV" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -2;
 	pixel_y = 10
 	},
@@ -81090,7 +81090,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/clearing/south)
 "uJo" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 1;
 	pixel_y = 12
 	},
@@ -81531,7 +81531,7 @@
 /turf/open/floor/strata/sand4/west,
 /area/ice_colony/surface/hangar/hallway)
 "uPy" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 12
 	},
@@ -82380,14 +82380,14 @@
 /turf/open/lava/basalt/basalt8,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "vev" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 6;
 	pixel_y = 3
 	},
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "vez" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -11;
 	pixel_y = -2
 	},
@@ -83539,7 +83539,7 @@
 	pixel_y = 10;
 	pixel_x = -4
 	},
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 5;
 	pixel_y = -1
 	},
@@ -83759,7 +83759,7 @@
 "vvx" = (
 /obj/structure/platform/stone/lava/west,
 /obj/structure/platform/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 2;
 	pixel_y = 7
 	},
@@ -84544,7 +84544,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "vHq" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5,
+/obj/structure/flora/alien/chilli_bush_no_light,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
 "vHx" = (
@@ -84704,7 +84704,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "vJp" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -6;
 	pixel_y = 10
 	},
@@ -84964,7 +84964,7 @@
 /turf/open/floor/strata/floor3,
 /area/ice_colony/surface/clinic/treatment)
 "vNa" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 13
 	},
@@ -85011,7 +85011,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "vOp" = (
 /obj/structure/platform/stone/lava/east,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_y = 14
 	},
 /obj/structure/flora/alien/chilli_bush/chilli_bush_4{
@@ -85044,7 +85044,7 @@
 /turf/open/floor/strata/seeg3/north,
 /area/ice_colony/surface/dorms/restroom_w)
 "vOO" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 2;
 	pixel_y = 8
 	},
@@ -85199,7 +85199,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "vQr" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 6
 	},
 /turf/open/lava/brock,
@@ -86446,7 +86446,7 @@
 /turf/open/lava/basalt/basalt10,
 /area/ice_colony/exterior/surface/valley/north)
 "wjq" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -6;
 	pixel_y = 5
 	},
@@ -87968,7 +87968,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/excavation/storage)
 "wGC" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6,
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
 "wGD" = (
@@ -88552,7 +88552,7 @@
 /turf/open/floor/strata/lightblue3/northwest,
 /area/ice_colony/surface/requesitions)
 "wOs" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 1;
 	pixel_y = 10
 	},
@@ -88690,7 +88690,7 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/valley/south)
 "wQH" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 16;
 	pixel_y = -2
 	},
@@ -88951,7 +88951,7 @@
 /turf/open/lava/basalt/basalt11,
 /area/ice_colony/exterior/surface/valley/southeast)
 "wTY" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = 7;
 	pixel_y = 9
 	},
@@ -90366,7 +90366,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "xoE" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 4;
 	pixel_y = 10
 	},
@@ -91468,7 +91468,7 @@
 "xGr" = (
 /obj/structure/platform_decoration/stone/lava/north,
 /obj/structure/platform_decoration/stone/lava,
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -1;
 	pixel_y = 7
 	},
@@ -92894,7 +92894,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_5,
 /area/ice_colony/exterior/surface/valley/northeast)
 "yas" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5{
+/obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = -15;
 	pixel_y = 21
 	},
@@ -93215,7 +93215,7 @@
 /turf/open/lava/hot_lava/corner/east,
 /area/ice_colony/exterior/surface/clearing/pass)
 "yfx" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6{
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
 	pixel_x = -7
 	},
 /turf/open/lava/brock,

@@ -1348,6 +1348,14 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 // 	display_name = "Hyperdyne Corporation shoulder patch"
 // 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
+// /datum/gear/civilian/patch/lasalle
+// 	display_name = "Lasalle Bionational Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/lasalle
+
+// /datum/gear/civilian/patch/seegson
+// 	display_name = "Seegson Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/seegson
+
 // Misc Headwear
 
 /datum/gear/civilian/headwear

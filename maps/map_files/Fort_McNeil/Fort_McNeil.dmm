@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/machinery/landinglight/spoke,
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/landing_zone_1)
+"aab" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/fort_mcneil/indoors/caves/central)
 "abw" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
@@ -12,7 +20,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/landing_zone_1)
 "aby" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
+/obj/effect/sentry_landmark/lz_1/bottom_left,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain{
 	pixel_y = -16;
 	pixel_x = -1
@@ -2358,7 +2366,7 @@
 /turf/open/floor/plating,
 /area/fort_mcneil/indoors/hydro)
 "gCe" = (
-/obj/effect/sentry_landmark/lz_2/bottom_right,
+/obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/shale/layer1,
 /area/fort_mcneil/landing_zone_1)
 "gDt" = (
@@ -2670,7 +2678,7 @@
 "hDs" = (
 /obj/structure/machinery/door_control{
 	pixel_x = -30;
-	id = "lockdown_2";
+	id = "lockdown_1";
 	name = "Emergency Lockdown"
 	},
 /turf/open/floor/prison/bluefull,
@@ -4107,7 +4115,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/scrublands/south)
 "kQr" = (
-/obj/effect/sentry_landmark/lz_2/top_left,
+/obj/effect/sentry_landmark/lz_1/top_left,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain{
 	pixel_y = 15
 	},
@@ -7137,14 +7145,6 @@
 	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/dorm)
-"tuO" = (
-/obj/structure/window/framed/strata/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "bar_lockdown";
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/fort_mcneil/indoors/command)
 "twR" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/fort_mcneil/indoors/caves/central)
@@ -8303,7 +8303,7 @@
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/connection_paths)
 "wjq" = (
-/obj/effect/sentry_landmark/lz_2/bottom_right,
+/obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/fort_mcneil/landing_zone_1)
 "wnl" = (
@@ -8476,7 +8476,7 @@
 /turf/open/floor/plating,
 /area/fort_mcneil/indoors/dorm)
 "wMu" = (
-/obj/effect/sentry_landmark/lz_2/top_right,
+/obj/effect/sentry_landmark/lz_1/top_right,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain{
 	pixel_y = 15
 	},
@@ -9329,7 +9329,7 @@ vtN
 vtN
 vtN
 vtN
-vtN
+aab
 ofL
 ofL
 ofL
@@ -9424,7 +9424,7 @@ vtN
 bPw
 vtN
 vtN
-vtN
+aab
 vtN
 apJ
 apJ
@@ -9438,7 +9438,7 @@ vtN
 apJ
 apJ
 apJ
-apJ
+kHH
 apJ
 apJ
 apJ
@@ -9502,7 +9502,7 @@ apJ
 apJ
 vtN
 vtN
-vtN
+aab
 vtN
 vtN
 vtN
@@ -9555,7 +9555,7 @@ htT
 htT
 htT
 htT
-htT
+lRb
 htT
 jEp
 htT
@@ -9622,7 +9622,7 @@ ofL
 jzf
 vtN
 apJ
-apJ
+kHH
 apJ
 apJ
 rLE
@@ -9662,7 +9662,7 @@ htT
 htT
 htT
 htT
-htT
+lRb
 htT
 uUb
 ofL
@@ -9791,7 +9791,7 @@ ofL
 ofL
 ofL
 mwP
-nqM
+hAK
 nqM
 itD
 nqM
@@ -9840,11 +9840,11 @@ ofL
 vtN
 apJ
 apJ
-apJ
+kHH
 apJ
 wPC
-wAd
-apJ
+wPC
+kHH
 wPC
 apJ
 vtN
@@ -9852,7 +9852,7 @@ ofL
 ofL
 ofL
 ghG
-htT
+lRb
 htT
 htT
 gDv
@@ -9936,7 +9936,7 @@ apJ
 wPC
 apJ
 apJ
-vtN
+aab
 ofL
 ofL
 vtN
@@ -10248,7 +10248,7 @@ vtN
 apJ
 wPC
 wPC
-apJ
+kHH
 apJ
 kns
 apJ
@@ -10359,7 +10359,7 @@ htT
 htT
 htT
 qhd
-qhd
+vyY
 qhd
 htT
 htT
@@ -10367,7 +10367,7 @@ lRb
 htT
 htT
 htT
-htT
+lRb
 qhd
 qhd
 qhd
@@ -10488,7 +10488,7 @@ ofL
 ofL
 ofL
 mwP
-nqM
+hAK
 mwP
 mwP
 nqM
@@ -10508,7 +10508,7 @@ nqM
 kws
 apJ
 apJ
-apJ
+kHH
 apJ
 apJ
 apJ
@@ -10667,7 +10667,7 @@ tLa
 ofL
 ghG
 htT
-htT
+lRb
 ghG
 ofL
 ofL
@@ -10718,7 +10718,7 @@ ofL
 ofL
 ofL
 vtN
-vtN
+aab
 vtN
 vtN
 apJ
@@ -10744,7 +10744,7 @@ ofL
 vtN
 apJ
 vtN
-apJ
+kHH
 apJ
 vtN
 vtN
@@ -11060,7 +11060,7 @@ ofL
 ofL
 ofL
 ghG
-ghG
+sva
 ghG
 ghG
 htT
@@ -11271,7 +11271,7 @@ htT
 qhd
 qhd
 htT
-ghG
+sva
 ofL
 ofL
 ofL
@@ -11280,7 +11280,7 @@ htT
 htT
 htT
 htT
-htT
+lRb
 htT
 ghG
 ofL
@@ -11470,7 +11470,7 @@ ofL
 ofL
 ghG
 htT
-htT
+lRb
 htT
 htT
 htT
@@ -11899,7 +11899,7 @@ ofL
 ofL
 ofL
 mwP
-nqM
+hAK
 nqM
 nqM
 mwP
@@ -12383,7 +12383,7 @@ ofL
 ofL
 ofL
 ghG
-htT
+lRb
 htT
 htT
 qhd
@@ -12413,7 +12413,7 @@ nqM
 nqM
 uQH
 uQH
-uQH
+cRq
 ofL
 ofL
 dzE
@@ -12692,7 +12692,7 @@ lRb
 htT
 htT
 aiO
-htT
+lRb
 ghG
 ghG
 ofL
@@ -12810,7 +12810,7 @@ ofL
 ofL
 ofL
 mwP
-mwP
+ses
 nqM
 nqM
 uQH
@@ -13194,7 +13194,7 @@ htT
 bcl
 ghG
 htT
-htT
+lRb
 qhd
 qhd
 qhd
@@ -13873,7 +13873,7 @@ hCf
 hCf
 akJ
 akJ
-vzx
+ius
 aDM
 aDM
 aDM
@@ -14261,7 +14261,7 @@ xyc
 glq
 tyM
 sOJ
-tuO
+kox
 hCf
 hCf
 hCf
@@ -14311,7 +14311,7 @@ ofL
 ofL
 ghG
 htT
-htT
+lRb
 ghG
 ofL
 lYl
@@ -14715,7 +14715,7 @@ qhd
 kQI
 htT
 htT
-htT
+lRb
 ghG
 ofL
 lYl
@@ -14984,7 +14984,7 @@ hCf
 hCf
 akJ
 akJ
-ius
+vzx
 aDM
 aDM
 aDM
@@ -15014,7 +15014,7 @@ cmc
 kWC
 ghG
 ghG
-htT
+lRb
 htT
 htT
 htT
@@ -15286,7 +15286,7 @@ hVE
 hCf
 qaE
 qaE
-qnc
+vuR
 qNX
 qNX
 qNX
@@ -15386,7 +15386,7 @@ oVK
 grv
 qaE
 qaE
-vuR
+qnc
 bED
 dRU
 sKC
@@ -21568,7 +21568,7 @@ lZF
 lZF
 lZF
 lZF
-lZF
+aaa
 iuI
 iuI
 iuI
@@ -21658,7 +21658,7 @@ vCD
 cBX
 vzf
 lZF
-lZF
+aaa
 iuI
 dxm
 uTL
@@ -21677,7 +21677,7 @@ uTL
 syR
 lZF
 tKh
-lZF
+aaa
 eIM
 eIM
 eIM
@@ -22159,7 +22159,7 @@ lZF
 rHU
 eIM
 lZF
-lZF
+aaa
 iUt
 uTL
 uTL
@@ -22668,7 +22668,7 @@ eIM
 eIM
 pcx
 lZF
-lZF
+aaa
 gHO
 uie
 uTL
@@ -22687,7 +22687,7 @@ uTL
 syR
 lZF
 wYM
-lZF
+aaa
 eIM
 eIM
 xtT
@@ -22780,7 +22780,7 @@ lZF
 lZF
 lZF
 lZF
-lZF
+aaa
 gHO
 gHO
 gHO

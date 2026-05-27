@@ -1032,8 +1032,12 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/backpack/clf/get_examine_text(mob/user)
 	. = ..()
-	if(user.faction != FACTION_CLF)
-		. += SPAN_DANGER("You can see something dangerous behind the exposed circuitry!\n")
+	if(user.faction != FACTION_CLF && user.skills.get_skill_level(SKILL_ENGINEER) <= SKILL_ENGINEER_NOVICE)
+		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+
+	else if(user.faction != FACTION_CLF && user.skills.get_skill_level(SKILL_ENGINEER) > SKILL_ENGINEER_NOVICE)
+		. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+
 	else
 		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 

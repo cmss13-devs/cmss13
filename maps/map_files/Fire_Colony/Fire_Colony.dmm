@@ -60142,7 +60142,7 @@
 	dir = 8
 	},
 /obj/structure/sign/goldenplaque{
-	desc = "Thanks to everyone who helped out with the map. Special thanks to BOBAMA, Nemesis and the legend Dimdimich1996.";
+	desc = "Thanks to everyone who helped out with the map. Special thanks to BOBAMA, Nemesis, Cuberound and the legend Dimdimich1996.";
 	name = "wall scribbles";
 	pixel_y = 31;
 	icon = 'icons/obj/items/paper.dmi';

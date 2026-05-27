@@ -68,6 +68,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	/// The identifying name of the machine within the department, listed when being sent something.
 	var/identity_name
 
+	///Whether or not the fax machine is modified.
+	var/clf = FALSE
+
 	/// The radio prefix used for radio alerts, if there is one.
 	var/radio_alert_tag = null
 
@@ -197,11 +200,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-		flick("[initial(icon_state)]send", src)
+
+		if(clf)
+			flick("[initial(icon_state)]send_clf", src)
+		else
+			flick("[initial(icon_state)]send", src)
 		updateUsrDialog()
 		return
 
 	if(istype(O, /obj/item/card/id))
+
+		if(clf)
+			check_clf_id(O, user)
 
 		var/obj/item/card/id/idcard = O
 		if(scan)
@@ -624,68 +634,71 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(receiver.icon_state)]receive", receiver)
+			if(clf)
+				flick("[initial(receiver.icon_state)]receive_clf", receiver)
+			else
+				flick("[initial(receiver.icon_state)]receive", receiver)
 
-			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
-			// give the sprite some time to flick
-			spawn(30)
-				var/obj/item/paper/P = new(receiver.loc,faxcontents.photo_list)
-				if(!faxcontents.paper_name)
-					P.name = "faxed message"
-				else
-					P.name = "faxed message ([faxcontents.paper_name])"
-				P.info = "[faxcontents.data]"
-				if(faxcontents.extra_headers)
-					P.extra_headers = faxcontents.extra_headers.Copy()
-				if(faxcontents.extra_stylesheets)
-					P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
-				P.update_icon()
-				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-				var/encrypted = FALSE
-
-				switch(network)
-					if(FAX_NET_USCM_HC)
-						stampoverlay.icon_state = "paper_stamp-uscm"
-						encrypted = TRUE
-					if(FAX_NET_CMB)
-						stampoverlay.icon_state = "paper_stamp-cmb"
-						network = "NC4 UA Federal Secure Network."
-						encrypted = TRUE
-					if(FAX_NET_WY_HC)
-						stampoverlay.icon_state = "paper_stamp-weyyu"
-						encrypted = TRUE
-					if(FAX_NET_TWE_HC)
-						stampoverlay.icon_state = "paper_stamp-twe"
-						encrypted = TRUE
-					if(FAX_NET_UPP_HC)
-						stampoverlay.icon_state = "paper_stamp-upp"
-						encrypted = TRUE
-					if(FAX_NET_CLF_HC)
-						stampoverlay.icon_state = "paper_stamp-clf"
-						encrypted = TRUE
-					if(FAX_NET_PRESS_HC)
-						stampoverlay.icon_state = "paper_stamp-rd"
-						encrypted = TRUE
+				playsound(receiver.loc, "sound/machines/fax.ogg", 15)
+				// give the sprite some time to flick
+				spawn(30)
+					var/obj/item/paper/P = new(receiver.loc,faxcontents.photo_list)
+					if(!faxcontents.paper_name)
+						P.name = "faxed message"
 					else
-						stampoverlay.icon_state = "paper_stamp-fax"
+						P.name = "faxed message ([faxcontents.paper_name])"
+					P.info = "[faxcontents.data]"
+					if(faxcontents.extra_headers)
+						P.extra_headers = faxcontents.extra_headers.Copy()
+					if(faxcontents.extra_stylesheets)
+						P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
+					P.update_icon()
+					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+					var/encrypted = FALSE
+
+					switch(network)
+						if(FAX_NET_USCM_HC)
+							stampoverlay.icon_state = "paper_stamp-uscm"
+							encrypted = TRUE
+						if(FAX_NET_CMB)
+							stampoverlay.icon_state = "paper_stamp-cmb"
+							network = "NC4 UA Federal Secure Network."
+							encrypted = TRUE
+						if(FAX_NET_WY_HC)
+							stampoverlay.icon_state = "paper_stamp-weyyu"
+							encrypted = TRUE
+						if(FAX_NET_TWE_HC)
+							stampoverlay.icon_state = "paper_stamp-twe"
+							encrypted = TRUE
+						if(FAX_NET_UPP_HC)
+							stampoverlay.icon_state = "paper_stamp-upp"
+							encrypted = TRUE
+						if(FAX_NET_CLF_HC)
+							stampoverlay.icon_state = "paper_stamp-clf"
+							encrypted = TRUE
+						if(FAX_NET_PRESS_HC)
+							stampoverlay.icon_state = "paper_stamp-rd"
+							encrypted = TRUE
+						else
+							stampoverlay.icon_state = "paper_stamp-fax"
 
 
-				if(encrypted)
-					if(!P.stamped)
-						P.stamped = new
-					P.stamped += /obj/item/tool/stamp
-					P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
-				else
-					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
-				P.overlays += stampoverlay
-				if(sending_priority)
-					playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
-					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
-					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
-						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
-						sent_radio_alert = TRUE
-		qdel(faxcontents)
+					if(encrypted)
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.stamps += "<HR><i>This paper has been stamped and encrypted by the [network].</i>"
+					else
+						P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
+					P.overlays += stampoverlay
+					if(sending_priority)
+						playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
+						receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+						receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+						if((receiver.radio_alert_tag != null) && !sent_radio_alert)
+							ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
+							sent_radio_alert = TRUE
+			qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "\improper CMB Incident Command Center Fax Machine"
@@ -890,6 +903,146 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			qdel(src)
 			return
 		return ..()
+
+//Coordinator survivor portable fax machine!
+//Deployed CLF portable fax machine
+/obj/structure/machinery/faxmachine/backpack/clf
+	name = "\improper Hacked Portable Press Fax Machine"
+	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
+	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare best managed through spontaneous invasive responses and dead drops. Recent incursions in the Neroid sector by the USCM sometimes necessitate a change of plans.
+
+		This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but correspondents are high priority targets for Cell operations nonetheless.
+
+		The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+		If you aren't here to emancipate the masses, treat this device *very* carefully."}
+
+	icon_state = "fax_backpack_clf"
+	needs_power = FALSE
+	use_power = USE_POWER_NONE
+	health = 150
+	network = FAX_NET_CLF
+	department = FAX_DEPARTMENT_CLF
+	target_department = FAX_DEPARTMENT_CLF
+	clf = TRUE
+
+/obj/item/device/fax_backpack/clf
+	name = "\improper Hacked Portable Press Fax Machine"
+	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
+	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare being best managed through spontaneous invasive responses and dead drops. However, recent incursions into the Neroid sector by the USCM necessitate a change of plans.
+
+		This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but correspondents are high priority targets for Cell operations nonetheless.
+
+		The device itself is a mess of wires and haphazard modifications to prevent tracebacks, and provide meaningful encryption to communications. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+		If you aren't here to emancipate the masses, treat this device *very* carefully."}
+	icon = 'icons/obj/structures/machinery/library.dmi'
+	icon_state = "fax_backpack_clf"
+	item_state = "fax_backpack_clf"
+	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+	var/clf = TRUE
+
+/obj/item/device/fax_backpack/clf/attack_self(mob/user)
+	if(!ishuman(user))
+		return
+	var/turf/deployturf = get_turf(user)
+	if(istype(deployturf, /turf/open))
+		var/turf/open/floor = deployturf
+		var/area/area = get_area(user)
+		if(!floor.allow_construction || !area.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			return FALSE
+	var/fail = FALSE
+	if(deployturf.density)
+		fail = TRUE
+	else
+		var/static/list/blocking_types = typecacheof(list(
+			/obj/structure/machinery/defenses,
+			/obj/structure/window,
+			/obj/structure/windoor_assembly,
+			/obj/structure/machinery/door,
+		))
+		for(var/obj/blockingobj in deployturf.contents)
+			if(blockingobj.density && !(blockingobj.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(is_type_in_typecache(blockingobj, blocking_types))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
+		return
+	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		var/obj/structure/machinery/faxmachine/backpack/clf/deployedfax = new(deployturf, machine_id_tag)
+		deployedfax.faxbag = src
+		transfer_label_component(deployedfax)
+		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
+		user.drop_held_item(src)
+		forceMove(deployedfax)
+		return
+	return ..()
+
+/obj/structure/machinery/faxmachine/proc/handle_explosion(turf/target_turf, dir, cause_data) //punish the strong
+	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	qdel(src)
+
+/obj/structure/machinery/faxmachine/proc/check_clf_id(obj/item/input as obj, mob/user as mob)
+
+	if(istype(input, /obj/item/card/id))
+
+		var/obj/item/card/id/idcard = input
+
+		if((idcard.faction == FACTION_CLF) && (user.faction == FACTION_CLF))
+			to_chat(user, "Using the proper protocol taught to you, you insert your ID to access the modified fax machine.")
+
+		else if((idcard.faction == FACTION_CLF) && (user.faction != FACTION_CLF))
+			var/checksucceed = pick(75;TRUE,25;FALSE) //Who do you think you are?
+			if(!checksucceed)
+				to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+				var/turf/target_turf
+				target_turf = get_turf(src)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 3 SECONDS)
+				return
+			to_chat(user, "With some caution, you insert the ID, and the system works perfectly. Why were you even scared?")
+
+		else if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER) //Requires CE or Synth to properly access without blowing up, otherwise.
+			var/checksucceed = pick(75;TRUE,25;FALSE) //Though you can still, obviously, fail
+			if(!checksucceed)
+				to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+				var/turf/target_turf
+				target_turf = get_turf(src)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 3 SECONDS)
+				return
+			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge save you from the *very* obvious IED implanted within the fax machine. Best be careful, next time you might not be so lucky."))
+
+		else
+			to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+			src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+			var/turf/target_turf
+			target_turf = get_turf(src)
+			addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
+			return
+
+/obj/structure/machinery/faxmachine/backpack/clf/get_examine_text(mob/user)
+	. = ..()
+	if(user.faction != FACTION_CLF)
+		. += SPAN_DANGER("You can see something dangerous behind the exposed circuitry!\n")
+	else
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+
+/obj/item/device/fax_backpack/clf/get_examine_text(mob/user)
+	. = ..()
+	if(user.faction != FACTION_CLF)
+		. += SPAN_DANGER("You can see something dangerous behind the exposed circuitry!\n")
+	else
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+
 
 /datum/fax
 	var/data

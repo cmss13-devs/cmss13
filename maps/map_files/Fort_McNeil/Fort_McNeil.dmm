@@ -425,7 +425,7 @@
 /area/fort_mcneil/indoors/hydro)
 "abv" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/prison,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "abw" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -443,7 +443,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/prison,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "aby" = (
 /obj/effect/sentry_landmark/lz_1/bottom_left,
@@ -499,7 +499,7 @@
 /area/fort_mcneil/outdoors/colony_exterior/west)
 "abC" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/fort_mcneil/indoors/engi)
@@ -936,6 +936,116 @@
 	},
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/command)
+"acQ" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"acR" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/mining)
+"acS" = (
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"acT" = (
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"acU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"acV" = (
+/turf/open/floor/hybrisa/metal/zbrownfloor1/north,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"acW" = (
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = -2
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"acX" = (
+/obj/item/stack/sheet/plasteel/small_stack,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"acY" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/storage)
+"acZ" = (
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 2;
+	name = "dropship deployed flare";
+	desc = "A red USCM issued flare deployed from a dropship. There are instructions on the side, it reads 'pull cord, make light'."
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/landing_zone_1)
+"ada" = (
+/obj/item/tool/shovel,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"adb" = (
+/turf/open/floor/prison/darkbrown2/west,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"adc" = (
+/turf/open/floor/prison/darkbrown2/east,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"add" = (
+/turf/open/floor/prison/darkbrown2/northeast,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"ade" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/connection_paths)
+"adf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/bar)
+"adg" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/med_small_stack{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal/med_small_stack{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/comms)
+"adh" = (
+/obj/item/weapon/gun/flamer/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = 8;
+	pixel_y = -13
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/colony_exterior/east)
+"adi" = (
+/turf/open/floor/prison/red/southwest,
+/area/fort_mcneil/indoors/pod_1)
+"adj" = (
+/turf/open/floor/prison/red,
+/area/fort_mcneil/indoors/pod_1)
+"adk" = (
+/turf/open/floor/prison/red/southeast,
+/area/fort_mcneil/indoors/pod_1)
+"adl" = (
+/turf/open/floor/prison/red/west,
+/area/fort_mcneil/indoors/pod_1)
+"adm" = (
+/turf/open/floor/prison/red/east,
+/area/fort_mcneil/indoors/pod_1)
+"adn" = (
+/turf/open/floor/prison/red/northwest,
+/area/fort_mcneil/indoors/pod_1)
+"ado" = (
+/turf/open/floor/prison/red/north,
+/area/fort_mcneil/indoors/pod_1)
+"adp" = (
+/turf/open/floor/prison/red/northeast,
+/area/fort_mcneil/indoors/pod_1)
+"adq" = (
+/turf/open/floor/prison/redfull,
+/area/fort_mcneil/indoors/pod_1)
 "adv" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -1338,7 +1448,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
-/turf/open/floor/prison,
+/turf/open/floor/prison/darkbrown2/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "bbv" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -1778,7 +1888,8 @@
 /area/fort_mcneil/indoors/command)
 "cix" = (
 /obj/structure/machinery/vending/cola{
-	pixel_y = 16
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/command)
@@ -1997,7 +2108,9 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/fort_mcneil/indoors/command)
 "cJQ" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/closet/secure_closet/engineering_electrical{
+	req_one_access = null
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/fort_mcneil/indoors/engi)
 "cMg" = (
@@ -2564,9 +2677,6 @@
 	},
 /turf/open/floor/plating,
 /area/fort_mcneil/indoors/connection_paths)
-"eAd" = (
-/turf/open/floor/prison/darkyellow2/west,
-/area/fort_mcneil/indoors/engi)
 "eAi" = (
 /obj/structure/platform_decoration/stone/strata/east,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -2688,6 +2798,14 @@
 /area/fort_mcneil/landing_zone_1/ceiling)
 "eML" = (
 /obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fort_mcneil/indoors/engi)
 "eMM" = (
@@ -2796,9 +2914,7 @@
 /turf/open/floor/prison/green,
 /area/fort_mcneil/indoors/pod_3)
 "fag" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "lockdown_5";
 	dir = 2
@@ -3189,6 +3305,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/stack/sandbags_empty/half,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/fort_mcneil/indoors/comms_inside)
 "gom" = (
@@ -3684,7 +3801,9 @@
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/command)
 "hJk" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/closet/secure_closet/engineering_electrical{
+	req_one_access = null
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/indoors/comms_inside)
 "hJq" = (
@@ -3704,7 +3823,9 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/fort_mcneil/indoors/engi)
 "hKo" = (
-/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/closet/secure_closet/engineering_welding{
+	req_one_access = null
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -4070,6 +4191,7 @@
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/weapon/gun/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /turf/open/floor/prison/red/northeast,
@@ -4818,6 +4940,7 @@
 /obj/item/weapon/gun/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
 /turf/open/floor/prison/red/north,
 /area/fort_mcneil/indoors/command)
 "ksL" = (
@@ -5000,6 +5123,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/item/fuel_cell,
+/obj/item/tool/shovel,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/fort_mcneil/indoors/comms_inside)
 "kFZ" = (
@@ -5261,8 +5385,11 @@
 "lju" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/almayer/handheld1{
-	pixel_x = 3;
+	pixel_x = 6;
 	pixel_y = 2
+	},
+/obj/item/stack/sheet/metal/med_small_stack{
+	pixel_x = -6
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/fort_mcneil/indoors/command)
@@ -5365,6 +5492,9 @@
 /obj/item/storage/pouch/survival/full/black,
 /obj/item/storage/pouch/survival/full/black,
 /obj/item/storage/pouch/survival/full/black,
+/obj/item/stack/sheet/plasteel{
+	amount = 32
+	},
 /turf/open/floor/prison/blue/northwest,
 /area/fort_mcneil/indoors/pod_2)
 "lMX" = (
@@ -6486,9 +6616,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fort_mcneil/indoors/engi)
 "oOd" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/fort_mcneil/indoors/engi)
 "oOX" = (
@@ -6543,7 +6671,7 @@
 /area/fort_mcneil/outdoors/colony_exterior/north_west)
 "oSF" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
-/turf/open/floor/prison,
+/turf/open/floor/prison/darkbrown2/northwest,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "oSW" = (
 /obj/structure/machinery/power/monitor{
@@ -6801,7 +6929,6 @@
 	},
 /obj/effect/spawner/random/attachment,
 /obj/effect/spawner/random/attachment,
-/obj/effect/spawner/random/attachment,
 /turf/open/floor/prison/red/southeast,
 /area/fort_mcneil/indoors/command)
 "pGX" = (
@@ -6976,7 +7103,6 @@
 "qno" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
-/obj/effect/spawner/random/gun/shotgun/lowchance,
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
 	network = list("interrogation")
@@ -7380,6 +7506,7 @@
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/ammo_magazine/smg/p90,
 /turf/open/floor/prison/red/north,
 /area/fort_mcneil/indoors/command)
 "roG" = (
@@ -8049,12 +8176,13 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/scrublands/south)
 "sSb" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname{
-	dir = 1
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "lockdown_med";
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical{
+	dir = 1;
+	name = "Fort McNeil - Medical"
 	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/command)
@@ -8541,9 +8669,11 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/fort_mcneil/indoors/caves/north)
 "ugo" = (
-/obj/structure/closet/secure_closet/engineering_welding,
 /obj/structure/machinery/power/apc/power/east{
 	start_charge = 20
+	},
+/obj/structure/closet/secure_closet/engineering_welding{
+	req_one_access = null
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/indoors/comms_inside)
@@ -8781,6 +8911,9 @@
 "uHk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/gloves/yellow,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fort_mcneil/indoors/engi)
 "uHL" = (
@@ -9315,9 +9448,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/landing_zone_1)
 "vXr" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "lockdown_2";
 	dir = 2
@@ -9771,9 +9902,7 @@
 /turf/closed/wall/strata_ice,
 /area/fort_mcneil/oob)
 "xsN" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "lockdown_1";
 	dir = 2
@@ -9943,7 +10072,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
-/turf/open/floor/prison,
+/turf/open/floor/prison/redfull,
 /area/fort_mcneil/indoors/pod_1)
 "xUI" = (
 /obj/effect/decal/warning_stripes{
@@ -10024,7 +10153,9 @@
 /turf/open/floor/prison/bluefull,
 /area/fort_mcneil/indoors/command)
 "yfb" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
+	req_one_access = list()
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
@@ -12782,11 +12913,11 @@ bha
 bha
 sOm
 sOm
+ada
 lzk
+acY
 lzk
-lzk
-lzk
-lzk
+acW
 sOm
 sOm
 ofL
@@ -12884,10 +13015,10 @@ bha
 sOm
 sOm
 lzk
-lzk
-lzk
-lzk
-lzk
+acY
+acY
+acY
+acW
 sOm
 sOm
 aCH
@@ -12988,7 +13119,7 @@ lzk
 lzk
 sOm
 lzk
-lzk
+acW
 bTy
 aCH
 eMM
@@ -13089,7 +13220,7 @@ lzk
 lzk
 sOm
 wuq
-lzk
+acX
 bTy
 eMM
 eMM
@@ -13288,9 +13419,9 @@ bha
 sOm
 sOm
 lzk
-lzk
+acY
 abv
-lzk
+acY
 lzk
 sOm
 sOm
@@ -13997,8 +14128,8 @@ mwx
 hJF
 abG
 abC
-eAd
-eAd
+abG
+abG
 uHk
 mwx
 mwx
@@ -14057,9 +14188,9 @@ tfk
 bng
 mce
 mce
-lIO
-lIO
-lIO
+adn
+adl
+adi
 mce
 dwB
 tfk
@@ -14157,10 +14288,10 @@ mkP
 tfk
 bng
 mce
+adq
+ado
 lIO
-lIO
-lIO
-lIO
+adj
 mce
 dwB
 tfk
@@ -14259,9 +14390,9 @@ gre
 bng
 mce
 xSp
+ado
 lIO
-lIO
-lIO
+adj
 mce
 dwB
 tfk
@@ -14288,7 +14419,7 @@ uur
 lBy
 xsN
 aDM
-gbm
+ade
 mIT
 mIT
 mIT
@@ -14359,10 +14490,10 @@ iuX
 tfk
 bng
 mce
+adq
+ado
 lIO
-lIO
-lIO
-lIO
+adj
 mce
 dwB
 tfk
@@ -14461,9 +14592,9 @@ tfk
 bng
 mce
 mce
-lIO
-lIO
-lIO
+adp
+adm
+adk
 mce
 dwB
 tfk
@@ -15118,8 +15249,8 @@ cmc
 oYi
 aaX
 aaS
-mcZ
-mcZ
+acR
+acR
 mcZ
 mcZ
 noi
@@ -15320,10 +15451,10 @@ cmc
 oYi
 mcZ
 aaT
+acR
+acR
 mcZ
-mcZ
-mcZ
-mcZ
+acQ
 noi
 cmc
 cmc
@@ -15399,7 +15530,7 @@ hCf
 hCf
 hOY
 oTn
-rxY
+adf
 vAi
 rgf
 rVZ
@@ -15724,8 +15855,8 @@ cmc
 oYi
 mcZ
 aaT
-mcZ
-mcZ
+acR
+acR
 mcZ
 mcZ
 oYi
@@ -15926,8 +16057,8 @@ cmc
 oYi
 mcZ
 mcZ
-mcZ
-mcZ
+acR
+acR
 mcZ
 mcZ
 oYi
@@ -16144,7 +16275,7 @@ cmc
 cmc
 cmc
 kWC
-ghG
+kWC
 ghG
 lRb
 htT
@@ -17010,7 +17141,7 @@ nNx
 abW
 kqc
 kqc
-kqc
+adh
 kqc
 kqc
 kqc
@@ -21459,7 +21590,7 @@ aOC
 aOC
 aOC
 quu
-aOC
+adg
 ofL
 ofL
 ofL
@@ -21675,10 +21806,10 @@ isd
 bOY
 dOF
 dOF
-aFU
+acV
 dEM
 dEM
-aFU
+acT
 dOF
 dOF
 rmQ
@@ -21775,12 +21906,12 @@ isd
 isd
 bOY
 dOF
-aFU
-aFU
+acS
+acV
 aFU
 dEM
-dEM
-aFU
+acU
+acS
 dOF
 rmQ
 aad
@@ -21876,12 +22007,12 @@ isd
 isd
 bOY
 dOF
+acS
+acV
 aFU
 aFU
-aFU
-aFU
-aFU
-aFU
+acT
+acS
 dOF
 rCX
 kwx
@@ -21977,12 +22108,12 @@ aah
 isd
 bOY
 dOF
+acS
+acV
 aFU
 aFU
-aFU
-aFU
-aFU
-aFU
+acT
+acS
 dOF
 adF
 aac
@@ -22079,10 +22210,10 @@ isd
 nBe
 dOF
 dOF
-aFU
+acV
 dEM
 dEM
-aFU
+acT
 dOF
 dOF
 adF
@@ -22780,7 +22911,7 @@ bOY
 abR
 dOF
 oSF
-aFU
+adb
 dOF
 adF
 xtT
@@ -22981,8 +23112,8 @@ ofL
 ofL
 eMf
 eMf
-aFU
-aFU
+add
+adc
 dOF
 kDx
 aal
@@ -23388,7 +23519,7 @@ ceA
 ksL
 nub
 lZF
-lZF
+acZ
 eIM
 aai
 eIM
@@ -24012,7 +24143,7 @@ eIM
 eIM
 lZF
 eIM
-eIM
+aal
 lZF
 lZF
 lZF
@@ -24105,7 +24236,7 @@ eIM
 iyR
 mVN
 idT
-eIM
+aal
 eIM
 eIM
 eIM

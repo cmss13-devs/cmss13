@@ -321,6 +321,7 @@
 
 /obj/structure/bed/chair/vehicle/comfy
 	icon = 'icons/obj/vehicles/interiors/rt01_general.dmi'
+	allways_undense = TRUE
 
 /obj/structure/bed/chair/vehicle/comfy/alt
 	icon_state = "alt_vehicle_seat"

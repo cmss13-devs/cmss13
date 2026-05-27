@@ -1007,7 +1007,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
 				var/turf/target_turf
 				target_turf = get_turf(src)
-				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
 				return
 			to_chat(user, "With some caution, you insert the ID, and the system works perfectly. Why were you even scared?")
 
@@ -1018,7 +1018,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
 				var/turf/target_turf
 				target_turf = get_turf(src)
-				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
 				return
 			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge save you from the *very* obvious IED implanted within the fax machine. Best be careful, next time you might not be so lucky."))
 
@@ -1032,22 +1032,39 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/backpack/clf/get_examine_text(mob/user)
 	. = ..()
-	if(user.faction != FACTION_CLF && user.skills.get_skill_level(SKILL_ENGINEER) <= SKILL_ENGINEER_NOVICE)
-		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+	if(user.faction != FACTION_CLF)
 
-	else if(user.faction != FACTION_CLF && user.skills.get_skill_level(SKILL_ENGINEER) > SKILL_ENGINEER_NOVICE)
-		. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+		if(user.skills.get_skill_level(SKILL_ENGINEER) == SKILL_ENGINEER_ENGI)
+			. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+			return
 
-	else
+		if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)
+			. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+			return
+
+	if(user.faction == FACTION_CLF)
 		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+	else
+		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+		return
 
-/obj/item/device/fax_backpack/clf/get_examine_text(mob/user)
+/obj/item/device/fax_backpack/clf/get_examine_text(mob/user) //have to do it twice, unfortunately
 	. = ..()
 	if(user.faction != FACTION_CLF)
-		. += SPAN_DANGER("You can see something dangerous behind the exposed circuitry!\n")
-	else
-		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
 
+		if(user.skills.get_skill_level(SKILL_ENGINEER) == SKILL_ENGINEER_ENGI)
+			. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+			return
+
+		if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)
+			. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+			return
+
+	if(user.faction == FACTION_CLF || (isobserver(user)))
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+	else
+		. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+		return
 
 /datum/fax
 	var/data

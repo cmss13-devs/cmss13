@@ -4220,7 +4220,6 @@
 /turf/open/floor/prison/bluefull,
 /area/fort_mcneil/indoors/command)
 "lcJ" = (
-/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/red/north,
 /area/fort_mcneil/indoors/command)
 "ldU" = (

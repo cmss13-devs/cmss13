@@ -13,7 +13,7 @@ To install the [Git hooks], open the `tools/hooks/` folder and double-click
 `Install.bat`. Linux users run `tools/hooks/install.sh`.
 
 > Linux note: If you get an error like:
-> `./tools/mapmerge2/../bootstrap/python: not found`
+> `./tools/hooks/../bootstrap/python: not found`
 > You must update the line endings of the `tools/bootstrap/python` file to LF.
 
 

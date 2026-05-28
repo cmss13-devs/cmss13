@@ -1165,6 +1165,7 @@
 /obj/item/weapon/gun/smartgun/admin
 	requires_power = FALSE
 	requires_battery = FALSE
+	requires_harness = FALSE
 
 /obj/item/smartgun_battery
 	name = "\improper DV9 smartgun battery"

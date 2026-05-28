@@ -34,10 +34,8 @@
 
 #define BULWARK_DIR_ARMOR 10
 #define BULWARK_GRENADE_SWEEP_THROW 2
-#define BULWARK_REFLECTION_DURATION 10 SECONDS
-#define BULWARK_REFLECTION_CHANCE_BASE 80
-#define BULWARK_REFLECTION_CHANCE_SIDES 65
-#define BULWARK_REFLECTION_CHANCE_BACK 30
+#define BULWARK_REFLECTION_DURATION 6 SECONDS
+#define BULWARK_REFLECTION_CHANCE_FRONT 100
 #define BULWARK_REFLECTED_BULLET_DAMAGE 0.5
 #define BULWARK_REFLECTED_BULLET_ACCURACY 80
 
@@ -66,6 +64,7 @@
 
 /datum/behavior_delegate/warrior_bulwark/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
+	ADD_TRAIT(bound_xeno, TRAIT_NO_DIR_LOCK_SLOWDOWN, TRAIT_SOURCE_ABILITY("no_dir_lock_slowdown"))
 
 /datum/behavior_delegate/warrior_bulwark/proc/apply_directional_armor(mob/living/carbon/xenomorph/xeno_player, list/damagedata)
 	SIGNAL_HANDLER
@@ -99,10 +98,6 @@
 	if(!istype(xeno_player))
 		return
 
-	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
-	if(!istype(behavior))
-		return
-
 	XENO_ACTION_CHECK(xeno_player)
 
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(xeno_player, /datum/action/xeno_action/onclick/reflective_shield)
@@ -111,31 +106,57 @@
 			to_chat(xeno_player, SPAN_WARNING("We break our reflective stance!"))
 			ability_used.reflective_safe_click_cooldown = -1
 			ability_used.remove_reflective_shield()
-		REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
-		to_chat(xeno_player, SPAN_XENOWARNING("We lower our plates."))
-		xeno_player.ability_speed_modifier -= speed_debuff
-		xeno_player.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		button.icon_state = "template_xeno"
-		behavior.frontal_armor -= BULWARK_DIR_ARMOR
-		behavior.sided_armor += BULWARK_DIR_ARMOR
-		xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
-		xeno_player.tackle_min_modifier -= 2
+		disengage_plates()
 	else
-		ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
-		to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
-		xeno_player.ability_speed_modifier += speed_debuff
-		xeno_player.mob_size = MOB_SIZE_BIG //knockback immune
-		button.icon_state = "template_active"
-		behavior.frontal_armor += BULWARK_DIR_ARMOR
-		behavior.sided_armor -= BULWARK_DIR_ARMOR
-		xeno_player.damage_modifier -= XENO_DAMAGE_MOD_BULWARK
-		xeno_player.tackle_min_modifier += 2
+		engage_plates()
+
+	return ..()
+
+/datum/action/xeno_action/onclick/toggle_plates/proc/engage_plates()
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	if(!istype(xeno_player))
+		return
+
+	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
+	if(!istype(behavior))
+		return
+
+	ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
+	to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
+	xeno_player.ability_speed_modifier += speed_debuff
+	xeno_player.mob_size = MOB_SIZE_BIG //knockback immune
+	button.icon_state = "template_active"
+	behavior.frontal_armor += BULWARK_DIR_ARMOR
+	behavior.sided_armor -= BULWARK_DIR_ARMOR
+	xeno_player.damage_modifier -= XENO_DAMAGE_MOD_BULWARK
+	xeno_player.tackle_min_modifier += 2
 
 	xeno_player.recalculate_tackle()
 	xeno_player.update_icons()
-
 	apply_cooldown()
-	return ..()
+
+/datum/action/xeno_action/onclick/toggle_plates/proc/disengage_plates()
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	if(!istype(xeno_player))
+		return
+
+	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
+	if(!istype(behavior))
+		return
+
+	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
+	to_chat(xeno_player, SPAN_XENOWARNING("We lower our plates."))
+	xeno_player.ability_speed_modifier -= speed_debuff
+	xeno_player.mob_size = MOB_SIZE_XENO //no longer knockback immune
+	button.icon_state = "template_xeno"
+	behavior.frontal_armor -= BULWARK_DIR_ARMOR
+	behavior.sided_armor += BULWARK_DIR_ARMOR
+	xeno_player.damage_modifier += XENO_DAMAGE_MOD_BULWARK
+	xeno_player.tackle_min_modifier -= 2
+
+	xeno_player.recalculate_tackle()
+	xeno_player.update_icons()
+	apply_cooldown()
 
 //
 // 2nd ability
@@ -198,9 +219,16 @@
 /datum/action/xeno_action/onclick/tail_swing/use_ability()
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
+	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(xeno_player, /datum/action/xeno_action/onclick/reflective_shield)
+	var/datum/action/xeno_action/onclick/toggle_plates/plates_used = get_action(xeno_player, /datum/action/xeno_action/onclick/toggle_plates)
+
 	if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
-		xeno_player.balloon_alert(xeno_player, "we need to loosen our plates!", text_color = "#7d32bb", delay = 1 SECONDS)
-		return
+		if(HAS_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES))
+			to_chat(xeno_player, SPAN_WARNING("We break our reflective stance!"))
+			ability_used.reflective_safe_click_cooldown = -1
+			ability_used.remove_reflective_shield()
+		to_chat(xeno_player, SPAN_WARNING("We break our defensive stance!"))
+		plates_used.disengage_plates()
 
 	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] swings its tail in a wide circle!"),
 	SPAN_XENOWARNING("We swing our tail in a wide circle!"))
@@ -328,8 +356,8 @@
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return
 
-	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET) || (bullet.ammo.flags_ammo_behavior & AMMO_XENO))
-		return //we don't want to reflect sniper bullets or rockets.
+	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET) || (bullet.ammo.flags_ammo_behavior & AMMO_XENO) || (bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT))
+		return //we don't want to reflect sniper bullets, rockets and anti-reflection bullets.
 
 	var/projectile_dir = 0
 
@@ -339,13 +367,9 @@
 	projectile_dir = bullet.dir
 
 	if(src.dir & REVERSE_DIR(projectile_dir))
-		return BULWARK_REFLECTION_CHANCE_BASE
+		return BULWARK_REFLECTION_CHANCE_FRONT
 
-	for(var/side_dir in get_perpen_dir(src.dir))
-		if(projectile_dir == side_dir)
-			return BULWARK_REFLECTION_CHANCE_SIDES
-
-	return BULWARK_REFLECTION_CHANCE_BACK
+	return
 
 //
 // Custom Proc(s)

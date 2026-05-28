@@ -169,6 +169,8 @@
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 /// Prevents mob from riding mobs when buckled onto something
 #define TRAIT_CANT_RIDE "cant_ride"
+/// Makes mob immune to dir lock slowdown.
+#define TRAIT_NO_DIR_LOCK_SLOWDOWN "no_dir_lock_slowdown"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology

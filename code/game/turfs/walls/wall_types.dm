@@ -1470,6 +1470,9 @@
 	if(proj_bullet.projectile_flags & PROJECTILE_REFLECTED)
 		return
 
+	if(proj_bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+		return
+
 	//Ineffective if someone is sitting on the wall
 	if(locate(/mob) in contents)
 		return ..()

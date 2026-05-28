@@ -1399,9 +1399,6 @@
 	if(!firer)
 		return
 
-	if(ammo.flags_ammo_behavior & AMMO_NO_DEFLECT) // cannot reflect this type of ammo.
-		return
-
 	if(!ignore_safety)
 		if(projectile_flags & PROJECTILE_REFLECTED) // So we cannot reflect reflected, could create infinite* loop.
 			return

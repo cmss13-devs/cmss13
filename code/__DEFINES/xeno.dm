@@ -752,7 +752,7 @@
 #define DANCER_DODGE_TIME 7 SECONDS
 
 // bulwark defines
-#define BULWARK_REFLECTIVE_TIME 10 SECONDS
+#define BULWARK_REFLECTIVE_TIME 6 SECONDS
 
 // drone fruits
 

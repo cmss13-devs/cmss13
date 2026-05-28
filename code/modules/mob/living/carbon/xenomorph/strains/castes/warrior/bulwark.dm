@@ -33,8 +33,7 @@
 //
 
 #define BULWARK_DIR_ARMOR 10
-#define BULWARK_GRENADE_SWEEP_THROW 2
-#define BULWARK_REFLECTION_DURATION 6 SECONDS
+#define BULWARK_GRENADE_SWEEP_THROW 3
 #define BULWARK_REFLECTION_CHANCE_FRONT 100
 #define BULWARK_REFLECTED_BULLET_DAMAGE 0.5
 #define BULWARK_REFLECTED_BULLET_ACCURACY 80
@@ -298,6 +297,7 @@
 	if(!check_and_use_plasma_owner(80))
 		return
 
+	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
 	button.icon_state = "template_active"
 	reflective_start_time = world.time
@@ -310,7 +310,7 @@
 	if(reflective_shield_timer_id != TIMER_ID_NULL)
 		deltimer(reflective_shield_timer_id)
 
-	reflective_shield_timer_id = addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), BULWARK_REFLECTION_DURATION, TIMER_STOPPABLE)
+	reflective_shield_timer_id = addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), BULWARK_REFLECTIVE_TIME, TIMER_STOPPABLE)
 
 	apply_cooldown()
 	return ..()
@@ -329,6 +329,7 @@
 		to_chat(xeno_player, SPAN_XENOWARNING("We need a moment before breaking our reflective stance!"))
 		return
 
+	xeno_player.remove_suit_layer()
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
 	button.icon_state = "template_xeno"
 	xeno_player.remove_filter("reflective_shield")
@@ -340,13 +341,10 @@
 
 	if(ability_used.reflective_start_time > 0)
 		var/used_ratio = round((world.time - ability_used.reflective_start_time) / ability_used.duration, 0.1)
-		ability_used.reflective_recharge_time = max(BULWARK_REFLECTION_DURATION * used_ratio * ability_used.reflective_refund_multiplier, 5 SECONDS)
+		ability_used.reflective_recharge_time = max(BULWARK_REFLECTIVE_TIME * used_ratio * ability_used.reflective_refund_multiplier, 5 SECONDS)
 
 	ability_used.reflective_start_time = -1
 	apply_cooldown_override(ability_used.reflective_recharge_time)
-
-/datum/action/xeno_action/onclick/reflective_shield/proc/stop_yellow_visual()
-	owner.remove_filter("bulwark_yellow_outline")
 
 /mob/living/carbon/xenomorph/warrior/get_reflection_chance(obj/projectile/bullet)
 	var/datum/behavior_delegate/warrior_bulwark/behavior = src.behavior_delegate
@@ -355,6 +353,9 @@
 
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return
+
+	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
+		return //we don't want to reflect bullets when we are laying down/unconscious.
 
 	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET) || (bullet.ammo.flags_ammo_behavior & AMMO_XENO) || (bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT))
 		return //we don't want to reflect sniper bullets, rockets and anti-reflection bullets.
@@ -368,6 +369,10 @@
 
 	if(src.dir & REVERSE_DIR(projectile_dir))
 		return BULWARK_REFLECTION_CHANCE_FRONT
+
+	for(var/side_dir in get_perpen_dir(src.dir))
+		if(projectile_dir == side_dir)
+			return
 
 	return
 

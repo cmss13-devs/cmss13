@@ -134,6 +134,8 @@
 	var/datum/equipment_preset/assigned_equipment_preset
 	var/rank_override
 	var/rank_fallback
+	///Used for specialists for their chosen preference on roundstart
+	var/role_title_override
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to

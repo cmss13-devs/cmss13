@@ -173,3 +173,82 @@
   - spellcheck: Standardizes grammar in leadership orders
   labeo0:
   - bugfix: fixed burning icons of some boxes
+2026-05-25:
+  Ammoniacres:
+  - bugfix: removed being able to make molotovs with research intel papers!
+  Nihisohel, Sponge in discord for HUD sprites:
+  - rscadd: Megaphones can now be used as an amplifier, allowing loud text by talking
+      normally as long as it is toggled on via unique_action and only when spoken
+      when it is on the active hand
+  - balance: Megaphones, when amplified, increases its listener range by a screens
+      worth, ensuring that people can hear you from farther away
+  - rscadd: Introduces the "hushed" status effect, which forces whisper on inflicted
+      mobs.
+  - rscadd: Megaphone broadcasting (the original method of use) now inflicts hushed
+      on non-leader humans
+  - balance: Megaphone hushing lasts for approximately 3 seconds, which should be
+      more than enough for the next broadcast, probably
+  - balance: Megaphone broadcast cooldown is reduced from 2 seconds to 1.5 seconds
+  - balance: Megaphones are no longer a universal translator
+  - balance: Hostile and neutral factions don't really care about what you are broadcasting
+      and would not get hushed by your speech
+  - bugfix: Megaphone broadcasting now shows your rank
+  - code_imp: Langchat_speech now supports language scrambling
+  - code_imp: Megaphones now respect the color of the language when broadcasting
+  - code_imp: Megaphones can now auto_punctuate
+  - code_imp: The show_message proc now support chat_filters, undefined by default
+  - refactor: Deprecates langchat_long_speech and folds it into langchat_speech
+  - bugfix: Fixes the notification when attempting to use a megaphone while player
+      muted, it was fetching the megaphone rather than the user for some reason
+  - bugfix: Fixes being able to open multiple windows of the tgui_input_text proc,
+      which is used by a LOT of things, including the megaphone.
+  labeo0:
+  - qol: Crit xenos do not need to Rest to get healing from Recovery Node.
+  zzzmike:
+  - bugfix: stops infinite medical optics
+  - spellcheck: reworked wall description to apply logically to observers
+2026-05-26:
+  Ammoniacres:
+  - balance: guaranteed the survivor flamethrower spawn on Sorokyne Strata, Solaris
+      Ridge, Trijent Dam and Fiorina Science Annex, bringing the map to parity with
+      other maps in terms of survivor loot.
+  - balance: whitelisted VESG nozzles for the survivor flamethrower.
+  kitchenenthusiast:
+  - bugfix: Fixes area tiling in LV624 engineering dome/tcomms
+  - bugfix: Adds missing atmos pipe in CO's quarters on the Almayer
+2026-05-27:
+  ComboTombo:
+  - code_imp: Moved setting assignments and ID cards for specialists from their vending
+      machine's file to specialist.dm
+  - qol: The crew manifest's search function now covers paygrades
+  - refactor: Changed the way datacore.dm, squad_specialist.dm (vending machine),
+      and specialist.dm handle setting assignments, manifest titles, and ID cards
+      to drop the squad name from the manifest title. Also introduced job defines
+      for each squad kit to be used by specialist.dm and marines_consoles.dm (crew
+      monitor)
+  - spellcheck: Changed "SHARP Operator" in the crew manifest and crew monitor to
+      "SHARP Specialist"
+  - ui: Widened the crew manifest
+  Detective-Google:
+  - bugfix: synth bays can reactivate synths that would otherwise be revivable as
+      intended.
+  Fluffyzack21:
+  - spellcheck: fixed the colony van typo it now shows it has 6 tires instead of 4
+  - bugfix: Changed the subtype for UPP corpses so they spawn with the correct belt
+      type
+  - spellcheck: changed the descriptions of the corners of the lifeboats on the USS
+      Alamyer and for the UPP lifeboat
+  - maptweak: Adds a grinder and phoron in PMC ERT station for the ability to make
+      clonexadone  again
+  Nihisohel:
+  - code_imp: Helmet accessories now supports vendor auto equipping
+  - bugfix: You can no longer eat whistles through vendors
+  NotTzeentchian:
+  - bugfix: US Army Synthetic Survivor can no longer retrieve the Experiment Tool
+      Token
+  - bugfix: 32nd Armoured Division Tank Crewman is now considered US Army
+  TrollerNoob:
+  - bugfix: Fixed SHARP Flechette Dart direct hits not registering the additional
+      flechette properly, along with other projectile direct hits interactions.
+  zzzmike:
+  - spellcheck: fixed a few tyrargo ty(rar)pos

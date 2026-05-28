@@ -111,10 +111,11 @@
 	redeemer.hud_set_squad()
 	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
-		idcard.set_assignment((redeemer.assigned_squad ? (redeemer.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([role_name])")
+		idcard.set_assignment("[redeemer.assigned_squad ? redeemer.assigned_squad : ""] [role_name]")
+		redeemer.role_title_override = role_name
 		idcard.minimap_icon_override = rank_icon
 		redeemer.update_minimap_icon()
-		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), idcard.assignment)
+		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), role_name)
 	return TRUE
 
 /datum/specialist_set/proc/refund_set(mob/living/carbon/human/refunder)
@@ -143,7 +144,7 @@
 
 /datum/specialist_set/sadar
 	name = "Demolitionist Set"
-	role_name = "Demo"
+	role_name = JOB_SQUAD_SPECIALIST_DEMO
 	skill_to_give = SKILL_SPEC_ALL
 	trait_to_give = "demo"
 	rank_icon = "spec_demo"
@@ -160,7 +161,7 @@
 
 /datum/specialist_set/scout
 	name = "Scout Set"
-	role_name = "Scout"
+	role_name = JOB_SQUAD_SPECIALIST_SCOUT
 	skill_to_give = SKILL_SPEC_ALL
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
@@ -176,8 +177,8 @@
 
 /datum/specialist_set/sniper
 	name = "Sniper Set"
-	role_name = "Sniper"
 	skill_to_give = SKILL_SPEC_ALL
+	role_name = JOB_SQUAD_SPECIALIST_SNIPER
 	trait_to_give = "sniper"
 	rank_icon = "spec_sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper
@@ -187,8 +188,8 @@
 
 /datum/specialist_set/anti_mat_sniper
 	name = "Anti-Materiel Sniper Set"
-	role_name = "Heavy Sniper"
 	skill_to_give = SKILL_SPEC_ALL
+	role_name = JOB_SQUAD_SPECIALIST_HEAVY_SNIPER
 	trait_to_give = "antimat_sniper"
 	rank_icon = "spec_sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper/anti_materiel
@@ -198,8 +199,8 @@
 
 /datum/specialist_set/grenadier
 	name = "Heavy Grenadier Set"
-	role_name = "Grenadier"
 	skill_to_give = SKILL_SPEC_ALL
+	role_name = JOB_SQUAD_SPECIALIST_GRENADIER
 	trait_to_give = "grenadier"
 	rank_icon = "spec_grenadier"
 	kit_typepath = /obj/item/storage/box/spec/heavy_grenadier
@@ -209,8 +210,8 @@
 
 /datum/specialist_set/sharp_operator
 	name = "SHARP Operator Set"
-	role_name = "SHARP Operator"
 	skill_to_give = SKILL_SPEC_ALL
+	role_name = JOB_SQUAD_SPECIALIST_SHARP
 	rank_icon = "spec_sharp"
 	kit_typepath = /obj/item/storage/box/spec/sharp_operator
 	incompatible_sets = list(
@@ -219,16 +220,16 @@
 
 /datum/specialist_set/pyro
 	name = "Pyro Set"
-	role_name = "Pyro"
 	skill_to_give = SKILL_SPEC_ALL
+	role_name = JOB_SQUAD_SPECIALIST_PYRO
 	trait_to_give = "pyro"
 	rank_icon = "spec_pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
 /datum/specialist_set/heavy
 	name = "Heavy Armor Set"
-	role_name = "Heavy"
 	skill_to_give = SKILL_SPEC_ALL //we do not realy care atm
+	role_name = JOB_SQUAD_SPECIALIST_HEAVY
 	trait_to_give = "heavy"
 	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18

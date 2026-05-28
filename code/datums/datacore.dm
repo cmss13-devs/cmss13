@@ -70,7 +70,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		assignment = "Unassigned"
 
 	var/manifest_title
-	if(target?.assigned_equipment_preset.manifest_title)
+	if(target.role_title_override)
+		manifest_title = target.role_title_override
+	else if(target?.assigned_equipment_preset.manifest_title)
 		manifest_title = target.assigned_equipment_preset.manifest_title
 	else
 		manifest_title = target.job

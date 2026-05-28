@@ -292,6 +292,9 @@
 /area/fort_mcneil/outdoors/scrublands/south)
 "aaX" = (
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aaY" = (
@@ -443,6 +446,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "aby" = (
@@ -522,6 +528,10 @@
 "abH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	layer = 2.1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/engi)
@@ -988,6 +998,9 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "add" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "ade" = (
@@ -997,6 +1010,7 @@
 "adf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
+/obj/structure/machinery/light,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/bar)
 "adg" = (
@@ -1046,6 +1060,28 @@
 "adq" = (
 /turf/open/floor/prison/redfull,
 /area/fort_mcneil/indoors/pod_1)
+"adr" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"ads" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"adt" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/mining)
+"adu" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/fort_mcneil/indoors/connection_paths)
 "adv" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -1054,6 +1090,60 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/comms)
+"adw" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"adx" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/green/southwest,
+/area/fort_mcneil/indoors/hydro)
+"ady" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/green/southeast,
+/area/fort_mcneil/indoors/hydro)
+"adz" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue,
+/area/fort_mcneil/indoors/connection_paths)
+"adA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	layer = 2.1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/hydro)
+"adB" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"adC" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"adD" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/engi)
+"adE" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/connection_paths)
 "adF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1062,6 +1152,108 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/landing_zone_1)
+"adG" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/hydro)
+"adH" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"adI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/blue/north,
+/area/fort_mcneil/indoors/connection_paths)
+"adJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/green/northeast,
+/area/fort_mcneil/indoors/hydro)
+"adK" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/bar)
+"adL" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/central)
+"adM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/command)
+"adN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/fort_mcneil/indoors/command)
+"adO" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adQ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north)
 "adR" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
 	dir = 1
@@ -1072,6 +1264,141 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/engi)
+"adS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north)
+"adT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adU" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adV" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adW" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adX" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"adY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north)
+"adZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north)
+"aea" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/outdoors/colony_exterior/north)
 "aeT" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/snow/layer2,
@@ -2137,6 +2464,9 @@
 "cNN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/fort_mcneil/indoors/command)
 "cRq" = (
@@ -2442,6 +2772,10 @@
 /turf/closed/wall/strata_ice,
 /area/fort_mcneil/oob)
 "dOO" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	layer = 2.1
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/connection_paths)
 "dPa" = (
@@ -2736,6 +3070,9 @@
 "eHl" = (
 /obj/structure/bed/roller,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/command)
 "eHG" = (
@@ -2805,6 +3142,9 @@
 /obj/item/stack/sheet/metal/small_stack{
 	pixel_x = 3;
 	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fort_mcneil/indoors/engi)
@@ -2911,6 +3251,7 @@
 /obj/item/ammo_magazine/pistol/vp78,
 /obj/item/ammo_magazine/pistol/vp78,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison/green,
 /area/fort_mcneil/indoors/pod_3)
 "fag" = (
@@ -3820,6 +4161,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/fort_mcneil/indoors/engi)
 "hKo" = (
@@ -3828,6 +4172,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/fort_mcneil/indoors/engi)
@@ -5343,6 +5690,9 @@
 /turf/open/floor/prison/bluefull,
 /area/fort_mcneil/indoors/command)
 "lcJ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/red/north,
 /area/fort_mcneil/indoors/command)
 "ldU" = (
@@ -6084,6 +6434,9 @@
 /turf/open/asphalt/brown,
 /area/fort_mcneil/outdoors/colony_exterior/east)
 "nnN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison/blue/southwest,
 /area/fort_mcneil/indoors/connection_paths)
 "noi" = (
@@ -6934,6 +7287,9 @@
 "pGX" = (
 /obj/structure/machinery/power/apc/power/east{
 	start_charge = 20
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/engi)
@@ -8261,7 +8617,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/comms)
 "tdo" = (
-/obj/structure/machinery/light/double{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellow2/west,
@@ -8388,6 +8744,9 @@
 /area/fort_mcneil/indoors/command)
 "tyP" = (
 /obj/structure/flora/pottedplant,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/command)
 "tzs" = (
@@ -9250,6 +9609,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison/green/northwest,
 /area/fort_mcneil/indoors/hydro)
 "vvv" = (
@@ -9686,11 +10048,10 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/fort_mcneil/indoors/toilet)
 "wFT" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/indoors/comms_inside)
 "wGg" = (
@@ -10158,6 +10519,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/fort_mcneil/indoors/engi)
@@ -12880,8 +13244,8 @@ wEy
 fNe
 gdr
 wEy
-vFL
-dzE
+adP
+adO
 iXa
 iXa
 oDG
@@ -13078,7 +13442,7 @@ ofL
 dzE
 chV
 dUn
-dUn
+adT
 dUn
 dUn
 dUn
@@ -13116,7 +13480,7 @@ bha
 bha
 bTy
 lzk
-lzk
+adH
 sOm
 lzk
 acW
@@ -13179,7 +13543,7 @@ ofL
 dzE
 dzE
 dzE
-dzE
+adU
 dzE
 dzE
 dzE
@@ -13280,7 +13644,7 @@ dzE
 dzE
 dzE
 dzE
-dzE
+adU
 dzE
 dzE
 dzE
@@ -13320,7 +13684,7 @@ bTy
 lzk
 lzk
 sOm
-lzk
+adC
 lzk
 bTy
 ssh
@@ -13379,9 +13743,9 @@ ofL
 ofL
 dzE
 dzE
-dzE
-dzE
-dzE
+adX
+adW
+adV
 dzE
 dzE
 dzE
@@ -13480,7 +13844,7 @@ ofL
 dzE
 dzE
 dzE
-dzE
+adU
 ofL
 ofL
 ofL
@@ -13581,7 +13945,7 @@ ofL
 dzE
 dzE
 dzE
-dzE
+adU
 dzE
 ofL
 ofL
@@ -13682,7 +14046,7 @@ ofL
 dzE
 dzE
 dzE
-dzE
+adU
 dzE
 ofL
 ofL
@@ -13783,7 +14147,7 @@ ofL
 ofL
 dzE
 dzE
-dzE
+adU
 dzE
 dzE
 dzE
@@ -13884,7 +14248,7 @@ ofL
 ofL
 dzE
 dzE
-dzE
+adU
 dzE
 dzE
 dzE
@@ -13985,7 +14349,7 @@ ofL
 tfk
 tfk
 bMU
-qCu
+adY
 qCu
 qCu
 qCu
@@ -14733,7 +15097,7 @@ mwx
 cUu
 gqJ
 abf
-qRk
+adD
 qRk
 aQa
 qAh
@@ -14793,7 +15157,7 @@ ofL
 tfk
 tfk
 kNx
-gNY
+adZ
 gNY
 gNY
 gNY
@@ -14894,7 +15258,7 @@ tfk
 tfk
 tfk
 tfk
-tfk
+aea
 tfk
 tfk
 vNt
@@ -14995,7 +15359,7 @@ tfk
 tfk
 tfk
 tfk
-tfk
+aea
 tfk
 vNt
 ikk
@@ -15096,7 +15460,7 @@ tfk
 tfk
 tfk
 tfk
-tfk
+aea
 tfk
 tVZ
 vpq
@@ -15197,7 +15561,7 @@ tfk
 tfk
 tfk
 tfk
-tfk
+aea
 tfk
 tfk
 tVZ
@@ -15240,7 +15604,7 @@ akJ
 abJ
 aaP
 abp
-mph
+adz
 akJ
 akJ
 cmc
@@ -15298,7 +15662,7 @@ tfk
 tfk
 tfk
 tfk
-tfk
+aea
 tfk
 tfk
 tfk
@@ -15339,7 +15703,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -15399,7 +15763,7 @@ tfk
 tfk
 tfk
 bMU
-qCu
+adY
 qCu
 qCu
 upN
@@ -15440,7 +15804,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -15512,7 +15876,7 @@ xNc
 soD
 lMX
 acx
-kHM
+adN
 kHM
 kHM
 lMX
@@ -15541,7 +15905,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -15655,7 +16019,7 @@ oYi
 bDm
 mcZ
 mcZ
-mcZ
+ads
 oYi
 oYi
 cmc
@@ -15825,18 +16189,18 @@ aVn
 kWl
 xyc
 ack
-uEc
+adM
 nBZ
 xNc
-hCf
-hCf
-hCf
+adL
+adL
+adL
 hOY
 hnT
 rxY
 vsV
 vAi
-rVZ
+adK
 pDC
 eEl
 hCf
@@ -15844,7 +16208,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -15856,7 +16220,7 @@ oYi
 mcZ
 aaT
 acR
-acR
+adt
 mcZ
 mcZ
 oYi
@@ -15945,7 +16309,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -16009,9 +16373,9 @@ ciS
 dxF
 kTP
 cuL
-dwB
-tfk
-tfk
+adS
+adQ
+adQ
 xNc
 vAi
 vAi
@@ -16046,7 +16410,7 @@ hCf
 hBN
 dhg
 lRP
-dOO
+adE
 abq
 mph
 dhg
@@ -16060,7 +16424,7 @@ mcZ
 acR
 acR
 mcZ
-mcZ
+adr
 oYi
 aaK
 aSS
@@ -16146,7 +16510,7 @@ hCf
 hCf
 akJ
 akJ
-lRP
+adI
 gbm
 abs
 abg
@@ -16554,7 +16918,7 @@ abK
 abD
 abu
 qNX
-nZb
+adx
 qaE
 qaE
 cmc
@@ -16652,7 +17016,7 @@ qaE
 qnc
 bED
 abk
-sKC
+adG
 sKC
 abh
 dmF
@@ -16957,7 +17321,7 @@ dRU
 sKC
 ibg
 ibg
-abi
+adA
 dRU
 cGs
 epw
@@ -17064,7 +17428,7 @@ cGs
 epw
 xKt
 aDM
-jHd
+adu
 jHd
 jHd
 jHd
@@ -17256,12 +17620,12 @@ kqc
 kqc
 qaE
 qaE
-qKb
+adJ
 qbE
 qbE
 qbE
 qbE
-nup
+ady
 qaE
 qaE
 pix
@@ -22007,12 +22371,12 @@ isd
 isd
 bOY
 dOF
-acS
+adB
 acV
 aFU
 aFU
 acT
-acS
+adw
 dOF
 rCX
 kwx

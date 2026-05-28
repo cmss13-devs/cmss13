@@ -244,7 +244,7 @@
 		if(connected_harness == harness)
 			return
 
-		if(istype(harness) && (harness.flags_inventory & SMARTGUN_HARNESS)) // might as well check the flag too, makes sense really
+		if(requires_harness && istype(harness) && (harness.flags_inventory & SMARTGUN_HARNESS)) // might as well check the flag too, makes sense really
 			AddElement(/datum/element/drop_retrieval/smartgun, auto_retrieval_slot, harness, harness.armature_icon, harness.armature_range)
 
 			connected_harness = harness

@@ -244,7 +244,7 @@
 			var/list/retri = list()
 			if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
 				to_chat(gunner, SPAN_NOTICE("You connect [src] to [retri["source"]] via the gyroscopic armature."))
-				balloon_alert(gunner, "Armature Connected")
+				balloon_alert(gunner, "armature connected")
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open && has_cover)
@@ -479,17 +479,17 @@
 			return FALSE
 		var/mob/living/carbon/human/gunner = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			balloon_alert(user, "Insufficient Skills")
+			balloon_alert(user, "insufficient skills")
 			return FALSE
 
 		if(requires_harness && !(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT))
 			to_chat(gunner, SPAN_WARNING("[src] must be connected to a gyroscopic armature to fire!"))
-			balloon_alert(user, "No Armature")
+			balloon_alert(user, "no armature")
 			return FALSE
 
 		if(cover_open)
 			to_chat(gunner, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
-			balloon_alert(user, "Cannot fire; Feed Cover Open")
+			balloon_alert(user, "cannot fire; feed cover open")
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)

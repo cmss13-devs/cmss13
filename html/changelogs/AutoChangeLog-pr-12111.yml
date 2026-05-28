@@ -1,0 +1,5 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - rscadd: "Added a new double-tile Maintenance Hatch."
+  - imagetweak: "Tweaks the sprite of the single-tile version, just a little."

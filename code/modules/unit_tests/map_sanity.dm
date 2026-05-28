@@ -4,7 +4,7 @@
 /datum/unit_test/map_sanity/Run()
 	var/map_name = SSmapping.configs[GROUND_MAP].map_name
 	// this map doesn't need a map (unit testing for almayer, runtime, etc)
-	if(!map_should_have_map_item(map_name))
+	if(map_name in GLOB.mapless_maps)
 		return
 	var/obj/item/map/expected_map = GLOB.map_type_list[map_name]
 	if(!expected_map)

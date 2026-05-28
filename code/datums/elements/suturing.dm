@@ -105,13 +105,13 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	var/skill_msg
 	switch(user.skills.get_skill_level(SKILL_MEDICAL))
 		if(SKILL_MEDICAL_MEDIC) //Numbers are centered around medics.
-			skill_msg = " with [pick("steady", "careful", "practiced")] [pick("skill", "motions", "hands")]"
-		if(SKILL_MEDICAL_DOCTOR) //Who?
+			skill_msg = " with [pick("steady", "careful", "trained")] [pick("skill", "motions", "hands")]"
+		if(SKILL_MEDICAL_DOCTOR) //Centered around trained medical roles who aren't primarily doctors, like research
 			suture_time *= 0.75
 			skill_msg = " with [pick("swift", "precise", "smooth")] [pick("skill", "care", "motions", "competence")]"
-		if(SKILL_MEDICAL_MASTER) //I hand my munted biker jacket to the synth. "Hey, Sewing Machine. Need this fixed real quick, hot date tonight."
+		if(SKILL_MEDICAL_MASTER) //Aimed at skilled, specialized medical practitioners
 			suture_time *= 0.5
-			skill_msg = " with [pick("mechanical", "inhuman", "absolute")] [pick("perfection", "precision", "certainty")]"
+			skill_msg = " with [pick("well practiced", "skilled", "masterful")] [pick("perfection", "precision", "certainty")]"
 
 	var/possessive
 	var/possessive_their

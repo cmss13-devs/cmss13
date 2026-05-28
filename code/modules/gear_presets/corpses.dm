@@ -1145,7 +1145,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)

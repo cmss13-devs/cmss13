@@ -185,6 +185,11 @@
 	. = ..()
 	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
 
+/obj/item/clothing/glasses/science/blue
+	icon_state = "blue"
+	item_state = "glasses"
+	deactivated_state = "blue_off"
+
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
 	desc = "Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles."
@@ -1031,6 +1036,19 @@
 	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator_silver"
 	item_state = "aviator_silver"
+
+/obj/item/clothing/glasses/sunglasses/big/chrome
+	name = "\improper BiMex Chromeline Shades"
+	desc = "Large stylish chrome-framed shades favored by corporate personnel for their sharp appearance and practical eye protection."
+	desc_lore = "Part of BiMex's executive-oriented 'ChromeLine' series, these oversized shades combine stylish chromatic flavor with durable industrial-grade lenses. Capable of shrugging off small shrapnel impacts"
+	icon_state = "chrome_shades"
+	item_state = "chrome_shades"
+	eye_protection = EYE_PROTECTION_FLASH
+	clothing_traits = list(TRAIT_BIMEX)
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
+
+// HUD's
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"

@@ -7039,7 +7039,7 @@
 	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science/blue,
 /turf/open/floor/strata/lightblue4,
 /area/ice_colony/surface/hydroponics/lobby)
 "aPl" = (
@@ -24978,7 +24978,7 @@
 	pixel_y = -19
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science/blue,
 /turf/open/floor/strata/lightblue3,
 /area/ice_colony/surface/hydroponics/lobby)
 "fbx" = (
@@ -25703,10 +25703,8 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 8
 	},
-/obj/item/clothing/glasses/science,
-/obj/item/clothing/glasses/science{
-	pixel_y = 7
-	},
+/obj/item/clothing/glasses/science/blue,
+/obj/item/clothing/glasses/science/blue,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/lightblue4/east,
 /area/ice_colony/surface/requesitions)
@@ -29301,6 +29299,7 @@
 "giH" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/clothing/head/welding,
 /turf/open/floor/strata/sand3,
 /area/ice_colony/surface/tcomms)
 "giK" = (
@@ -47560,7 +47559,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
 	},
-/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science/blue,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/lightblue3/north,
 /area/ice_colony/surface/hydroponics/lobby)
@@ -47953,9 +47952,7 @@
 	pixel_y = 20;
 	layer = 3.3
 	},
-/obj/item/clothing/glasses/science{
-	pixel_y = 7
-	},
+/obj/item/clothing/glasses/science/blue,
 /turf/open/floor/strata/lightblue3/west,
 /area/ice_colony/surface/requesitions)
 "lAt" = (
@@ -55430,6 +55427,7 @@
 	dir = 4;
 	pixel_y = -16
 	},
+/obj/item/clothing/head/welding,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/ice_colony/surface/dorms/restroom_w)
 "nDf" = (
@@ -65635,6 +65633,7 @@
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/clothing/head/welding,
 /turf/open/floor/strata/sand3,
 /area/ice_colony/surface/tcomms)
 "qwI" = (
@@ -72906,6 +72905,11 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/south/excavation)
+"ssj" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/clothing/head/welding,
+/turf/open/floor/corsat/spiralplate,
+/area/ice_colony/underground/hangar)
 "ssm" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 1
@@ -89714,9 +89718,7 @@
 /turf/open/floor/strata/floor2,
 /area/ice_colony/surface/hangar/hallway)
 "xfF" = (
-/obj/item/clothing/glasses/science{
-	pixel_y = 7
-	},
+/obj/item/clothing/glasses/science/blue,
 /turf/open/floor/strata/deco,
 /area/ice_colony/surface/requesitions)
 "xfG" = (
@@ -108212,7 +108214,7 @@ iGW
 gBz
 alY
 alY
-lnS
+ssj
 alY
 alY
 nHx

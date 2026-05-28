@@ -521,7 +521,7 @@
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	iff_enabled = !iff_enabled
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [iff_enabled ? SPAN_GREEN("enable") : SPAN_ORANGE("disable")] the Identification Friend or Foe system."))
-	balloon_alert(user, "IFF [iff_enabled ? "enabled" : "disabled"]")
+	balloon_alert(user, "[iff_enabled ? "enabled" : "disabled"] IFF")
 	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	ammo = ammo_primary
 	secondary_toggled = FALSE

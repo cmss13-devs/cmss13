@@ -113,14 +113,14 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/set_lying_down()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay)
+	if(selected_ability?.ability_uses_acid_overlay)
 		overlays -= acid_overlay
 
 	return ..()
 
 /mob/living/carbon/xenomorph/get_up()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay && !(acid_overlay in overlays))
-		overlays += acid_overlay
+	if(selected_ability?.ability_uses_acid_overlay)
+		overlays |= acid_overlay
 
 	return ..()
 
@@ -159,6 +159,9 @@
 	X.release_haul(TRUE)
 
 	return ..()
+
+/datum/action/xeno_action/onclick/release_haul/can_use_action()
+	return TRUE //we should always be able to do this
 
 /datum/action/xeno_action/onclick/choose_resin/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -266,8 +269,8 @@
 	apply_cooldown()
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
-			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * xeno_cooldown_interrupt_modifier)
+			if(xeno_cooldown || xeno_cooldown_interrupt_penalty)
+				apply_cooldown_override(xeno_cooldown + xeno_cooldown_interrupt_penalty)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)

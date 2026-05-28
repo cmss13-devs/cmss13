@@ -66,6 +66,10 @@
 		if(slung_item)
 			. += SPAN_HELPFUL("[slung_item] is attached to the [retrieval_name].")
 			. += SPAN_NOTICE("You can use the [name] in-hand to safely detach [slung_item].")
+			if(iscarbon(user))
+				var/obj/item/held_item = user.get_active_hand()
+				if(held_item && (held_item.sharp || held_item.edge))
+					. += SPAN_NOTICE("You can use [held_item] to cut the [retrieval_name] faster!")
 		else
 			. += SPAN_HELPFUL("You can insert an item into the [name] to use its [retrieval_name].")
 
@@ -1001,11 +1005,14 @@ object is always an item. stop_warning prevents messaging. user may be null.**/
 	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
 	qdel(src)
 
-/obj/item/storage/proc/unsling(forced = FALSE)
+/obj/item/storage/proc/unsling(forced = FALSE, cut = FALSE)
 	if(!slung_item)
 		return
 	if(forced)
-		to_chat(loc, SPAN_WARNING("\The [retrieval_name] is forcibly detached from \the [slung_item]!"))
+		if(cut)
+			to_chat(loc, SPAN_WARNING("\The [retrieval_name] is cut from \the [slung_item]!"))
+		else
+			to_chat(loc, SPAN_WARNING("\The [retrieval_name] is forcibly detached from \the [slung_item]!"))
 	slung_item.RemoveElement(/datum/element/drop_retrieval/storage, src)
 	slung_item = null
 

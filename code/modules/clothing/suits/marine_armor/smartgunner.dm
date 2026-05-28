@@ -25,13 +25,14 @@
 	var/armature_icon = "wire_rope"
 	var/armature_range = 2
 
+	/// the smartie thats currently connected via tethering
+	var/obj/item/weapon/gun/smartgun/connected_gun
+
 /obj/item/clothing/suit/storage/marine/smartgunner/get_examine_text(mob/user)
 	. = ..()
 
-	// ill be real, this is kind of dumb, but it works as a stopgap solution for now
-	var/list/retri = list()
-	if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
-		. += SPAN_HELPFUL("The [src] is connected to [retri["source"]] via the gyroscopic armature.")
+	if(connected_gun)
+		. += SPAN_HELPFUL("The [src] is connected to [connected_gun] via the gyroscopic armature.")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
@@ -114,14 +115,6 @@
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(check_tether))
 	RegisterSignal(harness, COMSIG_MOVABLE_MOVED, PROC_REF(harness_moved))
 	RegisterSignal(harness, COMSIG_DROP_RETRIEVAL_CHECK, PROC_REF(dr_check))
-
-/datum/element/drop_retrieval/smartgun/dr_check(obj/item/dropped, list/retri) // thanks segrain i guess
-	. = ..()
-	if(islist(retri))
-		if(dropped == gun)
-			retri["source"] = harness
-		else if(dropped == harness)
-			retri["source"] = gun
 
 /datum/element/drop_retrieval/smartgun/Detach(datum/source, force)
 	if(active_tether)

@@ -105,6 +105,9 @@
 	var/aim_assist = FALSE
 	var/image/autoshot_image
 
+	/// the harness thats currently connected via tethering
+	var/obj/item/clothing/suit/storage/marine/smartgunner/connected_harness
+
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary_def = GLOB.ammo_list[ammo_secondary_def]
@@ -182,9 +185,8 @@
 	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
-	var/list/retri = list()
-	if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
-		. += SPAN_HELPFUL("[src] is connected to the [retri["source"]] via the gyroscopic armature.")
+	if(connected_harness)
+		. += SPAN_HELPFUL("[src] is connected to the [connected_harness] via the gyroscopic armature.")
 
 	if(battery && get_dist(user, src) <= 1)
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
@@ -238,13 +240,18 @@
 	if(slot == WEAR_J_STORE && ishuman(user))
 		var/mob/living/carbon/human/gunner = user
 		var/obj/item/clothing/suit/storage/marine/smartgunner/harness = gunner.wear_suit
+
+		if(connected_harness == harness)
+			return
+
 		if(istype(harness) && (harness.flags_inventory & SMARTGUN_HARNESS)) // might as well check the flag too, makes sense really
 			AddElement(/datum/element/drop_retrieval/smartgun, auto_retrieval_slot, harness, harness.armature_icon, harness.armature_range)
 
-			var/list/retri = list()
-			if(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK, retri) & COMPONENT_DROP_RETRIEVAL_PRESENT)
-				to_chat(gunner, SPAN_NOTICE("You connect [src] to [retri["source"]] via the gyroscopic armature."))
-				balloon_alert(gunner, "armature connected")
+			connected_harness = harness
+			connected_harness.connected_gun = src
+
+			to_chat(gunner, SPAN_NOTICE("You connect [src] to [connected_harness] via the gyroscopic armature."))
+			balloon_alert(gunner, "armature connected")
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open && has_cover)
@@ -482,7 +489,7 @@
 			balloon_alert(user, "insufficient skills")
 			return FALSE
 
-		if(requires_harness && !(SEND_SIGNAL(src, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT))
+		if(requires_harness && !connected_harness)
 			to_chat(gunner, SPAN_WARNING("[src] must be connected to a gyroscopic armature to fire!"))
 			balloon_alert(user, "no armature")
 			return FALSE

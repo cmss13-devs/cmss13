@@ -29,7 +29,7 @@
 /datum/element/drop_retrieval/proc/dropped(obj/item/dropped, mob/user)
 	SIGNAL_HANDLER
 
-/datum/element/drop_retrieval/proc/dr_check(obj/item/dropped, list/retri)
+/datum/element/drop_retrieval/proc/dr_check(obj/item/dropped)
 	SIGNAL_HANDLER
 
 	return COMPONENT_DROP_RETRIEVAL_PRESENT
@@ -199,7 +199,16 @@
 	if(!storage_item || !target)
 		return
 
-	if(!do_after(owner, 1.5 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_HOSTILE, status_effect = SLOW))
+	var/delay = 1.5 SECONDS
+	var/mob/living/carbon/tetherer = owner
+	var/tether_cut = FALSE
+	if(iscarbon(tetherer)) // xeno thumb friendliness
+		var/obj/item/held_item = tetherer.get_active_hand()
+		if(held_item && (held_item.sharp || held_item.edge))
+			delay = 0.5 SECONDS
+			tether_cut = TRUE
+
+	if(!do_after(owner, delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) | INTERRUPT_RESIST, BUSY_ICON_HOSTILE, status_effect = SLOW))
 		return
 
 	if(!storage_item || !target)
@@ -209,8 +218,11 @@
 		return
 
 	if(storage_item.loc != owner)
-		to_chat(owner, SPAN_WARNING("You forcibly detach the [storage_item.retrieval_name] from [storage_item.slung_item]."))
-	storage_item.unsling(forced = TRUE)
+		if(tether_cut)
+			to_chat(owner, SPAN_WARNING("You cut the [storage_item.retrieval_name] from [storage_item.slung_item]."))
+		else
+			to_chat(owner, SPAN_WARNING("You forcibly detach the [storage_item.retrieval_name] from [storage_item.slung_item]."))
+	storage_item.unsling(forced = TRUE, cut = tether_cut)
 
 /datum/action/item_action/break_tether/update_button_icon()
 	button.overlays.Cut()

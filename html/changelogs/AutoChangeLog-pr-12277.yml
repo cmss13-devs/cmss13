@@ -1,0 +1,4 @@
+author: "gnorse"
+delete-after: True
+changes:
+  - rscadd: "Loreful synthetic death messages"

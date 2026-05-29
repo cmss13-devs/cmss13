@@ -8,6 +8,7 @@
 #define FILING_CABINET_NORMAL "filingcabinet"
 #define FILING_CABINET_CHEST "chestdrawer"
 #define FILING_CABINET_TALL "tallcabinet"
+#define FILING_CABINET_NORMAL_DOUBLE "filingcabinet_double"
 #define FILING_CABINET_CHEST_DOUBLE "chestdrawer_double"
 #define FILING_CABINET_TALL_DOUBLE "tallcabinet_double"
 
@@ -41,7 +42,8 @@
 /obj/structure/filingcabinet/double
 	name = "filing cabinets"
 	desc = "Two large cabinets with drawers."
-	icon_state = "filingcabinet_double"
+	icon_state = FILING_CABINET_NORMAL_DOUBLE
+	cabinet_type = FILING_CABINET_NORMAL_DOUBLE
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"

@@ -199,6 +199,16 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/obj/structure/machinery/flasher{
+	id = "Perma 1";
+	pixel_y = -24
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/brig/perma)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -11694,6 +11704,10 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
+"aDL" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig/yard)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -15913,9 +15927,9 @@
 /obj/structure/machinery/photocopier{
 	pixel_y = 12
 	},
-/obj/structure/filingcabinet/documentation/uscm_mp{
+/obj/structure/filingcabinet/documentation/uscm_mp/chestdrawer{
 	pixel_x = 8;
-	icon_state = "chestdrawer"
+	name = "documents cabinet"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -38341,7 +38355,8 @@
 /turf/open/floor/almayer/silver/northwest/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bQc" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/pipes/vents/scrubber{
@@ -42412,9 +42427,17 @@
 /obj/structure/machinery/door_control{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown Shutters";
-	pixel_x = -6;
+	pixel_x = 4;
 	pixel_y = 9;
 	req_access_txt = "3"
+	},
+/obj/structure/machinery/door_control{
+	id = "visitationdoor";
+	name = "Visitation Door Control";
+	pixel_x = -6;
+	pixel_y = 9;
+	req_access_txt = "3";
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/visitation)
@@ -42514,7 +42537,6 @@
 /area/almayer/shipboard/brig/interrogation)
 "bZW" = (
 /obj/structure/bed/chair{
-	can_buckle = 0;
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -42970,11 +42992,13 @@
 /area/almayer/shipboard/brig/medical)
 "caS" = (
 /obj/structure/sign/safety/six{
-	pixel_y = 24
+	pixel_y = 24;
+	desc = "Semiotic Standard denoting the number six. It should not be plaaced next to a seven semiotic."
 	},
 /obj/structure/sign/safety/seven{
 	pixel_y = 24;
-	pixel_x = 15
+	pixel_x = 15;
+	desc = "Semiotic Standard denoting the number seven. It is placed next to a Six semiotic."
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
@@ -43127,7 +43151,8 @@
 	pixel_y = 24;
 	layer = 4.4;
 	id = "prisonbball";
-	side = "left"
+	side = "left";
+	enable_shimmy = 0
 	},
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/brig/yard)
@@ -43766,11 +43791,8 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/lobby)
 "ccB" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
+/obj/structure/machinery/cm_vending/clothing/military_police_warden{
+	pixel_x = -30
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
@@ -43781,6 +43803,9 @@
 	name = "Warden's Quarters";
 	id = "wardenprivacy";
 	req_access = list(3)
+	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
@@ -43830,11 +43855,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
 "ccK" = (
-/obj/structure/machinery/cm_vending/clothing/military_police_warden{
-	pixel_y = 30
+/obj/item/bedsheet/red,
+/obj/structure/bed,
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
 "ccL" = (
@@ -46211,7 +46239,7 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/squads/alpha)
 "cBw" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/bolted,
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "cBC" = (
@@ -48419,6 +48447,7 @@
 /obj/item/folder/blue{
 	pixel_x = -7
 	},
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
 "dzX" = (
@@ -49526,7 +49555,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "eaf" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/bolted,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
@@ -52103,6 +52132,10 @@
 "fag" = (
 /obj/structure/bed/chair/bolted{
 	dir = 4
+	},
+/obj/structure/machinery/flasher{
+	id = "Perma 2";
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
@@ -55736,6 +55769,10 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
+/obj/item/coin/silver{
+	desc = "A small coin, bearing the falling falcons insignia.";
+	name = "falling falcons challenge coin"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/chief_mp_office)
 "gIU" = (
@@ -57329,7 +57366,9 @@
 /area/almayer/maint/hull/lower/l_m_s)
 "hsj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Brig Visitation"
+	name = "\improper Brig Visitation";
+	id = "visitationdoor";
+	id_tag = "visitationdoor"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8
@@ -59481,12 +59520,12 @@
 	pixel_y = 19;
 	can_block_movement = 0
 	},
+/obj/structure/machinery/power/apc/almayer/east,
 /obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = -8;
 	pixel_y = 19;
 	can_block_movement = 0
 	},
-/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
 "ipa" = (
@@ -60680,6 +60719,7 @@
 	pixel_x = 16
 	},
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/computer/arcade,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/yard)
 "iQJ" = (
@@ -63331,8 +63371,12 @@
 /turf/open/floor/almayer/emerald/north,
 /area/almayer/squads/charlie_delta_shared)
 "jTU" = (
-/obj/structure/bed,
-/obj/item/bedsheet/red,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/warden_office)
 "jUb" = (
@@ -67858,7 +67902,7 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/living/briefing)
 "lSs" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/bolted,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/interrogation)
@@ -75337,7 +75381,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "oVf" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/bolted,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/processing)
@@ -75830,7 +75874,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower)
 "pgP" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/bolted{
 	dir = 1
 	},
 /obj/structure/machinery/light/small{
@@ -81091,11 +81135,10 @@
 	pixel_x = 8;
 	pixel_y = 16
 	},
-/obj/structure/filingcabinet/documentation/uscm{
+/obj/structure/filingcabinet/documentation/uscm/chestdrawer{
+	pixel_x = -8;
 	pixel_y = 16;
-	density = 0;
-	icon_state = "chestdrawer";
-	pixel_x = -8
+	name = "documents cabinet"
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/living/offices)
@@ -87656,11 +87699,10 @@
 	layer = 2.5;
 	pixel_x = -1
 	},
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 16;
-	density = 0;
+/obj/structure/filingcabinet/documentation/military_police/chestdrawer{
 	pixel_x = 8;
-	icon_state = "chestdrawer"
+	pixel_y = 16;
+	name = "documents cabinet"
 	},
 /obj/structure/transmitter/no_dnd{
 	pixel_y = 24;
@@ -94458,7 +94500,9 @@
 	pixel_y = -13;
 	layer = 1;
 	id = "prisonbball";
-	side = "right"
+	side = "right";
+	enable_shimmy = 0;
+	can_block_movement = 0
 	},
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/brig/yard)
@@ -194320,7 +194364,7 @@ ccm
 ccm
 cca
 pHp
-fag
+aaD
 naB
 fag
 pHp
@@ -195453,7 +195497,7 @@ jCX
 uvY
 iNh
 xkd
-bZB
+aDL
 bZi
 cMl
 cMl

@@ -1,7 +1,7 @@
 /datum/species/yautja
 	group = SPECIES_YAUTJA
-	name = "Yautja"
-	name_plural = "Yautja"
+	name = SPECIES_YAUTJA
+	name_plural = SPECIES_YAUTJA
 	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA

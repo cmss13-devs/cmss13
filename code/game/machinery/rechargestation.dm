@@ -323,9 +323,6 @@
 		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic's general condition does not allow reviving."))
 		return FALSE
 
-	if(!revive_target.check_tod())
-		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic has sustained irrecoverable core damage."))
-		return FALSE
 	return TRUE
 
 /obj/structure/machinery/recharge_station/proc/do_revive(mob/living/carbon/human/revived_target)

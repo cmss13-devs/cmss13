@@ -1175,20 +1175,12 @@
 	if(rem)
 		to_chat(xeno, SPAN_NOTICE("We will now remotely <b>[xeno.selected_design.name]</b>."))
 
-	xeno.update_icons()
 	button.overlays.Cut()
 	button.overlays += image(icon_file, button, xeno.selected_design.icon_state)
 
 	return ..()
 
 // Below is UI for old players.
-
-/datum/action/xeno_action/onclick/change_design/give_to(mob/living/carbon/xenomorph/xeno)
-	. = ..()
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(xeno.selected_design.icon_state))
-	button.overlays += image(icon_file, button, action_icon_state)
 
 /datum/action/xeno_action/onclick/change_design/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/choose_design))
@@ -1252,7 +1244,6 @@
 			var/obj/effect/alien/resin/design/design = selected_type
 			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(design.name)]</b> when designing."))
 			//update the button's overlay with new choice
-			xeno.update_icons()
 			button.overlays.Cut()
 			button.overlays += image(icon_file, button, action_icon_state)
 			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(design.icon_state))

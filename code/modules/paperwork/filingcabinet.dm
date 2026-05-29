@@ -5,6 +5,9 @@
  * Medical Record Cabinets
  */
 
+#define FILING_CABINET_NORMAL "filingcabinet"
+#define FILING_CABINET_CHEST "chestdrawer"
+#define FILING_CABINET_TALL "tallcabinet"
 
 /*
  * Filing Cabinets
@@ -17,6 +20,9 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
+
+	// Initial cabinet type variable added, because initial(icon_state) does not work as intended for objects changed in map prefabs
+	var/list/cabinet_type = FILING_CABINET_NORMAL
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
 
 /obj/structure/filingcabinet/proc/dump_contents()
@@ -32,12 +38,12 @@
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
-	icon_state = "chestdrawer"
-
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
-	icon_state = "tallcabinet"
-
+	icon_state = FILING_CABINET_TALL
+	cabinet_type = FILING_CABINET_TALL
 
 /obj/structure/filingcabinet/Initialize()
 	. = ..()
@@ -55,9 +61,9 @@
 			if(istype(P, allowed_type))
 				to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
 				if(user.drop_inv_item_to_loc(P, src))
-					icon_state = "[initial(icon_state)]-open"
+					icon_state = "[cabinet_type]-open"
 					sleep(5)
-					icon_state = initial(icon_state)
+					icon_state = cabinet_type
 					updateUsrDialog()
 					break
 			else

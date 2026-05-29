@@ -71,43 +71,94 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
 
+/obj/structure/filingcabinet/documentation/military_police/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/uscm
 	available_categories = list(PAPER_CATEGORY_USCM)
 
+/obj/structure/filingcabinet/documentation/uscm/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/uscm_mp
 	available_categories = list(PAPER_CATEGORY_USCM, PAPER_CATEGORY_MP)
+
+/obj/structure/filingcabinet/documentation/uscm_mp/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/documentation/liaison
 	available_categories = list(PAPER_CATEGORY_LIAISON)
 	remaining_documents = 45 //CL likely using more of these than most people.
 
+/obj/structure/filingcabinet/documentation/liasion/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/highcom
 	remaining_documents = 60
+
+/obj/structure/filingcabinet/documentation/highcom/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/documentation/highcom/wy
 	available_categories = list(PAPER_CATEGORY_WEYYU_HC)
 
+/obj/structure/filingcabinet/documentation/highcom/wy/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/highcom/uscm
 	available_categories = list(PAPER_CATEGORY_USCM_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/uscm/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/documentation/highcom/provost
 	available_categories = list(PAPER_CATEGORY_PROVOST)
 
+/obj/structure/filingcabinet/documentation/highcom/provost/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/highcom/upp
 	available_categories = list(PAPER_CATEGORY_UPP_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/upp/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/documentation/highcom/twe
 	available_categories = list(PAPER_CATEGORY_TWE_HC)
 
+/obj/structure/filingcabinet/documentation/highcom/twe/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/highcom/cmb
 	available_categories = list(PAPER_CATEGORY_CMB_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/cmb/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/documentation/highcom/press
 	available_categories = list(PAPER_CATEGORY_PRESS_HC)
 
+/obj/structure/filingcabinet/documentation/highcom/press/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
+
 /obj/structure/filingcabinet/documentation/highcom/clf
 	available_categories = list(PAPER_CATEGORY_CLF_HC)
 
+/obj/structure/filingcabinet/documentation/highcom/clf/chestdrawer
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 //########################################
 //########################################

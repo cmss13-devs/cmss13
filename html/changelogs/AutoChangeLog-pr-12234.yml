@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "B8 Smart Scope now tries to fire after a delay when it prevents IFF. Holding M1 with MK2 is now exactly as Holding M1 with Smartgun Frontline."

@@ -82,6 +82,9 @@
 	icon_state = "ocean"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
+/area/point_loma/oob/predator
+	name = "Unknown Aircraft - Out of Bounds"
+
 // USASF Airbase //
 
 /area/point_loma/airbase //abstract
@@ -126,7 +129,7 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/point_loma/airbase/interior/fire_station
-	name = "Airbase Fire Station"
+	name = "Airbase Fire Station and Garage"
 	icon_state = "airbase_fire_station"
 
 /area/point_loma/airbase/interior/fuel_storage
@@ -134,7 +137,7 @@
 	icon_state = "airbase_fuel_storage"
 
 /area/point_loma/airbase/interior/garage
-	name = "Utility Vehicle Garage"
+	name = "Airbase Transit Station and Alpha-Tech Research Facility Entrance"
 	icon_state = "airbase_garage"
 
 /area/point_loma/airbase/interior/hangar
@@ -142,10 +145,16 @@
 	icon_state = "airbase_hangar"
 	sound_environment = SOUND_ENVIRONMENT_HANGAR
 
-/area/point_loma/airbase/interior/research
-	name = "Fuel Mixing Facility"
+/area/point_loma/airbase/interior/admin
+	name = "Airbase USASF Offices"
 	icon_state = "research_facility"
 	minimap_color = MINIMAP_AREA_RESEARCH
+
+/area/point_loma/airbase/interior/admin/upper
+	name = "Airbase USASF Offices - Upper"
+
+/area/point_loma/airbase/interior/admin/upper/catwalks
+	ceiling = CEILING_NONE
 
 /area/point_loma/airbase/interior/hospital
 	name = "Airbase Paramedic Station"
@@ -175,6 +184,13 @@
 /area/point_loma/airbase/exterior/crash_site
 	name = "Runway Crash Site"
 	icon_state = "airbase_crash_site"
+	ceiling = CEILING_METAL
+
+/area/point_loma/airbase/exterior/crash_site/upper
+	name = "Runway Crash Site - Upper Level?"
+
+/area/point_loma/airbase/exterior/crash_site/upper/catwalks
+	ceiling = CEILING_NONE //lattice tiles on the north-east side of the pred ship upper
 
 /area/point_loma/airbase/exterior/crash_site/opening
 	name = "Runway Crash Site - Sink Hole"
@@ -184,6 +200,9 @@
 /area/point_loma/airbase/exterior/north
 	name = "USASF Point Loma Airbase - North" // maybe some wind / sea noises?
 	icon_state = "airbase_exterior_north"
+
+/area/point_loma/airbase/exterior/north/radar
+	name = "USASF Point Loma Airbase - North - Radar Array"
 
 /area/point_loma/airbase/exterior/east
 	name = "USASF Point Loma Airbase - East"
@@ -312,10 +331,9 @@
 	name = "Super Death Cannon - Ammo Elevator"
 	icon_state = "research_facility_sdc_ammo"
 	sound_environment = SOUND_ENVIRONMENT_HALLWAY
+
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper
-	name = "Super Death Cannon - Ammo Elevator"
-	icon_state = "research_facility_sdc_ammoup"
-	sound_environment = SOUND_ENVIRONMENT_HALLWAY
+	name = "Super Death Cannon - Ammo Elevator - Upper"
 
 /area/point_loma/research_facility/super_death_cannon/cannon
 	name = "Super Death Cannon - Cannon Room"

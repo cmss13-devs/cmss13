@@ -98,3 +98,25 @@
 	name = "Tyrargo Rift - city limit sign"
 	desc = "A large sign designating the city limit of Tyrargo Rift."
 	icon_state = "tyrargo_sign_4"
+
+/obj/structure/lz_sign/charon_sign
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'lazarus landing por-' the rest of it is smeared in blood."
+	icon_state = "charon_sign"
+
+/obj/structure/lz_sign/seegson_sign
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson"
+	bound_width = 64
+	bound_height = 32
+
+/obj/structure/lz_sign/seegson_sign/damaged
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson_d"
+
+/obj/structure/lz_sign/seegson_sign/damaged_ash
+	name = "Seegson Sign"
+	desc = "A large sign reading 'Seegson'."
+	icon_state = "seegson_a"

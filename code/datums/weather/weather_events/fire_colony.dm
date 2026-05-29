@@ -37,7 +37,7 @@
 	name = "Heavy Ash Rain"
 	display_name = "Heavy Ash Rain"
 
-	length = 4 MINUTES
+	length = 6 MINUTES
 
 	turf_overlay_icon_state = "ash_dust_storm"
 

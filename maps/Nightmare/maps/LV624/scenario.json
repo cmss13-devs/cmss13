@@ -12,8 +12,8 @@
 	"choices": [
 		{ "weight": 2, "type": "def", "values": { "lvevent": "none" } },
 		{ "weight": 4, "type": "def", "values": { "lvevent": "last_stand" } },
-		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge", "hostile_survivors": true } },
-		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right", "hostile_survivors": true } },
+		{ "weight": 1, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge", "hostile_survivors": true } },
+		{ "weight": 1, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right", "hostile_survivors": true } },
 		{ "weight": 2, "type": "def", "values": { "lvevent": "asset_protection", "mainpath": "left" } }
 	]
 }

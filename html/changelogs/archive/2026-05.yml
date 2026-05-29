@@ -216,3 +216,50 @@
   kitchenenthusiast:
   - bugfix: Fixes area tiling in LV624 engineering dome/tcomms
   - bugfix: Adds missing atmos pipe in CO's quarters on the Almayer
+2026-05-27:
+  ComboTombo:
+  - code_imp: Moved setting assignments and ID cards for specialists from their vending
+      machine's file to specialist.dm
+  - qol: The crew manifest's search function now covers paygrades
+  - refactor: Changed the way datacore.dm, squad_specialist.dm (vending machine),
+      and specialist.dm handle setting assignments, manifest titles, and ID cards
+      to drop the squad name from the manifest title. Also introduced job defines
+      for each squad kit to be used by specialist.dm and marines_consoles.dm (crew
+      monitor)
+  - spellcheck: Changed "SHARP Operator" in the crew manifest and crew monitor to
+      "SHARP Specialist"
+  - ui: Widened the crew manifest
+  Detective-Google:
+  - bugfix: synth bays can reactivate synths that would otherwise be revivable as
+      intended.
+  Fluffyzack21:
+  - spellcheck: fixed the colony van typo it now shows it has 6 tires instead of 4
+  - bugfix: Changed the subtype for UPP corpses so they spawn with the correct belt
+      type
+  - spellcheck: changed the descriptions of the corners of the lifeboats on the USS
+      Alamyer and for the UPP lifeboat
+  - maptweak: Adds a grinder and phoron in PMC ERT station for the ability to make
+      clonexadone  again
+  Nihisohel:
+  - code_imp: Helmet accessories now supports vendor auto equipping
+  - bugfix: You can no longer eat whistles through vendors
+  NotTzeentchian:
+  - bugfix: US Army Synthetic Survivor can no longer retrieve the Experiment Tool
+      Token
+  - bugfix: 32nd Armoured Division Tank Crewman is now considered US Army
+  TrollerNoob:
+  - bugfix: Fixed SHARP Flechette Dart direct hits not registering the additional
+      flechette properly, along with other projectile direct hits interactions.
+  zzzmike:
+  - spellcheck: fixed a few tyrargo ty(rar)pos
+2026-05-29:
+  ComboTombo:
+  - bugfix: Marine service jacket no longer overridden by MP service jacket in the
+      synthetic loadouts customization page
+  Drathek:
+  - code_imp: Removed/simplified some unnecessary calls to xeno update_icons
+  - bugfix: Fixed designer button saying FIX ME when first selecting the strain
+  - bugfix: Fixed charger crusher not ever stopping a charge if you simply stop moving
+  - code_imp: Bumped all github action versions because of node update requirement
+  gnorse:
+  - rscadd: Loreful synthetic death messages

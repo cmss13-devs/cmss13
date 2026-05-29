@@ -1,0 +1,7 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "fixed some cases of m56d and m2c not showing how much they have in description"
+  - imageadd: "undeployed m2c resprite"
+  - imageadd: "m56d resprite with new onmob sprites and a complete camo set"
+  - imageadd: "props of m38d now have the old m56d sprite"

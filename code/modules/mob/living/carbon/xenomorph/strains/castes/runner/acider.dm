@@ -207,9 +207,8 @@
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
-
-	drool_overlay_active = FALSE //turns the drool overlay off
-	bound_xeno.update_icons()
+	drool_overlay_active = FALSE
+	bound_xeno.behavior_delegate?.on_update_icons()
 
 /datum/behavior_delegate/runner_acider/on_update_icons()
 	bound_xeno.overlays -= drool_applied_icon

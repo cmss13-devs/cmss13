@@ -290,7 +290,7 @@
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if(item.force > force_level_absorption)
+	if((item.force > force_level_absorption) && !HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)

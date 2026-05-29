@@ -92,7 +92,7 @@ CLIENT_VERB(ooc, msg as text)
 		var/static/sub_icon = icon('icons/effects/effects.dmi', "sub")
 		prefix += "[icon2html(sub_icon, GLOB.clients)]"
 	if(isCouncil(src))
-		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, isSenator(src) ? "WhitelistSenator" : "WhitelistCouncil")]"
 	var/comm_award = find_community_award_icons()
 	if(comm_award)
 		prefix += comm_award

@@ -94,6 +94,13 @@
 	. = ..()
 	relativewall_neighbours()
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/red
+	icon_state = "shutterred1"
+	base_icon_state = "shutterred"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/red/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/yautja
 	name = "Yautja Shutter"
 	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."

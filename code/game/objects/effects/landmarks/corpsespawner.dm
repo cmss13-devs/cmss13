@@ -291,6 +291,12 @@
 	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 
+// Fire Station
+
+/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter
+	name = "Corpse - Civilian - Fire Protection Specialist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/fire_fighter
+
 // Pizza Galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy

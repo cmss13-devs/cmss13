@@ -2533,7 +2533,7 @@
 "agP" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -2581,7 +2581,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 1;
@@ -5829,7 +5829,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 9;
@@ -7389,7 +7389,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -7867,7 +7867,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 3;
@@ -16040,7 +16040,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 9;
@@ -17538,7 +17538,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 2;
@@ -19188,7 +19188,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 6;
@@ -26185,7 +26185,7 @@
 "bhz" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 10;
@@ -31311,7 +31311,7 @@
 "brS" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;
@@ -31354,7 +31354,7 @@
 "brV" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;
@@ -31400,7 +31400,7 @@
 "brZ" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;
@@ -31480,7 +31480,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;
@@ -40187,7 +40187,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 9;
@@ -53857,7 +53857,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;
@@ -58050,7 +58050,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -1;
@@ -58260,7 +58260,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -1;
@@ -60301,7 +60301,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -3;
@@ -63967,7 +63967,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 6;
@@ -64466,7 +64466,7 @@
 "dge" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 6;
@@ -64960,7 +64960,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = -2;
@@ -67131,7 +67131,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -3;
@@ -75378,7 +75378,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 15;
@@ -90578,7 +90578,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -3;
@@ -100036,7 +100036,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 6;
@@ -103436,7 +103436,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 6;
@@ -103556,7 +103556,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 1;
@@ -104135,7 +104135,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 8;
@@ -104468,7 +104468,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 6;
@@ -104876,7 +104876,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 15;
@@ -104972,7 +104972,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 15;
@@ -105358,7 +105358,7 @@
 "hFZ" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -106376,7 +106376,7 @@
 "kdm" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 15;
@@ -106481,7 +106481,7 @@
 "koq" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 20;
@@ -106904,7 +106904,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -107899,7 +107899,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 6;
@@ -109396,7 +109396,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 9;
@@ -110622,7 +110622,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = -1;
@@ -110727,7 +110727,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -111265,7 +111265,7 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 3;
@@ -111328,7 +111328,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 5;

@@ -779,7 +779,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/marine_service
 	path = /obj/item/clothing/suit/storage/jacket/marine/service
 
-/datum/gear/synthetic/suit/marine_service
+/datum/gear/synthetic/suit/marine_service/mp
 	path = /obj/item/clothing/suit/storage/jacket/marine/service/mp
 
 /datum/gear/synthetic/suit/windbreaker_brown

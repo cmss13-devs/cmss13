@@ -1,0 +1,7 @@
+author: "Zenith, dimdimich1996"
+delete-after: True
+changes:
+  - imageadd: "New sprites like directional variants of a few sprites & more unique turfs. Vending machine sprites as well as variants of existing ones. A few Legacy sprite improvements."
+  - imagetweak: "Various fixes to Hybrisa sprites, mostly turf. Legacy sprite improvements to plants.dmi & beach.dmi."
+  - maptweak: "Hybrisa map general fixes, some QoL stuff like less ledges, mostly visual changes. A few new inserts including a Fire-Station, Small-Alley variant & a large \"Administrative Records Bureau Complex\". Separates the Entertainment Complex into it's own insert."
+  - rscadd: "Addition of a fireman carry pamphlet, currently only used as rare survivor loot."

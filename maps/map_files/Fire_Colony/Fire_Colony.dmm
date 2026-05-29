@@ -8257,6 +8257,15 @@
 "aWr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = -16;
+	pixel_y = 8
+	},
+/obj/structure/sign/safety/restrictedarea/dark{
+	pixel_y = -4;
+	pixel_x = -16;
+	layer = 2.9
+	},
 /turf/open/lava/asteroid/directions/south,
 /area/ice_colony/exterior/surface/valley/north)
 "aWu" = (
@@ -15781,10 +15790,6 @@
 	pixel_x = 13;
 	layer = 2.9
 	},
-/obj/structure/sign/safety/biolab{
-	pixel_x = 1;
-	pixel_y = 30
-	},
 /obj/structure/platform/metal/lava_metal/north,
 /obj/structure/platform/metal/lava_metal/east,
 /obj/structure/platform/metal/almayer/west,
@@ -15792,6 +15797,10 @@
 	dir = 8;
 	pixel_x = 8;
 	pixel_y = 8
+	},
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 1;
+	pixel_y = 30
 	},
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
@@ -16041,6 +16050,7 @@
 /obj/item/storage/backpack/satchel/hyd,
 /obj/item/storage/backpack/satchel/hyd,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/suit/storage/labcoat/lasalle/green,
 /turf/open/floor/strata/altgreen4/north,
 /area/ice_colony/surface/hydroponics/south)
 "cGh" = (
@@ -48027,10 +48037,6 @@
 	pixel_x = 1;
 	layer = 2.9
 	},
-/obj/structure/sign/safety/biolab{
-	pixel_x = 13;
-	pixel_y = 30
-	},
 /obj/structure/platform/metal/lava_metal/north,
 /obj/structure/platform/metal/lava_metal/west,
 /obj/structure/platform/metal/almayer/east,
@@ -48038,6 +48044,10 @@
 	dir = 4;
 	pixel_x = -8;
 	pixel_y = 7
+	},
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 13;
+	pixel_y = 30
 	},
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
@@ -68229,7 +68239,7 @@
 	pixel_x = -16;
 	layer = 2.9
 	},
-/obj/structure/sign/safety/biolab{
+/obj/structure/sign/safety/analysis_lab{
 	pixel_x = -16;
 	pixel_y = 8
 	},
@@ -83566,6 +83576,14 @@
 /obj/effect/lava/edges/basalt/corner_rock,
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
+"vrq" = (
+/obj/structure/machinery/weather_siren{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = -16
+	},
+/turf/open/lava/metal/plating,
+/area/ice_colony/underground/hangar)
 "vrr" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -87865,11 +87883,11 @@
 	pixel_x = -16;
 	layer = 2.9
 	},
-/obj/structure/sign/safety/biolab{
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/sign/safety/analysis_lab{
 	pixel_x = -16;
 	pixel_y = 8
 	},
-/obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/northwest)
 "wDb" = (
@@ -101084,8 +101102,8 @@ tAe
 bjf
 bjf
 bjf
-bjf
 iWB
+bjf
 tAe
 bjf
 bjf
@@ -106932,7 +106950,7 @@ eeX
 oAQ
 hms
 bjf
-bjf
+vrq
 bjf
 xva
 uXz

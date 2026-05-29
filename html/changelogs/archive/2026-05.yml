@@ -252,3 +252,14 @@
       flechette properly, along with other projectile direct hits interactions.
   zzzmike:
   - spellcheck: fixed a few tyrargo ty(rar)pos
+2026-05-29:
+  ComboTombo:
+  - bugfix: Marine service jacket no longer overridden by MP service jacket in the
+      synthetic loadouts customization page
+  Drathek:
+  - code_imp: Removed/simplified some unnecessary calls to xeno update_icons
+  - bugfix: Fixed designer button saying FIX ME when first selecting the strain
+  - bugfix: Fixed charger crusher not ever stopping a charge if you simply stop moving
+  - code_imp: Bumped all github action versions because of node update requirement
+  gnorse:
+  - rscadd: Loreful synthetic death messages

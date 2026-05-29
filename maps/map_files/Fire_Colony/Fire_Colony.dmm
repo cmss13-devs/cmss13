@@ -75298,6 +75298,14 @@
 	},
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/north)
+"tbv" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/lava/brock,
+/area/ice_colony/exterior/surface/landing_pad_external)
 "tbx" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -128664,7 +128672,7 @@ aaQ
 aaQ
 kej
 pjO
-aoF
+bQd
 aKh
 aKh
 wJU
@@ -129068,7 +129076,7 @@ aaQ
 vRV
 hhs
 aba
-dvs
+xVq
 aKh
 mXd
 gXB
@@ -130321,7 +130329,7 @@ fvT
 aZn
 fug
 ljV
-jED
+tbv
 jED
 cFK
 fcb

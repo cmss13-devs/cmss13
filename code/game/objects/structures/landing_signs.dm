@@ -110,6 +110,7 @@
 	icon_state = "seegson"
 	bound_width = 64
 	bound_height = 32
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
 
 /obj/structure/lz_sign/seegson_sign/damaged
 	name = "Seegson Sign"

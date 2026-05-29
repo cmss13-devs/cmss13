@@ -26741,10 +26741,248 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
+"byA" = (
+/obj/structure/prop/hybrisa/misc/urinal{
+	pixel_y = 32;
+	pixel_x = -6
+	},
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"byB" = (
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byC" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	name = "law and engineering manuals bookcase";
+	opacity = 0
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byD" = (
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"byE" = (
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_x = 7
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = -9
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"byF" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byG" = (
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_x = -1;
+	pixel_y = 13
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/urinal{
+	pixel_y = 32;
+	pixel_x = -6
+	},
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob/sky)
 "byK" = (
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/shiva/red/west,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
+"byL" = (
+/obj/structure/mirror{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/bathunisex,
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/oob/sky)
+"byM" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byN" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byO" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/janitorialcart,
+/obj/item/tool/mop{
+	pixel_x = 12
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byP" = (
+/obj/structure/prop/hybrisa/misc/urinal{
+	pixel_y = 32;
+	pixel_x = -6
+	},
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob/sky)
+"byQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byR" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"byT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"byU" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = 7;
+	pixel_y = 5;
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty."
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"byV" = (
+/obj/structure/mirror{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/oob/sky)
+"byW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byX" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"byZ" = (
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob/sky)
+"bza" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzb" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzc" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 2
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzd" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25;
+	pixel_x = -12;
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bze" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/microwave{
+	pixel_y = 6
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bzf" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_x = -12
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
 "bzg" = (
 /turf/open/hybrisa/street/roadlines3,
 /area/point_loma/airbase/exterior/east)
@@ -26752,9 +26990,179 @@
 /obj/item/stack/sheet/metal,
 /turf/closed/wall/huntership/outerhull,
 /area/point_loma/research_facility/crash_site)
+"bzi" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/obj/item/paper{
+	layer = 2;
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/paper{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzk" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bzl" = (
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/point_loma/airbase/exterior/crash_site)
+"bzm" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"bzn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"bzo" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/tool/wet_sign,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/point_loma/oob/sky)
+"bzp" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzq" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzr" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 2
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzs" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzt" = (
+/obj/structure/sign/poster/propaganda,
+/turf/closed/wall/new_varadero/concrete,
+/area/point_loma/oob/sky)
+"bzu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzv" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/newspaper,
+/obj/item/tool/pen{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzw" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/phone{
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/obj/item/tool/pen{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
 "bzy" = (
 /obj/structure/machinery/light,
 /turf/open/floor/carpet/edge,
@@ -26768,6 +27176,62 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/east)
+"bzB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/walkable_lattice,
+/area/point_loma/oob/sky)
+"bzC" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/phone{
+	pixel_x = 6;
+	pixel_y = -15
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzD" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/window/reinforced{
+	layer = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzE" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25
+	},
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bzG" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
+/area/point_loma/oob/sky)
+"bzH" = (
+/obj/structure/machinery/big_computers/messaging_server/brown,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bzI" = (
 /turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/oob)
@@ -26789,6 +27253,11 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/library)
+"bzM" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bzN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26800,6 +27269,12 @@
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bzP" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bzQ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/corsat/purple/north,
@@ -26811,6 +27286,55 @@
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bzS" = (
+/obj/structure/safe,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bzT" = (
+/obj/structure/sign/banners/united_americas_flag,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzU" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/entertainment,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzV" = (
+/obj/structure/sign/poster/io,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzW" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzX" = (
+/obj/structure/sign/poster/ad,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzY" = (
+/obj/structure/sign/poster/music,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bzZ" = (
+/obj/structure/sign/poster/art,
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob/sky)
+"bAa" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAc" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
 "bAd" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
@@ -26846,6 +27370,29 @@
 /obj/item/trash/chips,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
+"bAj" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAk" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/oob/sky)
+"bAl" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/closed/wall/new_varadero/concrete/reinforced,
+/area/point_loma/oob/sky)
+"bAm" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/point_loma/oob/sky)
 "bAn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26853,6 +27400,33 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bAo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
+/area/point_loma/oob/sky)
+"bAp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/point_loma/oob/sky)
+"bAq" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2
+	},
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAr" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAs" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony,
+/turf/open/floor/plating/wood,
+/area/point_loma/oob/sky)
+"bAt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/point_loma/oob/sky)
 "bAu" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/kutjevo/tan,
@@ -26882,6 +27456,16 @@
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
+"bAz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/southwest,
+/area/point_loma/oob/sky)
+"bAA" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
+/area/point_loma/oob/sky)
 "bAH" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -31870,12 +32454,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/exterior/west)
 "bVJ" = (
-/obj/structure/bed/chair/comfy{
-	pixel_y = 5;
-	pixel_x = 8;
-	dir = 4
-	},
-/turf/open/floor/plating/wood,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/point_loma/oob/sky)
 "bWe" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -49394,9 +49973,11 @@
 /turf/open/floor/shiva/red/southwest,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
 "dPE" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/plating/wood,
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
 /area/point_loma/oob/sky)
 "dSW" = (
 /obj/structure/platform_decoration/metal/almayer,
@@ -49632,7 +50213,7 @@
 	pixel_y = 2;
 	pixel_x = 17
 	},
-/turf/open/floor/plating/wood,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/point_loma/oob/sky)
 "eVx" = (
 /obj/effect/hunter/bridge_border/brown/small_stair,
@@ -51260,12 +51841,8 @@
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
 "nTl" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8;
-	pixel_y = 6;
-	pixel_x = -10
-	},
-/turf/open/floor/plating/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/point_loma/oob/sky)
 "nTS" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
@@ -52138,13 +52715,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/garage)
-"rSR" = (
-/obj/structure/bed/chair/comfy/orange{
-	pixel_y = 1;
-	pixel_x = 16
-	},
-/turf/open/floor/plating/wood,
-/area/point_loma/oob/sky)
 "seX" = (
 /obj/effect/hunter/rune{
 	dir = 4
@@ -52172,6 +52742,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/point_loma/airbase/exterior/west)
 "sjm" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/wood_broken4,
 /area/point_loma/oob/sky)
 "soI" = (
@@ -52397,6 +52968,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/garage)
 "tQx" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/wood_broken2,
 /area/point_loma/oob/sky)
 "tRd" = (
@@ -201226,17 +201798,17 @@ alC
 clp
 clp
 dgi
+bzZ
 dgi
+bzY
 dgi
+bzW
 dgi
+bzX
 dgi
+bzW
 dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
+bzV
 clp
 wTW
 wTW
@@ -201408,6 +201980,9 @@ alC
 clp
 clp
 clp
+byQ
+clp
+byQ
 clp
 clp
 clp
@@ -201418,17 +201993,14 @@ clp
 clp
 clp
 clp
+byQ
 clp
 clp
 clp
+byQ
 clp
 clp
-clp
-clp
-clp
-clp
-clp
-clp
+byQ
 clp
 clp
 tjf
@@ -201596,18 +202168,18 @@ clp
 clp
 clp
 clp
+byQ
 clp
 clp
 clp
 clp
 clp
+byQ
 clp
 clp
 clp
 clp
-clp
-clp
-clp
+byQ
 clp
 clp
 clp
@@ -201767,17 +202339,17 @@ aUs
 bsT
 aUs
 aUs
-aTW
+bAm
 ato
 clp
+byQ
 clp
 clp
 clp
 clp
-clp
-clp
-clp
-clp
+bzF
+bzF
+byQ
 clp
 clp
 clp
@@ -201790,7 +202362,7 @@ wTW
 clp
 clp
 clp
-clp
+byQ
 clp
 clp
 clp
@@ -201949,7 +202521,7 @@ aUM
 aUH
 bsw
 aUt
-aTW
+bAo
 aOq
 clp
 clp
@@ -201974,8 +202546,8 @@ alC
 dgi
 clp
 clp
-clp
-clp
+byQ
+byQ
 alC
 alC
 dgi
@@ -202125,13 +202697,13 @@ bTS
 jby
 jby
 dgi
-aVq
+bAA
 aVi
 bta
 aUz
 bsD
 aUt
-aTW
+bAm
 aTI
 clp
 clp
@@ -202148,17 +202720,17 @@ bTS
 fdO
 clp
 alC
+bzH
+clp
+clp
+bzk
+bzk
+aUb
 clp
 clp
 clp
-clp
-clp
-clp
-clp
-clp
-clp
-clp
-clp
+byQ
+aUb
 clp
 alC
 jby
@@ -202313,7 +202885,7 @@ btb
 bsU
 bsK
 aUt
-aTW
+bAm
 ato
 clp
 clp
@@ -202330,6 +202902,7 @@ dgi
 dgi
 dgi
 dgi
+bzM
 clp
 clp
 clp
@@ -202337,11 +202910,10 @@ clp
 clp
 clp
 clp
-bVJ
-bVJ
-bVJ
-bVJ
 clp
+byR
+clp
+byB
 alC
 jby
 jby
@@ -202493,13 +203065,13 @@ aVq
 aUs
 aUs
 aUz
-aUs
+bAp
 aUs
 aTW
 ato
 clp
 clp
-clp
+bAa
 dgi
 fmK
 fmK
@@ -202516,14 +203088,14 @@ clp
 wTW
 wTW
 clp
+bzp
+bzu
+bzp
+bzf
+bza
+bVJ
 clp
-alC
-clp
-wTW
-wTW
-wTW
-wTW
-clp
+byC
 alC
 jby
 jby
@@ -202673,10 +203245,10 @@ jby
 aVO
 aVq
 aUs
-aUs
+bAp
 aUL
 aUs
-aUs
+bAp
 aTW
 ato
 clp
@@ -202693,19 +203265,19 @@ fmK
 fmK
 fmK
 fmK
-dgi
-clp
+bzT
+bVJ
 eSI
-wTW
-clp
-clp
-alC
-clp
+bzG
+bVJ
+bzC
+bzv
+bzq
+bzi
+bzb
+byS
 nTl
-nTl
-nTl
-nTl
-clp
+byD
 alC
 jby
 jby
@@ -202855,15 +203427,15 @@ jby
 alC
 aVy
 aUv
-aUv
+bAz
 aUv
 aUv
 aUv
 aUa
 ato
+bAa
 clp
-clp
-clp
+byQ
 dgi
 fmK
 fmK
@@ -202876,18 +203448,18 @@ fmK
 fmK
 fmK
 dgi
-clp
-clp
-wTW
-clp
-clp
-alC
-clp
 bVJ
 bVJ
+bzG
+nTl
+bzD
+bzw
+bzr
+bzj
+bzc
+byT
 bVJ
-bVJ
-clp
+byE
 alC
 jby
 jby
@@ -203043,9 +203615,9 @@ clp
 clp
 aUb
 alC
+bzF
 clp
-clp
-clp
+bAa
 dgi
 fmK
 fmK
@@ -203058,17 +203630,17 @@ fmK
 fmK
 fmK
 dgi
-clp
+bzP
 wTW
 wTW
 clp
+bzE
+bzx
+bzs
+bVJ
+bzd
+bVJ
 clp
-alC
-clp
-wTW
-wTW
-wTW
-wTW
 clp
 alC
 jby
@@ -203220,26 +203792,29 @@ dgi
 alC
 alC
 alC
-clp
+bAs
 alC
 dgi
 alC
-alC
+bAl
+bAj
+bAa
+byQ
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+dgi
+bzU
 clp
 clp
 clp
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
-dgi
 clp
 clp
 clp
@@ -203247,10 +203822,7 @@ clp
 clp
 clp
 clp
-nTl
-nTl
-nTl
-nTl
+clp
 clp
 alC
 jby
@@ -203403,13 +203975,13 @@ btl
 btf
 btc
 clp
-clp
-bsr
-clp
-clp
+bAr
+bAq
 clp
 clp
-clp
+byQ
+bAc
+byQ
 alC
 bTS
 bTS
@@ -203422,16 +203994,16 @@ bTS
 bTS
 bTS
 alC
+bzS
+byQ
 clp
-clp
-clp
-clp
-clp
-clp
-clp
-clp
-clp
-clp
+byQ
+byQ
+btc
+bzk
+bzk
+bze
+byU
 clp
 clp
 alC
@@ -203589,7 +204161,7 @@ clp
 alC
 bsg
 clp
-clp
+bAa
 clp
 clp
 alC
@@ -203607,15 +204179,15 @@ alC
 rrL
 rrL
 alC
-clp
-clp
+byQ
+byQ
 dgi
-clp
 alC
 alC
 alC
-alC
-clp
+byV
+byL
+byF
 dgi
 jby
 jby
@@ -203770,10 +204342,10 @@ bsZ
 bsR
 alC
 bsj
+byQ
 clp
 clp
-clp
-clp
+bAb
 alC
 bTS
 bTS
@@ -203786,18 +204358,18 @@ bTS
 bTS
 bTS
 alC
+byQ
+byQ
 clp
-clp
-clp
-clp
-clp
-clp
-clp
-bVJ
-bVJ
-bVJ
-bVJ
-clp
+bzF
+bzF
+byQ
+byZ
+bzm
+byZ
+byW
+byM
+byG
 alC
 jby
 jby
@@ -203948,14 +204520,14 @@ rrL
 btn
 bsY
 bte
-bsZ
+bAt
 bsS
 alC
 bsk
 clp
+byQ
 clp
-clp
-clp
+bzF
 alC
 bTS
 bTS
@@ -203973,13 +204545,13 @@ wXy
 wxr
 sym
 sjm
-dgi
-rSR
-wTW
-dPE
-wTW
-wTW
-clp
+bzB
+byZ
+bzn
+byZ
+byX
+byN
+byH
 alC
 jby
 jby
@@ -204136,8 +204708,8 @@ alC
 bsk
 clp
 clp
-clp
-clp
+bzF
+byQ
 alC
 bTS
 bTS
@@ -204155,13 +204727,13 @@ sym
 sym
 sym
 sym
-rrL
-clp
-wTW
+sym
+byZ
+bzo
 dPE
-wTW
-wTW
-clp
+byY
+byO
+byI
 alC
 jby
 jby
@@ -204316,10 +204888,10 @@ bsr
 bsS
 alC
 bsl
+byQ
 clp
-clp
-clp
-clp
+bzF
+bzF
 dgi
 bTS
 bTS
@@ -204337,13 +204909,13 @@ sym
 sym
 sym
 sym
-rrL
-clp
-nTl
-nTl
-nTl
-nTl
-clp
+sym
+bzt
+byG
+byH
+byN
+byN
+byG
 alC
 jby
 jby
@@ -204499,7 +205071,7 @@ alC
 dgi
 alC
 alC
-alC
+bAk
 btU
 btU
 btF
@@ -204520,13 +205092,13 @@ sym
 sym
 alC
 dgi
-sym
-sym
-alD
-dgi
+byZ
 rrL
 rrL
-dgi
+byZ
+byP
+byJ
+byA
 jby
 jby
 bTS

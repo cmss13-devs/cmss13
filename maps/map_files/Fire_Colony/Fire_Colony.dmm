@@ -13876,6 +13876,10 @@
 	},
 /turf/open/floor/corsat,
 /area/ice_colony/surface/hydroponics/lobby)
+"bZx" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/lava/metal/grate/west,
+/area/ice_colony/exterior/surface/landing_pad)
 "bZD" = (
 /obj/structure/platform/stone/lava/west,
 /obj/structure/platform/stone/lava,
@@ -15048,6 +15052,11 @@
 	},
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
+"csj" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/storage_unit/power)
 "csk" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -41278,6 +41287,12 @@
 	},
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/clearing/pass)
+"jDW" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/storage_unit/power)
 "jEb" = (
 /turf/open/lava/basalt/glowing/basalt3,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -42969,6 +42984,12 @@
 	},
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/clearing/north)
+"kfS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/lava/metal/warnplate,
+/area/ice_colony/exterior/surface/landing_pad)
 "kfW" = (
 /turf/open/lava/metal/warnplate/east,
 /area/ice_colony/surface/tcomms)
@@ -91732,6 +91753,12 @@
 	},
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
+"xHU" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/storage_unit/telecomms)
 "xHV" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -114808,7 +114835,7 @@ aaQ
 aFE
 vPs
 aJU
-wlj
+csj
 wlj
 wlj
 faC
@@ -125273,7 +125300,7 @@ aQu
 aWp
 aZO
 xce
-wbe
+kfS
 fua
 aYB
 vZK
@@ -128705,7 +128732,7 @@ ifX
 bKp
 rWZ
 rwg
-aZO
+bZx
 xce
 wbe
 fua
@@ -130887,7 +130914,7 @@ aFE
 aGd
 aJU
 wlj
-aJU
+jDW
 wlj
 qkS
 aFE
@@ -132713,7 +132740,7 @@ gyd
 drW
 oSb
 evT
-oSb
+xHU
 evT
 djf
 aJd

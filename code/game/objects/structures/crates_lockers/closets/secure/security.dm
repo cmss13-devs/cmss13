@@ -62,6 +62,10 @@
 	icon_broken = "secure_alt2_locked_warrant"
 	icon_off = "secure_alt2_closed_warrant"
 
+/obj/structure/closet/secure_closet/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/closet/secure_closet/wy/goon/Initialize()
 	. = ..()
 	new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate(src)
@@ -87,6 +91,10 @@
 	new /obj/item/clothing/shoes/marine/corporate(src)
 	new /obj/item/clothing/accessory/patch/seegson(src)
 	new /obj/item/weapon/classic_baton/alt(src)
+
+/obj/structure/closet/secure_closet/seegson/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/structure/closet/secure_closet/marshal/Initialize()
 	. = ..()

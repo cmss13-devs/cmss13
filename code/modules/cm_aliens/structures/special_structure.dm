@@ -25,7 +25,17 @@
 /obj/effect/alien/resin/special/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user) || isobserver(user))
-		. += ("Remaining durability of [src] is [health]/[maxhealth].")
+		var/health_portion = health/maxhealth
+		if(health_portion < 0.25)
+			. += ("[src] is about to fall apart!")
+			return
+		if(health_portion < 0.5)
+			. += ("[src] looks severely damaged!")
+			return
+		if(health_portion < 0.75)
+			. += ("[src] is slightly damaged.")
+			return
+		. += ("[src] is healthy.")
 
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()

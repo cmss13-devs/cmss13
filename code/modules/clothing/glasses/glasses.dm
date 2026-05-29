@@ -21,7 +21,7 @@
 	flags_inventory = COVEREYES
 	flags_equip_slot = SLOT_EYES
 	flags_armor_protection = BODY_FLAG_EYES
-	var/deactive_state
+	var/deactivated_state
 	var/has_tint = FALSE //whether it blocks vision like a welding helmet
 	var/fullscreen_vision
 	var/req_skill
@@ -40,10 +40,10 @@
 		M.update_inv_glasses()
 
 /obj/item/clothing/glasses/update_icon()
-	if(!deactive_state || active)
+	if(!deactivated_state || active)
 		icon_state = initial(icon_state)
 	else
-		icon_state = deactive_state
+		icon_state = deactivated_state
 	..()
 
 /obj/item/clothing/glasses/proc/can_use_active_effect(mob/living/carbon/human/user)
@@ -167,7 +167,7 @@
 	)
 	icon_state = "purple"
 	item_state = "glasses"
-	deactive_state = "purple_off"
+	deactivated_state = "purple_off"
 	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
@@ -184,6 +184,11 @@
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
+
+/obj/item/clothing/glasses/science/blue
+	icon_state = "blue"
+	item_state = "glasses"
+	deactivated_state = "blue_off"
 
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
@@ -377,7 +382,7 @@
 	)
 	icon_state = "m56_goggles"
 	gender = NEUTER
-	deactive_state = "m56_goggles_0"
+	deactivated_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
@@ -811,7 +816,7 @@
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "welding-g"
 	item_state = "welding-g"
-	deactive_state = "welding-gup"
+	deactivated_state = "welding-gup"
 	item_state_slots = list(WEAR_AS_GARB = "welding-h")
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -1031,6 +1036,19 @@
 	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator_silver"
 	item_state = "aviator_silver"
+
+/obj/item/clothing/glasses/sunglasses/big/chrome
+	name = "\improper BiMex Chromeline Shades"
+	desc = "Large stylish chrome-framed shades favored by corporate personnel for their sharp appearance and practical eye protection."
+	desc_lore = "Part of BiMex's executive-oriented 'ChromeLine' series, these oversized shades combine stylish chromatic flavor with durable industrial-grade lenses. Capable of shrugging off small shrapnel impacts"
+	icon_state = "chrome_shades"
+	item_state = "chrome_shades"
+	eye_protection = EYE_PROTECTION_FLASH
+	clothing_traits = list(TRAIT_BIMEX)
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
+
+// HUD's
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"

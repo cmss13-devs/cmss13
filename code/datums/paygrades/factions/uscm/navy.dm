@@ -30,7 +30,7 @@
 /datum/paygrade/navy/e4
 	paygrade = PAY_SHORT_NE4
 	name = "Petty Officer 3rd Class"
-	prefix = "PO1."
+	prefix = "PO3."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e4
 	ranking = 3
 

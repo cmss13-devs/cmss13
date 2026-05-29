@@ -118,3 +118,31 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
+// Lasalle Bionational biosuit
+
+/obj/item/clothing/suit/bio_suit/lasalle
+	name = "LBN-4 containment suit"
+	desc = "A sealed hazard-response suit manufactured for Lasalle Bionational personnel operating in hazardous environments. It has lightweight armor plating."
+	icon_state = "bio_lasalle"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
+
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/bio_suit/lasalle/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
+/obj/item/clothing/head/bio_hood/lasalle
+	name = "LBN-4 containment helmet"
+	desc = "A sealed hazard-response helmet manufactured for Lasalle Bionational personnel operating in hazardous environments. It has lightweight armor plating."
+	icon_state = "bio_lasalle"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/head/bio_hood/lasalle/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)

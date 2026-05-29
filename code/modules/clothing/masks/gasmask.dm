@@ -161,3 +161,22 @@
 	vision_impair = VISION_IMPAIR_NONE
 	eye_protection = EYE_PROTECTION_FLAVOR
 	flags_inv_hide = HIDEEARS|HIDEFACE
+
+//= Lasalle Bionational =\\
+
+/obj/item/clothing/mask/gas/pmc/lasalle
+	name = "LBN-4 gasmask"
+	desc = "A lightly reinforced gasmask developed by Lasalle Bionational for hazardous security and industrial operations."
+	icon_state = "lasalle_gas"
+	item_state = "lasalle_gas"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
+
+/obj/item/clothing/mask/gas/pmc/lasalle/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)

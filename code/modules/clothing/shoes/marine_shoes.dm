@@ -344,3 +344,15 @@
 	. = ..()
 	RemoveElement(/datum/element/corp_label/armat)
 	AddElement(/datum/element/corp_label/seegson)
+
+/obj/item/clothing/shoes/marine/corporate/lasalle_security
+	name = "brown combat boots"
+	icon_state = "lasalle_brown_boots"
+	item_state = "lasalle_brown_boots"
+	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
+
+/obj/item/clothing/shoes/silver_white
+	name = "sterile work shoes"
+	desc = "A pair of silver-white industrial work shoes designed for laboratory and cleanroom use."
+	icon_state = "silver_shoes"
+	item_state = "silver_shoes"

@@ -213,6 +213,8 @@
 	icon_state = "small_ruinbanner_2"
 
 /obj/structure/sign/flag/simple/ancient_torn_desat
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
 	icon_state = "old_ruinbanner_0"
 
 /obj/structure/sign/flag/simple/ancient_torn_desat/ancient_torn_desat_1
@@ -222,6 +224,8 @@
 	icon_state = "old_ruinbanner_2"
 
 /obj/structure/sign/flag/simple/ancient_torn_red
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
 	icon_state = "ruinbanner_0"
 
 /obj/structure/sign/flag/simple/ancient_torn_red/ancient_torn_red_1
@@ -702,6 +706,16 @@
 	name = "nine semiotic"
 	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
+
+/obj/structure/sign/safety/big_one
+	name = "one semiotic"
+	desc = "Semiotic Standard denoting the number one."
+	icon_state = "big1"
+
+/obj/structure/sign/safety/fire_station
+	name = "fire-station semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a fire-station."
+	icon_state = "firestation"
 
 /obj/structure/sign/safety/ten
 	name = "ten semiotic"

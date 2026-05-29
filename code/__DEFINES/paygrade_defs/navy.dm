@@ -17,7 +17,7 @@
 #define PAY_SHORT_NE5 "NE5"
 
 /// NE6, Petty Officer 1st Class
-#define PAY_SHORT_NE6 "N36"
+#define PAY_SHORT_NE6 "NE6"
 
 /// NE7, Chief Petty Officer
 #define PAY_SHORT_NE7 "NE7"

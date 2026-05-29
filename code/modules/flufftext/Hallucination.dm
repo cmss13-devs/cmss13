@@ -19,6 +19,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	var/handling_hal = FALSE
 	var/hal_crit = FALSE
 	COOLDOWN_DECLARE(give_item_cooldown)
+	COOLDOWN_DECLARE(penlight_assesment_cooldown)
 
 /mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal)

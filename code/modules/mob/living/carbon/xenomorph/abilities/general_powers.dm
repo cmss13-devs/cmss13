@@ -113,14 +113,14 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/set_lying_down()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay)
+	if(selected_ability?.ability_uses_acid_overlay)
 		overlays -= acid_overlay
 
 	return ..()
 
 /mob/living/carbon/xenomorph/get_up()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay && !(acid_overlay in overlays))
-		overlays += acid_overlay
+	if(selected_ability?.ability_uses_acid_overlay)
+		overlays |= acid_overlay
 
 	return ..()
 
@@ -159,6 +159,9 @@
 	X.release_haul(TRUE)
 
 	return ..()
+
+/datum/action/xeno_action/onclick/release_haul/can_use_action()
+	return TRUE //we should always be able to do this
 
 /datum/action/xeno_action/onclick/choose_resin/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner

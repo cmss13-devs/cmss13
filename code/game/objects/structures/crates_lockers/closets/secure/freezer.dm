@@ -20,7 +20,7 @@
 			icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/freezer/kitchen
-	name = "Kitchen Cabinet"
+	name = "\improper kitchen cabinet"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/Initialize()
@@ -39,7 +39,7 @@
 
 
 /obj/structure/closet/secure_closet/freezer/meat
-	name = "Meat Fridge"
+	name = "\improper meat fridge"
 
 
 /obj/structure/closet/secure_closet/freezer/meat/Initialize()
@@ -50,7 +50,7 @@
 
 
 /obj/structure/closet/secure_closet/freezer/fridge
-	name = "Refrigerator"
+	name = "\improper refrigerator"
 
 /obj/structure/closet/secure_closet/freezer/fridge/Initialize()
 	. = ..()
@@ -69,7 +69,7 @@
 	storage_capacity = 100
 
 /obj/structure/closet/secure_closet/freezer/fridge/groceries
-	name = "Groceries"
+	name = "\improper refrigerator"
 
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/Initialize()
 	. = ..()
@@ -109,7 +109,7 @@
 	storage_capacity = 100
 
 /obj/structure/closet/secure_closet/freezer/money
-	name = "Freezer"
+	name = "\improper freezer"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 
@@ -134,7 +134,7 @@
 		new /obj/item/reagent_container/food/condiment/chocolate_syrup(src)
 
 /obj/structure/closet/secure_closet/freezer/industry
-	name = "Industry Freezer"
+	name = "\improper industrial freezer"
 	desc = "A powerful fine-tuned freezer used to polymerize chemicals in the cold. This one is set to the perfect temperature for paraformaldehyde polymerization. The freezer must be kept closed for polymerization."
 	req_access = list(ACCESS_MARINE_OT)
 	var/obj/structure/machinery/paraform_cooler/CU
@@ -176,7 +176,7 @@
 		playsound(freezer.loc, 'sound/machines/ding.ogg', 150)
 
 /obj/structure/closet/secure_closet/freezer/alt
-	name = "Refrigerator"
+	name = "\improper refrigerator"
 	icon_state = "altfridge1"
 	icon_closed = "altfridge"
 	icon_locked = "altfridge1"
@@ -197,7 +197,7 @@
 			icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/freezer/alt/fridge/full
-	name = "Refrigerator"
+	name = "\improper refrigerator"
 
 /obj/structure/closet/secure_closet/freezer/alt/fridge/full/Initialize()
 	. = ..()
@@ -209,7 +209,7 @@
 		new /obj/item/reagent_container/food/condiment/chocolate_syrup(src)
 
 /obj/structure/closet/secure_closet/freezer/alt_1
-	name = "Refrigerator"
+	name = "\improper refrigerator"
 	icon_state = "alt1fridge1"
 	icon_closed = "alt1fridge"
 	icon_locked = "alt1fridge1"
@@ -230,7 +230,7 @@
 			icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/freezer/alt_1/fridge/full
-	name = "Refrigerator"
+	name = "\improper refrigerator"
 
 /obj/structure/closet/secure_closet/freezer/alt_1/fridge/full/Initialize()
 	. = ..()

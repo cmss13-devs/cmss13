@@ -2,6 +2,7 @@
 	group = SPECIES_SYNTHETIC
 	name = SYNTH_GEN_THREE
 	name_plural = "Synthetics"
+	death_message = "violently gargles fluid and seizes up, their eyes unnervingly still..."
 	special_body_types = TRUE
 
 	unarmed_type = /datum/unarmed_attack/punch/synthetic
@@ -79,6 +80,7 @@
 
 /datum/species/synthetic/gen_two/gen_one
 	name = SYNTH_GEN_ONE
+	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
@@ -92,6 +94,7 @@
 /datum/species/synthetic/infiltrator
 	name = SYNTH_INFILTRATOR
 	name_plural = "Infiltrator Synthetics"
+	death_message = "seizes up and falls limp, their eyes dead and lifeless..." // regular death message here for infiltration purposes
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH, TRAIT_IRON_TEETH)
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/human

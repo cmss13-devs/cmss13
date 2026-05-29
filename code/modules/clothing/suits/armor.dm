@@ -348,3 +348,8 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/SEEGSON.dmi'
 	)
 	uniform_restricted = null
+
+/obj/item/clothing/suit/armor/vest/seegson_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/seegson)

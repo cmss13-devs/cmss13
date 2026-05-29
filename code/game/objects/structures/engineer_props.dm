@@ -41,3 +41,15 @@
 
 /obj/structure/prop/engineer_ruins/pillars/fallen/fallen_middle
 	icon_state = "pillar_fallen_middle"
+
+/obj/structure/prop/engineer_ruins/bench
+	icon = 'icons/obj/structures/props/engineers/engineerbench.dmi'
+	icon_state = "stonebench"
+	layer = BELOW_MOB_LAYER
+	density = FALSE
+
+/obj/structure/prop/engineer_ruins/bench/bench_end
+	icon_state = "stonebench1"
+
+/obj/structure/prop/engineer_ruins/bench/bench_middle
+	icon_state = "stonebench2"

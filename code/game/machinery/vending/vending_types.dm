@@ -90,10 +90,48 @@
 		/obj/item/reagent_container/food/snacks/packaged_hdogs = 40,
 	)
 
+/obj/structure/machinery/vending/snack/alt
+	icon_state = "snack_alt"
+
+/obj/structure/machinery/vending/snack_generic
+	name = "\improper Snack Machine"
+	desc = "A vending machine full of unhealthy snacks."
+	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	icon_state = "snackvend"
+	products = list(
+		/obj/item/reagent_container/food/snacks/chips = 12,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 12,
+		/obj/item/reagent_container/food/snacks/no_raisin = 12,
+		/obj/item/reagent_container/food/snacks/sosjerky =12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 12,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
+		/obj/item/reagent_container/food/snacks/eat_bar = 12,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 6,
+	)
+
+	prices = list(
+		/obj/item/reagent_container/food/snacks/chips = 3,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 4,
+		/obj/item/reagent_container/food/snacks/no_raisin = 5,
+		/obj/item/reagent_container/food/snacks/sosjerky = 6,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 3,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 5,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 3,
+		/obj/item/reagent_container/food/snacks/eat_bar = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
 /obj/structure/machinery/vending/snack/generic
 	name = "\improper Hot Foods Machine"
 	desc = "A vending machine full of ready to cook meals, mhmmmm taste the nutritional goodness!"
-	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Weyland-Yutani brand packaged hamburger.;Eat a Weyland-Yutani brand packaged hot dog.;Eat a Weyland-Yutani brand packaged burrito.;"
+	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a delicious packaged hamburger.;Eat a scrumptious packaged hot dog.;Eat a delightful packaged burrito.;"
 	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
 	icon_state = "snack_seeg"
 	products = list(
@@ -179,6 +217,9 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/souta)
 
+/obj/structure/machinery/vending/cola/alt
+	icon_state = "Cola_Machine_alt"
+
 /obj/structure/machinery/vending/cola/generic
 	name = "\improper Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
@@ -230,11 +271,6 @@
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_type = VENDOR_PRODUCT_TYPE_SOUTO
-
-/obj/structure/machinery/vending/cola/generic/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/souta)
-
 
 /obj/structure/machinery/vending/cola/research
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping."
@@ -515,8 +551,8 @@
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
-	product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)

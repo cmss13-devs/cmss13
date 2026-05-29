@@ -522,6 +522,13 @@
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
 
+/obj/structure/surface/table/woodentable/fancy/black
+	name = "fancy wooden table"
+	desc = "A nicely crafted dark stained mahogany wood surface resting on four legs. Useful to put stuff on. It's too heavy to flip over."
+	icon_state = "fbwoodtable"
+	parts = /obj/item/frame/table/wood/fancy
+	table_prefix = "fbwood"
+
 /obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
 /*

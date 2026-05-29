@@ -2229,3 +2229,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 	icon_state = "seegson_security_helmet"
 	item_state = "seegson_security_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/seegson/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/seegson)

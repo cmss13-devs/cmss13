@@ -1091,6 +1091,26 @@
 	item_state = "sec_lead_kutjevo_uniform"
 	worn_state = "sec_lead_kutjevo_uniform"
 
+//=========================//LASALLE\\================================\\
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/lasalle_security
+	name = "\improper Lasalle Bionational corporate security uniform"
+	desc = "An armored uniform worn by Lasalle Bionational corporate security members."
+	icon_state = "lasalle_security_uniform"
+	worn_state = "lasalle_security_uniform"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
+	)
+
+	suit_restricted = null
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/lasalle_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
 //=========================//UPP\\================================\\
 
 /obj/item/clothing/under/marine/veteran/bear
@@ -2042,3 +2062,41 @@
 	)
 	icon_state = "seegson_security_uniform"
 	worn_state = "seegson_security_uniform"
+
+/obj/item/clothing/under/marine/seegson_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/seegson)
+
+// Lasalle Bionational
+
+/obj/item/clothing/under/rank/scientist/lasalle
+	name = "research duty uniform"
+	desc = "A sterile sleeveless research uniform, commonly issued to research and scientific personnel operating in corporate laboratory facilities."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/LASALLE.dmi',
+	)
+	icon_state = "science_outfit"
+	worn_state = "science_outfit"
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/rank/scientist/lasalle/blue
+	icon_state = "science_outfit_blue"
+	worn_state = "science_outfit_blue"
+
+/obj/item/clothing/under/rank/scientist/lasalle/purple
+	icon_state = "science_outfit_purple"
+	worn_state = "science_outfit_purple"
+
+/obj/item/clothing/under/rank/scientist/lasalle/green
+	icon_state = "science_outfit_green"
+	worn_state = "science_outfit_green"

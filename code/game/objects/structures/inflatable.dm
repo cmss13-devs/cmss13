@@ -43,6 +43,9 @@
 
 	health = 50
 	var/deflated = FALSE
+	var/icon_suffix = ""
+	var/obj/item/inflatable/origin = /obj/item/inflatable
+	var/obj/structure/inflatable/poped_type = /obj/structure/inflatable/popped
 
 /obj/structure/inflatable/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
@@ -113,21 +116,21 @@
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
-		flick("wall_popping", src)
+		flick("wall_popping[icon_suffix]", src)
 		sleep(10)
 		deconstruct(FALSE)
 	else
 		visible_message("[src] slowly deflates.")
-		flick("wall_deflating", src)
+		flick("wall_deflating[icon_suffix]", src)
 		spawn(50)
 			deconstruct(TRUE)
 
 
 /obj/structure/inflatable/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		new /obj/structure/inflatable/popped(loc)
+		new poped_type(loc)
 	else
-		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
+		var/obj/item/inflatable/R = new origin(loc)
 		src.transfer_fingerprints_to(R)
 	return ..()
 
@@ -176,6 +179,7 @@
 
 	var/open = FALSE
 	var/isSwitchingStates = FALSE
+	poped_type = /obj/structure/inflatable/popped/door
 
 /obj/structure/inflatable/door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
@@ -208,7 +212,7 @@
 /obj/structure/inflatable/door/proc/open()
 	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
-	flick("door_opening",src)
+	flick("door_opening[icon_suffix]",src)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/inflatable/door/proc/finish_open()
@@ -223,7 +227,7 @@
 /obj/structure/inflatable/door/proc/close()
 	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
-	flick("door_closing",src)
+	flick("door_closing[icon_suffix]",src)
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/inflatable/door/proc/finish_close()
@@ -237,27 +241,27 @@
 
 /obj/structure/inflatable/door/update_icon()
 	if(open)
-		icon_state = "door_open"
+		icon_state = "door_open[icon_suffix]"
 	else
-		icon_state = "door_closed"
+		icon_state = "door_closed[icon_suffix]"
 
 /obj/structure/inflatable/door/deflate(violent=0)
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
-		flick("door_popping",src)
+		flick("door_popping[icon_suffix]",src)
 		sleep(10)
-		new /obj/structure/inflatable/popped/door(loc)
+		new poped_type(loc)
 		//var/obj/item/inflatable/door/torn/R = new /obj/item/inflatable/door/torn(loc)
 		//src.transfer_fingerprints_to(R)
 		qdel(src)
 	else
 		//to_chat(user, SPAN_NOTICE("You slowly deflate the inflatable wall."))
 		visible_message("[src] slowly deflates.")
-		flick("door_deflating", src)
+		flick("door_deflating[icon_suffix]", src)
 		spawn(50)
-			var/obj/item/inflatable/door/R = new /obj/item/inflatable/door(loc)
+			var/obj/item/inflatable/R = new origin(loc)
 			src.transfer_fingerprints_to(R)
 			qdel(src)
 
@@ -290,6 +294,9 @@
 
 /obj/structure/inflatable/black
 	icon_state = "wall_black"
+	icon_suffix = "_black"
+	origin = /obj/item/inflatable/black
+	poped_type = /obj/structure/inflatable/popped/black
 
 /obj/item/inflatable/black
 	icon_state = "folded_wall_black"
@@ -297,6 +304,9 @@
 
 /obj/structure/inflatable/orange
 	icon_state = "wall_orange"
+	icon_suffix = "_orange"
+	origin = /obj/item/inflatable/orange
+	poped_type = /obj/structure/inflatable/popped/orange
 
 /obj/item/inflatable/orange
 	icon_state = "folded_wall_orange"
@@ -306,6 +316,9 @@
 
 /obj/structure/inflatable/door/black
 	icon_state = "door_closed_black"
+	icon_suffix = "_black"
+	origin = /obj/item/inflatable/door/black
+	poped_type = /obj/structure/inflatable/popped/door/black
 
 /obj/item/inflatable/door/black
 	icon_state = "folded_door_black"
@@ -313,6 +326,9 @@
 
 /obj/structure/inflatable/door/orange
 	icon_state = "door_closed_orange"
+	icon_suffix = "_orange"
+	origin = /obj/item/inflatable/door/orange
+	poped_type = /obj/structure/inflatable/popped/door/orange
 
 /obj/item/inflatable/door/orange
 	icon_state = "folded_door_orange"
@@ -322,12 +338,16 @@
 
 /obj/structure/inflatable/popped/door/black
 	icon_state = "door_popped_black"
+	icon_suffix = "_black"
 
 /obj/structure/inflatable/popped/door/orange
 	icon_state = "door_popped_orange"
+	icon_suffix = "_orange"
 
 /obj/structure/inflatable/popped/black
 	icon_state = "wall_popped_black"
+	icon_suffix = "_black"
 
 /obj/structure/inflatable/popped/orange
 	icon_state = "wall_popped_orange"
+	icon_suffix = "_orange"

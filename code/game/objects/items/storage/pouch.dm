@@ -184,6 +184,18 @@
 	new /obj/item/attachable/bayonet/wy(src)
 	new /obj/item/stack/medical/splint(src)
 
+/obj/item/storage/pouch/survival/full/lasalle
+	icon_state = "soctools"
+
+/obj/item/storage/pouch/survival/full/lasalle/fill_preset_inventory()
+	new /obj/item/device/flashlight/lantern/alt(src)
+	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/storage/pill_bottle/packet/kelotane(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
+	new /obj/item/stack/medical/splint(src)
+
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."

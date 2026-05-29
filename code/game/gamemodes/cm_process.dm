@@ -56,11 +56,24 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(length(predators))
-		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+	var/dat = ""
+	if(length(yautja_hunters))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Hunting Party was:")
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
+	if(length(yautja_youngbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Young-Bloods were:")
+		for(var/entry in yautja_youngbloods)
+			dat += "<br>[entry] was [yautja_youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_youngbloods[entry]["Status"]])")]"
+	if(length(yautja_stranded))
+		dat += SPAN_ROUNDBODY("<br><br>The Stranded Yautja were:")
+		for(var/entry in yautja_stranded)
+			dat += "<br>[entry] was [yautja_stranded[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_stranded[entry]["Status"]])")]"
+	if(length(yautja_badbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Bad-Bloods were:")
+		for(var/entry in yautja_badbloods)
+			dat += "<br>[entry] was [yautja_badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_badbloods[entry]["Status"]])")]"
+	if(dat)
 		to_world("[dat]")
 
 

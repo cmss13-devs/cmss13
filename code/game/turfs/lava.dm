@@ -38,6 +38,19 @@
 			C.next_move_slowdown = new_slowdown
 	..()
 
+/turf/open/lava/lava_no_burn
+	name = "lava"
+	icon_state = "full"
+	baseturfs = /turf/open/lava/hot_lava
+	light_system = STATIC_LIGHT
+	light_range = 4
+	light_power = 0.75
+	light_color = LIGHT_COLOR_LAVA
+	can_bloody = FALSE
+	supports_surgery = FALSE
+	is_weedable = NOT_WEEDABLE
+	allow_construction = FALSE
+
 // Catwalks
 
 /turf/open/lava/catwalk
@@ -455,6 +468,7 @@ engineer_floor_deco
 /turf/open/lava/metal
 	icon_state = "grille"
 	icon = 'icons/turf/floors/lava/lava_turf.dmi'
+	baseturfs = /turf/open/lava/metal/plating
 
 /turf/open/lava/metal/grille
 	icon_state = "grille"
@@ -480,13 +494,32 @@ engineer_floor_deco
 /turf/open/lava/metal/plating_alt
 	icon_state = "vent1"
 
-/turf/open/lava/metal/plating_rune
-	icon_state = "rune"
+// Plating & Damage
+
+/turf/open/lava/metal/plating
+	icon_state = "plating"
+
+/turf/open/lava/metal/plating
+	icon_state = "plating"
+
+/turf/open/lava/metal/plating/platingdmg1
+	icon_state = "platingdmg1"
+
+/turf/open/lava/metal/plating/platingdmg2
+	icon_state = "platingdmg2"
+
+/turf/open/lava/metal/plating/platingdmg3
+	icon_state = "platingdmg3"
+
+/turf/open/lava/metal/plating/panelscorched
+	icon_state = "panelscorched"
+
+///
 
 /turf/open/lava/metal/plating_catwalk
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "platingalt_catwalk"
-	baseturfs = /turf/open/floor/plating
+	baseturfs = /turf/open/floor/strata
 
 /turf/open/lava/metal/warning_grate
 	icon_state = "warning_grate"
@@ -664,13 +697,55 @@ engineer_floor_deco
 	icon_state = "engineer_stone"
 	walltype = WALL_ENGINEER_RUIN
 	blend_objects = list(/obj/structure/prop/engineer_ruins/collapsed_wall)
+	baseturfs = /turf/open/lava/engineer_ruins/plating
 
 /turf/closed/wall/engineer_ruins/hull
 	icon_state = "hull"
 	walltype = WALL_ENGINEER_RUIN
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/engineer_ruins/reinforced
 	icon_state = "reinforced"
+	walltype = WALL_REINFORCED
+
+/turf/closed/wall/engineer_ruins/smooth_1
+	icon = 'icons/turf/walls/engineer/engineerruin_smooth.dmi'
+	icon_state = "engineer_stone"
+
+/turf/closed/wall/engineer_ruins/smooth_1/hull
+	icon_state = "hull"
+	walltype = WALL_ENGINEER_RUIN
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/engineer_ruins/smooth_1/reinforced
+	icon_state = "reinforced"
+	walltype = WALL_REINFORCED
+
+/turf/closed/wall/engineer_ruins/smooth_2
+	icon = 'icons/turf/walls/engineer/engineerruin_smooth_1.dmi'
+	icon_state = "engineer_stone"
+
+/turf/closed/wall/engineer_ruins/smooth_2/hull
+	icon_state = "hull"
+	walltype = WALL_ENGINEER_RUIN
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/engineer_ruins/smooth_2/reinforced
+	icon_state = "reinforced"
+	walltype = WALL_REINFORCED
+
+/turf/closed/wall/engineer_ruins/smooth_3
+	icon = 'icons/turf/walls/engineer/engineerruin_smooth_2.dmi'
+	icon_state = "engineer_stone"
+
+/turf/closed/wall/engineer_ruins/smooth_3/hull
+	icon_state = "hull"
+	walltype = WALL_ENGINEER_RUIN
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/engineer_ruins/smooth_3/reinforced
+	icon_state = "reinforced"
+	walltype = WALL_REINFORCED
 
 // Engineer Ruins Floors
 
@@ -766,7 +841,7 @@ engineer_floor_deco
 	name = "colony wall"
 	icon = 'icons/turf/walls/lava/lava_walls.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
+	desc = "Tough looking walls that have been blasted by volcanic storms since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/lava/solaris_dark/reinforced
@@ -900,6 +975,41 @@ engineer_floor_deco
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/smooth_1
+	icon_state = "engineer_collapsed_wall_smooth_1"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/smooth_2
+	icon_state = "engineer_collapsed_wall_smooth_2"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/smooth_3
+	icon_state = "engineer_collapsed_wall_smooth_3"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/smooth_4
+	icon_state = "engineer_collapsed_wall_smooth_4"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall
+	name = "carved ancient stone wall"
+	desc = "Ancient carved stone walls, it's marked with strange patterns, like it was cut by some sort of advanced technology, rather then primitive tools. Circular patterns are carved into it's surface, it's meaning lost to time..."
+	icon_state = "engineer_stone_deco_1"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_1
+	icon_state = "engineer_stone_deco_2"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_2
+	icon_state = "engineer_stone_deco_3"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_3
+	icon_state = "engineer_stone_deco_4"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_4
+	icon_state = "engineer_stone_deco_5"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_5
+	icon_state = "engineer_stone_deco_6"
+
+/obj/structure/prop/engineer_ruins/collapsed_wall/deco_wall/deco_wall_6
+	icon_state = "engineer_stone_deco_7"
 
 // Working Joe corpse stuff
 

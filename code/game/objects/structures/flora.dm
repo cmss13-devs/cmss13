@@ -1006,10 +1006,10 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/alien/chilli_bush/chilli_bush_4
 	icon_state = "chilli_bush_4"
 
-/obj/structure/flora/alien/chilli_bush/chilli_bush_5
+/obj/structure/flora/alien/chilli_bush_no_light
 	icon_state = "chilli_bush_5"
 
-/obj/structure/flora/alien/chilli_bush/chilli_bush_6
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1
 	icon_state = "chilli_bush_6"
 
 /obj/structure/flora/alien/leafy_bush/leafy_bush_1

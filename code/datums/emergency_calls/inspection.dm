@@ -151,10 +151,21 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
 	ert_message = "A corporate lawyer beacon has been activated!"
+	time_required_for_job = 15 HOURS
 
 /datum/emergency_call/inspection_wy/lawyer/New()
 	..()
 	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate who the Corporate Liaison reported for breaking their contract and any review other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Corporate."
+
+/datum/emergency_call/inspection_wy/lawyer/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/candidates_clean = list()
+	for(var/datum/mind/single_candidate in candidates_list)
+		if(check_timelock(single_candidate.current?.client, list(JOB_POLICE, JOB_CORPORATE_LIAISON), time_required_for_job))
+			candidates_clean.Add(single_candidate)
+			continue
+		if(single_candidate.current)
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (15 Hours) as military police/corporate liaison!"))
+	return candidates_clean
 
 /datum/emergency_call/inspection_wy/lawyer/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -260,15 +271,15 @@
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 	else if(M == icc_liaison)
 		to_chat(M, SPAN_BOLD("You are an Interstellar Commerce Liaison, originally from [pick(70;"The United Americas", 25;"Sol", 5;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You are [pick(30; "skeptical", 40;"ambicable", 30;"supportive")] of Weyland-Yutani."))
+		to_chat(M, SPAN_BOLD("You are [pick(30; "skeptical", 40;"amicable", 30;"supportive")] of Weyland-Yutani."))
 		to_chat(M, SPAN_BOLD("Your headset is equipped with several frequencies, including a gifted key from The ICC's parent company, Weyland-Yutani, to try to incentivize your support. Use it for communication."))
 		to_chat(M, SPAN_BOLD("As the ICC Agent attached to the CMB Office at Anchorpoint Station, your job is to observe and ensure fair trade practices. Inspect and document cargo shipments for suspected illicit activity as needed. You should coordinate with the Marshals, and command(preferably for a warrant) in order to make arrests if necessary."))
 		to_chat(M, SPAN_BOLD("Serving alongside such reputable men has made you a more virtuous person, especially compared to the Corporate Liaisons of other heavy-weight organizations."))
 		to_chat(M, SPAN_BOLD("Work with the Colonial Marshals in their investigations and report to command if you suspect smuggling or illicit trade is happening."))
 	else if(M == cmb_observer)
 		to_chat(M, SPAN_BOLD("You are an Interstellar Human Rights Observer, originally from [pick(50;"The United Americas", 10;"Europe", 10;"Luna", 20;"Sol", 10;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You are [pick(60; "skeptical", 40;"ambicable", 10;"supportive")] of Weyland-Yutani and their practices."))
-		to_chat(M, SPAN_BOLD("You are [pick(40; "skeptical", 30;"ambicable", 30;"supportive")] with the USCM's actions on the frontier."))
+		to_chat(M, SPAN_BOLD("You are [pick(60; "skeptical", 40;"amicable", 10;"supportive")] of Weyland-Yutani and their practices."))
+		to_chat(M, SPAN_BOLD("You are [pick(40; "skeptical", 30;"amicable", 30;"supportive")] with the USCM's actions on the frontier."))
 		to_chat(M, SPAN_BOLD("Through a lot of hard work, your organization managed to convince the Colonial Marshals to take you to the frontier for an article about the quality of life there."))
 		to_chat(M, SPAN_BOLD("Observe the Feds in their adventures and keep an eye out for any inhumane acts from others. The Neroid Sector is full of atrocities on every side."))
 		to_chat(M, SPAN_BOLD("Do not instigate or start any confrontations. You are an observer, and you do not wage wars. Only intervene in medical emergencies."))

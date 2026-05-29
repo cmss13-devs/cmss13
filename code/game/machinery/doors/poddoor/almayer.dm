@@ -16,6 +16,7 @@
 	relativewall_neighbours()
 
 /obj/structure/machinery/door/poddoor/almayer/open
+	name = "\improper Lockdown"
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/blended
@@ -61,6 +62,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	heavy = TRUE
+	explo_proof = TRUE
 	id = ""
 
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
@@ -69,6 +71,7 @@
 	. = ..()
 
 /obj/structure/machinery/door/poddoor/almayer/closed
+	name = "\improper Lockdown"
 	density = TRUE
 	opacity = TRUE
 
@@ -76,3 +79,17 @@
 	density = TRUE
 	opacity = TRUE
 	vehicle_resistant = TRUE
+
+/obj/structure/machinery/door/poddoor/almayer/dark/closed
+	name = "\improper Lockdown"
+	icon_state = "darkdoor1"
+	base_icon_state = "darkdoor"
+	density = TRUE
+	opacity = TRUE
+
+/obj/structure/machinery/door/poddoor/almayer/dark/open
+	name = "\improper Lockdown"
+	icon_state = "darkdoor1"
+	base_icon_state = "darkdoor"
+	density = FALSE
+	opacity = FALSE

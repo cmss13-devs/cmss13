@@ -258,7 +258,7 @@
 		round_finished = MODE_HUNTER_GAMES_LAST_STANDING // One living human remains, they win.
 		return
 
-	if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
+	if(yautja_count <= 0 && length(yautja_hunters) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
 		round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
 
@@ -288,8 +288,8 @@
 
 		human_count++ //Add them to the amount of people who're alive.
 
-	for(var/yautja in predators)
-		if(predators[yautja]["Status"] == "Alive")
+	for(var/yautja in yautja_hunters)
+		if(yautja_hunters[yautja]["Status"] == "Alive")
 			yautja_count++
 
 	return list(human_count, yautja_count, xeno_count)
@@ -384,11 +384,11 @@
 
 
 /datum/game_mode/hunter_games/declare_completion_announce_predators()
-	if(length(predators))
+	if(length(yautja_hunters))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
 		to_world("[dat]")
 
 

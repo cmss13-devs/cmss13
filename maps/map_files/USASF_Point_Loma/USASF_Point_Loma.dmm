@@ -2921,7 +2921,7 @@
 	id = "ATC_Lobby_Lockdown";
 	name = "ATC Lobby Lockdown"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/icefloor,
 /area/point_loma/airbase/interior/atc)
 "ajg" = (
 /obj/structure/machinery/wo_recycler,
@@ -3578,7 +3578,7 @@
 /obj/structure/stairs/perspective{
 	color = "#6b675e"
 	},
-/turf/open/space/basic,
+/turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
 "alh" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -14013,9 +14013,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
-"aOH" = (
-/turf/open/space/basic,
-/area/point_loma/airbase/exterior/north)
 "aOI" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -25382,14 +25379,14 @@
 /area/point_loma/airbase/mining_colony/interior/corporate)
 "buS" = (
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/space/basic,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/airbase/exterior/crash_site/upper)
 "buT" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
 "buU" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/space/basic,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/predator)
 "buV" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -26069,7 +26066,7 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass,
-/turf/open/space/basic,
+/turf/open/floor/corsat,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bwI" = (
 /obj/structure/sign/poster/safety,
@@ -26087,7 +26084,7 @@
 /turf/open/floor/shiva,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bwK" = (
-/turf/open/space/basic,
+/turf/open/floor/corsat,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bwL" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
@@ -49510,7 +49507,7 @@
 /area/point_loma/airbase/mining_colony/exterior/north)
 "dMa" = (
 /obj/structure/girder/reinforced,
-/turf/open/space/basic,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "dNe" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -49906,7 +49903,7 @@
 	basestate = "pred_window";
 	icon_state = "pred_window0"
 	},
-/turf/open/space/basic,
+/turf/open/predship/mainfloor/plain,
 /area/point_loma/oob/predator)
 "fIm" = (
 /obj/structure/prop/structure_lattice{
@@ -50702,7 +50699,7 @@
 "jZd" = (
 /obj/structure/girder/reinforced,
 /obj/structure/girder/reinforced,
-/turf/open/space/basic,
+/turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "jZr" = (
 /turf/closed/wall/huntership/outerhull,
@@ -159728,7 +159725,7 @@ aOC
 aOC
 aOC
 ddT
-aOH
+ddT
 ddI
 aOC
 aOC

@@ -36,11 +36,6 @@
 "aah" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob/beach)
-"aai" = (
-/obj/item/stack/rods,
-/obj/structure/fence/dark,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/east)
 "aaj" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/carpetblack,
@@ -6571,6 +6566,11 @@
 "atE" = (
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/south)
+"atF" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/crash_site)
 "atG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N-corner"
@@ -7826,6 +7826,11 @@
 	},
 /turf/open/floor/corsat/greenwhite/northwest,
 /area/point_loma/research_facility/medical)
+"awR" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/crash_site)
 "awS" = (
 /turf/open/floor/corsat/yellow/east,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
@@ -7952,6 +7957,13 @@
 "axl" = (
 /turf/open/shuttle/escapepod/floor2/west,
 /area/point_loma/research_facility/hallway/east)
+"axm" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/crash_site)
 "axn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -7976,6 +7988,11 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
+"axq" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg2,
+/area/point_loma/research_facility/crash_site)
 "axr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/waffles{
@@ -7990,6 +8007,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"axs" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "axt" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -8067,6 +8088,9 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/workshop)
+"axA" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "axB" = (
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
 /obj/structure/shuttle/part/dropship2/transparent/left_outer_bottom_wing,
@@ -8109,6 +8133,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"axH" = (
+/obj/effect/decal/cleanable/dirt/sand_2,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "axI" = (
 /obj/structure/machinery/message_server{
 	pixel_x = -18
@@ -8132,6 +8160,11 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"axL" = (
+/obj/effect/decal/cleanable/dirt/sand_2,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "axM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -8260,6 +8293,11 @@
 /obj/structure/machinery/big_computers/computerbrown/computer3,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"axX" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "axY" = (
 /turf/open/floor/shiva/blue/southwest,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
@@ -8315,6 +8353,10 @@
 	},
 /turf/open/shuttle/escapepod/floor3/east,
 /area/point_loma/research_facility/super_death_cannon/observation)
+"ayf" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "ayg" = (
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/new_varadero,
@@ -8466,17 +8508,13 @@
 	},
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
-"ayH" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/predship/plating,
-/area/point_loma/airbase/exterior/crash_site)
 "ayI" = (
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
 "ayJ" = (
 /obj/structure/girder,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "ayK" = (
 /turf/open/floor/corsat/yellowcorner/north,
@@ -8889,6 +8927,16 @@
 "azV" = (
 /turf/open/new_varadero/alt_concrete/warning/east,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
+"azW" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
+"azX" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "azY" = (
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
@@ -9096,6 +9144,11 @@
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkbrown2/northwest,
 /area/point_loma/airbase/interior/cargo)
+"aAD" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aAE" = (
 /obj/structure/closet/basketball,
 /obj/item/reagent_container/glass/rag{
@@ -9191,6 +9244,12 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/medical)
+"aAP" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aAQ" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/whitebluefull,
@@ -9345,6 +9404,11 @@
 /obj/item/device/defibrillator,
 /turf/open/floor/corsat/marked,
 /area/point_loma/research_facility/hallway/north)
+"aBp" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aBq" = (
 /obj/structure/curtain/leather/alt_1,
 /turf/open/predship/hunter_catwalk_new,
@@ -9380,6 +9444,10 @@
 	},
 /turf/open/floor/corsat/greencorner,
 /area/point_loma/research_facility/hallway/east)
+"aBw" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aBx" = (
 /obj/structure/platform/stone/soro_colorable_immune/loma/east,
 /obj/structure/platform/stone/soro_colorable_immune/loma,
@@ -9497,6 +9565,13 @@
 	},
 /turf/open/predship/hunter_catwalk_new,
 /area/point_loma/airbase/exterior/crash_site)
+"aBP" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aBQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
 /turf/open/floor/corsat/squares,
@@ -9510,6 +9585,14 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
+"aBS" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aBT" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
@@ -9601,6 +9684,14 @@
 /obj/structure/bed/hybrisa/prisonbed,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"aCh" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "aCi" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -17;
@@ -9782,6 +9873,11 @@
 "aCD" = (
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aCE" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
 "aCF" = (
 /obj/item/reagent_container/glass/rag{
 	pixel_y = -11;
@@ -10025,6 +10121,10 @@
 	},
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
+"aDn" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "aDo" = (
 /turf/open/floor/almayer/blackfull/west,
 /area/point_loma/research_facility/research/east)
@@ -10203,6 +10303,9 @@
 /obj/structure/platform_decoration/stone/soro/east,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/point_loma/research_facility/research/park)
+"aDS" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aDT" = (
 /obj/structure/machinery/light{
 	needs_power = 0
@@ -10212,6 +10315,14 @@
 "aDU" = (
 /turf/open/predship/mainfloor/direction_3/west,
 /area/point_loma/airbase/exterior/crash_site)
+"aDV" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
 "aDW" = (
 /obj/structure/machinery/computer/telecomms/server{
 	pixel_x = 6
@@ -11270,6 +11381,9 @@
 /obj/effect/decal/cleanable/blood/gibs/robot/limb,
 /turf/open/shuttle/lifeboat/plating_striped/north,
 /area/point_loma/research_facility/research/west)
+"aHg" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "aHh" = (
 /obj/structure/prop/invuln/pipe_water{
 	pixel_y = 15
@@ -11328,6 +11442,10 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
+"aHp" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/east)
 "aHq" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/floor3,
@@ -12308,6 +12426,10 @@
 "aKa" = (
 /turf/closed/wall/new_varadero/reinforced,
 /area/point_loma/airbase/interior/cargo/lower)
+"aKb" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "aKc" = (
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	dir = 2;
@@ -12857,6 +12979,11 @@
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
+"aLx" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "aLy" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -13825,7 +13952,8 @@
 "aNX" = (
 /obj/structure/girder,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/crash_site)
 "aNY" = (
 /obj/structure/largecrate/hunter_games_guns/mediocre,
@@ -13854,7 +13982,9 @@
 /area/point_loma/airbase/interior/fuel_storage)
 "aOc" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/crash_site)
 "aOd" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -13925,7 +14055,7 @@
 /area/point_loma/airbase/exterior/crash_site/upper)
 "aOp" = (
 /obj/structure/girder/reinforced,
-/turf/open/floor/plating/wood,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "aOq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
@@ -13994,6 +14124,11 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob)
+"aOF" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/interior/hangar)
 "aOG" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/ears/earmuffs{
@@ -14010,6 +14145,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/research/west)
+"aOH" = (
+/obj/item/stack/rods,
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/interior/hangar)
 "aOI" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -15563,6 +15702,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"aTf" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "aTg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15961,6 +16104,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"aUq" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "aUr" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
@@ -17272,7 +17420,7 @@
 /area/point_loma/research_facility/hallway/north)
 "aYw" = (
 /obj/structure/prop/vehicles/crawler,
-/turf/open/hybrisa/street/asphalt,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/south)
 "aYx" = (
 /obj/structure/machinery/light/double,
@@ -24774,10 +24922,17 @@
 	},
 /turf/open/floor/carpet,
 /area/point_loma/airbase/interior/admin/upper)
+"bsV" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/interior/hangar)
 "bsW" = (
 /obj/structure/flora/grass/colorable/point_loma/light/one,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"bsX" = (
+/obj/structure/girder,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "bsY" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/open/floor/hybrisa/wood/darkerwood,
@@ -25041,6 +25196,12 @@
 "btP" = (
 /turf/open/predship/mainfloor/edge/west,
 /area/point_loma/airbase/exterior/crash_site/upper)
+"btQ" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/interior/hangar)
 "btR" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/predship/tile/hunter_tile_5/east,
@@ -25381,6 +25542,11 @@
 "buT" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"buU" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/girder,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
 "buV" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -26404,6 +26570,17 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+"bxP" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/interior/hangar)
+"bxQ" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "bxR" = (
 /turf/closed/wall/huntership/dark,
 /area/point_loma/oob)
@@ -27319,6 +27496,20 @@
 /obj/structure/blocker/invisible_wall,
 /turf/solid_open_space,
 /area/point_loma/oob)
+"bAD" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/interior/hangar)
+"bAE" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/east)
+"bAF" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "bAG" = (
 /turf/closed/wall/huntership/dark/destructible,
 /area/point_loma/airbase/exterior/crash_site)
@@ -27329,6 +27520,15 @@
 	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
+"bAI" = (
+/obj/structure/platform,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bAJ" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/interior/hangar)
 "bAK" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/closed/wall/huntership/dark/destructible,
@@ -27439,11 +27639,11 @@
 "bBf" = (
 /obj/structure/girder,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bBg" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bBh" = (
 /turf/open/auto_turf/sand_white/layer1,
@@ -27550,13 +27750,135 @@
 "bBJ" = (
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/super_death_cannon/cannon)
+"bBK" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/east)
+"bBL" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBM" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"bBN" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/east)
+"bBO" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/south)
 "bBP" = (
 /obj/structure/prop/dam/crane/damaged,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
+"bBQ" = (
+/obj/item/stack/rods,
+/turf/open/hybrisa/street,
+/area/point_loma/airbase/exterior/south)
 "bBR" = (
 /turf/open/new_varadero/alt_concrete/filtration/east,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+"bBS" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBT" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/south)
+"bBU" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBV" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/south)
+"bBW" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBX" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBY" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bBZ" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCa" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCb" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCc" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCd" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/east)
+"bCe" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCf" = (
+/obj/structure/girder,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/crash_site)
+"bCg" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/west)
 "bCh" = (
 /obj/structure/prop/dam/truck/damaged,
 /turf/open/new_varadero/taupe_concrete,
@@ -27567,12 +27889,117 @@
 	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/point_loma/airbase/mining_colony/interior/security/barracks)
+"bCj" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/west)
+"bCk" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/north)
+"bCl" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bCm" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/crash_site)
+"bCn" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/north)
+"bCo" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bCp" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
 "bCq" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_10_1"
 	},
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/point_loma/airbase/exterior/west)
+"bCr" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/north)
+"bCs" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/north)
+"bCt" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/north)
+"bCu" = (
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bCv" = (
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/crash_site)
+"bCw" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
 "bCx" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -27586,6 +28013,9 @@
 	},
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/admin)
+"bCy" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bCz" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -27595,15 +28025,40 @@
 /obj/item/prop/alien/hugger,
 /turf/open/hybrisa/street,
 /area/point_loma/airbase/exterior/north)
+"bCB" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
 "bCC" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/research_facility/medical)
+"bCD" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
+"bCE" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bCF" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/point_loma/airbase/exterior/west)
 "bCG" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/alien_embryo,
 /turf/open/hybrisa/street,
 /area/point_loma/airbase/exterior/north)
+"bCH" = (
+/obj/structure/girder,
+/turf/open/floor/plating/icefloor,
+/area/point_loma/airbase/interior/admin)
 "bCI" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -27622,6 +28077,15 @@
 /obj/effect/landmark/corpsespawner/forecon_spotter,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/north)
+"bCM" = (
+/obj/structure/girder,
+/obj/structure/girder,
+/turf/open/floor/plating/icefloor,
+/area/point_loma/airbase/interior/admin)
+"bCN" = (
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/west)
 "bCO" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/hallway/east)
@@ -27637,6 +28101,16 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
+"bCR" = (
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/obj/item/stack/rods{
+	pixel_x = -4
+	},
+/obj/flamer_fire/lasting,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/east)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/hybrisa/street,
@@ -27658,6 +28132,10 @@
 "bCW" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"bCX" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/west)
 "bCY" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	pixel_x = -18;
@@ -27665,6 +28143,11 @@
 	},
 /turf/open/floor/corsat/yellow,
 /area/point_loma/research_facility/hallway/central)
+"bCZ" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/west)
 "bDa" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -27714,12 +28197,38 @@
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/north)
+"bDk" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/crash_site)
+"bDl" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bDm" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bDn" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/crash_site)
 "bDo" = (
 /obj/effect/decal/cleanable/blood/tracks/clawprints{
 	pixel_y = 21
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
+"bDp" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/crash_site)
 "bDq" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -27791,6 +28300,10 @@
 "bDB" = (
 /turf/open/floor/corsat/marked,
 /area/point_loma/airbase/interior/atc)
+"bDC" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/exterior/north)
 "bDD" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /turf/open/floor/podhatchfloor,
@@ -27834,6 +28347,17 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/point_loma/airbase/interior/atc)
+"bDK" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
+"bDL" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/point_loma/airbase/exterior/north)
 "bDM" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
@@ -31707,7 +32231,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/north)
 "bQT" = (
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/crash_site)
 "bQU" = (
 /turf/open/hybrisa/street/roadlines,
@@ -31718,6 +32242,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
 "bQW" = (
+/obj/item/stack/sheet/metal,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/crash_site)
 "bQX" = (
@@ -33337,7 +33862,7 @@
 /area/point_loma/airbase/exterior/east)
 "bZE" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/hybrisa/street/sidewalkcenter,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/east)
 "bZF" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
@@ -35952,7 +36477,10 @@
 "cjo" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/hybrisa/street/asphalt,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/south)
 "cjt" = (
 /obj/structure/prop/rock/brown/point_loma,
@@ -44088,7 +44616,8 @@
 "cTA" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/sidewalkcenter/west,
+/obj/item/stack/rods,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "cTB" = (
 /obj/structure/platform{
@@ -49492,10 +50021,6 @@
 /obj/effect/decal/cleanable/dirt/sand_3,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
-"dMa" = (
-/obj/structure/girder/reinforced,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/crash_site)
 "dNe" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4
@@ -49673,7 +50198,9 @@
 /area/point_loma/airbase/interior/fire_station)
 "eDk" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/new_varadero/taupe_concrete,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "eDT" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -49937,10 +50464,6 @@
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/fire_station)
-"gaw" = (
-/obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/sidewalkcenter,
-/area/point_loma/airbase/exterior/crash_site)
 "gaX" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat{
@@ -50520,7 +51043,7 @@
 	pixel_y = 11
 	},
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/point_loma/airbase/exterior/crash_site)
 "jhG" = (
 /obj/structure/platform/metal/almayer/east,
@@ -50686,7 +51209,7 @@
 "jZd" = (
 /obj/structure/girder/reinforced,
 /obj/structure/girder/reinforced,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "jZr" = (
 /turf/closed/wall/huntership/outerhull,
@@ -51144,7 +51667,7 @@
 	pixel_y = 11
 	},
 /obj/item/stack/rods,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "ndX" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -51511,7 +52034,8 @@
 /obj/item/stack/rods{
 	pixel_x = 7
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "oUn" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on,
@@ -51783,7 +52307,8 @@
 	pixel_x = 7
 	},
 /obj/item/stack/rods,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "qss" = (
 /obj/structure/bed/hybrisa/bunkbed1{
@@ -51945,12 +52470,18 @@
 	pixel_x = -4;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "qUY" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/rods,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "qVD" = (
 /turf/open/floor/shiva/yellow/west,
@@ -52012,7 +52543,8 @@
 /obj/item/stack/rods{
 	pixel_x = 7
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "rdB" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -52249,7 +52781,12 @@
 /area/point_loma/airbase/interior/fire_station)
 "sEl" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/rods,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "sGG" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -52274,7 +52811,7 @@
 "sKQ" = (
 /obj/effect/decal/cleanable/dirt/sand_1,
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/new_varadero/taupe_concrete,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "sMG" = (
 /obj/structure/largecrate/random/barrel/green{
@@ -52331,7 +52868,7 @@
 /area/point_loma/airbase/interior/garage)
 "tea" = (
 /obj/structure/girder,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/interior/hangar)
 "tfG" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -52758,7 +53295,12 @@
 /area/space)
 "vUN" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/open/hybrisa/street/asphalt,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
 "vUR" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -52963,7 +53505,8 @@
 /obj/item/stack/rods{
 	pixel_x = -4
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "xdC" = (
 /obj/structure/barricade/handrail{
@@ -53056,7 +53599,8 @@
 /obj/item/stack/rods{
 	pixel_x = 7
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/north)
 "xAa" = (
 /obj/structure/closet/secure_closet/personal,
@@ -53143,7 +53687,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "xSs" = (
 /turf/closed/wall/huntership/innerhull,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/oob)
 "xXo" = (
 /obj/structure/window/framed/new_varadero/foundation/concrete,
 /turf/open/new_varadero,
@@ -113700,10 +114244,10 @@ cuv
 bqf
 bqf
 bqf
-bqf
-bqf
-aFk
-aFk
+bqg
+axq
+atF
+atF
 aFk
 bqf
 bqf
@@ -113882,10 +114426,10 @@ bqf
 bqf
 bqf
 bJE
-bJE
-bqf
-aFk
-aFk
+brE
+axq
+axm
+atF
 aFk
 bqf
 bqf
@@ -114064,10 +114608,10 @@ bqx
 bqf
 bqf
 bqf
-bqf
-bqf
-aFk
-bJv
+bqg
+axq
+atF
+awR
 bqg
 bqg
 bJE
@@ -158293,9 +158837,9 @@ bPH
 cTQ
 cTQ
 cTQ
-cTQ
-bPH
-bPH
+bCg
+bCg
+bCg
 bBe
 iUp
 iUp
@@ -158473,11 +159017,11 @@ bPH
 bPH
 bPH
 cTQ
-cTQ
-cTQ
-cTQ
-bPH
-bPH
+bCg
+bCg
+bCg
+bCj
+bCj
 bBe
 iUp
 iUp
@@ -158649,16 +159193,16 @@ aSY
 iUp
 iUp
 iUp
-bBe
+bCH
 bPH
-bPH
-bPH
-bPH
-cTQ
-cTQ
-cTQ
-cTQ
-bPH
+bCg
+bCg
+bCg
+bCj
+bCj
+bCj
+bCj
+bCj
 cwV
 cwV
 cwV
@@ -158831,11 +159375,11 @@ bBe
 iUp
 iUp
 iUp
-bBe
-bPH
-bPH
-bPH
-bPH
+bCH
+bCg
+bCg
+bCj
+bCj
 cwV
 cwV
 cwV
@@ -159010,12 +159554,12 @@ bBe
 bBe
 bBe
 bBe
-bBe
-bBe
-bBe
-bBe
-bPH
-bPH
+bCH
+bCH
+bCH
+bCM
+bCg
+bCj
 cwV
 cwV
 cwV
@@ -159031,8 +159575,8 @@ cwV
 cwV
 uPX
 uPX
-dMa
-dMa
+aOp
+aOp
 bBe
 bBe
 bBe
@@ -159187,17 +159731,17 @@ aOC
 aOC
 aOC
 aOC
-aOC
-bPH
-bPH
-bPH
-bPH
-bPH
-bPH
-bPH
-bPH
-bPH
-bPH
+bDl
+bCZ
+bCZ
+bCZ
+bCZ
+bCZ
+bCX
+bCN
+bCN
+bCF
+bCj
 cwV
 cwV
 cwV
@@ -159213,10 +159757,10 @@ cwV
 cwV
 cwV
 uPX
-dMa
+aOp
 jZd
-dMa
-aoU
+aOp
+axA
 aoU
 aoU
 aoU
@@ -159369,7 +159913,7 @@ aOC
 aOC
 aOC
 aOC
-aOC
+bDl
 bAG
 bAG
 bAG
@@ -159396,9 +159940,9 @@ cwV
 cwV
 cwV
 cwV
-dMa
-dMa
-aoU
+aOp
+aOp
+axA
 aoU
 aoU
 aoU
@@ -159550,9 +160094,9 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
-ayJ
+bDC
+bDm
+bCf
 aKZ
 aKZ
 aKZ
@@ -159580,11 +160124,11 @@ cwV
 cwV
 bAG
 bAG
-aoU
-aoU
-aoU
-aoU
-aoU
+azW
+azW
+axA
+axs
+axs
 aoU
 aoU
 aoZ
@@ -159732,10 +160276,10 @@ aOC
 aOC
 aOC
 aOC
-aOC
-sEl
-ayJ
-ayJ
+bDl
+bDn
+bCf
+bCf
 aKH
 aKH
 aKH
@@ -159762,12 +160306,12 @@ cwV
 cwV
 bAG
 bAG
-aoU
-aoU
-aoU
-aoU
-aoU
-aoU
+aBw
+aBw
+bBT
+azX
+azX
+bBO
 aoU
 aoZ
 byl
@@ -159913,10 +160457,10 @@ ddL
 ddL
 ddL
 ddL
-ddL
+bCE
 aOc
 aOc
-aNX
+bCf
 bAG
 bAG
 bAG
@@ -159945,11 +160489,11 @@ cwV
 cwV
 bAG
 bAG
-bBc
-bBc
-bBc
-bBc
-bBc
+bBV
+aBw
+aCE
+azX
+bBQ
 bBc
 byl
 byl
@@ -160095,10 +160639,10 @@ ddL
 ddL
 ddL
 ddL
-ddL
-ddL
-aOc
-aNX
+bDl
+bDK
+bDp
+bCf
 aKZ
 aKZ
 aKZ
@@ -160126,12 +160670,12 @@ cwV
 cwV
 aKA
 bAG
-pge
 xSs
-bBc
-bBc
-bBc
-bBc
+xSs
+aBw
+aBw
+bBT
+aCE
 bBc
 byl
 byl
@@ -160277,8 +160821,8 @@ ddL
 ddL
 ddL
 ddL
-ddL
-aOc
+bDL
+bDn
 aNX
 aKH
 aKH
@@ -160310,11 +160854,11 @@ aKA
 cUz
 xSs
 xSs
-bAG
-bBc
-bBc
-bBc
-bBc
+bsX
+aDS
+aBw
+axs
+axA
 byl
 byl
 dqx
@@ -160458,7 +161002,7 @@ aOC
 aOC
 aOC
 aOC
-aOC
+bDl
 bAG
 bAG
 bAG
@@ -160491,12 +161035,12 @@ aKA
 cUz
 cUz
 cUz
-bAG
-bAG
-bAG
-bBc
-aoU
-aoU
+awV
+awV
+bsX
+aBw
+aBp
+azW
 aoZ
 byl
 dqx
@@ -160640,7 +161184,7 @@ aOC
 aOC
 aOC
 aOC
-aOC
+bDL
 bAG
 bAG
 aNY
@@ -160675,10 +161219,10 @@ cUz
 cUz
 cUz
 cUz
+awV
 bAG
-bAG
-aoU
-aoU
+aBw
+aCE
 tea
 byl
 byl
@@ -160821,8 +161365,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
+bCE
+bDL
 bAG
 aNI
 aNI
@@ -160859,8 +161403,8 @@ cUz
 cUz
 bAG
 bAG
-aoU
-aoU
+aBw
+aBp
 tea
 byl
 byl
@@ -161003,8 +161547,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
+bCE
+bDL
 aOh
 aOg
 aOd
@@ -161042,7 +161586,7 @@ cUz
 cUz
 bAG
 ayJ
-sEl
+aTf
 tea
 aoZ
 aoZ
@@ -161182,10 +161726,10 @@ aON
 aON
 aON
 aON
-aON
-aON
-aON
-aON
+aOC
+bCB
+bDL
+bDL
 bAG
 bAG
 aOa
@@ -161223,11 +161767,11 @@ cUz
 cUz
 cUz
 cUz
-sEl
-sEl
-sEl
-byl
-byl
+aTf
+aUq
+bBM
+aOH
+aOH
 byl
 byl
 byl
@@ -161363,10 +161907,10 @@ aON
 aON
 aON
 aON
-aON
-aON
-aON
-aON
+aOC
+aOC
+bDL
+bCB
 bAG
 bAG
 bAG
@@ -161406,12 +161950,12 @@ fog
 fog
 cUz
 cUz
-ayH
-sEl
-byl
-byl
-byl
-byl
+aTf
+eDk
+bAJ
+btQ
+aOF
+aOF
 byl
 byl
 byl
@@ -161545,9 +162089,9 @@ aON
 aON
 aON
 aON
-aON
-aON
-aON
+aOC
+bCw
+bDl
 bAG
 bAG
 lze
@@ -161589,12 +162133,12 @@ iYy
 ayi
 ayi
 ayi
-ayH
+aTf
 bRz
-byl
-byl
-byl
-byl
+bAD
+bxP
+btQ
+aOH
 byl
 byl
 byl
@@ -161727,9 +162271,9 @@ aON
 aON
 aON
 aON
-aON
-aON
-aON
+aOC
+bCw
+bDl
 bAG
 aCe
 aCe
@@ -161775,10 +162319,10 @@ ayl
 ayl
 bRz
 bRz
-byl
-byl
-byl
-byl
+bsV
+bsV
+aOF
+aOF
 byl
 aoZ
 aoU
@@ -161908,10 +162452,10 @@ aON
 aON
 aON
 aON
-aON
-aON
-aON
-aON
+aOC
+aOC
+bCB
+bDL
 bAG
 bAG
 bAG
@@ -161957,10 +162501,10 @@ fog
 bRz
 bRz
 bRz
-tHZ
-mpu
-byl
-byl
+buU
+bsX
+aOF
+aOF
 byl
 aoZ
 aoU
@@ -162092,8 +162636,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
+bCB
+bDL
 bAG
 aNI
 aNI
@@ -162139,13 +162683,13 @@ aNI
 aNI
 aNI
 aNI
-sEl
-sEl
-sEl
-byl
+aTf
+aTf
+aUq
+aOH
 byl
 aoZ
-aoU
+axA
 atE
 atE
 atE
@@ -162274,8 +162818,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
+bCB
+bDL
 bAG
 bAG
 aNI
@@ -162323,11 +162867,11 @@ ayi
 ayi
 ayi
 ayi
-sEl
-sEl
-sEl
+aTf
+aTf
+aLx
 aoZ
-aoU
+azW
 atE
 atE
 atE
@@ -162456,8 +163000,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-aOC
+bCE
+bDl
 bAG
 bAG
 aNI
@@ -162506,11 +163050,11 @@ ayl
 ayl
 ayl
 aCa
-sEl
+aTf
 bRz
 aoZ
-aoU
-atE
+aBw
+azW
 atE
 atE
 aoU
@@ -162639,7 +163183,7 @@ aOC
 aOC
 aOC
 aOC
-aOC
+bCB
 bQT
 bAG
 bAG
@@ -162691,9 +163235,9 @@ aDH
 aCV
 bRz
 bRz
-aoU
-atE
-atE
+aBw
+azX
+axs
 atE
 aoU
 asb
@@ -162829,9 +163373,9 @@ bUz
 bUz
 bUz
 bUz
-bUz
-bUz
-bUz
+bCy
+bCy
+bCy
 bRz
 bRz
 bRz
@@ -162873,9 +163417,9 @@ aDH
 bua
 fyC
 bRz
-aoU
+aAD
 cjo
-atE
+axs
 atE
 aoU
 asb
@@ -163014,8 +163558,8 @@ bUz
 bBh
 bBh
 bBh
-bBh
-bBh
+bCy
+bCy
 bRz
 bRz
 bRz
@@ -163055,9 +163599,9 @@ aDH
 bua
 fyC
 bRz
-aoU
-atE
-atE
+aAD
+azX
+axs
 atE
 aoU
 asb
@@ -163197,8 +163741,8 @@ bBh
 bBh
 bBh
 bBh
-bBh
-bBh
+bCy
+bCy
 bUz
 bAG
 ayq
@@ -163237,9 +163781,9 @@ aDH
 bua
 fyC
 bRz
-aoU
-atE
-atE
+aAP
+azX
+axA
 atE
 aoU
 asb
@@ -163380,10 +163924,10 @@ bBh
 bBh
 bBh
 bBh
-bBh
+bCy
 bUz
-bBh
-bBf
+bCy
+bCf
 aHI
 aCe
 aCe
@@ -163419,9 +163963,9 @@ lgJ
 sIp
 fyC
 bRz
-aoU
-atE
-cjn
+aAP
+azX
+axH
 atE
 aoU
 asb
@@ -163565,8 +164109,8 @@ vvA
 bUz
 bUz
 bUz
-bBf
-bBf
+bCf
+bCf
 bRz
 bRz
 ayq
@@ -163601,9 +164145,9 @@ hYC
 nwZ
 fyC
 bRz
-aoU
-atE
-cjn
+aAD
+aAD
+axH
 atE
 aoU
 asb
@@ -163783,9 +164327,9 @@ aDH
 bua
 fyC
 bRz
-aoU
-atE
-atE
+aAD
+aAP
+axs
 atE
 aoU
 asb
@@ -163932,13 +164476,13 @@ aZC
 aZC
 aZC
 buX
-buX
 bBg
-ayJ
-ayJ
-ayJ
-ayJ
-ayJ
+bBg
+bCf
+bCf
+bCf
+bCf
+bCf
 bxR
 iKH
 aDL
@@ -163965,9 +164509,9 @@ aDH
 bua
 fyC
 bRz
-aoU
-atE
-cjn
+aAD
+aAP
+axL
 atE
 aoU
 asb
@@ -164114,13 +164658,13 @@ aZC
 aZC
 aZC
 aZC
-aZC
+bCy
 bBg
 jhx
 jhx
-sEl
-sEl
-sEl
+aTf
+aTf
+aTf
 bug
 syn
 eAk
@@ -164147,9 +164691,9 @@ aDH
 bua
 fyC
 bRz
-aoU
-atE
-cjn
+aAP
+aAP
+axH
 cjn
 aoU
 asb
@@ -164298,11 +164842,11 @@ aZC
 aZC
 aZC
 bUz
+bCn
 qUX
 qUX
-qUX
-sEl
-sEl
+aLx
+aTf
 bAG
 enn
 aDL
@@ -164329,9 +164873,9 @@ aDH
 erc
 bRz
 bRz
-aoU
-atE
-atE
+aAP
+aAP
+axA
 atE
 aoU
 asb
@@ -164480,11 +165024,11 @@ aZC
 aZC
 aZC
 bUz
-qUX
+bCn
 xcE
 qUX
-mZf
-sEl
+bCk
+aTf
 bAG
 enn
 aDL
@@ -164511,9 +165055,9 @@ aDH
 aCK
 bRz
 bRz
-aoU
-atE
-atE
+aBp
+aBp
+axA
 atE
 aoU
 asb
@@ -164662,8 +165206,8 @@ aZC
 aZC
 aZC
 bUz
-xxV
-xcE
+bCo
+bCl
 qUX
 oTg
 mZf
@@ -164693,8 +165237,8 @@ aCd
 wHR
 ayi
 mpu
-aoU
-atE
+aDS
+aBw
 aYw
 atE
 aoU
@@ -164844,10 +165388,10 @@ aZC
 aZC
 aZC
 bUz
-oTg
+bCp
 rcO
 oTg
-sEl
+aLx
 mZf
 bAG
 enn
@@ -164875,9 +165419,9 @@ ayB
 ayB
 ayB
 mpu
-aoU
-atE
-atE
+aDV
+aBP
+axA
 atE
 aoU
 aoU
@@ -165026,11 +165570,11 @@ aZC
 aZC
 aZC
 bUz
-oTg
+bCr
 xxV
-sEl
-sEl
-sEl
+aLx
+aLx
+aTf
 bAG
 enn
 aDL
@@ -165058,8 +165602,8 @@ bAG
 awV
 bRz
 sEl
-atE
-atE
+aBS
+axs
 atE
 aoU
 aoU
@@ -165208,11 +165752,11 @@ aZC
 aZC
 aZC
 bUz
-rcO
+bCs
 qmg
-sEl
-sEl
-sEl
+aLx
+aLx
+aTf
 bug
 jiL
 eAk
@@ -165241,7 +165785,7 @@ cTT
 tHZ
 sEl
 vUN
-byk
+axX
 atE
 atE
 atE
@@ -165390,8 +165934,8 @@ aZC
 aZC
 aZC
 bUz
-xcE
-jhx
+bCt
+bCm
 pge
 pge
 pge
@@ -165422,8 +165966,8 @@ ayi
 ayi
 tHZ
 qUY
-vUN
-atE
+aCh
+ayf
 atE
 atE
 atE
@@ -165572,7 +166116,7 @@ bUz
 bUz
 bUz
 bUz
-xcE
+bCu
 jhx
 bAG
 orO
@@ -165604,8 +166148,8 @@ ayB
 ayB
 cju
 cTA
-bQG
-bQG
+aBp
+ayf
 bQG
 bQG
 cEs
@@ -165750,11 +166294,11 @@ amC
 bUz
 aOC
 aOC
-aOC
-aOC
-aOC
-aOC
-sEl
+bCw
+bCw
+bCw
+bCw
+bCv
 bAG
 bAG
 orO
@@ -165786,8 +166330,8 @@ bAK
 bAG
 bAG
 eDk
-byj
-byj
+aBw
+axA
 byj
 byj
 byj
@@ -165932,9 +166476,9 @@ aZC
 bUz
 aOC
 aOC
-aOC
-aOC
-aOC
+bCB
+bCB
+bCw
 bAG
 bAG
 bAG
@@ -165966,10 +166510,10 @@ bAG
 bAG
 bAG
 bAG
-byj
-byj
-byj
-byj
+aDS
+aBw
+aCE
+axA
 byj
 byj
 byj
@@ -166112,10 +166656,10 @@ aZC
 aZC
 aZC
 bUz
-aOC
-aOC
-aOC
-aOC
+bCw
+bCw
+bCB
+bCB
 aIQ
 aIw
 aIb
@@ -166141,16 +166685,16 @@ bxR
 bxR
 bxR
 bAG
-cTd
-cTd
-cTd
-cTd
-cTd
-cTd
-cTd
-cTd
-cTd
-cTd
+aHp
+aHp
+aHp
+aHp
+aHp
+aHp
+aHp
+aHp
+aDn
+aDn
 cTd
 cTd
 cTd
@@ -166294,9 +166838,9 @@ aZC
 bvm
 aZC
 bUz
-aOC
-aOC
-aOC
+bCw
+bCB
+bCE
 aIQ
 aIQ
 aIx
@@ -166322,16 +166866,16 @@ bRz
 bRz
 bRz
 bRz
-bQd
-bQd
-bQd
-bQd
-bQd
-bQd
-bQd
-bQd
-bQd
-bQd
+bAE
+bAE
+aHg
+aKb
+aKb
+aKb
+aKb
+aKb
+aKb
+aHg
 bQd
 bQd
 bQd
@@ -166476,8 +167020,8 @@ aZC
 aZC
 bvi
 bva
-aOC
-aOC
+bCw
+bCw
 aIQ
 aIQ
 aJf
@@ -166503,10 +167047,10 @@ bRz
 fog
 fog
 bRz
-bQd
-bQd
-cUC
-cTB
+bBN
+bBK
+bAF
+bxQ
 cTB
 cTB
 cTp
@@ -166658,7 +167202,7 @@ aZC
 aZC
 bvj
 bva
-aOC
+bCw
 aIQ
 aIQ
 aJj
@@ -166684,10 +167228,10 @@ bRz
 bRz
 fog
 fog
-bQd
-bxu
-bxu
-bIo
+bBN
+aKb
+bBL
+bAI
 bvq
 bvq
 bvq
@@ -166840,7 +167384,7 @@ bvw
 aZC
 bvk
 bva
-aOC
+bCw
 aIQ
 aKm
 aJt
@@ -166865,10 +167409,10 @@ azY
 bRz
 bRz
 bRz
-bQd
-bQd
-bxu
-bxu
+bBN
+bAE
+aKb
+aHg
 bIo
 bvq
 cTM
@@ -167045,11 +167589,11 @@ bAG
 ayO
 aAz
 bRz
-bQd
-cTd
-bQd
-bQd
-bxu
+bBN
+aHp
+bBS
+aKb
+aKb
 bxu
 bIo
 bvq
@@ -167198,9 +167742,9 @@ aOC
 aOC
 aOC
 aOC
-aOC
+bCw
 bQW
-sEl
+bDk
 bzl
 bVc
 aMx
@@ -167227,9 +167771,9 @@ bAG
 aNI
 azY
 bAG
-bQd
-cTd
-bQd
+bBN
+aDn
+bBL
 bQd
 bxu
 bxu
@@ -167380,9 +167924,9 @@ aOC
 aOC
 aOC
 aOC
-aOC
-sEl
-sEl
+bCB
+bDk
+bDk
 aNc
 aMS
 aEb
@@ -167409,9 +167953,9 @@ bAG
 azY
 aNI
 bAG
-bQd
-cTd
-bQd
+bBN
+aDn
+aKb
 bQd
 bxu
 bxu
@@ -167561,9 +168105,9 @@ aOC
 aOC
 aOC
 aOC
-aOC
-sEl
-sEl
+bCB
+bDk
+bDk
 bAG
 bAG
 bAG
@@ -167591,9 +168135,9 @@ bAG
 aAz
 bAG
 bAG
-bQd
-cTd
-bQd
+bBN
+aDn
+bBL
 bQd
 bxu
 bxu
@@ -167743,8 +168287,8 @@ aOC
 aOC
 aOC
 aOC
-aOC
-sEl
+bCB
+bCv
 bAG
 bAG
 bAG
@@ -167773,9 +168317,9 @@ bxR
 bxR
 bAG
 bAG
-bQd
-cTd
-bQd
+bBN
+aDn
+bBL
 bQd
 bxu
 bxu
@@ -167925,7 +168469,7 @@ bBj
 bBj
 bBj
 bBj
-bBj
+bCw
 bRz
 bRz
 bRz
@@ -167953,11 +168497,11 @@ lze
 lze
 bxR
 bxR
-bQd
-bQd
-bQd
-cTd
-bQd
+bBN
+bBN
+bBU
+aDn
+bBL
 bQd
 bxu
 bxu
@@ -168106,8 +168650,8 @@ bBj
 bBj
 bBj
 bBj
-bBj
-bBj
+bCw
+bCw
 bRz
 bRz
 aNG
@@ -168130,16 +168674,16 @@ aEn
 aDX
 cVu
 sKQ
-gaw
-vUN
-vUN
-bQf
-bQf
-bQd
-bQd
-bQd
-cTd
-bQd
+aTf
+aTf
+aTf
+bBN
+bAE
+bBL
+bBL
+aKb
+aDn
+aHg
 bQd
 bxu
 bxu
@@ -168288,7 +168832,7 @@ bBi
 bBi
 bBi
 bBi
-bBi
+bCE
 bRz
 bRz
 bRz
@@ -168310,16 +168854,16 @@ bRz
 bRz
 bRz
 bRz
-eDk
-eDk
+aTf
+aTf
 bZE
-bxu
-bxu
-bQf
-bQf
-bQd
-bQd
-bQd
+bBN
+bBN
+aHg
+bBW
+bBL
+bBL
+aKb
 cTd
 bQd
 bQd
@@ -168470,38 +169014,38 @@ bBi
 bBi
 bBi
 bBi
-bBi
-bBi
-bBi
-bQe
-bQe
-bxu
-bxu
-bxu
-bQf
-bQf
-bQf
-bQf
+bCw
+bCw
+bCw
+aHg
+aHg
+bBX
+bCD
+bCD
+bCD
+bBX
+bBX
+bBU
 bxR
 bxR
 bxR
 bxR
 bxR
 bxR
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bXW
-bxu
-bxu
-bQf
-bQf
-bQd
-bQd
-bQd
+bBN
+bCd
+bCd
+bCd
+bBU
+bBW
+bBW
+bBZ
+bBX
+bBX
+bBW
+aKb
+aKb
+aKb
 cTd
 bQd
 bQd
@@ -168657,30 +169201,30 @@ bBi
 bBi
 bQe
 bQe
-bxu
-bxu
-bxu
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bQf
-bZl
-bZE
-bxu
-bxu
-bQf
-bQf
+bBX
+bCD
+bCR
+bCD
+bCD
+bCD
+bCD
+bBY
+bBY
+bBY
+bBY
+bBY
+bBY
+bBY
+bBW
+aKb
+bCe
+bCc
+bCb
+bCa
+aHg
+bBY
+bBY
+aHg
 bQd
 bQd
 bQd
@@ -168840,8 +169384,8 @@ aOC
 bQf
 bQf
 bXW
-bxu
-bxu
+bBY
+bBY
 bQd
 bQd
 bQd
@@ -168855,8 +169399,8 @@ bQd
 bQd
 bQd
 bQd
-bQd
-bQf
+aHg
+aHg
 bQf
 bXW
 bxu
@@ -169219,7 +169763,7 @@ cEK
 cEK
 cEK
 cEK
-aai
+cEI
 cEF
 bQf
 bZF

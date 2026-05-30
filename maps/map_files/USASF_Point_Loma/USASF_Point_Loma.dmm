@@ -6510,6 +6510,9 @@
 	},
 /turf/open/floor/corsat/brown/north,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"aty" = (
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/airbase/interior/workshop/upper)
 "atz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N-corner"
@@ -12384,7 +12387,7 @@
 	id = "workshop_west";
 	name = "workshop shutter button"
 	},
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "aKk" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
@@ -17182,8 +17185,8 @@
 /obj/structure/sign/safety/coffee{
 	pixel_y = 1
 	},
-/turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/interior/workshop)
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob)
 "aYh" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	layer = 2.8
@@ -31464,7 +31467,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south_west)
 "bPq" = (
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "bPr" = (
 /obj/effect/landmark/nightmare{
@@ -34989,8 +34992,8 @@
 /area/point_loma/research_facility/hallway/east)
 "cfb" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_1,
-/turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/interior/workshop)
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob)
 "cfc" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -35324,9 +35327,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south)
-"cgD" = (
-/turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/interior/workshop)
 "cgE" = (
 /obj/structure/prop/dam/crane/cargo{
 	dir = 1;
@@ -38673,7 +38673,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
 "ctK" = (
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop/upper)
 "ctL" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -38707,9 +38707,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating/catwalk,
-/area/point_loma/airbase/interior/workshop/upper)
-"ctP" = (
-/turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/workshop/upper)
 "ctQ" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -39580,7 +39577,7 @@
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 8
 	},
-/turf/closed/wall/new_varadero/reinforced/hull,
+/turf/closed/wall/new_varadero/concrete/hull,
 /area/point_loma/oob)
 "cwP" = (
 /obj/structure/machinery/light/double,
@@ -40557,7 +40554,7 @@
 	id = "workshop_shutter";
 	name = "workshop shutter button"
 	},
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "cBf" = (
 /obj/structure/machinery/door_control{
@@ -40566,7 +40563,7 @@
 	id = "workshop_shutter";
 	name = "workshop shutter button"
 	},
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "cBg" = (
 /obj/structure/machinery/door_control{
@@ -42201,7 +42198,7 @@
 /area/point_loma/airbase/interior/cargo)
 "cHq" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_1,
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "cHr" = (
 /turf/open/floor/corsat/purple/west,
@@ -42312,12 +42309,12 @@
 /area/point_loma/airbase/interior/workshop)
 "cIX" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2,
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/workshop)
 "cIY" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2,
-/turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/interior/workshop)
+/turf/closed/wall/new_varadero/concrete/hull,
+/area/point_loma/oob)
 "cIZ" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/asphalt,
@@ -160881,7 +160878,7 @@ atE
 aoU
 aoU
 aoU
-bJw
+bzI
 atI
 cgS
 cgS
@@ -161070,9 +161067,9 @@ aKj
 amV
 amz
 bPq
-cgD
-cgD
-cgD
+bzI
+bzI
+bzI
 bPq
 bPq
 bPq
@@ -161426,7 +161423,7 @@ atE
 atE
 aoU
 asb
-bPq
+cjV
 aww
 apV
 apV
@@ -161608,7 +161605,7 @@ atE
 atE
 aoU
 asb
-cgD
+bzI
 aru
 aqY
 arw
@@ -163064,7 +163061,7 @@ atE
 atE
 aoU
 asb
-cgD
+bzI
 axc
 apV
 aru
@@ -163079,7 +163076,7 @@ adk
 acz
 acx
 aWH
-cgD
+bzI
 bOU
 bOU
 bOU
@@ -163428,7 +163425,7 @@ cjn
 atE
 aoU
 asb
-cgD
+bzI
 aru
 apV
 arT
@@ -163443,7 +163440,7 @@ adk
 acz
 acx
 aWH
-cgD
+bzI
 bOU
 bOU
 bOU
@@ -163610,7 +163607,7 @@ cjn
 atE
 aoU
 asb
-cgD
+bzI
 apV
 apV
 apV
@@ -163625,7 +163622,7 @@ add
 acI
 acx
 aWH
-cgD
+bzI
 bOU
 bOU
 bOU
@@ -163792,7 +163789,7 @@ atE
 atE
 aoU
 asb
-cgD
+bzI
 arT
 apV
 arT
@@ -163807,7 +163804,7 @@ acx
 acx
 acx
 aWH
-cgD
+bzI
 bOU
 bOU
 bOU
@@ -163974,7 +163971,7 @@ cjn
 atE
 aoU
 asb
-cgD
+bzI
 apV
 apV
 apV
@@ -163989,7 +163986,7 @@ acx
 acx
 acx
 aWH
-cgD
+bzI
 bOU
 bOU
 bOU
@@ -166355,8 +166352,8 @@ acy
 acx
 aWP
 aAB
-cgD
-cgD
+bzI
+bzI
 bPq
 bOU
 bOU
@@ -166537,8 +166534,8 @@ acz
 acx
 aWP
 aWH
-bPq
-bPq
+bzI
+bzI
 bPq
 bOU
 bOU
@@ -166719,8 +166716,8 @@ cIQ
 cIO
 cIP
 cIN
-cHq
-bPq
+cfb
+bzI
 bPq
 bOU
 bOU
@@ -169070,7 +169067,7 @@ bxu
 bxu
 bQd
 bQd
-cgD
+bzI
 aLO
 cjj
 auF
@@ -169081,7 +169078,7 @@ aWP
 aWP
 aWN
 aSi
-cjV
+bzI
 ciQ
 ciQ
 bPD
@@ -169262,8 +169259,8 @@ aWP
 aWP
 aWP
 agn
-cjV
-cjV
+bzI
+bzI
 bws
 bwi
 bvZ
@@ -169434,7 +169431,7 @@ bxu
 bxu
 bQd
 bQd
-cgD
+bzI
 aMw
 cjj
 auF
@@ -169616,7 +169613,7 @@ bxu
 bxu
 bQd
 bQd
-cgD
+bzI
 aMJ
 cjj
 auF
@@ -169813,7 +169810,7 @@ bwB
 bPy
 bPy
 aAr
-bPD
+bPq
 bOS
 bOS
 bOS
@@ -170359,7 +170356,7 @@ bwD
 bPz
 bPz
 bPv
-bPD
+bzI
 bOS
 bOS
 bOS
@@ -170539,9 +170536,9 @@ bPq
 bPq
 bPq
 bPq
-cgD
-cgD
-cgD
+bzI
+bzI
+bzI
 bOS
 bOS
 bOS
@@ -206563,13 +206560,13 @@ bTS
 bTS
 cCg
 cCe
-ctK
-ctK
-ctK
-ctK
-ctK
-ctK
-ctK
+bzI
+bzI
+bzI
+bzI
+bzI
+bzI
+bzI
 ctK
 ctK
 ctK
@@ -212220,8 +212217,8 @@ aLF
 aLF
 ctM
 bzz
-ctK
-ctK
+bzI
+bzI
 bhN
 buT
 cfO
@@ -214582,7 +214579,7 @@ aLF
 ctM
 bzz
 bzz
-ctP
+aty
 bwh
 bwh
 blO
@@ -214763,7 +214760,7 @@ aLF
 aLF
 ctM
 bzz
-ctP
+aty
 aJK
 aCo
 aCo
@@ -215496,7 +215493,7 @@ aCo
 aCo
 aCo
 aCo
-ctK
+aty
 buT
 cfO
 cxn
@@ -215673,12 +215670,12 @@ bhP
 bhP
 bzz
 bzz
-ctP
+ctK
 aHO
 aCo
 aCo
 aCo
-ctK
+aty
 buT
 cfO
 cxn
@@ -215860,7 +215857,7 @@ aCo
 aCo
 aCo
 blP
-ctK
+aty
 cCa
 cCo
 cxo
@@ -216039,10 +216036,10 @@ ctK
 ctK
 ctK
 ctK
-ctK
-ctK
-ctK
-ctK
+aty
+aty
+aty
+aty
 cCa
 cCo
 bui

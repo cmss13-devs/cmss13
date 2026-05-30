@@ -1,6 +1,6 @@
 /datum/xeno_strain/bulwark
 	name = WARRIOR_BULWARK
-	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor and no directional lock slowdown. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls and allow to attack enemies. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down. Tail Swing trips down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows you to can stop this ability at any time to gain 1s used as 2s cooldown, reflecting bullets back towards enemy up to 6 seconds with 100% chance from front only."
+	description = "You give up all of your normal abilities, some damage, speed and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor and no directional lock slowdown. Encasing Plates lets you enter a defensive stance that slows your movement and reduce tackle efficiency but increases directional armor, makes you immune to knockbacks, allows you to tear openings in walls and allow to attack enemies. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down. Tail Swing trips down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows you to can stop this ability at any time to gain 1s used as 3s cooldown, reflecting bullets back towards enemy up to 6 seconds with 100% chance from front only."
 	flavor_description = "Where there's a sword, there's a shield."
 	icon_state_prefix = "Bulwark"
 
@@ -357,8 +357,8 @@
 	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
 		return //we don't want to reflect bullets when we are laying down/unconscious.
 
-	if((bullet.ammo.flags_ammo_behavior & AMMO_SNIPER) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET) || (bullet.ammo.flags_ammo_behavior & AMMO_XENO) || (bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT))
-		return //we don't want to reflect sniper bullets, rockets and anti-reflection bullets.
+	if(bullet.ammo.flags_ammo_behavior & (AMMO_SNIPER|AMMO_ROCKET|AMMO_XENO|AMMO_NO_DEFLECT|AMMO_SKIPS_ALIENS))
+		return //we don't want to reflect sniper bullets, rockets, anti-reflection bullets, xeno bullets and friendly bullets.
 
 	var/projectile_dir = 0
 

@@ -29,9 +29,6 @@
 /obj/item/ammo_magazine/sentry/premade/lowammo/dumb
 	default_ammo = /datum/ammo/bullet/turret/dumb
 
-/obj/item/ammo_magazine/sentry/premade/unreflective
-	default_ammo = /datum/ammo/bullet/turret/unreflective
-
 /obj/item/ammo_magazine/sentry/shotgun
 	name = "12g buckshot drum"
 	desc = "An ammo drum of 50 12g buckshot drums for the UA 12-G Shotgun Sentry. Just feed it into the sentry gun's ammo port when its ammo is depleted."

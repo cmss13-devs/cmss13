@@ -51,7 +51,7 @@
 	xeno_cooldown = 1 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
-	var/speed_debuff = 1
+	var/speed_debuff = 1.4
 
 /datum/action/xeno_action/activable/plate_bash
 	name = "Plate Bash"

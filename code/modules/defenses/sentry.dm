@@ -638,7 +638,6 @@
 	fire_delay = 2
 	sentry_range = 10
 	omni_directional = TRUE
-	ammo = new /obj/item/ammo_magazine/sentry/premade/unreflective
 	/// How long the battery for this turret lasts. Will warn low at 70% and critical at 90% use.
 	var/battery_duration = 20 MINUTES
 	/// The current battery state

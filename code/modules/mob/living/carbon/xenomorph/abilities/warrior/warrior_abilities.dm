@@ -51,7 +51,7 @@
 	xeno_cooldown = 1 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
-	var/speed_debuff = 1.4
+	var/speed_debuff = 1.35
 
 /datum/action/xeno_action/activable/plate_bash
 	name = "Plate Bash"
@@ -87,8 +87,8 @@
 	var/reflective_shield_timer_id = TIMER_ID_NULL
 	/// Used to countdown BULWARK_REFLECTIVE_TIME.
 	var/reflective_start_time = -1
-	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
-	var/reflective_refund_multiplier = 3.0
+	/// How much refund we want to get back? 1 is 1s used to 1s cooldown, 2 is 1s used 2s cooldown.
+	var/reflective_refund_multiplier = 2
 	/// Used in calculation, finalized number will be displayed as cooldown.
 	var/reflective_recharge_time = null
 	/// Cooldown after activation to prevent accidental double click.

@@ -25,12 +25,12 @@
 
 /obj/item/clothing/shoes/yellow
 	name = "yellow sneakers"
-	desc = "A pair of stylish sneakers. This one comes in the color green."
+	desc = "A pair of stylish sneakers. This one comes in the color yellow."
 	icon_state = "yellow"
 
 /obj/item/clothing/shoes/purple
 	name = "purple sneakers"
-	desc = "A pair of stylish sneakers. This one comes in the color green."
+	desc = "A pair of stylish sneakers. This one comes in the color purple."
 	icon_state = "purple"
 
 /obj/item/clothing/shoes/red

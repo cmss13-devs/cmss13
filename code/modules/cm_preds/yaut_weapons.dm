@@ -337,23 +337,57 @@
 /obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from metal gauntlets."
+	desc = "A massive, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
-	attack_speed = 1 SECONDS
+	attack_speed = 0.5 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
-	speed_bonus_amount = -0.4 SECONDS
+	speed_bonus_amount = 0 SECONDS //Original value is -0.4 SECONDS, but is currently glitched(?) at the moment. Someone should restore this, once the function's properly working again.
 
 /obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from metal gauntlets."
+	desc = "A massive, serrated blade extending from metal gauntlets."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
-	attack_speed = 1 SECONDS
+	attack_speed = 0.5 SECONDS
 	force = MELEE_FORCE_TIER_5
-	speed_bonus_amount =  -0.4 SECONDS
+	speed_bonus_amount = 0 SECONDS //Ditto.
+
+/obj/item/weapon/bracer_attachment/scimitar/unique_action(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/yautja_user = user
+	if(!scimitar_deployed)
+		scimitar_deployed = TRUE
+		yautja_user.start_stomping()
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+		addtimer(CALLBACK(src, PROC_REF(undeploy_scimitars), user), 10 SECONDS)
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the wrist scimitars in front of its face and starts sprinting!"))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
+
+	if(gauntlet_deployed)
+		to_chat(user, SPAN_WARNING("You're already charging."))
+		return
+
+/obj/item/weapon/bracer_attachment/scimitar/proc/undeploy_scimitars(mob/user)
+	scimitar_deployed = FALSE
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+
+/mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/scimitar)
+	GetExactComponent(/datum/component/footstep).RemoveComponent()
+
+/obj/item/weapon/bracer_attachment/scimitar/proc/handle_movedelay(mob/living/moving_mob, list/movedata)
+	SIGNAL_HANDLER
+	movedata["move_delay"] -= move_delay_addition
+
+/obj/item/weapon/bracer_attachment/scimitar/verb/scimitar_guard()
+	set category = "Weapons"
+	set name = "Guard Yourself (Scimitars)"
+	set desc = "Get into a protective stance with your scimitars."
+	set src = usr.contents
+
+	unique_action(usr)
 
 /*#########################################
 ########### One Handed Weapons ############

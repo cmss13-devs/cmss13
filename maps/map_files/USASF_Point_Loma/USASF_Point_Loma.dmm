@@ -25384,10 +25384,6 @@
 "buT" = (
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
-"buU" = (
-/obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/predship/mainfloor/plain,
-/area/point_loma/oob/predator)
 "buV" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/catwalk/hunter_grate{
@@ -49903,7 +49899,7 @@
 	basestate = "pred_window";
 	icon_state = "pred_window0"
 	},
-/turf/open/predship/mainfloor/plain,
+/turf/open/predship/plating,
 /area/point_loma/oob/predator)
 "fIm" = (
 /obj/structure/prop/structure_lattice{
@@ -206693,7 +206689,7 @@ whZ
 sTT
 jAM
 bBI
-buU
+buJ
 bBo
 bBo
 buS
@@ -206875,7 +206871,7 @@ hkW
 poB
 buV
 bBI
-buU
+buJ
 bBo
 bBo
 buS
@@ -207785,7 +207781,7 @@ qOj
 ook
 mKv
 bBI
-buU
+buJ
 bBo
 bBo
 buS
@@ -207967,7 +207963,7 @@ nAp
 vBk
 mKv
 bBI
-buU
+buJ
 bBo
 bBo
 buS

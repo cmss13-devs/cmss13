@@ -1007,6 +1007,16 @@
 "adV" = (
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
+"adW" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -19801,16 +19811,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
-"uDd" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "uDs" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -51650,7 +51650,7 @@ ahv
 ahv
 ahv
 aeg
-uDd
+adW
 iSa
 mhZ
 mhZ
@@ -52098,7 +52098,7 @@ ahv
 ahv
 ahv
 slW
-uDd
+adW
 pEV
 mhZ
 mhZ
@@ -52552,7 +52552,7 @@ mhZ
 mhZ
 mhZ
 pEV
-uDd
+adW
 slW
 poE
 fPi

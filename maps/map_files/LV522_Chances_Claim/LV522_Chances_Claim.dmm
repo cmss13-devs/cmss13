@@ -1294,6 +1294,24 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"aey" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/filt)
+"aez" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4;
+	pixel_x = 4
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 4;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 2
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/west_reactor)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -13395,12 +13413,6 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/plate,
-/area/lv522/atmos/filt)
-"hao" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/filt)
 "haq" = (
 /turf/open/floor/strata/white_cyan3,
@@ -45462,18 +45474,6 @@
 "xmN" = (
 /turf/open/floor/prison/cell_stripe,
 /area/lv522/atmos/way_in_command_centre)
-"xmT" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4;
-	pixel_x = 4
-	},
-/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
-	dir = 4;
-	icon_state = "flammable_pipe_3";
-	pixel_x = 2
-	},
-/turf/open/floor/corsat/marked,
-/area/lv522/atmos/west_reactor)
 "xni" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -52880,12 +52880,12 @@ saC
 bJE
 lhD
 bXq
-xmT
+aez
 tiQ
 xrF
 saC
 hAk
-xmT
+aez
 tiQ
 saC
 saC
@@ -55764,7 +55764,7 @@ xuU
 bJE
 lhD
 hAk
-xmT
+aez
 tiQ
 xrF
 xrF
@@ -76400,7 +76400,7 @@ sYl
 sYl
 sYl
 gUv
-hao
+aey
 shD
 cpy
 cpy

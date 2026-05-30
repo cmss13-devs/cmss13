@@ -20751,6 +20751,9 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"baS" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/living/synthcloset)
 "baT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -22079,6 +22082,10 @@
 /obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
+"bdU" = (
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "bdV" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -22115,6 +22122,9 @@
 /obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
+"bea" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "beb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
@@ -47349,9 +47359,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower)
-"eqN" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
 "eqP" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -61012,9 +61019,6 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
-"kcH" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/synthcloset)
 "kcN" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/commandbunks)
@@ -69753,10 +69757,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom,
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/containment)
-"nPs" = (
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
 "nPx" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -197617,13 +197617,13 @@ aag
 cZe
 cCL
 vDz
-kcH
-kcH
-kcH
-kcH
-kcH
-kcH
-kcH
+baS
+baS
+baS
+baS
+baS
+baS
+baS
 kWq
 qnh
 aVG
@@ -197720,7 +197720,7 @@ cZe
 cZe
 iPq
 cmr
-kcH
+baS
 aGL
 aGJ
 aGy
@@ -197823,7 +197823,7 @@ gSy
 ltw
 iPq
 cGA
-kcH
+baS
 rlf
 soq
 eYQ
@@ -197926,11 +197926,11 @@ sit
 snx
 oVY
 cmr
-kcH
+baS
 rBa
-eqN
+bea
 vEj
-nPs
+bdU
 rJD
 hyQ
 fEk
@@ -198029,7 +198029,7 @@ nRE
 cmr
 cmr
 sWw
-kcH
+baS
 rIW
 oGx
 wvU

@@ -2971,6 +2971,22 @@
 	density = FALSE
 	anchored = TRUE
 
+/obj/structure/prop/hybrisa/misc/prop_deco_edging
+	name = "decorative edging"
+	desc = "Decorative edging for bordering stuff, very fancy."
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
+	icon_state = "stone_edging"
+	density = FALSE
+	anchored = TRUE
+	unacidable = TRUE
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
+	icon_state = "stone_edging_deco"
+
 // Signs
 
 /obj/structure/roof/hybrisa/signs

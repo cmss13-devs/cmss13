@@ -213,7 +213,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	pixel_x = 12
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -987,7 +987,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/ice_colony/surface/substation/smes)
 "afv" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -3235,7 +3235,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/south)
 "asZ" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -3470,7 +3470,7 @@
 /turf/open/lava/basalt/basalt10,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aup" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -3544,7 +3544,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "auE" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -3563,7 +3563,7 @@
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "auI" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -3663,10 +3663,10 @@
 /turf/open/floor/strata/altgreen3/east,
 /area/ice_colony/surface/hydroponics/lobby)
 "avp" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -3696,7 +3696,7 @@
 /turf/open/lava/basalt/cave/west,
 /area/ice_colony/exterior/surface/clearing/north)
 "avz" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -3896,7 +3896,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "awo" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -3996,7 +3996,7 @@
 /turf/open/lava/metal/filtrationside_lava/north,
 /area/ice_colony/surface/garage/one)
 "awH" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/strata/altgreen3,
@@ -4368,7 +4368,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ayJ" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/bush/ausbushes/lavendergrass{
@@ -5553,7 +5553,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/northwest)
 "aGP" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -5727,11 +5727,11 @@
 /turf/open/lava/basalt/glowing/basalt1,
 /area/ice_colony/exterior/surface/valley/south)
 "aIg" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/pottedplant{
@@ -5776,11 +5776,11 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
 "aIw" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/pottedplant{
@@ -6096,7 +6096,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/bar/bar)
 "aKC" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -7446,7 +7446,7 @@
 /area/ice_colony/surface/hangar/checkpoint)
 "aRv" = (
 /obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname,
-/turf/open/lava/metal/plating,
+/turf/open/floor/strata/floor3,
 /area/ice_colony/surface/bar/bar)
 "aRy" = (
 /obj/structure/surface/rack{
@@ -8868,7 +8868,7 @@
 	pixel_x = -18;
 	pixel_y = -1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -11386,7 +11386,7 @@
 /turf/open/lava/hot_lava/corner/north,
 /area/ice_colony/exterior/surface/valley/north)
 "btE" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -11519,11 +11519,11 @@
 	name = "faux bush";
 	desc = "A large plastic bush, it'll take something sharp and a lot of determination to clear away."
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -12088,7 +12088,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
 	dir = 1
 	},
-/turf/open/lava/metal/plating,
+/turf/open/floor/strata/floor3,
 /area/ice_colony/surface/bar/bar)
 "bCs" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
@@ -12098,7 +12098,7 @@
 	dir = 8;
 	pixel_y = 24
 	},
-/turf/open/lava/metal/plating,
+/turf/open/floor/strata/floor3,
 /area/ice_colony/surface/bar/bar)
 "bCt" = (
 /obj/effect/decal/hybrisa/road/lines2{
@@ -13145,7 +13145,7 @@
 /turf/open/lava/basalt/basalt10,
 /area/ice_colony/exterior/surface/valley/south)
 "bOS" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/strata/seeg3,
@@ -13875,7 +13875,7 @@
 /area/ice_colony/surface/clinic/treatment)
 "bZu" = (
 /obj/effect/broken_tile,
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -13912,7 +13912,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/ice_colony/exterior/surface/landing_pad)
 "bZH" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -14546,7 +14546,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_3,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "ckz" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -14598,7 +14598,7 @@
 /turf/open/lava/metal/warnplate/north,
 /area/ice_colony/underground/hangar)
 "clm" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -15032,7 +15032,7 @@
 /turf/open/lava/hot_lava/L_piece/west,
 /area/ice_colony/exterior/surface/clearing/pass)
 "crK" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -17954,7 +17954,7 @@
 /turf/open/floor/strata/medbay3,
 /area/ice_colony/surface/research/field_gear)
 "diF" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -17990,7 +17990,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/ice_colony/surface/dorms/restroom_w)
 "diV" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -18238,7 +18238,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/west)
 "dmt" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -18375,7 +18375,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/southeast)
 "doy" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -18672,7 +18672,7 @@
 /turf/open/floor/strata/smooth_dir/north,
 /area/ice_colony/surface/requesitions)
 "dsD" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -19902,7 +19902,7 @@
 /turf/open/lava/asteroid/directions/north,
 /area/ice_colony/exterior/surface/clearing/north)
 "dJW" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -19914,7 +19914,7 @@
 	pixel_y = 11;
 	layer = 2.01
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -20890,7 +20890,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/northeast)
 "dYZ" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -21721,7 +21721,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ejt" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -22705,7 +22705,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ewY" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -23987,7 +23987,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/ice_colony/surface/substation/smes)
 "eNN" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -24560,11 +24560,11 @@
 /turf/open/lava/engineer_ruins/plating,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "eUy" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -24977,7 +24977,7 @@
 /turf/open/floor/strata/altgreen3/west,
 /area/ice_colony/surface/hydroponics/south)
 "fbh" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/broken_tile,
@@ -25127,7 +25127,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "fcp" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -27561,11 +27561,11 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/north)
 "fLf" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -27979,11 +27979,11 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/valley/south)
 "fQf" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/bed/sofa/hybrisa/sofa/black{
@@ -28721,7 +28721,7 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/clearing/south)
 "fZw" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -30297,7 +30297,7 @@
 /turf/open/lava/hot_lava/side/east,
 /area/ice_colony/exterior/surface/valley/north)
 "gxK" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -31176,11 +31176,11 @@
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/ice_colony/surface/bar/bar)
 "gLc" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -31646,7 +31646,7 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "gQB" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/corsat,
+/turf/open/floor/strata/floor3,
 /area/ice_colony/surface/bar/bar)
 "gQF" = (
 /turf/open/floor/strata/lightblue3/north,
@@ -32685,11 +32685,11 @@
 /turf/open/floor/prison/floor_plate,
 /area/ice_colony/exterior/surface/container_yard)
 "heV" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -32828,11 +32828,11 @@
 /obj/effect/broken_tile{
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -32860,7 +32860,7 @@
 /turf/open/floor/strata/seeg4/west,
 /area/ice_colony/surface/dorms/restroom_w)
 "hhi" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -32904,7 +32904,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_6,
 /area/ice_colony/exterior/surface/valley/northeast)
 "hhO" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -33351,7 +33351,7 @@
 /turf/open/floor/strata/deco2,
 /area/ice_colony/underground/hangar)
 "hoJ" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -33631,7 +33631,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "hsl" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -33796,7 +33796,7 @@
 /obj/effect/broken_tile{
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -34411,7 +34411,7 @@
 /turf/open/lava/basalt/basalt10,
 /area/ice_colony/exterior/surface/valley/northwest)
 "hCQ" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -34558,10 +34558,10 @@
 /turf/open/lava/basalt/basalt8,
 /area/ice_colony/exterior/surface/valley/west)
 "hEb" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -34626,11 +34626,11 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
 "hER" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -35046,7 +35046,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/north)
 "hKM" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -35609,6 +35609,9 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/northeast)
+"hTZ" = (
+/turf/open/floor/strata/floor3,
+/area/ice_colony/surface/bar/bar)
 "hUh" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -37186,7 +37189,7 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "iuP" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -37514,7 +37517,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "izd" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -38140,7 +38143,7 @@
 /turf/open/floor/strata/altgreen3/north,
 /area/ice_colony/surface/hydroponics/lobby)
 "iHo" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -38259,11 +38262,11 @@
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/exterior/surface/valley/southwest)
 "iIy" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -39110,7 +39113,7 @@
 /turf/open/lava/hot_lava/L_piece/north,
 /area/ice_colony/exterior/surface/valley/northwest)
 "iVx" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -39154,7 +39157,7 @@
 	dir = 8;
 	pixel_y = 24
 	},
-/turf/open/lava/metal/plating,
+/turf/open/floor/strata/floor3,
 /area/ice_colony/surface/bar/canteen)
 "iVZ" = (
 /obj/structure/flora/alien/red_bulb/red_bulb_4{
@@ -40350,10 +40353,10 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "jos" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -40591,11 +40594,11 @@
 /turf/open/lava/basalt/glowing/basalt5,
 /area/ice_colony/exterior/surface/valley/west)
 "jsK" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/pottedplant{
@@ -41070,7 +41073,7 @@
 /turf/open/lava/asteroid/directions/north,
 /area/ice_colony/exterior/surface/clearing/north)
 "jAP" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -41358,7 +41361,7 @@
 /turf/open/lava/asteroid/directions/north,
 /area/ice_colony/exterior/surface/valley/west)
 "jEZ" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -41395,7 +41398,7 @@
 /turf/open/lava/basalt/glowing/basalt9,
 /area/ice_colony/exterior/surface/valley/south)
 "jFq" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/item/trash/hotdog/alt,
@@ -41504,7 +41507,7 @@
 /turf/open/lava/basalt/cave/north_east,
 /area/ice_colony/exterior/surface/valley/south)
 "jHl" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -42680,7 +42683,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
 "kci" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/strata/floor2,
@@ -43325,10 +43328,10 @@
 	pixel_x = -17;
 	pixel_y = 17
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -43355,7 +43358,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "kly" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -43616,7 +43619,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
 "kqD" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -43853,7 +43856,7 @@
 /turf/open/floor/strata/medbay4/east,
 /area/ice_colony/surface/research/temporary)
 "ktL" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -44741,11 +44744,11 @@
 /turf/open/floor/strata/lightblue3/west,
 /area/ice_colony/surface/hydroponics/lobby)
 "kGW" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -47247,7 +47250,7 @@
 /turf/open/lava/basalt/cave/west,
 /area/ice_colony/exterior/surface/valley/southwest)
 "lpp" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -47497,11 +47500,11 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/corsat,
@@ -47527,7 +47530,6 @@
 /turf/open/lava/basalt/basalt6,
 /area/ice_colony/exterior/surface/valley/west)
 "ltp" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
 /turf/open/lava/metal/plating,
 /area/ice_colony/exterior/surface/landing_pad)
@@ -49925,10 +49927,10 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/ice_colony/surface/dorms/restroom_w)
 "mbU" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -50287,11 +50289,11 @@
 /turf/open/lava/basalt/basalt10,
 /area/ice_colony/exterior/surface/clearing/north)
 "mhs" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -50668,7 +50670,7 @@
 /turf/open/floor/strata/deco,
 /area/ice_colony/surface/requesitions)
 "mmL" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -51770,7 +51772,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "mCf" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/strata/seeg3,
@@ -51837,7 +51839,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "mDi" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -51910,10 +51912,10 @@
 /turf/open/lava/basalt/glowing/basalt1,
 /area/ice_colony/exterior/surface/valley/north)
 "mEg" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -52335,7 +52337,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "mJI" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -52919,7 +52921,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "mRB" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -52960,7 +52962,7 @@
 /turf/open/lava/hot_lava/L_piece/south,
 /area/ice_colony/exterior/surface/clearing/north)
 "mRX" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -53186,7 +53188,7 @@
 /turf/closed/wall/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "mUo" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -53224,7 +53226,7 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/bar)
 "mUM" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -53434,7 +53436,7 @@
 /turf/open/lava/basalt/basalt12,
 /area/ice_colony/exterior/surface/valley/west)
 "mXH" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -54956,7 +54958,7 @@
 /turf/open/lava/hot_lava,
 /area/ice_colony/exterior/surface/valley/northwest)
 "ntG" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -57387,7 +57389,7 @@
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
 "ofn" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -57403,7 +57405,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/south)
 "ofG" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -57423,7 +57425,7 @@
 /turf/open/lava/basalt/basalt8,
 /area/ice_colony/exterior/surface/valley/northwest)
 "oge" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -57461,12 +57463,15 @@
 /turf/open/lava/basalt/basalt8,
 /area/ice_colony/exterior/surface/clearing/south)
 "ogG" = (
-/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
-	dir = 1
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/plating,
-/area/ice_colony/surface/bar/canteen)
+/turf/open/floor/grass,
+/area/ice_colony/surface/dorms/restroom_w)
 "ogN" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
@@ -57504,7 +57509,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/dorms/restroom_w)
 "ohj" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -59362,7 +59367,7 @@
 /turf/open/floor/strata/lightblue3/east,
 /area/ice_colony/surface/excavation)
 "oLh" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -61656,6 +61661,10 @@
 	},
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
 /turf/open/floor/grass,
 /area/ice_colony/surface/dorms/restroom_w)
 "ptF" = (
@@ -61693,6 +61702,9 @@
 "puJ" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
 /turf/open/floor/grass,
 /area/ice_colony/surface/dorms/restroom_w)
 "puK" = (
@@ -62247,11 +62259,11 @@
 /obj/effect/broken_tile{
 	dir = 4
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -62863,7 +62875,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south)
 "pJA" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/strata/gray_multi_tiles,
@@ -63742,7 +63754,7 @@
 /turf/open/floor/strata/floor2,
 /area/ice_colony/surface/hangar/alpha)
 "pXA" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -63878,11 +63890,11 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/hangar/beta)
 "pZI" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -64051,7 +64063,7 @@
 /turf/open/floor/strata/floor3,
 /area/ice_colony/surface/clinic/treatment)
 "qcd" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -65901,7 +65913,7 @@
 /turf/closed/wall/lava/solaris_dark,
 /area/ice_colony/surface/requesitions)
 "qzj" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -67232,7 +67244,7 @@
 /turf/open/lava/hot_lava/L_piece/east,
 /area/ice_colony/exterior/surface/clearing/pass)
 "qSx" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -67955,6 +67967,9 @@
 	pixel_x = -13
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
 /turf/open/floor/grass,
 /area/ice_colony/surface/dorms/restroom_w)
 "rbr" = (
@@ -68011,7 +68026,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/northeast)
 "rbP" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -68419,7 +68434,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "rhH" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -68621,7 +68636,7 @@
 	pixel_y = 12
 	},
 /obj/effect/broken_tile,
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /turf/open/floor/corsat,
@@ -69127,7 +69142,7 @@
 /turf/open/floor/strata/blue1,
 /area/ice_colony/surface/dorms/restroom_w)
 "rqG" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -70188,7 +70203,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/hangar/checkpoint)
 "rFi" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -70414,11 +70429,11 @@
 	pixel_x = -8;
 	pixel_y = -1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -70793,7 +70808,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_8,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "rMC" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -70998,7 +71013,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south)
 "rPG" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/bush/ausbushes/var3{
@@ -71099,7 +71114,7 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/excavation/storage)
 "rQs" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -71605,7 +71620,7 @@
 /turf/open/floor/strata/floor3,
 /area/ice_colony/surface/requesitions)
 "rYh" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -71826,10 +71841,10 @@
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/surface/disposals)
 "saX" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -73045,7 +73060,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/ice_colony/surface/requesitions)
 "ssx" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -75000,11 +75015,11 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/northeast)
 "sXx" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/bed/sofa/hybrisa/sofa/black{
@@ -75366,7 +75381,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_2,
 /area/ice_colony/exterior/surface/valley/northeast)
 "tbH" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -75900,11 +75915,11 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -76642,7 +76657,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "tvC" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -77336,7 +77351,7 @@
 /turf/open/floor/strata/lightblue4/west,
 /area/ice_colony/surface/research/tech_storage)
 "tFP" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
 	color = "#6b6b6b"
 	},
@@ -77347,7 +77362,7 @@
 /turf/open/lava/metal/filtrationside_lava_straight/east,
 /area/ice_colony/exterior/surface/clearing/pass)
 "tFX" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -78863,7 +78878,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/west)
 "ucK" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -78969,7 +78984,7 @@
 /turf/open/lava/hot_lava/side/west,
 /area/ice_colony/exterior/surface/valley/northwest)
 "ueo" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -79243,11 +79258,11 @@
 /turf/open/lava/hot_lava,
 /area/ice_colony/exterior/surface/valley/north)
 "uip" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/pottedplant{
@@ -79606,7 +79621,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/south)
 "una" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
 	},
 /obj/item/trash/cigbutt,
@@ -79955,7 +79970,7 @@
 /turf/open/lava/basalt/basalt6,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "usQ" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -81078,7 +81093,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/pass)
 "uHG" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -81634,7 +81649,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/ice_colony/exterior/surface/valley/northeast)
 "uOz" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
 /obj/structure/flora/pottedplant{
@@ -82122,10 +82137,10 @@
 /turf/open/lava/hot_lava,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "uZv" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -82967,7 +82982,7 @@
 	pixel_x = 15;
 	pixel_y = 16
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -83047,7 +83062,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "vlM" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -83479,11 +83494,11 @@
 /turf/open/floor/corsat/spiralplate,
 /area/ice_colony/exterior/surface/landing_pad)
 "vqf" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -84540,11 +84555,11 @@
 /turf/open/floor/prison/floor_plate,
 /area/ice_colony/exterior/surface/container_yard)
 "vFW" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -85363,7 +85378,7 @@
 /turf/open/lava/basalt/glowing/basalt1,
 /area/ice_colony/exterior/surface/clearing/south)
 "vRc" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -86883,7 +86898,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "wov" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -87406,7 +87421,7 @@
 	pixel_x = -13;
 	pixel_y = -13
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -89164,7 +89179,7 @@
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "wVi" = (
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -90007,10 +90022,10 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/ice_colony/exterior/surface/valley/northeast)
 "xhN" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
 	color = "#666a73"
 	},
@@ -90716,11 +90731,11 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/research/temporary)
 "xsS" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 1;
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -90804,7 +90819,7 @@
 	pixel_y = -12;
 	layer = 2.01
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -91333,7 +91348,7 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/valley/south)
 "xBP" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#6b6b6b"
 	},
@@ -92511,7 +92526,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/south)
 "xTt" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
@@ -92527,15 +92542,15 @@
 "xTJ" = (
 /obj/effect/broken_tile/double,
 /obj/effect/broken_tile/single{
-	pixel_x = 17;
-	pixel_y = 19
+	pixel_x = 12;
+	pixel_y = 6
 	},
 /obj/effect/broken_tile/angle{
 	dir = 1;
-	pixel_x = -14;
-	pixel_y = 15
+	pixel_x = -12;
+	pixel_y = 16
 	},
-/obj/effect/decal/hybrisa/deco_edging/corner{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 8;
 	color = "#6b6b6b"
 	},
@@ -92663,10 +92678,10 @@
 /turf/open/lava/basalt/basalt12,
 /area/ice_colony/exterior/surface/clearing/pass)
 "xVr" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#666a73"
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -93053,7 +93068,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/north)
 "yaD" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 8
 	},
@@ -93617,11 +93632,11 @@
 /turf/open/floor/strata/lightblue3,
 /area/ice_colony/surface/requesitions)
 "yjq" = (
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/effect/decal/hybrisa/deco_edging{
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 4;
 	color = "#666a73"
 	},
@@ -115558,7 +115573,7 @@ fAQ
 ewY
 mCf
 lMo
-gmw
+ogG
 pBM
 rFi
 dpi
@@ -117837,7 +117852,7 @@ miN
 gLb
 voy
 aKy
-aXK
+hTZ
 bCo
 aKy
 ikJ
@@ -119247,11 +119262,11 @@ aLj
 aKw
 aKw
 wci
-aXd
-ogG
+aTr
+aJR
 wci
-aXd
-ogG
+aTr
+aJR
 wci
 aKw
 aKw
@@ -125113,7 +125128,7 @@ aZF
 aZF
 kaJ
 aQu
-ltp
+rwg
 aZO
 fua
 wbe
@@ -125315,7 +125330,7 @@ aZF
 aZF
 aZF
 aQu
-aWp
+ltp
 aZO
 xce
 kfS

@@ -218,7 +218,7 @@
 	icon_state = "fireproof_suit"
 	item_state = "fireproof_suit"
 	uniform_restricted = null
-	storage_slots = 0
+	storage_slots = 1
 	flags_inv_hide = HIDEJUMPSUIT|HIDETAIL
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	allowed = list(
@@ -246,3 +246,8 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	hood_type = /obj/item/clothing/head/helmet/marine/fireproof_hood
+
+/obj/item/clothing/suit/storage/marine/cbrn/lava/Initialize(mapload)
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+	AddElement(/datum/element/corp_label/seegson)

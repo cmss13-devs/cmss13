@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	name = "Intel Computer"
 	var/label = ""
 	desc = "An USCM Intel Computer for data cataloguing and distribution."
-	icon_state = "terminal1_old"
+	icon_state = "comm"
 	unslashable = TRUE
 	unacidable = TRUE
 	var/typing_time = 20
@@ -235,7 +235,7 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 /obj/structure/machinery/computer/view_objectives
 	name = "Intel Database Computer"
 	desc = "An USCM Intel Database Computer used for consulting the current intel database."
-	icon_state = "terminal1_old"
+	icon_state = "comm"
 	unslashable = TRUE
 	unacidable = TRUE
 

@@ -20,9 +20,9 @@ jobs:
 
       - name: Generate App Token
         id: app-token-generation
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3.1.1
         with:
-          app-id: ${{ secrets.APP_ID }}
+          client-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Get The Script
@@ -58,7 +58,7 @@ jobs:
 
       - name: size-label
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: "pascalgn/size-label-action@v0.5.5"
+        uses: "pascalgn/size-label-action@v0.5.7"
         env:
           GITHUB_TOKEN: ${{ steps.app-token-generation.outputs.token }}
           IGNORED: "**/bun.lock"

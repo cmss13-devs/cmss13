@@ -2055,6 +2055,21 @@
 	name = "Corpse yautja"
 	corpse = TRUE
 
+/datum/equipment_preset/yautja/blooded/corpse/load_status(mob/living/carbon/human/new_human)
+	. = ..()
+	var/pose_number = rand(5)
+	switch(pose_number)
+		if(1)
+			new_human.pose = "dancing"
+		if(2)
+			new_human.pose = "napping"
+		if(3)
+			new_human.pose = "swimming"
+
+/datum/equipment_preset/yautja/blooded/corpse/load_name(mob/living/carbon/human/new_human, randomise)
+	. = ..()
+	new_human.change_real_name(new_human, "Unknown")
+
 /datum/equipment_preset/synth/usasf/corpse
 	name = "USASF Synthetic corpse"
 	corpse = TRUE

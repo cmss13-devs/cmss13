@@ -11325,12 +11325,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
-"aHp" = (
-/obj/structure/stairs/multiz/rock/down{
-	dir = 8
-	},
-/turf/open/predship/mainfloor/direction_2/north,
-/area/point_loma/airbase/exterior/crash_site/opening)
 "aHq" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/floor3,
@@ -160668,7 +160662,7 @@ hyy
 hyy
 hyy
 hyy
-aHp
+hyy
 hyy
 hyy
 hyy

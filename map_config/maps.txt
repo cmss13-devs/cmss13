@@ -68,7 +68,7 @@ map tyrargo_rift
 endmap
 
 map usasf_point_loma
-	minplayers 60
+	minplayers 80
 endmap
 
 map whiskey_outpost_v2

@@ -61,6 +61,14 @@
 					INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), human, 3 SECONDS, INTERRUPT_MOVED, EMOTE_ICON_WALLBOOSTING)
 					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
 
+	var/list/grabbed_things = list()
+	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
+		if(istype(in_hand, /obj/item/grab))
+			var/obj/item/grab/grabbing = in_hand
+			grabbed_things += grabbing.grabbed_thing
+			grabbing.grabbed_thing.forceMove(user.loc)
+		climb_up_time *= 1.5
+
 	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		if(human)
@@ -73,6 +81,8 @@
 	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
 
 	user.forceMove(above_current)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(above_current)
 	return
 
 /turf/closed/Enter(atom/movable/mover, atom/forget)

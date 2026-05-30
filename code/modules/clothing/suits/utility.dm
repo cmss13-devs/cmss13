@@ -207,7 +207,8 @@
 
 // Fireproof suit
 
-/obj/item/clothing/suit/fire/fireproof_suit
+///obj/item/clothing/suit/fire/fireproof_suit
+/obj/item/clothing/suit/storage/marine/cbrn/lava //child of cbrn suit for fireproofing and hood toggling
 	name = "HZP-12 entry-type proximity suit"
 	desc = "The 'HZP-12' is a bulky extreme environment suit manufactured by Lorenz SysTech Development under Seegson industrial contract for personnel operating in severe thermal hazard zones."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -217,13 +218,31 @@
 	icon_state = "fireproof_suit"
 	item_state = "fireproof_suit"
 	uniform_restricted = null
+	storage_slots = 0
+	flags_inv_hide = HIDEJUMPSUIT|HIDETAIL
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	allowed = list(
+		/obj/item/tool/extinguisher,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
+
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	flags_inventory = NOPRESSUREDMAGE
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
 	unacidable = TRUE
-
-	flags_inv_hide = HIDEJUMPSUIT|HIDETAIL
-
-/obj/item/clothing/suit/fire/fireproof_suit/Initialize(mapload)
-	. = ..()
-	RemoveElement(/datum/element/corp_label/armat)
-	AddElement(/datum/element/corp_label/seegson)
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	hood_type = /obj/item/clothing/head/helmet/marine/fireproof_hood

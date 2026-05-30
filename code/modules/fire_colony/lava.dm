@@ -21,11 +21,23 @@
 	. = ..()
 	invisibility = 101
 
-/obj/effect/blocker/lava/Crossed(mob/living/affected_mob)
-	if(!ismob(affected_mob))
+/obj/effect/blocker/lava/Crossed(atom/thing)
+	if(ishuman(thing) || isxeno(thing)) //affects everything
+		var/mob/living/affected_mob = thing
+		affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/lava, dam_amount = dam_amount, dam_type = dam_type, target_temp = target_temp, temp_delta = temp_delta, synth_dmg_mult=0.8, pred_dmg_mult=0.8, warning_message=warning_message, enviro=TRUE, apply_fire=TRUE, burn_reagent = burn_reagent, burn_stacks = burn_stacks)
 		return
-	if(!ishuman(affected_mob) && !isxeno(affected_mob)) //affects everything
+	if(isVehicleMultitile(thing))
+		var/obj/vehicle/multitile/vic = thing
+		//nothing is immune
+		vic.handle_acidic_environment(src)
+		START_PROCESSING(SSobj, src)
 		return
 
-	affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/lava, dam_amount = dam_amount, dam_type = dam_type, target_temp = target_temp, temp_delta = temp_delta, synth_dmg_mult=0.8, pred_dmg_mult=0.8, warning_message=warning_message, enviro=TRUE, apply_fire=TRUE, burn_reagent = burn_reagent, burn_stacks = burn_stacks)
+/obj/effect/blocker/lava/process()
+	var/targets_present = 0
+	for(var/obj/vehicle/multitile/vic in range(0, src))
+		targets_present++
+		vic.handle_acidic_environment(src)
+	if(targets_present < 1)
+		STOP_PROCESSING(SSobj, src)
 

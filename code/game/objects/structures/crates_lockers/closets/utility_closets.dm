@@ -122,8 +122,7 @@
 	. = ..()
 	contents = list()
 
-	new /obj/item/clothing/head/helmet/marine/fireproof_hood(src)
-	new /obj/item/clothing/suit/fire/fireproof_suit(src)
+	new /obj/item/clothing/suit/storage/marine/cbrn/lava(src)
 	new /obj/item/clothing/gloves/marine/fireproof_gloves(src)
 	new /obj/item/clothing/shoes/marine/fireproof_boots(src)
 	new /obj/item/reagent_container/glass/canister/oxygen(src)

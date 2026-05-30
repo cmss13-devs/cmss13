@@ -68,6 +68,9 @@
 		//multitile vehicles are, well, multitile and will be receiving damage for each tile, so damage is low per tile.
 		take_damage = 10
 
+	else if(istype(A, /obj/effect/blocker/lava))
+		take_damage = 15
+
 	//then we check whether this locomotion module is acid-resistant
 	if(acid_resistant)
 		take_damage = take_damage / 2

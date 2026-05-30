@@ -18,25 +18,22 @@
 	is_weedable = NOT_WEEDABLE
 	allow_construction = FALSE
 
-/turf/open/lava/hot_lava/Entered(atom/movable/AM)
-	if(iscarbon(AM))
-		var/mob/living/carbon/C = AM
-		var/slow_amount = 0.75
+/turf/open/lava/hot_lava/Entered(atom/thing)
+	if(iscarbon(thing))
+		var/mob/living/carbon/person = thing
 		var/can_stuck = 1
-		to_chat(C,SPAN_DANGER("The lava burns!"))
-		playsound(C,'sound/bullets/acid_impact1.ogg', 10, 1)
-		if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
-			slow_amount = 0.45
+		to_chat(person,SPAN_DANGER("The lava burns!"))
+		playsound(person,'sound/bullets/acid_impact1.ogg', 10, 1)
+		if(istype(person, /mob/living/carbon/xenomorph)||isyautja(person))
 			can_stuck = 1
-		var/new_slowdown = C.next_move_slowdown
-		if(!HAS_TRAIT(C, TRAIT_HAULED))
+		var/new_slowdown = person.next_move_slowdown
+		if(!HAS_TRAIT(person, TRAIT_HAULED))
 			if(prob(10))
-				to_chat(C, SPAN_WARNING("Moving through the molten lava slows you down.")) //Warning only
+				to_chat(person, SPAN_WARNING("Moving through the molten lava slows you down.")) //Warning only
 			else if(can_stuck && prob(40))
-				to_chat(C, SPAN_WARNING("You get stuck in the molten lava for a moment!"))
+				to_chat(person, SPAN_WARNING("You get stuck in the molten lava for a moment!"))
 				new_slowdown += 10
-			C.next_move_slowdown = new_slowdown
-	..()
+			person.next_move_slowdown = new_slowdown
 
 /turf/open/lava/lava_no_burn
 	name = "lava"

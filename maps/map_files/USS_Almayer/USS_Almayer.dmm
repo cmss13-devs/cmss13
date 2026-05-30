@@ -50071,7 +50071,8 @@
 /area/almayer/living/starboard_garden)
 "ekZ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Brig Visitation"
+	name = "\improper Brig Visitation";
+	req_access = list()
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9

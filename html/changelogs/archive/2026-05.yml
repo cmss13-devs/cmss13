@@ -263,3 +263,36 @@
   - code_imp: Bumped all github action versions because of node update requirement
   gnorse:
   - rscadd: Loreful synthetic death messages
+2026-05-30:
+  Blundir:
+  - bugfix: fixed some cases of m56d and m2c not showing how much they have in description
+  - imageadd: undeployed m2c resprite
+  - imageadd: m56d resprite with new onmob sprites and a complete camo set
+  - imageadd: props of m38d now have the old m56d sprite
+  - bugfix: fixed Dzho automaton missing all of his accesses for some reason
+  Doc12693420:
+  - rscadd: The Almayer may now receive Freelancers, Royal Commandos, and PMC's after
+      finishing FTL travel.
+  - rscadd: The Solar Devils spaceport's arrival message is now more detailed.
+  - rscadd: PMC's and Commandos have had their objective message changed.
+  - balance: Irkala Station will now send VAISO instead of elite freelancers.
+  - balance: Solar Devils may now send a fireteam or squad of marines.
+  - rscadd: Changed the Anchorpoint Station's docking message to be more descriptive.
+  Uristthedorf:
+  - balance: UPP deathsquad gets heap and can fire while invisible. Commando type
+      71 has alt iff.
+  Zenith, dimdimich1996:
+  - imageadd: New sprites like directional variants of a few sprites & more unique
+      turfs. Vending machine sprites as well as variants of existing ones. A few Legacy
+      sprite improvements.
+  - imagetweak: Various fixes to Hybrisa sprites, mostly turf. Legacy sprite improvements
+      to plants.dmi & beach.dmi.
+  - maptweak: Hybrisa map general fixes, some QoL stuff like less ledges, mostly visual
+      changes. A few new inserts including a Fire-Station, Small-Alley variant & a
+      large "Administrative Records Bureau Complex". Separates the Entertainment Complex
+      into it's own insert.
+  - rscadd: Addition of a fireman carry pamphlet, currently only used as rare survivor
+      loot.
+  larentoun:
+  - bugfix: B8 Smart Scope now tries to fire after a delay when it prevents IFF. Holding
+      M1 with MK2 is now exactly as Holding M1 with Smartgun Frontline.

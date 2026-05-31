@@ -40,7 +40,7 @@
 
 /obj/effect/alien/resin/special/cluster/pathogen/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/mob/pathogen/neo_blips.dmi', null, "cluster"))
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/mob/pathogen/neo_blips.dmi', null, "patho_cluster"))
 
 
 /obj/effect/alien/weeds/node/pylon

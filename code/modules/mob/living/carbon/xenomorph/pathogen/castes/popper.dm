@@ -237,8 +237,8 @@
 	name = PATHOGEN_STRUCTURE_COCOON
 	desc = "A cocoon to grow a Pathogen Popper."
 	construction_name = "mycelial cocoon"
-	cost = 800
-	max_per_xeno = 3
+	cost = 500
+	max_per_xeno = -1
 
 	build_path = /obj/effect/alien/resin/special/popper_cocoon
 

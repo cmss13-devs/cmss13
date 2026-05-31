@@ -347,6 +347,8 @@
 /mob/living/proc/KnockOut(amount)
 	if(!(status_flags & CANKNOCKOUT))
 		return
+	if((status_flags & ASLEPT))
+		return
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(S)
@@ -356,8 +358,10 @@
 	return S
 
 /// Sets exact remaining Knockout duration
-/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE)
+/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE, admin = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
+		return
+	if((status_flags & ASLEPT) && !admin)
 		return
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
@@ -374,6 +378,8 @@
 /// Adds to remaining Knockout duration
 /mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
+		return
+	if((status_flags & ASLEPT))
 		return
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()

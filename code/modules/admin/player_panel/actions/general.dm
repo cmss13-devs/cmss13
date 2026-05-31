@@ -39,10 +39,10 @@
 	var/mob/living/living_target = target
 
 	if(living_target.IsKnockOut()) //if they're already KnockOut, set their sleep to zero and remove the icon
-		living_target.SetKnockOut(0, TRUE)
+		living_target.SetKnockOut(0, TRUE, TRUE)
 		living_target.RemoveSleepingIcon()
 	else
-		living_target.SetKnockOut(9999999, TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.SetKnockOut(9999999, TRUE, TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
 		living_target.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")

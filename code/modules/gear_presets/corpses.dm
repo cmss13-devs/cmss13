@@ -1449,7 +1449,7 @@
 /datum/equipment_preset/corpse/hybrisa/tova
 	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
 	assignment = "Civilian - Fire Protection Specialist"
-
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/corpse/hybrisa/tova/load_gear(mob/living/carbon/human/new_human)
 

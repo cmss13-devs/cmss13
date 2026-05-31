@@ -363,6 +363,8 @@
 		return
 	if((status_flags & ASLEPT) && !admin)
 		return
+	if(admin)
+		status_flags |= ASLEPT
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(amount <= 0)

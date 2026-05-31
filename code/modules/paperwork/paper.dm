@@ -701,6 +701,10 @@
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
 	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
 
+/obj/item/paper/hybrisa/firefighternote
+	name = "Fannin' Fuego: Choke Like A Pro!"
+	info = "<h2>Okay-</h2> Okay. I know I fucked up, Tova. I got the thing on sale- though! I swear! I fitted it with a case full of stabilized foam, the kind they use to plug atmospheric breaches- don't ask where I got it from- it's so much cheaper than water... We won't have to have that Company bastard help take our business apart! They <b>need</b> us in this city, you know? Another fucking fire we can't fix and it's wraps for this casino town. I swear to God I can hear Jones whining about the bullshit they get up to in the caves. Just a few more months, and we're out, okay? Out! \n\n I know I'm gone for the week, you guys can handle shop while I'm out. <h2>Instructions're easy.</h2>  You see a flame, in a window, room or whatever, you aim <i>far</i>, it'll seal the whole room in foam, hardens <b>real</b> fast. It'll choke any flame in any enclosed space near-instantly, and honestly? It keeps all the valuables safe, too. You remember how Maizer was heckling us about his dog? Guy was so damn angry about his oven shorting he forgot all about his mother's jewelry box, and shit- if I treated that fire with the regular stuff, and the 'water' they give us? We'd probably be homeless right now. \n\n I'm serious, girl. This shit works. You could seal a whale's asshole with this thing."
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 

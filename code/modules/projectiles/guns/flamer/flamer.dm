@@ -1005,7 +1005,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
 	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
-	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. Current market price of this device is 34,000$, with significant discounts and premium payment plans for Weyland-Yutani Gold members, particularly those located in the Neroid sector."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"
@@ -1019,6 +1019,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer,
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout,
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor,
 	)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 
@@ -1054,3 +1055,19 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor
+	name = "\improper Flammenwerfer 3 Heavy DE-cineration Unit"
+	desc = "A civilian modification of the heavy incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Normally, these would be found on frontier colonies, for burning down forests and foliage. In this case, this seems to be a reclaimed model used by the local firefighters. \n\nIt even has a note attached, which hopefully explains *why* anyone would use an incinerator to fight fire...\n"
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. Current market price of this device is 34,000$- or, it would be, if this particular one hasn't had its warranty voided. Apparently a diligent professional has swapped out the propellant gas for... stabilized metallic foam."
+	icon_state = "fl3_survivor"
+	item_state = "fl3_survivor"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
+
+	item_icons = list(
+	WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+	WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi',
+)
+
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor

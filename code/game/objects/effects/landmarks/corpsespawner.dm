@@ -297,6 +297,9 @@
 	name = "Corpse - Civilian - Fire Protection Specialist"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/fire_fighter
 
+/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter/tova
+	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/fire_fighter/tova
 // Pizza Galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy

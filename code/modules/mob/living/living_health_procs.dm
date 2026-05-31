@@ -607,7 +607,7 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to consciousness
+	// restore us to consciousness if we're not admin slept
 	if(!(HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(TRAIT_SOURCE_ADMIN))))
 		set_stat(CONSCIOUS)
 	regenerate_all_icons()

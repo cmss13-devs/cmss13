@@ -38,11 +38,11 @@
 		return TRUE
 	var/mob/living/living_target = target
 
-	if(living_target.is_admin_slept()) //if they're already KnockOut, set their sleep to zero and remove the icon
+	if(living_target.is_admin_slept()) //if they're already slept, remove the aslept trait and remove the icon
 		living_target.set_admin_sleep(FALSE)
 		living_target.RemoveSleepingIcon()
 	else
-		living_target.set_admin_sleep(TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.set_admin_sleep(TRUE) //if they're not, add the aslept trait and add the sleep icon, so other marines nearby know not to mess with them.
 		living_target.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")

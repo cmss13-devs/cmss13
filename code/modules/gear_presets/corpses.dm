@@ -1447,7 +1447,7 @@
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/hybrisa/tova
-	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	name = "Corpse - Burst - Fire Protection Specialist - Unfortunate Firestation Civilian"
 	assignment = "Civilian - Fire Protection Specialist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

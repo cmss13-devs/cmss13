@@ -505,11 +505,11 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
-	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
+	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || ispopper(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
 	var/new_tod = exempt_tod ? 1 : ghost.timeofdeath
 
 	// if they died as facehugger or lesser drone, bypass typical TOD checks
-	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src) || ispopper(src))
 
 	if(ghost.client)
 		ghost.client.init_verbs()
@@ -578,10 +578,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.timeofdeath = world.time
 
 			// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
-			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+			var/new_tod = (isfacehugger(src) || islesserdrone(src) || ispopper(src)) ? 1 : ghost.timeofdeath
 
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
-			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src) || ispopper(src))
 
 			if(ghost.client)
 				ghost.client.player_details.larva_pool_time = max(ghost.client.player_details.larva_pool_time, new_tod)

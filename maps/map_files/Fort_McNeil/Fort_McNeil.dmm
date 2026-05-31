@@ -1005,16 +1005,20 @@
 /obj/structure/closet,
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "acT" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "acU" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "acV" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "acW" = (
@@ -1058,6 +1062,7 @@
 "adb" = (
 /obj/structure/machinery/space_heater/radiator/red,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/darkbrown2/west,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "adc" = (
@@ -1065,6 +1070,7 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/darkbrown2/east,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "add" = (
@@ -1076,6 +1082,7 @@
 /obj/item/cell/high,
 /obj/item/cell/high,
 /obj/item/stack/sheet/mineral/phoron/small_stack,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "ade" = (
@@ -1208,6 +1215,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "adx" = (
@@ -1251,6 +1259,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool,
 /obj/item/tool/weldingtool,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "adC" = (
@@ -1785,6 +1794,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
 /obj/item/cell/high,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afb" = (
@@ -1807,6 +1817,7 @@
 	icon_state = "trash_6";
 	pixel_x = -3
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "aff" = (
@@ -1814,6 +1825,7 @@
 	dir = 8;
 	pixel_x = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afg" = (
@@ -1859,14 +1871,21 @@
 "afn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_box/magazine/misc/power_cell/empty,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afo" = (
 /obj/structure/closet/crate,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afp" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stool{
+	layer = 3.2;
+	pixel_x = -4;
+	pixel_y = 11
+	},
 /turf/open/floor/prison/darkyellow2,
 /area/fort_mcneil/indoors/engi)
 "afq" = (
@@ -1887,6 +1906,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afu" = (
@@ -1933,10 +1953,12 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afC" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afD" = (
@@ -1982,12 +2004,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/misc/flashlight,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afN" = (
@@ -2119,6 +2143,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/hydro)
+"agn" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/landing_zone_1)
 "ago" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -2192,6 +2220,7 @@
 	icon_state = "trash_6";
 	pixel_x = -3
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "agE" = (
@@ -3096,6 +3125,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/fort_mcneil/indoors/dorm)
+"ajy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/landing_zone_1)
+"ajz" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/fort_mcneil/landing_zone_1)
 "akJ" = (
 /turf/closed/wall/strata_outpost,
 /area/fort_mcneil/indoors/connection_paths)
@@ -3209,6 +3253,7 @@
 /obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "awL" = (
@@ -3317,6 +3362,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/fort_mcneil/outdoors/scrublands/north)
 "aFU" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "aFY" = (
@@ -3491,6 +3537,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/darkbrown2/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "bbv" = (
@@ -3634,6 +3681,7 @@
 /area/fort_mcneil/landing_zone_1)
 "bzq" = (
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/colony_exterior/north_east)
 "bzt" = (
@@ -4173,10 +4221,8 @@
 /area/fort_mcneil/indoors/command)
 "cFG" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras{
-	pixel_x = 1
-	},
 /obj/effect/landmark/map_item,
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/fort_mcneil/indoors/command)
 "cFQ" = (
@@ -4641,6 +4687,7 @@
 /area/fort_mcneil/outdoors/scrublands/north)
 "dEM" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "dIn" = (
@@ -4677,9 +4724,6 @@
 	},
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/fort_mcneil/outdoors/colony_exterior/north)
-"dOF" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
-/area/fort_mcneil/landing_zone_1/ceiling)
 "dOI" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
@@ -5058,16 +5102,11 @@
 /area/fort_mcneil/oob)
 "eML" = (
 /obj/structure/surface/table/almayer,
-/obj/item/stack/sheet/metal/small_stack{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/stack/sheet/metal/small_stack{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/computer/objective{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fort_mcneil/indoors/engi)
@@ -6046,11 +6085,10 @@
 	color = "#EBD9B7";
 	pixel_y = -2
 	},
-/obj/item/storage/pouch/sling,
-/obj/item/storage/pouch/medkit/full,
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/fort_mcneil/indoors/comms_outside)
 "hxM" = (
@@ -6798,6 +6836,7 @@
 	icon_state = "W"
 	},
 /obj/structure/fence/slim/dark,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/landing_zone_1)
 "iPx" = (
@@ -7607,6 +7646,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/landing_zone_1)
 "kEl" = (
@@ -7979,6 +8019,11 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/comms_inside)
 "lzk" = (
+/obj/item/stack/sheet/mineral/phoron/small_stack,
+/obj/item/stack/sheet/mineral/phoron/small_stack,
+/obj/item/stack/sheet/mineral/phoron/small_stack,
+/obj/item/stack/sheet/mineral/phoron/small_stack,
+/obj/structure/closet/crate/radiation,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "lzt" = (
@@ -8169,6 +8214,7 @@
 	pixel_x = -6;
 	pixel_y = -10
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/landing_zone_1)
 "lYk" = (
@@ -8519,6 +8565,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "nbf" = (
@@ -9385,6 +9432,7 @@
 "oSF" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "oSW" = (
@@ -9581,6 +9629,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/colony_exterior/north_east)
 "put" = (
@@ -9985,6 +10034,14 @@
 "qAh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/prison/darkyellowcorners2,
 /area/fort_mcneil/indoors/engi)
@@ -10591,6 +10648,8 @@
 	pixel_y = -2
 	},
 /obj/item/tool/weldingtool/largetank,
+/obj/item/storage/pouch/sling,
+/obj/item/storage/pouch/medkit/full,
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/fort_mcneil/indoors/comms_outside)
@@ -11009,6 +11068,7 @@
 /turf/open/floor/prison,
 /area/fort_mcneil/outdoors/colony_exterior/south_east)
 "sIr" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "sKk" = (
@@ -12401,6 +12461,7 @@
 	dir = 8
 	},
 /obj/item/lightstick/planted,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/landing_zone_1)
 "vJZ" = (
@@ -12478,6 +12539,7 @@
 /area/fort_mcneil/indoors/comms_inside)
 "vTx" = (
 /obj/structure/flora/wood/stick2,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/landing_zone_1)
 "vTO" = (
@@ -24914,12 +24976,12 @@ dah
 aad
 klv
 rjF
-dOF
-dOF
+abR
+abR
 sIr
 nba
-dOF
-dOF
+abR
+abR
 vAK
 isd
 isd
@@ -25014,14 +25076,14 @@ isd
 isd
 isd
 bOY
-dOF
-dOF
+abR
+abR
 afB
 dEM
 dEM
 acT
-dOF
-dOF
+abR
+abR
 rmQ
 isd
 aak
@@ -25115,14 +25177,14 @@ isd
 isd
 isd
 bOY
-dOF
+abR
 afL
 afC
 aft
 afn
 acU
 acS
-dOF
+abR
 rmQ
 aad
 isd
@@ -25216,14 +25278,14 @@ isd
 isd
 isd
 bOY
-dOF
+abR
 adB
 afC
 aFU
 dEM
 afe
 adw
-dOF
+abR
 rCX
 kwx
 lCg
@@ -25317,14 +25379,14 @@ isd
 aah
 isd
 bOY
-dOF
+abR
 afM
 acV
 aFU
 afo
 acT
 afa
-dOF
+abR
 adF
 aac
 aac
@@ -25418,14 +25480,14 @@ isd
 isd
 isd
 nBe
-dOF
-dOF
+abR
+abR
 acV
 dEM
 dEM
 aff
-dOF
-dOF
+abR
+abR
 adF
 aac
 aay
@@ -25520,14 +25582,14 @@ kwx
 lCg
 kwx
 iPs
-dOF
-dOF
+abR
+abR
 sIr
 nba
-dOF
-dOF
-snK
-eIM
+abR
+abR
+ajy
+aac
 eIM
 aal
 wMu
@@ -25628,7 +25690,7 @@ dkt
 sgZ
 gAD
 vJT
-eIM
+aac
 xtT
 xtT
 xtT
@@ -25724,10 +25786,10 @@ aay
 aac
 abl
 hwf
-xtT
-uTL
-uTL
-uTL
+abE
+ajz
+ajz
+ajz
 lXQ
 uTL
 uTL
@@ -25824,8 +25886,8 @@ aac
 kQr
 aac
 aac
-uTL
-uTL
+ajz
+ajz
 aai
 eIM
 eIM
@@ -25924,8 +25986,8 @@ fYN
 gKW
 aac
 oZT
-uTL
-uTL
+ajz
+ajz
 pEf
 qWk
 aEt
@@ -26018,13 +26080,13 @@ isd
 aah
 iKJ
 mNW
-dOF
-dOF
-dOF
-dOF
+abR
+abR
+abR
+abR
 adF
 abE
-xtT
+abE
 vTx
 eIM
 kAw
@@ -26119,13 +26181,13 @@ isd
 isd
 bOY
 abR
-dOF
+abR
 oSF
 adb
-dOF
+abR
 adF
-xtT
-xtT
+abE
+abE
 eIM
 vCD
 cBX
@@ -26220,12 +26282,12 @@ ofL
 isd
 iKJ
 ldU
-dOF
+abR
 bbn
 agD
 awy
 kDx
-xtT
+abE
 eIM
 lPL
 eIM
@@ -26324,7 +26386,7 @@ ceA
 ceA
 add
 adc
-dOF
+abR
 kDx
 aal
 eIM
@@ -26424,8 +26486,8 @@ ofL
 ofL
 ceA
 ceA
-dOF
-dOF
+abR
+abR
 nIZ
 eIM
 eIM
@@ -27469,7 +27531,7 @@ eIM
 eIM
 lZF
 kYg
-lZF
+agn
 ofL
 ofL
 ofL

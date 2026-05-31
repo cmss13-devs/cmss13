@@ -111,9 +111,10 @@
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
+	var/hivenumber = GLOB.pathogen_round ? XENO_HIVE_PATHOGEN : XENO_HIVE_NORMAL
 	while(length(GLOB.xeno_tunnels) && i++ < 3)
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
-		T = new(t)
+		T = new(t, hivenumber)
 		T.id = "hole[i]"
 	return TRUE
 

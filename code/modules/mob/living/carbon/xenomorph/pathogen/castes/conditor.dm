@@ -24,6 +24,7 @@
 	evolves_to = list()
 
 	heal_resting = 1
+	is_intelligent = TRUE
 
 	minimap_icon = "conditor"
 	evolution_allowed = FALSE

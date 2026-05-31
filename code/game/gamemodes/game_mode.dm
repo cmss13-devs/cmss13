@@ -96,6 +96,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 /// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.
 /datum/game_mode/proc/setup_structures()
 	for(var/obj/effect/landmark/structure_spawner/setup/SS in GLOB.structure_spawners)
+		if(GLOB.pathogen_round)
+			SS.set_pathogen_spawns()
 		SS.apply()
 
 ///post_setup()

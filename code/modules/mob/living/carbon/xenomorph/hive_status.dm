@@ -1846,8 +1846,7 @@
 
 	free_slots = list(
 		/datum/caste_datum/pathogen/neomorph = 2,
-		/datum/caste_datum/pathogen/conditor = 1,
-		/datum/caste_datum/pathogen/venator = 1,
+		/datum/caste_datum/pathogen/conditor = 2,
 	)
 
 	hive_structures_limit = list(
@@ -1869,6 +1868,8 @@
 	tacmap_requires_queen_ovi = FALSE
 	var/max_poppers = 8
 	var/matriarch_enabled = FALSE
+	/// Ckey of the player who rolled Queen, so they don't need admin approval.
+	var/free_overmind
 
 /datum/hive_status/pathogen/setup_banned_allies()
 	banned_allies = list("All")

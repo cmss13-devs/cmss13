@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(xeno_tunnels)
 GLOBAL_LIST_EMPTY(crap_items)
 GLOBAL_LIST_EMPTY(good_items)
 GLOBAL_LIST_EMPTY_TYPED(structure_spawners, /obj/effect/landmark/structure_spawner)
+GLOBAL_VAR_INIT(pathogen_round, FALSE)
 GLOBAL_LIST_EMPTY(hunter_primaries)
 GLOBAL_LIST_EMPTY(hunter_secondaries)
 

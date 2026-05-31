@@ -36,6 +36,11 @@
 "aah" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/oob/beach)
+"aai" = (
+/turf/closed/wall/rock/brown{
+	desc = "A rough wall of hardened rocsk."
+	},
+/area/point_loma/research_facility/cave/south)
 "aaj" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/carpetblack,
@@ -2499,16 +2504,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
-"ahV" = (
-/obj/structure/machinery/door/airlock/maintenance/colony{
-	dir = 8;
-	autoname = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/engineering)
 "ahW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -8508,6 +8503,9 @@
 	},
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
+"ayH" = (
+/turf/closed/wall/new_varadero/reinforced/hull,
+/area/point_loma/research_facility/hallway/west)
 "ayI" = (
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/super_death_cannon/observation/civ)
@@ -13629,23 +13627,10 @@
 /obj/effect/decal/hybrisa/lattice,
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/point_loma/airbase/exterior/crash_site)
-"aNd" = (
-/obj/structure/machinery/door/airlock/maintenance/colony{
-	dir = 8;
-	autoname = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/gym/basketball)
 "aNe" = (
 /obj/item/reagent_container/food/drinks/soymilk{
 	pixel_y = -8;
 	pixel_x = 9
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
 	},
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
@@ -13664,15 +13649,9 @@
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "aNg" = (
 /obj/structure/window,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
 "aNh" = (
-/obj/structure/bed/chair{
-	pixel_y = 5
-	},
 /obj/structure/window,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22966,13 +22945,6 @@
 	},
 /turf/open/new_varadero/alt_concrete/floor,
 /area/point_loma/research_facility/engineering)
-"bnn" = (
-/obj/structure/machinery/door/airlock/maintenance/colony{
-	dir = 2;
-	autoname = 1
-	},
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/engineering)
 "bno" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -30017,16 +29989,6 @@
 "bJf" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
-"bJg" = (
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/engineering)
-"bJh" = (
-/obj/structure/machinery/light/small,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/engineering)
 "bJi" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/hallway/central)
@@ -37993,33 +37955,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
 /area/point_loma/research_facility/gym/basketball)
-"cpk" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/engineering)
-"cpl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/engineering)
-"cpm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/new_varadero/alt_concrete/floor,
-/area/point_loma/research_facility/engineering)
-"cpn" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/engineering)
 "cpo" = (
 /obj/structure/window/framed/new_varadero/foundation,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -107178,7 +107113,7 @@ bnj
 bmW
 bmK
 bmC
-bmz
+bjt
 bmc
 bjt
 blB
@@ -107360,7 +107295,7 @@ bnk
 bmW
 bmK
 bjt
-bmz
+bjt
 bjV
 bkn
 bkn
@@ -107542,7 +107477,7 @@ bnl
 bmK
 bmK
 bjt
-bmz
+bjt
 bjV
 bjt
 bkI
@@ -107724,7 +107659,7 @@ bjV
 bmK
 bjt
 bjt
-cpk
+bmm
 bjV
 bjt
 blC
@@ -107904,9 +107839,9 @@ bjt
 bnB
 bmX
 bmX
-cpl
-blA
-bqo
+bjR
+bjt
+bjt
 bjV
 bjV
 bjV
@@ -108086,7 +108021,7 @@ bjt
 bnB
 bmY
 bmY
-cpm
+bjR
 bjt
 acD
 acD
@@ -108268,7 +108203,7 @@ bnN
 bnB
 bnm
 acL
-cpm
+bjR
 bjt
 acD
 bIA
@@ -108450,7 +108385,7 @@ bjV
 bjV
 bjV
 bjV
-ahV
+bjV
 bjV
 acD
 aIH
@@ -108630,10 +108565,10 @@ czg
 cyW
 cyW
 cyH
-acD
-bJg
-cpn
-acD
+ayH
+aai
+aai
+aai
 bIA
 bIA
 bIA
@@ -108812,11 +108747,11 @@ bnA
 ccI
 ccI
 cyI
-bnn
-bJg
-bJh
-acD
-bIA
+ayH
+aai
+aai
+aai
+aai
 bIA
 bIA
 bZQ
@@ -108994,13 +108929,13 @@ bJL
 ccI
 ccI
 cyI
-acD
-bJg
-cpn
-acD
-bIA
-bIA
-bIA
+ayH
+aai
+aai
+aai
+aai
+aai
+aai
 bIA
 bIA
 bIA
@@ -109176,9 +109111,9 @@ cEW
 ccI
 ccI
 cyI
-bmK
-bmK
-aNd
+ahR
+ahR
+bQH
 bQH
 bQH
 bQH
@@ -109906,7 +109841,7 @@ ccI
 cyI
 bSU
 aNo
-cpa
+big
 aMZ
 bje
 bje
@@ -207496,7 +207431,7 @@ bui
 bui
 bui
 bui
-bui
+asb
 bui
 bui
 bui

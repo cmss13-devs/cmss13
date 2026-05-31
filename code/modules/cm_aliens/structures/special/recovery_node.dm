@@ -9,6 +9,7 @@
 /obj/effect/alien/resin/special/plasma_tree/pathogen
 	name = PATHOGEN_STRUCTURE_RECOVERY
 	desc = "A pulsing node that has liquid plasma dripping around it."
+	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
 	forced_hive = TRUE
 	hivenumber = XENO_HIVE_PATHOGEN
 
@@ -75,6 +76,7 @@
 
 /obj/effect/alien/resin/special/recovery/pathogen
 	name = PATHOGEN_STRUCTURE_RECOVERY
+	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
 	forced_hive = TRUE
 	hivenumber = XENO_HIVE_PATHOGEN
 

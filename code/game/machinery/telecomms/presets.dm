@@ -350,13 +350,21 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	var/list/held_children_weeds = parent_node.children
 	var/cluster_loc = cluster_parent.loc
-	var/linked_hive = cluster_parent.linked_hive
+	var/datum/hive_status/linked_hive = cluster_parent.linked_hive
 
 	parent_node.children = list()
 
 	qdel(cluster_parent)
 
-	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
+	var/is_pathogen = FALSE
+	if(linked_hive.hivenumber == XENO_HIVE_PATHOGEN)
+		is_pathogen = TRUE
+
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon
+	if(is_pathogen)
+		new_pylon = new /obj/effect/alien/resin/special/pylon/endgame/pathogen(cluster_loc, linked_hive)
+	else
+		new_pylon = new(cluster_loc, linked_hive)
 	new_pylon.node.children = held_children_weeds
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
@@ -368,10 +376,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	corrupted = TRUE
 
-	corruption_image = image(icon, icon_state = "resin_growing")
+	var/image_name = is_pathogen ? "pathogen_blight_growing" : "resin_growing"
+	corruption_image = image(icon, icon_state = image_name)
 
 	flick_overlay(src, corruption_image, (2 SECONDS))
-	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption), is_pathogen), (2 SECONDS))
 
 	if(!captured_before)
 		captured_before = TRUE
@@ -390,11 +399,12 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	COOLDOWN_START(src, corruption_delay, XENO_PYLON_DESTRUCTION_DELAY)
 
 /// Handles moving the overlay from growing to idle
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption(is_pathogen = FALSE)
 	if(!corrupted)
 		return
 
-	corruption_image = image(icon, icon_state = "resin_idle")
+	var/image_name = is_pathogen ? "pathogen_blight_idle" : "resin_idle"
+	corruption_image = image(icon, icon_state = image_name)
 
 	overlays += corruption_image
 

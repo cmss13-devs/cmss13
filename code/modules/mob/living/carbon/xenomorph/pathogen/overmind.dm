@@ -47,6 +47,9 @@
 	return TRUE
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/make_overmind(mob/living/carbon/xenomorph/target_creature)
+	var/datum/hive_status/pathogen/confluence = linked_hive
+	if(!istype(confluence))
+		return FALSE
 	if(!istype(target_creature) || target_creature.hivenumber != XENO_HIVE_PATHOGEN)
 		return FALSE
 	if(!target_creature.client)
@@ -84,8 +87,6 @@
 	linked_hive.add_hive_leader(overmind_mob)
 	overmind_mob.lock_evolve = TRUE
 
-	if(!overmind_strengthened)
-		overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 	// Remove their abilities
 	for(var/datum/action/xeno_action/action in overmind_mob.actions)
@@ -94,6 +95,7 @@
 	var/list/abilities_to_give = overmind_abilities.Copy()
 
 	if(!overmind_strengthened)
+		overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 		abilities_to_give -= overmind_abilities_strong
 
 	for(var/path in abilities_to_give)

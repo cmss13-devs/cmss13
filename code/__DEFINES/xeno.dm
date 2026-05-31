@@ -638,6 +638,8 @@
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define PATHOGEN_STRUCTURE_CORE "blight core"
+#define PATHOGEN_STRUCTURE_CLUSTER "blight cluster"
+#define PATHOGEN_STRUCTURE_PYLON "blight pylon"
 #define PATHOGEN_STRUCTURE_COCOON "mycelial cocoon"
 #define PATHOGEN_STRUCTURE_COCOON_BIG "huge mycelial cocoon"
 

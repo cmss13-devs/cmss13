@@ -59,7 +59,7 @@
 		return FALSE
 
 	if(hive.hivecore_cooldown)
-		to_chat(creature, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
+		to_chat(creature, SPAN_WARNING("The blight is still recovering from the death of the last core, wait until the blight has recovered!"))
 		return FALSE
 
 	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE))
@@ -162,7 +162,7 @@
 	name = PATHOGEN_STRUCTURE_CORE
 	desc = "A giant pulsating mound of mass. It looks very much alive."
 	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-	icon_state = "blight_core"
+	icon_state = "pathogen_core"
 	health = 2500
 	light_range = 4
 	cover_range = WEED_RANGE_CORE
@@ -207,6 +207,7 @@
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/onclick/choose_resin/pathogen/overmind_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/pathogen/overmind_macro, //fifth macro
+		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/onclick/blight_wave/overmind,
 		)
 
@@ -315,7 +316,7 @@
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
 	blight_dissovling = TRUE
-	give_action(dissolver, /datum/action/xeno_action/activable/create_core)
+	//give_action(dissolver, /datum/action/xeno_action/activable/create_core)
 	qdel(src)
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/cooldownFinish(datum/hive_status/linked_hive)

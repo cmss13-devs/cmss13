@@ -377,7 +377,7 @@
 
 /datum/hive_status/proc/recalculate_hive()
 	//No leaders for a Hive without a Queen!
-	queen_leader_limit = living_xeno_queen ? 4 : 0
+	queen_leader_limit = living_xeno_queen ? initial(queen_leader_limit) : 0
 
 	if (length(xeno_leader_list) > queen_leader_limit)
 		var/diff = 0
@@ -1836,6 +1836,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	allow_no_queen_evo = TRUE
+	queen_leader_limit = 5
 
 	hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
 
@@ -1852,17 +1853,110 @@
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,
 		PATHOGEN_STRUCTURE_COCOON = 3,
+		PATHOGEN_STRUCTURE_CLUSTER = 8,
+		PATHOGEN_STRUCTURE_PYLON = 2,
+		//PATHOGEN_STRUCTURE_RECOVERY = 6,
+		//PATHOGEN_STRUCTURE_PLASMA_TREE = 3,
 	)
 
 	hive_structure_types = list(
 		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
+		PATHOGEN_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/pathogen_cluster,
+		//PATHOGEN_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
+		//PATHOGEN_STRUCTURE_PLASMA_TREE = /datum/construction_template/xenomorph/plasma_tree
 	)
 
 	tacmap_requires_queen_ovi = FALSE
 	var/max_poppers = 8
+	var/matriarch_enabled = FALSE
 
 /datum/hive_status/pathogen/setup_banned_allies()
 	banned_allies = list("All")
+
+/datum/hive_status/pathogen/post_setup()
+	addtimer(CALLBACK(src, PROC_REF(allow_matriarch), GLOB.king_acquisition_time))
+
+/datum/hive_status/pathogen/proc/allow_matriarch()
+	if(matriarch_enabled)
+		return FALSE
+
+	xeno_message(SPAN_PATHOGEN_ANNOUNCE("The Confluence is now strong enough to support the Matriarch"), hivenumber = XENO_HIVE_PATHOGEN)
+	xeno_maptext("The Confluence can now support the Matriarch", "Matriarch", XENO_HIVE_PATHOGEN)
+
+	matriarch_enabled = TRUE
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(!is_ground_level(current_mob.z))
+			continue
+
+		if(!current_mob.client)
+			continue
+
+		playsound_client(current_mob.client, 'sound/pathogen_creatures/pathogen_matriarch_screech_distant.ogg', current_mob.loc, 70, "minor")
+
+		if(ishuman(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
+
+		if(issynth(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, unlike anything you've ever heard before. You begin to analyze and decrypt the strange vocalization."))
+			current_mob.add_language(LANGUAGE_PATHOGEN)
+
+	addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 3 MINUTES))
+	return TRUE
+
+/datum/hive_status/pathogen/proc/build_matrarch_cocoon()
+	if(!matriarch_enabled || has_hatchery)
+		return FALSE
+	if(length(active_endgame_pylons) < 2)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 5 MINUTES))
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to insufficient pylons. It will attempt to grow again in 5 minutes."))
+		return FALSE
+	if(!hive_location)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 5 MINUTES))
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there being no blight core. It will attempt to grow again in 5 minutes."))
+		return FALSE
+
+	var/turf/spawn_turf
+	for(var/turf/potential_turf in orange(5, hive_location))
+		var/failed = FALSE
+		for(var/x_offset in -1 to 1)
+			for(var/y_offset in -1 to 1)
+				var/turf/turf_to_check = locate(potential_turf.x + x_offset, potential_turf.y + y_offset, potential_turf.z)
+				if(turf_to_check.density)
+					failed = TRUE
+					break
+				if(!turf_to_check.is_weedable)
+					failed = TRUE
+					break
+				var/area/target_area = get_area(turf_to_check)
+				if(target_area.flags_area & AREA_NOBURROW)
+					failed = TRUE
+					break
+				for(var/obj/structure/struct in turf_to_check)
+					if(struct.density)
+						failed = TRUE
+						break
+				for(var/obj/effect/alien/resin/special in turf_to_check)
+					failed = TRUE
+					break
+		if(!failed)
+			spawn_turf = potential_turf
+			break
+
+	if(!spawn_turf)
+		xeno_message(SPAN_PATHOGEN_ANNOUNCE("Unable to find viable spawn point for the Matriarch cocoon."), hivenumber = XENO_HIVE_PATHOGEN)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 2 MINUTES))
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there not being enough space. It will attempt to grow again in 2 minutes."))
+		return FALSE
+
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in active_endgame_pylons)
+		pylon.protection_level = TURF_PROTECTION_OB
+		pylon.update_icon()
+
+	new /obj/effect/alien/resin/matriarch_cocoon(spawn_turf, XENO_HIVE_PATHOGEN)
+	return TRUE
 
 /datum/hive_status/pathogen/bless_on_hijack()
 	return

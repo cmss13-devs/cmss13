@@ -324,8 +324,6 @@
 		return FALSE
 	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || !isyautja(human_passer))
 		return FALSE
-	if(!inhaling) // ########### STOPS THE PROC DOING ANYTHING FOR NOW
-		return FALSE
 
 	inhaling = TRUE
 

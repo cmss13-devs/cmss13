@@ -32,11 +32,21 @@
 	/// Candidates
 	var/list/mob/living/carbon/xenomorph/candidates = list()
 	/// Time to hatch
-	var/time_to_hatch = 15 MINUTES
-	var/remaining_time_to_hatch = 15 MINUTES
-	var/resurrection_delay = 20 MINUTES
+	var/time_to_hatch = 10 MINUTES
+	var/remaining_time_to_hatch = 10 MINUTES
+	var/resurrection_delay = 15 MINUTES
 	/// Stage of hatching
 	var/stage = 0
+	/// Announced that the hatchery was paused
+	var/announced_paused = FALSE
+	/// If this uses pylons or not (legit or admin spawned)
+	var/uses_pylons = TRUE
+
+/obj/effect/alien/resin/matriarch_cocoon/no_pylons
+	uses_pylons = FALSE
+	time_to_hatch = 15 MINUTES
+	remaining_time_to_hatch = 15 MINUTES
+	resurrection_delay = 20 MINUTES
 
 /obj/effect/alien/resin/matriarch_cocoon/Destroy()
 	if(!hatched)
@@ -48,7 +58,7 @@
 			if(!length(hive.totalXenos))
 				continue
 			if(cur_hive_num == hivenumber)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE MATRIARCH'S COCOON WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("THE MATRIARCH'S COCOON WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 				hive.has_hatchery = FALSE
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("THE STRANGE COCOON WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
@@ -82,11 +92,47 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hivenumber)
-			xeno_announcement(SPAN_XENOANNOUNCE("The Matriarch is growing at [get_area_name(loc)]. Protect it, at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("The Matriarch is growing at [get_area_name(loc)]. Protect it, at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Something unusual is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /obj/effect/alien/resin/matriarch_cocoon/process(delta_time)
+	if(uses_pylons)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+		if(length(hive.active_endgame_pylons) < 2)
+			if(!announced_paused)
+				marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN PAUSED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+				elder_overseer_message("The progress of the Pathogen Matriarch's hatchery has been paused.")
+				for(var/cur_hive_num in GLOB.hive_datum)
+					hive = GLOB.hive_datum[cur_hive_num]
+					if(!length(hive.totalXenos))
+						continue
+					if(cur_hive_num == hivenumber)
+						xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("One of our pylons was destroyed, the hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+					else
+						xeno_announcement(SPAN_XENOANNOUNCE("One of the strange pylons was destroyed, their hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+
+				announced_paused = TRUE
+				icon_state = "static"
+			return
+		else if (length(hive.active_endgame_pylons) >= 2 && announced_paused)
+			for(var/cur_hive_num in GLOB.hive_datum)
+				hive = GLOB.hive_datum[cur_hive_num]
+				if(!length(hive.totalXenos))
+					continue
+				if(cur_hive_num == hivenumber)
+					xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				else
+					xeno_announcement(SPAN_XENOANNOUNCE("The strange hatchery progress has resumed! We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			elder_overseer_message("The progress of the Pathogen Matriarch's hatchery has resumed.")
+			marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+			announced_paused = FALSE
+			icon_state = "growing"
+
+			for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+				pylon.protection_level = TURF_PROTECTION_OB
+				pylon.update_icon()
+
 	if(hatched)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -144,7 +190,7 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hivenumber)
-			xeno_announcement(SPAN_XENOANNOUNCE("The Matriarch will hatch in approximately [halftime] minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("The Matriarch will hatch in approximately [halftime] minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Something unusual is growing... it will hatch in approximately [halftime] minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
@@ -316,7 +362,7 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hivenumber)
-			xeno_announcement(SPAN_XENOANNOUNCE("The Matriarch will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("The Matriarch will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Something unusual will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
@@ -333,7 +379,7 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hivenumber)
-			xeno_announcement(SPAN_XENOANNOUNCE("All hail the Matriarch."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("All hail the Matriarch."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("The unusual entity has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
@@ -380,7 +426,7 @@
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hivenumber)
-			xeno_announcement(SPAN_XENOANNOUNCE("The Matriarch is being revived at [get_area_name(loc)]. Protect the cocoon at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_PATHOGEN_ANNOUNCE("The Matriarch is being revived at [get_area_name(loc)]. Protect the cocoon at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("The Pathogen Matriarch is being revived at [get_area_name(loc)]!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 

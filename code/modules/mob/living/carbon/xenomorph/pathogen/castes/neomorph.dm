@@ -49,6 +49,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
 		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 1
 		/datum/action/xeno_action/onclick/choose_resin/pathogen, // Macro 2 // Shared macro with Conditor

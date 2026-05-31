@@ -150,7 +150,7 @@
 	icon_state = ALERT_KNOCKEDOUT
 
 /datum/status_effect/incapacitating/unconscious/aslept
-	id = "aslept"
+	id = TRAIT_SOURCE_ADMIN
 	needs_update_stat = TRUE
 	remove_on_fullheal = FALSE
 	duration = -1

@@ -229,7 +229,7 @@
 	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/living_target in view(usr.client))
-		living_target.set_admin_sleep() //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.set_admin_sleep(TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
 		living_target.AddSleepingIcon()
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
@@ -245,7 +245,7 @@
 	if(alert("This wake ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/living_target in view(usr.client))
-		living_target.set_admin_sleep(TRUE) //set their KnockOut to zero and remove their icon
+		living_target.set_admin_sleep(FALSE) //set their KnockOut to zero and remove their icon
 		living_target.RemoveSleepingIcon()
 
 	message_admins("[key_name(usr)] used Toggle Wake In View.")

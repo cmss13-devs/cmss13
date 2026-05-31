@@ -500,8 +500,8 @@
 	return has_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
 
 /// Sets Admin sleeping
-/mob/living/proc/set_admin_sleep(remove = FALSE)
-	if(remove)
+/mob/living/proc/set_admin_sleep(apply)
+	if(!apply)
 		var/datum/status_effect/incapacitating/unconscious/aslept/admin_slept = is_admin_slept()
 		if(admin_slept)
 			qdel(admin_slept)
@@ -608,7 +608,7 @@
 		timeofdeath = 0
 
 	// restore us to consciousness
-	if(!(HAS_TRAIT_FROM_ONLY(src, TRAIT_KNOCKEDOUT, TRAIT_SOURCE_ADMIN)))
+	if(!(HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(TRAIT_SOURCE_ADMIN))))
 		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 

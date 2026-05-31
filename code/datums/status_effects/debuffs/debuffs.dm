@@ -149,6 +149,18 @@
 	desc = "You've been knocked out."
 	icon_state = ALERT_KNOCKEDOUT
 
+/datum/status_effect/incapacitating/unconscious/aslept
+	id = "aslept"
+	needs_update_stat = TRUE
+	remove_on_fullheal = FALSE
+	duration = -1
+
+/datum/status_effect/incapacitating/unconscious/aslept/update_duration(amount, increment)
+	return
+
+/datum/status_effect/incapacitating/unconscious/aslept/adjust_duration(amount)
+	return
+
 /// DAZED:
 /// This prevents talking as human or using abilities as Xenos, mainly
 /datum/status_effect/incapacitating/dazed

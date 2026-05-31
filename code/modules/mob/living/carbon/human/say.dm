@@ -68,7 +68,7 @@
 		if(client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
-		if(status_flags & ASLEPT)
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_KNOCKEDOUT, TRAIT_SOURCE_ADMIN))
 			to_chat(src, SPAN_HIGHDANGER("You cannot speak. You have been slept by admins. You should respond to them."))
 			return
 

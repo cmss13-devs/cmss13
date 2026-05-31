@@ -412,11 +412,11 @@
 	if(!check_rights(0))
 		return
 
-	if (living_target.IsKnockOut()) //if they're already slept, set their KnockOut to zero and remove the icon
-		living_target.SetKnockOut(0, TRUE, TRUE)
+	if (living_target.is_admin_slept()) //if they're already slept, set their KnockOut to zero and remove the icon
+		living_target.set_admin_sleep(TRUE)
 		living_target.RemoveSleepingIcon()
 	else
-		living_target.SetKnockOut(9999999, TRUE, TRUE) //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.set_admin_sleep() //if they're not, KnockOut them and add the sleep icon, so other marines nearby know not to mess with them.
 		living_target.AddSleepingIcon()
 
 	message_admins("[key_name(usr)] used Toggle Sleeping on [key_name(living_target)].")

@@ -347,8 +347,6 @@
 /mob/living/proc/KnockOut(amount)
 	if(!(status_flags & CANKNOCKOUT))
 		return
-	if((status_flags & ASLEPT))
-		return
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(S)
@@ -358,33 +356,24 @@
 	return S
 
 /// Sets exact remaining Knockout duration
-/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE, admin = FALSE)
+/mob/living/proc/SetKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
 		return
-	if((status_flags & ASLEPT) && !admin)
-		return
-	if(admin)
-		status_flags |= ASLEPT
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
 	if(amount <= 0)
 		if(S)
 			qdel(S)
-			status_flags &= ~ASLEPT
 	else
 		if(S)
 			S.update_duration(amount)
 		else
 			S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
-		if(admin)
-			S.remove_on_fullheal = FALSE
 	return S
 
 /// Adds to remaining Knockout duration
 /mob/living/proc/AdjustKnockOut(amount, ignore_canstun = FALSE)
 	if(!(status_flags & CANKNOCKOUT))
-		return
-	if((status_flags & ASLEPT))
 		return
 	amount = GetKnockOutDuration(amount)
 	var/datum/status_effect/incapacitating/unconscious/S = IsKnockOut()
@@ -485,7 +474,6 @@
 	else if(ear_deaf)
 		on_deafness_gain()
 
-
 /mob/living/proc/SetEarDeafness(amount)
 	var/prev_deaf = ear_deaf
 	ear_deaf = max(amount, 0)
@@ -507,6 +495,19 @@
 	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
 		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 		client.soundOutput.apply_status()
+
+/mob/living/proc/is_admin_slept()
+	return has_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+
+/// Sets Admin sleeping
+/mob/living/proc/set_admin_sleep(remove = FALSE)
+	if(remove)
+		var/datum/status_effect/incapacitating/unconscious/aslept/admin_slept = is_admin_slept()
+		if(admin_slept)
+			qdel(admin_slept)
+	else
+		apply_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+	return
 
 /mob/living/proc/grant_spawn_protection(duration)
 	status_flags |= RECENTSPAWN|GODMODE
@@ -607,7 +608,7 @@
 		timeofdeath = 0
 
 	// restore us to consciousness
-	if(!(status_flags & ASLEPT))
+	if(!(HAS_TRAIT_FROM_ONLY(src, TRAIT_KNOCKEDOUT, TRAIT_SOURCE_ADMIN)))
 		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 

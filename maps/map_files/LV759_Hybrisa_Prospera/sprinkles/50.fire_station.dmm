@@ -96,8 +96,40 @@
 	damage = 112
 	},
 /area/lv759/oob)
+"an" = (
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/window_frame/hybrisa/colony/engineering,
+/obj/item/shard{
+	count = 7
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"ao" = (
+/obj/structure/window_frame/hybrisa/colony/engineering,
+/obj/item/shard{
+	count = 7
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/fire_station)
+"ap" = (
+/turf/closed/wall/hybrisa/colony/engineering{
+	current_bulletholes = 12
+	},
+/area/lv759/indoors/fire_station)
+"aq" = (
+/obj/item/shard/shrapnel,
+/obj/item/small_shards,
+/obj/item/shard{
+	count = 7
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/fire_station)
 "aC" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/small_shards,
+/obj/item/shard{
+	count = 7
+	},
 /turf/open/floor/prison/red,
 /area/lv759/indoors/fire_station)
 "aH" = (
@@ -1242,6 +1274,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
+	},
+/obj/item/shard{
+	count = 7
 	},
 /turf/open/floor/prison/red,
 /area/lv759/indoors/fire_station)
@@ -2611,6 +2646,11 @@
 /area/template_noop)
 "Tq" = (
 /obj/structure/machinery/light/small,
+/obj/item/small_shards,
+/obj/item/shard/shrapnel,
+/obj/item/shard{
+	count = 7
+	},
 /turf/open/floor/prison/red,
 /area/lv759/indoors/fire_station)
 "Tx" = (
@@ -3200,7 +3240,7 @@ gM
 yy
 ia
 aC
-YY
+an
 GL
 eG
 af
@@ -3233,8 +3273,8 @@ vu
 Et
 yy
 XL
-gT
-YY
+aq
+ao
 Rj
 nF
 xu
@@ -3268,7 +3308,7 @@ Et
 KQ
 WF
 Tq
-KQ
+ap
 al
 Ha
 AN

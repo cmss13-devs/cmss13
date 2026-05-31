@@ -265,6 +265,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aaT" = (
@@ -296,6 +298,10 @@
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
 	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
@@ -907,7 +913,8 @@
 /area/fort_mcneil/indoors/comms_inside)
 "acF" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/prison,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "acG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -985,7 +992,9 @@
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/command)
 "acQ" = (
-/obj/item/stack/sandbags_empty/half,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate,
+/obj/item/clothing/suit/storage/hazardvest/kelland_mining,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "acR" = (
@@ -1012,10 +1021,16 @@
 /obj/item/stack/sheet/metal/small_stack{
 	pixel_x = -2
 	},
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "acX" = (
-/obj/item/stack/sheet/plasteel/small_stack,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "acY" = (
@@ -1030,7 +1045,14 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/landing_zone_1)
 "ada" = (
-/obj/item/tool/shovel,
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = -2
+	},
+/obj/item/stack/sheet/plasteel/small_stack{
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "adb" = (
@@ -1147,10 +1169,18 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "ads" = (
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/item/weapon/broken_bottle{
+	pixel_x = -8;
+	pixel_y = 11
+	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "adt" = (
@@ -1198,6 +1228,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/green/southeast,
 /area/fort_mcneil/indoors/hydro)
+"adz" = (
+/obj/structure/ore_box,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
 "adA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1253,6 +1287,10 @@
 /area/fort_mcneil/indoors/hydro)
 "adH" = (
 /obj/structure/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "adI" = (
@@ -1645,7 +1683,7 @@
 /area/fort_mcneil/outdoors/colony_exterior/south_east)
 "aeE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aeF" = (
@@ -2081,10 +2119,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/hydro)
-"agn" = (
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/prison,
-/area/fort_mcneil/indoors/storage)
 "ago" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -2558,7 +2592,7 @@
 "ahT" = (
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "ahU" = (
 /obj/effect/decal/warning_stripes{
@@ -2585,7 +2619,7 @@
 "ahX" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "ahY" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -2712,12 +2746,356 @@
 "aiu" = (
 /turf/closed/wall/strata_ice/rock,
 /area/space)
+"aiv" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiw" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime4"
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aix" = (
+/obj/structure/largecrate,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiy" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiz" = (
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiB" = (
+/obj/item/tool/pickaxe/plasmacutter{
+	pixel_y = -5
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiC" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime4"
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiD" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiE" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiF" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
 "aiG" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/fort_mcneil/outdoors/scrublands/central)
+"aiH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/bayonet,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiJ" = (
+/obj/structure/largecrate/empty/secure,
+/obj/item/tool/shovel,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiK" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiL" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/mining)
+"aiM" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
 "aiO" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/fort_mcneil/indoors/caves/south)
+"aiP" = (
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiR" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/closet/crate/construction,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/item/weapon/broken_bottle,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_y = 30
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/effect/spawner/random/sentry/lowchance,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiW" = (
+/obj/item/ore/slag,
+/obj/item/ore/slag{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiX" = (
+/obj/structure/machinery/mineral/processing_unit,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiY" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/red/kelland,
+/obj/item/clothing/head/hardhat/red/kelland{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/obj/item/clothing/head/hardhat/red/kelland{
+	pixel_y = 10;
+	pixel_x = 5;
+	layer = 4.12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aiZ" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe{
+	pixel_y = -7
+	},
+/obj/item/tool/pickaxe{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"aja" = (
+/obj/structure/sign/poster/kellandmining,
+/turf/closed/wall/strata_outpost,
+/area/fort_mcneil/indoors/mining)
+"ajb" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"ajc" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/mining)
+"ajd" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"aje" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajg" = (
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajh" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"aji" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/supply_kit,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajj" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/storage)
+"ajk" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajl" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/storage)
+"ajm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/red{
+	pixel_x = -4
+	},
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/storage)
+"ajo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/cardboard/full_stack,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajp" = (
+/obj/structure/largecrate/empty{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/structure/sign/poster/safety{
+	pixel_x = 5;
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajq" = (
+/obj/structure/largecrate/empty,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/storage)
+"ajr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/fort_mcneil/indoors/dorm)
+"ajs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/fort_mcneil/indoors/dorm)
+"ajt" = (
+/obj/structure/window/framed/strata/reinforced,
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "dorm_lockdown";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/fort_mcneil/indoors/dorm)
+"aju" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/fort_mcneil/indoors/dorm)
+"ajv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegreen,
+/area/fort_mcneil/indoors/dorm)
+"ajw" = (
+/turf/open/floor/hybrisa/tile/tilegreen,
+/area/fort_mcneil/indoors/dorm)
+"ajx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/fort_mcneil/indoors/dorm)
 "akJ" = (
 /turf/closed/wall/strata_outpost,
 /area/fort_mcneil/indoors/connection_paths)
@@ -3274,6 +3652,18 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 10;
+	pixel_y = 2
+	},
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "bED" = (
@@ -3291,7 +3681,8 @@
 	dir = 8;
 	pixel_x = 1
 	},
-/turf/open/floor/prison,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "bFB" = (
 /obj/structure/flora/wood/stick4,
@@ -4270,6 +4661,7 @@
 /obj/item/ammo_box/magazine/misc/flares,
 /obj/item/ammo_box/magazine/misc/flares,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/sentry/lowchance,
 /turf/open/floor/prison/blue/northeast,
 /area/fort_mcneil/indoors/pod_2)
 "dLS" = (
@@ -4656,7 +5048,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "eLC" = (
 /obj/structure/prop/invuln/ice_prefab{
@@ -4916,7 +5308,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "fqA" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -5686,7 +6078,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/fort_mcneil/indoors/command)
 "hyY" = (
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "hzF" = (
 /obj/structure/platform/stone/strata,
@@ -5939,6 +6331,7 @@
 	pixel_y = 32;
 	pixel_x = 4
 	},
+/obj/effect/spawner/random/pills/midchance,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/fort_mcneil/indoors/toilet)
 "hVE" = (
@@ -6409,7 +6802,7 @@
 /area/fort_mcneil/landing_zone_1)
 "iPx" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "iQs" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -6617,7 +7010,9 @@
 	pixel_x = -9;
 	pixel_y = 11
 	},
-/turf/open/floor/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "jpJ" = (
 /obj/effect/decal/warning_stripes{
@@ -8836,6 +9231,7 @@
 /area/fort_mcneil/outdoors/scrublands/south)
 "oDG" = (
 /obj/structure/bed/hybrisa/bunkbed2,
+/obj/item/toy/plush/gnarp,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/fort_mcneil/indoors/dorm)
 "oEy" = (
@@ -8952,6 +9348,7 @@
 "oPp" = (
 /obj/structure/largecrate/empty/case/double,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/sentry/lowchance,
 /turf/open/floor/prison/green/southeast,
 /area/fort_mcneil/indoors/pod_3)
 "oPv" = (
@@ -9898,8 +10295,12 @@
 /turf/open/asphalt/cement/cement12,
 /area/fort_mcneil/outdoors/comms)
 "rjw" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/prison,
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/washing_machine{
+	layer = 3.5;
+	pixel_y = 15
+	},
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "rjy" = (
 /obj/structure/tunnel,
@@ -10478,7 +10879,7 @@
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "svL" = (
 /obj/structure/platform/metal/strata/west,
@@ -10910,13 +11311,13 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/fort_mcneil/indoors/caves/central)
 "tuf" = (
-/obj/structure/largecrate/empty/case/double,
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 30;
 	name = "Local Lockdown";
 	id = "dorm_lockdown"
 	},
-/turf/open/floor/prison,
+/obj/structure/machinery/disposal,
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "twR" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
@@ -11063,7 +11464,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tileblue,
 /area/fort_mcneil/indoors/dorm)
 "tJp" = (
 /obj/effect/decal/warning_stripes{
@@ -11348,7 +11749,7 @@
 /obj/structure/prop/hybrisa/furniture/tables/tablepool{
 	dir = 4
 	},
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "unu" = (
 /obj/structure/machinery/chem_dispenser/soda{
@@ -11652,7 +12053,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "vak" = (
 /obj/effect/decal/warning_stripes{
@@ -12314,6 +12715,8 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "wuS" = (
@@ -15599,7 +16002,7 @@ ler
 iXa
 iXa
 wMb
-wMb
+ajt
 iXa
 iXa
 iXa
@@ -15699,8 +16102,8 @@ iXa
 iXa
 iXa
 rjw
-hyY
-hyY
+ajs
+ajs
 tIF
 svC
 iXa
@@ -15721,9 +16124,9 @@ agP
 sOm
 sOm
 ada
-lzk
-acY
-lzk
+ajk
+ajl
+aji
 acW
 sOm
 sOm
@@ -15796,11 +16199,11 @@ oYy
 omP
 omP
 eLl
-hyY
+ajw
 umX
+ajv
 hyY
-hyY
-hyY
+ajs
 hyY
 hyY
 hyY
@@ -15821,11 +16224,11 @@ bha
 agQ
 sOm
 sOm
-agn
+ajf
 tYw
 tYw
-tYw
-acW
+ajj
+ajd
 sOm
 sOm
 aCH
@@ -15896,10 +16299,10 @@ aif
 omP
 acF
 jpt
-hyY
-hyY
-hyY
-hyY
+ajw
+ajw
+ajv
+ajv
 khQ
 usQ
 iXa
@@ -15922,11 +16325,11 @@ bha
 agR
 bha
 bTy
-agn
+acX
 adH
 sOm
 lzk
-acW
+aje
 bTy
 aCH
 eMM
@@ -15996,16 +16399,16 @@ kFZ
 dZD
 omP
 fPb
-hyY
-hyY
-hyY
-hyY
-hyY
+ajv
+ajw
+ajw
+ajv
+ajw
 khQ
 vNh
 iXa
 put
-hyY
+ajr
 eRQ
 dAY
 agu
@@ -16023,8 +16426,8 @@ bha
 bha
 agu
 bTy
-lzk
-lzk
+ajo
+acX
 sOm
 wuq
 acX
@@ -16095,7 +16498,7 @@ vVM
 rPI
 iXa
 eJt
-omP
+ajx
 acG
 bFv
 fqr
@@ -16104,9 +16507,9 @@ ahX
 vag
 hyY
 hyY
-hyY
-hyY
-hyY
+ajs
+ajs
+ajs
 iXa
 iXa
 agE
@@ -16124,11 +16527,11 @@ bha
 bha
 agu
 bTy
-lzk
-lzk
+acX
+ajm
 sOm
 adC
-lzk
+ajf
 bTy
 ssh
 fce
@@ -16204,9 +16607,9 @@ iXa
 iXa
 iXa
 tuf
-hyY
-hyY
-hyY
+aju
+ajs
+ajs
 ahT
 iXa
 ydq
@@ -16225,11 +16628,11 @@ agu
 bha
 sOm
 sOm
-lzk
-acY
+ajp
+ajn
 abv
 acY
-lzk
+ajg
 sOm
 sOm
 fce
@@ -16326,11 +16729,11 @@ agu
 agu
 sOm
 sOm
-lzk
-lzk
+ajq
+acX
 abx
-lzk
-lzk
+ajk
+ajh
 sOm
 sOm
 vsI
@@ -17954,10 +18357,10 @@ cmc
 cmc
 oYi
 oYi
+adz
 mcZ
-mcZ
-mcZ
-mcZ
+aix
+aix
 oYi
 oYi
 cmc
@@ -18059,7 +18462,7 @@ aaS
 aeN
 acR
 mcZ
-mcZ
+adz
 noi
 aep
 cmc
@@ -18155,12 +18558,12 @@ aep
 cmc
 cmc
 oYi
-mcZ
-aaT
-mcZ
-mcZ
-mcZ
-mcZ
+aiY
+aiS
+aiK
+aiE
+aiy
+aiv
 noi
 cmc
 cmc
@@ -18256,11 +18659,11 @@ cmc
 cmc
 cmc
 oYi
-mcZ
-aaT
+aiZ
+aiT
+aiL
 acR
-acR
-mcZ
+aiz
 acQ
 noi
 cmc
@@ -18358,10 +18761,10 @@ aep
 cmc
 oYi
 oYi
-aaT
-mcZ
-mcZ
-mcZ
+aiU
+aiM
+aiF
+aiA
 oYi
 oYi
 cmc
@@ -18460,8 +18863,8 @@ cmc
 oYi
 oYi
 bDm
-mcZ
-mcZ
+aiN
+aiH
 ads
 oYi
 oYi
@@ -18559,11 +18962,11 @@ ogi
 cmc
 cmc
 oYi
-oYi
-aaT
-mcZ
-mcZ
-mcZ
+aja
+aiV
+aiP
+aiI
+aiB
 oYi
 oYi
 cmc
@@ -18660,12 +19063,12 @@ ogi
 ogi
 aep
 oYi
-mcZ
+ajb
 aaT
 acR
 adt
-mcZ
-mcZ
+aiC
+aiw
 oYi
 kKU
 brA
@@ -18763,9 +19166,9 @@ ogi
 gkG
 mcZ
 aaU
+aiQ
 aaO
-aaO
-aaO
+aeE
 aeE
 aaN
 aaJ
@@ -18862,8 +19265,8 @@ cmc
 ogi
 ogi
 oYi
-mcZ
-mcZ
+ajc
+aiW
 acR
 acR
 mcZ
@@ -18964,10 +19367,10 @@ cmc
 ogi
 oYi
 oYi
-mcZ
-mcZ
-mcZ
-mcZ
+aiX
+aiR
+aiJ
+aiD
 oYi
 oYi
 aaK

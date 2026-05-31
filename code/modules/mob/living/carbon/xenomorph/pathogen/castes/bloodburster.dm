@@ -77,6 +77,7 @@
 	fire_immunity = FIRE_VULNERABILITY
 
 	var/bloody_state = LARVA_STATE_BLOODY
+	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 
 /mob/living/carbon/xenomorph/bloodburster/Life()
 	// Check if no longer bloody or mature

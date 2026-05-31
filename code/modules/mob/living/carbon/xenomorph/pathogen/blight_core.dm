@@ -178,6 +178,12 @@
 	var/heal_interval = 10 SECONDS
 	var/last_healed = 0
 	var/last_attempt = 0 // logs time of last attempt to prevent spam. if you want to destroy it, you must commit.
+	var/last_burster_time = 0
+	var/last_burster_pool_time = 0
+	var/last_surge_time = 0
+	var/spawn_cooldown = 30 SECONDS
+	var/surge_cooldown = 90 SECONDS
+	var/surge_incremental_reduction = 3 SECONDS
 
 	/// Set to TRUE when being destroyed by the pathogen creatures for relocation.
 	var/blight_dissovling = FALSE
@@ -244,10 +250,75 @@
 	. = ..()
 	update_minimap_icon()
 
+	if(linked_hive)
+		for(var/mob/living/carbon/xenomorph/bloodburster/burster in range(2, src))
+			if((!burster.ckey || burster.stat == DEAD) && burster.burrowable && (burster.hivenumber == linked_hive.hivenumber) && !QDELETED(burster))
+				visible_message(SPAN_XENODANGER("[burster] quickly burrows into \the [src]."))
+				if(!burster.banished)
+					// Goob job bringing her back home, but no doubling please
+					linked_hive.stored_larva++
+					linked_hive.hive_ui.update_burrowed_larva()
+				qdel(burster)
+
+		var/count_spawned = 0
+		var/spawning_burster = !linked_hive.hardcore && (last_burster_time + spawn_cooldown) < world.time
+		if(spawning_burster)
+			last_burster_time = world.time
+		if(spawning_burster || (last_burster_pool_time + spawn_cooldown * 4) < world.time)
+			last_burster_pool_time = world.time
+			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
+			if(spawning_burster)
+				var/i = 0
+				while(i < length(players_with_xeno_pref) && !linked_hive.hardcore)
+					if(spawn_burrowed_burster(players_with_xeno_pref[++i]))
+						// We were in spawning_burster mode and successfully spawned someone
+						count_spawned++
+			// Update everyone's queue status
+			message_alien_candidates(players_with_xeno_pref, dequeued = count_spawned)
+
+		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
+			last_surge_time = world.time
+			linked_hive.stored_larva++
+			linked_hive.hijack_burrowed_left--
+			if(GLOB.larva_pool_candidate_count < 1 + count_spawned)
+				notify_ghosts(header = "Claim Burster", message = "The Confluence has gained another burrowed bloodburster! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno=1")
+			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
+				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
+			if(linked_hive.hijack_burrowed_left < 1)
+				linked_hive.hijack_burrowed_surge = FALSE
+				xeno_message(SPAN_PATHOGEN_ANNOUNCE("The confluence's power wanes. We will no longer gain burrowed bloodbursters over time."), 3, linked_hive.hivenumber)
+
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)
 		health += min(heal_amount, maxhealth-health)
 		last_healed = world.time + heal_interval
+
+/obj/effect/alien/resin/special/pylon/pathogen_core/proc/spawn_burrowed_burster(mob/xeno_candidate)
+	if(!linked_hive.hardcore && xeno_candidate)
+		var/mob/living/carbon/xenomorph/bloodburster/new_burster = new(loc)
+		if(isnull(new_burster))
+			return FALSE
+
+		new_burster.visible_message(SPAN_XENODANGER("A bloodburster suddenly emerges from [src]!"),
+		SPAN_XENODANGER("We emerge from [src] and awaken from our slumber. For the Hive!"))
+		msg_admin_niche("[key_name(new_burster)] emerged from \a [src]. [ADMIN_JMP(src)]")
+		playsound(new_burster, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_burster))
+			qdel(new_burster)
+			return FALSE
+		to_chat(new_burster, SPAN_XENOANNOUNCE("You are a pathogen bloodburster awakened from slumber!"))
+		playsound(new_burster, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+		if(new_burster.client)
+			if(new_burster.client.prefs.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_burster.client)
+
+		linked_hive.stored_larva--
+		linked_hive.hive_ui.update_burrowed_larva()
+
+		return TRUE
+	return FALSE
+
+
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber) && allowed_to_overmind(attacking_xeno))

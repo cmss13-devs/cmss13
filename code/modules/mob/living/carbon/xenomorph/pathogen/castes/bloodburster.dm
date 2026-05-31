@@ -9,7 +9,7 @@
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_TIER_1
+	max_health = XENO_HEALTH_LESSER_DRONE
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_10
 	attack_delay = -4

@@ -313,6 +313,9 @@
 	if(stabbing_xeno.can_not_harm(targetted_atom))
 		return FALSE
 
+	if(issynth(targetted_atom))
+		return FALSE
+
 	var/mob/living/carbon/human/target = targetted_atom
 	var/mostly_dead = FALSE
 	if(!target.is_revivable(TRUE))

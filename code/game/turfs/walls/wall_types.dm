@@ -1106,6 +1106,7 @@
 	icon = 'icons/mob/pathogen/pathogen_structures.dmi'
 	icon_state = "mycelium"
 	walltype = WALL_PATHOGEN
+	hivenumber = XENO_HIVE_PATHOGEN
 
 /turf/closed/wall/resin/thick/pathogen
 	name = "thick mycelial wall"
@@ -1113,6 +1114,7 @@
 	icon = 'icons/mob/pathogen/pathogen_structures.dmi'
 	icon_state = "thickmycelium"
 	walltype = WALL_PATHOGEN_THICK
+	hivenumber = XENO_HIVE_PATHOGEN
 
 /turf/closed/wall/resin/tutorial
 	name = "tutorial resin wall"
@@ -1148,6 +1150,7 @@
 	name = "mycelial membrane"
 	desc = "Weird mycelium translucent enough to let light pass through."
 	icon = 'icons/mob/pathogen/pathogen_structures.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
 
 /turf/closed/wall/resin/membrane/pathogen/thick
 	name = "thick mycelial membrane"

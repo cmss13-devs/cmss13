@@ -5,13 +5,13 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	melee_vehicle_damage = 0
-	max_health = XENO_HEALTH_LESSER_DRONE
+	max_health = XENO_HEALTH_LARVA
 	plasma_gain = XENO_PLASMA_GAIN_TIER_2
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_8
+	speed = XENO_SPEED_TIER_7
 
 	attack_delay = 2
 

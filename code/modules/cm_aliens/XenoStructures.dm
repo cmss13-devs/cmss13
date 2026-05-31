@@ -580,6 +580,7 @@
 	icon = 'icons/mob/pathogen/pathogen_effects.dmi'
 	icon_state = "mycelium"
 	mineralType = "mycelium"
+	hivenumber = XENO_HIVE_PATHOGEN
 
 /obj/structure/mineral_door/resin/pathogen/thick
 	name = "thick mycelial door"

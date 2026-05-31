@@ -1446,12 +1446,12 @@
 	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE
 
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/tova
+/datum/equipment_preset/corpse/hybrisa/tova
 	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
 	assignment = "Civilian - Fire Protection Specialist"
 
 
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/tova/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/hybrisa/tova/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
@@ -1465,7 +1465,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/tova/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
+/datum/equipment_preset/corpse/hybrisa/tova/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
 	. = ..()
 	new_human.gender = FEMALE
 	var/datum/preferences/A = new()
@@ -1473,7 +1473,7 @@
 	new_human.change_real_name(new_human, "Tova Almgren")
 	new_human.age = 23
 
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/tova/burst
+/datum/equipment_preset/corpse/hybrisa/tova/burst
 	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
 	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE

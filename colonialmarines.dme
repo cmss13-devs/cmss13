@@ -2181,6 +2181,7 @@
 #include "code\modules\mob\living\carbon\human\species\yautja\_species.dm"
 #include "code\modules\mob\living\carbon\human\species\yautja\fake_sounds.dm"
 #include "code\modules\mob\living\carbon\human\species\yautja\fake_voice.dm"
+#include "code\modules\mob\living\carbon\human\species\yautja\mutant.dm"
 #include "code\modules\mob\living\carbon\human\species\yautja\yautja_sound.dm"
 #include "code\modules\mob\living\carbon\xenomorph\attack_alien.dm"
 #include "code\modules\mob\living\carbon\xenomorph\damage_procs.dm"

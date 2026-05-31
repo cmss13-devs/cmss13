@@ -642,6 +642,8 @@
 #define PATHOGEN_STRUCTURE_PYLON "blight pylon"
 #define PATHOGEN_STRUCTURE_COCOON "mycelial cocoon"
 #define PATHOGEN_STRUCTURE_COCOON_BIG "huge mycelial cocoon"
+#define PATHOGEN_STRUCTURE_RECOVERY  "mycelial recovery node"
+#define PATHOGEN_STRUCTURE_PLASMA "mycelial plasma node"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

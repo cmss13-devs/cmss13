@@ -6,6 +6,12 @@
 	var/replenish_amount = 75
 	COOLDOWN_DECLARE(last_replenish)
 
+/obj/effect/alien/resin/special/plasma_tree/pathogen
+	name = PATHOGEN_STRUCTURE_RECOVERY
+	desc = "A pulsing node that has liquid plasma dripping around it."
+	forced_hive = TRUE
+	hivenumber = XENO_HIVE_PATHOGEN
+
 /obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
@@ -66,6 +72,11 @@
 	health = 400
 	var/heal_amount = 20
 	COOLDOWN_DECLARE(last_heal)
+
+/obj/effect/alien/resin/special/recovery/pathogen
+	name = PATHOGEN_STRUCTURE_RECOVERY
+	forced_hive = TRUE
+	hivenumber = XENO_HIVE_PATHOGEN
 
 /obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
 	. = ..()

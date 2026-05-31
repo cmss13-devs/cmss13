@@ -1854,15 +1854,15 @@
 		PATHOGEN_STRUCTURE_COCOON = 3,
 		PATHOGEN_STRUCTURE_CLUSTER = 8,
 		PATHOGEN_STRUCTURE_PYLON = 2,
-		//PATHOGEN_STRUCTURE_RECOVERY = 6,
-		//PATHOGEN_STRUCTURE_PLASMA_TREE = 3,
+		PATHOGEN_STRUCTURE_RECOVERY = 6,
+		PATHOGEN_STRUCTURE_PLASMA = 3,
 	)
 
 	hive_structure_types = list(
 		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 		PATHOGEN_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/pathogen_cluster,
-		//PATHOGEN_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
-		//PATHOGEN_STRUCTURE_PLASMA_TREE = /datum/construction_template/xenomorph/plasma_tree
+		PATHOGEN_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/patho_recovery,
+		PATHOGEN_STRUCTURE_PLASMA = /datum/construction_template/xenomorph/patho_plasma
 	)
 
 	tacmap_requires_queen_ovi = FALSE

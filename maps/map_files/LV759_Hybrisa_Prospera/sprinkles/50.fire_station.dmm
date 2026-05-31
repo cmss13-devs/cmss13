@@ -539,6 +539,7 @@
 	pixel_x = -8;
 	pixel_y = 6
 	},
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor,
 /turf/open/floor/plating,
 /area/lv759/indoors/fire_station)
 "gl" = (
@@ -1676,7 +1677,7 @@
 	pixel_x = -13;
 	pixel_y = 14
 	},
-/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter/tova,
+/obj/effect/landmark/corpsespawner/hybrisa/tova,
 /turf/open/floor/plating,
 /area/lv759/indoors/fire_station)
 "Cc" = (
@@ -2009,7 +2010,6 @@
 	dir = 4;
 	pixel_y = -7
 	},
-/obj/item/weapon/gun/flamer/flammenwerfer3/survivor,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"

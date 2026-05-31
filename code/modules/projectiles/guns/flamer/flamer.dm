@@ -1065,8 +1065,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 
 	item_icons = list(
-	WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
-	WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi',
 )
 
 

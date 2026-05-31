@@ -66,7 +66,11 @@
 		set_range()
 	update_icon()
 	update_minimap_icon()
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
+
+// We've changed position and have to recalculate our bounds.
+/obj/structure/machinery/defenses/sentry/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	unset_range()
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	SSminimaps.remove_marker(src)
@@ -86,7 +90,7 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return FALSE
 
@@ -424,21 +428,23 @@
 			continue
 
 		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
+		for(var/turf/turf in path)
+			if(turf.density || turf.opacity)
 				blocked = TRUE
 				break
 
-			for(var/obj/structure/S in T)
+			for(var/obj/structure/S in turf)
 				if(S.opacity)
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/V in T)
+			for(var/obj/vehicle/multitile/V in turf)
 				blocked = TRUE
 				break
 
-			for(var/obj/effect/particle_effect/smoke/S in T)
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 
@@ -753,6 +759,7 @@
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
 	name = "\improper UA 12-G Shotgun Sentry"
+	desc = "A fully-automated defence turret with short-range targeting capabilities. Armed with a modified M12-G Autocannon and a 50-round drum magazine."
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250
@@ -796,7 +803,7 @@
 
 /obj/structure/machinery/defenses/sentry/launchable
 	name = "\improper UA 571-O sentry post"
-	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 100-round drum magazine with 500 rounds stored internally.  Due to the deployment method it is incapable of being moved."
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 100-round drum magazine with 500 rounds stored internally. Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
@@ -805,8 +812,8 @@
 	static = TRUE
 	/// Cost to give sentry extra health
 	var/upgrade_cost = 5
-	/// Amount of bonus health they get from upgrade
-	var/health_upgrade = 50
+	/// Amount of health set after upgrade
+	var/health_upgrade = 250
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
@@ -833,24 +840,32 @@
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
 
+	if(user.action_busy)
+		return
+
 	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return
 
 	if(upgraded)
-		to_chat(user, SPAN_WARNING("\The [src] has already been upgraded."))
+		to_chat(user, SPAN_WARNING("\The [name] has already been upgraded."))
+		return
+
+	if(health != health_max)
+		to_chat(user, SPAN_WARNING("\The [name] must have no damage to be upgraded."))
 		return
 
 	if(sheets.amount >= upgrade_cost)
+		upgraded = TRUE
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			upgraded = FALSE
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
 			return
 
 		if(sheets.use(upgrade_cost))
-			src.health_max += health_upgrade
-			src.update_health(-health_upgrade)
-			upgraded = TRUE
-			to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))
+			health_max = health_upgrade
+			health = health_max
+			to_chat(user, SPAN_WARNING("You added some metal plating to the [name], increasing its durability!"))
 		else
 			to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
 	else
@@ -864,7 +879,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		to_chat(user, SPAN_WARNING("[name]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

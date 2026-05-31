@@ -50,7 +50,7 @@ log transactions
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
-		return //so it doesnt brazil IDs when unpowered
+		return //so it doesn't brazil IDs when unpowered
 	if(istype(I, /obj/item/card))
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
@@ -280,7 +280,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+						to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")

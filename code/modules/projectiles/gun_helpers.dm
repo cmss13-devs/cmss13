@@ -62,7 +62,7 @@ DEFINES in setup.dm, referenced here.
 	Also where the gun will do final attachment calculations if the gun fired an attachment bullet.
 	This must return positive to continue burst firing or so that you don't hear *click*.
 
-	delete_bullet() //Important for point blanking and and jams, but can be called on for other reasons (that are
+	delete_bullet() //Important for point blanking and jams, but can be called on for other reasons (that are
 	not currently used). If the gun makes a bullet but doesn't fire it, this will be called on through clear_jam().
 	This is also used to delete the bullet when you directly fire a bullet without going through the Fire() process,
 	like with the mentioned point blanking/suicide.
@@ -262,7 +262,7 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
-		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
 			src.clean_blood()
 		else
@@ -297,37 +297,93 @@ DEFINES in setup.dm, referenced here.
 		if(!user.Adjacent(dropping))
 			return
 		var/obj/item/ammo_magazine/magazine = dropping
+		var/obj/item/ammo_magazine/handful/bullet = dropping
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
 		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
-			return
-		if(flags_gun_features & GUN_INTERNAL_MAG)
-			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
+			to_chat(user, SPAN_WARNING("[dropping] must be carried to do that."))
 			return
 		//no tactical reload for the untrained.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
+		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
+		if(flags_gun_features & GUN_INTERNAL_MAG)
+			unconventional_reload(user, magazine)
+			return
+
+		// actual tactical reloads
+		var/tac_reload_time = 1.5 SECONDS
+		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
+
+			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
+				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
+				return
+
 			if(current_mag)
 				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
+
 			var/old_mag_loc = magazine.loc
-			var/tac_reload_time = 15
 			if(user.skills)
-				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
-				if(isstorage(magazine.loc))
-					var/obj/item/storage/master_storage = magazine.loc
-					master_storage.remove_from_storage(magazine)
-				reload(user, magazine)
+				tac_reload_time = max(1.5 SECONDS - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
+
+			var/obj/limb/opposite_hand
+			var/effect
+			if(user.l_hand == src) // cant find the helper proc for this so
+				opposite_hand = user.get_limb("r_arm")
+			else
+				opposite_hand = user.get_limb("l_arm")
+			if(opposite_hand.status & LIMB_DESTROYED)
+				tac_reload_time *= 3 DECISECONDS
+				effect = SLOW
+				to_chat(user, SPAN_WARNING("...but you'll have a harder time reloading with one arm!"))
+
+			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY, status_effect = effect))
+				return
+			if(magazine.loc != old_mag_loc || current_mag)
+				return
+
+			if(isstorage(magazine.loc))
+				var/obj/item/storage/master_storage = magazine.loc
+				master_storage.remove_from_storage(magazine)
+			reload(user, magazine)
+		else
+			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
+			return
 	else
 		..()
 
 
+/obj/item/weapon/gun/proc/unconventional_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.caliber != caliber)
+		to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
+		return
+	if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
+		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
+		return
+
+	var/tac_reload_time = 2 DECISECONDS
+
+	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
+	var/interrupted = FALSE
+	while(current_mag && current_mag.current_rounds < current_mag.max_rounds && magazine && magazine.current_rounds > 0)
+		var/old_ammo_loc = magazine.loc
+		if(!do_after(user, tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			interrupted = TRUE
+			break
+		if(QDELETED(magazine) || magazine.loc != old_ammo_loc || !current_mag || current_mag.current_rounds >= current_mag.max_rounds)
+			interrupted = TRUE
+			break
+		reload(user, magazine)
+
+	if(!interrupted)
+		to_chat(user, SPAN_NOTICE("You finish reloading."))
+	else
+		to_chat(user, SPAN_NOTICE("Your reload was interrupted!"))
 
 //----------------------------------------------------------
 				//  \\
@@ -392,7 +448,7 @@ DEFINES in setup.dm, referenced here.
 	var/attach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		attach_delay = 0.3 SECONDS
-	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	if(do_after(user, attach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, numticks = 2, status_effect = SLOW))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -679,7 +735,7 @@ DEFINES in setup.dm, referenced here.
 	var/detach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		detach_delay = 0.3 SECONDS
-	if(!do_after(usr, detach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, detach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 		return
 
 	if(!(attachment == attachments[attachment.slot]))
@@ -766,6 +822,7 @@ DEFINES in setup.dm, referenced here.
 
 	else
 		gun_firemode = gun_firemode_list[1]
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/verb/use_toggle_burst()
 	set category = "Weapons"
@@ -894,7 +951,7 @@ DEFINES in setup.dm, referenced here.
 /obj/item/weapon/gun/verb/toggle_auto_eject_verb()
 	set category = "Weapons"
 	set name = "Toggle Auto Eject"
-	set desc = "Enable/Disable the gun's magazine ejection system"
+	set desc = "Enable/Disable the gun's magazine ejection system."
 	set src = usr.contents
 
 	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)

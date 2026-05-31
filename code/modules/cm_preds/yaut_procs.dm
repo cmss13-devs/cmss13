@@ -1,26 +1,60 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(msg, soundeffect = TRUE)
-	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
-		// Send message to the bracer; appear multiple times if we have more bracers
-		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
-			if(G.notification_sound)
-				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+/proc/message_all_yautja(msg, soundeffect = TRUE, broadcast_networks = list(YAUTJA_NET_HUNTING))
+	for(var/mob/living/carbon/human/yautja in GLOB.yautja_mob_list)
+		if(pred_can_receive_message(yautja, broadcast_networks))
+			// Send message to the bracer; appear multiple times if we have more bracers
+			for(var/obj/item/clothing/gloves/yautja/hunter/bracer in yautja.contents)
+				to_chat(yautja, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beeps: [msg]"))
+				if(bracer.notification_sound)
+					playsound(yautja.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage", broadcast_network = YAUTJA_NET_ALL) // you can override the title_text if you want.
+	var/new_title_text = title_text
+	if(new_title_text == "Elder Overseer")
+		switch(broadcast_network)//Horrific code, fix it.
+			if(YAUTJA_NET_BADBLOOD)
+				new_title_text = "Exile Broadcast"
+			if(YAUTJA_NET_STRANDED)
+				new_title_text = "Faint Broadcast"
+			if(YAUTJA_NET_ALL)
+				new_title_text = "Unidentified Broadcast"
 	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
-		if(!hunter.client)
+		if(!pred_can_receive_message(hunter, broadcast_network))
 			continue
-		if(hunter.stat == DEAD)
-			continue
-		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
-		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		if(elder_user == "AutomatedMessage" && broadcast_network == YAUTJA_NET_ALL)
+			switch(hunter.faction)//Horrific code, fix it.
+				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG)
+					new_title_text = "Elder Overseer"
+				if(FACTION_YAUTJA_BADBLOOD)
+					new_title_text = "Exile Broadcast"
+				if(FACTION_YAUTJA_STRANDED)
+					new_title_text = "Faint Broadcast"
+		var/broad_text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[new_title_text]</u></span><br>" + broad_text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
 		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
 		playsound_client(hunter.client, elder_picked, 25)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Overseer Message Log")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Message Log:")]<br>[SPAN_YAUTJABOLDBIG("[new_title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
 	if(elder_user != "AutomatedMessage")
-		message_admins("[elder_user] has created a Yautja Elder Overseer message")
-		log_admin("[elder_user] created a predator council message: [text]")
+		message_admins("[elder_user] has created a Yautja Elder Overseer message for [broadcast_network]")
+		log_admin("Yautja Overseer message: [text]")
+
+/proc/pred_can_receive_message(mob/hunter, broadcast_networks = YAUTJA_NET_HUNTING)
+	if(!ismob(hunter) || !hunter.client || (hunter.stat == DEAD))
+		return FALSE
+	var/list/check_networks = broadcast_networks
+	if(!islist(check_networks))
+		check_networks = list(check_networks)
+	for(var/network in check_networks)
+		if(network == YAUTJA_NET_ALL)
+			return TRUE
+		if(network == hunter.faction)
+			return TRUE
+		for(var/obj/item/clothing/gloves/yautja/hunter/bracer in hunter.contents)
+			if(network in bracer.received_networks)
+				return TRUE
+		if(!(network in FACTION_LIST_ALL_YAUTJA))//If this somehow isn't sending to a Yautja faction, it will instead send to all of them.
+			return TRUE
+	return FALSE
 
 /client/proc/pred_council_message()
 	set name = "Yautja Overseer Report"
@@ -45,12 +79,29 @@
 
 	var/input = tgui_input_text(src, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
 	if(!input)
-		return FALSE
+		return
 	if(is_living_yautja)
-		elder_overseer_message(input, mob.real_name, "[key_name(src)]")
-		return TRUE
-	elder_overseer_message(input, elder_user = "[key_name(src)]")
-	return TRUE
+		var/target_net = mob.faction
+		if(!(target_net in FACTION_LIST_ALL_YAUTJA))
+			target_net = YAUTJA_NET_HUNTING
+		elder_overseer_message(input, mob.real_name, "[key_name(src)]", target_net)
+		return
+
+	var/new_broadcast_network = YAUTJA_NET_HUNTING
+	var/choice = tgui_alert(usr, "Who is this announcement for?", "Target Network?", list("Hunting Party", "Bad-Bloods", "Stranded", "All"))
+	switch(choice)
+		if("Hunting Party")
+			new_broadcast_network = YAUTJA_NET_HUNTING
+		if("Bad-Bloods")
+			new_broadcast_network = YAUTJA_NET_BADBLOOD
+		if("Stranded")
+			new_broadcast_network = YAUTJA_NET_STRANDED
+		if("All")
+			new_broadcast_network = YAUTJA_NET_ALL
+		else
+			return
+	elder_overseer_message(input, elder_user = "[key_name(src)]", broadcast_network = new_broadcast_network)
+	return
 
 /mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
@@ -101,38 +152,34 @@
 	var/list/choices = list()
 	for(var/mob/living/carbon/M in view(1, src) - src)
 		if(Adjacent(M) && M.stat == DEAD)
-			if(ishuman(M))
-				var/mob/living/carbon/human/Q = M
-				if(Q.species && issamespecies(Q, src))
-					continue
 			choices += M
 
-	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
+	var/mob/living/carbon/target = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
 	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
-	if(!T || !src || !T.stat)
+	if(!target || !src || !target.stat)
 		to_chat(src, SPAN_WARNING("Nope."))
 		return
 
-	if(!Adjacent(T))
+	if(!Adjacent(target))
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
 
-	if(islarva(T) || isfacehugger(T))
+	if(islarva(target) || isfacehugger(target))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		return
 
-	if(issynth(T))
+	if(issynth(target))
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
 		return
 
-	if(isxeno(T))
-		xeno_victim = T
+	if(isxeno(target))
+		xeno_victim = target
 
 	var/static/list/procedure_choices = list(
 		"Skin" = null,
@@ -148,72 +195,72 @@
 	)
 
 	var/procedure = ""
-	if(ishuman(T))
-		victim = T
+	if(ishuman(target))
+		victim = target
 
 	if(victim)
 		procedure = tgui_input_list(src, "Which slice would you like to take?", "Take Slice", procedure_choices)
 		if(!procedure)
 			return
 
-	if(isxeno(T) || procedure == "Skin")
-		if(T.butchery_progress)
+	if(isxeno(target) || procedure == "Skin")
+		if(target.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
+			visible_message(SPAN_DANGER("[src] goes back to butchering \the [target]."), SPAN_NOTICE("You get back to butchering \the [target]."))
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [T]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [T]. Hold still."))
-			T.butchery_progress = 1
+			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [target]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [target]. Hold still."))
+			target.butchery_progress = 1
 
-		if(T.butchery_progress == 1)
+		if(target.butchery_progress == 1)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!"))
-				T.butchery_progress = 2
+				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [target]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [target], ripping out the guts and useless organs. What a stench!"))
+				target.butchery_progress = 2
 				playsound(loc, 'sound/weapons/slash.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 2)
+		if(target.butchery_progress == 2)
 			if(do_after(src, 6.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [T]'s limbs, making sure to get the finest cuts."))
+				visible_message(SPAN_DANGER("[src] hacks away at \the [target]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [target]'s limbs, making sure to get the finest cuts."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm"), FALSE, TRUE) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] steak"
-				T.butchery_progress = 3
+				target.butchery_progress = 3
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 3)
+		if(target.butchery_progress == 3)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [T]'s ribcage and start tearing the tastiest bits out."))
+				visible_message(SPAN_DANGER("[src] tears apart \the [target]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [target]'s ribcage and start tearing the tastiest bits out."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
-				else if(victim && isturf(T.loc))
+				else if(victim && isturf(target.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
 					victim.apply_damage(100, BRUTE,"chest", FALSE, FALSE)
-				T.butchery_progress = 4
+				target.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 4)
+		if(target.butchery_progress == 4)
 			if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				if(xeno_victim && isturf(T.loc))
+				if(xeno_victim && isturf(target.loc))
 					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
 					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
 					pelt.name = "[xeno_victim.real_name] pelt"
 					skull.name = "[xeno_victim.real_name] skull"
-				else if(victim && isturf(T.loc))
-					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
+				else if(victim && isturf(target.loc))
+					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [target]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [target]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
 						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
 						var/obj/item/clothing/accessory/limb/skeleton/head/spine/new_spine = new /obj/item/clothing/accessory/limb/skeleton/head/spine(victim.loc)
@@ -226,19 +273,24 @@
 					hide.name = "[victim.name]-hide"
 					hide.singular_name = "[victim.name]-hide"
 					hide.stack_id = "[victim.name]-hide"
-					new /obj/effect/decal/remains/human(T.loc)
-				if(T.legcuffed)
-					T.drop_inv_item_on_ground(T.legcuffed)
-				T.butchery_progress = 5 //Won't really matter.
+					new /obj/effect/decal/remains/human(target.loc)
+				if(target.legcuffed)
+					target.drop_inv_item_on_ground(target.legcuffed)
+				target.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				if(hunter_data.prey == T)
-					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+				if(hunter_data.prey == target)
+					to_chat(src, SPAN_YAUTJABOLD("You have claimed [target] as your trophy."))
 					emote("roar2")
-					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+					var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+					if(istype(bracer))
+						message_all_yautja("[src.real_name] has claimed [target] as their trophy.", broadcast_networks = bracer.received_networks)
 					hunter_data.prey = null
+					target.hunter_data.hunter = null
+					target.hunter_data.hunted = FALSE
+					target.hud_set_hunter()
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
-				qdel(T)
+				qdel(target)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 	else
@@ -248,39 +300,24 @@
 			to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 			return
 		if(limb == "head")
-			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
+			visible_message("<b>[src] reaches down and starts beheading [target].</b>","<b>You reach down and start beheading [target].</b>")
 		else
-			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
+			visible_message("<b>[src] reaches down and starts removing [target]'s [limbName].</b>","<b>You reach down and start removing [target]'s [limbName].</b>")
 		if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(victim.get_limb(limb).status & LIMB_DESTROYED)
 				to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 				return
 			victim.get_limb(limb).droplimb(TRUE, FALSE, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
-			if(hunter_data.prey == T)
-				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+			if(hunter_data.prey == target)
+				to_chat(src, SPAN_YAUTJABOLD("You have claimed [target] as your trophy."))
 				emote("roar2")
-				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+				var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+				if(istype(bracer))
+					message_all_yautja("[src.real_name] has claimed [target] as their trophy.", broadcast_networks = bracer.received_networks)
 				hunter_data.prey = null
+				target.hunter_data.hunter = null
+				target.hunter_data.hunted = FALSE
+				target.hud_set_hunter()
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-
-/area/yautja
-	name = "\improper Yautja Ship"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "hunter"
-	//music = "signal"
-	ambience_exterior = AMBIENCE_YAUTJA
-	ceiling = CEILING_METAL
-	requires_power = FALSE
-	base_lighting_alpha = 155
-	base_lighting_color = "#ffc49c"
-	flags_area = AREA_YAUTJA_GROUNDS
-
-/area/yautja/lower_deck
-	name = "\improper Yautja Ship - Lower Deck"
-	base_lighting_alpha = 105
-
-/area/yautja/hangar
-	name = "\improper Yautja Ship - Hangar"
-	base_lighting_alpha = 180

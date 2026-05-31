@@ -130,11 +130,18 @@
 		"logo_upp.png" = 'html/paper_assets/logo_upp.png',
 		"logo_twe.png" = 'html/paper_assets/logo_twe.png',
 		"logo_cmb.png" = 'html/paper_assets/logo_cmb.png',
+		"logo_wy_carbon.png" = 'html/paper_assets/logo_wy_carbon.png',
+		"logo_hd_carbon.png" = 'html/paper_assets/logo_hd_carbon.png',
 		"background_white.jpg" = 'html/paper_assets/background_white.jpg',
 		"background_dark.jpg" = 'html/paper_assets/background_dark.jpg',
 		"background_dark2.jpg" = 'html/paper_assets/background_dark2.jpg',
 		"background_dark_fractal.png" = 'html/paper_assets/background_dark_fractal.png',
+		"background_card.png" = 'html/paper_assets/background_card.png',
+		"background_card_ribbed.png" = 'html/paper_assets/background_card_ribbed.png',
 		"colonialspacegruntsEZ.png" = 'html/paper_assets/colonialspacegruntsEZ.png',
+		"wy_punch_card.png" = 'html/paper_assets/wy_punch_card.png',
+		"hd_punch_card.png" = 'html/paper_assets/hd_punch_card.png',
+		"punch_card_punch.png" = 'html/paper_assets/punch_card_punch.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -321,6 +328,11 @@
 
 	var/list/icons_to_always_load = list(
 		/obj/item/storage/pill_bottle,
+		/obj/item/clothing/under/chainshirt/hunter/scalable,
+		/obj/item/clothing/suit/armor/yautja/hunter/scalable,
+		/obj/item/falcon_drone,
+		/obj/item/storage/belt/gun/quiver,
+		/obj/item/arrow,
 	)
 
 /datum/asset/spritesheet/vending_products/register()

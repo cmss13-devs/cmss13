@@ -362,7 +362,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "gf" = (
 /obj/structure/machinery/body_scanconsole,
-/obj/structure/machinery/autodoc_console{
+/obj/structure/machinery/autodoc_console/upgraded{
 	dir = 1
 	},
 /turf/open/floor/corsat/green/north,
@@ -662,6 +662,8 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/roller,
+/obj/item/roller,
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/weyland_station)
 "lo" = (
@@ -761,7 +763,7 @@
 /turf/open/floor/corsat/yellow/southeast,
 /area/adminlevel/ert_station/weyland_station)
 "mm" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/corsat/green/east,
 /area/adminlevel/ert_station/weyland_station)
 "mn" = (
@@ -829,9 +831,14 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "nJ" = (
-/obj/item/roller,
-/obj/item/roller,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_y = 1
+	},
 /turf/open/floor/corsat/green/southwest,
 /area/adminlevel/ert_station/weyland_station)
 "nQ" = (

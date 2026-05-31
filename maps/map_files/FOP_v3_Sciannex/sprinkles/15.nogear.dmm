@@ -175,7 +175,7 @@
 /area/template_noop)
 "V" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "W" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null

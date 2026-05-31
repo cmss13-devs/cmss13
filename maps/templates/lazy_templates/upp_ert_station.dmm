@@ -2013,7 +2013,7 @@
 /turf/open/floor/strata/floor2,
 /area/adminlevel/ert_station/upp_station)
 "QR" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/strata/white_cyan3,
 /area/adminlevel/ert_station/upp_station)
 "Rd" = (

@@ -62,6 +62,7 @@
 		new /obj/item/reagent_container/food/snacks/flour(src)
 	for(var/i in 1 to 2)
 		new /obj/item/reagent_container/food/condiment/sugar(src)
+		new /obj/item/reagent_container/food/condiment/chocolate_syrup(src)
 
 //grocery
 

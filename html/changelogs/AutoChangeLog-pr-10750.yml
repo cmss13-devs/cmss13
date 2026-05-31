@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Healing / Plasma recovery nodes now properly add overlays to the effected xenomorphs"

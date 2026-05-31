@@ -7,7 +7,7 @@
 	var/datum/powernet/powernet = null
 
 	/// Reference to a power terminal, used to connect SMES and APCs to the grid.
-	var/obj/structure/machinery/power/terminal/terminal = null
+	var/obj/structure/terminal/terminal = null
 
 	var/directwired = 1 // by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
@@ -65,21 +65,27 @@
 
 // increment the power usage stats for an area
 
-/obj/structure/machinery/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF, autocalled = 0) // defaults to one-off power charge, not constant power change
-	var/area/A = get_area(src) // make sure it's in an area
-	if(!A || !isarea(A))
-		return
-	A.use_power(amount, chan)
-	if(!autocalled)
-		log_power_update_request(A, src)
-	return 1
+/obj/structure/machinery/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF) // defaults to one-off power charge, not constant power change
+	SHOULD_CALL_PARENT(TRUE)
+	var/area/current_area = get_area(src) // make sure it's in an area
+	if(!isarea(current_area))
+		return FALSE
+
+	current_area.use_power(amount, chan)
+
+	log_power_update_request(current_area, src, amount, chan)
+
+	return TRUE
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.
 /obj/structure/machinery/proc/power_change(area/master_area = null) // called whenever the power settings of the containing area change
 										// by default, check equipment channel & set flag
 										// can override if needed
+	if(QDELETED(src))
+		return
+
 	var/has_power
-	if (master_area)
+	if(master_area)
 		has_power = master_area.powered(power_channel)
 	else
 		has_power = powered(power_channel)
@@ -332,8 +338,8 @@
 		else if(istype(power_source,/obj/structure/machinery/power/apc))
 			var/obj/structure/machinery/power/apc/apc = power_source
 			cell = apc.cell
-			if (apc.terminal)
-				PN = apc.terminal.powernet
+			if (apc.powernet)
+				PN = apc.powernet
 		else if (!power_source)
 			return 0
 		else
@@ -396,14 +402,15 @@
 	. = ..()
 	if(apc_in_area)
 		LAZYREMOVE(apc_in_area.connected_power_sources, src)
+		apc_in_area = null
 
 /obj/structure/machinery/power/power_generator/add_avail(amount)
 	if(apc_in_area)
 		if(apc_in_area.current_area != current_area)
 			LAZYREMOVE(apc_in_area.connected_power_sources, src)
 			apc_in_area = null
-		else if(apc_in_area.cell && apc_in_area.operating)
-			return
+		else if(current_area.requires_power)
+			return // In the off chance somehow theres an APC where power isn't required it wouldn't handle gens
 	else
 		apc_in_area = current_area.get_apc()
 		if(apc_in_area)

@@ -242,7 +242,9 @@
 				blocked = TRUE
 				break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
+		for(var/obj/effect/particle_effect/smoke/smoke in T)
+			if(!smoke.obscuring)
+				continue
 			blocked = TRUE
 			break
 
@@ -492,6 +494,7 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+	has_aimed_shot = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/elite/Initialize()
 	. = ..()

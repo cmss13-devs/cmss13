@@ -341,7 +341,7 @@
 
 	if(ability_used.reflective_start_time > 0)
 		var/used_ratio = round((world.time - ability_used.reflective_start_time) / ability_used.duration, 0.1)
-		ability_used.reflective_recharge_time = max((BULWARK_REFLECTIVE_TIME * used_ratio * ability_used.reflective_refund_multiplier) + 6 SECONDS, 5 SECONDS)
+		ability_used.reflective_recharge_time = (BULWARK_REFLECTIVE_TIME * used_ratio * ability_used.reflective_refund_multiplier) + 6 SECONDS
 
 	ability_used.reflective_start_time = -1
 	apply_cooldown_override(ability_used.reflective_recharge_time)

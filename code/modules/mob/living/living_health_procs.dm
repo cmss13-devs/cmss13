@@ -376,6 +376,8 @@
 			S.update_duration(amount)
 		else
 			S = apply_status_effect(/datum/status_effect/incapacitating/unconscious, amount)
+		if(admin)
+			S.remove_on_fullheal = FALSE
 	return S
 
 /// Adds to remaining Knockout duration
@@ -605,7 +607,8 @@
 		timeofdeath = 0
 
 	// restore us to consciousness
-	set_stat(CONSCIOUS)
+	if(!(status_flags & ASLEPT))
+		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)

@@ -499,7 +499,7 @@
 /mob/living/proc/is_admin_slept()
 	return has_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
 
-/// Sets Admin sleeping
+/// Sets Admin sleeping, TRUE for applying FALSE for removing, defualts to removing
 /mob/living/proc/set_admin_sleep(apply)
 	if(!apply)
 		var/datum/status_effect/incapacitating/unconscious/aslept/admin_slept = is_admin_slept()

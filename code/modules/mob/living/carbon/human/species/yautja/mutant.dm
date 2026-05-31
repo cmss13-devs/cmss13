@@ -120,19 +120,19 @@
 			if("groin","chest")
 				limb.min_broken_damage = 145
 				limb.max_damage = 150
-				limb.time_to_knit = 1200 // 2 minutes to self heal bone break, time is in tenths of a second to auto heal this
+				limb.time_to_knit = 2 MINUTES
 			if("head")
 				limb.min_broken_damage = 140
 				limb.max_damage = 150
-				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
+				limb.time_to_knit = 1 MINUTES
 			if("l_hand","r_hand","r_foot","l_foot")
 				limb.min_broken_damage = 145
 				limb.max_damage = 150
-				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
+				limb.time_to_knit = 1 MINUTES
 			if("r_leg","r_arm","l_leg","l_arm")
 				limb.min_broken_damage = 145
 				limb.max_damage = 150
-				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
+				limb.time_to_knit = 1 MINUTES
 	return ..()
 
 /datum/species/yautja_mutant/get_hairstyle(style)

@@ -72,6 +72,9 @@
 	/// _on_cease timer id
 	var/cease_timer_id
 
+	/// Unable to be used by Pathogen hive
+	var/pathogen_forbidden = FALSE
+
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
 	if(!xenohive || !istype(xenohive))
@@ -403,6 +406,7 @@
 	special_fail_message = "Only one hatchery may exist at a time."
 	cooldown_duration = 15 MINUTES // This buff ceases instantly so we need to incorporation the spawning time too
 	number_of_required_pylons = 2
+	pathogen_forbidden = TRUE
 
 /datum/hivebuff/game_ender_caste/New()
 	roundtime_to_enable = GLOB.king_acquisition_time

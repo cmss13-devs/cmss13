@@ -492,6 +492,10 @@
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
+		if(istype(O, /obj/effect/pathogen/spore_sac))
+			if(!silent)
+				to_chat(src, SPAN_WARNING("There's a spore sac in the way!"))
+			return
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
 			break

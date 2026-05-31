@@ -50,6 +50,36 @@
 	zombie.faction_group = list(FACTION_PATHOGEN)
 	zombie.job = SPECIES_PATHO_WALKER
 
+	override_equipment(zombie)
+
+	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+	zom_hud.add_hud_to(zombie, zombie)
+	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	zom_hud.add_hud_to(zombie, zombie)
+
+	to_chat(zombie, SPAN_PATHOGEN_ANNOUNCE("You have become a [SPECIES_PATHO_WALKER], an undead creation held together by mycelial spores. You serve the [FACTION_PATHOGEN] and its Overmind."))
+
+	for(var/obj/limb/limb in zombie.limbs)
+		switch(limb.name)
+			if("groin","chest")
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 2 MINUTES
+			if("head")
+				limb.min_broken_damage = 140
+				limb.max_damage = 150
+				limb.time_to_knit = 1 MINUTES
+			if("l_hand","r_hand","r_foot","l_foot")
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 1 MINUTES
+			if("r_leg","r_arm","l_leg","l_arm")
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 1 MINUTES
+	return ..()
+
+/datum/species/pathogen_walker/proc/override_equipment(mob/living/carbon/human/zombie)
 	if(zombie.l_hand)
 		zombie.drop_inv_item_on_ground(zombie.l_hand, FALSE, TRUE)
 	if(zombie.r_hand)
@@ -77,17 +107,6 @@
 	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws/no_infect/pathogen(zombie), WEAR_L_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes/pathogen(zombie), WEAR_EYES, TRUE)
 
-	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-	zom_hud.add_hud_to(zombie, zombie)
-	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
-	zom_hud.add_hud_to(zombie, zombie)
-
-	to_chat(zombie, SPAN_PATHOGEN_ANNOUNCE("You have become a [SPECIES_PATHO_WALKER], an undead creation held together by mycelial spores. You serve the [FACTION_PATHOGEN] and its Overmind."))
-
-	return ..()
-
-
-
 /datum/species/pathogen_walker/post_species_loss(mob/living/carbon/human/zombie)
 	..()
 	remove_from_revive(zombie)
@@ -96,6 +115,21 @@
 	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	zom_hud.remove_hud_from(zombie, zombie)
 
+	for(var/obj/limb/limb in zombie.limbs)
+		switch(limb.name)
+			if("groin","chest")
+				limb.min_broken_damage = 40
+				limb.max_damage = 200
+			if("head")
+				limb.min_broken_damage = 40
+				limb.max_damage = 60
+			if("l_hand","r_hand","r_foot","l_foot")
+				limb.min_broken_damage = 25
+				limb.max_damage = 30
+			if("r_leg","r_arm","l_leg","l_arm")
+				limb.min_broken_damage = 30
+				limb.max_damage = 35
+		limb.time_to_knit = -1
 
 /datum/species/pathogen_walker/handle_unique_behavior(mob/living/carbon/human/zombie)
 	if(prob(5))
@@ -131,17 +165,25 @@
 		remove_from_revive(zombie)
 
 /datum/species/pathogen_walker/proc/revive_from_death(mob/living/carbon/human/zombie)
-	if(zombie && zombie.loc && zombie.stat == DEAD)
-		zombie.revive(TRUE)
-		zombie.apply_effect(4, STUN)
+	if(!(zombie && zombie.loc && zombie.stat == DEAD))
+		return
+	zombie.revive(TRUE)
+	zombie.apply_effect(4, STUN)
 
-		zombie.make_jittery(500)
-		zombie.visible_message(SPAN_WARNING("[zombie] rises from the ground!"))
-		remove_from_revive(zombie)
+	zombie.make_jittery(500)
+	zombie.visible_message(SPAN_WARNING("[zombie] rises from the ground!"))
 
-		handle_alert_ghost(zombie)
+	if(zombie.blood_volume < BLOOD_VOLUME_OKAY)
+		zombie.blood_volume = BLOOD_VOLUME_OKAY
 
-		addtimer(CALLBACK(zombie, TYPE_PROC_REF(/mob, remove_jittery)), 3 SECONDS)
+	remove_from_revive(zombie)
+
+	handle_alert_ghost(zombie)
+
+	/// Make sure they have their claws
+	override_equipment(zombie)
+
+	addtimer(CALLBACK(zombie, TYPE_PROC_REF(/mob, remove_jittery)), 3 SECONDS)
 
 /datum/species/pathogen_walker/proc/handle_alert_ghost(mob/living/carbon/human/zombie)
 	var/mob/dead/observer/ghost = zombie.get_ghost()

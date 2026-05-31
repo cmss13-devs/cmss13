@@ -1869,7 +1869,7 @@
 	var/max_poppers = 8
 	var/matriarch_enabled = FALSE
 	/// Ckey of the player who rolled Queen, so they don't need admin approval.
-	var/free_overmind
+	var/last_overmind
 
 /datum/hive_status/pathogen/setup_banned_allies()
 	banned_allies = list("All")
@@ -1901,19 +1901,19 @@
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, unlike anything you've ever heard before. You begin to analyze and decrypt the strange vocalization."))
 			current_mob.add_language(LANGUAGE_PATHOGEN)
 
-	addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 3 MINUTES))
+	addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 3 MINUTES)
 	return TRUE
 
 /datum/hive_status/pathogen/proc/build_matrarch_cocoon()
 	if(!matriarch_enabled || has_hatchery)
 		return FALSE
 	if(length(active_endgame_pylons) < 2)
-		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 5 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 5 MINUTES)
 		if(living_xeno_queen)
 			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to insufficient pylons. It will attempt to grow again in 5 minutes."))
 		return FALSE
 	if(!hive_location)
-		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 5 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 5 MINUTES)
 		if(living_xeno_queen)
 			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there being no blight core. It will attempt to grow again in 5 minutes."))
 		return FALSE
@@ -1947,7 +1947,7 @@
 
 	if(!spawn_turf)
 		xeno_message(SPAN_PATHOGEN_ANNOUNCE("Unable to find viable spawn point for the Matriarch cocoon."), hivenumber = XENO_HIVE_PATHOGEN)
-		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon), 2 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 2 MINUTES)
 		if(living_xeno_queen)
 			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there not being enough space. It will attempt to grow again in 2 minutes."))
 		return FALSE
@@ -2007,3 +2007,56 @@
 		return FALSE
 
 	return TRUE
+
+/datum/hive_status/pathogen/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(possible_hivebuff.pathogen_forbidden)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs

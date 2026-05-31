@@ -223,31 +223,12 @@
 
 	xeno.overlay_shields()
 
-
-
-
-
 /datum/action/xeno_action/verb/verb_cyclone()
 	set category = "Alien"
 	set name = "Cyclone"
 	set hidden = TRUE
 	var/action_name = "Cyclone"
 	handle_xeno_macro(src, action_name)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -94,7 +94,7 @@
 
 	var/list/abilities_to_give = overmind_abilities.Copy()
 
-	if(!overmind_strengthened)
+	if(!overmind_strengthened && !SSticker.mode.is_in_endgame)
 		overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 		abilities_to_give -= overmind_abilities_strong
 
@@ -174,7 +174,8 @@
 	overmind_mob.set_resin_build_order(overmind_mob.caste.resin_build_order)
 	overmind_mob.extra_build_dist = initial(overmind_mob.extra_build_dist)
 
-	last_overmind_key = overmind_mob.key
+	var/datum/hive_status/pathogen/confluence = linked_hive
+	confluence.last_overmind = overmind_mob.ckey
 	overmind_mob.lock_evolve = FALSE
 	overmind_mob = null
 

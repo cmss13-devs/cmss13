@@ -991,7 +991,7 @@ Additional game mode variables.
 	if(hivenumber == XENO_HIVE_PATHOGEN)
 		new_queen = new /mob/living/carbon/xenomorph/conditor(xeno_turf, null, XENO_HIVE_PATHOGEN)
 		var/datum/hive_status/pathogen/confluence = hive
-		confluence.free_overmind = ghost_mind.ckey
+		confluence.last_overmind = ghost_mind.ckey
 	else
 		new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.

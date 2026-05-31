@@ -1,4 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "Fixes the forecon spotter corpse spawning the parent item for patches"

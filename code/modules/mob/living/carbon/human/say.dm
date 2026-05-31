@@ -68,6 +68,9 @@
 		if(client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
+		if(status_flags & ASLEPT)
+			to_chat(src, SPAN_HIGHDANGER("You cannot speak. You have been slept by admins. You should respond to them."))
+			return
 
 	message = trim(strip_html(message))
 

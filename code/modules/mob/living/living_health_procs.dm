@@ -370,6 +370,7 @@
 	if(amount <= 0)
 		if(S)
 			qdel(S)
+			satus_flags &= ~ASLEPT
 	else
 		if(S)
 			S.update_duration(amount)

@@ -246,6 +246,13 @@
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/mob/pathogen/neo_blips.dmi', null, "patho_core"))
 
+
+/obj/effect/alien/resin/special/pylon/pathogen_core/proc/can_spawn_larva()
+	if(linked_hive.hardcore)
+		return FALSE
+
+	return linked_hive.stored_larva
+
 /obj/effect/alien/resin/special/pylon/pathogen_core/process()
 	. = ..()
 	update_minimap_icon()
@@ -261,7 +268,7 @@
 				qdel(burster)
 
 		var/count_spawned = 0
-		var/spawning_burster = !linked_hive.hardcore && (last_burster_time + spawn_cooldown) < world.time
+		var/spawning_burster = can_spawn_larva() && (last_burster_time + spawn_cooldown) < world.time
 		if(spawning_burster)
 			last_burster_time = world.time
 		if(spawning_burster || (last_burster_pool_time + spawn_cooldown * 4) < world.time)
@@ -269,7 +276,7 @@
 			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(spawning_burster)
 				var/i = 0
-				while(i < length(players_with_xeno_pref) && !linked_hive.hardcore)
+				while(i < length(players_with_xeno_pref) && can_spawn_larva())
 					if(spawn_burrowed_burster(players_with_xeno_pref[++i]))
 						// We were in spawning_burster mode and successfully spawned someone
 						count_spawned++
@@ -294,7 +301,7 @@
 		last_healed = world.time + heal_interval
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/spawn_burrowed_burster(mob/xeno_candidate)
-	if(!linked_hive.hardcore && xeno_candidate)
+	if(can_spawn_larva() && xeno_candidate)
 		var/mob/living/carbon/xenomorph/bloodburster/new_burster = new(loc)
 		if(isnull(new_burster))
 			return FALSE

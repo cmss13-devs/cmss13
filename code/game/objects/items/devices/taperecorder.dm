@@ -336,32 +336,23 @@
 	icon_state = "colonyrecorder"
 	canprint = FALSE
 
+/obj/item/device/taperecorder/colony/get_examine_text(mob/user)
+	. = ..()
+	if(!mytape)
+		desc += "\nLooks like the tape fell out somewhere. You'll have to find a new one, somewhere. The colony might be a good bet..."
+
 /obj/item/device/taperecorder/colony/empty
 	starting_tape_type = null
 	/// list of typepaths for lore tapes
 	var/list/lore_tapes = list()
 
-
-/// do not use on maps
+/// do not use on maps, only in player loadouts.
 /obj/item/device/taperecorder/colony/loadout
 	name = "\improper Seegson C36 tape recorder"
 	desc = "A cheap plastic C-Series tape recorder, mass produced by Seegson for distribution all over civilised space. To save on money, they cannot print transcripts of their tapes. You bought this one in a PX on Chinook before setting off."
-	starting_tape_type = /obj/item/tape/random/loadout
-	/// chance for it to spawn with no tape
-	var/spawn_empty_chance = 50
-	/// chance for it to spawn with a random LORE TAPE (if it does spawn with a tape) from the list below
-	var/spawn_lore_tape_chance = 20 // 10% chance
-
 	/// list of typepaths for lore tapes
 	var/list/lore_tapes = list()
-
-/obj/item/device/taperecorder/colony/loadout/Initialize(mapload)
-	if(prob(spawn_empty_chance))
-		desc += "\nLooks like the tape fell out somewhere. You'll have to find a new one."
-		starting_tape_type = null
-	. = ..()
-
-
+	starting_tape_type = null
 /obj/item/tape
 	name = "tape"
 	desc = "A magnetic tape that can hold up to twenty minutes of content on either side. Has a little paper strip on the top to let you label it with a pen."

@@ -3622,6 +3622,32 @@
 	},
 /turf/closed/wall/strata_outpost,
 /area/fort_mcneil/indoors/storage)
+"akR" = (
+/obj/structure/cargo_container/hd/mid,
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/outdoors/colony_exterior/west)
+"akS" = (
+/obj/structure/cargo_container/hd/right,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/colony_exterior/west)
+"akT" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/outdoors/colony_exterior/west)
+"akU" = (
+/obj/structure/largecrate/empty{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/outdoors/colony_exterior/west)
+"akV" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -10;
+	layer = 3.6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/outdoors/colony_exterior/west)
 "alr" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
@@ -3880,8 +3906,8 @@
 /turf/open/asphalt/brown,
 /area/fort_mcneil/oob)
 "aId" = (
-/obj/structure/prop/vehicles/crawler{
-	layer = 3.3
+/obj/structure/largecrate/random/barrel/yellow{
+	layer = 2
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/colony_exterior/west)
@@ -7997,10 +8023,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/structure/prop/vehicles/crawler{
-	dir = 8;
-	icon_state = "crawler_fuel"
-	},
+/obj/structure/cargo_container/hd/left,
 /turf/open/auto_turf/sand_white/layer0,
 /area/fort_mcneil/outdoors/colony_exterior/west)
 "kuE" = (
@@ -16325,7 +16348,7 @@ bha
 agu
 bha
 vJF
-agu
+akT
 jGe
 ktF
 jGe
@@ -16426,9 +16449,9 @@ bha
 bha
 bha
 arM
-aht
+akU
 bha
-agu
+akR
 bha
 bha
 bha
@@ -16527,9 +16550,9 @@ agR
 bha
 bha
 agu
+aht
 agu
-agu
-bha
+akS
 bha
 bha
 bha
@@ -16826,7 +16849,7 @@ iXa
 bha
 ahG
 ahF
-ahB
+akV
 boa
 ahw
 agu
@@ -16928,7 +16951,7 @@ agu
 agu
 ahG
 boa
-boa
+ahB
 ahc
 gAX
 agu
@@ -19111,7 +19134,7 @@ dEr
 mLD
 mLD
 cDp
-cDp
+ofL
 cDp
 cDp
 cDp
@@ -19211,8 +19234,8 @@ mLD
 dEr
 mLD
 mLD
-mLD
-mLD
+ofL
+ofL
 cDp
 mLD
 mLD

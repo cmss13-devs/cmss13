@@ -98,3 +98,8 @@
 	name = "Tyrargo Rift - city limit sign"
 	desc = "A large sign designating the city limit of Tyrargo Rift."
 	icon_state = "tyrargo_sign_4"
+
+/obj/structure/lz_sign/mcneil
+	name = "Fort McNeil - Colony Sign"
+	desc = "A small sign denoting this as the colony of Fort McNeil. The sign proclaims a population of 536, but a more recent lather of red paint has partially removed the 5."
+	icon_state = "antre_sign_2"

@@ -3591,6 +3591,10 @@
 /obj/effect/spawner/random/gun/cmb/highchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/pod_2)
+"akN" = (
+/obj/structure/lz_sign/mcneil,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/scrublands/central)
 "alr" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
@@ -21919,7 +21923,7 @@ vaS
 vaS
 tiW
 tWQ
-vaS
+akN
 vaS
 jet
 xVN

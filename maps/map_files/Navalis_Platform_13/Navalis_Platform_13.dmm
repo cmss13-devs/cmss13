@@ -19559,179 +19559,6 @@
 	},
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/navalis/oob)
-"bjt" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
-"bju" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -10;
-	pixel_y = 2
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "stan1"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjv" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/navalis/indoors/clf_shuttle)
-"bjw" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan3"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjx" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
-"bjy" = (
-/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
-	light_on = 1;
-	light_power = 5;
-	light_range = 6;
-	pixel_y = -13;
-	pixel_x = -6
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
-	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
-"bjz" = (
-/turf/closed/shuttle/ert,
-/area/navalis/indoors/clf_shuttle)
-"bjA" = (
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/navalis/indoors/clf_shuttle)
-"bjB" = (
-/obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "stan5"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjC" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3"
-	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
-"bjD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan8"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjF" = (
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjG" = (
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan9"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjI" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_rightengine"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjJ" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/clf_medic/navalis,
-/turf/open/floor/almayer/orange/east,
-/area/navalis/indoors/clf_shuttle)
-"bjK" = (
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjL" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/turf/open/floor/almayer/orange/west,
-/area/navalis/indoors/clf_shuttle)
-"bjM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan5"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjN" = (
-/obj/structure/machinery/power/apc/power/north,
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/clf_engi/navalis,
-/turf/open/floor/almayer/orange/east,
-/area/navalis/indoors/clf_shuttle)
-"bjO" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/structure/machinery/door_control/brbutton{
-	id = "clf_umbilical_1";
-	pixel_x = 1;
-	pixel_y = 28;
-	range = 20
-	},
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjP" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/obj/effect/landmark/survivor_spawner/clf/navalis,
-/turf/open/floor/almayer/orange/west,
-/area/navalis/indoors/clf_shuttle)
-"bjQ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_r_w"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjR" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_inner_w_1"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bjS" = (
-/obj/structure/machinery/door/airlock/almayer/generic/autoname{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_l_w"
-	},
-/area/navalis/indoors/clf_shuttle)
 "bjU" = (
 /obj/structure/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
@@ -19752,107 +19579,6 @@
 	density = 0
 	},
 /area/navalis/indoors/ice_cavern)
-"bjX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjY" = (
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	dir = 1
-	},
-/obj/effect/landmark/survivor_spawner/clf_lead/navalis,
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bjZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1;
-	dir = 1
-	},
-/obj/effect/landmark/survivor_spawner/clf_heavy,
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bka" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine{
-	department = "CLF - Cell 42"
-	},
-/obj/item/paper/varadero/clf,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bkb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bkc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan22"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bkd" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications{
-	icon_state = "commb";
-	stat = 1
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bke" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
-	icon_state = "atmosb";
-	stat = 1
-	},
-/turf/open/floor/almayer,
-/area/navalis/indoors/clf_shuttle)
-"bkf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan23"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bkg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
-/area/navalis/indoors/clf_shuttle)
-"bkh" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/navalis/indoors/charon/surface_deck/main_deck)
-"bki" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan27"
-	},
-/area/navalis/indoors/clf_shuttle)
 "bkj" = (
 /obj/structure/barricade/handrail/strata/navalis,
 /obj/structure/barricade/handrail/strata/navalis{
@@ -133041,15 +132767,15 @@ akU
 akU
 akU
 akU
-bkh
-bkb
-bjz
-bjQ
-bjz
-bjz
-bjD
-bjy
-bjt
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU
@@ -133205,15 +132931,15 @@ akU
 akU
 akU
 akU
-bkb
-bkc
-bjX
-bjR
-bjN
-bjJ
-bjE
-bjz
-bju
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU
@@ -133369,15 +133095,15 @@ akU
 akU
 akU
 akU
-bki
-bkd
-bjY
-bjR
-bjO
-bjK
-bjF
-bjA
-bjv
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU
@@ -133533,15 +133259,15 @@ akU
 akU
 akU
 akU
-bki
-bke
-bjZ
-bjS
-bjK
-bjK
-bjG
-bjA
-bjv
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU
@@ -133697,15 +133423,15 @@ aTk
 akU
 aHA
 akU
-bkg
-bkf
-bka
-bjR
-bjP
-bjL
-bjH
-bjB
-bjw
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU
@@ -133861,15 +133587,15 @@ aWn
 akU
 akU
 akU
-bkh
-bkg
-bjM
-bjT
-bjM
-bjM
-bjI
-bjC
-bjx
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
+akU
 akU
 akU
 akU

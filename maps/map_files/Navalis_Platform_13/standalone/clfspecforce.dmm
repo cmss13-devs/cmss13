@@ -11,7 +11,7 @@
 	icon_state = "leftengine_3";
 	opacity = 0
 	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
+/area/navalis/indoors/clf_shuttle)
 "aK" = (
 /obj/structure/monorail{
 	dir = 9;
@@ -191,7 +191,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1"
 	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
+/area/navalis/indoors/clf_shuttle)
 "vm" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan3"
@@ -281,7 +281,7 @@
 	icon_state = "leftengine_1";
 	opacity = 0
 	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
+/area/navalis/indoors/clf_shuttle)
 "BD" = (
 /obj/effect/landmark/survivor_spawner/clf/navalis,
 /obj/structure/machinery/light/small{
@@ -337,9 +337,6 @@
 	icon_state = "stan_rightengine"
 	},
 /area/navalis/indoors/clf_shuttle)
-"Ht" = (
-/turf/open/floor/plating/catwalk/grate/lattice,
-/area/navalis/indoors/charon/surface_deck/main_deck)
 "JT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan27"
@@ -394,7 +391,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3"
 	},
-/area/navalis/indoors/charon/surface_deck/main_deck)
+/area/navalis/indoors/clf_shuttle)
 "UO" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /turf/open/floor/plating/catwalk/grate/lattice,
@@ -449,7 +446,7 @@ GA
 "}
 (2,1,1) = {"
 Dm
-Ht
+zc
 PI
 VM
 Pt
@@ -524,7 +521,7 @@ Ep
 "}
 (7,1,1) = {"
 og
-Ht
+bb
 XM
 dm
 FF

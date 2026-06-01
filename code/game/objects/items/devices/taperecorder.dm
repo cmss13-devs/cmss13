@@ -338,7 +338,6 @@
 
 /obj/item/device/taperecorder/colony/empty
 	starting_tape_type = null
-
 	/// list of typepaths for lore tapes
 	var/list/lore_tapes = list()
 
@@ -360,10 +359,6 @@
 	if(prob(spawn_empty_chance))
 		desc += "\nLooks like the tape fell out somewhere. You'll have to find a new one."
 		starting_tape_type = null
-	else if(prob(spawn_lore_tape_chance) && lore_tapes.len)
-		var/lore_tape = pick(lore_tapes)
-		desc += "\nStrangely enough, the tape that came with it already seems partially used."
-		starting_tape_type = lore_tape
 	. = ..()
 
 

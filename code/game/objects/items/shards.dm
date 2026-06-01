@@ -269,6 +269,13 @@
 	icon_state = "alienbonechips"
 	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."
 
+/obj/item/small_shards
+	name = "small glass fragments"
+	icon = 'icons/obj/items/smoking/ashtray.dmi'
+	w_class = SIZE_TINY
+	icon_state = "ashtray_bork_gl"
+	desc = "Sharp, jagged fragments of glass."
+
 /obj/item/shard/shrapnel/tutorial
 	damage_on_move = 0
 

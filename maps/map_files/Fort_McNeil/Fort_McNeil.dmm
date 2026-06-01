@@ -260,6 +260,7 @@
 /area/fort_mcneil/indoors/mining)
 "aaO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aaP" = (
@@ -2044,6 +2045,7 @@
 "afK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/gun/smg/midchance,
 /turf/open/floor/prison/blue,
 /area/fort_mcneil/indoors/connection_paths)
 "afL" = (
@@ -2161,6 +2163,7 @@
 /area/fort_mcneil/indoors/engi)
 "agf" = (
 /obj/item/stack/rods,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/engi)
 "agg" = (
@@ -2847,6 +2850,7 @@
 /area/fort_mcneil/indoors/mining)
 "aiy" = (
 /obj/item/device/flashlight/lantern,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aiz" = (
@@ -2912,6 +2916,7 @@
 /area/fort_mcneil/indoors/mining)
 "aiL" = (
 /obj/item/stack/rods,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/mining)
 "aiM" = (
@@ -3091,6 +3096,7 @@
 "ajj" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "ajk" = (
@@ -3099,6 +3105,7 @@
 /area/fort_mcneil/indoors/storage)
 "ajl" = (
 /obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "ajm" = (
@@ -3295,6 +3302,7 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/hydro)
 "ajL" = (
@@ -3537,9 +3545,52 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/fort_mcneil/outdoors/road/north)
+"akF" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/effect/spawner/random/gun/smg/midchance,
+/turf/open/floor/prison/blue/west,
+/area/fort_mcneil/indoors/connection_paths)
+"akG" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/gun/special/lowchance,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/storage)
+"akH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/rifle/lowchance,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/bar)
+"akI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/rifle/lowchance,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/comms_inside)
 "akJ" = (
 /turf/closed/wall/strata_outpost,
 /area/fort_mcneil/indoors/connection_paths)
+"akK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/spawner/random/gun/rifle/lowchance,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/command)
+"akL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/special/lowchance,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/pod_1)
+"akM" = (
+/obj/effect/spawner/random/gun/cmb/highchance,
+/turf/open/floor/prison,
+/area/fort_mcneil/indoors/pod_2)
 "alr" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
@@ -3835,6 +3886,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/command)
 "aNU" = (
@@ -6370,6 +6422,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/spawner/random/gun/smg/midchance,
 /turf/open/floor/prison/blue/west,
 /area/fort_mcneil/indoors/connection_paths)
 "hku" = (
@@ -6912,6 +6965,7 @@
 /area/fort_mcneil/outdoors/comms)
 "ifQ" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/bar)
 "igV" = (
@@ -8118,6 +8172,8 @@
 "kGO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/spawner/random/gun/special/lowchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/pod_3)
 "kHH" = (
@@ -8506,6 +8562,7 @@
 /area/fort_mcneil/indoors/connection_paths)
 "lIO" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/pod_1)
 "lKb" = (
@@ -9328,6 +9385,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/pod_2)
 "nHi" = (
@@ -9772,6 +9830,7 @@
 	pixel_y = -2
 	},
 /obj/effect/landmark/map_item,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/fort_mcneil/indoors/command)
 "oIu" = (
@@ -10664,6 +10723,7 @@
 	icon_state = "1-2";
 	layer = 2.1
 	},
+/obj/effect/spawner/random/gun/civ/highchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/command)
 "qRk" = (
@@ -12134,6 +12194,7 @@
 /area/fort_mcneil/indoors/command)
 "tYw" = (
 /obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/storage)
 "ucY" = (
@@ -12246,6 +12307,7 @@
 /obj/structure/prop/hybrisa/furniture/tables/tablepool{
 	dir = 4
 	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/fort_mcneil/indoors/dorm)
 "unu" = (
@@ -13499,6 +13561,7 @@
 /area/fort_mcneil/outdoors/scrublands/south)
 "xkP" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/smg/highchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/comms_inside)
 "xls" = (
@@ -13606,6 +13669,7 @@
 	pixel_x = -4;
 	pixel_y = -6
 	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/fort_mcneil/indoors/command)
 "xww" = (
@@ -16736,7 +16800,7 @@ agQ
 sOm
 sOm
 ajf
-tYw
+akG
 tYw
 ajj
 ajd
@@ -18112,7 +18176,7 @@ bng
 mce
 xSp
 ado
-lIO
+akL
 aik
 mce
 dwB
@@ -18929,7 +18993,7 @@ xNc
 xNc
 itv
 aKt
-acK
+akK
 cEx
 xNc
 kqL
@@ -19626,7 +19690,7 @@ luD
 bng
 boo
 tEE
-dxF
+akM
 dxF
 iRN
 hkA
@@ -19759,7 +19823,7 @@ nLq
 chs
 rVZ
 abV
-rxY
+akH
 ahf
 eEl
 hCf
@@ -20488,7 +20552,7 @@ aeP
 aeO
 akJ
 akJ
-aeA
+akF
 aeA
 oCT
 nnN
@@ -20950,7 +21014,7 @@ mSk
 bpx
 veN
 meA
-xkP
+akI
 xkP
 acE
 grD

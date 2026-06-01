@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= RMC_FREQ
 				if(FACTION_MARSHAL)
 					freq_listening |= CMB_FREQ
-				if(FACTION_YAUTJA)
+				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return
 				else
@@ -460,6 +460,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	autolinkers = list("receiverCent")
 	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ, ARMY_FREQ)
 
+/obj/structure/machinery/telecomms/receiver/preset_yaut
+	id = "Yautja Receiver"
+	network = "tcommsat"
+	autolinkers = list("yautjacomm")
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
 //Buses
 
 /obj/structure/machinery/telecomms/bus/preset_one
@@ -496,6 +501,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
+/obj/structure/machinery/telecomms/bus/preset_yaut
+	id = "Yautja Bus"
+	network = "tcommsat"
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
+	autolinkers = list("yautjacomm")
 //Processors
 
 /obj/structure/machinery/telecomms/processor/preset_one
@@ -576,6 +586,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("centcomm")
 
+/obj/structure/machinery/telecomms/server/presets/yaut
+	id = "Yautja Server"
+	autolinkers = list("yautjacomm")
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
 //Broadcasters
 
 //--PRESET LEFT--//

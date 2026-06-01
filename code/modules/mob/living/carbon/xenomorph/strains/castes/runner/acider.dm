@@ -190,7 +190,7 @@
 			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), bound_xeno.client, spawning_turf), 0.5 SECONDS)
 		else
 			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
-	bound_xeno.gib()
+	bound_xeno.gib(create_cause_data("internal acid rupture", src))
 
 /mob/living/carbon/xenomorph/runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
@@ -207,9 +207,8 @@
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
-
-	drool_overlay_active = FALSE //turns the drool overlay off
-	bound_xeno.update_icons()
+	drool_overlay_active = FALSE
+	bound_xeno.behavior_delegate?.on_update_icons()
 
 /datum/behavior_delegate/runner_acider/on_update_icons()
 	bound_xeno.overlays -= drool_applied_icon

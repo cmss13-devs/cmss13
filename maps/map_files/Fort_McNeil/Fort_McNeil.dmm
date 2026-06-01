@@ -12743,7 +12743,7 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/indoors/comms_inside)
 "vgb" = (
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/fort_mcneil/indoors/comms_inside)
 "vhf" = (
 /obj/item/tool/warning_cone{

@@ -33,7 +33,7 @@
 
 //Landing Zone
 
-/area/fort_mcneil/landing_zone
+/area/fort_mcneil/landing_zone_1
 	name = "Fort McNeil - Landing Zone"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE

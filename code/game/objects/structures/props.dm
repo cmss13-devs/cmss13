@@ -496,6 +496,7 @@
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
 	icon_state = ""
+	desc = "Separates you from certain death."
 	icon = 'icons/turf/lifeboat.dmi'
 
 #define STATE_COMPLETE 0

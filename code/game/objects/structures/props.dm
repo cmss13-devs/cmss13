@@ -1167,6 +1167,27 @@
 /obj/structure/prop/turret/missile
 	icon_state = "missile_platform"
 
+// WY/Colonial RT-01
+
+/obj/structure/prop/vehicles/tank/rt01
+	name = "\improper RT-01 Transport"
+	desc = "An eight-wheeled, armored, heavy exploration and transport vehicle."
+	icon = 'icons/obj/vehicles/rt01.dmi'
+	icon_state = "rt01_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/rt01/wheels
+	icon_state = "wheels_0"
+
+/obj/structure/prop/vehicles/tank/rt01/wheels/destroyed
+	icon_state = "wheels_1"
+
+/obj/structure/prop/vehicles/tank/rt01/damaged_frame
+	icon_state = "damaged_frame"
+
 //overhead prop sets
 
 /obj/structure/prop/invuln/overhead

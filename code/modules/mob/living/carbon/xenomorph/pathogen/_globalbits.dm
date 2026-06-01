@@ -180,7 +180,7 @@
 	if(!next_slash_buffed)
 		var/datum/action/xeno_action/onclick/blight_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/blight_slash)
 		if (ability && istype(ability))
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "template_xeno"
 	return original_damage
 
 #undef BLIGHT_TOUCH_DELAY
@@ -261,7 +261,7 @@
 		behavior.next_slash_buffed = FALSE
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply blight!"))
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 
 /mob/living/carbon/xenomorph/proc/do_pathogen_evolve()

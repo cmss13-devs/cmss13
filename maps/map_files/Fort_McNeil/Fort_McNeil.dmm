@@ -9277,8 +9277,8 @@
 	id = "south_lockdown";
 	name = "Emergency Lockdown"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/fort_mcneil/indoors/command)
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/fort_mcneil/oob)
 "nlr" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -16117,7 +16117,7 @@ mwP
 mwP
 akx
 ofL
-wEy
+ceA
 ofL
 ofL
 wEy
@@ -16218,7 +16218,7 @@ mwP
 mwP
 ofL
 ofL
-wEy
+ceA
 wEy
 wEy
 wEy
@@ -16319,7 +16319,7 @@ mwP
 ofL
 ofL
 ofL
-wEy
+ceA
 fcr
 pdm
 wEy
@@ -16420,7 +16420,7 @@ ofL
 ofL
 ofL
 ofL
-wEy
+ceA
 ygl
 hRT
 wEy
@@ -16521,7 +16521,7 @@ ofL
 ofL
 ofL
 ofL
-wEy
+ceA
 hVl
 aii
 wEy
@@ -16622,7 +16622,7 @@ ofL
 ofL
 ofL
 ofL
-wEy
+ceA
 tgr
 fwl
 iUs
@@ -16642,7 +16642,7 @@ wMb
 ajt
 iXa
 iXa
-iXa
+vAi
 bha
 bha
 bha
@@ -16723,7 +16723,7 @@ ofL
 ofL
 ofL
 ofL
-wEy
+ceA
 fNe
 gdr
 wEy
@@ -16743,7 +16743,7 @@ ajs
 ajs
 tIF
 svC
-iXa
+vAi
 cPI
 bha
 ahL
@@ -16844,7 +16844,7 @@ ajs
 hyY
 hyY
 hyY
-iXa
+vAi
 iXa
 bha
 ahG
@@ -17147,7 +17147,7 @@ hyY
 ajs
 ajs
 ajs
-iXa
+vAi
 iXa
 agE
 bha
@@ -17248,7 +17248,7 @@ aju
 ajs
 ajs
 ahT
-iXa
+vAi
 ydq
 bha
 bha
@@ -17349,7 +17349,7 @@ wMb
 wMb
 iXa
 iXa
-iXa
+vAi
 ahQ
 ahQ
 bha
@@ -18653,14 +18653,14 @@ xNc
 efo
 vPu
 xNc
-xNc
-xNc
-xNc
+vAi
+vAi
+vAi
 nSD
 oIu
 nSD
-xNc
-xNc
+vAi
+vAi
 glq
 ajP
 pdZ
@@ -18754,14 +18754,14 @@ nhp
 kHM
 acJ
 rVe
-xNc
+vAi
 lSU
 mmE
 xvM
 acs
 voq
 rNP
-xNc
+vAi
 cix
 ach
 smn
@@ -18855,14 +18855,14 @@ xrd
 aKt
 aNv
 hXY
-xNc
+vAi
 rop
 uBx
 mfZ
 acu
 ntO
 qno
-xNc
+vAi
 nII
 mzO
 qdY
@@ -18956,7 +18956,7 @@ gru
 aKt
 acK
 rrf
-xNc
+vAi
 lcJ
 msb
 eqI
@@ -19057,14 +19057,14 @@ itv
 aKt
 akK
 cEx
-xNc
+vAi
 kqL
 aTh
 eqI
 acu
 jnb
 xLs
-xNc
+vAi
 glq
 mLc
 nBZ
@@ -19158,14 +19158,14 @@ sxG
 vvv
 cJL
 wnA
-xNc
+vAi
 iDJ
 vQW
 ciw
 acw
 hoP
 pGW
-xNc
+vAi
 qPW
 xRu
 aGq
@@ -19259,14 +19259,14 @@ iOQ
 dZJ
 oPv
 xNc
-xNc
-xNc
+vAi
+vAi
 nlf
 oXA
 vsp
 oXA
-xNc
-xNc
+vAi
+vAi
 jRy
 jcF
 sOJ

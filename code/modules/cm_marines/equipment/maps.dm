@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 /obj/item/map/fort_mcneil
 	name = "\improper Fort McNeil map"
 	desc = "A labeled blueprint of Fort McNeil, a civilian colony."
-	html_link = "images/7/79/Tyrargo_Rift.png"
+	html_link = "images/b/b5/Fort_McNeil.png"
 
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"

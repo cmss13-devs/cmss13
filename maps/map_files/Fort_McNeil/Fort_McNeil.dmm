@@ -4149,9 +4149,6 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/south)
 "bDm" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -4167,6 +4164,7 @@
 	pixel_x = 10;
 	pixel_y = 2
 	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "bED" = (
@@ -4493,7 +4491,7 @@
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/command)
 "ciS" = (
-/obj/structure/machinery/power/apc/power/north,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/pod_2)
 "ckx" = (
@@ -10239,13 +10237,13 @@
 /turf/open/floor/prison/red/southeast,
 /area/fort_mcneil/indoors/command)
 "pGX" = (
-/obj/structure/machinery/power/apc/power/east{
-	start_charge = 20
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 10
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/engi)
 "pIr" = (
@@ -10429,9 +10427,9 @@
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/fort_mcneil/outdoors/colony_exterior/south_east)
 "qnc" = (
-/obj/structure/machinery/power/apc/power/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/smartfridge/seeds,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/green/northwest,
 /area/fort_mcneil/indoors/hydro)
 "qno" = (
@@ -10823,12 +10821,10 @@
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/bar)
 "rgi" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/dorm)
 "rhk" = (
@@ -12220,13 +12216,13 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/fort_mcneil/indoors/caves/north)
 "ugo" = (
-/obj/structure/machinery/power/apc/power/east{
-	start_charge = 20
-	},
 /obj/structure/closet/secure_closet/engineering_welding{
 	req_one_access = null
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 10
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/fort_mcneil/indoors/comms_inside)
 "uhJ" = (
@@ -13089,7 +13085,7 @@
 /area/fort_mcneil/indoors/engi)
 "vXU" = (
 /obj/structure/machinery/power/apc/power/east{
-	start_charge = 20
+	start_charge = 10
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -13278,11 +13274,9 @@
 /turf/open/asphalt/brown,
 /area/fort_mcneil/outdoors/colony_exterior/east)
 "wuq" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty/case/double,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
 "wuS" = (
@@ -13810,15 +13804,13 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/command)
 "xSp" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7";
 	pixel_y = -2
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/tool/crowbar/red,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/redfull,
 /area/fort_mcneil/indoors/pod_1)
 "xUI" = (

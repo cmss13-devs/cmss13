@@ -264,7 +264,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/pathogen/spore_cloud/proc/attempt_inhale(mob/living/carbon/human/human_passer)
+/obj/effect/pathogen/spore_cloud/proc/attempt_inhale(mob/living/carbon/human/human_passer, forced = FALSE)
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE
 	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer))
@@ -274,14 +274,14 @@
 
 	var/obj/item/mask = human_passer.wear_mask
 	var/obj/item/helmet = human_passer.head
-	if(mask)
+	if(mask && !forced)
 		if(mask.flags_inventory & SPOREPROOF)
 			inhaling = FALSE
 			return FALSE
 		if(prob(80) && (mask.flags_inventory & BLOCKGASEFFECT))
 			inhaling = FALSE
 			return FALSE
-	if(helmet)
+	if(helmet && !forced)
 		if(helmet.flags_inventory & SPOREPROOF)
 			inhaling = FALSE
 			return FALSE
@@ -319,7 +319,7 @@
 	return FALSE
 
 // Duplicate of above CURRENTLY. Will change.
-/obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/human_passer)
+/obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/human_passer, forced = FALSE)
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE
 	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || !isyautja(human_passer))
@@ -329,14 +329,14 @@
 
 	var/obj/item/mask = human_passer.wear_mask
 	var/obj/item/helmet = human_passer.head
-	if(mask)
+	if(mask && !forced)
 		if(mask.flags_inventory & SPOREPROOF)
 			inhaling = FALSE
 			return FALSE
 		if(prob(80) && (mask.flags_inventory & BLOCKGASEFFECT))
 			inhaling = FALSE
 			return FALSE
-	if(helmet)
+	if(helmet && !forced)
 		if(helmet.flags_inventory & SPOREPROOF)
 			inhaling = FALSE
 			return FALSE

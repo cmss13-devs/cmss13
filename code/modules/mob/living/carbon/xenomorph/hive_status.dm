@@ -46,7 +46,6 @@
 	var/list/total_dead_xenos = list()
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
-	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
 	var/tier_slot_multiplier = 1
@@ -100,6 +99,8 @@
 
 	/// Lazylist of possible caste defines the hive disallows evolution to
 	var/list/blacklisted_castes = null
+	/// List of caste defines associated with a maximum capacity number.
+	var/list/restricted_castes = null
 
 	var/datum/hive_status_ui/hive_ui
 	var/datum/mark_menu_ui/mark_ui
@@ -516,6 +517,23 @@
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
+
+/// Returns number of xenos in the given hive that are the searched caste.
+/datum/hive_status/proc/get_caste_count(caste_to_check)
+	if(!caste_to_check)
+		return
+	var/caste_count = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots && (xeno.caste.caste_type == caste_to_check))
+			caste_count++
+
+	return caste_count
 
 /// Returns the full minimap icon as base64 string.
 /datum/hive_status/proc/get_xeno_icons()
@@ -1848,6 +1866,12 @@
 		/datum/caste_datum/pathogen/neomorph = 1,
 		/datum/caste_datum/pathogen/conditor = 1,
 	)
+
+	restricted_castes = list(
+		PATHOGEN_CREATURE_HARBINGER = 2
+	)
+
+	tier_slot_multiplier = 0.8 // Experimental change.
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,

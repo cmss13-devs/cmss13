@@ -1,6 +1,6 @@
 /datum/xeno_strain/bulwark
 	name = WARRIOR_BULWARK
-	description = "You give up all of your normal abilities, some damage, speed and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor and no directional lock slowdown. Encasing Plates lets you enter a defensive stance that slows your movement and reduce tackle efficiency but increases directional armor, makes you immune to knockbacks, allows you to tear openings in walls and allow to attack enemies. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down. Tail Swing trips down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows you to can stop this ability at any time to gain 1s used as 3s cooldown, reflecting bullets back towards enemy up to 6 seconds with 100% chance from front only."
+	description = "You give up all of your normal abilities, as well as some damage, speed, and tackle reliability, in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor with no directional-lock slowdown. Encasing Plates lets you enter a defensive stance that slows your movement and reduces tackle efficiency, but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target up to 3 tiles away and knocks them down. Tail Swing trips enemies around you; if used on a grenade instead, it reflects it up to 3 tiles away with a reduced cooldown. Reflective Shield allows you to reflect bullets coming from the front back toward enemies for up to 6 seconds with a 100% reflection chance. While active, it locks your facing direction to the direction it was activated in. You can stop this ability at any time, but its minimum cooldown is 6 seconds, and each additional 1 second of use adds 2 seconds to the cooldown."
 	flavor_description = "Where there's a sword, there's a shield."
 	icon_state_prefix = "Bulwark"
 
@@ -299,13 +299,14 @@
 
 	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
+	xeno_player.flags_atom |= DIRLOCK
 	button.icon_state = "template_active"
 	reflective_start_time = world.time
 	reflective_safe_click_cooldown = world.time + 1 SECONDS
 
 	xeno_player.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
-	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and get ready for incoming attacks!"))
-	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] shifts its stance, its reflexive defense faltering."))
+	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and prepare for incoming frontal attacks!"))
+	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] locks its stance, focusing on incoming frontal attacks!"))
 
 	if(reflective_shield_timer_id != TIMER_ID_NULL)
 		deltimer(reflective_shield_timer_id)
@@ -331,6 +332,7 @@
 
 	xeno_player.remove_suit_layer()
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
+	xeno_player.flags_atom &= ~DIRLOCK
 	button.icon_state = "template_xeno"
 	xeno_player.remove_filter("reflective_shield")
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))

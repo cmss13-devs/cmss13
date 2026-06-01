@@ -47932,7 +47932,7 @@
 	pixel_y = 2;
 	pixel_x = -1
 	},
-/obj/structure/prop/hybrisa/vehicles/firetruck{
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -48139,7 +48139,7 @@
 /area/space)
 "dfm" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/prop/hybrisa/vehicles/firetruck{
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -52465,7 +52465,7 @@
 	pixel_y = 2;
 	pixel_x = -1
 	},
-/obj/structure/prop/hybrisa/vehicles/firetruck{
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -53807,7 +53807,7 @@
 /area/point_loma/airbase/interior/fire_station)
 "xwa" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/prop/hybrisa/vehicles/firetruck{
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{

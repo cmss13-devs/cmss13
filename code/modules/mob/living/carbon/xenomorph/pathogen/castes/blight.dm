@@ -43,8 +43,8 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 1
-		/datum/action/xeno_action/activable/pounce/lurker, // Macro 2
+		/datum/action/xeno_action/activable/pounce/lurker, // Macro 1
+		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	inherent_verbs = list(
@@ -178,7 +178,7 @@
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 	xeno.update_icons()
 
 	xeno.speed_modifier += speed_buff

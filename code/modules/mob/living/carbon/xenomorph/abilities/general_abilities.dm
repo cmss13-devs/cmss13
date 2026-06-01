@@ -62,8 +62,8 @@
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/xeno_action/onclick/shift_spits/not_primary
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
+/datum/action/xeno_action/onclick/shift_spits/macro_four
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
@@ -87,6 +87,9 @@
 
 /datum/action/xeno_action/onclick/choose_resin/pathogen
 	name = "Choose Mycelium Structure"
+
+/datum/action/xeno_action/onclick/choose_resin/pathogen/not_primary
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/onclick/choose_resin/pathogen/overmind_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -484,8 +487,8 @@
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/xeno_spit/macro_four
-	ability_primacy = XENO_PRIMARY_ACTION_4
+/datum/action/xeno_action/activable/xeno_spit/macro_two
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

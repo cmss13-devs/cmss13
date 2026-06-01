@@ -54,8 +54,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	list("Heavy Armor Set", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 ))
 
-
-
 /obj/structure/machinery/cm_vending/gear/spec
 	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
 	desc = "An automated gear rack for Squad Weapons Specialists."
@@ -110,8 +108,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	if(!handle_vend(itemspec, human_user))
 		return
 	vendor_successful_vend(itemspec, user)
-	var/obj/item/card/id/idcard = human_user.get_idcard()
-	GLOB.data_core.manifest_modify(human_user.real_name, WEAKREF(human_user), idcard.assignment)
 
 //------------CLOTHING VENDOR---------------
 

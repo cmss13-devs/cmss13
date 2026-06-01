@@ -325,6 +325,9 @@
 	opacity = FALSE
 	glass = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/glass/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor.dmi'

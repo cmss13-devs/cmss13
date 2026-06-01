@@ -32093,9 +32093,6 @@
 /obj/structure/machinery/door/airlock/yautja/secure,
 /turf/open/predship/mainfloor/direction_1,
 /area/space)
-"bPn" = (
-/turf/open/predship/mainfloor/direction_1,
-/area/space)
 "bPo" = (
 /turf/closed/wall/huntership/dark,
 /area/point_loma/research_facility/dorms)
@@ -32166,7 +32163,9 @@
 /area/point_loma/research_facility/hallway/north)
 "bPG" = (
 /obj/ovipositor,
-/turf/open/predship/plating,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_catwalk_alt,
+/turf/open/predship/red_glow,
 /area/space)
 "bPH" = (
 /turf/open/auto_turf/sand_white/layer1,
@@ -32279,9 +32278,35 @@
 "bQf" = (
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/east)
+"bQg" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/plating,
+/area/space)
 "bQh" = (
 /turf/open/floor/shiva/yellow,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"bQi" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/open/predship/plating,
+/area/space)
+"bQj" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/plating,
+/area/space)
+"bQk" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/predship/plating,
+/area/space)
+"bQl" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east{
+	layer = 2.52
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/predship/plating,
+/area/space)
 "bQm" = (
 /turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/mining_colony/interior/storage)
@@ -32297,6 +32322,11 @@
 "bQp" = (
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/exterior/west)
+"bQq" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_catwalk_alt,
+/turf/open/predship/red_glow,
+/area/space)
 "bQr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
@@ -32304,6 +32334,11 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/research/west)
+"bQs" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/open/predship/plating,
+/area/space)
 "bQt" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -32323,16 +32358,52 @@
 "bQu" = (
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/storage)
+"bQv" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/predship/plating,
+/area/space)
+"bQw" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/plating,
+/area/space)
+"bQx" = (
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/predship/plating,
+/area/space)
 "bQy" = (
 /obj/structure/machinery/light/small/built{
 	dir = 8
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/hallway/south)
+"bQz" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/open/predship/plating,
+/area/space)
 "bQA" = (
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
+"bQB" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_catwalk_alt,
+/turf/open/predship/red_glow,
+/area/space)
+"bQC" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_catwalk_alt,
+/turf/open/predship/red_glow,
+/area/space)
+"bQD" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 1
+	},
+/turf/open/predship/plating,
+/area/space)
 "bQE" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/corsat,
@@ -32369,6 +32440,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/point_loma/research_facility/briefing)
+"bQM" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/plating,
+/area/space)
 "bQN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32416,6 +32493,10 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"bQY" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/plating,
+/area/space)
 "bQZ" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/research_facility/super_death_cannon/observation)
@@ -32555,9 +32636,19 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
+"bRE" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/predship/plating,
+/area/space)
 "bRF" = (
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bRG" = (
+/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/predship/plating,
+/area/space)
 "bRH" = (
 /turf/open/floor/shiva/red/northwest,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
@@ -112005,9 +112096,9 @@ bFi
 bFi
 bOM
 bOM
-bFi
-bFi
-bFi
+bQx
+bQw
+bQk
 bOM
 bFi
 bFi
@@ -112186,11 +112277,11 @@ bEU
 bFi
 bFi
 bFi
-bFi
-bFi
-bFi
-bFi
-bOM
+bQx
+bQz
+bQq
+bQl
+bQg
 bFi
 bOM
 bFi
@@ -112367,12 +112458,12 @@ asb
 bEU
 bFi
 bFi
-bFi
-bFi
+bQx
+bQz
 bPG
-bFi
-bFi
-bFi
+bQq
+bQq
+bQi
 bFi
 bOM
 bFi
@@ -112549,12 +112640,12 @@ bMH
 bEU
 bFi
 bOM
-bOM
-bFi
-bFi
-bFi
-bFi
-bFi
+bRE
+bQq
+bQB
+bQq
+bQs
+bQj
 bFi
 bFi
 bFi
@@ -112731,11 +112822,11 @@ bMH
 bEU
 bFi
 bFi
-bOM
-bOM
-bOM
-bFi
-bOM
+bRG
+bQM
+bQC
+bQs
+bQv
 bPe
 bOM
 bFi
@@ -112914,9 +113005,9 @@ bEU
 bEU
 bFi
 bFi
-bFi
-bFi
-bFi
+bQY
+bQD
+bQj
 bFi
 bOM
 bFi
@@ -113644,9 +113735,9 @@ bEq
 bFi
 bFi
 bFi
-dbk
-bPp
-bPm
+bFi
+bFi
+bFi
 dbk
 bOi
 bFi
@@ -113827,9 +113918,9 @@ bEU
 bEU
 bFi
 dbk
-bPw
-bPn
-bIr
+bPp
+bPm
+dbk
 bIr
 bJj
 bFi

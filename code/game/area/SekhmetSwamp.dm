@@ -23,7 +23,7 @@
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 /area/sekhmet/int_heavy
 	name = "Sekhmet Reinforced"
-	ceiling = CEILING_REINFORCED_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 /area/sekhmet/caves
@@ -143,6 +143,7 @@
 	icon_state = "east"
 /area/sekhmet/caves/temple
 	name = "Sekhmet North-East Caves"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "cave"
 /area/sekhmet/outside/temple_outer
 	name = "Sekhmet North Eastern Jungle"

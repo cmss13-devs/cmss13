@@ -2520,6 +2520,9 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "afX" = (
@@ -28056,6 +28059,9 @@
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bqI" = (
@@ -64151,6 +64157,7 @@
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "ltm" = (
@@ -64212,6 +64219,9 @@
 	name = "\improper Commanding Officer's Quarters";
 	req_access = null;
 	req_access_txt = "31"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/commandbunks)
@@ -77313,9 +77323,6 @@
 	id = "medicalemergency";
 	name = "\improper Medical Bay Lockdown"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "qOk" = (
@@ -79437,9 +79444,6 @@
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "rID" = (
@@ -91863,7 +91867,7 @@
 /obj/item/prop{
 	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
-	icon_state = "M56D_gun_e";
+	icon_state = "M38D_gun_e";
 	layer = 3.1;
 	name = "\improper M38D heavy machine gun 'Bess'";
 	pixel_x = -3;

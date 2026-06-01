@@ -334,6 +334,14 @@
 	icon_state = "launcherbtt"
 	/// The faction to open for (or none for any)
 	var/faction_to_monitor
+	/// Any optional delay between triggering and opening
+	var/open_delay = 0 SECONDS
+	/// Any optional delay between untriggering and closing
+	var/close_delay = 0 SECONDS
+	/// timer_id for any change_state(TRUE) timer
+	var/timer_id_open = TIMER_ID_NULL
+	/// timer_id for any change_state(FALSE) timer
+	var/timer_id_close = TIMER_ID_NULL
 
 /obj/structure/machinery/door_control/automatic/Initialize(mapload, ...)
 	. = ..()
@@ -356,11 +364,39 @@
 			return
 	change_state(FALSE)
 
-/obj/structure/machinery/door_control/automatic/proc/change_state(triggered)
+/obj/structure/machinery/door_control/automatic/proc/change_state(triggered, immediate)
+	icon_state = triggered ? "launcheract" : "launcherbtt"
+
 	if(triggered == desiredstate)
+		// Cancel any timers if needed
+		if(triggered)
+			if(timer_id_close != TIMER_ID_NULL)
+				deltimer(timer_id_close)
+				timer_id_close = TIMER_ID_NULL
+		else
+			if(timer_id_open != TIMER_ID_NULL)
+				deltimer(timer_id_open)
+				timer_id_open = TIMER_ID_NULL
 		return
 
-	icon_state = triggered ? "launcheract" : "launcherbtt"
+	if(!immediate)
+		// Open/Close w/ delay?
+		if(triggered)
+			if(open_delay > 0)
+				if(timer_id_open == TIMER_ID_NULL)
+					timer_id_open = addtimer(CALLBACK(src, PROC_REF(change_state), TRUE, TRUE), open_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+		else
+			if(close_delay > 0)
+				if(timer_id_close == TIMER_ID_NULL)
+					timer_id_close = addtimer(CALLBACK(src, PROC_REF(change_state), FALSE, TRUE), close_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+	else
+		if(triggered)
+			timer_id_open = TIMER_ID_NULL
+		else
+			timer_id_close = TIMER_ID_NULL
+
 	use_power(5)
 
 	switch(normaldoorcontrol)

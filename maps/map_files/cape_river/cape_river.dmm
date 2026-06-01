@@ -2328,10 +2328,6 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/outdoors/scrublands/north_west)
 "agX" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 8;
-	closed = 0
-	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
@@ -6321,13 +6317,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/caperiver/indoors/conambase/support)
-"atA" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 1;
-	closed = 0
-	},
-/turf/open/desert/dirt/desert_transition_edge1,
-/area/caperiver/outdoors/landing_zone_2)
 "atB" = (
 /obj/structure/fence/slim,
 /turf/open/floor/almayer/research/containment/floor1,
@@ -7406,7 +7395,6 @@
 "awK" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
 /obj/effect/landmark/yautja_teleport,
-/obj/effect/landmark/yautja_young_teleport,
 /obj/structure/prop/colorable_rock/colorable/alt1{
 	color = "#ccad8f";
 	dir = 8;
@@ -11156,6 +11144,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"aIk" = (
+/obj/structure/prop/hybrisa/signs/high_voltage,
+/turf/closed/wall/kutjevo/colony,
+/area/caperiver/indoors/miningbase/engi)
 "aIl" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
@@ -14641,13 +14633,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/oob)
-"aST" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 4;
-	closed = 0
-	},
-/turf/open/desert/dirt/desert_transition_edge1/west,
-/area/caperiver/outdoors/landing_zone_2)
 "aSU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -14787,9 +14772,6 @@
 "aTq" = (
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/indoors/miningbase/dorm)
-"aTr" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/caperiver/outdoors/landing_zone_1/interior)
 "aTs" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
@@ -23166,14 +23148,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
-"bsy" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 8;
-	closed = 0
-	},
-/obj/structure/platform/metal/strata,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/landing_zone_2)
 "bsz" = (
 /obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -30930,7 +30904,6 @@
 /area/caperiver/indoors/miningbase/checkpoint)
 "cjx" = (
 /obj/effect/landmark/yautja_teleport,
-/obj/effect/landmark/yautja_young_teleport,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/west)
 "cjI" = (
@@ -31122,13 +31095,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/indoors/miningbase/admin)
-"cpv" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 8;
-	closed = 0
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/landing_zone_2)
 "cpW" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/desert/dirt/desert_transition_edge1,
@@ -32984,10 +32950,6 @@
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/con_am_exterior/north)
 "dQP" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 8;
-	closed = 0
-	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -37370,7 +37332,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "gSE" = (
-/turf/closed/wall/abyssal/blue/reinforced,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/caperiver/indoors/conambase/unknown)
 "gTi" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -38792,7 +38754,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "hVs" = (
-/turf/closed/wall/abyssal/standard,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/caperiver/indoors/conambase/unknown)
 "hVE" = (
 /obj/effect/landmark/hunter_primary,
@@ -40041,12 +40003,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
-"iQN" = (
-/obj/structure/prop/hybrisa/signs/high_voltage{
-	pixel_y = -32
-	},
-/turf/open/desert/dirt,
-/area/caperiver/outdoors/mining_base_exterior/south)
 "iRu" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/cult,
@@ -41472,7 +41428,7 @@
 /area/caperiver/outdoors/landing_zone_2/river)
 "jRJ" = (
 /obj/structure/sign/conam/variant1,
-/turf/closed/wall/abyssal/blue/reinforced,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/caperiver/indoors/conambase/unknown)
 "jRO" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -41982,7 +41938,6 @@
 /turf/open/floor/darkpurple2/north,
 /area/caperiver/indoors/conambase/research_w)
 "khv" = (
-/obj/effect/landmark/yautja_young_teleport,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/con_am_exterior/north)
@@ -50935,7 +50890,6 @@
 /area/caperiver/outdoors/con_am_exterior/south)
 "qAt" = (
 /obj/effect/landmark/yautja_teleport,
-/obj/effect/landmark/yautja_young_teleport,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/con_am_exterior/south)
 "qAD" = (
@@ -56791,13 +56745,6 @@
 "uKw" = (
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/telecomms/telecomm_1)
-"uKz" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/obj/structure/prop/hybrisa/signs/high_voltage{
-	pixel_y = -32
-	},
-/turf/open/floor/elevatorshaft,
-/area/caperiver/indoors/miningbase/engi)
 "uKP" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /obj/effect/landmark/lizard_spawn,
@@ -57281,12 +57228,6 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/caperiver/telecomms/telecomm_4)
-"vka" = (
-/obj/structure/prop/hybrisa/signs/high_voltage{
-	pixel_x = 32
-	},
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
-/area/caperiver/outdoors/mining_base_exterior/south)
 "vks" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -58434,7 +58375,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/spawner/random/goggles/highchance,
+/obj/effect/spawner/random/tool,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/caperiver/indoors/conambase/support)
 "whc" = (
@@ -60139,6 +60080,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/caperiver/indoors/conambase/support)
 "xxd" = (
@@ -66474,7 +66416,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-aTr
+ajs
 oTw
 oTw
 oTw
@@ -66689,7 +66631,7 @@ bdm
 lva
 laq
 oTw
-aTr
+ajs
 aWQ
 aWQ
 aWQ
@@ -67913,7 +67855,7 @@ bdq
 whg
 bex
 oTw
-aTr
+ajs
 aWQ
 aWQ
 aWQ
@@ -73995,7 +73937,7 @@ apU
 mLO
 sNs
 aYW
-vka
+aEA
 ayv
 ayv
 apU
@@ -74199,7 +74141,7 @@ mwB
 aWC
 cqh
 azl
-mwB
+aIk
 iEm
 iEm
 oWn
@@ -75416,8 +75358,8 @@ bxI
 dAd
 bxG
 acC
-iQN
-mwB
+acC
+aIk
 mwB
 wcl
 gum
@@ -76242,7 +76184,7 @@ ajJ
 aNu
 ajJ
 ajJ
-uKz
+ajJ
 mwB
 mwB
 mwB
@@ -89954,7 +89896,7 @@ aWQ
 aWQ
 amp
 sRx
-cpv
+eyW
 pdc
 rXk
 rXk
@@ -90369,7 +90311,7 @@ jyt
 jfI
 oPv
 rXk
-bsy
+aUN
 azg
 kgb
 axs
@@ -90587,7 +90529,7 @@ rXk
 rXk
 rXk
 rXk
-cpv
+eyW
 aKK
 aNd
 aFE
@@ -94644,7 +94586,7 @@ aCS
 aCi
 hSA
 aqj
-atA
+auN
 aMT
 atR
 atR
@@ -94848,7 +94790,7 @@ aQf
 aCi
 hSA
 aqj
-atA
+auN
 aMT
 atR
 aMT
@@ -96693,9 +96635,9 @@ aWQ
 aWQ
 aWQ
 xXR
-aST
-aST
-aST
+add
+add
+add
 aYi
 xXR
 eyW

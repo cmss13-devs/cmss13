@@ -5,18 +5,16 @@
     "webmap_url": "LV624",
     "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/corporate/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
-        "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv",
         "/datum/equipment_preset/survivor/goon",
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
         "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique"
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/scientist",
+        "/datum/equipment_preset/survivor/doctor",
+        "/datum/equipment_preset/survivor/chef",
+        "/datum/equipment_preset/survivor/engineer",
+        "/datum/equipment_preset/survivor/corporate",
+        "/datum/equipment_preset/survivor/trucker"
     ],
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"

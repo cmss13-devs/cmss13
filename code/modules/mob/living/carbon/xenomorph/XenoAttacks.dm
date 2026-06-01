@@ -109,7 +109,7 @@
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
 /mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+	if(xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

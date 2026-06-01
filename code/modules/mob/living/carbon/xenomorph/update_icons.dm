@@ -30,6 +30,8 @@
 /mob/living/carbon/xenomorph/proc/update_icon_source()
 	if(HAS_TRAIT(src, TRAIT_XENONID))
 		if(!icon_xenonid)
+			if(HAS_TRAIT_FROM(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE))
+				REMOVE_TRAIT(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE)
 			color = hive.color
 		else
 			icon = icon_xenonid
@@ -114,34 +116,31 @@
 	. = ..()
 	if(. != new_value)
 		update_icons() // Snowflake handler for xeno resting icons
-		update_wounds()
 
 /mob/living/carbon/xenomorph/on_floored_start()
 	. = ..()
 	update_icons()
-	update_wounds()
 	overlays -= acid_overlay
 
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_knockedout_trait_gain()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_knockedout_trait_loss()
 	. = ..()
 	update_icons()
-	update_wounds()
 
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
@@ -351,7 +350,7 @@
 
 	var/new_icon_state
 
-	if(health > HEALTH_THRESHOLD_DEAD)
+	if(health > health_threshold_dead)
 		if(health_threshold > 3)
 			new_icon_state = "none"
 		else if(body_position == LYING_DOWN)

@@ -90,6 +90,44 @@
 		/obj/item/reagent_container/food/snacks/packaged_hdogs = 40,
 	)
 
+/obj/structure/machinery/vending/snack/alt
+	icon_state = "snack_alt"
+
+/obj/structure/machinery/vending/snack_generic
+	name = "\improper Snack Machine"
+	desc = "A vending machine full of unhealthy snacks."
+	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	icon_state = "snackvend"
+	products = list(
+		/obj/item/reagent_container/food/snacks/chips = 12,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 12,
+		/obj/item/reagent_container/food/snacks/no_raisin = 12,
+		/obj/item/reagent_container/food/snacks/sosjerky =12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 12,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
+		/obj/item/reagent_container/food/snacks/eat_bar = 12,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 6,
+	)
+
+	prices = list(
+		/obj/item/reagent_container/food/snacks/chips = 3,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 4,
+		/obj/item/reagent_container/food/snacks/no_raisin = 5,
+		/obj/item/reagent_container/food/snacks/sosjerky = 6,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 3,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 5,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 3,
+		/obj/item/reagent_container/food/snacks/eat_bar = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
 /obj/structure/machinery/vending/cola
 	name = "\improper Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
@@ -145,6 +183,9 @@
 /obj/structure/machinery/vending/cola/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/souta)
+
+/obj/structure/machinery/vending/cola/alt
+	icon_state = "Cola_Machine_alt"
 
 /obj/structure/machinery/vending/cola/research
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping."
@@ -425,8 +466,8 @@
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
-	product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -656,6 +697,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 10,
 		/obj/item/device/cassette_tape/indie = 10,
 		/obj/item/device/walkman = 50,
+		/obj/item/device/walkman/white_band = 50,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
@@ -689,6 +731,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 5,
 		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
+		/obj/item/device/walkman/white_band = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
@@ -711,11 +754,21 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/structure/machinery/vending/walkman/update_icon()
+	overlays.Cut()
+
+	if(stat & NOPOWER)
+		overlays += image(icon, "[icon_state]_off")
+	if(stat & BROKEN)
+		overlays += image(icon, "[initial(icon_state)]_broken")
+		if(stat & IN_REPAIR)
+			overlays += image(icon, "[icon_state]_panel")
+
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"
 	desc = "A vending machine meant to be use for cooks."
-	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	product_ads = "If you're out of ingredients I am here for you!All my organic produce is fresh!;Don't let my potatoes go stale, time for you to cook some fries!"
 	icon_state = "snack" //TODO: placeholder, make a proper unique sprite
 	hacking_safety = TRUE
 	products = list(

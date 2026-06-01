@@ -1,6 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscdel: "Removed Spitter Frenzy's macro. Replaced it with Charge Spit."
-  - bugfix: "Spitter Frenzy should not show up in Spitter's Alien sidebar."
-  - bugfix: "Charge Spit should appear in Spitter's Alien sidebar."

@@ -70,7 +70,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		assignment = "Unassigned"
 
 	var/manifest_title
-	if(target?.assigned_equipment_preset.manifest_title)
+	if(target.role_title_override)
+		manifest_title = target.role_title_override
+	else if(target?.assigned_equipment_preset.manifest_title)
 		manifest_title = target.assigned_equipment_preset.manifest_title
 	else
 		manifest_title = target.job
@@ -87,6 +89,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.name = target.real_name
 	record_general.fields["real_rank"] = assignment
 	record_general.fields["rank"] = manifest_title
+	record_general.fields["paygrade_prefix"] = target.get_paygrade(1)
 	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"

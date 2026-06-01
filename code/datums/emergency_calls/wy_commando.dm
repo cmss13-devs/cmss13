@@ -15,7 +15,7 @@
 /datum/emergency_call/wy_commando/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Nisshoku responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
-	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
+	objectives = "Assist the [MAIN_SHIP_NAME]'s crew. Protect it's Corporate Liaison and Commanding Officer, and eliminate all hostile threats."
 
 
 /datum/emergency_call/wy_commando/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -48,8 +48,8 @@
 	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 	to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
 	to_chat(M, SPAN_BOLD("You are well-informed of the xenomorph threat."))
-	to_chat(M, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
-	to_chat(M, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector. "))
+	to_chat(M, SPAN_BOLD("You are part of Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawal of the Neroid Sector."))
+	to_chat(M, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))
 	to_chat(M, SPAN_BOLD("The USCSS Nisshoku contains a crew of roughly fifty commandos, and thirty scientists and support personnel."))
 	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))

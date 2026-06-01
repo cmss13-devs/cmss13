@@ -383,7 +383,7 @@
 	role_comm_title = "CRC L"
 	assignment = JOB_WY_RESEARCH_LEAD
 	job_title = JOB_WY_RESEARCH_LEAD
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CCMOD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci_lead"
 

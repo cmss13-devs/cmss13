@@ -256,6 +256,10 @@
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mine_lockdown";
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/mining)
 "aaO" = (
@@ -3048,8 +3052,8 @@
 /area/fort_mcneil/indoors/mining)
 "aja" = (
 /obj/structure/sign/poster/kellandmining,
-/turf/closed/wall/strata_outpost,
-/area/fort_mcneil/indoors/mining)
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/fort_mcneil/oob)
 "ajb" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sandbags_empty/half,
@@ -3521,8 +3525,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/fort_mcneil/outdoors/road/north)
 "akB" = (
-/obj/effect/landmark/corpsespawner/trijent,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/colonist,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/north)
 "akC" = (
@@ -3595,6 +3599,29 @@
 /obj/structure/lz_sign/mcneil,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/central)
+"akO" = (
+/obj/structure/window/framed/strata/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mine_lockdown";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/fort_mcneil/indoors/mining)
+"akP" = (
+/obj/structure/window/framed/strata/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "stor_lockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/fort_mcneil/indoors/storage)
+"akQ" = (
+/obj/structure/machinery/door_control{
+	id = "stor_lockdown";
+	name = "Emergency Lockdown"
+	},
+/turf/closed/wall/strata_outpost,
+/area/fort_mcneil/indoors/storage)
 "alr" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
@@ -4293,6 +4320,10 @@
 /area/fort_mcneil/oob)
 "bTy" = (
 /obj/structure/window/framed/strata/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "stor_lockdown";
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/storage)
 "bTM" = (
@@ -5352,6 +5383,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "stor_lockdown";
+	dir = 4
+	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/storage)
 "emE" = (
@@ -6079,6 +6114,10 @@
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
 	dir = 2
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mine_lockdown";
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/indoors/mining)
 "glq" = (
@@ -6672,7 +6711,7 @@
 /area/fort_mcneil/outdoors/scrublands/south)
 "hHZ" = (
 /obj/effect/timed_event/scrapeaway{
-	time = 20
+	time = 15
 	},
 /turf/closed/wall/hybrisa/rock,
 /area/fort_mcneil/indoors/caves/north)
@@ -8327,7 +8366,7 @@
 /area/fort_mcneil/indoors/command)
 "kWC" = (
 /obj/effect/timed_event/scrapeaway{
-	time = 20
+	time = 15
 	},
 /turf/closed/wall/hybrisa/rock,
 /area/fort_mcneil/indoors/caves/south)
@@ -8485,7 +8524,7 @@
 /area/fort_mcneil/outdoors/colony_exterior/north)
 "lwj" = (
 /obj/effect/timed_event/scrapeaway{
-	time = 20
+	time = 15
 	},
 /turf/closed/wall/hybrisa/rock,
 /area/fort_mcneil/indoors/caves/central)
@@ -8908,11 +8947,11 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/north)
 "mFU" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "fort_lockdown";
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "fort_lockdown";
 	dir = 4
 	},
 /turf/open/floor/corsat/marked,
@@ -9267,6 +9306,10 @@
 /area/fort_mcneil/indoors/connection_paths)
 "noi" = (
 /obj/structure/window/framed/strata/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mine_lockdown";
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/fort_mcneil/indoors/mining)
 "noZ" = (
@@ -16594,9 +16637,9 @@ agO
 ler
 sOm
 sOm
-bTy
-bTy
-bTy
+akP
+akP
+akP
 sOm
 sOm
 ofL
@@ -17402,7 +17445,7 @@ agu
 agu
 sOm
 sOm
-sOm
+akQ
 emh
 sOm
 sOm
@@ -17681,8 +17724,8 @@ iaT
 xNc
 xNc
 xNc
-xNc
-xNc
+vAi
+vAi
 xNc
 xNc
 xNc
@@ -17782,8 +17825,8 @@ fPF
 xNc
 hzU
 utW
-xNc
-xNc
+vAi
+vAi
 kYQ
 urB
 xNc
@@ -18783,8 +18826,8 @@ ikk
 ikk
 kYa
 tfk
-xNc
-xNc
+vAi
+vAi
 xrd
 aKt
 aNv
@@ -18827,10 +18870,10 @@ afb
 aeS
 aeS
 oYi
-noi
-noi
-noi
-noi
+akO
+akO
+akO
+akO
 oYi
 cmc
 cmc
@@ -18884,8 +18927,8 @@ vpq
 ikk
 gub
 tfB
-xNc
-xNc
+vAi
+vAi
 gru
 aKt
 acK
@@ -18985,8 +19028,8 @@ tVZ
 gub
 tfk
 tfk
-xNc
-xNc
+vAi
+vAi
 itv
 aKt
 akK
@@ -19330,14 +19373,14 @@ afr
 cmc
 aep
 cmc
-oYi
-oYi
+vAi
+vAi
 aiU
 aiM
 aiF
 aiA
-oYi
-oYi
+vAi
+vAi
 cmc
 aep
 cmc
@@ -19431,14 +19474,14 @@ afr
 ogi
 cmc
 cmc
-oYi
-oYi
+vAi
+vAi
 bDm
 aiN
 aiH
 ads
-oYi
-oYi
+vAi
+vAi
 cmc
 cmc
 cmc
@@ -19532,14 +19575,14 @@ afr
 ogi
 cmc
 cmc
-oYi
+vAi
 aja
 aiV
 aiP
 aiI
 aiB
-oYi
-oYi
+vAi
+vAi
 cmc
 cmc
 cmc
@@ -20039,10 +20082,10 @@ aep
 cmc
 ogi
 oYi
-noi
-noi
-noi
-noi
+akO
+akO
+akO
+akO
 oYi
 cmc
 aaK

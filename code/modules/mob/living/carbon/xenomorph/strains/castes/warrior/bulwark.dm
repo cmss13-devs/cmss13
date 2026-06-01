@@ -298,6 +298,7 @@
 		return
 
 	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
+	xeno_player.stop_pulling()
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
 	xeno_player.flags_atom |= DIRLOCK
 	button.icon_state = "template_active"

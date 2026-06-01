@@ -309,6 +309,9 @@
 
 /obj/item/clothing/glasses/zombie_eyes/pathogen
 	name = "pathogen walker eyes"
+	/// A very cheap way to track revives
+	var/revive_tracker = 0
+	var/max_revives = 4
 
 /obj/item/storage/fancy/blackgoo
 	icon = 'icons/obj/items/black_goo_stuff.dmi'

@@ -90,7 +90,7 @@
 		zombie.drop_inv_item_on_ground(zombie.gloves, FALSE, TRUE)
 	if(zombie.head)
 		zombie.drop_inv_item_on_ground(zombie.head, FALSE, TRUE)
-	if(zombie.glasses)
+	if(zombie.glasses && !istype(zombie.glasses, /obj/item/clothing/glasses/zombie_eyes/pathogen))
 		zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask)
 		zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
@@ -167,6 +167,12 @@
 /datum/species/pathogen_walker/proc/revive_from_death(mob/living/carbon/human/zombie)
 	if(!(zombie && zombie.loc && zombie.stat == DEAD))
 		return
+	var/obj/item/clothing/glasses/zombie_eyes/pathogen/patho_eyes = zombie.glasses
+	if(!istype(patho_eyes) || patho_eyes.revive_tracker >= patho_eyes.max_revives)
+		make_unrevivable(zombie, "Degraded")
+		return
+
+	patho_eyes.revive_tracker++
 	zombie.revive(TRUE)
 	zombie.apply_effect(4, STUN)
 
@@ -211,6 +217,9 @@
 	return static_tab_items
 
 /datum/species/pathogen_walker/handle_head_loss(mob/living/carbon/human/zombie)
+	make_unrevivable(zombie, "Head")
+
+/datum/species/pathogen_walker/proc/make_unrevivable(mob/living/carbon/human/zombie, stop_type = "Head")
 	if(!zombie.undefibbable)
 		zombie.undefibbable = TRUE // really only for weed_food
 		SEND_SIGNAL(zombie, COMSIG_HUMAN_SET_UNDEFIBBABLE)
@@ -222,5 +231,9 @@
 			if(ghost)
 				receiving_client = ghost.client
 		if(receiving_client)
-			receiving_client.mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Beheaded...</u></span><br>Your corpse will no longer rise.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
-			to_chat(receiving_client, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("You've been beheaded! Your body will no longer rise.")))
+			if(stop_type == "Head")
+				receiving_client.mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Beheaded...</u></span><br>Your corpse will no longer rise.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
+				to_chat(receiving_client, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("You've been beheaded! Your body will no longer rise.")))
+			else
+				receiving_client.mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Degraded...</u></span><br>Your corpse will no longer rise.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
+				to_chat(receiving_client, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("You have become too degraded! Your body will no longer rise.")))

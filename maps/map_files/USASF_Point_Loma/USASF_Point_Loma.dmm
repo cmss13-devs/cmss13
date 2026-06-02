@@ -28416,12 +28416,6 @@
 "bEb" = (
 /turf/open/floor/corsat/yellow/west,
 /area/point_loma/research_facility/crash_site)
-"bEc" = (
-/turf/open/floor/corsat/squares,
-/area/point_loma/oob)
-"bEd" = (
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/oob)
 "bEe" = (
 /turf/closed/wall/new_varadero,
 /area/space)
@@ -32093,6 +32087,9 @@
 /obj/structure/machinery/door/airlock/yautja/secure,
 /turf/open/predship/mainfloor/direction_1,
 /area/space)
+"bPn" = (
+/turf/open/floor/corsat/green/southwest,
+/area/space)
 "bPo" = (
 /turf/closed/wall/huntership/dark,
 /area/point_loma/research_facility/dorms)
@@ -32671,6 +32668,18 @@
 "bRL" = (
 /turf/closed/wall/rock/brown,
 /area/point_loma/airbase/interior/fire_station)
+"bRM" = (
+/turf/open/floor/corsat/green,
+/area/space)
+"bRN" = (
+/turf/open/floor/corsat/green/southeast,
+/area/space)
+"bRO" = (
+/obj/effect/decal/cleanable/blood/tracks/yautja{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/space)
 "bRP" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
@@ -32678,6 +32687,9 @@
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/purple/southeast,
 /area/point_loma/research_facility/hallway/south)
+"bRR" = (
+/turf/open/floor/corsat/green/east,
+/area/space)
 "bRS" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/structure/machinery/hybrisa/coffee_machine,
@@ -32688,6 +32700,13 @@
 /obj/structure/fence/dark/warning,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/north)
+"bRU" = (
+/obj/effect/decal/cleanable/blood/splatter/yautja{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/crash_site)
 "bRV" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/garage)
@@ -110107,7 +110126,7 @@ cfD
 cfx
 cfx
 cfx
-cYb
+bPn
 cVD
 cVD
 cPJ
@@ -110290,7 +110309,7 @@ aeC
 aeC
 aFk
 cYb
-cYb
+bPn
 cVD
 cVD
 cPJ
@@ -110473,7 +110492,7 @@ cqT
 bKa
 cYb
 cYb
-cYb
+bPn
 cVD
 cVD
 cYb
@@ -110655,7 +110674,7 @@ aeC
 aFk
 cYb
 cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -110834,10 +110853,10 @@ agx
 cut
 bKG
 bKG
-aFk
+bKG
+bEe
 cYb
-cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -111020,7 +111039,7 @@ aeC
 cYb
 cYb
 cYb
-bEe
+cYb
 cYb
 cYb
 cYb
@@ -111201,7 +111220,7 @@ bKH
 cBO
 cYb
 cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -111383,7 +111402,7 @@ cqP
 cqP
 cYb
 cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -111561,11 +111580,11 @@ cdE
 agx
 cfE
 bJA
+bRU
 cGh
-cGh
+bRO
 cYb
-cYb
-cYb
+bRN
 bEe
 cYb
 cYb
@@ -111745,8 +111764,8 @@ cfF
 cfm
 cfm
 cfm
-cYb
-cYb
+bRR
+bRN
 bEe
 bEe
 cYb
@@ -111920,8 +111939,8 @@ bFi
 bFi
 bFi
 bFi
-bEU
-bEU
+vUG
+vUG
 daR
 daR
 daR
@@ -111943,7 +111962,7 @@ cYb
 bpi
 bpi
 bpi
-bqB
+bpi
 bpi
 bpi
 bpi
@@ -112103,9 +112122,9 @@ bOM
 bFi
 bFi
 bFi
-bEU
-bEU
-bEU
+vUG
+vUG
+vUG
 daR
 daR
 daR
@@ -112286,9 +112305,9 @@ bFi
 bOM
 bFi
 bFi
-bEU
-bEU
-bEU
+vUG
+vUG
+vUG
 daR
 daR
 daR
@@ -112309,7 +112328,7 @@ cYb
 cYb
 cYb
 cYb
-bpi
+agx
 agx
 agx
 agx
@@ -112472,7 +112491,7 @@ bFi
 bFi
 bEU
 bEU
-bEU
+vUG
 daR
 daR
 cYb
@@ -112650,12 +112669,12 @@ bFi
 bFi
 bFi
 bFi
-dbk
-dbk
-dbk
-dbk
+vUG
+vUG
 bEU
 bEU
+vUG
+vUG
 daR
 bEq
 bEq
@@ -112837,7 +112856,7 @@ bIn
 bIn
 bIn
 bHe
-bEU
+vUG
 bEq
 daR
 bEq
@@ -113037,9 +113056,9 @@ cYb
 cYb
 cYb
 cYb
-aFk
-aFk
-aFk
+bKG
+bKG
+bKG
 bKG
 ahV
 bJf
@@ -113194,9 +113213,9 @@ bFi
 bFi
 bFi
 bFi
-dbk
-dbk
-dbk
+bEU
+bEU
+vUG
 bIq
 bHN
 pqW
@@ -113219,9 +113238,9 @@ cYb
 cYb
 cYb
 cYb
-bqf
-bEd
-bEc
+bJA
+bJA
+bJA
 bKG
 ahV
 bJf
@@ -113375,8 +113394,8 @@ bOM
 bFi
 bFi
 bFi
-dbk
-dbk
+bEU
+bEU
 bJj
 bIr
 bIr
@@ -113401,9 +113420,9 @@ cYb
 cYb
 cYb
 cYb
-bqg
 bJA
-bEc
+bJA
+bJA
 bKG
 aNd
 cBp
@@ -113556,8 +113575,8 @@ bFi
 bFi
 bFi
 bFi
-dbk
-dbk
+bEU
+bEU
 bJj
 bFi
 bJj
@@ -113738,7 +113757,7 @@ bFi
 bFi
 bFi
 bFi
-dbk
+bEU
 bOi
 bFi
 bJj
@@ -113765,7 +113784,7 @@ cYb
 cYb
 cYb
 cYb
-brn
+bJA
 bKG
 bKG
 bEb
@@ -113914,10 +113933,10 @@ bKZ
 cVD
 daR
 daR
+vUG
+vUG
 bEU
 bEU
-bFi
-dbk
 bPp
 bPm
 dbk
@@ -114098,8 +114117,8 @@ dev
 daR
 daR
 daR
-bEU
-dbk
+vUG
+vUG
 bPw
 bHJ
 bHe
@@ -114280,8 +114299,8 @@ dev
 dev
 cYb
 daR
-bEU
-bEU
+vUG
+vUG
 bIq
 bHN
 bHJ
@@ -114463,8 +114482,8 @@ dev
 cYb
 cYb
 daR
-bEU
-bEU
+vUG
+vUG
 bIq
 bHN
 bHJ
@@ -114473,7 +114492,7 @@ bIr
 bIr
 bJg
 bIr
-dbk
+vUG
 daR
 bEq
 aKN

@@ -575,6 +575,13 @@
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/port)
+"abG" = (
+/obj/structure/barricade/handrail/strata/navalis,
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "abH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/orangelinecorner/west,
@@ -845,6 +852,10 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"aco" = (
+/obj/structure/barricade/handrail/strata/navalis,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "acp" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -900,6 +911,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"acw" = (
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "acx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -1055,6 +1070,13 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
+"acR" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata/navalis,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "acS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -1216,6 +1238,12 @@
 	name = "PSV Charon"
 	},
 /area/navalis/indoors/charon/surface_deck/rear_deck)
+"adl" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "adm" = (
 /obj/structure/machinery/portable_atmospherics/canister/phoron,
 /obj/effect/decal/warning_stripes{
@@ -1321,6 +1349,9 @@
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"adz" = (
+/turf/open/floor/plating,
+/area/navalis/outdoors/landing_zone_2/under)
 "adA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -1543,6 +1574,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
+"aek" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "ael" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
@@ -4341,12 +4378,6 @@
 "alh" = (
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/charon/below_deck/front)
-"ali" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
 "alj" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -4648,6 +4679,10 @@
 "amb" = (
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors/charon/surface_deck/main_deck)
+"amc" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/navalis/outdoors/landing_zone_2/under)
 "amd" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
@@ -5284,14 +5319,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/comm_one)
-"anX" = (
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/solid_open_space{
-	density = 0
-	},
-/area/navalis/outdoors/landing_zone_2)
 "anY" = (
 /turf/open/floor/prison/rampbottom/east,
 /area/navalis/outdoors/comm_one)
@@ -6076,6 +6103,9 @@
 "ark" = (
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/med_sci/foyer)
+"arl" = (
+/turf/open/floor/half_plate/dark_yellow/west,
+/area/navalis/outdoors/landing_zone_2/under)
 "arm" = (
 /obj/structure/machinery/power/apc/power/east,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6544,6 +6574,9 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/med_sci/chemical_store)
+"asV" = (
+/turf/open/floor/prison/darkyellowfull2,
+/area/navalis/outdoors/landing_zone_2/under)
 "asW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/plating,
@@ -7363,6 +7396,9 @@
 "avO" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/director_office)
+"avP" = (
+/turf/open/floor/half_plate/dark_yellow/east,
+/area/navalis/outdoors/landing_zone_2/under)
 "avQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/east,
@@ -7903,6 +7939,9 @@
 "axJ" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
 /area/navalis/indoors/command/office)
+"axK" = (
+/turf/open/floor/half_plate/dark_yellow/north,
+/area/navalis/outdoors/landing_zone_2/under)
 "axL" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/catwalk/grate,
@@ -8284,9 +8323,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_2)
-"ayO" = (
-/turf/open/floor/half_plate/dark_yellow/west,
-/area/navalis/outdoors/landing_zone_2)
 "ayP" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/structure/machinery/light/small{
@@ -8380,6 +8416,12 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/oob/empty_space)
+"azb" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: Engineering Landing Zone"
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/navalis/outdoors/landing_zone_2/under)
 "azc" = (
 /obj/structure/prop/oilrig/support_beam/brown{
 	layer = 1.1
@@ -8499,6 +8541,12 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only)
+"azo" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "azp" = (
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
@@ -8606,6 +8654,12 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/below_deck/front)
+"azF" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "azG" = (
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob)
@@ -8618,6 +8672,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/indoors/industrial/mining)
+"azI" = (
+/turf/open/floor/half_plate/dark_yellow,
+/area/navalis/outdoors/landing_zone_2/under)
 "azJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
@@ -8670,10 +8727,25 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer0,
 /area/navalis/oob)
+"azR" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "azS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/indoors/ice_cavern)
+"azT" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "azU" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
@@ -8821,18 +8893,40 @@
 "aAh" = (
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
+"aAi" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAj" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/refinery)
+"aAk" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAl" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 10
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/refinery)
+"aAm" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAn" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -8951,6 +9045,13 @@
 /obj/structure/pipes/standard/manifold/hidden/dark,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
+"aAy" = (
+/turf/open_space,
+/area/navalis/outdoors/landing_zone_2/under)
+"aAz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAA" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -9046,6 +9147,24 @@
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/navalis/oob)
+"aAO" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 15;
+	pixel_x = -16;
+	color = "#FFFF00"
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 15;
+	pixel_x = -23;
+	color = "#FFFF00"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/landing_zone_2)
 "aAP" = (
 /obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/floor/almayer/blackfull/west,
@@ -9088,6 +9207,27 @@
 	density = 0
 	},
 /area/navalis/oob/empty_space)
+"aAV" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 15;
+	pixel_x = -16;
+	color = "#FFFF00"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/landing_zone_2)
+"aAW" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_y = 10;
+	pixel_x = -10;
+	color = "#FFFF00"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/outdoors/landing_zone_2)
 "aAX" = (
 /obj/structure/platform_decoration/stone/strata/west,
 /turf/open/gm/river/no_overlay/ocean,
@@ -12617,15 +12757,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/navalis/indoors/ice_cavern)
-"aLa" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/solid_open_space{
-	density = 0
-	},
-/area/navalis/outdoors/landing_zone_2)
 "aLb" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
@@ -13218,9 +13349,6 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/navalis/indoors/charon/below_deck/front)
-"aMN" = (
-/turf/open/floor/half_plate/dark_yellow/east,
-/area/navalis/outdoors/landing_zone_2)
 "aMO" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
@@ -13352,9 +13480,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/charon/below_deck/middle)
-"aNo" = (
-/turf/open/floor/half_plate/dark_yellow,
-/area/navalis/outdoors/landing_zone_2)
 "aNp" = (
 /obj/structure/platform/stone/strata,
 /obj/structure/blocker/forcefield/all{
@@ -18812,17 +18937,7 @@
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/outdoors/landing_zone_2)
 "bhd" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
-"bhe" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/stairs/multiz/down,
 /turf/open/floor/prison/ramptop,
 /area/navalis/outdoors/landing_zone_2)
 "bhf" = (
@@ -19295,24 +19410,15 @@
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2/under)
 "biA" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
+/obj/structure/stairs/multiz/down{
+	dir = 8
 	},
-/obj/structure/platform_decoration/metal,
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/outdoors/landing_zone_2)
 "biB" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
-"biC" = (
-/obj/structure/stairs/multiz/up{
+/obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/outdoors/landing_zone_2)
 "biD" = (
@@ -19328,22 +19434,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey,
-/area/navalis/outdoors/landing_zone_2/under)
-"biG" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
-"biH" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -23;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2/under)
 "biI" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -19375,34 +19465,11 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2/under)
-"biK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/kutjevo/grey/plate,
-/area/navalis/outdoors/landing_zone_2/under)
-"biL" = (
-/obj/structure/platform_decoration/metal,
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "biM" = (
-/obj/structure/stairs/multiz/up,
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
-"biN" = (
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
-"biO" = (
-/obj/structure/stairs/multiz/up,
-/obj/structure/platform_decoration/metal,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
-"biP" = (
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/almayer/blackfull/west,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2)
 "biQ" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
@@ -19579,42 +19646,6 @@
 	density = 0
 	},
 /area/navalis/indoors/ice_cavern)
-"bkj" = (
-/obj/structure/barricade/handrail/strata/navalis,
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkk" = (
-/obj/structure/barricade/handrail/strata/navalis,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkl" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkm" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/strata/navalis,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkn" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bko" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "bkq" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
@@ -19623,57 +19654,6 @@
 	density = 0
 	},
 /area/navalis/oob/empty_space)
-"bkr" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bks" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkt" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 8
-	},
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bku" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkv" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkw" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"bkx" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "bky" = (
 /turf/open/slippery/hull/dir,
 /area/navalis/oob/empty_space)
@@ -24431,20 +24411,6 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
-"fOG" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = -3;
-	color = "#FFFF00"
-	},
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2)
 "fPP" = (
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
@@ -25337,10 +25303,6 @@
 "gJI" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/navalis/oob/water/mid)
-"gKa" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/floor/plating,
-/area/navalis/outdoors/landing_zone_2)
 "gLf" = (
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/charon/below_deck/middle)
@@ -26882,9 +26844,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
 /area/navalis/indoors/residential/accessway)
-"irQ" = (
-/turf/open/floor/plating,
-/area/navalis/outdoors/landing_zone_2)
 "isl" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/navalis/oob)
@@ -30845,12 +30804,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/navalis/outdoors/landing_zone_1)
-"mCL" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Engineering Landing Zone"
-	},
-/turf/open/floor/prison/darkyellowfull2,
-/area/navalis/outdoors/landing_zone_2)
 "mDn" = (
 /turf/open/floor/prison/greenblue/west,
 /area/navalis/indoors/charon/surface_deck/rear_deck)
@@ -30965,9 +30918,6 @@
 "mHF" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
-"mHP" = (
-/turf/open/floor/half_plate/dark_yellow/north,
-/area/navalis/outdoors/landing_zone_2)
 "mIE" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 4
@@ -31286,9 +31236,6 @@
 	},
 /turf/open/floor/almayer,
 /area/navalis/indoors/med_sci/records_room)
-"neL" = (
-/turf/open/floor/prison/darkyellowfull2,
-/area/navalis/outdoors/landing_zone_2)
 "nfK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/newspaper{
@@ -31585,12 +31532,6 @@
 	pixel_y = -3;
 	color = "#FFFF00"
 	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 9;
-	color = "#FFFF00"
-	},
-/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2)
 "nAd" = (
@@ -37250,10 +37191,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/chemical_store)
-"sYZ" = (
-/obj/structure/reagent_dispensers/tank/fuel,
-/turf/open/floor/kutjevo/grey,
-/area/navalis/outdoors/landing_zone_2)
 "sZk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg1,
@@ -98095,10 +98032,10 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
+wvu
+ncP
+ncP
+phQ
 akU
 akU
 akU
@@ -98251,29 +98188,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+azR
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+azo
+azo
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+adl
+abG
 akU
 akU
 xEC
@@ -98415,29 +98352,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+azT
+adz
+amc
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+amc
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+amc
+adz
+aco
 akU
 akU
 akU
@@ -98579,29 +98516,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-wvu
-cCP
-cCP
-cCP
-cCP
-cCP
-phQ
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+azT
+adz
+adz
+adz
+adz
+adz
+adz
+axK
+asV
+asV
+asV
+asV
+asV
+asV
+asV
+arl
+adz
+adz
+adz
+adz
+adz
+adz
+aco
 akU
 akU
 xEC
@@ -98742,31 +98679,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 wvu
-cCP
-ncP
-ncP
-ncP
-ncP
-ncP
-cCP
+azT
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+adz
+axK
+asV
+avP
+adz
+axK
+asV
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+aco
 phQ
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -98906,31 +98843,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-cCP
 ncP
+aAi
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+axK
+asV
+avP
+adz
+axK
+asV
+avP
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+acw
 ncP
-ncP
-ncP
-ncP
-ncP
-ncP
-cCP
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99070,31 +99007,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-cCP
 ncP
+aAk
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+asV
+avP
+adz
+axK
+asV
+avP
+adz
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+acw
 ncP
-akU
-akU
-akU
-ncP
-ncP
-cCP
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99234,31 +99171,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-cCP
 ncP
+aAk
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+avP
+adz
+axK
+azb
+avP
+adz
+axK
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+acw
 ncP
-akU
-akU
-akU
-ncP
-ncP
-cCP
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99398,31 +99335,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-cCP
 ncP
+aAk
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+adz
+axK
+asV
+avP
+adz
+axK
+asV
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+acw
 ncP
-akU
-akU
-akU
-ncP
-ncP
-cCP
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99562,31 +99499,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-cCP
 ncP
+aAk
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+axK
+asV
+avP
+adz
+axK
+asV
+avP
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+acw
 ncP
-ncP
-ncP
-ncP
-ncP
-ncP
-cCP
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99726,31 +99663,31 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 qHa
-cCP
-ncP
-ncP
-ncP
-ncP
-ncP
-cCP
+azT
+adz
+adz
+adz
+adz
+adz
+adz
+asV
+asV
+avP
+adz
+axK
+asV
+avP
+adz
+asV
+adz
+adz
+adz
+adz
+adz
+adz
+aco
 kZO
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
 akU
 akU
 akU
@@ -99891,29 +99828,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-qHa
-cCP
-cCP
-cCP
-cCP
-cCP
-kZO
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+azT
+adz
+adz
+adz
+adz
+adz
+adz
+azI
+asV
+asV
+asV
+asV
+asV
+asV
+asV
+avP
+adz
+adz
+adz
+adz
+adz
+adz
+aco
 akU
 akU
 xEC
@@ -100055,29 +99992,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+azT
+adz
+amc
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+amc
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+adz
+amc
+adz
+aco
 akU
 akU
 akU
@@ -100219,29 +100156,29 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
-akU
+aAm
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+azF
+azF
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+aek
+acR
 akU
 akU
 xEC
@@ -100391,10 +100328,10 @@ akU
 akU
 akU
 akU
-akU
-akU
-akU
-akU
+qHa
+ncP
+ncP
+kZO
 akU
 akU
 akU
@@ -138767,11 +138704,11 @@ omM
 bhb
 tnV
 tnV
-hKH
-omM
-biC
+tnV
+tnV
 biA
-omM
+biA
+hKH
 omM
 omM
 omM
@@ -138918,8 +138855,8 @@ svf
 sDb
 aaL
 bHF
-aLa
-anX
+qGi
+tnY
 aUq
 iGR
 aAP
@@ -138933,8 +138870,8 @@ aBu
 aBu
 spn
 hGn
-hGn
-hGn
+aAy
+aAy
 hGn
 hGn
 hGn
@@ -139243,21 +139180,21 @@ lpX
 egr
 muo
 svf
-qew
-kIp
-kIp
-kIp
-kIp
-kIp
-kIp
-kIp
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
 nzh
 kPb
-bin
-bhE
-bhL
-bhL
-bie
+bim
+bhG
+bhG
+bhG
+bhG
 bhY
 bhL
 bhL
@@ -139271,8 +139208,8 @@ bhL
 bie
 bhG
 bhG
-bhD
-bhD
+bhG
+bhG
 bhi
 kPb
 tnV
@@ -139407,21 +139344,21 @@ lpX
 egr
 muo
 svf
-sDb
-yiH
-bHF
-vQz
-unv
-aUq
-iGR
-tnV
-biL
-spn
-bhk
-bhw
-bhw
-bhk
-bhG
+qew
+kIp
+kIp
+kIp
+kIp
+kIp
+nDy
+eJs
+nzh
+kPb
+bin
+bhE
+bhL
+bhL
+bie
 bhZ
 bhk
 bhk
@@ -139439,7 +139376,7 @@ bhL
 bhE
 bhj
 kPb
-bhb
+tnV
 tnV
 aAt
 fgB
@@ -139572,20 +139509,20 @@ egr
 muo
 svf
 sDb
-sYZ
-dGb
-aFi
-aTk
+yiH
+bHF
+vQz
+unv
 aUq
-eSs
-tnV
+aMU
+eJs
 biM
+aAy
 hGn
-bhr
-bhr
-biK
 bhw
-biH
+bhw
+bhk
+bhG
 bhZ
 bhw
 bhl
@@ -139601,8 +139538,8 @@ bhZ
 bhk
 bhk
 bhw
-bhk
 hGn
+aAy
 bhd
 tnV
 aAt
@@ -139741,11 +139678,11 @@ kzA
 qGi
 tnY
 aUq
-eSs
-tnV
-biN
+aAO
+eJs
+biM
+aAy
 hGn
-bhr
 bhr
 bhr
 bhw
@@ -139765,9 +139702,9 @@ bhZ
 bhk
 bhr
 bhl
-bhl
-hGn
-ali
+aAz
+aAy
+bhd
 tnV
 aAt
 fgB
@@ -139905,11 +139842,11 @@ dGb
 qGi
 tnY
 aUq
-eSs
-tnV
-biN
+aAV
+eJs
+biM
+aAy
 hGn
-bhr
 bhr
 bhr
 bhw
@@ -139929,9 +139866,9 @@ bia
 bhk
 bhl
 bhr
-bhr
 hGn
-ali
+aAy
+bhd
 tnV
 aAt
 fgB
@@ -140069,11 +140006,11 @@ dGb
 qGi
 tnY
 aUq
-eSs
-tnV
-biN
+aAV
+eJs
+biM
+aAy
 hGn
-bhr
 bhr
 bhr
 bhw
@@ -140093,9 +140030,9 @@ bia
 bhw
 bhr
 bhr
-bhl
-hGn
-ali
+aAz
+aAy
+bhd
 tnV
 aAt
 fgB
@@ -140230,16 +140167,16 @@ svf
 sDb
 aaL
 dGb
-aFi
-aTk
+qGi
+tnY
 aUq
-eSs
-tnV
-biO
+aAV
+eJs
+biM
+aAy
 hGn
-bhr
-bhr
-bhr
+bhk
+bhk
 bhw
 big
 bhZ
@@ -140255,11 +140192,11 @@ bhw
 bhD
 bia
 bhk
-bhk
-bhw
-bhw
+bhl
+bhr
 hGn
-bhe
+aAy
+bhd
 tnV
 aAt
 fgB
@@ -140391,21 +140328,21 @@ lpX
 egr
 muo
 svf
-sDb
-aaL
-bHF
-vQz
-unv
-aUq
-iGR
-tnV
-biP
-spn
-bhk
-bhk
-bhk
-bhw
-big
+pfT
+jNQ
+jNQ
+jNQ
+jNQ
+jNQ
+aAW
+eJs
+nzh
+kPb
+bil
+bhJ
+bhJ
+bhJ
+biJ
 bhZ
 bhw
 bhw
@@ -140423,7 +140360,7 @@ bhF
 bhF
 bhf
 kPb
-bJz
+tnV
 tnV
 aAt
 fgB
@@ -140555,21 +140492,21 @@ lpX
 egr
 muo
 svf
-pfT
-jNQ
-jNQ
-jNQ
-jNQ
-jNQ
-jNQ
-jNQ
-fOG
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
+eJs
+nzh
 kPb
-bil
-bhJ
-bhJ
-bhJ
-biJ
+bim
+bhG
+bhG
+bhG
+bhG
 bib
 bhJ
 bhJ
@@ -140581,8 +140518,8 @@ bhF
 bhJ
 bhJ
 bih
-bhD
-bhD
+bhG
+bhG
 bhG
 bhG
 bhi
@@ -140901,8 +140838,8 @@ aBu
 aBu
 spn
 hGn
-hGn
-hGn
+aAy
+aAy
 hGn
 hGn
 hGn
@@ -141063,11 +141000,11 @@ lwl
 bJz
 coK
 soB
-bUA
-lwl
-biG
+tnV
+tnV
 biB
-lwl
+biB
+bUA
 biw
 lwl
 lwl
@@ -179597,29 +179534,29 @@ akU
 akU
 akU
 akU
-bkt
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkr
-bkr
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkn
-bkj
+bkD
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+bkC
+cFv
 akU
 akU
 akU
@@ -179761,29 +179698,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-gKa
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-gKa
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-gKa
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -179925,29 +179862,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-mHP
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-ayO
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180089,29 +180026,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-irQ
-mHP
-neL
-aMN
-irQ
-mHP
-neL
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180253,29 +180190,29 @@ akU
 akU
 akU
 akU
-bkv
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-mHP
-neL
-aMN
-irQ
-mHP
-neL
-aMN
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkl
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180417,29 +180354,29 @@ akU
 akU
 akU
 akU
-bkw
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-neL
-aMN
-irQ
-mHP
-neL
-aMN
-irQ
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkl
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180581,29 +180518,29 @@ akU
 akU
 akU
 akU
-bkw
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-aMN
-irQ
-mHP
-mCL
-aMN
-irQ
-mHP
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkl
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180745,29 +180682,29 @@ akU
 akU
 akU
 akU
-bkw
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-irQ
-mHP
-neL
-aMN
-irQ
-mHP
-neL
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkl
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -180909,29 +180846,29 @@ akU
 akU
 akU
 akU
-bkw
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-mHP
-neL
-aMN
-irQ
-mHP
-neL
-aMN
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkl
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -181073,29 +181010,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-neL
-neL
-aMN
-irQ
-mHP
-neL
-aMN
-irQ
-neL
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -181237,29 +181174,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-aNo
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-aMN
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -181401,29 +181338,29 @@ akU
 akU
 akU
 akU
-bku
-irQ
-gKa
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-gKa
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-irQ
-gKa
-irQ
-bkk
+qtx
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+xNr
+bky
 akU
 akU
 akU
@@ -181565,29 +181502,29 @@ akU
 akU
 akU
 akU
-bkx
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bks
-bks
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bko
-bkm
+bkE
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkB
+bkA
 akU
 akU
 akU

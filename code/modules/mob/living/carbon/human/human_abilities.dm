@@ -355,20 +355,30 @@ CULT
 /datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/target)
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/Hu = owner
 
-	if(!istype(target))
+	var/mob/living/carbon/human/cultist = owner
+
+	if(!ishuman_strict(target)) // No yautja or synths
+		return
+
+	if(target.stat != CONSCIOUS) // No point in stunning dead or unconscious
+		return
+
+	if(!(get_hive())) // Can't use xeno powers without a hive
+		return
+
+	if(target.hivenumber == cultist.hivenumber) // Can't use xeno powers on a fellow hive member
 		return
 
 	if(target.skills && (skillcheck(target, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(target, SKILL_POLICE, SKILL_POLICE_SKILLED)))
-		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
+		to_chat(cultist, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
 	if(get_dist_sqrd(get_turf(target), get_turf(owner)) > 2)
-		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
+		to_chat(cultist, SPAN_WARNING("This target is too far away!"))
 		return
 
-	return target.stat != DEAD && istype(target) && ishuman_strict(target) && target.hivenumber != Hu.hivenumber && !isnull(get_hive())
+	return TRUE
 
 /datum/action/human_action/activable/cult_leader/proc/get_hive()
 	if(!ishuman(owner))

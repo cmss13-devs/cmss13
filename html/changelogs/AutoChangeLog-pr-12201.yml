@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - balance: "Abominations evolving without a pred round will now force one. Does not apply to the main hive."

@@ -91,6 +91,7 @@
 	minimap_icon = "deputy"
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/marshal
+	faction = FACTION_MARSHAL
 	skills = /datum/skills/cmb/co_survivor
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

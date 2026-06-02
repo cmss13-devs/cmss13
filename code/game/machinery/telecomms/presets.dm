@@ -271,19 +271,19 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
 			SSradio.update_cache()
 			return
- 		else if(choice == "Add your faction's frequencies")
- 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
- 				return
+		else if(choice == "Add your faction's frequencies")
+			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
 +			if(FACTION_SURVIVOR in user.faction_group)
 +				freq_listening |= COLONY_FREQ
 +				if(user.faction == FACTION_MARINE)
 +					freq_listening |= SURVIVOR_FREQS
- 			switch(user.faction)
- 				if(FACTION_SURVIVOR)
- 					freq_listening |= COLONY_FREQ
- 				if(FACTION_CLF)
- 					freq_listening |= CLF_FREQS
- 				if(FACTION_UPP)
+			switch(user.faction)
+				if(FACTION_SURVIVOR)
+					freq_listening |= COLONY_FREQ
+				if(FACTION_CLF)
+					freq_listening |= CLF_FREQS
+				if(FACTION_UPP)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS

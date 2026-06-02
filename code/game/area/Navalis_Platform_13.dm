@@ -12,7 +12,7 @@
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_OOB
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA|AREA_NOBURROW
 
 /area/navalis/indoors
 	name = "Navalis - Indoors"
@@ -56,7 +56,7 @@
 	requires_power = FALSE
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_WATER
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA|AREA_NOBURROW
 
 // PSV Charon
 
@@ -470,6 +470,7 @@
 
 /area/navalis/outdoors/landing_zone_2/under
 	name = "LZ2 - Lower-Level Walkway"
+	ceiling = CEILING_METAL
 
 /area/navalis/indoors/landing_zone_2
 	name = "LZ2 - Lower-Level Access"
@@ -489,7 +490,7 @@
 	requires_power = FALSE
 
 /area/navalis/indoors/clf_shuttle
-	name = "Kutjevo - Unregistered Freighter"
+	name = "Navalis - Unregistered Shuttle"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_CELL_MED
 	icon_state = "syndie-ship"
@@ -551,7 +552,7 @@
 /area/navalis/outdoors/exterior_xeno_only
 	name = "Industrial Rig - Exterior Lattice Walkway"
 	icon_state = "red2"
-	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE|AREA_NO_PARA
+	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE|AREA_NO_PARA|AREA_NOBURROW
 	base_lighting_alpha = 35
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	requires_power = FALSE

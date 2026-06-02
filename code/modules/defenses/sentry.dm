@@ -776,6 +776,7 @@
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
 	name = "\improper UA 12-G Shotgun Sentry"
+	desc = "A fully-automated defence turret with short-range targeting capabilities. Armed with a modified M12-G Autocannon and a 50-round drum magazine."
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250

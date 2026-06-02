@@ -63,9 +63,11 @@
 	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
 		larva_state = LARVA_STATE_NORMAL
 		generate_name()
+		update_icons()
 	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
 		larva_state = LARVA_STATE_MATURE
 		generate_name()
+		update_icons()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/warn_away_timer()

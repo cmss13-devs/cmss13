@@ -274,11 +274,13 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		else if(choice == "Add your faction's frequencies")
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
+			if(FACTION_SURVIVOR in user.faction_group)
+				freq_listening |= COLONY_FREQ
+				if(user.faction == FACTION_MARINE)
+					freq_listening |= SURVIVOR_FREQS
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON/Army survivors
-						freq_listening |= SURVIVOR_FREQS
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
@@ -287,6 +289,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= PMC_FREQS
 				if(FACTION_TWE)
 					freq_listening |= RMC_FREQ
+				if(FACTION_MARSHAL)
+					freq_listening |= CMB_FREQ
 				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return

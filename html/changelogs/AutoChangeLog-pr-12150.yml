@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "SEAs can no longer spawn with Army ranks. Fix Army E9 being Master Sergeant and not Sergeant Major"

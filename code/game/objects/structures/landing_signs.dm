@@ -101,8 +101,23 @@
 
 /obj/structure/lz_sign/charon_sign
 	name = "Charon's Crucible Sign"
-	desc = "A large sign reading 'lazarus landing por-' the rest of it is smeared in blood."
+	desc = "A large sign reading 'Charon's Crucible'. It's heavily damaged and covered in ash. It has the Seegson logo."
 	icon_state = "charon_sign"
+
+/obj/structure/lz_sign/charon_sign/alt
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'Charon's Crucible'. It's heavily damaged and covered in ash. It has the Seegson logo."
+	icon_state = "charon_sign_alt"
+
+/obj/structure/lz_sign/charon_sign/lasalle_bionational
+	name = "Charon's Crucible Sign"
+	desc = "A large sign reading 'Charon's Crucible'. It has the Lasalle Bionational corporation logo."
+	icon_state = "charon_sign_lasalle"
+
+/obj/structure/lz_sign/lasalle_bionational_sign
+	name = "Lasalle Bionational Sign"
+	desc = "A large sign with the Lasalle Bionational Corporation name and logo."
+	icon_state = "lasalle_bio_sign"
 
 /obj/structure/lz_sign/seegson_sign
 	name = "Seegson Sign"

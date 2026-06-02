@@ -19845,7 +19845,8 @@
 "dJj" = (
 /obj/structure/cargo_container/hybrisa/containersextended/colorable_big_right{
 	color = "#9a9181";
-	layer = 4.01
+	layer = 4.01;
+	pixel_x = -2
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -23574,7 +23575,7 @@
 	color = "#e8b867"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/floor3,
+/turf/open/floor/strata/smooth_u,
 /area/ice_colony/surface/clinic/treatment)
 "eIK" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -30981,7 +30982,7 @@
 /obj/effect/decal/hybrisa/workers_decal{
 	color = "#e8b867"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/smooth_u,
 /area/ice_colony/surface/research)
 "gHK" = (
 /obj/effect/lava/edges/basalt/side_rock,
@@ -38544,6 +38545,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/warnplate,
 /area/ice_colony/exterior/surface/landing_pad)
+"iMc" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/smooth_u/north,
+/area/ice_colony/surface/research)
 "iMp" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 8
@@ -47098,13 +47103,19 @@
 /turf/open/lava/hot_lava/L_piece/north,
 /area/ice_colony/exterior/surface/valley/north)
 "lmg" = (
-/obj/structure/largecrate/random/case/small{
-	pixel_x = -6;
-	pixel_y = 11
+/obj/structure/lz_sign/lasalle_bionational_sign{
+	pixel_x = 2;
+	pixel_y = 3
 	},
 /obj/structure/largecrate/random/mini/small_case{
-	pixel_x = -11;
-	pixel_y = 21
+	pixel_x = -15;
+	pixel_y = 12;
+	layer = 2.9
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -15;
+	pixel_y = 3;
+	layer = 2.9
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -47740,7 +47751,8 @@
 /area/ice_colony/surface/substation/smes)
 "lvl" = (
 /obj/structure/cargo_container/hybrisa/containersextended/colorable_big_left{
-	color = "#9a9181"
+	color = "#9a9181";
+	pixel_x = -2
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -48420,7 +48432,7 @@
 "lEu" = (
 /obj/structure/largecrate/random/barrel/blue{
 	pixel_x = -2;
-	pixel_y = 6
+	pixel_y = 2
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -74691,9 +74703,11 @@
 /turf/open/lava/metal/plating_catwalk,
 /area/ice_colony/surface/hydroponics/north)
 "sPX" = (
-/obj/structure/largecrate/random/case/double,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/plating_grille,
+/obj/item/tool/warning_cone{
+	pixel_x = 7;
+	pixel_y = 20
+	},
+/turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
 "sPY" = (
 /obj/effect/decal/seegson/worn{
@@ -76973,7 +76987,7 @@
 "tyG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/floor3,
+/turf/open/floor/strata/smooth_u/north,
 /area/ice_colony/surface/clinic/treatment)
 "tyQ" = (
 /obj/item/tool/warning_cone/red{
@@ -77150,6 +77164,11 @@
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -8;
 	pixel_y = 15
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	pixel_y = 3;
+	pixel_x = -8
 	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
@@ -91291,6 +91310,10 @@
 "xyG" = (
 /turf/open/lava/basalt/glowing/basalt1,
 /area/ice_colony/exterior/surface/valley/northeast)
+"xza" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/smooth_u/north,
+/area/ice_colony/surface/clinic/treatment)
 "xzb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/extinguisher_cabinet/alt{
@@ -91392,14 +91415,11 @@
 /turf/open/lava/basalt/basalt0,
 /area/ice_colony/exterior/surface/valley/west)
 "xAN" = (
-/obj/structure/largecrate/random/case{
-	pixel_y = 9
-	},
-/obj/structure/largecrate/random/mini/small_case{
-	pixel_x = -5;
-	pixel_y = 17
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/lz_sign/charon_sign/lasalle_bionational{
+	pixel_x = -2;
+	pixel_y = 3
+	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
 "xAP" = (
@@ -102450,8 +102470,8 @@ uBf
 suJ
 beB
 beB
-erd
-bjf
+aJl
+sPX
 aJl
 bjf
 baD
@@ -105682,7 +105702,7 @@ fdf
 anF
 fSd
 beB
-sPX
+emQ
 fgy
 hms
 bjf
@@ -108084,7 +108104,7 @@ hYd
 hYd
 hqH
 rAz
-uhD
+iMc
 gRl
 gRl
 nsS
@@ -125813,7 +125833,7 @@ vYE
 vYE
 stW
 aAV
-nye
+xza
 bID
 yfZ
 tdG

@@ -54,7 +54,7 @@
 
 
 /datum/job/special/wey_yu/ppo // Abstract type (null title)
-	supervisors = "Weyland-Yutani Person Protection Division"
+	supervisors = "Weyland-Yutani Personal Protection Division"
 
 /datum/job/special/wey_yu/ppo/standard
 	title = JOB_WY_PPO

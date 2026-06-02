@@ -279,6 +279,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 +				if(user.faction == FACTION_MARINE)
 +					freq_listening |= SURVIVOR_FREQS
  			switch(user.faction)
+ 				if(FACTION_SURVIVOR)
+ 					freq_listening |= COLONY_FREQ
  				if(FACTION_CLF)
  					freq_listening |= CLF_FREQS
  				if(FACTION_UPP)

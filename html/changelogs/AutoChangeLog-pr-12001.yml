@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added spawn presets for Personal Protection Officers and their Directorate counterparts."
+  - rscadd: "Changed the Liaison Bodyguard Beacon option for Sec goons to use PPO instead."

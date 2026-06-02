@@ -1086,6 +1086,22 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
+"acS" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/random_explosion,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/white_antre/indoors/main_level/research)
 "acT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -52517,6 +52533,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/random_explosion,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/white_antre/indoors/main_level/research)
 "hAR" = (
@@ -53368,17 +53385,6 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
-"kLw" = (
-/obj/item/xeno_egg/kseries{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/xeno_egg/kseries{
-	pixel_x = -2;
-	pixel_y = 1
-	},
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/white_antre/indoors/main_level/north_containment_hive)
 "kLZ" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -118770,7 +118776,7 @@ iKa
 iKa
 aOP
 kIv
-kLw
+kIv
 kIv
 sOR
 eNF
@@ -121164,7 +121170,7 @@ cDv
 nYZ
 rpu
 xCS
-xCS
+acS
 qlW
 yjJ
 aGq

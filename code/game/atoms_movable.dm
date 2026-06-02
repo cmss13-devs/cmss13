@@ -377,7 +377,8 @@
 */
 /atom/movable/proc/keybind_face_direction(direction)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
-		return
+		if(!do_after(src, 3 DECISECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			setDir(direction)
 	setDir(direction)
 
 /atom/movable/proc/onTransitZ(old_z,new_z)

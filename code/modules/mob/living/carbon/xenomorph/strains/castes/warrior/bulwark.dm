@@ -333,7 +333,7 @@
 
 	xeno_player.remove_suit_layer()
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
-	xeno_player.flags_atom &= ~DIRLOCK
+	xeno_player.flags_atom &= ~DIRLOCK //for safety
 	button.icon_state = "template_xeno"
 	xeno_player.remove_filter("reflective_shield")
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))

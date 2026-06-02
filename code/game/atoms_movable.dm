@@ -376,6 +376,8 @@
 * Called from [/atom/movable/proc/keyLoop], this exists to be overwritten by living mobs with a check to see if we're actually alive enough to change directions
 */
 /atom/movable/proc/keybind_face_direction(direction)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+		return
 	setDir(direction)
 
 /atom/movable/proc/onTransitZ(old_z,new_z)

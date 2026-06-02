@@ -352,20 +352,23 @@ CULT
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/target)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+	if(!istype(target))
+		return
+
+	if(target.skills && (skillcheck(target, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(target, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
-	if(get_dist_sqrd(get_turf(H), get_turf(owner)) > 2)
+	if(get_dist_sqrd(get_turf(target), get_turf(owner)) > 2)
 		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
 		return
 
-	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
+	return target.stat != DEAD && istype(target) && ishuman_strict(target) && target.hivenumber != Hu.hivenumber && !isnull(get_hive())
 
 /datum/action/human_action/activable/cult_leader/proc/get_hive()
 	if(!ishuman(owner))

@@ -3926,6 +3926,26 @@
 "alL" = (
 /turf/closed/wall/strata_ice,
 /area/fort_mcneil/indoors/caves/north)
+"alM" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/layer3,
+/area/fort_mcneil/outdoors/colony_exterior/south_east)
+"alN" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/scrublands/south)
+"alO" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/outdoors/comms)
+"alP" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/outdoors/colony_exterior/north_west)
+"alQ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/fort_mcneil/outdoors/scrublands/north)
 "anv" = (
 /obj/structure/prop/invuln/ice_prefab{
 	dir = 9
@@ -16582,7 +16602,7 @@ fcr
 pdm
 wEy
 vFL
-dzE
+alP
 dzE
 wEj
 rwp
@@ -21393,7 +21413,7 @@ pix
 aee
 aek
 aeg
-aei
+alM
 aeb
 aeb
 ofL
@@ -23733,7 +23753,7 @@ ofL
 ofL
 ofL
 tBL
-tBL
+alQ
 mLD
 gAC
 gAC
@@ -23910,7 +23930,7 @@ ofL
 kMJ
 bEE
 bvK
-dah
+alN
 dah
 dah
 dah
@@ -26388,7 +26408,7 @@ ofL
 ofL
 ofL
 hkO
-hkO
+alO
 aOC
 pTY
 aOC

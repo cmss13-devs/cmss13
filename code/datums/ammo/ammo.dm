@@ -153,7 +153,7 @@
 			return
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
-	if(fired_projectile.distance_travelled > max_range || living_mob.IsKnockDown())
+	if(fired_projectile.distance_travelled > max_range || HAS_TRAIT(living_mob, TRAIT_IMMOBILIZED))
 		return //Two tiles away or more, basically.
 
 	if(living_mob.mob_size >= MOB_SIZE_BIG)

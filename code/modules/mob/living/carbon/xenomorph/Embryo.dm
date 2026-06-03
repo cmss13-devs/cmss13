@@ -275,22 +275,23 @@
 		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	// If we have a candidate, transfer it over
-	if(!picked)
-		return
-	new_xeno.key = picked.key
-	if(new_xeno.client)
-		new_xeno.client.change_view(GLOB.world_view_size)
-		if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
-			window_flash(new_xeno.client)
+	if(picked)
+		new_xeno.key = picked.key
 
-	SSround_recording.recorder.track_player(new_xeno)
-	if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
-		ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
+		if(new_xeno.client)
+			new_xeno.client.change_view(GLOB.world_view_size)
+			if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_xeno.client)
 
-	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-	to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-	to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-	playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		SSround_recording.recorder.track_player(new_xeno)
+		if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
+			ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
+
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
+		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
+		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	// Inform observers to grab some popcorn if it isn't nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))

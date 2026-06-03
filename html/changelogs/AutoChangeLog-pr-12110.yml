@@ -1,8 +1,0 @@
-author: "DangerRevolution and MistChristmas"
-delete-after: True
-changes:
-  - rscadd: "The Colonial Marshal Bureau can now add their frequency to the radio tower."
-  - bugfix: "The CO Marshal Survivor on Solaris Ridge now has their faction correctly set to be a Marshal."
-  - bugfix: "Any Survivors adding their frequency to the radio tower will now always add the Colony radio."
-  - bugfix: "Several W-Y Synthetic Survivor Presets: Hybrisa's Executive Bodyguard Synth, Solaris' Corporate Assistant Synthetic now have Hud Icons, and their factions correctly set to enable them to better connect with Weyland-Yutani Personnel."
-  - bugfix: "The generic ICC Synthetic preset is now correctly part of the Colonial Marshalls' Bureau."

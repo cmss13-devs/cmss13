@@ -101,7 +101,7 @@
 	job_title = JOB_CORPORATE_BODYGUARD
 	paygrades = list(PAY_SHORT_WY_SEC_TPPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_PPO = JOB_PLAYTIME_TIER_1, PAY_SHORT_WY_SEC_PPS = JOB_PLAYTIME_TIER_3, PAY_SHORT_WY_SEC_PPC = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "CB"
-	skills = /datum/skills/wy_goon
+	skills = /datum/skills/wy_ppo
 
 	minimap_icon = "goon_guard"
 	minimap_background = "background_goon"

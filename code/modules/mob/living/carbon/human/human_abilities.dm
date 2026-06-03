@@ -359,24 +359,24 @@ CULT
 	var/mob/living/carbon/human/cultist = owner
 
 	if(!ishuman_strict(target)) // No yautja or synths
-		return
+		return FALSE
 
 	if(target.stat != CONSCIOUS) // No point in stunning dead or unconscious
-		return
+		return FALSE
 
-	if(!(get_hive())) // Can't use xeno powers without a hive
-		return
+	if(!get_hive()) // Can't use xeno powers without a hive
+		return FALSE
 
 	if(target.hivenumber == cultist.hivenumber) // Can't use xeno powers on a fellow hive member
-		return
+		return FALSE
 
 	if(target.skills && (skillcheck(target, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(target, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(cultist, SPAN_WARNING("This mind is too strong to target with your abilities."))
-		return
+		return FALSE
 
 	if(get_dist_sqrd(get_turf(target), get_turf(owner)) > 2)
 		to_chat(cultist, SPAN_WARNING("This target is too far away!"))
-		return
+		return FALSE
 
 	return TRUE
 

@@ -1975,6 +1975,7 @@
 #include "code\modules\gear_presets\wy.dm"
 #include "code\modules\gear_presets\wy_commandos.dm"
 #include "code\modules\gear_presets\wy_goons.dm"
+#include "code\modules\gear_presets\wy_ppos.dm"
 #include "code\modules\gear_presets\yautja.dm"
 #include "code\modules\gear_presets\survivors\misc.dm"
 #include "code\modules\gear_presets\survivors\survivors.dm"

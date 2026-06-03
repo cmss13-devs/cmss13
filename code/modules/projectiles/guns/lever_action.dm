@@ -288,7 +288,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(flags_gun_lever_action & MOVES_WHEN_LEVERING)
 		to_chat(user, SPAN_WARNING("<i>You spin \the [src] one-handed! Fuck yeah!<i>"))
 		animation_wrist_flick(src)
-	direct_hit_buff(user, , src,TRUE)
+	direct_hit_buff(user, projectile_source=src, one_hand_lever=TRUE)
 
 /obj/item/weapon/gun/lever_action/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -507,20 +507,19 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return NONE
 	if(in_chamber) //has to go before actual firing
 		var/obj/projectile/projectile_to_shoot = in_chamber
-		if(floating_penetration)
-			switch(floating_penetration)
-				if(FLOATING_PENETRATION_TIER_1)
-					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
-					direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
-				if(FLOATING_PENETRATION_TIER_2)
-					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
-					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
-				if(FLOATING_PENETRATION_TIER_3)
-					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
-					direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
-				if(FLOATING_PENETRATION_TIER_4)
-					projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
-					direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
+		switch(floating_penetration)
+			if(FLOATING_PENETRATION_TIER_1)
+				projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
+				direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
+			if(FLOATING_PENETRATION_TIER_2)
+				projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
+			if(FLOATING_PENETRATION_TIER_3)
+				projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
+			if(FLOATING_PENETRATION_TIER_4)
+				projectile_to_shoot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+				direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
 		projectile_to_shoot.projectile_flags |= PROJECTILE_BULLSEYE
 	return ..()
 

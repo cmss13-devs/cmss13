@@ -1,4 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - bugfix: "gauze, ointment, kits and splints now heal simple animal mobs"

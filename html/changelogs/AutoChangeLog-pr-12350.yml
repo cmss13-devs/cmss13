@@ -1,4 +1,0 @@
-author: "Fluffyzack21"
-delete-after: True
-changes:
-  - bugfix: "fixed the incorrect subtype that the ASO vendor used, and now it shows a green beret sprite instead a of a red one"

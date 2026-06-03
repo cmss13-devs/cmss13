@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Medical Dummy now doesn't cleanly delimb, needing the relevant surgical steps to clean up the wound."

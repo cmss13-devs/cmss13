@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Working Joe can now be joined after round end/hijack."
-  - rscadd: "Staff disabling WJ restrictions will now open it to non-whitelisted players."

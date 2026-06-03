@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - balance: "resisting in coastline tiles now extinguishes fires and acid like river tiles."

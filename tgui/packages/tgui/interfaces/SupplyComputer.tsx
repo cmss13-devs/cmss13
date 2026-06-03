@@ -74,6 +74,7 @@ type Order = {
   ordered_by: string;
   approved_by: string;
   reason?: string;
+  total_cost: number;
 };
 
 type Item = {
@@ -538,13 +539,7 @@ const RenderOrder = (props: {
               <Stack.Item pt={1}>
                 <Stack>
                   <Stack.Item bold>Total Cost:</Stack.Item>
-                  <Stack.Item>
-                    $
-                    {order.contents.reduce(
-                      (curr, next) => curr + next.cost * next.quantity,
-                      0,
-                    ) * 100}
-                  </Stack.Item>
+                  <Stack.Item>${order.total_cost}</Stack.Item>
                 </Stack>
               </Stack.Item>
             </Stack.Item>

@@ -29,8 +29,18 @@
 		if(iscarbon(affected_mob))
 			var/mob/living/carbon/affected_carbon = affected_mob
 			affected_carbon.med_hud_set_status()
+		update_icon()
 	else
 		return INITIALIZE_HINT_QDEL
+
+/obj/item/alien_embryo/update_icon()
+	if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
+		if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
+			icon = 'icons/mob/pathogen/aberration_bloodburster.dmi'
+		else
+			icon = 'icons/mob/pathogen/bloodburster.dmi'
+	else if(isyautja(affected_mob) || flags_embryo & FLAG_EMBRYO_PREDATOR)
+		'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)
@@ -48,9 +58,6 @@
 		STOP_PROCESSING(SSobj, src)
 		qdel(src)
 		return FALSE
-
-	if((flags_embryo & FLAG_EMBRYO_PATHOGEN) && icon != 'icons/mob/pathogen/bloodburster.dmi')
-		icon = 'icons/mob/pathogen/bloodburster.dmi'
 
 	if(loc != affected_mob) //Our location is not the host
 		affected_mob.status_flags &= ~(XENO_HOST)
@@ -256,7 +263,7 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
-			new_xeno = new /mob/living/carbon/xenomorph/bloodburster(affected_mob)
+			new_xeno = new /mob/living/carbon/xenomorph/bloodburster/aberrant(affected_mob)
 		else
 			new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
 	else if(flags_embryo & FLAG_EMBRYO_PATHOGEN)

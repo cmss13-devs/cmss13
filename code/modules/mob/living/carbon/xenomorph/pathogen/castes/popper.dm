@@ -50,7 +50,7 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/onclick/place_spore_sac/fatal, // fourth macro // Needs rethinking on ease of access
-//		/datum/action/xeno_action/onclick/release_spores,
+		/datum/action/xeno_action/activable/direct_spore_infect,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -82,6 +82,8 @@
 	aura_strength = 2
 	counts_for_slots = FALSE
 
+	age = XENO_NO_AGE
+	show_only_numbers = TRUE
 	counts_for_roundend = FALSE
 	health_threshold_dead = 0
 	var/spore_morphed = FALSE
@@ -101,7 +103,7 @@
 	. = ..()
 	if(spore_morphed)
 		return
-	new /obj/effect/pathogen/spore_cloud(loc)
+	new /obj/effect/pathogen/spore_cloud(loc, ckey)
 
 /mob/living/carbon/xenomorph/popper/start_pulling(atom/movable/AM)
 	return
@@ -476,3 +478,76 @@
 	if(get_popper_num() >= max_poppers)
 		return FALSE
 	return TRUE
+
+
+/datum/action/xeno_action/activable/direct_spore_infect
+	name = "Spore Injection"
+	action_icon_state = "tail_attack"
+	action_type = XENO_ACTION_CLICK
+	charge_time = 3 SECONDS
+	xeno_cooldown = 20 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
+/datum/action/xeno_action/activable/direct_spore_infect/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/xenomorph/popper = owner
+	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+		return
+
+	if(HAS_TRAIT(popper, TRAIT_ABILITY_BURROWED) || popper.is_ventcrawling)
+		to_chat(popper, SPAN_XENOWARNING("We must be above ground to do this."))
+		return
+
+	if(!popper.check_state() || popper.cannot_slash)
+		return FALSE
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(world.time <= popper.next_move)
+		return FALSE
+
+	if(popper.z != targetted_atom.z)
+		var/turf/xeno_turf = get_turf(popper)
+		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
+		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
+		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+			return
+
+	if(!popper.Adjacent(targetted_atom))
+		return FALSE
+
+	var/list/turf/path = get_line(popper, targetted_atom, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(popper, SPAN_WARNING("There's something blocking us!"))
+			return FALSE
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+				to_chat(popper, SPAN_WARNING("There's something blocking us!"))
+				return FALSE
+
+	if(!ishuman(targetted_atom))
+		return FALSE
+
+	if(popper.can_not_harm(targetted_atom))
+		return FALSE
+
+	var/mob/living/carbon/target = targetted_atom
+
+	if(!HAS_TRAIT(target, TRAIT_NESTED))
+		to_chat(popper, SPAN_WARNING("We can only directly infect nested hosts!"))
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	var/obj/effect/pathogen/spore_cloud/spores = new(target.loc, owner.ckey, TRUE)
+	if(isyautja(target))
+		spores.attempt_yautja_inhale(target, TRUE)
+	else
+		spores.attempt_inhale(target, TRUE)
+
+	apply_cooldown()
+	xeno_attack_delay(popper)
+	..()
+

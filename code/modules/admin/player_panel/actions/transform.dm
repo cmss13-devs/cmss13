@@ -204,12 +204,30 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = PATHOGEN_CREATURE_HARBINGER,
 	key = /mob/living/carbon/xenomorph/harbinger,
 	color="white"
+	)
+	),
+
+	"Pathogen Creatures (Exotic)" = list(
+	list(
+	name = PATHOGEN_CREATURE_ABER_BURSTER,
+	key = /mob/living/carbon/xenomorph/bloodburster/aberrant,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_ABERRATION,
+	key = /mob/living/carbon/xenomorph/aberration,
+	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_MATRIARCH,
 	key = /mob/living/carbon/xenomorph/matriarch,
 	color="white"
-	)
+	)/*
+	list(
+	name = PATHOGEN_CREATURE_OVERMIND,
+	key = /mob/living/carbon/xenomorph/overmind,
+	color="white"
+	)*/
 	),
 
 	"Miscellaneous" = list(

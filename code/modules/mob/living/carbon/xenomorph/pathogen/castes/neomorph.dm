@@ -76,6 +76,8 @@
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "pathogen_talk"
+
+	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
 	fire_immunity = FIRE_VULNERABILITY

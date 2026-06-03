@@ -664,6 +664,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/despoiler
 		if(PATHOGEN_CREATURE_BURSTER)
 			M = /mob/living/carbon/xenomorph/bloodburster
+		if(PATHOGEN_CREATURE_ABER_BURSTER)
+			M = /mob/living/carbon/xenomorph/bloodburster/aberrant
 		if(PATHOGEN_CREATURE_POPPER)
 			M = /mob/living/carbon/xenomorph/popper
 		if(PATHOGEN_CREATURE_SPRINTER)
@@ -682,6 +684,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/conditor
 		if(PATHOGEN_CREATURE_MATRIARCH)
 			M = /mob/living/carbon/xenomorph/matriarch
+		if(PATHOGEN_CREATURE_ABERRATION)
+			M = /mob/living/carbon/xenomorph/aberration
 //		if(PATHOGEN_CREATURE_OVERMIND)
 //			M = /mob/living/carbon/xenomorph/overmind
 	return M

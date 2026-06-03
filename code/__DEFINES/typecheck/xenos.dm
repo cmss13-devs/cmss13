@@ -32,6 +32,7 @@
 #define ispopper(A) (istype(A, /mob/living/carbon/xenomorph/popper))
 #define ismatriarch(A) (istype(A, /mob/living/carbon/xenomorph/matriarch))
 #define is_pathogen_overmind(A) (istype(A, /mob/living/carbon/xenomorph/overmind))
+#define isaberration(A) (istype(A, /mob/living/carbon/xenomorph/aberration))
 
 /// Returns true if the xenomorph can not harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob, check_hive_flags=TRUE)

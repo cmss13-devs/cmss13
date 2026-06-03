@@ -211,9 +211,18 @@
 	var/death_timer
 	var/list/spore_triggers = list()
 	var/silent_inhale = FALSE
+	/// Linked popper, like huggers for embryos
+	var/popper_key
+	/// Whether this was created by a popper infecting a nested host.
+	var/manually_injecting = FALSE
 
-/obj/effect/pathogen/spore_cloud/Initialize(mapload, ...)
+/obj/effect/pathogen/spore_cloud/Initialize(mapload, linked_popper_key, manual_inject)
 	. = ..()
+	if(linked_popper_key)
+		popper_key = linked_popper_key
+	if(manual_inject)
+		manually_injecting = TRUE
+		return
 	var/airborne_duration = rand(30 SECONDS, 60 SECONDS)
 	death_timer = addtimer(CALLBACK(src, PROC_REF(decay)), airborne_duration, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)//Spores only exist for a minute maximum
 	create_spore_triggers()
@@ -251,7 +260,7 @@
 			return TRUE
 
 /obj/effect/pathogen/spore_cloud/Crossed(atom/movable/crosser)
-	if(!ishuman(crosser))
+	if(!ishuman(crosser) || manually_injecting)
 		return FALSE
 	var/mob/living/carbon/human/human_passer = crosser
 	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
@@ -300,6 +309,7 @@
 		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo/bloodburster(human_passer)
 		GLOB.player_embryo_list += embryo
+		embryo.hugger_ckey = popper_key
 
 		if(human_passer.species)
 			human_passer.species.larva_impregnated(embryo)
@@ -319,16 +329,16 @@
 	return FALSE
 
 // Duplicate of above CURRENTLY. Will change.
-/obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/human_passer, forced = FALSE)
+/obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/pred_passer, forced = FALSE)
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE
-	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || !isyautja(human_passer))
+	if(!can_hug(pred_passer, XENO_HIVE_PATHOGEN) || !isyautja(pred_passer))
 		return FALSE
 
 	inhaling = TRUE
 
-	var/obj/item/mask = human_passer.wear_mask
-	var/obj/item/helmet = human_passer.head
+	var/obj/item/mask = pred_passer.wear_mask
+	var/obj/item/helmet = pred_passer.head
 	if(mask && !forced)
 		if(mask.flags_inventory & SPOREPROOF)
 			inhaling = FALSE
@@ -345,7 +355,7 @@
 			return FALSE
 
 	var/embryos = 0
-	for(var/obj/item/alien_embryo/embryo in human_passer) // already got one, stops doubling up
+	for(var/obj/item/alien_embryo/embryo in pred_passer) // already got one, stops doubling up
 		if(embryo.hivenumber == XENO_HIVE_PATHOGEN)
 			embryos++
 		else
@@ -353,18 +363,22 @@
 	if(!embryos)
 		icon_state = "motes_inject"
 		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo/bloodburster(pred_passer)
+		GLOB.player_embryo_list += embryo
+		embryo.hugger_ckey = popper_key
 
-		// TO DO SOMETHING HERE
+		if(pred_passer.species)
+			pred_passer.species.larva_impregnated(embryo)
 
 		if(!silent_inhale)
-			human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
+			pred_passer.visible_message(SPAN_DANGER("[pred_passer] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
 		var/area/breath_area = get_area(src)
 		if(breath_area)
-			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)
-			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores at \the <b>[breath_area]</b>"))
+			notify_ghosts(header = "Infected", message = "[pred_passer] has been infected with pathogen spores at [breath_area]!", source = pred_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[pred_passer]</b> has been infected with pathogen spores at \the <b>[breath_area]</b>"))
 		else
-			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores!", source = human_passer, action = NOTIFY_ORBIT)
-			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores"))
+			notify_ghosts(header = "Infected", message = "[pred_passer] has been infected with pathogen spores!", source = pred_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[pred_passer]</b> has been infected with pathogen spores"))
 		return TRUE
 	inhaling = FALSE
 	return FALSE

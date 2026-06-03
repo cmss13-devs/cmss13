@@ -29,6 +29,13 @@
 
 	minimap_icon = "bloodburster"
 
+/datum/caste_datum/pathogen/bloodburster/aberrant
+	caste_type = PATHOGEN_CREATURE_ABER_BURSTER
+	evolves_to = list(PATHOGEN_CREATURE_ABERRATION)
+
+	minimap_icon = "aber_bloodburster"
+	minimum_evolve_time = 0
+
 /mob/living/carbon/xenomorph/bloodburster
 	caste_type = PATHOGEN_CREATURE_BURSTER
 	name = PATHOGEN_CREATURE_BURSTER
@@ -76,6 +83,7 @@
 	bubble_icon = "pathogen"
 	fire_immunity = FIRE_VULNERABILITY
 
+	age = XENO_NO_AGE
 	var/bloody_state = LARVA_STATE_BLOODY
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 
@@ -258,3 +266,39 @@
 	icon = 'icons/mob/pathogen/bloodburster.dmi'
 	flags_embryo = FLAG_EMBRYO_PATHOGEN
 	hivenumber = XENO_HIVE_PATHOGEN
+
+
+
+/mob/living/carbon/xenomorph/bloodburster/aberrant
+	AUTOWIKI_SKIP(TRUE)
+
+	icon_xeno = 'icons/mob/pathogen/aberration_bloodburster.dmi'
+	icon_state = "Aberration Bloodburster"
+	caste_type = PATHOGEN_CREATURE_ABER_BURSTER
+	burrowable = FALSE //Not interchangeable with regular bursters in the blight core.
+
+/mob/living/carbon/xenomorph/bloodburster/aberrant/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An aberration upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
+
+/mob/living/carbon/xenomorph/bloodburster/aberrant/update_icons()
+	var/state = "" //Icon convention, two different sprite sets
+
+	if(bloody_state == LARVA_STATE_BLOODY)
+		state = "Bloody "
+
+	if(stat == DEAD)
+		icon_state = "[state]Aberration Bloodburster Dead"
+	else if(handcuffed || legcuffed)
+		icon_state = "[state]Aberration Bloodburster Cuff"
+
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+			icon_state = "[state]Aberration Bloodburster Sleeping"
+		else
+			icon_state = "[state]Aberration Bloodburster Stunned"
+	else
+		icon_state = "[state]Aberration Bloodburster"

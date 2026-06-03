@@ -165,7 +165,7 @@
 		if(isyautja(any_target))
 			stun_time -= 2
 
-		if(ispredalien(any_target))
+		if(ispredalien(any_target) || isaberration(any_target))
 			continue
 		to_chat(any_target, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		any_target.apply_effect(stun_time, STUN)
@@ -248,7 +248,7 @@
 /datum/ammo/energy/yautja/caster/lance/on_hit_mob(mob/mob, obj/projectile/projectile)
 	shaboomboom(projectile, mob)
 	var/turf/turf = get_turf(mob)
-	if(!ispredalien(mob)) // AP rocket effects on all targets except predaliens because they're adapted against plasma weapons
+	if(!ispredalien(mob) && !isaberration(mob)) // AP rocket effects on all targets except predaliens because they're adapted against plasma weapons
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 		mob.apply_effect(3, WEAKEN)
 		mob.apply_effect(3, PARALYZE)
@@ -260,7 +260,7 @@
 	shaboomboom(projectile, turf)
 	var/hit_something = 0
 	for(var/mob/mob in turf)
-		if(!ispredalien(mob))
+		if(!ispredalien(mob) && !isaberration(mob))
 			mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 			mob.apply_effect(3, WEAKEN)
 			mob.apply_effect(3, PARALYZE)

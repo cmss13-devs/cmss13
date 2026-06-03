@@ -14,7 +14,7 @@
 // Spec verb macros
 /mob/living/carbon/human/verb/spec_activation_one()
 	set name = "Specialist Activation One"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	var/mob/living/carbon/human/H = src
 	if (!istype(H))
@@ -25,7 +25,7 @@
 
 /mob/living/carbon/human/verb/spec_activation_two()
 	set name = "Specialist Activation Two"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	var/mob/living/carbon/human/H = src
 	if (!istype(H))

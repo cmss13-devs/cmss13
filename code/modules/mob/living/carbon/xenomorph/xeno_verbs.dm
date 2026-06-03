@@ -176,8 +176,9 @@
 
 /mob/living/carbon/xenomorph/verb/rip_limb()
 	set name = "Rip Limb"
-	set desc = "Rip off a limb from living pray."
+	set desc = "Rip off a limb from living prey."
 	set category = "Alien"
+	set invisibility = TRUE
 
 	if(!isxeno(src))
 		return

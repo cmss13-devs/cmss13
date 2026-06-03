@@ -43,7 +43,7 @@
 
 //This gets called when you press the delete button.
 CLIENT_VERB(delete_key_pressed)
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!usr.pulling)
 		to_chat(usr, SPAN_NOTICE("You are not pulling anything."))
@@ -52,7 +52,7 @@ CLIENT_VERB(delete_key_pressed)
 
 CLIENT_VERB(swap_hand)
 	set name = ".SwapMobHand"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
@@ -61,13 +61,13 @@ CLIENT_VERB(swap_hand)
 
 
 CLIENT_VERB(attack_self)
-	set hidden = TRUE
+	set invisibility = TRUE
 	if(mob)
 		mob.mode()
 	return
 
 CLIENT_VERB(drop_item)
-	set hidden = TRUE
+	set invisibility = TRUE
 	mob.drop_item_v()
 	return
 

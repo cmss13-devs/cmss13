@@ -70,7 +70,7 @@
 /datum/action/xeno_action/verb/verb_apply_salve()
 	set category = "Alien"
 	set name = "Apply Resin Salve"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
@@ -218,7 +218,7 @@
 /datum/action/xeno_action/verb/verb_healer_sacrifice()
 	set category = "Alien"
 	set name = "Sacrifice"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/action_name = "Sacrifice"
 	handle_xeno_macro(src, action_name)
 

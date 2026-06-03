@@ -350,7 +350,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 /mob/verb/a_intent_change(intent as num)
 	set name = "a-intent"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(intent)
 		a_intent = intent

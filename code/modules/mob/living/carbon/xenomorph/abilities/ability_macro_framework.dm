@@ -52,7 +52,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()
 	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action One"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -68,7 +68,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_two()
 	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Two"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -84,7 +84,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_three()
 	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Three"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -100,7 +100,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_four()
 	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Four"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -116,7 +116,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_five()
 	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Five"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -132,7 +132,7 @@
 /mob/living/carbon/xenomorph/verb/m_corrosive_acid()
 	set category = "Alien"
 	set name = "Corrosive Acid"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if(xeno.mob_size < MOB_SIZE_XENO_SMALL)
 		return
@@ -148,7 +148,7 @@
 /mob/living/carbon/xenomorph/verb/tech_secrete_resin()
 	set category = "Alien"
 	set name = "Secrete Resin (Tech)"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -164,7 +164,7 @@
 /mob/living/carbon/xenomorph/verb/xeno_screech_action()
 	set category = "Alien"
 	set name = "Screech"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -195,7 +195,7 @@
 
 	set category = "Alien"
 	set name = "Become seethrough"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 
 	for(var/datum/action/xeno_action/xeno_action in xeno.actions)

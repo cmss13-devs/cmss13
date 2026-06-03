@@ -708,7 +708,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 CLIENT_VERB(read_key_down, key as text|null)
 	set name = ".Read Key Down"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if (!key)
 		return
@@ -717,7 +717,7 @@ CLIENT_VERB(read_key_down, key as text|null)
 
 CLIENT_VERB(read_key_up, key as text|null)
 	set name = ".Read Key Up"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if (!key)
 		return
@@ -742,6 +742,8 @@ CLIENT_VERB(read_key_up, key as text|null)
 	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
 	for(var/procpath/verb_to_init as anything in verbstoprocess)
 		if(!verb_to_init)
+			continue
+		if(verb_to_init.invisibility)
 			continue
 		if(verb_to_init.hidden)
 			continue
@@ -913,7 +915,7 @@ CLIENT_VERB(read_key_up, key as text|null)
 
 CLIENT_VERB(fix_stat_panel)
 	set name = "Fix Stat Panel"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	init_verbs()
 

@@ -221,7 +221,7 @@
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(0))
 		return
@@ -237,7 +237,7 @@
 /datum/admins/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(0))
 		return
@@ -253,14 +253,14 @@
 /client/proc/cmd_mod_say(msg as text)
 	set name = "Msay" // This exists for ease of admins who were used to using msay instead of asay
 	set category = "Admin"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	cmd_admin_say(msg)
 
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(R_ADMIN|R_MOD))
 		return
@@ -301,7 +301,7 @@
 /datum/admins/proc/alertall()
 	set name = "Alert All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(R_MOD))
 		return
@@ -321,7 +321,7 @@
 /datum/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(R_MOD))
 		return
@@ -343,7 +343,7 @@
 /datum/admins/proc/subtlemessageall()
 	set name = "Subtle Message All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!check_rights(R_MOD))
 		return
@@ -388,7 +388,7 @@
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
 	set category = "Admin.Mentor"
-	set hidden = 0
+	set invisibility = 0
 
 	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
 		return
@@ -437,7 +437,7 @@
 /client/proc/strip_all_in_view()
 	set name = "Strip All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -464,7 +464,7 @@
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -482,7 +482,7 @@
 /client/proc/rejuvenate_all_humans_in_view()
 	set name = "Rejuvenate All Humans"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -499,7 +499,7 @@
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "Rejuvenate Revivable Human"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -525,7 +525,7 @@
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "Rejuvenate Xenos"
 	set category = "Admin.InView"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")

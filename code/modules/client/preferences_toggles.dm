@@ -691,6 +691,7 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 	set name = "Show Ghost Prefs"
 	set category = "Preferences"
 	set desc = "Shows ghost-related preferences."
+	set invisibility = TRUE
 
 	add_verb(src, GLOB.ghost_prefs_verbs)
 	remove_verb(src, /client/proc/show_ghost_preferences)

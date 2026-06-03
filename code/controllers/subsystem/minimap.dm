@@ -1627,7 +1627,7 @@ SUBSYSTEM_DEF(minimaps)
 /client/proc/handle_draw(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
 	set instant = TRUE
 	set category = null
-	set hidden = TRUE
+	set invisibility = TRUE
 	set name = ".mouse-draw"
 
 	if(!active_draw_tool)

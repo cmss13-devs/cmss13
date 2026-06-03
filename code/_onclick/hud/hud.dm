@@ -282,7 +282,7 @@
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(hud_used && client)
 		hud_used.show_hud()

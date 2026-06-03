@@ -25,7 +25,7 @@
 /mob/verb/toggle_normal_throw()
 	set name = "Toggle Normal Throw"
 	set category = "IC"
-	set hidden = TRUE
+	set invisibility = TRUE
 	set src = usr
 
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
@@ -44,7 +44,7 @@
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"
 	set category = "IC"
-	set hidden = TRUE
+	set invisibility = TRUE
 	set src = usr
 
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
@@ -183,36 +183,36 @@
 			M.cameraFollow = null
 
 /mob/verb/eastface()
-	set hidden = TRUE
+	set invisibility = TRUE
 	return face_dir(EAST)
 
 /mob/verb/westface()
-	set hidden = TRUE
+	set invisibility = TRUE
 	return face_dir(WEST)
 
 /mob/verb/northface()
-	set hidden = TRUE
+	set invisibility = TRUE
 	return face_dir(NORTH)
 
 /mob/verb/southface()
-	set hidden = TRUE
+	set invisibility = TRUE
 	return face_dir(SOUTH)
 
 
 /mob/verb/northfaceperm()
-	set hidden = TRUE
+	set invisibility = TRUE
 	set_face_dir(NORTH)
 
 /mob/verb/southfaceperm()
-	set hidden = TRUE
+	set invisibility = TRUE
 	set_face_dir(SOUTH)
 
 /mob/verb/eastfaceperm()
-	set hidden = TRUE
+	set invisibility = TRUE
 	set_face_dir(EAST)
 
 /mob/verb/westfaceperm()
-	set hidden = TRUE
+	set invisibility = TRUE
 	set_face_dir(WEST)
 
 

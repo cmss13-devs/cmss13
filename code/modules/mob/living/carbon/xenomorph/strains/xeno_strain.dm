@@ -32,6 +32,7 @@
 		remove_action(xeno, action_path)
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
+	xeno.client.init_verbs()
 
 	var/datum/action/minimap/ref = xeno.minimap_ref.resolve()
 	ref.remove_from(xeno)

@@ -55,7 +55,7 @@
 /datum/action/xeno_action/verb/plant_resin_fruit()
 	set category = "Alien"
 	set name = "Plant Resin Fruit"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/action_name = "Plant Resin Fruit"
 	handle_xeno_macro(src, action_name)
 
@@ -336,7 +336,7 @@
 /datum/action/xeno_action/verb/verb_resin_surge()
 	set category = "Alien"
 	set name = "Resin Surge"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/action_name = "Resin Surge"
 	handle_xeno_macro(src, action_name)
 
@@ -363,7 +363,7 @@
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"
 	set name = "Plant Hardy Weeds"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)
 

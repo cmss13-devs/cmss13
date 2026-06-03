@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 /// Verb, hardcoded to Escape, set in the client skin.
 CLIENT_VERB(open_escape_menu)
 	set name = "Open Escape Menu"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(istype(src.mob, /mob/new_player)) // it's very zoomed out in the lobby
 		return

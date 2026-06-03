@@ -195,5 +195,5 @@
  * When the popup closes in any way (player or proc call) it calls this.
  */
 CLIENT_VERB(handle_popup_close, window_id as text)
-	set hidden = TRUE
+	set invisibility = TRUE
 	clear_map("[window_id]_map")

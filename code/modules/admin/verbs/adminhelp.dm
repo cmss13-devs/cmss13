@@ -876,7 +876,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 CLIENT_VERB(no_tgui_adminhelp, message as message)
 	set name = "NoTguiAdminhelp"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(adminhelptimerid)
 		return

@@ -170,7 +170,7 @@
 CLIENT_VERB(uiclose, window_id as text)
 	// Name the verb, and hide it from the user panel.
 	set name = "uiclose"
-	set hidden = TRUE
+	set invisibility = TRUE
 	var/mob/user = src?.mob
 	if(!user)
 		return

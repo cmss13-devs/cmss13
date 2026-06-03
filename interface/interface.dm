@@ -2,7 +2,7 @@
 CLIENT_VERB(wiki)
 	set name = "wiki"
 	set desc = "Visit the wiki."
-	set hidden = TRUE
+	set invisibility = TRUE
 	if( CONFIG_GET(string/wikiurl) )
 		if(tgui_alert(src, "This will open the wiki in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
@@ -14,7 +14,7 @@ CLIENT_VERB(wiki)
 CLIENT_VERB(forum)
 	set name = "forum"
 	set desc = "Visit the forum."
-	set hidden = TRUE
+	set invisibility = TRUE
 	if( CONFIG_GET(string/forumurl) )
 		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
@@ -26,7 +26,7 @@ CLIENT_VERB(forum)
 CLIENT_VERB(rules)
 	set name = "rules"
 	set desc = "Read our rules."
-	set hidden = TRUE
+	set invisibility = TRUE
 	if( CONFIG_GET(string/rulesurl) )
 		if(tgui_alert(src, "This will open the rules in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
@@ -50,7 +50,7 @@ CLIENT_VERB(changelog)
 CLIENT_VERB(discord)
 	set name = "Discord"
 	set desc = "Join our Discord! Meet and talk with other players in the server."
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(tgui_alert(src, "This will open the discord in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
@@ -61,7 +61,7 @@ CLIENT_VERB(discord)
 CLIENT_VERB(submitbug)
 	set name = "Submit Bug"
 	set desc = "Submit a bug."
-	set hidden = TRUE
+	set invisibility = TRUE
 	if(!usr)
 		return
 	var/datum/tgui_bug_report_form/report = new(usr)

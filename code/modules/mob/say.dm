@@ -179,7 +179,7 @@ for it but just ignore it.
 
 /mob/verb/say_wrapper()
 	set name = ".Say"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(client.typing_indicators)
 		create_typing_indicator(TRUE)
@@ -193,7 +193,7 @@ for it but just ignore it.
 
 /mob/verb/me_wrapper()
 	set name = ".Me"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(client.typing_indicators)
 		create_typing_indicator(TRUE)
@@ -208,7 +208,7 @@ for it but just ignore it.
 /// Sets typing indicator for a couple seconds, for use with client-side comm verbs
 /mob/verb/timed_typing()
 	set name = ".typing"
-	set hidden = TRUE
+	set invisibility = TRUE
 	set instant = TRUE
 
 	if(client.typing_indicators)

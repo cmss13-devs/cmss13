@@ -5,7 +5,7 @@
 			user.skincmds[name] = O
 
 /mob/verb/skincmd(data as text)
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	var/ref = copytext(data, 1, findtext(data, ";"))
 	if (src.skincmds[ref] != null)

@@ -2,7 +2,7 @@
 // These verbs are called for all key press and release events
 CLIENT_VERB(keyDown, _key as text)
 	set instant = TRUE
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	client_keysend_amount++
 
@@ -86,7 +86,7 @@ CLIENT_VERB(keyDown, _key as text)
 
 CLIENT_VERB(keyUp, _key as text)
 	set instant = TRUE
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	var/key_combo = key_combos_held[_key]
 	if(key_combo)

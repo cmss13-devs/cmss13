@@ -1,6 +1,6 @@
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
-	set hidden = TRUE
+	set invisibility = TRUE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

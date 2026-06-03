@@ -504,6 +504,9 @@
 	if(!picked)
 		return
 
+	if(user.stat != CONSCIOUS) // no recoloring scarves while dead!!!
+		return
+
 	icon_state = lowertext(picked)
 	item_state = lowertext(picked)
 	name = picked

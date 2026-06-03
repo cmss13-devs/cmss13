@@ -287,10 +287,11 @@
 	if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
 		ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
 
-	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-	to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-	to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-	playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
+		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
+		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	// Inform observers to grab some popcorn if it isn't nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))

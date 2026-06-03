@@ -153,7 +153,7 @@
 			return
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
-	if(fired_projectile.distance_travelled > max_range)
+	if(fired_projectile.distance_travelled > max_range || living_mob.GetKnockDownDuration() != 0)
 		return //Two tiles away or more, basically.
 
 	if(living_mob.mob_size >= MOB_SIZE_BIG)

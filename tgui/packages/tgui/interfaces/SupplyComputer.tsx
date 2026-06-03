@@ -539,7 +539,9 @@ const RenderOrder = (props: {
               <Stack.Item pt={1}>
                 <Stack>
                   <Stack.Item bold>Total Cost:</Stack.Item>
-                  <Stack.Item>${order.total_cost}</Stack.Item>
+                  <Stack.Item>
+                    {order.total_cost ? '$' + order.total_cost : 'N/A'}
+                  </Stack.Item>
                 </Stack>
               </Stack.Item>
             </Stack.Item>

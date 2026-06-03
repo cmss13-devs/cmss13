@@ -352,6 +352,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
 	reqform.info += "RANK: [order.orderedby_rank]<br>"
 	reqform.info += "REASON: [order.reason]<br>"
+	reqform.info += "TOTAL COST: [order.total_cost]<br>"
 	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
 	reqform.info += "CONTENTS:<br>"
 	for(var/datum/supply_packs/supply_pack as anything in order.objects)
@@ -697,7 +698,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			continue
 
 		buyer.linked_supply_controller.points -= pack.cost
-		total_cost += pack.cost
+		total_cost += pack.cost * 100
 		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost
 
 		if(buyer.linked_supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
@@ -1081,8 +1082,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		<td>[orderedby]</td></tr>  \
 		<tr><td>Approved by:</td>  \
 		<td>[approvedby]</td></tr> \
-		<tr><td>Total Cost:</td>  \
-		<td>[total_cost]</td></tr> \
 		<tr><td># packages:</td>   \
 		<td class='field'>[length(packages)]</td></tr> \
 		</table><hr><p class='header important'>Contents</p>   \

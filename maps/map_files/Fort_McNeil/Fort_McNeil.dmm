@@ -3946,6 +3946,9 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/fort_mcneil/outdoors/scrublands/north)
+"alR" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/fort_mcneil/outdoors/scrublands/central)
 "anv" = (
 /obj/structure/prop/invuln/ice_prefab{
 	dir = 9
@@ -16691,7 +16694,7 @@ uQH
 nqM
 nqM
 hAK
-ofL
+nqM
 nqM
 mwP
 ofL
@@ -17168,7 +17171,7 @@ lRb
 qhd
 qhd
 ghG
-ghG
+htT
 htT
 lRb
 htT
@@ -17267,10 +17270,10 @@ htT
 htT
 htT
 qhd
-ofL
-ofL
+qhd
 ofL
 ghG
+htT
 htT
 ghG
 ofL
@@ -19388,7 +19391,7 @@ kWC
 htT
 htT
 ghG
-ghG
+htT
 htT
 lRb
 htT
@@ -19490,7 +19493,7 @@ kWC
 ghG
 ofL
 ghG
-ghG
+htT
 htT
 htT
 tLa
@@ -19590,8 +19593,8 @@ ofL
 ofL
 ofL
 ofL
-ofL
 ghG
+htT
 htT
 ghG
 ofL
@@ -19690,8 +19693,8 @@ ofL
 ofL
 ofL
 ofL
-ofL
 ghG
+htT
 htT
 lRb
 ghG
@@ -22278,7 +22281,7 @@ jqD
 obV
 obV
 yhg
-ceA
+alR
 raQ
 vaS
 tiW
@@ -22481,7 +22484,7 @@ ceA
 gom
 ted
 ceA
-ceA
+alR
 kwZ
 ukn
 ukn
@@ -22683,7 +22686,7 @@ ceA
 ven
 oPp
 ceA
-ceA
+alR
 raQ
 vaS
 vaS
@@ -22884,7 +22887,7 @@ uIB
 bVB
 xLp
 uhX
-ceA
+alR
 raQ
 vaS
 vaS

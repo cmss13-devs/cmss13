@@ -383,6 +383,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			for (var/datum/numbered_display/ND in numbered_contents)
 				if (ND.sample_object.type == I.type)
 					ND.number++
+					I.screen_loc = ND.sample_object.screen_loc
 					found = 1
 					break
 			if (!found)

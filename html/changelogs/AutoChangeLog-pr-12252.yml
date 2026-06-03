@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Clusters processing and unprocessing with the wrong SS should be fixed"
+  - balance: "Clusters now give cave protection (CAS) if 2 nested people bursted (this count persists even if they're unnested) or are currently nested around it (does not persist unless they burst)"

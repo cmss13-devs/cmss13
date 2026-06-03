@@ -202,8 +202,8 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
-	knockback(M, P, 32) // Can knockback basically at max range max range is 24 tiles...
+/datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
+	knockback(hit_mob, bullet, 32) // Can knockback basically at max range max range is 24 tiles...
 
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))

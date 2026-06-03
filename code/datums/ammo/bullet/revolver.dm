@@ -157,8 +157,8 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 50
 
-/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
-	knockback(M, P, 4)
+/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
+	knockback(hit_mob, bullet, 4)
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
 	name = ".454 heavy explosive revolver bullet"

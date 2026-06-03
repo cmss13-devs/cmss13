@@ -162,7 +162,7 @@
 			cur_x = min(cur_x, width_inside)
 		if(cur_y == height_inside)
 			break
-		cur_x = half_chunk_size
+		cur_x = half_chunk_size + offset_x
 		cur_y += chunk_size
 		cur_y = min(cur_y, height_inside)
 

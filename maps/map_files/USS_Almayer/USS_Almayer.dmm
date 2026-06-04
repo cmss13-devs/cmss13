@@ -20771,6 +20771,9 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"baS" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/middeck/engineer)
 "baT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -184679,7 +184682,7 @@ bxP
 aHH
 aSC
 aSC
-aHH
+baS
 aSC
 aTC
 aSM
@@ -184687,7 +184690,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+baS
 aSC
 aSC
 aHH
@@ -184782,7 +184785,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+baS
 aSC
 aTC
 aSM
@@ -184790,7 +184793,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+baS
 aSC
 aSC
 aHH
@@ -184885,7 +184888,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+baS
 aSC
 aTC
 aSM
@@ -184893,7 +184896,7 @@ aSN
 bgq
 aIa
 aSC
-aHH
+baS
 aSC
 aSC
 aHH
@@ -184986,19 +184989,19 @@ bxH
 bgI
 bbm
 aHH
-aHH
-aHH
-aHH
-aHH
+baS
+baS
+baS
+baS
 aTC
 aSM
 aSN
 bgq
 aIa
-aHH
-aHH
-aHH
-aHH
+baS
+baS
+baS
+baS
 aHH
 bxw
 bxz

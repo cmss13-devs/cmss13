@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - refactor: "Refactored how get_scenario_is_hostile_survivor is determined"
-  - bugfix: "Fixed at least one cause of hostile survivors failing to spawn sometimes on LV - This will result in different probabilities of the clf crashsite on LV now"

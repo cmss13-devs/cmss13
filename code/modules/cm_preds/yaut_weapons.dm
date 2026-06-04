@@ -337,7 +337,7 @@
 /obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from metal gauntlets."
+	desc = "A massive, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
 	attack_speed = 1 SECONDS
@@ -348,7 +348,7 @@
 /obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from metal gauntlets."
+	desc = "A massive, serrated blade extending from metal gauntlets."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attack_speed = 1 SECONDS

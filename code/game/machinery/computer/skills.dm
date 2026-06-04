@@ -38,7 +38,7 @@
 	if(..())
 		return
 	if(!is_mainship_level(z))
-		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the station!"))
+		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the ship!"))
 		return
 	var/dat
 

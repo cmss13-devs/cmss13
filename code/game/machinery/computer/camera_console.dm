@@ -50,7 +50,7 @@
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
 	if(!admin_console && should_block_game_interaction(src))
-		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the station!"))
+		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the ship!"))
 		return
 	if(inoperable())
 		return

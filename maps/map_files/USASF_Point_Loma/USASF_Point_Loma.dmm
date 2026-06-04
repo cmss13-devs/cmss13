@@ -3666,9 +3666,8 @@
 /turf/open/floor/shiva/blue/north,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
 "alq" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1;
-	color = "#6b675e"
+/obj/structure/machinery/door/airlock/yautja/secure{
+	dir = 2
 	},
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site)
@@ -25391,14 +25390,6 @@
 /area/point_loma/airbase/exterior/crash_site/upper)
 "bux" = (
 /turf/closed/wall/huntership,
-/area/point_loma/airbase/exterior/crash_site/upper)
-"buy" = (
-/obj/structure/ladder/multiz/yautja,
-/turf/open/predship/hunter_catwalk,
-/area/point_loma/airbase/exterior/crash_site/upper)
-"buz" = (
-/obj/structure/ladder/multiz/yautja,
-/turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site/upper)
 "buA" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -162636,10 +162627,10 @@ bAG
 bAG
 bxR
 bxR
-aNI
-aNI
-aNI
-aNI
+bxR
+bxR
+bxR
+bxR
 aNI
 aNI
 aNI
@@ -163546,10 +163537,10 @@ bAG
 bAG
 bxR
 bxR
-aNI
-aNI
-aNI
-aNI
+bxR
+bxR
+bxR
+bxR
 aNI
 aNI
 aNI
@@ -214686,8 +214677,8 @@ vGN
 rLc
 kAq
 btS
-buz
-buy
+uhJ
+tKj
 uhJ
 olZ
 uhJ

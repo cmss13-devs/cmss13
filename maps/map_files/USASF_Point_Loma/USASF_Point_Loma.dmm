@@ -28416,6 +28416,12 @@
 "bEb" = (
 /turf/open/floor/corsat/yellow/west,
 /area/point_loma/research_facility/crash_site)
+"bEc" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/point_loma/research_facility/crash_site)
+"bEd" = (
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/space)
 "bEe" = (
 /turf/closed/wall/new_varadero,
 /area/space)
@@ -32710,13 +32716,35 @@
 "bRV" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/interior/garage)
+"bRW" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/space)
+"bRX" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/corsat/green,
+/area/point_loma/research_facility/dorms)
 "bRY" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bRZ" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/corsat/squares,
+/area/space)
 "bSa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/purple/southeast,
 /area/point_loma/research_facility/hallway/south)
+"bSb" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/green/east,
+/area/point_loma/research_facility/dorms)
+"bSc" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat/green/west,
+/area/point_loma/research_facility/dorms)
 "bSd" = (
 /turf/open/floor/shiva/yellow/southwest,
 /area/point_loma/airbase/mining_colony/interior/engineering)
@@ -32751,6 +32779,9 @@
 /obj/effect/decal/hybrisa/dirt/sand_2,
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/lz)
+"bSn" = (
+/turf/open/floor/corsat/greencorner,
+/area/space)
 "bSo" = (
 /turf/closed/wall/new_varadero/concrete/reinforced,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
@@ -32842,6 +32873,9 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/point_loma/research_facility/cave/south_east)
+"bSJ" = (
+/turf/open/floor/corsat/greencorner/west,
+/area/space)
 "bSK" = (
 /obj/structure/closet/hydrant,
 /turf/closed/wall/new_varadero/concrete/reinforced,
@@ -32852,6 +32886,16 @@
 "bSM" = (
 /turf/open/floor/shiva/yellowcorners,
 /area/point_loma/airbase/mining_colony/interior/engineering)
+"bSN" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/corsat/squares,
+/area/space)
+"bSO" = (
+/turf/open/floor/corsat/green/north,
+/area/space)
+"bSP" = (
+/turf/open/floor/corsat/greencorner/north,
+/area/space)
 "bSQ" = (
 /obj/structure/machinery/light/double{
 	dir = 8
@@ -32865,6 +32909,10 @@
 "bSS" = (
 /turf/open/floor/shiva/redcorners,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
+"bST" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/platingdmg2,
+/area/space)
 "bSU" = (
 /obj/structure/window/framed/new_varadero/foundation,
 /turf/open/floor/corsat,
@@ -32879,6 +32927,20 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint/north)
+"bSX" = (
+/turf/open/floor/corsat/green/northwest,
+/area/space)
+"bSY" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/corsat/green/north,
+/area/space)
+"bSZ" = (
+/turf/open/floor/corsat/green/northeast,
+/area/space)
+"bTa" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/green/southwest,
+/area/point_loma/research_facility/dorms)
 "bTb" = (
 /obj/structure/transmitter/colony_net{
 	phone_category = "USASF Point Loma";
@@ -32901,6 +32963,12 @@
 "bTf" = (
 /turf/open/floor/shiva/red/northeast,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
+"bTg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/green/west,
+/area/point_loma/research_facility/dorms)
 "bTh" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/squares,
@@ -32914,6 +32982,19 @@
 "bTj" = (
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/mining_colony/exterior/security/north)
+"bTk" = (
+/obj/structure/bed/hybrisa/dingy,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/green/northwest,
+/area/point_loma/research_facility/dorms)
+"bTl" = (
+/turf/open/floor/corsat/green/north,
+/area/point_loma/research_facility/dorms)
+"bTm" = (
+/obj/structure/bed/hybrisa/dingy,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/green/north,
+/area/point_loma/research_facility/dorms)
 "bTn" = (
 /obj/structure/flora/grass/colorable/point_loma/light/one,
 /turf/open/auto_turf/sand_white/layer1,
@@ -32966,10 +33047,18 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/platingdmg2,
 /area/point_loma/research_facility/hallway/south)
+"bTA" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/dorms)
 "bTB" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/hallway/south)
+"bTC" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/hallway/north)
 "bTE" = (
 /turf/open/new_varadero/alt_concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
@@ -110137,7 +110226,7 @@ cYb
 cYb
 cYb
 bKG
-cek
+cfT
 aqb
 cek
 acT
@@ -110319,7 +110408,7 @@ cYb
 cYb
 cYb
 bEe
-cYb
+bSO
 cYb
 acE
 cdB
@@ -110501,7 +110590,7 @@ cYb
 cYb
 bEe
 bEe
-cYb
+bSO
 cYb
 cqm
 cee
@@ -110682,10 +110771,10 @@ cYb
 cYb
 cYb
 bEe
-cYb
-cYb
-cYb
-acE
+bSX
+bSP
+bSn
+bSb
 cdC
 cdT
 cGg
@@ -110864,9 +110953,9 @@ cYb
 cYb
 bEe
 bEe
+bSO
 cYb
-cYb
-cYb
+bRM
 agx
 agx
 agx
@@ -111026,11 +111115,11 @@ bKZ
 aYX
 bMH
 agx
-cdF
-ctd
-ctd
-crn
-cri
+bTk
+cta
+cta
+bTg
+bTa
 cpX
 crg
 aeC
@@ -111038,18 +111127,18 @@ aeC
 aeC
 cYb
 cYb
+bRM
 cYb
 cYb
 cYb
 cYb
-cYb
+bJw
 bEe
-bEe
+bSX
+bSP
 cYb
-cYb
-cYb
-cYb
-acE
+bSJ
+bSc
 cqi
 cpX
 cpU
@@ -111206,13 +111295,13 @@ bbb
 bPx
 bPx
 bPF
-bPx
+bTC
 agx
-cdE
+bTl
 cem
 cel
 cpS
-cdE
+cdB
 agx
 crf
 bKF
@@ -111225,9 +111314,9 @@ bEe
 cYb
 cYb
 cYb
-bEe
-cYb
-cYb
+bJw
+bSX
+bSP
 cYb
 cYb
 cYb
@@ -111389,12 +111478,12 @@ bPx
 bPx
 bPx
 bPA
-bpi
-cdF
+bTA
+bTm
 ctd
 ctd
 cpR
-cdE
+cdB
 agx
 cre
 cqP
@@ -111407,14 +111496,14 @@ bEe
 cYb
 cYb
 cYb
-bEe
+bJw
+bSY
+bSN
+bSN
 cYb
-cYb
-cYb
-cYb
-cYb
+bSN
 cqn
-cqk
+bRX
 agx
 cpR
 ctd
@@ -111576,7 +111665,7 @@ bOX
 cem
 bpi
 bpi
-cdE
+cdB
 agx
 cfE
 bJA
@@ -111589,8 +111678,8 @@ bEe
 cYb
 cYb
 cYb
-bEe
-cYb
+bJw
+bSO
 cYb
 cYb
 cYb
@@ -111771,14 +111860,14 @@ bEe
 cYb
 cYb
 cYb
-bEe
-cYb
-cYb
-cYb
-cYb
-cYb
-bpi
-bpi
+bJw
+bSZ
+bRR
+bRR
+bRR
+bRR
+cfV
+cdC
 cdT
 bpi
 bqe
@@ -111953,19 +112042,19 @@ cYb
 cYb
 cYb
 cYb
+bJw
+cYb
+bEe
+bEe
 bEe
 cYb
-cYb
-cYb
-cYb
-cYb
-bpi
-bpi
-bpi
-bpi
-bpi
-bpi
-bpi
+agx
+agx
+agx
+agx
+agx
+agx
+agx
 agx
 agx
 czo
@@ -112507,7 +112596,7 @@ cYb
 cYb
 cYb
 cYb
-cYb
+bEe
 cYb
 cYb
 abj
@@ -112689,7 +112778,7 @@ cYb
 cYb
 cYb
 cYb
-cYb
+bEe
 cYb
 cYb
 agx
@@ -112871,7 +112960,7 @@ cYb
 cYb
 cYb
 cYb
-cYb
+bEe
 cYb
 cYb
 abj
@@ -113053,7 +113142,7 @@ cYb
 cYb
 cYb
 cYb
-cYb
+bEe
 cYb
 cYb
 bKG
@@ -113227,7 +113316,7 @@ bFi
 bEq
 daR
 bEq
-bEq
+bST
 cYb
 cYb
 cYb
@@ -113409,20 +113498,20 @@ aKN
 aKN
 bEq
 daR
+bST
 bEq
-bEq
 cYb
 cYb
 cYb
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
-bJA
-bJA
-bJA
+bEe
+bEe
+bEd
+bKG
+bKG
+bKG
 bKG
 aNd
 cBp
@@ -113599,12 +113688,12 @@ cYb
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
-bJA
-bJA
-bKG
+bEe
+bRW
+bRW
+bEc
+bEc
+bJw
 bKG
 ahV
 bJf
@@ -113781,12 +113870,12 @@ cYb
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
-bJA
-bKG
-bKG
+bEe
+bRW
+bRW
+bEc
+bJw
+bJw
 bEb
 bnn
 cBq
@@ -113963,11 +114052,11 @@ cYb
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
-bKG
-bKG
+bEe
+bRW
+bRW
+bJw
+bJw
 bJA
 bJA
 cdp
@@ -114145,10 +114234,10 @@ cYb
 cYb
 cYb
 cYb
-cYb
-cYb
 bEe
-bKG
+bRW
+bJw
+bJw
 bJA
 bJA
 bJA
@@ -114327,9 +114416,9 @@ bEq
 cYb
 cYb
 cYb
-cYb
 bEe
-bEe
+bJw
+bJw
 bJA
 bJf
 cBw
@@ -114504,13 +114593,13 @@ bFi
 aKN
 daR
 daR
-bEq
-bEq
-cYb
-cYb
-cYb
-bEe
-bEe
+bST
+bST
+bRZ
+bRZ
+bRZ
+bJw
+bJw
 cYb
 bJA
 cdp
@@ -121756,8 +121845,8 @@ apn
 apn
 apn
 aiZ
-bCW
-bCW
+bJw
+bJw
 cEf
 cEc
 aeI
@@ -121938,8 +122027,8 @@ arS
 alH
 alH
 alH
-bCW
-bCW
+bJw
+bJw
 cEg
 cEd
 cyq

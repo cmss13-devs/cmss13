@@ -209,8 +209,8 @@
 // Doctors / Science
 
 /datum/equipment_preset/survivor/fire_colony/doctor
-	name = "Survivor - Fire Colony - Medical Doctor"
-	assignment = "Doctor"
+	name = "Survivor - Fire Colony - Medical Technician"
+	assignment = "Lasalle-Bionational - Medical Technician"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
@@ -219,25 +219,23 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/fire_colony/doctor/load_gear(mob/living/carbon/human/new_human)
-
-	var/choice = rand(1,45)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/white(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/silver_white(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif(new_human), WEAR_HEAD)
 
-	switch(choice)
-		if(1 to 20)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/blue(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)
-		if(20 to 40)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-		if(35 to 45)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(new_human), WEAR_BODY)
+	var/random_gear = rand(1, 10)
+	switch(random_gear)
+		if(7, 9)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full(new_human), WEAR_R_STORE)
+		if(10)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/medical_red(new_human), WEAR_JACKET)
 	add_random_survivor_medical_gear(new_human)
 	add_survivor_weapon_civilian(new_human)
 	..()
@@ -247,7 +245,7 @@
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoarchaeologist
 	name = "Survivor - Fire Colony - Xenoarchaeologist"
-	assignment = "Xenoarchaeologist"
+	assignment = "Lasalle-Bionational - Xenoarchaeologist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -257,19 +255,33 @@
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/blue(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/blue(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/silver_white(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/blue(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
+
+	var/random_gear = rand(1, 10)
+	switch(random_gear)
+		if(1, 6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/purple(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/purple(new_human), WEAR_JACKET)
+		if(7, 9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bio_hood/lasalle(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/lasalle(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/lasalle(new_human), WEAR_FACE)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/purple(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves/yellow(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/purple(new_human), WEAR_HEAD)
+
 	add_survivor_weapon_civilian(new_human)
 	add_random_survivor_research_gear(new_human)
 	..()
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenobiologist
 	name = "Survivor - Fire Colony - Xenobiologist"
-	assignment = "Xenobiologist"
+	assignment = "Lasalle-Bionational - Xenobiologist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -278,38 +290,29 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenobiologist/load_gear(mob/living/carbon/human/new_human)
-	var/random_gear = rand(1,50)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/white(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/blue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/blue(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/silver_white(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science/blue(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
+
+	var/random_gear = rand(1, 10)
 	switch(random_gear)
-		if(1 to 20)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-		if(20 to 45)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_EYES)
-		if(45 to 50)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband/tan(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/survivor(new_human), WEAR_R_HAND)
+		if(4, 9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/blue(new_human), WEAR_HEAD)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves/yellow(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/blue(new_human), WEAR_HEAD)
+
 	add_survivor_weapon_civilian(new_human)
 	add_random_survivor_research_gear(new_human)
 	..()
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoflora
 	name = "Survivor - Fire Colony - Xenoflora Specialist"
-	assignment = "Xenoflora Specialist"
+	assignment = "Lasalle-Bionational - Xenoflora Specialist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -318,31 +321,17 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoflora/load_gear(mob/living/carbon/human/new_human)
-	var/random_gear = rand(1,50)
-	switch(random_gear)
-		if(1 to 20)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-		if(20 to 45)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_EYES)
-		if(45 to 50)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband/tan(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/survivor(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/hyd(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/green(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/green(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/silver_white(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/plants(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/analyzer/plant_analyzer(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/green(new_human), WEAR_HEAD)
+
 	add_survivor_weapon_civilian(new_human)
 	add_random_survivor_research_gear(new_human)
 	..()
@@ -428,7 +417,7 @@
 
 /datum/equipment_preset/survivor/corporate/lasalle_bionational
 	name = "Survivor - Fire Colony - Corporate Liaison"
-	assignment = "Corporate Liaison"
+	assignment = "Lasalle-Bionational - Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)

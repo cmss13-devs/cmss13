@@ -404,6 +404,17 @@
 /obj/item/storage/backpack/satchel/black/lockable/no_override
 	lock_overridable = FALSE
 
+/obj/item/storage/backpack/satchel/white
+	icon_state = "satchel_white"
+	item_state = "satchel_white"
+
+/obj/item/storage/backpack/satchel/white/lockable
+	name = "secure leather satchel"
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/white/lockable/no_override
+	lock_overridable = FALSE
+
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy-looking satchel."

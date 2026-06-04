@@ -40,6 +40,10 @@
 	pixel_x = 1
 	},
 /obj/structure/platform/metal/almayer/east,
+/obj/structure/machinery/light/small/blue{
+	dir = 4;
+	pixel_y = -16
+	},
 /turf/open/lava/metal/warnplate/west,
 /area/ice_colony/exterior/surface/container_yard)
 "aaH" = (
@@ -198,6 +202,11 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light/small/blue{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -16
+	},
 /turf/open/lava/metal/warnplate/east,
 /area/ice_colony/exterior/surface/container_yard)
 "acm" = (
@@ -6848,6 +6857,10 @@
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 0
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 4;
+	pixel_y = -16
 	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/ice_colony/exterior/surface/container_yard)
@@ -19846,7 +19859,7 @@
 /obj/structure/cargo_container/hybrisa/containersextended/colorable_big_right{
 	color = "#9a9181";
 	layer = 4.01;
-	pixel_x = -2
+	pixel_x = -3
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -26619,9 +26632,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
 	},
-/obj/item/reagent_container/glass/fertilizer/rh{
-	pixel_x = -3
-	},
+/obj/item/storage/backpack/satchel/white,
 /turf/open/floor/strata/lightblue3,
 /area/ice_colony/surface/hydroponics/lobby)
 "fyb" = (
@@ -29025,6 +29036,9 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light/small{
+	pixel_x = -16
+	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/bar)
 "gdm" = (
@@ -29517,6 +29531,9 @@
 	color = "#818793"
 	},
 /obj/item/hardpoint/locomotion/van_wheels/rt01,
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
 "glR" = (
@@ -31584,6 +31601,10 @@
 	dir = 1;
 	pixel_y = 26
 	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -16
+	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/bar)
 "gPt" = (
@@ -32259,6 +32280,10 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	color = "#718184"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -16
 	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/canteen)
@@ -34971,6 +34996,12 @@
 /obj/item/shard,
 /turf/open/floor/almayer/black2/west,
 /area/ice_colony/surface/substation)
+"hJg" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 1
+	},
+/turf/open/lava/metal/plating,
+/area/ice_colony/underground/hangar)
 "hJh" = (
 /obj/effect/decal/warning_stripes/worn/worn_stripes_large{
 	dir = 8;
@@ -41445,7 +41476,7 @@
 	pixel_x = 9;
 	pixel_y = 26
 	},
-/obj/structure/lz_sign/seegson_sign/damaged_ash{
+/obj/structure/lz_sign/seegson_sign/damaged{
 	layer = 3.2
 	},
 /turf/open/lava/basalt/basalt0,
@@ -47104,17 +47135,17 @@
 /area/ice_colony/exterior/surface/valley/north)
 "lmg" = (
 /obj/structure/lz_sign/lasalle_bionational_sign{
-	pixel_x = 2;
+	pixel_x = 3;
 	pixel_y = 3
 	},
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -15;
-	pixel_y = 12;
+	pixel_y = 10;
 	layer = 2.9
 	},
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -15;
-	pixel_y = 3;
+	pixel_y = 1;
 	layer = 2.9
 	},
 /turf/open/lava/metal/plating_grille,
@@ -47752,7 +47783,7 @@
 "lvl" = (
 /obj/structure/cargo_container/hybrisa/containersextended/colorable_big_left{
 	color = "#9a9181";
-	pixel_x = -2
+	pixel_x = -3
 	},
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
@@ -53131,6 +53162,9 @@
 	icon_state = "shotglass";
 	pixel_x = 28;
 	pixel_y = 16
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/canteen)
@@ -60134,6 +60168,13 @@
 	},
 /turf/open/floor/strata/sand3/east,
 /area/ice_colony/surface/clinic/treatment)
+"oUO" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/lava/metal/plating,
+/area/ice_colony/surface/bar/canteen)
 "oVa" = (
 /obj/structure/window/framed/lava/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -61064,6 +61105,10 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -16
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/ice_colony/surface/bar/bar)
 "pjD" = (
@@ -61554,9 +61599,11 @@
 /turf/open/lava/basalt/glowing/basalt9,
 /area/ice_colony/exterior/surface/valley/north)
 "pqE" = (
-/obj/item/tool/warning_cone,
-/turf/open/lava/metal/plating_grille,
-/area/ice_colony/underground/hangar)
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/lava/metal/plating,
+/area/ice_colony/surface/bar/bar)
 "pqK" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -65734,6 +65781,10 @@
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -16
+	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/canteen)
 "quz" = (
@@ -66446,6 +66497,9 @@
 /obj/item/form_printer{
 	pixel_x = -7;
 	pixel_y = 7
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/bar)
@@ -70729,6 +70783,17 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_2,
 /area/ice_colony/exterior/surface/valley/south/excavation)
+"rKw" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/turf/open/lava/metal/plating_grille,
+/area/ice_colony/underground/hangar)
 "rKz" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /obj/effect/decal/warning_stripes/worn{
@@ -77116,6 +77181,13 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3,
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/clearing/north)
+"tAr" = (
+/obj/effect/decal/warning_stripes/worn,
+/obj/structure/machinery/light/small/blue{
+	dir = 1
+	},
+/turf/open/lava/metal/plating,
+/area/ice_colony/underground/hangar)
 "tAC" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/west,
@@ -77337,6 +77409,11 @@
 	pixel_x = -6
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light/small/blue{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -16
+	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/ice_colony/exterior/surface/container_yard)
 "tDx" = (
@@ -79725,6 +79802,10 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_6,
 /area/ice_colony/exterior/surface/valley/south/excavation)
+"umb" = (
+/obj/structure/machinery/light/small,
+/turf/open/lava/metal/plating,
+/area/ice_colony/surface/bar/canteen)
 "umh" = (
 /obj/structure/platform/metal,
 /turf/open/lava/basalt/basalt10,
@@ -83489,6 +83570,7 @@
 	pixel_y = 2;
 	pixel_x = -3
 	},
+/obj/structure/machinery/light/small,
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/bar)
 "voI" = (
@@ -88396,7 +88478,8 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/reagent_container/glass/fertilizer/ez{
-	pixel_x = -2
+	pixel_x = -3;
+	pixel_y = 8
 	},
 /obj/item/reagent_container/glass/fertilizer/l4z{
 	pixel_x = 8;
@@ -88407,6 +88490,9 @@
 	},
 /obj/structure/machinery/light/blue{
 	dir = 4
+	},
+/obj/item/reagent_container/glass/fertilizer/rh{
+	pixel_x = -1
 	},
 /turf/open/floor/strata/lightblue3,
 /area/ice_colony/surface/hydroponics/lobby)
@@ -91136,6 +91222,9 @@
 	pixel_x = 14
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/bar/canteen)
 "xww" = (
@@ -91417,7 +91506,7 @@
 "xAN" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/lz_sign/charon_sign/lasalle_bionational{
-	pixel_x = -2;
+	pixel_x = -3;
 	pixel_y = 3
 	},
 /turf/open/lava/metal/plating_grille,
@@ -104692,7 +104781,7 @@ dtD
 biS
 xPB
 mVE
-aJl
+prl
 bjf
 nHx
 bjf
@@ -104894,7 +104983,7 @@ dtD
 aLw
 aML
 mVE
-aJl
+rKw
 bjf
 bBC
 bjf
@@ -105096,7 +105185,7 @@ dtD
 pDD
 aML
 mVE
-pqE
+pZl
 bjf
 bBC
 bjf
@@ -105299,7 +105388,7 @@ aal
 beB
 beB
 beB
-bjf
+hJg
 nHx
 bjf
 bap
@@ -107937,7 +108026,7 @@ lnS
 aPZ
 lvF
 beB
-xva
+tAr
 eDD
 lnS
 emQ
@@ -118215,7 +118304,7 @@ lbz
 nlk
 phR
 oYX
-aXK
+pqE
 xIO
 ieA
 aKy
@@ -120641,7 +120730,7 @@ lpr
 tEN
 tEN
 hpf
-aXd
+umb
 aKw
 aKw
 aKw
@@ -121857,7 +121946,7 @@ bks
 rUh
 wAf
 rhM
-khp
+oUO
 aKw
 aKw
 qgA

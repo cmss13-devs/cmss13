@@ -81,7 +81,7 @@
 			hitmob.apply_effect(4, DAZE)
 			shake_camera(hitmob, 2, 1)
 			hitmob.apply_damage(rand(5, 15), BURN) //takes about 10-15 shots to crit an unarmored target, but does make it meaningful to hit targets behind cades.
-			hitmob.visible_message(SPAN_DANGER("[hitmob] lacks armor to mitigate the acid, and is disoriented by the neurotoxin!"))
+			hitmob.visible_message(SPAN_DANGER("[hitmob] lacks armor to mitigate the acid, and is burned and disoriented by the neurotoxin!"))
 
 /proc/apply_scatter_neuro(mob/living/hitmob)
 	if(ishuman(hitmob))

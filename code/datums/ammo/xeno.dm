@@ -38,71 +38,73 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+/proc/apply_neuro(mob/living/hitmob, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
+	if(skillcheck(hitmob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
+		hitmob.visible_message(SPAN_DANGER("[hitmob] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(hitmob))
+		var/mob/living/carbon/human/hithuman = hitmob
 		if(drain_stims)
-			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
-				H.reagents.remove_reagent(stim.id, drain, TRUE)
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			for(var/datum/reagent/generated/stim in hithuman.reagents.reagent_list)
+				hithuman.reagents.remove_reagent(stim.id, drain, TRUE)
+		if(hithuman.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || hithuman.species.flags & NO_NEURO)
+			hithuman.visible_message(SPAN_DANGER("[hitmob] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
-			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
-				H.reagents.remove_reagent(med.id, drain, TRUE)
+			for(var/datum/reagent/medical/med in hithuman.reagents.reagent_list)
+				hithuman.reagents.remove_reagent(med.id, drain, TRUE)
 
 	if(!apply_effect)
 		return
 
-	if(!isxeno(M))
+	if(!isxeno(hitmob))
 		if(insta_neuro)
-			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
-				M.KnockDown(power)
-				M.Stun(power)
+			if(hitmob.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				hitmob.KnockDown(power)
+				hitmob.Stun(power)
 				return
 
-		if(ishuman(M))
-			M.apply_effect(4, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+		if(ishuman(hitmob))
+			hitmob.apply_effect(4, SUPERSLOW)
+			hitmob.visible_message(SPAN_DANGER("[hitmob]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+		if(ishuman(hitmob))
+			var/mob/living/carbon/human/hithuman = hitmob
+			if(!hithuman.wear_suit || hithuman.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
-		if(no_clothes_neuro)
-			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
-				M.KnockDown(power)
-				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+		if(no_clothes_neuro) //if the victim isn't wearing armor (vests do not count), they take extra debilitating effects
+			hitmob.apply_effect(6, SUPERSLOW)
+			hitmob.apply_effect(3, STUTTER)
+			hitmob.apply_effect(4, DAZE)
+			shake_camera(hitmob, 2, 1)
+			hitmob.apply_damage(rand(5, 15), BURN) //takes about 10-15 shots to crit an unarmored target, but does make it meaningful to hit targets behind cades.
+			hitmob.visible_message(SPAN_DANGER("[hitmob] lacks armor to mitigate the acid, and is disoriented by the neurotoxin!"))
 
-/proc/apply_scatter_neuro(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+/proc/apply_scatter_neuro(mob/living/hitmob)
+	if(ishuman(hitmob))
+		var/mob/living/carbon/human/hithuman = hitmob
+		if(skillcheck(hitmob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+			hitmob.visible_message(SPAN_DANGER("[hitmob] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+		if(hithuman.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || hithuman.species.flags & NO_NEURO)
+			hithuman.visible_message(SPAN_DANGER("[hitmob] shrugs off the neurotoxin!"))
 			return
 
-		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
-		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		hitmob.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		hitmob.Stun(0.7)
+		hitmob.visible_message(SPAN_DANGER("[hitmob] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, drain_power, TRUE, TRUE, TRUE)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/hitmob,obj/projectile/P)
+	if(ishuman(hitmob))
+		var/mob/living/carbon/human/hithuman = hitmob
+		if(hithuman.status_flags & XENO_HOST)
+			neuro_callback.Invoke(hithuman, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
 
-	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
+	neuro_callback.Invoke(hitmob, effect_power, drain_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -120,8 +122,8 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/hitmob,obj/projectile/P)
+	neuro_callback.Invoke(hitmob, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
@@ -159,12 +161,12 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/acid/on_shield_block(mob/M, obj/projectile/P)
-	burst(M,P,damage_type)
+/datum/ammo/xeno/acid/on_shield_block(mob/hitmob, obj/projectile/P)
+	burst(hitmob,P,damage_type)
 
-/datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/acid/on_hit_mob(mob/hitmob, obj/projectile/P)
+	if(iscarbon(hitmob))
+		var/mob/living/carbon/C = hitmob
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return FALSE
 	..()
@@ -209,19 +211,19 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/projectile/P)
-	if (!ishuman(M))
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/hitmob, obj/projectile/P)
+	if (!ishuman(hitmob))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/hithuman = hitmob
 
 	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in hithuman.effects_list)
 		PAS = prae_acid_stacks
 		break
 
 	if (PAS == null)
-		PAS = new /datum/effects/prae_acid_stacks(H)
+		PAS = new /datum/effects/prae_acid_stacks(hithuman)
 	else
 		PAS.increment_stack_count()
 
@@ -388,15 +390,15 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/hitmob, obj/projectile/P)
+	if(iscarbon(hitmob))
+		var/mob/living/carbon/C = hitmob
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 3)
-			M.apply_effect(3, SLOW)
+	if(ishuman_strict(hitmob) || isxeno(hitmob))
+		playsound(hitmob, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(hitmob.slowed < 3)
+			hitmob.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -418,15 +420,15 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/hitmob, obj/projectile/P)
+	if(iscarbon(hitmob))
+		var/mob/living/carbon/C = hitmob
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 6)
-			M.apply_effect(6, SLOW)
+	if(ishuman_strict(hitmob) || isxeno(hitmob))
+		playsound(hitmob, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(hitmob.slowed < 6)
+			hitmob.apply_effect(6, SLOW)
 
 /datum/ammo/xeno/oppressor_tail
 	name = "tail hook"

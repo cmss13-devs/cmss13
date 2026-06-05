@@ -30,14 +30,24 @@
 			W.forceMove(loc)
 	return ..()
 
+/obj/structure/filingcabinet/double
+	name = "filing cabinets"
+	desc = "Two large cabinets with drawers."
+	icon_state = "filingcabinet_double"
+
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
 	icon_state = "chestdrawer"
 
+/obj/structure/filingcabinet/chestdrawer/double
+	name = "chest drawers"
+	icon_state = "chestdrawer_double"
 
 /obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
 	icon_state = "tallcabinet"
 
+/obj/structure/filingcabinet/filingcabinet/double
+	icon_state = "tallcabinet_double"
 
 /obj/structure/filingcabinet/Initialize()
 	. = ..()

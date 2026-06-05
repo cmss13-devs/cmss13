@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Removed/simplified some unnecessary calls to xeno update_icons"
-  - bugfix: "Fixed designer button saying FIX ME when first selecting the strain"
-  - bugfix: "Fixed charger crusher not ever stopping a charge if you simply stop moving"

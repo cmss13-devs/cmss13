@@ -253,6 +253,7 @@
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
 	icon_state = "xeno_spawn"
+	var/species
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()

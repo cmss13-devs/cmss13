@@ -3,7 +3,7 @@
         "type": "pick", "name": "Big Red Global Event",
         "choices": [
             { "weight": 6, "type": "def", "values": { "lvevent": "none"       } },
-            { "weight": 1, "type": "def", "values": { "lvevent": "clf" } },
+            { "weight": 1, "type": "def", "values": { "lvevent": "clf", "hostile_survivors": true } },
             { "weight": 1, "type": "def", "values": { "lvevent": "grscrash" } },
             { "weight": 2, "type": "def", "values": { "lvevent": "pmccrash" } }
         ]

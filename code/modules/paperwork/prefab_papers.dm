@@ -68,6 +68,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	remaining_documents--
 	return TRUE
 
+/obj/structure/filingcabinet/documentation/uacqs
+	available_categories = list(PAPER_CATEGORY_UACQS)
+	remaining_documents = 45 //UACQS likely using more of these than most people.
+
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
 
@@ -80,10 +84,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/structure/filingcabinet/documentation/liaison
 	available_categories = list(PAPER_CATEGORY_LIAISON)
 	remaining_documents = 45 //CL likely using more of these than most people.
-
-/obj/structure/filingcabinet/documentation/uacqs
-	available_categories = list(PAPER_CATEGORY_UACQS)
-	remaining_documents = 45 //UACQS likely using more of these than most people.
 
 /obj/structure/filingcabinet/documentation/highcom
 	remaining_documents = 60

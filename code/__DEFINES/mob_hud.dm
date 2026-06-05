@@ -73,7 +73,7 @@
 #define MOB_HUD_XENO_HIVE_RENEGADE 39
 #define MOB_HUD_XENO_HIVE_TUTORIAL 40
 #define MOB_HUD_XENO_HIVE_K_SERIES 41
-#define MOB_HUD_FACTION_CIA 43
+#define MOB_HUD_FACTION_CIA 42
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

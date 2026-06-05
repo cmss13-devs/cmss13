@@ -80,8 +80,13 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES) && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield"
+	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
+		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES) && bound_xeno.health > 0)
+			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield"
+			return TRUE
+
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES) && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Reflective"
 		return TRUE
 
 /datum/behavior_delegate/warrior_bulwark/melee_attack_additional_effects_target(mob/living/carbon/carbon_target)
@@ -297,15 +302,15 @@
 	if(!check_and_use_plasma_owner(80))
 		return
 
-	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
 	xeno_player.stop_pulling()
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
 	xeno_player.flags_atom |= DIRLOCK
+	xeno_player.update_icons()
+	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
 	button.icon_state = "template_active"
 	reflective_start_time = world.time
 	reflective_safe_click_cooldown = world.time + 1 SECONDS
 
-	xeno_player.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and prepare for incoming frontal attacks!"))
 	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] locks its stance, focusing on incoming frontal attacks!"))
 
@@ -331,11 +336,10 @@
 		to_chat(xeno_player, SPAN_XENOWARNING("We need a moment before breaking our reflective stance!"))
 		return
 
-	xeno_player.remove_suit_layer()
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_REFLECTIVE_PLATES, TRAIT_SOURCE_ABILITY("reflective_plates"))
-	xeno_player.flags_atom &= ~DIRLOCK //for safety
+	xeno_player.update_icons()
+	xeno_player.remove_suit_layer()
 	button.icon_state = "template_xeno"
-	xeno_player.remove_filter("reflective_shield")
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
 
 	if(ability_used.reflective_shield_timer_id != TIMER_ID_NULL)

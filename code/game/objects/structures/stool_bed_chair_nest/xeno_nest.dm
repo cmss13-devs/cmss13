@@ -89,6 +89,10 @@
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN
 
+/obj/structure/bed/nest/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
+
 /obj/structure/bed/nest/pathogen
 	hivenumber = XENO_HIVE_PATHOGEN
 

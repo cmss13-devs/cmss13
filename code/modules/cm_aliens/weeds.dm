@@ -149,6 +149,9 @@
 		W.name = initial(to_copy.name)
 		W.alpha = initial(to_copy.alpha)
 
+/obj/effect/alien/weeds/kseries
+	hivenumber = XENO_HIVE_K_SERIES
+
 
 /obj/effect/alien/weeds/Destroy()
 	if(parent)
@@ -630,6 +633,9 @@
 
 /obj/effect/alien/weeds/node/alpha
 	hivenumber = XENO_HIVE_ALPHA
+
+/obj/effect/alien/weeds/node/kseries
+	hivenumber = XENO_HIVE_K_SERIES
 
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL

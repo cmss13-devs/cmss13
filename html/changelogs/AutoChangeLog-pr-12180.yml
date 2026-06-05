@@ -1,5 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - bugfix: "Medical notes created by players can be viewed in the Medical Records again."
-  - bugfix: "The employment records console can be accessed shipside again."

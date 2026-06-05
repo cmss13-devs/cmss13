@@ -55,3 +55,8 @@
       apply to the main hive.
   - rscadd: Working Joe can now be joined after round end/hijack.
   - rscadd: Staff disabling WJ restrictions will now open it to non-whitelisted players.
+2026-06-05:
+  Unknownity:
+  - bugfix: Medical notes created by players can be viewed in the Medical Records
+      again.
+  - bugfix: The employment records console can be accessed shipside again.

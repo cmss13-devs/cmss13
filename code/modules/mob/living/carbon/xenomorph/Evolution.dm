@@ -484,11 +484,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	return new_xeno
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
-	#define TIER_3 "3"
-	#define TIER_2 "2"
-	#define OPEN_SLOTS "open_slots"
-	#define GUARANTEED_SLOTS "guaranteed_slots"
-
 	var/slots = hive.get_tier_slots()
 	if(tier == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))

@@ -139,11 +139,6 @@
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_white.dmi'
 	icon_state = "armored_truck_wy_white"
 
-/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck
-	name = "fire-truck"
-	icon = 'icons/obj/structures/props/vehicles/small_firetruck_red.dmi'
-	icon_state = "small_firetruck_red"
-
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
@@ -154,10 +149,6 @@
 	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
-
-/obj/structure/prop/hybrisa/vehicles/ambulance
-	icon = 'icons/obj/structures/props/vehicles/ambulance_fire.dmi'
-	icon_state = "ambulance"
 
 // Long Hauler Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
@@ -1052,12 +1043,6 @@
 /obj/structure/bed/chair/comfy/hybrisa/brown
 	icon_state = "comfychair_hybrisabrown"
 
-/obj/structure/bed/chair/comfy/hybrisa/white
-	icon_state = "comfychair_hybrisawhite"
-
-/obj/structure/bed/chair/comfy/hybrisa/teal
-	icon_state = "comfychair_hybrisateal"
-
 // Beds
 
 /obj/structure/bed/hybrisa/dingy
@@ -1786,6 +1771,52 @@
 	return TAILSTAB_COOLDOWN_NORMAL
 
 // Coffee Machine (Works with Empty Coffee cups, Mugs ect.)
+
+/obj/structure/mug_rack
+	icon = 'icons/obj/structures/mug_rack.dmi'
+	name = "mug rack"
+	desc = "A rack, for mugs."
+	icon_state = "mug-rack"
+	var/amount = 50
+
+/obj/structure/mug_rack/Initialize(mapload, ...)
+	update_icon()
+
+	. = ..()
+
+/obj/structure/mug_rack/update_icon()
+	overlays.Cut()
+	if(!amount)
+		return
+
+	if(amount < initial(amount) / 3)
+		overlays += image(icon=icon, icon_state="mugs-3")
+		return
+
+	if(amount < 2 * initial(amount) / 3)
+		overlays += image(icon=icon, icon_state="mugs-2")
+		return
+
+	overlays += image(icon=icon, icon_state="mugs-1")
+
+/obj/structure/mug_rack/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/reagent_container/food/drinks/coffeecup))
+		if(user.drop_held_item())
+			amount++
+			to_chat(user, SPAN_NOTICE("You put [item] in [src]."))
+			update_icon()
+			qdel(item)
+
+/obj/structure/mug_rack/attack_hand(mob/user)
+	if(amount >= 1)
+		amount--
+
+		var/obj/item/reagent_container/food/drinks/coffeecup/cup = new(loc)
+
+		cup.forceMove(user.loc)
+		user.put_in_hands(cup)
+		to_chat(user, SPAN_NOTICE("You take [cup] out of [src]."))
+		update_icon()
 
 /obj/structure/machinery/hybrisa/coffee_machine
 	icon = 'icons/obj/structures/machinery/coffee_machine.dmi'
@@ -2680,9 +2711,8 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	explo_proof = FALSE
+	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
-	health = 3000
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
@@ -2811,15 +2841,6 @@
 	anchored = TRUE
 	can_buckle = FALSE
 
-// Sofa Teal
-
-/obj/structure/bed/sofa/hybrisa/sofa/teal
-	name = "Couch"
-	desc = "Just like Space Ikea would have wanted."
-	icon_state = "sofa_teal"
-	anchored = TRUE
-	can_buckle = FALSE
-
 /obj/structure/prop/hybrisa/misc/pole
 	name = "pole"
 	desc = "For all of your 'pole' related activities."
@@ -2870,11 +2891,6 @@
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
-
-/obj/structure/prop/hybrisa/misc/phonebox/broken
-	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, and the glass is smashed. Hiding inside would be pointless."
-	icon_state = "phonebox_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
 	health -= P.damage

@@ -144,6 +144,10 @@
 #define SCAPE_PL_TYRARGO_SEWER list('sound/ambience/tyrargo_underground_1.ogg','sound/ambience/tyrargo_underground_2.ogg','sound/ambience/tyrargo_underground_3.ogg','sound/ambience/tyrargo_underground_4.ogg')
 #define SCAPE_PL_TYRARGO_ALERT list('sound/ambience/tyrargo_alert_1.ogg', 'sound/ambience/tyrargo_alert_2.ogg', 'sound/ambience/tyrargo_alert_3.ogg', 'sound/ambience/tyrargo_alert_4.ogg', 'sound/ambience/tyrargo_alert_5.ogg', 'sound/ambience/tyrargo_alert_6.ogg')
 
+// White Antre Soundscapes
+#define AMBIENCE_ANTRE 'sound/ambience/venir_hallway.ogg'
+#define AMBIENCE_ANTRE_ADJACENT 'sound/ambience/venir_hallway_adjacent.ogg'
+
 // Abyssal Soundscapes
 
 #define SCAPE_ABYSSAL_INTERIOR list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')

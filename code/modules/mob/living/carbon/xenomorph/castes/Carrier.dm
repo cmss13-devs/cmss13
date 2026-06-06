@@ -224,7 +224,7 @@
 		huggers_cur--
 		put_in_active_hand(child)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the facehugger in our storage. Now sheltering: [huggers_cur] / [huggers_max]."))
-		update_icons()
+		behavior_delegate?.on_update_icons()
 		hugger_retrieve_timer = world.time + 1 SECONDS
 		return
 

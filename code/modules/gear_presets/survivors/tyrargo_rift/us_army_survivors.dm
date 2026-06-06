@@ -378,7 +378,6 @@
 	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
-	job_title  = "Synthetic"
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)

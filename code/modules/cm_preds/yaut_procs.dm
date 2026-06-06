@@ -154,32 +154,32 @@
 		if(Adjacent(M) && M.stat == DEAD)
 			choices += M
 
-	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
+	var/mob/living/carbon/target = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
 	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
-	if(!T || !src || !T.stat)
+	if(!target || !src || !target.stat)
 		to_chat(src, SPAN_WARNING("Nope."))
 		return
 
-	if(!Adjacent(T))
+	if(!Adjacent(target))
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
 
-	if(islarva(T) || isfacehugger(T))
+	if(islarva(target) || isfacehugger(target))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		return
 
-	if(issynth(T))
+	if(issynth(target))
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
 		return
 
-	if(isxeno(T))
-		xeno_victim = T
+	if(isxeno(target))
+		xeno_victim = target
 
 	var/static/list/procedure_choices = list(
 		"Skin" = null,
@@ -195,72 +195,72 @@
 	)
 
 	var/procedure = ""
-	if(ishuman(T))
-		victim = T
+	if(ishuman(target))
+		victim = target
 
 	if(victim)
 		procedure = tgui_input_list(src, "Which slice would you like to take?", "Take Slice", procedure_choices)
 		if(!procedure)
 			return
 
-	if(isxeno(T) || procedure == "Skin")
-		if(T.butchery_progress)
+	if(isxeno(target) || procedure == "Skin")
+		if(target.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
+			visible_message(SPAN_DANGER("[src] goes back to butchering \the [target]."), SPAN_NOTICE("You get back to butchering \the [target]."))
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [T]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [T]. Hold still."))
-			T.butchery_progress = 1
+			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [target]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [target]. Hold still."))
+			target.butchery_progress = 1
 
-		if(T.butchery_progress == 1)
+		if(target.butchery_progress == 1)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!"))
-				T.butchery_progress = 2
+				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [target]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [target], ripping out the guts and useless organs. What a stench!"))
+				target.butchery_progress = 2
 				playsound(loc, 'sound/weapons/slash.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 2)
+		if(target.butchery_progress == 2)
 			if(do_after(src, 6.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [T]'s limbs, making sure to get the finest cuts."))
+				visible_message(SPAN_DANGER("[src] hacks away at \the [target]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [target]'s limbs, making sure to get the finest cuts."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm"), FALSE, TRUE) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] steak"
-				T.butchery_progress = 3
+				target.butchery_progress = 3
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 3)
+		if(target.butchery_progress == 3)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [T]'s ribcage and start tearing the tastiest bits out."))
+				visible_message(SPAN_DANGER("[src] tears apart \the [target]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [target]'s ribcage and start tearing the tastiest bits out."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
-				else if(victim && isturf(T.loc))
+				else if(victim && isturf(target.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
 					victim.apply_damage(100, BRUTE,"chest", FALSE, FALSE)
-				T.butchery_progress = 4
+				target.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
-		if(T.butchery_progress == 4)
+		if(target.butchery_progress == 4)
 			if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				if(xeno_victim && isturf(T.loc))
+				if(xeno_victim && isturf(target.loc))
 					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
 					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
 					pelt.name = "[xeno_victim.real_name] pelt"
 					skull.name = "[xeno_victim.real_name] skull"
-				else if(victim && isturf(T.loc))
-					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
+				else if(victim && isturf(target.loc))
+					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [target]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [target]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
 						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
 						var/obj/item/clothing/accessory/limb/skeleton/head/spine/new_spine = new /obj/item/clothing/accessory/limb/skeleton/head/spine(victim.loc)
@@ -273,21 +273,24 @@
 					hide.name = "[victim.name]-hide"
 					hide.singular_name = "[victim.name]-hide"
 					hide.stack_id = "[victim.name]-hide"
-					new /obj/effect/decal/remains/human(T.loc)
-				if(T.legcuffed)
-					T.drop_inv_item_on_ground(T.legcuffed)
-				T.butchery_progress = 5 //Won't really matter.
+					new /obj/effect/decal/remains/human(target.loc)
+				if(target.legcuffed)
+					target.drop_inv_item_on_ground(target.legcuffed)
+				target.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				if(hunter_data.prey == T)
-					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+				if(hunter_data.prey == target)
+					to_chat(src, SPAN_YAUTJABOLD("You have claimed [target] as your trophy."))
 					emote("roar2")
 					var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 					if(istype(bracer))
-						message_all_yautja("[src.real_name] has claimed [T] as their trophy.", broadcast_networks = bracer.received_networks)
+						message_all_yautja("[src.real_name] has claimed [target] as their trophy.", broadcast_networks = bracer.received_networks)
 					hunter_data.prey = null
+					target.hunter_data.hunter = null
+					target.hunter_data.hunted = FALSE
+					target.hud_set_hunter()
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
-				qdel(T)
+				qdel(target)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 	else
@@ -297,21 +300,24 @@
 			to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 			return
 		if(limb == "head")
-			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
+			visible_message("<b>[src] reaches down and starts beheading [target].</b>","<b>You reach down and start beheading [target].</b>")
 		else
-			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
+			visible_message("<b>[src] reaches down and starts removing [target]'s [limbName].</b>","<b>You reach down and start removing [target]'s [limbName].</b>")
 		if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(victim.get_limb(limb).status & LIMB_DESTROYED)
 				to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 				return
 			victim.get_limb(limb).droplimb(TRUE, FALSE, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
-			if(hunter_data.prey == T)
-				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+			if(hunter_data.prey == target)
+				to_chat(src, SPAN_YAUTJABOLD("You have claimed [target] as your trophy."))
 				emote("roar2")
 				var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
 				if(istype(bracer))
-					message_all_yautja("[src.real_name] has claimed [T] as their trophy.", broadcast_networks = bracer.received_networks)
+					message_all_yautja("[src.real_name] has claimed [target] as their trophy.", broadcast_networks = bracer.received_networks)
 				hunter_data.prey = null
+				target.hunter_data.hunter = null
+				target.hunter_data.hunted = FALSE
+				target.hud_set_hunter()
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))

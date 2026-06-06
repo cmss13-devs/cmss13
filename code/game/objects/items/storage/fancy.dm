@@ -175,7 +175,7 @@
 		..()
 
 /obj/item/storage/fancy/cigarettes/emeraldgreen
-	name = "\improper Emerald Green Packet"
+	name = "\improper Emerald Green packet"
 	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
 	desc_lore = "Instantly recognizable by their price that undercuts even water, these cigarettes have become a fixture wherever budgets and morale run low. Nobody is quite sure what goes into the blend, but most agree you don't buy Emerald Greens for the flavor."
 	icon_state = "cigpacket"
@@ -229,7 +229,7 @@
 	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
-	name = "\improper Lucky Strikes Packet"
+	name = "\improper Lucky Strikes packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
 	desc_lore = "Lucky Strikes have been included in every USCM field ration since 2145, a decision made by a procurement committee that, by all accounts, has never spent a night in a foxhole. Unfiltered, cheap, and aggressively average, they are nonetheless the most purchased cigarette at every USCM vending machine in the frontier. At least they're cheap."
 	icon_state = "lspacket"
@@ -239,7 +239,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
-	name = "\improper Lucky Strikes Mini Packet"
+	name = "\improper Lucky Strikes Mini packet"
 	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
 	desc_lore = "The same Lucky Strike that has called itself 'Fine Tobacco' since before the first colony ship left Earth, compressed into a compact package and tucked into a ration kit. They are definitely stale by now, but you'll smoke them anyway."
 	icon_state = "ls4packet"
@@ -303,7 +303,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/spirit
-	name = "\improper Turquoise American Spirit Packet"
+	name = "\improper Turquoise American Spirit packet"
 	desc = "A pack of turquoise American Spirit cigarettes."
 	desc_lore = "The stronger of the two American Spirit varieties, turquoise has built a quiet following among those who found the yellow pack a little too forgiving. Like its milder counterpart, it markets itself on natural tobacco and no additives, a claim that has outlasted most of the governments that tried to regulate it."
 	icon_state = "naspacket"
@@ -313,7 +313,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/spirit/yellow
-	name = "\improper Yellow American Spirit Packet"
+	name = "\improper Yellow American Spirit packet"
 	desc = "A pack of yellow American Spirit cigarettes."
 	desc_lore = "One of the oldest surviving tobacco brands still in production, American Spirits have outlasted empires, corporations, and at least three extinction level events by marketing themselves as the natural choice in an increasingly unnatural galaxy. The yellow pack is the milder of the two, for those who prefer their slow death to be a gentle one."
 	icon_state = "y_naspacket"

@@ -261,3 +261,24 @@
 
 /obj/item/ammo_box/magazine/misc/power_cell/empty
 	empty = TRUE
+
+//------------------------Cigarette Blocks--------------------------
+
+/obj/item/ammo_box/magazine/misc/cigarettes
+	limit_per_tile = 2
+	num_of_magazines = 8
+
+/obj/item/ammo_box/magazine/misc/cigarettes/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+
+/obj/item/ammo_box/magazine/misc/cigarettes/red_star_block
+	name = "\improper block of Red Star cigarette packets"
+	desc = "A box of rather patriotic cigarettes!"
+	magazine_type = /obj/item/storage/fancy/cigarettes/red_star
+	icon_state = "rspaket_block"
+	overlay_content = "_rspaket_block"
+
+/obj/item/ammo_box/magazine/misc/cigarettes/red_star_block/empty
+	empty = TRUE

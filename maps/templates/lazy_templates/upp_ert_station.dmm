@@ -37,6 +37,14 @@
 	},
 /turf/open/floor/strata/green1,
 /area/adminlevel/ert_station/upp_station)
+"ae" = (
+/obj/structure/machinery/vending/uppsnack,
+/turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/upp_station)
+"af" = (
+/obj/structure/machinery/vending/uppcola,
+/turf/open/floor/strata/green3,
+/area/adminlevel/ert_station/upp_station)
 "ag" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating,
@@ -439,6 +447,7 @@
 /area/adminlevel/ert_station/upp_station)
 "hd" = (
 /obj/structure/platform/metal/strata,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "he" = (
@@ -717,6 +726,10 @@
 	phone_category = "UPP";
 	phone_id = "UPP Station";
 	do_not_disturb = 2
+	},
+/obj/item/storage/fancy/cigar/spanish{
+	pixel_y = 16;
+	pixel_x = -10
 	},
 /turf/open/floor/strata/floor2,
 /area/adminlevel/ert_station/upp_station)
@@ -1176,6 +1189,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
 "wY" = (
@@ -1209,7 +1223,7 @@
 "xF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/crowbar,
-/obj/item/storage/bible,
+/obj/item/book/manual/upphistory,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -2229,7 +2243,7 @@
 /turf/open/space/basic,
 /area/space)
 "Tr" = (
-/obj/effect/landmark/wo_supplies/storage/m56d,
+/obj/item/ammo_box/magazine/misc/cigarettes/red_star_block,
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
@@ -3530,7 +3544,7 @@ Cy
 lw
 Cy
 po
-TG
+af
 Vp
 hj
 wu
@@ -3928,7 +3942,7 @@ MB
 UE
 Bp
 Tm
-yH
+ae
 hd
 YO
 kc

@@ -421,6 +421,40 @@
 		/obj/item/tool/lighter/zippo/executive = 0,
 	)
 
+/obj/structure/machinery/vending/cigarette/upp
+	name = "Rising Sun brand cigarette vendor"
+	desc = "A state-owned cigarette vendor. Its drab colour was chosen to discourage purchases, but its existence is an admittance to the necessity for such machines to exist in the first place."
+	product_slogans = list(
+		"Let the Red Star shine to you in the darkness!",
+		"We went to space first! Celebrate that with Laika!",
+		"A person from a technical junkyard becomes an active builder of socialism, chose Belomorkanal, build your future!",
+	)
+	product_ads = list(
+		"Let the Red Star shine to you in the darkness!",
+		"We went to space first! Celebrate that with Laika!",
+		"A person from a technical junkyard becomes an active builder of socialism, chose Belomorkanal, build your future!",
+	)
+	icon_state = "chinacigvend"
+	icon_deny = "chinacigvend_deny"
+	icon_vend = "chinacigvend_vend"
+	premium = list(/obj/item/cigar_packet = 5)
+	products = list(
+		/obj/item/storage/fancy/cigarettes/laika = 10,
+		/obj/item/storage/fancy/cigarettes/red_star = 20,
+		/obj/item/storage/fancy/cigarettes/belomor = 10,
+
+		/obj/item/storage/box/matches = 15,
+		/obj/item/tool/lighter/random = 10,
+	)
+	prices = list(
+		/obj/item/storage/fancy/cigarettes/laika = 15,
+		/obj/item/storage/fancy/cigarettes/red_star = 8,
+		/obj/item/storage/fancy/cigarettes/belomor = 10,
+
+		/obj/item/storage/box/matches = 1,
+		/obj/item/tool/lighter/random = 3,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_NICOTINE
 
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
@@ -576,6 +610,44 @@
 	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
 	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+/obj/structure/machinery/vending/uppcola
+	name = "\improper CoolCola brand drinks machine"
+	desc = "An old sweet water vending machine, how did this end up here?"
+	icon_state = "colavend"
+	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
+	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
+	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+/obj/structure/machinery/vending/uppsoda
+	name = "\improper Fresh brand soda drinks machine"
+	desc = "An old sweet water vending machine, how did this end up here?"
+	icon_state = "sodavend"
+	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
+	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
+	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+/obj/structure/machinery/vending/uppsnack
+	name = "\improper RedPrice brand snack vendor"
+	desc = "An old sweet water vending machine, how did this end up here?"
+	icon_state = "upp_snackvend"
+	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
+	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
+	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+/obj/structure/machinery/vending/uppcoffee
+	name = "\improper RedPrice brand snack vendor"
+	desc = "An old sweet water vending machine, how did this end up here?"
+	icon_state = "uppcoffee"
+	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
+	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
+	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+
 
 // All instances of this vendor will share a single inventory for items in the shared list.
 // Meaning, if an item is taken from one vendor, it will not be available in any others as well.

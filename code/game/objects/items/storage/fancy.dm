@@ -175,7 +175,7 @@
 		..()
 
 /obj/item/storage/fancy/cigarettes/emeraldgreen
-	name = "\improper Emerald Green Packet"
+	name = "\improper Emerald Green packet"
 	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
 	desc_lore = "Instantly recognizable by their price that undercuts even water, these cigarettes have become a fixture wherever budgets and morale run low. Nobody is quite sure what goes into the blend, but most agree you don't buy Emerald Greens for the flavor."
 	icon_state = "cigpacket"
@@ -225,7 +225,7 @@
 	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
-	name = "\improper Lucky Strikes Packet"
+	name = "\improper Lucky Strikes packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
 	icon_state = "lspacket"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
@@ -234,7 +234,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
-	name = "\improper Lucky Strikes Mini Packet"
+	name = "\improper Lucky Strikes Mini packet"
 	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
 	icon_state = "ls4packet"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
@@ -294,7 +294,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/spirit
-	name = "\improper Turquoise American Spirit Packet"
+	name = "\improper Turquoise American Spirit packet"
 	desc = "A pack of turquoise American Spirit cigarettes."
 	icon_state = "naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_cyan.dmi'
@@ -303,12 +303,59 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/spirit/yellow
-	name = "\improper Yellow American Spirit Packet"
+	name = "\improper Yellow American Spirit packet"
 	desc = "A pack of yellow American Spirit cigarettes."
 	icon_state = "y_naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_spirityellow")
+
+/obj/item/storage/fancy/cigarettes/belomor
+	name = "\improper Belomorkanal packet"
+	desc = "A pack of Belomorkanal papirosa, a special kind of cigarettes."
+	desc_lore = "Originally named after the White Sea-Baltic Canal during the USSR era, these rather non-standard cigarettes still find it's popularity multiple centuries later across the UPP and beyond, some love it, some hate them for their smell, but they are to remain for sure."
+	icon_state = "bcpacket"
+	icon = 'icons/obj/items/smoking/packets/belomor_packet.dmi'
+	item_state = "bcpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_belomor")
+	default_cig_type = /obj/item/clothing/mask/cigarette/belomor
+
+/obj/item/storage/fancy/cigarettes/red_star
+	name = "\improper Red Star packet"
+	desc = "A pack of Red Star cigarettes."
+	desc_lore = "A state funded product that is being massively produced and shipped all across the UPP occupied space, taste mediocre at best, but hey, you have ten block of them lying around."
+	icon_state = "rspacket"
+	icon = 'icons/obj/items/smoking/packets/redstar_packet.dmi'
+	item_state = "rspacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_redstar")
+
+/obj/item/storage/fancy/cigarettes/air_force_one
+	name = "\improper Air Force One packet"
+	desc = "A pack of Air Force One cigarettes, a white pack with golden trim and a coat of arms of US president."
+	desc_lore = "Air Force One cigarettes were originally given out on Air force One (plane designation that carries a US president onboard), but they were later replaced by M&M's, still there's a second hand collector's market for this sort of thing, which has lead to various fraudsters trying to sell counterfeit ones over the years, since the 2150s, the majority of these fakes come from the ICSC, with some companies even selling a replicas legitimately rather then through trying to scam people, you THINK this is a legitamate one, but the signature does seem a bit off."
+	icon_state = "elitepacket"
+	icon = 'icons/obj/items/smoking/packets/elite_packet.dmi'
+	item_state = "elitepacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_elite")
+
+/obj/item/storage/fancy/cigarettes/camel
+	name = "\improper Camel packet"
+	desc = "A small yellow paper carton of cigarettes with a camel stamped on the front. It's wrapped in a layer of thin polypropylene film."
+	desc_lore = "Originally made as an imitation of Egyptian cigarettes, which were popular during its inception way back in 1913; Camel cigarettes have stood the test of time in their two hundred sixty-nine year run for their milder taste and feel compared to other brands. Though their popularity has fallen in recent years, the cigarette brand is still going strong. More than many still smoke the cigarette that made R.J. Reynolds a multi-millionaire. Lucky for you, this pack's original American, not that cheap Japanese shit. Now, would you walk a mile for a Camel?."
+	icon_state = "camel_packet"
+	icon = 'icons/obj/items/smoking/packets/camel_packet.dmi'
+	item_state = "camelpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_camel")
+
+/obj/item/storage/fancy/cigarettes/laika
+	name = "\improper Laika packet"
+	desc = "A pack of Laika cigarettes, has a dog portrait on the pack."
+	desc_lore = "The original Laika cigarettes were made in 1957 to commemorate Laika, the first animal launched into orbit, while those were eventually discontinued, for the 200 year anniversary of Laika's flight in 2157 a reproduction of the original Laika cigarettes was launched in UPP, they ended up proving popular enough that it was decided to keep on making them"
+	icon_state = "laikapacket"
+	icon = 'icons/obj/items/smoking/packets/laika_packet.dmi'
+	item_state = "laikapacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_laikapacket")
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/trading_card
 	name = "\improper WeyYu Gold Military Trading Card packet"
@@ -371,7 +418,7 @@
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 7
-	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
+	can_hold = list(/obj/item/clothing/mask/cigarette/cigar, /obj/item/cigar_packet)
 	icon_type = "cigar"
 	black_market_value = 30
 	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
@@ -411,6 +458,13 @@
 	item_state = "tarbackbox"
 	storage_slots = 5
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
+
+/obj/item/storage/fancy/cigar/spanish
+	name = "\improper Don Julian cigar case"
+	desc = "A rather fancy looking birch box, rather because of the low price of it. Rolled on Canary Islands, supposedly."
+	icon_state = "cigarcase_spanish"
+	item_state = "cigarcase_spanish"
+	default_cigar_type = /obj/item/cigar_packet
 
 /obj/item/storage/fancy/cigar/tarbacktube
 	name = "\improper Tarback tube"

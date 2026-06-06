@@ -202,6 +202,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/storage/fancy/cigarettes/spirit = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/storage/fancy/cigarettes/spirit/yellow = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/belomor = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/red_star = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/air_force_one = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/camel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/laika = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 
 	/obj/item/storage/fancy/cigar/matchbook = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/cigarette/cigar = NO_GARB_OVERRIDE,

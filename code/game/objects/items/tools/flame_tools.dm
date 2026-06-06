@@ -349,6 +349,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		set_light_range(1)
 		set_light_power(0.5)
 		set_light_on(TRUE)
+		set_light_color(light_color)
+		playsound(src, 'sound/effects/cig_light.ogg', 50, 1)
 		if(iscarbon(loc))
 			var/mob/living/carbon/C = loc
 			if(C.r_hand == src)
@@ -404,6 +406,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out \the [src]."))
 			else
 				to_chat(M, SPAN_NOTICE("Your [src.name] goes out."))
+			playsound(src, 'sound/effects/cig_snuff.ogg', 50, 1)
 	STOP_PROCESSING(SSobj, src)
 	if(type_butt)
 		var/turf/T = get_turf(src)
@@ -466,6 +469,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A roll of tobacco, nicotine, and some phosphor, in a fancy black package. The phosphor makes the tip glow blue when lit."
 	item_state = "bcigoff"
 	icon_state = "bcigoff"
+	light_color = LIGHT_COLOR_BLUE
+
+/obj/item/clothing/mask/cigarette/belomor
+	icon_on = "belcigon"
+	icon_off = "belcigoff"
+	type_butt = /obj/item/trash/cigbutt/ucigbutt
+	name = "cigarette"
+	desc = "A roll of tobacco, nicotine in a semi transparent paper, has a funny smell to it."
+	item_state = "belcigoff"
+	icon_state = "belcigoff"
 
 ////////////
 //  WEED  //
@@ -473,6 +486,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/weed
 	name = "weed joint"
 	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
+	icon_on = "weedon"
+	icon_off = "weedoff"
+	type_butt = /obj/item/trash/cigbutt/ucigbutt
+	item_state = "weedoff"
+	icon_state = "weedoff"
 	chem_volume = 39
 	smoketime = 20 MINUTES
 
@@ -501,6 +519,37 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 50 MINUTES
 	chem_volume = 20
 	black_market_value = 15
+
+
+
+/obj/item/clothing/mask/cigarette/cigar/spanish
+	name = "Don Julian cigar"
+	desc = "A fancy cigar packaged in Spain, supposedly. Comes in a vacuum sealed aluminum foil package to keep it fresh until the end of times. Has a portrain of man and a slogan 'Tradición desde 1880'."
+	desc_lore = "An old brand of Spanish cigars originally based on Canary Islands, nowadays produced under the same brand on the off-world colonies and alike. Originally named after Julián Álvarez Granda, one of the most important figures of the tobacco industry in 19th century."
+	icon_state = "cigar2_off"
+	icon_on = "cigar2_on"
+	icon_off = "cigar2_off"
+	smoketime = 120 MINUTES
+
+/obj/item/cigar_packet
+	name = "Don Julian cigar"
+	desc = "A fancy cigar packaged in Spain, supposedly. Comes in a vacuum sealed aluminum foil package to keep it fresh until the end of times. Has a portrait of man and a slogan 'Tradición desde 1880'."
+	desc_lore = "An old brand of Spanish cigars originally based on Canary Islands, nowadays mostly produced under the same brand on the off-world colonies and alike. Originally named after Julián Álvarez Granda, one of the most important figures of the tobacco industry in 19th century."
+	icon_state = "spanish_cigar"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
+	w_class = SIZE_SMALL
+
+/obj/item/cigar_packet/attack_self(mob/smoker)
+	..()
+	var/obj/item/cigar = new /obj/item/clothing/mask/cigarette/cigar/spanish(smoker)
+	smoker.temp_drop_inv_item(src)
+	smoker.put_in_hands(cigar)
+	smoker.put_in_hands(new /obj/item/trash/spanish_cigar)
+	cigar.add_fingerprint(smoker)
+	to_chat(smoker, SPAN_NOTICE("You open the cigar wrapper!"))
+	playsound(src, 'sound/effects/pageturn2.ogg', 15, 1)
+	qdel(src)
+	return
 
 /obj/item/clothing/mask/cigarette/cigar/classic
 	name = "classic cigar"

@@ -70,6 +70,8 @@
 
 #define CL_BRIEFCASE_TIME_LOCK 20 MINUTES
 
+#define WY_RD_BRIEFCASE_TIME_LOCK 5 MINUTES
+
 #define VENDOR_PRODUCT_TYPE_UNDEF "Undefined" // Try not to use this if the vendor is priced.
 #define VENDOR_PRODUCT_TYPE_FOOD "Food"
 #define VENDOR_PRODUCT_TYPE_BEVERAGES "Beverage"

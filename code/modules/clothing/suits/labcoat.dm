@@ -178,6 +178,109 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/item/clothing/suit/storage/labcoat/wy/protective
+	name = "W-Y chemical protection lab coat"
+	desc = "A rugged labcoat that more resembles a raincoat at this point. Built using robust materials for engaging dangerous experiments on a field. Usually seen in hands of W-Y Bio-Weapons Division."
+	icon_state = "bio_weapon_divison_cape_1"
+	armor_bio = CLOTHING_ARMOR_ULTRAHIGHPLUS
+	actions_types = list(/datum/action/item_action/specialist/toggle_labcoat_hood)
+	///Whether the hood were worn through the hood toggle verb
+	var/hood_enabled = FALSE
+	///Typepath of the attached hood
+	var/hood_type = /obj/item/clothing/head/bio_hood/wy_bio/bioweapons_divison
+	///The head clothing that the suit uses as a hood
+	var/obj/item/clothing/head/linked_hood
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/alt
+	icon_state = "bio_weapon_divison_cape_2"
+	hood_type = /obj/item/clothing/head/bio_hood/wy_bio/bioweapons_divison/alt
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/Initialize()
+	linked_hood = new hood_type(src)
+	. = ..()
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/Destroy()
+	. = ..()
+	if(linked_hood)
+		qdel(linked_hood)
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/verb/hood_toggle()
+	set name = "Toggle Hood"
+	set desc = "Pull your labcoat hood over your head."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.wear_suit != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to put on [linked_hood] attached to it!"))
+		return
+
+	if(!linked_hood)
+		to_chat(user, SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+
+	playsound(user.loc, "armorequip", 25, 1)
+	if(hood_enabled)
+		disable_hood(user, FALSE)
+		return
+	enable_hood(user)
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/proc/enable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	if(!linked_hood.mob_can_equip(user, WEAR_HEAD))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_hood]."))
+		return
+
+	user.equip_to_slot(linked_hood, WEAR_HEAD)
+
+	hood_enabled = TRUE
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+
+	to_chat(user, SPAN_NOTICE("You raise [linked_hood] over your head."))
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/proc/disable_hood(mob/living/carbon/human/user, forced = TRUE)
+	if(!istype(user))
+		user = usr
+
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, src), 1) //0.1s delay cause you can grab the hood
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+
+	hood_enabled = FALSE
+	if(!forced)
+		to_chat(user, SPAN_NOTICE("You take off [linked_hood]."))
+
+/obj/item/clothing/suit/storage/labcoat/wy/protective/proc/check_remove_headgear(obj/item/clothing/suit/storage/labcoat/wy/protective/labcoat = src)
+	for(var/current_atom in contents)
+		if(current_atom == linked_hood)
+			return
+	linked_hood.forceMove(labcoat)
+
+/datum/action/item_action/specialist/toggle_labcoat_hood
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_labcoat_hood/New(obj/item/clothing/suit/storage/labcoat/wy/protective/labcoat, obj/item/holder)
+	..()
+	name = "Toggle Hood"
+	button.name = name
+	button.overlays.Cut()
+	var/image/button_overlay = image(labcoat.linked_hood.icon, labcoat, labcoat.linked_hood.icon_state)
+	button.overlays += button_overlay
+
+/datum/action/item_action/specialist/toggle_labcoat_hood/action_activate()
+	. = ..()
+	var/obj/item/clothing/suit/storage/labcoat/wy/protective/labcoat = holder_item
+	if(!istype(labcoat))
+		return
+	labcoat.hood_toggle()
+
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"
 	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."

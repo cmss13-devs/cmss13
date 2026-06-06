@@ -53,6 +53,10 @@
 	name = "\improper W-Y armored cap"
 	icon_state = "newcorpo_cap"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/cameraman
+	name = "\improper W-Y white armored cap"
+	icon_state = "cameraman_cap"
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/sniper
 	name = "\improper PMC sniper helmet"
 	desc = "A helmet worn by PMC Marksmen."

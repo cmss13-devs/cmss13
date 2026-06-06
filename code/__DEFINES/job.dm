@@ -283,9 +283,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WY_GOON_LEAD "W-Y Corporate Security Lead"
 #define JOB_WY_RESEARCHER "W-Y Research Consultant"
 #define JOB_WY_RESEARCH_LEAD "W-Y Senior Research Consultant"
+#define JOB_WY_RESEARCH_DIRECTOR "W-Y Bio-Weapons Division Research Director"
+#define JOB_WY_CAMERAMAN "W-Y Corporate Cameraman"
+
 #define JOB_WY_GOON_SYNTH "W-Y Corporate Security Synthetic"
 
-#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
+#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_RESEARCH_DIRECTOR, JOB_WY_CAMERAMAN, JOB_WY_GOON_SYNTH)
 
 //-------- Hyperdyne --------//
 

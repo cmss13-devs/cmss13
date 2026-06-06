@@ -542,6 +542,23 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/item/clothing/head/bio_hood/wy_bio/bioweapons_divison
+	name = "W-Y chemical protection hood"
+	desc = "A rugged labcoat that more resembled a raincoat at this point. Built using robust materials for engaging dangerous experiments on a field. Usually seen in hands of W-Y Bio-Weapons Division."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi'
+	)
+	icon_state = "bio_weapon_divison_hood_1"
+	item_state = "bio_weapon_divison_hood_1"
+	flags_inventory = null
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	flags_armor_protection = BODY_FLAG_HEAD
+
+/obj/item/clothing/head/bio_hood/wy_bio/bioweapons_divison/alt
+	icon_state = "bio_weapon_divison_hood_2"
+	item_state = "bio_weapon_divison_hood_2"
+
 /obj/item/clothing/head/bio_hood/wy_bio/alt
 	name = "WY-TSS MK I - bio hood"
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."

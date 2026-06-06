@@ -331,3 +331,35 @@
 		list("CONTRABAND: Colonial Liberation Front", 40, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),
 		list("CONTRABAND: Union of Progressive Peoples", 40, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
 	)
+
+/obj/item/device/portable_vendor/bioweapons_divison
+	name = "\improper Weyland-Yutani Bio-Weapons Division Automated Storage Briefcase"
+	desc = "A heavy, rugged suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weyland-Yutani logo stamped on its side."
+	icon_state = "bio_weapon_divison_case"
+	special_prod_time_lock = WY_RD_BRIEFCASE_TIME_LOCK
+	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
+	points = 60
+	req_access = list(ACCESS_WY_RESEARCH)
+	req_role = JOB_WY_RESEARCH_DIRECTOR
+	covert = TRUE
+	listed_products = list(
+		list("INCENTIVES", 0, null, null, null),
+		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
+		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
+		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
+		list("WY Corporate Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+
+		list("STATIONERY", 0, null, null, null),
+		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
+		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
+		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),
+		list("WY pen, green", 1, /obj/item/tool/pen/green/clicky, "white", "A WY pen, for writing angrily on the go."),
+		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
+		list("WY Paper", 1, /obj/item/paper/wy, "white", "A fresh piece of WY-branded paper, for writing important things on."),
+		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
+		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
+
+		list("AMMO", 0, null, null, null),
+		list("VP78 magazine", 10, /obj/item/ammo_magazine/pistol/vp78, "white", "Holds 18 rounds of 9mm."),
+	)

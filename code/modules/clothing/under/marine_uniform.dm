@@ -1036,8 +1036,8 @@
 /obj/item/clothing/under/marine/veteran/pmc/apesuit
 	name = "\improper W-Y commando Apesuit uniform"
 	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
-	icon_state = "ape_jumpsuit"
-	worn_state = "ape_jumpsuit"
+	icon_state = "apeundersuit"
+	worn_state = "apeundersuit"
 
 /obj/item/clothing/under/marine/veteran/pmc/combat_android
 	name = "\improper W-Y android combat uniform"

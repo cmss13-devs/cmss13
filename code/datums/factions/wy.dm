@@ -21,6 +21,10 @@
 			hud_icon_state = "researcher"
 		if(JOB_WY_RESEARCH_LEAD)
 			hud_icon_state = "research_lead"
+		if(JOB_WY_RESEARCH_DIRECTOR)
+			hud_icon_state = "research_director"
+		if(JOB_WY_CAMERAMAN)
+			hud_icon_state = "cameraman"
 		if(JOB_WY_GOON_TECH)
 			hud_icon_state = "goon_engi"
 		if(JOB_WY_GOON_MEDIC)

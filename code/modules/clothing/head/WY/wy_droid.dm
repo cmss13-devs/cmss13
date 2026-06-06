@@ -20,7 +20,7 @@
 	flags_inventory = FULL_DECAP_PROTECTION
 	flags_inv_hide = null
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/apesuit_visor)
 	unacidable = TRUE
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	anti_hug = 100

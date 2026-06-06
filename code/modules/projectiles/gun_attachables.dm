@@ -4200,6 +4200,11 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
+/obj/item/attachable/bipod/m41ae2/elite
+	icon_state = "b_bipod_m41ae2"
+	attach_icon = "b_bipod_m41ae2_a"
+	camo_bipod = FALSE
+
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"
 	desc = "A small angled piece of fine machinery that increases the burst count on some weapons, and grants the ability to others. \nIncreases weapon scatter."

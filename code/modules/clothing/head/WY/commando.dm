@@ -53,4 +53,48 @@
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	unacidable = TRUE
 	anti_hug = 100
+	actions_types = list(/datum/action/item_action/toggle/apesuit_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
+	var/deactivated = TRUE
+	var/activate_cooldown = 0 //cooldown for mask activation
+	var/has_visor = TRUE
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit/attack_self(mob/user)
+	..()
+
+	if(activate_cooldown > world.time)
+		return
+
+	if(!has_visor)
+		return
+
+	toggle()
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit/verb/toggle()
+	set category = "Object"
+	set name = "Flip helmet visor"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(deactivated)
+		icon_state = "[initial(icon_state)]_open"
+		to_chat(usr, SPAN_NOTICE("You flip helmet visor up."))
+	else
+		icon_state = initial(icon_state)
+		to_chat(usr, SPAN_NOTICE("You flip helmet visor down."))
+	deactivated = !deactivated
+	activate_cooldown = world.time + 10
+
+	update_clothing_icon() //so our mob-overlays update
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit/dogcatcher
+	name = "\improper M5X Dogcatcher Apesuit helmet"
+	icon_state = "apesuit_helmet_cage"
+	has_visor = FALSE
+	actions_types = null

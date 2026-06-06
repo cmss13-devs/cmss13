@@ -136,6 +136,28 @@
 	item_state = "dragon_katana"
 	force = MELEE_FORCE_VERY_STRONG
 
+/obj/item/weapon/commando_knife
+	name = "SA220 FK5 knife"
+	desc = "Specially made, custom knife for a special unit within the Weyland-Yutani Commandos, made of an acid and corrosion proof materials."
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	icon_state = "dog_catcher_knife"
+	item_state = "dog_catcher_knife"
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	hitsound = 'sound/weapons/slash.ogg'
+	force = MELEE_FORCE_TIER_6
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	sharp = IS_SHARP_ITEM_ACCURATE
+	flags_item = CAN_DIG_SHRAPNEL
+	unacidable = TRUE
+
+/obj/item/weapon/commando_knife/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'

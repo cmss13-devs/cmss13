@@ -535,6 +535,22 @@
 	item_state = "jacket_grey"
 	has_buttons = FALSE
 
+/obj/item/clothing/suit/storage/jacket/marine/bomber/corporate
+	name = "corporate white bomber"
+	desc = "A rather well made, high quality bomber, made out of corrosive resistant fibers."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	icon_state = "cameraman_bomber"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/bomber/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 // TWE - RMC - Royal Marine Commandos
 
 /obj/item/clothing/suit/storage/jacket/marine/rmc/service

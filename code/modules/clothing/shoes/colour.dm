@@ -49,6 +49,7 @@
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/commando_knife,
 	)
 
 /obj/item/clothing/shoes/white

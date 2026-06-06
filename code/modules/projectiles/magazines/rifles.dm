@@ -292,10 +292,12 @@
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
+	var/camo_skin = TRUE
 
 /obj/item/ammo_magazine/rifle/lmg/Initialize(...)
 	. = ..()
-	select_gamemode_skin(type)
+	if(camo_skin)
+		select_gamemode_skin(type)
 
 /obj/item/ammo_magazine/rifle/lmg/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -315,6 +317,13 @@
 			. = TRUE
 	return .
 
+/obj/item/ammo_magazine/rifle/lmg/elite
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
+	icon_state = "m41ae2_b"
+	ammo_band_icon = null
+	ammo_band_icon_empty = null
+	camo_skin = FALSE
+
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
 	desc = "A semi-rectangular holo-targeting box magazine for the M41AE2 Heavy Pulse Rifle."
@@ -329,6 +338,13 @@
 	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/rifle/lmg/ap/elite
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
+	icon_state = "m41ae2_bap"
+	ammo_band_icon = null
+	ammo_band_icon_empty = null
+	camo_skin = FALSE
+
 /obj/item/ammo_magazine/rifle/lmg/heap
 	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box magazine for the M41AE2 Heavy Pulse Rifle. This one contains the standard armor-piercing explosive tipped round of the USCM."
@@ -336,6 +352,13 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/lmg/heap/elite
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
+	icon_state = "m41ae2_bheap"
+	ammo_band_icon = null
+	ammo_band_icon_empty = null
+	camo_skin = FALSE
 
 //-------------------------------------------------------
 //UPP TYPE 71 RIFLE

@@ -409,3 +409,22 @@
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return
 	. = ..()
+
+/obj/item/weapon/twohanded/catching_pole
+	name = "xenofauna snare pole"
+	desc = "A special, reinforced snare pole, designed to be able to down even the most rowdy species."
+	icon_state = "catching_pole"
+	item_state = "catching_pole"
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
+	w_class = SIZE_LARGE
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
+	flags_item = TWOHANDED
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "caugh", "snared", "strangled")
+

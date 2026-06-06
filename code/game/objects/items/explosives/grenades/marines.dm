@@ -699,6 +699,7 @@
 
 /obj/item/explosive/grenade/nerve_gas/xeno
 	name = "\improper CN20-X canister grenade"
+	icon_state = "nervegas_granade"
 	nerve_gas_type = /datum/effect_system/smoke_spread/cn20/xeno
 
 /*
@@ -959,3 +960,12 @@
 	det_time = 35
 	item_state = "grenade_smoke"//temp icon
 	underslug_launchable = TRUE
+
+/obj/item/explosive/grenade/nerve_gas/xeno/wy
+	name = "X-NAC15 nerve gas grenade"
+	desc = "Highly experimental grenade produced by Weyland-Yutani Bio-Weapons Division. Intended to assist in a process of capturing alien lifeforms by using paralyzing agents."
+	icon_state = "nervegas_granade"
+
+/obj/item/explosive/grenade/nerve_gas/xeno/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)

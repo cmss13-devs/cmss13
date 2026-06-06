@@ -46,7 +46,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit
 	name = "\improper M5X Apesuit"
 	desc = "A complex system of overlapping plates intended to render the wearer all but impervious to small arms fire. A passive exoskeleton supports the weight of the armor, allowing a human to carry its massive bulk."
-	icon_state = "ape_suit"
+	icon_state = "apesuit"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_VERY_HEAVY
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -59,7 +59,27 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/apesuit)
-	item_state_slots = list(WEAR_JACKET = "ape_suit")
+	item_state_slots = list(WEAR_JACKET = "apesuit")
+	storage_slots = 4
 	unacidable = TRUE
 	flags_marine_armor = null
 	actions_types = null
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit/alt
+	icon_state = "apesuit_gun"
+	item_state_slots = list(WEAR_JACKET = "apesuit_gun")
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit/sl
+	name = "\improper M5X Reinforced Apesuit"
+	icon_state = "apesuit_sl"
+	item_state_slots = list(WEAR_JACKET = "apesuit_sl")
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit/dogcatcher
+	name = "\improper M5X Dogcatcher Apesuit"
+	icon_state = "apesuit_reinforced"
+	item_state_slots = list(WEAR_JACKET = "apesuit_reinforced")
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+

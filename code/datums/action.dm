@@ -620,6 +620,23 @@
 	action_icon_state = "nvg"
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
+/datum/action/item_action/toggle/apesuit_visor/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/apesuit_visor/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/apesuit_visor/update_button_icon()
+	var/obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/helmet = holder_item
+	if(helmet.deactivated)
+		action_icon_state = "ape_visor"
+	else
+		action_icon_state = "ape_visor_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
 	if(!client)

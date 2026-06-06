@@ -885,6 +885,14 @@
 	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
 	prescription = TRUE
 
+/obj/item/clothing/glasses/bioweapons_divison
+	name = "W-Y rugged lab goggles"
+	desc = "A monolith lab goggles, clearly able to withstand even the harshest lab conditions. Usually seen in hands of W-Y Bio-Weapons Division."
+	icon_state = "bio_weapon_divison_glasses"
+	flags_equip_slot = SLOT_EYES
+	flags_inv_hide = HIDEEYES
+	eye_protection = EYE_PROTECTION_FLASH
+
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses

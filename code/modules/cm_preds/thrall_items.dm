@@ -65,6 +65,7 @@
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
 		/obj/item/weapon/yautja/knife,
+		/obj/item/weapon/commando_knife,
 	)
 	spawn_item_type = /obj/item/weapon/yautja/knife
 

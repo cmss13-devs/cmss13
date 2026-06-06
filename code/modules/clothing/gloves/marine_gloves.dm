@@ -201,7 +201,7 @@
 /obj/item/clothing/gloves/marine/veteran/pmc/apesuit
 	name = "\improper M5X gauntlets"
 	desc = "A pair of heavily armored gloves made to pair up the M5X Apesuit system."
-	icon_state = "gauntlets"
+	icon_state = "apesuit_gloves"
 	item_state = "bgloves"
 	siemens_coefficient = 0
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -209,6 +209,13 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_VERYHIGH
 	unacidable = TRUE
+
+/obj/item/clothing/gloves/marine/veteran/pmc/apesuit/reinforced
+	name = "\improper M5X reinforced gauntlets"
+	desc = "A pair of heavily armored gloves made to pair up the M5X Apesuit system, one glove has been additionally reinforced."
+	icon_state = "apesuit_gloves_armored"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid
 	name = "\improper M7X gauntlets"

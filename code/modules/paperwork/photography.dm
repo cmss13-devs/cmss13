@@ -369,7 +369,7 @@
 		return
 
 /obj/item/device/broadcasting
-	name = "Broadcasting Camera"
+	name = "Helios SLR-80 broadcasting camera"
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below."
 	icon = 'icons/obj/items/tools.dmi'
 	item_icons = list(
@@ -378,6 +378,7 @@
 	)
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
+	var/base_item_state = "broadcastingcamera"
 	unacidable = TRUE
 	explo_proof = TRUE
 	w_class = SIZE_HUGE
@@ -398,9 +399,9 @@
 
 /obj/item/device/broadcasting/update_icon()
 	if(active)
-		item_state = "broadcastingcamera_w"
+		item_state = "[base_item_state]_w"
 	else
-		item_state = "broadcastingcamera"
+		item_state = base_item_state
 	. = ..()
 
 
@@ -500,3 +501,15 @@
 	pixel_x = P.fields["pixel_x"]
 	pixel_y = P.fields["pixel_y"]
 	photo_size = P.fields["size"]
+
+
+/obj/item/device/broadcasting/wy
+	name = "W-Y Cosmotec SR-7 broadcasting camera"
+	desc = "A hella expensive, W-Y manufactured camera, utilizing top of the line lenses and filming equipment, made to document what you probably shouldn't see at all, but you will, unless until you hear 'NO PICTURES!'."
+	icon_state = "advancedcamera"
+	item_state = "advancedcamera"
+	base_item_state = "advancedcamera"
+
+/obj/item/device/broadcasting/wy/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)

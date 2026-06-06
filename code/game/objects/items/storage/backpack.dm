@@ -1504,9 +1504,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/backpack/pmc/backpack/commando/apesuit
-	name = "Dog Catcher bag"
-	desc = "A heavy-duty bag carried by Weyland-Yutani Dog Catchers."
+	name = "M5X backpack"
+	desc = "A heavy-duty bag with additional exoskeletal elements, made to complete the M5X Apesuit."
 	icon_state = "apesuit_pack"
+	unacidable = TRUE
+
+/obj/item/storage/backpack/pmc/backpack/commando/apesuit/satchel
+	name = "M5X satchel"
+	icon_state = "apesuit_satchel"
 
 /obj/item/storage/backpack/combat_droid
 	name = "combat android powerpack"

@@ -1495,6 +1495,7 @@
 /obj/item/weapon/gun/rifle/lmg/tactical
 	current_mag = /obj/item/ammo_magazine/rifle/lmg/ap
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
+
 /obj/item/weapon/gun/rifle/lmg/tactical/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2//equal to m41a dmg
@@ -1502,6 +1503,46 @@
 /obj/item/weapon/gun/rifle/lmg/army
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip)
 	current_mag = /obj/item/ammo_magazine/rifle/lmg/heap
+
+/obj/item/weapon/gun/rifle/lmg/elite
+	name = "\improper M41AE2/2 heavy pulse rifle"
+	desc = "A modified version M41AE2/2 heavy pulse rifle, re-engineered for better weight, handling and accuracy. Given only to elite units."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/machineguns.dmi'
+	icon_state = "m41ae2_black_ops"
+	item_state = "m41ae2_black_ops"
+	map_specific_decoration = FALSE
+	starting_attachment_types = list(
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2/elite,
+	)
+	current_mag = /obj/item/ammo_magazine/rifle/lmg/elite
+
+/obj/item/weapon/gun/rifle/lmg/elite/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+	AddElement(/datum/element/corp_label/wy)
+
+/obj/item/weapon/gun/rifle/lmg/elite/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_LMG)
+	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_LMG)
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
+	fa_max_scatter = SCATTER_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+
+/obj/item/weapon/gun/rifle/lmg/elite/commando
+	starting_attachment_types = list(
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2/elite,
+		/obj/item/attachable/magnetic_harness,
+	)
 
 //-------------------------------------------------------
 

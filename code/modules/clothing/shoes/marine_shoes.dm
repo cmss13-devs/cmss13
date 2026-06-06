@@ -26,6 +26,7 @@
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/commando_knife,
 	)
 	drop_sound = "armorequip"
 
@@ -162,6 +163,7 @@
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/commando_knife,
 	)
 
 /obj/item/clothing/shoes/veteran/pmc/update_icon()
@@ -187,6 +189,14 @@
 
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
 	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+
+/obj/item/clothing/shoes/veteran/pmc/commando/apesuit
+	name = "\improper M5X greaves"
+	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M5X Apesuit."
+	icon_state = "apesuit_boots"
+	armor_bio = CLOTHING_ARMOR_HIGH
+	spawn_item_type = /obj/item/weapon/commando_knife
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android
 	name = "\improper M7X greaves"
@@ -274,6 +284,7 @@
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/commando_knife,
 	)
 	var/weed_slowdown_mult = 0.5
 
@@ -318,6 +329,7 @@
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
+		/obj/item/weapon/commando_knife,
 	)
 	flags_atom = NO_NAME_OVERRIDE
 

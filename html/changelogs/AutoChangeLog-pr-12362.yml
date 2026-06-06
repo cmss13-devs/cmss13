@@ -1,0 +1,4 @@
+author: "armsdealer9876"
+delete-after: True
+changes:
+  - bugfix: "Rosary's now use accessory slots in helmets"

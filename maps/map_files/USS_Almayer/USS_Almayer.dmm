@@ -42983,7 +42983,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow{
+	name = "\improper Bravo-Charlie Squads Preparations";
+	req_one_access = list(9,2,21,16,17)
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/charlie_delta_shared)
 "cdb" = (
@@ -43006,7 +43009,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta{
+	req_one_access = list(9,2,21,17,16);
+	name = "\improper Charlie-Bravo Squads Preparations"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/charlie_delta_shared)
 "cde" = (

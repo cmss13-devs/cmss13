@@ -270,10 +270,18 @@
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
 		if(ishuman_strict(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
-
+			if(current_mob.faction == FACTION_SURVIVOR || (FACTION_SURVIVOR in current_mob.faction_group))
+				to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
+			else
+				if(ROUND_TIME < GLOB.king_acquisition_time)
+					to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech. You remember your training, the Hive is gathering its strength to summon the King."))
+				else
+					to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech. You ready yourself, remembering that this is the call of the Queen for her Hive to evolve to new forms."))
 		if(issynth(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+			if(ROUND_TIME < GLOB.king_acquisition_time)
+				to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're mobilising to summon something Great."))
+			else
+				to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
 
 /datum/hive_status/proc/setup_banned_allies()
 	banned_allies = DEFAULT_ALLY_BAN_LIST

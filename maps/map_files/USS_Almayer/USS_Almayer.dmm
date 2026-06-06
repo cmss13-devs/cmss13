@@ -837,7 +837,7 @@
 /area/almayer/living/briefing)
 "acd" = (
 /obj/structure/machinery/chem_master/industry_mixer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "ace" = (
@@ -4672,11 +4672,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "akT" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
-"akU" = (
-/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen,
+/obj/structure/reagent_dispensers/tank/fuel{
+	anchored = 1
+	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "akV" = (
@@ -4710,12 +4708,6 @@
 "ala" = (
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/squads/charlie_delta_shared)
-"alb" = (
-/obj/structure/reagent_dispensers/tank/pacid{
-	anchored = 1
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "alc" = (
 /obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
@@ -4724,7 +4716,7 @@
 	dir = 8;
 	health = 500
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light_construct{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor5,
@@ -4732,12 +4724,6 @@
 "ald" = (
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
-"ale" = (
-/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
-	anchored = 1
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "alf" = (
 /turf/open_space,
 /area/almayer/stair_clone/upper/port_fore)
@@ -4764,24 +4750,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/lower/workshop/hangar)
 "alj" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plastic{
-	amount = 5
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30;
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "alk" = (
@@ -34666,9 +34635,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "bFH" = (
-/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
-	anchored = 1
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	health = 500
@@ -46541,14 +46507,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
-"dZu" = (
-/obj/structure/reagent_dispensers/tank/ammonia,
-/obj/structure/window/reinforced/toughened{
-	dir = 4;
-	health = 500
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "dZZ" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
@@ -47634,14 +47592,6 @@
 	},
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
-"euW" = (
-/obj/structure/reagent_dispensers/tank/sacid,
-/obj/structure/window/reinforced/toughened{
-	dir = 8;
-	health = 500
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "eva" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
@@ -55519,7 +55469,6 @@
 	dir = 8;
 	health = 500
 	},
-/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "hQU" = (
@@ -58409,10 +58358,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"iZE" = (
-/obj/structure/reagent_dispensers/tank/sacid,
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "iZU" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/structure/disposalpipe/segment,
@@ -59884,7 +59829,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/starboard_hallway)
 "jDk" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light_construct{
 	dir = 4
 	},
 /turf/open/floor/almayer/orange/east,
@@ -59961,26 +59906,6 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "jFx" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/aluminum{
-	amount = 20
-	},
-/obj/item/stack/sheet/copper{
-	amount = 20;
-	pixel_y = 4
-	},
-/obj/item/stack/sheet/mineral/gold{
-	amount = 3;
-	pixel_y = 4
-	},
-/obj/item/stack/sheet/mineral/silver{
-	amount = 5;
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25
-	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "jFy" = (
@@ -62538,13 +62463,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "kJH" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	health = 500
+	},
+/obj/structure/machinery/light_construct{
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -63230,12 +63154,6 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = -5
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -65654,7 +65572,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "mgd" = (
 /obj/structure/machinery/autolathe/armylathe/partial,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light_construct{
 	dir = 1
 	},
 /turf/open/floor/almayer/cargo,
@@ -76492,9 +76410,6 @@
 /area/almayer/medical/lower_medical_lobby)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 20
-	},
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/lower/workshop/hangar)
 "qyP" = (
@@ -84509,10 +84424,6 @@
 	name = "Secure Storage Shutters";
 	id = "OTcenter"
 	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 12;
-	pixel_x = 6
-	},
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/lower/workshop/hangar)
 "tOW" = (
@@ -87433,14 +87344,11 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/upper_engineering/starboard)
 "uZV" = (
-/obj/structure/reagent_dispensers/tank/fuel/gas/methane{
-	anchored = 1
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
 	health = 500
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "uZZ" = (
@@ -93700,10 +93608,7 @@
 	dir = 4;
 	health = 500
 	},
-/obj/structure/reagent_dispensers/tank/ethanol{
-	anchored = 1
-	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "xrC" = (
@@ -139900,10 +139805,10 @@ prP
 ary
 bFN
 nmY
-alb
+bFI
 xHS
 tEd
-ale
+bFI
 nmY
 siT
 bUQ
@@ -140003,7 +139908,7 @@ rNK
 alm
 bFO
 nmY
-dZu
+bFH
 akW
 dKK
 bFH
@@ -140212,7 +140117,7 @@ nmY
 akT
 kyh
 qGw
-akT
+bFI
 nmY
 qpV
 hNh
@@ -140624,7 +140529,7 @@ nmY
 bFM
 akW
 qGw
-bFI
+qhD
 nmY
 lQf
 tHk
@@ -140724,7 +140629,7 @@ wDr
 wDr
 wDr
 wDr
-akT
+bFI
 akW
 qGw
 qhD
@@ -140930,7 +140835,7 @@ wDr
 wDr
 wDr
 wDr
-euW
+hQP
 akW
 qGw
 hQP
@@ -141033,10 +140938,10 @@ wDr
 wDr
 wDr
 wDr
-iZE
+bFI
 akY
 aId
-akU
+bFI
 nmY
 bIy
 bUQ

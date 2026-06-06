@@ -21793,6 +21793,12 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/chemistry)
+"bcE" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "bcF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -21804,6 +21810,10 @@
 /obj/effect/decal/heavy_cable/node_n_e_s,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/aft)
+"bcH" = (
+/obj/structure/machinery/cm_vending/gear/synth,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "bcI" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -21929,6 +21939,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
+"bcZ" = (
+/obj/structure/machinery/cm_vending/clothing/synth,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "bda" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	pixel_x = -1
@@ -22079,6 +22093,10 @@
 "bdr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
+"bds" = (
+/obj/structure/machinery/cm_vending/own_points/experimental_tools,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "bdt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -69329,6 +69347,8 @@
 "ltc" = (
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "ltm" = (
@@ -180540,7 +180560,7 @@ afM
 ebN
 tId
 fVx
-qQS
+bcE
 ebN
 naj
 itg
@@ -180847,9 +180867,9 @@ ahy
 ahc
 afP
 daz
-daz
-daz
-daz
+bds
+bcZ
+bcH
 daz
 daz
 daz

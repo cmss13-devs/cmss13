@@ -634,6 +634,9 @@
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
 	idtype = /obj/item/card/id/silver/cl
+	assignment = "Interstellar Commerce Commission Synthetic"
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_SURVIVOR)
 	role_comm_title = "ICC Syn"
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(

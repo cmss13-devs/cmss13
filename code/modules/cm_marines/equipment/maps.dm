@@ -149,6 +149,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	desc = "A labeled blueprint of the UA city Tyrargo Rift."
 	html_link = "images/7/79/Tyrargo_Rift.png"
 
+/obj/item/map/white_antre_map
+	name = "\improper White Antre Research Facility map"
+	desc = "An overview of the White Antre facility schematics."
+	html_link = "images/d/da/White_Antre_Research_Facility.png"
+	color = "cyan"
+
 /obj/item/map/cape_river
 	name = "\improper Cape River map"
 	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
@@ -180,6 +186,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
+		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
 		MAP_CAPE_RIVER = new /obj/item/map/cape_river()
 	)
 

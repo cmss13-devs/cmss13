@@ -18088,6 +18088,11 @@
 /area/almayer/middeck/req)
 "aUY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = list();
+	req_one_access = list(15,18);
+	vend_x_offset = 0
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha_bravo_shared)
 "aUZ" = (
@@ -22408,6 +22413,11 @@
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/living/cryo_cells)
 "bfn" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = list();
+	req_one_access = list(15,18);
+	vend_x_offset = 0
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha_bravo_shared)
 "bfo" = (
@@ -36506,15 +36516,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
-"bMy" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
-	vend_x_offset = 0
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/charlie_delta_shared)
 "bMA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie{
@@ -42323,8 +42324,8 @@
 /area/almayer/squads/charlie_delta_shared)
 "cby" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = list();
-	req_one_access = list(16,17);
+	req_access = null;
+	req_one_access = list(16,17,21);
 	vend_x_offset = 0
 	},
 /turf/open/floor/almayer/plate,
@@ -44383,7 +44384,7 @@
 /area/almayer/living/briefing)
 "cgr" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_one_access = list(16,17);
+	req_one_access = list(16,17,21);
 	vend_x_offset = 0;
 	vend_y_offset = 0;
 	req_access = list()
@@ -45787,7 +45788,7 @@
 "cjR" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = list();
-	req_one_access = list(15,18);
+	req_one_access = list(15,18,21);
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -150147,7 +150148,7 @@ mkx
 oSM
 vra
 cgr
-bMy
+cby
 cgr
 cby
 vra

@@ -37680,29 +37680,8 @@
 	pixel_y = 8;
 	pixel_x = 16
 	},
-/obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_x = 10;
-	pixel_y = 2
-	},
-/obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_x = -6;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_x = -5;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/coffeecup/wy{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 2;
-	pixel_y = 12
-	},
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 8;
-	pixel_y = 11
+/obj/structure/mug_rack{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)

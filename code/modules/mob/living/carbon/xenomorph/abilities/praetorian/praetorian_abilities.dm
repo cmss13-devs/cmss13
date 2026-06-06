@@ -123,34 +123,23 @@
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 50
 
-	// Config
-	/// Max distance of the hook
+	/// Max distance of the hook line
 	var/max_distance = 6
-	/// How many tiles the hooked targets can be thrown
-	var/secondary_throw_distance = 3
-	/// Windup of the hook
+	var/throw_max_range = 3
 	var/windup = 8 DECISECONDS
-	/// Determines if its the first hook or the second part
 	var/ability_used_once = FALSE
-	/// Targets that were caught by the hook
 	var/list/targets_added = list()
-	/// Targets that have been collided by the thrown people (second part of the hook)
 	var/list/targets_collided = list()
-	/// Last thrown target
 	var/throw_count = 0
-	/// Tail sprite thats hooked to the target post first hook
 	var/static/image/tail_image
-	/// Targetted turf that the targets will be thrown to
-	var/throw_turf
-	/// Tail sprite thats hooked to the target post first hook
-	var/obj/effect/beam/tail_beam
-	/// if the targets thrown hit an obstacle, humans, walls eg.
-	var/hit_obstacle = FALSE
-	/// How many were affected by the hooks
+	var/turf/throw_turf
+	var/list/tail_beams = list()
 	var/affected_count = 0
-	/// Telegraphed turfs
 	var/list/telegraph_atom_list = list()
-	var/list/turf_list = list()
+	var/reset_timer_id
+	var/fallback_timer_id
+	var/is_active = FALSE
+	var/expected_throw_count = 0
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

@@ -78,10 +78,9 @@
 	xeno_attack_delay(stabbing_xeno)
 	return ..()
 
+
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
-	var/blocked = FALSE
-	throw_turf = targetted_atom
 
 	if(!action_cooldown_check() || abduct_user.action_busy)
 		return
@@ -89,131 +88,210 @@
 	if(!abduct_user.check_state())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(!tail_image)
 		tail_image = image('icons/effects/status_effects.dmi', "hooked")
 
-	if(!ability_used_once)
-		targets_collided.len = 0
-		targets_added.len = 0
-		ability_used_once = TRUE
-
-		if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
-			return
-		var/turf/turfs_get = get_line(abduct_user, targetted_atom, FALSE)
-		for(var/turf/turfs in turfs_get)
-
-			if(turfs.density)
-				break
-
-			for(var/obj/structure/structure in turfs)
-				if(structure.density)
-					blocked = TRUE
-					break
-
-				if(istype(structure, /obj/structure/barricade))
-					blocked = TRUE
-					break
-
-			if(blocked)
-				break
-
-			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
-			turf_list += turfs
-
-		if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+	if(ability_used_once)
+		if(!length(targets_added))
+			reset_ability()
+			apply_cooldown()
 			return
 
-		for(var/turf/target_turfs in turf_list)
-			for (var/mob/living/carbon/target in target_turfs)
-				if(target.stat == DEAD)
-					continue
-				if(abduct_user.can_not_harm(target))
-					continue
-				if(target.mob_size > MOB_SIZE_BIG)
-					continue
-				if(!iscarbon(target))
-					continue
+		var/turf/throw_destination = get_turf(targetted_atom)
+		if(!throw_destination)
+			return
 
-				if(HAS_TRAIT(target, TRAIT_NESTED))
-					continue
-				targets_added += target
+		deltimer(reset_timer_id)
+		reset_timer_id = null
+		throw_turf = throw_destination
+		ability_used_once = FALSE
 
-		for(var/mob/living/target as anything in targets_added)
-			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-			tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
-			target.overlays += tail_image
+		var/list/collision_callbacks = list(/mob/living/carbon = CALLBACK(src, PROC_REF(handle_abduct_collision)))
+		var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(handle_abduct_end_throw)))
+		var/list/targets_to_throw = targets_added.Copy()
+		throw_count = 0
+		expected_throw_count = 0
 
-		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]!"))
-		abduct_user.emote("roar")
-		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
-		to_chat(targets_added, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
+		for(var/mob/living/target as anything in targets_to_throw)
+			var/turf/target_turf = get_turf(target)
+			if(!target_turf)
+				continue
+			var/throw_dir = get_dir(target_turf, throw_turf)
+			var/dist = min(get_dist(target_turf, throw_turf), throw_max_range)
+			var/turf/clamped_destination = get_ranged_target_turf(target_turf, throw_dir, dist)
+			abduct_user.throw_carbon(target, get_dir(target_turf, clamped_destination), dist, SPEED_VERY_FAST, immobilize = FALSE, collision_callbacks = collision_callbacks, end_throw_callbacks = end_throw_callbacks)
+			expected_throw_count++
 
-		return ..()
-	else
-		initial_throw()
+		fallback_timer_id = addtimer(CALLBACK(src, PROC_REF(on_throw_timeout)), 3 SECONDS, TIMER_STOPPABLE)
 		apply_cooldown()
+		. = ..()
 		return TRUE
 
+	if(!check_and_use_plasma_owner())
+		return
 
-/datum/action/xeno_action/activable/prae_abduct/proc/initial_throw()
-	var/mob/living/carbon/xenomorph/abduct_user = owner
-	var/list/collision_callbacks = list(/mob/living/carbon = CALLBACK(src, PROC_REF(handle_abduct_collision)))
-	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(handle_abduct_end_throw)))
-	throw_count = 0
+	if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
+		return
+
+	targets_collided.len = 0
+	targets_added.len = 0
+	telegraph_atom_list.len = 0
+
+	var/list/turf_list = list()
+	var/list/line_turfs = get_line(abduct_user, targetted_atom, FALSE)
+	var/blocked = FALSE
+	var/distance_walked = 0
+
+	for(var/turf/line_turf in line_turfs)
+		if(distance_walked >= max_distance)
+			break
+
+		if(line_turf == get_turf(abduct_user))
+			continue
+
+		if(line_turf.density)
+			break
+
+		for(var/obj/structure/structure in line_turf)
+			if(structure.density || istype(structure, /obj/structure/barricade))
+				blocked = TRUE
+				break
+
+		if(blocked)
+			break
+
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(line_turf, windup)
+		turf_list += line_turf
+		distance_walked++
+
+	is_active = TRUE
+	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+	RegisterSignal(abduct_user, COMSIG_PARENT_QDELETING, PROC_REF(on_oppressor_deleted))
+
+	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+		reset_ability()
+		return
+
+	ability_used_once = TRUE
+
+	for(var/turf/target_turf in turf_list)
+		for(var/mob/living/carbon/target in target_turf)
+			if(target.stat == DEAD)
+				continue
+			if(abduct_user.can_not_harm(target))
+				continue
+			if(target.mob_size > MOB_SIZE_BIG)
+				continue
+			if(HAS_TRAIT(target, TRAIT_NESTED))
+				continue
+			targets_added += target
+
+	if(!length(targets_added))
+		reset_ability()
+		apply_cooldown()
+		return
+
 	for(var/mob/living/target as anything in targets_added)
-		abduct_user.throw_carbon(target, get_dir(target, throw_turf), secondary_throw_distance, SPEED_VERY_FAST, immobilize=FALSE, collision_callbacks=collision_callbacks, end_throw_callbacks=end_throw_callbacks)
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		tail_beams += abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
+		target.overlays += tail_image
 
-/// Callback for other carbons that get collided with in abduct
+	to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]!"))
+	for(var/mob/living/target as anything in targets_added)
+		to_chat(target, SPAN_DANGER("You are rooted by [abduct_user]'s tail!"))
+	abduct_user.emote("roar")
+
+	reset_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS, TIMER_STOPPABLE)
+	return ..()
+
 /datum/action/xeno_action/activable/prae_abduct/proc/handle_abduct_collision(mob/living/carbon/collided)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
 	if(!abduct_user.can_not_harm(collided))
 		targets_collided += collided
-		collided.Stun(0.7) // We can't knockdown here else they're no longer a collide target	to_chat(collided, SPAN_XENODANGER("You lose your footing as you're slammed into someone!"))
+		collided.Stun(0.7)
+		to_chat(collided, SPAN_XENODANGER("You lose your footing as you're slammed into someone!"))
 		playsound(collided, 'sound/weapons/alien_claw_block.ogg', 75, 1)
 
-/// Callback for the end of an abduct for a carbon
 /datum/action/xeno_action/activable/prae_abduct/proc/handle_abduct_end_throw()
-	if(++throw_count < length(targets_added))
-		return // Still other throws processing - we want the last
+	if(++throw_count < expected_throw_count)
+		return
 
-	for(var/mob/living/target as anything in targets_added)
-		if(!(target in targets_collided))
+	deltimer(fallback_timer_id)
+	fallback_timer_id = null
+
+	var/list/snapshot_targets = targets_added.Copy()
+	var/list/snapshot_collided = targets_collided.Copy()
+
+	for(var/mob/living/target as anything in snapshot_targets)
+		if(target.stat == DEAD)
+			continue
+		if(target in snapshot_collided)
+			target.KnockDown(0.7)
+		else
 			target.Stun(0.7)
 			target.KnockDown(0.7)
-			to_chat(targets_added, SPAN_XENODANGER("You are swept off your feet as [owner]'s tail throws you around!"))
+			to_chat(target, SPAN_XENODANGER("You are swept off your feet as [owner]'s tail throws you around!"))
 			playsound(target, 'sound/weapons/alien_claw_block.ogg', 75, 1)
-			affected_count++
-	for(var/mob/living/target as anything in targets_collided)
-		target.KnockDown(0.7) // We could also just do all effects/chat/sound here instead of some in handle_abduct_collision
-		affected_count++
 
-	if(length(targets_collided))
+	for(var/mob/living/target as anything in snapshot_collided)
+		if(target.stat == DEAD)
+			continue
+		target.KnockDown(0.7)
+
+	if(length(snapshot_collided))
 		to_chat(owner, SPAN_XENODANGER("We use our tail to slam our targets together!"))
-
 	else
 		to_chat(owner, SPAN_XENODANGER("We spring our tail and throw them around!"))
 
-	qdel(tail_beam)
-	apply_cooldown()
 	owner.emote("roar")
 	to_chat(owner, SPAN_XENONOTICE("Our tail returns!"))
 
-
 	reset_ability()
 
+/datum/action/xeno_action/activable/prae_abduct/proc/on_throw_timeout()
+	reset_ability()
 
 /datum/action/xeno_action/activable/prae_abduct/proc/reset_ability()
+	if(!is_active)
+		return
+
+	is_active = FALSE
+	var/mob/living/carbon/xenomorph/abduct_user = owner
+
 	for(var/mob/living/target in targets_added)
 		REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 		target.overlays -= tail_image
+
+	for(var/obj/effect/telegraph in telegraph_atom_list)
+		if(!QDELETED(telegraph))
+			qdel(telegraph)
+
+	for(var/obj/effect/beam/tail_beam in tail_beams)
+		qdel(tail_beam)
+
 	targets_added.Cut()
 	targets_collided.Cut()
+	telegraph_atom_list.Cut()
+	tail_beams.Cut()
 
 	ability_used_once = FALSE
-	apply_cooldown()
+	throw_turf = null
+	expected_throw_count = 0
+	throw_count = 0
+
+	deltimer(reset_timer_id)
+	deltimer(fallback_timer_id)
+	reset_timer_id = null
+	fallback_timer_id = null
+
+	if(abduct_user)
+		REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		UnregisterSignal(abduct_user, COMSIG_PARENT_QDELETING)
+
+/datum/action/xeno_action/activable/prae_abduct/proc/on_oppressor_deleted()
+	SIGNAL_HANDLER
+	reset_ability()
+
 
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)

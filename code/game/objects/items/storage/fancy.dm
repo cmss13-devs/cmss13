@@ -212,7 +212,7 @@
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
 	desc = "Smoke 'em if you gottem! Quite popular amongst people living in the Three World Empire."
-	desc_lore = "A TWE staple since before the first colonial expansion, Balaji Imperials have followed the Empire's soldiers across every front they've ever marched on. Rich, full bodied, and completely unforgiving on the lungs, they are not a cigarette for the faint of heart. They burn fast. Faster than you can shout 'Glory to the Three World Empire!"
+	desc_lore = "A TWE staple since before the first colonial expansion, popularized by commercial towing crews and early pioners. Rich, full bodied, and completely unforgiving on the lungs, they are not a cigarette for the faint of heart. They burn fast. Faster than you can shout 'Glory to the Three World Empire!'"
 	icon_state = "bpacket"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials.dmi'
 	item_state = "bpacket"

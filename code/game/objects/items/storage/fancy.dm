@@ -252,7 +252,7 @@
 /obj/item/storage/fancy/cigarettes/blackpack
 	name = "\improper Executive Select packet"
 	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory... and cigarette smoke."
-	desc_lore = "The most expensive cigarette in the galaxy, Executive Selects have been the calling card of the corporate elite since the late 22nd century. The original formula was quietly reformulated sometime around 2180, following a series of legal proceedings that remain sealed to this day. The brand still commands the same price, the same status, and among long time smokers, the same distinctive cough."
+	desc_lore = "The most expensive cigarette in the galaxy, Executive Selects have been the calling card of the corporate elite since the early 22nd century. The original formula was quietly reformulated sometime around 2180, following a series of legal proceedings that remain sealed to this day. The brand still commands the same price, the same status, and among long time smokers, the same distinctive cough."
 	icon_state = "blackpacket"
 	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"

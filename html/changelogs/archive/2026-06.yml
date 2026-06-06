@@ -55,3 +55,32 @@
       apply to the main hive.
   - rscadd: Working Joe can now be joined after round end/hijack.
   - rscadd: Staff disabling WJ restrictions will now open it to non-whitelisted players.
+2026-06-05:
+  Unknownity:
+  - bugfix: Medical notes created by players can be viewed in the Medical Records
+      again.
+  - bugfix: The employment records console can be accessed shipside again.
+2026-06-06:
+  Steelpoint, NightKnight, Contra:
+  - mapadd: The White Antre Research Facility, a new map set within a secretive joint
+      corporate-military research facility on a partially frozen world, has been added
+      to the game.
+  - code_imp: Framework to facilitate automatic USCM high command and queen mother
+      messages to be sent, have been added. This is currently used for White Antre,
+      but the code can be used for any other map.
+  - code_imp: A new 'survivor announcement' system has also been created to allow
+      automated messages to be sent to survivor players for specific maps.
+  - rscadd: A set of new atmospheric audio files have been added for White Antre.
+  - rscadd: A series of 'random explosion' effects have been added for mapper use.
+      This effect will cause an explosion (akin to a hijack explosion) to occur within
+      a preset timeframe.
+  - imageadd: A new set of floodlight and switch sprites have been added.
+  - code_imp: A secondary colony floodlight system has been added. These alternative
+      floodlights start turned on by default. However, the switch itself can be disable
+      by xenomorphs if they slash it. This pairing of floodlights and switch operate
+      on a separate network to the regular colony floodlights, meaning disabling one
+      will not disable the other and vice versa.
+  - code_imp: The ability to swap what host species a round-start larva will spawn
+      inside of has been added for map makers. You may edit a new variable on the
+      xenomorph spawner in SDMM to change the species. Spawners use humans as the
+      default option. Non-human spawns will spawn unnested but ready to burst.

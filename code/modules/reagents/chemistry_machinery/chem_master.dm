@@ -709,7 +709,7 @@
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
 		return
-	if(!length(job_check) || !(user.job in job_check))
+	if(length(job_check) && !(user.job in job_check))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
 		return FALSE
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))

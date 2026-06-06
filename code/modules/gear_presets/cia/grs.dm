@@ -128,7 +128,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m47/weak, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/grenadier, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/carbine/le, WEAR_J_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
@@ -225,10 +225,14 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/cia_grs(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/mp5a6/full, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/near_empty, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
+			if(strength_type == STRENGTH_WEAK)
+				new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/near_empty, WEAR_L_STORE)
+				new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/cia_grs(new_human), WEAR_J_STORE)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5/black, WEAR_L_STORE)
+
 
 		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
@@ -309,7 +313,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
-				new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/carbine, WEAR_J_STORE)
+				new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/carbine/le, WEAR_J_STORE)
 				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m47/weak, WEAR_WAIST)
 			else
 				new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/lever_action/xm88/cia, WEAR_J_STORE)
@@ -397,8 +401,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/medium_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_BACK)
+			if(strength_type == STRENGTH_WEAK)
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
 
 		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/es7/tactical/lethal, WEAR_J_STORE)
@@ -571,7 +576,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m47/weak, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/grenadier, WEAR_J_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
@@ -589,10 +594,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m47/ap, WEAR_WAIST)
 
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/ap, WEAR_J_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_JACKET)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4_breaching, WEAR_L_STORE)
@@ -666,14 +671,14 @@
 
 	switch(strength_type)
 		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47, WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_ACCESSORY)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/half, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47/carbine/le, WEAR_J_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m47/ap, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m47/le, WEAR_L_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)

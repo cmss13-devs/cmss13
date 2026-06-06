@@ -173,6 +173,9 @@
 /obj/item/weapon/gun/rifle/m47/carbine/handle_starting_attachment()
 	return
 
+/obj/item/weapon/gun/rifle/m47/carbine/le
+	current_mag = /obj/item/ammo_magazine/rifle/m47/le
+
 /obj/item/weapon/gun/rifle/m47/ap
 	current_mag = /obj/item/ammo_magazine/rifle/m47/ap
 

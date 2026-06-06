@@ -897,9 +897,9 @@
 /obj/item/storage/belt/marine/black/m47/weak/fill_preset_inventory()
 		new /obj/item/ammo_magazine/rifle/m47/ap (src)
 		new /obj/item/ammo_magazine/rifle/m47/le (src)
-		new /obj/item/ammo_magazine/rifle/m47 (src)
-		new /obj/item/ammo_magazine/rifle/m47 (src)
-		new /obj/item/ammo_magazine/rifle/m47 (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
 
 /obj/item/storage/belt/marine/black/m47/heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

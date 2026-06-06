@@ -955,6 +955,7 @@
 
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
@@ -974,6 +975,21 @@
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/dirty/alt
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
+
+/obj/item/weapon/gun/smartgun/cia_grs/no_ap
+	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
+	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target
+	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
+	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
+
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator

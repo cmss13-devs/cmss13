@@ -11063,7 +11063,7 @@
 	req_one_access = list(36)
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aBQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm{
@@ -12530,7 +12530,7 @@
 	pixel_y = 18
 	},
 /turf/open/floor/almayer/cargo_arrow,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aFN" = (
 /obj/item/tool/wet_sign,
 /turf/open/floor/almayer/plate,
@@ -12636,7 +12636,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aGf" = (
 /obj/structure/janitorialcart,
 /obj/item/tool/mop,
@@ -12762,7 +12762,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aGz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
@@ -12827,7 +12827,7 @@
 	can_block_movement = 0
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aGK" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -12838,7 +12838,7 @@
 /obj/structure/largecrate/random/case/double,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "aGM" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -49482,12 +49482,6 @@
 "cro" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/command/airoom)
-"crp" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/synthcloset)
-"crq" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
 "crD" = (
 /turf/open/floor/almayer/greencorner/north,
 /area/almayer/squads/req)
@@ -51461,7 +51455,7 @@
 	name = "ship-grade camera"
 	},
 /turf/open/floor/plating,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "dmF" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -55348,7 +55342,7 @@
 	},
 /obj/item/trash/hotdog,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "eYR" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
@@ -60745,7 +60739,7 @@
 /area/almayer/command/airoom)
 "hyQ" = (
 /turf/closed/wall/almayer,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "hyT" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_y = 32
@@ -73547,7 +73541,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "nri" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/working_joe{
@@ -76651,7 +76645,7 @@
 /obj/item/hybrisa/misc/trash_bag_full_prop,
 /obj/effect/decal/hybrisa/trash,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "oGy" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -82443,7 +82437,7 @@
 "rlf" = (
 /obj/structure/bed/chair/janicart,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "rlh" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/power/apc/almayer/north,
@@ -83070,7 +83064,7 @@
 /obj/structure/janitorialcart,
 /obj/item/storage/bag/trash,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "rBb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -83467,7 +83461,7 @@
 "rIW" = (
 /obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "rJh" = (
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -83508,7 +83502,7 @@
 "rJD" = (
 /obj/item/trash/kepler,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "rJK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -84914,7 +84908,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "sov" = (
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower/engine_core)
@@ -92446,7 +92440,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "vEr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -94593,7 +94587,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "wvX" = (
 /obj/structure/sign/safety/analysis_lab{
 	pixel_y = 26
@@ -97488,7 +97482,7 @@
 	layer = 2.8
 	},
 /turf/open/floor/almayer/cargo,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "xLi" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -98556,7 +98550,7 @@
 	},
 /obj/item/tool/mop,
 /turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
+/area/almayer/command/cic)
 "yjb" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
@@ -200340,13 +200334,13 @@ aag
 cZe
 cCL
 vDz
-crp
-crp
-crp
-crp
-crp
-crp
-crp
+wVW
+wVW
+wVW
+wVW
+wVW
+wVW
+wVW
 kWq
 qnh
 aVG
@@ -200443,7 +200437,7 @@ cZe
 cZe
 iPq
 cmr
-crp
+wVW
 aGL
 aGJ
 aGy
@@ -200546,7 +200540,7 @@ gSy
 ltw
 iPq
 cGA
-crp
+wVW
 rlf
 soq
 eYQ
@@ -200649,11 +200643,11 @@ sit
 snx
 oVY
 cmr
-crp
+wVW
 rBa
-crq
+avY
 vEj
-crq
+avY
 rJD
 hyQ
 fEk
@@ -200752,7 +200746,7 @@ nRE
 cmr
 cmr
 sWw
-crp
+wVW
 rIW
 oGx
 wvU

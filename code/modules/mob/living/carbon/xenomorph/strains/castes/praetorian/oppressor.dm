@@ -116,11 +116,8 @@
 			var/turf/target_turf = get_turf(target)
 			if(!target_turf)
 				continue
-			var/throw_dir = get_dir(target_turf, throw_turf)
-			var/dist = min(get_dist(target_turf, throw_turf), throw_max_range)
-			var/turf/clamped_destination = get_ranged_target_turf(target_turf, throw_dir, dist)
-			abduct_user.throw_carbon(target, get_dir(target_turf, clamped_destination), dist, SPEED_VERY_FAST, immobilize = FALSE, collision_callbacks = collision_callbacks, end_throw_callbacks = end_throw_callbacks)
 			expected_throw_count++
+			INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), throw_turf, 4, SPEED_VERY_FAST, null, TRUE, NORMAL_LAUNCH, NO_FLAGS, end_throw_callbacks, collision_callbacks)
 
 		fallback_timer_id = addtimer(CALLBACK(src, PROC_REF(on_throw_timeout)), 3 SECONDS, TIMER_STOPPABLE)
 		apply_cooldown()
@@ -141,6 +138,7 @@
 	var/list/line_turfs = get_line(abduct_user, targetted_atom, FALSE)
 	var/blocked = FALSE
 	var/distance_walked = 0
+
 
 	for(var/turf/line_turf in line_turfs)
 		if(distance_walked >= max_distance)
@@ -292,8 +290,6 @@
 	SIGNAL_HANDLER
 	reset_ability()
 
-
-
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/oppressor_user = owner
 
@@ -395,6 +391,10 @@
 		xeno.throw_carbon(target_living, dir_to_fling, 3, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 		target_living.Stun(1)
 		xeno.Root(1)
+		var/datum/effect_system/smoke_spread/dash_dust/dash_smoke = new()
+		dash_smoke.set_up(0, 0, get_turf(target_living), null, 6)
+		dash_smoke.start()
+		new /obj/effect/particle_effect/dash_dust (get_turf(target_living))
 
 		target_living.apply_armoured_damage(fling_damage)
 		playsound(target_living, 'sound/weapons/alien_claw_block.ogg', 75, 1)

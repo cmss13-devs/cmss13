@@ -68476,13 +68476,13 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/device/flashlight/lamp{
-	pixel_x = 3;
-	pixel_y = 1
-	},
 /obj/item/clothing/accessory/rosary{
 	pixel_x = -4;
 	pixel_y = 5
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_x = 3;
+	pixel_y = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)

@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Scientist survs no longer need to drop stuff to be able to use it properly. Sometimes. And finally get their thermal tarp they were supposed to roll to spawn with for 3 years."

@@ -40,9 +40,7 @@
 		reagents.reaction(A)
 	return ..()
 
-
 /obj/effect/particle_effect/dash_dust
-
 	name = "dash dust"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "dashdust"

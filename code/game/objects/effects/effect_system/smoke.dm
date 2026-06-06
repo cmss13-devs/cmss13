@@ -910,8 +910,6 @@
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
 
-
-
 /obj/effect/particle_effect/smoke/dash_dust
 	name = "kicked up dust"
 	smokeranking = SMOKE_RANK_HARMLESS

@@ -4,7 +4,7 @@
 	var/mob/living/carbon/xenomorph/facehugger = owner
 	if(!istype(facehugger) || interrupted)
 		return
-	facehugger.update_icons(TRUE)
+	facehugger.update_icons()
 
 /datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/L)
 	if(!ishuman(L))

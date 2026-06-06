@@ -57,7 +57,7 @@
 
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.
 	name = "Chigusa Shipyard Sign"
-	desc = "A large sign that reads 'Chigusa Shipyard - Subsidary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
+	desc = "A large sign that reads 'Chigusa Shipyard - Subsidiary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
 	icon_state = "laz_sign" //TODO make unique icon.
 
 /obj/structure/lz_sign/hybrisa_sign
@@ -98,3 +98,18 @@
 	name = "Tyrargo Rift - city limit sign"
 	desc = "A large sign designating the city limit of Tyrargo Rift."
 	icon_state = "tyrargo_sign_4"
+
+/obj/structure/lz_sign/antre_sign
+	name = "White Antre - Supply Depot Landing Pad"
+	desc = "A medium sized sign, illuminated by red lights, designating this area as a supply depot landing zone for a nearby facility."
+	icon_state = "antre_sign_1"
+
+/obj/structure/lz_sign/antre_sign/town
+	name = "Fort McNair sign"
+	desc = "A small sized sign, indicating that this road leads to a location called 'Fort McNair'."
+	icon_state = "antre_sign_2"
+
+/obj/structure/lz_sign/antre_sign/facility
+	name = "White Antre Research Facility"
+	desc = "A medium sized sign, designating this area as the White Antre Research Facility."
+	icon_state = "antre_sign_3"

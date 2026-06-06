@@ -55,14 +55,14 @@
 
 /obj/item/pamphlet/upgradeable/engineer
 	name = "engineer instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge of maintaining and repairing machinery, and among other forms of construction work as well. You suppose it could impart some knowledge regarding the use of heavier-duty equipment "
+	desc = "A pamphlet used to quickly impart vital knowledge of maintaining and repairing machinery, and among other forms of construction work as well. You suppose it could impart some knowledge regarding the use of heavier-duty equipment."
 	icon_state = "pamphlet_construction"
 	skill_upgrade = SKILL_CONSTRUCTION
 	second_upgrade = SKILL_ENGINEER
 
 /obj/item/pamphlet/upgradeable/jtac
 	name = "JTAC instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge of being a Joint Terminal Attack Controller, or JTAC for short. "
+	desc = "A pamphlet used to quickly impart vital knowledge of being a Joint Terminal Attack Controller, or JTAC for short."
 	icon_state = "pamphlet_jtac"
 	skill_upgrade = SKILL_JTAC
 	skill_cap = 2
@@ -111,3 +111,9 @@
 	name = "overwatch console manual"
 	desc = "A manual used to quickly impart vital knowledge on operating overwatch consoles."
 	skill_upgrade = SKILL_OVERWATCH
+
+/obj/item/pamphlet/upgradeable/fireman_carry
+	name = "fireman carry instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a figure carrying another person on their shoulders on it."
+	icon_state = "pamphlet_fireman_carry"
+	skill_upgrade = SKILL_FIREMAN

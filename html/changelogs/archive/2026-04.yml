@@ -1,0 +1,142 @@
+2026-04-04:
+  ori-disillusion-mirnov:
+  - maptweak: synths now spawn in the ares core. their old spawn is replaced with
+      a janitor closet
+2026-04-06:
+  MistChristmas:
+  - code_imp: Add a Hear only language flag, And lazy list defines for adding and
+      removing bitflags.
+  - bugfix: Corrupted Xenos can no longer speak English.
+  - ui: Check known languages menu will let you know if you can't speak a language
+      but can understand it.
+  ori-disillusion-mirnov:
+  - bugfix: walkman headphones will now show up again when you wear them on your ears
+2026-04-07:
+  MistChristmas:
+  - rscadd: Labels are more strict on what they allow. Only alphanumeric characters
+      plus common punctuation, spaces, underscore, hyphen, plus, and vertical bar.
+2026-04-08:
+  MistChristmas:
+  - bugfix: Psychic Property still generating and not being Admin spawn only.
+2026-04-09:
+  DangerRevolution:
+  - maptweak: Changed the spawn markers on Kutjevo Refinery's Comms to prevent two
+      towers spawning next to eachother.
+  ori-disillusion-mirnov:
+  - imageadd: readd old hudead and hudhcdead
+  - imagedel: deleted new huddead and hudhcdead
+2026-04-11:
+  hry-gh:
+  - bugfix: fixes server lag when updating the minimap, after having opened and closed
+      the minimap sufficient times in a round
+2026-04-14:
+  Jesters-Ballad:
+  - rscadd: Added Three Patches to Civilian Gear
+2026-04-16:
+  JackieEstegado:
+  - bugfix: Organ healing chemicals no longer produce messages falsely indicating
+      organ damage being taken.
+2026-04-18:
+  DangerRevolution:
+  - maptweak: Removed some accessible OOB areas on Chance's Claim that could be tunneled
+      into / cored etc
+  JackieEstegado:
+  - bugfix: Marines now need to take the wrappers off their food instead of just eating
+      through it.
+  - qol: Food wrappers will now go into a hand if possible, instead of onto the ground.
+  - qol: Unpowered disposal bins can now be manually emptied by hand.
+  LC4492:
+  - spellcheck: The 'Funny Telephone Booths' in Fiorina aren't funny anymore.
+  MistChristmas:
+  - rscadd: Cooldowns to give and force showing papers. Force showing papers also
+      need the receiving person to be on help intent as well.
+  Nomoresolvalou:
+  - rscadd: Added Weyland Yutani hat and patches to the synth loadout picker.
+  Red-byte3D:
+  - balance: Scouts HV bullets now add a small "MD" like blip to every non-faction
+      you shoot, blipping continously and revealing their position like an MD would,
+      for every marine thats close to the xenomorph for 10 seconds.
+  Unknownity:
+  - bugfix: Desert Moon temple walls are indestructible again.
+2026-04-21:
+  Ammoniacres:
+  - rscadd: Added a few extra properties to a variety of basic chemicals. Medical
+      chems not affected by this change.
+  - rscadd: Space drugs are now (minorly) addictive!
+  - bugfix: Fixed PROPERTY_HEMORRHAGING on radium, preventing it from working properly.
+2026-04-22:
+  Drathek:
+  - bugfix: Fixes a couple stylesheet errors affecting tactical sign language (both
+      chats) and hyperdyne radios (non-fancy chat)
+2026-04-23:
+  Zenith:
+  - imagetweak: Added some colorable statue bases & a new carpet color.
+  - maptweak: Minor tweaks to Pred related coffins, statues and other Pred related
+      things on Trijent, LV & the Hunter Ship maps.
+2026-04-24:
+  Bibby0110:
+  - rscadd: Xenos in the hunting grounds now get a prefix to distinguish them
+  Detective-Google:
+  - bugfix: Corporate Bodyguard now can view the tacmap.
+  - bugfix: typos in navy paygrades
+  Puckaboo2:
+  - spellcheck: More spell and grammar checks done in strings of text.
+  Venuska1117:
+  - balance: Improved Dancer strain.
+  - balance: Decresed Imaple and Tail Trip "miss" cooldowns from 1.5s to 0.7s.
+  - balance: Increased Tail Trip range from 1 tile to 2 tiles.
+  - balance: Dodge ability active time is reduced from 10s to 7s, in exchange ability
+      now behaves similar to lurker invisibility, 1s used is 2s cooldown, can be deactivated
+      at any time.
+  - balance: Dancer get passive "dodge_threshold" ability , dancer can avoid 1 every
+      6th projectile, when "Dodge" ability is active it increases to 1 every 3rd projectile.
+  - rscadd: 'New "dodge_threshold" system, this system makes you avoid projectiles,
+      you cannot avoid following: sniper ammo, rockets, explosives, melee and Fire.'
+  - rscadd: New "Yellow Tags" system, have same usage as red variant of marks but
+      to trigger yellow marks you need to drive target to critical condition (health
+      under 0)
+  - rscadd: Slashing "Yellow Tags" now resets cooldown of both Impale and Tail Trip
+      abilities, if you use ability on target instead of slashing, you will reset
+      that specific ability cooldown.
+  - rscadd: New "Tail Lance" ability for Dancer, new tailstab that changes depending
+      on intent, on DISARM intent it will cause 8 AP damage to targeted limb, its
+      usage cooldown is 3 seconds.
+  - rscadd: Dancer now have recovery multiplier of 1.35 but their phermone gains cannot
+      be higher than "strong" tier.
+  - rscadd: Dodge now have new "afterimage" effect, its purely visual addition to
+      indicate if dodge ability is active.
+  - rscadd: Spectators now gain new HUD option called "Xeno Effects HUD", this hud
+      allows you to see effects that are exclusive to Xeno players.
+2026-04-25:
+  Arom-beep:
+  - rscadd: Added hot key for smartgun aim assist
+  Gorap:
+  - balance: Allows NSG to have flashlight grip.
+  ori-disillusion-mirnov:
+  - balance: turing dispenser and xeno analyzer thingy are no longer meltable
+2026-04-26:
+  KornFlaks:
+  - rscadd: King vote list is now randomized between different voters.
+  MistChristmas:
+  - bugfix: Dropship controls now recognise Senior Command Access as valid.
+  private-tristan:
+  - rscadd: Added a total of 41 new tips to the game!
+2026-04-27:
+  ComboTombo:
+  - bugfix: The elevator landing at Trijent Dam's wilderness valley now has an APC
+      powering it
+  - bugfix: The APCs powering the elevator landings at Trijent Dam's wilderness and
+      medical valleys now have metal walls and floors to allow for field repairs without
+      requiring admin intervention
+  - bugfix: The elevator shaft at the medical valley now has a docking port
+  - maptweak: 'Added two new areas to Trijent Dam that can be powered with an APC:
+      "Medical Valley Elevator Landing" and "Wilderness Valley Elevator Landing"'
+  - spellcheck: Changed "curtesy" to "courtesy" in the elevator control panel
+2026-04-28:
+  cuberound:
+  - rscadd: Resin doors and walls construct wall above them when made in open, damage
+      taken by that wall is transfered to the lower wall and they get destroyed in
+      unison. Bullet pings on upper wall are mirrored on lower one to alert the xenos
+2026-04-29:
+  Rocky0558:
+  - bugfix: Sensor tower now damaging by explosions rather than repairing

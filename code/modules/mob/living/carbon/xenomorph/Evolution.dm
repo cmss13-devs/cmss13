@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	do_evolve()
 
@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
-		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, 1 MINUTES, theme="hive_status")
 	else
 		var/list/fancy_caste_list = list()
 		for(var/caste in castes_available)
@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			if(3)
 				hive.tier_3_xenos |= new_xeno
 
-	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno]. (Location: [AREACOORD(loc)])")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -238,6 +238,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
+		return FALSE
+
+	if(hivenumber == XENO_HIVE_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_WARNING("Our connection to the hive was broken! We cannot evolve!"))
 		return FALSE
 
 	if(is_ventcrawling)
@@ -348,7 +352,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	if(!check_state())
 		return
@@ -387,7 +391,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, theme="hive_status")
+		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, 1 MINUTES, theme="hive_status")
 
 	if(!newcaste)
 		return
@@ -413,7 +417,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
-		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
+		log_game("EVOLVE: [key_name(new_xeno)] de-evolved into [new_xeno]. (Location: [AREACOORD(new_xeno.loc)])")
 
 	if(new_xeno.ckey)
 		GLOB.deevolved_ckeys += new_xeno.ckey

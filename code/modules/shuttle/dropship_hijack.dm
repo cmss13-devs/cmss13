@@ -9,13 +9,14 @@
 	var/final_announcement = FALSE
 
 /datum/dropship_hijack/almayer/proc/crash_landing()
+	var/list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	//break APCs
-	for(var/obj/structure/machinery/power/apc/A in GLOB.machines)
-		if(A.z != crash_site.z)
+	for(var/obj/structure/machinery/power/apc/apc in GLOB.machines)
+		if(!(apc.z in z_levels))
 			continue
-		if(prob(A.crash_break_probability))
-			A.overload_lighting()
-			A.set_broken()
+		if(prob(apc.crash_break_probability))
+			apc.overload_lighting()
+			apc.set_broken()
 
 	var/centre_x = crash_site.x + (crash_site.width / 2)
 	//determine outside of ship location

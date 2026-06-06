@@ -221,7 +221,7 @@
 /obj/item/storage/fancy/cigarettes/balaji_4
 	name = "\improper Balaji Imperial Mini packet"
 	desc = "Smoke 'em if you gottem! Now in the field, with a new compact package!"
-	desc_lore = "Tucked into TWE field rations sometime in the early 23rd century, these compact Balajis have been a small but meaningful comfort to soldiers a long way from home. Rich, fast burning, and considerably better than what most armies bother to stuff into a ration kit. Getting your hands on these outside of TWE space is notoriously difficult."
+	desc_lore = "Tucked into TWE field rations sometime in the early 21st century, these compact Balajis have been a small but meaningful comfort to soldiers a long way from home. Rich, fast burning, and considerably better than what most armies bother to stuff into a ration kit. Getting your hands on these outside of TWE space is notoriously difficult."
 	icon_state = "b4packet"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials_mini.dmi'
 	item_state = "bpacket"

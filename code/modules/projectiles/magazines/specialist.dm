@@ -48,7 +48,6 @@
 	default_ammo = /datum/ammo/bullet/sniper/elite
 	gun_type = /obj/item/weapon/gun/rifle/sniper/elite
 	caliber = "10x99mm"
-	icon_state = "m42c"
 	max_rounds = 6
 	ammo_band_icon = "+xm43e1_band"
 	ammo_band_icon_empty = "+xm43e1_band_e"

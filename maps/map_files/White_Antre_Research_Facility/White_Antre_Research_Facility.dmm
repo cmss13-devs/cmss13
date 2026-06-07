@@ -1086,6 +1086,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
+"acS" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/research/containment/corner,
+/area/white_antre/indoors/upper_level/simian_storage)
 "acT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -2551,10 +2555,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/white_antre/indoors/upper_level/simian_storage)
-"agm" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer/research/containment/corner,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agn" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony,
@@ -159213,7 +159213,7 @@ bRB
 agN
 bHH
 agQ
-agm
+acS
 bHW
 agw
 bjn

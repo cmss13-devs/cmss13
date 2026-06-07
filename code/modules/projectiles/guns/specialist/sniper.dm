@@ -424,8 +424,8 @@
 	sniper_beam_type = /obj/effect/ebeam/laser
 	sniper_beam_icon = "laser_beam"
 	sniper_lockon_icon = "sniper_lockon"
-	pixel_x = -4
-	hud_offset = -4
+	pixel_x = -5
+	hud_offset = -5
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
 	. = ..()
@@ -495,6 +495,8 @@
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
 	has_aimed_shot = FALSE
+	pixel_x = -2
+	hud_offset = -2
 
 /obj/item/weapon/gun/rifle/sniper/elite/Initialize()
 	. = ..()

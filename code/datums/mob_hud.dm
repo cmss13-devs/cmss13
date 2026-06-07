@@ -975,6 +975,8 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")
 
+
+
 /mob/proc/hud_set_new_player()
 	return
 

@@ -49,7 +49,7 @@
 	"chat.agent.maxRequests": 0,
 	"chat.commandCenter.enabled": false,
 	"chat.detectParticipant.enabled": false,
-	"chat.disableAIFeatures": true,
+	"chat.disableAIFeatures": false,
 	"chat.extensionTools.enabled": false,
 	"chat.focusWindowOnConfirmation": false,
 	"chat.implicitContext.enabled": {

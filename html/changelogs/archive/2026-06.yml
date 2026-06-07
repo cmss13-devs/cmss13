@@ -84,3 +84,12 @@
       inside of has been added for map makers. You may edit a new variable on the
       xenomorph spawner in SDMM to change the species. Spawners use humans as the
       default option. Non-human spawns will spawn unnested but ready to burst.
+2026-06-07:
+  MistChristmas:
+  - bugfix: Scientist survs no longer need to drop stuff to be able to use it properly.
+      Sometimes. And finally get their thermal tarp they were supposed to roll to
+      spawn with for 3 years.
+  armsdealer9876:
+  - bugfix: Rosary's now use accessory slots in helmets
+  ori-disillusion-mirnov:
+  - balance: backblast knockdown time on xenos is halved

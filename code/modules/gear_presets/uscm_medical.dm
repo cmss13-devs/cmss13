@@ -186,13 +186,6 @@
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_CHEMISTRY,
 		ACCESS_MARINE_MORGUE,
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
 	)
 	assignment = JOB_RESEARCHER
 	job_title = JOB_RESEARCHER
@@ -222,4 +215,3 @@
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_one(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/syringe(new_human), WEAR_IN_BACK)

@@ -104,7 +104,7 @@
 	new /obj/item/clothing/mask/surgical(src)
 
 /obj/item/storage/box/bloodbag
-	name = "empty box of blood bags"
+	name = "box of blood bags"
 	desc = "This box can hold all kinds of blood bags."
 	icon_state = "blood"
 	item_state = "blood"

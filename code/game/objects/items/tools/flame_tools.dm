@@ -207,6 +207,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
 	)
+	item_state_slots = list(
+		WEAR_FACE = "cigoff"
+	)
 	throw_speed = SPEED_AVERAGE
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
@@ -344,7 +347,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			return
 		flags_atom &= ~NOREACT // allowing reagents to react after being lit
 		reagents.handle_reactions()
-		icon_state = icon_on
+		icon_state = "[icon_on]_1"
+		item_state_slots[WEAR_FACE] = icon_on
 		item_state = icon_on
 		set_light_range(1)
 		set_light_power(0.5)
@@ -371,10 +375,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(isliving(loc))
 		M.IgniteMob()
 	smoketime -= delta_time SECONDS
-	if(smoketime < 1)
-		smoketime = 0
-		go_out()
-		return
+	update_icon()
+	switch(smoketime)
+		if(4400)
+			icon_state = "[icon_on]_2"
+		if(3100)
+			icon_state = "[icon_on]_3"
+		if(1900)
+			icon_state = "[icon_on]_4"
+		if(800)
+			icon_state = "[icon_on]_5"
+		if(0 to 20)
+			smoketime = 0
+			go_out()
+			return
 
 	if(reagents && reagents.total_volume) // check if it has any reagents at all
 		if(iscarbon(loc) && (src == loc:wear_mask)) // if it's in the human/monkey mouth, transfer reagents to the mob

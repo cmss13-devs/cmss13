@@ -61,6 +61,7 @@
 	magazine_type = /obj/item/storage/box/mre
 	num_of_magazines = 12
 	overlay_content = "_mre"
+	contents_name = "ration"
 
 /obj/item/ammo_box/magazine/misc/mre/empty
 	empty = TRUE
@@ -146,6 +147,7 @@
 	num_of_magazines = 10
 	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
+	contents_name = "flare pack"
 
 //------------------------M89 Signal Flare Packs Box--------------------------
 
@@ -229,6 +231,7 @@
 	magazine_type = /obj/item/device/flashlight
 	num_of_magazines = 8
 	icon_state = "flashlightbox"
+	contents_name = "flashlight"
 	icon_state_deployed = "flashlightbox_deployed"
 	overlay_content = "_flashlight"
 
@@ -257,6 +260,7 @@
 	num_of_magazines = 8
 	icon_state = "batterybox"
 	icon_state_deployed = "batterybox_deployed"
+	contents_name = "battery"
 	overlay_content = "_battery"
 
 /obj/item/ammo_box/magazine/misc/power_cell/empty
@@ -267,6 +271,8 @@
 /obj/item/ammo_box/magazine/misc/cigarettes
 	limit_per_tile = 2
 	num_of_magazines = 8
+	is_cigarettes = TRUE
+	contents_name = "cigarette pack"
 
 /obj/item/ammo_box/magazine/misc/cigarettes/update_icon()
 	if(overlays)

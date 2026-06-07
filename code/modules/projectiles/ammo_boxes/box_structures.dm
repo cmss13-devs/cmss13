@@ -30,16 +30,34 @@
 			overlays += image(text_markings_icon, icon_state = "text[item_box.overlay_gun_type]") //adding text
 
 	if(!item_box.handfuls)
-		if(item_box.overlay_ammo_type)
-			overlays += image(text_markings_icon, icon_state = "base_type[item_box.overlay_ammo_type]") //adding base color stripes
-		if(length(item_box.contents) == item_box.num_of_magazines)
-			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]")
-		else if(length(item_box.contents) > (item_box.num_of_magazines/2))
-			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_3")
-		else if(length(item_box.contents) > (item_box.num_of_magazines/4))
-			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_2")
-		else if(length(item_box.contents) > 0)
-			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_1")
+		if(item_box.is_cigarettes)
+			if(length(item_box.contents) >= 8)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_8")
+			else if(length(item_box.contents) == 7)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_7")
+			else if(length(item_box.contents) == 6)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_6")
+			else if(length(item_box.contents) == 5)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_5")
+			else if(length(item_box.contents) == 4)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_4")
+			else if(length(item_box.contents) == 3)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_3")
+			else if(length(item_box.contents) == 2)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_2")
+			else if(length(item_box.contents) > 0)
+				overlays += image(magazines_icon, icon_state = "cig[item_box.overlay_content]_1")
+		else
+			if(item_box.overlay_ammo_type)
+				overlays += image(text_markings_icon, icon_state = "base_type[item_box.overlay_ammo_type]") //adding base color stripes
+			if(length(item_box.contents) == item_box.num_of_magazines)
+				overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]")
+			else if(length(item_box.contents) > (item_box.num_of_magazines/2))
+				overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_3")
+			else if(length(item_box.contents) > (item_box.num_of_magazines/4))
+				overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_2")
+			else if(length(item_box.contents) > 0)
+				overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_1")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(item_box.overlay_ammo_type)
@@ -97,13 +115,13 @@
 	. = ..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
-	. += SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up.")
+	. += SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a [item_box.contents_name] out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up.")
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
 			. +=  SPAN_INFO("It has roughly [floor(AM.current_rounds/AM.transfer_handful_amount)] handfuls remaining.")
 	else
-		. +=  SPAN_INFO("It has [length(item_box.contents)] magazines out of [item_box.num_of_magazines].")
+		. +=  SPAN_INFO("It has [length(item_box.contents)] [item_box.contents_name]s out of [item_box.num_of_magazines].")
 	if(burning)
 		. +=  SPAN_DANGER("It's on fire and might explode!")
 

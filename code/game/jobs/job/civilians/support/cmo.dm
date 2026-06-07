@@ -3,7 +3,7 @@
 	title = JOB_CMO
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Commander and the Unites States Colonial Marines High Command"
+	supervisors = "the commander"
 	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/cmo

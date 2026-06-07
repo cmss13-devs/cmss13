@@ -507,6 +507,7 @@
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)

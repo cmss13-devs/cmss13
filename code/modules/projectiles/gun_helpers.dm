@@ -172,6 +172,7 @@ DEFINES in setup.dm, referenced here.
 				FACTION_PMC,
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,
+				FACTION_HUNTED_PMC,
 			) return TRUE
 
 		for(var/faction in user.faction_group)

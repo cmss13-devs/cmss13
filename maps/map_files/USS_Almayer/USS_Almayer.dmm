@@ -78656,6 +78656,9 @@
 /obj/item/reagent_container/dropper{
 	pixel_y = -4
 	},
+/obj/item/stack/sheet/mineral/silver/small_stack{
+	amount = 5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/medical_science)
 "qan" = (

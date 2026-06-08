@@ -5218,6 +5218,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
+"amt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "amu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6106,6 +6113,12 @@
 "aoP" = (
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
+"aoQ" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "aoR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -7892,6 +7905,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
+"atj" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "atk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7967,6 +7986,12 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
+"atA" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "atB" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -7976,6 +8001,13 @@
 "atD" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"atE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/port_point_defense)
 "atF" = (
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -8651,6 +8683,12 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"avC" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "avD" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
@@ -8886,6 +8924,12 @@
 "awp" = (
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/medical/morgue)
+"awq" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "awr" = (
 /turf/open/floor/almayer/blue/northwest,
 /area/almayer/living/bridgebunks)
@@ -9490,6 +9534,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
+"axW" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "axX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -13282,6 +13332,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
+"aIq" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aIr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -14094,6 +14150,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -14513,6 +14575,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/lower_astronav)
+"aLJ" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aLK" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/cable_coil{
@@ -14739,6 +14807,12 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
+"aMt" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aMu" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -14758,6 +14832,12 @@
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
+"aMx" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aMy" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/hallways/upper/starboard)
@@ -14830,6 +14910,10 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/kitchen,
 /area/almayer/engineering/upper_engineering)
+"aMH" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aMI" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -14858,6 +14942,14 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/navigation)
+"aMO" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
+"aMP" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aMQ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -14926,6 +15018,10 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
+"aNc" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aNd" = (
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
@@ -15035,6 +15131,11 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
+"aNx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/port_point_defense)
 "aNy" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -15146,6 +15247,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
+"aNQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aNR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15416,6 +15529,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/alpha)
+"aOz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aOA" = (
 /obj/structure/platform/metal/almayer_smooth,
 /obj/structure/platform/metal/almayer_smooth/east,
@@ -23381,6 +23508,9 @@
 /area/almayer/middeck/req)
 "bhj" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/port_point_defense)
 "bhk" = (
@@ -98022,7 +98152,7 @@
 /obj/item/prop{
 	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
-	icon_state = "M56D_gun_e";
+	icon_state = "M38D_gun_e";
 	layer = 3.1;
 	name = "\improper M38D heavy machine gun 'Bess'";
 	pixel_x = -3;
@@ -146850,19 +146980,19 @@ bUQ
 bSf
 cml
 bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
+avC
+aMt
+aKB
+axW
+avC
+aMt
+aKB
+axW
+avC
+aMt
+aKB
+axW
+avC
 abl
 bfi
 aPX
@@ -146952,7 +147082,7 @@ weC
 cls
 bIl
 cml
-bWe
+aMH
 bWe
 bWe
 bHb
@@ -147055,7 +147185,7 @@ weC
 bHF
 bIm
 cml
-bWe
+aMO
 bWe
 bHb
 bHb
@@ -147069,7 +147199,7 @@ bWe
 bWe
 bWe
 bWe
-bhj
+amt
 aVA
 aPX
 aaa
@@ -147158,7 +147288,7 @@ cpk
 bVd
 bIm
 cml
-bWe
+aMP
 bWe
 bHb
 bHb
@@ -147172,7 +147302,7 @@ bWe
 bWe
 bWe
 bWe
-abl
+aoQ
 aVA
 aPX
 aaa
@@ -147261,6 +147391,7 @@ weC
 bIt
 bIm
 cml
+aNc
 bWe
 bWe
 bWe
@@ -147274,8 +147405,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-abl
+atj
 aVA
 aPX
 aaa
@@ -147364,6 +147494,7 @@ weC
 bHF
 bIm
 qzc
+aMH
 bWe
 bWe
 bWe
@@ -147377,8 +147508,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-abl
+atA
 aVA
 aPX
 aaa
@@ -147467,6 +147597,7 @@ fvN
 bVd
 bIm
 qzc
+aMO
 bWe
 bWe
 bWe
@@ -147480,8 +147611,7 @@ bWe
 bWe
 bWe
 bWe
-bWe
-bhj
+amt
 aVA
 aPX
 aaa
@@ -147570,7 +147700,7 @@ weC
 bIu
 bSf
 cml
-bWe
+aNx
 bWe
 bWe
 bWe
@@ -147584,7 +147714,7 @@ bWe
 bWe
 bHb
 bWe
-bhj
+atE
 aVA
 aPX
 aaa
@@ -147674,19 +147804,19 @@ xbg
 bSf
 cml
 bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
-bWe
+awq
+aMx
+aLJ
+aIq
+awq
+aMx
+aLJ
+aIq
+awq
+aMx
+aLJ
+aIq
+awq
 abl
 aVA
 aPX
@@ -155666,7 +155796,7 @@ bqc
 qIf
 bqc
 bbr
-ccQ
+aOz
 ccQ
 aoF
 aon
@@ -155684,7 +155814,7 @@ vub
 amV
 amN
 ccQ
-ccQ
+aNQ
 bbr
 uPE
 vuV

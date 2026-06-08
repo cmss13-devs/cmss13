@@ -93,3 +93,7 @@
   - bugfix: Rosary's now use accessory slots in helmets
   ori-disillusion-mirnov:
   - balance: backblast knockdown time on xenos is halved
+2026-06-08:
+  DangerRevolution:
+  - bugfix: Fixed Synthetics getting double warnings when the Hive is able to evolve
+      to a new caste.

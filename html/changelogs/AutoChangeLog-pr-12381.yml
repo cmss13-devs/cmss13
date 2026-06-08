@@ -1,4 +1,0 @@
-author: "DangerRevolution"
-delete-after: True
-changes:
-  - bugfix: "Fixed Synthetics getting double warnings when the Hive is able to evolve to a new caste."

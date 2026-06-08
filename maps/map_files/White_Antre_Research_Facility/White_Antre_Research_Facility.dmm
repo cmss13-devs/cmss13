@@ -1086,6 +1086,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
+"acS" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/research/containment/corner,
+/area/white_antre/indoors/upper_level/simian_storage)
 "acT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -2552,10 +2556,6 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/white_antre/indoors/upper_level/simian_storage)
-"agm" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer/research/containment/corner_var1,
-/area/white_antre/indoors/upper_level/simian_storage)
 "agn" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony,
 /turf/open/floor/corsat/marked,
@@ -2572,15 +2572,15 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_x = 16
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agr" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/white_antre/indoors/upper_level/simian_storage)
 "ags" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/almayer/research/containment/corner2,
+/turf/open/floor/almayer/research/containment/corner_var1/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agt" = (
 /turf/open/floor/almayer/sterile_green_side/east,
@@ -2609,7 +2609,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "agA" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/almayer/research/containment/corner/north,
+/turf/open/floor/almayer/research/containment/corner2,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agB" = (
 /turf/open/floor/almayer/sterile_green_side/west,
@@ -2648,11 +2648,11 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "agK" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner_var2/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agL" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agM" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
@@ -2673,25 +2673,25 @@
 /area/white_antre/indoors/main_level/east_containment)
 "agP" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/corner_var1,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agQ" = (
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agR" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agS" = (
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agT" = (
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agU" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -159045,7 +159045,7 @@ bRB
 bIA
 bHH
 agP
-agT
+agy
 agD
 agv
 bjn
@@ -159213,7 +159213,7 @@ bRB
 agN
 bHH
 agQ
-agJ
+acS
 bHW
 agw
 bjn
@@ -159552,7 +159552,7 @@ agS
 agy
 agy
 agy
-agm
+agx
 bjn
 aQz
 cqy

@@ -763,12 +763,12 @@
 /area/ship/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
-	flags_area = AREA_BODY_RECOVERY|AREA_NOSECURECADES
+	flags_area = AREA_NOSECURECADES
 
 /area/ship/almayer/medical/containment/cell
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT|AREA_NOSECURECADES
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT|AREA_NOSECURECADES|AREA_BODY_RECOVERY
 
 /area/ship/almayer/medical/containment/cell/cl
 	name = "\improper Storage Room"

@@ -269,7 +269,7 @@
 
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
-		if(ishuman(current_mob))
+		if(ishuman_strict(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
 
 		if(issynth(current_mob))
@@ -1243,6 +1243,17 @@
 	prefix = "Delta "
 	color = "#8080ff"
 	ui_color = "#4d4d99"
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+
+/datum/hive_status/kseries
+	name = "K-Series Hive"
+	reporting_id = "k-series"
+	hivenumber = XENO_HIVE_K_SERIES
+	prefix = "K-Series "
+	color = "#ffff80"
+	ui_color = "#99994d"
 	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE

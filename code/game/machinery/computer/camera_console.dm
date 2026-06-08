@@ -599,8 +599,9 @@
 	.["worldtime"] = world.time
 
 /obj/structure/machinery/computer/cameras/dropship/ui_act(action, params)
+	var/mob/user = usr
+
 	if(action == "mapview")
-		var/mob/user = usr
 		if(!user || !user.client)
 			return TRUE
 		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
@@ -644,17 +645,17 @@
 						var/obj/structure/machinery/defenses/sentry/premade/dropship/defense = sentry.deployed_turret
 						var/is_deployed = defense.loc != sentry
 						if(!is_deployed)
-							to_chat(usr, SPAN_WARNING("Sentry must be deployed to access camera."))
+							to_chat(user, SPAN_WARNING("Sentry must be deployed to access camera."))
 							return TRUE
 						if(!defense.has_camera)
-							to_chat(usr, SPAN_WARNING("This sentry system does not have a camera."))
+							to_chat(user, SPAN_WARNING("This sentry system does not have a camera."))
 							return TRUE
 						if(!defense.linked_cam)
-							to_chat(usr, SPAN_WARNING("Sentry camera is not available."))
+							to_chat(user, SPAN_WARNING("Sentry camera is not available."))
 							return TRUE
 						camera_area_equipment = sentry
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, defense.linked_cam, defense.linked_cam.view_range, defense.linked_cam.view_range)
-						to_chat(usr, SPAN_NOTICE("Switching to sentry camera view."))
+						to_chat(user, SPAN_NOTICE("Switching to sentry camera view."))
 						return TRUE
 
 			set_camera_target(target_camera)
@@ -675,15 +676,15 @@
 					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
 					var/is_deployed = defense.loc != sentry
 					if(!is_deployed)
-						to_chat(usr, SPAN_WARNING("Sentry must be deployed to access camera."))
+						to_chat(user, SPAN_WARNING("Sentry must be deployed to access camera."))
 						return TRUE
 					if(!defense.has_camera)
-						to_chat(usr, SPAN_WARNING("This sentry system does not have a camera."))
+						to_chat(user, SPAN_WARNING("This sentry system does not have a camera."))
 						return TRUE
 					defense.set_range()
 					camera_area_equipment = sentry
 					SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
-					to_chat(usr, SPAN_NOTICE("Switching to sentry camera view."))
+					to_chat(user, SPAN_NOTICE("Switching to sentry camera view."))
 			return TRUE
 
 		if("auto-deploy")
@@ -713,10 +714,10 @@
 
 		if("nvg-enable")
 			if(upgraded != MATRIX_NVG)
-				to_chat(usr, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
 				return FALSE
-			if(usr.client?.prefs?.night_vision_preference)
-				matrix_color = usr.client.prefs.nv_color_list[usr.client.prefs.night_vision_preference]
+			if(user.client?.prefs?.night_vision_preference)
+				matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, matrix_color)
 			return TRUE
 
@@ -735,12 +736,12 @@
 				return TRUE
 			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
 			if(!sig)
-				to_chat(usr, SPAN_WARNING("No signal chosen."))
+				to_chat(user, SPAN_WARNING("No signal chosen."))
 				return FALSE
 			var/turf/location = get_turf(sig.signal_loc)
 			var/area/location_area = get_area(location)
 			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
-				to_chat(usr, SPAN_WARNING("Target is obscured."))
+				to_chat(user, SPAN_WARNING("Target is obscured."))
 				return FALSE
 			var/equipment_tag = params["equipment_id"]
 			var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = null
@@ -751,7 +752,7 @@
 				if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
 					paradrop_system = equipment
 					if(paradrop_system.system_cooldown > world.time)
-						to_chat(usr, SPAN_WARNING("You toggled the system too recently."))
+						to_chat(user, SPAN_WARNING("You toggled the system too recently."))
 						return
 					paradrop_system.system_cooldown = world.time + 5 SECONDS
 					paradrop_system.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
@@ -768,12 +769,12 @@
 			var/weapon_tag = params["eqp_tag"]
 			var/ammo_ref = params["ammo_ref"]
 			if(!weapon_tag || !ammo_ref)
-				to_chat(usr, SPAN_WARNING("You must select both a weapon and an ammo type."))
+				to_chat(user, SPAN_WARNING("You must select both a weapon and an ammo type."))
 				return TRUE
 
 			var/obj/structure/dropship_equipment/weapon/selected_weapon = get_weapon(weapon_tag)
 			if(!selected_weapon)
-				to_chat(usr, SPAN_WARNING("No weapon selected for reloading."))
+				to_chat(user, SPAN_WARNING("No weapon selected for reloading."))
 				return TRUE
 
 			var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -825,16 +826,15 @@
 
 					// Check weapon cooldown (same as weapon console)
 					if(dropship_weapon.last_fired > world.time - dropship_weapon.firing_delay)
-						to_chat(usr, SPAN_WARNING("[dropship_weapon] just fired, wait for it to cool down."))
+						to_chat(user, SPAN_WARNING("[dropship_weapon] just fired, wait for it to cool down."))
 						return TRUE
-
 					dropship_weapon.linked_console = src
 					if(dropship_weapon.is_interactable)
 						var/datum/cas_signal/target = get_cas_signal(camera_target_id)
 						if(target)
-							dropship_weapon.open_fire(target.signal_loc, usr)
+							dropship_weapon.open_fire(target.signal_loc, user)
 						else
-							to_chat(usr, SPAN_WARNING("No target selected."))
+							to_chat(user, SPAN_WARNING("No target selected."))
 				return TRUE
 
 		if("deploy-equipment")
@@ -846,7 +846,7 @@
 			for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
 				if(equipment.ship_base && equipment.ship_base.attach_id == equipment_id)
 					if(equipment.is_interactable)
-						equipment.equipment_interact(usr)
+						equipment.equipment_interact(user)
 					return TRUE
 			return TRUE
 
@@ -863,7 +863,7 @@
 				if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))
 					var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
 					var/target_ref = params["ref"]
-					medevac.automate_interact(usr, target_ref)
+					medevac.automate_interact(user, target_ref)
 				return TRUE
 
 		if("fulton-target")
@@ -879,7 +879,7 @@
 				if (istype(equipment, /obj/structure/dropship_equipment/fulton_system))
 					var/obj/structure/dropship_equipment/fulton_system/fulton = equipment
 					var/target_ref = params["ref"]
-					fulton.automate_interact(usr, target_ref)
+					fulton.automate_interact(user, target_ref)
 				return TRUE
 
 /obj/structure/machinery/computer/cameras/dropship/proc/set_camera_target(target_ref)
@@ -926,7 +926,7 @@
 			"is_weapon" = equipment.is_weapon,
 			"is_interactable" = equipment.is_interactable,
 			"mount_point" = equipment.ship_base.attach_id,
-			"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
+			"is_missile" = equipment.is_missile,
 			"ammo_name" = equipment.ammo_equipped?.name,
 			"ammo" = equipment.ammo_equipped?.ammo_count,
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,

@@ -230,7 +230,6 @@
 /obj/effect/overlay/temp/ob_impact
 	name = "ob impact animation"
 	effect_duration = 12
-	var/atom/shell
 	var/size_mod = 1
 
 /obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner, size)
@@ -239,11 +238,11 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	shell = owner
 	size_mod = size
-	appearance = shell.appearance
-	transform = matrix().Turn(-90)
-	transform *= size_mod
+	appearance = owner.appearance
+	var/matrix/shell_transform = matrix().Turn(-90)
+	shell_transform *= size_mod
+	apply_transform(shell_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 5, y = 0)) //either im stupid and dont know what its supposed to look like or it needs to be x because it got rotated
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -255,7 +254,6 @@
 /obj/effect/overlay/temp/mortar_impact
 	name = "mortar impact animation"
 	effect_duration = 22
-	var/atom/shell
 
 /obj/effect/overlay/temp/mortar_impact/Initialize(mapload, atom/owner)
 	. = ..()
@@ -263,9 +261,8 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	shell = owner
-	appearance = shell.appearance
-	transform = matrix().Turn(-180)
+	appearance = owner.appearance
+	apply_transform(matrix().Turn(-180))
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -277,7 +274,6 @@
 /obj/effect/overlay/temp/cas_rocket_impact
 	name = "cas rocket impact animation"
 	effect_duration = 18
-	var/atom/rocket_ammo
 	var/size_mod = 1.2
 
 /obj/effect/overlay/temp/cas_rocket_impact/Initialize(mapload, atom/owner, rocket_size = 1.2)
@@ -286,12 +282,12 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	rocket_ammo = owner
 	size_mod = rocket_size
-	icon = rocket_ammo.icon
-	icon_state = "[initial(rocket_ammo.icon_state)]_proj"
-	transform = matrix().Turn(90)
-	transform *= size_mod
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/rocket_transform = matrix().Turn(90)
+	rocket_transform *= size_mod
+	apply_transform(rocket_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -304,7 +300,6 @@
 /obj/effect/overlay/temp/cas_minirocket_impact
 	name = "cas minirocket impact animation"
 	effect_duration = 15
-	var/atom/minirocket_ammo
 
 /obj/effect/overlay/temp/cas_minirocket_impact/Initialize(mapload, atom/owner)
 	. = ..()
@@ -312,11 +307,11 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	minirocket_ammo = owner
-	icon = minirocket_ammo.icon
-	icon_state = "[initial(minirocket_ammo.icon_state)]_proj"
-	transform = matrix().Turn(90)
-	transform *= 0.8
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/minirocket_transform = matrix().Turn(90)
+	minirocket_transform *= 0.8
+	apply_transform(minirocket_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 1, y = 0))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -328,7 +323,6 @@
 /obj/effect/overlay/temp/cas_cannon_impact
 	name = "cas cannon impact animation"
 	effect_duration = 12
-	var/atom/cannon_ammo
 
 /obj/effect/overlay/temp/cas_cannon_impact/Initialize(mapload, atom/owner)
 	. = ..()
@@ -336,11 +330,11 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	cannon_ammo = owner
-	icon = cannon_ammo.icon
-	icon_state = "[initial(cannon_ammo.icon_state)]_proj"
-	transform = matrix().Turn(-180) // Straight down
-	transform *= 1.2
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/cannon_transform = matrix().Turn(-180) // Straight down
+	cannon_transform *= 1.2
+	apply_transform(cannon_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1)) // Light vertical blur
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -352,7 +346,6 @@
 /obj/effect/overlay/temp/cas_cluster_impact
 	name = "cas cluster impact animation"
 	effect_duration = 18
-	var/atom/bomb_ammo
 	var/size_mod = 1.5
 
 /obj/effect/overlay/temp/cas_cluster_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
@@ -361,10 +354,9 @@
 		log_debug("Created a [type] without `owner`")
 		qdel(src)
 		return
-	bomb_ammo = owner
 	size_mod = bomb_size
-	icon = bomb_ammo.icon
-	icon_state = "[initial(bomb_ammo.icon_state)]_mini"
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_mini"
 	transform *= size_mod
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -463,14 +455,12 @@
 	plane = ABOVE_LIGHTING_PLANE
 	effect_duration = 600
 
-	var/target_x = null
-	var/target_y = null
-	var/target_z = null
+	var/turf/target_turf = null
 	var/image/reticle_image = null
 
 	var/shuttle_tag = null
 
-/obj/effect/overlay/temp/dropship_reticle/New()
+/obj/effect/overlay/temp/dropship_reticle/Initialize(mapload, ...)
 	. = ..()
 	GLOB.dropship_reticles += src
 
@@ -497,15 +487,12 @@
 
 /obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
 	if(!reticle_image)
-		var/turf/Target = locate(target_x, target_y, target_z)
-		reticle_image = image(icon, Target, icon_state, layer)
+		reticle_image = image(icon, target_turf, icon_state, layer)
 		reticle_image.plane = ABOVE_LIGHTING_PLANE
 	return reticle_image
 
 /obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
-	target_x = x
-	target_y = y
-	target_z = z
+	target_turf = locate(x, y, z)
 	reticle_image = null
 
 /obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
@@ -528,9 +515,7 @@
 
 /obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
 	var/obj/effect/overlay/temp/dropship_reticle/direct/On_Target = new()
-	On_Target.target_x = x
-	On_Target.target_y = y
-	On_Target.target_z = z
+	On_Target.target_turf = locate(x, y, z)
 	On_Target.reticle_image = null
 	return On_Target
 
@@ -548,15 +533,14 @@
 	icon_state = "firemission_reticle"
 
 /obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
-	var/obj/effect/overlay/temp/dropship_reticle/firemission/On_Target = new()
-	On_Target.target_x = x
-	On_Target.target_y = y
-	On_Target.target_z = z
-	On_Target.reticle_image = null
-	return On_Target
+	return new /obj/effect/overlay/temp/dropship_reticle/firemission(null, locate(x, y, z))
 
-/obj/effect/overlay/temp/dropship_reticle/firemission/New(loc)
-	if(loc)
-		qdel(src)
-		return
-	..()
+/obj/effect/overlay/temp/dropship_reticle/firemission/Initialize(mapload, turf/new_target_turf)
+	target_turf = new_target_turf
+	if(!target_turf)
+		return INITIALIZE_HINT_QDEL
+	return ..()
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/Destroy(force)
+	remove_from_all_clients()
+	return ..()

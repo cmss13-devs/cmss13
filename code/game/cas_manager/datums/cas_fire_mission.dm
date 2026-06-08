@@ -39,6 +39,12 @@
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))
 
+/datum/cas_fire_mission/proc/clear_firemission_reticles(list/firemission_reticles)
+	for(var/obj/effect/overlay/temp/dropship_reticle/firemission/reticle in firemission_reticles)
+		if(reticle)
+			qdel(reticle)
+	firemission_reticles.Cut()
+
 /datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length, list/saved_equipment_configs = null)
 	var/datum/cas_fire_mission_record/record = new()
 	record.weapon = weapon
@@ -239,7 +245,7 @@
 	if(!initial_turf || !steps || !length(records))
 		return list()
 
-	var/list/target_turfs = list()
+	var/list/turf/target_turfs = list()
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length
 	var/next_step = tally_step
@@ -282,11 +288,7 @@
 	var/list/all_target_turfs = get_all_target_turfs(initial_turf, direction, steps)
 	for(var/turf/impact_turf in all_target_turfs)
 		if(impact_turf)
-			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new()
-			firemission_reticle.target_x = impact_turf.x
-			firemission_reticle.target_y = impact_turf.y
-			firemission_reticle.target_z = impact_turf.z
-			firemission_reticle.reticle_image = null
+			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new /obj/effect/overlay/temp/dropship_reticle/firemission(null, impact_turf)
 			all_firemission_reticles += firemission_reticle
 			// Only show to CAS HUD users
 			if(GLOB.huds[MOB_HUD_DROPSHIP])
@@ -326,6 +328,7 @@
 				continue
 			var/offset = item.offsets[step]
 			if (current_turf == null)
+				clear_firemission_reticles(all_firemission_reticles)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/area = get_area(shootloc)
@@ -336,10 +339,7 @@
 		envelope.change_current_loc(null)
 
 	// --- Impact reticle overlay ---
-	for(var/obj/effect/overlay/temp/dropship_reticle/firemission/ret in all_firemission_reticles)
-		if(ret)
-			ret.remove_from_all_clients()
-			qdel(ret)
+	clear_firemission_reticles(all_firemission_reticles)
 
 
 /**

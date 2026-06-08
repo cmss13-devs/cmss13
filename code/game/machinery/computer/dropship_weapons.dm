@@ -724,7 +724,7 @@
 			"is_weapon" = equipment.is_weapon,
 			"is_interactable" = equipment.is_interactable,
 			"mount_point" = equipment.ship_base.attach_id,
-			"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
+			"is_missile" = equipment.is_missile,
 			"ammo_name" = equipment.ammo_equipped?.name,
 			"ammo" = equipment.ammo_equipped?.ammo_count,
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,

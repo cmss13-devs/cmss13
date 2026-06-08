@@ -270,7 +270,7 @@
 	linked_supply_controller.dropship_points -= number
 
 // static lookup table for equipment
-/proc/get_equipment_categories(equipment_type)
+/proc/get_equipment_categories(obj/structure/dropship_equipment/equipment_type)
 	// special weapon cases first
 	if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/launch_bay))
 		return list("dropship_crew_weapon")
@@ -291,11 +291,7 @@
 		return list("dropship_computer")
 
 	// crew weapons
-	else if(ispath(equipment_type, /obj/structure/dropship_equipment/sentry_holder) || \
-			ispath(equipment_type, /obj/structure/dropship_equipment/fulton_system) || \
-			ispath(equipment_type, /obj/structure/dropship_equipment/medevac_system) || \
-			ispath(equipment_type, /obj/structure/dropship_equipment/mg_holder) || \
-			ispath(equipment_type, /obj/structure/dropship_equipment/paradrop_system))
+	else if(initial(equipment_type.crew_equipment))
 		return list("dropship_crew_weapon")
 	else
 		return list()

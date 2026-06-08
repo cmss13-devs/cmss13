@@ -208,8 +208,8 @@
 	var/debriscooldown = 0
 
 	for(var/i = 1 to ammo_used_per_firing)
-		addtimer(CALLBACK(src, PROC_REF(fire_heavygun_shot), turf_list, fired_from, soundplaycooldown, debriscooldown), sleep_per_shot * (i - 1))
-	addtimer(CALLBACK(src, PROC_REF(play_heavygun_sound), impact), 11)
+		addtimer(CALLBACK(src, PROC_REF(fire_heavygun_shot), turf_list, fired_from, soundplaycooldown, debriscooldown), sleep_per_shot * (i - 1) DECISECONDS)
+	addtimer(CALLBACK(src, PROC_REF(play_heavygun_sound), impact), 1.1 SECONDS)
 
 /obj/structure/ship_ammo/heavygun/proc/fire_heavygun_shot(turf_list, fired_from, soundplaycooldown, debriscooldown)
 	var/turf/impact_tile = pick(turf_list)

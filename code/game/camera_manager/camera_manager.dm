@@ -78,20 +78,20 @@
 			pilot_overlay.layer = screen_plane.layer + 1
 			pilot_overlay.plane = screen_plane.plane
 			screen_plane.vis_contents += pilot_overlay
-			if(!islist(screen_plane.vars["cas_hud_overlays"])) screen_plane.vars["cas_hud_overlays"] = list()
-			screen_plane.vars["cas_hud_overlays"] += pilot_overlay
+			if(!islist(screen_plane.cas_hud_overlays)) screen_plane.cas_hud_overlays = list()
+			screen_plane.cas_hud_overlays += pilot_overlay
 
 /datum/component/camera_manager/proc/hide_pilot_camera(mob/user)
 	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
 		// Remove the CAS HUD overlay from the camera panel's plane masters
 		for(var/plane_id in cam_plane_masters)
 			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
-			if(islist(plane.vars["cas_hud_overlays"]))
-				for(var/overlay in plane.vars["cas_hud_overlays"])
+			if(islist(plane.cas_hud_overlays))
+				for(var/overlay in plane.cas_hud_overlays)
 					var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = overlay
 					plane.vis_contents -= pilot_overlay
 					qdel(pilot_overlay)
-				plane.vars["cas_hud_overlays"] = list()
+				plane.cas_hud_overlays = list()
 
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER
@@ -312,7 +312,7 @@
 		var/area/laser_area = get_area(center_turf)
 		var/camera_blocked = !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1)
 		if(!camera_blocked)
-			camera_blocked = center_turf.obstructed_signal()
+			camera_blocked = center_turf.is_signal_obstructed()
 		if(camera_blocked)
 			// Try to raise camera to a higher Z level with a valid floor
 			var/turf/raised = raise_camera_z(center_turf)
@@ -392,6 +392,3 @@
 #undef DEFAULT_MAP_SIZE
 #undef RENDER_MODE_TARGET
 #undef RENDER_MODE_AREA
-
-/atom/movable/screen/plane_master
-	var/list/cas_hud_overlays = null

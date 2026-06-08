@@ -14,6 +14,7 @@
 	var/is_weapon = FALSE //whether the equipment is a weapon usable for dropship bombardment.
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
 	var/is_interactable = FALSE //whether they get a button when shown on the shuttle console's equipment list.
+	var/is_missile = FALSE //whether the weapon fires missiles
 	var/obj/docking_port/mobile/marine_dropship/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
@@ -22,6 +23,7 @@
 	var/faction_exclusive //if null all factions can print it
 	/// Whether the ammo inside this equipment can be directly replenished without needing to uninstall the existing ammo
 	var/stackable_ammo = FALSE
+	var/crew_equipment = FALSE //can go on the crew compartment slot
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
@@ -217,6 +219,7 @@
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
 	var/auto_deploy = FALSE // allows dropship turrets to be auto deployed, a toggle
+	crew_equipment = TRUE
 
 /obj/structure/dropship_equipment/sentry_holder/Initialize()
 	. = ..()
@@ -384,6 +387,7 @@
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
 	var/auto_deploy = FALSE
+	crew_equipment = TRUE
 
 /obj/structure/dropship_equipment/mg_holder/Initialize()
 	. = ..()
@@ -798,9 +802,7 @@
 	var/obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay = null
 	if(impact)
 		impact_overlay = new()
-		impact_overlay.target_x = impact.x
-		impact_overlay.target_y = impact.y
-		impact_overlay.target_z = impact.z
+		impact_overlay.target_turf = impact
 		impact_overlay.reticle_image = null
 		// Only show to CAS HUD users
 		if(GLOB.huds[MOB_HUD_DROPSHIP])
@@ -825,9 +827,7 @@
 				impact = pick(possible_turfs)
 				if(impact)
 					impact_overlay = new()
-					impact_overlay.target_x = impact.x
-					impact_overlay.target_y = impact.y
-					impact_overlay.target_z = impact.z
+					impact_overlay.target_turf = impact
 					impact_overlay.reticle_image = null
 					// Show the new overlay to CAS HUD users
 					if(GLOB.huds[MOB_HUD_DROPSHIP])
@@ -921,6 +921,7 @@
 	firing_delay = 5
 	point_cost = 600
 	shorthand = "MSL"
+	is_missile = TRUE
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
 	ammo_equipped = null //nothing left to empty after firing
@@ -1020,7 +1021,8 @@
 	var/busy_winch
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
-	var/list/known_stretchers = list()
+	var/list/datum/weakref/known_stretchers = list()
+	crew_equipment = TRUE
 
 /obj/structure/dropship_equipment/medevac_system/upp
 	name = "\improper RMU-4M Medevac System UPP"
@@ -1043,12 +1045,6 @@
 
 /obj/structure/dropship_equipment/medevac_system/proc/get_targets()
 	. = list()
-
-	// Update known stretchers list for notification system
-	known_stretchers.Cut() // Clear the list
-	for(var/obj/structure/bed/medevac_stretcher/medevac_stretcher in GLOB.activated_medevac_stretchers)
-		if(faction_exclusive == medevac_stretcher.faction)
-			known_stretchers += "\ref[medevac_stretcher]"
 
 	for(var/obj/structure/bed/medevac_stretcher/medevac_stretcher in GLOB.activated_medevac_stretchers)
 		if(medevac_stretcher.faction != faction_exclusive)
@@ -1090,13 +1086,16 @@
 	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL) // Only notify while in flight
 		return
 
-	var/stretcher_ref = "\ref[new_stretcher]"
+	var/datum/weakref/stretcher_ref = WEAKREF(new_stretcher)
 	if(stretcher_ref in known_stretchers)
 		return
 
 	known_stretchers += stretcher_ref
-	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 75, FALSE, 25)
+	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 50, TRUE, 25)
 	visible_message(SPAN_NOTICE("[src] beeps as it detects a new medevac stretcher beacon!"), null, 15)
+
+/obj/structure/dropship_equipment/medevac_system/proc/forget_stretcher(obj/structure/bed/medevac_stretcher/stretcher)
+	known_stretchers -= WEAKREF(stretcher)
 
 /obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
 	if(!linked_shuttle)
@@ -1340,9 +1339,10 @@
 	is_interactable = TRUE
 	var/fulton_cooldown
 	var/busy_winch
-	var/list/known_fultons = list()
+	var/list/datum/weakref/known_fultons = list()
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
+	crew_equipment = TRUE
 
 /obj/structure/dropship_equipment/fulton_system/upp
 	name = "\improper UPP RMU-19 Fulton Recovery System"
@@ -1446,7 +1446,7 @@
 	known_fultons.Cut()
 	for(var/obj/item/stack/fulton/fulton in GLOB.deployed_fultons)
 		if(faction_exclusive == fulton.faction)
-			known_fultons += "\ref[fulton]"
+			known_fultons += WEAKREF(fulton)
 
 // Called directly when a new fulton is deployed
 /obj/structure/dropship_equipment/fulton_system/proc/notify_new_fulton(obj/item/stack/fulton/new_fulton)
@@ -1457,7 +1457,7 @@
 	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL) // Only notify while in flight
 		return
 
-	var/fulton_ref = "\ref[new_fulton]"
+	var/datum/weakref/fulton_ref = WEAKREF(new_fulton)
 	if(fulton_ref in known_fultons)
 		return
 
@@ -1554,6 +1554,7 @@
 	combat_equipment = FALSE
 	var/system_cooldown
 	var/signal_registered = FALSE
+	crew_equipment = TRUE
 
 /obj/structure/dropship_equipment/paradrop_system/Initialize()
 	. = ..()

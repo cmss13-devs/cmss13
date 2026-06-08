@@ -5,6 +5,7 @@
 	blend_mode = BLEND_OVERLAY
 	plane = LOWEST_EVER_PLANE
 	var/hide_alpha = 0
+	var/list/cas_hud_overlays = null
 
 	//--rendering relay vars--
 	///integer: what plane we will relay this planes render to

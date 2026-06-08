@@ -2,7 +2,7 @@
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions
 	var/fire_length
-	var/base_fire_length // Base fire length before equipment bonuses
+	var/base_fire_length //! Base fire length before equipment bonuses
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
 	var/first_warning
 	var/second_warning
@@ -50,7 +50,7 @@
 	// Save configurations for equipment that's being removed
 	save_equipment_configs(filtered_weapons)
 
-	for(var/datum/cas_fire_mission/mission in missions)
+	for(var/datum/cas_fire_mission/mission as anything in missions)
 		mission.update_weapons(filtered_weapons, fire_length, saved_equipment_configs)
 
 /// Save firemission configurations for equipment that's about to be removed
@@ -62,7 +62,7 @@
 			current_attach_ids += weapon.ship_base.attach_id
 
 	// For each mission, save configs of equipment that's being removed
-	for(var/datum/cas_fire_mission/mission in missions)
+	for(var/datum/cas_fire_mission/mission as anything in missions)
 		for(var/datum/cas_fire_mission_record/record in mission.records)
 			if(!record.weapon?.ship_base?.attach_id)
 				continue

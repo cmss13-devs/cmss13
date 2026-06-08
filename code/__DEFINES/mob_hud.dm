@@ -101,3 +101,12 @@
 
 //These are used to manage the same HUD having multiple sources
 #define HUD_SOURCE_ADMIN "admin"
+
+
+//cas hud overlays
+#define DROPSHIP_OVERLAY_FRIENDLY "friendly" // marine
+#define DROPSHIP_OVERLAY_FRIENDLY_DEAD "friendly_dead" // dead marine
+#define DROPSHIP_OVERLAY_ENEMY_LIGHT "enemy_light" // t1 xenos
+#define DROPSHIP_OVERLAY_ENEMY_MEDIUM "enemy_medium" // t2 xenos
+#define DROPSHIP_OVERLAY_ENEMY_HEAVY "enemy_heavy" // t3 and above xenos
+#define DROPSHIP_OVERLAY_ENEMY_DEAD "enemy_dead" // dead xeno

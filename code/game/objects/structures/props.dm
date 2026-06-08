@@ -781,8 +781,6 @@
 					icon_state = "Hula_Gal_Wild"
 				if(SHUTTLE_IDLE)
 					icon_state = "Hula_Gal"
-				else
-					icon_state = "Hula_Gal"
 			return
 	icon_state = "Hula_Gal"
 

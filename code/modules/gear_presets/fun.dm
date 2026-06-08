@@ -341,7 +341,7 @@
 
 /datum/equipment_preset/fun/van_bandolier
 	name = "Fun - Big Game Hunter"
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_0)
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything

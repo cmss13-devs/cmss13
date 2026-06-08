@@ -173,3 +173,129 @@
   - spellcheck: Standardizes grammar in leadership orders
   labeo0:
   - bugfix: fixed burning icons of some boxes
+2026-05-25:
+  Ammoniacres:
+  - bugfix: removed being able to make molotovs with research intel papers!
+  Nihisohel, Sponge in discord for HUD sprites:
+  - rscadd: Megaphones can now be used as an amplifier, allowing loud text by talking
+      normally as long as it is toggled on via unique_action and only when spoken
+      when it is on the active hand
+  - balance: Megaphones, when amplified, increases its listener range by a screens
+      worth, ensuring that people can hear you from farther away
+  - rscadd: Introduces the "hushed" status effect, which forces whisper on inflicted
+      mobs.
+  - rscadd: Megaphone broadcasting (the original method of use) now inflicts hushed
+      on non-leader humans
+  - balance: Megaphone hushing lasts for approximately 3 seconds, which should be
+      more than enough for the next broadcast, probably
+  - balance: Megaphone broadcast cooldown is reduced from 2 seconds to 1.5 seconds
+  - balance: Megaphones are no longer a universal translator
+  - balance: Hostile and neutral factions don't really care about what you are broadcasting
+      and would not get hushed by your speech
+  - bugfix: Megaphone broadcasting now shows your rank
+  - code_imp: Langchat_speech now supports language scrambling
+  - code_imp: Megaphones now respect the color of the language when broadcasting
+  - code_imp: Megaphones can now auto_punctuate
+  - code_imp: The show_message proc now support chat_filters, undefined by default
+  - refactor: Deprecates langchat_long_speech and folds it into langchat_speech
+  - bugfix: Fixes the notification when attempting to use a megaphone while player
+      muted, it was fetching the megaphone rather than the user for some reason
+  - bugfix: Fixes being able to open multiple windows of the tgui_input_text proc,
+      which is used by a LOT of things, including the megaphone.
+  labeo0:
+  - qol: Crit xenos do not need to Rest to get healing from Recovery Node.
+  zzzmike:
+  - bugfix: stops infinite medical optics
+  - spellcheck: reworked wall description to apply logically to observers
+2026-05-26:
+  Ammoniacres:
+  - balance: guaranteed the survivor flamethrower spawn on Sorokyne Strata, Solaris
+      Ridge, Trijent Dam and Fiorina Science Annex, bringing the map to parity with
+      other maps in terms of survivor loot.
+  - balance: whitelisted VESG nozzles for the survivor flamethrower.
+  kitchenenthusiast:
+  - bugfix: Fixes area tiling in LV624 engineering dome/tcomms
+  - bugfix: Adds missing atmos pipe in CO's quarters on the Almayer
+2026-05-27:
+  ComboTombo:
+  - code_imp: Moved setting assignments and ID cards for specialists from their vending
+      machine's file to specialist.dm
+  - qol: The crew manifest's search function now covers paygrades
+  - refactor: Changed the way datacore.dm, squad_specialist.dm (vending machine),
+      and specialist.dm handle setting assignments, manifest titles, and ID cards
+      to drop the squad name from the manifest title. Also introduced job defines
+      for each squad kit to be used by specialist.dm and marines_consoles.dm (crew
+      monitor)
+  - spellcheck: Changed "SHARP Operator" in the crew manifest and crew monitor to
+      "SHARP Specialist"
+  - ui: Widened the crew manifest
+  Detective-Google:
+  - bugfix: synth bays can reactivate synths that would otherwise be revivable as
+      intended.
+  Fluffyzack21:
+  - spellcheck: fixed the colony van typo it now shows it has 6 tires instead of 4
+  - bugfix: Changed the subtype for UPP corpses so they spawn with the correct belt
+      type
+  - spellcheck: changed the descriptions of the corners of the lifeboats on the USS
+      Alamyer and for the UPP lifeboat
+  - maptweak: Adds a grinder and phoron in PMC ERT station for the ability to make
+      clonexadone  again
+  Nihisohel:
+  - code_imp: Helmet accessories now supports vendor auto equipping
+  - bugfix: You can no longer eat whistles through vendors
+  NotTzeentchian:
+  - bugfix: US Army Synthetic Survivor can no longer retrieve the Experiment Tool
+      Token
+  - bugfix: 32nd Armoured Division Tank Crewman is now considered US Army
+  TrollerNoob:
+  - bugfix: Fixed SHARP Flechette Dart direct hits not registering the additional
+      flechette properly, along with other projectile direct hits interactions.
+  zzzmike:
+  - spellcheck: fixed a few tyrargo ty(rar)pos
+2026-05-29:
+  ComboTombo:
+  - bugfix: Marine service jacket no longer overridden by MP service jacket in the
+      synthetic loadouts customization page
+  Drathek:
+  - code_imp: Removed/simplified some unnecessary calls to xeno update_icons
+  - bugfix: Fixed designer button saying FIX ME when first selecting the strain
+  - bugfix: Fixed charger crusher not ever stopping a charge if you simply stop moving
+  - code_imp: Bumped all github action versions because of node update requirement
+  gnorse:
+  - rscadd: Loreful synthetic death messages
+2026-05-30:
+  Blundir:
+  - bugfix: fixed some cases of m56d and m2c not showing how much they have in description
+  - imageadd: undeployed m2c resprite
+  - imageadd: m56d resprite with new onmob sprites and a complete camo set
+  - imageadd: props of m38d now have the old m56d sprite
+  - bugfix: fixed Dzho automaton missing all of his accesses for some reason
+  Doc12693420:
+  - rscadd: The Almayer may now receive Freelancers, Royal Commandos, and PMC's after
+      finishing FTL travel.
+  - rscadd: The Solar Devils spaceport's arrival message is now more detailed.
+  - rscadd: PMC's and Commandos have had their objective message changed.
+  - balance: Irkala Station will now send VAISO instead of elite freelancers.
+  - balance: Solar Devils may now send a fireteam or squad of marines.
+  - rscadd: Changed the Anchorpoint Station's docking message to be more descriptive.
+  Uristthedorf:
+  - balance: UPP deathsquad gets heap and can fire while invisible. Commando type
+      71 has alt iff.
+  Zenith, dimdimich1996:
+  - imageadd: New sprites like directional variants of a few sprites & more unique
+      turfs. Vending machine sprites as well as variants of existing ones. A few Legacy
+      sprite improvements.
+  - imagetweak: Various fixes to Hybrisa sprites, mostly turf. Legacy sprite improvements
+      to plants.dmi & beach.dmi.
+  - maptweak: Hybrisa map general fixes, some QoL stuff like less ledges, mostly visual
+      changes. A few new inserts including a Fire-Station, Small-Alley variant & a
+      large "Administrative Records Bureau Complex". Separates the Entertainment Complex
+      into it's own insert.
+  - rscadd: Addition of a fireman carry pamphlet, currently only used as rare survivor
+      loot.
+  larentoun:
+  - bugfix: B8 Smart Scope now tries to fire after a delay when it prevents IFF. Holding
+      M1 with MK2 is now exactly as Holding M1 with Smartgun Frontline.
+2026-05-31:
+  Nihisohel:
+  - bugfix: Fixes the forecon spotter corpse spawning the parent item for patches

@@ -780,18 +780,12 @@
 
 /turf/proc/get_pylon_protection_level()
 	var/protection_level = TURF_PROTECTION_NONE
-	for (var/atom/pylon in linked_pylons)
-		if (pylon.loc != null)
-			var/obj/effect/alien/resin/special/pylon/P = pylon
-
-			if(!istype(P))
-				continue
-
-			if(P.protection_level > protection_level)
-				protection_level = P.protection_level
-		else
-			LAZYREMOVE(linked_pylons, pylon)
-
+	for(var/obj/effect/alien/resin/special/resin_structure in linked_pylons)
+		if(QDELETED(resin_structure))
+			LAZYREMOVE(linked_pylons, resin_structure)
+			continue
+		if(resin_structure.protection_level > protection_level)
+			protection_level = resin_structure.protection_level
 	return protection_level
 
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(

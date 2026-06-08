@@ -634,6 +634,9 @@
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
 	idtype = /obj/item/card/id/silver/cl
+	assignment = "Interstellar Commerce Commission Synthetic"
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_SURVIVOR)
 	role_comm_title = "ICC Syn"
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
@@ -867,12 +870,16 @@
 	assignment = JOB_UPP_JOE
 	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	minimap_background = "background_upp"
 	skills = /datum/skills/dzho_automaton
 	faction_group = list(FACTION_UPP)
 	faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
+
+/datum/equipment_preset/synth/working_joe/upp/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/synth/working_joe/upp/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/upp_joe(new_human), WEAR_BODY)

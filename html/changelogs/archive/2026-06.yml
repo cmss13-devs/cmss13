@@ -1,0 +1,99 @@
+2026-06-03:
+  DangerRevolution:
+  - rscadd: Added an announcement explaining to the Almayer that there is a fog on
+      the river at LV-624.
+  DangerRevolution and MistChristmas:
+  - rscadd: The Colonial Marshal Bureau can now add their frequency to the radio tower.
+  - bugfix: The CO Marshal Survivor on Solaris Ridge now has their faction correctly
+      set to be a Marshal.
+  - bugfix: Any Survivors adding their frequency to the radio tower will now always
+      add the Colony radio.
+  - bugfix: 'Several W-Y Synthetic Survivor Presets: Hybrisa''s Executive Bodyguard
+      Synth, Solaris'' Corporate Assistant Synthetic now have Hud Icons, and their
+      factions correctly set to enable them to better connect with Weyland-Yutani
+      Personnel.'
+  - bugfix: The generic ICC Synthetic preset is now correctly part of the Colonial
+      Marshalls' Bureau.
+  Detective-Google:
+  - bugfix: wy lead professor paygrade being borked
+  - bugfix: the hijack crash affects all levels of the almayer as intended
+  - bugfix: Fixed runtimes related to xeno cultists
+  Drathek:
+  - refactor: Refactored how get_scenario_is_hostile_survivor is determined
+  - bugfix: Fixed at least one cause of hostile survivors failing to spawn sometimes
+      on LV - This will result in different probabilities of the clf crashsite on
+      LV now
+  - bugfix: Fixed the SciAnnex insert riot in progress not triggering
+  Fluffyzack21:
+  - bugfix: fixed the incorrect subtype that the ASO vendor used, and now it shows
+      a green beret sprite instead a of a red one
+  MistChristmas:
+  - admin: Admin Sleeping works faster, Rejuvenate doesn't get rid of Admin Sleeping
+  - bugfix: Medical Dummy now doesn't cleanly delimb, needing the relevant surgical
+      steps to clean up the wound.
+  - bugfix: Say/Whsiper related null.toggles_chat runtime
+  - rscadd: Becoming a larva now includes a line that says you shouldn't be leaving
+      the hive.
+  - bugfix: SEAs can no longer spawn with Army ranks. Fix Army E9 being Master Sergeant
+      and not Sergeant Major
+  - bugfix: View Intel Objectives bluescreening. Again
+  Red-byte3D:
+  - bugfix: Clusters processing and unprocessing with the wrong SS should be fixed
+  - balance: Clusters now give cave protection (CAS) if 2 nested people bursted (this
+      count persists even if they're unnested) or are currently nested around it (does
+      not persist unless they burst)
+  Willzadl:
+  - balance: resisting in coastline tiles now extinguishes fires and acid like river
+      tiles.
+  labeo0:
+  - bugfix: gauze, ointment, kits and splints now heal simple animal mobs
+  realforest2001:
+  - rscadd: Added spawn presets for Personal Protection Officers and their Directorate
+      counterparts.
+  - rscadd: Changed the Liaison Bodyguard Beacon option for Sec goons to use PPO instead.
+  - balance: Abominations evolving without a pred round will now force one. Does not
+      apply to the main hive.
+  - rscadd: Working Joe can now be joined after round end/hijack.
+  - rscadd: Staff disabling WJ restrictions will now open it to non-whitelisted players.
+2026-06-05:
+  Unknownity:
+  - bugfix: Medical notes created by players can be viewed in the Medical Records
+      again.
+  - bugfix: The employment records console can be accessed shipside again.
+2026-06-06:
+  Steelpoint, NightKnight, Contra:
+  - mapadd: The White Antre Research Facility, a new map set within a secretive joint
+      corporate-military research facility on a partially frozen world, has been added
+      to the game.
+  - code_imp: Framework to facilitate automatic USCM high command and queen mother
+      messages to be sent, have been added. This is currently used for White Antre,
+      but the code can be used for any other map.
+  - code_imp: A new 'survivor announcement' system has also been created to allow
+      automated messages to be sent to survivor players for specific maps.
+  - rscadd: A set of new atmospheric audio files have been added for White Antre.
+  - rscadd: A series of 'random explosion' effects have been added for mapper use.
+      This effect will cause an explosion (akin to a hijack explosion) to occur within
+      a preset timeframe.
+  - imageadd: A new set of floodlight and switch sprites have been added.
+  - code_imp: A secondary colony floodlight system has been added. These alternative
+      floodlights start turned on by default. However, the switch itself can be disable
+      by xenomorphs if they slash it. This pairing of floodlights and switch operate
+      on a separate network to the regular colony floodlights, meaning disabling one
+      will not disable the other and vice versa.
+  - code_imp: The ability to swap what host species a round-start larva will spawn
+      inside of has been added for map makers. You may edit a new variable on the
+      xenomorph spawner in SDMM to change the species. Spawners use humans as the
+      default option. Non-human spawns will spawn unnested but ready to burst.
+2026-06-07:
+  MistChristmas:
+  - bugfix: Scientist survs no longer need to drop stuff to be able to use it properly.
+      Sometimes. And finally get their thermal tarp they were supposed to roll to
+      spawn with for 3 years.
+  armsdealer9876:
+  - bugfix: Rosary's now use accessory slots in helmets
+  ori-disillusion-mirnov:
+  - balance: backblast knockdown time on xenos is halved
+2026-06-08:
+  DangerRevolution:
+  - bugfix: Fixed Synthetics getting double warnings when the Hive is able to evolve
+      to a new caste.

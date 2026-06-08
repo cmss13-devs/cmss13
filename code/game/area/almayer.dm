@@ -770,12 +770,10 @@
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/containment/cell
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT|AREA_NOSECURECADES
 
 /area/almayer/medical/containment/cell/cl

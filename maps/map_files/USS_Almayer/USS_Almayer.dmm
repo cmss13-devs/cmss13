@@ -3459,6 +3459,10 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
+"ahL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/emerald2/east,
+/area/almayer/squads/charlie)
 "ahM" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/up,
@@ -4602,6 +4606,18 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
+"akM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/machinery/cm_vending/clothing/medic/charlie{
+	pixel_x = -1;
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/emerald2/north,
+/area/almayer/squads/charlie)
 "akN" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -5212,6 +5228,18 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
+"amt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/machinery/cm_vending/clothing/leader/charlie{
+	pixel_x = -1;
+	pixel_y = 15;
+	density = 0
+	},
+/turf/open/floor/almayer/emerald2/north,
+/area/almayer/squads/charlie)
 "amu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6100,6 +6128,18 @@
 "aoP" = (
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
+"aoQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/machinery/cm_vending/clothing/tl{
+	pixel_x = -1;
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/emerald2/north,
+/area/almayer/squads/charlie)
 "aoR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -36826,7 +36866,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "bMD" = (
 /obj/effect/decal/warning_stripes{
@@ -39937,7 +39977,7 @@
 	pixel_x = -1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "bUr" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools{
@@ -39945,7 +39985,7 @@
 	pixel_x = -5;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/northeast,
+/turf/open/floor/almayer/emerald2/northeast,
 /area/almayer/squads/charlie)
 "bUs" = (
 /obj/structure/largecrate/random/case/double,
@@ -45748,7 +45788,7 @@
 /area/almayer/medical/medical_science)
 "cgA" = (
 /obj/structure/machinery/light,
-/turf/open/floor/almayer/flooredge/east,
+/turf/open/floor/almayer/emerald2/east,
 /area/almayer/squads/charlie)
 "cgB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -46907,7 +46947,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/charlie)
 "cjq" = (
-/turf/open/floor/almayer/flooredge/east,
+/turf/open/floor/almayer/emerald2/east,
 /area/almayer/squads/charlie)
 "cjr" = (
 /obj/structure/disposalpipe/segment{
@@ -47179,7 +47219,7 @@
 	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/northwest,
 /area/almayer/squads/charlie)
 "cjU" = (
 /obj/structure/machinery/cm_vending/gear/medic{
@@ -47191,7 +47231,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "cjV" = (
 /obj/effect/decal/warning_stripes{
@@ -47203,7 +47243,7 @@
 	pixel_y = 16;
 	pixel_x = -1
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "cjW" = (
 /obj/structure/disposalpipe/segment,
@@ -47216,7 +47256,7 @@
 	pixel_x = -4;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/northeast,
+/turf/open/floor/almayer/emerald2/northeast,
 /area/almayer/squads/charlie)
 "cjY" = (
 /obj/structure/sign/safety/hvac_old{
@@ -47904,7 +47944,7 @@
 	pixel_x = -1;
 	pixel_y = 16
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "clD" = (
 /obj/structure/machinery/cm_vending/clothing/leader/charlie{
@@ -47912,7 +47952,7 @@
 	pixel_y = 15;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/northeast,
+/turf/open/floor/almayer/emerald2/northeast,
 /area/almayer/squads/charlie)
 "clE" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic,
@@ -59661,7 +59701,8 @@
 	density = 0;
 	pixel_x = -26
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/squads/charlie)
 "fcE" = (
 /turf/open/floor/almayer/bluecorner/north,
@@ -67804,7 +67845,7 @@
 	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/northwest,
 /area/almayer/squads/charlie)
 "iWn" = (
 /obj/item/paper/almayer_storage,
@@ -70102,7 +70143,7 @@
 	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/northwest,
 /area/almayer/squads/charlie)
 "jZB" = (
 /obj/structure/largecrate/random,
@@ -71534,7 +71575,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "kGS" = (
 /turf/open/floor/almayer/flooredgesmooth2/south,
@@ -73135,7 +73176,7 @@
 	density = 0;
 	pixel_y = 16
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "ltO" = (
 /obj/structure/closet/secure_closet{
@@ -73248,7 +73289,7 @@
 	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/northeast,
+/turf/open/floor/almayer/emerald2/northeast,
 /area/almayer/squads/charlie)
 "lwY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
@@ -78591,7 +78632,7 @@
 	pixel_y = 15;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/northwest,
 /area/almayer/squads/charlie)
 "nZK" = (
 /obj/effect/decal/warning_stripes{
@@ -78654,7 +78695,7 @@
 "oaW" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/flooredge/east,
+/turf/open/floor/almayer/emerald2/east,
 /area/almayer/squads/charlie)
 "obf" = (
 /obj/structure/machinery/light/red{
@@ -79390,7 +79431,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "onQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -83272,7 +83313,7 @@
 	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "qgU" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
@@ -83517,7 +83558,7 @@
 	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/emerald2/north,
 /area/almayer/squads/charlie)
 "qmq" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -87344,6 +87385,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering/starboard)
 "rUh" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/squads/charlie)
@@ -155924,13 +155966,13 @@ vuV
 uPE
 cJs
 bJC
-jZv
+aoQ
 kUo
 bJC
-nZy
+amt
 kUo
 bJC
-cjT
+akM
 bTN
 bJC
 qgN
@@ -156140,7 +156182,7 @@ cjX
 cjq
 bJC
 bUr
-wGE
+ahL
 ljv
 aNT
 aoq

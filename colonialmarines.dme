@@ -849,6 +849,7 @@
 #include "code\game\area\hijack.dm"
 #include "code\game\area\IceColony.dm"
 #include "code\game\area\kutjevo.dm"
+#include "code\game\area\LV1021_Falcons_Fury.dm"
 #include "code\game\area\LV522_Chances_Claim.dm"
 #include "code\game\area\LV624.dm"
 #include "code\game\area\LV759_Hybrisa_Prospera.dm"
@@ -2722,4 +2723,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
+#include "maps\map_files\LV1021_Falcons_Fury\LV1021_Falcons_Fury.dmm"
 // END_INCLUDE

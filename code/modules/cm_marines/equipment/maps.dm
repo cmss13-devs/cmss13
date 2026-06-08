@@ -155,6 +155,11 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
+/obj/item/map/lv1021_map
+	name = "\improper LV-1021 map"
+	desc = "A general overview of the aproximate area of the CLF camp."
+	html_link = "images/d/da/White_Antre_Research_Facility.png"
+
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"
 	desc = "A diagrammatic map of the milky way, laid out by sector."

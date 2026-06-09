@@ -1,7 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscdel: "Disables the Ordnance Technician job role, also removes some excess reagents and gear from OT department."
-  - mapadd: "Disassembles the OT workshop."
-  - rscadd: "The ArmyLathe can only be used by someone with the OT job role."
-  - rscadd: "Relocates the unused silver from the OT dept to the RD deptartment."

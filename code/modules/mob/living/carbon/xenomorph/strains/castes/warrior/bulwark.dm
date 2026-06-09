@@ -275,7 +275,7 @@
 	if(!hit_enemy && hit_grenade)
 		xeno_cooldown *= 0.3
 
-	if(!hit_enemy)
+	if(!hit_enemy && !hit_grenade)
 		xeno_cooldown *= 0.3
 
 	apply_custom_cooldown()

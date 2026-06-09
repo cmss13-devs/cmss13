@@ -377,10 +377,7 @@
 */
 /atom/movable/proc/keybind_face_direction(direction)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
-		var/mob/living/carbon/xenomorph/xeno_player = src
-		if(xeno_player.action_busy)
-			return
-		if(!do_after(xeno_player, 1 DECISECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC))
+		if(!do_after(src, 3 DECISECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC))
 			setDir(direction)
 	setDir(direction)
 

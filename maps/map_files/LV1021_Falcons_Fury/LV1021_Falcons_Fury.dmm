@@ -185,6 +185,11 @@
 	color = "#a98c7c"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/brown,
 /area/tyrargo/oob/outdoors)
 "az" = (
@@ -5306,6 +5311,10 @@
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/oob/outdoors)
+"nf" = (
+/obj/structure/largecrate/random,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
 "ng" = (
 /obj/structure/prop/tyrargo/large_tents/medical,
 /turf/open/asphalt/brown,
@@ -5425,10 +5434,6 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/brown,
-/area/tyrargo/oob/outdoors)
-"nw" = (
-/obj/item/explosive/mine/active,
-/turf/open/gm/river/soro,
 /area/tyrargo/oob/outdoors)
 "nx" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -6179,22 +6184,6 @@
 	},
 /turf/open/gm/river/soro,
 /area/tyrargo/oob/outdoors)
-"pl" = (
-/obj/item/explosive/mine/active,
-/obj/effect/mist/steam{
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/turf/open/gm/river/soro,
-/area/tyrargo/oob/outdoors)
-"pm" = (
-/obj/structure/platform/wood/north,
-/obj/effect/mist/steam{
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/turf/open/gm/river/soro,
-/area/tyrargo/oob/outdoors)
 "pn" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -6884,6 +6873,39 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/oob/outdoors)
+"rg" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rh" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"ri" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rj" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/kutjevo/plate,
+/area/tyrargo/oob/outdoors)
+"rk" = (
+/obj/structure/terminal{
+	dir = 4
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/kutjevo/plate,
+/area/tyrargo/oob/outdoors)
+"rl" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
+/turf/open/floor/kutjevo/plate,
+/area/tyrargo/oob/outdoors)
 "rm" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -6891,6 +6913,14 @@
 	pixel_y = -9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"rn" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"ro" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/kutjevo/plate,
 /area/tyrargo/oob/outdoors)
 "rp" = (
 /obj/structure/sign/banners/clf_flag{
@@ -6901,6 +6931,31 @@
 	dir = 8
 	},
 /turf/open/floor/interior/wood,
+/area/tyrargo/oob/outdoors)
+"rq" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rr" = (
+/obj/structure/machinery/power/power_generator/reactor/colony,
+/turf/open/floor/kutjevo/plate,
+/area/tyrargo/oob/outdoors)
+"rs" = (
+/obj/structure/platform/wood/north,
+/obj/structure/platform/wood/west,
+/obj/structure/platform_decoration/wood/northeast,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"rt" = (
+/obj/structure/platform_decoration/wood/east,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"ru" = (
+/obj/structure/platform_decoration/wood/east,
+/obj/structure/platform_decoration/wood/north,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "rv" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -6925,15 +6980,166 @@
 	},
 /turf/open/gm/river/soro,
 /area/tyrargo/oob/outdoors)
+"rw" = (
+/obj/structure/platform/wood/east,
+/obj/structure/platform/wood,
+/obj/structure/platform_decoration/wood/southeast,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"rx" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 5
+	},
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"ry" = (
+/obj/item/explosive/mine/active/clf,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"rz" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "9"
+	},
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
 "rA" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/oob/outdoors)
+"rB" = (
+/obj/item/explosive/mine/active/clf,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"rC" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"rD" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/oob/outdoors)
+"rE" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 10
+	},
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"rF" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"rG" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/oob/outdoors)
+"rH" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"rI" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"rJ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"rK" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"rL" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rM" = (
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
 "rO" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/interior/wood,
+/area/tyrargo/oob/outdoors)
+"rP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rQ" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rR" = (
+/obj/item/alien_embryo,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rS" = (
+/obj/structure/surface/rack,
+/obj/item/storage/surgical_tray,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rT" = (
+/obj/structure/bed/portable_surgery,
+/obj/effect/landmark/corpsespawner/clf/burst,
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/brown,
+/area/tyrargo/oob/outdoors)
+"rU" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	color = "#a98c7c"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/oob/outdoors)
 "sb" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -8302,15 +8508,10 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "PW" = (
-/obj/structure/barricade/sandbags{
-	dir = 4;
-	color = "#a98c7c"
+/obj/structure/tent/med{
+	icon = 'icons/obj/structures/tents_deployed_jungle.dmi'
 	},
-/obj/structure/barricade/sandbags{
-	color = "#a98c7c";
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/brown,
 /area/tyrargo/oob/outdoors)
 "PY" = (
@@ -8512,9 +8713,7 @@
 /area/tyrargo/oob/outdoors)
 "SS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/m56d_hmg{
-	dir = 4
-	},
+/obj/structure/closet/crate/green,
 /turf/open/floor/interior/wood,
 /area/tyrargo/oob/outdoors)
 "ST" = (
@@ -19432,7 +19631,7 @@ Zs
 Zs
 Zs
 Zs
-pb
+aj
 Zs
 Zs
 Zs
@@ -19600,9 +19799,9 @@ Zs
 Zs
 Zs
 Zs
-pb
-pb
-pb
+aj
+aj
+aj
 Zs
 Zs
 pb
@@ -19770,8 +19969,8 @@ Zs
 Zs
 Zs
 Zs
-pb
-pb
+BM
+cX
 Zs
 pb
 pb
@@ -19933,15 +20132,15 @@ Zs
 Zs
 Zs
 Zs
-pb
+ql
 Zs
 Zs
 Zs
 Zs
-pb
-pb
-pb
-pb
+bh
+ph
+bh
+ph
 pb
 pb
 Zs
@@ -20101,13 +20300,13 @@ pb
 pb
 pb
 Zs
-pb
-pb
-pb
+cF
+cF
+eA
 Zs
 Zs
-pb
-pb
+ph
+ph
 pb
 pb
 pb
@@ -20137,10 +20336,10 @@ JQ
 JQ
 JQ
 JQ
-nw
-nw
-nw
-nw
+JQ
+JQ
+JQ
+JQ
 pk
 JQ
 JQ
@@ -20257,7 +20456,7 @@ kH
 kH
 kH
 kH
-pb
+be
 pb
 pb
 pb
@@ -20306,10 +20505,10 @@ JQ
 pk
 JQ
 JQ
-nw
-nw
-nw
-nw
+JQ
+JQ
+JQ
+JQ
 JQ
 pk
 pk
@@ -20425,7 +20624,7 @@ kH
 kH
 kH
 kH
-pb
+be
 pb
 pb
 pb
@@ -20475,10 +20674,10 @@ nE
 JQ
 JQ
 JQ
-nw
-nw
-nw
-pl
+JQ
+JQ
+JQ
+pk
 JQ
 JQ
 pk
@@ -20591,10 +20790,10 @@ kH
 kH
 kH
 be
-pb
+be
 kH
 kH
-pb
+be
 pb
 pb
 pb
@@ -20760,11 +20959,11 @@ kH
 kH
 be
 be
+be
+be
+be
 pb
-pb
-pb
-pb
-pb
+be
 pb
 pb
 pb
@@ -20928,11 +21127,11 @@ kH
 kH
 be
 be
+be
 pb
 pb
 pb
-pb
-pb
+be
 pb
 pb
 pb
@@ -20978,7 +21177,7 @@ pk
 pq
 fU
 jI
-pm
+eH
 JQ
 JQ
 JQ
@@ -21097,12 +21296,12 @@ kH
 bS
 be
 be
+pb
+pb
 be
 pb
 pb
-pb
-pb
-pb
+be
 pb
 pb
 be
@@ -21484,7 +21683,7 @@ lf
 be
 be
 fU
-fU
+be
 be
 Zs
 Zs
@@ -23168,7 +23367,7 @@ OG
 jl
 yI
 aj
-aj
+rB
 aj
 aj
 pb
@@ -23318,7 +23517,7 @@ eE
 dW
 eE
 qV
-aj
+rC
 BM
 Jw
 Jw
@@ -23512,9 +23711,9 @@ pb
 aj
 pb
 pb
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 Zs
@@ -23664,7 +23863,7 @@ pb
 pb
 pb
 ed
-Kr
+rG
 EG
 eP
 ex
@@ -23681,9 +23880,9 @@ pb
 aj
 uV
 pb
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 Zs
@@ -23844,15 +24043,15 @@ hB
 aL
 mE
 pb
-aj
+rB
 aj
 aj
 uV
 uV
 uV
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 pb
@@ -24019,9 +24218,9 @@ pb
 aj
 uV
 uV
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 pb
@@ -24188,9 +24387,9 @@ pb
 aj
 pb
 pb
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 pb
@@ -24331,7 +24530,7 @@ fg
 nX
 Zz
 UU
-UU
+rJ
 fq
 hC
 fa
@@ -24357,9 +24556,9 @@ pb
 pb
 pb
 pb
-pb
-pb
-pb
+ry
+ry
+ry
 pb
 pb
 pb
@@ -26073,13 +26272,13 @@ pb
 pb
 pb
 pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
+gf
+ga
+ga
+ga
+ga
+ga
+fV
 pb
 pb
 pb
@@ -26241,14 +26440,14 @@ pb
 pb
 pb
 pb
-pb
-pb
+gf
+rw
 gb
 gb
 gb
 gb
 gb
-pb
+fX
 pb
 pb
 pb
@@ -26410,14 +26609,14 @@ pb
 pb
 pb
 pb
-pb
+gh
 gb
 gb
 EG
 EG
 EG
 gb
-pb
+fX
 pb
 pb
 pb
@@ -26535,7 +26734,7 @@ gL
 gL
 gG
 gG
-pb
+rH
 cL
 aj
 sp
@@ -26579,14 +26778,14 @@ pb
 pb
 pb
 pb
-pb
+gh
 gb
 EG
 EG
 EG
 EG
 gb
-pb
+fX
 pb
 pb
 pb
@@ -26748,14 +26947,14 @@ pb
 pb
 pb
 pb
-pb
+gh
 gb
 EG
 EG
 EG
 EG
 gb
-pb
+fX
 pb
 pb
 pb
@@ -26917,14 +27116,14 @@ pb
 pb
 pb
 pb
-UU
+lb
 dP
 EG
 EG
 EG
 gb
 gb
-pb
+fX
 pb
 pb
 Zs
@@ -27086,14 +27285,14 @@ pb
 pb
 pb
 pb
-UU
+gg
 gb
 gj
 gb
 ba
 gb
-UU
-pb
+rs
+fZ
 pb
 mC
 Zs
@@ -27220,7 +27419,7 @@ lm
 Ob
 zO
 Xy
-ys
+rD
 aj
 aj
 eM
@@ -27255,13 +27454,13 @@ UU
 UU
 UU
 UU
-UU
-pb
-pb
-UU
-UU
-UU
-UU
+iO
+ge
+ge
+iA
+ru
+iA
+rt
 pb
 pb
 di
@@ -27434,8 +27633,8 @@ pb
 pb
 pb
 di
-eO
-eO
+rq
+nf
 co
 co
 Zs
@@ -27604,8 +27803,8 @@ pb
 aj
 di
 eO
-eO
-eO
+rn
+nf
 co
 Zs
 Zs
@@ -27713,7 +27912,7 @@ CG
 cr
 pb
 Uh
-aj
+rI
 aj
 fu
 UU
@@ -27733,7 +27932,7 @@ UU
 UU
 VV
 aj
-bg
+rz
 fz
 fz
 fz
@@ -27774,7 +27973,7 @@ aj
 di
 eO
 eO
-eO
+ri
 co
 Zs
 Zs
@@ -28113,7 +28312,7 @@ aj
 UU
 UU
 UU
-pb
+rh
 co
 co
 Zs
@@ -28588,7 +28787,7 @@ BS
 io
 BS
 BS
-Mm
+rx
 gn
 EG
 EG
@@ -28621,7 +28820,7 @@ Bt
 UU
 UU
 eO
-eO
+nf
 co
 Zs
 Zs
@@ -28790,7 +28989,7 @@ qV
 tK
 qV
 qV
-eO
+rg
 Zs
 Zs
 pb
@@ -28893,7 +29092,7 @@ oR
 EG
 xN
 gl
-UU
+rF
 UU
 UU
 fw
@@ -28955,10 +29154,10 @@ pb
 aj
 di
 qV
+rr
 iG
-iG
-iG
-qV
+rj
+Gc
 Zs
 Zs
 Zs
@@ -29124,10 +29323,10 @@ pb
 aj
 di
 qV
+rr
 iG
-iG
-iG
-qV
+rk
+Gc
 Zs
 Zs
 pb
@@ -29293,10 +29492,10 @@ pb
 aj
 di
 qV
-iG
-iG
-iG
-qV
+rr
+ro
+rl
+Gc
 Zs
 Zs
 pb
@@ -29462,10 +29661,10 @@ pb
 aj
 di
 qV
-qV
-qV
-qV
-qV
+Gc
+Gc
+Gc
+Gc
 Zs
 Zs
 pb
@@ -30415,7 +30614,7 @@ ni
 pb
 pb
 aX
-UU
+rK
 gb
 Ud
 Th
@@ -31590,7 +31789,7 @@ Vh
 PN
 Vh
 dI
-aj
+pb
 cR
 aj
 dJ
@@ -31759,7 +31958,7 @@ EG
 EG
 EG
 EG
-pb
+EG
 aj
 aj
 dJ
@@ -31924,7 +32123,7 @@ Zs
 eO
 fL
 yy
-fL
+rN
 fL
 fL
 pb
@@ -32119,13 +32318,13 @@ gn
 dy
 UU
 ew
-nW
+rE
 fz
 EG
 EG
 fz
 fz
-aj
+rC
 BS
 Kr
 UU
@@ -32262,8 +32461,8 @@ Zs
 fL
 fL
 fL
+rP
 fL
-ay
 ay
 pb
 aj
@@ -32429,12 +32628,12 @@ Zs
 Zs
 Zs
 Zs
-ay
-ay
+rS
+rQ
 PW
+rL
 pb
 pb
-aj
 dy
 UU
 UU
@@ -32598,10 +32797,10 @@ Zs
 Zs
 Zs
 Zs
-ql
-ql
-Nv
-pb
+rT
+rR
+eO
+rM
 pb
 ak
 UU
@@ -32623,7 +32822,7 @@ gE
 gE
 EG
 gn
-UU
+rF
 aG
 aj
 pb
@@ -32767,11 +32966,11 @@ Zs
 Zs
 Zs
 Zs
-ql
+rU
 ql
 Nv
 pb
-aj
+pb
 dy
 UU
 aj

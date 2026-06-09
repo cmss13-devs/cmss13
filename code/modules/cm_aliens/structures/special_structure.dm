@@ -26,16 +26,18 @@
 	. = ..()
 	if(isxeno(user) || isobserver(user))
 		var/health_portion = health/maxhealth
-		if(health_portion < 0.25)
-			. += SPAN_WARNING("[src] is about to fall apart!")
-			return
-		if(health_portion < 0.5)
-			. += SPAN_WARNING("[src] looks severely damaged!")
-			return
-		if(health_portion < 0.75)
-			. += ("[src] is slightly damaged.")
-			return
-		. += ("[src] is healthy.")
+		switch(health_portion)
+			if(0 to 0.25)
+				. += SPAN_WARNING("[src] is about to fall apart!")
+				return
+			if(0.25 to 0.5)
+				. += SPAN_WARNING("[src] looks severely damaged!")
+				return
+			if(0.5 to 0.75)
+				. += ("[src] is slightly damaged.")
+				return
+			else
+				. += ("[src] is healthy.")
 
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()

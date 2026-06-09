@@ -9694,7 +9694,7 @@
 /turf/open/floor/almayer,
 /area/ship/sulaco/hangar/range)
 "jmV" = (
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/ship/sulaco/research)
 "jmX" = (
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/smart{
@@ -9742,7 +9742,7 @@
 /turf/open/floor/almayer/red/east,
 /area/ship/sulaco/marine/alpha)
 "jqG" = (
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/ship/sulaco/research)
 "jrd" = (
 /obj/structure/machinery/light{
@@ -15998,7 +15998,7 @@
 /area/ship/sulaco/command/intelligence)
 "qiv" = (
 /obj/structure/machinery/light/containment,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/ship/sulaco/research)
 "qkp" = (
 /turf/closed/wall/almayer,
@@ -21842,7 +21842,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/ship/sulaco/underdeck/vehicle)
 "wTq" = (
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/ship/sulaco/liaison/quarters)
 "wTQ" = (
 /obj/structure/machinery/door/poddoor/railing{

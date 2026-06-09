@@ -208,7 +208,7 @@
 		var/knockdown_amount = 6
 		if(isxeno(mob))
 			var/mob/living/carbon/xenomorph/xeno = mob
-			knockdown_amount = knockdown_amount * (1 - xeno.caste?.xeno_explosion_resistance / 100)
+			knockdown_amount = knockdown_amount * ((1 - xeno.caste?.xeno_explosion_resistance / 100) / 2)
 		mob.KnockDown(knockdown_amount)
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")

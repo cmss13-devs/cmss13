@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Horizontal lines on the Appeals form eating into words. Gave it a bigger margin so it doesn't."
+  - ui: "Tweak the layout, subsection colours and switch out the underlining for more horizontal rule"

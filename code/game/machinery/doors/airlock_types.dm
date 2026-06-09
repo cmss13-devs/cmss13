@@ -320,6 +320,9 @@
 /obj/structure/machinery/door/airlock/almayer/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/white
+	icon = 'icons/obj/structures/doors/almayerdoor_white.dmi'
+
 /obj/structure/machinery/door/airlock/almayer/glass
 	icon = 'icons/obj/structures/doors/almayerdoor_glass.dmi'
 	opacity = FALSE

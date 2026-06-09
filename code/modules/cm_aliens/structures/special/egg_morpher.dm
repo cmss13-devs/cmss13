@@ -5,7 +5,7 @@
 	name = XENO_STRUCTURE_EGGMORPH
 	desc = "A disgusting biomass generator that reeks of rotting flesh. Capable of producing facehuggers on its own."
 	icon_state = "eggmorph"
-	health = 400
+	health = 300
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
 
@@ -67,7 +67,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/item, mob/user)
 	if(!isxeno(user))
-		return ..(item, user)
+		return
 
 	if(istype(item, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/hugger = item

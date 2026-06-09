@@ -12313,7 +12313,7 @@
 /turf/open/predship/mainfloor/edge,
 /area/point_loma/airbase/exterior/crash_site/upper)
 "aJZ" = (
-/obj/structure/prop/new_varadero_props/big_gun/testing,
+/obj/structure/prop/point_loma_props/big_gun/testing,
 /turf/open/floor/strata/multi_tiles/west,
 /area/point_loma/research_facility/research/west)
 "aKa" = (
@@ -20750,7 +20750,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/interior/workshop/upper)
 "bhH" = (
-/obj/structure/prop/new_varadero_props/water_buoys/small,
+/obj/structure/prop/point_loma_props/water_buoys/small,
 /turf/open/gm/river/desert/shallow/pool,
 /area/point_loma/research_facility/pool/water)
 "bhI" = (
@@ -26470,7 +26470,7 @@
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/cave/south/upper)
 "byt" = (
-/obj/structure/prop/new_varadero_props/big_gun/barrel{
+/obj/structure/prop/point_loma_props/big_gun/barrel{
 	pixel_x = -18;
 	layer = 5
 	},
@@ -30070,7 +30070,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/research_facility/cave/south)
 "bJZ" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /turf/open/floor/almayer/research/containment/yautja/alt,
 /area/point_loma/research_facility/crash_site)
 "bKa" = (
@@ -30093,7 +30093,7 @@
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/research_facility/cave/west)
 "bKe" = (
-/obj/structure/prop/new_varadero_props/egg_open,
+/obj/structure/prop/point_loma_props/egg_open,
 /turf/open/floor/almayer/research/containment/yautja/alt,
 /area/point_loma/research_facility/crash_site)
 "bKf" = (
@@ -31742,7 +31742,7 @@
 /turf/open/floor/shiva/yellow/northwest,
 /area/point_loma/airbase/interior/cargo/lower)
 "bOM" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /turf/open/predship/plating,
 /area/space)
 "bON" = (
@@ -31804,8 +31804,8 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/mining_colony/exterior/west)
 "bPe" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /turf/open/predship/plating,
 /area/space)
 "bPf" = (
@@ -32025,7 +32025,7 @@
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/east)
 "bQg" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/predship/plating,
 /area/space)
@@ -32105,7 +32105,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/storage)
 "bQv" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/predship/plating,
 /area/space)
@@ -32139,7 +32139,7 @@
 /turf/open/predship/red_glow,
 /area/space)
 "bQC" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/effect/hunter/catwalk/hunter_catwalk_alt,
 /turf/open/predship/red_glow,
@@ -32187,7 +32187,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/point_loma/research_facility/briefing)
 "bQM" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/predship/plating,
@@ -32383,7 +32383,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/mining_colony/exterior/security/central)
 "bRE" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/predship/plating,
 /area/space)
@@ -32391,7 +32391,7 @@
 /turf/open/floor/corsat,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "bRG" = (
-/obj/structure/prop/new_varadero_props/egg_destroyed,
+/obj/structure/prop/point_loma_props/egg_destroyed,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/predship/plating,
 /area/space)
@@ -36286,10 +36286,10 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "cft" = (
-/obj/structure/prop/new_varadero_props/big_gun{
+/obj/structure/prop/point_loma_props/big_gun{
 	layer = 5
 	},
-/obj/structure/prop/new_varadero_props/big_gun/lights,
+/obj/structure/prop/point_loma_props/big_gun/lights,
 /obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/machinery/gear,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -43569,8 +43569,8 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "cHB" = (
-/obj/structure/prop/new_varadero_props/radar_dish,
-/obj/structure/prop/new_varadero_props/radar_dish_lights,
+/obj/structure/prop/point_loma_props/radar_dish,
+/obj/structure/prop/point_loma_props/radar_dish_lights,
 /obj/structure/cable/white{
 	icon_state = "1-8";
 	level = 2;
@@ -48086,8 +48086,8 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/space)
 "dda" = (
-/obj/structure/prop/new_varadero_props/radar_dish,
-/obj/structure/prop/new_varadero_props/radar_dish_lights,
+/obj/structure/prop/point_loma_props/radar_dish,
+/obj/structure/prop/point_loma_props/radar_dish_lights,
 /turf/open/new_varadero/taupe_concrete/warning/corner/southwest,
 /area/point_loma/airbase/exterior/north/radar)
 "ddb" = (

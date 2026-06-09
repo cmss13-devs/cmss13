@@ -1531,7 +1531,7 @@
 #include "code\game\objects\structures\pipes\standard\standard_misc.dm"
 #include "code\game\objects\structures\pipes\vents\pump_scrubber.dm"
 #include "code\game\objects\structures\pipes\vents\vents.dm"
-#include "code\game\objects\structures\props\new_varadero_props.dm"
+#include "code\game\objects\structures\props\point_loma_props.dm"
 #include "code\game\objects\structures\props\requests_console.dm"
 #include "code\game\objects\structures\props\research.dm"
 #include "code\game\objects\structures\props\rocks.dm"

@@ -462,9 +462,12 @@
 
 /obj/effect/overlay/temp/dropship_reticle/Initialize(mapload, ...)
 	. = ..()
+	if(isturf(loc))
+		target_turf = loc
 	GLOB.dropship_reticles += src
 
 /obj/effect/overlay/temp/dropship_reticle/Destroy()
+	remove_from_all_clients()
 	GLOB.dropship_reticles -= src
 	return ..()
 
@@ -496,16 +499,16 @@
 	reticle_image = null
 
 /obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
-	var/image/Image = src.get_reticle_image()
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 	if(dropship_hud)
 		for(var/mob/mob_user in dropship_hud.hudusers)
 			if(mob_user.client)
-				mob_user.client.images -= Image
+				if(reticle_image)
+					mob_user.client.images -= reticle_image
 			dropship_hud.remove_hud_from(mob_user, src)
 	for(var/mob/living/carbon/human/mob_user in GLOB.alive_human_list)
-		if(mob_user.client)
-			mob_user.client.images -= Image
+		if(mob_user.client && reticle_image)
+			mob_user.client.images -= reticle_image
 
 /obj/effect/overlay/temp/dropship_reticle/direct
 	name = "Impact Reticle"
@@ -539,8 +542,4 @@
 	target_turf = new_target_turf
 	if(!target_turf)
 		return INITIALIZE_HINT_QDEL
-	return ..()
-
-/obj/effect/overlay/temp/dropship_reticle/firemission/Destroy(force)
-	remove_from_all_clients()
 	return ..()

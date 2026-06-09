@@ -64,9 +64,13 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
+	QDEL_NULL(direct_fire_reticle)
 	QDEL_NULL(firemission_envelope)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
+	. = ..()
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
@@ -644,19 +648,22 @@
 	camera_area_equipment = null
 	if(firemission_envelope)
 		firemission_envelope.untrack_object()
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
 
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
 
 	// --- IN-WORLD DROPSHIP RETICLE LOGIC ---
-	if(src.direct_fire_reticle)
-		qdel(src.direct_fire_reticle)
-		src.direct_fire_reticle = null
+	QDEL_NULL(direct_fire_reticle)
 
 	if(target && target.signal_loc)
+		selected_cas_signal = target
+		RegisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING, PROC_REF(on_cas_signal_deleted))
 		var/turf/target_turf = get_turf(target.signal_loc)
 		if(target_turf)
-			src.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(target_turf)
+			direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(target_turf)
 
 	if(!target)
 		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
@@ -669,6 +676,15 @@
 		cam_height = cam_height * 1.5
 
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/on_cas_signal_deleted(datum/cas_signal/source)
+	SIGNAL_HANDLER
+	if(source != selected_cas_signal)
+		return
+	selected_cas_signal = null
+	camera_target_id = null
+	QDEL_NULL(direct_fire_reticle)
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0

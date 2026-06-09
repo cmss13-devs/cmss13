@@ -71,17 +71,28 @@
 			if(ammo_equipped)
 				// Allow stacking if stackable_ammo is TRUE, types match, and not full
 				if(stackable_ammo && istype(powerloader_item.loaded, /obj/structure/ship_ammo) && ammo_equipped.type == powerloader_item.loaded.type && ammo_equipped.ammo_count < ammo_equipped.max_ammo_count)
+					var/obj/structure/ship_ammo/powerloader_ammo = powerloader_item.loaded
+					var/obj/structure/ship_ammo/loaded_ammo = ammo_equipped
 					// Add do_after before stacking
 					if(!do_after(user, 1 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
 						return TRUE
-					var/obj/structure/ship_ammo/powerloader_ammo = powerloader_item.loaded
-					var/amt_to_add = min(powerloader_ammo.ammo_count, ammo_equipped.max_ammo_count - ammo_equipped.ammo_count)
-					ammo_equipped.ammo_count += amt_to_add
+					if(powerloader_item.loaded != powerloader_ammo || ammo_equipped != loaded_ammo || loaded_ammo.ammo_count >= loaded_ammo.max_ammo_count)
+						return TRUE
+					var/amt_to_add = min(powerloader_ammo.ammo_count, loaded_ammo.max_ammo_count - loaded_ammo.ammo_count)
+					loaded_ammo.ammo_count += amt_to_add
 					powerloader_ammo.ammo_count -= amt_to_add
+					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 					if(powerloader_ammo.ammo_count <= 0)
+						powerloader_item.loaded = null
+						powerloader_item.update_icon()
 						qdel(powerloader_ammo)
-					powerloader_item.loaded = null
+					else
+						powerloader_ammo.update_icon()
+						if(powerloader_ammo.ammo_name == "rocket")
+							powerloader_item.update_icon("ds_rocket")
+						else
+							powerloader_item.update_icon("ds_ammo")
 					to_chat(user, SPAN_NOTICE("You top off [src] with the ammo."))
 					update_equipment()
 					return TRUE
@@ -1091,7 +1102,7 @@
 		return
 
 	known_stretchers += stretcher_ref
-	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 50, TRUE, 25)
+	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 75, TRUE, falloff = 16)
 	visible_message(SPAN_NOTICE("[src] beeps as it detects a new medevac stretcher beacon!"), null, 15)
 
 /obj/structure/dropship_equipment/medevac_system/proc/forget_stretcher(obj/structure/bed/medevac_stretcher/stretcher)
@@ -1462,7 +1473,7 @@
 		return
 
 	known_fultons += fulton_ref
-	playsound(src, 'sound/machines/ping.ogg', 50, TRUE, 25)
+	playsound(src, 'sound/machines/ping.ogg', 50, TRUE, falloff = 16)
 	visible_message(SPAN_NOTICE("[src] pings as it detects a retrievable fulton recovery device!"), null, 15)
 
 /obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)

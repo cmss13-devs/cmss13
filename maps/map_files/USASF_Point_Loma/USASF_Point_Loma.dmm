@@ -14417,10 +14417,6 @@
 "aPz" = (
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/point_loma/airbase/interior/admin)
-"aPA" = (
-/obj/structure/machinery/colony_floodlight/searchlight,
-/turf/open/auto_turf/sand_white/layer0,
-/area/point_loma/airbase/cave/south)
 "aPB" = (
 /obj/structure/flora/grass/colorable/point_loma/light/two,
 /turf/open/auto_turf/sand_white/layer1,
@@ -25391,6 +25387,15 @@
 "bux" = (
 /turf/closed/wall/huntership,
 /area/point_loma/airbase/exterior/crash_site/upper)
+"buy" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/crash_site)
+"buz" = (
+/turf/open/floor/corsat/green/west,
+/area/space)
 "buA" = (
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/predship/hunter_catwalk,
@@ -32190,6 +32195,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/stack/rods,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/hallway/north)
 "bPM" = (
@@ -33050,13 +33056,52 @@
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/hallway/north)
+"bTD" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/corsat/squares,
+/area/space)
 "bTE" = (
 /turf/open/new_varadero/alt_concrete,
 /area/point_loma/airbase/mining_colony/interior/engineering/communications)
+"bTF" = (
+/obj/structure/lattice,
+/turf/open/predship/plating,
+/area/space)
+"bTG" = (
+/obj/structure/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/space)
+"bTH" = (
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/space)
+"bTI" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/space)
+"bTJ" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/space)
+"bTK" = (
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/platingdmg2,
+/area/space)
 "bTL" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/point_loma/research_facility/hallway/south)
+"bTM" = (
+/obj/item/stack/rods,
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/platingdmg2,
+/area/space)
+"bTN" = (
+/obj/item/stack/rods,
+/obj/structure/lattice,
+/turf/open/predship/plating,
+/area/space)
 "bTO" = (
 /obj/structure/prop/rock/black_ground,
 /turf/open/auto_turf/sand_white/layer1,
@@ -33083,6 +33128,21 @@
 /obj/structure/platform/stone/soro_colorable_immune/loma,
 /turf/solid_open_space,
 /area/point_loma/oob/sky)
+"bTU" = (
+/obj/item/stack/rods,
+/obj/structure/lattice,
+/turf/open/auto_turf/sand_white/layer1,
+/area/space)
+"bTV" = (
+/obj/item/stack/rods,
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/space)
+"bTW" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg2,
+/area/space)
 "bTX" = (
 /obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/plating/platingdmg2,
@@ -33097,6 +33157,16 @@
 "bTZ" = (
 /turf/closed/wall/new_varadero/concrete,
 /area/point_loma/airbase/interior/hospital)
+"bUa" = (
+/obj/item/stack/rods,
+/obj/structure/lattice,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/space)
+"bUb" = (
+/obj/item/stack/rods,
+/obj/structure/lattice,
+/turf/open/floor/plating/platingdmg2,
+/area/space)
 "bUc" = (
 /obj/effect/decal/cleanable/dirt/sand_2,
 /turf/open/asphalt/cement_sunbleached,
@@ -33108,6 +33178,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
+"bUf" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/space)
 "bUg" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/corsat/squares,
@@ -33117,6 +33192,10 @@
 /obj/effect/spawner/random/gun/smg,
 /turf/open/floor/corsat/yellow,
 /area/point_loma/research_facility/hallway/central)
+"bUi" = (
+/obj/structure/lattice,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/space)
 "bUj" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/hybrisa/tile/tilewhite,
@@ -33135,6 +33214,14 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/central)
+"bUn" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/hallway/central)
+"bUo" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/research_facility/hallway/central)
 "bUp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33149,12 +33236,21 @@
 "bUr" = (
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/upper)
+"bUs" = (
+/obj/item/stack/rods,
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/dorms)
 "bUt" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/point_loma/airbase/interior/cargo)
+"bUu" = (
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/hallway/north)
 "bUv" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -33177,6 +33273,19 @@
 "bUz" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+"bUA" = (
+/obj/item/stack/rods,
+/obj/flamer_fire/lasting,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/hallway/north)
+"bUB" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/hallway/north)
+"bUC" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/corsat,
+/area/space)
 "bUD" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
@@ -33196,6 +33305,17 @@
 "bUG" = (
 /turf/open/floor/corsat/purple/southwest,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
+"bUH" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = 20
+	},
+/turf/open/floor/shiva/yellowfull,
+/area/point_loma/research_facility/hallway/north)
 "bUI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -111465,9 +111585,9 @@ aKQ
 bPM
 bPx
 bPL
-bPx
-bPx
-bPx
+bUB
+bUA
+bUu
 bPA
 bTA
 bTm
@@ -111643,19 +111763,19 @@ aKR
 aCs
 bKU
 aeK
-aKS
+bUH
 bPx
-bPx
+bUB
 bPL
-bPx
-bPx
+bUB
+bUB
 bPx
 bPA
 bPo
 bOX
 cem
-bpi
-bpi
+bqB
+bqB
 cdB
 agx
 cfE
@@ -111836,10 +111956,10 @@ bPC
 bOT
 bOT
 bOT
-bpi
-bpi
-bpi
-bpi
+bqB
+bqB
+bqB
+bUs
 cfF
 cfm
 cfm
@@ -112021,9 +112141,9 @@ bFi
 bFi
 vUG
 vUG
-daR
-daR
-daR
+daP
+daP
+daP
 bEe
 bEe
 bEe
@@ -112034,7 +112154,7 @@ cYb
 cYb
 cYb
 bJw
-cYb
+bEe
 bEe
 bEe
 bEe
@@ -112206,8 +112326,8 @@ vUG
 vUG
 vUG
 daR
-daR
-daR
+daP
+bUf
 cYb
 cYb
 cYb
@@ -112218,15 +112338,15 @@ cYb
 cYb
 cYb
 cYb
+bSX
+buz
+buz
+buz
+bPn
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
-cYb
-cYb
-cdE
+abj
 cdE
 aiN
 agx
@@ -112388,9 +112508,9 @@ bFi
 vUG
 vUG
 vUG
-daR
-daR
-daR
+daP
+daP
+daP
 cYb
 cYb
 cYb
@@ -112400,12 +112520,12 @@ cYb
 cYb
 cYb
 cYb
+bSO
 cYb
 cYb
 cYb
-cYb
-cYb
-cYb
+bRM
+bEe
 cYb
 cYb
 agx
@@ -112572,8 +112692,8 @@ bFi
 bEU
 bEU
 vUG
-daR
-daR
+daP
+daP
 cYb
 cYb
 cYb
@@ -112582,11 +112702,11 @@ cYb
 cYb
 cYb
 bEe
+bSO
 cYb
 cYb
 cYb
-cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -112755,8 +112875,8 @@ bEU
 bEU
 vUG
 vUG
-daR
-bEq
+daP
+dbY
 bEq
 cYb
 cYb
@@ -112764,11 +112884,11 @@ cYb
 cYb
 cYb
 bEe
+bSO
 cYb
-cYb
-cYb
-cYb
-cYb
+bTD
+bTD
+bRM
 bEe
 cYb
 cYb
@@ -112939,18 +113059,18 @@ bHe
 vUG
 bEq
 daR
-bEq
-daR
-bEq
+dbY
+bTV
+bTK
 cYb
 cYb
 cYb
 bEe
+bSO
 cYb
-cYb
-cYb
-cYb
-cYb
+bTD
+bTD
+bRM
 bEe
 cYb
 cYb
@@ -113122,17 +113242,17 @@ bHe
 bFi
 bFi
 daR
-daR
-bEq
-daR
-bEq
+daP
+bTM
+bTH
+bST
 cYb
 bEe
+bSO
 cYb
 cYb
 cYb
-cYb
-cYb
+bRM
 bEe
 cYb
 cYb
@@ -113283,7 +113403,7 @@ bKZ
 cig
 chZ
 bEq
-bEq
+dbY
 bFi
 bFi
 bOM
@@ -113305,22 +113425,22 @@ bFi
 bFi
 bFi
 bEq
-daR
-daR
+daP
+daP
 bST
 cYb
 bEe
+bSO
 cYb
 cYb
 cYb
+bRM
 cYb
 cYb
 cYb
-cYb
-cYb
+brn
 bJA
-bJA
-bJA
+buy
 bKG
 ahV
 bJf
@@ -113465,7 +113585,7 @@ bKZ
 bKZ
 bKZ
 daR
-bEq
+bTM
 bEq
 bFi
 bOM
@@ -113483,7 +113603,7 @@ bIq
 bHN
 pqW
 pqW
-bFi
+bTF
 bFi
 aKN
 aKN
@@ -113492,11 +113612,11 @@ daR
 bST
 bEq
 bEe
+bSO
 cYb
 cYb
 cYb
-cYb
-cYb
+bRM
 bEe
 bEe
 bEd
@@ -113647,8 +113767,8 @@ aYR
 aYf
 aYf
 daR
-daR
-bEq
+bTV
+dbY
 bFi
 bFi
 bFi
@@ -113665,8 +113785,8 @@ bIr
 bIq
 bHN
 pqW
-bFi
-aKN
+bTF
+bTG
 aKN
 aKN
 aKN
@@ -113674,11 +113794,11 @@ bEU
 bEU
 bEq
 bST
+bSO
 cYb
+bEe
 cYb
-cYb
-cYb
-cYb
+bRM
 bEe
 bRW
 bRW
@@ -113830,7 +113950,7 @@ bKZ
 bKZ
 daR
 daR
-bEq
+dbY
 bFi
 bFi
 bFi
@@ -113846,21 +113966,21 @@ bLJ
 bJh
 bIr
 bFi
-bFi
-bFi
-aKN
-aKN
+bTF
+bTF
+bTG
+bTG
 aKN
 aKN
 bFi
 bEU
 bEU
 bST
+bSO
 cYb
+bEe
 cYb
-cYb
-cYb
-cYb
+bRM
 bEe
 bRW
 bRW
@@ -114012,7 +114132,7 @@ bKZ
 bKZ
 cVD
 daR
-daR
+daP
 vUG
 vUG
 bEU
@@ -114029,12 +114149,12 @@ bJj
 bIr
 bFi
 bFi
-aKN
-aKN
-aKN
+bTG
+bTG
+bTG
 aKN
 bFi
-bFi
+bTF
 bFi
 bEU
 bEq
@@ -114042,7 +114162,7 @@ bEq
 cYb
 cYb
 cYb
-cYb
+bRM
 bEe
 bRW
 bRW
@@ -114194,9 +114314,9 @@ bKZ
 csa
 bPN
 dev
+daP
 daR
-daR
-daR
+daP
 vUG
 vUG
 bPw
@@ -114211,20 +114331,20 @@ bFi
 bJg
 bFi
 bFi
+bTG
+bTG
+bTG
 aKN
-aKN
-aKN
-aKN
-bFi
-bFi
-bFi
+bTN
+bTF
+bTF
 bFi
 bEU
 bEq
 cYb
 cYb
 cYb
-cYb
+bRM
 bEe
 bRW
 bJw
@@ -114378,7 +114498,7 @@ cVD
 dev
 dev
 cYb
-daR
+daP
 vUG
 vUG
 bIq
@@ -114392,21 +114512,21 @@ bFi
 bJj
 bIr
 bFi
-daR
+bUa
+bTG
 aKN
 aKN
-aKN
-bFi
-bFi
-bFi
-bFi
-bFi
+bTI
+bTU
+bTF
+bTF
+bTF
 bEq
 bEq
 bEq
-cYb
-cYb
-cYb
+bRR
+bRR
+bRN
 bEe
 bJw
 bJw
@@ -114559,8 +114679,8 @@ bNj
 cVD
 dev
 dev
-cYb
-cYb
+bUC
+dev
 daR
 vUG
 vUG
@@ -114573,15 +114693,15 @@ bIr
 bJg
 bIr
 vUG
-daR
-bEq
+bUi
+bUb
+bTG
+bTG
 aKN
-bFi
-aKN
-bFi
-bFi
-bFi
-aKN
+bTI
+bTI
+bTF
+bTG
 daR
 daR
 bST
@@ -114742,9 +114862,9 @@ cVD
 dev
 dev
 bEe
-cYb
+dev
 daR
-daR
+daP
 bEq
 bEq
 bFi
@@ -114754,14 +114874,14 @@ bFi
 bFi
 bFi
 bFi
-bEq
-daR
-aKN
-aKN
-bFi
-bFi
-bFi
-bFi
+bUb
+bUa
+bTG
+bTG
+bTG
+bTI
+bTI
+bTI
 aKN
 aKN
 daR
@@ -114924,27 +115044,27 @@ cVD
 dev
 dev
 bEe
-cYb
-cYb
-daR
-daR
+dev
+dev
+bTV
+bTH
+dbY
 bEq
-bEq
 bFi
 bFi
 bFi
 bFi
 bFi
-daR
-bEq
+bUa
+bUb
+bTU
+bTG
+bTG
+bTG
 aKN
-aKN
-aKN
-aKN
-bFi
-bFi
-aKN
-aKN
+bTI
+bTI
+bTI
 aKN
 aKN
 daR
@@ -115107,26 +115227,26 @@ dev
 dev
 bEe
 dev
-cYb
-cYb
-daR
-daR
-bEq
-bEq
+dev
+bRZ
+bTH
+bTV
+dbY
+dbY
 bEq
 bFi
 bFi
-daR
-bEq
+bUi
+bUb
 aKN
 bEq
-daR
+bUa
+bTI
 aKN
-aKN
-aKN
-bFi
-aKN
-aKN
+bTI
+bTJ
+bTJ
+bTJ
 aKN
 aKN
 daR
@@ -115290,25 +115410,25 @@ dev
 dev
 dev
 dev
+bRZ
 cYb
-cYb
-daR
-daR
-bEq
-bEq
-bEq
-aKN
-aKN
-aKN
-aKN
-bEq
-daR
+bTH
+daP
+dbY
+dbY
 bEq
 aKN
-aKN
-aKN
-aKN
-aKN
+bTG
+bTG
+bTI
+dbY
+daP
+bTW
+bTI
+bTJ
+bTI
+bTI
+bTI
 aKN
 aKN
 aKN
@@ -115482,10 +115602,10 @@ bJw
 bJf
 bJf
 aBC
-aBC
-bFA
-bqf
-bqf
+bUo
+bUn
+bqg
+bqg
 aFk
 aFk
 aFk
@@ -165410,7 +165530,7 @@ cHq
 bOU
 bOU
 bOU
-aPA
+bOU
 bOU
 bOU
 bOU

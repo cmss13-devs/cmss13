@@ -5037,9 +5037,9 @@
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
 
-/turf/open/floor/new_varadero/alt_concrete/floor
+/turf/open/floor/point_loma/alt_concrete/floor
 	name = "fake foundation ground"
 	icon_state = "dark_asteroidfloor_alt"
-	icon = 'icons/turf/floors/new_varadero/concrete_bits.dmi'
-	plating_type = /turf/open/new_varadero/alt_concrete
+	icon = 'icons/turf/floors/point_loma/concrete_bits.dmi'
+	plating_type = /turf/open/point_loma/alt_concrete
 

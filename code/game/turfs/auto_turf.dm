@@ -411,42 +411,42 @@
 
 //=====New Varadero Coast
 //---brown grass
-/turf/open/auto_turf/varadero_brown_grass
+/turf/open/auto_turf/point_loma_brown_grass
 	name = "matted grass"
-	icon = 'icons/turf/floors/new_varadero/auto_grass_nv_brown.dmi'
+	icon = 'icons/turf/floors/point_loma/auto_grass_nv_brown.dmi'
 	icon_state = "grass_0"
 	icon_prefix = "grass"
 	layer_name = list("ground","lush thick grass","soaked ground")
 	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
 
-/turf/open/auto_turf/varadero_brown_grass/insert_self_into_baseturfs()
-	baseturfs += /turf/open/auto_turf/varadero_brown_grass/layer0
+/turf/open/auto_turf/point_loma_brown_grass/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/point_loma_brown_grass/layer0
 
-/turf/open/auto_turf/varadero_brown_grass/layer0
+/turf/open/auto_turf/point_loma_brown_grass/layer0
 	icon_state = "grass_0"
 	bleed_layer = 0
 	variant_prefix_name = "matted grass"
 
-/turf/open/auto_turf/varadero_brown_grass/layer0_mud
+/turf/open/auto_turf/point_loma_brown_grass/layer0_mud
 	icon_state = "grass_0_mud"
 	bleed_layer = 0
 	variant = "mud"
 	variant_prefix_name = "muddy"
 
-/turf/open/auto_turf/varadero_brown_grass/layer0_mud_alt
+/turf/open/auto_turf/point_loma_brown_grass/layer0_mud_alt
 	icon_state = "grass_0_mud_alt"
 	bleed_layer = 0
 	variant = "mud_alt"
 	variant_prefix_name = "muddy"
 
-/turf/open/auto_turf/varadero_brown_grass/layer1
+/turf/open/auto_turf/point_loma_brown_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1
 
 //---Red grass
 /turf/open/auto_turf/varadero_red_grass
 	name = "matted grass"
-	icon = 'icons/turf/floors/new_varadero/auto_grass_nv_red.dmi'
+	icon = 'icons/turf/floors/point_loma/auto_grass_nv_red.dmi'
 	icon_state = "grass_0"
 	icon_prefix = "grass"
 	layer_name = list("ground","thick grass","soaked ground")
@@ -467,7 +467,7 @@
 //---NV extra waters
 /turf/open/auto_turf/varadero_water_transit
 	name = "deep water transition"
-	icon = 'icons/turf/floors/new_varadero/seadeep_auto_turf_stuff.dmi'
+	icon = 'icons/turf/floors/point_loma/seadeep_auto_turf_stuff.dmi'
 	icon_state = "seadeep_0"
 	icon_prefix = "seadeep"
 	layer_name = list("sea water", "deep water")

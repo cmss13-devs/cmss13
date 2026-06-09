@@ -52,11 +52,11 @@
 	id = "Colony Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
 	},
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "bI" = (
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "bL" = (
@@ -346,7 +346,7 @@
 /turf/open/floor/corsat/redcorner/north,
 /area/point_loma/research_facility/security_hq)
 "jQ" = (
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "Colony Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
@@ -961,7 +961,7 @@
 	id = "Colony Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
 	},
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "Ap" = (
@@ -1108,7 +1108,7 @@
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "Er" = (
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/security_hq)
 "Es" = (
@@ -1164,7 +1164,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "Gf" = (
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "Colony Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter";
@@ -1450,7 +1450,7 @@
 	alpha = 220;
 	layer = 3.2
 	},
-/obj/structure/window/framed/new_varadero/foundation,
+/obj/structure/window/framed/point_loma/foundation,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "Qs" = (
@@ -1677,7 +1677,7 @@
 	id = "Colony Brig Lockdown Shutters";
 	name = "\improper Brig Lockdown Shutter"
 	},
-/obj/structure/window/framed/new_varadero/foundation/reinforced,
+/obj/structure/window/framed/point_loma/foundation/reinforced,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "Wt" = (

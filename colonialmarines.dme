@@ -1185,7 +1185,7 @@
 #include "code\game\objects\effects\decals\kutjevo_decals.dm"
 #include "code\game\objects\effects\decals\medical_decals.dm"
 #include "code\game\objects\effects\decals\misc.dm"
-#include "code\game\objects\effects\decals\new_varadero_decals.dm"
+#include "code\game\objects\effects\decals\point_loma_decals.dm"
 #include "code\game\objects\effects\decals\posters.dm"
 #include "code\game\objects\effects\decals\prints.dm"
 #include "code\game\objects\effects\decals\remains.dm"

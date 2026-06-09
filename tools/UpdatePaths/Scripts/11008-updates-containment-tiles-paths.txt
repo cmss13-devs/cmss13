@@ -1,0 +1,3 @@
+/turf/open/floor/almayer/research/containment/floor1 : /turf/open/floor/almayer/research/containment/floor2/west{@OLD}
+/turf/open/floor/almayer/research/containment/floor2/north : /turf/open/floor/almayer/research/containment/floor2{@OLD}
+/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2 : /turf/open/floor/almayer/research/containment/corner_var2{@OLD}

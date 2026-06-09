@@ -89,6 +89,8 @@
 	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/mre_food, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
+	///How long do we stun the pounced target for
+	var/stun_duration = 0.5
 	///Cooldown dictating how long the mob will wait between eating food.
 	COOLDOWN_DECLARE(food_cooldown)
 
@@ -933,7 +935,7 @@
 			return
 
 	playsound(loc, "giant_lizard_hiss", 25)
-	pounced_mob.KnockDown(0.5)
+	pounced_mob.KnockDown(stun_duration)
 	step_to(src, pounced_mob)
 	if(!client && !(pounced_mob.faction in faction_group))
 		ravagingattack(pounced_mob)

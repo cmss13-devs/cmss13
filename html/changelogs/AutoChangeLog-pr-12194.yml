@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - qol: "revolvers now have a hint in description about what intent should you use to make warning shot or revolver tricks"

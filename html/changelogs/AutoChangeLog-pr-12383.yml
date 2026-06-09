@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "pamphlets can no longer be used to bypass intended engi skill caps"

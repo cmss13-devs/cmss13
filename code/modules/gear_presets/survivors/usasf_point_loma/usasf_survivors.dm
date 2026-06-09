@@ -140,11 +140,11 @@
 			new_human.equip_to_slot_or_del(new /datum/gear/toy/camera/disposable, WEAR_IN_BACK)
 	switch(spawn_fluff_face)
 		if (1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 		if (2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator, WEAR_EYES)
 		if (3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/tarbacks, WEAR_FACE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigar/tarbacktube, WEAR_IN_BACK)
@@ -448,12 +448,13 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)
+	if(new_human.get_assignment() != JOB_USASF_CO) // toDO: Fix the awfulness of CO gear being overriden by these 2 procs.
+		spawn_fluff(new_human)
+		spawn_pouch(new_human)
+	spawn_food(new_human)
 	spawn_security_primary(new_human)
 	spawn_armour(new_human)
 	spawn_backpack(new_human)
-	spawn_fluff(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot
 	name = "Survivor - USASF Pilot"
@@ -465,6 +466,12 @@
 
 	minimap_icon = "pilot"
 	minimap_background = "background_ua"
+
+	dress_shoes = list(/obj/item/clothing/shoes/dress)
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -484,9 +491,30 @@
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
 	..()
+	var/sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+	if(new_human.client && new_human.client.prefs)
+		sidearmbelt = new_human.client.prefs.commander_sidearm
+		switch(sidearmbelt)
+			if(CO_GUN_2006M_COUNCIL)
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/council/mtr6m/full(new_human), WEAR_J_STORE)
+			if(CO_GUN_2006MB_COUNCIL)
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/council/mtr6m/full_black(new_human), WEAR_J_STORE)
+			if(CO_GUN_2006MS_COUNCIL)
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/council/mtr6m/full_silver(new_human), WEAR_J_STORE)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_J_STORE)
+
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del (new /obj/item/storage/pouch/pistol/command, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_WAIST)
+	new_human.equip_to_slot_or_del (new /obj/item/weapon/gun/pistol/clfpistol, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del (new /obj/item/ammo_magazine/pistol/clfpistol, WEAR_IN_L_STORE)
+
+	spawn_fluff(new_human) // spawns the shit at the end so we don't overwrite all the CO snowflake fluff
+	spawn_pouch(new_human)
+	spawn_food(new_human)
 
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
 	name = "Survivor - USASF Synthetic"

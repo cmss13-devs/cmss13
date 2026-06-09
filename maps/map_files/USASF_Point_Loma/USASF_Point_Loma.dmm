@@ -2825,7 +2825,7 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
 "aiU" = (
-/obj/effect/decal/new_varadero/warning/straight,
+/obj/effect/decal/point_loma/warning/straight,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/point_loma/airbase/exterior/west)
 "aiV" = (
@@ -12828,7 +12828,7 @@
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo/lower)
 "aLq" = (
-/obj/effect/decal/new_varadero/warning/straight{
+/obj/effect/decal/point_loma/warning/straight{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -13853,7 +13853,7 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "aOb" = (
-/obj/effect/decal/new_varadero/warning/straight{
+/obj/effect/decal/point_loma/warning/straight{
 	dir = 1
 	},
 /turf/open/hybrisa/street/roadlines,
@@ -34073,11 +34073,11 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper)
 "bYk" = (
-/obj/effect/decal/new_varadero/warning/straight,
+/obj/effect/decal/point_loma/warning/straight,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
 "bYl" = (
-/obj/effect/decal/new_varadero/warning/straight,
+/obj/effect/decal/point_loma/warning/straight,
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/point_loma/airbase/exterior/west)
 "bYm" = (

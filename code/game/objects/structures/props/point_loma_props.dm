@@ -75,24 +75,6 @@
 /obj/structure/prop/point_loma_props/Seaweed_Covered_Wall/half/edge/north
 	icon_state = "seaweed1_north"
 
-//---------------------Airfield Tow Vehicle
-/obj/structure/prop/point_loma_props/tow_vehicle
-	icon = 'icons/obj/structures/props/airfield_tow.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	layer = ABOVE_MOB_LAYER
-	icon_state = "airfield_tow"
-	name = "Pushback Tow"
-	desc = "A ground support equipment vehicle made with the intent to haul cargo, airspace vehicles, and much more with precision."
-
-/obj/structure/prop/point_loma_props/tow_vehicle/tray
-	icon_state = "airfield_cargo"
-	layer = 4.0
-	projectile_coverage = 5
-	name = "Cargo Tray"
-	desc = "A ground support equipment tray designed hold cargo and other anemities."
-
 //---------------------Boulders
 /obj/structure/prop/point_loma_props/boulders
 	icon = 'icons/obj/structures/props/natural/colorable_big_boulder.dmi'

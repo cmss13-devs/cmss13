@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "properly forces anti larva scouting check"

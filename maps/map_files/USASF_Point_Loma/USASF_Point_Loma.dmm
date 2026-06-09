@@ -25206,30 +25206,12 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/turf/open/predship/hunter_catwalk_new,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/point_loma/airbase/exterior/crash_site/upper)
 "buk" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/white,
 /area/point_loma/airbase/mining_colony/interior/corporate)
-"bul" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/turf/open/predship/hunter_catwalk_new,
-/area/point_loma/airbase/exterior/crash_site/upper)
 "bum" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -165928,7 +165910,7 @@ aZC
 aZC
 ckF
 aZC
-bUz
+bwO
 aZC
 aZC
 bwO
@@ -166110,7 +166092,7 @@ aZC
 aZC
 aZC
 aZC
-bwO
+aZC
 aZC
 aZC
 aZC
@@ -166292,7 +166274,7 @@ ckF
 aZC
 ckF
 aZC
-aZC
+bUz
 aZC
 aZC
 cfa
@@ -210191,7 +210173,7 @@ bux
 buq
 buK
 btX
-bul
+buj
 bBm
 btX
 buK

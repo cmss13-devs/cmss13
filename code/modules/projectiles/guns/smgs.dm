@@ -17,8 +17,8 @@
 	w_class = SIZE_LARGE
 	movement_onehanded_acc_penalty_mult = 4
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WEAPON_DELAY_VERY_FAST
-	pull_delay = WEAPON_DELAY_FAST
+	wield_delay = WIELD_DELAY_VERY_FAST
+	pull_delay = WIELD_DELAY_FAST
 	delay_style = WEAPON_DELAY_SCATTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -512,7 +512,7 @@
 /obj/item/weapon/gun/smg/ppsh/unload(mob/user, reload_override, drop_override, loc_override)
 	. = ..()
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WEAPON_DELAY_VERY_FAST
+	wield_delay = WIELD_DELAY_VERY_FAST
 
 /obj/item/weapon/gun/smg/ppsh/reload(mob/user, obj/item/ammo_magazine/magazine)
 	var/obj/item/ammo_magazine/smg/ppsh/ppsh_mag = magazine
@@ -521,7 +521,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] feels noticeably bulkier with \the [magazine]. It's probably going to have a lot worse handling than usual."))
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK + ppsh_mag.bonus_mag_aim_slowdown
-	wield_delay = WEAPON_DELAY_VERY_FAST + ppsh_mag.bonus_mag_wield_delay
+	wield_delay = WIELD_DELAY_VERY_FAST + ppsh_mag.bonus_mag_wield_delay
 	update_icon()
 	. = ..()
 
@@ -599,7 +599,7 @@
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/bizon
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WEAPON_DELAY_MIN
+	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 
 /obj/item/weapon/gun/smg/bizon/Initialize()
@@ -658,7 +658,7 @@
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/burstfire_assembly,
 		)
-	wield_delay = WEAPON_DELAY_NONE
+	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
 
 /obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
@@ -716,7 +716,7 @@
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/flashlight/under_barrel,
 		)
-	wield_delay = WEAPON_DELAY_MIN
+	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	var/jammed = FALSE
 
@@ -886,7 +886,7 @@
 	w_class = SIZE_MEDIUM
 	movement_onehanded_acc_penalty_mult = 4
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WEAPON_DELAY_VERY_FAST
+	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list()
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK

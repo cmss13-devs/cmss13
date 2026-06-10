@@ -14600,10 +14600,6 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
-"aMt" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "aMu" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -17870,6 +17866,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aUP" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
+"aUQ" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 21;
@@ -17880,9 +17880,6 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
-"aUQ" = (
-/turf/open/floor/almayer/orange/east,
 /area/almayer/living/briefing)
 "aUR" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
@@ -17962,7 +17959,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
 "aVb" = (
-/turf/open/floor/almayer/orange/west,
+/turf/open/floor/almayer/orange/east,
 /area/almayer/living/briefing)
 "aVc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18011,20 +18008,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
 "aVj" = (
-/turf/open/floor/almayer/orangecorner/south,
+/turf/open/floor/almayer/orange/west,
 /area/almayer/living/briefing)
 "aVk" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orangecorner/south,
 /area/almayer/living/briefing)
 "aVl" = (
 /obj/effect/decal/warning_stripes{
@@ -18075,11 +18062,18 @@
 /turf/open/floor/engine,
 /area/almayer/engineering/airmix)
 "aVp" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/briefing)
 "aVq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -18136,13 +18130,13 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aVv" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVw" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
+/obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVx" = (
@@ -18159,11 +18153,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aVy" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
 	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVz" = (
 /obj/effect/decal/warning_stripes{
@@ -18216,10 +18209,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVF" = (
@@ -18233,10 +18223,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = -25
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVI" = (
 /obj/structure/machinery/power/apc/almayer/north,
@@ -18370,9 +18361,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aVU" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -18402,8 +18395,11 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/middeck/maintenance/pb)
 "aVZ" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aWa" = (
 /obj/structure/machinery/light/red{
@@ -18789,8 +18785,8 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "aWS" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/plate,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aWT" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -20749,6 +20745,10 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
+"bbo" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "bbp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -146396,7 +146396,7 @@ nyw
 eGZ
 ieX
 pfM
-aUP
+aUQ
 rEf
 rWT
 usX
@@ -148552,7 +148552,7 @@ tpR
 tpR
 osQ
 wxp
-aVU
+aVZ
 baW
 meQ
 bCh
@@ -148560,7 +148560,7 @@ bqZ
 beH
 bdd
 bdd
-aMt
+aUP
 auv
 avG
 avG
@@ -148657,7 +148657,7 @@ atH
 fZE
 fEF
 dAm
-aVv
+aVw
 bdd
 bDQ
 beH
@@ -148968,9 +148968,9 @@ fEF
 dAm
 bCh
 bqZ
-aVj
-aUQ
-aUQ
+aVk
+aVb
+aVb
 grR
 beH
 boq
@@ -149274,7 +149274,7 @@ rHf
 jeb
 fZE
 fEF
-aVy
+aVE
 bdd
 bDQ
 vGG
@@ -149478,14 +149478,14 @@ xWd
 oSL
 jeb
 jeb
-aVZ
+aWS
 oUi
 dAm
 nyw
 vMA
 tHv
-aVb
-aVb
+aVj
+aVj
 tSB
 beH
 beH
@@ -149585,7 +149585,7 @@ hjQ
 fEF
 dAm
 bdd
-aVk
+aVp
 bqZ
 bqZ
 bqZ
@@ -149684,9 +149684,9 @@ xHp
 cGV
 nBa
 jeb
-aWS
+bbo
 aCX
-aVE
+aVH
 bdd
 bdd
 akx
@@ -149791,7 +149791,7 @@ fZE
 fEF
 dAm
 meQ
-aVp
+aVv
 bGw
 bDV
 bGw
@@ -149995,8 +149995,8 @@ bSn
 aQL
 hEm
 kti
-aVH
-aVw
+aVU
+aVy
 exQ
 bCB
 bCB

@@ -15641,6 +15641,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
+"aPp" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "aPq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -149973,7 +149977,7 @@ xHp
 cGV
 nBa
 jeb
-atH
+aPp
 aCX
 aLZ
 bdd

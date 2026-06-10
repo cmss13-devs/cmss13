@@ -166,6 +166,9 @@
 
 /area/tyrargo/outdoors/colony_streets/south_east
 	name = "Colony Streets - South-East"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
+	unoviable_timer = FALSE
 
 // Colony Exterior
 
@@ -199,6 +202,9 @@
 
 /area/tyrargo/outdoors/colony_exterior/south_east
 	name = "Colony Exterior - South-East"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
+	unoviable_timer = FALSE
 
 // Colony Walkways
 
@@ -400,6 +406,8 @@
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
 	soundscape_interval = 120
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/tyrargo/indoors/market/ground
 	name = "Farmers Market - Ground"
@@ -417,6 +425,8 @@
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
 	soundscape_interval = 120
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/tyrargo/indoors/security/ground
 	name = "Sector F: Marshals Outpost - Ground"

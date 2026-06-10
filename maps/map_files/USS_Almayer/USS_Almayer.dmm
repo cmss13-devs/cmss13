@@ -12643,11 +12643,13 @@
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/lifeboat_pumps/north1)
 "aGQ" = (
-/obj/item/trash/USCMtray{
-	pixel_x = 5
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer/redfull,
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "aGR" = (
 /obj/structure/machinery/light/red{
@@ -13594,9 +13596,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aJD" = (
-/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
-	pixel_x = -5;
-	pixel_y = 10
+/obj/item/trash/USCMtray{
+	pixel_x = 5
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/redfull,
@@ -14460,6 +14461,14 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
+"aLZ" = (
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/redfull,
+/area/almayer/living/briefing)
 "aMa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -15149,13 +15158,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "aOd" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer/orangefull,
+/turf/open/floor/almayer/orange/east,
 /area/almayer/living/briefing)
 "aOe" = (
 /turf/open/floor/almayer/test_floor4,
@@ -15593,7 +15596,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "aPp" = (
-/turf/open/floor/almayer/orange/east,
+/turf/open/floor/almayer/orange/west,
 /area/almayer/living/briefing)
 "aPq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16329,7 +16332,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aRd" = (
-/turf/open/floor/almayer/orange/west,
+/turf/open/floor/almayer/orangecorner/south,
 /area/almayer/living/briefing)
 "aRe" = (
 /turf/open/floor/almayer/no_build/plating,
@@ -16571,7 +16574,17 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aRJ" = (
-/turf/open/floor/almayer/orangecorner/south,
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "aRK" = (
 /obj/structure/ladder/multiz,
@@ -16840,18 +16853,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aSs" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "aSt" = (
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/captain_mess)
@@ -17790,10 +17796,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aUH" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
-	},
-/turf/open/floor/almayer,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aUI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17856,14 +17860,17 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aUP" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/starboard_midship_hallway)
-"aUQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
+"aUQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aUR" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
@@ -17946,7 +17953,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = -25
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVc" = (
@@ -17999,18 +18009,15 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_midship_hallway)
-"aVk" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
+"aVk" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -18063,11 +18070,8 @@
 /turf/open/floor/engine,
 /area/almayer/engineering/airmix)
 "aVp" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aVq" = (
 /obj/effect/decal/warning_stripes{
@@ -18125,10 +18129,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aVv" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_midship_hallway)
-"aVw" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -18145,15 +18145,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
-"aVy" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer/orangefull,
-/area/almayer/living/briefing)
 "aVz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -39615,6 +39606,15 @@
 	},
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/command/computerlab)
+"bUb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer/orangefull,
+/area/almayer/living/briefing)
 "bUc" = (
 /obj/structure/machinery/computer/arcade{
 	layer = 3.3
@@ -148320,10 +148320,10 @@ bdd
 bLV
 qMR
 ale
-aVy
-aOd
-aVy
-aVy
+aGQ
+bUb
+aGQ
+aGQ
 aFa
 viO
 gMU
@@ -148725,7 +148725,7 @@ tpR
 tpR
 osQ
 wxp
-aVp
+aVk
 baW
 meQ
 bCh
@@ -148830,7 +148830,7 @@ atH
 fZE
 fEF
 dAm
-aUP
+aUH
 bdd
 bDQ
 beH
@@ -149141,9 +149141,9 @@ fEF
 dAm
 bCh
 bqZ
-aRJ
-aPp
-aPp
+aRd
+aOd
+aOd
 grR
 beH
 boq
@@ -149250,7 +149250,7 @@ dll
 wmz
 beH
 boq
-aGQ
+aJD
 ddk
 tGG
 beH
@@ -149447,7 +149447,7 @@ rHf
 jeb
 fZE
 fEF
-aVb
+aUQ
 bdd
 bDQ
 vGG
@@ -149456,7 +149456,7 @@ cNf
 wmz
 beH
 boq
-aJD
+aLZ
 ddk
 tGG
 beH
@@ -149651,14 +149651,14 @@ xWd
 oSL
 jeb
 jeb
-aVv
+aVp
 oUi
 dAm
 nyw
 vMA
 tHv
-aRd
-aRd
+aPp
+aPp
 tSB
 beH
 beH
@@ -149758,7 +149758,7 @@ hjQ
 fEF
 dAm
 bdd
-aSs
+aRJ
 bqZ
 bqZ
 bqZ
@@ -149857,9 +149857,9 @@ xHp
 cGV
 nBa
 jeb
-aVw
+aVv
 aCX
-aVj
+aVb
 bdd
 bdd
 akx
@@ -149964,7 +149964,7 @@ fZE
 fEF
 dAm
 meQ
-aUH
+aSs
 bGw
 bDV
 bGw
@@ -150168,8 +150168,8 @@ bSn
 aQL
 hEm
 kti
-aVk
-aUQ
+aVj
+aUP
 exQ
 bCB
 bCB

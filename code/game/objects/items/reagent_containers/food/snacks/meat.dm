@@ -119,3 +119,17 @@
 	name = "white perch meat"
 	desc = "Meat of an invasive fish, its oily.."
 	icon_state = "white_perch_meat"
+
+
+
+
+/obj/item/reagent_container/food/snacks/mycelial_flesh
+	name = "mycelial flesh"
+	desc = "A slab of mycelial flesh from an unholy creature."
+	icon_state = "synthmeat"
+	filling_color = "#c2c38d"
+
+/obj/item/reagent_container/food/snacks/mycelial_flesh/Initialize()
+	. = ..()
+	reagents.add_reagent(BLOOD_BLIGHT_ADV, 6)
+	src.bitesize = 6

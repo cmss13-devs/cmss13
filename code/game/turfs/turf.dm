@@ -132,7 +132,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset)
 	. = ..()
 	plane -= offset
 	vis_contents += GLOB.openspace_backdrop_one_for_all

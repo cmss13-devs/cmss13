@@ -513,6 +513,14 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/clf
+	name = "\improper Hacked UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been hacked and its color scheme is non-standard issue. Best to treat it as hostile."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_CLF
+	static = TRUE
+
 /obj/structure/machinery/defenses/sentry/premade/lowammo
 	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE

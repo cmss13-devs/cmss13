@@ -1080,6 +1080,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
+/obj/item/clothing/head/beret/clf/guerilla
+	name = "\improper red beret"
+	desc = "A red beret popular with revolutionaries."
+	icon_state = "beret_revolution"
+
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"
 	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."

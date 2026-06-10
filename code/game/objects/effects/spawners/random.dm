@@ -676,6 +676,23 @@
 	spawn_nothing_percentage = 20
 	icon_state = "claymore_80"
 
+/obj/effect/spawner/random/claymore/clf
+	name = "Random CLF Claymore"
+
+/obj/effect/spawner/random/claymore/clf/item_to_spawn()
+	return pick(/obj/item/explosive/mine/active/clf)
+
+/obj/effect/spawner/random/claymore/clf/lowchance
+	spawn_nothing_percentage = 80
+	icon_state = "claymore_20"
+
+/obj/effect/spawner/random/claymore/clf/midchance
+	spawn_nothing_percentage = 50
+	icon_state = "claymore_50"
+
+/obj/effect/spawner/random/claymore/clf/highchance
+	spawn_nothing_percentage = 20
+	icon_state = "claymore_80"
 
 /*
 // OB spawners

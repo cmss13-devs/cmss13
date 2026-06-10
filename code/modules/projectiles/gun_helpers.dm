@@ -162,9 +162,9 @@ DEFINES in setup.dm, referenced here.
 			return TRUE
 	if(user.faction in FACTION_LIST_WY)
 		return TRUE
-	if(user.job == "UPP Armsmaster") //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
-		return TRUE
 	if(user.faction == FACTION_HUNTED_PMC)
+		return TRUE
+	if(user.job == "UPP Armsmaster") //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
 		return TRUE
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))

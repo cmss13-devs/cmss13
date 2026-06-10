@@ -269,7 +269,7 @@
 
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
-		if(ishuman(current_mob))
+		if(ishuman_strict(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
 
 		if(issynth(current_mob))
@@ -908,6 +908,7 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from a dead husk!"),
 	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
 	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 		window_flash(new_xeno.client)
@@ -948,6 +949,7 @@
 	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
 	if(new_xeno.client)
 		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 			window_flash(new_xeno.client)
@@ -1245,6 +1247,17 @@
 
 	dynamic_evolution = FALSE
 
+/datum/hive_status/kseries
+	name = "K-Series Hive"
+	reporting_id = "k-series"
+	hivenumber = XENO_HIVE_K_SERIES
+	prefix = "K-Series "
+	color = "#ffff80"
+	ui_color = "#99994d"
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+
 /datum/hive_status/feral
 	name = FACTION_XENOMORPH_FERAL
 	reporting_id = "feral"
@@ -1346,6 +1359,65 @@
 	need_round_end_check = TRUE
 
 /datum/hive_status/yautja/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/yautja_bad
+	name = FACTION_XENOMORPH_BADBLOOD
+	reporting_id = "enthralled"
+	hivenumber = XENO_HIVE_YAUTJA_BADBLOOD
+	internal_faction = FACTION_YAUTJA_BADBLOOD
+
+	prefix = "Enthralled "
+
+	color = "#cccc00"
+	ui_color = "#135029"
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = FALSE
+	evolution_rate = 0
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+
+	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
+
+	hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_MED,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_LOW,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_10,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_15,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_30,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = -XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
+/datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.handle_enthrall()
+
+/datum/hive_status/yautja_bad/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.handle_dethrall()
+
+/datum/hive_status/yautja_bad/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/hunted

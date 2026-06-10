@@ -293,7 +293,6 @@
 	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
-	var/ripping_limb = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -402,6 +401,8 @@
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
+
+	AddComponent(/datum/component/seethrough_mob)
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
@@ -528,10 +529,14 @@
 
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
+	if(hive.hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
+	else
+		minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+		var/datum/action/minimap/ref = minimap_ref.resolve()
+		ref.give_to(src, ref)
+		RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
 
 	creation_time = world.time
 
@@ -541,11 +546,14 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.remove_from(src)
+	var/datum/action/minimap/ref
+	if(minimap_ref)
+		ref = minimap_ref.resolve()
+		ref.remove_from(src)
 
 	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
 	ref = minimap_ref.resolve()
+	ref.minimap_flags |= get_minimap_flag_for_faction(hive.hivenumber)
 	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
@@ -889,6 +897,9 @@
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
+	if(new_hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
+
 	generate_name()
 
 	lock_evolve = FALSE
@@ -1085,7 +1096,7 @@
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river))
+	if(istype(get_turf(src), /turf/open/gm/river) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)

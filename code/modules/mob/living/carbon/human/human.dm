@@ -1322,17 +1322,17 @@
 			if(assigned_squad)
 				H = assigned_squad.squad_leader
 		if(TRACKER_LZ)
-			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
-			if(!C) //no LZ selected
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/primary_lz_console = SSticker.mode.active_lz
+			if(!primary_lz_console) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
-			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
+			else if(!SSmapping.same_z_map(src.z, primary_lz_console.z) || get_dist(src,primary_lz_console) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
-				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
+				hud_used.locate_leader.setDir(Get_Compass_Dir(src,primary_lz_console))
 				hud_used.locate_leader.icon_state = "trackon_lz"
-				if(C.z > z)
+				if(primary_lz_console.z > z)
 					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
-				if(C.z < z)
+				if(primary_lz_console.z < z)
 					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)

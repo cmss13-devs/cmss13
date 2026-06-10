@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_8
 
-	attack_delay = 2
+	attack_delay = 1.5
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/neomorph
@@ -67,6 +67,9 @@
 
 	icon_xeno = 'icons/mob/pathogen/neomorph.dmi'
 	icon_xenonid = 'icons/mob/pathogen/neomorph.dmi'
+
+	skull = /obj/item/skull/pathogen_neomorph
+	pelt = /obj/item/pelt/pathogen_neomorph
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

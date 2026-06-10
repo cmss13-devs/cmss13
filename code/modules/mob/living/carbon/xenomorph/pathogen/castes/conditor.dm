@@ -75,6 +75,9 @@
 	icon_xeno = 'icons/mob/pathogen/conditor.dmi'
 	icon_xenonid = 'icons/mob/pathogen/conditor.dmi'
 
+	skull = /obj/item/skull/pathogen_conditor
+	pelt = /obj/item/pelt/pathogen_conditor
+
 	acid_overlay = icon('icons/mob/pathogen/conditor.dmi', "Conditor-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

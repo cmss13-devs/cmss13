@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_5
 
-	attack_delay = 0
+	attack_delay = -1
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/venator
@@ -60,6 +60,9 @@
 
 	icon_xeno = 'icons/mob/pathogen/venator.dmi'
 	icon_xenonid = 'icons/mob/pathogen/venator.dmi'
+
+	skull = /obj/item/skull/pathogen_none
+	pelt = /obj/item/pelt/pathogen_venator
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'

@@ -67,6 +67,9 @@
 		/datum/action/xeno_action/onclick/toggle_gut_targeting,
 	)
 
+	skull = /obj/item/skull/abomination
+	pelt = /obj/item/pelt/abomination
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")

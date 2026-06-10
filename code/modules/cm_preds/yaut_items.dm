@@ -1596,6 +1596,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/skull
 	name = "skull"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
+	icon_state = "drone_skull"
 	unacidable = TRUE
 
 /obj/item/skull/queen
@@ -1612,7 +1613,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Despoiler skull"
 	desc = "Skull of a decrepit wretch, the surface still stinging your hands."
 	icon_state = "despoiler_skull"
-
 
 /obj/item/skull/lurker
 	name = "Lurker skull"
@@ -1699,11 +1699,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a highly acidic xenomorph, a venomous ranged attacker."
 	icon_state = "spitter_skull"
 
+/obj/item/skull/abomination
+	name = "Abomination skull"
+	desc = "Skull of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_skull"
+
+/obj/item/skull/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
+/obj/item/skull/abomination/aberration
+	name = "Aberration skull"
+	desc = "The skull of a mysterious hybrid creature, a nightmare on the field."
+	icon_state = "aberration_skull"
+
 // PELTS
 
 /obj/item/pelt
 	name = "pelt"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
+	icon_state = "drone_pelt"
 	unacidable = TRUE
 
 /obj/item/pelt/queen
@@ -1810,6 +1826,102 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Larva pelt"
 	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
 	icon_state = "larva_pelt"
+
+/obj/item/pelt/abomination
+	name = "Abomination pelt"
+	desc = "The pelt of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_pelt"
+
+/obj/item/pelt/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
+/obj/item/pelt/abomination/aberration
+	name = "Aberration pelt"
+	desc = "The mycelial pelt of a mysterious hybrid creature, a nightmare on the field."
+	icon_state = "aberration_pelt"
+
+/obj/item/pelt/pathogen_matriarch
+	name = "Matriarch pelt"
+	desc = "The mycelial pelt of a huge creature, bringer of doom and death."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_harbinger
+	name = "Harbinger pelt"
+	desc = "The mycelial pelt of a terrifying creature, an unnatural perversion of life."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_venator
+	name = "Venator pelt"
+	desc = "The mycelial pelt of a strange creature, a deadly ambushing predator."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_brute
+	name = "Brute pelt"
+	desc = "The mycelial pelt of a strange creature, a lumbering tank."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_conditor
+	name = "Conditor pelt"
+	desc = "The mycelial pelt of a strange creature, an acidic architect."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_neomorph
+	name = "Neomorph pelt"
+	desc = "The mycelial pelt of a strange creature, a worker and hunter."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_blight
+	name = "Blight pelt"
+	desc = "The mycelial pelt of a strange creature, a stealthy killer."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_sprinter
+	name = "Sprinter pelt"
+	desc = "The mycelial pelt of a strange creature, a terror on the prowl."
+	icon_state = "_pelt"
+
+/obj/item/pelt/pathogen_none //Not all the pathogen creatures have a pelt.
+	icon_state = null
+	desc = "This shouldn't exist."
+
+/obj/item/pelt/pathogen_none/Initialize(mapload, ...)
+	. = ..()
+	qdel(src)
+
+/obj/item/skull/pathogen_matriarch
+	name = "Matriarch skull"
+	desc = "The skull of a huge creature, bringer of doom and death."
+	icon_state = "_skull"
+
+/obj/item/skull/pathogen_brute
+	name = "Brute skull"
+	desc = "The skull of a strange creature, a lumbering tank."
+	icon_state = "_skull"
+
+/obj/item/skull/pathogen_conditor
+	name = "Conditor skull"
+	desc = "The skull of a strange creature, an acidic architect."
+	icon_state = "_skull"
+
+/obj/item/skull/pathogen_neomorph
+	name = "Neomorph skull"
+	desc = "The skull of a strange creature, a worker and hunter."
+	icon_state = "_skull"
+
+/obj/item/skull/pathogen_sprinter
+	name = "Sprinter skull"
+	desc = "The skull of a strange creature, a terror on the prowl."
+	icon_state = "_skull"
+
+/obj/item/skull/pathogen_none //Not all the pathogen creatures have a skull structure.
+	icon_state = null
+	desc = "This shouldn't exist."
+
+/obj/item/skull/pathogen_none/Initialize(mapload, ...)
+	. = ..()
+	qdel(src)
 
 /// TOOLS
 

@@ -1,19 +1,19 @@
 /datum/caste_datum/pathogen/aberration
 	caste_type = PATHOGEN_CREATURE_ABERRATION
-	tier = 3
+	tier = 1
 
-	melee_damage_lower = XENO_DAMAGE_TIER_6 //Stats TBC
-	melee_damage_upper = XENO_DAMAGE_TIER_7
+	melee_damage_lower = XENO_DAMAGE_TIER_5 //Stats TBC
+	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_TIER_12
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_8
-	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_5
+	speed = XENO_SPEED_TIER_8
 
-	attack_delay = 0
+	attack_delay = -2
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/aberration
@@ -37,7 +37,7 @@
 	plasma_types = list()
 	pixel_x = -8
 	old_x = -8
-	tier = 3
+	tier = 1
 	organ_value = 30000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -59,6 +59,9 @@
 
 	icon_xeno = 'icons/mob/pathogen/aberration.dmi'
 	icon_xenonid = 'icons/mob/pathogen/aberration.dmi'
+
+	skull = /obj/item/skull/abomination/aberration
+	pelt = /obj/item/pelt/abomination/aberration
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'

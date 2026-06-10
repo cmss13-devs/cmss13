@@ -64,6 +64,9 @@
 	icon_xeno = 'icons/mob/pathogen/harbinger.dmi'
 	icon_xenonid = 'icons/mob/pathogen/harbinger.dmi'
 
+	skull = /obj/item/skull/pathogen_none
+	pelt = /obj/item/pelt/pathogen_harbinger
+
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
 	weed_food_states = list("Harbinger_1","Harbinger_2","Harbinger_3")

@@ -14,6 +14,7 @@
 	pain_type = /datum/pain/zombie
 	stamina_type = /datum/stamina/none
 	death_message = "seizes up and falls limp..."
+	death_sound = "walker_death"
 	flags = NO_BREATHE|NO_CLONE_LOSS|NO_POISON|NO_NEURO|NO_SHRAPNEL
 	mob_inherent_traits = list(TRAIT_FOREIGN_BIO)
 	brute_mod = 0.6 //Minor bullet resistance

@@ -64,6 +64,9 @@
 	icon_xeno = 'icons/mob/pathogen/matriarch.dmi'
 	icon_xenonid = 'icons/mob/pathogen/matriarch.dmi'
 
+	skull = /obj/item/skull/pathogen_matriarch
+	pelt = /obj/item/pelt/pathogen_matriarch
+
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
 	weed_food_states = list("Matriarch_1","Matriarch_2","Matriarch_3")
@@ -231,7 +234,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno, 'sound/pathogen_creatures/pathogen_matriarch_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, "matriarch_spores", 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
 	xeno.create_shriekwave()
 

@@ -71,6 +71,9 @@
 	icon_xenonid = 'icons/mob/pathogen/bloodburster.dmi'
 	need_weeds = FALSE
 
+	skull = /obj/item/skull/pathogen_none
+	pelt = /obj/item/pelt/pathogen_none
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Runner_1","Runner_2","Runner_3")

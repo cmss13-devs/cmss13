@@ -12,7 +12,7 @@
 	max_health = XENO_HEALTH_TIER_3
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_RUNNER
-	attack_delay = -1
+	attack_delay = -3
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/sprinter
@@ -68,6 +68,9 @@
 
 	icon_xeno = 'icons/mob/pathogen/sprinter.dmi'
 	icon_xenonid = 'icons/mob/pathogen/sprinter.dmi'
+
+	skull = /obj/item/skull/pathogen_sprinter
+	pelt = /obj/item/pelt/pathogen_sprinter
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'

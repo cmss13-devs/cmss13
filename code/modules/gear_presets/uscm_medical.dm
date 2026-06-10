@@ -108,6 +108,7 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
 	name = "USCM Pharmaceutical Physician"
 	assignment = JOB_PHARMACIST
+	job_title = JOB_DOCTOR
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel

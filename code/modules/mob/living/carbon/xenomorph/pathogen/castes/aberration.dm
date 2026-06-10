@@ -86,6 +86,7 @@
 
 /mob/living/carbon/xenomorph/aberration/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
+	make_pathogen_speaker()
 	if(should_announce_spawn)
 		addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
 		hunter_data.dishonored = TRUE

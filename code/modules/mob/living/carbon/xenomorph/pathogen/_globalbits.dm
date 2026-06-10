@@ -492,6 +492,9 @@
 	do_pathogen_evolve()
 	return
 
+/mob/living/carbon/xenomorph/aberration/do_evolve()
+	do_pathogen_evolve()
+	return
 
 // Brute & Matriarch Init handled in their own files.
 

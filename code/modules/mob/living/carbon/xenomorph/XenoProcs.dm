@@ -789,6 +789,10 @@
 		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! Nesting hosts requires hive weeds."))
 		return
 
+	if(supplier_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here do not belong to us!"))
+		return
+
 	if(supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
 		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough for nesting hosts."))
 		return
@@ -814,7 +818,7 @@
 			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest), supplier_weeds.hivenumber)
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest), hivenumber)
 	applicable_nest.dir = dir_to_nest
 	if(!applicable_nest.buckle_mob(host_to_nest, src))
 		qdel(applicable_nest)

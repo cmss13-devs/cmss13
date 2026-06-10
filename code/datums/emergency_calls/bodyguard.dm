@@ -45,12 +45,12 @@
 	to_chat(response_mob, SPAN_BOLD("You were sent to act as the Executives bodyguard on the [MAIN_SHIP_NAME], you have gotten permission from corporate to enter the area."))
 	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 
-/datum/emergency_call/wy_bodyguard/goon
-	name = "Weyland-Yutani Corporate Security (Executive Bodyguard Detail)"
-	equipment_preset = /datum/equipment_preset/goon/standard/bodyguard
-	equipment_preset_leader = /datum/equipment_preset/goon/lead/bodyguard
-	spawn_header = "You are a Weyland-Yutani Corporate Security Officer!"
-	spawn_header_leader = "You are a Weyland-Yutani Corporate Security Lead!"
+/datum/emergency_call/wy_bodyguard/ppo
+	name = "Weyland-Yutani Personal Protection (Executive Bodyguard Detail)"
+	equipment_preset = /datum/equipment_preset/wy_ppo
+	equipment_preset_leader = /datum/equipment_preset/wy_ppo/spec
+	spawn_header = "You are a Weyland-Yutani Personal Protection Officer!"
+	spawn_header_leader = "You are a Weyland-Yutani Personal Protection Specialist!"
 
 /datum/emergency_call/wy_bodyguard/pmc
 	name = "Weyland-Yutani PMC (Executive Bodyguard Detail)"

@@ -46,7 +46,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/command_channel_key = ":v"
 
 	var/freq = CRYO_FREQ
-	var/squad_radio_vlairty = 100 //radio garble clarity bar
 
 	/// List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()

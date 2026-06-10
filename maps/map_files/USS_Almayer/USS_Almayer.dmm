@@ -5365,11 +5365,11 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "anr" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
@@ -6727,11 +6727,11 @@
 /turf/open/floor/almayer/blue,
 /area/almayer/living/offices/flight)
 "aqP" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
@@ -6760,11 +6760,11 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/panic)
 "aqS" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
@@ -14460,13 +14460,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
-"aLZ" = (
-/obj/structure/bed/chair/comfy/bravo,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer/orangefull,
-/area/almayer/living/briefing)
 "aMa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -14881,9 +14874,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
 "aNr" = (
-/obj/structure/bed/chair/comfy/bravo,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
 	},
 /turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
@@ -15154,9 +15149,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "aOd" = (
-/obj/structure/bed/chair/comfy/bravo,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
 	},
 /turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
@@ -18148,6 +18145,15 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
+"aVy" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer/orangefull,
+/area/almayer/living/briefing)
 "aVz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -148213,7 +148219,7 @@ bgO
 beH
 beH
 aNr
-vGG
+xRJ
 xRJ
 beH
 xRw
@@ -148221,7 +148227,7 @@ bPO
 whA
 beH
 iXb
-uMk
+iXb
 aqP
 beH
 beH
@@ -148314,10 +148320,10 @@ bdd
 bLV
 qMR
 ale
-aLZ
+aVy
 aOd
-aLZ
-aFa
+aVy
+aVy
 aFa
 viO
 gMU
@@ -148417,9 +148423,9 @@ bCh
 bqZ
 beH
 beH
-vGG
-vGG
-vGG
+xRJ
+xRJ
+xRJ
 xRJ
 xRJ
 beH
@@ -148427,9 +148433,9 @@ beH
 beH
 iXb
 iXb
-uMk
-uMk
-uMk
+iXb
+iXb
+iXb
 beH
 beH
 bqZ
@@ -148521,8 +148527,8 @@ bqZ
 beH
 beH
 beH
-vGG
-vGG
+xRJ
+xRJ
 xRJ
 beH
 beH
@@ -148530,8 +148536,8 @@ beH
 beH
 beH
 iXb
-uMk
-uMk
+iXb
+iXb
 beH
 beH
 beH

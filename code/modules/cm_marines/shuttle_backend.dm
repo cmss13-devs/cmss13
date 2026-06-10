@@ -134,15 +134,10 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
 	return toReturn
 
-/proc/move_shuttle_to(turf/reference, turftoleave = null, list/source, iselevator = 0, deg = 0, datum/shuttle/ferry/marine/shuttle)
+/proc/move_shuttle_to(turf/reference, turftoleave = null, list/source, iselevator = 0, deg = 0, datum/shuttle/ferry/shuttle)
 	//var/list/turfsToUpdate = list()
 
-	if(shuttle.sound_misc)
-		playsound(source[shuttle.sound_target], shuttle.sound_misc, 75, 1)
-
-	var/area/departure_area = get_area(source[shuttle.sound_target])
 	var/area/landing_area
-	departure_area.base_muffle = 0
 	if (deg)
 		source = rotate_shuttle_turfs(source, deg)
 

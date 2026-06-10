@@ -230,111 +230,18 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			else
 				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
 			return
-		if(shuttle.queen_locked && !isqueen(usr))
-			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
-			return
-		//Comment to test
-		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
-			return
-		if(SSticker.mode.active_lz != src && !onboard && isqueen(usr))
-			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
-			return
-		if(istype(shuttle, /datum/shuttle/ferry/marine))
-			var/datum/shuttle/ferry/marine/s = shuttle
-			if(!length(s.locs_land) && !s.transit_gun_mission)
-				to_chat(usr, SPAN_WARNING("There is no suitable LZ for this shuttle. Flight configuration changed to fire-mission."))
-				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
-
+			var/mob/user_mob
 			if(shuttle.locked)
 				return
-			var/mob/M = usr
-
-			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isqueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
-				var/mob/living/carbon/xenomorph/queen/Q = M
-
-				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
-				var/count = Q.count_hivemember_same_area()
-
-				// Check if at least half of the hive is onboard. If not, we don't launch.
-				if(count < length(Q.hive.totalXenos) * 0.5)
-					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
-					return
-
-				// Allow the queen to choose the ship section to crash into
-				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", GLOB.almayer_ship_sections + list("Cancel"))
-				if(crash_target == "Cancel")
-					return
-
-				var/i = tgui_alert(Q, "Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
-				if(i != "Yes")
-					return
-
-				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
-					return
-
-				//Shit's about to kick off now
-				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z))
-					var/datum/shuttle/ferry/marine/shuttle1 = shuttle
-
-					shuttle1.true_crash_target_section = crash_target
-
-					// If the AA is protecting the target area, pick any other section to crash into at random
-					if(GLOB.almayer_aa_cannon.protecting_section == crash_target)
-						var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
-						potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
-						crash_target = pick(potential_crash_sections)
-
-					shuttle1.crash_target_section = crash_target
-					shuttle1.transit_gun_mission = 0
-
-					if(GLOB.round_statistics)
-						GLOB.round_statistics.track_hijack()
-
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
-					shuttle.alerts_allowed--
-					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
-
-					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
-
-					// Notify the yautja too so they stop the hunt
-					elder_overseer_message("The serpent Queen has commanded the landing shuttle to depart.")
-					playsound(src, 'sound/misc/queen_alarm.ogg')
-
-					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
-
-					if(Q.hive)
-						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
-
-					if(GLOB.bomb_set)
-						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
-							bomb.end_round = FALSE
-
-					if(GLOB.almayer_orbital_cannon)
-						GLOB.almayer_orbital_cannon.is_disabled = TRUE
-						addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-
-					if(GLOB.almayer_aa_cannon)
-						GLOB.almayer_aa_cannon.is_disabled = TRUE
-				else
-					if(shuttle.require_link)
-						use_power(4080)
-					shuttle.launch(src)
-
-			else if(!onboard && isqueen(M) && shuttle.location == 1 && !shuttle.iselevator)
-				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
-				return
 			else
+				user_mob = usr
 				if(is_ground_level(z))
 					shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
-					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
-			msg_admin_niche("[M] ([M.key]) launched \a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
+					user_mob.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+			msg_admin_niche("[user_mob] ([user_mob.key]) launched \a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	ui_interact(usr)
 

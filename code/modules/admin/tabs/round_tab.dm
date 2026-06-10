@@ -72,7 +72,7 @@
 	set desc = "Force-toggle a pathogen round for the round type."
 	set category = "Server.Round"
 
-	if(!SSticker || !SSticker.mode || !(GLOB.master_mode == "Distress Signal"))
+	if(GLOB.master_mode != "Distress Signal")
 		to_chat(usr, SPAN_WARNING("You cannot toggle Pathogen round when the mode is not distress."))
 		return FALSE
 	if(SSticker.current_state > GAME_STATE_PREGAME)

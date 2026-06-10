@@ -18,6 +18,7 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_y = -1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "ae" = (
@@ -271,6 +272,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_2)
+"aK" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_lagoon)
 "aL" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -318,6 +325,7 @@
 "aS" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "aT" = (
@@ -378,6 +386,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 30
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "bd" = (
@@ -1173,6 +1182,7 @@
 "cN" = (
 /obj/structure/platform/stone/soro/east,
 /obj/structure/platform/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "cO" = (
@@ -1312,6 +1322,10 @@
 "dg" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"dh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "di" = (
 /obj/structure/platform/metal/strata,
@@ -2193,6 +2207,10 @@
 	icon_state = "17"
 	},
 /obj/effect/spawner/random/claymore/clf/lowchance,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "fw" = (
@@ -2588,6 +2606,7 @@
 /area/lv1021/outdoors/river/central_south)
 "gJ" = (
 /obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "gK" = (
@@ -2633,9 +2652,7 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "gQ" = (
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat/damage,
 /area/lv1021/outdoors/river/central_north)
 "gR" = (
@@ -2667,9 +2684,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/lv1021/indoors/clf_camp/education)
 "gV" = (
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /obj/effect/mist/steam{
 	pixel_x = 4;
 	pixel_y = 13
@@ -2814,6 +2829,7 @@
 /area/lv1021/indoors/caves/landing_zone/weedkiller)
 "ht" = (
 /obj/structure/platform/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "hu" = (
@@ -2852,6 +2868,7 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "hz" = (
 /obj/structure/platform/stone/soro/north,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "hA" = (
@@ -2938,8 +2955,13 @@
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "hO" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/interior/wood_sat,
+/obj/structure/closet/crate/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
+/turf/open/floor/interior/wood_sat/damage_4,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "hP" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -2956,14 +2978,6 @@
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
-"hS" = (
-/obj/structure/flora/jungle/thickbush/large_jungle_bush{
-	color = "#4F7942";
-	pixel_x = -4;
-	pixel_y = -9
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "hT" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -3108,6 +3122,9 @@
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "iu" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "iv" = (
@@ -3208,6 +3225,7 @@
 	dir = 1;
 	pixel_x = 1
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "iN" = (
@@ -3217,21 +3235,21 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "iO" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 14
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "iP" = (
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/river/central_south)
 "iQ" = (
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/river/central_south)
 "iR" = (
@@ -3275,6 +3293,7 @@
 "iX" = (
 /obj/structure/platform/stone/soro/east,
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "iY" = (
@@ -3286,13 +3305,6 @@
 "iZ" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
-"ja" = (
-/obj/structure/flora/bush/ausbushes/reedbush{
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "jb" = (
 /obj/structure/platform_decoration/wood,
 /turf/open/gm/dirt/brown,
@@ -3329,6 +3341,7 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "jf" = (
 /obj/structure/platform/wood/east,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "jg" = (
@@ -3344,10 +3357,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"jj" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "jk" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/south_2)
@@ -3566,6 +3575,7 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "jT" = (
@@ -3599,6 +3609,7 @@
 /area/lv1021/outdoors/jungle/jungleC_e)
 "jZ" = (
 /obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ka" = (
@@ -3843,6 +3854,10 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "kW" = (
@@ -4059,6 +4074,7 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "lJ" = (
 /obj/structure/flora/wood/stick1,
+/obj/structure/flora/wood/stick3,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "lK" = (
@@ -4265,6 +4281,13 @@
 /obj/structure/platform/wood/north,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
+"mz" = (
+/obj/item/fish_bait{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "mA" = (
 /obj/structure/platform_decoration/wood/east,
 /turf/open/gm/dirt/brown,
@@ -4341,21 +4364,13 @@
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "mM" = (
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/river/central_north)
 "mN" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"mO" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766"
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "mP" = (
 /obj/structure/flora/grass/temperate,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -4394,6 +4409,10 @@
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
+	},
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -3;
+	pixel_y = -6
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
@@ -4448,6 +4467,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
 "ng" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -8;
+	pixel_y = -3
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "nh" = (
@@ -4546,6 +4570,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"ny" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "nz" = (
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/oob)
@@ -4819,6 +4847,7 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "oy" = (
@@ -4855,6 +4884,7 @@
 "oD" = (
 /obj/structure/platform/stone/soro/west,
 /obj/structure/platform/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "oE" = (
@@ -4938,6 +4968,9 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/coordinator)
 "oS" = (
+/obj/structure/largecrate/random/case/small,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood_sat/damage,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "oT" = (
@@ -5066,6 +5099,9 @@
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/interior/wood/damage_2,
 /area/lv1021/outdoors/comms/west_2)
@@ -5271,6 +5307,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "pN" = (
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/carpenters_hammer,
 /turf/open/floor/interior/wood_sat/damage_1,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "pO" = (
@@ -5459,7 +5500,7 @@
 	pixel_x = -4;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "qv" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
@@ -5620,9 +5661,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"qU" = (
-/turf/open/floor/interior/wood/damage_1,
-/area/lv1021/indoors/clf_camp/education)
 "qV" = (
 /turf/closed/wall/solaris/reinforced,
 /area/lv1021/outdoors/comms/south_2)
@@ -5630,6 +5668,10 @@
 /turf/open/floor/interior/wood/damage_3,
 /area/lv1021/indoors/clf_camp/education)
 "qX" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = 6
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "qY" = (
@@ -5686,9 +5728,8 @@
 	pixel_y = 25
 	},
 /obj/structure/platform/wood,
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/oob)
 "ri" = (
@@ -5875,6 +5916,11 @@
 /area/lv1021/landing_zone_1)
 "rH" = (
 /obj/structure/platform_decoration/wood/west,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 15
+	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "rI" = (
@@ -6099,6 +6145,9 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "sv" = (
@@ -6122,6 +6171,9 @@
 	dir = 4;
 	pixel_x = -7;
 	pixel_y = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
@@ -6250,6 +6302,7 @@
 	pixel_x = -4;
 	pixel_y = -10
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "sU" = (
@@ -6472,6 +6525,15 @@
 /obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/landing_zone_2)
+"tI" = (
+/obj/structure/platform/wood/north,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "tJ" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /obj/effect/decal/cleanable/dirt,
@@ -6577,6 +6639,7 @@
 	pixel_x = 7;
 	pixel_y = 4
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "tZ" = (
@@ -6707,6 +6770,7 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ut" = (
@@ -6827,6 +6891,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
 "uM" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/flashlight/lantern,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/rug_colorable/black,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "uN" = (
@@ -6874,6 +6941,7 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "uT" = (
@@ -7141,6 +7209,7 @@
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "vJ" = (
@@ -7293,6 +7362,7 @@
 	pixel_y = 6;
 	dir = 1
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "wb" = (
@@ -7311,6 +7381,7 @@
 	color = "#9d796a";
 	pixel_x = -9
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "we" = (
@@ -7497,6 +7568,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "wG" = (
@@ -7689,6 +7761,7 @@
 	dir = 4;
 	pixel_y = -6
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "xh" = (
@@ -7785,6 +7858,7 @@
 "xw" = (
 /obj/structure/platform/stone/soro/west,
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "xx" = (
@@ -7882,21 +7956,21 @@
 	pixel_x = -11;
 	pixel_y = 3
 	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xN" = (
 /turf/open/floor/interior/wood/damage_5,
 /area/lv1021/indoors/clf_camp/coordinator)
 "xO" = (
 /obj/item/device/flashlight/flare/on,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xP" = (
 /obj/item/weapon/ice_axe/red{
 	pixel_y = 3;
 	name = "climbing axe"
 	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -7944,7 +8018,7 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xW" = (
 /obj/structure/platform/stone/soro,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xX" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -7966,6 +8040,7 @@
 "ya" = (
 /obj/structure/platform/stone/soro/north,
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "yb" = (
@@ -8137,6 +8212,9 @@
 	dir = 6
 	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
 "yx" = (
@@ -8173,6 +8251,7 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 9
 	},
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/comms/west_2)
 "yD" = (
@@ -8264,6 +8343,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "yO" = (
@@ -8481,6 +8561,7 @@
 	pixel_x = 11;
 	pixel_y = 7
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "zr" = (
@@ -8547,6 +8628,11 @@
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#8D8468";
 	dir = 8
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "19";
+	pixel_x = 7;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
@@ -8639,6 +8725,7 @@
 /area/lv1021/outdoors/comms/west_2)
 "zI" = (
 /obj/structure/platform_decoration/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "zJ" = (
@@ -8730,6 +8817,9 @@
 	color = "#8B7B5B"
 	},
 /obj/item/weapon/gun/rifle/sniper/svd,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "zX" = (
@@ -8966,6 +9056,11 @@
 "AC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/jungle/vines/light_2,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	pixel_y = -4;
+	pixel_x = 16
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "AD" = (
@@ -9180,6 +9275,10 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "Bg" = (
@@ -9367,6 +9466,7 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "BG" = (
@@ -9419,11 +9519,16 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "BO" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -9609,7 +9714,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "Cs" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -9648,11 +9753,6 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"Cy" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleW_north)
 "Cz" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
@@ -9925,9 +10025,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/oob)
 "Dq" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood,
+/turf/closed/wall/wood/green,
 /area/lv1021/indoors/clf_camp/education)
 "Dr" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -10054,9 +10153,7 @@
 	icon_state = "p_stair_full";
 	pixel_y = 21
 	},
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "DJ" = (
@@ -10169,6 +10266,28 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/oob)
+"DZ" = (
+/obj/structure/platform_decoration/wood/east,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ea" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -11;
+	pixel_y = 19
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Eb" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
 "Ec" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_x = -10;
@@ -10176,6 +10295,29 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Ed" = (
+/obj/structure/platform/wood/west,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ee" = (
+/obj/structure/platform/wood/north,
+/obj/structure/platform/wood/east,
+/obj/structure/platform_decoration/wood/northwest,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ef" = (
+/turf/open/floor/interior/wood_sat/damage_5,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Eg" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
 "Eh" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -7;
@@ -10203,14 +10345,101 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"Ek" = (
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/binoculars/civ,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
 "El" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Em" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"En" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Eo" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Ep" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Eq" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Er" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/obj/item/fish_bait{
+	pixel_y = 9
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Es" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Et" = (
+/obj/structure/platform_decoration/wood/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Eu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/item/fishing_pole,
+/obj/item/fish_bait,
+/turf/open/floor/interior/wood_sat/damage_6,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Ev" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
 "Ew" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
+"Ex" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/firstaid/adv/empty,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"Ey" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
 "Ez" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "19";
@@ -10220,21 +10449,140 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
+"EA" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 42
+	},
+/turf/open/floor/interior/wood_sat/damage_2,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"EB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"EC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "ED" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "EE" = (
 /obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"EF" = (
+/obj/structure/sign/banners/clf_worn{
+	pixel_y = 32;
+	pixel_x = -18
+	},
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/cmcap/boonie/fisherman{
+	pixel_y = 8
+	},
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
 "EG" = (
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
+"EH" = (
+/obj/structure/mineral_door/wood/open,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"EI" = (
+/obj/structure/filingcabinet/chestdrawer/wood{
+	pixel_x = -8;
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/filingcabinet/chestdrawer/wood{
+	pixel_x = 8;
+	pixel_y = 16;
+	density = 0
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -7
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/indoors/clf_camp/ancil_se)
+"EJ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "EK" = (
 /obj/structure/platform_decoration/wood/west,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EM" = (
+/obj/structure/platform/wood/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EN" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 5;
+	pixel_y = 28;
+	dir = 10
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"EO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EP" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = -4
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EQ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -10;
+	pixel_y = 3
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -10246,9 +10594,38 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/landing_zone_1)
+"ES" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"ET" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "EU" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"EV" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "EW" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -10274,6 +10651,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
+"EZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Fa" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10284,11 +10668,47 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Fb" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -20;
+	pixel_y = 19;
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Fc" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
+/obj/structure/flora/wood/stick2,
 /turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fd" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "12"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fe" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"Ff" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "Fg" = (
 /obj/structure/flora/jungle/planttop1,
@@ -10315,6 +10735,25 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
+"Fj" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fk" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "9";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Fl" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -10322,16 +10761,121 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
+"Fm" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fn" = (
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fo" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_y = 14
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"Fp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/wood/stick4,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Fq" = (
 /obj/structure/target,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Fr" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Fs" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/west,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"Ft" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fu" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fv" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766"
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"Fw" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fx" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "8"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fy" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Fz" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FA" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FB" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/platform/stone/soro,
+/obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"FC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FD" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "13"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "FE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
@@ -10339,6 +10883,36 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/indoors/clf_camp/education)
+"FF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 7
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"FH" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"FI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "FJ" = (
 /obj/structure/platform/wood,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -10348,6 +10922,23 @@
 	dir = 10
 	},
 /turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FK" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FL" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -20;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"FM" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "FN" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -10390,6 +10981,20 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"FR" = (
+/obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766"
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "FS" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
@@ -10405,15 +11010,71 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_north)
+"FU" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"FV" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = 7;
+	pixel_y = -9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"FW" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"FX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"FY" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -10
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
 "FZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"Ga" = (
+/obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"Gb" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "Gc" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/lv1021/oob)
+"Gd" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ge" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gf" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -10424,6 +11085,49 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Gg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gh" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gj" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -20;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gk" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gl" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -10443,6 +11147,18 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Go" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 7
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "Gp" = (
 /obj/structure/roof/flora/tree/jungle/bigtreeTR{
 	pixel_x = 4;
@@ -10451,11 +11167,37 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv1021/oob)
+"Gq" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gr" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
+"Gs" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gt" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Gu" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gv" = (
 /obj/structure/terminal{
 	dir = 4
@@ -10463,6 +11205,12 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/kutjevo/plate,
 /area/lv1021/outdoors/comms/south_2)
+"Gw" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gx" = (
 /obj/structure/platform/wood/east,
 /obj/structure/platform/wood/west,
@@ -10475,6 +11223,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"Gy" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Gz" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -10497,6 +11252,15 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"GB" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 3;
+	dir = 4
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
 "GC" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -10504,6 +11268,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"GD" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"GE" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/platform/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "GF" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -10519,6 +11294,37 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
+"GH" = (
+/obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"GI" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "13"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"GJ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"GK" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "GL" = (
 /obj/structure/platform/wood/west,
 /obj/effect/decal/grass_overlay/grass1/dark,
@@ -10545,13 +11351,38 @@
 	pixel_y = 6;
 	dir = 1
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"GP" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"GQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "GR" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/river/soro,
 /area/lv1021/landing_zone_1)
+"GS" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform_decoration/stone/soro,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "GT" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10573,10 +11404,45 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/indoors/clf_camp/education)
+"GV" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = -9
+	},
+/obj/structure/platform/stone/soro,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "GW" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"GX" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 5;
+	pixel_y = 28;
+	dir = 10
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"GY" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"GZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766"
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "Ha" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -10590,6 +11456,7 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "Hb" = (
@@ -10598,6 +11465,24 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/south_2)
+"Hc" = (
+/obj/structure/platform_decoration/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"Hd" = (
+/obj/structure/platform/stone/soro,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 7
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"He" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Hf" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10621,20 +11506,167 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Hh" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hj" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = -9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
+"Hk" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hl" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hm" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "17";
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hn" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "19";
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ho" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hp" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hq" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -11;
+	layer = 4.13
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hr" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Hs" = (
 /obj/structure/fence/slim/upp/door,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/clf_tunnel)
+"Ht" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "19";
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hu" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hv" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Hw" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
 "Hx" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"Hy" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Hz" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -17
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"HA" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -3
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "HB" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/oob)
+"HC" = (
+/obj/structure/platform_decoration/stone/soro/west,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_y = 14;
+	pixel_x = -2
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "HD" = (
 /obj/structure/barricade/sandbags{
 	dir = 4;
@@ -10642,6 +11674,24 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"HE" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"HF" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/comms/west_2)
+"HG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "HH" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -10653,6 +11703,35 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
+"HI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"HJ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"HK" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"HL" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/east,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"HM" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "HN" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/asphalt/brown,
@@ -10674,6 +11753,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"HQ" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "HR" = (
 /obj/structure/fence/slim/upp,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -10681,6 +11766,28 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"HS" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"HT" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"HU" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"HV" = (
+/obj/structure/platform_decoration/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "HW" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -10690,12 +11797,27 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"HX" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"HY" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -4;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "HZ" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_y = -3;
 	pixel_x = 7
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "Ia" = (
@@ -10711,6 +11833,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
+"Ib" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/comms/west_2)
 "Ic" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -10719,10 +11848,40 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"Ig" = (
-/obj/structure/platform_decoration/stone/soro/north,
+"Id" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -3;
+	pixel_y = -9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Ie" = (
+/obj/structure/flora/wood/stick3,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"If" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ig" = (
+/obj/structure/platform_decoration/stone/soro/north,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ih" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 3;
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "Ii" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /obj/structure/flora/grass/temperate{
@@ -10747,6 +11906,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
+"Il" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Im" = (
 /obj/effect/decal/remains/robot{
 	pixel_x = -14;
@@ -10766,6 +11935,59 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/landing_zone_1)
+"Io" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ip" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"Iq" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ir" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Is" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"It" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/lv1021/outdoors/comms/west_2)
+"Iu" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"Iv" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Iw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/woodentable/poor,
@@ -10790,6 +12012,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Iz" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "IA" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
@@ -10809,6 +12037,60 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"IB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"ID" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IG" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 15
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"IH" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "II" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -10848,6 +12130,14 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
+"IM" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -20;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "IN" = (
 /obj/structure/platform/wood,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -10862,12 +12152,108 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony,
 /turf/open/floor/plating/kutjevo,
 /area/lv1021/outdoors/comms/north_west_1)
+"IP" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = -21
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 12;
+	pixel_x = -10
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"IQ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IR" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "IS" = (
 /obj/structure/fence/slim/upp/door{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"IT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IU" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IV" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/mist/steam{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = -21
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"IW" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"IX" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"IY" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "IZ" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -10886,6 +12272,20 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
+"Ja" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Jb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Jc" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -10893,12 +12293,38 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 5;
+	pixel_y = 28;
+	dir = 10
+	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "Jd" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
+"Je" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/comms/west_2)
+"Jf" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 12;
+	pixel_x = -10
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
 "Jg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 8;
@@ -10912,6 +12338,119 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
+"Jh" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Ji" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -26;
+	pixel_y = -14
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Jj" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -26;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 12;
+	pixel_x = -10
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#8D8468";
+	dir = 4;
+	pixel_y = -6
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Jk" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	pixel_x = 6;
+	pixel_y = -13
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	pixel_y = -8;
+	pixel_x = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	pixel_y = -8;
+	pixel_x = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Jl" = (
+/obj/structure/flora/wood/stick3,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Jm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -20;
+	pixel_y = 19;
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -26;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Jn" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -26;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = -10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -17
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
 "Jo" = (
 /obj/structure/platform/wood/east,
 /obj/structure/platform/stone/soro,
@@ -10921,6 +12460,40 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/landing_zone_1)
+"Jq" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = -10
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Jr" = (
+/obj/structure/platform_decoration/stone/soro,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = -10
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_south)
+"Js" = (
+/obj/item/tool/carpenters_hammer,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/ancil_e)
+"Jt" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Ju" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "Jv" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -10932,6 +12505,26 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv1021/oob)
+"Jx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Jy" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/obj/structure/flora/wood/stick4,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"Jz" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "17"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "JA" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10946,17 +12539,63 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
+"JB" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"JC" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = 4;
+	pixel_y = -13
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
 "JD" = (
 /obj/structure/platform/wood{
 	pixel_y = 11
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"JE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "JF" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
+"JG" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"JH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"JI" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "JJ" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10967,6 +12606,40 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
+"JK" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"JL" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"JM" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "9";
+	pixel_x = -7
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"JN" = (
+/obj/structure/platform_decoration/stone/soro/west,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 15
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
+"JO" = (
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "JP" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
@@ -10977,15 +12650,25 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"JQ" = (
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_lagoon)
 "JR" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_2)
+"JS" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"JT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "JU" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -11007,6 +12690,14 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"JX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 15
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
 "JY" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11021,6 +12712,13 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"JZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Ka" = (
 /obj/structure/flora/wood/stick1,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -11029,6 +12727,18 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Kb" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kc" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Kd" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 3;
@@ -11036,10 +12746,53 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
+"Ke" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kf" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kg" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "17"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Kh" = (
 /obj/structure/barricade/wooden,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Ki" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kj" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kk" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Kl" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -11047,8 +12800,29 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"Km" = (
+/obj/structure/flora/wood/stick3,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kn" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ko" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kp" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Kq" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -11062,6 +12836,64 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Ks" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kt" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -11;
+	layer = 4.13
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ku" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kv" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ky" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Kz" = (
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "KA" = (
 /obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/interior/wood,
@@ -11070,6 +12902,23 @@
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"KC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -20;
+	pixel_y = 19;
+	dir = 10
+	},
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "KE" = (
 /obj/structure/platform/wood/north,
 /obj/structure/platform/wood/east,
@@ -11077,8 +12926,28 @@
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766"
 	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"KF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KG" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KH" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "KI" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -11086,14 +12955,37 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"KJ" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KK" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 3;
+	pixel_y = -4;
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "KL" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 1;
 	pixel_x = 1
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"KM" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "KN" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -11101,8 +12993,89 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"KO" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KR" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KS" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/west,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KT" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "17";
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KU" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
+"KV" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KX" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KY" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"KZ" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "10";
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "La" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 11;
@@ -11110,22 +13083,177 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Lb" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "9";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lc" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ld" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Le" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "13"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lf" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lg" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lh" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Li" = (
+/obj/structure/flora/wood/trunk2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Lj" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Lk" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Ll" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Lm" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -3;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ln" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lo" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lp" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "6"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Lq" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Lr" = (
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ls" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lt" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lu" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lv" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = 4;
+	pixel_y = -13
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
+"Lw" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "4"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Lx" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ly" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -17
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Lz" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -11134,6 +13262,17 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"LA" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LB" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LC" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -11143,12 +13282,42 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"LD" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LE" = (
+/obj/structure/flora/grass/temperate,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LG" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
+"LH" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LJ" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
@@ -11159,6 +13328,24 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"LK" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LL" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LN" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11175,6 +13362,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"LP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LQ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11199,6 +13392,52 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"LS" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "13"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LT" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LU" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LV" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LX" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 10
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"LY" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "LZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -11208,6 +13447,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Ma" = (
+/obj/structure/flora/wood/stick3,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Mb" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -11215,8 +13458,18 @@
 	pixel_x = -8;
 	pixel_y = 9
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"Mc" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Md" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11229,6 +13482,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"Me" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Mf" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -11240,15 +13500,55 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Mh" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 3;
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mi" = (
+/obj/structure/platform_decoration/stone/soro,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
 "Mj" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
 	dir = 4
 	},
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
+"Mk" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ml" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Mm" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
@@ -11261,6 +13561,13 @@
 /obj/structure/platform_decoration/wood/southeast,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"Mo" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Mp" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -11271,6 +13578,148 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Mq" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mr" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Ms" = (
+/obj/effect/mist/steam{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_north)
+"Mt" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mu" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mv" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mx" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"My" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Mz" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "10";
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MA" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MB" = (
+/obj/structure/flora/wood/stick4,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MC" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MD" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"ME" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MF" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "6"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MI" = (
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "MJ" = (
 /obj/structure/platform/stone/soro/west,
 /obj/effect/mist/steam{
@@ -11279,6 +13728,37 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/landing_zone_1)
+"MK" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"ML" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MM" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MN" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 7
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "MP" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11293,6 +13773,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
+"MQ" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -15
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "MR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/mechanical{
@@ -11310,10 +13797,42 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"MT" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MU" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"MV" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv1021/oob)
 "MW" = (
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"MX" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "MY" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -11326,6 +13845,54 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"MZ" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Na" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Nb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Nc" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
+"Nd" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = -4;
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
+"Ne" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"Nf" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
 "Ng" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -11349,6 +13916,14 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Ni" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
+"Nj" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/oob)
 "Nk" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
@@ -11358,6 +13933,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Nl" = (
+/obj/structure/flora/wood/trunk2,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Nm" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
@@ -11395,12 +13974,43 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Nq" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
+"Nr" = (
+/obj/structure/flora/wood/trunk2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/oob)
+"Ns" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -21;
+	pixel_y = -11
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/oob)
+"Nt" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/oob)
+"Nu" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/oob)
 "Nv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Nw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Nx" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -1;
@@ -11416,6 +14026,14 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Ny" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Nz" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -11440,17 +14058,63 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"NB" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "19";
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "ND" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"NE" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NG" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/wood/east,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"NH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NI" = (
 /obj/structure/platform_decoration/wood,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -11478,6 +14142,24 @@
 /obj/structure/platform_decoration/wood/east,
 /turf/open/gm/dirt/brown/variant_5,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
+"NM" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "17";
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NN" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NO" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -11505,6 +14187,33 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"NQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NR" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/flora/wood/stick4,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NS" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "11"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NT" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 3;
+	pixel_y = -4;
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NU" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1
@@ -11515,6 +14224,15 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
+"NV" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NW" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -11532,6 +14250,23 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"NX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"NY" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "NZ" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
@@ -11539,10 +14274,30 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Oa" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -31;
+	pixel_y = -5
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Ob" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Oc" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/turf/open/gm/dirt/brown,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "Od" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/river/soro,
@@ -11828,6 +14583,7 @@
 	dir = 8;
 	pixel_x = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "Ps" = (
@@ -11983,6 +14739,7 @@
 /area/lv1021/oob)
 "Qu" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "Qx" = (
@@ -12149,6 +14906,15 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "RK" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/attachable/flashlight{
+	pixel_y = -4;
+	pixel_x = 4
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/west,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "RN" = (
@@ -12460,6 +15226,7 @@
 	pixel_x = -8;
 	pixel_y = -2
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "TM" = (
@@ -12567,6 +15334,7 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "Ut" = (
 /obj/structure/platform_decoration/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "Ux" = (
@@ -12590,6 +15358,7 @@
 	pixel_y = -3;
 	pixel_x = 7
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "UF" = (
@@ -12688,6 +15457,7 @@
 /obj/structure/platform/wood/west{
 	pixel_x = -6
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "Vu" = (
@@ -12786,6 +15556,7 @@
 /area/lv1021/outdoors/river/central_south)
 "Wf" = (
 /obj/structure/platform/stone/soro/west,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "Wh" = (
@@ -12813,6 +15584,7 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "Wo" = (
@@ -12985,6 +15757,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "Xl" = (
@@ -13062,6 +15835,7 @@
 "Xy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/brown,
+/obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "XG" = (
@@ -13122,6 +15896,7 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "XR" = (
@@ -13130,6 +15905,7 @@
 	dir = 8;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "XS" = (
@@ -13223,6 +15999,7 @@
 	pixel_x = 13;
 	pixel_y = 4
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "YG" = (
@@ -13280,6 +16057,8 @@
 "YO" = (
 /obj/structure/platform_decoration/wood/east,
 /obj/structure/platform_decoration/wood/west,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "YT" = (
@@ -13379,13 +16158,17 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
 "ZH" = (
-/obj/item/stack/sheet/wood{
-	color = "#a98c7c"
-	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "ZI" = (
 /obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -10;
+	pixel_y = 3
+	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "ZJ" = (
@@ -13395,6 +16178,7 @@
 	dir = 8;
 	pixel_x = 3
 	},
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ZN" = (
@@ -13421,6 +16205,7 @@
 /area/lv1021/outdoors/comms/south_2)
 "ZS" = (
 /obj/structure/platform/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "ZU" = (
@@ -13744,32 +16529,32 @@ Qu
 Qu
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (3,1,1) = {"
@@ -13906,37 +16691,37 @@ mG
 mG
 mG
 hz
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
 Qu
 Qu
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (4,1,1) = {"
@@ -14071,39 +16856,39 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
-JQ
-JQ
-JQ
+MW
+MW
+MW
 BF
-JQ
-JQ
-JQ
+MW
+MW
+MW
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (5,1,1) = {"
@@ -14241,14 +17026,14 @@ mG
 hz
 KN
 BF
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
 Qu
@@ -14258,19 +17043,19 @@ Qu
 Qu
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (6,1,1) = {"
@@ -14302,9 +17087,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+vm
+Nf
+wE
 sL
 sL
 sL
@@ -14406,38 +17191,38 @@ mG
 mG
 mG
 hz
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (7,1,1) = {"
@@ -14469,9 +17254,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Nq
+Ni
+Nc
 sL
 sL
 sL
@@ -14571,40 +17356,40 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (8,1,1) = {"
@@ -14636,9 +17421,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Nr
+wE
+Nd
 sL
 sL
 sL
@@ -14739,39 +17524,39 @@ mG
 mG
 mG
 hz
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (9,1,1) = {"
@@ -14803,9 +17588,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+im
+im
+im
 sL
 sL
 sL
@@ -14904,41 +17689,41 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
 fC
 "}
 (10,1,1) = {"
@@ -14970,9 +17755,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Ns
+im
+im
 sL
 sL
 sL
@@ -15070,42 +17855,42 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
 fC
 "}
 (11,1,1) = {"
@@ -15137,9 +17922,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+im
+im
+im
 sL
 sL
 sL
@@ -15236,43 +18021,43 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
 KN
-JQ
+MW
 BF
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
 fC
 "}
 (12,1,1) = {"
@@ -15304,9 +18089,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Nt
+wV
+wV
 sL
 sL
 sL
@@ -15404,42 +18189,42 @@ mG
 mG
 mG
 hz
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
-JQ
+MW
+MW
+MW
 fC
 "}
 (13,1,1) = {"
@@ -15471,9 +18256,9 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Nu
+Nj
+wV
 sL
 sL
 sL
@@ -15571,42 +18356,42 @@ mG
 mG
 mG
 hz
-JQ
+MW
 Hx
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
-JQ
+MW
+MW
+MW
 fC
 "}
 (14,1,1) = {"
@@ -15638,6 +18423,9 @@ sL
 sL
 sL
 sL
+wV
+wV
+wV
 sL
 sL
 sL
@@ -15711,20 +18499,17 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
+mt
+mt
+hU
+mt
 hP
-hP
-hP
+aj
+aj
 hP
 xP
 xM
-hP
+aj
 sL
 sL
 mG
@@ -15738,42 +18523,42 @@ mG
 mG
 mG
 hz
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
+MW
+MW
 fC
 "}
 (15,1,1) = {"
@@ -15875,24 +18660,24 @@ sL
 sL
 sL
 sL
+FK
+FK
+ql
+cF
+cj
+hy
 hP
+BM
+cX
+ph
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+kg
+ak
+aj
+aj
 xO
-hP
-hP
+yI
+fl
 xW
 mG
 mG
@@ -15903,44 +18688,44 @@ mG
 mG
 mG
 mG
-ep
+aK
 gJ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
+MW
+MW
 fC
 "}
 (16,1,1) = {"
@@ -16040,25 +18825,25 @@ sL
 sL
 sL
 sL
+FK
+FK
+FK
+cF
+Hh
 hP
 hP
 hP
 hP
+iS
+ph
+aj
+Fr
 hP
+aj
+aj
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Fp
+aj
 hP
 Ig
 PS
@@ -16072,42 +18857,42 @@ mG
 ep
 gJ
 BF
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
-JQ
+MW
+MW
 fC
 "}
 (17,1,1) = {"
@@ -16205,29 +18990,29 @@ sL
 sL
 sL
 sL
+FK
+FK
+FK
+ql
+Hk
+Hi
+Gh
+FF
+uV
+GI
+ah
+Gq
+BM
+Gd
+Bq
+FI
+bo
+aj
+Fr
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+EO
 hP
 ZI
 hI
@@ -16237,44 +19022,44 @@ mG
 mG
 wI
 gJ
-JQ
+MW
 KN
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
-JQ
+MW
 fC
 "}
 (18,1,1) = {"
@@ -16370,31 +19155,31 @@ sL
 sL
 sL
 sL
+FK
+FK
+FK
+FK
+ql
+Hk
+Hl
+FF
 hP
+FA
+uV
+GJ
+cX
+GW
+BM
+Ge
+FK
+FK
+FC
+bo
 hP
+kg
+Ff
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+EO
 hH
 hH
 Aa
@@ -16403,45 +19188,45 @@ hh
 hh
 hh
 ie
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
+MW
 fC
 "}
 (19,1,1) = {"
@@ -16537,30 +19322,30 @@ sL
 sL
 sL
 sL
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+cF
+cF
+cF
+Hr
+eA
+FF
+FF
+kg
+Gd
+Gw
+Gw
+GK
+Gw
+Gs
+Jw
+mt
+mt
 sL
 sL
-sL
-sL
-sL
+ql
+bo
 hP
-hP
-hP
-hP
-hP
+Fj
+ET
 hP
 hH
 hH
@@ -16570,45 +19355,45 @@ Wo
 hn
 hL
 BG
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
+MW
 fC
 "}
 (20,1,1) = {"
@@ -16705,29 +19490,29 @@ sL
 sL
 hP
 hP
+uV
 hP
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
+Sm
+FK
+FK
+FK
+sL
+sL
+sL
+Jw
+mt
 sL
 sL
 sL
 sL
 sL
-sL
-sL
-sL
-sL
-sL
+Fw
 hP
-hP
-hP
-hP
+Fk
+EV
 hP
 hH
 hI
@@ -16737,45 +19522,45 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
+MW
 fC
 "}
 (21,1,1) = {"
@@ -16866,18 +19651,18 @@ sL
 sL
 sL
 sL
-sL
-sL
+Jw
+Jw
+ch
+dg
+hP
+uV
+uV
 hP
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
+cE
 sL
 sL
 sL
@@ -16893,9 +19678,9 @@ sL
 sL
 sL
 hP
-hP
-hP
-hH
+aj
+EZ
+EP
 hH
 Aa
 hn
@@ -16904,45 +19689,45 @@ Dd
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
+MW
 fC
 "}
 (22,1,1) = {"
@@ -16996,9 +19781,9 @@ sL
 sL
 sL
 sL
-ln
-ln
-ln
+lu
+lu
+lu
 sL
 sL
 sL
@@ -17020,6 +19805,30 @@ sL
 sL
 sL
 sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Jw
+Jw
+aj
+hP
+hP
+hP
+GF
+uV
+uV
+hP
+ji
+hP
 sL
 sL
 sL
@@ -17035,34 +19844,10 @@ sL
 sL
 sL
 hP
+ji
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-hP
-hP
-hP
-hP
-hH
+EQ
 hH
 Aa
 hn
@@ -17070,46 +19855,46 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
-JQ
+MW
 fC
 "}
 (23,1,1) = {"
@@ -17164,9 +19949,9 @@ sL
 sL
 ln
 ln
+lu
+lu
 ln
-ln
-ln
 sL
 sL
 sL
@@ -17197,17 +19982,17 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
+Jw
+Jw
+Jw
+BM
+aj
 hP
 hP
 hP
 hP
 hP
-hP
-hP
-hP
+uV
 hP
 hP
 hP
@@ -17237,44 +20022,44 @@ Wo
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 Qu
 fC
@@ -17364,24 +20149,22 @@ sL
 sL
 sL
 sL
-sL
+Jw
+bh
+bh
+BM
+GW
+aj
+HI
 hP
 hP
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
+aj
+aj
+aj
+hU
 sL
 sL
 sL
@@ -17392,57 +20175,59 @@ sL
 sL
 sL
 sL
+sL
+hU
 hP
-hP
+ji
 hP
 hH
-hH
+EP
 Aa
-hn
+Eb
 hn
 hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -17491,20 +20276,22 @@ pZ
 pZ
 pZ
 pR
-pR
+tE
 pR
 pt
 pt
 Ew
 ln
 ln
+My
+ln
+LA
+LA
 ln
 ln
 ln
-ln
-ln
-ln
-ln
+sL
+ni
 sL
 sL
 sL
@@ -17528,41 +20315,39 @@ sL
 sL
 sL
 sL
+Jw
+hP
+Id
+hP
+bh
+ei
+aj
+aj
+yI
+hP
+kg
+ji
+aj
+aj
+cx
+Hm
+aj
+hU
 sL
 sL
 sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+hU
+aj
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-hP
-hP
-hP
-hH
+EL
 hH
 Aa
 hn
@@ -17571,45 +20356,45 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -17665,15 +20450,17 @@ pv
 pc
 ln
 ln
+lu
 ln
+Lx
 ln
+KX
+LA
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+Ew
+pG
+ni
+ni
 sL
 sL
 sL
@@ -17692,42 +20479,40 @@ sL
 sL
 sL
 sL
-sL
-sL
-sL
-sL
+mt
+mt
+Fw
 hP
 hP
 hP
+ei
+ei
+ei
+ei
+HJ
+aj
+hP
+fI
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Hq
+aj
+Hn
+aj
+aj
+aj
+sL
+ni
+ni
 sL
 sL
 sL
 sL
 sL
-sL
-sL
-sL
-sL
-hP
-hP
-hP
+hU
+aj
+aj
+kg
 fN
 hH
 fQ
@@ -17736,47 +20521,47 @@ fF
 fF
 fF
 aQ
-hn
+Eb
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -17831,19 +20616,19 @@ py
 pw
 Ew
 ln
+lu
+Lr
+lu
 ln
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+pc
+Ew
+pG
+Ew
+Ew
 sL
 sL
 sL
@@ -17854,46 +20639,46 @@ sL
 sL
 sL
 sL
+mt
+sL
+sL
+mt
+sL
+mt
+EU
+IH
+FK
+eA
+hP
+hP
+hP
+GW
+aj
+GW
+ei
+GW
+aj
+hP
+mE
+Ht
+hP
+hP
+hP
+aj
+aj
+Gy
+hP
+bh
+GP
+ni
 sL
 sL
 sL
 sL
 sL
 sL
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
-sL
-sL
-sL
-hP
-hP
+aj
+ji
 fN
 hH
 fN
@@ -17905,45 +20690,45 @@ fN
 eH
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -17997,32 +20782,50 @@ pZ
 In
 py
 pd
+lu
+lu
+lu
+Mt
+Mk
+KD
+Km
 ln
 ln
 ln
+Ew
+pG
+Ew
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
 sL
+hU
+hU
+hU
 sL
-sL
-sL
-sL
-sL
-sL
-sL
+mt
+mt
+mt
+Jt
+uV
+uV
+IQ
+cj
+cj
+ID
+uV
+Iv
+Iv
+aj
+aj
+aj
+GW
+bh
+bh
+GW
+aj
 hP
 hP
 hP
@@ -18031,35 +20834,17 @@ hP
 hP
 hP
 hP
+He
+ph
+BM
+Gt
+Gt
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+aj
+aj
+Fx
 hP
 hP
 fN
@@ -18072,45 +20857,45 @@ fN
 eH
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -18165,62 +20950,62 @@ pR
 pB
 Ew
 ve
+lu
+lu
+Mu
+LP
+KD
+LP
+lu
+KY
+lu
+Lk
+Lk
 ln
+KX
+KW
+KW
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+qd
+qd
+qd
+lu
+lu
+pT
+bh
+Ju
+Ju
+uV
+uV
+aj
+aj
+uV
+IE
+uV
+uV
+ET
+aj
+Es
+HJ
+hP
+ei
+bh
+Jw
+Jw
+hP
+Hu
 hP
 hP
 hP
+Ho
 hP
+ph
+ph
+GW
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+ph
+aj
 hP
 hP
 hP
@@ -18239,45 +21024,45 @@ fO
 fe
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -18333,72 +21118,72 @@ pt
 Ew
 ln
 ln
+My
+LP
+JZ
+lu
+lu
+ln
+ln
+LB
+Lk
+Lk
+lu
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+KM
+Kn
+Kv
+lu
+JZ
+lu
+pT
+ph
+hP
+aj
+Jk
 hP
 hP
 hP
 hP
+IF
 hP
+uV
+uV
 hP
+aj
+kg
+HY
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Jw
+Jw
 sL
-sL
-sL
+hP
+Hv
 hP
 hP
+uV
+uV
+hP
+fI
+bh
+cX
+hP
+Gy
+hP
+Gj
 hP
 hP
+Fu
+ji
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-UU
+Fn
 hP
 fN
 hH
-hH
+EJ
 Aa
 Wd
 hn
@@ -18406,45 +21191,45 @@ hn
 Dd
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -18497,75 +21282,75 @@ pR
 pS
 pS
 sL
-sL
-sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+hU
 sL
 ln
 ln
+LA
+Ml
+lu
+LS
+ln
+lu
+Lk
+hU
+Lk
+lu
+Lh
 ln
 ln
 ln
+KO
+Ko
+Kn
+Km
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+oM
+ph
+aj
+aj
+hP
+IX
+aj
+hP
+hP
+Iv
+hP
+Iv
+uV
+hP
+aj
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Jw
+sL
+sL
 hP
 hP
 sL
-sL
-sL
+uV
+uV
+uV
 hP
 hP
-sL
+BM
+ph
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+aj
+Es
+aj
 hP
 hP
 hP
 hP
-hP
-hP
-hP
+Fy
 UU
-hP
+Fr
 hH
-hH
-hH
+Fb
+EC
 Aa
 hn
 hn
@@ -18573,45 +21358,45 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -18665,67 +21450,67 @@ pR
 mt
 sL
 sL
+hU
+ln
+ln
+ln
+ln
+lu
+lu
+lu
+lu
+lu
 sL
+hU
+lu
+Li
+lu
+KW
+ln
+KO
+KF
+Ko
+Kn
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+ph
+BM
+aj
+IT
+aj
+IR
+Iv
+ET
+aj
+aj
+hP
+Iz
+bo
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
+HI
+aj
 sL
 sL
 sL
 sL
 sL
 sL
+sL
+sL
+uV
+uV
+ei
+Gt
 hP
+aj
+aj
+Gu
+aj
+Fx
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+kg
 hP
 UU
 UU
@@ -18740,45 +21525,45 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -18836,69 +21621,69 @@ ln
 ln
 ln
 ln
+pc
 ln
-ln
-ln
-ln
-ln
-ln
+LT
+LI
+lu
+lu
 sL
 sL
+Lk
+lu
 ln
+KW
+KV
+KO
+tx
+Kw
+Ko
+Kb
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-hP
-sL
+pT
+ph
+mt
+aj
 hP
 hP
+IT
+aj
+aj
+aj
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
+FK
+FK
+bo
+aj
+HI
+aj
+HE
 sL
 sL
 sL
 sL
 sL
+sL
+sL
+hU
+ei
+bh
+ph
 hP
 hP
+aj
+Fd
+EV
+Gg
+EZ
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Fr
 UU
 hP
 hP
-hP
-hP
+kg
+aj
 hH
 hg
 hp
@@ -18907,45 +21692,45 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19001,72 +21786,72 @@ sL
 sL
 ln
 ln
+KX
+oP
+oP
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+LL
+KD
+lu
 sL
+mt
+mt
+Ls
+lu
+ln
+ln
+KW
+Kp
+tx
+Kx
+Ko
+Kc
+ln
+pT
+mt
 sL
-sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
+aj
 hP
 hP
 hP
+aj
+aj
+lj
+IB
+hP
+cu
+Iq
+Il
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
+aj
+HK
 sL
 sL
 sL
 sL
 sL
+sL
+sL
+sL
+sL
+BM
+bh
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Gy
+aj
+Gg
+Gh
+EZ
 hP
 hP
 UU
 hP
 hP
-hP
-hP
-hH
+aj
+aj
+ES
 hH
 Aa
 hn
@@ -19075,44 +21860,44 @@ hn
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19166,51 +21951,49 @@ qc
 JF
 ni
 sL
+hU
+Mv
+oP
+oP
+oP
+oP
+ln
+ln
+lu
+lu
+mt
+st
+Ls
+Lk
+ln
+KZ
+KW
+KP
+Kp
+Ko
+Ko
+Kc
+ln
+pT
+mt
 sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-sL
+mt
 hP
+IY
+GJ
 hP
+IM
+aj
+aj
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
+aj
+Ir
+Gt
+He
+aj
+aj
+HE
+HA
 sL
 sL
 sL
@@ -19218,23 +22001,25 @@ sL
 sL
 sL
 sL
+sL
+ni
+bh
 hP
 hP
 hP
+Gd
+Gk
+Gh
+aj
 hP
+FD
+Fz
+Ft
 hP
-hP
-hP
-hP
-hP
-hP
-UU
-hP
-hP
-hP
-hP
-hP
-hH
+Fm
+aj
+aj
+EJ
 Aa
 hn
 hn
@@ -19242,44 +22027,44 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19334,50 +22119,48 @@ pC
 Jw
 sL
 sL
-sL
+hU
+Mv
+Mv
+oP
+oP
+oP
 ln
+lu
+KD
+Lk
+Lk
+st
+st
+pG
+JS
+KQ
+KQ
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+Ky
+Ko
+Ke
 ln
 ln
 hP
 sL
-sL
-sL
+mt
+ph
+cX
+IU
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-hP
-hP
-hP
-hP
-hP
-sL
-sL
+ph
+ph
+mt
+hU
+mt
+ph
+He
+Es
+HL
+HC
 sL
 sL
 sL
@@ -19385,23 +22168,25 @@ sL
 sL
 sL
 sL
+sL
+sL
+hP
+hP
+hP
+Ft
+ql
+FK
+Ap
+aj
 hP
 hP
 hP
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hH
+aj
+aj
+aj
+EL
 hg
 hp
 hn
@@ -19410,43 +22195,43 @@ hA
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19502,74 +22287,74 @@ JF
 ni
 sL
 sL
+hU
+hU
 sL
-sL
-sL
-sL
+mt
 ln
 ln
+JS
+LD
+lu
+lu
 ln
+pG
+pG
+pG
+KX
+KR
+KG
 ln
+Kp
+Kf
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-hP
-hP
+JH
+JE
+aj
+sL
+mt
+bh
+ph
+ph
+bh
+bh
+ph
+mt
 sL
 sL
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
+mt
+ph
+Gt
+Gt
+aj
+HE
 sL
 sL
 sL
 sL
 sL
 sL
+sL
+sL
+sL
 hP
 hP
 hP
 hP
+Gz
+ql
+FK
+Ap
 hP
-hP
-hP
-hP
-hP
-hP
+mE
 hP
 UU
+Ft
 hP
-hP
-hP
-hP
-hH
-hH
+aj
+aj
+EJ
+EC
 hg
 hp
 Wd
@@ -19577,43 +22362,43 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19672,44 +22457,44 @@ sL
 sL
 sL
 sL
+mt
+mt
+Kb
+lu
+lu
+lu
+Lw
+ln
+ue
+pG
+pd
+pd
+Ew
+ln
+ln
+Ks
+ln
+ln
+Fu
+hP
+Jz
+aj
+mt
+cX
+BM
+cX
+cX
+cX
+mt
 sL
-sL
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+mt
+mt
 hP
+Id
 hP
-hP
-hP
-sL
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-sL
-sL
-hP
-hP
-hP
-hP
-hP
-sL
+cX
+cX
+mt
 sL
 sL
 sL
@@ -19723,64 +22508,64 @@ hP
 aj
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
+fI
+Gz
+ql
+hy
+FF
+FF
 hP
 hP
 UU
 hP
 hP
 gM
+EM
 fQ
-fQ
-gH
+Et
 hg
 hp
 Wo
 hn
 hn
 zv
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -19824,7 +22609,7 @@ rQ
 sa
 pR
 gF
-pR
+sn
 pR
 pR
 pZ
@@ -19839,44 +22624,44 @@ sL
 sL
 sL
 sL
-sL
+mt
+tx
+Kc
+lu
+LE
+lu
+lu
+KD
+ln
+pG
+pd
+mt
+mt
+Ew
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-ln
-ln
-ln
-ln
+Kg
 ln
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
-hP
-hP
-hP
+Iv
+aj
+aj
+Ja
+aj
+mE
 hP
 hP
 hP
 sL
+mt
+hP
+hP
+hP
+aj
+ak
+HM
+mt
 sL
 sL
 sL
@@ -19894,9 +22679,9 @@ hP
 hP
 hP
 hP
-hP
-hP
-hP
+uV
+uV
+Ft
 hP
 UU
 UU
@@ -19912,42 +22697,42 @@ hp
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -20005,24 +22790,28 @@ sL
 sL
 sL
 sL
+mt
+LV
+tx
+Ke
+JS
+lu
+lu
+lu
+KD
+ln
+ln
+Ew
+Ew
+mt
 sL
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-ln
-ln
-ln
+hP
+hP
+IB
+Jb
 hP
 hP
 hP
@@ -20032,18 +22821,14 @@ hP
 hP
 hP
 hP
+Fu
+hP
+Io
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
-sL
+GF
+hU
+hU
 sL
 sL
 sL
@@ -20055,17 +22840,17 @@ ni
 ch
 dg
 aj
-yQ
+GQ
 aj
+kg
 hP
 hP
+uV
+uV
+uV
 hP
 hP
-hP
-hP
-hP
-hP
-hP
+Xa
 UU
 UU
 Vg
@@ -20073,48 +22858,48 @@ gb
 gb
 nm
 gb
-ZW
+Ee
 fQ
 kZ
 hp
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -20172,44 +22957,44 @@ sL
 sL
 sL
 sL
+mt
+LV
+LU
+Ke
+ln
+lu
+ln
+ln
+lu
+ln
+ln
+ln
+Ew
+Ew
+sL
 sL
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-ln
+hP
+hP
+JI
+hP
+uV
+Jx
+hP
+Jb
+aj
+hP
+EZ
+IB
 hP
 hP
 hP
+aj
+aj
+Ie
+aj
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-sL
+hU
 sL
 sL
 sL
@@ -20226,19 +23011,19 @@ aj
 aj
 hP
 hP
-hP
-hP
-hP
-hP
-hP
-hP
+Gi
+uV
+FL
+uV
+FA
+EO
 hP
 UU
 UU
 gg
 gb
-fU
-fU
+EF
+Eu
 gb
 gb
 gb
@@ -20247,41 +23032,41 @@ Aa
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -20340,41 +23125,41 @@ sL
 sL
 sL
 sL
-sL
+mt
+LV
+Kc
+lu
+lu
+ln
+ln
+KQ
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
+pH
 sL
 sL
+sL
+sL
+He
+Ju
+JI
+Ju
+uV
+uV
+uV
 hP
 hP
+uV
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+aj
 hP
 zV
-hP
-hP
-hP
-hP
-hP
+yI
+aj
+aj
+If
+aj
 hP
 sL
 sL
@@ -20398,15 +23183,15 @@ hP
 hP
 hP
 hP
-hP
-hP
+kg
+La
 UU
 UU
 FJ
 nm
 oS
-fU
-fU
+Ev
+En
 gb
 gb
 PO
@@ -20415,39 +23200,39 @@ hp
 hn
 PZ
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 BF
 Qu
 fC
@@ -20507,43 +23292,43 @@ sL
 sL
 sL
 sL
-sL
-sL
+mt
+mt
+LK
+lu
+lu
 ln
 ln
+JS
 ln
+lu
 ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-sL
 sL
 sL
 sL
 sL
+sL
+sL
+sL
+JK
+Ju
+ph
 hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
-hP
+Jl
 hP
 hP
 aj
-sL
+hP
+EZ
+aj
+hP
+aj
+Is
+If
+hP
+hP
+aj
+hU
 hU
 sL
 sL
@@ -20554,7 +23339,7 @@ eA
 hP
 aj
 Op
-aj
+Fd
 GF
 hP
 oj
@@ -20582,40 +23367,40 @@ Am
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Qu
 fC
 "}
@@ -20677,14 +23462,14 @@ sL
 sL
 ln
 ln
+pc
 ln
 ln
+KQ
+KX
 ln
-ln
-ln
-ln
-ln
-ln
+Lc
+lu
 ln
 sL
 sL
@@ -20692,8 +23477,8 @@ sL
 sL
 sL
 sL
-sL
-sL
+ni
+ni
 sL
 hP
 hP
@@ -20702,7 +23487,7 @@ hP
 hP
 Aq
 hP
-hP
+aj
 hP
 hP
 hP
@@ -20733,56 +23518,56 @@ sL
 sL
 ni
 ph
-hP
-UU
+Fu
+Fn
 ZN
 XZ
 gb
 gb
-fU
+Ex
 ng
 RK
 gb
 gb
-PO
+tI
 hg
 hp
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Hx
-JQ
-JQ
+MW
+MW
 Qu
 fC
 "}
@@ -20840,36 +23625,36 @@ sL
 sL
 sL
 sL
+hU
 sL
-sL
 ln
 ln
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-sL
+Ld
+lu
+Ld
+lu
+KY
+lu
 sL
 sL
 sL
 sL
 sL
 sL
+sL
+sL
+sL
+ch
+dg
 hP
 hP
 hP
 hP
-hP
-hP
-hP
+IC
 hP
 hP
 hP
@@ -20885,14 +23670,14 @@ Qq
 xX
 ph
 nE
-aj
+Hp
 aj
 hP
 hP
 od
 vf
 sL
-sL
+hU
 hP
 sL
 sL
@@ -20905,51 +23690,51 @@ hP
 UU
 pD
 vI
-mh
-fU
-fU
-fU
+EH
+Ey
+Eo
+Ef
 mh
 Xd
 YO
-hH
+dh
 Aa
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 HZ
-JQ
+MW
 Qu
 fC
 "}
@@ -21011,18 +23796,18 @@ ln
 ln
 ln
 ln
+lu
 ln
 ln
 ln
 ln
 ln
 ln
-ln
-ln
-ln
+lu
+lu
 ln
 sL
-ln
+Kz
 sL
 sL
 sL
@@ -21068,54 +23853,54 @@ sL
 sL
 ni
 cX
-hP
+La
 UU
 Vg
 gb
 gb
-fU
-fU
-fU
+EA
+Ep
+Eg
 gb
 gb
 PO
-hH
+mz
 Aa
 hA
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 zI
 iX
 fC
@@ -21176,20 +23961,20 @@ pT
 ln
 ln
 ln
+lu
 ln
 ln
 ln
+oP
 ln
 ln
+Lm
+lu
+lu
+KQ
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+KH
+Kz
 sL
 sL
 sL
@@ -21239,45 +24024,45 @@ hP
 UU
 gg
 nm
+EI
 fU
-fU
-fU
-fU
+Eq
+Ek
 nm
 Rk
-gv
+DZ
 ad
 Aa
 hn
 wN
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 BF
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
 BF
 zI
 ZS
@@ -21340,23 +24125,23 @@ sL
 mt
 pT
 ln
+lu
+lu
+ln
+ln
+LL
+ln
+oP
+oP
 ln
 ln
 ln
+KY
+lu
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+KS
+KJ
+KC
 sL
 sL
 sL
@@ -21372,7 +24157,7 @@ As
 Ai
 fz
 zW
-jx
+It
 zG
 zq
 fz
@@ -21403,46 +24188,46 @@ ni
 Sx
 dR
 mE
-UU
+zL
 IN
 nm
 hO
-fU
-fU
+EB
+Er
 pN
 nm
 PO
 MS
-hH
+ny
 Aa
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 UD
 ZS
 ZS
@@ -21505,21 +24290,21 @@ mt
 sL
 ln
 pT
-pT
-pT
+qd
+qd
+Mw
 ln
 ln
 ln
 ln
+oP
+oP
+LA
+Lx
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
+lu
 sL
 sL
 sL
@@ -21532,15 +24317,15 @@ sL
 sL
 sL
 sL
-ni
+Gc
 AL
 PF
 Cj
 Aj
 fz
 zX
-jx
-jx
+It
+It
 zr
 fz
 px
@@ -21567,7 +24352,7 @@ sL
 sL
 sL
 GW
-aj
+Fd
 hP
 hP
 UU
@@ -21579,36 +24364,36 @@ gb
 gb
 gb
 PO
-hH
+dh
 hI
 hE
 hn
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Hx
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
 zI
 cN
 mG
@@ -21673,18 +24458,18 @@ ln
 ln
 oM
 pT
+Mz
+ln
+Mo
+Ma
+ln
+LM
+LH
+KX
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
 sL
 sL
 sL
@@ -21699,7 +24484,7 @@ sL
 sL
 sL
 sL
-Fl
+Je
 AM
 Ph
 At
@@ -21710,8 +24495,8 @@ kC
 fz
 fz
 fz
-nf
-jq
+Ib
+yB
 jq
 yx
 yn
@@ -21746,32 +24531,32 @@ WY
 gb
 gb
 PO
-hH
+ny
 Aa
 RV
 hj
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 BF
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
 KN
-JQ
+MW
 zI
 ZS
 ZS
@@ -21840,18 +24625,18 @@ ln
 ln
 ln
 pd
-pT
+qd
 ln
 ln
+lu
 ln
+oP
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+KM
+Ln
+Ln
+Ln
 sL
 sL
 sL
@@ -21911,7 +24696,7 @@ ge
 xA
 QP
 GL
-fT
+Ed
 gv
 hH
 Aa
@@ -21920,23 +24705,23 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 BF
-JQ
+MW
 zI
 ZS
 cN
@@ -22001,30 +24786,30 @@ pZ
 pt
 pS
 lu
-lu
-ln
+MM
+KG
 ln
 ln
 pT
 pd
+Lo
 ln
 ln
 ln
+lu
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+KM
+Ko
+tx
+tx
 sL
 sL
 sL
 sL
 sL
 sL
-ln
+tx
 sL
 sL
 sL
@@ -22079,7 +24864,7 @@ aj
 Gl
 OA
 hH
-rV
+Ea
 hI
 hE
 hn
@@ -22087,20 +24872,20 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 zI
 ZS
 ZS
@@ -22169,21 +24954,21 @@ qj
 qt
 lu
 ln
-ln
+MI
 ln
 oP
 oO
 pT
 pT
+lu
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+pH
+lu
+KM
+Ko
+tx
+tx
 sL
 sL
 sL
@@ -22191,8 +24976,8 @@ sL
 sL
 sL
 sL
-ln
-ln
+tx
+tx
 sL
 sL
 hP
@@ -22245,7 +25030,7 @@ hP
 bg
 aj
 vQ
-hH
+ny
 hH
 Aa
 hn
@@ -22255,16 +25040,16 @@ hn
 hn
 MW
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 zI
 ZS
 ZS
@@ -22328,7 +25113,7 @@ pZ
 sq
 rG
 pZ
-pZ
+qg
 pR
 Ez
 qj
@@ -22338,33 +25123,33 @@ ln
 ln
 ln
 oP
-oP
+LH
 oP
 BB
 pd
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-sL
-sL
-sL
-ln
-ln
-ln
 lu
+LA
+ln
+KM
+tx
+LF
+tx
+ty
+ty
+sL
+sL
+sL
+sL
+sL
+ty
+ty
+ty
+Ki
 AX
 aj
-kS
-dy
+JG
+JB
 UU
 AT
 AS
@@ -22393,7 +25178,7 @@ sL
 sL
 sL
 sL
-sL
+hU
 ni
 EU
 ni
@@ -22410,8 +25195,8 @@ aj
 Sm
 Ap
 ah
-aj
-vQ
+Es
+Em
 hH
 hI
 hE
@@ -22422,11 +25207,11 @@ hn
 hn
 hn
 MW
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
 BF
 KN
 zI
@@ -22509,27 +25294,27 @@ oP
 BC
 Jw
 pT
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-sL
-sL
-ln
+lu
 ln
 lu
+KM
+tx
+tx
+tx
+th
+ln
+ln
+Lo
+ln
+ln
+sL
+sL
+ln
+ln
+Kt
 lw
 lw
-dy
+JL
 UU
 aG
 kV
@@ -22590,10 +25375,10 @@ hn
 hn
 MW
 MW
-JQ
+MW
 Hx
-JQ
-JQ
+MW
+MW
 zI
 ZS
 cN
@@ -22676,28 +25461,28 @@ oP
 sL
 sL
 pT
+lu
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+KM
+Ko
+tx
+tx
+th
 ln
 Bo
 Bm
-lu
-lu
+Lp
+Lc
 ln
 lu
 lu
 lu
-lu
+KD
 lL
 lz
-lz
+JO
 aG
-aj
+Hn
 aj
 aj
 AV
@@ -22744,7 +25529,7 @@ Gz
 eA
 hP
 hH
-hH
+dh
 hH
 Aa
 hn
@@ -22757,8 +25542,8 @@ hA
 hn
 hn
 MW
-JQ
-JQ
+MW
+MW
 zI
 ZS
 cN
@@ -22841,31 +25626,31 @@ ln
 oP
 sL
 Jw
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
+Mx
+Ln
+tx
+tx
+tx
+th
 ln
 Bs
 Bp
 lw
+Lr
 lu
 lu
 lu
-lu
-lw
+KT
 lw
 lL
-lz
+Ku
 lz
 lB
 aj
-aj
-aj
+Fm
+Ir
 hP
 AU
 rx
@@ -22882,7 +25667,7 @@ JA
 zg
 ke
 iY
-jq
+HF
 jq
 yg
 pl
@@ -22900,7 +25685,7 @@ hP
 hP
 eN
 UU
-zL
+FM
 hP
 hP
 Ck
@@ -22925,7 +25710,7 @@ hn
 hn
 hu
 hu
-JQ
+MW
 ht
 mG
 mG
@@ -23000,28 +25785,28 @@ sL
 sL
 sL
 mt
-ln
-ln
+lz
+lz
 BK
 pd
 pG
 pG
 Jw
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
 lu
+LT
+Mx
+tx
+tx
+tx
+tx
+th
+Lc
 lu
 Bu
 lL
-lz
+Lt
 ml
-lw
+Le
 lw
 lL
 lz
@@ -23030,7 +25815,7 @@ lz
 lB
 lK
 lu
-aj
+JM
 hP
 hP
 hP
@@ -23073,7 +25858,7 @@ La
 aj
 ah
 aj
-aj
+Fd
 aj
 Be
 rV
@@ -23168,20 +25953,20 @@ sL
 sL
 sL
 Jw
+MT
+MN
 pG
 pd
-pG
-pd
 ln
 ln
 ln
 ln
-ln
-ln
-ln
-lu
-lu
-lu
+Kp
+tx
+tx
+Ko
+Ki
+Kj
 lu
 lu
 Bv
@@ -23195,12 +25980,12 @@ Bc
 Ba
 lK
 lu
-lu
-ln
+Kj
+JS
 hP
-hP
+Jb
 AW
-hP
+Jy
 OG
 km
 GM
@@ -23339,33 +26124,33 @@ qu
 BK
 ln
 ln
-pH
+MA
+KX
 ln
-ln
-ln
-ln
-ln
-lu
-lw
-lu
+MB
+KQ
+Kp
+Mq
+Mc
+LW
 lu
 lw
 lL
 lz
 lB
+Lu
 lK
-lK
-lK
-lK
+Lf
+Lb
 Bf
 Bd
 Bb
 lu
 ln
-ln
-ln
-hP
-hP
+Kk
+JT
+hH
+hH
 hP
 hP
 OG
@@ -23514,7 +26299,7 @@ lw
 lw
 lL
 lz
-ml
+LX
 lL
 lz
 lz
@@ -23522,17 +26307,17 @@ lB
 mv
 lQ
 lQ
+Lg
 lQ
 lQ
 lQ
-lQ
-lQ
+KK
 lQ
 lC
 lC
 lC
-hH
-hH
+EC
+EJ
 hH
 hP
 sL
@@ -23579,7 +26364,7 @@ hI
 kc
 hn
 cP
-hn
+Eb
 hn
 hn
 hA
@@ -23676,17 +26461,17 @@ lu
 lu
 lu
 lw
-lL
+MC
 lz
 lz
-lz
+Mr
 lz
 lz
 lz
 lz
 FT
 lD
-lC
+Ly
 mp
 kW
 kW
@@ -23700,7 +26485,7 @@ kW
 kW
 lo
 hH
-hH
+EC
 hH
 sL
 sL
@@ -23746,7 +26531,7 @@ hE
 hn
 hn
 hn
-hn
+dT
 hn
 hn
 hJ
@@ -23816,10 +26601,10 @@ ln
 ln
 ln
 ln
-ue
+NE
 ln
-ln
-ln
+Mz
+lu
 sL
 sL
 sL
@@ -23839,7 +26624,7 @@ ln
 Bm
 BK
 lu
-lw
+MK
 lw
 lL
 lz
@@ -23854,17 +26639,17 @@ VR
 mV
 OR
 kW
-mq
+Lv
 kX
 JV
+qv
 kX
 kX
 kX
 kX
+qv
 kX
-kX
-kX
-kX
+JX
 lp
 ik
 kW
@@ -23893,7 +26678,7 @@ aj
 xU
 zu
 hP
-zL
+FM
 UU
 Ii
 aj
@@ -23978,14 +26763,14 @@ sL
 sL
 CB
 ln
+KR
+KG
+KQ
 ln
+Mw
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
 sL
 sL
 sL
@@ -24007,15 +26792,15 @@ Bu
 BO
 lL
 lz
-lz
+MH
 lB
-lK
-lK
+MF
+MD
 lK
 lu
 ln
-ln
-lQ
+Me
+LY
 lC
 mp
 Ia
@@ -24025,6 +26810,8 @@ kX
 kX
 kX
 kX
+qn
+KU
 kX
 kX
 kX
@@ -24032,12 +26819,10 @@ kX
 kX
 kX
 kX
-kX
-kX
-kX
+qv
 kX
 hu
-hu
+Jf
 hu
 sL
 sL
@@ -24145,13 +26930,13 @@ sL
 sL
 ln
 ln
+Lc
+Lr
+LW
+lu
 ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
 sL
 sL
 sL
@@ -24167,7 +26952,7 @@ pd
 pT
 ln
 ln
-mt
+MV
 sL
 ln
 BQ
@@ -24175,10 +26960,10 @@ qk
 lz
 lz
 lB
-lu
+JZ
 lu
 ln
-ln
+MA
 ln
 ln
 lC
@@ -24189,7 +26974,7 @@ mX
 kX
 kX
 kX
-kX
+qv
 kX
 kX
 kX
@@ -24203,8 +26988,8 @@ kX
 kX
 kX
 kX
-hu
-hu
+Jm
+Jh
 hu
 hu
 hu
@@ -24288,7 +27073,7 @@ mG
 mG
 mG
 mG
-ep
+aK
 oD
 mG
 fC
@@ -24311,44 +27096,44 @@ sL
 sL
 sL
 ln
-Cy
+Bp
+lu
+NM
+LW
 ln
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+Mw
+lu
+NB
+lu
 sL
 ty
 ty
 th
 sL
 sL
+qd
 pT
-pT
+lu
 ln
 ln
 ln
-ln
-ln
+pH
 ln
 ln
 lu
 lw
 lL
 lB
-lK
+ML
 lu
 lu
 ln
 ln
-ln
+KX
 lC
 lC
-lC
+Mh
 mp
 mq
 kX
@@ -24370,15 +27155,15 @@ kX
 kX
 kX
 kX
+Jn
+Ji
+hu
+IP
 hu
 hu
 hu
 hu
-hu
-hu
-hu
-hu
-hu
+Hw
 sL
 sL
 sL
@@ -24409,7 +27194,7 @@ hn
 hn
 hn
 hn
-hn
+Eb
 hn
 hJ
 hK
@@ -24445,11 +27230,11 @@ hj
 DH
 pE
 KL
-JQ
-JQ
+MW
+MW
 wF
-JQ
-JQ
+MW
+MW
 EE
 Wf
 Wf
@@ -24477,36 +27262,36 @@ mG
 mG
 mG
 lC
-ln
-Bm
-ln
-ln
-ln
-ln
-ln
+lu
+NR
+lu
+lu
+lu
 ln
 ln
+Mw
 ln
-Cy
+Kt
+Bp
 Bo
+oP
+Nl
+Ne
 ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+lu
+lu
+lu
+KY
+Nb
 ln
 ln
 ln
 lu
-lw
+MU
 lL
 lz
 lB
-lu
+JZ
 lu
 ln
 lQ
@@ -24537,12 +27322,12 @@ kX
 kX
 kX
 kX
-hu
-hu
+vr
+IW
 lO
 hu
 hu
-hu
+Hw
 hu
 hu
 hu
@@ -24613,17 +27398,17 @@ Ix
 MW
 Mb
 XP
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
-JQ
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
+MW
 Hx
-JQ
+MW
 Qu
 fC
 "}
@@ -24642,28 +27427,28 @@ mG
 mG
 mG
 mG
-lC
+uB
 ln
 ln
-ln
-ln
-BL
-ln
-ln
-ln
-ln
+NS
+lu
+Bu
+lu
+lu
+KX
+Me
 ln
 ln
 ln
 Cr
-ln
-ln
-ln
+oP
+oP
+oP
 BL
 BJ
 ln
 ln
-ln
+MI
 ln
 ln
 lw
@@ -24678,12 +27463,12 @@ mv
 mV
 ln
 lC
-lC
+ME
 mp
 kW
 mq
 kX
-kX
+qv
 kX
 kX
 kX
@@ -24694,31 +27479,31 @@ kX
 kX
 kX
 kX
-kX
+qv
 JV
 kX
 kX
 JV
 kX
 kX
+qn
 kX
-kX
-kX
-hu
-hu
+qv
+Jq
+Jj
+IV
 lO
 lO
-lO
 hu
 hu
 hu
 hu
 hu
 hu
+Hy
 hu
 hu
-hu
-hu
+Hw
 hu
 hu
 hu
@@ -24784,7 +27569,7 @@ ZS
 ZS
 ZS
 Ut
-JQ
+MW
 zI
 ZS
 yN
@@ -24806,33 +27591,33 @@ mG
 mG
 mG
 lC
-lC
+NX
 mG
 mG
 lC
 ln
+KQ
+pc
+lu
+NN
+Mx
+NH
+Kb
 ln
+pH
 ln
+Ny
+Nw
+oP
 ln
-BK
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+oP
 ln
 BL
 ln
 ln
 lu
 lu
-lL
+Na
 lz
 lz
 lz
@@ -24843,7 +27628,7 @@ lu
 ln
 ln
 mV
-lC
+MG
 lC
 mp
 mq
@@ -24864,30 +27649,30 @@ kX
 kX
 kX
 kX
+oc
+kX
+qv
 kX
 kX
+JC
 kX
-kX
-kX
-kX
-kX
+Jr
 hu
-hu
-hu
+IW
 hu
 lO
 lO
 hu
 hu
 hu
+Hz
 hu
 hu
 hu
 hu
 hu
 hu
-hu
-hu
+Hw
 hu
 hu
 Vi
@@ -24972,20 +27757,20 @@ mG
 mG
 mG
 lC
+NY
 lC
 lC
 lC
+LL
 lC
 ln
-lC
 ln
-ln
-ln
-BK
-ln
-ln
-ln
-ln
+NC
+NN
+Kp
+tx
+tx
+Kb
 ln
 ln
 ln
@@ -25001,21 +27786,21 @@ lL
 lz
 lz
 lB
-lK
-lK
+MZ
+MX
+JZ
 lu
-lu
-ln
+KQ
 ln
 lC
-lC
+ME
 mV
 mV
 mp
 mq
 kX
 oc
-JV
+Ms
 JV
 kX
 kX
@@ -25025,7 +27810,7 @@ gy
 gt
 kX
 kX
-kX
+qn
 kX
 lV
 lE
@@ -25034,7 +27819,7 @@ lE
 lE
 lE
 lE
-lq
+JN
 kX
 kX
 sL
@@ -25043,6 +27828,10 @@ sL
 sL
 hu
 hu
+IG
+hu
+hu
+Hw
 hu
 hu
 hu
@@ -25050,13 +27839,9 @@ hu
 hu
 hu
 hu
-hu
-hu
-hu
-hu
-hu
-hu
-hu
+Hz
+Hy
+Hw
 vr
 hn
 hn
@@ -25139,9 +27924,9 @@ mG
 mG
 lC
 lC
-lC
+Oa
 ln
-ln
+NC
 ln
 lC
 ln
@@ -25150,6 +27935,10 @@ ln
 ln
 Cz
 ln
+Kp
+ty
+NF
+NC
 ln
 ln
 ln
@@ -25157,19 +27946,15 @@ ln
 ln
 ln
 ln
-ln
-ln
-ln
-ln
-ln
+Lo
 ln
 qk
-lz
+Ku
 lz
 lz
 ln
 ln
-ln
+MB
 ln
 ln
 ln
@@ -25180,7 +27965,7 @@ dN
 rv
 mq
 kX
-kX
+qv
 kX
 kX
 kX
@@ -25190,8 +27975,8 @@ IL
 mQ
 mM
 mw
-kX
-kX
+KU
+qv
 kX
 kX
 lX
@@ -25211,13 +27996,13 @@ sL
 sL
 sL
 hu
+Hy
 hu
 hu
 hu
 hu
 hu
-hu
-hu
+Hw
 hu
 hu
 hu
@@ -25304,27 +28089,27 @@ mG
 mG
 mG
 bS
-lC
-lC
-ln
-ln
+vy
 lC
 ln
 ln
 lC
+NV
 ln
+lC
+KW
 ln
 lC
 BL
 ln
 ln
-ln
+LL
 ln
 ln
 ln
 lC
 ln
-ln
+KX
 ln
 lC
 ln
@@ -25335,12 +28120,12 @@ su
 iR
 lz
 lC
+KX
 ln
-ln
+MO
 lC
 lC
-lC
-lC
+MO
 Nn
 mq
 eZ
@@ -25472,21 +28257,21 @@ gO
 bW
 bT
 bM
-lC
-lC
-lC
+NQ
+Oc
+NT
 ln
-ln
-lC
-ln
-lC
-ln
-ln
-ln
+Me
+NT
 ln
 lC
-lC
 ln
+ln
+KW
+ln
+lC
+lC
+Lo
 mV
 ln
 ln
@@ -25651,8 +28436,8 @@ ln
 lC
 uB
 lC
-lC
-lC
+ug
+ug
 lC
 mV
 lC
@@ -25660,7 +28445,7 @@ ln
 ln
 lC
 lC
-lC
+ME
 lC
 lC
 lC
@@ -25681,10 +28466,10 @@ pI
 pg
 JV
 kX
+qn
+KU
 kX
-kX
-kX
-lV
+Mi
 nl
 mj
 mj
@@ -25815,7 +28600,7 @@ vy
 lC
 lC
 lC
-lC
+NQ
 lC
 lC
 lC
@@ -25842,7 +28627,7 @@ kX
 kX
 oc
 JV
-kX
+qv
 kX
 eZ
 LQ
@@ -34859,7 +37644,7 @@ na
 na
 mU
 mi
-mi
+MQ
 mi
 mi
 mi
@@ -35026,7 +37811,7 @@ qI
 na
 mU
 Mf
-hS
+mi
 mi
 mi
 mi
@@ -35192,7 +37977,7 @@ qG
 qG
 qG
 gD
-qG
+Mf
 mi
 mb
 mb
@@ -35358,7 +38143,7 @@ oo
 RF
 rt
 qZ
-qU
+qG
 qG
 mi
 mb
@@ -37349,7 +40134,7 @@ mb
 wK
 hX
 qG
-oo
+rO
 YG
 oo
 qW
@@ -37516,7 +40301,7 @@ mi
 mb
 mb
 qG
-rO
+qG
 rO
 dc
 oo
@@ -37682,7 +40467,7 @@ mr
 mi
 mi
 mb
-qG
+mb
 qG
 qG
 qG
@@ -37697,7 +40482,7 @@ qG
 qH
 hV
 qG
-qG
+mi
 mi
 mb
 mb
@@ -38269,7 +41054,7 @@ hN
 hN
 ij
 il
-ic
+Fo
 ig
 mG
 mG
@@ -38435,7 +41220,7 @@ hM
 hN
 ij
 il
-ic
+EN
 ic
 ib
 ul
@@ -38604,7 +41389,7 @@ iq
 ic
 ic
 ic
-ic
+Fe
 ib
 ul
 mG
@@ -38768,7 +41553,7 @@ hM
 hN
 hN
 iq
-ic
+jE
 ic
 ic
 ic
@@ -38940,7 +41725,7 @@ ic
 ic
 ic
 ic
-ic
+EN
 DB
 Aw
 mG
@@ -39104,7 +41889,7 @@ il
 ic
 ic
 ic
-ic
+Fo
 ic
 ic
 id
@@ -39766,7 +42551,7 @@ hM
 hN
 ij
 il
-ic
+Fo
 ic
 ic
 ic
@@ -39933,12 +42718,12 @@ hM
 hN
 iq
 ic
+Fv
 ic
 ic
 ic
 ic
-ic
-ic
+Fv
 ig
 hN
 hM
@@ -40935,9 +43720,9 @@ iq
 ic
 ic
 ic
+Fo
 ic
-ic
-ic
+FG
 id
 lf
 hN
@@ -41099,7 +43884,7 @@ hM
 hN
 hN
 iq
-ic
+FY
 ic
 ic
 ic
@@ -41404,7 +44189,7 @@ lg
 lg
 lg
 kA
-kA
+Js
 kA
 kA
 kA
@@ -41603,7 +44388,7 @@ ic
 ic
 ic
 ic
-ic
+Fo
 ig
 hN
 hN
@@ -41933,11 +44718,11 @@ hM
 hN
 iq
 ic
+GB
 ic
 ic
 ic
-ic
-ic
+FV
 ig
 hN
 hM
@@ -42267,7 +45052,7 @@ hN
 ij
 il
 ic
-ic
+Fo
 ic
 ic
 ic
@@ -42600,7 +45385,7 @@ hM
 hN
 iq
 ic
-ic
+Fe
 ic
 ic
 ic
@@ -43601,9 +46386,9 @@ hM
 hM
 hN
 iq
+jE
 ic
-ic
-ic
+Fo
 ic
 ic
 ig
@@ -44106,7 +46891,7 @@ ic
 ic
 ic
 ic
-ic
+FX
 ig
 hN
 hN
@@ -44434,7 +47219,7 @@ hM
 hN
 hN
 iq
-ic
+GB
 ic
 ic
 ic
@@ -44767,7 +47552,7 @@ hN
 ij
 ii
 il
-ic
+Hj
 ic
 ic
 ic
@@ -44932,7 +47717,7 @@ sL
 hN
 ij
 il
-ic
+Fo
 ic
 ic
 ic
@@ -45098,7 +47883,7 @@ sL
 sL
 sL
 il
-ic
+Fv
 ic
 ic
 ic
@@ -45264,6 +48049,7 @@ sL
 sL
 sL
 sL
+FY
 ic
 ic
 ic
@@ -45271,13 +48057,12 @@ ic
 ic
 ic
 ic
+Fo
 ic
 ic
 ic
 ic
-ic
-ic
-ig
+FW
 hN
 hN
 hM
@@ -45433,7 +48218,7 @@ sL
 sL
 sL
 qK
-iI
+ic
 ic
 ic
 ic
@@ -45598,8 +48383,8 @@ jV
 iq
 sL
 sL
-iu
-iu
+iI
+iI
 wa
 DV
 iI
@@ -45611,7 +48396,7 @@ ic
 ic
 ic
 ic
-ic
+FX
 ig
 hN
 hN
@@ -45764,10 +48549,10 @@ jV
 ij
 il
 jB
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 XR
 uS
 tz
@@ -45931,11 +48716,11 @@ Fs
 kO
 jD
 oZ
-mO
-ja
+GZ
+GY
 iO
 GO
-iu
+iI
 Kl
 Kl
 ZC
@@ -45945,7 +48730,7 @@ ic
 ic
 ic
 ic
-ic
+FY
 ig
 hN
 hN
@@ -46099,12 +48884,12 @@ iq
 jE
 GA
 XR
-iu
-iu
+iI
+iI
 GO
-iu
-iu
-iu
+iI
+iI
+iI
 Wm
 iI
 ic
@@ -46112,7 +48897,7 @@ ic
 ic
 ic
 ic
-ic
+FG
 ig
 hN
 hM
@@ -46266,10 +49051,10 @@ iq
 ic
 Rf
 xg
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 GO
 XR
 iN
@@ -46434,16 +49219,16 @@ jF
 NP
 XR
 iN
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 iO
 iN
 sT
 iI
 ic
-ic
+Fv
 id
 iC
 lf
@@ -46599,14 +49384,14 @@ kh
 jX
 iW
 Rf
-iu
-iu
-iu
+iI
+iI
+iI
 jf
 jf
-iu
-iu
-iu
+iI
+iI
+iI
 tY
 re
 iA
@@ -46767,13 +49552,13 @@ DI
 jG
 pJ
 Pr
-iu
-iu
+iI
+iI
 JD
 rh
-iu
-iu
-iu
+iI
+iI
+iI
 iM
 TP
 ZH
@@ -46933,14 +49718,14 @@ jV
 rY
 yA
 Rf
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 Vt
-iu
-iu
-iu
+iI
+iI
+iI
 TG
 OI
 Gx
@@ -47101,13 +49886,13 @@ jY
 iq
 iI
 ZJ
-iu
+iI
 Xj
-jj
-iu
-iu
-ja
-iu
+Gb
+iI
+iI
+GY
+iI
 Ha
 iI
 iF
@@ -47267,15 +50052,15 @@ jV
 ij
 il
 jM
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
 mL
 Rl
 lf
@@ -47434,14 +50219,14 @@ jV
 iq
 ic
 rM
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 GO
 iN
-iu
-iu
+iI
+iI
 iN
 RB
 ig
@@ -47602,13 +50387,13 @@ iq
 ic
 iI
 us
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
+iI
+iI
+iI
 YE
 CX
 ig
@@ -47768,14 +50553,14 @@ mG
 iq
 jH
 NP
-iu
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
+iI
 Xj
-iu
-iu
+iI
+iI
 iN
 NP
 ig
@@ -47935,17 +50720,17 @@ mG
 iq
 ic
 NP
-iu
-iu
-jj
-iu
-ja
-iu
-iu
-iu
-Pr
 iI
-ig
+iI
+Gb
+iI
+GY
+iI
+iI
+iI
+Pr
+GS
+lf
 hN
 hM
 mG
@@ -48102,16 +50887,16 @@ mG
 Ej
 tz
 jS
-iu
-iu
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
+iI
+iI
 GO
-iu
-iu
-NP
+iI
+iI
+GV
 mG
 mG
 mG
@@ -48265,20 +51050,20 @@ mG
 mG
 mG
 mG
-iu
+HQ
 jZ
 wd
 iO
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
 bc
-iu
-iu
-iu
-iu
-iu
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -48432,20 +51217,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -48599,20 +51384,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-jj
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+Gb
+iI
+iI
+iI
+iI
+iI
+iI
+iI
 iO
-iu
+GD
 mG
 mG
 mG
@@ -48765,21 +51550,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HQ
+HT
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -48932,21 +51717,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+HU
+iI
+Xj
+iI
+iI
+iI
+iI
+iI
+iI
+iI
 iO
-iu
-iu
-iu
+iI
+iI
+GX
 mG
 mG
 mG
@@ -49099,21 +51884,21 @@ kw
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HX
+HV
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -49267,20 +52052,20 @@ kw
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+Gb
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -49434,20 +52219,20 @@ kw
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -49601,20 +52386,20 @@ mG
 mG
 mG
 mG
-iu
-ja
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+GY
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -49768,20 +52553,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Ga
 iu
 mG
 mG
@@ -49935,21 +52720,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+GZ
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GY
+GD
 mG
 mG
 mG
@@ -50102,21 +52887,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GZ
+GD
 mG
 mG
 mG
@@ -50269,21 +53054,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -50436,21 +53221,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -50603,21 +53388,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -50770,21 +53555,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -50937,21 +53722,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+GY
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Hc
+GE
 mG
 mG
 mG
@@ -51104,20 +53889,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Gb
+iI
+GD
 mG
 mG
 mG
@@ -51271,20 +54056,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -51438,20 +54223,20 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -51604,21 +54389,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HQ
+jZ
+HG
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GY
+GD
 mG
 mG
 mG
@@ -51771,21 +54556,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Hd
 mG
 mG
 mG
@@ -51938,21 +54723,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+GZ
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GD
 mG
 mG
 mG
@@ -52105,21 +54890,21 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Ga
 iu
 mG
 mG
@@ -52272,22 +55057,22 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+GH
 iu
 mG
 mG
@@ -52438,24 +55223,24 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HQ
+jZ
+GY
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Ga
 iu
 mG
 mG
@@ -52605,25 +55390,25 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+HG
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Ga
 iu
 mG
 mG
@@ -52772,26 +55557,26 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HS
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Go
+Ga
 iu
 mG
 mG
@@ -52938,28 +55723,28 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HQ
+jZ
+Gb
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Ga
 iu
 mG
 mG
@@ -53104,30 +55889,30 @@ mG
 mG
 mG
 mG
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
-iu
+HQ
+Ih
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+iI
+Gb
+FR
 iu
 mG
 mG
@@ -53270,6 +56055,11 @@ mG
 mG
 mG
 mG
+Iu
+Ip
+FU
+FU
+FU
 ir
 ir
 ir
@@ -53284,19 +56074,14 @@ ir
 ir
 ir
 ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-ir
+FU
+FU
+FU
+FU
+FU
+FU
+FH
+FB
 mG
 mG
 mG

@@ -9616,11 +9616,12 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "ayP" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 4
-	},
-/obj/structure/window/reinforced/ultra,
 /obj/structure/bed/chair/comfy,
+/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/briefing)
 "ayQ" = (
@@ -9662,15 +9663,15 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "ayX" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 8
-	},
 /obj/structure/machinery/flasher_button{
 	id = "briefing_flash";
 	name = "Briefing Flasher";
 	pixel_x = 32;
 	pixel_y = 27;
 	req_access_txt = "19"
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/living/briefing)
@@ -11034,7 +11035,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/computerlab)
 "aCw" = (
-/obj/structure/window/reinforced/ultra{
+/obj/structure/barricade/handrail{
 	dir = 8
 	},
 /turf/open/floor/almayer/silver/west,
@@ -11738,15 +11739,6 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
-"aEp" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/north,
-/area/almayer/living/briefing)
 "aEq" = (
 /obj/structure/pipes/vents/pump/on{
 	dir = 4
@@ -11959,14 +11951,16 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/captain_mess)
 "aEU" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 1
-	},
-/obj/structure/window/reinforced/ultra{
-	dir = 4
-	},
 /obj/structure/bed/chair/comfy{
 	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/living/briefing)
@@ -58825,16 +58819,6 @@
 /obj/item/clothing/mask/breath,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
-"hsg" = (
-/obj/structure/machinery/door/window/ultra{
-	dir = 8;
-	req_access_txt = "19"
-	},
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "hsh" = (
 /obj/structure/coatrack,
 /obj/structure/sign/poster/clf{
@@ -61905,8 +61889,8 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "iPv" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/window/reinforced/ultra,
-/obj/structure/window/reinforced/ultra{
+/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail{
 	dir = 8
 	},
 /turf/open/floor/almayer/silver/southwest,
@@ -69538,8 +69522,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_f_s)
 "mfM" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 4
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/briefing)
@@ -69959,6 +69944,9 @@
 /area/almayer/squads/delta)
 "moQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	desc = "A coffee machine for the marines."
+	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/living/briefing)
 "mph" = (
@@ -71982,7 +71970,7 @@
 /area/almayer/engineering/upper_engineering/starboard)
 "nhi" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/window/reinforced/ultra,
+/obj/structure/barricade/handrail,
 /turf/open/floor/almayer/silver,
 /area/almayer/living/briefing)
 "nhw" = (
@@ -78601,11 +78589,12 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/structure/window/reinforced/ultra{
-	dir = 1
-	},
-/obj/structure/window/reinforced/ultra{
+/obj/structure/barricade/handrail{
 	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/living/briefing)
@@ -92294,8 +92283,9 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/structure/window/reinforced/ultra{
-	dir = 1
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/living/briefing)
@@ -93850,8 +93840,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/window/reinforced/ultra{
-	dir = 4
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/briefing)
@@ -147708,7 +147699,7 @@ boq
 byE
 pVB
 aCw
-hsg
+fcf
 ayX
 iPv
 azN
@@ -147912,7 +147903,7 @@ boq
 boq
 boq
 byE
-aEp
+vBp
 fUA
 hWs
 fUA

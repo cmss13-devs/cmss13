@@ -408,7 +408,7 @@
 				r += wordlist[i]
 			bit = bit << 1
 	else
-		for(var/bit=1, bit<=65535, bit = bit << 1)
+		for(var/bit=1, bit<=4194303, bit = bit << 1)
 			if(bitfield & bit)
 				r += bit
 

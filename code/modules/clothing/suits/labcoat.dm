@@ -56,9 +56,9 @@
 	armor_bullet = CLOTHING_ARMOR_VERYLOW //better than nekked
 	armor_laser = CLOTHING_ARMOR_VERYLOW //better than nekked
 	armor_energy = CLOTHING_ARMOR_VERYLOW
-	armor_bomb = CLOTHING_ARMOR_VERYLOW //Nothing else uses VERYLOW for armor_bomb.
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_bio =  CLOTHING_ARMOR_ULTRAHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/buttoned = TRUE
 	item_icons = list(
@@ -165,8 +165,6 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/wy
@@ -184,7 +182,6 @@
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/wy/Initialize()
@@ -398,7 +395,7 @@
 /obj/item/clothing/suit/storage/labcoat/brown
 	name = "brown lab coat"
 	desc = "A suit that protects against minor chemical spills and biological hazards. This one is brown."
-	icon_state = "labcoat_brown"
+	icon_state = "sciencecoat"
 	item_state = "labcoat_brown"
 
 /obj/item/clothing/suit/storage/labcoat/short

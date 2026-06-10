@@ -906,9 +906,9 @@
 	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
-	name = "researcher clothes"
-	desc = "A simple set of civilian clothes worn by researchers."
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	name = "blue sweater and light tan pants"
+	desc = "Believe it or not, this was the favorite clothing combination of academic scholars across the stars for a long time, thankfully they have been growing a better... aesthetical sense in recent years, decreasing it's popularity."
+	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"
 	worn_state = "research_jumpsuit"
@@ -1761,8 +1761,8 @@
 	worn_state = "corporate_blue"
 
 /obj/item/clothing/under/marine/reporter
-	name = "combat correspondent uniform"
-	desc = "A relaxed and robust uniform fit for any potential reporting needs."
+	name = "white work shirt and grey pants"
+	desc = "A relaxed and robust clothing fit for any apparel needs."
 	icon_state = "cc_white"
 	worn_state = "cc_white"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
@@ -1772,14 +1772,17 @@
 	)
 
 /obj/item/clothing/under/marine/reporter/black
+	name = "black work shirt and dark tan pants"
 	icon_state = "cc_black"
 	worn_state = "cc_black"
 
 /obj/item/clothing/under/marine/reporter/orange
+	name = "orange work shirt and black pants"
 	icon_state = "cc_orange"
 	worn_state = "cc_orange"
 
 /obj/item/clothing/under/marine/reporter/red
+	name = "red work shirt and bright tan pants"
 	icon_state = "cc_red"
 	worn_state = "cc_red"
 

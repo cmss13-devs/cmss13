@@ -111,7 +111,7 @@
 		hud_list[hud] = I
 
 
-/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER, chat_type) //Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
 	if(!client || !client.prefs)
 		return
@@ -134,6 +134,8 @@
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
 			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+		else if(chat_type) // probably best to deprecate below but im too lazy for it
+			to_chat(src, msg, type = chat_type)
 		else if(message_flags & CHAT_TYPE_ALL_COMBAT) // Pre-tag combat messages for tgchat
 			to_chat(src, html = msg, type = MESSAGE_TYPE_COMBAT)
 		else
@@ -620,8 +622,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
+			SEND_SIGNAL(client, COMSIG_CLIENT_ANIMATING)
 			if(buckled || resting)
 				client.set_pixel_x(0)
 				client.set_pixel_y(0)
@@ -863,6 +865,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slurring()
 	handle_slowed()
 	handle_superslowed()
+	handle_hushed()
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -873,6 +876,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
+
+/mob/living/proc/handle_hushed()
+	if(hushed)
+		adjust_effect(-1, HUSHED)
+	return hushed
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -986,7 +994,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
 		if(oldLoc.z != destination.z)
-			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
+			AM.onTransitZ(oldLoc.z, destination.z)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)

@@ -117,6 +117,8 @@
 	var/datum/equipment_preset/assigned_equipment_preset
 	var/rank_override
 	var/rank_fallback
+	///Used for specialists for their chosen preference on roundstart
+	var/role_title_override
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to
@@ -125,9 +127,9 @@
 	var/squad_secondary_objective_ungarbled = TRUE
 
 	//moved from IDs to prevent some exploits and to make points more flexible
-	var/marine_points = MARINE_TOTAL_BUY_POINTS
-	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
+	var/vendor_points = MARINE_TOTAL_BUY_POINTS
+	var/vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	var/vendor_buyable_categories = MARINE_CAN_BUY_ALL
 
 	var/spawned_corpse = FALSE // For the corpse spawner
 	//taken from blood.dm
@@ -142,7 +144,7 @@
 	var/last_chew = 0
 
 	//taken from human.dm
-	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD, NEW_PLAYER_HUD)
+	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD, NEW_PLAYER_HUD)
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
@@ -181,6 +183,9 @@
 
 	// Xenomorph that is hauling us if we are hauled
 	var/mob/living/carbon/xenomorph/hauling_xeno
+
+	/// Timer to prevent spreading yellow dancer tags from same person.
+	var/last_target_spread_time = 0
 
 	// Haul resist cooldown
 	var/next_haul_resist

@@ -33,19 +33,24 @@
 	desc = "A magazine of caseless 10x99mm anti-materiel rounds, capable of penetrating through most infantry-level materiel. Depending on what you hit, it might even have enough energy to wound anything behind the target."
 	max_rounds = 8
 	caliber = "10x99mm"
+	icon_state = "xm43e1"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
 	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
+	ammo_band_icon = "+xm43e1_band" // futureproofing
+	ammo_band_icon_empty = "+xm43e1_band_e"
 
 //M42C magazine
 
 /obj/item/ammo_magazine/sniper/elite
 	name = "\improper M42C marksman magazine (10x99mm)"
 	desc = "A magazine of specialized supersonic 10x99mm anti-tank rounds."
+	icon_state = "xm43e1"
 	default_ammo = /datum/ammo/bullet/sniper/elite
 	gun_type = /obj/item/weapon/gun/rifle/sniper/elite
 	caliber = "10x99mm"
-	icon_state = "m42c"
 	max_rounds = 6
+	ammo_band_icon = "+xm43e1_band"
+	ammo_band_icon_empty = "+xm43e1_band_e"
 
 
 //Type 88 //Based on the actual Dragunov designated marksman rifle.
@@ -63,10 +68,10 @@
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
-	name = "\improper A19 HV magazine (10x24mm)"
-	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	name = "\improper A19 HV tracker magazine (10x24mm)"
+	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds. These bullets will track and relay information to the hud optics when you shoot a target."
 	icon_state = "a19"
-	default_ammo = /datum/ammo/bullet/rifle/m4ra
+	default_ammo = /datum/ammo/bullet/rifle/m4ra/custom_tracker
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_icon = "+a19_band"

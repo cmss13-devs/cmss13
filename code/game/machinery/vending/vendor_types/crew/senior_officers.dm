@@ -31,16 +31,16 @@
 
 //------------ CHIEF MP ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
-		list("POLICE SET (MANDATORY)", 0, null, null, null),
-		list("Essential Police Set", 0, /obj/effect/essentials_set/chiefmilitarypolice, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("CMP Uniform", 0, /obj/item/clothing/under/marine/officer/warrant, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("M276 Pattern Military Police Rig", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("Security HUD-Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, MARINE_CAN_BUY_OPTIC, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
-		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Chief MP M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/WO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("CMP Beret", 0, /obj/item/clothing/head/beret/marine/mp/cmp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
@@ -231,7 +231,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor/cmo, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT", 0, null, null, null),
-		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Combined Medical and Reagent Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
@@ -249,6 +249,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Black Surgical Cap", 0, /obj/item/clothing/head/surgery/morgue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Peaked Cap", 0, /obj/item/clothing/head/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Chief Medical Officer's Surgical Cap", 0, /obj/item/clothing/head/surgery/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Researcher Uniform", 0, /obj/item/clothing/under/marine/officer/researcher, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Blue Medical Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Green Medical Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -456,7 +458,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons UA Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
 		list("USCM Large Chest Patch", 1, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
-		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
+		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch/uscmpatch, null, VENDOR_ITEM_REGULAR),
 		list("United Americas Shoulder patch", 1, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", 1, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
 
@@ -520,7 +522,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("M44 Custom Revolver", 0, /obj/item/storage/belt/gun/m44/custom, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("HAT (CHOOSE 1)", 0, null, null, null),
-		list("Beret, Green", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Beret, Green", 0, /obj/item/clothing/head/beret/cm/green, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Beret, Tan", 0, /obj/item/clothing/head/beret/cm/tan, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/bridge, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),

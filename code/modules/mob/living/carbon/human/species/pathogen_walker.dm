@@ -32,15 +32,15 @@
 
 	has_species_tab_items = TRUE
 
-	speech_sounds = list('sound/pathogen_creatures/pathogen_talk1.ogg','sound/pathogen_creatures/pathogen_talk2.ogg','sound/pathogen_creatures/pathogen_talk3.ogg')
+	speech_sounds = list('sound/pathogen_creatures/walker_talk1.ogg','sound/pathogen_creatures/walker_talk2.ogg')
 	speech_chance = 100
 
 	var/list/to_revive = list()
 	var/list/revive_times = list()
 
-	var/basic_noise = 'sound/pathogen_creatures/pathogen_growl2.ogg'
+	var/basic_noise = 'sound/pathogen_creatures/walker_growl1.ogg'
 	var/basic_variance = TRUE
-	var/rare_noise = 'sound/pathogen_creatures/pathogen_growl1.ogg'
+	var/rare_noise = 'sound/pathogen_creatures/walker_growl2.ogg'
 	var/rare_variance = TRUE
 
 /datum/species/pathogen_walker/handle_post_spawn(mob/living/carbon/human/zombie)

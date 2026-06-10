@@ -1845,42 +1845,42 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/pelt/pathogen_matriarch
 	name = "Matriarch pelt"
 	desc = "The mycelial pelt of a huge creature, bringer of doom and death."
-	icon_state = "_pelt"
+	icon_state = "matriarch_pelt"
 
 /obj/item/pelt/pathogen_harbinger
 	name = "Harbinger pelt"
 	desc = "The mycelial pelt of a terrifying creature, an unnatural perversion of life."
-	icon_state = "_pelt"
+	icon_state = "harbinger_pelt"
 
 /obj/item/pelt/pathogen_venator
 	name = "Venator pelt"
 	desc = "The mycelial pelt of a strange creature, a deadly ambushing predator."
-	icon_state = "_pelt"
+	icon_state = "venator_pelt"
 
 /obj/item/pelt/pathogen_brute
 	name = "Brute pelt"
 	desc = "The mycelial pelt of a strange creature, a lumbering tank."
-	icon_state = "_pelt"
+	icon_state = "brute_pelt"
 
 /obj/item/pelt/pathogen_conditor
 	name = "Conditor pelt"
 	desc = "The mycelial pelt of a strange creature, an acidic architect."
-	icon_state = "_pelt"
+	icon_state = "conditor_pelt"
 
 /obj/item/pelt/pathogen_neomorph
 	name = "Neomorph pelt"
 	desc = "The mycelial pelt of a strange creature, a worker and hunter."
-	icon_state = "_pelt"
+	icon_state = "neomorph_pelt"
 
 /obj/item/pelt/pathogen_blight
 	name = "Blight pelt"
 	desc = "The mycelial pelt of a strange creature, a stealthy killer."
-	icon_state = "_pelt"
+	icon_state = "blight_pelt"
 
 /obj/item/pelt/pathogen_sprinter
 	name = "Sprinter pelt"
 	desc = "The mycelial pelt of a strange creature, a terror on the prowl."
-	icon_state = "_pelt"
+	icon_state = "sprinter_pelt"
 
 /obj/item/pelt/pathogen_none //Not all the pathogen creatures have a pelt.
 	icon_state = null
@@ -1893,27 +1893,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/skull/pathogen_matriarch
 	name = "Matriarch skull"
 	desc = "The skull of a huge creature, bringer of doom and death."
-	icon_state = "_skull"
+	icon_state = "matriarch_skull"
 
 /obj/item/skull/pathogen_brute
 	name = "Brute skull"
 	desc = "The skull of a strange creature, a lumbering tank."
-	icon_state = "_skull"
+	icon_state = "brute_skull"
 
 /obj/item/skull/pathogen_conditor
 	name = "Conditor skull"
 	desc = "The skull of a strange creature, an acidic architect."
-	icon_state = "_skull"
+	icon_state = "conditor_skull"
 
 /obj/item/skull/pathogen_neomorph
 	name = "Neomorph skull"
 	desc = "The skull of a strange creature, a worker and hunter."
-	icon_state = "_skull"
+	icon_state = "neomorph_skull"
 
 /obj/item/skull/pathogen_sprinter
 	name = "Sprinter skull"
 	desc = "The skull of a strange creature, a terror on the prowl."
-	icon_state = "_skull"
+	icon_state = "sprinter_skull"
 
 /obj/item/skull/pathogen_none //Not all the pathogen creatures have a skull structure.
 	icon_state = null

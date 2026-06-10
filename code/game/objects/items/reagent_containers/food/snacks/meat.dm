@@ -126,6 +126,7 @@
 /obj/item/reagent_container/food/snacks/mycelial_flesh
 	name = "mycelial flesh"
 	desc = "A slab of mycelial flesh from an unholy creature."
+	icon = 'icons/obj/items/food/meat.dmi'
 	icon_state = "synthmeat"
 	filling_color = "#c2c38d"
 

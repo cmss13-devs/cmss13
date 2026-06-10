@@ -21,9 +21,9 @@
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
-	var/queen_leader_limit = 2
-	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
-	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
+	var/queen_leader_limit = 4
+	var/list/open_xeno_leader_positions = list(1, 2, 3, 4) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
+	var/list/xeno_leader_list[4] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
 
 	///used by /datum/hive_status/proc/increase_larva_after_burst() to support non-integer increases to larva

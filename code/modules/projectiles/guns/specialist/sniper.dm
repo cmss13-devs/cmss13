@@ -242,7 +242,9 @@
 				blocked = TRUE
 				break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
+		for(var/obj/effect/particle_effect/smoke/smoke in T)
+			if(!smoke.obscuring)
+				continue
 			blocked = TRUE
 			break
 
@@ -422,8 +424,8 @@
 	sniper_beam_type = /obj/effect/ebeam/laser
 	sniper_beam_icon = "laser_beam"
 	sniper_lockon_icon = "sniper_lockon"
-	pixel_x = -4
-	hud_offset = -4
+	pixel_x = -5
+	hud_offset = -5
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
 	. = ..()
@@ -492,6 +494,9 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+	has_aimed_shot = FALSE
+	pixel_x = -2
+	hud_offset = -2
 
 /obj/item/weapon/gun/rifle/sniper/elite/Initialize()
 	. = ..()
@@ -502,6 +507,7 @@
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)

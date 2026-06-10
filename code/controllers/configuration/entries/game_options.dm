@@ -57,6 +57,9 @@
 /datum/config_entry/flag/bones_can_break
 	config_entry_value = TRUE
 
+/datum/config_entry/flag/flesh_can_eschar
+	config_entry_value = TRUE
+
 /datum/config_entry/flag/allow_synthetic_gun_use
 
 /datum/config_entry/flag/remove_gun_restrictions
@@ -144,40 +147,84 @@
 	max_val = 100
 	integer = TRUE
 
-/// The length of an announcement for ANNOUNCEMENT_MIN_CLARITY
-/datum/config_entry/number/announcement_max_bound
-	min_val = 2
-	config_entry_value = 120
+/// The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+/datum/config_entry/number/announcement_clarity_decay
+	min_val = 0
+	config_entry_value = 2.5
+	max_val = 100
+
+/// The grace period in deciseconds given to solve encryption challenges (before they decay)
+/datum/config_entry/number/announcement_challenge_grace
+	min_val = 0
+	config_entry_value = 1 MINUTES // 600
 	integer = TRUE
 
-/// The max length of an announcement for ANNOUNCEMENT_MAX_CLARITY
-/datum/config_entry/number/announcement_min_bound
-	min_val = 1
-	config_entry_value = 20
-	integer = TRUE
+/// String challenges that should all be similar in length.
+/// Any non-alpha character will be treated as a -. Any longer than the first will be trimmed.
+/datum/config_entry/str_list/announcement_challenges
+	dupes_allowed = FALSE
+	config_entry_value = list(
+		"WEYLAND",
+		"-YUTANI",
+		"COMPANY",
+		"ALMAYER",
+		"GENESIS",
+		"SCIENCE",
+		"ANDROID",
+		"WHISKEY",
+		"CHARLIE",
+		"FOXTROT",
+		"JULIETT",
+		"MARINES",
+		"TRACTOR",
+		"UNIFORM",
+		"RAIDERS",
+		"ROSETTA",
+		"SCANNER",
+		"SHADOWS",
+		"SHUTTLE",
+		"TACHYON",
+		"WARSHIP",
+		"ROSTOCK",
+	)
 
-/// The duration between announcements for ANNOUNCEMENT_MIN_CLARITY
-/datum/config_entry/number/announcement_duration_min_bound
-	min_val = COOLDOWN_COMM_MESSAGE
-	config_entry_value = 30 SECONDS // 300
-	integer = TRUE
+/datum/config_entry/str_list/announcement_challenges/ValidateAndSet(str_val)
+	// Force captialized
+	return ..(uppertext(str_val))
 
-/// The duration between announcements for ANNOUNCEMENT_MAX_CLARITY
-/datum/config_entry/number/announcement_duration_max_bound
-	min_val = 31 SECONDS // 310
-	config_entry_value = 3 MINUTES // 1800
-	integer = TRUE
-
-/// The clarity percent for messages >= ANNOUNCEMENT_MAX_BOUND or duration <= ANNOUNCEMENT_DURATION_MIN_BOUND
+/// The minimum clarity percent for overwatch and announcements if transmitted to a z without coms
 /datum/config_entry/number/announcement_min_clarity
 	min_val = 0
 	config_entry_value = 45
 	max_val = 100
 	integer = TRUE
 
-/// The clarity percent for messages <= ANNOUNCEMENT_MIN_BOUND or duration >= ANNOUNCEMENT_DURATION_MAX_BOUND
+/// The maximum clarity percent for overwatch and announcements if transmitted to a z without coms
 /datum/config_entry/number/announcement_max_clarity
 	min_val = 0
 	config_entry_value = 95
 	max_val = 100
 	integer = TRUE
+
+/// How likely a Predator Survivor is to spawn without a hunt round.
+/datum/config_entry/number/pred_survivor_huntless_chance
+	min_val = 0
+	config_entry_value = 10
+	max_val = 100
+
+/// For YAUTJA_SURV_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight
+	min_val = 0
+	config_entry_value = 50
+	max_val = 100
+
+/// For YAUTJA_SURV_NO_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight_huntless
+	min_val = 0
+	config_entry_value = 75
+	max_val = 100
+
+/// How many spawn_positions and total_slots for a predator survivor
+/datum/config_entry/number/pred_survivor_slots
+	min_val = 0
+	config_entry_value = 1

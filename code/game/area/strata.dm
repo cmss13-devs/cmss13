@@ -17,7 +17,7 @@
 	ambience_exterior = FALSE
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 	ceiling = CEILING_MAX
 
 //////////////////////////////////////////
@@ -542,7 +542,7 @@
 	icon_state = "marshwater"
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 // CLF Insert
 

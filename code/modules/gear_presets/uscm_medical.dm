@@ -56,6 +56,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cmo(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cmo(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_two(new_human), WEAR_L_STORE)
@@ -81,6 +82,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
@@ -97,6 +99,7 @@
 	if (new_human.client?.prefs && new_human.client.prefs.backbag == 1)
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
@@ -111,6 +114,7 @@
 	if (new_human.client?.prefs && new_human.client.prefs.backbag == 1)
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/pharmacist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
@@ -137,6 +141,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
@@ -166,6 +171,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/armband/nurse(new_human), WEAR_ACCESSORY)
@@ -175,19 +181,25 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	name = "USCM Researcher"
 
-	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	access = list(
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_MORGUE,
+	)
 	assignment = JOB_RESEARCHER
 	job_title = JOB_RESEARCHER
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMOA = JOB_PLAYTIME_TIER_1, PAY_SHORT_CCMOB = JOB_PLAYTIME_TIER_2, PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_3, PAY_SHORT_CCMOD = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	origin_override = ORIGIN_CIVILIAN
 
-	minimap_icon = "researcher"
-	minimap_background = "background_medical"
+	minimap_icon = "goon_sci"
+	minimap_background = "background_goon"
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()
@@ -201,9 +213,5 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-
-	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_one(new_human),  WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/syringe(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_one(new_human), WEAR_IN_BACK)

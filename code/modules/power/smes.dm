@@ -46,7 +46,7 @@
 	dir_loop:
 		for(var/d in GLOB.cardinals)
 			var/turf/T = get_step(src, d)
-			for(var/obj/structure/machinery/power/terminal/term in T)
+			for(var/obj/structure/terminal/term in T)
 				if(term && term.dir == turn(d, 180))
 					terminal = term
 					break dir_loop
@@ -76,8 +76,8 @@
 
 	if(!powernet && !connect_to_network())
 		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
-	if(terminal && !terminal.powernet)
-		terminal.connect_to_network()
+	if(!powernet)
+		connect_to_network()
 
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()
@@ -199,18 +199,12 @@
 			return 1
 	to_chat(user, SPAN_NOTICE("You start adding cable to \the [src]."))
 	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		terminal = new /obj/structure/machinery/power/terminal(tempLoc)
+		terminal = new /obj/structure/terminal(tempLoc)
 		terminal.setDir(tempDir)
 		terminal.master = src
 		start_processing()
 		return 0
 	return 1
-
-
-/obj/structure/machinery/power/smes/add_load(amount)
-	if(terminal && terminal.powernet)
-		return terminal.powernet.draw_power(amount)
-	return 0
 
 /obj/structure/machinery/power/smes/power_change()
 	return
@@ -255,7 +249,7 @@
 		user.visible_message(
 				SPAN_NOTICE("[user.name] has added cables to \the [src]."),
 				SPAN_NOTICE("You added cables to \the [src]."))
-		terminal.connect_to_network()
+		connect_to_network()
 		stat = 0
 		return FALSE
 
@@ -269,7 +263,7 @@
 				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
+					if (prob(50) && electrocute_mob(usr, powernet, terminal))
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)
 						s.start()

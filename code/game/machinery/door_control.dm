@@ -1,8 +1,3 @@
-#define CONTROL_POD_DOORS 0
-#define CONTROL_NORMAL_DOORS 1
-#define CONTROL_EMITTERS 2
-#define CONTROL_DROPSHIP 3
-
 /obj/structure/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
@@ -16,7 +11,7 @@
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
-	var/desiredstate = 0 // Zero is closed, 1 is open.
+	var/desiredstate = CONTROL_STATE_CLOSED
 	var/specialfunctions = 1
 	/*
 	Bitflag, 1= open
@@ -50,7 +45,7 @@
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
-/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
@@ -74,32 +69,44 @@
 	shuttle.control_doors("force-lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
-	for(var/obj/structure/machinery/door/airlock/D in range(range))
-		if(D.id_tag == src.id)
+	for(var/obj/structure/machinery/door/airlock/target_door in range(range))
+		if(target_door.id_tag == id)
 			if(specialfunctions & OPEN)
-				if (D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+				if (target_door.density)
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
-			if(desiredstate == 1)
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+			if(desiredstate == CONTROL_STATE_OPEN)
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 1
+					target_door.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
-					D.lock()
+					if(target_door.density)
+						target_door.lock()
+					else
+						INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+						addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = -1
+					target_door.secondsElectrified = -1
 				if(specialfunctions & SAFE)
-					D.safe = 0
+					target_door.safe = 0
 			else
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 0
+					target_door.remoteDisabledIdScanner = 0
 				if(specialfunctions & BOLTS)
-					if(!D.isWireCut(4) && D.arePowerSystemsOn())
-						D.unlock()
+					if(!target_door.isWireCut(4) && target_door.arePowerSystemsOn())
+						target_door.unlock()
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = 0
+					target_door.secondsElectrified = 0
 				if(specialfunctions & SAFE)
-					D.safe = 1
+					target_door.safe = 1
+
+/obj/structure/machinery/door_control/proc/handle_cell_divider()
+	for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall in range(range))
+		if(wall.remote_id == id)
+			if(wall.density)
+				wall.open()
+			else
+				wall.close()
 
 /obj/structure/machinery/door_control/proc/handle_pod()
 	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
@@ -128,7 +135,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -144,6 +151,8 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 	spawn(15)
@@ -175,7 +184,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -184,7 +193,7 @@
 		return
 
 	// If someone's trying to lower the railings but the elevator isn't in the vehicle bay.
-	if(!desiredstate && !is_mainship_level(SSshuttle.vehicle_elevator.z))
+	if(desiredstate == CONTROL_STATE_CLOSED && !is_mainship_level(SSshuttle.vehicle_elevator.z))
 		flick(initial(icon_state) + "-denied", src) // Safety first!
 		return
 
@@ -194,14 +203,14 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
-		if(M.id == id)
+	for(var/obj/structure/machinery/door/poddoor/pod in GLOB.machines)
+		if(pod.id == id)
 			effective = 1
 			spawn()
-				if(desiredstate)
-					M.open()
+				if(desiredstate == CONTROL_STATE_OPEN)
+					pod.open()
 				else
-					M.close()
+					pod.close()
 	if(effective)
 		playsound(get_turf(SSshuttle.vehicle_elevator), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
@@ -241,34 +250,61 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 
 /obj/structure/machinery/door_control/cl
 	req_access_txt = "200"
+	needs_power = FALSE
+	use_power = FALSE
+
 // seperating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
-/obj/structure/machinery/door_control/cl/office/door
+
+/obj/structure/machinery/door_control/cl/office/lobby_door
+	name = "Lobby Door Shutter"
+	id = "cl_lobby_door"
+
+/obj/structure/machinery/door_control/cl/office/office_door
 	name = "Office Door Shutter"
+	id = "cl_office_door_s"
+
+/obj/structure/machinery/door_control/cl/office/office_door_remote
+	name = "Office Door Control"
 	id = "cl_office_door"
-/obj/structure/machinery/door_control/cl/office/window
+	normaldoorcontrol = TRUE
+
+
+/obj/structure/machinery/door_control/cl/office/lobby_window
+	name = "Lobby Windows Shutters"
+	id = "cl_lobby_windows"
+
+/obj/structure/machinery/door_control/cl/office/office_window
 	name = "Office Windows Shutters"
 	id = "cl_office_windows"
+
 /obj/structure/machinery/door_control/cl/office/divider
 	name = "Room Divider"
 	id = "RoomDivider"
+
 //special button that unlock the cl lock on is evac pod door bypassing general lockdown.
 /obj/structure/machinery/door_control/cl/office/evac
 	name = "Evac Pod Door Control"
 	id = "cl_evac"
 	normaldoorcontrol = 1
+
 /obj/structure/machinery/door_control/cl/quarter
-/obj/structure/machinery/door_control/cl/quarter/officedoor
+
+/obj/structure/machinery/door_control/cl/quarter/office_door
 	name = "Quarter Door Shutter"
 	id = "cl_quarter_door"
+
 /obj/structure/machinery/door_control/cl/quarter/backdoor
 	name = "Maintenance Door Shutter"
 	id = "cl_quarter_maintenance"
+
 /obj/structure/machinery/door_control/cl/quarter/windows
 	name = "Quarter Windows Shutters"
 	id = "cl_quarter_windows"
@@ -306,3 +342,85 @@
 	. = ..()
 	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
 	used = TRUE
+
+/// Automatic door control that doesn't act as a button but instead searches for mobs every process in its own area
+/obj/structure/machinery/door_control/automatic
+	name = "automatic door-control"
+	desc = "It controls doors, automatically."
+	icon_state = "launcherbtt"
+	/// The faction to open for (or none for any)
+	var/faction_to_monitor
+	/// Any optional delay between triggering and opening
+	var/open_delay = 0 SECONDS
+	/// Any optional delay between untriggering and closing
+	var/close_delay = 0 SECONDS
+	/// timer_id for any change_state(TRUE) timer
+	var/timer_id_open = TIMER_ID_NULL
+	/// timer_id for any change_state(FALSE) timer
+	var/timer_id_close = TIMER_ID_NULL
+
+/obj/structure/machinery/door_control/automatic/Initialize(mapload, ...)
+	. = ..()
+	start_processing()
+
+/obj/structure/machinery/door_control/automatic/use_button(mob/living/user, force)
+	return
+
+/obj/structure/machinery/door_control/automatic/power_change()
+	..()
+	icon_state = desiredstate ? "launcheract" : "launcherbtt"
+
+/obj/structure/machinery/door_control/automatic/process()
+	var/area/my_area = get_area(src)
+	for(var/mob/creature in my_area)
+		if(creature.stat == DEAD)
+			continue
+		if(!faction_to_monitor || creature.faction == faction_to_monitor || (faction_to_monitor in creature.faction_group))
+			change_state(TRUE)
+			return
+	change_state(FALSE)
+
+/obj/structure/machinery/door_control/automatic/proc/change_state(triggered, immediate)
+	icon_state = triggered ? "launcheract" : "launcherbtt"
+
+	if(triggered == desiredstate)
+		// Cancel any timers if needed
+		if(triggered)
+			if(timer_id_close != TIMER_ID_NULL)
+				deltimer(timer_id_close)
+				timer_id_close = TIMER_ID_NULL
+		else
+			if(timer_id_open != TIMER_ID_NULL)
+				deltimer(timer_id_open)
+				timer_id_open = TIMER_ID_NULL
+		return
+
+	if(!immediate)
+		// Open/Close w/ delay?
+		if(triggered)
+			if(open_delay > 0)
+				if(timer_id_open == TIMER_ID_NULL)
+					timer_id_open = addtimer(CALLBACK(src, PROC_REF(change_state), TRUE, TRUE), open_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+		else
+			if(close_delay > 0)
+				if(timer_id_close == TIMER_ID_NULL)
+					timer_id_close = addtimer(CALLBACK(src, PROC_REF(change_state), FALSE, TRUE), close_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+	else
+		if(triggered)
+			timer_id_open = TIMER_ID_NULL
+		else
+			timer_id_close = TIMER_ID_NULL
+
+	use_power(5)
+
+	switch(normaldoorcontrol)
+		if(CONTROL_NORMAL_DOORS)
+			handle_door()
+		if(CONTROL_POD_DOORS)
+			handle_pod()
+		if(CONTROL_DROPSHIP)
+			handle_dropship(id)
+
+	desiredstate = !desiredstate

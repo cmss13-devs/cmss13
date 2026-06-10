@@ -105,16 +105,14 @@
 		mission_error = "Fire Mission is under way already."
 		return FIRE_MISSION_NOT_EXECUTABLE
 	if(!missions[mission_id])
+		mission_error = "No Fire Mission selected."
 		return FIRE_MISSION_NOT_EXECUTABLE
-	if(dir!=NORTH && dir!=SOUTH && dir!=WEST && dir!=EAST)
+	if(!(dir in GLOB.cardinals))
 		mission_error = "Incorrect direction."
 		return FIRE_MISSION_BAD_DIRECTION
 	mission_error = null
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	var/check_result = mission.check(linked_console)
-	if(check_result == FIRE_MISSION_CODE_ERROR)
-		return FIRE_MISSION_CODE_ERROR
-
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
 		return FIRE_MISSION_CODE_ERROR
@@ -294,15 +292,15 @@
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
-	to_chat(usr, SPAN_ALERT("Firemission underway!"))
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
-		mission_error = "Target Lost."
+		mission_error = "Target lost."
 		return
 	if(!target_turf || !check_firemission_loc(signal))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
+	to_chat(usr, SPAN_ALERT("Fire Mission underway!"))
 
 	var/obj/effect/firemission_effect = new(target_turf)
 
@@ -332,39 +330,37 @@
 /datum/cas_fire_envelope/proc/change_direction(new_dir)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."
-		return 0
-	if((new_dir != 1) && (new_dir != 2) && (new_dir != 4) && (new_dir != 8))
+		return FALSE
+	if(!(new_dir in GLOB.cardinals))
 		mission_error = "Direction has to be cardinal (i.e. North/South/West/East)"
-		return 0
-	if(new_dir<0 || new_dir>15)
-		mission_error = "Do not use 4D coordinate matrix vector please." //hehe
-		return 0
+		return FALSE
 	recorded_dir = new_dir
-	return 1
+	return TRUE
 
-/datum/cas_fire_envelope/proc/change_offset(new_offset)
+/datum/cas_fire_envelope/proc/change_offset(new_offset) // Not currently used
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FALSE
 	if(new_offset < 0)
 		mission_error = "Offset cannot be negative."
-		return 0
+		return FALSE
 	if(new_offset > max_offset)
 		mission_error = "Offset cannot be greater than [max_offset]."
-		return 0
+		return FALSE
 	recorded_offset = new_offset
-	return 1
+	return TRUE
 
 /datum/cas_fire_envelope/proc/delete_firemission(mission_id)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
-		return 0
+		return FALSE
 	if(!missions[mission_id])
-		return -1
+		mission_error = "Fire Mission ID corrupted or already deleted."
+		return FALSE
 	var/mission = missions[mission_id]
 	missions -= mission
 	qdel(mission)
-	return 1
+	return TRUE
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12

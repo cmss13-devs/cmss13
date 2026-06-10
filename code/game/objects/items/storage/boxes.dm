@@ -36,7 +36,7 @@
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
-	w_class = SIZE_LARGE //Changed becuase of in-game abuse
+	w_class = SIZE_LARGE //Changed because of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/pride
@@ -69,7 +69,6 @@
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen/engi( src )
 
-
 /obj/item/storage/box/gloves
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
@@ -77,7 +76,6 @@
 	item_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = SIZE_SMALL
-
 
 /obj/item/storage/box/gloves/fill_preset_inventory()
 	new /obj/item/clothing/gloves/latex(src)
@@ -96,14 +94,6 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
-/obj/item/storage/box/bloodbag
-	name = "empty box of blood bags"
-	desc = "This box can hold all kinds of blood bags."
-	icon_state = "blood"
-	item_state = "blood"
-	can_hold = list(/obj/item/reagent_container/blood/)
-	w_class = SIZE_MEDIUM
-
 /obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -113,11 +103,27 @@
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 
+/obj/item/storage/box/bloodbag
+	name = "box of blood bags"
+	desc = "This box can hold all kinds of blood bags."
+	icon_state = "blood"
+	item_state = "blood"
+	can_hold = list(/obj/item/reagent_container/blood)
+	w_class = SIZE_MEDIUM
+
+/obj/item/storage/box/bloodbag/fill_preset_inventory()
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
 
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
-	desc = "A biohazard alert warning is printed on the box"
+	desc = "A biohazard alert warning is printed on the box."
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"
@@ -131,7 +137,6 @@
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
-
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"
@@ -511,6 +516,7 @@
 	name = "small box of zip cuffs"
 	desc = "A small box full of zip cuffs."
 	w_class = SIZE_MEDIUM
+	max_storage_space = 7
 
 /obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs/zip(src)
@@ -561,13 +567,13 @@
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTANEOUSLY
 	can_hold = list(
 		/obj/item/storage/pill_bottle,
 	)
 
 	//multiplier to time required to empty the box into chem master
-	var/time_to_empty = 3
+	var/time_to_empty = 0.3 SECONDS
 
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()

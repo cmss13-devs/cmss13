@@ -105,11 +105,13 @@
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
 				I = image('icons/mob/hud/human_status.dmi', src, "")
+		if(hud in /datum/mob_hud/xeno::hud_icons)
+			I.appearance_flags |= RESET_ALPHA
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
 
-/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER, chat_type) //Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
 	if(!client || !client.prefs)
 		return
@@ -132,6 +134,8 @@
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
 			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+		else if(chat_type) // probably best to deprecate below but im too lazy for it
+			to_chat(src, msg, type = chat_type)
 		else if(message_flags & CHAT_TYPE_ALL_COMBAT) // Pre-tag combat messages for tgchat
 			to_chat(src, html = msg, type = MESSAGE_TYPE_COMBAT)
 		else
@@ -325,7 +329,7 @@
 		if(W.flags_item & TWOHANDED)
 			W.unwield(src)
 
-//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
+//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't equip need to be done before! Use mob_can_equip() for that task.
 //In most cases you will want to use equip_to_slot_if_possible()
 /mob/proc/equip_to_slot(obj/item/W as obj, slot, disable_warning = FALSE)
 	return
@@ -618,8 +622,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
+			SEND_SIGNAL(client, COMSIG_CLIENT_ANIMATING)
 			if(buckled || resting)
 				client.set_pixel_x(0)
 				client.set_pixel_y(0)
@@ -861,6 +865,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slurring()
 	handle_slowed()
 	handle_superslowed()
+	handle_hushed()
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -871,6 +876,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
+
+/mob/living/proc/handle_hushed()
+	if(hushed)
+		adjust_effect(-1, HUSHED)
+	return hushed
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -984,7 +994,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
 		if(oldLoc.z != destination.z)
-			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
+			AM.onTransitZ(oldLoc.z, destination.z)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)
@@ -1083,3 +1093,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return client.username()
 
 	return key
+
+/mob/relaymove(mob/living/user, direction)
+	. = ..()
+	if(user.is_mob_incapacitated())
+		return
+	return relaydrive(user, direction)

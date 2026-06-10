@@ -27,7 +27,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 /// Similar to the traits from Project Zomboid.
 /datum/character_trait
 	var/trait_name = "Character Trait"
-	var/trait_desc = "A character trait"
+	var/trait_desc = "A character trait."
 	/// Whether the trait can be applied to mobs
 	/// Do not forget to override this var for any child types
 	/// Only set this to TRUE for "abstract" parent types

@@ -1,24 +1,24 @@
-#define AIRLOCK_WIRE_MAIN_POWER  1
-#define AIRLOCK_WIRE_BACKUP_POWER   2
-#define AIRLOCK_WIRE_DOOR_BOLTS  3
-#define AIRLOCK_WIRE_OPEN_DOOR   4
-#define AIRLOCK_WIRE_IDSCAN  5
-#define AIRLOCK_WIRE_LIGHT   6
-#define AIRLOCK_WIRE_SAFETY  7
-#define AIRLOCK_WIRE_SPEED   8
-#define AIRLOCK_WIRE_ELECTRIFY   9
+#define AIRLOCK_WIRE_MAIN_POWER 1
+#define AIRLOCK_WIRE_BACKUP_POWER 2
+#define AIRLOCK_WIRE_DOOR_BOLTS 3
+#define AIRLOCK_WIRE_OPEN_DOOR 4
+#define AIRLOCK_WIRE_IDSCAN 5
+#define AIRLOCK_WIRE_LIGHT 6
+#define AIRLOCK_WIRE_SAFETY 7
+#define AIRLOCK_WIRE_SPEED 8
+#define AIRLOCK_WIRE_ELECTRIFY 9
 
-GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
-		AIRLOCK_WIRE_MAIN_POWER   = "Main power",
+GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
+		AIRLOCK_WIRE_MAIN_POWER = "Main power",
 		AIRLOCK_WIRE_BACKUP_POWER = "Backup power",
-		AIRLOCK_WIRE_DOOR_BOLTS   = "Door bolts",
+		AIRLOCK_WIRE_DOOR_BOLTS = "Door bolts",
 		AIRLOCK_WIRE_OPEN_DOOR = "Door motors",
-		AIRLOCK_WIRE_IDSCAN    = "ID scanner",
+		AIRLOCK_WIRE_IDSCAN = "ID scanner",
 		AIRLOCK_WIRE_LIGHT = "Bolt lights",
-		AIRLOCK_WIRE_SAFETY    = "Proximity sensor",
+		AIRLOCK_WIRE_SAFETY = "Proximity sensor",
 		AIRLOCK_WIRE_SPEED = "Motor speed override",
-		AIRLOCK_WIRE_ELECTRIFY = "Ground safety"
-	))
+		AIRLOCK_WIRE_ELECTRIFY = "Ground safety",
+	)))
 
 /obj/structure/machinery/door/airlock
 	name = "airlock"
@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	switch(wire)
 		if(AIRLOCK_WIRE_MAIN_POWER)
-			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
+			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electrocute the user.
 			loseMainPower()
 			shock(usr, 50)
 
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			lock()
 
 		if(AIRLOCK_WIRE_BACKUP_POWER)
-			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electocute the user.
+			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electrocute the user.
 			loseBackupPower()
 			shock(usr, 50)
 
@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			construction_busy = TRUE
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				construction_busy = FALSE
-				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
+				to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
 
 				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
 				if(istype(doors_assembly, /obj/structure/airlock_assembly/multi_tile))
@@ -922,7 +922,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					qdel(x)
 				break
 
-/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(isElectrified() && arePowerSystemsOn())
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)
@@ -931,8 +931,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		xeno.Stun(1)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
-	xeno.emote("tail")
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] strikes [src] with its tail!"), SPAN_XENOWARNING("We strike [src] with our tail!"))
+	xeno.tail_stab_animation(src, blunt_stab)
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)
 	return TAILSTAB_COOLDOWN_NORMAL

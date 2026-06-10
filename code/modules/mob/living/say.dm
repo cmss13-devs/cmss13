@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":f" = SQUAD_MARINE_CRYO, ".f" = SQUAD_MARINE_CRYO, "#f" = RADIO_CHANNEL_PMC_MED,
 	":g" = RADIO_CHANNEL_ALMAYER, ".g" = RADIO_CHANNEL_ALMAYER, "#g" = RADIO_CHANNEL_CLF_GEN,
 	":j" = RADIO_CHANNEL_JTAC, ".j" = RADIO_CHANNEL_JTAC, "#j" = RADIO_CHANNEL_UPP_CCT,
-	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
+	":k" = SQUAD_SOF, ".k" = RADIO_CHANNEL_YAUTJA_SPECOPS, "#k" = RADIO_CHANNEL_WY_WO,
 	"#l" = RADIO_CHANNEL_PROVOST, //l . and : reserved for Left hand
 	":m" = RADIO_CHANNEL_MEDSCI, ".m" = RADIO_CHANNEL_MEDSCI, "#m" = RADIO_CHANNEL_UPP_MED,
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,
@@ -21,15 +21,17 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":p" = RADIO_CHANNEL_MP , ".p" = RADIO_CHANNEL_MP , "#p" = RADIO_CHANNEL_PMC_GEN,
 	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
 	"#r" = RADIO_CHANNEL_YAUTJA, //r .r and :r reserved for Right hand
-	":s" = RADIO_CHANNEL_CIA, ".s" = RADIO_CHANNEL_CIA, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
+	":s" = SQUAD_ARMY, ".s" = SQUAD_ARMY, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
 	":t" = RADIO_CHANNEL_INTEL, ".t" = RADIO_CHANNEL_INTEL, "#t" = RADIO_CHANNEL_UPP_KDO,
 	":u" = RADIO_CHANNEL_REQ, ".u" = RADIO_CHANNEL_REQ, "#u" = RADIO_CHANNEL_UPP_GEN,
 	":v" = RADIO_CHANNEL_COMMAND , ".v" = RADIO_CHANNEL_COMMAND , "#v" = RADIO_CHANNEL_UPP_CMD,
 	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
-	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY,
+	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY_SEC,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	":2" = RADIO_CHANNEL_CIA, ".2" = RADIO_CHANNEL_CIA, "#2" = RADIO_CHANNEL_CIA,
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)
@@ -56,7 +58,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
 			)
 		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
-		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		log_admin("[user?.ckey] triggered the chat filter with the following message: [message].")
 		return FALSE
 
 	return TRUE
@@ -89,7 +91,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
-/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics = FALSE, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon, langchat_override = null)
 	var/turf/T
 
 	if(!filter_message(src, message))
@@ -101,8 +103,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
-		if(!dst && src.clone) //Will speak in src's location and the clone's
-			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
+		if(!dst && clone) //Will speak in src's location and the clone's
+			T = locate(loc.x + clone.proj_x, loc.y + clone.proj_y, loc.z + clone.proj_z)
 		else
 			T = get_turf(src)
 			dst++ //Only speak once
@@ -157,21 +159,21 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 								listening_obj |= interior_object
 
 
-			for(var/mob/M as anything in GLOB.player_list)
-				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
-					listening |= M
+			for(var/mob/possible_listening_mob as anything in GLOB.player_list)
+				if((possible_listening_mob.stat == DEAD || isobserver(possible_listening_mob)) && (possible_listening_mob.client?.prefs?.toggles_chat & CHAT_GHOSTEARS))
+					listening |= possible_listening_mob
 					continue
-				if(M.loc && (M.locs[1] in hearturfs))
-					listening |= M
+				if(possible_listening_mob.loc && (possible_listening_mob.locs[1] in hearturfs))
+					listening |= possible_listening_mob
 
 		var/speech_bubble_test = say_test(message)
 		show_speech_bubble(listening, speech_bubble_test, bubble_prefix = TRUE)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
-			langchat_speech(message, listening, speaking)
-		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+			langchat_speech(message, listening, speaking, additional_styles = langchat_override ? list(langchat_override) : list("langchat"))
+		for(var/mob/possible_listening_mob as anything in listening)
+			possible_listening_mob.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

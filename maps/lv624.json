@@ -21,6 +21,12 @@
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/lv624/LV624cpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/lv624/LV624hmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/lv624/LV624modi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/lv624/LV624unaligned.html"
+    },
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from the archaeological site of Lazarus Landing, on the border world of LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "monkey_types": [
@@ -30,7 +36,21 @@
         "stok"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/LV624/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

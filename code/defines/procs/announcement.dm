@@ -2,10 +2,45 @@
 #define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
 #define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
 #define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
+#define VENIR_ANNOUNCE "White Antre Central Announcement"
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
+#define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
+
+//civilian white antre announcement
+/proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	if(faction_to_display == FACTION_SURVIVOR)
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H) || is_mainship_level(H.z)) //base human checks
+				targets.Remove(H)
+				continue
+
+	else if(faction_to_display == "Everyone (-Yautja)")
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
+				targets.Remove(H)
+
+	else
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H))
+				targets.Remove(H)
+				continue
+			if(H.faction != faction_to_display)
+				targets.Remove(H)
+
+	announcement_helper(message, title, targets, sound_to_play)
 
 //xenomorph hive announcement
 /proc/xeno_announcement(message, hivenumber, title = QUEEN_ANNOUNCE)
@@ -26,6 +61,26 @@
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+
+//xenomorph lore announcement
+/proc/xeno_lore_announcement(message, hivenumber, title = QUEEN_LORE_ANNOUNCE, sound_to_play = sound('sound/ambience/containment_breach1.ogg'))
+	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
+	if(hivenumber == "everything")
+		for(var/mob/M in targets)
+			var/mob/living/carbon/xenomorph/X = M
+			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
+				targets.Remove(X)
+
+		announcement_helper(message, title, targets, sound_to_play)
+	else
+		for(var/mob/M in targets)
+			if(isobserver(M))
+				continue
+			var/mob/living/carbon/X = M
+			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
+				targets.Remove(X)
+
+		announcement_helper(message, title, targets, sound_to_play)
 
 
 //general marine announcement
@@ -57,7 +112,7 @@
 			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
-			// If they have iff AND a marine headset they will recieve announcements
+			// If they have iff AND a marine headset they will receive announcements
 			var/obj/item/card/id/card = current_human.get_idcard()
 			if((FACTION_MARINE in card?.faction_group) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset/almayer)))
 				continue // Valid target
@@ -121,11 +176,10 @@
 			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
-	var/postfix = ""
 	if(!isnull(signature))
-		postfix = "<br><br><i> Signed by, <br> [signature]</i>"
+		message += "<br><br><i> Signed by, <br> [signature]</i>"
 
-	announcement_helper(message, title, targets, sound_to_play, FALSE, postfix, targets_to_garble, FACTION_MARINE)
+	announcement_helper(message, title, targets, sound_to_play, FALSE, targets_to_garble, FACTION_MARINE)
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
@@ -183,15 +237,14 @@
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, postfix, list/targets_to_garble, faction_to_garble)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, list/targets_to_garble, faction_to_garble)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
 
-	message += postfix
 	var/garbled_message
 	var/garbled_count = length(targets_to_garble)
 	if(garbled_count)
-		garbled_message = get_garbled_announcement(message, length(postfix), faction_to_garble)
+		garbled_message = get_garbled_announcement(message, faction_to_garble)
 		log_garble("[garbled_count] received '[garbled_message]' for faction [faction_to_garble].")
 
 	for(var/mob/target in targets)

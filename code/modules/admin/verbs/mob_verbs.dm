@@ -38,7 +38,7 @@
 	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
-		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
+		if(!M || !O) //Extra check in case the mob was deleted while we were transferring.
 			return
 		change_ckey(M, O.ckey)
 	else
@@ -68,7 +68,7 @@
 		alert("Why do you need to add a HUD to a ghost?")
 		return
 
-	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
+	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Hunter HUD")
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
 	var/datum/mob_hud/H
 	switch(hud_choice)
@@ -80,6 +80,8 @@
 			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
 			H = GLOB.huds[MOB_HUD_XENO_STATUS]
+		if("Hunter HUD")
+			H = GLOB.huds[MOB_HUD_HUNTER]
 		else
 			return
 
@@ -163,11 +165,11 @@
 			var/mob/living/carbon/human/H = M
 
 			if(!istype(H))
-				to_chat(usr, "The person you are trying to contact is not human")
+				to_chat(usr, "The person you are trying to contact is not human.")
 				return
 
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(usr, "The person you are trying to contact is not wearing a headset")
+				to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 				return
 			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
@@ -353,7 +355,7 @@
 	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	if(isxeno(H))
@@ -387,7 +389,7 @@
 		return
 
 	if(!carbon)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	var/old_name = carbon.name
@@ -403,21 +405,21 @@
 
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
+/datum/admins/proc/togglesleep(mob/living/living_target as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 
 	if(!check_rights(0))
 		return
 
-	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
-		M.sleeping = 0
-		M.RemoveSleepingIcon()
+	if (living_target.is_admin_slept()) //if they're already slept, remove the aslept trait and remove the icon
+		living_target.set_admin_sleep(FALSE)
+		living_target.RemoveSleepingIcon()
 	else
-		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		M.AddSleepingIcon()
+		living_target.set_admin_sleep(TRUE) //if they're not, add the aslept trait them and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.AddSleepingIcon()
 
-	message_admins("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
+	message_admins("[key_name(usr)] used Toggle Sleeping on [key_name(living_target)].")
 	return
 
 #undef NARRATION_METHOD_SAY

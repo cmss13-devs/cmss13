@@ -186,9 +186,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
-"aC" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/strata/interior/research)
 "aD" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -1248,7 +1245,7 @@
 /area/strata/interior/research)
 "tq" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/exterior/deep_jungle/north)
+/area/strata/interior/out_of_bounds)
 "tB" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -1356,7 +1353,7 @@
 /area/strata/interior/research)
 "xO" = (
 /turf/closed/wall/wood,
-/area/strata/interior/wooden_ruins)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "xU" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/strata/floor2,
@@ -3863,10 +3860,10 @@ bc
 wi
 Zj
 lm
-aC
-aC
-aC
-aC
+dF
+dF
+dF
+dF
 lm
 az
 mF

@@ -60,7 +60,7 @@
 	use_power(machinepower)
 
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/update_machines()
-	// Make sure any linked switch isn't on simultaniously with us
+	// Make sure any linked switch isn't on simultaneously with us
 	if(is_on)
 		for(var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/linked_switch as anything in linked_switches)
 			if(linked_switch.is_on)
@@ -121,7 +121,7 @@
 // Traffic
 /obj/structure/machinery/colony_floodlight/traffic
 	name = "traffic light"
-	desc = "A traffic light"
+	desc = "A traffic light."
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight"
 	health = 200
@@ -190,7 +190,7 @@
 /obj/structure/machinery/colony_floodlight/engineer_circular
 	name = "circular light"
 	icon_state = "engineerlight_off"
-	desc = "A huge circular light"
+	desc = "A huge circular light."
 	icon = 'icons/obj/structures/props/engineers/light.dmi'
 	density = FALSE
 	unslashable = TRUE

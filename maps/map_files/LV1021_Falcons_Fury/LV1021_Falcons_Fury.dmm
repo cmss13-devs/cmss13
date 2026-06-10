@@ -2381,7 +2381,7 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "fU" = (
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "fV" = (
 /obj/structure/platform_decoration/wood/west,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -2962,7 +2962,7 @@
 /obj/item/stack/sheet/plasteel/small_stack,
 /obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/interior/wood_sat/damage_4,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "hP" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -2979,6 +2979,9 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"hS" = (
+/turf/closed/wall/wood/plain,
+/area/lv1021/indoors/clf_camp/ancil_s)
 "hT" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -3309,10 +3312,6 @@
 /obj/structure/platform_decoration/wood,
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
-"jc" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/interior/wood,
-/area/lv1021/indoors/clf_camp/ancil_se)
 "jd" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
@@ -4197,7 +4196,7 @@
 "mh" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "mi" = (
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -4473,7 +4472,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "nh" = (
 /obj/structure/platform/stone/soro/east,
 /obj/structure/platform/wood,
@@ -4501,7 +4500,7 @@
 "nm" = (
 /obj/structure/window/framed/wood/reinforced/plain,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "nn" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -4972,7 +4971,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood_sat/damage,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "oT" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -5313,7 +5312,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/carpenters_hammer,
 /turf/open/floor/interior/wood_sat/damage_1,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "pO" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -5673,7 +5672,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "qY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
@@ -6895,7 +6894,7 @@
 /obj/item/device/flashlight/lantern,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/rug_colorable/black,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "uN" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/wood/east,
@@ -7211,7 +7210,7 @@
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "vJ" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -10310,14 +10309,14 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "Ef" = (
 /turf/open/floor/interior/wood_sat/damage_5,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Eg" = (
 /obj/item/stack/sheet/wood,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Eh" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -7;
@@ -10352,7 +10351,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/binoculars/civ,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "El" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -10371,24 +10370,24 @@
 	dir = 8
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Eo" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Ep" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Eq" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Er" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
@@ -10400,7 +10399,7 @@
 	dir = 4
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Es" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "30"
@@ -10420,13 +10419,13 @@
 /obj/item/fishing_pole,
 /obj/item/fish_bait,
 /turf/open/floor/interior/wood_sat/damage_6,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Ev" = (
 /obj/item/stack/sheet/wood,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Ew" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -10435,11 +10434,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/firstaid/adv/empty,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Ey" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Ez" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "19";
@@ -10453,13 +10454,14 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 42
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood_sat/damage_2,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "EB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "EC" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -10489,17 +10491,14 @@
 	pixel_y = 8
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "EG" = (
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "EH" = (
 /obj/structure/mineral_door/wood/open,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "EI" = (
 /obj/structure/filingcabinet/chestdrawer/wood{
 	pixel_x = -8;
@@ -10517,7 +10516,7 @@
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "EJ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -14916,7 +14915,7 @@
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/west,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "RN" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -15727,7 +15726,7 @@
 /obj/structure/platform/wood/west,
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/floor/interior/wood/alt,
-/area/lv1021/indoors/clf_camp/ancil_se)
+/area/lv1021/indoors/clf_camp/ancil_s)
 "Xf" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood/damage_4,
@@ -22687,8 +22686,8 @@ UU
 UU
 Fc
 Tf
-gb
-gb
+hS
+hS
 ZW
 fQ
 kZ
@@ -22854,10 +22853,10 @@ Xa
 UU
 UU
 Vg
-gb
-gb
+hS
+hS
 nm
-gb
+hS
 Ee
 fQ
 kZ
@@ -23021,12 +23020,12 @@ hP
 UU
 UU
 gg
-gb
+hS
 EF
 Eu
-gb
-gb
-gb
+hS
+hS
+hS
 PO
 Aa
 hn
@@ -23192,8 +23191,8 @@ nm
 oS
 Ev
 En
-gb
-gb
+hS
+hS
 PO
 hg
 hp
@@ -23522,13 +23521,13 @@ Fu
 Fn
 ZN
 XZ
-gb
-gb
+hS
+hS
 Ex
 ng
 RK
-gb
-gb
+hS
+hS
 tI
 hg
 hp
@@ -23856,13 +23855,13 @@ cX
 La
 UU
 Vg
-gb
-gb
+hS
+hS
 EA
 Ep
 Eg
-gb
-gb
+hS
+hS
 PO
 mz
 Aa
@@ -24357,12 +24356,12 @@ hP
 hP
 UU
 gg
-gb
-gb
-gb
-gb
-gb
-gb
+hS
+hS
+hS
+hS
+hS
+hS
 PO
 dh
 hI
@@ -24524,12 +24523,12 @@ Lz
 ai
 UU
 Ty
-gb
-gb
+hS
+hS
 wg
 WY
-gb
-gb
+hS
+hS
 PO
 ny
 Aa
@@ -42541,7 +42540,7 @@ hM
 gh
 gb
 gb
-jc
+EG
 gb
 gb
 gb

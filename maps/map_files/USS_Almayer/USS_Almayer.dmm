@@ -14600,6 +14600,10 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
+"aMt" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "aMu" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -148556,7 +148560,7 @@ bqZ
 beH
 bdd
 bdd
-beH
+aMt
 auv
 avG
 avG

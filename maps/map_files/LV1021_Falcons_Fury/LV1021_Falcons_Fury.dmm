@@ -10495,10 +10495,6 @@
 "EG" = (
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
-"EH" = (
-/obj/structure/mineral_door/wood/open,
-/turf/open/floor/interior/wood_sat,
-/area/lv1021/indoors/clf_camp/ancil_s)
 "EI" = (
 /obj/structure/filingcabinet/chestdrawer/wood{
 	pixel_x = -8;
@@ -23689,7 +23685,7 @@ hP
 UU
 pD
 vI
-EH
+mh
 Ey
 Eo
 Ef

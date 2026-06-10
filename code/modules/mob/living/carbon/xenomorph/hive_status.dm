@@ -270,7 +270,7 @@
 
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
-		if(ishuman(current_mob))
+		if(ishuman_strict(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
 
 		if(issynth(current_mob))

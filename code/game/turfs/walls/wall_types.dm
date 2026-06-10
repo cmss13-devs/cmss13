@@ -158,6 +158,7 @@
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
 	var/operating = FALSE
+	var/remote_id
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
 	if(operating)
@@ -199,6 +200,9 @@
 
 /turf/closed/wall/almayer/research/containment/wall/connect3
 	icon_state = "containment_wall_connect3"
+
+/turf/closed/wall/almayer/research/containment/wall/connect3
+	icon_state = "containment_wall_connect4"
 
 /turf/closed/wall/almayer/research/containment/wall/connect_w
 	icon_state = "containment_wall_connect_w"

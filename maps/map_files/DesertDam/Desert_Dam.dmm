@@ -21729,9 +21729,16 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bpm" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/west_caves)
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/research/containment/corner2,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22225,13 +22232,73 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger/roof)
 "brh" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/interior/caves/west_caves)
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/corner3,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"bri" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brj" = (
+/turf/open/floor/almayer/research/containment/corner_var2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/almayer/research/containment/entrance,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/research/containment/entrance/west,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/research/containment/corner_var2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brn" = (
+/turf/open/floor/almayer/research/containment/corner,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"bro" = (
+/turf/open/floor/almayer/research/containment/corner_var1/north,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/entrance/east,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/corner,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/lobby)
+"brs" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -22247,6 +22314,17 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"brw" = (
+/turf/open/floor/almayer/research/containment/corner_var1,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brx" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bry" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/west_caves)
 "brH" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -23504,7 +23582,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bRJ" = (
 /obj/structure/platform/stone/mineral,
@@ -24788,7 +24866,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "cuu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/almayer/research/containment/corner_var2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "cuy" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -27377,7 +27455,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "dun" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -29435,7 +29513,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "ejH" = (
 /obj/effect/decal/hybrisa/deco_edging{
@@ -31706,7 +31784,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "fdU" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -37395,7 +37473,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "hmw" = (
 /turf/open/floor/prison/bright_clean/southwest,
@@ -56728,7 +56806,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner_var2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "oQm" = (
 /obj/structure/platform/metal/almayer/east,
@@ -68290,7 +68368,7 @@
 /turf/open/desert/desert_shore/shore_corner2/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "tnm" = (
-/turf/open/floor/almayer/research/containment/corner_var2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "tnu" = (
 /turf/open/floor/prison/greencorner/west,
@@ -70391,7 +70469,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "uct" = (
 /turf/open/floor/prison/floor_plate/southwest,
@@ -75937,7 +76015,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "wmh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -92871,7 +92949,7 @@ rfS
 aZa
 acl
 acl
-bpm
+brx
 aEp
 aem
 rfS
@@ -94982,7 +95060,7 @@ acl
 acl
 acl
 acl
-bpm
+brx
 acl
 acl
 aEn
@@ -95203,7 +95281,7 @@ rfS
 rfS
 rfS
 aem
-brh
+bry
 aEy
 acl
 acl
@@ -95232,7 +95310,7 @@ acl
 acl
 acl
 aYW
-bpm
+brx
 acl
 aEp
 aem
@@ -99204,7 +99282,7 @@ rfS
 rfS
 acl
 acl
-bpm
+brx
 acl
 acl
 aEw
@@ -171648,7 +171726,7 @@ vTg
 (144,1,2) = {"
 vTg
 vmC
-oQk
+brq
 fmJ
 rnc
 fmJ
@@ -171885,11 +171963,11 @@ vmC
 ejF
 htQ
 vZZ
-pMh
+vfL
 hmi
 vmC
 ejF
-htQ
+brn
 jiq
 wAN
 hmi
@@ -172117,13 +172195,13 @@ vTg
 vTg
 vmC
 ejF
-vfL
+brs
 jiq
 ayl
 hmi
 vmC
 ejF
-vfL
+bro
 jiq
 ayl
 hmi
@@ -172352,13 +172430,13 @@ vTg
 vmC
 wmd
 ojt
-ojt
+brl
 ojt
 eLT
 vmC
 wmd
 ojt
-ojt
+brl
 ojt
 byS
 vmC
@@ -176796,13 +176874,13 @@ vTg
 (166,1,2) = {"
 vTg
 vmC
-oQk
+brq
 fmJ
 fmJ
 deF
 vmC
-oQk
-fmJ
+brq
+brp
 fmJ
 dOt
 vmC
@@ -177031,7 +177109,7 @@ vTg
 vTg
 vmC
 ejF
-htQ
+brw
 pMh
 hmi
 qGP
@@ -177265,12 +177343,12 @@ vTg
 vTg
 vmC
 ejF
-vfL
+brs
 hPz
 hmi
 qGP
 ejF
-vfL
+bro
 ayl
 hmi
 vmC
@@ -177506,7 +177584,7 @@ vmC
 wmd
 ojt
 lHi
-aam
+brm
 vmC
 ydo
 lmW
@@ -181492,7 +181570,7 @@ uZy
 bRx
 hJP
 xBs
-nit
+exg
 duj
 iNY
 kPt
@@ -181723,8 +181801,8 @@ ani
 nOW
 ani
 uZy
-bRx
-exg
+brk
+bri
 lDG
 duU
 duj
@@ -181961,7 +182039,7 @@ fdN
 sWf
 sWf
 sWf
-vgt
+bpm
 iNY
 lCL
 wrb
@@ -182429,7 +182507,7 @@ ucs
 lxm
 lxm
 lxm
-idv
+brh
 iNY
 lCL
 wrb
@@ -182659,7 +182737,7 @@ ani
 ani
 ani
 aub
-bRx
+brk
 tnm
 lDG
 nit
@@ -182894,7 +182972,7 @@ ani
 ani
 aub
 bRx
-exg
+brj
 xBs
 kKQ
 duj

@@ -211,6 +211,7 @@
 	minimap_icon = "pmc_ld"
 	skills = /datum/skills/pmc/commando/leader
 	paygrades = list(PAY_SHORT_WY_COMLD = JOB_PLAYTIME_TIER_0)
+	headset_type = /obj/item/device/radio/headset/distress/pmc/commando/leader
 
 /datum/equipment_preset/pmc/commando/leader/load_name(mob/living/carbon/human/new_human, randomise) //reference to Theo Stern from A:DD
 	new_human.gender = MALE

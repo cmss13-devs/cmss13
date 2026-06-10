@@ -814,7 +814,7 @@
 			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest))
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest), supplier_weeds.hivenumber)
 	applicable_nest.dir = dir_to_nest
 	if(!applicable_nest.buckle_mob(host_to_nest, src))
 		qdel(applicable_nest)

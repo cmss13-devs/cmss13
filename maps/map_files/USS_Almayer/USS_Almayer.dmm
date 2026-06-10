@@ -14129,13 +14129,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/lower_astronav)
 "aLJ" = (
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+	dir = 6
 	},
-/turf/open/floor/almayer/orangefull,
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "aLK" = (
 /obj/structure/surface/table/almayer,
@@ -25292,12 +25289,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "bmr" = (
-/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
-	pixel_x = -5;
-	pixel_y = 10
+/obj/structure/window/reinforced/ultra{
+	dir = 8
 	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer/redfull,
+/turf/open/floor/almayer/silver/west,
 /area/almayer/living/briefing)
 "bms" = (
 /obj/effect/decal/warning_stripes{
@@ -32355,19 +32350,18 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "bCy" = (
-/obj/structure/bed/chair/comfy/bravo,
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/almayer/orangefull,
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bCz" = (
-/obj/structure/stairs/perspective{
-	dir = 9;
-	icon_state = "p_stair_full"
+/obj/structure/window/reinforced/ultra{
+	dir = 4
 	},
-/obj/structure/platform/metal/almayer/east,
-/turf/open/floor/almayer,
+/obj/structure/window/reinforced/ultra,
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/briefing)
 "bCA" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -33090,13 +33084,12 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/living/briefing)
 "bDU" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
+	pixel_x = -5;
+	pixel_y = 10
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/bluefull,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
 "bDV" = (
 /obj/structure/bed/chair{
@@ -39313,12 +39306,15 @@
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/command/computerlab)
 "bUb" = (
-/obj/structure/bed/chair/comfy/bravo,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/open/floor/almayer/orangefull,
-/area/almayer/living/briefing)
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = -25
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "bUc" = (
 /obj/structure/machinery/computer/arcade{
 	layer = 3.3
@@ -42242,8 +42238,18 @@
 /turf/open/floor/almayer/emerald/west,
 /area/almayer/living/briefing)
 "cae" = (
-/turf/open/floor/almayer/redcorner/south,
-/area/almayer/living/briefing)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = 25
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
 "caf" = (
 /obj/structure/machinery/computer/cryopod{
 	dir = 8
@@ -42639,9 +42645,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "caO" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "caP" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -47438,14 +47445,7 @@
 /turf/open/floor/almayer/green,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "czR" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
-	name = "\improper Briefing Room"
-	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/living/briefing)
 "cAa" = (
 /obj/structure/machinery/power/apc/almayer/south,
@@ -49348,12 +49348,12 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room/notunnel)
 "dqD" = (
-/obj/structure/stairs/perspective{
-	dir = 10;
-	icon_state = "p_stair_full"
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 7
 	},
-/obj/structure/platform/metal/almayer/east,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/living/briefing)
 "dqE" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -49505,10 +49505,11 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "duw" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18";
-	pixel_y = 7
+/obj/structure/window/reinforced/ultra{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 1
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/living/briefing)
@@ -50436,9 +50437,10 @@
 /area/almayer/hallways/upper/fore_hallway)
 "dNM" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 1
 	},
-/turf/open/floor/almayer,
+/obj/structure/machinery/light,
+/turf/closed/wall/almayer,
 /area/almayer/living/briefing)
 "dNW" = (
 /obj/structure/machinery/firealarm{
@@ -50619,12 +50621,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "dRT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/turf/open/floor/almayer/silver/east,
+/area/almayer/living/briefing)
 "dSp" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -50676,6 +50674,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/shipboard/brig/cic_hallway)
+"dUP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "dUR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -50704,17 +50708,11 @@
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/shipboard/port_missiles)
 "dVe" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 8
+/obj/structure/bed/chair/comfy/bravo,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
-/obj/structure/machinery/flasher_button{
-	id = "briefing_flash";
-	name = "Briefing Flasher";
-	pixel_x = 32;
-	pixel_y = 27;
-	req_access_txt = "19"
-	},
-/turf/open/floor/almayer/silver/west,
+/turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "dVn" = (
 /obj/structure/machinery/power/apc/almayer/west,
@@ -53228,8 +53226,9 @@
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/medical_science)
 "eWp" = (
-/turf/open/floor/almayer/cargo_arrow/west,
-/area/almayer/living/briefing)
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "eWs" = (
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -53817,6 +53816,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
+"fgZ" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/port_midship_hallway)
 "fhf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
@@ -53940,14 +53945,10 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "flW" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/almayer/living/briefing)
 "fml" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -55099,7 +55100,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_f_p)
 "fNd" = (
-/turf/open/floor/almayer/orange/east,
+/obj/structure/machinery/flasher_button{
+	id = "briefing_flash";
+	name = "Briefing Flasher";
+	pixel_x = 32;
+	pixel_y = 27;
+	req_access_txt = "19"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
 "fNi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -56738,15 +56746,11 @@
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
 "gBo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
 	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "gBs" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer/test_floor4,
@@ -59265,15 +59269,6 @@
 /obj/structure/machinery/meter,
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower)
-"hEG" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/north,
-/area/almayer/living/briefing)
 "hEV" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -59326,10 +59321,7 @@
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/squads/req)
 "hGO" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 8
-	},
-/turf/open/floor/almayer/silver/west,
+/turf/open/floor/almayer/emerald/east,
 /area/almayer/living/briefing)
 "hGV" = (
 /obj/effect/decal/warning_stripes{
@@ -59633,11 +59625,11 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/squads/charlie_delta_shared)
 "hQf" = (
-/obj/item/trash/USCMtray{
-	pixel_x = 5
+/obj/structure/bed/chair/comfy/bravo,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer/redfull,
+/turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "hQw" = (
 /obj/structure/machinery/light,
@@ -61621,15 +61613,12 @@
 /turf/open/floor/almayer/silver/south,
 /area/almayer/command/computerlab)
 "iLh" = (
-/obj/structure/machinery/flasher_button{
-	id = "briefing_flash";
-	name = "Briefing Flasher";
-	pixel_x = 32;
-	pixel_y = 27;
-	req_access_txt = "19"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/briefing)
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "iLm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -63754,9 +63743,14 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/numbertwobunks)
 "jzT" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/living/briefing)
 "jAj" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -66217,7 +66211,7 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
 "kDY" = (
-/turf/open/floor/almayer/emerald/east,
+/turf/open/floor/almayer/orange/east,
 /area/almayer/living/briefing)
 "kEc" = (
 /obj/structure/machinery/light/small{
@@ -67375,12 +67369,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_midship_hallway)
-"ldZ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "lef" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -67774,18 +67762,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/chief_mp_office)
 "lnm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/port_midship_hallway)
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "lnt" = (
 /turf/open/floor/almayer/silvercorner,
 /area/almayer/shipboard/brig/cic_hallway)
@@ -67918,6 +67897,10 @@
 "lpt" = (
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/charlie_delta_shared)
+"lpu" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "lql" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_umbilical)
@@ -69004,11 +68987,14 @@
 /turf/open/floor/almayer/bluecorner/north,
 /area/almayer/hallways/upper/midship_hallway)
 "lRs" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/living/briefing)
 "lRt" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/plating_catwalk,
@@ -69505,10 +69491,13 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_f_s)
 "mfM" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 4
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
 	},
-/turf/open/floor/almayer/silver/east,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "mfQ" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -69638,12 +69627,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
-"miH" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/port_midship_hallway)
 "miV" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -69859,9 +69842,12 @@
 /turf/open/floor/almayer/red,
 /area/almayer/maint/upper/u_a_p)
 "mnI" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/obj/item/trash/USCMtray{
+	pixel_x = 5
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/redfull,
+/area/almayer/living/briefing)
 "mnP" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/almayer/plating_stripedcorner/north,
@@ -72291,11 +72277,12 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "nlB" = (
-/obj/structure/bed/chair/comfy/bravo,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
 	},
-/turf/open/floor/almayer/orangefull,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "nlI" = (
 /obj/structure/machinery/power/apc/almayer/north,
@@ -75252,14 +75239,11 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -75544,8 +75528,12 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_umbilical)
 "oCb" = (
-/turf/open/floor/almayer/silver/east,
-/area/almayer/living/briefing)
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "oCf" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -76699,13 +76687,6 @@
 /obj/structure/machinery/camera/autoname/almayer,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
-"oZO" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/light,
-/turf/closed/wall/almayer,
-/area/almayer/living/briefing)
 "oZX" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/red,
@@ -77307,8 +77288,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
 "ppV" = (
-/turf/open/floor/almayer/orangecorner/south,
-/area/almayer/living/briefing)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "pqi" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	pixel_x = -1
@@ -78564,11 +78551,11 @@
 /turf/open/floor/almayer/tcomms,
 /area/almayer/engineering/lower/engine_core)
 "pUA" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+/obj/structure/window/reinforced/ultra{
+	dir = 4
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_midship_hallway)
+/turf/open/floor/almayer/silver/east,
+/area/almayer/living/briefing)
 "pUD" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
@@ -78692,6 +78679,9 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
+"pXe" = (
+/turf/open/floor/almayer/orangecorner/south,
+/area/almayer/living/briefing)
 "pXl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -81023,12 +81013,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "qSE" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/starboard_midship_hallway)
+/area/almayer/hallways/lower/port_midship_hallway)
 "qSI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tank/oxygen/red,
@@ -82443,11 +82432,18 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "rwv" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/window/reinforced/ultra{
 	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/port_midship_hallway)
+/obj/structure/machinery/flasher_button{
+	id = "briefing_flash";
+	name = "Briefing Flasher";
+	pixel_x = 32;
+	pixel_y = 27;
+	req_access_txt = "19"
+	},
+/turf/open/floor/almayer/silver/west,
+/area/almayer/living/briefing)
 "rwB" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -82531,10 +82527,10 @@
 /area/almayer/medical/containment)
 "rAb" = (
 /obj/structure/bed/chair/comfy/delta{
-	dir = 8
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
@@ -83066,14 +83062,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "rJK" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/lower/port_midship_hallway)
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "rKd" = (
 /turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/command/cic)
@@ -84777,12 +84768,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
-"stH" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "stO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
@@ -84813,8 +84798,16 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/securestorage)
 "suH" = (
-/obj/structure/platform/metal/almayer/west,
-/turf/open/floor/almayer,
+/obj/structure/window/reinforced/ultra{
+	dir = 1
+	},
+/obj/structure/window/reinforced/ultra{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/almayer/silver/northeast,
 /area/almayer/living/briefing)
 "suJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -85500,16 +85493,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
 "sJC" = (
-/obj/structure/window/reinforced/ultra{
-	dir = 1
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
 	},
-/obj/structure/window/reinforced/ultra{
-	dir = 4
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/northeast,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "sJY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -85715,6 +85704,9 @@
 	},
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/hallways/upper/starboard)
+"sPE" = (
+/turf/open/floor/almayer/emeraldcorner/south,
+/area/almayer/living/briefing)
 "sPF" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -85826,13 +85818,14 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/shipboard/brig/cic_hallway)
 "sTU" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Briefing Room"
 	},
-/turf/open/floor/almayer/bluefull,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "sTV" = (
 /obj/structure/machinery/power/apc/almayer/hardened/north{
@@ -88321,14 +88314,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "tXb" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/living/briefing)
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "tXc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -88841,12 +88831,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "ugu" = (
-/obj/structure/window/reinforced/ultra{
+/obj/structure/bed/chair/comfy/bravo,
+/obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/window/reinforced/ultra,
-/obj/structure/bed/chair/comfy,
-/turf/open/floor/almayer/silver/southeast,
+/turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "ugw" = (
 /obj/structure/disposalpipe/segment{
@@ -92425,6 +92414,9 @@
 	},
 /turf/open/floor/almayer/green,
 /area/almayer/squads/req)
+"vCe" = (
+/turf/open/floor/almayer/redcorner/south,
+/area/almayer/living/briefing)
 "vCk" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 7;
@@ -93076,6 +93068,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -97521,7 +97516,13 @@
 /turf/closed/wall/almayer/research/containment/wall/corner,
 /area/almayer/medical/containment/cell)
 "xAt" = (
-/turf/open/floor/almayer/emeraldcorner/south,
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
 "xAu" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -98233,6 +98234,12 @@
 /obj/structure/closet/secure_closet/fridge/meat/stock,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
+"xPd" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/port_midship_hallway)
 "xPq" = (
 /obj/structure/machinery/disposal{
 	pixel_y = 4;
@@ -147603,14 +147610,6 @@ naa
 fZE
 bdg
 bqZ
-duv
-beH
-beH
-beH
-fUA
-beH
-beH
-beH
 beH
 beH
 beH
@@ -147619,7 +147618,15 @@ fUA
 beH
 beH
 beH
-duv
+beH
+beH
+beH
+beH
+fUA
+beH
+beH
+beH
+beH
 bqZ
 bdg
 oSM
@@ -147706,23 +147713,23 @@ naa
 fZE
 bdg
 bqZ
-bgO
-beH
-beH
+aLJ
+caO
+rJK
 beH
 beH
 pfJ
-bCz
+nlB
 fDg
 ufh
 fDg
-dqD
+sJC
 cel
 beH
 beH
-beH
-beH
-bgO
+fcf
+caO
+gBo
 bqZ
 bdg
 oSM
@@ -147816,9 +147823,9 @@ boq
 boq
 byE
 pVB
-hGO
+bmr
 hsg
-dVe
+rwv
 iPv
 azN
 gAj
@@ -147921,7 +147928,7 @@ byE
 vBp
 fUA
 kNl
-iLh
+fNd
 nhi
 azN
 gAj
@@ -148021,7 +148028,7 @@ boq
 boq
 boq
 byE
-hEG
+duw
 fUA
 hWs
 fUA
@@ -148124,11 +148131,11 @@ boq
 boq
 boq
 byE
-sJC
-mfM
+suH
+pUA
 wga
-mfM
-ugu
+pUA
+bCz
 azN
 gAj
 gAj
@@ -148227,11 +148234,11 @@ beH
 duv
 beH
 iaK
-suH
+lpu
 lgC
 oBG
 gZz
-suH
+lpu
 tIa
 beH
 duv
@@ -148327,7 +148334,7 @@ bDQ
 bgO
 beH
 beH
-nlB
+hQf
 vGG
 xRJ
 beH
@@ -148337,7 +148344,7 @@ whA
 beH
 iXb
 uMk
-sTU
+rAb
 beH
 beH
 bgO
@@ -148428,21 +148435,21 @@ atH
 bdd
 bLV
 qMR
-stH
-bUb
-bCy
-bUb
-aLJ
-aLJ
+caO
+dVe
+ugu
+dVe
+mfM
+mfM
 viO
 gMU
 ksN
-rAb
-rAb
-tXb
-bDU
-tXb
-stH
+xAt
+xAt
+jzT
+lRs
+jzT
+caO
 fOk
 bLB
 bdd
@@ -148737,8 +148744,8 @@ meQ
 bCh
 bqZ
 beH
-dNM
-dNM
+bCy
+bCy
 beH
 beH
 beH
@@ -148750,8 +148757,8 @@ beH
 beH
 beH
 beH
-dNM
-dNM
+bCy
+bCy
 beH
 bqZ
 bdg
@@ -148834,7 +148841,7 @@ tpR
 tpR
 osQ
 wxp
-qSE
+oCb
 baW
 meQ
 bCh
@@ -148843,15 +148850,15 @@ beH
 bdd
 bdd
 beH
-oCb
-eWp
-eWp
-oCb
+dRT
+czR
+czR
+dRT
 beH
-oCb
-eWp
-eWp
-oCb
+dRT
+czR
+czR
+dRT
 beH
 bdd
 bdd
@@ -148860,7 +148867,7 @@ bqZ
 bCh
 awE
 jas
-rwv
+fgZ
 cVZ
 qWx
 jhA
@@ -148939,7 +148946,7 @@ atH
 fZE
 fEF
 dAm
-jzT
+eWp
 bdd
 bDQ
 beH
@@ -148954,13 +148961,13 @@ beH
 fvf
 rgW
 vUe
-duw
+dqD
 beH
 bdd
 bdd
 beH
 bqZ
-oZO
+dNM
 awE
 sIR
 oYi
@@ -149152,7 +149159,7 @@ beH
 beH
 beH
 beH
-cae
+vCe
 wTm
 wTm
 wCI
@@ -149250,9 +149257,9 @@ fEF
 dAm
 bCh
 bqZ
-ppV
-fNd
-fNd
+pXe
+kDY
+kDY
 grR
 beH
 boq
@@ -149265,9 +149272,9 @@ nuK
 qnC
 uMk
 beH
-xAt
-kDY
-kDY
+sPE
+hGO
+hGO
 kuw
 bqZ
 bdg
@@ -149359,7 +149366,7 @@ dll
 wmz
 beH
 boq
-hQf
+mnI
 ddk
 tGG
 beH
@@ -149478,7 +149485,7 @@ gAj
 bqZ
 bCh
 sIR
-rJK
+oYi
 gvK
 vra
 asX
@@ -149556,7 +149563,7 @@ rHf
 jeb
 fZE
 fEF
-dRT
+iLh
 bdd
 bDQ
 vGG
@@ -149565,7 +149572,7 @@ cNf
 wmz
 beH
 boq
-bmr
+bDU
 ddk
 tGG
 beH
@@ -149660,7 +149667,7 @@ jeb
 bMd
 fEF
 cmL
-czR
+sTU
 bDS
 vGG
 dll
@@ -149682,7 +149689,7 @@ veu
 fIZ
 gAj
 cac
-czR
+sTU
 xLX
 oYi
 hCf
@@ -149760,7 +149767,7 @@ xWd
 oSL
 jeb
 jeb
-mnI
+lnm
 oUi
 dAm
 nyw
@@ -149968,10 +149975,10 @@ nBa
 jeb
 atH
 aCX
-gBo
+bUb
 bdd
 bdd
-caO
+flW
 beQ
 beQ
 beQ
@@ -149988,11 +149995,11 @@ bdd
 beQ
 beQ
 beQ
-caO
-caO
+flW
+flW
 bdd
 bdd
-lnm
+cae
 wwv
 brq
 vra
@@ -150073,7 +150080,7 @@ fZE
 fEF
 dAm
 meQ
-lRs
+tXb
 bGw
 bDV
 bGw
@@ -150093,7 +150100,7 @@ bGw
 bGw
 bGw
 bGw
-pUA
+xPd
 oSM
 sIR
 oYi
@@ -150277,8 +150284,8 @@ bSn
 aQL
 hEm
 kti
-flW
-ldZ
+ppV
+dUP
 exQ
 bCB
 bCB
@@ -150300,7 +150307,7 @@ bCB
 bCB
 bCB
 uuI
-miH
+qSE
 ihI
 bIW
 eMZ

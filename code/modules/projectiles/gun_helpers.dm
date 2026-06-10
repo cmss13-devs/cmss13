@@ -160,9 +160,7 @@ DEFINES in setup.dm, referenced here.
 	for(var/faction in user.faction_group)
 		if(faction in FACTION_LIST_WY)
 			return TRUE
-	if(user.faction in FACTION_LIST_WY)
-		return TRUE
-	if(user.faction == FACTION_HUNTED_PMC)
+	if(user.faction in (FACTION_LIST_WY|FACTION_HUNTED_PMC))
 		return TRUE
 	if(user.job == "UPP Armsmaster") //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
 		return TRUE

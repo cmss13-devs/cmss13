@@ -2113,7 +2113,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		to_chat(user, SPAN_WARNING("This serpent seems defective. It is unresponsive."))
 		return FALSE
 
-	if((thrall_target.caste_type in XENO_T0_CASTES) || (thrall_target.caste_type in GLOB.hivebreaker_banned_castes))
+	if((thrall_target.caste_type in XENO_T0_CASTES) || is_pathogen_creature(thrall_target) || (thrall_target.caste_type in GLOB.hivebreaker_banned_castes))
 		to_chat(user, SPAN_WARNING("You cannot enthrall this serpent!"))
 		return FALSE
 

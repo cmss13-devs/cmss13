@@ -1862,6 +1862,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	return TRUE
 
+#undef NO_ATTACKBY_HINT
+
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	var/actual_sound = pick(dry_fire_sound)
 	var/dry_fire_text

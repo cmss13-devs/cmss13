@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Some of the larger minimap bitflags can now be seen on the minimap. This just means Hives that have the bigger number in the code can be viewed on the minimap like normal."

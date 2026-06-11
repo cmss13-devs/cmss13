@@ -397,7 +397,7 @@
 
 	return sortTim(distances, GLOBAL_PROC_REF(cmp_numeric_asc), TRUE)
 
-//Converts a bitfield to a list of numbers
+///Converts a bitfield to a list of numbers of the bits that are set
 /proc/bitfield2list(bitfield = 0)
 	var/list/result = list()
 	for(var/i = 0, i < 24, i++)

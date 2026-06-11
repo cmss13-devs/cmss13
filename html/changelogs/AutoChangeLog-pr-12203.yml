@@ -1,0 +1,4 @@
+author: "KCartridge"
+delete-after: True
+changes:
+  - config: "10 more character slots"

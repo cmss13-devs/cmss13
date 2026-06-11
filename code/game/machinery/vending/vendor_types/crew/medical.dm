@@ -154,7 +154,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
-
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Balaclava", 0, /obj/item/clothing/mask/balaclava, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
@@ -200,13 +199,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("IMPORTANT EQUIPMENT", 0, null, null, null),
 		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
-		list("EYEWEAR (CHOOSE 2)", 0, null, null, null),
+		list("SHOULDER PATCHES (CHOOSE 1)", 0, null, null, null),
+		list("Weyland-Yutani Round Patch, Black", 0, /obj/item/clothing/accessory/patch/wy, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Weyland-Yutani Square Patch, Black", 0, /obj/item/clothing/accessory/patch/wysquare, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Weyland-Yutani Round Patch, White", 0, /obj/item/clothing/accessory/patch/wy_white, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Prescription Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 
-		list("UNDERSUITS (CHOOSE 1)", 0, null, null, null),
+		list("UNDERSUIT (CHOOSE 1)", 0, null, null, null),
 		list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Black Suitskirt", 0, /obj/item/clothing/under/liaison_suit/black/skirt, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -228,7 +232,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Gray T-Shirt and Blue Jeans", 12, /obj/item/clothing/under/tshirt/gray_blu, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Red T-Shirt and Black Jeans", 12, /obj/item/clothing/under/tshirt/r_bla, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
-		list("LABCOATS (CHOOSE 1)", 0, null, null, null),
+		list("SUIT (CHOOSE 1)", 0, null, null, null),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -247,16 +251,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Shoes, Red", 12, /obj/item/clothing/shoes/red, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Shoes, White", 12, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Shoes, Yellow", 12, /obj/item/clothing/shoes/yellow, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
-		list("Shoes, Rainbow", 12, /obj/item/clothing/shoes/rainbow, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
-
-		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
-		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Balaclava", 0, /obj/item/clothing/mask/balaclava, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
-		list("Snow Scarf", 0, /obj/item/clothing/mask/tornscarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Shoes, Rainbow", 12, /obj/item/clothing/shoes/rainbow, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),\
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
 		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Leather Blue Satchel", 0, /obj/item/storage/backpack/satchel/blue, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Leather Black Satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Standard Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Standard Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
@@ -286,6 +287,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Tie", 0, /obj/item/clothing/accessory/tie/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Red Tie", 0, /obj/item/clothing/accessory/tie/red, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Purple Tie", 0, /obj/item/clothing/accessory/tie/purple, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Blue Tie", 0, /obj/item/clothing/accessory/tie, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Green Tie", 0, /obj/item/clothing/accessory/tie/green, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Gold Tie", 0, /obj/item/clothing/accessory/tie/gold, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Special Tie", 0, /obj/item/clothing/accessory/tie/horrible, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
 
@@ -344,10 +352,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 		list("Standard Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Standard Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -430,6 +434,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		/obj/item/device/reagent_scanner,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
+		/obj/item/clothing/accessory/storage/black_vest,
 	)
 
 

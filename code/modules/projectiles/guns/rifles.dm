@@ -1999,7 +1999,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
-	pull_delay = WIELD_DELAY_VERY_FAST
+	pull_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	map_specific_decoration = TRUE
 	pixel_x = -5

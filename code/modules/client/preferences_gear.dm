@@ -435,13 +435,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap
 
+/datum/gear/headwear/uscm/headband_green
+	display_name = "USCM headband, area of operations specific"
+	path = /obj/item/clothing/head/headband
+
 /datum/gear/headwear/uscm/headband_brown
 	display_name = "USCM headband, brown"
 	path = /obj/item/clothing/head/headband/brown
-
-/datum/gear/headwear/uscm/headband_green
-	display_name = "USCM headband, green"
-	path = /obj/item/clothing/head/headband
 
 /datum/gear/headwear/uscm/headband_grey
 	display_name = "USCM headband, grey"
@@ -449,6 +449,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/headwear/uscm/headband_red
 	display_name = "USCM headband, red"
+	path = /obj/item/clothing/head/headband/red/static
+
+/datum/gear/headwear/uscm/headband_red_camo
+	display_name = "USCM headband, red (camo conforming)"
 	path = /obj/item/clothing/head/headband/red
 
 /datum/gear/headwear/uscm/headband_intel
@@ -1293,6 +1297,25 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
+
+
+/datum/gear/civilian/patch
+	display_name = "Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/freelancer_patch
+	fluff_cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/mercpatch
+	display_name = "Old Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/merc_patch
+
+/datum/gear/civilian/patch/medipatch
+	display_name = "Medic Patch"
+	path = /obj/item/clothing/accessory/patch/medic_patch
+
+
+
+// Re-added some less lore conflicting patches back into civilian's gear
 
 ///Commented out until we have a factional system to restrict these properly
 // /datum/gear/civilian/patch

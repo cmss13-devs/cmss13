@@ -222,8 +222,8 @@
 /datum/equipment_preset/us_army/tank
 	name = "US Army Vehicle Crewman (CRMN)"
 	paygrades = list(PAY_SHORT_AE4 = JOB_PLAYTIME_TIER_0)
-	assignment = JOB_TANK_CREW
-	job_title  = JOB_TANK_CREW
+	assignment = JOB_ARMY_TANK
+	job_title  = JOB_ARMY_TANK
 	skills = /datum/skills/tank_crew
 	minimap_icon = "vc"
 	minimap_background = "background_intel"

@@ -196,18 +196,18 @@
 /datum/reagent/space_drugs
 	name = "Space drugs"
 	id = "space_drugs"
-	description = "An illegal compound that causes hallucinations, visual artefacts and loss of balance."
+	description = "An illegal, addictive compound that causes hallucinations, visual artefacts and loss of balance."
 	reagent_state = LIQUID
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HALLUCINOGENIC = 2)
+	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_ADDICTIVE = 1)
 
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue and narcotic culture. Due to its addictive nature, production and use of the mixture is banned across 3052 jurisdictions. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
 	color = "#C21D24" // rgb: 194, 29, 36
 	overdose = MED_REAGENTS_OVERDOSE
@@ -239,6 +239,7 @@
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 /datum/reagent/copper
 	name = "Copper"
@@ -278,6 +279,7 @@
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_FUELING = 1)
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
@@ -344,7 +346,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_BIOCIDIC = 1)
+	properties = list(PROPERTY_BIOCIDIC = 1, PROPERTY_PNEUMOTOXIC = 3, PROPERTY_OCULOTOXIC = 1)
 
 /datum/reagent/fluorine
 	name = "Fluorine"
@@ -425,7 +427,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRHAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -661,7 +663,7 @@
 /datum/reagent/foaming_agent/stabilized
 	name = "Stabilized metallic foam"
 	id = "stablefoam"
-	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame."
 	reagent_state = LIQUID
 	color = "#d4b8d1"
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -683,6 +685,7 @@
 	reagent_state = GAS
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_TOXIC = 3, PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()
@@ -777,7 +780,7 @@
 /datum/reagent/napalm/sticky
 	name = "Sticky-Napalm"
 	id = "stickynapalm"
-	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage."
 	reagent_state = LIQUID
 	color = "#f8e3b2"
 	burncolor = "#f8e3b2"
@@ -794,7 +797,7 @@
 /datum/reagent/napalm/high_damage
 	name = "High-Combustion Napalm Fuel"
 	id = "highdamagenapalm"
-	description = "A custom napalm mix, higher damage but not as sticky"
+	description = "A custom napalm mix, higher damage but not as sticky."
 	reagent_state = LIQUID
 	color = "#c51c1c"
 	burncolor = "#c51c1c"

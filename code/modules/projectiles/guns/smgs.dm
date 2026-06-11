@@ -196,6 +196,10 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	random_spawn_under = null
 
+/obj/item/weapon/gun/smg/m39/elite/no_lock
+	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. This one had its IFF electronics removed."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
 /obj/item/weapon/gun/smg/m39/corporate
 	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'

@@ -10,6 +10,7 @@
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_DOCTOR
+	var/job_check = list()
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
@@ -708,6 +709,9 @@
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
 		return
+	if(length(job_check) && !(user.job in job_check))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		return FALSE
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
 		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
 		return
@@ -737,6 +741,7 @@
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER
 	req_skill_level = SKILL_ENGINEER_TRAINED
+	job_check = list(JOB_ORDNANCE_TECH, JOB_WO_ORDNANCE_TECH)
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0

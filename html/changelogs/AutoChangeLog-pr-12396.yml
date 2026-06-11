@@ -1,0 +1,4 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - bugfix: "Hunted PMCs and Goons show up in the Hunted observer list properly now."

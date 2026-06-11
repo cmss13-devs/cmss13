@@ -1,0 +1,5 @@
+author: "Ordosian"
+delete-after: True
+changes:
+  - code_imp: "Acid Sac overlay code added."
+  - imageadd: "New Acid Runner sprites by DimDim."

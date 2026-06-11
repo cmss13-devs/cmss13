@@ -1211,7 +1211,7 @@ and you're good to go.
 		//    \\
 		//    \\
 //----------------------------------------------------------
-
+#define NO_ATTACKBY_HINT 2
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
 	set waitfor = FALSE
 
@@ -1448,7 +1448,10 @@ and you're good to go.
 	user.next_move = world.time //No click delay on PBs.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
-	if(flags_gun_features & GUN_BURST_FIRING || !able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+	var/able_to_fire_result = able_to_fire(user)
+	if(flags_gun_features & GUN_BURST_FIRING || able_to_fire_result != TRUE) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+		if(able_to_fire_result == NO_ATTACKBY_HINT)
+			return ATTACKBY_HINT_NO_AFTERATTACK
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	// Backend to make PB scale off of fire_delay instead of attack_speed
@@ -1763,10 +1766,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
 	if(world.time < guaranteed_delay_time)
-		return
+		return NO_ATTACKBY_HINT
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE))
 		to_chat(user, SPAN_WARNING("You can't fire the [name] yet!"))
-		return //We just put the gun up. Can't do it that fast
+		return NO_ATTACKBY_HINT
 
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))

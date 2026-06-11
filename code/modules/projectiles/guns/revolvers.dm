@@ -15,7 +15,7 @@
 	matter = list("metal" = 2000)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	gun_category = GUN_CATEGORY_HANDGUN
-	wield_delay = WEAPON_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
+	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
 	movement_onehanded_acc_penalty_mult = 3
 	has_empty_icon = FALSE
 	has_open_icon = TRUE

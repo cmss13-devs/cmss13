@@ -119,7 +119,7 @@
 	///Storing value for how long pulling a gun takes before you can use it
 	var/pull_time = 0
 	///How long between equiping and the end of the delay_stype penalty in tenths of seconds
-	var/pull_delay = WIELD_DELAY_NORMAL
+	var/pull_delay = WIELD_DELAY_FAST
 
 	///Determines what happens when you fire a gun before its wield or pull time has finished. By defualt it is extra scatter and an acc. malus.
 	var/delay_style = WEAPON_DELAY_SCATTER_AND_ACCURACY

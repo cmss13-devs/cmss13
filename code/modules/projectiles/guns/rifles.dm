@@ -922,7 +922,7 @@
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 	wield_delay = WIELD_DELAY_VERY_SLOW
-
+	pull_delay = WIELD_DELAY_NORMAL
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
@@ -1436,11 +1436,11 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
-
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 	wield_delay = WIELD_DELAY_VERY_SLOW
+	pull_delay = WIELD_DELAY_NORMAL
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
@@ -1999,6 +1999,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
+	pull_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	map_specific_decoration = TRUE
 	pixel_x = -5

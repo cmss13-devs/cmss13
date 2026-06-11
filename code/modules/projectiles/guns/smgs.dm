@@ -18,7 +18,6 @@
 	movement_onehanded_acc_penalty_mult = 4
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
-	pull_delay = WIELD_DELAY_FAST
 	delay_style = WEAPON_DELAY_SCATTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,

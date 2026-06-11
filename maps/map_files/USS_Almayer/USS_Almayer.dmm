@@ -48068,7 +48068,7 @@
 "cld" = (
 /obj/structure/sign/safety/six{
 	pixel_y = 24;
-	desc = "Semiotic Standard denoting the number six. It should not be plaaced next to a seven semiotic."
+	desc = "Semiotic Standard denoting the number six. It should not be placed next to a Seven semiotic."
 	},
 /obj/structure/sign/safety/seven{
 	pixel_y = 24;
@@ -90997,7 +90997,8 @@
 /obj/structure/filingcabinet/documentation/military_police/chestdrawer{
 	pixel_x = 8;
 	pixel_y = 16;
-	name = "documents cabinet"
+	name = "documents cabinet";
+	can_block_movement = 0
 	},
 /obj/structure/transmitter/no_dnd{
 	pixel_y = 24;

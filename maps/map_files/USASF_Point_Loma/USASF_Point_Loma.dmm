@@ -8732,8 +8732,8 @@
 "azA" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/revolver/cmb,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/gun/pistol,
 /turf/open/floor/darkbrown2/east,
 /area/point_loma/airbase/interior/cargo)
 "azB" = (
@@ -17795,13 +17795,8 @@
 /obj/structure/machinery/light/double{
 	dir = 8
 	},
-/obj/item/stack/sheet/metal/large_stack{
-	pixel_x = -4
-	},
-/obj/item/stack/sheet/plasteel/large_stack{
-	pixel_x = 3;
-	pixel_y = -9
-	},
+/obj/item/stack/sheet/metal/small_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/shiva/yellow/west,
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aZS" = (

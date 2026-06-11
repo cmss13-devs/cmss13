@@ -188,7 +188,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/firer, atom/shoot_from, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
+/obj/projectile/proc/fire_at(atom/target, atom/firer, atom/shot_from, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -197,7 +197,7 @@
 			if(move_turf)
 				forceMove(move_turf)
 		else
-			var/move_turf = get_turf(shoot_from)
+			var/move_turf = get_turf(shot_from)
 			if(move_turf)
 				forceMove(move_turf)
 	starting = get_turf(src)
@@ -212,11 +212,11 @@
 
 	if(firer && !(projectile_flags & PROJECTILE_SHRAPNEL))
 		permutated |= firer //Don't hit the shooter (firer)
-	if(shoot_from)
-		permutated |= get_atom_on_turf(shoot_from) //Don't hit the originating object
+	if(shot_from)
+		permutated |= get_atom_on_turf(shot_from) //Don't hit the originating object
 
 	permutated |= src //Don't try to hit self.
-	src.shot_from = shoot_from
+	src.shot_from = shot_from
 
 	setDir(get_dir(loc, target_turf))
 

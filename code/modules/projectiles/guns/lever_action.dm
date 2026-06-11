@@ -174,7 +174,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 				if(new_handful)
 					user.put_in_hands(new_handful)
 				playsound(user, reload_sound, 25, TRUE)
-				to_chat(user, SPAN_WARNING("You eject a round from the [src]'s chamber."))
+				to_chat(user, SPAN_WARNING("You eject a round from \the [src]'s chamber."))
 		else
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [src] is already empty."))

@@ -32,7 +32,7 @@
 	connected_turing = locate(/obj/structure/machinery/autodispenser) in range(tether_range, src)
 	if(connected_turing)
 		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
-		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Turing Dispenser connected."))
+		visible_message(SPAN_NOTICE("<b>\The [src] beeps:</b> Turing Dispenser connected."))
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
 	if(machine_processing)

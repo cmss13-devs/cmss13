@@ -365,7 +365,7 @@
 
 /obj/item/device/camera/oldcamera/attackby(obj/item/film, mob/user)
 	if(istype(film, /obj/item/device/camera_film))
-		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up the [src] to insert some film, oh well."))
+		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up \the [src] to insert some film, oh well."))
 		return
 
 /obj/item/device/broadcasting

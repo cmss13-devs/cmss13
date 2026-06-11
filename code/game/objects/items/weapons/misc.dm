@@ -141,14 +141,14 @@
 	var/javelin_readied = FALSE
 
 /obj/item/weapon/javelin/proc/raise_javelin(mob/user as mob)
-	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
+	user.visible_message(SPAN_RED("\The [user] raises \the [src]."))
 	javelin_readied = TRUE
 	item_state = "javelin_w"
 	force = MELEE_FORCE_TIER_7
 	throw_range = 6
 
 /obj/item/weapon/javelin/proc/lower_javelin(mob/user as mob)
-	user.visible_message(SPAN_BLUE("\The [user] lowers the [src]."))
+	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
 	javelin_readied = FALSE
 	item_state = "javelin"
 	force = MELEE_FORCE_TIER_4

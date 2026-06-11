@@ -425,13 +425,13 @@
 	var/gladius_readied = FALSE
 
 /obj/item/weapon/sword/gladius/proc/raise_gladius(mob/user as mob)
-	user.visible_message(SPAN_BLUE("\The [user] raises the [src]."))
+	user.visible_message(SPAN_BLUE("\The [user] raises \the [src]."))
 	gladius_readied = TRUE
 	item_state = "gladius_w"
 	force = MELEE_FORCE_TIER_8
 
 /obj/item/weapon/sword/gladius/proc/lower_gladius(mob/user as mob)
-	user.visible_message(SPAN_BLUE("\The [user] lowers the [src]."))
+	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
 	gladius_readied = FALSE
 	item_state = "gladius"
 	force = MELEE_FORCE_TIER_4

@@ -98,7 +98,7 @@ can cause issues with ammo types getting mixed up during the burst.
 				if(new_handful)
 					user.put_in_hands(new_handful)
 				playsound(user, reload_sound, 25, TRUE)
-				to_chat(user, SPAN_WARNING("You eject a shell from the [src]'s chamber."))
+				to_chat(user, SPAN_WARNING("You eject a shell from \the [src]'s chamber."))
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)

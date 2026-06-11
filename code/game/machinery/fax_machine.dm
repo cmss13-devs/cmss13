@@ -6,7 +6,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 #define FAX_DEPARTMENT_WY_HC "Weyland-Yutani Directorate"
 #define FAX_DEPARTMENT_HC "USCM High Command"
-#define FAX_DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
+#define FAX_DEPARTMENT_CMB "Local CMB Relay"
+#define FAX_DEPARTMENT_CMB_HC "CMB Incident Command Center, Local Operations"
 #define FAX_DEPARTMENT_PROVOST "USCM Provost Office"
 #define FAX_DEPARTMENT_PRESS "Various Press Organizations"
 #define FAX_DEPARTMENT_TWE "Three World Empire"
@@ -28,7 +29,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_NET_WY "Weyland-Yutani Secure Network"
 #define FAX_NET_WY_COL "Weyland-Yutani Public Network"
 #define FAX_NET_WY_HC "Weyland-Yutani Quantum Relay"
-#define FAX_NET_CMB "NC4 UA Federal Secure Network - CMB Relay"
+#define FAX_NET_CMB "CMB Encrypted Network"
+#define FAX_NET_CMB_HC "NC4 UA Federal Secure Network - CMB Relay"
 #define FAX_NET_TWE "TWE Encrypted Network"
 #define FAX_NET_TWE_HC "TWE Imperial Command Quantum Relay"
 #define FAX_NET_UPP "UPP Encrypted Network"
@@ -36,7 +38,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_NET_CLF "Peridia Encrypted Network"
 #define FAX_NET_CLF_HC "Peridia Quantum Relay"
 #define FAX_NET_PRESS_HC "Free Press Quantum Relay"
-#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC, FAX_NET_PRESS_HC)
+#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB_HC, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC, FAX_NET_PRESS_HC)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -126,6 +128,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			id_tag_prefix = "UA-MHC"
 		if(FAX_NET_CMB)
 			id_tag_prefix = "CMB-R"
+		if(FAX_NET_CMB_HC)
+			id_tag_prefix = "CMB-ICC" //Colonial Marshal Bureau Incident Command Center
 		if(FAX_NET_WY)
 			id_tag_prefix = "WY-SCN"//Weyland Yutani Secure Corporate Network
 		if(FAX_NET_WY_COL)
@@ -647,7 +651,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 					if(FAX_NET_USCM_HC)
 						stampoverlay.icon_state = "paper_stamp-uscm"
 						encrypted = TRUE
-					if(FAX_NET_CMB)
+					if(FAX_NET_CMB_HC)
 						stampoverlay.icon_state = "paper_stamp-cmb"
 						network = "NC4 UA Federal Secure Network."
 						encrypted = TRUE
@@ -688,9 +692,14 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
-	name = "\improper CMB Incident Command Center Fax Machine"
+	name = "\improper CMB Anchorpoint Office"
 	network = FAX_NET_CMB
 	department = FAX_DEPARTMENT_CMB
+
+/obj/structure/machinery/faxmachine/cmb/highcomm
+	name = "\improper CMB Incident Command Center Fax Machine"
+	network = FAX_NET_CMB_HC
+	department = FAX_DEPARTMENT_CMB_HC
 	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/corporate

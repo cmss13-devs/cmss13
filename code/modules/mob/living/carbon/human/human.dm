@@ -874,6 +874,17 @@
 
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
 		for (var/obj/limb/limb in src)
+			// Uncleaned amputations, while technically not life threatening because amputations
+			// don't bleed, cause an incredible amount of pain, usually enough to paincrit the injured human.
+			if (limb.status & LIMB_DESTROYED)
+				tag_severity = 2
+				break
+
+			// An argument could be made for cleaned and dressed amputations to be red tag, but at that point
+			// it no longer causes any pain and only applies the slowdown/missing hand, so nonlethal
+			if (limb.status & LIMB_AMPUTATED)
+				tag_severity = tag_severity > 1 ? tag_severity : 1
+
 			// Internal bleeding requires immediate surgery
 			var/internal_bleeding = FALSE
 			for(var/datum/effects/bleeding/internal/ib in limb.bleeding_effects_list)

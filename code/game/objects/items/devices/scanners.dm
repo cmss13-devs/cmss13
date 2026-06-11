@@ -109,7 +109,7 @@ K9 SCANNER
 			last_health_display.target_mob = target_mob
 
 		// Handle automatic holotags
-		if (user.client.prefs.auto_holotag >= BODYSCAN_TAG_PATIENTS && istype(target_mob, /mob/living/carbon/human))
+		if (user.client.prefs.auto_holotag >= ALWAYS_TAG_PATIENTS && istype(target_mob, /mob/living/carbon/human))
 			var/mob/living/carbon/human/human = target_mob
 			human.auto_assign_holotag(user, HOLOCARD_ACCURACY_HANDHELD)
 

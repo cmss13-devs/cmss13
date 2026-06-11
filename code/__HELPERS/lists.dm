@@ -397,22 +397,14 @@
 
 	return sortTim(distances, GLOBAL_PROC_REF(cmp_numeric_asc), TRUE)
 
-//Converts a bitfield to a list of numbers (or words if a wordlist is provided)
-/proc/bitfield2list(bitfield = 0, list/wordlist)
-	var/list/r = list()
-	if(islist(wordlist))
-		var/max = min(length(wordlist),16)
-		var/bit = 1
-		for(var/i=1, i<=max, i++)
-			if(bitfield & bit)
-				r += wordlist[i]
-			bit = bit << 1
-	else
-		for(var/bit=1, bit<=4194303, bit = bit << 1)
-			if(bitfield & bit)
-				r += bit
-
-	return r
+//Converts a bitfield to a list of numbers
+/proc/bitfield2list(bitfield = 0)
+	var/list/result = list()
+	for(var/i = 0, i < 24, i++)
+		var/bit = 1 << i
+		if(bitfield & bit)
+			result += bit
+	return result
 
 /proc/count_by_type(list/L, type)
 	var/i = 0

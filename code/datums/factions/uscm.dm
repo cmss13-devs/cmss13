@@ -269,7 +269,7 @@
 				marine_rk = "wo_ro"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
-			// Check squad marines here too, for the unique onesc
+			// Check squad marines here too, for the unique ones
 			if(JOB_SQUAD_ENGI, JOB_WO_SQUAD_ENGINEER)
 				marine_rk = "engi"
 			if(JOB_SQUAD_MEDIC, JOB_WO_SQUAD_MEDIC)

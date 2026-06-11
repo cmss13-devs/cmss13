@@ -2098,9 +2098,9 @@
 	new_human.change_real_name(new_human, "Unknown")
 
 /datum/equipment_preset/synth/usasf/corpse
-	name = "USASF Synthetic corpse"
+	name = "USASF Synthetic Corpse"
 	corpse = TRUE
 
 /datum/equipment_preset/synth/working_joe/corpse
-	name = "Corpse working joe"
+	name = "Corpse Working Joe"
 	corpse = TRUE

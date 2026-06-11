@@ -526,7 +526,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "ebarrel"
 	attach_icon = "ebarrel_a"
 	hud_offset_mod = -3
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 
 /obj/item/attachable/extended_barrel/New()
 	..()
@@ -543,7 +543,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "ebarrel_vented_a"
 	pixel_shift_y = 15
 	hud_offset_mod = -3
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 
 /obj/item/attachable/extended_barrel/vented/Initialize(mapload, ...)
 	. = ..()
@@ -1035,7 +1035,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	wield_delay_mod = WIELD_DELAY_MIN
+	wield_delay_mod = WEAPON_DELAY_MIN
 
 /obj/item/attachable/flashlight/grip/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
@@ -1103,7 +1103,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "r4t-sling"
 	attach_icon = "r4t-sling_a"
 	slot = "under"
-	wield_delay_mod = WIELD_DELAY_VERY_FAST
+	wield_delay_mod = WEAPON_DELAY_VERY_FAST
 	retrieval_slot = WEAR_BACK
 
 /obj/item/attachable/magnetic_harness/lever_sling/New()
@@ -1179,7 +1179,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc_lore = "An intermediate-power Armat scope designated as the AN/PVQ-31 4x Optic. Fairly basic, but both durable and functional... enough. 780 meters is about as far as one can push the 10x24mm cartridge, really."
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/scope
 	var/zoom_offset = 11
@@ -1457,7 +1457,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A powerful yet obtrusive sight for the M707 anti-materiel rifle." // Can't be seen normally, anyway
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/vulture_scope
 	/// Weakref to the user of the scope
@@ -1947,7 +1947,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "If you can read this, someone screwed up. Go GitHub this and bug a coder."
 	icon_state = "stock"
 	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_VERY_FAST
+	wield_delay_mod = WEAPON_DELAY_VERY_FAST
 	melee_mod = 5
 	size_mod = 2
 	pixel_shift_x = 30
@@ -2001,7 +2001,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
 	slot = "stock"
 	icon_state = "stock"
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	pixel_shift_x = 32
 	pixel_shift_y = 15
 	hud_offset_mod = 6 //*Very* long sprite.
@@ -2036,7 +2036,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	wield_delay_mod = WEAPON_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
@@ -2053,7 +2053,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = 0
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	select_gamemode_skin(type)
 
 
@@ -2070,7 +2070,7 @@ Defined in conflicts.dm of the #defines folder.
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
 		select_gamemode_skin(type)
-		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+		wield_delay_mod = WEAPON_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
 		accuracy_mod = 0
@@ -2083,7 +2083,7 @@ Defined in conflicts.dm of the #defines folder.
 		aim_speed_mod = 0
 		hud_offset_mod = 5
 		select_gamemode_skin(type)
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
@@ -2143,7 +2143,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A chunky piece of wood coated in varnish and age."
 	slot = "stock"
 	icon_state = "db_stock"
-	wield_delay_mod = WIELD_DELAY_NONE//part of the gun's base stats
+	wield_delay_mod = WEAPON_DELAY_NONE//part of the gun's base stats
 	flags_attach_features = NO_FLAGS
 	pixel_shift_x = 32
 	pixel_shift_y = 15
@@ -2171,7 +2171,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper R4T scouting stock"
 	desc = "A wooden stock designed for the R4T lever-action rifle, designed to withstand harsh environments. It increases weapon stability but really gets in the way."
 	icon_state = "r4t-stock"
-	wield_delay_mod = WIELD_DELAY_SLOW
+	wield_delay_mod = WEAPON_DELAY_SLOW
 	hud_offset_mod = 6
 
 /obj/item/attachable/stock/r4t/New()
@@ -2194,7 +2194,7 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = ATTACH_REMOVABLE | ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 
@@ -2207,7 +2207,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	delay_mod = 0
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	//it makes stuff much worse when one handed
@@ -2225,7 +2225,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
-		wield_delay_mod = WIELD_DELAY_FAST
+		wield_delay_mod = WEAPON_DELAY_FAST
 		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -2240,7 +2240,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 3
-		wield_delay_mod = WIELD_DELAY_NONE
+		wield_delay_mod = WEAPON_DELAY_NONE
 
 	select_gamemode_skin(type)
 	gun.recalculate_attachment_bonuses()
@@ -2264,7 +2264,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A fixed polymer stock designed exclusively for the M10 Auto Pistol, improving stability during sustained fire."
 	icon_state = "m10_stock"
 	attach_icon = "m10_stock_a"
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	pixel_shift_x = 40
 	pixel_shift_y = 14
 	hud_offset_mod = 3
@@ -2305,7 +2305,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
 	icon_state = "boomslang-stock"
-	wield_delay_mod = WIELD_DELAY_NORMAL
+	wield_delay_mod = WEAPON_DELAY_NORMAL
 	hud_offset_mod = 6
 
 /obj/item/attachable/stock/xm88/New()
@@ -2362,7 +2362,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "riflestock_a"
 	pixel_shift_x = 40
 	pixel_shift_y = 10
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	hud_offset_mod = 3
 
 /obj/item/attachable/stock/rifle/New()
@@ -2392,7 +2392,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	wield_delay_mod = WEAPON_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
@@ -2409,7 +2409,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = 0
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 
 /obj/item/attachable/stock/rifle/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -2425,7 +2425,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 5
 		icon_state = "m41_folding_on"
 		attach_icon = "m41_folding_a_on"
-		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+		wield_delay_mod = WEAPON_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
 		accuracy_mod = 0
@@ -2439,7 +2439,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 3
 		icon_state = "m41_folding"
 		attach_icon = "m41_folding_a"
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
@@ -2456,7 +2456,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	wield_delay_mod = WEAPON_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
@@ -2473,7 +2473,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = 0
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 
 /obj/item/attachable/stock/rifle/collapsible/ak4047/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -2489,7 +2489,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 5
 		icon_state = "ak4047_folding_on"
 		attach_icon = "ak4047_folding_a_on"
-		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+		wield_delay_mod = WEAPON_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
 		accuracy_mod = 0
@@ -2503,7 +2503,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 3
 		icon_state = "ak4047_folding"
 		attach_icon = "ak4047_folding_a"
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
@@ -2520,7 +2520,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = -2
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	wield_delay_mod = WEAPON_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
@@ -2533,7 +2533,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = 0
 	scatter_mod = 0
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 
 /obj/item/attachable/stock/rifle/collapsible/m41ae2/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -2545,7 +2545,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = -1
 		icon_state = "m41ae2_folding_on"
 		attach_icon = "m41ae2_folding_a_on"
-		wield_delay_mod = WIELD_DELAY_SLOW
+		wield_delay_mod = WEAPON_DELAY_SLOW
 	else
 		accuracy_mod = 0
 		recoil_mod = 0
@@ -2554,7 +2554,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = -3
 		icon_state = "m41ae2_folding"
 		attach_icon = "m41ae2_folding_a"
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
@@ -2566,7 +2566,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "m16_folding"
 	collapsible = TRUE
 	stock_activated = FALSE
-	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	wield_delay_mod = WEAPON_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
@@ -2582,7 +2582,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = 0
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 
 /obj/item/attachable/stock/xm177/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -2593,7 +2593,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 5
 		icon_state = base_icon
 		attach_icon = "[base_icon]_on"
-		wield_delay_mod = WIELD_DELAY_VERY_FAST
+		wield_delay_mod = WEAPON_DELAY_VERY_FAST
 
 	else
 		accuracy_mod = 0
@@ -2607,7 +2607,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 3
 		icon_state = base_icon
 		attach_icon = base_icon
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
@@ -2623,7 +2623,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A specialized stock designed for XM51 breaching shotguns. Helps the user absorb the recoil of the weapon while also reducing scatter. Integrated mechanisms inside the stock allow use of a devastating two-shot burst. This comes at a cost of the gun becoming too unwieldy to holster, worse handling and mobility."
 	icon_state = "xm51_stock"
 	attach_icon = "xm51_stock_a"
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	hud_offset_mod = 3
 	melee_mod = 10
 
@@ -2669,7 +2669,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
 	icon_state = "mod88_stock"
 	attach_icon = "mod88_stock_a"
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 4
 	size_mod = 2
@@ -2699,7 +2699,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "l42stock_a"
 	pixel_shift_x = 37
 	pixel_shift_y = 8
-	wield_delay_mod = WIELD_DELAY_NORMAL
+	wield_delay_mod = WEAPON_DELAY_NORMAL
 	hud_offset_mod = 2
 
 /obj/item/attachable/stock/carbine/New()
@@ -2720,7 +2720,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "abr40stock"
 	attach_icon = "abr40stock_a"
 	melee_mod = 6
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 
 /obj/item/attachable/stock/carbine/wood/Initialize() // The gun is meant to be effectively unusable without the attachment.
 	. = ..()
@@ -2744,7 +2744,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper L42A3 marksman stock"
 	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
 
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
@@ -2756,7 +2756,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "smgstock_a"
 	pixel_shift_x = 42
 	pixel_shift_y = 11
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	hud_offset_mod = 5
 
 /obj/item/attachable/stock/smg/New()
@@ -2792,7 +2792,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	delay_mod = 0
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
@@ -2811,7 +2811,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
-		wield_delay_mod = WIELD_DELAY_FAST
+		wield_delay_mod = WEAPON_DELAY_FAST
 		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -2868,7 +2868,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_8
 	recoil_mod = RECOIL_AMOUNT_TIER_2
 	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NORMAL//you shouldn't be wielding it anyways
+	wield_delay_mod = WEAPON_DELAY_NORMAL//you shouldn't be wielding it anyways
 
 /obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/applying_gun)
 	if(stock_activated)
@@ -2906,7 +2906,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "44stock"
 	pixel_shift_x = 35
 	pixel_shift_y = 19
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
 	hud_offset_mod = 7 //Extremely long.
@@ -3817,7 +3817,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	wield_delay_mod = WIELD_DELAY_VERY_FAST
+	wield_delay_mod = WEAPON_DELAY_VERY_FAST
 	burst_scatter_mod = -2
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
@@ -3829,7 +3829,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "angledgrip"
 	attach_icon = "angledgrip_a"
-	wield_delay_mod = -WIELD_DELAY_FAST
+	wield_delay_mod = -WEAPON_DELAY_FAST
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20
@@ -3923,7 +3923,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 
 	delay_mod = FIRE_DELAY_TIER_11
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
@@ -4164,7 +4164,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 
 	delay_mod = FIRE_DELAY_TIER_11
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_NONE
 	recoil_mod = RECOIL_AMOUNT_TIER_5

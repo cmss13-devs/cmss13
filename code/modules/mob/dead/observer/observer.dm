@@ -385,8 +385,25 @@
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
 		view_tacmaps()
-	if(href_list[NOTIFY_HUMAN_HUD_ORDER])
-		play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
+	if(href_list["humanhudorder"])
+		var/announcement_title = "???"
+		var/sound_alert	= 'sound/effects/radiostatic.ogg'
+		var/text = href_list["announcement_title"]
+		var/mob/living/carbon/human/human_owner = locate(href_list["owner"]) in GLOB.mob_list
+		var/override_color = html_decode(href_list["override_color_portrait"])
+		if(human_owner)
+			if(human_owner.assigned_squad)
+				if(human_owner.assigned_fireteam)
+					announcement_title = "[human_owner.assigned_fireteam] Announcement"
+				else
+					announcement_title = "Squad [human_owner.assigned_squad.name] Announcement"
+				sound_alert = 'sound/misc/notice2.ogg'
+			else
+				sound_alert = 'sound/effects/sos-morse-code.ogg'
+				announcement_title = "[human_owner.job]'s Announcement"
+		if((isobserver(src) && client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			playsound_client(client, sound_alert, 35, channel = CHANNEL_ANNOUNCEMENTS)
+		play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, human_owner), override_color)
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)

@@ -114,7 +114,7 @@
  * Clicks are forwarded to master
  * Override makes it so the alert is not replaced until cleared by a clear_alert with clear_override, and it's used for hallucinations.
  */
-/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE)
+/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE, portrait_announce_parameters)
 	if(!category || QDELETED(src))
 		return
 
@@ -227,6 +227,7 @@
 	timeout = 15 SECONDS
 	var/atom/target = null
 	var/action = NOTIFY_JUMP
+	var/list/portrait_announce_parameters
 
 /atom/movable/screen/alert/notify_action/Click()
 	var/mob/dead/observer/ghost_user = usr
@@ -249,7 +250,10 @@
 			ghost_user.join_as_alien()
 		if(NOTIFY_USCM_TACMAP)
 			ghost_user.view_tacmaps()
-
+		if(NOTIFY_HUMAN_HUD_ORDER)
+			var/href_list = params2list(portrait_announce_parameters)
+			href_list["override_color_portrait"] = splittext(href_list["override_color_portrait"], "'")[1]
+			usr.Topic(null, href_list)
 
 /atom/movable/screen/alert/multi_z
 	name = "Look Up"

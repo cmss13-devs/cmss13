@@ -97,18 +97,19 @@
 	var/atom/movable/holding_movable = new
 	holding_movable.appearance_flags = APPEARANCE_UI|KEEP_TOGETHER
 	holding_movable.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/mutable_appearance/mugshot = mutable_appearance()
 	if(!mugshottee)
 		debug_log("Mob based HUD portrait alert was called without a mob.")
-		return
-	var/mutable_appearance/mugshot = mutable_appearance()
-	mugshot.appearance = mugshottee.appearance
+		//return
+		mugshot.appearance = image('icons/mob/mob.dmi', "spook")
+	else
+		mugshot.appearance = mugshottee.appearance
 	mugshot.pixel_x = image_to_play_offset_x + 17
 	mugshot.pixel_y = image_to_play_offset_y - 1 //scale shittery meant this didn't line up exactly without the -1
 	mugshot.layer = layer+0.1
 	mugshot.plane = plane
 	mugshot.transform = matrix().Scale(3) //only need to scale once, although this can actually be after as well alpha filter stuff, makes no diff. we use a NEW matrix to also fix things like people lying down
 	mugshot.dir = SOUTH
-
 	var/mutable_appearance/alphafilter = mutable_appearance('icons/effects/alphacolors.dmi', "announcement")
 	alphafilter.appearance_flags = APPEARANCE_UI
 	alphafilter.render_target = "*mugshots"
@@ -132,23 +133,24 @@
 	mugshot_name.maptext_y = -1
 	mugshot_name.plane = plane
 	mugshot_name.layer = layer+0.3
-
-	var/cleaned_realname = mugshottee.real_name
-	var/firstname = copytext(cleaned_realname, 1, findtext(cleaned_realname, " "))
-	var/lastname = trim(copytext(cleaned_realname, findtext(cleaned_realname, " ")))
-	var/nametouse
-	if(length(lastname) >= 1 && length(lastname) <= MAX_NON_COMMTITLE_LEN)
-		nametouse = lastname
-	else if(length(firstname) >= 1 && length(firstname) <= MAX_NON_COMMTITLE_LEN)
-		nametouse = firstname
-	else if(length(cleaned_realname) >= 1)
-		if(length(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
-			//cleans too long clone names down to a better fitting length
-			cleaned_realname = replacetext(cleaned_realname, regex(@"CS-.-"), "")
-		nametouse = copytext(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
-	else
-		nametouse = "UNKNOWN"
-	var/user_name = trim(mugshottee.comm_title + " " + nametouse)
+	var/user_name = "UNKNOWN"
+	if(mugshottee)
+		var/cleaned_realname = mugshottee.real_name
+		var/firstname = copytext(cleaned_realname, 1, findtext(cleaned_realname, " "))
+		var/lastname = trim(copytext(cleaned_realname, findtext(cleaned_realname, " ")))
+		var/nametouse
+		if(length(lastname) >= 1 && length(lastname) <= MAX_NON_COMMTITLE_LEN)
+			nametouse = lastname
+		else if(length(firstname) >= 1 && length(firstname) <= MAX_NON_COMMTITLE_LEN)
+			nametouse = firstname
+		else if(length(cleaned_realname) >= 1)
+			if(length(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
+				//cleans too long clone names down to a better fitting length
+				cleaned_realname = replacetext(cleaned_realname, regex(@"CS-.-"), "")
+			nametouse = copytext(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
+		else
+			nametouse = "UNKNOWN"
+		user_name = trim(mugshottee.comm_title + " " + nametouse)
 	mugshot_name.maptext = "<span class='langchat' style=font-size:6px;text-align:center>[user_name]</span>"
 
 	holding_movable.overlays += mugshot_name

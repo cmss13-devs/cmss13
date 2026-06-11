@@ -1,5 +1,5 @@
 #define MAX_COMMAND_MESSAGE_LEN 120
-#define COOLDOWN_HUD_LENGTH 60
+#define COOLDOWN_HUD_LENGTH 1200
 
 /atom/movable/screen/text/screen_text/command_order
 	maptext_height = 64
@@ -30,14 +30,19 @@
 	. = ..()
 	if(!.)
 		return
-	if(owner.stat != CONSCIOUS)
-		return FALSE
-	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, SPAN_WARNING("You have to wait [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(owner, COOLDOWN_HUD_ORDER))] until you can send another HUD announcement!"))
-		return FALSE
-	if(!(HAS_TRAIT(owner, TRAIT_LEADERSHIP)))
+
+	if(owner.is_mob_incapacitated())
 		return FALSE
 
+	if(!(HAS_TRAIT(owner, TRAIT_LEADERSHIP)))
+		return FALSE
+	var/mob/living/carbon/human/human_owner = owner
+	var/obj/structure/machinery/computer/overwatch/comp = locate() in view(7,owner)
+	var/obj/item/device/cotablet/tablet = locate(/obj/item/device/cotablet) in owner.contents
+
+	if(!human_owner.assigned_squad && !comp && !tablet)
+		to_chat(owner, SPAN_WARNING("You need to have access to an overwatch console or device!"))
+		return FALSE
 
 /datum/action/innate/message_squad/New(Target, override_icon_state)
 	. = ..()
@@ -68,7 +73,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 
 	for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
 		if(overwatched_squad.overwatch_officer == owner)
-			if(overwatched_squad.minimap_color)
+			if(overwatched_squad.chat_color)
 				squad_colors += overwatched_squad.chat_color
 
 	// just gives white
@@ -187,17 +192,17 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 			to_chat(owner, SPAN_WARNING("You need to have a radio headset with the command frequency"))
 			return
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
-	S_TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, COOLDOWN_HUD_LENGTH)
-	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), COOLDOWN_HUD_LENGTH + 1, TIMER_STOPPABLE)
-	//alert_receivers += GLOB.observer_list
+	enter_cooldown(COOLDOWN_HUD_LENGTH)
+	alert_receivers += GLOB.observer_list
 
 	//if(GLOB.radio_communication_clarity < 100)
 	//	text = stars(text, GLOB.radio_communication_clarity)
 	for(var/mob/mob_receiver in alert_receivers)
-		if((isobserver(mob_receiver) && mob_receiver.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+		if((isobserver(mob_receiver) && mob_receiver.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || isliving(mob_receiver))
 			playsound_client(mob_receiver.client, sound_alert, 35, channel = CHANNEL_ANNOUNCEMENTS)
-		mob_receiver.play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
-	notify_ghosts(header = "HUD Message", message = "[human_owner] has given a HUD announcement", source = human_owner, action = NOTIFY_HUMAN_HUD_ORDER)
+		if(!isobserver(mob_receiver))
+			mob_receiver.play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
+	notify_ghosts(header = "HUD Message", message = "[human_owner] has given a HUD announcement", source = human_owner, action = NOTIFY_HUMAN_HUD_ORDER, announcement_title = text, portrait_owner = human_owner, override_color_portrait = override_color)
 /atom/movable/screen/text/screen_text/command_order/tutorial
 	letters_per_update = 4 // overall, pretty fast while not immediately popping in
 	play_delay = 0.1

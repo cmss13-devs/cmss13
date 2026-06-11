@@ -1767,7 +1767,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 	if(world.time < guaranteed_delay_time)
 		return NO_ATTACKBY_HINT
-	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE))
+	if((world.time < wield_time && (delay_style & WEAPON_DELAY_NO_FIRE)) || (world.time < pull_time) && (delay_style & (WEAPON_DELAY_NO_FIRE|WEAPON_DELAY_NO_FIRE_PULL_ONLY)))
 		to_chat(user, SPAN_WARNING("You can't fire the [name] yet!"))
 		return NO_ATTACKBY_HINT
 

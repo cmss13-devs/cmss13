@@ -22,7 +22,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
-	delay_style = WEAPON_DELAY_NO_FIRE
+	delay_style = WEAPON_DELAY_NO_FIRE_PULL_ONLY|WEAPON_DELAY_SCATTER_AND_ACCURACY
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"

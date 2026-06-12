@@ -43,15 +43,15 @@
 	tier = 2
 	organ_value = 5000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/build_tunnel,
-		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/onclick/build_tunnel/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen,
 		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/macro_one, // Macro 1
-		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 2 // Shared macro with Conditor
+		/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph, // Macro 2 // Shared macro with Conditor
 		/datum/action/xeno_action/onclick/choose_resin/pathogen/not_primary,
 		/datum/action/xeno_action/activable/secrete_resin/pathogen, // Macro 3 // Shared macro with Conditor
 		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 4
@@ -100,7 +100,7 @@
 
 	return
 
-/datum/action/xeno_action/activable/pounce/runner/neomorph
+/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph
 	xeno_cooldown = 5 SECONDS
 	knockdown = TRUE // Should we knock down the target?
 	knockdown_duration = 1
@@ -111,4 +111,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/headbite/neomorph
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	ability_primacy = XENO_PRIMARY_ACTION_4

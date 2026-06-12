@@ -40,15 +40,15 @@
 	tier = 3
 	organ_value = 8000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3/brute,
 		/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute, // Macro 1
-		/datum/action/xeno_action/activable/oppressor_punch, // Macro 2
-		/datum/action/xeno_action/onclick/crusher_shield, // Macro 3
+		/datum/action/xeno_action/activable/oppressor_punch/pathogen, // Macro 2
+		/datum/action/xeno_action/onclick/crusher_shield/pathogen, // Macro 3
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -81,7 +81,7 @@
 	make_pathogen_speaker()
 	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 
-/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute
+/datum/action/xeno_action/activable/tail_stab/pathogen/tier3/brute
 	name = "Arm Whack"
 	blunt_stab = TRUE
 	stab_range = 2

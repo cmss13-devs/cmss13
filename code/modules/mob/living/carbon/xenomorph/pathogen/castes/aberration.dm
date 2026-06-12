@@ -35,16 +35,16 @@
 	icon_size = 64
 	icon_state = "Aberration Walking"
 	plasma_types = list()
-	pixel_x = -8
-	old_x = -8
+	pixel_x = -16
+	old_x = -16
 	tier = 1
 	organ_value = 30000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/onclick/feralrush, // Macro 1
 		/datum/action/xeno_action/onclick/predalien_roar/aberration, //Macro 2
 		/datum/action/xeno_action/activable/feral_smash, //Macro 3
@@ -142,4 +142,6 @@ You must still listen to the Overmind.
 	return original_damage + kills * 2.5
 
 /datum/action/xeno_action/onclick/predalien_roar/aberration
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	predalien_roar = list('sound/pathogen_creatures/pathogen_roar2.ogg')

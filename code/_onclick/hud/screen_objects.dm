@@ -113,6 +113,8 @@
 /atom/movable/screen/action_button/hide_toggle/proc/update_button_icon(mob/user)
 	if(isyautja(user))
 		base_icon = "pred"
+	else if(is_pathogen_creature(user))
+		base_icon = "pathogen"
 	else if(isxeno(user))
 		base_icon = "xeno"
 	else

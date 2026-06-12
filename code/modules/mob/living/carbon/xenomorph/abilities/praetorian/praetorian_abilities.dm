@@ -139,6 +139,9 @@
 	// Configurables
 	var/damage = 20
 
+/datum/action/xeno_action/activable/oppressor_punch/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 
 // This one is more tightly coupled than I'd like, but oh well
 // unused

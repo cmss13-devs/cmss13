@@ -205,7 +205,7 @@
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/eye,
-		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
 		/datum/action/xeno_action/activable/queen_heal/pathogen_mind, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
@@ -216,7 +216,7 @@
 		)
 
 	var/list/overmind_abilities_strong = list(
-		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
 		/datum/action/xeno_action/onclick/blight_wave/overmind,
 		// /datum/action/xeno_action/activable/queen_heal/pathogen_mind gets strengthened by the proc too, allowing cross-map heals.
 		)
@@ -411,4 +411,6 @@
 
 /datum/action/xeno_action/activable/queen_heal/pathogen_mind
 	name = "Heal Pathogen Creature (600)"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	cross_map_heal = TRUE

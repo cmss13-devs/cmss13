@@ -44,11 +44,11 @@
 	tier = 3
 	organ_value = 8000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/activable/pounce/charge, // Macro 1
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/cyclone, // Macro 3
@@ -92,7 +92,9 @@
 
 /datum/action/xeno_action/activable/cyclone
 	name = "Cyclone"
-	action_icon_state = "spin_slash"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+	action_icon_state = "cyclone"
 	macro_path = /datum/action/xeno_action/verb/verb_cyclone
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -237,7 +239,9 @@
 
 /datum/action/xeno_action/activable/mycotoxin
 	name = "Mycotoxin Injection (100)"
-	action_icon_state = "mycotoxin"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+	action_icon_state = "inject_walker"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 2 SECONDS
 	xeno_cooldown = 3 MINUTES

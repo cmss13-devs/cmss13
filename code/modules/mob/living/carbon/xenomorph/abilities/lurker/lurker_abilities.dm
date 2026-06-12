@@ -11,6 +11,10 @@
 	freeze_time = 15
 	can_be_shield_blocked = TRUE
 
+/datum/action/xeno_action/activable/pounce/lurker/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
 	action_icon_state = "lurker_invisibility"

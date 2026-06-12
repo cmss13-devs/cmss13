@@ -57,7 +57,7 @@
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/emit_pheromones/overmind,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen/overmind,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/activable/queen_heal/pathogen_mind, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro

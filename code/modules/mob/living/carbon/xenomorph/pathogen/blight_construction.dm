@@ -8,6 +8,8 @@
 
 /datum/action/xeno_action/activable/place_pathogen_structure
 	name = "Order Pathogen Construction (400)"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "morph_resin"
 	macro_path = /datum/action/xeno_action/verb/place_pathogen_structure
 	action_type = XENO_ACTION_CLICK

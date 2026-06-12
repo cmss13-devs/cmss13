@@ -38,12 +38,12 @@
 	tier = 2
 	organ_value = 5000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/lurker, // Macro 1
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen,
+		/datum/action/xeno_action/activable/pounce/lurker/pathogen, // Macro 1
 		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
@@ -165,6 +165,11 @@
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
+
+/datum/action/xeno_action/onclick/lurker_invisibility/blight
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+	action_icon_state = "invisibility"
 
 /datum/action/xeno_action/onclick/lurker_invisibility/blight/invisibility_off(refund_multiplier = 0.0)
 	var/mob/living/carbon/xenomorph/xeno = owner

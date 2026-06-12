@@ -33,25 +33,25 @@
 	caste_type = PATHOGEN_CREATURE_MATRIARCH
 	name = PATHOGEN_CREATURE_MATRIARCH
 	desc = "Nothing will survive..."
-	icon_size = 48
+	icon_size = 64
 	icon_state = "Matriarch Walking"
 	plasma_types = list()
-	pixel_x = -16
-	old_x = -16
+	pixel_x = -29
+	old_x = -29
 	tier = 4
 	organ_value = 50000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/activable/mycotoxin/matriarch,
-		/datum/action/xeno_action/onclick/shatter, // Macro 1
-		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
-		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
+		/datum/action/xeno_action/onclick/shatter/matriarch, // Macro 1
+		/datum/action/xeno_action/activable/rav_spikes/matriarch, // Macro 2
+		/datum/action/xeno_action/onclick/spike_shed/matriarch, // Macro 3
 		/datum/action/xeno_action/onclick/blight_wave, // Macro 4
 		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
@@ -211,6 +211,8 @@
 /// Screech which puts out lights in a 7 tile radius, slows and dazes.
 /datum/action/xeno_action/onclick/blight_wave
 	name = "Blight Wave"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "screech"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
 	xeno_cooldown = 90 SECONDS
@@ -429,6 +431,8 @@
 
 /datum/action/xeno_action/onclick/shatter
 	name = "Shatter"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "butchering"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1

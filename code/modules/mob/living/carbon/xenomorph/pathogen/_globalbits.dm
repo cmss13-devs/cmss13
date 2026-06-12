@@ -117,6 +117,8 @@
 
 /datum/action/xeno_action/onclick/plant_weeds/pathogen
 	name = "Spread Blight (100)"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "plant_weeds"
 	plasma_cost = 100
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
@@ -216,6 +218,8 @@
 
 /datum/action/xeno_action/onclick/blight_slash
 	name = "Blight Slash"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_blight_slash
 	action_type = XENO_ACTION_CLICK

@@ -49,19 +49,19 @@
 	tier = 3
 	organ_value = 5000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen,
 		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
-		/datum/action/xeno_action/onclick/build_tunnel,
-		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/build_tunnel/pathogen,
+		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/macro_one, // Macro 1
-		/datum/action/xeno_action/activable/xeno_spit/macro_two, // Macro 2
+		/datum/action/xeno_action/activable/xeno_spit/conditor, // Macro 2
 		/datum/action/xeno_action/onclick/choose_resin/pathogen/not_primary,
 		/datum/action/xeno_action/activable/secrete_resin/pathogen/thick, // Macro 3 // Shared macro with Neomorph
-		/datum/action/xeno_action/onclick/shift_spits/macro_four, // Macro 4
+		/datum/action/xeno_action/onclick/shift_spits/conditor, // Macro 4
 		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
 	)
 	inherent_verbs = list(

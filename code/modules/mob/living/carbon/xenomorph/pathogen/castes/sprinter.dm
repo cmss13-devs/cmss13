@@ -50,15 +50,15 @@
 	mob_size = MOB_SIZE_XENO_SMALL
 
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/runner, // Macro 1
-		/datum/action/xeno_action/activable/runner_skillshot, // Macro 2
-		/datum/action/xeno_action/onclick/toggle_long_range/runner, // Macro 3
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen,
+		/datum/action/xeno_action/onclick/xenohide/pathogen,
+		/datum/action/xeno_action/activable/pounce/runner/pathogen, // Macro 1
+		/datum/action/xeno_action/activable/runner_skillshot/sprinter, // Macro 2
+		/datum/action/xeno_action/onclick/toggle_long_range/runner/sprinter, // Macro 3
 		//, // Macro 4
 		//, // Macro 5
 	)

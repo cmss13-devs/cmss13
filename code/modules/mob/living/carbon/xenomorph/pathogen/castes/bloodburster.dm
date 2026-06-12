@@ -55,12 +55,12 @@
 	mob_size = MOB_SIZE_XENO_VERY_SMALL
 
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/runner, // Macro 1
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen,
+		/datum/action/xeno_action/onclick/xenohide/pathogen,
+		/datum/action/xeno_action/activable/pounce/runner/pathogen, // Macro 1
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

@@ -41,11 +41,11 @@
 	tier = 3
 	organ_value = 8000
 	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/onclick/toggle_seethrough/pathogen,
+		/datum/action/xeno_action/onclick/xeno_resting/pathogen,
+		/datum/action/xeno_action/onclick/release_haul/pathogen,
+		/datum/action/xeno_action/watch_xeno/pathogen,
+		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/venator_savage, // Macro 3
@@ -78,16 +78,16 @@
 	bubble_icon = "pathogenroyal"
 	fire_immunity = FIRE_VULNERABILITY
 
-/datum/action/xeno_action/activable/tail_stab/pathogen_t3
+/datum/action/xeno_action/activable/tail_stab/pathogen/tier3
 	name = "Spike Lash"
 	stab_range = 3
 
-/datum/action/xeno_action/activable/tail_stab/pathogen_t3/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
+/datum/action/xeno_action/activable/tail_stab/pathogen/tier3/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)
 
-/datum/action/xeno_action/activable/tail_stab/pathogen_t3/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/pathogen/tier3/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -147,6 +147,8 @@
 
 /datum/action/xeno_action/activable/venator_abduct
 	name = "Tentacle Grab"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "abduct"
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
@@ -295,6 +297,8 @@
 
 /datum/action/xeno_action/activable/venator_savage
 	name = "Savage"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "rav_scissor_cut"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -388,6 +392,8 @@
 	return ..()
 
 /datum/action/xeno_action/activable/prae_impale/venator
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 

@@ -22,7 +22,7 @@
 	overmind.change_form()
 	return ..()
 
-/datum/action/xeno_action/onclick/emit_pheromones/overmind/can_use_action(silent = FALSE, override_flags)
+/datum/action/xeno_action/onclick/emit_pheromones/pathogen/overmind/can_use_action(silent = FALSE, override_flags)
 	if(owner?.status_flags & INCORPOREAL)
 		return FALSE
 	return ..()

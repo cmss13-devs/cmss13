@@ -112,7 +112,7 @@
 // Holocard defines
 #define HOLOCARD_ACCURACY_HANDHELD 0
 #define HOLOCARD_ACCURACY_MANUAL 1
-#define HOLOCARD_ACCURACY_BODYSCANNER 2 // Bodyscanners will always be able to set the correct holotag
+#define HOLOCARD_ACCURACY_BODYSCANNER 2 //! Bodyscanners will always be able to set the correct holotag
 
 // ORDERS
 #define COMMAND_ORDER_RANGE 7

@@ -874,12 +874,12 @@
 			tag_severity = 1 // Severity could only ever be 0 at this point, safe to directly assign
 
 		// Overdoses are life-threatening
-		for (var/datum/reagent/reagent in src.reagents.reagent_list)
+		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
 			if (reagent.volume > reagent.overdose)
 				tag_severity = 2
 
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
-		for (var/obj/limb/limb in src)
+		for (var/obj/limb/limb as anything in limbs)
 			// Uncleaned amputations, while technically not life threatening because amputations
 			// don't bleed, cause an incredible amount of pain, usually enough to paincrit the injured human.
 			if (limb.status & LIMB_DESTROYED)
@@ -889,7 +889,7 @@
 			// An argument could be made for cleaned and dressed amputations to be red tag, but at that point
 			// it no longer causes any pain and only applies the slowdown/missing hand, so nonlethal
 			if (limb.status & LIMB_AMPUTATED)
-				tag_severity = tag_severity > 1 ? tag_severity : 1
+				tag_severity = max(tag_severity, 1)
 
 			// Internal bleeding requires immediate surgery
 			var/internal_bleeding = FALSE
@@ -915,23 +915,23 @@
 					tag_severity = 2
 					break
 
-				tag_severity = tag_severity > 1 ? tag_severity : 1
+				tag_severity = max(tag_severity, 1)
 
 			// Severe burns and eschars are not immediately life-threatening
 			if (limb.status & (LIMB_THIRD_DEGREE_BURNS | LIMB_ESCHAR))
-				tag_severity = tag_severity > 1 ? tag_severity : 1
+				tag_severity = max(tag_severity, 1)
 
 		// Check if this new scan would have had the accuracy to view organs
 		if (new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER)
 			// Heartbroken marines should be operated on IMMEDIATELY
 			var/datum/internal_organ/kidneys/heart = internal_organs_by_name["heart"]
 			if (heart.organ_status >= ORGAN_BROKEN) tag_severity = 2
-			else if (heart.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
+			else if (heart.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 			// Ditto for ruptured lungs
 			var/datum/internal_organ/kidneys/lungs = internal_organs_by_name["lungs"]
 			if (is_lung_ruptured()) tag_severity = 2
-			else if (lungs.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
+			else if (lungs.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 			// Bruised livers and kidneys will accumulate toxin damage
 			// It's debatable whether or not this should be orange or red, but better safe than sorry
@@ -947,7 +947,7 @@
 
 			// Eye damage is not nearly as bad as the previous three organs, and isn't NECESSARY to be fixed, technically
 			var/datum/internal_organ/eyes/eyes = internal_organs_by_name["eyes"]
-			if (eyes.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
+			if (eyes.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 		if (status_flags & PERMANENTLY_DEAD) tag_severity = 3
 

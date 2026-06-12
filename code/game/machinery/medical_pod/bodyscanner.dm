@@ -182,7 +182,7 @@
 		last_health_display.target_mob = H
 
 	// Handle automatic holotags
-	if (user.client.prefs.auto_holotag >= BODYSCAN_TAG_PATIENTS)
+	if (user.client?.prefs.auto_holotag >= BODYSCAN_TAG_PATIENTS)
 		H.auto_assign_holotag(user, HOLOCARD_ACCURACY_BODYSCANNER)
 
 	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)

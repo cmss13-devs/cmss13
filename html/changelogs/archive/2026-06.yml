@@ -181,3 +181,11 @@
   - imageadd: New Acid Runner sprites by DimDim.
   Unknownity:
   - bugfix: Hunted PMCs and Goons show up in the Hunted observer list properly now.
+2026-06-12:
+  AI-1CE:
+  - rscadd: Added extended descriptions to all cigarette brands in the game.
+  - spellcheck: Fixes the description of the balaji minis.
+  MistChristmas:
+  - bugfix: Some of the larger minimap bitflags can now be seen on the minimap. This
+      just means Hives that have the bigger number in the code can be viewed on the
+      minimap like normal.

@@ -256,4 +256,4 @@
 /obj/item/reagent_container/hypospray/sedative
 	name = "sedative hypospray"
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/sedative
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled chloral hydrate. Not refillable at Wey-Med vends."
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with chloral hydrate, a powerful sedative that is not refillable at Wey-Med vends."

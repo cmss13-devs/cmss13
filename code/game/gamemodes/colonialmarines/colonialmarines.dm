@@ -158,7 +158,7 @@
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
-	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 1 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
+	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 20 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	GLOB.chemical_data.reroll_chemicals()
 
@@ -464,8 +464,11 @@
 		new_order.orderedby = MAIN_AI_SYSTEM
 		new_order.approvedby = MAIN_AI_SYSTEM
 		GLOB.supply_controller.shoppinglist += new_order
-		ai_silent_announcement("WARNING: Cryopod Thaw Cycle delayed for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G", TRUE)
-		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered.")
+		for(var/obj/structure/machinery/medical_pod/autodoc/target in GLOB.machines)
+			if(is_mainship_level(target.z))
+				target.skilllock = SKILL_SURGERY_DEFAULT // lowers skill-lock to 0
+		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G", TRUE)
+		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered and AutoDoc skill locks released.")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")

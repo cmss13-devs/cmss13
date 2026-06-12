@@ -158,6 +158,7 @@
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
 	var/operating = FALSE
+	var/remote_id
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
 	if(operating)
@@ -199,6 +200,9 @@
 
 /turf/closed/wall/almayer/research/containment/wall/connect3
 	icon_state = "containment_wall_connect3"
+
+/turf/closed/wall/almayer/research/containment/wall/connect3
+	icon_state = "containment_wall_connect4"
 
 /turf/closed/wall/almayer/research/containment/wall/connect_w
 	icon_state = "containment_wall_connect_w"
@@ -536,6 +540,9 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
+	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."
+	color = "#ffff80"
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 
@@ -1104,6 +1111,10 @@
 	name = "tutorial resin wall"
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
 	hivenumber = XENO_HIVE_TUTORIAL
+
+/turf/closed/wall/resin/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
 
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return

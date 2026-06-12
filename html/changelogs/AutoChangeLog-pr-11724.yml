@@ -1,4 +1,0 @@
-author: "TrollerNoob"
-delete-after: True
-changes:
-  - refactor: "Refactored Point Blank backend. You may now Point Blank as fast as your gun's firerate allows, and you may continue firing after a Point Blank when on Automatic Fire mode."

@@ -872,6 +872,11 @@
 		else if (blood_volume < BLOOD_VOLUME_SAFE)
 			tag_severity = 1 // Severity could only ever be 0 at this point, safe to directly assign
 
+		// Overdoses are life-threatening
+		for (var/datum/reagent/reagent in src.reagents.reagent_list)
+			if (reagent.volume > reagent.overdose)
+				tag_severity = 2
+
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
 		for (var/obj/limb/limb in src)
 			// Uncleaned amputations, while technically not life threatening because amputations
@@ -918,10 +923,14 @@
 		// Check if this new scan would have had the accuracy to view organs
 		if (new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER)
 			// Heartbroken marines should be operated on IMMEDIATELY
-			if (is_heart_broken()) tag_severity = 2
+			var/datum/internal_organ/kidneys/heart = internal_organs_by_name["heart"]
+			if (heart.organ_status >= ORGAN_BROKEN) tag_severity = 2
+			else if (heart.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
 
 			// Ditto for ruptured lungs
+			var/datum/internal_organ/kidneys/lungs = internal_organs_by_name["lungs"]
 			if (is_lung_ruptured()) tag_severity = 2
+			else if (lungs.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
 
 			// Bruised livers and kidneys will accumulate toxin damage
 			// It's debatable whether or not this should be orange or red, but better safe than sorry
@@ -941,8 +950,7 @@
 
 		if (status_flags & PERMANENTLY_DEAD) tag_severity = 3
 
-		if (status_flags & XENO_HOST) tag_severity = 4
-
+		if (status_flags & XENO_HOST && new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER) tag_severity = 4
 
 		var/old_severity
 		// Yes, switching between strings and numbers like this is terrible and I should be using a custom define, but I don't want to touch the code already in place
@@ -953,6 +961,7 @@
 			if("red") old_severity = 2
 			if("black") old_severity = 3
 			if("purple") old_severity = 4 // Even if they're unrevivable, we need to get the larva out
+			else old_severity = 0
 
 		// If the scan's accuracy is equal to or greater than the previous scan, or if the severity is higher than the old severity, update the card
 		if (tag_severity > old_severity || new_accuracy >= holo_card_accuracy)

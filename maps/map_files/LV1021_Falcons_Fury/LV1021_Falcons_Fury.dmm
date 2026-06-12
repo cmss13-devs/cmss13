@@ -2486,7 +2486,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "gq" = (
-/turf/closed/wall/wood/teal,
+/turf/closed/wall/wood/plain,
 /area/lv1021/indoors/clf_camp/landing)
 "gr" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -2498,7 +2498,7 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "gs" = (
-/obj/structure/window/framed/wood/reinforced/teal,
+/obj/structure/window/framed/wood/reinforced/plain,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/landing)
 "gt" = (
@@ -4154,9 +4154,6 @@
 "lR" = (
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
-"lS" = (
-/turf/closed/wall/wood/teal,
-/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "lT" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/interior/wood,
@@ -4719,7 +4716,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
 "nT" = (
-/turf/closed/wall/wood,
+/turf/closed/wall/wood/teal,
 /area/lv1021/indoors/clf_camp/education)
 "nU" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
@@ -4878,7 +4875,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "ow" = (
-/obj/structure/window/framed/wood/reinforced,
+/obj/structure/window/framed/wood/reinforced/teal,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
 "ox" = (
@@ -5732,7 +5729,7 @@
 /area/lv1021/indoors/clf_camp/ancil_s)
 "qY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
 "qZ" = (
@@ -6118,7 +6115,7 @@
 /turf/open/floor/interior/wood/damage_5,
 /area/lv1021/indoors/clf_camp/education)
 "si" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/interior/wood,
@@ -14615,6 +14612,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "OD" = (
+/obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/solaris/reinforced,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "OE" = (
@@ -14681,6 +14679,7 @@
 "ON" = (
 /obj/structure/fence/slim/upp,
 /obj/structure/platform_decoration/wood,
+/obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "OO" = (
@@ -15018,7 +15017,7 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "PG" = (
-/turf/closed/wall/wood/teal,
+/turf/closed/wall/wood/plain,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "PH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15225,7 +15224,7 @@
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "Qk" = (
-/turf/closed/wall/wood/teal,
+/turf/closed/wall/wood/plain,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "Ql" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
@@ -17260,6 +17259,21 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"Vx" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"Vy" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"Vz" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
 "VA" = (
 /obj/structure/platform/wood,
 /obj/structure/platform_decoration/wood/southeast,
@@ -17269,6 +17283,48 @@
 /obj/structure/platform_decoration/wood/southeast,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
+"VB" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"VC" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"VD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = 26
+	},
+/turf/open/asphalt/cement/cement12,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VE" = (
+/obj/structure/shuttle/part/dropship_clf/lower_left_wall,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VF" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "wy2"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VG" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_2"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VH" = (
+/obj/structure/shuttle/part/dropship_clf/lower_right_wall,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VI" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
 	layer = 4.13;
@@ -17280,6 +17336,26 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"VJ" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/solaris/reinforced,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"VK" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"VL" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "36_alt"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VM" = (
+/turf/open/floor/almayer/test_floor5,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VN" = (
+/turf/open/floor/almayer/test_floor4,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VO" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17293,6 +17369,20 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"VP" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VQ" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "37_alt"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VR" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
@@ -17312,6 +17402,18 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/river/soro,
 /area/lv1021/landing_zone_1)
+"VT" = (
+/obj/structure/shuttle/part/dropship_clf/transparent/left_engine,
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"VU" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "36"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VV" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -17322,6 +17424,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"VW" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VX" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -17332,10 +17440,33 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
+"VY" = (
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "VZ" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
+"Wa" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "25"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wb" = (
+/obj/structure/shuttle/part/dropship_clf/transparent/right_engine,
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wc" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "leftengine_3"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wd" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -17344,11 +17475,23 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
+"We" = (
+/turf/open/floor/prison/ramptop,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wf" = (
 /obj/structure/platform/stone/soro/west,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"Wg" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = 26
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wh" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -2;
@@ -17356,6 +17499,26 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Wi" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "37"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wj" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "rightengine_3"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wk" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "wy_leftengine"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wl" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "10_interior_1"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wm" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#8D8468";
@@ -17377,6 +17540,15 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"Wn" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_1"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wo" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17386,6 +17558,43 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
+"Wp" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "wy_rightengine"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wq" = (
+/obj/structure/machinery/door/airlock/prison_hatch,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite'";
+	color = "#646464";
+	id = "clf_lockdown";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wr" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Ws" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = -15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wt" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17412,6 +17621,9 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
+"Ww" = (
+/turf/open/floor/corsat/officetiles,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Wx" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/stone/soro/east,
@@ -17428,12 +17640,98 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
+"Wy" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = 15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Wz" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -14;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WA" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WB" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/lv1021/landing_zone_1)
+"WC" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = 13;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WD" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "75"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WE" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "78"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WF" = (
+/obj/structure/machinery/door/airlock/prison_hatch{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WG" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -17441,6 +17739,14 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"WH" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "83"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WI" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -17459,6 +17765,11 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
+"WK" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_top_left,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WL" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
@@ -17481,6 +17792,65 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"WN" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1;
+	attach_id = 5
+	},
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "106"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WO" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/prop/almayer/comp_open{
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WP" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8;
+	pixel_x = 5;
+	buckling_x = 5
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/structure/machinery/door_control{
+	id = "clf_lockdown";
+	name = "Dropship Lockdown";
+	pixel_x = -7;
+	pixel_y = 22
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/device/binoculars{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_small_bl_full";
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WR" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "107"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WS" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_top_right,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WT" = (
 /obj/structure/fence/slim/upp/door{
 	dir = 4
@@ -17491,6 +17861,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
+"WU" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "92"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"WV" = (
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -14;
+	pixel_y = 20
+	},
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "brokendropshipconsole1"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WW" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -15;
@@ -17499,16 +17883,31 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"WX" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "brokendropshipconsole2"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "WY" = (
 /obj/structure/platform/wood/west,
 /obj/structure/platform/wood,
 /obj/structure/platform_decoration/wood/southwest,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"WZ" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "brokendropshipconsole3"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xa" = (
 /obj/structure/flora/wood/trunk2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Xb" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "94"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xc" = (
 /obj/structure/platform_decoration/wood,
 /turf/open/floor/interior/wood/alt,
@@ -17519,10 +17918,20 @@
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/floor/interior/wood/alt,
 /area/lv1021/indoors/clf_camp/ancil_s)
+"Xe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf/nose_front_left,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xf" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood/damage_4,
 /area/lv1021/indoors/clf_camp/ancil_n)
+"Xg" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "96"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xh" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -17541,6 +17950,11 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
+"Xi" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "97"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xj" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -17551,12 +17965,32 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"Xk" = (
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "98"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "Xl" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -14;
 	pixel_y = 28
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Xm" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf/nose_front_right,
+/turf/open/floor/plating,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"Xn" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 34;
+	pixel_y = 35
+	},
+/turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "Xo" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
@@ -17594,6 +18028,18 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"Xs" = (
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4;
+	pixel_y = 8;
+	buckling_y = 16
+	},
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
+"Xt" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
 "Xu" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -17604,6 +18050,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"Xv" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
 "Xw" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
@@ -17629,6 +18079,65 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
+"Xz" = (
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 9;
+	pixel_y = 2;
+	layer = 3.1
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 17
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 19;
+	pixel_x = 2
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_y = 23
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 22;
+	pixel_y = 28;
+	layer = 2.9
+	},
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
+"XA" = (
+/obj/structure/machinery/optable{
+	dir = 1;
+	density = 0
+	},
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/item/storage/surgical_tray{
+	pixel_x = 1;
+	pixel_y = 27
+	},
+/obj/item/roller{
+	pixel_x = 1;
+	pixel_y = 18;
+	layer = 2.41
+	},
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
+"XB" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall/wood/teal,
+/area/lv1021/indoors/clf_camp/education)
+"XC" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
 "XG" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -34641,7 +35150,7 @@ kf
 kf
 Or
 Pc
-Ol
+Vz
 sL
 sL
 iZ
@@ -34977,7 +35486,7 @@ jP
 QV
 jA
 xI
-lh
+Vx
 jz
 iZ
 ef
@@ -35125,14 +35634,14 @@ iZ
 ni
 UH
 Uw
-sL
-OD
+ni
+VJ
+Vx
+lh
+Vy
 lh
 lh
-lh
-lh
-lh
-lh
+Vx
 ON
 kf
 kf
@@ -35144,7 +35653,7 @@ jP
 og
 CD
 xI
-lh
+Vx
 jz
 ih
 ih
@@ -35292,10 +35801,10 @@ Te
 jz
 SL
 jz
-iZ
-Ol
-jz
-jz
+Vf
+VK
+VC
+VC
 TQ
 Tv
 Tv
@@ -35460,8 +35969,8 @@ SR
 QV
 iZ
 mY
-Ol
-jz
+Vz
+VC
 TY
 TR
 TH
@@ -35478,7 +35987,7 @@ jP
 jA
 IS
 iZ
-lh
+Vy
 jU
 en
 ih
@@ -35644,9 +36153,9 @@ kf
 jP
 jA
 iZ
-sL
-sL
-sL
+mt
+mt
+mt
 sL
 en
 ih
@@ -37130,7 +37639,7 @@ TQ
 UM
 jz
 iZ
-Ol
+VB
 iZ
 TS
 RJ
@@ -37631,7 +38140,7 @@ US
 UP
 UB
 Uv
-Ol
+VB
 iZ
 iZ
 jA
@@ -37965,12 +38474,12 @@ ti
 og
 UC
 Ug
-Ol
+VB
 og
 iZ
 jA
 iZ
-iZ
+UE
 TD
 jz
 Te
@@ -38133,12 +38642,12 @@ or
 mt
 sL
 OD
-Ol
+VB
 Pc
 Ol
 Ol
-Ol
-sL
+VB
+mt
 sL
 sL
 SY
@@ -38299,16 +38808,16 @@ or
 UE
 UE
 mt
-sL
+mt
 sL
 jA
 iZ
 iZ
-iZ
-iZ
+UE
+UE
 sL
 sL
-sL
+mt
 SL
 jz
 iZ
@@ -38476,12 +38985,12 @@ iZ
 iZ
 iZ
 OD
-Ol
+VB
 Oq
 Ol
 Ol
-Ol
-sL
+Vz
+hU
 sL
 sL
 sL
@@ -40612,7 +41121,7 @@ nT
 oo
 oo
 oy
-qo
+Xn
 qo
 me
 Tm
@@ -40775,7 +41284,7 @@ qs
 me
 ew
 Tg
-nT
+XB
 oo
 oo
 nT
@@ -40945,7 +41454,7 @@ vG
 oy
 oo
 oo
-oo
+Xt
 nT
 nT
 mi
@@ -41112,7 +41621,7 @@ mg
 ow
 oo
 oo
-oo
+Xv
 oo
 nT
 mi
@@ -41280,7 +41789,7 @@ nT
 oo
 oo
 oo
-oo
+Xs
 nT
 mi
 mb
@@ -41444,7 +41953,7 @@ mi
 mb
 mi
 nT
-oo
+Xz
 oo
 oo
 oo
@@ -41611,10 +42120,10 @@ mb
 mb
 mb
 nT
+XA
 oo
 oo
-oo
-oo
+Xs
 nT
 mb
 mb
@@ -41791,7 +42300,7 @@ sL
 ks
 kt
 kt
-gs
+gq
 gq
 lb
 lb
@@ -42096,7 +42605,7 @@ qG
 rO
 dc
 oo
-oo
+XC
 Jd
 qG
 AD
@@ -42125,7 +42634,7 @@ ks
 kt
 ks
 lR
-gq
+gs
 lb
 lb
 lb
@@ -42966,7 +43475,7 @@ gq
 gq
 lR
 lR
-lS
+nV
 ks
 ks
 ks
@@ -43143,8 +43652,8 @@ mZ
 mZ
 mZ
 mZ
+mZ
 nC
-ks
 ks
 kt
 ks
@@ -43302,16 +43811,16 @@ ks
 eQ
 kR
 kR
-kR
-kR
-kR
-kR
-kR
-kR
+WK
+WD
+Wq
+Wq
+Wk
+Wc
+VT
 kR
 kR
 eJ
-ks
 ks
 kt
 ks
@@ -43467,18 +43976,18 @@ ks
 ks
 ks
 eQ
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
+Xe
+WU
+WN
+WE
+Wz
+Wr
+Wl
+VU
+VU
+VL
+VE
 eJ
-ks
 ks
 kt
 ks
@@ -43634,18 +44143,18 @@ ks
 ks
 ks
 eQ
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
+Xg
+WV
+WO
+WE
+WA
+Ws
+VF
+VM
+VW
+VM
+VF
 eJ
-ks
 ks
 kt
 ks
@@ -43801,18 +44310,18 @@ ks
 ks
 ks
 eQ
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
+Xi
+WX
+WP
+WF
+Ww
+Ww
+Wn
+We
+VN
+VN
+VG
 eJ
-ks
 ks
 kt
 kt
@@ -43968,18 +44477,18 @@ ks
 ks
 ks
 eQ
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-eJ
-ks
+Xk
+WZ
+WQ
+WE
+WC
+Wy
+VF
+Wg
+VY
+VP
+VF
+VD
 ks
 ks
 kt
@@ -44135,18 +44644,18 @@ ks
 ks
 ks
 eQ
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
-kR
+Xm
+Xb
+WR
+WE
+Wr
+Wr
+Wl
+Wi
+Wa
+VQ
+VH
 eJ
-ks
 ks
 ks
 kt
@@ -44304,16 +44813,16 @@ sL
 eQ
 kR
 kR
-kR
-kR
-kR
-kR
-kR
-kR
+WS
+WH
+Wq
+Wq
+Wp
+Wj
+Wb
 kR
 kR
 eJ
-ks
 ks
 ks
 ks
@@ -44479,8 +44988,8 @@ uy
 uy
 uy
 uy
+uy
 YX
-ks
 ks
 ks
 ks
@@ -45958,7 +46467,7 @@ mG
 mG
 mG
 mG
-lS
+nV
 ks
 ks
 ks
@@ -46125,7 +46634,7 @@ mG
 mG
 sL
 sL
-lS
+nV
 ks
 ks
 ks
@@ -46292,7 +46801,7 @@ sL
 sL
 sL
 lH
-lS
+nV
 ks
 ks
 kt
@@ -46623,7 +47132,7 @@ sL
 sL
 sL
 sL
-lS
+nV
 lH
 lH
 ks
@@ -46790,7 +47299,7 @@ sL
 sL
 oL
 Qk
-lS
+nV
 lH
 lH
 ks
@@ -46957,8 +47466,8 @@ sL
 oL
 oL
 Qk
-lS
-lS
+nV
+nV
 lH
 ks
 ks

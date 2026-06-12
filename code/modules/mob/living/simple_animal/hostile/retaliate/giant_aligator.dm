@@ -6,6 +6,11 @@
 	name = "Aligator"
 	stun_duration = 2
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/try_to_extinguish()
+	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
+		ExtinguishMob()
+	. = ..()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/pounced_mob(mob/living/pounced_mob)
 	. = ..()
 	throwing = 0

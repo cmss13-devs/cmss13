@@ -1,3 +1,4 @@
+"ad" = (/obj/structure/machinery/light{dir = 8},/obj/structure/closet/secure_closet/marshal,/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "ak" = (/obj/effect/decal/hybrisa/trash{icon_state = "trash_9"; pixel_x = 7; pixel_y = -5},/turf/open/floor/hybrisa/wood/redwood,/area/adminlevel/ert_station/cmb_station)
 "ay" = (/obj/structure/machinery/atm{icon = 'icons/obj/structures/props/atm.dmi'; pixel_x = 6; pixel_y = 15},/obj/structure/platform_decoration/metal/almayer_smooth/west,/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "aG" = (/turf/open/floor/corsat/arrow_north,/area/adminlevel/ert_station/cmb_station)
@@ -89,7 +90,6 @@
 "jW" = (/obj/structure/disposalpipe/junction{dir = 1},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "kc" = (/obj/structure/platform/metal/kutjevo_smooth/west,/turf/open/space,/area/space)
 "ky" = (/obj/structure/machinery/deployable/barrier,/obj/structure/machinery/light/small{dir = 8},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
-"kB" = (/obj/structure/machinery/light{dir = 4},/obj/structure/closet/secure_closet/marshal{pixel_x = 0; pixel_y = 0; density = 0},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "kD" = (/obj/structure/window/reinforced{dir = 4; pixel_x = -2; pixel_y = 4},/obj/structure/bed/alien,/obj/structure/window/reinforced{dir = 8; layer = 3.3; pixel_y = 4},/obj/structure/bed/alien{pixel_x = 0; pixel_y = 13; layer = 3.5},/obj/item/bedsheet/colorable{dir = 8; pixel_y = 13; color = "#856f63"; pixel_x = 0},/obj/item/bedsheet/colorable{dir = 1; layer = 3.2},/turf/open/floor/hybrisa/wood/redwood,/area/adminlevel/ert_station/cmb_station)
 "kM" = (/obj/structure/surface/table/woodentable/fancy,/turf/open/floor/hybrisa/carpet/carpetdarkerblue,/area/adminlevel/ert_station/cmb_station)
 "kW" = (/obj/effect/decal/hybrisa/gold,/obj/effect/decal/hybrisa/gold/line2{pixel_x = 0; pixel_y = 2},/turf/open/floor/hybrisa/wood/darkerwood,/area/adminlevel/ert_station/cmb_station)
@@ -112,6 +112,7 @@
 "nU" = (/obj/structure/bed/sofa/vert/grey{pixel_y = 8},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "on" = (/turf/open/floor/corsat/blue/east,/area/adminlevel/ert_station/cmb_station)
 "oq" = (/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,/area/adminlevel/ert_station/cmb_station)
+"or" = (/obj/structure/closet/secure_closet/marshal,/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "ow" = (/obj/effect/decal/warning_stripes{icon_state = "SE-out"},/obj/structure/closet/emcloset{density = 0; pixel_x = 8; pixel_y = 15},/obj/structure/closet/firecloset/full{density = 0; pixel_x = -8; pixel_y = 15},/obj/structure/machinery/light{dir = 8},/obj/structure/pipes/standard/simple/hidden/green{dir = 6},/turf/open/floor/corsat/bluecorner,/area/adminlevel/ert_station/cmb_station)
 "oD" = (/obj/item/storage/briefcase/stowaway{pixel_x = 0; pixel_y = 17},/turf/open/floor/hybrisa/wood/darkerwood,/area/adminlevel/ert_station/cmb_station)
 "oJ" = (/obj/structure/closet/secure_closet/brig{pixel_x = 8; pixel_y = 21; density = 0},/obj/structure/machinery/door_control{id = "ANC Cell Hold"; name = "Holding Cell"; pixel_x = -4; pixel_y = 35; req_access_txt = "200"},/obj/structure/machinery/door_control{id = "ANC Cell 1"; name = "Cell 1"; pixel_x = -4; pixel_y = 29; req_access_txt = "200"},/obj/structure/machinery/door_control{id = "WY_aft_medbay"; name = "Cell 2"; pixel_x = -4; pixel_y = 23; req_access_txt = "200"},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
@@ -253,7 +254,7 @@
 "Gu" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor/corsat/blue/west,/area/adminlevel/ert_station/cmb_station)
 "Gx" = (/obj/structure/surface/table/reinforced/almayer_B,/turf/open/floor/whiteredfull,/area/adminlevel/ert_station/cmb_station)
 "Gz" = (/obj/structure/surface/rack{color = "#98a3ab"},/obj/item/clothing/suit/storage/marine/veteran/cmb/leader{pixel_x = -5; pixel_y = 11},/obj/item/clothing/suit/storage/marine/veteran/cmb{pixel_x = 4; pixel_y = 9},/obj/item/weapon/shield/riot/metal{pixel_x = -4; pixel_y = 2},/obj/item/weapon/shield/riot/metal{pixel_x = 0; pixel_y = 0},/obj/item/weapon/shield/riot/metal{pixel_x = 4; pixel_y = -2},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
-"GU" = (/obj/structure/machinery/light{dir = 8},/obj/structure/closet/secure_closet/marshal{pixel_x = 0; pixel_y = 0; density = 0},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
+"GU" = (/obj/structure/machinery/light{dir = 4},/obj/structure/closet/secure_closet/marshal,/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "Hd" = (/turf/open/floor/whitered/northeast,/area/adminlevel/ert_station/cmb_station)
 "Hh" = (/obj/structure/machinery/light/small{dir = 8; pixel_y = 12; pixel_x = 0},/turf/open/floor/whitered/northwest,/area/adminlevel/ert_station/cmb_station)
 "Hj" = (/obj/structure/platform/metal/kutjevo_smooth,/turf/open/space,/area/space)
@@ -312,7 +313,6 @@
 "NY" = (/obj/structure/pipes/vents/pump{dir = 8},/turf/open/floor/corsat,/area/adminlevel/ert_station/cmb_station)
 "Ob" = (/obj/effect/decal/heavy_cable/cable_horizontal,/turf/open/floor/almayer_hull,/area/space)
 "Oe" = (/obj/structure/bedsheetbin{icon_state = "linenbin-empty"; name = "solar lattice"; pixel_y = 6},/turf/open/floor/almayer_hull,/area/space)
-"Oo" = (/obj/structure/closet/secure_closet/marshal{pixel_x = 0; pixel_y = 0; density = 0},/turf/open/floor/corsat/squares,/area/adminlevel/ert_station/cmb_station)
 "OK" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_22"; pixel_x = 9; pixel_y = 23},/obj/effect/decal/hybrisa/gold,/obj/structure/machinery/light{dir = 4},/turf/open/floor/hybrisa/wood/darkerwood,/area/adminlevel/ert_station/cmb_station)
 "Pe" = (/obj/structure/window/framed/almayer/hull,/turf/open/floor/plating,/area/adminlevel/ert_station/cmb_station)
 "Pm" = (/turf/open/floor/corsat/bluecorner{dir = 1},/area/adminlevel/ert_station/cmb_station)
@@ -440,10 +440,10 @@ HjHjjtntHjHjHjjtsxNSNSNSNSNSNSNSNSNSsxJWJWJWsxWqNSNSWVNSNSNSNSNSNScCNSNSNSNSpGyQ
 qmqmkcNXqmqmqmkcsxsxNSNSNSNSNSNSNSNSsxsxJWJWsxFwtTtqsxsxjyjysxjyjysxNSNSNSNSTTbrmIsxCCtdJFmKZyDMNSNSzwPeJWJWJWJWJWJWJWsx
 qmqmkcNXqmqmqmkcJWPeNSNSNSNSNSNSNSNSNSsxpupusxsxsxsxsxzLGfcOfkrQLrsxsxsxNSNSNSVzyQsxuntdJFmKMxDMNSNSLBPeJWJWJWJWJWJWJWsx
 qmqmbVAdqmqmqmbVMSPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWsxsoiHJnMPwQpiTccJsxNSNSNSrpIEsxdNpZjTZxuGsxoZNSRiPeJWJWJWJWJWJWJWsx
-MROemCKWOeMROemCppPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWsxsllmoqTFyQSWLkELsxsxNSxUsxsxsxOoNSNSNSOosxNSNSjVPeMSMSMSMSMSMSMSsx
+MROemCKWOeMROemCppPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWsxsllmoqTFyQSWLkELsxsxNSxUsxsxsxorNSNSNSorsxNSNSjVPeMSMSMSMSMSMSMSsx
 qmqmwbRlqmqmqmwbvzPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWsxyQeZyQLkbryQyQyQyQURNSNSURNSNSNSNSSoNSNSURNSNSjVsxppppZmppppppppsx
 qmqmbVAdqmqmqmbVMSPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWsxsxsxbuLkyQyQeDyQyQWVNSNSPQNSNSNSNSNSNSNSPQNScCsxsxvzPxObQYvzvzvzsx
-MROemCKWOeMROemCppPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWJWJWsxsxsxsxsxsxsxsxsxNSNSsxsxsxGUNSBONSkBsxsxsxsxJWJWDcObSVJWJWJWsx
+MROemCKWOeMROemCppPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWJWJWsxsxsxsxsxsxsxsxsxNSNSsxsxsxadNSBONSGUsxsxsxsxJWJWDcObSVJWJWJWsx
 qmqmwbRlqmqmqmwbvzPeNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWJWJWJWJWsxbTsxAFAFJbsxNSNSsxxMhoNSNSSkNSsxsxJWJWJWJWJWDcObSVJWJWJWsx
 qmqmkcNXqmqmqmkcJWLvvcvcvcewewewewewewJcsxJWJWJWJWJWJWJWJWJWsxsxsxIRgUDSURNSNSsxkyhoNSNSDNNSsxJWJWJWJWJWJWDcObSVJWJWsxsx
 qmqmkcNXqmqmqmkcJWsxsxNSNSNSNSNSNSNSNSNSsxJWJWJWJWJWJWJWJWJWJWJWsxmTmTmTsxoZNSsxxMhoNSNSNSsxsxJWJWJWJWJWJWDcObSVJWpusxNS

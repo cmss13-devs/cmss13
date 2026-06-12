@@ -1530,6 +1530,30 @@ Wrist Accessories
 	desc = "A lightweight black watch with a built-in pulsometer. A popular choice among military grunts."
 	icon_state = "pulsemaster"
 
+	var/pulse_cooldown
+
+/obj/item/clothing/accessory/wrist/watch/pulsemaster/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	. = ..()
+	add_verb(user, /obj/item/clothing/accessory/wrist/watch/pulsemaster/proc/get_pulse)
+
+/obj/item/clothing/accessory/wrist/watch/pulsemaster/on_removed(mob/living/user, obj/item/clothing/clothes)
+	. = ..()
+	remove_verb(user, /obj/item/clothing/accessory/wrist/watch/pulsemaster/proc/get_pulse)
+
+/obj/item/clothing/accessory/wrist/watch/pulsemaster/proc/get_pulse()
+	set name = "Get pulse"
+	set desc = "Shows you your current pulse."
+	set category = "IC"
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	var/mob/living/carbon/human/pulse_target = usr
+	if(!do_after(pulse_target, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		to_chat(pulse_target, SPAN_NOTICE("You were moved before you could get a proper pulse reading!"))
+		return
+	to_chat(pulse_target, SPAN_NOTICE("Your current pulse is: [pulse_target.get_pulse(GETPULSE_TOOL)] bpm"))
+
 /obj/item/clothing/accessory/wrist/watch/two_tone
 	name = "two-tone wrist watch"
 	desc = "An expensive analogue wrist watch of gold and steel. Probably worth several paychecks."
@@ -1542,12 +1566,12 @@ Wrist Accessories
 
 /obj/item/clothing/accessory/wrist/watch/two_face
 	name = "two-faced wrist watch"
-	desc = "A strange analogue wrist watch of with two seperate faces. Looking at it brings a strange sense of equilibrium."
+	desc = "A strange analogue wrist watch with two seperate faces. Looking at it brings a strange sense of equilibrium."
 	icon_state = "two_face"
 
 /obj/item/clothing/accessory/wrist/watch/allen
 	name = "E-125 wrist watch"
-	desc = "An nice digital wrist watch by Samani with two faces; one displaying the time and the other a whole calender!"
+	desc = "A nice digital wrist watch by Samani with two faces; one displaying the time and the other a whole calender!"
 	icon_state = "allen"
 
 /obj/item/clothing/accessory/wrist/watch/burke

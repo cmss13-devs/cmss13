@@ -94,19 +94,6 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
-	if(is_hijacked)
-		return
-
-	for(var/area/checked_area in shuttle_areas)
-		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
-				continue
-			var/name = "Unidentified Lifesigns"
-			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
-			set_security_level(SEC_LEVEL_RED)
-			return
-
 /obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/place in shuttle_areas)
@@ -175,7 +162,7 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(!root_console || root_console.dropship_control_lost)
+	if(!root_console || root_console.dropship_control_lost || SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null
@@ -210,15 +197,9 @@
 	dwidth = 5
 	dheight = 10
 
-	var/list/landing_lights = list()
 	var/auto_open = FALSE
-	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
 	var/faction = FACTION_MARINE
-
-/obj/docking_port/stationary/marine_dropship/Initialize(mapload)
-	. = ..()
-	link_landing_lights()
 
 /obj/docking_port/stationary/marine_dropship/Destroy()
 	. = ..()
@@ -230,38 +211,8 @@
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/flight_console in GLOB.machines)
 		flight_console.compatible_landing_zones -= src
 
-/obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
-	var/list/coords = return_coords()
-	var/scan_range = 5
-	var/x0 = coords[1] - scan_range
-	var/y0 = coords[2] - scan_range
-	var/x1 = coords[3] + scan_range
-	var/y1 = coords[4] + scan_range
-
-	for(var/xscan = x0; xscan < x1; xscan++)
-		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
-
-/obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
-	for(var/obj/structure/machinery/landinglight/light in landing_lights)
-		light.turn_on()
-	landing_lights_on = TRUE
-
-/obj/docking_port/stationary/marine_dropship/proc/turn_off_landing_lights()
-	for(var/obj/structure/machinery/landinglight/light in landing_lights)
-		light.turn_off()
-	landing_lights_on = FALSE
-
-/obj/docking_port/stationary/marine_dropship/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
-	. = ..()
-	turn_on_landing_lights()
-
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	turn_off_landing_lights()
 	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 
 	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
@@ -280,13 +231,21 @@
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_arrival()
 
-/obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
-	. = ..()
-	turn_on_landing_lights()
+	if(dropship.is_hijacked || !is_mainship_level(z))
+		return
+
+	for(var/area/checked_area in dropship.shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
+				continue
+			var/name = "Unidentified Lifesigns"
+			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+			set_security_level(SEC_LEVEL_RED)
+			return
 
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
-	turn_off_landing_lights()
 	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()
@@ -325,6 +284,12 @@
 	id = UPP_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/devana
+
+/obj/docking_port/stationary/marine_dropship/yautja_hangar_1
+	name = "Yautja Hangar A"
+	id = YAUTJA_HANGAR_A
+	auto_open = TRUE
+	faction = FACTION_YAUTJA
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
@@ -377,5 +342,3 @@
 /datum/map_template/shuttle/devana
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
-
-

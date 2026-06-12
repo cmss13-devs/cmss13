@@ -604,9 +604,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/roller/hospital/proc/create_body()
 	SIGNAL_HANDLER
-	body = new(loc)
+	body = new(src)
 	body.create_hud()
-	contents += body
 	arm_equipment(body, body_preset, TRUE, FALSE)
 	body.death(create_cause_data("exposure"))
 	update_icon()

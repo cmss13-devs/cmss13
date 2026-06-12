@@ -6,6 +6,7 @@
 /obj/docking_port/mobile/emergency_response
 	name = "ERT Shuttle"
 	ignitionTime = DROPSHIP_WARMUP_TIME
+	prearrivalTime = DROPSHIP_WARMUP_TIME
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13
@@ -128,6 +129,38 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 5
+
+/obj/docking_port/mobile/emergency_response/ert5
+	name = "Military Caste Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT5
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
+/obj/docking_port/mobile/emergency_response/hunter
+	name = "Hunter Shuttle"
+	id = MOBILE_SHUTTLE_ID_HUNTER
+	preferred_direction = SOUTH
+	port_direction = NORTH
+	area_type = /area/shuttle/hunter
+	landing_sound = 'sound/effects/engine_hunter_landing.ogg'
+	ignition_sound = 'sound/effects/engine_hunter_startup.ogg'
+
+/obj/docking_port/mobile/emergency_response/hunter/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Hunter Shuttle [tag]"
+	id = "hunter-shuttle-[tag]"
+	. = ..()
+	external_doors = list()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/air in place)
+			if(air.id != "hunter_external")
+				continue
+			air.breakable = FALSE
+			air.explo_proof = TRUE
+			air.unacidable = TRUE
+			external_doors += list(air)
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -137,7 +170,6 @@
 	height = 9
 	var/port_door
 	var/starboard_door
-
 
 /obj/docking_port/mobile/emergency_response/small/Initialize(mapload)
 	. = ..()
@@ -239,6 +271,31 @@
 	name = "Rostock port landing pad"
 	dir = NORTH
 	id = "rostock-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja
+	name = "DO NOT USE"
+	dir = NORTH
+
+/obj/docking_port/stationary/emergency_response/yautja/port1
+	name = "Hunter Ship landing pad A"
+	id = "hunter-ert1"
+	roundstart_template = /datum/map_template/shuttle/hunter
+
+/obj/docking_port/stationary/emergency_response/yautja/port2
+	name = "Hunter Ship landing pad B"
+	id = "hunter-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary
+	name = "Temporary Landing Zone"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Temporary Landing Zone [tag]"
+	id = "hunter-temp-[tag]"
+	. = ..()
+	for(var/obj/docking_port/mobile/emergency_response/hunter/shuttle in SSshuttle.mobile)
+		var/obj/structure/machinery/computer/shuttle/ert/hunter/console = shuttle.getControlConsole()
+		console.resync_landing_zones()
 
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE
@@ -359,7 +416,15 @@
 /obj/docking_port/stationary/emergency_response/idle_port7
 	name = "Response Station Landing Pad 7"
 	dir = NORTH
-	id = ADMIN_LANDING_PAD_7
+	id = ADMIN_LANDING_PAD_5
+	width  = 17
+	height = 29
+	roundstart_template = /datum/map_template/shuttle/mcaste_ert
+
+/obj/docking_port/stationary/emergency_response/idle_port8
+	name = "Response Station Landing Pad 8"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_8
 	roundstart_template = /datum/map_template/shuttle/cmb_ert
 
 /obj/docking_port/stationary/emergency_response/chinook_port
@@ -384,9 +449,13 @@
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
 
+/datum/map_template/shuttle/mcaste_ert
+	name = "Military Caste Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+
 /datum/map_template/shuttle/cmb_ert
 	name = "CMB Shuttle"
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"
@@ -395,6 +464,8 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+// FTL umbilical_cord stuff
 
 /datum/map_template/shuttle/port_umbilical_cord
 	name = "Port Umbilical Cord"
@@ -418,3 +489,36 @@
 
 /obj/structure/machinery/door_control/automatic/umbilical
 	id = "hangar_umbilical_ert"
+	open_delay = 15 SECONDS
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical
+	fire_delay = 2
+	sentry_range = 14
+	omni_directional = TRUE
+	ammo = new /obj/item/ammo_magazine/sentry/premade
+	faction_group = FACTION_LIST_HUMANOID
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical/New(loc, ...)
+	faction_group -= FACTION_LIST_YAUTJA
+	return ..()
+
+/obj/structure/machinery/defenses/sentry/premade/umbilical/set_range()
+	var/range = sentry_range - 1
+	var/dbl_range = range * 2
+
+	if(omni_directional)
+		range_bounds = SQUARE(x, y, dbl_range)
+		return
+	switch(dir)
+		if(EAST)
+			range_bounds = SQUARE(x+range, y, dbl_range)
+		if(WEST)
+			range_bounds = SQUARE(x-range, y, dbl_range)
+		if(NORTH)
+			range_bounds = SQUARE(x, y+range, dbl_range)
+		if(SOUTH)
+			range_bounds = SQUARE(x, y-range, dbl_range)
+
+/datum/map_template/shuttle/hunter
+	name = "Hunter Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_HUNTER

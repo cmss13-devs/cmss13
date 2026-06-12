@@ -1,5 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - rscdel: "broke area-based lighting"
-  - bugfix: "fixed area-based lighting"

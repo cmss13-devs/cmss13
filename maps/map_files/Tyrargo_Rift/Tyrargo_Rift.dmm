@@ -76644,6 +76644,7 @@
 	pixel_y = 12
 	},
 /obj/item/trash/cigbutt,
+/obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/apartment)
 "dKh" = (

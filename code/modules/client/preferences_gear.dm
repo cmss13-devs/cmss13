@@ -435,13 +435,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap
 
+/datum/gear/headwear/uscm/headband_green
+	display_name = "USCM headband, area of operations specific"
+	path = /obj/item/clothing/head/headband
+
 /datum/gear/headwear/uscm/headband_brown
 	display_name = "USCM headband, brown"
 	path = /obj/item/clothing/head/headband/brown
-
-/datum/gear/headwear/uscm/headband_green
-	display_name = "USCM headband, green"
-	path = /obj/item/clothing/head/headband
 
 /datum/gear/headwear/uscm/headband_grey
 	display_name = "USCM headband, grey"

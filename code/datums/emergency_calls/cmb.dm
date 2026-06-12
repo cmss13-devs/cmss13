@@ -3,7 +3,7 @@
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
 	probability = 10
-	home_base = /datum/lazy_template/ert/bureau_station
+	home_base = /datum/lazy_template/ert/cmb_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cmb
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_cmb/item
 

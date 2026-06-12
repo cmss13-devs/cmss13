@@ -899,26 +899,13 @@
 				break
 			if (internal_bleeding) break
 
-			// Shrapnel should be removed immediately
-			var/shrapnel = FALSE
-			for(var/implant in limb.implants)
-				if(is_sharp(implant) || istype(implant, /obj/item/shard/shrapnel))
-					tag_severity = 2
-					shrapnel = TRUE
-					break
-			if (shrapnel) break
-
 			// Splinted fractures do not require immediate surgical intervention
 			// Unsplinted fractures should be handled immediately before more damage is done
 			if (limb.status & LIMB_BROKEN)
-				if (!(limb.status & LIMB_SPLINTED))
-					tag_severity = 2
-					break
-
 				tag_severity = max(tag_severity, 1)
 
 			// Severe burns and eschars are not immediately life-threatening
-			if (limb.status & (LIMB_THIRD_DEGREE_BURNS | LIMB_ESCHAR))
+			if (limb.status & LIMB_ESCHAR)
 				tag_severity = max(tag_severity, 1)
 
 		// Check if this new scan would have had the accuracy to view organs

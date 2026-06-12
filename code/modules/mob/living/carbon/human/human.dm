@@ -849,6 +849,7 @@
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 
+	holo_card_accuracy = HOLOCARD_ACCURACY_MANUAL
 	hud_set_holocard()
 
 // Scans the health of a human, then assigns an appropriate holotag based on their injuries
@@ -949,6 +950,14 @@
 			if (eyes.organ_status >= ORGAN_BRUISED) tag_severity = tag_severity > 1 ? tag_severity : 1
 
 		if (status_flags & PERMANENTLY_DEAD) tag_severity = 3
+
+		// For some reason, decapitated humans don't have the permanently dead tag
+		var/obj/limb/head/head
+		for (var/obj/limb/limb in src.limbs)
+			if (istype(limb, /obj/limb/head))
+				head = limb
+		if (head == null || head.status & (LIMB_DESTROYED | LIMB_AMPUTATED))
+			tag_severity = 3
 
 		if (status_flags & XENO_HOST && new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER) tag_severity = 4
 

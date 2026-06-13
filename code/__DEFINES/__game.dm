@@ -338,6 +338,7 @@
 
 #define WEAPON_GUARANTEED_DELAY 0.1
 
+//Defines for able_to_fire returns. Should return at least one.
 #define WEAPON_NOT_ABLE_TO_FIRE (1<<1)
 #define WEAPON_NO_ATTACKBY_HINT (1<<2)
 #define WEAPON_FIRES (1<<3)

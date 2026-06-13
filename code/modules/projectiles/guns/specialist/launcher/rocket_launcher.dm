@@ -68,7 +68,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
 	. = ..()
-	if (. && !(. & WEAPON_NO_ATTACKBY_HINT) && istype(user)) //Let's check all that other stuff first.
+	if ((. & WEAPON_FIRES) && istype(user)) //Let's check all that other stuff first.
 		if(skill_locked && skill_fail(user))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0

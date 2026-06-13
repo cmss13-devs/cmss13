@@ -1764,10 +1764,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return WEAPON_NOT_ABLE_TO_FIRE
 	if(world.time < guaranteed_delay_time)
-		return WEAPON_NO_ATTACKBY_HINT
+		return (WEAPON_NO_ATTACKBY_HINT|WEAPON_NOT_ABLE_TO_FIRE)
 	if((world.time < wield_time && (delay_style & WEAPON_DELAY_NO_FIRE)) || (world.time < pull_time) && (delay_style & (WEAPON_DELAY_NO_FIRE|WEAPON_DELAY_NO_FIRE_PULL_ONLY)))
 		to_chat(user, SPAN_WARNING("You can't fire the [name] yet!"))
-		return WEAPON_NO_ATTACKBY_HINT
+		return (WEAPON_NO_ATTACKBY_HINT|WEAPON_NOT_ABLE_TO_FIRE)
 
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))

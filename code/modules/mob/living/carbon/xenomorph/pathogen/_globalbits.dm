@@ -142,6 +142,7 @@
 	pathogen_creature = TRUE
 	language = LANGUAGE_PATHOGEN
 	fire_vulnerability_mult = FIRE_MULTIPLIER_MEDIUM
+	minimap_background = "background_pathogen"
 
 //####################################################################
 //####################################################################

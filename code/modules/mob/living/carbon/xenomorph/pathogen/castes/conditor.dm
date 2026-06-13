@@ -27,7 +27,6 @@
 	is_intelligent = TRUE
 
 	minimap_icon = "conditor"
-	minimap_background = "background_pathogen"
 	evolution_allowed = FALSE
 	royal_caste = TRUE
 

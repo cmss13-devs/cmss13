@@ -1002,7 +1002,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
@@ -1145,7 +1145,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -1417,33 +1417,6 @@
 /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
 	assignment = "Civilian - Material Reprocessing Technician"
-	xenovictim = TRUE
-
-// Fire Station
-
-/datum/equipment_preset/corpse/hybrisa/fire_fighter
-	name = "Corpse - Civilian - Fire Protection Specialist"
-	assignment = "Civilian - Fire Protection Specialist"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/attached_gun/extinguisher(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flare(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_R_HAND)
-
-/datum/equipment_preset/corpse/hybrisa/fire_fighter/burst
-	name = "Corpse - Burst - Civilian - Fire Protection Specialist"
-	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE
 
 // Pizza Galaxy
@@ -1809,7 +1782,7 @@
 	assignment = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	job_title  = JOB_ARMY_TROOPER
-	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_standard
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -1911,7 +1884,7 @@
 	assignment = JOB_ARMY_MEDIC
 	faction = FACTION_MARINE
 	job_title  = JOB_ARMY_MEDIC
-	paygrades = list(PAY_SHORT_AE3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_medic
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -1926,7 +1899,6 @@
 	uniform.attach_accessory(new_human,patch_infantry)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto/army(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e3, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle/backpack/army(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/army/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/army(new_human), WEAR_HANDS)
@@ -1954,3 +1926,178 @@
 /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
+
+//*****************************************************************************************************/
+
+//********* NEW VARADERO **************/
+
+// LACN - Marine
+
+/datum/equipment_preset/corpse/new_varadero
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/corpse/new_varadero/lacn_marine
+	name = "Corpse - LACN - Marine"
+	assignment = JOB_LACN_MARINE
+	faction = FACTION_MARINE
+	job_title  = JOB_LACN_MARINE
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/military/survivor/army_standard
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
+
+/datum/equipment_preset/corpse/new_varadero/lacn_marine/proc/spawn_pouch(mob/living/carbon/human/new_human)
+	var/i = rand(1,6)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack/random_amount(new_human), WEAR_IN_L_STORE)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint/random_amount(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount(new_human), WEAR_IN_L_STORE)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount(new_human), WEAR_IN_L_STORE)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack/random_amount(new_human), WEAR_IN_L_STORE)
+		if (5)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount(new_human), WEAR_IN_L_STORE)
+		if (6)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint/random_amount(new_human), WEAR_IN_L_STORE)
+
+/datum/equipment_preset/corpse/new_varadero/lacn_marine/proc/spawn_fluff_item(mob/living/carbon/human/new_human)
+	var/i = rand(1,5)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/spirit(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/matches(new_human), WEAR_IN_BACK)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/souto/classic(new_human), WEAR_IN_BACK)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/space_mountain_wind(new_human), WEAR_IN_BACK)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/chocolatebar(new_human), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/new_varadero/lacn_marine/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,12)
+	var/obj/item/clothing/under/marine/lacn/uniform = new()
+	var/obj/item/clothing/accessory/ranks/marine/e2/pin = new()
+	uniform.attach_accessory(new_human,pin)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/LACN(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fingerless(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_L_EAR)
+	spawn_pouch(new_human)
+	spawn_fluff_item(new_human)
+
+	switch(choice)
+		if(1 to 5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+		if(6 to 7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
+		if(8 to 10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black(new_human), WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
+		if(10 to 12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/new_bimex/black(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/army, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra, WEAR_IN_BACK)
+	..()
+
+/datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst
+	name = "Corpse - Burst - US Army - Trooper"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/tyrargo/us_army_medic
+	name = "Corpse - US Army - Medic"
+	assignment = JOB_ARMY_MEDIC
+	faction = FACTION_MARINE
+	job_title  = JOB_ARMY_MEDIC
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/military/survivor/army_medic
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
+
+/datum/equipment_preset/corpse/tyrargo/us_army_medic/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,12)
+	var/obj/item/clothing/under/marine/army/uniform = new()
+	var/obj/item/clothing/accessory/patch/army/patch_army = new()
+	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto/army(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle/backpack/army(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/army/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/army(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
+
+
+	switch(choice)
+		if(1 to 3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical(new_human), WEAR_WAIST)
+		if(4 to 7)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack/random_amount(new_human), WEAR_IN_BELT)
+		if(8 to 11)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack/random_amount(new_human), WEAR_IN_BELT)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/ointment/random_amount(new_human), WEAR_IN_BELT)
+		if(12)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty, WEAR_IN_R_STORE)
+	..()
+
+/datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
+	name = "Corpse - Burst - US Army - Medic"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/new_varadero/lacn_pilot
+	name = "Corpse - LACN - Pilot"
+	assignment = JOB_ARMY_MEDIC
+	faction = FACTION_MARINE
+	job_title  = JOB_ARMY_MEDIC
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/military/survivor/army_medic
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
+	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
+
+/datum/equipment_preset/corpse/new_varadero/lacn_pilot/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/flight(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/pilot/armor(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)

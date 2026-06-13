@@ -692,6 +692,14 @@
 	desc = "A chestrig used by some USCM personnel."
 	icon_state = "chestrig"
 
+/obj/item/storage/backpack/marine/satchel/chestrig/LACN
+	name = "\improper LACN chestrig"
+	desc = "A standard issue chestrig used by LACN personnel."
+
+/obj/item/storage/backpack/marine/satchel/tech/LACN
+	name = "\improper LACN technician chestrig"
+	desc = "A heavy-duty chestrig used by some LACN medical personal."
+
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
 /obj/item/storage/backpack/marine/satchel/rto

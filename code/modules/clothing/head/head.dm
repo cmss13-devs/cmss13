@@ -591,6 +591,9 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "booniehattan"
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
+/obj/item/clothing/head/cmcap/boonie/LACN
+	name = "\improper LACN boonie hat"
+
 /obj/item/clothing/head/cmcap/boonie/fisherman
 	name = "\improper fisherman's boonie hat"
 	desc = "A floppy boonie hat with hooks, lines, and sinkers tucked around the band—clearly the choice of a seasoned angler. Offers shade from the sun and some rain protection."

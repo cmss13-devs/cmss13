@@ -389,6 +389,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_TANK, JOB_ARMY_SYN)
 
+//-------- LACN --------//
+#define JOB_LACN_MARINE "LACN Fusilier"
+#define JOB_LACN_MEDIC "LACN Médico de combate"
 
 //-------- UPP --------//
 #define JOB_UPP	"UPP Ryadovoy"

@@ -418,6 +418,22 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
 
+/obj/item/clothing/under/marine/lacn
+	name = "LACN Uniform"
+	desc = "Standard-issue uniform worn by members of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "uscmboiler" // placeholder
+	worn_state = "uscmboiler"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	specialty = "LACN"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
 	desc = "Softer than silk. Lighter than feather. More protective than Kevlar. Fancier than a regular jumpsuit, too. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

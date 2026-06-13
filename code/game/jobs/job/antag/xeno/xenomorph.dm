@@ -57,7 +57,7 @@
 		var/count = 0
 		var/obj/structure/bed/nest/start_nest
 		var/start_nest_type = /obj/structure/bed/nest
-		if(GLOB.pathogen_round)
+		if(hive_index == XENO_HIVE_PATHOGEN)
 			start_nest_type = /obj/structure/bed/nest/pathogen
 		var/list/turf/list_to_search = list(get_turf(human_to_transform))
 		while(isnull(start_nest))
@@ -101,13 +101,15 @@
 		start_nest.afterbuckle(human_to_transform)
 
 	var/obj/item/alien_embryo/embryo
-	if(GLOB.pathogen_round)
+	var/mob_path = /mob/living/carbon/xenomorph/larva
+	if(hive_index == XENO_HIVE_PATHOGEN)
 		embryo = new /obj/item/alien_embryo/bloodburster(human_to_transform) //Put the initial larva in a host
+		mob_path = /mob/living/carbon/xenomorph/bloodburster
 	else
 		embryo = new /obj/item/alien_embryo(human_to_transform) //Put the initial larva in a host
 	embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 	embryo.hivenumber = hive.hivenumber
-	embryo.start_bursting(new/mob/living/carbon/xenomorph/larva(human_to_transform), human_to_transform)
+	embryo.start_bursting(new mob_path(human_to_transform), human_to_transform)
 
 /datum/job/antag/xenos/equip_job(mob/living/M)
 	return

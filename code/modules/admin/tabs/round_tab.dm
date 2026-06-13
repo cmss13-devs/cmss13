@@ -81,6 +81,7 @@
 
 	if(tgui_alert(usr, "Are you sure you want to force-toggle a Pathogen round? Pathogen is currently [GLOB.pathogen_round ? "ENABLED" : "DISABLED"].", "Toggle Pathogen Round", list("Yes", "No")) != "Yes")
 		return FALSE
+	GLOB.pathogen_round = !GLOB.pathogen_round
 	message_admins("[key_name_admin(usr)] has [GLOB.pathogen_round ? "made it a pathogen round" : "made it a normal round"].")
 	return TRUE
 

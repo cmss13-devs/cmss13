@@ -207,7 +207,7 @@
 				if(2)
 					user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [weapontool]."),
 					SPAN_NOTICE("You start cutting through [src] with [weapontool]."))
-					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+					playsound(src.loc, 'sound/items/wirecutter.ogg', 25, 1)
 				if(3)
 					user.visible_message(SPAN_NOTICE("[user] pulverizes [src]  with [weapontool]!"),
 					SPAN_NOTICE("You gruesomely cut through [src] with [weapontool], maybe try something smaller and more accurate?"))

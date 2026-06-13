@@ -693,12 +693,12 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/able_to_fire(mob/user)
 	. = ..()
-	if(. && istype(user))
+	if((. & WEAPON_FIRES) && istype(user))
 		if(!current_mag)
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 		if(!current_mag.chamber_closed)
 			to_chat(user, SPAN_DANGER("Close the chamber!"))
-			return 0
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
 	if(!current_mag)

@@ -69,10 +69,10 @@
 
 /obj/item/weapon/gun/rifle/sharp/able_to_fire(mob/living/user)
 	. = ..()
-	if (. && istype(user))
+	if ((. & WEAPON_FIRES) && istype(user))
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 //code for changing explosion delay on direct hits
 

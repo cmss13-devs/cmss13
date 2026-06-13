@@ -68,7 +68,9 @@
 	))
 
 /obj/item/weapon/gun/rifle/techweb_railgun/able_to_fire()
-	return charged
+	if(charged)
+		return WEAPON_FIRES
+	return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(user)
 	if (charged)

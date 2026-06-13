@@ -59,14 +59,14 @@
 
 /obj/item/weapon/gun/minigun/upp/able_to_fire(mob/living/user)
 	. = ..()
-	if(!. || !istype(user)) //Let's check all that other stuff first.
-		return 0
+	if(!(. & WEAPON_FIRES) || !istype(user)) //Let's check all that other stuff first.
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-		return 0
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-		return 0
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 
 //M60
@@ -168,10 +168,10 @@
 
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(cover_open)
 			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 
 /obj/item/weapon/gun/pkp
@@ -286,16 +286,16 @@
 
 /obj/item/weapon/gun/pkp/able_to_fire(mob/living/user)
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(cover_open)
 			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-		return 0
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-		return 0
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 //PILLGUN
 /obj/item/weapon/gun/pill
@@ -360,7 +360,7 @@
 	H.put_in_active_hand(pill_to_use)
 
 /obj/item/weapon/gun/pill/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
-	if(!able_to_fire(user))
+	if(!(able_to_fire(user) & WEAPON_FIRES))
 		return NONE
 
 	if(!current_mag.current_rounds)

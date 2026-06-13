@@ -187,10 +187,10 @@
 
 /obj/item/weapon/gun/revolver/able_to_fire(mob/user)
 	. = ..()
-	if(. && istype(user) && current_mag && !current_mag.chamber_closed)
+	if((. & WEAPON_FIRES) && istype(user) && current_mag && !current_mag.chamber_closed)
 		to_chat(user, SPAN_WARNING("Close the cylinder!"))
 		playsound(user, pick(cylinder_click), 25, 1, 5)
-		return 0
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/revolver/ready_in_chamber()
 	if(current_mag)

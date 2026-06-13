@@ -1224,8 +1224,7 @@ and you're good to go.
 		if(ladder.is_watching)
 			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
 			return NONE
-	var/able_to_fire_result = able_to_fire(user)
-	if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT || !target || !get_turf(user) || !get_turf(target))
+	if(!(able_to_fire(user) & WEAPON_FIRES) || !target || !get_turf(user) || !get_turf(target))
 		return NONE
 
 	/*
@@ -1431,8 +1430,7 @@ and you're good to go.
 		return
 
 	if(EXECUTION_CHECK) //Execution
-		var/able_to_fire_result = able_to_fire(user, TRUE)
-		if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT) //Can they actually use guns in the first place?
+		if(!(able_to_fire(user, TRUE) & WEAPON_FIRES)) //Can they actually use guns in the first place?
 			return ..()
 		if(flags_gun_features & GUN_CANT_EXECUTE)
 			return ..()
@@ -1450,7 +1448,7 @@ and you're good to go.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	var/able_to_fire_result = able_to_fire(user)
-	if(flags_gun_features & GUN_BURST_FIRING || able_to_fire_result != TRUE) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+	if(flags_gun_features & GUN_BURST_FIRING || !(able_to_fire_result & WEAPON_FIRES)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
 		if(able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
 			return ATTACKBY_HINT_NO_AFTERATTACK
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
@@ -1659,8 +1657,7 @@ and you're good to go.
 #undef EXECUTION_CHECK
 
 /obj/item/weapon/gun/proc/handle_suicide(mob/living/carbon/human/user)
-	var/able_to_fire_result = able_to_fire(user)
-	if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
+	if(!(able_to_fire(user) & WEAPON_FIRES))
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
@@ -1670,8 +1667,7 @@ and you're good to go.
 		user.visible_message(SPAN_WARNING("[user] puts their [name] to their head, ready to pull the trigger."))
 	else
 		user.visible_message(SPAN_WARNING("[user] sticks their [name] in their mouth, ready to pull the trigger."))
-	able_to_fire_result = able_to_fire(user)
-	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !(able_to_fire(user) & WEAPON_FIRES))
 		user.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -1762,11 +1758,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	*/
 
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return TRUE
+		return WEAPON_FIRES
 	if(user.is_mob_incapacitated())
-		return
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(HAS_TRAIT(user, TRAIT_HAULED))
-		return
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(world.time < guaranteed_delay_time)
 		return WEAPON_NO_ATTACKBY_HINT
 	if((world.time < wield_time && (delay_style & WEAPON_DELAY_NO_FIRE)) || (world.time < pull_time) && (delay_style & (WEAPON_DELAY_NO_FIRE|WEAPON_DELAY_NO_FIRE_PULL_ONLY)))
@@ -1776,7 +1772,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -1787,41 +1783,41 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 					to_chat(user, SPAN_WARNING("Your master probably wouldn't be happy if you used this."))
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
-				return
+				return WEAPON_NOT_ABLE_TO_FIRE
 			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
 				to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
-				return FALSE
+				return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			gun_user.balloon_alert(gun_user, "safety on")
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
 				gun_user.balloon_alert(gun_user, "help intent safety")
 				click_empty(gun_user)
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
 					to_chat(user, SPAN_WARNING("You must wield [src] to fire [active_attachable]!"))
-					return
+					return WEAPON_NOT_ABLE_TO_FIRE
 		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED) && !active_attachable) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if((flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.
 		//Can also set last_fired through New(), but honestly there's not much point to it.
 
 		// The rest is delay-related. If we're firing full-auto it doesn't matter
 		if(fa_firing)
-			return TRUE
+			return WEAPON_FIRES
 
 		// For point blank attacks, use gun's actual fire rate instead of attack_speed timing
 		if(is_point_blank)
@@ -1829,10 +1825,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/required_delay = fire_delay
 
 			if(time_since_last >= required_delay)
-				return TRUE
+				return WEAPON_FIRES
 			else if(PB_burst_bullets_fired && !(flags_gun_features & GUN_BURST_FIRING)) // Allow continuation of point blank bursts, but not during active bursts
-				return TRUE
-			return
+				return WEAPON_FIRES
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		var/next_shot
 
@@ -1844,7 +1840,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(world.time >= next_shot + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else if(!PB_burst_bullets_fired) //Special delay exemption for handed-off PB bursts. It's the same burst, after all.
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(fire_delay_group)
 			for(var/group in fire_delay_group)
@@ -1860,9 +1856,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 							user.fire_delay_next_fire -= cycled_gun
 							continue
 
-						return
+						return WEAPON_NOT_ABLE_TO_FIRE
 
-	return TRUE
+	return WEAPON_FIRES
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	var/actual_sound = pick(dry_fire_sound)

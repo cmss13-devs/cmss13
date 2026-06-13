@@ -66,11 +66,12 @@
 		. += SPAN_NOTICE("This thing looks like a rifle, but there's no mag or proper barrel. What the hell is it?")
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/able_to_fire(mob/user)
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("The weapon beeps and refuses to fire. Must be some sort of fancy grip safety!"))
-		return
-	else
-		return ..()
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/load_into_chamber()
 	if(charge_time < 1)
@@ -159,11 +160,12 @@
 		. += SPAN_NOTICE("Looks like some massively fucked up alien flamethrower.")
 
 /obj/item/weapon/gun/flamer/yautja/able_to_fire(mob/user)
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("The weapon beeps and refuses to fire. Must be some sort of fancy grip safety!"))
-		return
-	else
-		return ..()
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/flamer/yautja/deathsquad
 	current_mag = /obj/item/ammo_magazine/flamer_tank/yautja/deathsquad
@@ -252,12 +254,12 @@
 	..()
 
 /obj/item/weapon/gun/energy/yautja/cannon/able_to_fire(mob/user)
-	if(!source)
-		return
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
-	return ..()
+		to_chat(user, SPAN_WARNING("The weapon beeps and refuses to fire. Must be some sort of fancy safety!"))
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/energy/yautja/cannon/load_into_chamber(mob/user)
 	if(source.drain_power(user, charge_cost))

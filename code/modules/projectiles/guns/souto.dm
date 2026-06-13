@@ -52,19 +52,19 @@
 
 /obj/item/weapon/gun/souto/able_to_fire(mob/user)
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(!current_mag || !current_mag.current_rounds)
 			return
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_ALL))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
-		var/mob/living/carbon/human/H = user
-		if(!istype(H))
-			return FALSE
-		if(!istype(H.back, /obj/item/storage/backpack/souto))
-			click_empty(H)
-			return FALSE
+		var/mob/living/carbon/human/human_user = user
+		if(!istype(human_user))
+			return WEAPON_NOT_ABLE_TO_FIRE
+		if(!istype(human_user.back, /obj/item/storage/backpack/souto))
+			click_empty(human_user)
+			return WEAPON_NOT_ABLE_TO_FIRE
 		if(current_mag)
 			var/datum/ammo/souto/S = ammo
 			S.can_type = new S.shrapnel_type

@@ -338,7 +338,9 @@
 
 #define WEAPON_GUARANTEED_DELAY 0.1
 
-#define WEAPON_NO_ATTACKBY_HINT (1<<1)
+#define WEAPON_NOT_ABLE_TO_FIRE (1<<1)
+#define WEAPON_NO_ATTACKBY_HINT (1<<2)
+#define WEAPON_FIRES (1<<3)
 
 // Defines for M56D states
 #define M56D_DMG_NONE 0

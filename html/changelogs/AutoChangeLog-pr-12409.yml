@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "APCs not properly handling explosions on the cells within them"

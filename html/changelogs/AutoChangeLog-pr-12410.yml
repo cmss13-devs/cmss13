@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - code_imp: "Rename some defines from Wield_delay to Weapon_delay"

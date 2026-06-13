@@ -78,7 +78,6 @@
 	skull = /obj/item/skull/runner
 	pelt = /obj/item/pelt/runner
 
-
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if (pass_flags_container)

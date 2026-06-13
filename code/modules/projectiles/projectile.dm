@@ -188,16 +188,16 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/first, atom/sec, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
+/obj/projectile/proc/fire_at(atom/target, atom/firer, atom/shot_from, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
 		if(!(projectile_flags & PROJECTILE_SHRAPNEL))
-			var/move_turf = get_turf(first)
+			var/move_turf = get_turf(firer)
 			if(move_turf)
 				forceMove(move_turf)
 		else
-			var/move_turf = get_turf(sec)
+			var/move_turf = get_turf(shot_from)
 			if(move_turf)
 				forceMove(move_turf)
 	starting = get_turf(src)
@@ -208,15 +208,15 @@
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
 		return
-	firer = first
+	src.firer = firer
 
-	if(first && !(projectile_flags & PROJECTILE_SHRAPNEL))
-		permutated |= first //Don't hit the shooter (firer)
-	if(sec)
-		permutated |= get_atom_on_turf(sec) //Don't hit the originating object
+	if(firer && !(projectile_flags & PROJECTILE_SHRAPNEL))
+		permutated |= firer //Don't hit the shooter (firer)
+	if(shot_from)
+		permutated |= get_atom_on_turf(shot_from) //Don't hit the originating object
 
 	permutated |= src //Don't try to hit self.
-	shot_from = sec
+	src.shot_from = shot_from
 
 	setDir(get_dir(loc, target_turf))
 

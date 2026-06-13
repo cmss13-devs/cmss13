@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - rscadd: "crayons count as cosmetic for the purposes of helmet inventory slots"

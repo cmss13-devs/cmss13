@@ -402,3 +402,63 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Trooper"
 	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
+
+//*****************************************************************************************************/
+
+///LACN///
+
+// LACN Marine - unarmed //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine
+	name = "Corpse - LACN - Marine - Unarmed"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_marine
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst
+	name = "Corpse - Burst - LACN - Marine - Unarmed"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_marine/burst
+
+// LACN Marine //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a
+	name = "Corpse - LACN - Marine"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_marine_a
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a/burst
+	name = "Corpse - Burst - LACN - Marine"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_marine_a/burst
+
+// LACN Medic //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_medic
+	name = "Corpse - LACN - Medic"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_medic
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_medic/burst
+	name = "Corpse - Burst - LACN - Medic"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_medic/burst
+
+// LACN MP //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_police
+	name = "Corpse - LACN - Army Police"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_police
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_police/burst
+	name = "Corpse - Burst - LACN - Army Police"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_police/burst
+
+// LACN Pilot //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_pilot
+	name = "Corpse - LACN - Pilot"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_pilot
+
+// LACN Ground crew //
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew
+	name = "Corpse - LACN - Ground Crew"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew
+
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew/burst
+	name = "Corpse - Burst - LACN - Ground Crew"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew/burst

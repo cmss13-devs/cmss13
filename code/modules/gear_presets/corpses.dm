@@ -2210,6 +2210,10 @@
 
 /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
+	var/obj/item/clothing/under/marine/lacn/uniform = new()
+	var/obj/item/clothing/accessory/ranks/marine/e3/pin = new()
+	uniform.attach_accessory(new_human,pin)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
@@ -2217,29 +2221,25 @@
 	switch(choice)
 		if(1 to 2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 		if(3 to 4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
 		if(5 to 9)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics, WEAR_L_STORE)
 		if(10 to 12)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/spirit(new_human), WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/matches(new_human), WEAR_L_STORE)
 	..()
 
 /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew/burst
-	name = "Corpse - Burst - Ground Crew"
+	name = "Corpse - Burst - LACN - Ground Crew"
 	xenovictim = TRUE

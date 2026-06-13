@@ -335,8 +335,8 @@
 		/mob/living/carbon/xenomorph/proc/construction_toggle,
 		/mob/living/carbon/xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/xenomorph/proc/unnesting_toggle,
-		/mob/living/carbon/xenomorph/queen/proc/set_orders,
-		/mob/living/carbon/xenomorph/queen/proc/hive_message,
+		/mob/living/carbon/xenomorph/proc/set_orders,
+		/mob/living/carbon/xenomorph/proc/hive_message,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
@@ -493,13 +493,13 @@
 			if(XENO_NORMAL)
 				name = "[name_prefix]Queen"  //Regular
 			if(XENO_MATURE)
-				name = "[name_prefix]Elder Queen"  //Mature
+				name = "[name_prefix]Empress"  //Mature
 			if(XENO_ELDER)
 				name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT)
 				name = "[name_prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME)
-				name = "[name_prefix]Prime Empress" //Primordial
+				name = "[name_prefix]Prime Empress" //Prime
 	else
 		age = XENO_NORMAL
 		if(client)
@@ -674,7 +674,7 @@
 		if(queen_age_temp_timer_id != TIMER_ID_NULL)
 			. += "Temporary Maturity: [time2text(timeleft(queen_age_temp_timer_id), "mm:ss")] remaining"
 
-/mob/living/carbon/xenomorph/queen/proc/set_orders()
+/mob/living/carbon/xenomorph/proc/set_orders()
 	set category = "Alien.Hivemind-Control"
 	set name = "Set Hive Orders (50)"
 	set desc = "Give some specific orders to the hive. They can see this on the status pane."
@@ -699,7 +699,7 @@
 
 	last_special = world.time + 15 SECONDS
 
-/mob/living/carbon/xenomorph/queen/proc/hive_message()
+/mob/living/carbon/xenomorph/proc/hive_message()
 	set category = "Alien.Hivemind"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible."

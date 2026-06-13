@@ -193,22 +193,22 @@
 
 		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
 		if(istype(weapontool, /obj/item/weapon))
-			switch(is_sharp(weapontool))
+			switch(weapontool.sharp)
 				if(0)
 					user.visible_message(SPAN_NOTICE("[user] starts smashing through [src] with [weapontool], with slow, annoying effort."),
-					SPAN_NOTICE("You smash [src] with [weapontool], undoing the chain-links with great difficulty."))
+					SPAN_DANGER("You smash [src] with [weapontool], slowly undoing the chain-links with great difficulty."))
 					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-					duration *=9 //likely a blunt tool, least viable, you're gonna be there for a while
-				if(2)
-					user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [weapontool]."),
-					SPAN_NOTICE("You start cutting through [src] with [weapontool]."))
-					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+					duration *=12 //likely a blunt tool, least viable, you're gonna be there for a while
 				if(1)
 					user.visible_message(SPAN_NOTICE("[user] messily hacks through the [src] with [weapontool]!"),
 					SPAN_NOTICE("You start trying to cut through [src] with [weapontool], but it's not the right tool for the job."))
 					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 					duration *= 2
-				else // case 3
+				if(2)
+					user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [weapontool]."),
+					SPAN_NOTICE("You start cutting through [src] with [weapontool]."))
+					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+				if(3)
 					user.visible_message(SPAN_NOTICE("[user] pulverizes [src]  with [weapontool]!"),
 					SPAN_NOTICE("You gruesomely cut through [src] with [weapontool], maybe try something smaller and more accurate?"))
 					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)

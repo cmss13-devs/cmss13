@@ -49,7 +49,7 @@
 		/datum/action/xeno_action/onclick/emit_pheromones/pathogen,
 		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/activable/mycotoxin/matriarch,
-		/datum/action/xeno_action/onclick/shatter/matriarch, // Macro 1
+		/datum/action/xeno_action/onclick/shatter, // Macro 1
 		/datum/action/xeno_action/activable/rav_spikes/matriarch, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed/matriarch, // Macro 3
 		/datum/action/xeno_action/onclick/blight_wave, // Macro 4

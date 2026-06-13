@@ -189,3 +189,12 @@
   - bugfix: Some of the larger minimap bitflags can now be seen on the minimap. This
       just means Hives that have the bigger number in the code can be viewed on the
       minimap like normal.
+2026-06-13:
+  DawsonKeyes:
+  - rscadd: Adds new lineart for both AMRs and the M42A sniper
+  - bugfix: Centers the new AMR sprites
+  MistChristmas:
+  - bugfix: APCs not properly handling explosions on the cells within them
+  - code_imp: Xenos destroying reactors now have their do_after checks occur faster.
+  zzzmike:
+  - balance: huggers dropped on the ground become able to jump in 4 seconds.

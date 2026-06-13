@@ -14050,7 +14050,6 @@
 /area/point_loma/airbase/interior/cargo)
 "aOX" = (
 /obj/structure/surface/table/holotable,
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/syndicake,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/point_loma/airbase/interior/admin)

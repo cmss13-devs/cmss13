@@ -8028,13 +8028,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
-"atR" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/living/briefing)
 "atS" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating/plating_catwalk,
@@ -47048,6 +47041,10 @@
 	pixel_x = -17;
 	pixel_y = -8
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_midship_hallway)
 "cjO" = (
@@ -52731,6 +52728,10 @@
 /obj/structure/sign/safety/stairs{
 	pixel_x = -17;
 	pixel_y = 7
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -151242,7 +151243,7 @@ bwG
 bwG
 uCt
 sCg
-atR
+bdd
 eUf
 pwx
 bdd
@@ -151286,7 +151287,7 @@ bdd
 bdd
 ckN
 lyq
-atR
+bdd
 eMI
 mgb
 mJO

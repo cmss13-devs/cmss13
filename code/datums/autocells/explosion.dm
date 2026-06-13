@@ -240,10 +240,11 @@ as having entered the turf.
 
 	// Note that we don't want to make it a directed ex_act because
 	// it could toss them back and make them get hit by the explosion again
+	// so we indicate this with a direction < 0
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, -1, explosion_cause_data, 0, enviro)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC

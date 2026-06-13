@@ -5406,12 +5406,6 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink,
 /area/point_loma/airbase/interior/admin)
-"aqJ" = (
-/obj/structure/window/framed/point_loma/foundation/concrete/reinforced,
-/obj/structure/window/framed/point_loma/foundation/concrete/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
-/turf/open/floor/plating/icefloor,
-/area/point_loma/airbase/interior/admin/upper)
 "aqK" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/observation)
@@ -14197,11 +14191,6 @@
 "aPq" = (
 /turf/open/gm/river/soro,
 /area/point_loma/research_facility/research/park)
-"aPr" = (
-/obj/structure/window/framed/point_loma/foundation/concrete/reinforced,
-/obj/structure/window/framed/point_loma/foundation/concrete/reinforced,
-/turf/open/floor/plating/icefloor,
-/area/point_loma/airbase/interior/admin)
 "aPs" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/sand_white/layer0,
@@ -26616,7 +26605,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/window/reinforced{
 	layer = 5
 	},
@@ -27525,11 +27513,6 @@
 /obj/effect/landmark/corpsespawner/forecon_spotter,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/north)
-"bCM" = (
-/obj/structure/girder,
-/obj/structure/girder,
-/turf/open/floor/plating/icefloor,
-/area/point_loma/airbase/interior/admin)
 "bCN" = (
 /obj/flamer_fire/lasting,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
@@ -29548,11 +29531,6 @@
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 2
 	},
-/turf/open/predship/plating,
-/area/point_loma/research_facility/crash_site)
-"bJh" = (
-/obj/structure/window/framed/colony/reinforced/yautja,
-/obj/structure/window/framed/colony/reinforced/yautja,
 /turf/open/predship/plating,
 /area/point_loma/research_facility/crash_site)
 "bJi" = (
@@ -48409,11 +48387,6 @@
 	},
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/point_loma/oob/predator)
-"jZd" = (
-/obj/structure/girder/reinforced,
-/obj/structure/girder/reinforced,
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/point_loma/airbase/exterior/crash_site)
 "jZr" = (
 /turf/closed/wall/huntership/outerhull,
 /area/point_loma/oob)
@@ -110709,7 +110682,7 @@ byf
 bJj
 byf
 bLJ
-bJh
+bIr
 bIr
 byf
 bxW
@@ -155652,7 +155625,7 @@ bPH
 bBe
 aPN
 aPz
-aPr
+aSY
 aPl
 aOD
 aOD
@@ -156753,7 +156726,7 @@ bBe
 bCH
 bCH
 bCH
-bCM
+bCH
 bCg
 bPY
 bPS
@@ -156954,7 +156927,7 @@ cwV
 cwV
 uPX
 aOp
-jZd
+aOp
 aOp
 bPH
 bPH
@@ -199338,7 +199311,7 @@ aUE
 aUs
 aUs
 aTW
-aqJ
+ato
 clp
 clp
 clp

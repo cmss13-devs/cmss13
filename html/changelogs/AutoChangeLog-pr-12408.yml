@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Makes Egg morphers melee-able"
+  - balance: "Give them 100 extra health so they don't get whacked in one hit by some weapons."

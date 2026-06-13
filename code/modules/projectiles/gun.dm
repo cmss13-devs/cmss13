@@ -1211,7 +1211,7 @@ and you're good to go.
 		//    \\
 		//    \\
 //----------------------------------------------------------
-#define NO_ATTACKBY_HINT 2
+
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
 	set waitfor = FALSE
 
@@ -1224,8 +1224,8 @@ and you're good to go.
 		if(ladder.is_watching)
 			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
 			return NONE
-
-	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
+	var/able_to_fire_result = able_to_fire(user)
+	if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT || !target || !get_turf(user) || !get_turf(target))
 		return NONE
 
 	/*
@@ -1431,7 +1431,8 @@ and you're good to go.
 		return
 
 	if(EXECUTION_CHECK) //Execution
-		if(!able_to_fire(user, TRUE)) //Can they actually use guns in the first place?
+		var/able_to_fire_result = able_to_fire(user, TRUE)
+		if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT) //Can they actually use guns in the first place?
 			return ..()
 		if(flags_gun_features & GUN_CANT_EXECUTE)
 			return ..()
@@ -1450,7 +1451,7 @@ and you're good to go.
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	var/able_to_fire_result = able_to_fire(user)
 	if(flags_gun_features & GUN_BURST_FIRING || able_to_fire_result != TRUE) //If it's a valid PB aside from that you can't fire the gun, do nothing.
-		if(able_to_fire_result == NO_ATTACKBY_HINT)
+		if(able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
 			return ATTACKBY_HINT_NO_AFTERATTACK
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -1658,7 +1659,8 @@ and you're good to go.
 #undef EXECUTION_CHECK
 
 /obj/item/weapon/gun/proc/handle_suicide(mob/living/carbon/human/user)
-	if(!able_to_fire(user))
+	var/able_to_fire_result = able_to_fire(user)
+	if(!able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
@@ -1668,8 +1670,8 @@ and you're good to go.
 		user.visible_message(SPAN_WARNING("[user] puts their [name] to their head, ready to pull the trigger."))
 	else
 		user.visible_message(SPAN_WARNING("[user] sticks their [name] in their mouth, ready to pull the trigger."))
-
-	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+	able_to_fire_result = able_to_fire(user)
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire_result || able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
 		user.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -1766,10 +1768,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
 	if(world.time < guaranteed_delay_time)
-		return NO_ATTACKBY_HINT
+		return WEAPON_NO_ATTACKBY_HINT
 	if((world.time < wield_time && (delay_style & WEAPON_DELAY_NO_FIRE)) || (world.time < pull_time) && (delay_style & (WEAPON_DELAY_NO_FIRE|WEAPON_DELAY_NO_FIRE_PULL_ONLY)))
 		to_chat(user, SPAN_WARNING("You can't fire the [name] yet!"))
-		return NO_ATTACKBY_HINT
+		return WEAPON_NO_ATTACKBY_HINT
 
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
@@ -1861,8 +1863,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 						return
 
 	return TRUE
-
-#undef NO_ATTACKBY_HINT
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	var/actual_sound = pick(dry_fire_sound)

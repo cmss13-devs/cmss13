@@ -168,7 +168,7 @@
 	UnregisterSignal(source, COMSIG_XENO_ACTION_USED)
 	var/datum/action/frenzy = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
 	remove_highlight(frenzy.button)
-	var/datum/action/frenzy_toggle = give_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+	var/datum/action/frenzy_toggle = give_action(xeno, /datum/action/xeno_action/onclick/toggle_frenzy_targeting)
 	add_highlight(frenzy_toggle.button)
 	message_to_player("Good, now toggle <b>Feral Frenzy</b>'s AOE mode with the newly available <b>Toggle Frenzy Type</b> ability.")
 	update_objective("Use the Toggle Frenzy Type ability to change your frenzy mode.")
@@ -228,14 +228,14 @@
 
 	// Arrange the actions about how they'd be in an actual game
 	remove_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
-	remove_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+	remove_action(xeno, /datum/action/xeno_action/onclick/toggle_frenzy_targeting)
 
 	give_action(xeno, /datum/action/xeno_action/activable/tail_stab)
 	give_action(xeno, /datum/action/xeno_action/onclick/feralrush)
 	give_action(xeno, /datum/action/xeno_action/onclick/predalien_roar)
 	give_action(xeno, /datum/action/xeno_action/activable/feral_smash)
 	give_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
-	give_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+	give_action(xeno, /datum/action/xeno_action/onclick/toggle_frenzy_targeting)
 
 /datum/tutorial/xenomorph/abomination/proc/kill_marines_2(datum/source)
 	SIGNAL_HANDLER

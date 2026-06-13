@@ -80,6 +80,11 @@
 	if(shockwave)
 		qdel(shockwave)
 
+/datum/automata_cell/explosion/propagate(dir)
+	var/datum/automata_cell/explosion/new_cell = ..()
+	new_cell?.exploded_atoms |= exploded_atoms
+	return new_cell
+
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
 /datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)

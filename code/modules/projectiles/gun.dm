@@ -1448,7 +1448,7 @@ and you're good to go.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	var/able_to_fire_result = able_to_fire(user)
-	if(flags_gun_features & GUN_BURST_FIRING || !(able_to_fire_result & WEAPON_FIRES)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+	if(flags_gun_features & GUN_BURST_FIRING || (able_to_fire_result & WEAPON_NOT_ABLE_TO_FIRE)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
 		if(able_to_fire_result & WEAPON_NO_ATTACKBY_HINT)
 			return ATTACKBY_HINT_NO_AFTERATTACK
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)

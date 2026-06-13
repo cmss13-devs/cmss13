@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Admin player panel now correctly shows if target is a-slept or not"

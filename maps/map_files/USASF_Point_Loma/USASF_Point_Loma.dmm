@@ -1384,6 +1384,10 @@
 /obj/item/tool/shovel/snow,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
+"aeC" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/corsat/brown/west,
+/area/point_loma/research_facility/hallway/north)
 "aeD" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
@@ -105026,7 +105030,7 @@ blQ
 bNj
 bKZ
 bdK
-aXU
+aeC
 aZG
 chD
 chu

@@ -25,6 +25,7 @@
 	heal_resting = 1.5
 
 	minimap_icon = "blight"
+	minimap_background = "background_pathogen"
 
 /mob/living/carbon/xenomorph/blight
 	caste_type = PATHOGEN_CREATURE_BLIGHT

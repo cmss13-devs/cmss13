@@ -28,6 +28,7 @@
 	heal_resting = 0.75
 
 	minimap_icon = "bloodburster"
+	minimap_background = "background_pathogen"
 
 /datum/caste_datum/pathogen/bloodburster/aberrant
 	caste_type = PATHOGEN_CREATURE_ABER_BURSTER

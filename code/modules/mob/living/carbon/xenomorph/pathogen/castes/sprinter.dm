@@ -28,6 +28,7 @@
 	heal_resting = 1.4
 
 	minimap_icon = "sprinter"
+	minimap_background = "background_pathogen"
 
 /mob/living/carbon/xenomorph/sprinter
 	caste_type = PATHOGEN_CREATURE_SPRINTER

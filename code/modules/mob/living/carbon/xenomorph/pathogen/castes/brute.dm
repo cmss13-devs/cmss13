@@ -25,6 +25,7 @@
 	heal_resting = 1.8
 
 	minimap_icon = "brute"
+	minimap_background = "background_pathogen"
 	evolution_allowed = FALSE
 	royal_caste = TRUE
 

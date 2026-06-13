@@ -26,6 +26,7 @@
 	max_build_dist = 1
 
 	minimap_icon = "popper"
+	minimap_background = "background_pathogen"
 
 /datum/caste_datum/pathogen/popper/New()
 	. = ..()
@@ -550,7 +551,7 @@
 	if(!fatal_use && !check_and_use_plasma_owner())
 		return FALSE
 
-	var/obj/effect/pathogen/spore_cloud/spores = new(target.loc, owner.ckey, TRUE)
+	var/obj/effect/pathogen/spore_cloud/silent/spores = new(target.loc, owner.ckey, TRUE)
 	if(isyautja(target))
 		spores.attempt_yautja_inhale(target, TRUE)
 	else

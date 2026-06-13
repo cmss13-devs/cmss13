@@ -26,6 +26,7 @@
 	max_build_dist = 1
 
 	minimap_icon = "neomorph"
+	minimap_background = "background_pathogen"
 
 /datum/caste_datum/pathogen/neomorph/New()
 	. = ..()

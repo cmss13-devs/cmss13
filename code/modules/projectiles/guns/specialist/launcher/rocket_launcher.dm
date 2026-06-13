@@ -21,7 +21,7 @@
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 15
-	wield_delay = WIELD_DELAY_HORRIBLE
+	wield_delay = WEAPON_DELAY_HORRIBLE
 	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(

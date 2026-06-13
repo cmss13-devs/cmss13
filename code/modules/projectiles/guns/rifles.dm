@@ -16,7 +16,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 
 /obj/item/weapon/gun/rifle/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -155,7 +155,7 @@
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	force = 10
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -261,7 +261,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 
@@ -371,7 +371,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	map_specific_decoration = FALSE
 	starting_attachment_types = list()
 	accepted_ammo = list(
@@ -838,7 +838,7 @@
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -921,8 +921,8 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
-	wield_delay = WIELD_DELAY_VERY_SLOW
-	pull_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_VERY_SLOW
+	pull_delay = WEAPON_DELAY_NORMAL
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
@@ -1439,8 +1439,8 @@
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
-	wield_delay = WIELD_DELAY_VERY_SLOW
-	pull_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_VERY_SLOW
+	pull_delay = WEAPON_DELAY_NORMAL
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
@@ -1528,7 +1528,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1700,7 +1700,7 @@
 	hud_offset = 0
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	bonus_overlay_x = 2
 	force = 20 //integrated melee mod from stock, which doesn't fit on the gun but is still clearly there on the sprite
 	attachable_allowed = list(
@@ -1998,8 +1998,8 @@
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/flare_launcher)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
-	pull_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
+	pull_delay = WEAPON_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	map_specific_decoration = TRUE
 	pixel_x = -5
@@ -2092,7 +2092,7 @@
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 	map_specific_decoration = TRUE
@@ -2162,7 +2162,7 @@
 		/obj/item/attachable/stock/carbine/wood/tactical,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood, /obj/item/attachable/scope/mini/hunting)
 	map_specific_decoration = FALSE
 	civilian_usable_override = TRUE
@@ -2388,7 +2388,7 @@
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/l23
 	force = 10
 
@@ -2473,7 +2473,7 @@
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/l23/extended
 
 	attachable_allowed = list(
@@ -2579,7 +2579,7 @@
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
 /obj/item/weapon/gun/rifle/l64a3/set_gun_attachment_offsets()

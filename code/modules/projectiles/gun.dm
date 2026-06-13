@@ -111,7 +111,7 @@
 	///Self explanatory. How much does aiming (wielding the gun) slow you
 	var/aim_slowdown = 0
 	///How long between wielding and firing in tenths of seconds
-	var/wield_delay = WIELD_DELAY_FAST
+	var/wield_delay = WEAPON_DELAY_FAST
 	///Storing value for wield delay.
 	var/wield_time = 0
 	///Storing value for guaranteed delay
@@ -119,7 +119,7 @@
 	///Storing value for how long pulling a gun takes before you can use it
 	var/pull_time = 0
 	///How long between equiping and the end of the delay_stype penalty in tenths of seconds
-	var/pull_delay = WIELD_DELAY_QUICK
+	var/pull_delay = WEAPON_DELAY_QUICK
 
 	///Determines what happens when you fire a gun before its wield or pull time has finished. By defualt it is extra scatter and an acc. malus.
 	var/delay_style = WEAPON_DELAY_SCATTER_AND_ACCURACY
@@ -804,9 +804,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 			gun_timer_id = addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-			if(wield_delay > WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
+			if(wield_delay > WEAPON_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
 				to_chat(user, SPAN_NOTICE("You start readying yourself to wield \the [src]..."))
-			if(wield_delay >= WIELD_DELAY_SLOW) // for the more slower wielding weapons
+			if(wield_delay >= WEAPON_DELAY_SLOW) // for the more slower wielding weapons
 				user.balloon_alert(user, "wielding")
 
 			return TRUE

@@ -245,7 +245,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/point_loma/research_facility/security_hq)
 "gY" = (
-/turf/closed/wall/new_varadero/reinforced/hull,
+/turf/closed/wall/point_loma/reinforced/hull,
 /area/point_loma/research_facility/security_hq)
 "gZ" = (
 /obj/structure/machinery/door/airlock/glass_security/colony,
@@ -886,7 +886,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/security_hq)
 "xA" = (
-/turf/closed/wall/new_varadero,
+/turf/closed/wall/point_loma,
 /area/point_loma/research_facility/security_hq)
 "xP" = (
 /obj/structure/machinery/vending/security{
@@ -1508,7 +1508,7 @@
 /turf/open/floor/corsat/red/east,
 /area/point_loma/research_facility/security_hq)
 "RP" = (
-/turf/closed/wall/new_varadero/reinforced,
+/turf/closed/wall/point_loma/reinforced,
 /area/point_loma/research_facility/security_hq)
 "Sa" = (
 /obj/effect/decal/cleanable/dirt,

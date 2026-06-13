@@ -73,6 +73,7 @@
 		acid_amount = max_acid
 	if(acid_amount < 0)
 		acid_amount = 0
+	update_acid_overlays()
 
 /datum/behavior_delegate/runner_acider/append_to_stat() //The status panel info for Acid Runner is handed here.
 	. = list()
@@ -258,7 +259,7 @@
 
 	if(perc_index && bound_runner.stat != DEAD)
 		if(bound_runner.body_position == LYING_DOWN)
-			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+			if(!HAS_TRAIT(bound_runner, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_runner, TRAIT_FLOORED))
 				acid_overlays_icon.overlays += icon('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "acidsac_[perc_index] Sleeping")
 			else
 				acid_overlays_icon.overlays += icon('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "acidsac_[perc_index] Knocked Down")

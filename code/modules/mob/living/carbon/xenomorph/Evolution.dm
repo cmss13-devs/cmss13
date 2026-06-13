@@ -524,10 +524,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		if(xeno.counts_for_slots)
 			totalXenos++
 
-	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
+	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_divisor) >= 0.5 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_divisor) >= 0.20 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 

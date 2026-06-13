@@ -48,7 +48,8 @@
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
-	var/tier_slot_multiplier = 1
+	/// Slots are divided by this value to reach final value.
+	var/tier_slot_divisor = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
@@ -761,10 +762,10 @@
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -1884,7 +1885,7 @@
 		PATHOGEN_CREATURE_HARBINGER = 2,
 	)
 
-	tier_slot_multiplier = 0.8 // Experimental change.
+	tier_slot_divisor = 1.5 // Experimental change.
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,

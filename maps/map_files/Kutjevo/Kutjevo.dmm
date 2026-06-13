@@ -929,7 +929,7 @@
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
 "adD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_dunes)
 "adE" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -2743,7 +2743,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "bEp" = (
 /turf/closed/wall/kutjevo/rock,
@@ -3859,7 +3859,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "dht" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "dhL" = (
 /obj/structure/machinery/landinglight{
@@ -7579,7 +7579,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "jog" = (
-/obj/effect/landmark/static_comms/net_one,
+/obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/telecomm/lz1_south)
 "joo" = (
@@ -9012,7 +9012,7 @@
 /turf/open/floor/coagulation/icon0_5,
 /area/kutjevo/exterior/scrubland)
 "lzD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "lAb" = (
 /obj/structure/platform/metal/kutjevo/west,
@@ -9208,7 +9208,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "lRB" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "lRV" = (
 /obj/structure/machinery/light,
@@ -9715,7 +9715,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "mEb" = (
-/obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/telecomm/lz2_south)
 "mEe" = (
@@ -15926,7 +15926,7 @@
 /area/kutjevo/interior/construction/north)
 "wvg" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "wvr" = (
 /turf/open/floor/kutjevo/colors/orange,
@@ -16628,7 +16628,7 @@
 /obj/structure/barricade/metal{
 	dir = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "xBm" = (
 /turf/open/floor/almayer/research/containment/floor2,

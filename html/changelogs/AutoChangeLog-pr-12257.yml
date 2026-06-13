@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - balance: "huggers dropped on the ground become able to jump in 4 seconds."

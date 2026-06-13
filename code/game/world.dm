@@ -216,33 +216,34 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	SS13LIB_REBOOT
 
-	Master.Shutdown()
 	send_reboot_sound()
-	var/server = CONFIG_GET(string/server)
+	spawn(30)
+		Master.Shutdown()
+		var/server = CONFIG_GET(string/server)
 
-	for(var/thing in GLOB.clients)
-		if(!thing)
-			continue
-		var/client/C = thing
-		C.control_server?.restart("Server restarting...")
+		for(var/thing in GLOB.clients)
+			if(!thing)
+				continue
+			var/client/C = thing
+			C.control_server?.restart("Server restarting...")
 
-		C?.tgui_panel?.send_roundrestart()
-		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[server]")
+			C?.tgui_panel?.send_roundrestart()
+			if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+				C << link("byond://[server]")
 
-	#ifdef UNIT_TESTS
-	FinishTestRun()
-	return
-	#endif
+		#ifdef UNIT_TESTS
+		FinishTestRun()
+		return
+		#endif
 
-	shutdown_logging()
+		shutdown_logging()
 
-	if(TgsAvailable())
-		send_tgs_restart()
-		TgsReboot()
-		TgsEndProcess()
-	else
-		shutdown()
+		if(TgsAvailable())
+			send_tgs_restart()
+			TgsReboot()
+			TgsEndProcess()
+		else
+			shutdown()
 
 /world/proc/send_tgs_restart()
 	if(!CONFIG_GET(string/new_round_alert_channel))

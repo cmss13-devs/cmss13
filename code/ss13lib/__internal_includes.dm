@@ -1,9 +1,9 @@
 #ifndef SS13LIB_HUB_SERVER
-#define SS13LIB_HUB_SERVER "https://hub.spacestation13.com/api/server"
+#define SS13LIB_HUB_SERVER "https://api.spacestation13.com/server"
 #endif
 
 #ifndef SS13LIB_CKEY_SUFFIX
-#define SS13LIB_CKEY_SUFFIX "_hub"
+#define SS13LIB_CKEY_SUFFIX "@hub"
 #endif
 
 #ifndef SS13LIB_SERVER_PORT

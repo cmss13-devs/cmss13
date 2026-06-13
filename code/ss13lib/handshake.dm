@@ -22,6 +22,11 @@
 	if(length(auth_methods))
 		handshake_url += "&auth_methods=[jointext(auth_methods, ",")]"
 #endif
+#ifdef SS13LIB_ENGINE
+	var/engine = SS13LIB_ENGINE
+	if(length(engine))
+		handshake_url += "&engine=[engine]"
+#endif
 
 	for(var/i in 1 to SS13LIB_MAX_HANDSHAKE_ATTEMPTS)
 		var/datum/ss13lib_http_response/response = perform_http_request(

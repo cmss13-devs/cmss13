@@ -89,6 +89,10 @@
 		"links" = SS13LIB_SERVER_LINKS,
 #endif
 
+#ifdef SS13LIB_WHITELISTED
+		"whitelisted" = SS13LIB_WHITELISTED,
+#endif
+
 #ifdef SS13LIB_CONNECTION_ADDRESS
 		"connection_address" = SS13LIB_CONNECTION_ADDRESS,
 #endif

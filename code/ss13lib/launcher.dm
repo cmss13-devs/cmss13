@@ -14,7 +14,7 @@
 	if(!port || !key)
 		if(!has_existing)
 			return FALSE
-		// port/key are null, but we've seen this connection before — the launcher
+		// port/key are null, but we've seen this connection before - the launcher
 		// browser will restore from localStorage
 
 	var/datum/ss13lib_launcher/launcher = new

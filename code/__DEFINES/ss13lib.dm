@@ -54,7 +54,7 @@
 /// What language this server should be advertised as being for. This is an ISO 639-1 code, eg:
 /// "en", "ru", "es"
 /// Mandatory field
-#define SS13LIB_SERVER_LANGUAGE // en
+#define SS13LIB_SERVER_LANGUAGE "en"
 
 /// A secondary field that will be visible to users
 /// Up to 1024 characters, no HTML encoding.
@@ -62,9 +62,16 @@
 #define SS13LIB_SERVER_DESCRIPTION // "A very fun server."
 
 /// Links that will be visible/clickable to users on the launcher
-/// Up to 10, with discord/wiki/web/github/forum as "type" options
+/// Up to 10, with discord/wiki/web/github/forum/signal as "type" options
 /// Optional field
 #define SS13LIB_SERVER_LINKS // list(list("type" = "web", "link" = "https://myserver.com"))
+
+/// If this server is whitelisted, provide a link (same format as SS13LIB_SERVER_LINKS) 
+/// where players can apply. An optional description of up to 64 bytes can be provided.
+/// When set, the hub entry displays a "Whitelisted" badge and prompts players to confirm
+/// their whitelist status before joining.
+/// Optional field
+#define SS13LIB_WHITELISTED // list("link" = list("type" = "discord", "link" = "https://discord.gg/invite/example"), "description" = "Apply in #whitelist-apps")
 
 /// If this server has a maximum number of connected players
 /// Optional field
@@ -95,6 +102,12 @@
 /// Defaults to list("hub", "byond") if not defined.
 /// Optional field
 #define SS13LIB_AUTH_METHODS // list("hub", "byond")
+
+/// The engine this server runs on. Sent during handshake.
+/// Valid values: "byond", "opendream"
+/// Defaults to "byond" if not defined.
+/// Optional field
+#define SS13LIB_ENGINE // "byond"
 
 /// If users are to connect to a different IP than the one the hub is communicating to
 /// Optional field
@@ -173,11 +186,11 @@
 
 /// The domain to attest ownership of. Must have a _ss13hub TXT record with the matching ed25519 pubkey.
 /// Maximum 32 characters.
-/// Optional field — if not defined, attestation is skipped.
+/// Optional field - if not defined, attestation is skipped.
 #define SS13LIB_ATTEST_DOMAIN // CONFIG_GET(string/verified_domain)
 
 /// Ed25519 signing implementation. Takes a base64 private key and a message string,
-/// returns a base64-encoded signature. The consumer must provide this — typically via rustg.
+/// returns a base64-encoded signature. The consumer must provide this - typically via rustg.
 /// Required if SS13LIB_ATTEST_DOMAIN is defined.
 #define SS13LIB_ED25519_SIGN(privkey, message) // rustg_ed25519_sign(privkey, message)
 
@@ -187,7 +200,7 @@
 #define SS13LIB_ATTEST_PRIVKEY // CONFIG_GET(string/verified_private_key) = "base64-encoded-32-byte-seed"
 
 /// Returns the current Unix timestamp (seconds since 1970-01-01). The consumer must
-/// provide this — typically via rustg
+/// provide this - typically via rustg
 /// Required if SS13LIB_ATTEST_DOMAIN is defined.
 #define SS13LIB_UNIX_EPOCH // rustg_unix_timestamp()
 

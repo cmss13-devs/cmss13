@@ -1419,6 +1419,33 @@
 	assignment = "Civilian - Material Reprocessing Technician"
 	xenovictim = TRUE
 
+// Fire Station
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter
+	name = "Corpse - Civilian - Fire Protection Specialist"
+	assignment = "Civilian - Fire Protection Specialist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/attached_gun/extinguisher(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flare(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_R_HAND)
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter/burst
+	name = "Corpse - Burst - Civilian - Fire Protection Specialist"
+	assignment = "Civilian - Fire Protection Specialist"
+	xenovictim = TRUE
+
 // Pizza Galaxy
 
 /datum/equipment_preset/corpse/hybrisa/pizza_galaxy
@@ -2070,9 +2097,7 @@
 
 /datum/equipment_preset/corpse/new_varadero/lacn_medic/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
-	var/obj/item/clothing/under/marine/army/uniform = new()
-	var/obj/item/clothing/accessory/patch/army/patch_army = new()
-	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
+	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/LACN(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
@@ -2115,6 +2140,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
 /datum/equipment_preset/corpse/new_varadero/lacn_police/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,12)
 	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
@@ -2182,7 +2208,7 @@
 /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/flight(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 

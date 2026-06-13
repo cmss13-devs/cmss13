@@ -109,6 +109,7 @@
 	// Two waves traveling the same direction amplifies the explosion
 	if(survivor.direction == dying.direction)
 		survivor.power += dying.power
+		survivor.exploded_atoms |= dying.exploded_atoms
 
 	// Two waves travling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])

@@ -170,8 +170,8 @@
 	remove_highlight(frenzy.button)
 	var/datum/action/frenzy_toggle = give_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
 	add_highlight(frenzy_toggle.button)
-	message_to_player("Good, now toggle <b>Feral Frenzy</b>'s AOE mode with the newly available <b>Toggle Gutting Type</b> ability.")
-	update_objective("Use the Toggle Gutting Type ability to change your frenzy mode.")
+	message_to_player("Good, now toggle <b>Feral Frenzy</b>'s AOE mode with the newly available <b>Toggle Frenzy Type</b> ability.")
+	update_objective("Use the Toggle Frenzy Type ability to change your frenzy mode.")
 
 	RegisterSignal(frenzy_toggle, COMSIG_XENO_ACTION_USED, PROC_REF(frenzy_tutorial_6))
 

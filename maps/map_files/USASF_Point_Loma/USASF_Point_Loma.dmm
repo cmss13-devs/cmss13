@@ -1937,9 +1937,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/red/west,
 /area/point_loma/airbase/mining_colony/interior/security)
-"agk" = (
-/turf/closed/wall/rock/brown,
-/area/point_loma/research_facility/security_hq)
 "agl" = (
 /turf/open/shuttle/escapepod/floor3/north,
 /area/point_loma/research_facility/super_death_cannon/engineering)
@@ -21150,9 +21147,6 @@
 	autoname = 1
 	},
 /turf/open/floor/corsat,
-/area/point_loma/research_facility/security_hq)
-"biL" = (
-/turf/closed/wall/point_loma/reinforced/hull,
 /area/point_loma/research_facility/security_hq)
 "biM" = (
 /turf/open/point_loma/dock_concrete,
@@ -107858,7 +107852,7 @@ bnJ
 bnw
 bnj
 bmW
-bmK
+bJw
 bmw
 bjR
 bjt
@@ -108040,7 +108034,7 @@ bnJ
 bnw
 bnj
 bmW
-bmK
+bJw
 bmx
 bjt
 bma
@@ -108222,7 +108216,7 @@ bnJ
 bnw
 bnj
 bmW
-bmK
+bJw
 bmy
 bjt
 bjt
@@ -108404,7 +108398,7 @@ bnJ
 bnw
 bnj
 bmW
-bmK
+bJw
 bmz
 bjt
 bjt
@@ -108586,7 +108580,7 @@ bnJ
 bnw
 bnj
 bmW
-bmK
+bJw
 bmA
 bmk
 acG
@@ -108768,7 +108762,7 @@ bnK
 bnw
 bnj
 bmW
-bmK
+bJw
 bmB
 bml
 bmb
@@ -108950,7 +108944,7 @@ bnL
 bnx
 bnj
 bmW
-bmK
+bJw
 bmC
 bjt
 bmc
@@ -109132,7 +109126,7 @@ bny
 bny
 bnk
 bmW
-bmK
+bJw
 bjt
 bjt
 bjV
@@ -109313,8 +109307,8 @@ bnJ
 bjt
 bnz
 bnl
-bmK
-bmK
+bJw
+bJw
 bjt
 bjt
 bjV
@@ -109495,7 +109489,7 @@ bnJ
 bmm
 bjV
 bjV
-bmK
+bJw
 bjt
 bjt
 bmm
@@ -121152,9 +121146,9 @@ cyz
 aqf
 bkT
 bkT
-biL
-biL
-biL
+bJw
+bJw
+bJw
 cbE
 bIO
 bPr
@@ -121334,9 +121328,9 @@ aqf
 aqf
 blq
 bkU
-biL
-agk
-biL
+bJw
+asb
+bJw
 cbF
 bIO
 bIO
@@ -121516,9 +121510,9 @@ blE
 bkU
 blr
 bkV
-biL
-agk
-biL
+bJw
+asb
+bJw
 cbG
 bIO
 bIO
@@ -121687,20 +121681,20 @@ bIO
 bIO
 bIO
 cze
-biL
-biL
+bJw
+bJw
 bkT
 bkT
 bkT
 bkT
-biL
-biL
+bJw
+bJw
 blG
 bkU
 bkW
-biL
-biL
-biL
+bJw
+bJw
+bJw
 cbm
 bIO
 bIO
@@ -121869,7 +121863,7 @@ bIO
 cyy
 cyq
 cyB
-biL
+bJw
 bno
 ady
 ady
@@ -122051,7 +122045,7 @@ cyy
 cyB
 blE
 ccS
-biL
+bJw
 adr
 adr
 bmL

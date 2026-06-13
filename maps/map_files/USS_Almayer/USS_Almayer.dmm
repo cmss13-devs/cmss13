@@ -47684,7 +47684,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	name = "\improper Yard Observation Bubble";
 	dir = 2;
-	closeOtherId = brigobservation
+	closeOtherId = "brigobservation"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
@@ -48427,7 +48427,7 @@
 "clU" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	name = "\improper Brig Observation";
-	closeOtherId = brigobservation
+	closeOtherId = "brigobservation"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9

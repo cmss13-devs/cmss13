@@ -199,6 +199,19 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "observationshutters";
+	name = "\improper Observation Shutters";
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "courtyard_cells";
+	name = "\improper Courtyard Lockdown Shutter"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/brig/cells)
 "aaE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plating_striped/south,
@@ -43019,7 +43032,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/shipboard/brig/armory)
 "cak" = (
 /obj/structure/machinery/brig_cell/cell_4,
@@ -46246,7 +46259,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/almayer/outer/internal,
 /area/almayer/shipboard/brig/armory)
 "chd" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
@@ -47683,7 +47696,8 @@
 "ckt" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	name = "\improper Yard Observation Bubble";
-	dir = 2
+	dir = 2;
+	closeOtherId = brigobservation
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "courtyard_cells";
@@ -48397,7 +48411,8 @@
 /area/almayer/shipboard/brig/cells)
 "clR" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	name = "\improper Brig Observation"
+	name = "\improper Brig Observation";
+	closeOtherId = brigobservation
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -82347,10 +82362,6 @@
 /obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4
 	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 8;
-	pixel_y = -26
-	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "qxm" = (
@@ -91668,7 +91679,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/medical_science)
 "uxa" = (
-/obj/structure/machinery/vending/dinnerware,
+/obj/structure/machinery/vending/dinnerware/prison,
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "uxb" = (
@@ -170895,12 +170906,12 @@ byx
 bkv
 aJS
 caj
-lrq
+bgX
 bUm
-lrq
+bgX
 bvk
-lrq
-lrq
+bgX
+bgX
 aFG
 aLq
 acL
@@ -171003,7 +171014,7 @@ bvp
 uqo
 bvp
 bij
-lrq
+bgX
 acL
 aBf
 aBf
@@ -171106,7 +171117,7 @@ bvp
 qMD
 bvp
 biE
-lrq
+bgX
 aBf
 aBf
 and
@@ -171209,7 +171220,7 @@ bvy
 bGv
 bvy
 bkM
-lrq
+bgX
 bjc
 aLn
 aJp
@@ -171306,13 +171317,13 @@ bdH
 byx
 aJh
 bkc
-lrq
+bgX
 chv
 bvp
 bGW
 bvp
 bmn
-lrq
+bgX
 baA
 bhv
 aJo
@@ -171409,13 +171420,13 @@ bdH
 byx
 bkD
 biL
-lrq
+bgX
 chv
 bvp
 uqo
 bvA
 bmn
-lrq
+bgX
 baA
 bhv
 aJo
@@ -171512,13 +171523,13 @@ bdH
 byx
 bkI
 aJS
-lrq
+bgX
 bVE
 bUB
 bLG
 bvp
 bnC
-lrq
+bgX
 baA
 bhv
 aJo
@@ -171615,13 +171626,13 @@ bdH
 byx
 bkw
 biM
-aJh
-aJh
-aJh
-aJh
-aJh
-aJh
-aJh
+bGf
+bGf
+bGf
+bGf
+bGf
+bGf
+bGf
 baA
 anS
 aJo
@@ -199351,7 +199362,7 @@ xkd
 clt
 ckT
 qxe
-xkd
+aaD
 cks
 ckm
 cjX

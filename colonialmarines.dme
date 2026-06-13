@@ -1202,6 +1202,7 @@
 #include "code\game\objects\effects\landmarks\itemspawner.dm"
 #include "code\game\objects\effects\landmarks\landmarks.dm"
 #include "code\game\objects\effects\landmarks\survivor_spawner.dm"
+#include "code\game\objects\effects\landmarks\structure_spawners\pathogen_spores.dm"
 #include "code\game\objects\effects\landmarks\structure_spawners\setup_distress.dm"
 #include "code\game\objects\effects\landmarks\structure_spawners\structure_spawner.dm"
 #include "code\game\objects\effects\landmarks\structure_spawners\xvx_hive.dm"

@@ -332,7 +332,7 @@
 	skills = /datum/skills/commander
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
-	minimap_icon = "us_commander"
+	minimap_icon = "co"
 
 /datum/equipment_preset/survivor/army/co/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()

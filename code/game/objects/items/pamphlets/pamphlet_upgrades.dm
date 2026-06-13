@@ -92,7 +92,7 @@
 	desc = "A pamphlet used to quickly impart vital knowledge on heavier-duty equipments and firearms. You suppose you can utilize some of its teachings for some engineering practices."
 	icon_state = "pamphlet_machinegunner"
 	skill_upgrade = SKILL_ENGINEER
-	skill_cap = 2
+	skill_cap = 1
 
 /obj/item/pamphlet/upgradeable/surgery
 	name = "Surgery instructional pamphlet"

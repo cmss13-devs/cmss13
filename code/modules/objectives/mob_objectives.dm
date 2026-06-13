@@ -162,7 +162,7 @@
 		// Add points depending on who controls it
 		var/turf/T = get_turf(target)
 		var/area/A = get_area(T)
-		if(istype(A, /area/almayer/medical/morgue) || istype(A, /area/almayer/medical/containment))
+		if(istype(A, /area/almayer/medical/morgue) || istype(A, /area/almayer/medical/containment/cell))
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)

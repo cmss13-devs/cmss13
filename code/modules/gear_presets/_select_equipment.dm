@@ -669,9 +669,9 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		return
 
 	var/list/elite_merc_rifles = list(
-	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
+	/obj/item/weapon/gun/smg/m39/elite/no_lock = /obj/item/ammo_magazine/smg/m39/ap,
 	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
-	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
+	/obj/item/weapon/gun/rifle/m41a/elite/no_lock = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
 	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),

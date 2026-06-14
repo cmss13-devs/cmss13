@@ -13,9 +13,6 @@
 	var/gid = 0
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
-
-	var/atom/movable/screen/hands = null //robot
 
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey

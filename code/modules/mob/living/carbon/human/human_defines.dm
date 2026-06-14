@@ -82,7 +82,6 @@
 	//Life variables
 	var/oxygen_alert = 0
 	var/fire_alert = 0
-	var/prev_gender = null // Debug for plural genders
 	var/revive_grace_period = 5 MINUTES //5 minutes
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 

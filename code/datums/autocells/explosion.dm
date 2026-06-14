@@ -79,6 +79,7 @@
 /datum/automata_cell/explosion/death()
 	if(shockwave)
 		qdel(shockwave)
+	exploded_atoms.Cut()
 
 /datum/automata_cell/explosion/propagate(dir)
 	var/datum/automata_cell/explosion/new_cell = ..()

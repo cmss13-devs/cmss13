@@ -452,20 +452,8 @@
 /datum/species/proc/handle_unique_behavior(mob/living/carbon/human/H)
 	return
 
-// Used to update alien icons for aliens.
-/datum/species/proc/handle_login_special(mob/living/carbon/human/H)
-	return
-
-// As above.
-/datum/species/proc/handle_logout_special(mob/living/carbon/human/H)
-	return
-
 // Builds the HUD using species-specific icons and usable slots.
 /datum/species/proc/build_hud(mob/living/carbon/human/H)
-	return
-
-// Grabs the window received when you click-drag someone onto you.
-/datum/species/proc/get_inventory_dialogue(mob/living/carbon/human/H)
 	return
 
 //Used by xenos understanding larvae and dionaea understanding nymphs.

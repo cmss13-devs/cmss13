@@ -1036,62 +1036,6 @@
 		SPAN_DANGER("We [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/xenomorph/xeno, shuttle_tag)
-	if(!queen_locked) //we have not hijacked it yet
-		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			to_chat(xeno, SPAN_XENODANGER("We can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
-			return
-
-		var/message
-		if(shuttle_tag == "Ground Transport 1") // CORSAT monorail
-			message = "We have wrested away remote control of the metal crawler! Rejoice!"
-		else
-			message = "We have wrested away remote control of the metal bird! Rejoice!"
-			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
-				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
-
-		to_chat(xeno, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
-		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,xeno.hivenumber)
-		last_locked = world.time
-		if(GLOB.almayer_orbital_cannon)
-			GLOB.almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-		queen_locked = 1
-
-/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/xenomorph/xeno, shuttle_tag)
-	if(!door_override)
-		to_chat(xeno, SPAN_XENONOTICE("We override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"),3,xeno.hivenumber)
-		last_door_override = world.time
-		door_override = 1
-
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == DROPSHIP_NORMANDY)
-			ship_id = "sh_dropship2"
-		if(shuttle_tag == DROPSHIP_SAIPAN)
-			ship_id = "sh_dropship3"
-		if(shuttle_tag == DROPSHIP_MORANA)
-			ship_id = "sh_dropship4"
-		if(shuttle_tag == DROPSHIP_DEVANA)
-			ship_id = "sh_dropship5"
-
-
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/ship in GLOB.machines)
-			if(ship.id == ship_id)
-				ship.unlock()
-
-		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
-		switch(ship_id)
-			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/ship in GLOB.machines)
-					reardoor = ship
-			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/ship in GLOB.machines)
-					reardoor = ship
-		if(!reardoor)
-			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
-		reardoor.unlock()
-
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/xeno)
 

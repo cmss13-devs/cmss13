@@ -6,13 +6,6 @@
 /datum/controller/shuttle_controller/process()
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
-
-		// Hacky bullshit that should only apply for shuttle/marine's for now.
-		if (shuttle.move_scheduled && shuttle.already_moving == 0)
-			shuttle.already_moving = 1
-			spawn(-1)
-				move_shuttle_to(shuttle.target_turf, 0, shuttle.shuttle_turfs, 0, shuttle.target_rotation, shuttle)
-
 		if (shuttle.process_state)
 			shuttle.process()
 
@@ -228,8 +221,6 @@
 
 	for(var/shuttle_tag in shuttles)
 		shuttle = shuttles[shuttle_tag]
-		if(istype(shuttle, /datum/shuttle/ferry/marine))
-			continue //Evac pods ignore this, as do other marine ferries.
 		if(shuttle.docking_controller_tag)
 			dock_controller_map[shuttle.docking_controller_tag] = shuttle
 

@@ -17,26 +17,7 @@
 
 	if(check_rights(R_VAREDIT))
 
-		if(href_list["rename"])
-			if(!check_rights(NONE))
-				return
-
-			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
-			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob", confidential = TRUE)
-				return
-
-			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
-
-			if( !new_name || !M )
-				return
-
-			message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
-			M.fully_replace_character_name(M.real_name,new_name)
-			vv_update_display(M, "name", new_name)
-			vv_update_display(M, "real_name", M.real_name || "No real name")
-
-		else if(href_list["rotatedatum"])
+		if(href_list["rotatedatum"])
 			if(!check_rights(NONE))
 				return
 

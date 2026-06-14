@@ -5,9 +5,7 @@
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
 	var/on = 1 // 0 for off
-	var/last_transmission
 	var/frequency = PUB_FREQ //common chat
-	var/traitor_frequency = 0 //tune to frequency to unlock traitor supplies
 	var/canhear_range = 3 // the range which mobs can hear this radio from
 	var/wires = WIRE_SIGNAL|WIRE_RECEIVE|WIRE_TRANSMIT
 	var/b_stat = 0
@@ -169,17 +167,6 @@
 				//else
 				// recalculateChannels()
 				. = TRUE
-
-/obj/item/device/radio/proc/text_wires()
-	if (!b_stat)
-		return ""
-	return {"
-			<hr>
-			Green Wire: <A href='byond://?src=\ref[src];wires=4'>[(wires & 4) ? "Cut" : "Mend"] Wire</A><BR>
-			Red Wire:   <A href='byond://?src=\ref[src];wires=2'>[(wires & 2) ? "Cut" : "Mend"] Wire</A><BR>
-			Blue Wire:  <A href='byond://?src=\ref[src];wires=1'>[(wires & 1) ? "Cut" : "Mend"] Wire</A><BR>
-			"}
-
 
 /obj/item/device/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
@@ -390,16 +377,6 @@
 		if (!accept)
 			return -1
 	return canhear_range
-
-/obj/item/device/radio/proc/send_hear(freq, level)
-	var/range = receive_range(freq, level)
-	if(range > -1)
-		var/list/hearers
-		var/list/mobs = get_mobs_in_view(canhear_range, src)
-		var/list/radios = get_radios_in_view(canhear_range, src)
-		hearers += mobs
-		hearers += radios
-		return hearers
 
 
 /obj/item/device/radio/get_examine_text(mob/user)

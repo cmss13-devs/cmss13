@@ -97,15 +97,6 @@
 	},
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
-"bJ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat/squares{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/area/adminlevel/ert_station/cmb_station)
 "bT" = (
 /obj/structure/bed/chair/bolted{
 	pixel_x = 8;
@@ -283,10 +274,7 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "eh" = (
-/turf/open/floor/prison/blue/northwest{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/turf/open/floor/prison/blue/northwest,
 /area/adminlevel/ert_station/cmb_station)
 "ei" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -471,12 +459,6 @@
 	},
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/cmb_station)
-"fZ" = (
-/turf/open/floor/corsat/squares{
-	pixel_x = 0;
-	pixel_y = 0
-	},
 /area/adminlevel/ert_station/cmb_station)
 "gg" = (
 /turf/open/floor/whitered,
@@ -2475,10 +2457,6 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
-"Ms" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/ert_station/cmb_station)
 "Mt" = (
 /obj/structure/machinery/cryopod/no_store/right{
 	layer = 3.1;
@@ -2707,11 +2685,6 @@
 	pixel_y = 0
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
-/area/adminlevel/ert_station/cmb_station)
-"Ph" = (
-/turf/open/floor/corsat/bluecorner{
-	dir = 8
-	},
 /area/adminlevel/ert_station/cmb_station)
 "Pr" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
@@ -3030,10 +3003,7 @@
 	pixel_x = -8;
 	pixel_y = 17
 	},
-/turf/open/floor/corsat/squares{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Tr" = (
 /turf/open/floor/prison/blue/east,
@@ -3094,11 +3064,6 @@
 	pixel_x = -30
 	},
 /turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/cmb_station)
-"UJ" = (
-/turf/open/floor/corsat/bluecorner{
-	dir = 1
-	},
 /area/adminlevel/ert_station/cmb_station)
 "UL" = (
 /obj/structure/filingcabinet/chestdrawer{
@@ -6155,12 +6120,12 @@ tZ
 tZ
 tZ
 Io
-Ph
+nB
 Qe
 Ki
 Qe
 Ki
-UJ
+rK
 dN
 qx
 vj
@@ -6369,7 +6334,7 @@ vj
 (51,1,1) = {"
 YG
 YG
-Ms
+vj
 yE
 tZ
 tZ
@@ -6458,7 +6423,7 @@ vj
 vj
 vj
 Tp
-fZ
+dN
 bT
 QB
 dN
@@ -6515,7 +6480,7 @@ vj
 YG
 YG
 vj
-bJ
+OQ
 Ej
 mW
 QB

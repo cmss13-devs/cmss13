@@ -8884,6 +8884,13 @@
 	},
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo)
+"azO" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "azP" = (
 /turf/open/point_loma/alt_concrete/warning/south,
 /area/point_loma/research_facility/super_death_cannon/observation/catwalk)
@@ -9476,6 +9483,10 @@
 /obj/item/tool/soap,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/point_loma/airbase/interior/cargo)
+"aBC" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "aBD" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/yellow/east,
@@ -9640,12 +9651,31 @@
 "aCa" = (
 /turf/open/predship/mainfloor/corner/north,
 /area/point_loma/airbase/exterior/crash_site)
+"aCb" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
+"aCc" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "aCd" = (
 /turf/open/predship/mainfloor/corner,
 /area/point_loma/airbase/exterior/crash_site)
 "aCe" = (
 /turf/open/predship/mainfloor/direction_1/west,
 /area/point_loma/airbase/exterior/crash_site)
+"aCf" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "aCg" = (
 /obj/structure/bed/hybrisa/prisonbed,
 /turf/open/floor/corsat/squares,
@@ -9658,6 +9688,12 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/crash_site)
+"aCi" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/cave/west/upper)
 "aCj" = (
 /obj/effect/decal/hybrisa/workers_decal{
 	pixel_x = 1;
@@ -11168,6 +11204,12 @@
 	},
 /turf/open/floor/corsat/purple/east,
 /area/point_loma/research_facility/research/west)
+"aGH" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/cave/west/upper)
 "aGI" = (
 /obj/structure/machinery/floodlight,
 /turf/open/point_loma,
@@ -11194,6 +11236,10 @@
 "aGN" = (
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/research/west)
+"aGO" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/cave/west/upper)
 "aGP" = (
 /obj/structure/cable{
 	icon_state = "1-4";
@@ -12567,6 +12613,12 @@
 "aKA" = (
 /turf/open/walkable_lattice,
 /area/point_loma/airbase/exterior/crash_site)
+"aKB" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/cave/west/upper)
 "aKC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
@@ -12645,6 +12697,12 @@
 	},
 /turf/open/predship/tile/red,
 /area/point_loma/airbase/exterior/crash_site)
+"aKN" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "aKO" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/prop/magazine/book/spacebeast{
@@ -12668,6 +12726,15 @@
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/shiva/yellow/northeast,
 /area/point_loma/airbase/interior/cargo/lower)
+"aKS" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/admin/upper/catwalks)
 "aKT" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/multi_tiles,
@@ -12676,6 +12743,12 @@
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/open/hybrisa/street/roadlines3,
 /area/point_loma/airbase/exterior/west)
+"aKV" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/atc/upper)
 "aKW" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -13642,6 +13715,12 @@
 	},
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
+"aNp" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/airbase/interior/atc/upper)
 "aNq" = (
 /obj/structure/bed/chair{
 	pixel_x = 4;
@@ -13669,6 +13748,10 @@
 /obj/effect/spawner/random/gun/clf_primary,
 /turf/open/floor/corsat/yellow/north,
 /area/point_loma/research_facility/hallway/west)
+"aNu" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/floor/plating/catwalk,
+/area/point_loma/oob/sky)
 "aNv" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SWWarehouse"
@@ -14273,6 +14356,13 @@
 "aPq" = (
 /turf/open/gm/river/soro,
 /area/point_loma/research_facility/research/park)
+"aPr" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk,
+/area/point_loma/oob/sky)
 "aPs" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/sand_white/layer0,
@@ -15713,6 +15803,9 @@
 /area/point_loma/airbase/mining_colony/interior/engineering)
 "aTx" = (
 /obj/item/prop/magazine/dirty,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/interior/admin/upper/catwalks)
 "aTy" = (
@@ -194816,8 +194909,8 @@ bTS
 asb
 asb
 bIT
-fhU
-fhU
+aKB
+aGO
 cvd
 cvd
 asb
@@ -194995,13 +195088,13 @@ bTS
 bTS
 bTS
 bTS
+aKN
 jby
-jby
+aGH
 fhU
 fhU
-fhU
-fhU
-fhU
+aGH
+aGH
 fhU
 asb
 cvd
@@ -195177,14 +195270,14 @@ bTS
 bTS
 bTS
 bTS
+aKN
 jby
-jby
 fhU
 fhU
 fhU
-fhU
-fhU
-fhU
+aCi
+aCi
+aCi
 cvd
 cvd
 cvd
@@ -195359,7 +195452,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 asb
 asb
@@ -195541,7 +195634,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 asb
 asb
@@ -195723,7 +195816,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 asb
 asb
@@ -195905,8 +195998,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 asb
 asb
@@ -196087,8 +196180,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 asb
 asb
@@ -196269,8 +196362,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxM
 cxk
@@ -196451,8 +196544,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -196633,8 +196726,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -196815,8 +196908,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -196997,8 +197090,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -197179,8 +197272,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -197361,8 +197454,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxN
 cxl
@@ -197543,8 +197636,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 cxO
 cxG
@@ -197725,8 +197818,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 bTS
 bTS
@@ -197907,8 +198000,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 bTS
 bTS
@@ -198089,8 +198182,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 bTS
 bTS
@@ -198271,8 +198364,8 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
+aKN
+aBC
 bTS
 bTS
 bTS
@@ -198446,47 +198539,47 @@ bTS
 bTS
 bTS
 bTS
-jby
-jby
-jby
+aKS
+aCc
+aCc
 aTx
+aCc
+aCc
+aCc
 jby
 jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
-jby
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+aCc
+azO
 bTS
 bTS
 bTS
@@ -198621,13 +198714,13 @@ bbA
 bbv
 dkN
 dkN
-cJd
-cJd
-cJd
-cJd
-cJd
-cJd
-cJd
+aKV
+aKV
+aKV
+aKV
+aKV
+aKV
+aKV
 jby
 jby
 jby
@@ -198668,7 +198761,7 @@ jby
 jby
 jby
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -198805,11 +198898,11 @@ bbq
 cJf
 cJd
 cJd
-cJd
-cJd
-cJd
-cJd
-cJd
+aNp
+aNp
+aNp
+aNp
+aNp
 jby
 jby
 bzI
@@ -198850,7 +198943,7 @@ alC
 alC
 bzI
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -198986,13 +199079,13 @@ bbx
 bbr
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 alC
 btk
@@ -199032,7 +199125,7 @@ clp
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -199168,13 +199261,13 @@ bby
 dkN
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVO
 aVn
@@ -199214,7 +199307,7 @@ clp
 tjf
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -199350,13 +199443,13 @@ dkN
 dkN
 cJg
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 alC
 aVq
@@ -199396,7 +199489,7 @@ clp
 hUX
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -199532,13 +199625,13 @@ bVh
 dkN
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVR
 aVq
@@ -199578,7 +199671,7 @@ clp
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -199714,13 +199807,13 @@ bVh
 bVh
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVR
 aVq
@@ -199760,7 +199853,7 @@ alC
 alC
 bzI
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -199896,13 +199989,13 @@ bVh
 bVh
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bBB
 bAA
@@ -199942,7 +200035,7 @@ aUb
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200078,13 +200171,13 @@ bVh
 ctR
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVR
 aVq
@@ -200124,7 +200217,7 @@ clp
 byB
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200260,13 +200353,13 @@ bVh
 bVh
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVS
 aVq
@@ -200306,7 +200399,7 @@ clp
 byC
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200442,13 +200535,13 @@ bVh
 bVh
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 aVO
 aVq
@@ -200488,7 +200581,7 @@ nTl
 byD
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200624,13 +200717,13 @@ bVh
 bVh
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 alC
 aVy
@@ -200670,7 +200763,7 @@ bVJ
 byE
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200806,13 +200899,13 @@ bFa
 bbs
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 alC
 aVD
@@ -200852,7 +200945,7 @@ clp
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -200988,13 +201081,13 @@ bVi
 bEY
 dkN
 cJe
-cJe
+aNu
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bzI
 alC
@@ -201034,7 +201127,7 @@ clp
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -201170,13 +201263,13 @@ bFb
 bEY
 dkN
 cJe
-cJe
+aPr
 bTS
 bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 alC
 btl
@@ -201216,7 +201309,7 @@ clp
 clp
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -201358,7 +201451,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 rrL
 bsr
@@ -201398,7 +201491,7 @@ byL
 byF
 bzI
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -201540,7 +201633,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 rrL
 btm
@@ -201580,7 +201673,7 @@ byM
 byG
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -201722,7 +201815,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 rrL
 btn
@@ -201762,7 +201855,7 @@ byN
 byH
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -201904,7 +201997,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bzI
 btn
@@ -201944,7 +202037,7 @@ byO
 byI
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -202086,7 +202179,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bzI
 btn
@@ -202126,7 +202219,7 @@ byN
 byG
 alC
 jby
-jby
+aBC
 bTS
 bTS
 bTS
@@ -202268,7 +202361,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bzI
 bBB
@@ -202307,8 +202400,8 @@ byZ
 byP
 byJ
 byA
-jby
-jby
+aCf
+aCb
 bTS
 bTS
 bTS
@@ -202450,7 +202543,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bxR
 bxR
@@ -202632,7 +202725,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bxR
 bxR
@@ -202814,7 +202907,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bxR
 bxR
@@ -202996,7 +203089,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bxR
 bxR
@@ -203178,7 +203271,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 jby
 bxR
 bxR
@@ -203360,7 +203453,7 @@ bTS
 bTS
 bTS
 bTS
-jby
+aKN
 bTS
 bxR
 bxR

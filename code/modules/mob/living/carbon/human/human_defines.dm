@@ -69,8 +69,6 @@
 
 	var/voice
 
-	var/special_voice = "" // For changing our voice. Used by a symptom.
-
 	var/last_dam = -1 //Used for determining if we need to process all limbs or just some or even none.
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 

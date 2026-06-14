@@ -9656,6 +9656,15 @@
 	},
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/admin/upper)
+"aCc" = (
+/obj/structure/stairs/multiz/rock/up{
+	dir = 4
+	},
+/obj/structure/stairs/multiz/rock/up{
+	dir = 4
+	},
+/turf/open/predship/plating,
+/area/point_loma/research_facility/crash_site)
 "aCd" = (
 /turf/open/predship/mainfloor/corner,
 /area/point_loma/airbase/exterior/crash_site)
@@ -26110,7 +26119,7 @@
 /area/point_loma/airbase/exterior/north/radar)
 "bxP" = (
 /obj/structure/stairs/multiz/rock/up{
-	dir = 8
+	dir = 4
 	},
 /turf/open/predship/plating,
 /area/point_loma/research_facility/crash_site)
@@ -47302,7 +47311,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "dVO" = (
 /obj/structure/stairs/perspective/rock{
-	dir = 8
+	dir = 4
 	},
 /turf/open/predship/plating,
 /area/point_loma/research_facility/crash_site)
@@ -47997,7 +48006,7 @@
 /area/point_loma/oob/predator)
 "hyy" = (
 /obj/structure/stairs/multiz/rock/down{
-	dir = 8
+	dir = 4
 	},
 /turf/open/predship/plating,
 /area/point_loma/airbase/exterior/crash_site/opening)
@@ -112708,7 +112717,7 @@ bxP
 bxP
 bxP
 bxP
-bxP
+aCc
 bxP
 bxP
 bxP

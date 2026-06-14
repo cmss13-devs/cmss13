@@ -197,7 +197,7 @@
 	// Super bio armor
 	var/bio_hardcore = 0
 
-	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+	var/list/worn_clothes = list(head, wear_suit, glasses, w_uniform, shoes, wear_mask)
 
 	for(var/obj/item/clothing/worn_item in worn_clothes)
 		total_prot += worn_item.armor_bio

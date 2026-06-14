@@ -278,7 +278,7 @@
 				else
 					to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech. You ready yourself, remembering that this is the call of the Queen for her Hive to evolve to new forms."))
 		if(issynth(current_mob))
-			if(ROUND_TIME < GLOB.king_acquisition_time)
+			if(ROUND_TIME > GLOB.king_acquisition_time)
 				to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're mobilising to summon something Great."))
 			else
 				to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))

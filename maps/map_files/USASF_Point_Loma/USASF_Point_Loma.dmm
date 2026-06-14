@@ -9656,15 +9656,6 @@
 	},
 /turf/open/floor/plating/wood,
 /area/point_loma/airbase/interior/admin/upper)
-"aCc" = (
-/obj/structure/stairs/multiz/rock/up{
-	dir = 4
-	},
-/obj/structure/stairs/multiz/rock/up{
-	dir = 4
-	},
-/turf/open/predship/plating,
-/area/point_loma/research_facility/crash_site)
 "aCd" = (
 /turf/open/predship/mainfloor/corner,
 /area/point_loma/airbase/exterior/crash_site)
@@ -112717,7 +112708,7 @@ bxP
 bxP
 bxP
 bxP
-aCc
+bxP
 bxP
 bxP
 bxP

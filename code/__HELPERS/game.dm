@@ -95,23 +95,6 @@
 					hear += M
 	return hear
 
-///only gets FUNCTIONING radios
-/proc/get_radios_in_view(R, atom/source)
-	var/turf/T = get_turf(source)
-	var/list/hear = list()
-
-	if(!T)
-		return hear
-
-	var/list/range = hear(R, T)
-
-	for(var/atom/A in range)
-		if(istype(A, /obj/item/device/radio))
-			var/obj/item/device/radio/radio = A
-			if(radio.on && radio.listening)
-				hear += A
-	return hear
-
 /proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
 
 	set background = 1

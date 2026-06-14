@@ -227,16 +227,6 @@
 	forceMove(L.loc)
 	..()
 
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-//Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
-	return
-
 /**
  * Global item proc for all of your unique item skin needs. Works with any
  * item, and will change the skin to whatever you specify here. You can also

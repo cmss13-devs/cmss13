@@ -158,7 +158,7 @@
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
-	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 20 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
+	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 15 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	GLOB.chemical_data.reroll_chemicals()
 

@@ -128,7 +128,6 @@
 	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
-	var/overeatduration = 0 // How long this guy is overeating //Carbon
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
@@ -146,8 +145,6 @@
 	var/datum/hud/hud_used = null
 
 	var/grab_level = GRAB_PASSIVE //if we're pulling a mob, tells us how aggressive our grab is.
-
-	var/list/mapobjs = list()
 
 	var/throw_mode = THROW_MODE_OFF
 

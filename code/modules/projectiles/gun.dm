@@ -139,12 +139,7 @@
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
 	var/fa_max_scatter = 6.5
-	///Click parameters to use when firing full-auto
-	var/fa_params = null
 
-	///Used to fire faster at more than one person.
-	var/tmp/mob/living/last_moved_mob
-	var/tmp/lock_time = -100
 	///Used to determine if you can target multiple people.
 	var/automatic = 0
 	///So that it doesn't spam them with the fact they cannot hit them.
@@ -310,7 +305,6 @@
 	ammo = null
 	QDEL_NULL(current_mag)
 	target = null
-	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
 	attachments = null

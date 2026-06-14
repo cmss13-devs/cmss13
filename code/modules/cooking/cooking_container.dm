@@ -4,10 +4,13 @@
 	vis_flags = VIS_INHERIT_ID
 
 /// Abstract reagent container used for transferring from non-containers e.g. sinks
-/obj/item/reagent_containers/temp
-	container_type = OPENCONTAINER
+/obj/item/reagent_container/temp
+	flags_atom = FPRINT|OPENCONTAINER
 	amount_per_transfer_from_this = 5
-	list_reagents = list("water" = 5)
+
+/obj/item/reagent_container/temp/Initialize()
+	. = ..()
+	reagents.add_reagent("water", 10)
 
 /**
  * Cooking containers are used in ovens, fryers and so on, to hold multiple
@@ -18,12 +21,11 @@
  * things factory-style, eliminating the need for 20 plates to get things done
  * fast.
  **/
-/obj/item/reagent_containers/cooking
+/obj/item/reagent_container/cooking
 	icon = 'icons/obj/cooking/containers.dmi'
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = SIZE_SMALL
 	volume = 240
-	container_type = OPENCONTAINER
-	visible_transfer_rate = null
+	flags_atom = FPRINT|OPENCONTAINER
 	possible_transfer_amounts = null
 
 	/// The [/datum/cooking/recipe_tracker] of the current food preparation.
@@ -37,35 +39,33 @@
 	var/list/cooker_data = list()
 	/// Preposition for human-readable recipe e.g. "in a pain", "on a grill".
 	var/preposition = "In"
-	/// The autochef which has claimed this container.
-	var/obj/machinery/autochef/claimed
 	/// Whether the container is in "mini" mode, that is, placed on a cooking machine and rendered
 	/// with its smaller icons
 	var/mini = FALSE
 
-/obj/item/reagent_containers/cooking/Initialize(mapload)
+/obj/item/reagent_container/cooking/Initialize(mapload)
 	. = ..()
-	flags |= REAGENT_NOREACT
+	flags_atom |= NOREACT
 	update_lip_effect()
 	clear_cooking_data()
 
-/obj/item/reagent_containers/cooking/proc/update_lip_effect()
+/obj/item/reagent_container/cooking/proc/update_lip_effect()
 	if(lip)
 		lip_effect = new
 		lip_effect.icon_state = "[icon_state]_lip"
 
-/obj/item/reagent_containers/cooking/Destroy()
+/obj/item/reagent_container/cooking/Destroy()
 	. = ..()
 	qdel(tracker)
 	qdel(lip_effect)
 
-/obj/item/reagent_containers/cooking/examine(mob/user)
+/obj/item/reagent_container/cooking/examine(mob/user)
 	. = ..()
 	if(length(contents))
 		. += get_content_info()
 	. += "<span class='notice'><b>Alt-Click</b> to remove all items and reagents from this.</span>"
 
-/obj/item/reagent_containers/cooking/build_reagent_description(mob/user)
+/obj/item/reagent_container/cooking/build_reagent_description(mob/user)
 	. = list()
 	if(!reagents)
 		return
@@ -76,22 +76,17 @@
 		var/datum/reagent/R = I
 		. += "<span class='notice'>[R.volume] units of [R] ([round(R.volume / one_percent)]%)</span>"
 
-/obj/item/reagent_containers/cooking/proc/get_content_info()
+/obj/item/reagent_container/cooking/proc/get_content_info()
 	return "It contains [english_list(contents)]."
 
-/obj/item/reagent_containers/cooking/proc/get_usable_status()
+/obj/item/reagent_container/cooking/proc/get_usable_status()
 	if(length(contents) == 0 && reagents.total_volume == 0)
 		return PCWJ_CONTAINER_AVAILABLE
 
 	return PCWJ_CONTAINER_BUSY
 
-/obj/item/reagent_containers/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	if(istype(used, /obj/item/autochef_remote))
-		return
-
+/obj/item/reagent_container/cooking/attackby(obj/item/used, mob/living/user, list/modifiers) //does not exist
 	process_item(user, used)
-
-	return ITEM_INTERACT_COMPLETE
 
 /// Attempt to progress the known recipes in the tracker with the item last used
 /// on the container. Note that this is the same proc used for both steps like
@@ -99,7 +94,7 @@
 /// machine, such as an oven or stove. So in some cases `used` will be something
 /// like a food item, and in other cases `used` will be an
 /// [/obj/machinery/cooking].
-/obj/item/reagent_containers/cooking/proc/process_item(mob/user, obj/used)
+/obj/item/reagent_container/cooking/proc/process_item(mob/user, obj/used)
 	if(!istype(used))
 		return PCWJ_NO_STEPS
 
@@ -124,8 +119,8 @@
 	react_to_process(process_reaction, user, used)
 	return process_reaction
 
-/obj/item/reagent_containers/cooking/proc/react_to_process(reaction_status, mob/user, obj/used)
-	if(istype(used, /obj/machinery/cooking) && reaction_status == PCWJ_NO_STEPS)
+/obj/item/reagent_container/cooking/proc/react_to_process(reaction_status, mob/user, obj/used)
+	if(istype(used, /obj/structure/machinery/cooking) && reaction_status == PCWJ_NO_STEPS)
 		// When a finished recipe is still sitting on a cooking machine, and the
 		// cooking machine is sending periodic process pings as it is activated,
 		// the container will still be processed and a tracker created, because
@@ -148,32 +143,32 @@
 			if(tracker.step_reaction_message && ismob(user))
 				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
 
-			update_appearance(UPDATE_ICON)
+			update_icon()
 		if(PCWJ_COMPLETE)
 			if(tracker.step_reaction_message && ismob(user))
 				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
 				to_chat(user, "<span class='notice'>You finish cooking with [src].</span>")
 			QDEL_NULL(tracker)
 			clear_cooking_data()
-			update_appearance(UPDATE_ICON)
+			update_icon()
 
-/obj/item/reagent_containers/cooking/proc/handle_burning()
+/obj/item/reagent_container/cooking/proc/handle_burning()
 	// Only create a burnt mess with objects in us, so boiled water doesn't
 	// turn into a burnt mess when left on the stove too long.
 	if(length(contents))
 		clear()
-		new/obj/item/food/badrecipe(src)
+		new /obj/item/reagent_container/food/snacks/badrecipe(src)
 	else
 		clear()
 
-	update_appearance(UPDATE_ICON)
+	update_icon()
 
-/obj/item/reagent_containers/cooking/proc/handle_ignition()
+/obj/item/reagent_container/cooking/proc/handle_ignition()
 	clear()
-	update_appearance(UPDATE_ICON)
+	update_icon()
 	return TRUE
 
-/obj/item/reagent_containers/cooking/proc/do_empty(mob/user, atom/target, reagent_clear = TRUE)
+/obj/item/reagent_container/cooking/proc/do_empty(mob/user, atom/target, reagent_clear = TRUE)
 	#ifdef PCWJ_DEBUG
 	log_debug("cooking_container/do_empty() called!")
 	#endif
@@ -196,25 +191,20 @@
 	update_icon()
 	QDEL_NULL(tracker)
 	clear_cooking_data()
-	if(claimed)
-		SEND_SIGNAL(src, COMSIG_COOK_MACHINE_STEP_INTERRUPTED, null)
 
-/obj/item/reagent_containers/cooking/wash(mob/user, atom/source)
+/obj/item/reagent_container/cooking/wash(mob/user, atom/source)
 	if(reagents.total_volume >= volume)
 		to_chat(user, "<span class='warning'>[src] is full.</span>")
 	else
-		var/obj/item/reagent_containers/temp/temp_container = new()
+		var/obj/item/reagent_container/temp/temp_container = new()
 		process_item(user, temp_container)
 		qdel(temp_container)
 
-/obj/item/reagent_containers/cooking/AltClick(mob/user)
-	if(!is_valid_interaction(user))
-		return
+/obj/item/reagent_container/cooking/unique_action(mob/user)
 	do_empty(user)
 
 /// Deletes contents and reagents of container.
-/obj/item/reagent_containers/cooking/proc/clear()
-	QDEL_LIST_CONTENTS(contents)
+/obj/item/reagent_container/cooking/proc/clear()
 	contents = list()
 	reagents.clear_reagents()
 	if(tracker)
@@ -222,7 +212,7 @@
 		tracker = null
 	clear_cooking_data()
 
-/obj/item/reagent_containers/cooking/proc/cooker_temp_data(datum/cooking_surface/surface)
+/obj/item/reagent_container/cooking/proc/cooker_temp_data(datum/cooking_surface/surface)
 	if(!(surface.cooker_id in cooker_data))
 		return null
 	if(!(surface.temperature in cooker_data[surface.cooker_id]))
@@ -230,13 +220,13 @@
 
 	return cooker_data[surface.cooker_id][surface.temperature]
 
-/obj/item/reagent_containers/cooking/proc/set_cooker_data(datum/cooking_surface/surface, val)
+/obj/item/reagent_container/cooking/proc/set_cooker_data(datum/cooking_surface/surface, val)
 	if(!(surface.cooker_id in cooker_data))
 		cooker_data[surface.cooker_id] = list()
 
 	cooker_data[surface.cooker_id][surface.temperature] = val
 
-/obj/item/reagent_containers/cooking/proc/get_cooker_time(surface_name, temp)
+/obj/item/reagent_container/cooking/proc/get_cooker_time(surface_name, temp)
 	// can't fucking trust LAZYACCESSASSOC
 	if(!(surface_name in cooker_data))
 		return null
@@ -245,10 +235,10 @@
 
 	return cooker_data[surface_name][temp]
 
-/obj/item/reagent_containers/cooking/proc/clear_cooking_data()
+/obj/item/reagent_container/cooking/proc/clear_cooking_data()
 	cooker_data.Cut()
 
-/obj/item/reagent_containers/cooking/update_icon()
+/obj/item/reagent_container/cooking/update_icon()
 	..()
 
 	vis_contents.Remove(lip_effect)
@@ -263,7 +253,7 @@
 	if(length(contents) && lip_effect)
 		vis_contents += lip_effect
 
-/obj/item/reagent_containers/cooking/proc/add_to_visible(obj/our_item)
+/obj/item/reagent_container/cooking/proc/add_to_visible(obj/our_item)
 	our_item.pixel_x = initial(our_item.pixel_x)
 	our_item.pixel_y = initial(our_item.pixel_y)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
@@ -271,44 +261,32 @@
 	our_item.transform *= 0.6
 	vis_contents += our_item
 
-/obj/item/reagent_containers/cooking/proc/remove_from_visible(obj/our_item)
+/obj/item/reagent_container/cooking/proc/remove_from_visible(obj/our_item)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform = null
 	vis_contents.Remove(our_item)
 
-/obj/item/reagent_containers/cooking/proc/make_mini()
+/obj/item/reagent_container/cooking/proc/make_mini()
 	mini = TRUE
 	icon_state = "[initial(icon_state)]_s"
 	update_lip_effect()
 	update_icon()
 
-/obj/item/reagent_containers/cooking/proc/unmake_mini()
+/obj/item/reagent_container/cooking/proc/unmake_mini()
 	mini = FALSE
 	icon_state = initial(icon_state)
 	update_lip_effect()
 	update_icon()
 
-/obj/item/reagent_containers/cooking/proc/claim(obj/machinery/autochef/autochef)
-	if(!istype(autochef))
-		return
-	claimed = autochef
-	autochef.RegisterSignal(src, COMSIG_ITEM_EQUIPPED, TYPE_PROC_REF(/obj/machinery/autochef, on_claimed_container_equip), override = TRUE)
-
-/obj/item/reagent_containers/cooking/proc/unclaim()
-	if(claimed)
-		claimed.UnregisterSignal(src, COMSIG_ITEM_EQUIPPED)
-	claimed = null
-
-/obj/item/reagent_containers/cooking/board
+/obj/item/reagent_container/cooking/board
 	name = "cutting board"
 	desc = "Good for making sandwiches on, too."
 	icon_state = "cutting_board"
 	item_state = "cutting_board"
 	preposition = "On"
-	materials = list(MAT_WOOD = 5)
 
-/obj/item/reagent_containers/cooking/sushimat
+/obj/item/reagent_container/cooking/sushimat
 	name = "Sushi Mat"
 	desc = "A wooden mat used for efficient sushi crafting."
 	icon = 'icons/obj/kitchen.dmi'
@@ -319,16 +297,14 @@
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 3
-	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("rolled", "cracked", "battered", "thrashed")
+	w_class = SIZE_SMALL
 
-/obj/item/reagent_containers/cooking/oven
+/obj/item/reagent_container/cooking/oven
 	name = "oven dish"
 	desc = "Put ingredients in this; designed for use with an oven. Warranty void if used."
 	icon_state = "oven_dish"
-	materials = list(MAT_METAL = 1500)
 
-/obj/item/reagent_containers/cooking/oven/add_to_visible(obj/item/our_item)
+/obj/item/reagent_container/cooking/oven/add_to_visible(obj/item/our_item)
 	if(mini)
 		our_item.pixel_x = 0
 		our_item.pixel_y = -4
@@ -343,17 +319,16 @@
 		our_item.transform *= 0.5
 	vis_contents += our_item
 
-/obj/item/reagent_containers/cooking/pan
+/obj/item/reagent_container/cooking/pan
 	name = "pan"
 	desc = "A normal pan."
 	icon_state = "pan"
-	materials = list(MAT_METAL = 1000)
 	force = 8
 	throwforce = 10
 	attack_verb = list("smashed", "fried")
 	hitsound = 'sound/weapons/smash.ogg'
 
-/obj/item/reagent_containers/cooking/pan/add_to_visible(obj/our_item)
+/obj/item/reagent_container/cooking/pan/add_to_visible(obj/our_item)
 	if(mini)
 		our_item.pixel_x = 0
 		our_item.pixel_y = -1
@@ -364,27 +339,25 @@
 	else
 		..()
 
-/obj/item/reagent_containers/cooking/pot
+/obj/item/reagent_container/cooking/pot
 	name = "cooking pot"
 	desc = "Boil things with this. Maybe even stick 'em in a stew."
 	icon_state = "pot"
-	materials = list(MAT_METAL = 1250)
 	hitsound = 'sound/weapons/smash.ogg'
 	removal_penalty = 5
 	force = 8
 	throwforce = 10
 	attack_verb = list("clanged", "boiled")
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = SIZE_LARGE
 
-/obj/item/reagent_containers/cooking/deep_basket
+/obj/item/reagent_container/cooking/deep_basket
 	name = "deep fryer basket"
 	desc = "Cwispy! Warranty void if used."
 	icon_state = "deepfryer_basket"
 	removal_penalty = 5
-	materials = list(MAT_METAL = 1000)
 	var/frying = FALSE
 
-/obj/item/reagent_containers/cooking/deep_basket/add_to_visible(obj/our_item)
+/obj/item/reagent_container/cooking/deep_basket/add_to_visible(obj/our_item)
 	if(mini)
 		our_item.pixel_x = 1
 		our_item.pixel_y = 0
@@ -400,34 +373,31 @@
 		our_item.transform *= 0.6
 		vis_contents += our_item
 
-/obj/item/reagent_containers/cooking/deep_basket/update_overlays()
+/obj/item/reagent_container/cooking/deep_basket/update_icon()
 	. = ..()
 	if(frying)
 		. += image(icon = icon, icon_state = "fryerbasket_on")
 
-/obj/item/reagent_containers/cooking/grill_grate
+/obj/item/reagent_container/cooking/grill_grate
 	name = "grill grate"
 	desc = "Primarily used to grill meat, place this on a grill and enjoy an ancient human tradition."
 	icon_state = "grill_grate"
 	lip = null
-	materials = list(MAT_METAL = 750)
 
-/obj/item/reagent_containers/cooking/bowl
+/obj/item/reagent_container/cooking/bowl
 	name = "prep bowl"
 	desc = "A bowl for mixing, or tossing a salad. Not to be eaten out of"
 	icon_state = "bowl"
-	materials = list(MAT_PLASTIC = 500)
 	removal_penalty = 2
 
-/obj/item/reagent_containers/cooking/icecream_bowl
+/obj/item/reagent_container/cooking/icecream_bowl
 	name = "freezing bowl"
 	desc = "A stainless steel bowl that fits into the ice cream mixer."
 	icon_state = "ice_cream_bowl"
-	materials = list(MAT_METAL = 750)
 	var/freezing_time = 0
 
-/obj/item/reagent_containers/cooking/icecream_bowl/make_mini()
+/obj/item/reagent_container/cooking/icecream_bowl/make_mini()
 	transform *= 0.8
 
-/obj/item/reagent_containers/cooking/icecream_bowl/unmake_mini()
+/obj/item/reagent_container/cooking/icecream_bowl/unmake_mini()
 	transform = null

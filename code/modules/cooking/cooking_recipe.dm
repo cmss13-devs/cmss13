@@ -20,7 +20,7 @@
 */
 /datum/cooking/recipe
 	/// The type of the cooking container the recipe is performed in.
-	var/obj/item/reagent_containers/cooking/container_type
+	var/obj/item/reagent_container/cooking/container_type
 	/// Type path for the product created by the recipe.
 	var/product_type
 	/// How much of a thing is made per case of the recipe being followed.
@@ -44,7 +44,7 @@
 	var/list/steps
 
 /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
+	var/obj/item/reagent_container/cooking/container = tracker.container_parent
 
 	if(!istype(container))
 		log_debug("failure to find container when creating recipe product!")
@@ -77,7 +77,6 @@
 	if(product_type) // Make a regular item
 		. = make_product_item(container, slurry, applied_steps, output_count)
 	else
-		QDEL_LIST_CONTENTS(container.contents)
 		container.contents = list()
 
 	container.reagents.clear_reagents()
@@ -87,7 +86,7 @@
 
 	qdel(slurry)
 
-/datum/cooking/recipe/proc/make_product_item(obj/item/reagent_containers/cooking/container, datum/reagents/slurry, list/applied_steps, output_count = null)
+/datum/cooking/recipe/proc/make_product_item(obj/item/reagent_container/cooking/container, datum/reagents/slurry, list/applied_steps, output_count = null)
 	if(isnull(output_count))
 		output_count = 1
 
@@ -137,7 +136,7 @@
 			added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
 
 	// Purge the contents of the container we no longer need it
-	QDEL_LIST_CONTENTS(container.contents)
+	container.contents = list()
 
 	for(var/i in 1 to (product_count * output_count))
 		var/obj/item/new_item = new product_type(container)
@@ -155,3 +154,17 @@
 		log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
 		#endif
 		slurry.copy_to(new_item, amount=slurry.total_volume)
+
+/proc/initialize_recipe_dictionary()
+	GLOB.pcwj_recipe_dictionary.Cut()
+	var/list/recipe_paths = subtypesof(/datum/cooking/recipe)
+	var/list/to_add = list()
+	for(var/path in recipe_paths)
+		var/datum/cooking/recipe/example_recipe = new path()
+		if(!example_recipe.container_type)
+			continue
+
+		var/obj/item/reagent_container/cooking/container_type = example_recipe.container_type
+
+		LAZYORASSOCLIST(to_add, example_recipe.container_type, example_recipe)
+	return to_add

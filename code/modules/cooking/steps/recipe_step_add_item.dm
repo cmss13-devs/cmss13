@@ -37,7 +37,7 @@
 	return PCWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/add_item/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker, list/step_data)
-	var/obj/item/container = locateUID(tracker.container_uid)
+	var/obj/item/container = tracker.container_parent
 	if(!istype(container))
 		return FALSE
 
@@ -54,7 +54,7 @@
 	#ifdef PCWJ_DEBUG
 	log_debug("Called: /datum/cooking/recipe_step/add_item/follow_step")
 	#endif
-	var/obj/item/container = locateUID(tracker.container_uid)
+	var/obj/item/container = tracker.container_parent
 	if(!user && ismob(used_item.loc))
 		user = used_item.loc
 	if(container)
@@ -68,7 +68,7 @@
 				else
 					to_chat(user, "<span class='notice'>You can't remove one of \the [stack.name] from the stack!</span>")
 					return list()
-			if(user.unequip(used_item))
+			if(user.drop_held_item(used_item))
 				used_item.forceMove(container)
 			else
 				to_chat(user, "<span class='notice'>You can't remove [used_item] from your hands!</span>")
@@ -76,41 +76,6 @@
 		else
 			used_item.forceMove(container)
 
-		return list(message = "You add \the [used_item] to \the [container].", target = used_item.UID())
+		return list(message = "You add \the [used_item] to \the [container].", target = used_item)
 
 	return list(message = "Something went real fucking wrong here!")
-
-/datum/cooking/recipe_step/add_item/get_pda_formatted_desc()
-	return "Add \a [item_type::name]."
-
-/datum/cooking/recipe_step/add_item/attempt_autochef_perform(datum/autochef_task/follow_recipe/task)
-	for(var/obj/machinery/smartfridge/storage in task.autochef.linked_storages)
-		for(var/obj/possible_item in storage)
-			if(check_conditions_met(possible_item, task.container.tracker))
-				var/result = task.container.process_item(null, possible_item)
-				switch(result)
-					if(PCWJ_CONTAINER_FULL, PCWJ_NO_STEPS, PCWJ_NO_RECIPES)
-						return AUTOCHEF_ACT_FAILED
-					if(PCWJ_COMPLETE, PCWJ_SUCCESS, PCWJ_PARTIAL_SUCCESS)
-						task.autochef.Beam(storage, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-						// Boy howdy I sure do love having to manually update
-						// the recorded quantities of items in smartfridges
-						storage.item_quants[possible_item.name]--
-						return AUTOCHEF_ACT_STEP_COMPLETE
-
-	task.autochef.atom_say("Missing [item_type::name].")
-	return AUTOCHEF_ACT_MISSING_INGREDIENT
-
-/datum/cooking/recipe_step/add_item/attempt_autochef_prepare(obj/machinery/autochef/autochef)
-	var/storage_count = 0
-	for(var/obj/machinery/smartfridge/storage in autochef.linked_storages)
-		storage_count++
-		for(var/obj/possible_item in storage)
-			if(check_conditions_met(possible_item, null))
-				return AUTOCHEF_ACT_VALID
-
-	if(!storage_count)
-		return AUTOCHEF_ACT_NO_AVAILABLE_STORAGE
-
-	autochef.atom_say("Cannot find [item_type::name].")
-	return AUTOCHEF_ACT_MISSING_INGREDIENT

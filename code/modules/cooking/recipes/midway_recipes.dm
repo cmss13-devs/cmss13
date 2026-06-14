@@ -42,27 +42,6 @@
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 	)
 
-/datum/cooking/recipe_step/add_item/fried_vox
-
-/datum/cooking/recipe_step/add_item/fried_vox/check_conditions_met(obj/added_item, datum/cooking/recipe_tracker/tracker)
-	var/obj/item/organ/external/external = added_item
-	if(!istype(external))
-		return PCWJ_CHECK_INVALID
-
-	if(istype(external.dna.species, /datum/species/vox))
-		return PCWJ_CHECK_VALID
-
-	return PCWJ_CHECK_INVALID
-
-/datum/cooking/recipe/kfv
-	container_type = /obj/item/reagent_containers/cooking/deep_basket
-	product_type = /obj/item/food/fried_vox
-	steps = list(
-		new /datum/cooking/recipe_step/add_item/fried_vox(),
-		PCWJ_USE_DEEP_FRYER(10 SECONDS),
-	)
-	appear_in_default_catalog = FALSE
-
 /datum/cooking/recipe/jellybean_red
 	container_type = /obj/item/reagent_containers/cooking/mould/bean
 	product_type = /obj/item/food/candy/jellybean/red

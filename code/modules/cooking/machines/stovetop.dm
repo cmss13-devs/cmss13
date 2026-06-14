@@ -2,7 +2,7 @@
 	surface_name = "burner"
 	cooker_id = COOKER_SURFACE_STOVE
 
-/obj/machinery/cooking/stovetop
+/obj/structure/machinery/cooking/stovetop
 	name = "stovetop"
 	desc = "An electric stovetop with four burners."
 	icon_state = "stove"
@@ -10,34 +10,25 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	cooking = FALSE
-	pass_flags = PASSTABLE
 	allowed_containers = list(
-		/obj/item/reagent_containers/cooking/pot,
-		/obj/item/reagent_containers/cooking/pan,
+		/obj/item/reagent_container/cooking/pot,
+		/obj/item/reagent_container/cooking/pan,
 	)
 
-/obj/machinery/cooking/stovetop/Initialize(mapload)
+/obj/structure/machinery/cooking/stovetop/Initialize(mapload)
 	. = ..()
-
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/cooking/stove(null)
-	component_parts += new /obj/item/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/stock_parts/capacitor(null)
 
 	for(var/i in 1 to 4)
 		surfaces += new/datum/cooking_surface/stovetop_burner(src)
 
-	RefreshParts()
-
-/obj/machinery/cooking/stovetop/examine(mob/user)
+/obj/structure/machinery/cooking/stovetop/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'><b>Ctrl-Click</b> on a burner to set its timer, temperature, and toggle it on or off.</span>"
 
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 21
 
-/obj/machinery/cooking/stovetop/clickpos_to_surface(modifiers)
+/obj/structure/machinery/cooking/stovetop/clickpos_to_surface(modifiers)
 	var/icon_x = text2num(modifiers["icon-x"])
 	var/icon_y = text2num(modifiers["icon-y"])
 	if(icon_x <= ICON_SPLIT_X && icon_y <= ICON_SPLIT_Y)
@@ -52,7 +43,7 @@
 #undef ICON_SPLIT_X
 #undef ICON_SPLIT_Y
 
-/obj/machinery/cooking/stovetop/attack_hand(mob/user, params)
+/obj/structure/machinery/cooking/stovetop/attack_hand(mob/user, params)
 	var/input = clickpos_to_surface(params2list(params))
 	if(!input)
 		return
@@ -68,19 +59,19 @@
 					which_hand = "r_hand"
 				switch(burner.temperature)
 					if(J_HI)
-						burn_victim.adjustFireLossByPart(5, which_hand)
+						burn_victim.apply_damage(5, BURN, which_hand, enviro = TRUE)
 					if(J_MED)
-						burn_victim.adjustFireLossByPart(2, which_hand)
+						burn_victim.apply_damage(2, BURN, which_hand, enviro = TRUE)
 					if(J_LO)
-						burn_victim.adjustFireLossByPart(1, which_hand)
+						burn_victim.apply_damage(1, BURN, which_hand, enviro = TRUE)
 
 				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking [burner.container] off of the stove.</span>")
 		user.put_in_hands(burner.container)
 		burner.UnregisterSignal(burner.container, COMSIG_PARENT_EXAMINE)
 		burner.container = null
-		update_appearance(UPDATE_ICON)
+		update_icon()
 
-/obj/machinery/cooking/stovetop/update_surface_icon(surface_idx)
+/obj/structure/machinery/cooking/stovetop/update_surface_icon(surface_idx)
 	var/datum/cooking_surface/surface = surfaces[surface_idx]
 
 	if(!surface.container)
@@ -100,7 +91,7 @@
 			surface.container.pixel_y = 12
 	add_to_visible(surface.container, surface_idx)
 
-/obj/machinery/cooking/stovetop/update_overlays()
+/obj/structure/machinery/cooking/stovetop/update_icon()
 	. = ..()
 
 	if(cooking)
@@ -113,7 +104,7 @@
 			if(surface.container)
 				. += image(icon, icon_state="steam_[i]", layer = ABOVE_OBJ_LAYER)
 
-/obj/machinery/cooking/stovetop/add_to_visible(obj/item/reagent_containers/cooking/container, surface_idx)
+/obj/structure/machinery/cooking/stovetop/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	container.make_mini()
 	vis_contents += container
@@ -121,13 +112,3 @@
 		var/matrix/M = matrix()
 		M.Scale(-1, 1)
 		container.transform = M
-
-/obj/item/circuitboard/cooking/stove
-	board_name = "Stovetop"
-	build_path = /obj/machinery/cooking/stovetop
-	board_type = "machine"
-	origin_tech = list(TECH_BIO = 1)
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/capacitor = 1,
-	)

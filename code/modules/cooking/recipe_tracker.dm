@@ -10,7 +10,7 @@
 /// of the output.
 /datum/cooking/recipe_tracker
 	/// The parent object holding the recipe tracker.
-	var/container_uid
+	var/container_parent
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
 	/// A list of recipe types to the index of the latest step we know we've
@@ -26,8 +26,8 @@
 	var/list/recipes_applied_step_data = list()
 	var/step_reaction_message
 
-/datum/cooking/recipe_tracker/New(obj/item/reagent_containers/cooking/container)
-	container_uid = container.UID()
+/datum/cooking/recipe_tracker/New(obj/item/reagent_container/cooking/container)
+	container_parent = container
 
 /datum/cooking/recipe_tracker/Destroy(force, ...)
 	// Not QDEL_LIST_CONTENTS because there's references to the global recipe
@@ -105,7 +105,7 @@
 			recipes_last_completed_step[recipe] = attempted_step_per_recipe[recipe]
 			complete_steps++
 
-	var/obj/item/reagent_containers/cooking/container = locateUID(container_uid)
+	var/obj/item/reagent_container/cooking/container = container_parent
 	if(complete_steps)
 		recipes_applied_step_data += list(step_data)
 

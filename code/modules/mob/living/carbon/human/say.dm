@@ -273,19 +273,6 @@
 /mob/living/carbon/human/GetVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
-	if(new_voice)
-		special_voice = new_voice
-	return
-
-/mob/living/carbon/human/proc/UnsetSpecialVoice()
-	special_voice = ""
-	return
-
-/mob/living/carbon/human/proc/GetSpecialVoice()
-	return special_voice
-
-
 /*
 ***Deprecated***
 let this be handled at the hear_say or hear_radio proc

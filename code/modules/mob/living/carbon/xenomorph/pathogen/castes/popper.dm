@@ -544,8 +544,11 @@
 	if(fatal_use)
 		to_chat(patho_owner, SPAN_XENOHIGHDANGER("Injecting the target with spores will consume all our energy and we will die!"))
 
-	if(!do_after(patho_owner, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(patho_owner, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target))
 		return
+
+	if(!patho_owner.Adjacent(targetted_atom))
+		return FALSE
 
 	if(!fatal_use && !check_and_use_plasma_owner())
 		return FALSE

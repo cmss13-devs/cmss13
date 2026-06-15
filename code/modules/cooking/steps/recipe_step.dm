@@ -7,7 +7,6 @@
 		optional = options["optional"]
 
 /datum/cooking/recipe_step/proc/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
-	SHOULD_CALL_PARENT(FALSE)
 	return PCWJ_CHECK_VALID
 
 /// Attempt to satisfy the requirements of this step with the object *used_item*

@@ -43,6 +43,10 @@
 	/// for the preparation to be considered valid.
 	var/list/steps
 
+/datum/cooking/recipe/Destroy()
+	. = ..()
+	QDEL_NULL(container_type)
+
 /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_container/cooking/container = tracker.container_parent
 
@@ -77,7 +81,8 @@
 	if(product_type) // Make a regular item
 		. = make_product_item(container, slurry, applied_steps, output_count)
 	else
-		container.contents = list()
+		QDEL_NULL(container.contents)
+		container.contents?.Cut()
 
 	container.reagents.clear_reagents()
 
@@ -136,7 +141,7 @@
 			added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
 
 	// Purge the contents of the container we no longer need it
-	container.contents = list()
+	container.contents?.Cut()
 
 	for(var/i in 1 to (product_count * output_count))
 		var/obj/item/new_item = new product_type(container)

@@ -48,6 +48,10 @@
 		surfaces += new /datum/cooking_surface/grill_surface(src)
 	update_icon()
 
+/obj/structure/machinery/cooking/grill/Destroy()
+	. = ..()
+	QDEL_NULL(hopper_overlay)
+
 /obj/structure/machinery/cooking/grill/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>It contains [round(stored_wood, 0.01)]/[wood_maximum] units of charcoal.</span>"
@@ -165,6 +169,6 @@
 	if(surface_idx == 2 || surface_idx == 4)
 		var/matrix/M = matrix()
 		M.Scale(-1, 1)
-		container.transform = M
+		container.apply_transform(M)
 
 	container.make_mini()

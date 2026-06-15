@@ -10,6 +10,10 @@
 
 	..(options)
 
+/datum/cooking/recipe_step/use_machine/Destroy()
+	. = ..()
+	QDEL_NULL(machine_type)
+
 /datum/cooking/recipe_step/use_machine/proc/extra_machine_step(obj/structure/machinery/cooking/machine)
 	return
 

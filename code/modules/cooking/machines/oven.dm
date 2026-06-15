@@ -35,7 +35,7 @@
 
 /obj/structure/machinery/cooking/oven/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Ctrl-Click</b> to set its timer, temperature, and toggle it on or off.</span>"
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> to set its timer, temperature, and toggle it on or off.")
 
 /obj/structure/machinery/cooking/oven/attackby(obj/item/used, mob/living/user, list/modifiers)
 	if(!opened)
@@ -68,7 +68,7 @@
 			return
 
 		if(!opened)
-			to_chat(user, "<span class='notice'>The oven must be open to retrieve the food.</span>")
+			to_chat(user, SPAN_NOTICE("The oven must be open to retrieve the food."))
 			return
 
 		return ..()

@@ -14,7 +14,7 @@
 	var/list/surfaces = list()
 
 /obj/structure/machinery/cooking/Destroy()
-	surfaces = list()
+	QDEL_NULL_LIST(surfaces)
 
 	return ..()
 
@@ -43,7 +43,7 @@
 		return ..()
 
 	if(modifiers[CTRL_CLICK])
-		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || HAS_TRAIT(user, TRAIT_INCAPACITATED)) //TRAIT_HANDS_BLOCKED got nuked at some point apparently?
+		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated()) //TRAIT_HANDS_BLOCKED got nuked at some point apparently?
 			return
 
 		if(!anchored)
@@ -71,7 +71,7 @@
 				update_icon()
 
 	if(modifiers[ALT_CLICK])
-		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || HAS_TRAIT(user, TRAIT_INCAPACITATED))
+		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated())
 			return
 
 		var/input = clickpos_to_surface(modifiers)
@@ -122,13 +122,12 @@
 	return
 
 /obj/structure/machinery/cooking/proc/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
-	SHOULD_CALL_PARENT(FALSE)
 	return
 
 /obj/structure/machinery/cooking/proc/remove_from_visible(obj/item/reagent_container/cooking/container, input)
-	container.vis_flags = 0
-	container.blend_mode = 0
-	container.transform =  null
+	container.vis_flags = NO_FLAGS
+	container.blend_mode = NONE
+	container.apply_transform(null)
 	container.appearance_flags &= PIXEL_SCALE
 	container.unmake_mini()
 	vis_contents.Remove(container)
@@ -147,7 +146,6 @@
 		update_surface_icon(i)
 
 /obj/structure/machinery/cooking/proc/update_surface_icon(surface_idx)
-	SHOULD_CALL_PARENT(FALSE)
 	return
 
 /obj/structure/machinery/cooking/power_change()

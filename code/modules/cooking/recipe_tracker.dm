@@ -15,14 +15,12 @@
 	var/recipe_started = FALSE
 	/// A list of recipe types to the index of the latest step we know we've
 	/// gotten to.
-	var/list/recipes_last_completed_step = list()
+	var/list/datum/cooking/recipe/recipes_last_completed_step = list()
 	/// A list of recipe types to list of step indices we know we've performed.
 	/// Ensures we don't perform e.g. optional steps we skipped on completion.
-	var/list/recipes_all_applied_steps = list()
+	var/list/datum/cooking/recipe/recipes_all_applied_steps = list()
 	/// A list of recipe types to metadata returned from completing its steps.
-	/// This may include things like a custom message shown to the player, or
-	/// the UID of relevant items used for determining quality at recipe
-	/// completion.
+	/// This may include things like a custom message shown to the player
 	var/list/recipes_applied_step_data = list()
 	var/step_reaction_message
 

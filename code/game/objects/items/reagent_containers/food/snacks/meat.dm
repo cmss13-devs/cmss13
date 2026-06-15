@@ -112,8 +112,8 @@
 
 /obj/item/food/ground_meat/unique_action(mob/living/user)
 	user.visible_message(
-		"<span class='notice'>[user] shapes [src] into a ball.</span>",
-		"<span class='notice'>You shape [src] into a ball of raw ground meat.</span>"
+		SPAN_NOTICE("[user] shapes [src] into a ball."),
+		SPAN_NOTICE("You shape [src] into a ball of raw ground meat.")
 	)
 	playsound(user, 'sound/effects/blobattack.ogg', 50, TRUE)
 	var/obj/item/reagent_container/food/snacks/rawmeatball/M = new(get_turf(user))

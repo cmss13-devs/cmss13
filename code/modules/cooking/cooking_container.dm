@@ -24,7 +24,7 @@
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	w_class = SIZE_SMALL
 	volume = 240
-	flags_atom = FPRINT|OPENCONTAINER
+	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 	possible_transfer_amounts = null
 
 	/// The [/datum/cooking/recipe_tracker] of the current food preparation.
@@ -44,7 +44,6 @@
 
 /obj/item/reagent_container/cooking/Initialize(mapload)
 	. = ..()
-	flags_atom |= NOREACT
 	update_lip_effect()
 	clear_cooking_data()
 
@@ -55,8 +54,8 @@
 
 /obj/item/reagent_container/cooking/Destroy()
 	. = ..()
-	qdel(tracker)
-	qdel(lip_effect)
+	QDEL_NULL(tracker)
+	QDEL_NULL(lip_effect)
 
 /obj/item/reagent_container/cooking/examine(mob/user)
 	. = ..()

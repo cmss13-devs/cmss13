@@ -323,7 +323,12 @@
 			var/stack_amt
 			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
-				stack_amt += floor(2 * (health/starting_maxhealth))
+				if(stack_type == /obj/item/stack/sheet/metal)
+					stack_amt += floor(2 * (health/starting_maxhealth))
+				else
+					var/upgrade_metal = floor(2 * (health/starting_maxhealth))
+					if (upgrade_metal)
+						new /obj/item/stack/sheet/metal(loc, upgrade_metal)
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else

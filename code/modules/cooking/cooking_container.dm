@@ -1,6 +1,5 @@
 /obj/effect/cooking_container_lip
-	icon = 'icons/obj/cooking/containers.dmi'
-	icon_state = "blank"
+	icon = 'icons/obj/items/kitchen_tools.dmi'
 	vis_flags = VIS_INHERIT_ID
 
 /// Abstract reagent container used for transferring from non-containers e.g. sinks
@@ -22,7 +21,7 @@
  * fast.
  **/
 /obj/item/reagent_container/cooking
-	icon = 'icons/obj/cooking/containers.dmi'
+	icon = 'icons/obj/items/kitchen_tools.dmi'
 	w_class = SIZE_SMALL
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
@@ -65,7 +64,7 @@
 		. += get_content_info()
 	. += "<span class='notice'><b>Alt-Click</b> to remove all items and reagents from this.</span>"
 
-/obj/item/reagent_container/cooking/build_reagent_description(mob/user)
+/obj/item/reagent_container/cooking/get_examine_text(mob/user)
 	. = list()
 	if(!reagents)
 		return
@@ -192,14 +191,6 @@
 	QDEL_NULL(tracker)
 	clear_cooking_data()
 
-/obj/item/reagent_container/cooking/wash(mob/user, atom/source)
-	if(reagents.total_volume >= volume)
-		to_chat(user, "<span class='warning'>[src] is full.</span>")
-	else
-		var/obj/item/reagent_container/temp/temp_container = new()
-		process_item(user, temp_container)
-		qdel(temp_container)
-
 /obj/item/reagent_container/cooking/unique_action(mob/user)
 	do_empty(user)
 
@@ -289,7 +280,7 @@
 /obj/item/reagent_container/cooking/sushimat
 	name = "Sushi Mat"
 	desc = "A wooden mat used for efficient sushi crafting."
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "sushi_mat"
 	lip = null
 	preposition = "On"

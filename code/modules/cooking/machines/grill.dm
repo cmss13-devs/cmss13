@@ -14,8 +14,7 @@
 	return ..()
 
 /obj/effect/grill_hopper
-	icon = 'icons/obj/cooking/machines.dmi'
-	icon_state = "blank"
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	vis_flags = VIS_INHERIT_ID
 	mouse_opacity = 0
 	invisibility = 0

@@ -164,7 +164,5 @@
 		if(!example_recipe.container_type)
 			continue
 
-		var/obj/item/reagent_container/cooking/container_type = example_recipe.container_type
-
 		LAZYORASSOCLIST(to_add, example_recipe.container_type, example_recipe)
 	return to_add

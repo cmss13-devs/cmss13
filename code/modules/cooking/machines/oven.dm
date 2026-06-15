@@ -37,13 +37,6 @@
 	. = ..()
 	. += "<span class='notice'><b>Ctrl-Click</b> to set its timer, temperature, and toggle it on or off.</span>"
 
-/obj/structure/machinery/cooking/oven/RefreshParts()
-	..()
-
-	var/las_rating = 0
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		las_rating += M.rating
-
 /obj/structure/machinery/cooking/oven/attackby(obj/item/used, mob/living/user, list/modifiers)
 	if(!opened)
 		handle_open(user)
@@ -69,15 +62,16 @@
 	else
 		handle_open(user)
 
-/obj/structure/machinery/cooking/oven/AltClick(mob/user, params)
-	if(user.stat || user.is_mob_restrained() || (!in_range(src, user)))
-		return
+/obj/structure/machinery/cooking/oven/clicked(mob/user, list/modifiers)
+	if(modifiers[ALT_CLICK])
+		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)))
+			return
 
-	if(!opened)
-		to_chat(user, "<span class='notice'>The oven must be open to retrieve the food.</span>")
-		return
+		if(!opened)
+			to_chat(user, "<span class='notice'>The oven must be open to retrieve the food.</span>")
+			return
 
-	return ..()
+		return ..()
 
 /obj/structure/machinery/cooking/oven/proc/handle_open(mob/user)
 	if(opened)

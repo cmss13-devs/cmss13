@@ -1,7 +1,7 @@
 /obj/structure/machinery/cooking
 	name = "Default Cooking Appliance"
 	desc = "You shouldn't be seeing this. Please report this as an issue on GitHub."
-	icon = 'icons/obj/cooking/machines.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
@@ -55,11 +55,11 @@
 		var/datum/cooking_surface/surface = surfaces[surface_idx]
 
 		var/list/surface_options = list(
-			RADIAL_ACTION_SET_ALARM = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_setalarm"),
-			RADIAL_ACTION_ON_OFF = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_onoff"),
+			RADIAL_ACTION_SET_ALARM = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_setalarm"),
+			RADIAL_ACTION_ON_OFF = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_onoff"),
 		)
 		if(surface.allow_temp_change)
-			surface_options[RADIAL_ACTION_SET_TEMPERATURE] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_settemp")
+			surface_options[RADIAL_ACTION_SET_TEMPERATURE] = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp")
 		var/option_choice = show_radial_menu(user, src, surface_options, require_near = TRUE)
 
 		switch(option_choice)
@@ -69,6 +69,22 @@
 				surface.handle_temperature(user)
 			if(RADIAL_ACTION_ON_OFF)
 				update_icon()
+
+	if(modifiers[ALT_CLICK])
+		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || HAS_TRAIT(user, TRAIT_INCAPACITATED))
+			return
+
+		var/input = clickpos_to_surface(modifiers)
+		var/datum/cooking_surface/burner = surfaces[input]
+		if(!burner)
+			return
+
+		var/obj/item/reagent_container/cooking/container = burner.container
+		if(!(istype(container)))
+			return
+
+		container.do_empty(user)
+		burner.unset_callbacks()
 
 /// Retrieve which burning surface on the machine is being accessed.
 /obj/structure/machinery/cooking/proc/clickpos_to_surface(modifiers)
@@ -104,23 +120,6 @@
 
 	update_icon()
 	return
-
-/// Empty the container on the surface if it exists.
-/obj/structure/machinery/cooking/AltClick(mob/user, modifiers)
-	if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || HAS_TRAIT(user, TRAIT_INCAPACITATED))
-		return
-
-	var/input = clickpos_to_surface(modifiers)
-	var/datum/cooking_surface/burner = surfaces[input]
-	if(!burner)
-		return
-
-	var/obj/item/reagent_container/cooking/container = burner.container
-	if(!(istype(container)))
-		return
-
-	container.do_empty(user)
-	burner.unset_callbacks()
 
 /obj/structure/machinery/cooking/proc/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	SHOULD_CALL_PARENT(FALSE)

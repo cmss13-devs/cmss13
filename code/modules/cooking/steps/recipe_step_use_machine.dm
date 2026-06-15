@@ -50,18 +50,12 @@
 	machine_type = /obj/structure/machinery/cooking/stovetop
 	cooker_surface_name = COOKER_SURFACE_STOVE
 
-/datum/cooking/recipe_step/use_machine/stovetop/get_pda_formatted_desc()
-	return "Heat on a stove for [DisplayTimeText(time)] at [lowertext(temperature)] temperature."
-
 /datum/cooking/recipe_step/use_machine/ice_cream_mixer
 	machine_type = /obj/structure/machinery/cooking/ice_cream_mixer
 	cooker_surface_name = COOKER_SURFACE_ICE_CREAM_MIXER
 
 /datum/cooking/recipe_step/use_machine/ice_cream_mixer/New(time_, options)
 	..(J_LO, time_, options)
-
-/datum/cooking/recipe_step/use_machine/ice_cream_mixer/get_pda_formatted_desc()
-	return "Mix in an ice cream mixer for [DisplayTimeText(time)]."
 
 /datum/cooking/recipe_step/use_machine/grill
 	machine_type = /obj/structure/machinery/cooking/grill

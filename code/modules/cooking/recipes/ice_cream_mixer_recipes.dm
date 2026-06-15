@@ -1,6 +1,6 @@
-/datum/cooking/recipe/antpopsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/ant
+/*/datum/cooking/recipe/antpopsicle
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/ant
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
@@ -11,20 +11,20 @@
 	)
 
 /datum/cooking/recipe/bananatopsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/bananatop
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/bananatop
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		PCWJ_ADD_ITEM(/obj/item/food/tofu),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/tofu),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("banana", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/berrycreamsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/berrycream
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/berrycream
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
@@ -37,37 +37,37 @@
 	)
 
 /datum/cooking/recipe/berryicecreamsandwich
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/berryicecreamsandwich
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/berryicecreamsandwich
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/wafflecone),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/wafflecone),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
 		PCWJ_ADD_REAGENT("ice", 5),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/berrytopsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/berrytop
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/berrytop
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		PCWJ_ADD_ITEM(/obj/item/food/tofu),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/tofu),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("berryjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cornuto
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/cornuto
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/cornuto
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliceable/flatdough),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_ADD_REAGENT("ice", 2),
 		PCWJ_ADD_REAGENT("sugar", 4),
 		PCWJ_ADD_REAGENT("cream", 4),
@@ -75,49 +75,49 @@
 	)
 
 /datum/cooking/recipe/frozenpineapplepop
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/frozenpineapple
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/frozenpineapple
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		PCWJ_ADD_ITEM(/obj/item/food/sliced/pineapple),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliced/pineapple),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/honkdae
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/honkdae
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/honkdae
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/wafflecone),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/wafflecone),
 		PCWJ_ADD_ITEM(/obj/item/clothing/mask/gas/clown_hat),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/banana),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/banana),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/banana),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/banana),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_ADD_REAGENT("ice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(20 SECONDS),
 	)
 
 /datum/cooking/recipe/icecreamsandwich
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/icecreamsandwich
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/icecreamsandwich
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/frozen/icecream),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/frozen/icecream),
 		PCWJ_ADD_REAGENT("ice", 5),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/jumboicecream
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_ADD_REAGENT("ice", 2),
 		PCWJ_ADD_REAGENT("vanilla", 3),
@@ -126,8 +126,8 @@
 	)
 
 /datum/cooking/recipe/licoricecreamsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/licoricecream
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/licoricecream
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
@@ -140,8 +140,8 @@
 	)
 
 /datum/cooking/recipe/orangecreamsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/orangecream
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/orangecream
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
@@ -154,11 +154,11 @@
 	)
 
 /datum/cooking/recipe/peanutbuttermochi
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/peanutbuttermochi
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/peanutbuttermochi
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/wafflecone),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/wafflecone),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_ADD_REAGENT("rice", 5),
 		PCWJ_ADD_REAGENT("sugar", 5),
@@ -167,20 +167,20 @@
 	)
 
 /datum/cooking/recipe/pineappletopsicle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/pineappletop
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/pineappletop
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		PCWJ_ADD_ITEM(/obj/item/food/tofu),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/tofu),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("pineapplejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/seasalticecream
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/popsicle/sea_salt
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/popsicle/sea_salt
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/popsicle_stick),
@@ -191,76 +191,76 @@
 	)
 
 /datum/cooking/recipe/apple
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/apple
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/apple
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("applejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/berry
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/berry
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/berry
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("berryjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/bluecherry
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/bluecherry
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/bluecherry
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("bluecherryjelly", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cherry_snowcone
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/cherry
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/cherry
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("cherryjelly", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cola
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/cola
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/cola
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("cola", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/flavorless
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fruitsalad_snowcone
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/fruitsalad
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/fruitsalad
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("banana", 5),
 		PCWJ_ADD_REAGENT("orangejuice", 5),
@@ -269,293 +269,212 @@
 	)
 
 /datum/cooking/recipe/grape
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/grape
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/grape
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("grapejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/honey
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/honey
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/honey
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("honey", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/lemon
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/lemon
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/lemon
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("lemonjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/lime
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/lime
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/lime
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("limejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/mime
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/mime
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/mime
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("nothing", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/orange
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/orange
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/orange
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("orangejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/pineapple
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/pineapple
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/pineapple
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("pineapplejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/rainbow
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/rainbow
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/rainbow
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("colorful_reagent", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/spacemountainwind
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/snowcone/spacemountain
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/snowcone/spacemountain
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/drinks/sillycup),
 		PCWJ_ADD_REAGENT("ice", 15),
 		PCWJ_ADD_REAGENT("spacemountainwind", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/spacefreezy
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/spacefreezy
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/spacefreezy
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/frozen/icecream),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/frozen/icecream),
 		PCWJ_ADD_REAGENT("bluecherryjelly", 5),
 		PCWJ_ADD_REAGENT("spacemountainwind", 15),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/sundae
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/frozen/sundae
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/frozen/sundae
 	catalog_category = COOKBOOK_CATEGORY_DESSERTS
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/wafflecone),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/banana),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/wafflecone),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/banana),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
-/datum/cooking/recipe/candycane
-	container_type = /obj/item/reagent_containers/cooking/mould/cane
-	product_type = /obj/item/food/candy/candycane
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/mint),
-		PCWJ_ADD_REAGENT("sugar", 5),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/cash
-	container_type = /obj/item/reagent_containers/cooking/mould/cash
-	product_type = /obj/item/food/candy/cash
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/coin
-	container_type = /obj/item/reagent_containers/cooking/mould/coin
-	product_type = /obj/item/food/candy/coin
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
 /datum/cooking/recipe/crunch
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/confectionery/rice
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/confectionery/rice
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/candybar),
 		PCWJ_ADD_REAGENT("rice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
-/datum/cooking/recipe/gummybear
-	container_type = /obj/item/reagent_containers/cooking/mould/bear
-	product_type = /obj/item/food/candy/gummybear
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_REAGENT("sugar", 5),
-		PCWJ_ADD_REAGENT("water", 5),
-		PCWJ_ADD_REAGENT("cornoil", 5),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/gummyworm
-	container_type = /obj/item/reagent_containers/cooking/mould/worm
-	product_type = /obj/item/food/candy/gummyworm
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_REAGENT("sugar", 5),
-		PCWJ_ADD_REAGENT("water", 5),
-		PCWJ_ADD_REAGENT("cornoil", 5),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/jawbreaker
-	container_type = /obj/item/reagent_containers/cooking/mould/ball
-	product_type = /obj/item/food/candy/jawbreaker
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_REAGENT("sugar", 10),
-		PCWJ_ADD_REAGENT("cornoil", 5),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/jellybean
-	container_type = /obj/item/reagent_containers/cooking/mould/bean
-	product_type = /obj/item/food/candy/jellybean
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_REAGENT("sugar", 5),
-		PCWJ_ADD_REAGENT("water", 5),
-		PCWJ_ADD_REAGENT("cornoil", 5),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
 /datum/cooking/recipe/malper
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/confectionery/caramel
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/confectionery/caramel
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/caramel),
-		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
-
-/datum/cooking/recipe/sucker
-	container_type = /obj/item/reagent_containers/cooking/mould/loli
-	product_type = /obj/item/food/candy/sucker
-	catalog_category = COOKBOOK_CATEGORY_CANDY
-	steps = list(
-		PCWJ_ADD_REAGENT("sugar", 10),
-		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/caramel),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/toolerone
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/confectionery/nougat
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/confectionery/nougat
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/nougat),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/nougat),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/toxinstest
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/confectionery/caramel_nougat
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/confectionery/caramel_nougat
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/caramel),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/nougat),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/caramel),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/nougat),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/yumbaton
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/confectionery/toffee
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/confectionery/toffee
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/toffee),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/toffee),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/candied_pineapple
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/candied_pineapple
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/candied_pineapple
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/sliced/pineapple),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliced/pineapple),
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_ADD_REAGENT("water", 2),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/candybar
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/candybar
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/candybar
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/caramel
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/caramel
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/caramel
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("cream", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
+	)*/
 
 /datum/cooking/recipe/chocolate_bar
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/chocolatebar
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/chocolatebar
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("soymilk", 2),
@@ -565,8 +484,8 @@
 	)
 
 /datum/cooking/recipe/chocolate_bar2
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/chocolatebar
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/chocolatebar
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("milk", 2),
@@ -574,40 +493,40 @@
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
-
+/*
 /datum/cooking/recipe/chocolate_bunny
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/chocolate_bunny
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/chocolate_bunny
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/chocolate_coin
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/chocolate_coin
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/chocolate_coin
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/coin),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/chocolate_orange
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/chocolate_orange
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/chocolate_orange
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/citrus/orange),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/orange),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/c_tube),
@@ -616,147 +535,147 @@
 	)
 
 /datum/cooking/recipe/cottoncandy_blue
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/blue
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/blue
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("berryjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_green
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/green
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/green
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("limejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_orange
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/orange
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/orange
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("orangejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_pink
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/pink
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/pink
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("watermelonjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_poison
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/poison
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/poison
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("poisonberryjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_purple
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/purple
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/purple
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("grapejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_rainbow
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/rainbow
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/rainbow
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/red),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/blue),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/green),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/yellow),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/orange),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/purple),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/pink),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/red),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/blue),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/green),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/yellow),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/orange),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/purple),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/pink),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_rainbow2
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/bad_rainbow
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/bad_rainbow
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/red),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/poison),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/green),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/yellow),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/orange),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/purple),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton/pink),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/red),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/poison),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/green),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/yellow),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/orange),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/purple),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton/pink),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_red
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/red
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/red
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("cherryjelly", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/cottoncandy_yellow
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/cotton/yellow
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/cotton/yellow
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/candy/cotton),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/cotton),
 		PCWJ_ADD_REAGENT("lemonjuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fudge
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fudge_cherry
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge/cherry
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge/cherry
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cherries),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/cherries),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fudge_cookies_n_cream
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge/cookies_n_cream
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge/cookies_n_cream
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_ADD_ITEM(/obj/item/food/cookie),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/cookie),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_ADD_REAGENT("cream", 5),
@@ -764,45 +683,45 @@
 	)
 
 /datum/cooking/recipe/fudge_dice
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge_dice
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge_dice
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/dice),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fudge_peanut
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge/peanut
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge/peanut
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/peanuts),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/peanuts),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/peanuts),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/peanuts),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/peanuts),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/peanuts),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/fudge_turtle
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/fudge/turtle
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/fudge/turtle
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
-		PCWJ_ADD_ITEM(/obj/item/food/candy/caramel),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/peanuts),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/candy/caramel),
+		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/peanuts),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/gum
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/gum
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/gum
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("sugar", 5),
@@ -812,19 +731,19 @@
 	)
 
 /datum/cooking/recipe/nougat
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/nougat
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/nougat
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/egg),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/egg),
 		PCWJ_ADD_REAGENT("sugar", 5),
 		PCWJ_ADD_REAGENT("cornoil", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
 /datum/cooking/recipe/taffy
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/taffy
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/taffy
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("salglu_solution", 15),
@@ -832,8 +751,8 @@
 	)
 
 /datum/cooking/recipe/toffee
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/candy/toffee
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/candy/toffee
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("sugar", 5),
@@ -842,18 +761,18 @@
 	)
 
 /datum/cooking/recipe/wafflecone
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/wafflecone
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/wafflecone
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("milk", 1),
 		PCWJ_ADD_REAGENT("sugar", 1),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
-	)
+	)*/
 
 /datum/cooking/recipe/mint_2
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/mint
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/mint
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("sugar", 5),
@@ -862,11 +781,11 @@
 	)
 
 /datum/cooking/recipe/chocolateegg
-	container_type = /obj/item/reagent_containers/cooking/icecream_bowl
-	product_type = /obj/item/food/chocolateegg
+	container_type = /obj/item/reagent_container/cooking/icecream_bowl
+	product_type = /obj/item/reagent_container/food/snacks/chocolateegg
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/egg),
-		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/egg),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/chocolatebar),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)

@@ -44,7 +44,7 @@
 			SEND_SIGNAL(container, COMSIG_COOK_MACHINE_STEP_COMPLETE, src)
 
 /datum/cooking_surface/proc/handle_switch(mob/user)
-	playsound(parent, 'sound/items/lighter.ogg', 100, TRUE, 0)
+	playsound(parent, "lighter", 100, TRUE, 0)
 	if(on)
 		turn_off()
 	else
@@ -56,14 +56,11 @@
 /datum/cooking_surface/proc/set_burn_ignite_callbacks()
 	if(container)
 		var/burn_time = PCWJ_BURN_TIME_LOW
-		var/fire_time = PCWJ_IGNITE_TIME_LOW
 		switch(temperature)
 			if(J_MED)
 				burn_time = PCWJ_BURN_TIME_MEDIUM
-				fire_time = PCWJ_IGNITE_TIME_MEDIUM
 			if(J_HI)
 				burn_time = PCWJ_BURN_TIME_HIGH
-				fire_time = PCWJ_IGNITE_TIME_HIGH
 
 		burn_callback = addtimer(CALLBACK(src, PROC_REF(handle_burn)), burn_time, TIMER_STOPPABLE)
 
@@ -80,7 +77,7 @@
 		alarm_callback = addtimer(CALLBACK(src, PROC_REF(handle_alarm)), timer, TIMER_STOPPABLE)
 
 /datum/cooking_surface/proc/turn_off(mob/user)
-	playsound(parent, 'sound/items/lighter.ogg', 100, TRUE, 0)
+	playsound(parent, "lighter", 100, TRUE, 0)
 	on = FALSE
 	unset_callbacks()
 	deltimer(alarm_callback)
@@ -94,7 +91,7 @@
 /datum/cooking_surface/proc/handle_alarm()
 	for(var/mob/mob in hearers(src, null))
 		mob.show_message(SPAN_EMOTE("dings."), SHOW_MESSAGE_AUDIBLE)
-	playsound(parent.loc, 'sound/machines/bell.ogg', 50, FALSE)
+	playsound(parent.loc, 'sound/misc/bell.ogg', 50, FALSE)
 
 /datum/cooking_surface/proc/unset_callbacks()
 	deltimer(burn_callback)

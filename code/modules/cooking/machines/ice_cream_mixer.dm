@@ -8,8 +8,7 @@
 	icon_state = "ice_cream_mixer"
 	active_power_usage = 200
 	allowed_containers = list(
-		/obj/item/reagent_container/cooking/icecream_bowl,
-		/obj/item/reagent_container/cooking/mould,
+		/obj/item/reagent_container/cooking/icecream_bowl
 	)
 
 /obj/structure/machinery/cooking/ice_cream_mixer/Initialize(mapload)

@@ -205,28 +205,28 @@
 		return
 
 	playsound(loc, 'sound/effects/bamf.ogg', 50, 1)
-	var/reagent_list_text = ""
-	var/i = 0
-	for(var/obj/O in containers)
+
+	var/reagent_list_text = "" //A list of reagents to be reported in the Admin Logs
+	for(var/obj/O in containers) //Construct the list of reagents
 		if(!O.reagents)
 			continue
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			reagent_list_text += " [R.volume] [R.name], "
-		i++
 
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
-		reagents.source_mob = WEAKREF(cause_mob)
+		reagents.source_mob = WEAKREF(cause_mob) //Generate the Admin log for the custom grenade detonation
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	if(length(containers) < 2)
-		reagents.trigger_volatiles = TRUE //Explode on the first transfer
-
+	var/container_count = length(containers) ///Find the number of containers, this will count down as the containers are added to the "meta-container" for the explosive
 	for(var/obj/item/reagent_container/glass/G in containers)
-		G.reagents.trans_to(src, G.reagents.total_volume)
-		i--
-		if(reagents && i <= 1)
+		if (container_count <= 1) //Iff this is the last container set the trigger volatiles flag to set off the explosion when the last container is transferred, if somehow there is less then one container left, detonate anyway, but log an error as this should not be possible
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transferring the last container
+			if(container_count < 1) // This should never trigger, but if for some ungodly reason an explosive is primed with less then one container but somehow has reagents this will create an error log
+				msg_admin_niche("ERROR: [key_name(cause_mob)] threw an invalid explosive, which did did not contain a proper number of chemical containers. [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+		G.reagents.trans_to(src, G.reagents.total_volume)
+		container_count--
+
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 

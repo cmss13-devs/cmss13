@@ -140,6 +140,11 @@
 		deltimer(overmind_timer)
 	overmind_timer = null
 
+	overmind_mob.current_aura = null
+	var/mob/hologram/queen/eye = overmind_mob.client.eye
+	if(istype(eye))
+		eye.exit_hologram()
+
 	REMOVE_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVERMIND_TRAIT)
 	REMOVE_TRAIT(overmind_mob, TRAIT_PATHOGEN_OVERMIND, OVERMIND_TRAIT)
 	REMOVE_TRAIT(overmind_mob, TRAIT_UNDENSE, OVERMIND_TRAIT)

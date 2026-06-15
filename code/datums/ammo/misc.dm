@@ -93,7 +93,7 @@
 	if(!istype(T))
 		return
 	smoke.set_up(1, 0, T, new_cause_data = cause_data)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
 	qdel(smoke)
@@ -276,29 +276,33 @@
 	. = ..()
 	smoke = new()
 
+/datum/ammo/arrow/expl/Destroy(force)
+	. = ..()
+	QDEL_NULL(smoke)
+
 /datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(mob))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/arrow/expl/on_hit_obj(obj/object,obj/projectile/projectile)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 /datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
 	if(turf.density && isturf(projectile.loc))
 		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 		smoke.set_up(1, get_turf(projectile))
-		smoke.start()
+		smoke.start(do_NOT_delete = TRUE)
 	else
 		cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 		smoke.set_up(1, turf)
-		smoke.start()
+		smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/arrow/expl/do_at_max_range(obj/projectile/projectile, mob/firer)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/arrow/emp
 	name = "activated EMP arrow"

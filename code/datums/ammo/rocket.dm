@@ -24,8 +24,7 @@
 	smoke = new()
 
 /datum/ammo/rocket/Destroy()
-	qdel(smoke)
-	smoke = null
+	QDEL_NULL(smoke)
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/mob, obj/projectile/projectile)
@@ -33,22 +32,22 @@
 	smoke.set_up(1, get_turf(mob))
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
 		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/on_hit_obj(obj/object, obj/projectile/projectile)
 	cell_explosion(get_turf(object), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(object))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/on_hit_turf(turf/turf, obj/projectile/projectile)
 	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/do_at_max_range(obj/projectile/projectile)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/ap
 	name = "anti-armor rocket"
@@ -72,14 +71,14 @@
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/object, obj/projectile/projectile)
 	var/turf/turf = get_turf(object)
 	object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/turf, obj/projectile/projectile)
 	var/hit_something = 0
@@ -100,7 +99,7 @@
 
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/ap/do_at_max_range(obj/projectile/projectile)
 	var/turf/turf = get_turf(projectile)
@@ -121,7 +120,7 @@
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/ap/anti_tank
 	name = "anti-tank rocket"
@@ -140,7 +139,7 @@
 		var/turf/turf = get_turf(mob.loc)
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 		smoke.set_up(1, turf)
-		smoke.start()
+		smoke.start(do_NOT_delete = TRUE)
 		return
 	return ..()
 
@@ -195,14 +194,13 @@
 	if(!istype(turf))
 		return
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 	var/datum/reagent/napalm/blue/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, turf, null, 6, cause_data)
 	landingSmoke.start()
-	landingSmoke = null
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)
@@ -237,7 +235,7 @@
 	if(!istype(turf))
 		return
 	smoke.set_up(1, turf)
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 	var/datum/reagent/napalm/upp/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
@@ -294,7 +292,7 @@
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(atom))
-	smoke.start()
+	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/custom/on_hit_mob(mob/mob, obj/projectile/projectile)
 	prime(mob, projectile)

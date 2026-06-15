@@ -2,8 +2,7 @@
     "map_name": "LV-1021: Operation Falcon's Fury",
     "map_path": "map_files/LV1021_Falcons_Fury",
     "map_file": "LV1021_Falcons_Fury.dmm",
-    "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/lv624",
+
     "survivor_types": [
         "/datum/equipment_preset/survivor/goon",
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner",

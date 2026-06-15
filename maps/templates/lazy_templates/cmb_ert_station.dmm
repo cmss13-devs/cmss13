@@ -1,4 +1,113 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"ab" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ac" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ad" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ae" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"af" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ag" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ah" = (
+/obj/structure/machinery/door_control{
+	id = "ERT Lock 3";
+	name = "Hangar Lock";
+	pixel_x = -24
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/adminlevel/ert_station/cmb_station)
+"ai" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/adminlevel/ert_station/cmb_station)
+"aj" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ak" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"al" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"am" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"an" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/adminlevel/ert_station/cmb_station)
+"ao" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/adminlevel/ert_station/cmb_station)
+"ap" = (
+/obj/structure/prop/invuln/joey{
+	desc = "A defunct Seegson-brand Working Joe.";
+	name = "Sleeping Joe"
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aq" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"ar" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
 "as" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
@@ -8,6 +117,28 @@
 	},
 /turf/open/space,
 /area/space)
+"at" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"au" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/adminlevel/ert_station/cmb_station)
+"av" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/adminlevel/ert_station/cmb_station)
+"aw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
 "ax" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -17,21 +148,244 @@
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
 	pixel_x = 8;
-	pixel_y = 23;
-	layer = 3.20
+	pixel_y = 23
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
+"ay" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"az" = (
+/obj/structure/bed/hybrisa/prisonbed{
+	dir = 4
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 23;
+	layer = 3.20
+	},
+/turf/open/floor/whiteredfull,
+/area/adminlevel/ert_station/cmb_station)
+"aA" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aB" = (
+/obj/structure/bed/sofa/vert/grey/top{
+	pixel_y = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aC" = (
+/obj/structure/bed/sofa/vert/grey{
+	pixel_y = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/arrow_west,
+/area/adminlevel/ert_station/cmb_station)
+"aE" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/arrow_south,
+/area/adminlevel/ert_station/cmb_station)
+"aG" = (
+/turf/open/space,
+/area/space)
+"aH" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/open{
+	dir = 2;
+	icon_state = "almayer_pdoor0";
+	name = "\improper Concourse Access"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"aI" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aJ" = (
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/space/basic,
+/area/space)
+"aK" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/space/basic,
+/area/space)
+"aL" = (
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/space/basic,
+/area/space)
+"aM" = (
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/prop/invuln/lattice_prop,
+/turf/open/space/basic,
+/area/space)
+"aN" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aO" = (
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/space/basic,
+/area/space)
+"aP" = (
+/obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/space/basic,
+/area/space)
+"aQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/brown/east,
+/area/adminlevel/ert_station/cmb_station)
+"aR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/adminlevel/ert_station/cmb_station)
+"aS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/adminlevel/ert_station/cmb_station)
+"aT" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue/north,
+/area/adminlevel/ert_station/cmb_station)
+"aU" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue/north,
+/area/adminlevel/ert_station/cmb_station)
 "aV" = (
 /obj/structure/disposalpipe/segment,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"aW" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/open{
+	dir = 4;
+	icon_state = "almayer_pdoor0";
+	name = "\improper Concourse Access"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"aX" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/blue/west,
+/area/adminlevel/ert_station/cmb_station)
+"aY" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "aZ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/adminlevel/ert_station/cmb_station)
+"ba" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/blue/east,
+/area/adminlevel/ert_station/cmb_station)
+"bb" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/blue/east,
+/area/adminlevel/ert_station/cmb_station)
 "bc" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"bd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/green/east,
+/area/adminlevel/ert_station/cmb_station)
+"be" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/adminlevel/ert_station/cmb_station)
+"bf" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/adminlevel/ert_station/cmb_station)
+"bg" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/blue/east,
+/area/adminlevel/ert_station/cmb_station)
+"bh" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "bi" = (
@@ -45,6 +399,21 @@
 	pixel_y = 0
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
+/area/adminlevel/ert_station/cmb_station)
+"bj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"bk" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/corsat/blue/east,
 /area/adminlevel/ert_station/cmb_station)
 "bl" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -68,6 +437,36 @@
 	pixel_y = 1
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
+/area/adminlevel/ert_station/cmb_station)
+"bm" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue/west,
+/area/adminlevel/ert_station/cmb_station)
+"bn" = (
+/obj/structure/machinery/landinglight/delaythree,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue,
+/area/adminlevel/ert_station/cmb_station)
+"bo" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue,
+/area/adminlevel/ert_station/cmb_station)
+"bp" = (
+/obj/structure/machinery/landinglight/delayone,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/cmb_station)
 "bB" = (
 /obj/structure/surface/rack{
@@ -111,16 +510,6 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/cargo,
-/area/adminlevel/ert_station/cmb_station)
-"ce" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat/blue/east,
 /area/adminlevel/ert_station/cmb_station)
 "cM" = (
 /obj/structure/closet/medical_wall{
@@ -216,18 +605,17 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "dE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
 	},
-/obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/corsat/blue/north,
 /area/adminlevel/ert_station/cmb_station)
 "dG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/blue/east,
@@ -431,16 +819,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/space)
-"fm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/corsat/blue/north,
-/area/adminlevel/ert_station/cmb_station)
 "fr" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -463,21 +841,11 @@
 "gg" = (
 /turf/open/floor/whitered,
 /area/adminlevel/ert_station/cmb_station)
-"gh" = (
-/obj/item/device/taperecorder{
-	pixel_x = -7;
-	pixel_y = 0
-	},
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/ert_station/cmb_station)
 "gj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/corsat/blue/west,
 /area/adminlevel/ert_station/cmb_station)
 "gp" = (
@@ -595,6 +963,10 @@
 /obj/item/folder/blue{
 	pixel_x = 5;
 	pixel_y = 11
+	},
+/obj/item/device/taperecorder{
+	pixel_x = -3;
+	pixel_y = 2
 	},
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/adminlevel/ert_station/cmb_station)
@@ -785,6 +1157,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "lk" = (
@@ -792,6 +1165,7 @@
 	id = "ANC Cell Hold";
 	name = "Holding Cell"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/cmb_station)
 "ln" = (
@@ -830,14 +1204,12 @@
 /turf/open/floor/hybrisa/tile/tilered,
 /area/adminlevel/ert_station/cmb_station)
 "lu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/machinery/landinglight,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /obj/structure/closet/hydrant{
 	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
 	},
 /turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/cmb_station)
@@ -907,8 +1279,6 @@
 /area/adminlevel/ert_station/cmb_station)
 "mJ" = (
 /obj/structure/machinery/vending/security{
-	product_ads = null;
-	product_slogans = null;
 	products = list(/obj/item/restraint/handcuffs = 8, /obj/item/restraint/handcuffs/zip = 10, /obj/item/restraint/legcuffs = 3, /obj/item/explosive/grenade/flashbang = 4, /obj/item/weapon/gun/energy/taser = 4, /obj/item/reagent_container/spray/pepper = 4, /obj/item/reagent_container/spray/investigation = 4, /obj/item/weapon/baton = 4, /obj/item/device/flashlight = 4, /obj/item/device/flash = 5, /obj/item/reagent_container/food/snacks/donut/normal = 12, /obj/item/storage/box/evidence = 6, /obj/item/clothing/under/marine/mp = 2, /obj/item/storage/belt/security/MP = 6, /obj/item/clothing/glasses/sunglasses/sechud = 3, /obj/item/device/radio/headset = 6, /obj/item/tape/regulation = 5, /obj/item/device/taperecorder = 3, /obj/item/device/clue_scanner = 3, /obj/item/device/camera = 8, /obj/item/device/camera_film = 8);
 	name = "\improper CMBTech"
 	},
@@ -1019,6 +1389,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -1477,6 +1850,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper CMB Office"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/cmb_station)
 "up" = (
@@ -1535,6 +1909,7 @@
 	buckling_x = 7;
 	buckling_y = 9
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "vI" = (
@@ -1552,6 +1927,9 @@
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
 "wl" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/cmb_station)
 "ws" = (
@@ -1600,6 +1978,7 @@
 "xd" = (
 /obj/structure/prop/invuln/lattice_prop,
 /obj/structure/prop/invuln/lattice_prop,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/space)
 "xI" = (
@@ -1676,9 +2055,7 @@
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/adminlevel/ert_station/cmb_station)
 "yE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
+/obj/structure/machinery/landinglight,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1847,6 +2224,9 @@
 "Bg" = (
 /obj/structure/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/adminlevel/ert_station/cmb_station)
@@ -2069,8 +2449,8 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Eo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
+/obj/structure/machinery/landinglight{
+	dir = 1
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -2097,6 +2477,7 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Fx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitered/southeast,
 /area/adminlevel/ert_station/cmb_station)
 "Fz" = (
@@ -2303,11 +2684,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
 "Io" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
+/obj/structure/machinery/landinglight{
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2341,7 +2725,8 @@
 	layer = 6.1;
 	pixel_x = 3;
 	pixel_y = -3;
-	anchored = 1
+	anchored = 1;
+	desc = "Here's your chance, do your d- never mind that's way too high."
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -2407,8 +2792,8 @@
 /turf/open/floor/corsat/bluecorner,
 /area/adminlevel/ert_station/cmb_station)
 "LF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -2424,8 +2809,8 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Ma" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/blue/west,
@@ -2434,6 +2819,9 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper CMB Armory";
 	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/cmb_station)
@@ -2633,8 +3021,8 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "OJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -2684,6 +3072,9 @@
 	pixel_x = 2;
 	pixel_y = 0
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
 "Pr" = (
@@ -2692,6 +3083,7 @@
 	pixel_y = 23;
 	pixel_x = 0
 	},
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Pv" = (
@@ -2934,11 +3326,8 @@
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
 "Sk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/closet/medical_wall{
-	pixel_x = 30
+/obj/structure/machinery/landinglight{
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/blue/west,
@@ -2946,6 +3335,9 @@
 "Sm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -2957,6 +3349,9 @@
 	dir = 8;
 	pixel_x = 0;
 	pixel_y = -1
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
@@ -3124,6 +3519,9 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Vm" = (
@@ -3145,6 +3543,9 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper CMB Cells";
 	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/cmb_station)
@@ -3335,6 +3736,9 @@
 	pixel_x = -8;
 	pixel_y = 13
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/corsat,
 /area/adminlevel/ert_station/cmb_station)
 "Zh" = (
@@ -3357,8 +3761,8 @@
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/cmb_station)
 "ZB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -3930,13 +4334,13 @@ Hv
 mk
 YG
 vj
+Fz
 vj
 vj
 vj
 vj
 vj
-vj
-vj
+Fz
 vj
 YG
 Mz
@@ -3988,13 +4392,13 @@ KJ
 KJ
 KJ
 vj
-dN
+rZ
 dN
 dN
 vj
 dN
 dN
-dN
+rZ
 vj
 KJ
 KJ
@@ -4046,13 +4450,13 @@ dN
 dN
 dN
 dN
-dN
+rZ
 dN
 dN
 VR
 dN
 dN
-dN
+rZ
 dN
 dN
 dN
@@ -4104,13 +4508,13 @@ dN
 dN
 dN
 dN
-dN
+rZ
 om
 dN
 VR
 dN
 dN
-dN
+rZ
 dN
 dN
 dN
@@ -4162,13 +4566,13 @@ vj
 dN
 dN
 dN
-dN
+Rq
 dN
 dN
 VR
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4218,15 +4622,15 @@ vj
 dN
 vj
 vj
-dN
-dN
-dN
+aw
+ar
+Rq
 dN
 dN
 vj
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4264,7 +4668,7 @@ Rq
 dN
 bc
 dN
-dN
+ar
 dN
 bc
 dN
@@ -4276,15 +4680,15 @@ dN
 dN
 dN
 RU
+ae
 dN
-dN
-dN
+Rq
 dN
 dN
 VR
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4322,7 +4726,7 @@ Rq
 dN
 dN
 dN
-bc
+aN
 dN
 dN
 dN
@@ -4334,15 +4738,15 @@ vj
 dN
 vj
 vj
+ae
 dN
-dN
-dN
+Rq
 om
 dN
 VR
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4367,7 +4771,7 @@ dN
 Rq
 dN
 dN
-dN
+ar
 dN
 bc
 dN
@@ -4380,7 +4784,7 @@ Rq
 dN
 vI
 eM
-dN
+ae
 vI
 eM
 dN
@@ -4391,16 +4795,16 @@ dN
 vj
 lq
 vj
+aw
+ab
 dN
-dN
-dN
-dN
+Rq
 dN
 dN
 VR
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4425,40 +4829,40 @@ dN
 Rq
 bc
 bc
-bc
-dN
-dN
-dN
+bh
+ac
+ac
+ac
 vt
+ac
+ad
+ac
+aY
+aE
+ac
+ac
+ad
+aj
+ac
+aI
+ac
+ac
+aE
+ac
+ac
+ad
+ac
+ac
+ab
 dN
 dN
-dN
-la
 Rq
-dN
-dN
-dN
-dN
-dN
-bc
-dN
-dN
-Rq
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
 dN
 dN
 vj
 dN
 dN
-dN
+Rq
 dN
 dN
 dN
@@ -4483,19 +4887,19 @@ dN
 Rq
 vI
 oD
-oD
+aC
 eM
 dN
 HZ
 Nu
 il
-bc
+aN
 HZ
 Gx
 Rq
 dN
 bc
-dN
+ae
 bc
 dN
 dN
@@ -4504,19 +4908,19 @@ bc
 Rq
 dN
 dN
+ae
 dN
 dN
 dN
 dN
-dN
+vj
+do
 vj
 vj
 vj
 vj
 vj
-vj
-vj
-vj
+do
 vj
 dN
 dN
@@ -4547,13 +4951,13 @@ dN
 dN
 dN
 dN
-dN
+ae
 dN
 dN
 Rs
 VL
 lg
-lg
+aQ
 lg
 lg
 lg
@@ -4562,7 +4966,7 @@ lg
 do
 dN
 dN
-dN
+ae
 dN
 dN
 dN
@@ -4570,11 +4974,11 @@ dN
 vj
 Dp
 vd
+Px
 vj
 Mz
 Hv
 mk
-YG
 vj
 vj
 vj
@@ -4605,13 +5009,13 @@ dN
 op
 Nd
 gt
-gt
+bd
 Nd
 Nd
 do
 ew
 up
-up
+aR
 up
 vj
 vj
@@ -4620,19 +5024,19 @@ vj
 vj
 YU
 dN
-dN
-dN
-dN
-dN
-dN
-rM
-dN
+aA
+ac
+ac
+ac
+ac
+at
+ac
 hU
+dN
 KJ
 Mz
 Hv
 mk
-YG
 YG
 hS
 YG
@@ -4663,13 +5067,13 @@ cM
 vj
 el
 wS
-wS
+be
 el
 el
 vj
 Vd
 up
-up
+aR
 up
 vj
 Oy
@@ -4678,19 +5082,19 @@ TU
 vj
 MY
 dN
-vI
+aB
 eM
 VG
 dN
 XJ
 vj
+ap
+vd
 Zh
-Px
 vj
 Mz
 Hv
 mk
-YG
 YG
 hS
 YG
@@ -4721,7 +5125,7 @@ dN
 vj
 zA
 wS
-DM
+bf
 Tu
 Tu
 vj
@@ -4736,7 +5140,7 @@ vj
 vj
 mb
 dN
-dN
+ae
 dN
 dN
 dN
@@ -4785,7 +5189,7 @@ DM
 vj
 tU
 rM
-up
+aS
 nM
 rO
 NH
@@ -4794,7 +5198,7 @@ Sa
 vj
 Vr
 dN
-dN
+ae
 dN
 dN
 dN
@@ -4852,18 +5256,18 @@ vj
 vj
 dN
 dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
+aA
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+al
 dN
 qx
 vj
@@ -4910,7 +5314,7 @@ ru
 vj
 dN
 vI
-oD
+aC
 eM
 Ou
 dN
@@ -4921,7 +5325,7 @@ ku
 ku
 ku
 ku
-dN
+ae
 dN
 IY
 vj
@@ -4968,7 +5372,7 @@ vj
 vj
 dN
 dN
-dN
+ae
 dN
 dN
 dN
@@ -4979,7 +5383,7 @@ vj
 vj
 vj
 vj
-rM
+aa
 eF
 vj
 vj
@@ -5005,7 +5409,7 @@ gp
 fV
 Js
 uC
-dN
+ae
 dN
 dN
 vj
@@ -5026,7 +5430,7 @@ vj
 dN
 dN
 dN
-dN
+ae
 dN
 dN
 ma
@@ -5037,13 +5441,13 @@ eZ
 ei
 nX
 vj
-OQ
+am
 dN
 vj
 wz
 Mf
 ZQ
-xQ
+ah
 vj
 YG
 YG
@@ -5063,7 +5467,7 @@ vj
 vj
 kx
 uC
-bc
+aN
 dN
 bc
 dN
@@ -5084,7 +5488,7 @@ dN
 dN
 dN
 dN
-dN
+ae
 dN
 dN
 qx
@@ -5095,7 +5499,7 @@ aZ
 PE
 xQ
 lM
-dN
+ae
 dN
 lM
 Mn
@@ -5121,11 +5525,7 @@ Gi
 GU
 bc
 uC
-dN
-dN
-dN
-dN
-ZH
+ae
 dN
 dN
 dN
@@ -5133,16 +5533,20 @@ ZH
 dN
 dN
 dN
+ZH
 dN
-om
-dN
-dN
-om
-dN
-dN
-dN
-dN
-dN
+aw
+ac
+ac
+aF
+ac
+ac
+aF
+ac
+ac
+ad
+ac
+ab
 ma
 ku
 IY
@@ -5153,7 +5557,7 @@ xQ
 xQ
 xQ
 lM
-dN
+ae
 dN
 lM
 bi
@@ -5179,17 +5583,17 @@ hV
 OC
 dN
 EB
-dN
-dN
-dN
-dN
-dN
-dN
-bc
-dN
-dN
-dN
-dN
+bj
+ac
+ac
+ac
+ac
+ac
+aI
+ac
+ac
+ad
+ab
 bc
 iq
 ku
@@ -5198,7 +5602,7 @@ ku
 ZY
 dN
 dN
-dN
+ae
 ma
 ku
 IY
@@ -5211,7 +5615,7 @@ xQ
 ZK
 AR
 vj
-dN
+ae
 dN
 vj
 UL
@@ -5246,7 +5650,7 @@ dN
 xI
 dN
 dN
-dN
+ae
 dN
 dN
 vj
@@ -5256,7 +5660,7 @@ KJ
 vj
 dN
 dN
-dN
+ae
 qx
 vj
 vj
@@ -5266,10 +5670,10 @@ BJ
 uM
 xQ
 ne
-jk
-jk
+ao
+an
 ui
-dN
+af
 dN
 lM
 Py
@@ -5304,7 +5708,7 @@ KJ
 vj
 JA
 dN
-bc
+aN
 dN
 vj
 vj
@@ -5314,9 +5718,9 @@ YG
 vj
 vj
 Wv
-dN
+ae
 qx
-gh
+vj
 zE
 jj
 HF
@@ -5327,13 +5731,13 @@ jk
 jk
 jk
 rM
-dN
+ae
 dN
 lM
 in
 Go
 nq
-xQ
+ai
 xQ
 vj
 vj
@@ -5362,7 +5766,7 @@ YG
 hS
 vj
 Wv
-FW
+aD
 ma
 vj
 YG
@@ -5372,7 +5776,7 @@ YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 gP
@@ -5385,13 +5789,13 @@ jk
 hO
 vj
 vj
-dN
+ae
 ZG
 vj
 vj
 bl
 zu
-xQ
+ai
 Ji
 vj
 Gs
@@ -5420,36 +5824,36 @@ YG
 YG
 vj
 Ze
-Ze
+aW
 Ze
 vj
 HA
-HA
+aO
 xd
-HA
+aJ
 HA
 vj
 Ac
-dN
+ae
 qx
 vj
 iz
 CX
 ZS
 ih
-jk
+au
 jk
 Gl
 qr
 vj
 mo
-dN
+ae
 dN
 dN
 vj
 or
 Ri
-xQ
+ai
 xQ
 vj
 Gs
@@ -5472,42 +5876,42 @@ jZ
 qx
 vj
 HA
-HA
-HA
-HA
+aO
+xd
+aJ
 HA
 vj
 Ac
-FW
+aD
 qx
 vj
 YG
-YG
-HA
-YG
-YG
+Mz
+fg
+aK
+aG
 vj
 Ac
-dN
+ae
 qx
 vj
 ff
 Vm
 Yh
 Qq
-jk
+av
 jk
 vj
 vj
 vj
 NL
-dN
+ae
 dN
 dN
 vj
 vj
 vj
-xQ
+ai
 xQ
 vj
 Mt
@@ -5530,46 +5934,46 @@ uC
 qx
 vj
 YG
-YG
-HA
-YG
+Mz
+Dr
+aK
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 YG
-YG
-HA
-YG
+Mz
+Dr
+aK
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 vj
 MU
 MU
 vj
-rM
+aa
 eF
 vj
 Vr
 dN
 dN
-dN
+ae
 dN
 dN
 dN
 dN
 vj
-rM
+aa
 eF
 vj
 vj
-rM
+aa
 vj
 vj
 Ac
@@ -5588,46 +5992,46 @@ uC
 qx
 vj
 YG
-YG
-HA
-YG
+Mz
+Dr
+aK
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 YG
-YG
-HA
-YG
+Mz
+fg
+aK
 YG
 vj
 Ac
-dN
-dN
+aA
+ac
 ui
-BT
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
+ay
+ac
+ac
+ac
+aj
+ad
+ac
+ac
+ac
+ac
+aj
+ac
+ad
+ac
+ac
+ac
+aj
+ad
+ac
+ac
+ab
 BT
 VR
 dN
@@ -5646,23 +6050,23 @@ jZ
 qx
 vj
 HA
-HA
-HA
-HA
+aP
+aM
+aL
 HA
 vj
 Ac
-FW
+aD
 qx
 vj
 HA
-HA
-xd
-HA
+aP
+aM
+aL
 HA
 vj
 Ac
-dN
+ae
 dN
 rM
 dN
@@ -5670,7 +6074,7 @@ dN
 dN
 dN
 dN
-dN
+ae
 xI
 dN
 dN
@@ -5682,7 +6086,7 @@ dN
 dN
 xI
 dN
-dN
+ae
 dN
 dN
 dN
@@ -5710,17 +6114,17 @@ YG
 YG
 vj
 Ze
-Ze
+aW
 Ze
 vj
 YG
 YG
-YG
+HA
 YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 vj
@@ -5768,17 +6172,17 @@ YG
 vj
 vj
 rK
-FW
+aD
 nB
 vj
 vj
 YG
-YG
+HA
 YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 XB
@@ -5786,7 +6190,7 @@ jx
 UX
 QB
 dN
-dN
+ae
 vj
 Bo
 xQ
@@ -5798,7 +6202,7 @@ xQ
 fr
 vj
 dN
-dN
+ae
 vj
 vM
 yP
@@ -5826,25 +6230,25 @@ KJ
 vj
 dN
 dN
-dN
+ae
 dN
 dN
 vj
 vj
-YG
+HA
 YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
-Rk
+az
 tT
 fJ
 QB
 Wn
-ZG
+aq
 vj
 vj
 vj
@@ -5856,7 +6260,7 @@ vj
 vj
 vj
 dN
-dN
+ae
 vj
 Pv
 Pv
@@ -5872,18 +6276,18 @@ YG
 YG
 vj
 ki
-ZB
+bk
 dG
+bb
+ba
+bg
 dG
+bb
+ba
+bg
 dG
-dG
-ce
-dG
-dG
-dG
-ce
-dG
-dG
+bb
+ba
 OJ
 dG
 ZB
@@ -5894,7 +6298,7 @@ YG
 YG
 vj
 Ac
-FW
+aD
 qx
 vj
 Rk
@@ -5902,7 +6306,7 @@ tT
 gg
 vj
 lS
-dN
+ae
 vj
 qN
 JQ
@@ -5914,7 +6318,7 @@ CG
 zp
 jP
 dN
-dN
+ae
 BS
 dN
 dN
@@ -5952,15 +6356,15 @@ YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 Gs
 ZF
 Fx
 lk
-Ej
-dN
+ac
+af
 jG
 GC
 Mj
@@ -5972,7 +6376,7 @@ QO
 Uh
 dN
 dN
-dN
+ae
 dN
 dN
 dN
@@ -5987,7 +6391,7 @@ YG
 YG
 YG
 vj
-yE
+bn
 tZ
 tZ
 tZ
@@ -6003,14 +6407,14 @@ tZ
 tZ
 vU
 tZ
-Io
+aT
 vj
 YG
 YG
 YG
 vj
 Ac
-dN
+ae
 qx
 vj
 vj
@@ -6018,7 +6422,7 @@ rM
 vj
 vj
 HN
-dN
+ae
 vj
 vj
 vj
@@ -6030,7 +6434,7 @@ sS
 tu
 dN
 Ej
-dN
+af
 mJ
 Tg
 yU
@@ -6045,7 +6449,7 @@ YG
 YG
 YG
 vj
-yE
+bo
 tZ
 tZ
 tZ
@@ -6068,7 +6472,7 @@ vj
 vj
 vj
 Ac
-FW
+aD
 qx
 vj
 mQ
@@ -6076,7 +6480,7 @@ Rc
 NP
 vj
 Pr
-dN
+af
 lo
 jx
 KL
@@ -6088,7 +6492,7 @@ Tr
 jd
 dN
 dN
-dN
+ae
 dN
 dN
 dN
@@ -6103,7 +6507,7 @@ YG
 YG
 YG
 vj
-yE
+bp
 tZ
 tZ
 tZ
@@ -6119,14 +6523,14 @@ tZ
 tZ
 tZ
 tZ
-Io
+aU
 nB
 Qe
 Ki
 Qe
 Ki
 rK
-dN
+ae
 qx
 vj
 vj
@@ -6134,7 +6538,7 @@ vj
 vj
 vj
 RB
-ZG
+aq
 vj
 MN
 GL
@@ -6146,7 +6550,7 @@ iE
 zm
 jP
 dN
-dN
+ae
 nn
 vj
 vj
@@ -6178,13 +6582,13 @@ tZ
 tZ
 tZ
 Eo
-om
-Qe
-dN
-Qe
-om
-dN
-dN
+aF
+aH
+ac
+aH
+aF
+ac
+ab
 qx
 vj
 qR
@@ -6219,7 +6623,7 @@ YG
 YG
 YG
 vj
-yE
+bn
 tZ
 tZ
 tZ
@@ -6235,7 +6639,7 @@ tZ
 tZ
 tZ
 tZ
-Io
+aT
 ma
 Qe
 ku
@@ -6250,7 +6654,7 @@ AX
 ml
 UY
 dN
-dN
+ae
 dN
 dN
 dN
@@ -6262,7 +6666,7 @@ dN
 BT
 dN
 dN
-dN
+ae
 vj
 YG
 YG
@@ -6277,7 +6681,7 @@ YG
 YG
 YG
 vj
-yE
+bo
 tZ
 tZ
 tZ
@@ -6293,7 +6697,7 @@ tZ
 tZ
 tZ
 tZ
-fm
+dE
 vj
 vj
 vj
@@ -6306,21 +6710,21 @@ vj
 dn
 Zw
 li
-rM
-dN
-dN
-xI
-dN
-dN
-dN
-dN
-xI
-dN
-dN
-dN
-dN
-dN
-ZG
+at
+ad
+aj
+ak
+ac
+ad
+ac
+ac
+ak
+ac
+ac
+ac
+ac
+ac
+ag
 vj
 YG
 YG
@@ -6335,7 +6739,7 @@ vj
 YG
 YG
 vj
-yE
+bp
 tZ
 tZ
 tZ
@@ -6351,7 +6755,7 @@ tZ
 tZ
 tZ
 tZ
-Io
+aU
 vj
 YG
 YG
@@ -6365,11 +6769,11 @@ qw
 bX
 vj
 vj
-rM
+aa
 vj
 vj
 vj
-rM
+aa
 vj
 vj
 vj
@@ -6423,11 +6827,11 @@ vj
 vj
 vj
 Tp
-dN
+ae
 bT
 QB
 dN
-dN
+ae
 wW
 dN
 vj
@@ -6452,19 +6856,19 @@ YG
 YG
 vj
 Yp
-LF
-Ma
-Ma
-Sk
-gj
-Ma
-Ma
-Ma
-Ma
+bm
 Ma
 gj
 Sk
+aX
 Ma
+gj
+Sk
+aX
+Ma
+gj
+Sk
+aX
 Ma
 LF
 px

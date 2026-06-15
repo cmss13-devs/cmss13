@@ -2722,6 +2722,4 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
-#include "maps\shuttles\ert_cmb_shuttle.dmm"
-#include "maps\templates\lazy_templates\cmb_ert_station.dmm"
 // END_INCLUDE

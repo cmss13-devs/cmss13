@@ -4,6 +4,7 @@
 	mob_max = 5
 	probability = 10
 	home_base = /datum/lazy_template/ert/cmb_station
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cmb
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_cmb/item
 
@@ -217,7 +218,6 @@
 	mob_max = 8
 	mob_min = 3
 	probability = 20
-	home_base = /datum/lazy_template/ert/weyland_station
 	max_heavies = 1
 	max_medics = 2
 	max_synths = 1

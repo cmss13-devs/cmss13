@@ -145,10 +145,12 @@
 
 /obj/structure/machinery/cooking/grill/update_icon()
 	. = ..()
+	overlays.Cut()
 	for(var/index in 1 to length(surfaces))
 		var/datum/cooking_surface/surface = surfaces[index]
 		if(surface.on)
-			. += image(icon, icon_state = "fire_[index]")
+			overlays += image(icon, icon_state = "fire_[index]")
+
 
 /obj/structure/machinery/cooking/grill/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID

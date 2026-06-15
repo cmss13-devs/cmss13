@@ -101,12 +101,12 @@
 
 /obj/item/reagent_container/food/snacks/meat/ground_meat
 	name = "ground meat"
-	desc = "Some meat that has minced with a processor."
+	desc = "Some meat that has been minced with a processor."
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "groundbeef"
 	filling_color = "#DB0000"
 
-/obj/item/reagent_container/food/snacks/meat/ground_meat/examine(mob/user)
+/obj/item/reagent_container/food/snacks/meat/ground_meat/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Use unique action to shape it into a raw meatball.")
 

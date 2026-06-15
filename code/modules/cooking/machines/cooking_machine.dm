@@ -31,16 +31,7 @@
 			return TRUE
 
 /obj/structure/machinery/cooking/clicked(mob/user, list/modifiers)
-	if(modifiers[SHIFT_CLICK])
-		var/surface_idx = clickpos_to_surface(modifiers)
-		if(!surface_idx)
-			return ..()
-
-		var/datum/cooking_surface/surface = surfaces[surface_idx]
-		if(surface.container)
-			return surface.container.clicked(user, modifiers)
-
-		return ..()
+	var/surface_idx = clickpos_to_surface(modifiers)
 
 	if(modifiers[CTRL_CLICK])
 		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated())
@@ -49,17 +40,16 @@
 		if(!anchored)
 			return ..()
 
-		var/surface_idx = clickpos_to_surface(modifiers)
 		if(!surface_idx)
 			return
 		var/datum/cooking_surface/surface = surfaces[surface_idx]
 
 		var/list/surface_options = list(
-			RADIAL_ACTION_SET_ALARM = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_setalarm"),
-			RADIAL_ACTION_ON_OFF = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_onoff"),
+			RADIAL_ACTION_SET_ALARM = image(icon = 'icons/mob/radial_cooking.dmi', icon_state = "radial_setalarm"),
+			RADIAL_ACTION_ON_OFF = image(icon = 'icons/mob/radial_cooking.dmi', icon_state = "radial_onoff"),
 		)
 		if(surface.allow_temp_change)
-			surface_options[RADIAL_ACTION_SET_TEMPERATURE] = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp")
+			surface_options[RADIAL_ACTION_SET_TEMPERATURE] = image(icon = 'icons/mob/radial_cooking.dmi', icon_state = "radial_settemp")
 		var/option_choice = show_radial_menu(user, src, surface_options, require_near = TRUE) // add check for radial menu preference later remind me!!!
 
 		switch(option_choice)
@@ -68,7 +58,10 @@
 			if(RADIAL_ACTION_SET_TEMPERATURE)
 				surface.handle_temperature(user)
 			if(RADIAL_ACTION_ON_OFF)
+				surface.handle_switch(user)
 				update_icon()
+
+		return ..()
 
 	if(modifiers[ALT_CLICK])
 		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated())
@@ -85,6 +78,15 @@
 
 		container.do_empty(user)
 		burner.unset_callbacks()
+
+	if(!surface_idx)
+		return ..()
+
+	var/datum/cooking_surface/surface = surfaces[surface_idx]
+	if(surface.container)
+		return surface.container.clicked(user, modifiers)
+
+	return ..()
 
 /// Retrieve which burning surface on the machine is being accessed.
 /obj/structure/machinery/cooking/proc/clickpos_to_surface(modifiers)

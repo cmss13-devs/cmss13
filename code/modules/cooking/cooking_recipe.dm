@@ -61,20 +61,15 @@
 
 	var/list/applied_steps = tracker.recipes_all_applied_steps[src]
 	var/output_count = 1
-	// Remember this is not necessarily a consecutive list of step indexes
-	// Optional steps may have been skipped
-	for(var/i in 1 to length(applied_steps))
-		var/current_index = applied_steps[i]
-		var/datum/cooking/recipe_step/recipe_step = steps[current_index]
+	for(var/i in 1 to length(tracker.recipes_applied_step_data))
 		var/list/applied_step_data = tracker.recipes_applied_step_data[i]
 
-		// Filter out reagents based on settings
-		var/datum/cooking/recipe_step/add_reagent/add_reagent_step = recipe_step
-		if(istype(add_reagent_step))
-			var/amount_to_remove = add_reagent_step.amount * (1 - add_reagent_step.remain_percent)
+		if("reagent_id" in applied_step_data)
+			var/amount_to_remove = applied_step_data["amount"] * (1 - applied_step_data["reagent_remain_percent"])
 			if(!amount_to_remove)
 				continue
-			container.reagents.remove_reagent(add_reagent_step.reagent_id, amount_to_remove, safety = TRUE)
+			container.reagents.remove_reagent(
+				applied_step_data["reagent_id"], amount_to_remove, safety = TRUE)
 
 		if("rating" in applied_step_data)
 			output_count = max(output_count, min(3, applied_step_data["rating"]))
@@ -162,7 +157,6 @@
 		slurry.copy_to(new_item, amount=slurry.total_volume)
 
 /proc/initialize_recipe_dictionary()
-	GLOB.pcwj_recipe_dictionary.Cut()
 	var/list/recipe_paths = subtypesof(/datum/cooking/recipe)
 	var/list/to_add = list()
 	for(var/path in recipe_paths)

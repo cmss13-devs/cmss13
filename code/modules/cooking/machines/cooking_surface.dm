@@ -94,7 +94,7 @@
 		container.handle_burning()
 
 /datum/cooking_surface/proc/handle_alarm()
-	for(var/mob/mob in hearers(src, parent))
+	for(var/mob/mob in hearers(src, null))
 		mob.show_message(SPAN_EMOTE("dings."), SHOW_MESSAGE_AUDIBLE)
 	playsound(parent.loc, 'sound/misc/bell.ogg', 50, FALSE) //replace
 

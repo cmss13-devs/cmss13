@@ -99,7 +99,7 @@
 	product_type = /obj/item/reagent_container/food/snacks/meatsteak
 	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/meat),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/meat, "exact"), // add exact with this so meat subtypes dont complete this
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
 		PCWJ_ADD_REAGENT("blackpepper", 1),
 		PCWJ_USE_GRILL(J_MED, 10 SECONDS),

@@ -83,7 +83,7 @@
 
 	return PCWJ_CONTAINER_BUSY
 
-/obj/item/reagent_container/cooking/attackby(obj/item/used, mob/living/user, list/modifiers) //does not exist
+/obj/item/reagent_container/cooking/attackby(mob/living/user, obj/item/used, list/modifiers) //the item should be the first param, but doing that sets used as the user mob?
 	process_item(user, used)
 
 /// Attempt to progress the known recipes in the tracker with the item last used

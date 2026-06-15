@@ -358,7 +358,7 @@
 		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/banana),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_ADD_REAGENT("sugar", 15),
-		PCWJ_USE_OVEN(J_MED, 50 SECONDS),
+		PCWJ_USE_OVEN(J_MED, 30 SECONDS),
 	)
 
 /datum/cooking/recipe/cookies
@@ -628,7 +628,7 @@
 		PCWJ_ADD_PRODUCE(/obj/item/reagent_container/food/snacks/grown/berries),
 		PCWJ_ADD_REAGENT("milk", 5),
 		PCWJ_ADD_REAGENT("sugar", 15),
-		PCWJ_USE_OVEN(J_MED, 50 SECONDS),
+		PCWJ_USE_OVEN(J_MED, 30 SECONDS),
 	)*/
 
 /datum/cooking/recipe/limecake

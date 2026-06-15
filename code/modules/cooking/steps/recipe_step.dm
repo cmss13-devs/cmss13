@@ -6,6 +6,13 @@
 	if("optional" in options)
 		optional = options["optional"]
 
+
+/// See if the *used_item* meets the conditions for this recipe step. This will
+/// typically be something like ensuring that a recipe step for adding a
+/// specific kind of item has been passed an item of that type.
+///
+/// Returns one of [PCWJ_CHECK_INVALID], [PCWJ_CHECK_VALID], [PCWJ_CHECK_FULL],
+/// [PCWJ_CHECK_SILENT].
 /datum/cooking/recipe_step/proc/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return PCWJ_CHECK_VALID
 

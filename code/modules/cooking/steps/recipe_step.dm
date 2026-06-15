@@ -19,6 +19,7 @@
 /// "message", which returns the visible message that should be shown in chat to
 /// the user when the step is followed.
 /datum/cooking/recipe_step/proc/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
+	RETURN_TYPE(/list)
 	return list()
 
 /// Special function to check if the step has been satisfied. Sometimed just following the step is enough, but not always.

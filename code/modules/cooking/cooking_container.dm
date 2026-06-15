@@ -197,9 +197,7 @@
 /obj/item/reagent_container/cooking/proc/clear()
 	contents = list()
 	reagents.clear_reagents()
-	if(tracker)
-		qdel(tracker)
-		tracker = null
+	QDEL_NULL(tracker)
 	clear_cooking_data()
 
 /obj/item/reagent_container/cooking/proc/cooker_temp_data(datum/cooking_surface/surface)

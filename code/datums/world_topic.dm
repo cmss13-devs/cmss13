@@ -94,7 +94,7 @@
 /datum/world_topic/playerlist/Run(list/input)
 	. = ..()
 	data = list()
-	for(var/client/C as() in GLOB.clients)
+	for(var/client/C in GLOB.clients)
 		data += C.ckey
 	statuscode = 200
 	response = "Player list fetched"

@@ -41,13 +41,14 @@
 	/// A list of [/datum/cooking/recipe_step]s needed to be followed
 	/// to create the recipe. Generally steps must be completed in order
 	/// for the preparation to be considered valid.
-	var/list/steps
+	var/list/datum/cooking/recipe_step/steps
 
 /datum/cooking/recipe/Destroy()
 	. = ..()
 	QDEL_NULL(container_type)
 
 /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
+	RETURN_TYPE(/obj/item)
 	var/obj/item/reagent_container/cooking/container = tracker.container_parent
 
 	if(!istype(container))

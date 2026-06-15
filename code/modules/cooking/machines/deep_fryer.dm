@@ -19,12 +19,12 @@
 /obj/structure/machinery/cooking/deepfryer/Initialize(mapload)
 	. = ..()
 
-	for(var/i in 1 to 2)
+	for(var/index in 1 to 2)
 		surfaces += new/datum/cooking_surface/deepfryer_basin(src)
 
 /obj/structure/machinery/cooking/deepfryer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Ctrl-Click</b> on a basin to set its timer and toggle it on or off.</span>"
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a basin to set its timer and toggle it on or off.")
 
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 16
@@ -59,7 +59,7 @@
 					which_hand = "r_hand"
 
 				burn_victim.apply_damage(20, BURN, which_hand, enviro = TRUE)
-				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking [surface.container] off of [src].</span>")
+				to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking [surface.container] off of [src]."))
 
 		user.put_in_hands(surface.container)
 		surface.UnregisterSignal(surface.container, COMSIG_PARENT_EXAMINE)
@@ -69,8 +69,8 @@
 /obj/structure/machinery/cooking/deepfryer/update_icon()
 	. = ..()
 
-	for(var/i in 1 to length(surfaces))
-		var/datum/cooking_surface/surface = surfaces[i]
+	for(var/index in 1 to length(surfaces))
+		var/datum/cooking_surface/surface = surfaces[index]
 		if(!surface.container)
 			continue
 

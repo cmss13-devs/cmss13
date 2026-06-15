@@ -18,6 +18,10 @@
 
 	..(options)
 
+/datum/cooking/recipe_step/add_produce/Destroy()
+	. = ..()
+	QDEL_NULL(produce_type)
+
 /datum/cooking/recipe_step/add_produce/check_conditions_met(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	if(!istype(added_item, /obj/item/reagent_container/food/snacks/grown))
 		return PCWJ_CHECK_INVALID
@@ -49,7 +53,7 @@
 			if(user.drop_held_item(used_item))
 				used_item.forceMove(container)
 			else
-				to_chat(user, "<span class='notice'>You can't remove [used_item] from your hands!</span>")
+				to_chat(user, SPAN_NOTICE("You can't remove [used_item] from your hands!"))
 				return list()
 		else
 			used_item.forceMove(container)

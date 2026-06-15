@@ -5,7 +5,7 @@
 	var/obj/structure/machinery/cooking/oven/oven = parent
 	if(istype(oven))
 		if(!on && oven.opened)
-			to_chat(user, "<span class='notice'>The oven must be closed in order to turn it on.</span>")
+			to_chat(user, SPAN_NOTICE("The oven must be closed in order to turn it on."))
 			return
 
 	return ..()

@@ -18,12 +18,12 @@
 /obj/structure/machinery/cooking/stovetop/Initialize(mapload)
 	. = ..()
 
-	for(var/i in 1 to 4)
+	for(var/index in 1 to 4)
 		surfaces += new/datum/cooking_surface/stovetop_burner(src)
 
 /obj/structure/machinery/cooking/stovetop/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Ctrl-Click</b> on a burner to set its timer, temperature, and toggle it on or off.</span>"
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a burner to set its timer, temperature, and toggle it on or off.")
 
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 21
@@ -65,7 +65,7 @@
 					if(J_LO)
 						burn_victim.apply_damage(1, BURN, which_hand, enviro = TRUE)
 
-				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking [burner.container] off of the stove.</span>")
+				to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking [burner.container] off of the stove."))
 		user.put_in_hands(burner.container)
 		burner.UnregisterSignal(burner.container, COMSIG_PARENT_EXAMINE)
 		burner.container = null
@@ -97,18 +97,18 @@
 	if(cooking)
 		. += image(icon, icon_state = "indicator")
 
-	for(var/i in 1 to length(surfaces))
-		var/datum/cooking_surface/surface = surfaces[i]
+	for(var/index in 1 to length(surfaces))
+		var/datum/cooking_surface/surface = surfaces[index]
 		if(surface.on)
-			. += image(icon, icon_state = "burner_[i]")
+			. += image(icon, icon_state = "burner_[index]")
 			if(surface.container)
-				. += image(icon, icon_state="steam_[i]", layer = ABOVE_OBJ_LAYER)
+				. += image(icon, icon_state="steam_[index]", layer = ABOVE_OBJ_LAYER)
 
 /obj/structure/machinery/cooking/stovetop/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	container.make_mini()
 	vis_contents += container
 	if(surface_idx == 2 || surface_idx == 4)
-		var/matrix/M = matrix()
-		M.Scale(-1, 1)
-		container.transform = M
+		var/matrix/transform_matrix = matrix()
+		transform_matrix.Scale(-1, 1)
+		container.apply_transform(transform_matrix)

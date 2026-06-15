@@ -61,7 +61,7 @@
 	. = ..()
 	if(length(contents))
 		. += get_content_info()
-	. += "<span class='notice'><b>Alt-Click</b> to remove all items and reagents from this.</span>"
+	. += SPAN_NOTICE("<b>Alt-Click</b> to remove all items and reagents from this.")
 
 /obj/item/reagent_container/cooking/get_examine_text(mob/user)
 	. = list()
@@ -69,10 +69,10 @@
 		return
 	var/one_percent = reagents.total_volume / 100
 	if(length(reagents.reagent_list))
-		. += "<span class='notice'>It contains:</span>"
+		. += SPAN_NOTICE("It contains:")
 	for(var/I in reagents.reagent_list)
 		var/datum/reagent/R = I
-		. += "<span class='notice'>[R.volume] units of [R] ([round(R.volume / one_percent)]%)</span>"
+		. += SPAN_NOTICE("[R.volume] units of [R] ([round(R.volume / one_percent)]%)")
 
 /obj/item/reagent_container/cooking/proc/get_content_info()
 	return "It contains [english_list(contents)]."
@@ -110,7 +110,7 @@
 			tracker.recipes_last_completed_step[recipe] = 0
 
 	if(!tracker && (length(contents) || reagents.total_volume != 0))
-		to_chat(user, "<span class='notice'>\The [src] is full. Empty its contents first.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is full. Empty its contents first."))
 		return PCWJ_CONTAINER_FULL
 
 	var/process_reaction = tracker.process_item_wrap(user, used)
@@ -129,23 +129,23 @@
 		return
 
 	if(reaction_status == PCWJ_NO_STEPS && !tracker.recipe_started)
-		to_chat(user, "<span class='notice'>You don't know what you'd begin to make with this.</span>")
+		to_chat(user, SPAN_NOTICE("You don't know what you'd begin to make with this."))
 		return
 
 	switch(reaction_status)
 		if(PCWJ_NO_RECIPES)
-			to_chat(user, "<span class='notice'>You don't know what you'd begin to make with this.</span>")
+			to_chat(user, SPAN_NOTICE("You don't know what you'd begin to make with this."))
 		if(PCWJ_NO_STEPS)
-			to_chat(user, "<span class='notice'>You get a feeling this wouldn't improve the recipe.</span>")
+			to_chat(user, SPAN_NOTICE("You get a feeling this wouldn't improve the recipe."))
 		if(PCWJ_SUCCESS, PCWJ_PARTIAL_SUCCESS)
 			if(tracker.step_reaction_message && ismob(user))
-				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
+				to_chat(user, SPAN_NOTICE("[tracker.step_reaction_message]"))
 
 			update_icon()
 		if(PCWJ_COMPLETE)
 			if(tracker.step_reaction_message && ismob(user))
-				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
-				to_chat(user, "<span class='notice'>You finish cooking with [src].</span>")
+				to_chat(user, SPAN_NOTICE("[tracker.step_reaction_message]"))
+				to_chat(user, SPAN_NOTICE("You finish cooking with [src]."))
 			QDEL_NULL(tracker)
 			clear_cooking_data()
 			update_icon()
@@ -181,7 +181,7 @@
 				AM.forceMove(get_turf(target))
 
 		if(ismob(user))
-			to_chat(user, "<span class='notice'>You remove everything from [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove everything from [src]."))
 
 	if(reagent_clear)
 		reagents.clear_reagents()

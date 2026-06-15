@@ -43,7 +43,7 @@
 		return ..()
 
 	if(modifiers[CTRL_CLICK])
-		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated()) //TRAIT_HANDS_BLOCKED got nuked at some point apparently?
+		if(user.stat || user.is_mob_restrained() || (!in_range(src, user)) || user.is_mob_incapacitated())
 			return
 
 		if(!anchored)
@@ -60,7 +60,7 @@
 		)
 		if(surface.allow_temp_change)
 			surface_options[RADIAL_ACTION_SET_TEMPERATURE] = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp")
-		var/option_choice = show_radial_menu(user, src, surface_options, require_near = TRUE)
+		var/option_choice = show_radial_menu(user, src, surface_options, require_near = TRUE) // add check for radial menu preference later remind me!!!
 
 		switch(option_choice)
 			if(RADIAL_ACTION_SET_ALARM)
@@ -106,7 +106,7 @@
 	for(var/allowed_container_type in allowed_containers)
 		if(istype(used, allowed_container_type))
 			if(ismob(user))
-				to_chat(user, "<span class='notice'>You put [used] on [src].</span>")
+				to_chat(user, SPAN_NOTICE("You put [used] on [src]."))
 				if(user.drop_held_item(used))
 					used.forceMove(src)
 			else
@@ -142,8 +142,8 @@
 	for(var/obj/item/our_item in vis_contents)
 		remove_from_visible(our_item)
 
-	for(var/i in 1 to length(surfaces))
-		update_surface_icon(i)
+	for(var/index in 1 to length(surfaces))
+		update_surface_icon(index)
 
 /obj/structure/machinery/cooking/proc/update_surface_icon(surface_idx)
 	return

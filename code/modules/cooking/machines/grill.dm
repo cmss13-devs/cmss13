@@ -8,7 +8,7 @@
 
 	if(!on)
 		if(grill.stored_wood <= 0)
-			to_chat(user, "<span class='notice'>There is no wood in the grill. Insert some planks first.</span>")
+			to_chat(user, SPAN_NOTICE("There is no wood in the grill. Insert some planks first."))
 			return
 
 	return ..()
@@ -44,7 +44,7 @@
 	hopper_overlay = new
 	vis_contents += hopper_overlay
 
-	for(var/i in 1 to 2)
+	for(var/index in 1 to 2)
 		surfaces += new /datum/cooking_surface/grill_surface(src)
 	update_icon()
 
@@ -54,8 +54,8 @@
 
 /obj/structure/machinery/cooking/grill/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It contains [round(stored_wood, 0.01)]/[wood_maximum] units of charcoal.</span>"
-	. += "<span class='notice'><b>Ctrl-Click</b> on a surface to set its timer, temperature, and toggle it on or off.</span>"
+	. += SPAN_NOTICE("It contains [round(stored_wood, 0.01)]/[wood_maximum] units of charcoal.")
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a surface to set its timer, temperature, and toggle it on or off.")
 
 /obj/structure/machinery/cooking/grill/process()
 	. = ..()
@@ -67,19 +67,6 @@
 				surface.turn_off()
 			else
 				stored_wood = max(0, stored_wood - wood_consumption_rate)
-
-/obj/structure/machinery/cooking/grill/RefreshParts()
-	. = ..()
-
-	var/las_rating = 0
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		las_rating += M.rating
-	wood_consumption_rate = initial(wood_consumption_rate) / max(1, las_rating / 2)
-
-	var/bin_rating = 0
-	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		bin_rating += M.rating
-	wood_maximum = 15 * bin_rating
 
 #define ICON_SPLIT_X 16
 
@@ -98,9 +85,9 @@
 		var/obj/item/stack/sheet/wood/stack = used
 		var/used_sheets = min(stack.get_amount(), (wood_maximum - stored_wood))
 		if(!used_sheets)
-			to_chat(user, "<span class='notice'>The grill's hopper is full.</span>")
+			to_chat(user, SPAN_NOTICE("The grill's hopper is full."))
 			return
-		to_chat(user, "<span class='notice'>You add [used_sheets] wood plank\s into [src]'s hopper.</span>")
+		to_chat(user, SPAN_NOTICE("You add [used_sheets] wood plank\s into [src]'s hopper."))
 		if(!stack.use(used_sheets))
 			qdel(stack)	// Protects against weirdness
 		stored_wood += used_sheets
@@ -133,7 +120,7 @@
 					if(J_LO)
 						burn_victim.apply_damage(1, BURN, which_hand, enviro = TRUE)
 
-				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking [surface.container] off of [src].</span>")
+				to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking [surface.container] off of [src]."))
 
 		user.put_in_hands(surface.container)
 		surface.UnregisterSignal(surface.container, COMSIG_PARENT_EXAMINE)
@@ -158,17 +145,17 @@
 
 /obj/structure/machinery/cooking/grill/update_icon()
 	. = ..()
-	for(var/i in 1 to length(surfaces))
-		var/datum/cooking_surface/surface = surfaces[i]
+	for(var/index in 1 to length(surfaces))
+		var/datum/cooking_surface/surface = surfaces[index]
 		if(surface.on)
-			. += image(icon, icon_state = "fire_[i]")
+			. += image(icon, icon_state = "fire_[index]")
 
 /obj/structure/machinery/cooking/grill/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	vis_contents += container
 	if(surface_idx == 2 || surface_idx == 4)
-		var/matrix/M = matrix()
-		M.Scale(-1, 1)
-		container.apply_transform(M)
+		var/matrix/transform_matrix = matrix()
+		transform_matrix.Scale(-1, 1)
+		container.apply_transform(transform_matrix)
 
 	container.make_mini()

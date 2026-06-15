@@ -250,7 +250,7 @@
 	if(to_chat)
 		to_chat(usr, SPAN_NOTICE("We will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
+	button.overlays += image('icons/mob/hud/xeno_building.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)

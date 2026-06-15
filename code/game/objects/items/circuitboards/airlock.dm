@@ -44,7 +44,7 @@
 
 		t1 += "<br>"
 
-		var/list/accesses = get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_CIVILIAN_ENGINEERING)
+		var/list/accesses = get_access(ACCESS_LIST_MARINE_ALL)
 		for (var/acc in accesses)
 			var/aname = get_access_desc(acc)
 

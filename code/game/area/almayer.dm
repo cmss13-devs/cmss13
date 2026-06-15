@@ -250,9 +250,6 @@
 /area/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
 
-/area/almayer/shipboard/brig/mp_bunks
-	name = "\improper Brig MP Bunks"
-
 /area/almayer/shipboard/brig/starboard_hallway
 	name = "\improper Brig Starboard Hallway"
 

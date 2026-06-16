@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 		SSradio.remove_tcomm_machine(src)
 
 // In any case that might warrant reevaluating working state
-/obj/structure/machinery/telecomms/proc/update_state()
+/obj/structure/machinery/telecomms/proc/update_state(is_quiet = FALSE)
 	if(!toggled || inoperable(EMPED) || health <= 0)
 		if(on)
 			tcomms_shutdown()

@@ -1513,16 +1513,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 
-	RegisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), watcher)
+	RegisterSignal(watcher.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), TRUE)
 
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
 	watcher.reset_view(null) // This will call the below proc via the above registered signal
 	//Why so complicated? Many things may reset our view (resisting being the most common one)
 
-/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(mob/watcher)
+/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
 	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
-	set_onscreen_text(watcher, null)
-	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	set_onscreen_text(watcher.mob, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.mob.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
 		return
 

@@ -42,6 +42,8 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_JUNGLE_ALT
 
 /area/lv1021/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
@@ -52,6 +54,8 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ2
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_JUNGLE_ALT
 
 /area/lv1021/landing_zone_2/ceiling
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS

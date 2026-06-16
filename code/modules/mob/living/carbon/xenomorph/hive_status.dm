@@ -99,7 +99,7 @@
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
 	/// Lazylist of possible caste defines the hive disallows evolution to
-	var/list/blacklisted_castes = null
+	var/list/blacklisted_castes = ALL_PATHOGEN_CREATURES
 	/// List of caste defines associated with a maximum capacity number.
 	var/list/restricted_castes = null
 
@@ -1884,6 +1884,7 @@
 	restricted_castes = list(
 		PATHOGEN_CREATURE_HARBINGER = 2,
 	)
+	blacklisted_castes = ALL_XENO_CASTES
 
 	tier_slot_divisor = 2 // Experimental change.
 

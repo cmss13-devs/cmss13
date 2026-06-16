@@ -1,0 +1,5 @@
+author: "Drathek Harry"
+delete-after: True
+changes:
+  - bugfix: "fixes weird AO on shutters/doors and stuff"
+  - bugfix: "fixes weird blackness handling"

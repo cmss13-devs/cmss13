@@ -1513,8 +1513,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 
+	RegisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), watcher)
+
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
-	watcher.reset_view(null)
+	watcher.reset_view(null) // This will call the below proc via the above registered signal
+	//Why so complicated? Many things may reset our view (resisting being the most common one)
+
+/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(mob/watcher)
+	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
 	set_onscreen_text(watcher, null)
 	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
@@ -1528,6 +1534,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.remove_filter("overwatch_overlay4")
 	plane_controller.remove_filter("overwatch_overlay5")
 	plane_controller.remove_filter("overwatch_overlay6")
+
 
 /obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
 	if(target == null)

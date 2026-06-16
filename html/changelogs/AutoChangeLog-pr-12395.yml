@@ -1,5 +1,0 @@
-author: "DangerRevolution"
-delete-after: True
-changes:
-  - bugfix: "Fixed FORECON Radio not working."
-  - bugfix: "Fixed ARMY Radio not working."

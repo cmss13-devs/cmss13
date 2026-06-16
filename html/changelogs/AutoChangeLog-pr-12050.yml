@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Changed OD pragma linting"
+  - code_imp: "Included 64bit rust_g dll"
+  - bugfix: "Fixed busted blood properties?"

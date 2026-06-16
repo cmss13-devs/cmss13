@@ -33,29 +33,7 @@
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
 
-/obj/structure/machinery/computer/shuttle_control/almayer/hangar
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "supply"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Hangar"
-
-/obj/structure/machinery/computer/shuttle_control/almayer/maintenance
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "shuttle"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Maintenance"
-
-/area/ship/almayer/command
+/area/almayer/command
 	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/ship/almayer/command/cic

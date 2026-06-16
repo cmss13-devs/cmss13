@@ -177,6 +177,8 @@
 #define TACMAP_LAYER 22
 #define INTRO_LAYER 23
 
+#define INTRO_PLANE 2001
+
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999
 

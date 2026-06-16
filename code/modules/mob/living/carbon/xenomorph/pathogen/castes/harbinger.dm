@@ -134,6 +134,13 @@
 	xeno.anchored = TRUE
 
 	var/found_target = 0
+
+	var/total_shield_value = cycle_shield_value * cycles
+	var/total_shield_duration = (cycle_shield_duration * cycles) - min(0.5 SECONDS * cycles, 2 SECONDS)
+	xeno.add_xeno_shield(total_shield_value, XENO_SHIELD_SOURCE_CYCLONE, /datum/xeno_shield/harbinger)
+	xeno.overlay_shields()
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), total_shield_duration)
+
 	if(do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
 		xeno.spin_circle()
@@ -158,17 +165,10 @@
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, base_damage), ARMOR_MELEE, BRUTE, "chest", armor_pen)
 
-
 	if(found_target < PATHOGEN_CYCLONE_MIN_HITS)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cyclone"))
 		xeno.anchored = FALSE
-		return..()
-
-	var/total_shield_value = cycle_shield_value * cycles
-	var/total_shield_duration = (cycle_shield_duration * cycles) - min(0.5 SECONDS * cycles, 2 SECONDS)
-	xeno.add_xeno_shield(total_shield_value, XENO_SHIELD_SOURCE_CYCLONE, /datum/xeno_shield/harbinger)
-	xeno.overlay_shields()
-	addtimer(CALLBACK(src, PROC_REF(remove_shield)), total_shield_duration)
+		return ..()
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cyclone"))
 	xeno.anchored = FALSE

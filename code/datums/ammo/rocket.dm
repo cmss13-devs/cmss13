@@ -11,7 +11,6 @@
 	sound_bounce = "rocket_bounce"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
-	var/datum/effect_system/smoke_spread/smoke
 
 	accuracy = HIT_ACCURACY_TIER_2
 	accurate_range = 7
@@ -19,35 +18,39 @@
 	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/rocket/New()
-	..()
-	smoke = new()
-
-/datum/ammo/rocket/Destroy()
-	QDEL_NULL(smoke)
-	. = ..()
+/**
+ * Does smoke with the awful outdated effect system
+ * Inherits the location and cause from the source projectile,
+ * but exact location and direction can be overriden
+ */
+/datum/ammo/rocket/proc/do_smoke(obj/projectile/source, atom/loca, direct = -1)
+	if(!loca)
+		loca = source?.loc
+	if(!loca)
+		return
+	if(source && direct == -1)
+		direct = reverse_direction(source.dir)
+	var/datum/effect_system/smoke_spread/smoke = new()
+	smoke.set_up(1, loca = get_turf(loca), direct = direct, new_cause_data = source?.weapon_cause_data)
+	smoke.start()
 
 /datum/ammo/rocket/on_hit_mob(mob/mob, obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(mob))
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
 		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, mob)
 
 /datum/ammo/rocket/on_hit_obj(obj/object, obj/projectile/projectile)
 	cell_explosion(get_turf(object), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(object))
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, object)
 
 /datum/ammo/rocket/on_hit_turf(turf/turf, obj/projectile/projectile)
 	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, turf)
 
 /datum/ammo/rocket/do_at_max_range(obj/projectile/projectile)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(projectile))
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile)
 
 /datum/ammo/rocket/ap
 	name = "anti-armor rocket"
@@ -70,15 +73,13 @@
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, mob)
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/object, obj/projectile/projectile)
 	var/turf/turf = get_turf(object)
 	object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, object)
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/turf, obj/projectile/projectile)
 	var/hit_something = 0
@@ -98,8 +99,7 @@
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data, 200)
 
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, turf)
 
 /datum/ammo/rocket/ap/do_at_max_range(obj/projectile/projectile)
 	var/turf/turf = get_turf(projectile)
@@ -119,8 +119,7 @@
 	if(!hit_something)
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(projectile, turf)
 
 /datum/ammo/rocket/ap/anti_tank
 	name = "anti-tank rocket"
@@ -138,8 +137,7 @@
 		mob.interior_crash_effect()
 		var/turf/turf = get_turf(mob.loc)
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-		smoke.set_up(1, turf)
-		smoke.start(do_NOT_delete = TRUE)
+		do_smoke(projectile, turf)
 		return
 	return ..()
 
@@ -193,8 +191,7 @@
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(turf))
 		return
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(loca = turf)
 	var/datum/reagent/napalm/blue/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
@@ -234,8 +231,7 @@
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(turf))
 		return
-	smoke.set_up(1, turf)
-	smoke.start(do_NOT_delete = TRUE)
+	do_smoke(loca = turf)
 	var/datum/reagent/napalm/upp/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
@@ -282,6 +278,7 @@
 	max_range = 7
 
 /datum/ammo/rocket/custom/proc/prime(atom/atom, obj/projectile/projectile)
+	do_smoke(projectile)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = projectile.shot_from
 	var/obj/item/ammo_magazine/rocket/custom/rocket = launcher.current_mag
 	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
@@ -291,8 +288,6 @@
 		rocket.warhead.hit_angle = Get_Angle(launcher, atom)
 		rocket.warhead.prime()
 		qdel(rocket)
-	smoke.set_up(1, get_turf(atom))
-	smoke.start(do_NOT_delete = TRUE)
 
 /datum/ammo/rocket/custom/on_hit_mob(mob/mob, obj/projectile/projectile)
 	prime(mob, projectile)

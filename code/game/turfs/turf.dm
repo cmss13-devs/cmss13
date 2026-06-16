@@ -72,6 +72,13 @@
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
 
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+	/// For the area_contents list unit test
+	/// Allows us to know our area without needing to preassign it
+	/// Sorry for the mess
+	var/area/in_contents_of
+#endif
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -222,6 +229,7 @@
 		return
 
 	//move the turf
+	TRANSFER_TURF_CONTAINED_AREA(src, old_area, new_area)
 	new_area.contents += src
 
 	//changes to make after turf has moved

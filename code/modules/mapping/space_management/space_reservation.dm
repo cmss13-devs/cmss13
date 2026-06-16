@@ -83,7 +83,7 @@
 		SEND_SIGNAL(reserved_turf, COMSIG_TURF_RESERVATION_RELEASED, src)
 
 	// Makes the linter happy, even tho we don't await this
-	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, reserve_turfs), release_turfs)
+	SSmapping.reserve_turfs_async(release_turfs)
 
 /// Attempts to calaculate and store a list of turfs around the reservation for cordoning. Returns whether a valid cordon was calculated
 /datum/turf_reservation/proc/calculate_cordon_turfs(turf/bottom_left, turf/top_right)
@@ -108,12 +108,12 @@
 
 /// Actually generates the cordon around the reservation, and marking the cordon turfs as reserved
 /datum/turf_reservation/proc/generate_cordon()
+	var/area/misc/cordon/cordon_area = GLOB.areas_by_type[/area/misc/cordon] || new
 	for(var/turf/cordon_turf as anything in cordon_turfs)
-		var/area/misc/cordon/cordon_area = GLOB.areas_by_type[/area/misc/cordon] || new
-		//var/area/old_area = cordon_turf.loc
-		//old_area.turfs_to_uncontain += cordon_turf
-		//cordon_area.contained_turfs += cordon_turf
-		cordon_area.contents += cordon_turf
+		var/area/old_area = cordon_turf.loc
+		if(old_area != cordon_area)
+			TRANSFER_TURF_CONTAINED_AREA(cordon_turf, old_area, cordon_area)
+			cordon_area.contents += cordon_turf
 		// Its no longer unused, but its also not "used"
 		cordon_turf.turf_flags &= ~UNUSED_RESERVATION_TURF
 		cordon_turf.ChangeTurf(CORDON_TURF_TYPE, CORDON_TURF_TYPE)

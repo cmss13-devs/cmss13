@@ -500,7 +500,7 @@ SUBSYSTEM_DEF(cmtv)
 	var/twitch_id = lookup_cache[potential_subscriber.ckey]
 	if(!twitch_id)
 		var/datum/http_request/request = new
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[cmtv_subscriber_api]?ckey=[potential_subscriber.ckey]", list("Authorization" = "Bearer [cmtv_subscriber_api_key]"))
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[cmtv_subscriber_api]?ckey=[potential_subscriber.ckey]", null, list("Authorization" = "Bearer [cmtv_subscriber_api_key]"))
 		request.begin_async()
 
 		UNTIL(request.is_complete())

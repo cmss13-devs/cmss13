@@ -2098,3 +2098,64 @@
 				continue
 
 	return potential_hivebuffs
+
+/datum/hive_status/pathogen/respawn_on_turf(client/xeno_client, turf/spawning_turf)
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+
+	new_xeno.visible_message(SPAN_XENODANGER("A bloodburster suddenly emerges from a dead husk!"),
+	SPAN_XENOANNOUNCE("The confluence has no core! You manage to emerge from your old husk as a bloodburster!"))
+	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the confluence unless under threat, and should be keeping yourself safe until you evolve!"))
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+		window_flash(new_xeno.client)
+
+	hive_ui.update_burrowed_larva()
+
+/datum/hive_status/pathogen/do_buried_larva_spawn(mob/xeno_candidate)
+	var/spawning_area
+	if(hive_location)
+		spawning_area = hive_location
+	else if(living_xeno_queen)
+		spawning_area = living_xeno_queen
+	else
+		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			if(isbloodburster(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
+				spawning_area = xenomorpheus
+	if(!spawning_area)
+		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+	var/list/turf_list
+	for(var/turf/open/open_turf in orange(3, spawning_area))
+		if(istype(open_turf, /turf/open/space))
+			continue
+		LAZYADD(turf_list, open_turf)
+	// just on the off-chance
+	if(!LAZYLEN(turf_list))
+		return FALSE
+	var/turf/open/spawning_turf = pick(turf_list)
+
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+	new_xeno.visible_message(SPAN_XENODANGER("A bloodburster suddenly burrows out of \the [spawning_turf]!"),
+	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Confluence!"))
+	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a pathogen bloodburster awakened from slumber!"))
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the confluence unless under threat, and should be keeping yourself safe until you evolve!"))
+	if(new_xeno.client)
+		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+			window_flash(new_xeno.client)
+
+	stored_larva--
+	hive_ui.update_burrowed_larva()

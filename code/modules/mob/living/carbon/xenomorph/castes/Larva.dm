@@ -209,10 +209,13 @@
 	if(!GLOB.hive_datum[hivenumber] || isnull(atom))
 		return
 
-	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		var/mob/living/carbon/xenomorph/bloodburster/bloodburster = new(atom)
+		bloodburster.set_hive_and_update(hivenumber)
+		return bloodburster
 
+	var/mob/living/carbon/xenomorph/larva/larva = new(atom)
 	larva.set_hive_and_update(hivenumber)
-
 	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)

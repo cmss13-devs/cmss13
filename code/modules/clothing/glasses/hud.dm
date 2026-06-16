@@ -25,13 +25,13 @@
 
 /obj/item/clothing/glasses/hud/health/equipped(mob/user, slot)
 	. = ..()
-	if(slot == "glasses")
+	if(slot == WEAR_EYES)
 		equipped_user = WEAKREF(user)
 		RegisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, PROC_REF(announce_to_user))
 
 /obj/item/clothing/glasses/hud/health/unequipped(mob/user, slot)
 	. = ..()
-	if(slot == "glasses")
+	if(slot == WEAR_EYES)
 		equipped_user = null
 		UnregisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT)
 

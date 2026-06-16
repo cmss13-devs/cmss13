@@ -211,14 +211,14 @@
 				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
 		if("announce")
 			if(!COOLDOWN_FINISHED(GLOB.chemical_data, announcement_cooldown))
-				to_chat(ui.user, SPAN_WARNING("You cant announce about chemicals that quick!"))
+				to_chat(ui.user, SPAN_WARNING("You can't announce about chemicals that quick!"))
 				return
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
 			var/obj/item/paper/research_report/report = GLOB.chemical_data.get_report(print_type, print_title)
 			for(var/i in 1 to length(GLOB.chemical_data.research_publications?["[print_type]"]))
 				if(GLOB.chemical_data.research_publications?["[print_type]"][i]["document"] == report )
-					var/message = sanitize_control_chars(tgui_input_text(ui.user, "Type a message you want to announce to medical staff regarding [report.data.name]. Only the personnel with medical HUD will see it. You'll be put on 4 minute cooldown to announce again.", "Chemical Advisory Announcement.", max_length = 400, multiline = TRUE))
+					var/message = sanitize_control_chars(tgui_input_text(ui.user, "Type a message you want to announce to medical staff regarding [report.data.name]. Only personnel with medical HUD will see it. There is a 4 minute cooldown to announce again.", "Chemical Advisory Announcement.", max_length = 400, multiline = TRUE))
 					log_game("[key_name(ui.user)] sent '[message]' as a chemical advisory announcement.")
 					message_admins("[key_name(ui.user)] made a chemical announcment. Contents: ([message]) [ADMIN_JMP_USER(ui.user)]")
 					SEND_SIGNAL(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, message, report.data.name)

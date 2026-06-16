@@ -24,7 +24,7 @@
 
 	var/on_fire = FALSE //if the oven has caught fire or not.
 	allowed_containers = list(
-		/obj/item/reagent_container/cooking/oven
+		/obj/item/reagent_container/cooking/oven,
 	)
 
 /obj/structure/machinery/cooking/oven/Initialize(mapload)

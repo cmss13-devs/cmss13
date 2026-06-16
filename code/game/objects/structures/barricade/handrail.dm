@@ -240,6 +240,17 @@
 /obj/structure/barricade/handrail/kutjevo
 	icon_state = "hr_kutjevo"
 
+/obj/structure/prop/fake/handrail/kutjevo
+	name = "supports"
+	desc = "a series of metal shafts in a pattern meant for holding stuff."
+	icon = 'icons/obj/structures/handrail.dmi'
+	icon_state = "hr_kutjevo"
+	density = FALSE
+	anchored = TRUE
+	layer = TURF_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 12
+
 /obj/structure/barricade/handrail/wire
 	icon_state = "wire_rail"
 	climb_delay = CLIMB_DELAY_SHORT

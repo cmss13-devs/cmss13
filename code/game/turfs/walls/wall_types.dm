@@ -725,6 +725,14 @@
 	walltype = WALL_FOREST_ROCK_DIRTY //Dirty rock but near a forest not jungle.
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/strata_ice/swamp
+	name = "swamp vegetation"
+	icon = 'icons/turf/walls/swamp_veg.dmi'
+	icon_state = "swamp_veg"
+	desc = "Exceptionally dense vegetation that you can't see through."
+	walltype = WALL_SWAMP
+	turf_flags = TURF_HULL
+	minimap_color = MINIMAP_BLACK
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"

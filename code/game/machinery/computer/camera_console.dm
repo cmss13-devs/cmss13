@@ -453,3 +453,8 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, NV_COLOR_RED)
 
 #undef DEFAULT_MAP_SIZE
+
+/obj/structure/machinery/computer/cameras/colony_camera
+	name = "security cameras console"
+	desc = "Used to access the various cameras of the colony."
+	icon_state = "dark_com"

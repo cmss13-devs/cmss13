@@ -13737,7 +13737,7 @@
 "aMg" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
-/obj/item/clothing/suit/storage/marine/faction/UPP/army/alt,
+/obj/item/clothing/suit/armor/vest/UPP/alt,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aMh" = (
@@ -23914,7 +23914,7 @@
 /area/strata/exterior/carplake_center)
 "bpX" = (
 /obj/structure/closet/bombcloset,
-/obj/item/clothing/suit/storage/marine/faction/UPP/army/simple,
+/obj/item/clothing/suit/armor/vest/UPP,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/engi/drome)
 "bpY" = (
@@ -39987,7 +39987,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "dEa" = (
-/obj/item/clothing/suit/storage/marine/faction/UPP/army/simple,
+/obj/item/clothing/suit/armor/vest/UPP,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/bball)
 "dEy" = (

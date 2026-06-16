@@ -113,3 +113,12 @@
 	name = "White Antre Research Facility"
 	desc = "A medium sized sign, designating this area as the White Antre Research Facility."
 	icon_state = "antre_sign_3"
+
+/obj/structure/lz_sign/sekhmet_sign
+	name = "Sekhmet Swamp landing sign"
+	desc = "A large sign that reads 'Boloto - Sekhmet' - POP. 112' The UPP 'Star' logo is proudly emblazoned & a scientific symbol on the right side of the sign."
+	icon_state = "sekhmet_sign_1"
+
+/obj/structure/lz_sign/sekhmet_sign/interior
+	desc = "A large sign that reads 'Boloto - Sekhmet' - POP. 112' The UPP 'Star' logo is proudly emblazoned & a scientific symbol on the right side of the sign."
+	icon_state = "sekhmet_sign_2"

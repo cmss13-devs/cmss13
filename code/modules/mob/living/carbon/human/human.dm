@@ -1588,6 +1588,12 @@
 /mob/living/carbon/human/yiren/Initialize(mapload)
 	. = ..(mapload, new_species = "Yiren")
 
+/mob/living/carbon/human/guardian/Initialize(mapload)
+	. = ..(mapload, new_species = SPECIES_GUARDIAN)
+	var/obj/item/alien_embryo/dormant/embryo = new /obj/item/alien_embryo/dormant(src)
+	embryo.stage = 6
+
+
 /mob/living/carbon/human/synthetic/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_THREE)
 

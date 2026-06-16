@@ -22,12 +22,13 @@
 	caste_desc = "Rage, rage, and rage some more."
 	evolves_to = list()
 
-	heal_resting = 1.6
+	heal_resting = 1.4
 	is_intelligent = TRUE
 
 	minimap_icon = "venator"
 	evolution_allowed = FALSE
 	royal_caste = TRUE
+	minimum_evolve_time = 15 MINUTES
 
 /mob/living/carbon/xenomorph/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR

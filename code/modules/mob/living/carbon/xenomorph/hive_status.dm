@@ -1885,7 +1885,7 @@
 		PATHOGEN_CREATURE_HARBINGER = 2,
 	)
 
-	tier_slot_divisor = 1.5 // Experimental change.
+	tier_slot_divisor = 2 // Experimental change.
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,

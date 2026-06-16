@@ -314,6 +314,12 @@
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
+	if(hive.restricted_castes && (castepick in hive.restricted_castes))
+		var/max_num = hive.restricted_castes[castepick]
+		if(hive.get_caste_count(castepick) >= max_num)
+			to_chat(src, SPAN_WARNING("The Hive has reached capacity for this caste!"))
+			return
+
 	if(!evolve_checks())
 		return
 

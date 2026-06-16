@@ -21,6 +21,7 @@
 	deevolves_to = list()
 	evolves_to = list()
 
+	fire_vulnerability_mult = FIRE_MULTIPLIER_LOW
 	heal_resting = 1.6
 	is_intelligent = TRUE
 

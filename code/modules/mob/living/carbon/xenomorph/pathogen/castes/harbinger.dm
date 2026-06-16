@@ -25,12 +25,13 @@
 	caste_desc = "Death is no sanctuary."
 	evolves_to = list()
 
-	heal_resting = 1.6
+	heal_resting = 1.4
 	is_intelligent = TRUE
 
 	minimap_icon = "harbinger"
 	evolution_allowed = FALSE
 	royal_caste = TRUE
+	minimum_evolve_time = 15 MINUTES
 
 /mob/living/carbon/xenomorph/harbinger
 	caste_type = PATHOGEN_CREATURE_HARBINGER

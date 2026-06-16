@@ -22,7 +22,7 @@
 	caste_desc = "Fury and death..."
 	evolves_to = list()
 
-	heal_resting = 1.6
+	heal_resting = 1.4
 	is_intelligent = TRUE
 
 	minimap_icon = "matriarch"

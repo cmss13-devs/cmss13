@@ -25,7 +25,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 
-	heal_resting = 0.75
+	heal_resting = 1.2
 
 	minimap_icon = "bloodburster"
 

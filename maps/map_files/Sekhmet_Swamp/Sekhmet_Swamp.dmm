@@ -16484,9 +16484,7 @@
 /area/sekhmet/outside/southroad)
 "hvd" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	emp_proof = 1
-	},
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor,
 /turf/open/floor/corsat/marked,
 /area/sekhmet/outside/southeast_road)
 "hvh" = (
@@ -18540,7 +18538,8 @@
 /obj/structure/bookcase/wood{
 	icon_state = "woodbook-5";
 	pixel_y = 44;
-	layer = 3.01
+	layer = 3.01;
+	density = 0
 	},
 /obj/item/book/manual/upphistory,
 /obj/item/book/manual/upphistory,
@@ -22703,9 +22702,7 @@
 /turf/open/auto_turf/swamp_grass/layer1,
 /area/sekhmet/outside/east_jungle)
 "law" = (
-/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
-	emp_proof = 1
-	},
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/sekhmet/outside/southeast_road)
@@ -31171,7 +31168,8 @@
 /obj/structure/bookcase/wood{
 	icon_state = "woodbook-5";
 	pixel_y = 44;
-	layer = 3.01
+	layer = 3.01;
+	density = 0
 	},
 /obj/item/book/manual/paperwork,
 /obj/item/book/manual/paperwork,
@@ -36527,7 +36525,8 @@
 /obj/structure/bookcase/wood{
 	icon_state = "woodbook-5";
 	pixel_y = 44;
-	layer = 3.01
+	layer = 3.01;
+	density = 0
 	},
 /obj/item/book/manual/paperwork,
 /obj/item/book/manual/paperwork,
@@ -38164,7 +38163,8 @@
 /obj/structure/bookcase/wood{
 	icon_state = "woodbook-5";
 	pixel_y = 43;
-	layer = 3.01
+	layer = 3.01;
+	density = 0
 	},
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/chemistry,
@@ -39976,7 +39976,8 @@
 /obj/structure/bookcase/wood{
 	icon_state = "woodbook-5";
 	pixel_y = 44;
-	layer = 3.01
+	layer = 3.01;
+	density = 0
 	},
 /obj/item/book/manual/upphistory,
 /obj/item/book/manual/upphistory,

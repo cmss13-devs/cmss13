@@ -18,22 +18,6 @@
 	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 
-/**
- * Does smoke with the awful outdated effect system
- * Inherits the location and cause from the source projectile,
- * but exact location and direction can be overriden
- */
-/datum/ammo/rocket/proc/do_smoke(obj/projectile/source, atom/loca, direct = -1)
-	if(!loca)
-		loca = source?.loc
-	if(!loca)
-		return
-	if(source && direct == -1)
-		direct = reverse_direction(source.dir)
-	var/datum/effect_system/smoke_spread/smoke = new()
-	smoke.set_up(1, loca = get_turf(loca), direct = direct, new_cause_data = source?.weapon_cause_data)
-	smoke.start()
-
 /datum/ammo/rocket/on_hit_mob(mob/mob, obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.

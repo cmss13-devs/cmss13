@@ -56,7 +56,7 @@
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(target.disabilities & NERVOUS) //rattlerattlerattlerattlerattle AAAAA MAKE IT STOP!
 		user.affected_message(target,
-			SPAN_NOTICE("After [target] insisted something was still there, you pull out some extra, tiny, loose pieces of bone that were rattling around in \his skull."),
+			SPAN_NOTICE("You pull out some extra, tiny, loose pieces of bone that were rattling around in \his skull."),
 			SPAN_NOTICE("After you insisted something was still there, [user] pulls out some extra, tiny, loose pieces of bone that were rattling around in your skull."),
 			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
 	if(target.sdisabilities & DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!

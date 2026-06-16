@@ -272,9 +272,9 @@
 /datum/surgery_step/close_torn_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to mend torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."))
+		SPAN_NOTICE("You begin to mend the torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
+		SPAN_NOTICE("[user] begins to mend the torn [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
+		SPAN_NOTICE("[user] begins to mend the torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."))
 
 	target.custom_pain("The stinging and tingling sensation in your [surgery.affected_limb.display_name] is bizarre and horrifying!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to mend torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")

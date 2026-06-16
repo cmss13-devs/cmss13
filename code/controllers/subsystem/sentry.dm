@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(sentry)
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 
-		var/request = rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST, endpoint, assembled, headers, null)
+		rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST, endpoint, assembled, headers, null)
 
 	envelopes.Cut()
 

@@ -1186,18 +1186,20 @@
 
 	if(species.base_color && default_color)
 		//Apply color.
-		r_skin = hex2num(copytext(species.base_color,2,4))
-		g_skin = hex2num(copytext(species.base_color,4,6))
-		b_skin = hex2num(copytext(species.base_color,6,8))
+		var/list/color_list = rgb2num(species.base_color)
+		r_skin = color_list[1]
+		g_skin = color_list[2]
+		b_skin = color_list[3]
 	else
 		r_skin = 0
 		g_skin = 0
 		b_skin = 0
 
 	if(species.hair_color)
-		r_hair = hex2num(copytext(species.hair_color, 2, 4))
-		g_hair = hex2num(copytext(species.hair_color, 4, 6))
-		b_hair = hex2num(copytext(species.hair_color, 6, 8))
+		var/list/color_list = rgb2num(species.hair_color)
+		r_hair = color_list[1]
+		g_hair = color_list[2]
+		b_hair = color_list[3]
 
 	if(species.no_grad_style)
 		grad_style = "None"

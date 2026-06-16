@@ -79,11 +79,11 @@ SUBSYSTEM_DEF(sentry)
 			var/censor_args = FALSE
 			if(proc_path.type in GLOB.protected_sentry_procs)
 				censor_args = TRUE
-
-			for(var/protected in GLOB.protected_sentry_datums)
-				if(findtext("[proc_path.type]", "[protected]"))
-					censor_args = TRUE
-					break
+			else
+				for(var/protected in GLOB.protected_sentry_datums)
+					if(findtext("[proc_path.type]", "[protected]"))
+						censor_args = TRUE
+						break
 
 			var/to_add = list(
 				"filename" = called.file,

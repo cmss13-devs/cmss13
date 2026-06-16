@@ -240,7 +240,7 @@ Administrative related.
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/tgs3_commandline_path
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 	config_entry_value = "C:\\Program Files (x86)\\TG Station Server\\TGCommandLine.exe"
 
 /datum/config_entry/number/minute_topic_limit
@@ -375,14 +375,14 @@ or your package manager
 The default value assumes youtube-dl is in your system PATH
 */
 /datum/config_entry/string/invoke_youtubedl
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/cobalt_base_api
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 
 /datum/config_entry/string/cobalt_api_key
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_SENSITIVE
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600

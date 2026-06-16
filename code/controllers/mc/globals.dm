@@ -42,8 +42,14 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	gvars_datum_init_order = list()
 	gvars_datum_protected_varlist = list(NAMEOF(src, gvars_datum_protected_varlist) = TRUE)
 	var/list/global_procs = typesof(/datum/controller/global_vars/proc)
+
+	var/global_inits = 0
+	for(var/procpath/proc as anything in global_procs)
+		if(findtext(proc.name, "InitGlobal"))
+			global_inits++
+
 	var/expected_len = length(vars) - length(gvars_datum_in_built_vars)
-	if(length(global_procs) < expected_len)
+	if(global_inits != expected_len)
 		warning("Unable to detect all global initialization procs! Expected [expected_len] got [length(global_procs)]!")
 		if(length(global_procs))
 			var/list/expected_global_procs = vars - gvars_datum_in_built_vars

@@ -554,7 +554,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
 	GLOB.all_player_keys |= key
+	GLOB.all_player_keys_regex = regex(jointext(GLOB.all_player_keys, "|"), "g")
+
+	GLOB.all_player_ckeys |= ckey
+	GLOB.all_player_ckeys_regex = regex(jointext(GLOB.all_player_ckeys, "|"), "g")
+
 	GLOB.all_player_cids |= computer_id
+	GLOB.all_player_cids_regex = regex(jointext(GLOB.all_player_cids, "|"), "g")
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)

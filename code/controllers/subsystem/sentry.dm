@@ -120,12 +120,10 @@ SUBSYSTEM_DEF(sentry)
 		var/event = json_encode(event_parts)
 
 		event = ip_regex.Replace(event, "ip address")
-		for(var/replacement in GLOB.all_player_keys)
-			event = replacetext(event, replacement, "player key")
-			event = replacetext(event, ckey(replacement), "player ckey")
 
-		for(var/replacement in GLOB.all_player_cids)
-			event = replacetext(event, replacement, "player computer id")
+		event = replacetext(event, GLOB.all_player_keys_regex, "player key")
+		event = replacetext(event, GLOB.all_player_ckeys_regex, "player ckey")
+		event = replacetext(event, GLOB.all_player_cids_regex, "player computer id")
 
 		for(var/datum/config_entry/protected_entry in GLOB.protected_config_entries)
 			if(islist(protected_entry.config_entry_value))

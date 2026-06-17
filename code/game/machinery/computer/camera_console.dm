@@ -218,6 +218,17 @@
 	broadcastingcamera = null
 	return ..()
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/wheeled
+	name = "Mobile Television Set"
+	desc = "An old TV hooked up to a video cassette recorder, bolted onto what appears to be an old roller bed. Only the finest for our Military Police force.\n\nIt could be used to keep perma prisoners entertained."
+	icon_state = "tv_mobile"
+	layer = 3.2
+
+	anchored = FALSE
+	drag_delay = 0
+	deconstructible = FALSE
+	density = TRUE
+
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
 	return GLOB.in_view
 

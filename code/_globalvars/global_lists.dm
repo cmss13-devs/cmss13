@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
-	XENO_HIVE_NORMAL = new /datum/hive_status(),
+	XENO_HIVE_NORMAL = new /datum/hive_status/normal(),
 	XENO_HIVE_CORRUPTED = new /datum/hive_status/corrupted(),
 	XENO_HIVE_ALPHA = new /datum/hive_status/alpha(),
 	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),

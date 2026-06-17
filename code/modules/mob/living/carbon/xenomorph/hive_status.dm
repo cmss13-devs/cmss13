@@ -221,6 +221,9 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
 	setup_banned_allies()
+	setup_allies()
+
+
 
 ///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
@@ -274,6 +277,9 @@
 
 		if(issynth(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+
+/datum/hive_status/proc/setup_allies()
+	return
 
 /datum/hive_status/proc/setup_banned_allies()
 	banned_allies = DEFAULT_ALLY_BAN_LIST
@@ -1170,6 +1176,11 @@
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++
+
+/datum/hive_status/normal
+
+/datum/hive_status/normal/setup_allies()
+	allies[FACTION_XENO_CULTIST] = TRUE
 
 /datum/hive_status/corrupted
 	name = FACTION_XENOMORPH_CORRUPTED

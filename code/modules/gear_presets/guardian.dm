@@ -22,6 +22,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/guardian(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/guardian(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/guardian(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_if_possible(new /obj/item/storage/hugger_box, WEAR_L_HAND)
 
 
 /obj/item/clothing/shoes/guardian

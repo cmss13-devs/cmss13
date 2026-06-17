@@ -280,6 +280,9 @@
 /area/almayer/shipboard/brig/evidence_storage
 	name = "\improper Brig Evidence Storage"
 
+/area/almayer/shipboard/brig/lower
+	name = "\improper Brig Lower Level"
+
 /area/almayer/shipboard/brig/execution
 	name = "\improper Brig Execution Room"
 

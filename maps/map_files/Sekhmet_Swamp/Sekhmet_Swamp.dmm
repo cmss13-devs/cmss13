@@ -3731,6 +3731,17 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/kutjevo/grey,
 /area/sekhmet/int_heavy/research)
+"ayW" = (
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 1;
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "aza" = (
 /turf/open/floor/hybrisa/tile/tileblack,
 /area/sekhmet/int_glass/south_complex)
@@ -5409,7 +5420,7 @@
 /area/sekhmet/outside/central_road)
 "bsq" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/void,
+/turf/open_space,
 /area/sekhmet/int_heavy/research)
 "bsA" = (
 /turf/open/gm/coast/dirt/swampdir/east,
@@ -7964,14 +7975,22 @@
 /turf/open/floor/strata/floor3,
 /area/sekhmet/int_reg/complex_comms)
 "cPL" = (
-/obj/structure/stairs/perspective{
-	color = "#838a88";
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 1
+	},
 /turf/open/floor/strata/floor3/east,
-/area/sekhmet/int_heavy/research)
+/area/space)
 "cPW" = (
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
@@ -10972,6 +10991,23 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/sekhmet/int_reg/engineering)
+"ezD" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 8;
+	pixel_y = 16
+	},
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "ezK" = (
 /obj/structure/platform/metal/shiva,
 /obj/structure/prop/swamp_plants/algae/corner2/north_east,
@@ -12644,6 +12680,16 @@
 /obj/structure/platform/metal/shiva/east,
 /turf/open/floor/carpet,
 /area/sekhmet/int_reg/complex_operation)
+"fwX" = (
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/space/basic,
+/area/space)
 "fxj" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	color = "#fceab2"
@@ -17008,6 +17054,10 @@
 /obj/structure/prop/swamp_plants/lily_pads/lily_pads_2,
 /turf/open/gm/river/swamp,
 /area/sekhmet/outside/swamp)
+"hIN" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "hJb" = (
 /obj/structure/machinery/light{
 	light_power = 0.5;
@@ -23554,6 +23604,16 @@
 	},
 /turf/open/auto_turf/swamp_grass/layer0_mud,
 /area/sekhmet/caves/temple)
+"lyG" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "lyJ" = (
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
@@ -23928,6 +23988,17 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/sekhmet/outside/southroad)
+"lJt" = (
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 8;
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/strata/floor3/east,
+/area/space)
 "lJM" = (
 /obj/item/stool,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -31943,7 +32014,6 @@
 /obj/item/weapon/gun/smg/bizon/upp,
 /obj/item/ammo_magazine/smg/bizon,
 /obj/item/clothing/suit/armor/vest/UPP,
-/obj/item/clothing/suit/armor/vest/UPP,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light{
 	light_power = 0.5;
@@ -38692,14 +38762,15 @@
 /turf/open/floor/prison/bright_clean2,
 /area/sekhmet/int_reg/complex_operation)
 "tJP" = (
-/obj/structure/stairs/perspective{
-	color = "#838a88";
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/stairs/multiz/down{
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi';
+	icon_state = "p_stair_sn_full_cap";
+	color = "#838a88";
+	dir = 1
+	},
 /turf/open/floor/strata/floor3/east,
-/area/sekhmet/int_heavy/research)
+/area/space)
 "tKd" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/alien/weeds/node,
@@ -44645,7 +44716,13 @@
 	pixel_x = 11;
 	layer = 3
 	},
-/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/roller/bedroll/comfy/red{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/gas/upp_pfb{
+	pixel_x = -2
+	},
 /turf/open/floor/strata/fake_wood,
 /area/sekhmet/int_glass/complex_generic)
 "wVS" = (
@@ -45753,11 +45830,13 @@
 /area/sekhmet/int_heavy/research)
 "xBm" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/weapon/gun/smg/bizon/upp,
+/obj/item/prop{
+	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil, is non-functional.";
+	icon_state = "painless";
+	item_state = "m41amk1";
+	name = "\improper GSh-7.62 rotary machine gun";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	},
 /turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_reg/ship1)
 "xBr" = (
@@ -72715,7 +72794,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -72880,7 +72959,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73045,7 +73124,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73210,7 +73289,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73375,7 +73454,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73540,7 +73619,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73705,7 +73784,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -73870,7 +73949,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -74035,12 +74114,12 @@ vnP
 vnP
 vnP
 vnP
-vnP
 fgd
-fgd
-fgd
-fgd
-fgd
+fwX
+hIN
+ayW
+tJP
+cPL
 fgd
 fgd
 vnP
@@ -74200,12 +74279,12 @@ vnP
 vnP
 vnP
 vnP
-vnP
 fgd
-fgd
-fgd
-fgd
-fgd
+fwX
+hIN
+lJt
+lyG
+ezD
 fgd
 fgd
 vnP
@@ -74365,7 +74444,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76015,7 +76094,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76180,7 +76259,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76345,7 +76424,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76510,7 +76589,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76675,7 +76754,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -76840,7 +76919,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -77005,7 +77084,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -77170,7 +77249,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -77335,12 +77414,12 @@ vnP
 vnP
 vnP
 vnP
-vnP
 fgd
-fgd
-fgd
-fgd
-fgd
+fwX
+hIN
+ayW
+tJP
+cPL
 fgd
 fgd
 vnP
@@ -77500,12 +77579,12 @@ vnP
 vnP
 vnP
 vnP
-vnP
 fgd
-fgd
-fgd
-fgd
-fgd
+fwX
+hIN
+lJt
+lyG
+ezD
 fgd
 fgd
 vnP
@@ -77665,7 +77744,7 @@ vnP
 vnP
 vnP
 vnP
-vnP
+fgd
 fgd
 fgd
 fgd
@@ -110670,8 +110749,8 @@ mTp
 hYS
 hYS
 bsq
-tJP
-tJP
+bsq
+bsq
 bZn
 pFW
 jwZ
@@ -110835,8 +110914,8 @@ grS
 hYS
 hYS
 bsq
-cPL
-cPL
+bsq
+bsq
 gSK
 iLb
 jwZ
@@ -113970,8 +114049,8 @@ pCu
 hYS
 hYS
 bsq
-tJP
-tJP
+bsq
+bsq
 bZn
 pFW
 tfE
@@ -114135,8 +114214,8 @@ jIj
 hYS
 hYS
 bsq
-cPL
-cPL
+bsq
+bsq
 gSK
 iLb
 etc

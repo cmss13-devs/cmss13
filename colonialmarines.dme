@@ -2720,5 +2720,4 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
-#include "maps\map_files\LV1021_Falcons_Fury\LV1021_Falcons_Fury.dmm"
 // END_INCLUDE

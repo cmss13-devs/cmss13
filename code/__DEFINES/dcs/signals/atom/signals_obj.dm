@@ -20,6 +20,9 @@
 #define COMSIG_BLEEDING_PROCESS "bleeding_process"
 	#define COMPONENT_BLEEDING_CANCEL (1<<0)
 
+// From /obj/structure/machinery/computer/research/ui_act()
+#define COMSIG_CHEMICAL_ANNOUNCEMENT "chemical_announcement"
+
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
 /// From /obj/effect/alien/weeds/Initialize()

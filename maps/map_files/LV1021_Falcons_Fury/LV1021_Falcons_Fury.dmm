@@ -1238,6 +1238,13 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
+"acl" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 10
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_south)
 "acm" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -5;
@@ -6097,6 +6104,10 @@
 "aoB" = (
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"aoC" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_south)
 "aoD" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -13721,6 +13732,13 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aHO" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_south)
 "aHP" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/filingcabinet/filingcabinet/wood{
@@ -13733,6 +13751,29 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
+"aHQ" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/kutjevo/plate,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"aHR" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"aHS" = (
+/obj/effect/decal/lv_decals/cave_mud_corner,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"aHT" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 6
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
 "aIh" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -21498,6 +21539,7 @@
 	pixel_x = 5;
 	dir = 10
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "ljH" = (
@@ -56829,8 +56871,8 @@ wzQ
 hXu
 hXu
 hXu
-hXu
-hXu
+maF
+maF
 apC
 cjO
 wOK
@@ -56997,8 +57039,8 @@ wzQ
 wzQ
 hXu
 hXu
-hXu
-cjO
+maF
+aHQ
 wOK
 wOK
 wOK
@@ -63294,7 +63336,7 @@ wzQ
 wzQ
 wzQ
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -63981,7 +64023,7 @@ spz
 spz
 spz
 eSe
-spz
+qaj
 spz
 spz
 mnd
@@ -64133,7 +64175,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 mnd
 mnd
@@ -64145,7 +64187,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 eSe
 spz
@@ -64474,7 +64516,7 @@ wzQ
 wzQ
 spz
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -64486,7 +64528,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 spz
 asf
@@ -64802,7 +64844,7 @@ spz
 spz
 spz
 spz
-asf
+aHT
 aob
 wzQ
 wzQ
@@ -64811,7 +64853,7 @@ auR
 auQ
 spz
 spz
-spz
+qaj
 spz
 spz
 bmt
@@ -65479,7 +65521,7 @@ wzQ
 wzQ
 wzQ
 ikm
-spz
+qaj
 spz
 spz
 qaj
@@ -65690,7 +65732,7 @@ hXq
 wzQ
 wzQ
 emC
-pPm
+jIA
 gDN
 gDN
 pPm
@@ -65707,7 +65749,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 pPm
 wzQ
 wzQ
@@ -65798,11 +65840,11 @@ jfQ
 wzQ
 aob
 atY
+qaj
 spz
 spz
 spz
-spz
-spz
+qaj
 spz
 bmt
 wzQ
@@ -66019,7 +66061,7 @@ aon
 pPm
 emC
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -66044,7 +66086,7 @@ pPm
 pPm
 pPm
 alJ
-abB
+aoC
 abB
 wzQ
 wzQ
@@ -66738,7 +66780,7 @@ wzQ
 wzQ
 abB
 aon
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -66827,7 +66869,7 @@ hXq
 hXq
 hXq
 hXq
-spz
+qaj
 spz
 spz
 spz
@@ -66977,7 +67019,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 hXq
 wzQ
@@ -66985,7 +67027,7 @@ wzQ
 wzQ
 wzQ
 spz
-spz
+qaj
 spz
 aro
 aob
@@ -67040,7 +67082,7 @@ hXq
 hXq
 abB
 aok
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -67218,7 +67260,7 @@ pPm
 mTF
 pPm
 pPm
-alJ
+acl
 wzQ
 abI
 fGG
@@ -67329,7 +67371,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 nBh
 spz
@@ -67359,7 +67401,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 adc
 aoG
 wzQ
@@ -67378,7 +67420,7 @@ aol
 pPm
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -67517,7 +67559,7 @@ wzQ
 wzQ
 aol
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -67636,7 +67678,7 @@ wzQ
 hXq
 hXq
 asG
-spz
+qaj
 spz
 aro
 hXq
@@ -67808,7 +67850,7 @@ spz
 spz
 aro
 asG
-spz
+qaj
 spz
 spz
 spz
@@ -67919,7 +67961,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 hXq
@@ -67984,7 +68026,7 @@ spz
 mnd
 mnd
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -67996,6 +68038,7 @@ hXq
 spz
 spz
 spz
+qaj
 spz
 spz
 spz
@@ -68003,8 +68046,7 @@ spz
 spz
 spz
 spz
-spz
-arh
+aHS
 aob
 hXq
 wzQ
@@ -68035,7 +68077,7 @@ wzQ
 wzQ
 wzQ
 aoj
-aoj
+aHO
 abB
 wzQ
 wzQ
@@ -68307,7 +68349,7 @@ wzQ
 bmt
 spz
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -68373,11 +68415,11 @@ pPm
 pPm
 alJ
 aoj
-aoj
+aHO
 wzQ
 emC
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -68481,7 +68523,7 @@ spz
 qaj
 spz
 spz
-spz
+qaj
 spz
 eSe
 spz
@@ -68526,7 +68568,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 wzQ
 wzQ
 wzQ
@@ -68696,7 +68738,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -68720,7 +68762,7 @@ pPm
 emC
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 aaM
@@ -68832,7 +68874,7 @@ lzj
 wzQ
 wzQ
 atY
-spz
+qaj
 spz
 spz
 spz
@@ -68840,7 +68882,7 @@ spz
 spz
 mnd
 hXq
-asK
+aHR
 asO
 asK
 asG
@@ -69101,7 +69143,7 @@ pPm
 jIA
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -69154,7 +69196,7 @@ hXq
 wzQ
 mnd
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -69216,7 +69258,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -69373,7 +69415,7 @@ hXq
 hXq
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 pPm
@@ -69422,7 +69464,7 @@ wzQ
 wzQ
 pPm
 pPm
-pPm
+jIA
 pPm
 wzQ
 wzQ
@@ -69502,7 +69544,7 @@ spz
 spz
 spz
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -69580,7 +69622,7 @@ aoG
 aok
 pPm
 pPm
-pPm
+jIA
 pPm
 pPm
 gDN
@@ -69856,9 +69898,9 @@ spz
 spz
 spz
 spz
-spz
+qaj
 eSe
-pPm
+jIA
 adc
 aop
 wzQ
@@ -69883,7 +69925,7 @@ pPm
 emC
 pPm
 pPm
-pPm
+jIA
 adc
 abB
 wzQ
@@ -69993,7 +70035,7 @@ wzQ
 wzQ
 wzQ
 spz
-spz
+qaj
 spz
 spz
 spz
@@ -70091,15 +70133,15 @@ jIA
 pPm
 pPm
 pPm
+jIA
 pPm
 pPm
 pPm
 pPm
 jIA
+pPm
+pPm
 jIA
-pPm
-pPm
-pPm
 pPm
 pPm
 qom
@@ -70179,7 +70221,7 @@ wzQ
 hXq
 arF
 asI
-spz
+qaj
 spz
 spz
 spz

@@ -200,7 +200,8 @@
 /turf/open/space/basic,
 /area/space)
 "aaD" = (
-/turf/open/space/basic,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
 "aaE" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -14968,7 +14969,7 @@
 /area/almayer/middeck/maintenance/sp)
 "aNu" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/power/apc/almayer/hardened/east,
+/obj/structure/machinery/power/apc/almayer/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/navigation)
@@ -15186,11 +15187,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -23328,6 +23324,10 @@
 /area/almayer/shipboard/port_point_defense)
 "bhk" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
 "bhl" = (
@@ -23441,6 +23441,22 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
+"bhz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/pb)
 "bhA" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
@@ -23577,6 +23593,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
+"bhR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/photocopier,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/lower)
 "bhS" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/surface/table/almayer,
@@ -26754,7 +26779,7 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /obj/structure/flora/pottedplant,
 /obj/structure/platform_decoration/metal/almayer_smooth/northwest{
-	layer = 3.01
+	layer = 3.1
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -48253,6 +48278,7 @@
 	pixel_x = 15;
 	desc = "Semiotic Standard denoting the number seven. It is placed next to a Six semiotic."
 	},
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/wheeled,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "clr" = (
@@ -50167,9 +50193,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
 "cpG" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
@@ -50222,6 +50245,10 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
 "cpO" = (
@@ -50293,6 +50320,21 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/evidence_storage)
+"cpW" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/item/tool/pen{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/lower)
 "cqd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -75553,7 +75595,7 @@
 /turf/open/floor/almayer/red/south,
 /area/almayer/shipboard/brig)
 "nAd" = (
-/obj/structure/machinery/power/apc/almayer/hardened/east,
+/obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/engine_core)
 "nAm" = (
@@ -168856,7 +168898,7 @@ aSg
 aMk
 bbR
 bwT
-aQe
+aWs
 aNZ
 bwN
 bwN
@@ -169165,9 +169207,9 @@ aMs
 aMs
 aMs
 bwT
-aZo
-aWs
-aaD
+bhz
+aQe
+bwT
 bwN
 bwN
 bwN
@@ -169270,10 +169312,10 @@ aMh
 bwT
 aZb
 aZb
-aaD
-aaD
-aaD
-aaD
+bwT
+bFV
+bFV
+bFV
 bwN
 bwN
 bdH
@@ -169373,11 +169415,11 @@ alU
 bwT
 aZb
 aZb
-aaD
-aaD
-aaD
-aaD
-aaD
+bwT
+bFV
+bFV
+bFV
+bFV
 bwN
 bdH
 bdH
@@ -169476,11 +169518,11 @@ bFY
 bwT
 aRD
 bay
-aaD
-aaD
-aaD
-aaD
-aaD
+bwT
+bwT
+bwT
+bwT
+bwT
 bwN
 bwN
 bdH
@@ -169654,8 +169696,8 @@ cpU
 cpR
 aDL
 beJ
-beJ
-biO
+cpW
+bhR
 bgG
 aVv
 aUH

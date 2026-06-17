@@ -1520,6 +1520,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	//Why so complicated? Many things may reset our view (resisting being the most common one)
 
 /obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
+	SIGNAL_HANDLER
 	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
 	set_onscreen_text(watcher.mob, null)
 	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.mob.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]

@@ -198,3 +198,45 @@
   - code_imp: Xenos destroying reactors now have their do_after checks occur faster.
   zzzmike:
   - balance: huggers dropped on the ground become able to jump in 4 seconds.
+2026-06-14:
+  Blundir:
+  - rscdel: Removed CLF headband from char prefs
+  Detective-Google:
+  - rscadd: crayons count as cosmetic for the purposes of helmet inventory slots
+  MistChristmas:
+  - rscadd: Arbalest, Ballista, Estoc, Garand, Kukri, Maul, Poleaxe to A.W. random
+      surname list
+  - rscdel: Adze, Bowman, Fan, Hatchet, Hammer, Lancer, Ram from A.W. random surname
+      list
+  - bugfix: Admin player panel now correctly shows if target is a-slept or not
+  - maptweak: Almayer Upper Engi, switch out Reinforced Walls for Strutural ones.
+  - bugfix: Makes Egg morphers melee-able
+  - balance: Give them 100 extra health so they don't get whacked in one hit by some
+      weapons.
+  - rscadd: Req purchases get logged to ARES
+  - bugfix: Total cost is now the actual amount of points spent
+  - code_imp: Rename some defines from Wield_delay to Weapon_delay
+  Ordosian:
+  - bugfix: Fixed Acid Runner overlay
+2026-06-17:
+  Bibby0110:
+  - bugfix: Fixes instances of the overwatch visual overlay persisting too long
+  Drathek:
+  - code_imp: Changed OD pragma linting
+  - code_imp: Included 64bit rust_g dll
+  - bugfix: Fixed busted blood properties?
+  Drathek Harry:
+  - bugfix: fixes weird AO on shutters/doors and stuff
+  - bugfix: fixes weird blackness handling
+  MistChristmas:
+  - rscdel: Old non relevant shuttle code.
+  MoondancerPony:
+  - code_imp: made color manipulation in lighting and elsewhere much faster
+  Orchidfox:
+  - maptweak: The Almayer's Reactor Room and Astronav APCs are now Hardened APCs and
+      will not break upon hijack.
+  cuberound:
+  - bugfix: fixes lingering dark tiles above destroyed doors
+  kiVts:
+  - rscadd: Research can announce information about their chemicals to everyone with
+      a medical hud. This requires CMO to publish their work first, though.

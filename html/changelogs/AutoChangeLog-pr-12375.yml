@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - rscadd: "Arbalest, Ballista, Estoc, Garand, Kukri, Maul, Poleaxe to A.W. random surname list"
-  - rscdel: "Adze, Bowman, Fan, Hatchet, Hammer, Lancer, Ram from A.W. random surname list"

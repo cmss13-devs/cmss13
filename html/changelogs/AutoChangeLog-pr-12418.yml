@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscdel: "Removed CLF headband from char prefs"

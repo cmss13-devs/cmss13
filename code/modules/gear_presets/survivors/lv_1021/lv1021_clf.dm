@@ -24,6 +24,7 @@
 	var/obj/item/clothing/under/colonist/clf/operative/uniform = new()
 	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
 	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
@@ -33,6 +34,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/clf_patch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	..()
 
 /datum/equipment_preset/survivor/clf_lv1021/add_survivor_weapon_security(mob/living/carbon/human/new_human)
 	return
@@ -99,12 +101,11 @@
 	skills = /datum/skills/civilian/survivor/clf/combat_medic
 
 /datum/equipment_preset/survivor/clf_lv1021/medic/load_gear(mob/living/carbon/human/new_human)
-	add_clf_helm(new_human)
-	add_clf_suit(new_human)
 
 	var/obj/item/clothing/under/colonist/clf/medic/uniform = new()
 	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
 	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
@@ -123,6 +124,10 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
+	..()
+	add_clf_helm(new_human)
+	add_clf_suit(new_human)
+
 /// --------------------------------------------- \\\\
 
 /datum/equipment_preset/survivor/clf_lv1021/engineer
@@ -139,10 +144,11 @@
 /datum/equipment_preset/survivor/clf_lv1021/engineer/load_gear(mob/living/carbon/human/new_human)
 	add_clf_suit(new_human)
 
-	var/obj/item/clothing/under/colonist/clf/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/colonist/clf/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/web = new()
+	uniform.attach_accessory(new_human, web)
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
@@ -156,7 +162,92 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
+	..()
+	add_clf_helm(new_human)
+	add_clf_suit(new_human)
+
 /// --------------------------------------------- \\\\
+
+/datum/equipment_preset/survivor/clf_lv1021/upp_liaison
+	name = "Survivor - LV1021 UPP Liaison"
+	assignment = JOB_UPP_SRLT_OFFICER
+	job_title = JOB_UPP_SRLT_OFFICER
+	origin_override = ORIGIN_UPP
+	faction_group = list(FACTION_UPP, FACTION_CLF)
+	idtype = /obj/item/card/id/dogtag/upp
+
+/datum/equipment_preset/survivor/clf_lv1021/upp_liaison/load_gear(mob/living/carbon/human/new_human)
+	access = get_access(ACCESS_LIST_UPP_ALL)
+
+	var/obj/item/clothing/under/marine/veteran/UPP/officer/uniform = new()
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/army/simple, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+
+	new_human.equip_to_slot_or_del(new /obj/item/notepad/green(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
+
+	..()
+
+/// --------------------------------------------- \\\\
+
+/datum/equipment_preset/survivor/clf_lv1021/leader
+	name = "Survivor - LV1021 CLF Camp Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
+	role_comm_title = "LDR"
+
+	minimap_icon = "clf_sl"
+
+	skills = /datum/skills/clf/leader
+
+/datum/equipment_preset/survivor/clf_lv1021/leader/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CLF_ARMORY, ACCESS_CLF_LEADERSHIP, ACCESS_CLF_FLIGHT)
+
+/datum/equipment_preset/survivor/clf_lv1021/leader/load_gear(mob/living/carbon/human/new_human)
+
+	//No random armor, so that it's more clear that he's the leader
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf/leader(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/full(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/clf(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/clf_patch, WEAR_ACCESSORY)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(new_human), WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/multitool(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/mar40, /obj/item/ammo_magazine/rifle/mar40, new_human)
+
+/// --------------------------------------------- \\\\
+
 
 /datum/equipment_preset/survivor/clf_lv1021/coordinator
 	name = "Survivor - LV1021 CLF Coordinator"

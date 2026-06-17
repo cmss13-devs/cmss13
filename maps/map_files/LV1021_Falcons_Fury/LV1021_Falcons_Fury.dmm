@@ -11324,6 +11324,10 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv1021/oob)
+"aBh" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/corsat/officetiles,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aBi" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -14;
@@ -13881,6 +13885,36 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
+"aIi" = (
+/obj/effect/landmark/survivor_spawner/lv1021/clf_engi,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/landing)
+"aIj" = (
+/obj/effect/landmark/survivor_spawner/lv1021/clf_medic,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
+"aIk" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/education)
+"aIl" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/kutjevo/plate,
+/area/lv1021/indoors/clf_camp/education)
+"aIm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/asphalt/brown,
+/area/lv1021/indoors/clf_camp/education)
+"aIn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/interior/wood,
+/area/lv1021/indoors/clf_camp/ancil_n)
 "aIN" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -13;
@@ -14019,6 +14053,7 @@
 "aXh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "aXp" = (
@@ -15112,7 +15147,7 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "csg" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/lv_grass_weedable/layer0,
+/turf/closed/wall/strata_ice/jungle,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "cta" = (
 /obj/structure/flora/grass/temperate{
@@ -15716,6 +15751,7 @@
 "dkf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/lv1021/clf_leader,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/coordinator)
 "dkt" = (
@@ -22033,7 +22069,7 @@
 	layer = 3.1
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/closed/wall/strata_ice/jungle,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "lJs" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -23570,7 +23606,6 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "nOp" = (
@@ -24639,6 +24674,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/landmark/survivor_spawner/lv1021/upp_liaison,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/coordinator)
 "pke" = (
@@ -24881,6 +24917,7 @@
 "pzv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/asphalt/brown,
 /area/lv1021/indoors/clf_camp/education)
 "pzF" = (
@@ -26845,6 +26882,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "spj" = (
@@ -29677,6 +29715,7 @@
 	color = "#a98c7c";
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "wey" = (
@@ -50438,7 +50477,7 @@ apX
 xwH
 hnc
 ejC
-keS
+aIn
 cdv
 jqP
 hnc
@@ -50773,8 +50812,8 @@ wzQ
 hnc
 sQZ
 lGj
-aIf
 lGj
+aIf
 duC
 pIM
 aUg
@@ -53279,7 +53318,7 @@ arY
 apX
 wTu
 atw
-uBE
+aIm
 aty
 uBE
 uBE
@@ -53623,7 +53662,7 @@ lcU
 lcU
 lcU
 lcU
-lcU
+aIk
 lcU
 tKf
 wOO
@@ -54455,7 +54494,7 @@ uBE
 aty
 eVP
 omg
-vrQ
+aIl
 vrQ
 lcU
 vrQ
@@ -54634,7 +54673,7 @@ asj
 apX
 jHr
 sAV
-lcU
+aIk
 lcU
 lcU
 oAN
@@ -54970,7 +55009,7 @@ mxN
 sAV
 mbx
 lcU
-lcU
+aIj
 oAN
 sAV
 mxN
@@ -55651,7 +55690,7 @@ iOl
 aqA
 cEw
 ajB
-ajB
+aIi
 rat
 ajB
 ajB
@@ -57163,7 +57202,7 @@ tKw
 ufY
 mIL
 voY
-voY
+aBh
 xlx
 roi
 yja

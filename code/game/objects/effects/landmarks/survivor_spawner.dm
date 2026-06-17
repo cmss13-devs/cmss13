@@ -788,3 +788,33 @@
 <span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+////************CLF LV1021 Survivors************////
+
+/obj/effect/landmark/survivor_spawner/lv1021
+	icon_state = "surv_clf"
+	hostile = TRUE
+	equipment = /datum/equipment_preset/survivor/clf_lv1021/standard
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+	intro_text = list("<h2>You are a member of the CLF!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rise up and notice that one of your limbs is badly bruised. You looked at other survivors, also limping and trying to tend to their wounds, luckily, none of you were seriously hurt."
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/lv1021/clf_medic
+	equipment = /datum/equipment_preset/survivor/clf_lv1021/medic
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/lv1021/clf_engi
+	equipment = /datum/equipment_preset/survivor/clf_lv1021/engineer
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/lv1021/upp_liaison
+	equipment = /datum/equipment_preset/survivor/clf_lv1021/upp_liaison
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/lv1021/clf_leader
+	equipment = /datum/equipment_preset/survivor/clf_lv1021/leader
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

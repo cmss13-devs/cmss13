@@ -4,16 +4,14 @@
     "map_file": "LV1021_Falcons_Fury.dmm",
 
     "survivor_types": [
-        "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
-        "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique",
-        "/datum/equipment_preset/survivor/scientist",
-        "/datum/equipment_preset/survivor/doctor",
-        "/datum/equipment_preset/survivor/chef",
-        "/datum/equipment_preset/survivor/engineer",
-        "/datum/equipment_preset/survivor/corporate",
-        "/datum/equipment_preset/survivor/trucker"
+        "/datum/equipment_preset/survivor/clf_lv1021/standard",
+        "/datum/equipment_preset/survivor/clf_lv1021/medic",
+        "/datum/equipment_preset/survivor/clf_lv1021/engineer",
+        "/datum/equipment_preset/survivor/clf_lv1021/veteran",
+        "/datum/equipment_preset/survivor/clf_lv1021/leader"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/clf/lv1021"
     ],
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"

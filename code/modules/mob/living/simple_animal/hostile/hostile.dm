@@ -16,6 +16,8 @@
 	var/move_to_delay = 4
 	/// List of weakrefs of our friend mobs
 	var/list/friends = list()
+	/// Above what alpha can the mob "see" a target
+	var/vision_alpha = 30
 	var/break_stuff_probability = 10
 	var/destroy_surroundings = TRUE
 
@@ -59,6 +61,8 @@
 	if((target.faction == faction || (target.faction in faction_group)) && !attack_same)
 		return FALSE
 	if(WEAKREF(target) in friends)
+		return FALSE
+	if (target.alpha <= vision_alpha)
 		return FALSE
 	return target
 

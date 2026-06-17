@@ -400,6 +400,7 @@
 #define WALL_FOREST "forest_veg"
 #define WALL_FOREST_ROCK "rock_forest"
 #define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
+#define WALL_SWAMP "swamp_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"

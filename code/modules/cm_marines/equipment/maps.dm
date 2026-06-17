@@ -157,8 +157,9 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 
 /obj/item/map/sekhmet_swamp_map
 	name = "\improper SI-391 Sekhmet Swamp map"
-	desc = "An overview of the Sekhmet Swamp research facility schematics."
+	desc = "An overview of the Sekhmet Swamp medical research facility colony schematics."
 	html_link = "images/1/18/Map_icecolony.png"
+	color = "#8cab00"
 
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"

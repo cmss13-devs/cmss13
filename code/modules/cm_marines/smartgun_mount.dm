@@ -400,6 +400,12 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
+		if(gun_mounted == 1)
+			to_chat(user, SPAN_WARNING("There is already a gun mounted to this tripod!"))
+			return
+		if(MG.has_mount)
+			to_chat(user, SPAN_WARNING("The gun you're trying to attach already has a mount!"))
+			return
 		for(var/obj/structure/machinery/machine in long_orange(MG.defense_check_range, loc))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))

@@ -1,3 +1,5 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+
 "aaa" = (/obj/structure/catwalk,/obj/structure/prop{name = "ruined colony crawler treads"; desc = "Spare treads for a colony crawler, integral for the movement of the vehicle. They appear to be ruined with most of the coupling between the treads smashed, bent or otherwise seperated."; icon = 'icons/obj/vehicles/hardpoints/tank.dmi'; icon_state = "treads"; dir = 2},/turf/open/floor/plating/icefloor/asteroidplating,/area/varadero/interior/cargo)
 "aab" = (/obj/structure/catwalk,/obj/structure/surface/table,/obj/item/explosive/plastic,/obj/item/clothing/head/welding,/turf/open/floor/plating/icefloor/asteroidplating,/area/varadero/interior/cargo)
 "aac" = (/obj/structure/blocker/fog,/obj/structure/blocker/fog,/turf/open/gm/river/ocean/deep_ocean,/area/varadero/exterior/farocean)

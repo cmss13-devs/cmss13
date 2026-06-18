@@ -50,13 +50,13 @@
 	icon_state = "NV_no_CAS"
 
 /area/varadero/interior/comms1
-	name = "New Varadero - Tertiary Communications"
+	name = "New Varadero - Reception"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "comms1"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 
 /area/varadero/interior/comms2
-	name = "New Varadero - Communications Project Site"
+	name = "New Varadero - Hangar Auxiliary Storage"
 	icon_state = "comms2"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	linked_lz = DROPSHIP_LZ2
@@ -68,7 +68,7 @@
 	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/exterior/comms4
-	name = "New Varadero - Walkway Extension"
+	name = "New Varadero - Parking Lot"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "comms4"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
@@ -83,34 +83,34 @@
 //landing zone computers
 
 /area/varadero/exterior/lz1_console
-	name = "New Varadero - Pontoon Dock"
+	name = "New Varadero - LZ1 Cargo Auxiliary Landing port"
 	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
-	name = "New Varadero - Palm Airfield"
+	name = "New Varadero - LZ2 LACN Navybase port"
 	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
 //exterior areas
 
 /area/varadero/exterior/lz1_near
-	name = "New Varadero - Pontoon Airfield"
+	name = "New Varadero - Cargo Auxiliary Airfield"
 	icon_state = "lz1"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz2_near
-	name = "New Varadero - Palm Airfield"
+	name = "New Varadero - LACN Navybase Airfield"
 	icon_state = "lz2"
 	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/pontoon_beach
-	name = "New Varadero - Rockabilly Beach"
+	name = "New Varadero - Hydrogenerator Beach"
 	icon_state = "varadero0"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 	minimap_color = MINIMAP_AREA_JUNGLE
@@ -120,13 +120,13 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/varadero/exterior/eastbeach
-	name = "New Varadero - East Beach"
+	name = "New Varadero - Eastern Runway"
 	linked_lz = DROPSHIP_LZ2
 	icon_state = "varadero1"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/varadero/exterior/monsoon
-	name = "New Varadero - Monsoon"
+	name = "New Varadero - Southern Runway"
 	icon_state = "varadero1"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
@@ -159,7 +159,7 @@
 
 
 /area/varadero/interior/beach_bar
-	name = "New Varadero - Beach Bar"
+	name = "New Varadero - Crashed UD-6B"
 	icon_state = "varadero4"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 	minimap_color = MINIMAP_AREA_JUNGLE
@@ -235,6 +235,9 @@
 /area/varadero/interior/maintenance/security/south
 	name = "New Varadero - South Sec. Maintenance"
 
+/area/varadero/interior/maintenance/security/south/hangar
+	name = "New Varadero - Areodrome"
+
 /area/varadero/interior/research
 	name = "New Varadero - Research Offices"
 	icon_state = "offices4"
@@ -270,13 +273,13 @@
 	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/varadero/interior/library
-	name = "New Varadero - Library"
+	name = "New Varadero - Armoury"
 	icon_state = "offices0"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/varadero/interior/library/restaraunt
-	name = "New Varadero - Restaurant"
+	name = "New Varadero - Gallery"
 	icon_state = "pizza"
 
 /area/varadero/interior/court
@@ -290,12 +293,12 @@
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/varadero/interior/bunks
-	name = "New Varadero - Level 1 Quarters"
+	name = "New Varadero - Barracks"
 	icon_state = "req3"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/varadero/interior/security
-	name = "New Varadero - Security Offices"
+	name = "New Varadero - Military Police Office"
 	icon_state = "offices0"
 	minimap_color = MINIMAP_AREA_SEC
 
@@ -339,7 +342,7 @@
 	minimap_color = MINIMAP_AREA_CAVES
 
 /area/varadero/interior_protected/caves/digsite
-	name = "New Varadero - Dig Site"
+	name = "New Varadero - Vessel recovery site"
 	icon_state = "deepcaves3"
 
 /area/varadero/interior_protected/caves/makeshift_tent

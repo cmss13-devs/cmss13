@@ -157,6 +157,9 @@
 	plasma_required = 1000
 	block_range = 0
 
+/datum/construction_template/xenomorph/pathogen_core/set_structure_image()
+	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
+
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/pathogen_core
 	name = PATHOGEN_STRUCTURE_CORE

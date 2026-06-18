@@ -112,7 +112,7 @@
 	return
 
 /datum/action/xeno_action/onclick/place_spore_sac
-	name = "Place spore sac (700)"
+	name = "Place blight spore sac (700)"
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "plant_sac"
@@ -137,7 +137,7 @@
 		return
 	var/area/turf_area = get_area(target_turf)
 	if(istype(turf_area,/area/shuttle/drop1/lz1) || istype(turf_area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(patho_owner, SPAN_WARNING("We sense this is not a suitable area for creating a spore sac."))
+		to_chat(patho_owner, SPAN_WARNING("We sense this is not a suitable area for creating a blight spore sac."))
 		return
 	if(isnull(turf_area) || !(turf_area.is_resin_allowed))
 		if(!turf_area || turf_area.flags_area & AREA_UNWEEDABLE)
@@ -156,7 +156,7 @@
 	patho_owner.use_plasma(plasma_cost)
 	playsound(patho_owner.loc, "alien_resin_build", 25)
 	new /obj/effect/pathogen/spore_sac/three_uses(target_turf)
-	to_chat(patho_owner, SPAN_XENONOTICE("We place a spore sac on the ground."))
+	to_chat(patho_owner, SPAN_XENONOTICE("We place a blight spore sac on the ground."))
 	if(fatal_use)
 		to_chat(patho_owner, SPAN_XENOHIGHDANGER("The spore sac consumes all our energy!"))
 		if(ispopper(patho_owner))
@@ -213,7 +213,7 @@
 	return TRUE
 
 /datum/action/xeno_action/onclick/release_spores
-	name = "Release Spore Cloud (200)"
+	name = "Release Blight Spore Cloud (200)"
 	action_icon_state = "gas mine"
 	plasma_cost = 200
 	action_type = XENO_ACTION_CLICK
@@ -236,7 +236,7 @@
 	popper.use_plasma(plasma_cost)
 	playsound(popper.loc, "alien_resin_build", 25)
 	new /obj/effect/pathogen/spore_cloud(target_turf)
-	popper.visible_message(SPAN_DANGER("[src] releases a cloud of spores!"), SPAN_XENONOTICE("We release a spore cloud."))
+	popper.visible_message(SPAN_DANGER("[src] releases a cloud of spores!"), SPAN_XENONOTICE("We release a blight spore cloud."))
 	return ..()
 
 

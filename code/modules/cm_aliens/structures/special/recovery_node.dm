@@ -6,13 +6,6 @@
 	var/replenish_amount = 75
 	COOLDOWN_DECLARE(last_replenish)
 
-/obj/effect/alien/resin/special/plasma_tree/pathogen
-	name = PATHOGEN_STRUCTURE_RECOVERY
-	desc = "A pulsing node that has liquid plasma dripping around it."
-	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-	forced_hive = TRUE
-	hivenumber = XENO_HIVE_PATHOGEN
-
 /obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
@@ -27,6 +20,17 @@
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the [SPAN_BLUE("plasma")] of adjacent Xenomorphs."
+
+/obj/effect/alien/resin/special/plasma_tree/pathogen
+	name = PATHOGEN_STRUCTURE_PLASMA
+	desc = "A pulsing node that has liquid plasma dripping around it."
+	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
+	forced_hive = TRUE
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/resin/special/plasma_tree/pathogen/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/mob/pathogen/neo_blips.dmi', null, "recovery_node"))
 
 /obj/effect/alien/resin/special/plasma_tree/process()
 	update_minimap_icon()
@@ -74,12 +78,6 @@
 	var/heal_amount = 20
 	COOLDOWN_DECLARE(last_heal)
 
-/obj/effect/alien/resin/special/recovery/pathogen
-	name = PATHOGEN_STRUCTURE_RECOVERY
-	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-	forced_hive = TRUE
-	hivenumber = XENO_HIVE_PATHOGEN
-
 /obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
@@ -99,6 +97,15 @@
 	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the [SPAN_MAROON("health")] of adjacent Xenomorphs."
 
+/obj/effect/alien/resin/special/recovery/pathogen
+	name = PATHOGEN_STRUCTURE_RECOVERY
+	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
+	forced_hive = TRUE
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/resin/special/recovery/pathogen/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/mob/pathogen/neo_blips.dmi', null, "recovery_node"))
 
 /obj/effect/alien/resin/special/recovery/process()
 	update_minimap_icon()

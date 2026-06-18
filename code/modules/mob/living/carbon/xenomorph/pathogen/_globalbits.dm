@@ -164,24 +164,24 @@
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
-		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the blight!"))
+		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the paralyzing spores!"))
 		next_slash_buffed = FALSE
 		return original_damage //endurance 5 makes you immune to weak blight
 	if(ishuman(carbon_target))
 		var/mob/living/carbon/human/human = carbon_target
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
-			human.visible_message(SPAN_DANGER("[human] shrugs off the blight!"))
+			human.visible_message(SPAN_DANGER("[human] shrugs off the paralyzing spores!"))
 			next_slash_buffed = FALSE
 			return //species like zombies or synths are immune to blight
 	if(next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add blight into our attack, [carbon_target] is about to fall over paralyzed!"))
-		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its blight coated claws!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add paralyzing spores into our attack, [carbon_target] is about to fall over!"))
+		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its spore coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = floor(BLIGHT_TOUCH_DELAY/3))
 		carbon_target.Daze(8)
 		addtimer(CALLBACK(src, PROC_REF(blight_slash), carbon_target), BLIGHT_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
-		var/datum/action/xeno_action/onclick/blight_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/blight_slash)
+		var/datum/action/xeno_action/onclick/pathogen_paralyze/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/pathogen_paralyze)
 		if (ability && istype(ability))
 			ability.button.icon_state = "template_xeno"
 	return original_damage
@@ -200,7 +200,7 @@
 /datum/behavior_delegate/pathogen_base/proc/blight_slash(mob/living/carbon/human/human_target)
 	human_target.KnockDown(2)
 	human_target.Stun(2)
-	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the blight!"))
+	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the spores!"))
 
 /datum/behavior_delegate/pathogen_base/append_to_stat()
 	. = list()
@@ -210,19 +210,19 @@
 		. += "Pathogen Poppers: [hive.get_popper_num()]/[hive.max_poppers]"
 
 // ################## Blight slash ##################
-/datum/action/xeno_action/verb/verb_blight_slash()
+/datum/action/xeno_action/verb/verb_pathogen_paralyze()
 	set category = "Alien"
-	set name = "Blight Slash"
+	set name = "Paralyzing Slash"
 	set hidden = TRUE
-	var/action_name = "Blight Slash"
+	var/action_name = "Paralyzing Slash"
 	handle_xeno_macro(src,action_name)
 
-/datum/action/xeno_action/onclick/blight_slash
-	name = "Blight Slash"
+/datum/action/xeno_action/onclick/pathogen_paralyze
+	name = "Paralyzing Slash"
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "lurker_inject_neuro"
-	macro_path = /datum/action/xeno_action/verb/verb_blight_slash
+	macro_path = /datum/action/xeno_action/verb/verb_pathogen_paralyze
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 	xeno_cooldown = 12 SECONDS
@@ -230,7 +230,7 @@
 
 	var/buff_duration = 50
 
-/datum/action/xeno_action/onclick/blight_slash/use_ability(atom/target)
+/datum/action/xeno_action/onclick/pathogen_paralyze/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/paraslash_user = owner
 
 	if (!istype(paraslash_user))
@@ -254,7 +254,7 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/blight_slash/proc/unbuff_slash()
+/datum/action/xeno_action/onclick/pathogen_paralyze/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/unbuffslash_user = owner
 	if (!istype(unbuffslash_user))
 		return

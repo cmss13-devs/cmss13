@@ -54,7 +54,7 @@
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/cyclone, // Macro 3
 		/datum/action/xeno_action/activable/mycotoxin, // Macro 4
-		/datum/action/xeno_action/onclick/blight_slash, //Macro 5
+		/datum/action/xeno_action/onclick/pathogen_paralyze, //Macro 5
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 

@@ -205,7 +205,7 @@
 
 
 /obj/effect/pathogen/spore_cloud
-	name = "spore cloud"
+	name = "blight spore cloud"
 	icon_state = "motes_air"
 	var/inhaling = FALSE
 	var/death_timer
@@ -232,7 +232,7 @@
 	silent_inhale = TRUE
 
 /obj/effect/spore_cloud_trigger
-	name = "spore cloud trigger"
+	name = "blight spore cloud trigger"
 	icon = 'icons/effects/effects.dmi'
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

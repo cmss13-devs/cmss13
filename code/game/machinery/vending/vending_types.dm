@@ -601,7 +601,17 @@
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
 
 /obj/structure/machinery/vending/dinnerware/prison
-	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/pfork = 6,/obj/item/tool/kitchen/utensil/pknife = 3,/obj/item/reagent_container/food/drinks/sillycup = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/reagent_container/food/condiment/saltshaker = 4,/obj/item/reagent_container/food/condiment/peppermill = 4,/obj/item/reagent_container/food/condiment/enzyme = 1,/obj/item/reagent_container/food/condiment = 8)
+	products = list(
+		/obj/item/tool/kitchen/tray = 8,
+		/obj/item/tool/kitchen/utensil/pfork = 6,
+		/obj/item/tool/kitchen/utensil/pknife = 3,
+		/obj/item/reagent_container/food/drinks/sillycup = 8,
+		/obj/item/clothing/suit/chef/classic = 2,
+		/obj/item/reagent_container/food/condiment/saltshaker = 4,
+		/obj/item/reagent_container/food/condiment/peppermill = 4,
+		/obj/item/reagent_container/food/condiment/enzyme = 1,
+		/obj/item/reagent_container/food/condiment = 8
+	)
 
 /obj/structure/machinery/vending/dinnerware/yautja
 	name = "dinnerplate dispenser"

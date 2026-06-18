@@ -97915,14 +97915,13 @@
 	pixel_x = -16;
 	pixel_y = -16
 	},
-/obj/structure/holohoop{
-	dir = 1;
-	pixel_y = -13;
-	layer = 1;
+/obj/structure/holohoop/noshimmy{
 	id = "prisonbball";
 	side = "right";
-	enable_shimmy = 0;
-	can_block_movement = 0
+	can_block_movement = 0;
+	dir = 1;
+	layer = 1;
+	pixel_y = -13
 	},
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/brig/yard)

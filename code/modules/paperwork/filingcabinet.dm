@@ -5,12 +5,6 @@
  * Medical Record Cabinets
  */
 
-#define FILING_CABINET_NORMAL "filingcabinet"
-#define FILING_CABINET_CHEST "chestdrawer"
-#define FILING_CABINET_TALL "tallcabinet"
-#define FILING_CABINET_NORMAL_DOUBLE "filingcabinet_double"
-#define FILING_CABINET_CHEST_DOUBLE "chestdrawer_double"
-#define FILING_CABINET_TALL_DOUBLE "tallcabinet_double"
 
 /*
  * Filing Cabinets

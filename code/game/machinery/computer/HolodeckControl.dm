@@ -177,6 +177,9 @@
 
 	return ..()
 
+/obj/structure/holohoop/noshimmy
+	enable_shimmy = FALSE
+
 /obj/structure/holohoop/Initialize(mapload, ...)
 	. = ..()
 	if (enable_shimmy)

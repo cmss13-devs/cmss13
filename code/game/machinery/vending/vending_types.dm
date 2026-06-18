@@ -610,7 +610,7 @@
 		/obj/item/reagent_container/food/condiment/saltshaker = 4,
 		/obj/item/reagent_container/food/condiment/peppermill = 4,
 		/obj/item/reagent_container/food/condiment/enzyme = 1,
-		/obj/item/reagent_container/food/condiment = 8
+		/obj/item/reagent_container/food/condiment = 8,
 	)
 
 /obj/structure/machinery/vending/dinnerware/yautja

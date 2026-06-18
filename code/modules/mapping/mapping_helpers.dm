@@ -63,14 +63,14 @@
 		? "Structural collapse detected in [announcement_areas]. Be advised that new routes may be accessible." \
 		: "Geological shifts detected in [announcement_areas]. Be advised that new routes may be accessible."
 
-	if(silent_announce_marine = FALSE)
+	if(silent_announce_marine == FALSE)
 		marine_announcement(marine_announcement_text, "Priority Announcement")
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
 		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
 		: "The ground of this world trembles, and new routes are accessible in [announcement_areas]."
 
-	if(silent_announce_xeno = FALSE)
+	if(silent_announce_xeno == FALSE)
 		xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
 
 	qdel(src)

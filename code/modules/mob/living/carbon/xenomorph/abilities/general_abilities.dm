@@ -92,8 +92,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
-	var/xeno_cooldown_interrupt_modifier = 3
+	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building or when interrupted.
+	var/xeno_cooldown_interrupt_penalty = 1 SECONDS
 	/// Something went wrong, for example, you can't build here
 	var/xeno_cooldown_fail = 1
 	/// Placement time increase modifier
@@ -539,11 +539,11 @@
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
 	. = ..()
-	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 0
+	owner.sight |= SEE_TURFS
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
 	. = ..()
-	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
+	owner.sight &= ~SEE_TURFS
 
 /mob/living/carbon/xenomorph/proc/add_abilities()
 	if(!base_actions)

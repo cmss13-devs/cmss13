@@ -808,9 +808,14 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_HYPERDYNE
 	faction = FACTION_HYPERDYNE
+	job_title = JOB_HC_SEC_SYNTH
+	assignment = JOB_HC_SEC_SYNTH
+	role_comm_title = "HC Sec Syn"
 	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR
+	minimap_background = "background_hc_management"
+	minimap_icon = "hc_synth"
 
 /datum/equipment_preset/synth/survivor/sorokyne/corporate/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)

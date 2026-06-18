@@ -21,6 +21,7 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
 	var/is_disabled = FALSE
+	var/action_queued = FALSE
 
 	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
 	var/fire_cooldown_time = 500 SECONDS

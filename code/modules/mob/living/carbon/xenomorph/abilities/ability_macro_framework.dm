@@ -50,7 +50,7 @@
 
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action One"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -66,7 +66,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_two()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Two"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -82,7 +82,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_three()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Three"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -98,7 +98,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_four()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Four"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -114,7 +114,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_five()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Five"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src

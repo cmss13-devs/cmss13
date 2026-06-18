@@ -88,6 +88,7 @@
 #include "..\modules\unit_tests\create_and_destroy.dm"
 #include "..\modules\unit_tests\duplicate_sprite_accessories.dm"
 #include "..\modules\unit_tests\emote_panels.dm"
+#include "..\modules\unit_tests\map_sanity.dm"
 #include "..\modules\unit_tests\missing_icons.dm"
 #include "..\modules\unit_tests\resist.dm"
 #include "..\modules\unit_tests\spawn_humans.dm"

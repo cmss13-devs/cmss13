@@ -10,7 +10,7 @@
 	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
 	)
 	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
 	var/jumpsuit_hide_states
@@ -207,7 +207,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/medals.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/medals.dmi',
 	)
 	var/recipient_name //name of the person this is awarded to.
 	var/recipient_rank
@@ -457,7 +457,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/armbands.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_ARMBAND
 	worn_accessory_limit = 2
@@ -778,7 +778,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 
@@ -792,7 +792,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 	flags_atom = MAP_COLOR_INDEX
@@ -827,7 +827,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ponchos.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 
@@ -845,7 +845,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/webbings.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/webbings.dmi',
 	)
 	w_class = SIZE_LARGE //too big to store in other pouches
 	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
@@ -1387,7 +1387,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 	flags_equip_slot = SLOT_WAIST
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
@@ -1401,7 +1401,7 @@
 	accessory_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 
 /obj/item/clothing/accessory/holobadge/attack_self(mob/user)

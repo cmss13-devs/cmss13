@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/manipulator,
-		/obj/item/stock_parts/console_screen
+		/obj/item/stock_parts/console_screen,
 	)
 
 	var/panel_open = FALSE
@@ -427,7 +427,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 
 	currently_making_data = list(
 		"name" = making.name,
-		"multiplier" = multiplier
+		"multiplier" = multiplier,
 	)
 	SStgui.update_uis(src)
 

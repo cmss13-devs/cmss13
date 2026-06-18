@@ -19,7 +19,7 @@
 
 	entrances = list(
 		"left" = list(2, 0),
-		"right" = list(-2, 0)
+		"right" = list(-2, 0),
 	)
 
 	seats = list(

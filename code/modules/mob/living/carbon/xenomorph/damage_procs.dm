@@ -157,7 +157,7 @@
 	var/list/damage_data = list(
 		"bonus_damage" = 0,
 		"damage" = damage,
-		"enviro" = enviro
+		"enviro" = enviro,
 	)
 	SEND_SIGNAL(src, COMSIG_BONUS_DAMAGE, damage_data)
 	damage += damage_data["bonus_damage"]

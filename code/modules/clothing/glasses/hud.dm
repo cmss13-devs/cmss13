@@ -53,7 +53,7 @@
 /obj/item/clothing/glasses/hud/health/ui_data(mob/user)
 	var/list/data = list(
 		"published_documents" = GLOB.chemical_data.research_publications,
-		"terminal_view" = FALSE
+		"terminal_view" = FALSE,
 	)
 	return data
 

@@ -103,14 +103,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 			"job" = "Xenomorph",
 			"playtime" = round(owning_client.get_total_xeno_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
-			"textcolor" = "#FFFFFF"
+			"textcolor" = "#FFFFFF",
 		)
 
 		var/list/marine_playtime = list(
 			"job" = "Human",
 			"playtime" = round(owning_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
-			"textcolor" = "#FFFFFF"
+			"textcolor" = "#FFFFFF",
 		)
 
 		LAZYADD(xeno_playtimes, list(xeno_playtime))

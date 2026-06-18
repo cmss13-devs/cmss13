@@ -483,7 +483,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	var/static/list/types_to_pick = list(
 		"Marine" = "strings/marinetips.txt",
 		"Xenomorph" = "strings/xenotips.txt",
-		"Meta" = "strings/metatips.txt"
+		"Meta" = "strings/metatips.txt",
 	)
 	var/list/tip_list = file2list(types_to_pick[picked_type])
 	if(length(types_to_pick[picked_type]))

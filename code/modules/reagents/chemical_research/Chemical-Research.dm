@@ -36,7 +36,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/new_document = list(
 		"document_title"=title,
 		"time"=save_time,
-		"document"=R
+		"document"=R,
 	)
 	research_documents["[document_type]"] += list(new_document)
 
@@ -56,7 +56,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/new_document = list(
 		"document_title"=title,
 		"time"=save_time,
-		"document"=R
+		"document"=R,
 	)
 	research_publications["[document_type]"] += list(new_document)
 

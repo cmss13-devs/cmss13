@@ -164,7 +164,7 @@
 	icon_state = "footwrap_sandals"
 	item_state = "footwrap_sandals"
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/feet.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/clothing/feet.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW

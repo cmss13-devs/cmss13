@@ -200,7 +200,7 @@
 		eyes_color = list(
 			H.r_eyes ? H.r_eyes : 0,
 			H.g_eyes ? H.g_eyes : 0,
-			H.b_eyes ? H.b_eyes : 0
+			H.b_eyes ? H.b_eyes : 0,
 			)
 
 		// Leave bloody red pits behind!

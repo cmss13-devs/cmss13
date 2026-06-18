@@ -197,7 +197,7 @@
 		"medical_diseases" = medical ? medical.fields["diseases"] : null,
 		"medical_diseases_details" = medical ? medical.fields["diseases_details"] : null,
 		"medical_comments" = medical ? medical.fields["comments"] : null,
-		"record_classified" = record_classified
+		"record_classified" = record_classified,
 	)
 
 	return record
@@ -248,7 +248,7 @@
 				"id" = id_number,
 				"general_name" = general.fields["name"],
 				"general_job" = general.fields["rank"],
-				"general_p_stat" = medical ? general.fields["p_stat"] : null
+				"general_p_stat" = medical ? general.fields["p_stat"] : null,
 			)
 			records |= list(record)
 
@@ -380,7 +380,7 @@
 				"created_by" = list("name" = user.get_authentification_name(), "rank" = user.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
-				"deleted_at" = null
+				"deleted_at" = null,
 			)
 
 			if (!islist(medical_record.fields["comments"]))
@@ -528,7 +528,7 @@
 			"type" = "string",
 			"max_length" = 49,
 			"required" = TRUE,
-			"regex" = regex(@"^[a-zA-Z' ]+$"), // Allow letters, spaces, and single quotes
+			"regex" = regex(@"^[a-zA-Z' ]+$"),
 		),
 		"general_age" = list(
 			"type" = "number",

@@ -362,16 +362,15 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits,
-		//second macro
-	)
+		) //second macro
 
 	// Abilities they get when they've successfully aged.
 	var/mobile_aged_abilities = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
-	)
+		/datum/action/xeno_action/onclick/shift_spits,
+		) //second macro
 
 	skull = /obj/item/skull/queen
 	pelt = /obj/item/pelt/queen

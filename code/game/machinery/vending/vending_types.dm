@@ -338,7 +338,7 @@
 	AddElement(/datum/element/corp_label/koorlander)
 
 /obj/structure/machinery/vending/cigarette/koorlander/free
-		prices = list(
+	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 0,
 		/obj/item/storage/fancy/cigarettes/lucky_strikes = 0,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 0,
@@ -714,7 +714,6 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 20,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 50,
-
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -746,7 +745,6 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 30,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 5,
-
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 

@@ -40,7 +40,7 @@
 		/obj/item/ammo_magazine/smg/m39 = /obj/item/ammo_magazine/smg/m39/rubber,
 		/obj/item/ammo_magazine/rifle = /obj/item/ammo_magazine/rifle/rubber,
 		/obj/item/ammo_magazine/rifle/l42a = /obj/item/ammo_magazine/rifle/l42a/rubber,
-		/obj/item/ammo_magazine/pistol =  /obj/item/ammo_magazine/pistol/rubber
+		/obj/item/ammo_magazine/pistol = /obj/item/ammo_magazine/pistol/rubber,
 	)
 
 /obj/item/device/portable_vendor/antag/allowed(mob/M)

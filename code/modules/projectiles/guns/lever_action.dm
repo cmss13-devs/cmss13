@@ -14,7 +14,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi',
 	)
 	w_class = SIZE_LARGE
 	fire_sound = 'sound/weapons/gun_lever_action_fire.ogg'
@@ -340,7 +340,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/magnetic_harness/lever_sling,
-		/obj/item/attachable/stock/r4t, // Stock
+		/obj/item/attachable/stock/r4t,
 		)
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
@@ -402,7 +402,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/xm88, // Stock
+		/obj/item/attachable/stock/xm88,
 		)
 
 /obj/item/weapon/gun/lever_action/xm88/Initialize()

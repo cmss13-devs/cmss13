@@ -44,12 +44,12 @@
 							//If you died in the game and are a ghost - this will remain as null.
 							//Note that this is not a reliable way to determine if admins started as observers, since they change mobs a lot.
 	var/list/HUD_toggled = list(
-							"Medical HUD" = FALSE,
-							"Security HUD" = FALSE,
-							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE,
-							"Hunter HUD" = FALSE
-							)
+		"Medical HUD" = FALSE,
+		"Security HUD" = FALSE,
+		"Squad HUD" = FALSE,
+		"Xeno Status HUD" = FALSE,
+		"Hunter HUD" = FALSE,
+	)
 	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
@@ -990,7 +990,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		"Weyland-Yutani", "High Command", "Provost", "Press",
 		"Colonial Marshal Bureau", "Union of Progressive Peoples",
 		"Three World Empire", "Colonial Liberation Front",
-		"Other", "Cancel")
+		"Other", "Cancel",
+		)
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")

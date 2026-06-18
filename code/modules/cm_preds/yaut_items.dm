@@ -33,7 +33,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "halfarmor1_ebony"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi',
 	)
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -118,7 +118,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/suit/armor/yautja/hunter/scalable/badblood
 	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi',
 	)
 	random_icon = FALSE
 	icon_state = "bbarmor_patchwork"
@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "fullcape"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
@@ -279,7 +279,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	icon = 'icons/obj/items/hunter/pred_shoes.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi',
 	)
 	icon_state = "y-boots1_ebony"
 
@@ -364,7 +364,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/shoes/yautja/hunter/scalable/badblood
 	icon = 'icons/obj/items/hunter/badblood_gear.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/badblood_gear.dmi',
 	)
 
 	icon_state = "bb_y_boots_patchwork"
@@ -438,7 +438,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "mesh_shirt"
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
@@ -588,7 +588,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "beltbag"
 	item_state = "beltbag_w"
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 
 	flags_equip_slot = SLOT_WAIST
@@ -963,7 +963,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "scalp"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 	var/true_desc = "This is the scalp of a" //humans and Yautja see different things when examining these.
 	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair color matrix.
@@ -1247,7 +1247,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	icon = 'icons/obj/items/hunter/pred_armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi',
 	)
 	item_state = "armor"
 	icon_state = "fullarmor_ebony"
@@ -1280,7 +1280,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	icon = 'icons/obj/items/hunter/pred_shoes.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi',
 	)
 	icon_state = "y-boots2_ebony"
 
@@ -1821,7 +1821,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "bar"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 
 /obj/item/tool/wrench/yautja
@@ -1832,7 +1832,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "wrench"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 
 /obj/item/tool/wirecutters/yautja
@@ -1843,7 +1843,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "wirescutter"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 
 /obj/item/tool/screwdriver/yautja
@@ -1854,7 +1854,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "screwdriver"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 	force = 7
 	random_color = FALSE
@@ -1867,7 +1867,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	item_state = "multitool"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 
 /obj/item/tool/weldingtool/yautja
@@ -1877,7 +1877,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "welder"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 	force = 10
 	throwforce = 15

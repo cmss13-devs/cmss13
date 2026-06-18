@@ -330,7 +330,7 @@
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy
+		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
 		)
 
 
@@ -432,7 +432,7 @@
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
-		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23
+		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23,
 		)
 
 /obj/effect/spawner/random/gun/rifle/lowchance
@@ -496,7 +496,7 @@
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-		/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
+		/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000,
 		)
 
 /obj/effect/spawner/random/gun/smg/lowchance
@@ -522,7 +522,7 @@
 		/obj/item/weapon/gun/flamer = null,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
+		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null,
 		)
 
 /obj/effect/spawner/random/gun/special/lowchance
@@ -590,7 +590,7 @@
 		/obj/item/weapon/gun/smg/p90 = /obj/item/ammo_magazine/smg/p90,
 		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78
+		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
 		)
 
 /obj/effect/spawner/random/gun/corporate/lowchance
@@ -627,7 +627,7 @@
 		/obj/item/weapon/gun/shotgun/double/with_stock = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
 		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
-		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action
+		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		)
 
 /obj/effect/spawner/random/gun/civ/lowchance
@@ -692,6 +692,6 @@
 	var/list/spawnables = list(
 		/obj/structure/ob_ammo/warhead/explosive,
 		/obj/structure/ob_ammo/warhead/incendiary,
-		/obj/structure/ob_ammo/warhead/cluster
+		/obj/structure/ob_ammo/warhead/cluster,
 	)
 	return pick(spawnables)

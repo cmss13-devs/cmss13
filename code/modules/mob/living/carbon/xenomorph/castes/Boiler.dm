@@ -75,8 +75,8 @@
 		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
 		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
-		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
-	)
+		/datum/action/xeno_action/onclick/acid_shroud,
+		) //5th macro
 	skull = /obj/item/skull/boiler
 	pelt = /obj/item/pelt/boiler
 

@@ -7,7 +7,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	current_mag = /obj/item/ammo_magazine/internal/bow
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
@@ -215,7 +215,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	can_hold = list(
 		/obj/item/weapon/gun/bow,

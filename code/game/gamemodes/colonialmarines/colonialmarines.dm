@@ -837,7 +837,7 @@
 	var/list/counted_humans = list(
 		"Squad Marines" = list(),
 		"Auxiliary Marines" = list(),
-		"Non-Standard Humans" = list()
+		"Non-Standard Humans" = list(),
 	)
 
 	//organize our jobs in a readable and standard way

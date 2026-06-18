@@ -1140,7 +1140,7 @@
 		"Thicken Resin (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
 		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
 		"Remove Node (25)" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
-		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
+		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode"),
 	)
 
 	var/choice

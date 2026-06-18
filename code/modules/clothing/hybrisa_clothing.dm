@@ -429,7 +429,7 @@
 	desc = "It's a baseball style cap in a red color, with the 'Pizza-Galaxy' logo on the front."
 	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi',
 	)
 	icon_state = "pizzagalaxy_cap"
 	item_state = "pizzagalaxy_cap"
@@ -443,7 +443,7 @@
 	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collaboration with MedTech."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "firefighter_helmet"
 	item_state = "firefighter_helmet"
@@ -463,7 +463,7 @@
 	desc = "The HS-SHIELD-X 500 (Hyperdyne Systems - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in high heat environments and protect the user from smoke inhalation. It has a built-in semi-closed breathing system. This helmet was designed by Hyperdyne Systems."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "firefighter_alt_helmet"
 	item_state = "firefighter_alt_helmet"
@@ -485,7 +485,7 @@
 	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built-in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collaboration with Kelland-Mining."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "kelland_mining_helmet"
 	item_state = "kelland_mining_helmet"
@@ -511,7 +511,7 @@
 	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza-Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built-in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza-Galaxy."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "pizza_galaxy_helmet"
 	item_state = "pizza_galaxy_helmet"
@@ -533,7 +533,7 @@
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
@@ -571,7 +571,7 @@
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
@@ -889,7 +889,7 @@
 	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi',
 	)
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
@@ -902,7 +902,7 @@
 	desc = "A luxurious fur-lined, antique-styled trench coat that exudes classic noir elegance. This exquisite garment is far beyond the average person's budget, accessible only to high-level executives and elite military personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi',
 	)
 	icon_state = "wy_expensive_fur_trenchcoat"
 	item_state = "wy_expensive_fur_trenchcoat"
@@ -922,7 +922,7 @@
 	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi',
 	)
 	icon_state = "police_jacket"
 	item_state = "police_jacket"
@@ -935,7 +935,7 @@
 	desc = "An CMB armored vest that protects against some damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi',
 	)
 	icon_state = "police_ballistic_armor"
 	item_state = "police_ballistic_armor"
@@ -1011,7 +1011,7 @@
 	desc = "A blue 'Weymart' employee vest, with name tag and all."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi',
 	)
 	icon_state = "weymart_vest"
 	item_state = "weymart_vest"
@@ -1184,7 +1184,7 @@
 	desc = "An NSPA armored vest that protects against some damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	icon_state = "nspa_police_ballistic_armor"
 	item_state = "nspa_police_ballistic_armor"
@@ -1203,7 +1203,7 @@
 	desc = "A black polyester jacket with a silver Sakura emblem of the NSPA pinned to it. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	icon_state = "nspa_police_jacket"
 	item_state = "nspa_police_jacket"
@@ -1214,7 +1214,7 @@
 	desc = "A heavy woolen formal coat commonly used by NSPA Constables. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	icon_state = "nspa_police_formal_jacket"
 	item_state = "nspa_police_formal_jacket"
@@ -1225,7 +1225,7 @@
 	desc = "A green and white striped (high-visibility) polyester jacket commonly used by NSPA personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	icon_state = "nspa_hazard_jacket"
 	item_state = "nspa_hazard_jacket"
@@ -1236,7 +1236,7 @@
 	desc = "A green and white high-visibility vest commonly used by NSPA personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	icon_state = "nspa_hazard_vest"
 	item_state = "nspa_hazard_vest"

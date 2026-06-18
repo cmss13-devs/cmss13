@@ -37,7 +37,7 @@
 				"name" = prints.criminal_name,
 				"squad" = prints.criminal_squad,
 				"rank" = prints.criminal_rank,
-				"description" = prints.description
+				"description" = prints.description,
 			)
 			prints_data += list(print_entry)
 
@@ -270,7 +270,7 @@
 				"created_by" = list("name" = U.get_authentification_name(), "rank" = U.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
-				"deleted_at" = null
+				"deleted_at" = null,
 			)
 
 			if (!islist(security_record.fields["comments"]))
@@ -432,13 +432,13 @@
 			"type" = "string",
 			"max_length" = 49,
 			"required" = TRUE,
-			"regex" = regex(@"^[a-zA-Z' ]+$"), // Allow letters, spaces, and single quotes
+			"regex" = regex(@"^[a-zA-Z' ]+$"),
 		),
 		"general_rank" = list(
 			"type" = "string",
 			"required" = TRUE,
 			"allowed_values" = GLOB.joblist,
-			"permitted_paygrades" = list(GLOB.uscm_highcom_paygrades)
+			"permitted_paygrades" = list(GLOB.uscm_highcom_paygrades),
 		),
 		"general_age" = list(
 			"type" = "number",

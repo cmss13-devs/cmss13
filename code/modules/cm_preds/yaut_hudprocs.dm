@@ -22,7 +22,7 @@
 		"Mark as Gear Carrier",
 		"Un-Mark as Gear Carrier",
 		"Mark as Student",
-		"Un-Mark as Student"
+		"Un-Mark as Student",
 	)
 
 	if(!target.hunter_data.prey)

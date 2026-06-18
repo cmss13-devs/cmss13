@@ -222,7 +222,7 @@
 	name = "Mobile Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, bolted onto what appears to be an old roller bed. Only the finest for our Military Police force.\n\nIt could be used to keep perma prisoners entertained."
 	icon_state = "tv_mobile"
-	layer = 3.2
+	layer = WINDOW_LAYER
 
 	anchored = FALSE
 	drag_delay = 0

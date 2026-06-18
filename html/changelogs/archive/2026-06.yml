@@ -218,3 +218,25 @@
   - code_imp: Rename some defines from Wield_delay to Weapon_delay
   Ordosian:
   - bugfix: Fixed Acid Runner overlay
+2026-06-17:
+  Bibby0110:
+  - bugfix: Fixes instances of the overwatch visual overlay persisting too long
+  Drathek:
+  - code_imp: Changed OD pragma linting
+  - code_imp: Included 64bit rust_g dll
+  - bugfix: Fixed busted blood properties?
+  Drathek Harry:
+  - bugfix: fixes weird AO on shutters/doors and stuff
+  - bugfix: fixes weird blackness handling
+  MistChristmas:
+  - rscdel: Old non relevant shuttle code.
+  MoondancerPony:
+  - code_imp: made color manipulation in lighting and elsewhere much faster
+  Orchidfox:
+  - maptweak: The Almayer's Reactor Room and Astronav APCs are now Hardened APCs and
+      will not break upon hijack.
+  cuberound:
+  - bugfix: fixes lingering dark tiles above destroyed doors
+  kiVts:
+  - rscadd: Research can announce information about their chemicals to everyone with
+      a medical hud. This requires CMO to publish their work first, though.

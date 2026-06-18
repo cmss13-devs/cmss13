@@ -139,7 +139,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	item_state = "pknife"
-	sharp = IS_SHARP_ITEM_ACCURATE
+	sharp = IS_SHARP_ITEM_SIMPLE
 	force = 10
 	throwforce = 10
 

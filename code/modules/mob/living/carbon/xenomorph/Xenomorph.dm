@@ -136,6 +136,8 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	var/melee_vulnerability_mult = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD

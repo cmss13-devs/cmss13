@@ -12032,7 +12032,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
-/area/lv1021/outdoors/jungle/jungleC_e)
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aCY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -15940,6 +15940,10 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/item/clothing/glasses/mgoggles/clf_riot_shield{
+	pixel_x = -2;
+	pixel_y = 4
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
 "aNk" = (
@@ -16161,7 +16165,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_e)
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aNO" = (
 /obj/structure/sign/minefield/alt{
 	pixel_y = 5
@@ -23850,8 +23854,14 @@
 /area/lv1021/outdoors/river/central_north)
 "jQh" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/clothing/mask/gas/upp_pfb,
-/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/head/helmet/marine/veteran/clf{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf{
+	pixel_x = -5;
+	pixel_y = -4
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "jQC" = (
@@ -24893,7 +24903,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "lwD" = (
-/obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement/cement2,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "lwY" = (
@@ -26965,7 +26974,6 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "okl" = (
-/obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement/cement14,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "okV" = (
@@ -28654,7 +28662,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
-/area/lv1021/outdoors/jungle/jungleC_e)
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "qDf" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/lv_grass_weedable/layer0,
@@ -28836,7 +28844,11 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/landing_zone_1)
 "qXU" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing{
+	density = 0;
+	pixel_y = 12;
+	pixel_x = 12
+	},
 /turf/open/asphalt/cement/cement9,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "qZG" = (
@@ -32850,12 +32862,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/damage_3,
 /area/lv1021/indoors/clf_camp/ancil_n)
-"wqD" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_e)
 "wqG" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -33107,7 +33113,6 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "wLE" = (
-/obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement/cement15,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "wLQ" = (
@@ -63122,11 +63127,11 @@ hXu
 hXu
 aCX
 aNN
-wqD
+aPn
 qDc
-gCD
-wqD
-wqD
+iOl
+aPn
+aPn
 hXu
 hXu
 hXu

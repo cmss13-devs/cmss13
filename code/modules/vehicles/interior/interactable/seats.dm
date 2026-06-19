@@ -486,3 +486,21 @@
 	name = "passenger seat"
 	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
+// Comfy Seats
+
+/obj/structure/bed/chair/vehicle/comfy
+	icon = 'icons/obj/vehicles/interiors/seats.dmi'
+	allways_undense = TRUE
+
+/obj/structure/bed/chair/vehicle/comfy/alt
+	icon_state = "alt_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_1
+	icon_state = "alt1_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_2
+	icon_state = "alt2_vehicle_seat"
+
+/obj/structure/bed/chair/vehicle/comfy/alt_3
+	icon_state = "alt3_vehicle_seat"

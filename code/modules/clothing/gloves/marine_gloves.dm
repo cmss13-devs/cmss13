@@ -317,6 +317,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
+	siemens_coefficient = 0
 
 /obj/item/clothing/gloves/marine/fireproof_gloves/Initialize(mapload)
 	. = ..()

@@ -748,3 +748,22 @@
 	icon_state = "sharp_flechette_mag"
 	default_ammo = /datum/ammo/rifle/sharp/flechette
 
+// W/EK 17 CARBINE RIFLE AMMUNITION
+
+/obj/item/ammo_magazine/rifle/w_ek_17
+	name = "\improper W/EK 17 magazine (7.6mm)"
+	desc = "A 7.6mm carbine magazine."
+	caliber = "7.6mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
+	icon_state = "w_ek_17"
+	item_state = "generic_mag"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle/w_ek_17
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/w_ek_17
+	ammo_band_icon = "+w_ek_17_band"
+	ammo_band_icon_empty = "+w_ek_17_band_e"

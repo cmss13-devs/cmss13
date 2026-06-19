@@ -1000,6 +1000,7 @@
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = FALSE
 	openspeed = 4 //shorter open animation.
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/prison/horizontal
 	dir = SOUTH

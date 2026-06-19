@@ -585,7 +585,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "reedbush_1"
 	icon_tag = "reedbush"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/palebush
 	icon_state = "palebush_1"
@@ -607,13 +607,13 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "lavendergrass_1"
 	icon_tag = "lavendergrass"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/ywflowers
 	icon_state = "ywflowers_1"
 	icon_tag = "ywflowers"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /*
 
@@ -631,7 +631,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "leafybush_1"
 	icon_tag = "leafybush"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/stalkybush
 	icon_state = "stalkybush_1"
@@ -649,25 +649,25 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "brflowers_1"
 	icon_tag = "brflowers"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/ppflowers
 	icon_state = "ppflowers_1"
 	icon_tag = "ppflowers"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass
 	icon_state = "sparsegrass_1"
 	icon_tag = "sparsegrass"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/fullgrass
 	icon_state =  "fullgrass_1"
 	icon_tag = "fullgrass"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /*
 
@@ -687,13 +687,13 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "It's a small, spiky cactus."
 	icon_state = "cactus_3"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/desert/cactus/multiple
 	name = "cacti"
 	icon_state = "cacti_1"
 	plane = FLOOR_PLANE
-	layer = BELOW_MOB_LAYER
+	layer = TURF_LAYER
 
 /*
 

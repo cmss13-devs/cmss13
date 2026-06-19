@@ -2659,6 +2659,33 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
+/obj/item/attachable/stock/rifle/w_ek_17
+	name = "\improper W/EK 17 Carbine skeletal stock"
+	desc = "A stock."
+	slot = "stock"
+	melee_mod = 10
+	size_mod = 1
+	icon_state = "w_ek_17"
+	attach_icon = "w_ek_17_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 10
+	wield_delay_mod = WIELD_DELAY_FAST
+	hud_offset_mod = 3
+
+/obj/item/attachable/stock/rifle/w_ek_17/New()
+	..()
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_7
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+	//but at the same time you are slow when 2 handed
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
 /obj/item/attachable/stock/mod88
 	AUTOWIKI_SKIP(TRUE)
 

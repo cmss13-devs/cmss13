@@ -318,19 +318,3 @@
 	icon_state = "vehicle_console"
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = FALSE
-
-/obj/structure/bed/chair/vehicle/comfy
-	icon = 'icons/obj/vehicles/interiors/rt01_general.dmi'
-	allways_undense = TRUE
-
-/obj/structure/bed/chair/vehicle/comfy/alt
-	icon_state = "alt_vehicle_seat"
-
-/obj/structure/bed/chair/vehicle/comfy/alt_1
-	icon_state = "alt1_vehicle_seat"
-
-/obj/structure/bed/chair/vehicle/comfy/alt_2
-	icon_state = "alt2_vehicle_seat"
-
-/obj/structure/bed/chair/vehicle/comfy/alt_3
-	icon_state = "alt3_vehicle_seat"

@@ -2100,3 +2100,38 @@
 /obj/item/clothing/under/rank/scientist/lasalle/green
 	icon_state = "science_outfit_green"
 	worn_state = "science_outfit_green"
+
+/obj/item/clothing/under/lasalle
+	name = "lasalle bionational jumpsuit"
+	desc = "A heavy-duty jumpsuit commonly worn by Lasalle Bionational workers & civilians."
+	icon_state = "civilian_base"
+	item_state = "civilian_base"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/LASALLE.dmi',
+	)
+
+/obj/item/clothing/under/lasalle/Initialize()
+	. = ..()
+	if(istypestrict(src, /obj/item/clothing/under/colonist))
+		AddElement(/datum/element/corp_label/bionational)
+
+/obj/item/clothing/under/lasalle/drysuit
+	icon_state = "civilian_base_alt"
+	item_state = "civilian_base_alt"
+
+/obj/item/clothing/under/lasalle/grey
+	icon_state = "civilian_base_grey"
+	item_state = "civilian_base_grey"
+
+/obj/item/clothing/under/lasalle/grey/drysuit
+	icon_state = "civilian_base_grey_alt"
+	item_state = "civilian_base_grey_alt"
+
+/obj/item/clothing/under/lasalle/yellow
+	icon_state = "civilian_base_yellow"
+	item_state = "civilian_base_yellow"
+
+/obj/item/clothing/under/lasalle/yellow/drysuit
+	icon_state = "civilian_base_yellow_alt"
+	item_state = "civilian_base_yellow_alt"

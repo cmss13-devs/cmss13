@@ -240,3 +240,6 @@
   kiVts:
   - rscadd: Research can announce information about their chemicals to everyone with
       a medical hud. This requires CMO to publish their work first, though.
+2026-06-19:
+  MistChristmas:
+  - bugfix: Overwatch overlays no longer get stuck

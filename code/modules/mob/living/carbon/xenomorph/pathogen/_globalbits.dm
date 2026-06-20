@@ -335,7 +335,7 @@
 		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
-	if(!can_evolve(castepick, potential_queens))
+	if(!can_evolve(castepick))
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
@@ -359,7 +359,7 @@
 	if(!isturf(loc)) //qdel'd or moved into something
 		return
 
-	if(!can_evolve(castepick, potential_queens))
+	if(!can_evolve(castepick))
 		return
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold

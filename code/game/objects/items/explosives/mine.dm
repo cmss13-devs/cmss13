@@ -449,13 +449,13 @@
 		explosion_size = 100
 	else if(mine_level == 2)
 		explosion_size = 100
-		explosion_falloff = 25
+		explosion_falloff = 20
 	else if(mine_level == 3)
 		explosion_size = 125
-		explosion_falloff = 30
+		explosion_falloff = 25
 	else
 		explosion_size = 125
-		explosion_falloff = 25
+		explosion_falloff = 20
 	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
@@ -491,7 +491,7 @@
 	update_icon()
 	deploy_time = world.time
 	mine_state = icon_state
-	timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 45 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 	for(var/mob/living/carbon/mob in range(1, src))
 		try_to_prime(mob)
 
@@ -541,10 +541,10 @@
 		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	else if(mine_level == 3)
 		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, 2)
+		new /obj/flamer_fire(loc, cause_data, reagent, 3)
 		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	else
-		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, 3)
+		var/datum/reagent/napalm/blue/reagent = new()
+		new /obj/flamer_fire(loc, cause_data, reagent, 2)
 		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	qdel(src)

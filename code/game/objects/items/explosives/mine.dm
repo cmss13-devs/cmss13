@@ -409,7 +409,7 @@
 	mine_level++
 	icon_state = mine_state + "_[mine_level]"
 	if(mine_level < 4)
-		timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+		timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 45 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /obj/item/explosive/mine/sharp/check_for_obstacles(mob/living/user)
 	return FALSE

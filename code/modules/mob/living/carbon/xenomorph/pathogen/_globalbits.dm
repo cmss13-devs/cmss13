@@ -311,13 +311,13 @@
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		to_chat(src, SPAN_WARNING("The Confluence cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
 	if(hive.restricted_castes && (castepick in hive.restricted_castes))
 		var/max_num = hive.restricted_castes[castepick]
 		if(hive.get_caste_count(castepick) >= max_num)
-			to_chat(src, SPAN_WARNING("The Hive has reached capacity for this caste!"))
+			to_chat(src, SPAN_WARNING("The Confluence has reached capacity for this caste!"))
 			return
 
 	if(!evolve_checks())
@@ -335,6 +335,8 @@
 		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
+	if(!can_evolve(castepick, potential_queens))
+		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
@@ -357,6 +359,8 @@
 	if(!isturf(loc)) //qdel'd or moved into something
 		return
 
+	if(!can_evolve(castepick, potential_queens))
+		return
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
 

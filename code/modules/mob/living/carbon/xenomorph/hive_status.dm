@@ -769,6 +769,39 @@
 
 	return slots
 
+/datum/hive_status/proc/debug_tier_slots()
+	var/used_tier_2_slots = length(tier_2_xenos)
+	var/used_tier_3_slots = length(tier_3_xenos)
+
+	for(var/caste_path in free_slots)
+		var/slots_free = free_slots[caste_path]
+		var/slots_used = used_slots[caste_path]
+		var/datum/caste_datum/current_caste = caste_path
+		if(slots_used)
+			// Don't count any free slots in use
+			switch(initial(current_caste.tier))
+				if(2)
+					used_tier_2_slots -= min(slots_used, slots_free)
+				if(3)
+					used_tier_3_slots -= min(slots_used, slots_free)
+		if(slots_free <= slots_used)
+			continue
+
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/effective_total = floor(burrowed_factor)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			effective_total++
+
+	message_admins(SPAN_WARNING("DEBUG: BURROW FACT: [burrowed_factor]"))
+	message_admins(SPAN_WARNING("DEBUG: EFFECT TOTAL: [effective_total]"))
+	message_admins(SPAN_WARNING("DEBUG: DIVISOR: [tier_slot_divisor]"))
+	message_admins(SPAN_WARNING("DEBUG: TIER-3: [max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)]"))
+	message_admins(SPAN_WARNING("DEBUG: TIER-2: [max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)]"))
+
+	return
+
+
 #undef TIER_3
 #undef TIER_2
 #undef OPEN_SLOTS
@@ -1876,10 +1909,7 @@
 
 	hive_orders = "Kill everyone and everything."
 
-	free_slots = list(
-		/datum/caste_datum/pathogen/neomorph = 1,
-		/datum/caste_datum/pathogen/conditor = 1,
-	)
+	free_slots = list()
 
 	restricted_castes = list(
 		PATHOGEN_CREATURE_HARBINGER = 2,

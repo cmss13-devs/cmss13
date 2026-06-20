@@ -4239,9 +4239,6 @@
 	},
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/ship/almayer/hallways/upper/fore_hallway)
-"ake" = (
-/turf/open/floor/almayer/test_floor5,
-/area/ship/almayer/engineering/lower/workshop/hangar)
 "akf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/north,
@@ -4262,20 +4259,20 @@
 /turf/open_space,
 /area/ship/almayer/command/airoom)
 "akj" = (
-/turf/open/floor/almayer/plating_striped/south,
+/turf/open/floor/almayer/test_floor5,
 /area/ship/almayer/engineering/lower/workshop/hangar)
 "akk" = (
+/turf/open/floor/almayer/plating_striped/south,
+/area/ship/almayer/engineering/lower/workshop/hangar)
+"akl" = (
 /obj/structure/reagent_dispensers/tank/pacid{
 	anchored = 1
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/ship/almayer/engineering/lower/workshop/hangar)
-"akl" = (
+"akm" = (
 /obj/structure/reagent_dispensers/tank/sacid,
 /turf/open/floor/almayer/test_floor5,
-/area/ship/almayer/engineering/lower/workshop/hangar)
-"akm" = (
-/turf/open/floor/almayer/orangecorner/west,
 /area/ship/almayer/engineering/lower/workshop/hangar)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
@@ -4327,14 +4324,8 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/ship/almayer/medical/upper_medical)
 "akx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 0
-	},
-/turf/open/floor/almayer/research/containment/floor2/west,
-/area/ship/almayer/medical/containment/cell)
+/turf/open/floor/almayer/orangecorner/west,
+/area/ship/almayer/engineering/lower/workshop/hangar)
 "aky" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 32;
@@ -4498,6 +4489,15 @@
 "ala" = (
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/ship/almayer/squads/charlie_delta_shared)
+"alb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/ship/almayer/medical/containment/cell)
 "alc" = (
 /obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
@@ -143125,12 +143125,12 @@ lFp
 xDF
 ajQ
 rNK
-akm
+akx
 prP
 ary
 bFN
 nmY
-akk
+akl
 xHS
 tEd
 bFI
@@ -143338,7 +143338,7 @@ ouw
 nmY
 alc
 akW
-akj
+akk
 uZV
 nmY
 uKH
@@ -143441,7 +143441,7 @@ acd
 nmY
 akT
 kyh
-akj
+akk
 akT
 nmY
 qpV
@@ -143544,7 +143544,7 @@ lab
 nmY
 qoL
 kyh
-akj
+akk
 vPR
 nmY
 rEK
@@ -143853,8 +143853,8 @@ qyK
 nmY
 bFM
 akW
+akk
 akj
-ake
 nmY
 lQf
 tHk
@@ -143956,7 +143956,7 @@ wDr
 wDr
 akT
 akW
-akj
+akk
 qhD
 nmY
 bIv
@@ -144059,7 +144059,7 @@ wDr
 wDr
 kJH
 kyh
-akj
+akk
 xry
 nmY
 uKH
@@ -144162,7 +144162,7 @@ wDr
 wDr
 euW
 akW
-akj
+akk
 hQP
 nmY
 qpV
@@ -144263,7 +144263,7 @@ wDr
 wDr
 wDr
 wDr
-akl
+akm
 akY
 aId
 akU
@@ -176989,8 +176989,8 @@ aRQ
 wWz
 bXi
 caR
-akx
-akx
+alb
+alb
 bWz
 bZv
 bZl

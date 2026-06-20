@@ -1,5 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - code_imp: "Helmet accessories now supports vendor auto equipping"
-  - bugfix: "You can no longer eat whistles through vendors"

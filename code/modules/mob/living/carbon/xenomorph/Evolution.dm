@@ -285,6 +285,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
+			var/area/area = get_area(src)
+			if(area.unoviable_timer)
+				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve this far from safe areas!"))
+				return FALSE
 			var/turf/evoturf = get_turf(src)
 			if(!locate(/obj/effect/alien/weeds) in evoturf)
 				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve off weeds!"))

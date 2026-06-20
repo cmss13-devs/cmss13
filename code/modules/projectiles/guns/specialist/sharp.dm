@@ -145,9 +145,9 @@
 			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
 			if(weapon && weapon.explosion_delay_sharp)
-				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 6 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 5 SECONDS)
 			else
-				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 2.5 SECONDS)
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(loc, obj/projectile/shot_dart, mob/shooter)
 	var/signal_explosion = FALSE

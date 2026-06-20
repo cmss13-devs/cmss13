@@ -214,9 +214,6 @@
 	log_ares_flight("Unknown", ares_message)
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 
-	var/obj/structure/machinery/computer/shuttle/dropship/flight/console = getControlConsole()
-	console?.balloon_alert_to_viewers("autopilot disabled!")
-
 	xeno_message(SPAN_XENOANNOUNCE("The metal bird is arriving at the metal hive in the sky!"), 3, queen.hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, queen.hivenumber)
 	var/datum/hive_status/hive = queen.hive
@@ -225,6 +222,16 @@
 
 	// Notify the yautja too so they stop the hunt
 	elder_overseer_message("The serpent Queen has snuck on a landing shuttle.")
+
+	// Also some /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien() stuff
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/console = getControlConsole()
+	if(console)
+		console.balloon_alert_to_viewers("autopilot disabled!")
+		console.dropship_control_lost = TRUE
+		console.update_icon()
 
 	return TRUE
 

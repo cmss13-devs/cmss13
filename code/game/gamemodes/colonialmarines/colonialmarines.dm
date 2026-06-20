@@ -12,8 +12,8 @@
 #define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
-	name = "Distress Signal"
-	config_tag = "Distress Signal"
+	name = GAMEMODE_DISTRESS_SIGNAL
+	config_tag = GAMEMODE_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5

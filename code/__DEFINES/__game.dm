@@ -45,10 +45,16 @@
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
+
 #define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
+#define GAMEMODE_FACTION_CLASH "Faction Clash"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
+#define GAMEMODE_HUNTER_GAMES "Hunter Games"
+#define GAMEMODE_INFECTION "Infection"
+#define GAMEMODE_EXTENDED "Extended"
+#define GAMEMODE_EXTENDED_NO_SPAWN "Extended - No Spawn"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130

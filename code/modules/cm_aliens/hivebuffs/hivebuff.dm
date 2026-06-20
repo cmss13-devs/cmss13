@@ -494,7 +494,6 @@
 	if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
 		return
 
-	add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
 	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
 	transmute_action.give_to(xeno)
 

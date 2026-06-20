@@ -296,7 +296,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/transmute_verb()
+/mob/living/carbon/xenomorph/verb/verb_transmute()
 	set name = "Transmute"
 	set desc = "Transmute into a different caste of the same tier."
 	set category = "Alien"

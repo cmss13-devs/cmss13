@@ -516,11 +516,12 @@
 	name = "Transmute"
 	action_icon_state = "transmute"
 	action_type = XENO_ACTION_CLICK
+	macro_path = /mob/living/carbon/xenomorph/verb/verb_transmute
 
 /datum/action/xeno_action/onclick/transmute/action_activate()
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.transmute_verb()
+	xeno.verb_transmute()
 
 /datum/action/xeno_action/onclick/transmute/can_use_action()
 	if(!owner)

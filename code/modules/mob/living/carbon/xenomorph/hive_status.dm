@@ -875,18 +875,17 @@
 
 /datum/hive_status/proc/bless_on_hijack()
 	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
+
+	// Grant transmute
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(xeno.caste.tier > 3)
-			return
+		if(xeno.caste.tier < 1 || xeno.caste.tier > 3)
+			continue
 
 		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
-			return
+			continue
 
-
-		if(xeno.caste.tier > 0)
-			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
-			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
-			transmute_action.give_to(xeno)
+		var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+		transmute_action.give_to(xeno)
 
 	// Reset ovi & make combat effective queen
 	if(living_xeno_queen)

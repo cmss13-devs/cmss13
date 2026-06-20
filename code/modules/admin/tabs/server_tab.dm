@@ -1,6 +1,6 @@
 /datum/admins/proc/restart()
 	set name = "Restart Server"
-	set desc = "Restarts the world"
+	set desc = "Restarts the world."
 	set category = "Server"
 
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
@@ -10,7 +10,7 @@
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world(SPAN_DANGER("<b>Restarting world!</b> [SPAN_NOTICE("Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!")]"))
+		to_world(SPAN_DANGER("<b>Restarting world!</b> [SPAN_NOTICE("Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.client.username()]!")]"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		sleep(50)
@@ -31,7 +31,7 @@
 
 /datum/admins/proc/toggledsay()
 	set name = "Toggle Server Deadchat"
-	set desc = "Globally Toggles Deadchat"
+	set desc = "Globally Toggles Deadchat."
 	set category = "Server"
 
 	GLOB.dsay_allowed = !GLOB.dsay_allowed

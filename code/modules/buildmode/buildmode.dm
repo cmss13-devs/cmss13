@@ -34,6 +34,7 @@
 	holder.add_to_screen(buttons)
 	holder.click_intercept = src
 	mode.enter_mode(src)
+	RegisterSignal(c, COMSIG_CLIENT_ESCAPE_MENU_OPEN, PROC_REF(quit))
 
 /datum/buildmode/proc/quit()
 	mode.exit_mode(src)
@@ -139,7 +140,8 @@
 	return TRUE
 
 /datum/buildmode/proc/InterceptClickOn(mob/user, params, atom/object)
-	mode.when_clicked(user.client, params, object)
+	if(mode.when_clicked(user.client, params, object))
+		return FALSE //cancel the intercept
 	return TRUE // no doing underlying actions
 
 /proc/togglebuildmode(mob/M as mob in GLOB.player_list)

@@ -12,12 +12,14 @@ GLOBAL_LIST_EMPTY(xeno_hive_spawns)
 GLOBAL_LIST_EMPTY(survivor_spawns_by_priority)
 GLOBAL_LIST_EMPTY(corpse_spawns)
 
+GLOBAL_LIST_EMPTY(yautja_spawnpoints)
 GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
 GLOBAL_LIST_EMPTY(mainship_yautja_desc)
 GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
 GLOBAL_LIST_EMPTY(yautja_young_teleports)
 GLOBAL_LIST_EMPTY(yautja_young_descs)
+GLOBAL_LIST_EMPTY_TYPED(badblood_spawns, /turf)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)
@@ -31,6 +33,11 @@ GLOBAL_LIST_EMPTY(latejoin_by_squad)
 GLOBAL_LIST_EMPTY(latejoin_by_job)
 
 GLOBAL_LIST_EMPTY(zombie_landmarks)
+
+GLOBAL_LIST_EMPTY(event_mob_landmarks)
+GLOBAL_LIST_EMPTY(event_mob_landmarks_delayed)
+GLOBAL_VAR_INIT(event_mob_number, 1)
+GLOBAL_LIST_EMPTY(event_mob_players)
 
 GLOBAL_LIST_EMPTY(newplayer_start)
 GLOBAL_LIST_EMPTY_TYPED(observer_starts, /obj/effect/landmark/observer_start)

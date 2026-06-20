@@ -36,7 +36,7 @@
 	icon_state = null
 
 /obj/structure/blocker/invisible_wall/water
-	desc = "You cannot wade out any further"
+	desc = "You cannot wade out any further."
 	icon_state = "map_blocker"
 
 /obj/structure/blocker/fog
@@ -62,6 +62,29 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/blocker/door
+	name = "shutter"
+	desc = "Containment shutter. Used during routine testing to reduce the risk of a containment breach."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shutter"
+	opacity = TRUE
+
+/obj/structure/blocker/door/Initialize(mapload, time_to_dispel)
+	. = ..()
+
+	if(!time_to_dispel)
+		return INITIALIZE_HINT_QDEL
+
+	dir = pick(CARDINAL_DIRS)
+	QDEL_IN(src, time_to_dispel)
+
+/obj/structure/blocker/door/attack_hand(mob/M)
+	to_chat(M, SPAN_NOTICE("Won't budge, you'll have to wait until the all-clear is sent."))
+
+/obj/structure/blocker/door/attack_alien(M)
+	attack_hand(M)
+	return XENO_NONCOMBAT_ACTION
+
 /obj/structure/blocker/preserve_edge
 	name = "dense fog"
 	desc = "You think you can see a way through."
@@ -77,7 +100,7 @@
 	if(user.action_busy)
 		return
 
-	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("No", "Yes"), 15 SECONDS)
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("Yes", "No"), 15 SECONDS)
 	if(!choice)
 		return
 

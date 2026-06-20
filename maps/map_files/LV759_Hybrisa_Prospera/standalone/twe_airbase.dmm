@@ -66,6 +66,10 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ai" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -260,7 +264,7 @@
 /obj/structure/machinery/light/dropship/green{
 	dir = 4
 	},
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "8,7"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -272,15 +276,15 @@
 	buckle_offset_x = 6;
 	buckle_offset_y = 1
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "bT" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
 /turf/open/floor/strata/red3/west,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "bU" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "1,1"
 	},
 /turf/open/floor/plating,
@@ -304,7 +308,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "ch" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "5,15"
 	},
 /turf/open/floor/plating,
@@ -370,7 +374,7 @@
 /turf/open/floor/strata/red3,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "cX" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "7,2"
 	},
 /turf/open/floor/plating,
@@ -474,10 +478,11 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "dB" = (
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dD" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "6,1"
 	},
 /turf/open/floor/plating,
@@ -537,6 +542,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dU" = (
@@ -590,12 +596,12 @@
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "eu" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "0,4"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "ev" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "1,4"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -603,7 +609,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "eD" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "7,6"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -618,15 +624,15 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "eG" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "8,4"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "eK" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "3,11"
 	},
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "2,2"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -647,12 +653,12 @@
 /obj/structure/machinery/light/dropship/blue{
 	dir = 4
 	},
-/turf/closed/shuttle/twe_dropship/transparent{
-	icon_state = "5,14_alt"
+/turf/closed/shuttle/dropship_twe/transparent{
+	icon_state = "5,14"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "eU" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	density = 0
 	},
 /turf/open/floor/plating,
@@ -708,15 +714,15 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "fp" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "0,6"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "fq" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "fs" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "7,4"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -731,7 +737,7 @@
 /turf/open/floor/prison/blue,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "fw" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "8,6"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -829,7 +835,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "gj" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "7,1"
 	},
 /turf/open/floor/plating,
@@ -862,18 +868,18 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/central_streets)
 "gv" = (
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/item/weapon/gun/smg/p90/twe{
 	pixel_y = 4
 	},
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/item/weapon/gun/smg/p90/twe{
 	pixel_y = -4
 	},
@@ -889,12 +895,12 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "gD" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "1,11"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "gY" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "7,3"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -932,7 +938,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
@@ -954,8 +960,8 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "hm" = (
-/turf/closed/shuttle/twe_dropship/transparent{
-	icon_state = "3,13_alt"
+/turf/closed/shuttle/dropship_twe/transparent{
+	icon_state = "3,13"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "ho" = (
@@ -998,7 +1004,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "hs" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "4,7"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -1084,7 +1090,7 @@
 /turf/open/floor/prison/blue,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "hT" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "8,3"
 	},
 /turf/open/floor/plating,
@@ -1158,7 +1164,7 @@
 	buckle_offset_x = -7;
 	buckle_offset_y = 16
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "iw" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -1199,7 +1205,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "jj" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "6,13";
 	density = 0;
 	pixel_x = -13;
@@ -1257,9 +1263,9 @@
 "ki" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/weapon/gun/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/red/southeast,
@@ -1305,6 +1311,7 @@
 	layer = 4.1
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "kK" = (
@@ -1327,13 +1334,13 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "kV" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "4,10"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "kW" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "2,0"
 	},
 /obj/structure/machinery/light/dropship/blue{
@@ -1379,7 +1386,7 @@
 /turf/open/floor/prison/red/east,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "ln" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "2,13";
 	density = 0;
 	pixel_x = 13;
@@ -1388,7 +1395,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "lp" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "3,15"
 	},
 /turf/open/floor/plating,
@@ -1521,7 +1528,7 @@
 /obj/structure/machinery/light/dropship/red{
 	dir = 8
 	},
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "0,7"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -1681,10 +1688,10 @@
 /turf/open/floor/prison/red/northeast,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "mT" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "3,11"
 	},
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "6,2"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -1907,7 +1914,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "od" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "1,2"
 	},
 /turf/open/floor/plating,
@@ -1986,13 +1993,13 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "pc" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "1,12"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "pk" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "7,12"
 	},
 /turf/open/floor/plating,
@@ -2241,12 +2248,12 @@
 /obj/structure/machinery/light/dropship/blue{
 	dir = 8
 	},
-/turf/closed/shuttle/twe_dropship/transparent{
-	icon_state = "3,14_alt"
+/turf/closed/shuttle/dropship_twe/transparent{
+	icon_state = "3,14"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "tK" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "7,0"
 	},
 /turf/open/floor/plating,
@@ -2338,6 +2345,7 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "uK" = (
@@ -2429,7 +2437,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "vP" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "8,0";
 	density = 0
 	},
@@ -2473,6 +2481,7 @@
 	pixel_x = -16;
 	pixel_y = 6
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "wL" = (
@@ -2516,6 +2525,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "xd" = (
@@ -2542,9 +2552,10 @@
 	layer = 2.9;
 	icon_state = "blacksensor_comp3_off"
 	},
-/turf/closed/shuttle/twe_dropship/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "4,14"
 	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "xs" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -2586,7 +2597,7 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "xD" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "0,8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -2662,7 +2673,7 @@
 /turf/open/floor/prison/blue/west,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "zJ" = (
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "2,12"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -2677,7 +2688,7 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "zU" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -2698,7 +2709,7 @@
 /obj/structure/machinery/light/dropship/blue{
 	dir = 4
 	},
-/turf/closed/shuttle/twe_dropship{
+/turf/closed/shuttle/dropship_twe{
 	icon_state = "4,8"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -2714,7 +2725,7 @@
 	pixel_y = 28;
 	layer = 3.4
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "Ak" = (
 /turf/closed/wall/hybrisa/marhsalls,
@@ -2740,7 +2751,7 @@
 	buckle_offset_x = -6;
 	buckle_offset_y = 1
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "AL" = (
 /obj/structure/machinery/floodlight/landing/floor,
@@ -2776,6 +2787,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Be" = (
@@ -2823,7 +2835,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "BT" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -2903,6 +2915,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Dg" = (
@@ -2922,7 +2935,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft{
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft{
 	layer = 3.1
 	},
 /turf/open/floor/shiva/radiator_tile2,
@@ -3093,7 +3106,7 @@
 /turf/open/floor/prison/blue,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "EX" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "4,1";
 	density = 0
 	},
@@ -3180,6 +3193,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Ga" = (
@@ -3345,6 +3359,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Hy" = (
@@ -3693,6 +3708,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Mp" = (
@@ -4005,7 +4021,7 @@
 /turf/open/floor/prison/blue/east,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "Rc" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "6,0"
 	},
 /obj/structure/machinery/light/dropship/blue{
@@ -4018,7 +4034,7 @@
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rl" = (
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rq" = (
@@ -4087,7 +4103,7 @@
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Sn" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "2,1"
 	},
 /turf/open/floor/plating,
@@ -4096,6 +4112,7 @@
 /obj/item/tool/warning_cone{
 	pixel_y = 17
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "SD" = (
@@ -4170,8 +4187,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "TI" = (
-/turf/closed/shuttle/twe_dropship/transparent{
-	icon_state = "5,13_alt"
+/turf/closed/shuttle/dropship_twe/transparent{
+	icon_state = "5,13"
 	},
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "TJ" = (
@@ -4262,7 +4279,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "UH" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -4289,7 +4306,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/lv759/indoors/twe_souter_outpost)
 "Vl" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "1,0"
 	},
 /turf/open/floor/plating,
@@ -4439,7 +4456,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "WG" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "8,8"
 	},
 /turf/open/floor/plating,
@@ -4451,7 +4468,7 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost)
 "WM" = (
-/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+/obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "4,15"
 	},
 /turf/open/floor/plating,
@@ -4481,7 +4498,7 @@
 	buckle_offset_x = 9;
 	buckle_offset_y = 16
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "Xa" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -4493,6 +4510,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Xy" = (
@@ -4554,6 +4572,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "YK" = (
@@ -4768,7 +4787,7 @@ uS
 Nn
 Tb
 rR
-Kz
+Nb
 Kz
 dU
 CY
@@ -4838,7 +4857,7 @@ EY
 YA
 Mg
 ZZ
-YV
+ai
 pb
 BY
 RH
@@ -4898,7 +4917,7 @@ Tb
 UD
 rt
 gb
-BT
+UH
 CE
 CE
 gb

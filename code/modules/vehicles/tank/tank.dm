@@ -74,6 +74,7 @@
 	)
 
 	explosive_resistance = 400
+	minimap_icon_state = "tank"
 
 /obj/vehicle/multitile/tank/initialize_cameras(change_tag = FALSE)
 	if(!camera)

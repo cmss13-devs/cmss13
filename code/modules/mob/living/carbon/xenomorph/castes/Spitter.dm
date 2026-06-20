@@ -15,7 +15,7 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
-	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER, XENO_CASTE_DESPOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
@@ -38,9 +38,11 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -9
 	organ_value = 2000
 	tier = 2
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -49,7 +51,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/spitter,
 		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

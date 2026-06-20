@@ -150,7 +150,9 @@
 				blocked = TRUE
 				break
 
-			if(locate(/obj/effect/particle_effect/smoke) in tile)
+			for( var/obj/effect/particle_effect/smoke/smoke in tile)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 

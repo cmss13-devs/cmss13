@@ -42,6 +42,12 @@
 	/// The required level of a skill for opening this storage if it is inside another storage type
 	var/required_skill_level_for_nest_opening = null
 
+	/// Can this storage be used to instantly grab pills from
+	var/instant_pill_grabbable = FALSE
+
+	/// What mode is the storage instant grab mode in if you are grabbing pills from it
+	var/instant_pill_grab_mode = 1 //On by default
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -217,7 +223,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 	var/atom/movable/screen/storage/start
 	var/atom/movable/screen/storage/continued
 	var/atom/movable/screen/storage/end
-	/// The index that indentifies me inside GLOB.item_storage_box_cache
+	/// The index that identifies me inside GLOB.item_storage_box_cache
 	var/index
 
 /datum/item_storage_box/New()
@@ -678,8 +684,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	set name = "Switch Gathering Method"
 	set category = "Object"
 	set src in usr
-	storage_flags ^= STORAGE_GATHER_SIMULTAENOUSLY
-	if (storage_flags & STORAGE_GATHER_SIMULTAENOUSLY)
+	storage_flags ^= STORAGE_GATHER_SIMULTANEOUSLY
+	if (storage_flags & STORAGE_GATHER_SIMULTANEOUSLY)
 		to_chat(usr, "[src] now picks up all items in a tile at once.")
 	else
 		to_chat(usr, "[src] now picks up one item at a time.")
@@ -865,6 +871,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		verbs -= /obj/item/storage/verb/empty_verb
 		verbs -= /obj/item/storage/verb/toggle_click_empty
 		verbs -= /obj/item/storage/verb/shake_verb
+	if (!instant_pill_grabbable) // For removing pills from bottles quickly
+		verbs -= /obj/item/storage/verb/toggle_pill_bottle_mode
 
 	boxes = new
 	boxes.name = "storage"
@@ -896,7 +904,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /*
  * We need to do this separately from Destroy too...
  * When a mob is deleted, it's first ghostize()ed,
- * then its equipement is deleted. This means that client
+ * then its equipment is deleted. This means that client
  * is already unset and can't be used for clearing
  * screen objects properly.
  */
@@ -1012,3 +1020,11 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 
 	if(!cur_atom)
 		return FALSE
+
+/obj/item/storage/verb/toggle_pill_bottle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle pill bottle mode"
+	set src in usr
+	if(src && ishuman(usr))
+		instant_pill_grab_mode = !instant_pill_grab_mode
+		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))

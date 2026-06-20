@@ -16,7 +16,7 @@
 
 /obj/structure/machinery/computer/research/Initialize()
 	. = ..()
-	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
+	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, SOUTHWEST))
 	GLOB.chemical_data.research_computers += src
 
 /obj/structure/machinery/computer/research/Destroy()
@@ -57,31 +57,13 @@
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
 		GLOB.chemical_data.save_document(CR, response, CR.name)
 		return
+
 	//biomass rewards
 	if(istype(B, /obj/item/research_upgrades/reroll))
 		var/obj/item/research_upgrades/reroll/reroll = B
 		GLOB.chemical_data.reroll_chemicals()
 		visible_message(SPAN_NOTICE("[user] inserts [reroll] in [src], Rerolling contract chemicals."))
 		qdel(reroll)
-	//Clearance Card Updating
-	if(!istype(B, /obj/item/card/id))
-		return
-	var/obj/item/card/id/silver/clearance_badge/card = B
-	if(!istype(card))
-		visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], but it is refused."))
-		return
-	if(!card.check_biometrics(user))
-		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. ABORTING."))
-		return
-
-	var/credits_to_add = max(card.credits_to_give - GLOB.chemical_data.credits_gained, 0)
-	if(credits_to_add)
-		GLOB.chemical_data.update_credits(credits_to_add)
-		GLOB.chemical_data.credits_gained += credits_to_add
-
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], granting [credits_to_add] credits."))
-	msg_admin_niche("[key_name(user)] has swiped a clearance card to give [credits_to_add] credits to research.")
-	return
 
 /obj/structure/machinery/computer/research/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -227,5 +209,22 @@
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
 				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
+		if("announce")
+			if(!COOLDOWN_FINISHED(GLOB.chemical_data, announcement_cooldown))
+				to_chat(ui.user, SPAN_WARNING("You can't announce about chemicals that quick!"))
+				return
+			var/print_type = params["print_type"]
+			var/print_title = params["print_title"]
+			var/obj/item/paper/research_report/report = GLOB.chemical_data.get_report(print_type, print_title)
+			for(var/i in 1 to length(GLOB.chemical_data.research_publications?["[print_type]"]))
+				if(GLOB.chemical_data.research_publications?["[print_type]"][i]["document"] == report )
+					var/message = sanitize_control_chars(tgui_input_text(ui.user, "Type a message you want to announce to medical staff regarding [report.data.name]. Only personnel with medical HUD will see it. There is a 4 minute cooldown to announce again.", "Chemical Advisory Announcement.", max_length = 400, multiline = TRUE))
+					log_game("[key_name(ui.user)] sent '[message]' as a chemical advisory announcement.")
+					message_admins("[key_name(ui.user)] made a chemical announcment. Contents: ([message]) [ADMIN_JMP_USER(ui.user)]")
+					SEND_SIGNAL(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, message, report.data.name)
+					COOLDOWN_START(GLOB.chemical_data, announcement_cooldown, 4 MINUTES)
+					return
+			to_chat(ui.user, SPAN_NOTICE("The document must be published to announce information to medical staff. Ask Chief Medical Officer to publish it."))
+
 
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

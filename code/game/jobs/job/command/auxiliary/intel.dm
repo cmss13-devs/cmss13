@@ -7,7 +7,7 @@
 	scaled = 1
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
-	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"
+	gear_preset = /datum/equipment_preset/uscm/intel
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to assist the marines in collecting intelligence related</a> to the current operation to better inform command of their opposition. You are in charge of gathering any data disks, folders, and notes you may find on the operational grounds and decrypt them to grant the USCM additional resources."
 
 /datum/job/command/intel/set_spawn_positions(count)
@@ -22,6 +22,17 @@
 		else
 			total_positions_so_far = positions
 	return positions
+
+/datum/job/command/intel/generate_entry_conditions(mob/living/M, whitelist_status)
+	. = ..()
+	if(!islist(GLOB.marine_officers[JOB_INTEL]))
+		GLOB.marine_officers[JOB_INTEL] = list()
+	GLOB.marine_officers[JOB_INTEL] += M
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+
+/datum/job/command/intel/proc/cleanup_leader_candidate(mob/M)
+	SIGNAL_HANDLER
+	GLOB.marine_officers[JOB_INTEL] -= M
 
 AddTimelock(/datum/job/command/intel, list(
 	JOB_SQUAD_ROLES = 5 HOURS

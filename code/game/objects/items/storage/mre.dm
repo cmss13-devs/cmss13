@@ -1,7 +1,7 @@
 ///CORE MRE, ALSO JUST SO HAPPEN TO BE USCM MRE
 /obj/item/storage/box/mre
-	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
+	name = "\improper US MRE"
+	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier or marine with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon = 'icons/obj/items/storage/mre.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/mres_lefthand.dmi',
@@ -167,6 +167,10 @@
 	snack = /obj/item/mre_food_packet/wy/snack
 	dessert = /obj/item/mre_food_packet/wy/dessert
 
+/obj/item/storage/box/mre/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/box/mre/pmc/choose_cigarettes()
 	var/cig_type = rand(1, 2)
 	switch(cig_type)
@@ -244,7 +248,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civillian and private markets."
+	desc = "First Strike Ration, produced by the same manufacturer that produces MREs for UA militaries, but oriented on a civilian and private markets."
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
@@ -262,7 +266,7 @@
 
 /obj/item/storage/box/mre/wy
 	name = "\improper W-Y brand ration pack"
-	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
+	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"
@@ -278,6 +282,10 @@
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
 	should_have_utencil = FALSE
+
+/obj/item/storage/box/mre/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/box/mre/wy/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/bugjuice(src)
@@ -315,6 +323,10 @@
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
 	should_have_utencil = TRUE
+
+/obj/item/storage/box/mre/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/storage/box/mre/upp/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)

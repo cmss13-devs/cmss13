@@ -97,7 +97,7 @@ PR’s that affect staff tools/major rules rewrite (adding/removing/editing etc.
 
 ### Issue Managers
 
-Issue Managers help out the project by labelling bug reports and PRs and closing bug reports which are duplicates or are no longer applicable.
+Issue Managers help out the project by labelling bug reports and closing bug reports which are duplicates or are no longer applicable.
 
 <details>
 <summary>What You Can and Can't Do as an Issue Manager</summary>

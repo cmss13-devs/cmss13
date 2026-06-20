@@ -1,4 +1,4 @@
-//Link to thrall bracer, enabling most of it's abilities
+//Link to thrall bracer, enabling most of its abilities
 /obj/item/clothing/gloves/yautja/hunter/verb/link_bracer()
 	set name = "Link Thrall Bracer"
 	set desc = "Link your bracer to that of your thrall."
@@ -38,6 +38,7 @@
 		thrall_gloves.owner = thrall
 		thrall.client?.init_verbs()
 		thrall.set_species("Thrall")
+		thrall.vendor_buyable_categories = YAUTJA_CAN_BUY_ALL
 		thrall.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)
@@ -107,7 +108,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/stun_thrall()
 	set name = "Stun Thrall"
-	set desc = "Stun your thrall when it misbehaves"
+	set desc = "Stun your thrall when it misbehaves."
 	set category = "Yautja.Thrall"
 	set src in usr
 
@@ -139,7 +140,7 @@
 	if(master.stat == DEAD)
 		to_chat(master, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(master.health < HEALTH_THRESHOLD_CRIT)
+	if(master.health < master.health_threshold_crit)
 		to_chat(master, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(master.stat)
@@ -161,14 +162,15 @@
 	var/turf/turf = get_turf(thrall)
 	message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
 	log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
-	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
+	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.", broadcast_networks = received_networks)
 	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 	explode(thrall)
 	exploding = FALSE
 	do_after(thrall, (80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	if(thrall)
-		cell_explosion(thrall, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+		var/datum/cause_data/cause_data = create_cause_data("thrall remote self-destruct", master)
+		cell_explosion(thrall, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosion_cause_data=cause_data)
 		thrall.gib() // kills the thrall
 		qdel(thrall)
 

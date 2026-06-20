@@ -62,6 +62,20 @@
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/xenos/fruits.dmi'
 
+/obj/effect/alien/resin/fruit/clicked(mob/user, list/mods)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(mods[ALT_CLICK])
+		if(!istype(xeno) || !Adjacent(xeno) || xeno != usr || xeno.is_mob_incapacitated() || xeno.body_position == LYING_DOWN)
+			return
+		xeno.pickup_fruit(src)
+		return TRUE
+	..()
+
+/obj/effect/alien/resin/fruit/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_HELPFUL("Press Alt + Click to pick up fruit.")]"
+
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
 	qdel(src)
@@ -192,7 +206,7 @@
 	desc = "A strange green-ish fruit-looking thing."
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/lesser
 
-/obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+/obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text don't get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("A volleyball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below.")]"
@@ -322,7 +336,7 @@
 
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED
-	desc = "A strange purple-ish fruit-looking thing."
+	desc = "A strange purplish fruit-looking thing."
 	time_to_mature = 35 SECONDS
 	icon_state = "fruit_speed_immature"
 	mature_icon_state = "fruit_speed"
@@ -541,7 +555,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/lesser
 	fruit_type = /obj/effect/alien/resin/fruit/lesser
 
-/obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+/obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text don't get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"

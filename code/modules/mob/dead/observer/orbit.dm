@@ -202,7 +202,8 @@
 					wy += list(serialized)
 				else if(human.faction in FACTION_LIST_HYPERDYNE)
 					hyperdyne += list(serialized)
-				else if(human.faction in FACTION_LIST_YAUTJA)
+				else if(human.faction in FACTION_LIST_ALL_YAUTJA)
+					serialized["job"] = human.job
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)

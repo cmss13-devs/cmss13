@@ -1,6 +1,6 @@
 /*
  * The 'fancy' path is for objects like donut boxes that show how many items are in the storage item on the sprite itself
- * .. Sorry for the shitty path name, I couldnt think of a better one.
+ * .. Sorry for the shitty path name, I couldn't think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
  * TODO: Cigarette boxes should be ported to this standard
@@ -175,7 +175,7 @@
 		..()
 
 /obj/item/storage/fancy/cigarettes/emeraldgreen
-	name = "\improper Emerald Green Packet"
+	name = "\improper Emerald Green packet"
 	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
 	desc_lore = "Instantly recognizable by their price that undercuts even water, these cigarettes have become a fixture wherever budgets and morale run low. Nobody is quite sure what goes into the blend, but most agree you don't buy Emerald Greens for the flavor."
 	icon_state = "cigpacket"
@@ -185,23 +185,34 @@
 /obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weyland-Yutani Gold packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weyland-Yutani's entry into the premium tobacco market. Comes backed by a fierce legal team."
+	desc_lore = "Originally cultivated on a small independent colony, the blend behind Weyland-Yutani Gold was once something of a collector's cigarette, passed between enthusiasts who knew where to look. When arsonists, allegedly affiliated with the Colonial Liberation Front, burnt the farming complex to the ground one night, Weyland-Yutani stepped in shortly after with an offer the remaining settlers found impossible to refuse. The colony's name no longer appears on any documentation, though the legal department has never found this particularly troubling."
 	icon_state = "wypacket"
 	icon = 'icons/obj/items/smoking/packets/wy_gold.dmi'
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/wypacket/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/wypacket_4
 	name = "\improper Weyland-Yutani Gold mini packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
+	desc_lore = "A compact version of the same blend that left a small colony without a name, these mini-packs were designed with Weyland-Yutani's private security apparatus in mind. From corporate goons to field commandos, a Gold in the ration kit has become a quiet marker of whose payroll you're actually on. Marines have been known to trade considerably for them."
 	icon_state = "wy4packet"
 	icon = 'icons/obj/items/smoking/packets/wy_gold_mini.dmi'
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 	storage_slots = 4
 
+/obj/item/storage/fancy/cigarettes/wypacket_4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
 	desc = "Smoke 'em if you gottem! Quite popular amongst people living in the Three World Empire."
+	desc_lore = "A TWE staple since before the first colonial expansion, popularized by commercial towing crews and early pioneers. Rich, full bodied, and completely unforgiving on the lungs, they are not a cigarette for the faint of heart. They burn fast. Faster than you can shout 'Glory to the Three World Empire!'"
 	icon_state = "bpacket"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials.dmi'
 	item_state = "bpacket"
@@ -209,7 +220,8 @@
 
 /obj/item/storage/fancy/cigarettes/balaji_4
 	name = "\improper Balaji Imperial Mini packet"
-	desc = "Smoke 'em if you gottem! Now a field, in the new compact package!"
+	desc = "Smoke 'em if you gottem! Now in the field, with a new compact package!"
+	desc_lore = "Tucked into TWE field rations sometime in the early 22nd century, these compact Balajis have been a small but meaningful comfort to soldiers a long way from home. Rich, fast burning, and considerably better than what most armies bother to stuff into a ration kit. Getting your hands on these outside of TWE space is notoriously difficult."
 	icon_state = "b4packet"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials_mini.dmi'
 	item_state = "bpacket"
@@ -217,8 +229,9 @@
 	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
-	name = "\improper Lucky Strikes Packet"
+	name = "\improper Lucky Strikes packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
+	desc_lore = "Lucky Strikes have been included in every USCM field ration since 2145, a decision made by a procurement committee that, by all accounts, has never spent a night in a foxhole. Unfiltered, cheap, and aggressively average, they are nonetheless the most purchased cigarette at every USCM vending machine in the frontier. At least they're cheap."
 	icon_state = "lspacket"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
 	item_state = "lspacket"
@@ -226,8 +239,9 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
-	name = "\improper Lucky Strikes Mini Packet"
+	name = "\improper Lucky Strikes Mini packet"
 	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
+	desc_lore = "The same Lucky Strike that has called itself 'Fine Tobacco' since before the first colony ship left Earth, compressed into a compact package and tucked into a ration kit. They are definitely stale by now, but you'll smoke them anyway."
 	icon_state = "ls4packet"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
 	item_state = "lspacket"
@@ -238,6 +252,7 @@
 /obj/item/storage/fancy/cigarettes/blackpack
 	name = "\improper Executive Select packet"
 	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory... and cigarette smoke."
+	desc_lore = "The most expensive cigarette in the galaxy, Executive Selects have been the calling card of the corporate elite since the early 22nd century. The original formula was quietly reformulated sometime around 2180, following a series of legal proceedings that remain sealed to this day. The brand still commands the same price, the same status, and among long time smokers, the same distinctive cough."
 	icon_state = "blackpacket"
 	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"
@@ -247,6 +262,7 @@
 /obj/item/storage/fancy/cigarettes/blackpack_4
 	name = "\improper Executive Select mini packet"
 	desc = "Luxury right in your ration. You will have them just in time to use them while observing a nuclear blast and enjoying it."
+	desc_lore = "Not every Weyland-Yutani ration kit comes with Executive Selects. In fact, most don't. Finding one in yours is the corporation's way of telling you that you are worth the expense. They carry the same formula, the same reputation, and for the veteran smoker, the same distinctive cough, compressed neatly into a field ready package."
 	icon_state = "black4packet"
 	icon = 'icons/obj/items/smoking/packets/executive_select_mini.dmi'
 	item_state = "blackpacket"
@@ -257,15 +273,20 @@
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
 	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
-	desc_lore = "Popularized by Seegson workers during the construction of Sevastopol Station, these cigarettes lit easily, burned evenly, and offered a straightforward, dependable smoke. The flat, dusty flavor and steady draw quickly made them a colonial staple. Koorlander later scaled production on frontier farming worlds and locked in exclusive trade deals with the USCM."
+	desc_lore = "Popularized by Seegson workers during the construction of Sevastopol Station, Koorlander Golds became a colonial staple almost by accident. Dependable, cheap, and easy to light, they spread outward with the frontier itself. Koorlander later locked in exclusive supply contracts with the USCM, ensuring that wherever marines went, their cigarettes were never far behind."
 	icon_state = "kpacket"
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_kpack")
 
+/obj/item/storage/fancy/cigarettes/kpack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
 	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
+	desc_lore = "There is nothing particularly Arcturian about Arcturian Aces. The blend is unremarkable, the menthol is sub-par, and nobody at the manufacturing plant on Luna has ever met an Arcturian. What the brand does have is bright packaging, a cool name, and a marketing department that understood exactly what a nineteen year old private wants to feel like when they pull out a cigarette in the jungle."
 	icon_state = "aapacket"
 	icon = 'icons/obj/items/smoking/packets/arcturian_ace.dmi'
 	item_state = "aapacket"
@@ -282,8 +303,9 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/spirit
-	name = "\improper Turquoise American Spirit Packet"
+	name = "\improper Turquoise American Spirit packet"
 	desc = "A pack of turquoise American Spirit cigarettes."
+	desc_lore = "The stronger of the two American Spirit varieties, turquoise has built a quiet following among those who found the yellow pack a little too forgiving. Like its milder counterpart, it markets itself on natural tobacco and no additives, a claim that has outlasted most of the governments that tried to regulate it."
 	icon_state = "naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_cyan.dmi'
 	item_state = "naspacket"
@@ -291,8 +313,9 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/spirit/yellow
-	name = "\improper Yellow American Spirit Packet"
+	name = "\improper Yellow American Spirit packet"
 	desc = "A pack of yellow American Spirit cigarettes."
+	desc_lore = "One of the oldest surviving tobacco brands still in production, American Spirits have outlasted dozens of competitors by marketing themselves as the natural choice in an increasingly unnatural galaxy. The yellow pack is the milder of the two, for those who prefer their slow death to be a gentle one."
 	icon_state = "y_naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
@@ -313,6 +336,10 @@
 		/obj/item/toy/trading_card,
 	)
 	var/obj/item/toy/trading_card/trading_card
+
+/obj/item/storage/fancy/cigarettes/trading_card/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
 	flags_atom |= NOREACT
@@ -451,6 +478,10 @@
 	desc = "A small book of cheap paper matches. Good luck getting them to light."
 	icon_state = "mpacket_kl"
 
+/obj/item/storage/fancy/cigar/matchbook/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigar/matchbook/exec_select
 	name = "\improper Executive Select matchbook"
 	desc = "A small book of expensive paper matches. These ones light almost every time!"
@@ -471,6 +502,10 @@
 	icon_state = "mpacket_wy"
 	light_chance = 60
 	burn_chance = 40
+
+/obj/item/storage/fancy/cigar/matchbook/wy_gold/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // VIAL BOX
 
@@ -510,7 +545,26 @@
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
 	is_random = TRUE
+	is_objective = TRUE
 
+/obj/item/storage/fancy/vials/random/handle_item_insertion(obj/item/storage/S)
+	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
+
+/obj/item/storage/fancy/vials/random/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	is_objective = FALSE
+	if(!length(contents))
+		return
+	else
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
@@ -572,14 +626,14 @@
 
 /obj/item/storage/fancy/trading_card/Initialize()
 	if(!collection_color)
-		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initialize this'll have to run prior to that
 
 	. = ..()
 
 	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
 	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
 	icon_state = "trading_[collection_color]_pack_closed"
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/trading_card/fill_preset_inventory()
 

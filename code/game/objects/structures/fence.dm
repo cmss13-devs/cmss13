@@ -146,7 +146,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
 			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
@@ -341,8 +341,8 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 		else
 			icon_state = "[basestate]_off"
 
-/obj/structure/fence/electrified/proc/toggle_power()
-	electrified = !electrified
+/obj/structure/fence/electrified/proc/set_is_on(is_on)
+	electrified = is_on
 	update_icon()
 
 /obj/structure/fence/electrified/Initialize()

@@ -199,7 +199,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "HiveStatus", "[assoc_hive.name] Status")
+		ui = new(user, src, "HiveStatus", "[capitalize(assoc_hive.name)] Status")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 

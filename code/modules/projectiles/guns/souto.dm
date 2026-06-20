@@ -17,6 +17,10 @@
 	start_automatic = TRUE
 	autofire_slow_mult = 0.8 //Fires FASTER when in Full Auto, that is the power of Souta
 
+/obj/item/weapon/gun/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10

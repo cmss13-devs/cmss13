@@ -9,7 +9,7 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	// ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 //	requires_power = TRUE
 //	unlimited_power = TRUE
 	ceiling = CEILING_METAL
@@ -264,7 +264,7 @@
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_CIC
 	soundscape_interval = 50
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 
 /area/rostock/command/armory
 	name = "SSV Rostock - Command Armory"
@@ -405,7 +405,7 @@
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 120
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	is_resin_allowed = FALSE
 	resin_construction_allowed = FALSE

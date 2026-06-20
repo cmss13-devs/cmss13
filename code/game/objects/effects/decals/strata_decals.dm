@@ -39,6 +39,13 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	keep_as_object = TRUE
 
+/obj/effect/decal/strata_decals/tyrargo_mud_corner
+	icon_state = "tyrargo_mud_innercorner"
+	name = "mud"
+	desc = null
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	keep_as_object = TRUE
+
 ////////////////INDOORS STUFF////////////////////
 
 /obj/effect/decal/strata_decals/grime

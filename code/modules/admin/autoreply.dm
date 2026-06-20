@@ -39,7 +39,7 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/xeno)
 
 /datum/autoreply/admin/changelog
 	title = "Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go to the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
 
 /datum/autoreply/admin/intended
 	title = "Intended"
@@ -84,7 +84,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 
 /datum/autoreply/mentor/changelog
 	title = "C: Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go to the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
 
 /datum/autoreply/mentor/join_server
 	title = "C: Joining the Server"

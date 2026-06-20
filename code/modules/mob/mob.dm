@@ -105,11 +105,13 @@
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
 				I = image('icons/mob/hud/human_status.dmi', src, "")
+		if(hud in /datum/mob_hud/xeno::hud_icons)
+			I.appearance_flags |= RESET_ALPHA
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
 
-/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER, chat_type) //Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
 	if(!client || !client.prefs)
 		return
@@ -132,6 +134,8 @@
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
 			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+		else if(chat_type) // probably best to deprecate below but im too lazy for it
+			to_chat(src, msg, type = chat_type)
 		else if(message_flags & CHAT_TYPE_ALL_COMBAT) // Pre-tag combat messages for tgchat
 			to_chat(src, html = msg, type = MESSAGE_TYPE_COMBAT)
 		else
@@ -325,7 +329,7 @@
 		if(W.flags_item & TWOHANDED)
 			W.unwield(src)
 
-//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
+//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't equip need to be done before! Use mob_can_equip() for that task.
 //In most cases you will want to use equip_to_slot_if_possible()
 /mob/proc/equip_to_slot(obj/item/W as obj, slot, disable_warning = FALSE)
 	return
@@ -363,14 +367,14 @@
 	if(client)
 		if(istype(focus, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = focus
+			client.set_eye(focus)
 		else
 			if(isturf(loc))
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 			else
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
+				client.set_eye(loc)
 
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
@@ -618,23 +622,23 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
+			SEND_SIGNAL(client, COMSIG_CLIENT_ANIMATING)
 			if(buckled || resting)
-				client.pixel_x = 0
-				client.pixel_y = 0
+				client.set_pixel_x(0)
+				client.set_pixel_y(0)
 			else
 				var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
-				client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
-				client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
+				client.set_pixel_x(amplitude * sin(0.008 * dizziness * world.time))
+				client.set_pixel_y(amplitude * cos(0.008 * dizziness * world.time))
 				if(prob(1))
 					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
-		client.pixel_x = 0
-		client.pixel_y = 0
+		client.set_pixel_x(0)
+		client.set_pixel_y(0)
 		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
@@ -861,6 +865,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slurring()
 	handle_slowed()
 	handle_superslowed()
+	handle_hushed()
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -871,6 +876,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
+
+/mob/living/proc/handle_hushed()
+	if(hushed)
+		adjust_effect(-1, HUSHED)
+	return hushed
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -977,12 +987,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
+		var/atom/oldLoc
 		if(AM.loc)
 			oldLoc = AM.loc
 			AM.loc.Exited(AM,destination)
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
+		if(oldLoc.z != destination.z)
+			AM.onTransitZ(oldLoc.z, destination.z)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)
@@ -1027,26 +1039,26 @@ note dizziness decrements automatically in the mob's Life() proc.
 			//Set the thing unless it's us
 			if(A != src)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = A
+				client.set_eye(A)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 		else if(isturf(A))
 			//Set to the turf unless it's our current turf
 			if(A != loc)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = A
+				client.set_eye(A)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 	else
 		//Reset to common defaults: mob if on turf, otherwise current loc
 		if(isturf(loc))
-			client.eye = client.mob
+			client.set_eye(client.mob)
 			client.perspective = MOB_PERSPECTIVE
 		else
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = loc
+			client.set_eye(loc)
 
 	return TRUE
 
@@ -1081,3 +1093,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return client.username()
 
 	return key
+
+/mob/relaymove(mob/living/user, direction)
+	. = ..()
+	if(user.is_mob_incapacitated())
+		return
+	return relaydrive(user, direction)

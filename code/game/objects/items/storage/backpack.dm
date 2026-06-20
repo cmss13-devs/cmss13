@@ -825,29 +825,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	xeno_types = null
 
-/obj/item/storage/backpack/marine/grenadepack
-	name = "\improper USCM IMP M63A1 grenade satchel"
-	desc = "A secure satchel with dedicated grenade pouches meant to minimize risks of secondary ignition."
-	icon_state = "grenadierpack"
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
-	)
-	overlays = list("+grenadierpack_unlocked")
-	worn_accessible = TRUE
-	max_storage_space = 36 //12 grenades
-	storage_slots = 12
-	can_hold = list(/obj/item/explosive/grenade)
-	is_id_lockable = TRUE
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
-	xeno_types = null
-
-/obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
-		dump_into(W,user)
-	else
-		return ..()
-
 /obj/item/storage/backpack/marine/mortarpack
 	name = "\improper USCM mortar shell backpack"
 	desc = "A backpack specifically designed to hold ammunition for the M402 mortar."

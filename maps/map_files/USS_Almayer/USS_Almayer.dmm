@@ -4307,11 +4307,6 @@
 	},
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/upper/fore_hallway)
-"ake" = (
-/obj/effect/landmark/start/working_joe,
-/obj/effect/landmark/late_join/working_joe,
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
-/area/almayer/command/airoom)
 "akf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/north,
@@ -4334,9 +4329,14 @@
 "akj" = (
 /obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/late_join/working_joe,
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
 /area/almayer/command/airoom)
 "akk" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"akl" = (
 /obj/structure/machinery/cryopod/joe/seegson/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
@@ -181085,8 +181085,8 @@ qQS
 qQS
 afM
 ebN
-akk
-ake
+akl
+akj
 aZV
 ebN
 naj
@@ -181188,8 +181188,8 @@ fVx
 fVx
 afN
 ebN
+akl
 akk
-akj
 mIJ
 wiu
 xDC

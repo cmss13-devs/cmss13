@@ -214,6 +214,7 @@
 /area/lv1021/indoors/caves/landing_zone
 	name = "LV-1021 - Cave - Landing Zone 2"
 	unoviable_timer = TRUE
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/lv1021/indoors/caves/landing_zone/weedkiller
 	linked_lz = DROPSHIP_LZ2

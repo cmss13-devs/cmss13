@@ -497,6 +497,15 @@
 /turf/open/slippery/hull/colorable/tiles2/west
 	dir = WEST
 
+// Glass Roof
+
+/obj/effect/decal/prop/roof/glass
+	icon = 'icons/effects/glass_roof.dmi'
+	icon_state = "glass_roof_1"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 // Prison grass
 /turf/open/organic/grass
 	name = "grass"

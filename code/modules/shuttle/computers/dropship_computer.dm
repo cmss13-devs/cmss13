@@ -392,9 +392,6 @@
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 	addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, hijack_general_quarters)), 10 SECONDS)
 
-	var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
-	console?.balloon_alert_to_viewers("autopilot disabled!")
-
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))

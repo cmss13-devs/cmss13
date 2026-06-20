@@ -520,7 +520,7 @@
 
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"
-	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	desc = "An experimental P9 SHARP proximity triggered incendiary dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
 	icon_state = "sharp_incendiary_mine"
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)

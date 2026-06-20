@@ -43,11 +43,11 @@
 		list("Type 41 Ammo Load Rig", floor(scale * 15), /obj/item/storage/belt/marine/upp, VENDOR_ITEM_REGULAR),
 		list("NPZ92 Pistol Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/type47, VENDOR_ITEM_REGULAR),
 		list("Flaregun Holster Rig", floor(scale * 2), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Loading Rig", floor(scale * 15), /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Loading Rig", floor(scale * 15), /obj/item/storage/belt/shotgun/upp, VENDOR_ITEM_REGULAR),
 		list("G8-A General Utility Pouch", floor(scale * 15), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", -1, null, null),
-		list("Bayonet Sheath (Full)",floor(scale * 15), /obj/item/storage/pouch/bayonet, VENDOR_ITEM_REGULAR),
+		list("Bayonet Sheath (Full)",floor(scale * 15), /obj/item/storage/pouch/bayonet/upp, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", floor(scale * 15), /obj/item/storage/pouch/firstaid/full/alternate, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Pill Packets)", floor(scale * 15), /obj/item/storage/pouch/firstaid/full/pills, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch (Full)", floor(scale * 15), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
@@ -67,7 +67,7 @@
 		list("Sling Pouch", 1.25, /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
 
 		list("MASK", -1, null, null),
-		list("Gas Mask", floor(scale * 15), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", floor(scale * 15), /obj/item/clothing/mask/gas/upp_pfb, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", floor(scale * 10), /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		list("Rebreather", floor(scale * 10), /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 

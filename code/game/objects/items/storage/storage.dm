@@ -48,6 +48,10 @@
 	/// What mode is the storage instant grab mode in if you are grabbing pills from it
 	var/instant_pill_grab_mode = 1 //On by default
 
+	var/obj/item/card/id/locking_id = null
+	var/is_id_lockable = FALSE
+	var/lock_overridable = TRUE
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -168,6 +172,10 @@
 		if(!user || user.skills?.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
 			to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
 			return
+
+	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
+		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
+		return
 
 	if(!opened)
 		orient2hud()
@@ -640,6 +648,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
+	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/obj/item/card/id/card = W
+		toggle_lock(card, H)
+		return
+
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)
@@ -735,6 +749,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			SPAN_NOTICE("You start to empty \the [src]..."))
 		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
+
+	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
+		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
+		return
 
 	storage_close(user)
 	for (var/obj/item/I in contents)
@@ -1028,3 +1046,46 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 	if(src && ishuman(usr))
 		instant_pill_grab_mode = !instant_pill_grab_mode
 		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+
+/obj/item/storage/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
+	if(QDELETED(locking_id))
+		to_chat(H, SPAN_NOTICE("You lock \the [src]!"))
+		locking_id = card
+	else
+		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_SENIOR in card.access)))
+			to_chat(H, SPAN_NOTICE("You unlock \the [src]!"))
+			locking_id = null
+		else
+			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID."))
+	update_icon()
+
+//Returns true if the user's id matches the lock's
+/obj/item/storage/proc/compare_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/card = H.get_idcard()
+	if(!card || locking_id.registered_name != card.registered_name)
+		return FALSE
+	else
+		return TRUE
+
+/obj/item/storage/update_icon()
+	overlays.Cut()
+
+	if(content_watchers) //If someone's looking inside it, don't close the flap. Lockables display as temporarily unlocked.
+		if(is_id_lockable)
+			overlays += "+[icon_state]_unlocked"
+		return
+
+	if(locking_id) // if it's locked, we expect the casing to be shut.
+		overlays += "+[icon_state]_full"
+		overlays += "+[icon_state]_locked"
+		return
+
+	if(is_id_lockable) // assumption: !locking_id
+		overlays += "+[icon_state]_unlocked"
+
+/obj/item/storage/get_examine_text(mob/user)
+	. = ..()
+	if(is_id_lockable)
+		. += "Features an ID lock. Swipe your ID card to lock or unlock it."
+		if(lock_overridable)
+			. += "This lock can be overridden with command-level access."

@@ -1,0 +1,4 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - bugfix: "Hyperdyne corporate survivors no longer get aired out by LZ turrets"

@@ -888,6 +888,17 @@
 			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
 			transmute_action.give_to(xeno)
 
+	// Reset ovi & make combat effective queen
+	if(living_xeno_queen)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		ovi_ability?.reduce_cooldown(ovi_ability.xeno_cooldown)
+		if(!living_xeno_queen.queen_aged)
+			living_xeno_queen.make_combat_effective()
+
+	// Buff evilution temporarily
+	var/original_evilution = evolution_bonus
+	override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++

@@ -1916,7 +1916,7 @@
 	)
 	blacklisted_castes = ALL_XENO_CASTES
 
-	tier_slot_divisor = 2 // Experimental change.
+	tier_slot_divisor = 1.5 // Experimental change.
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,

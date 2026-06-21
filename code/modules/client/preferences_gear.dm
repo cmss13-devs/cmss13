@@ -1392,13 +1392,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "cowboy hat, light-brown"
 	path = /obj/item/clothing/head/cowboy/light
 
-// Headband
-
-/datum/gear/civilian/headwear/headband_rebel
-	display_name = "CLF headband"
-	path = /obj/item/clothing/head/headband/rebel
-	fluff_cost = 2
-
 // Civilian shoes
 
 /datum/gear/civilian/shoes

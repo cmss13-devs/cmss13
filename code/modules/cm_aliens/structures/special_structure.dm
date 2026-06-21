@@ -26,6 +26,23 @@
 	var/failed_build = FALSE
 	var/broadcast_destroy = TRUE
 
+/obj/effect/alien/resin/special/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		var/health_portion = health/maxhealth
+		switch(health_portion)
+			if(0 to 0.25)
+				. += SPAN_WARNING("[src] is about to fall apart!")
+				return
+			if(0.25 to 0.5)
+				. += SPAN_WARNING("[src] looks severely damaged!")
+				return
+			if(0.5 to 0.75)
+				. += ("[src] is slightly damaged.")
+				return
+			else
+				. += ("[src] is healthy.")
+
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
 	maxhealth = health

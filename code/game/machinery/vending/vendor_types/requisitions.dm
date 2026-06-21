@@ -152,7 +152,7 @@
 		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR),
 
 		list("SKILL PAMPHLETS", -1, null, null),
-		list("JTAC Kit", floor(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
+		list("JTAC Radio Kit", floor(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 0.75, /obj/item/pamphlet/upgradeable/powerloader, VENDOR_ITEM_REGULAR),
 

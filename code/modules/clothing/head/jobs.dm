@@ -116,12 +116,12 @@
 
 /obj/item/clothing/head/surgery/morgue
 	name = "black surgical cap"
-	desc = "A cap doctors wear while making autopsies, or if they like black. Keeps their hair from tickling your internal organs. This one is a black as coal."
+	desc = "A cap doctors wear while making autopsies, or if they like black. Keeps their hair from tickling your internal organs. This one is as black as coal."
 	icon_state = "surgcap_morgue"
 
 /obj/item/clothing/head/surgery/cmo
 	name = "chief medical officer's surgical cap"
-	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's green with peach stripes to match the stripes on their lab coat."
+	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's jade green with peach stripes to match the stripes on their lab coat."
 	icon_state = "surgcap_cmo"
 
 /obj/item/clothing/head/surgery/purple

@@ -1334,7 +1334,6 @@
 	icon_state = "grenadierpack"
 	overlays = list("+grenadierpack_unlocked")
 	max_storage_space = 36 //12 grenades
-	storage_slots = 12
 	is_id_lockable = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 

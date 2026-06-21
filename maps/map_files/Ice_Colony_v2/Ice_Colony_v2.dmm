@@ -15005,7 +15005,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/south)
 "bgW" = (
-/obj/structure/closet/secure_closet/quartermaster,
+/obj/structure/closet/secure_closet/req_officer,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/underground/requesition)
 "bgX" = (
@@ -15121,7 +15121,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/quartermaster,
+/obj/structure/closet/secure_closet/req_officer,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/underground/requesition)
 "bhy" = (

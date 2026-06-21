@@ -16298,9 +16298,9 @@
 "aQy" = (
 /obj/structure/transmitter{
 	dir = 8;
-	name = "QM Office Telephone";
+	name = "RO Office Telephone";
 	phone_category = "Offices";
-	phone_id = "QM Office";
+	phone_id = "RO Office";
 	pixel_x = 16
 	},
 /turf/open/floor/almayer/green/east,
@@ -47317,7 +47317,7 @@
 	eftpos_name = "Cargo Bay EFTPOS scanner";
 	pixel_x = -10
 	},
-/obj/item/tool/stamp/qm{
+/obj/item/tool/stamp/ro{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -91297,7 +91297,7 @@
 "wud" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/qm{
-	name = "spare quartermaster's rubber stamp";
+	name = "spare requisitions officer's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},

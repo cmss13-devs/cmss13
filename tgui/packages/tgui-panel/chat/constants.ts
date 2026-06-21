@@ -74,7 +74,8 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_HIVEMIND,
     name: 'Hivemind',
     description: 'Xenomorph hivemind messages',
-    selector: '.xeno, .xenoqueen, .xenoleader',
+    selector:
+      '.xeno, .xenoqueen, .xenoleader, .pathogen, .pathogenleader, .pathogenqueen',
   },
   {
     type: MESSAGE_TYPE_INFO,

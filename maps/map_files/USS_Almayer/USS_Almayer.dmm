@@ -91296,7 +91296,7 @@
 /area/almayer/medical/upper_medical)
 "wud" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/tool/stamp/qm{
+/obj/item/tool/stamp/ro{
 	name = "spare requisitions officer's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11

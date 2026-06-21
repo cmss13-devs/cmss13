@@ -1,4 +1,0 @@
-author: "Thereisabear"
-delete-after: True
-changes:
-  - bugfix: "fixed the Armour ID locks constantly returning the wrong value causing invalid IDs to unlock the lock."

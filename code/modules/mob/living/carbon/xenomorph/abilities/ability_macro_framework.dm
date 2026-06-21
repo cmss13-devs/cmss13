@@ -18,11 +18,9 @@
 
 		if (XENO_ACTION_QUEUE)
 			handle_xeno_macro_actionqueue(xeno, action)
-
 		else
 			log_debug("Xeno action [action.name] is misconfigured. Code: XENO_ACTION_MACRO_1")
 			log_admin("Xeno action [action.name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
-
 
 /proc/handle_xeno_macro_click(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 	action.button.clicked(xeno)
@@ -52,7 +50,7 @@
 
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action One"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -68,7 +66,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_two()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Two"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -84,7 +82,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_three()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Three"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -100,7 +98,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_four()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Four"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -116,7 +114,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_five()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Five"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src

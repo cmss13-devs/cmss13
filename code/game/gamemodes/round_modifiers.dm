@@ -148,7 +148,7 @@
 
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
-	modifier_desc = "Prevents firing guns and throwing granades."
+	modifier_desc = "Prevents firing guns and throwing grenades."
 
 /datum/gamemode_modifier/more_crit
 	modifier_name = "Increased Crit Threshold"

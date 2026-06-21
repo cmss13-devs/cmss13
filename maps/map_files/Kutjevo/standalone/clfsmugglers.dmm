@@ -90,7 +90,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "cp" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
@@ -180,7 +180,7 @@
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "hv" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
@@ -235,9 +235,8 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "kM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony/clf_shuttle)
 "kV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -253,7 +252,7 @@
 /turf/open/floor/kutjevo/colors/orange/inner_corner/west,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "lc" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
@@ -463,9 +462,8 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/clf_lz)
 "wb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony/clf_shuttle)
 "wh" = (
 /obj/vehicle/powerloader/jd,
@@ -491,7 +489,7 @@
 /area/kutjevo/exterior/clf_lz)
 "xS" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "xY" = (
@@ -528,9 +526,8 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/exterior/clf_lz)
 "zv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "Ad" = (
@@ -813,9 +810,8 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "NE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "NP" = (
@@ -1054,9 +1050,8 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "Yi" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Ys" = (
 /turf/open/floor/plating/warnplate/southeast,
@@ -1100,10 +1095,8 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
 "Zt" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony/clf_shuttle)
 "ZQ" = (
 /obj/effect/landmark/survivor_spawner/clf/kutjevo,

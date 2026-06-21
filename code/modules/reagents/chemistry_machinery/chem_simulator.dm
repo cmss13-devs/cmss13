@@ -270,32 +270,32 @@
 			if(SIMULATION_STAGE_3)
 				status_bar = pick("PREDICTING REACTION PATTERNS","CALCULATING OVERDOSE RATIOS","CALCULATING SYNTHESIS","CLOSING THE EVENTUALITY","COMPUTING REAGENT INTERPRETATIONS",)
 			if(SIMULATION_STAGE_WAIT)
-				var/datum/reagent/generated/chemical_modfying = new /datum/reagent/generated
+				var/datum/reagent/generated/chemical_modifying = new /datum/reagent/generated
 				switch(mode)
 					if(MODE_AMPLIFY)
-						amplify(chemical_modfying)
+						amplify(chemical_modifying)
 					if(MODE_SUPPRESS)
-						suppress(chemical_modfying)
+						suppress(chemical_modifying)
 					if(MODE_RELATE)
-						relate(chemical_modfying)
+						relate(chemical_modifying)
 					if(MODE_ADD)
-						add(chemical_modfying)
-				if(!chemical_modfying.original_id)
-					chemical_modfying.original_id = target.data.id
-				encode_reagent(chemical_modfying)
-				if(chemical_modfying.id in simulations)
+						add(chemical_modifying)
+				if(!chemical_modifying.original_id)
+					chemical_modifying.original_id = target.data.id
+				encode_reagent(chemical_modifying)
+				if(chemical_modifying.id in simulations)
 					//We've already simulated this before, so we don't need to continue
-					chemical_modfying = GLOB.chemical_reagents_list[chemical_modfying.id]
-					print(chemical_modfying.id)
+					chemical_modifying = GLOB.chemical_reagents_list[chemical_modifying.id]
+					print(chemical_modifying.id)
 					status_bar = "SIMULATION COMPLETE"
 					simulating = SIMULATION_STAGE_OFF
 				else if(prepare_recipe_options())
-					chem_cache = chemical_modfying
+					chem_cache = chemical_modifying
 					status_bar = "ANALYSIS READY"
 					icon_state = "modifier_ready"
 					playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 				else
-					finalize_simulation(chemical_modfying)
+					finalize_simulation(chemical_modifying)
 	else
 		ready = check_ready()
 		stop_processing()
@@ -347,7 +347,7 @@
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)
 	if(mode == MODE_ADD)
-		return //add mode doesnt harm od level of target
+		return //add mode doesn't harm od level of target
 	if(new_od_level <= 5)
 		new_od_level = max(new_od_level - 1, 1)
 	else
@@ -371,7 +371,7 @@
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 				R.required_reagents = old_reaction.Copy()
-				if(i >= 8) //doesnt really fix the issue but we went from 5 to 8 attempts to roll.
+				if(i >= 8) //doesn't really fix the issue but we went from 5 to 8 attempts to roll.
 					//Elevate the reaction to a higher order
 					target_elevated["[new_component.id]"] = TRUE
 					break
@@ -614,15 +614,15 @@
 	var/mode_id
 	var/icon_type
 
-/datum/chemical_simulator_modes/supress
-	name = "SUPRESS"
-	desc = "Supress one level in the choosen property. This operation lowers the OD level."
+/datum/chemical_simulator_modes/suppress
+	name = "SUPPRESS"
+	desc = "Suppress one level in the chosen property. This operation lowers the OD level."
 	mode_id = MODE_SUPPRESS
 	icon_type = "square-minus"
 
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
-	desc = "Amplify one level in the choosen property. This operation lowers the OD level."
+	desc = "Amplify one level in the chosen property. This operation lowers the OD level."
 	mode_id = MODE_AMPLIFY
 	icon_type = "square-plus"
 
@@ -634,7 +634,7 @@
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"
-	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
+	desc = "Use the reference chemical to replace one chosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
 	mode_id = MODE_RELATE
 	icon_type = "repeat"
 

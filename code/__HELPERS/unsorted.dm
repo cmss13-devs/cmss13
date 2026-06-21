@@ -850,7 +850,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+		if(QDELETED(busy_user) || !istype(busy_user)) // Checks if busy_user exists
+			. = FALSE
+			break
+		if(has_target && (QDELETED(target) || !istype(target))) // Checks if the target exists and is not destroyed
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
@@ -1368,6 +1371,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1375,6 +1384,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 

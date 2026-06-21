@@ -87,7 +87,7 @@
 	parent_buckle = null
 
 /datum/component/weed_food/RegisterWithParent()
-	RegisterSignal(parent_mob, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(on_move))
+	RegisterSignal(parent_mob, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_AFTER_SHUTTLE_MOVE), PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
 	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))
 	RegisterSignal(parent_mob, COMSIG_LIVING_PREIGNITION, PROC_REF(on_preignition))
@@ -98,7 +98,8 @@
 /datum/component/weed_food/UnregisterFromParent()
 	if(parent_mob)
 		UnregisterSignal(parent_mob, list(
-			COMSIG_MOVABLE_TURF_ENTERED,
+			COMSIG_MOVABLE_MOVED,
+			COMSIG_ATOM_AFTER_SHUTTLE_MOVE,
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 			COMSIG_HUMAN_SET_UNDEFIBBABLE,
@@ -114,7 +115,7 @@
 		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
-/// SIGNAL_HANDLER for COMSIG_MOVABLE_TURF_ENTERED
+/// SIGNAL_HANDLER for COMSIG_MOVABLE_MOVED and COMSIG_ATOM_AFTER_SHUTTLE_MOVE
 /datum/component/weed_food/proc/on_move()
 	SIGNAL_HANDLER
 

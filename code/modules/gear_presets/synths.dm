@@ -472,7 +472,7 @@
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
 		WEAR_BODY = /obj/item/clothing/under/rank/frontier,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
-		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
+		WEAR_IN_BACK = /obj/item/pamphlet/upgradeable/powerloader,
 		WEAR_R_HAND = /obj/item/hardpoint/locomotion/van_wheels,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/weapon/baseballbat/metal
@@ -634,6 +634,9 @@
 /datum/equipment_preset/synth/survivor/icc_synth
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
 	idtype = /obj/item/card/id/silver/cl
+	assignment = "Interstellar Commerce Commission Synthetic"
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_SURVIVOR)
 	role_comm_title = "ICC Syn"
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
@@ -729,6 +732,9 @@
 /datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/new_human)
 	return
 
+/datum/equipment_preset/synth/working_joe/load_skills(mob/living/carbon/human/new_human)
+	new_human.set_skills(skills)
+
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET) //don't remove shrap by yourself, go to android maintenance or have ARES call a human handler!
@@ -789,12 +795,16 @@
 	assignment = JOB_UPP_JOE
 	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	minimap_background = "background_upp"
 	skills = /datum/skills/dzho_automaton
 	faction_group = list(FACTION_UPP)
 	faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
+
+/datum/equipment_preset/synth/working_joe/upp/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/synth/working_joe/upp/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/upp_joe(new_human), WEAR_BODY)

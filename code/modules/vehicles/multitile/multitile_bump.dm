@@ -649,7 +649,7 @@
 	var/is_knocked_down = FALSE
 	//whether xeno takes damage
 	var/takes_damage = FALSE
-	//whether vehicle is being "stopped in it's tracks"
+	//whether vehicle is being "stopped in its tracks"
 	var/blocked = FALSE
 	//whether vehicle receives momentum penalty
 	var/momentum_penalty = FALSE
@@ -671,8 +671,8 @@
 				momentum_penalty = TRUE
 
 		if(blocked)
-			visible_message(SPAN_DANGER("\The [src] digs it's claws into the ground, anchoring itself in place and halting \the [V] in it's tracks!"),
-			SPAN_DANGER("You dig your claws into the ground, stopping \the [V] in it's tracks!"))
+			visible_message(SPAN_DANGER("\The [src] digs its claws into the ground, anchoring itself in place and halting \the [V] in its tracks!"),
+			SPAN_DANGER("You dig your claws into the ground, stopping \the [V] in its tracks!"))
 			return FALSE
 
 	else
@@ -770,11 +770,11 @@
 /mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fortify)
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
-			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
+			visible_message(SPAN_DANGER("[src] digs its claws into the ground, anchoring itself in place and halting [V] in its tracks!"),
+			SPAN_DANGER("You dig your claws into the ground, stopping [V] in its tracks!"))
 			return FALSE
 		else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
+			visible_message(SPAN_DANGER("[src] digs its claws into the ground, slowing [V]'s movement!"),
 			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
 			var/mob_moved = step(src, V.last_move_dir)
 			V.move_momentum = floor(V.move_momentum/3)

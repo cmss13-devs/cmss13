@@ -13,7 +13,8 @@
 
 	var/turf/open/T = get_turf(target)
 	if(!istype(user.loc, /turf/open))
-		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
+		if(is_surgery_init_tool(tool))
+			to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
 		if(!istype(T) || !T.supports_surgery)
@@ -22,7 +23,7 @@
 				return TRUE //Otherwise you get 'poked' by the knife.
 			if(HAS_TRAIT(tool, TRAIT_TOOL_BLOWTORCH) && affecting)
 				return FALSE
-			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
+			if(is_surgery_init_tool(tool))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
 
@@ -30,7 +31,8 @@
 	if(surgery_limb)
 		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 		if(blocker)
-			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			if(is_surgery_init_tool(tool))
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
 			return
 
 	if(user.action_busy) //already doing an action

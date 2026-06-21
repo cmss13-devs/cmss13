@@ -61,10 +61,6 @@
 	user.update_inv_r_hand()
 	user.update_inv_l_hand()
 
-/obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
-	. = ..()
-	on_unset_interaction(user)
-
 /obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 	RegisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION, PROC_REF(interaction_handler))
@@ -86,7 +82,7 @@
 /obj/item/device/binoculars/range
 	name = "rangefinder"
 	gender = NEUTER
-	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
+	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire its coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
 	item_state = "rangefinder"
 	var/laser_cooldown = 0
@@ -126,7 +122,7 @@
 
 /obj/item/device/binoculars/range/on_unset_interaction(mob/user)
 	..()
-	if(user && coord && !zoom)
+	if(coord && !zoom)
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
@@ -302,11 +298,11 @@
 /obj/item/device/binoculars/range/designator/on_unset_interaction(mob/user)
 	..()
 
-	if(user && (laser || coord) && !zoom)
+	if(!zoom)
 		if(laser)
-			qdel(laser)
+			QDEL_NULL(laser)
 		if(coord)
-			qdel(coord)
+			QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/designator/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
 	set waitfor = 0

@@ -711,7 +711,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "acb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/river_mouth/southern)
 "acc" = (
@@ -799,6 +799,10 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
+"acu" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/space)
 "acv" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -1424,6 +1428,16 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/central_tunnel)
+"aer" = (
+/obj/docking_port/stationary/trijent_elevator/empty{
+	airlock_area = /area/shuttle/trijent_shuttle/omega;
+	airlock_exit = "east";
+	elevator_network = "B";
+	id = "trijent_omega";
+	name = "Omega Elevator"
+	},
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/omega)
 "aes" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
@@ -2704,6 +2718,9 @@
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/stairwell/upper_north)
+"aip" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aiq" = (
 /turf/open/floor/prison/darkred2/southwest,
 /area/desert_dam/building/security/southern_hallway)
@@ -3255,6 +3272,10 @@
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/southern_hallway)
+"ajU" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "ajV" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 9;
@@ -3738,6 +3759,10 @@
 	},
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/southern_hallway)
+"alv" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "alw" = (
 /obj/structure/bed/stool{
 	buckling_y = 14;
@@ -4213,6 +4238,9 @@
 	},
 /turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_security)
+"amQ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amR" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement/cement12,
@@ -4229,6 +4257,9 @@
 	},
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/exterior/valley/valley_security)
+"amU" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amV" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
 /turf/open/asphalt,
@@ -4239,6 +4270,9 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/exterior/valley/valley_security)
+"amX" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "amY" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -6191,7 +6225,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/upper_hallway)
 "atV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_east)
@@ -6689,7 +6723,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river/riverside_east)
 "avz" = (
@@ -6761,6 +6795,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
+"avI" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "avJ" = (
 /obj/item/ammo_magazine/pistol/l54/rubber{
 	pixel_x = 10;
@@ -7117,6 +7154,9 @@
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
+"awU" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "awV" = (
 /obj/structure/largecrate/random/barrel/yellow{
 	pixel_x = 5;
@@ -7885,7 +7925,7 @@
 /area/desert_dam/building/security/interrogation)
 "azj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -8740,6 +8780,9 @@
 	},
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/interior/dam_interior/hanger/control)
+"aBF" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aBG" = (
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger/roof)
@@ -9229,6 +9272,12 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/hanger/roof)
+"aCT" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aCU" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -9874,7 +9923,7 @@
 /area/desert_dam/building/substation/northwest)
 "aEV" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_east)
 "aEW" = (
@@ -10327,6 +10376,12 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
+"aGA" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aGB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -10343,6 +10398,11 @@
 /obj/structure/closet/crate/foodcart,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
+"aGE" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft"
+	},
+/area/shuttle/trijent_shuttle/omega)
 "aGF" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -10397,6 +10457,22 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
+"aGO" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/item/tool/screwdriver{
+	pixel_y = 2;
+	pixel_x = 11
+	},
+/obj/item/device/multitool{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
 "aGP" = (
 /turf/open/floor/neutral,
 /area/desert_dam/interior/dam_interior/engine_room)
@@ -12107,9 +12183,6 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "aLZ" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -12118,7 +12191,7 @@
 	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_medical)
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "aMa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12402,7 +12475,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/north)
 "aMO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/exterior/river/riverside_east)
 "aMP" = (
@@ -12574,7 +12647,7 @@
 /turf/open/floor/prison/yellowfull/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNp" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -14364,7 +14437,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aTq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14492,7 +14565,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aTP" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -14578,7 +14651,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aUd" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -14749,7 +14822,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
 "aUI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -14918,7 +14991,7 @@
 "aVn" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aVo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16701,7 +16774,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/caves/east_caves)
 "baD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/desert_dam/exterior/river/riverside_east)
 "baE" = (
@@ -17247,7 +17320,7 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_security)
 "bcr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river_mouth/southern)
 "bcs" = (
@@ -17820,6 +17893,22 @@
 /obj/structure/fence/slim/dark,
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
+"bel" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/clipboard{
+	pixel_x = 12;
+	pixel_y = -5
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bem" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -17856,14 +17945,14 @@
 	pixel_y = -1;
 	dir = 6
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bet" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/stack/cable_coil,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "beu" = (
 /obj/item/stack/rods{
@@ -18087,7 +18176,7 @@
 "beZ" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "bfa" = (
@@ -18178,7 +18267,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bfq" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -18190,7 +18279,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bfr" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -18255,7 +18344,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bfA" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bfB" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -18264,7 +18353,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bfC" = (
 /obj/item/hybrisa/misc/trash_bag_full_prop{
@@ -18287,15 +18376,15 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bfF" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bfG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bfH" = (
 /obj/effect/hunter/rune{
@@ -18304,7 +18393,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bfI" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -18314,7 +18403,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bfJ" = (
 /obj/structure/prop/dam/wide_boulder/boulder1{
@@ -18388,17 +18477,17 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bfR" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bfS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bfT" = (
 /obj/structure/machinery/power/apc/no_power/east,
@@ -18413,14 +18502,14 @@
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bfV" = (
 /obj/structure/prop/invuln/rope{
 	pixel_x = 11;
 	pixel_y = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bfW" = (
 /obj/structure/prop/dam/large_boulder/boulder2{
@@ -18465,13 +18554,13 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgb" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgc" = (
 /turf/closed/wall/huntership/destructible,
@@ -18482,18 +18571,18 @@
 /area/desert_dam/building/substation/west)
 "bge" = (
 /obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bgf" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bgg" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bgh" = (
 /obj/effect/hunter/rune{
@@ -18502,13 +18591,18 @@
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bgi" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
+"bgj" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bgk" = (
 /obj/structure/prop/dam/large_boulder/boulder1{
 	pixel_x = -11;
@@ -18521,7 +18615,7 @@
 	density = 0
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bgl" = (
 /obj/effect/hunter/glowing_shape/med_red_bottom{
@@ -18529,18 +18623,18 @@
 	dir = 1
 	},
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgm" = (
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bgn" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgo" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bgp" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -18557,32 +18651,32 @@
 	dir = 4;
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bgr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bgs" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/platform/metal/hunter,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bgt" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/seven,
 /obj/structure/platform/metal/hunter,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bgu" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bgv" = (
 /turf/open/floor/corsat/squares,
@@ -18592,7 +18686,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bgx" = (
 /obj/effect/hunter/glowing_shape/small_red_flipped{
@@ -18600,7 +18694,7 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgy" = (
 /obj/effect/hunter/glowing_shape/small_red_flipped{
@@ -18608,7 +18702,7 @@
 	pixel_x = 8;
 	pixel_y = -12
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgz" = (
 /obj/structure/largecrate/random,
@@ -18618,7 +18712,7 @@
 /obj/effect/hunter/bridge_border{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgB" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -18633,7 +18727,7 @@
 	pixel_x = -2;
 	pixel_y = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bgD" = (
 /obj/item/hybrisa/misc/trash_bag_full_prop{
@@ -18660,7 +18754,7 @@
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgG" = (
 /obj/effect/blocker/water/toxic/Group_1,
@@ -18671,7 +18765,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "bgI" = (
-/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
+/turf/open/predship/mainfloor/upper/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgJ" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right{
@@ -18679,11 +18773,11 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
+/turf/open/predship/mainfloor/upper/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgK" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bgL" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -18699,7 +18793,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bgN" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -18709,12 +18803,12 @@
 	dir = 4
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
+/turf/open/predship/mainfloor/upper/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgO" = (
 /obj/effect/hunter/rune,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bgP" = (
 /obj/structure/largecrate/random/case/double,
@@ -18724,7 +18818,7 @@
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgR" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -18740,10 +18834,10 @@
 	pixel_x = -1;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bgT" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bgU" = (
 /obj/effect/hunter/glowing_shape/med_red_bottom_top{
@@ -18751,7 +18845,7 @@
 	pixel_y = -24;
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bgV" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -18767,17 +18861,17 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bgW" = (
 /obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bgX" = (
-/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
+/turf/open/predship/mainfloor/upper/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bgY" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 8
 	},
 /obj/effect/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
+/turf/open/predship/mainfloor/upper/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bgZ" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -18795,13 +18889,13 @@
 	color = "#da822a";
 	pixel_y = -1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhb" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18818,13 +18912,13 @@
 /obj/item/weapon/gun/pistol/m1911/socom{
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhf" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west{
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhg" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -18842,19 +18936,19 @@
 /turf/open/shuttle/bright_red,
 /area/desert_dam/interior/caves/pred_ship)
 "bhj" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhk" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 4
 	},
 /obj/effect/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
+/turf/open/predship/mainfloor/upper/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhl" = (
 /obj/effect/hunter/rune,
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhm" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -18864,13 +18958,13 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bhn" = (
 /obj/effect/hunter/bridge_border/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bho" = (
 /obj/effect/hunter/bridge_border/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhp" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -18880,7 +18974,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	pixel_y = -7
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -18888,18 +18982,18 @@
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhs" = (
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner,
 /obj/structure/platform/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/turf/open/predship/red_glow/on,
 /area/desert_dam/interior/caves/pred_ship)
 "bht" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhu" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -18914,7 +19008,7 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bhv" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhw" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -18931,14 +19025,14 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bhx" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhy" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/one,
 /obj/structure/platform/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhz" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -18950,14 +19044,14 @@
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhB" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhC" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -18966,14 +19060,14 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhD" = (
 /obj/item/stack/rods{
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bhE" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -18981,21 +19075,21 @@
 	pixel_x = -4;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bhF" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
 /obj/item/weapon/sword/machete,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/interior/caves/pred_ship)
 "bhG" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/desert_dam/exterior/roof)
 "bhH" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhI" = (
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
@@ -19027,7 +19121,7 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bhM" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhN" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -19037,13 +19131,13 @@
 	pixel_x = -4;
 	pixel_y = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/interior/caves/pred_ship)
 "bhO" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhP" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -19062,19 +19156,19 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bhR" = (
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhS" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/two,
 /obj/structure/platform/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhT" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/turf/open/predship/tile/hunter_tile_6/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bhU" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -19083,7 +19177,7 @@
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/three,
 /obj/structure/platform/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhV" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
@@ -19108,7 +19202,7 @@
 	pixel_x = 5;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhX" = (
 /obj/structure/showcase{
@@ -19123,7 +19217,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -19133,13 +19227,13 @@
 	pixel_y = 24
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bhZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bia" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -19149,30 +19243,30 @@
 	pixel_y = -8
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bib" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/mainfloor/upper,
+/turf/open/predship/mainfloor/upper,
 /area/desert_dam/interior/caves/pred_ship)
 "bic" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
+/turf/open/predship/mainfloor/upper/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bid" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "bie" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bif" = (
 /mob/living/simple_animal/small/mouse/rat/white,
@@ -19184,10 +19278,10 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bih" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bii" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -19197,17 +19291,17 @@
 	dir = 8;
 	pixel_x = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bij" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bik" = (
-/turf/open/shuttle/dropship/predship/mainfloor/upper,
+/turf/open/predship/mainfloor/upper,
 /area/desert_dam/interior/caves/pred_ship)
 "bil" = (
-/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
+/turf/open/predship/mainfloor/upper/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bim" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19218,24 +19312,24 @@
 	dir = 1;
 	pixel_x = -6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bio" = (
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
+/turf/open/predship/tile/hunter_tile_5/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bip" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biq" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship/predship/mainfloor/corner/east,
+/turf/open/predship/mainfloor/corner/east,
 /area/desert_dam/interior/caves/pred_ship)
 "bir" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19246,11 +19340,11 @@
 "bis" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bit" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19263,30 +19357,30 @@
 	pixel_x = -3;
 	pixel_y = 13
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biw" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bix" = (
 /obj/effect/hunter/rune{
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1,
+/turf/open/predship/mainfloor/direction_1,
 /area/desert_dam/interior/caves/pred_ship)
 "biy" = (
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1,
+/turf/open/predship/mainfloor/direction_1,
 /area/desert_dam/interior/caves/pred_ship)
 "biz" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biA" = (
 /obj/structure/disposalpipe/segment,
@@ -19298,7 +19392,7 @@
 	pixel_x = 1;
 	pixel_y = 9
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biC" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -19306,11 +19400,11 @@
 	pixel_x = 10;
 	pixel_y = 21
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/predship/mainfloor/direction_3/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biD" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/shuttle/dropship/predship/mainfloor/corner/west,
+/turf/open/predship/mainfloor/corner/west,
 /area/desert_dam/interior/caves/pred_ship)
 "biE" = (
 /obj/effect/hunter/rune{
@@ -19320,14 +19414,14 @@
 	pixel_y = 21;
 	pixel_x = 10
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "biF" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/turf/open/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biG" = (
 /obj/effect/decal/cleanable/blood,
@@ -19339,13 +19433,13 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/north,
+/turf/open/predship/mainfloor/edge/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biI" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/east,
+/turf/open/predship/mainfloor/direction_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "biJ" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -19358,7 +19452,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/desert_dam/interior/caves/pred_ship)
 "biM" = (
 /obj/effect/hunter/rune{
@@ -19374,13 +19468,13 @@
 	pixel_x = 17;
 	pixel_y = 34
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/desert_dam/interior/caves/pred_ship)
 "biN" = (
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/desert_dam/interior/caves/pred_ship)
 "biO" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -19390,7 +19484,7 @@
 /obj/effect/hunter/rune/corner_2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/corner,
+/turf/open/predship/mainfloor/corner,
 /area/desert_dam/interior/caves/pred_ship)
 "biQ" = (
 /obj/effect/hunter/rune/corner_2,
@@ -19398,13 +19492,13 @@
 	pixel_x = -9;
 	pixel_y = 13
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/corner/north,
+/turf/open/predship/mainfloor/corner/north,
 /area/desert_dam/interior/caves/pred_ship)
 "biR" = (
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/east,
+/turf/open/predship/mainfloor/direction_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "biS" = (
 /obj/effect/hunter/rune/corner{
@@ -19414,7 +19508,7 @@
 	dir = 4;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/east,
+/turf/open/predship/mainfloor/edge/east,
 /area/desert_dam/interior/caves/pred_ship)
 "biT" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19434,14 +19528,14 @@
 "biW" = (
 /obj/effect/hunter/rune,
 /obj/structure/inflatable/door,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "biX" = (
 /obj/effect/hunter/rune{
 	dir = 4
 	},
 /obj/structure/inflatable/door,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "biY" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -19472,11 +19566,11 @@
 	dir = 1;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjc" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjd" = (
 /obj/structure/bed/chair/wood/normal{
@@ -19489,17 +19583,17 @@
 /area/desert_dam/building/bar/bar)
 "bje" = (
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjf" = (
 /obj/structure/machinery/prop/yautja/bubbler,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjg" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjh" = (
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bji" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19509,7 +19603,7 @@
 	pixel_x = 6;
 	pixel_y = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjj" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19520,7 +19614,7 @@
 	pixel_y = -1;
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjk" = (
 /obj/effect/decal/sand_overlay/sand2,
@@ -19533,13 +19627,13 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjl" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjm" = (
 /obj/effect/hunter/rune{
@@ -19549,11 +19643,11 @@
 	dir = 1;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjn" = (
 /obj/structure/inflatable,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "bjo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19568,25 +19662,25 @@
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjq" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjr" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjs" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjt" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bju" = (
 /obj/effect/hunter/rune{
@@ -19595,18 +19689,18 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjv" = (
 /obj/structure/inflatable/popped,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "bjw" = (
 /obj/item/reagent_container/glass/rag/polishing_rag{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjx" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -19618,7 +19712,7 @@
 	pixel_x = 2;
 	pixel_y = 12
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjy" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -19628,7 +19722,7 @@
 	pixel_x = 13;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjz" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -19640,19 +19734,19 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjC" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjD" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19661,7 +19755,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjE" = (
 /obj/effect/hunter/rune{
@@ -19675,7 +19769,7 @@
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjF" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -19683,7 +19777,7 @@
 	layer = 2.02
 	},
 /obj/structure/inflatable/popped,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "bjG" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -19693,7 +19787,7 @@
 	pixel_x = -8;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjH" = (
 /obj/item/stack/sheet/metal{
@@ -19704,19 +19798,19 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjI" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjJ" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjK" = (
 /obj/structure/bed/chair/office/light{
@@ -19729,7 +19823,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjM" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -19739,20 +19833,20 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bjN" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjO" = (
 /obj/item/stack/rods{
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjP" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjQ" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -19762,12 +19856,19 @@
 	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/pred_ship)
+"bjR" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8;
+	layer = 2.02
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bjS" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjT" = (
 /obj/structure/closet/yautja/big{
@@ -19775,7 +19876,7 @@
 	pixel_y = 4
 	},
 /obj/item/stack/yautja_rope,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bjU" = (
 /obj/structure/closet/yautja/big{
@@ -19783,7 +19884,7 @@
 	pixel_y = 4
 	},
 /obj/item/device/flashlight/lantern/yautja,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjV" = (
 /obj/structure/inflatable/door,
@@ -19793,13 +19894,13 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjX" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjY" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -19810,18 +19911,18 @@
 	dir = 10
 	},
 /obj/structure/inflatable/door,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "bka" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkb" = (
 /obj/item/prop/alien/hugger,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkc" = (
 /turf/open/floor/prison/darkyellow2/north,
@@ -19831,7 +19932,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bke" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19849,24 +19950,24 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkh" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bki" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkj" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
 /obj/structure/inflatable/door,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "bkk" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -19874,7 +19975,7 @@
 	pixel_x = 2;
 	buckling_x = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkl" = (
 /obj/structure/largecrate/random/barrel/black{
@@ -19902,7 +20003,7 @@
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bkp" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19912,7 +20013,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bkq" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19926,7 +20027,7 @@
 /area/desert_dam/building/medical/virology_wing)
 "bks" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkt" = (
 /obj/structure/surface/rack{
@@ -19934,7 +20035,7 @@
 	layer = 2.79
 	},
 /obj/item/clothing/gloves/combat,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bku" = (
 /obj/structure/surface/rack{
@@ -19942,13 +20043,13 @@
 	layer = 2.79
 	},
 /obj/item/tool/crowbar/yautja,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkv" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 10
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkw" = (
 /obj/effect/decal/cleanable/blood,
@@ -19959,20 +20060,20 @@
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bky" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkz" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkA" = (
 /obj/item/weapon/yautja/duelknife{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkB" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -19981,7 +20082,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkC" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -19992,19 +20093,19 @@
 	dir = 1;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkD" = (
 /obj/item/stack/sheet/metal{
 	pixel_x = 1
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bkE" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkF" = (
 /obj/structure/showcase{
@@ -20016,31 +20117,31 @@
 	pixel_x = -6;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkG" = (
 /obj/structure/reagent_dispensers/tank/water/yautja{
 	pixel_x = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkH" = (
 /obj/structure/reagent_dispensers/tank/water/yautja{
 	pixel_x = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkI" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bkJ" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bkK" = (
 /obj/structure/machinery/disposal,
@@ -20051,14 +20152,14 @@
 /area/desert_dam/building/medical/surgery_room_one)
 "bkL" = (
 /obj/structure/prop/ice_colony/surveying_device,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkM" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bkN" = (
 /turf/closed/wall,
@@ -20071,7 +20172,7 @@
 	pixel_x = 5;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge,
+/turf/open/predship/mainfloor/edge,
 /area/desert_dam/interior/caves/pred_ship)
 "bkP" = (
 /obj/item/prop/alien/hugger{
@@ -20101,55 +20202,55 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
+/turf/open/predship/mainfloor/direction_4/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bkT" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
+/turf/open/predship/mainfloor/direction_4/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bkU" = (
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/shuttle/dropship/predship/mainfloor/corner/west,
+/turf/open/predship/mainfloor/corner/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bkV" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
+/turf/open/predship/mainfloor/direction_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bkW" = (
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/stairwell)
 "bkX" = (
-/turf/open/shuttle/dropship/predship/tile/red4,
+/turf/open/predship/tile/red4,
 /area/desert_dam/interior/caves/pred_ship)
 "bkY" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
+/turf/open/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bkZ" = (
 /obj/effect/decal/sand_overlay/sand2,
-/turf/open/shuttle/dropship/predship/mainfloor/corner/north,
+/turf/open/predship/mainfloor/corner/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bla" = (
 /obj/effect/decal/sand_overlay/sand2,
 /obj/item/tool/pen{
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/desert_dam/interior/caves/pred_ship)
 "blb" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/desert_dam/interior/caves/pred_ship)
 "blc" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/predship/mainfloor/direction_2/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bld" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/desert_dam/building/medical/stairwell/upper)
 "ble" = (
-/turf/open/shuttle/dropship/predship/mainfloor/direction_1/east,
+/turf/open/predship/mainfloor/direction_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "blf" = (
 /obj/item/device/camera{
@@ -20159,7 +20260,7 @@
 /obj/structure/largecrate/random/case/small{
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/edge/east,
+/turf/open/predship/mainfloor/edge/east,
 /area/desert_dam/interior/caves/pred_ship)
 "blg" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
@@ -20200,7 +20301,7 @@
 /area/desert_dam/interior/caves/pred_ship)
 "blm" = (
 /obj/structure/bed/chair/comfy/yautja,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bln" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -20213,7 +20314,7 @@
 	pixel_y = 24;
 	layer = 3.1
 	},
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "blo" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -20237,7 +20338,7 @@
 	pixel_x = -10;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "blp" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20255,7 +20356,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
-/turf/open/shuttle/dropship/predship/red_glow,
+/turf/open/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "blr" = (
 /obj/structure/prop/hunter/trophy_display,
@@ -20276,7 +20377,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
+/turf/open/predship/mainfloor/direction_2,
 /area/desert_dam/interior/caves/pred_ship)
 "blv" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
@@ -20286,14 +20387,14 @@
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/turf/open/predship/mainfloor/direction_3,
 /area/desert_dam/interior/caves/pred_ship)
 "blx" = (
 /obj/structure/closet/yautja,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bly" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "blz" = (
 /turf/open/floor/prison/floor_marked/southwest,
@@ -20307,7 +20408,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "blC" = (
 /obj/effect/decal/hybrisa/trash{
@@ -20323,7 +20424,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "blF" = (
 /obj/structure/surface/table,
@@ -20347,39 +20448,39 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "blI" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "blJ" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "blK" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blL" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blM" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "blN" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -20395,11 +20496,11 @@
 	dir = 4;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blP" = (
 /obj/structure/bed/alien/yautja,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -20413,7 +20514,7 @@
 "blR" = (
 /obj/structure/bed/alien/yautja,
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blS" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -20422,7 +20523,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blT" = (
 /obj/structure/platform/stone/kutjevo_colorable_immune/west{
@@ -20458,7 +20559,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blX" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blY" = (
 /obj/structure/platform/stone/kutjevo_colorable_immune/north{
@@ -20479,25 +20580,25 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/southwest,
+/turf/open/predship/hull/non_weedable_hull/southwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmb" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmc" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmd" = (
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bme" = (
 /obj/structure/bed/chair{
@@ -20562,13 +20663,13 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmk" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bml" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -20576,14 +20677,14 @@
 /area/desert_dam/building/security/northern_hallway)
 "bmm" = (
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmn" = (
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmo" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmp" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20592,7 +20693,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmq" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20601,7 +20702,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmr" = (
 /turf/closed/wall/huntership,
@@ -20610,7 +20711,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmt" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20622,7 +20723,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmu" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20631,8 +20732,11 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bmv" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmw" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
@@ -20640,21 +20744,24 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmx" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmy" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bmz" = (
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmA" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
@@ -20662,7 +20769,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmB" = (
 /obj/structure/stairs{
@@ -20675,19 +20782,19 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmD" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmE" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20698,22 +20805,22 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmH" = (
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmI" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmJ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmK" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20722,7 +20829,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmL" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20731,23 +20838,35 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bmM" = (
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
+"bmO" = (
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+"bmP" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmR" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmS" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20756,20 +20875,20 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmT" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmU" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmV" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20778,7 +20897,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmW" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20787,7 +20906,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmX" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20796,7 +20915,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmY" = (
 /obj/structure/machinery/light{
@@ -20806,13 +20925,13 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
 "bmZ" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bna" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bnb" = (
 /obj/structure/surface/table,
@@ -21094,7 +21213,7 @@
 	pixel_x = 17;
 	pixel_y = 34
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/predship/mainfloor/direction_3/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bnN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
@@ -21162,7 +21281,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bnX" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -21174,7 +21293,7 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal"
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bnY" = (
 /obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
@@ -21545,6 +21664,12 @@
 	},
 /turf/open_space,
 /area/desert_dam/interior/caves/temple)
+"bpb" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bpc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
@@ -21598,6 +21723,22 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
+"bpl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"bpm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/research/containment/corner2,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22090,10 +22231,74 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/hanger/roof)
+"brh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/corner3,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"bri" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brj" = (
+/turf/open/floor/almayer/research/containment/corner_var2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/almayer/research/containment/entrance,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"brl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/research/containment/entrance/west,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/research/containment/corner_var2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brn" = (
+/turf/open/floor/almayer/research/containment/corner,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"bro" = (
+/turf/open/floor/almayer/research/containment/corner_var1/north,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/entrance/east,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/research/containment/corner,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/lobby)
+"brs" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -22109,8 +22314,11 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"brw" = (
+/turf/open/floor/almayer/research/containment/corner_var1,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brH" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
 "brI" = (
@@ -22472,7 +22680,7 @@
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bzC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river_mouth/southern)
 "bzF" = (
@@ -22526,7 +22734,7 @@
 	buckling_x = -7;
 	buckling_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/desert_dam/interior/caves/pred_ship)
 "bAq" = (
 /obj/structure/machinery/autolathe,
@@ -22718,7 +22926,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "bEW" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -23211,7 +23419,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bOG" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "bOK" = (
@@ -23232,7 +23440,7 @@
 /turf/open/floor/prison/redcorner/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "bPb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/river/riverside_east)
 "bPz" = (
@@ -23263,7 +23471,7 @@
 /turf/open/floor/prison/darkredcorners2,
 /area/desert_dam/building/security/workshop)
 "bQc" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -23366,7 +23574,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bRJ" = (
 /obj/structure/platform/stone/mineral,
@@ -23394,7 +23602,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bSm" = (
 /obj/structure/machinery/firealarm{
@@ -23625,7 +23833,7 @@
 /turf/closed/shuttle/ert,
 /area/desert_dam/interior/dam_interior/hanger)
 "bXM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -24135,7 +24343,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "cjv" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -24319,7 +24527,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_labs)
 "cns" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -24468,7 +24676,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "crf" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -24650,7 +24858,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "cuu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/almayer/research/containment/corner_var2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "cuy" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -24830,7 +25038,7 @@
 	icon_state = "lower_2"
 	},
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "cyN" = (
@@ -24992,7 +25200,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "cDO" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "cDU" = (
@@ -25117,7 +25325,7 @@
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cGC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -25343,7 +25551,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "cKn" = (
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "cKp" = (
@@ -25747,7 +25955,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "cRo" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "cRq" = (
@@ -25820,7 +26028,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cSf" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "cSi" = (
@@ -25838,7 +26046,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/landing_pad_one)
 "cSx" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river_mouth/southern)
 "cSy" = (
@@ -25890,7 +26098,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "cTy" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "cTB" = (
@@ -26016,7 +26224,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "cVL" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "cVM" = (
@@ -26051,7 +26259,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "cWC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "cWD" = (
@@ -26606,7 +26814,7 @@
 /area/desert_dam/building/security/staffroom)
 "dia" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river/riverside_east)
 "dif" = (
@@ -27058,7 +27266,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "dqA" = (
 /obj/structure/stairs/multiz/up{
@@ -27071,8 +27279,11 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
 	pixel_x = -32
 	},
-/turf/open/desert/rock/deep/transition/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "drB" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
@@ -27146,7 +27357,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "dsF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -27226,9 +27437,7 @@
 /area/desert_dam/exterior/river/riverside_south)
 "due" = (
 /obj/effect/blocker/water/toxic/Group_1,
-/obj/structure/machinery/dispersal_initiator{
-	id = "filter 1"
-	},
+/obj/effect/landmark/dispersal_initiator/filter_one,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/building/water_treatment_one/purification)
 "dug" = (
@@ -27238,7 +27447,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "dun" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -27427,7 +27636,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 10
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "dxl" = (
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
@@ -28138,7 +28347,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dLt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -28381,7 +28590,7 @@
 "dQe" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /obj/structure/prop/ice_colony/surveying_device,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "dQi" = (
 /turf/open/gm/river/desert/shallow_edge,
@@ -28541,7 +28750,7 @@
 /area/desert_dam/building/medical/outgoing)
 "dUB" = (
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river/riverside_east)
 "dUC" = (
@@ -28560,12 +28769,12 @@
 "dUD" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "dUK" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river_mouth/southern)
 "dUN" = (
@@ -29296,7 +29505,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "ejH" = (
 /obj/effect/decal/hybrisa/deco_edging{
@@ -29584,7 +29793,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/telecomm/lz2_storage)
 "epF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/river/riverside_east)
 "epH" = (
@@ -29738,7 +29947,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "etO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/building/water_treatment_two)
 "etP" = (
@@ -29788,7 +29997,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/lobby)
 "euU" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "euX" = (
@@ -30047,7 +30256,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/stairwell)
 "eAk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -30095,7 +30304,7 @@
 /area/desert_dam/building/water_treatment_two/floodgate_control/lobby)
 "eBw" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river/riverside_east)
 "eBC" = (
@@ -30205,7 +30414,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "eDK" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "eEb" = (
@@ -30288,7 +30497,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "eFC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -30537,7 +30746,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/mining/workshop_foyer)
 "eKI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "eKS" = (
@@ -30637,7 +30846,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "eMU" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "eMY" = (
@@ -30965,7 +31174,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "eTj" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "eTn" = (
@@ -30993,7 +31202,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "eTP" = (
 /obj/item/stack/sheet/cardboard,
@@ -31030,7 +31239,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "eUs" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -31259,7 +31468,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/landing_pad_one)
 "eYv" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -31318,7 +31527,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/valley_labs)
 "eZi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -31464,7 +31673,7 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "fbW" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_one)
 "fcd" = (
@@ -31567,7 +31776,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "fdU" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -31577,7 +31786,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -31619,7 +31828,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "feK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/desert_dam/exterior/river/riverside_east)
 "feM" = (
@@ -31806,7 +32015,7 @@
 /area/desert_dam/building/medical/surgery_room_one)
 "fiw" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river/riverside_east)
 "fiC" = (
@@ -32101,7 +32310,7 @@
 /area/desert_dam/building/cafeteria/backroom)
 "foz" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "foB" = (
@@ -32132,7 +32341,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_security)
 "fpk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -32160,7 +32369,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
 "fpS" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -32215,7 +32424,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fqY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -32321,7 +32530,7 @@
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_south)
 "fsF" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -32438,7 +32647,7 @@
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "fwb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river_mouth/southern)
 "fwe" = (
@@ -32481,7 +32690,7 @@
 /area/desert_dam/building/water_treatment_two/equipment)
 "fwV" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "fwW" = (
@@ -32600,7 +32809,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "fzt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_east)
 "fzu" = (
@@ -32721,7 +32930,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
 "fBt" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "fBw" = (
@@ -33612,7 +33821,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 10
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "fSn" = (
 /obj/structure/stairs{
@@ -33863,7 +34072,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "fXc" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -33945,7 +34154,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_northwest)
 "fZk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "fZt" = (
@@ -34064,7 +34273,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "gbn" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -34182,7 +34391,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/workshop)
 "ged" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "geg" = (
@@ -34206,7 +34415,7 @@
 	buckling_x = -4;
 	buckling_y = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "geo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34215,9 +34424,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
 "ger" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
 /turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "gew" = (
@@ -35214,7 +35420,7 @@
 /obj/structure/floodgate{
 	icon_state = "0,2"
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "gxF" = (
@@ -35527,7 +35733,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "gEf" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_two)
 "gEM" = (
@@ -35648,7 +35854,7 @@
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/southern_hallway)
 "gHi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_east)
 "gHv" = (
@@ -36250,7 +36456,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/southern_hallway)
 "gSv" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -36448,7 +36654,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "gVc" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_east)
 "gVj" = (
@@ -36751,7 +36957,7 @@
 	buckling_x = -4;
 	buckling_y = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "hbV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36887,7 +37093,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "heU" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -36925,7 +37131,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hfD" = (
 /obj/structure/surface/table,
@@ -36949,7 +37155,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "hgd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -37034,9 +37240,8 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "hhv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "hhy" = (
@@ -37249,12 +37454,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_security)
-"hlL" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement13,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "hlN" = (
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/outgoing)
@@ -37266,7 +37465,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "hmw" = (
 /turf/open/floor/prison/bright_clean/southwest,
@@ -37562,7 +37761,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "hsH" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -37648,7 +37847,7 @@
 /obj/effect/hunter/bridge_border{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "huJ" = (
 /turf/open/floor/prison/darkred2/southeast,
@@ -37795,7 +37994,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "hxi" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -37825,12 +38024,6 @@
 "hxL" = (
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
-"hxO" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "hxT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Freezer"
@@ -38097,7 +38290,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hCR" = (
 /obj/effect/decal/warning_stripes{
@@ -38553,7 +38746,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/loading)
 "hLY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -38648,7 +38841,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "hNK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_east)
 "hNM" = (
@@ -38766,7 +38959,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "hQT" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "hRb" = (
@@ -39048,7 +39241,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -39104,7 +39297,7 @@
 "hXt" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "hXx" = (
@@ -39333,7 +39526,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "ibP" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -39893,7 +40086,7 @@
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_south)
 "ims" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -40024,7 +40217,7 @@
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "ioO" = (
 /obj/structure/platform_decoration/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_east)
 "ioQ" = (
@@ -40518,7 +40711,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/substation/west)
 "iyj" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_two)
 "iyA" = (
@@ -40795,7 +40988,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "iDT" = (
 /obj/structure/filtration/coagulation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/building/water_treatment_two)
 "iEk" = (
@@ -41236,7 +41429,7 @@
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "iLq" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "iLu" = (
@@ -41321,7 +41514,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "iNr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -41365,7 +41558,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "iOl" = (
 /obj/structure/prop/ice_colony/surveying_device,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "iOn" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -41390,7 +41583,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/building/security/prison)
 "iOZ" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -41928,7 +42121,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_hydro)
 "jcl" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_one)
 "jcC" = (
@@ -41958,7 +42151,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "jdk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "jdn" = (
@@ -42341,7 +42534,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -43237,7 +43430,7 @@
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_central_north)
 "jCb" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -43344,7 +43537,7 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "jEu" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "jEw" = (
@@ -43414,9 +43607,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
 "jGg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "jGi" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
@@ -43746,7 +43938,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "jMH" = (
 /obj/structure/filtration/flacculation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/building/water_treatment_two)
 "jMN" = (
@@ -43936,7 +44128,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "jQh" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidplating,
@@ -43962,7 +44154,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jQG" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -43984,7 +44176,7 @@
 /obj/item/stack/rods{
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "jQU" = (
 /obj/structure/bed/stool{
@@ -44475,7 +44667,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "kbt" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "kbC" = (
@@ -44835,7 +45027,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "kjh" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "kji" = (
 /turf/closed/wall/hangar{
@@ -45481,7 +45673,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "kwn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "kwx" = (
@@ -45569,7 +45761,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "kxU" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "kyh" = (
@@ -45624,7 +45816,7 @@
 /turf/open/floor/coagulation/icon8_0,
 /area/desert_dam/exterior/valley/valley_hydro)
 "kzB" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -46235,11 +46427,11 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "kNr" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "kNy" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -46301,7 +46493,7 @@
 /turf/open/floor/prison/yellow/west,
 /area/desert_dam/building/hydroponics/hydroponics)
 "kOD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -46365,15 +46557,14 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_medical)
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing)
 "kQa" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "kQA" = (
@@ -46926,7 +47117,7 @@
 "lda" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "ldf" = (
@@ -47084,7 +47275,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "lgH" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "lgS" = (
@@ -47301,7 +47492,7 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/archives)
 "lkM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -47390,7 +47581,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "lmG" = (
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -47945,7 +48136,7 @@
 /area/desert_dam/building/bar/bar)
 "lwY" = (
 /obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "lxe" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -48124,7 +48315,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "lBn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -48211,7 +48402,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "lCL" = (
 /turf/open/floor/prison/whitepurple/north,
@@ -48316,7 +48507,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "lEg" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "lEo" = (
 /obj/effect/decal/warning_stripes{
@@ -48326,7 +48517,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "lEs" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -48506,7 +48697,7 @@
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "lHv" = (
 /turf/open/desert/dirt,
@@ -48605,7 +48796,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/valley_labs)
 "lJF" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_east)
 "lJP" = (
@@ -49068,7 +49259,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "lTs" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "lTy" = (
@@ -49142,6 +49333,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "lVl" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/writing,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "lVo" = (
@@ -49288,7 +49480,7 @@
 	pixel_y = 10;
 	buckling_y = 10
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "lYc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -49613,7 +49805,7 @@
 "mfZ" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "mgc" = (
@@ -50127,7 +50319,7 @@
 /turf/open/floor/prison/green,
 /area/desert_dam/building/dorms/hallway_westwing)
 "mqL" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -50202,7 +50394,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/outgoing)
 "msk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -50450,7 +50642,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "mwf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -50634,7 +50826,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mzL" = (
 /obj/structure/largecrate/random/barrel/medical,
@@ -51111,7 +51303,7 @@
 /turf/open/floor/filtrationside/west,
 /area/desert_dam/exterior/valley/valley_hydro)
 "mJE" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "mJF" = (
@@ -51167,7 +51359,7 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "mKy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -51241,7 +51433,7 @@
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_north)
 "mLO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
 "mLR" = (
@@ -51458,7 +51650,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control/lobby)
 "mRu" = (
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "mRw" = (
 /turf/open/floor/white,
@@ -51496,7 +51688,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "mSe" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "mSj" = (
@@ -51943,7 +52135,7 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ncn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -52000,7 +52192,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "ndg" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -52079,7 +52271,7 @@
 /turf/open/floor/whiteyellow,
 /area/desert_dam/interior/dam_interior/break_room)
 "neC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,6"
 	},
@@ -52199,7 +52391,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "nht" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/floor/filtrationside/east,
 /area/desert_dam/exterior/valley/valley_hydro)
 "nhC" = (
@@ -53602,7 +53794,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "nJR" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_east)
 "nJV" = (
@@ -53694,7 +53886,7 @@
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "nLL" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -53872,7 +54064,7 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "nOC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -54025,7 +54217,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -54118,7 +54310,7 @@
 "nTi" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "nTj" = (
@@ -54130,7 +54322,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "nTl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river_mouth/southern)
 "nTr" = (
@@ -54232,7 +54424,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -54338,7 +54530,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "nWn" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -55766,7 +55958,7 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ozl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
 "ozq" = (
@@ -55946,9 +56138,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "oCf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "oCi" = (
 /turf/open/floor/prison/darkbrown2/east,
@@ -56162,7 +56353,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_cargo)
 "oGH" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -56373,7 +56564,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "oLd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -56607,7 +56798,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner_var2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "oQm" = (
 /obj/structure/platform/metal/almayer/east,
@@ -56627,7 +56818,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "oQE" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -56732,7 +56923,7 @@
 /turf/open/floor/prison/whitered/east,
 /area/desert_dam/building/medical/surgery_room_one)
 "oSi" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,7"
 	},
@@ -57022,13 +57213,13 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "oXT" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/landing_pad_one)
 "oYl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -57329,7 +57520,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "peN" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "7,2"
 	},
@@ -57409,7 +57600,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "pgT" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -57612,7 +57803,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "pkT" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
 "pld" = (
@@ -57772,7 +57963,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "poa" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "poe" = (
@@ -58347,7 +58538,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "pzY" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
 "pzZ" = (
@@ -58573,7 +58764,7 @@
 /obj/effect/hunter/bridge_border/corner{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "pEh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -58619,7 +58810,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
 "pFt" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -58966,7 +59157,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "pLi" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -59330,7 +59521,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "pRL" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "pRW" = (
@@ -59686,7 +59877,7 @@
 	dir = 4
 	},
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "pYW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -59855,7 +60046,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "qch" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidplating,
@@ -60336,7 +60527,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "qnn" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "qno" = (
@@ -60734,7 +60925,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "qut" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "quw" = (
@@ -60922,7 +61113,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_cargo)
 "qxC" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -61390,7 +61581,7 @@
 	icon_state = "upper_2"
 	},
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "qFQ" = (
@@ -61554,7 +61745,7 @@
 /turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "qIl" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "qIm" = (
@@ -61981,7 +62172,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "qQJ" = (
 /obj/structure/filtration/flacculation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "qQK" = (
@@ -62028,11 +62219,8 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/west_wing_hallway)
 "qRB" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
@@ -62326,7 +62514,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "qYc" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -62471,7 +62659,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "raG" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -62605,7 +62793,7 @@
 /area/desert_dam/building/administration/meetingrooom)
 "rcs" = (
 /obj/item/device/flashlight/on,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/desert_dam/interior/caves/pred_ship)
 "rcu" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -62666,7 +62854,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/northwest,
+/turf/open/predship/hull/non_weedable_hull/northwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rdS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -62744,7 +62932,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "reX" = (
 /turf/open/asphalt/cement/cement14,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "rfg" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -62755,7 +62943,7 @@
 /obj/effect/hunter/bridge_border{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/east,
+/turf/open/predship/tile/hunter_tile_1/east,
 /area/desert_dam/interior/caves/pred_ship)
 "rfr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -62879,13 +63067,21 @@
 	icon_state = "upper_2";
 	layer = 2
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rhr" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "rhB" = (
 /obj/structure/machinery/computer/med_data,
 /obj/structure/window/reinforced{
@@ -63158,7 +63354,7 @@
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "rnw" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rnZ" = (
@@ -63502,7 +63698,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rwn" = (
 /turf/open/floor/prison/whitegreen/north,
@@ -63603,7 +63799,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ryC" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -64187,7 +64383,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "rJr" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_east)
 "rJu" = (
@@ -64487,7 +64683,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/desert_dam/building/security/evidence)
 "rSg" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
 "rSm" = (
@@ -64874,7 +65070,7 @@
 /turf/open/floor/prison/red/west,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "saK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
 "saN" = (
@@ -64891,7 +65087,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "saP" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -64923,7 +65119,7 @@
 	pixel_y = 13;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "sbl" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -65351,7 +65547,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "sjV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_east)
 "sjW" = (
@@ -65546,7 +65742,7 @@
 	dir = 1;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "snQ" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -65589,7 +65785,7 @@
 /area/desert_dam/building/water_treatment_two/control_room)
 "sos" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "sou" = (
@@ -66051,7 +66247,7 @@
 /turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/east_wing_hallway)
 "swl" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -66253,12 +66449,12 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "szA" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/floor/filtrationside/north,
 /area/desert_dam/exterior/valley/valley_mining)
 "szG" = (
 /obj/structure/filtration/coagulation_arm,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "szH" = (
@@ -66288,7 +66484,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "szV" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -66757,7 +66953,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "sIE" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -66982,7 +67178,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "sNL" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -67099,7 +67295,7 @@
 /turf/open/floor/prison/whitered/northeast,
 /area/desert_dam/building/medical/office3)
 "sQO" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river/riverside_east)
 "sQX" = (
@@ -67377,7 +67573,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sWI" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,5"
 	},
@@ -67411,7 +67607,7 @@
 /area/desert_dam/building/security/staffroom)
 "sXl" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river_mouth/southern)
 "sXq" = (
@@ -68159,12 +68355,12 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lobby)
 "tnk" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/desert/desert_shore/shore_corner2/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "tnm" = (
-/turf/open/floor/almayer/research/containment/corner_var2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "tnu" = (
 /turf/open/floor/prison/greencorner/west,
@@ -68253,7 +68449,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "toP" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "toR" = (
@@ -68657,7 +68853,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "twQ" = (
 /obj/structure/cargo_container/trijent/right/alt,
@@ -68968,7 +69164,7 @@
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/desert_dam/exterior/river/riverside_central_south)
 "tDP" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "tDS" = (
@@ -69099,7 +69295,7 @@
 "tFI" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "tFJ" = (
@@ -69122,7 +69318,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_hydro)
 "tGy" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -69415,7 +69611,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "tLv" = (
 /obj/structure/closet/secure_closet/medical3,
@@ -70116,7 +70312,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "tZu" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "tZw" = (
@@ -70265,7 +70461,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "uct" = (
 /turf/open/floor/prison/floor_plate/southwest,
@@ -70315,12 +70511,12 @@
 "udv" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "udx" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "udC" = (
@@ -70961,7 +71157,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "upe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -71025,7 +71221,7 @@
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "uqm" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "uqu" = (
@@ -71403,7 +71599,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "uyj" = (
 /obj/structure/platform/metal/almayer,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert,
 /area/desert_dam/exterior/river/riverside_east)
 "uym" = (
@@ -71476,7 +71672,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "uzV" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -72052,7 +72248,7 @@
 "uLD" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "uLE" = (
@@ -72410,7 +72606,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "uUr" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "uUy" = (
@@ -72715,10 +72911,8 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "vaN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "vaS" = (
 /obj/structure/pipes/vents/pump{
@@ -72890,7 +73084,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "veh" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "3,7"
 	},
@@ -73492,7 +73686,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "vqd" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,6"
 	},
@@ -73585,7 +73779,7 @@
 "vrI" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vrR" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -73658,7 +73852,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "vsX" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,1"
 	},
@@ -73786,7 +73980,7 @@
 /turf/open/floor/coagulation/icon8_7_2,
 /area/desert_dam/building/water_treatment_two/purification)
 "vvY" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river/riverside_east)
 "vwa" = (
@@ -73816,7 +74010,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "vwp" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "2,7"
 	},
@@ -73909,7 +74103,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "vyQ" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -74326,7 +74520,7 @@
 /obj/item/stack/rods{
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1/west,
+/turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "vHF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -74444,7 +74638,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "vKc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -74729,7 +74923,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vQa" = (
 /obj/effect/decal/cleanable/blood,
@@ -74891,10 +75085,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/lobby)
 "vTg" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "vTh" = (
 /obj/structure/bed/roller,
@@ -74933,7 +75124,7 @@
 /area/desert_dam/building/warehouse/loading)
 "vTR" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "vTS" = (
@@ -74978,9 +75169,7 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "vVd" = (
 /obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/machinery/dispersal_initiator{
-	id = "filter 2"
-	},
+/obj/effect/landmark/dispersal_initiator/filter_two,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/building/water_treatment_two/purification)
 "vVj" = (
@@ -75161,7 +75350,7 @@
 /area/desert_dam/building/security/southern_hallway)
 "vZA" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidplating,
@@ -75599,7 +75788,7 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wiB" = (
 /obj/structure/largecrate/empty/case/double,
@@ -75687,7 +75876,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "wjD" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river_mouth/southern)
 "wjE" = (
@@ -75818,7 +76007,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "wmh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -75855,7 +76044,7 @@
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "wmR" = (
 /obj/structure/floodgate,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river_mouth/southern)
 "wmW" = (
@@ -75879,7 +76068,7 @@
 	dir = 8;
 	layer = 2.02
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "wnJ" = (
 /turf/open/asphalt/cement/cement3,
@@ -76562,7 +76751,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wCy" = (
 /obj/structure/machinery/light,
@@ -76684,7 +76873,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
+/turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "wGM" = (
 /turf/open/floor/prison,
@@ -76968,9 +77157,8 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "wNM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "wNR" = (
 /obj/structure/machinery/light{
@@ -77020,7 +77208,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/lobby)
 "wOV" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -77213,10 +77401,6 @@
 "wSk" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
-"wSl" = (
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "wSA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1{
@@ -77790,7 +77974,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "xeE" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/river_mouth/southern)
 "xeF" = (
@@ -77992,7 +78176,7 @@
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "xjr" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "1,2"
 	},
@@ -78158,7 +78342,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
 "xmd" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -78207,7 +78391,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_cargo)
 "xmU" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -78359,7 +78543,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "xpy" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/building/water_treatment_two)
 "xpE" = (
@@ -78990,7 +79174,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "xCK" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river_mouth/southern)
 "xCL" = (
@@ -79446,7 +79630,7 @@
 	icon_state = "lower_2";
 	layer = 2
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "xNc" = (
@@ -79849,7 +80033,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/dorms/restroom)
 "xUM" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /obj/structure/filtration/coagulation{
 	icon_state = "6,1"
 	},
@@ -79890,7 +80074,7 @@
 /obj/structure/floodgate{
 	icon_state = "gate_east"
 	},
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river_mouth/southern)
 "xVP" = (
@@ -79937,7 +80121,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
 "xWz" = (
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "xWP" = (
@@ -80141,7 +80325,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "ybo" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/desert/desert_shore/shore_edge1/north,
 /area/desert_dam/exterior/river_mouth/southern)
 "ybA" = (
@@ -80402,7 +80586,7 @@
 /area/desert_dam/building/administration/meetingrooom)
 "ygr" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water,
+/obj/effect/blocker/water/toxic,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "ygt" = (
@@ -138301,7 +138485,7 @@ vTg
 vTg
 vTg
 vTg
-vTg
+acu
 "}
 (2,1,2) = {"
 vTg
@@ -152176,7 +152360,7 @@ iOn
 kGe
 sWm
 sWm
-sWm
+bpl
 akI
 gfD
 qZe
@@ -166033,7 +166217,7 @@ dEQ
 dEQ
 dEQ
 dEQ
-dEQ
+aer
 yjZ
 qaR
 uxD
@@ -167902,9 +168086,9 @@ qaR
 qaR
 yjZ
 aLZ
-fDa
-dbK
-dHl
+avI
+amQ
+aip
 qaR
 qaR
 qaR
@@ -168134,11 +168318,11 @@ mJF
 qaR
 qaR
 qaR
-qaR
+aGE
 kPR
-cRc
-ckJ
-dHl
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168368,11 +168552,11 @@ mJF
 aYn
 qaR
 qaR
-otd
-btz
-cRc
-ckJ
-dHl
+aGO
+aCT
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168603,10 +168787,10 @@ iWi
 vbi
 iUk
 wqW
-btz
-cRc
-ckJ
-dHl
+aCT
+awU
+amU
+aip
 qaR
 qaR
 qaR
@@ -168837,10 +169021,10 @@ iWi
 jMA
 iWi
 iWi
-btz
-cRc
-ckJ
-kfE
+aCT
+awU
+amU
+ajU
 qaR
 aYj
 vOZ
@@ -169071,10 +169255,10 @@ iWi
 iWi
 qNx
 uSe
-uPs
-oYM
-rxa
-mJF
+aGA
+aBF
+amX
+alv
 vbi
 eHo
 vbi
@@ -171534,7 +171718,7 @@ vTg
 (144,1,2) = {"
 vTg
 vmC
-oQk
+brq
 fmJ
 rnc
 fmJ
@@ -171771,11 +171955,11 @@ vmC
 ejF
 htQ
 vZZ
-pMh
+vfL
 hmi
 vmC
 ejF
-htQ
+brn
 jiq
 wAN
 hmi
@@ -172003,13 +172187,13 @@ vTg
 vTg
 vmC
 ejF
-vfL
+brs
 jiq
 ayl
 hmi
 vmC
 ejF
-vfL
+bro
 jiq
 ayl
 hmi
@@ -172238,13 +172422,13 @@ vTg
 vmC
 wmd
 ojt
-ojt
+brl
 ojt
 eLT
 vmC
 wmd
 ojt
-ojt
+brl
 ojt
 byS
 vmC
@@ -172771,7 +172955,7 @@ ybV
 ybV
 ida
 kPy
-aeD
+bel
 qaR
 aeD
 aeD
@@ -172998,12 +173182,12 @@ mUT
 iCL
 ihw
 dqS
-aeD
-hxO
-oJY
+bmv
+bmv
+bmM
 reX
-wSl
-aeD
+bmv
+bmv
 rhr
 aeD
 aeD
@@ -173231,14 +173415,14 @@ xmG
 mUT
 iCL
 oId
-xAI
-fdY
-hxO
-aec
-xDb
-wSl
-fdY
-tuC
+bmP
+bmv
+bmv
+bmO
+bmz
+bmv
+bmv
+bgj
 fdY
 are
 oId
@@ -173465,14 +173649,14 @@ jtK
 mUT
 jmR
 cLO
-cLO
-cLO
-hlL
+bpb
+mpk
+ger
 mpk
 mpk
 ger
-cLO
-cLO
+mpk
+bjR
 cLO
 cLO
 cLO
@@ -176682,13 +176866,13 @@ vTg
 (166,1,2) = {"
 vTg
 vmC
-oQk
+brq
 fmJ
 fmJ
 deF
 vmC
-oQk
-fmJ
+brq
+brp
 fmJ
 dOt
 vmC
@@ -176917,7 +177101,7 @@ vTg
 vTg
 vmC
 ejF
-htQ
+brw
 pMh
 hmi
 qGP
@@ -177151,12 +177335,12 @@ vTg
 vTg
 vmC
 ejF
-vfL
+brs
 hPz
 hmi
 qGP
 ejF
-vfL
+bro
 ayl
 hmi
 vmC
@@ -177392,7 +177576,7 @@ vmC
 wmd
 ojt
 lHi
-aam
+brm
 vmC
 ydo
 lmW
@@ -181378,7 +181562,7 @@ uZy
 bRx
 hJP
 xBs
-nit
+exg
 duj
 iNY
 kPt
@@ -181609,8 +181793,8 @@ ani
 nOW
 ani
 uZy
-bRx
-exg
+brk
+bri
 lDG
 duU
 duj
@@ -181847,7 +182031,7 @@ fdN
 sWf
 sWf
 sWf
-vgt
+bpm
 iNY
 lCL
 wrb
@@ -182315,7 +182499,7 @@ ucs
 lxm
 lxm
 lxm
-idv
+brh
 iNY
 lCL
 wrb
@@ -182545,7 +182729,7 @@ ani
 ani
 ani
 aub
-bRx
+brk
 tnm
 lDG
 nit
@@ -182780,7 +182964,7 @@ ani
 ani
 aub
 bRx
-exg
+brj
 xBs
 kKQ
 duj

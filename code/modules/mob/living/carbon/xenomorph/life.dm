@@ -3,7 +3,6 @@
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
 /mob/living/carbon/xenomorph/Life(delta_time)
 	set invisibility = 0
-	set background = 1
 
 	if(!loc)
 		return
@@ -25,9 +24,7 @@
 		handle_pheromones()
 		handle_regular_status_updates()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
-		update_icons()
 		handle_luminosity()
-		handle_blood()
 
 		behavior_delegate?.on_life()
 		handle_environment()

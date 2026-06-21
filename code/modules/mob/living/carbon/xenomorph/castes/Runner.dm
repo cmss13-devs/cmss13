@@ -53,6 +53,7 @@
 	mob_size = MOB_SIZE_XENO_SMALL
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -75,7 +76,6 @@
 
 	skull = /obj/item/skull/runner
 	pelt = /obj/item/pelt/runner
-
 
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()

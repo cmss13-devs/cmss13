@@ -144,7 +144,7 @@
 	. = ..()
 	if(isyautja(user))
 		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
-		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
+		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a humanoid you do extra damage as well."
 		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
 		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconscious or in critical state."
 
@@ -162,8 +162,8 @@
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
-				if(isxeno(target))
-					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
+				if(ishuman(target))
+					target.apply_armoured_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 				playsound(target, 'sound/effects/hit_punch.ogg', 50)
 
 		if((INTENT_DISARM))
@@ -253,7 +253,7 @@
 		yautja_user.start_stomping()
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets), user), 10 SECONDS)
-		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets in front of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
 	if(gauntlet_deployed)
@@ -479,7 +479,6 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
-	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
@@ -889,7 +888,9 @@
 					if(user.hunter_data.prey == target)
 						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
 						user.emote("roar2")
-						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.")
+						var/obj/item/clothing/gloves/yautja/hunter/bracer = user.gloves
+						if(istype(bracer))
+							message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.", broadcast_networks = bracer.received_networks)
 						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)
@@ -1037,6 +1038,13 @@
 	icon_state = "ancient_shield_alt"
 	base_icon_state = "ancient_shield_alt"
 	item_state = "ancient_shield_alt"
+
+/obj/item/weapon/shield/riot/yautja/ancient/temple
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown alloy. Its time-worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon_state = "ancient_shield_temple"
+	base_icon_state = "ancient_shield_temple"
+	item_state = "ancient_shield_temple"
 
 /obj/item/weapon/shield/riot/yautja/bracer_shield
 	name = "bracer shield"
@@ -1412,16 +1420,16 @@
 	w_class = SIZE_HUGE
 	pixel_x = -2
 	hud_offset = -2
-	var/charge_time = 0
-	var/last_regen = 0
+	// our charge. max of 100, min of 0. starts at 100
+	var/charge_time = 100
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	last_regen = world.time
 	update_icon()
+	AddElement(/datum/element/corp_label/dltalt) // only the rifle is special-issue, everything else comes from the clans
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
@@ -1773,190 +1781,6 @@
 		var/mob/living/carbon/human/user = usr //Hacky...
 		user.update_power_display(perc)
 	return TRUE
-
-/obj/item/weapon/gun/bow
-	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "bow"
-	item_state = "bow"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
-	)
-	current_mag = /obj/item/ammo_magazine/internal/bow
-	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
-	fire_sound = 'sound/weapons/bow_shot.ogg'
-	aim_slowdown = 0
-	flags_equip_slot = SLOT_BACK
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_UNUSUAL_DESIGN
-	gun_category = GUN_CATEGORY_HEAVY
-	muzzle_flash = null
-	w_class = SIZE_LARGE
-	explo_proof = TRUE
-	unacidable = TRUE
-	flags_item = TWOHANDED|ITEM_PREDATOR
-
-/obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
-	spawn_empty = TRUE
-	. = ..()
-
-/obj/item/weapon/gun/bow/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_7)
-	accuracy_mult = BASE_ACCURACY_MULT
-	scatter = 0
-	recoil = RECOIL_AMOUNT_TIER_4
-
-/obj/item/weapon/gun/bow/reload_into_chamber(mob/user)
-	. = ..()
-	update_icon()
-	update_item_state(user)
-
-/obj/item/weapon/gun/bow/unload(mob/user)
-	if(!current_mag || !current_mag.current_rounds)
-		return
-	var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
-	playsound(user, reload_sound, 25, TRUE)
-	current_mag.current_rounds--
-	if(user)
-		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from [src]."))
-		user.put_in_hands(unloaded_arrow)
-	update_icon()
-	update_item_state(user)
-
-/obj/item/weapon/gun/bow/update_icon()
-	..()
-	if (!current_mag || current_mag.current_rounds == 0 || !istype(ammo, /datum/ammo/arrow))
-		item_state = "bow"
-		if(flags_item & WIELDED)
-			item_state += "_w"
-		return
-	var/datum/ammo/arrow/arrow = ammo
-	if (arrow.activated)
-		icon_state = "bow_expl"
-		item_state = "bow_expl"
-	else
-		icon_state = "bow_loaded"
-		item_state = "bow_loaded"
-	if(flags_item & WIELDED)
-		item_state += "_w"
-
-/obj/item/weapon/gun/bow/attackby(obj/item/attacking_item, mob/user)
-	if(!istype(attacking_item, /obj/item/arrow))
-		to_chat(user, SPAN_WARNING("That's not an arrow!"))
-		return
-	if(!current_mag || current_mag.current_rounds == 1)
-		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
-		return
-	var/obj/item/arrow/attacking_arrow = attacking_item
-	if (user.r_hand != src && user.l_hand != src)
-		to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
-		return
-	if (!isyautja(user))
-		to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back [src]'s drawstring!"))
-		return
-	ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
-	playsound(user, reload_sound, 25, 1)
-	to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] onto [src]."))
-	current_mag.current_rounds++
-	qdel(attacking_arrow)
-	update_icon()
-	update_item_state(user)
-
-/obj/item/weapon/gun/bow/proc/update_item_state(mob/user)
-	if(!user)
-		return
-	var/hand = user.hand
-	if(user.get_inactive_hand() == src)
-		hand = !hand
-	if(hand)
-		user.update_inv_l_hand()
-	else
-		user.update_inv_r_hand()
-
-/obj/item/weapon/gun/bow/dropped(mob/user)
-	. = ..()
-	if(!current_mag || !current_mag.current_rounds)
-		return
-	to_chat(user, SPAN_WARNING("The projectile falls out of [src]!"))
-	unload()
-
-/obj/item/weapon/gun/bow/click_empty(mob/user)
-	update_icon()
-	update_item_state(user)
-	return
-
-/obj/item/ammo_magazine/internal/bow
-	name = "bow internal magazine"
-	caliber = "arrow"
-	max_rounds = 1
-	default_ammo = /datum/ammo/arrow
-
-/obj/item/arrow
-	name = "arrow"
-	w_class = SIZE_SMALL
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "arrow"
-	item_state = "arrow"
-	sharp = IS_SHARP_ITEM_ACCURATE
-	edge = TRUE
-	force = 20
-	explo_proof = TRUE
-	unacidable = TRUE
-
-	var/activated = FALSE
-	var/ammo_datum = /datum/ammo/arrow
-
-/obj/item/arrow/expl
-	name = "\improper activated arrow"
-	activated = TRUE
-	icon_state = "arrow_expl"
-	ammo_datum = /datum/ammo/arrow/expl
-
-/obj/item/arrow/attack_self(mob/user)
-	. = ..()
-	if (!isyautja(user))
-		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
-		return
-	if (activated)
-		activated = FALSE
-		icon_state = "arrow"
-		ammo_datum = /datum/ammo/arrow
-		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
-		return
-	activated = TRUE
-	icon_state = "arrow_expl"
-	ammo_datum = /datum/ammo/arrow/expl
-	to_chat(user, SPAN_NOTICE("You activate [src]."))
-
-/obj/item/storage/belt/gun/quiver
-	name = "quiver strap"
-	desc = "A strap that can hold a bow with a quiver for arrows."
-	storage_slots = 8
-	max_storage_space = 20
-	icon_state = "quiver"
-	item_state = "s_marinebelt"
-	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE|SLOT_BACK // it's a quiver, quivers go on your back
-	max_w_class = SIZE_LARGE
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
-	)
-	can_hold = list(
-		/obj/item/weapon/gun/bow,
-		/obj/item/arrow,
-	)
-	explo_proof = TRUE
-	unacidable = TRUE
-
-/obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/bow())
-	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/arrow(src)
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

@@ -21,7 +21,7 @@
 		return FALSE
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
+		to_chat(M, SPAN_NOTICE("You swallow some of the contents of [src]."))
 
 	else if(istype(M, /mob/living/carbon))
 		user.affected_message(M,

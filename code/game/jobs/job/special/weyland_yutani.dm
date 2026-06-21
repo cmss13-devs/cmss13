@@ -56,9 +56,9 @@
 /datum/job/special/wey_yu/goon
 	supervisors = "Weyland-Yutani Directorate"
 
-///datum/job/special/wey_yu/goon/standard
-	//title = JOB_WY_GOON
-	//gear_preset = /datum/equipment_preset/goon/standard
+/datum/job/special/wey_yu/goon/standard
+	title = JOB_WY_GOON
+	gear_preset = /datum/equipment_preset/goon/standard
 
 /datum/job/special/wey_yu/goon/engineer
 	title = JOB_WY_GOON_TECH

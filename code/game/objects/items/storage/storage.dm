@@ -946,6 +946,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	QDEL_NULL(storage_continue)
 	QDEL_NULL(storage_end)
 	QDEL_NULL(closer)
+	QDEL_NULL(locking_id)
 	stored_ISB = null
 	return ..()
 

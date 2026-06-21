@@ -1270,7 +1270,7 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade/grenadepack))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
 	else
 		return ..()
@@ -1328,12 +1328,6 @@
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 
-/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
-	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/box/packet) ||istype(attacked_item, /obj/item/storage/belt/grenade/grenadepack))
-		dump_into(attacked_item, user)
-	else
-		return ..()
-
 /obj/item/storage/belt/grenade/grenadepack
 	name = "\improper USCM IMP M63A1 secure grenade belt"
 	desc = "A reinforced, intrusion resistant belt with dedicated grenade pouches meant to minimize risks of secondary ignition."
@@ -1343,12 +1337,6 @@
 	storage_slots = 12
 	is_id_lockable = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
-
-/obj/item/storage/belt/grenade/grenadepack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
-		dump_into(W,user)
-	else
-		return ..()
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

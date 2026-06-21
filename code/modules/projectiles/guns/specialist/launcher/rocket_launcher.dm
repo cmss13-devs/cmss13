@@ -187,7 +187,7 @@
 			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
-/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
@@ -196,8 +196,8 @@
 		huser.emote("pain")
 		huser.SetEarDeafness(max(user.ear_deaf,10))
 
-	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, Get_Angle(user, target) + 180)))
-	smoke.set_up(1, 0, backblast_loc, turn(user.dir, Get_Angle(user, target) + 180))
+	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
+	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
 	smoke.start()
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/mob in backblast_loc)
@@ -411,7 +411,7 @@
 	Integrated.Attach(src)
 	update_attachable(Integrated.slot)
 
-/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		return

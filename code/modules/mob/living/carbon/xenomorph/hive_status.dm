@@ -1909,7 +1909,10 @@
 
 	hive_orders = "Kill everyone and everything."
 
-	free_slots = list()
+	free_slots = list(
+		PATHOGEN_CREATURE_NEOMORPH = 2,
+		PATHOGEN_CREATURE_CONDITOR = 2,
+	)
 
 	restricted_castes = list(
 		PATHOGEN_CREATURE_HARBINGER = 2,

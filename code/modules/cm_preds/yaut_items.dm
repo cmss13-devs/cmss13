@@ -1601,7 +1601,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/skull/Initialize(mapload, ...)
 	. = ..()
 	if(!icon_state)
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/skull/queen
 	name = "Queen skull"
@@ -1724,7 +1724,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/pelt/Initialize(mapload, ...)
 	. = ..()
 	if(!icon_state)
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/pelt/queen
 	name = "Queen pelt"

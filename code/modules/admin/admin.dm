@@ -5,8 +5,7 @@
 	var/jump_click
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
-
-	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")][jump_click]"
+	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]"
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			to_chat(C, SPAN_ADMIN(rendered))
@@ -19,19 +18,19 @@
 	var/jump_click
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
-	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")][jump_click]")
+	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")] [jump_click]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				to_chat(C, rendered)
 
-/proc/msg_admin_niche(text, jump_x, jump_y, jump_z) //Toggleable Niche Messages
+/proc/msg_admin_niche(text, atom/jump_location) //Toggleable Niche Messages
 	log_admin(text)
 
 	var/jump_click
-	if(jump_x && jump_y && jump_z)
-		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
-	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")][jump_click]")
+	if(jump_location)
+		jump_click = ADMIN_COORDJMP(jump_location)
+	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)

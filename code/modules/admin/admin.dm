@@ -1,59 +1,64 @@
 ////////////////////////////////
-/proc/message_admins(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
-	log_admin(msg)
+/proc/message_admins(text, jump_x, jump_y, jump_z) // +MOD and above, not mentors
+	log_admin(text)
 
-	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
-	if(jmp_x && jmp_y && jmp_z)
-		msg += " (<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
-	msg += "</span>"
+	var/jump_click
+	if(jump_x && jump_y && jump_z)
+		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 
+	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")][jump_click]"
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			to_chat(C, SPAN_ADMIN(msg))
+			to_chat(C, SPAN_ADMIN(rendered))
 
 /proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
 		return
 	log_attack(text)
-	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> [text] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)")
+
+	var/jump_click
+	if(jump_x && jump_y && jump_z)
+		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
+	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")][jump_click]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
-				var/msg = rendered
-				to_chat(C, msg)
+				to_chat(C, rendered)
 
-/proc/msg_admin_niche(msg) //Toggleable Niche Messages
-	log_admin(msg)
-	msg = SPAN_NICHE("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
+/proc/msg_admin_niche(text, jump_x, jump_y, jump_z) //Toggleable Niche Messages
+	log_admin(text)
+
+	var/jump_click
+	if(jump_x && jump_y && jump_z)
+		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
+	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")][jump_click]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
-				to_chat(C, msg)
+				to_chat(C, rendered)
 
-/proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
-	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
+/proc/msg_sea(text, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
+	var/rendered = FONT_SIZE_LARGE("[SPAN_ADMIN("[SPAN_PREFIX("MENTOR ALERT:")]")] [SPAN_MESSAGE("[text]")]")
 	for(var/mob/possible_sea as anything in GLOB.player_list)
 		if(!isSEA(possible_sea))
 			continue
 
-		to_chat(possible_sea, msg)
+		to_chat(possible_sea, rendered)
 		if(possible_sea?.client.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
 			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
 /proc/msg_admin_ff(text, alive = TRUE)
-	var/rendered
+	log_attack(text)
+	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
 	if(alive)
-		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#00FF00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
+		rendered += SPAN_FF_ALIVE("[SPAN_MESSAGE("[text]")]")
 	else
-		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#FFA500><b>[text]</b></font>")
-		text = "///DEAD/// - " + text
-	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
+		rendered += SPAN_FF_DEAD("///DEAD/// - [SPAN_MESSAGE("[text]")]")
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
-				var/msg = rendered
-				to_chat(C, msg)
+				to_chat(C, rendered)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 

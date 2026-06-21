@@ -24,7 +24,7 @@
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				to_chat(C, rendered)
 
-/proc/msg_admin_niche(text, atom/jump_location) //Toggleable Niche Messages
+/proc/msg_admin_niche(text, atom/jump_location) //Toggleable Niche Messages - At somepoint refactor all of the msg_admin stuff to point to atoms instead of feeding them coords like the other procs do
 	log_admin(text)
 
 	var/jump_click

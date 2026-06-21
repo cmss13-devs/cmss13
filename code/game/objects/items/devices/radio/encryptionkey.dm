@@ -121,7 +121,7 @@
 /obj/item/device/encryptionkey/req/ct
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE)
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_ENGI = FALSE)
 
 /obj/item/device/encryptionkey/req
 	name = "Supply Radio Encryption Key"

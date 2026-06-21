@@ -577,6 +577,8 @@
 		var/is_shipside = is_mainship_level(current_turf?.z)
 		if(!is_shipside && !(current_turf?.z in coms_zs))
 			targets_to_garble += current_mob
+		if(current_mob.back == /obj/item/storage/backpack/marine/satchel/rto)
+			targets_to_garble -= current_mob
 
 	return targets_to_garble
 

@@ -264,14 +264,16 @@
 			h_his = "his"
 		if(FEMALE)
 			h_his = "her"
+		if(PLURAL)
+			h_his = "their"
 
 	switch(target_zone)
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."))
+				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs."),
+				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool], exposing your ribs."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs."))
 		if("head")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s head open with [tool], exposing [h_his] skull."),
@@ -298,6 +300,8 @@
 			h_his = "his"
 		if(FEMALE)
 			h_his = "her"
+		if(PLURAL)
+			h_his = "their"
 
 	switch(target_zone)
 		if("head")
@@ -316,9 +320,9 @@
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool]!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool]!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]!"))
+				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool], exposing [h_his] ribs!"),
+				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool], exposing your ribs!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs!"))
 
 		else
 			user.affected_message(target,
@@ -417,7 +421,7 @@
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/mend_encased,
 	)
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	pain_reduction_required = PAIN_REDUCTION_FULL
 
 //------------------------------------
 
@@ -472,6 +476,10 @@
 			SPAN_WARNING("You hack through [target]'s broken [affected_bone]!"),
 			SPAN_WARNING("[user] hacks through your broken [affected_bone]!"),
 			SPAN_WARNING("[user] hacks through [target]'s broken [affected_bone]!"))
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain <= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
+			return
+		else
+			target.emote("scream")//FUUUUUUCK!
 
 	else
 		user.affected_message(target,
@@ -479,7 +487,7 @@
 			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
 			target.emote("pain") //aw shit, doctor, watch it!
 		else
 			target.emote("scream")//FUUUUUUCK!
@@ -526,7 +534,7 @@
 			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."))
 
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
 			target.emote("pain") //aw shit, doctor, watch it!
 		else
 			target.emote("scream")//FUUUUUUCK!
@@ -560,7 +568,7 @@
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
 			target.emote("pain") //aw shit, doctor, watch it!
 		else
 			target.emote("scream")//FUUUUUUCK!
@@ -582,7 +590,7 @@
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/mend_encased,
 	)
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	pain_reduction_required = PAIN_REDUCTION_FULL
 
 //------------------------------------
 
@@ -633,7 +641,7 @@
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
 			target.emote("pain") //aw shit, doctor, watch it!
 		else
 			target.emote("scream")//FUUUUUUCK!
@@ -720,7 +728,7 @@
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
 			target.emote("pain") //aw shit, doctor, watch it!
 		else
 			target.emote("scream")//FUUUUUUCK!

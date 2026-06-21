@@ -9,7 +9,7 @@
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	pain_reduction_required = PAIN_REDUCTION_FULL
 	steps = list(
 		/datum/surgery_step/mend_bones,
 		/datum/surgery_step/set_bones,

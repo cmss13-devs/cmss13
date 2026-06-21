@@ -10,7 +10,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	pain_reduction_required = PAIN_REDUCTION_FULL
 	steps = list(/datum/surgery_step/repair_organs)
 
 /datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)

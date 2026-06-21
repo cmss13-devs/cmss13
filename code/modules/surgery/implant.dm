@@ -10,7 +10,7 @@
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	pain_reduction_required = PAIN_REDUCTION_FULL
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/create_cavity,

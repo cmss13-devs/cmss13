@@ -137,7 +137,7 @@
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE)
+	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"
@@ -147,12 +147,12 @@
 /obj/item/device/encryptionkey/po
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/vc
 	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
@@ -162,7 +162,7 @@
 /obj/item/device/encryptionkey/req/mst
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE)
+	channels = list(RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/cmpcom/synth/ai //AI only.
 	name = "AI Integrated Radio Encryption Key"

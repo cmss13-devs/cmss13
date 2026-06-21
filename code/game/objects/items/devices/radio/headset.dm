@@ -673,7 +673,7 @@
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
 	icon_state = "wy_headset"
 	maximum_keys = 5
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/command)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
 	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 

@@ -171,7 +171,7 @@
 
 /obj/item/device/encryptionkey/scout
 	name = "\improper Marine Scout Specialist Radio Encryption Key"
-	icon_state = "scout_key"
+	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
 

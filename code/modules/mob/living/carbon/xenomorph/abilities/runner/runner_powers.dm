@@ -23,6 +23,8 @@
 
 	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
 
+	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)
+
 	apply_cooldown()
 	return ..()
 

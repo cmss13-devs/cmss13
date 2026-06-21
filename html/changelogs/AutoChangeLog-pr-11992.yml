@@ -1,0 +1,4 @@
+author: "MoondancerPony"
+delete-after: True
+changes:
+  - refactor: "made fire spread (from OB, flamers, etc) much faster"

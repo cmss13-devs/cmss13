@@ -22,7 +22,7 @@
 
 /obj/structure/closet/secure_closet/quartermaster_uscm
 	name = "Quartermaster's Locker"
-	req_access = list(ACCESS_MARINE_RO)
+	req_access = list(ACCESS_MARINE_QM)
 	icon_state = "secureqm1"
 	icon_closed = "secureqm"
 	icon_locked = "secureqm1"

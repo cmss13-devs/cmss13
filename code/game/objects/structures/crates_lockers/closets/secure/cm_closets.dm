@@ -297,7 +297,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 //ALAMAYER CARGO CLOSET
 /obj/structure/closet/secure_closet/quartermaster
 	name = "\improper QM's Locker"
-	req_access = list(ACCESS_MARINE_RO)
+	req_access = list(ACCESS_MARINE_QM)
 	icon_state = "secure_locked_cargo"
 	icon_closed = "secure_unlocked_cargo"
 	icon_locked = "secure_locked_cargo"

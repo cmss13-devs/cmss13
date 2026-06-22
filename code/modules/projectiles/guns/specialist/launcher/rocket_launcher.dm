@@ -21,7 +21,7 @@
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 15
-	wield_delay = WIELD_DELAY_HORRIBLE
+	wield_delay = WEAPON_DELAY_HORRIBLE
 	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
@@ -208,7 +208,7 @@
 		var/knockdown_amount = 6
 		if(isxeno(mob))
 			var/mob/living/carbon/xenomorph/xeno = mob
-			knockdown_amount = knockdown_amount * (1 - xeno.caste?.xeno_explosion_resistance / 100)
+			knockdown_amount = knockdown_amount * ((1 - xeno.caste?.xeno_explosion_resistance / 100) / 2)
 		mob.KnockDown(knockdown_amount)
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")

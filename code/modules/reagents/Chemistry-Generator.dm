@@ -240,7 +240,9 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE, depth)
+	if(depth > 5)
+		return
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -324,15 +326,17 @@
 			else
 				property = pick(GLOB.chemical_properties_list["positive"])
 
-	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
-	if (level > P.max_level)
-		level = min(P.max_level, level)
+	var/datum/chem_property/property_check = GLOB.chemical_properties_list[property]
+	if(property_check.rarity == PROPERTY_DISABLED || property_check.rarity == PROPERTY_ADMIN)
+		return add_property(my_property, my_level, value_offset, type_to_add, track_added_properties, depth++)
+	if(level > property_check.max_level)
+		level = min(property_check.max_level, level)
 
 	//Calculate what our chemical value is with our level
 	var/new_value
-	if(isNegativeProperty(P))
+	if(isNegativeProperty(property_check))
 		new_value = -1 * level
-	else if(isNeutralProperty(P))
+	else if(isNeutralProperty(property_check))
 		new_value = floor(-1 * level / 2)
 	else
 		new_value = level

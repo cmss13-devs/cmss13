@@ -21,6 +21,7 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
 	var/is_disabled = FALSE
+	var/action_queued = FALSE
 
 	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
 	var/fire_cooldown_time = 500 SECONDS
@@ -531,7 +532,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	handle_ob_shake(target)
 
 	sleep(clear_delay)
-	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, fire_type, TURF_PROTECTION_OB)
+	var/datum/reagent/fire_reagent = create_fire_reagent(fire_level, burn_level, fire_color, fire_type)
+	fire_spread(target, cause_data, distance, fire_reagent, TURF_PROTECTION_OB)
 	qdel(src)
 
 /obj/structure/ob_ammo/warhead/cluster

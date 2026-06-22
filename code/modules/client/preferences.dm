@@ -761,7 +761,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/SetChoices(mob/user, limit = 22, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -881,7 +881,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 22, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1295,7 +1295,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(new_synth_type)
 						synthetic_type = new_synth_type
 				if("synth_specialisation")
-					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command")
+					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command", "Research")
 
 					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
 
@@ -1635,9 +1635,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
 
 					if(new_eyes)
-						r_eyes = hex2num(copytext(new_eyes, 2, 4))
-						g_eyes = hex2num(copytext(new_eyes, 4, 6))
-						b_eyes = hex2num(copytext(new_eyes, 6, 8))
+						var/list/color_list = rgb2num(new_eyes)
+						r_eyes = color_list[1]
+						g_eyes = color_list[2]
+						b_eyes = color_list[3]
 
 
 				if("ooccolor")

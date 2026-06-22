@@ -328,6 +328,7 @@
 		else
 			var/obj/effect/particle_effect/smoke/chem/checker = new()
 			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			qdel(checker)
 			if(blocked)
 				break
 

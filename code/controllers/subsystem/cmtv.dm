@@ -672,7 +672,7 @@ SUBSYSTEM_DEF(cmtv)
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/cmtv_api_key
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/cmtv_subscriber_api
 	protection = CONFIG_ENTRY_LOCKED

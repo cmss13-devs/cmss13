@@ -1,0 +1,4 @@
+/obj/structure/closet/secure_closet/req_officer/@SUBTYPES : /obj/structure/closet/secure_closet/quartermaster/@SUBTYPES{@OLD}
+/obj/structure/transmitter/@SUBTYPES{name="RO Office Telephone";phone_id="RO Office"} : /obj/structure/transmitter/@SUBTYPES{@OLD;name="QM Office Telephone";phone_id="QM Office"}
+/obj/item/tool/stamp/ro/@SUBTYPES : /obj/item/tool/stamp/qm/@SUBTYPES{@OLD}
+/obj/item/tool/stamp/ro/@SUBTYPES{name="spare requisitions officer's rubber stamp"} : /obj/item/tool/stamp/qm/@SUBTYPES{@OLD;name="spare quartermaster's rubber stamp"} 

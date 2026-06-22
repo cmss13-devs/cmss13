@@ -1009,7 +1009,8 @@
 /area/sky/level4)
 "adW" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/closet/coffin/predator/ancient_stone{
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	dir = 1;
 	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -1063,10 +1064,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aee" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	dir = 1;
-	pixel_x = 3
+/obj/structure/showcase/yautja/alt{
+	dir = 1
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -1137,6 +1136,7 @@
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeq" = (
+/obj/structure/flora/jungle/vines/heavy,
 /obj/structure/showcase/yautja/alt{
 	dir = 1
 	},
@@ -1392,9 +1392,8 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_tcomms_road)
 "afr" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/showcase/yautja/alt{
-	dir = 1
+/obj/structure/closet/coffin/predator/ancient_stone/mummy{
+	pixel_x = 3
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -1852,12 +1851,6 @@
 "ahf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
-"ahg" = (
-/obj/structure/closet/coffin/predator/ancient_stone/mummy{
-	pixel_x = 3
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -19840,6 +19833,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"uDd" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/closet/coffin/predator/ancient_stone{
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "uDs" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -51679,13 +51679,13 @@ ahv
 ahv
 ahv
 aeg
-adW
+uDd
 iSa
 mhZ
 mhZ
 mhZ
 pEV
-aee
+adW
 cRm
 poE
 agX
@@ -52127,7 +52127,7 @@ ahv
 ahv
 ahv
 slW
-adW
+uDd
 pEV
 mhZ
 mhZ
@@ -52357,7 +52357,7 @@ mhZ
 mhZ
 mhZ
 pEV
-aeq
+aee
 aeg
 poE
 gxd
@@ -52575,13 +52575,13 @@ ahv
 ahv
 ahv
 aeg
-ahg
+afr
 pEV
 mhZ
 mhZ
 mhZ
 pEV
-aee
+adW
 slW
 poE
 fPi
@@ -52805,7 +52805,7 @@ mhZ
 mhZ
 mhZ
 pEV
-afr
+aeq
 aeg
 efJ
 eSb

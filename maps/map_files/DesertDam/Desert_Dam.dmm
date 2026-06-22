@@ -20734,6 +20734,9 @@
 	},
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bmv" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmw" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
@@ -20757,7 +20760,7 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmz" = (
-/turf/open/asphalt/tile,
+/turf/open/asphalt/cement/cement12,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmA" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20838,20 +20841,21 @@
 /turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/flamer/survivor,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/tech_storage)
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "bmO" = (
-/turf/open/asphalt/cement/cement12,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmP" = (
-/turf/open/asphalt/cement/cement2,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -21661,8 +21665,11 @@
 /turf/open_space,
 /area/desert_dam/interior/caves/temple)
 "bpb" = (
-/turf/open/asphalt/cement/cement4,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bpc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
@@ -21717,11 +21724,10 @@
 /turf/open_space,
 /area/desert_dam/exterior/rock)
 "bpl" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
 "bpm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22311,12 +22317,6 @@
 "brw" = (
 /turf/open/floor/almayer/research/containment/corner_var1,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"brz" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "brH" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -152360,7 +152360,7 @@ iOn
 kGe
 sWm
 sWm
-bmM
+bpl
 akI
 gfD
 qZe
@@ -173182,12 +173182,12 @@ mUT
 iCL
 ihw
 dqS
-bmz
-bmz
-bmP
+bmv
+bmv
+bmM
 reX
-bmz
-bmz
+bmv
+bmv
 rhr
 aeD
 aeD
@@ -173415,13 +173415,13 @@ xmG
 mUT
 iCL
 oId
-bpl
-bmz
-bmz
-bpb
+bmP
+bmv
+bmv
 bmO
 bmz
-bmz
+bmv
+bmv
 bgj
 fdY
 are
@@ -173649,7 +173649,7 @@ jtK
 mUT
 jmR
 cLO
-brz
+bpb
 mpk
 ger
 mpk

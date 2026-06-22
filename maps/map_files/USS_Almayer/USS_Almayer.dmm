@@ -4329,12 +4329,6 @@
 "aki" = (
 /turf/open_space,
 /area/almayer/command/airoom)
-"akm" = (
-/obj/structure/closet/secure_closet/surgical{
-	pixel_y = -30
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -4384,10 +4378,6 @@
 "akw" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
-"akx" = (
-/obj/structure/machinery/cm_vending/gear/synth,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "aky" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 32;
@@ -4550,10 +4540,6 @@
 "ala" = (
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/squads/charlie_delta_shared)
-"alb" = (
-/obj/structure/machinery/cm_vending/clothing/synth,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "alc" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
@@ -4567,10 +4553,6 @@
 "ald" = (
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
-"ale" = (
-/obj/structure/machinery/cm_vending/own_points/experimental_tools,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "alf" = (
 /turf/open_space,
 /area/almayer/stair_clone/upper/port_fore)
@@ -19828,6 +19810,24 @@
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/port_point_defense)
+"aZV" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"aZW" = (
+/obj/structure/machinery/cm_vending/gear/synth,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"aZX" = (
+/obj/structure/machinery/cm_vending/clothing/synth,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"aZY" = (
+/obj/structure/machinery/cm_vending/own_points/experimental_tools,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aZZ" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -181078,7 +181078,7 @@ afM
 ebN
 tId
 fVx
-akm
+aZV
 ebN
 naj
 itg
@@ -181385,9 +181385,9 @@ ahy
 ahc
 afP
 daz
-ale
-alb
-akx
+aZY
+aZX
+aZW
 daz
 daz
 daz

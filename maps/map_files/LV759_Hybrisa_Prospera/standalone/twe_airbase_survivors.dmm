@@ -3009,7 +3009,7 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "zU" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -3186,7 +3186,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "BT" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -4788,7 +4788,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "UH" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	pixel_x = -8;
 	pixel_y = 4
 	},

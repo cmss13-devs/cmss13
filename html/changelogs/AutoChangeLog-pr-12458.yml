@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - server: "twitch linking functionality is deprecated in game"

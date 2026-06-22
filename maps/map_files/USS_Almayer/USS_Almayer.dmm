@@ -4307,6 +4307,9 @@
 	},
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/upper/fore_hallway)
+"ake" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/middeck/engineer)
 "akf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/north,
@@ -187795,7 +187798,7 @@ bxP
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -187803,7 +187806,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -187898,7 +187901,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -187906,7 +187909,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -188001,7 +188004,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -188009,7 +188012,7 @@ aSN
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -188102,19 +188105,19 @@ bxH
 bgI
 bbm
 aHH
-aHH
-aHH
-aHH
-aHH
+ake
+ake
+ake
+ake
 aTC
 aSM
 aSN
 bgq
 aIa
-aHH
-aHH
-aHH
-aHH
+ake
+ake
+ake
+ake
 aHH
 bxw
 bxz

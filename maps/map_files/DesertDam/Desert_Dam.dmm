@@ -5427,7 +5427,6 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "arj" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "ark" = (
@@ -22318,6 +22317,17 @@
 "brw" = (
 /turf/open/floor/almayer/research/containment/corner_var1,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"brx" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/northeastern_tunnel)
+"bry" = (
+/obj/structure/machinery/cryopod/joe/seegson{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "brH" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -54297,8 +54307,6 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "nSP" = (
@@ -59387,8 +59395,6 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/CE_office)
 "pPe" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "pPj" = (
@@ -65934,7 +65940,6 @@
 	pixel_y = 20;
 	pixel_x = -4
 	},
-/obj/structure/machinery/floodlight,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "srg" = (
@@ -68114,6 +68119,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "thP" = (
+/obj/item/device/flashlight,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "tie" = (
@@ -73648,7 +73654,7 @@
 /turf/open/floor/carpet,
 /area/desert_dam/building/administration/meetingrooom)
 "voZ" = (
-/obj/structure/machinery/cryopod/joe/seegson/alt,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "vpl" = (
@@ -73891,7 +73897,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vuJ" = (
-/obj/structure/machinery/cryopod/joe/seegson/alt,
+/obj/structure/machinery/floodlight,
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "vuM" = (
@@ -159168,8 +159174,8 @@ kLY
 jCV
 kNB
 kTa
-jlT
-jlT
+bry
+brx
 gLH
 phx
 qaR
@@ -159402,9 +159408,9 @@ nUi
 ybC
 xPx
 kTa
+bry
+brx
 wYm
-jlT
-jlT
 phx
 qaR
 qaR

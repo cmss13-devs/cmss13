@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed a couple errors with the debug mass screenshot verb when handling centered space levels and ever the mob is force aghosted"

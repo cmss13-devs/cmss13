@@ -62,7 +62,6 @@
 	icon_xeno = 'icons/mob/pathogen/venator.dmi'
 	icon_xenonid = 'icons/mob/pathogen/venator.dmi'
 
-	skull = /obj/item/skull/pathogen_none
 	pelt = /obj/item/pelt/pathogen_venator
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

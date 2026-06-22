@@ -65,9 +65,6 @@
 	icon_xenonid = 'icons/mob/pathogen/popper.dmi'
 	need_weeds = TRUE
 
-	skull = /obj/item/skull/pathogen_none
-	pelt = /obj/item/pelt/pathogen_none
-
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

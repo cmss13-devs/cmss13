@@ -1596,7 +1596,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/skull
 	name = "skull"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
-	icon_state = "drone_skull"
 	unacidable = TRUE
 
 /obj/item/skull/Initialize(mapload, ...)
@@ -1724,7 +1723,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/pelt
 	name = "pelt"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
-	icon_state = "drone_pelt"
 	unacidable = TRUE
 
 /obj/item/pelt/Initialize(mapload, ...)

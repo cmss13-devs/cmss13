@@ -57,7 +57,6 @@
 	icon_xeno = 'icons/mob/pathogen/blight.dmi'
 	icon_xenonid = 'icons/mob/pathogen/blight.dmi'
 
-	skull = /obj/item/skull/pathogen_none
 	pelt = /obj/item/pelt/pathogen_blight
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

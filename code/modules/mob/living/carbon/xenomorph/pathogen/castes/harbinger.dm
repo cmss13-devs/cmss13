@@ -65,7 +65,6 @@
 	icon_xeno = 'icons/mob/pathogen/harbinger.dmi'
 	icon_xenonid = 'icons/mob/pathogen/harbinger.dmi'
 
-	skull = /obj/item/skull/pathogen_none
 	pelt = /obj/item/pelt/pathogen_harbinger
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

@@ -1,0 +1,5 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - bugfix: "Fixed an issue where a M56D could be attached to a mount that already had a gun"
+  - bugfix: "Fixed an issue where a disassembled M56D that already had a mount could be attached to another mount."

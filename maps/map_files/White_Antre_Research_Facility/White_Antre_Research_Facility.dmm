@@ -16371,7 +16371,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/research)
 "aMY" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/yautja_teleport,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -19489,7 +19489,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aWp" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer/floor,
 /area/white_antre/indoors/main_level/south_containment_hive)
@@ -41209,7 +41209,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
 "bXy" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_west)
 "bXz" = (
@@ -52947,7 +52947,7 @@
 /turf/open/floor/prison/darkbrown3/northwest,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "lkO" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
@@ -54300,7 +54300,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/white_antre/indoors/pmc_dropship)
 "qsg" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)

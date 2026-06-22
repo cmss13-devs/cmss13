@@ -151,7 +151,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "N" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
 	},

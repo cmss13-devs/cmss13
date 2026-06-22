@@ -1,0 +1,3 @@
+/obj/effect/landmark/hunter_primary : /obj/effect/landmark/start/hunter_games{@OLD}
+/obj/effect/landmark/hunter_secondary : /obj/effect/landmark/start/hunter_games{@OLD}
+/obj/effect/landmark/crap_item : /obj/effect/landmark/melee_weapon{@OLD}

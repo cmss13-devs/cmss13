@@ -18,4 +18,15 @@
 #define MODE_FACTION_CLASH_UPP_MAJOR "UPP Major Victory"
 #define MODE_FACTION_CLASH_UPP_MINOR "UPP Minor Victory"
 
+//! Hunter games ending defines
+
+/// There's one human left standing, they won the games.
+#define MODE_HUNTER_GAMES_LAST_STANDING "VICTORY: Last man standing"
+/// No humans were left standing, they all died.
+#define MODE_HUNTER_GAMES_NO_WINNER "DEFEAT: Everyone died"
+/// The humans managed to kill all the yautja, they win
+#define MODE_HUNTER_GAMES_YAUTJA_DEATH "EVERLASTING VICTORY: Freedom!"
+/// The games ended prematurely for some other reason.
+#define MODE_HUNTER_GAMES_ELSE "DRAW: The games ended"
+
 #define MODE_GENERIC_DRAW_NUKE "DRAW: Nuclear Explosion"

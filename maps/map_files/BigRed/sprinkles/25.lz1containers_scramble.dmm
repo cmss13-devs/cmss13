@@ -234,7 +234,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "bg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bi" = (
@@ -381,7 +381,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
 "OZ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
 	},

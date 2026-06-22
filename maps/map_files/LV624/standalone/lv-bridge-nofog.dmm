@@ -47,7 +47,7 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "iW" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "jr" = (
@@ -102,7 +102,7 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "xB" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "yj" = (

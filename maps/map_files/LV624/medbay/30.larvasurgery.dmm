@@ -30,7 +30,7 @@
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
@@ -89,7 +89,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "az" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aA" = (
@@ -212,7 +212,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bB" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitebluecorner/west,
 /area/lv624/lazarus/medbay)
 "bE" = (
@@ -227,7 +227,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "bK" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "bN" = (

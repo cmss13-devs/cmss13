@@ -161,7 +161,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "FE" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "Ge" = (

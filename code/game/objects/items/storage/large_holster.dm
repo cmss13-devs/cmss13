@@ -130,9 +130,15 @@
 
 /obj/item/storage/large_holster/machete/smartgunner
 	name = "\improper M56 harness machete scabbard"
-	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete."
+	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete, although it can possibly fit any other blade, provided the volume fits. It comes with an experimental auto-retrieval system, allowing its machete to be dropped safely with the help of a safety cable attached and powered by the harness itself."
 	icon_state = "smartgun_machete_holster"
+	can_hold = list(
+		/obj/item/weapon/sword/machete,
+		/obj/item/weapon/sword/katana,
+		/obj/item/weapon/sword/dragon_katana,
+	)
 	flags_equip_slot = SLOT_BACK
+	allow_drop_retrieval = TRUE
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
 /obj/item/storage/large_holster/machete/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning)

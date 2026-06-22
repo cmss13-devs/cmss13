@@ -22,7 +22,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	var/phone_type = /obj/item/phone
 
-	var/range = 7
+	///set this at most to 3 if youre using a non-rotary phone, did you know rotary phones can stretch as far as 50 ft long????
+	var/range = PHONE_RANGE_SHORT
 
 	var/enabled = TRUE
 	/// Whether or not the phone is receiving calls or not. Varies between on/off or forcibly on/off.
@@ -45,6 +46,19 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter/hidden
 	do_not_disturb = PHONE_DND_FORCED
+
+/obj/structure/transmitter/get_examine_text(mob/user)
+	. = ..()
+
+	switch(range)
+		if(0 to PHONE_RANGE_SHORT)
+			. += SPAN_NOTICE("It has a short cord.")
+		if(PHONE_RANGE_ROTARY_STANDARD to PHONE_RANGE_LONG - 1)
+			. += SPAN_NOTICE("It has a medium length cord.")
+		if(PHONE_RANGE_LONG to PHONE_RANGE_HEAVY_DUTY - 1)
+			. += SPAN_NOTICE("It has a long cord.")
+		if(PHONE_RANGE_HEAVY_DUTY to INFINITY)
+			. += SPAN_NOTICE("It has a comically long cord, goddamn.")
 
 /obj/structure/transmitter/Initialize(mapload, ...)
 	. = ..()
@@ -408,10 +422,21 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/effects/tethering/tether_effect
 
 	var/raised = FALSE
-	var/zlevel_transfer = FALSE
-	var/zlevel_transfer_timer = TIMER_ID_NULL
-	var/zlevel_transfer_timeout = 5 SECONDS
 	var/can_be_raised = TRUE // This is for items like the scout helmet where you don't need to raise it.
+
+/obj/item/phone/get_examine_text(mob/user)
+	. = ..()
+
+	if(attached_to)
+		switch(attached_to.range)
+			if(0 to PHONE_RANGE_SHORT)
+				. += SPAN_NOTICE("It has a short cord.")
+			if(PHONE_RANGE_ROTARY_STANDARD to PHONE_RANGE_LONG - 1)
+				. += SPAN_NOTICE("It has a medium length cord.")
+			if(PHONE_RANGE_LONG to PHONE_RANGE_HEAVY_DUTY - 1)
+				. += SPAN_NOTICE("It has a long cord.")
+			if(PHONE_RANGE_HEAVY_DUTY to INFINITY)
+				. += SPAN_NOTICE("It has a comically long cord, goddamn.")
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()
@@ -478,14 +503,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(!QDESTROYING(tether_effect))
 			qdel(tether_effect)
 		tether_effect = null
-	if(!do_zlevel_check())
-		on_beam_removed()
-
-/obj/item/phone/attack_hand(mob/user)
-	if(attached_to && get_dist(user, attached_to) > attached_to.range)
-		return FALSE
-	return ..()
-
+	on_beam_removed()
 
 /obj/item/phone/proc/on_beam_removed()
 	if(!attached_to)
@@ -578,40 +596,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(.)
 		reset_tether()
 
-/obj/item/phone/proc/do_zlevel_check()
-	if(!attached_to || !loc.z || !attached_to.z)
-		return FALSE
-
-	if(zlevel_transfer)
-		if(loc.z == attached_to.z)
-			zlevel_transfer = FALSE
-			if(zlevel_transfer_timer)
-				deltimer(zlevel_transfer_timer)
-			UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-			return FALSE
-		return TRUE
-
-	if(attached_to && loc.z != attached_to.z)
-		zlevel_transfer = TRUE
-		zlevel_transfer_timer = addtimer(CALLBACK(src, PROC_REF(try_doing_tether)), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
-		RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, PROC_REF(transmitter_move_handler))
-		return TRUE
-	return FALSE
-
-/obj/item/phone/proc/transmitter_move_handler(datum/source)
-	SIGNAL_HANDLER
-	zlevel_transfer = FALSE
-	if(zlevel_transfer_timer)
-		deltimer(zlevel_transfer_timer)
-	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-	reset_tether()
-
-/obj/item/phone/proc/try_doing_tether()
-	zlevel_transfer_timer = TIMER_ID_NULL
-	zlevel_transfer = FALSE
-	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-	reset_tether()
-
 /obj/structure/transmitter/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
 
@@ -620,20 +604,24 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+	range = PHONE_RANGE_ROTARY_STANDARD
 
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
+	range = PHONE_RANGE_LONG // for CIC, i guess
 
 /obj/structure/transmitter/rotary/fax_responder
 	phone_category = "Comms Relay"
 	networks_receive = list("Fax Responders")
 	pixel_x = -6
 	pixel_y = 6
+	range = PHONE_RANGE_HEAVY_DUTY // i guess
 
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
 	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+	range = PHONE_RANGE_VERYSHORT
 
 /obj/structure/transmitter/colony_net
 	networks_receive = list(FACTION_COLONIST)
@@ -643,6 +631,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+	range = PHONE_RANGE_ROTARY_STANDARD
 
 /obj/structure/transmitter/upp_net
 	networks_receive = list(FACTION_UPP)
@@ -652,6 +641,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+	range = PHONE_RANGE_ROTARY_STANDARD
 
 /obj/structure/transmitter/clf_net
 	networks_receive = list(FACTION_CLF)
@@ -661,6 +651,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+	range = PHONE_RANGE_ROTARY_STANDARD
 
 /obj/structure/transmitter/wy_net
 	networks_receive = list(FACTION_WY)
@@ -670,3 +661,4 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+	range = PHONE_RANGE_ROTARY_STANDARD

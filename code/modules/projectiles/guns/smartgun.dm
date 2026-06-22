@@ -105,6 +105,9 @@
 	var/aim_assist = FALSE
 	var/image/autoshot_image
 
+	/// the harness thats currently connected via tethering
+	var/obj/item/clothing/suit/storage/marine/smartgunner/connected_harness
+
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary_def = GLOB.ammo_list[ammo_secondary_def]
@@ -182,6 +185,9 @@
 	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
+	if(connected_harness)
+		. += SPAN_HELPFUL("[src] is connected to the [connected_harness] via the gyroscopic armature.")
+
 	if(battery && get_dist(user, src) <= 1)
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
@@ -228,6 +234,24 @@
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
 		return
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_J_STORE && ishuman(user))
+		var/mob/living/carbon/human/gunner = user
+		var/obj/item/clothing/suit/storage/marine/smartgunner/harness = gunner.wear_suit
+
+		if(connected_harness == harness)
+			return
+
+		if(requires_harness && istype(harness) && (harness.flags_inventory & SMARTGUN_HARNESS)) // might as well check the flag too, makes sense really
+			AddElement(/datum/element/drop_retrieval/smartgun, auto_retrieval_slot, harness, harness.armature_icon, harness.armature_range)
+
+			connected_harness = harness
+			connected_harness.connected_gun = src
+
+			to_chat(gunner, SPAN_NOTICE("You connect [src] to [connected_harness] via the gyroscopic armature."))
+			balloon_alert(gunner, "armature connected")
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open && has_cover)
@@ -436,12 +460,12 @@
 //more general procs
 
 /obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
-	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
-	if(!silent)
-		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
-		playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
-///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [frontline_enabled ? SPAN_GREEN("enabled") : SPAN_ORANGE("disabled")] frontline mode. You will now [frontline_enabled ? "deal increased damage but be unable to shoot through friendlies" : "be able to shoot through friendlies"]."))
+	if(!silent)
+		balloon_alert(user, "frontline mode [frontline_enabled ? "enabled" : "disabled"]")
+		playsound(loc, 'sound/machines/click.ogg', 25, 1)
+	//Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
 	if (!frontline_enabled)
 		muzzle_flash = "muzzle_flash_blue"
 		muzzle_flash_color = COLOR_MUZZLE_BLUE
@@ -451,8 +475,8 @@
 
 	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	recalculate_attachment_bonuses()
-///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
-///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+	//Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
+	//e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
@@ -460,16 +484,18 @@
 	if(.)
 		if(!ishuman(user))
 			return FALSE
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/gunner = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			balloon_alert(user, "insufficient skills")
 			return FALSE
-		if(requires_harness)
-			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-				balloon_alert(user, "harness required")
-				return FALSE
+
+		if(requires_harness && !connected_harness)
+			to_chat(gunner, SPAN_WARNING("[src] must be connected to a gyroscopic armature to fire!"))
+			balloon_alert(user, "no armature")
+			return FALSE
+
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			to_chat(gunner, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			balloon_alert(user, "cannot fire; feed cover open")
 			return FALSE
 
@@ -481,7 +507,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, user)] You changed [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You will now fire [secondary_toggled ? SPAN_GREEN("armor piercing rounds") : SPAN_ORANGE("highly precise rounds")]."))
 	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
@@ -493,10 +519,10 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
-	balloon_alert(user, "[iff_enabled ? "disabled" : "enabled"] IFF")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [iff_enabled ? SPAN_GREEN("enable") : SPAN_ORANGE("disable")] the Identification Friend or Foe system."))
+	balloon_alert(user, "[iff_enabled ? "enabled" : "disabled"] IFF")
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	ammo = ammo_primary
 	secondary_toggled = FALSE
 	if(iff_enabled)
@@ -510,8 +536,8 @@
 		MD.iff_signal = null
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
 		recalculate_attachment_bonuses()
-///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
-///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+	//Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
+	//e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
@@ -548,10 +574,10 @@
 	return FALSE
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
-	balloon_alert(user, "recoil compensation [recoil_compensation ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [recoil_compensation ? SPAN_GREEN("enable") : SPAN_ORANGE("disable")] the system's recoil compensation."))
+	balloon_alert(user, "recoil compensation [recoil_compensation ? "enabled" : "disabled"]")
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	if(recoil_compensation)
 		drain += 50
 	else
@@ -559,10 +585,10 @@
 	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s accuracy improvement.")
-	balloon_alert(user, "accuracy improvement [accuracy_improvement ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [accuracy_improvement ? SPAN_GREEN("enable") : SPAN_ORANGE("disable")] the system's accuracy improvement."))
+	balloon_alert(user, "accuracy improvement [accuracy_improvement ? "enabled" : "disabled"]")
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	if(accuracy_improvement)
 		drain += 50
 	else
@@ -571,12 +597,12 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield \the [src] to enable autofire.")
+		to_chat(user, SPAN_WARNING("[icon2html(src, user)] You need to wield \the [src] to enable auto-fire."))
 		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s auto fire mode.")
-	balloon_alert(user, "autofire [auto_fire ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [auto_fire ? SPAN_GREEN("enabled") : SPAN_ORANGE("disabled")] auto-fire mode."))
+	balloon_alert(user, "autofire [auto_fire ? "enabled" : "disabled"]")
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
 	TAF.update_icon()
 	auto_fire()
@@ -795,10 +821,10 @@
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")
-	balloon_alert(user, "motion detector [motion_detector ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [motion_detector ? SPAN_GREEN("enable") : SPAN_ORANGE("disable")] the system motion detector."))
+	balloon_alert(user, "motion detector [motion_detector ? "enabled" : "disabled"]")
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in actions
 	TMD.update_button_icon()
 	motion_detector()
@@ -890,8 +916,8 @@
 		name_after_co(usr)
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] \the [src]."))
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked ? SPAN_ORANGE("lock") : SPAN_GREEN("unlock")] \the [src]."))
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 
 // action end \\
 
@@ -907,11 +933,12 @@
 
 /obj/item/weapon/gun/smartgun/co/get_examine_text()
 	. = ..()
+	var/paygrade = linked_human.get_paygrade()
 	if(linked_human)
 		if(is_locked)
-			. += SPAN_NOTICE("It is registered to [linked_human].")
+			. += SPAN_NOTICE("It is registered to [paygrade].[linked_human].")
 		else
-			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
+			. += SPAN_NOTICE("It is registered to [paygrade].[linked_human], but has its fire restrictions unlocked.")
 	else
 		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
 	if(!iff_enabled)

@@ -2,10 +2,6 @@
 "aa" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
-"ab" = (
-/obj/item/weapon/gun/flamer/survivor,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/virology)
 "ai" = (
 /turf/open/mars,
 /area/bigredv2/outside/virology)
@@ -413,7 +409,7 @@ aa
 aa
 xm
 dk
-ab
+GA
 lY
 lY
 Dt

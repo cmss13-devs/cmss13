@@ -23,7 +23,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	current_mag = /obj/item/ammo_magazine/internal/lever_action
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	var/flags_gun_lever_action = MOVES_WHEN_LEVERING|USES_STREAKS|DANGEROUS_TO_ONEHAND_LEVER

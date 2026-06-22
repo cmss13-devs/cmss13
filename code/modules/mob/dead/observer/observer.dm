@@ -33,6 +33,7 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
+	flags_atom = FPRINT|NO_ZFALL
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default
@@ -97,6 +98,11 @@
 		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+	else if(client?.prefs)
+		restore_ghost_appearance()
+	else
+		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+		see_in_dark = 100
 
 	if(!own_orbit_size)
 		own_orbit_size = 32
@@ -400,6 +406,9 @@
 					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
+				if("Xeno Effects HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 					the_hud.add_hud_to(src, src)
 				if("Hunter HUD")
 					the_hud = GLOB.huds[MOB_HUD_HUNTER]

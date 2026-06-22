@@ -218,11 +218,13 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
 	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
 	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
+	XENO_HIVE_K_SERIES = new /datum/hive_status/kseries(),
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
+	XENO_HIVE_YAUTJA_BADBLOOD = new /datum/hive_status/yautja_bad(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
@@ -423,6 +425,8 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		path_presets_list[preset.type] = preset
 
 		var/list/categories_to_check = list("All", preset.faction)
+		if(preset.no_faction_category)
+			categories_to_check = list("All")
 		categories_to_check += preset.selection_categories
 		for(var/category in categories_to_check)
 			if(!(category in all_categories))

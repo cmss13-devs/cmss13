@@ -97,7 +97,7 @@ explosion resistance exactly as much as their health
 
 
 
-//direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.
+//direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of its force.
 /turf/proc/explosion_spread(obj/effect/explosion/Controller, power, direction)
 
 	if(Controller.explosion_turfs[src] && Controller.explosion_turfs[src] + 1 >= power)

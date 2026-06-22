@@ -24,9 +24,6 @@
 ///from /atom/hitby(): (atom/movable/AM)
 #define COMSIG_ATOM_HITBY "atom_hitby"
 
-///from /turf/ChangeTurf: (atom/movable/source, turf/turf)
-#define COMSIG_ATOM_TURF_CHANGE "atom_turf_change"
-
 //from atom/set_light(): (l_range, l_power, l_color)
 #define COMSIG_ATOM_SET_LIGHT "atom_set_light"
 

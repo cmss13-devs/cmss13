@@ -1315,15 +1315,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			if(prob(25))
 				set_broken()
 				if(cell && prob(25))
-					cell.ex_act(severity)
+					QDEL_NULL(cell)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				set_broken()
 				if(cell && prob(50))
-					cell.ex_act(severity)
+					QDEL_NULL(cell)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(cell)
-				cell.ex_act(severity) //More lags woohoo
+				QDEL_NULL(cell)
 			deconstruct(FALSE)
 			return
 
@@ -1390,6 +1390,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
+
+/obj/structure/machinery/power/apc/almayer/Initialize(mapload, ndir, building)
+	. = ..()
+	if(is_mainship_level(z))
+		SShijack.apcs += src
+
+/obj/structure/machinery/power/apc/almayer/Destroy()
+	SShijack.apcs -= src
+	return ..()
 
 /obj/structure/machinery/power/apc/almayer/north
 	pixel_y = 32

@@ -601,7 +601,41 @@
 
 /// Called when pulling something and attacking yourself wth the pull (Z hotkey) override for caste specific behaviour
 /mob/living/carbon/xenomorph/proc/pull_power(mob/mob)
-	return
+	var/mob/living/carbon/pulled = src.pulling
+	if(!istype(pulled))
+		return
+	if(isxeno(pulled) || issynth(pulled))
+		to_chat(src, SPAN_WARNING("That wouldn't serve a purpose."))
+		return
+	if(pulled.buckled)
+		to_chat(src, SPAN_WARNING("[pulled] is buckled to something."))
+		return
+	if(pulled.stat == DEAD && !pulled.chestburst)
+		to_chat(src, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
+		return
+	if(src.hauled_mob?.resolve()) // We can't carry more than one mob
+		to_chat(src, SPAN_WARNING("You already are carrying something, there's no way that will work."))
+		return
+	if(HAS_TRAIT(pulled, TRAIT_HAULED))
+		to_chat(src, SPAN_WARNING("They are already being hauled by someone else."))
+		return
+	if(src.action_busy)
+		to_chat(src, SPAN_WARNING("We are already busy with something."))
+		return
+	SEND_SIGNAL(src, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+	src.visible_message(SPAN_DANGER("[src] starts to restrain [pulled]!"),
+	SPAN_DANGER("We start restraining [pulled]!"), null, 5)
+	if(HAS_TRAIT(src, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
+		to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[src] is trying to restrain you!")))
+	if(do_after(src, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if((isxeno(pulled.loc) && !src.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
+			to_chat(src, SPAN_WARNING("Someone already took \the [pulled]."))
+			return
+		if(src.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !src.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
+			if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, src) & COMPONENT_CANCEL_HAUL)
+				return FALSE
+			src.haul(pulled)
+			src.stop_pulling()
 
 // Vent Crawl
 /mob/living/carbon/xenomorph/proc/vent_crawl()
@@ -748,6 +782,10 @@
 		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! Nesting hosts requires hive weeds."))
 		return
 
+	if(supplier_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here do not belong to us!"))
+		return
+
 	if(supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
 		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough for nesting hosts."))
 		return
@@ -761,11 +799,11 @@
 	var/dir_to_nest = get_dir(host_to_nest, nest_structural_base)
 
 	if(!host_to_nest.Adjacent(supplier_turf))
-		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall it's being nested on!"))
 		return
 
 	if(!locate(dir_to_nest) in GLOB.cardinals)
-		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall it's being nested on!"))
 		return
 
 	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_to_nest))
@@ -773,7 +811,7 @@
 			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest))
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest), hivenumber)
 	applicable_nest.dir = dir_to_nest
 	if(!applicable_nest.buckle_mob(host_to_nest, src))
 		qdel(applicable_nest)

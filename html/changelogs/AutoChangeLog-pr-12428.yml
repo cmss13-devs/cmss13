@@ -1,0 +1,5 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - rscadd: "At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic shipside then autodoc upgrade disks will be spawned on the ASRS elevator."
+  - rscadd: "At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic then autodocs will have their Surgery-1 skill check removed. Anyone can use them in this situation."

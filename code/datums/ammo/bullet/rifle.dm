@@ -334,9 +334,9 @@
 
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_1
-	accurate_range = 6
-	effective_range_max = 10
-	max_range = 20
+	accurate_range = 14
+	effective_range_max = 6
+	max_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6

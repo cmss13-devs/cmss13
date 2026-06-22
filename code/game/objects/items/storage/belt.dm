@@ -689,7 +689,7 @@
 
 /obj/item/storage/belt/security/MP/WY
 	name = "\improper M276-C corporate security rig"
-	desc = "A Weyland-Yutani adaptation of the M276 load-bearing equipment, designed for corporate security forces. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
+	desc = "A generic corporate adaptation of the M276 load-bearing equipment, designed for corporate security. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
 
 /obj/item/storage/belt/security/MP/WY/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)
@@ -960,6 +960,13 @@
 	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 
+/obj/item/storage/belt/marine/wy/generic
+	name = "\improper TM401 pattern ammo load rig"
+	desc = "A slightly outdated rig, by modern standards - The TM401 is the standard load-bearing equipment of various corporate & military forces. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations."
+
+/obj/item/storage/belt/marine/wy/generic/w_ek_17/fill_preset_inventory() // W/EK 17 Carbine
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/w_ek_17 (src)
 
 // M2C HMG/M56D gunner belt
 /obj/item/storage/belt/marine/m2c

@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
+/// all roles expected to perform shipside larva removal, used for ares_autodoc_check
+#define JOB_SURGERY_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR, JOB_SYNTH, JOB_SYNTH_ENG, JOB_SYNTH_MED, JOB_SYNTH_INTEL, JOB_SYNTH_MP, JOB_SYNTH_CMD, JOB_SYNTH_SCI)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_CORPORATE_BODYGUARD "Corporate Bodyguard"
@@ -286,6 +288,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WY_GOON_SYNTH "W-Y Corporate Security Synthetic"
 
 #define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
+
+#define JOB_WY_PPO "W-Y Personal Protection Officer"
+#define JOB_WY_PPS "W-Y Personal Protection Specialist"
+#define JOB_WY_PPC "W-Y Personal Protection Coordinator"
+#define JOB_WY_DPO "W-Y Directorate Protection Officer"
+#define JOB_WY_DPS "W-Y Directorate Protection Specialist"
+#define JOB_WY_DPC "W-Y Directorate Protection Coordinator"
+
+#define ROLES_WY_GUARDS list(JOB_WY_PPO, JOB_WY_PPS, JOB_WY_PPC, JOB_WY_DPO, JOB_WY_DPS, JOB_WY_DPC, JOB_CORPORATE_BODYGUARD)
 
 //-------- Hyperdyne --------//
 

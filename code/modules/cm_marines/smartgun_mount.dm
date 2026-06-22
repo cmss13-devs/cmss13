@@ -400,7 +400,7 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
-		if(gun_mounted == 1)
+		if(gun_mounted)
 			to_chat(user, SPAN_WARNING("There is already a gun mounted to this tripod!"))
 			return
 		if(MG.has_mount)

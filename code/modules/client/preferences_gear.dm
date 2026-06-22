@@ -224,6 +224,36 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
 
+// Hippie Shades
+
+/datum/gear/eyewear/sunglasses/hippie_shades
+	display_name = "Suntex-Sightware rounded shades, pink"
+	path = /obj/item/clothing/glasses/sunglasses/hippie
+
+/datum/gear/eyewear/sunglasses/hippie_shades/green
+	display_name = "Suntex-Sightware rounded shades, green"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/green
+
+/datum/gear/eyewear/sunglasses/hippie_shades/sunrise
+	display_name = "Suntex-Sightware rounded shades, sunrise"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/sunrise
+
+/datum/gear/eyewear/sunglasses/hippie_shades/sunset
+	display_name = "Suntex-Sightware rounded shades, sunset"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/sunset
+
+/datum/gear/eyewear/sunglasses/hippie_shades/nightblue
+	display_name = "Suntex-Sightware rounded shades, nightblue"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/nightblue
+
+/datum/gear/eyewear/sunglasses/hippie_shades/midnight
+	display_name = "Suntex-Sightware rounded shades, midnight"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/midnight
+
+/datum/gear/eyewear/sunglasses/hippie_shades/bloodred
+	display_name = "Suntex-Sightware rounded shades, bloodred"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
+
 /datum/gear/mask
 	category = "Masks and scarves"
 	slot = WEAR_FACE
@@ -435,13 +465,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap
 
+/datum/gear/headwear/uscm/headband_green
+	display_name = "USCM headband, area of operations specific"
+	path = /obj/item/clothing/head/headband
+
 /datum/gear/headwear/uscm/headband_brown
 	display_name = "USCM headband, brown"
 	path = /obj/item/clothing/head/headband/brown
-
-/datum/gear/headwear/uscm/headband_green
-	display_name = "USCM headband, green"
-	path = /obj/item/clothing/head/headband
 
 /datum/gear/headwear/uscm/headband_grey
 	display_name = "USCM headband, grey"
@@ -1298,6 +1328,25 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
+
+/datum/gear/civilian/patch
+	display_name = "Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/freelancer_patch
+	fluff_cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/mercpatch
+	display_name = "Old Freelancer's patch"
+	path = /obj/item/clothing/accessory/patch/merc_patch
+
+/datum/gear/civilian/patch/medipatch
+	display_name = "Medic Patch"
+	path = /obj/item/clothing/accessory/patch/medic_patch
+
+
+
+// Re-added some less lore conflicting patches back into civilian's gear
+
 ///Commented out until we have a factional system to restrict these properly
 // /datum/gear/civilian/patch
 // 	display_name = "Weyland-Yutani shoulder patch, black"
@@ -1342,43 +1391,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian/headwear/cowboy_hat/light
 	display_name = "cowboy hat, light-brown"
 	path = /obj/item/clothing/head/cowboy/light
-
-// Hippie Shades
-
-/datum/gear/eyewear/sunglasses/hippie_shades/pink
-	display_name = "Suntex-Sightware rounded shades, pink"
-	path = /obj/item/clothing/glasses/sunglasses/hippie
-
-/datum/gear/eyewear/sunglasses/hippie_shades/green
-	display_name = "Suntex-Sightware rounded shades, green"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/green
-
-/datum/gear/eyewear/sunglasses/hippie_shades/sunrise
-	display_name = "Suntex-Sightware rounded shades, sunrise"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/sunrise
-
-/datum/gear/eyewear/sunglasses/hippie_shades/sunset
-	display_name = "Suntex-Sightware rounded shades, sunset"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/sunset
-
-/datum/gear/eyewear/sunglasses/hippie_shades/nightblue
-	display_name = "Suntex-Sightware rounded shades, nightblue"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/nightblue
-
-/datum/gear/eyewear/sunglasses/hippie_shades/midnight
-	display_name = "Suntex-Sightware rounded shades, midnight"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/midnight
-
-/datum/gear/eyewear/sunglasses/hippie_shades/bloodred
-	display_name = "Suntex-Sightware rounded shades, bloodred"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
-
-// Headband
-
-/datum/gear/civilian/headwear/headband_rebel
-	display_name = "CLF headband"
-	path = /obj/item/clothing/head/headband/rebel
-	fluff_cost = 2
 
 // Civilian shoes
 

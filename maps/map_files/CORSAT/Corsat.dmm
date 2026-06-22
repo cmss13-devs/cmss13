@@ -158,11 +158,11 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/gamma/hangar/office)
 "aaI" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaK" = (
@@ -172,7 +172,7 @@
 /turf/open/floor/almayer/plating_striped,
 /area/corsat/gamma/sigmaremote)
 "aaM" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
 "aaN" = (
@@ -185,11 +185,11 @@
 /turf/open/floor/plating/warnplate/northeast,
 /area/corsat/gamma/hangar)
 "aaQ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
 "aaR" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaS" = (
@@ -203,7 +203,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
 "aaV" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
 "aaW" = (
@@ -217,11 +217,11 @@
 /turf/open/floor/plating/icefloor,
 /area/corsat/gamma/hangar)
 "aaY" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
 "aaZ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -237,13 +237,13 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "abc" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "abd" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -259,7 +259,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/hangar/office)
 "abh" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -268,25 +268,25 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/hangar/flightcontrol)
 "abj" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/gamma/hangar)
 "abk" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/gamma/hangar)
 "abl" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/gamma/hangar)
 "abm" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -325,13 +325,13 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "abt" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "abu" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -352,13 +352,13 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/control)
 "aby" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/gamma/hangar)
 "abz" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate,
@@ -367,13 +367,13 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/hangar/security)
 "abB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/gamma/hangar)
 "abC" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -478,13 +478,13 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/corsat/gamma/hangar)
 "abZ" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
 "aca" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor/warnplate,
@@ -509,13 +509,13 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "ace" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/gamma/hangar)
 "acf" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -574,43 +574,43 @@
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/researcher)
 "acn" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aco" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "acp" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
 "acq" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
 "acr" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "acs" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
 "act" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/west,
@@ -1324,15 +1324,15 @@
 /turf/open/floor/carpet5_1/west,
 /area/corsat/gamma/residential/lounge)
 "afk" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afl" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afm" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
 "afn" = (
@@ -1344,11 +1344,11 @@
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
 "afp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
 "afq" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afr" = (
@@ -1358,11 +1358,11 @@
 /turf/open/floor/carpet13_5/west,
 /area/corsat/gamma/residential/lounge)
 "afs" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
 "aft" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
 "afu" = (
@@ -1372,7 +1372,7 @@
 /turf/open/floor/corsat/corsat_teleporter_static/southwest,
 /area/corsat/gamma/sigmaremote/teleporter)
 "afv" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1402,43 +1402,43 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/residential/lounge)
 "afB" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afC" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afD" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afE" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/sigma/hangar)
 "afF" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/sigma/hangar)
 "afG" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/sigma/hangar)
 "afH" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -1457,13 +1457,13 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/hangar/office)
 "afL" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afM" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1488,13 +1488,13 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/north)
 "afS" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afT" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1506,25 +1506,25 @@
 /turf/open/floor/corsat/corsat_teleporter_static/southwest,
 /area/corsat/gamma/sigmaremote/teleporter)
 "afV" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/sigma/hangar)
 "afW" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate,
 /area/corsat/sigma/hangar)
 "afX" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/sigma/hangar)
 "afY" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -2318,6 +2318,9 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
+"aiV" = (
+/turf/open/floor/almayer/research/containment/corner_var2/east,
+/area/corsat/inaccessible)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -2366,13 +2369,13 @@
 /turf/open/floor/corsat/brown/northwest,
 /area/corsat/gamma/cargo)
 "ajh" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
 "aji" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor/warnplate,
@@ -2478,13 +2481,13 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/sigma/hangar/checkpoint)
 "ajJ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/corsat/sigma/hangar)
 "ajK" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -2545,19 +2548,19 @@
 /turf/open/floor/corsat/purplewhite/northwest,
 /area/corsat/gamma/sigmaremote)
 "ajT" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "ajU" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "ajV" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/east,
@@ -2588,13 +2591,13 @@
 /turf/open/floor/corsat/corsat_teleporter_static/southwest,
 /area/corsat/sigma/south/complex/teleporter)
 "akb" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
 "akc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2705,6 +2708,9 @@
 "akz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/hangar)
+"akA" = (
+/turf/open/floor/almayer/research/containment/entrance/east,
+/area/corsat/inaccessible)
 "akB" = (
 /turf/closed/wall/biodome,
 /area/corsat/theta/airlock/east)
@@ -2724,6 +2730,9 @@
 	},
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/gamma/sigmaremote)
+"akF" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/corsat/inaccessible)
 "akG" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -2768,6 +2777,9 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/security)
+"akO" = (
+/turf/open/floor/almayer/research/containment/corner_var2/west,
+/area/corsat/inaccessible)
 "akP" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -2849,6 +2861,13 @@
 /obj/item/device/camera/oldcamera,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"alf" = (
+/turf/open/floor/almayer/research/containment/entrance/north,
+/area/corsat/inaccessible)
+"alg" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/almayer/research/containment/floor1,
+/area/corsat/inaccessible)
 "alh" = (
 /turf/open/floor/corsat/brown/north,
 /area/corsat/gamma/cargo)
@@ -2879,6 +2898,9 @@
 	},
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/residential)
+"alm" = (
+/turf/open/floor/almayer/research/containment/corner_var1,
+/area/corsat/inaccessible)
 "alp" = (
 /obj/structure/machinery/door_control{
 	id = "GammaAdmin";
@@ -3398,13 +3420,13 @@
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/dorms)
 "ani" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
 "anj" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/west,
@@ -3542,7 +3564,7 @@
 "anL" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/floor1,
 /area/corsat/inaccessible)
 "anM" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -6949,10 +6971,10 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/cargo)
 "aBj" = (
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/corsat/inaccessible)
 "aBk" = (
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "aBl" = (
 /turf/open/floor/almayer/research/containment/corner_var1/east,
@@ -13716,7 +13738,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/almayer/research/containment/entrance/west,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/corsat/inaccessible)
 "aZR" = (
 /obj/structure/machinery/light/small{
@@ -15871,13 +15893,6 @@
 /obj/structure/machinery/seed_extractor,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hydroponics)
-"bhC" = (
-/obj/structure/machinery/computer/shuttle_control/monorail{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/corsat/red/east,
-/area/corsat/gamma/hangar/monorail/control)
 "bhD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -22682,9 +22697,6 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bLn" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/monorail{
-	dir = 4
-	},
 /turf/open/floor/corsat/red/west,
 /area/corsat/sigma/hangar/monorail/control)
 "bLq" = (
@@ -24599,7 +24611,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/corsat/sigma/south/complex)
 "bUh" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -27963,7 +27975,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/sigma/south/complex)
 "ehg" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -30933,7 +30945,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/gamma/sigmaremote)
 "hhA" = (
 /obj/structure/machinery/light,
@@ -31367,7 +31379,7 @@
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/sigma/south/robotics)
 "hBM" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -31515,16 +31527,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
-"hHA" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/floor/almayer/research/containment/floor2/north,
-/area/corsat/inaccessible)
 "hHL" = (
 /obj/item/alien_embryo{
 	color = "#00ff80";
 	name = "corrupted alien embryo"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "hHM" = (
 /obj/structure/surface/table/reinforced,
@@ -31973,7 +31981,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/corsat/gamma/kitchen)
 "iem" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -33975,7 +33983,7 @@
 	dir = 8
 	},
 /obj/structure/bed/nest,
-/turf/open/floor/almayer/research/containment/entrance/west,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/corsat/inaccessible)
 "kvm" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -35352,7 +35360,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/corsat/gamma/sigmaremote)
 "lTC" = (
 /obj/structure/bookcase{
@@ -35952,7 +35960,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner/west,
 /area/corsat/sigma/south/complex)
 "mAc" = (
 /obj/structure/closet/emcloset,
@@ -37626,7 +37634,7 @@
 "olY" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_spawn,
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/floor1,
 /area/corsat/inaccessible)
 "ome" = (
 /obj/structure/machinery/power/apc/upgraded/no_power/east,
@@ -38048,7 +38056,7 @@
 /area/corsat/theta/biodome)
 "oLg" = (
 /obj/effect/alien/weeds/node,
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/floor1,
 /area/corsat/inaccessible)
 "oLA" = (
 /obj/structure/flora/pottedplant{
@@ -39223,7 +39231,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/gamma/sigmaremote)
 "qba" = (
 /obj/structure/surface/rack,
@@ -40519,7 +40527,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/corsat/gamma/sigmaremote)
 "rvC" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -41285,7 +41293,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/sigma/south/complex)
 "siu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -43161,7 +43169,7 @@
 /area/corsat/theta/biodome)
 "ukf" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor/almayer/research/containment/corner_var1/east,
+/turf/open/floor/almayer/research/containment/corner_var1/north,
 /area/corsat/inaccessible)
 "ukz" = (
 /obj/structure/surface/table/reinforced,
@@ -53222,13 +53230,13 @@ azk
 azE
 anG
 qIU
-aBj
+alm
 kuW
 aBq
 qIU
 aBj
 aZQ
-aBq
+aiV
 qIU
 aEl
 aEn
@@ -53712,12 +53720,12 @@ agQ
 azf
 anG
 qIU
-aBl
-aBo
+akF
+aBn
 anR
 qIU
-aBl
-aBo
+akF
+aBn
 aos
 qIU
 bUo
@@ -55428,11 +55436,11 @@ bhQ
 anG
 qIU
 aBj
-aBn
+akA
 anS
 qIU
 aBj
-aBn
+akA
 aot
 qIU
 byN
@@ -55673,8 +55681,8 @@ azE
 aWy
 qIU
 aBk
+alg
 anP
-hHA
 qIU
 aBk
 anL
@@ -55921,7 +55929,7 @@ ukf
 aZR
 aBr
 qIU
-aBl
+akO
 aZR
 aBr
 qIU
@@ -56408,8 +56416,8 @@ azf
 anG
 qIU
 aBj
-aBn
-aBq
+aBo
+aBl
 avT
 aLX
 btt
@@ -56654,7 +56662,7 @@ anG
 qIU
 aBk
 olY
-aBk
+alf
 lOW
 aLX
 jKy
@@ -56897,7 +56905,7 @@ agQ
 azf
 anG
 qIU
-aBl
+akF
 aZR
 aBr
 avT
@@ -73380,7 +73388,7 @@ aad
 aad
 bks
 bmu
-bhC
+sPx
 bGs
 sPx
 adq

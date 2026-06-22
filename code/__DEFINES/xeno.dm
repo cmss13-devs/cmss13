@@ -421,6 +421,9 @@
 // Lurker strain flags
 #define LURKER_VAMPIRE "Vampire"
 
+// Warrior strain flags
+#define WARRIOR_BULWARK "Bulwark"
+
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"
 #define RAVAGER_BERSERKER "Berserker"
@@ -449,6 +452,7 @@
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
 #define XENO_DAMAGE_MOD_VERY_SMALL  5
+#define XENO_DAMAGE_MOD_BULWARK  8
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15
 #define XENO_DAMAGE_MOD_LARGE   20
@@ -744,6 +748,11 @@
 #define XENO_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
+// dancer defines
+#define DANCER_DODGE_TIME 7 SECONDS
+
+// bulwark defines
+#define BULWARK_REFLECTIVE_TIME 6 SECONDS
 
 // drone fruits
 
@@ -785,8 +794,8 @@
 #define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
 #define MAX_IMPREGNATION_TIME 15 SECONDS
 
-#define HUGGER_MIN_ACTIVE_TIME 3.5 SECONDS //Time between being dropped and going idle
-#define HUGGER_MAX_ACTIVE_TIME 7 SECONDS
+#define HUGGER_ACTIVE_TIME 4 SECONDS //Time between being dropped and being able to jump
 
 #define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
+#define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.
 #define CARRIER_HUGGER_THROW_RANGE 6

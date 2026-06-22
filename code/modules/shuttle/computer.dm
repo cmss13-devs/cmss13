@@ -9,6 +9,8 @@
 	var/shuttleId
 	var/possible_destinations = list()
 	var/admin_controlled
+	/// Whether this computer can function even during FTL or on a ground crash
+	var/ignore_ftl_or_crash = FALSE
 
 /obj/structure/machinery/computer/shuttle/proc/is_disabled()
 	return FALSE
@@ -193,14 +195,24 @@
 		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
 		ui.open()
 
-
 /obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
-
+	if(!ignore_ftl_or_crash && SShijack.in_ftl) // Ever ERT can go to ground map return hijack_status check
+		var/turf/our_location = get_turf(src)
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+		if(!shuttle)
+			if(is_mainship_level(our_location.z))
+				to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+				return UI_CLOSE
+			return .
+		var/turf/shuttle_location = get_turf(shuttle)
+		if(is_mainship_level(shuttle_location.z) || (shuttle_location.z != our_location.z && is_mainship_level(our_location.z)))
+			to_chat(user, SPAN_WARNING("Launch location unknown. Autopilot requires recalibration. Please seek an authorized service technician."))
+			return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -485,13 +497,15 @@
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 
-				if(SShijack.in_ftl)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
-					return
+				var/turf/shuttle_location = get_turf(lifeboat)
+				if(!ignore_ftl_or_crash && is_mainship_level(shuttle_location.z))
+					if(SShijack.in_ftl)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
+						return
 
-				if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
-					return
+					if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
+						return
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))

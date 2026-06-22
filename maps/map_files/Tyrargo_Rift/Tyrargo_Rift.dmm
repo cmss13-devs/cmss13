@@ -2545,11 +2545,6 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -2560,8 +2555,8 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -7413,11 +7408,6 @@
 	pixel_y = 5;
 	dir = 1;
 	anchored = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
@@ -16104,11 +16094,6 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -16124,7 +16109,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNw" = (
@@ -17633,11 +17618,6 @@
 	dir = 10;
 	pixel_x = 5
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -17659,7 +17639,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10;
@@ -19332,11 +19312,6 @@
 	pixel_x = 12;
 	pixel_y = 8
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -19351,10 +19326,10 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
 	pixel_y = -5;
@@ -26354,11 +26329,6 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -31506,11 +31476,6 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 9
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -31521,14 +31486,14 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 9
 	},
@@ -31571,11 +31536,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -31586,13 +31546,13 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brW" = (
@@ -31637,11 +31597,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -31652,11 +31607,11 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bsa" = (
@@ -31739,11 +31694,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -31755,13 +31705,13 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bsg" = (
@@ -40464,11 +40414,6 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -40484,7 +40429,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMY" = (
@@ -54148,12 +54093,7 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10
@@ -60616,11 +60556,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
@@ -60644,9 +60579,9 @@
 	anchored = 1;
 	layer = 4.1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/mall/upper)
 "cVv" = (
@@ -100391,11 +100326,6 @@
 	dir = 4;
 	pixel_y = -30
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/desertdam/decals/road_edge{
 	pixel_y = -3;
 	pixel_x = -12
@@ -103814,11 +103744,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
@@ -103841,9 +103766,9 @@
 	dir = 8;
 	pixel_x = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/tyrargo/oob/outdoors)
 "faR" = (
@@ -103967,11 +103892,6 @@
 	health = 50000;
 	maxhealth = 50000
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -103987,9 +103907,9 @@
 	anchored = 1;
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
 	health = 50000;
@@ -104900,16 +104820,11 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10;
@@ -106941,11 +106856,6 @@
 	icon_state = "sandbag_0";
 	pixel_y = -6
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -106954,9 +106864,9 @@
 	pixel_y = 20;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
 	pixel_y = -6
@@ -107382,13 +107292,8 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -108391,11 +108296,6 @@
 	anchored = 1
 	},
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -108410,7 +108310,7 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "new" = (
@@ -109902,11 +109802,6 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -111264,15 +111159,10 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -111886,11 +111776,6 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -111904,7 +111789,7 @@
 	pixel_x = 8;
 	dir = 6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';

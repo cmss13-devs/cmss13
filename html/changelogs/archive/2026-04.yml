@@ -107,3 +107,36 @@
       indicate if dodge ability is active.
   - rscadd: Spectators now gain new HUD option called "Xeno Effects HUD", this hud
       allows you to see effects that are exclusive to Xeno players.
+2026-04-25:
+  Arom-beep:
+  - rscadd: Added hot key for smartgun aim assist
+  Gorap:
+  - balance: Allows NSG to have flashlight grip.
+  ori-disillusion-mirnov:
+  - balance: turing dispenser and xeno analyzer thingy are no longer meltable
+2026-04-26:
+  KornFlaks:
+  - rscadd: King vote list is now randomized between different voters.
+  MistChristmas:
+  - bugfix: Dropship controls now recognise Senior Command Access as valid.
+  private-tristan:
+  - rscadd: Added a total of 41 new tips to the game!
+2026-04-27:
+  ComboTombo:
+  - bugfix: The elevator landing at Trijent Dam's wilderness valley now has an APC
+      powering it
+  - bugfix: The APCs powering the elevator landings at Trijent Dam's wilderness and
+      medical valleys now have metal walls and floors to allow for field repairs without
+      requiring admin intervention
+  - bugfix: The elevator shaft at the medical valley now has a docking port
+  - maptweak: 'Added two new areas to Trijent Dam that can be powered with an APC:
+      "Medical Valley Elevator Landing" and "Wilderness Valley Elevator Landing"'
+  - spellcheck: Changed "curtesy" to "courtesy" in the elevator control panel
+2026-04-28:
+  cuberound:
+  - rscadd: Resin doors and walls construct wall above them when made in open, damage
+      taken by that wall is transfered to the lower wall and they get destroyed in
+      unison. Bullet pings on upper wall are mirrored on lower one to alert the xenos
+2026-04-29:
+  Rocky0558:
+  - bugfix: Sensor tower now damaging by explosions rather than repairing

@@ -21,7 +21,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
-	plane = TURF_PLANE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/open
 	density = FALSE
@@ -61,6 +60,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	heavy = TRUE
+	explo_proof = TRUE
 	id = ""
 
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)

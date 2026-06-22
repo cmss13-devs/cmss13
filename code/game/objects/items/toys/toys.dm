@@ -143,6 +143,8 @@
 	var/instant = 0
 	var/colorName = "red" //for updateIcon purposes
 
+	flags_obj = OBJ_IS_HELMET_GARB
+
 /*
  * Snap pops
  */

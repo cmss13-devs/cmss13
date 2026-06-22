@@ -16,6 +16,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_XENO_HIVE_BRAVO = new /datum/mob_hud/xeno/xeno_hive_bravo(),
 	MOB_HUD_XENO_HIVE_CHARLIE = new /datum/mob_hud/xeno/xeno_hive_charlie(),
 	MOB_HUD_XENO_HIVE_DELTA = new /datum/mob_hud/xeno/xeno_hive_delta(),
+	MOB_HUD_XENO_HIVE_K_SERIES = new /datum/mob_hud/xeno/xeno_hive_k_series(),
 	MOB_HUD_XENO_HIVE_FERAL = new /datum/mob_hud/xeno/xeno_hive_feral(),
 	MOB_HUD_XENO_HIVE_TAMED = new /datum/mob_hud/xeno/xeno_hive_tamed(),
 	MOB_HUD_XENO_HIVE_MUTATED = new /datum/mob_hud/xeno/xeno_hive_mutated(),
@@ -200,6 +201,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno/xeno_hive_forsaken
 /datum/mob_hud/xeno/xeno_hive_yautja
 /datum/mob_hud/xeno/xeno_hive_hunted
+/datum/mob_hud/xeno/xeno_hive_k_series
 /datum/mob_hud/xeno/xeno_hive_renegade
 /datum/mob_hud/xeno/xeno_hive_tutorial
 
@@ -356,6 +358,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CHARLIE]
 		if(XENO_HIVE_DELTA)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_DELTA]
+		if(XENO_HIVE_K_SERIES)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_K_SERIES]
 		if(XENO_HIVE_FERAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FERAL]
 		if(XENO_HIVE_TAMED)
@@ -800,7 +804,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(faction == FACTION_MILITARY_CASTE)
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		new_icon_state = "badbloodhud"
+	else if(faction == FACTION_MILITARY_CASTE)
 		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
 			new_icon_state = "soldierhud_wl"
 		else
@@ -823,7 +829,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
 		player_clan.sync()
 
-		holder.color = player_clan.color
+		if(faction != FACTION_YAUTJA_BADBLOOD)
+			holder.color = player_clan.color
 
 	hud_list[HUNTER_CLAN] = holder
 

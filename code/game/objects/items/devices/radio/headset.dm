@@ -686,7 +686,7 @@
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
 	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/mcom)
+	initial_keys = list(/obj/item/device/encryptionkey/cc)
 
 /obj/item/device/radio/headset/almayer/rep
 	name = "representative radio headset"

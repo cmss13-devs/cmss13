@@ -264,8 +264,8 @@
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SQUAD_CHANGED, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
-			var/datum/mob_hud/H = GLOB.huds[hud_type]
-			H.add_hud_to(user, src)
+			var/datum/mob_hud/target_hud = GLOB.huds[hud_type]
+			target_hud.add_hud_to(user, src)
 			for(var/per_faction_hud in additional_hud_types)
 				var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
 				alt_hud.add_hud_to(user, src)
@@ -274,7 +274,8 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
-			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
+			RegisterSignal(user, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(handle_item_equipped))
+			update_minimap_icon()
 			if(minimap_type)
 				add_minimap(user)
 
@@ -286,11 +287,12 @@
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE,
-		COMSIG_HUMAN_SQUAD_CHANGED
+		COMSIG_HUMAN_SQUAD_CHANGED,
+		COMSIG_HUMAN_EQUIPPED_ITEM,
 	))
-	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
-		var/datum/mob_hud/H = GLOB.huds[hud_type]
-		H.remove_hud_from(user, src)
+	if(istype(user))
+		var/datum/mob_hud/target_hud = GLOB.huds[hud_type]
+		target_hud.remove_hud_from(user, src)
 		for(var/per_faction_hud in additional_hud_types)
 			var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
 			alt_hud.remove_hud_from(user, src)
@@ -300,11 +302,16 @@
 			user.hide_hud_tracker()
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
-		SSminimaps.remove_marker(wearer)
 		if(minimap_type)
-			remove_minimap(wearer)
+			remove_minimap(user)
 	wearer = null
 	..()
+
+/obj/item/device/radio/headset/proc/handle_item_equipped(mob/living/carbon/human/source, obj/item/headset, slot)
+	SIGNAL_HANDLER
+	if(headset == src && (slot == WEAR_L_EAR || slot == WEAR_R_EAR))
+		update_minimap_icon()
+	if(source == wearer && (slot == WEAR_ID))
 
 /obj/item/device/radio/headset/proc/add_hud_tracker(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
@@ -327,27 +334,27 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		if(user.has_item_in_ears(src)) //worn
-			var/datum/mob_hud/H = GLOB.huds[hud_type]
+			var/datum/mob_hud/target_hud = GLOB.huds[hud_type]
 			if(headset_hud_on)
-				H.add_hud_to(usr, src)
+				target_hud.add_hud_to(usr, src)
 				for(var/per_faction_hud in additional_hud_types)
-					var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
-					alt_hud.add_hud_to(usr, src)
+					var/datum/mob_hud/alternate_hud = GLOB.huds[per_faction_hud]
+					alternate_hud.add_hud_to(usr, src)
 				if(user.mind && (misc_tracking || user.assigned_squad) && user.hud_used?.locate_leader)
 					user.show_hud_tracker()
 				if(misc_tracking)
 					SStracking.start_misc_tracking(user)
 			else
-				H.remove_hud_from(usr, src)
+				target_hud.remove_hud_from(usr, src)
 				for(var/per_faction_hud in additional_hud_types)
-					var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
-					alt_hud.remove_hud_from(usr, src)
+					var/datum/mob_hud/alternate_hud = GLOB.huds[per_faction_hud]
+					alternate_hud.remove_hud_from(usr, src)
 				if(user.hud_used?.locate_leader)
 					user.hide_hud_tracker()
 				if(misc_tracking)
 					SStracking.stop_misc_tracking(user)
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
-	playsound(src,'sound/machines/click.ogg', 20, 1)
+	playsound(src, 'sound/machines/click.ogg', 20, 1)
 
 /obj/item/device/radio/headset/proc/switch_tracker_target()
 	set name = "Switch Tracker Target"
@@ -368,65 +375,63 @@
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER
-	if(!wearer)
+	var/mob/living/carbon/human/current_wearer = wearer
+	if(!istype(current_wearer))
 		return
-	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset?.minimap_icon)
+	SSminimaps.remove_marker(current_wearer)
+	var/datum/equipment_preset/preset = current_wearer.assigned_equipment_preset
+	if(!preset || !preset.minimap_icon)
 		return
 
-	var/obj/item/card/id/ID = wearer.get_idcard()
-	var/icon_to_use
-	if(ID?.minimap_icon_override)
-		icon_to_use = ID.minimap_icon_override
-	else
-		icon_to_use = wearer.assigned_equipment_preset.minimap_icon ? wearer.assigned_equipment_preset.minimap_icon : "unknown"
+	var/obj/item/card/id/id_card = current_wearer.get_idcard()
+	var/icon_to_use = (id_card?.minimap_icon_override) ? id_card.minimap_icon_override : (preset.minimap_icon ? preset.minimap_icon : "unknown")
+	var/image/background = image('icons/ui_icons/map_blips.dmi', current_wearer.assigned_squad?.background_icon ? current_wearer.assigned_squad.background_icon : preset.minimap_background)
 
-	var/image/background = image('icons/ui_icons/map_blips.dmi', wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
-
-	if(wearer.stat == DEAD)
+	if(current_wearer.stat == DEAD)
 		var/defib_icon_to_use
-		if(wearer.undefibbable)
+		if(current_wearer.undefibbable)
 			defib_icon_to_use = "undefibbable"
-		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 1 MINUTES)
+		else if(world.time > current_wearer.timeofdeath + current_wearer.revive_grace_period - 1 MINUTES)
 			defib_icon_to_use = "defibbable4"
-		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 2 MINUTES)
+		else if(world.time > current_wearer.timeofdeath + current_wearer.revive_grace_period - 2 MINUTES)
 			defib_icon_to_use = "defibbable3"
-		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 3 MINUTES)
+		else if(world.time > current_wearer.timeofdeath + current_wearer.revive_grace_period - 3 MINUTES)
 			defib_icon_to_use = "defibbable2"
 		else
 			defib_icon_to_use = "defibbable"
 
 		background.overlays += image('icons/ui_icons/map_blips.dmi', null, defib_icon_to_use, ABOVE_FLOAT_LAYER)
-		if(!wearer.mind)
-			var/mob/dead/observer/ghost = wearer.get_ghost(TRUE)
+		if(!current_wearer.mind)
+			var/mob/dead/observer/ghost = current_wearer.get_ghost(TRUE)
 			if(!ghost?.can_reenter_corpse)
 				background.overlays += image('icons/ui_icons/map_blips.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
-	if(wearer.assigned_squad)
+	if(current_wearer.assigned_squad)
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")
 		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
 		background.overlays += underlay
 		background.overlays += overlay
 
-		if(wearer.assigned_squad?.squad_leader == wearer)
+		if(current_wearer.assigned_squad?.squad_leader == current_wearer)
 			var/image/leader_trim = image('icons/ui_icons/map_blips.dmi', null, "leader_trim")
 			background.overlays += leader_trim
 
-		SSminimaps.add_marker(wearer, minimap_flag, background)
+		SSminimaps.add_marker(current_wearer, minimap_flag, background)
 		return
 
 	background.overlays += image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
-	SSminimaps.add_marker(wearer, minimap_flag, background)
+	SSminimaps.add_marker(current_wearer, minimap_flag, background)
 
 ///Give minimap action to wearer
 /obj/item/device/radio/headset/proc/add_minimap(mob/living/carbon/human/user)
 	remove_minimap(user)
 	var/datum/action/minimap/mini = new minimap_type
 	mini.give_to(user, mini)
-	INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon)) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
 
 ///Remove all action of type minimap from the wearer, and make him disappear from the minimap
 /obj/item/device/radio/headset/proc/remove_minimap(mob/living/carbon/human/user)
-	SSminimaps.remove_marker(wearer)
+	var/mob/living/carbon/human/target_mob = user || wearer
+	if(target_mob)
+		SSminimaps.remove_marker(target_mob)
 	if(!user)
 		return
 	for(var/datum/action/action as anything in user.actions)

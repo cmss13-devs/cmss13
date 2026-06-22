@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/turf/new_turf = get_step(loc, direct)
 	forceMove(new_turf)
 
-	if(!istype(new_turf, /turf/open_space))
+	if(!istransparentturf(new_turf))
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
 		linked_mob.reset_view()

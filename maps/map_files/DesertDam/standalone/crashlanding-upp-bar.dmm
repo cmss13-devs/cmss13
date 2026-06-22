@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25";
+/obj/structure/shuttle/part/ert/front_right_upp{
 	name = "Fulcrum"
 	},
+/turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "ab" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -65,6 +65,13 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"al" = (
+/obj/structure/girder,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -74,6 +81,40 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"an" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"ao" = (
+/obj/structure/shuttle/part/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "rightengine_1"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/bar/bar)
+"ap" = (
+/turf/closed/shuttle/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "T5"
+	},
+/area/desert_dam/building/bar/bar)
+"aq" = (
+/obj/structure/shuttle/part/ert/transparent{
+	icon_state = "T11";
+	name = "Fulcrum"
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"ar" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/shuttle/part/ert/transparent{
+	icon_state = "T16";
+	name = "Fulcrum"
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/bar/bar)
 "aw" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/sand_overlay/sand1{
@@ -87,11 +128,11 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "aT" = (
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T16";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "aY" = (
 /obj/item/reagent_container/food/drinks/flask/canteen{
@@ -142,6 +183,9 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bN" = (
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "bO" = (
@@ -207,11 +251,11 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T11";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "du" = (
 /obj/item/stack/rods,
@@ -425,10 +469,10 @@
 /turf/closed/wall/wood,
 /area/desert_dam/building/bar/bar)
 "hx" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20";
+/obj/structure/shuttle/part/ert/front_left_upp{
 	name = "Fulcrum"
 	},
+/turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "hF" = (
 /obj/structure/machinery/light/double{
@@ -621,10 +665,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "kM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0;
-	name = "Fulcrum"
+/turf/closed/shuttle/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "rightengine_2"
 	},
 /area/desert_dam/building/bar/bar)
 "kQ" = (
@@ -699,10 +742,9 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/building/bar/bar_restroom)
 "nk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T3";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T3"
 	},
 /area/desert_dam/building/bar/bar)
 "np" = (
@@ -725,11 +767,11 @@
 /area/desert_dam/building/bar/bar)
 "nz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T8";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "nB" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
@@ -841,13 +883,9 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T10";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T10"
 	},
 /area/desert_dam/building/bar/bar)
 "pW" = (
@@ -1002,22 +1040,22 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0;
-	name = "Fulcrum"
+/obj/structure/shuttle/part/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "leftengine_1"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "tR" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "tW" = (
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T11";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "tX" = (
 /obj/effect/decal/warning_stripes{
@@ -1103,13 +1141,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
-"wm" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/desert_dam/building/bar/bar)
 "wp" = (
 /obj/structure/flora/grass/desert/heavygrass_10,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -1122,16 +1153,6 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"ws" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T17";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
 "wv" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -1235,11 +1256,11 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "xN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0;
-	name = "Fulcrum"
+/obj/structure/shuttle/part/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "rightengine_1"
 	},
+/turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "xP" = (
 /obj/item/ammo_casing/bullet,
@@ -1297,15 +1318,6 @@
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
-"yC" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/desert_dam/building/bar/bar)
 "yF" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/rifle/type71/heap{
@@ -1345,15 +1357,12 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "zC" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T6";
+/obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T6"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "zD" = (
 /obj/structure/surface/table/woodentable,
@@ -1429,13 +1438,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"AT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T2";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
 "Bj" = (
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
@@ -1533,10 +1535,9 @@
 	pixel_x = 1;
 	pixel_y = 35
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "T3";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T3"
 	},
 /area/desert_dam/building/bar/bar)
 "Cn" = (
@@ -1578,10 +1579,9 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "CL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0;
-	name = "Fulcrum"
+/turf/closed/shuttle/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "leftengine_2"
 	},
 /area/desert_dam/building/bar/bar)
 "CX" = (
@@ -1604,25 +1604,10 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"Dn" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
 "Dt" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar_restroom)
-"Du" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/desert_dam/building/bar/bar)
 "DB" = (
 /obj/structure/bed/bedroll,
 /obj/item/trash/cheesie,
@@ -1648,15 +1633,6 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"DZ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T4";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
 "Eb" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -1700,10 +1676,9 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "EO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T14";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T14"
 	},
 /area/desert_dam/building/bar/bar)
 "EW" = (
@@ -1729,12 +1704,11 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Fl" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/closed/shuttle/ert{
-	icon_state = "T15";
+/obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T15"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "Fr" = (
 /obj/item/stack/sandbags,
@@ -1836,11 +1810,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "HP" = (
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T8";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "HV" = (
 /obj/structure/disposalpipe/segment,
@@ -1880,10 +1854,9 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "IW" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "upp27";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
 /area/desert_dam/building/bar/bar)
 "Jc" = (
@@ -1941,15 +1914,6 @@
 "Kl" = (
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor/plating,
-/area/desert_dam/building/bar/bar)
-"KA" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
 /area/desert_dam/building/bar/bar)
 "KC" = (
 /obj/structure/barricade/sandbags/wired,
@@ -2075,11 +2039,11 @@
 /area/desert_dam/building/bar/bar)
 "NK" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T20";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "Oe" = (
 /obj/structure/barricade/sandbags/wired{
@@ -2088,20 +2052,16 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Oj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T12";
+/obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T12"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "Om" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
+	name = "Fulcrum"
 	},
 /area/desert_dam/building/bar/bar)
 "Ou" = (
@@ -2220,11 +2180,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "QA" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T2";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T2"
 	},
 /area/desert_dam/building/bar/bar)
 "QG" = (
@@ -2250,13 +2208,9 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "QK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T9";
+/turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T19"
 	},
 /area/desert_dam/building/bar/bar)
 "QN" = (
@@ -2331,21 +2285,11 @@
 /area/desert_dam/building/bar/bar)
 "So" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
+/obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T16";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
-"SE" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T19";
-	opacity = 0;
 	name = "Fulcrum"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "SF" = (
 /obj/structure/reagent_dispensers/tank/fuel,
@@ -2437,7 +2381,6 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ul" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -2731,19 +2674,12 @@
 /obj/structure/machinery/light,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"YS" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/desert_dam/building/bar/bar)
 "YY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T1";
+/obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
-	opacity = 0
+	icon_state = "T1"
 	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "YZ" = (
 /turf/open/floor/plating/platingdmg1,
@@ -2872,7 +2808,7 @@ wj
 CH
 tW
 zC
-DZ
+bO
 zm
 eh
 Dt
@@ -2910,7 +2846,7 @@ aO
 tW
 nz
 Om
-BB
+ap
 Qc
 wy
 vy
@@ -2944,9 +2880,9 @@ oD
 Xw
 jt
 Rs
-tW
+aq
 HP
-YS
+Om
 QK
 CL
 tM
@@ -2983,8 +2919,8 @@ Xh
 BM
 ds
 HP
-YS
-YS
+Om
+Om
 pO
 kM
 xN
@@ -3212,10 +3148,10 @@ aa
 hm
 hm
 hm
-KA
-wm
-yC
-Du
+hm
+hm
+hm
+hm
 hm
 hm
 JT
@@ -3247,17 +3183,17 @@ WG
 UB
 WK
 zM
-So
+ar
 NK
-Dn
-Dn
-SE
+Om
+Om
+QK
 CL
 tM
 Kf
 Oj
-AT
-AT
+QA
+QA
 EO
 md
 kf
@@ -3288,10 +3224,10 @@ zM
 YA
 So
 NK
-Dn
-ws
+Om
+pO
 kM
-xN
+ao
 zM
 wE
 tK
@@ -3344,7 +3280,7 @@ TH
 Ug
 KC
 Iu
-Db
+al
 xT
 xT
 xT
@@ -3420,7 +3356,7 @@ UK
 Ug
 KC
 oK
-VI
+an
 tR
 Ae
 xG

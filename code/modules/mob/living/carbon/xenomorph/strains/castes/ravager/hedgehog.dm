@@ -18,7 +18,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasma_max = 0
+	ravager.plasmapool_modifier = XENO_NO_PLASMA
 	ravager.small_explosives_stun = TRUE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
@@ -97,7 +97,7 @@
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
 
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_shards = round((shards / max_shards) * 100, 10)
 	if(percentage_shards)
@@ -115,7 +115,7 @@
 
 
 /datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()

@@ -38,7 +38,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/flamer_nozzle
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -328,6 +328,7 @@
 		else
 			var/obj/effect/particle_effect/smoke/chem/checker = new()
 			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			qdel(checker)
 			if(blocked)
 				break
 
@@ -787,55 +788,61 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
 
-/obj/flamer_fire/proc/set_on_fire(mob/living/M)
-	if(!istype(M))
+/obj/flamer_fire/proc/set_on_fire(mob/living/target)
+	if(!istype(target))
 		return
 
-	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	var/sig_result = SEND_SIGNAL(target, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
-	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+	var/fire_intensity_resistance = target.check_fire_intensity_resistance()
+	var/penetrating = tied_reagent.fire_penetrating
+	if(penetrating && isxeno(target))
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+			penetrating = FALSE
 
-	if(!tied_reagent.fire_penetrating)
+	if(!penetrating)
 		burn_damage = max(burn_damage - fire_intensity_resistance * 0.5, 0)
 
 	if(sig_result & COMPONENT_XENO_FRENZY)
-		var/mob/living/carbon/xenomorph/X = M
-		if(X.plasma_stored != X.plasma_max) //limit num of noise
-			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
-			X.emote("roar")
-		X.plasma_stored = X.plasma_max
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.plasma_stored != xeno_target.plasma_max) //limit num of noise
+			to_chat(xeno_target, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
+			xeno_target.emote("roar")
+		xeno_target.plasma_stored = xeno_target.plasma_max
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
+				target.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
-				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+				target.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
+	if(sig_result & COMPONENT_NO_BURN && !penetrating)
 		burn_damage = 0
 
 	if(!burn_damage)
-		if(HAS_TRAIT(M, TRAIT_HAULED))
-			M.visible_message(SPAN_WARNING("[M] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
-		else
-			to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
+		if(!HAS_TRAIT(target, TRAIT_ABILITY_BURROWED))
+			if(HAS_TRAIT(target, TRAIT_HAULED))
+				target.visible_message(SPAN_WARNING("[target] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
+			else
+				to_chat(target, SPAN_DANGER("[isxeno(target) ? "We" : "You"] step over the flames."))
 		return
 
-	M.last_damage_data = weapon_cause_data
-	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	target.last_damage_data = weapon_cause_data
+	target.apply_damage(burn_damage, BURN) //This makes fire stronk.
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
 		if(FIRE_VARIANT_TYPE_B)
-			if(isxeno(M))
-				var/mob/living/carbon/xenomorph/X = M
-				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
-	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
-	M.updatehealth()
+			if(isxeno(target))
+				var/mob/living/carbon/xenomorph/xeno_target = target
+				xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+	target.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")
@@ -893,38 +900,30 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	else
 		weather_smothering_strength = 0
 
-/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level)
-	var/direction_angle = dir2angle(direction)
+/proc/create_fire_reagent(fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic")
+	var/datum/reagent/fire_reag = new()
+	fire_reag.intensityfire = burn_lvl
+	fire_reag.durationfire = fire_lvl
+	fire_reag.burn_sprite = burn_sprite
+	fire_reag.burncolor = f_color
+	return fire_reag
+
+/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, datum/reagent/fire_reagent, aerial_flame_level)
+	set waitfor = FALSE
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
-		var/datum/reagent/fire_reag = new()
-		fire_reag.intensityfire = burn_lvl
-		fire_reag.durationfire = fire_lvl
-		fire_reag.burn_sprite = burn_sprite
-		fire_reag.burncolor = f_color
-		new/obj/flamer_fire(target, cause_data, fire_reag)
+		new/obj/flamer_fire(target, cause_data, fire_reagent)
 	if(target.density)
 		return
 
-	for(var/spread_direction in GLOB.alldirs)
-
+	for(var/spread_angle in list(-45, 0, 45))
+		var/spread_direction = turn(direction, spread_angle)
 		var/spread_power = remaining_distance
-
-		var/spread_direction_angle = dir2angle(spread_direction)
-
-		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
-
-		switch(angle) //this reduces power when the explosion is going around corners
-			if (45)
-				spread_power *= 0.75
-			if (90 to 180) //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
-				continue
-
-		switch(spread_direction)
-			if(NORTH,SOUTH,EAST,WEST)
-				spread_power--
-			else
-				spread_power -= 1.414 //diagonal spreading
+		if(abs(spread_angle) == 45) // diagonal
+			spread_power -= sqrt(2)
+			spread_power *= 0.75 //this reduces power when the explosion is going around corners
+		else // cardinal
+			spread_power -= 1
 
 		if (spread_power < 1)
 			continue
@@ -936,37 +935,33 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 		if(aerial_flame_level)
 			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
-				break
-			var/area/picked_area = get_area(picked_turf)
+				continue
+			var/area/picked_area = picked_turf.loc // get_area() is slower here when we know we have a turf
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
-				break
+				continue
 
-		spawn(0)
-			fire_spread_recur(picked_turf, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+		CHECK_TICK // before the recursive call
+		fire_spread_recur(picked_turf, cause_data, spread_power, spread_direction, fire_reagent, aerial_flame_level)
 
-/proc/fire_spread(turf/target, datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level = TURF_PROTECTION_NONE)
-	var/datum/reagent/fire_reag = new()
-	fire_reag.intensityfire = burn_lvl
-	fire_reag.durationfire = fire_lvl
-	fire_reag.burn_sprite = burn_sprite
-	fire_reag.burncolor = f_color
-
-	new/obj/flamer_fire(target, cause_data, fire_reag)
-	for(var/direction in GLOB.alldirs)
+/proc/fire_spread(turf/target, datum/cause_data/cause_data, range, fire_reagent, aerial_flame_level = TURF_PROTECTION_NONE)
+	set waitfor = FALSE
+	new/obj/flamer_fire(target, cause_data, fire_reagent)
+	for(var/turf/picked_turf in orange(1, target))
+		var/direction = get_dir(target, picked_turf)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)
 				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
-		var/turf/picked_turf = get_step(target, direction)
 		if(aerial_flame_level)
 			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
 				continue
 			var/area/picked_area = get_area(picked_turf)
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
-		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_reagent, aerial_flame_level)
+		CHECK_TICK // don't overrun spreading in just one direction
 
 // So it doens't do the spinny animation
 /obj/flamer_fire/onZImpact(turf/impact_turf, height)
@@ -985,6 +980,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 
 /obj/item/weapon/gun/flamer/survivor/get_fire_sound()

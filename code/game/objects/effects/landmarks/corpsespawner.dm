@@ -291,6 +291,12 @@
 	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 
+// Fire Station
+
+/obj/effect/landmark/corpsespawner/hybrisa/fire_fighter
+	name = "Corpse - Civilian - Fire Protection Specialist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/fire_fighter
+
 // Pizza Galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy
@@ -376,3 +382,23 @@
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
 
 //*****************************************************************************************************/
+
+///US Army Corpses///
+
+// Army Trooper //
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper
+	name = "Corpse - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_trooper
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper/burst
+	name = "Corpse - Burst - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic
+	name = "Corpse - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
+	name = "Corpse - Burst - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst

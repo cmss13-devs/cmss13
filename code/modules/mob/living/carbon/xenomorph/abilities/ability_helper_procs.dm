@@ -25,7 +25,7 @@
 
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[O] is already drenched in acid."))
 			return
 
 	var/obj/I
@@ -103,7 +103,7 @@
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[O] is already drenched in acid."))
 			return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
@@ -334,7 +334,7 @@
 	use_plasma(amount)
 	target.gain_plasma(amount)
 	target.xeno_jitter(1 SECONDS)
-	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to us. We now have [target.plasma_stored]."))
+	to_chat(target, SPAN_XENOWARNING("[src] has transferred [amount] plasma to us. We now have [target.plasma_stored]."))
 	to_chat(src, SPAN_XENOWARNING("We have transferred [amount] plasma to [target]. We now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
 

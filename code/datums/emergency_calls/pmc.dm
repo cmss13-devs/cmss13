@@ -19,7 +19,7 @@
 /datum/emergency_call/pmc/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
-	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
+	objectives = "Assist the [MAIN_SHIP_NAME]'s crew. Protect it's Corporate Liaison and Commanding Officer, and eliminate all hostile threats."
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -38,7 +38,7 @@
 	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Support Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/synth/pmc, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medic!"))

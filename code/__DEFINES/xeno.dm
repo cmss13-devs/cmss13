@@ -421,6 +421,9 @@
 // Lurker strain flags
 #define LURKER_VAMPIRE "Vampire"
 
+// Warrior strain flags
+#define WARRIOR_BULWARK "Bulwark"
+
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"
 #define RAVAGER_BERSERKER "Berserker"
@@ -449,6 +452,7 @@
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
 #define XENO_DAMAGE_MOD_VERY_SMALL  5
+#define XENO_DAMAGE_MOD_BULWARK  8
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15
 #define XENO_DAMAGE_MOD_LARGE   20
@@ -715,12 +719,11 @@
 #define QUEEN_SPAWN_TIMEOUT (1 MINUTES)
 
 #define FIRE_IMMUNITY_NONE				0
-#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0) // Will not take damage from fire, but can be set on fire
-#define FIRE_IMMUNITY_NO_IGNITE			(1<<1) // Cannot be set on fire, but will take damage
-#define FIRE_IMMUNITY_COMPLETE			(1<<2) // Cannot be set on fire and will not take damage from fire
-#define FIRE_IMMUNITY_BURROWER			(1<<3) // Bespoke variant for Burrower so we don't need to constantly add and remove signals
-#define FIRE_IMMUNITY_XENO_FRENZY		(1<<4) // Will have COMPONENT_XENO_FRENZY added
-#define FIRE_MODIFIER					(1<<5) // Indicates vulnerability/resistance rather than immunity
+#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0)
+#define FIRE_IMMUNITY_NO_IGNITE			(1<<1)
+#define FIRE_IMMUNITY_XENO_FRENZY		(1<<2)
+#define FIRE_VULNERABILITY				(1<<3)
+#define FIRE_IMMUNITY_IGNORE_PEN		(1<<4)
 
 #define FIRE_MULTIPLIER_BASE	 	1
 #define FIRE_MULTIPLIER_LOW		 	1.25
@@ -745,6 +748,11 @@
 #define XENO_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
+// dancer defines
+#define DANCER_DODGE_TIME 7 SECONDS
+
+// bulwark defines
+#define BULWARK_REFLECTIVE_TIME 6 SECONDS
 
 // drone fruits
 
@@ -780,3 +788,14 @@
 #define LARVA_STATE_BLOODY 0
 #define LARVA_STATE_NORMAL 1
 #define LARVA_STATE_MATURE 2
+
+// facehugger / carrier nonsense
+
+#define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
+#define MAX_IMPREGNATION_TIME 15 SECONDS
+
+#define HUGGER_ACTIVE_TIME 4 SECONDS //Time between being dropped and being able to jump
+
+#define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
+#define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.
+#define CARRIER_HUGGER_THROW_RANGE 6

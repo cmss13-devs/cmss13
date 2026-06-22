@@ -281,6 +281,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
   const provost: Array<Observable> = [];
+  const ArmySquad: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.mutiny_status?.includes('Mutineer')) {
@@ -311,6 +312,8 @@ const marineSplitter = (members: Array<Observable>) => {
       SOFSquad.push(x);
     } else if (x.job?.includes('Provost')) {
       provost.push(x);
+    } else if (x.job?.includes('Army')) {
+      ArmySquad.push(x);
     } else {
       other.push(x);
     }
@@ -331,6 +334,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
     buildSquadObservable('Provost', 'red', provost),
+    buildSquadObservable('Army', 'green', ArmySquad),
   ];
   return squads;
 };
@@ -520,6 +524,37 @@ const tweSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
+const yautjaSplitter = (members: Array<Observable>) => {
+  const youngblood: Array<Observable> = [];
+  const stranded: Array<Observable> = [];
+  const badblood: Array<Observable> = [];
+  const mcaste: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('Young Blood')) {
+      youngblood.push(x);
+    } else if (x.job?.includes('Stranded')) {
+      stranded.push(x);
+    } else if (x.job?.includes('Bad Blood')) {
+      badblood.push(x);
+    } else if (x.job?.includes('Military Caste')) {
+      mcaste.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const preds = [
+    buildSquadObservable('Hunters', 'green', other),
+    buildSquadObservable('Young Bloods', 'brown', youngblood),
+    buildSquadObservable('Stranded', 'orange', stranded),
+    buildSquadObservable('Bad Bloods', 'red', badblood),
+    buildSquadObservable('Military Caste', 'red', mcaste),
+  ];
+  return preds;
+};
+
 /**
  * The primary content display for points of interest.
  * Renders a scrollable section replete with subsections for each
@@ -651,7 +686,12 @@ const ObservableContent = () => {
         section={responders}
         title="Fax Responders"
       />
-      <ObservableSection color="green" section={predators} title="Predators" />
+      <GroupedObservable
+        color="green"
+        section={predators}
+        title="Predators"
+        splitter={yautjaSplitter}
+      />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
       <ObservableSection
         color="orange"

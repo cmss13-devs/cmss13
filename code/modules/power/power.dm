@@ -85,7 +85,7 @@
 		return
 
 	var/has_power
-	if (master_area)
+	if(master_area)
 		has_power = master_area.powered(power_channel)
 	else
 		has_power = powered(power_channel)

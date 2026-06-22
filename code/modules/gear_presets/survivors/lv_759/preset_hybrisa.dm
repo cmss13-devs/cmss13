@@ -924,14 +924,17 @@
 
 /datum/equipment_preset/survivor/hybrisa/wey_po
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
-	assignment = "Weyland-Yutani - Commercial Pilot"
+	job_title = JOB_WY_PILOT
+	assignment = JOB_WY_PILOT
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	faction = FACTION_WY
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)
-
+	minimap_icon = "wy_pilot"
+	minimap_background = "background_goon"
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/wey_po/load_gear(mob/living/carbon/human/new_human)
@@ -1268,11 +1271,21 @@
 
 /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard
 	name = "Survivor - Hybrisa - Synthetic - Executive Bodyguard"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	assignment = "W-Y Security Executive Bodyguard Synthetic"
+	role_comm_title = "WY PPO Syn"
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	job_title = JOB_WY_SEC_SYNTH
+	idtype = /obj/item/card/id/silver/cl
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
 
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+
 	var/choice = rand(1,45)
 	switch(choice)
 		if(1 to 10)

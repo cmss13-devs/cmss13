@@ -14,7 +14,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "ai" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "36_alt"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -76,9 +76,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "bm" = (
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "49"
-	},
+/obj/structure/shuttle/part/dropship_clf/lower_right_wall,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "bD" = (
@@ -147,7 +145,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "cd" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "36"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -223,12 +221,12 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "cR" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "97"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "cS" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "98"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -293,7 +291,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "dE" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "brokendropshipconsole2"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -362,22 +360,19 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
 "em" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "110"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "er" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "37_alt"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "ex" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "45"
-	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_right_cap,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "ez" = (
 /obj/structure/machinery/big_computers/computerblack/computer2{
 	pixel_y = 8
@@ -397,13 +392,10 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "eJ" = (
 /obj/structure/machinery/light/spot/blue,
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "101"
-	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_center,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "eP" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/prison/ramptop/north,
@@ -669,9 +661,8 @@
 /obj/structure/machinery/light/dropship/blue{
 	dir = 4
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire{
-	icon_state = "7"
-	},
+/obj/structure/shuttle/part/dropship_clf/left_inner_wing_connector,
+/turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "hP" = (
 /turf/open/floor/strata/blue3/east,
@@ -803,8 +794,8 @@
 /turf/open/floor/strata/yellow3,
 /area/lv759/indoors/spaceport/cargo)
 "jx" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "38"
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "39"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "jB" = (
@@ -900,9 +891,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/lv759/indoors/spaceport/clf_dropship)
 "lx" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "4"
-	},
+/obj/structure/shuttle/part/dropship_clf/right_outer_wing_connector,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "lA" = (
 /turf/open/floor/prison/cell_stripe,
@@ -975,9 +966,8 @@
 /obj/structure/machinery/light/dropship/blue{
 	dir = 8
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire{
-	icon_state = "8"
-	},
+/obj/structure/shuttle/part/dropship_clf/right_inner_wing_connector,
+/turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "mJ" = (
 /obj/effect/decal/medical_decals{
@@ -998,7 +988,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "mM" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "34"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1104,7 +1094,7 @@
 /obj/structure/machinery/light/dropship/green{
 	dir = 4
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "33"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1218,7 +1208,7 @@
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
 "pX" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1236,7 +1226,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ql" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "26"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1267,7 +1257,7 @@
 /obj/structure/machinery/light/dropship/red{
 	dir = 8
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "75"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1313,7 +1303,7 @@
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
 "ru" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "78"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1421,11 +1411,9 @@
 /obj/structure/shuttle/part/dropship_clf{
 	icon_state = "9_alt"
 	},
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "45"
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_right_cap,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "sW" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -1458,7 +1446,7 @@
 	dir = 1;
 	attach_id = 5
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "106"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1485,7 +1473,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "uP" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "35"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1555,7 +1543,7 @@
 /obj/structure/machinery/light/dropship/red{
 	dir = 8
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "28"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1654,7 +1642,7 @@
 /turf/open/floor/strata/yellow3,
 /area/lv759/indoors/spaceport/cargo)
 "ww" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "110";
 	dir = 4
 	},
@@ -1821,11 +1809,9 @@
 /obj/structure/shuttle/part/dropship_clf{
 	icon_state = "15_alt"
 	},
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "44"
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_left_cap,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "yD" = (
 /obj/structure/stairs{
 	color = "#a6aeab"
@@ -1837,7 +1823,7 @@
 /obj/structure/machinery/light/dropship/green{
 	dir = 4
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "83"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1865,12 +1851,11 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "zh" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "20"
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_left_exhaust,
+/turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "zi" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "94"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1933,7 +1918,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Ar" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "37"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1942,7 +1927,7 @@
 	pixel_x = -14;
 	pixel_y = 20
 	},
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "brokendropshipconsole1"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1988,9 +1973,9 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "AW" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "3"
-	},
+/obj/structure/shuttle/part/dropship_clf/left_outer_wing_connector,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "AX" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -2002,12 +1987,12 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Bg" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "107"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "Bu" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "92"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2035,12 +2020,9 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
 "BS" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "44"
-	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_left_cap,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "BZ" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -2049,16 +2031,13 @@
 /area/lv759/oob)
 "CB" = (
 /obj/structure/machinery/light/spot/blue,
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "101"
-	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 4
 	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_center,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "CI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2137,7 +2116,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
 "Ep" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "10_interior_1"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2155,11 +2134,11 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Er" = (
-/obj/structure/shuttle/part/dropship_clf/transparent,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 4
 	},
+/obj/structure/shuttle/part/dropship_clf/transparent/left_outer_bottom_wing,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Ev" = (
@@ -2175,8 +2154,8 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "EL" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "39"
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
+	icon_state = "38"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "ES" = (
@@ -2311,11 +2290,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"GZ" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "16"
-	},
-/area/lv759/indoors/spaceport/clf_dropship)
 "Hh" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/structure/machinery/light/blue{
@@ -2356,7 +2330,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Ic" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "wy_leftengine"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2508,12 +2482,9 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "JN" = (
 /obj/structure/machinery/floodlight/landing/floor,
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "102"
-	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_top_right,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "JO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -2535,30 +2506,24 @@
 /area/lv759/indoors/spaceport/cargo)
 "Ke" = (
 /obj/structure/machinery/floodlight/landing/floor,
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "100"
-	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/shuttle/part/dropship_clf/transparent/nose_top_left,
 /turf/open/floor/plating,
-/area/lv759/indoors/spaceport/docking_bay_2)
+/area/lv759/indoors/spaceport/clf_dropship)
 "Kf" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
 "Kh" = (
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/right_engine,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Kk" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "wy_rightengine"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "Kt" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "96"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2616,9 +2581,7 @@
 	icon_state = "N"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "99"
-	},
+/obj/structure/shuttle/part/dropship_clf/nose_front_right,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Ld" = (
@@ -2634,7 +2597,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Le" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "29"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2693,14 +2656,12 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "Mi" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "6"
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf/transparent/right_outer_bottom_wing,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Mj" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "24"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2799,7 +2760,7 @@
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
 "Oo" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "brokendropshipconsole3"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2871,10 +2832,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Pg" = (
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/left_engine,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Pj" = (
@@ -2892,9 +2850,8 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Ps" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "21"
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent/engine_right_exhaust,
+/turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Pz" = (
 /obj/effect/decal/medical_decals{
@@ -2921,14 +2878,12 @@
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/communications_office)
 "Qf" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "2"
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf/transparent/left_outer_inner_wing,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Qg" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "103"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2952,7 +2907,7 @@
 /turf/open/floor/prison/southwest,
 /area/lv759/indoors/spaceport/clf_dropship)
 "QA" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "27"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2986,7 +2941,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Rp" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "32"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3064,7 +3019,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/lv759/indoors/spaceport/clf_dropship)
 "RS" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "25"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3079,18 +3034,13 @@
 /obj/item/shard,
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"RX" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "17"
-	},
-/area/lv759/indoors/spaceport/clf_dropship)
 "Sb" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "10_interior"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "Sd" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "22"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3102,7 +3052,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Sh" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "31"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3282,7 +3232,7 @@
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "VX" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "23"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3301,7 +3251,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "Wu" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "10"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3309,7 +3259,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "WE" = (
-/turf/closed/shuttle/dropship5/CLF/Fire{
+/turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "30"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3375,10 +3325,8 @@
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "XC" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "5"
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf/transparent/right_inner_bottom_wing,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "XQ" = (
@@ -3421,9 +3369,7 @@
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
 "Yc" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "46"
-	},
+/obj/structure/shuttle/part/dropship_clf/lower_left_wall,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Yf" = (
@@ -3435,7 +3381,7 @@
 /turf/open/floor/strata/yellow3/northwest,
 /area/lv759/indoors/spaceport/cargo)
 "Yh" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+/turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "leftengine_3"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -3519,9 +3465,7 @@
 	icon_state = "N"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "95"
-	},
+/obj/structure/shuttle/part/dropship_clf/nose_front_left,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Zw" = (
@@ -3901,7 +3845,7 @@ yp
 EL
 Rp
 ql
-GZ
+zh
 Ny
 Ho
 Mi
@@ -3926,7 +3870,7 @@ ex
 jx
 ox
 QA
-RX
+Ps
 Ho
 Zz
 It

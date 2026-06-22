@@ -362,7 +362,7 @@
 		if(JOB_UPP_COMMISSAR)
 			return /datum/equipment_preset/upp/commissar/dressed
 		if(JOB_UPP_SUPPORT_SYNTH)
-			return /datum/equipment_preset/upp/synth/dressed
+			return /datum/equipment_preset/synth/upp/dressed
 		if(JOB_UPP_JOE)
 			return /datum/equipment_preset/synth/working_joe/upp
 		if(JOB_UPP_PILOT)
@@ -387,6 +387,8 @@
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
+		if(JOB_PRED_SURVIVOR)
+			return /datum/equipment_preset/yautja/stranded
 
 	return /datum/equipment_preset/uscm/private_equipped
 

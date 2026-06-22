@@ -428,7 +428,7 @@
 
 /obj/structure/window/reinforced/toughened
 	name = "safety glass"
-	desc = "A very tough looking window reinforced with tempered glass and bracing rods, probably bullet proof."
+	desc = "A very tough looking window reinforced with tempered glass and bracing rods, probably bulletproof."
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	health = 300
@@ -585,7 +585,6 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
-	plane = TURF_PLANE
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"
@@ -1241,7 +1240,7 @@
 	health = 1000000
 	window_frame = /obj/structure/window_frame/hybrisa/research/hull
 
-// Marshalls
+// Marshals
 /obj/structure/window/framed/hybrisa/marshalls
 	name = "window"
 	desc = "A glass window inside a wall frame."

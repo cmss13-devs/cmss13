@@ -1148,7 +1148,7 @@
 
 	. = ..()
 
-/mob/living/carbon/human/proc/set_species(new_species, default_color)
+/mob/living/carbon/human/proc/set_species(new_species, default_color, default_species = "Human")
 	if(!new_species)
 		new_species = "Human"
 
@@ -1163,9 +1163,11 @@
 
 	species = GLOB.all_species[new_species]
 
-	// If an invalid new_species value is passed, just default to human
-	if (!istype(species))
-		species = GLOB.all_species["Human"]
+	// If an invalid new_species value is passed, defualt to set defualt, if that fails fallback just default to human
+	if(!istype(species))
+		species = GLOB.all_species[default_species]
+		if(!istype(species))
+			species = GLOB.all_species["Human"]
 
 	if(oldspecies)
 		//additional things to change when we're no longer that species
@@ -1184,19 +1186,23 @@
 
 	if(species.base_color && default_color)
 		//Apply color.
-		r_skin = hex2num(copytext(species.base_color,2,4))
-		g_skin = hex2num(copytext(species.base_color,4,6))
-		b_skin = hex2num(copytext(species.base_color,6,8))
+		var/list/color_list = rgb2num(species.base_color)
+		r_skin = color_list[1]
+		g_skin = color_list[2]
+		b_skin = color_list[3]
 	else
 		r_skin = 0
 		g_skin = 0
 		b_skin = 0
 
 	if(species.hair_color)
-		r_hair = hex2num(copytext(species.hair_color, 2, 4))
-		g_hair = hex2num(copytext(species.hair_color, 4, 6))
-		b_hair = hex2num(copytext(species.hair_color, 6, 8))
+		var/list/color_list = rgb2num(species.hair_color)
+		r_hair = color_list[1]
+		g_hair = color_list[2]
+		b_hair = color_list[3]
 
+	if(species.no_grad_style)
+		grad_style = "None"
 	// Switches old pain and stamina over
 	species.initialize_pain(src)
 	species.initialize_stamina(src)
@@ -1318,17 +1324,17 @@
 			if(assigned_squad)
 				H = assigned_squad.squad_leader
 		if(TRACKER_LZ)
-			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
-			if(!C) //no LZ selected
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/primary_lz_console = SSticker.mode.active_lz
+			if(!primary_lz_console) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
-			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
+			else if(!SSmapping.same_z_map(src.z, primary_lz_console.z) || get_dist(src,primary_lz_console) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
-				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
+				hud_used.locate_leader.setDir(Get_Compass_Dir(src,primary_lz_console))
 				hud_used.locate_leader.icon_state = "trackon_lz"
-				if(C.z > z)
+				if(primary_lz_console.z > z)
 					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
-				if(C.z < z)
+				if(primary_lz_console.z < z)
 					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)
@@ -1413,14 +1419,15 @@
 		return
 
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_MOBS|SEE_OBJS|BLIND)
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS|BLIND)
 
 	see_in_dark = species.darksight
 	sight |= species.flags_sight
 
 	process_glasses(glasses)
 
-	sight |= (SEE_BLACKNESS|SEE_TURFS)
+	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
+		sight |= SEE_BLACKNESS
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
@@ -1588,7 +1595,7 @@
 	. = ..(mapload, SYNTH_GEN_THREE)
 
 /mob/living/carbon/human/synthetic/old/Initialize(mapload)
-	. = ..(mapload, SYNTH_COLONY)
+	. = ..(mapload, SYNTH_GEN_TWO)
 
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)
@@ -1606,7 +1613,7 @@
 	. = ..(mapload, SYNTH_K9)
 
 /mob/living/carbon/human/resist_fire()
-	if(isyautja(src))
+	if(isyautja(src) || isthrall(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
@@ -1619,7 +1626,7 @@
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river))
+	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)
@@ -1630,7 +1637,7 @@
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
-	if(isyautja(src))
+	if(isyautja(src) || isthrall(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
@@ -1831,6 +1838,8 @@
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
+
+	qdel(new_player)
 
 /mob/living/carbon/human/point_to_atom(atom/A, turf/T)
 	if(isitem(A))

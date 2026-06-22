@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/rights = NONE
 
 	for(var/right in input_list)
-		right = lowertext(right)
+		right = ckey(right) // lower text + trim
 
 		switch(right)
 			if("buildmode","build")

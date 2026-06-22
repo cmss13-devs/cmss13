@@ -2984,7 +2984,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "ajy" = (
@@ -2994,7 +2994,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "ajz" = (
@@ -3004,7 +3004,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "ajA" = (
@@ -3014,7 +3014,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "ajC" = (
@@ -4145,7 +4145,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4157,7 +4157,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4324,7 +4324,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4339,7 +4339,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4587,7 +4587,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4596,7 +4596,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4687,7 +4687,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4696,7 +4696,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4883,7 +4883,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4892,7 +4892,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -6776,7 +6776,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -6785,7 +6785,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -6794,7 +6794,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -6803,7 +6803,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -13528,28 +13528,28 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aYk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aYl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aYm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aYo" = (
@@ -14417,7 +14417,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -14429,7 +14429,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -14698,7 +14698,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -14713,7 +14713,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -14844,7 +14844,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -14853,7 +14853,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -15149,7 +15149,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -15158,7 +15158,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -15536,7 +15536,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -15558,7 +15558,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -16157,7 +16157,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/north,
@@ -16364,7 +16364,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2,
@@ -18857,7 +18857,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -18869,7 +18869,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -18878,7 +18878,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -18887,7 +18887,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -20528,16 +20528,16 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBf" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBg" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBh" = (
 /turf/closed/wall/prison,
@@ -21349,12 +21349,12 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/telecomms)
 "bEg" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bEh" = (
 /obj/structure/machinery/door/unpowered/shuttle,
 /obj/structure/machinery/door/poddoor/shutters/transit/open,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bEi" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
@@ -32990,7 +32990,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurple2/southwest,
@@ -33250,7 +33250,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurple2/northeast,
@@ -33770,7 +33770,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -33820,7 +33820,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurple2/northwest,
@@ -34137,7 +34137,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurple2/east,
@@ -35948,7 +35948,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurple2/east,
@@ -35970,7 +35970,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurple2/east,
@@ -35986,7 +35986,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -36085,7 +36085,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/telecomms)
 "pgg" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "pib" = (
@@ -36359,7 +36359,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurple2/east,
@@ -36650,7 +36650,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurple2/northwest,
@@ -36991,7 +36991,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurple2/southwest,
@@ -37039,7 +37039,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -37061,7 +37061,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/darkpurplefull2,

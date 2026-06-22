@@ -130,7 +130,7 @@
 
 /obj/item/storage/box/fluff_gun
 	name = "Sidearm Storage Box"
-	desc = "Base item for prefrence weapons."
+	desc = "Base item for preference weapons."
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 7

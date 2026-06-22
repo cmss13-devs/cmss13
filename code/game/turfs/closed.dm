@@ -60,19 +60,19 @@
 					climb_up_time = 3 SECONDS
 					INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), human, 3 SECONDS, INTERRUPT_MOVED, EMOTE_ICON_WALLBOOSTING)
 					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
-
+	var/hands_full = FALSE
 	var/list/grabbed_things = list()
 	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
+		hands_full = TRUE
 		if(istype(in_hand, /obj/item/grab))
 			var/obj/item/grab/grabbing = in_hand
 			grabbed_things += grabbing.grabbed_thing
 			grabbing.grabbed_thing.forceMove(user.loc)
-			to_chat(user, SPAN_INFO("Climbing while pulling [grabbing.grabbed_thing] slows you down."))
-		else
-			to_chat(user, SPAN_INFO("Climbing with [in_hand] in hand slows you down."))
-		climb_up_time *= 1.5
+	
+	if(hands_full)
+		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
 
-	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
+if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		if(human)
 			human.flags_emote &= ~EMOTING_WALL_BOOSTING

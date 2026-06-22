@@ -1,0 +1,6 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "Holograms (Queen eye, falcion drone, spycam, railgun cam) do not fall down z levels, \"looking up\" in moves it down/up z level"
+  - rscadd: "Queen remote weeding can go up/down z level when there is wall under the crossed edge"
+  - bugfix: "Queen can remote build special structures on other z levels of the same map as she is at"

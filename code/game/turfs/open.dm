@@ -499,7 +499,7 @@
 
 // Glass Roof
 
-/obj/effect/decal/prop/roof/glass
+/obj/structure/prop/roof/glass
 	icon = 'icons/effects/glass_roof.dmi'
 	icon_state = "glass_roof_1"
 	layer = TURF_LAYER

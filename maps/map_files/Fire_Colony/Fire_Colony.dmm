@@ -36651,11 +36651,11 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/mining)
 "hKv" = (
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	color = "#716c71";
 	icon_state = "glass_roof_2"
 	},
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	icon_state = "glass_3"
 	},
 /turf/open/slippery/hull/colorable/tiles{
@@ -38959,10 +38959,10 @@
 	},
 /area/sky)
 "iub" = (
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	icon_state = "glass_3"
 	},
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	color = "#716c71";
 	icon_state = "glass_roof_2"
 	},
@@ -58043,11 +58043,11 @@
 /turf/open/lava/sand,
 /area/ice_colony/exterior/surface/valley/south)
 "nxS" = (
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	color = "#716c71";
 	icon_state = "glass_roof_2"
 	},
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	icon_state = "glass_3"
 	},
 /turf/open_space,
@@ -71916,10 +71916,10 @@
 /turf/open/floor/corsat,
 /area/ice_colony/surface/bar/canteen)
 "rdZ" = (
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	icon_state = "glass_3"
 	},
-/obj/effect/decal/prop/roof/glass{
+/obj/structure/prop/roof/glass{
 	color = "#716c71";
 	icon_state = "glass_roof_2"
 	},
@@ -118583,10 +118583,10 @@ mAT
 aOj
 xEC
 weE
-aQZ
+alk
 sSq
 aqn
-aQZ
+alk
 uMB
 uJF
 uMB
@@ -123633,10 +123633,10 @@ tif
 bvn
 xEP
 xEP
-aQZ
+alk
 hnB
 yhE
-aQZ
+alk
 ara
 hBB
 mSX

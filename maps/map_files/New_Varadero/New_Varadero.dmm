@@ -4275,13 +4275,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
-"dfP" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 32
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/maintenance/south)
 "dgq" = (
 /turf/open/floor/shiva/red,
 /area/varadero/interior/morgue)
@@ -51205,7 +51198,7 @@ lNb
 cto
 etv
 vTe
-dfP
+iaM
 cto
 wXC
 cto

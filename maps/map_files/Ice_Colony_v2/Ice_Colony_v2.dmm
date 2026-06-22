@@ -375,12 +375,6 @@
 "abV" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator4/ground)
-"abW" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
-	},
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator4/ground)
 "abX" = (
 /turf/closed/shuttle/elevator{
 	dir = 1
@@ -646,13 +640,6 @@
 /area/ice_colony/surface/requesitions)
 "acZ" = (
 /turf/open/floor/plating/icefloor/warnplate/southeast,
-/area/ice_colony/surface/requesitions)
-"ada" = (
-/obj/item/lightstick/planted,
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
-	},
-/turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "adb" = (
 /obj/structure/ice/thin/junction{
@@ -3885,12 +3872,6 @@
 "aoo" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator2/ground)
-"aop" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator2{
-	pixel_y = 30
-	},
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator2/ground)
 "aoq" = (
 /turf/closed/shuttle/elevator{
 	dir = 1
@@ -4345,12 +4326,6 @@
 /area/ice_colony/surface/dorms)
 "aqa" = (
 /turf/open/floor/darkgreencorners2/east,
-/area/ice_colony/surface/dorms)
-"aqb" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator2{
-	pixel_y = 30
-	},
-/turf/open/floor/darkgreen2/north,
 /area/ice_colony/surface/dorms)
 "aqc" = (
 /obj/structure/machinery/disposal,
@@ -9783,12 +9758,6 @@
 "aJB" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator1/ground)
-"aJC" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 30
-	},
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator1/ground)
 "aJD" = (
 /turf/closed/shuttle/elevator{
 	dir = 1
@@ -9992,12 +9961,6 @@
 /obj/structure/closet/secure_closet/security,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/darkred2/north,
-/area/ice_colony/surface/hangar/checkpoint)
-"aKN" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 30
-	},
-/turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aKO" = (
 /obj/structure/bed/chair,
@@ -10592,13 +10555,6 @@
 /turf/open/shuttle/elevator,
 /area/shuttle/elevator3/ground)
 "aNf" = (
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator3/ground)
-"aNg" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3{
-	dir = 1;
-	pixel_y = 30
-	},
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator3/ground)
 "aNh" = (
@@ -11577,10 +11533,6 @@
 "aRb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3{
-	dir = 1;
-	pixel_y = 30
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -13462,7 +13414,6 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "aZg" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/ice_colony/landing/console)
 "aZh" = (
@@ -14270,12 +14221,6 @@
 /area/ice_colony/underground/requesition)
 "bdM" = (
 /turf/open/floor/darkbrowncorners2/east,
-/area/ice_colony/underground/requesition)
-"bdN" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
-	pixel_y = 30
-	},
-/turf/open/floor/darkbrown2/north,
 /area/ice_colony/underground/requesition)
 "bdO" = (
 /obj/structure/machinery/firealarm{
@@ -16609,12 +16554,6 @@
 /area/ice_colony/underground/hallway/north_west)
 "bol" = (
 /turf/open/floor/darkgreencorners2/north,
-/area/ice_colony/underground/hallway/north_west)
-"bom" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator2{
-	pixel_y = 32
-	},
-/turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/north_west)
 "bon" = (
 /obj/structure/machinery/light{
@@ -20086,13 +20025,6 @@
 /area/ice_colony/underground/research)
 "bBF" = (
 /turf/open/floor/darkpurplecorners2/east,
-/area/ice_colony/underground/research)
-"bBG" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3{
-	dir = 1;
-	pixel_y = 30
-	},
-/turf/open/floor/darkpurple2/north,
 /area/ice_colony/underground/research)
 "bBH" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -24979,12 +24911,6 @@
 "bUl" = (
 /turf/open/floor/darkgreencorners2/north,
 /area/ice_colony/underground/hallway/south_east)
-"bUm" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 32
-	},
-/turf/open/floor/darkgreen2/north,
-/area/ice_colony/underground/hallway/south_east)
 "bUn" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -25549,12 +25475,6 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
-"bWu" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
 "bWv" = (
 /obj/structure/surface/table,
 /obj/item/device/camera,
@@ -26343,7 +26263,6 @@
 /area/ice_colony/surface/hangar/alpha)
 "jZI" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/landing/console)
 "kcN" = (
@@ -32363,7 +32282,7 @@ byM
 byM
 byM
 bBa
-bBG
+bBc
 bBE
 bCM
 bCM
@@ -33301,7 +33220,7 @@ aac
 aae
 abl
 abA
-abW
+abV
 abU
 abV
 abV
@@ -34152,7 +34071,7 @@ abV
 abU
 acr
 abl
-ada
+agA
 acg
 abE
 abE
@@ -38511,7 +38430,7 @@ bbn
 bbn
 bbn
 bba
-bdN
+bde
 bfn
 bdL
 bfo
@@ -44110,7 +44029,7 @@ uBE
 asi
 aLL
 aMA
-aNg
+aNf
 aNe
 aNf
 aNf
@@ -48975,7 +48894,7 @@ blo
 blo
 blo
 bkW
-bom
+bnz
 bkr
 bkr
 bkr
@@ -57584,7 +57503,7 @@ hrN
 hrN
 anp
 anU
-aop
+aoo
 aon
 aoo
 aoo
@@ -58435,7 +58354,7 @@ aoo
 aon
 apw
 ano
-aqb
+apC
 apZ
 aqV
 ars
@@ -59203,7 +59122,7 @@ boJ
 bVS
 bRN
 bRR
-bWu
+bPg
 bPg
 bPg
 bPg
@@ -60602,7 +60521,7 @@ bTv
 bTv
 bTv
 bTl
-bUm
+bpc
 bUr
 bTT
 bME
@@ -72582,7 +72501,7 @@ aaQ
 acm
 aJl
 aJs
-aJC
+aJB
 aJA
 aJB
 aJB
@@ -73433,7 +73352,7 @@ aJB
 aJA
 aKb
 aJl
-aKN
+aKj
 aLr
 aKj
 aMr

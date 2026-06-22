@@ -53,8 +53,7 @@
 		to_chat(user, SPAN_NOTICE("You put [attacking_item] in [src]."))
 		if(user.drop_inv_item_to_loc(attacking_item, src))
 			icon_state = "[initial(icon_state)]-open"
-			sleep(5)
-			icon_state = initial(icon_state)
+			addtimer(CALLBACK(src, "reset_icon"),0.5 SECONDS)
 			updateUsrDialog()
 		return
 	to_chat(user, SPAN_NOTICE("You can't put [attacking_item] in [src]!"))

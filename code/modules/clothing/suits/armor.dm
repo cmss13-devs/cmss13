@@ -334,4 +334,96 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	slowdown = SLOWDOWN_ARMOR_LIGHT
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+
+/obj/item/clothing/suit/armor/landsknechten
+	name = "Chained garbs"
+	desc = "Less than a bishop's mantle, or a mail-cape, the chainmail standard wraps around fashionable wams to protect your most vital parts, while still remaining fashionable in a fight. This particular one comes in blue."
+	icon_state = "knecht_chainmail_br"
+	item_state = "knecht_chaimail_br"
+	flags_armor_protection = BODY_FLAG_CHEST
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi'
+	)
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	siemens_coefficient = 0.5
+	time_to_unequip = 20
+	time_to_equip = 20
+	allowed = list(
+		/obj/item/weapon,
+		/obj/item/device/flashlight,
+	)
+
+
+/obj/item/clothing/suit/armor/landsknechten/altyellow
+	name = "Chained garbs"
+	desc = "Less than a bishop's mantle, or a mail-cape, the chainmail standard wraps around fashionable wams to protect your most vital parts, while still remaining fashionable in a fight. This particular one comes in yellow."
+	icon_state = "knecht_chainmail_yb"
+	item_state = "knecht_chaimail_yb"
+/obj/item/clothing/suit/armor/landsknechten/altred
+	name = "Chained garbs"
+	desc = "Less than a bishop's mantle, or a mail-cape, the chainmail standard wraps around fashionable wams to protect your most vital parts, while still remaining fashionable in a fight. This particular one comes in red."
+	icon_state = "knecht_chainmail_ry"
+	item_state = "knecht_chaimail_ry"
+/obj/item/clothing/suit/armor/landsknechten/altpurple
+	name = "Chained garbs"
+	desc = "Less than a bishop's mantle, or a mail-cape, the chainmail standard wraps around fashionable wams to protect your most vital parts, while still remaining fashionable in a fight. This particular one comes in purple."
+	icon_state = "knecht_chainmail_pb"
+	item_state = "knecht_chaimail_pb"
+/obj/item/clothing/suit/armor/landsknechten/altgreen
+	name = "Chained garbs"
+	desc = "Less than a bishop's mantle, or a mail-cape, the chainmail standard wraps around fashionable wams to protect your most vital parts, while still remaining fashionable in a fight. This particular one comes in green."
+	icon_state = "knecht_chainmail_gr"
+	item_state = "knecht_chaimail_gr"
+
+/obj/item/clothing/suit/armor/landsknechten/cuirass //equivalent to medium armor
+	name = "Cuirass"
+	desc = "A sleeveless breastplate, worn over a padded doublet. While seeming heavy, it's actually quite comfortable. This would typically be seen worn by Doppelsoldners, but occasionally also by arquebusiers."
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	icon_state = "knecht_cuirass_1"
+	item_state = "knecht_cuirass_1"
+
+/obj/item/clothing/suit/armor/landsknechten/cuirass/alt
+	name = "Cuirass"
+	desc = "A sleeveless breastplate, worn over a padded doublet. While seeming heavy, it's actually quite comfortable. This would typically be seen worn by Doppelsoldners, but occasionally also by arquebusiers. \n\nThis one is ridged and segmented, implying a more modern, Maximilian style. You aren't sure how you know this."
+	icon_state = "knecht_cuirass_2"
+	item_state = "knecht_cuirass_2"
+
+/obj/item/clothing/suit/armor/landsknechten/reinforced //equivalent to heavy
+	name = "Three-quarter armor"
+	desc = "A sleeveless breastplate extended down to the knees, worn over a padded doublet. Is occasionally understood as a 'Three-quarter' armor-set. While seeming heavy, it's actually quite comfortable. This would typically be seen worn by Doppelsoldners, but occasionally also by arquebusiers."
+	icon_state = "knecht_reinforced_1"
+	item_state = "knecht_reinforced_1"
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/armor/landsknechten/reinforced/alt
+	name = "Three-quarter armor"
+	desc = "A sleeveless breastplate extended down to the knees, worn over a padded doublet. Is occasionally understood as a 'Three-quarter' armor-set. While seeming heavy, it's actually quite comfortable. This would typically be seen worn by Doppelsoldners, but occasionally also by arquebusiers. \n\nThis one is ridged and segmented, implying a more modern, Maximilian style. You aren't sure how you know this."
+	icon_state = "knecht_reinforced_2"
+	item_state = "knecht_reinforced_2"
+
+/obj/item/clothing/suit/armor/landsknechten/fullplate //equivalent to B18
+	name = "Four-quarter armor"
+	desc = "There is no doubt about it. This is full plate. A daunting, near-medieval set of interlocking armor woven in what can only be described as expensive excess. Surprisingly ergonomic, and likely to prevent any and all injury. How did you even afford this? Your trost is going to kill you when she finds your coinpurse empty."
+	icon_state = "knecht_fullplate"
+	item_state = "knecht_fullplate"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	time_to_unequip = 60
+	time_to_equip = 60
+
+/obj/item/clothing/suit/armor/landsknechten/fullplate/get_examine_text(mob/user)
+	if(ishuman(user) || isobserver(user))
+		. += "[SPAN_NOTICE("This is a seriously intricate set of armor. You calculate it will take significantly longer to put it on compared to what you're used to!")]"

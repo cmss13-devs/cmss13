@@ -39,6 +39,96 @@
 	icon_state = "ceremonial"
 	item_state = "ceremonial"
 
+//Landsknechte weapons
+/obj/item/weapon/sword/zweihander
+	name = "Zweihander"
+	desc = "The mother of all longswords. Its sweet voice speaks to you, but you're not a barbarian... are you?"
+	icon_state = "zweihander" //TODOLANDSKNECHTEN replace with dmi references
+	item_state = "zweihander"
+	force = MELEE_FORCE_TIER_11
+	embeddable = FALSE
+
+/obj/item/weapon/sword/messer // A sword that can be used as shield? Marvellous!
+// Inherent traits should be inherited by children. hopefully.
+	name = "Messer"
+	desc = "A Kriegsmesser. Your 'war-knife'. A slightly curved, long blade that fits the exact profile between a warrior's greatsword, and your mother's kitchen chopper. If you came home empty handed, this'd be the blade your camp's Trost'd kill you with."
+	icon_state = "grossmesser" //TODOLANDSKNECHTEN replace with dmi references
+	item_state = "grossmesser"
+	var/passive_block = SHIELD_CHANCE_MED
+	var/readied_block = SHIELD_CHANCE_VHIGH
+	var/readied_projectile_mult = PROJECTILE_BLOCK_PERC_30 //My god. You really are skilled.
+	var/passive_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
+	shield_chance = SHIELD_CHANCE_MED
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
+	var/readied_slowdown = SLOWDOWN_ARMOR_LIGHT
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	sharp = IS_SHARP_ITEM_BIG
+	embeddable = FALSE
+	attack_speed = 9
+	var/raised = FALSE //determines whether or not stance is up
+
+/obj/item/weapon/sword/messer/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
+	user.visible_message(SPAN_BLUE("\The [user] raises \the [src]- taking a defensive stance!"))
+	raised = TRUE
+
+	var/mob/living/carbon/human/H = user
+	var/current_shield_slowdown = H.shield_slowdown
+	H.shield_slowdown = max(readied_slowdown, H.shield_slowdown)
+	if(H.shield_slowdown != current_shield_slowdown)
+		H.recalculate_move_delay = TRUE
+	shield_chance = readied_block
+	shield_projectile_mult = readied_projectile_mult
+
+/obj/item/weapon/sword/messer/proc/lower_shield(mob/user as mob) // Retrieve your speed and go on the attack?!
+	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src], exposing themselves to the dangers of the hunt!"))
+	raised = FALSE
+
+	var/mob/living/carbon/human/H = user
+	var/current_shield_slowdown = H.shield_slowdown
+	var/set_shield_slowdown = 0
+	var/obj/item/weapon/shield/offhand_shield
+	if(H.l_hand == src && istype(H.r_hand, /obj/item/weapon/sword/messer))
+		offhand_shield = H.r_hand
+	else if(H.r_hand == src && istype(H.l_hand, /obj/item/weapon/sword/messer))
+		offhand_shield = H.l_hand
+	if(offhand_shield?.shield_readied)
+		set_shield_slowdown = offhand_shield.readied_slowdown
+	H.shield_slowdown = set_shield_slowdown
+	if(H.shield_slowdown != current_shield_slowdown)
+		H.recalculate_move_delay = TRUE
+	shield_chance = passive_block
+	shield_projectile_mult = passive_projectile_mult
+
+/obj/item/weapon/sword/messer/proc/toggle_shield(mob/user as mob)
+	if(raised)
+		lower_shield(user)
+	else
+		raise_shield(user)
+
+// Making sure that debuffs don't stay
+/obj/item/weapon/sword/messer/dropped(mob/user as mob)
+	if(raised)
+		lower_shield(user)
+	..()
+
+/obj/item/weapon/sword/messer/equipped(mob/user, slot)
+	if(raised)
+		lower_shield(user)
+	..()
+
+
+
+/obj/item/weapon/shield/messer/get_examine_text(mob/user)
+	if(ishuman(user) || isobserver(user))
+		. += "[SPAN_NOTICE("When activated in hand (Z by default) this weapon will be raised into a slower, defensive stance!")]"
+
+/obj/item/weapon/shield/messer/alt
+	name = "Katzbalger"
+	desc = "A small, short arming sword typically used when your *actual* skills of fielding men to death with your bow or gun have failed you. If you're using this, you either lack a lot of faith in yourself, or your faith in yourself has proven poorly."
+	icon_state = "katzberger" //TODOLANDSKNECHTEN replace with dmi references
+	item_state = "katzberger"
+
 /obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."

@@ -477,6 +477,12 @@
 	icon_state = "dogtag_upp"
 	tags_taken_icon = "dogtag_upp_taken"
 
+obj/item/card/id/dogtag/landsknechte //TODOLANDSKNECHTEN
+	name = "Landsknechte Erkennungsmarke"
+	desc = "A soldier dog tag from less-than-ancient times."
+	icon_state = "dogtag_upp"
+	tags_taken_icon = "dogtag_upp_taken"
+
 /obj/item/dogtag
 	name = "information dog tag"
 	desc = "A fallen marine's information dog tag."

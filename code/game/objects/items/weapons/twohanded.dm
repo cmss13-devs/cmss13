@@ -274,6 +274,29 @@
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 	shield_chance = SHIELD_CHANCE_LOW
 
+//Landsknechten weapons
+
+/obj/item/weapon/twohanded/spear/halberd
+	name = "Halberd"
+	desc = "A 2-meter long polearm that's let you pick as many apples off trees as heads off Frankmen. The head of this one has an axe attached. For good luck, of course."
+	icon_state = "spearglass" //TODOLANDSKNECHTEN dmi
+	icon_state = "spearglass"
+	attack_verb = list("chopped", "stabbed", "jabbed", "crushed", "smashed")
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
+
+/obj/item/weapon/twohanded/spear/halberd/get_examine_text(mob/user)
+	if(ishuman(user) || isobserver(user))
+		. += "[SPAN_NOTICE("This weapon will protect you from pounces, and can be used to bash targets for a brief slow!")]"
+
+/obj/item/weapon/twohanded/spear/halberd/alt
+	name = "Billhook"
+	desc = "A billhook! Not the cutting kind. A polearm with a blade mounted below its spearhead. A cruel implement if not for the sheer distances you'll be doing the cruelty from."
+	icon_state = "spearglass" //TODOLANDSKNECHTEN dmi
+	icon_state = "spearglass"
+	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
+
+
 /obj/item/weapon/twohanded/lungemine
 	name = "lunge mine"
 	icon_state = "lungemine"

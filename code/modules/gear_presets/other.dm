@@ -1026,6 +1026,8 @@
 	var/datum/preferences/preferences = new
 	preferences.randomize_appearance(new_human)
 
+//*****************************************************************************************************/
+
 ///Hunting Grounds Historical Prey///
 
 /datum/equipment_preset/other/hunted
@@ -1036,6 +1038,8 @@
 
 /datum/equipment_preset/other/hunted/load_vanity(mob/living/carbon/human/new_human)
 	return	//no vanity for historical prey
+
+// Ancient Romans
 
 /datum/equipment_preset/other/hunted/roman
 	name = "Roman Legionary (Hunted)"
@@ -1126,6 +1130,8 @@
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
+// USCM Vietcong
+
 /datum/equipment_preset/other/hunted/vietnam
 	name = "Vietnam US Army Rifleman (Hunted)"
 	idtype = /obj/item/card/id/dogtag
@@ -1177,3 +1183,83 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/dutch/m16/ap(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16/ap(new_human), WEAR_L_STORE)
+
+// Landsknechten (old-German mercenaries)
+
+/datum/equipment_preset/other/hunted/landsknechten/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+
+	var/datum/preferences/A = new
+	A.randomize_appearance(new_human)
+
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_landsknecht))
+	switch(new_human.gender)
+		if(FEMALE)
+			first_name = capitalize(pick(GLOB.first_names_female_landsknecht))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_landsknecht) : pick(GLOB.first_names_female_landsknecht))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_landsknecht))
+
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+	new_human.age = rand(21,45)
+
+
+/datum/equipment_preset/other/hunted/landsknechten/captain
+	name = "Old-German Mercenary Captain (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
+	idtype = /obj/item/card/id/dogtag/landsknechte
+	skills = /datum/skills/landsknechten/captain
+	assignment = "Landsknechte Kapitan"
+	job_title = "Landsknechte Kapitan"
+
+/datum/equipment_preset/other/hunted/landsknechten/captain/load_gear(mob/living/carbon/human/new_human)
+
+
+	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
+/datum/equipment_preset/other/hunted/landsknechten/doppelsoldner
+	name = "Old-German Double-Mercenary (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
+	idtype = /obj/item/card/id/dogtag/landsknechte
+	skills = /datum/skills/landsknechten/doppelsoldner
+	assignment = "Landsknechte Doppelsoldner"
+	job_title = "Landsknechte Doppelsoldner"
+
+/datum/equipment_preset/other/hunted/landsknechten/doppelsoldner/load_gear(mob/living/carbon/human/new_human)
+
+
+	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
+/datum/equipment_preset/other/hunted/landsknechten/pikeman
+	name = "Old-German Pikeman (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
+	idtype = /obj/item/card/id/dogtag/landsknechte
+	skills = /datum/skills/landsknechten/pikeman
+	assignment = "Landsknechte Pikenier"
+	job_title = "Landsknechte Pikenier"
+
+/datum/equipment_preset/other/hunted/landsknechten/arquebusier
+	name = "Old-German Arquebusier (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
+	idtype = /obj/item/card/id/dogtag/landsknechte
+	skills = /datum/skills/landsknechten/arquebusier
+	assignment = "Landsknechte Arkebusier"
+	job_title = "Landsknechte Arkebusier"
+
+/datum/equipment_preset/other/hunted/landsknechten/crossbowman
+	name = "Old-German Crossbowman (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN, LANGUAGE_GERMAN)
+	idtype = /obj/item/card/id/dogtag/landsknechte
+	skills = /datum/skills/landsknechten/crossbowman
+	assignment = "Landsknechte Armbrustschutze"
+	job_title = "Landsknechte Armbrustschutze"

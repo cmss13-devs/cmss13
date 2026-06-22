@@ -18,25 +18,23 @@
 	var/upp = 0
 	var/clf = 0
 	var/pmc = 0
+	//historical factions
+	var/germans = 0
+	var/romans = 0
 	var/misc = 0
+	//max values
 	var/max_mercs = 1
 	var/max_royal_marines= 1
 	var/max_upp = 1
 	var/max_clf = 1
 	var/max_pmc = 1
+	var/max_germans = 1
+	var/max_romans = 1
 	var/max_misc = 1
-
-/datum/emergency_call/pred/mixed
-	name = "Hunting Grounds - Multi Faction - Small"
-	hunt_name = "Multi Faction (small)"
-	timer_mult = 1.25 // 25 minutes
-	mob_max = 4
-	mob_min = 1
-	max_clf = 1
-	max_upp = 1
-	max_royal_marines = 1
-	max_pmc = 1
-	max_misc = 1
+	var/wy_elite = 0
+	var/upp_elite = 0
+	var/max_wy_elite = 1
+	var/max_upp_elite = 2
 
 /datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
@@ -66,36 +64,56 @@
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("No one is more professional than I. Unlike other mercenaries, your group was registered as a legitimate business that dealt in violence. Working for various high profile clients, information classified to the public circulated somewhat freely in your circle - stories you dismissed as anecdotal or hearsay. The last job you took proved particularly hazardous and truthful: as you were clearing local fauna around a dig site, a massive man-shaped shimmering thing lunged at you and knocked you out in one blow. Groggily opening your eyes, you try to make sense of your surroundings, and get up."))
+
 	else if(upp < max_upp && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_UPP))
 		upp++
 		var/list/hunted_types = list(/datum/equipment_preset/upp/soldier/hunted, /datum/equipment_preset/upp/leader/hunted, /datum/equipment_preset/upp/machinegunner/hunted, /datum/equipment_preset/upp/sapper/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Life was alright. Previously relocated from your noisier post on the frontier, you were now stationed just on the outer veil of Union territory. Combat patrols and sawdust rations turned into boring guard shifts and proper food, making your peacekeeping duty a much envied task. Then, your life came crumbling down. An unknown alien surprised you and the rest of your garrison, slaughtering effectively everyone. Just as you were about to escape, it caught you in a trap, and dragged you into the darkness. Now awake in a completely different place, still sore from the confrontation, you wonder what you'd have to do to get back home safe and sound."))
+
 	else if(royal_marines < max_royal_marines && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_TWE))
 		royal_marines++
 		var/list/hunted_types = list(/datum/equipment_preset/twe/royal_marine/standard/hunted, /datum/equipment_preset/twe/royal_marine/team_leader/hunted, /datum/equipment_preset/twe/royal_marine/lieuteant/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were starting to get sick and tired of these Australians. Posted and wrangled around Oceania, you had spent the last half decade from refugee camp to metropolis, making sure order was maintained most of the time and partaking in a riot action now and then. You were ready to give about anything for your job to be more interesting, and like a monkey's paw, the wish came true. One night, your barracks got blown up before your very eyes while on guard duty, and to your dismay, it was not a terrorist. You attempted to gun the monster down, but failed, your friends torn apart before your very eyes. Being the last one alive, the thing takes you with it, shackles you, and throws you into a cell. You black out again, and wake up here, wherever you are. At least you hope things will be more interesting now, or so you tell yourself."))
+
 	else if(clf < max_clf && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_CLF))
 		clf++
 		var/list/hunted_types = list(/datum/equipment_preset/clf/soldier/hunted, /datum/equipment_preset/clf/leader/hunted, /datum/equipment_preset/clf/engineer/hunted, /datum/equipment_preset/clf/specialist/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Your whole life was a struggle. Fighting tooth and nail for the independence of your colony from one master to the next, with not much change, your home ended up crushed under the boot of the oppressor. Filled with rage, you traveled with your cell of freedom fighters from one system to the next, wreaking havoc and mayhem, which eventually makes you notorious for your brutal executions of government officials and military. While on a raid gone wrong, your comrades get slaughtered by a marine squad, and as you scamper to get away, something else catches you off guard. KO'd and taken away, you wake up in conditions not much different from your previous ones, determined to get revenge against your oppressor once more."))
+
 	else if(pmc < max_pmc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_PMC))
 		pmc++
 		var/list/hunted_types = list(/datum/equipment_preset/pmc/pmc_standard/hunted, /datum/equipment_preset/pmc/pmc_medic/hunted, /datum/equipment_preset/pmc/technician/hunted, /datum/equipment_preset/goon/standard/hunted, /datum/equipment_preset/goon/lead/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched in front of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
+
+	else if(germans < max_germans && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
+		germans++
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/landsknechten/captain, /datum/equipment_preset/other/hunted/landsknechten/arquebusier, /datum/equipment_preset/other/hunted/landsknechten/crossbowman, /datum/equipment_preset/other/hunted/landsknechten/pikeman, /datum/equipment_preset/other/hunted/landsknechten/doppelsoldner)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("You were born in the mud, but you swore that you wouldn't die in the mud. After you join the mercenary band, you learned to fight not for lords or glory, but for coin and the chance to live another day, even if it meant ruthlessly killing anyone on your way. Your sword bought you a reputation across the fractured German lands: reliable, ruthless, and too stubborn to die. Then your band got a job - hunting deserters through the lord's forest. When you came, you found that they were all dead and skinned- and a ghost walked among the trees around you. It moved like a man, and hit like thunder. You fought bravely, but the last thing you remember is the smell of your only mates' blood and a blinding light. You wake somewhere far from your homeland, but your sword is still on your scabbard. If the devil decided to give you a second chance, then you will fight and die for it."))
+
+	else if(romans < max_romans && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
+		romans++
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE) //VV TODOLANDSKNECHTEN give the romans some flavour love
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
+
 	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
 		misc++
-		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam)
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam, /datum/equipment_preset/other/hunted/landsknechten/captain, /datum/equipment_preset/other/hunted/landsknechten/arquebusier, /datum/equipment_preset/other/hunted/landsknechten/crossbowman, /datum/equipment_preset/other/hunted/landsknechten/pikeman, /datum/equipment_preset/other/hunted/landsknechten/doppelsoldner)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
+
 	else
 		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
 		var/hunted_type = pick(hunted_types)
@@ -104,6 +122,18 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+
+/datum/emergency_call/pred/mixed
+	name = "Hunting Grounds - Multi Faction - Small"
+	hunt_name = "Multi Faction (small)"
+	timer_mult = 1.25 // 25 minutes
+	mob_max = 4
+	mob_min = 1
+	max_clf = 1
+	max_upp = 1
+	max_royal_marines = 1
+	max_pmc = 1
+	max_misc = 1
 
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds - Multi Faction - Medium"
@@ -143,17 +173,81 @@
 	max_pmc = 1
 	max_misc = 2
 	max_mercs = 2
+/datum/emergency_call/pred/historical/create_member(datum/mind/player, turf/override_spawn_loc) //historical ERT, part of Landknechten PR
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-/datum/emergency_call/pred/xeno
-	name = "Hunting Grounds - Xenos - Small"
-	hunt_name = "Serpents (small)"
-	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	if(!istype(spawn_loc))
+		return
+
+	var/mob/living/carbon/human/hunted = new(spawn_loc)
+
+	if(player)
+		player.transfer_to(hunted, TRUE)
+	else
+		hunted.create_hud()
+
+	if (germans < max_germans && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
+		germans++
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/landsknechten/captain, /datum/equipment_preset/other/hunted/landsknechten/arquebusier, /datum/equipment_preset/other/hunted/landsknechten/crossbowman, /datum/equipment_preset/other/hunted/landsknechten/pikeman, /datum/equipment_preset/other/hunted/landsknechten/doppelsoldner)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("You were born in the mud, but you swore that you wouldn't die in the mud. After you join the mercenary band, you learned to fight not for lords or glory, but for coin and the chance to live another day, even if it meant ruthlessly killing anyone on your way. Your sword bought you a reputation across the fractured German lands: reliable, ruthless, and too stubborn to die. Then your band got a job - hunting deserters through the lord's forest. When you came, you found that they were all dead and skinned- and a ghost walked among the trees around you. It moved like a man, and hit like thunder. You fought bravely, but the last thing you remember is the smell of your only mates' blood and a blinding light. You wake somewhere far from your homeland, but your sword is still on your scabbard. If the devil decided to give you a second chance, then you will fight and die for it."))
+
+	else if(romans < max_romans && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
+		romans++
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE) //VV TODOLANDSKNECHTEN give the romans some flavour love
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
+	else
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE) //VV TODOLANDSKNECHTEN give the romans some flavour love
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
+	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+
+//Historical faction calls. Currently Romans and Germans
+/datum/emergency_call/pred/historical
+	name = "Hunting Grounds - Historical Warriors - Small"
+	hunt_name = "Historical Factions (Small)"
+	timer_mult = 1.25 // 25 minutes
 	mob_max = 4
-	mob_min = 1
-	hostility = TRUE
-	max_xeno_t3 = 1
-	max_xeno_t2 = 1
+	max_germans = 2
+	max_romans = 2
 
+/datum/emergency_call/pred/historical/medium
+	name = "Hunting Grounds - Historical Warriors - Medium"
+	hunt_name = "Historical Factions (Group)"
+	timer_mult = 1.4 // 28 minutes
+	mob_max = 6
+	max_germans = 4
+	max_romans = 2
+
+/datum/emergency_call/pred/historical/large
+	name = "Hunting Grounds - Historical Warriors - Large"
+	hunt_name = "Historical Factions (Large)"
+	timer_mult = 1.6 // 32 minutes
+	mob_max = 8
+	max_romans = 3
+	max_germans = 5
+
+/datum/emergency_call/pred/historical/larger
+	name = "Hunting Grounds - Historical Warriors - Larger"
+	hunt_name = "Historical Factions (Larger)"
+	timer_mult = 1.8 // 36 minutes
+	mob_max = 12
+	max_germans = 7
+	max_romans = 5
+
+/datum/emergency_call/pred/historical/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	if(length(members) < mob_min)
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
+		message_all_yautja("Not enough warriors in storage for the hunt to start.")
+	else
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] warriors from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
@@ -199,6 +293,16 @@
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 	new /obj/effect/alien/weeds/node/pylon/hunted(spawn_loc)
 
+/datum/emergency_call/pred/xeno/small
+	name = "Hunting Grounds - Xenos - Small"
+	hunt_name = "Serpents (small)"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	mob_max = 4
+	mob_min = 1
+	hostility = TRUE
+	max_xeno_t3 = 1
+	max_xeno_t2 = 1
+
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"
 	hunt_name = "Serpents (group)"
@@ -217,20 +321,8 @@
 	mob_min = 4
 	hostility = TRUE
 	max_xeno_t3 = 3
-	max_xeno_t2 = 3
 
-/datum/emergency_call/pred/mixed_elite // uscm are "fill-ins" for this like normal multi faction, so they do not need vars for their numbers
-	name = "Hunting Grounds - Elite Multi Faction - Small"
-	hunt_name = "Elite Multi Faction (small)"
-	timer_mult = 1.5 // 30 minutes
-	mob_max = 4
-	mob_min = 1
-	var/wy_elite = 0
-	var/upp_elite = 0
-	var/max_wy_elite = 1
-	var/max_upp_elite = 2
-
-/datum/emergency_call/pred/mixed_elite/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+/datum/emergency_call/pred/mixed/elite/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(length(members) < mob_min)
 		message_all_yautja("Not enough elite humans in storage for the hunt to start.")
@@ -239,7 +331,7 @@
 		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
 		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
-/datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
+/datum/emergency_call/pred/mixed/elite/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -273,7 +365,16 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 
-/datum/emergency_call/pred/mixed_elite/medium
+/datum/emergency_call/pred/elite // uscm are "fill-ins" for this like normal multi faction, so they do not need vars for their numbers
+	name = "Hunting Grounds - Elite Multi Faction - Small"
+	hunt_name = "Elite Multi Faction (small)"
+	timer_mult = 1.5 // 30 minutes
+	mob_max = 4
+	mob_min = 1
+	max_wy_elite = 1
+	max_upp_elite = 2
+
+/datum/emergency_call/pred/elite/medium
 	name = "Hunting Grounds - Elite Multi Faction - Medium"
 	hunt_name = "Elite Multi Faction (group)"
 	timer_mult = 2 // 40 minutes
@@ -282,7 +383,7 @@
 	max_wy_elite = 2
 	max_upp_elite = 2
 
-/datum/emergency_call/pred/mixed_elite/hard
+/datum/emergency_call/pred/elite/hard
 	name = "Hunting Grounds - Elite Multi Faction - Large"
 	hunt_name = "Elite Multi Faction (large)"
 	timer_mult = 2.5 // 50 minutes
@@ -291,7 +392,7 @@
 	max_wy_elite = 3
 	max_upp_elite = 3
 
-/datum/emergency_call/pred/mixed_elite/harder
+/datum/emergency_call/pred/elite/harder
 	name = "Hunting Grounds - Elite Multi Faction - Larger"
 	hunt_name = "Elite Multi Faction (larger)"
 	timer_mult = 3 // 1 hour, make it count dude

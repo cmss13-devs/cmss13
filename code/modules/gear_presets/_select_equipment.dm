@@ -637,9 +637,9 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		return
 
 	var/list/elite_merc_rifles = list(
-	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
+	/obj/item/weapon/gun/smg/m39/elite/no_lock = /obj/item/ammo_magazine/smg/m39/ap,
 	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
-	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
+	/obj/item/weapon/gun/rifle/m41a/elite/no_lock = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
 	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
@@ -773,7 +773,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(new_human), WEAR_IN_BACK)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/new_human) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.

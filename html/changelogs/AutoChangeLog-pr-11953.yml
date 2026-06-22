@@ -1,0 +1,6 @@
+author: "Riot"
+delete-after: True
+changes:
+  - balance: "Buffs the IEDs used by the CLF"
+  - balance: "CLF have combat flashlights now."
+  - balance: "Cyanide kills you faster now"

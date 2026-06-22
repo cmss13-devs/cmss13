@@ -53,3 +53,14 @@
 
 /obj/structure/prop/engineer_ruins/bench/bench_middle
 	icon_state = "stonebench2"
+
+/obj/structure/prop/engineer_ruins/large_pit
+	name = "pit"
+	desc = "A circular stone structure with a seemingly endless dark pit in the center."
+	icon = 'icons/obj/structures/props/engineers/engineerpit.dmi'
+	icon_state = "pit"
+	explo_proof = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
+	density = FALSE
+	layer = BELOW_MOB_LAYER

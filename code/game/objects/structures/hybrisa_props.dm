@@ -1385,6 +1385,23 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
+/obj/structure/blackgoocontainer/attackby(obj/item/W, mob/living/user)
+	// Any sufficiently sharp knife/blade destroys instantly
+	if(W.sharp >= IS_SHARP_ITEM_SIMPLE)
+		user.animation_attack_on(src)
+		to_chat(user, SPAN_WARNING("You stab \the [src] with \the [W]."))
+		playsound(src, 'sound/effects/burrowoff.ogg', 25, 1)
+		qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+	else
+		. = ..()
+
+/obj/structure/blackgoocontainer/submerged
+	icon_state = "blackgoocontainer4"
+	desc = "A strange alien container. It exudes an aura of otherworldly mystery. It's submerged partially in the ground."
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
+	density = FALSE
+
 /obj/item/hybrisa/engineer_helmet
 	icon = 'icons/obj/structures/props/engineers/props.dmi'
 	name = "strange alien helmet"

@@ -57,6 +57,9 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace()
 
+/obj/effect/decal/cleanable/ammo_casing/bullet // literally just the above, pathed to its own object in the off chance the above is edited
+	icon_state = "casing"
+
 /obj/effect/decal/cleanable/ammo_casing/shrapnel
 	icon_state = "shrapnel_casing"
 	number_of_states = 0

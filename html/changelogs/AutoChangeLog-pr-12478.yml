@@ -1,4 +1,0 @@
-author: "NHC"
-delete-after: True
-changes:
-  - bugfix: "Removed duped sunglasses from loudout menu"

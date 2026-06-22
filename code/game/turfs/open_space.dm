@@ -88,6 +88,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			var/obj/item/grab/grabbing = in_hand
 			grabbed_things += grabbing.grabbed_thing
 			grabbing.grabbed_thing.forceMove(user.loc)
+			to_chat(user, SPAN_INFO("Climbing while pulling [grabbing.grabbed_thing] slows you down."))
+		else
+			to_chat(user, SPAN_INFO("Climbing with [in_hand] in hand slows you down."))
 		climb_down_time *= 1.2
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))

@@ -223,7 +223,7 @@
 		return
 
 	if(instant_trigger)
-		if(!child.leap_at_nearest_target())
+		if(!child.leap_at_nearest_target(EGG_JUMP_RANGE))
 			child.return_to_egg(src)
 	else
 		child.go_idle()
@@ -324,6 +324,9 @@
 
 /obj/effect/alien/egg/alpha
 	hivenumber = XENO_HIVE_ALPHA
+
+/obj/effect/alien/egg/kseries
+	hivenumber = XENO_HIVE_K_SERIES
 
 /obj/effect/alien/egg/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN

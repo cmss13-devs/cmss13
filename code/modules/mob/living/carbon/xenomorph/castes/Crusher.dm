@@ -53,6 +53,7 @@
 	rebounds = FALSE // no more fucking pinball crooshers
 	organ_value = 3000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -234,7 +235,7 @@
 	if (!isxeno_human(target))
 		return
 
-	new /datum/effects/xeno_slow(target, bound_xeno, 2 SECONDS)
+	new /datum/effects/xeno_slow(target, bound_xeno, ttl = 2 SECONDS)
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
@@ -300,7 +301,7 @@
 		if(xeno.can_not_harm(target))
 			continue
 
-		new /datum/effects/xeno_slow(target, xeno, null, null, 3.5 SECONDS)
+		new /datum/effects/xeno_slow(target, xeno, ttl = 3.5 SECONDS)
 		to_chat(target, SPAN_XENODANGER("You are slowed as the impact of [xeno] shakes the ground!"))
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/target)

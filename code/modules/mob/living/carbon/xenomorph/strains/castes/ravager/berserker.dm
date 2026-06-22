@@ -18,7 +18,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasma_max = 0
+	ravager.plasmapool_modifier = XENO_NO_PLASMA
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
 	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3

@@ -59,6 +59,9 @@
 /obj/effect/landmark/lv624/fog_blocker/long
 	time_to_dispel = 24 HOURS
 
+/obj/effect/landmark/lv624/fog_blocker/very_short
+	time_to_dispel = 10 SECONDS
+
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
 	. = ..()
 
@@ -70,6 +73,27 @@
 
 	new /obj/structure/blocker/fog(loc, time_to_dispel)
 	qdel(src)
+
+/obj/effect/landmark/lv624/door_blocker
+	name = "door blocker"
+	icon_state = "o_red"
+
+	var/time_to_dispel = 85 SECONDS
+
+/obj/effect/landmark/lv624/door_blocker/Initialize(mapload, ...)
+	. = ..()
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/door_blocker/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/door(loc, time_to_dispel)
+	qdel(src)
+
+/obj/effect/landmark/lv624/door_blocker/xeno
+	time_to_dispel = 180 SECONDS
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
@@ -442,17 +466,26 @@
 	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_TYRARGO_RIFT)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. A great battle rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty cordon here to cover our western flank whilst another sub-hive overtakes a stronghold to your east that is filled with thousands of hosts!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any remaining hostile hosts to your west until you have secured yourselves.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrango Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrargo Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Be on guard my children. I have sensed that the petrid sewers of this so called city could be flooded by the hosts at a moments notice if the hosts restore power to the area. The button to release this putrid water is found in the metal structure the hosts call the sewer treatement plant.", "everything", QUEEN_MOTHER_ANNOUNCE), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Analysis of city layout plans have identified a possible tactical advantage. A release valve can be triggered within the City Sewer Treatment Plant, this valve will flood the lower sewer tunnels with water, expunging a significant amount of xenobiological growth.\n\nHowever, this valve must be powered by repairing a special APC located within the underground power-substation, located east of the underground sewer treatment plant.", "ARES 3.2 Strategic Notice", 'sound/AI/commandreport.ogg'), 20 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrango evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrargo evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements, more XX-121 clusters are encroaching from our east. We’re under heavy attack from all quarters and have lost half of our Longstreet tank support to Crushers.\n\nWe’ve exhausted our HEAP munitions and have had to switch to soft-point munitions. We can’t take this for much longer, requesting urgent support from Almayer forces, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 60 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrango. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrango evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrargo. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrargo evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer! Bugs are pouring into the inner perimeter! Civilians are taking up arms to defend the site, but they’re untrained.\n\nWe’re being overrun, we need fire support now! Now god dammit!", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 120 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrango is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
-
-
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrargo is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
+		if(MAP_WHITE_ANTRE_RESEARCH_FACILITY)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention all White Antre personnel. K-Series hive testing in the northern quadrant is in progress. We will be commencing the secondary trials with the Prime hive in the eastern sector at this time.\n\nEast Sector Overwatch be prepared to receive Prime hive larvae into your containment area.\n\nFurthermore, all personnel are reminded that elements of Azure-15 of the Whiteguard PMC and a detachment of the USCM are en-route to assist in testing and to take delivery of vital cargo. Over.", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! The site is experiencing a massive containment breach! Full site lockdown initiated.", "White Antre Central Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! We think Azure-15 has lured the bulk of the K-Series off site, but we are experiencing massive power failures, the Prime hive containment zone is at risk. All surviving personnel prepa%^@!&*------", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 65 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Prime hive containment blastdoor failure imminent.", "Automated Facility Announcement", 'sound/AI/commandreport.ogg'), 165 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Platoon Commander of Azure-15, we just received a distress signal from White Antre, there appears to be a massive containment breach in progress, some kinda yellow-ish looking xenomorphs are pouring out en-mass. The site staff are suffering massive casualties and we are in a poor defensive position, we are going to attempt to lure the tangos away from the site and into open ground to the north.\n\nOnce we move north of the site we’ll be out of radio contact. My recommendation is to deploy to White Antre and attempt to rescue any of the remaining scientists and secure whatever it is we were sent to retrieve. Maybe rescue Kadinsky while you’re at it assuming he hasn’t had his sorry arse nailed to the wall already.\n\nWe’ll hold our own. Azure-15 out.", "Azure-15 Platoon Commander", 'sound/AI/commandreport.ogg'), 4 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_lore_announcement), "Something is happening. Be on guard.", "everything", "Queen Mother Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Another, hostile, hive is making an escape from this metal cage, prepare yourselves as a chance to escape may occur soon.", "everything", QUEEN_MOTHER_ANNOUNCE), 1.5 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex, and I sense even more are on their way. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
+		if(MAP_LV_624)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Initial scan over the Area of Operations indicates a localized atmospheric anomaly: a dense fog forming over in and around the river bed.\nInitial assessment algorithm predicts dissipation in T-20 minutes.", "ARES V3.2", 'sound/AI/commandreport.ogg'), 5 MINUTES) // 5 minute lobby + 5 minutes into the game means the fog drops 20 minutes from now.
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()

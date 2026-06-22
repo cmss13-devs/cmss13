@@ -66,7 +66,7 @@
 	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME|AMMO_NO_DEFLECT
 	flamer_reagent_id = "napalmx"
 
 	accuracy = HIT_ACCURACY_TIER_8

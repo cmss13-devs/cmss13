@@ -15,6 +15,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
+	available_strains = list(/datum/xeno_strain/bulwark)
+
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
@@ -45,6 +47,7 @@
 	pull_speed = 2 // about what it was before, slightly faster
 	organ_value = 2000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -77,12 +80,19 @@
 	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
+/mob/living/carbon/xenomorph/warrior/handle_special_state()
+	return HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES)
+
+/mob/living/carbon/xenomorph/warrior/handle_special_wound_states(severity)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+		return "Warrior_plates_[severity]"
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	if(isliving(pulling) && warrior_delegate.lunging)
+	if(isliving(pulling) && istype(warrior_delegate) && warrior_delegate.lunging)
 		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
 		lunged.set_effect(0, STUN)
@@ -180,90 +190,6 @@
 /datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
 	bound_xeno.remove_filter("empower_rage")
 
-
-/// Warrior specific behaviour for increasing pull power, limb rip.
-/mob/living/carbon/xenomorph/warrior/pull_power(mob/mob)
-	if(!ripping_limb && mob.stat != DEAD)
-		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
-			return
-		ripping_limb = TRUE
-		if(rip_limb(mob))
-			stop_pulling()
-		ripping_limb = FALSE
-
-
-/// Warrior Rip Limb - called by pull_power()
-/mob/living/carbon/xenomorph/warrior/proc/rip_limb(mob/mob)
-	if(!istype(mob, /mob/living/carbon/human))
-		return FALSE
-
-	if(action_busy) //can't stack the attempts
-		return FALSE
-
-	var/mob/living/carbon/human/human = mob
-	var/obj/limb/limb = human.get_limb(check_zone(zone_selected))
-
-	if(can_not_harm(human))
-		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
-		return
-
-	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
-		return FALSE
-
-	var/limb_time = rand(40,60)
-	if(limb.body_part == BODY_FLAG_HEAD)
-		limb_time = rand(90,110)
-
-	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"),
-	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
-
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
-		return FALSE
-
-	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
-		return FALSE
-
-	if(limb.status & LIMB_DESTROYED)
-		return FALSE
-
-	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		limb.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"),
-		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
-	else
-		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"),
-		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
-		limb.take_damage(rand(15,25), 0, 0)
-		limb.fracture(100)
-	mob.last_damage_data = create_cause_data(initial(caste_type), src)
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress</font>")
-	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress")
-
-	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
-		return FALSE
-
-	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
-		return FALSE
-
-	if(limb.status & LIMB_DESTROYED)
-		return FALSE
-
-	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"),
-	SPAN_XENOWARNING("[mob]'s [limb.display_name] rips away from their body!"))
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
-	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress")
-
-	limb.droplimb(0, 0, initial(name))
-
-	return TRUE
 
 /datum/action/xeno_action/activable/lunge/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/lunge_user = owner

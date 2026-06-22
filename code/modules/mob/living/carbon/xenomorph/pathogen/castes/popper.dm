@@ -159,7 +159,7 @@
 		if(ispopper(patho_owner))
 			var/mob/living/carbon/xenomorph/popper/popper = patho_owner
 			popper.spore_morphed = TRUE
-		patho_owner.gib("Spore Morphing")
+		patho_owner.gib(create_cause_data("Spore Morphing", patho_owner.key))
 	return ..()
 
 /turf/proc/check_spore_sac_placement(mob/living/carbon/xenomorph/xeno)
@@ -560,7 +560,7 @@
 		if(ispopper(patho_owner))
 			var/mob/living/carbon/xenomorph/popper/popper = patho_owner
 			popper.spore_morphed = TRUE
-		patho_owner.gib("Spore Injection")
+		patho_owner.gib(create_cause_data("Spore Injection", patho_owner.key))
 
 	return ..()
 

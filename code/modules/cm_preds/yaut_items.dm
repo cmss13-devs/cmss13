@@ -1599,6 +1599,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "drone_skull"
 	unacidable = TRUE
 
+/obj/item/skull/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
+
 /obj/item/skull/queen
 	name = "Queen skull"
 	desc = "Skull of a prime hive ruler, mother to many."
@@ -1721,6 +1726,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	icon_state = "drone_pelt"
 	unacidable = TRUE
+
+/obj/item/pelt/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/pelt/queen
 	name = "Queen pelt"
@@ -1881,15 +1891,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Sprinter pelt"
 	desc = "The mycelial pelt of a strange creature, a terror on the prowl."
 	icon_state = "sprinter_pelt"
-
-/obj/item/pelt/pathogen_none //Not all the pathogen creatures have a pelt.
-	icon_state = null
-	desc = "This shouldn't exist."
-
-/obj/item/pelt/pathogen_none/Initialize(mapload, ...)
-	. = ..()
-	qdel(src)
-
 /obj/item/skull/pathogen_matriarch
 	name = "Matriarch skull"
 	desc = "The skull of a huge creature, bringer of doom and death."
@@ -1915,13 +1916,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "The skull of a strange creature, a terror on the prowl."
 	icon_state = "sprinter_skull"
 
-/obj/item/skull/pathogen_none //Not all the pathogen creatures have a skull structure.
-	icon_state = null
-	desc = "This shouldn't exist."
-
-/obj/item/skull/pathogen_none/Initialize(mapload, ...)
-	. = ..()
-	qdel(src)
 
 /// TOOLS
 

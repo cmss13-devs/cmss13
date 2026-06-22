@@ -315,7 +315,6 @@
 		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	stage = 7 // Begin the autoburst countdown
-
 /mob/living/carbon/xenomorph/proc/cause_unbearable_pain(mob/living/carbon/victim)
 	return
 

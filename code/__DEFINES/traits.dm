@@ -169,6 +169,8 @@
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 /// Prevents mob from riding mobs when buckled onto something
 #define TRAIT_CANT_RIDE "cant_ride"
+/// Makes mob immune to dir lock slowdown.
+#define TRAIT_NO_DIR_LOCK_SLOWDOWN "no_dir_lock_slowdown"
 /// When a pathogen creature is acting as overmind.
 #define TRAIT_PATHOGEN_OVERMIND "trait_pathogen_overmind"
 
@@ -267,6 +269,11 @@
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
+/// Used by shielder to check stance.
+#define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
+#define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
+
 
 //-- item traits --
 // TOOL TRAITS
@@ -346,6 +353,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER,
 	TRAIT_ABILITY_BURROWED,
+	TRAIT_ABILITY_ENCLOSED_PLATES,
+	TRAIT_ABILITY_REFLECTIVE_PLATES,
 	TRAIT_VULTURE_USER,
 	TRAIT_IN_TUTORIAL,
 	TRAIT_SPEC_KIT,

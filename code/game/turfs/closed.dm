@@ -68,11 +68,11 @@
 			var/obj/item/grab/grabbing = in_hand
 			grabbed_things += grabbing.grabbed_thing
 			grabbing.grabbed_thing.forceMove(user.loc)
-	
+
 	if(hands_full)
 		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
 
-if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
+	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		if(human)
 			human.flags_emote &= ~EMOTING_WALL_BOOSTING

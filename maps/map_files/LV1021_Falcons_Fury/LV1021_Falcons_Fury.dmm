@@ -5878,6 +5878,7 @@
 /obj/item/trash/candy{
 	pixel_x = -7
 	},
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "anC" = (
@@ -14474,6 +14475,7 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/asphalt/brown,
 /area/lv1021/indoors/clf_camp/education)
 "aJh" = (
@@ -15616,6 +15618,7 @@
 	layer = 3.09
 	},
 /obj/effect/decal/cleanable/generic,
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/landing)
 "aLV" = (
@@ -19588,10 +19591,18 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
+"aVE" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/asphalt/brown,
+/area/lv1021/outdoors/comms/south_2)
 "aVF" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"aVG" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/interior/wood,
+/area/lv1021/outdoors/comms/south_2)
 "aVU" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/auto_turf/lv_sand,
@@ -23549,6 +23560,7 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "gaT" = (
 /obj/structure/largecrate/random,
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "gbi" = (
@@ -27686,6 +27698,7 @@
 	},
 /obj/item/clothing/under/colonist/clf/operative,
 /obj/effect/landmark/objective_landmark/science,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/interior/wood/damage_2,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "lZy" = (
@@ -29592,6 +29605,7 @@
 	pixel_y = 8;
 	buckling_y = 16
 	},
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
 "oBy" = (
@@ -31121,6 +31135,7 @@
 /obj/structure/closet/crate/green,
 /obj/item/clothing/under/colonist/clf/operative,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/interior/wood/damage_6,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "qLW" = (
@@ -36561,6 +36576,7 @@
 "ycX" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "ycZ" = (
@@ -54013,7 +54029,7 @@ bbC
 fNg
 jkE
 uCW
-xsw
+aVG
 dtC
 bNl
 jkE
@@ -55189,7 +55205,7 @@ auY
 pvL
 gAU
 lgF
-ciM
+aVE
 aNp
 mOx
 nEy
@@ -70314,12 +70330,12 @@ spz
 qaj
 spz
 spz
-bmt
+spz
 hXq
 hXq
 hXq
 wzQ
-lzj
+aob
 asI
 spz
 spz
@@ -70820,7 +70836,7 @@ spz
 spz
 spz
 spz
-bmt
+spz
 spz
 spz
 spz

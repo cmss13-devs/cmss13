@@ -28,11 +28,11 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	if(istype(loc, /turf/open_space))
 		var/turf/below = SSmapping.get_turf_below(loc)
-		src.forceMove(below)
+		forceMove(below)
 		return
 
 	if(istype(above, /turf/open_space))
-		src.forceMove(above)
+		forceMove(above)
 		return
 
 /mob/hologram/movement_delay()

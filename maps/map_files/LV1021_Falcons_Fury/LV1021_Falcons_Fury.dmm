@@ -14262,6 +14262,9 @@
 /obj/structure/sign/minefield/alt{
 	pixel_y = 5
 	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aIC" = (
@@ -16090,6 +16093,9 @@
 /area/lv1021/landing_zone_2)
 "aNa" = (
 /obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "aNb" = (
@@ -19603,10 +19609,248 @@
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/south_2)
+"aVH" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVI" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVJ" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVK" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVL" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "12"
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVM" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVN" = (
+/obj/structure/flora/jungle/plantbot1,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVO" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVP" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVQ" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVR" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"aVS" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"aVT" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "aVU" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"aVV" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aVW" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aVX" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aVY" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aVZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	dir = 8;
+	pixel_x = -23
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"aWa" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"aWb" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"aWc" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"aWd" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"aWe" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aWf" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aWg" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aWh" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aWi" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aWj" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"aWk" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aWl" = (
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aWm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = -1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aWn" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aXh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -20327,6 +20571,9 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "bOK" = (
 /obj/structure/platform_decoration/wood/north,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "bOU" = (
@@ -20514,6 +20761,9 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "cgb" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "cgq" = (
@@ -21851,6 +22101,9 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
 	pixel_y = -5
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -23258,6 +23511,9 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "fKs" = (
@@ -23383,6 +23639,9 @@
 	icon_state = "9";
 	pixel_x = -3;
 	pixel_y = 5
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -27210,6 +27469,9 @@
 	pixel_y = 9;
 	dir = 1
 	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "lsO" = (
@@ -30147,6 +30409,9 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_y = -1
 	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "plb" = (
@@ -31091,6 +31356,9 @@
 	pixel_x = -7;
 	pixel_y = 9;
 	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -33699,6 +33967,9 @@
 "uhS" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "uja" = (
@@ -36342,6 +36613,9 @@
 /area/lv1021/outdoors/comms/west_2)
 "xPO" = (
 /obj/structure/platform_decoration/wood,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "xPR" = (
@@ -36482,6 +36756,9 @@
 	},
 /obj/effect/spawner/random/claymore/clf/lowchance{
 	dir = 8
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -42200,7 +42477,7 @@ gTq
 bWq
 bWq
 ghP
-aoB
+aVK
 cAc
 nKE
 saQ
@@ -42367,7 +42644,7 @@ gTq
 bWq
 bWq
 aoB
-aoB
+aVH
 krL
 cAc
 pMM
@@ -42702,7 +42979,7 @@ bWq
 bWq
 aoB
 aoB
-aoB
+aVH
 vRE
 nKE
 saQ
@@ -42869,7 +43146,7 @@ gTq
 wVN
 bWq
 aoB
-aoB
+aVJ
 uMO
 sBe
 nKE
@@ -45545,7 +45822,7 @@ ghP
 bWq
 bWq
 aXL
-aoB
+aVH
 cAc
 aVU
 cAc
@@ -45712,7 +45989,7 @@ aoB
 eEV
 mrG
 cjX
-swz
+aVI
 nlJ
 cAc
 aJB
@@ -46210,7 +46487,7 @@ rFa
 xJl
 aoB
 aoB
-aoB
+aVJ
 cAc
 hra
 cAc
@@ -46375,8 +46652,8 @@ ajd
 jnG
 cjX
 aoB
-pwE
-aoB
+aVL
+aVJ
 cAc
 osl
 cAc
@@ -46541,7 +46818,7 @@ jlP
 jnG
 aoB
 rFa
-aoB
+aVJ
 cAc
 cAc
 cAc
@@ -46654,15 +46931,15 @@ tBR
 tBR
 apF
 opF
-apz
+aVW
 qHg
-tBR
-iMz
+aVT
+aVV
 fNy
 eay
 uhS
 fJY
-tBR
+aVT
 qBg
 wey
 onP
@@ -46706,8 +46983,8 @@ oYb
 imO
 uuG
 aje
-aoB
-aoB
+aVM
+aVJ
 uWa
 oIV
 cAc
@@ -46820,7 +47097,7 @@ aqW
 apF
 opF
 opF
-apz
+aVX
 fHx
 fHx
 fHx
@@ -46872,7 +47149,7 @@ bWq
 tSI
 uuG
 aoB
-aoB
+aVJ
 cAc
 cAc
 cAc
@@ -47037,7 +47314,7 @@ bWq
 bWq
 hNt
 aoB
-aoB
+aVJ
 duS
 siE
 hyH
@@ -47150,7 +47427,7 @@ opF
 apz
 tBR
 tBR
-tBR
+aVY
 fHx
 fHx
 wdQ
@@ -47196,14 +47473,14 @@ eZM
 cyO
 aoP
 hEH
-gTq
+aVQ
 jGQ
 aoB
 bWq
 aoB
-aoB
-aoB
-aoB
+aVM
+aVM
+aVJ
 cAc
 cAc
 cAc
@@ -47358,16 +47635,16 @@ mqH
 hXu
 hXu
 hXu
-aoB
-aoB
+aVM
+aVM
 bWq
 aoQ
-gTq
+aVR
 eps
-aoB
-aoB
+aVP
+aVM
 beJ
-dAP
+aVN
 uWa
 cAc
 cAc
@@ -47527,13 +47804,13 @@ hXu
 cAc
 cAc
 osl
-aoB
+aVP
 lHn
 elT
 bQZ
 xUI
 osl
-aoB
+aVO
 cAc
 wjz
 cAc
@@ -47644,7 +47921,7 @@ apz
 tBR
 uSI
 tBR
-tBR
+aVT
 qBg
 qBg
 nic
@@ -47809,7 +48086,7 @@ apF
 opF
 tBR
 fEf
-tBR
+aVT
 qBg
 fHx
 qBg
@@ -47975,7 +48252,7 @@ opF
 opF
 apz
 tBR
-tBR
+aWe
 fHx
 wdQ
 qBg
@@ -48631,11 +48908,11 @@ qBg
 fHx
 qBg
 fHx
+aWj
 tBR
-tBR
-oBy
+aWi
 wdQ
-opF
+aWh
 fHx
 nic
 qBg
@@ -48799,7 +49076,7 @@ fHx
 fHx
 fHx
 hsI
-tBR
+aWj
 xPO
 qyU
 uTu
@@ -49365,7 +49642,7 @@ mRC
 ama
 mvR
 mvR
-adg
+aVS
 cyu
 aix
 alw
@@ -49488,7 +49765,7 @@ qfa
 hrI
 hrI
 hrI
-epg
+aVZ
 mkY
 mvR
 mvR
@@ -49654,7 +49931,7 @@ ycG
 jPg
 hrI
 lsF
-roH
+aWa
 mvR
 mkY
 mWa
@@ -49818,8 +50095,8 @@ ezd
 ekG
 cYR
 hrI
-roH
-jsi
+aWc
+aWb
 cdR
 jzz
 mvR
@@ -49985,7 +50262,7 @@ hYM
 ekG
 mxN
 qNL
-roH
+aWd
 aNV
 aZX
 qrg
@@ -50283,7 +50560,7 @@ rRQ
 cYR
 xdk
 cYR
-dBD
+aWn
 wWu
 pHy
 cYR
@@ -50465,16 +50742,16 @@ cYR
 cYR
 xgr
 cYR
-aqJ
+aWk
 cYR
-apX
+mxN
 cYR
 lJT
 pte
 ekG
 ekG
 rqo
-apX
+aWf
 mxN
 pWL
 hMF
@@ -50619,7 +50896,7 @@ hXu
 mqH
 mqH
 hXu
-atE
+aWm
 aEc
 mYz
 mxN
@@ -50630,8 +50907,8 @@ pnP
 lJT
 lCR
 pla
-hlG
-apX
+aWl
+aWg
 mxN
 lHl
 lJT
@@ -50639,8 +50916,8 @@ fRR
 mxN
 mxn
 aIB
-apX
-apX
+aWg
+aWg
 nZC
 apX
 pWL

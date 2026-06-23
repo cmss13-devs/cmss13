@@ -111,7 +111,7 @@
 	///Self explanatory. How much does aiming (wielding the gun) slow you
 	var/aim_slowdown = 0
 	///How long between wielding and firing in tenths of seconds
-	var/wield_delay = WIELD_DELAY_FAST
+	var/wield_delay = WEAPON_DELAY_FAST
 	///Storing value for wield delay.
 	var/wield_time = 0
 	///Storing value for guaranteed delay
@@ -802,9 +802,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 			gun_timer_id = addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-			if(wield_delay > WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
+			if(wield_delay > WEAPON_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
 				to_chat(user, SPAN_NOTICE("You start readying yourself to wield \the [src]..."))
-			if(wield_delay >= WIELD_DELAY_SLOW) // for the more slower wielding weapons
+			if(wield_delay >= WEAPON_DELAY_SLOW) // for the more slower wielding weapons
 				user.balloon_alert(user, "wielding")
 
 			return TRUE
@@ -1351,7 +1351,7 @@ and you're good to go.
 		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 			return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	apply_bullet_effects(projectile_to_fire, user, target, reflex, dual_wield) //User can be passed as null.
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
 	projectile_to_fire.firer = user
@@ -1523,7 +1523,7 @@ and you're good to go.
 				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
-		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
+		apply_bullet_effects(projectile_to_fire, user, target, bullets_fired, dual_wield) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -1888,7 +1888,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
-/obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+/obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, reflex = 0, dual_wield = 0)
 	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
 		var/old_time = max(wield_time, pull_time) - wield_delay
 		var/new_time = world.time

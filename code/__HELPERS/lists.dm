@@ -400,7 +400,7 @@
 ///Converts a bitfield to a list of numbers of the bits that are set
 /proc/bitfield2list(bitfield = 0)
 	var/list/result = list()
-	for(var/i = 0, i < 24, i++)
+	for(var/i = 0, i < 8, i++)
 		var/bit = 1 << i
 		if(bitfield & bit)
 			result += bit

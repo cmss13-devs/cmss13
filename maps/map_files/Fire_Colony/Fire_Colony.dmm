@@ -4869,9 +4869,7 @@
 /obj/item/prop/colony/canister/alt_1{
 	pixel_x = 1
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate/north,
 /area/ice_colony/surface/disposals)
 "aAB" = (
@@ -6613,9 +6611,7 @@
 	pixel_x = -7;
 	pixel_y = 1
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate/northeast,
 /area/ice_colony/exterior/surface/container_yard)
 "aMg" = (
@@ -7043,9 +7039,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/static_comms/net_two{
 	pixel_y = 5;
 	layer = 3.1
@@ -7362,9 +7356,7 @@
 /turf/open/floor/strata/sand3/west,
 /area/ice_colony/surface/hangar/beta)
 "aPZ" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate,
 /area/ice_colony/underground/hangar)
 "aQa" = (
@@ -7589,9 +7581,7 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/garage/one)
 "aRe" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/sand3/northwest,
@@ -8845,9 +8835,7 @@
 /turf/open/floor/strata/sand4/east,
 /area/ice_colony/surface/hangar/beta)
 "aYt" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/delayone,
 /turf/open/lava/metal/warnplate/corner/east,
 /area/ice_colony/underground/hangar)
@@ -9442,9 +9430,7 @@
 /obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
 "bbm" = (
@@ -11432,9 +11418,7 @@
 	pixel_x = 3;
 	pixel_y = 12
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate,
 /area/ice_colony/exterior/surface/landing_pad)
 "brc" = (
@@ -14096,7 +14080,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
 "bXu" = (
@@ -14222,9 +14206,7 @@
 /area/ice_colony/surface/disposals)
 "bZg" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/floor2,
 /area/ice_colony/surface/hangar/beta)
@@ -16225,9 +16207,7 @@
 /area/ice_colony/exterior/surface/clearing/north)
 "cCy" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/bright_clean_marked,
 /area/ice_colony/exterior/surface/container_yard)
 "cCA" = (
@@ -16536,9 +16516,7 @@
 /turf/open/floor/strata/seeg3,
 /area/ice_colony/surface/engineering/generator)
 "cGu" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate/west,
 /area/ice_colony/underground/hangar)
 "cGF" = (
@@ -20187,9 +20165,7 @@
 /turf/open/floor/strata/medbay3/west,
 /area/ice_colony/surface/research/field_gear)
 "dDI" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/exterior/surface/landing_pad)
 "dDK" = (
@@ -23805,7 +23781,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/lava/metal/warnplate/northeast,
 /area/ice_colony/landing/console)
 "ezF" = (
@@ -24841,9 +24817,7 @@
 	pixel_x = 6;
 	pixel_y = 9
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/sand3/east,
 /area/ice_colony/surface/hangar/beta)
 "eLN" = (
@@ -31155,9 +31129,7 @@
 	pixel_y = 1;
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/spiralplate,
 /area/ice_colony/underground/hangar)
 "gpI" = (
@@ -33443,9 +33415,7 @@
 /area/ice_colony/exterior/surface/clearing/south)
 "gTo" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/spiralplate,
 /area/ice_colony/underground/hangar)
 "gTs" = (
@@ -40283,9 +40253,7 @@
 /turf/open/lava/metal/plating_catwalk,
 /area/ice_colony/surface/hydroponics/north)
 "iIS" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat,
 /area/ice_colony/exterior/surface/landing_pad)
 "iJi" = (
@@ -41358,9 +41326,7 @@
 /turf/open/floor/prison/bright_clean_marked,
 /area/ice_colony/exterior/surface/container_yard)
 "iXB" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/warning_cone{
 	pixel_x = 3;
 	pixel_y = 10
@@ -43448,9 +43414,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/west)
 "jCX" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/surface/disposals)
 "jCY" = (
@@ -48415,9 +48379,7 @@
 /area/ice_colony/exterior/surface/valley/southwest)
 "kVL" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/exterior/surface/container_yard)
 "kVS" = (
@@ -48909,9 +48871,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "ldg" = (
 /obj/vehicle/train/cargo/engine,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/exterior/surface/landing_pad)
 "ldp" = (
@@ -52642,9 +52602,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/ice_colony/surface/garage/one)
 "mak" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/hangar/alpha)
@@ -59102,9 +59060,7 @@
 	dir = 4;
 	color = "#342a31"
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate/southwest,
 /area/ice_colony/surface/research)
 "nIF" = (
@@ -64635,9 +64591,7 @@
 	pixel_x = -12;
 	pixel_y = 16
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/warning_cone/blue{
 	pixel_x = -2
 	},
@@ -65547,9 +65501,7 @@
 	pixel_x = -8;
 	pixel_y = 2
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/asteroid/directions/north,
 /area/ice_colony/exterior/surface/valley/north)
 "pwV" = (
@@ -69986,9 +69938,7 @@
 /area/ice_colony/exterior/surface/valley/southwest)
 "qBy" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/exterior/surface/landing_pad)
 "qBD" = (
@@ -72319,9 +72269,7 @@
 /obj/effect/vehicle_spawner/rt01/decrepit{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/surface/disposals)
 "reW" = (
@@ -73246,9 +73194,7 @@
 	pixel_x = 25;
 	layer = 2.00
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warning_grate/east,
 /area/ice_colony/surface/disposals)
 "rqX" = (
@@ -73876,9 +73822,7 @@
 /turf/open/lava/hot_lava/corner/south,
 /area/ice_colony/exterior/surface/valley/north)
 "rzb" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/weldpack{
 	pixel_x = 10;
 	pixel_y = 11
@@ -78649,9 +78593,7 @@
 /area/ice_colony/exterior/surface/valley/south)
 "sMV" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 8;
 	pixel_y = 2
@@ -81471,9 +81413,7 @@
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
 "tAf" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -82522,9 +82462,7 @@
 "tOq" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/hardpoint/locomotion/van_wheels/rt01{
 	pixel_y = 10
 	},
@@ -84098,9 +84036,7 @@
 /turf/open/lava/dirt,
 /area/ice_colony/exterior/surface/valley/north)
 "ujV" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/structure/largecrate/random/mini/small_case/c{
 	pixel_x = 8;
 	pixel_y = 10
@@ -86114,9 +86050,7 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood/gibs/robot{
 	pixel_x = -4;
 	pixel_y = 5
@@ -89318,9 +89252,7 @@
 "vBL" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/warnplate/west,
 /area/ice_colony/underground/hangar)
 "vBS" = (
@@ -89798,9 +89730,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "vIC" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/lava/metal/plating,
 /area/ice_colony/underground/hangar)
@@ -91953,9 +91883,7 @@
 /turf/open/lava/brock,
 /area/ice_colony/exterior/surface/valley/north)
 "wnO" = (
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat,
 /area/ice_colony/underground/hangar)
 "wnP" = (
@@ -95614,9 +95542,7 @@
 	pixel_y = 17
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/rods,
 /turf/open/lava/asteroid,
 /area/ice_colony/exterior/surface/valley/north)
@@ -96185,9 +96111,7 @@
 "xuf" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/spiralplate,
 /area/ice_colony/underground/hangar)
 "xuG" = (
@@ -97933,9 +97857,7 @@
 /area/ice_colony/surface/tcomms)
 "xTf" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating,
 /area/ice_colony/surface/hangar/alpha)
 "xTh" = (
@@ -99244,9 +99166,7 @@
 /area/ice_colony/exterior/surface/valley/south)
 "ykv" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/cleanable/blood/oil{
-	color = "#030303"
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/lava/metal/plating_grille,
 /area/ice_colony/underground/hangar)
 "ykw" = (

@@ -550,5 +550,4 @@
 
 /obj/structure/overwatch_camera_tripod/ex_act(severity)
 	if(severity >= EXPLOSION_THRESHOLD_LOW) // no idea if i need to add this or it's inherited from parent somewhere
-		visible_message(SPAN_DANGER("[src] is blown over!"))
 		undeploy()

@@ -827,6 +827,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 				var/stuck = rand(0,10)
 				if(HAS_TRAIT(L, TRAIT_HAULED))
 					return
+				if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
+					return
 				switch(stuck)
 					if(0 to 4)
 						var/new_slowdown = H.next_move_slowdown + rand(2,3)

@@ -4,7 +4,13 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator
 	name = "Aligator"
+	icon = 'icons/mob/bortrough.dmi'
+	icon_state = "Bortrough Running"
+	icon_living = "Bortrough Running"
+	icon_dead = "Bortrough Dead"
 	stun_duration = 2
+	grab_level = GRAB_CHOKE
+	base_state = "Bortrough"
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/try_to_extinguish()
 	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))

@@ -43,6 +43,9 @@
 	attack_same = FALSE
 	langchat_color = LIGHT_COLOR_GREEN
 
+	///used for the other icons to be modular
+	base_state = "Giant Lizard"
+
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 	///Reference to the tongue flick overlay.
@@ -239,9 +242,9 @@
 		icon_state = icon_dead
 	else if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-			icon_state = "Giant Lizard Sleeping"
+			icon_state = "[base_state] Sleeping"
 		else
-			icon_state = "Giant Lizard Knocked Down"
+			icon_state = "[base_state] Knocked Down"
 			tongue_icon_holder.alpha = 0
 			//we can't stop an animation that's called via flick(). best we can do is hide it.
 	else
@@ -273,11 +276,11 @@
 			wound_icon_holder.icon_state = "none"
 		else if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Rest"
+				wound_icon_holder.icon_state = "[base_state] [health_threshold] Rest"
 			else
-				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Stun"
+				wound_icon_holder.icon_state = "[base_state] [health_threshold] Stun"
 		else
-			wound_icon_holder.icon_state = "Giant Lizard [health_threshold]"
+			wound_icon_holder.icon_state = "[base_state] [health_threshold]"
 
 #undef NO_WOUNDS
 #undef SMALL_WOUNDS

@@ -54,6 +54,8 @@
 
 	var/wound_icon = 'icons/mob/mob_64.dmi'
 
+	var/has_tongue = TRUE
+
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 	///Reference to the tongue flick overlay.
@@ -120,6 +122,9 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
 
+	if(!has_tongue)
+		return
+
 	if(!newdir)
 		newdir = dir
 
@@ -162,10 +167,13 @@
 	. = ..()
 	wound_icon_holder = new(null, src)
 	wound_icon_holder.icon = wound_icon
-	tongue_icon_holder = new(null, src)
-	tongue_icon_holder.pixel_x = 2
+	if(has_tongue)
+		tongue_icon_holder = new(null, src)
+		tongue_icon_holder.pixel_x = 2
+		vis_contents += tongue_icon_holder
+
 	vis_contents += wound_icon_holder
-	vis_contents += tongue_icon_holder
+
 
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
 
@@ -246,7 +254,8 @@
 	walk_to(src, 0)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/update_transform(instant_update = FALSE)
-	tongue_icon_holder.alpha = alpha
+	if(has_tongue)
+		tongue_icon_holder.alpha = alpha
 	if(stat == DEAD)
 		icon_state = icon_dead
 	else if(body_position == LYING_DOWN)
@@ -254,7 +263,8 @@
 			icon_state = "[base_state] Sleeping"
 		else
 			icon_state = "[base_state] Knocked Down"
-			tongue_icon_holder.alpha = 0
+			if(has_tongue)
+				tongue_icon_holder.alpha = 0
 			//we can't stop an animation that's called via flick(). best we can do is hide it.
 	else
 		icon_state = icon_living
@@ -370,7 +380,8 @@
 				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.")
 				if(prob(50))
 					playsound(loc, hiss_sound, 25)
-					flick("Giant Lizard Tongue", tongue_icon_holder)
+					if(has_tongue)
+						flick("Giant Lizard Tongue", tongue_icon_holder)
 	if(attacking_mob.a_intent == INTENT_DISARM && prob(25))
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		KnockDown(0.4)
@@ -447,7 +458,8 @@
 			AddSleepingIcon()
 
 	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED) && prob(25))
-		flick("Giant Lizard Tongue", tongue_icon_holder)
+		if(has_tongue)
+			flick("Giant Lizard Tongue", tongue_icon_holder)
 
 	if(bleed_ticks)
 		var/is_small_pool = FALSE
@@ -1023,8 +1035,8 @@
 	. = ..()
 	if(!.)
 		return
-
-	flick("Giant Lizard Tongue", user.tongue_icon_holder)
+	if(has_tongue)
+		flick("Giant Lizard Tongue", user.tongue_icon_holder)
 
 #undef ATTACK_SLASH
 #undef ATTACK_BITE

@@ -20,7 +20,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/Initialize()
 	. = ..()
-	qdel(tongue_icon_holder)
+	tongue_icon_holder.icon_state = "none"
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/change_tongue_offset()
 	return
@@ -53,6 +53,7 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/try_to_extinguish()
 	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
+		return
 	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/pounced_mob(mob/living/pounced_mob)

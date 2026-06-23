@@ -57,6 +57,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 		to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
 		return FALSE
 	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)
+	if(!chosen)
+		return FALSE
 	var/selected = GLOB.prefab_papers[chosen].type
 	if(!user.Adjacent(src))
 		return
@@ -79,6 +81,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	available_categories = list(PAPER_CATEGORY_USCM)
 
 /obj/structure/filingcabinet/documentation/uscm_mp
+	icon_state = "chestdrawer"
 	available_categories = list(PAPER_CATEGORY_USCM, PAPER_CATEGORY_MP)
 
 /obj/structure/filingcabinet/documentation/liaison

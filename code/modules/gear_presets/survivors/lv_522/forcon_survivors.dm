@@ -6,6 +6,7 @@
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
 	job_title = JOB_SURVIVOR
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USCM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -263,6 +264,8 @@
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
 	minimap_background = "background_forecon"
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -353,6 +356,7 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
 	origin_override = ORIGIN_USCM

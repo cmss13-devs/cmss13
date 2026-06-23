@@ -167,7 +167,7 @@
 	max_rounds = 71
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
-	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
+	bonus_mag_wield_delay = WEAPON_DELAY_VERY_FAST
 	jam_chance = PPSH_DRUM_MAGAZINE_JAM_CHANCE
 	new_item_state = "ppsh17b_d"
 
@@ -199,7 +199,7 @@
 	max_rounds = 71
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
-	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
+	bonus_mag_wield_delay = WEAPON_DELAY_VERY_FAST
 //-------------------------------------------------------
 //Type 64 SMG, based on the PP Bizon.
 

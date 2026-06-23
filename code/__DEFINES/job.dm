@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_PASSENGER "Passenger"
 #define JOB_SURVIVOR "Survivor"
 #define JOB_SYNTH_SURVIVOR "Synth Survivor"
+#define JOB_COLONY_JOE "Colony Working Joe"
 #define JOB_CO_SURVIVOR "CO Survivor"
 
 #define ANY_SURVIVOR "Any Survivor"
@@ -76,6 +77,8 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
+/// all roles expected to perform shipside larva removal, used for ares_autodoc_check
+#define JOB_SURGERY_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR, JOB_SYNTH, JOB_SYNTH_ENG, JOB_SYNTH_MED, JOB_SYNTH_INTEL, JOB_SYNTH_MP, JOB_SYNTH_CMD, JOB_SYNTH_SCI)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_CORPORATE_BODYGUARD "Corporate Bodyguard"
@@ -187,7 +190,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WO_XO "Lieutenant Commander"
 #define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
 #define JOB_WO_SO "Veteran Honor Guard"
-#define JOB_WO_CREWMAN "Honor Guard Weapons Specialist"
+#define JOB_WO_WARDEN "Honor Guard Weapons Specialist"
 #define JOB_WO_POLICE "Honor Guard"
 
 #define JOB_WO_PILOT "Mortar Crew"
@@ -421,6 +424,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 #define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"
 #define JOB_UPP_JOE "Dzho Automaton"
+#define JOB_UPP_COLONY_JOE "Colony Dzho Automaton"
+#define JOB_DANIEL "Daniel"
 
 #define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_PILOT, JOB_UPP_SUPPLY, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_SUPPORT_SYNTH, JOB_UPP_JOE, JOB_UPP_COMMISSAR)
 #define UPP_JOB_GRUNT_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_CREWMAN)

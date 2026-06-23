@@ -95,7 +95,7 @@
 		#ifdef PCWJ_DEBUG
 		log_debug("/recipe/proc/create_product: Transferring container reagents of [container.reagents.total_volume] to slurry of current volume [slurry.total_volume] max volume [slurry.maximum_volume]")
 		#endif
-		container.reagents.trans_to(slurry, amount=container.reagents.total_volume)
+		slurry.trans_to(container, amount=container.reagents.total_volume)
 
 	// Do reagent filtering on added items and produce
 	var/list/exclude_list = list()

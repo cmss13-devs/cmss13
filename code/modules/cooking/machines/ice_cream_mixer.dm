@@ -52,9 +52,10 @@
 /obj/structure/machinery/cooking/ice_cream_mixer/update_icon()
 	. = ..()
 	overlays.Cut()
-	var/datum/cooking_surface/surface = surfaces[1]
-	if(surface.on)
-		overlays += image(icon = icon, icon_state = "ice_cream_mixer_door", layer = ABOVE_OBJ_LAYER)
-		overlays += image(icon = icon, icon_state = "ice_cream_mixer_on")
+	if(length(surfaces) != 0)
+		var/datum/cooking_surface/surface = surfaces[1]
+		if(surface.on)
+			overlays += image(icon = icon, icon_state = "ice_cream_mixer_door", layer = ABOVE_OBJ_LAYER)
+			overlays += image(icon = icon, icon_state = "ice_cream_mixer_on")
 	else
 		overlays += image(icon = icon, icon_state = "ice_cream_mixer_door_open", layer = ABOVE_OBJ_LAYER)

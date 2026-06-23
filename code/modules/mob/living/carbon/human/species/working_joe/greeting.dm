@@ -117,3 +117,11 @@
 	say_message = "Found you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/is_there_anything
+	key = "isthereanything"
+	sound = 'sound/voice/joe/daniel/is_there_anything.ogg'
+	say_message = "Is there anything I can do to help?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+

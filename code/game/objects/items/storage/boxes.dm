@@ -69,7 +69,6 @@
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen/engi( src )
 
-
 /obj/item/storage/box/gloves
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
@@ -77,7 +76,6 @@
 	item_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = SIZE_SMALL
-
 
 /obj/item/storage/box/gloves/fill_preset_inventory()
 	new /obj/item/clothing/gloves/latex(src)
@@ -96,14 +94,6 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
-/obj/item/storage/box/bloodbag
-	name = "empty box of blood bags"
-	desc = "This box can hold all kinds of blood bags."
-	icon_state = "blood"
-	item_state = "blood"
-	can_hold = list(/obj/item/reagent_container/blood/)
-	w_class = SIZE_MEDIUM
-
 /obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -113,6 +103,22 @@
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 
+/obj/item/storage/box/bloodbag
+	name = "box of blood bags"
+	desc = "This box can hold all kinds of blood bags."
+	icon_state = "blood"
+	item_state = "blood"
+	can_hold = list(/obj/item/reagent_container/blood)
+	w_class = SIZE_MEDIUM
+
+/obj/item/storage/box/bloodbag/fill_preset_inventory()
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
+	new /obj/item/reagent_container/blood(src)
 
 /obj/item/storage/box/syringes
 	name = "box of syringes"
@@ -131,7 +137,6 @@
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
-
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"

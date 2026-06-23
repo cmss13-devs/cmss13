@@ -269,7 +269,7 @@
 		new_look = GLOB.armor_style_list[new_style]
 
 	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
-	icon_state = digits.Replace(icon_state, new_look)
+	icon_state = digits.Replace(icon_state, "[new_look]")
 
 /obj/item/clothing/suit/storage/marine/medium/rto
 	icon_state = "io"

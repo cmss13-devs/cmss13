@@ -130,9 +130,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))
+		var/new_comment = list("entry" = target.med_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Chief Medical Officer"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		record_medical.fields["comments"] = list("1" = new_comment)
 		record_medical.fields["notes"] = target.med_record
-	else
-		record_medical.fields["notes"] = "No notes found."
 	medical += record_medical
 
 	//Security Record

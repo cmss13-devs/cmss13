@@ -464,9 +464,9 @@
 
 	if(istype(targetMob, /mob/living))
 		var/mob/living/livingTarget = targetMob
-		.["mob_sleeping"] = livingTarget.sleeping
+		.["mob_sleeping"] = livingTarget.is_admin_slept()
 	else
-		.["mob_sleeping"] = 0
+		.["mob_sleeping"] = FALSE
 
 	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 

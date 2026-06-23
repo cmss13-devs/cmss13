@@ -126,4 +126,4 @@
 //=================================================
 
 /// How many slots players have access to, both for loadout slots and character slots
-#define MAX_SAVE_SLOTS 10
+#define MAX_SAVE_SLOTS 20

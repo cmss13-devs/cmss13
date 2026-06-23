@@ -87,7 +87,7 @@
 /// Applies a label to the name of the parent in the format of: "parent_name (label)"
 /datum/component/label/proc/apply_label()
 	var/atom/owner = parent
-	label_name = replace_non_alphanumeric_plus(label_name)
+	label_name = replace_non_alphanumeric_plus(html_decode(label_name))
 	if(!label_name)
 		QDEL_NULL(src)
 	owner.name += " ([label_name])"

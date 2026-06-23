@@ -18,7 +18,7 @@
 	w_class = SIZE_MEDIUM
 	force = 6
 	movement_onehanded_acc_penalty_mult = 3
-	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
+	wield_delay = WEAPON_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
 	fire_sound = "m4a3"
 	firesound_volume = 25
 	attachable_allowed = list(

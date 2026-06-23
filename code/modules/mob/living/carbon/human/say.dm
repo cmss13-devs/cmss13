@@ -69,6 +69,9 @@
 		if(client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
+		if(HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(TRAIT_SOURCE_ADMIN)))
+			to_chat(src, SPAN_HIGHDANGER("You cannot speak. You have been slept by admins. You should respond to them."))
+			return
 
 	message = trim(strip_html(message))
 
@@ -346,5 +349,13 @@ for it but just ignore it.
 	if (dongle && dongle.translate_apollo)
 		return TRUE
 	for(var/datum/language/apollo/link in languages)
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/human/hear_artemis()
+	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
+	if (dongle && dongle.translate_artemis)
+		return TRUE
+	for(var/datum/language/artemis/link in languages)
 		return TRUE
 	return FALSE

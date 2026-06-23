@@ -47,7 +47,7 @@
 		src.time_to_live += rand(-1,1)
 
 	var/area/my_area = get_area(src)
-	if(my_area.flags_area & AREA_HEAVILY_VENTILATED)
+	if(my_area?.flags_area & AREA_HEAVILY_VENTILATED)
 		var/new_amount = rand(1,3)
 		src.time_to_live = min(new_amount, src.time_to_live)
 

@@ -1,0 +1,4 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - bugfix: "Fixed a bug where rocket backblast would not be applied in the correct direction if the user turned while firing."

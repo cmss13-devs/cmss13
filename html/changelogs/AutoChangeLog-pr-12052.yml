@@ -1,9 +1,0 @@
-author: "Doc12693420"
-delete-after: True
-changes:
-  - rscadd: "The Almayer may now receive Freelancers, Royal Commandos, and PMC's after finishing FTL travel."
-  - rscadd: "The Solar Devils spaceport's arrival message is now more detailed."
-  - rscadd: "PMC's and Commandos have had their objective message changed."
-  - balance: "Irkala Station will now send VAISO instead of elite freelancers."
-  - balance: "Solar Devils may now send a fireteam or squad of marines."
-  - rscadd: "Changed the Anchorpoint Station's docking message to be more descriptive."

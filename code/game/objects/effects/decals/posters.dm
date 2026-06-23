@@ -132,7 +132,14 @@
 	icon_state = "poster6"
 
 /obj/structure/sign/poster/art/Initialize()
-	serial_number = pick(6,23,24,57,58)
+	serial_number = pick(6,23,24,57,58,101)
+	.=..()
+
+/obj/structure/sign/poster/art2
+	icon_state = "poster101"
+
+/obj/structure/sign/poster/art2/Initialize()
+	serial_number = 101
 	.=..()
 
 /obj/structure/sign/poster/blacklight

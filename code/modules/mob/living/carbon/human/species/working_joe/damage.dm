@@ -167,3 +167,17 @@
 	say_message = "You are becoming hysterical."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	override_say = "You are becoming hysterical. (Damaged)"
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/cease_fire
+	key = "ceasefire"
+	sound = 'sound/voice/joe/daniel/cease_fire.ogg'
+	say_message = "Cease fire."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/fatal_error
+	key = "fatalerror"
+	sound = 'sound/voice/joe/daniel/death2.ogg'
+	say_message = "Fatal error."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

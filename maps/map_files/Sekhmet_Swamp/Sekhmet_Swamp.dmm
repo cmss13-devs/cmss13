@@ -2,6 +2,10 @@
 "aaa" = (
 /turf/closed/wall/upp_ship,
 /area/sekhmet/outside/southeast_road)
+"aab" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/int_reg/ship2)
 "aac" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/upp_ship,
@@ -1224,7 +1228,6 @@
 /turf/open/gm/dirt/swamp_dirt,
 /area/sekhmet/outside/airfield)
 "aej" = (
-/obj/structure/machinery/power/apc/power/north,
 /obj/structure/machinery/big_computers/computerbrown/computer3{
 	name = "sensor computer";
 	color = "#ffffb3";
@@ -119034,7 +119037,7 @@ uPp
 dxe
 fba
 nAj
-slX
+aab
 sHn
 wWG
 wWG

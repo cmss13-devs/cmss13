@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			var/obj/item/new_holder = null
 			var/atom/cam_target = null
 
-			if(istype(target_ref, /mob/living/carbon/human))
+			if(ishuman(target_ref)) // not strict since synths can be placed in OW squads
 				var/mob/living/carbon/human/Human = target_ref
 				cam_target = Human
 				new_holder = Human.get_camera_holder()

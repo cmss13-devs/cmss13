@@ -158,6 +158,7 @@
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
 	var/operating = FALSE
+	var/remote_id
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
 	if(operating)
@@ -199,6 +200,9 @@
 
 /turf/closed/wall/almayer/research/containment/wall/connect3
 	icon_state = "containment_wall_connect3"
+
+/turf/closed/wall/almayer/research/containment/wall/connect3
+	icon_state = "containment_wall_connect4"
 
 /turf/closed/wall/almayer/research/containment/wall/connect_w
 	icon_state = "containment_wall_connect_w"
@@ -536,6 +540,9 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
+	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."
+	color = "#ffff80"
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 
@@ -954,6 +961,7 @@
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
 		above = SSmapping.get_turf_above(above)
+
 /turf/closed/wall/resin/process()
 	. = ..()
 
@@ -1037,10 +1045,12 @@
 /turf/closed/wall/resin/above/Destroy(force)
 	. = ..()
 	if(wall_below)
-		wall_below.upper_wall = null //we should not get here naturaly
+		wall_below.upper_wall = null
+		wall_below.dismantle_wall()
 		wall_below = null
 	if(door_below)
 		door_below.upper_wall = null
+		door_below.Dismantle(TRUE)
 		door_below = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(above && istransparentturf(above))
@@ -1104,6 +1114,10 @@
 	name = "tutorial resin wall"
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
 	hivenumber = XENO_HIVE_TUTORIAL
+
+/turf/closed/wall/resin/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
 
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
@@ -1466,8 +1480,11 @@
 	var/explosive_multiplier = 0.3
 	var/reflection_multiplier = 0.5
 
-/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/P)
-	if(src in P.permutated)
+/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/proj_bullet)
+	if(proj_bullet.projectile_flags & PROJECTILE_REFLECTED)
+		return
+
+	if(proj_bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
 		return
 
 	//Ineffective if someone is sitting on the wall
@@ -1475,26 +1492,15 @@
 		return ..()
 
 	if(!prob(chance_to_reflect))
-		if(P.ammo.damage_type == BRUTE)
-			P.damage *= brute_multiplier
+		if(proj_bullet.ammo.damage_type == BRUTE)
+			proj_bullet.damage *= brute_multiplier
 		return ..()
-	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
-		// Bullet gets absorbed if it has IFF or can't be reflected.
-		return
 
-	var/obj/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo)
-	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
-	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
+	var/atom/target = proj_bullet.firer
+	if(!target)
+		return ..()
 
-	// Move back to who fired you.
-	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
-	new_proj.permutated |= src
-
-	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
-	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
+	proj_bullet.reflect_projectile_at_firer(src, proj_bullet, proj_bullet.firer, target, damage_multiplier = reflection_multiplier, accuracy_override = HIT_ACCURACY_TIER_7, range_override = reflect_range, angle_variance = 30)
 
 	return TRUE
 

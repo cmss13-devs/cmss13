@@ -13396,12 +13396,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/filt)
-"hao" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/filt)
 "haq" = (
 /turf/open/floor/strata/white_cyan3,
 /area/lv522/indoors/a_block/medical/glass)
@@ -76400,7 +76394,7 @@ sYl
 sYl
 sYl
 gUv
-hao
+shD
 shD
 cpy
 cpy

@@ -12,8 +12,8 @@
 	grab_level = GRAB_CHOKE
 	base_state = "Bortrough"
 	death_sound = 'sound/effects/bortrough-die.ogg'
-	growl_sound = "bortrough-chuff"
-	hiss_sound = "bortrough-hurt"
+	growl_sound = "bortrough_growl"
+	hiss_sound = "bortrough_hiss"
 	wound_icon = 'icons/mob/bortrough.dmi'
 	pixel_x = -22
 	var/pulling_state = "Bortrough Running Open Jaws"

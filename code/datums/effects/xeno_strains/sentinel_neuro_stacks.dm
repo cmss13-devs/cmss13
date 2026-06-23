@@ -20,6 +20,10 @@
 	var/max_oxyloss = 20
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
+	///stamaina dam per process
+	var/stam_dam = 3.5
+	///max stamina damage
+	var/max_stam_dam = 15 //to be safly away from max stam
 
 /datum/effects/sentinel_neuro_stacks/New(mob/living/carbon/human/human, mob/from = null, last_dmg_source = null, zone = "chest")
 	last_decrement_time = world.time
@@ -47,6 +51,9 @@
 	if(human.oxyloss < max_oxyloss)
 		human.apply_damage(proc_damage, OXY)
 	human.update_xeno_hostile_hud()
+
+	if(human.stamina && human.stamina > max_stam_dam)
+		humman.apply_stamina_damage(stam_dam)
 
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--

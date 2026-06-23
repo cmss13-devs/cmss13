@@ -1,4 +1,0 @@
-author: "BlitzArde"
-delete-after: True
-changes:
-  - bugfix: "Trying to drench an acid-ed object in acid now properly states the object's name"

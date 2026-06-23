@@ -124,4 +124,4 @@ M37 is best used on harm intent and at point blank range. If you hit within 1 ti
 Marines take fewer bullets to kill than xenomorphs.
 Make sure to bring flares. No one wants to be blind against these things…
 The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.
-
+You can clear vines, bushes, and tall grass in front of you quickly and efficiently by holding a machete and pressing your 'activate in-hand' hotkey (default: Z).

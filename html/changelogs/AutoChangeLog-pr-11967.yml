@@ -1,4 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - rscadd: "Research can announce information about their chemicals to everyone with a medical hud. This requires CMO to publish their work first, though."

@@ -25,7 +25,7 @@
 
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[O] is already drenched in acid."))
 			return
 
 	var/obj/I
@@ -103,7 +103,7 @@
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[O] is already drenched in acid."))
 			return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability

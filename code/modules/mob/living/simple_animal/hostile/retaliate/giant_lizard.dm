@@ -1035,8 +1035,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(has_tongue)
-		flick("Giant Lizard Tongue", user.tongue_icon_holder)
+	flick("Giant Lizard Tongue", user.tongue_icon_holder)
 
 #undef ATTACK_SLASH
 #undef ATTACK_BITE

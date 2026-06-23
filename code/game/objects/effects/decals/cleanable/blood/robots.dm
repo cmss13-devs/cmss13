@@ -52,5 +52,4 @@
 	name = "artificial blood"
 	desc = "A thick white fluid that serves as blood for synthetic beings. It smells faintly chemical."
 	icon = 'icons/effects/blood.dmi'
-	basecolor = BLOOD_COLOR_SYNTHETIC
 	amount = 1

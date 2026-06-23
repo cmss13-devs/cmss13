@@ -2669,7 +2669,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "w_ek_17_a"
 	pixel_shift_x = 40
 	pixel_shift_y = 10
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WEAPON_DELAY_FAST
 	hud_offset_mod = 3
 
 /obj/item/attachable/stock/rifle/w_ek_17/New()

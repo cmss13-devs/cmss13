@@ -15,6 +15,7 @@
 	growl_sound = "bortrough-chuff"
 	hiss_sound = "bortrough-hurt"
 	wound_icon = 'icons/mob/bortrough.dmi'
+	pixel_x = -22
 	var/pulling_state = "Bortrough Running Open Jaws"
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/update_transform(instant_update = FALSE)
@@ -28,9 +29,11 @@
 	. = ..()
 	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
 		icon_state = "Bortrough Submerged"
+		update_wounds()
 	else
 		if(icon_state == "Bortrough Submerged")
 			update_transform()
+			update_wounds()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/update_wounds()
 	. = ..()

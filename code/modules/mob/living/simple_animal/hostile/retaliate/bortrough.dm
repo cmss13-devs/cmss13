@@ -16,14 +16,8 @@
 	hiss_sound = "bortrough_hiss"
 	wound_icon = 'icons/mob/bortrough.dmi'
 	pixel_x = -22
+	has_tongue = FALSE
 	var/pulling_state = "Bortrough Running Open Jaws"
-
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/Initialize()
-	. = ..()
-	tongue_icon_holder.icon_state = "none"
-
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/change_tongue_offset()
-	return
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/ListTargets(dist = 4)
 	. = ..()

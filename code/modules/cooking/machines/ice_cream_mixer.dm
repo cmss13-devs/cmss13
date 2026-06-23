@@ -16,7 +16,7 @@
 	surfaces += new /datum/cooking_surface/ice_cream_mixer(src)
 	update_icon()
 
-/obj/structure/machinery/cooking/ice_cream_mixer/examine(mob/user)
+/obj/structure/machinery/cooking/ice_cream_mixer/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("<b>Ctrl-Click</b> to set its timer and toggle it on or off.")
 
@@ -51,9 +51,10 @@
 
 /obj/structure/machinery/cooking/ice_cream_mixer/update_icon()
 	. = ..()
+	overlays.Cut()
 	var/datum/cooking_surface/surface = surfaces[1]
 	if(surface.on)
-		. += image(icon = icon, icon_state = "ice_cream_mixer_door", layer = ABOVE_OBJ_LAYER)
-		. += image(icon = icon, icon_state = "ice_cream_mixer_on")
+		overlays += image(icon = icon, icon_state = "ice_cream_mixer_door", layer = ABOVE_OBJ_LAYER)
+		overlays += image(icon = icon, icon_state = "ice_cream_mixer_on")
 	else
-		. += image(icon = icon, icon_state = "ice_cream_mixer_door_open", layer = ABOVE_OBJ_LAYER)
+		overlays += image(icon = icon, icon_state = "ice_cream_mixer_door_open", layer = ABOVE_OBJ_LAYER)

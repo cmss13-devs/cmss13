@@ -81,7 +81,7 @@
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "patty_raw"
 
-/obj/item/reagent_container/food/snacks/meat/patty_raw/examine(mob/user)
+/obj/item/reagent_container/food/snacks/meat/patty_raw/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Use unique action to shape it into a raw meatball.")
 
@@ -110,7 +110,7 @@
 	. = ..()
 	. += SPAN_NOTICE("Use unique action to shape it into a raw meatball.")
 
-/obj/item/food/ground_meat/unique_action(mob/living/user)
+/obj/item/reagent_container/food/snacks/meat/ground_meat/unique_action(mob/living/user)
 	user.visible_message(
 		SPAN_NOTICE("[user] shapes [src] into a ball."),
 		SPAN_NOTICE("You shape [src] into a ball of raw ground meat.")

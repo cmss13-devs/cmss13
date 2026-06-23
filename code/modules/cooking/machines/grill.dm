@@ -52,7 +52,7 @@
 	. = ..()
 	QDEL_NULL(hopper_overlay)
 
-/obj/structure/machinery/cooking/grill/examine(mob/user)
+/obj/structure/machinery/cooking/grill/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains [round(stored_wood, 0.01)]/[wood_maximum] units of charcoal.")
 	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a surface to set its timer, temperature, and toggle it on or off.")
@@ -98,7 +98,7 @@
 	return ..()
 
 /obj/structure/machinery/cooking/grill/attack_hand(mob/user, params)
-	var/input = clickpos_to_surface(params2list(params))
+	var/input = clickpos_to_surface(params)
 	if(!input)
 		return
 

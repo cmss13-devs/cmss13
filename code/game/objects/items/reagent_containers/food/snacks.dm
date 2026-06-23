@@ -3294,7 +3294,7 @@
 	. = ..()
 	reagents.add_reagent("meatprotein", 2)
 
-/obj/item/reagent_container/food/snacks/rawmeatball/examine(mob/user)
+/obj/item/reagent_container/food/snacks/rawmeatball/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Use unique action to flatten it into a patty.")
 

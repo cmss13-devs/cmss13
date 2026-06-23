@@ -43,7 +43,7 @@
 		log_debug("timer=[timer] cooktime=[cooktime]")
 		#endif
 
-		container.set_cooker_data(src, cooktime SECONDS)
+		container.set_cooker_data(src, round(0.1 * (REALTIMEOFDAY - cooktime), 0.1) SECONDS) // paradise uses a nice looking proc here, we do not have that proc and i think making it just for this is worse. theres probably already a better way!!!
 		var/process_result = container.process_item(user, parent)
 		if(process_result == PCWJ_COMPLETE)
 			SEND_SIGNAL(container, COMSIG_COOK_MACHINE_STEP_COMPLETE, src)
@@ -71,6 +71,7 @@
 
 /datum/cooking_surface/proc/turn_on(mob/user)
 	on = TRUE
+	parent.start_processing()
 	set_burn_ignite_callbacks()
 	restart_timer()
 	reset_cooktime()
@@ -87,6 +88,7 @@
 	unset_callbacks()
 	deltimer(alarm_callback)
 	cooktime = -1
+	parent.stop_processing()
 	parent.update_icon()
 
 /datum/cooking_surface/proc/handle_burn()
@@ -132,7 +134,7 @@
 			handle_cooking(user)
 
 /datum/cooking_surface/proc/reset_cooktime()
-	cooktime = -1
+	cooktime = REALTIMEOFDAY
 	#ifdef PCWJ_DEBUG
 	log_debug("reset_cooktime")
 	#endif

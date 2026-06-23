@@ -21,7 +21,7 @@
 	for(var/index in 1 to 4)
 		surfaces += new/datum/cooking_surface/stovetop_burner(src)
 
-/obj/structure/machinery/cooking/stovetop/examine(mob/user)
+/obj/structure/machinery/cooking/stovetop/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a burner to set its timer, temperature, and toggle it on or off.")
 
@@ -44,7 +44,7 @@
 #undef ICON_SPLIT_Y
 
 /obj/structure/machinery/cooking/stovetop/attack_hand(mob/user, params)
-	var/input = clickpos_to_surface(params2list(params))
+	var/input = clickpos_to_surface(params)
 	if(!input)
 		return
 
@@ -93,16 +93,17 @@
 
 /obj/structure/machinery/cooking/stovetop/update_icon()
 	. = ..()
+	overlays.Cut()
 
 	if(cooking)
-		. += image(icon, icon_state = "indicator")
+		overlays += image(icon, icon_state = "indicator")
 
 	for(var/index in 1 to length(surfaces))
 		var/datum/cooking_surface/surface = surfaces[index]
 		if(surface.on)
-			. += image(icon, icon_state = "burner_[index]")
+			overlays += image(icon, icon_state = "burner_[index]")
 			if(surface.container)
-				. += image(icon, icon_state="steam_[index]", layer = ABOVE_OBJ_LAYER)
+				overlays += image(icon, icon_state="steam_[index]", layer = ABOVE_OBJ_LAYER)
 
 /obj/structure/machinery/cooking/stovetop/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID

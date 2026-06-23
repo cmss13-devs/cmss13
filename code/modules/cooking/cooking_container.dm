@@ -57,14 +57,13 @@
 	QDEL_NULL(tracker)
 	QDEL_NULL(lip_effect)
 
-/obj/item/reagent_container/cooking/examine(mob/user)
+/obj/item/reagent_container/cooking/get_examine_text(mob/user)
 	. = ..()
+
 	if(length(contents))
 		. += get_content_info()
-	. += SPAN_NOTICE("<b>Alt-Click</b> to remove all items and reagents from this.")
+	. += SPAN_NOTICE("Use <b>unique action</b> when in hand, or <b>Ctrl-click</b> when on a machine to remove all items and reagents from this.")
 
-/obj/item/reagent_container/cooking/get_examine_text(mob/user)
-	. = list()
 	if(!reagents)
 		return
 	var/one_percent = reagents.total_volume / 100
@@ -83,7 +82,7 @@
 
 	return PCWJ_CONTAINER_BUSY
 
-/obj/item/reagent_container/cooking/attackby(mob/living/user, obj/item/used, list/modifiers) //the item should be the first param, but doing that sets used as the user mob?
+/obj/item/reagent_container/cooking/attackby(obj/item/used, mob/living/user, list/modifiers)
 	process_item(user, used)
 
 /// Attempt to progress the known recipes in the tracker with the item last used
@@ -363,8 +362,9 @@
 
 /obj/item/reagent_container/cooking/deep_basket/update_icon()
 	. = ..()
+	overlays.Cut()
 	if(frying)
-		. += image(icon = icon, icon_state = "fryerbasket_on")
+		overlays += image(icon = icon, icon_state = "fryerbasket_on")
 
 /obj/item/reagent_container/cooking/grill_grate
 	name = "grill grate"

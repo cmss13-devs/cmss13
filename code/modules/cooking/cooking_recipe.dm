@@ -134,7 +134,7 @@
 			if(length(exclude_specific_reagents))
 				for(var/id in exclude_specific_reagents)
 					added_item.reagents.remove_reagent(id, added_item.reagents.get_reagent_amount(id), safety = TRUE)
-			added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
+			slurry.trans_to(added_item, amount = added_item.reagents.total_volume)
 
 	// Purge the contents of the container we no longer need it
 	container.contents?.Cut()

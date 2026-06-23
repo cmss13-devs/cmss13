@@ -33,7 +33,7 @@
 	surfaces += new /datum/cooking_surface/oven(src)
 	update_icon()
 
-/obj/structure/machinery/cooking/oven/examine(mob/user)
+/obj/structure/machinery/cooking/oven/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("<b>Ctrl-Click</b> to set its timer, temperature, and toggle it on or off.")
 
@@ -46,7 +46,7 @@
 	return ..()
 
 /obj/structure/machinery/cooking/oven/attack_hand(mob/user as mob, params)
-	var/input = clickpos_to_surface(params2list(params))
+	var/input = clickpos_to_surface(params)
 
 	// If we didn't click on the door, toggle it.
 	if(!input)
@@ -72,6 +72,7 @@
 			return
 
 		return ..()
+	return ..()
 
 /obj/structure/machinery/cooking/oven/proc/handle_open(mob/user)
 	if(opened)
@@ -109,11 +110,13 @@
 
 /obj/structure/machinery/cooking/oven/update_icon()
 	. = ..()
+	overlays.Cut()
 	if(opened)
-		. += image(icon, icon_state = "oven_hatch_open", layer = ABOVE_OBJ_LAYER)
+		overlays += image(icon, icon_state = "oven_hatch_open", layer = ABOVE_OBJ_LAYER)
 	else
-		var/datum/cooking_surface/surface = surfaces[1]
-		. += image(icon, icon_state = "oven_hatch[surface.on ? "_on" : ""]", layer = ABOVE_OBJ_LAYER)
+		if(length(surfaces) != 0)
+			var/datum/cooking_surface/surface = surfaces[1]
+			overlays += image(icon, icon_state = "oven_hatch[surface.on ? "_on" : ""]", layer = ABOVE_OBJ_LAYER)
 
 /obj/structure/machinery/cooking/oven/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
 	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID

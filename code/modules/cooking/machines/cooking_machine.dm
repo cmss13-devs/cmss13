@@ -102,7 +102,7 @@
 
 /obj/structure/machinery/cooking/proc/surface_item_interaction(mob/living/user, obj/item/used, datum/cooking_surface/surface)
 	if(surface.container)
-		surface.container.attackby(user, used)
+		surface.container.attackby(used, user)
 		return
 
 	for(var/allowed_container_type in allowed_containers)

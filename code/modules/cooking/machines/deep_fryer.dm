@@ -22,7 +22,7 @@
 	for(var/index in 1 to 2)
 		surfaces += new/datum/cooking_surface/deepfryer_basin(src)
 
-/obj/structure/machinery/cooking/deepfryer/examine(mob/user)
+/obj/structure/machinery/cooking/deepfryer/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a basin to set its timer and toggle it on or off.")
 
@@ -44,7 +44,7 @@
 #undef ICON_SPLIT_Y
 
 /obj/structure/machinery/cooking/deepfryer/attack_hand(mob/user, params)
-	var/input = clickpos_to_surface(params2list(params))
+	var/input = clickpos_to_surface(params)
 	if(!input)
 		return
 

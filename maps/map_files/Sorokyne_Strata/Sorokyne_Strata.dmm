@@ -17170,7 +17170,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/book/manual/barman_recipes,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/maint)
 "aVF" = (

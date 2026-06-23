@@ -1240,7 +1240,7 @@
 /area/space)
 "qv" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/cmo,
 /area/adminlevel/ert_station/pizza_station)

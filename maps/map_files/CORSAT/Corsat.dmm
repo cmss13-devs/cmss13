@@ -17804,7 +17804,7 @@
 /area/corsat/omega/complex)
 "bpC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /turf/open/floor/corsat/sterileplate,
 /area/corsat/gamma/kitchen)
 "bpD" = (

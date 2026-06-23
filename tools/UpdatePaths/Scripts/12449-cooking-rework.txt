@@ -1,0 +1,2 @@
+/obj/item/book/manual/chef_recipes : /obj/item/chef_recipes{@OLD}
+

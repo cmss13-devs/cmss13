@@ -83,3 +83,6 @@
 		return list(message = "You add \the [used_item] to \the [container].", target = used_item)
 
 	return list(message = "Something went real fucking wrong here!")
+
+/datum/cooking/recipe_step/add_item/get_cookbook_formatted_desc()
+	return "Add \a [item_type::name]."

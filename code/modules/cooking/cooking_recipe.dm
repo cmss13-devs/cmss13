@@ -166,3 +166,34 @@
 
 		LAZYORASSOCLIST(to_add, example_recipe.container_type, example_recipe)
 	return to_add
+
+/proc/initialize_cookbook_lookup()
+	var/list/recipe_paths = subtypesof(/datum/cooking/recipe)
+	var/list/to_add = list()
+	for(var/path in recipe_paths)
+		var/datum/cooking/recipe/example_recipe = new path()
+
+		if(!example_recipe.container_type)
+			continue
+
+		var/obj/item/reagent_container/cooking/container_type = example_recipe.container_type
+
+		if(!example_recipe.appear_in_default_catalog)
+			continue
+
+		if(example_recipe.product_type)
+			var/atom/product = example_recipe.product_type
+
+			var/list/entry = list()
+			entry["name"] = product::name
+			entry["icon"] = product::icon
+			entry["icon_state"] = product::icon_state
+			entry["container"] = "[container_type::preposition] \a [container_type::name]"
+			entry["instructions"] = list()
+
+			for(var/datum/cooking/recipe_step/step in example_recipe.steps)
+				entry["instructions"] += step.get_cookbook_formatted_desc()
+
+			LAZYORASSOCLIST(to_add, example_recipe.catalog_category, list(entry))
+
+	return to_add

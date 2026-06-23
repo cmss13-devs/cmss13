@@ -134,4 +134,7 @@ GLOBAL_VAR(obfs_z)
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
 
 // cooking
+/// List of valid recipes
 GLOBAL_LIST_INIT_TYPED(pcwj_recipe_dictionary, /datum/cooking/recipe, initialize_recipe_dictionary())
+/// List of steps for the cookbook
+GLOBAL_LIST_INIT_TYPED(pcwj_cookbook_lookup, /datum/cooking/recipe, initialize_cookbook_lookup())

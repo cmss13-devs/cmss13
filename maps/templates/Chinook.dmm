@@ -919,7 +919,7 @@
 	pixel_x = 7;
 	pixel_y = 3
 	},
-/obj/item/book/manual/chef_recipes{
+/obj/item/chef_recipes{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -5789,7 +5789,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "xj" = (
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/kitchen,

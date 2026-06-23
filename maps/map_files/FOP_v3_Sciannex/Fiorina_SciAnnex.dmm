@@ -1178,7 +1178,7 @@
 /area/fiorina/station/civres_blue)
 "aBJ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/chef_recipes{
+/obj/item/chef_recipes{
 	pixel_y = 6
 	},
 /turf/open/floor/wood,

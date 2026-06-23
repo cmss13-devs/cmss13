@@ -32,3 +32,7 @@
 /// Special function to check if the step has been satisfied. Sometimed just following the step is enough, but not always.
 /datum/cooking/recipe_step/proc/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker, list/step_data)
 	return TRUE
+
+/// Return a human readable description of the recipe step as an instruction to the reader.
+/datum/cooking/recipe_step/proc/get_cookbook_formatted_desc()
+	return ""

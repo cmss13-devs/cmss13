@@ -59,11 +59,15 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/fun/clown/load_gear(mob/living/carbon/human/new_human)
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
+
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/white(new_human), WEAR_HANDS)
 
 	new_human.equip_to_slot(new /obj/item/toy/bikehorn(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot(new /obj/item/device/flashlight(new_human), WEAR_R_STORE)
@@ -341,7 +345,7 @@
 
 /datum/equipment_preset/fun/van_bandolier
 	name = "Fun - Big Game Hunter"
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_0)
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything

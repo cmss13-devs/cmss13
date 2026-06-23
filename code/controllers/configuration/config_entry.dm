@@ -6,6 +6,8 @@
 #define KEY_MODE_TYPE 1
 #define KEY_MODE_TEXT_UNALTERED 2
 
+SET_PROTECTED_DATUM(/datum/config_entry)
+
 /datum/config_entry
 	var/name //read-only, this is determined by the last portion of the derived entry type
 	var/config_entry_value
@@ -25,7 +27,7 @@
 
 /datum/config_entry/New()
 	if(type == abstract_type)
-		CRASH("Abstract config entry [type] instatiated!")
+		CRASH("Abstract config entry [type] instantiated!")
 	name = lowertext(type2top(type))
 	if(islist(config_entry_value))
 		var/list/L = config_entry_value

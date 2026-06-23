@@ -92,13 +92,14 @@
 	if(mode)
 		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 		//Now let them choose the text.
-		var/str = copytext(reject_bad_text(tgui_input_text(user, "Label text?", "Set label", "", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)), 1, MAX_NAME_LEN)
-		if(!str || !length(str))
+		var/label_text = copytext(reject_bad_text(tgui_input_text(user, "Label text?", "Set label", "", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)), 1, MAX_NAME_LEN)
+		label_text = trim_right(replace_non_alphanumeric_plus(label_text))
+		if(!label_text || !length(label_text))
 			to_chat(user, SPAN_NOTICE("Label text cleared. You can now remove labels."))
 			label = null
 			return
-		label = str
-		to_chat(user, SPAN_NOTICE("You set the text to '[str]'."))
+		label = label_text
+		to_chat(user, SPAN_NOTICE("You set the text to '[label_text]'."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You turn off [src]."))

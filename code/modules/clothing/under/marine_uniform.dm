@@ -1967,6 +1967,18 @@
 	)
 	flags_item = NO_CRYO_STORE
 
+/obj/item/clothing/under/rank/synthetic/daniel
+	name = "android suit"
+	desc = "An orange uniform used by Daniel synthetics."
+	icon_state = "mt_daniel"
+	worn_state = "mt_daniel"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
+	flags_item = NO_CRYO_STORE
+
+
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."

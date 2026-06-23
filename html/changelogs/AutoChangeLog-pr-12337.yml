@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "allows pulling mobs in grab up and down a z level"
+  - balance: "slows down climbing up and down for each full hand"

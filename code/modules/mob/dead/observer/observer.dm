@@ -408,6 +408,9 @@
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 					the_hud.add_hud_to(src, src)
+				if("Xeno Effects HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
+					the_hud.add_hud_to(src, src)
 				if("Hunter HUD")
 					the_hud = GLOB.huds[MOB_HUD_HUNTER]
 					the_hud.add_hud_to(src, src)
@@ -719,7 +722,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/carbon/human/target in GLOB.living_mob_list)
+/mob/dead/observer/proc/scan_health(mob/living/target in GLOB.living_mob_list)
 	set name = "Scan Health"
 
 	if(!istype(target))

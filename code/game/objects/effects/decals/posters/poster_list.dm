@@ -161,7 +161,7 @@ Template
 /datum/poster/poster_31
 	icon_state="poster31"
 	name = "safety goggles"
-	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES"
+	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES'."
 
 /datum/poster/poster_32
 	icon_state="poster32"
@@ -511,3 +511,8 @@ Template
 	icon_state="poster100"
 	name = "We Forge A Path Into the Stars"
 	desc = "The head of a man in a UPPAC EVA suit smiles looking not at you, but up to the right of the poster."
+
+/datum/poster/poster_101
+	icon_state="poster101"
+	name = "Light of science"
+	desc = "Funded by Weyland-Yutani to try on improving the USCM's view of their research staff. This one, specifically, dates way back to when research laboratories were first estabilished onboard USCM patrol vessels, after a good amount of government lobbying. The art is geometric, but yet expressive with its vibrant warm colors, of an artistic style made by an unknown artist. The art itself is supposed to represent the burning light of 'Science', glowing and piercing the dark as a star, opening paths through the expansive obscure."

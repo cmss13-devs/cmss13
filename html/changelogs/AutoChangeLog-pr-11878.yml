@@ -1,4 +1,0 @@
-author: "Riot"
-delete-after: True
-changes:
-  - rscadd: "Pickup hotkey has a memory of 5 items now"

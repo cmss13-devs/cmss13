@@ -796,7 +796,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf_lv1021/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+	CO_equipment = /datum/equipment_preset/survivor/clf_lv1021/coordinator
 	intro_text = list("<h2>You are a member of the CLF!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Follow your Commanders orders.</span>")

@@ -284,6 +284,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
+	..()
+
 	spawn_weapon(/obj/item/weapon/gun/smg/fp9000, /obj/item/ammo_magazine/smg/fp9000, new_human)
 
 /// --------------------------------------------- \\\\

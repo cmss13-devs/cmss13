@@ -413,9 +413,10 @@
 /datum/ammo/xeno/bone_chips/runner
 	name = "bone chips"
 
+	damage = 10
 	scatter = 0
 	max_range = 5
-	shrapnel_chance = 10
+	shrapnel_chance = 0
 	bonus_projectiles_amount = 0
 	shell_speed = AMMO_SPEED_TIER_2
 

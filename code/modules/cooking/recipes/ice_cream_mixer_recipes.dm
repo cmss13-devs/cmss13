@@ -478,7 +478,7 @@
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("soymilk", 2),
-		PCWJ_ADD_REAGENT("cocoa", 2),
+		PCWJ_ADD_REAGENT("coco", 2),
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
@@ -489,7 +489,7 @@
 	catalog_category = COOKBOOK_CATEGORY_CANDY
 	steps = list(
 		PCWJ_ADD_REAGENT("milk", 2),
-		PCWJ_ADD_REAGENT("cocoa", 2),
+		PCWJ_ADD_REAGENT("coco", 2),
 		PCWJ_ADD_REAGENT("sugar", 2),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)

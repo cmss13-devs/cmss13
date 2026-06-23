@@ -148,14 +148,14 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool [pick("is suitable, but there are better tools for this purpose", "is a bit different than what you're accustomed to using", "has a slight chance of failing", "could be worse, but it's better than most other alternatives")]"
+				message += "this tool [pick("is perfectly serviceable, but less efficient",  "takes some extra patience to work with", "is a bit different than what you're accustomed to using", "could be better, but considering the alternatives, it's fine")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool [pick("is an acceptable substitute in a pinch", "may not work for this purpose", "is not very practical for executing this step", "feels odd in your hand, but it works, you guess")]"
+				message += "this tool [pick("is an acceptable substitute, but quite inefficient", "tests your patience and dexterity", "is unorthodox for executing this step", "feels odd in your hand, but it works, you suppose")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool [pick("is an unacceptable substitute", "is likely to cause a slip-up for this purpose", "is not appropriate for this surgical step", "could not get any worse... Or, maybe it can")]"
+				message += "this tool [pick("has more favorable applications elsewhere", "is frustrating to work with", "is not appropriate for this surgical step", "could cause harm within unskilled hands")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool [pick("is among the worst things you could ever use, here", "should never be used for this purpose", "makes you long for the feel of any other tool", "will almost certainly cause harm. Don't tell the Chief")]"
+				message += "this tool [pick("has better uses literally anywhere else", "should never be used for this purpose", "makes you long for the feel of any other instrument", "will almost certainly cause harm within unskilled hands")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)

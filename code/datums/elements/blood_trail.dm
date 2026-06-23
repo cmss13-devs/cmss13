@@ -15,14 +15,12 @@
 	LAZYADD(entered_bloody_turf, target)
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
-	RegisterSignal(target, COMSIG_XENO_REVIVED_FROM_CRIT, PROC_REF(clear_trail))
-	RegisterSignal(target, COMSIG_MOB_STAT_SET_DEAD, PROC_REF(clear_trail))
+	RegisterSignal(target, COMSIG_MOB_STATCHANGE, PROC_REF(stat_change))
 
 /datum/element/blood_trail/Detach(datum/target, force)
 	UnregisterSignal(target, list(
 		COMSIG_MOVABLE_MOVED,
-		COMSIG_XENO_REVIVED_FROM_CRIT,
-		COMSIG_MOB_STAT_SET_DEAD
+		COMSIG_MOB_STATCHANGE
 	))
 	LAZYREMOVE(entered_bloody_turf, target)
 	return ..()
@@ -66,6 +64,11 @@
 		else
 			FP = new /obj/effect/decal/cleanable/blood/tracks/dragged(T_out)
 			FP.add_tracks(direction, color, TRUE)
+
+/datum/element/blood_trail/proc/stat_change(mob/living/carbon/target, new_stat, old_stat)
+	SIGNAL_HANDLER
+	if(new_stat == CONSCIOUS || new_stat == DEAD)
+		Detach(target)
 
 /datum/element/blood_trail/proc/clear_trail(mob/living/carbon/target)
 	SIGNAL_HANDLER

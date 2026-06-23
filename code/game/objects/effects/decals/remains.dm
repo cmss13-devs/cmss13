@@ -17,7 +17,7 @@
 	pixel_y = rand(-16, 16)
 	var/matrix/rotate = matrix()
 	rotate.Turn(rand(0, 359))
-	transform = rotate
+	apply_transform(rotate)
 
 /obj/effect/decal/remains/xeno
 	name = "remains"

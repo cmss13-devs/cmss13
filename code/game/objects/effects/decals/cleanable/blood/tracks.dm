@@ -1,8 +1,7 @@
 // Footprints, tire trails...
 /obj/effect/decal/cleanable/blood/tracks
 	icon = 'icons/effects/fluidtracks.dmi'
-	icon_state = "human2"
-	amount = 0
+	icon_state = ""
 	random_icon_states = null
 	randomized = FALSE
 	var/coming_state="blood1"
@@ -71,7 +70,6 @@
 	desc = "Whoops..."
 	coming_state = "paw1"
 	going_state  = "paw2"
-	amount = 0
 
 /obj/effect/decal/cleanable/blood/tracks/clawprints
 	name = "clawprints"
@@ -79,7 +77,6 @@
 	desc = "Whoops..."
 	coming_state = "claw1"
 	going_state  = "claw2"
-	amount = 0
 
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"

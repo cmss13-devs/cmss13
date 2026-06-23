@@ -550,8 +550,6 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()
 	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
-	if(stat == CONSCIOUS && . >= UNCONSCIOUS || stat == DEAD)
-		SEND_SIGNAL(src, COMSIG_XENO_REVIVED_FROM_CRIT)
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()

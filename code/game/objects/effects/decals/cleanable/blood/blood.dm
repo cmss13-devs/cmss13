@@ -15,9 +15,12 @@
 	color = "#830303" // Color when wet.
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses
+	/// the amount of blood that is created for footstep tracking, adds to the base amount of rand(1, 4) for footstep tracking, set to 0 to disable
 	var/amount = 1
 	var/drying_time = 30 SECONDS
-	var/dry_start_time // If this dries, track the dry start time for footstep drying
+	/// If this dries, track the dry start time for footstep drying
+	var/dry_start_time
+	/// if the trail can have random offsets to its sprites
 	var/randomized = TRUE
 	allow_this_to_overlap = TRUE
 	garbage = FALSE // Keep for atmosphere
@@ -37,8 +40,9 @@
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		amount = 0
 		return
-	else
-		amount = rand(2, 5)
+	else if(amount != 0) // blood trails galore
+		var/additive = amount
+		amount = rand(1 + additive, 4 + additive)
 
 	if(drying_time)
 		if(mapload) // Don't use timer at all in mapload - as deleting long running timers during MC init causes issues (see /tg/ issue #56292)
@@ -52,7 +56,7 @@
 		pixel_y = rand(-16, 16)
 		var/matrix/rotate = matrix()
 		rotate.Turn(rand(0, 359))
-		transform = rotate
+		apply_transform(rotate)
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
@@ -63,7 +67,7 @@
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
-	var/mob/living/carbon/human/H = AM
+	var/mob/living/carbon/H = AM
 	H.add_blood(color, BLOOD_FEET)
 
 	var/dry_time_left = 0
@@ -73,10 +77,10 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
 		return
 
-	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, amount, color)
-	else
+	if(H.bloody_footsteps)
 		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, color, dry_time_left)
+	else
+		H.AddElement(/datum/element/bloody_feet, dry_time_left, amount, color)
 
 /obj/effect/decal/cleanable/blood/proc/dry()
 	amount = 0
@@ -96,20 +100,13 @@
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
 
-/obj/effect/decal/cleanable/blood/splatter/Initialize(mapload, b_color)
-	. = ..()
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
-		return
-	else
-		amount = rand(2, 5)
-
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
 	desc = "Some small drips of blood."
 	gender = PLURAL
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
-	amount = 0
+	amount = 0 //fuckass tiny drops of blood should not be enough to make footprints
 	random_icon_states = list("1","2","3","4","5")
 	cleanable_type = CLEANABLE_BLOOD_DRIP
 	var/drips
@@ -148,13 +145,7 @@
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
 	color = "#830303"
-
-/obj/effect/decal/cleanable/blood/gibs/Initialize(mapload, b_color)
-	. = ..()
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
-		return
-	else
-		amount = rand(3, 5)
+	amount = 2
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 	overlays.Cut()

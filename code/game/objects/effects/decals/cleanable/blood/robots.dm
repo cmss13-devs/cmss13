@@ -9,13 +9,6 @@
 /obj/effect/decal/cleanable/blood/gibs/robot/update_icon()
 	color = COLOR_WHITE
 
-/obj/effect/decal/cleanable/blood/gibs/robot/Initialize(mapload, b_color)
-	. = ..()
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
-		return
-	else
-		amount = rand(2, 5)
-
 /obj/effect/decal/cleanable/blood/gibs/robot/dry() //pieces of robots do not dry up like
 	return
 
@@ -53,4 +46,4 @@
 
 /obj/effect/decal/cleanable/blood/oil/streak
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
-	amount = 1
+	amount = 2

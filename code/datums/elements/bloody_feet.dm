@@ -70,12 +70,13 @@
 	var/turf/T_in = target.loc
 	var/turf/T_out = oldLoc
 
-	var/track_type = /obj/effect/decal/cleanable/blood/tracks/footprints
-	if(islarva(target))
+	var/track_type
+	if(target.body_position == LYING_DOWN || islarva(target))
 		track_type = /obj/effect/decal/cleanable/blood/tracks/dragged
 	else if(isxeno(target))
 		track_type = /obj/effect/decal/cleanable/blood/tracks/claws
-
+	else
+		track_type = /obj/effect/decal/cleanable/blood/tracks/footprints
 
 	if(istype(T_in))
 		var/obj/effect/decal/cleanable/blood/tracks/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)

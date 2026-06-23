@@ -550,7 +550,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
-		set_gun_user(user)
+		if(user.get_active_hand() == src)
+			set_gun_user(user)
 		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
 			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
@@ -1878,12 +1879,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(active_attachable)
 		return
 
-	if(!user)
-		user = gun_user
+	if(!current_mag)
+		return
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+	if(!user)
+		return
+
+	if(flags_gun_features & GUN_AMMO_COUNTER)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
@@ -2187,7 +2191,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2253,8 +2257,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
+		display_ammo(gun_user)
 		reset_fire()
-		display_ammo()
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

@@ -1,5 +1,5 @@
-#define ALIGATOR_SPEED_DRAGING 1.2
-#define LIZARD_SPEED_NORMAL 2.8
+#define ALIGATOR_SPEED_DRAGING 2.8
+#define LIZARD_SPEED_NORMAL 1.2
 
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator
@@ -11,6 +11,31 @@
 	stun_duration = 2
 	grab_level = GRAB_CHOKE
 	base_state = "Bortrough"
+	death_sound = 'sound/effects/bortrough-die.mp3'
+	growl_sound = "bortrough-chuff"
+	hiss_sound = "bortrough-hurt"
+	wound_icon = 'icons/mob/bortrough.dmi'
+	var/pulling_state = "Bortrough Running Open Jaws"
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/update_transform(instant_update = FALSE)
+	. = ..()
+	if(pulling)
+		icon_state = "Bortrough Running Open Jaws"
+	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
+		icon_state = "Bortrough Submerged"
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/Move(NewLoc, direct)
+	. = ..()
+	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
+		icon_state = "Bortrough Submerged"
+	else
+		if(icon_state == "Bortrough Submerged")
+		update_transform()
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/update_wounds()
+	. = ..()
+	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
+		wound_icon_holder.icon_state = "none"
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/try_to_extinguish()
 	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
@@ -26,10 +51,12 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/start_pulling(atom/movable/clone/AM, lunge, no_msg, simple_mob)
 	. = ..()
 	if(.)
+		update_transform()
 		speed = ALIGATOR_SPEED_DRAGING
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/stop_pulling()
 	. = ..()
 	speed = LIZARD_SPEED_NORMAL
+	update_transform()
 
 #undef ALIGATOR_SPEED_DRAGING
 #undef LIZARD_SPEED_NORMAL

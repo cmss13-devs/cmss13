@@ -18,6 +18,13 @@
 	pixel_x = -22
 	var/pulling_state = "Bortrough Running Open Jaws"
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/Initialize()
+	. = ..()
+	qdel(tongue_icon_holder)
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/change_tongue_offset()
+	return
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/ListTargets(dist = 4)
 	. = ..()
 

@@ -53,7 +53,7 @@
 	human.update_xeno_hostile_hud()
 
 	if(human.stamina && human.stamina > max_stam_dam)
-		humman.apply_stamina_damage(stam_dam)
+		human.apply_stamina_damage(stam_dam)
 
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--

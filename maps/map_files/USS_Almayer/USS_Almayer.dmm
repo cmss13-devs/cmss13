@@ -4329,6 +4329,20 @@
 "aki" = (
 /turf/open_space,
 /area/almayer/command/airoom)
+"akj" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/area/almayer/command/airoom)
+"akk" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"akl" = (
+/obj/structure/machinery/cryopod/joe/seegson/alt,
+/turf/open/floor/almayer/aicore/no_build/ai_cargo,
+/area/almayer/command/airoom)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -14677,7 +14691,7 @@
 /area/almayer/middeck/maintenance/sp)
 "aNu" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/power/apc/almayer/hardened/east,
+/obj/structure/machinery/power/apc/almayer/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/navigation)
@@ -67938,8 +67952,6 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/squads/req)
 "ltc" = (
-/obj/effect/landmark/late_join/working_joe,
-/obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/start/synthetic,
 /obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
@@ -181076,8 +181088,8 @@ qQS
 qQS
 afM
 ebN
-tId
-fVx
+akl
+akj
 aZV
 ebN
 naj
@@ -181179,8 +181191,8 @@ fVx
 fVx
 afN
 ebN
-tId
-qQS
+akl
+akk
 mIJ
 wiu
 xDC

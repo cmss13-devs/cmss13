@@ -1,0 +1,10 @@
+author: "Riot"
+delete-after: True
+changes:
+  - rscadd: "Modernizes the honor guard and CIC loadouts on WO, as well as a few others"
+  - rscadd: "Adjusts some paygrades on WO, HGs are now 1 rank higher than their marine counterparts, and medical staff are now Warrant Officers so as to be lower in rank than the XO and CO."
+  - balance: "The Whiskey Outpost CAS laser has a cooldown of 3 minutes, from 5."
+  - balance: "Adds despoilers to WO"
+  - mapadd: "Adds a corpsmen prep and marine armory to Whiskey Outpost, located just west of the CIC down the hall."
+  - maptweak: "Adds phonelines to WO, changes the groundside OP console to the modern version, adds some motion detectors and rangefinders scattered around the map."
+  - bugfix: "Honor Guard Specialist on WO should now be able to spawn"

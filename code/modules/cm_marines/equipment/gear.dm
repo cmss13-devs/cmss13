@@ -359,7 +359,7 @@
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
 /obj/item/device/overwatch_camera/tripod
-	name = "FC5T Tripod Camera"
+	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
 	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
 	icon_state = "undeployed"
@@ -449,7 +449,7 @@
 	qdel(src)
 
 /obj/structure/overwatch_camera_tripod
-	name = "FC5T Tripod Camera"
+	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
 	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
 	icon_state = "deployed"

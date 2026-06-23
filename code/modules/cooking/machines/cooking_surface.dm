@@ -22,7 +22,7 @@
 
 /datum/cooking_surface/Destroy()
 	. = ..()
-	QDEL_NULL(parent)
+	parent = null //not QDEL_NULL because if the parent is deleted it will cause a qdel loop, because the parent destroys its surfaces
 	QDEL_NULL(container)
 
 /datum/cooking_surface/proc/container_examine(datum/source, mob/user, list/examine_list)

@@ -48,10 +48,10 @@
 		surfaces += new /datum/cooking_surface/grill_surface(src)
 	update_icon()
 
-/*/obj/structure/machinery/cooking/grill/Destroy()
-	. = ..()
+/obj/structure/machinery/cooking/grill/Destroy()
 	QDEL_NULL(hopper_overlay)
-*/
+	return ..()
+
 /obj/structure/machinery/cooking/grill/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains [round(stored_wood, 0.01)]/[wood_maximum] units of charcoal.")

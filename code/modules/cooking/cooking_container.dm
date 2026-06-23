@@ -276,7 +276,7 @@
 /obj/item/reagent_container/cooking/sushimat
 	name = "Sushi Mat"
 	desc = "A wooden mat used for efficient sushi crafting."
-	icon = 'icons/obj/items/kitchen_tools.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "sushi_mat"
 	lip = null
 	preposition = "On"

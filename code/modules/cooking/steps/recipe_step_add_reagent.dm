@@ -91,5 +91,4 @@
 	return container.reagents.has_reagent(reagent_id, amount)
 
 /datum/cooking/recipe_step/add_reagent/get_cookbook_formatted_desc()
-	var/datum/reagent/reagent = GLOB.chemical_reagents_list[reagent_id]
-	return "Add [amount] unit[amount > 1 ? "s" : ""] of [reagent.name]."
+	return "Add [amount] unit[amount > 1 ? "s" : ""] of [reagent_id]."

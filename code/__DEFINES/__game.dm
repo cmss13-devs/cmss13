@@ -42,6 +42,7 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
+#define MAP_USASF_POINT_LOMA "USASF Point Loma"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -427,6 +428,9 @@
 #define WALL_UPP_BASE "uppwall"
 #define WALL_ANCIENT_BASE "ancient_stone"
 #define WALL_RUNEDSTONE "runedstone"
+#define WALL_NEW_VARADERO "new_varadero"
+#define WALL_NEW_VARADERO_REINFORCED "new_varadero_r"
+#define WALL_CONCRETE "concrete"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

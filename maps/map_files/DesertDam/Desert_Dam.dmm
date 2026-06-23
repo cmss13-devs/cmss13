@@ -18563,7 +18563,7 @@
 /turf/open/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "bgc" = (
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/desert_dam/interior/caves/pred_ship)
 "bgd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
@@ -19544,7 +19544,7 @@
 	pixel_x = 17;
 	pixel_y = 2
 	},
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/desert_dam/interior/caves/pred_ship)
 "biZ" = (
 /obj/structure/prop/colorable_rock/colorable{

@@ -1654,12 +1654,31 @@
 	icon_state = "innerhull"
 
 /turf/closed/wall/huntership/reinforced
-	name = "hunter ship reinforced hull"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	name = "hunter ship reinforced wall"
+	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
+	turf_flags = null
 
-/turf/closed/wall/huntership/destructible
+/turf/closed/wall/huntership/weak
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	damage_cap = HEALTH_WALL
+	icon_state = "hunter"
+	turf_flags = null
+
+
+/turf/closed/wall/huntership/dark
+	color = "#c5beb4"
+
+/turf/closed/wall/huntership/dark/destructible
 	name = "degraded hunter wall"
 	icon_state = "hunter"
-	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
 	turf_flags = NO_FLAGS
+	icon_state = "hunter"
+	damage_cap = HEALTH_WALL
+
+/turf/closed/wall/huntership/dark/destructible/reinforced
+	name = "damaged hunter wall"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"

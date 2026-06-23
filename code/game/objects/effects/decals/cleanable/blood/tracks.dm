@@ -1,7 +1,7 @@
 // Footprints, tire trails...
 /obj/effect/decal/cleanable/blood/tracks
 	icon = 'icons/effects/fluidtracks.dmi'
-	icon_state = ""
+	icon_state = "human2"
 	amount = 0
 	random_icon_states = null
 	var/coming_state="blood1"
@@ -83,3 +83,6 @@
 	going_state  = ""
 	random_icon_states = null
 	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/yautja
+	color = BLOOD_COLOR_YAUTJA

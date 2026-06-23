@@ -46,6 +46,23 @@
 					found_nest.forced_buckle_mob(human_mob,human_mob)
 		objective_spawn_corpse.Remove(spawner)
 
+	var/mob/living/carbon/human/yautja/dead/mob
+	for(var/obj/effect/landmark/corpsespawner/spawner in GLOB.special_corpse_spawns.Copy())
+		var/turf/spawnpoint = get_turf(spawner)
+
+		switch(spawner.special_species)
+			if(SPECIES_YAUTJA)
+				mob = new /mob/living/carbon/human/yautja/dead(spawnpoint)
+			if(SYNTH_GEN_ONE)
+				mob = new /mob/living/carbon/human/synthetic/first(spawnpoint)
+			if(SYNTH_WORKING_JOE)
+				mob = new /mob/living/carbon/human/synthetic/old(spawnpoint)
+			else
+				continue
+
+		mob.create_hud() //Need to generate hud before we can equip anything apparently...
+		arm_equipment(mob, spawner.equip_path, TRUE, FALSE)
+
 /datum/cm_objective/recover_corpses/post_round_start()
 	activate()
 

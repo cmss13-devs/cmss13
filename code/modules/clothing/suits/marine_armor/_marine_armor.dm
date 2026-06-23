@@ -295,6 +295,19 @@
 	storage_slots = 3
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/suit/storage/marine/medium/rto/navy
+	name = "\improper M4-N pattern armor"
+	desc = "A set of USASF acquired M4 armor, with slight modifications to better suite ship-side usage. Robust, yet very nimble, with room for all snacks."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi' // I have no idea why this is in here but Army has this in here so I will copy.
+	icon_state = "armor_navy"
+	item_state = "armor_navy"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	slowdown = SLOWDOWN_ARMOR_LIGHT    //"carbon fibre and shit in the plates rather than heavy stuff, so the swabbies stay nimble"
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = null //Why is this a thing?
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."

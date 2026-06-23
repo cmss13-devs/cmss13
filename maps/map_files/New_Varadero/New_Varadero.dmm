@@ -1121,7 +1121,6 @@
 /area/varadero/exterior/lz1_near)
 "aEg" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /obj/effect/decal/remains/human,
@@ -1296,7 +1295,6 @@
 /area/varadero/interior/research)
 "aJp" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /obj/effect/decal/remains/human,
@@ -2177,7 +2175,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/administration)
 "brT" = (
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/varadero/interior_protected/vessel)
 "brX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9281,7 +9279,6 @@
 /area/varadero/interior/maintenance)
 "hoU" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /turf/open/shuttle/red,
@@ -16359,7 +16356,6 @@
 "nkq" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /turf/open/shuttle/red,
@@ -18574,7 +18570,6 @@
 /area/varadero/interior/maintenance)
 "pcH" = (
 /obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
 	color = "#20d450"
 	},
 /obj/effect/decal/remains/human,

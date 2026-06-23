@@ -408,7 +408,7 @@
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here!"))
 		return
 	if(istype(deploy_area, /area/shuttle))
-		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area."))
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area.")) // i copied this from M2C so idk if this is necessary?
 		return
 	if(!istype(deploy_turf, /turf/open))
 		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
@@ -424,7 +424,7 @@
 		return
 
 	var/datum/squad/user_squad = null // find squad
-	if(ishuman(user))
+	if(ishuman(user)) // synths can place so not strict check
 		var/mob/living/carbon/human/human_user = user
 		user_squad = human_user.assigned_squad
 

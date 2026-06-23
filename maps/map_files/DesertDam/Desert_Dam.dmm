@@ -22318,10 +22318,21 @@
 /turf/open/floor/almayer/research/containment/corner_var1,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "brx" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/northeastern_tunnel)
+"bry" = (
+/obj/structure/machinery/cryopod/joe/seegson{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/northeastern_tunnel)
+"brz" = (
 /obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
-"bry" = (
+"brA" = (
 /obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/west_caves)
@@ -92949,7 +92960,7 @@ rfS
 aZa
 acl
 acl
-brx
+brz
 aEp
 aem
 rfS
@@ -95060,7 +95071,7 @@ acl
 acl
 acl
 acl
-brx
+brz
 acl
 acl
 aEn
@@ -95281,7 +95292,7 @@ rfS
 rfS
 rfS
 aem
-bry
+brA
 aEy
 acl
 acl
@@ -95310,7 +95321,7 @@ acl
 acl
 acl
 aYW
-brx
+brz
 acl
 aEp
 aem
@@ -99282,7 +99293,7 @@ rfS
 rfS
 acl
 acl
-brx
+brz
 acl
 acl
 aEw
@@ -159171,8 +159182,8 @@ kLY
 jCV
 kNB
 kTa
-jlT
-jlT
+bry
+brx
 gLH
 phx
 qaR
@@ -159405,9 +159416,9 @@ nUi
 ybC
 xPx
 kTa
+bry
+brx
 wYm
-jlT
-jlT
 phx
 qaR
 qaR

@@ -362,8 +362,12 @@ GLOBAL_LIST_EMPTY(hj_categories)
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /// list of categories for upp joes
 GLOBAL_LIST_EMPTY(uppj_categories)
+/// list of categories for daniels
+GLOBAL_LIST_EMPTY(daniel_categories)
 /// dict ("category" : (emotes)) of every uppj emote typepath
 GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
+/// dict ("category" : (emotes)) of every daniel emote typepath
+GLOBAL_LIST_INIT(daniel_emotes, setup_daniel_emotes())
 /// list of categories for wy combat droids
 GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
@@ -659,6 +663,19 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 
 		if(!(initial(emote.category) in GLOB.uppj_categories))
 			GLOB.uppj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for Daniel emotes and category list, returns data for daniel_emotes
+/proc/setup_daniel_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & DANIEL_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.daniel_categories))
+			GLOB.daniel_categories += initial(emote.category)
 
 		emotes_to_add += emote
 	return emotes_to_add

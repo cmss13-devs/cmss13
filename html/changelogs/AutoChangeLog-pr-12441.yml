@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added Abomination pelt and skull items."
-  - code_imp: "Added code to delete instances of skull and pelt that have no icon."

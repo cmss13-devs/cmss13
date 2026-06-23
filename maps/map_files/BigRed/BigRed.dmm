@@ -1954,9 +1954,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aho" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/virology)
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -1964,9 +1964,10 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahq" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/virology)
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -2096,13 +2097,37 @@
 "ahT" = (
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
+"ahU" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahV" = (
 /turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/nw)
+"ahW" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = -2;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"ahY" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/virology)
+"ahZ" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/virology)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -14230,8 +14255,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bok" = (
-/obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (
@@ -36613,11 +36638,12 @@
 /area/bigredv2/outside/n)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine/damaged{
 	pixel_y = 8
 	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
+/obj/item/weapon/twohanded/lungemine/damaged{
+	pixel_y = 3;
+	pixel_x = 7
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -45062,7 +45088,7 @@ aHZ
 aFv
 aFv
 aoD
-ahq
+ahZ
 aNi
 aNi
 aNi
@@ -45279,7 +45305,7 @@ aNi
 aOt
 aNj
 aNi
-ahq
+ahZ
 arT
 aNc
 aNc
@@ -45499,16 +45525,16 @@ aNc
 aNc
 asl
 aWS
-aho
+ahY
 asl
 aYC
-aho
+ahY
 asl
 swJ
-aho
+ahY
 asl
 aYC
-aho
+ahY
 aoD
 aao
 aao
@@ -45703,7 +45729,7 @@ aFv
 aoD
 aNi
 aNi
-ahq
+ahZ
 aOt
 aNj
 arT
@@ -65121,8 +65147,8 @@ atJ
 asv
 asv
 awp
-bkT
-bkU
+ahU
+ahq
 bkT
 bkU
 bkT
@@ -65334,8 +65360,8 @@ bep
 bep
 bqa
 awp
-bkU
-bkU
+ahW
+ahq
 bkU
 bkU
 bkU
@@ -65549,8 +65575,8 @@ bpX
 awp
 bkT
 blG
-bkT
-bkU
+aho
+aho
 bkT
 bkU
 awp

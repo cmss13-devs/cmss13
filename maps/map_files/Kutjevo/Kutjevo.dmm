@@ -1823,10 +1823,28 @@
 /turf/open_space,
 /area/sky/level4)
 "agV" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agW" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agX" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
+"agY" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
+"agZ" = (
 /obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/spring)
-"agW" = (
+"aha" = (
 /obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -25559,7 +25577,7 @@ xzY
 xzY
 vMP
 xHm
-cvm
+agX
 jhS
 jhS
 kVJ
@@ -25726,9 +25744,9 @@ hQj
 psz
 vdC
 xHm
-cvm
-fRI
+agY
 hQj
+agV
 lAT
 xgV
 xHm
@@ -25895,7 +25913,7 @@ fCz
 nLJ
 dzD
 hQj
-hQj
+agW
 hQj
 xgV
 pnM
@@ -45587,7 +45605,7 @@ dxF
 skx
 uzJ
 skx
-agW
+aha
 iNI
 iNI
 fdH
@@ -46262,7 +46280,7 @@ eVR
 mct
 hET
 ewl
-agV
+agZ
 skx
 oQb
 kgx
@@ -46920,8 +46938,8 @@ dxF
 dxF
 vhC
 uzJ
-agW
-agV
+aha
+agZ
 xuN
 ebv
 mNv
@@ -47261,7 +47279,7 @@ iNI
 iNI
 iNI
 iNI
-agV
+agZ
 iNI
 skx
 uzJ

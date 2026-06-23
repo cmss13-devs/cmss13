@@ -19,6 +19,7 @@
 #define LANGUAGE_PATHOGEN_MIND "Mycelial Link"
 
 #define LANGUAGE_APOLLO "APOLLO Link"
+#define LANGUAGE_ARTEMIS "ARTEMIS Link"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"
 

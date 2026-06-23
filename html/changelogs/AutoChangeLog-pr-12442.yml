@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Changed some queen procs to xenomorph base."
-  - rscadd: "Changed Queen naming convention (thought I did this ages ago)"
-  - code_imp: "Changed the tier_slot_multiplier var name to divisor because it was stupidly named."

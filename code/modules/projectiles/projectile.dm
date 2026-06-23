@@ -555,8 +555,8 @@
 
 		else
 			direct_hit = TRUE
-			if(firer)
-				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, target_living)
+			if(firer && projectile_flags & PROJECTILE_BULLSEYE)
+				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, target_living, shot_from)
 
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,

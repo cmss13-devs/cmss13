@@ -35,6 +35,7 @@
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_varadero.dmi'
 	minimap_color = MINIMAP_AREA_LZ
+	is_landing_zone = TRUE
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
@@ -44,6 +45,7 @@
 	icon = 'icons/turf/area_varadero.dmi'
 	minimap_color = MINIMAP_AREA_LZ
 	ceiling = CEILING_NONE
+	is_landing_zone = TRUE
 	ambience_exterior = AMBIENCE_JUNGLE_ALT
 
 /area/sekhmet/shuttles/drop3
@@ -95,6 +97,7 @@
 /area/sekhmet/outside/airfield
 	name = "Sekhmet Clearing"
 	icon_state = "southwest"
+	linked_lz = DROPSHIP_LZ1
 /area/sekhmet/int_glass/hosptial
 	name = "Sekhmet Treatment Center"
 	icon_state = "medbay"

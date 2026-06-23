@@ -11,7 +11,7 @@
 	stun_duration = 2
 	grab_level = GRAB_CHOKE
 	base_state = "Bortrough"
-	death_sound = 'sound/effects/bortrough-die.mp3'
+	death_sound = 'sound/effects/bortrough-die.ogg'
 	growl_sound = "bortrough-chuff"
 	hiss_sound = "bortrough-hurt"
 	wound_icon = 'icons/mob/bortrough.dmi'

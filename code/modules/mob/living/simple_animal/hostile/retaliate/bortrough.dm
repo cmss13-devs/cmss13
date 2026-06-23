@@ -18,6 +18,9 @@
 	pixel_x = -22
 	var/pulling_state = "Bortrough Running Open Jaws"
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/ListTargets(dist = 4)
+	. = ..()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/update_transform(instant_update = FALSE)
 	. = ..()
 	if(pulling)

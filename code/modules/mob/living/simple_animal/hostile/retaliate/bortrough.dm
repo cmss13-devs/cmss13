@@ -3,7 +3,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough
-	name = "Aligator"
+	name = "Bortrough"
 	icon = 'icons/mob/bortrough.dmi'
 	icon_state = "Bortrough Running"
 	icon_living = "Bortrough Running"

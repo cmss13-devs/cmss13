@@ -9568,6 +9568,10 @@
 "dQr" = (
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_glass/complex_generic)
+"dQK" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/gm/dirt/swamp_dirt/variant_5/south,
+/area/sekhmet/outside/swamp)
 "dRf" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush{
 	color = "#fceab2";
@@ -17012,6 +17016,10 @@
 	pixel_y = -2
 	},
 /turf/open/gm/river/swamp,
+/area/sekhmet/outside/swamp)
+"hHf" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/auto_turf/swamp_grass/layer1,
 /area/sekhmet/outside/swamp)
 "hHl" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -26319,7 +26327,7 @@
 /turf/open/gm/river/swamp,
 /area/sekhmet/outside/swamp)
 "mXJ" = (
-/obj/effect/landmark/lizard_spawn,
+/obj/effect/landmark/lizard_spawn/bortrough,
 /turf/open/gm/coast/dirt/swampdir/west,
 /area/sekhmet/outside/swamp)
 "mXK" = (
@@ -29834,6 +29842,10 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/floor3,
 /area/sekhmet/int_glass/offices)
+"oLk" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/gm/coast/dirt/swampdir/south,
+/area/sekhmet/outside/swamp)
 "oLw" = (
 /obj/structure/shuttle/part/ert/transparent/left_engine,
 /turf/open/floor/corsat,
@@ -33481,6 +33493,10 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/sekhmet/int_reg/southwest_complex)
+"qPV" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/auto_turf/swamp_dirt/layer1,
+/area/sekhmet/outside/swamp)
 "qPW" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata/floor2,
@@ -34490,6 +34506,10 @@
 /obj/effect/abstract/ripple/shadow,
 /turf/open/gm/coast/dirt/swampbeachcorner2/south_east,
 /area/sekhmet/outside/swamp)
+"rvv" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/gm/dirt/swamp_dirt/variant_2,
+/area/sekhmet/outside/swamp)
 "rvz" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/kutjevo,
@@ -34946,6 +34966,10 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/sekhmet/caves/temple)
+"rGr" = (
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/east_jungle)
 "rGJ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -46518,8 +46542,8 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/sekhmet/int_reg/complex_operation)
 "xUB" = (
-/obj/effect/landmark/lizard_spawn,
-/turf/open/auto_turf/swamp_grass/layer1,
+/obj/effect/landmark/lizard_spawn/bortrough,
+/turf/open/gm/dirt/swamp_dirt,
 /area/sekhmet/outside/swamp)
 "xUQ" = (
 /obj/structure/stairs/perspective{
@@ -88598,7 +88622,7 @@ mnc
 vWE
 uKV
 pBz
-pBz
+hHf
 tHT
 nJZ
 qln
@@ -91258,7 +91282,7 @@ lzJ
 pBz
 pBz
 cHW
-pBz
+hHf
 pZW
 bMh
 cFn
@@ -94208,7 +94232,7 @@ duS
 hUQ
 cHW
 kRb
-kRb
+qPV
 kCV
 kCV
 lzJ
@@ -94683,7 +94707,7 @@ tKj
 xUZ
 jen
 wuj
-dVw
+oLk
 cHW
 pBz
 pBz
@@ -95022,7 +95046,7 @@ kCV
 kCV
 kCV
 rUO
-aOp
+rvv
 pZW
 qbK
 sih
@@ -97454,7 +97478,7 @@ bzC
 kCV
 kCV
 ahB
-ahB
+dQK
 pHK
 lpw
 oES
@@ -97875,7 +97899,7 @@ bsP
 aOp
 hnk
 kRb
-cHW
+xUB
 rMZ
 lQU
 fts
@@ -99711,7 +99735,7 @@ lzW
 tAg
 pBz
 ahk
-aOp
+rvv
 lzJ
 qIY
 pmQ
@@ -100374,7 +100398,7 @@ uFZ
 vyp
 rEe
 pBz
-cHW
+xUB
 gqP
 pZW
 lmA
@@ -101910,7 +101934,7 @@ pBz
 pBz
 pBz
 pBz
-cHW
+xUB
 pZW
 xOG
 bpU
@@ -102237,7 +102261,7 @@ cfh
 uhn
 vRr
 atp
-xUB
+pBz
 qqg
 lzJ
 qTH
@@ -103356,7 +103380,7 @@ uwE
 pdy
 bbl
 hsS
-cHW
+xUB
 cHW
 rUO
 mxU
@@ -119413,7 +119437,7 @@ efC
 rEu
 rEu
 rEu
-grS
+rGr
 rSl
 pvr
 oQs

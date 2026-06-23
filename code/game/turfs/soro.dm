@@ -311,3 +311,4 @@
 	icon = 'icons/turf/floors/swamp_water.dmi'
 	icon_state = "swampshallow"
 	icon_overlay = "swampriverwater"
+	no_overlay = TRUE

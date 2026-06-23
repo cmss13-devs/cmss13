@@ -156,6 +156,7 @@
 
 /obj/effect/landmark/lizard_spawn/bortrough
 	name = "bortrough spawn"
+	icon_state = "bortrough_spawn"
 	lizard_path = /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough
 
 /obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)

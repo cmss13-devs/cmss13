@@ -2,7 +2,7 @@
 #define LIZARD_SPEED_NORMAL 1.2
 
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough
 	name = "Aligator"
 	icon = 'icons/mob/bortrough.dmi'
 	icon_state = "Bortrough Running"
@@ -17,43 +17,43 @@
 	wound_icon = 'icons/mob/bortrough.dmi'
 	var/pulling_state = "Bortrough Running Open Jaws"
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/update_transform(instant_update = FALSE)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/update_transform(instant_update = FALSE)
 	. = ..()
 	if(pulling)
 		icon_state = "Bortrough Running Open Jaws"
 	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
 		icon_state = "Bortrough Submerged"
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/Move(NewLoc, direct)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/Move(NewLoc, direct)
 	. = ..()
 	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
 		icon_state = "Bortrough Submerged"
 	else
 		if(icon_state == "Bortrough Submerged")
-		update_transform()
+			update_transform()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/update_wounds()
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/update_wounds()
 	. = ..()
 	if(istype(loc, /turf/open/gm/river) && stat != DEAD)
 		wound_icon_holder.icon_state = "none"
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/try_to_extinguish()
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/try_to_extinguish()
 	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
 	. = ..()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/pounced_mob(mob/living/pounced_mob)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/pounced_mob(mob/living/pounced_mob)
 	. = ..()
 	throwing = 0
 	start_pulling(pounced_mob, TRUE, simple_mob = TRUE)
 	MoveTo(target_mob_ref?.resolve(), 5, TRUE, 2 SECONDS, TRUE) //drag our target away
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/start_pulling(atom/movable/clone/AM, lunge, no_msg, simple_mob)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/start_pulling(atom/movable/clone/AM, lunge, no_msg, simple_mob)
 	. = ..()
 	if(.)
 		update_transform()
 		speed = ALIGATOR_SPEED_DRAGING
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/aligator/stop_pulling()
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/stop_pulling()
 	. = ..()
 	speed = LIZARD_SPEED_NORMAL
 	update_transform()

@@ -36605,11 +36605,12 @@
 /area/bigredv2/outside/n)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine/damaged{
 	pixel_y = 8
 	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
+/obj/item/weapon/twohanded/lungemine/damaged{
+	pixel_y = 3;
+	pixel_x = 7
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)

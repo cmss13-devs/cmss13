@@ -450,7 +450,7 @@
 			if("giant_lizard_hiss")
 				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
 			if("bortrough_hiss")
-				sound = pick('sound/effect/bortrough-hurt.ogg')
+				sound = pick('sound/effects/bortrough-hurt.ogg')
 			if("evo_screech")
 				sound = pick('sound/voice/alien_echoroar_1.ogg', 'sound/voice/alien_echoroar_2.ogg', 'sound/voice/alien_echoroar_3.ogg')
 			if("wy_droid_pain")

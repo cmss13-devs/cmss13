@@ -1981,6 +1981,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_2)
+"ael" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_south)
 "aem" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -13506,6 +13510,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
+"aGz" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_north)
 "aGA" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -14274,6 +14282,7 @@
 /turf/closed/wall/wood/green,
 /area/lv1021/oob)
 "aIE" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/wall/wood/teal,
 /area/lv1021/oob)
 "aIF" = (
@@ -22045,16 +22054,6 @@
 "bbD" = (
 /obj/effect/decal/hybrisa/lattice,
 /obj/item/stack/rods,
-/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
-/area/lv1021/indoors/caves/cave_north)
-"bbE" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 7
-	},
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/cave_north)
 "bbF" = (
@@ -72862,7 +72861,7 @@ hXq
 hXq
 abB
 aol
-pPm
+ael
 aZU
 abB
 aDG
@@ -73029,7 +73028,7 @@ aoj
 apJ
 aoj
 aon
-pPm
+ael
 pPm
 alJ
 aon
@@ -74884,7 +74883,7 @@ mTF
 pPm
 pPm
 pPm
-pPm
+ael
 aaM
 abE
 aaB
@@ -75051,7 +75050,7 @@ gDN
 pPm
 pPm
 pPm
-pPm
+ael
 aaM
 aaB
 aby
@@ -75300,8 +75299,8 @@ jfQ
 wzQ
 wzQ
 hXq
-bbE
-aYT
+aGz
+aGz
 spz
 spz
 aro
@@ -76220,7 +76219,7 @@ aXv
 pPm
 jIA
 pPm
-pPm
+ael
 aaM
 abE
 quY
@@ -76387,7 +76386,7 @@ aXv
 pPm
 pPm
 pPm
-pPm
+ael
 aaM
 gul
 aaz
@@ -92224,8 +92223,8 @@ hiw
 hXu
 hXu
 hXu
-hiw
-hiw
+aHV
+aHV
 hiw
 hiw
 hiw
@@ -92390,9 +92389,9 @@ hiw
 hiw
 hXu
 hXu
-hiw
-hiw
-hiw
+aHV
+aHV
+aHV
 hiw
 hiw
 hiw
@@ -92556,9 +92555,9 @@ hiw
 hiw
 hiw
 hXu
-hiw
-hiw
-hiw
+aHV
+aHV
+aHV
 hiw
 hiw
 hiw
@@ -92724,8 +92723,8 @@ hiw
 hiw
 hiw
 hiw
-hiw
-hiw
+aHV
+aHV
 hiw
 hiw
 hiw
@@ -107912,7 +107911,7 @@ hXu
 hiw
 hiw
 hiw
-hiw
+aHV
 aHV
 aHV
 aHV
@@ -108079,7 +108078,7 @@ hiw
 hiw
 hiw
 hiw
-hiw
+aHV
 aHV
 aHV
 aHV
@@ -112612,6 +112611,7 @@ wzQ
 wzQ
 wzQ
 wzQ
+wzQ
 hiw
 hiw
 hiw
@@ -112619,8 +112619,7 @@ hiw
 hiw
 hiw
 hiw
-hiw
-hiw
+wzQ
 wzQ
 wzQ
 wzQ

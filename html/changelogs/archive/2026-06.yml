@@ -302,3 +302,89 @@
       stupidly named.
   virtualgirlie:
   - spellcheck: changed "enemy boiler's" to "enemy boilers"
+2026-06-23:
+  Ammoniacres:
+  - bugfix: fixed unpowered doors being unable to be opened by maintenance jacks (for
+      humans)
+  - qol: let more tools and weapons cut fences!
+  - rscadd: made the hostile freelancer boarding message more clear in demonstrating
+      hostile intent.
+  Antlers:
+  - bugfix: Fixed an issue where a M56D could be attached to a mount that already
+      had a gun
+  - bugfix: Fixed an issue where a disassembled M56D that already had a mount could
+      be attached to another mount.
+  Bibby0110:
+  - rscadd: Observers can once again healthscan xenos/simple mobs
+  BlitzArde:
+  - bugfix: Trying to drench an acid-ed object in acid now properly states the object's
+      name
+  BlitzArde, Blundir:
+  - soundtweak: Replaced the disturbances hazmat joe sound file
+  Blundir:
+  - rscadd: added clown walk waddling
+  - imageadd: clown items and simplemob resprite
+  - soundadd: clown boots now make you honk when you walk in them
+  ComboTombo:
+  - rscadd: Added a tip explaining that in-hand activation with a machete can quickly
+      clear out foliage
+  DangerRevolution:
+  - rscadd: At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic shipside
+      then autodoc upgrade disks will be spawned on the ASRS elevator.
+  - rscadd: At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic then
+      autodocs will have their Surgery-1 skill check removed. Anyone can use them
+      in this situation.
+  Drathek:
+  - bugfix: Fixed a couple errors with the debug mass screenshot verb when handling
+      centered space levels and ever the mob is force aghosted
+  EmeraldCandy:
+  - rscadd: Added optional customizable sound alerts for response teams
+  - rscadd: Predator response team calls now produce a bracer noise alert for ghosts.
+  Itus:
+  - code_imp: Rankpins.Dm got every navy rank shoulder patch renamed appropriately
+      and icon'ed
+  - refactor: Paygrades file got some changes to rank names.
+  - imageadd: adds inventory overlays(which work), Onmob sprites for the patches and
+      item sprites.
+  - spellcheck: fixed the N36 -> NE6 typo
+  MarpleJones:
+  - balance: lowers PROPERTY_CORROSIVE potency check on xenomorph from 3 to 2; now
+      it works on property_level > 4.
+  MistChristmas:
+  - bugfix: Sentry hits no longer count for lever action streaks
+  - bugfix: NVGs/Malfunctioning AR/King Doom no longer are fullwhite.
+  Riot:
+  - balance: Buffs the IEDs used by the CLF
+  - balance: CLF have combat flashlights now.
+  - balance: Cyanide kills you faster now
+  Unknownity:
+  - rscadd: The Hunter Ship has gained a reagent grinder.
+  - balance: The lunge mine has been buffed to be able to gib unarmored humans and
+      kill armored humans while its area effect has been decreased.
+  - balance: The damaged variant of the lunge mine has been slightly buffed but its
+      still worse than the regular lunge mine before the buff.
+  - maptweak: The lunge mines in Solaris Ridge, Hybrisa Prospera and Trijent Dam have
+      been replaced with the damaged nerfed versions. The Solaris Ridge CLF Insert
+      has only one regular lunge mine now.
+  cuberound:
+  - balance: allows pulling mobs in grab up and down a z level
+  - balance: slows down climbing up and down for each full hand
+  - rscadd: Holograms (Queen eye, falcion drone, spycam, railgun cam) do not fall
+      down z levels, "looking up" in moves it down/up z level
+  - rscadd: Queen remote weeding can go up/down z level when there is wall under the
+      crossed edge
+  - bugfix: Queen can remote build special structures on other z levels of the same
+      map as she is at
+  - bugfix: moving under transparent turfs no longer cancels looking up
+  - bugfix: explosions on upper xeno walls destroy the lower portion too
+  hry-gh:
+  - server: events sent to sentry are now scrubbed for user PII and ignoring sensitive
+      datums, procs
+  kitchenenthusiast:
+  - rscadd: added an announcement clarity meter to Overwatch consoles so you no longer
+      scream into the void, Lieutenant
+  - ui: added an announcement clarity meter to Overwatch consoles
+  - bugfix: Filing cabinets no longer give 6 messages when you try to put an unfilable
+      item in them
+  - bugfix: Half-sized document cabinets no longer shrink when you put a paper into
+      them

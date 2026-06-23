@@ -159,10 +159,10 @@
 					for(var/obj/item/weapon/gun/guntype as anything in guntypes)
 						if(isnull(initial(guntype.icon_state)))
 							continue
-						if(!guntype.map_specific_decoration)
-							check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', initial(guntype.icon_state), guntype, "gun_underlay")
+						if(guntype.map_specific_decoration)
+							check(obj_path, belt_gun.gun_slot_icon, prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 						else
-							check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', prefix + initial(guntype.icon_state), guntype, "gun_underlay")
+							check(obj_path, belt_gun.gun_slot_icon, initial(guntype.icon_state), guntype, "gun_underlay")
 		qdel(spawned)
 
 

@@ -15128,10 +15128,10 @@
 "aKV" = (
 /obj/structure/closet/crate/supply,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/weapon/gun/shotgun/pump,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aKW" = (

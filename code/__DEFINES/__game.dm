@@ -16,6 +16,12 @@
 #define MAP_MAXY 5
 #define MAP_MAXZ 6
 
+// open_space_bounds indices
+#define OPEN_SPACE_BOUNDS_MINX 1
+#define OPEN_SPACE_BOUNDS_MAXX 2
+#define OPEN_SPACE_BOUNDS_MINY 3
+#define OPEN_SPACE_BOUNDS_MAXY 4
+
 #define MAP_MAXSIZE 300
 
 
@@ -34,9 +40,11 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_TYRARGO_RIFT "Tyrargo Rift"
+#define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
-
+#define MAP_HUNTERSHIP "Hunter Ship"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
@@ -126,6 +134,7 @@
 #define CHAT_GHOSTHIVEMIND (1<<12)
 #define CHAT_NICHELOGS (1<<13)
 #define CHAT_LISTENINGBUG (1<<14)
+#define CHAT_GHOSTANNOUNCECLARITY (1<<15)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
@@ -159,8 +168,10 @@
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)
 #define PLAY_CLF (1<<3)
-#define PLAY_XENO_T2 (1<<4)
-#define PLAY_XENO_T3 (1<<5)
+#define PLAY_PMC (1<<4)
+#define PLAY_HUNT_MISC (1<<5)
+#define PLAY_XENO_T2 (1<<6)
+#define PLAY_XENO_T3 (1<<7)
 
 //toggles_admin
 /// Splits admin tabs in Statpanel
@@ -184,7 +195,7 @@
 
 #define TOGGLES_SURVIVOR_DEFAULT (PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE)
 
-#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_XENO_T2|PLAY_XENO_T3)
+#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_PMC|PLAY_HUNT_MISC|PLAY_XENO_T2|PLAY_XENO_T3)
 
 #define TOGGLES_ADMIN_DEFAULT (ADMIN_AFK_SAFE)
 
@@ -215,7 +226,6 @@
 #define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
 #define SHUTTLE_RECHARGE  2 MINUTES
-#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE 0
@@ -267,6 +277,12 @@
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
 #define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
+
+/// Directions as text for riding component
+#define TEXT_NORTH "[NORTH]"
+#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_EAST "[EAST]"
+#define TEXT_WEST "[WEST]"
 
 // Ceilings
 // Ceiling types
@@ -380,6 +396,9 @@
 #define WALL_STRATA_ICE "strata_ice"
 #define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
+#define WALL_FOREST "forest_veg"
+#define WALL_FOREST_ROCK "rock_forest"
+#define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"
@@ -401,10 +420,13 @@
 #define WALL_KUTJEVO_COLONYR "colonyr"
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
-#define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_HUNTERSHIP "hunter"
+#define WALL_ENGINEERSHIP "metal"
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
+#define WALL_ANCIENT_BASE "ancient_stone"
+#define WALL_RUNEDSTONE "runedstone"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

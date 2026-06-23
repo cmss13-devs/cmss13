@@ -33,7 +33,7 @@
 /area/shiva/exterior/cp_lz2)
 "l" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "o" = (
 /obj/structure/machinery/door_control{
 	id = "sslz_shutters";
@@ -88,7 +88,7 @@
 	pixel_x = -7
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "S" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;

@@ -34,7 +34,7 @@
 /datum/chem_property/negative/toxic
 	name = PROPERTY_TOXIC
 	code = "TXC"
-	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health, severe illness, or plant death."
+	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissue, resulting in bad health, severe illness, or plant death."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
@@ -48,15 +48,6 @@
 
 /datum/chem_property/negative/toxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(potency * POTENCY_MULTIPLIER_VHIGH, TOX)
-
-/datum/chem_property/negative/toxic/reaction_obj(obj/O, volume, potency = 1)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
-		return
-	if(istype(O,/obj/effect/glowshroom))
-		qdel(O)
-		return
 
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
@@ -121,7 +112,7 @@
 
 			if(H.glasses)
 				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
+					to_chat(H, SPAN_DANGER("Your [H.glasses] melt[H.glasses.gender != PLURAL ? "s" : ""] away!"))
 					qdel(H.glasses)
 					H.update_inv_glasses(0)
 				return
@@ -131,8 +122,7 @@
 				var/mob/living/carbon/human/H = M
 				var/obj/limb/affecting = H.get_limb("head")
 				if(affecting)
-					if(affecting.take_damage(4, 2))
-						H.UpdateDamageIcon()
+					affecting.take_damage(4, 2)
 					if(prob(meltprob))
 						if(H.pain.feels_pain)
 							H.emote("scream")
@@ -144,7 +134,7 @@
 			M.take_limb_damage(min(6, volume))
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
+		if(potency > 2) //Needs level 5+ to have any effect, remember that potency = level * 0.5
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
@@ -242,7 +232,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = max(C.blood_volume - 4 * potency *  delta_time, 0)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
+	M.drowsiness = min(M.drowsiness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
 	if(prob(5 * delta_time))
@@ -466,8 +456,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] > potency*-2)
 		processing_tray.mutation_controller["Potency"] = potency*-2
-	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
-		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminescence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminescence"] = potency*-2
 	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
 		processing_tray.mutation_controller["Flowers"] = potency*-2
 
@@ -516,7 +506,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(50))
-		M.drowsyness = min(M.drowsyness + potency, POTENCY_MULTIPLIER_HIGH * potency)
+		M.drowsiness = min(M.drowsiness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(10))
 		M.emote("drool")
 

@@ -18,7 +18,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 /obj/structure/machinery/biohazard_lockdown/attack_alien(mob/user as mob)
 	return FALSE
 
-/obj/structure/machinery/biohazard_lockdown/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/biohazard_lockdown/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/biohazard_lockdown/attackby(obj/item/attacking_item, mob/user)
@@ -28,7 +28,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	if(isxeno(user))
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 
@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	var/ares_log = "Triggered Medical Research Biohazard Containment Lockdown."
 	var/person = user.name
 	if(!message)
-		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
+		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH IN PROGRESS. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
 	else
 		log = "[key_name(user)] triggered research bio lockdown! (Using a custom announcement)."
 	if(admin)

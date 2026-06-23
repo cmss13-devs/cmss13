@@ -1,6 +1,6 @@
 /datum/tech
 	var/name = "tech"
-	var/desc = "placeholder description"
+	var/desc = "Placeholder description."
 
 	var/icon = 'icons/effects/techtree/tech.dmi'
 	var/icon_state = "unknown"
@@ -30,7 +30,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(!holder.has_access(M, TREE_ACCESS_MODIFY))
-		to_chat(M, SPAN_WARNING("You lack the necessary permission required to use this tree"))
+		to_chat(M, SPAN_WARNING("You lack the necessary permission required to use this tree."))
 		return
 
 	if(!check_tier_level(M))

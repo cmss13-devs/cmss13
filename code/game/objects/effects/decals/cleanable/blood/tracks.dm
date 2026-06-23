@@ -1,7 +1,7 @@
 // Footprints, tire trails...
 /obj/effect/decal/cleanable/blood/tracks
 	icon = 'icons/effects/fluidtracks.dmi'
-	icon_state = ""
+	icon_state = "human2"
 	amount = 0
 	random_icon_states = null
 	randomized = FALSE
@@ -65,8 +65,25 @@
 	coming_state = "claw1"
 	going_state  = "claw2"
 
+/obj/effect/decal/cleanable/blood/tracks/pawprints
+	name = "pawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "paw1"
+	going_state  = "paw2"
+	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/clawprints
+	name = "clawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "claw1"
+	going_state  = "claw2"
+	amount = 0
+
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"
+	gender = PLURAL
 	desc = "They look like tracks left by wheels."
 	coming_state = "wheels"
 	going_state  = ""
@@ -76,4 +93,3 @@
 	desc = "Some poor sod seem to have been dragged here."
 	coming_state = "drag1"
 	going_state  = "drag2"
-

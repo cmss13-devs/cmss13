@@ -32,28 +32,6 @@
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
 
-/obj/structure/machinery/computer/shuttle_control/almayer/hangar
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "supply"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Hangar"
-
-/obj/structure/machinery/computer/shuttle_control/almayer/maintenance
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "shuttle"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Maintenance"
-
 /area/almayer/command
 	minimap_color = MINIMAP_AREA_COMMAND
 
@@ -63,7 +41,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_CIC
 	soundscape_interval = 50
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/command/cichallway
 	name = "\improper Secure Command Hallway"
@@ -81,7 +59,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 120
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE|AREA_NOSECURECADES
 	can_build_special = FALSE
 	is_resin_allowed = FALSE
 	resin_construction_allowed = FALSE
@@ -100,13 +78,13 @@
 	name = "\improper Upper Deck Telecommunications"
 	icon_state = "tcomms"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/command/self_destruct
 	name = "\improper Upper Deck Self-Destruct Core Room"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/command/corporateliaison
 	name = "\improper Corporate Liaison Office"
@@ -164,7 +142,7 @@
 	name = "\improper Upper Deck Port Engineering"
 
 /area/almayer/engineering/upper_engineering/notunnel
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 	requires_power = FALSE
 
 /area/almayer/engineering/ce_room
@@ -219,7 +197,7 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/weapon_room/notunnel
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 	requires_power = FALSE
 
 /area/almayer/shipboard/starboard_point_defense
@@ -761,13 +739,11 @@
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/containment/cell
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL|AREA_CONTAINMENT
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT|AREA_NOSECURECADES
 
 /area/almayer/medical/containment/cell/cl
 	name = "\improper Storage Room"
@@ -840,12 +816,12 @@
 	name = "\improper Unknown Area"
 	icon_state = "selfdestruct"
 	fake_zlevel = 2 // lowerdeck
-	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/engineering/airmix
 	icon_state = "selfdestruct"
 	requires_power = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/lifeboat_pumps
 	name = "Lifeboat Fuel Pumps"
@@ -877,13 +853,13 @@
 	name = "\improper Port Lifeboat Docking"
 	icon_state = "lifeboat"
 	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "shuttle2"
 	requires_power = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOSECURECADES
 
 //Placeholder.
 /area/almayer/evacuation/pod1
@@ -992,7 +968,7 @@
 
 //Admin Lower Level
 
-/area/almayer/underdeck/
+/area/almayer/underdeck
 	name = "USS Almayer - Under Deck"
 	allow_construction = FALSE
 	icon_state = "lowerhull"

@@ -34,7 +34,7 @@
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
-	to_chat(usr, SPAN_NOTICE(" You start washing your hands."))
+	to_chat(usr, SPAN_NOTICE("You start washing your hands."))
 	flick("sink_animation_fill", src) //<- play the filling animation then automatically switch back to the loop
 	icon_state = "sink_animation_fill_loop" //<- set it to the loop
 	addtimer(CALLBACK(src, PROC_REF(stop_flow)), 6 SECONDS)
@@ -54,19 +54,22 @@
 		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(istype(attacking_item, /obj/item/tool/extinguisher) || istype(attacking_item, /obj/item/attachable/attached_gun/extinguisher))
+		return
+
 	if(busy)
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
-	var/obj/item/reagent_container/RG = O
+	var/obj/item/reagent_container/RG = attacking_item
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
-	else if (istype(O, /obj/item/weapon/baton))
-		var/obj/item/weapon/baton/B = O
+	else if (istype(attacking_item, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/B = attacking_item
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
@@ -75,19 +78,19 @@
 				user.apply_effect(10, WEAKEN)
 				B.deductcharge(B.hitcost)
 				user.visible_message(
-					SPAN_DANGER("[user] was stunned by \his wet [O]!"),
-					SPAN_DANGER("You were stunned by your wet [O]!"))
+					SPAN_DANGER("[user] was stunned by \his wet [attacking_item]!"),
+					SPAN_DANGER("You were stunned by your wet [attacking_item]!"))
 				return
 
 	var/turf/location = user.loc
 	if(!isturf(location))
 		return
 
-	var/obj/item/I = O
+	var/obj/item/I = attacking_item
 	if(!I || !istype(I,/obj/item))
 		return
 
-	to_chat(usr, SPAN_NOTICE(" You start washing \the [I]."))
+	to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
 
 	busy = TRUE
 	sleep(40)
@@ -100,7 +103,7 @@
 	if(user.get_active_hand() != I)
 		return //Person has switched hands or the item in their hands
 
-	O.clean_blood()
+	attacking_item.clean_blood()
 	user.visible_message(
 		SPAN_NOTICE("[user] washes \a [I] using \the [src]."),
 		SPAN_NOTICE("You wash \a [I] using \the [src]."))
@@ -139,13 +142,13 @@
 	icon_state = "puddle"
 
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
+/obj/structure/sink/puddle/attack_hand(mob/user)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
 
 
-/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/puddle/attackby(obj/item/attacking_item, mob/living/user, list/mods)
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"

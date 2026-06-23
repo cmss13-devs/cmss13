@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call
 	name = "\improper Elevator Call"
-	desc = "Control panel for the elevator"
+	desc = "Control panel for the elevator."
 	shuttleId = MOBILE_TRIJENT_ELEVATOR
 	is_call = TRUE
 	var/dockId
@@ -29,7 +29,7 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller
 	name = "\improper Elevator Panel"
-	desc = "Control panel for the elevator"
+	desc = "Control panel for the elevator."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 

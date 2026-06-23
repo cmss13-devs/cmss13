@@ -266,7 +266,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
 			var/mob/M = T.attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has hung up on you."))
+			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You hear a click as the phone goes dead. [phone_id] has hung up on you."))
 			T.hangup_loop.start()
 
 		if(attached_to && ismob(attached_to.loc))

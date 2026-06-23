@@ -50,7 +50,7 @@
 			else
 				descriptive = "furiously hot"
 
-		. += SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive]")
+		. += SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive].")
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
@@ -64,9 +64,9 @@
 
 		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]"))
 		if(pressure>0)
-			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
+			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa."))
 			to_chat(user, SPAN_NOTICE("[gas_type]: 100%"))
-			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C"))
+			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C."))
 		else
 			to_chat(user, SPAN_NOTICE("Tank is empty!"))
 		src.add_fingerprint(user)

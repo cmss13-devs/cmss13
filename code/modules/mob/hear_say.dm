@@ -2,6 +2,9 @@
 /mob/proc/hear_apollo()
 	return FALSE
 
+/mob/proc/hear_artemis()
+	return FALSE
+
 /mob/hologram/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	if(!hears_speech || !linked_mob)
 		return
@@ -15,7 +18,7 @@
 	return
 
 
-/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
+/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, message_mode)
 
 	if(!client && !(mind && mind.current != src))
 		return

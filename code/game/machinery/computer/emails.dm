@@ -3,7 +3,7 @@
 
 /obj/structure/machinery/computer/emails
 	name = "Personal Computer"
-	desc = "A personal computer used to view emails"
+	desc = "A personal computer used to view emails."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "terminal1"
 	var/screen = 0

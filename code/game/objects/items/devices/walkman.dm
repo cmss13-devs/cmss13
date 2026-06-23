@@ -14,6 +14,12 @@
 		)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	item_state_slots = list(
+		WEAR_L_EAR = "walkman",
+		WEAR_R_EAR = "walkman",
+		WEAR_IN_BELT = "walkman",
+		WEAR_IN_J_STORE = "walkman"
+	)
 	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
@@ -29,7 +35,8 @@
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
-	design = rand(1, 5)
+	design = rand(1, 13)
+	icon_state = "walkman_[design]"
 	update_icon()
 	AddElement(/datum/element/corp_label/synsound)
 
@@ -60,13 +67,13 @@
 	if(istype(tape))
 		if(paused)
 			play()
-			to_chat(user,SPAN_INFO("You press [src]'s 'play' button"))
+			to_chat(user,SPAN_INFO("You press [src]'s 'play' button."))
 		else
 			pause()
 			to_chat(user,SPAN_INFO("You pause [src]"))
 		update_icon()
 	else
-		to_chat(user,SPAN_INFO("There's no tape to play"))
+		to_chat(user,SPAN_INFO("There's no tape to play."))
 	playsound(src,'sound/machines/click.ogg',20,1)
 
 /obj/item/device/walkman/attack_hand(mob/user)
@@ -165,19 +172,26 @@
 	current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 	current_song.status = SOUND_STREAM
 	play()
-	to_chat(user,SPAN_INFO("You change the song"))
+	to_chat(user,SPAN_INFO("You change the song."))
+
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+nextSong"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
 
 
 /obj/item/device/walkman/update_icon()
 	..()
 	overlays.Cut()
-	if(design)
-		overlays += "+[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+playing"
+			overlays += "+playOrPause"
+		else
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
 	else
-		overlays += "+empty"
+		overlays += "+buttonsDefault"
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -253,7 +267,12 @@
 		return
 
 	update_song(current_song, current_listener, 0)
-	to_chat(user,SPAN_INFO("You restart the song"))
+	to_chat(user,SPAN_INFO("You restart the song."))
+
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+restart"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
 
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"
@@ -320,12 +339,40 @@
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)
 
+/obj/item/device/walkman/white_band
+	name = "Synsound Walkman (White Band)"
+	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a white band."
+
+/obj/item/device/walkman/white_band/Initialize()
+	. = ..()
+	name = "Synsound Walkman" // band color in the name was only for the vendor
+	design = rand(1, 14)
+	icon_state = "walkman_[design]"
+	update_icon()
+
+/obj/item/device/walkman/white_band/update_icon()
+	overlays.Cut()
+	if(tape)
+		if(!paused)
+			overlays += "+playing"
+			overlays += "+playOrPause"
+		else
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
+	else
+		overlays += "+buttonsDefault"
+	overlays += "+whiteBand"
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.regenerate_icons()
+
 /*
 	TAPES
 */
 /obj/item/device/cassette_tape
 	name = "cassette Tape"
-	desc = "A cassette tape"
+	desc = "A cassette tape."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	item_icons = list(
@@ -505,7 +552,7 @@
 /obj/item/device/cassette_tape/cargocrate
 	name = "weyland yutani cassette"
 	id = 13
-	desc = "A blue metallic cassette with a weyland yutani logo."
+	desc = "A blue metallic cassette with a Weyland-Yutani logo."
 	icon_state = "cassette_wy"
 	side1_icon = "cassette_wy"
 

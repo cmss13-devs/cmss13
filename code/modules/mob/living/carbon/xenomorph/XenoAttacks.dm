@@ -109,7 +109,7 @@
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
 /mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if (xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+	if(xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -172,7 +172,7 @@
 			if(xeno.behavior_delegate)
 				damage = xeno.behavior_delegate.melee_attack_modify_damage(damage, src)
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(xeno.frenzy_aura > 0)
 				damage += (xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 

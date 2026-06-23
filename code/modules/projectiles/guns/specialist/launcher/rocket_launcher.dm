@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/launcher/rocket
 	name = "\improper common rocket launcher ancestor"
-	desc = "You should not be seeing this"
+	desc = "You should not be seeing this."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"
@@ -21,7 +21,7 @@
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 15
-	wield_delay = WIELD_DELAY_HORRIBLE
+	wield_delay = WEAPON_DELAY_HORRIBLE
 	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
@@ -187,7 +187,7 @@
 			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
-/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
@@ -196,8 +196,8 @@
 		huser.emote("pain")
 		huser.SetEarDeafness(max(user.ear_deaf,10))
 
-	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
-	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
+	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, Get_Angle(user, target) + 180)))
+	smoke.set_up(1, 0, backblast_loc, turn(user.dir, Get_Angle(user, target) + 180))
 	smoke.start()
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/mob in backblast_loc)
@@ -208,7 +208,7 @@
 		var/knockdown_amount = 6
 		if(isxeno(mob))
 			var/mob/living/carbon/xenomorph/xeno = mob
-			knockdown_amount = knockdown_amount * (1 - xeno.caste?.xeno_explosion_resistance / 100)
+			knockdown_amount = knockdown_amount * ((1 - xeno.caste?.xeno_explosion_resistance / 100) / 2)
 		mob.KnockDown(knockdown_amount)
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")
@@ -290,7 +290,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
 	name = "\improper M83A2 SADAR"
-	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
+	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip. It is sighted and fired from the shoulder."
 	var/fired = FALSE
 	can_be_reloaded = FALSE
 
@@ -411,7 +411,7 @@
 	Integrated.Attach(src)
 	update_attachable(Integrated.slot)
 
-/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, i = 1, reflex = 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		return
@@ -432,7 +432,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/brute
 	name = "\improper M6H-BRUTE launcher system"
-	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
+	desc = "Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',

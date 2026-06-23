@@ -324,26 +324,27 @@
 			to_chat(src, SPAN_NOTICE("Your source of light shorts out."))
 
 
+
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
-			if(INTENT_HELP) //Green, defalt
-				r_eyes = 0
-				g_eyes = 255
-				b_eyes = 0
+			if(INTENT_HELP) //Green, default
+				r_eyes = species.eyes_help[1]
+				g_eyes = species.eyes_help[2]
+				b_eyes = species.eyes_help[3]
 			if(INTENT_DISARM) //Blue
-				r_eyes = 90
-				g_eyes = 90
-				b_eyes = 253
+				r_eyes = species.eyes_disarm[1]
+				g_eyes = species.eyes_disarm[2]
+				b_eyes = species.eyes_disarm[3]
 			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
-				r_eyes = 239
-				g_eyes = 167
-				b_eyes = 0
+				r_eyes = species.eyes_grab[1]
+				g_eyes = species.eyes_grab[2]
+				b_eyes = species.eyes_grab[3]
 			if(INTENT_HARM) //RED!
-				r_eyes = 255
-				g_eyes = 0
-				b_eyes = 0
+				r_eyes = species.eyes_harm[1]
+				g_eyes = species.eyes_harm[2]
+				b_eyes = species.eyes_harm[3]
 		update_body()
 
 /mob/living/carbon/human/proc/is_bleeding()
@@ -429,7 +430,7 @@
 	if(ishuman(mob))
 		var/mob/living/carbon/human/human = mob
 		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
 		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

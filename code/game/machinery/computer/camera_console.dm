@@ -29,6 +29,8 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
+		if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
+			return FALSE
 		network = list(CAMERA_NET_COLONY)
 
 
@@ -48,7 +50,7 @@
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
 	if(!admin_console && should_block_game_interaction(src))
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
+		to_chat(user, SPAN_DANGER("[SPAN_BOLD("Unable to establish a connection")]: You're too far away from the ship!"))
 		return
 	if(inoperable())
 		return

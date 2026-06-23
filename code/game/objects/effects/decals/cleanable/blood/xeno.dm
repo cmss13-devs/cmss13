@@ -5,7 +5,7 @@
 	name = "sizzling blood"
 	desc = "It's yellow and acidic. It looks like... <i>blood?</i>"
 	icon = 'icons/effects/blood.dmi'
-	basecolor = BLOOD_COLOR_XENO
+	color = BLOOD_COLOR_XENO
 
 /obj/effect/decal/cleanable/blood/gibs/xeno
 	name = "steaming gibs"
@@ -13,7 +13,7 @@
 	desc = "Gnarly..."
 	icon_state = "xgib1"
 	random_icon_states = list("xgib1", "xgib2", "xgib3", "xgib4", "xgib5", "xgib6")
-	basecolor = BLOOD_COLOR_XENO
+	color = BLOOD_COLOR_XENO
 
 /obj/effect/decal/cleanable/blood/gibs/xeno/update_icon()
 	color = "#FFFFFF"
@@ -34,5 +34,5 @@
 	random_icon_states = list("xgibmid1", "xgibmid2", "xgibmid3")
 
 /obj/effect/decal/cleanable/blood/xtracks
-	basecolor = BLOOD_COLOR_XENO
+	color = BLOOD_COLOR_XENO
 	amount = 0 // i mean if its supposed to be xeno tracks, its probably dried up already

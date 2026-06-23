@@ -132,3 +132,5 @@ GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
+/// List of F5CT Field Camera Tripods
+GLOBAL_LIST_EMPTY(deployed_tripod_cameras)

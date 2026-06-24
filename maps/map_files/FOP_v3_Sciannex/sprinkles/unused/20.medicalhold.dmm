@@ -380,7 +380,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/template_noop)
 "Hw" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "cartridge_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,

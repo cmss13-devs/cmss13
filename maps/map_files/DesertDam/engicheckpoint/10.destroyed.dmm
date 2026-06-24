@@ -311,7 +311,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "pV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "qc" = (
@@ -441,7 +441,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
@@ -521,7 +521,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Gz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "GA" = (
@@ -903,7 +903,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "YK" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "YX" = (

@@ -162,7 +162,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = 5;
@@ -489,7 +489,7 @@
 /area/tyrargo/indoors/bar/ground)
 "Cb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/prop/tyrargo/military_alert_sign/alt{
 	pixel_y = 31
 	},
@@ -774,13 +774,11 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/bar/ground)
 "OM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_10_1";
-	name = "spent casings";
+	randomized_mapload = 0;
 	dir = 6
 	},
 /obj/item/stack/medical/bruise_pack/random_amount,
@@ -887,7 +885,7 @@
 /area/tyrargo/indoors/bar/ground)
 "Uf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"

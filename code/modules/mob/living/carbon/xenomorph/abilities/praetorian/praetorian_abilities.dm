@@ -120,12 +120,26 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 SECONDS
-	plasma_cost = 180
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 50
 
-	// Config
+	/// Max distance of the hook line
 	var/max_distance = 6
+	var/throw_max_range = 3
 	var/windup = 8 DECISECONDS
+	var/ability_used_once = FALSE
+	var/list/targets_added = list()
+	var/list/targets_collided = list()
+	var/throw_count = 0
+	var/static/image/tail_image
+	var/turf/throw_turf
+	var/list/tail_beams = list()
+	var/affected_count = 0
+	var/list/telegraph_atom_list = list()
+	var/reset_timer_id
+	var/fallback_timer_id
+	var/is_active = FALSE
+	var/expected_throw_count = 0
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -139,31 +153,13 @@
 	// Configurables
 	var/damage = 20
 
-
-// This one is more tightly coupled than I'd like, but oh well
-// unused
-/*datum/action/xeno_action/onclick/crush
-	name = "Crush"
-	action_icon_state = "prae_crush"
-	action_text = "crush"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
-	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 10 SECONDS
-	plasma_cost = 80*/
-
-// Tail lash
-/datum/action/xeno_action/activable/tail_lash
-	name = "Tail Lash"
-	action_icon_state = "prae_tail_lash"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
+/datum/action/xeno_action/activable/send_back
+	name = "Send Back"
+	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 13 SECONDS
-	plasma_cost = 80
-
-	// Config
-	var/fling_dist = 3
-	var/windup = 2 DECISECONDS
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 100
+	var/fling_damage = 40
 
 ////////// Dancer Abilities
 

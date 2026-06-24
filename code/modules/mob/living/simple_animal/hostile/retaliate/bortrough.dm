@@ -19,6 +19,10 @@
 	has_tongue = FALSE
 	var/pulling_state = "Bortrough Running Open Jaws"
 
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/Destroy()
+	. = ..()
+	stop_pulling()
+
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/ListTargets(dist = 4)
 	. = ..()
 

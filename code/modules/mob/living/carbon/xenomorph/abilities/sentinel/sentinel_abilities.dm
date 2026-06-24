@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 1 SECONDS
-	plasma_cost = 50
+	plasma_cost = 30
 	ability_uses_acid_overlay = TRUE
 
 // Scatterspit
@@ -52,7 +52,7 @@
 	var/stacks = sns.stack_count
 	sns.increment_stack_count(-stacks/2)
 	target.apply_armoured_damage(stacks*1.2, ARMOR_MELEE, BURN, limb ? limb.name : "chest")
-	if(stacks < 20)
+	if(stacks < 10)
 		return
 	stabbing_xeno.speed_modifier -= speed_buff_amount
 	stabbing_xeno.armor_modifier += armor_buff_amount

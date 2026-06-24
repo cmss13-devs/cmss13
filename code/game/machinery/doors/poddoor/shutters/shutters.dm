@@ -122,7 +122,6 @@
 	unacidable = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
-	plane = TURF_PLANE
 
 /obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
 	if(emp_proof)

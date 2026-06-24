@@ -78,6 +78,7 @@ em {font-style: normal; font-weight: bold;}
 .huge { font-size: 5}
 
 .bold {font-weight: bold;}
+.italic {font-style: italic;}
 .underline {text-decoration: underline;}
 
 .green {color: #00ff00;}

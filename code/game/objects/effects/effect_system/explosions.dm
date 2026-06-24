@@ -19,7 +19,7 @@
 
 	return
 
-/datum/effect_system/reagents_explosion/start()
+/datum/effect_system/reagents_explosion/start(do_NOT_delete = FALSE)
 	if (amount <= 2)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, location)
@@ -31,7 +31,6 @@
 			if (prob (50 * amount))
 				to_chat(M, SPAN_WARNING("The explosion knocks you down."))
 				M.apply_effect(rand(1,5), WEAKEN)
-		return
 	else
 		var/light = -1
 		var/flash = -1
@@ -44,7 +43,10 @@
 
 		explosion(location, -1, -1, light, flash)
 		if(light > 0)
-			return TRUE
+			. = TRUE
+
+	if(!do_NOT_delete)
+		qdel(src)
 
 /datum/effect_system/reagents_explosion/proc/holder_damage(atom/holder)
 	if(holder)
@@ -91,7 +93,7 @@
 	else
 		location = get_turf(loca)
 
-/datum/effect_system/expl_particles/start()
+/datum/effect_system/expl_particles/start(do_NOT_delete = FALSE)
 	var/i = 0
 	for(i=0, i<src.number, i++)
 		spawn(0)
@@ -100,7 +102,8 @@
 			for(i=0, i<pick(1;25,2;50,3,4;200), i++)
 				sleep(1)
 				step(expl,direct)
-
+			if(!do_NOT_delete)
+				qdel(src)
 
 
 //EXPLOSION EFFECT
@@ -115,8 +118,10 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/explosion/New()
-	..()
+/obj/effect/particle_effect/explosion/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		return INITIALIZE_HINT_QDEL
 	QDEL_IN(src, 10)
 
 
@@ -132,7 +137,7 @@
 	else
 		location = get_turf(loca)
 
-/datum/effect_system/explosion/start()
+/datum/effect_system/explosion/start(do_NOT_delete = FALSE)
 	new/obj/effect/particle_effect/explosion( location )
 	var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
 	P.set_up(10, 0, location)
@@ -141,6 +146,8 @@
 		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
 		S.set_up(3,0,location,null, 2)
 		S.start()
+		if(!do_NOT_delete)
+			qdel(src)
 
 /proc/explosion_particles(location, number = 10)
 	var/datum/effect_system/expl_particles/Particle = new /datum/effect_system/expl_particles()

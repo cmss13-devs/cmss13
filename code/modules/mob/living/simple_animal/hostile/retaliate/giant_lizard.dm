@@ -167,10 +167,9 @@
 	. = ..()
 	wound_icon_holder = new(null, src)
 	wound_icon_holder.icon = wound_icon
-	if(has_tongue)
-		tongue_icon_holder = new(null, src)
-		tongue_icon_holder.pixel_x = 2
-		vis_contents += tongue_icon_holder
+	tongue_icon_holder = new(null, src)
+	tongue_icon_holder.pixel_x = 2
+	vis_contents += tongue_icon_holder
 
 	vis_contents += wound_icon_holder
 

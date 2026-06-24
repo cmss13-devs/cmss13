@@ -165,7 +165,7 @@
 
 		list("WEAPONS (LETHAL)", 0, null, null, null),
 		list("W62 'Whisper' pistol", 25, /obj/item/storage/box/plinker, "red", "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory."),
-		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/action, "red", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
+		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/fluff_gun/action, "red", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
 		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "red", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 
 		list("AMMUNITION", 0, null, null, null),
@@ -236,7 +236,7 @@
 		list("WEAPONS (LETHAL)", 0, null, null, null),
 		list("UACQS Fountain Pain", 20, /obj/item/tool/pen/syringe/uacqs_fountain, "purple", "A pristine fountain pain emblazoned with 'UACQS'. Multi-functional."),
 		list("W62 'Whisper' pistol", 25, /obj/item/storage/box/plinker, "red", "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory."),
-		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/action, "red", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
+		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/fluff_gun/action, "red", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
 		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "red", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 
 		list("AMMUNITION", 0, null, null, null),

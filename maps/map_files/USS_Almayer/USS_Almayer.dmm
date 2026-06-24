@@ -4307,6 +4307,9 @@
 	},
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/upper/fore_hallway)
+"ake" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/middeck/engineer)
 "akf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/north,
@@ -4325,6 +4328,20 @@
 /area/almayer/hallways/upper/midship_hallway)
 "aki" = (
 /turf/open_space,
+/area/almayer/command/airoom)
+"akj" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/area/almayer/command/airoom)
+"akk" = (
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"akl" = (
+/obj/structure/machinery/cryopod/joe/seegson/alt,
+/turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
@@ -20951,7 +20968,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/wardrobe/chemistry_white,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcB" = (
@@ -20966,7 +20983,6 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bcC" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -67935,8 +67951,6 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/squads/req)
 "ltc" = (
-/obj/effect/landmark/late_join/working_joe,
-/obj/effect/landmark/start/working_joe,
 /obj/effect/landmark/start/synthetic,
 /obj/effect/landmark/late_join/synthetic,
 /turf/open/floor/plating/plating_catwalk/aicore,
@@ -72714,7 +72728,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "nAd" = (
-/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/power/apc/almayer/hardened/east,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/engine_core)
 "nAm" = (
@@ -181073,8 +181087,8 @@ qQS
 qQS
 afM
 ebN
-tId
-fVx
+akl
+akj
 aZV
 ebN
 naj
@@ -181176,8 +181190,8 @@ fVx
 fVx
 afN
 ebN
-tId
-qQS
+akl
+akk
 mIJ
 wiu
 xDC
@@ -187783,7 +187797,7 @@ bxP
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -187791,7 +187805,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -187886,7 +187900,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -187894,7 +187908,7 @@ bfF
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -187989,7 +188003,7 @@ bbm
 aHH
 aSC
 aSC
-aHH
+ake
 aSC
 aTC
 aSM
@@ -187997,7 +188011,7 @@ aSN
 bgq
 aIa
 aSC
-aHH
+ake
 aSC
 aSC
 aHH
@@ -188090,19 +188104,19 @@ bxH
 bgI
 bbm
 aHH
-aHH
-aHH
-aHH
-aHH
+ake
+ake
+ake
+ake
 aTC
 aSM
 aSN
 bgq
 aIa
-aHH
-aHH
-aHH
-aHH
+ake
+ake
+ake
+ake
 aHH
 bxw
 bxz

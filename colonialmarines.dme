@@ -544,6 +544,7 @@
 #include "code\datums\elements\riding.dm"
 #include "code\datums\elements\strippable.dm"
 #include "code\datums\elements\suturing.dm"
+#include "code\datums\elements\waddling.dm"
 #include "code\datums\elements\yautja_tracked_item.dm"
 #include "code\datums\elements\bullet_trait\damage_boost.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"

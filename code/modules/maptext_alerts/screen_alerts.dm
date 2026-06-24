@@ -54,6 +54,8 @@
 	var/text_to_play
 	///The client that this text is for
 	var/client/player
+	var/sound_to_play
+	var/header
 
 /atom/movable/screen/text/screen_text/command_order
 	maptext_height = 64
@@ -72,6 +74,11 @@
 	play_delay = 0.1
 	fade_out_delay = 2.5 SECONDS
 	fade_out_time = 0.5 SECONDS
+
+/atom/movable/screen/text/screen_text/command_order/tutorial/play_to_client()
+	if(sound_to_play)
+		playsound_client(player, sound_to_play, player.mob.loc, 25, FALSE)
+	to_chat(player.mob, SPAN_NOTICE(text_to_play))
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
 	if(!player)
@@ -128,7 +135,7 @@
 	for(var/letter = 2 to length(text_to_play) + letters_per_update step letters_per_update)
 		if(letter in lines_to_skip)
 			continue
-		maptext = "[style_open][copytext_char(text_to_play, 1, letter)][style_close]"
+		maptext = "[header][style_open][copytext_char(text_to_play, 1, letter)][style_close]"
 		sleep(play_delay)
 
 	addtimer(CALLBACK(src, PROC_REF(after_play)), fade_out_delay)

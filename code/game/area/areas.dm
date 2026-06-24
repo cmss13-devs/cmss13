@@ -31,6 +31,8 @@
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
 	var/statistic_exempt = FALSE
+	/// List of all fitted light emitters in the area
+	var/list/all_lights = list()
 
 	var/global/global_uid = 0
 	var/uid

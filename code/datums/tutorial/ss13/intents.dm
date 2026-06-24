@@ -4,7 +4,6 @@
 	icon_state = "intents"
 	tutorial_id = "ss13_intents_1"
 	tutorial_template = /datum/map_template/tutorial/s11x7
-	template_safety_override = TRUE
 	required_tutorial = "ss13_basic_1"
 
 // START OF SCRIPTING
@@ -100,7 +99,7 @@
 	var/list/script = list(
 		"The third intent is <b>grab</b>.<br>Grab is used to grab people in either a passive, aggressive, or chokehold grab.",
 		"Grabbing someone multiples times <b>upgrades</b> your grab.",
-		"Switch to <b>grab intent</b> by pressing the <b>[retrieve_bind("select_disarm_intent")]</b> key.<br>Then click the <b>Test Dummy</b> twice to grab them <b>aggressively</b>."
+		"Switch to <b>grab intent</b> by pressing the <b>[retrieve_bind("select_grab_intent")]</b> key.<br>Then click the <b>Test Dummy</b> twice to grab them <b>aggressively</b>."
 	)
 
 	addtimer(CALLBACK(src, PROC_REF(add_highlight), tutorial_dummy, COLOR_ORANGE), dynamic_message_to_player(script))

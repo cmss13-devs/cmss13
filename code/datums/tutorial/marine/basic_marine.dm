@@ -2,12 +2,15 @@
 	name = "Marine - Basic"
 	desc = "A tutorial to get you acquainted with the very basics of how to play a groundside marine role."
 	tutorial_id = "marine_basic_1"
-	tutorial_template = /datum/map_template/tutorial/s8x9/no_baselight
+	tutorial_template = /datum/map_template/tutorial/s9x10/no_baselight
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.
 	var/clothing_items_to_vend = 8
 	/// How many items need to be vended from the gun vendor to continue
 	var/gun_items_to_vend = 2
 	required_tutorial = "ss13_intents_1"
+	var/area/tutorial_area
+	var/list/tutorial_instance_lights = list()
+	dialogue_presets = list("commander" = /datum/tutorial_speech_preset/basic_marine/commander)
 
 // START OF SCRIPTING
 
@@ -16,16 +19,19 @@
 	if(!.)
 		return
 
-	var/obj/item/device/flashlight/flashlight = new(loc_from_corner(2, 3))
-	flashlight.anchored = TRUE
-	flashlight.set_light_power(4)
-	flashlight.set_light_range(12)
-	flashlight.icon = null
-	flashlight.set_light_on(TRUE)
-	add_to_tracking_atoms(flashlight)
+	tutorial_area = get_area(bottom_left_corner)
+	tutorial_instance_lights = tutorial_area.all_lights.Copy()
 
+	init_tracking_markers()
 	init_mob()
-	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue.")
+	//message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue.")
+
+	var/list/script = list(
+		"Good morning Marine!! Welcome to boot camp!",
+		"This is the tutorial for marine rifleman",
+		"Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue."
+	)
+	dynamic_message_to_player(script, speaker=dialogue_presets["commander"])
 	update_objective("Exit the cryopod by pressing [retrieve_bind("North")] or [retrieve_bind("East")].")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
@@ -197,13 +203,8 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
 	tutorial_pod.go_in_cryopod(tutorial_mob, TRUE, FALSE)
 
-
-/datum/tutorial/marine/basic/init_map()
-	var/obj/structure/machinery/cryopod/tutorial/tutorial_pod = new(bottom_left_corner)
-	add_to_tracking_atoms(tutorial_pod)
-	var/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial/food_vendor = new(loc_from_corner(0, 2))
-	add_to_tracking_atoms(food_vendor)
-	var/obj/structure/machinery/cm_vending/clothing/tutorial/clothing_vendor = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(clothing_vendor)
-	var/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial/gun_vendor = new(loc_from_corner(0, 5))
-	add_to_tracking_atoms(gun_vendor)
+/datum/tutorial_speech_preset/basic_marine/commander
+	speaker_name = "Maj. John Marine"
+	portrait_icon_state = "overwatch_green"
+	text_color = rgb(103, 214, 146)
+	text_header = "<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>Command Update:</u></span><br>"

@@ -288,6 +288,10 @@
 
 	set_pixel_location()
 
+	var/area/fitting_area = get_area(src)
+	if(fitting_area)
+		fitting_area.all_lights.Add(src)
+
 /obj/structure/machinery/light/set_pixel_location()
 	switch(fitting)
 		if("tube")
@@ -308,10 +312,10 @@
 					pixel_x = -10
 
 /obj/structure/machinery/light/Destroy()
-	var/area/A = get_area(src)
-	if(A)
-		on = 0
-// A.update_lights()
+	var/area/fitting_area = get_area(src)
+	if(fitting_area)
+		on = FALSE	// yes, the var name sucks. no, im not fixing it right now
+		fitting_area.all_lights.Cut(src)
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()

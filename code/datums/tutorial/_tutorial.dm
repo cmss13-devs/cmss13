@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
 	var/suspended_objective_update
-	var/template_safety_override = FALSE
+	var/list/dialogue_presets = list()
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -109,14 +109,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Verify the template loaded fully and without error.
 /datum/tutorial/proc/verify_template_loaded()
-	if(template_safety_override)
-		return TRUE
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
 	for(var/turf/tile as anything in CORNER_BLOCK(true_bottom_left_corner, initial(tutorial_template.width), initial(tutorial_template.height)))
 		// For some reason I'm unsure of, the template will not always fully load, leaving some tiles to be space tiles. So, we check all tiles in the (small) tutorial area
 		// and tell start_tutorial to abort if there's any space tiles.
-		if(istype(tile, /turf/open/space))
+		if(istypestrict(tile, /turf/open/space))
 			return FALSE
 
 	return TRUE
@@ -138,39 +136,14 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/remove_from_tracking_atoms(atom/reference)
 	tracking_atoms -= reference.type
 
-/// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial)
-	playsound_client(tutorial_mob.client, 'sound/effects/radiostatic.ogg', tutorial_mob.loc, 25, FALSE)
-	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
-	to_chat(tutorial_mob, SPAN_NOTICE(message))
-
-/// Broadcast a message to the player's screen
-/datum/tutorial/proc/dynamic_message_to_player(list/script)
-	var/final_fade_out_delay
-	var/scene_length = 0 SECONDS
-	for(var/message in script)
-		var/aproximate_word_count = 0
-		for(var/character in 1 to length_char(message))
-			// ASCII 32 = spacebar thing
-			if(text2ascii(message, character) == 32)
-				aproximate_word_count++
-			character++
-
-		if(!aproximate_word_count)
-			return FALSE
-
-		var/atom/movable/screen/text/screen_text/message_atom = new /atom/movable/screen/text/screen_text/command_order/tutorial
-		final_fade_out_delay = message_atom.fade_out_time
-		var/message_reading_time = max(round(aproximate_word_count * 0.4, 0.1), 1.5) SECONDS
-		message_atom.fade_out_delay = message_reading_time
-		message_reading_time += message_atom.fade_out_time
-		if(!scene_length)
-			message_to_player(message, message_atom)
-		else
-			addtimer(CALLBACK(src, PROC_REF(message_to_player), message, message_atom), scene_length)
-		scene_length += message_reading_time
-
-	return scene_length + final_fade_out_delay
+/datum/tutorial/proc/wake_up_screen()
+	var/mob/living/carbon/human/target = tutorial_mob
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
+	playsound_client(target.client, 'sound/machines/tcomms_on.ogg', tutorial_pod, 25, FALSE)
+	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
+	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
+	var/message = "GENERAL QUARTERS ORDER RECIEVED<br><br>ALERT LEVEL: RED<br>ALL HANDS ON DECK!<br><br>THAWING LV-975 PERSONNEL<br><br>OCCUPANT REM:NOMINAL"
+	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/hypersleep_status)
 
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message, shown_onscreen = TRUE)
@@ -366,9 +339,11 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	width = 8
 	height = 9
 
-/datum/map_template/tutorial/s8x9/no_baselight
-	name = "Tutorial Zone (8x9) (No Baselight)"
-	mappath = "maps/tutorial/tutorial_8x9_nb.dmm"
+/datum/map_template/tutorial/s9x10/no_baselight
+	name = "Tutorial Zone (9x10) (No Baselight)"
+	mappath = "maps/tutorial/tutorial_9x10_nb.dmm"
+	width = 9
+	height = 10
 
 /datum/map_template/tutorial/s7x7
 	name = "Tutorial Zone (7x7)"

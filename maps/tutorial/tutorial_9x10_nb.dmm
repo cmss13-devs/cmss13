@@ -1,0 +1,472 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/almayer/outer,
+/area/misc/tutorial/no_baselight)
+"b" = (
+/turf/open/floor/almayer/blue,
+/area/misc/tutorial/no_baselight)
+"d" = (
+/turf/open/floor/almayer/plating_striped/south,
+/area/misc/tutorial/no_baselight)
+"e" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/space)
+"f" = (
+/turf/open/floor/almayer/plating_striped/north,
+/area/misc/tutorial/no_baselight)
+"g" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/misc/tutorial/no_baselight)
+"i" = (
+/turf/open/floor/almayer/cargo_arrow/west{
+	dir = 1
+	},
+/area/misc/tutorial/no_baselight)
+"j" = (
+/obj/structure/machinery/cryopod/tutorial{
+	pixel_y = 6
+	},
+/obj/effect/landmark/tutorial_tracking_marker{
+	tracking_target_type = /obj/structure/machinery/cryopod/tutorial
+	},
+/turf/open/floor/almayer/cargo,
+/area/misc/tutorial/no_baselight)
+"k" = (
+/obj/structure/machinery/light/red,
+/turf/open/floor/almayer/plating_striped/north,
+/area/misc/tutorial/no_baselight)
+"m" = (
+/turf/open/floor/almayer/blue/north,
+/area/misc/tutorial/no_baselight)
+"n" = (
+/turf/open/floor/almayer/redfull,
+/area/misc/tutorial/no_baselight)
+"o" = (
+/turf/open/floor/almayer/redfull,
+/area/space)
+"p" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/tutorial/no_baselight)
+"q" = (
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"r" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue{
+	no_panel = 1;
+	locked = 1;
+	lights = 0;
+	glass = 0;
+	breakable = 0;
+	unslashable = 1;
+	wrenchable = 1;
+	needs_power = 0;
+	opacity = 1
+	},
+/obj/effect/landmark/tutorial_tracking_marker{
+	tracking_target_type = /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/misc/tutorial/no_baselight)
+"s" = (
+/turf/open/space/basic,
+/area/space)
+"t" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/tutorial/no_baselight)
+"u" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial{
+	layer = 3.2
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"v" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/misc/tutorial/no_baselight)
+"x" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/microwave{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"y" = (
+/turf/open/floor/almayer/plating_striped/west,
+/area/space)
+"z" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	id = null;
+	needs_power = 0;
+	breakable = 0
+	},
+/obj/structure/window/framed/almayer/hull{
+	opacity = 1
+	},
+/turf/open/floor/plating,
+/area/misc/tutorial/no_baselight)
+"A" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial{
+	pixel_y = 16;
+	layer = 3.2;
+	density = 0
+	},
+/obj/effect/landmark/tutorial_tracking_marker{
+	tracking_target_type = /obj/structure/machinery/cm_vending/sorted/marine_food/tutorial
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"B" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/structure/machinery/cryopod/tutorial{
+	pixel_y = 6;
+	layer = 2.03
+	},
+/turf/open/floor/almayer/cargo,
+/area/misc/tutorial/no_baselight)
+"C" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns{
+	layer = 3.2
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"E" = (
+/turf/open/floor/almayer/plating_striped/east,
+/area/space)
+"F" = (
+/obj/structure/closet{
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/obj/structure/closet{
+	pixel_y = -1;
+	pixel_x = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/tutorial/no_baselight)
+"G" = (
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	id = null;
+	needs_power = 0;
+	breakable = 0;
+	dir = 4
+	},
+/obj/structure/window/framed/almayer/hull{
+	opacity = 1
+	},
+/turf/open/floor/plating,
+/area/misc/tutorial/no_baselight)
+"H" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 9
+	},
+/obj/item/tool/pen{
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"I" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer/redfull,
+/area/misc/tutorial/no_baselight)
+"J" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/misc/tutorial/no_baselight)
+"L" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial{
+	layer = 3.2
+	},
+/obj/effect/landmark/tutorial_tracking_marker{
+	tracking_target_type = /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"N" = (
+/obj/structure/machinery/light/red{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/misc/tutorial/no_baselight)
+"O" = (
+/turf/open/floor/almayer/test_floor4,
+/area/misc/tutorial/no_baselight)
+"P" = (
+/obj/item/bedsheet/purple{
+	layer = 3.2
+	},
+/obj/item/bedsheet/purple{
+	pixel_y = 13
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"R" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/closed/wall/almayer,
+/area/misc/tutorial/no_baselight)
+"S" = (
+/turf/closed/wall/almayer,
+/area/misc/tutorial/no_baselight)
+"U" = (
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+"V" = (
+/obj/structure/target/alien,
+/turf/open/floor/almayer/redfull,
+/area/misc/tutorial/no_baselight)
+"Y" = (
+/obj/effect/landmark/tutorial_tracking_marker{
+	tracking_target_type = /obj/structure/machinery/cm_vending/clothing/tutorial
+	},
+/obj/structure/machinery/cm_vending/clothing/tutorial{
+	layer = 3.2;
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/misc/tutorial/no_baselight)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+N
+V
+k
+a
+S
+B
+j
+R
+a
+"}
+(3,1,1) = {"
+a
+d
+n
+f
+z
+A
+t
+t
+L
+a
+"}
+(4,1,1) = {"
+a
+d
+n
+f
+z
+Y
+m
+b
+C
+a
+"}
+(5,1,1) = {"
+a
+v
+I
+J
+a
+p
+m
+b
+F
+a
+"}
+(6,1,1) = {"
+a
+g
+g
+g
+r
+i
+m
+b
+P
+a
+"}
+(7,1,1) = {"
+a
+q
+q
+q
+O
+i
+m
+b
+P
+a
+"}
+(8,1,1) = {"
+a
+u
+U
+u
+a
+a
+x
+H
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+G
+G
+a
+a
+"}
+(10,1,1) = {"
+s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+"}
+(11,1,1) = {"
+s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+"}
+(12,1,1) = {"
+s
+s
+s
+E
+e
+E
+s
+s
+s
+s
+"}
+(13,1,1) = {"
+s
+s
+s
+o
+o
+o
+s
+s
+s
+s
+"}
+(14,1,1) = {"
+s
+s
+s
+y
+y
+y
+s
+s
+s
+s
+"}
+(15,1,1) = {"
+s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+"}
+(16,1,1) = {"
+s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+"}
+(17,1,1) = {"
+s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+"}

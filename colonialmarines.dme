@@ -784,6 +784,7 @@
 #include "code\datums\supply_packs\weapons.dm"
 #include "code\datums\tutorial\_tutorial.dm"
 #include "code\datums\tutorial\_tutorial_menu.dm"
+#include "code\datums\tutorial\_tutorial_screen_texts.dm"
 #include "code\datums\tutorial\tutorial_example.dm"
 #include "code\datums\tutorial\marine\_marine.dm"
 #include "code\datums\tutorial\marine\basic_marine.dm"

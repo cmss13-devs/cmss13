@@ -3,7 +3,6 @@
 	desc = "Learn the very basics of Space Station 13. Recommended if you haven't played before."
 	tutorial_id = "ss13_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s11x7
-	template_safety_override = TRUE
 
 // START OF SCRIPTING
 

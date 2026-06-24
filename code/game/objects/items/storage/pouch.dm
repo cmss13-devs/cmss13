@@ -1118,7 +1118,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
@@ -1126,7 +1126,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
 	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()

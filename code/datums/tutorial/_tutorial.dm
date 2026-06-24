@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/completion_marked = FALSE
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
+	var/suspended_objective_update
+	var/template_safety_override = FALSE
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -85,9 +87,13 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/end_tutorial(completed = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	deltimer(suspended_objective_update)
+
 	var/mob/old_tutorial_mob = tutorial_mob
 	if(old_tutorial_mob)
 		tutorial_mob = null // Clear it out so we don't double end the tutorial on logout via transfer_to
+		if(old_tutorial_mob.client)
+			UnregisterSignal(old_tutorial_mob.client, list(COMSIG_CLIENT_SCREEN_ADD, COMSIG_CLIENT_SCREEN_REMOVE))
 		remove_action(old_tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
 		if(old_tutorial_mob.client?.prefs && (completed || completion_marked))
 			old_tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
@@ -103,6 +109,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Verify the template loaded fully and without error.
 /datum/tutorial/proc/verify_template_loaded()
+	if(template_safety_override)
+		return TRUE
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
 	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
 	for(var/turf/tile as anything in CORNER_BLOCK(true_bottom_left_corner, initial(tutorial_template.width), initial(tutorial_template.height)))
@@ -131,18 +139,103 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tracking_atoms -= reference.type
 
 /// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message)
+/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial)
 	playsound_client(tutorial_mob.client, 'sound/effects/radiostatic.ogg', tutorial_mob.loc, 25, FALSE)
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial, rgb(103, 214, 146))
+	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
 	to_chat(tutorial_mob, SPAN_NOTICE(message))
 
+/// Broadcast a message to the player's screen
+/datum/tutorial/proc/dynamic_message_to_player(list/script)
+	var/final_fade_out_delay
+	var/scene_length = 0 SECONDS
+	for(var/message in script)
+		var/aproximate_word_count = 0
+		for(var/character in 1 to length_char(message))
+			// ASCII 32 = spacebar thing
+			if(text2ascii(message, character) == 32)
+				aproximate_word_count++
+			character++
+
+		if(!aproximate_word_count)
+			return FALSE
+
+		var/atom/movable/screen/text/screen_text/message_atom = new /atom/movable/screen/text/screen_text/command_order/tutorial
+		final_fade_out_delay = message_atom.fade_out_time
+		var/message_reading_time = max(round(aproximate_word_count * 0.4, 0.1), 1.5) SECONDS
+		message_atom.fade_out_delay = message_reading_time
+		message_reading_time += message_atom.fade_out_time
+		if(!scene_length)
+			message_to_player(message, message_atom)
+		else
+			addtimer(CALLBACK(src, PROC_REF(message_to_player), message, message_atom), scene_length)
+		scene_length += message_reading_time
+
+	return scene_length + final_fade_out_delay
+
 /// Updates a player's objective in their status tab
-/datum/tutorial/proc/update_objective(message)
+/datum/tutorial/proc/update_objective(message, shown_onscreen = TRUE)
 	SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE, message)
+	var/datum/hud/tutorial_hud = tutorial_mob.hud_used
+	if(!shown_onscreen)
+		return
+	if(length(tutorial_hud.tutorial_objective.maptext))
+		animate(tutorial_hud.tutorial_objective, alpha = 0, time = 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 0.6 SECONDS)
+	else
+		handle_onscreen_objective(message, tutorial_hud)
+
+/datum/tutorial/proc/handle_onscreen_objective(message, datum/hud/tutorial_hud)
+	if(suspended_objective_update)
+		deltimer(suspended_objective_update)
+	if(!tutorial_mob.client)
+		return
+	if(tutorial_mob.client.screen_texts)
+		suspended_objective_update = addtimer(CALLBACK(src, PROC_REF(handle_onscreen_objective), message, tutorial_hud), 2.5 SECONDS, TIMER_STOPPABLE)
+		return
+	tutorial_hud.tutorial_objective.maptext = ""
+	tutorial_hud.tutorial_objective.alpha = 255
+	update_onscreen_objective_position()
+	INVOKE_ASYNC(tutorial_hud.tutorial_objective, TYPE_PROC_REF(/atom/movable/screen/screentip/tutorial, update_onscreen_objective), message, tutorial_hud)
+
+/datum/tutorial/proc/update_onscreen_objective_position()
+	var/atom/movable/screen/action_button/hide_button = tutorial_mob.hud_used.hide_actions_toggle
+	var/atom/movable/screen/screentip/tutorial/tutorial_objective = tutorial_mob.hud_used.tutorial_objective
+	tutorial_objective.screen_loc = hide_button.get_button_screen_loc(length(tutorial_mob.actions) + 2)
+	tutorial_objective.maptext_width = tutorial_objective.maptext_width - tutorial_objective.maptext_x - 8	// slight padding on the right
+	if(tutorial_objective.maptext_width <= 240)	// smaller than half the screen, move it down a line instead
+		tutorial_objective.screen_loc = initial(tutorial_objective.screen_loc)
+
+/atom/movable/screen/screentip/tutorial/proc/update_onscreen_objective(message, datum/hud/tutorial_hud, list/style_override)
+
+	var/name_part = "<span class='langchat langchat_yell'>Current Objective:</span><br>"
+
+	var/list/lines_to_skip = list()
+	var/static/html_locate_regex = regex("<.*>")
+	var/tag_position = findtext(message, html_locate_regex)
+	var/reading_tag = TRUE
+	while(tag_position)
+		if(reading_tag)
+			if(message[tag_position] == ">")
+				reading_tag = FALSE
+			lines_to_skip += tag_position
+			tag_position++
+		else
+			tag_position = findtext(message, html_locate_regex, tag_position)
+			reading_tag = TRUE
+
+	var/message_length = length(message)
+	var/letters_per_update = 2
+
+	for(var/letter = 2 to message_length + letters_per_update step letters_per_update)
+		if(letter in lines_to_skip)
+			continue
+		tutorial_hud.tutorial_objective.maptext = "[name_part]<span class='langchat' style='font-size: 7px;'>[copytext_char(message, 1, letter)]</span>"
+		sleep(0.5)
 
 /// Initialize the tutorial mob.
 /datum/tutorial/proc/init_mob()
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
+	RegisterSignal(tutorial_mob.client, list(COMSIG_CLIENT_SCREEN_ADD, COMSIG_CLIENT_SCREEN_REMOVE), PROC_REF(update_onscreen_objective_position))
 	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
 	ADD_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 
@@ -156,6 +249,27 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// Initialize any objects that need to be in the tutorial area from the beginning.
 /datum/tutorial/proc/init_map()
 	return
+
+/datum/tutorial/proc/init_tracking_markers()
+	var/area/misc/tutorial/tutorial_area = get_area(bottom_left_corner)
+	var/list/tracking_markers = tutorial_area.atom_tracking_landmarks.Copy()
+
+	if(!length(tracking_markers))
+		return
+
+	for(var/obj/effect/landmark/tutorial_tracking_marker/tracker in tracking_markers)
+		if(!tracker.tracking_target_type)
+			tracking_markers -= tracker
+			continue
+		var/atom/tracking_atom
+		if(istype(get_turf(tracker), tracker.tracking_target_type))
+			tracking_atom = get_turf(tracker)
+		else
+			tracking_atom = locate(tracker.tracking_target_type) in tracker.loc
+		if(!tracking_atom)
+			qdel(tracker)
+			continue
+		add_to_tracking_atoms(tracking_atom)
 
 /// Returns a turf offset by offset_x (left-to-right) and offset_y (up-to-down)
 /datum/tutorial/proc/loc_from_corner(offset_x = 0, offset_y = 0)
@@ -262,8 +376,15 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	width = 7
 	height = 7
 
+/datum/map_template/tutorial/s11x7
+	name = "Tutorial Zone (11x7)"
+	mappath = "maps/tutorial/tutorial_11x7.dmm"
+	width = 11
+	height = 7
+
 /datum/map_template/tutorial/s15x10/hm
 	name = "Tutorial Zone (15x10) (HM Tutorial)"
 	mappath = "maps/tutorial/tutorial_15x10_hm.dmm"
 	width = 15
 	height = 10
+

@@ -10,3 +10,7 @@
 /atom/movable/screen/screentip/overwatch
 	maptext_x = 8
 	maptext_y = -45
+
+/atom/movable/screen/screentip/tutorial
+	maptext_x = -8
+	maptext_y = 4

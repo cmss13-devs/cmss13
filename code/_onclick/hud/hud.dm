@@ -74,6 +74,7 @@
 	var/list/equip_slots = list()
 
 	var/atom/movable/screen/screentip/overwatch/overwatch_text
+	var/atom/movable/screen/screentip/tutorial/tutorial_objective
 
 
 /datum/hud/New(mob/owner)
@@ -96,6 +97,9 @@
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
+
+	tutorial_objective = new(null, src)
+	static_inventory += tutorial_objective
 
 	overwatch_text = new(null, src)
 	static_inventory += overwatch_text
@@ -171,6 +175,7 @@
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 
 	QDEL_NULL(overwatch_text)
+	QDEL_NULL(tutorial_objective)
 
 	return ..()
 

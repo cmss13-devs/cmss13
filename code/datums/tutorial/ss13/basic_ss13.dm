@@ -2,7 +2,8 @@
 	name = "Space Station 13 - Basic"
 	desc = "Learn the very basics of Space Station 13. Recommended if you haven't played before."
 	tutorial_id = "ss13_basic_1"
-	tutorial_template = /datum/map_template/tutorial/s7x7
+	tutorial_template = /datum/map_template/tutorial/s11x7
+	template_safety_override = TRUE
 
 // START OF SCRIPTING
 
@@ -12,10 +13,13 @@
 		return
 
 	init_mob()
-	message_to_player("This is the tutorial for the basics of <b>Space Station 13</b>. Any current instructions can be found in the top-right corner, in the status panel.")
-	update_objective("Here's where it'll be!")
+	var/list/script = list(
+		"This is the tutorial for the basics of <b>Space Station 13</b>",
+		"Any current instructions can be found in the top-right corner, in the status panel."
+	)
+	update_objective("Here's where it'll be!", FALSE)
 
-	addtimer(CALLBACK(src, PROC_REF(require_move)), 4 SECONDS) // check if this is a good amount of time
+	addtimer(CALLBACK(src, PROC_REF(require_move)), dynamic_message_to_player(script)) // check if this is a good amount of time
 
 /datum/tutorial/ss13/basic/proc/require_move()
 	message_to_player("Now, move in any direction using <b>[retrieve_bind("North")]</b>, <b>[retrieve_bind("West")]</b>, <b>[retrieve_bind("South")]</b>, or <b>[retrieve_bind("East")]</b>.")
@@ -42,7 +46,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_SWAPPED_HAND)
 
 	message_to_player("Good. Now, pick up the <b>satchel</b> that just spawned and equip it with <b>[retrieve_bind("quick_equip")]</b>.")
-	update_objective("Pick up the satchel and equip it with [retrieve_bind("quick_equip")].")
+	update_objective("Pick up the <font color='#d19a02'><b>satchel</b></font> and equip it with [retrieve_bind("quick_equip")].")
 
 	var/obj/item/storage/backpack/marine/satchel/satchel = new(loc_from_corner(2, 2))
 	add_to_tracking_atoms(satchel)
@@ -81,4 +85,4 @@
 
 /datum/tutorial/ss13/basic/init_mob()
 	. = ..()
-	tutorial_mob.forceMove(loc_from_corner(2, 1))
+	tutorial_mob.forceMove(loc_from_corner(1, 2))

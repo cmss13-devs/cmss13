@@ -34,7 +34,7 @@
 
 	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
 	message_to_player("Good. You may notice the yellow \"food\" icon on the right side of your screen. Proceed to the outlined <b>Food Vendor</b> and vend the <b>USCM Protein Bar</b>.")
-	update_objective("Vend a USCM Protein Bar from the outlined ColMarTech Food Vendor.")
+	update_objective("Vend a USCM Protein Bar from the outlined <font color='#d19a02'>ColMarTech Food Vendor.</font>")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
 	add_highlight(food_vendor)
 	food_vendor.req_access = list()

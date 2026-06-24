@@ -59,7 +59,6 @@ export const cookbook = (props) => {
                 {data.recipes
                   .filter(
                     createSearch(searchText, (recipe) => {
-                      /** ignore the errors it all works for some reason */
                       return (
                         recipe.name +
                         '|' +

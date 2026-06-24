@@ -279,7 +279,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Leg Pouch", 0, /obj/item/clothing/accessory/storage/black_vest/leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Leg Pouch (Black)", 0, /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -431,10 +431,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 /obj/effect/essentials_set/medical/researcher
 	spawned_gear_list = list(
 		/obj/item/device/healthanalyzer,
+		/obj/item/storage/firstaid/adv,
 		/obj/item/device/reagent_scanner,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
-		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/mask/surgical,
 	)
 
 

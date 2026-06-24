@@ -1,0 +1,7 @@
+author: "Riot"
+delete-after: True
+changes:
+  - rscadd: "Adds an M1911 variant and the NP92 as loadout point weapons."
+  - rscadd: "The L54 now spawns with its own box with spare ammo"
+  - rscadd: "The M48A4 Tactical(VAIPO M1911) now spawns with the sleek silencer instead of the normal one"
+  - balance: "Most pistol boxes from loadout menu now hold the pistol plus six magazines, but cannot fit in backpacks"

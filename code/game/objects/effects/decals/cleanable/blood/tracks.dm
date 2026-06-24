@@ -1,13 +1,14 @@
 // Footprints, tire trails...
 /obj/effect/decal/cleanable/blood/tracks
 	icon = 'icons/effects/fluidtracks.dmi'
-	icon_state = "human2"
-	amount = 0
+	icon_state = ""
 	random_icon_states = null
+	randomized = FALSE
 	var/coming_state="blood1"
 	var/going_state="blood2"
 	cleanable_type = CLEANABLE_TRACKS
 	overlay_on_initialize = TRUE
+	gender = PLURAL
 
 	var/list/steps_in
 	var/list/steps_out
@@ -53,11 +54,15 @@
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "footprints"
-	gender = PLURAL
 	desc = "Whoops..."
 	coming_state = "human1"
 	going_state  = "human2"
-	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/claws
+	name = "clawprints"
+	desc = "Spooky..."
+	coming_state = "claw1"
+	going_state  = "claw2"
 
 /obj/effect/decal/cleanable/blood/tracks/pawprints
 	name = "pawprints"
@@ -65,7 +70,6 @@
 	desc = "Whoops..."
 	coming_state = "paw1"
 	going_state  = "paw2"
-	amount = 0
 
 /obj/effect/decal/cleanable/blood/tracks/clawprints
 	name = "clawprints"
@@ -73,7 +77,6 @@
 	desc = "Whoops..."
 	coming_state = "claw1"
 	going_state  = "claw2"
-	amount = 0
 
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"
@@ -81,5 +84,9 @@
 	desc = "They look like tracks left by wheels."
 	coming_state = "wheels"
 	going_state  = ""
-	random_icon_states = null
-	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/dragged
+	name = "drag prints"
+	desc = "Some poor sod seem to have been dragged here."
+	coming_state = "drag1"
+	going_state  = "drag2"

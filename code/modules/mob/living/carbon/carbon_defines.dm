@@ -22,6 +22,9 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 	var/special_blood = null
 
+	/// The number of bloody foot steps left to make
+	var/bloody_footsteps = 0
+
 	///list of active transfusions from blood bags or iv stands
 	var/list/active_transfusions = list()
 

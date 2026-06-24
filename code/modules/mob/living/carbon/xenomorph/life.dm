@@ -535,6 +535,7 @@ Make sure their actual health updates immediately.*/
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
 		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
+		AddElement(/datum/element/blood_trail, get_blood_color())
 
 /mob/living/carbon/xenomorph/adjustBruteLoss(amount)
 	if(status_flags & GODMODE)

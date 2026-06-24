@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/gm/dirt,
+/turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz2_near)
 "b" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Palm Airfield";
+	name = "LZ2: LACN Navybase Port";
 	faction = "Yautja"
 	},
-/turf/open/gm/dirt,
+/turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz2_near)
 
 (1,1,1) = {"

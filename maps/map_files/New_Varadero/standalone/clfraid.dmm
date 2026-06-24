@@ -3,13 +3,6 @@
 /obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"ab" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/structure/barricade/sandbags/wired{
-	dir = 8
-	},
-/turf/open/floor/shiva/purplefull/west,
-/area/varadero/interior/research)
 "ac" = (
 /obj/item/flag/plantable/clf,
 /turf/open/floor/platingdmg1,
@@ -19,6 +12,13 @@
 /obj/item/reagent_container/blood/OMinus,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
+"ae" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters"
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -27,11 +27,79 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
+"ag" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"ah" = (
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior/caves/north_research)
+"ai" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/research)
+"aj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/research)
+"ak" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/shiva/purple/west,
+/area/varadero/interior/research)
 "al" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/purple/southwest,
 /area/varadero/interior/research)
+"am" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10;
+	health = 300
+	},
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"an" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/effect/overlay/palmtree_r,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"ao" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/north_research)
+"ap" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"aq" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor2"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
 "ar" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
@@ -39,12 +107,212 @@
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
+"as" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
+"at" = (
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
+"au" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating/platingdmg2,
+/area/varadero/interior/research)
+"av" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aw" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"ax" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
 "ay" = (
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
-"bm" = (
-/obj/structure/largecrate/random/case,
+"az" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	dir = 1;
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aA" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aB" = (
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aC" = (
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_medic,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aD" = (
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aE" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
+"aF" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/platingdmg3,
+/area/varadero/interior/maintenance/research)
+"aG" = (
+/turf/closed/wall,
+/area/varadero/interior/maintenance/research)
+"aH" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"aI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/research)
+"aJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/catwalk,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aK" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aO" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aP" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"aQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aT" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"aU" = (
+/obj/item/stack/tile/plasteel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/research)
+"aV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/caves/north_research)
+"aW" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor3"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aX" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aZ" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10;
+	health = 300
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"ba" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
+"bm" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "bU" = (
 /turf/closed/shuttle/ert{
@@ -66,8 +334,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	pixel_x = -1;
-	dir = 1
+	dir = 1;
+	pixel_x = -1
 	},
 /obj/effect/landmark/survivor_spawner/clf_lead/varadero,
 /turf/open/floor/almayer,
@@ -97,6 +365,9 @@
 /area/varadero/interior/maintenance/research)
 "dm" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "dp" = (
@@ -114,16 +385,16 @@
 /area/varadero/interior/research)
 "ds" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
 	name = "\improper Theta-V Research Laboratory";
+	dir = 1;
 	welded = 1;
-	req_one_access = null;
-	req_access = null
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "du" = (
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva/purple,
 /area/varadero/interior/research)
 "dw" = (
@@ -139,8 +410,8 @@
 "dF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
 	name = "\improper Underground Maintenance";
+	dir = 1;
 	req_access = null;
 	req_one_access = null
 	},
@@ -209,6 +480,7 @@
 /area/varadero/interior/maintenance/research)
 "fg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "fh" = (
@@ -231,6 +503,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "fw" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -244,7 +517,6 @@
 /area/varadero/interior/maintenance/research)
 "fG" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "fL" = (
@@ -252,10 +524,14 @@
 	dir = 8;
 	pixel_x = 3
 	},
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "fV" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves/swcaves)
 "gk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -281,6 +557,10 @@
 	icon_state = "lattice4";
 	pixel_x = -16;
 	pixel_y = 24
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = -8
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -331,10 +611,17 @@
 /turf/open/floor/shiva/purple,
 /area/varadero/interior/research)
 "hA" = (
-/obj/structure/barricade/sandbags/wired,
+/obj/structure/largecrate/supply/ammo/m56d{
+	pixel_x = -1
+	},
+/obj/structure/largecrate/supply/ammo/m56d{
+	pixel_y = 8
+	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "hC" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/structure/machinery/power/apc/no_power/west,
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -358,6 +645,10 @@
 /area/varadero/interior/maintenance/research)
 "ik" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "iv" = (
@@ -372,6 +663,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "jc" = (
+/obj/item/reagent_container/glass/bucket,
 /obj/item/reagent_container/glass/bucket,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -411,6 +703,8 @@
 /area/varadero/interior/research/clfship)
 "ko" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research)
 "kB" = (
@@ -421,17 +715,10 @@
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/maintenance/research)
 "kO" = (
-/obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall,
 /area/varadero/interior/research)
-"kP" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/research)
 "kT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -504,6 +791,8 @@
 "mm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "mo" = (
@@ -518,13 +807,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research/clfship)
-"mC" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/structure/machinery/m56d_hmg{
-	rounds = 700
-	},
-/turf/open/floor/shiva/purplefull/west,
-/area/varadero/interior/research)
 "mK" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
@@ -565,6 +847,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "nj" = (
@@ -595,13 +878,17 @@
 /area/varadero/interior/maintenance/research)
 "nF" = (
 /obj/structure/largecrate/random,
+/obj/structure/largecrate/random,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "nH" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirt,
+/obj/structure/fence/slim,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt/dark_brown,
 /area/varadero/interior/caves/north_research)
 "nI" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -611,7 +898,6 @@
 /area/varadero/interior/maintenance/research)
 "nP" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
 "nY" = (
@@ -668,7 +954,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "pY" = (
-/obj/effect/landmark/objective_landmark/science,
 /obj/item/shard,
 /obj/item/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/wired{
@@ -684,10 +969,6 @@
 /area/varadero/interior/maintenance/research)
 "qf" = (
 /turf/open/floor/plating,
-/area/varadero/interior/research)
-"qi" = (
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "ro" = (
 /obj/structure/surface/rack,
@@ -765,6 +1046,8 @@
 /area/varadero/interior/research/clfship)
 "sB" = (
 /obj/structure/closet/firecloset/full,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "sD" = (
@@ -788,8 +1071,8 @@
 /area/varadero/interior/maintenance/research)
 "sZ" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
-	dir = 9;
-	icon_state = "planter_box_soil"
+	icon_state = "planter_box_soil";
+	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	icon_state = "pointybush_3";
@@ -865,11 +1148,6 @@
 	icon_state = "stan_inner_w_1"
 	},
 /area/varadero/interior/research/clfship)
-"uz" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/research)
 "uQ" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan23"
@@ -912,7 +1190,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "vi" = (
@@ -933,10 +1210,11 @@
 "vw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/storage/box/masks,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "vz" = (
@@ -966,12 +1244,13 @@
 /turf/open/floor/shiva/purple/northeast,
 /area/varadero/interior/research)
 "vR" = (
-/turf/open/gm/dirt,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior/caves/north_research)
 "wc" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "wl" = (
@@ -979,6 +1258,9 @@
 /area/varadero/interior/research)
 "wr" = (
 /obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters"
+	},
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
 "wF" = (
@@ -1033,8 +1315,8 @@
 	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 21;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = 21
 	},
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
@@ -1056,8 +1338,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "xB" = (
@@ -1094,6 +1376,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "za" = (
@@ -1114,9 +1397,10 @@
 "zB" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 15;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = 15
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "zF" = (
@@ -1137,7 +1421,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/varadero,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Al" = (
@@ -1166,6 +1450,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "AP" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
 	closed = 0
@@ -1203,6 +1488,11 @@
 /area/varadero/interior/research)
 "BM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
@@ -1232,8 +1522,8 @@
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "CL" = (
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "CM" = (
@@ -1245,7 +1535,11 @@
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "CW" = (
-/turf/open/auto_turf/sand_white/layer1,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/swcaves)
 "De" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -1258,6 +1552,13 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Dt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -1283,6 +1584,7 @@
 "DB" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
 "DD" = (
@@ -1300,7 +1602,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research)
@@ -1318,6 +1619,8 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "EA" = (
@@ -1327,6 +1630,14 @@
 /obj/item/reagent_container/food/drinks/bottle/pwine,
 /obj/item/storage/box/stompers,
 /obj/item/implanter,
+/obj/item/weapon/gun/rifle/m41a/corporate{
+	name = "\improper M46C pulse rifle";
+	desc = "A prototype M46C pulse rifle, an experimental rifle platform built to outperform the standard M41A. It seems to only accept standard MK2 magazines. This one appears to have had a majority of it's electronic systems damaged making it nothing more then a fancy M41A Mk2... This one has had the flag of the CLF painted onto it.";
+	icon_state = "m46c";
+	item_state = "m46c"
+	},
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/ap,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/maintenance/research)
 "EE" = (
@@ -1334,10 +1645,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
 	name = "\improper Theta-V Breakroom";
-	req_one_access = null;
-	req_access = null
+	dir = 1;
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
@@ -1357,12 +1668,6 @@
 "Fe" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 8
-	},
-/obj/structure/largecrate/supply/ammo/m56d{
-	pixel_x = -1
-	},
-/obj/structure/largecrate/supply/ammo/m56d{
-	pixel_y = 8
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
@@ -1390,6 +1695,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "FI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/paper_bin{
 	pixel_x = 6;
@@ -1425,10 +1731,13 @@
 /area/varadero/interior/research)
 "Gy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "GG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -1470,14 +1779,15 @@
 /area/varadero/interior/research)
 "HN" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
 "HQ" = (
 /obj/item/pipe{
-	color = "green";
 	dir = 4;
 	pixel_x = -2;
-	pixel_y = 5
+	pixel_y = 5;
+	color = "green"
 	},
 /obj/item/tool/wrench{
 	pixel_x = -1;
@@ -1554,6 +1864,7 @@
 	icon_state = "commb";
 	stat = 1
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "IP" = (
@@ -1585,7 +1896,8 @@
 /area/varadero/interior/research/clfship)
 "Jd" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "Jf" = (
 /obj/structure/surface/rack,
@@ -1673,8 +1985,8 @@
 /area/varadero/interior/research/clfship)
 "KX" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
-	dir = 9;
-	icon_state = "planter_box_soil"
+	icon_state = "planter_box_soil";
+	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 11
@@ -1717,7 +2029,6 @@
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "LF" = (
@@ -1739,6 +2050,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Mz" = (
@@ -1753,16 +2067,13 @@
 /area/varadero/interior/research)
 "MD" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/dirt,
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves/swcaves)
 "MK" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
-"Ng" = (
-/obj/effect/landmark/survivor_spawner/clf/varadero,
-/turf/open/floor/platingdmg1,
-/area/varadero/interior/research)
 "Nm" = (
 /turf/open/floor/shiva/purple/southwest,
 /area/varadero/interior/research)
@@ -1771,8 +2082,8 @@
 	dir = 8
 	},
 /obj/structure/machinery/m56d_hmg{
-	rounds = 700;
-	dir = 8
+	dir = 8;
+	rounds = 700
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
@@ -1795,6 +2106,7 @@
 	pixel_y = 19
 	},
 /obj/effect/decal/strata_decals/grime/grime2,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "NS" = (
@@ -1802,8 +2114,8 @@
 /area/varadero/interior/research)
 "Os" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
-	dir = 9;
-	icon_state = "planter_box_soil"
+	icon_state = "planter_box_soil";
+	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	icon_state = "pointybush_2";
@@ -1812,6 +2124,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "OH" = (
+/obj/structure/machinery/light/small,
 /obj/structure/machinery/light/small,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
@@ -1851,18 +2164,18 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/maintenance/research)
 "PN" = (
-/obj/item/prop/helmetgarb/bullet_pipe{
-	pixel_x = -8;
-	pixel_y = 15
-	},
 /obj/item/reagent_container/glass/fertilizer/l4z{
 	pixel_x = 10;
 	pixel_y = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Qe" = (
 /obj/structure/barricade/sandbags/wired,
+/obj/structure/machinery/m56d_hmg{
+	rounds = 700
+	},
 /turf/open/floor/shiva/purple/southeast,
 /area/varadero/interior/research)
 "Rb" = (
@@ -1901,11 +2214,14 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Sp" = (
-/obj/structure/displaycase/destroyed,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/prop/alien/hugger,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_police,
+/obj/item/restraint/adjustable/cable/white,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Sq" = (
@@ -1973,6 +2289,10 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "TE" = (
@@ -2002,6 +2322,9 @@
 	icon_state = "lattice12";
 	pixel_x = 16;
 	pixel_y = -8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -2047,8 +2370,8 @@
 	pixel_y = -2
 	},
 /obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_y = -2;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -2
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/north,
@@ -2078,6 +2401,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Vn" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
@@ -2126,13 +2450,15 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "VR" = (
-/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "VT" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/prop/alien/hugger,
+/obj/structure/displaycase/destroyed,
 /turf/open/floor/shiva/purple/northwest,
 /area/varadero/interior/research)
 "Wf" = (
@@ -2145,7 +2471,6 @@
 /area/varadero/interior/research)
 "Wg" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Wo" = (
@@ -2160,6 +2485,7 @@
 /area/varadero/interior/research)
 "Wy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/frame/table,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -2173,6 +2499,9 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "Xb" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -2220,12 +2549,9 @@
 "Yn" = (
 /obj/item/stack/rods,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/platingdmg1,
-/area/varadero/interior/research)
-"Yq" = (
+/obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/mar40/carbine,
-/obj/item/ammo_magazine/rifle/mar40,
-/turf/open/floor/platingdmg3,
+/turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "YN" = (
 /turf/closed/shuttle/ert{
@@ -2250,8 +2576,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	layer = 2.5;
-	dir = 1
+	dir = 1;
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2269,14 +2595,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/landmark/corpsespawner/clf,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/platingdmg1,
-/area/varadero/interior/research)
-"Zx" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "Zy" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -2298,6 +2617,7 @@
 "ZN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
 
@@ -2306,14 +2626,14 @@ KG
 KG
 KG
 KG
-KG
-KG
-KG
-cz
-cz
-KG
-KG
 WA
+KG
+aH
+cz
+aE
+KG
+KG
+aw
 KG
 fL
 SO
@@ -2324,21 +2644,21 @@ nv
 nv
 nv
 nv
-KG
 vR
 vR
-KG
+vR
+ah
 nH
 CW
 "}
 (2,1,1) = {"
 KG
-uY
-mm
+aV
+aU
 VR
 MK
-mm
-fg
+aM
+aI
 gM
 gM
 fg
@@ -2354,25 +2674,25 @@ gZ
 gZ
 gZ
 gZ
-Fk
-Fk
-Fk
-Fk
-IB
-fV
+ai
+ai
+ai
+ai
+ag
+nv
 "}
 (3,1,1) = {"
 KG
 uY
 Kk
 TE
-Kk
-TE
-TE
+aQ
+aN
+aJ
 Uw
 gV
-TE
-Kk
+aC
+aA
 ik
 fw
 nN
@@ -2387,8 +2707,8 @@ Wf
 Tr
 No
 Vo
-ab
-kO
+Tr
+ag
 fV
 "}
 (4,1,1) = {"
@@ -2396,15 +2716,15 @@ KG
 oI
 Kk
 TE
-Kk
-Kk
-Em
+aR
+aO
+aK
 TE
 VD
-TE
-Kk
-Kk
-nN
+aD
+aB
+ax
+av
 Tu
 tL
 gZ
@@ -2417,7 +2737,7 @@ rA
 pF
 Fw
 dE
-mC
+hG
 kO
 fV
 "}
@@ -2435,7 +2755,7 @@ ca
 iv
 lj
 Kk
-kP
+xT
 Kk
 dZ
 pY
@@ -2448,7 +2768,7 @@ HL
 OX
 za
 hA
-Fk
+IB
 MD
 "}
 (6,1,1) = {"
@@ -2466,7 +2786,7 @@ EA
 pz
 xe
 xT
-nN
+Kk
 gZ
 Yi
 ni
@@ -2486,7 +2806,7 @@ gM
 gM
 Kk
 Dy
-Dy
+xe
 lR
 yL
 dy
@@ -2513,7 +2833,7 @@ gZ
 "}
 (8,1,1) = {"
 Ew
-Kk
+aW
 Kk
 CL
 cS
@@ -2524,7 +2844,7 @@ uv
 jX
 sz
 rJ
-Ng
+Nw
 Ci
 ko
 uU
@@ -2542,8 +2862,8 @@ lr
 gZ
 "}
 (9,1,1) = {"
+aY
 oJ
-uz
 gk
 dm
 Jv
@@ -2573,7 +2893,7 @@ gZ
 "}
 (10,1,1) = {"
 VD
-Kk
+aX
 nY
 zJ
 fh
@@ -2584,13 +2904,13 @@ Ig
 Zk
 YW
 VO
-Yq
+sD
 Zq
 VH
 oU
 hK
 fs
-Zx
+Hx
 Ze
 Zo
 Ze
@@ -2598,7 +2918,7 @@ Hx
 fs
 Ze
 bX
-on
+RV
 gZ
 "}
 (11,1,1) = {"
@@ -2615,7 +2935,7 @@ mh
 Ev
 XU
 fG
-NS
+au
 Cu
 ac
 eQ
@@ -2627,7 +2947,7 @@ ll
 hG
 FN
 ll
-kT
+aj
 jo
 gZ
 "}
@@ -2643,7 +2963,7 @@ Km
 bU
 Km
 TV
-AS
+sD
 AS
 sD
 vF
@@ -2658,7 +2978,7 @@ Ii
 ll
 ll
 JF
-RV
+on
 gZ
 "}
 (13,1,1) = {"
@@ -2689,14 +3009,14 @@ ll
 xB
 Lm
 Qe
-Fk
+ae
 "}
 (14,1,1) = {"
 gM
 Os
 KH
 Kk
-fw
+Kk
 hh
 SE
 qd
@@ -2719,7 +3039,7 @@ FN
 ll
 HH
 Fp
-Fk
+ae
 "}
 (15,1,1) = {"
 gM
@@ -2755,10 +3075,10 @@ gZ
 nv
 gM
 sB
+av
+aS
 nN
-Kk
-nN
-ik
+aL
 Vn
 eC
 vM
@@ -2831,7 +3151,7 @@ XH
 HH
 gZ
 ro
-Hh
+ak
 De
 gZ
 HW
@@ -2842,7 +3162,7 @@ BP
 gZ
 "}
 (19,1,1) = {"
-KG
+aZ
 nv
 nv
 nv
@@ -2907,7 +3227,7 @@ KG
 hC
 Xb
 KG
-oL
+aP
 nv
 gM
 ul
@@ -2936,7 +3256,7 @@ KG
 KG
 KG
 KG
-KG
+aT
 KG
 nv
 gM
@@ -2947,8 +3267,8 @@ gM
 gZ
 gZ
 gZ
-Fk
-Fk
+ai
+ai
 gZ
 gZ
 gZ
@@ -2964,22 +3284,22 @@ nv
 (23,1,1) = {"
 KG
 KG
-KG
+nv
 HN
 KG
 KG
 KG
-fw
-lR
+aG
+aF
 Pc
 Dy
 bm
 Jd
 nv
 nv
-KG
-KG
-KG
+ap
+ap
+an
 nv
 nv
 nv
@@ -2992,30 +3312,30 @@ gZ
 nv
 "}
 (24,1,1) = {"
-SO
-vi
-vi
+ba
+ag
+nv
 KG
 UO
 UO
 KG
-TE
+bm
 XX
 xg
 TE
-TE
-KG
-KG
-KG
-KG
-KG
-KG
-oL
+az
+cz
+cz
+at
+as
+aq
+ao
+am
 nv
 nv
 gZ
 UP
-qi
+rV
 zB
 xh
 gZ

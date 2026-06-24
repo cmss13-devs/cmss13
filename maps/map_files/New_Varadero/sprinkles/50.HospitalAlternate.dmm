@@ -6,11 +6,11 @@
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ab" = (
-/obj/item/weapon/gun/rifle/m41a,
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_3_1"
 	},
+/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "ac" = (
@@ -55,8 +55,8 @@
 /area/template_noop)
 "ah" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
-	pixel_y = 5;
-	layer = 3.8
+	layer = 3.8;
+	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
@@ -70,8 +70,8 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller/hospital/bloody,
-/obj/effect/landmark/corpsespawner/colonist/burst,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "ak" = (
@@ -85,8 +85,8 @@
 /area/template_noop)
 "am" = (
 /obj/effect/decal/hybrisa/bloodtrail{
-	pixel_x = 5;
-	dir = 1
+	dir = 1;
+	pixel_x = 5
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
@@ -105,8 +105,8 @@
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ap" = (
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse/burst,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "aq" = (
@@ -126,8 +126,8 @@
 /area/template_noop)
 "at" = (
 /obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 1
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -137,8 +137,8 @@
 	pixel_y = 14
 	},
 /obj/structure/largecrate/random/mini/med{
-	pixel_y = 12;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = 12
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -171,10 +171,10 @@
 "bF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/wred,
 /area/template_noop)
@@ -257,8 +257,8 @@
 /area/template_noop)
 "eu" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
+	icon_state = "chair_alt";
+	dir = 8
 	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
@@ -324,16 +324,15 @@
 /area/template_noop)
 "hG" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "in" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
 	name = "\improper Underground Medical Laboratory Storage";
-	req_access_txt = "100";
-	req_one_access = null
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
@@ -352,8 +351,8 @@
 /area/template_noop)
 "iB" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -385,14 +384,14 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "js" = (
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "jx" = (
 /obj/structure/machinery/holosign_switch{
-	id = "otice";
-	pixel_y = -24
+	pixel_y = -24;
+	id = "otice"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -434,17 +433,17 @@
 /area/template_noop)
 "ky" = (
 /obj/structure/prop/structure_lattice{
-	density = 0;
+	name = "book case";
 	desc = "On closer inspection, everything on these shelves are made of plastic.";
 	icon_state = "book-5";
-	name = "book case"
+	density = 0
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "kX" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
@@ -497,18 +496,18 @@
 /area/template_noop)
 "mO" = (
 /obj/structure/pipes/unary/freezer{
-	dir = 8;
-	icon_state = "freezer_1"
+	icon_state = "freezer_1";
+	dir = 8
 	},
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "mQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
 	name = "\improper Underground Medical Laboratory";
-	req_one_access = null;
-	req_access = null
+	dir = 1;
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -530,10 +529,10 @@
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "oj" = (
+/mob/living/simple_animal/small/mouse,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/mob/living/simple_animal/small/mouse,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "ol" = (
@@ -565,9 +564,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
-	pixel_y = 5;
+	dir = 1;
 	layer = 3.8;
-	dir = 1
+	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
@@ -602,10 +601,10 @@
 /area/template_noop)
 "qc" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/wred,
 /area/template_noop)
@@ -624,8 +623,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Underground Medical Laboratory Treatment";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -634,8 +633,8 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/water_cooler{
-	pixel_y = 22;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 22
 	},
 /obj/structure/bed/chair{
 	dir = 8;
@@ -699,8 +698,8 @@
 /area/template_noop)
 "us" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
@@ -708,8 +707,8 @@
 /area/template_noop)
 "uu" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
+	icon_state = "chair_alt";
+	dir = 8
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
@@ -759,10 +758,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
 	name = "Underground Medical Laboratory Operating Theatre";
-	req_access_txt = "100";
-	req_one_access = null
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -793,8 +792,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
 	name = "\improper Underground Medical Laboratory";
+	dir = 1;
 	req_access = null;
 	req_one_access = null
 	},
@@ -811,10 +810,10 @@
 /area/template_noop)
 "xu" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
 	name = "Underground Medical Laboratory Operating Theatre";
-	req_access_txt = "100";
-	req_one_access = null
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -824,8 +823,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -840,8 +839,8 @@
 	pixel_y = 32
 	},
 /obj/item/prop/alien/hugger{
-	pixel_y = 5;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
@@ -859,8 +858,8 @@
 	dir = 4
 	},
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
+	icon_state = "chair_alt";
+	dir = 8
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
@@ -885,8 +884,8 @@
 /area/template_noop)
 "zQ" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
+	icon_state = "chair_alt";
+	dir = 8
 	},
 /turf/open/floor/shiva/red,
 /area/template_noop)
@@ -948,7 +947,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "Cp" = (
-/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet/marine/MP,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "CA" = (
@@ -1090,6 +1089,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/gibs,
+/obj/item/clothing/suit/storage/marine/light/vest/LACN,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "HT" = (
@@ -1133,8 +1133,8 @@
 /area/template_noop)
 "IC" = (
 /obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1186,8 +1186,8 @@
 /area/template_noop)
 "Ki" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
 	name = "\improper Underground Medical Laboratory";
+	dir = 1;
 	req_access = null;
 	req_one_access = null
 	},
@@ -1199,8 +1199,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1211,8 +1211,8 @@
 /area/template_noop)
 "KT" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1266,8 +1266,8 @@
 /area/template_noop)
 "Nw" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/medical_pod/sleeper,
@@ -1360,7 +1360,7 @@
 /area/template_noop)
 "PZ" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Qn" = (
@@ -1467,8 +1467,8 @@
 /area/template_noop)
 "SR" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/restraint/handcuffs{
@@ -1490,8 +1490,8 @@
 /area/template_noop)
 "UV" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -1505,8 +1505,8 @@
 /area/template_noop)
 "UZ" = (
 /obj/effect/decal/hybrisa/bloodtrail{
-	pixel_x = 5;
 	dir = 9;
+	pixel_x = 5;
 	pixel_y = 7
 	},
 /obj/effect/decal/cleanable/blood/drip,
@@ -1526,8 +1526,8 @@
 /area/template_noop)
 "VJ" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/red/west,
@@ -1543,7 +1543,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/colonist/burst,
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
@@ -1560,8 +1559,8 @@
 /area/template_noop)
 "WO" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1622,8 +1621,8 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/clock{
-	pixel_y = 13;
-	pixel_x = -15
+	pixel_x = -15;
+	pixel_y = 13
 	},
 /obj/item/clothing/gloves/latex,
 /turf/open/floor/shiva/redfull,
@@ -1634,15 +1633,15 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Underground Medical Laboratory Lobby";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "Zx" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8

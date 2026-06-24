@@ -6,8 +6,8 @@
 	pixel_y = 2
 	},
 /obj/item/reagent_container/food/snacks/bigbiteburger{
-	pixel_y = 8;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /turf/open/floor/shiva/blue,
 /area/template_noop)
@@ -99,8 +99,8 @@
 	dir = 10
 	},
 /obj/item/prop/alien/hugger{
-	pixel_y = 4;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
@@ -166,8 +166,8 @@
 /area/template_noop)
 "lE" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
-	dir = 9;
-	icon_state = "planter_box_soil"
+	icon_state = "planter_box_soil";
+	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 11
@@ -207,10 +207,10 @@
 /area/template_noop)
 "nL" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100";
-	welded = 1
+	dir = 1;
+	welded = 1;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -231,8 +231,8 @@
 /area/template_noop)
 "qg" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /turf/open/floor/shiva,
 /area/template_noop)
@@ -245,8 +245,8 @@
 /area/template_noop)
 "rn" = (
 /obj/structure/barricade/sandbags/wired{
-	pixel_y = -5;
-	dir = 8
+	dir = 8;
+	pixel_y = -5
 	},
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
@@ -268,9 +268,9 @@
 "sB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
+	welded = 1;
 	req_one_access = null;
-	welded = 1
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -424,8 +424,8 @@
 /area/template_noop)
 "EB" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/machinery/storm_siren{
 	dir = 8;
@@ -435,14 +435,14 @@
 /area/template_noop)
 "Fm" = (
 /obj/structure/filingcabinet{
-	density = 0;
 	icon_state = "chestdrawer";
+	density = 0;
 	pixel_x = 8;
 	pixel_y = 11
 	},
 /obj/structure/filingcabinet{
-	density = 0;
 	icon_state = "chestdrawer";
+	density = 0;
 	pixel_x = -8;
 	pixel_y = 11
 	},
@@ -493,9 +493,9 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /turf/open/floor/shiva,
 /area/template_noop)
 "IE" = (
@@ -522,13 +522,13 @@
 "KI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 2;
-	icon_state = "door_locked";
-	locked = 1;
 	name = "Underground Secure Technical Storage";
-	req_access_txt = "100";
+	icon_state = "door_locked";
+	dir = 2;
+	locked = 1;
 	welded = 1;
-	panel_open = 1
+	panel_open = 1;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -546,10 +546,10 @@
 "LP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100";
-	welded = 1
+	dir = 1;
+	welded = 1;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -595,15 +595,15 @@
 	pixel_x = -9;
 	pixel_y = 14
 	},
-/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew/burst,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "OK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired{
-	pixel_y = 10;
-	dir = 1
+	dir = 1;
+	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/floor3,
@@ -651,8 +651,8 @@
 	on = 1
 	},
 /obj/item/paper/janitor{
-	pixel_y = 8;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/shiva,

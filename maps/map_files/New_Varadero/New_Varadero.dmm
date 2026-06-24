@@ -35,18 +35,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
-"aag" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	pixel_x = 21
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -14;
-	pixel_y = 15
-	},
-/obj/item/toy/beach_ball,
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -92,6 +80,10 @@
 /obj/item/tool/crowbar/yautja,
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
+"aao" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "aap" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior_protected/caves/makeshift_tent)
@@ -105,6 +97,34 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/item/prop/colony/canister{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"aat" = (
+/obj/item/ammo_magazine/smg/pps43,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"aau" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"aav" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/east)
+"aaw" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -155,12 +175,31 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
+"aaD" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "aaE" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/islands)
 "aaF" = (
 /turf/open/gm/coast/north,
 /area/varadero/exterior/islands)
+"aaG" = (
+/obj/item/lightstick/red/spoke/planted{
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/monsoon)
 "aaH" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/islands)
@@ -203,6 +242,9 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
+"aaR" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/monsoon)
 "aaS" = (
 /obj/structure/sign/calendar{
 	pixel_y = 29
@@ -212,6 +254,10 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/security)
+"aaT" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/monsoon)
 "aaU" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
@@ -258,19 +304,6 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
-"aba" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/largecrate/random/mini/med{
-	layer = 3.01;
-	pixel_x = -21;
-	pixel_y = 5
-	},
-/obj/item/device/radio/off{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "abb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -305,6 +338,19 @@
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
+"abg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"abh" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
 "abi" = (
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/comms1)
@@ -328,6 +374,16 @@
 "abn" = (
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/comms1)
+"abo" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"abp" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/farocean)
 "abq" = (
 /obj/effect/acid_hole,
 /turf/closed/wall,
@@ -419,6 +475,9 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
+"abK" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/farocean)
 "abL" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/effect/decal/cleanable/dirt,
@@ -2933,6 +2992,15 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
+"akg" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
 "akh" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /turf/open/floor/plating,
@@ -3599,6 +3667,13 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves)
+"ami" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
 "amj" = (
 /obj/structure/fence/slim/door{
 	dir = 8;
@@ -4183,6 +4258,11 @@
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/maintenance/south)
+"aoi" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
 "aoj" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/auto_turf/sand_white/layer1,
@@ -4779,6 +4859,12 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aqh" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/monsoon)
 "aqi" = (
 /obj/structure/curtain/open/shower,
 /obj/structure/machinery/shower{
@@ -5154,6 +5240,7 @@
 /area/varadero/interior/caves/east)
 "arp" = (
 /obj/item/weapon/gun/smg/pps43,
+/obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "arq" = (
@@ -5611,18 +5698,33 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "asB" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/prop/rock/brown,
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 8;
+	layer = 3.1;
+	pixel_x = 5;
+	pixel_y = -2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 4;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
@@ -5839,11 +5941,8 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "ath" = (
-/obj/structure/prop/turret/missile,
-/obj/structure/prop/hybrisa/misc/fire{
-	pixel_x = 5;
-	pixel_y = 20
-	},
+/obj/structure/prop/tyrargo/watchtower,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
 "ati" = (
@@ -5970,6 +6069,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor3"
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "atD" = (
@@ -6055,10 +6155,6 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
-"atR" = (
-/obj/structure/prop/tyrargo/watchtower,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
 "atS" = (
@@ -6223,14 +6319,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
-"aus" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
-"aut" = (
-/obj/structure/prop/rock/brown,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
 "auu" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -6346,6 +6434,9 @@
 "auK" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor3"
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap{
+	current_rounds = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
@@ -6619,7 +6710,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/records)
 "avy" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/varadero/interior/administration)
@@ -6680,6 +6770,10 @@
 "avI" = (
 /obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/storage/briefcase/inflatable/small{
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "avJ" = (
@@ -6705,32 +6799,7 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"avM" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"avN" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/monsoon)
-"avO" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	icon_state = "sparsegrass_2"
-	},
-/turf/open/gm/dirt,
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "avP" = (
 /obj/structure/platform/metal/kutjevo_smooth{
@@ -6744,23 +6813,6 @@
 	},
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/monsoon)
-"avR" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/monsoon)
-"avS" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/monsoon)
-"avT" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/eastocean)
 "avU" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -6820,16 +6872,10 @@
 /area/varadero/interior_protected/caves)
 "awb" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_1_1"
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "awc" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/limb,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_1_1"
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "awd" = (
@@ -7069,12 +7115,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
-"awM" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_1_1"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "awN" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -7087,9 +7127,6 @@
 "awP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood/gibs/robot/up,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_1_1"
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "awQ" = (
@@ -7304,6 +7341,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
+"axs" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
 "axt" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -7348,6 +7389,10 @@
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
 	},
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axy" = (
@@ -7372,11 +7417,19 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_1_1"
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axB" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst,
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/obj/item/ammo_casing/shell,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axC" = (
@@ -7443,7 +7496,9 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/disposals)
 "axJ" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster31"
+	},
 /turf/closed/wall,
 /area/varadero/interior/disposals)
 "axK" = (
@@ -7632,6 +7687,7 @@
 	icon_state = "warning_s";
 	dir = 1
 	},
+/obj/item/ammo_casing/shell,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "ayl" = (
@@ -7693,6 +7749,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor3"
 	},
+/obj/item/ammo_casing/shell,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "ays" = (
@@ -7720,6 +7777,11 @@
 /obj/structure/grille,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
+"ayx" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "ayy" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow,
@@ -7912,7 +7974,6 @@
 /area/varadero/interior_protected/caves)
 "ayZ" = (
 /obj/effect/spawner/gibspawner/xeno,
-/obj/structure/machinery/storm_siren,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
@@ -8074,14 +8135,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "azB" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_3_1"
-	},
-/obj/structure/largecrate/random/mini/med{
-	layer = 3.01;
-	pixel_x = -8;
-	pixel_y = 8
-	},
+/obj/structure/machinery/storm_siren,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "azC" = (
@@ -8110,6 +8164,9 @@
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 1
+	},
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_3_1"
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
@@ -8490,7 +8547,9 @@
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/security)
 "aAA" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster31"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aAB" = (
@@ -8501,6 +8560,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aAC" = (
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/carpet,
+/area/varadero/interior/hall_SE)
 "aAD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8633,6 +8696,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
+"aAX" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "aAY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -8810,6 +8882,17 @@
 "aBy" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aBz" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "aBA" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/platform/metal/kutjevo_smooth/north{
@@ -9078,6 +9161,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aCo" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
 "aCp" = (
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	dir = 4
@@ -10007,6 +10095,10 @@
 /obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
+"aEQ" = (
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
 "aER" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -10572,7 +10664,9 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "aGy" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
 "aGz" = (
@@ -10580,7 +10674,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/security)
 "aGA" = (
-/obj/structure/sign/poster/ad,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster37"
+	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
 "aGB" = (
@@ -11325,9 +11421,6 @@
 	icon_state = "trash_6"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/penetrating{
-	current_rounds = 0
-	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "aIJ" = (
@@ -12100,18 +12193,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
-"aKV" = (
-/obj/item/ammo_magazine/rifle/penetrating{
-	current_rounds = 0
-	},
-/turf/open/floor/shiva/purple/west,
-/area/varadero/interior/research)
 "aKW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/trash,
-/obj/item/ammo_magazine/rifle/heap/empty,
+/obj/item/ammo_magazine/rifle/penetrating{
+	desc = "An experimental wall-penetrating 10x24mm assault rifle magazine. Least thats what the label on it says.";
+	current_rounds = 0
+	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "aKX" = (
@@ -12797,6 +12887,7 @@
 /area/varadero/interior/maintenance)
 "aNc" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/mess)
 "aNd" = (
@@ -13026,7 +13117,9 @@
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)
 "aNO" = (
-/obj/structure/sign/poster/ad,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster35"
+	},
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)
 "aNP" = (
@@ -13098,7 +13191,9 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
 "aOb" = (
-/obj/structure/sign/poster/ad,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster74"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
 "aOc" = (
@@ -14094,6 +14189,16 @@
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
+"aQY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/carpet,
+/area/varadero/interior/hall_SE)
 "aQZ" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/effect/decal/cleanable/dirt,
@@ -14552,12 +14657,15 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "aSr" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/administration)
 "aSs" = (
 /obj/structure/sign/poster/music,
 /obj/structure/sign/poster/safety{
+	icon_state = "poster80";
 	pixel_x = -4
 	},
 /turf/closed/wall,
@@ -14873,7 +14981,9 @@
 /turf/open/floor/shiva/bluefull/west,
 /area/varadero/interior/maintenance)
 "aTk" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster67"
+	},
 /turf/closed/wall,
 /area/varadero/interior/mess)
 "aTl" = (
@@ -15308,6 +15418,12 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
+"aUA" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
 "aUB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/north,
@@ -16040,7 +16156,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "aWI" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/security/north)
 "aWJ" = (
@@ -16225,6 +16343,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"aXn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/penetrating{
+	desc = "An experimental wall-penetrating 10x24mm assault rifle magazine. Least thats what the label on it says.";
+	current_rounds = 0
+	},
+/turf/open/floor/shiva/purple/west,
+/area/varadero/interior/research)
 "aXo" = (
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_medic,
 /obj/effect/decal/cleanable/blood,
@@ -16512,8 +16640,8 @@
 /obj/structure/prop/vehicles/tank/humvee/destroyed{
 	name = "\improper LACN M540-B Armored Recon Carrier";
 	dir = 1;
-	pixel_x = -14;
-	pixel_y = -8
+	pixel_x = -16;
+	pixel_y = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/asteroidfloor/north,
@@ -16684,30 +16812,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"aYE" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 8;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/varadero/interior/oob)
-"aYF" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 2;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/varadero/interior/oob)
 "aYG" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -17202,6 +17306,10 @@
 	},
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/interior/comms2)
+"aZX" = (
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/mess)
 "aZY" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa{
@@ -17420,12 +17528,19 @@
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/comms2)
 "baE" = (
-/obj/structure/largecrate/random/case/double,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop{
+	name = "\improper HIM-85 Multi-Stage Anti-Areospace Missile'";
+	desc = "The HIM-85 is a modern take on the HIM-78, designed for cold launches via magenetic acceleration the missile contains a kinetic warhead and two-stage booster system with a low launch signature in order to improve its chances of a surprise first-strike.";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "napalm";
+	dir = 2;
+	layer = 3.1;
+	unslashable = 1
+	},
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/comms2)
 "baF" = (
-/obj/structure/largecrate/random/case/small,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/comms2)
@@ -17473,6 +17588,9 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 2
+	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/interior/comms2)
 "baK" = (
@@ -17506,6 +17624,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "baO" = (
@@ -18045,6 +18164,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_10"
 	},
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "bcs" = (
@@ -18211,7 +18331,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "bcH" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster30"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms2)
 "bcI" = (
@@ -18375,6 +18497,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/eastbeach)
+"bde" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/varadero/interior/medical)
 "bdf" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -18403,11 +18531,6 @@
 	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
 	},
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/eastbeach)
@@ -18644,6 +18767,9 @@
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
 	},
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
 /turf/open/floor/asteroidwarning,
 /area/varadero/interior/electrical)
 "bdQ" = (
@@ -18682,13 +18808,20 @@
 	climb_delay = 1
 	},
 /obj/structure/prop/rock/brown,
-/turf/open/gm/dirt/desert_dug,
-/area/varadero/exterior/eastbeach)
-"bdV" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/exterior/eastbeach)
+"bdV" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "bdW" = (
 /obj/structure/barricade/handrail/wire{
@@ -18700,58 +18833,19 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 4
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/eastbeach)
 "bdX" = (
-/obj/structure/prop{
-	name = "ruined Mark 50 General Atomics Railgun";
-	desc = "A railgun designed to defend this colony from a hostile ship in orbit. This one appears to have been jammed and is no longer functional.";
-	icon = 'icons/obj/structures/props/128x128_cannon_props.dmi';
-	icon_state = "OBC_chambered";
-	dir = 2;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/prop/almayer/cannon_cable_connector{
-	pixel_x = 7
-	},
-/obj/structure/blocker/invisible_wall,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/asteroidwarning,
 /area/varadero/exterior/eastbeach)
 "bdY" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
-"bdZ" = (
-/obj/item/lightstick/red/spoke/planted{
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
-"bea" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "beb" = (
@@ -18927,6 +19021,9 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/electrical)
 "beC" = (
@@ -18950,13 +19047,6 @@
 	},
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/security)
-"beF" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
 "beG" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -18966,21 +19056,12 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "beH" = (
-/obj/structure/prop/almayer/cannon_cables{
-	pixel_x = 7
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/eastbeach)
 "beI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
-"beJ" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
@@ -19117,6 +19198,12 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/library)
+"bfe" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster31"
+	},
+/turf/closed/wall,
+/area/varadero/interior/medical)
 "bff" = (
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/library)
@@ -19163,6 +19250,9 @@
 	icon_state = "p_stair_full";
 	color = "#b29082"
 	},
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/electrical)
 "bfl" = (
@@ -19183,17 +19273,18 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/dirt/desert_dug,
-/area/varadero/exterior/eastbeach)
-"bfo" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/exterior/eastbeach)
+"bfo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2"
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
 	},
-/turf/open/gm/dirt/desert3,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "bfp" = (
 /obj/structure/barricade/handrail/wire{
@@ -19225,16 +19316,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"bfu" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
 "bfv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes/asteroid{
@@ -19377,26 +19458,9 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
-"bfR" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/turf/open/gm/dirt/desert2,
-/area/varadero/exterior/eastbeach)
-"bfS" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
 "bfT" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "bfU" = (
@@ -19438,34 +19502,6 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"bfZ" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 2;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
-"bga" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 8;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
 "bgb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/lattice_prop{
@@ -19495,6 +19531,7 @@
 	icon_state = "mfloor4"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "bgg" = (
@@ -19607,61 +19644,34 @@
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor,
 /turf/open/floor/prison/ramptop/north,
 /area/varadero/interior/electrical)
-"bgy" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/turf/open/gm/dirt/desert1,
-/area/varadero/exterior/eastbeach)
 "bgz" = (
 /obj/item/lightstick/red/spoke/planted{
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/asteroidwarning/northwest,
 /area/varadero/exterior/eastbeach)
 "bgA" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
-"bgB" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
 /obj/item/lightstick/red/spoke/planted{
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/asteroidwarning/northeast,
 /area/varadero/exterior/eastbeach)
-"bgC" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 3.5
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms3)
 "bgD" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap";
-	dir = 4;
-	color = "#b29082"
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5
 	},
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/item/prop/magazine/boots/n054{
+	pixel_x = 9;
+	pixel_y = 7
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
@@ -19677,12 +19687,14 @@
 	pixel_x = -7
 	},
 /obj/item/notepad/green{
-	pixel_x = 10;
-	pixel_y = 6
+	pixel_x = 4;
+	pixel_y = 4
 	},
-/obj/item/prop/magazine/boots/n054{
-	pixel_x = 9;
-	pixel_y = 3
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_x = 2;
+	pixel_y = 11;
+	phone_category = "New Varadero Naval Base";
+	phone_id = "Railgun Point Defence"
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
@@ -19704,20 +19716,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"bgJ" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 4;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
 "bgK" = (
 /obj/structure/largecrate/random,
 /obj/item/reagent_container/glass/bucket{
@@ -19839,22 +19837,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
-"bhd" = (
-/obj/structure/prop{
-	name = "APC wheels";
-	desc = "A warhead for an anti-orbital defence cannon, it appears that this warhead has recievied some servere damage to the actual primer... best not touch it.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
-	icon_state = "ob_warhead_1";
-	dir = 2;
-	layer = 3.5;
-	pixel_x = 4;
-	pixel_y = 4;
-	unslashable = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
 "bhe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -19872,19 +19854,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
-"bhh" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 3.5
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms3)
 "bhi" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa{
@@ -20057,7 +20026,7 @@
 /area/varadero/interior/hall_N)
 "bhG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "bhH" = (
@@ -20068,109 +20037,57 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "bhI" = (
-/obj/structure/prop{
-	name = "solid fuel";
-	desc = "Solid fuel for a railgun. However, it doesn't seem to be for the same model as the one used by any cannon on hand, so these are useless.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
-	icon_state = "ob_fuel";
-	dir = 2;
-	layer = 4;
-	pixel_x = 1;
-	pixel_y = 5;
-	unslashable = 1
-	},
-/obj/structure/prop{
-	name = "solid fuel";
-	desc = "Solid fuel for a railgun. However, it doesn't seem to be for the same model as the one used by any cannon on hand, so these are useless.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
-	icon_state = "ob_fuel";
-	dir = 2;
-	layer = 4;
-	pixel_x = 1;
-	pixel_y = 11;
-	unslashable = 1
-	},
 /obj/structure/blocker/invisible_wall{
 	projectile_coverage = 95
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/eastbeach)
-"bhJ" = (
 /obj/structure/prop{
-	name = "solid fuel";
-	desc = "Solid fuel for a railgun. However, it doesn't seem to be for the same model as the one used by any cannon on hand, so these are useless.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
-	icon_state = "ob_fuel";
+	name = "\improper HIM-85 Multi-Stage Anti-Areospace Missile'";
+	desc = "The HIM-85 is a modern take on the HIM-78, designed for cold launches via magenetic acceleration the missile contains a kinetic warhead and two-stage booster system with a low launch signature in order to improve its chances of a surprise first-strike.";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "napalm";
 	dir = 2;
-	layer = 4;
-	pixel_x = -1;
-	pixel_y = 5;
+	layer = 3.1;
+	pixel_x = 1;
+	pixel_y = 8;
+	unacidable = 1;
+	explo_proof = 1;
 	unslashable = 1
 	},
-/obj/structure/prop{
-	name = "solid fuel";
-	desc = "Solid fuel for a railgun. However, it doesn't seem to be for the same model as the one used by any cannon on hand, so these are useless.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
-	icon_state = "ob_fuel";
-	dir = 2;
-	layer = 4;
-	pixel_x = -1;
-	pixel_y = 11;
-	unslashable = 1
-	},
-/obj/structure/blocker/invisible_wall{
-	projectile_coverage = 95
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
-"bhK" = (
+"bhL" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/structure/largecrate/supply/supplies/flares,
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
 	layer = 3.5
 	},
-/obj/item/clothing/glasses/sunglasses/aviator/silver{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms3)
-"bhL" = (
-/obj/structure/prop/almayer/computers/mapping_computer{
-	name = "\improper Targeting computer";
-	desc = "A targeting computer for groundside target locking, it appears to have encountered an error, it's requesting you contact a WY technician for further assistance"
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 11;
+	pixel_y = 12
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
 "bhM" = (
-/obj/structure/prop/almayer/computers/sensor_computer1{
-	name = "Anti orbital cannon control console";
-	desc = "The IBM series 10 computer retrofitted to work as an anti-air cannon control console. While somewhat dated it still serves its purpose."
+/obj/structure/prop/almayer/computers/mapping_computer{
+	name = "\improper Fire-control radar systems computer";
+	desc = "A targeting computer that interfaces with a fire-control radar to actually aquire a target, the targeting data is then uploaded and relayed to all celesital defence guns on a network. You seem to lack the know-how required to operate this."
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
 "bhN" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/prop/server_equipment/laptop/closed{
-	pixel_x = 3;
-	pixel_y = 7
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	name = "M2168A2 Fire-control Systems Console ";
+	desc = "An IBM series 10 computer designed to interface, operate and fire a M2168A2 Railgun. This one's still printing it's last registered target of an unknown vessel heading north-east bound at roughly 8,000 clicks an hour coming in with a seven, zero, niner... whatever that means."
 	},
-/obj/item/trash/cigbutt/cigarbutt{
-	pixel_x = 10;
-	pixel_y = -1
-	},
-/obj/structure/transmitter/colony_net/rotary{
-	pixel_x = -5;
-	pixel_y = -1;
-	phone_category = "New Varadero Naval Base";
-	phone_id = "Railgun Point Defence"
+/obj/item/clothing/glasses/sunglasses/aviator/silver{
+	pixel_y = 15
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
@@ -20388,6 +20305,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
+"bio" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security/south/hangar)
 "bip" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
@@ -20456,7 +20379,6 @@
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/eastbeach)
 "biy" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/eastbeach)
@@ -20840,12 +20762,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green,
 /area/varadero/interior/comms1)
-"bjF" = (
-/obj/item/ammo_magazine/rifle/l42a{
-	current_rounds = 0
-	},
-/turf/open/floor/shiva/green,
-/area/varadero/interior/comms1)
 "bjG" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -21121,10 +21037,8 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "bkz" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/eastbeach)
 "bkA" = (
@@ -21134,7 +21048,6 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/eastbeach)
 "bkB" = (
-/obj/structure/fence,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -21269,10 +21182,6 @@
 	icon_state = "mfloor3"
 	},
 /turf/open/floor/shiva/floor3,
-/area/varadero/interior/comms1)
-"bkV" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bkW" = (
 /obj/structure/window_frame/colony,
@@ -21521,7 +21430,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/machinery/deployable/barrier,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "blH" = (
@@ -22230,6 +22138,12 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
+"bnH" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8
+	},
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/medical)
 "bnI" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 1;
@@ -22781,16 +22695,6 @@
 /obj/effect/decal/large_stain,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"bpj" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/farocean)
 "bpk" = (
 /obj/structure/barricade/handrail{
 	name = "support struts";
@@ -22844,6 +22748,10 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/l42a/heap,
+/obj/item/ammo_magazine/rocket{
+	pixel_x = -3;
+	pixel_y = -18
+	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/farocean)
 "bpr" = (
@@ -22886,9 +22794,8 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/comms4)
 "bpw" = (
-/obj/structure/barricade/hesco{
-	dir = 2;
-	color = null
+/obj/structure/machinery/deployable/barrier{
+	locked = 1
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/comms4)
@@ -22896,10 +22803,6 @@
 /obj/structure/machinery/power/apc/power/south,
 /obj/structure/barricade/hesco{
 	dir = 4;
-	color = null
-	},
-/obj/structure/barricade/hesco{
-	dir = 2;
 	color = null
 	},
 /turf/open/floor/asteroid,
@@ -22977,6 +22880,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bpI" = (
@@ -23021,6 +22925,14 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"bpP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_SE)
 "bpQ" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/flora/wood/stick2,
@@ -23275,7 +23187,6 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/farocean)
 "bqt" = (
-/obj/item/ammo_magazine/rocket,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/farocean)
 "bqu" = (
@@ -23362,7 +23273,9 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "bqG" = (
-/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
 /turf/closed/wall,
 /area/varadero/interior/comms1)
 "bqH" = (
@@ -23621,10 +23534,6 @@
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
-"brq" = (
-/obj/structure/prop/turret/missile,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
 "brr" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -23779,11 +23688,9 @@
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "brK" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "brL" = (
@@ -23994,11 +23901,6 @@
 /obj/item/stack/medical/bruise_pack/two,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"bsp" = (
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "bsq" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -24015,7 +23917,6 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
@@ -24091,10 +23992,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"bsy" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
 "bsz" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -24425,19 +24322,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"bto" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 4;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
 "btp" = (
 /turf/open/slippery/hull/dir/east,
 /area/sky)
@@ -24494,12 +24378,6 @@
 /obj/item/lightstick/variant/planted,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"btx" = (
-/obj/structure/prop/tyrargo/watchtower{
-	layer = 4
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
 "bty" = (
 /obj/structure/fence/slim/dark/door{
 	open = 1
@@ -24823,6 +24701,7 @@
 	dir = 4;
 	pixel_y = 8
 	},
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "buu" = (
@@ -25357,21 +25236,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"bvR" = (
-/obj/item/trash/falcon_drone{
-	desc = "The wreckage of some alien drone..."
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
-"bvS" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "windsock";
-	layer = 5;
-	pixel_x = 18;
-	pixel_y = 20
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
 "bvT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/splatter{
@@ -25756,11 +25620,29 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bwX" = (
-/obj/structure/prop/turret/missile,
-/obj/structure/prop/invuln/fire{
-	light_color = "#FF7700"
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 8;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "bwY" = (
 /obj/effect/spawner/gibspawner/human,
@@ -26029,6 +25911,9 @@
 /area/varadero/exterior/lz1_near)
 "bxH" = (
 /obj/item/prop/colony/used_flare,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/asteroidwarning/east,
 /area/varadero/exterior/lz1_near)
 "bxI" = (
@@ -26173,10 +26058,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"byb" = (
-/obj/structure/prop/hybrisa/misc/fire/fire2,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
 "byc" = (
 /obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -26353,6 +26234,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor3"
 	},
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byv" = (
@@ -26624,16 +26506,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"bzi" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/farocean)
 "bzj" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -26744,11 +26616,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bzA" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bzB" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -26759,9 +26626,9 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/comms4)
 "bzC" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -4
+/obj/structure/barricade/hesco{
+	dir = 2;
+	color = null
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
@@ -27079,12 +26946,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/comms4)
-"bAz" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/bed/medevac_stretcher/prop,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bAA" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/item/weapon/gun/rifle/m16/m16a5,
@@ -27187,6 +27048,7 @@
 	icon_state = "mfloor3"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bAM" = (
@@ -27497,9 +27359,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bBF" = (
-/obj/item/ammo_magazine/rifle/l42a{
-	current_rounds = 0
-	},
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bBG" = (
@@ -27556,10 +27416,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -8
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "bBO" = (
@@ -27575,22 +27432,15 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_x = 1;
-	pixel_y = -5
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "bBQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -7
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "bBR" = (
@@ -27617,15 +27467,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"bBV" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/lz2_near)
 "bBW" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor3"
@@ -28038,6 +27879,7 @@
 	dir = 8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bDj" = (
@@ -28074,10 +27916,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bDo" = (
-/obj/item/ammo_magazine/rifle/l42a,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/comms4)
 "bDp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/freezerfloor,
@@ -28096,19 +27934,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
-"bDt" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
 "bDu" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
@@ -28166,13 +27991,6 @@
 	icon_state = "mfloor6"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
-"bDG" = (
-/obj/effect/decal/remains/xeno,
-/obj/item/ammo_magazine/rifle/l42a{
-	current_rounds = 0
-	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bDH" = (
@@ -28626,6 +28444,12 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
+"bEX" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/shiva/wred/west,
+/area/varadero/interior/medical)
 "bEY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/spawner/gibspawner/xeno,
@@ -28711,25 +28535,18 @@
 "bFn" = (
 /turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz2_near)
+"bFo" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster75"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_SE)
 "bFp" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor,
-/area/varadero/exterior/lz2_near)
-"bFq" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 14;
-	pixel_y = 4;
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor,
+/turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "bFr" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
@@ -28780,10 +28597,6 @@
 "bFy" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
-/area/varadero/exterior/lz1_near)
-"bFz" = (
-/obj/structure/closet/bodybag,
-/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bFA" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -28907,24 +28720,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz2_near)
-"bFT" = (
-/obj/structure/prop{
-	name = "ruined IX-50 MGAD Cannon";
-	desc = "The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats with rockets strapped onto them. This one is no longer functional.";
-	icon = 'icons/obj/structures/props/128x128_cannon_props.dmi';
-	icon_state = "anti_air_cannon";
-	dir = 2;
-	pixel_y = 5;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/prop/almayer/cannon_cable_connector{
-	pixel_x = 8;
-	pixel_y = 3
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/asteroidwarning/southwest,
-/area/varadero/exterior/lz2_near)
 "bFU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor,
@@ -28985,6 +28780,12 @@
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz1_near)
+"bGe" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster80"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/electrical)
 "bGf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -29136,12 +28937,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
-"bGx" = (
-/obj/structure/prop/almayer/cannon_cables{
-	pixel_x = 9
-	},
-/turf/open/floor/asteroidwarning/southwest,
-/area/varadero/exterior/lz2_near)
 "bGy" = (
 /turf/open/floor/shiva/multi_tiles/east,
 /area/varadero/interior/hall_SE)
@@ -29153,7 +28948,8 @@
 "bGA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/southeast,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz2_near)
 "bGB" = (
 /obj/structure/prop/rock/brown,
@@ -29313,18 +29109,6 @@
 "bGY" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
-	},
-/turf/open/floor/asteroidfloor,
-/area/varadero/exterior/lz2_near)
-"bGZ" = (
-/obj/structure/blocker/invisible_wall{
-	projectile_coverage = 95
-	},
-/turf/open/floor/asteroidwarning/west,
-/area/varadero/exterior/lz2_near)
-"bHa" = (
-/obj/structure/blocker/invisible_wall{
-	projectile_coverage = 95
 	},
 /turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz2_near)
@@ -29521,17 +29305,10 @@
 /area/varadero/exterior/lz2_near)
 "bHC" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
-	name = "Anti air cannon control console";
-	desc = "The IBM series 10 computer retrofitted to work as an anti-air cannon control console. While somewhat dated it still serves its purpose."
+	name = "M2168A2 Fire-control Systems Console ";
+	desc = "An IBM series 10 computer designed to interface, operate and fire a M2168A2 Railgun. This one's still printing it's last registered target of an unknown vessel heading north-east bound at roughly 8,000 clicks an hour coming in with a seven, zero, niner... whatever that means."
 	},
 /turf/open/floor/asteroidfloor,
-/area/varadero/exterior/lz2_near)
-"bHD" = (
-/obj/structure/blocker/invisible_wall{
-	projectile_coverage = 95
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/east,
 /area/varadero/exterior/lz2_near)
 "bHE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -29680,15 +29457,6 @@
 "bIa" = (
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/exterior/lz2_near)
-"bIb" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 14;
-	pixel_y = 18;
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/floor/asteroidwarning/northeast,
-/area/varadero/exterior/lz2_near)
 "bIc" = (
 /obj/structure/machinery/bot/mulebot,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -29788,10 +29556,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"bIo" = (
-/obj/structure/closet/crate,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "bIp" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/dirt,
@@ -29901,28 +29665,7 @@
 /area/varadero/exterior/lz2_near)
 "bIF" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.01
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/lz2_near)
-"bIG" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.01
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/lz2_near)
-"bIH" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/lz2_near)
 "bII" = (
@@ -29979,6 +29722,16 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
+"bIR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/electrical)
 "bIS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -30016,18 +29769,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"bIX" = (
-/obj/structure/barricade/hesco{
-	dir = 1;
-	color = null
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz1_near)
-"bIY" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/trash/uscm_mre,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "bIZ" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/effect/decal/cleanable/dirt,
@@ -30196,28 +29937,31 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/structure/barricade/hesco{
-	dir = 4;
-	color = null
-	},
 /obj/structure/machinery/storm_siren{
 	dir = 4;
 	pixel_x = -3
 	},
+/obj/structure/barricade/hesco{
+	dir = 4;
+	color = null
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "bJx" = (
-/obj/structure/largecrate/random/case/small,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
+	},
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 4;
+	pixel_y = 14
 	},
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/lz1_near)
 "bJy" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/trash/uscm_mre,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bJz" = (
@@ -30275,6 +30019,12 @@
 	icon_state = "30"
 	},
 /area/varadero/interior/beach_bar)
+"bJH" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster80"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/comms2)
 "bJI" = (
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary,
@@ -30436,10 +30186,16 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "bKa" = (
-/obj/structure/largecrate/random/case,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/storage/fancy/cigarettes/wypacket_4{
-	pixel_x = -3;
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/structure/largecrate/random/case{
+	pixel_x = -2
+	},
+/obj/item/storage/fancy/cigar/matchbook/brown{
+	pixel_x = 5;
 	pixel_y = 4
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -30630,29 +30386,23 @@
 	},
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/cargo)
-"bKC" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/effect/overlay/palmtree_r,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz1_near)
 "bKD" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/head/helmet/marine/desert{
-	pixel_x = -5;
-	pixel_y = 6
-	},
 /obj/structure/pipes/vents/pump,
-/obj/item/storage/fancy/cigar/matchbook/brown{
-	pixel_x = 7;
-	pixel_y = -2
+/obj/structure/tent/big,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/backpack/marine/satchel/rto{
+	name = "\improper Damaged LACN Radio Telephone Pack";
+	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs. This one has had its antena damaged.";
+	pixel_x = -4;
+	pixel_y = 4;
+	networks_receive = list("Colonist");
+	networks_transmit = list("Colonist")
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz1_near)
 "bKE" = (
-/obj/effect/sentry_landmark/lz_1/top_left,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bKF" = (
@@ -30903,6 +30653,12 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor6"
 	},
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -4;
+	pixel_y = 5
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bLj" = (
@@ -31124,6 +30880,13 @@
 /obj/item/clock,
 /turf/open/floor/wood,
 /area/varadero/interior/cargo)
+"bLN" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning,
+/area/varadero/exterior/eastbeach)
 "bLO" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -31134,19 +30897,19 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "bLP" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/rifle/l42a,
+/obj/structure/surface/table,
+/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bLQ" = (
 /obj/item/ammo_box/magazine/l42a/heap/empty{
-	pixel_x = -4;
-	pixel_y = 11
+	pixel_x = -5;
+	pixel_y = -7
 	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
-"bLR" = (
-/obj/item/trash/used_stasis_bag,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bLS" = (
@@ -31274,7 +31037,9 @@
 /turf/open/floor/asteroidwarning/northeast,
 /area/varadero/exterior/lz2_near)
 "bMi" = (
-/obj/structure/sign/poster/ad,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster8"
+	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/cargo)
 "bMj" = (
@@ -31385,7 +31150,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
 "bMx" = (
 /obj/structure/largecrate/random/case/double,
@@ -31450,6 +31215,30 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/lz2_near)
+"bMG" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/lightstick/red/spoke/planted{
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/prop{
+	name = "M2168A2 200-inch Celestial Defense Cold Launch Railgun Cannon";
+	desc = "The actual barrel of a large super heavy 200-inch cold launch railgun designed for protection of strategic points of intrest from hostile orbital inclusion. Operated via a fire-control system console deck nearby. Fires HIM-85 Multi-Stage Anti-Areospace Missiles.";
+	icon = 'icons/obj/structures/props/icon_cannon.dmi';
+	icon_state = "cannon1";
+	dir = 2;
+	layer = 6;
+	pixel_x = -16;
+	unacidable = 1;
+	explo_proof = 1;
+	can_block_movement = 0;
+	unslashable = 1
+	},
+/turf/open/floor/asteroidwarning/southeast,
+/area/varadero/exterior/eastbeach)
 "bMH" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -31810,10 +31599,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/administration)
-"bND" = (
-/obj/structure/cargo_container/kelland/right,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "bNE" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -32083,19 +31868,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/lz2_near)
-"bOi" = (
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/lz2_near)
 "bOj" = (
@@ -32370,17 +32142,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
-"bOP" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 3.5
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/lz2_near)
 "bOQ" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -32766,14 +32527,6 @@
 "bPH" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/asteroidfloor,
-/area/varadero/exterior/lz2_near)
-"bPI" = (
-/obj/structure/prop/almayer/cannon_cable_connector{
-	pixel_x = 8;
-	pixel_y = 3
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/lz2_near)
 "bPJ" = (
 /obj/item/stack/sheet/metal{
@@ -33250,26 +33003,6 @@
 	},
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
-"bQJ" = (
-/obj/structure/prop{
-	name = "melting IX-50 MGAD Cannon";
-	desc = "The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats with rockets strapped onto them. This one is no longer functional due to it's barrel being almost entirely melted.";
-	icon = 'icons/obj/structures/props/128x128_cannon_props.dmi';
-	icon_state = "anti_air_cannon_d";
-	dir = 2;
-	pixel_y = 17;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/prop/almayer/cannon_cables{
-	pixel_x = 9
-	},
-/turf/open/floor/asteroidwarning/southwest,
-/area/varadero/exterior/lz2_near)
-"bQK" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/southeast,
-/area/varadero/exterior/lz2_near)
 "bQL" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -33356,6 +33089,7 @@
 	icon_state = "mfloor6"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "bQW" = (
@@ -33497,6 +33231,17 @@
 	},
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/islands)
+"bRo" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/eastbeach)
 "bRp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33513,23 +33258,36 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 4;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 2;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
 "bRs" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /obj/structure/barricade/handrail{
 	name = "support struts";
@@ -33537,8 +33295,8 @@
 	icon_state = "hr_kutjevo";
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
@@ -33847,6 +33605,7 @@
 /area/varadero/exterior/islands)
 "bSj" = (
 /obj/structure/prop/tyrargo/watchtower,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/asteroidfloor,
 /area/varadero/exterior/islands)
 "bSk" = (
@@ -33897,6 +33656,7 @@
 	climb_delay = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
 "bSt" = (
@@ -33965,12 +33725,6 @@
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/asteroidfloor,
-/area/varadero/exterior/lz2_near)
-"bSF" = (
-/obj/structure/blocker/invisible_wall{
-	projectile_coverage = 95
-	},
-/turf/open/floor/asteroidwarning/east,
 /area/varadero/exterior/lz2_near)
 "bSG" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
@@ -34079,9 +33833,6 @@
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "bSS" = (
-/obj/item/ammo_magazine/rifle/l42a{
-	current_rounds = 0
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 1
@@ -34153,25 +33904,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
-"bTc" = (
-/obj/structure/prop/tyrargo/illuminator{
-	icon_state = "floodlight-on";
-	pixel_x = -13;
-	pixel_y = -14;
-	light_range = 8;
-	light_power = 2;
-	light_color = "#FFEFD2";
-	light_on = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/islands)
-"bTd" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/item/weapon/gun/launcher/rocket/m5,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "bTe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -34184,43 +33916,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/varadero/interior/maintenance/north)
-"bTg" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
-"bTh" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
 "bTi" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
@@ -34271,16 +33978,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz2_near)
-"bTq" = (
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	pixel_x = -32;
-	pixel_y = -19;
-	light_color = "#FF7700";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/floor/asteroidwarning/north,
 /area/varadero/exterior/lz2_near)
 "bTr" = (
 /obj/structure/prop/invuln/minecart_tracks,
@@ -34387,40 +34084,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/exterior/islands)
 "bTG" = (
-/obj/item/reagent_container/food/snacks/carpmeat{
-	name = "human-ish teeth";
-	desc = "Revolting beyond description.";
-	icon = 'icons/obj/items/fishing_atoms.dmi';
-	icon_state = "gullible_toothfish_teeth"
-	},
 /turf/open/floor/asteroidwarning/northeast,
-/area/varadero/exterior/islands)
-"bTH" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
-"bTI" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 8
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/islands)
-"bTJ" = (
-/obj/structure/prop/tyrargo/illuminator{
-	icon_state = "floodlight-on";
-	pixel_x = -12;
-	pixel_y = 15;
-	light_range = 8;
-	light_power = 2;
-	light_color = "#FFEFD2";
-	light_on = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/islands)
 "bTK" = (
 /obj/structure/fence/slim,
@@ -34493,16 +34157,6 @@
 	climb_delay = 1
 	},
 /turf/open/gm/coast/west,
-/area/varadero/exterior/lz2_near)
-"bTY" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail/wire{
-	layer = 3.5
-	},
-/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/lz2_near)
 "bTZ" = (
 /obj/structure/platform/metal/kutjevo_smooth{
@@ -34632,37 +34286,52 @@
 /area/varadero/exterior/pontoon_beach/lz)
 "bUq" = (
 /obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/gm/coast/north,
-/area/varadero/exterior/islands)
-"bUr" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/coast/north,
-/area/varadero/exterior/islands)
-"bUs" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/varadero/exterior/islands)
-"bUt" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
 /obj/item/reagent_container/food/snacks/carpmeat{
 	name = "gullible toothfish";
 	desc = "This leathery protofish was named the gullible toothfish for the combination of its near identical dentata to that of Homo sapiens sapiens and the fact that if released after being caught, it is not uncommon to catch the same one; it not having learned its lesson. Its meat is said to taste like bitter clove.";
 	icon = 'icons/obj/items/fishing_atoms.dmi';
 	icon_state = "gullible_toothfish_gutted"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
-"bUu" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
+"bUr" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 2;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bUu" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_range = 8;
+	light_power = 2;
+	light_color = "#FFEFD2";
+	light_on = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/islands)
 "bUv" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -34729,6 +34398,7 @@
 /obj/item/storage/pouch/construction/low_grade_full,
 /obj/structure/closet/coffin/woodencrate,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/cargo)
 "bUE" = (
@@ -34824,10 +34494,10 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "bUS" = (
-/obj/structure/barricade/handrail/wire{
-	layer = 3.01
-	},
 /obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /turf/open/gm/river/ocean/deep_ocean,
@@ -34837,6 +34507,15 @@
 	layer = 3.01
 	},
 /obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "windsock";
+	layer = 6.5;
+	pixel_x = -14;
+	pixel_y = -15
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -35178,10 +34857,6 @@
 /area/sky)
 "bVS" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/item/storage/briefcase/inflatable/small{
-	pixel_x = 1;
-	pixel_y = -6
-	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz1_near)
 "bVT" = (
@@ -35211,6 +34886,128 @@
 "bVX" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/lz1_near)
+"bVY" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "LibaryIntoRestaraunt"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"bVZ" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster28"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/electrical)
+"bWa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
+"bWb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/east,
+/area/varadero/exterior/eastbeach)
+"bWc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/eastbeach)
+"bWd" = (
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
+/obj/structure/prop{
+	name = "M2168A2 200-inch Celestial Defense Cold Launch Railgun";
+	desc = "A large super heavy 200-inch cold launch railgun designed for protection of strategic points of intrest from hostile orbital inclusion. Operated via a fire-control system console deck nearby. Fires HIM-85 Multi-Stage Anti-Areospace Missiles.";
+	icon = 'icons/obj/structures/props/icon_cannon.dmi';
+	icon_state = "cannon";
+	dir = 2;
+	layer = 6;
+	pixel_x = -32;
+	pixel_y = -64;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
+"bWe" = (
+/obj/structure/blocker/invisible_wall{
+	projectile_coverage = 95
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
+"bWf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/north,
+/area/varadero/exterior/eastbeach)
+"bWg" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/eastbeach)
+"bWh" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
+"bWi" = (
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
+"bWj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
+"bWk" = (
+/obj/structure/barricade/hesco{
+	dir = 2;
+	color = null
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/eastbeach)
+"bWl" = (
+/obj/effect/hunter/ancient_temple/rubble/rubble_1,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
+"bWm" = (
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/comms4)
+"bWn" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"bWo" = (
+/obj/item/ammo_magazine/rifle/l42a/heap,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
+"bWp" = (
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "bWq" = (
 /obj/structure/platform/metal/almayer/north{
 	density = 0;
@@ -35223,12 +35020,112 @@
 	},
 /turf/open/gm/road,
 /area/varadero/interior/cargo)
+"bWr" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"bWs" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWt" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 1
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -2
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
 "bWu" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/comms4)
+"bWv" = (
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWw" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWx" = (
+/obj/item/storage/box/emps,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/comms4)
+"bWy" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWz" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWA" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWB" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"bWC" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWD" = (
+/obj/item/lightstick/red/spoke/planted{
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
 "bWE" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
@@ -35238,6 +35135,649 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
+"bWF" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 4;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 8;
+	layer = 3.1;
+	pixel_x = 5;
+	pixel_y = -2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWG" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/eastocean)
+"bWH" = (
+/obj/structure/prop/tyrargo/watchtower{
+	layer = 4;
+	pixel_x = 17;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
+"bWI" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "windsock";
+	layer = 5;
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"bWJ" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWK" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWL" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWM" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base_wreck";
+	dir = 1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_wreck";
+	dir = 8;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWN" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWO" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"bWP" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/lz2_near)
+"bWQ" = (
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/lz2_near)
+"bWR" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWS" = (
+/obj/structure/prop{
+	name = "M2168A2 200-inch Celestial Defense Cold Launch Railgun";
+	desc = "A large super heavy 200-inch cold launch railgun designed for protection of strategic points of intrest from hostile orbital inclusion. Operated via a fire-control system console deck nearby. Fires HIM-85 Multi-Stage Anti-Areospace Missiles.";
+	icon = 'icons/obj/structures/props/icon_cannon.dmi';
+	icon_state = "cannon";
+	dir = 2;
+	layer = 6;
+	pixel_x = -1;
+	pixel_y = -1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/asteroidwarning/southwest,
+/area/varadero/exterior/lz2_near)
+"bWT" = (
+/obj/structure/prop{
+	name = "M2168A2 200-inch Celestial Defense Cold Launch Railgun Cannon";
+	desc = "The actual barrel of a large super heavy 200-inch cold launch railgun designed for protection of strategic points of intrest from hostile orbital inclusion. Operated via a fire-control system console deck nearby. Fires HIM-85 Multi-Stage Anti-Areospace Missiles.";
+	icon = 'icons/obj/structures/props/icon_cannon.dmi';
+	icon_state = "cannon1";
+	dir = 2;
+	layer = 6;
+	pixel_x = -17;
+	pixel_y = -1;
+	unacidable = 1;
+	explo_proof = 1;
+	can_block_movement = 0;
+	unslashable = 1
+	},
+/turf/open/floor/asteroidwarning/southeast,
+/area/varadero/exterior/lz2_near)
+"bWU" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWV" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/asteroidfloor,
+/area/varadero/exterior/lz2_near)
+"bWW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/asteroidfloor,
+/area/varadero/exterior/lz2_near)
+"bWX" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 12;
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/varadero/exterior/lz2_near)
+"bWY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/closet/bodybag,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"bWZ" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/wood/small_stack,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"bXa" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 12;
+	pixel_y = 24;
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/asteroidwarning/northeast,
+/area/varadero/exterior/lz2_near)
+"bXb" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/hesco{
+	dir = 4;
+	color = null
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXc" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/lz2_near)
+"bXd" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/lz2_near)
+"bXe" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/turf/open/floor/asteroidwarning,
+/area/varadero/exterior/lz1_near)
+"bXf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/asteroidwarning,
+/area/varadero/exterior/lz1_near)
+"bXg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table{
+	flipped = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXh" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/surface/table{
+	flipped = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXi" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/effect/overlay/palmtree_r{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/structure/barricade/hesco{
+	dir = 4;
+	color = null
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"bXj" = (
+/obj/item/weapon/gun/rifle/m41aMK1{
+	current_mag = null
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table{
+	dir = 4;
+	flipped = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXm" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/barricade/hesco{
+	dir = 4;
+	color = null
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"bXn" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXo" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"bXp" = (
+/obj/structure/machinery/landinglight/spoke,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXt" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/asteroidfloor,
+/area/varadero/exterior/islands)
+"bXu" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXv" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/varadero/exterior/islands)
+"bXw" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/varadero/exterior/islands)
+"bXx" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 8;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_up";
+	dir = 2;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXz" = (
+/obj/structure/cargo_container/kelland/left,
+/obj/structure/prop{
+	name = "\improper HIM-85 Multi-Stage Anti-Areospace Missile'";
+	desc = "The HIM-85 is a modern take on the HIM-78, designed for cold launches via magenetic acceleration the missile contains a kinetic warhead and two-stage booster system with a low launch signature in order to improve its chances of a surprise first-strike.";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "napalm";
+	dir = 2;
+	layer = 3.1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
+"bXA" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
+"bXB" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXC" = (
+/obj/item/reagent_container/food/snacks/carpmeat{
+	name = "human-ish teeth";
+	desc = "Revolting beyond description.";
+	icon = 'icons/obj/items/fishing_atoms.dmi';
+	icon_state = "gullible_toothfish_teeth"
+	},
+/turf/open/floor/asteroidwarning/northwest,
+/area/varadero/exterior/islands)
+"bXD" = (
+/obj/structure/prop/rock/brown{
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/lz2_near)
+"bXE" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXF" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXG" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/floor/asteroidwarning/northwest,
+/area/varadero/exterior/islands)
+"bXH" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXI" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/varadero/exterior/islands)
+"bXJ" = (
+/obj/structure/prop{
+	name = "M83 'Skysweeper' platform";
+	desc = "The base of a M83 'Skysweeper' AA gun, it's wiring has been completely fried.";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_base";
+	dir = 1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_range = 8;
+	light_power = 2;
+	light_color = "#FFEFD2";
+	light_on = 1
+	},
+/obj/structure/prop{
+	name = "M83 'Skysweeper'";
+	desc = "The M83 is a rapid firing dual mounted turret that hosts 2 rotary fire 80mm cannons typically chambering delayed fuse HEAP round. This one appears to have been shut by some kind of electronic pulse...";
+	icon = 'icons/obj/structures/props/AA.dmi';
+	icon_state = "aa_turret_wreck";
+	dir = 2;
+	layer = 3.1;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/islands)
+"bXK" = (
+/obj/structure/prop/rock/brown{
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/coast/east,
+/area/varadero/exterior/islands)
+"bXL" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"bXM" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/islands)
+"bXN" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/islands)
+"bXO" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/islands)
+"bXP" = (
+/obj/structure/prop/rock/brown{
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/lz2_near)
+"bXQ" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/islands)
+"bXR" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 21
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -14;
+	pixel_y = 15
+	},
+/obj/item/toy/beach_ball,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/islands)
+"bXS" = (
+/obj/item/fishing_pole{
+	anchored = 1
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/islands)
+"bXT" = (
+/obj/structure/prop/fishing/line/long,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXU" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bXV" = (
+/obj/item/storage/beer_pack,
+/turf/open/gm/coast/south,
+/area/varadero/exterior/islands)
+"bXW" = (
+/obj/structure/prop/tower{
+	name = "fire-control radar tower";
+	desc = "A large radar system that aids celestial defences in target acquisition.";
+	icon_state = "comm_tower";
+	layer = 5;
+	pixel_y = 11
+	},
+/obj/structure/prop/tyrargo/gen{
+	name = "fire-control radar tower";
+	desc = "A large radar system that aids celestial defences in target acquisition.";
+	layer = 5.1;
+	pixel_x = 9;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/tcomms,
+/area/sky)
 "bYn" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -35931,10 +36471,6 @@
 "cFw" = (
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
-"cFZ" = (
-/obj/structure/cargo_container/kelland/left,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "cGc" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/clothing/suit/storage/marine/light/vest/LACN,
@@ -36242,10 +36778,7 @@
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
 "cRx" = (
-/obj/structure/barricade/hesco{
-	dir = 1;
-	color = null
-	},
+/obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "cRZ" = (
@@ -36288,6 +36821,11 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -16;
+	pixel_y = -8
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "cTb" = (
@@ -36306,6 +36844,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/medical)
@@ -36500,13 +37041,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
-"deq" = (
-/obj/structure/barricade/hesco{
-	dir = 2;
-	color = null
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
 "deE" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -36685,6 +37219,9 @@
 	pixel_x = -3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "dkV" = (
@@ -36708,7 +37245,7 @@
 /area/varadero/interior/research)
 "dlD" = (
 /obj/structure/prop/rock/brown_degree,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "dmN" = (
 /turf/closed/wall/r_wall/elevator{
@@ -36770,6 +37307,7 @@
 /area/varadero/interior/medical)
 "dob" = (
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "dos" = (
@@ -37001,10 +37539,6 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
-"dFt" = (
-/obj/structure/prop/fishing/line/long,
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/islands)
 "dGh" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/closet/crate/hydroponics/prespawned,
@@ -37117,6 +37651,9 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	icon_state = "sparsegrass_2"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
@@ -37266,6 +37803,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "dQT" = (
@@ -37622,10 +38160,6 @@
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
-"ejk" = (
-/obj/structure/prop/hybrisa/signs/high_voltage,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "ejK" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -37700,8 +38234,8 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
 "enZ" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/farocean)
 "eov" = (
@@ -38774,10 +39308,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"fhu" = (
-/obj/item/stack/sandbags/large_stack,
-/turf/open/floor/asteroidwarning/west,
-/area/varadero/exterior/lz1_near)
 "fhA" = (
 /obj/item/device/flashlight,
 /obj/structure/surface/table/reinforced/prison{
@@ -39020,15 +39550,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
-"foF" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_2";
-	pixel_y = -4;
-	maxhealth = 45;
-	damage_state = 2
-	},
-/turf/open/floor/shiva/yellow,
-/area/varadero/interior/cargo)
 "foU" = (
 /obj/structure/filingcabinet{
 	icon_state = "chestdrawer";
@@ -39902,15 +40423,6 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
-"gcF" = (
-/obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
-	},
-/obj/item/clothing/head/boaterhat{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
 "gcK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -40022,6 +40534,7 @@
 	icon_state = "mfloor6"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/red,
 /area/varadero/interior/security)
 "ghr" = (
@@ -40154,14 +40667,23 @@
 /turf/open/floor/plating,
 /area/varadero/interior/hall_SE)
 "gkG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 3.5
+	},
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap";
 	color = "#b29082"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
+/obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
 "gkL" = (
@@ -40507,10 +41029,6 @@
 /area/varadero/interior/medical)
 "gBp" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/screwdriver{
-	pixel_x = -2;
-	pixel_y = 4
-	},
 /obj/item/tool/plantspray/pests/old/phosmet{
 	pixel_x = -6;
 	pixel_y = 14
@@ -41194,6 +41712,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
 "hhM" = (
@@ -41511,9 +42032,6 @@
 "hwN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/technical_storage)
@@ -42347,7 +42865,7 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/monsoon)
 "iiX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -42477,9 +42995,6 @@
 	icon_state = "medium"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
 "ioc" = (
@@ -42776,8 +43291,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "iAx" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
+/obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
 /turf/open/floor/shiva/yellow/east,
@@ -43670,17 +44184,12 @@
 /area/varadero/exterior/lz1_near)
 "jkq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/mask/cigarette/cigar/tarbacks{
-	pixel_x = -7;
-	pixel_y = 8
+/obj/effect/spawner/prop_gun/m41aMK1{
+	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
 	},
-/obj/item/tool/lighter/zippo/black{
-	pixel_x = -5;
-	pixel_y = 7
-	},
-/obj/item/ashtray/plastic{
-	pixel_x = 6;
-	pixel_y = -4
+/obj/item/tool/screwdriver{
+	pixel_x = -2;
+	pixel_y = 4
 	},
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/technical_storage)
@@ -43736,7 +44245,7 @@
 /area/varadero/interior/chapel)
 "joO" = (
 /obj/structure/prop/tyrargo/gen{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "0-10"
@@ -44255,6 +44764,20 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/light,
+/obj/item/tool/lighter/zippo/black{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/cigarette/cigar/tarbacks{
+	pixel_x = -7;
+	pixel_y = 8;
+	step_x = 15;
+	step_y = -1
+	},
+/obj/item/ashtray/plastic{
+	pixel_x = 6;
+	pixel_y = -4
+	},
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/technical_storage)
 "jIK" = (
@@ -45093,6 +45616,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Underground Medical Laboratory";
+	locked = 1;
 	req_access = null;
 	req_one_access = null
 	},
@@ -45100,9 +45624,7 @@
 /area/varadero/interior/medical)
 "kyj" = (
 /obj/structure/prop/rock/brown,
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
 "kyp" = (
@@ -45133,7 +45655,9 @@
 /turf/closed/wall,
 /area/varadero/interior/disposals)
 "kyI" = (
-/obj/structure/machinery/deployable/barrier,
+/obj/structure/machinery/deployable/barrier{
+	locked = 1
+	},
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/comms1)
 "kyK" = (
@@ -45583,9 +46107,9 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -4
+/obj/structure/barricade/hesco{
+	dir = 2;
+	color = null
 	},
 /turf/open/floor/shiva/yellow/southwest,
 /area/varadero/interior/cargo)
@@ -45984,10 +46508,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior_protected/maintenance/south)
-"loQ" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "loW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -46077,6 +46597,7 @@
 	icon_state = "bshell_";
 	dir = 10
 	},
+/obj/item/ammo_magazine/rifle/l42a/heap,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "lsU" = (
@@ -46281,6 +46802,7 @@
 /area/varadero/interior/hall_SE)
 "lEm" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz1_near)
 "lEw" = (
@@ -46324,6 +46846,7 @@
 	dir = 8;
 	pixel_x = 3
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "lFE" = (
@@ -46371,10 +46894,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
-"lIE" = (
-/obj/item/stack/sandbags_empty/full,
-/turf/open/floor/asteroidwarning/west,
-/area/varadero/exterior/lz1_near)
 "lIM" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
@@ -46487,11 +47006,8 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/hall_SE)
 "lMP" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_3";
-	dir = 4;
-	maxhealth = 25;
-	damage_state = 3
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
 	},
 /turf/open/floor/shiva/yellow/southeast,
 /area/varadero/interior/cargo)
@@ -46973,12 +47489,6 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
-"mgT" = (
-/obj/vehicle/powerloader{
-	dir = 8
-	},
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "miy" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -47874,6 +48384,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/medical)
 "mVS" = (
@@ -47965,8 +48478,8 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "mZH" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/item/lightstick/variant/planted,
+/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/farocean)
 "mZI" = (
@@ -47980,16 +48493,15 @@
 /area/varadero/interior/electrical)
 "nak" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -4;
-	pixel_y = -15
-	},
-/obj/item/clothing/ears/earmuffs{
-	icon_state = "earmuffs2";
-	pixel_x = -3;
-	pixel_y = 15
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/clothing/ears/earmuffs{
+	icon_state = "earmuffs2";
+	pixel_y = 6
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
 "nbA" = (
@@ -48465,6 +48977,12 @@
 	climb_delay = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "nzT" = (
@@ -48507,20 +49025,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_NW)
-"nCl" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull{
-	name = "HESCO structural lattice"
-	},
-/area/varadero/interior/oob)
 "nCE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/green,
@@ -48680,7 +49184,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
 "nJd" = (
-/obj/item/stack/sheet/wood/small_stack,
+/obj/item/trash/used_stasis_bag,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "nJx" = (
@@ -48907,8 +49411,14 @@
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
 "nRU" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "nRW" = (
@@ -49014,6 +49524,9 @@
 /area/varadero/interior/morgue)
 "nVU" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /turf/open/gm/dirt,
@@ -49216,7 +49729,8 @@
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
 	},
-/turf/open/gm/dirt,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
 "odw" = (
 /obj/structure/machinery/photocopier,
@@ -50220,6 +50734,10 @@
 "oYB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1;
+	layer = 3.8
+	},
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/medical)
 "oZo" = (
@@ -50977,7 +51495,10 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "pDF" = (
-/obj/structure/closet/firecloset,
+/obj/structure/barricade/hesco{
+	dir = 2;
+	color = null
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "pDW" = (
@@ -51616,13 +52137,6 @@
 /obj/structure/sign/safety/water,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/library)
-"qcv" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/eastbeach)
 "qcC" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full";
@@ -52512,6 +53026,10 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "qKZ" = (
+/obj/effect/overlay/palmtree_r{
+	pixel_x = -5;
+	pixel_y = -32
+	},
 /turf/open/gm/coast/west,
 /area/varadero/exterior/lz1_near)
 "qLq" = (
@@ -52753,14 +53271,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/records)
 "qTE" = (
-/obj/structure/prop{
-	name = "HESCO wall";
-	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to set up.";
-	icon = 'icons/obj/structures/barricades.dmi';
-	icon_state = "sand_wall_full";
-	dir = 8;
-	unslashable = 1
-	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull{
 	name = "HESCO structural lattice"
 	},
@@ -53414,6 +53924,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Underground Medical Laboratory";
 	dir = 1;
+	locked = 1;
 	req_access = null;
 	req_one_access = null
 	},
@@ -53622,6 +54133,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "rCf" = (
+/obj/item/stack/sandbags_empty/full,
 /obj/item/tool/shovel/etool,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -53801,6 +54313,7 @@
 /obj/item/paper/janitor{
 	pixel_y = 8
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/varadero/interior/electrical)
 "rKM" = (
@@ -54267,6 +54780,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor/shiva/snow_mat/west,
 /area/varadero/interior/medical)
 "seZ" = (
@@ -54666,6 +55182,12 @@
 /area/varadero/interior/cargo)
 "suC" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/backpack/marine/satchel/rto{
+	name = "\improper Damaged LACN Radio Telephone Pack";
+	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs. This one has had its antena damaged.";
+	networks_receive = list("Colonist");
+	networks_transmit = list("Colonist")
+	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "suE" = (
@@ -54904,6 +55426,9 @@
 "sDX" = (
 /obj/structure/closet/crate,
 /obj/structure/catwalk,
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "sFJ" = (
@@ -56016,9 +56541,9 @@
 	climb_delay = 1
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice1";
-	pixel_x = -16;
-	pixel_y = -8
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
 	},
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/eastbeach)
@@ -57604,7 +58129,6 @@
 /turf/open/predship/shuttle_border/east,
 /area/varadero/interior_protected/vessel)
 "vbS" = (
-/obj/structure/platform_decoration/metal/kutjevo,
 /obj/item/stack/sandbags_empty/small_stack,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -57933,10 +58457,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
-"vom" = (
-/obj/item/storage/beer_pack,
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
 "voJ" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/sand_white/layer1,
@@ -58334,12 +58854,6 @@
 /obj/item/pizzabox/meat,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"vDw" = (
-/obj/item/fishing_pole{
-	anchored = 1
-	},
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/islands)
 "vDC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -58374,7 +58888,6 @@
 	icon_state = "medium"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
 "vEM" = (
@@ -58458,7 +58971,12 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/laundry)
 "vLo" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/prop/wooden_cross{
+	desc = "A grave to a fishing buddy, long gone"
+	},
+/obj/item/clothing/head/boaterhat{
+	pixel_y = 5
+	},
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
 	pixel_x = 7;
@@ -58595,6 +59113,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/administration)
 "vPi" = (
@@ -59274,6 +59793,15 @@
 /area/varadero/interior/comms2)
 "wop" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 3.5
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
 "wor" = (
@@ -60097,9 +60625,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "xaK" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0"
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "xbc" = (
@@ -60446,9 +60972,7 @@
 	icon_state = "pipe-c";
 	dir = 1
 	},
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0"
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "xqY" = (
@@ -60913,7 +61437,19 @@
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/security)
 "xKS" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	breakable = 0;
+	unslashable = 1
+	},
+/obj/item/device/radio/off{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/clothing/head/helmet/marine/desert{
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz1_near)
 "xLE" = (
@@ -64459,8 +64995,8 @@ uuN
 aNC
 aMK
 aLT
-aKV
-nuQ
+rQV
+aXn
 rQV
 cGx
 iLz
@@ -64951,14 +65487,14 @@ bDh
 bpv
 bpv
 bpv
-bpv
+bWx
 bzu
 byo
 bxk
 bwf
 buU
 btE
-bpv
+bWm
 bqx
 bqx
 bpx
@@ -65133,11 +65669,11 @@ bDi
 bBw
 bCm
 bBw
-bAz
+bAF
 bzv
 byp
 bxl
-bwg
+bWp
 buV
 btF
 huF
@@ -65312,7 +65848,7 @@ bpv
 bxj
 byn
 bAF
-buZ
+bwg
 bAF
 bBx
 bAA
@@ -66220,14 +66756,14 @@ rcu
 bER
 bEs
 ajS
-buZ
+bWp
 bDm
 bCR
 bCp
 bBA
 oeC
 buZ
-byv
+byq
 bvd
 buZ
 bvb
@@ -66408,7 +66944,7 @@ byn
 bCq
 bxn
 bAD
-bzA
+bvd
 sGp
 bxq
 bwl
@@ -66584,7 +67120,7 @@ adw
 adw
 bEt
 bDW
-bDG
+bwm
 bDn
 byn
 bCr
@@ -66767,7 +67303,7 @@ abq
 bEu
 bDX
 bDH
-bDo
+bWm
 bCS
 rfm
 bBC
@@ -67682,7 +68218,7 @@ bCU
 mzT
 fcg
 bnW
-foF
+bzC
 byA
 wnw
 bWq
@@ -67696,7 +68232,7 @@ bFV
 bic
 bmS
 fjK
-bkV
+bFV
 bgd
 bho
 biM
@@ -67934,7 +68470,7 @@ xqy
 aAR
 aAm
 azB
-atl
+aAX
 ayn
 axz
 awL
@@ -68116,10 +68652,10 @@ xqy
 aAR
 aAn
 azC
-arw
+aBz
 ayp
 atl
-awM
+uQa
 awa
 avb
 asc
@@ -68426,7 +68962,7 @@ pRa
 blQ
 pGs
 azM
-bjF
+bnQ
 biQ
 ehH
 miU
@@ -70377,7 +70913,7 @@ pGs
 pGs
 pGs
 pGs
-huF
+aJV
 bUE
 gKw
 huF
@@ -70943,8 +71479,8 @@ adw
 adw
 huF
 oCR
-bHI
-bHI
+bPn
+bPn
 bVS
 avI
 bGa
@@ -71119,10 +71655,10 @@ huF
 huF
 bMR
 huF
-bLO
+bXm
 bHI
-bKC
 bHI
+bXi
 bJw
 wKW
 qjU
@@ -71307,9 +71843,9 @@ bKD
 bKa
 bJx
 cRx
-bFy
 lYr
-fwo
+lYr
+bWZ
 lYr
 bGc
 huF
@@ -71483,12 +72019,12 @@ pGs
 huF
 pGs
 huF
-aba
+wMw
 bLh
 aHy
 wMw
-bzS
-bIX
+bXe
+lYr
 gPG
 gPG
 lYr
@@ -71556,9 +72092,9 @@ aPr
 aMd
 bIt
 ibP
-aLX
-teu
 haT
+teu
+aLX
 jkq
 ykw
 cIB
@@ -71663,13 +72199,13 @@ lYr
 bOr
 aUS
 pbp
-loQ
+wMw
 pDF
 bLP
 bLi
 wMw
-wMw
-bzS
+bXj
+bXf
 rCf
 lYr
 qjU
@@ -71852,14 +72388,14 @@ wMw
 wMw
 dob
 bJy
-fhu
-lIE
+qFC
+qFC
 qFC
 pMG
-pMG
+bWY
 bGd
-kME
-paq
+bWU
+bWR
 gSY
 xBS
 wFP
@@ -72028,17 +72564,17 @@ cUD
 qaB
 pbp
 wMw
-wMw
-wMw
+bXp
+bXn
 bvk
+bXk
 bvk
-bvk
-bwx
+bXg
+cgX
 wMw
-bIo
-wMw
+cgX
 bnf
-wMw
+byH
 wMw
 vLV
 wMw
@@ -72211,17 +72747,17 @@ new
 wMw
 wMw
 wMw
-bvk
-bvk
+bXl
+bXl
 bKE
 wMw
-bxC
-bIY
+bXh
+bXb
+bXb
+bXb
 bvm
 bvm
 bvm
-bvm
-bCD
 bvm
 bvm
 bvm
@@ -72265,14 +72801,14 @@ aSY
 xKC
 wnK
 pVh
-uTV
+bEX
 uTV
 aXM
 aXM
 nRT
 sWp
 kMU
-tjF
+bde
 woI
 qUQ
 qcN
@@ -72393,14 +72929,14 @@ wMw
 cgX
 wMw
 bvk
-bLR
+wMw
 bvk
 bvk
 xcE
 bwx
 wMw
 bvk
-cgX
+wMw
 wMw
 wMw
 wMw
@@ -72574,7 +73110,7 @@ egb
 wMw
 wMw
 bvk
-bvk
+bXq
 bvk
 wMw
 wMw
@@ -72586,7 +73122,7 @@ wMw
 bvk
 xcE
 bGf
-bFz
+wMw
 wMw
 bvk
 wMw
@@ -72753,7 +73289,7 @@ eRM
 tCG
 aEf
 cmA
-wMw
+bWK
 bxy
 bCE
 bMo
@@ -72767,11 +73303,11 @@ bvk
 wMw
 wMw
 bvk
+bWK
 wMw
 wMw
 wMw
-wMw
-wMw
+bWK
 wMw
 wMw
 wMw
@@ -73121,7 +73657,7 @@ cgX
 iyd
 qFC
 qFC
-qFC
+bXo
 qFC
 bKF
 bKc
@@ -73178,7 +73714,7 @@ eJI
 hZo
 nJc
 wQd
-sWp
+bnH
 gEz
 maN
 bzq
@@ -73360,7 +73896,7 @@ tYg
 sdS
 xTH
 wQd
-sWp
+bnH
 dBB
 maN
 pMy
@@ -73507,7 +74043,7 @@ rtm
 bZU
 xsH
 mrC
-byH
+bWv
 bwx
 wMw
 bvl
@@ -73546,7 +74082,7 @@ oYB
 ubF
 ckx
 bzq
-aVm
+bfe
 aJB
 aTF
 aTc
@@ -74599,7 +75135,7 @@ bZU
 bBZ
 miF
 mrC
-rSA
+bWw
 bxD
 bwC
 vpr
@@ -75511,7 +76047,7 @@ wCc
 bzS
 wMw
 bxH
-olD
+bMp
 bvp
 sid
 oaO
@@ -75653,8 +76189,8 @@ daS
 qwQ
 aaL
 aaI
-aaE
-kpe
+aaI
+bXQ
 bSn
 bSn
 qhE
@@ -75693,7 +76229,7 @@ bAY
 jgL
 mrC
 bxI
-asx
+awr
 bvq
 btV
 aSe
@@ -75835,8 +76371,8 @@ qwQ
 lTR
 aaM
 vLo
+wnA
 aaF
-qwQ
 qwQ
 qwQ
 qwQ
@@ -76014,17 +76550,17 @@ mPk
 xVw
 qwQ
 qwQ
-qwQ
-aaN
-aaJ
-aaH
-qwQ
-qwQ
-qwQ
+lTR
+bXV
+hJq
+hXe
+aaF
 qwQ
 qwQ
-qwQ
-qwQ
+gVO
+jaF
+qgm
+pAX
 pGs
 nYY
 pbp
@@ -76197,15 +76733,15 @@ wBp
 qwQ
 qwQ
 qwQ
+aaN
+bXS
+bXR
+aaF
 qwQ
 qwQ
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
-lTR
-qwQ
+scL
+lsN
+lnO
 qwQ
 bRj
 bQe
@@ -76379,15 +76915,15 @@ wBp
 uYJ
 qwQ
 qwQ
+aTY
+bXT
+aaN
+aaH
 qwQ
 qwQ
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
-lTR
-qwQ
+eGX
+hKK
+fLY
 qwQ
 bRk
 bQf
@@ -76561,15 +77097,15 @@ wBp
 qwQ
 aTY
 qwQ
-pAX
+aTY
+qHl
+qwQ
+qwQ
+lTR
 qwQ
 lTR
 qwQ
 qwQ
-qwQ
-qwQ
-qwQ
-pAX
 qwQ
 bRl
 bQg
@@ -76745,11 +77281,11 @@ rYC
 qwQ
 qwQ
 lTR
-aaL
-aaI
-aaI
-aaI
-aaE
+qwQ
+qwQ
+lTR
+qwQ
+qwQ
 qwQ
 qwQ
 qwQ
@@ -76927,12 +77463,12 @@ wBp
 uYJ
 qwQ
 aTY
-aaM
-aaK
-gcF
-wnA
+qwQ
+qwQ
+lTR
+qwQ
 bUq
-bKd
+bXB
 bKd
 bKd
 bRm
@@ -76957,7 +77493,7 @@ bEy
 oGv
 bFb
 oGv
-oGv
+rfV
 blo
 lnO
 lTR
@@ -76970,7 +77506,7 @@ lTR
 pGs
 kpe
 bSG
-oCP
+bWn
 brS
 kSw
 bpO
@@ -76988,7 +77524,7 @@ qaY
 bet
 bet
 bet
-abe
+bVY
 oxA
 oMs
 hca
@@ -77109,12 +77645,12 @@ wBp
 qwQ
 uYJ
 lTR
-aaM
-vom
-hJq
-hXe
+bUQ
+bKd
+bKd
+bKd
 bUr
-bTD
+bXC
 bSi
 bSi
 bRn
@@ -77291,13 +77827,13 @@ wBp
 qwQ
 aTY
 lTR
-aaN
-aaJ
-vDw
-aag
-bUr
+bJC
+bTD
+bSi
+bXv
+bXE
 bTE
-bSk
+bXt
 bSj
 bRp
 bQj
@@ -77473,14 +78009,14 @@ xVw
 qwQ
 qwQ
 aTY
-qwQ
-aTY
-dFt
-aaJ
-bUs
+bJC
+bTE
+bSk
+bSv
+bSm
 bTF
-bSk
-bSk
+bXt
+bXt
 bRp
 bQj
 bPr
@@ -77655,11 +78191,11 @@ rYC
 qwQ
 lTR
 qwQ
-qwQ
-qwQ
-qHl
-qwQ
-bUt
+bJC
+bTG
+bSl
+bXw
+bSm
 bTG
 bSl
 bSl
@@ -77837,14 +78373,14 @@ msj
 daS
 pAX
 qwQ
-qwQ
-qwQ
-qwQ
-qwQ
+xDT
+bSn
+bSn
+bXF
 bUu
-bTH
 bSm
 bSm
+bXu
 bRr
 bQl
 bPr
@@ -77938,7 +78474,7 @@ fEI
 wfy
 xNR
 aEd
-aFg
+aQY
 umT
 gFx
 gFx
@@ -78021,12 +78557,12 @@ aTY
 qwQ
 qwQ
 qwQ
-aTY
-lTR
 qwQ
-bJC
-bTc
-bSm
+xDT
+bXF
+bTD
+bSi
+bXv
 bRs
 bQf
 bPr
@@ -78203,13 +78739,13 @@ qwQ
 pAX
 lTR
 lTR
-lTR
-lTR
 qwQ
-xDT
-bSn
-bSn
-bRt
+qwQ
+bJC
+bTE
+bSk
+bSv
+bXr
 bQf
 bPr
 vss
@@ -78386,12 +78922,12 @@ qwQ
 lTR
 qwQ
 qwQ
-pAX
 qwQ
-qwQ
-qwQ
-qwQ
-bRl
+bJC
+bTG
+bSl
+bXw
+bXr
 bQf
 bPr
 vss
@@ -78569,11 +79105,11 @@ qwQ
 qwQ
 qwQ
 qwQ
-lTR
-qwQ
-qwQ
-pGs
-bRl
+kpe
+bSn
+bSn
+bSn
+bXs
 bQf
 vss
 vss
@@ -78753,7 +79289,7 @@ qwQ
 lTR
 lTR
 lTR
-lTR
+aTY
 pGs
 bRl
 bQf
@@ -78934,7 +79470,7 @@ qwQ
 qwQ
 qwQ
 qwQ
-pGs
+lTR
 pGs
 bSo
 bRu
@@ -79116,7 +79652,7 @@ qwQ
 qwQ
 qwQ
 lTR
-pGs
+lTR
 pGs
 bRl
 pAX
@@ -79297,8 +79833,8 @@ qwQ
 qwQ
 qwQ
 qwQ
-lTR
-lTR
+aTY
+pGs
 pGs
 bRl
 qwQ
@@ -79378,7 +79914,7 @@ kPj
 xFO
 stU
 aQn
-jCr
+aZX
 aOQ
 aNY
 aAj
@@ -79480,7 +80016,7 @@ qwQ
 qwQ
 qwQ
 qwQ
-lTR
+aTY
 bSo
 bSp
 lTR
@@ -80092,7 +80628,7 @@ rtV
 aok
 aZg
 aZg
-aoT
+bpP
 tEJ
 tEJ
 aok
@@ -80130,7 +80666,7 @@ umT
 umT
 kTs
 lRz
-umT
+aAC
 oMl
 qeK
 bGy
@@ -80391,7 +80927,7 @@ qwQ
 lTR
 qwQ
 lTR
-bTd
+bRk
 qwQ
 eGX
 bQo
@@ -80635,7 +81171,7 @@ viP
 oSX
 wOO
 nTG
-aXT
+bFo
 nTG
 nTG
 vqd
@@ -81116,7 +81652,7 @@ qwQ
 qwQ
 qwQ
 lTR
-qwQ
+pGs
 lTR
 qwQ
 bRj
@@ -81174,7 +81710,7 @@ wGs
 oVm
 fLZ
 esB
-aWM
+bVZ
 rsB
 hus
 wuR
@@ -81361,7 +81897,7 @@ rsB
 eFJ
 trh
 bbY
-aWM
+bGe
 fEZ
 mts
 gWu
@@ -81843,12 +82379,12 @@ lTR
 qwQ
 lTR
 lTR
-pGs
 qwQ
-qwQ
-qwQ
-bRl
-qwQ
+bUQ
+bKd
+bKd
+bXy
+bXx
 qwQ
 bJC
 stl
@@ -82024,13 +82560,13 @@ qwQ
 lTR
 qwQ
 qwQ
-pGs
-pGs
-lTR
-lTR
 qwQ
-bRk
-lTR
+qwQ
+pFZ
+bXG
+bSi
+bRn
+ceH
 lTR
 bJC
 vss
@@ -82208,11 +82744,11 @@ qwQ
 qwQ
 lTR
 lTR
-bUQ
-bKd
-qcQ
-bTg
-lTR
+bJC
+bTE
+bSk
+bRp
+ceH
 pGs
 bQf
 vss
@@ -82235,7 +82771,7 @@ qgm
 lTR
 lTR
 lTR
-lTR
+pGs
 lTR
 lTR
 scL
@@ -82389,13 +82925,13 @@ lTR
 qwQ
 qwQ
 lTR
-qwQ
+bUQ
 bUS
-bTI
-bTI
-bTh
+bTG
+bSl
+bRq
+ceH
 pGs
-lTR
 bQf
 vss
 sLr
@@ -82451,7 +82987,7 @@ sPY
 bev
 qId
 iVt
-pZl
+bIR
 qId
 cud
 kOS
@@ -82494,7 +83030,7 @@ ydQ
 eKw
 aAy
 ilZ
-mnc
+aCo
 ayI
 fVt
 huF
@@ -82568,13 +83104,13 @@ mPk
 xVw
 qwQ
 lTR
-lTR
-qwQ
-lTR
-qwQ
+bXU
+bKd
+qcQ
 bUS
+bXJ
 bSm
-bTJ
+bSm
 bTi
 bSs
 bRx
@@ -82750,11 +83286,11 @@ mPk
 rYC
 qwQ
 lTR
-lTR
-qwQ
-qwQ
-lTR
-bUS
+pFZ
+bTD
+bSi
+bXv
+bSm
 bTD
 bSi
 bTj
@@ -82932,13 +83468,13 @@ mPk
 wBp
 uYJ
 qwQ
-lTR
-qwQ
-qwQ
-lTR
-bUT
+pFZ
 bTE
 bSk
+bSv
+bSm
+bTE
+bXt
 bSj
 bSv
 bRz
@@ -83114,14 +83650,14 @@ mPk
 wBp
 qwQ
 qwQ
-qwQ
-qwQ
-lTR
-lTR
-bUS
+bJC
+bTG
+bSl
+bXw
+bSm
 bTE
-bSk
-bSk
+bXt
+bXt
 bSv
 bRz
 bQv
@@ -83296,10 +83832,10 @@ mPk
 wBp
 uYJ
 lTR
-qwQ
-qwQ
-qwQ
-qwQ
+xDT
+bSn
+bSn
+bSn
 bUT
 bUv
 bTk
@@ -83483,7 +84019,7 @@ qwQ
 qwQ
 qwQ
 xDT
-bSn
+bXH
 bSn
 bSn
 gEH
@@ -83583,7 +84119,7 @@ jai
 wVf
 xWj
 aBZ
-xOo
+aEQ
 tKr
 wVf
 lIb
@@ -83663,9 +84199,9 @@ qwQ
 qwQ
 qwQ
 qwQ
-qwQ
-qwQ
-qwQ
+aaL
+bXK
+aaE
 qwQ
 pGs
 pGs
@@ -83845,10 +84381,10 @@ qwQ
 qwQ
 qwQ
 qwQ
-pdK
-pdK
-pdK
-pdK
+aaM
+bXL
+aaF
+bXD
 pGs
 pdK
 bRB
@@ -84027,9 +84563,9 @@ lTR
 lTR
 qwQ
 qwQ
-urD
-urD
-urD
+aaM
+bXM
+aaF
 pGs
 pdK
 pdK
@@ -84209,10 +84745,10 @@ daS
 qwQ
 qwQ
 qwQ
-pdK
-pdK
-pdK
-urD
+aaN
+bXN
+bXI
+aaE
 pdK
 pdK
 bRD
@@ -84391,10 +84927,10 @@ qwQ
 qwQ
 qwQ
 qwQ
-urD
-urD
-pdK
-pdK
+bXP
+aaM
+aaK
+aaF
 pdK
 urD
 bRD
@@ -84423,8 +84959,8 @@ aQN
 aQN
 aQN
 lTg
-nCl
-bfZ
+aTq
+pGs
 lTg
 bAh
 upb
@@ -84573,10 +85109,10 @@ qqR
 qwQ
 qwQ
 lTR
-pdK
-pdK
-pdK
-pdK
+bXD
+aaN
+aaJ
+aaH
 pdK
 urD
 bRE
@@ -84602,11 +85138,11 @@ jtH
 jtH
 jtH
 bEa
-wlB
-bDt
-nCl
-bga
-wlB
+huF
+huF
+huF
+aTq
+pGs
 lTg
 bAg
 brf
@@ -84755,10 +85291,10 @@ qwQ
 qwQ
 qwQ
 qwQ
-pdK
-pdK
-pdK
-pdK
+aaL
+aaI
+aaE
+bXD
 pdK
 pdK
 bRF
@@ -84784,10 +85320,10 @@ bFd
 bFd
 bED
 bEb
-bto
-bfZ
+huF
+huF
 bCY
-bfZ
+aTq
 bCe
 bBf
 bAg
@@ -84795,7 +85331,7 @@ byS
 xmL
 xmL
 mrR
-xmL
+btc
 btb
 epN
 bqU
@@ -84937,9 +85473,9 @@ lTR
 daS
 uYJ
 qwQ
-pdK
-pdK
-pdK
+aaM
+bXO
+aaF
 pdK
 pdK
 fpq
@@ -84951,13 +85487,13 @@ bOa
 bFn
 bFn
 bFn
-nCl
-nCl
-bgJ
-aTq
-nCl
-bto
-nCl
+pGs
+pGs
+pGs
+huF
+pGs
+pGs
+pGs
 nti
 nti
 nti
@@ -84974,8 +85510,8 @@ bCf
 bBf
 bAi
 upb
-bsc
-mgT
+bWt
+xmL
 bfX
 buh
 bsu
@@ -85119,9 +85655,9 @@ wLB
 lTR
 qwQ
 qwQ
-pdK
-urD
-pdK
+aaN
+aaJ
+aaH
 urD
 urD
 nsN
@@ -85132,11 +85668,11 @@ huF
 wsn
 bFn
 bMX
-aTq
-bga
+huF
+pGs
 bBf
 ayF
-aTq
+huF
 bJR
 hmh
 eia
@@ -85342,7 +85878,7 @@ vuA
 bcD
 pmW
 btl
-btc
+xmL
 bse
 sIK
 bpV
@@ -85719,7 +86255,7 @@ bhk
 bka
 nNB
 biy
-dgY
+bWg
 dLA
 nVU
 dko
@@ -85878,9 +86414,9 @@ iQr
 jKs
 wlB
 aTq
-nCl
-nCl
-nCl
+aTq
+aTq
+aTq
 aTq
 hmh
 byW
@@ -85901,14 +86437,14 @@ bhk
 coX
 nwq
 bhH
-bhH
-bdV
-bgy
-bfR
+bWh
+jks
+bfp
+jks
 bfo
-beF
+bfp
 bdV
-qcv
+clc
 bcG
 won
 vSu
@@ -86086,9 +86622,9 @@ biA
 beG
 beI
 bgz
-jks
-bfp
-beG
+bix
+bix
+bjg
 bdW
 clc
 vVH
@@ -86267,9 +86803,9 @@ bjl
 biB
 bhI
 bhc
-beI
-bfr
-bfr
+bWf
+beH
+bWd
 beH
 bdX
 bdb
@@ -86438,24 +86974,24 @@ bsi
 bsj
 ivo
 bji
-deq
-bfZ
+cFw
+qTE
 bnv
 nnb
 bhk
-nnb
+bWi
 bkd
 cFw
 biC
-bhJ
-bhd
-beI
-bfr
 bfs
-beI
-bdY
+bhe
+bWf
+beH
+bWe
+bWa
+bLN
 bdd
-bcH
+bJH
 bci
 enu
 apH
@@ -86465,7 +87001,7 @@ pGs
 vVH
 vVH
 pGs
-aAA
+bio
 aWS
 aIy
 aVN
@@ -86621,7 +87157,7 @@ bsk
 bqX
 bqa
 tsC
-bfZ
+qTE
 bnw
 bmq
 bhk
@@ -86631,11 +87167,11 @@ jks
 biC
 bfs
 bhe
-beI
-bfr
-bfs
-beI
-bdY
+bWf
+beH
+bWe
+bWa
+bLN
 bdf
 bcG
 nxl
@@ -86802,7 +87338,7 @@ bsi
 bsl
 bqY
 bqb
-nwq
+bWk
 teg
 nnb
 bhk
@@ -86814,10 +87350,10 @@ biB
 jks
 jks
 bgA
-bfr
-bfs
-beI
-bdY
+bjh
+bWb
+bWb
+bMG
 bdg
 bcG
 kxU
@@ -86981,7 +87517,7 @@ bwO
 bvI
 ebi
 bpZ
-bqW
+bWl
 bqZ
 gFA
 aTq
@@ -86993,13 +87529,13 @@ nnb
 bkc
 cFw
 vbS
-bhf
-bhf
-bgB
-bfS
+jks
+jks
+jks
+jks
 beI
 beI
-bdZ
+bdY
 gjm
 bcG
 sPD
@@ -87029,7 +87565,7 @@ aNr
 ayf
 liN
 aKL
-aJV
+aUA
 aJb
 aIz
 aHq
@@ -87167,21 +87703,21 @@ bsm
 bra
 fvV
 cFw
-bfZ
+qTE
 bnx
 bms
 bhk
-nnb
-bkd
+bWj
+bke
 tsC
 huF
-bhK
-bhh
-bgC
+bhf
+bhf
+bhf
 bfT
-bfu
-beJ
-bea
+bhe
+beI
+mcp
 bdh
 bcG
 fmy
@@ -87349,21 +87885,21 @@ brb
 brb
 bpV
 bpa
-bfZ
+qTE
 bny
 bmu
 blu
 bkz
-bke
-pGs
+huF
+huF
 huF
 bhL
 wop
 gkG
 nRU
-beI
-beI
-mcp
+bWc
+bWc
+bRo
 tJx
 huF
 azM
@@ -87536,13 +88072,13 @@ aTq
 bmv
 nnb
 bkA
-pGs
-pGs
-azM
+huF
+huF
+huF
 bhM
 xfz
 bgD
-bfS
+bfU
 beI
 beI
 mcp
@@ -87718,9 +88254,9 @@ huF
 bmw
 blv
 bkB
-pGs
-pGs
-ejk
+huF
+huF
+azM
 bhN
 nak
 bgF
@@ -87891,7 +88427,7 @@ bvK
 bvM
 buf
 btm
-bsp
+bsu
 upb
 bpV
 bpb
@@ -88146,10 +88682,10 @@ sgk
 kbQ
 kbQ
 kbQ
-kbQ
-kbQ
+aat
+aau
 aro
-kbQ
+aao
 aqu
 pGs
 pGs
@@ -88329,9 +88865,9 @@ kbQ
 ofC
 qIF
 sgk
-qIF
-kbQ
-kbQ
+aav
+aat
+aas
 kbQ
 pGs
 pGs
@@ -88435,7 +88971,7 @@ upb
 wfh
 bwS
 bsu
-xmL
+bWo
 gDr
 bsr
 bre
@@ -88511,7 +89047,7 @@ kbQ
 kbQ
 atd
 kbQ
-kbQ
+aaw
 arp
 pGs
 pGs
@@ -88693,7 +89229,7 @@ sgk
 kbQ
 kbQ
 kbQ
-kbQ
+aaD
 jqw
 pGs
 pGs
@@ -88982,7 +89518,7 @@ xmL
 prC
 bfX
 buf
-bto
+qTE
 qTE
 upb
 bpV
@@ -89309,7 +89845,7 @@ nsN
 bUW
 iQr
 bTU
-iQr
+bXz
 bSB
 iQr
 bQB
@@ -89491,7 +90027,7 @@ nsN
 hpv
 iQr
 bTV
-iQr
+bXA
 bSC
 bRK
 bQC
@@ -89857,12 +90393,12 @@ wlB
 lTg
 eia
 lTg
-lTg
+bDE
 bQE
 aQN
 bFi
 bOe
-cFZ
+wlB
 hpv
 nti
 bMb
@@ -90044,7 +90580,7 @@ bQF
 aQN
 bFi
 bEJ
-bND
+wlB
 bNa
 nti
 bMc
@@ -90090,7 +90626,7 @@ aCs
 aCs
 aDf
 aCs
-aTq
+aCs
 aDf
 beP
 aCs
@@ -90270,9 +90806,9 @@ aCt
 bjr
 aEE
 aCt
-aCs
-aCs
-bfZ
+aTq
+aTq
+aTq
 aCs
 aCs
 aCs
@@ -90285,7 +90821,7 @@ aCs
 aCs
 aCs
 aCs
-aYE
+aTq
 aCt
 aCs
 aVR
@@ -90453,8 +90989,8 @@ bbE
 aCs
 aFC
 aCs
-bgJ
-bga
+aTq
+aCs
 bbE
 aCs
 aFC
@@ -90467,7 +91003,7 @@ aFC
 bac
 aFC
 aCs
-aYF
+aTq
 aCs
 aXC
 aCs
@@ -90635,7 +91171,7 @@ aWu
 aCt
 aFD
 aCs
-bfZ
+aTq
 aCt
 aWu
 aCs
@@ -90649,7 +91185,7 @@ aFD
 aCs
 aFD
 aCs
-aYE
+aTq
 aCs
 aFD
 aXc
@@ -90761,7 +91297,7 @@ mPk
 cJL
 wBp
 pdK
-rnL
+pdK
 pdK
 nBc
 bTX
@@ -90782,12 +91318,12 @@ bKp
 urD
 urD
 bIF
+bXc
 bHZ
-bGZ
-bGZ
-bGx
-bFT
-bFn
+jtH
+jtH
+jtH
+bWS
 bEM
 urD
 nBc
@@ -90816,8 +91352,8 @@ aEE
 aCt
 aCt
 aCs
-bgJ
-bga
+aCs
+aTq
 aCs
 aCs
 aCt
@@ -90942,18 +91478,18 @@ mPk
 mPk
 mPk
 wBp
-pdK
-pdK
 rnL
 pdK
-bBV
+pdK
+urD
+urD
+bXc
 bHZ
-bGZ
-bGZ
-bQJ
-bPI
-bFp
-bOh
+jtH
+jtH
+jtH
+bWS
+bEM
 urD
 bBi
 bME
@@ -90963,13 +91499,13 @@ bKU
 bEM
 urD
 urD
-bIG
+urD
+bXd
 bIa
-bHa
-bHa
+bWV
+bWV
+bWV
 bCN
-bFg
-bFn
 bEM
 urD
 urD
@@ -90999,8 +91535,8 @@ aXe
 aCs
 aCt
 aTq
-aCt
-aCs
+aYh
+aTq
 aXe
 aCs
 aCs
@@ -91128,14 +91664,14 @@ pdK
 pdK
 pdK
 pdK
-bTY
-bTq
-bHa
-bHa
+urD
+bXd
+bIa
+bWV
+bWV
+bWV
 bCN
-bFg
-bFp
-bOi
+bEM
 urD
 bBi
 bMF
@@ -91145,14 +91681,14 @@ bKV
 bKq
 urD
 urD
-bIH
+bBi
+rSh
 bIa
-bHa
-bFn
-bDu
-bFU
+bWV
+bWW
+bWW
 bFp
-bEM
+bWP
 bBi
 urD
 aTq
@@ -91310,31 +91846,31 @@ pdK
 pdK
 pdK
 pdK
-bTZ
-bIb
-bSF
-bFO
-bQK
-bFU
-bFq
-bOi
-urD
 pdK
-bKr
-pdK
-pdK
-pdK
-bKr
-pdK
-urD
 rSh
-bIb
-bHD
-bHb
+bIa
+bWV
+bWW
+bWW
+bFp
+bWP
+urD
+pdK
+bKr
+pdK
+pdK
+pdK
+bKr
+pdK
+urD
+urD
+bTZ
+bUy
+bWW
 bGA
-bFU
-bFq
-bEM
+bWW
+bFp
+bWP
 pdK
 pdK
 pdK
@@ -91492,14 +92028,14 @@ rnL
 pdK
 pdK
 pdK
-bII
-bHd
-bHd
-bFr
-bFr
-bHd
-bOP
-bEN
+pdK
+bTZ
+bUy
+bWW
+bGA
+bWW
+bFp
+bWP
 pdK
 pdK
 pdK
@@ -91509,14 +92045,14 @@ pdK
 pdK
 pdK
 pdK
-bII
-bFr
-bFr
-bHd
-bFr
-bFr
-bFr
-bEN
+pdK
+bTZ
+bXa
+bFO
+bFO
+bWX
+bWT
+bWQ
 pdK
 pdK
 pdK
@@ -91674,7 +92210,14 @@ pdK
 pdK
 pdK
 pdK
-bEo
+pdK
+bTZ
+bXa
+bFO
+bFO
+bWX
+bWT
+bWQ
 pdK
 pdK
 pdK
@@ -91685,20 +92228,13 @@ pdK
 pdK
 pdK
 pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
+bII
+bFr
+bHd
+bFr
+bHd
+bFr
+bEN
 pdK
 pdK
 pdK
@@ -91857,13 +92393,13 @@ pdK
 pdK
 pdK
 pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
+bII
+bFr
+bHd
+bFr
+bHd
+bFr
+bEN
 pdK
 pdK
 pdK
@@ -92038,6 +92574,13 @@ bKr
 pdK
 pdK
 pdK
+rnL
+pdK
+rnL
+pdK
+pdK
+pdK
+pdK
 pdK
 pdK
 rnL
@@ -92047,13 +92590,6 @@ pdK
 pdK
 pdK
 pdK
-rnL
-pdK
-pdK
-pdK
-pdK
-pdK
-pdK
 pdK
 pdK
 rnL
@@ -92066,8 +92602,8 @@ rnL
 pdK
 rnL
 pdK
-xFb
-xFb
+aTq
+bql
 byC
 xFb
 byC
@@ -92145,7 +92681,7 @@ dRs
 nKR
 veV
 jTR
-erQ
+axs
 vNB
 pmM
 pmM
@@ -92216,8 +92752,8 @@ mPk
 mPk
 cJL
 wBp
-pdK
-pdK
+rnL
+rnL
 pdK
 pdK
 pdK
@@ -92226,16 +92762,16 @@ pdK
 pdK
 pdK
 pdK
+rnL
 pdK
 pdK
 pdK
 pdK
 pdK
+rnL
 pdK
 pdK
-pdK
-pdK
-pdK
+rnL
 pdK
 pdK
 pdK
@@ -92247,9 +92783,9 @@ pdK
 pdK
 bEo
 pdK
-xFb
-xFb
-byC
+pdK
+aTq
+bWG
 xFb
 xFb
 xFb
@@ -92327,8 +92863,8 @@ dRs
 bUP
 bUP
 awx
-avM
-asA
+bGU
+ami
 pmM
 pmM
 atg
@@ -92429,15 +92965,15 @@ aYG
 aYG
 aYG
 aYG
-aYG
-aYG
-aYG
+aTq
+aTq
+aTq
 aYG
 bBr
 aYG
 aYG
 aYG
-beQ
+bWr
 aYG
 aYG
 aYG
@@ -92507,14 +93043,14 @@ ayW
 ayW
 ayW
 awy
-awy
-awy
-avN
-pmM
-aus
-pmM
-pmM
-pmM
+awz
+awz
+awz
+hds
+aaG
+aaR
+aaT
+aaG
 arT
 pGs
 pGs
@@ -92612,14 +93148,14 @@ mPk
 mPk
 mPk
 mPk
+aTq
+bpk
 mPk
 mPk
 mPk
 mPk
 mPk
 mPk
-mPk
-aST
 mPk
 mPk
 mPk
@@ -92691,12 +93227,12 @@ xFb
 xFb
 ihC
 ghN
-avO
-pmM
-pmM
-pmM
+rvD
+avP
+aaR
+abg
 ath
-pmM
+aaR
 arU
 pGs
 pGs
@@ -92794,14 +93330,14 @@ mPk
 mPk
 mPk
 mPk
+aTq
+bpk
 mPk
 mPk
 mPk
 mPk
 mPk
 mPk
-mPk
-aST
 mPk
 mPk
 mPk
@@ -92873,12 +93409,12 @@ xFb
 xFb
 jFL
 ghN
+rvD
 avP
-pmM
-pmM
-pmM
-pmM
-pmM
+aaR
+abg
+abg
+aaR
 arV
 pGs
 pGs
@@ -92975,22 +93511,22 @@ oXd
 oXd
 oXd
 oXd
+aTq
+aTq
+aTq
 oXd
 oXd
 oXd
 oXd
 oXd
+nYS
 oXd
-bzi
+oXd
+oXd
 oXd
 nzT
 oXd
 oXd
-oXd
-aYV
-nzT
-oXd
-bpj
 oXd
 oXd
 oXd
@@ -93053,14 +93589,14 @@ axq
 axq
 axq
 axq
-axq
-awz
-avN
-pmM
-pmM
-pmM
-pmM
-pmM
+ayW
+awy
+awy
+hds
+aaG
+aaR
+aaR
+aaG
 arW
 pGs
 pGs
@@ -93155,6 +93691,13 @@ mPk
 mPk
 mPk
 mPk
+bWL
+aTy
+aTy
+aTy
+aTy
+aTy
+bWy
 mPk
 mPk
 mPk
@@ -93163,16 +93706,9 @@ mPk
 mPk
 mPk
 mPk
-xSL
-byb
-fGN
-bvR
-fGN
-fGN
-bsy
-fGN
-fGN
-bpk
+mPk
+mPk
+mPk
 mPk
 mPk
 mPk
@@ -93237,11 +93773,11 @@ xFb
 xFb
 xFb
 veV
-avQ
-pmM
-pmM
-pmM
-pmM
+jTR
+aoi
+akg
+aaR
+abh
 asB
 jKr
 pGs
@@ -93333,28 +93869,28 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-xSL
-fGN
+bWL
+aTy
+aTy
+aTy
+bWM
+bWD
+bWB
+bWB
+bWB
+bWD
+bWz
+aTy
+aTy
+aTy
 bwX
-fGN
-fGN
-btx
-fGN
-brq
-fGN
-qvk
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
 mPk
 mPk
 mPk
@@ -93419,10 +93955,10 @@ xFb
 tHc
 xFb
 bUP
-avR
+veV
+avQ
 pmM
 pmM
-atR
 pmM
 asC
 pGs
@@ -93515,28 +94051,28 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
 xSL
 fGN
 fGN
-bvS
+fGN
+bWN
+bWB
+fGN
+fGN
+bWH
+bWB
+bWA
 fGN
 fGN
 fGN
-fGN
-fGN
-qvk
+bWs
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
 mPk
 mPk
 mPk
@@ -93601,10 +94137,10 @@ xFb
 xFb
 xFb
 tHc
-avS
+jFL
+aqh
 pmM
-pmM
-pmM
+abg
 pmM
 asD
 pGs
@@ -93697,28 +94233,28 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
 xSL
 fGN
 fGN
 fGN
+bWB
+bWB
 fGN
 fGN
 fGN
+bWB
+bWB
 fGN
 fGN
-bpk
+fGN
+bWs
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
+mPk
 mPk
 mPk
 mPk
@@ -93783,9 +94319,9 @@ xFb
 xFb
 xFb
 xFb
-avS
+jFL
+aqh
 pmM
-aut
 pmM
 pmM
 asC
@@ -93879,6 +94415,21 @@ mPk
 mPk
 mPk
 mPk
+xSL
+fGN
+fGN
+fGN
+bWN
+bWI
+fGN
+fGN
+fGN
+bWB
+bWA
+fGN
+fGN
+fGN
+bWs
 mPk
 mPk
 mPk
@@ -93886,21 +94437,6 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-bzj
-agh
-agh
-agh
-agh
-agh
-agh
-agh
-agh
-bpl
 mPk
 mPk
 mPk
@@ -93965,11 +94501,11 @@ xFb
 xFb
 byC
 xFb
-avT
+exX
 kyj
 auu
 hPY
-hPY
+abo
 asE
 pGs
 pGs
@@ -94061,21 +94597,21 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+bzj
+agh
+agh
+agh
+bWO
+bWD
+bWB
+bWB
+bWB
+bWD
+bWC
+agh
+agh
+agh
+bpl
 mPk
 mPk
 mPk
@@ -94147,8 +94683,8 @@ wBp
 rYC
 xVw
 wBp
-xVw
-rYC
+ayx
+abc
 enZ
 iAE
 pGs
@@ -94247,13 +94783,13 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+bzj
+bWJ
+bOQ
+bWB
+bOQ
+bWF
+bpl
 mPk
 mPk
 mPk
@@ -94332,8 +94868,8 @@ mPk
 mPk
 rUa
 imk
-rJv
-iAE
+abK
+abp
 pGs
 pGs
 pGs
@@ -94430,11 +94966,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+xSL
+fGN
+fGN
+fGN
+bWs
 mPk
 mPk
 mPk
@@ -94515,7 +95051,7 @@ imk
 mPk
 pRa
 imk
-rJv
+abK
 pGs
 pGs
 pGs
@@ -94612,11 +95148,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+xSL
+fGN
+fGN
+fGN
+bWs
 mPk
 mPk
 mPk
@@ -94697,9 +95233,9 @@ mPk
 imk
 xTA
 pRa
-wBp
-fjv
-mPW
+mPk
+imk
+pRa
 mZH
 kdq
 tWT
@@ -94794,11 +95330,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+xSL
+fGN
+fGN
+fGN
+bWs
 mPk
 mPk
 mPk
@@ -94976,11 +95512,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
-mPk
-mPk
-mPk
-mPk
+bzj
+agh
+agh
+agh
+bpl
 mPk
 mPk
 mPk
@@ -119932,7 +120468,7 @@ btp
 btp
 btp
 btp
-drq
+btp
 drq
 drq
 drq
@@ -120110,11 +120646,11 @@ tem
 tem
 tem
 tem
-drq
-drq
-drq
-drq
-ezB
+gKO
+btp
+btp
+nHL
+tem
 ezB
 drq
 drq
@@ -120296,7 +120832,7 @@ tem
 tem
 tem
 tem
-ezB
+tem
 ezB
 ezB
 drq
@@ -120478,7 +121014,7 @@ tem
 tem
 tem
 tem
-ezB
+tem
 ezB
 ezB
 ezB
@@ -122845,7 +123381,7 @@ tem
 tem
 tem
 tem
-ezB
+tem
 ezB
 ezB
 ezB
@@ -127215,10 +127751,10 @@ tem
 tem
 tem
 tem
-qrl
-ayE
-ayE
-cCt
+tem
+tem
+tem
+tem
 tem
 tem
 tem
@@ -127395,12 +127931,12 @@ tem
 tem
 tem
 tem
-tem
-ezB
-cWe
-drq
-drq
-ssW
+qrl
+ayE
+cCt
+ayE
+ayE
+cCt
 tem
 tem
 tem
@@ -127577,9 +128113,9 @@ tem
 tem
 tem
 tem
-ezB
-ezB
 cWe
+bXW
+ssW
 drq
 drq
 ssW
@@ -127759,9 +128295,9 @@ ayE
 ayE
 ayE
 ayE
-ezB
-drq
-cWe
+gKO
+btp
+nHL
 drq
 drq
 ssW
@@ -129027,10 +129563,10 @@ tem
 tem
 tem
 tem
-cWe
-drq
-drq
-drq
+gKO
+btp
+btp
+btp
 drq
 drq
 drq
@@ -129209,11 +129745,11 @@ tem
 tem
 tem
 tem
+tem
+tem
+tem
+tem
 gKO
-btp
-btp
-btp
-btp
 btp
 btp
 btp
@@ -129395,11 +129931,11 @@ tem
 tem
 tem
 tem
-gKO
 tem
 tem
 tem
-nHL
+tem
+tem
 tem
 tem
 tem
@@ -129726,8 +130262,8 @@ tem
 tem
 tem
 tem
-tem
-tem
+ayE
+cCt
 tem
 tem
 tem
@@ -129906,10 +130442,10 @@ tem
 tem
 tem
 tem
-tem
-tem
-tem
-tem
+cWe
+drq
+drq
+ssW
 tem
 tem
 tem
@@ -130088,17 +130624,17 @@ tem
 tem
 tem
 tem
+cWe
+drq
+tem
+ssW
 tem
 tem
 tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
+qrl
+ayE
+ayE
+cCt
 tem
 tem
 tem
@@ -130260,27 +130796,27 @@ tem
 tem
 tem
 tem
+qrl
+ayE
+ayE
+cCt
 tem
 tem
 tem
 tem
 tem
 tem
+gKO
 tem
 tem
 tem
 tem
 tem
 tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
+cWe
+drq
+drq
+ssW
 tem
 tem
 tem
@@ -130442,6 +130978,10 @@ tem
 tem
 tem
 tem
+cWe
+drq
+drq
+ssW
 tem
 tem
 tem
@@ -130455,14 +130995,10 @@ tem
 tem
 tem
 tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
+cWe
+drq
+drq
+ssW
 tem
 tem
 tem
@@ -130624,6 +131160,10 @@ tem
 tem
 tem
 tem
+cWe
+drq
+drq
+ssW
 tem
 tem
 tem
@@ -130637,14 +131177,10 @@ tem
 tem
 tem
 tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
+gKO
+btp
+btp
+nHL
 tem
 tem
 tem
@@ -130806,10 +131342,10 @@ cMp
 tem
 tem
 tem
-tem
-tem
-tem
-tem
+gKO
+btp
+btp
+nHL
 tem
 tem
 tem

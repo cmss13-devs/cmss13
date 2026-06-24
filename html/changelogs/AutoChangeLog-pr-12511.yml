@@ -1,0 +1,6 @@
+author: "BOBAMA, cuberound, ihatethisengine"
+delete-after: True
+changes:
+  - bugfix: "Trijent Medical elevator functions now"
+  - mapadd: "added a a couple flank routes to the upper z level"
+  - maptweak: "Fixed a couple visual errors on Trijent"

@@ -59,7 +59,6 @@
 // Misc
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 #define SPAN_UNDERLINE(X) "<span class='underline'>[X]</span>"
-#define SPAN_ITALIC(X) "<span class='italic'>[X]</span>"
 #define SPAN_LARGE(X) "<span class='large'>[X]</span>"
 
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"

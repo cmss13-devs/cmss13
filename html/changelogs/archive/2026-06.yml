@@ -218,3 +218,87 @@
   - code_imp: Rename some defines from Wield_delay to Weapon_delay
   Ordosian:
   - bugfix: Fixed Acid Runner overlay
+2026-06-17:
+  Bibby0110:
+  - bugfix: Fixes instances of the overwatch visual overlay persisting too long
+  Drathek:
+  - code_imp: Changed OD pragma linting
+  - code_imp: Included 64bit rust_g dll
+  - bugfix: Fixed busted blood properties?
+  Drathek Harry:
+  - bugfix: fixes weird AO on shutters/doors and stuff
+  - bugfix: fixes weird blackness handling
+  MistChristmas:
+  - rscdel: Old non relevant shuttle code.
+  MoondancerPony:
+  - code_imp: made color manipulation in lighting and elsewhere much faster
+  Orchidfox:
+  - maptweak: The Almayer's Reactor Room and Astronav APCs are now Hardened APCs and
+      will not break upon hijack.
+  cuberound:
+  - bugfix: fixes lingering dark tiles above destroyed doors
+  kiVts:
+  - rscadd: Research can announce information about their chemicals to everyone with
+      a medical hud. This requires CMO to publish their work first, though.
+2026-06-19:
+  MistChristmas:
+  - bugfix: Overwatch overlays no longer get stuck
+2026-06-20:
+  Antlers:
+  - bugfix: Hyperdyne corporate survivors no longer get aired out by LZ turrets
+2026-06-22:
+  Drathek:
+  - bugfix: Fixed a runtime with custom smoke spawning
+  MoondancerPony:
+  - refactor: made fire spread (from OB, flamers, etc) much faster
+  NHC:
+  - bugfix: Removed duped sunglasses from loudout menu
+  Venuska1117:
+  - rscadd: Add new Warrior Strain "Bulwark".
+  - rscadd: Bulwark have 600 health, tackles of 2 min - 5max, gains 200 plasma, +10
+      explosive and +10 normal armor for decreased speed and takes 50% more melee
+      damage.
+  - rscadd: Bulwark have 4 passive abilities, 50% less damage from wired cades (5
+      damage instead of 10), 75% for slashes or tailstab to go through wired cades
+      and hit target behind them, +10 front armor and +10 side armor and no direct
+      lock slowdown.
+  - rscadd: Encased Plates, this ability when activated it will reduce your movement
+      speed by 1.35, increases minimum tackles needed to tackle someone down by +2
+      and decreased slash damage by 8, in exchange you gain +10 front armor and lose
+      -10 side armor (stacks with passive), immunity to knockdowns and ability to
+      open holes in walls.
+  - rscadd: Plate Bash, this ability will launch you toward targets if its in range
+      of 2 tiles (3 tiles), it will hit them 1 tile away and shake their screen, if
+      encased plates are active, this ability changes to only work on adjecent targets
+      but in exchange you send them 3 tiles away, knockdown and stun target.
+  - rscadd: Tail Sweep, this ability will hit all adjecent tiles (including corners)
+      around you and trip enemies down and briefly stun them, if grenade is present
+      instead of target, you will send grenade 4 tiles away and your cooldown will
+      be decreased to 1/3rd of full cooldown, if both target and grenade are hit,
+      normal cooldown value will be applied.
+  - rscadd: Reflective Shield, this ability will lock your looking direction when
+      casted to reflect bullets towards target in 50 degree cone (-25 to 25 angle),
+      reflected bullets will only deal half of their original damage, your reflection
+      chance is 100% from front ONLY but you lose ability to attack or help (you can
+      still use abilities) and drop pulled targets, this ability can be disabled early
+      like how lurker invisibility works 1s used is 2s cooldown but you gain +6s to
+      cooldown,  minimum 6s cooldown and 18s max, this ability CANNOT reflects sniper
+      bullets, rockets and anti-reflective ammo (like SHARP darts), xeno projectiles
+      and turrets.
+  - balance: Fix Reflective walls, now they reflect bullets properly (uses new bulwark
+      reflective proc).
+  cuberound:
+  - qol: xenos can see reamining durability of special structures on examine
+  - code_imp: isbanana is no longer
+  hry-gh:
+  - server: twitch linking functionality is deprecated in game
+  realforest2001:
+  - rscadd: Added Abomination pelt and skull items.
+  - code_imp: Added code to delete instances of skull and pelt that have no icon.
+  - rscadd: Almayer crash no longer breaks hardened APCs.
+  - code_imp: Changed some queen procs to xenomorph base.
+  - rscadd: Changed Queen naming convention (thought I did this ages ago)
+  - code_imp: Changed the tier_slot_multiplier var name to divisor because it was
+      stupidly named.
+  virtualgirlie:
+  - spellcheck: changed "enemy boiler's" to "enemy boilers"

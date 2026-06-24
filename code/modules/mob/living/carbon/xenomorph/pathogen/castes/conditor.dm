@@ -20,7 +20,7 @@
 
 	deevolves_to = list(PATHOGEN_CREATURE_NEOMORPH)
 	caste_desc = "The shaper and cultivator of the Confluence."
-	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/acid/spatter)
+	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/poison)
 	evolves_to = list()
 
 	heal_resting = 1

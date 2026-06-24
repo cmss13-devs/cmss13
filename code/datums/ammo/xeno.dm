@@ -21,6 +21,15 @@
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
 
+/datum/ammo/xeno/poison
+	name = "venomous spit"
+	icon_state = "xeno_acid_lingering" //Placeholder
+	damage = 15
+	spit_cost = 25
+	damage_falloff = 0
+	max_range = 7
+	shell_speed = AMMO_SPEED_TIER_3
+
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
 	damage_falloff = 0

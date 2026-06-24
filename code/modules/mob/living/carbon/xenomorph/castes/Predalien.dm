@@ -67,6 +67,9 @@
 		/datum/action/xeno_action/onclick/toggle_frenzy_targeting,
 	)
 
+	skull = /obj/item/skull/abomination
+	pelt = /obj/item/pelt/abomination
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")

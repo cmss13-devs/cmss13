@@ -733,6 +733,7 @@
 	return
 
 /datum/equipment_preset/synth/working_joe/load_skills(mob/living/carbon/human/new_human)
+	. = ..()
 	new_human.set_skills(skills)
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/new_human)

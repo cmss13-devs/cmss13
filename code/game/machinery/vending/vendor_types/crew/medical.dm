@@ -198,6 +198,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 
 		list("IMPORTANT EQUIPMENT", 0, null, null, null),
 		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Research Headset", 0, /obj/item/device/radio/headset/almayer/research, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("SHOULDER PATCHES (CHOOSE 1)", 0, null, null, null),
 		list("Weyland-Yutani Round Patch, Black", 0, /obj/item/clothing/accessory/patch/wy, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),

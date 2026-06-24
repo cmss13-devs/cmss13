@@ -7,8 +7,16 @@ import { Window } from 'tgui/layouts';
 type Data = {
   categories: string[];
   current_category: string;
-  recipes: string[];
+  recipes: Recipe[];
   search_text: string;
+};
+
+type Recipe = {
+  name: string;
+  icon: string;
+  icon_state: string;
+  container: string;
+  instructions: string[];
 };
 
 export const cookbook = (props) => {

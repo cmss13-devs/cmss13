@@ -59,7 +59,7 @@
 	machine_type = /obj/structure/machinery/cooking/stovetop
 	cooker_surface_name = COOKER_SURFACE_STOVE
 
-/datum/cooking/recipe_step/use_machine/stove/get_cookbook_formatted_desc()
+/datum/cooking/recipe_step/use_machine/stovetop/get_cookbook_formatted_desc()
 	return "Heat on a stove for [DisplayTimeText(time)] at [lowertext(temperature)] temperature."
 
 /datum/cooking/recipe_step/use_machine/ice_cream_mixer

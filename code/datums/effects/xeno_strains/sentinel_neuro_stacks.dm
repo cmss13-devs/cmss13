@@ -14,12 +14,12 @@
 	var/last_increment_time = 0
 	///how long should pass from last increase till decreasing begins
 	var/increment_grace_time = 50
+	///how much oxy damage should be given per process
+	var/proc_damage_per_stack = 0.2
+	///stopgrap for oxy damage on mob when this stops causing harm
+	var/max_oxyloss = 50
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
-	///stamaina dam per process
-	var/stam_damage_per_stack = 0.2
-	///max stamina damage
-	var/max_stam_damage = 16 //to be safly away from max stam
 
 /datum/effects/sentinel_neuro_stacks/New(mob/living/carbon/human/human, mob/from = null, last_dmg_source = null, zone = "chest")
 	last_decrement_time = world.time
@@ -44,10 +44,9 @@
 		return
 
 	var/mob/living/carbon/human/human = affected_atom
+	if(human.oxyloss < max_oxyloss)
+		human.apply_damage(min(max_oxyloss - human.oxyloss, proc_damage_per_stack * stack_count, 5), OXY)
 	human.update_xeno_hostile_hud()
-
-	if(human.stamina && human.stamina.current_stamina > max_stam_damage)
-		human.apply_stamina_damage(stam_damage_per_stack * stack_count)
 
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--

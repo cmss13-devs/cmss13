@@ -272,9 +272,6 @@
 	req_one_access = list(ACCESS_YAUTJA_ANCIENT)
 	unslashable = TRUE
 
-/obj/structure/machinery/door/airlock/yautja/secure/turf_plane
-	plane = TURF_PLANE
-
 //FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
 
 /obj/structure/machinery/door/airlock/prison_hatch
@@ -331,6 +328,9 @@
 
 /obj/structure/machinery/door/airlock/almayer/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/white
+	icon = 'icons/obj/structures/doors/almayerdoor_white.dmi'
 
 /obj/structure/machinery/door/airlock/almayer/glass
 	icon = 'icons/obj/structures/doors/almayerdoor_glass.dmi'

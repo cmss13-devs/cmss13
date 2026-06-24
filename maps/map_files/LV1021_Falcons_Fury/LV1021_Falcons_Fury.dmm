@@ -4330,11 +4330,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_south)
 "ajT" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/comms/west_2)
 "ajU" = (
@@ -5907,11 +5907,11 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "anC" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
+	},
 /turf/open/floor/interior/wood/damage_6,
 /area/lv1021/outdoors/comms/west_2)
 "anD" = (
@@ -6498,18 +6498,6 @@
 	dir = 5
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
-/area/lv1021/outdoors/comms/west_2)
-"apl" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/comms/west_2)
-"apm" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/comms/west_2)
 "apn" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -24647,12 +24635,26 @@
 /obj/structure/flora/wood/trunk1,
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
+"bgo" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/comms/west_2)
 "bgp" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/comms/west_2)
+"bgq" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/comms/west_2)
 "bgr" = (
 /obj/structure/platform/stone/soro/east,
@@ -24664,6 +24666,33 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
+"bgs" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/comms/west_2)
+"bgt" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bgu" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "7"
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bgv" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/indoors/clf_camp/ancil_e)
 "bhl" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -24976,12 +25005,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "bDl" = (
+/obj/structure/largecrate/random/mini{
+	pixel_y = -3
+	},
 /obj/structure/barricade/sandbags{
 	dir = 1;
 	color = "#a98c7c"
-	},
-/obj/structure/largecrate/random/mini{
-	pixel_y = -3
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
@@ -25282,9 +25311,6 @@
 	pixel_y = -8
 	},
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/comms/west_2)
 "bTu" = (
@@ -27089,9 +27115,6 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "ewR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 8
-	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/comms/west_2)
 "eyk" = (
@@ -27461,10 +27484,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "eZU" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/structure/surface/rack{
 	color = "#8B7B5B";
 	layer = 2.99
@@ -27473,6 +27492,10 @@
 /obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
 /obj/item/reagent_container/blood/OMinus,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
+	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "eZW" = (
@@ -27787,9 +27810,9 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "ftv" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/floor/interior/wood/alt2,
 /area/lv1021/outdoors/comms/west_2)
@@ -30324,8 +30347,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "iWU" = (
-/obj/structure/barricade/sandbags{
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
 	},
 /turf/open/floor/interior/wood/damage_1,
 /area/lv1021/outdoors/comms/west_2)
@@ -30708,14 +30732,14 @@
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "jvn" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
@@ -31155,9 +31179,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "keb" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/comms/west_2)
@@ -33581,6 +33605,9 @@
 /obj/structure/sign/banners/clf_worn{
 	pixel_y = 32
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "nBh" = (
@@ -34114,7 +34141,6 @@
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "okX" = (
-/obj/structure/platform_decoration/wood,
 /obj/structure/platform/wood,
 /turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -34179,8 +34205,9 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
-/obj/structure/barricade/sandbags{
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
@@ -34944,8 +34971,9 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/obj/structure/barricade/sandbags{
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
@@ -37035,9 +37063,9 @@
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ssu" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/floor/interior/wood/damage_1,
 /area/lv1021/outdoors/comms/west_2)
@@ -37054,6 +37082,14 @@
 "suA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/largecrate/random/mini/chest/b{
+	pixel_x = 9;
+	pixel_y = 9
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "suD" = (
@@ -37811,11 +37847,11 @@
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ttp" = (
-/obj/structure/platform/wood,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
 	},
 /obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/platform/wood,
 /turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "ttz" = (
@@ -38163,13 +38199,13 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
 "tSr" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
 	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/west_2)
@@ -38436,8 +38472,7 @@
 "unF" = (
 /obj/structure/prop/hybrisa/boulders{
 	layer = 4.13;
-	pixel_y = -17;
-	pixel_x = -2;
+	pixel_y = -6;
 	explo_proof = 1;
 	unacidable = 1;
 	health = 100000
@@ -38627,6 +38662,10 @@
 /obj/structure/sign/poster/clf{
 	pixel_y = 36;
 	pixel_x = 10
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/interior/wood/damage,
 /area/lv1021/outdoors/comms/west_2)
@@ -39184,13 +39223,13 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "vqz" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -9;
 	pixel_y = -6
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/comms/west_2)
@@ -40226,8 +40265,9 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/barricade/sandbags{
-	color = "#a98c7c"
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	pixel_y = -5
 	},
 /turf/open/floor/interior/wood/damage_2,
 /area/lv1021/outdoors/comms/west_2)
@@ -40853,9 +40893,6 @@
 "xKJ" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 8
-	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/comms/west_2)
 "xKL" = (
@@ -40963,12 +41000,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "xPz" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	color = "#a98c7c"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/iv_drip,
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1
+	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "xPO" = (
@@ -49786,8 +49823,8 @@ hXu
 hXu
 hXu
 hXu
-aoB
-apj
+hFw
+bgq
 ftv
 wbh
 rGK
@@ -49951,10 +49988,10 @@ hXu
 hXu
 hXu
 hXu
-bWq
-aoB
+bgt
+iEI
 apt
-apo
+bgs
 ssu
 apq
 wOX
@@ -50118,7 +50155,7 @@ hXu
 hXu
 bWq
 bWq
-aoB
+iEI
 aoO
 gTq
 vHX
@@ -50128,7 +50165,7 @@ hZH
 apo
 lLr
 vBi
-apm
+wOX
 dUt
 lxz
 apk
@@ -50292,13 +50329,13 @@ gQq
 aip
 ofV
 rff
-tYJ
+bgo
 wYF
 bTe
 ewR
 xKJ
 rYp
-apl
+wOX
 vHX
 ape
 fNk
@@ -50449,7 +50486,7 @@ qBg
 qBg
 fTl
 tBR
-tBR
+bgu
 apx
 gTq
 aoM
@@ -50459,7 +50496,7 @@ apj
 jvn
 sgv
 fpI
-tYJ
+bgo
 iGB
 vHX
 vHX
@@ -51114,7 +51151,7 @@ opF
 opF
 blE
 cTe
-tBR
+bgu
 tBR
 fzr
 qCS
@@ -67980,17 +68017,17 @@ aqk
 rGT
 hXu
 hXu
-hXu
-hXu
-mqH
+rGT
+aqk
+aqa
 wOK
 aXe
 aLe
 aKX
 mVS
 aJQ
-hXu
-hXu
+wOK
+wOK
 mqH
 wOK
 aKj
@@ -68147,12 +68184,12 @@ aJo
 rGT
 hXu
 hXu
-hXu
-hXu
 rGT
-mqH
+rGT
+rGT
+bgv
 aXd
-rGT
+aXd
 rGT
 hXu
 hXu
@@ -68652,7 +68689,7 @@ hXu
 hXu
 hXu
 hXu
-hXu
+gBL
 gBL
 gBL
 hXu

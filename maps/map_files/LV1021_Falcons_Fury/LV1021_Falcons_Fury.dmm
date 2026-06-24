@@ -863,6 +863,10 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "abw" = (
@@ -4027,6 +4031,10 @@
 	pixel_y = 18;
 	pixel_x = 17
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
 "ajc" = (
@@ -4042,6 +4050,10 @@
 	pixel_y = 16
 	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "aje" = (
@@ -4110,6 +4122,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 8;
 	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
@@ -4852,6 +4868,10 @@
 	pixel_x = -7;
 	pixel_y = -5
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
 "all" = (
@@ -4972,6 +4992,10 @@
 	color = "#4F7942";
 	pixel_x = -11;
 	pixel_y = -3
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
@@ -6618,6 +6642,10 @@
 	pixel_x = 5;
 	pixel_y = -9
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "apF" = (
@@ -6801,6 +6829,10 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "7"
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aqg" = (
@@ -6844,6 +6876,10 @@
 "aqn" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -6895,6 +6931,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 15
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aqu" = (
@@ -6908,6 +6948,10 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -10471,6 +10515,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
 	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
@@ -16396,6 +16444,14 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
+"aNP" = (
+/obj/structure/flora/wood/stick4,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "aNQ" = (
 /obj/structure/bed/hybrisa/bunkbed3,
 /obj/effect/decal/cleanable/dirt,
@@ -19275,6 +19331,10 @@
 	pixel_x = -11;
 	pixel_y = -3
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "aUT" = (
@@ -19796,6 +19856,10 @@
 "aWe" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -20356,6 +20420,10 @@
 	pixel_y = 9
 	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "aXE" = (
@@ -20881,6 +20949,18 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/cave_north)
+"aYT" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "aYU" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 1
@@ -21244,6 +21324,10 @@
 	color = "#4F7942";
 	pixel_x = -8;
 	pixel_y = 2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -22510,6 +22594,123 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"bcA" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcC" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcE" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcF" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcG" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bcI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcJ" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcK" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcL" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
 "bcM" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 5;
@@ -22517,6 +22718,196 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
+"bcN" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bcO" = (
+/obj/structure/flora/grass/temperate,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -11;
+	pixel_y = 19
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bcQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcR" = (
+/obj/structure/flora/wood/stick2,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcS" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcT" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcU" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bcV" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bcW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcX" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcY" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 4;
+	pixel_y = -13
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bcZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bda" = (
+/obj/structure/flora/wood/stick2,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bdb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bdc" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_south_west)
+"bdd" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bde" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdf" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
 "bdg" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lamp{
@@ -22550,6 +22941,764 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"bdi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdj" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bdk" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdl" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdn" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdo" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_south)
+"bdq" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdr" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bds" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdt" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "6"
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdu" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "10";
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdv" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdy" = (
+/obj/structure/flora/wood/stick3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdz" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdA" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdD" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdG" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdJ" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdK" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdL" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdN" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdR" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdS" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdU" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdV" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_mid)
+"bdW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdX" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bdY" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bdZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bea" = (
+/obj/structure/flora/wood/stick2,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"beb" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bec" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bed" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bee" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bef" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"beg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"beh" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bei" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bej" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -11
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bek" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bel" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bem" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"ben" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"beo" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "10";
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bep" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 11;
+	pixel_y = 16
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"beq" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"ber" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"bes" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bet" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"beu" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bev" = (
+/obj/structure/flora/wood/stick3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bew" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "23"
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bex" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bey" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bez" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -10;
+	pixel_y = -10
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"beA" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -13;
+	pixel_y = -11;
+	layer = 4.13
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "beJ" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/lv_grass_weedable/layer0,
@@ -23534,6 +24683,10 @@
 	pixel_y = 4
 	},
 /obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "cxe" = (
@@ -23556,6 +24709,10 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "9";
 	pixel_x = -7
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -24439,6 +25596,10 @@
 	pixel_x = -13;
 	pixel_y = 18
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "dPW" = (
@@ -24679,6 +25840,10 @@
 	color = "#4F7942";
 	pixel_x = -13;
 	pixel_y = -11
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
@@ -26217,6 +27382,10 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
 	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
@@ -28281,6 +29450,10 @@
 	pixel_x = -11;
 	pixel_y = 19
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "iZM" = (
@@ -28476,6 +29649,10 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "jnL" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "jql" = (
@@ -29661,6 +30838,10 @@
 	pixel_x = -8;
 	pixel_y = -1
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "lbt" = (
@@ -29691,6 +30872,10 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "19";
 	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
 	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -29810,6 +30995,10 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "lnv" = (
 /obj/structure/flora/grass/temperate,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "lnE" = (
@@ -31708,6 +32897,14 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "11"
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "nQp" = (
@@ -32199,6 +33396,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -14;
 	pixel_y = 28
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -32932,6 +34133,10 @@
 	pixel_y = 6;
 	dir = 1
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "pzv" = (
@@ -33058,6 +34263,10 @@
 "pQf" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/flora/wood/stick4,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "pRB" = (
@@ -33172,6 +34381,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -1;
 	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
@@ -33867,6 +35080,10 @@
 	pixel_x = 9
 	},
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "rff" = (
@@ -34327,6 +35544,10 @@
 	pixel_x = -6;
 	pixel_y = -9
 	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "rFQ" = (
@@ -34505,6 +35726,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -9;
 	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -35389,6 +36614,10 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "tcM" = (
 /obj/structure/flora/jungle/alienplant1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/lv_grass_weedable/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "tcZ" = (
@@ -37448,6 +38677,10 @@
 	pixel_y = 9
 	},
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "wbh" = (
@@ -37645,6 +38878,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
 	pixel_y = 4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -37894,6 +39131,10 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
 	pixel_y = -1
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
@@ -38242,6 +39483,10 @@
 	pixel_y = 9
 	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "xaK" = (
@@ -38394,6 +39639,10 @@
 /area/lv1021/oob)
 "xkL" = (
 /obj/structure/flora/wood/stick3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "xlx" = (
@@ -38790,6 +40039,10 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "xQQ" = (
 /obj/structure/flora/wood/stick3,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "xRa" = (
@@ -42249,8 +43502,8 @@ sGw
 fAN
 mLX
 kne
-kne
-ghP
+bcK
+bcE
 evU
 fnP
 fnP
@@ -42414,9 +43667,9 @@ bWq
 gTq
 bWq
 bWq
-bWq
-bWq
-eEV
+hKi
+bcB
+bdd
 sHO
 sHO
 sHO
@@ -42580,8 +43833,8 @@ bWq
 gTq
 gTq
 mIP
-bWq
-bWq
+hKi
+bcB
 bWq
 rtl
 hXu
@@ -42747,7 +44000,7 @@ bWq
 jNO
 gTq
 gTq
-bWq
+bcB
 wdv
 bWq
 hXu
@@ -42911,13 +44164,13 @@ aoB
 bWq
 bWq
 bWq
+hKi
+bcB
+bdj
+hKi
 bWq
-bWq
-gTq
-bWq
-bWq
-bWq
-hXu
+hKi
+aXf
 hXu
 hXu
 hXu
@@ -43078,8 +44331,8 @@ qDf
 aoB
 aKw
 bWq
-bWq
-bWq
+hKi
+hKi
 bWq
 bWq
 aoB
@@ -43245,7 +44498,7 @@ mrv
 aoB
 aoB
 xJl
-bWq
+hKi
 ghP
 wdv
 aoB
@@ -43371,7 +44624,7 @@ pRJ
 aSk
 qBg
 qBg
-tBR
+lwY
 qBg
 rkw
 qBg
@@ -43538,7 +44791,7 @@ pRJ
 aSj
 qBg
 tBR
-uSI
+bea
 tBR
 qBg
 qBg
@@ -43580,10 +44833,10 @@ mrv
 qDf
 aoB
 bWq
-xWO
+aNP
 ldW
-bWq
-bWq
+hKi
+hKi
 bWq
 aoB
 aoB
@@ -43747,12 +45000,12 @@ cGG
 cGG
 qDf
 aoB
+hKi
+hKi
 bWq
 bWq
-bWq
-bWq
-bWq
-bWq
+hKi
+hKi
 bWq
 bWq
 fSC
@@ -43916,11 +45169,11 @@ nCY
 nCY
 bWq
 jFc
-bWq
-bWq
+hKi
+hKi
 bWq
 rdY
-bWq
+hKi
 xhF
 xhF
 jnG
@@ -44040,7 +45293,7 @@ aSj
 qBg
 qBg
 kzT
-qau
+bdY
 fEf
 tBR
 tBR
@@ -44050,7 +45303,7 @@ afF
 oNJ
 oNJ
 tBR
-qBg
+kFf
 qBg
 qBg
 qBg
@@ -44084,10 +45337,10 @@ hXu
 bWq
 ffF
 bWq
-bWq
+hKi
 gTq
 gTq
-bWq
+hKi
 lXb
 cGG
 rFa
@@ -44207,7 +45460,7 @@ qfe
 hXu
 qBg
 qBg
-hDi
+bdZ
 wUU
 tBR
 iCN
@@ -44218,7 +45471,7 @@ qfe
 oNJ
 tBR
 aZL
-qBg
+kFf
 qBg
 qBg
 wMl
@@ -44236,8 +45489,8 @@ mVR
 aoB
 bWq
 bWq
-nnA
-bWq
+pee
+hKi
 ayX
 gTq
 bWq
@@ -44374,7 +45627,7 @@ hXu
 qfe
 qBg
 qBg
-qBg
+kFf
 qBg
 tBR
 tBR
@@ -44385,7 +45638,7 @@ hXu
 qfe
 tBR
 oAr
-tBR
+lwY
 qxX
 qBg
 wMl
@@ -44400,9 +45653,9 @@ jnG
 aoB
 hKi
 aoB
-kfI
-nnA
-aqd
+bcX
+pee
+bdp
 aoB
 aoB
 bWq
@@ -44553,7 +45806,7 @@ hXu
 oNJ
 tBR
 qBg
-qxX
+jqG
 qBg
 wMl
 hfc
@@ -44720,7 +45973,7 @@ rGT
 lZE
 tBR
 qBg
-qBg
+kFf
 qxX
 ePC
 hfc
@@ -44888,7 +46141,7 @@ lZE
 oNJ
 qBg
 xjx
-qxX
+jqG
 jqG
 ePC
 qWB
@@ -44926,7 +46179,7 @@ hXu
 mqH
 cGG
 bWq
-bWq
+hKi
 bWq
 evU
 rrj
@@ -45047,7 +46300,7 @@ opF
 opF
 opF
 qBg
-tBR
+lwY
 iMz
 oNJ
 oNJ
@@ -45056,7 +46309,7 @@ aHj
 jIJ
 qCS
 kFf
-kFf
+bdA
 qBg
 oNR
 qWB
@@ -45093,7 +46346,7 @@ hXu
 hXu
 bWq
 bWq
-bWq
+hKi
 wVN
 imO
 sHO
@@ -45214,7 +46467,7 @@ hXu
 rGT
 qBg
 qBg
-qCS
+bdP
 tcM
 tBR
 tBR
@@ -45260,13 +46513,13 @@ hXu
 hXu
 bWq
 bWq
-bWq
-bWq
-qIy
+hKi
+hKi
+bcS
 imO
 sHO
 mrG
-bWq
+hKi
 aUS
 bWq
 gTq
@@ -45381,9 +46634,9 @@ hXu
 rGT
 rGT
 tQD
-tBR
-tBR
-tBR
+lwY
+bdM
+lwY
 jLd
 qBg
 cho
@@ -45427,14 +46680,14 @@ hXu
 hXu
 bWq
 aoB
-bWq
-bWq
-lXb
+bcB
+hKi
+bcR
 qIy
 imO
 uuG
 kne
-kne
+bcK
 bWq
 bWq
 gTq
@@ -45548,10 +46801,10 @@ hXu
 rGT
 hfc
 mjP
-tBR
+lwY
 kgB
-tBR
-tBR
+lwY
+lwY
 iMz
 qBg
 jIJ
@@ -45594,15 +46847,15 @@ mqH
 mqH
 bWq
 fsc
-aoB
-bWq
-bWq
-bWq
+kfI
+bcW
+hKi
+hKi
 bWq
 bWq
 gTq
 gTq
-wVN
+bcI
 bWq
 gTq
 gTq
@@ -45716,10 +46969,10 @@ eqe
 hfc
 vdO
 qCS
+lwY
 tBR
-tBR
-tBR
-iMz
+lwY
+bdG
 qBg
 qBg
 vPs
@@ -45762,15 +47015,15 @@ jkV
 wjL
 aoB
 uQI
-aoB
-ghP
-bWq
+bcX
+bcT
+hKi
 bWq
 gTq
 gTq
 gTq
 bWq
-bWq
+hKi
 ilL
 gTq
 gTq
@@ -45884,10 +47137,10 @@ cWi
 vdO
 qBg
 tBR
-qBg
-qBg
-tBR
-qBg
+kFf
+kFf
+lwY
+kFf
 qBg
 qBg
 vPs
@@ -45930,14 +47183,14 @@ nTZ
 gXE
 aoB
 aoB
-bWq
+hKi
 bWq
 rSk
-gTq
+bcQ
 tNv
 gTq
 fPo
-fCC
+bcD
 bWq
 gTq
 gTq
@@ -46051,10 +47304,10 @@ eqe
 mjP
 tBR
 aHj
-niP
-qBg
+bdL
 kFf
-qBg
+bdA
+kFf
 qBg
 qBg
 sNj
@@ -46097,14 +47350,14 @@ aoB
 qpJ
 bWq
 xJl
-bWq
-bWq
-bWq
+hKi
+hKi
+hKi
 bWq
 bWq
 bWq
 aDA
-ghP
+bcE
 qLW
 gTq
 gTq
@@ -46219,7 +47472,7 @@ ayP
 tBR
 gVs
 mkP
-mkP
+bdJ
 aXw
 qBg
 tBR
@@ -46272,7 +47525,7 @@ hXu
 mqH
 mqH
 bWq
-bWq
+hKi
 gTq
 gTq
 nde
@@ -46439,7 +47692,7 @@ hXu
 hXu
 mqH
 xhF
-lmN
+bcA
 wFT
 and
 amX
@@ -46717,8 +47970,8 @@ qBg
 qBg
 qBg
 qBg
-tBR
-qBg
+lwY
+kFf
 qBg
 qBg
 qBg
@@ -46882,9 +48135,9 @@ niP
 qBg
 qBg
 qBg
-tBR
-qBg
-qBg
+lwY
+bdA
+bdA
 qBg
 opF
 qBg
@@ -47048,9 +48301,9 @@ anO
 qBg
 tBR
 tBR
-qBg
-qBg
-wLn
+kFf
+bdA
+bdR
 qBg
 opF
 opF
@@ -47108,7 +48361,7 @@ hXu
 mqH
 beJ
 dAP
-xWO
+aNP
 kiL
 alc
 hwJ
@@ -47214,9 +48467,9 @@ anO
 aSf
 gVs
 aIN
-qBg
-qBg
-qBg
+kFf
+kFf
+kFf
 qBg
 opF
 opF
@@ -47275,7 +48528,7 @@ hXu
 qDf
 pwE
 bWq
-bWq
+hKi
 gTq
 nde
 cOu
@@ -47380,7 +48633,7 @@ anN
 aSh
 anO
 ong
-qBg
+kFf
 dPB
 xQQ
 qBg
@@ -47547,8 +48800,8 @@ anN
 anN
 anU
 gVs
-qBg
-qBg
+bdA
+bdA
 tBR
 qBg
 opF
@@ -47608,7 +48861,7 @@ mqH
 jnG
 jnG
 cwr
-bWq
+bcB
 fOF
 gTq
 lze
@@ -47714,8 +48967,8 @@ anN
 anO
 anU
 kGm
-qBg
-qBg
+kFf
+kFf
 qBg
 tBR
 qBg
@@ -47773,8 +49026,8 @@ hXu
 mqH
 aVF
 qDf
-mrv
-mrv
+bcJ
+bcF
 bWq
 bWq
 gTq
@@ -47940,7 +49193,7 @@ hXu
 mqH
 gTq
 aoB
-bWq
+hKi
 cVr
 gTq
 gTq
@@ -48272,7 +49525,7 @@ imO
 imO
 mLX
 bWq
-bWq
+hKi
 xkL
 gTq
 bWq
@@ -48444,7 +49697,7 @@ gTq
 bWq
 xhF
 bWq
-mbi
+aYT
 bWq
 qIy
 mLX
@@ -48610,7 +49863,7 @@ hEH
 bWq
 xhF
 ifp
-rFa
+bcC
 xJl
 aoB
 aoB
@@ -48772,11 +50025,11 @@ bWq
 gTq
 qLW
 nKY
-lXb
-koC
+bcR
+bcO
 xhF
 ajd
-jnG
+bcG
 cjX
 aoB
 aVL
@@ -48938,10 +50191,10 @@ nne
 gTq
 koC
 bWq
-gTq
-bWq
+bcQ
+hKi
 eEV
-jlP
+bcL
 jnG
 aoB
 rFa
@@ -49103,8 +50356,8 @@ aoO
 gTq
 gTq
 qLW
-gTq
-bWq
+bcQ
+hKi
 lXb
 oYb
 imO
@@ -49211,8 +50464,8 @@ rGT
 qBg
 qBg
 qBg
-qBg
-qBg
+kFf
+kFf
 qBg
 tBR
 tBR
@@ -49269,8 +50522,8 @@ aoO
 gTq
 aoM
 qpJ
-nTZ
-bWq
+bcY
+hKi
 ghP
 bWq
 tSI
@@ -49377,8 +50630,8 @@ hXu
 rGT
 qBg
 orG
-qBg
-tBR
+kFf
+lwY
 tBR
 tBR
 tBR
@@ -49435,8 +50688,8 @@ gTq
 gTq
 aoM
 aoB
-gXE
-wdv
+bda
+bcZ
 bWq
 bWq
 hNt
@@ -49519,7 +50772,7 @@ opF
 qBg
 qBg
 qBg
-qBg
+kFf
 qBg
 anN
 cuK
@@ -49542,8 +50795,8 @@ qBg
 hXu
 rGT
 qBg
-ycZ
-uhn
+bel
+bek
 tBR
 pUk
 tBR
@@ -49686,7 +50939,7 @@ aco
 qBg
 xHC
 kUP
-kFf
+bey
 qBg
 aIN
 anN
@@ -49709,7 +50962,7 @@ qBg
 qBg
 mqH
 ycZ
-kma
+bem
 wNG
 apF
 opF
@@ -49853,8 +51106,8 @@ qBg
 qBg
 lwY
 uSI
-vqr
-tBR
+bez
+bdM
 qBg
 tBR
 anM
@@ -49872,18 +51125,18 @@ niP
 mkP
 niP
 qBg
-qBg
+kFf
 ylz
-hXu
-qBg
+aXf
+kFf
 asB
 apF
 opF
 opF
 apz
 fEf
-tBR
-qBg
+lwY
+kFf
 qtD
 qBg
 qBg
@@ -50018,11 +51271,11 @@ hXu
 mqH
 qBg
 cTe
-tBR
+lwY
 apE
-vqr
-qBg
-qBg
+bez
+kFf
+bdA
 aIN
 tBR
 dqm
@@ -50035,21 +51288,21 @@ mqH
 hXu
 gVs
 niP
-tBR
-qBg
-qBg
-qBg
-sNj
-qBg
+lwY
+bdA
+bdA
+kFf
+bes
+kFf
 qBg
 tBR
 apF
 apz
 tBR
 uSI
-tBR
-aVT
-qBg
+lwY
+beb
+kFf
 qBg
 nic
 fHx
@@ -50185,13 +51438,13 @@ xwH
 fHx
 tBR
 pQf
-tBR
+lwY
 tBR
 tBR
 qBg
-qBg
-aIN
-qBg
+kFf
+bex
+kFf
 fTl
 cTe
 mUk
@@ -50200,11 +51453,11 @@ izy
 hMW
 qBg
 tBR
-tBR
-tBR
-oBy
+bdM
+bdM
+bew
 vYq
-qBg
+kFf
 qBg
 qBg
 tBR
@@ -50212,9 +51465,9 @@ lwY
 apF
 opF
 tBR
-fEf
-aVT
-qBg
+bei
+bef
+kFf
 fHx
 qBg
 fHx
@@ -50358,7 +51611,7 @@ tBR
 tBR
 nic
 djz
-qBg
+kFf
 qBg
 qBg
 xfF
@@ -50367,8 +51620,8 @@ opF
 opF
 orG
 aTr
-qBg
-qBg
+kFf
+kFf
 xxo
 qBg
 qBg
@@ -50377,10 +51630,10 @@ tBR
 apF
 opF
 opF
-apz
-tBR
+ben
+lwY
 aWe
-fHx
+beg
 wdQ
 qBg
 fHx
@@ -50518,7 +51771,7 @@ xwH
 fHx
 qBg
 kFf
-lRq
+beA
 tBR
 rOR
 muy
@@ -50543,9 +51796,9 @@ opF
 opF
 opF
 apz
-tBR
-tBR
-tBR
+lwY
+bdM
+lwY
 qBg
 qBg
 wdQ
@@ -50685,7 +51938,7 @@ fHx
 wLn
 fHx
 qBg
-qBg
+kFf
 nnZ
 rOR
 ePC
@@ -50709,9 +51962,9 @@ opF
 apz
 pUk
 lwY
-fEf
-tBR
-kFf
+bei
+bdM
+bdA
 qBg
 fHx
 rOc
@@ -50852,7 +52105,7 @@ qBg
 fHx
 qBg
 qBg
-qBg
+kFf
 qBg
 toX
 qBg
@@ -51019,7 +52272,7 @@ wGt
 qBg
 fHx
 qxX
-qBg
+kFf
 fHx
 orG
 qBg
@@ -52272,8 +53525,8 @@ otR
 roH
 roH
 ofB
-akW
-ejy
+bdc
+bdb
 acO
 acw
 acq
@@ -52601,7 +53854,7 @@ jcf
 aNV
 abn
 mvR
-roH
+bde
 jFQ
 rGT
 roH
@@ -52766,9 +54019,9 @@ pSo
 mRC
 aNV
 roH
-mvR
-mvR
-nIV
+bdi
+bdi
+bdf
 mvR
 otR
 yiN
@@ -52776,15 +54029,15 @@ roH
 ejy
 afj
 alj
-aaP
-aaP
+bcU
+bcU
 adj
 ake
 adh
 aij
 ajn
-agq
-agq
+bcH
+bcH
 aeP
 ags
 ags
@@ -52932,8 +54185,8 @@ iPv
 roH
 ayt
 nym
-jsi
-mvR
+bdk
+bdi
 mvR
 mvR
 cPa
@@ -52944,12 +54197,12 @@ ejy
 alz
 ejy
 aaP
-adh
+bcV
 aks
 ejy
 aaP
-aij
-aeP
+bcP
+bcN
 aeP
 agv
 aaP
@@ -53061,8 +54314,8 @@ gIJ
 roH
 jzz
 uoj
-mvR
-mvR
+bdi
+bdi
 mvR
 bat
 ban
@@ -53070,8 +54323,8 @@ bak
 iHC
 wuA
 wuA
-mvR
-mvR
+bdi
+bdi
 iZA
 jnL
 tdL
@@ -53097,7 +54350,7 @@ roH
 uyY
 pax
 ayv
-roH
+bde
 abv
 vUp
 mvR
@@ -53228,15 +54481,15 @@ roH
 roH
 mvR
 uoj
-mkY
+bdV
 sbv
 jcf
 mvR
 mvR
 mvR
 aNV
-aNV
-mvR
+bdl
+bdi
 mvR
 mRC
 grB
@@ -53561,15 +54814,15 @@ mqH
 pSo
 mRC
 aNV
-mkY
+bdV
 lbf
 jsi
 jcV
 xcg
 mvR
 byI
-mvR
-mvR
+bdi
+bdi
 mRC
 qfe
 mRC
@@ -53734,10 +54987,10 @@ aNV
 jcV
 fyF
 mvR
-mvR
+bdi
 kKV
-mvR
-mvR
+bdi
+bdi
 pSo
 fPl
 hHO
@@ -53761,8 +55014,8 @@ aFc
 abP
 wWw
 aNV
-roH
-mvR
+bde
+bdi
 dky
 roH
 mRC
@@ -53886,10 +55139,10 @@ qFT
 ipD
 asj
 apX
-jaD
-mxN
-vrf
-arz
+bej
+bdC
+bee
+bec
 oSt
 yiJ
 cch
@@ -53928,7 +55181,7 @@ rGT
 abQ
 rpa
 mvR
-aNV
+bdl
 mvR
 oQm
 roH
@@ -54054,9 +55307,9 @@ asj
 apX
 apX
 apX
-nCf
-ccR
-ccR
+beh
+bed
+bed
 arG
 iOI
 aNV
@@ -54068,7 +55321,7 @@ hXu
 qfe
 gVU
 qux
-mvR
+bdi
 xaF
 fbf
 bTu
@@ -54094,7 +55347,7 @@ yiN
 pSo
 hXu
 jcf
-aNV
+bdl
 mvR
 mvR
 tBo
@@ -54217,8 +55470,8 @@ yiz
 pTA
 ipD
 asj
-kZn
-bfp
+bep
+beo
 hdD
 apX
 pkZ
@@ -54235,15 +55488,15 @@ hXu
 hXu
 gwI
 gcK
-mvR
-ciR
+bdi
+bdH
 uod
 ewB
 bsO
 kdk
 jMa
-roH
-mvR
+bde
+bdi
 raq
 lgk
 lgk
@@ -54261,7 +55514,7 @@ bKN
 ame
 mvR
 abM
-eAX
+bdm
 eAX
 mvR
 roH
@@ -54383,8 +55636,8 @@ kZn
 arW
 tmh
 asP
-apX
-qzt
+bdE
+beq
 bwv
 apX
 mxN
@@ -54403,7 +55656,7 @@ mRC
 mvR
 mvR
 gMX
-aBx
+bdz
 mvR
 mqH
 bsO
@@ -54411,23 +55664,23 @@ dex
 kdk
 uot
 epg
-roH
+bde
 lgk
 mvR
 hXu
 hXu
 roH
 hHO
-tdL
-mDk
+bdx
+bdv
 roH
 mvR
 cPa
 aNV
-aNV
-mvR
-kHj
-kwh
+bdl
+bdi
+bdo
+bdn
 mvR
 eAX
 eAX
@@ -54550,7 +55803,7 @@ arW
 ipD
 asj
 apX
-lJT
+ber
 piz
 iJr
 bwv
@@ -54570,8 +55823,8 @@ fqd
 mvR
 mvR
 mvR
-hkD
-grB
+bdI
+bdD
 mqH
 mqH
 ewB
@@ -54585,9 +55838,9 @@ qfe
 mvR
 mvR
 mvR
-mvR
-roH
-ihC
+bdi
+bde
+bdu
 roH
 mvR
 mvR
@@ -54595,7 +55848,7 @@ gcK
 mvR
 mvR
 kwh
-mvR
+bdi
 aNV
 pSo
 pqz
@@ -54716,7 +55969,7 @@ cID
 bwF
 asj
 arH
-kZn
+bep
 rFK
 mxN
 piz
@@ -54752,9 +56005,9 @@ mvR
 mvR
 mvR
 mvR
-roH
-hHO
-roH
+bde
+bdw
+bdr
 eld
 roH
 rGT
@@ -54920,8 +56173,8 @@ mvR
 mvR
 mjD
 mvR
-roH
-mvR
+bde
+bds
 mvR
 mvR
 rGT
@@ -55087,9 +56340,9 @@ oIp
 mvR
 sbv
 mvR
-mvR
-mvR
-mvR
+bdi
+bdi
+bds
 mvR
 mRC
 hXu
@@ -55245,8 +56498,8 @@ txz
 mvR
 mtX
 eSD
-aBx
-rUP
+bdz
+bdy
 roH
 mvR
 roH
@@ -55254,10 +56507,10 @@ hmP
 hmP
 hlf
 jsi
-mvR
-mvR
-nNt
-yiN
+bdi
+bdi
+bdt
+bdq
 mvR
 mvR
 qmE
@@ -55414,18 +56667,18 @@ mvR
 dXB
 fbL
 aBx
-jsi
-roH
-mvR
-mvR
+bdk
+bde
+bdi
+bdi
 hmP
 hmP
 hlf
 mvR
-roH
-mvR
-roH
-eAX
+bde
+bdi
+bdr
+bdm
 eAX
 aBx
 qmE
@@ -55584,7 +56837,7 @@ dTa
 mvR
 mvR
 lnv
-mvR
+bdi
 mvR
 mvR
 cPa
@@ -56574,7 +57827,7 @@ ipD
 dGp
 esC
 aqB
-mxN
+bdC
 aqe
 aqc
 mxN
@@ -56742,7 +57995,7 @@ eHM
 ajR
 apX
 mxN
-aqe
+bdB
 nvu
 mxN
 mxN
@@ -56909,8 +58162,8 @@ eHM
 aqD
 vpJ
 apX
-apX
-aqe
+bdE
+bdB
 mxN
 mxN
 hXu
@@ -57076,7 +58329,7 @@ eHM
 mqH
 mqH
 apX
-apX
+bdE
 aqf
 mxN
 hXu
@@ -57243,7 +58496,7 @@ eZW
 mqH
 mqH
 apX
-aqm
+bdF
 mxN
 apU
 tiZ
@@ -57411,7 +58664,7 @@ mqH
 aqm
 aqm
 aqn
-mxN
+bdC
 oEz
 tux
 mxN
@@ -57577,8 +58830,8 @@ eZW
 mqH
 apX
 aqt
-mxN
-mxN
+bdC
+bdC
 apV
 yev
 mxN
@@ -57742,7 +58995,7 @@ aqP
 mqH
 mqH
 mqH
-apX
+bdE
 aqu
 bgb
 anH
@@ -57909,7 +59162,7 @@ ipD
 anJ
 ipD
 ipD
-aqw
+bdK
 aqv
 aqo
 aqg
@@ -58238,8 +59491,8 @@ ipD
 aqw
 tuF
 mxN
-cNL
-apX
+bdS
+bdE
 uXM
 apX
 apX
@@ -58405,9 +59658,9 @@ anP
 ipD
 arj
 mxN
-kxA
-cNL
-apX
+bdW
+bdS
+bdE
 mqH
 mqH
 mqH
@@ -58572,9 +59825,9 @@ mxN
 ipD
 arj
 mxN
-isC
-isC
-apX
+bdX
+bdT
+bdE
 apX
 eHM
 mqH
@@ -58740,8 +59993,8 @@ ipD
 aqw
 mxN
 anL
-mxN
-mxN
+bdU
+bdC
 eHM
 aqD
 eHM
@@ -58907,7 +60160,7 @@ cOz
 tnP
 tnP
 ibR
-mxN
+bdC
 mxN
 esC
 dGp
@@ -60579,8 +61832,8 @@ acE
 ipD
 apX
 apX
-aqv
-mxN
+bdN
+bdC
 mxN
 mxN
 aqr
@@ -60744,9 +61997,9 @@ acE
 aqD
 eHM
 apX
-apX
-uXM
-aqH
+bdE
+bdQ
+bdO
 aqH
 lOf
 ipD
@@ -68907,8 +70160,8 @@ aHm
 aFq
 aFq
 aFq
-aFq
-aGS
+aHA
+bev
 gMo
 aGI
 aGC
@@ -69073,11 +70326,11 @@ aHr
 aFq
 aFi
 aFi
-aFf
+beu
 aFf
 aFS
-aFf
-aFi
+beu
+aFS
 gMo
 aGw
 aGr
@@ -69242,9 +70495,9 @@ gMo
 aFf
 aFS
 aFi
+aFS
 aFi
-aFi
-aGJ
+bet
 aGw
 aFp
 aGe

@@ -1,0 +1,12 @@
+author: "ori, Blundir, Zenith"
+delete-after: True
+changes:
+  - rscadd: "added colony working joes,  colony dzho automaton for sorokyne, and daniels for WY maps"
+  - rscadd: "ARTEMIS link language for colony joes"
+  - rscadd: "joe storage closet replacing cryopods"
+  - code_imp: "predator round announcement uses span_red macro now"
+  - config: "data/colonyjoechance.txt for the chance of a colony joe round happening"
+  - imageadd: "new image for a colony joe spawn button"
+  - imageadd: "sprites for joe storage closet"
+  - mapadd: "new spawn locations for colony joes, added new joe storage closets on almayer"
+  - admin: "staff can force a colony joe round when they feel like it"

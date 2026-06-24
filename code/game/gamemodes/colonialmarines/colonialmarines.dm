@@ -161,6 +161,7 @@
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 15 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	GLOB.chemical_data.reroll_chemicals()
 
@@ -451,6 +452,26 @@
 	message_admins("[key_name(person_in_charge, TRUE)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
 	return
 
+/datum/game_mode/proc/ares_autodoc_check()
+	var/list/surgery_roles = JOB_SURGERY_ROLES_LIST
+	var/surgeon_found = FALSE
+	for(var/mob/living/carbon/human/surgeon in GLOB.alive_human_list)
+		if(surgeon.job in surgery_roles)
+			surgeon_found = TRUE
+			break
+	if(!surgeon_found)
+		var/datum/supply_order/new_order = new()
+		new_order.ordernum = GLOB.supply_controller.ordernum++
+		var/actual_type = GLOB.supply_packs_types["ARES Emergency Autodoc Supplies"]
+		new_order.objects = list(GLOB.supply_packs_datums[actual_type])
+		new_order.orderedby = MAIN_AI_SYSTEM
+		new_order.approvedby = MAIN_AI_SYSTEM
+		GLOB.supply_controller.shoppinglist += new_order
+		for(var/obj/structure/machinery/medical_pod/autodoc/target in GLOB.machines)
+			if(is_mainship_level(target.z))
+				target.skilllock = SKILL_SURGERY_DEFAULT // lowers skill-lock to 0
+		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G", TRUE)
+		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered and AutoDoc skill locks released.")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
@@ -472,7 +493,7 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrargo Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Be on guard my children. I have sensed that the petrid sewers of this so called city could be flooded by the hosts at a moments notice if the hosts restore power to the area. The button to release this putrid water is found in the metal structure the hosts call the sewer treatement plant.", "everything", QUEEN_MOTHER_ANNOUNCE), 15 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Analysis of city layout plans have identified a possible tactical advantage. A release valve can be triggered within the City Sewer Treatment Plant, this valve will flood the lower sewer tunnels with water, expunging a significant amount of xenobiological growth.\n\nHowever, this valve must be powered by repairing a special APC located within the underground power-substation, located east of the underground sewer treatment plant.", "ARES 3.2 Strategic Notice", 'sound/AI/commandreport.ogg'), 20 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrargo evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrargo evac site. Additional strains are inbound from the north.\n\nEnemy Boilers have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements, more XX-121 clusters are encroaching from our east. We’re under heavy attack from all quarters and have lost half of our Longstreet tank support to Crushers.\n\nWe’ve exhausted our HEAP munitions and have had to switch to soft-point munitions. We can’t take this for much longer, requesting urgent support from Almayer forces, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 60 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrargo. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrargo evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
@@ -809,6 +830,7 @@
 	declare_completion_announce_fallen_soldiers()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
+	addtimer(CALLBACK(src, PROC_REF(declare_completion_announce_colony_joes)), 2 SECONDS)
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 

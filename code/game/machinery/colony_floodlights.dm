@@ -283,7 +283,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return TRUE
 
-		else if(iscoil(I))
+		else if(iswire(I))
 			var/obj/item/stack/cable_coil/coil = I
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))

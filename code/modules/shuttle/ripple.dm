@@ -17,6 +17,7 @@
 		not to be under it."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shadow_square"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/abstract/ripple/Initialize(mapload, time_left)
 	. = ..()

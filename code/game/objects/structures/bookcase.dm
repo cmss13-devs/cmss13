@@ -130,3 +130,12 @@
 	. = ..()
 	new /obj/item/book/manual/research_and_development(src)
 	update_icon()
+
+/obj/structure/bookcase
+	icon_state = "woodbook-0"
+
+/obj/structure/bookcase/wood/update_icon()
+	if(length(contents) < 6)
+		icon_state = "woodbook-[length(contents)]"
+	else
+		icon_state = "woodbook-6"

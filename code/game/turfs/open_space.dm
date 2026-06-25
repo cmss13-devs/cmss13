@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	var/turf/below = get_turf_below()
 	var/depth = 0
 	while(below)
-		new /obj/vis_contents_holder(src, below, depth)
+		new /obj/vis_contents_holder(src, below, depth, !istype(below, /turf/open_space))
 		if(!istransparentturf(below))
 			break
 		below = SSmapping.get_turf_below(below)

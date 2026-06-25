@@ -197,10 +197,10 @@
 		else if(lookup[sig_type] == src) // We already registered here
 			continue
 		else if(!length(lookup[sig_type])) // One other thing registered here
-			lookup[sig_type] = list(lookup[sig_type]=TRUE)
-			lookup[sig_type][src] = TRUE
+			lookup[sig_type] = list(lookup[sig_type])
+			lookup[sig_type] += src
 		else // Many other things have registered here
-			lookup[sig_type][src] = TRUE
+			lookup[sig_type] += src
 
 	signal_enabled = TRUE
 

@@ -500,17 +500,30 @@
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
 	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
-	var/list/old_comp_lookup = comp_lookup?.Copy()
-	var/list/old_signal_procs = signal_procs?.Copy()
+	var/list/old_comp_lookup = comp_lookup
+	var/list/old_signal_procs = signal_procs
 	var/turf/W = new path(src)
 
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
 	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+	// Enjoy some dumb code to copy signals that you hope didn't change from then to the new turf being New'd
 	if(old_comp_lookup)
-		LAZYOR(W.comp_lookup, old_comp_lookup)
+		for(var/key in old_comp_lookup)
+			var/old_lookup = old_comp_lookup[key]
+			var/list/old_items = islist(old_lookup) ? old_lookup : list(old_lookup)
+			var/new_lookup = LAZYACCESS(W.comp_lookup, key)
+			var/list/new_items = islist(new_lookup) ? new_lookup : !isnull(new_lookup) ? list(new_lookup) : list()
+			var/list/combined_list = old_items + new_items
+			LAZYSET(W.comp_lookup, key, length(combined_list) == 1 ? combined_list[1] : combined_list)
 	if(old_signal_procs)
-		LAZYOR(W.signal_procs, old_signal_procs)
+		for(var/key in old_signal_procs)
+			var/old_lookup = old_signal_procs[key]
+			var/list/old_items = islist(old_lookup) ? old_lookup : list()
+			var/new_lookup = LAZYACCESS(W.signal_procs, key)
+			var/list/new_items = islist(new_lookup) ? new_lookup : list()
+			var/list/combined_list = old_items + new_items
+			LAZYSET(W.signal_procs, key, combined_list)
 
 	W.weak_reference = old_ref
 

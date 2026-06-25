@@ -246,8 +246,8 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/forget)
-	if (!mover || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/old_loc)
+	if(QDELETED(mover) || !isturf(mover.loc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -277,7 +277,7 @@
 		mover.Collide(T)
 		return FALSE
 	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+		if (mover == obstacle || old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -298,7 +298,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -318,7 +318,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -336,7 +336,7 @@
 		mover.Collide(src)
 		return FALSE
 	for(obstacle in src) //Then, check atoms in the target turf
-		if(forget == obstacle)
+		if(old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -357,16 +357,17 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
-	if(!istype(A))
+/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+	if(QDELETED(entered_movable))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
+	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+	if(old_loc != src)
+		for(var/datum/automata_cell/explosion/cell in autocells)
+			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
 	return 0

@@ -17,8 +17,10 @@
 	if(!istype(old_loc, /turf/open/space))
 		var/turf/projected = get_ranged_target_turf(crosser, dir, 10)
 
-		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
-
+		if(old_loc != src)
+			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
+		else
+			INVOKE_NEXT_TICK(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		addtimer(CALLBACK(src, PROC_REF(handle_crosser), crosser), 0.5 SECONDS)
 
 /turf/open/space/transit/proc/handle_crosser(atom/movable/crosser)

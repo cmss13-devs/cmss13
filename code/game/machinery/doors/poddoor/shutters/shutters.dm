@@ -123,12 +123,6 @@
 	breakable = FALSE
 	explo_proof = TRUE
 
-/obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
-	if(emp_proof)
-		return FALSE
-	..()
-	return TRUE
-
 /obj/structure/machinery/door/poddoor/yautja/hunting_grounds
 	name = "Preserve Shutter"
 	id = "Yautja Preserve"

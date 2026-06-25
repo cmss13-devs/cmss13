@@ -9,6 +9,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
 	hostility = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/upp_commando/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You grew up in relatively simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))

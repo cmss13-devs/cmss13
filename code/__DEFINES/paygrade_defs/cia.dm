@@ -1,0 +1,69 @@
+// Paygrade shorthand defines, to allow clearer designation.
+
+// CIA and associated branches.
+
+/// CIA-O, Officer
+#define PAY_SHORT_CIA_O "CIA-O"
+
+/// CIA-MO, Medical Officer
+#define PAY_SHORT_CIA_MO "CIA-MO"
+
+/// CIA-SO, Senior Officer
+#define PAY_SHORT_CIA_SO "CIA-SO"
+
+/// CIA-A, Agent
+#define PAY_SHORT_CIA_A "CIA-A"
+
+/// CIA-IA, Intelligence Analyst
+#define PAY_SHORT_CIA_IA "CIA-IA"
+
+/// CIA-SA, Special Agent
+#define PAY_SHORT_CIA_SA "CIA-SA"
+
+/// CIA-ADM, Administrator
+#define PAY_SHORT_CIA_ADM "CIA-ADM"
+
+/// CIA-SADM, Senior Administrator
+#define PAY_SHORT_CIA_SADM "CIA-SADM"
+
+/// CIA-ACOM, Acting Commissioner (UACQS)
+#define PAY_SHORT_CIA_ACOM "CIA-ACOM"
+
+/// CIA-COM, Commissioner (UACQS)
+#define PAY_SHORT_CIA_COM "CIA-COM"
+
+/// CIA-DG, Director General (UACQS)
+#define PAY_SHORT_CIA_DG "CIA-DG"
+
+/// CIA-SG, Secretary General (UACQS)
+#define PAY_SHORT_CIA_SG "CIA-SG"
+
+/// CIA-DEPDIR, Deputy Director
+#define PAY_SHORT_CIA_DEPDIR "CIA-DEPDIR"
+
+/// CIA-DIR, Director
+#define PAY_SHORT_CIA_DIR "CIA-DIR"
+
+/// GRS-OPR, Operator
+#define PAY_SHORT_GRS_OPR "GRS-OPR"
+
+/// GRS-MED, Medical Operator
+#define PAY_SHORT_GRS_MED "GRS-MED"
+
+/// GRS-ENG, Technical Operator
+#define PAY_SHORT_GRS_ENG "GRS-ENG"
+
+/// GRS-HVY, Heavy Operator
+#define PAY_SHORT_GRS_HVY "GRS-HVY"
+
+/// GRS-SNP, Advanced Marksman
+#define PAY_SHORT_GRS_SNP "GRS-SNP"
+
+/// GRS-TL, Team Leader
+#define PAY_SHORT_GRS_TL "GRS-TL"
+
+/// GRS-DCDR, Deputy Commander
+#define PAY_SHORT_GRS_DCDR "GRS-DCDR"
+
+/// GRS-CDR, Commander
+#define PAY_SHORT_GRS_CDR "GRS-CDR"

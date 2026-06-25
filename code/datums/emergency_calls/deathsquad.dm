@@ -15,6 +15,7 @@
 	max_medics = 1
 	max_heavies = 2
 	hostility = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/death/New()
 	. = ..()
@@ -103,6 +104,7 @@
 	var/leader_preset = /datum/equipment_preset/uscm/marsoc/sl
 	var/member_preset = /datum/equipment_preset/uscm/marsoc
 	var/sg_preset = /datum/equipment_preset/uscm/marsoc/sg
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/marsoc/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -151,6 +153,7 @@
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	home_base = /datum/lazy_template/ert/yautja_station
 	hostility = TRUE
+	ignore_ftl_or_crash = TRUE
 	var/team_lead_preset = /datum/equipment_preset/yautja/soldier/enforcer
 	var/team_member_preset = /datum/equipment_preset/yautja/soldier
 

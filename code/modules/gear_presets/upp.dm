@@ -1900,7 +1900,7 @@
 	)
 
 /datum/equipment_preset/upp/officer/senior/dressed
-	name = "UPP Senior Lieutenant"
+	name = "UPP Starshiy Leytenant"
 
 /datum/equipment_preset/upp/officer/senior/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2259,7 +2259,7 @@
 	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/major/dressed
-	name = "UPP Major"
+	name = "UPP Mayjor"
 
 /datum/equipment_preset/upp/officer/major/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back

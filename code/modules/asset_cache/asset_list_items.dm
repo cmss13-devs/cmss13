@@ -132,6 +132,7 @@
 		"logo_cmb.png" = 'html/paper_assets/logo_cmb.png',
 		"logo_wy_carbon.png" = 'html/paper_assets/logo_wy_carbon.png',
 		"logo_hd_carbon.png" = 'html/paper_assets/logo_hd_carbon.png',
+		"logo_uacqs.png" = 'html/paper_assets/logo_uacqs.png',
 		"background_white.jpg" = 'html/paper_assets/background_white.jpg',
 		"background_dark.jpg" = 'html/paper_assets/background_dark.jpg',
 		"background_dark2.jpg" = 'html/paper_assets/background_dark2.jpg',

@@ -70,6 +70,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	remaining_documents--
 	return TRUE
 
+/obj/structure/filingcabinet/documentation/uacqs
+	available_categories = list(PAPER_CATEGORY_UACQS)
+	remaining_documents = 45 //UACQS likely using more of these than most people.
+
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
 
@@ -111,7 +115,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/structure/filingcabinet/documentation/highcom/clf
 	available_categories = list(PAPER_CATEGORY_CLF_HC)
 
-
 //########################################
 //########################################
 //########################################
@@ -127,7 +130,19 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/uacqs_notice
 	document_title = "UACQS Inspection Notice"
 	doc_datum_type = /datum/prefab_document/uacqs/commissioner
-	document_category = "UACQS"
+	document_category = PAPER_CATEGORY_INACCESSIBLE
+
+/obj/item/paper/prefab/uacqs
+	name = "Blank UACQS Document"
+	document_category = PAPER_CATEGORY_UACQS
+
+/obj/item/paper/prefab/uacqs/inspection
+	document_title = "QS101 - Departmental Inspection"
+	doc_datum_type = /datum/prefab_document/uacqs/inspection
+
+/obj/item/paper/prefab/uacqs/inspection/example
+	document_title = "QS101E - Departmental Inspection \[EXAMPLE\]"
+	doc_datum_type = /datum/prefab_document/uacqs/inspection/example
 
 // ########## Provost MP Forms  ########## \\
 

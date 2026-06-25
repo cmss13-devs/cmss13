@@ -72,3 +72,25 @@
 
 /datum/ammo/bullet/lever_action/xm88/pen50
 	penetration = ARMOR_PENETRATION_TIER_10
+
+// CIA IFF VARIANT
+
+/datum/ammo/bullet/lever_action/xm88/iff
+	name = ".458R custom SOCOM round"
+
+/datum/ammo/bullet/lever_action/xm88/iff/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/datum/ammo/bullet/lever_action/xm88/iff/pen20
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/lever_action/xm88/iff/pen30
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/lever_action/xm88/iff/pen40
+	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/lever_action/xm88/iff/pen50
+	penetration = ARMOR_PENETRATION_TIER_10

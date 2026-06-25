@@ -72,6 +72,7 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 
 	max_smartgunners = 2
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/wy_commando/deathsquad/New()
 	..()

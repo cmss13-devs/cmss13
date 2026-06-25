@@ -26,6 +26,26 @@
 	create_spore_triggers()
 	addtimer(CALLBACK(src, PROC_REF(deploy_spore_triggers)), 10 SECONDS)
 
+/obj/effect/pathogen/spore_sac/attack_alien(mob/living/carbon/xenomorph/attacker)
+	if(!istype(attacker))
+		return attack_hand(attacker)
+
+	if(!is_pathogen_creature(attacker))
+		attacker.animation_attack_on(src)
+		attacker.visible_message(SPAN_XENOWARNING("[attacker] crushes \the [src]"),
+			SPAN_XENOWARNING("We crush \the [src]"))
+		qdel(src)
+		return XENO_ATTACK_ACTION
+
+	if(tgui_alert(attacker, "Do you wish to dissolve the spore sac?", "Dissolve Sac?", list("Yes", "No")) == "Yes")
+		attacker.animation_attack_on(src)
+		attacker.visible_message(SPAN_XENOWARNING("[attacker] dissolves \the [src]"),
+			SPAN_XENOWARNING("We dissolve \the [src]"))
+		qdel(src)
+		return XENO_NONCOMBAT_ACTION
+
+	return XENO_NONCOMBAT_ACTION
+
 /obj/effect/pathogen/spore_sac/one_use
 	max_batches = 1
 

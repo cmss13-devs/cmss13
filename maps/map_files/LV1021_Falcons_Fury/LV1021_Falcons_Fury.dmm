@@ -14226,7 +14226,7 @@
 /obj/item/ammo_box/magazine/fp9000,
 /obj/structure/closet/crate/ammo,
 /turf/open/floor/interior/wood,
-/area/lv1021/oob)
+/area/lv1021/indoors/clf_camp/ancil_e)
 "aIk" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,

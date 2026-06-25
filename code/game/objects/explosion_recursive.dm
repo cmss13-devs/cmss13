@@ -356,8 +356,11 @@ explosion resistance exactly as much as their health
 	if(anchored)
 		return
 
-	if(!istype(src.loc, /turf))
+	if(!isturf(loc))
 		return
+
+	if(direction < 0)
+		return // Don't do anything if explicitly directionless
 
 	var/weight = 1
 	switch(mob_size)

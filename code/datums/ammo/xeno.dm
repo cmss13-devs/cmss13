@@ -312,8 +312,7 @@
 	set_xeno_smoke()
 
 /datum/ammo/xeno/boiler_gas/Destroy()
-	qdel(smoke_system)
-	smoke_system = null
+	QDEL_NULL(smoke_system)
 	. = ..()
 
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
@@ -350,7 +349,7 @@
 		cause_data = proj.weapon_cause_data
 	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
-	smoke_system.start()
+	smoke_system.start(do_NOT_delete = TRUE)
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 

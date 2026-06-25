@@ -23470,6 +23470,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "beb" = (
@@ -25035,6 +25036,7 @@
 	pixel_y = 28
 	},
 /obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "bhj" = (
@@ -25846,6 +25848,22 @@
 /obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"bjg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleW_north)
+"bjh" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "bjy" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 11;
@@ -29473,6 +29491,7 @@
 	pixel_x = -20;
 	pixel_y = -9
 	},
+/obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "gap" = (
@@ -46300,7 +46319,7 @@ anN
 anN
 anN
 anN
-qBg
+anN
 hEh
 hXu
 hXu
@@ -46465,9 +46484,9 @@ anN
 anN
 bhs
 rGT
-hDi
+bjg
 bhi
-qBg
+anN
 qBg
 qBg
 hXu
@@ -46628,12 +46647,12 @@ aSo
 oOd
 pRJ
 aSk
-qBg
-qBg
-lwY
+anN
+anN
+bjh
 hXu
 hXu
-qBg
+anN
 nic
 hDi
 qBg
@@ -46795,11 +46814,11 @@ aSy
 aSo
 pRJ
 aSj
-qBg
-tBR
+anN
+anM
 bea
-tBR
-qBg
+anM
+anN
 qBg
 qBg
 qBg
@@ -46962,9 +46981,9 @@ aSy
 aSt
 aSo
 anU
-tBR
-tBR
-tBR
+anM
+anM
+anM
 ozK
 fUf
 iMz
@@ -47130,8 +47149,8 @@ aSu
 aSn
 aSj
 fZD
-tBR
-tBR
+anM
+anM
 pYl
 qau
 abX
@@ -47296,8 +47315,8 @@ aSz
 qpR
 aSn
 aSj
-qBg
-qBg
+anN
+anN
 kzT
 bdY
 fEf
@@ -47464,7 +47483,7 @@ aSv
 hXu
 qfe
 hXu
-qBg
+anN
 qBg
 bdZ
 wUU

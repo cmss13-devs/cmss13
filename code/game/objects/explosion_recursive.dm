@@ -26,6 +26,54 @@ For explosion resistance, an explosion should never go through a wall or window 
 explosion resistance exactly as much as their health
 */
 
+GLOBAL_VAR_INIT(create_and_destroy_ignore_paths2, generate_ignore_paths2())
+/proc/generate_ignore_paths2()
+	. = list(
+		//Never meant to be created, errors out the ass for mobcode reasons
+		/mob/living/carbon,
+		/obj/effect/node,
+		/obj/item/seeds/cutting,
+		//lighting singleton
+		/mob/dview,
+		// These use walk_away() after initialization, which causes false positives
+		/obj/item/explosive/grenade/flashbang/cluster/segment,
+		/obj/item/explosive/grenade/flashbang/cluster_piece,
+		/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+		/obj/effect/landmark/lizard_spawn,
+		/obj/effect/fake_attacker,
+		/atom/movable/lighting_mask, //leave it alone
+		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
+		/obj/merge_conflict_marker,
+		/obj/effect/projector_anchor, // Needs a link ID set to work as intended
+		/obj/effect/projector/linked, // Needs a link ID set to work as intended
+	)
+	//This turf existing is an error in and of itself
+	. += typesof(/turf/baseturf_skipover)
+	. += typesof(/turf/baseturf_bottom)
+	//Our system doesn't support it without warning spam from unregister calls on things that never registered
+	. += typesof(/obj/docking_port)
+	. += typesof(/obj/item/storage/internal)
+	// fuck interiors
+	. += typesof(/obj/vehicle)
+	. += typesof(/obj/effect/vehicle_spawner)
+	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
+	. += subtypesof(/atom/movable/screen/escape_menu)
+	. += typesof(/obj/effect/timed_event)
+	// Need a defined ID, mapping-only, will and should fail loudly if spawned without one
+	. += typesof(/obj/effect/landmark/dispersal_initiator)
+
+/mob/verb/explosion_test()
+	set name = "Explosion Test"
+	set category = "Debug"
+
+	var/turf/location = get_turf(usr)
+	var/mob/living/carbon/human/body = new(location)
+	body.death()
+	cell_explosion(location, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, SOUTH, create_cause_data("testing"))
+	cell_explosion(location, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, SOUTH, create_cause_data("testing"))
+	for(var/turf/turf_path as anything in subtypesof(/turf) - GLOB.create_and_destroy_ignore_paths2)
+		location = location.ChangeTurf(turf_path)
+
 /proc/explosion_rec(turf/epicenter, power, falloff = 20, datum/cause_data/explosion_cause_data)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)

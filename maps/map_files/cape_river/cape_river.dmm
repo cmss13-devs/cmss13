@@ -487,6 +487,11 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/engi)
+"abD" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/caperiver/indoors/conambase/engi)
 "abE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -9810,7 +9815,7 @@
 /obj/structure/fence/slim/door{
 	dir = 1
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south_east)
 "aEU" = (
 /obj/structure/sign/safety/hvac_old{
@@ -12361,6 +12366,7 @@
 "aNa" = (
 /obj/structure/machinery/light/blue,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/caperiver/indoors/conambase/engi)
 "aNb" = (
@@ -15417,7 +15423,7 @@
 /area/caperiver/outdoors/bushlands)
 "aWN" = (
 /obj/structure/fence/slim,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "aWO" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -33439,6 +33445,7 @@
 	layer = 2.5
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/start/working_joe/colony,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/caperiver/indoors/conambase/engi)
 "eqp" = (
@@ -40189,9 +40196,9 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/caperiver/indoors/conambase/unknown)
 "jqq" = (
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/start/working_joe/colony,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/caperiver/indoors/conambase/engi)
 "jqC" = (
@@ -42581,7 +42588,7 @@
 /obj/structure/fence/slim/door{
 	dir = 1
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "kWU" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -46644,7 +46651,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/caperiver/indoors/conambase/recreational)
 "nTd" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/caperiver/indoors/conambase/engi)
 "nTm" = (
@@ -48373,7 +48380,7 @@
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "pin" = (
 /obj/structure/fence/slim,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south_east)
 "piP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -50355,11 +50362,11 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/scrublands/south_east)
 "qBd" = (
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
+/obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/caperiver/indoors/conambase/engi)
 "qBl" = (
@@ -95716,7 +95723,7 @@ aWQ
 aWQ
 cPd
 kmG
-auv
+abD
 ahZ
 dFe
 aNa

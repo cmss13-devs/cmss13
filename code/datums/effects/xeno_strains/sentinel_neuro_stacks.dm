@@ -31,6 +31,15 @@
 	. = ..(human, from, last_dmg_source, zone)
 	human.update_xeno_hostile_hud()
 
+/datum/effects/sentinel_neuro_stacks/Destroy()
+	. = ..()
+	if (!istype(affected_atom, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/human = affected_atom
+	human.update_xeno_hostile_hud()
+	human.med_hud_set_health()
+
 
 /datum/effects/sentinel_neuro_stacks/validate_atom(mob/living/carbon/human/human)
 	if (human.stat == DEAD)

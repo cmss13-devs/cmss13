@@ -579,6 +579,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	unslashable = TRUE
 	unacidable = TRUE
 	no_store_pod = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/cryopod/joe/seegson/go_in_cryopod(mob/mob, silent = FALSE)
 	if(!isworkingjoe(mob))
@@ -662,6 +663,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	unslashable = TRUE
 	unacidable = TRUE
 	no_store_pod = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/cryopod/joe/weyland/go_in_cryopod(mob/mob, silent = FALSE)
 	if(!isworkingjoe(mob))

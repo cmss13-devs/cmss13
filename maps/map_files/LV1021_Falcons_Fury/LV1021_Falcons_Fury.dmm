@@ -33,6 +33,7 @@
 /area/lv1021/landing_zone_2)
 "aac" = (
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aad" = (
@@ -21543,6 +21544,13 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/outdoors/comms/north_1)
+"bag" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/asphalt/brown,
+/area/lv1021/outdoors/comms/west_2)
 "bah" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/kutjevo/fake_wood,
@@ -25825,6 +25833,19 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleW_north)
+"bjd" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"bje" = (
+/turf/closed/shuttle/dropship_clf/Fire{
+	icon_state = "10_interior"
+	},
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
+"bjf" = (
+/obj/structure/machinery/light/blue,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "bjy" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 11;
@@ -26622,9 +26643,6 @@
 /area/lv1021/oob)
 "cnf" = (
 /obj/structure/shuttle/part/dropship_clf/transparent/right_engine,
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "cnj" = (
@@ -28597,14 +28615,6 @@
 /obj/structure/largecrate/supply,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
-"fav" = (
-/obj/structure/machinery/door/poddoor/hybrisa/white{
-	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
-	color = "#646464";
-	id = "clf_cargo_2"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "fbf" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -30948,12 +30958,6 @@
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "ijt" = (
-/obj/structure/machinery/door_control{
-	id = "clf_cargo_2";
-	name = "Cargo Lockdown";
-	pixel_x = -10;
-	pixel_y = -20
-	},
 /obj/structure/largecrate/supply/medicine/medkits,
 /turf/open/floor/almayer/test_floor5,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
@@ -31889,6 +31893,10 @@
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "jDR" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "jDT" = (
@@ -35469,14 +35477,11 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/tyrargo/gen{
-	layer = 2.96;
-	pixel_x = 6;
-	pixel_y = 3
-	},
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "oCX" = (
@@ -37298,9 +37303,6 @@
 /obj/structure/platform/stone/soro,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
-"roi" = (
-/turf/open/floor/prison/ramptop,
-/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "rop" = (
 /obj/structure/flora/wood/stick1,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -37738,9 +37740,6 @@
 /area/lv1021/indoors/clf_camp/ancil_n)
 "rRq" = (
 /obj/structure/shuttle/part/dropship_clf/transparent/left_engine,
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
 /turf/open/floor/plating,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "rRQ" = (
@@ -38026,12 +38025,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "sln" = (
-/obj/structure/machinery/door_control{
-	id = "clf_cargo_1";
-	name = "Cargo Lockdown";
-	pixel_x = -10;
-	pixel_y = 26
-	},
 /obj/structure/largecrate/chick,
 /turf/open/floor/almayer/test_floor5,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
@@ -38759,6 +38752,7 @@
 	buckling_x = -7;
 	buckling_y = 15
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/spiralplate,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "tiZ" = (
@@ -39084,26 +39078,11 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "tGe" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -7;
-	buckle_offset_x = -7
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
+	dir = 8;
 	pixel_x = 9;
 	buckling_x = 9
 	},
-/obj/structure/machinery/light/blue{
-	pixel_x = 15
-	},
-/obj/effect/decal/hybrisa/warning/redandwhite_S,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/door_control{
-	id = "clf_cargo_1";
-	name = "Cargo Lockdown";
-	pixel_x = -10;
-	pixel_y = -20
-	},
 /turf/open/floor/corsat/spiralplate,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "tGl" = (
@@ -39189,18 +39168,6 @@
 /obj/structure/platform_decoration/stone/soro/east,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
-"tMm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/machinery/door_control{
-	id = "clf_cargo_2";
-	name = "Cargo Lockdown";
-	pixel_x = -10;
-	pixel_y = 26
-	},
-/turf/open/asphalt/cement/cement12,
-/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "tMZ" = (
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -39267,10 +39234,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"tRD" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman,
-/turf/open/floor/interior/wood,
-/area/lv1021/outdoors/comms/west_2)
 "tSr" = (
 /obj/structure/barricade/sandbags/wired{
 	color = "#a98c7c";
@@ -40479,20 +40442,10 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "vDe" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1;
+	dir = 4;
 	pixel_x = -7;
 	buckle_offset_x = -7
 	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 9;
-	buckling_x = 9
-	},
-/obj/structure/machinery/light/blue{
-	pixel_x = -15
-	},
-/obj/effect/decal/hybrisa/warning/redandwhite_S,
-/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/spiralplate,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "vDE" = (
@@ -41712,15 +41665,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"xlx" = (
-/obj/structure/machinery/door/poddoor/hybrisa/white{
-	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
-	color = "#646464";
-	id = "clf_cargo_1"
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/test_floor4,
-/area/lv1021/outdoors/jungle/jungleC_clf_e)
 "xpV" = (
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/river/central_south)
@@ -41930,6 +41874,7 @@
 	pixel_y = 7;
 	pixel_x = 4
 	},
+/obj/item/ammo_magazine/rifle/mar40/extended,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
 "xHC" = (
@@ -52062,7 +52007,7 @@ aVi
 fFr
 hij
 vHX
-kpt
+bag
 kpt
 lbt
 ilu
@@ -52556,7 +52501,7 @@ uMO
 cAc
 bWq
 hXu
-mqH
+maD
 aHP
 aAp
 vJJ
@@ -52723,11 +52668,11 @@ cAc
 sBe
 cAc
 hXu
+maF
+maD
 hXu
 mqH
-hXu
-mqH
-tRD
+emt
 dCF
 xNZ
 wjp
@@ -67916,7 +67861,7 @@ fCI
 sJp
 qhL
 uuv
-oPd
+bjf
 tJV
 vYc
 vYc
@@ -68084,7 +68029,7 @@ jHh
 qhL
 tiP
 vDe
-wKS
+bjd
 aIG
 njc
 iKj
@@ -68251,11 +68196,11 @@ ufY
 mIL
 voY
 aBh
-xlx
-roi
+bjd
+yja
 yja
 aVk
-fav
+mIL
 jWC
 iOl
 iOl
@@ -68418,12 +68363,12 @@ wgI
 qhL
 tlI
 tGe
-wKS
+bjd
 sln
 bTb
 ijt
 wKS
-tMm
+jWC
 wOK
 aKb
 iOl
@@ -68585,7 +68530,7 @@ jhT
 qhL
 oPd
 aac
-tJV
+bje
 ajQ
 vvB
 gap
@@ -69053,7 +68998,7 @@ ata
 arl
 asc
 vDE
-wzQ
+rwz
 mOa
 asE
 mOa
@@ -69721,7 +69666,7 @@ atc
 mOa
 asm
 aQp
-wzQ
+rwz
 mOa
 asl
 asl
@@ -111313,8 +111258,8 @@ hXu
 hXu
 hXu
 hXu
-hiw
-aHV
+hXu
+hXu
 aHV
 aHV
 aHV
@@ -111480,8 +111425,8 @@ hXu
 hXu
 hXu
 hiw
-hiw
-aHV
+hXu
+hXu
 aHV
 aHV
 aHV
@@ -111647,8 +111592,8 @@ hXu
 hXu
 hiw
 hiw
-hiw
-aHV
+hXu
+hXu
 aHV
 aHV
 aHV
@@ -111815,7 +111760,7 @@ hiw
 hiw
 hiw
 hiw
-aHV
+hXu
 aHV
 aHV
 aHV

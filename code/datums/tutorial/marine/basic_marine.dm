@@ -31,7 +31,8 @@
 		"This is the tutorial for marine rifleman",
 		"Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue."
 	)
-	dynamic_message_to_player(script, speaker=dialogue_presets["commander"])
+	speech_to_player(script, dialogue_presets["commander"], TRUE)
+
 	update_objective("Exit the cryopod by pressing [retrieve_bind("North")] or [retrieve_bind("East")].")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 

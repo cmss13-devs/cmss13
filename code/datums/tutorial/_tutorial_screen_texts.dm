@@ -1,5 +1,5 @@
 /// Dynamically timed tutorial message display. Reads a list of dialogue in a tutorial scene, calculates and returns the delay until text is read by the player.
-/datum/tutorial/proc/dynamic_message_to_player(list/script, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial, datum/tutorial_speech_preset/speaker)
+/datum/tutorial/proc/dynamic_message_to_player(list/script, list/atom/movable/screen/text/screen_text/message_atoms)
 	var/final_fade_out_delay
 	var/scene_length = 0 SECONDS
 	for(var/message in script)
@@ -16,6 +16,7 @@
 			else
 				tag_position = findtext(message, html_locate_regex, tag_position)
 				reading_tag = TRUE
+
 		var/word_count = 0
 		var/valid_letter_count = 0
 		for(var/character in 1 to length_char(message))
@@ -29,35 +30,44 @@
 			character++
 
 		if(!word_count)
-			return FALSE
-
-		var/atom/movable/screen/text/screen_text/message_atom
-		if(speaker)
-			message_atom = new speaker.message_type(null, null, speaker.speaker_name, speaker.portrait_icon, speaker.portrait_icon_state, speaker.text_color)
-			message_atom.header = speaker.text_header
-		else
-			message_atom = new message_type()
+			return
 
 		if(script[length(script)] == message)
-			final_fade_out_delay = message_atom.fade_out_time
+			final_fade_out_delay = message_atoms[message].fade_out_time
 		else
-			message_atom.fade_out_time = 0
+			message_atoms[message].fade_out_time = 0
 
 		var/message_reading_time = max(ceil(word_count * 0.26), 1.5) SECONDS
-		var/message_printing_time = (valid_letter_count * message_atom.play_delay) / message_atom.letters_per_update SECONDS
-		message_atom.fade_out_delay = message_reading_time
-
-		if(!scene_length)
-			message_to_player(message, message_atom)
-		else
-			addtimer(CALLBACK(src, PROC_REF(message_to_player), message, message_atom), scene_length)
+		var/message_printing_time = (valid_letter_count * message_atoms[message].play_delay) / message_atoms[message].letters_per_update SECONDS
+		message_atoms[message].fade_out_delay = message_reading_time
 		scene_length += (message_reading_time + message_printing_time)
+
+		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
 
 	return scene_length + final_fade_out_delay
 
 /// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial)
+/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial, dynamic_timing)
+	if(dynamic_timing)
+		return dynamic_message_to_player(list(message), list(message = new message_type()))
 	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
+
+/datum/tutorial/proc/speech_to_player(list/script, datum/tutorial_speech_preset/speaker, dynamic_timing)
+	if(!speaker)
+		return
+	var/list/message_atoms = list()
+	for(var/message in script)
+		var/atom/movable/screen/text/screen_text/message_atom
+		message_atom = new speaker.message_type(null, null, speaker.speaker_name, speaker.portrait_icon, speaker.portrait_icon_state, speaker.text_color)
+		message_atom.header = speaker.text_header
+		message_atom.sound_to_play = pick(speaker.speech_sounds)
+		message_atoms[message] = message_atom
+
+	if(dynamic_timing)
+		return dynamic_message_to_player(script, message_atoms)
+
+	for(var/message in script)
+		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
 
 /atom/movable/screen/text/screen_text/hypersleep_status
 	maptext_height = 480
@@ -75,7 +85,7 @@
 	. = ..()
 	add_filter("text_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, color = "#df2d2d"))
 
-/atom/movable/screen/text/screen_text/potrait
+/atom/movable/screen/text/screen_text/tutorial_potrait
 	screen_loc = "LEFT,TOP-3"
 	maptext_height = 64
 	maptext_width = 400
@@ -90,7 +100,7 @@
 	style_open = "<span class='langchat' style=font-size:20pt;text-align:left valign='top'>"
 	style_close = "</span>"
 
-/atom/movable/screen/text/screen_text/potrait/Initialize(mapload, datum/hud/hud_owner, name, icon_to_use, image_to_play)
+/atom/movable/screen/text/screen_text/tutorial_potrait/Initialize(mapload, datum/hud/hud_owner, name, icon_to_use, image_to_play)
 	. = ..()
 	add_filter("text_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 1, color = "#6cf0b9"))
 	var/image/alertimage = image(icon_to_use, icon_state = image_to_play)
@@ -116,17 +126,23 @@
 
 	vis_contents += holding_movable
 
+/atom/movable/screen/text/screen_text/tutorial_potrait/play_to_client()
+	if(sound_to_play)
+		playsound_client(player, sound_to_play, player.mob, 25, FALSE)
+	to_chat(player.mob, SPAN_NOTICE(text_to_play))
+	return ..()
+
 /datum/tutorial_speech_preset
 	var/speaker_name
 	var/portrait_icon = 'icons/ui_icons/screen_alert_images.dmi'
 	var/portrait_icon_state
 
-	var/list/speech_sounds = list(
+	var/static/list/speech_sounds = list(
 		'sound/machines/telephone/talk_phone4.ogg',
 		'sound/machines/telephone/talk_phone2.ogg',
 		'sound/machines/telephone/talk_phone3.ogg',
 	)
-	var/message_type = /atom/movable/screen/text/screen_text/potrait
+	var/message_type = /atom/movable/screen/text/screen_text/tutorial_potrait
 
 	var/text_color
 	var/text_header

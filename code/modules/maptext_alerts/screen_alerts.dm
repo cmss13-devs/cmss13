@@ -74,11 +74,13 @@
 	play_delay = 0.1
 	fade_out_delay = 2.5 SECONDS
 	fade_out_time = 0.5 SECONDS
+	//sound to play
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/play_to_client()
 	if(sound_to_play)
 		playsound_client(player, sound_to_play, player.mob.loc, 25, FALSE)
 	to_chat(player.mob, SPAN_NOTICE(text_to_play))
+	return ..()
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
 	if(!player)

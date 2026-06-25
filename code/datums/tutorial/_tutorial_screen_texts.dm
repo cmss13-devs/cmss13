@@ -52,7 +52,7 @@
 		return dynamic_message_to_player(list(message), list(message = new message_type()))
 	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
 
-/datum/tutorial/proc/speech_to_player(list/script, datum/tutorial_speech_preset/speaker, dynamic_timing)
+/datum/tutorial/proc/speech_to_player(datum/tutorial_speech_preset/speaker, dynamic_timing, list/script)
 	if(!speaker)
 		return
 	var/list/message_atoms = list()
@@ -78,15 +78,15 @@
 	play_delay = 0.25
 	letters_per_update = 1
 	fade_out_delay = 2 SECONDS
-	style_open = "<span style='font-size:15pt; text-align:center; color: #e92c2c; font-family: \"VCR OSD Mono\"' valign='top'>"
+	style_open = "<span style='font-size:15pt; text-align:center; color: #3375F8; font-family: \"VCR OSD Mono\"' valign='top'>"
 	style_close = "</span>"
 
 /atom/movable/screen/text/screen_text/hypersleep_status/Initialize(mapload)
 	. = ..()
-	add_filter("text_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, color = "#df2d2d"))
+	add_filter("text_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, color = "#2461da"))
 
 /atom/movable/screen/text/screen_text/tutorial_potrait
-	screen_loc = "LEFT,TOP-3"
+	screen_loc = "WEST:6,TOP-3"
 	maptext_height = 64
 	maptext_width = 400
 	maptext_x = 66

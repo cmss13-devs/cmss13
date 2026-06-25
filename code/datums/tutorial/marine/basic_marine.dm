@@ -21,22 +21,41 @@
 
 	tutorial_area = get_area(bottom_left_corner)
 	tutorial_instance_lights = tutorial_area.all_lights.Copy()
+	for(var/obj/structure/machinery/light/light as anything in tutorial_instance_lights)
+		light.set_light(5, 0.5, LIGHT_COLOR_DARK_BLUE)
 
 	init_tracking_markers()
 	init_mob()
-	//message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue.")
 
-	var/list/script = list(
-		"Good morning Marine!! Welcome to boot camp!",
-		"This is the tutorial for marine rifleman",
-		"Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue."
-	)
-	speech_to_player(script, dialogue_presets["commander"], TRUE)
+	var/mob/living/carbon/human/target = tutorial_mob
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
+	playsound_client(target.client, 'sound/machines/tcomms_on.ogg', tutorial_pod, 25, FALSE)
+	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
+	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
+	var/message = "ARES v3.2 Training Module<br><br>Now loading...<br>marine_basic_1.disk<br><br>Cryopod #521 - Thawing activated<br><br>Occupant REM:NOMINAL"
+	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/hypersleep_status)
+	addtimer(CALLBACK(src, PROC_REF(wake_up)), 8 SECONDS)
+
+/datum/tutorial/marine/basic/proc/wake_up()
+
+	var/message = "- Press <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to exit the cryopod -"
+	playsound_client(tutorial_mob.client, 'sound/machines/screen_output1.ogg', tutorial_mob, 35, FALSE)
+	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/hypersleep_status)
 
 	update_objective("Exit the cryopod by pressing [retrieve_bind("North")] or [retrieve_bind("East")].")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit()
+	for(var/obj/structure/machinery/light/light as anything in tutorial_instance_lights)
+		light.set_light(8, 1, LIGHT_COLOR_TUNGSTEN)
+	playsound_client(tutorial_mob.client, 'sound/machines/telephone/scout_pick_up.ogg', tutorial_mob, 35, FALSE)
+	speech_to_player(dialogue_presets["commander"], TRUE, list(
+		"Good morning Marine!! Welcome to boot camp!",
+		"This is the tutorial for marine rifleman",
+		" to continue.",
+	))
+
+/datum/tutorial/marine/basic/proc/on_cryopod_exit2()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)

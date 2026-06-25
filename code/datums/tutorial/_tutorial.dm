@@ -136,15 +136,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/remove_from_tracking_atoms(atom/reference)
 	tracking_atoms -= reference.type
 
-/datum/tutorial/proc/wake_up_screen()
-	var/mob/living/carbon/human/target = tutorial_mob
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
-	playsound_client(target.client, 'sound/machines/tcomms_on.ogg', tutorial_pod, 25, FALSE)
-	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
-	target.overlay_fullscreen_timer(8 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
-	var/message = "GENERAL QUARTERS ORDER RECIEVED<br><br>ALERT LEVEL: RED<br>ALL HANDS ON DECK!<br><br>THAWING LV-975 PERSONNEL<br><br>OCCUPANT REM:NOMINAL"
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/hypersleep_status)
-
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message, shown_onscreen = TRUE)
 	SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE, message)

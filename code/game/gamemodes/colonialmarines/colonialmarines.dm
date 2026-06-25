@@ -591,7 +591,7 @@
 		return
 
 	var/list/shortly_exploding_pipes = list()
-	var/explode_count = SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH ? HIJACK_EXPLOSION_COUNT : HIJACK_CRASHED_EXPLOSION_COUNT
+	var/explode_count = SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH ? HIJACK_CRASHED_EXPLOSION_COUNT : HIJACK_EXPLOSION_COUNT
 	for(var/i = 1 to explode_count)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 

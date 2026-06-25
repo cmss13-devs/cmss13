@@ -2308,6 +2308,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\castes\popper.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\castes\sprinter.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\castes\venator.dm"
+#include "code\modules\mob\living\carbon\xenomorph\pathogen\structures\sporecaster.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\behavior_delegate.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\xeno_strain.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\boiler\trapper.dm"

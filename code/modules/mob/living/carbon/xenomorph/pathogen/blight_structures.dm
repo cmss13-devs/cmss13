@@ -80,4 +80,13 @@
 /datum/construction_template/xenomorph/patho_recovery/set_structure_image()
 	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
 
+/datum/construction_template/xenomorph/sporecaster
+	name = PATHOGEN_STRUCTURE_SPORECASTER
+	description = "Produces spore clouds to infect targets brought close."
+	build_type = /obj/effect/alien/resin/special/sporecaster
+	build_icon_state = "sporecaster"
+
+/datum/construction_template/xenomorph/sporecaster/set_structure_image()
+	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
+
 #undef PATHO_STRUCTURE_PLASMA_MULTIPLIER

@@ -1927,14 +1927,14 @@
 		PATHOGEN_STRUCTURE_CLUSTER = 8,
 		PATHOGEN_STRUCTURE_PYLON = 2,
 		PATHOGEN_STRUCTURE_RECOVERY = 6,
-		PATHOGEN_STRUCTURE_PLASMA = 3,
+		PATHOGEN_STRUCTURE_SPORECASTER = 3,
 	)
 
 	hive_structure_types = list(
 		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 		PATHOGEN_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/pathogen_cluster,
 		PATHOGEN_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/patho_recovery,
-		PATHOGEN_STRUCTURE_PLASMA = /datum/construction_template/xenomorph/patho_plasma
+		PATHOGEN_STRUCTURE_SPORECASTER = /datum/construction_template/xenomorph/sporecaster
 	)
 
 	tacmap_requires_queen_ovi = FALSE

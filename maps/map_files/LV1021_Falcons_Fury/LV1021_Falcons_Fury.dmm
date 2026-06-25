@@ -5933,15 +5933,20 @@
 	pixel_y = -5
 	},
 /obj/item/tool/shovel/snow,
+/obj/structure/prop/tyrargo/boards{
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = 3
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "anF" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/floor/interior/wood/alt2,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "anG" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/floor/interior/wood/alt2,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "anH" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -6334,6 +6339,9 @@
 	dir = 8
 	},
 /obj/item/trash/cigbutt,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 8
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "aoJ" = (
@@ -14217,7 +14225,7 @@
 /obj/item/ammo_box/magazine/fp9000,
 /obj/structure/closet/crate/ammo,
 /turf/open/floor/interior/wood,
-/area/lv1021/indoors/clf_camp/ancil_e)
+/area/lv1021/oob)
 "aIk" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
@@ -17275,6 +17283,14 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_y = 19;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_y = 22;
+	pixel_x = 3
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/south_2)
 "aPS" = (
@@ -18350,6 +18366,14 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
+"aSQ" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = 10;
+	pixel_y = -1;
+	layer = 2.9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aSR" = (
 /obj/structure/flora/wood/stick1,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -19015,6 +19039,15 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
+"aUq" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_y = 14;
+	layer = 2.8;
+	pixel_x = 1
+	},
+/turf/open/floor/interior/wood/damage,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "aUr" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -21509,9 +21542,6 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/kutjevo/fake_wood,
-/area/lv1021/outdoors/comms/north_1)
-"bag" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/lv1021/outdoors/comms/north_1)
 "bah" = (
 /obj/effect/landmark/static_comms/net_two,
@@ -24654,6 +24684,14 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
+"bgq" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4;
+	pixel_y = -14;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "bgr" = (
 /obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
@@ -27419,12 +27457,16 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "dzd" = (
 /obj/item/trash/cigbutt,
-/obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/defenses/handheld/planted_flag/clf{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
 	},
-/obj/item/storage/large_holster/machete/full{
-	pixel_x = 1
+/obj/item/storage/pouch/machete/full{
+	pixel_x = -7;
+	pixel_y = 2
 	},
 /turf/open/floor/interior/wood/damage_6,
 /area/lv1021/indoors/clf_camp/coordinator)
@@ -27970,10 +28012,6 @@
 /obj/structure/platform_decoration/wood/west,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"elY" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/lv1021/landing_zone_1)
 "emo" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_x = -10;
@@ -29077,10 +29115,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
-"fFN" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/lv1021/landing_zone_1)
 "fGA" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -30466,6 +30500,7 @@
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
 	},
+/obj/item/clothing/accessory/storage/webbing/black,
 /obj/item/clothing/accessory/storage/webbing/black,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
@@ -34876,6 +34911,14 @@
 "nOv" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/weapon/sword/machete,
+/obj/item/explosive/grenade/high_explosive{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/explosive/grenade/high_explosive{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "nOX" = (
@@ -39243,6 +39286,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/ammo/alt,
 /obj/item/device/m56d_gun/mounted,
+/obj/item/ammo_magazine/m56d,
+/obj/item/ammo_magazine/m56d,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_n)
 "tSI" = (
@@ -42126,9 +42171,9 @@
 "xVw" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/storage/large_holster/machete/full{
-	pixel_x = 2;
-	pixel_y = 8
+/obj/item/storage/pouch/machete/full{
+	pixel_x = -4;
+	pixel_y = 7
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
@@ -46440,8 +46485,8 @@ hXu
 hXu
 hXu
 hXu
-mqH
-mqH
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -46606,9 +46651,9 @@ hXu
 hXu
 hXu
 hXu
-rGT
-elY
-fFN
+hXu
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -46773,9 +46818,9 @@ hXu
 hXu
 mqH
 mqH
-fFN
-fHN
-elY
+rGT
+rGT
+rGT
 rGT
 hci
 rGT
@@ -54466,9 +54511,9 @@ bfS
 qBg
 qBg
 qBg
-fHx
-qBg
-fHx
+hXu
+hXu
+hXu
 fHx
 fHx
 hsI
@@ -54632,8 +54677,8 @@ fHx
 wdQ
 fHx
 qBg
-qBg
-fHx
+hXu
+hXu
 fHx
 rOc
 fHx
@@ -55666,8 +55711,8 @@ jYt
 xFz
 wtt
 rGT
-bag
-bag
+nEy
+nEy
 mvR
 eQP
 mvR
@@ -55832,7 +55877,7 @@ aNV
 dsN
 htd
 rGT
-bag
+nEy
 bai
 bah
 baf
@@ -55999,7 +56044,7 @@ bdh
 mWa
 mvR
 hXu
-bag
+nEy
 bai
 bai
 kzc
@@ -56166,7 +56211,7 @@ cXu
 kwh
 mvR
 nCY
-bag
+nEy
 bam
 baj
 mvR
@@ -61849,8 +61894,8 @@ eHM
 mqH
 mqH
 apX
-apX
-apX
+mxN
+aSQ
 anE
 cnj
 cnj
@@ -62016,8 +62061,8 @@ aqD
 eHM
 eHM
 eHM
-apX
 mxN
+aUq
 anF
 hXu
 hXu
@@ -62183,7 +62228,7 @@ dGp
 eHM
 apX
 mxN
-mxN
+bgq
 anG
 hXu
 hXu
@@ -66547,7 +66592,7 @@ aJH
 aNJ
 olQ
 olQ
-olQ
+maF
 maF
 hXu
 hXu
@@ -67382,7 +67427,7 @@ iOl
 aNK
 aJK
 aNF
-olQ
+maF
 maF
 hXu
 hXu

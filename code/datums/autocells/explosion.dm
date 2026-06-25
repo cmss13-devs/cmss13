@@ -86,19 +86,24 @@
 	new_cell?.exploded_atoms += exploded_atoms
 	return new_cell
 
-// Compare directions. If the other explosion is traveling in the same direction,
-// the explosion is amplified. If not, it's weakened
-/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)
+// Attempts to merge explosions. Will compare directions to determine effects on power.
+// If the other explosion is traveling in the same direction, the explosion is amplified.
+// If not, it's weakened
+// Returns TRUE if this explosion survived.
+/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/other)
+	if(QDELETED(other))
+		return TRUE
+
 	// Non-merging explosions take priority
-	if(!should_merge)
+	if(!should_merge || !other.should_merge)
 		return TRUE
 
 	// The strongest of the two explosions should survive the merge
 	// This prevents a weaker explosion merging with a strong one,
 	// the strong one removing all the weaker one's power and just killing the explosion
-	var/is_stronger = (power >= E.power)
-	var/datum/automata_cell/explosion/survivor = is_stronger ? src : E
-	var/datum/automata_cell/explosion/dying = is_stronger ? E : src
+	var/is_stronger = (power >= other.power)
+	var/datum/automata_cell/explosion/survivor = is_stronger ? src : other
+	var/datum/automata_cell/explosion/dying = is_stronger ? other : src
 
 	// Two epicenters merging, or a new epicenter merging with a traveling wave
 	if((!survivor.direction && !dying.direction) || (survivor.direction && !dying.direction))
@@ -120,6 +125,8 @@
 	// Two waves travling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
+
+	qdel(dying)
 
 	return is_stronger
 

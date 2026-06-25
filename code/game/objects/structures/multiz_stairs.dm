@@ -5,7 +5,8 @@
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	register_with_turf()
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
 		blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
@@ -14,6 +15,11 @@
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)
 	return ..()
+
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED if we're moved (turf changed)
+/obj/structure/stairs/multiz/proc/register_with_turf()
+	SIGNAL_HANDLER
+	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER

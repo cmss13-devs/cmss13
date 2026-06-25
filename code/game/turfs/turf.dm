@@ -358,6 +358,10 @@
 	return TRUE //Nothing found to block so return success!
 
 /turf/Entered(atom/movable/A)
+	SHOULD_CALL_PARENT(TRUE)
+
+	..() // Shouldn't do anything but to satisfy lint
+
 	if(!istype(A))
 		return
 
@@ -458,13 +462,6 @@
 	created_baseturf_lists[new_baseturfs[length(new_baseturfs)]] = new_baseturfs.Copy()
 	return new_baseturfs
 
-/// WARNING WARNING
-/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
-/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
-/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
-/turf/clear_signal_refs()
-	return
-
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
@@ -498,18 +495,7 @@
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
-	var/list/old_comp_lookup = comp_lookup?.Copy()
-	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/W = new path(src)
-
-	// WARNING WARNING
-	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
-	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
-	if(old_comp_lookup)
-		LAZYOR(W.comp_lookup, old_comp_lookup)
-	if(old_signal_procs)
-		LAZYOR(W.signal_procs, old_signal_procs)
 
 	W.weak_reference = old_ref
 

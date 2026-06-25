@@ -1286,7 +1286,8 @@
 		hivenumber = hive
 		set_hive_data(src, hive)
 	recalculate_structure()
-	update_tied_turf(loc)
+	update_tied_turf()
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(update_tied_turf))
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
@@ -1397,20 +1398,17 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
-	SIGNAL_HANDLER
+/obj/structure/alien/movable_wall/proc/update_tied_turf()
+	SIGNAL_HANDLER // COMSIG_MOVABLE_TURF_ENTERED
 
-	if(!T)
+	if(!loc)
 		return
 
 	if(tied_turf)
-		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
-	tied_turf = T
+		UnregisterSignal(tied_turf, list(COMSIG_TURF_ENTER))
 
-/obj/structure/alien/movable_wall/forceMove(atom/dest)
-	. = ..()
-	update_tied_turf(loc)
+	tied_turf = loc
+	RegisterSignal(loc, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 
 /obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)

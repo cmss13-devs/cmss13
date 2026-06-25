@@ -220,7 +220,15 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	register_with_turf()
+
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED if we're moved (turf changed)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
+	SIGNAL_HANDLER
+	var/turf/location = get_turf(src)
+	if(location)
+		RegisterSignal(location, COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()

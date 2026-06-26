@@ -713,7 +713,6 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
-	. = ..()
 	new_human.set_species(joe_type)
 	if(corp_label)
 		new_human.AddElement(corp_label)

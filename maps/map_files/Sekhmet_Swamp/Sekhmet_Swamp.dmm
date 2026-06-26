@@ -31753,6 +31753,7 @@
 /obj/structure/prop/swamp_plants/algae/corner2/south_west{
 	pixel_y = 8
 	},
+/mob/living/simple_animal/small/frog/random,
 /turf/open/gm/coast/dirt/swampdir/south,
 /area/sekhmet/outside/swamp)
 "pOP" = (
@@ -34036,6 +34037,7 @@
 	pixel_x = 4;
 	dir = 1
 	},
+/mob/living/simple_animal/small/frog/random,
 /turf/open/gm/coast/dirt/swampbeachcorner/south_west,
 /area/sekhmet/outside/east_jungle)
 "rfD" = (
@@ -46452,6 +46454,7 @@
 /obj/structure/prop/swamp_plants/algae/corner2/south_west{
 	pixel_x = -5
 	},
+/mob/living/simple_animal/small/frog/random,
 /turf/open/gm/coast/dirt/swampdir/east,
 /area/sekhmet/outside/east_jungle)
 "xOG" = (
@@ -101205,7 +101208,7 @@ sjx
 iSq
 vRr
 pBz
-cHW
+tPA
 qTH
 wsL
 qip
@@ -101540,7 +101543,7 @@ ajN
 uwJ
 tkI
 qOI
-rIb
+tvd
 lzJ
 kRb
 dkY
@@ -103019,7 +103022,7 @@ pBz
 pBz
 ybn
 ajS
-kRb
+uXr
 aib
 kWZ
 aHj

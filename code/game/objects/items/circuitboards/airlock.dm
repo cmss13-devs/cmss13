@@ -5,7 +5,7 @@
 	icon_state = "door_electronics"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50,"glass" = 50)
-	req_access = list(ACCESS_MARINE_ENGINEERING)
+	req_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	var/list/conf_access = null
 	/// if set to 1, door would receive req_one_access instead of req_access
 	var/one_access = 0

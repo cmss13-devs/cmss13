@@ -28,6 +28,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 
+	#ifndef UNIT_TESTS
+	var/turf/below = get_turf_below()
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+	if(!below)
+		stack_trace("[src] at [COORD(src)] falls through the world!")
+	#endif
+
 	// We don't call parent and this is important
 	for(var/atom/movable/thing in src)
 		Entered(thing)
@@ -97,6 +105,13 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			grabbing.grabbed_thing.forceMove(user.loc)
 		climb_down_time *= 1.2
 
+	var/turf/below = get_turf_below()
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+	if(!below)
+		to_chat(user, SPAN_WARNING("You can't go that way."))
+		return
+
 	if(hands_full)
 		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
 
@@ -106,15 +121,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = get_turf_below()
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-
 	user.forceMove(below)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(below)
 	below.on_climb_down(user)
-	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)
 	if(movable.flags_atom & NO_ZFALL)
@@ -125,6 +135,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
+
+	if(!below)
+		return
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)

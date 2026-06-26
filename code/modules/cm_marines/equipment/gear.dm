@@ -547,7 +547,6 @@
 		to_chat(user, SPAN_NOTICE("You disassemble [src]."))
 	else
 		new_tripod.visible_message(SPAN_WARNING("[new_tripod] falls to the floor."))
-	GLOB.deployed_tripod_cameras -= src
 	qdel(src)
 
 /obj/structure/overwatch_camera_tripod/ex_act(severity)

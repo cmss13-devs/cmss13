@@ -237,7 +237,7 @@
 		return FALSE
 
 	//Do this now, order doesn't matter
-	sparks.start(do_NOT_delete = TRUE)
+	sparks?.start(do_NOT_delete = TRUE)
 	dcell.use(charge_cost)
 	update_icon()
 	playsound(get_turf(src), sound_release, 25, 1)

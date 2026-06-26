@@ -1,4 +1,5 @@
-///from /turf/Entered
+/// From /turf/Entered(): (turf/entered_turf)
+/// NOTE: This will occur for all locs including when turf/ChangeTurf() has New'd a turf
 #define COMSIG_MOVABLE_TURF_ENTERED "movable_turf_entered"
 
 /// from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/post_change_callbacks).

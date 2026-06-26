@@ -28,12 +28,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 
-	#ifndef UNIT_TESTS
-	var/turf/below = get_turf_below()
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-	if(!below)
-		stack_trace("[src] at [COORD(src)] falls through the world!")
+	#if defined(UNIT_TESTS) || defined(TESTING)
+	// Assert when testing that this open_space is placed somewhere valid
+	if(!istype(get_area(src), /area/misc/testroom))
+		var/turf/below = get_turf_below()
+		while(istype(below, /turf/open_space))
+			below = SSmapping.get_turf_below(below)
+		if(!below)
+			stack_trace("[src] at [COORD(src)] falls through the world!")
 	#endif
 
 	// We don't call parent and this is important

@@ -391,10 +391,12 @@
 			return "[MAIN_SHIP_NAME] Chemistry"
 		if(ACCESS_MARINE_MORGUE)
 			return "[MAIN_SHIP_NAME] Morgue"
+		if(ACCESS_MARINE_ASO)
+			return "ASO's Office"
 		if(ACCESS_MARINE_CE)
 			return "CE's Office"
 		if(ACCESS_MARINE_RO)
-			return "RO's Office"
+			return "QM's Office"
 		if(ACCESS_MARINE_ENGINEERING)
 			return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_OT)
@@ -403,12 +405,12 @@
 			return "[MAIN_SHIP_NAME] General Access"
 		if(ACCESS_MARINE_DATABASE)
 			return "[MAIN_SHIP_NAME] Database Access"
+		if(ACCESS_MARINE_DATABASE_ADMIN)
+			return "[MAIN_SHIP_NAME] Database Admin"
 		if(ACCESS_MARINE_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
 		if(ACCESS_MARINE_CO)
 			return "Commander's Quarters"
-		if(ACCESS_MARINE_DATABASE)
-			return "[MAIN_SHIP_NAME]'s Database"
 		if(ACCESS_MARINE_COMMAND)
 			return "[MAIN_SHIP_NAME] Command"
 		if(ACCESS_MARINE_CREWMAN)
@@ -469,6 +471,8 @@
 			return "AI Access"
 		if(ACCESS_ARES_DEBUG)
 			return "AI Debug"
+		if(ACCESS_PRESS)
+			return "[MAIN_SHIP_NAME] Press"
 
 /proc/get_region_accesses_wy(code)
 	switch(code)

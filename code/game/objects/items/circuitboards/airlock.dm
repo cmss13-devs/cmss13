@@ -35,7 +35,7 @@
 	if (locked)
 		t1 += "<a href='byond://?src=\ref[src];login=1'>Swipe ID</a><hr>"
 	else
-		t1 += "<a href='byond://?src=\ref[src];logout=1'>Block</a><hr>"
+		t1 += "<a href='byond://?src=\ref[src];logout=1'>Lock & Close</a><hr>"
 
 		t1 += "Access requirement is set to "
 		t1 += one_access ? "<a style='color: green' href='byond://?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='byond://?src=\ref[src];one_access=1'>ALL</a><hr>"
@@ -66,18 +66,18 @@
 	if (usr.stat || usr.is_mob_restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 		return
 	if (href_list["close"])
-		close_browser(usr, "airlock")
+		close_browser(usr, "airlock_electronics")
 		return
 
 	if (href_list["login"])
 		if(istype(usr,/mob/living/silicon))
-			src.locked = 0
-			src.last_configurator = usr.name
+			locked = 0
+			last_configurator = usr.name
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (I && src.check_access(I))
-				src.locked = 0
-				src.last_configurator = I:registered_name
+			var/obj/item/card_with_access = usr.get_active_hand()
+			if (card_with_access && src.check_access(card_with_access))
+				locked = 0
+				last_configurator = card_with_access:registered_name
 
 	if (locked)
 		return

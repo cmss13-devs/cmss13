@@ -76,7 +76,6 @@
 	opacity = FALSE
 	alpha = 50
 	color = "#5f5f5f"
-	obscuring = FALSE
 	var/fire_suppression_level = 3
 
 /obj/effect/particle_effect/smoke/mycelium_cloud/Crossed(mob/living/carbon/moob as mob)

@@ -4,6 +4,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough
 	name = "Bortrough"
+	desc = "A large, dangerous animal covered in thick skin. Its beady eyes lazily look in your direction. Best to leave this one alone."
 	icon = 'icons/mob/bortrough.dmi'
 	icon_state = "Bortrough Running"
 	icon_living = "Bortrough Running"

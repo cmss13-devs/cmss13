@@ -260,11 +260,7 @@
 		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to channel our nutrients and influence."))
 		return
 
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(mods["click_catcher"])
 		return
@@ -599,11 +595,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!xeno.check_state())
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	for(var/obj/effect/alien/resin/design/node in xeno.current_design)
 		if(get_dist(xeno, node) > 7)
@@ -820,6 +812,7 @@
 		. += SPAN_NOTICE("On closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch...")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We sense that building on top of this node will speed up your construction speed by [SPAN_BOLDNOTICE("50%")].")
+		. += SPAN_HELPFUL("Hologram visible on node will NOT override builder selected structure.")
 
 //-----// Design Cost Node //-----//
 
@@ -848,6 +841,7 @@
 		. += SPAN_NOTICE("On closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_BOLDNOTICE("50%")].")
+		. += SPAN_HELPFUL("Hologram visible on node will NOT override builder selected structure.")
 
 //-----// Design Construct Node //-----//
 
@@ -1052,7 +1046,8 @@
 	if(isxeno(user) || isobserver(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
-		. += SPAN_NOTICE("We sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning]")], you also heard that using plasma fruit works too.")
+		. += SPAN_NOTICE("We sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma to this node will cause it to secrete a [SPAN_BOLDNOTICE("[mark_meaning]")]. The secretion thickness depends on the weeds it is placed on; hive weeds and hardened weeds produce a thicker variant. It will also become thicker if plasma is donated by a Queen, Hivelord, Burrower, Carrier, or Gardener.")
+		. += SPAN_HELPFUL("Select Help intent and click on node to donate plasma.")
 
 //-------------------------------------//
 //-----// Weedbound Base (Wall) //-----//
@@ -1167,6 +1162,7 @@
 		. += SPAN_NOTICE("On closer examination, this strange wall appears to have merged with the resin below to hold itself together.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We sense that this resin wall will collapse if the weeds it is merged with disappear.")
+		. += SPAN_HELPFUL("This structure can upgrade itself if weeds under it change to hive weeds or hardened weeds.")
 
 //-----// Weedbound - Thick Wall //-----//
 
@@ -1210,6 +1206,7 @@
 		. += SPAN_NOTICE("On closer observation, this strange wall appears to be merged with node below, pulsating in rhythm with the weeds.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We sense that this wall has merged itself with the resin node below, becoming part of it.")
+		. += SPAN_HELPFUL("This structure can upgrade itself if weeds under it change to hive weeds or hardened weeds.")
 
 //-----// Nodebound - Thick Wall //-----//
 
@@ -1327,6 +1324,7 @@
 		. += SPAN_NOTICE("On closer examination, this strange door appears to have merged with the resin below to hold itself together.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We sense that this resin door will collapse if the weeds it is merged with disappear.")
+		. += SPAN_HELPFUL("This structure can upgrade itself if weeds under it change to hive weeds or hardened weeds.")
 
 //-----// Weedbound - Thick Door //-----//
 

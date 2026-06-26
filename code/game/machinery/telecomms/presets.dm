@@ -225,10 +225,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		register_with_turf()
 
 /// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED if we're moved (turf changed)
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf(atom/movable/source, turf/new_turf)
 	SIGNAL_HANDLER
 	var/turf/location = get_turf(src)
-	if(location)
+	if(location && (!new_turf || location == new_turf)) // We only need to monitor our loc not our locs
 		RegisterSignal(location, COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)

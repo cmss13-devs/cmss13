@@ -50,6 +50,8 @@
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)
+/// Reflected projectiles
+#define PROJECTILE_REFLECTED (1<<2)
 
 //Gun defines for gun related thing. More in the projectile folder.
 

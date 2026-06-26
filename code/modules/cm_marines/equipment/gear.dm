@@ -400,6 +400,15 @@
 			deploy_tripod(user)
 
 /obj/item/device/overwatch_camera/tripod/proc/deploy_tripod(mob/user)
+	var/datum/squad/user_squad = null // find squad for addition to label
+
+	if(ishuman(user)) // synths can place so not strict check
+		var/mob/living/carbon/human/human_user = user
+		user_squad = human_user.assigned_squad
+		if(isyautja(user))
+			to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+			return
+
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
 		return
@@ -423,11 +432,6 @@
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You must stand still while deploying the tripod."))
 		return
-
-	var/datum/squad/user_squad = null // find squad
-	if(ishuman(user)) // synths can place so not strict check
-		var/mob/living/carbon/human/human_user = user
-		user_squad = human_user.assigned_squad
 
 	var/base_label = label ? label : initial(name)
 	var/final_label = user_squad ? "[user_squad.name] - [base_label]" : base_label
@@ -491,6 +495,9 @@
 		if("Cancel")
 			return
 		if("Rename")
+			if(isyautja(user))
+				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+				return
 			var/new_name = tgui_input_text(user, "Enter new label for the camera:", "Rename Camera", label, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
 				return
@@ -505,6 +512,9 @@
 			to_chat(user, SPAN_NOTICE("[src] renamed to [name]."))
 			return
 		if("Pick Up")
+			if(isyautja(user))
+				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+				return
 			if(!user.Adjacent(src))
 				to_chat(user, SPAN_WARNING("You must be closer to pick up [src]."))
 				return

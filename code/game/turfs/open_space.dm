@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 
-/turf/open_space/Initialize()
+/turf/open_space/Initialize(mapload, ...)
 	pass_flags = GLOB.pass_flags_cache[type]
 
 	if (isnull(pass_flags))
@@ -27,6 +27,11 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		initialize_pass_flags()
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	// We don't call parent and this is important
+	for(var/atom/movable/thing in src)
+		Entered(thing)
+
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/Enter(atom/movable/mover, atom/forget)

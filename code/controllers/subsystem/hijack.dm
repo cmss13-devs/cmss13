@@ -973,12 +973,9 @@ SUBSYSTEM_DEF(hijack)
 		target = target.ChangeTurf(make_current_walkable_type)
 		return target
 
-	// Make target open_space and chuck stuff down
+	// Make target open_space (which will chuck stuff down)
 	var/turf/open_space/space = target.ChangeTurf(/turf/open_space)
-	for(var/atom/movable/thing in space)
-		if(istype(thing, /obj/vis_contents_holder))
-			continue
-		space.check_fall(thing)
+
 	return space
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//

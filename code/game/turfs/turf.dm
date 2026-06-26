@@ -105,8 +105,9 @@
 	else
 		initialize_pass_flags()
 
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	// Be sure to do this if you don't call parent!
+	for(var/atom/movable/thing in src)
+		Entered(thing)
 
 	if(light_power && light_range)
 		update_light()
@@ -131,6 +132,7 @@
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
+	flags_atom = NO_ZFALL
 
 /obj/vis_contents_holder/Initialize(mapload, vis, offset)
 	. = ..()

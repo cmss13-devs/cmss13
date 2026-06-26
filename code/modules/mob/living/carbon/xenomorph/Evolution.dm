@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
 
-	if(lock_evolve)
+	if(lock_evolve || (hive.evolution_locked && !islarva(src)))
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -381,7 +381,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
-	if(lock_evolve)
+	if(lock_evolve || hive.evolution_locked)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -477,6 +477,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
+	new_xeno.lock_evolve = lock_evolve
 
 	// If the player has lost the Deevolve verb before, don't allow them to do it again
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))

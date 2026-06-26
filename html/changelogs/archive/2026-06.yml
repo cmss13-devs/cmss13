@@ -488,3 +488,17 @@
   fira:
   - bugfix: Fixed a number of bad cleanup involved in visual effects, notably smoke.
   - bugfix: Rockets and Explosive Arrows will now properly cause on-hit smoke as intended.
+2026-06-26:
+  ori-disillusion-mirnov:
+  - bugfix: daniels and dzhos spawn with mop buckets instead of janibuckets presumably
+      being put inside them
+  - bugfix: dzho and daniel join announcements use the right link
+  - bugfix: the correct join button appears when forcing a colony joe round
+  - bugfix: colony joe storage thingies can no longer be blown up
+  - bugfix: working joes can no longer shoot guns, unrelated to colony joe pr
+  - maptweak: adds a colony joe spawn to white antre
+  realforest2001:
+  - rscadd: Added backend landmark code for pathogen spore sacs to randomly spawn.
+      Will not actually spawn the spore sacs.
+  - imageadd: Added the landmark icon for above.
+  - bugfix: US Army Tank Crew are now considered on the reserve list.

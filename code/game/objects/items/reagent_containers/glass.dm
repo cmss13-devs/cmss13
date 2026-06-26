@@ -377,29 +377,29 @@
 
 		else if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 				return FALSE
-			else //some autoinjectors truly are one-use...
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [autoinjector] cannot be refilled by any means. It must be disposed of."))
+			else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe. 
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] does not have a refill valve. It must be disposed of."))
 				return FALSE
 
 		else if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] cannot refill [autoinjector] because its valves are incompatible with the tank."))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector]'s valves are not compatible with [src]'s tank."))
 			return FALSE
 
 		else if(src.reagents.total_volume <= 0) //The tank is empty!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] is empty! It cannot refill [autoinjector]!"))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. [src] is empty."))
 			return FALSE
 
 		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [autoinjector] is full! The tank cannot refill it!"))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] is full."))
 			return FALSE
 
 		else //Autoinjector says, "Where's the chemical I want?"
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
 			return FALSE
 
-		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+		to_chat(user, SPAN_INFO("You successfully refill the [autoinjector] with [src]!"))
 		return
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank()

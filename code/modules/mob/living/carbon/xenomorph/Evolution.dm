@@ -459,6 +459,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	new_xeno.built_structures = built_structures.Copy()
 	built_structures = null
+	new_xeno.lock_evolve = lock_evolve
 
 	if(mind)
 		mind.transfer_to(new_xeno)
@@ -477,7 +478,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	new_xeno.lock_evolve = lock_evolve
 
 	// If the player has lost the Deevolve verb before, don't allow them to do it again
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))

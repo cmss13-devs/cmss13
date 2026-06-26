@@ -137,16 +137,16 @@
 		if(!mag)
 			to_chat(user, SPAN_DANGER("[src] has no vial."))
 		else
-			var/obj/structure/reagent_dispensers/B = target
-			if(B.dispensing)
-				if(!B.reagents || !B.reagents.total_volume)
-					to_chat(user, SPAN_WARNING("[B] is empty."))
+			var/obj/structure/reagent_dispensers/dispenser = target
+			if(dispenser.dispensing)
+				if(!dispenser.reagents || !dispenser.reagents.total_volume)
+					to_chat(user, SPAN_WARNING("[dispenser] is empty."))
 					return
-				var/amount_transferred = B.reagents.trans_to(src, B.amount_per_transfer_from_this)
+				var/amount_transferred = dispenser.reagents.trans_to(src, dispenser.amount_per_transfer_from_this)
 				if(!amount_transferred)
 					to_chat(user, SPAN_WARNING("[src] is already full."))
 				else
-					to_chat(user, SPAN_NOTICE("You fill [src] with [amount_transferred] units from [B]."))
+					to_chat(user, SPAN_NOTICE("You fill [src] with [amount_transferred] units from [dispenser]."))
 		return
 	//Tac reload, hypo initiating
 	if(istype(target, /obj/item/reagent_container/glass/beaker/vial))

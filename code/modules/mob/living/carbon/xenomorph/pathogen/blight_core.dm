@@ -331,14 +331,18 @@
 
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
-	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber) && allowed_to_overmind(attacking_xeno))
-		var/datum/hive_status/pathogen/confluence = linked_hive
-		if(tgui_alert(attacking_xeno, "Do you seek to become the Mycelial Overmind?", "Become Overmind?", list("Yes", "No"), 5 SECONDS) == "Yes")
-			if((confluence.last_overmind == attacking_xeno.ckey) && do_after(attacking_xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-				make_overmind(attacking_xeno)
-			else
-				admin_request_overmind(attacking_xeno)
-				to_chat(attacking_xeno, SPAN_WARNING("We have submitted our intent to become the overmind. Now we must wait.")) // no spammy
+	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber))
+		if(allowed_to_overmind(attacking_xeno))
+			var/datum/hive_status/pathogen/confluence = linked_hive
+			if(tgui_alert(attacking_xeno, "Do you seek to become the Mycelial Overmind?", "Become Overmind?", list("Yes", "No"), 5 SECONDS) == "Yes")
+				if((confluence.last_overmind == attacking_xeno.ckey) && do_after(attacking_xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+					make_overmind(attacking_xeno)
+				else
+					admin_request_overmind(attacking_xeno)
+					to_chat(attacking_xeno, SPAN_WARNING("We have submitted our intent to become the overmind. Now we must wait.")) // no spammy
+				return XENO_NO_DELAY_ACTION
+		if(isxeno_builder(attacking_xeno))
+			do_repair(attacking_xeno) //This handles the delay itself.
 			return XENO_NO_DELAY_ACTION
 
 	if(!overmind_mob && attacking_xeno.a_intent != INTENT_HELP && attacking_xeno.can_destroy_special() && attacking_xeno.hivenumber == linked_hive.hivenumber)

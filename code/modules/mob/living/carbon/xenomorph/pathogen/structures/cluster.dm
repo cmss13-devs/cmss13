@@ -1,5 +1,3 @@
-#define PATHO_STRUCTURE_PLASMA_MULTIPLIER 10 //When using plasma to construct we need it to cost more.
-
 /obj/effect/alien/weeds/node/pylon/cluster/pathogen
 	spread_on_semiweedable = TRUE
 
@@ -17,7 +15,7 @@
 	build_icon_state = "hive_cluster"
 	pixel_y = -8
 	pixel_x = -8
-	plasma_required = 50 * PATHO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 50 * PATHOGEN_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/pathogen_cluster/set_structure_image()
@@ -61,32 +59,3 @@
 	forced_hive = TRUE
 	hivenumber = XENO_HIVE_PATHOGEN
 	lesser_drone_spawn_limit = 0
-
-/datum/construction_template/xenomorph/patho_plasma
-	name = PATHOGEN_STRUCTURE_PLASMA
-	description = "Gives out small bursts of plasma, replenishing the reserves of the sisters around it."
-	build_type = /obj/effect/alien/resin/special/plasma_tree/pathogen
-	build_icon_state = "recovery_plasma"
-
-/datum/construction_template/xenomorph/patho_plasma/set_structure_image()
-	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-
-/datum/construction_template/xenomorph/patho_recovery
-	name = PATHOGEN_STRUCTURE_RECOVERY
-	description = "Hastily recovers the strength of sisters resting around it."
-	build_type = /obj/effect/alien/resin/special/recovery/pathogen
-	build_icon_state = "recovery"
-
-/datum/construction_template/xenomorph/patho_recovery/set_structure_image()
-	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-
-/datum/construction_template/xenomorph/sporecaster
-	name = PATHOGEN_STRUCTURE_SPORECASTER
-	description = "Produces spore clouds to infect targets brought close."
-	build_type = /obj/effect/alien/resin/special/sporecaster
-	build_icon_state = "sporecaster"
-
-/datum/construction_template/xenomorph/sporecaster/set_structure_image()
-	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
-
-#undef PATHO_STRUCTURE_PLASMA_MULTIPLIER

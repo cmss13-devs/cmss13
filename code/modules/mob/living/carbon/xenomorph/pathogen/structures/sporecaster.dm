@@ -4,6 +4,7 @@
 /obj/effect/alien/resin/special/sporecaster
 	name = PATHOGEN_STRUCTURE_SPORECASTER
 	desc = "A disgusting biomass generator that reeks of rotting flesh. Capable of producing spore clouds on its own."
+	icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'
 	icon_state = "sporecaster"
 	health = 400
 	appearance_flags = KEEP_TOGETHER
@@ -144,7 +145,26 @@
 /obj/effect/alien/resin/special/sporecaster/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M))
 		return attack_hand(M)
-	return ..(M)
+	if(!linked_hive || (M.hivenumber != linked_hive.hivenumber))
+		return ..(M)
+	if(stored_sporeclouds)
+		//this way another hugger doesn't immediately spawn after we pick one up
+		if(stored_sporeclouds == max_sporeclouds)
+			COOLDOWN_START(src, grow_cooldown, spore_grow_time)
 
+		to_chat(M, SPAN_XENONOTICE("You cause the sporecaster to release a spore cloud."))
+		stored_sporeclouds = max(0, stored_sporeclouds - 1)
+		new /obj/effect/pathogen/spore_cloud(loc)
+		return XENO_NONCOMBAT_ACTION
+	..(M)
 
 #undef SPORECASTER_RANGE
+
+/datum/construction_template/xenomorph/sporecaster
+	name = PATHOGEN_STRUCTURE_SPORECASTER
+	description = "Produces spore clouds to infect targets brought close."
+	build_type = /obj/effect/alien/resin/special/sporecaster
+	build_icon_state = "sporecaster"
+
+/datum/construction_template/xenomorph/sporecaster/set_structure_image()
+	build_icon = 'icons/mob/pathogen/pathogen_structures64x64.dmi'

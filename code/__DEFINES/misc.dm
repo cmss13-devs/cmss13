@@ -25,7 +25,8 @@
 #define SMOKE_RANK_MED 3
 #define SMOKE_RANK_HIGH 4
 #define SMOKE_RANK_BOILER 5
-#define SMOKE_RANK_MAX 6
+#define SMOKE_RANK_PATHOGEN_FOG 6
+#define SMOKE_RANK_MAX 7
 
 // What kind of function to use for Explosions falling off.
 

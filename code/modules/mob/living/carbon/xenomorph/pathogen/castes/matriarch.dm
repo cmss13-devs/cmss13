@@ -241,7 +241,7 @@
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/blight_wave/smoke_gas = new()
-	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6)
+	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6, create_cause_data("blight wave", xeno))
 	smoke_gas.start()
 
 	for(var/atom/current_atom as anything in view(owner))

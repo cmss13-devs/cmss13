@@ -153,7 +153,7 @@
 	name = PATHOGEN_STRUCTURE_CORE
 	description = "Heart of the hive, grows hive weeds (which are necessary for other structures) and protects the hive from skyfire."
 	build_type = /obj/effect/alien/resin/special/pylon/pathogen_core
-	build_icon_state = "core"
+	build_icon_state = "pathogen_core"
 	plasma_required = 1000
 	block_range = 0
 

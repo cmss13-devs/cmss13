@@ -62,6 +62,7 @@
             "Down": -1
         }
     ],
+    "nightmare_path": "maps/Nightmare/maps/Atlan/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,
